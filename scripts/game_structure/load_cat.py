@@ -65,7 +65,10 @@ def json_load():
             except:
                 if cat.get("genotype", False):
                     traceback.print_exc()
-                    cat['gender'] = cat['genotype']['gender']
+                    try:
+                        cat['gender'] = cat['genotype']['gender']
+                    except:
+                        cat['gender'] = cat['genotype']['sex']
                 new_cat = Cat(ID=cat["ID"],
                         prefix=cat["name_prefix"],
                         suffix=cat["name_suffix"],

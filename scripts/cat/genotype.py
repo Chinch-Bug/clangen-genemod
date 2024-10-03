@@ -172,7 +172,10 @@ class Genotype:
             self.chimerageno = None    
         self.longtype = jsonstring["longtype"]
 
-        self.gender = jsonstring["gender"]
+        try:
+            self.gender = jsonstring["gender"]
+        except:
+            self.gender = jsonstring["sex"]
         self.dilute = jsonstring["dilute"]
         self.white = jsonstring["white"]
         self.whitegrade = jsonstring["whitegrade"]
