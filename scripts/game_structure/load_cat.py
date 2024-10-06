@@ -54,19 +54,6 @@ def some_cats(cats):
 
         cat.inheritance = Inheritance(cat)
 
-        try:
-            # initialization of thoughts
-            cat.thoughts()
-        except Exception as e:
-            logger.exception(
-                f"There was an error when thoughts for cat #{cat} are created."
-            )
-            game.switches["error_message"] = (
-                f"There was an error when thoughts for cat #{cat} are created."
-            )
-            game.switches["traceback"] = e
-            raise
-
         # Save integrety checks
         if game.config["save_load"]["load_integrity_checks"]:
             save_check()
@@ -287,6 +274,20 @@ def json_load():
 
     for t in cat_threads:
         t.join()
+
+    for cat in all_cats:
+        try:
+            # initialization of thoughts
+            cat.thoughts()
+        except Exception as e:
+            logger.exception(
+                f"There was an error when thoughts for cat #{cat} are created."
+            )
+            game.switches["error_message"] = (
+                f"There was an error when thoughts for cat #{cat} are created."
+            )
+            game.switches["traceback"] = e
+            raise
         
 
 
