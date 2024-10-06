@@ -26,33 +26,48 @@ def load_cats():
         game.switches["traceback"] = e
         raise
 
-def some_cats(cats):
-    for cat in cats:
-        cat.load_conditions()
+def some_cats(all_cats, start, end):
+    for i in range(start, end):
+        if i > len(all_cats)-1:
+            break
+        all_cats[i].load_conditions()
 
         # this is here to handle paralyzed cats in old saves
-        if cat.pelt.paralyzed and "paralyzed" not in cat.permanent_condition:
-            cat.get_permanent_condition("paralyzed")
-        elif "paralyzed" in cat.permanent_condition and not cat.pelt.paralyzed:
-            cat.pelt.paralyzed = True
+        if all_cats[i].pelt.paralyzed and "paralyzed" not in all_cats[i].permanent_condition:
+            all_cats[i].get_permanent_condition("paralyzed")
+        elif "paralyzed" in all_cats[i].permanent_condition and not all_cats[i].pelt.paralyzed:
+            all_cats[i].pelt.paralyzed = True
 
         # load the relationships
         try:
-            if not cat.dead:
-                cat.load_relationship_of_cat()
+            if not all_cats[i].dead:
+                all_cats[i].load_relationship_of_cat()
             else:
-                cat.relationships = {}
+                all_cats[i].relationships = {}
         except Exception as e:
             logger.exception(
-                f"There was an error loading relationships for cat #{cat}."
+                f"There was an error loading relationships for cat #{all_cats[i]}."
             )
             game.switches["error_message"] = (
-                f"There was an error loading relationships for cat #{cat}."
+                f"There was an error loading relationships for cat #{all_cats[i]}."
             )
             game.switches["traceback"] = e
             raise
 
-        cat.inheritance = Inheritance(cat)
+        all_cats[i].inheritance = Inheritance(all_cats[i])
+
+        try:
+            # initialization of thoughts
+            all_cats[i].thoughts()
+        except Exception as e:
+            logger.exception(
+                f"There was an error when thoughts for cat #{all_cats[i]} are created."
+            )
+            game.switches["error_message"] = (
+                f"There was an error when thoughts for cat #{all_cats[i]} are created."
+            )
+            game.switches["traceback"] = e
+            raise
 
         # Save integrety checks
         if game.config["save_load"]["load_integrity_checks"]:
@@ -264,30 +279,15 @@ def json_load():
     cat_threads = []
 
     portion = 10
-    length = len(all_cats)
+    length = ceil(len(all_cats)/portion)
 
     # replace cat ids with cat objects and add other needed variables
-    for i in range(ceil(length/portion)):
-        cat_slice = all_cats[i+(i*portion):(i*portion)+portion]
-        cat_threads.append(threading.Thread(target=some_cats, args=(cat_slice,)))
+    for i in range(length):
+        cat_threads.append(threading.Thread(target=some_cats, args=(all_cats,(i*portion), (i*portion)+portion,)))
         cat_threads[-1].start()
 
     for t in cat_threads:
         t.join()
-
-    for cat in all_cats:
-        try:
-            # initialization of thoughts
-            cat.thoughts()
-        except Exception as e:
-            logger.exception(
-                f"There was an error when thoughts for cat #{cat} are created."
-            )
-            game.switches["error_message"] = (
-                f"There was an error when thoughts for cat #{cat} are created."
-            )
-            game.switches["traceback"] = e
-            raise
         
 
 
