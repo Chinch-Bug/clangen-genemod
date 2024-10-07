@@ -205,7 +205,7 @@ class Pregnancy_Events:
             else:
                 names = ""
                 for x in other_cat[:-1]:
-                    names += ", " + x.name
+                    names += ", " + str(x.name)
                 names += " and " + other_cat[len(other_cat)-1]
                 print_event = f"{cat.name} {names} found {insert} and decided to adopt {insert2}."
         

@@ -707,7 +707,7 @@ class EventsScreen(Screens):
 
     def on_use(self):
         super().on_use()
-        self.loading_screen_on_use(self.events_thread, self.timeskip_done)
+        self.loading_screen_on_use(self.events_thread, self.timeskip_done, ui_scale_offset((400, 300)))
         pass
 
     def timeskip_done(self):

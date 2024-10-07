@@ -853,7 +853,7 @@ class Phenotype():
             else:
                 colour = "red"
         
-        maincolour += colour + '0'
+        maincolour += colour + str(self.genotype.saturation)
         
         rufousing = ""
         banding = ""
