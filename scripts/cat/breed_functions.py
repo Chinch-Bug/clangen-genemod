@@ -4192,7 +4192,7 @@ class Breed_checker:
     def Persian(genotype, phenotype):
         if phenotype.length == "hairless" or phenotype.furtype != [""]:
             return False
-        if phenotype.eartype != "" or phenotype.tailtype != "" or genotype.munchkin[0] == "Mk":
+        if phenotype.eartype != "" or phenotype.tailtype != "" or genotype.munch[0] != "mk":
             return False
         
         if phenotype.fade != "" or genotype.karp[0] == "K":
