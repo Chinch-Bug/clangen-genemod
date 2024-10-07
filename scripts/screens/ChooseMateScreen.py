@@ -499,6 +499,8 @@ class ChooseMateScreen(Screens):
     def update_offspring_container(self):
         """Updates everything in the mates container, including the list of current mates, checkboxes
         and the page"""
+        if not self.the_cat.inheritance:
+            self.the_cat.create_inheritance_new_cat()
         self.all_offspring = [
             Cat.fetch_cat(i)
             for i in list(self.the_cat.inheritance.kits)
@@ -578,6 +580,8 @@ class ChooseMateScreen(Screens):
         i = 0
         for _off in display_cats:
             info_text = f"{str(_off.name)}"
+            if not self.the_cat.inheritance:
+                self.the_cat.create_inheritance_new_cat()
             additional_info = self.the_cat.inheritance.get_cat_info(_off.ID)
             if len(additional_info["type"]) > 0:  # types is always real
                 rel_types = [

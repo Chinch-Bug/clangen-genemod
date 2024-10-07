@@ -1,5 +1,6 @@
 import logging
 import threading
+from multiprocessing.dummy import Pool as ThreadPool
 import os
 import traceback
 from math import floor, ceil
@@ -30,48 +31,48 @@ def some_cats(all_cats, start, end):
     for i in range(start, end):
         if i > len(all_cats)-1:
             break
-        all_cats[i].load_conditions()
+        # all_cats[i].load_conditions()
 
-        # this is here to handle paralyzed cats in old saves
-        if all_cats[i].pelt.paralyzed and "paralyzed" not in all_cats[i].permanent_condition:
-            all_cats[i].get_permanent_condition("paralyzed")
-        elif "paralyzed" in all_cats[i].permanent_condition and not all_cats[i].pelt.paralyzed:
-            all_cats[i].pelt.paralyzed = True
+        # # this is here to handle paralyzed cats in old saves
+        # if all_cats[i].pelt.paralyzed and "paralyzed" not in all_cats[i].permanent_condition:
+        #     all_cats[i].get_permanent_condition("paralyzed")
+        # elif "paralyzed" in all_cats[i].permanent_condition and not all_cats[i].pelt.paralyzed:
+        #     all_cats[i].pelt.paralyzed = True
 
-        # load the relationships
-        try:
-            if not all_cats[i].dead:
-                all_cats[i].load_relationship_of_cat()
-            else:
-                all_cats[i].relationships = {}
-        except Exception as e:
-            logger.exception(
-                f"There was an error loading relationships for cat #{all_cats[i]}."
-            )
-            game.switches["error_message"] = (
-                f"There was an error loading relationships for cat #{all_cats[i]}."
-            )
-            game.switches["traceback"] = e
-            raise
+        # # load the relationships
+        # try:
+        #     if not all_cats[i].dead:
+        #         all_cats[i].load_relationship_of_cat()
+        #     else:
+        #         all_cats[i].relationships = {}
+        # except Exception as e:
+        #     logger.exception(
+        #         f"There was an error loading relationships for cat #{all_cats[i]}."
+        #     )
+        #     game.switches["error_message"] = (
+        #         f"There was an error loading relationships for cat #{all_cats[i]}."
+        #     )
+        #     game.switches["traceback"] = e
+        #     raise
 
         all_cats[i].inheritance = Inheritance(all_cats[i])
 
-        try:
-            # initialization of thoughts
-            all_cats[i].thoughts()
-        except Exception as e:
-            logger.exception(
-                f"There was an error when thoughts for cat #{all_cats[i]} are created."
-            )
-            game.switches["error_message"] = (
-                f"There was an error when thoughts for cat #{all_cats[i]} are created."
-            )
-            game.switches["traceback"] = e
-            raise
+        # try:
+        #     # initialization of thoughts
+        #     all_cats[i].thoughts()
+        # except Exception as e:
+        #     logger.exception(
+        #         f"There was an error when thoughts for cat #{all_cats[i]} are created."
+        #     )
+        #     game.switches["error_message"] = (
+        #         f"There was an error when thoughts for cat #{all_cats[i]} are created."
+        #     )
+        #     game.switches["traceback"] = e
+        #     raise
 
-        # Save integrety checks
-        if game.config["save_load"]["load_integrity_checks"]:
-            save_check()
+        # # Save integrety checks
+        # if game.config["save_load"]["load_integrity_checks"]:
+        #     save_check()
 
 def json_load():
     all_cats = []
@@ -276,19 +277,65 @@ def json_load():
             game.switches["traceback"] = e
             raise
 
-    cat_threads = []
-
-    portion = 10
+    portion = floor(len(all_cats)/4)
     length = ceil(len(all_cats)/portion)
+    # args = [(all_cats, i*portion, i*portion+portion) for i in range(length)]
+    # pool = ThreadPool(4)
+    # pool.starmap(some_cats, args)
 
-    # replace cat ids with cat objects and add other needed variables
-    for i in range(length):
-        cat_threads.append(threading.Thread(target=some_cats, args=(all_cats,(i*portion), (i*portion)+portion,)))
-        cat_threads[-1].start()
+    # cat_threads = []
 
-    for t in cat_threads:
-        t.join()
-        
+    # for i in range(length):
+    #     cat_threads.append(threading.Thread(target=some_cats, args=(all_cats,(i*portion), (i*portion)+portion,)))
+    #     cat_threads[-1].start()
+    
+    #replace cat ids with cat objects and add other needed variables
+    for cat in all_cats:
+        cat.load_conditions()
+
+        # this is here to handle paralyzed cats in old saves
+        if cat.pelt.paralyzed and "paralyzed" not in cat.permanent_condition:
+            cat.get_permanent_condition("paralyzed")
+        elif "paralyzed" in cat.permanent_condition and not cat.pelt.paralyzed:
+            cat.pelt.paralyzed = True
+
+        # load the relationships
+        try:
+            if not cat.dead:
+                cat.load_relationship_of_cat()
+            else:
+                cat.relationships = {}
+        except Exception as e:
+            logger.exception(
+                f"There was an error loading relationships for cat #{cat}."
+            )
+            game.switches["error_message"] = (
+                f"There was an error loading relationships for cat #{cat}."
+            )
+            game.switches["traceback"] = e
+            raise
+
+        #cat.inheritance = Inheritance(cat)
+
+        try:
+            # initialization of thoughts
+            cat.thoughts()
+        except Exception as e:
+            logger.exception(
+                f"There was an error when thoughts for cat #{cat} are created."
+            )
+            game.switches["error_message"] = (
+                f"There was an error when thoughts for cat #{cat} are created."
+            )
+            game.switches["traceback"] = e
+            raise
+
+        # Save integrety checks
+        if game.config["save_load"]["load_integrity_checks"]:
+            save_check()
+
+    # for t in cat_threads:
+    #     t.join()
 
 
 def save_check():
