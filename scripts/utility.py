@@ -2885,7 +2885,7 @@ def generate_sprite(
                     if(sprite_age < 4):
                         ghostingbase.set_alpha(150)
                     
-                    #whichmain.blit(ghostingbase, (0, 0))
+                    whichmain.blit(ghostingbase, (0, 0))
                 if (genotype.silver[0] == 'I' and cat.pelt.length == 'long'):
                     ghostingbase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                     ghostingbase.blit(sprites.sprites['ghost' + cat_sprite], (0, 0))
