@@ -84,7 +84,7 @@
   },
   "cold": {
     "body": [      
-      "Nobody in the clan could doubt r_c's love for m_c when {PRONOUN/r_c/poss} wails echo throughout the camp as PRONOUN/r_c/subject} {VERB/r_c/collapse/collapses} next to {PRONOUN/r_c/poss} former love.",
+      "Nobody in the clan could doubt r_c's love for m_c when {PRONOUN/r_c/poss} wails echo throughout the camp as {PRONOUN/r_c/subject} {VERB/r_c/collapse/collapses} next to {PRONOUN/r_c/poss} former love.",
       "r_c doesn't show {PRONOUN/r_c/poss} emotions often, but when m_c's body is returned to camp, {PRONOUN/r_c/subject} can't suppress a shriek of grief. The cats around {PRONOUN/r_c/object} give {PRONOUN/r_c/object} space as {PRONOUN/r_c/subject} {VERB/r_c/collapse/collapses} next to {PRONOUN/r_c/poss} former love."
     ],
     "no_body": [

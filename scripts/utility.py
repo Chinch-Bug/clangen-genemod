@@ -586,11 +586,14 @@ def create_new_cat_block(
     for _tag in attribute_list:
         match = re.match(r"backstory:(.+)", _tag)
         if match:
-            stor = [
-                x for x in match.group(1).split(",") if x in BACKSTORIES["backstories"]
-            ]
+            bs_list = [x for x in match.group(1).split(",")]
+            stor = []
+            for story in bs_list:
+                if story in BACKSTORIES["backstories"]:
+                    stor.append(story)
+                elif story in BACKSTORIES["backstory_categories"]:
+                    stor.extend(BACKSTORIES["backstory_categories"][story])
             bs_override = True
-            chosen_backstory = choice(stor)
             break
 
     # KITTEN THOUGHT
@@ -2185,6 +2188,11 @@ def event_text_adjust(
     if not text:
         text = "This should not appear, report as a bug please! Tried to adjust the text, but no text was provided."
         print("WARNING: Tried to adjust text, but no text was provided.")
+
+    # this check is really just here to catch odd bug edge-cases from old saves, specifically in death history
+    # otherwise we should really *never* have lists being passed as the text
+    if isinstance(text, list):
+        text = text[0]
 
     replace_dict = {}
 

@@ -337,7 +337,7 @@ while 1:
                 MANAGER.print_layer_debug()
             elif event.key == pygame.K_F3:
                 debugmode.toggle_console()
-            elif event.key == pygame.K_F4:
+            elif event.key == pygame.K_F11:
                 scripts.game_structure.screen_settings.toggle_fullscreen(
                     source_screen=getattr(
                         AllScreens, game.switches["cur_screen"].replace(" ", "_")

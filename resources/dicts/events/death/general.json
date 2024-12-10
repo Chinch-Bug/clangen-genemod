@@ -2714,7 +2714,7 @@
         },
         "history": [{
             "cats": ["m_c"],
-            "reg_death": ["m_c died defending r_c from a hawk"],
+            "reg_death": "m_c died defending r_c from a hawk",
             "lead_death": "defended r_c from a hawk"
         }],
         "relationships": [

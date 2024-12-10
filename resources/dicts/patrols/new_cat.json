@@ -2034,6 +2034,7 @@
                 "text": "s_c signals for the patrol to stop. Carefully and quietly,{PRONOUN/s_c/subject} {VERB/s_c/explain/explains} {PRONOUN/s_c/poss} concerns about the unknown situation. At first it seems like {PRONOUN/s_c/subject}{VERB/s_c/'re/'s} being too cautious - but then p_l picks up on the scent of strange cats lingering around the Twoleg nest. Forewarned, the patrol retreats to safety.",
                 "exp": 30,
                 "weight": 20,
+                "stat_trait": ["careful", "insecure", "nervous"],
                 "outsider_rep": 1
             }
         ],

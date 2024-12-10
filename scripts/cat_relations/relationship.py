@@ -105,7 +105,7 @@ class Relationship:
             in_de_crease = "neutral"
 
         # choice any type of intensity
-        intensity = choice(["low", "medium", "high"])
+        intensity = choice(random.choices(["low", "medium", "high"], weights=[4, 3, 2]))
 
         # get other possible filters
         season = str(game.clan.current_season).casefold()
@@ -438,7 +438,11 @@ class Relationship:
                 types.remove("romantic")
 
         # if cats have no romantic relationship already, don't allow romantic decrease
-        if not positive and "romantic" in types and not self.cat_from.relationships[self.cat_to.ID].romantic_love:
+        if (
+            not positive
+            and "romantic" in types
+            and not self.cat_from.relationships[self.cat_to.ID].romantic_love
+        ):
             types.remove("romantic")
 
         rel_type = choice(types)

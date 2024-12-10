@@ -597,7 +597,7 @@
                 "old_name",
                 "clancat",
                 "status:warrior",
-                "backstory:former_clancat_backstories"
+                "backstory:refugee1,guided4,retired_leader,ostracized_warrior,disgraced1,disgraced2,disgraced3,otherclan1,otherclan2,otherclan3,otherclan4"
             ]
         ],
         "other_clan": {
@@ -619,7 +619,7 @@
                 "old_name",
                 "clancat",
                 "status:warrior",
-                "backstory:former_clancat_backstories"
+                "backstory:refugee1,guided4,retired_leader,ostracized_warrior,disgraced1,disgraced2,disgraced3,otherclan1,otherclan2,otherclan3,otherclan4"
             ]
         ],
         "injury": [

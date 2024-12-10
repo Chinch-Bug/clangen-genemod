@@ -1,3 +1,28 @@
+<strong>v0.12.2</strong>
+
+<b>QoL</b>
+- Changed fullscreen toggle to F11
+
+<b>Bugfixes</b>
+- Fixed new cat moon event crash
+- Fixed patrol grammar
+- Fixed issue with problematic dependent names
+- Added missing stat attributes to certain patrols 
+- Fixed prefix and suffix list loading
+- Fixed tail accessories appearing on cats without tails
+- Fixed missing bracket
+- Fixed murdermittens issue
+- Removed torn pelt from scarring list
+- Fixed "Viscous Kittypets" typo
+- Added missing relationship descriptor in grief event
+- Fixed errors in patrol text
+- Prevented underage cats from having mates
+- Fixed history crash
+- Fixed error dialogue persisting between screens
+
+<strong>v0.12.1</strong>
+- Fix builds
+
 <strong>v0.12.0</strong>
 
 <b>Features</b>
