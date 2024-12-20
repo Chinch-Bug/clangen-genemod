@@ -51,7 +51,7 @@
             "newborn"
         ],
         "relationship_constraint": [
-            "sibling"
+            "siblings"
         ],
         "random_living_status": [
             "living"

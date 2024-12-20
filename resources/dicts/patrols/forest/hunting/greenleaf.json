@@ -243,7 +243,7 @@
                     {
                         "cats": ["r_c"],
                         "injuries": ["broken bone"],
-                        "scars": ["bone_scars"]
+                        "scars": ["MANLEG", "TOETRAP", "FOUR"]
                     }
                 ],
                 "history_text": {
@@ -579,7 +579,11 @@
                     {
                         "cats": ["r_c"],
                         "injuries": ["claw-wound", "non_lethal"],
-                        "scars": ["claw_scars"]
+                        "scars": [
+                            "ONE", "TWO", "SNOUT", "TAILSCAR", "CHEEK",
+                            "SIDE", "THROAT", "TAILBASE", "BELLY", "FACE",
+                            "BRIDGE", "HINDLEG", "BACK", "SCRATCHSIDE"
+                ]
                     }
                 ],
                 "history_text": { "scar": "m_c was scarred by a downed hawk." },

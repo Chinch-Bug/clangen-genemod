@@ -207,7 +207,7 @@
             "Is telling on r_c for something m_c was told {PRONOUN/m_c/subject} couldn't do"
         ],
         "main_trait_constraint": [
-            "attention_seeker",
+            "attention-seeker",
             "bossy",
             "know-it-all",
             "noisy",
@@ -775,7 +775,7 @@
             "kitten"
         ],
         "relationship_constraint": [
-            "stranger"
+            "strangers"
         ],
         "random_living_status": [
             "starclan"

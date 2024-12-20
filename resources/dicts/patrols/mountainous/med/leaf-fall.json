@@ -2970,7 +2970,7 @@
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["SENSE,2", "CLEVER,3"],
-                "can_have_stat": ["r_c"],
+                "can_have_stat": ["p_l"],
                 "herbs": ["lungwort"],
                 "relationships": [
                     {
@@ -2987,7 +2987,7 @@
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": ["thoughtful", "confident", "loyal", "responsible", "arrogant"],
-                "can_have_stat": ["r_c"],
+                "can_have_stat": ["p_l"],
                 "herbs": ["lungwort"],
                 "relationships": [
                     {

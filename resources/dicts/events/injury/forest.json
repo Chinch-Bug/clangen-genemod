@@ -249,7 +249,7 @@
             {
                 "cats": [ "m_c", "r_c"], 
                 "injuries": [ "shivering" ],
-                "scars": ["FROSTPAWS"]
+                "scars": ["FROSTMITT", "FROSTSOCK"]
             }
         ],
         "history": [

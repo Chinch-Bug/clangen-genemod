@@ -265,6 +265,10 @@ class Screens:
             return False
 
     @classmethod
+    def set_mute_button_position(cls, position: str):
+        scripts.screens.screens_core.screens_core.rebuild_mute(position)
+
+    @classmethod
     def set_disabled_menu_buttons(cls, disabled_buttons=()):
         """This sets all menu buttons as interact-able, except buttons listed in disabled_buttons."""
         for name, button in cls.menu_buttons.items():

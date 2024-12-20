@@ -234,30 +234,7 @@ def rebuild_core(*, should_rebuild_bgs=True):
         starting_height=6,
     )
 
-    mute_pos = ui_scale(pygame.Rect((0, 0), (34, 34)))
-    mute_pos.bottomright = ui_scale_offset((-25, -25))
-
-    menu_buttons["mute_button"] = UISurfaceImageButton(
-        mute_pos,
-        Icon.SPEAKER,
-        get_button_dict(ButtonStyles.ICON, (34, 34)),
-        visible=False,
-        manager=MANAGER,
-        object_id="@buttonstyles_icon",
-        starting_height=6,
-        anchors={"right": "right", "bottom": "bottom"},
-    )
-
-    menu_buttons["unmute_button"] = UISurfaceImageButton(
-        mute_pos,
-        Icon.MUTE,
-        get_button_dict(ButtonStyles.ICON, (34, 34)),
-        visible=False,
-        manager=MANAGER,
-        object_id="@buttonstyles_icon",
-        starting_height=6,
-        anchors={"right": "right", "bottom": "bottom"},
-    )
+    rebuild_mute("default")
 
     version_number = pygame_gui.elements.UILabel(
         ui_scale(pygame.Rect((50, 50), (-1, -1))),
@@ -286,6 +263,51 @@ def rebuild_core(*, should_rebuild_bgs=True):
 
     if should_rebuild_bgs:
         rebuild_bgs()
+
+
+def rebuild_mute(location: str):
+    if "mute_button" in menu_buttons:
+        menu_buttons["mute_button"].kill()
+        menu_buttons["unmute_button"].kill()
+
+    mute_pos = ui_scale(pygame.Rect((0, 0), (34, 34)))
+
+    if location in ["bottomright", "default"]:
+        mute_pos.bottomright = ui_scale_offset((-25, -25))
+        anchors = {"bottom": "bottom", "right": "right"}
+    elif location == "topright":
+        mute_pos.topright = ui_scale_offset((-25, 25))
+        anchors = {"top": "top", "right": "right"}
+    elif location == "bottomleft":
+        mute_pos.bottomleft = ui_scale_offset((25, -25))
+        anchors = {"bottom": "bottom", "left": "left"}
+    elif location == "topleft":
+        mute_pos.topleft = ui_scale_offset((25, 25))
+        anchors = {"top": "top", "left": "left"}
+    else:
+        return
+
+    menu_buttons["mute_button"] = UISurfaceImageButton(
+        mute_pos,
+        Icon.SPEAKER,
+        get_button_dict(ButtonStyles.ICON, (34, 34)),
+        visible=False,
+        manager=MANAGER,
+        object_id="@buttonstyles_icon",
+        starting_height=6,
+        anchors=anchors,
+    )
+
+    menu_buttons["unmute_button"] = UISurfaceImageButton(
+        mute_pos,
+        Icon.MUTE,
+        get_button_dict(ButtonStyles.ICON, (34, 34)),
+        visible=False,
+        manager=MANAGER,
+        object_id="@buttonstyles_icon",
+        starting_height=6,
+        anchors=anchors,
+    )
 
 
 def rebuild_bgs():

@@ -358,7 +358,7 @@
 			"m_c takes r_c out to look at the stars, explaining the constellations to {PRONOUN/r_c/object}.",
             		"m_c tells r_c romantic stories of old."
 		],
-		"main_skill_trait": [
+		"main_skill_constraint": [
 			"STORY,3"
 		],
 		"reaction_random_cat": {

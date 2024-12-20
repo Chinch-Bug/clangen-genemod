@@ -2384,7 +2384,7 @@
                     {
                         "cats": ["r_c"],
                         "injuries": ["beak_bite"],
-                        "scars": ["beak_scars"]
+                        "scars": ["BEAKCHEEK", "BEAKLOWER", "BEAKSIDE"]
                     }
                 ],
                 "history_text": {
@@ -2419,7 +2419,7 @@
                     {
                         "cats": ["r_c"],
                         "injuries": ["beak_bite"],
-                        "scars": ["beak_scars"]
+                        "scars": ["BEAKCHEEK", "BEAKLOWER", "BEAKSIDE"]
                     }
                 ],
                 "history_text": {
@@ -2572,7 +2572,7 @@
                     {
                         "cats": ["r_c"],
                         "injuries": ["beak_bite"],
-                        "scars": ["beak_scars"]
+                        "scars": ["BEAKCHEEK", "BEAKLOWER", "BEAKSIDE"]
                     }
                 ],
                 "history_text": { 
@@ -2743,7 +2743,7 @@
                     {
                         "cats": ["r_c"],
                         "injuries": ["beak_bite"],
-                        "scars": ["beak_scars"]
+                        "scars": ["BEAKCHEEK", "BEAKLOWER", "BEAKSIDE"]
                     }
                 ],
                 "history_text": {

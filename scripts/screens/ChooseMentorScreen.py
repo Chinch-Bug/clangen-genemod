@@ -452,7 +452,7 @@ class ChooseMentorScreen(Screens):
             self.next_cat,
             self.previous_cat,
         ) = self.the_cat.determine_next_and_previous_cats(
-            status=["apprentice", "healer apprentice", "mediator apprentice"]
+            filter_func = (lambda cat: cat.status in ["apprentice", "healer apprentice", "mediator apprentice"])
         )
 
         self.next_cat_button.disable() if self.next_cat == 0 else self.next_cat_button.enable()

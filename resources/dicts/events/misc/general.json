@@ -68,7 +68,7 @@
     "location": ["any"],
     "season": ["any"],
     "sub_type": ["murder_reveal"],
-    "tags": ["clan_discovery"],
+    "tags": ["clan_wide"],
     "weight": 5,
     "event_text": "m_c boldly confesses to the entire Clan that {PRONOUN/m_c/subject} killed mur_c. m_c claims that mur_c deserved to pay for what {PRONOUN/mur_c/subject} did.",
     "m_c": {
@@ -98,7 +98,7 @@
     "location": ["any"],
     "season": ["any"],
     "sub_type": ["murder_reveal"],
-    "tags": ["clan_discovery"],
+    "tags": ["clan_wide"],
     "weight": 10,
     "event_text": "m_c's cold eyes don't blink when {PRONOUN/m_c/subject} {VERB/m_c/are/is} accused of murdering mur_c, and only simply states that the Clan is better off without mur_c anyways.",
     "m_c": {
@@ -4020,7 +4020,7 @@
       "skill": ["OMEN,0"]
     },
     "r_c": {
-      "trait": ["bloodthristy"]
+      "trait": ["bloodthirsty"]
     },
     "relationships": [
         {

@@ -126,6 +126,7 @@ class MakeClanScreen(Screens):
 
     def screen_switches(self):
         super().screen_switches()
+        self.set_mute_button_position("topright")
         self.show_mute_buttons()
         self.set_bg("default", "mainmenu_bg")
 
@@ -617,6 +618,7 @@ class MakeClanScreen(Screens):
         self.rolls_left = game.config["clan_creation"]["rerolls"]
         self.fullscreen_bgs = {}
         self.game_bgs = {}
+        self.set_mute_button_position("bottomright")
         return super().exit_screen()
 
     def on_use(self):
@@ -857,7 +859,9 @@ class MakeClanScreen(Screens):
                 # refresh selected symbol image
                 self.elements["selected_symbol"].set_image(
                     pygame.transform.scale(
-                        sprites.sprites[self.symbol_selected],
+                        sprites.dark_mode_symbol(sprites.sprites[self.symbol_selected])
+                        if game.settings["dark mode"]
+                        else sprites.sprites[self.symbol_selected],
                         ui_scale_dimensions((100, 100)),
                     ).convert_alpha()
                 )
@@ -2112,7 +2116,9 @@ class MakeClanScreen(Screens):
             self.elements["selected_symbol"] = pygame_gui.elements.UIImage(
                 ui_scale(pygame.Rect((573, 127), (100, 100))),
                 pygame.transform.scale(
-                    sprites.sprites[self.symbol_selected],
+                    sprites.dark_mode_symbol(sprites.sprites[self.symbol_selected])
+                    if game.settings["dark mode"]
+                    else sprites.sprites[self.symbol_selected],
                     ui_scale_dimensions((100, 100)),
                 ).convert_alpha(),
                 object_id="#selected_symbol",

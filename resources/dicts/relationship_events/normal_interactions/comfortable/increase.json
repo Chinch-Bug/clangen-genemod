@@ -136,7 +136,9 @@
 			"r_c noticed m_c was struggling, and offered to help {PRONOUN/m_c/object}."
 		],
 		"random_trait_constraint": [
-			"empathetic"
+			"compassionate",
+			"loving",
+			"thoughtful"
 		]
 	},
 	{
@@ -180,7 +182,7 @@
 			"r_c helps m_c with a tedious task and it makes the whole day a lot easier."
 		],
 		"random_trait_constraint": [
-			"patient"
+			"calm"
 		]
 	},
 	{

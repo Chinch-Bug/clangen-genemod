@@ -136,7 +136,7 @@
 		]
 	},
 	{
-		"id": "comfort_inc_med6",
+		"id": "comfort_de_med6",
 		"interactions": [
 			"r_c crashes into m_c while eager for the new day.",
 			"r_c rejects m_c's advice without letting {PRONOUN/m_c/object} finish.",
@@ -145,7 +145,8 @@
 			"r_c says something bad about m_c that's been on everyone's mind."
 		],
 		"random_trait_constraint": [
-			"impulsive"
+			"bold",
+			"oblivious"
 		]
 	},
 	{
