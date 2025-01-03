@@ -535,16 +535,16 @@ class Phenotype():
 
         return pattern     
     def ChooseTortiePattern(self, spec = None):
-        def_tortie_low_patterns = ['DELILAH', 'MOTTLED', 'EYEDOT', 'BANDANA', 'SMUDGED', 'EMBER', 'BRINDLE', 'SAFI', 'BELOVED', 'BODY', 
+        self.def_tortie_low_patterns = ['DELILAH', 'MOTTLED', 'EYEDOT', 'BANDANA', 'SMUDGED', 'EMBER', 'BRINDLE', 'SAFI', 'BELOVED', 'BODY', 
                                     'SHILOH', 'FRECKLED']
-        def_tortie_mid_patterns = ['ONE', 'TWO', 'SMOKE', 'MINIMALONE', 'MINIMALTWO', 'MINIMALTHREE', 'MINIMALFOUR', 'OREO', 'CHIMERA',
+        self.def_tortie_mid_patterns = ['ONE', 'TWO', 'SMOKE', 'MINIMALONE', 'MINIMALTWO', 'MINIMALTHREE', 'MINIMALFOUR', 'OREO', 'CHIMERA',
                                 'CHEST', 'GRUMPYFACE', 'SIDEMASK', 'PACMAN', 'BRIE' ,'ORIOLE', 'ROBIN', 'PAIGE', 'HEARTBEAT']
-        def_tortie_high_patterns = ['THREE', 'FOUR', 'REDTAIL', 'HALF', 'STREAK', 'MASK', 'SWOOP', 'ARMTAIL', 'STREAMSTRIKE', 'DAUB',
+        self.def_tortie_high_patterns = ['THREE', 'FOUR', 'REDTAIL', 'HALF', 'STREAK', 'MASK', 'SWOOP', 'ARMTAIL', 'STREAMSTRIKE', 'DAUB',
                                 'ROSETAIL', 'DAPPLENIGHT', 'BLANKET']
-        tortie_low_patterns = def_tortie_low_patterns
-        tortie_mid_patterns = def_tortie_mid_patterns
-        tortie_high_patterns = def_tortie_high_patterns
-        tiny_patches = ["BACKSPOT", "BEARD", "BELLY", "BIB", "revBLACKSTAR", "BLAZE", "BLAZEMASK", "revBOOTS", "revCHESTSPECK", "ESTRELLA",
+        tortie_low_patterns = self.def_tortie_low_patterns
+        tortie_mid_patterns = self.def_tortie_mid_patterns
+        tortie_high_patterns = self.def_tortie_high_patterns
+        tiny_patches = ["BACKSPOT", "BEARD", "BELLY", "BIB", "revBLACKSTAR", "BLAZE", "BLAZEMASK", "revBOOTS", "CHESTSPECK", "ESTRELLA",
                         "EYEBAGS", "revEYESPOT", "revHEART", "HONEY", "LEFTEAR", "LITTLE", "PAWS", "REVERSEEYE", "REVERSEHEART", "RIGHTEAR", 
                         "SCOURGE", "SPARKLE", "revTAIL", 'revTAILTWO', "TAILTIP", "TEARS", "TIP", "TOES", "TOESTAIL", "VEE"]
         
@@ -562,9 +562,9 @@ class Phenotype():
             
         else:
             for i in range(choice([1, 1, 1, 1, 1, 2, 2, 3])):
-                tortie_low_patterns = def_tortie_low_patterns
-                tortie_mid_patterns = def_tortie_mid_patterns
-                tortie_high_patterns = def_tortie_high_patterns
+                tortie_low_patterns = self.def_tortie_low_patterns
+                tortie_mid_patterns = self.def_tortie_mid_patterns
+                tortie_high_patterns = self.def_tortie_high_patterns
 
                 if randint(1, 15) == 1 or (i > 0 and randint(1, 10) == 1):
                     tortie_low_patterns = ["BOWTIE", "BROKENBLAZE", "BUZZARDFANG", "revCOWTWO", "FADEBELLY", "FADESPOTS", "revLOVEBUG", "MITAINE", 

@@ -443,15 +443,16 @@ class Events:
                                     invited_cat.status = invited_cat.age
                                     if not invited_cat.name.suffix:
                                         invited_cat.name = Name(
+                                            Cat,
+                                            invited_cat,
                                             invited_cat.name.prefix,
                                             invited_cat.name.suffix,
-                                            game.clan.biome,
-                                            cat=invited_cat
+                                            biome=game.clan.biome,
                                         )
                                         invited_cat.name.give_suffix(
-                                            pelt=None,
-                                            biome=game.clan.biome,
-                                            tortiepattern=None,
+                                            skills=invited_cat.skills,
+                                            personality=invited_cat.personality,
+                                            biome=game.clan.biome
                                         )
                                         invited_cat.specsuffix_hidden = False
 
@@ -1745,6 +1746,17 @@ class Events:
 
         involved_cats = [cat.ID]  # Clearly, the cat the ceremony is about is involved.
 
+        # Changing prefix if needed
+        if game.clan.clan_settings['modded names'] and game.clan.clan_settings['dynamic prefixes']:
+            cer_type = 'apprentice-warrior'
+            if 'apprentice' in promoted_to:
+                cer_type = 'kit-apprentice'
+            elif promoted_to == 'elder':
+                cer_type = 'warrior-elder'
+            
+            cat.name.change_prefix(Cat, cat.moons, game.clan.biome, cer_type)
+            
+
         # Time to gather ceremonies. First, lets gather all the ceremony ID's.
         possible_ceremonies = set()
         dead_mentor = None
@@ -1931,64 +1943,8 @@ class Events:
             except KeyError:
                 random_honor = "hard work"
 
-            #if cat.name.suffix and game.clan.clan_settings['alt_suffixes']:
-            if cat.name.suffix and False:
-                resource_dir = "resources/dicts/names/"
-                with open(
-                    f"{resource_dir}alt_suffixes.json", encoding="ascii"
-                ) as read_file:
-                    SUFFIXES = ujson.loads(read_file.read())
-
-                combined = []
-
-                combined.append(SUFFIXES['skill'][cat.skills.primary.path.name])
-                combined.append(SUFFIXES['skill'][cat.skills.primary.path.name])
-                combined.append(SUFFIXES['skill'][cat.skills.primary.path.name])
-                combined.append(SUFFIXES['skill'][cat.skills.primary.path.name])
-
-                if cat.skills.secondary:
-                    combined.append(SUFFIXES['skill'].get(cat.skills.secondary.path.name, []))
-                    combined.append(SUFFIXES['skill'].get(cat.skills.secondary.path.name, []))
-                
-
-                combined.append(SUFFIXES['trait'][cat.personality.trait]['general'])
-                combined.append(SUFFIXES['trait'][cat.personality.trait]['general'])
-                combined.append(SUFFIXES['trait'][cat.personality.trait].get(random_honor, []))
-                combined.append(SUFFIXES['trait'][cat.personality.trait].get(random_honor, []))
-
-                combined.append(SUFFIXES['other']['special'])
-                combined.append(SUFFIXES['other']['special'])
-                combined.append(SUFFIXES['other']['special'])
-                combined.append(SUFFIXES['other']['common'])
-                combined.append(SUFFIXES['other']['common'])
-                combined.append(SUFFIXES['other']['common'])
-                combined.append(SUFFIXES['other']['common'])
-                combined.append(SUFFIXES['other']['common'])
-
-                if cat.phenotype.tabby != "" and (cat.genotype.white[1] not in ['ws', 'wt'] or cat.genotype.whitegrade < 4):
-                    if cat.genotype.ticked[0] == 'Ta' and (not cat.genotype.breakthrough or cat.genotype.mack[0] != 'mc'):
-                        combined.append(SUFFIXES['other']['appearance']['ticked'])
-                    if 'spotted' in cat.phenotype.tabby or 'servaline' in cat.phenotype.tabby:
-                        combined.append(SUFFIXES['other']['appearance']['spotted'])
-                    if 'classic' in cat.phenotype.tabby or 'marbled' in cat.phenotype.tabby:
-                        combined.append(SUFFIXES['other']['appearance']['swirled'])
-                    if 'mackerel' in cat.phenotype.tabby or 'braided' in cat.phenotype.tabby or 'pinstripe' in cat.phenotype.tabby:
-                        combined.append(SUFFIXES['other']['appearance']['striped'])
-                    if 'rosette' in cat.phenotype.tabby:
-                        combined.append(SUFFIXES['other']['appearance']['patchy'])
-                if (cat.phenotype.tortie and (cat.genotype.white[1] not in ['ws', 'wt'] or cat.genotype.whitegrade < 4)) or\
-                    (cat.genotype.white[1] in ['ws', 'wt'] and cat.genotype.whitegrade < 4) or\
-                    (cat.genotype.white[0] in ['ws', 'wt'] and cat.genotype.white[1] not in ['ws', 'wt'] and cat.genotype.whitegrade > 2):
-                    combined.append(SUFFIXES['other']['appearance']['patchy'])
-                if (cat.phenotype.point and (cat.genotype.white[1] not in ['ws', 'wt'] or cat.genotype.whitegrade < 4)):
-                    combined.append(SUFFIXES['other']['appearance']['pointed'])
-                cat.name.suffix = None
-
-                while not cat.name.suffix:
-                    try:
-                        cat.name.suffix = random.choice(random.choice(combined))
-                    except:
-                        continue
+            # if game.clan.clan_settings['new suffixes']:
+            #     cat.name.give_suffix(cat.skills, cat.personality, game.clan.biome, random_honor)
 
         if cat.status in ["warrior", "healer", "mediator"]:
             History.add_app_ceremony(cat, random_honor)
@@ -2042,6 +1998,12 @@ class Events:
 
         # remove duplicates
         involved_cats = list(set(involved_cats))
+
+        if str(cat.name) != old_name:
+            if cat.history:
+                cat.history.prev_names.append(old_name)
+            else:
+                cat.history = History(prev_names=[old_name])
 
         game.cur_events_list.append(
             Single_Event(f"{ceremony_text}", "ceremony", involved_cats)

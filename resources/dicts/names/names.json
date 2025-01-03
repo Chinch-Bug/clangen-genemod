@@ -40,37 +40,16 @@
   ],
   "pelt_suffixes": {
     "TwoColour": ["patch", "spot", "splash", "patch", "spots", "swan"],
-    "Tabby": ["stripe", "feather", "leaf", "stripe", "shade", "swirl"],
-    "Marbled": ["stripe", "feather", "leaf", "stripe", "shade", "swirl"],
-    "Speckled": ["dapple", "speckle", "spot", "speck", "freckle", "fleck"],
-    "Bengal": ["dapple", "speckle", "spots", "speck", "freckle", "fleck"],
-    "Rosette": ["dapple", "speckle", "spots", "dapple", "freckle", "fleck"],
+    "Spotted": ["dapple", "speckle", "spot", "speck", "freckle", "fleck"],
+    "Rosetted": ["dapple", "speckle", "spots", "speck", "freckle", "fleck"],
     "Smoke": ["fade", "dusk", "dawn", "smoke"],
     "Ticked": ["spots", "pelt", "speckle", "freckle"],
     "Mackerel": ["stripe", "feather", "leaf", "stripe", "fern"],
     "Classic": ["stripe", "feather", "leaf", "stripe", "fern", "swirl"],
-    "Sokoke": ["stripe", "feather", "leaf", "stripe", "fern", "swirl"],
-    "Agouti": ["back", "pelt", "fur"],
-    "Singlestripe": ["stripe", "streak", "back", "shade", "stem", "shadow"],
+    "Agouti": ["stripe", "streak", "back", "shade", "stem", "shadow"],
     "Masked": ["stripe", "mask", "mask", "shade"],
     "Tortie": ["dapple", "speckle", "spot", "dapple"],
-    "Calico": ["stripe", "dapple", "patch", "patch"]
-  },
-  "tortie_pelt_suffixes": {
-    "single": ["dapple", "speckle", "spots", "splash"],
-    "tabby": ["stripe", "feather", "leaf", "stripe", "shade", "fern"],
-    "marbled": ["stripe", "feather", "leaf", "stripe", "shade", "fern"],
-    "speckled": ["dapple", "speckle", "spot", "speck", "freckle"],
-    "bengal": ["dapple", "speckle", "spots", "speck", "fern", "freckle"],
-    "rosette": ["dapple", "speckle", "spots", "dapple", "fern", "freckle"],
-    "smoke": ["fade", "dusk", "dawn", "smoke"],
-    "ticked": ["spots", "pelt", "speckle", "freckle"],
-    "mackerel": ["stripe", "feather", "fern", "shade"],
-    "classic": ["stripe", "feather", "fern"],
-    "sokoke": ["stripe", "feather", "fern", "shade", "dapple"],
-    "agouti": ["back", "pelt", "fur", "dapple", "splash"],
-    "singlestripe": ["stripe", "back", "shade", "stem", "dapple"],
-    "masked": ["stripe", "dapple", "mask", "mask", "shade"]
+    "Calico": ["dapple", "patch", "patch"]
   },
 
   "normal_prefixes": [
@@ -286,29 +265,6 @@
     "prickle", "dune", "sand", "canyon", "rattle", "wind", "dust", "sun", "fly", "scorpion", "snake", "needle", "fang", "tooth", "bite",
     "aloe"
     ]
-  },
-
-  "eye_prefixes": {
-    "YELLOW": ["Yellow", "Moon", "Daisy", "Honey", "Light", "Sun", "Lemon"],
-    "AMBER": ["Amber", "Sun", "Fire", "Gold", "Honey", "Scorch", "Flame", "Blaze", "Pumpkin"],
-    "HAZEL": ["Hazel", "Tawny", "Hazel", "Gold", "Daisy", "Sand", "Almond"],
-    "PALEGREEN": ["Pale", "Green", "Mint", "Fern", "Weed", "Olive", "Stem", "Lime", "Agave"],
-    "GREEN": ["Green", "Green", "Fern", "Weed", "Holly", "Clover", "Olive", "Jade", "Tree", "Algae", "Aloe"],
-    "BLUE": ["Blue", "Blue", "Ice", "Sky", "Lake", "Frost", "Water", "Icicle", "Frosty", "Cold", "Rime"],
-    "DARKBLUE": ["Dark", "Blue", "Blue", "Sky", "Lake", "Berry", "Water", "Deep", "Cobalt", "River", "Night", "Rain"],
-    "GREY": ["Gray", "Stone", "Silver", "Ripple", "Moon", "Rain", "Storm", "Heather"],
-    "CYAN": ["Sky", "Blue", "River", "Rapid", "Ice", "Frost", "Cold", "Rime"],
-    "EMERALD": ["Emerald", "Green", "Shine", "Green", "Pine", "Weed"],
-    "PALEBLUE": ["Pale", "Blue", "Blue", "Sky", "River", "Ripple", "Day", "Cloud", "Rime"],
-    "PALEYELLOW": ["Pale", "Yellow", "Sun", "Gold", "Light", "Daisy"],
-    "GOLD": ["Gold", "Golden", "Sun", "Amber", "Sap", "Honey", "Yellow"],
-    "HEATHERBLUE": ["Heather", "Blue", "Lilac", "Rosemary", "Lavender", "Wisteria"],
-    "COPPER": ["Copper", "Red", "Amber", "Brown", "Fire", "Cinnamon"],
-    "SAGE": ["Sage", "Leaf", "Olive", "Bush", "Clove", "Green", "Weed"],
-    "COBALT": ["Blue", "Blue", "Ice", "Icy", "Sky", "Lake", "Frost", "Water", "Frosty", "Rime"],
-    "SUNLITICE": ["Sun", "Ice", "Icy", "Frost", "Dawn", "Dusk", "Odd", "Glow", "Mouse"],
-    "GREENYELLOW": ["Green", "Yellow", "Tawny", "Hazel", "Gold", "Daisy", "Sand", "Sandy", "Weed"],
-    "SILVER": ["Gray", "Stone", "Silver", "Silver", "Moon", "Rain", "Storm", "Pale", "Light"]
   },
 
   "loner_names": [

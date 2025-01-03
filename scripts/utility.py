@@ -644,6 +644,11 @@ def create_new_cat_block(
 
             if new_name:
                 name = f"{chosen_cat.name.prefix}"
+
+                if chosen_cat.history:
+                    chosen_cat.history.prev_names.append(str(chosen_cat.name))
+                else:
+                    chosen_cat.history = History(prev_names=[str(chosen_cat.name)])
                 spaces = name.count(" ")
                 if bool(getrandbits(1)) and spaces > 0:  # adding suffix to OG name
                     # make a list of the words within the name, then add the OG name back in the list
@@ -653,20 +658,19 @@ def create_new_cat_block(
                     name = new_prefix
                     chosen_cat.name.prefix = name
                     chosen_cat.name.give_suffix(
-                        pelt=chosen_cat.pelt,
-                        biome=game.clan.biome,
-                        tortiepattern=chosen_cat.pelt.tortiepattern,
+                        skills=chosen_cat.skills,
+                        personality=chosen_cat.personality,
+                        biome=game.clan.biome
                     )
                 else:  # completely new name
                     chosen_cat.name.give_prefix(
-                        eyes=chosen_cat.pelt.eye_colour,
-                        colour=chosen_cat.pelt.colour,
-                        biome=game.clan.biome,
+                        Cat, 
+                        biome=game.clan.biome
                     )
                     chosen_cat.name.give_suffix(
-                        pelt=chosen_cat.pelt.colour,
-                        biome=game.clan.biome,
-                        tortiepattern=chosen_cat.pelt.tortiepattern,
+                        skills=chosen_cat.skills,
+                        personality=chosen_cat.personality,
+                        biome=game.clan.biome
                     )
 
             new_cats = [chosen_cat]
@@ -925,6 +929,7 @@ def create_new_cat(
             )
         else:
             # grab starting names and accs for loners/kittypets
+            overwrite_prefix = False
             if kittypet:
                 name = choice(names.names_dict["loner_names"])
                 if bool(getrandbits(1)):
@@ -937,6 +942,8 @@ def create_new_cat(
                 name = choice(
                     names.names_dict["normal_prefixes"]
                 )  # otherwise give name from prefix list (more nature-y names)
+                if game.clan.clan_settings['modded names'] and game.clan.clan_settings['new prefixes'] and random() < 0.9:
+                    overwrite_prefix = True
 
             # now we make the cats
             if new_name:  # these cats get new names
@@ -959,6 +966,8 @@ def create_new_cat(
                         kittypet=kittypet,
                         adoptive_parents=adoptive_parents if adoptive_parents else []
                     )
+                    if overwrite_prefix:
+                        new_cat.name.give_prefix(Cat, game.clan.biome)
                 else:  # completely new name
                     new_cat = Cat(
                         moons=age,
@@ -984,6 +993,8 @@ def create_new_cat(
                     kittypet=kittypet,
                     adoptive_parents=adoptive_parents if adoptive_parents else []
                 )
+                if overwrite_prefix:
+                    new_cat.name.give_prefix(Cat, game.clan.biome, no_suffix=True)
 
         # give em a collar if they got one
         if accessory:
@@ -2998,7 +3009,7 @@ def generate_sprite(
                         else:
                             colourbase = TabbyBase(whichcolour, whichbase, cat_unders, special)
 
-                            if((genotype.pointgene == ["cb", "cb"] and cat_sprite != "20") or (((("cb" in genotype.pointgene or genotype.pointgene[0] == "cm") and cat_sprite != "20") or genotype.pointgene == ["cb", "cb"]) and get_current_season() == 'Leaf-bare')):
+                            if((genotype.pointgene == ["cb", "cb"] and 'cinnamon' not in whichcolour and cat_sprite != "20") or (((("cb" in genotype.pointgene or genotype.pointgene[0] == "cm") and cat_sprite != "20") or genotype.pointgene == ["cb", "cb"]) and get_current_season() == 'Leaf-bare')):
                                 colourbase.set_alpha(100)
                             elif((("cb" in genotype.pointgene or genotype.pointgene[0] == "cm") and cat_sprite != "20") or genotype.pointgene == ["cb", "cb"] or ((cat_sprite != "20" or ("cb" in genotype.pointgene or genotype.pointgene[0] == "cm")) and get_current_season() == 'Leaf-bare')):
                                 colourbase.set_alpha(50)
@@ -3018,7 +3029,7 @@ def generate_sprite(
                                 if("cb" in genotype.pointgene or genotype.pointgene[0] == "cm"):
                                     if("black" in whichcolour and cat_sprite != "20"):
                                         whichmain = AddStripes(whichmain, 'lightbasecolours2', whichbase)
-                                    elif(("chocolate" in whichcolour and cat_sprite != "20") or "black" in whichcolour):
+                                    elif((("chocolate" in whichcolour or "cinnamon" in whichcolour) and cat_sprite != "20") or "black" in whichcolour):
                                         whichmain = AddStripes(whichmain, 'lightbasecolours1', whichbase)
                                     elif("cinnamon" in whichcolour or "chocolate" in whichcolour):
                                         whichmain = AddStripes(whichmain, 'lightbasecolours0', whichbase)
@@ -3214,7 +3225,7 @@ def generate_sprite(
                                     whichmain.blit(sprites.sprites['lightbasecolours1'], (0, 0))
                                     colour = 'lightbasecolours1'
                                     whichmain = ApplySmokeEffects(whichmain)
-                                elif("chocolate" in whichcolour or "chocolate" in whichcolour):
+                                elif("cinnamon" in whichcolour or "chocolate" in whichcolour):
                                     whichmain.blit(sprites.sprites['lightbasecolours0'], (0, 0))
                                     colour = 'lightbasecolours0'
                                 else:

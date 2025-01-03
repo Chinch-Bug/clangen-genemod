@@ -116,9 +116,6 @@ def json_load():
                 opacity=cat["opacity"] if "opacity" in cat else 100,
             )
 
-            # Runs a bunch of apperence-related convertion of old stuff.
-            new_cat.pelt.check_and_convert(convert)
-
             # converting old specialty saves into new scar parameter
             if "specialty" in cat or "specialty2" in cat:
                 if cat["specialty"] is not None:

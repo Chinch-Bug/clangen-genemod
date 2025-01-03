@@ -1,0 +1,1080 @@
+{
+  "general": {
+    "mackerel": [],
+    "blotched": [],
+    "spotted": [],
+    "ticked": [],
+    "tortie": [],
+    "white_patches": [],
+    "hairless": [],
+    "longhair": [],
+    "mediumhair": [],
+    "shorthair": [],
+    "small": [],
+    "big": [],
+    "any": []
+  },
+  "black": {
+    "plain": {
+      "solid": {
+        "no_white": [],
+        "low_white": [],
+        "mid_white": [],
+        "high_white": []
+      },
+      "tabby": {
+        "general": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": [],
+          "golden": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "mackerel": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": [],
+          "golden": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "blotched": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": [],
+          "golden": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "spotted": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": [],
+          "golden": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "ticked": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        }
+      },
+      "point": {
+        "colourpoint": {
+          "no_white": [],
+          "with_white": []
+        },
+        "mink": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        },
+        "sepia": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        }
+      }
+    },
+    "tortie": {
+      "solid": {
+        "no_white": [],
+        "low_white": [],
+        "mid_white": [],
+        "high_white": []
+      },
+      "tabby": {
+        "general": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        },
+        "mackerel": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        },
+        "blotched": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        },
+        "spotted": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        },
+        "ticked": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        }
+      },
+      "point": {
+        "colourpoint": {
+          "no_white": [],
+          "with_white": []
+        },
+        "mink": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        },
+        "sepia": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        }
+      }
+    }
+  },
+  "blue": {
+    "plain": {
+      "solid": {
+        "no_white": [],
+        "low_white": [],
+        "mid_white": [],
+        "high_white": []
+      },
+      "tabby": {
+        "general": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        },
+        "mackerel": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        },
+        "blotched": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        },
+        "spotted": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        },
+        "ticked": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        }
+      },
+      "point": {
+        "colourpoint": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        },
+        "sepia": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        }
+      }
+    },
+    "tortie": {
+      "solid": {
+        "no_white": [],
+        "low_white": [],
+        "mid_white": [],
+        "high_white": []
+      },
+      "tabby": {
+        "general": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        },
+        "mackerel": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        },
+        "blotched": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        },
+        "spotted": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        },
+        "ticked": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        }
+      },
+      "point": {
+        "colourpoint": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        },
+        "sepia": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        }
+      }
+    }
+  },
+  "chocolate": {
+    "plain": {
+      "solid": {
+        "no_white": [],
+        "low_white": [],
+        "mid_white": [],
+        "high_white": []
+      },
+      "tabby": {
+        "general": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": [],
+          "golden": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "mackerel": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": [],
+          "golden": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "blotched": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": [],
+          "golden": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "spotted": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": [],
+          "golden": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "ticked": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        }
+      },
+      "point": {
+        "colourpoint": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        },
+        "sepia": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        }
+      }
+    },
+    "tortie": {
+      "solid": {
+        "no_white": [],
+        "low_white": [],
+        "mid_white": [],
+        "high_white": []
+      },
+      "tabby": {
+        "general": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        },
+        "mackerel": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        },
+        "blotched": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        },
+        "spotted": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        },
+        "ticked": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        }
+      },
+      "point": {
+        "colourpoint": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        },
+        "sepia": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        }
+      }
+    }
+  },
+  "lilac": {
+    "plain": {
+      "solid": {
+        "no_white": [],
+        "low_white": [],
+        "mid_white": [],
+        "high_white": []
+      },
+      "tabby": {
+        "general": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "mackerel": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "blotched": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "spotted": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "ticked": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        }
+      },
+      "point": {
+        "colourpoint": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        },
+        "sepia": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        }
+      }
+    },
+    "tortie": {
+      "solid": {
+        "no_white": [],
+        "low_white": [],
+        "mid_white": [],
+        "high_white": []
+      },
+      "tabby": {
+        "general": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "mackerel": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "blotched": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "spotted": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "ticked": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        }
+      },
+      "point": {
+        "colourpoint": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        },
+        "sepia": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        }
+      }
+    }
+  },
+  "cinnamon": {
+    "plain": {
+      "solid": {
+        "no_white": [],
+        "low_white": [],
+        "mid_white": [],
+        "high_white": []
+      },
+      "tabby": {
+        "general": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": [],
+          "golden": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "mackerel": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": [],
+          "golden": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "blotched": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": [],
+          "golden": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "spotted": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": [],
+          "golden": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "ticked": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        }
+      },
+      "point": {
+        "colourpoint": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        }
+      }
+    },
+    "tortie": {
+      "solid": {
+        "no_white": [],
+        "low_white": [],
+        "mid_white": [],
+        "high_white": []
+      },
+      "tabby": {
+        "general": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        },
+        "mackerel": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        },
+        "blotched": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        },
+        "spotted": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        },
+        "ticked": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          },
+          "silver": []
+        }
+      },
+      "point": {
+        "colourpoint": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        }
+      }
+    }
+  },
+  "fawn": {
+    "plain": {
+      "solid": {
+        "no_white": [],
+        "low_white": [],
+        "mid_white": [],
+        "high_white": []
+      },
+      "tabby": {
+        "general": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "mackerel": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "blotched": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "spotted": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "ticked": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        }
+      },
+      "point": {
+        "colourpoint": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        }
+      }
+    },
+    "tortie": {
+      "solid": {
+        "no_white": [],
+        "low_white": [],
+        "mid_white": [],
+        "high_white": []
+      },
+      "tabby": {
+        "general": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "mackerel": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "blotched": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "spotted": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        },
+        "ticked": {
+          "regular": {
+            "no_white": [],
+            "low_white": [],
+            "mid_white": [],
+            "high_white": []
+          }
+        }
+      },
+      "point": {
+        "colourpoint": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        }
+      }
+    }
+  },
+  "ginger": {
+    "general": {
+      "regular": {
+        "no_white": [],
+        "low_white": [],
+        "mid_white": [],
+        "high_white": []
+      },
+      "silver": {
+        "no_white": [],
+        "low_white": [],
+        "mid_white": [],
+        "high_white": []
+      }
+    },
+    "tabby": {
+      "mackerel": {
+        "regular": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        },
+        "silver": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        }
+      },
+      "blotched": {
+        "regular": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        },
+        "silver": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        }
+      },
+      "spotted": {
+        "regular": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        },
+        "silver": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        }
+      },
+      "ticked": {
+        "regular": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        },
+        "silver": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        }
+      }
+    },
+    "point": {
+      "colourpoint": {
+        "no_white": [],
+        "low_white": [],
+        "mid_white": [],
+        "high_white": []
+      }
+    }
+  },
+  "cream": {
+    "general": {
+      "no_white": [],
+      "low_white": [],
+      "mid_white": [],
+      "high_white": []
+    },
+    "tabby": {
+      "mackerel": {
+        "regular": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        }
+      },
+      "blotched": {
+        "regular": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        }
+      },
+      "spotted": {
+        "regular": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        }
+      },
+      "ticked": {
+        "regular": {
+          "no_white": [],
+          "low_white": [],
+          "mid_white": [],
+          "high_white": []
+        }
+      }
+    },
+    "point": {
+      "colourpoint": {
+        "no_white": [],
+        "low_white": [],
+        "mid_white": [],
+        "high_white": []
+      }
+    }
+  },
+  "white": {
+    "solid": [],
+    "shaded": []
+  },
+  "note": "Colours below don't map to coat colours directly, but rather are very literal and map to coat colours abstractly",
+  "red": {
+    "solid": {
+      "no_white": [],
+      "low_white": [],
+      "mid_white": [],
+      "high_white": []
+    },
+    "point": {
+      "colourpoint": []
+    }
+  },
+  "yellow": {
+    "solid": {
+      "no_white": [],
+      "low_white": [],
+      "mid_white": [],
+      "high_white": []
+    },
+    "shaded": {
+      "no_white": [],
+      "low_white": [],
+      "mid_white": [],
+      "high_white": []
+    },
+    "point": {
+      "colourpoint": []
+    }
+  },
+  "pink": {
+    "solid": {
+      "no_white": [],
+      "low_white": [],
+      "mid_white": [],
+      "high_white": []
+    },
+    "point": {
+      "colourpoint": []
+    }
+  },
+  "purple": {
+    "solid": {
+      "no_white": [],
+      "low_white": [],
+      "mid_white": [],
+      "high_white": []
+    },
+    "point": {
+      "colourpoint": []
+    }
+  }
+}

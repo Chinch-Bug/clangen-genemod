@@ -731,7 +731,11 @@ class Pregnancy_Events:
                 if pregnant_cat.exiled:
                     kit.status = "loner"
                     name = choice(names.names_dict["normal_prefixes"])
-                    kit.name = Name(prefix=name, suffix="", cat=kit)
+
+                    if game.clan.clan_settings['modded names'] and game.clan.clan_settings['new prefixes']:
+                        kit.name = Name(Cat, kit, suffix="")
+                    else:
+                        kit.name = Name(Cat, kit, prefix=name, suffix="")
                 if other_cat and not other_cat[0].outside:
                     kit.backstory = "outsider2"
                 if pregnant_cat.outside and not pregnant_cat.exiled:
@@ -1482,12 +1486,11 @@ class Pregnancy_Events:
                     identical = True
                 
             #kit.adoptive_parents = all_adoptive_parents  # Add the adoptive parents. 
-            # Prevent duplicate prefixes in Clan
+            # Prevent duplicate prefixes in litter
             tries = 0
             extant = [kitty.name.prefix for kitty in all_kitten if kitty.ID != kit.ID]
-            while tries < 20 and kit.name.prefix in extant:
-                kit.name = Name("newborn")
-                tries += 1
+            while kit.name.prefix in extant:
+                kit.name = Name(Cat, kit)
 
             all_kitten.append(kit)
             # adoptive parents are set at the end, when everything else is decided

@@ -1260,6 +1260,9 @@ class ProfileScreen(Screens):
             # start our history with the backstory, since all cats get one
             life_history = [str(self.get_backstory_text())]
 
+            if self.the_cat.history and len(self.the_cat.history.prev_names):
+                life_history.append(self.get_previous_names())
+
             # now get apprenticeship history and add that if any exists
             app_history = self.get_apprenticeship_text()
             if app_history:
@@ -1290,6 +1293,9 @@ class ProfileScreen(Screens):
             output = "\n\n".join(life_history)
         return output
 
+    def get_previous_names(self):
+        return "Previous names: " + ', '.join(self.the_cat.history.prev_names)
+    
     def get_backstory_text(self):
         """
         returns the backstory blurb

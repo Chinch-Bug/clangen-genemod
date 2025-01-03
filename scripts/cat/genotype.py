@@ -143,25 +143,18 @@ class Genotype:
         return getattr(self, name)
     
     def fromJSON(self, jsonstring):
-        try:
-            self.fevercoat = jsonstring["fevercoat"]
-        except:
-            pass
+        self.fevercoat = jsonstring.get("fevercoat", False)
         self.furLength = jsonstring["furLength"]
         self.eumelanin = jsonstring["eumelanin"]
         self.sexgene = jsonstring["sexgene"]
-        self.tortiepattern = jsonstring["tortiepattern"]
+        self.tortiepattern = jsonstring.get("tortiepattern", None)
         if self.tortiepattern and not isinstance(self.tortiepattern, list):
             self.tortiepattern = [self.tortiepattern]
         self.brindledbi = jsonstring["brindledbi"]
 
         self.specialred = jsonstring['specialred']
-        
         self.merlepattern = jsonstring.get('merlepattern', None)
-        try:
-            self.pseudomerle = jsonstring['pseudomerle']
-        except:
-            pass
+        self.pseudomerle = jsonstring.get('pseudomerle')
         
         self.chimera = jsonstring['chimera']
         self.chimerapattern = jsonstring['chimerapattern']
@@ -175,9 +168,9 @@ class Genotype:
         self.longtype = jsonstring["longtype"]
 
         try:
-            self.sex = jsonstring["sex"]
+            self.sex = jsonstring['sex']
         except:
-            self.sex = jsonstring["gender"]
+            self.sex = jsonstring['gender']
         self.dilute = jsonstring["dilute"]
         self.white = jsonstring["white"]
         self.whitegrade = jsonstring["whitegrade"]
@@ -203,7 +196,7 @@ class Genotype:
         self.pinkdilute = jsonstring["pinkdilute"]
         self.dilutemd = jsonstring["dilutemd"]
         self.ext = jsonstring["ext"]
-        self.corin = jsonstring["corin"]
+        self.corin = jsonstring.get("corin", ['N', 'N'])
         self.karp = jsonstring["karp"]
         self.bleach = jsonstring["bleach"]
         self.ghosting = jsonstring["ghosting"]
@@ -221,23 +214,14 @@ class Genotype:
         self.ring = jsonstring["ring"]
         self.munch = jsonstring["munch"]
         self.poly = jsonstring["poly"]
-        self.pax3 = jsonstring["pax3"]
+        self.pax3 = jsonstring.get("pax3", ['NoDBE', 'NoDBE'])
 
         self.wideband = jsonstring["wideband"]
-
-        try:
-            self.saturation = jsonstring["saturation"]
-        except:
-            pass
-
+        self.saturation = jsonstring.get("saturation", 3)
         self.rufousing = jsonstring["rufousing"]
-
         self.bengal = jsonstring["bengal"]
-
         self.sokoke = jsonstring["sokoke"]
-
         self.spotted = jsonstring["spotted"]
-
         self.tickgenes = jsonstring["tickgenes"]
 
         self.refraction = jsonstring["refraction"]
@@ -252,12 +236,12 @@ class Genotype:
         self.extraeyetype = jsonstring["extraeyetype"]
         self.extraeyecolour = jsonstring["extraeyecolour"]
 
-        self.breeds = json.loads(jsonstring["breeds"])
-        self.somatic = json.loads(jsonstring["somatic"])
-        self.body_value = jsonstring["body_type"]
-        self.height_value = jsonstring["height"]
-        self.shoulder_height = jsonstring["shoulder_height"]
-        self.body_label = jsonstring["body_type_label"]
+        self.breeds = json.loads(jsonstring.get("breeds", "{}"))
+        self.somatic = json.loads(jsonstring.get("somatic", "{}"))
+        self.body_value = jsonstring.get("body_type")
+        self.height_value = jsonstring.get("height")
+        self.shoulder_height = jsonstring.get("shoulder_height")
+        self.body_label = jsonstring.get("body_type_label")
 
         self.GeneSort()
         self.PolyEval()

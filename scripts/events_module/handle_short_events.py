@@ -233,6 +233,15 @@ class HandleShortEvents:
         # update gender
         if self.chosen_event.new_gender:
             self.handle_transition()
+            if game.clan.clan_settings['modded names'] and game.clan.clan_settings['dynamic prefixes']:
+                chance = game.config["cat_name_controls"]["trans_prefix_change_chance"]
+                if chance and random.randint(1, chance) == 1:
+                    if not self.main_cat.history:
+                        self.main_cat.history = History()
+                    self.main_cat.history.prev_names.append(str(self.main_cat.name))
+                    self.main_cat.name.moons = self.main_cat.moons
+                    self.main_cat.name.give_prefix(Cat, game.clan.biome)
+                    text += " After some thought, a new name seems in order too."
 
         # kill cats
         self.handle_death()

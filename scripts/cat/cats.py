@@ -377,25 +377,25 @@ class Cat:
             
         # NAME
         # load_existing_name is needed so existing cats don't get their names changed/fixed for no reason
-        if self.pelt is not None:
+        if biome:
             self.name = Name(
+                self,
+                self,
                 prefix,
                 suffix,
                 biome=biome,
                 specsuffix_hidden=self.specsuffix_hidden,
-                load_existing_name=loading_cat,
-                cat=self,
+                load_existing_name=loading_cat
             )
         else:
             self.name = Name(
-                status,
-                prefix,
-                suffix,
+                self, 
+                self, 
+                prefix, 
+                suffix, 
                 specsuffix_hidden=self.specsuffix_hidden,
-                load_existing_name=loading_cat,
-                cat=self,
-            )
-
+                load_existing_name = loading_cat)
+        
         # Private Sprite
         self._sprite = None
 
@@ -418,6 +418,7 @@ class Cat:
         :return: None
         """
         self.ID = ID
+        self.name = Name(self, self, prefix=prefix, suffix=suffix)
         self.parent1 = None
         self.parent2 = None
         self.parent3 = None
@@ -2352,7 +2353,6 @@ class Cat:
         self.get_injured(injury, event_triggered=True)
 
     def congenital_condition(self, cat):
-        self.genetic_conditions()
         possible_conditions = []
 
         for condition in PERMANENT:
