@@ -230,6 +230,7 @@ class HandleShortEvents:
                 trust=-30,
             )
 
+        new_name = False
         # update gender
         if self.chosen_event.new_gender:
             self.handle_transition()
@@ -240,8 +241,8 @@ class HandleShortEvents:
                         self.main_cat.history = History()
                     self.main_cat.history.prev_names.append(str(self.main_cat.name))
                     self.main_cat.name.moons = self.main_cat.moons
-                    self.main_cat.name.give_prefix(Cat, game.clan.biome)
-                    self.text += " After some thought, a new name seems in order too."
+                    new_name = True
+                    self.chosen_event.text += " After some thought, a new name seems in order too."
 
         # kill cats
         self.handle_death()
@@ -306,6 +307,8 @@ class HandleShortEvents:
             other_clan=self.other_clan,
             chosen_herb=self.chosen_herb,
         )
+        if new_name:
+            self.main_cat.name.give_prefix(Cat, game.clan.biome)
 
         if self.chosen_herb:
             game.herb_events_list.append(f"{self.chosen_event} {self.herb_notice}.")

@@ -2509,7 +2509,7 @@
         "decline_text": "p_l vaguely reassures app1 and urges {PRONOUN/app1/object} to hurry down to the training grounds.",
         "success_outcomes": [
                 {
-                    "text": "It's not a concern, p_l says. That's happened to some of their ancestors - in particular a young she-cat who died so far beyond c_n's borders the grasslands themselves had ended. But she found her way to StarClan, step by persistent step, and if it ever came to it, so would app1.",
+                    "text": "It's not a concern, p_l says. That's happened to some of their ancestors - in particular a young molly who died so far beyond c_n's borders the grasslands themselves had ended. But she found her way to StarClan, step by persistent step, and if it ever came to it, so would app1.",
                     "exp": 30,
                     "weight": 20,
                     "art": "pln_med_herblocation2",

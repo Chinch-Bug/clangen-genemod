@@ -60,7 +60,7 @@
                 ]
             },
             {
-                "text": "As they hide, watching the eagles feed their chicks, s_c tells app1 the story of an eagle chick that once fell from its nest and was abandoned by its parents. c_n took it in, and when it fledged over its first winter, it turned into a fierce she-cat whose claws could stand up to even the mightiest predator.",
+                "text": "As they hide, watching the eagles feed their chicks, s_c tells app1 the story of an eagle chick that once fell from its nest and was abandoned by its parents. c_n took it in, and when it fledged over its first winter, it turned into a fierce molly whose claws could stand up to even the mightiest predator.",
                 "exp": 15,
                 "weight": 20,
                 "stat_skill": ["STORY,1", "LORE,1"],
@@ -319,7 +319,7 @@
                 ]
             },
             {
-                "text": "As they hide, watching the eagles feed their chicks, s_c tells the apprentices the story of an eagle chick that once fell from its nest and was abandoned by its parents. c_n took it in, and when it fledged over its first winter, it turned into a fierce she-cat whose claws could stand up to even the mightiest predator.",
+                "text": "As they hide, watching the eagles feed their chicks, s_c tells the apprentices the story of an eagle chick that once fell from its nest and was abandoned by its parents. c_n took it in, and when it fledged over its first winter, it turned into a fierce molly whose claws could stand up to even the mightiest predator.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["LORE,1", "STORY,1"],

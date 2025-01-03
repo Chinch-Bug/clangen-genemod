@@ -9694,7 +9694,7 @@
         "pl_skill_constraint": ["LORE,1"],
         "success_outcomes": [
             {
-                "text": "Casanova was a kittypet, with a long, beautiful coat always combed just-so by his Twolegs, charming, sly, and full of love and attention for any she-cat who'd stand still long enough to accept it. Generations ago, he fathered litters across half a dozen dens, full of promises of help and support before he moved on to the next she-cat without a backward glance. It's not a nice tale, but it's one important to remember.",
+                "text": "Casanova was a kittypet, with a long, beautiful coat always combed just-so by his Twolegs, charming, sly, and full of love and attention for any molly who'd stand still long enough to accept it. Generations ago, he fathered litters across half a dozen dens, full of promises of help and support before he moved on to the next molly without a backward glance. It's not a nice tale, but it's one important to remember.",
                 "exp": 30,
                 "weight": 20,
                 "relationships": [
@@ -9708,7 +9708,7 @@
                 ]
             },
             {
-                "text": "Ah, Casanova, famous for his charm in trying to get the attention of a she-cat he liked and, of course, for his vanishing act afterwards. What p_l tries to emphasize about the history lesson isn't about the infamous cad, but rather that the Clans took care of the bereft mothers he dallied with and the litters he fathered - a lesson of how the strength of the Clan supported nursing queens and their newborn kits, who would have otherwise been left to fend for themselves.",
+                "text": "Ah, Casanova, famous for his charm in trying to get the attention of a molly he liked and, of course, for his vanishing act afterwards. What p_l tries to emphasize about the history lesson isn't about the infamous cad, but rather that the Clans took care of the bereft mothers he dallied with and the litters he fathered - a lesson of how the strength of the Clan supported nursing queens and their newborn kits, who would have otherwise been left to fend for themselves.",
                 "exp": 30,
                 "weight": 5,
                 "relationships": [

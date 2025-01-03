@@ -401,7 +401,7 @@ class GenerateEvents:
             # check if already trans
             if (
                 "transition" in event.sub_type
-                and cat.gender != cat.genderalign
+                and ('trans' in cat.genderalign or 'sam' in cat.genderalign)
             ):
                 continue
 
@@ -485,11 +485,19 @@ class GenerateEvents:
                         continue
 
                 # check gender for transition events
+                
                 if event.m_c["gender"]:
-                    if (
-                        cat.gender not in event.m_c["gender"]
-                        and "any" not in event.m_c["gender"]
-                    ):
+                    match = False
+                    equivalents = {
+                        "male" : ["tom", "intersex tom", "intersex trans tom", "trans tom"],
+                        "female" : ["molly", "intersex molly", "intersex trans molly", "trans molly"],
+                        "nonbinary" : ["sam", "intersex sam"]
+                    }
+
+                    for g in event.m_c["gender"]:
+                        if cat.genderalign in equivalents.get(g, []) or g == 'any':
+                            match = True
+                    if not match:
                         continue
 
 
