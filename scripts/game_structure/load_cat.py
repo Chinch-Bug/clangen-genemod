@@ -128,12 +128,17 @@ def json_load():
             )
 
             new_cat.genderalign = cat["gender_align"]
-            # new_cat.pronouns = cat["pronouns"]
-            new_cat.pronouns = (
-                cat["pronouns"]
-                if "pronouns" in cat
-                else [new_cat.default_pronouns[0].copy()]
-            )
+            if cat.get("pronouns") and cat["pronouns"].get("en"):
+                new_cat.pronouns = cat["pronouns"]["en"]
+            elif cat.get("pronouns") and not cat["pronouns"]:
+                new_cat.pronouns = [new_cat.default_pronouns[0].copy()]
+                print("Cat had no pronouns?")
+            else:
+                new_cat.pronouns = (
+                    cat["pronouns"]
+                    if "pronouns" in cat
+                    else [new_cat.default_pronouns[0].copy()]
+                )
             new_cat.backstory = cat["backstory"] if "backstory" in cat else None
             if new_cat.backstory in BACKSTORIES["conversion"]:
                 new_cat.backstory = BACKSTORIES["conversion"][new_cat.backstory]
