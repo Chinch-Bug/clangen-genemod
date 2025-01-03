@@ -241,7 +241,7 @@ class HandleShortEvents:
                     self.main_cat.history.prev_names.append(str(self.main_cat.name))
                     self.main_cat.name.moons = self.main_cat.moons
                     self.main_cat.name.give_prefix(Cat, game.clan.biome)
-                    text += " After some thought, a new name seems in order too."
+                    self.text += " After some thought, a new name seems in order too."
 
         # kill cats
         self.handle_death()
