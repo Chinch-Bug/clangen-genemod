@@ -238,10 +238,10 @@ class Genotype:
 
         self.breeds = json.loads(jsonstring.get("breeds", "{}"))
         self.somatic = json.loads(jsonstring.get("somatic", "{}"))
-        self.body_value = jsonstring.get("body_type")
-        self.height_value = jsonstring.get("height")
-        self.shoulder_height = jsonstring.get("shoulder_height")
-        self.body_label = jsonstring.get("body_type_label")
+        self.body_value = jsonstring.get("body_type", 0)
+        self.height_value = jsonstring.get("height", 0)
+        self.shoulder_height = jsonstring.get("shoulder_height", '')
+        self.body_label = jsonstring.get("body_type_label", '')
 
         self.GeneSort()
         self.PolyEval()
