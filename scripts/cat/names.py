@@ -269,7 +269,7 @@ class Name:
             "lilac" : ["PALEGREY", "SILVER", "LILAC"],
             "cinnamon" : ["SIENNA", "DARKGINGER", "GOLDEN-BROWN"],
             "fawn" : ["LIGHTBROWN"],
-            "red" : ["GINGER", "DARKGINGER"],
+            "ginger" : ["GINGER", "DARKGINGER"],
             "cream" : ["CREAM", "PALEGINGER"],
             "white" : ["WHITE"],
             "silver shaded" : ["WHITE"]
