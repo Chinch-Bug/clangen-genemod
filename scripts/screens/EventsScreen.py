@@ -631,9 +631,11 @@ class EventsScreen(Screens):
             )
             if i % 2 == 0:
                 self.event_display_elements[f"container{i}"].background_colour = (
-                    pygame.Color(87, 76, 55)
+                    pygame.Color(game.config["theme"]["dark_mode_event_alternate"])
                     if game.settings["dark mode"]
-                    else pygame.Color(167, 148, 111)
+                    else pygame.Color(
+                        game.config["theme"]["light_mode_event_alternate"]
+                    )
                 )
                 self.event_display_elements[f"container{i}"].rebuild()
 

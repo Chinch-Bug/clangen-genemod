@@ -920,7 +920,7 @@ class LeaderDenScreen(Screens):
             self.screen_elements["clan_notice_text"].hide()
 
             self.clan_rep = game.clan.reputation
-            if 1 <= int(self.clan_rep) <= 30:
+            if 0 <= int(self.clan_rep) <= 30:
                 reputation = "hostile"
             elif 31 <= int(self.clan_rep) <= 70:
                 reputation = "neutral"

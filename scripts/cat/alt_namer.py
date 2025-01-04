@@ -215,16 +215,15 @@ class Namer():
 
             if tortie:
                 tabby['tortie_red'] = tabby['pattern']
-        elif tortie:
-            sprite = phenotype.GetTabbySprite()
-            if 'bar' in sprite or 'ghost' in sprite or 'chinchilla' in phenotype.tabby:
-                tabby['tortie_red'] = 'ticked'
-            elif sprite in ['marbled', 'classic']:
-                tabby['tortie_red'] = 'blotched'
-            elif 'braid' in sprite or 'mack' in sprite or 'pins' in sprite:
-                tabby['tortie_red'] = 'mackerel'
-            else:
-                tabby['tortie_red'] = 'spotted'
+        sprite = phenotype.GetTabbySprite()
+        if 'bar' in sprite or 'ghost' in sprite or 'chinchilla' in phenotype.tabby:
+            tabby['tortie_red'] = 'ticked'
+        elif sprite in ['marbled', 'classic']:
+            tabby['tortie_red'] = 'blotched'
+        elif 'braid' in sprite or 'mack' in sprite or 'pins' in sprite:
+            tabby['tortie_red'] = 'mackerel'
+        else:
+            tabby['tortie_red'] = 'spotted'
 
             
 

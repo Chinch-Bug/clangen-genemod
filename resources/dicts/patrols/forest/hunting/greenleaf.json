@@ -3956,7 +3956,7 @@
                 "prey": ["medium"]
             },
             {
-                "text": "r_c cautiously begins stalking the squirrel. To no one's surprise, the squirrel notices {PRONOUN/r_c/object} before {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} close enough and scurries up the tree. r_c takes off after it, scaling the tree quickly. {PRONOUN/r_c/subject/CAP} {VERB/r_c/manage/manages} to catch the squirrel, but the slippery bark under-paw causes {PRONOUN/r_c/object} to fall. r_c hits the ground with a thud, the breath knocked out of {PRONOUN/r_c/subject}, but the squirrel still in {PRONOUN/r_c/poss} grasp.",
+                "text": "r_c cautiously begins stalking the squirrel. To no one's surprise, the squirrel notices {PRONOUN/r_c/object} before {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} close enough and scurries up the tree. r_c takes off after it, scaling the tree quickly. {PRONOUN/r_c/subject/CAP} {VERB/r_c/manage/manages} to catch the squirrel, but the slippery bark under-paw causes {PRONOUN/r_c/object} to fall. r_c hits the ground with a thud, the breath knocked out of {PRONOUN/r_c/object}, but the squirrel still in {PRONOUN/r_c/poss} grasp.",
                 "exp": 15,
                 "weight": 25,
                 "prey": ["medium"],
