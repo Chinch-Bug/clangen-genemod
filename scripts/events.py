@@ -2639,7 +2639,7 @@ class Events:
                 possible_deputies = list(
                     filter(
                         lambda x: not x.dead and not x.outside and x.status ==
-                                  "warrior" and ([i for i in x.former_apprentices if 'apprentice' not in Cat.all_cats.get(i).status]),
+                                  "warrior" and ([i for i in x.former_apprentices if Cat.all_cats.get(i) and 'apprentice' not in Cat.all_cats.get(i).status]),
                         Cat.all_cats_list))
                 if not possible_deputies:
                     possible_deputies = list(
