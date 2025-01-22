@@ -411,6 +411,22 @@
     "somatic_mutation": 150,
     "breakthrough": 25,
     "cryptic_tortie": 100,
+    "sectoral_heterochromia": 150,
+    "random_heterochromia": 200,
+
+    "no-low_white_blue_eyes": 100,
+    "low_white_blue_eyes": 75,
+    "mid_white_blue_eyes": 50,
+    "high_white_blue_eyes": 25,
+    "het_dom_white_blue_eyes": 15,
+    "homo_dom_white_blue_eyes": 5,
+
+    "no-low_white_one_blue_eye": 75,
+    "low_white_one_blue_eye": 50,
+    "mid_white_one_blue_eye": 25,
+    "high_white_one_blue_eye": 15,
+    "het_dom_white_one_blue_eye": 10,
+    "homo_dom_white_one_blue_eye": 3,
 
     "longhair": 2,
     "cinnamon": 30,

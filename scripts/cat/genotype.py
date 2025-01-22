@@ -224,8 +224,9 @@ class Genotype:
         self.spotted = jsonstring["spotted"]
         self.tickgenes = jsonstring["tickgenes"]
 
-        self.refraction = jsonstring["refraction"]
-        self.pigmentation = jsonstring["pigmentation"]
+        if isinstance(jsonstring["refraction"], int):
+            self.refraction = jsonstring["refraction"]
+            self.pigmentation = jsonstring["pigmentation"]
 
         self.lefteye = jsonstring["lefteye"]
         self.righteye = jsonstring["righteye"]
@@ -1706,8 +1707,8 @@ class Genotype:
         "R10" : ["Turquoise", "Viridian", "Green Onion", "Leaf Green", "Green", "Sap Green", "Dark Leaf Green", "Forest Green", "Dark Peridot", "Seaweed Green", "Dark Olive", "Sapphire", "Albino Sky Blue"],
         "R11" : ["Deep Turquoise", "Amazonite", "Pine Green", "Deep Leaf Green", "Jade", "Emerald", "Deep Green", "Deep Forest Green", "Dark Green", "Dark Moss Green", "Black Olive", "Azure", "Albino Azure"]
         }
-        sectoralindex = randint(0, 74)
-        het2index = randint(0, 99)
+        sectoralindex = randint(0, self.odds["sectoral_heterochromia"]-1) if self.odds["sectoral_heterochromia"] > 1 else 0
+        het2index = randint(0, self.odds["random_heterochromia"]-1) if self.odds["random_heterochromia"] > 1 else 0
         blueindex = 1
         hetindex = 1
 
@@ -1751,19 +1752,27 @@ class Genotype:
 
 
         if self.pointgene == ["cb","cs"]:
-            blueindex = randint(0, 7)
+            blueindex = randint(0, 10)
         if self.white[0] in ['w', 'wg', 'wsal'] or blueindex == 0:
             pass
         elif self.white[0] in ['ws', 'wt'] and self.white[1] not in ['ws', 'wt']:
-            blueindex = randint(0, 74)
+            if self.whitegrade < 2:
+                blueindex = randint(0, self.odds["no-low_white_blue_eyes"]-1) if self.odds["no-low_white_blue_eyes"] > 1 else 0
+            elif self.whitegrade < 5:
+                blueindex = randint(0, self.odds["low_white_blue_eyes"]-1) if self.odds["low_white_blue_eyes"] > 1 else 0
+            else:
+                blueindex = randint(0, self.odds["mid_white_blue_eyes"]-1) if self.odds["mid_white_blue_eyes"] > 1 else 0
         elif self.white[0] in ['ws', 'wt']:
-            blueindex = randint(0, 24)
+            if self.whitegrade < 3:
+                blueindex = randint(0, self.odds["mid_white_blue_eyes"]-1) if self.odds["mid_white_blue_eyes"] > 1 else 0
+            else:
+                blueindex = randint(0, self.odds["high_white_blue_eyes"]-1) if self.odds["high_white_blue_eyes"] > 1 else 0
         elif self.white[0] == "W":
-            blueindex = randint(0, 14)
+            blueindex = randint(0, self.odds["het_dom_white_blue_eyes"]-1) if self.odds["het_dom_white_blue_eyes"] > 1 else 0
             if randint(1, 4) == 1 and blueindex == 0:
                 self.deaf = True
         if self.white == ["W","W"]:
-            blueindex = randint(0, 2)
+            blueindex = randint(0, self.odds["homo_dom_white_blue_eyes"]-1) if self.odds["homo_dom_white_blue_eyes"] > 1 else 0
             if randint(1, 4) < 4 and blueindex == 0:
                 self.deaf = True
         
@@ -1774,15 +1783,23 @@ class Genotype:
         if self.white[0] in ['w', 'wg', 'wsal']:
             pass
         elif self.white[0] in ['ws', 'wt'] and self.white[1] not in ['ws', 'wt']:
-            hetindex = randint(0, 24)
+            if self.whitegrade < 2:
+                hetindex = randint(0, self.odds["no-low_white_one_blue_eye"]-1) if self.odds["no-low_white_one_blue_eye"] > 1 else 0
+            elif self.whitegrade < 5:
+                hetindex = randint(0, self.odds["low_white_one_blue_eye"]-1) if self.odds["low_white_one_blue_eye"] > 1 else 0
+            else:
+                hetindex = randint(0, self.odds["mid_white_one_blue_eye"]-1) if self.odds["mid_white_one_blue_eye"] > 1 else 0
         elif self.white[0] in ['ws', 'wt']:
-            hetindex = randint(0, 14)
+            if self.whitegrade < 3:
+                hetindex = randint(0, self.odds["mid_white_one_blue_eye"]-1) if self.odds["mid_white_one_blue_eye"] > 1 else 0
+            else:
+                hetindex = randint(0, self.odds["high_white_one_blue_eye"]-1) if self.odds["high_white_one_blue_eye"] > 1 else 0
         elif self.white[0] == "W":
-            hetindex = randint(0, 9)
+            hetindex = randint(0, self.odds["het_dom_white_one_blue_eye"]-1) if self.odds["het_dom_white_one_blue_eye"] > 1 else 0
             if randint(1, 10) == 1 and hetindex == 0:
                 self.deaf = True
         if self.white == ["W","W"]:
-            hetindex = randint(0, 2)
+            hetindex = randint(0, self.odds["homo_dom_white_one_blue_eye"]-1) if self.odds["homo_dom_white_one_blue_eye"] > 1 else 0
             if randint(1, 8) == 1 and hetindex == 0:
                 self.deaf = True
 
