@@ -794,9 +794,9 @@ class Events:
                     change_clan_relations(clan, amount)
 
             # finish
-            text_snippet = "hardcoded.injury_hoarding"
+            text_snippet = "hardcoded.focus_injury_hoarding"
             if game.clan.clan_settings.get("raid other clans"):
-                text_snippet = "hardcoded.injury_raiding"
+                text_snippet = "hardcoded.focus_injury_raiding"
             for condition_type, value in involved_cats.items():
                 game.cur_events_list.append(
                     Single_Event(

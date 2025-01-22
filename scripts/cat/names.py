@@ -391,10 +391,16 @@ class Name:
                 options.append(appearance)
                 self.suffix = None
 
+                tries = 0
                 while not self.suffix or self.suffix in self.prefix.lower():
+                    tries += 1
+                    if tries > 20:
+                        break
                     try:
                         self.suffix = random.choice(random.choice(options))
                     except:
+                        while [] in options:
+                            options.remove([])
                         continue
 
                 return
@@ -402,10 +408,6 @@ class Name:
             pass
 
         """Generate possible suffix."""
-        named_after_pelt = not random.getrandbits(2)  # Chance for True is '1/8'.
-        named_after_biome = not random.getrandbits(3)  # 1/8
-        # Pelt name only gets used if there's an associated suffix.
-
         pelt = []
         if self.genotype:
             if (self.genotype.white[1] not in ['ws', 'wt'] or self.genotype.whitegrade < 4):
@@ -436,7 +438,14 @@ class Name:
                 (self.genotype.white[0] in ['ws', 'wt'] and self.genotype.white[1] not in ['ws', 'wt'] and self.genotype.whitegrade > 2):
                 pelt.append("TwoColour")
 
+        tries = 0
         while not self.suffix or self.suffix in self.prefix.lower():
+            tries += 1
+            if tries > 20:
+                break
+            named_after_pelt = not random.getrandbits(2)  # Chance for True is '1/8'.
+            named_after_biome = not random.getrandbits(3)  # 1/8
+            # Pelt name only gets used if there's an associated suffix.
             if named_after_pelt and len(pelt) > 0:
                 self.suffix = random.choice(self.names_dict["pelt_suffixes"][random.choice(pelt)])
             elif named_after_biome:
