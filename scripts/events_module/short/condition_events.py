@@ -1065,7 +1065,9 @@ class Condition_Events:
                     else:
                         event = i18n.t("hardcoded.condition_retire_no_leader")
 
-                    if cat.age == CatAgeEnum.ADOLESCENT:
+                    if cat.age == CatAgeEnum.ADOLESCENT or "apprentice" in cat.status:
+                        if game.clan.clan_settings["modded names"] and game.clan.clan_settings['new suffixes']:
+                            cat.name.give_suffix(cat.skills, cat.personality, game.clan.biome, "hard work")
                         event += i18n.t(
                             "hardcoded.condition_retire_adolescent_ceremony",
                             clan=game.clan.name,

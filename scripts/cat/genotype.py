@@ -1672,12 +1672,12 @@ class Genotype:
             self.ext[1] = self.ext[0]
             self.ext[0] = "E"
 
-        if self.corin[0] == "sh":
-            self.corin[0] = self.corin[1]
-            self.corin[1] = "sh"
-        elif self.corin[0] == "fg":
+        if self.corin[0] == "fg":
             self.corin[0] = self.corin[1]
             self.corin[1] = "fg"
+        elif self.corin[0] == "sh":
+            self.corin[0] = self.corin[1]
+            self.corin[1] = "sh"
         elif self.corin[0] == "sg":
             self.corin[0] = self.corin[1]
             self.corin[1] = "sg"
