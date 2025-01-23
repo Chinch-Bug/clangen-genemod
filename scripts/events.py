@@ -798,13 +798,14 @@ class Events:
             if game.clan.clan_settings.get("raid other clans"):
                 text_snippet = "hardcoded.focus_injury_raiding"
             for condition_type, value in involved_cats.items():
-                game.cur_events_list.append(
-                    Single_Event(
-                        i18n.t(text_snippet, condition=condition_type, count=value),
-                        "health",
-                        value,
+                if len(value) > 0:
+                    game.cur_events_list.append(
+                        Single_Event(
+                            i18n.t(text_snippet, condition=condition_type, count=len(value)),
+                            "health",
+                            value,
+                        )
                     )
-                )
 
             focus_text = i18n.t(
                 "hardcoded.focus_prey",

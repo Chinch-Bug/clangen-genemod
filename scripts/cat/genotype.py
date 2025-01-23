@@ -1756,7 +1756,7 @@ class Genotype:
         if self.white[0] in ['w', 'wg', 'wsal'] or blueindex == 0:
             pass
         elif self.white[0] in ['ws', 'wt'] and self.white[1] not in ['ws', 'wt']:
-            if self.whitegrade < 2:
+            if self.whitegrade < 3:
                 blueindex = randint(0, self.odds["no-low_white_blue_eyes"]-1) if self.odds["no-low_white_blue_eyes"] > 1 else 0
             elif self.whitegrade < 5:
                 blueindex = randint(0, self.odds["low_white_blue_eyes"]-1) if self.odds["low_white_blue_eyes"] > 1 else 0
@@ -1783,7 +1783,7 @@ class Genotype:
         if self.white[0] in ['w', 'wg', 'wsal']:
             pass
         elif self.white[0] in ['ws', 'wt'] and self.white[1] not in ['ws', 'wt']:
-            if self.whitegrade < 2:
+            if self.whitegrade < 3:
                 hetindex = randint(0, self.odds["no-low_white_one_blue_eye"]-1) if self.odds["no-low_white_one_blue_eye"] > 1 else 0
             elif self.whitegrade < 5:
                 hetindex = randint(0, self.odds["low_white_one_blue_eye"]-1) if self.odds["low_white_one_blue_eye"] > 1 else 0
