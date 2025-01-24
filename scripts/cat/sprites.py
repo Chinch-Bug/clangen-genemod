@@ -204,7 +204,7 @@ class Sprites:
 
         # genemod tabby bases
 
-        for x in ["black", "blue", "pale_blue", "dove", "platinum",
+        for x in ["black", "blue", "pale_blue", "dove", "pale_dove", "platinum",
                   "chocolate", "lilac", "pale_lilac", "champagne", "lavender",
                   "cinnamon", "fawn", "pale_fawn", "buff", "beige",
                   "red", "cream", "honey", "ivory"]:
@@ -251,7 +251,6 @@ class Sprites:
         self.make_group('Other/ghosting', (0, 0), 'ghost')
         self.make_group('Other/tabbyghost', (0, 0), 'tabbyghost')
         self.make_group('Other/grizzle', (0, 0), 'grizzle')
-        self.make_group('Other/smoke', (0, 0), 'smoke')
         self.make_group('Other/bleach', (0, 0), 'bleach')
         self.make_group('Other/lykoi', (0, 0), 'lykoi')
         self.make_group('Other/hairless', (0, 0), 'hairless')

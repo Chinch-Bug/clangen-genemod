@@ -258,7 +258,9 @@ class Phenotype():
                     self.silvergold = 'silver '
                 if self.genotype.pseudomerle:
                     self.silvergold += "pseudo-merle "
-            elif(self.genotype.corin[0] == 'sg' or self.genotype.wbsum > 11):
+            elif (self.genotype.corin[0] == 'sg'): 
+                self.silvergold = 'extreme sunshine '
+            elif (self.genotype.wbsum > 11):
                 self.silvergold = 'golden '
             elif(self.genotype.corin[0] == 'sh'):
                 self.silvergold = 'sunshine '
@@ -784,7 +786,7 @@ class Phenotype():
             
             maincolour = colour + str(self.genotype.saturation)
 
-            if self.genotype.saturation < 3 and colour in ['blue', 'lilac', 'fawn']:
+            if self.genotype.saturation < 3 and colour in ['blue', 'lilac', 'fawn', 'dove']:
                 colour = "pale_" + colour
 
             rufousing = ""
@@ -798,7 +800,7 @@ class Phenotype():
                 else:
                     rufousing = genes.ruftype
 
-                if genes.corin[0] == "sg" or genes.wbtype == "chinchilla":
+                if genes.corin[0] == "sg" or 'N' not in genes.corin or genes.wbtype == "chinchilla":
                     banding = "chinchilla"
                 elif genes.wbtype == "shaded" or genes.corin[0] == "sh" or genes.corin[0] == "fg" or genes.ext[0] == 'ec' or (genes.ext[0] == 'ea' and moons > 3):
                     banding = "shaded"
