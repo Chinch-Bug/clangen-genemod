@@ -2803,7 +2803,11 @@ def generate_sprite(
     if life_state is not None:
         age = life_state
     else:
-        age = cat.age.value
+        if game.settings["ageup dead"] and cat.dead:
+            age = "adult"
+        else:
+            age = cat.age.value
+
 
     if always_living:
         dead = False
@@ -2836,7 +2840,7 @@ def generate_sprite(
         if game.config["fun"]["all_cats_are_newborn"]:
             cat_sprite = str(cat.pelt.cat_sprites["newborn"])
         else:
-            if cat.pelt.cat_sprites[age] < 9 and cat.pelt.cat_sprites[age] > 5 and (cat.pelt.length == 'medium' and get_current_season() == 'Leaf-bare') and cat.moons > 11:
+            if cat.pelt.cat_sprites[age] < 9 and cat.pelt.cat_sprites[age] > 5 and (cat.pelt.length == 'medium' and get_current_season() == 'Leaf-bare'):
                 cat_sprite = str(cat.pelt.cat_sprites[age]+3)
             else:
                 cat_sprite = str(cat.pelt.cat_sprites[age])
@@ -3016,8 +3020,8 @@ def generate_sprite(
                 smokeUnders = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 smokeUnders.blit(sprites.sprites["Tabby_unders" + cat_sprite], (0, 0))
                 smokeUnders.blit(white, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
-                smokeUnders.set_alpha(13)
-                white.set_alpha(13)
+                smokeUnders.set_alpha(10)
+                white.set_alpha(10)
                 smokeLayer = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 smokeLayer.blit(white, (0, 0))
                 if(genotype.ext[0] == 'Eg' and genotype.agouti[0] != 'a'):
@@ -3796,13 +3800,13 @@ def generate_sprite(
 
         age = cat.moons
 
-        if int(cat_sprite) == 20 and cat.moons > 0:
+        if int(cat_sprite) == 20:
             age = 0
-        elif int(cat_sprite) < 3 and cat.moons > 5:
+        elif int(cat_sprite) < 3 and 5 < cat.moons < 1:
             age = 4
-        elif int(cat_sprite) < 6 and cat.moons > 11:
+        elif int(cat_sprite) < 6 and 11 < cat.moons < 6:
             age = 10
-        elif (int(cat_sprite == 19) or int(cat_sprite) == 17) and cat.moons > 12:
+        elif (int(cat_sprite == 19) or int(cat_sprite) == 17) and 12 < cat.moons < 6:
             age = 6
         gensprite.blit(GenSprite(genotype, phenotype, age), (0, 0))
 

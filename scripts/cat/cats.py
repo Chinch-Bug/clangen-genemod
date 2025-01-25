@@ -1971,7 +1971,7 @@ class Cat:
 
         # get chosen thought
         chosen_thought = Thoughts.get_chosen_thought(
-            self, other_cat, game_mode, biome, season, camp
+            self, other_cat, game_mode, biome, season, camp, game.settings["ageup dead"]
         )
 
         chosen_thought = event_text_adjust(

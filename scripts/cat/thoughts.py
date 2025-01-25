@@ -325,13 +325,18 @@ class Thoughts:
         return created_list
 
     @staticmethod
-    def load_thoughts(main_cat, other_cat, game_mode, biome, season, camp):
+    def load_thoughts(main_cat, other_cat, game_mode, biome, season, camp, ageup=False):
         status = main_cat.status
-        status = status.replace(" ", "_")
-        if status == "healer_apprentice":
-            status = "medicine_cat_apprentice"
-        elif status == "healer":
-            status = "medicine_cat"
+        status = status.replace(" ", "_").replace("healer", "medicine_cat")
+
+        if ageup and main_cat.dead:
+            if 'apprentice' in status:
+                if '_apprentice' in status:
+                    status = status.replace("_apprentice", "")
+                else:
+                    status = "warrior"
+            elif 'kitten' in status or 'newborn' in status:
+                status = "warrior"
 
         if not main_cat.dead:
             life_dir = "alive"
@@ -352,7 +357,7 @@ class Thoughts:
 
         # newborns only pull from their status thoughts. this is done for convenience
         try:
-            if main_cat.age == "newborn":
+            if status == "newborn":
                 loaded_thoughts = load_lang_resource(
                     f"thoughts/{life_dir}{spec_dir}/newborn.json"
                 )
@@ -373,7 +378,7 @@ class Thoughts:
             print("ERROR: loading thoughts")
 
     @staticmethod
-    def get_chosen_thought(main_cat, other_cat, game_mode, biome, season, camp):
+    def get_chosen_thought(main_cat, other_cat, game_mode, biome, season, camp, ageup=False):
         # get possible thoughts
         try:
             # checks if the cat is Rick Astley to give the rickroll thought, otherwise proceed as usual
@@ -384,7 +389,7 @@ class Thoughts:
             else:
                 chosen_thought_group = choice(
                     Thoughts.load_thoughts(
-                        main_cat, other_cat, game_mode, biome, season, camp
+                        main_cat, other_cat, game_mode, biome, season, camp, ageup
                     )
                 )
                 chosen_thought = choice(chosen_thought_group["thoughts"])

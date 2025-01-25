@@ -22,14 +22,14 @@
         false
       ],
       "fullscreen scaling": [
-          "Ignore fullscreen scaling rules",
-          "If enabled, fullscreen will display as large as possible (toggle fullscreen to update). This may include visual artifacts.",
-          false
+        "Ignore fullscreen scaling rules",
+        "If enabled, fullscreen will display as large as possible (toggle fullscreen to update). This may include visual artifacts.",
+        false
       ],
       "no sprite antialiasing": [
-          "Disable sprite antialiasing",
-          "If enabled, sprites and patrol art will no longer be antialiased (\"blurry\"/\"smooth\") when in fullscreen.",
-          false
+        "Disable sprite antialiasing",
+        "If enabled, sprites and patrol art will no longer be antialiased (\"blurry\"/\"smooth\") when in fullscreen.",
+        false
       ],
       "custom cursor": [
         "Custom cursor",
@@ -55,6 +55,11 @@
         "Filter Genotypes",
         "Some rare wildtype genes will be hidden on the genotype section.",
         true
+      ],
+      "ageup dead": [
+        "Show dead kits and apprentices as adults",
+        "Dead cats under 12 moons old will be shown with adult sprites. Note: this will not regenerate thoughts, so those will not match until after a moonskip.",
+        false
       ],
       "gore": [
         "Allow mild gore and blood in patrol artwork",
