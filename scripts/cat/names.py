@@ -97,16 +97,18 @@ class Name:
             self.genotype = cat.genotype
             self.phenotype = cat.phenotype
             self.chimpheno = cat.chimerapheno if cat.genotype.chimera else None
-            skills = cat.skills
-            personality = cat.personality
+            self.skills = cat.skills if cat.skills else None
+            self.personality = cat.personality if cat.personality else None
+            self.biome = biome
+            self.honour = honour
         except AttributeError:
             self.status = None
             self.moons = None
             self.genotype = None
             self.phenotype = None
             self.chimpheno = None
-            skills = None
-            personality = None
+            self.skills = None
+            self.personality = None
 
         name_fixpref = False
         # Set prefix
@@ -117,70 +119,74 @@ class Name:
 
         # Set suffix
         if self.suffix is None:
-            self.give_suffix(skills, personality, biome, honour)
+            self.give_suffix(self.skills, self.personality, biome, honour)
             if name_fixpref and self.prefix is None:
                 # needed for random dice when we're changing the Prefix
                 name_fixpref = False
 
         if self.suffix and not load_existing_name:
-            # Prevent triple letter names from joining prefix and suffix from occurring (ex. Beeeye)
+            self.check_name(Cat, name_fixpref)
+    
+    def check_name(self, Cat, name_fixpref):
+        # Prevent triple letter names from joining prefix and suffix from occurring (ex. Beeeye)
+        possible_three_letter = (
+            self.prefix[-2:] + self.suffix[0],
+            self.prefix[-1] + self.suffix[:2],
+        )
+        triple_letter = all(
+            i == possible_three_letter[0][0] for i in possible_three_letter[0]
+        ) or all(
+            i == possible_three_letter[1][0]
+            for i in possible_three_letter[1]
+            # Prevent double animal names (ex. Spiderfalcon)
+        )
+        double_animal = (
+            self.prefix in self.names_dict["animal_prefixes"]
+            and self.suffix in self.names_dict["animal_suffixes"]
+        )
+        # Prevent the inappropriate names
+        nono_name = self.prefix + self.suffix
+        # Prevent double names (ex. Iceice)
+        # Prevent suffixes containing the prefix (ex. Butterflyfly)
+
+        i = 0
+        while (
+            nono_name.lower() in self.names_dict["inappropriate_names"]
+            or triple_letter
+            or double_animal
+            or (
+                self.prefix.lower() in self.suffix.lower()
+                and str(self.prefix) != ""
+            )
+            or (
+                self.suffix.lower() in self.prefix.lower()
+                and str(self.suffix) != ""
+            )
+        ):
+            # check if random die was for prefix
+            if name_fixpref:
+                self.give_prefix(Cat, self.biome)
+            else:
+                self.suffix = None
+                self.give_suffix(self.skills, self.personality, self.biome, self.honour)
+
+            nono_name = self.prefix + self.suffix
             possible_three_letter = (
                 self.prefix[-2:] + self.suffix[0],
                 self.prefix[-1] + self.suffix[:2],
             )
-            triple_letter = all(
-                i == possible_three_letter[0][0] for i in possible_three_letter[0]
-            ) or all(
-                i == possible_three_letter[1][0]
-                for i in possible_three_letter[1]
-                # Prevent double animal names (ex. Spiderfalcon)
-            )
-            double_animal = (
-                self.prefix in self.names_dict["animal_prefixes"]
-                and self.suffix in self.names_dict["animal_suffixes"]
-            )
-            # Prevent the inappropriate names
-            nono_name = self.prefix + self.suffix
-            # Prevent double names (ex. Iceice)
-            # Prevent suffixes containing the prefix (ex. Butterflyfly)
-
-            i = 0
-            while (
-                nono_name.lower() in self.names_dict["inappropriate_names"]
-                or triple_letter
-                or double_animal
-                or (
-                    self.prefix.lower() in self.suffix.lower()
-                    and str(self.prefix) != ""
-                )
-                or (
-                    self.suffix.lower() in self.prefix.lower()
-                    and str(self.suffix) != ""
-                )
+            if any(
+                i != possible_three_letter[0][0] for i in possible_three_letter[0]
+            ) and any(
+                i != possible_three_letter[1][0] for i in possible_three_letter[1]
             ):
-                # check if random die was for prefix
-                if name_fixpref:
-                    self.give_prefix(Cat, biome)
-                else:
-                    self.give_suffix(skills, personality, biome, honour)
-
-                nono_name = self.prefix + self.suffix
-                possible_three_letter = (
-                    self.prefix[-2:] + self.suffix[0],
-                    self.prefix[-1] + self.suffix[:2],
-                )
-                if any(
-                    i != possible_three_letter[0][0] for i in possible_three_letter[0]
-                ) and any(
-                    i != possible_three_letter[1][0] for i in possible_three_letter[1]
-                ):
-                    triple_letter = False
-                if (
-                    self.prefix not in self.names_dict["animal_prefixes"]
-                    or self.suffix not in self.names_dict["animal_suffixes"]
-                ):
-                    double_animal = False
-                i += 1
+                triple_letter = False
+            if (
+                self.prefix not in self.names_dict["animal_prefixes"]
+                or self.suffix not in self.names_dict["animal_suffixes"]
+            ):
+                double_animal = False
+            i += 1
 
     def __str__(self):
         return self.__repr__()

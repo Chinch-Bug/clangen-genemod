@@ -1773,6 +1773,7 @@ class Events:
 
             if game.clan.clan_settings["modded names"] and game.clan.clan_settings['new suffixes']:
                 cat.name.give_suffix(cat.skills, cat.personality, game.clan.biome, random_honor)
+                cat.name.check_name(Cat, False)
 
         if cat.status in ["warrior", "healer", "mediator"]:
             History.add_app_ceremony(cat, random_honor)
