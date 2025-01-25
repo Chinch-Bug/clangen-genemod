@@ -1390,10 +1390,17 @@ class Events:
                     enemy_clan = other_clan
                     break
 
+            if not enemy_clan:
+                game.clan.war["at_war"] = False
+                game.clan.war["enemy"] = None
+                game.clan.war["duration"] = 0
+                print(f"Clan you're at war with - ${str(game.clan.war["enemy"])} could not be found among the other Clans. War cancelled I guess")
+                return
+            
             threshold = 5
             if enemy_clan.temperament == "bloodthirsty":
                 threshold = 10
-            if enemy_clan.temperament in ["mellow", "amiable", "gracious"]:
+            elif enemy_clan.temperament in ["mellow", "amiable", "gracious"]:
                 threshold = 3
 
             threshold -= int(game.clan.war["duration"])
