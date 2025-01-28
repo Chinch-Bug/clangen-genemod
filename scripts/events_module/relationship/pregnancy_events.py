@@ -439,6 +439,8 @@ class Pregnancy_Events:
                     cat.birth_cooldown = game.config["pregnancy"]["birth_cooldown"]
                     if surrogate:
                         cats_involved.append(pregnant_cat.ID)
+                        
+                        pregnant_cat.get_injured("recovering from birth", event_triggered=True)
                         print_event = i18n.t(
                             "conditions.pregnancy.outside_surrogate_dam",
                             name=cat.name,
@@ -457,6 +459,7 @@ class Pregnancy_Events:
                             if par:
                                 cats_involved.append(par.ID)
                                 par.birth_cooldown = game.config["pregnancy"]["birth_cooldown"]
+                                par.get_injured("recovering from birth", event_triggered=True)
                     for kit in kits:
                         cats_involved.append(kit.ID)
                     game.cur_events_list.append(Single_Event(print_event, "birth_death", cats_involved=cats_involved))
@@ -881,7 +884,7 @@ class Pregnancy_Events:
                     "conditions.pregnancy.kitting_death", name=cat.name
                 )
             History.add_death(cat, death_text=death_event)
-        elif not cat.outside:  # if cat doesn't die, give recovering from birth
+        else:  # if cat doesn't die, give recovering from birth
             cat.get_injured("recovering from birth", event_triggered=True)
             if "blood loss" in cat.injuries:
                 if cat.status == "leader":

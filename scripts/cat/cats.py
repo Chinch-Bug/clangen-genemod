@@ -202,26 +202,25 @@ class Cat:
         else:
             if kittypet or status == 'kittypet':
                 self.phenotype.AltGenerator(special=self.gender)
-                if chimera:
-                    par1 = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
-                    par1.AltGenerator()
-                    par2 = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
-                    par2.AltGenerator()
-                    self.phenotype.KitGenerator(par1, par2)
-                    self.chimerapheno.KitGenerator(par1, par2)
             else:
                 self.phenotype.Generator(special=self.gender)
-                if chimera:
-                    par1 = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
+                
+            if chimera:
+                par1 = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
+                par2 = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
+                if kittypet or status == 'kittypet':
+                    par1.AltGenerator()
+                    par2.AltGenerator()
+                else:
                     par1.Generator()
-                    par2 = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
                     par2.Generator()
-                    self.phenotype.KitGenerator(par1, par2)
-                    self.chimerapheno.KitGenerator(par1, par2)
+
+                self.phenotype.KitGenerator(par1, par2)
+                self.chimerapheno.KitGenerator(par1, par2)
             if self.phenotype.munch[1] == 'Mk':
                 self.phenotype.munch[1] = "mk"
             if self.phenotype.manx[1] not in ['m', 'ab']:
-                self.phenotype.manx[1] = self.manx[1].lower()
+                self.phenotype.manx[1] = self.phenotype.manx[1].lower()
             if 'NoDBE' not in self.phenotype.pax3 and 'DBEalt' not in self.phenotype.pax3:
                 self.phenotype.pax3[0] = 'DBEalt'
         

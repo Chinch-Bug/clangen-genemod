@@ -1014,6 +1014,24 @@ class Events:
         cat.skills.progress_skill(cat)
         Pregnancy_Events.handle_having_kits(cat, clan=game.clan)
 
+        if cat.is_ill() or cat.is_injured():
+            if cat.is_ill() and cat.is_injured():
+                if random.getrandbits(1):
+                    triggered_death = Condition_Events.handle_injuries(cat)
+                    if not triggered_death:
+                        Condition_Events.handle_illnesses(cat)
+                else:
+                    triggered_death = Condition_Events.handle_illnesses(cat)
+                    if not triggered_death:
+                        Condition_Events.handle_injuries(cat)
+            elif cat.is_ill():
+                Condition_Events.handle_illnesses(cat)
+            else:
+                Condition_Events.handle_injuries(cat)
+            game.switches["skip_conditions"].clear()
+            if cat.dead:
+                return
+
         if not cat.dead:
             OutsiderEvents.killing_outsiders(cat)
     
