@@ -208,13 +208,13 @@ class TestGetQueens(unittest.TestCase):
     def test_single_mother(self):
         # given
         # young enough kid
-        self.test_cat1.genotype.Generator("fem")
+        self.test_cat1.phenotype.Generator("fem")
 
         self.test_cat2.status = "kitten"
         self.test_cat2.parent1 = self.test_cat1.ID
 
         # too old kid
-        self.test_cat3.genotype.Generator("fem")
+        self.test_cat3.phenotype.Generator("fem")
 
         self.test_cat4.status = "apprentice"
         self.test_cat4.parent1 = self.test_cat3.ID
@@ -226,13 +226,13 @@ class TestGetQueens(unittest.TestCase):
     def test_single_father(self):
         # given
         # young enough kid
-        self.test_cat1.genotype.Generator("masc")
+        self.test_cat1.phenotype.Generator("masc")
 
         self.test_cat2.status = "kitten"
         self.test_cat2.parent1 = self.test_cat1.ID
 
         # too old kid
-        self.test_cat3.genotype.Generator("masc")
+        self.test_cat3.phenotype.Generator("masc")
 
         self.test_cat4.status = "apprentice"
         self.test_cat4.parent1 = self.test_cat3.ID
@@ -244,18 +244,18 @@ class TestGetQueens(unittest.TestCase):
     def tests_hetero_pair(self):
         # given
         # young enough kid
-        self.test_cat1.genotype.Generator("fem")
+        self.test_cat1.phenotype.Generator("fem")
 
-        self.test_cat2.genotype.Generator("masc")
+        self.test_cat2.phenotype.Generator("masc")
 
         self.test_cat3.status = "kitten"
         self.test_cat3.parent1 = self.test_cat2.ID
         self.test_cat3.parent2 = self.test_cat1.ID
 
         # too old kid
-        self.test_cat4.genotype.Generator("fem")
+        self.test_cat4.phenotype.Generator("fem")
 
-        self.test_cat5.genotype.Generator("masc")
+        self.test_cat5.phenotype.Generator("masc")
 
         self.test_cat6.status = "apprentice"
         self.test_cat6.parent1 = self.test_cat5.ID
@@ -268,18 +268,18 @@ class TestGetQueens(unittest.TestCase):
     def test_gay_pair(self):
         # given
         # young enough kid
-        self.test_cat1.genotype.Generator("masc")
+        self.test_cat1.phenotype.Generator("masc")
 
-        self.test_cat2.genotype.Generator("masc")
+        self.test_cat2.phenotype.Generator("masc")
 
         self.test_cat3.status = "kitten"
         self.test_cat3.parent1 = self.test_cat2.ID
         self.test_cat3.parent2 = self.test_cat1.ID
 
         # too old kid
-        self.test_cat4.genotype.Generator("masc")
+        self.test_cat4.phenotype.Generator("masc")
 
-        self.test_cat5.genotype.Generator("masc")
+        self.test_cat5.phenotype.Generator("masc")
 
         self.test_cat6.status = "apprentice"
         self.test_cat6.parent1 = self.test_cat5.ID
@@ -295,18 +295,18 @@ class TestGetQueens(unittest.TestCase):
     def test_lesbian_pair(self):
         # given
         # young enough kid
-        self.test_cat1.genotype.Generator("fem")
+        self.test_cat1.phenotype.Generator("fem")
 
-        self.test_cat2.genotype.Generator("fem")
+        self.test_cat2.phenotype.Generator("fem")
 
         self.test_cat3.status = "kitten"
         self.test_cat3.parent1 = self.test_cat2.ID
         self.test_cat3.parent2 = self.test_cat1.ID
 
         # too old kid
-        self.test_cat4.genotype.Generator("fem")
+        self.test_cat4.phenotype.Generator("fem")
 
-        self.test_cat5.genotype.Generator("fem")
+        self.test_cat5.phenotype.Generator("fem")
 
         self.test_cat6.status = "apprentice"
         self.test_cat6.parent1 = self.test_cat5.ID
@@ -322,11 +322,11 @@ class TestGetQueens(unittest.TestCase):
     def test_poly_pair(self):
         # given
         # young enough kid
-        self.test_cat1.genotype.Generator("fem")
+        self.test_cat1.phenotype.Generator("fem")
 
-        self.test_cat2.genotype.Generator("fem")
+        self.test_cat2.phenotype.Generator("fem")
 
-        self.test_cat3.genotype.Generator("masc")
+        self.test_cat3.phenotype.Generator("masc")
 
         self.test_cat4.status = "kitten"
         self.test_cat4.parent1 = self.test_cat2.ID

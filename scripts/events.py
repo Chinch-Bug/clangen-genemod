@@ -1180,23 +1180,23 @@ class Events:
         involved_cats = [cat.ID]
         event_text = ""
 
-        if cat.genotype.white[0] == 'W' or (cat.genotype.white[1] in ['ws', 'wt'] and cat.genotype.whitegrade > 2) or cat.genotype.pointgene[0] == 'c' or 'o' not in cat.genotype.sexgene:
+        if cat.phenotype.white[0] == 'W' or (cat.phenotype.white[1] in ['ws', 'wt'] and cat.phenotype.whitegrade > 2) or cat.phenotype.pointgene[0] == 'c' or 'o' not in cat.phenotype.sexgene:
             return
         
-        if cat.genotype.dilute[0] == 'D' and cat.genotype.pinkdilute[0] == 'Dp':
+        if cat.phenotype.dilute[0] == 'D' and cat.phenotype.pinkdilute[0] == 'Dp':
             red_colour = "orange"
-        elif cat.genotype.dilute[0] == 'd' and cat.genotype.pinkdilute[0] == 'Dp':
+        elif cat.phenotype.dilute[0] == 'd' and cat.phenotype.pinkdilute[0] == 'Dp':
             red_colour = "cream"
-        elif cat.genotype.dilute[0] == 'D' and cat.genotype.pinkdilute[0] == 'dp':
+        elif cat.phenotype.dilute[0] == 'D' and cat.phenotype.pinkdilute[0] == 'dp':
             red_colour = "yellow"
         else:
             red_colour = 'creamy white'
 
-        if cat.genotype.ext[0] == 'ec' and cat.genotype.agouti[0] == 'a' and cat.moons == 6:
+        if cat.phenotype.ext[0] == 'ec' and cat.phenotype.agouti[0] == 'a' and cat.moons == 6:
             event_text = "Throughout kittenhood m_c has gotten many comments about their unique coat. Well, it looks by now to have turned completely " + red_colour + "."
-        if cat.genotype.ext[0] == 'ea' and ((cat.moons == 12 and cat.genotype.agouti[0] != 'a') or (cat.moons == 24 and cat.genotype.agouti[0] == 'a')):
+        if cat.phenotype.ext[0] == 'ea' and ((cat.moons == 12 and cat.phenotype.agouti[0] != 'a') or (cat.moons == 24 and cat.phenotype.agouti[0] == 'a')):
             event_text = "m_c has gotten used to the odd comment of 'is your fur more "+ red_colour + " today?', having heard it practically since kithood. But by now, nobody can deny it, there's barely a trace of any other coat colour left."
-        if cat.genotype.ext[0] == 'er' and cat.moons == 24:
+        if cat.phenotype.ext[0] == 'er' and cat.moons == 24:
             event_text = "m_c has gotten used to the odd comment of 'is your fur more "+ red_colour + " today?', having heard it practically since kithood. But by now, nobody can deny it, there's barely a trace of any other coat colour left."
 
         if event_text:

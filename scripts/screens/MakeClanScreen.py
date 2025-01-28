@@ -167,10 +167,6 @@ class MakeClanScreen(Screens):
         )
         create_example_cats()
 
-        #for i in range(12):
-        #    print("")
-        #    print(game.choose_cats[i].genotype.agouti)
-
         # self.worldseed = randrange(10000)
         self.open_game_mode()
 

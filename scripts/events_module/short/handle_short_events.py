@@ -376,7 +376,7 @@ class HandleShortEvents:
                     if (
                         sub_sub[0] != sub[0]
                         and (
-                            'Y' not in sub_sub[0].genotype.sexgene
+                            'Y' not in sub_sub[0].phenotype.sexgene
                             or game.clan.clan_settings["same sex birth"]
                         )
                         and sub_sub[0].ID in (sub[0].parent1, sub[0].parent2)
@@ -428,7 +428,7 @@ class HandleShortEvents:
 
         if possible_genders:
             new_gender = random.choice(possible_genders)
-            self.main_cat.genderalign = "intersex " if self.main_cat.genotype.sex == "intersex" else "" + new_gender.replace("female", "molly").replace("male", "tom").replace("nonbinary", "sam")
+            self.main_cat.genderalign = "intersex " if self.main_cat.phenotype.sex == "intersex" else "" + new_gender.replace("female", "molly").replace("male", "tom").replace("nonbinary", "sam")
 
             self.main_cat.pronouns = localization.get_new_pronouns(
                 self.main_cat.genderalign

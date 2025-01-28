@@ -879,7 +879,7 @@ class PatrolOutcome:
                 # Search for parent
                 for sub_sub in patrol.new_cats:
                     if sub_sub[0] != sub[0] and (
-                            'Y' not in sub_sub[0].genotype.sexgene or game.clan.clan_settings['same sex birth']) \
+                            'Y' not in sub_sub[0].phenotype.sexgene or game.clan.clan_settings['same sex birth']) \
                             and sub_sub[0].ID in (sub[0].parent1, sub[0].parent2) and not (
                             sub_sub[0].dead or sub_sub[0].outside):
                         sub_sub[0].get_injured("recovering from birth")

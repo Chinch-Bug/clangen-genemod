@@ -63,8 +63,10 @@ def json_load():
                         parent3=cat.get("parent3"),
                         moons=cat["moons"],
                         genotype=cat["genotype"],
+                        chimerageno=cat["chimerageno"] if "chimerageno" in cat else cat["genotype"]["chimerageno"],
                         white_patterns=cat["white_pattern"],
                         chim_white=cat["chim_white"] if 'chim_white' in cat else None,
+                        chim_pattern=cat["chimera_pattern"] if "chimera_pattern" in cat else cat["genotype"]["chimerapattern"],
                         loading_cat=True)
             except:
                 if cat.get("genotype", False):
@@ -85,7 +87,6 @@ def json_load():
                         loading_cat=True)
                 
             new_cat.pelt = Pelt(
-                new_cat.genotype,
                 new_cat.phenotype,
                 tint=cat.get('tint', 'none'),
                 white_patches_tint=cat.get('white_tint', 'none'),

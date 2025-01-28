@@ -6,7 +6,6 @@ import i18n
 
 from scripts.cat.sprites import sprites
 from scripts.game_structure.game_essentials import game
-from .genotype import Genotype
 from .phenotype import Phenotype
 from scripts.game_structure.localization import get_lang_config
 from scripts.utility import adjust_list_text
@@ -219,7 +218,6 @@ class Pelt:
 
     def __init__(
         self,
-        genotype:Genotype,
         phenotype:Phenotype,
         accessory:str=None,
         paralyzed:bool=False,
@@ -234,7 +232,6 @@ class Pelt:
         para_adult_sprite:int=None,
         reverse:bool=False,
         ) -> None:
-        self.genotype = genotype
         self.phenotype = phenotype
         self.cat_sprites =  {
             "kitten": kitten_sprite if kitten_sprite is not None else 0,
@@ -249,7 +246,7 @@ class Pelt:
         self.cat_sprites['para_young'] = 17
         self.cat_sprites["sick_adult"] = 18
         self.cat_sprites["sick_young"] = 19
-        if phenotype.length == "longhaired" and genotype.longtype == 'long' and genotype.cornish[0] == "R" and genotype.lykoi[0] == 'Ly' and genotype.sedesp[0] != "re" and 'brush' not in phenotype.furtype:    
+        if phenotype.length == "longhaired" and phenotype.longtype == 'long' and phenotype.cornish[0] == "R" and phenotype.lykoi[0] == 'Ly' and phenotype.sedesp[0] != "re" and 'brush' not in phenotype.furtype:    
             self.length="long"
             if self.cat_sprites['adult'] < 9:
                 self.cat_sprites['adult'] += 3
@@ -293,8 +290,8 @@ class Pelt:
         self.reverse = reverse
 
     @staticmethod
-    def generate_new_pelt(genotype, phenotype, gender:str, parents:tuple=(), age:str="adult"):
-        new_pelt = Pelt(genotype, phenotype)
+    def generate_new_pelt(phenotype, gender:str, parents:tuple=(), age:str="adult"):
+        new_pelt = Pelt(phenotype)
         
         new_pelt.init_sprite()
         new_pelt.init_scars(age)
@@ -370,14 +367,14 @@ class Pelt:
         base_tints = sprites.cat_tints["possible_tints"]["basic"]
         
         colour = ""
-        if self.phenotype.genotype.white[0] == "W":
+        if self.phenotype.white[0] == "W":
             colour = "WHITE"
-        elif 'point' in self.phenotype.point or 'silver' in self.phenotype.silvergold or (self.phenotype.genotype.dilute[0] == 'd' and self.phenotype.genotype.pinkdilute[0] == "dp"):
+        elif 'point' in self.phenotype.point or 'silver' in self.phenotype.silvergold or (self.phenotype.dilute[0] == 'd' and self.phenotype.pinkdilute[0] == "dp"):
             colour = "PALE"
         elif 'gold' in self.phenotype.silvergold or 'sunshine' in self.phenotype.silvergold:
             colour = "GOLDEN"
         else:
-            if (self.phenotype.genotype.dilute[0] == 'd' or self.phenotype.genotype.pinkdilute[0] == "dp"):
+            if (self.phenotype.dilute[0] == 'd' or self.phenotype.pinkdilute[0] == "dp"):
                 if self.phenotype.colour in ['cream', 'cream apricot', 'honey']:
                     colour = "CREAM"
                 elif self.phenotype.colour in ['fawn', 'fawn caramel', 'buff']:
@@ -420,7 +417,7 @@ class Pelt:
     @staticmethod
     def describe_appearance(cat, short=False):
         
-        color_name = cat.phenotype.PhenotypeOutput(pattern=cat.genotype.white_pattern, gender=cat.genderalign)
+        color_name = cat.phenotype.PhenotypeOutput(pattern=cat.phenotype.white_pattern, gender=cat.genderalign)
         
         if not short:
 

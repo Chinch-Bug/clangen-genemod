@@ -94,9 +94,8 @@ class Name:
             self.cat = cat
             self.status = cat.status
             self.moons = cat.moons
-            self.genotype = cat.genotype
             self.phenotype = cat.phenotype
-            self.chimpheno = cat.chimerapheno if cat.genotype.chimera else None
+            self.chimpheno = cat.chimerapheno if cat.chimerapheno else None
             self.skills = cat.skills if cat.skills else None
             self.personality = cat.personality if cat.personality else None
             self.biome = biome
@@ -104,7 +103,6 @@ class Name:
         except AttributeError:
             self.status = None
             self.moons = None
-            self.genotype = None
             self.phenotype = None
             self.chimpheno = None
             self.skills = None
@@ -202,32 +200,32 @@ class Name:
 
         if (self.phenotype.colour in ['white', 'albino'] or 
             (self.phenotype.maincolour == 'white' and not self.phenotype.patchmain) or
-            (self.genotype.white[1] in ['ws', 'wt'] and self.genotype.whitegrade == 5) or
-            (self.genotype.tortiepattern == ['revCRYPTIC'] and self.genotype.brindledbi) or 
-            (self.genotype.dilute[0] == 'd' and self.genotype.pinkdilute[0] == 'dp' and 
-                (('dove' in self.phenotype.colour and self.genotype.saturation < 2) or 
-                ('platinum' in self.phenotype.colour and self.genotype.saturation < 3) or
+            (self.phenotype.white[1] in ['ws', 'wt'] and self.phenotype.whitegrade == 5) or
+            (self.phenotype.tortiepattern == ['revCRYPTIC'] and self.phenotype.brindledbi) or 
+            (self.phenotype.dilute[0] == 'd' and self.phenotype.pinkdilute[0] == 'dp' and 
+                (('dove' in self.phenotype.colour and self.phenotype.saturation < 2) or 
+                ('platinum' in self.phenotype.colour and self.phenotype.saturation < 3) or
                 ('dove' not in self.phenotype.colour and 'platinum' not in self.phenotype.colour))) or
             ('silver' in self.phenotype.silvergold and ('shaded' in self.phenotype.tabby or 'chinchilla' in self.phenotype.tabby))
             ):
             colour_changed = False
-        elif change == "kit-apprentice" and self.genotype.pointgene[0] in ['cb', 'cs']:
+        elif change == "kit-apprentice" and self.phenotype.pointgene[0] in ['cb', 'cs']:
             colour_changed = True
-        elif change == "kit-apprentice" and (self.genotype.fevercoat or self.genotype.bleach[0] == 'lb'):
+        elif change == "kit-apprentice" and (self.phenotype.fevercoat or self.phenotype.bleach[0] == 'lb'):
             colour_changed = True
-        elif change == "kit-apprentice" and self.genotype.karp[0] == 'K':
+        elif change == "kit-apprentice" and self.phenotype.karp[0] == 'K':
             colour_changed = True
-        elif self.genotype.ext[0] == 'ec' and change == "kit-apprentice":
+        elif self.phenotype.ext[0] == 'ec' and change == "kit-apprentice":
             colour_changed = True
-        elif self.genotype.ext[0] == 'er' and (self.moons > 23 and change == "apprentice-warrior"):
+        elif self.phenotype.ext[0] == 'er' and (self.moons > 23 and change == "apprentice-warrior"):
             colour_changed = True
-        elif self.genotype.ext[0] == 'ea' and ((change == "apprentice-warrior" and self.genotype.agouti[0] != 'a') or (self.moons > 23 and change == "apprentice-warrior")):
+        elif self.phenotype.ext[0] == 'ea' and ((change == "apprentice-warrior" and self.phenotype.agouti[0] != 'a') or (self.moons > 23 and change == "apprentice-warrior")):
             colour_changed = True
-        elif change == "apprentice-warrior" and self.genotype.vitiligo:
+        elif change == "apprentice-warrior" and self.phenotype.vitiligo:
             colour_changed = True
-        elif self.prefix in self.mod_prefixes['general']['small'] and self.genotype.height_label in ['goliath', 'giant', 'large', 'above average', 'average']:
+        elif self.prefix in self.mod_prefixes['general']['small'] and self.phenotype.height_label in ['goliath', 'giant', 'large', 'above average', 'average']:
             colour_changed = True
-        elif self.prefix in self.mod_prefixes['general']['big'] and self.genotype.height_label in ['teacup', 'tiny', 'small', 'below average', 'average']:
+        elif self.prefix in self.mod_prefixes['general']['big'] and self.phenotype.height_label in ['teacup', 'tiny', 'small', 'below average', 'average']:
             colour_changed = True
             
         chance = game.config["cat_name_controls"]["prefix_change_chance"][change]
@@ -240,7 +238,7 @@ class Name:
 
     # Generate possible prefix
     def give_prefix(self, Cat, biome, no_suffix=False):
-        if not self.genotype:
+        if not self.phenotype:
             self.prefix = random.choice(self.names_dict["normal_prefixes"])
             return
 
@@ -251,7 +249,7 @@ class Name:
 
         namer = Namer(used_prefixes, self.mod_prefixes, self.moons)
         if not game.clan or (game.clan.clan_settings["modded names"] and game.clan.clan_settings['new prefixes']):
-            self.prefix = namer.start(self.genotype, self.phenotype, self.chimpheno)
+            self.prefix = namer.start(self.phenotype, self.chimpheno)
             if no_suffix:
                 if self.prefix == "Striped":
                     self.prefix = "Stripe"
@@ -280,7 +278,7 @@ class Name:
             "silver shaded" : ["WHITE"]
         }
         
-        params = namer.parse_chimera() if self.genotype.chimera else namer.get_categories(self.genotype, self.phenotype)
+        params = namer.parse_chimera() if self.chimpheno else namer.get_categories(self.phenotype)
 
         colours = colour_mappings[params[0]]
         if params[2]['type'] == 'silver' and params[0] not in ['ginger', 'cream']:
@@ -290,9 +288,9 @@ class Name:
             colours.append('GHOST')
         if params[2]['type'] == 'golden' and params[0] not in ['ginger', 'cream']:
             colours.append('GOLDEN')
-        if self.genotype.ruftype == 'rufoused' and params[0] == 'ginger':
+        if self.phenotype.ruftype == 'rufoused' and params[0] == 'ginger':
             colours.append('DARKGINGER')
-        if self.genotype.ruftype == 'low' and params[0] == 'ginger':
+        if self.phenotype.ruftype == 'low' and params[0] == 'ginger':
             colours.append('PALEGINGER')
         if params[2]['pattern'] != '' and params[2]['type'] == 'regular' and params[0] == "black":
             colours.append('BROWN')
@@ -370,8 +368,8 @@ class Name:
 
                 if self.phenotype.length == 'longhaired':
                     appearance += self.mod_suffixes['other']['appearance'].get('longhair', [])
-                if self.phenotype.tabby != "" and (self.genotype.white[1] not in ['ws', 'wt'] or self.genotype.whitegrade < 4):
-                    if self.genotype.ticked[0] == 'Ta' and (not self.genotype.breakthrough or self.genotype.mack[0] != 'mc'):
+                if self.phenotype.tabby != "" and (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4):
+                    if self.phenotype.ticked[0] == 'Ta' and (not self.phenotype.breakthrough or self.phenotype.mack[0] != 'mc'):
                         appearance += self.mod_suffixes['other']['appearance'].get('ticked', [])
                     if 'spotted' in self.phenotype.tabby or 'servaline' in self.phenotype.tabby:
                         appearance += self.mod_suffixes['other']['appearance'].get('spotted', [])
@@ -381,16 +379,16 @@ class Name:
                         appearance += self.mod_suffixes['other']['appearance'].get('striped', [])
                     if 'rosette' in self.phenotype.tabby:
                         appearance += self.mod_suffixes['other']['appearance'].get('patchy', [])
-                if (self.phenotype.tortie and (self.genotype.white[1] not in ['ws', 'wt'] or self.genotype.whitegrade < 4)) or\
-                    (self.genotype.white[1] in ['ws', 'wt'] and self.genotype.whitegrade < 4) or\
-                    (self.genotype.white[0] in ['ws', 'wt'] and self.genotype.white[1] not in ['ws', 'wt'] and self.genotype.whitegrade > 2):
+                if (self.phenotype.tortie and (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4)) or\
+                    (self.phenotype.white[1] in ['ws', 'wt'] and self.phenotype.whitegrade < 4) or\
+                    (self.phenotype.white[0] in ['ws', 'wt'] and self.phenotype.white[1] not in ['ws', 'wt'] and self.phenotype.whitegrade > 2):
                     appearance += self.mod_suffixes['other']['appearance'].get('patchy', [])
-                    if (self.genotype.tortiepattern and self.genotype.tortiepattern[0].replace('rev', '') in self.phenotype.def_tortie_low_patterns):
+                    if (self.phenotype.tortiepattern and self.phenotype.tortiepattern[0].replace('rev', '') in self.phenotype.def_tortie_low_patterns):
                         appearance += self.mod_suffixes['other']['appearance'].get('spotted', [])
-                    if ((self.genotype.white[1] in ['ws', 'wt'] and self.genotype.whitegrade < 4) or\
-                    (self.genotype.white[0] in ['ws', 'wt'] and self.genotype.white[1] not in ['ws', 'wt'] and self.genotype.whitegrade > 2)):
+                    if ((self.phenotype.white[1] in ['ws', 'wt'] and self.phenotype.whitegrade < 4) or\
+                    (self.phenotype.white[0] in ['ws', 'wt'] and self.phenotype.white[1] not in ['ws', 'wt'] and self.phenotype.whitegrade > 2)):
                         appearance += self.mod_suffixes['other']['appearance'].get('white_patchy', [])
-                if (self.phenotype.point and (self.genotype.white[1] not in ['ws', 'wt'] or self.genotype.whitegrade < 4)):
+                if (self.phenotype.point and (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4)):
                     appearance += self.mod_suffixes['other']['appearance'].get('pointed', [])
                 if 'curl' in self.phenotype.eartype or 'curl' in self.phenotype.tailtype or 'rexed' in self.phenotype.furtype:
                     appearance += self.mod_suffixes['other']['appearance'].get('curled', [])
@@ -415,11 +413,11 @@ class Name:
 
         """Generate possible suffix."""
         pelt = []
-        if self.genotype:
-            if (self.genotype.white[1] not in ['ws', 'wt'] or self.genotype.whitegrade < 4):
+        if self.phenotype:
+            if (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4):
                 if self.phenotype.tabby != "":
-                    if self.genotype.ticked[0] == 'Ta' and (not self.genotype.breakthrough or self.genotype.mack[0] != 'mc'):
-                        if self.genotype.ticktype == "agouti":
+                    if self.phenotype.ticked[0] == 'Ta' and (not self.phenotype.breakthrough or self.phenotype.mack[0] != 'mc'):
+                        if self.phenotype.ticktype == "agouti":
                             pelt.append("Agouti")
                         else:
                             pelt.append("Ticked")
@@ -434,14 +432,14 @@ class Name:
                     if 'charcoal' in self.phenotype.tabtype:
                         pelt.append("Masked")
                 if self.phenotype.tortie:
-                    if self.genotype.white[1] in ['ws', 'wt'] or self.genotype.whitegrade > 4:
+                    if self.phenotype.white[1] in ['ws', 'wt'] or self.phenotype.whitegrade > 4:
                         pelt.append("Calico")
                     else:
                         pelt.append("Tortie")
                 if 'smoke' in self.phenotype.silvergold:
                     pelt.append("Smoke")
-            if (self.genotype.white[1] in ['ws', 'wt'] and self.genotype.whitegrade < 4) or\
-                (self.genotype.white[0] in ['ws', 'wt'] and self.genotype.white[1] not in ['ws', 'wt'] and self.genotype.whitegrade > 2):
+            if (self.phenotype.white[1] in ['ws', 'wt'] and self.phenotype.whitegrade < 4) or\
+                (self.phenotype.white[0] in ['ws', 'wt'] and self.phenotype.white[1] not in ['ws', 'wt'] and self.phenotype.whitegrade > 2):
                 pelt.append("TwoColour")
 
         tries = 0

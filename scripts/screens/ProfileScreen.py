@@ -268,7 +268,7 @@ class ProfileScreen(Screens):
                 #if the cat is anything besides m/f/transm/transf then turn them back to cis
                 if self.the_cat.genderalign.replace("intersex ", "") not in ["molly", "trans molly", "tom", "trans tom"]:
                     if self.the_cat.gender == 'intersex':
-                        if('Y' in self.the_cat.genotype.sexgene):
+                        if('Y' in self.the_cat.phenotype.sexgene):
                             self.the_cat.genderalign = 'intersex tom'
                         else:
                             self.the_cat.genderalign = 'intersex molly'
@@ -280,12 +280,12 @@ class ProfileScreen(Screens):
                     self.the_cat.genderalign = self.the_cat.gender
                 #if the cat is cis (gender & gender align are the same) then set them to trans
                 #cis toms -> trans molly first
-                elif (self.the_cat.gender == "tom" or (self.the_cat.gender == 'intersex' and 'Y' in self.the_cat.genotype.sexgene)) and self.the_cat.genderalign.replace('intersex ', "") == 'tom':
+                elif (self.the_cat.gender == "tom" or (self.the_cat.gender == 'intersex' and 'Y' in self.the_cat.phenotype.sexgene)) and self.the_cat.genderalign.replace('intersex ', "") == 'tom':
                     self.the_cat.genderalign = 'trans molly'
                     if self.the_cat.gender == 'intersex':
                         self.the_cat.genderalign = 'intersex trans molly'
                 #cis mollys -> trans tom
-                elif (self.the_cat.gender == "molly" or (self.the_cat.gender == 'intersex' and 'Y' not in self.the_cat.genotype.sexgene)) and self.the_cat.genderalign.replace('intersex ', "") == 'molly':
+                elif (self.the_cat.gender == "molly" or (self.the_cat.gender == 'intersex' and 'Y' not in self.the_cat.phenotype.sexgene)) and self.the_cat.genderalign.replace('intersex ', "") == 'molly':
                     self.the_cat.genderalign = 'trans tom'
                     if self.the_cat.gender == 'intersex':
                         self.the_cat.genderalign = 'intersex trans tom'
@@ -740,17 +740,17 @@ class ProfileScreen(Screens):
         output += "\n"
         
         # BODY TYPE
-        output += "body type: " + the_cat.genotype.body_label
+        output += "body type: " + the_cat.phenotype.body_label
         # NEWLINE ----------
         output += "\n"
         
         # HEIGHT
-        output += "size: " + the_cat.genotype.height_label
+        output += "size: " + the_cat.phenotype.height_label
         if game.clan.clan_settings["showheight"]:
             if game.clan.clan_settings["metric_toggle"]:
-                output += f" ({the_cat.genotype.shoulder_height * 2.54:.2f} cm)"
+                output += f" ({the_cat.phenotype.shoulder_height * 2.54:.2f} cm)"
             else:
-                output += " ("+ str(the_cat.genotype.shoulder_height) +"\")"
+                output += " ("+ str(the_cat.phenotype.shoulder_height) +"\")"
 
         # ACCESSORY
         if the_cat.pelt.accessory:
@@ -2177,19 +2177,19 @@ class ProfileScreen(Screens):
 
         elif self.open_tab == "personal":
             # Button to trans or cis the cats.
-            if (self.the_cat.gender == "tom" or (self.the_cat.gender == 'intersex' and 'Y' in self.the_cat.genotype.sexgene)) and self.the_cat.genderalign.replace("intersex ", "") == "tom":
+            if (self.the_cat.gender == "tom" or (self.the_cat.gender == 'intersex' and 'Y' in self.the_cat.phenotype.sexgene)) and self.the_cat.genderalign.replace("intersex ", "") == "tom":
                 self.cis_trans_button.set_text("screens.profile.change_gender_transfemale")
             elif (
-                (self.the_cat.gender == "molly" or (self.the_cat.gender == 'intersex' and 'Y' not in self.the_cat.genotype.sexgene)) and self.the_cat.genderalign.replace("intersex ", "") == "molly"
+                (self.the_cat.gender == "molly" or (self.the_cat.gender == 'intersex' and 'Y' not in self.the_cat.phenotype.sexgene)) and self.the_cat.genderalign.replace("intersex ", "") == "molly"
             ):
                 self.cis_trans_button.set_text("screens.profile.change_gender_transmale")
             elif self.the_cat.genderalign.replace("intersex ", "") in ['trans molly', 'trans tom']:
                 self.cis_trans_button.set_text("screens.profile.change_gender_nonbinary")
             elif self.the_cat.genderalign.replace("intersex ", "") not in ['molly', 'trans molly', 'tom', 'trans tom']:
                 self.cis_trans_button.set_text("screens.profile.change_gender_cis")
-            elif (self.the_cat.gender == "tom" or (self.the_cat.gender == 'intersex' and 'Y' in self.the_cat.genotype.sexgene)) and self.the_cat.genderalign.replace("intersex ", "") == "molly":
+            elif (self.the_cat.gender == "tom" or (self.the_cat.gender == 'intersex' and 'Y' in self.the_cat.phenotype.sexgene)) and self.the_cat.genderalign.replace("intersex ", "") == "molly":
                 self.cis_trans_button.set_text("screens.profile.change_gender_cis")
-            elif (self.the_cat.gender == "molly" or (self.the_cat.gender == 'intersex' and 'Y' not in self.the_cat.genotype.sexgene)) and self.the_cat.genderalign.replace("intersex ", "") == "tom":
+            elif (self.the_cat.gender == "molly" or (self.the_cat.gender == 'intersex' and 'Y' not in self.the_cat.phenotype.sexgene)) and self.the_cat.genderalign.replace("intersex ", "") == "tom":
                 self.cis_trans_button.set_text("screens.profile.change_gender_cis")
             elif self.the_cat.genderalign:
                 self.cis_trans_button.set_text("screens.profile.change_gender_cis")
@@ -2361,10 +2361,9 @@ class ProfileScreen(Screens):
                 if self.genetic_text_box:
                     self.genetic_text_box.kill()
 
-                self.genelist = str(self.the_cat.phenotype.PhenotypeOutput(self.the_cat.genotype.white_pattern)) + "\n" + str(self.the_cat.genotype.ShowGenes(game.settings["filter genes"])) + "\n" + self.the_cat.genotype.FormatSomatic()
-                if(self.the_cat.genotype.chimera):
-                    chimpheno = Phenotype(self.the_cat.genotype.chimerageno)
-                    self.genelist += "\n\n" + str(chimpheno.PhenotypeOutput(self.the_cat.genotype.chimerageno.white_pattern)) + "\n" + str(self.the_cat.genotype.chimerageno.ShowGenes(game.settings["filter genes"]))
+                self.genelist = str(self.the_cat.phenotype.PhenotypeOutput(self.the_cat.phenotype.white_pattern, chimera=self.the_cat.chimerapheno)) + "\n" + str(self.the_cat.phenotype.ShowGenes(game.settings["filter genes"])) + "\n" + self.the_cat.phenotype.FormatSomatic()
+                if(self.the_cat.chimerapheno):
+                    self.genelist += "\n\n" + str(self.the_cat.chimerapheno.PhenotypeOutput(self.the_cat.chimerapheno.white_pattern, chimera=self.the_cat.chimerapheno)) + "\n" + str(self.the_cat.chimerapheno.ShowGenes(game.settings["filter genes"]))
 
                 self.genetic_text_box = UITextBoxTweaked(
                     self.genelist,

@@ -1,4 +1,4 @@
-from .genotype import *
+from .phenotype import *
 from .phenotype import *
 from random import choice, random
 from operator import xor
@@ -10,13 +10,12 @@ class Namer():
         self.all_prefixes = mod_prefixes
         self.moons = moons
 
-    def start(self, genotype, phenotype, chimera_pheno = None):
-        self.genotype = genotype
+    def start(self, phenotype, chimera_pheno = None):
         self.phenotype = phenotype
         self.chimera_pheno = chimera_pheno
 
-        if genotype:
-            params = self.parse_chimera() if genotype.chimera else self.get_categories(genotype, phenotype)
+        if phenotype:
+            params = self.parse_chimera() if chimera_pheno else self.get_categories(phenotype)
 
             if params[0] in ['white', 'silver shaded'] or (params[3] == 'high' and random() < 0.2):
                 return self.white(params[0])
@@ -53,8 +52,8 @@ class Namer():
         point = 'none'
 
         #compare different chimera halves here
-        set_one = self.get_categories(self.genotype, self.phenotype)
-        set_two = self.get_categories(self.genotype.chimerageno, self.chimera_pheno)
+        set_one = self.get_categories(self.phenotype)
+        set_two = self.get_categories(self.chimera_pheno)
 
 
         #the easy part
@@ -136,7 +135,7 @@ class Namer():
 
         return [base, tortie, tabby, white, point, tortie_mimic]
 
-    def get_categories(self, genotype, phenotype):
+    def get_categories(self, phenotype):
         
         # Categories are split into: base, tortie?, tabby (pattern, silver, golden), white amount, point
         base = ""
@@ -156,11 +155,11 @@ class Namer():
 
         if (phenotype.colour in ['white', 'albino'] or 
             (phenotype.maincolour == 'white' and not phenotype.patchmain) or
-            (genotype.white[1] in ['ws', 'wt'] and genotype.whitegrade == 5) or
-            (genotype.tortiepattern == ['revCRYPTIC'] and genotype.brindledbi) or 
-            (genotype.dilute[0] == 'd' and genotype.pinkdilute[0] == 'dp' and 
-                (('dove' in phenotype.colour and genotype.saturation < 2) or 
-                ('platinum' in phenotype.colour and genotype.saturation < 3) or
+            (phenotype.white[1] in ['ws', 'wt'] and phenotype.whitegrade == 5) or
+            (phenotype.tortiepattern == ['revCRYPTIC'] and phenotype.brindledbi) or 
+            (phenotype.dilute[0] == 'd' and phenotype.pinkdilute[0] == 'dp' and 
+                (('dove' in phenotype.colour and phenotype.saturation < 2) or 
+                ('platinum' in phenotype.colour and phenotype.saturation < 3) or
                 ('dove' not in phenotype.colour and 'platinum' not in phenotype.colour)))
             ):
             base = 'white'
@@ -168,34 +167,34 @@ class Namer():
         elif ('silver' in phenotype.silvergold and ('shaded' in phenotype.tabby or 'chinchilla' in phenotype.tabby)):
             base = 'silver shaded'
             return [base, tortie, tabby, white, point]
-        elif (('o' not in genotype.sexgene or genotype.tortiepattern == ['revCRYPTIC']) or (genotype.ext[0] == 'ea' and ((self.moons > 11 and genotype.agouti[0] != 'a') or (self.moons > 23))) or (genotype.ext[0] == 'er' and self.moons > 23) or (genotype.ext[0] == 'ec' and self.moons > 0 and (genotype.agouti[0] != 'a' or self.moons > 5))) and not genotype.specialred in ['cinnamon'] and not (genotype.silver[0] == 'I' and genotype.specialred in ['blue-red']):
-            if genotype.dilute[0] == 'd' or genotype.pinkdilute[0] == 'dp' or (genotype.silver[0] == 'I' and genotype.specialred in ['cameo', 'merle']):
+        elif (('o' not in phenotype.sexgene or phenotype.tortiepattern == ['revCRYPTIC']) or (phenotype.ext[0] == 'ea' and ((self.moons > 11 and phenotype.agouti[0] != 'a') or (self.moons > 23))) or (phenotype.ext[0] == 'er' and self.moons > 23) or (phenotype.ext[0] == 'ec' and self.moons > 0 and (phenotype.agouti[0] != 'a' or self.moons > 5))) and not phenotype.specialred in ['cinnamon'] and not (phenotype.silver[0] == 'I' and phenotype.specialred in ['blue-red']):
+            if phenotype.dilute[0] == 'd' or phenotype.pinkdilute[0] == 'dp' or (phenotype.silver[0] == 'I' and phenotype.specialred in ['cameo', 'merle']):
                 base = 'cream'
             else:
                 base = 'ginger'
         else:
-            if ('O' in genotype.sexgene and not genotype.brindledbi and (not genotype.tortiepattern or 'CRYPTIC' not in genotype.tortiepattern[0])) or 'bimetal' in phenotype.silvergold or (genotype.silver[0] == 'I' and genotype.specialred == 'merle'):
+            if ('O' in phenotype.sexgene and not phenotype.brindledbi and (not phenotype.tortiepattern or 'CRYPTIC' not in phenotype.tortiepattern[0])) or 'bimetal' in phenotype.silvergold or (phenotype.silver[0] == 'I' and phenotype.specialred == 'merle'):
                 tortie = True
-            elif ('O' in genotype.sexgene and genotype.brindledbi):
+            elif ('O' in phenotype.sexgene and phenotype.brindledbi):
                 white = 'mid'
             
-            if (genotype.eumelanin[0] == 'bl') or (phenotype.colour == 'sable' and genotype.pointgene[0] == 'cm') or 'cinnamon' in phenotype.maincolour or 'fawn' in phenotype.spritecolour:
-                if 'fawn' in phenotype.spritecolour or genotype.dilute[0] == 'd' or genotype.pinkdilute[0] == 'dp':
+            if (phenotype.eumelanin[0] == 'bl') or (phenotype.colour == 'sable' and phenotype.pointgene[0] == 'cm') or 'cinnamon' in phenotype.maincolour or 'fawn' in phenotype.spritecolour:
+                if 'fawn' in phenotype.spritecolour or phenotype.dilute[0] == 'd' or phenotype.pinkdilute[0] == 'dp':
                     base = 'fawn'
                 else:
                     base = 'cinnamon'
-            elif genotype.eumelanin[0] == 'b' or 'lilac' in phenotype.spritecolour:
-                if 'lilac' in phenotype.spritecolour or genotype.dilute[0] == 'd' or genotype.pinkdilute[0] == 'dp':
+            elif phenotype.eumelanin[0] == 'b' or 'lilac' in phenotype.spritecolour:
+                if 'lilac' in phenotype.spritecolour or phenotype.dilute[0] == 'd' or phenotype.pinkdilute[0] == 'dp':
                     base = 'lilac'
                 else:
                     base = 'chocolate'
             else:
-                if 'blue' in phenotype.spritecolour or genotype.dilute[0] == 'd' or genotype.pinkdilute[0] == 'dp':
+                if 'blue' in phenotype.spritecolour or phenotype.dilute[0] == 'd' or phenotype.pinkdilute[0] == 'dp':
                     base = 'blue'
                 else:
                     base = 'black'
             
-        if base in ['ginger', 'cream'] or (genotype.agouti[0] != "a") or (genotype.ext[0] not in ['Eg', 'E']) or 'light smoke' in phenotype.silvergold:
+        if base in ['ginger', 'cream'] or (phenotype.agouti[0] != "a") or (phenotype.ext[0] not in ['Eg', 'E']) or 'light smoke' in phenotype.silvergold:
             sprite = phenotype.GetTabbySprite()
             if 'bar' in sprite or 'ghost' in sprite or 'chinchilla' in phenotype.tabby:
                 tabby['pattern'] = 'ticked'
@@ -206,9 +205,9 @@ class Namer():
             else:
                 tabby['pattern'] = 'spotted'
 
-            if base not in ['ginger', 'cream'] and ('smoke' in phenotype.silvergold or 'masked' in phenotype.silvergold or genotype.ext[0] == "Eg" or (('charcoal' in phenotype.tabtype or genotype.ruftype == 'low') and genotype.wbtype in ['low', 'medium'])):
+            if base not in ['ginger', 'cream'] and ('smoke' in phenotype.silvergold or 'masked' in phenotype.silvergold or phenotype.ext[0] == "Eg" or (('charcoal' in phenotype.tabtype or phenotype.ruftype == 'low') and phenotype.wbtype in ['low', 'medium'])):
                 tabby['type'] = 'dark'
-            elif 'silver' in phenotype.silvergold or 'cameo' in phenotype.silvergold or 'bimetal' in phenotype.silvergold or genotype.brindledbi:
+            elif 'silver' in phenotype.silvergold or 'cameo' in phenotype.silvergold or 'bimetal' in phenotype.silvergold or phenotype.brindledbi:
                 tabby['type'] = 'silver'
             elif phenotype.silvergold:
                 tabby['type'] = 'golden'
@@ -227,24 +226,24 @@ class Namer():
 
             
 
-        if (genotype.white[1] in ['ws', 'wt'] and genotype.whitegrade > 2) or (self.moons < 6 and genotype.karp[0] == 'K'):
+        if (phenotype.white[1] in ['ws', 'wt'] and phenotype.whitegrade > 2) or (self.moons < 6 and phenotype.karp[0] == 'K'):
             white = 'high'
-        elif genotype.white[1] in ['ws', 'wt'] or (genotype.white[0] in ['ws', 'wt'] and genotype.whitegrade > 4) or genotype.white[0] == 'wsal' or (self.moons > 12 and genotype.vitiligo) or genotype.karp[0] == 'K':
+        elif phenotype.white[1] in ['ws', 'wt'] or (phenotype.white[0] in ['ws', 'wt'] and phenotype.whitegrade > 4) or phenotype.white[0] == 'wsal' or (self.moons > 12 and phenotype.vitiligo) or phenotype.karp[0] == 'K':
             white = 'mid'
-        elif white != 'mid' and ((genotype.white[0] in ['ws', 'wt'] and genotype.whitegrade > 1) or genotype.white[0] == 'wg' or (genotype.vitiligo and self.moons > 5)) and genotype.white_pattern != "No":
+        elif white != 'mid' and ((phenotype.white[0] in ['ws', 'wt'] and phenotype.whitegrade > 1) or phenotype.white[0] == 'wg' or (phenotype.vitiligo and self.moons > 5)) and phenotype.white_pattern != "No":
             white = 'low'
-        elif white != 'mid' and self.moons > 11 and genotype.vitiligo:
+        elif white != 'mid' and self.moons > 11 and phenotype.vitiligo:
             white = 'low'
 
-        if genotype.pointgene[0] == 'cs' or 'masked' in phenotype.silvergold or (self.moons < 4 and genotype.fevercoat) or (self.moons > 3 and genotype.bleach[0] == 'lb'):
+        if phenotype.pointgene[0] == 'cs' or 'masked' in phenotype.silvergold or (self.moons < 4 and phenotype.fevercoat) or (self.moons > 3 and phenotype.bleach[0] == 'lb'):
             point = 'colourpoint'
-        elif genotype.pointgene == ['cb', 'cb'] or (genotype.pointgene == ['cm', 'cm'] and phenotype.colour != 'sable'):
+        elif phenotype.pointgene == ['cb', 'cb'] or (phenotype.pointgene == ['cm', 'cm'] and phenotype.colour != 'sable'):
             point = 'sepia'
             if base in ['ginger', 'cream']:
                 point = 'none'
             elif base in ['fawn', 'cinnamon']:
                 point = 'colourpoint'
-        elif genotype.pointgene[0] == 'cb':
+        elif phenotype.pointgene[0] == 'cb':
             point = 'mink'
             if base != 'black':
                 point = 'colourpoint'
@@ -262,9 +261,9 @@ class Namer():
             extra_prefixes += self.all_prefixes['general']['small']
             extra_prefixes += self.all_prefixes['general']['small']
         else:
-            if self.genotype.shoulder_height > 11:
+            if self.phenotype.shoulder_height > 11:
                 extra_prefixes += self.all_prefixes['general']['big']
-            elif self.genotype.shoulder_height < 9:
+            elif self.phenotype.shoulder_height < 9:
                 extra_prefixes += self.all_prefixes['general']['small']
 
         try:
@@ -411,7 +410,7 @@ class Namer():
     def black(self, params):
         if params[4] != 'none':
             #babies don't have points
-            if self.moons == 0 and self.genotype.pointgene[0] == 'cs':
+            if self.moons == 0 and self.phenotype.pointgene[0] == 'cs':
                 return self.white('white')
             elif self.moons == 0 and params[4] == 'mink':
                 return self.fawn(params)
@@ -422,7 +421,7 @@ class Namer():
             if (params[2]['pattern'] != '' and params[2]['type'] != 'dark') or random() < 0.25:
                 if params[2]['pattern'] != '' and params[2]['type'] != 'dark':
                     params[2]['type'] = 'silver'
-                if params[4] == 'colourpoint' and (self.genotype.pointgene in ['cm', 'c'] or 'masked' in self.phenotype.silvergold or (self.moons < 4 and self.genotype.fevercoat) or (self.moons > 3 and self.genotype.bleach[0] == 'lb')):
+                if params[4] == 'colourpoint' and (self.phenotype.pointgene in ['cm', 'c'] or 'masked' in self.phenotype.silvergold or (self.moons < 4 and self.phenotype.fevercoat) or (self.moons > 3 and self.phenotype.bleach[0] == 'lb')):
                     if params[2]['pattern'] != '' and params[2]['type'] != 'dark':
                         return self.white('silver shaded')
                     else:
@@ -437,20 +436,20 @@ class Namer():
             #naming for point colour
 
             if random() < 0.1:
-                if (self.genotype.tortiepattern or params[5]) and (random() < 0.25 or (len(self.genotype.tortiepattern) > 2 and 'rev' not in self.genotype.tortiepattern[0])):
+                if (self.phenotype.tortiepattern or params[5]) and (random() < 0.25 or (len(self.phenotype.tortiepattern) > 2 and 'rev' not in self.phenotype.tortiepattern[0])):
                     return self.tabby('ginger', params[1], {'pattern' : params[2]['tortie_red'], 'type' : 'silver'}, params[3])
-                elif self.genotype.tortiepattern and random() < 0.33:
+                elif self.phenotype.tortiepattern and random() < 0.33:
                     return self.solid(params[0], False, params[2]['pattern'], params[3])
                 else:
                     return self.solid(params[0], params[1], params[2]['pattern'], params[3])
 
             #overall colourpoint names
-            if self.genotype.tortiepattern and (random() < 0.25 or (len(self.genotype.tortiepattern) > 2 and 'rev' not in self.genotype.tortiepattern[0])):
+            if self.phenotype.tortiepattern and (random() < 0.25 or (len(self.phenotype.tortiepattern) > 2 and 'rev' not in self.phenotype.tortiepattern[0])):
                 if params[4] == 'sepia':
                     return self.tabby('ginger', False, {'pattern' : params[2]['tortie_red'], 'type' : 'silver'}, params[3])
                 else:
                     return self.point('ginger', False, 'colourpoint', params[3])
-            elif self.genotype.tortiepattern and random() < 0.33:
+            elif self.phenotype.tortiepattern and random() < 0.33:
                 return self.point(params[0], False, params[4], params[3])
             else:
                 return self.point(params[0], params[1], params[4], params[3])
@@ -459,15 +458,15 @@ class Namer():
             params[0] = 'golden shaded'
             return self.golden(params)
         
-        if self.genotype.tortiepattern and (random() < 0.25 or (len(self.genotype.tortiepattern) > 2 and 'rev' not in self.genotype.tortiepattern[0])):
-            return self.tabby('ginger', params[1], {'pattern' : params[2]['tortie_red'], 'type' : 'silver' if self.genotype.silver[0] == 'I' else 'regular'}, params[3])
+        if self.phenotype.tortiepattern and (random() < 0.25 or (len(self.phenotype.tortiepattern) > 2 and 'rev' not in self.phenotype.tortiepattern[0])):
+            return self.tabby('ginger', params[1], {'pattern' : params[2]['tortie_red'], 'type' : 'silver' if self.phenotype.silver[0] == 'I' else 'regular'}, params[3])
             
         if params[2]['type'] == 'dark' or params[2]['pattern'] == '':
-            if self.genotype.tortiepattern and random() < 0.33:
+            if self.phenotype.tortiepattern and random() < 0.33:
                 return self.solid(params[0], False, params[2]['pattern'], params[3])
             else:
                 return self.solid(params[0], params[1], params[2]['pattern'], params[3])
-        if self.genotype.tortiepattern and random() < 0.33:
+        if self.phenotype.tortiepattern and random() < 0.33:
             return self.tabby(params[0], False, params[2], params[3])
         else:
             return self.tabby(params[0], params[1], params[2], params[3])
@@ -475,7 +474,7 @@ class Namer():
     def blue(self, params):
         if params[4] != 'none':
             #babies don't have points
-            if self.moons == 0 and 'C' not in self.genotype.pointgene and params[4] != 'sepia':
+            if self.moons == 0 and 'C' not in self.phenotype.pointgene and params[4] != 'sepia':
                 return self.white('white')
             elif self.moons == 0 and params[4] == 'sepia':
                 return self.lilac(params)
@@ -484,7 +483,7 @@ class Namer():
             if (params[2]['pattern'] != '' and params[2]['type'] != 'dark') or random() < 0.25:
                 if params[2]['pattern'] != '' and params[2]['type'] != 'dark':
                     params[2]['type'] = 'silver'
-                if self.genotype.pointgene[0] == 'cs' or 'masked' in self.phenotype.silvergold or (self.moons < 4 and self.genotype.fevercoat) or (self.moons > 3 and self.genotype.bleach[0] == 'lb'):
+                if self.phenotype.pointgene[0] == 'cs' or 'masked' in self.phenotype.silvergold or (self.moons < 4 and self.phenotype.fevercoat) or (self.moons > 3 and self.phenotype.bleach[0] == 'lb'):
                     return self.white('white')
                 elif params[4] == 'colourpoint':
                     return self.lilac(params)
@@ -492,20 +491,20 @@ class Namer():
             #naming for point colour
 
             elif random() < 0.1:
-                if (self.genotype.tortiepattern or params[5]) and (random() < 0.25 or (len(self.genotype.tortiepattern) > 2 and 'rev' not in self.genotype.tortiepattern[0])):
+                if (self.phenotype.tortiepattern or params[5]) and (random() < 0.25 or (len(self.phenotype.tortiepattern) > 2 and 'rev' not in self.phenotype.tortiepattern[0])):
                     return self.tabby('cream', params[1], {'pattern' : params[2]['tortie_red'], 'type' : 'regular'}, params[3])
-                elif self.genotype.tortiepattern and random() < 0.33:
+                elif self.phenotype.tortiepattern and random() < 0.33:
                     return self.solid(params[0], False, params[2]['pattern'], params[3])
                 else:
                     return self.solid(params[0], params[1], params[2]['pattern'], params[3])
 
             #overall colourpoint names
-            elif self.genotype.tortiepattern and (random() < 0.25 or (len(self.genotype.tortiepattern) > 2 and 'rev' not in self.genotype.tortiepattern[0])):
+            elif self.phenotype.tortiepattern and (random() < 0.25 or (len(self.phenotype.tortiepattern) > 2 and 'rev' not in self.phenotype.tortiepattern[0])):
                 if params[4] == 'sepia':
                     return self.tabby('cream', False, {'pattern' : params[2]['tortie_red'], 'type' : 'regular'}, params[3])
                 else:
                     return self.point('cream', False, 'colourpoint', params[3])
-            elif self.genotype.tortiepattern and random() < 0.33:
+            elif self.phenotype.tortiepattern and random() < 0.33:
                 return self.point(params[0], False, params[4], params[3])
             else:
                 return self.point(params[0], params[1], params[4], params[3])
@@ -513,27 +512,27 @@ class Namer():
         if params[2]['type'] == 'golden' and params[2]['pattern'] == 'ticked':
             return self.cream(params)
         
-        if self.genotype.tortiepattern and (random() < 0.25 or (len(self.genotype.tortiepattern) > 2 and 'rev' not in self.genotype.tortiepattern[0])):
+        if self.phenotype.tortiepattern and (random() < 0.25 or (len(self.phenotype.tortiepattern) > 2 and 'rev' not in self.phenotype.tortiepattern[0])):
             return self.tabby('cream', params[1], {'pattern' : params[2]['tortie_red'], 'type' : 'regular'}, params[3])
             
         if params[2]['type'] == 'dark' or params[2]['pattern'] == '':
-            if self.genotype.tortiepattern and random() < 0.33:
+            if self.phenotype.tortiepattern and random() < 0.33:
                 return self.solid(params[0], False, params[2]['pattern'], params[3])
             else:
                 return self.solid(params[0], params[1], params[2]['pattern'], params[3])
-        if self.genotype.tortiepattern and random() < 0.33:
+        if self.phenotype.tortiepattern and random() < 0.33:
             return self.tabby(params[0], False, params[2], params[3])
         else:
             return self.tabby(params[0], params[1], params[2], params[3])
         
     def chocolate(self, params):
-        if self.genotype.saturation > 4 and random() < 0.2 and params[0] not in ['black', 'cinnamon']:
+        if self.phenotype.saturation > 4 and random() < 0.2 and params[0] not in ['black', 'cinnamon']:
             params[4] = params[4].replace('sepia', 'mink')
             return self.black(params)
 
         if params[4] != 'none' and params[0] != 'black':
             #babies don't have points
-            if self.moons == 0 and 'C' not in self.genotype.pointgene and params[4] != 'sepia':
+            if self.moons == 0 and 'C' not in self.phenotype.pointgene and params[4] != 'sepia':
                 return self.white('white')
             elif self.moons == 0 and params[4] == 'sepia':
                 return self.fawn(params)
@@ -542,7 +541,7 @@ class Namer():
             if (params[2]['pattern'] != '' and params[2]['type'] != 'dark') or random() < 0.25:
                 if params[2]['pattern'] != '' and params[2]['type'] != 'dark':
                     params[2]['type'] = 'silver'
-                if self.genotype.pointgene[0] == 'cs' or 'masked' in self.phenotype.silvergold or (self.moons < 4 and self.genotype.fevercoat) or (self.moons > 3 and self.genotype.bleach[0] == 'lb'):
+                if self.phenotype.pointgene[0] == 'cs' or 'masked' in self.phenotype.silvergold or (self.moons < 4 and self.phenotype.fevercoat) or (self.moons > 3 and self.phenotype.bleach[0] == 'lb'):
                     return self.white('white')
                 elif params[4] == 'colourpoint':
                     return self.fawn(params)
@@ -552,20 +551,20 @@ class Namer():
             #naming for point colour
 
             if random() < 0.1:
-                if (self.genotype.tortiepattern or params[5]) and (random() < 0.25 or (len(self.genotype.tortiepattern) > 2 and 'rev' not in self.genotype.tortiepattern[0])):
+                if (self.phenotype.tortiepattern or params[5]) and (random() < 0.25 or (len(self.phenotype.tortiepattern) > 2 and 'rev' not in self.phenotype.tortiepattern[0])):
                     return self.tabby('ginger', params[1], {'pattern' : params[2]['tortie_red'], 'type' : 'silver'}, params[3])
-                elif self.genotype.tortiepattern and random() < 0.33:
+                elif self.phenotype.tortiepattern and random() < 0.33:
                     return self.solid(params[0], False, params[2]['pattern'], params[3])
                 else:
                     return self.solid(params[0], params[1], params[2]['pattern'], params[3])
 
             #overall colourpoint names
-            if self.genotype.tortiepattern and (random() < 0.25 or (len(self.genotype.tortiepattern) > 2 and 'rev' not in self.genotype.tortiepattern[0])):
+            if self.phenotype.tortiepattern and (random() < 0.25 or (len(self.phenotype.tortiepattern) > 2 and 'rev' not in self.phenotype.tortiepattern[0])):
                 if params[4] == 'sepia':
                     return self.tabby('ginger', False, {'pattern' : params[2]['tortie_red'], 'type' : 'silver'}, params[3])
                 else:
                     return self.point('ginger', False, 'colourpoint', params[3])
-            elif self.genotype.tortiepattern and random() < 0.33:
+            elif self.phenotype.tortiepattern and random() < 0.33:
                 return self.point(params[0], False, params[4], params[3])
             else:
                 return self.point(params[0], params[1], params[4], params[3])
@@ -574,15 +573,15 @@ class Namer():
             params[0] = 'golden shaded'
             return self.golden(params)
         
-        if self.genotype.tortiepattern and (random() < 0.25 or (len(self.genotype.tortiepattern) > 2 and 'rev' not in self.genotype.tortiepattern[0])):
-            return self.tabby('ginger', params[1], {'pattern' : params[2]['tortie_red'], 'type' : 'silver' if self.genotype.silver[0] == 'I' else 'regular'}, params[3])
+        if self.phenotype.tortiepattern and (random() < 0.25 or (len(self.phenotype.tortiepattern) > 2 and 'rev' not in self.phenotype.tortiepattern[0])):
+            return self.tabby('ginger', params[1], {'pattern' : params[2]['tortie_red'], 'type' : 'silver' if self.phenotype.silver[0] == 'I' else 'regular'}, params[3])
             
         if params[2]['type'] == 'dark' or params[2]['pattern'] == '':
-            if self.genotype.tortiepattern and random() < 0.33:
+            if self.phenotype.tortiepattern and random() < 0.33:
                 return self.solid(params[0], False, params[2]['pattern'], params[3])
             else:
                 return self.solid(params[0], params[1], params[2]['pattern'], params[3])
-        if self.genotype.tortiepattern and random() < 0.33:
+        if self.phenotype.tortiepattern and random() < 0.33:
             return self.tabby(params[0], False, params[2], params[3])
         else:
             return self.tabby(params[0], params[1], params[2], params[3])
@@ -591,13 +590,13 @@ class Namer():
         if random() < 0.1:
             self.purple(params)
 
-        if self.genotype.saturation > 4 and random() < 0.2 and params[0] not in ['blue', 'fawn']:
+        if self.phenotype.saturation > 4 and random() < 0.2 and params[0] not in ['blue', 'fawn']:
             params[4] = params[4].replace('sepia', 'mink')
             return self.blue(params)
 
         if params[4] != 'none' and params[0] not in ['blue']:
             #babies don't have points
-            if self.moons == 0 and 'C' not in self.genotype.pointgene and params[4] != 'sepia':
+            if self.moons == 0 and 'C' not in self.phenotype.pointgene and params[4] != 'sepia':
                 return self.white('white')
             elif self.moons == 0 and params[4] == 'sepia':
                 return self.lilac(params)
@@ -606,26 +605,26 @@ class Namer():
             elif (params[2]['pattern'] != '' and params[2]['type'] != 'dark') or random() < 0.25:
                 if params[2]['pattern'] != '' and params[2]['type'] != 'dark':
                     params[2]['type'] = 'silver'
-                if self.genotype.pointgene[0] == 'cs' or 'masked' in self.phenotype.silvergold or (self.moons < 4 and self.genotype.fevercoat) or (self.moons > 3 and self.genotype.bleach[0] == 'lb'):
+                if self.phenotype.pointgene[0] == 'cs' or 'masked' in self.phenotype.silvergold or (self.moons < 4 and self.phenotype.fevercoat) or (self.moons > 3 and self.phenotype.bleach[0] == 'lb'):
                     return self.white('white')
 
             #naming for point colour
 
             elif random() < 0.1:
-                if (self.genotype.tortiepattern or params[5]) and (random() < 0.25 or (len(self.genotype.tortiepattern) > 2 and 'rev' not in self.genotype.tortiepattern[0])):
+                if (self.phenotype.tortiepattern or params[5]) and (random() < 0.25 or (len(self.phenotype.tortiepattern) > 2 and 'rev' not in self.phenotype.tortiepattern[0])):
                     return self.tabby('cream', params[1], {'pattern' : params[2]['tortie_red'], 'type' : 'regular'}, params[3])
-                elif self.genotype.tortiepattern and random() < 0.33:
+                elif self.phenotype.tortiepattern and random() < 0.33:
                     return self.solid(params[0], False, params[2]['pattern'], params[3])
                 else:
                     return self.solid(params[0], params[1], params[2]['pattern'], params[3])
 
             #overall colourpoint names
-            elif self.genotype.tortiepattern and (random() < 0.25 or (len(self.genotype.tortiepattern) > 2 and 'rev' not in self.genotype.tortiepattern[0])):
+            elif self.phenotype.tortiepattern and (random() < 0.25 or (len(self.phenotype.tortiepattern) > 2 and 'rev' not in self.phenotype.tortiepattern[0])):
                 if params[4] == 'sepia':
                     return self.tabby('cream', False, {'pattern' : params[2]['tortie_red'], 'type' : 'regular'}, params[3])
                 else:
                     return self.point('cream', False, 'colourpoint', params[3])
-            elif self.genotype.tortiepattern and random() < 0.33:
+            elif self.phenotype.tortiepattern and random() < 0.33:
                 return self.point(params[0], False, params[4], params[3])
             else:
                 return self.point(params[0], params[1], params[4], params[3])
@@ -633,35 +632,35 @@ class Namer():
         if params[2]['type'] == 'golden' and params[2]['pattern'] == 'ticked':
             return self.cream(params)
         
-        if self.genotype.tortiepattern and (random() < 0.25 or (len(self.genotype.tortiepattern) > 2 and 'rev' not in self.genotype.tortiepattern[0])):
+        if self.phenotype.tortiepattern and (random() < 0.25 or (len(self.phenotype.tortiepattern) > 2 and 'rev' not in self.phenotype.tortiepattern[0])):
             return self.tabby('cream', params[1], {'pattern' : params[2]['tortie_red'], 'type' : 'regular'}, params[3])
             
         if params[2]['type'] == 'dark' or params[2]['pattern'] == '':
-            if self.genotype.tortiepattern and random() < 0.33:
+            if self.phenotype.tortiepattern and random() < 0.33:
                 return self.solid(params[0], False, params[2]['pattern'], params[3])
             else:
                 return self.solid(params[0], params[1], params[2]['pattern'], params[3])
-        if self.genotype.tortiepattern and random() < 0.33:
+        if self.phenotype.tortiepattern and random() < 0.33:
             return self.tabby(params[0], False, params[2], params[3])
         else:
             return self.tabby(params[0], params[1], params[2], params[3])
         
     def cinnamon(self, params):
-        if self.genotype.saturation > 4 and random() < 0.2 and params[0] not in ['black', 'chocolate']:
+        if self.phenotype.saturation > 4 and random() < 0.2 and params[0] not in ['black', 'chocolate']:
             return self.chocolate(params)
         if random() < 0.1:
             return self.red(params)
 
         if params[4] != 'none' and params[0] not in ['black', 'chocolate']:
             #babies don't have points
-            if self.moons == 0 and 'C' not in self.genotype.pointgene:
+            if self.moons == 0 and 'C' not in self.phenotype.pointgene:
                 return self.white('white')
 
             #naming for body colour
             if (params[2]['pattern'] != '' and params[2]['type'] != 'dark') or random() < 0.25:
                 if params[2]['pattern'] != '' and params[2]['type'] != 'dark':
                     params[2]['type'] = 'silver'
-                if (self.genotype.pointgene[0] != 'C' and self.genotype.pointgene != ['cb', 'cb']) or 'masked' in self.phenotype.silvergold or (self.moons < 4 and self.genotype.fevercoat) or (self.moons > 3 and self.genotype.bleach[0] == 'lb'):
+                if (self.phenotype.pointgene[0] != 'C' and self.phenotype.pointgene != ['cb', 'cb']) or 'masked' in self.phenotype.silvergold or (self.moons < 4 and self.phenotype.fevercoat) or (self.moons > 3 and self.phenotype.bleach[0] == 'lb'):
                     return self.white('white')
                 else:
                     return self.fawn(params)
@@ -669,20 +668,20 @@ class Namer():
             #naming for point colour
 
             if random() < 0.1:
-                if (self.genotype.tortiepattern or params[5]) and (random() < 0.25 or (len(self.genotype.tortiepattern) > 2 and 'rev' not in self.genotype.tortiepattern[0])):
+                if (self.phenotype.tortiepattern or params[5]) and (random() < 0.25 or (len(self.phenotype.tortiepattern) > 2 and 'rev' not in self.phenotype.tortiepattern[0])):
                     return self.tabby('ginger', params[1], {'pattern' : params[2]['tortie_red'], 'type' : 'silver'}, params[3])
-                elif self.genotype.tortiepattern and random() < 0.33:
+                elif self.phenotype.tortiepattern and random() < 0.33:
                     return self.solid(params[0], False, params[2]['pattern'], params[3])
                 else:
                     return self.solid(params[0], params[1], params[2]['pattern'], params[3])
 
             #overall colourpoint names
-            if self.genotype.tortiepattern and (random() < 0.25 or (len(self.genotype.tortiepattern) > 2 and 'rev' not in self.genotype.tortiepattern[0])):
-                if not((self.genotype.pointgene[0] != 'C' and self.genotype.pointgene != ['cb', 'cb']) or 'masked' in self.phenotype.silvergold or (self.moons < 4 and self.genotype.fevercoat) or (self.moons > 3 and self.genotype.bleach[0] == 'lb')):
+            if self.phenotype.tortiepattern and (random() < 0.25 or (len(self.phenotype.tortiepattern) > 2 and 'rev' not in self.phenotype.tortiepattern[0])):
+                if not((self.phenotype.pointgene[0] != 'C' and self.phenotype.pointgene != ['cb', 'cb']) or 'masked' in self.phenotype.silvergold or (self.moons < 4 and self.phenotype.fevercoat) or (self.moons > 3 and self.phenotype.bleach[0] == 'lb')):
                     return self.tabby('ginger', False, {'pattern' : params[2]['tortie_red'], 'type' : 'silver'}, params[3])
                 else:
                     return self.point('ginger', False, 'colourpoint', params[3])
-            elif self.genotype.tortiepattern and random() < 0.33:
+            elif self.phenotype.tortiepattern and random() < 0.33:
                 return self.point(params[0], False, params[4], params[3])
             else:
                 return self.point(params[0], params[1], params[4], params[3])
@@ -691,28 +690,28 @@ class Namer():
             params[0] = 'golden shaded'
             return self.golden(params)
         
-        if self.genotype.tortiepattern and (random() < 0.25 or (len(self.genotype.tortiepattern) > 2 and 'rev' not in self.genotype.tortiepattern[0])):
-            return self.tabby('ginger', params[1], {'pattern' : params[2]['tortie_red'], 'type' : 'silver' if self.genotype.silver[0] == 'I' else 'regular'}, params[3])
+        if self.phenotype.tortiepattern and (random() < 0.25 or (len(self.phenotype.tortiepattern) > 2 and 'rev' not in self.phenotype.tortiepattern[0])):
+            return self.tabby('ginger', params[1], {'pattern' : params[2]['tortie_red'], 'type' : 'silver' if self.phenotype.silver[0] == 'I' else 'regular'}, params[3])
             
         if params[2]['type'] == 'dark' or params[2]['pattern'] == '':
-            if self.genotype.tortiepattern and random() < 0.33:
+            if self.phenotype.tortiepattern and random() < 0.33:
                 return self.solid(params[0], False, params[2]['pattern'], params[3])
             else:
                 return self.solid(params[0], params[1], params[2]['pattern'], params[3])
-        if self.genotype.tortiepattern and random() < 0.33:
+        if self.phenotype.tortiepattern and random() < 0.33:
             return self.tabby(params[0], False, params[2], params[3])
         else:
             return self.tabby(params[0], params[1], params[2], params[3])
         
     def fawn(self, params):
-        if self.genotype.saturation > 4 and random() < 0.2 and params[0] not in ['black', 'chocolate', 'cinnamon', 'blue', 'lilac']:
+        if self.phenotype.saturation > 4 and random() < 0.2 and params[0] not in ['black', 'chocolate', 'cinnamon', 'blue', 'lilac']:
             return self.lilac(params)
         if random() < 0.1:
             return self.pink(params)
 
         if params[4] != 'none' and params[0] not in ['black', 'chocolate', 'cinnamon', 'blue', 'lilac']:
             #babies don't have points
-            if self.moons == 0 and 'C' not in self.genotype.pointgene:
+            if self.moons == 0 and 'C' not in self.phenotype.pointgene:
                 return self.white('white')
 
             #naming for body colour
@@ -722,20 +721,20 @@ class Namer():
             #naming for point colour
 
             if random() < 0.1:
-                if (self.genotype.tortiepattern or params[5]) and (random() < 0.25 or (len(self.genotype.tortiepattern) > 2 and 'rev' not in self.genotype.tortiepattern[0])):
+                if (self.phenotype.tortiepattern or params[5]) and (random() < 0.25 or (len(self.phenotype.tortiepattern) > 2 and 'rev' not in self.phenotype.tortiepattern[0])):
                     return self.tabby('cream', params[1], {'pattern' : params[2]['tortie_red'], 'type' : 'regular'}, params[3])
-                elif self.genotype.tortiepattern and random() < 0.33:
+                elif self.phenotype.tortiepattern and random() < 0.33:
                     return self.solid(params[0], False, params[2]['pattern'], params[3])
                 else:
                     return self.solid(params[0], params[1], params[2]['pattern'], params[3])
 
             #overall colourpoint names
-            if self.genotype.tortiepattern and (random() < 0.25 or (len(self.genotype.tortiepattern) > 2 and 'rev' not in self.genotype.tortiepattern[0])):
-                if not((self.genotype.pointgene[0] != 'C' and self.genotype.pointgene != ['cb', 'cb']) or 'masked' in self.phenotype.silvergold or (self.moons < 4 and self.genotype.fevercoat) or (self.moons > 3 and self.genotype.bleach[0] == 'lb')):
+            if self.phenotype.tortiepattern and (random() < 0.25 or (len(self.phenotype.tortiepattern) > 2 and 'rev' not in self.phenotype.tortiepattern[0])):
+                if not((self.phenotype.pointgene[0] != 'C' and self.phenotype.pointgene != ['cb', 'cb']) or 'masked' in self.phenotype.silvergold or (self.moons < 4 and self.phenotype.fevercoat) or (self.moons > 3 and self.phenotype.bleach[0] == 'lb')):
                     return self.tabby('cream', False, {'pattern' : params[2]['tortie_red'], 'type' : 'regular'}, params[3])
                 else:
                     return self.point('cream', False, 'colourpoint', params[3])
-            elif self.genotype.tortiepattern and random() < 0.33:
+            elif self.phenotype.tortiepattern and random() < 0.33:
                 return self.point(params[0], False, params[4], params[3])
             else:
                 return self.point(params[0], params[1], params[4], params[3])
@@ -743,15 +742,15 @@ class Namer():
         if params[2]['type'] == 'golden' and params[2]['pattern'] == 'ticked':
             return self.cream(params)
         
-        if self.genotype.tortiepattern and (random() < 0.25 or (len(self.genotype.tortiepattern) > 2 and 'rev' not in self.genotype.tortiepattern[0])):
+        if self.phenotype.tortiepattern and (random() < 0.25 or (len(self.phenotype.tortiepattern) > 2 and 'rev' not in self.phenotype.tortiepattern[0])):
             return self.tabby('cream', params[1], {'pattern' : params[2]['tortie_red'], 'type' : 'regular'}, params[3])
             
         if params[2]['type'] == 'dark' or params[2]['pattern'] == '':
-            if self.genotype.tortiepattern and random() < 0.33:
+            if self.phenotype.tortiepattern and random() < 0.33:
                 return self.solid(params[0], False, params[2]['pattern'], params[3])
             else:
                 return self.solid(params[0], params[1], params[2]['pattern'], params[3])
-        if self.genotype.tortiepattern and random() < 0.33:
+        if self.phenotype.tortiepattern and random() < 0.33:
             return self.tabby(params[0], False, params[2], params[3])
         else:
             return self.tabby(params[0], params[1], params[2], params[3])
@@ -759,7 +758,7 @@ class Namer():
     def red(self, params):
         if params[4]:
             #babies don't have points
-            if self.moons == 0 and 'C' not in self.genotype.pointgene:
+            if self.moons == 0 and 'C' not in self.phenotype.pointgene:
                 return self.white('white')
             
             if random() > 0.9:
@@ -768,14 +767,14 @@ class Namer():
         self.solid('red', False, params[2]['pattern'], params[3])
 
     def ginger(self, params):
-        if self.genotype.ruftype == 'rufoused' and random() < 0.2:
+        if self.phenotype.ruftype == 'rufoused' and random() < 0.2:
             self.red(params)
-        if self.genotype.ruftype == 'low' and random() < 0.2:
+        if self.phenotype.ruftype == 'low' and random() < 0.2:
             self.golden(params)
 
         if params[4]:
             #babies don't have points
-            if self.moons == 0 and 'C' not in self.genotype.pointgene:
+            if self.moons == 0 and 'C' not in self.phenotype.pointgene:
                 return self.white('white')
             #naming for body colour
             if random() < 0.25:
@@ -795,7 +794,7 @@ class Namer():
     def golden(self, params):
         if params[4]:
             #babies don't have points
-            if self.moons == 0 and 'C' not in self.genotype.pointgene:
+            if self.moons == 0 and 'C' not in self.phenotype.pointgene:
                 return self.white('white')
 
             if random() > 0.9:
@@ -807,14 +806,14 @@ class Namer():
         self.solid('yellow', False, params[2]['pattern'], params[3])
 
     def cream(self, params):
-        if self.genotype.ruftype == 'rufoused' and random() < 0.2:
+        if self.phenotype.ruftype == 'rufoused' and random() < 0.2:
             self.golden(params)
-        if self.genotype.ruftype != 'rufoused' and random() < 0.1:
+        if self.phenotype.ruftype != 'rufoused' and random() < 0.1:
             self.pink(params)
 
         if params[4]:
             #babies don't have points
-            if self.moons == 0 and 'C' not in self.genotype.pointgene:
+            if self.moons == 0 and 'C' not in self.phenotype.pointgene:
                 return self.white('white')
             
             #naming for body colour
@@ -834,7 +833,7 @@ class Namer():
     def purple(self, params):
         if params[4]:
             #babies don't have points
-            if self.moons == 0 and 'C' not in self.genotype.pointgene:
+            if self.moons == 0 and 'C' not in self.phenotype.pointgene:
                 return self.white('white')
 
             if random() > 0.9:
@@ -845,7 +844,7 @@ class Namer():
     def pink(self, params):
         if params[4]:
             #babies don't have points
-            if self.moons == 0 and 'C' not in self.genotype.pointgene:
+            if self.moons == 0 and 'C' not in self.phenotype.pointgene:
                 return self.white('white')
                 
             if random() > 0.9:

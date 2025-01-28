@@ -20,7 +20,7 @@ from scripts.cat.enums import CatAgeEnum
 from scripts.cat.history import History
 from scripts.cat.names import Name
 from scripts.cat.pelts import Pelt
-from scripts.cat.genotype import Genotype
+from scripts.cat.phenotype import Genotype
 from scripts.cat.phenotype import Phenotype
 from scripts.cat.personality import Personality
 from scripts.cat.skills import CatSkills
@@ -128,8 +128,10 @@ class Cat:
         skill_dict=None,
         pelt:Pelt=None,
         genotype:Genotype=None,
+        chimerageno:Genotype=None,
         white_patterns=None,
         chim_white=None,
+        chim_pattern=None,
         loading_cat=False,  # Set to true if you are loading a cat at start-up.
         **kwargs
         ):
@@ -167,42 +169,77 @@ class Cat:
         self.parent3 = None
 
         self.adoptive_parents = adoptive_parents if adoptive_parents else []
-        self.genotype = Genotype(game.config['genetics_config'], game.settings["ban problem genes"])
-        #print(genotype)
+        self.phenotype = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
+        self.chimerapheno = None
+        chimera = False
+        if chimerageno:
+            self.chimerapheno = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
+            self.chimerapheno.fromJSON(chimerageno)
+            self.chimerapheno.chimerapattern = chim_pattern if chim_pattern else self.chimerapheno.ChooseTortiePattern("chimera")
+            chimera = True
+        elif not loading_cat and randint(1, game.config['genetics_config']["chimera"]) == 1:
+            self.chimerapheno = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
+            self.chimerapheno.chimerapattern = chim_pattern if chim_pattern else self.chimerapheno.ChooseTortiePattern("chimera")
+            chimera = True
+
         if genotype:
-            self.genotype.fromJSON(genotype)
+            self.phenotype.fromJSON(genotype)
         elif parent1 or parent2:
             if not parent1:
-                self.genotype.KitGenerator(Cat.all_cats[parent2].genotype, extrapar)
+                self.phenotype.KitGenerator(Cat.all_cats[parent2].phenotype, extrapar)
+                if chimera:
+                    self.chimerapheno.KitGenerator(Cat.all_cats[parent2].phenotype, extrapar, chimera=True)
             else:
                 try:    
-                    threepars = self.genotype.KitGenerator(Cat.all_cats[parent1].genotype, Cat.all_cats.get(parent2, extrapar), extrapar)
-                    if threepars and isinstance(extrapar, Cat):
-                        self.parent3 = extrapar.ID
+                    self.phenotype.KitGenerator(Cat.all_cats[parent1].phenotype, Cat.all_cats.get(parent2, extrapar), extrapar)
+                    if chimera:
+                        threepars = self.chimerapheno.KitGenerator(Cat.all_cats[parent1].phenotype, Cat.all_cats.get(parent2, extrapar), extrapar, chimera=True)
+                        if threepars and isinstance(extrapar, Cat):
+                            self.parent3 = extrapar.ID
                 except:
                     traceback.print_exc()
-                    self.genotype.Generator()
-        elif kittypet or status == 'kittypet':
-            self.genotype.AltGenerator(special=self.gender)
+                    self.phenotype.Generator()
         else:
-            self.genotype.Generator(special=self.gender)
+            if kittypet or status == 'kittypet':
+                self.phenotype.AltGenerator(special=self.gender)
+                if chimera:
+                    par1 = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
+                    par1.AltGenerator()
+                    par2 = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
+                    par2.AltGenerator()
+                    self.phenotype.KitGenerator(par1, par2)
+                    self.chimerapheno.KitGenerator(par1, par2)
+            else:
+                self.phenotype.Generator(special=self.gender)
+                if chimera:
+                    par1 = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
+                    par1.Generator()
+                    par2 = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
+                    par2.Generator()
+                    self.phenotype.KitGenerator(par1, par2)
+                    self.chimerapheno.KitGenerator(par1, par2)
+            if self.phenotype.munch[1] == 'Mk':
+                self.phenotype.munch[1] = "mk"
+            if self.phenotype.manx[1] not in ['m', 'ab']:
+                self.phenotype.manx[1] = self.manx[1].lower()
+            if 'NoDBE' not in self.phenotype.pax3 and 'DBEalt' not in self.phenotype.pax3:
+                self.phenotype.pax3[0] = 'DBEalt'
+        
         if not genotype:
-            if(randint(1, game.config['genetics_config']['intersex']) == 1) or (self.genotype.chimera and xor('Y' in self.genotype.sexgene, 'Y' in self.genotype.chimerageno.sexgene) and randint(1, round(game.config['genetics_config']['intersex']/4)) == 1):
-                self.genotype.sex = "intersex"
-                if(randint(1, 25) == 1 and 'Y' in self.genotype.sexgene):
-                    self.genotype.sex = 'molly'
+            if(randint(1, game.config['genetics_config']['intersex']) == 1) or (self.chimerapheno and xor('Y' in self.phenotype.sexgene, 'Y' in self.chimerapheno.sexgene) and randint(1, round(game.config['genetics_config']['intersex']/4)) == 1):
+                self.phenotype.sex = "intersex"
+                if(randint(1, 25) == 1 and 'Y' in self.phenotype.sexgene):
+                    self.phenotype.sex = 'molly'
 
-        self.phenotype = Phenotype(self.genotype)
-        self.phenotype.PhenotypeOutput(self.genotype.white_pattern)
+        self.phenotype.PhenotypeOutput(self.phenotype.white_pattern)
         self.phenotype.SpriteInfo(moons if moons else 0)
-        if self.genotype.chimerageno:
-            self.chimerapheno = Phenotype(self.genotype.chimerageno)
-            self.chimerapheno.PhenotypeOutput(self.genotype.chimerageno.white_pattern)
+        if chimera:
+            self.chimerapheno.PhenotypeOutput(self.chimerapheno.white_pattern)
             self.chimerapheno.SpriteInfo(moons if moons else 0)
 
-        self.gender = self.genotype.sex
+        self.gender = self.phenotype.sex
 
-        self.pelt = pelt if pelt else Pelt(self.genotype, self.phenotype)
+        self.pelt = pelt if pelt else Pelt(self.phenotype, self.phenotype)
 
         self.former_mentor = []
         self.patrol_with_mentor = 0
@@ -234,15 +271,15 @@ class Cat:
 
         white_pattern = white_patterns
 
-        self.genotype.white_pattern = self.GenerateWhite(self.genotype.white, self.genotype.pointgene, self.genotype.whitegrade, self.genotype.vitiligo, white_pattern, self.genotype.pax3)
+        self.phenotype.white_pattern = self.GenerateWhite(self.phenotype.white, self.phenotype.pointgene, self.phenotype.whitegrade, self.phenotype.vitiligo, white_pattern, self.phenotype.pax3)
         if self.phenotype.maincolour == 'white' and not self.phenotype.patchmain:
-            self.genotype.white_pattern = "No"
+            self.phenotype.white_pattern = "No"
 
         white_pattern = chim_white
-        if self.genotype.chimera:    
-            self.genotype.chimerageno.white_pattern = self.GenerateWhite(self.genotype.chimerageno.white, self.genotype.chimerageno.pointgene, self.genotype.chimerageno.whitegrade, self.genotype.chimerageno.vitiligo, white_pattern, self.genotype.chimerageno.pax3)
+        if self.chimerapheno:    
+            self.chimerapheno.white_pattern = self.GenerateWhite(self.chimerapheno.white, self.chimerapheno.pointgene, self.chimerapheno.whitegrade, self.chimerapheno.vitiligo, white_pattern, self.chimerapheno.pax3)
             if self.chimerapheno.maincolour == 'white' and not self.chimerapheno.patchmain:
-                self.genotype.chimerageno.white_pattern = "No"
+                self.chimerapheno.white_pattern = "No"
 
         # Various behavior toggles
         self.no_kits = False
@@ -258,7 +295,7 @@ class Cat:
         self.faded = faded  # This is only used to flag cats that are faded, but won't be added to the faded list until
         # the next save.
         
-        if self.genotype.munch[1] == "Mk" or (self.genotype.manx[1] == "Ab" or self.genotype.manx[1] == "M") or ('NoDBE' not in self.genotype.pax3 and 'DBEalt' not in self.genotype.pax3):
+        if self.phenotype.munch[1] == "Mk" or (self.phenotype.manx[1] == "Ab" or self.phenotype.manx[1] == "M") or ('NoDBE' not in self.phenotype.pax3 and 'DBEalt' not in self.phenotype.pax3):
             self.dead = True
 
         self.favourite = False
@@ -461,23 +498,23 @@ class Cat:
             self.genderalign = 'intersex '
         if nb_chance == 1:
             self.genderalign += "sam"
-        elif (self.gender == "molly" or (self.gender == 'intersex' and 'Y' not in self.genotype.sexgene)):
+        elif (self.gender == "molly" or (self.gender == 'intersex' and 'Y' not in self.phenotype.sexgene)):
             if trans_chance == 1:
                 self.genderalign += "trans tom"
             else:
                 if(self.gender == 'intersex'):
-                    if('Y' in self.genotype.sexgene):
+                    if('Y' in self.phenotype.sexgene):
                         self.genderalign += 'tom'
                     else:
                         self.genderalign += 'molly'
                 else:
                     self.genderalign += self.gender
-        elif (self.gender == "tom" or (self.gender == 'intersex' and 'Y' in self.genotype.sexgene)):
+        elif (self.gender == "tom" or (self.gender == 'intersex' and 'Y' in self.phenotype.sexgene)):
             if trans_chance == 1:
                 self.genderalign += "trans molly"
             else:
                 if(self.gender == 'intersex'):
-                    if('Y' in self.genotype.sexgene):
+                    if('Y' in self.phenotype.sexgene):
                         self.genderalign += 'tom'
                     else:
                         self.genderalign += 'molly'
@@ -487,7 +524,7 @@ class Cat:
         # PRONOUNS AUTO-GENERATE WHEN REQUIRED
 
         # APPEARANCE
-        self.pelt = Pelt.generate_new_pelt(self.genotype, self.phenotype, self.gender, [Cat.fetch_cat(i) for i in (self.parent1, self.parent2) if i], self.age)
+        self.pelt = Pelt.generate_new_pelt(self.phenotype, self.gender, [Cat.fetch_cat(i) for i in (self.parent1, self.parent2) if i], self.age)
     
         #Personality
         self.personality = Personality(kit_trait=self.age.is_baby())
@@ -807,15 +844,15 @@ class Cat:
         return hash(self.ID)
 
     def genetic_conditions(self):
-        if self.genotype.deaf:
-            if 'blue' in self.genotype.lefteyetype and 'blue' in self.genotype.righteyetype:
-                if 'DBEre' in self.genotype.pax3:
+        if self.phenotype.deaf:
+            if 'blue' in self.phenotype.lefteyetype and 'blue' in self.phenotype.righteyetype:
+                if 'DBEre' in self.phenotype.pax3:
                     self.get_permanent_condition(choice(['deaf in one ear', 'deaf in one ear', 'partial hearing loss in one ear', 'deaf', 'deaf', 'partial hearing loss']), born_with=True, genetic=True)
                 else:
                     self.get_permanent_condition(choice(['deaf', 'deaf', 'partial hearing loss']), born_with=True, genetic=True)
-            elif 'blue' not in self.genotype.lefteyetype or 'blue' not in self.genotype.righteyetype:
+            elif 'blue' not in self.phenotype.lefteyetype or 'blue' not in self.phenotype.righteyetype:
                 self.get_permanent_condition(choice(['deaf in one ear', 'deaf in one ear', 'partial hearing loss in one ear']), born_with=True, genetic=True)
-        if ('M' in self.genotype.manx and self.phenotype.bobtailnr):
+        if ('M' in self.phenotype.manx and self.phenotype.bobtailnr):
             manx_c = 0.95
             if self.phenotype.bobtailnr > 3:
                 manx_c = 0.995
@@ -823,17 +860,17 @@ class Cat:
                 manx_c = 0.98
             if(random() > manx_c):
                 self.get_permanent_condition('manx syndrome', born_with=True, genetic=True)
-        if self.genotype.body_label == "snub-nosed":
+        if self.phenotype.body_label == "snub-nosed":
             self.get_permanent_condition('flat nose', born_with=True, genetic=True)
 
-        if self.genotype.manx[0] == 'M' and (self.genotype.manxtype in ['rumpy', 'riser']):
+        if self.phenotype.manx[0] == 'M' and (self.phenotype.manxtype in ['rumpy', 'riser']):
             self.get_permanent_condition('born without a tail', born_with=True, genetic=True)
         
-        if (len(self.genotype.sexgene) > 2 and 'Y' in self.genotype.sexgene) or (self.gender == 'intersex' and random() < 0.2) or (self.gender == 'molly' and 'Y' in self.genotype.sexgene):
+        if (len(self.phenotype.sexgene) > 2 and 'Y' in self.phenotype.sexgene) or (self.gender == 'intersex' and random() < 0.2) or (self.gender == 'molly' and 'Y' in self.phenotype.sexgene):
             self.get_permanent_condition('infertility', born_with=True, genetic=True)
         
-        if self.genotype.fold[0] == 'Fd' or ('manx syndrome' in self.permanent_condition and 'M' in self.genotype.manx and self.phenotype.bobtailnr < 4 and self.phenotype.bobtailnr > 1 and random() < 0.05):
-            if not self.genotype.fold[1] == 'Fd':
+        if self.phenotype.fold[0] == 'Fd' or ('manx syndrome' in self.permanent_condition and 'M' in self.phenotype.manx and self.phenotype.bobtailnr < 4 and self.phenotype.bobtailnr > 1 and random() < 0.05):
+            if not self.phenotype.fold[1] == 'Fd':
                 self.get_permanent_condition('constant joint pain', born_with=True, genetic=True, custom_reveal=randint(3, 36))
             else:
                 self.get_permanent_condition('constant joint pain', born_with=True, genetic=True)
@@ -842,9 +879,9 @@ class Cat:
         if 'manx syndrome' in self.permanent_condition and ((self.phenotype.bobtailnr < 2 and random() > 0.2) or (self.phenotype.bobtailnr > 1 and random() > ((self.phenotype.bobtailnr) * 0.3))):
             self.get_permanent_condition('rabbit gait', born_with=True, genetic=True)
         
-        if(self.genotype.pointgene[0] == 'c'):
+        if(self.phenotype.pointgene[0] == 'c'):
             self.get_permanent_condition('albinism', born_with=True, genetic=True)
-        elif('albino' in self.genotype.lefteyetype or self.genotype.pinkdilute[0] == 'dp'):
+        elif('albino' in self.phenotype.lefteyetype or self.phenotype.pinkdilute[0] == 'dp'):
             self.get_permanent_condition('ocular albinism', born_with=True, genetic=True)
         
         if self.phenotype.length == 'hairless':
@@ -852,7 +889,7 @@ class Cat:
         if self.phenotype.length == 'fur-pointed' or 'patchy ' in self.phenotype.furtype:
             self.get_permanent_condition('partially hairless', born_with=True, genetic=True)
         
-        if self.genotype.munch[0] == 'Mk':
+        if self.phenotype.munch[0] == 'Mk':
             if random() < 0.33:
                 self.get_permanent_condition('constant joint pain', born_with=True, genetic=True, custom_reveal=randint(24, 120))
             if random() < 0.2:
@@ -860,7 +897,7 @@ class Cat:
             if random() < 0.05:
                 self.get_permanent_condition('narrowed chest', born_with=True, genetic=True)
 
-        if self.genotype.lykoi[0] == 'ly':
+        if self.phenotype.lykoi[0] == 'ly':
             self.get_permanent_condition('bumpy skin', born_with=True, genetic=True, custom_reveal=randint(36, 60))
 
     @property
@@ -1385,10 +1422,10 @@ class Cat:
         return Pelt.describe_appearance(self, short)
 
     def describe_eyes(self):
-        if(self.genotype.lefteye == self.genotype.righteye):
-            colour = self.genotype.lefteye.lower()
+        if(self.phenotype.lefteye == self.phenotype.righteye):
+            colour = self.phenotype.lefteye.lower()
         else:
-            colour = self.genotype.righteye.lower() + " & " + self.genotype.lefteye.lower()
+            colour = self.phenotype.righteye.lower() + " & " + self.phenotype.lefteye.lower()
         
         return colour
 
@@ -3851,9 +3888,11 @@ class Cat:
                 "no_retire": self.no_retire,
                 "no_mates": self.no_mates,
                 "exiled": self.exiled,
-                "genotype": self.genotype.toJSON(),
-                "white_pattern" : self.genotype.white_pattern,
-                "chim_white" : self.genotype.chimerageno.white_pattern if self.genotype.chimerageno else "No",
+                "genotype": self.phenotype.toJSON(),
+                "chimerageno": self.chimerapheno.toJSON() if self.chimerapheno else None,
+                "chimera_pattern": self.chimerapheno.chimerapattern if self.chimerapheno else None,
+                "white_pattern" : self.phenotype.white_pattern,
+                "chim_white" : self.chimerapheno.white_pattern if self.chimerapheno else "No",
                 "driven_out": self.driven_out,
                 "sprite_kitten": self.pelt.cat_sprites['kitten'],
                 "sprite_adolescent": self.pelt.cat_sprites['adolescent'],

@@ -10,14 +10,6 @@ class Genotype:
         self.odds = odds
         self.ban_genes = ban_genes
         self.chimerapattern = None
-        if spec:
-            self.chimera = False
-        else:
-            self.chimera = True if odds['chimera'] > 0 and randint(1, odds['chimera']) == 1 else False
-        if self.chimera:
-            self.chimerageno = Genotype(self.odds, self.ban_genes, 'chimera')
-        else:
-            self.chimerageno = None
 
         self.fevercoat = False
         
@@ -155,16 +147,6 @@ class Genotype:
         self.specialred = jsonstring['specialred']
         self.merlepattern = jsonstring.get('merlepattern', None)
         self.pseudomerle = jsonstring.get('pseudomerle')
-        
-        self.chimera = jsonstring['chimera']
-        self.chimerapattern = jsonstring['chimerapattern']
-        if self.chimerapattern and not isinstance(self.chimerapattern, list):
-            self.chimerapattern = [self.chimerapattern]
-        if(jsonstring["chimerageno"]):
-            self.chimerageno = Genotype(self.odds, self.ban_genes, 'chimera')
-            self.chimerageno.fromJSON(jsonstring["chimerageno"])
-        else:
-            self.chimerageno = None    
         self.longtype = jsonstring["longtype"]
 
         try:
@@ -237,8 +219,8 @@ class Genotype:
         self.extraeyetype = jsonstring["extraeyetype"]
         self.extraeyecolour = jsonstring["extraeyecolour"]
 
-        self.breeds = json.loads(jsonstring.get("breeds", "{}"))
-        self.somatic = json.loads(jsonstring.get("somatic", "{}"))
+        self.breeds = json.loads(jsonstring.get("breeds", "{}")) if isinstance(jsonstring.get("breeds", "{}"), str) else jsonstring.get("breeds", {})
+        self.somatic = json.loads(jsonstring.get("somatic", "{}")) if isinstance(jsonstring.get("somatic", "{}"), str) else jsonstring.get("somatic", {})
         self.body_value = jsonstring.get("body_type", 0)
         self.height_value = jsonstring.get("height", 0)
         self.shoulder_height = jsonstring.get("shoulder_height", '')
@@ -249,11 +231,6 @@ class Genotype:
         self.EyeColourName()
 
     def toJSON(self):
-        chimgen = None
-
-        if self.chimerageno:
-            chimgen = self.chimerageno.toJSON()
-
         return {
             "fevercoat" : self.fevercoat,
             "furLength": self.furLength,
@@ -266,9 +243,6 @@ class Genotype:
 
             "pseudomerle" : self.pseudomerle,
             "merlepattern" : self.merlepattern,
-            "chimera" : self.chimera,
-            "chimerapattern" : self.chimerapattern,
-            "chimerageno" : chimgen,
 
             "sex": self.sex,
             "dilute": self.dilute,
@@ -340,26 +314,11 @@ class Genotype:
             "height" : self.height_value,
             "shoulder_height" : self.shoulder_height,
 
-            "breeds" : json.dumps(self.breeds),
-            "somatic" : json.dumps(self.somatic)
+            "breeds" : self.breeds,
+            "somatic" : self.somatic
         }
 
     def Generator(self, special=None):
-        if self.chimera:
-            par1 = Genotype(self.odds, self.ban_genes, 'chimera')
-            par2 = Genotype(self.odds, self.ban_genes, 'chimera')
-            par1.Generator()
-            par2.Generator()
-            self.KitGenerator(par1, par2)
-            if self.munch[1] == 'Mk':
-                self.munch[1] = "mk"
-            if self.manx[1] not in ['m', 'ab']:
-                self.manx[1] = self.manx[1].lower()
-            if 'NoDBE' not in self.pax3 and 'DBEalt' not in self.pax3:
-                self.pax3[0] = 'DBEalt'
-
-            return
-
         if self.odds["other_breed"] > 0 and randint(1, self.odds["other_breed"]) == 1:
             return self.BreedGenerator(special)
         
@@ -642,21 +601,6 @@ class Genotype:
         self.EyeColourFinder()
 
     def AltGenerator(self, special=None):
-        if self.chimera:
-            par1 = Genotype(self.odds, self.ban_genes, 'chimera')
-            par2 = Genotype(self.odds, self.ban_genes, 'chimera')
-            par1.AltGenerator()
-            par2.AltGenerator()
-            self.KitGenerator(par1, par2)
-            if self.munch[1] == 'Mk':
-                self.munch[1] = "mk"
-            if self.manx[1] not in ['m', 'ab']:
-                self.manx[1] = self.manx[1].lower()
-            if 'NoDBE' not in self.pax3 and 'DBEalt' not in self.pax3:
-                self.pax3[0] = 'DBEalt'
-
-            return
-        
         if self.odds["kittypet_breed"] > 0 and randint(1, self.odds["kittypet_breed"]) == 1:
             return self.BreedGenerator(special)
     
@@ -944,8 +888,6 @@ class Genotype:
         self.EyeColourFinder()
 
     def BreedGenerator(self, special=None):
-        if self.chimera:
-            self.chimerageno.Generator()
 
         common_breeds = [
             "Abyssinian", "American Burmese/Bombay", "American Curl", "American Shorthair", "Asian/Burmese", 
@@ -989,9 +931,9 @@ class Genotype:
         self.PolyEval()
         self.EyeColourFinder()
 
-    def KitGenerator(self, par1, par2=None, par3=None):
+    def KitGenerator(self, par1, par2=None, par3=None, chimera=False):
         try:
-            par2 = par2.genotype
+            par2 = par2.phenotype
         except:
             par2 = par2
         if not par2:
@@ -1000,12 +942,12 @@ class Genotype:
             par2.Generator()
         if not par1:
             print("No first parent genotype given")
-            par1 = Genotype(self.odds, self.ban_genes, 'no chimeras')
+            par1 = Genotype(self.odds, self.ban_genes)
             par1.Generator()
 
         threepars = False
         try:
-            par3 = par3.genotype
+            par3 = par3.phenotype
         except:
             par3 = par3
             if par2 == par3:
@@ -1024,12 +966,10 @@ class Genotype:
         
         self.KitEyes(par1, par2)
 
-        if self.chimera:
+        if chimera:
             if isinstance(par3, Genotype) and random() < 0.33:
-                self.chimerageno.KitGenerator(par1, par3)
+                self.KitGenerator(par1, par3)
                 threepars = True
-            else:
-                self.chimerageno.KitGenerator(par1, par2)
     
         if randint(1, 5) == 1:
             self.whitegrade = par1.whitegrade
