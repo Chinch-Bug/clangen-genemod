@@ -289,6 +289,13 @@ class Pelt:
 
         self.reverse = reverse
 
+        if self.cat_sprites["adult"] > 8 and self.length != "long":
+            self.cat_sprites["adult"] = random.randint(6, 8)
+            self.cat_sprites["para_adult"] = 16
+        elif self.cat_sprites["adult"] < 9 and self.length == "long":
+            self.cat_sprites["adult"] = random.randint(9, 11)
+            self.cat_sprites["para_adult"] = 15
+
     @staticmethod
     def generate_new_pelt(phenotype, gender:str, parents:tuple=(), age:str="adult"):
         new_pelt = Pelt(phenotype)

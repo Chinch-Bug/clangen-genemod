@@ -107,6 +107,8 @@ class Name:
             self.chimpheno = None
             self.skills = None
             self.personality = None
+            self.biome = None
+            self.honour = None
 
         name_fixpref = False
         # Set prefix

@@ -204,7 +204,7 @@ class Cat:
                 self.phenotype.AltGenerator(special=self.gender)
             else:
                 self.phenotype.Generator(special=self.gender)
-                
+
             if chimera:
                 par1 = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
                 par2 = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
@@ -229,6 +229,8 @@ class Cat:
                 self.phenotype.sex = "intersex"
                 if(randint(1, 25) == 1 and 'Y' in self.phenotype.sexgene):
                     self.phenotype.sex = 'molly'
+                elif(randint(1, 25) == 1 and 'Y' not in self.phenotype.sexgene):
+                    self.phenotype.sex = 'tom'
 
         self.phenotype.PhenotypeOutput(self.phenotype.white_pattern)
         self.phenotype.SpriteInfo(moons if moons else 0)
@@ -865,7 +867,10 @@ class Cat:
         if self.phenotype.manx[0] == 'M' and (self.phenotype.manxtype in ['rumpy', 'riser']):
             self.get_permanent_condition('born without a tail', born_with=True, genetic=True)
         
-        if (len(self.phenotype.sexgene) > 2 and 'Y' in self.phenotype.sexgene) or (self.gender == 'intersex' and random() < 0.2) or (self.gender == 'molly' and 'Y' in self.phenotype.sexgene):
+        if ((len(self.phenotype.sexgene) > 2 and 'Y' in self.phenotype.sexgene and random() > 0.001) 
+            or (self.gender == 'intersex' and random() < 0.2) 
+            or (self.gender == 'molly' and 'Y' in self.phenotype.sexgene) 
+            or (self.gender == 'tom' and 'Y' not in self.phenotype.sexgene and random() > 0.001)):
             self.get_permanent_condition('infertility', born_with=True, genetic=True)
         
         if self.phenotype.fold[0] == 'Fd' or ('manx syndrome' in self.permanent_condition and 'M' in self.phenotype.manx and self.phenotype.bobtailnr < 4 and self.phenotype.bobtailnr > 1 and random() < 0.05):

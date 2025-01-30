@@ -122,12 +122,10 @@ class Pregnancy_Events:
             clan.clan_settings["same sex adoption"],
             clan.clan_settings["surrogates"],
         )
-        if second_parent:
-            if not can_have_kits:
-                return
-        else:
-            if not game.clan.clan_settings["single parentage"]:
-                return
+        if not can_have_kits:
+            return
+        elif not second_parent and not game.clan.clan_settings["single parentage"]:
+            return
 
         chance = Pregnancy_Events.get_balanced_kit_chance(cat, second_parent if second_parent else None, is_affair, clan)
         
@@ -149,11 +147,12 @@ class Pregnancy_Events:
             else:
                 surrogate = False
                 if second_parent and second_parent[0] == "Surrogate":
-                    if 'infertility' in cat.permanent_condition:
-                        cat = second_parent[1]
+                    x = 1
+                    while 'infertility' in cat.permanent_condition:
+                        cat = second_parent[x]
+                        x += 1
                     second_parent[0] = Pregnancy_Events.handle_surrogate(cat, clan)
                     if not second_parent[0]:
-                        second_parent = None
                         return
                     else:
                         surrogate = True
@@ -1172,12 +1171,11 @@ class Pregnancy_Events:
         unknowns = []
         for outcat in Cat.all_cats:
             outcat = Cat.all_cats.get(outcat)
-            if not outcat.dead and outcat.status in ['kittypet', 'loner', 'rogue']:    
+            if not outcat.dead and outcat.status in ['kittypet', 'loner', 'rogue'] and 'infertility' not in outcat.permanent_condition :    
                 unknowns.append(outcat)
         outsiders = [i for i in unknowns if
                     i.is_potential_mate(cat, for_love_interest=True, outsider=True)
                     and Pregnancy_Events.check_if_can_have_kits(i, True, True) 
-                    and 'infertility' not in i.permanent_condition 
                     and (clan.clan_settings['same sex birth'] or xor('Y' in i.phenotype.sexgene, 'Y' in cat.phenotype.sexgene)) 
                     and len(i.mate) == 0]
         backstories = {
@@ -1234,8 +1232,6 @@ class Pregnancy_Events:
                                 break
                         if possible:
                             candidates.append(check_cand)
-
-            candidates = list(set(candidates))
         
         if len(candidates) > 0:
             return choice(candidates)
