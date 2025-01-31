@@ -1,4 +1,4 @@
-from .genotype import *
+from .genotype import Genotype
 from random import choice, randint
 from scripts.cat.breed_functions import find_my_breed
 
