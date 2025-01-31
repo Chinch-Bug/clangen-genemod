@@ -76,6 +76,8 @@
       "retirement_tooltip": "When this setting is off, cats with permanent conditions will choose whether or not they want to retire",
       "become_mediator": "Allow warriors and elders to choose to become mediators",
       "become_mediator_tooltip": "Warriors and elders will have a chance to become mediators upon moonskip.",
+      "no_litters": "Prevent new litters",
+      "no_litters_tooltip": "While this setting is toggled on, no new litters or pregnancies should occur in the Clan.",
       "affair": "Allow cats to breed with cats that aren't their mates",
       "affair_tooltip": "This will allow mated and unmated cats to have kits with other cats they are not mated with. This includes, but is not limited to, affairs/cheating.",
       "same sex birth": "Pregnancy ignores biology",

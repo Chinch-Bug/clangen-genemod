@@ -3807,6 +3807,8 @@ def generate_sprite(
             age = 10
         elif (int(cat_sprite == 19) or int(cat_sprite) == 17) and 12 < cat.moons < 6:
             age = 6
+        elif cat.moons < 12:
+            age = 60
         gensprite.blit(GenSprite(phenotype, age), (0, 0))
 
         if(cat.chimerapheno):

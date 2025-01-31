@@ -133,6 +133,11 @@
       ]
     },
     "relation": {
+      "no_litters": [
+        "Prevent new litters",
+        "While this setting is toggled on, no new litters or pregnancies should occur in the Clan.",
+        false
+      ],
       "affair": [
         "Allow cats to breed with cats that aren't their mates",
         "This will allow mated and unmated cats to have kits with other cats they are not mated with. This includes, but is not limited to, affairs/cheating.",

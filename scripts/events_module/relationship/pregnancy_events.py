@@ -93,7 +93,7 @@ class Pregnancy_Events:
                 # events.ceremony_accessory = True
                 return
 
-        if cat.outside:
+        if cat.outside or clan.clan_settings["no_litters"]:
             return
 
         # Handle birth cooldown outside of the check_if_can_have_kits function, so it only happens once
@@ -995,7 +995,7 @@ class Pregnancy_Events:
 
             # Check to see if the pair can have kits.
             if not xor('Y' in cat.phenotype.sexgene, 'Y' in second_parent[0].phenotype.sexgene) or ("infertility" in cat.permanent_condition or "infertility" in second_parent[0].permanent_condition):
-                if same_sex_birth and not ("infertility" in second_parent[0].permanent_condition):
+                if same_sex_birth and not "infertility" in second_parent[0].permanent_condition and not "infertility" in cat.permanent_condition or "infertility":
                     return True, False, second_parent
                 elif surrogates:
                     return True, False, ["Surrogate"] + second_parent
