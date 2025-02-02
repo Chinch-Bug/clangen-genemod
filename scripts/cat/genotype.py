@@ -1534,8 +1534,8 @@ class Genotype:
         if self.eumelanin[0] == "bl":
             self.eumelanin[0] = self.eumelanin[1]
             self.eumelanin[1] = "bl"
-        elif self.eumelanin[0] == "b" and self.eumelanin[1] != "bl":
-            self.eumelanin[0] = self.eumelanin[1]
+        elif self.eumelanin[0] == "b" and self.eumelanin[1] == "B":
+            self.eumelanin[0] = "B"
             self.eumelanin[1] = "b"
 
         if len(self.sexgene) > 2 and self.sexgene[2] == "O" and self.sexgene[0] == "o":
@@ -1554,10 +1554,10 @@ class Genotype:
         elif self.white[0] == "wg" and self.white[1] != "wsal":
             self.white[0] = self.white[1]
             self.white[1] = "wg"
-        elif self.white[0] == "w" and self.white[1] != "wg" and self.white[1] != "wsal":
+        elif self.white[0] == "w" and self.white[1] not in ["wsal", "wg"]:
             self.white[0] = self.white[1]
             self.white[1] = "w"
-        elif self.white[0] == "wt" and self.white[1] != "wg" and self.white[1] != "w" and self.white[1] != "wsal":
+        elif self.white[0] == "wt" and self.white[1] not in ["wsal", "wg", "w"]:
             self.white[0] = self.white[1]
             self.white[1] = "wt"
         elif self.white[1] == "W":
@@ -1570,7 +1570,7 @@ class Genotype:
         elif self.pointgene[0] == "cm" and self.pointgene[1] != "c":
             self.pointgene[0] = self.pointgene[1]
             self.pointgene[1] = "cm"
-        elif self.pointgene[0] == "cs" and self.pointgene[1] != "c" and self.pointgene[1] != "cm":
+        elif self.pointgene[0] == "cs" and self.pointgene[1] not in ["c", "cm"]:
             self.pointgene[0] = self.pointgene[1]
             self.pointgene[1] = "cs"
         elif self.pointgene[1] == "C":
@@ -1610,10 +1610,10 @@ class Genotype:
         if self.corin[0] == "fg":
             self.corin[0] = self.corin[1]
             self.corin[1] = "fg"
-        elif self.corin[0] == "sh":
+        elif self.corin[0] == "sh" and self.corin[1] != "fg":
             self.corin[0] = self.corin[1]
             self.corin[1] = "sh"
-        elif self.corin[0] == "sg":
+        elif self.corin[0] == "sg" and self.corin[1] not in ["sh", "fg"]:
             self.corin[0] = self.corin[1]
             self.corin[1] = "sg"
 
