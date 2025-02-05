@@ -3822,7 +3822,7 @@ class Cat:
                 ]
             )
         elif relationship:
-            return "\n".join(
+            return "    ".join(
                 [
                     i18n.t("general.moons_age", count=self.moons),
                     self.genderalign,
