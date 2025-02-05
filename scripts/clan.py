@@ -231,14 +231,6 @@ class Clan:
                 Cat.all_cats[i].example = True
                 self.remove_cat(Cat.all_cats[i].ID)
 
-        # give thoughts,actions and relationships to cats
-        for cat_id in Cat.all_cats:
-            Cat.all_cats.get(cat_id).init_all_relationships()
-            Cat.all_cats.get(cat_id).backstory = "clan_founder"
-            if Cat.all_cats.get(cat_id).status == "apprentice":
-                Cat.all_cats.get(cat_id).status_change("apprentice")
-            Cat.all_cats.get(cat_id).thoughts()
-
         game.save_cats()
         number_other_clans = randint(3, 5)
         for _ in range(number_other_clans):
@@ -253,6 +245,16 @@ class Clan:
                 )
             other_clan = OtherClan(name=other_clan_name, clancount=clancount)
             self.all_clans.append(other_clan)
+        for cat_id in Cat.all_cats:
+            if id not in self.clan_cats:
+                self.clan_cats.append(id)
+
+        # give thoughts,actions and relationships to cats
+            Cat.all_cats.get(cat_id).init_all_relationships()
+            Cat.all_cats.get(cat_id).backstory = "clan_founder"
+            if Cat.all_cats.get(cat_id).status == "apprentice":
+                Cat.all_cats.get(cat_id).status_change("apprentice")
+            Cat.all_cats.get(cat_id).thoughts()
         self.save_clan()
         game.save_clanlist(self.name)
         game.switches["clan_list"] = game.read_clans()
@@ -1325,10 +1327,10 @@ class OtherClan:
             else clan_symbol_sprite(self, return_string=True)
         )
 
-        self.leader = leader
+        self.leader = Cat.all_cats.get(leader)
         self.leader_lives = leader_lives if leader else 0
-        self.deputy = deputy
-        self.medicine_cat = medicine_cat
+        self.deputy = Cat.all_cats.get(deputy)
+        self.medicine_cat = Cat.all_cats.get(medicine_cat)
         self.med_cat_list = []
         self.med_cat_number = len(self.med_cat_list)
 
