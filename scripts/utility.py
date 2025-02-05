@@ -96,6 +96,7 @@ def get_alive_status_cats(
         get_status: list,
         working: bool = False,
         sort: bool = False,
+        clan: str = None
 ) -> list:
     """
     returns a list of cat objects for all living cats of get_status in Clan
@@ -110,6 +111,9 @@ def get_alive_status_cats(
         for i in Cat.all_cats.values()
         if i.status in get_status and not i.dead and not i.outside
     ]
+
+    if clan:
+        alive_cats = [i for i in alive_cats if i.group == clan]
 
     if working:
         alive_cats = [i for i in alive_cats if not i.not_working()]

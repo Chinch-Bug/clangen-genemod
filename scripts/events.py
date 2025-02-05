@@ -276,12 +276,13 @@ class Events:
 
         # handle the herb supply for the moon
         game.clan.herb_supply.handle_moon(
-            clan_size=get_living_clan_cat_count(Cat),
+            clan_size=get_living_clan_cat_count(Cat, clan=game.clan.name),
             clan_cats=Cat.all_cats_list,
             med_cats=get_alive_status_cats(
                 Cat,
                 get_status=["healer", "healer apprentice"],
-                working=True
+                working=True, 
+                clan=game.clan.name
             )
         )
 

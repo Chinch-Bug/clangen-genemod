@@ -797,7 +797,7 @@ class ListScreen(Screens):
             self.update_heading_text("general.dark_forest")
         else:
             self.set_bg(None)
-            self.update_heading_text(self.current_group)
+            self.update_heading_text(self.current_group + "Clan")
 
     def get_cat_list(self):
         """

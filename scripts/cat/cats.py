@@ -1969,16 +1969,17 @@ class Cat:
         elif self.outside:
             where_kitty = "outside"
         else:
-            where_kitty = "inside"
+            where_kitty = self.group
 
         # get other cat
         i = 0
         # for cats inside the clan
-        if where_kitty == "inside":
+        if where_kitty == self.group:
             dead_chance = getrandbits(4)
             while (
                 other_cat == self.ID
                 and len(all_cats) > 1
+                or all_cats.get(other_cat).group != self.group
                 or (all_cats.get(other_cat).dead and dead_chance != 1)
                 or (other_cat not in self.blank_relations and other_cat not in self.relationships)
             ):
@@ -2699,7 +2700,7 @@ class Cat:
 
     def is_valid_mentor(self, potential_mentor: Cat):
         # Dead or outside cats can't be mentors
-        if potential_mentor.dead or potential_mentor.outside:
+        if potential_mentor.dead or potential_mentor.outside or potential_mentor.group != self.group:
             return False
         # Match jobs
         if self.status == 'healer apprentice' and potential_mentor.status != 'healer':
@@ -3111,7 +3112,7 @@ class Cat:
                         and game.clan.instructor.dead_for >= self.moons
                     ):
                         pass
-                    elif randint(1, 20) == 1 and romantic_love < 1:
+                    elif (randint(1, 20) == 1 or (self.group != the_cat.group and random() > 0.25)) and romantic_love < 1:
                         dislike = randint(10, 25)
                         jealousy = randint(5, 15)
                         if randint(1, 30) == 1:

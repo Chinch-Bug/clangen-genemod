@@ -982,6 +982,7 @@ class PatrolScreen(Screens):
                 and the_cat.status
                 not in ["elder", "kitten", "mediator", "mediator apprentice"]
                 and not the_cat.outside
+                and not the_cat.group != game.clan.name
                 and the_cat not in self.current_patrol
                 and not the_cat.not_working()
             ):

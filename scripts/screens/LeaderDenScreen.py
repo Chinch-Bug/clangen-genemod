@@ -191,7 +191,7 @@ class LeaderDenScreen(Screens):
                 if not game.clan.deputy.not_working() and not game.clan.deputy.dead:
                     self.helper_cat = game.clan.deputy  # if lead is sick, dep helps
             if not self.helper_cat:  # if dep is sick, med cat helps
-                meds = get_alive_status_cats(Cat, get_status=["healer", "healer apprentice"], working=True, sort=True)
+                meds = get_alive_status_cats(Cat, get_status=["healer", "healer apprentice"], working=True, sort=True, clan=game.clan.name)
                 if meds:
                     self.helper_cat = meds[0]
                 else:  # if no meds, mediator helps
@@ -202,6 +202,7 @@ class LeaderDenScreen(Screens):
                         and not i.exiled
                         and not i.outside
                         and not i.not_working()
+                        and i.group == game.clan.name
                         and i.status in ["mediator", "mediator apprentice"]
                     ]
                     if mediators:
@@ -217,6 +218,7 @@ class LeaderDenScreen(Screens):
                     if not i.dead
                     and not i.exiled
                     and not i.outside
+                    and i.group == game.clan.name
                     and i.status not in ["newborn", "kitten", "leader"]
                 ]
                 if adults:
@@ -272,7 +274,7 @@ class LeaderDenScreen(Screens):
         )
 
         # if no one is alive, give a special notice
-        if not get_living_clan_cat_count(Cat):
+        if not get_living_clan_cat_count(Cat, clan=game.clan.name):
             self.no_leader = True
             self.screen_elements["clan_notice_text"].set_text(
                 "screens.leader_den.no_cats_clan"
