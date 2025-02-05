@@ -58,15 +58,12 @@ class MakeClanScreen(Screens):
     classic_mode_text = "screens.make_clan.classic_info"
 
     expanded_mode_text = "screens.make_clan.expanded_info"
-
-    single_clan_text = "The Clan Generator we're all used to. <br>" \
-                        "You can see and control only one Clan with all the rest simply remaining a mystery..."
-
-    multi_clan_text = "A bit of something more... " \
-                         "With this, you can see into your neighbouring Clans almost as if they were your own!<br>" \
-                         "They'll die, be born, age... all on their own, <br>" \
-                         "or with a little push from you<br>"
+    
     cruel_mode_text = "screens.make_clan.cruel_season_info"
+
+    single_clan_text = "screens.make_clan.singleclan_info"
+
+    multi_clan_text = "screens.make_clan.multiclan_info"
 
     # This section holds all the information needed
     game_mode = 'classic'  # To save the users selection before conformation.
@@ -168,7 +165,7 @@ class MakeClanScreen(Screens):
         create_example_cats()
 
         # self.worldseed = randrange(10000)
-        self.open_game_mode()
+        self.open_clan_count()
 
     def handle_event(self, event):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
@@ -241,6 +238,9 @@ class MakeClanScreen(Screens):
                 self.elements["random_clan_checkbox"].change_object_id(
                     "@checked_checkbox"
                 )
+        elif event.ui_element == self.elements['previous_step']:
+            self.clan_name = ""
+            self.open_clan_count()
     
     def handle_clan_count_mode_event(self, event):
         """Handle events for the clan count screen"""
@@ -254,9 +254,6 @@ class MakeClanScreen(Screens):
         # When the next_step button is pressed, go to the Clan naming page.
         elif event.ui_element == self.elements["next_step"]:
             game.settings["game_mode"] = self.game_mode
-            self.open_name_clan()
-        elif event.ui_element == self.elements['previous_step']:
-            self.clan_name = ""
             self.open_game_mode()
     
     def handle_game_mode_key(self, event):
@@ -303,7 +300,6 @@ class MakeClanScreen(Screens):
             self.open_choose_leader()
         elif event.ui_element == self.elements["previous_step"]:
             self.clan_name = ""
-            #self.open_clan_count()
             self.open_game_mode()
 
     def handle_name_clan_key(self, event):
@@ -1399,7 +1395,6 @@ class MakeClanScreen(Screens):
             manager=MANAGER,
             starting_height=2,
         )
-        self.elements["previous_step"].disable()
         self.elements["next_step"] = UISurfaceImageButton(
             ui_scale(pygame.Rect((0, 620), (147, 30))),
             "buttons.next_step",
@@ -1447,42 +1442,74 @@ class MakeClanScreen(Screens):
         self.refresh_text_and_buttons()
 
     def open_clan_count(self):
+        
         # Clear previous screen
         self.clear_all_page()
-        self.sub_screen = 'clan count mode'
+        self.sub_screen = "clan count mode"
 
         text_box = image_cache.load_image(
-            'resources/images/game_mode_text_box.png').convert_alpha()
+            "resources/images/game_mode_text_box.png"
+        ).convert_alpha()
 
-        self.elements['game_mode_background'] = pygame_gui.elements.UIImage(ui_scale(pygame.Rect((650, 260), (798, 922))),
-                                                                            pygame.transform.scale(text_box, (798, 922))
-                                                                            , manager=MANAGER)
-        self.elements['permi_warning'] = pygame_gui.elements.UITextBox(
-            "Your Clan count is permanent and cannot be changed after Clan creation.",
-            ui_scale(pygame.Rect((200, 1162), (1200, 80))),
+        self.elements["game_mode_background"] = pygame_gui.elements.UIImage(
+            ui_scale(pygame.Rect((325, 130), (399, 461))),
+            pygame.transform.scale(text_box, ui_scale_dimensions((399, 461))),
+            manager=MANAGER,
+        )
+        self.elements["permi_warning"] = pygame_gui.elements.UITextBox(
+            "screens.make_clan.clan_count_warning",
+            ui_scale(pygame.Rect((100, 581), (600, 40))),
             object_id=get_text_box_theme("#text_box_30_horizcenter"),
-            manager=MANAGER
+            manager=MANAGER,
         )
 
         # Create all the elements.
-        self.elements['classic_mode_button'] = UIImageButton(ui_scale(pygame.Rect((218, 480), (264, 60))), "",
-                                                             object_id="#classic_mode_button",
-                                                             manager=MANAGER)
-        self.elements['expanded_mode_button'] = UIImageButton(ui_scale(pygame.Rect((188, 640), (324, 68))), "",
-                                                              object_id="#expanded_mode_button",
-                                                              manager=MANAGER)
-        self.elements['previous_step'] = UIImageButton(ui_scale(pygame.Rect((506, 1240), (294, 60))), "",
-                                                       object_id="#previous_step_button",
-                                                       manager=MANAGER)
-        self.elements['next_step'] = UIImageButton(ui_scale(pygame.Rect((800, 1240), (294, 60))), "",
-                                                   object_id="#next_step_button",
-                                                   manager=MANAGER)
-        self.elements['mode_details'] = pygame_gui.elements.UITextBox("", ui_scale(pygame.Rect((650, 320), (810, 922))),
-                                                                      object_id="#text_box_30_horizleft_pad_40_40",
-                                                                      manager=MANAGER)
-        self.elements['mode_name'] = pygame_gui.elements.UITextBox("", ui_scale(pygame.Rect((850, 270), (400, 55))),
-                                                                   object_id="#text_box_30_horizcenter_light",
-                                                                   manager=MANAGER)
+
+        self.elements["classic_mode_button"] = UISurfaceImageButton(
+            ui_scale(pygame.Rect((109, 240), (132, 30))),
+            "screens.make_clan.classic_label",
+            get_button_dict(ButtonStyles.SQUOVAL, (132, 30)),
+            object_id="@buttonstyles_squoval",
+            manager=MANAGER,
+        )
+        self.elements["expanded_mode_button"] = UIImageButton(
+            ui_scale(pygame.Rect((94, 320), (162, 34))),
+            "screens.make_clan.expanded_label",
+            object_id="#expanded_mode_button",
+            manager=MANAGER,
+        )
+        self.elements["previous_step"] = UISurfaceImageButton(
+            ui_scale(pygame.Rect((253, 620), (147, 30))),
+            "buttons.previous_step",
+            get_button_dict(ButtonStyles.MENU_LEFT, (147, 30)),
+            object_id="@buttonstyles_menu_left",
+            manager=MANAGER,
+            starting_height=2,
+        )
+        self.elements["previous_step"].disable()
+        self.elements["next_step"] = UISurfaceImageButton(
+            ui_scale(pygame.Rect((0, 620), (147, 30))),
+            "buttons.next_step",
+            get_button_dict(ButtonStyles.MENU_RIGHT, (147, 30)),
+            object_id="@buttonstyles_menu_right",
+            manager=MANAGER,
+            starting_height=2,
+            anchors={"left_target": self.elements["previous_step"]},
+        )
+        self.elements["mode_details"] = pygame_gui.elements.UITextBox(
+            "",
+            ui_scale(pygame.Rect((325, 160), (405, 461))),
+            object_id="#text_box_30_horizleft_pad_40_40",
+            manager=MANAGER,
+        )
+        self.elements["mode_details"].padding = (40, 40)
+
+        self.elements["mode_name"] = pygame_gui.elements.UITextBox(
+            "",
+            ui_scale(pygame.Rect((425, 135), (200, 27))),
+            object_id="#text_box_30_horizcenter_light",
+            manager=MANAGER,
+        )
 
         self.refresh_text_and_buttons()
 
@@ -2248,7 +2275,11 @@ class MakeClanScreen(Screens):
             starting_members=self.members,
             starting_season=self.selected_season,
         )
-        game.clan.create_clan()
+        for id in Cat.all_cats:
+            Cat.all_cats[id].group = self.clan_name
+
+        game.clan.create_clan(self.clan_count_mode)
+
         # game.clan.starclan_cats.clear()
         game.cur_events_list.clear()
         game.herb_events_list.clear()

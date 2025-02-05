@@ -197,7 +197,7 @@ class Clan:
             self.med_cat_list.append(self.medicine_cat.ID)
             if self.medicine_cat.status != 'healer':
                 Cat.all_cats[self.medicine_cat.ID].status_change('healer')
-    def create_clan(self):
+    def create_clan(self, clancount="singleclan"):
         """
         This function is only called once a new clan is
         created in the 'clan created' screen, not every time
@@ -251,7 +251,7 @@ class Clan:
                     names.names_dict["normal_prefixes"]
                     + names.names_dict["clan_prefixes"]
                 )
-            other_clan = OtherClan(name=other_clan_name)
+            other_clan = OtherClan(name=other_clan_name, clancount=clancount)
             self.all_clans.append(other_clan)
         self.save_clan()
         game.save_clanlist(self.name)
@@ -509,7 +509,7 @@ class Clan:
         clan_data["patrolled_cats"] = [str(i) for i in game.patrolled]
 
         # OTHER CLANS
-        clan_data["other_clans"] = [vars(i) for i in self.all_clans]
+        clan_data["other_clans"] = [i.get_save_data() for i in self.all_clans]
 
         clan_data["war"] = self.war
 
@@ -844,9 +844,13 @@ class Clan:
                 game.clan.all_clans.append(
                     OtherClan(
                         other_clan["name"],
-                        int(other_clan["relations"]),
-                        other_clan["temperament"],
-                        other_clan["chosen_symbol"],
+                        relations=int(other_clan["relations"]),
+                        temperament=other_clan["temperament"],
+                        chosen_symbol=other_clan["chosen_symbol"],
+                        leader=other_clan.get("leader"),
+                        leader_lives=other_clan.get("leader_lives"),
+                        deputy=other_clan.get("deputy"),
+                        medicine_cat=other_clan.get("medicine_cat")
                     )
                 )
         else:
@@ -1303,7 +1307,7 @@ class OtherClan:
         "gracious",
     ]
 
-    def __init__(self, name="", relations=0, temperament="", chosen_symbol=""):
+    def __init__(self, name="", clancount="singleclan", relations=0, temperament="", chosen_symbol="", leader=None, leader_lives=9, deputy=None, medicine_cat=None):
         clan_names = names.names_dict["normal_prefixes"]
         clan_names.extend(names.names_dict["clan_prefixes"])
         self.name = name or choice(clan_names)
@@ -1321,8 +1325,34 @@ class OtherClan:
             else clan_symbol_sprite(self, return_string=True)
         )
 
+        self.leader = leader
+        self.leader_lives = leader_lives if leader else 0
+        self.deputy = deputy
+        self.medicine_cat = medicine_cat
+        self.med_cat_list = []
+        self.med_cat_number = len(self.med_cat_list)
+
+        if clancount == "multiclan":
+            self.leader = Cat(status="leader", kittypet=game.config["clan_creation"]["use_special_roller"], group=self.name)
+            self.deputy = Cat(status="deputy", kittypet=game.config["clan_creation"]["use_special_roller"], group=self.name)
+            self.medicine_cat = Cat(status="healer", kittypet=game.config["clan_creation"]["use_special_roller"], group=self.name)
+            for i in range(randint(5, 7)):
+                Cat(status=choice(["warrior", "warrior", "elder", "apprentice", "kitten"]), kittypet=game.config["clan_creation"]["use_special_roller"], group=self.name)
+
     def __repr__(self):
         return f"{self.name}Clan"
+    
+    def get_save_data(self):
+        return {
+            "name" : self.name,
+            "relations" : self.relations,
+            "temperament" : self.temperament,
+            "chosen_symbol" : self.chosen_symbol,
+            "leader" : self.leader.ID if self.leader else None,
+            "leader_lives" : self.leader_lives,
+            "deputy" : self.deputy.ID if self.deputy else None,
+            "medicine_cat" : self.medicine_cat.ID if self.medicine_cat else None,
+        }
 
 
 class StarClan:

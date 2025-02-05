@@ -113,6 +113,7 @@ class Cat:
         prefix=None,
         gender=None,
         status="newborn",
+        group=None,
         backstory="clanborn",
         parent1=None,
         parent2=None,
@@ -158,6 +159,7 @@ class Cat:
         elif self.gender == 'male':
             self.gender = 'masc'
         self.status = status.replace("medicine cat", "healer")
+        self.group = group
         self.backstory = backstory
         self.age = None
         self.skills = CatSkills(skill_dict=skill_dict)
@@ -3871,6 +3873,7 @@ class Cat:
                 else {i18n.config.get("locale"): self.pronouns},
                 "birth_cooldown": self.birth_cooldown,
                 "status": self.status,
+                "group": self.group,
                 "backstory": self.backstory or None,
                 "moons": self.moons,
                 "trait": self.personality.trait,
@@ -3965,8 +3968,8 @@ class Cat:
 
 
 # Creates a random cat
-def create_cat(status, moons=None, biome=None, kittypet=False):
-    new_cat = Cat(status=status, biome=biome, kittypet=kittypet)
+def create_cat(status, moons=None, biome=None, kittypet=False, group=None):
+    new_cat = Cat(status=status, biome=biome, kittypet=kittypet, group=group)
 
     if moons is not None:
         new_cat.moons = moons

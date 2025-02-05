@@ -83,6 +83,9 @@ class ListScreen(Screens):
             "view_unknown_residence_button": None,
             "view_dark_forest_button": None,
         }
+        if game.clan:
+            for clan in game.clan.all_clans:
+                self.sort_by_buttons[clan.name] = None
 
         self.cat_display = None
         self.display_container_elements: Dict[
@@ -205,6 +208,9 @@ class ListScreen(Screens):
                     self.get_ur_cats()
                 elif element == self.choose_group_buttons["view_dark_forest_button"]:
                     self.get_df_cats()
+                else:
+                    self.selected_clan = element.text.replace("Clan", "")
+                    self.get_other_clan_cats(self.selected_clan)
                 self.update_cat_list(
                     self.cat_list_bar_elements["search_bar_entry"].get_text()
                 )
@@ -386,6 +392,18 @@ class ListScreen(Screens):
             self.choose_group_buttons[object_id.strip("#")] = UISurfaceImageButton(
                 ui_scale(pygame.Rect((0, y_pos), (190, 34))),
                 text,
+                get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
+                container=self.living_groups_container,
+                object_id=ObjectID(class_id="@buttonstyles_dropdown", object_id=None),
+                starting_height=2,
+                manager=MANAGER,
+            )
+            y_pos += 32
+
+        for clan in game.clan.all_clans:
+            self.choose_group_buttons[clan.name] = UISurfaceImageButton(
+                ui_scale(pygame.Rect((0, y_pos), (190, 34))),
+                clan.name + "Clan",
                 get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
                 container=self.living_groups_container,
                 object_id=ObjectID(class_id="@buttonstyles_dropdown", object_id=None),
@@ -777,6 +795,9 @@ class ListScreen(Screens):
         elif self.current_group == "df":
             self.set_bg("df")
             self.update_heading_text("general.dark_forest")
+        else:
+            self.set_bg(None)
+            self.update_heading_text(self.current_group)
 
     def get_cat_list(self):
         """
@@ -791,8 +812,10 @@ class ListScreen(Screens):
                 self.get_ur_cats()
             elif game.last_list_forProfile == "cotc":
                 self.get_cotc_cats()
-            else:
+            elif game.last_list_forProfile == "clan":
                 self.get_your_clan_cats()
+            else:
+                self.get_other_clan_cats(self.selected_clan)
         else:
             self.get_your_clan_cats()
 
@@ -803,7 +826,17 @@ class ListScreen(Screens):
         self.current_group = "clan"
         self.death_status = "living"
         self.full_cat_list = [
-            cat for cat in Cat.all_cats_list if not cat.dead and not cat.outside
+            cat for cat in Cat.all_cats_list if not cat.dead and not cat.outside and cat.group == game.clan.name
+        ]
+
+    def get_other_clan_cats(self, clan):
+        """
+        grabs clan cats
+        """
+        self.current_group = clan
+        self.death_status = "living"
+        self.full_cat_list = [
+            cat for cat in Cat.all_cats_list if not cat.dead and not cat.outside and cat.group == clan
         ]
 
     def get_cotc_cats(self):
@@ -814,7 +847,7 @@ class ListScreen(Screens):
         self.death_status = "living"
         self.full_cat_list = []
         for the_cat in Cat.all_cats_list:
-            if not the_cat.dead and the_cat.outside and not the_cat.driven_out:
+            if not the_cat.dead and the_cat.group == "outside cat":
                 self.full_cat_list.append(the_cat)
 
     def get_sc_cats(self):
