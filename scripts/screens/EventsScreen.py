@@ -3,6 +3,7 @@ from typing import Dict
 import i18n
 import pygame
 import pygame_gui
+from pygame_gui.core import ObjectID
 
 from scripts.cat.cats import Cat
 from scripts.event_class import Single_Event
@@ -12,6 +13,7 @@ from scripts.game_structure.game_essentials import game
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.game_structure.ui_elements import (
     UIModifiedScrollingContainer,
+    UIDropDownContainer,
     IDImageButton,
     UISurfaceImageButton,
     CatButton,
@@ -70,6 +72,8 @@ class EventsScreen(Screens):
         self.events_frame = None
         self.event_buttons = {}
         self.alert = {}
+        self.choose_group_buttons = {}
+        self.current_clan = None
 
         self.event_display = None
         self.event_display_containers = []
@@ -138,10 +142,19 @@ class EventsScreen(Screens):
                 self.save_scroll_position()
                 game.switches["cat"] = element.cat_id
                 self.change_screen("profile screen")
+            elif element == self.choose_group_button:
+                if self.choose_living_dropdown.is_open:
+                    self.choose_living_dropdown.close()
+                else:
+                    self.choose_living_dropdown.open()
+            elif element in self.choose_group_buttons.values():
+                self.choose_living_dropdown.close()
+                self.current_clan = element.text.replace("Clan", "")
             else:
                 self.save_scroll_position()
                 self.menu_button_pressed(event)
 
+          
         # KEYBIND CONTROLS
         elif game.settings["keybinds"]:
             # ON PRESSING A KEY
@@ -295,6 +308,62 @@ class EventsScreen(Screens):
             manager=MANAGER,
             sound_id="timeskip",
         )
+
+        if game.clan.clancount == 'multiclan':
+            if not self.current_clan:
+                self.current_clan = game.clan.name
+            self.choose_group_button = UISurfaceImageButton(
+                ui_scale(pygame.Rect((500, 218), (190, 34))),
+                "screens.list.choose_group",
+                get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
+                container=self.event_screen_container,
+                object_id="@buttonstyles_dropdown",
+                manager=MANAGER,
+                starting_height=1,
+            )
+            
+            self.living_groups_container = pygame_gui.elements.UIAutoResizingContainer(
+                ui_scale(pygame.Rect((500, 250), (0, 0))),
+                container=self.event_screen_container,
+                object_id="#choose_group_container",
+                manager=MANAGER,
+                starting_height=1,
+            )
+            self.living_groups_container.change_layer(10)
+            self.choose_group_buttons[game.clan.name] = UISurfaceImageButton(
+                ui_scale(pygame.Rect((0, 0), (190, 34))),
+                game.clan.name + "Clan",
+                get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
+                container=self.living_groups_container,
+                object_id=ObjectID(class_id="@buttonstyles_dropdown", object_id=None),
+                starting_height=2,
+                manager=MANAGER,
+            )
+            y_pos = 32
+            for clan in game.clan.all_clans:
+                self.choose_group_buttons[clan.name] = UISurfaceImageButton(
+                    ui_scale(pygame.Rect((0, y_pos), (190, 34))),
+                    clan.name + "Clan",
+                    get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
+                    container=self.living_groups_container,
+                    object_id=ObjectID(class_id="@buttonstyles_dropdown", object_id=None),
+                    starting_height=2,
+                    manager=MANAGER,
+                )
+                y_pos += 32
+
+            self.choose_living_dropdown = UIDropDownContainer(
+                self.living_groups_container.relative_rect,
+                container=self.event_screen_container,
+                object_id="#choose_living_dropdown",
+                starting_height=1,
+                parent_button=self.choose_group_button,
+                child_button_container=self.living_groups_container,
+                manager=MANAGER,
+            )
+
+            self.choose_living_dropdown.close()
+            self.choose_living_dropdown.show()
 
         self.full_event_display_container = pygame_gui.core.UIContainer(
             ui_scale(pygame.Rect((45, 266), (700, 700))),
@@ -539,22 +608,33 @@ class EventsScreen(Screens):
         """
 
         self.all_events = [
-            x for x in game.cur_events_list if "interaction" not in x.types
+            x for x in game.cur_events_list if "interaction" not in x.types 
+            and (not self.current_clan or x.clan == self.current_clan) 
         ]
         self.ceremony_events = [
-            x for x in game.cur_events_list if "ceremony" in x.types
+            x for x in game.cur_events_list if "ceremony" in x.types 
+            and (not self.current_clan or x.clan == self.current_clan) 
         ]
         self.birth_death_events = [
-            x for x in game.cur_events_list if "birth_death" in x.types
+            x for x in game.cur_events_list if "birth_death" in x.types 
+            and (not self.current_clan or x.clan == self.current_clan) 
         ]
         self.relation_events = [
-            x for x in game.cur_events_list if "relation" in x.types
+            x for x in game.cur_events_list if "relation" in x.types 
+            and (not self.current_clan or x.clan == self.current_clan) 
         ]
-        self.health_events = [x for x in game.cur_events_list if "health" in x.types]
+        self.health_events = [
+            x for x in game.cur_events_list if "health" in x.types 
+            and (not self.current_clan or x.clan == self.current_clan) 
+        ]
         self.other_clans_events = [
-            x for x in game.cur_events_list if "other_clans" in x.types
+            x for x in game.cur_events_list if "other_clans" in x.types 
+            and (not self.current_clan or x.clan == self.current_clan) 
         ]
-        self.misc_events = [x for x in game.cur_events_list if "misc" in x.types]
+        self.misc_events = [
+            x for x in game.cur_events_list if "misc" in x.types 
+            and (not self.current_clan or x.clan == self.current_clan)
+        ]
 
     def update_events_display(self):
         """

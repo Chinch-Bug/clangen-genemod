@@ -204,6 +204,7 @@ class Clan:
         the program starts
         """
 
+        self.clancount = clancount
         self.instructor = Cat(status=choice(["apprentice", "mediator apprentice", "healer apprentice", "warrior",
                                              "healer", "leader", "mediator", "deputy", "elder"]),
                               )
@@ -458,6 +459,7 @@ class Clan:
         """
 
         clan_data = {
+            "clancount_mode": self.clancount,
             "clanname": self.name,
             "clanage": self.age,
             "biome": self.biome,
@@ -802,6 +804,7 @@ class Clan:
 
         game.clan.reputation = int(clan_data["reputation"])
 
+        game.clan.clancount = clan_data.get("clancount_mode", "singleclan")
         game.clan.age = clan_data["clanage"]
         game.clan.starting_season = (
             clan_data["starting_season"]
@@ -1110,7 +1113,7 @@ class Clan:
             # else just start us with an empty herb supply
             else:
                 clan.herb_supply = HerbSupply()
-            clan.herb_supply.required_herb_count = get_living_clan_cat_count(Cat) * 2
+            clan.herb_supply.required_herb_count = get_living_clan_cat_count(Cat, clan=game.clan.name) * 2
         except:
             clan.herb_supply = HerbSupply()
 

@@ -137,14 +137,14 @@ def get_living_cat_count(Cat):
     return count
 
 
-def get_living_clan_cat_count(Cat):
+def get_living_clan_cat_count(Cat, clan=None):
     """
     Returns the int of all living cats within the Clan
     :param Cat: Cat class
     """
     count = 0
     for the_cat in Cat.all_cats.values():
-        if the_cat.dead or the_cat.exiled or the_cat.outside:
+        if the_cat.dead or the_cat.exiled or the_cat.outside or (clan and the_cat.group != clan):
             continue
         count += 1
     return count

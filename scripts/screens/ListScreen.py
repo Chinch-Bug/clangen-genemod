@@ -83,7 +83,7 @@ class ListScreen(Screens):
             "view_unknown_residence_button": None,
             "view_dark_forest_button": None,
         }
-        if game.clan:
+        if game.clan and game.clan.clancount == "multiclan":
             for clan in game.clan.all_clans:
                 self.sort_by_buttons[clan.name] = None
 
@@ -400,17 +400,18 @@ class ListScreen(Screens):
             )
             y_pos += 32
 
-        for clan in game.clan.all_clans:
-            self.choose_group_buttons[clan.name] = UISurfaceImageButton(
-                ui_scale(pygame.Rect((0, y_pos), (190, 34))),
-                clan.name + "Clan",
-                get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
-                container=self.living_groups_container,
-                object_id=ObjectID(class_id="@buttonstyles_dropdown", object_id=None),
-                starting_height=2,
-                manager=MANAGER,
-            )
-            y_pos += 32
+        if game.clan.clancount == 'multiclan':
+            for clan in game.clan.all_clans:
+                self.choose_group_buttons[clan.name] = UISurfaceImageButton(
+                    ui_scale(pygame.Rect((0, y_pos), (190, 34))),
+                    clan.name + "Clan",
+                    get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
+                    container=self.living_groups_container,
+                    object_id=ObjectID(class_id="@buttonstyles_dropdown", object_id=None),
+                    starting_height=2,
+                    manager=MANAGER,
+                )
+                y_pos += 32
 
         self.choose_living_dropdown = UIDropDownContainer(
             self.living_groups_container.relative_rect,
