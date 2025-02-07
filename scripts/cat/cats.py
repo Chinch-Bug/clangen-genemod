@@ -525,7 +525,7 @@ class Cat:
         # PRONOUNS AUTO-GENERATE WHEN REQUIRED
 
         # APPEARANCE
-        self.pelt = Pelt.generate_new_pelt(self.phenotype, self.gender, [Cat.fetch_cat(i) for i in (self.parent1, self.parent2) if i], self.age)
+        self.pelt = Pelt.generate_new_pelt(self.phenotype, self.age)
     
         #Personality
         self.personality = Personality(kit_trait=self.age.is_baby())

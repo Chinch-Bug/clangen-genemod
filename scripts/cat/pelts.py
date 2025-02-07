@@ -115,14 +115,6 @@ class Pelt:
         "BULB BLUE",
         "CLOVER",
         "DAISY",
-        "CLOVER",
-        "DAISY",
-        "LILY OF THE VALLEY",
-        "HEATHER",
-        "SNAPDRAGON",
-        "GORSE",
-        "BULB WHITE",
-        "BULB YELLOW",
         "DRY HERBS",
         "DRY CATMINT",
         "DRY NETTLES",
@@ -214,12 +206,59 @@ class Pelt:
         "INDIGONYLON",
     ]
 
+    head_accessories = [
+        "MOTH WINGS",
+        "ROSY MOTH WINGS",
+        "MORPHO BUTTERFLY",
+        "MONARCH BUTTERFLY",
+        "CICADA WINGS",
+        "BLACK CICADA",
+        "MAPLE LEAF",
+        "HOLLY",
+        "BLUE BERRIES",
+        "FORGET ME NOTS",
+        "RYE STALK",
+        "CATTAIL",
+        "POPPY",
+        "ORANGE POPPY",
+        "CYAN POPPY",
+        "WHITE POPPY",
+        "PINK POPPY",
+        "BLUEBELLS",
+        "LILY OF THE VALLEY",
+        "SNAPDRAGON",
+        "NETTLE",
+        "HEATHER",
+        "GORSE",
+        "JUNIPER",
+        "RASPBERRY",
+        "LAVENDER",
+        "OAK LEAVES",
+        "CATMINT",
+        "MAPLE SEED",
+        "LAUREL",
+        "BULB WHITE",
+        "BULB YELLOW",
+        "BULB ORANGE",
+        "BULB PINK",
+        "BULB BLUE",
+        "DRY CATMINT",
+        "DRY NETTLES",
+        "DRY LAURELS",
+    ]
+
+    body_accessories = [
+        "HERBS",
+        "PETALS",
+        "DRY HERBS"
+    ]
+    
     """Holds all appearance information for a cat. """
 
     def __init__(
         self,
         phenotype:Phenotype,
-        accessory:str=None,
+        accessory:list=None,
         paralyzed:bool=False,
         opacity:int=100,
         scars:list=None,
@@ -297,7 +336,7 @@ class Pelt:
             self.cat_sprites["para_adult"] = 15
 
     @staticmethod
-    def generate_new_pelt(phenotype, gender:str, parents:tuple=(), age:str="adult"):
+    def generate_new_pelt(phenotype, age:str="adult"):
         new_pelt = Pelt(phenotype)
         
         new_pelt.init_sprite()
@@ -306,6 +345,35 @@ class Pelt:
         new_pelt.init_tint()
 
         return new_pelt
+
+    def check_and_convert(self, convert_dict):
+        """Checks for old-type properties for the appearance-related properties
+        that are stored in Pelt, and converts them. To be run when loading a cat in."""
+
+        if self.length == "long":
+            if self.cat_sprites["adult"] not in [9, 10, 11]:
+                if self.cat_sprites["adult"] == 0:
+                    self.cat_sprites["adult"] = 9
+                elif self.cat_sprites["adult"] == 1:
+                    self.cat_sprites["adult"] = 10
+                elif self.cat_sprites["adult"] == 2:
+                    self.cat_sprites["adult"] = 11
+                self.cat_sprites["young adult"] = self.cat_sprites["adult"]
+                self.cat_sprites["senior adult"] = self.cat_sprites["adult"]
+                self.cat_sprites["para_adult"] = 16
+        else:
+            self.cat_sprites["para_adult"] = 15
+        if self.cat_sprites["senior"] not in [12, 13, 14]:
+            if self.cat_sprites["senior"] == 3:
+                self.cat_sprites["senior"] = 12
+            elif self.cat_sprites["senior"] == 4:
+                self.cat_sprites["senior"] = 13
+            elif self.cat_sprites["senior"] == 5:
+                self.cat_sprites["senior"] = 14
+
+        if isinstance(self.accessory, str):
+            self.accessory = [self.accessory]
+
 
     def init_sprite(self):
         self.cat_sprites = {
@@ -346,7 +414,7 @@ class Pelt:
 
     def init_accessories(self, age):
         if age == "newborn":
-            self.accessory = None
+            self.accessory = []
             return
 
         acc_display_choice = random.randint(0, 80)
@@ -356,11 +424,11 @@ class Pelt:
             acc_display_choice = random.randint(0, 100)
 
         if acc_display_choice == 1:
-            self.accessory = choice(
+            self.accessory = [choice(
                 [choice(Pelt.plant_accessories), choice(Pelt.wild_accessories)]
-            )
+            )]
         else:
-            self.accessory = None
+            self.accessory = []
 
         if self.phenotype.bobtailnr > 0 and self.phenotype.bobtailnr < 5 and self.accessory in ['RED FEATHERS', 'BLUE FEATHERS', 'JAY FEATHERS']:
             self.accessory = None
