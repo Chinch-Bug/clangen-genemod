@@ -233,5 +233,15 @@
     ],
     "cyst" : [
         "The skin seems to have healed over m_c's wound nicely."
+    ],
+    "fatigue" : [
+        "m_c feels full of energy again.",
+        "m_c's fatigue has faded.",
+        "m_c is happy to feel fully rested."
+    ],
+    "exhaustion" : [
+        "m_c finally feels full of energy again.",
+        "m_c's exhaustion has faded.",
+        "m_c is happy to finally feel fully rested."
     ]
 }

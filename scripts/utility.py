@@ -2914,7 +2914,7 @@ def generate_sprite(
                 if(phenotype.agouti[0] == "Apb" and ('red' not in stripecolour and 'cream' not in stripecolour and 'honey' not in stripecolour and 'ivory' not in stripecolour and 'apricot' not in stripecolour)):
                     charc_shading.blit(sprites.sprites['lightbasecolours0'], (0, 0))
                     charc_shading.set_alpha(175)
-                    if 'shaded' in whichbase or 'chinchilla' in whichbase:
+                    if 'silver' in whichbase or 'shaded' in whichbase or 'chinchilla' in whichbase:
                         charc_shading.set_alpha(100)
                     charc.blit(charc_shading, (0, 0))
                     charc.blit(sprites.sprites['charcoal' + cat_sprite], (0, 0))

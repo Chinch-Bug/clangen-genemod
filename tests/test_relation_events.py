@@ -47,7 +47,6 @@ class CanHaveKits(unittest.TestCase):
         cat2.relationships[cat1.ID] = relation2
 
         # when
-        check_if_can_have_kits.return_value = True
         Pregnancy_Events.handle_having_kits(cat=cat1, clan=test_clan)
 
         # then
