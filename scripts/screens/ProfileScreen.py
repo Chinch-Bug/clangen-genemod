@@ -45,18 +45,6 @@ from ..ui.icon import Icon
 
 
 # ---------------------------------------------------------------------------- #
-#             change how accessory info displays on cat profiles               #
-# ---------------------------------------------------------------------------- #
-def accessory_display_name(cat):
-    accessory = cat.pelt.accessory
-
-    if accessory is None:
-        return ""
-
-    return i18n.t(f"cat.accessories.{accessory}", count=0)
-
-
-# ---------------------------------------------------------------------------- #
 #               assigns backstory blurbs to the backstory                      #
 # ---------------------------------------------------------------------------- #
 def bs_blurb_text(cat):
@@ -754,6 +742,8 @@ class ProfileScreen(Screens):
 
         # ACCESSORY
         if the_cat.pelt.accessory:
+            if not isinstance(the_cat.pelt.accessory, list):
+                the_cat.pelt.accessory = [the_cat.pelt.accessory]
             output += "\n"
             output += i18n.t(
                 "screens.profile.accessory_label",
