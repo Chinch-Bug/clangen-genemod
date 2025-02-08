@@ -742,8 +742,6 @@ class ProfileScreen(Screens):
 
         # ACCESSORY
         if the_cat.pelt.accessory:
-            if not isinstance(the_cat.pelt.accessory, list):
-                the_cat.pelt.accessory = [the_cat.pelt.accessory]
             output += "\n"
             output += i18n.t(
                 "screens.profile.accessory_label",

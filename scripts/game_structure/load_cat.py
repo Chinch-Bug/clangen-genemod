@@ -119,6 +119,7 @@ def json_load():
                 accessory=cat["accessory"],
                 opacity=cat["opacity"] if "opacity" in cat else 100,
             )
+            new_cat.pelt.check_and_convert()
 
             # converting old specialty saves into new scar parameter
             if "specialty" in cat or "specialty2" in cat:

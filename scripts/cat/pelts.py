@@ -346,7 +346,7 @@ class Pelt:
 
         return new_pelt
 
-    def check_and_convert(self, convert_dict):
+    def check_and_convert(self):
         """Checks for old-type properties for the appearance-related properties
         that are stored in Pelt, and converts them. To be run when loading a cat in."""
 
