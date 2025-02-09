@@ -1359,6 +1359,54 @@ class OtherClan:
             "deputy" : self.deputy.ID if self.deputy else None,
             "medicine_cat" : self.medicine_cat.ID if self.medicine_cat else None,
         }
+    
+    def new_leader(self, leader):
+        """
+        TODO: DOCS
+        """
+        if leader:
+            self.leader = leader
+            Cat.all_cats[leader.ID].status_change("leader")
+            self.leader_lives = 9
+
+    def new_deputy(self, deputy):
+        """
+        TODO: DOCS
+        """
+        if deputy:
+            self.deputy = deputy
+            Cat.all_cats[deputy.ID].status_change("deputy")
+
+    def new_medicine_cat(self, medicine_cat):
+        """
+        TODO: DOCS
+        """
+        if medicine_cat:
+            if medicine_cat.status != 'healer':
+                Cat.all_cats[medicine_cat.ID].status_change('healer')
+            if medicine_cat.ID not in self.med_cat_list:
+                self.med_cat_list.append(medicine_cat.ID)
+            medicine_cat = self.med_cat_list[0]
+            self.medicine_cat = Cat.all_cats[medicine_cat]
+            self.med_cat_number = len(self.med_cat_list)
+
+    def remove_med_cat(self, medicine_cat):
+        """
+        Removes a med cat. Use when retiring, or switching to warrior
+        """
+        if medicine_cat:
+            if medicine_cat.ID in self.med_cat_list:
+                self.med_cat_list.remove(medicine_cat.ID)
+                self.med_cat_number = len(self.med_cat_list)
+            if self.medicine_cat:
+                if medicine_cat.ID == self.medicine_cat.ID:
+                    if self.med_cat_list:
+                        self.medicine_cat = Cat.fetch_cat(
+                            self.med_cat_list[0]
+                        )
+                        self.med_cat_number = len(self.med_cat_list)
+                    else:
+                        self.medicine_cat = None
 
 
 class StarClan:

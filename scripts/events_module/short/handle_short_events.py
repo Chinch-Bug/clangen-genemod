@@ -106,6 +106,11 @@ class HandleShortEvents:
             self.other_clan = random.choice(
                 game.clan.all_clans if game.clan.all_clans else None
             )
+            if self.other_clan and clan and self.other_clan.name == clan.name:
+                while self.other_clan.name == clan.name:
+                    random.choice(
+                        game.clan.all_clans + [game.clan]
+                    )
             self.other_clan_name = f"{self.other_clan.name}Clan"
 
         # checking if a murder reveal should happen
@@ -194,12 +199,8 @@ class HandleShortEvents:
                 return
 
         # create new cats (must happen here so that new cats can be included in further changes)
-        self.handle_new_cats(clan=clan)
+        self.handle_new_cats(clan=clan.name if clan else None)
         
-        # give accessory
-        if self.chosen_event.new_accessory:
-            self.handle_accessories()
-
         # give accessory
         if self.chosen_event.new_accessory:
             self.handle_accessories()
@@ -214,7 +215,7 @@ class HandleShortEvents:
                 random_cat=self.random_cat,
                 victim_cat=self.victim_cat,
                 new_cats=self.new_cat_objects,
-                clan=game.clan,
+                clan=clan if clan else game.clan,
                 other_clan=self.other_clan,
             )
             unpack_rel_block(Cat, self.chosen_event.relationships, self)
@@ -222,7 +223,7 @@ class HandleShortEvents:
         # used in some murder events,
         # this kind of sucks tho it would be nice to change how this sort of thing is handled
         if "kit_manipulated" in self.chosen_event.tags:
-            kit = Cat.fetch_cat(random.choice(get_alive_status_cats(Cat, ["kitten"])))
+            kit = Cat.fetch_cat(random.choice(get_alive_status_cats(Cat, ["kitten"], clan=clan.name if clan else None)))
             self.involved_cats.append(kit.ID)
             change_relationship_values(
                 [self.random_cat],
@@ -250,13 +251,13 @@ class HandleShortEvents:
                     name_change = True
 
         # kill cats
-        self.handle_death()
+        self.handle_death(clan if clan else game.clan)
 
         # add necessary histories
-        self.handle_death_history()
+        self.handle_death_history(clan)
 
         # handle injuries and injury history
-        self.handle_injury()
+        self.handle_injury(clan)
 
         # handle murder reveals
         if "murder_reveal" in self.chosen_event.sub_type:
@@ -279,7 +280,7 @@ class HandleShortEvents:
                 self.types.append("misc")
 
         # change other_clan rep
-        if self.chosen_event.other_clan:
+        if self.chosen_event.other_clan and clan == game.clan:
             change_clan_relations(
                 self.other_clan, self.chosen_event.other_clan["changed"]
             )
@@ -308,7 +309,7 @@ class HandleShortEvents:
             victim_cat=self.victim_cat,
             new_cats=self.new_cats,
             multi_cats=self.multi_cat,
-            clan=game.clan,
+            clan=clan if clan else game.clan,
             other_clan=self.other_clan,
             chosen_herb=self.chosen_herb,
         )
@@ -323,6 +324,7 @@ class HandleShortEvents:
                 self.text + " " + self.additional_event_text,
                 self.types,
                 self.involved_cats,
+                clan=clan.name if clan else None
             )
         )
 
@@ -435,7 +437,7 @@ class HandleShortEvents:
                 self.main_cat.genderalign
             )
 
-    def handle_death(self):
+    def handle_death(self, clan=None):
         """
         handles killing/murdering cats
         """
@@ -465,13 +467,13 @@ class HandleShortEvents:
 
             if cat.status == "leader":
                 if "all_lives" in self.chosen_event.tags:
-                    game.clan.leader_lives -= 10
+                    clan.leader_lives -= 10
                 elif "some_lives" in self.chosen_event.tags:
-                    game.clan.leader_lives -= random.randrange(
+                    clan.leader_lives -= random.randrange(
                         2, self.current_lives - 1
                     )
                 else:
-                    game.clan.leader_lives -= 1
+                    clan.leader_lives -= 1
 
                 cat.die(body)
                 self.additional_event_text = get_leader_life_notice()
@@ -489,7 +491,7 @@ class HandleShortEvents:
             i
             for i in Cat.all_cats.values()
             if not i.dead and not i.outside and not i.exiled
-            and (not clan or i.group == clan)
+            and (not clan or i.group == clan.name)
         ]
 
         # make sure all cats in the pool fit the event requirements
@@ -555,7 +557,7 @@ class HandleShortEvents:
         else:
             return
 
-    def handle_death_history(self):
+    def handle_death_history(self, clan=None):
         """
         handles assigning histories
         """
@@ -569,14 +571,14 @@ class HandleShortEvents:
                         death_history = history_text_adjust(
                             block.get("lead_death"),
                             self.other_clan_name,
-                            game.clan,
+                            clan if clan else game.clan,
                             self.random_cat,
                         )
                     else:
                         death_history = history_text_adjust(
                             block.get("reg_death"),
                             self.other_clan_name,
-                            game.clan,
+                            clan if clan else game.clan,
                             self.random_cat,
                         )
 
@@ -609,14 +611,14 @@ class HandleShortEvents:
                         death_history = history_text_adjust(
                             block.get("lead_death"),
                             self.other_clan_name,
-                            game.clan,
+                            clan if clan else game.clan,
                             self.random_cat,
                         )
                     else:
                         death_history = history_text_adjust(
                             block.get("reg_death"),
                             self.other_clan_name,
-                            game.clan,
+                            clan if clan else game.clan,
                             self.random_cat,
                         )
 
@@ -641,14 +643,14 @@ class HandleShortEvents:
                         death_history = history_text_adjust(
                             block.get("lead_death"),
                             self.other_clan_name,
-                            game.clan,
+                            clan if clan else game.clan,
                             self.random_cat,
                         )
                     else:
                         death_history = history_text_adjust(
                             block.get("reg_death"),
                             self.other_clan_name,
-                            game.clan,
+                            clan if clan else game.clan,
                             self.random_cat,
                         )
 
@@ -668,14 +670,14 @@ class HandleShortEvents:
                             death_history = history_text_adjust(
                                 self.chosen_event.history_text.get("reg_death"),
                                 self.other_clan_name,
-                                game.clan,
+                                clan if clan else game.clan,
                                 self.random_cat,
                             )
                             History.add_death(
                                 new_cats[i], death_history, other_cat=self.random_cat
                             )
 
-    def handle_injury(self):
+    def handle_injury(self, clan=None):
         """
         assigns an injury to involved cats and then assigns possible histories (if in classic, assigns scar and scar
         history)
@@ -706,22 +708,22 @@ class HandleShortEvents:
                 if abbr == "m_c":
                     injury = random.choice(possible_injuries)
                     self.main_cat.get_injured(injury)
-                    self.handle_injury_history(self.main_cat, "m_c", injury)
+                    self.handle_injury_history(self.main_cat, "m_c", injury, clan=clan)
 
                 # RANDOM CAT
                 elif abbr == "r_c":
                     injury = random.choice(possible_injuries)
                     self.random_cat.get_injured(injury)
-                    self.handle_injury_history(self.random_cat, "r_c", injury)
+                    self.handle_injury_history(self.random_cat, "r_c", injury, clan=clan)
 
                 # NEW CATS
                 elif "n_c" in abbr:
                     for i, new_cats in enumerate(self.new_cats):
                         injury = random.choice(possible_injuries)
                         new_cats[i].get_injured(injury)
-                        self.handle_injury_history(new_cats[i], abbr, injury)
+                        self.handle_injury_history(new_cats[i], abbr, injury, clan=clan)
 
-    def handle_injury_history(self, cat, cat_abbr, injury=None):
+    def handle_injury_history(self, cat, cat_abbr, injury=None, clan=None):
         """
         handle injury histories
         :param cat: the cat object for cat being injured
@@ -738,7 +740,7 @@ class HandleShortEvents:
                     return
                 elif cat_abbr in block["cats"]:
                     history_text = history_text_adjust(
-                        block["scar"], self.other_clan_name, game.clan, self.random_cat
+                        block["scar"], self.other_clan_name, clan if clan else game.clan, self.random_cat
                     )
                     History.add_scar(cat, history_text)
                     break
@@ -748,20 +750,20 @@ class HandleShortEvents:
                     return
                 elif cat_abbr in block["cats"]:
                     possible_scar = history_text_adjust(
-                        block["scar"], self.other_clan_name, game.clan, self.random_cat
+                        block["scar"], self.other_clan_name, clan if clan else game.clan, self.random_cat
                     )
                     if cat.status == "leader":
                         possible_death = history_text_adjust(
                             block["lead_death"],
                             self.other_clan_name,
-                            game.clan,
+                            clan if clan else game.clan,
                             self.random_cat,
                         )
                     else:
                         possible_death = history_text_adjust(
                             block["reg_death"],
                             self.other_clan_name,
-                            game.clan,
+                            clan if clan else game.clan,
                             self.random_cat,
                         )
                     if possible_scar or possible_death:

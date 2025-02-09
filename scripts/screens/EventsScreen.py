@@ -150,7 +150,7 @@ class EventsScreen(Screens):
             elif element in self.choose_group_buttons.values():
                 self.choose_living_dropdown.close()
                 self.current_clan = element.text.replace("Clan", "")
-                self.update_display_events_lists()
+                self.timeskip_done(True)
             else:
                 self.save_scroll_position()
                 self.menu_button_pressed(event)
@@ -804,12 +804,12 @@ class EventsScreen(Screens):
         super().on_use()
         self.loading_screen_on_use(self.events_thread, self.timeskip_done)
 
-    def timeskip_done(self):
+    def timeskip_done(self, clanswitch=False):
         """Various sorting and other tasks that must be done with the timeskip is over."""
 
         game.switches["saved_scroll_positions"] = {}
 
-        if get_living_clan_cat_count(Cat) == 0:
+        if not clanswitch and get_living_clan_cat_count(Cat, clan=game.clan.name) == 0:
             GameOver("events screen")
 
         self.update_display_events_lists()

@@ -200,7 +200,7 @@ def get_free_possible_mates(cat):
 
 
 def get_random_moon_cat(
-        Cat, main_cat, parent_child_modifier=True, mentor_app_modifier=True
+        Cat, main_cat, parent_child_modifier=True, mentor_app_modifier=True, clan=None
 ):
     """
     returns a random cat for use in moon events
@@ -219,6 +219,7 @@ def get_random_moon_cat(
             lambda c: not c.dead
                       and not c.exiled
                       and not c.outside
+                      and (not clan or c.group == clan)
                       and (c.ID != main_cat.ID),
             Cat.all_cats.values(),
         )
@@ -253,11 +254,6 @@ def get_random_moon_cat(
                 random_cat = Cat.fetch_cat(main_cat.mentor)
             elif main_cat.apprentice and not int(random() * 3):
                 random_cat = Cat.fetch_cat(choice(main_cat.apprentice))
-
-    if random_cat and random_cat.dead:
-        print("Idk why or how, but apparently it picked a dead cat for an event. Not supposed to happen")
-        print(random_cat.ID)
-        random_cat = choice(possible_r_c)
 
     if isinstance(random_cat, str):
         print(f"WARNING: random cat was {random_cat} instead of cat object")
@@ -2364,17 +2360,17 @@ def event_text_adjust(
 
     # lead_name
     if "lead_name" in text:
-        leader = Cat.fetch_cat(game.clan.leader)
+        leader = Cat.fetch_cat(clan.leader if clan else game.clan.leader)
         replace_dict["lead_name"] = (str(leader.name), choice(leader.pronouns))
 
     # dep_name
     if "dep_name" in text:
-        deputy = Cat.fetch_cat(game.clan.deputy)
+        deputy = Cat.fetch_cat(clan.deputy if clan else game.clan.deputy)
         replace_dict["dep_name"] = (str(deputy.name), choice(deputy.pronouns))
 
     # med_name
     if "med_name" in text:
-        med = choice(get_alive_status_cats(Cat, ["healer", "healer apprentice"], working=True))
+        med = choice(get_alive_status_cats(Cat, ["healer", "healer apprentice"], working=True, clan=clan.name if clan else game.clan.name))
         replace_dict["med_name"] = (str(med.name), choice(med.pronouns))
 
     # assign all names and pronouns
