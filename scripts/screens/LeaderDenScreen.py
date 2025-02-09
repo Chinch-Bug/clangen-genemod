@@ -985,7 +985,7 @@ class LeaderDenScreen(Screens):
         outsiders = [
             i
             for i in Cat.all_cats.values()
-            if i.outside and not i.dead and not i.driven_out
+            if (i.group in [game.clan.name, "outsider cat"]) and not i.dead and not i.driven_out
         ]
 
         # separate them into chunks for the pages

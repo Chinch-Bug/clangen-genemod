@@ -399,7 +399,7 @@ def create_bio_parents(Cat, cat_type, flip=False, second_parent=True):
     return [blood_parent, blood_parent2, par2geno]
 
 def create_new_cat_block(
-        Cat, Relationship, event, in_event_cats: dict, i: int, attribute_list: List[str]
+        Cat, Relationship, event, in_event_cats: dict, i: int, attribute_list: List[str], clan=None
 ) -> list:
     """
     Creates a single new_cat block and then generates and returns the cats within the block
@@ -658,7 +658,7 @@ def create_new_cat_block(
 
         if possible_outsiders:
             chosen_cat = choice(possible_outsiders)
-            game.clan.add_to_clan(chosen_cat)
+            game.clan.add_to_clan(chosen_cat, clan=clan)
             chosen_cat.status = status
             chosen_cat.outside = outside
             if not alive:
@@ -722,6 +722,7 @@ def create_new_cat_block(
             thought=thought,
             alive=alive,
             outside=outside,
+            group=clan,
             parent1=parent1.ID if parent1 else None,
             parent2=parent2.ID if parent2 else None,
             extrapar=generated_parents[2] if not parent2 and generated_parents else None,
@@ -850,6 +851,7 @@ def create_new_cat(
     thought: str = None,
     alive: bool = True,
     outside: bool = False,
+    group: str = None,
     parent1: str = None,
     parent2: str = None,
     extrapar: Genotype = None,
@@ -947,6 +949,7 @@ def create_new_cat(
             new_cat = Cat(
                 moons=age,
                 status=status,
+                group=group,
                 gender=_gender,
                 backstory=backstory,
                 parent1=parent1,
@@ -984,6 +987,7 @@ def create_new_cat(
                         moons=age,
                         prefix=name,
                         status=status,
+                        group=group,
                         gender=_gender,
                         backstory=backstory,
                         parent1=parent1,
@@ -997,6 +1001,7 @@ def create_new_cat(
                     new_cat = Cat(
                         moons=age,
                         status=status,
+                        group=group,
                         gender=_gender,
                         backstory=backstory,
                         parent1=parent1,
@@ -1011,6 +1016,7 @@ def create_new_cat(
                     prefix=name,
                     suffix="",
                     status=status,
+                    group=group,
                     gender=_gender,
                     backstory=backstory,
                     parent1=parent1,

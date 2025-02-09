@@ -835,6 +835,8 @@ class ProfileScreen(Screens):
                 f"<font color='#FF0000'>{i18n.t('general.exiled', count=1)}</font>"
             )
         else:
+            if game.clan.clancount == "multiclan" and not the_cat.outside and the_cat.group != " ":
+                output += the_cat.group + "Clan "
             output += i18n.t(f"general.{the_cat.status}", count=1)
 
         # NEWLINE ----------

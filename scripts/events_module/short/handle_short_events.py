@@ -74,6 +74,7 @@ class HandleShortEvents:
         random_cat: Cat,
         freshkill_pile: FreshkillPile,
         sub_type: list = None,
+        clan = None
     ):
         """
         This function handles the generation and execution of the event
@@ -96,7 +97,7 @@ class HandleShortEvents:
         self.involved_cats = [self.main_cat.ID]
 
         # check for war and assign self.other_clan accordingly
-        if game.clan.war.get("at_war", False):
+        if game.clan.war.get("at_war", False) and (not clan or clan == game.clan.name):
             enemy_clan = get_warring_clan()
             self.other_clan = enemy_clan
             self.other_clan_name = f"{self.other_clan.name}Clan"
@@ -188,12 +189,12 @@ class HandleShortEvents:
         if "mass_death" in self.chosen_event.sub_type:
             if not game.clan.clan_settings["disasters"]:
                 return
-            self.handle_mass_death()
+            self.handle_mass_death(clan=clan)
             if len(self.multi_cat) <= 2:
                 return
 
         # create new cats (must happen here so that new cats can be included in further changes)
-        self.handle_new_cats()
+        self.handle_new_cats(clan=clan)
         
         # give accessory
         if self.chosen_event.new_accessory:
@@ -325,7 +326,7 @@ class HandleShortEvents:
             )
         )
 
-    def handle_new_cats(self):
+    def handle_new_cats(self, clan=None):
         """
         handles adding new cats to the clan
         """
@@ -345,7 +346,7 @@ class HandleShortEvents:
         for i, attribute_list in enumerate(self.chosen_event.new_cat):
             self.new_cats.append(
                 create_new_cat_block(
-                    Cat, Relationship, self, in_event_cats, i, attribute_list
+                    Cat, Relationship, self, in_event_cats, i, attribute_list, clan=clan
                 )
             )
 
@@ -478,7 +479,7 @@ class HandleShortEvents:
             else:
                 cat.die(body)
 
-    def handle_mass_death(self):
+    def handle_mass_death(self, clan=None):
         """
         finds cats eligible for the death, if not enough cats are eligible then event is tossed.
         cats that will die are added to self.dead_cats
@@ -488,6 +489,7 @@ class HandleShortEvents:
             i
             for i in Cat.all_cats.values()
             if not i.dead and not i.outside and not i.exiled
+            and (not clan or i.group == clan)
         ]
 
         # make sure all cats in the pool fit the event requirements

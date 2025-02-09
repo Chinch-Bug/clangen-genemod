@@ -209,6 +209,7 @@ class Clan:
                                              "healer", "leader", "mediator", "deputy", "elder"]),
                               )
         self.instructor.dead = True
+        self.instructor.group = " "
         self.instructor.dead_for = randint(20, 200)
         self.add_cat(self.instructor)
         self.add_to_starclan(self.instructor)
@@ -247,8 +248,8 @@ class Clan:
             other_clan = OtherClan(name=other_clan_name, clancount=clancount)
             self.all_clans.append(other_clan)
         for cat_id in Cat.all_cats:
-            if id not in self.clan_cats:
-                self.clan_cats.append(id)
+            if cat_id not in self.clan_cats:
+                self.clan_cats.append(cat_id)
 
         # give thoughts,actions and relationships to cats
             Cat.all_cats.get(cat_id).init_all_relationships()
@@ -338,7 +339,7 @@ class Clan:
                 self.med_cat_list.remove(cat.ID)
                 self.med_cat_predecessors += 1
 
-    def add_to_clan(self, cat):
+    def add_to_clan(self, cat, clan=None):
         """
         TODO: DOCS
         """
@@ -350,7 +351,7 @@ class Clan:
         ):
             # The outside-value must be set to True before the cat can go to cotc
             Cat.outside_cats.pop(cat.ID)
-            cat.clan = str(game.clan.name)
+            cat.group = str(game.clan.name) if not clan else clan
 
     def add_to_outside(self, cat):  # same as add_cat
         """

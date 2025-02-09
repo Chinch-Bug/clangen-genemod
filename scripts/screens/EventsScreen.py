@@ -150,6 +150,7 @@ class EventsScreen(Screens):
             elif element in self.choose_group_buttons.values():
                 self.choose_living_dropdown.close()
                 self.current_clan = element.text.replace("Clan", "")
+                self.update_display_events_lists()
             else:
                 self.save_scroll_position()
                 self.menu_button_pressed(event)
