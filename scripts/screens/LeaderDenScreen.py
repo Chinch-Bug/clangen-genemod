@@ -876,12 +876,12 @@ class LeaderDenScreen(Screens):
             },
         )
 
-        self.focus_button["hunt_down"] = UISurfaceImageButton(
+        self.focus_button["hunt"] = UISurfaceImageButton(
             ui_scale(pygame.Rect((0, 0), (121, 30))),
-            "screens.leader_den.hunt_down",
+            "screens.leader_den.hunt",
             get_button_dict(ButtonStyles.SQUOVAL, (121, 30)),
             object_id="@buttonstyles_squoval",
-            tool_tip_text="screens.leader_den.hunt_down_tooltip",
+            tool_tip_text="screens.leader_den.hunt_tooltip",
             tool_tip_text_kwargs={"r_c": self.focus_cat},
             container=self.focus_outsider_button_container,
             starting_height=3,
@@ -891,19 +891,19 @@ class LeaderDenScreen(Screens):
             },
         )
 
-        self.focus_button["drive_off"] = UISurfaceImageButton(
+        self.focus_button["drive"] = UISurfaceImageButton(
             ui_scale(pygame.Rect((0, 5), (121, 30))),
-            "screens.leader_den.drive_off",
+            "screens.leader_den.drive",
             get_button_dict(ButtonStyles.SQUOVAL, (121, 30)),
             object_id="@buttonstyles_squoval",
-            tool_tip_text="screens.leader_den.drive_off_tooltip",
+            tool_tip_text="screens.leader_den.drive_tooltip",
             tool_tip_text_kwargs={"r_c": self.focus_cat},
             container=self.focus_outsider_button_container,
             starting_height=3,
             manager=MANAGER,
             anchors={
                 "centerx": "centerx",
-                "top_target": self.focus_button["hunt_down"],
+                "top_target": self.focus_button["hunt"],
             },
         )
 
@@ -920,7 +920,7 @@ class LeaderDenScreen(Screens):
             visible=False,
             anchors={
                 "centerx": "centerx",
-                "top_target": self.focus_button["drive_off"],
+                "top_target": self.focus_button["drive"],
             },
         )
 
