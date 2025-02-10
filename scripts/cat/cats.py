@@ -160,6 +160,8 @@ class Cat:
             self.gender = 'masc'
         self.status = status.replace("medicine cat", "healer")
         self.group = group
+        if not group and status in ["loner", "rogue", "kittypet", "former Clancat"]:
+            self.group == "outsider cat"
         self.backstory = backstory
         self.age = None
         self.skills = CatSkills(skill_dict=skill_dict)
@@ -2097,7 +2099,7 @@ class Cat:
             self.healed_condition = True
             return False
 
-    def moon_skip_injury(self, injury):
+    def moon_skip_injury(self, injury, clan):
         """handles the moon skip for injury"""
         if not self.is_injured():
             return True
@@ -2116,7 +2118,7 @@ class Cat:
 
         if mortality and not int(random() * mortality):
             if self.status == "leader":
-                game.clan.leader_lives -= 1
+                clan.leader_lives -= 1
             self.die()
             return False
 
@@ -2137,6 +2139,7 @@ class Cat:
         elif (
             not self.injuries[injury]["complication"]
             and game.clan.clan_settings.get("rest and recover")
+            and clan == game.clan
             and self.injuries[injury]["duration"] + moons_prior - moons_with <= 0
         ):
             self.healed_condition = True
@@ -2265,7 +2268,7 @@ class Cat:
     #                                  conditions                                  #
     # ---------------------------------------------------------------------------- #
 
-    def get_ill(self, name, event_triggered=False, lethal=True, severity="default"):
+    def get_ill(self, name, event_triggered=False, lethal=True, severity="default", clan=game.clan):
         """Add an illness to this cat.
 
         :param name: name of the illness (str)
@@ -2286,7 +2289,7 @@ class Cat:
         duration = illness["duration"]
         med_duration = illness["medicine_duration"]
 
-        amount_per_med = get_amount_cat_for_one_medic(game.clan)
+        amount_per_med = get_amount_cat_for_one_medic(clan)
 
         if medical_cats_condition_fulfilled(Cat.all_cats.values(), amount_per_med):
             duration = med_duration
@@ -2329,7 +2332,7 @@ class Cat:
                 "event_triggered": new_illness.new,
             }
 
-    def get_injured(self, name, event_triggered=False, lethal=True, severity="default"):
+    def get_injured(self, name, event_triggered=False, lethal=True, severity="default", clan=game.clan):
         """Add an injury to this cat.
 
         :param name: The injury to add
@@ -2409,7 +2412,7 @@ class Cat:
                 needed_herbs = {"horsetail", "raspberry", "marigold", "cobwebs"}
                 usable_herbs = list(needed_herbs.intersection(clan_herbs))
 
-                if usable_herbs:
+                if usable_herbs and clan == game.clan:
                     # deplete the herb
                     herb_used = choice(usable_herbs)
                     game.clan.herb_supply.remove_herb(herb_used, -1)
@@ -2426,7 +2429,7 @@ class Cat:
                 if additional_injury in INJURIES:
                     self.additional_injury(additional_injury)
                 else:
-                    self.get_ill(additional_injury, event_triggered=True)
+                    self.get_ill(additional_injury, event_triggered=True, clan=clan)
         else:
             self.also_got = False
 

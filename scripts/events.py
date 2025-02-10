@@ -565,7 +565,7 @@ class Events:
                 clan=game.clan,
             )
 
-            game.cur_events_list.insert(4, Single_Event(event_text, "misc", involved_cats, clan=game.clan.name))
+            game.cur_events_list.insert(4, Single_Event(event_text, "misc", involved_cats, clan=game.clan.name if game.clan.clancount == "multiclan" else None))
 
             game.clan.clan_settings["lead_den_outsider_event"] = {}
 
@@ -1177,21 +1177,21 @@ class Events:
         if cat.is_ill() or cat.is_injured():
             if cat.is_ill() and cat.is_injured():
                 if random.getrandbits(1):
-                    triggered_death = Condition_Events.handle_injuries(cat)
+                    triggered_death = Condition_Events.handle_injuries(cat, clan=clan)
                     if not triggered_death:
-                        Condition_Events.handle_illnesses(cat)
+                        Condition_Events.handle_illnesses(cat, clan=clan)
                 else:
-                    triggered_death = Condition_Events.handle_illnesses(cat)
+                    triggered_death = Condition_Events.handle_illnesses(cat, clan=clan)
                     if not triggered_death:
-                        Condition_Events.handle_injuries(cat)
+                        Condition_Events.handle_injuries(cat, clan=clan)
             elif cat.is_ill():
-                Condition_Events.handle_illnesses(cat)
+                Condition_Events.handle_illnesses(cat, clan=clan)
             else:
-                Condition_Events.handle_injuries(cat)
+                Condition_Events.handle_injuries(cat, clan=clan)
             game.switches["skip_conditions"].clear()
             if cat.dead:
                 return
-            self.handle_outbreaks(cat)
+            self.handle_outbreaks(cat, clan)
 
         # newborns don't do much
         if cat.status == "newborn":
@@ -1206,19 +1206,19 @@ class Events:
 
         # check for death/reveal/risks/retire caused by permanent conditions
         if cat.is_disabled():
-            Condition_Events.handle_already_disabled(cat)
+            Condition_Events.handle_already_disabled(cat, clan)
             if cat.dead:
                 return
 
-        self.coming_out(cat)
-        Pregnancy_Events.handle_having_kits(cat, clan=game.clan)
+        self.coming_out(cat, clan)
+        Pregnancy_Events.handle_having_kits(cat, clan=clan)
         # Stop the timeskip if the cat died in childbirth
         if cat.dead:
             return
 
         cat.relationship_interaction()
         cat.thoughts()
-        self.handle_colour_changes(cat)
+        self.handle_colour_changes(cat, clan)
 
         # relationships have to be handled separately, because of the ceremony name change
         if not cat.dead and not cat.outside:
@@ -1252,7 +1252,7 @@ class Events:
 
         game.switches["skip_conditions"].clear()
 
-    def handle_colour_changes(self, cat):
+    def handle_colour_changes(self, cat, clan=game.clan):
         involved_cats = [cat.ID]
         event_text = ""
 
@@ -1278,7 +1278,7 @@ class Events:
         if event_text:
             event_text = event_text_adjust(Cat, event_text, main_cat=cat)
             types = ["misc"]
-            game.cur_events_list.append(Single_Event(event_text, types, involved_cats))
+            game.cur_events_list.append(Single_Event(event_text, types, involved_cats, clan=clan.name))
 
     def load_war_resources(self):
         if Events.war_lang == i18n.config.get("locale"):
@@ -1918,7 +1918,7 @@ class Events:
                 cat.history = History(prev_names=[old_name])
 
         game.cur_events_list.append(
-            Single_Event(ceremony_text, "ceremony", involved_cats, clan=clan.name if clan else None)
+            Single_Event(ceremony_text, "ceremony", involved_cats, clan=clan.name if clan and game.clan.clancount == "multiclan" else None)
         )
         # game.ceremony_events_list.append(f'{cat.name}{ceremony_text}')
 
@@ -2054,7 +2054,6 @@ class Events:
             if not cat.mentor or Cat.fetch_cat(cat.mentor).not_working():
                 # Sick mentor debuff
                 mentor_modifier = 0.7
-                mentor_skill_modifier = 0
 
             exp = random.choice(
                 list(range(ran[0][0], ran[0][1] + 1))
@@ -2391,7 +2390,7 @@ class Events:
         # FIXME: Not sure what this is intended to do; 'cat_class' has no 'other_cats' attribute.
         # cat_class.other_cats[cat.ID] = cat
 
-    def handle_outbreaks(self, cat):
+    def handle_outbreaks(self, cat, clan):
         """Try to infect some cats."""
         # check if the cat is ill,
         # or if Clan has sufficient med cats
@@ -2401,7 +2400,7 @@ class Events:
         # check how many kitties are already ill
         already_sick = list(
             filter(
-                lambda kitty: (not kitty.dead and not kitty.outside and kitty.is_ill()),
+                lambda kitty: (not kitty.dead and not kitty.outside and kitty.is_ill() and kitty.group == clan.name),
                 Cat.all_cats.values(),
             )
         )
@@ -2411,7 +2410,7 @@ class Events:
         alive_cats = list(
             filter(
                 lambda kitty: (
-                    not kitty.dead and not kitty.outside and not kitty.is_ill()
+                    not kitty.dead and not kitty.outside and not kitty.is_ill() and kitty.group == clan.name
                 ),
                 Cat.all_cats.values(),
             )
@@ -2423,7 +2422,7 @@ class Events:
             return
 
         meds = get_alive_status_cats(
-            Cat, ["healer", "healer apprentice"], working=True, sort=True
+            Cat, ["healer", "healer apprentice"], working=True, sort=True, clan=clan.name
         )
 
         for illness in cat.illnesses:
@@ -2440,7 +2439,7 @@ class Events:
                 ):
                     continue
 
-                if game.clan.clan_settings.get("rest and recover"):
+                if game.clan.clan_settings.get("rest and recover") and clan == game.clan:
                     stopping_chance = game.config["focus"]["rest and recover"][
                         "outbreak_prevention"
                     ]
@@ -2455,6 +2454,7 @@ class Events:
                                 kitty.status in ["kitten", "newborn"]
                                 and not kitty.dead
                                 and not kitty.outside
+                                and kitty.group == clan.name
                             ),
                             Cat.all_cats.values(),
                         )
@@ -2514,18 +2514,18 @@ class Events:
                     ).capitalize()
 
                 game.cur_events_list.append(
-                    Single_Event(event, "health", involved_cats)
+                    Single_Event(event, "health", involved_cats, clan=clan.name if game.clan.clancount == "multiclan" else None)
                 )
                 # game.health_events_list.append(event)
                 break
 
-    def coming_out(self, cat):
+    def coming_out(self, cat, clan):
         """turnin' the kitties trans..."""
 
         if cat.age.is_baby():
             return
 
-        random_cat = get_random_moon_cat(Cat, main_cat=cat)
+        random_cat = get_random_moon_cat(Cat, main_cat=cat, clan=clan.name)
 
         transing_chance = game.config["transition_related"]
         chance = transing_chance["base_trans_chance"]
@@ -2542,6 +2542,7 @@ class Events:
                 random_cat=random_cat,
                 sub_type=sub_type,
                 freshkill_pile=game.clan.freshkill_pile,
+                clan=clan
             )
 
         return

@@ -108,7 +108,7 @@ class HandleShortEvents:
             )
             if self.other_clan and clan and self.other_clan.name == clan.name:
                 while self.other_clan.name == clan.name:
-                    random.choice(
+                    self.other_clan = random.choice(
                         game.clan.all_clans + [game.clan]
                     )
             self.other_clan_name = f"{self.other_clan.name}Clan"
@@ -476,7 +476,7 @@ class HandleShortEvents:
                     clan.leader_lives -= 1
 
                 cat.die(body)
-                self.additional_event_text = get_leader_life_notice()
+                self.additional_event_text = get_leader_life_notice(clan)
 
             else:
                 cat.die(body)

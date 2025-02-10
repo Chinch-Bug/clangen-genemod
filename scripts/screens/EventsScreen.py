@@ -811,6 +811,7 @@ class EventsScreen(Screens):
 
         if not clanswitch and get_living_clan_cat_count(Cat, clan=game.clan.name) == 0:
             GameOver("events screen")
+            self.current_clan = game.clan.name
 
         self.update_display_events_lists()
 
