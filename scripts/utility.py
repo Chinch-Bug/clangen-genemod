@@ -159,7 +159,7 @@ def get_cats_same_age(Cat, cat, age_range=10):
     """
     cats = []
     for inter_cat in Cat.all_cats.values():
-        if inter_cat.dead or inter_cat.outside or inter_cat.exiled:
+        if inter_cat.dead or inter_cat.outside or inter_cat.exiled or inter_cat.group != cat.group:
             continue
         if inter_cat.ID == cat.ID:
             continue
@@ -183,7 +183,7 @@ def get_free_possible_mates(cat):
     """Returns a list of available cats, which are possible mates for the given cat."""
     cats = []
     for inter_cat in cat.all_cats.values():
-        if inter_cat.dead or inter_cat.outside or inter_cat.exiled:
+        if inter_cat.dead or inter_cat.outside or inter_cat.exiled or inter_cat.group != cat.group:
             continue
         if inter_cat.ID == cat.ID:
             continue
@@ -200,7 +200,7 @@ def get_free_possible_mates(cat):
 
 
 def get_random_moon_cat(
-        Cat, main_cat, parent_child_modifier=True, mentor_app_modifier=True, clan=None
+        Cat, main_cat, parent_child_modifier=True, mentor_app_modifier=True, clan:str=None
 ):
     """
     returns a random cat for use in moon events
@@ -1112,6 +1112,8 @@ def create_new_cat(
 
         if outside:
             new_cat.outside = True
+            if new_cat.status in ["kittypet", "loner", "rogue"]:
+                new_cat.name.suffix = ""
         if not alive:
             new_cat.die()
 
@@ -1233,7 +1235,7 @@ def get_cats_of_romantic_interest(cat):
     """Returns a list of cats, those cats are love interest of the given cat"""
     cats = []
     for inter_cat in cat.all_cats.values():
-        if inter_cat.dead or inter_cat.outside or inter_cat.exiled:
+        if inter_cat.dead or inter_cat.outside or inter_cat.exiled or inter_cat.group != cat.group:
             continue
         if inter_cat.ID == cat.ID:
             continue
@@ -2466,6 +2468,7 @@ def leader_ceremony_text_adjust(
         life_giver=None,
         virtue=None,
         extra_lives=None,
+        clan=game.clan
 ):
     """
     used to adjust the text for leader ceremonies
@@ -2490,7 +2493,7 @@ def leader_ceremony_text_adjust(
     if extra_lives:
         text = text.replace("[life_num]", str(extra_lives))
 
-    text = text.replace("c_n", str(game.clan.name) + "Clan")
+    text = text.replace("c_n", str(clan.name) + "Clan")
 
     return text
 
@@ -2506,8 +2509,9 @@ def ceremony_text_adjust(
         random_honor=None,
         living_parents=(),
         dead_parents=(),
+        clan=game.clan
 ):
-    clanname = str(game.clan.name + "Clan")
+    clanname = str(clan.name + "Clan")
 
     random_honor = random_honor
     random_living_parent = None
@@ -2535,8 +2539,8 @@ def ceremony_text_adjust(
             else ("previous_mentor_name", None)
         ),
         "l_n": (
-            (str(game.clan.leader.name), choice(game.clan.leader.pronouns))
-            if game.clan.leader
+            (str(clan.leader.name), choice(clan.leader.pronouns))
+            if clan.leader
             else ("leader_name", None)
         ),
         "c_n": (clanname, None),

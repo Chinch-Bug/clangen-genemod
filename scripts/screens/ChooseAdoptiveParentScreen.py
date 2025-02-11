@@ -907,7 +907,7 @@ class ChooseAdoptiveParentScreen(Screens):
             inter_cat
             for inter_cat in Cat.all_cats_list
             if not (
-                inter_cat.dead or inter_cat.outside or inter_cat.exiled
+                inter_cat.dead or inter_cat.outside or inter_cat.exiled or inter_cat.group != self.the_cat.group
             )  # Adoptive parents cant be dead or outside
             and inter_cat.ID != self.the_cat.ID  # Can't be your own adoptive parent
             and inter_cat.moons - self.the_cat.moons

@@ -10,6 +10,7 @@ from scripts.cat.skills import Skill, SkillPath
 from scripts.clan import Clan
 from scripts.clan_resources.freshkill import FreshkillPile
 from scripts.utility import get_alive_clan_queens
+from scripts.game_structure.game_essentials import game
 
 
 class FreshkillPileTest(unittest.TestCase):
@@ -21,6 +22,7 @@ class FreshkillPileTest(unittest.TestCase):
         self.amount = self.prey_config["start_amount"]
         self.prey_requirement = self.prey_config["prey_requirement"]
         self.condition_increase = self.prey_config["condition_increase"]
+        game.clan = Clan("Test")
 
     def test_add_freshkill(self) -> None:
         # given

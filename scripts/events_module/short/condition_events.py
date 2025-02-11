@@ -665,7 +665,7 @@ class Condition_Events:
         injury_progression = {"poisoned": "redcough", "shock": "lingering shock"}
 
         # need to hold this number so that we can check if the leader has died
-        starting_life_count = clan.leader_lives
+        starting_life_count = clan.leader_lives if cat.status == "leader" else 9
 
         injuries = deepcopy(cat.injuries)
         for injury in injuries:
@@ -835,7 +835,7 @@ class Condition_Events:
             types = ["health"]
             if cat.dead:
                 types.append("birth_death")
-            game.cur_events_list.append(Single_Event(event_string, types, cat.ID, clan=clan.name if game.clan.clancount == "multiclan" else None))
+            game.cur_events_list.append(Single_Event(event_string, types, cat.ID, clan=clan.name))
 
         return triggered
 
@@ -993,7 +993,7 @@ class Condition_Events:
         if len(event_list) > 0:
             event_string = " ".join(event_list)
             game.cur_events_list.append(
-                Single_Event(event_string, event_types, [cat.ID], cat_dict=cat_dict, clan=clan.name if game.clan.clancount == "multiclan" else None)
+                Single_Event(event_string, event_types, [cat.ID], cat_dict=cat_dict, clan=clan.name)
             )
         return
 
@@ -1087,7 +1087,7 @@ class Condition_Events:
                             "ceremony",
                             retire_involved,
                             cat_dict=cat_dict,
-                            clan=clan.name if game.clan.clancount == "multiclan" else None
+                            clan=clan.name
                         )
                     )
 

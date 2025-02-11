@@ -463,13 +463,13 @@ class History:
         })
 
     @staticmethod
-    def add_lead_ceremony(cat):
+    def add_lead_ceremony(cat, clan):
         """
         generates and adds lead ceremony to history
         """
         History.check_load(cat)
 
-        cat.history.lead_ceremony = cat.generate_lead_ceremony()
+        cat.history.lead_ceremony = cat.generate_lead_ceremony(clan)
 
     # ---------------------------------------------------------------------------- #
     #                                 retrieving                                   #
@@ -533,14 +533,14 @@ class History:
         return cat.history.app_ceremony
 
     @staticmethod
-    def get_lead_ceremony(cat):
+    def get_lead_ceremony(cat, clan):
         """
         returns the leader ceremony text
         :param cat: cat object
         """
         History.check_load(cat)
         if not cat.history.lead_ceremony:
-            History.add_lead_ceremony(cat)
+            History.add_lead_ceremony(cat, clan)
         return str(cat.history.lead_ceremony)
 
     @staticmethod

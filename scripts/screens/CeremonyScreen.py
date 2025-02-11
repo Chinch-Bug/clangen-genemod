@@ -47,7 +47,7 @@ class CeremonyScreen(Screens):
                 text_kwargs={"m_c": self.the_cat},
             )
         if self.the_cat.status == "leader" and not self.the_cat.dead:
-            self.life_text = History.get_lead_ceremony(self.the_cat)
+            self.life_text = History.get_lead_ceremony(self.the_cat, [clan for clan in [game.clan] + game.clan.all_clans if clan.name == self.the_cat.group][0])
 
         else:
             self.life_text = ""

@@ -159,7 +159,7 @@ class Cat:
         elif self.gender == 'male':
             self.gender = 'masc'
         self.status = status.replace("medicine cat", "healer")
-        self.group = group
+        self.group = group if group else game.clan
         if not group and status in ["loner", "rogue", "kittypet", "former Clancat"]:
             self.group == "outsider cat"
         self.backstory = backstory
@@ -1556,7 +1556,7 @@ class Cat:
 
             print(f"WARNING: saving history of cat #{self.ID} didn't work")
 
-    def generate_lead_ceremony(self):
+    def generate_lead_ceremony(self, clan):
         """Create a leader ceremony and add it to the history"""
 
         load_leader_ceremonies()
@@ -1597,6 +1597,7 @@ class Cat:
                 Cat,
                 intro,
                 self,
+                clan=clan
             )
         else:
             intro = "this should not appear"
@@ -1720,6 +1721,7 @@ class Cat:
                         if (
                             self.fetch_cat(kitty)
                             and self.fetch_cat(kitty).status == "leader"
+                            and self.fetch_cat(kitty).group == self.group
                         ):
                             life_giving_leader = kitty
                             break
@@ -1730,6 +1732,7 @@ class Cat:
                         if (
                             self.fetch_cat(kitty)
                             and self.fetch_cat(kitty).status == "leader"
+                            and self.fetch_cat(kitty).group == self.group
                         ):
                             life_giving_leader = kitty
                             break
@@ -1842,6 +1845,7 @@ class Cat:
                     leader=self,
                     life_giver=giver,
                     virtue=virtue,
+                    clan=clan
                 )
             )
         if unknown_blessing:
@@ -1867,6 +1871,7 @@ class Cat:
                     leader=self,
                     virtue=chosen_text["virtue"],
                     extra_lives=extra_lives,
+                    clan=clan
                 )
             )
         all_lives = "<br><br>".join(lives)
@@ -1907,6 +1912,7 @@ class Cat:
                 outro,
                 leader=self,
                 life_giver=giver,
+                clan=clan
             )
         else:
             outro = "this should not appear"
@@ -2040,6 +2046,7 @@ class Cat:
             and not iter_cat.outside
             and not iter_cat.exiled
             and not iter_cat.dead
+            and iter_cat.group == self.group
         ]
         # if there are no cats to interact, stop
         if not cats_to_choose:

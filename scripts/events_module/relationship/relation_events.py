@@ -184,7 +184,7 @@ class Relation_Events:
             chosen_type = "all"
         possible_interaction_cats = list(
             filter(
-                lambda cat: (not cat.dead and not cat.outside and not cat.exiled),
+                lambda c: (not c.dead and not c.outside and not c.exiled and c.group == cat.group),
                 Cat.all_cats.values(),
             )
         )

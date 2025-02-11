@@ -630,7 +630,7 @@ class ChooseMentorScreen(Screens):
         potential_warrior_mentors = [
             cat
             for cat in Cat.all_cats_list
-            if not (cat.dead or cat.outside)
+            if not (cat.dead or cat.outside or cat.group != self.the_cat.group)
             and cat.status in ["warrior", "deputy", "leader"]
         ]
         valid_warrior_mentors = []
@@ -638,14 +638,16 @@ class ChooseMentorScreen(Screens):
         potential_medcat_mentors = [
             cat
             for cat in Cat.all_cats_list
-            if not (cat.dead or cat.outside) and cat.status == "healer"
+            if not (cat.dead or cat.outside or cat.group != self.the_cat.group) 
+            and cat.status == "healer"
         ]
         valid_medcat_mentors = []
         invalid_medcat_mentors = []
         potential_mediator_mentors = [
             cat
             for cat in Cat.all_cats_list
-            if not (cat.dead or cat.outside) and cat.status == "mediator"
+            if not (cat.dead or cat.outside or cat.group != self.the_cat.group) 
+            and cat.status == "mediator"
         ]
         valid_mediator_mentors = []
         invalid_mediator_mentors = []

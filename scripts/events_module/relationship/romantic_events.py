@@ -308,6 +308,7 @@ class RomanticEvents:
                 relevant_event_tabs,
                 [cat_to.ID, cat_from.ID],
                 cat_dict={"m_c": cat_to, "r_c": cat_from},
+                clan=cat_from.group
             )
         )
 

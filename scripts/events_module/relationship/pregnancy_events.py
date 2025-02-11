@@ -587,7 +587,7 @@ class Pregnancy_Events:
 
         text = event_text_adjust(Cat, text, main_cat=cat, clan=clan)
         game.cur_events_list.append(
-            Single_Event(text, "birth_death", cat_dict={"m_c": cat}, clan=clan.name if game.clan.clancount == "multiclan" else None)
+            Single_Event(text, "birth_death", cat_dict={"m_c": cat}, clan=clan.name)
         )
 
     @staticmethod
@@ -935,7 +935,7 @@ class Pregnancy_Events:
         # display event
         game.cur_events_list.append(
             Single_Event(
-                print_event, ["health", "birth_death"], involved_cats, clan=clan.name if game.clan.clancount == "multiclan" else None
+                print_event, ["health", "birth_death"], involved_cats, clan=clan.name
             )
         )
 
