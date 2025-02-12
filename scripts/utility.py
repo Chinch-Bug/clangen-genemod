@@ -2888,6 +2888,7 @@ def generate_sprite(
                 phenotype.silver = old_silver
                 
             def CreateStripes(stripecolour, whichbase, coloursurface=None, pattern=None, special = None):
+                notred = ('red' not in stripecolour and 'cream' not in stripecolour and 'honey' not in stripecolour and 'ivory' not in stripecolour and 'apricot' not in stripecolour)
                 stripebase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 
                 if not pattern and not special and 'solid' not in whichbase:
@@ -2911,11 +2912,16 @@ def generate_sprite(
 
                 charc = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 charc_shading = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                if(phenotype.agouti[0] == "Apb" and ('red' not in stripecolour and 'cream' not in stripecolour and 'honey' not in stripecolour and 'ivory' not in stripecolour and 'apricot' not in stripecolour)):
-                    charc_shading.blit(sprites.sprites['lightbasecolours0'], (0, 0))
-                    charc_shading.set_alpha(175)
-                    if 'silver' in whichbase or 'shaded' in whichbase or 'chinchilla' in whichbase:
-                        charc_shading.set_alpha(100)
+                if(phenotype.agouti[0] == "Apb" and notred and hasattr(phenotype, "banding")):
+                    modifiers = {
+                        "chinchilla" : 2,
+                        "shaded" : 3,
+                        "high" : 5,
+                        "medium" : 6,
+                        "low" : 7
+                    }
+                    opacity = int(25 * (modifiers.get(phenotype.banding, 5) / (1 * (int("silver" in whichbase) + 1))))
+                    charc_shading.set_alpha(opacity)
                     charc.blit(charc_shading, (0, 0))
                     charc.blit(sprites.sprites['charcoal' + cat_sprite], (0, 0))
                 
