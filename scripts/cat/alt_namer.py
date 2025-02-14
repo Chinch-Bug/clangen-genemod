@@ -5,17 +5,16 @@ from operator import xor
 from copy import deepcopy
 
 class Namer():
-    def __init__ (self, used_prefixes=[], mod_prefixes=[], moons=0):
+    def __init__ (self, used_prefixes=[], mod_prefixes=[], moons=0, phenotype=None, chimera_pheno=None):
         self.used_prefixes = used_prefixes
         self.all_prefixes = mod_prefixes
         self.moons = moons
-
-    def start(self, phenotype, chimera_pheno = None):
         self.phenotype = phenotype
         self.chimera_pheno = chimera_pheno
 
-        if phenotype:
-            params = self.parse_chimera() if chimera_pheno else self.get_categories(phenotype)
+    def start(self):
+        if self.phenotype:
+            params = self.parse_chimera() if self.chimera_pheno else self.get_categories(self.phenotype)
 
             if params[0] in ['white', 'silver shaded'] or (params[3] == 'high' and random() < 0.2):
                 return self.white(params[0])
@@ -38,8 +37,7 @@ class Namer():
             else:
                 print('Unknown base:' + params[0])
 
-    def parse_chimera(self):
-
+    def parse_chimera(self, phenotype=None):
         base = ""
         tortie = False
         tortie_mimic = False
