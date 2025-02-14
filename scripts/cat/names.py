@@ -244,9 +244,9 @@ class Name:
         except:
             used_prefixes = []
 
-        namer = Namer(used_prefixes, self.mod_prefixes, self.moons)
+        namer = Namer(used_prefixes, self.mod_prefixes, self.moons, self.genotype, self.phenotype, self.chimpheno)
         if not game.clan or (game.clan.clan_settings['modded names'] and game.clan.clan_settings['new prefixes']):
-            self.prefix = namer.start(self.genotype, self.phenotype, self.chimpheno)
+            self.prefix = namer.start()
             if no_suffix:
                 if self.prefix == "Striped":
                     self.prefix = "Stripe"
