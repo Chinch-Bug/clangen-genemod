@@ -987,8 +987,13 @@ class Pregnancy_Events:
         returns:
         parent can have kits, kits are adopted
         """
-            
-        if not second_parent or len(second_parent) == 1:
+
+        if not second_parent:
+            if single_parentage:
+                return True, False, second_parent
+            else:
+                return False, False, second_parent
+        elif len(second_parent) == 1:
         # Checks for second parent alone:
             if not Pregnancy_Events.check_if_can_have_kits(second_parent[0] if second_parent else None, single_parentage, allow_affair):
                 return False, False, second_parent

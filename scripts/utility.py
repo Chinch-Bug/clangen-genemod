@@ -1106,6 +1106,8 @@ def create_new_cat(
 
         if outside:
             new_cat.outside = True
+            if new_cat.status in ["kittypet", "rogue", "loner"]:
+                new_cat.name.suffix = ""
         if not alive:
             new_cat.die()
 
