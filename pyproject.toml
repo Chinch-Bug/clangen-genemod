@@ -23,6 +23,7 @@ pgpy = "^0.6.0"
 requests = "^2.28.2"
 strenum = "^0.4.10"
 black = { version = "^23.0", python = ">=3.8," }
+cryptography = "^42.0.0"
 
 [tool.poetry.group.test]
 optional = true

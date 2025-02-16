@@ -1422,7 +1422,7 @@
             "Is too nervous to tell another cat they're wrong",
             "Wonders if r_c has ever struggled with feelings of inadequacy",
             "Knows {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} doing the best {PRONOUN/m_c/subject} can, but feels guilty anyway",
-            "Apologizes for something that wasn't {PRONOUN/m_c/subject} fault",
+            "Apologizes for something that wasn't {PRONOUN/m_c/poss} fault",
             "Fakes it 'til {PRONOUN/m_c/subject} {VERB/m_c/make/makes it}",
             "Boasts loudly about all {PRONOUN/m_c/poss} accomplishments",
             "Tries to downplay {PRONOUN/m_c/poss} Clanmates' accomplishments"

@@ -798,7 +798,7 @@ class Clan:
         )
         game.clan.post_initialization_functions()
 
-        game.clan.reputation = int(clan_data["reputation"])
+        game.clan.reputation = max(0, min(100, int(clan_data["reputation"])))
 
         game.clan.age = clan_data["clanage"]
         game.clan.starting_season = (
