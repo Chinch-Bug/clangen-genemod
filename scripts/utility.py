@@ -724,6 +724,29 @@ def create_new_cat_block(
             is_parent= "age:has_kits" in attribute_list,
             adoptive_parents=adoptive_parents if adoptive_parents else None
             )
+        while "age:has_kits" in attribute_list and "infertility" in new_cats.permanent_condition:
+            del Cat.all_cats[new_cats.ID]
+            new_cats = create_new_cat(
+                Cat,
+                new_name=new_name,
+                loner=cat_type in ["loner", "rogue"],
+                kittypet=cat_type == "kittypet",
+                other_clan=cat_type == 'former Clancat',
+                kit=False,
+                litter=litter,
+                backstory=chosen_backstory,
+                status=status,
+                age=age,
+                gender=gender,
+                thought=thought,
+                alive=alive,
+                outside=outside,
+                parent1=parent1.ID if parent1 else None,
+                parent2=parent2.ID if parent2 else None,
+                extrapar=generated_parents[2] if not parent2 and generated_parents else None,
+                is_parent= "age:has_kits" in attribute_list,
+                adoptive_parents=adoptive_parents if adoptive_parents else None
+                )
 
         # NEXT
         # add relations to bio parents, if needed
