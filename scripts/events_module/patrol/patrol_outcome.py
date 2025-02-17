@@ -132,6 +132,11 @@ class PatrolOutcome:
                 if not isinstance(out.stat_cat, Cat):
                     continue
 
+            if "lead_name" in out.text and not game.clan.leader:
+                continue
+            if "dep_name" in out.text and not game.clan.deputy:
+                continue
+
             # TODO: outcome relationship constraints
             # if not patrol._satify_relationship_constaints(patrol, out.relationship_constaints):
             #    continue
