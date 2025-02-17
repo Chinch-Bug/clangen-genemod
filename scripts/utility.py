@@ -2996,7 +2996,7 @@ def generate_sprite(
         
             def AddStripes(whichmain, whichcolour, whichbase, coloursurface=None):
                 stripebase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                if((phenotype.corin[0] != 'N' and phenotype.wbtype == 'shaded') or phenotype.wbtype == 'chinchilla'):
+                if((phenotype.corin[0] != 'N' and phenotype.wbtype == "shaded") or phenotype.wbtype == 'chinchilla'):
                     if not ("rufoused" in whichcolour or 'medium' in whichcolour or 'low' in whichcolour or phenotype.wbtype == 'chinchilla'):
                         stripebase.blit(CreateStripes(phenotype.FindRed(phenotype, sprite_age, special='red')[0], phenotype.FindRed(phenotype, sprite_age, special='red')[1], coloursurface=coloursurface), (0, 0))
                         whichmain.blit(stripebase, (0, 0))
@@ -3004,13 +3004,13 @@ def generate_sprite(
                     stripebase.set_alpha(120)
                     whichmain.blit(stripebase, (0, 0))
                     stripebase = CreateStripes(whichcolour, whichbase, coloursurface=coloursurface, pattern='agouti')
-                elif(phenotype.wbtype == 'shaded' or phenotype.corin[0] != 'N'):
+                elif(phenotype.wbtype == "shaded" or phenotype.corin[0] != 'N'):
                     if not ("rufoused" in whichcolour or 'medium' in whichcolour or 'low' in whichcolour):
                         stripebase.blit(CreateStripes(phenotype.FindRed(phenotype, sprite_age, special='red')[0], phenotype.FindRed(phenotype, sprite_age, special='red')[1], coloursurface=coloursurface), (0, 0))
-                        stripebase.set_alpha(90)
+                        stripebase.set_alpha(120)
                         whichmain.blit(stripebase, (0, 0))
                     stripebase = CreateStripes(whichcolour, whichbase, coloursurface=coloursurface)
-                    stripebase.set_alpha(200)
+                    stripebase.set_alpha(175)
                     whichmain.blit(stripebase, (0, 0))
                     stripebase = CreateStripes(whichcolour, whichbase, coloursurface=coloursurface, pattern='agouti')
                 elif('ec' in phenotype.ext and 'Eg' not in phenotype.ext and not ('red' in whichcolour or 'cream' in whichcolour or 'honey' in whichcolour or 'ivory' in whichcolour or 'apricot' in whichcolour)):
