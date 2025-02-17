@@ -728,7 +728,7 @@ def create_new_cat_block(
             adoptive_parents=adoptive_parents if adoptive_parents else None
             )
         while "age:has_kits" in attribute_list and "infertility" in new_cats[0].permanent_condition:
-            del Cat.all_cats[new_cats.ID]
+            del Cat.all_cats[new_cats[0].ID]
             new_cats[0] = create_new_cat(
                 Cat,
                 new_name=new_name,
