@@ -162,6 +162,10 @@ class Name:
                 self.suffix.lower() in self.prefix.lower()
                 and str(self.suffix) != ""
             )
+            or (
+                self.cat and hasattr(self.cat, "pelt") and not self.cat.pelt.scars 
+                and self.suffix == "scar"
+            )
         ):
             # check if random die was for prefix
             if name_fixpref:

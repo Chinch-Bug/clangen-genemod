@@ -226,6 +226,10 @@ class Genotype:
         self.shoulder_height = jsonstring.get("shoulder_height", '')
         self.body_label = jsonstring.get("body_type_label", '')
 
+        if "Clippercat" in self.breeds:
+            self.breeds["New Zealand"] = self.breeds["Clippercat"] + self.breeds.get("New Zealand", 0)
+            del self.breeds["Clippercat"]
+
         self.GeneSort()
         self.PolyEval()
         self.EyeColourName()
@@ -902,7 +906,7 @@ class Genotype:
             "Ragamuffin", "Savannah", "Snowshoe", "Sokoke", "Thai", "Toybob", "Toyger"
         ]
         rare_breeds = [
-            "Aphrodite", "Arabian Mau", "Brazilian Shorthair", "Cheetoh", "Ceylon", "Clippercat", "Foldex", "Gaelic Fold", 
+            "Aphrodite", "Arabian Mau", "Brazilian Shorthair", "Cheetoh", "Ceylon", "Foldex", "Gaelic Fold", 
             "German Longhair", "Kanaani", "Karelian Bobtail", "Kinkalow", "Lambkin", "Lin-Qing Lion cat", "Mekong Bobtail", 
             "Napoleon", "New Zealand", "Serengeti", "Skookum", "Tennessee Rex", "Ural Rex"
         ]

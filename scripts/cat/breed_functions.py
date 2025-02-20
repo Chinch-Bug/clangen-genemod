@@ -949,37 +949,6 @@ class Breed_generator:
         return genoclass
     
     @staticmethod
-    def Clippercat(genoclass, special):
-
-        genoclass = Breed_generator.AllColours(genoclass, special)
-
-        # ALBINO
-
-        for i in range(2):
-            d = randint(1, 5)
-
-            if d == 1:
-                genoclass.pointgene[i] = "cs"
-            else:
-                genoclass.pointgene[i] = "C"
-
-        # munch + poly + altai
-
-        genoclass.poly = ["Pd", "Pd"]
-
-        genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
-        
-        while genoclass.wbsum > 11 or genoclass.wideband == "":  
-            genoclass.wideband = ''
-            genoclass.wbsum = 0    
-            for i in range(0, 8):
-                genoclass.wideband += choice(genes)
-                genoclass.wbsum += int(genoclass.wideband[i])
-        
-        genoclass.breeds["Clippercat"] = 100
-        return genoclass
-    
-    @staticmethod
     def Cornish(genoclass, special):
         genoclass = Breed_generator.AllColours(genoclass, special)
         # FUR LENGTH
@@ -1737,6 +1706,9 @@ class Breed_generator:
 
         for i in range(2):
             genoclass.pointgene[i] = "C"
+
+        if randint(1, 4) == 1:
+            genoclass.poly = ["Pd", "pd"]
         
         genoclass.breeds["New Zealand"] = 100
         return genoclass
@@ -3491,29 +3463,6 @@ class Breed_checker:
         return "Chausie"
 
     @staticmethod
-    def Clippercat(phenotype):
-        if phenotype.length == "hairless" or phenotype.furtype != [""]:
-            return False
-        if phenotype.eartype != "" or phenotype.tailtype != "" or phenotype.munch[0] == "Mk" or phenotype.poly[0] != "Pd":
-            return False
-        
-        if phenotype.fade != "" or phenotype.karp[0] == "K":
-            return False
-        if phenotype.ext[0] != "E" or phenotype.corin[0] != "N":
-            return False
-        if phenotype.dilutemd[0] != "dm" or phenotype.pinkdilute[0] == "dp":
-            return False
-        if (('cm' in phenotype.pointgene or 'c' in phenotype.pointgene or 'cb' in phenotype.pointgene) and phenotype.pointgene[0] != "C"):
-            return False
-
-        if phenotype.agouti[0] == "A" and (phenotype.bengsum > 3 or phenotype.soksum > 3 or phenotype.wbsum > 11):
-            return False
-        if phenotype.agouti[0] == "Apb":
-            return False
-    
-        return "Clippercat"
-
-    @staticmethod
     def Cornish(phenotype):
         if phenotype.length == "hairless" or (phenotype.furtype != ["rexed", " fur"] and phenotype.cornish[0] != "r"):
             return False
@@ -4033,7 +3982,7 @@ class Breed_checker:
     def NewZeal(phenotype):
         if phenotype.length == "hairless" or phenotype.furtype != [""]:
             return False
-        if phenotype.eartype != "" or phenotype.tailtype != "" or phenotype.pawtype != "":
+        if phenotype.eartype != "" or phenotype.tailtype != "" or phenotype.munch[0] != "mk":
             return False
         
         if phenotype.fade != "" or phenotype.karp[0] == "K":
@@ -4053,6 +4002,8 @@ class Breed_checker:
         if phenotype.eumelanin[0] != "B" or phenotype.pointgene[0] != "C":
             return False
         
+        if phenotype.poly[0] == "Pd":
+            return "Clippercat"
         if phenotype.furLength[0] == "l":
             return "New Zealand Longhair"
         return "New Zealand Shorthair"
@@ -4718,7 +4669,6 @@ breed_functions = {
         "Chartreux" : Breed_generator.Chartreux,
         "Korat" : Breed_generator.Chartreux,
         "Chausie" : Breed_generator.Chausie,
-        "Clippercat" : Breed_generator.Clippercat,
         "Cornish Rex" : Breed_generator.Cornish,
         "German Rex" : Breed_generator.Cornish,
         "Devon Rex" : Breed_generator.Devon,
@@ -4793,7 +4743,6 @@ breed_functions = {
         "Chartreux" : Breed_checker.Chartreux,
         "Korat" : Breed_checker.Chartreux,
         "Chausie" : Breed_checker.Chausie,
-        "Clippercat" : Breed_checker.Clippercat,
         "Cornish Rex" : Breed_checker.Cornish,
         "German Rex" : Breed_checker.Cornish,
         "Devon Rex" : Breed_checker.Devon,
