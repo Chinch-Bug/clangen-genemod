@@ -638,7 +638,7 @@ class Screens:
             container=cls.menu_buttons["moons_n_seasons"],
         )
         cls.moons_n_seasons_text2 = pygame_gui.elements.UITextBox(
-            i18n.t(f"general.{game.clan.current_season}"),
+            i18n.t(f"general.{game.clan.current_season.lower()}"),
             ui_scale(pygame.Rect((42, 36), (100, 30))),
             container=cls.menu_buttons["moons_n_seasons"],
             manager=MANAGER,

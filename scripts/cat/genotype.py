@@ -22,7 +22,7 @@ class Genotype:
         self.pseudomerle = False
         self.merlepattern = None
         self.brindledbi = False
-        self.sex = "intersex"
+        self.sex = ""
         self.dilute = ["", ""]
         self.white = ["", ""]
         self.whitegrade = randint(1, 5)

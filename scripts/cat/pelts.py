@@ -509,5 +509,5 @@ class Pelt:
             for scar in cat.pelt.scars:
                 if scar in scar_details:
                     scarlist.append(i18n.t(f"cat.pelts.{scar}"))
-            color_name += adjust_list_text(list(set(scarlist))) if len(scarlist) > 0 else "" # note: this doesn't preserve order!
+            color_name += ", with" + adjust_list_text(list(set(scarlist))) if len(scarlist) > 0 else "" # note: this doesn't preserve order!
         return color_name

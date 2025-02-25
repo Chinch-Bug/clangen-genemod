@@ -27,6 +27,7 @@ class Phenotype(Genotype):
         self.furtype = []
 
         self.vitiligo_string = ""
+        self.mutant_red = ""
 
         self.def_tortie_low_patterns = ['DELILAH', 'MOTTLED', 'EYEDOT', 'BANDANA', 'SMUDGED', 'EMBER', 'BRINDLE', 'SAFI', 'BELOVED', 'BODY', 
                                     'SHILOH', 'FRECKLED']
@@ -329,7 +330,7 @@ class Phenotype(Genotype):
                 elif(self.tabby == 'blotched'):
                     self.tabby = 'sokoke'
             
-        if('o' not in self.sexgene or self.agouti[0] != 'a' or self.tabtype != '' or ('smoke' in self.silvergold and self.length == 'shorthaired') or self.ext[0] not in ['Eg', 'E']):
+        if('o' not in self.sexgene or self.agouti[0] != 'a' or self.tabtype != '' or ('light' in self.silvergold and self.length == 'shorthaired') or self.ext[0] not in ['Eg', 'E']):
             FindPattern()
         
         if(self.tortie != '' and self.tabby != '' and self.tortie != "brindled bicolour "):
@@ -416,6 +417,13 @@ class Phenotype(Genotype):
 
         if (self.vitiligo):
             self.vitiligo_string = 'vitiligo'
+        if (self.specialred and ('O' in self.sexgene or self.ext[0] not in ["Eg", "E"])):
+            mut_red_desc = {
+                "cinnamon" : " (pseudo-cinnamon)",
+                "blue-tipped" : " (grey-tipped)",
+                "blue-red" : " ('red-on-blue')"
+            }
+            self.mutant_red = mut_red_desc.get(self.specialred, "")
         self.SolidWhite(pattern=pattern)
 
         if(self.tortiepattern == ["CRYPTIC"] and self.tortie != "brindled bicolour "):
@@ -472,7 +480,7 @@ class Phenotype(Genotype):
         if breed:
             breed = " " + breed + " "
         
-        outputs = self.length + " " + self.highwhite + self.fade + self.colour + " " + self.silvergold + self.tabtype + self.tabby + self.tortie + self.point + self.lowwhite + self.karpati + breed + sexstring + withword
+        outputs = self.length + " " + self.highwhite + self.fade + self.colour + self.mutant_red + " " + self.silvergold + self.tabtype + self.tabby + self.tortie + self.point + self.lowwhite + self.karpati + breed + sexstring + withword
         
         while "  " in outputs:
             outputs = outputs.replace("  ", " ")

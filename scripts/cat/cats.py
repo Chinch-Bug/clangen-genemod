@@ -224,7 +224,7 @@ class Cat:
             if 'NoDBE' not in self.phenotype.pax3 and 'DBEalt' not in self.phenotype.pax3:
                 self.phenotype.pax3[0] = 'DBEalt'
         
-        if not genotype:
+        if not loading_cat:
             if(randint(1, game.config['genetics_config']['intersex']) == 1) or (self.chimerapheno and xor('Y' in self.phenotype.sexgene, 'Y' in self.chimerapheno.sexgene) and randint(1, round(game.config['genetics_config']['intersex']/4)) == 1):
                 self.phenotype.sex = "intersex"
                 if(randint(1, 25) == 1 and 'Y' in self.phenotype.sexgene):
@@ -240,7 +240,7 @@ class Cat:
 
         self.gender = self.phenotype.sex
 
-        self.pelt = pelt if pelt else Pelt(self.phenotype, self.phenotype)
+        self.pelt = pelt if pelt else Pelt(self.phenotype)
 
         self.former_mentor = []
         self.patrol_with_mentor = 0
