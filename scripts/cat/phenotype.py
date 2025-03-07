@@ -419,7 +419,7 @@ class Phenotype(Genotype):
             self.vitiligo_string = 'vitiligo'
         if (self.specialred and ('O' in self.sexgene or self.ext[0] not in ["Eg", "E"])):
             mut_red_desc = {
-                "cinnamon" : " (pseudo-cinnamon)",
+                "cinnamon" : " ('pseudo-cinnamon')",
                 "blue-tipped" : " (grey-tipped)",
                 "blue-red" : " ('red-on-blue')"
             }
@@ -476,7 +476,7 @@ class Phenotype(Genotype):
         if chimera:
             sexstring = "chimera " + sexstring
 
-        breed = find_my_breed(self, self.odds)
+        breed = find_my_breed(self)
         if breed:
             breed = " " + breed + " "
         
@@ -918,8 +918,8 @@ class Phenotype(Genotype):
         colour = colour + rufousing + banding + "0"
         
         if(genes.specialred in ['blue-red', 'cinnamon']) or special == 'blue-tipped':
-            colour = colour.replace('cream', 'lilac')
             colour = colour.replace('red', 'blue')
+            colour = colour.replace('cream', 'lilac')
             colour = colour.replace('honey', 'dove')
             colour = colour.replace('ivory', 'lavender')
             if(genes.specialred == 'cinnamon'):

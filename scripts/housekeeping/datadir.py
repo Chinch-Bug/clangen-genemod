@@ -33,7 +33,7 @@ def get_data_dir():
 
     if get_version_info().is_dev():
         return user_data_dir('Genemod', 'ClanGen')
-    return user_data_dir('Genemod', 'ClanGen')
+    return user_data_dir('Genemod_stable', 'ClanGen')
 
 
 def get_log_dir():

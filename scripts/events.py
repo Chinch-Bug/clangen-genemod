@@ -19,7 +19,7 @@ from scripts.cat.history import History
 from scripts.cat.names import Name
 from scripts.clan_resources.freshkill import FRESHKILL_EVENT_ACTIVE
 from scripts.conditions import (
-    medical_cats_condition_fulfilled,
+    medicine_cats_can_cover_clan,
     get_amount_cat_for_one_medic,
 )
 from scripts.event_class import Single_Event
@@ -287,7 +287,7 @@ class Events:
 
         if game.clan.game_mode in ["expanded", "cruel season"]:
             amount_per_med = get_amount_cat_for_one_medic(game.clan)
-            med_fulfilled = medical_cats_condition_fulfilled(
+            med_fulfilled = medicine_cats_can_cover_clan(
                 Cat.all_cats.values(), amount_per_med
             )
 
@@ -1419,7 +1419,7 @@ class Events:
                     ]
 
                     # check if the Clan has sufficient med cats
-                    has_med = medical_cats_condition_fulfilled(
+                    has_med = medicine_cats_can_cover_clan(
                         Cat.all_cats.values(),
                         amount_per_med=get_amount_cat_for_one_medic(game.clan),
                     )

@@ -4555,7 +4555,7 @@ class Breed_checker:
         return "Ural Rex"
 
 
-def find_my_breed(phenotype, config):
+def find_my_breed(phenotype):
     purebred_range = 75
     mix_range = 12.5
 
@@ -4571,6 +4571,19 @@ def find_my_breed(phenotype, config):
         "Peterbald" : phenotype.breeds.get("Oriental/Siamese", 0) + phenotype.breeds.get("Donskoy", 0), 
         "Serengeti" : phenotype.breeds.get("Oriental/Siamese", 0) + phenotype.breeds.get("Bengal", 0), 
         "Skookum" : phenotype.breeds.get("LaPerm", 0) + phenotype.breeds.get("Munchkin", 0)
+    }
+    hybrid_info = {
+        "Bambino" : ["Munchkin", "Sphynx"], 
+        "Cheetoh" : ["Ocicat", "Bengal"], 
+        "Elf" : ["American Curl", "Sphynx"], 
+        "Foldex" : ["Persian/Exotic", "British"], 
+        "Gaelic Fold" : ["Munchkin", "Persian/Exotic", "British"], 
+        "Kinkalow" : ["American Curl", "Munchkin"], 
+        "Lambkin" : ["Selkirk Rex", "Munchkin"], 
+        "Napoleon" : ["Munchkin", "Persian/Exotic"],
+        "Peterbald" : ["Oriental/Siamese", "Donskoy"], 
+        "Serengeti" : ["Oriental/Siamese", "Bengal"], 
+        "Skookum" : ["LaPerm", "Munchkin"]
     }
 
     if not phenotype.breeds.get("Munchkin", False) or not phenotype.breeds.get("Sphynx", False):
@@ -4646,6 +4659,11 @@ def find_my_breed(phenotype, config):
             breed_mix = breed
         elif sorted_breeds[breed] == top:
             breed_mix += ", " + breed
+
+        if breed in hybrid_info:
+            for part in hybrid_info[breed]:
+                del sorted_breeds[part]
+
             
 
     return ""

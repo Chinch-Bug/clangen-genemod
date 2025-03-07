@@ -192,26 +192,6 @@ class Namer():
                 else:
                     base = 'black'
             
-        if base in ['ginger', 'cream'] or (phenotype.agouti[0] != "a") or (phenotype.ext[0] not in ['Eg', 'E']) or 'light smoke' in phenotype.silvergold:
-            sprite = phenotype.GetTabbySprite()
-            if 'bar' in sprite or 'ghost' in sprite or 'chinchilla' in phenotype.tabby:
-                tabby['pattern'] = 'ticked'
-            elif sprite in ['marbled', 'classic']:
-                tabby['pattern'] = 'blotched'
-            elif 'braid' in sprite or 'mack' in sprite or 'pins' in sprite:
-                tabby['pattern'] = 'mackerel'
-            else:
-                tabby['pattern'] = 'spotted'
-
-            if base not in ['ginger', 'cream'] and ('smoke' in phenotype.silvergold or 'masked' in phenotype.silvergold or phenotype.ext[0] == "Eg" or (('charcoal' in phenotype.tabtype or phenotype.ruftype == 'low') and phenotype.wbtype in ['low', 'medium'])):
-                tabby['type'] = 'dark'
-            elif 'silver' in phenotype.silvergold or 'cameo' in phenotype.silvergold or 'bimetal' in phenotype.silvergold or phenotype.brindledbi:
-                tabby['type'] = 'silver'
-            elif phenotype.silvergold:
-                tabby['type'] = 'golden'
-
-            if tortie:
-                tabby['tortie_red'] = tabby['pattern']
         sprite = phenotype.GetTabbySprite()
         if 'bar' in sprite or 'ghost' in sprite or 'chinchilla' in phenotype.tabby:
             tabby['tortie_red'] = 'ticked'
@@ -221,8 +201,15 @@ class Namer():
             tabby['tortie_red'] = 'mackerel'
         else:
             tabby['tortie_red'] = 'spotted'
+        if base in ['ginger', 'cream'] or (phenotype.agouti[0] != "a") or (phenotype.ext[0] not in ['Eg', 'E']) or 'light smoke' in phenotype.silvergold:
+            tabby['pattern'] = tabby['tortie_red']
 
-            
+            if base not in ['ginger', 'cream'] and ('smoke' in phenotype.silvergold or 'masked' in phenotype.silvergold or phenotype.ext[0] == "Eg" or (('charcoal' in phenotype.tabtype or phenotype.ruftype == 'low') and phenotype.wbtype in ['low', 'medium'])):
+                tabby['type'] = 'dark'
+            elif 'silver' in phenotype.silvergold or 'cameo' in phenotype.silvergold or 'bimetal' in phenotype.silvergold or phenotype.brindledbi:
+                tabby['type'] = 'silver'
+            elif phenotype.silvergold:
+                tabby['type'] = 'golden'
 
         if (phenotype.white[1] in ['ws', 'wt'] and phenotype.whitegrade > 2) or (self.moons < 6 and phenotype.karp[0] == 'K'):
             white = 'high'

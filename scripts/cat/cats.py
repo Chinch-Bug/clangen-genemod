@@ -32,7 +32,8 @@ from scripts.conditions import (
     Injury,
     PermanentCondition,
     get_amount_cat_for_one_medic,
-    medical_cats_condition_fulfilled,
+    medicine_cats_can_cover_clan,
+    amount_clanmembers_covered,
 )
 from scripts.event_class import Single_Event
 from scripts.events_module.generate_events import GenerateEvents
@@ -584,7 +585,7 @@ class Cat:
                     'REVERSEPANTS', 'GLASS', 'PAINTED', 'COWTWO', 'SAMMY', 'FINN', 'BUSTER', 'CAKE'],
                 '4': ['VAN', 'PEBBLESHINE', 'LIGHTSONG', 'CURVED', 'GOATEE', 'TAIL', 'APRON', 'HALFWHITE', 'APPALOOSA', 'HEART',
                     'MOORISH', 'COW', 'SHOOTINGSTAR', 'PEBBLE', 'TAILTWO', 'BUDDY', 'KROPKA'],
-                '5': ['ONEEAR', 'LIGHTSONG', 'BLACKSTAR', 'PETAL', 'CHESTSPECK', 'HEARTTWO', 'BOOTS', 'SHOOTINGSTAR', 'EYESPOT', 
+                '5': ['ONEEAR', 'LIGHTSONG', 'PETAL', 'CHESTSPECK', 'HEARTTWO', 'BOOTS', 'SHOOTINGSTAR', 'EYESPOT', 
                     'KROPKA']
             }
         }
@@ -2285,7 +2286,7 @@ class Cat:
 
         amount_per_med = get_amount_cat_for_one_medic(game.clan)
 
-        if medical_cats_condition_fulfilled(Cat.all_cats.values(), amount_per_med):
+        if medicine_cats_can_cover_clan(Cat.all_cats.values(), amount_per_med):
             duration = med_duration
         if severity != "minor":
             duration += randrange(-1, 1)
@@ -2353,7 +2354,7 @@ class Cat:
         med_duration = injury["medicine_duration"]
 
         injury_severity = injury["severity"] if severity == "default" else severity
-        if medical_cats_condition_fulfilled(
+        if medicine_cats_can_cover_clan(
             Cat.all_cats.values(), get_amount_cat_for_one_medic(game.clan)
         ):
             duration = med_duration
@@ -3304,9 +3305,9 @@ class Cat:
                 elif game.clan and game.clan.game_mode == "cruel season":
                     gm_modifier = 6
 
-                if mediator.experience_level == "average":
+                if mediator.experience_level == "proficient":
                     lvl_modifier = 1.25
-                elif mediator.experience_level == "high":
+                elif mediator.experience_level == "expert":
                     lvl_modifier = 1.75
                 elif mediator.experience_level == "master":
                     lvl_modifier = 2
@@ -3360,6 +3361,8 @@ class Cat:
             else:
                 bonus = 0
 
+            decrease: bool = sabotage
+
             if trait == "romantic":
                 if mates:
                     ran = (5, 10)
@@ -3375,7 +3378,6 @@ class Cat:
                         rel2.romantic_love,
                         -(randint(ran[0], ran[1]) + bonus) + personality_bonus,
                     )
-                    output += "Romantic interest decreased. "
                 else:
                     rel1.romantic_love = Cat.effect_relation(
                         rel1.romantic_love,
@@ -3385,7 +3387,6 @@ class Cat:
                         rel2.romantic_love,
                         (randint(ran[0], ran[1]) + bonus) + personality_bonus,
                     )
-                    output += "Romantic interest increased. "
 
             elif trait == "platonic":
                 ran = (4, 6)
@@ -3399,7 +3400,6 @@ class Cat:
                         rel2.platonic_like,
                         -(randint(ran[0], ran[1]) + bonus) + personality_bonus,
                     )
-                    output += "Platonic like decreased. "
                 else:
                     rel1.platonic_like = Cat.effect_relation(
                         rel1.platonic_like,
@@ -3409,7 +3409,6 @@ class Cat:
                         rel2.platonic_like,
                         (randint(ran[0], ran[1]) + bonus) + personality_bonus,
                     )
-                    output += "Platonic like increased. "
 
             elif trait == "respect":
                 ran = (4, 6)
@@ -3423,7 +3422,6 @@ class Cat:
                         rel2.admiration,
                         -(randint(ran[0], ran[1]) + bonus) + personality_bonus,
                     )
-                    output += "Respect decreased. "
                 else:
                     rel1.admiration = Cat.effect_relation(
                         rel1.admiration,
@@ -3433,7 +3431,6 @@ class Cat:
                         rel2.admiration,
                         (randint(ran[0], ran[1]) + bonus) + personality_bonus,
                     )
-                    output += "Respect increased. "
 
             elif trait == "comfortable":
                 ran = (4, 6)
@@ -3447,7 +3444,6 @@ class Cat:
                         rel2.comfortable,
                         -(randint(ran[0], ran[1]) + bonus) + personality_bonus,
                     )
-                    output += "Comfort decreased. "
                 else:
                     rel1.comfortable = Cat.effect_relation(
                         rel1.comfortable,
@@ -3457,7 +3453,6 @@ class Cat:
                         rel2.comfortable,
                         (randint(ran[0], ran[1]) + bonus) + personality_bonus,
                     )
-                    output += "Comfort increased. "
 
             elif trait == "trust":
                 ran = (4, 6)
@@ -3471,7 +3466,6 @@ class Cat:
                         rel2.trust,
                         -(randint(ran[0], ran[1]) + bonus) + personality_bonus,
                     )
-                    output += "Trust decreased. "
                 else:
                     rel1.trust = Cat.effect_relation(
                         rel1.trust,
@@ -3481,7 +3475,6 @@ class Cat:
                         rel2.trust,
                         (randint(ran[0], ran[1]) + bonus) + personality_bonus,
                     )
-                    output += "Trust increased. "
 
             elif trait == "dislike":
                 ran = (4, 9)
@@ -3494,7 +3487,6 @@ class Cat:
                         rel2.dislike,
                         (randint(ran[0], ran[1]) + bonus) - personality_bonus,
                     )
-                    output += "Dislike increased. "
                 else:
                     rel1.dislike = Cat.effect_relation(
                         rel1.dislike,
@@ -3504,7 +3496,8 @@ class Cat:
                         rel2.dislike,
                         -(randint(ran[0], ran[1]) + bonus) - personality_bonus,
                     )
-                    output += "Dislike decreased. "
+
+                decrease = not decrease
 
             elif trait == "jealousy":
                 ran = (4, 6)
@@ -3518,7 +3511,6 @@ class Cat:
                         rel2.jealousy,
                         (randint(ran[0], ran[1]) + bonus) - personality_bonus,
                     )
-                    output += "Jealousy increased. "
                 else:
                     rel1.jealousy = Cat.effect_relation(
                         rel1.jealousy,
@@ -3528,7 +3520,13 @@ class Cat:
                         rel2.jealousy,
                         -(randint(ran[0], ran[1]) + bonus) - personality_bonus,
                     )
-                    output += "Jealousy decreased. "
+
+                decrease = not decrease
+
+            if decrease:
+                output += i18n.t("screens.mediation.output_decrease", trait=i18n.t(f"screens.mediation.{trait}"))
+            else:
+                output += i18n.t("screens.mediation.output_increase", trait=i18n.t(f"screens.mediation.{trait}"))
 
         return output
 

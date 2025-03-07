@@ -99,13 +99,16 @@ class Clan:
         camp_bg=None,
         symbol=None,
         game_mode="classic",
-        starting_members=[],
+        starting_members=None,
         starting_season="Newleaf",
         self_run_init_functions=True,
     ):
         self.history = History()
         if name == "":
             return
+
+        if starting_members is None:
+            starting_members = []
 
         self.name = name
         self.leader = leader
