@@ -1939,7 +1939,7 @@ class ProfileScreen(Screens):
 
             y_adjust = self.condition_data[f"name_{con}"].get_relative_rect().height
             details_rect = ui_scale(pygame.Rect((0, 0), (142, 100)))
-            details_rect.bottomleft = (0, 0)
+            details_rect.topleft = (0, y_adjust)
 
             self.condition_data[f"desc_{con}"] = UITextBoxTweaked(
                 con[1],
@@ -1948,7 +1948,7 @@ class ProfileScreen(Screens):
                 object_id="#text_box_22_horizcenter",
                 container=self.condition_data[f"bg_{con}"],
                 manager=MANAGER,
-                anchors={"bottom": "bottom", "centerx": "centerx"},
+                anchors={"centerx": "centerx"}
             )
 
             x_pos += 152
