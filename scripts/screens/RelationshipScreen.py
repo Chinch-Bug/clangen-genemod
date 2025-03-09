@@ -424,7 +424,7 @@ class RelationshipScreen(Screens):
                 ),
                 reverse=True,
             )
-            self.all_relations = list(set(self.all_relations + blank_relations))
+            self.all_relations = self.all_relations + [r for r in blank_relations if r not in self.all_relations]
         else:
             self.all_relations = (list(self.the_cat.relationships.values()).copy() + blank_relations).sorted(key=lambda x: x.cat_to)
 
