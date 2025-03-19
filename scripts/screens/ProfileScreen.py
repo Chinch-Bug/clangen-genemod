@@ -254,6 +254,9 @@ class ProfileScreen(Screens):
             # when button is pressed...
             elif event.ui_element == self.cis_trans_button:
                 #if the cat is anything besides m/f/transm/transf then turn them back to cis
+                is_intersex = "intersex " if (self.the_cat.gender == 'intersex' or 
+                            (self.the_cat.gender == "molly" and 'Y' in self.the_cat.phenotype.sexgene) or 
+                            (self.the_cat.gender == "tom" and 'Y' not in self.the_cat.phenotype.sexgene)) else ""
                 if self.the_cat.genderalign.replace("intersex ", "") not in ["molly", "trans molly", "tom", "trans tom"]:
                     if self.the_cat.gender == 'intersex':
                         if('Y' in self.the_cat.phenotype.sexgene):
@@ -261,7 +264,7 @@ class ProfileScreen(Screens):
                         else:
                             self.the_cat.genderalign = 'intersex molly'
                     else:
-                        self.the_cat.genderalign = self.the_cat.gender
+                        self.the_cat.genderalign = is_intersex + self.the_cat.gender
                 elif self.the_cat.gender == "tom" and self.the_cat.genderalign == 'molly':
                     self.the_cat.genderalign = self.the_cat.gender
                 elif self.the_cat.gender == "molly" and self.the_cat.genderalign == 'tom':
@@ -269,19 +272,13 @@ class ProfileScreen(Screens):
                 #if the cat is cis (gender & gender align are the same) then set them to trans
                 #cis toms -> trans molly first
                 elif (self.the_cat.gender == "tom" or (self.the_cat.gender == 'intersex' and 'Y' in self.the_cat.phenotype.sexgene)) and self.the_cat.genderalign.replace('intersex ', "") == 'tom':
-                    self.the_cat.genderalign = 'trans molly'
-                    if self.the_cat.gender == 'intersex':
-                        self.the_cat.genderalign = 'intersex trans molly'
+                    self.the_cat.genderalign = is_intersex + 'trans molly'
                 #cis mollys -> trans tom
                 elif (self.the_cat.gender == "molly" or (self.the_cat.gender == 'intersex' and 'Y' not in self.the_cat.phenotype.sexgene)) and self.the_cat.genderalign.replace('intersex ', "") == 'molly':
-                    self.the_cat.genderalign = 'trans tom'
-                    if self.the_cat.gender == 'intersex':
-                        self.the_cat.genderalign = 'intersex trans tom'
+                    self.the_cat.genderalign = is_intersex + 'trans tom'
                 #if the cat is trans then set them to nonbinary
                 elif self.the_cat.genderalign.replace('intersex ', "") in ["trans molly", "trans tom"]:
-                    self.the_cat.genderalign = 'sam'
-                    if self.the_cat.gender == 'intersex':
-                        self.the_cat.genderalign = 'intersex sam'
+                    self.the_cat.genderalign = is_intersex + 'sam'
                 self.the_cat.pronouns = get_new_pronouns(self.the_cat.genderalign)
 
                 self.clear_profile()

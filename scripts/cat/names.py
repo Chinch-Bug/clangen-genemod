@@ -168,7 +168,7 @@ class Name:
             )
         ):
             # check if random die was for prefix
-            if name_fixpref:
+            if name_fixpref and not(self.cat and hasattr(self.cat, "pelt") and not self.cat.pelt.scars and self.suffix == "scar"):
                 self.give_prefix(Cat, self.biome)
             else:
                 self.suffix = None

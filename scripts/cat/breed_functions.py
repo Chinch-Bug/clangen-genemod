@@ -4649,7 +4649,10 @@ def find_my_breed(phenotype):
 
     top = 0
     breed_mix = ""
+    edited_sorted_breeds = sorted_breeds.copy()
     for breed in sorted_breeds:
+        if not edited_sorted_breeds.get(breed):
+            continue
         if sorted_breeds[breed] < mix_range:
             if breed_mix == "":
                 break
@@ -4662,7 +4665,8 @@ def find_my_breed(phenotype):
 
         if breed in hybrid_info:
             for part in hybrid_info[breed]:
-                del sorted_breeds[part]
+                if edited_sorted_breeds.get(part):
+                    del edited_sorted_breeds[part]
 
             
 

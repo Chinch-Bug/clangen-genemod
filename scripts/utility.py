@@ -2920,6 +2920,7 @@ def generate_sprite(
                 charc = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 charc_shading = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 if(phenotype.agouti[0] == "Apb" and notred and hasattr(phenotype, "banding")):
+                    charc_shading.blit(sprites.sprites['lightbasecolours0'], (0, 0))
                     modifiers = {
                         "chinchilla" : 2,
                         "shaded" : 3,
