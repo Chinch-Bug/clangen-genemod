@@ -64,6 +64,7 @@ def json_load():
                         moons=cat["moons"],
                         genotype=cat["genotype"],
                         chimerageno=cat["chimerageno"] if "chimerageno" in cat else cat["genotype"]["chimerageno"],
+                        passes=cat["passes_genotype"] if "passes_genotype" in cat else 1,
                         white_patterns=cat["white_pattern"],
                         chim_white=cat["chim_white"] if 'chim_white' in cat else None,
                         chim_pattern=cat["chimera_pattern"] if "chimera_pattern" in cat else cat["genotype"]["chimerapattern"],

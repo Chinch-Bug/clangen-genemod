@@ -62,7 +62,7 @@ class Namer():
         if set_one[1] or set_two[1] or xor(set_one[0] in ['ginger', 'cream'], set_two[0] in ['ginger', 'cream']):
             tortie = True
             tortie_mimic = True
-            tabby['tortie_red'] = set_one[2]['pattern'] if set_one[0] in ['ginger', 'cream'] else set_two[2]['pattern']
+            tabby['tortie_red'] = set_one[2]['pattern'] if set_one[0] in ['ginger', 'cream'] else set_two[2]['tortie_red']
 
         if set_one[3] == 'high' or (self.moons == 0 and set_one[4] == 'colourpoint'):
             white = 'high'

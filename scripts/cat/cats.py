@@ -130,6 +130,7 @@ class Cat:
         pelt:Pelt=None,
         genotype:Genotype=None,
         chimerageno:Genotype=None,
+        passes=1,
         white_patterns=None,
         chim_white=None,
         chim_pattern=None,
@@ -169,6 +170,8 @@ class Cat:
         self.parent2 = parent2
         self.parent3 = None
 
+        self.passes = passes
+
         self.adoptive_parents = adoptive_parents if adoptive_parents else []
         self.phenotype = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
         self.chimerapheno = None
@@ -182,19 +185,23 @@ class Cat:
             self.chimerapheno = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
             self.chimerapheno.chimerapattern = chim_pattern if chim_pattern else self.chimerapheno.ChooseTortiePattern("chimera")
             chimera = True
+            if random() < 0.001:
+                self.passes = 0
+            elif random() < 0.34:
+                self.passes = 2
 
         if genotype:
             self.phenotype.fromJSON(genotype)
         elif parent1 or parent2:
             if not parent1:
-                self.phenotype.KitGenerator(Cat.all_cats[parent2].phenotype, extrapar)
+                self.phenotype.KitGenerator(Cat.all_cats[parent2], extrapar)
                 if chimera:
-                    self.chimerapheno.KitGenerator(Cat.all_cats[parent2].phenotype, extrapar, chimera=True)
+                    self.chimerapheno.KitGenerator(Cat.all_cats[parent2], extrapar, chimera=True)
             else:
                 try:    
-                    self.phenotype.KitGenerator(Cat.all_cats[parent1].phenotype, Cat.all_cats.get(parent2, extrapar), extrapar)
+                    self.phenotype.KitGenerator(Cat.all_cats[parent1], Cat.all_cats.get(parent2, extrapar), extrapar)
                     if chimera:
-                        threepars = self.chimerapheno.KitGenerator(Cat.all_cats[parent1].phenotype, Cat.all_cats.get(parent2, extrapar), extrapar, chimera=True)
+                        threepars = self.chimerapheno.KitGenerator(Cat.all_cats[parent1], Cat.all_cats.get(parent2, extrapar), extrapar, chimera=True)
                         if threepars and isinstance(extrapar, Cat):
                             self.parent3 = extrapar.ID
                 except:
@@ -233,6 +240,8 @@ class Cat:
                     self.phenotype.sex = 'molly'
                 elif(randint(1, 25) == 1 and 'Y' not in self.phenotype.sexgene):
                     self.phenotype.sex = 'tom'
+        if self.passes != 1 and (not self.chimerapheno or xor('Y' in self.phenotype.sexgene, 'Y' in self.chimerapheno.sexgene)):
+            self.passes = 1
 
         self.phenotype.PhenotypeOutput(self.phenotype.white_pattern)
         self.phenotype.SpriteInfo(moons if moons else 0)
@@ -3626,6 +3635,7 @@ class Cat:
                 "genotype": self.phenotype.toJSON(),
                 "chimerageno": self.chimerapheno.toJSON() if self.chimerapheno else None,
                 "chimera_pattern": self.chimerapheno.chimerapattern if self.chimerapheno else None,
+                "passes_genotype" : self.passes,
                 "white_pattern" : self.phenotype.white_pattern,
                 "chim_white" : self.chimerapheno.white_pattern if self.chimerapheno else "No",
                 "driven_out": self.driven_out,
