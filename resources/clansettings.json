@@ -323,6 +323,10 @@
         "show fav": [
             false,
             true
+        ],
+        "search genotypes": [
+            false,
+            true
         ]
     }
 }

@@ -146,6 +146,7 @@
       "unknown_residence": "Unknown Residence",
       "empty": "empty",
       "none": "none",
+      "genotype_search": "enter allele",
       "name_search": "name search",
       "has_a_mate": "has a mate",
       "cats_mate": "%{name}'s mate",
