@@ -1861,6 +1861,9 @@ class Pregnancy_Events:
                 else:
                     second_parent_relation = first_parent.create_one_relationship(x)
 
+                if not second_parent_relation:
+                    continue
+
                 x_romantic_love = (second_parent_relation.romantic_love +
                                         second_parent_relation.opposite_relationship.romantic_love) / 2
                 if x_romantic_love > average_romantic_love:

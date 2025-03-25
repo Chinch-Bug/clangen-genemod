@@ -5430,7 +5430,7 @@
     {
         "id": "mild_injury_gen",
         "thoughts": [
-            "Is stopping in the medicine den just in case",
+            "Is stopping in the healer den just in case",
             "Is feeling a little sore",
             "Is mildly annoyed at {PRONOUN/m_c/poss} injury",
             "Is handling the minor pain without issue"
@@ -5453,7 +5453,7 @@
             "Is grimacing in pain",
             "Is doing {PRONOUN/m_c/poss} best to heal",
             "Hopes {PRONOUN/m_c/subject} will heal quickly",
-            "Doesn't want to be stuck in the medicine den"
+            "Doesn't want to be stuck in the healer den"
         ],
         "has_injuries": {
             "m_c": [

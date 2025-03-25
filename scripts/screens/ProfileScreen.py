@@ -1389,7 +1389,7 @@ class ProfileScreen(Screens):
                         ), main_cat= self.the_cat, random_cat=ment_obj)
                     )
 
-            influence_history += " ".join(trait_influence)
+            influence_history += " ".join(trait_influence) + " "
 
             skill_influence = []
             if "skill" in mentor_influence and isinstance(

@@ -773,16 +773,16 @@ class Events:
                         chosen_injury = random.choice(possible_injuries)
                         cat.get_injured(chosen_injury)
                         involved_cats["injured"].append(cat.ID)
-                else:
-                    chance = game.config["focus"]["hoarding"]["illness_chance"]
-                    if not int(random.random() * chance):  # 1/chance
-                        possible_illnesses = []
-                        injury_dict = game.config["focus"]["hoarding"]["illnesses"]
-                        for illness, amount in injury_dict.items():
-                            possible_illnesses.extend([illness] * amount)
-                        chosen_illness = random.choice(possible_illnesses)
-                        cat.get_ill(chosen_illness)
-                        involved_cats["sick"].append(cat.ID)
+                    else:
+                        chance = game.config["focus"]["hoarding"]["illness_chance"]
+                        if not int(random.random() * chance):  # 1/chance
+                            possible_illnesses = []
+                            injury_dict = game.config["focus"]["hoarding"]["illnesses"]
+                            for illness, amount in injury_dict.items():
+                                possible_illnesses.extend([illness] * amount)
+                            chosen_illness = random.choice(possible_illnesses)
+                            cat.get_ill(chosen_illness)
+                            involved_cats["sick"].append(cat.ID)
 
             # if it is raiding, lower the relation to other clans
             if game.clan.clan_settings.get("raid other clans"):
@@ -798,14 +798,13 @@ class Events:
             if game.clan.clan_settings.get("raid other clans"):
                 text_snippet = "hardcoded.focus_injury_raiding"
             for condition_type, value in involved_cats.items():
-                if len(value) > 0:
-                    game.cur_events_list.append(
-                        Single_Event(
-                            i18n.t(text_snippet, condition=condition_type, count=len(value)),
-                            "health",
-                            value,
-                        )
+                game.cur_events_list.append(
+                    Single_Event(
+                        i18n.t(text_snippet, condition=condition_type, count=len(value)),
+                        "health",
+                        value,
                     )
+                )
 
             focus_text = i18n.t(
                 "hardcoded.focus_prey",
