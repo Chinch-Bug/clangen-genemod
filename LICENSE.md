@@ -253,7 +253,7 @@ from such Contributor, and You become compliant prior to 30 days after
 Your receipt of the notice.
 
 5.2. If You initiate litigation against any entity by asserting a patent
-infringement claim (excluding declaratory judgment actions,
+infringement claim (excluding declaratory judgement actions,
 counter-claims, and cross-claims) alleging that a Contributor Version
 directly or indirectly infringes any patent, then the rights granted to
 You by any and all Contributors for the Covered Software under Section

@@ -3103,7 +3103,7 @@
         "min_max_status": {},
         "weight": 20,
         "intro_text": "The patrol hears desperate screams coming from a nearby lake.",
-        "decline_text": "Its not the scream of any cat p_l recognizes, so {PRONOUN/p_l/subject} {VERB/p_l/decide/decides} to continue the patrol without checking it out.",
+        "decline_text": "It's not the scream of any cat p_l recognizes, so {PRONOUN/p_l/subject} {VERB/p_l/decide/decides} to continue the patrol without checking it out.",
         "chance_of_success": 85,
         "success_outcomes": [
             {
@@ -3295,13 +3295,13 @@
                 "other_clan_rep": 0
             },
             {
-                "text": "The patrol brings the apprentice, back to camp. However, the Clan is unwelcoming, and the apprentice slips out in the middle of the night, dejected.",
+                "text": "The patrol brings the apprentice back to camp. However, the Clan is unwelcoming, and the apprentice slips out in the middle of the night, dejected.",
                 "exp": 0,
                 "weight": 5,
                 "other_clan_rep": 0
             },
             {
-                "text": "s_c knows accepting this apprentice will cause conflict with o_c_n, and c_n can't risk a war. Still, {PRONOUN/s_c/subject} {VERB/s_c/want/wants} to help. {PRONOUN/s_c/subject/CAP} {VERB/s_c/subject/sit/sits} with the apprentice for a while, listening to their problems and offering advice. The apprentice returns home with a new prespective.",
+                "text": "s_c knows accepting this apprentice will cause conflict with o_c_n, and c_n can't risk a war. Still, {PRONOUN/s_c/subject} {VERB/s_c/want/wants} to help. {PRONOUN/s_c/subject/CAP} {VERB/s_c/subject/sit/sits} with the apprentice for a while, listening to their problems and offering advice. The apprentice returns home with a new perspective.",
                 "exp": 5,
                 "weight": 5,
                 "stat_skill": ["MEDIATOR,2", "SPEAKER,2"],

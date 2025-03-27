@@ -74,7 +74,7 @@ You can reference leafbare BGs that are snow-heavy to get an idea of how snow sh
 _The trampled snow shows you that this camp is lived in despite not seeing any cats!_
 
 ### Dark Mode
-When converting a BG to Dark Mode, use a dark blue layer set to Multiply with a lowered opacity (opacity should be adjusted as needed to ensure the BG isn’t too dark).  Then adjust the saturation of the image to be lower and the hue to be more blue.  This, of course, should be adjusted individually for each variant.  Use your best judgment.  Reference other dark mode BGs to be sure that your BG isn’t significantly darker than the majority.
+When converting a BG to Dark Mode, use a dark blue layer set to Multiply with a lowered opacity (opacity should be adjusted as needed to ensure the BG isn’t too dark).  Then adjust the saturation of the image to be lower and the hue to be more blue.  This, of course, should be adjusted individually for each variant.  Use your best judgement.  Reference other dark mode BGs to be sure that your BG isn’t significantly darker than the majority.
 
 ## Style References
 
