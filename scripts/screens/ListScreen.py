@@ -753,7 +753,7 @@ class ListScreen(Screens):
                 self.current_listed_cats = [
                     cat
                     for cat in self.full_cat_list
-                    if gene and search_text in cat.phenotype[gene] or (cat.chimerapheno and search_text in cat.chimerapheno[gene])
+                    if gene and search_text in cat.phenotype[gene] or (gene and cat.chimerapheno and search_text in cat.chimerapheno[gene])
                 ]
             else:
                 self.current_listed_cats = [
