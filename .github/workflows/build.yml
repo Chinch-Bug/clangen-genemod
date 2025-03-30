@@ -165,7 +165,7 @@ jobs:
         if: startsWith(matrix.os, 'macos')
         run: |
           rm -r dist/Genemod
-          npm install -g appdmg
+          npm install -g archanyhm/node-appdmg
           appdmg appdmg.json ${{ matrix.artifact_name }}
       - uses: actions/upload-artifact@v4
         with:
