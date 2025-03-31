@@ -4526,7 +4526,7 @@
                 "new_cat": [
                     ["meeting", "loner", "age:adolescent"]
                 ],
-                "outsider_rep": -1
+                "outsider_rep": -2
             },
             {
                 "text": "A kittypet? This'll be <i>easy.</i> With a series of hisses accompanied by bared teeth and unsheathed claws, p_l manages to intimidate the pampered creature into running back to {PRONOUN/n_c:0/poss} Twolegs.",
@@ -4535,7 +4535,7 @@
                 "new_cat": [
                     ["meeting", "kittypet", "age:adolescent"]
                 ],
-                "outsider_rep": -1
+                "outsider_rep": -2
             },
             {
                 "text": "p_l hisses out a warning, but the loner refuses to leave without a fight - which {PRONOUN/n_c:0/subject} promptly {VERB/n_c:0/lose/loses}.",
@@ -4570,7 +4570,7 @@
                     "scar": "m_c was scarred after fighting with another cat.",
                     "death": "m_c died from injuries sustained after fighting with another cat."
                 },
-                "outsider_rep": -1
+                "outsider_rep": -2
             },
             {
                 "text": "p_l hisses out a warning and is surprised when the kittypet refuses to leave without a fight. <i>Un</i>surprisingly, {PRONOUN/n_c:0/subject}{VERB/n_c:0/'re/'s} quickly put in {PRONOUN/n_c:0/poss} place, with p_l easily winning the ensuing scuffle.",
@@ -4600,7 +4600,7 @@
                     "scar": "m_c was scarred after foolishly trying to take on a c_n apprentice.",
                     "death": "m_c died from injuries sustained after foolishly trying to take on a c_n apprentice."
                 },
-                "outsider_rep": -1
+                "outsider_rep": -2
             }
         ],
         "antag_fail_outcomes": [
