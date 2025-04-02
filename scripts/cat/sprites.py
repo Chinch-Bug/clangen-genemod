@@ -289,9 +289,11 @@ class Sprites:
         self.make_group("lineartdead", (0, 0), "lineartdead")
         self.make_group("lineartdf", (0, 0), "lineartdf")
 
-        self.make_group("aprilfoolslineart", (0, 0), "aprilfoolslines")
-        self.make_group("aprilfoolslineartdead", (0, 0), "aprilfoolslineartdead")
-        self.make_group("aprilfoolslineartdf", (0, 0), "aprilfoolslineartdf")
+
+        if "lineart" in x and (game.config["fun"]["april_fools"] or is_today(SpecialDate.APRIL_FOOLS)):
+            self.make_group("aprilfoolslineart", (0, 0), "aprilfoolslines")
+            self.make_group("aprilfoolslineartdead", (0, 0), "aprilfoolslineartdead")
+            self.make_group("aprilfoolslineartdf", (0, 0), "aprilfoolslineartdf")
 
         # Fading Fog
         for i in range(0, 3):
