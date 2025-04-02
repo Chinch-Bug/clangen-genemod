@@ -8,6 +8,7 @@ import os
 
 import ujson
 
+from scripts.special_dates import SpecialDate, is_today
 from scripts.game_structure.game_essentials import game
 
 logger = logging.getLogger(__name__)
@@ -136,10 +137,9 @@ class Sprites:
             'fademask', 'fadestarclan', 'fadedarkforest',
             'symbols'
         ]:
-            if "lineart" in x and game.config["fun"]["april_fools"]:
-                self.spritesheet(f"sprites/aprilfools{x}.png", x)
-            else:
-                self.spritesheet(f"sprites/{x}.png", x)
+            if "lineart" in x and (game.config["fun"]["april_fools"] or is_today(SpecialDate.APRIL_FOOLS)):
+                self.spritesheet(f"sprites/aprilfools{x}.png", "aprilfools"+x)
+            self.spritesheet(f"sprites/{x}.png", x)
 
         for x in os.listdir("sprites/genemod/borders"):
             self.spritesheet("sprites/genemod/borders/"+x, 'genemod/'+x.replace('.png', ""))
@@ -288,6 +288,10 @@ class Sprites:
 
         self.make_group("lineartdead", (0, 0), "lineartdead")
         self.make_group("lineartdf", (0, 0), "lineartdf")
+
+        self.make_group("aprilfoolslineart", (0, 0), "aprilfoolslines")
+        self.make_group("aprilfoolslineartdead", (0, 0), "aprilfoolslineartdead")
+        self.make_group("aprilfoolslineartdf", (0, 0), "aprilfoolslineartdf")
 
         # Fading Fog
         for i in range(0, 3):

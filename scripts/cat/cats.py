@@ -173,16 +173,19 @@ class Cat:
         self.passes = passes
 
         self.adoptive_parents = adoptive_parents if adoptive_parents else []
-        self.phenotype = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
+        gene_config = game.config['genetics_config']
+        gene_config.update(game.config['fun'])
+        gene_config.update(game.config['april_fools_genes'])
+        self.phenotype = Phenotype(gene_config, game.settings["ban problem genes"])
         self.chimerapheno = None
         chimera = False
         if chimerageno:
-            self.chimerapheno = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
+            self.chimerapheno = Phenotype(gene_config, game.settings["ban problem genes"])
             self.chimerapheno.fromJSON(chimerageno)
             self.chimerapheno.chimerapattern = chim_pattern if chim_pattern else self.chimerapheno.ChooseTortiePattern("chimera")
             chimera = True
         elif not loading_cat and randint(1, game.config['genetics_config']["chimera"]) == 1:
-            self.chimerapheno = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
+            self.chimerapheno = Phenotype(gene_config, game.settings["ban problem genes"])
             self.chimerapheno.chimerapattern = chim_pattern if chim_pattern else self.chimerapheno.ChooseTortiePattern("chimera")
             chimera = True
             if random() < 0.001:
@@ -214,8 +217,8 @@ class Cat:
                 else:
                     self.phenotype.Generator(special=self.gender)
             else:
-                par1 = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
-                par2 = Phenotype(game.config['genetics_config'], game.settings["ban problem genes"])
+                par1 = Phenotype(gene_config, game.settings["ban problem genes"])
+                par2 = Phenotype(gene_config, game.settings["ban problem genes"])
                 if kittypet or status == 'kittypet':
                     par1.AltGenerator()
                     par2.AltGenerator()

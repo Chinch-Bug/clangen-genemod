@@ -1,6 +1,7 @@
 from random import choice, randint, random
 import json
 from scripts.cat.breed_functions import breed_functions
+from scripts.special_dates import SpecialDate, is_today
 from operator import xor
 import math
 
@@ -12,6 +13,8 @@ class Genotype:
         self.chimerapattern = None
 
         self.fevercoat = False
+
+        self.april_fools = {}
         
         self.furLength = ["", ""]
         self.longtype = choice(['long', 'long', 'long', 'medium'])
@@ -135,6 +138,7 @@ class Genotype:
         return getattr(self, name)
     
     def fromJSON(self, jsonstring):
+        self.april_fools = jsonstring.get("april_fools", {})
         self.fevercoat = jsonstring.get("fevercoat", False)
         self.furLength = jsonstring["furLength"]
         self.eumelanin = jsonstring["eumelanin"]
@@ -319,8 +323,24 @@ class Genotype:
             "shoulder_height" : self.shoulder_height,
 
             "breeds" : self.breeds,
-            "somatic" : self.somatic
+            "somatic" : self.somatic,
+            "april_fools" : self.april_fools
         }
+    
+    def AprilFools(self):
+        if self.odds["april_fools"] or is_today(SpecialDate.APRIL_FOOLS):
+            self.april_fools = {
+                "danish_green" : ["dg", "dg"],
+                "polycaudal" : ["pc", "pc"]
+            }
+            for i in range(2):
+                if self.odds["green"] > 0 and random() < (1/self.odds["green"]):
+                    self.april_fools["danish_green"][i] = "Dg"
+                if self.odds["polycaudal"] > 0 and random() < (1/self.odds["polycaudal"]):
+                    self.april_fools["polycaudal"][i] = "Pc"
+            for key in ["danish_green", "polycaudal"]:
+                if self.april_fools[key][0].islower() and self.april_fools[key][1].islower():
+                    del self.april_fools[key]
 
     def Generator(self, special=None):
         if self.odds["other_breed"] > 0 and randint(1, self.odds["other_breed"]) == 1:
@@ -330,6 +350,8 @@ class Genotype:
             self.vitiligo = True
         
         self.GenerateBody()
+
+        self.AprilFools()
 
         # FUR LENGTH
         
@@ -612,6 +634,8 @@ class Genotype:
             self.vitiligo = True
         
         self.GenerateBody()
+
+        self.AprilFools()
 
         # FUR LENGTH
 
@@ -1009,7 +1033,20 @@ class Genotype:
         if self.odds['pseudo_merle'] > 0 and randint(1, self.odds['pseudo_merle'])==1:
             self.pseudomerle = True 
         
-        
+        for gene in ["danish_green", "polycaudal"]:
+            self.april_fools[gene] = ["", ""]
+            if gene in par1.april_fools.keys():
+                self.april_fools[gene][0] = choice(par1.april_fools[gene])
+            if gene in par2.april_fools.keys():
+                self.april_fools[gene][1] = choice(par2.april_fools[gene])
+            
+            if self.april_fools[gene] == ["", ""]:
+                del self.april_fools[gene]
+            elif not self.april_fools[gene][0]:
+                self.april_fools[gene][0] = self.april_fools[gene][1].lower()
+            elif not self.april_fools[gene][1]:
+                self.april_fools[gene][1] = self.april_fools[gene][0].lower()
+
         self.furLength = [choice(par1.furLength), choice(par2.furLength)]
         
         self.eumelanin = [choice(par1.eumelanin), choice(par2.eumelanin)]
@@ -1553,6 +1590,9 @@ class Genotype:
                      'curl', 'fold', 'kab', 'toybob', 'jbob', 'kub', 'ring', 'munch', 'poly']:
             if self[gene][0] != self[gene][1] and self[gene][0].islower():
                 self[gene][0], self[gene][1] = self[gene][1], self[gene][0]
+        for gene in self.april_fools.keys():
+            if self.april_fools[gene][0] != self.april_fools[gene][1] and self.april_fools[gene][0].islower():
+                self.april_fools[gene][0], self.april_fools[gene][1] = self.april_fools[gene][1], self.april_fools[gene][0]
 
         if self.eumelanin[0] == "bl":
             self.eumelanin[0] = self.eumelanin[1]
@@ -1941,6 +1981,7 @@ class Genotype:
         self.PolyEval()
         self.Cat_Genes = [self.furLength, self.eumelanin, self.sexgene, self.dilute, self.white, self.pointgene, self.silver,
                      self.agouti, self.mack, self.ticked]
+        april_fools_output = []
         if filter:
             self.Fur_Genes = []
             self.Other_Colour = []
@@ -1959,12 +2000,18 @@ class Genotype:
                         self.Body_Genes.append(x)
                 elif x[0] != x[1] or x[0] not in ['cu', 'fd', 'm', 'ab', 'Kab', 'tb', 'Jb', 'kub', 'Rt', 'mk', 'pd', 'NoDBE']:
                     self.Body_Genes.append(x)
+            for x in self.april_fools.values():
+                if x[0] != x[1] or not x[0].islower():
+                    april_fools_output.append(x)
         else:
             self.Fur_Genes = [self.wirehair, self.laperm, self.cornish, self.urals, self.tenn, self.fleece, self.sedesp, self.ruhr, self.ruhrmod, self.lykoi]
             self.Other_Colour = [self.pinkdilute, self.dilutemd, self.ext, self.corin, self.karp, self.bleach, self.ghosting, self.satin, self.glitter]
             self.Body_Genes = [self.curl, self.fold, self.manx, self.kab, self.toybob, self.jbob, self.kub, self.ring, self.munch, self.poly, self.pax3]
+            april_fools_output = [self.april_fools.values()]
         self.Polygenes = ["Wideband:", self.wideband, self.wbtype, "Rufousing:", self.rufousing, self.ruftype, "Saturation:", self.saturation, "Bengal:", self.bengal, self.bengtype, "Sokoke:", self.sokoke, self.soktype, "Spotted:", self.spotted, self.spottype, "Ticked:", self.tickgenes, self.ticktype, "Refraction:", self.refraction, "Pigmentation:", self.pigmentation]
 
+        if self.odds["april_fools"] or is_today(SpecialDate.APRIL_FOOLS):
+            return self.Cat_Genes, "Other Fur Genes: ", self.Fur_Genes, "Other Colour Genes: ", self.Other_Colour, "Body Mutations: ", self.Body_Genes, "Polygenes: ", self.Polygenes, "April Fools:", april_fools_output
         return self.Cat_Genes, "Other Fur Genes: ", self.Fur_Genes, "Other Colour Genes: ", self.Other_Colour, "Body Mutations: ", self.Body_Genes, "Polygenes: ", self.Polygenes
     
     def Mutate(self):

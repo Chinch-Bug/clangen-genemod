@@ -32,6 +32,7 @@ from scripts.game_structure.localization import (
 )
 
 logger = logging.getLogger(__name__)
+from scripts.special_dates import SpecialDate, is_today
 from scripts.game_structure import image_cache, localization
 from scripts.cat.enums import CatAgeEnum
 from scripts.cat.history import History
@@ -3696,6 +3697,13 @@ def generate_sprite(
 
             gensprite = AddNose(gensprite)
 
+            if (game.config["fun"]["april_fools"] or is_today(SpecialDate.APRIL_FOOLS)) and "Dg" in phenotype.april_fools.get("danish_green", []):
+                green = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                green.fill((0, 255, 0))
+                green.set_alpha(100)
+                green.blit(gensprite, (0, 0), special_flags=pygame.BLEND_RGB_ADD)
+                gensprite.blit(green, (0, 0))
+
             whitesprite = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
             tintedwhitesprite = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
 
@@ -3936,6 +3944,29 @@ def generate_sprite(
                         (0, 0),
                         special_flags=blendmode,
                     )
+
+        if game.config["fun"]["april_fools"] or is_today(SpecialDate.APRIL_FOOLS):
+            if cat.phenotype.bobtailnr != 1 and "Pc" in phenotype.april_fools.get("polycaudal", []):
+                tail = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                tail.blit(sprites.sprites['bobtail1' + cat_sprite], (0, 0))
+                white = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                white.fill((255, 255, 255))
+                tail.blit(white, (0, 0), special_flags=pygame.BLEND_RGB_MAX)
+                tail.blit(new_sprite, (0, 0), special_flags=pygame.BLEND_RGBA_MIN)
+                offset = 2
+                if cat_sprite in ["0", "9", "10", "11", "13", "15", "20"]:
+                    new_sprite.blit(tail, (offset, 1))
+                elif cat_sprite in ["1", "3", "4", "5", "6", "7", "8", "12", "16", "17"]:
+                    new_sprite.blit(tail, (-offset, -1))
+                elif cat_sprite in ["2"]:
+                    new_sprite.blit(tail, (0, -2))
+
+            if not dead:
+                new_sprite.blit(sprites.sprites['aprilfoolslines' + cat_sprite], (0, 0))
+            elif cat.df:
+                new_sprite.blit(sprites.sprites['aprilfoolslineartdf' + cat_sprite], (0, 0))
+            else:
+                new_sprite.blit(sprites.sprites['aprilfoolslineartdead' + cat_sprite], (0, 0))
 
         # draw accessories
         from scripts.cat.pelts import Pelt

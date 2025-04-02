@@ -1138,6 +1138,7 @@ class Pregnancy_Events:
                 for i in Cat.all_cats_list
                 if i.is_potential_mate(cat, for_love_interest=True)
                 and (samesex or xor('Y' in i.phenotype.sexgene, 'Y' in cat.phenotype.sexgene))
+                and "infertility" not in i.permanent_condition
                 and i.ID not in cat.mate
             ]
             if special_affair:

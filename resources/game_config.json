@@ -505,6 +505,10 @@
     "bengal_kittypet": ["2", "1", "1", "1", "0", "0", "0", "0"],
     "sokoke_kittypet": ["2", "2", "1", "1", "1", "1", "0", "0", "0"]
   },
+  "april_fools_genes": {
+    "green" : 10,
+    "polycaudal" : 10
+  },
   "tnr_mode": {
     "kittypet_neuter": 0.8,
     "loner_tnr": 0.05,
