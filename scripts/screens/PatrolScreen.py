@@ -973,14 +973,15 @@ class PatrolScreen(Screens):
 
         self.able_cats = []
 
+        banned_statuses = ["elder", "kitten"] if game.clan.clan_settings["allow_mediator_patrols"] else ["elder", "kitten", "mediator", "mediator apprentice"]
+
         # ASSIGN TO ABLE CATS
         for the_cat in Cat.all_cats_list:
             if (
                 not the_cat.dead
                 and the_cat.in_camp
                 and the_cat.ID not in game.patrolled
-                and the_cat.status
-                not in ["elder", "kitten", "mediator", "mediator apprentice"]
+                and the_cat.status not in banned_statuses
                 and not the_cat.outside
                 and the_cat not in self.current_patrol
                 and not the_cat.not_working()
