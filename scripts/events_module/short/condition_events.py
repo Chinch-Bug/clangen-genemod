@@ -478,7 +478,8 @@ class Condition_Events:
             "recurring shock",
             "lasting grief",
             "persistent headaches",
-            "bad back"
+            "bad back",
+            "crooked jaw"
         ]
 
         got_condition = False

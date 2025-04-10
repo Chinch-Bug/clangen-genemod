@@ -36,7 +36,7 @@ class SkillPath(Enum):
         "loves digging holes",
         "good digger",
         "talented tunneler",
-        "subterranian master"
+        "subterranean master"
     )
     STEALTH = (
         "likes to hide",

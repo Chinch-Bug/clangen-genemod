@@ -299,6 +299,8 @@ class Namer():
 
         try:
             possible_prefixes = possible_prefixes[tabby['type']]
+            if isinstance(possible_prefixes, dict):
+                possible_prefixes = possible_prefixes[white + '_white']
             if base in ['ginger', 'cream', 'blue', 'lilac', 'fawn'] and tabby['type'] == 'silver':
                 try:
                     possible_prefixes += self.all_prefixes[base]['tortie' if tortie else 'plain']['tabby'][tabby['pattern']]['regular'][white + '_white']
