@@ -8,8 +8,10 @@ os.environ["SDL_AUDIODRIVER"] = "dummy"
 from scripts.cat.cats import Cat
 from scripts.cat_relations.relationship import Relationship
 from scripts.clan import Clan
+from scripts.game_structure.game_essentials import game
 from scripts.events_module.relationship.pregnancy_events import Pregnancy_Events
 from scripts.events_module.relationship.romantic_events import RomanticEvents
+
 
 class CanHaveKits(unittest.TestCase):
     def test_prevent_kits(self):
@@ -30,6 +32,7 @@ class CanHaveKits(unittest.TestCase):
     def test_no_kit_setting(self, check_if_can_have_kits):
         # given
         test_clan = Clan(name="clan")
+        game.clan = test_clan
         test_clan.pregnancy_data = {}
         cat1 = Cat(gender = 'molly', moons=25)
         cat1.no_kits = True
@@ -96,6 +99,7 @@ class Pregnancy(unittest.TestCase):
     def test_single_cat_female(self, check_if_can_have_kits):
         # given
         clan = Clan(name="clan")
+        game.clan = clan
         cat = Cat(gender="female", age="adult", moons=40)
         clan.pregnancy_data = {}
 
@@ -112,6 +116,7 @@ class Pregnancy(unittest.TestCase):
     def test_pair(self, check_if_can_have_kits):
         # given
         clan = Clan(name="clan")
+        game.clan = clan
         cat1 = Cat(gender="female", age="adult", moons=40)
         cat2 = Cat(gender="male", age="adult", moons=40)
 

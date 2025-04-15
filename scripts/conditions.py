@@ -53,7 +53,7 @@ def medicine_cats_can_cover_clan(all_cats, amount_per_med, clan) -> bool:
     whether the player has enough meds for the whole clan
     """
     relevant_cats = [
-        c for c in all_cats if not c.dead and not c.outside and c.group == clan
+        c for c in all_cats if not c.dead and not c.outside and c.group == clan if clan
     ]
     return amount_clanmembers_covered(all_cats, amount_per_med) > len(relevant_cats)
 

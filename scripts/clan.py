@@ -1174,9 +1174,9 @@ class OtherClan:
         self.med_cat_number = len(self.med_cat_list)
 
         if clancount == "multiclan":
-            self.leader = self.new_leader(Cat(status="leader", kittypet=game.config["clan_creation"]["use_special_roller"], group=self.name))
-            self.deputy = self.new_deputy(Cat(status="deputy", kittypet=game.config["clan_creation"]["use_special_roller"], group=self.name))
-            self.medicine_cat = self.new_medicine_cat(Cat(status="healer", kittypet=game.config["clan_creation"]["use_special_roller"], group=self.name))
+            self.new_leader(Cat(status="leader", kittypet=game.config["clan_creation"]["use_special_roller"], group=self.name))
+            self.new_deputy(Cat(status="deputy", kittypet=game.config["clan_creation"]["use_special_roller"], group=self.name))
+            self.new_medicine_cat(Cat(status="healer", kittypet=game.config["clan_creation"]["use_special_roller"], group=self.name))
             for i in range(randint(5, 7)):
                 Cat(status=choice(["warrior", "warrior", "elder", "apprentice", "kitten"]), kittypet=game.config["clan_creation"]["use_special_roller"], group=self.name)
 

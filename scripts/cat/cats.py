@@ -161,12 +161,15 @@ class Cat:
         elif self.gender == 'male':
             self.gender = 'masc'
         self.status = status.replace("medicine cat", "healer")
-        if game.clan:
-            self.group = group if group else game.clan.name
-        elif group:
+
+        if group:
             self.group = group
-        if not group and status in ["loner", "rogue", "kittypet", "former Clancat"]:
-            self.group == "outsider cat"
+        elif status in ["loner", "rogue", "kittypet", "former Clancat"]:
+            self.group = "outsider cat"
+        elif game.clan:
+            self.group = game.clan.name
+        else:
+            self.group = ""
         self.backstory = backstory
         self.age = None
         self.skills = CatSkills(skill_dict=skill_dict)
