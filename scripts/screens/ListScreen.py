@@ -66,6 +66,7 @@ class ListScreen(Screens):
             "choose_group_button": None,
             "sort_by_button": None,
             "sort_by_label": None,
+            "search_genotype_checkbox": None
         }
 
         self.dead_groups_container = None
@@ -215,6 +216,22 @@ class ListScreen(Screens):
                     self.cat_list_bar_elements["search_bar_entry"].get_text()
                 )
 
+            # TOGGLE GENOTYPE SEARCH
+            if element == self.cat_list_bar_elements["search_genotype_checkbox"]:
+                if "@checked_checkbox" in event.ui_element.get_object_ids():
+                    element.change_object_id("@unchecked_checkbox")
+                    element.set_tooltip("screens.list.search_genotypes_tooltip")
+                    game.clan.clan_settings["search genotypes"] = False
+                else:
+                    element.change_object_id("@checked_checkbox")
+                    element.set_tooltip("screens.list.search_names_tooltip")
+                    game.clan.clan_settings["search genotypes"] = True
+                self.cat_list_bar_elements["search_bar_entry"].placeholder_text="general.genotype_search" if game.clan.clan_settings["search genotypes"] else "general.name_search"
+                self.cat_list_bar_elements["search_bar_entry"].set_text("")
+                self.update_cat_list(
+                    self.cat_list_bar_elements["search_bar_entry"].get_text()
+                )
+
             # SORT BY
             elif (
                 element == self.cat_list_bar_elements["sort_by_button"]
@@ -301,7 +318,7 @@ class ListScreen(Screens):
 
         # BAR CONTAINER
         self.cat_list_bar = pygame_gui.core.UIContainer(
-            ui_scale(pygame.Rect((104, 134), (700, 400))),
+            ui_scale(pygame.Rect((86, 134), (700, 400))),
             object_id="#cat_list_bar",
             starting_height=3,
             manager=MANAGER,
@@ -325,9 +342,23 @@ class ListScreen(Screens):
             starting_height=1,
         )
 
+        # SEARCH GENOTYPE TOGGLE
+        self.cat_list_bar_elements["search_genotype_checkbox"] = UIImageButton(
+            ui_scale(pygame.Rect((36, 0), (38, 34))),
+            "",
+            object_id="@checked_checkbox"
+            if game.clan.clan_settings["search genotypes"]
+            else "@unchecked_checkbox",
+            container=self.cat_list_bar,
+            tool_tip_text="screens.list.search_names_tooltip"
+            if game.clan.clan_settings["search genotypes"]
+            else "screens.list.search_genotypes_tooltip",
+            starting_height=1,
+        )
+
         # SEARCH BAR
         self.cat_list_bar_elements["search_bar_image"] = pygame_gui.elements.UIImage(
-            ui_scale(pygame.Rect((36, 0), (138, 34))),
+            ui_scale(pygame.Rect((72, 0), (138, 34))),
             self.search_bar_image,
             container=self.cat_list_bar,
             object_id="#search_bar",
@@ -338,16 +369,18 @@ class ListScreen(Screens):
         self.cat_list_bar_elements[
             "search_bar_entry"
         ] = pygame_gui.elements.UITextEntryLine(
-            ui_scale(pygame.Rect((45, 4), (122, 27))),
+            ui_scale(pygame.Rect((81, 4), (122, 27))),
             object_id="#search_entry_box",
-            placeholder_text="general.name_search",
+            placeholder_text="general.genotype_search" 
+            if game.clan.clan_settings["search genotypes"] 
+            else "general.name_search",
             container=self.cat_list_bar,
             manager=MANAGER,
         )
 
         # SHOW LIVING/DEAD
         self.cat_list_bar_elements["view_button"] = UISurfaceImageButton(
-            ui_scale(pygame.Rect((172, 0), (103, 34))),
+            ui_scale(pygame.Rect((208, 0), (103, 34))),
             "screens.list.view_dead"
             if self.death_status != "dead"
             else "screens.list.view_living",
@@ -366,7 +399,7 @@ class ListScreen(Screens):
 
         # CHOOSE GROUP DROPDOWN
         self.cat_list_bar_elements["choose_group_button"] = UISurfaceImageButton(
-            ui_scale(pygame.Rect((273, 0), (190, 34))),
+            ui_scale(pygame.Rect((309, 0), (190, 34))),
             "screens.list.choose_group",
             get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
             container=self.cat_list_bar,
@@ -377,7 +410,7 @@ class ListScreen(Screens):
 
         # living groups
         self.living_groups_container = pygame_gui.elements.UIAutoResizingContainer(
-            ui_scale(pygame.Rect((273, 32), (0, 0))),
+            ui_scale(pygame.Rect((309, 32), (0, 0))),
             container=self.cat_list_bar,
             object_id="#choose_group_container",
             manager=MANAGER,
@@ -428,7 +461,7 @@ class ListScreen(Screens):
 
         # dead groups
         self.dead_groups_container = pygame_gui.elements.UIAutoResizingContainer(
-            ui_scale(pygame.Rect((273, 32), (0, 0))),
+            ui_scale(pygame.Rect((309, 32), (0, 0))),
             container=self.cat_list_bar,
             object_id="#choose_group_container",
             manager=MANAGER,
@@ -455,7 +488,7 @@ class ListScreen(Screens):
             y_pos += 32
 
         self.choose_dead_dropdown = UIDropDownContainer(
-            ui_scale(pygame.Rect((273, 0), (0, 0))),
+            ui_scale(pygame.Rect((309, 0), (0, 0))),
             container=self.cat_list_bar,
             object_id="#choose_living_dropdown",
             starting_height=1,
@@ -469,7 +502,7 @@ class ListScreen(Screens):
 
         # SORT BY
         self.cat_list_bar_elements["sort_by_label"] = UISurfaceImageButton(
-            ui_scale(pygame.Rect((461, 0), (75, 34))),
+            ui_scale(pygame.Rect((497, 0), (75, 34))),
             f"screens.list.filter_label",
             {
                 "normal": get_button_dict(ButtonStyles.DROPDOWN, (77, 34))[
@@ -495,7 +528,7 @@ class ListScreen(Screens):
         )
 
         self.sort_by_button_container = pygame_gui.elements.UIAutoResizingContainer(
-            ui_scale(pygame.Rect((535, 32), (0, 0))),
+            ui_scale(pygame.Rect((571, 32), (0, 0))),
             container=self.cat_list_bar,
             object_id="#sort_by_button_container",
             starting_height=2,
@@ -525,7 +558,7 @@ class ListScreen(Screens):
             )
 
         self.sort_by_dropdown = UIDropDownContainer(
-            ui_scale(pygame.Rect((535, 31), (0, 0))),
+            ui_scale(pygame.Rect((571, 31), (0, 0))),
             container=self.cat_list_bar,
             object_id="#sort_by_dropdown",
             starting_height=2,
@@ -687,12 +720,66 @@ class ListScreen(Screens):
             self.full_cat_list.insert(0, game.clan.instructor)
 
         search_text = search_text.strip()
-        if search_text not in ["", "name search"]:
-            self.current_listed_cats = [
-                cat
-                for cat in self.full_cat_list
-                if search_text.lower() in str(cat.name).lower()
-            ]
+        if search_text not in ["", i18n.t("general.name_search"), i18n.t("general.genotype_search")]:
+            if game.clan.clan_settings["search genotypes"]:
+                gene_map = {
+                    "furLength" : ["L", "l"],
+                    "eumelanin" : ["B", "b", "bl"],
+                    "sexgene" : ["O", "o", "Y"],
+                    "dilute" : ["D", "d"],
+                    "white" : ["W", "ws", "w", "wt", "wg", "wsal"],
+                    "pointgene" : ["C", "cb", "cs", "cm", "c"],
+                    "silver" : ["I", "i"],
+                    "agouti" : ["A", "Apb", "a"],
+                    "mack" : ["Mc", "mc"],
+                    "ticked" : ["Ta", "ta"],
+
+                    "wirehair" : ["Wh", "wh"],
+                    "laperm" : ["Lp", "lp"],
+                    "cornish" : ["R", "r"],
+                    "urals" : ["Ru", "ru"],
+                    "tenn" : ["Tr", "tr"],
+                    "fleece" : ["Fc", "fc"],
+                    "sedesp" : ["Se", "Hr", "Re", "se", "hr", "re"],
+                    "ruhr" : ["Hrbd", "hrbd"],
+                    "ruhrmod" : ["hi", "ha"],
+                    "lykoi" : ["Ly", "ly"],
+
+                    "pinkdilute" : ["Dp", "dp"],
+                    "dilutemd" : ["Dm", "dm"],
+                    "ext" : ["Eg", "E", "ea", "er", "ec"],
+                    "corin" : ["N", "sh", "sg", "fg"],
+                    "karp" : ["K", "k"],
+                    "bleach" : ["Lb", "lb"],
+                    "ghosting" : ["Gh", "gh"],
+                    "satin" : ["St", "st"],
+                    "glitter" : ["Gl", "gl"],
+                    
+                    "curl" : ["Cu", "cu"],
+                    "fold" : ["Fd", "fd"],
+                    "manx" : ["M", "Ab", "m", "ab"],
+                    "kab" : ["Kab", "kab"],
+                    "toybob" : ["Tb", "tb"],
+                    "jbob" : ["Jb", "jb"],
+                    "kub" : ["Kub", "kub"],
+                    "ring" : ["Rt", "rt"],
+                    "munch" : ["Mk", "mk"],
+                    "poly" : ["Pd", "pd"],
+                    "pax3" : ["NoDBE", "DBEre", "DBEalt", "DBEcel"],
+                }
+                find_gene = [key for key, value in gene_map.items() if search_text in value]
+                gene = find_gene[0] if len(find_gene) else None
+                self.current_listed_cats = [
+                    cat
+                    for cat in self.full_cat_list
+                    if gene and search_text in cat.phenotype[gene] or (gene and cat.chimerapheno and search_text in cat.chimerapheno[gene])
+                ]
+            else:
+                self.current_listed_cats = [
+                    cat
+                    for cat in self.full_cat_list
+                    if search_text.lower() in str(cat.name).lower()
+                ]
         else:
             self.current_listed_cats = self.full_cat_list.copy()
 

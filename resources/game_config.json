@@ -294,7 +294,8 @@
     "elder_modifier": 20,
     "happy_trait_modifier": -30,
     "grumpy_trait_modifier": 30,
-    "ceremony_modifier": -20
+    "ceremony_modifier": -20,
+    "multiple_acc_modifier": 50
   },
   "transition_related": {
     "base_trans_chance": 256,
@@ -405,8 +406,8 @@
     "intersex": 100,
     "XXX/XXY": 1000,
     "brindled_bicolour": 750,
-    "pseudo_merle": 100,
-    "vitiligo": 100,
+    "pseudo_merle": 200,
+    "vitiligo": 150,
     "random_mutation": 100,
     "somatic_mutation": 150,
     "breakthrough": 25,
@@ -503,6 +504,10 @@
     "tickmod_kittypet": ["2", "1", "1", "1", "0", "0", "0", "0"],
     "bengal_kittypet": ["2", "1", "1", "1", "0", "0", "0", "0"],
     "sokoke_kittypet": ["2", "2", "1", "1", "1", "1", "0", "0", "0"]
+  },
+  "april_fools_genes": {
+    "green" : 10,
+    "polycaudal" : 10
   },
   "tnr_mode": {
     "kittypet_neuter": 0.8,
@@ -674,7 +679,11 @@
         "dropshadow_alpha": 100,
         "mainmenu_tint": [239, 229, 206]
       }
-    }
+    },
+    "dark_mode_clan_symbols": [239, 229, 206],
+    "light_mode_clan_symbols": [87, 76, 45],
+    "dark_mode_event_alternate": [87, 76, 55],
+    "light_mode_event_alternate": [167, 148, 111]
   },
   "lock_season": false,
   "comment": "Forces the season to be locked at the Clan's starting_season",	

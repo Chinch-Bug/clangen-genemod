@@ -32,6 +32,7 @@ from scripts.game_structure.localization import (
 )
 
 logger = logging.getLogger(__name__)
+from scripts.special_dates import SpecialDate, is_today
 from scripts.game_structure import image_cache, localization
 from scripts.cat.enums import CatAgeEnum
 from scripts.cat.history import History
@@ -313,7 +314,10 @@ def change_clan_reputation(difference):
     will change the Clan's reputation with outsider cats according to the difference parameter.
     """
     game.clan.reputation += difference
-
+    if game.clan.reputation < 0:
+        game.clan.reputation = 0 # clamp to 0
+    elif game.clan.reputation > 100:
+        game.clan.reputation = 100 # clamp to 100
 
 def change_clan_relations(other_clan, difference):
     """
@@ -725,6 +729,29 @@ def create_new_cat_block(
             is_parent= "age:has_kits" in attribute_list,
             adoptive_parents=adoptive_parents if adoptive_parents else None
             )
+        while "age:has_kits" in attribute_list and "infertility" in new_cats[0].permanent_condition:
+            del Cat.all_cats[new_cats[0].ID]
+            new_cats[0] = create_new_cat(
+                Cat,
+                new_name=new_name,
+                loner=cat_type in ["loner", "rogue"],
+                kittypet=cat_type == "kittypet",
+                other_clan=cat_type == 'former Clancat',
+                kit=False if litter else status in ["kitten", "newborn"],
+                litter=litter,
+                backstory=chosen_backstory,
+                status=status,
+                age=age,
+                gender=gender,
+                thought=thought,
+                alive=alive,
+                outside=outside,
+                parent1=parent1.ID if parent1 else None,
+                parent2=parent2.ID if parent2 else None,
+                extrapar=generated_parents[2] if not parent2 and generated_parents else None,
+                is_parent= "age:has_kits" in attribute_list,
+                adoptive_parents=adoptive_parents if adoptive_parents else None
+                )[0]
 
         # NEXT
         # add relations to bio parents, if needed
@@ -1029,7 +1056,7 @@ def create_new_cat(
 
         # give em a collar if they got one
         if accessory:
-            new_cat.pelt.accessory = accessory
+            new_cat.pelt.accessory = [accessory]
 
         # give apprentice aged cat a mentor
         if new_cat.age == "adolescent":
@@ -1112,7 +1139,7 @@ def create_new_cat(
 
         if outside:
             new_cat.outside = True
-            if new_cat.status in ["kittypet", "loner", "rogue"]:
+            if new_cat.status in ["kittypet", "rogue", "loner"]:
                 new_cat.name.suffix = ""
         if not alive:
             new_cat.die()
@@ -2443,14 +2470,14 @@ def event_text_adjust(
     # acc_plural (only works for main_cat's acc)
     if "acc_plural" in text:
         text = text.replace(
-            "acc_plural", i18n.t(f"cat.accessories.{main_cat.pelt.accessory}", count=2)
+            "acc_plural", i18n.t(f"cat.accessories.{main_cat.pelt.accessory[-1]}", count=2)
         )
 
     # acc_singular (only works for main_cat's acc)
     if "acc_singular" in text:
         text = text.replace(
             "acc_singular",
-            i18n.t(f"cat.accessories.{main_cat.pelt.accessory}", count=1),
+            i18n.t(f"cat.accessories.{main_cat.pelt.accessory[-1]}", count=1),
         )
 
     if "given_herb" in text:
@@ -2748,47 +2775,26 @@ def clan_symbol_sprite(clan, return_string=False, force_light=False):
     :param return_string: default False, set True if the sprite name string is required rather than the sprite image
     :param force_light: Set true if you want this sprite to override the dark/light mode changes with the light sprite
     """
-    clan_name = clan.name
-    if clan.chosen_symbol:
-        if return_string:
-            return clan.chosen_symbol
-        else:
-            if game.settings["dark mode"] and not force_light:
-                return sprites.dark_mode_symbol(sprites.sprites[clan.chosen_symbol])
-            else:
-                return sprites.sprites[clan.chosen_symbol]
-    else:
+    if not clan.chosen_symbol:
         possible_sprites = []
         for sprite in sprites.clan_symbols:
             name = sprite.strip("1234567890")
-            if f"symbol{clan_name.upper()}" == name:
+            if f"symbol{clan.name.upper()}" == name:
                 possible_sprites.append(sprite)
-        if return_string:  # returns the str of the symbol
-            if possible_sprites:
-                return choice(possible_sprites)
-            else:
-                # give random symbol if no matching symbol exists
-                print(
-                    f"WARNING: attempted to return symbol string, but there's no clan symbol for {clan_name.upper()}.  Random symbol string returned."
-                )
-                return f"{choice(sprites.clan_symbols)}"
-
-        # returns the actual sprite of the symbol
         if possible_sprites:
-            if game.settings["dark mode"] and not force_light:
-                return sprites.dark_mode_symbol(
-                    sprites.sprites[choice(possible_sprites)]
-                )
-            else:
-                return sprites.sprites[choice(possible_sprites)]
+            clan.chosen_symbol = choice(possible_sprites)
         else:
             # give random symbol if no matching symbol exists
             print(
-                f"WARNING: attempted to return symbol sprite, but there's no clan symbol for {clan_name.upper()}.  Random symbol sprite returned."
+                f"WARNING: attempted to return symbol, but there's no clan symbol for {clan.name.upper()}. "
+                f"Random chosen."
             )
-            return sprites.dark_mode_symbol(
-                sprites.sprites[f"{choice(sprites.clan_symbols)}"]
-            )
+            clan.chosen_symbol = choice(sprites.clan_symbols)
+
+    if return_string:
+        return clan.chosen_symbol
+    else:
+        return sprites.get_symbol(clan.chosen_symbol, force_light=force_light)
 
 
 def generate_sprite(
@@ -2898,6 +2904,7 @@ def generate_sprite(
                 phenotype.silver = old_silver
                 
             def CreateStripes(stripecolour, whichbase, coloursurface=None, pattern=None, special = None):
+                notred = ('red' not in stripecolour and 'cream' not in stripecolour and 'honey' not in stripecolour and 'ivory' not in stripecolour and 'apricot' not in stripecolour)
                 stripebase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 
                 if not pattern and not special and 'solid' not in whichbase:
@@ -2921,11 +2928,17 @@ def generate_sprite(
 
                 charc = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 charc_shading = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                if(phenotype.agouti[0] == "Apb" and ('red' not in stripecolour and 'cream' not in stripecolour and 'honey' not in stripecolour and 'ivory' not in stripecolour and 'apricot' not in stripecolour)):
+                if(phenotype.agouti[0] == "Apb" and notred and hasattr(phenotype, "banding")):
                     charc_shading.blit(sprites.sprites['lightbasecolours0'], (0, 0))
-                    charc_shading.set_alpha(175)
-                    if 'shaded' in whichbase or 'chinchilla' in whichbase:
-                        charc_shading.set_alpha(100)
+                    modifiers = {
+                        "chinchilla" : 2,
+                        "shaded" : 3,
+                        "high" : 5,
+                        "medium" : 6,
+                        "low" : 7
+                    }
+                    opacity = int(25 * (modifiers.get(phenotype.banding, 5) / (1 * (int("silver" in whichbase) + 1))))
+                    charc_shading.set_alpha(opacity)
                     charc.blit(charc_shading, (0, 0))
                     charc.blit(sprites.sprites['charcoal' + cat_sprite], (0, 0))
                 
@@ -2993,7 +3006,7 @@ def generate_sprite(
         
             def AddStripes(whichmain, whichcolour, whichbase, coloursurface=None):
                 stripebase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                if((phenotype.corin[0] != 'N' and phenotype.wbtype == 'shaded') or phenotype.wbtype == 'chinchilla'):
+                if((phenotype.corin[0] != 'N' and phenotype.wbtype == "shaded") or phenotype.wbtype == 'chinchilla'):
                     if not ("rufoused" in whichcolour or 'medium' in whichcolour or 'low' in whichcolour or phenotype.wbtype == 'chinchilla'):
                         stripebase.blit(CreateStripes(phenotype.FindRed(phenotype, sprite_age, special='red')[0], phenotype.FindRed(phenotype, sprite_age, special='red')[1], coloursurface=coloursurface), (0, 0))
                         whichmain.blit(stripebase, (0, 0))
@@ -3001,13 +3014,13 @@ def generate_sprite(
                     stripebase.set_alpha(120)
                     whichmain.blit(stripebase, (0, 0))
                     stripebase = CreateStripes(whichcolour, whichbase, coloursurface=coloursurface, pattern='agouti')
-                elif(phenotype.wbtype == 'shaded' or phenotype.corin[0] != 'N'):
+                elif(phenotype.wbtype == "shaded" or phenotype.corin[0] != 'N'):
                     if not ("rufoused" in whichcolour or 'medium' in whichcolour or 'low' in whichcolour):
                         stripebase.blit(CreateStripes(phenotype.FindRed(phenotype, sprite_age, special='red')[0], phenotype.FindRed(phenotype, sprite_age, special='red')[1], coloursurface=coloursurface), (0, 0))
-                        stripebase.set_alpha(90)
+                        stripebase.set_alpha(120)
                         whichmain.blit(stripebase, (0, 0))
                     stripebase = CreateStripes(whichcolour, whichbase, coloursurface=coloursurface)
-                    stripebase.set_alpha(200)
+                    stripebase.set_alpha(175)
                     whichmain.blit(stripebase, (0, 0))
                     stripebase = CreateStripes(whichcolour, whichbase, coloursurface=coloursurface, pattern='agouti')
                 elif('ec' in phenotype.ext and 'Eg' not in phenotype.ext and not ('red' in whichcolour or 'cream' in whichcolour or 'honey' in whichcolour or 'ivory' in whichcolour or 'apricot' in whichcolour)):
@@ -3692,6 +3705,13 @@ def generate_sprite(
 
             gensprite = AddNose(gensprite)
 
+            if (game.config["fun"]["april_fools"] or is_today(SpecialDate.APRIL_FOOLS)) and "Dg" in phenotype.april_fools.get("danish_green", []):
+                green = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                green.fill((0, 255, 0))
+                green.set_alpha(100)
+                green.blit(gensprite, (0, 0), special_flags=pygame.BLEND_RGB_ADD)
+                gensprite.blit(green, (0, 0))
+
             whitesprite = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
             tintedwhitesprite = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
 
@@ -3817,7 +3837,7 @@ def generate_sprite(
             age = 10
         elif (int(cat_sprite == 19) or int(cat_sprite) == 17) and 12 < cat.moons < 6:
             age = 6
-        elif int(cat_sprite) > 5 and cat.moons < 12:
+        elif int(cat_sprite) > 5 and cat_sprite not in ['17', '19'] and cat.moons < 12:
             age = 60
         gensprite.blit(GenSprite(phenotype, age), (0, 0))
 
@@ -3933,22 +3953,51 @@ def generate_sprite(
                         special_flags=blendmode,
                     )
 
+        if game.config["fun"]["april_fools"] or is_today(SpecialDate.APRIL_FOOLS):
+            if cat.phenotype.bobtailnr != 1 and "Pc" in phenotype.april_fools.get("polycaudal", []):
+                tail = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                tail.blit(sprites.sprites['bobtail1' + cat_sprite], (0, 0))
+                white = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                white.fill((255, 255, 255))
+                tail.blit(white, (0, 0), special_flags=pygame.BLEND_RGB_MAX)
+                tail.blit(new_sprite, (0, 0), special_flags=pygame.BLEND_RGBA_MIN)
+                offset = 2
+                if cat_sprite in ["0", "9", "10", "11", "13", "15", "20"]:
+                    new_sprite.blit(tail, (offset, 1))
+                elif cat_sprite in ["1", "3", "4", "5", "6", "7", "8", "12", "16", "17"]:
+                    new_sprite.blit(tail, (-offset, -1))
+                elif cat_sprite in ["2"]:
+                    new_sprite.blit(tail, (0, -2))
+
+            if not dead:
+                new_sprite.blit(sprites.sprites['aprilfoolslines' + cat_sprite], (0, 0))
+            elif cat.df:
+                new_sprite.blit(sprites.sprites['aprilfoolslineartdf' + cat_sprite], (0, 0))
+            else:
+                new_sprite.blit(sprites.sprites['aprilfoolslineartdead' + cat_sprite], (0, 0))
+
         # draw accessories
-        if not acc_hidden:
-            if cat.pelt.accessory in cat.pelt.plant_accessories:
-                new_sprite.blit(
-                    sprites.sprites["acc_herbs" + cat.pelt.accessory + cat_sprite],
-                    (0, 0),
-                )
-            elif cat.pelt.accessory in cat.pelt.wild_accessories:
-                new_sprite.blit(
-                    sprites.sprites["acc_wild" + cat.pelt.accessory + cat_sprite],
-                    (0, 0),
-                )
-            elif cat.pelt.accessory in cat.pelt.collars:
-                new_sprite.blit(
-                    sprites.sprites["collars" + cat.pelt.accessory + cat_sprite], (0, 0)
-                )
+        from scripts.cat.pelts import Pelt
+        if not acc_hidden and cat.pelt.accessory:
+            cat_accessories = cat.pelt.accessory
+            categories = ["collars", "tail_accessories", "body_accessories", "head_accessories"]
+            for category in categories:
+                for accessory in cat_accessories:
+                    if accessory in getattr(Pelt, category):
+                        if accessory in cat.pelt.plant_accessories:
+                            new_sprite.blit(
+                                sprites.sprites["acc_herbs" + accessory + cat_sprite],
+                                (0, 0),
+                            )
+                        elif accessory in cat.pelt.wild_accessories:
+                            new_sprite.blit(
+                                sprites.sprites["acc_wild" + accessory + cat_sprite],
+                                (0, 0),
+                            )
+                        elif accessory in cat.pelt.collars:
+                            new_sprite.blit(
+                                sprites.sprites["collars" + accessory + cat_sprite], (0, 0)
+                            )
 
         # Apply fading fog
         if (

@@ -12,7 +12,7 @@
         "one": "1 moon (in life)",
         "many": "%{count} moons (in life)"
       },
-      "moon_date": "moon %{moon}",
+      "moons_date": "moon %{moon}",
       "leader": {
         "one": "leader",
         "many": "leaders"
@@ -118,10 +118,10 @@
       "cant_work": "This cat isn't able to work",
       "cant_work_condition": "Can't work with this condition",
       "exp_label": "exp: %{exp}",
-      "newleaf": "newleaf",
-      "greenleaf": "greenleaf",
-      "leaf-fall": "leaf-fall",
-      "leaf-bare": "leaf-bare",
+      "newleaf": "Newleaf",
+      "greenleaf": "Greenleaf",
+      "leaf-fall": "Leaf-fall",
+      "leaf-bare": "Leaf-bare",
       "relation_BLOOD": "",
       "relation_ADOPTIVE": "adoptive",
       "relation_HALF_BLOOD": "half sibling",
@@ -146,6 +146,7 @@
       "unknown_residence": "Unknown Residence",
       "empty": "empty",
       "none": "none",
+      "genotype_search": "enter allele",
       "name_search": "name search",
       "has_a_mate": "has a mate",
       "cats_mate": "%{name}'s mate",

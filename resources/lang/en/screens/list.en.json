@@ -2,6 +2,8 @@
     "en": {
         "favorite_hide_tooltip": "hide favorite cat indicators",
         "favorite_show_tooltip": "show favorite cat indicators",
+        "search_genotypes_tooltip": "switch to searching in genotypes",
+        "search_names_tooltip": "switch to searching in names",
         "view_dead": "view dead",
         "view_dead_tooltip": "view cats in the afterlife",
         "view_living": "view living",

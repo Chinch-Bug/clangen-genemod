@@ -397,7 +397,7 @@ class Pregnancy_Events:
                     severity = random.choices(["minor", "major"], [3, 1], k=1)
                     text += choice(Pregnancy_Events.PREGNANT_STRINGS[f"{severity[0]}_severity"])
                     text = event_text_adjust(Cat, text, main_cat=pregnant_cat, clan=clan)
-                    text += i18n.t(
+                    text += " " + i18n.t(
                             "conditions.pregnancy.inclan_surrogate_dam",
                             name=cat.name,
                             insert=pregnant_cat.name)
@@ -995,8 +995,13 @@ class Pregnancy_Events:
         returns:
         parent can have kits, kits are adopted
         """
-            
-        if not second_parent or len(second_parent) == 1:
+
+        if not second_parent:
+            if single_parentage:
+                return True, False, second_parent
+            else:
+                return False, False, second_parent
+        elif len(second_parent) == 1:
         # Checks for second parent alone:
             if not Pregnancy_Events.check_if_can_have_kits(second_parent[0] if second_parent else None, single_parentage, allow_affair):
                 return False, False, second_parent
@@ -1005,7 +1010,7 @@ class Pregnancy_Events:
             if not xor('Y' in cat.phenotype.sexgene, 'Y' in second_parent[0].phenotype.sexgene) or ("infertility" in cat.permanent_condition or "infertility" in second_parent[0].permanent_condition):
                 if same_sex_birth and not "infertility" in second_parent[0].permanent_condition and not "infertility" in cat.permanent_condition:
                     return True, False, second_parent
-                elif surrogates:
+                elif surrogates and not ("infertility" in second_parent[0].permanent_condition and "infertility" in cat.permanent_condition):
                     return True, False, ["Surrogate"] + second_parent
                 elif not same_sex_adoption:
                     return False, False, second_parent
@@ -1142,6 +1147,7 @@ class Pregnancy_Events:
                 if i.is_potential_mate(cat, for_love_interest=True)
                 and i.group in [cat.group, "outsider cat"]
                 and (samesex or xor('Y' in i.phenotype.sexgene, 'Y' in cat.phenotype.sexgene))
+                and "infertility" not in i.permanent_condition
                 and i.ID not in cat.mate
             ]
             if special_affair:
@@ -1491,7 +1497,7 @@ class Pregnancy_Events:
                 kit.phenotype.tortiepattern = None
                 kit.phenotype.chimerapattern = None
                 kit.phenotype.merlepattern = None
-                kit.phenotype.white_pattern = kit.GenerateWhite(kit.phenotype.white, kit.phenotype.pointgene, kit.phenotype.whitegrade, kit.phenotype.vitiligo, None, kit.phenotype.pax3)
+                kit.phenotype.white_pattern = kit.pelt.generate_white(kit.phenotype.white, kit.phenotype.pointgene, kit.phenotype.whitegrade, kit.phenotype.vitiligo, None, kit.phenotype.pax3)
                 kit.phenotype.PhenotypeOutput(kit.phenotype.white_pattern)
                 kit.phenotype.SpriteInfo(kit.moons)
                 
@@ -1500,7 +1506,7 @@ class Pregnancy_Events:
                     kit.chimerapheno.tortiepattern = None
                     kit.chimerapheno.chimerapattern = None
                     kit.chimerapheno.merlepattern = None
-                    kit.chimerapheno.white_pattern = kit.GenerateWhite(kit.chimerapheno.white, kit.chimerapheno.pointgene, kit.chimerapheno.whitegrade, kit.chimerapheno.vitiligo, None, kit.chimerapheno.pax3)
+                    kit.chimerapheno.white_pattern = kit.pelt.generate_white(kit.chimerapheno.white, kit.chimerapheno.pointgene, kit.chimerapheno.whitegrade, kit.chimerapheno.vitiligo, None, kit.chimerapheno.pax3)
                     kit.chimerapheno.PhenotypeOutput(kit.chimerapheno.white_pattern)
                     kit.chimerapheno.SpriteInfo(kit.moons)
 
@@ -1515,7 +1521,7 @@ class Pregnancy_Events:
                     if i > kits_amount:
                         kit.chimerapheno = None
                 
-                if randint(1, game.config["genetics_config"]["identical_twins"]) == 1 and kits_amount < 19:
+                if game.config["genetics_config"]["identical_twins"] and randint(1, game.config["genetics_config"]["identical_twins"]) == 1 and kits_amount < 19:
                     kits_amount += 1
                     identical = True
                 
@@ -1576,7 +1582,7 @@ class Pregnancy_Events:
                     kit.relationships[the_cat.ID] = start_relation
 
             #### REMOVE ACCESSORY ######
-            kit.pelt.accessory = None
+            kit.pelt.accessory = []
             game.clan.add_cat(kit)
 
             #### GIVE HISTORY ######
@@ -1864,6 +1870,9 @@ class Pregnancy_Events:
                         second_parent_relation.link_relationship()
                 else:
                     second_parent_relation = first_parent.create_one_relationship(x)
+
+                if not second_parent_relation:
+                    continue
 
                 x_romantic_love = (second_parent_relation.romantic_love +
                                         second_parent_relation.opposite_relationship.romantic_love) / 2

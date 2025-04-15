@@ -130,6 +130,11 @@
         "Healers will always default to herb gathering patrols",
         "Different types of patrols can still be selected manually",
         false
+      ],
+      "allow_mediator_patrols": [
+        "Allow mediators to patrol",
+        "Allows mediators to be selected for patrols as warriors",
+        false
       ]
     },
     "relation": {
@@ -321,6 +326,10 @@
             false
         ],
         "show fav": [
+            false,
+            true
+        ],
+        "search genotypes": [
             false,
             true
         ]
