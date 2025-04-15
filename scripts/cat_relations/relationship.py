@@ -74,7 +74,7 @@ class Relationship:
             self.cat_to.relationships[self.cat_from.ID] = relation
             self.opposite_relationship = relation
 
-    def start_interaction(self) -> None:
+    def start_interaction(self, clan=game.clan) -> None:
         """This function handles the simple interaction of this relationship."""
         # such interactions are only allowed for living Clan members
         if self.cat_from.dead or self.cat_from.outside or self.cat_from.exiled:
@@ -178,7 +178,7 @@ class Relationship:
                     injured_cat = self.cat_to
 
                 for inj in injury_dict["injury_names"]:
-                    injured_cat.get_injured(inj, True)
+                    injured_cat.get_injured(inj, True, clan=clan)
                     injuries.append(inj)
 
                 possible_scar = (

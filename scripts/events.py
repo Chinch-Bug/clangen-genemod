@@ -160,7 +160,8 @@ class Events:
         # Calling of "one_moon" functions.
         for cat in Cat.all_cats.copy().values():
             if not cat.outside or cat.dead:
-                self.one_moon_cat(cat, [clan for clan in [game.clan] + game.clan.all_clans if clan.name == cat.group][0] if cat.group != " " else game.clan)
+                cat_clan = [clan for clan in ([game.clan] + game.clan.all_clans) if clan.name == cat.group]
+                self.one_moon_cat(cat, cat_clan[0] if cat.group != " " else game.clan)
             else:
                 self.one_moon_outside_cat(cat)
 
@@ -255,6 +256,7 @@ class Events:
                                 event_triggered=False,
                                 lethal=False,
                                 severity="minor",
+                                clan=[clan for clan in [game.clan] + game.clan.all_clans if cat.group == clan.name][0]
                             )
 
                         insert = adjust_list_text(shaken_cat_names)
@@ -325,7 +327,7 @@ class Events:
         if game.clan.game_mode in ["expanded", "cruel season"]:
             amount_per_med = get_amount_cat_for_one_medic(game.clan)
             med_fulfilled = medicine_cats_can_cover_clan(
-                Cat.all_cats.values(), amount_per_med
+                Cat.all_cats.values(), amount_per_med, clan=game.clan
             )
 
             if not med_fulfilled:
@@ -821,7 +823,7 @@ class Events:
                         for injury, amount in injury_dict.items():
                             possible_injuries.extend([injury] * amount)
                         chosen_injury = random.choice(possible_injuries)
-                        cat.get_injured(chosen_injury)
+                        cat.get_injured(chosen_injury, clan=game.clan)
                         involved_cats["injured"].append(cat.ID)
                     else:
                         chance = game.config["focus"]["hoarding"]["illness_chance"]
@@ -857,7 +859,6 @@ class Events:
                             clan=game.clan.name
                         )
                     )
-                )
 
             focus_text = i18n.t(
                 "hardcoded.focus_prey",
@@ -1226,7 +1227,7 @@ class Events:
 
         # relationships have to be handled separately, because of the ceremony name change
         if not cat.dead and not cat.outside:
-            Relation_Events.handle_relationships(cat)
+            Relation_Events.handle_relationships(cat, clan)
 
         # now we make sure ill and injured cats don't get interactions they shouldn't
         if cat.is_ill() or cat.is_injured():
@@ -1484,7 +1485,8 @@ class Events:
                     # check if the Clan has sufficient med cats
                     has_med = medicine_cats_can_cover_clan(
                         Cat.all_cats.values(),
-                        amount_per_med=get_amount_cat_for_one_medic(game.clan),
+                        amount_per_med=get_amount_cat_for_one_medic(clan),
+                        clan=clan.name
                     )
 
                     # check if a med cat app already exists

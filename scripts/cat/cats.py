@@ -161,7 +161,10 @@ class Cat:
         elif self.gender == 'male':
             self.gender = 'masc'
         self.status = status.replace("medicine cat", "healer")
-        self.group = group if group else game.clan
+        if game.clan:
+            self.group = group if group else game.clan.name
+        elif group:
+            self.group = group
         if not group and status in ["loner", "rogue", "kittypet", "former Clancat"]:
             self.group == "outsider cat"
         self.backstory = backstory
@@ -730,7 +733,7 @@ class Cat:
         """
         return not self.dead
 
-    def die(self, body: bool = True):
+    def die(self, body: bool = True, clan=game.clan):
         """Kills cat.
 
         body - defaults to True, use this to mark if the body was recovered so
@@ -794,7 +797,7 @@ class Cat:
 
         # if game.clan and game.clan.game_mode != 'classic' and not (self.outside or self.exiled) and body is not None:
         if game.clan and not self.outside and not self.exiled and self.moons > 1:
-            self.grief(body)
+            self.grief(body, clan=clan)
 
         if not self.outside:
             Cat.dead_cats.append(self)
@@ -825,7 +828,7 @@ class Cat:
                 fetched_cat.update_mentor()
         self.update_mentor()
 
-    def grief(self, body: bool):
+    def grief(self, body: bool, clan=game.clan):
         """
         compiles grief moon event text
         """
@@ -918,7 +921,7 @@ class Cat:
                 text += " " + choice(MINOR_MAJOR_REACTION["major"])
                 text = event_text_adjust(Cat, text=text, main_cat=self, random_cat=cat)
 
-                cat.get_ill("grief stricken", event_triggered=True, severity="major")
+                cat.get_ill("grief stricken", event_triggered=True, severity="major", clan=clan)
 
             # If major grief fails, but there are still very_high or high values,
             # it can fail to to minor grief. If they have a family relation, bypass the roll.
@@ -1810,7 +1813,7 @@ class Cat:
         if relevant_relationship.cat_to.is_ill():
             self.contact_with_ill_cat(relevant_relationship.cat_to)
 
-    def moon_skip_illness(self, illness):
+    def moon_skip_illness(self, illness, clan=game.clan):
         """handles the moon skip for illness"""
         if not self.is_ill():
             return True
@@ -1832,7 +1835,7 @@ class Cat:
                 self.leader_death_heal = True
                 game.clan.leader_lives -= 1
 
-            self.die()
+            self.die(clan=clan)
             return False
 
         moons_with = game.clan.age - self.illnesses[illness]["moon_start"]
@@ -2044,7 +2047,7 @@ class Cat:
 
         amount_per_med = get_amount_cat_for_one_medic(clan)
 
-        if medicine_cats_can_cover_clan(Cat.all_cats.values(), amount_per_med):
+        if medicine_cats_can_cover_clan(Cat.all_cats.values(), amount_per_med, clan):
             duration = med_duration
         if severity != "minor":
             duration += randrange(-1, 1)
@@ -2072,6 +2075,7 @@ class Cat:
             medicine_mortality=med_mortality,
             risks=illness["risks"],
             event_triggered=event_triggered,
+            clan=clan.name
         )
 
         if new_illness.name not in self.illnesses:
@@ -2113,7 +2117,7 @@ class Cat:
 
         injury_severity = injury["severity"] if severity == "default" else severity
         if medicine_cats_can_cover_clan(
-            Cat.all_cats.values(), get_amount_cat_for_one_medic(game.clan)
+            Cat.all_cats.values(), get_amount_cat_for_one_medic(clan), clan.name
         ):
             duration = med_duration
         if severity != "minor":
@@ -2140,6 +2144,7 @@ class Cat:
             also_got=injury["also_got"],
             cause_permanent=injury["cause_permanent"],
             event_triggered=event_triggered,
+            clan=clan.name
         )
 
         if new_injury.name not in self.injuries:
@@ -2180,14 +2185,14 @@ class Cat:
                 self.also_got = True
                 additional_injury = choice(new_injury.also_got)
                 if additional_injury in INJURIES:
-                    self.additional_injury(additional_injury)
+                    self.additional_injury(additional_injury, clan=clan)
                 else:
                     self.get_ill(additional_injury, event_triggered=True, clan=clan)
         else:
             self.also_got = False
 
-    def additional_injury(self, injury):
-        self.get_injured(injury, event_triggered=True)
+    def additional_injury(self, injury, clan=game.clan):
+        self.get_injured(injury, event_triggered=True, clan=clan)
 
     def congenital_condition(self, cat):
         possible_conditions = []

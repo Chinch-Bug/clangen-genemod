@@ -391,7 +391,7 @@ class HandleShortEvents:
                         and sub_sub[0].ID in (sub[0].parent1, sub[0].parent2)
                         and not (sub_sub[0].dead or sub_sub[0].outside)
                     ):
-                        sub_sub[0].get_injured("recovering from birth")
+                        sub_sub[0].get_injured("recovering from birth", clan=clan)
                         break  # Break - only one parent ever gives birth
 
         if extra_text and extra_text not in self.chosen_event.text:
@@ -500,11 +500,11 @@ class HandleShortEvents:
                 else:
                     clan.leader_lives -= 1
 
-                cat.die(body)
+                cat.die(body, clan=clan)
                 self.additional_event_text = get_leader_life_notice(clan)
 
             else:
-                cat.die(body)
+                cat.die(body, clan)
 
     def handle_mass_death(self, clan=None):
         """
@@ -702,7 +702,7 @@ class HandleShortEvents:
                                 new_cats[i], death_history, other_cat=self.random_cat
                             )
 
-    def handle_injury(self, clan=None):
+    def handle_injury(self, clan=game.clan):
         """
         assigns an injury to involved cats and then assigns possible histories (if in classic, assigns scar and scar
         history)
@@ -732,20 +732,20 @@ class HandleShortEvents:
                 # MAIN CAT
                 if abbr == "m_c":
                     injury = random.choice(possible_injuries)
-                    self.main_cat.get_injured(injury)
+                    self.main_cat.get_injured(injury, clan=clan)
                     self.handle_injury_history(self.main_cat, "m_c", injury, clan=clan)
 
                 # RANDOM CAT
                 elif abbr == "r_c":
                     injury = random.choice(possible_injuries)
-                    self.random_cat.get_injured(injury)
+                    self.random_cat.get_injured(injury, clan=clan)
                     self.handle_injury_history(self.random_cat, "r_c", injury, clan=clan)
 
                 # NEW CATS
                 elif "n_c" in abbr:
                     for i, new_cats in enumerate(self.new_cats):
                         injury = random.choice(possible_injuries)
-                        new_cats[i].get_injured(injury)
+                        new_cats[i].get_injured(injury, clan=clan)
                         self.handle_injury_history(new_cats[i], abbr, injury, clan=clan)
 
     def handle_injury_history(self, cat, cat_abbr, injury=None, clan=None):

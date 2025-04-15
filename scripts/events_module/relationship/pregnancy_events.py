@@ -335,7 +335,7 @@ class Pregnancy_Events:
                                         i.is_potential_mate(cat, for_love_interest=True, outsider=True) 
                                         and Pregnancy_Events.check_if_can_have_kits(i, True, True) 
                                         and 'infertility' not in i.permanent_condition 
-                                        and (clan.clan_settings['same sex birth'] or xor('Y' in i.phenotype.sexgene, 'Y' in cat.phenotype.sexgene)) 
+                                        and (game.clan.clan_settings['same sex birth'] or xor('Y' in i.phenotype.sexgene, 'Y' in cat.phenotype.sexgene)) 
                                         and len(i.mate) == 0 and not i.birth_cooldown]
                 outsider_affair_partners = [i for i in possible_affair_partners if i.group == "outsider cat"]
                 other_clan_affair_partners = [i for i in possible_affair_partners if i.group != "outsider cat"]
@@ -343,8 +343,8 @@ class Pregnancy_Events:
                 if surrogate:
                     other_cat[0].birth_cooldown = game.config["pregnancy"]["birth_cooldown"]
                     backkit = None
-                elif(random.random() < 0.75 or len(possible_affair_partners) < 1):
-                    if(randint(1, 4) > 1 and len(other_clan_affair_partners) > 0):
+                elif(random.random() < 0.75 or len(outsider_affair_partners) < 1):
+                    if(randint(1, 4) > 1 or len(other_clan_affair_partners) == 0):
                         cat_type = choice(['loner', 'rogue', 'kittypet'])
                         backstories = {
                             'loner' : 'loner_backstories',
@@ -1672,7 +1672,7 @@ class Pregnancy_Events:
         if blood_parent:
             blood_parent.outside = True
             if blood_parent.dead:
-                clan.unknown_cats.append(blood_parent.ID)
+                game.clan.unknown_cats.append(blood_parent.ID)
         if blood_parent2:
             for x in blood_parent2:
                 x.outside = True

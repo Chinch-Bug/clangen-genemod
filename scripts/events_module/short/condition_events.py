@@ -183,7 +183,7 @@ class Condition_Events:
             else:
                 History.add_death(cat, condition="starving", death_text=history_event)
 
-            cat.die()
+            cat.die(clan=game.clan)
 
             # if the cat is the leader and isn't full dead
             # make them malnourished and refill nutrition slightly
@@ -192,7 +192,7 @@ class Condition_Events:
                     nutrition_info[cat.ID].max_score / 100 * (MAL_PERCENTAGE + 1)
                 )
                 nutrition_info[cat.ID].current_score = round(mal_score, 2)
-                cat.get_ill("malnourished")
+                cat.get_ill("malnourished", clan=game.clan)
 
             types = ["birth_death"]
             game.cur_events_list.append(
@@ -243,7 +243,7 @@ class Condition_Events:
             cat.illnesses.pop(illness)
         elif not heal and illness:
             event = random.choice(Condition_Events.ILLNESS_GOT_STRINGS[illness])
-            cat.get_ill(illness)
+            cat.get_ill(illness, clan=game.clan)
 
         if event:
             event_text = event_text_adjust(Cat, event, main_cat=cat)
@@ -253,7 +253,7 @@ class Condition_Events:
             )
 
     @staticmethod
-    def handle_illnesses(cat, season=None, clan=None):
+    def handle_illnesses(cat, season=None, clan=game.clan):
         """
         This function handles the illnesses overall by randomly making cat ill (or not).
         It will return a bool to indicate if the cat is dead.
@@ -307,7 +307,7 @@ class Condition_Events:
                 if chosen_illness == "kittencough" and cat.status != "kitten":
                     chosen_illness = "whitecough"
                 # make em sick
-                cat.get_ill(chosen_illness)
+                cat.get_ill(chosen_illness, clan=clan)
 
                 # create event text
                 if i18n.config.get("locale") == "en" and chosen_illness in [
@@ -563,7 +563,7 @@ class Condition_Events:
                 continue
 
             # moon skip to try and kill or heal cat
-            skipped = cat.moon_skip_illness(illness)
+            skipped = cat.moon_skip_illness(illness, clan=clan)
 
             # if event trigger was true, events should be skipped for this illness
             if skipped is True:
@@ -723,7 +723,7 @@ class Condition_Events:
                 triggered = True
 
                 # Try to give a scar, and get the event text to be displayed
-                event, scar_given = Scar_Events.handle_scars(cat, injury)
+                event, scar_given = Scar_Events.handle_scars(cat, injury, clan=clan)
                 # If a scar was not given, we need to grab a separate healed event
                 if not scar_given:
                     try:
@@ -836,7 +836,7 @@ class Condition_Events:
             types = ["health"]
             if cat.dead:
                 types.append("birth_death")
-            game.cur_events_list.append(Single_Event(event_string, types, cat.ID, clan=clan.name))
+            game.cur_events_list.append(Single_Event(event_string, types, cat.ID, clan=cat.group))
 
         return triggered
 
@@ -1093,7 +1093,7 @@ class Condition_Events:
                     )
 
     @staticmethod
-    def give_risks(cat, event_list, condition, progression, conditions, dictionary, clan=None):
+    def give_risks(cat, event_list, condition, progression, conditions, dictionary, clan=game.clan):
         Condition_Events.rebuild_strings()
 
         event_triggered = False
@@ -1114,7 +1114,7 @@ class Condition_Events:
                 Cat.all_cats.values(), get_amount_cat_for_one_medic(clan), clan
             ):
                 chance += 10  # lower risk if enough meds
-            if clan.medicine_cat is None and chance != 0:
+            if clan and clan.medicine_cat is None and chance != 0:
                 chance = int(
                     chance * 0.75
                 )  # higher risk if no meds and risk chance wasn't 0
@@ -1218,10 +1218,10 @@ class Condition_Events:
                 game.switches["skip_conditions"].append(new_condition_name)
                 # here we give the new condition
                 if new_condition_name in Condition_Events.INJURIES:
-                    cat.get_injured(new_condition_name, event_triggered=event_triggered)
+                    cat.get_injured(new_condition_name, event_triggered=event_triggered, clan=clan)
                     break
                 elif new_condition_name in Condition_Events.ILLNESSES:
-                    cat.get_ill(new_condition_name, event_triggered=event_triggered)
+                    cat.get_ill(new_condition_name, event_triggered=event_triggered, clan=clan)
                     if dictionary == cat.illnesses or removed_condition:
                         break
                     keys = dictionary[condition].keys()

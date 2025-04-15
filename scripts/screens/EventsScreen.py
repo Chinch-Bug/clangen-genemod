@@ -150,6 +150,7 @@ class EventsScreen(Screens):
             elif element in self.choose_group_buttons.values():
                 self.choose_living_dropdown.close()
                 self.current_clan = element.text.replace("Clan", "")
+                self.change_clan()
                 self.timeskip_done(True)
             else:
                 self.save_scroll_position()
@@ -171,6 +172,21 @@ class EventsScreen(Screens):
                     self.handle_tab_select(event.key)
                 elif event.key == pygame.K_RETURN:
                     self.handle_tab_switch(self.selected_display)
+
+    def change_clan(self):
+        curr_clan = game.clan if self.current_clan == game.clan.name or not self.current_clan else [clan for clan in game.clan.all_clans if clan.name == self.current_clan][0]
+        
+        # self.clan_info["symbol"] = pygame_gui.elements.UIImage(
+        #     ui_scale(pygame.Rect((227, 105), (100, 100))),
+        #     pygame.transform.scale(
+        #         clan_symbol_sprite(curr_clan), ui_scale_dimensions((100, 100))
+        #     ),
+        #     object_id=f"clan_symbol",
+        #     starting_height=1,
+        #     container=self.event_screen_container,
+        #     manager=MANAGER,
+        # )
+        self.update_heading_text(f"{curr_clan.name}Clan")
 
     def save_scroll_position(self):
         """
@@ -258,10 +274,12 @@ class EventsScreen(Screens):
             manager=MANAGER,
         )
 
+        curr_clan = game.clan if self.current_clan == game.clan.name or not self.current_clan else [clan for clan in game.clan.all_clans if clan.name == self.current_clan][0]
+
         self.clan_info["symbol"] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((227, 105), (100, 100))),
             pygame.transform.scale(
-                clan_symbol_sprite(game.clan), ui_scale_dimensions((100, 100))
+                clan_symbol_sprite(curr_clan), ui_scale_dimensions((100, 100))
             ),
             object_id=f"clan_symbol",
             starting_height=1,
@@ -414,7 +432,7 @@ class EventsScreen(Screens):
 
         # Draw and disable the correct menu buttons.
         self.set_disabled_menu_buttons(["events_screen"])
-        self.update_heading_text(f"{game.clan.name}Clan")
+        self.update_heading_text(f"{curr_clan.name}Clan")
         self.show_menu_buttons()
 
     def display_change_save(self) -> Dict:

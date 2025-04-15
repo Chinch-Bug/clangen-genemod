@@ -154,7 +154,7 @@ class RomanticEvents:
                 cls.ROMANTIC_INTERACTIONS["negative"].extend(dictionary["decrease"])
 
     @staticmethod
-    def start_interaction(cat_from, cat_to):
+    def start_interaction(cat_from, cat_to, clan=game.clan):
         """
         Filters and triggers events which are connected to romance between these two cats.
 
@@ -254,7 +254,7 @@ class RomanticEvents:
 
                 injuries = []
                 for inj in injury_dict["injury_names"]:
-                    injured_cat.get_injured(inj, True)
+                    injured_cat.get_injured(inj, True, clan=clan)
                     injuries.append(inj)
 
                 possible_scar = (
@@ -437,6 +437,9 @@ class RomanticEvents:
     @staticmethod
     def handle_breakup(cat_from: Cat, cat_to: Cat) -> bool:
         """Handles cats breaking up their relationship"""
+
+        if not RomanticEvents.BREAKUP_STRINGS:
+            RomanticEvents.rebuild_dicts()
 
         if cat_from.ID not in cat_to.mate:
             return False
