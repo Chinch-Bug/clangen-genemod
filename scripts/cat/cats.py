@@ -607,7 +607,7 @@ class Cat:
                 manx_c = 0.98
             if(random() > manx_c):
                 self.get_permanent_condition('manx syndrome', born_with=True, genetic=True)
-        if self.phenotype.body_label == "snub-nosed":
+        if self.phenotype.body_label == "snub-nosed cobby":
             self.get_permanent_condition('flat nose', born_with=True, genetic=True)
 
         if self.phenotype.manx[0] == 'M' and (self.phenotype.manxtype in ['rumpy', 'riser']):

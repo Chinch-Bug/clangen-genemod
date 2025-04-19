@@ -201,7 +201,7 @@ class Namer():
             tabby['tortie_red'] = 'mackerel'
         else:
             tabby['tortie_red'] = 'spotted'
-        if base in ['ginger', 'cream'] or (phenotype.agouti[0] != "a") or (phenotype.ext[0] not in ['Eg', 'E']) or 'light smoke' in phenotype.silvergold:
+        if base in ['ginger', 'cream'] or (phenotype.agouti[0] != "a") or (phenotype.ext[0] not in ['Eg', 'E']) or ('smoke' in phenotype.silvergold and 14 > phenotype.wbsum > 9):
             tabby['pattern'] = tabby['tortie_red']
 
             if base not in ['ginger', 'cream'] and ('smoke' in phenotype.silvergold or 'masked' in phenotype.silvergold or phenotype.ext[0] == "Eg" or (('charcoal' in phenotype.tabtype or phenotype.ruftype == 'low') and phenotype.wbtype in ['low', 'medium'])):

@@ -3067,7 +3067,7 @@ def generate_sprite(
                     else:
                         smokeLayer.set_alpha(200)
                     whichmain.blit(smokeLayer, (0, 0))
-                if('light smoke' in phenotype.silvergold):
+                if('smoke' in phenotype.silvergold and 14 > phenotype.wbsum > 9):
                     smokeLayer.set_alpha(255)
                     if cat.pelt.length != 'long':
                         smokeLayer.blit(smokeUnders, (0, 0))
