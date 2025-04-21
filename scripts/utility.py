@@ -419,8 +419,8 @@ def create_new_cat_block(
     parent2 = None
     adoptive_parents = []
     for tag in attribute_list:
-        parent_match = re.match(r"parent:([,0-9]+)", tag)
-        adoptive_match = re.match(r"adoptive:(.+)", tag)
+        parent_match = re.match(r"parent:\s?([,0-9]+)", tag)
+        adoptive_match = re.match(r"adoptive:\s?(.+)", tag)
         if not parent_match and not adoptive_match:
             continue
 
@@ -450,7 +450,7 @@ def create_new_cat_block(
     # gather mates
     give_mates = []
     for tag in attribute_list:
-        match = re.match(r"mate:([_,0-9a-zA-Z]+)", tag)
+        match = re.match(r"mate:\s?([_,0-9a-zA-Z]+)", tag)
         if not match:
             continue
 
@@ -503,7 +503,7 @@ def create_new_cat_block(
     # STATUS - must be handled before backstories
     status = None
     for _tag in attribute_list:
-        match = re.match(r"status:(.+)", _tag)
+        match = re.match(r"status\s?(.+)", _tag)
         if not match:
             continue
 
@@ -524,7 +524,7 @@ def create_new_cat_block(
     # SET AGE
     age = None
     for _tag in attribute_list:
-        match = re.match(r"age:(.+)", _tag)
+        match = re.match(r"age:\s?(.+)", _tag)
         if not match:
             continue
 
@@ -596,7 +596,7 @@ def create_new_cat_block(
     bs_override = False
     stor = []
     for _tag in attribute_list:
-        match = re.match(r"backstory:(.+)", _tag)
+        match = re.match(r"backstory:\s?(.+)", _tag)
         if match:
             bs_list = [x for x in re.split(r", ?", match.group(1))]
             stor = []
