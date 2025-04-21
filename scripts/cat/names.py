@@ -497,8 +497,6 @@ class Name:
             and not self.specsuffix_hidden
         ):
             return self.prefix + self.names_dict["special_suffixes"][self.cat.status]
-        if game.config["fun"]["april_fools"]:
-            return f"{self.prefix}egg"
         return self.prefix + self.suffix
 
 

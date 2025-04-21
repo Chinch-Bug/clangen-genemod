@@ -3960,13 +3960,14 @@ def generate_sprite(
                     new_sprite.blit(tail, (-offset, -1))
                 elif cat_sprite in ["2"]:
                     new_sprite.blit(tail, (0, -2))
-
-            if not dead:
-                new_sprite.blit(sprites.sprites['aprilfoolslines' + cat_sprite], (0, 0))
-            elif cat.df:
-                new_sprite.blit(sprites.sprites['aprilfoolslineartdf' + cat_sprite], (0, 0))
-            else:
-                new_sprite.blit(sprites.sprites['aprilfoolslineartdead' + cat_sprite], (0, 0))
+            
+            if game.config["fun"]["april_fools_hats"]:
+                if not dead:
+                    new_sprite.blit(sprites.sprites['aprilfoolslines' + cat_sprite], (0, 0))
+                elif cat.df:
+                    new_sprite.blit(sprites.sprites['aprilfoolslineartdf' + cat_sprite], (0, 0))
+                else:
+                    new_sprite.blit(sprites.sprites['aprilfoolslineartdead' + cat_sprite], (0, 0))
 
         # draw accessories
         from scripts.cat.pelts import Pelt

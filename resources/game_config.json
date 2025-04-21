@@ -659,10 +659,14 @@
   },
   "fun": {
     "april_fools": false,
+    "april_fools_hats" : true,
     "all_cats_are_newborn": false,
     "newborns_can_roam": false,
     "newborns_can_patrol": false,
-    "always_halloween": false
+    "always_halloween": false,
+    "comment" : [
+      "april_fools_hats only applies if april_fools is on"
+    ]
   },
   "theme": {
     "dark_mode_background": [57, 50, 36],
