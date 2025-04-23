@@ -503,7 +503,7 @@ def create_new_cat_block(
     # STATUS - must be handled before backstories
     status = None
     for _tag in attribute_list:
-        match = re.match(r"status\s?(.+)", _tag)
+        match = re.match(r"status:\s?(.+)", _tag)
         if not match:
             continue
 
