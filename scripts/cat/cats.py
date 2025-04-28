@@ -672,6 +672,9 @@ class Cat:
         Loads the correct pronouns for the loaded language.
         :return: List of dicts for the cat's pronouns
         """
+        if self.faded:
+            return []
+
         locale = i18n.config.get("locale")
         value = self._pronouns.get(locale)
         if value is None:
@@ -3568,7 +3571,7 @@ class Cat:
                 ]
             )
         elif relationship:
-            return "    ".join(
+            return " - ".join(
                 [
                     i18n.t("general.moons_age", count=self.moons),
                     self.genderalign,
