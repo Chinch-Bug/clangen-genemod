@@ -1881,7 +1881,7 @@ class Cat:
         if mortality and not int(random() * mortality):
             if self.status == "leader":
                 clan.leader_lives -= 1
-            self.die()
+            self.die(clan=clan)
             return False
 
         moons_with = game.clan.age - self.injuries[injury]["moon_start"]

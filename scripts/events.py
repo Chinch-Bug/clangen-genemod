@@ -161,7 +161,7 @@ class Events:
         for cat in Cat.all_cats.copy().values():
             if not cat.outside or cat.dead:
                 cat_clan = [clan for clan in ([game.clan] + game.clan.all_clans) if clan.name == cat.group]
-                self.one_moon_cat(cat, cat_clan[0] if cat.group != " " else game.clan)
+                self.one_moon_cat(cat, cat_clan[0] if cat.group not in [" ", "outsider cat"] else game.clan)
             else:
                 self.one_moon_outside_cat(cat)
 
@@ -288,7 +288,7 @@ class Events:
                             Single_Event(
                                 event_text_adjust(Cat, extra_event, clan=[cl for cl in [game.clan] + game.clan.all_clans if cl.name == clan][0]), 
                                 ["birth_death"], 
-                                [i.ID for i in shaken_cats[clan] + shaken_cats["outsider cat"]], 
+                                [i.ID for i in shaken_cats.get(clan, []) + shaken_cats["outsider cat"]], 
                                 clan=clan
                             )
                         )
@@ -1075,17 +1075,17 @@ class Events:
         if cat.is_ill() or cat.is_injured():
             if cat.is_ill() and cat.is_injured():
                 if random.getrandbits(1):
-                    triggered_death = Condition_Events.handle_injuries(cat, clan=clan)
+                    triggered_death = Condition_Events.handle_injuries(cat, clan=clan if clan else game.clan)
                     if not triggered_death:
-                        Condition_Events.handle_illnesses(cat, clan=clan)
+                        Condition_Events.handle_illnesses(cat, clan=clan if clan else game.clan)
                 else:
-                    triggered_death = Condition_Events.handle_illnesses(cat, clan=clan)
+                    triggered_death = Condition_Events.handle_illnesses(cat, clan=clan if clan else game.clan)
                     if not triggered_death:
-                        Condition_Events.handle_injuries(cat, clan=clan)
+                        Condition_Events.handle_injuries(cat, clan=clan if clan else game.clan)
             elif cat.is_ill():
-                Condition_Events.handle_illnesses(cat, clan=clan)
+                Condition_Events.handle_illnesses(cat, clan=clan if clan else game.clan)
             else:
-                Condition_Events.handle_injuries(cat, clan=clan)
+                Condition_Events.handle_injuries(cat, clan=clan if clan else game.clan)
             game.switches["skip_conditions"].clear()
             if cat.dead:
                 return
@@ -2505,7 +2505,7 @@ class Events:
                     infected_names.append(str(sick_meowmeow.name))
                     involved_cats.append(sick_meowmeow.ID)
                     sick_meowmeow.get_ill(
-                        illness, event_triggered=True
+                        illness, event_triggered=True, clan=clan
                     )  # SPREAD THE GERMS >:)
 
                 # TODO: hardcoded text events, not good, need to consider how to convert
