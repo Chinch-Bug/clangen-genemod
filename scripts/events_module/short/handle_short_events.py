@@ -205,7 +205,7 @@ class HandleShortEvents:
             self.involved_cats.remove(self.main_cat.ID)
 
         # create new cats (must happen here so that new cats can be included in further changes)
-        self.handle_new_cats(clan=clan.name if clan else None)
+        self.handle_new_cats(clan=clan if clan else None)
         
         # give accessory
         if self.chosen_event.new_accessory:
@@ -466,7 +466,7 @@ class HandleShortEvents:
 
             self.main_cat.pronouns = localization.get_new_pronouns(
                 self.main_cat.genderalign
-            )
+            )[0]
 
     def handle_death(self, clan=None):
         """

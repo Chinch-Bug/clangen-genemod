@@ -883,10 +883,10 @@ class Pregnancy_Events:
 
             if cat.status == "leader":
                 clan.leader_lives -= 1
-                cat.die()
+                cat.die(clan=clan)
                 death_event = i18n.t("conditions.pregnancy.leader_kitting_death")
             else:
-                cat.die()
+                cat.die(clan=clan)
                 death_event = i18n.t(
                     "conditions.pregnancy.kitting_death", name=cat.name
                 )

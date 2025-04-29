@@ -867,7 +867,7 @@ class Condition_Events:
         for condition in conditions:
             # checking if the cat has a congenital condition to reveal and handling duration and death
             prev_lives = clan.leader_lives
-            status = cat.moon_skip_permanent_condition(condition)
+            status = cat.moon_skip_permanent_condition(condition, clan=clan)
 
             if condition in condition_progression:
                 progs = condition_progression[condition]

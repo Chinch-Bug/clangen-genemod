@@ -1376,7 +1376,8 @@ class KillCat(UIWindow):
                     else:
                         game.clan.leader_lives -= 1
 
-                self.the_cat.die()
+                clans = [clan for clan in game.clan.all_clans if clan.name == self.the_cat.group]
+                self.the_cat.die(clan=clans[0] if clans else game.clan)
                 self.history.add_death(self.the_cat, death_message)
                 update_sprite(self.the_cat)
                 game.all_screens["profile screen"].exit_screen()

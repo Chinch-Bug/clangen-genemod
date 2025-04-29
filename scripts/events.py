@@ -457,7 +457,7 @@ class Events:
                             clan=game.clan,
                         ),
                     )
-                    outsider_cat.die()
+                    outsider_cat.die(clan=game.clan)
 
                 elif info_dict["interaction_type"] == "drive":
                     outsider_cat.status = "exiled"
@@ -1107,7 +1107,7 @@ class Events:
                 if random.random() < death_chances[str(kit.moons)]:
                     fading_kits.append(kit.ID)
                     fading_kit_names.append(str(kit.name))
-                    kit.die(True)
+                    kit.die(True, clan)
                     History.add_death(kit, str(kit.name) + " failed to thrive.")
                     kit.moons -= 1
             elif kit.moons < 6 and not kit.dead:

@@ -354,7 +354,7 @@ class Clan:
         ):
             # The outside-value must be set to True before the cat can go to cotc
             Cat.outside_cats.pop(cat.ID)
-            cat.group = str(game.clan.name) if not clan else clan
+            cat.group = str(game.clan.name) if not clan else clan.name
 
     def add_to_outside(self, cat):  # same as add_cat
         """

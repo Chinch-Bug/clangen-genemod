@@ -526,7 +526,7 @@ class PatrolOutcome:
                 catnames.append(str(_cat.name))
             # Kill Cat
             self.__handle_death_history(_cat, patrol)
-            _cat.die(body)
+            _cat.die(body, game.clan)
         if catnames is not []:
             results.append(
                 i18n.t(
@@ -840,7 +840,7 @@ class PatrolOutcome:
         for i, attribute_list in enumerate(self.new_cat):
             patrol.new_cats.append(
                 create_new_cat_block(
-                    Cat, Relationship, patrol, in_event_cats, i, attribute_list
+                    Cat, Relationship, patrol, in_event_cats, i, attribute_list, clan=game.clan
                 )
             )
             dead = []

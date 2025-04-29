@@ -662,7 +662,7 @@ def create_new_cat_block(
             chosen_cat.status = status
             chosen_cat.outside = outside
             if not alive:
-                chosen_cat.die()
+                chosen_cat.die(clan=clan)
 
             if new_name:
                 name = f"{chosen_cat.name.prefix}"
@@ -874,7 +874,7 @@ def create_new_cat(
     thought: str = None,
     alive: bool = True,
     outside: bool = False,
-    group: str = None,
+    group = None,
     parent1: str = None,
     parent2: str = None,
     extrapar: Genotype = None,
@@ -972,7 +972,7 @@ def create_new_cat(
             new_cat = Cat(
                 moons=age,
                 status=status,
-                group=group,
+                group=group.name if group else None,
                 gender=_gender,
                 backstory=backstory,
                 parent1=parent1,
@@ -1010,7 +1010,7 @@ def create_new_cat(
                         moons=age,
                         prefix=name,
                         status=status,
-                        group=group,
+                        group=group.name if group else None,
                         gender=_gender,
                         backstory=backstory,
                         parent1=parent1,
@@ -1024,7 +1024,7 @@ def create_new_cat(
                     new_cat = Cat(
                         moons=age,
                         status=status,
-                        group=group,
+                        group=group.name if group else None,
                         gender=_gender,
                         backstory=backstory,
                         parent1=parent1,
@@ -1039,7 +1039,7 @@ def create_new_cat(
                     prefix=name,
                     suffix="",
                     status=status,
-                    group=group,
+                    group=group.name if group else None,
                     gender=_gender,
                     backstory=backstory,
                     parent1=parent1,
@@ -1142,7 +1142,7 @@ def create_new_cat(
             if new_cat.status in ["kittypet", "rogue", "loner"]:
                 new_cat.name.suffix = ""
         if not alive:
-            new_cat.die()
+            new_cat.die(clan=group)
 
         # newbie thought
         new_cat.thought = thought
@@ -2324,6 +2324,8 @@ def event_text_adjust(
     # main_cat
     if "m_c" in text:
         if main_cat:
+            if not main_cat.pronouns:
+                pass
             replace_dict["m_c"] = (str(main_cat.name), choice(main_cat.pronouns))
 
     # patrol_lead
