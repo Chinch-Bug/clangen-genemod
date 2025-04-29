@@ -245,8 +245,6 @@ class Phenotype(Genotype):
                 if(self.wbsum > 13):
                     self.silvergold = 'masked silver '
                 else:
-                    if(self.wbsum > 9):
-                        self.silvergold = 'light '
                     self.silvergold += 'smoke '
         else:
             if(self.silver[0] == 'I'):
@@ -331,7 +329,7 @@ class Phenotype(Genotype):
                 elif(self.tabby == 'blotched'):
                     self.tabby = 'sokoke'
             
-        if('o' not in self.sexgene or self.agouti[0] != 'a' or self.tabtype != '' or ('light' in self.silvergold and self.length == 'shorthaired') or self.ext[0] not in ['Eg', 'E']):
+        if('o' not in self.sexgene or self.agouti[0] != 'a' or self.tabtype != "" or self.ext[0] not in ['Eg', 'E']):
             FindPattern()
         
         if(self.tortie != '' and self.tabby != '' and self.tortie != "brindled bicolour "):

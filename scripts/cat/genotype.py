@@ -1522,7 +1522,7 @@ class Genotype:
         else:
             self.soktype = soktypes[2]
 
-        body_types = ['snub-nosed', 'cobby', 'semi-cobby', 'intermediate', 'semi-oriental', 'oriental', 'wedge-faced']
+        body_types = ['snub-nosed cobby', 'cobby', 'semi-cobby', 'intermediate', 'semi-oriental', 'oriental', 'wedge-faced oriental']
         height_types = ['teacup', 'tiny', 'small', 'below average', 'average', 'above average', 'large', 'massive', 'giant', 'goliath']
 
         if self.body_label != '':

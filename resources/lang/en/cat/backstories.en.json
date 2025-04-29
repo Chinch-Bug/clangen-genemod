@@ -25,6 +25,7 @@
         "otherclan2": "m_c was unhappy in {PRONOUN/m_c/poss} old Clan and decided to come here instead.",
         "otherclan3": "m_c's Clan stayed with the Clan after a disaster struck {PRONOUN/m_c/poss} old one, and decided to stay after the rest of {PRONOUN/m_c/poss} Clan returned home.",
         "otherclan4": "m_c grew up in another Clan, but chose to leave that life and join the Clan {PRONOUN/m_c/subject} now {VERB/m_c/live/lives} in.",
+        "otherclan5": "m_c was born in another Clan, but was stolen as a kit by c_n.",
         "disgraced1": "m_c was cast out of {PRONOUN/m_c/poss} old Clan for some transgression that {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} not keen on talking about.",
         "disgraced2": "m_c was exiled from {PRONOUN/m_c/poss} old Clan for something {PRONOUN/m_c/subject} didn't do and came here to seek safety.",
         "disgraced3": "m_c once held a high rank in another Clan but was exiled for reasons {PRONOUN/m_c/subject} {VERB/m_c/refuse/refuses} to share.",

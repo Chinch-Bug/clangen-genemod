@@ -72,13 +72,9 @@ def json_load():
                         chim_white=cat["chim_white"] if 'chim_white' in cat else None,
                         chim_pattern=cat["chimera_pattern"] if "chimera_pattern" in cat else cat["genotype"]["chimerapattern"],
                         loading_cat=True)
-            except:
+            except Exception as e:
                 if cat.get("genotype", False):
-                    traceback.print_exc()
-                    try:
-                        cat['gender'] = cat['genotype']['sex']
-                    except:
-                        cat['gender'] = cat['genotype']['gender']
+                    raise e
                 new_cat = Cat(ID=cat["ID"],
                         prefix=cat["name_prefix"],
                         suffix=cat["name_suffix"],
