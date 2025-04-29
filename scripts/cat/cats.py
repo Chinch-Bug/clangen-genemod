@@ -749,7 +749,7 @@ class Cat:
         if (
             self.status == "leader"
             and "pregnant" in self.injuries
-            and game.clan.leader_lives > 0
+            and clan.leader_lives > 0
         ):
             self.illnesses.clear()
 
@@ -767,18 +767,18 @@ class Cat:
         darkforest = game.clan.instructor.df
         isoutside = self.outside
         if self.status == "leader":
-            if game.clan.leader_lives > 0:
-                lives_left = game.clan.leader_lives
+            if clan.leader_lives > 0:
+                lives_left = clan.leader_lives
                 death_thought = Thoughts.leader_death_thought(
                     self, lives_left, darkforest
                 )
                 final_thought = event_text_adjust(self, death_thought, main_cat=self)
                 self.thought = final_thought
                 return ""
-            elif game.clan.leader_lives <= 0:
+            elif clan.leader_lives <= 0:
                 self.dead = True
                 game.just_died.append(self.ID)
-                game.clan.leader_lives = 0
+                clan.leader_lives = 0
                 death_thought = Thoughts.leader_death_thought(self, 0, darkforest)
                 final_thought = event_text_adjust(self, death_thought, main_cat=self)
                 self.thought = final_thought
@@ -1907,7 +1907,7 @@ class Cat:
             self.healed_condition = True
             return False
 
-    def moon_skip_permanent_condition(self, condition):
+    def moon_skip_permanent_condition(self, condition, clan=game.clan):
         """handles the moon skip for permanent conditions"""
         if not self.is_disabled():
             return "skip"
@@ -1942,7 +1942,7 @@ class Cat:
         if mortality and not int(random() * mortality):
             if self.status == "leader":
                 game.clan.leader_lives -= 1
-            self.die()
+            self.die(clan=clan)
             return "died"
     
         if not mortality:
