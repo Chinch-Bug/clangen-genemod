@@ -3384,6 +3384,7 @@
         },
         "history": [{
             "cats": ["m_c"],
+            "lead_death": "m_c died while wandering the territory.",
             "reg_death": "m_c died while wandering the territory."
         }]
     },

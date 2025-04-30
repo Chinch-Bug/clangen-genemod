@@ -412,7 +412,7 @@ class HandleShortEvents:
             acc_list.extend(pelts.collars)
 
         for acc in possible_accs:
-            if acc not in ["WILD", "PLANT", "COLLAR"]:
+            if acc not in ("WILD", "PLANT", "COLLAR"):
                 acc_list.append(acc)
 
         if hasattr(self.main_cat.pelt, "scars") or (self.main_cat.phenotype.bobtailnr > 0 and self.main_cat.phenotype.bobtailnr < 5):

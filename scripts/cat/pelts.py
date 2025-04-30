@@ -119,6 +119,10 @@ class Pelt:
         "DRY CATMINT",
         "DRY NETTLES",
         "DRY LAURELS",
+        "WISTERIA",
+        "ROSE MALLOW",
+        "PICKLEWEED",
+        "GOLDEN CREEPING JENNY",
     ]
     wild_accessories = [
         "RED FEATHERS",
@@ -142,6 +146,8 @@ class Pelt:
         "SPARROW FEATHERS",
         "CLOVER",
         "DAISY",
+        "WISTERIA",
+        "GOLDEN CREEPING JENNY",
     ]
     collars = [
         "CRIMSON",
@@ -245,12 +251,14 @@ class Pelt:
         "DRY CATMINT",
         "DRY NETTLES",
         "DRY LAURELS",
+        "ROSE MALLOW",
+        "PICKLEWEED",
     ]
 
     body_accessories = [
         "HERBS",
         "PETALS",
-        "DRY HERBS"
+        "DRY HERBS",
     ]
     
     """Holds all appearance information for a cat. """
@@ -626,7 +634,7 @@ class Pelt:
         that are stored in Pelt, and converts them. To be run when loading a cat in."""
 
         if self.length == "long":
-            if self.cat_sprites["adult"] not in [9, 10, 11]:
+            if self.cat_sprites["adult"] not in (9, 10, 11):
                 if self.cat_sprites["adult"] == 0:
                     self.cat_sprites["adult"] = 9
                 elif self.cat_sprites["adult"] == 1:
@@ -638,7 +646,7 @@ class Pelt:
                 self.cat_sprites["para_adult"] = 16
         else:
             self.cat_sprites["para_adult"] = 15
-        if self.cat_sprites["senior"] not in [12, 13, 14]:
+        if self.cat_sprites["senior"] not in (12, 13, 14):
             if self.cat_sprites["senior"] == 3:
                 self.cat_sprites["senior"] = 12
             elif self.cat_sprites["senior"] == 4:

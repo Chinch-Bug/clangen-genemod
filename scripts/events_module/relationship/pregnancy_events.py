@@ -1,7 +1,7 @@
 import random
 from operator import xor
 from random import choice, randint
-from copy import deepcopy
+from copy import copy
 from typing import Dict, List, Union, Optional
 
 import i18n
@@ -63,7 +63,10 @@ class Pregnancy_Events:
         """Returns if the current biggest family is big enough to 'activates' additional inbreeding counters."""
 
         living_cats = len(
-            [i for i in Cat.all_cats.values() if not (i.dead or i.outside or i.exiled)]
+            [
+                i for i in Cat.all_cats.values()
+                if not i.dead and not i.outside and not i.exiled
+            ]
         )
         return len(Pregnancy_Events.biggest_family) > (living_cats / 10)
 
@@ -1481,7 +1484,7 @@ class Pregnancy_Events:
 
             if identical:
                 identical = False
-                ref_cat = deepcopy(all_kitten[-1])
+                ref_cat = copy(all_kitten[-1])
                 kit.phenotype = ref_cat.phenotype    
 
                 kit.phenotype = ref_cat.phenotype   
@@ -1820,7 +1823,10 @@ class Pregnancy_Events:
         # CURRENT CAT AMOUNT
         # - increase the inverse chance if the clan is bigger
         living_cats = len(
-            [i for i in Cat.all_cats.values() if not (i.dead or i.outside or i.exiled)]
+            [
+                i for i in Cat.all_cats.values()
+                if not i.dead and not i.outside and not i.exiled
+            ]
         )
         if living_cats < 10:
             inverse_chance = int(inverse_chance * 0.5)
@@ -1901,7 +1907,7 @@ class Pregnancy_Events:
         
         # AGE
         # - decrease the inverse chance if the whole clan is really old
-        avg_age = int(sum([cat.moons for cat in Cat.all_cats.values()]) / living_cats)
+        avg_age = int(sum(cat.moons for cat in Cat.all_cats.values()) / living_cats)
         if avg_age > 80:
             inverse_chance = int(inverse_chance * 0.8)
 

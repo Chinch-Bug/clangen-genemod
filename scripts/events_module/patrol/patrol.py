@@ -221,8 +221,11 @@ class Patrol:
             self.patrol_leader = self.patrol_cats[index]
         else:
             # Get the oldest cat
-            possible_leader = [i for i in self.patrol_cats if i.status not in 
-                               ["healer apprentice", "apprentice"]]
+            possible_leader = [
+                i
+                for i in self.patrol_cats
+                if i.status not in ("healer apprentice", "apprentice")
+            ]
             if possible_leader:
                 # Flip a coin to pick the most experience, or oldest.
                 if randint(0, 1):
@@ -531,7 +534,7 @@ class Patrol:
         for val in values:
             value_check = check_relationship_value(love1, love2, val)
             if (
-                val in ["romantic", "platonic", "admiration", "comfortable", "trust"]
+                val in ("romantic", "platonic", "admiration", "comfortable", "trust")
                 and value_check >= 20
             ):
                 chance_of_romance_patrol -= 1
