@@ -151,6 +151,8 @@ class Pregnancy_Events:
                     while 'infertility' in cat.permanent_condition:
                         cat = second_parent[x]
                         x += 1
+                    if cat in second_parent:
+                        second_parent.remove(cat)
                     second_parent[0] = Pregnancy_Events.handle_surrogate(cat, clan)
                     if not second_parent[0]:
                         return
@@ -242,7 +244,7 @@ class Pregnancy_Events:
         if other_cat:
             other_cat_copy = []
             for x in other_cat:
-                if not(x.dead or (x.outside and x.group == "outsider cat") or x.birth_cooldown > 0 or x.no_kits):
+                if not(x.dead or (x.outside and x.group != "outsider cat") or x.birth_cooldown > 0 or x.no_kits):
                     other_cat_copy.append(x)
             other_cat = other_cat_copy
         
@@ -473,8 +475,9 @@ class Pregnancy_Events:
             second_parent = other_cat
             affair_partner = []
             surrogates = []
+            second_parent_copy = copy(second_parent)
             if second_parent:
-                for x in second_parent:
+                for x in second_parent_copy:
                     if 'Y' in pregnant_cat.phenotype.sexgene and 'Y' not in x.phenotype.sexgene:
                         second_parent.append(pregnant_cat)
                         second_parent.remove(x)
