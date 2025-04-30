@@ -279,7 +279,11 @@ class ProfileScreen(Screens):
                 #if the cat is trans then set them to nonbinary
                 elif self.the_cat.genderalign.replace('intersex ', "") in ["trans molly", "trans tom"]:
                     self.the_cat.genderalign = is_intersex + 'sam'
-                self.the_cat.pronouns = get_new_pronouns(self.the_cat.genderalign)[0]
+                new_pronouns = {}
+                new_pronouns[i18n.config.get("locale")] = get_new_pronouns(
+                    self.the_cat.genderalign
+                )
+                self.the_cat.pronouns = new_pronouns
 
                 self.clear_profile()
                 self.build_profile()
