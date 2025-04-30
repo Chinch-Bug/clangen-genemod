@@ -598,7 +598,7 @@ class Patrol:
             if flag:
                 continue
 
-            if not event_for_tags(patrol.tags, Cat):
+            if not event_for_tags(patrol.tags, Cat, game.clan.name):
                 continue
 
             if biome not in patrol.biome and "any" not in patrol.biome:

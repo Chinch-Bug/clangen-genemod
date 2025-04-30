@@ -242,6 +242,7 @@ class GenerateEvents:
         other_clan,
         freshkill_active,
         freshkill_trigger_factor,
+        clan: str,
         sub_types=None,
     ):
         final_events = []
@@ -288,7 +289,7 @@ class GenerateEvents:
                 continue
 
             # check tags
-            if not event_for_tags(event.tags, cat, random_cat):
+            if not event_for_tags(event.tags, cat, clan=clan, other_cat=random_cat):
                 continue
 
             # TODO: just remove this tag man its not a useful feature

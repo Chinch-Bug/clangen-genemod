@@ -55,6 +55,7 @@ def get_alive_clan_queens(living_cats):
         cat
         for cat in living_cats
         if not (cat.dead or cat.outside) and cat.status in ["kitten", "newborn"]
+        and cat.group == game.clan.name
     ]
 
     queen_dict = {}
@@ -65,7 +66,8 @@ def get_alive_clan_queens(living_cats):
             cat.fetch_cat(i)
             for i in parents
             if cat.fetch_cat(i)
-               and not (cat.fetch_cat(i).dead or cat.fetch_cat(i).outside)
+            and not (cat.fetch_cat(i).dead or cat.fetch_cat(i).outside)
+            and cat.fetch_cat(i).group == game.clan.name
         ]
         if not parents:
             continue
@@ -659,6 +661,17 @@ def create_new_cat_block(
         if possible_outsiders:
             chosen_cat = choice(possible_outsiders)
             game.clan.add_to_clan(chosen_cat, clan=clan)
+            if not status:
+                if chosen_cat.moons == 0:
+                    status = "newborn"
+                elif chosen_cat.moons < 6:
+                    status = "kitten"
+                elif 6 <= chosen_cat.moons <= 11:
+                    status = "apprentice"
+                elif chosen_cat.moons >= 120:
+                    status = "elder"
+                elif chosen_cat.moons >= 12:
+                    status = "warrior"
             chosen_cat.status = status
             chosen_cat.outside = outside
             if not alive:
@@ -954,10 +967,10 @@ def create_new_cat(
             status = "kitten"
         elif 6 <= age <= 11:
             status = "apprentice"
-        elif age >= 12:
-            status = "warrior"
         elif age >= 120:
             status = "elder"
+        elif age >= 12:
+            status = "warrior"
 
     # cat creation and naming time
     for index in range(number_of_cats):

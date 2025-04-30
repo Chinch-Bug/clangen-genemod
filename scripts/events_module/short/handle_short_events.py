@@ -73,8 +73,8 @@ class HandleShortEvents:
         main_cat: Cat,
         random_cat: Cat,
         freshkill_pile: FreshkillPile,
-        sub_type: list = None,
-        clan = None
+        clan,
+        sub_type: list = None
     ):
         """
         This function handles the generation and execution of the event
@@ -145,6 +145,7 @@ class HandleShortEvents:
             other_clan=self.other_clan,
             freshkill_active=FRESHKILL_EVENT_ACTIVE,
             freshkill_trigger_factor=FRESHKILL_EVENT_TRIGGER_FACTOR,
+            clan=clan.name,
             sub_types=self.sub_types,
         )
 

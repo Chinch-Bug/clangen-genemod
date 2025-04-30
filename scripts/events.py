@@ -159,7 +159,9 @@ class Events:
 
         # Calling of "one_moon" functions.
         for cat in Cat.all_cats.copy().values():
-            if not cat.outside or cat.dead:
+            if cat.faded:
+                continue
+            elif not cat.outside or cat.dead:
                 cat_clan = [clan for clan in ([game.clan] + game.clan.all_clans) if clan.name == cat.group]
                 self.one_moon_cat(cat, cat_clan[0] if cat.group not in [" ", "outsider cat"] else game.clan)
             else:
@@ -2377,6 +2379,7 @@ class Events:
                     random_cat=cat,
                     sub_type=["murder"],
                     freshkill_pile=game.clan.freshkill_pile,
+                    clan=clan
                 )
 
     def handle_illnesses_or_illness_deaths(self, cat, clan):

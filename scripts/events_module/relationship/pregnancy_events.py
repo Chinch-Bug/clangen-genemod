@@ -1,7 +1,7 @@
 import random
 from operator import xor
 from random import choice, randint
-from copy import deepcopy
+from copy import copy
 from typing import Dict, List, Union, Optional
 
 import i18n
@@ -343,45 +343,41 @@ class Pregnancy_Events:
                 if surrogate:
                     other_cat[0].birth_cooldown = game.config["pregnancy"]["birth_cooldown"]
                     backkit = None
+                elif(random.random() < 0.25 and len(other_clan_affair_partners)):
+                    outside_parent = [choice(other_clan_affair_partners)]
+                    backkit = 'halfclan2'
+                    if random.random() < 0.2:
+                        outside_parent[0].set_mate(cat)
+                        cat.set_mate(outside_parent[0])
                 elif(random.random() < 0.75 or len(outsider_affair_partners) < 1):
-                    if(randint(1, 4) > 1 or len(other_clan_affair_partners) == 0):
-                        cat_type = choice(['loner', 'rogue', 'kittypet'])
-                        backstories = {
-                            'loner' : 'loner_backstories',
-                            'rogue' : 'rogue_backstories',
-                            'kittypet' : 'kittypet_backstories'
-                        }
-                        backkit = 'outsider_roots2'
-                    else:
-                        cat_type = 'Clancat'
-                        backkit = 'halfclan2'
+                    cat_type = choice(['loner', 'rogue', 'kittypet'])
+                    backstories = {
+                        'loner' : 'loner_backstories',
+                        'rogue' : 'rogue_backstories',
+                        'kittypet' : 'kittypet_backstories'
+                    }
+                    backkit = 'outsider_roots2'
                     mate_age = cat.moons + randint(0, 24)-12
                     outside_parent = None
-                    if cat_type != 'Clancat':
-                        while not outside_parent or 'infertility' in outside_parent.permanent_condition:
-                            if outside_parent and Cat.all_cats[outside_parent.ID]:
-                                del Cat.all_cats[outside_parent.ID]
-                            outside_parent = create_new_cat(Cat,
-                                                loner=cat_type in ["loner", "rogue"],
-                                                kittypet=cat_type == "kittypet",
-                                                other_clan=cat_type == 'former Clancat',
-                                                status=cat_type,
-                                                backstory=BACKSTORIES["backstory_categories"][backstories[cat_type]],
-                                                alive=True,
-                                                age=mate_age if mate_age > 14 else 15,
-                                                gender='fem' if 'Y' in cat.phenotype.sexgene else 'masc',
-                                                outside=True,
-                                                is_parent=True)[0]
-                        outside_parent.thought = event_text_adjust(Cat, i18n.t("hardcoded.thought_outside_dam", count=amount), main_cat=outside_parent)
-                        outside_parent.birth_cooldown = game.config["pregnancy"]["birth_cooldown"]
-                        if random.random() < 0.2:
-                            outside_parent.set_mate(cat)
-                            cat.set_mate(outside_parent)
-                    else:
-                        outside_parent = choice(other_clan_affair_partners)
-                        if random.random() < 0.2:
-                            outside_parent.set_mate(cat)
-                            cat.set_mate(outside_parent)
+                    while not outside_parent or 'infertility' in outside_parent.permanent_condition:
+                        if outside_parent and Cat.all_cats[outside_parent.ID]:
+                            del Cat.all_cats[outside_parent.ID]
+                        outside_parent = create_new_cat(Cat,
+                                            loner=cat_type in ["loner", "rogue"],
+                                            kittypet=cat_type == "kittypet",
+                                            other_clan=cat_type == 'former Clancat',
+                                            status=cat_type,
+                                            backstory=BACKSTORIES["backstory_categories"][backstories[cat_type]],
+                                            alive=True,
+                                            age=mate_age if mate_age > 14 else 15,
+                                            gender='fem' if 'Y' in cat.phenotype.sexgene else 'masc',
+                                            outside=True,
+                                            is_parent=True)[0]
+                    outside_parent.thought = event_text_adjust(Cat, i18n.t("hardcoded.thought_outside_dam", count=amount), main_cat=outside_parent)
+                    outside_parent.birth_cooldown = game.config["pregnancy"]["birth_cooldown"]
+                    if random.random() < 0.2:
+                        outside_parent.set_mate(cat)
+                        cat.set_mate(outside_parent)
                     
                     outside_parent = [outside_parent]
 
@@ -479,10 +475,10 @@ class Pregnancy_Events:
             surrogates = []
             if second_parent:
                 for x in second_parent:
-                    if 'Y' in cat.phenotype.sexgene and 'Y' not in x.phenotype.sexgene:
-                        pregnant_cat = x
+                    if 'Y' in pregnant_cat.phenotype.sexgene and 'Y' not in x.phenotype.sexgene:
+                        second_parent.append(pregnant_cat)
                         second_parent.remove(x)
-                        second_parent.append(cat)
+                        pregnant_cat = x
                         break
 
                 ids = []
@@ -677,7 +673,7 @@ class Pregnancy_Events:
             unknowns = []
             for outcat in Cat.all_cats:
                 outcat = Cat.all_cats.get(outcat)
-                if not outcat.dead and outcat.group == "outsider cat":    
+                if not outcat.dead and outcat.group != cat.group:    
                     unknowns.append(outcat)
 
             possible_affair_partners = [i for i in unknowns if
@@ -686,19 +682,24 @@ class Pregnancy_Events:
                                     and 'infertility' not in i.permanent_condition 
                                     and (game.clan.clan_settings['same sex birth'] or xor('Y' in i.phenotype.sexgene, 'Y' in cat.phenotype.sexgene)) 
                                     and len(i.mate) == 0]
-            if(random.random() < 0.75 or len(possible_affair_partners) < 1):
-                if(randint(1, 4) > 1):
-                    cat_type = choice(['loner', 'rogue', 'kittypet'])
-                    
-                    backstories = {
-                        'loner' : 'loner_backstories',
-                        'rogue' : 'rogue_backstories',
-                        'kittypet' : 'kittypet_backstories'
-                    }
-                    backkit = 'outsider_roots1'
-                else:
-                    cat_type = 'Clancat'
-                    backkit = 'halfclan1'
+            outsider_affair_partners = [i for i in possible_affair_partners if i.group == "outsider cat"]
+            other_clan_affair_partners = [i for i in possible_affair_partners if i.group != "outsider cat"]
+
+            if (random.random() < 0.25 and len(other_clan_affair_partners)):
+                other_cat = [choice(other_clan_affair_partners)]
+                backkit = 'halfclan1'
+                if random.random() < 0.2:
+                    other_cat[0].set_mate(cat)
+                    cat.set_mate(other_cat[0])
+            elif(random.random() < 0.75 or len(possible_affair_partners) < 1):
+                cat_type = choice(['loner', 'rogue', 'kittypet'])
+                
+                backstories = {
+                    'loner' : 'loner_backstories',
+                    'rogue' : 'rogue_backstories',
+                    'kittypet' : 'kittypet_backstories'
+                }
+                backkit = 'outsider_roots1'
                 
                 nr_of_parents = 1
                 if game.clan.clan_settings['multisire'] and randint(1, game.config['pregnancy']["multi-sire_chance"]) == 1 and cat_type != 'Clancat':
@@ -707,29 +708,28 @@ class Pregnancy_Events:
                 for i in range(0, nr_of_parents):
 
                     mate_age = cat.moons + randint(0, 24)-12
-                    if cat_type != 'Clancat':
-                        out_par = None
-                        while not out_par or 'infertility' in out_par.permanent_condition:
-                            if out_par and Cat.all_cats[out_par.ID]:
-                                del Cat.all_cats[out_par.ID]
-                            out_par = create_new_cat(Cat,
-                                                    loner=cat_type in ["loner", "rogue"],
-                                                    kittypet=cat_type == "kittypet",
-                                                    other_clan=cat_type == 'former Clancat',
-                                                    status=cat_type,
-                                                    backstory=BACKSTORIES["backstory_categories"][backstories[cat_type]],
-                                                    alive=True,
-                                                    age=mate_age if mate_age > 14 else 15,
-                                                    gender='masc',
-                                                    outside=True,
-                                                    is_parent=True)[0]
-                            out_par.thought = i18n.t("hardcoded.thought_outside_sire", name=str(cat.name))
-                        
-                        if random.random() < 0.2:
-                            out_par.set_mate(cat)
-                            cat.set_mate(out_par)
+                    out_par = None
+                    while not out_par or 'infertility' in out_par.permanent_condition:
+                        if out_par and Cat.all_cats[out_par.ID]:
+                            del Cat.all_cats[out_par.ID]
+                        out_par = create_new_cat(Cat,
+                                                loner=cat_type in ["loner", "rogue"],
+                                                kittypet=cat_type == "kittypet",
+                                                other_clan=cat_type == 'former Clancat',
+                                                status=cat_type,
+                                                backstory=BACKSTORIES["backstory_categories"][backstories[cat_type]],
+                                                alive=True,
+                                                age=mate_age if mate_age > 14 else 15,
+                                                gender='masc',
+                                                outside=True,
+                                                is_parent=True)[0]
+                        out_par.thought = i18n.t("hardcoded.thought_outside_sire", name=str(cat.name))
+                    
+                    if random.random() < 0.2:
+                        out_par.set_mate(cat)
+                        cat.set_mate(out_par)
 
-                        other_cat.append(out_par)
+                    other_cat.append(out_par)
 
             else:
                 backkit = 'outsider_roots1'
@@ -738,12 +738,12 @@ class Pregnancy_Events:
                 if game.clan.clan_settings['multisire'] and randint(1, game.config['pregnancy']["multi-sire_chance"]) == 1:
                     nr_of_parents = randint(2, game.config['pregnancy']["multi-sire_max_sires"])
                 
-                if nr_of_parents > len(possible_affair_partners):
-                    nr_of_parents = len(possible_affair_partners)
+                if nr_of_parents > len(outsider_affair_partners):
+                    nr_of_parents = len(outsider_affair_partners)
 
                 for i in range(0, nr_of_parents):
-                    other_cat.append(choice(possible_affair_partners))
-                    possible_affair_partners.remove(other_cat[i])
+                    other_cat.append(choice(outsider_affair_partners))
+                    outsider_affair_partners.remove(other_cat[i])
                 
         kits = Pregnancy_Events.get_kits(kits_amount, pregnant_cat, other_cat if not surrogate or pregnant_cat in surrogate else surrogate, clan, backkit=backkit)
         kits_amount = len(kits)
@@ -1337,8 +1337,6 @@ class Pregnancy_Events:
         ##### SELECT BACKSTORY #####
         if backkit:
             backstory = backkit
-            if 'halfclan' in backkit:
-                other_cat = None
         elif cat and "pregnant" in cat.injuries:
             backstory = choice(['halfclan1', 'outsider_roots1'])
         elif cat:
@@ -1490,7 +1488,7 @@ class Pregnancy_Events:
 
             if identical:
                 identical = False
-                ref_cat = deepcopy(all_kitten[-1])
+                ref_cat = copy(all_kitten[-1])
                 kit.phenotype = ref_cat.phenotype    
 
                 kit.phenotype = ref_cat.phenotype   

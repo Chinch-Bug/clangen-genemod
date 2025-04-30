@@ -41,7 +41,7 @@ def event_for_season(seasons: list) -> bool:
     return False
 
 
-def event_for_tags(tags: list, cat, other_cat=None) -> bool:
+def event_for_tags(tags: list, cat, clan:str, other_cat=None) -> bool:
     """
         checks if current tags disqualify the event
         """
@@ -95,15 +95,16 @@ def event_for_tags(tags: list, cat, other_cat=None) -> bool:
             if rank == "apps":
                 if not get_alive_status_cats(
                         cat,
-                        ["apprentice", "healer apprentice", "mediator apprentice"]):
+                        ["apprentice", "healer apprentice", "mediator apprentice"],
+                        clan=clan):
                     return False
                 else:
                     continue
 
-            if rank in ["leader", "deputy"] and not get_alive_status_cats(cat, [rank]):
+            if rank in ["leader", "deputy"] and not get_alive_status_cats(cat, [rank], clan=clan):
                 return False
             
-            if rank not in ["leader", "deputy"] and not len(get_alive_status_cats(cat, [rank])) >= 2:
+            if rank not in ["leader", "deputy"] and not len(get_alive_status_cats(cat, [rank], clan=clan)) >= 2:
                 return False
     
     special_date = get_special_date()
