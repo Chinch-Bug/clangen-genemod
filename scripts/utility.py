@@ -54,7 +54,7 @@ def get_alive_clan_queens(living_cats):
     living_kits = [
         cat
         for cat in living_cats
-        if not (cat.dead or cat.outside) and cat.status in ["kitten", "newborn"]
+        if not (cat.dead or cat.outside) and cat.status in ("kitten", "newborn")
         and cat.group == game.clan.name
     ]
 
@@ -217,16 +217,14 @@ def get_random_moon_cat(
     random_cat = None
 
     # grab list of possible random cats
-    possible_r_c = list(
-        filter(
-            lambda c: not c.dead
-                      and not c.exiled
-                      and not c.outside
-                      and (not clan or c.group == clan)
-                      and (c.ID != main_cat.ID),
-            Cat.all_cats.values(),
-        )
-    )
+    possible_r_c = [
+        cat for cat in Cat.all_cats.values()
+        if not cat.dead
+        and not cat.exiled
+        and not cat.outside
+        and (not clan or cat.group == clan)
+        and (cat.ID != main_cat.ID)
+    ]
 
     if possible_r_c:
         random_cat = choice(possible_r_c)
@@ -461,11 +459,11 @@ def create_new_cat_block(
         # TODO: make this less ugly
         for index in mate_indexes:
             if index in in_event_cats:
-                if in_event_cats[index] in [
+                if in_event_cats[index] in (
                     "apprentice",
                     "healer apprentice",
                     "mediator apprentice",
-                ]:
+                ):
                     print("Can't give apprentices mates")
                     continue
 
@@ -509,7 +507,7 @@ def create_new_cat_block(
         if not match:
             continue
 
-        if match.group(1) in [
+        if match.group(1) in (
             "newborn",
             "kitten",
             "elder",
@@ -519,7 +517,7 @@ def create_new_cat_block(
             "mediator",
             "healer apprentice",
             "healer",
-        ]:
+        ):
             status = match.group(1)
             break
 
@@ -546,12 +544,12 @@ def create_new_cat_block(
             break
 
     if status and not age:
-        if status in ["apprentice", "mediator apprentice", "healer apprentice"]:
+        if status in ("apprentice", "mediator apprentice", "healer apprentice"):
             age = randint(
                 Cat.age_moons[CatAgeEnum.ADOLESCENT][0],
                 Cat.age_moons[CatAgeEnum.ADOLESCENT][1],
             )
-        elif status in ["warrior", "mediator", "healer"]:
+        elif status in ("warrior", "mediator", "healer"):
             age = randint(
                 Cat.age_moons["young adult"][0], Cat.age_moons["senior adult"][1]
             )
@@ -573,7 +571,7 @@ def create_new_cat_block(
     litter = False
     if "litter" in attribute_list:
         litter = True
-        if status not in ["kitten", "newborn"]:
+        if status not in ("kitten", "newborn"):
             status = "kitten"
 
     # CHOOSE DEFAULT BACKSTORY BASED ON CAT TYPE, STATUS
@@ -621,7 +619,7 @@ def create_new_cat_block(
         chosen_backstory = choice(stor)
 
     # KITTEN THOUGHT
-    if status in ["kitten", "newborn"]:
+    if status in ("kitten", "newborn"):
         thought = i18n.t("hardcoded.thought_new_kitten")
 
     # MEETING - DETERMINE IF THIS IS AN OUTSIDE CAT
@@ -722,10 +720,10 @@ def create_new_cat_block(
         new_cats = create_new_cat(
             Cat,
             new_name=new_name,
-            loner=cat_type in ["loner", "rogue"],
+            loner=cat_type in ("loner", "rogue"),
             kittypet=cat_type == "kittypet",
-            other_clan=cat_type == 'former Clancat',
-            kit=False if litter else status in ["kitten", "newborn"],
+            other_clan=cat_type == "former Clancat",
+            kit=(not litter) and status in ("kitten", "newborn"),
             # this is for singular kits, litters need this to be false
             litter=litter,
             backstory=chosen_backstory,
@@ -1112,10 +1110,10 @@ def create_new_cat(
         if not int(random() * chance):
             possible_conditions = []
             for condition in PERMANENT:
-                if (kit or litter) and PERMANENT[condition]["congenital"] not in [
+                if (kit or litter) and PERMANENT[condition]["congenital"] not in (
                     "always",
                     "sometimes",
-                ]:
+                ):
                     continue
                 if condition in ['manx syndrome', "flat nose", 'ocular albinism', 'albinism', 'rabbit gait', 'fully hairless', 'partially hairless', "bad back", "narrowed chest", "bumpy skin"]:
                     continue
@@ -1129,10 +1127,10 @@ def create_new_cat(
             if possible_conditions:
                 chosen_condition = choice(possible_conditions)
                 born_with = False
-                if PERMANENT[chosen_condition]["congenital"] in [
+                if PERMANENT[chosen_condition]["congenital"] in (
                     "always",
                     "sometimes",
-                ]:
+                ):
                     born_with = True
 
                     new_cat.get_permanent_condition(chosen_condition, born_with)
@@ -1145,9 +1143,9 @@ def create_new_cat(
                         ] = -2
 
                 # assign scars
-                if chosen_condition in ["lost a leg", "born without a leg"]:
+                if chosen_condition in ("lost a leg", "born without a leg"):
                     new_cat.pelt.scars.append("NOPAW")
-                elif chosen_condition in ["lost their tail", "born without a tail"]:
+                elif chosen_condition in ("lost their tail", "born without a tail"):
                     new_cat.pelt.scars.append("NOTAIL")
 
         if outside:

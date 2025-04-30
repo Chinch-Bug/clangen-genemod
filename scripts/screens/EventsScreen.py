@@ -73,6 +73,7 @@ class EventsScreen(Screens):
         self.event_buttons = {}
         self.alert = {}
         self.choose_group_buttons = {}
+        self.choose_group_button = None
         self.current_clan = None
 
         self.event_display = None

@@ -182,12 +182,12 @@ class Relation_Events:
 
         if cat.status == "leader":
             chosen_type = "all"
-        possible_interaction_cats = list(
-            filter(
-                lambda c: (not c.dead and not c.outside and not c.exiled and c.group == cat.group),
-                Cat.all_cats.values(),
-            )
-        )
+
+        possible_interaction_cats = [
+            cat for cat in Cat.all_cats.values()
+            if not cat.dead and not cat.outside and not cat.exiled and cat.group == clan.name
+        ]
+
         if cat in possible_interaction_cats:
             possible_interaction_cats.remove(cat)
 
@@ -271,15 +271,11 @@ class Relation_Events:
     @staticmethod
     def cats_with_relationship_constraints(main_cat, constraint):
         """Returns a list of cats, where the relationship from main_cat towards the cat fulfill the given constraints."""
-        cat_list = list(
-            filter(
-                lambda cat: (not cat.dead and not cat.outside and not cat.exiled),
-                Cat.all_cats.values(),
-            )
-        )
-        if main_cat in cat_list:
-            cat_list.remove(main_cat)
-
+        cat_list = [
+            cat for cat in Cat.all_cats.values()
+            if not cat.dead and not cat.outside and not cat.exiled
+        ]
+        cat_list.remove(main_cat)
         filtered_cat_list = []
 
         for inter_cat in cat_list:
