@@ -57,13 +57,13 @@
         "season": ["any"],
         "tags": ["adoption"],
         "weight": 5,
-        "event_text": "A o_c_n queen decides to leave their litter with c_n. m_c takes them as {PRONOUN/m_c/poss} own.",
+        "event_text": "A o_c_n cat decides to leave their litter with c_n. m_c takes them as {PRONOUN/m_c/poss} own.",
         "m_c": {
             "age": ["young adult", "adult", "senior adult", "senior"],
             "status": ["any"]
         },
         "new_cat": [
-            ["age:has_kits", "meeting", "clancat", "can_birth"],
+            [ "age:has_kits", "meeting", "clancat", "can_birth" ],
             [
                 "new_name",
                 "parent:0",
@@ -72,9 +72,21 @@
                 "litter"
             ]
         ],
+        "multiclan_cat": [
+            [
+                "adoptive:m_c",
+                "backstory:abandoned2, outsider1",
+                "litter",
+                "change_clan",
+                "clancat"
+            ]
+        ],
         "other_clan": {
             "current_rep": ["ally"],
-            "changed": 1
+            "changed": 1,
+            "has_rank": [
+                "kitten"
+            ]
         }
     },
     {
@@ -597,12 +609,42 @@
                 "old_name",
                 "clancat",
                 "status:warrior",
-                "backstory:refugee1,guided4,retired_leader,ostracized_warrior,disgraced1,disgraced2,disgraced3,otherclan1,otherclan2,otherclan3,otherclan4"
+                "change_clan",
+                "backstory:refugee1,guided4,ostracized_warrior,disgraced1,disgraced2,disgraced3,otherclan1,otherclan2,otherclan3,otherclan4"
             ]
         ],
         "other_clan": {
             "current_rep": ["any"],
-            "changed": -1
+            "changed": -1,
+            "has_rank": [
+                "warrior"
+            ]
+        }
+    },
+    {
+        "event_id": "gen_new_cat_anyotherclanleader1",
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "weight": 20,
+        "event_text": "m_c finds the leader of o_c_n at the border, who asks to join the Clan.",
+        "m_c": {
+            "age": [ "adolescent", "young adult", "adult", "senior adult", "senior" ],
+            "status": [ "any" ]
+        },
+        "new_cat": [
+            [
+                "clancat",
+                "status:leader",
+                "backstory:retired_leader",
+                "change_clan"
+            ]
+        ],
+        "other_clan": {
+            "current_rep": [ "any" ],
+            "changed": -1,
+            "has_rank": [
+                "leader"
+            ]
         }
     },
     {
@@ -619,7 +661,8 @@
                 "old_name",
                 "clancat",
                 "status:warrior",
-                "backstory:refugee1,guided4,retired_leader,ostracized_warrior,disgraced1,disgraced2,disgraced3,otherclan1,otherclan2,otherclan3,otherclan4"
+                "change_clan",
+                "backstory:refugee1,guided4,ostracized_warrior,disgraced1,disgraced2,disgraced3,otherclan1,otherclan2,otherclan3,otherclan4"
             ]
         ],
         "injury": [
@@ -630,7 +673,10 @@
         ],
         "other_clan": {
             "current_rep": ["any"],
-            "changed": -1
+            "changed": -1,
+            "has_rank": [
+                "warrior"
+            ]
         }
     },
     {
@@ -649,12 +695,16 @@
           [
             "old_name", 
             "backstory:ostracized_warrior,disgraced1,disgraced2,otherclan", 
-            "status:warrior"
+            "status:warrior",
+            "change_clan"
           ]
         ],
         "other_clan": {
             "current_rep": ["any"],
-            "changed": -1
+            "changed": -1,
+            "has_rank": [
+                "warrior"
+            ]
         }
     },
     {
@@ -673,12 +723,16 @@
           [
             "old_name", 
             "backstory:ostracized_warrior,disgraced1,disgraced2,disgraced3,otherclan", 
-            "status:warrior"
+            "status:deputy",
+            "change_clan"
           ]
         ],
         "other_clan": {
             "current_rep": ["any"],
-            "changed": -1
+            "changed": -1,
+            "has_rank": [
+                "deputy"
+            ]
         }
     },
     {
@@ -697,12 +751,16 @@
           [
             "old_name", 
             "backstory:medicine_cat", 
-            "status:medicine_cat"
+            "status:healer",
+            "change_clan"
           ]
         ],
         "other_clan": {
             "current_rep": ["any"],
-            "changed": -1
+            "changed": -1,
+            "has_rank": [
+                "healer"
+            ]
         }
     }
 ]

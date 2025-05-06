@@ -19,7 +19,9 @@
               "exists",
               "unknown",
               "litter",
-              "dead"
+              "dead",
+              "change_clan",
+              "change_clan_rev"
             ]
           },
           {

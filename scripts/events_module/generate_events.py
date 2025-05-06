@@ -14,12 +14,13 @@ from scripts.events_module.event_filters import (
     event_for_freshkill_supply,
     event_for_herb_supply,
     event_for_clan_relations,
+    event_for_other_clan,
 )
 from scripts.events_module.ongoing.ongoing_event import OngoingEvent
 from scripts.events_module.short.short_event import ShortEvent
 from scripts.game_structure.game_essentials import game
 from scripts.utility import (
-    get_living_clan_cat_count,
+    get_living_clan_cat_count
 )
 from scripts.game_structure.localization import load_lang_resource
 
@@ -130,6 +131,7 @@ class GenerateEvents:
                         print(
                             f"WARNING: some events resources which are used in generate_events have no 'event_text'."
                         )
+                    new_cat_block = event["multiclan_cat"] if game.clan.clancount == "multiclan" and "multiclan_cat" in event else event.get("new_cat", [])
                     event = ShortEvent(
                         event_id=event["event_id"] if "event_id" in event else "",
                         location=event["location"] if "location" in event else ["any"],
@@ -143,7 +145,7 @@ class GenerateEvents:
                         else [],
                         m_c=event["m_c"] if "m_c" in event else {},
                         r_c=event["r_c"] if "r_c" in event else {},
-                        new_cat=event["new_cat"] if "new_cat" in event else [],
+                        new_cat=new_cat_block,
                         injury=event["injury"] if "injury" in event else [],
                         exclude_involved=event["exclude_involved"] if "exclude_involved" in event else [],
                         history=event["history"] if "history" in event else [],
@@ -409,8 +411,13 @@ class GenerateEvents:
                 if not other_clan or other_clan == game.clan:
                     continue
 
-                if not event_for_clan_relations(
+                if "current_rep" in event.other_clan and not event_for_clan_relations(
                     event.other_clan["current_rep"], other_clan
+                ):
+                    continue
+
+                if game.clan.clancount == 'multiclan' and not event_for_other_clan(
+                    Cat_class, event.other_clan.get("has_rank"), other_clan
                 ):
                     continue
 

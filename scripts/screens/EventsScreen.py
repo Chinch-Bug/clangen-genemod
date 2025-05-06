@@ -177,16 +177,9 @@ class EventsScreen(Screens):
     def change_clan(self):
         curr_clan = game.clan if self.current_clan == game.clan.name or not self.current_clan else [clan for clan in game.clan.all_clans if clan.name == self.current_clan][0]
         
-        # self.clan_info["symbol"] = pygame_gui.elements.UIImage(
-        #     ui_scale(pygame.Rect((227, 105), (100, 100))),
-        #     pygame.transform.scale(
-        #         clan_symbol_sprite(curr_clan), ui_scale_dimensions((100, 100))
-        #     ),
-        #     object_id=f"clan_symbol",
-        #     starting_height=1,
-        #     container=self.event_screen_container,
-        #     manager=MANAGER,
-        # )
+        self.clan_info["symbol"].set_image(pygame.transform.scale(
+                    clan_symbol_sprite(curr_clan), ui_scale_dimensions((100, 100))
+                ))
         self.update_heading_text(f"{curr_clan.name}Clan")
 
     def save_scroll_position(self):
@@ -828,6 +821,7 @@ class EventsScreen(Screens):
             if get_living_clan_cat_count(Cat, clan=game.clan.name) == 0:
                 GameOver("events screen")
             self.current_clan = game.clan.name
+            self.change_clan()
 
         self.update_display_events_lists()
 

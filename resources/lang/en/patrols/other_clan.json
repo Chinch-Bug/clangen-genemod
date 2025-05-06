@@ -429,6 +429,12 @@
         "season": ["leaf-bare"],
         "types": ["herb_gathering"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "any_healer",
+                "warrior"
+            ]
+        },
         "patrol_art": "gen_med_borderherb",
         "min_cats": 1,
         "max_cats": 1,
@@ -498,6 +504,13 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "any_apprentice",
+                "deputy",
+                "warrior"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 2,
         "max_cats": 6,
@@ -604,6 +617,13 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "any_apprentice",
+                "deputy",
+                "warrior"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -703,6 +723,12 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -794,6 +820,12 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -900,6 +932,12 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -1006,6 +1044,13 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior",
+                "deputy"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -1080,6 +1125,13 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior",
+                "leader"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -1154,6 +1206,12 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -1228,6 +1286,12 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -1318,6 +1382,12 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -1408,6 +1478,13 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior",
+                "deputy"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -1468,6 +1545,13 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior",
+                "leader"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -1528,6 +1612,12 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -1620,6 +1710,12 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -1726,6 +1822,12 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -1832,6 +1934,13 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior",
+                "deputy"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -1906,6 +2015,13 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior",
+                "leader"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -1980,6 +2096,12 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -2076,6 +2198,12 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -2166,6 +2294,12 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -2256,6 +2390,13 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior",
+                "deputy"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -2316,6 +2457,13 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior",
+                "leader"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -2375,6 +2523,12 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -2463,6 +2617,12 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -2569,6 +2729,12 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -2675,6 +2841,13 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior",
+                "deputy"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -2749,6 +2922,13 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior",
+                "leader"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 1,
         "max_cats": 1,
@@ -2957,6 +3137,12 @@
         "season": [ "any" ],
         "types": [ "border" ],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "any_warrior_mult"
+            ]
+        },
         "patrol_art": "gen_bord_otherclan_app_allies",
         "min_cats": 3,
         "max_cats": 6,
@@ -3233,6 +3419,13 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "kitten_mult",
+                "warrior",
+                "leader"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 3,
         "max_cats": 6,
@@ -3375,8 +3568,8 @@
                 "stat_trait":["bloodthirsty", "cold", "troublesome","shameless", "arrogant", "ambitious"],
                 "other_clan_rep": -8,
                 "new_cat": [
-                    ["age: kitten", "backstory: otherclan5"],
-                    ["age: kitten", "backstory: otherclan5"]
+                    ["age: kitten", "backstory: otherclan5", "change_clan"],
+                    ["age: kitten", "backstory: otherclan5", "change_clan"]
                 ]
             },
             {
@@ -3387,8 +3580,8 @@
                 "stat_trait":["oblivious"],
                 "other_clan_rep": -8,
                 "new_cat": [
-                    ["age: kitten", "backstory: otherclan5"],
-                    ["age: kitten", "backstory: otherclan5"]
+                    ["age: kitten", "backstory: otherclan5", "change_clan"],
+                    ["age: kitten", "backstory: otherclan5", "change_clan"]
                 ]
             }
         ]
@@ -3399,6 +3592,11 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "leader"
+            ]
+        },
         "patrol_art": "bord_general_intro",
         "min_cats": 3,
         "max_cats": 6,
@@ -3498,6 +3696,12 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
+        "other_clan_filters": {
+            "has_rank": [
+                "apprentice",
+                "warrior"
+            ]
+        },
         "patrol_art": "gen_bord_otherclan_allies",
         "min_cats": 2,
         "max_cats": 6,

@@ -6,6 +6,7 @@ from scripts.game_structure.game_essentials import game
 from scripts.special_dates import get_special_date, contains_special_date_tag
 from scripts.utility import (
     get_alive_status_cats,
+    get_living_clan_cat_count,
     filter_relationship_type,
 )
 
@@ -153,6 +154,37 @@ def event_for_clan_relations(required_rel: list, other_clan) -> bool:
 
     return False
 
+
+def event_for_other_clan(Cat, ranks: list, other_clan) -> bool:
+    """
+    checks if the other clan has required cats
+    """
+
+    if ranks and "none" in ranks:
+        return True
+
+    if not ranks:
+        oc_cats = get_living_clan_cat_count(Cat, other_clan)
+        return oc_cats > 0
+
+    for rank in ranks:
+        final_ranks = [rank.replace("_mult", "")]
+        if "any_app" in rank:
+            final_ranks = ["apprentice", "mediator apprentice", "healer apprentice"]
+        if "any_warrior" in rank:
+            final_ranks = ["leader", "deputy", "warrior"]
+        if "any_fighter" in rank:
+            final_ranks = ["leader", "deputy", "warrior", "apprentice"]
+        if "any_healer" in rank:
+            final_ranks = ["healer", "healer apprentice"]
+        if "any_mediator" in rank:
+            final_ranks = ["mediator", "mediator apprentice"]
+        oc_cats = get_alive_status_cats(
+            Cat, final_ranks, working=True, clan=other_clan.name)
+        if not oc_cats or (len(oc_cats) < 2 and "mult" in rank):
+            return False
+        
+    return True
 
 def event_for_freshkill_supply(pile, trigger, factor, clan_size) -> bool:
     """

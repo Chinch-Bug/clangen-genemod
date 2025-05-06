@@ -15,7 +15,10 @@ from scripts.cat.cats import Cat
 from scripts.cat.enums import CatAgeEnum
 from scripts.clan import Clan
 from scripts.game_structure.game_essentials import game
-from scripts.events_module.event_filters import event_for_tags
+from scripts.events_module.event_filters import (
+    event_for_tags,
+    event_for_other_clan
+)
 from scripts.events_module.patrol.patrol_event import PatrolEvent
 from scripts.events_module.patrol.patrol_outcome import PatrolOutcome
 from scripts.utility import (
@@ -604,6 +607,9 @@ class Patrol:
             if not event_for_tags(patrol.tags, Cat, game.clan.name):
                 continue
 
+            if patrol.other_clan and game.clan.clancount == 'multiclan' and not event_for_other_clan(Cat, patrol.other_clan_filter.get("has_rank"), self.other_clan):
+                continue
+
             if biome not in patrol.biome and "any" not in patrol.biome:
                 continue
             if camp not in patrol.camp and "any" not in patrol.camp:
@@ -686,6 +692,7 @@ class Patrol:
                 tags=patrol.get("tags"),
                 weight=patrol.get("weight", 20),
                 types=patrol.get("types"),
+                other_clan_filter=patrol.get("other_clan_filter"),
                 intro_text=patrol.get("intro_text"),
                 patrol_art=patrol.get("patrol_art"),
                 patrol_art_clean=patrol.get("patrol_art_clean"),

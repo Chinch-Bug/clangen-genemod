@@ -31,6 +31,7 @@ from scripts.utility import (
     get_leader_life_notice,
     get_alive_status_cats,
     adjust_list_text,
+    find_clan_cats,
 )
 
 
@@ -206,7 +207,7 @@ class HandleShortEvents:
             self.involved_cats.remove(self.main_cat.ID)
 
         # create new cats (must happen here so that new cats can be included in further changes)
-        self.handle_new_cats(clan=clan if clan else None)
+        self.handle_new_cats(clan=clan if clan else None, other_clan=self.other_clan)
         
         # give accessory
         if self.chosen_event.new_accessory:
@@ -341,7 +342,7 @@ class HandleShortEvents:
             )
         )
 
-    def handle_new_cats(self, clan=None):
+    def handle_new_cats(self, clan=None, other_clan=None):
         """
         handles adding new cats to the clan
         """
@@ -359,11 +360,18 @@ class HandleShortEvents:
         if self.random_cat:
             in_event_cats["r_c"] = self.random_cat
         for i, attribute_list in enumerate(self.chosen_event.new_cat):
-            self.new_cats.append(
-                create_new_cat_block(
-                    Cat, Relationship, self, in_event_cats, i, attribute_list, clan=clan
+            if ("clancat" not in attribute_list and "change_clan" not in attribute_list) or game.clan.clancount != 'multiclan':
+                self.new_cats.append(
+                    create_new_cat_block(
+                        Cat, Relationship, self, in_event_cats, i, attribute_list, clan=clan
+                    )
                 )
-            )
+            else:
+                self.new_cats.append(
+                    find_clan_cats(
+                        Cat, Relationship, self, in_event_cats, i, attribute_list, clan=clan, other_clan=other_clan
+                    )
+                )
 
             # check if we want to add some extra info to the event text and if we need to welcome
             for cat in self.new_cats[-1]:

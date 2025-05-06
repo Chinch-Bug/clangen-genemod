@@ -1085,7 +1085,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -1136,7 +1139,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_fighter_mult"
+            ]
         }
     },
     {
@@ -1203,7 +1209,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_fighter_mult"
+            ]
         }
     },
     {
@@ -1258,7 +1267,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -3326,7 +3338,10 @@
                 "hostile",
                 "neutral"
             ],
-            "changed": -2
+            "changed": -2,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -3757,7 +3772,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_fighter_mult"
+            ]
         }
     },
     {
@@ -6724,7 +6742,10 @@
                 "hostile",
                 "neutral"
             ],
-            "changed": -1
+            "changed": -1,
+            "has_rank": [
+                "any_warrior"
+            ]
         }
     },
     {
@@ -6778,7 +6799,10 @@
                 "hostile",
                 "neutral"
             ],
-            "changed": -1
+            "changed": -1,
+            "has_rank": [
+                "any_warrior"
+            ]
         }
     },
     {
@@ -7018,7 +7042,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -2
+            "changed": -2,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -7104,7 +7131,11 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -2
+            "changed": -2,
+            "has_rank": [
+                "any_fighter_mult",
+                "any_warrior"
+            ]
         }
     },
     {
