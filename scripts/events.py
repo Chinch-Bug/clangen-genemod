@@ -346,6 +346,18 @@ class Events:
             if not has_med:
                 string = i18n.t("defaults.warn_no_medcats")
                 game.cur_events_list.insert(0, Single_Event(string, "health", clan=game.clan.name))
+        for oc in game.clan.all_clans:
+            has_med = any(
+                str(cat.status) in {"healer", "healer apprentice"}
+                and not cat.dead
+                and not cat.outside
+                and (not clancount or cat.group == oc.name)
+                for cat in Cat.all_cats.values()
+            )
+            if not has_med:
+                string = event_text_adjust(Cat, i18n.t("defaults.warn_no_medcats"), clan=oc)
+                game.cur_events_list.insert(0, Single_Event(string, "health", clan=oc.name))
+
 
         # Clear the list of cats that died this moon.
         game.just_died.clear()
@@ -2549,11 +2561,12 @@ class Events:
                 leader_outside = True
 
             if leader_dead or leader_outside:
+                string = event_text_adjust(Cat, i18n.t("defaults.warn_no_leader"), clan=clan)
                 game.cur_events_list.insert(
                     0,
                     Single_Event(
                         event_text_adjust(
-                            Cat, i18n.t("defaults.warn_no_leader"), clan=clan
+                            Cat, string, clan=clan.name
                         )
                     ),
                 )
@@ -2569,7 +2582,8 @@ class Events:
             or clan.deputy.status == "elder"
         ):
             if not game.clan.clan_settings.get("deputy"):
-                game.cur_events_list.insert(0, Single_Event("defaults.warn_no_deputy", clan=clan.name))
+                string = event_text_adjust(Cat, i18n.t("defaults.warn_no_medcats"), clan=clan)
+                game.cur_events_list.insert(0, string, clan=clan.name)
                 return
             # This determines all the cats who are eligible to be deputy.
             possible_deputies = list(
