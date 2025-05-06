@@ -1161,7 +1161,7 @@ def create_new_cat(
             new_cat = Cat(
                 moons=age,
                 status=status,
-                group=group.name if group else None,
+                group=group.name if group and status not in ["kittypet", "loner", "rogue", "former Clancat"] else None,
                 gender=_gender,
                 backstory=backstory,
                 parent1=parent1,

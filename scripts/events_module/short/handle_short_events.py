@@ -338,7 +338,7 @@ class HandleShortEvents:
                 self.text + " " + self.additional_event_text,
                 self.types,
                 self.involved_cats,
-                clan=clan.name if clan else None
+                clan=clan.name
             )
         )
 

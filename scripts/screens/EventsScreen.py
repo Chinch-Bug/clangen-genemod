@@ -268,7 +268,7 @@ class EventsScreen(Screens):
             manager=MANAGER,
         )
 
-        curr_clan = game.clan if self.current_clan == game.clan.name or not self.current_clan else [clan for clan in game.clan.all_clans if clan.name == self.current_clan][0]
+        curr_clan = game.clan if game.clan.clancount != "multiclan" or self.current_clan == game.clan.name or not self.current_clan else [clan for clan in game.clan.all_clans if clan.name == self.current_clan][0]
 
         self.clan_info["symbol"] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((227, 105), (100, 100))),

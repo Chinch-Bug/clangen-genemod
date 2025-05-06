@@ -416,7 +416,7 @@ class GenerateEvents:
                 ):
                     continue
 
-                if game.clan.clancount == 'multiclan' and not event_for_other_clan(
+                if game.clan.clancount == 'multiclan' and event.other_clan and not event_for_other_clan(
                     Cat_class, event.other_clan.get("has_rank"), other_clan
                 ):
                     continue

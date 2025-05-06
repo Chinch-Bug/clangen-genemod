@@ -196,7 +196,7 @@ class Condition_Events:
 
             types = ["birth_death"]
             game.cur_events_list.append(
-                Single_Event(event, types, cat_dict={"m_c": cat})
+                Single_Event(event, types, cat_dict={"m_c": cat}, clan=game.clan.name)
             )
             return
 
@@ -249,7 +249,7 @@ class Condition_Events:
             event_text = event_text_adjust(Cat, event, main_cat=cat)
             types = ["health"]
             game.cur_events_list.append(
-                Single_Event(event_text, types, cat_dict={"m_c": cat})
+                Single_Event(event_text, types, cat_dict={"m_c": cat}, clan=game.clan.name)
             )
 
     @staticmethod
@@ -339,7 +339,7 @@ class Condition_Events:
             if cat.dead:
                 types.append("birth_death")
             game.cur_events_list.append(
-                Single_Event(event_string, types, cat.ID, cat_dict={"m_c": cat}, clan=clan.name if clan else None)
+                Single_Event(event_string, types, cat.ID, cat_dict={"m_c": cat}, clan=clan.name)
             )
 
         # just double-checking that trigger is only returned True if the cat is dead

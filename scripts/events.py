@@ -195,7 +195,7 @@ class Events:
                         Cat.fetch_cat(cat_id).thought = text
                     else:
                         game.cur_events_list.append(
-                            Single_Event(_val[0], ["birth_death", "relation"], _val[1], clan=Cat.fetch_cat(cat_id).group if clancount else None)
+                            Single_Event(_val[0], ["birth_death", "relation"], _val[1], clan=Cat.fetch_cat(cat_id).group if clancount else game.clan.name)
                         )
 
             Cat.grief_strings.clear()
@@ -421,7 +421,7 @@ class Events:
                 clan=game.clan,
             )
             game.cur_events_list.insert(
-                4, Single_Event(event_text, "other_clans", [gathering_cat.ID])
+                4, Single_Event(event_text, "other_clans", [gathering_cat.ID], clan=game.clan.name)
             )
 
             game.clan.clan_settings["lead_den_clan_event"] = {}
@@ -604,6 +604,7 @@ class Events:
                         ),
                         "ceremony",
                         cat.ID,
+                        clan=game.clan.name
                     )
                 )
                 cat.status_change("mediator")
@@ -889,7 +890,7 @@ class Events:
                     Cat.all_cats[x].name.suffix = ''
                     Cat.all_cats[x].get_permanent_condition("infertility", False, custom_reveal=4-Cat.all_cats[x].moons)
         text = event_text_adjust(Cat, text, main_cat=eligible_cats[0], clan=game.clan)
-        game.cur_events_list.append(Single_Event(text, "misc", cat_IDs, clan=clan.name if clan else None))
+        game.cur_events_list.append(Single_Event(text, "misc", cat_IDs, clan=clan.name))
         
         self.handle_lost_cats_return(cat_IDs, clan)
 
@@ -940,7 +941,7 @@ class Events:
 
             text = event_text_adjust(Cat, text, main_cat=lost_cat, clan=game.clan)
 
-            game.cur_events_list.append(Single_Event(text, "misc", cat_IDs, clan=clan.name if clan else None))
+            game.cur_events_list.append(Single_Event(text, "misc", cat_IDs, clan=clan.name))
 
         # Perform a ceremony if needed
         for cat_ID in cat_IDs:
@@ -1360,7 +1361,7 @@ class Events:
         event = ongoing_event_text_adjust(
             Cat, event, other_clan_name=f"{enemy_clan.name}Clan", clan=game.clan
         )
-        game.cur_events_list.append(Single_Event(event, "other_clans"))
+        game.cur_events_list.append(Single_Event(event, "other_clans", clan=game.clan.name))
 
     def perform_ceremonies(self, cat, clan):
         """
@@ -1902,7 +1903,7 @@ class Events:
                 cat.history = History(prev_names=[old_name])
 
         game.cur_events_list.append(
-            Single_Event(ceremony_text, "ceremony", involved_cats, clan=clan.name if clan and game.clan.clancount == "multiclan" else None)
+            Single_Event(ceremony_text, "ceremony", involved_cats, clan=clan.name)
         )
         # game.ceremony_events_list.append(f'{cat.name}{ceremony_text}')
 

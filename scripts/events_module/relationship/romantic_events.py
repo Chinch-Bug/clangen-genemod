@@ -410,7 +410,7 @@ class RomanticEvents:
                     )
                     game.cur_events_list.append(
                         Single_Event(
-                            text, "relation", cat_dict={"m_c": cat, "r_c": cat_mate}
+                            text, "relation", cat_dict={"m_c": cat, "r_c": cat_mate}, clan=cat.group
                         )
                     )
                     cat.unset_mate(cat_mate)
@@ -428,6 +428,7 @@ class RomanticEvents:
                     mate_string,
                     ["relation", "misc"],
                     cat_dict={"m_c": cat_from, "r_c": cat_to},
+                    clan=cat_from.group
                 )
             )
             return True
@@ -520,6 +521,7 @@ class RomanticEvents:
                 ["relation", "misc"],
                 [cat_from.ID, cat_to.ID],
                 cat_dict={"m_c": cat_from, "r_c": cat_to},
+                clan=cat_from.group
             )
         )
         return True
@@ -611,6 +613,7 @@ class RomanticEvents:
                 mate_string,
                 ["relation", "misc"],
                 cat_dict={"m_c": cat_from, "r_c": cat_to},
+                clan=cat_from.group,
             )
         )
 
