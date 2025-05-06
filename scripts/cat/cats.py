@@ -2971,8 +2971,8 @@ class Cat:
                 rel.append(r_data)
             else:
                 self.blank_relations.append(r.cat_to.ID)
-        filtered_blanks = [x for x in self.blank_relations if x not in self.relationships and x != self.ID]
-        rel.append({'blanks' : list(set(self.blank_relations))})
+        filtered_blanks = [x for x in self.blank_relations if self.fetch_cat(x) and x not in self.relationships and x != self.ID]
+        rel.append({'blanks' : list(set(filtered_blanks))})
 
         game.safe_save(f"{relationship_dir}/{self.ID}_relations.json", rel)
 

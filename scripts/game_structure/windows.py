@@ -479,7 +479,7 @@ class DeleteCatCheck(UIWindow):
                         for event in cat.history.died_by:
                             if 'r_c' in event["text"]:
                                 history_event_cats.append(event["involved"])
-                    if cat.history.scar_events and 'r_c' in cat.history.scar_events["text"]:
+                    if cat.history.scar_events:
                         for event in cat.history.scar_events:
                             if 'r_c' in event["text"]:
                                 history_event_cats.append(event["involved"])
