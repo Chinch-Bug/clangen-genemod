@@ -402,7 +402,7 @@ class RelationshipScreen(Screens):
         self.current_page = 1
         self.inspect_cat = None
         self.the_cat.blank_relations = list(set([x for x in self.the_cat.blank_relations if x not in self.the_cat.relationships]))
-        blank_relations = [Relationship(self.the_cat, Cat.fetch_cat(x)) for x in self.the_cat.blank_relations]
+        blank_relations = [Relationship(self.the_cat, Cat.fetch_cat(x)) for x in self.the_cat.blank_relations if Cat.fetch_cat(x)]
         
         # Keep a list of all the relations
         if game.config["sorting"]["sort_by_rel_total"]:
@@ -633,11 +633,11 @@ class RelationshipScreen(Screens):
         self.filtered_cats = self.all_relations.copy()
         if not game.clan.clan_settings["show dead relation"]:
             self.filtered_cats = list(
-                filter(lambda rel: not rel.cat_to.dead, self.filtered_cats)
+                filter(lambda rel: rel.cat_to and not rel.cat_to.dead, self.filtered_cats)
             )
         else:
             self.filtered_cats = list(
-                filter(lambda rel: not rel.cat_to.faded, self.filtered_cats)
+                filter(lambda rel: rel.cat_to and not rel.cat_to.faded, self.filtered_cats)
             )
 
         if not game.clan.clan_settings["show empty relation"]:
