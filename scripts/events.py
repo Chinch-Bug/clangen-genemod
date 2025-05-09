@@ -2582,8 +2582,8 @@ class Events:
             or clan.deputy.status == "elder"
         ):
             if not game.clan.clan_settings.get("deputy"):
-                string = event_text_adjust(Cat, i18n.t("defaults.warn_no_medcats"), clan=clan)
-                game.cur_events_list.insert(0, string, clan=clan.name)
+                string = event_text_adjust(Cat, i18n.t("defaults.warn_no_deputy"), clan=clan)
+                game.cur_events_list.insert(0, Single_Event(string, clan=clan.name))
                 return
             # This determines all the cats who are eligible to be deputy.
             possible_deputies = list(
