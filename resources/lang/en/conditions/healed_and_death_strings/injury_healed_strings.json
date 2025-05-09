@@ -243,5 +243,9 @@
         "m_c finally feels full of energy again.",
         "m_c's exhaustion has faded.",
         "m_c is happy to finally feel fully rested."
+    ],
+    "runny eyes": [
+        "m_c is relieved to no longer have runny eyes.",
+        "m_c's eyes and face are finally clear of tears again."
     ]
 }
