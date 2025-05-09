@@ -59,6 +59,7 @@ class EventsScreen(Screens):
         "other clans",
         "miscellaneous",
     ]
+    current_clan = None
 
     def __init__(self, name):
         super().__init__(name)

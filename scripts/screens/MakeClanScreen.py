@@ -8,6 +8,7 @@ import pygame_gui
 from pygame_gui.core import ObjectID
 
 import scripts.screens.screens_core.screens_core
+from scripts.screens.EventsScreen import EventsScreen
 from scripts.cat.cats import create_example_cats, create_cat, Cat
 from scripts.cat.names import names
 from scripts.clan import Clan
@@ -2275,6 +2276,7 @@ class MakeClanScreen(Screens):
 
         # game.clan.starclan_cats.clear()
         game.cur_events_list.clear()
+        EventsScreen.current_clan = None
         game.herb_events_list.clear()
         game.clan.herb_supply.start_storage(len(self.members))
         game.clan.save_herb_supply(game.clan)

@@ -2698,8 +2698,7 @@
       "changed": -5
     },
     "new_cat": [
-      ["meeting", "rogue",
-                "exists"]
+      ["meeting", "rogue", "exists"]
     ],
     "relationships": [
       {
