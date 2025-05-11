@@ -965,13 +965,16 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
     else:
         if status:
             all_clan_cats = [cat for cat in all_clan_cats if cat.status == status]
+        
         if age == "mate":
             all_clan_cats = [cat for cat in all_clan_cats if give_mates[0].is_potential_mate(cat, for_love_interest=True, outsider=True)]
             if not all_clan_cats:
                 print("No possible mates found")
                 all_clan_cats = create_new_cat_block(Cat, Relationship, event, in_event_cats, i, attribute_list, other_clan)
         elif age:
-            all_clan_cats = [cat for cat in all_clan_cats if cat.age == age]
+            all_clan_cats_age = [cat for cat in all_clan_cats if cat.age == age]
+            if all_clan_cats_age:
+                all_clan_cats = all_clan_cats_age
         picked_cats = [choice(all_clan_cats)]
 
     if "change_clan" in attribute_list:
@@ -2497,6 +2500,9 @@ def event_text_adjust(
     # otherwise we should really *never* have lists being passed as the text
     if isinstance(text, list):
         text = text[0]
+
+    if isinstance(clan, str):
+        clan = game.clan if clan in [" ", game.clan.name, "outsider cat"] else [c for c in game.clan.all_clans if c.name == clan][0]
 
     replace_dict = {}
 

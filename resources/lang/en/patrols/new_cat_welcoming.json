@@ -3272,7 +3272,7 @@
                 ],
                 "can_have_stat": ["any"],
                 "new_cat": [
-                    ["age:adolescent", "backstory:otherclan2", "clancat"]
+                    ["age:adolescent", "backstory:otherclan2", "clancat", "change_clan"]
                 ],
                 "relationships": [
                     {

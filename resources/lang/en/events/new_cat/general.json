@@ -625,7 +625,7 @@
         "event_id": "gen_new_cat_anyotherclanleader1",
         "location": [ "any" ],
         "season": [ "any" ],
-        "weight": 20,
+        "weight": 5,
         "event_text": "m_c finds the leader of o_c_n at the border, who asks to join the Clan.",
         "m_c": {
             "age": [ "adolescent", "young adult", "adult", "senior adult", "senior" ],

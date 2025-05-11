@@ -1401,6 +1401,7 @@ class Events:
             ):
                 clan.new_leader(clan.deputy)
                 clan.leader_lives = 9
+                cat = clan.leader
                 text = ""
                 if clan.deputy.personality.trait == "bloodthirsty":
                     text = i18n.t("hardcoded.ceremony_leader_bloodthirsty")
