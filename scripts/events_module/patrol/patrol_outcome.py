@@ -631,7 +631,7 @@ class PatrolOutcome:
                 if give_injury in INJURIES:
                     _cat.get_injured(give_injury, lethal=lethal, clan=game.clan)
                 elif give_injury in ILLNESSES:
-                    _cat.get_ill(give_injury, lethal=lethal)
+                    _cat.get_ill(give_injury, lethal=lethal, clan=game.clan)
                 elif give_injury in PERMANENT:
                     _cat.get_permanent_condition(give_injury)
                 else:

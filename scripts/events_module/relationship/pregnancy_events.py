@@ -341,7 +341,8 @@ class Pregnancy_Events:
                                         and Pregnancy_Events.check_if_can_have_kits(i, True, True) 
                                         and 'infertility' not in i.permanent_condition 
                                         and (game.clan.clan_settings['same sex birth'] or xor('Y' in i.phenotype.sexgene, 'Y' in cat.phenotype.sexgene)) 
-                                        and len(i.mate) == 0 and not i.birth_cooldown]
+                                        and len(i.mate) == 0 and not i.birth_cooldown
+                                        and i.group != cat.group]
                 outsider_affair_partners = [i for i in possible_affair_partners if i.group == "outsider cat"]
                 other_clan_affair_partners = [i for i in possible_affair_partners if i.group != "outsider cat"]
 
@@ -468,6 +469,12 @@ class Pregnancy_Events:
                                 cats_involved.append(par.ID)
                                 par.birth_cooldown = game.config["pregnancy"]["birth_cooldown"]
                                 par.get_injured("recovering from birth", event_triggered=True, clan=clan)
+                                if par.group != cat.group and par.group != "outsider cat":
+                                    Pregnancy_Events.rebuild_strings()
+                                    events = Pregnancy_Events.PREGNANT_STRINGS
+                                    secondary_event = choice(events["birth"]["otherclan_mother"])
+                                    secondary_event = event_text_adjust(Cat, secondary_event, main_cat=par)
+                                    game.cur_events_list.append(Single_Event(secondary_event, "birth_death", cats_involved=cats_involved, clan=par.group))
                     for kit in kits:
                         cats_involved.append(kit.ID)
                     game.cur_events_list.append(Single_Event(print_event, "birth_death", cats_involved=cats_involved, clan=clan.name))
@@ -687,7 +694,8 @@ class Pregnancy_Events:
                                     and Pregnancy_Events.check_if_can_have_kits(i, True, True) 
                                     and 'infertility' not in i.permanent_condition 
                                     and (game.clan.clan_settings['same sex birth'] or xor('Y' in i.phenotype.sexgene, 'Y' in cat.phenotype.sexgene)) 
-                                    and len(i.mate) == 0]
+                                    and len(i.mate) == 0
+                                    and i.group != cat.group]
             outsider_affair_partners = [i for i in possible_affair_partners if i.group == "outsider cat"]
             other_clan_affair_partners = [i for i in possible_affair_partners if i.group != "outsider cat"]
 

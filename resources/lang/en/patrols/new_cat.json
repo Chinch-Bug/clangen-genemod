@@ -576,7 +576,7 @@
                 "new_cat": [
                     ["female", "loner", "age:has_kits", "meeting"],
                     ["litter", "parent:0", "status:newborn", "backstory:abandoned2"],
-                    ["age:newborn", "loner", "meeting", "parent:0"]
+                    ["age:newborn", "loner", "meeting", "parent:0", "sibling:1"]
                 ],
                 "relationships": [
                     {

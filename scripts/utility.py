@@ -420,16 +420,19 @@ def create_new_cat_block(
     adoptive_parents = []
     for tag in attribute_list:
         parent_match = re.match(r"parent:\s?([,0-9]+)", tag)
+        sibling_match = re.match(r"sibling:\s?([,0-9]+)", tag)
         adoptive_match = re.match(r"adoptive:\s?(.+)", tag)
-        if not parent_match and not adoptive_match:
+        if not parent_match and not adoptive_match and not sibling_match:
             continue
 
         parent_indexes = parent_match.group(1).split(",") if parent_match else []
+        sibling_indexes = sibling_match.group(1).split(",") if sibling_match else []
         adoptive_indexes = adoptive_match.group(1).split(",") if adoptive_match else []
-        if not parent_indexes and not adoptive_indexes:
+        if not parent_indexes and not adoptive_indexes and not sibling_indexes:
             continue
 
         parent_indexes = [int(index) for index in parent_indexes]
+        sibling_indexes = [int(index) for index in sibling_indexes]
         for index in parent_indexes:
             if index >= i:
                 continue
@@ -438,6 +441,13 @@ def create_new_cat_block(
                 parent1 = event.new_cats[index][0]
             else:
                 parent2 = event.new_cats[index][0]
+        for index in sibling_indexes:
+            if index >= i:
+                continue
+
+            sibling = event.new_cats[index][0]
+            if not parent2:
+                parent2 = Cat.fetch_cat(sibling.parent2)
 
         adoptive_indexes = [
             int(index) if index.isdigit() else index for index in adoptive_indexes
@@ -1202,7 +1212,7 @@ def create_new_cat(
                         moons=age,
                         prefix=name,
                         status=status,
-                        group=group.name if group else None,
+                        group=group.name if group and status not in ["kittypet", "loner", "rogue", "former Clancat"] else None,
                         gender=_gender,
                         backstory=backstory,
                         parent1=parent1,
@@ -1216,7 +1226,7 @@ def create_new_cat(
                     new_cat = Cat(
                         moons=age,
                         status=status,
-                        group=group.name if group else None,
+                        group=group.name if group and status not in ["kittypet", "loner", "rogue", "former Clancat"] else None,
                         gender=_gender,
                         backstory=backstory,
                         parent1=parent1,
@@ -1231,7 +1241,8 @@ def create_new_cat(
                     prefix=name,
                     suffix="",
                     status=status,
-                    group=group.name if group else None,
+                    group=group.name if group and status not in [
+                        "kittypet", "loner", "rogue", "former Clancat"] else None,
                     gender=_gender,
                     backstory=backstory,
                     parent1=parent1,
@@ -2502,7 +2513,8 @@ def event_text_adjust(
         text = text[0]
 
     if isinstance(clan, str):
-        clan = game.clan if clan in [" ", game.clan.name, "outsider cat"] else [c for c in game.clan.all_clans if c.name == clan][0]
+        if "Clan" not in clan:
+            clan = game.clan if clan in [" ", game.clan.name, "outsider cat"] else [c for c in game.clan.all_clans if c.name == clan][0]
 
     replace_dict = {}
 

@@ -2898,9 +2898,9 @@ class Cat:
                         game.clan
                         and the_cat == game.clan.instructor
                         and game.clan.instructor.dead_for >= self.moons
-                    ):
+                    ) or self.group != the_cat.group:
                         pass
-                    elif (randint(1, 20) == 1 or (self.group != the_cat.group and random() > 0.25)) and romantic_love < 1:
+                    elif randint(1, 20) == 1 and romantic_love < 1:
                         dislike = randint(10, 25)
                         jealousy = randint(5, 15)
                         if randint(1, 30) == 1:

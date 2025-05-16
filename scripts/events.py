@@ -495,6 +495,7 @@ class Events:
 
                     for cat_ID in invited_cats:
                         invited_cat = Cat.fetch_cat(cat_ID)
+                        invited_cat.group = game.clan.name
                         if invited_cat.status.lower() in (
                             "kittypet",
                             "loner",
@@ -2241,6 +2242,7 @@ class Events:
         """Handles murder"""
         relationships = cat.relationships.values()
         targets = []
+        all_clans = [game.clan] + game.clan.all_clans
 
         if cat.age.is_baby():
             return
@@ -2267,14 +2269,16 @@ class Events:
                 return
 
             chosen_target = random.choice(targets)
+            chosen_cat = Cat.fetch_cat(chosen_target.cat_to)
 
             handle_short_events.handle_event(
                 event_type="birth_death",
-                main_cat=Cat.fetch_cat(chosen_target.cat_to),
+                main_cat=chosen_cat,
                 random_cat=cat,
                 sub_type=["murder"],
                 freshkill_pile=game.clan.freshkill_pile,
-                clan=clan
+                clan=clan,
+                second_clan=[c for c in clan if c.name == chosen_cat.group][0] if chosen_cat.group != cat.group and chosen_cat.group not in ["outsider cat", " "] else None
             )
 
             return
@@ -2316,6 +2320,7 @@ class Events:
         # if we have some, then we need to decide if this cat will kill
         if targets:
             chosen_target = random.choice(targets)
+            chosen_cat = Cat.fetch_cat(chosen_target.cat_to)
 
             kill_chance = game.config["death_related"]["base_murder_kill_chance"]
 
@@ -2360,11 +2365,13 @@ class Events:
 
                 handle_short_events.handle_event(
                     event_type="birth_death",
-                    main_cat=Cat.fetch_cat(chosen_target.cat_to),
+                    main_cat=chosen_cat,
                     random_cat=cat,
                     sub_type=["murder"],
                     freshkill_pile=game.clan.freshkill_pile,
-                    clan=clan
+                    clan=clan,
+                    second_clan=[c for c in clan if c.name == chosen_cat.group][0] if chosen_cat.group != cat.group and chosen_cat.group not in [
+                        "outsider cat", " "] else None
                 )
 
     def handle_illnesses_or_illness_deaths(self, cat, clan):

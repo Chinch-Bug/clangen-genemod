@@ -42,6 +42,10 @@
           },
           {
             "type": "string",
+            "pattern": "^sibling:([,0-9]+)$"
+          },
+          {
+            "type": "string",
             "pattern": "^adoptive:([_,0-9a-zA-Z]+)$"
           },
           {

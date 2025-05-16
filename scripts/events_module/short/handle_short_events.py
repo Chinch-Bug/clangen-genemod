@@ -75,6 +75,7 @@ class HandleShortEvents:
         random_cat: Cat,
         freshkill_pile: FreshkillPile,
         clan,
+        second_clan = None,
         sub_type: list = None
     ):
         """
@@ -345,6 +346,15 @@ class HandleShortEvents:
                 clan=clan.name
             )
         )
+        if second_clan:
+            game.cur_events_list.append(
+                Single_Event(
+                    self.text + " " + self.additional_event_text,
+                    self.types,
+                    self.involved_cats,
+                    clan=second_clan.name
+                )
+            )
 
     def handle_new_cats(self, clan=None, other_clan=None):
         """
