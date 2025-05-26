@@ -1720,10 +1720,13 @@ class Cat:
         game_mode = game.switches["game_mode"]
         biome = game.switches["biome"]
         camp = game.switches["camp_bg"]
-        if self.group not in ["outsider cat", " ", game.clan.name]:
-            clan = [c for c in game.clan.all_clans if c.name == self.group][0]
+        if game.clan:
+            if self.group not in ["outsider cat", " ", game.clan.name]:
+                clan = [c for c in game.clan.all_clans if c.name == self.group][0]
+            else:
+                clan = game.clan
         else:
-            clan = game.clan
+            clan = None
         try:
             season = game.clan.current_season
         except Exception:
