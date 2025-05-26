@@ -587,7 +587,7 @@ class Phenotype(Genotype):
                 tortie_high_patterns = self.def_tortie_high_patterns
 
                 if randint(1, 15) == 1 or (i > 0 and randint(1, 10) == 1):
-                    tortie_low_patterns = ["BOWTIE", "BROKENBLAZE", "BUZZARDFANG", "revCOWTWO", "FADEBELLY", "FADESPOTS", "revLOVEBUG", "MITAINE", 
+                    tortie_low_patterns = ["BOWTIE", "BROKENBLAZE", "BUZZARDFANG", "revCOWTWO", "FADEBELLY", "revLOVEBUG", "MITAINE", 
                                         "revPEBBLESHINE", "revPIEBALD", "SAVANNAH",
                                         choice(tiny_patches)]
                     tortie_mid_patterns = ["revAPPALOOSA", "BLOSSOMSTEP", "BOWTIE", "revBROKEN", "revBUB", "BULLSEYE", "revBUSTER", "BUZZARDFANG",

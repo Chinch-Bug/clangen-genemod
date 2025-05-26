@@ -178,14 +178,14 @@ class Patrol:
                 else:
                     self.patrol_statuses["healer cats"] = 1
             
-            if cat.status in ("apprentice", "healer apprentice"):
+            if cat.status in ("apprentice", "healer apprentice", "mediator apprentice"):
                 if "all apprentices" in self.patrol_statuses:
                     self.patrol_statuses["all apprentices"] += 1
                 else:
                     self.patrol_statuses["all apprentices"] = 1
 
             if (
-                cat.status in ("warrior", "deputy", "leader")
+                cat.status in ("warrior", "deputy", "leader", "mediator")
                 and cat.age != CatAgeEnum.ADOLESCENT
             ):
                 if "normal adult" in self.patrol_statuses:

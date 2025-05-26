@@ -851,7 +851,7 @@ class Cat:
 
         # apply grief to cats with high positive relationships to dead cat
         for cat in Cat.all_cats.values():
-            if cat.dead or cat.outside or cat.moons < 1:
+            if cat.dead or cat.outside or cat.moons < 1 or cat.group != clan.name:
                 continue
 
             to_self = cat.relationships.get(self.ID, None)
@@ -896,12 +896,13 @@ class Cat:
                     major_chance -= 1
 
                 # decrease major grief chance if grave herbs are used
-                if body and not body_treated and "rosemary" in game.clan.herb_supply.entire_supply:
+                if body and not body_treated and ("rosemary" in game.clan.herb_supply.entire_supply or clan != game.clan):
                     body_treated = True
-                    game.clan.herb_supply.remove_herb("rosemary", -1)
-                    game.herb_events_list.append(
-                        f"Rosemary was used for {self.name}'s body."
-                    )
+                    if clan == game.clan:
+                        game.clan.herb_supply.remove_herb("rosemary", -1)
+                        game.herb_events_list.append(
+                            f"Rosemary was used for {self.name}'s body."
+                        )
 
                 if body_treated:
                     major_chance -= 1
@@ -925,7 +926,7 @@ class Cat:
 
                 text = choice(possible_strings)
                 text += " " + choice(MINOR_MAJOR_REACTION["major"])
-                text = event_text_adjust(Cat, text=text, main_cat=self, random_cat=cat)
+                text = event_text_adjust(Cat, text=text, main_cat=self, random_cat=cat, clan=clan)
 
                 cat.get_ill("grief stricken", event_triggered=True, severity="major", clan=clan)
 
@@ -1041,7 +1042,7 @@ class Cat:
         self.outside = True
 
         if self.status in ("leader", "warrior"):
-            self.status_change("warrior")
+            self.status_change("warrior", clan=[c for c in [game.clan] + game.clan.all_clans if c.name == self.group][0])
 
         for app in self.apprentice.copy():
             app_ob = Cat.fetch_cat(app)
@@ -1074,7 +1075,7 @@ class Cat:
         
         return ids
 
-    def status_change(self, new_status, resort=False):
+    def status_change(self, new_status, resort=False, clan=game.clan):
         """ Changes the status of a cat. Additional functions are needed if you want to make a cat a leader or deputy.
             new_status = The new status of a cat. Can be 'apprentice', 'healer apprentice', 'warrior'
                         'healer', 'elder'.
@@ -1092,7 +1093,7 @@ class Cat:
 
         # If they have any apprentices, make sure they are still valid:
         if old_status == "healer":
-            game.clan.remove_med_cat(self)
+            clan.remove_med_cat(self)
 
         # updates mentors
         if self.status == "apprentice":
@@ -1103,30 +1104,30 @@ class Cat:
 
         elif self.status == "warrior":
             if old_status == "leader" and (
-                game.clan.leader and game.clan.leader.ID == self.ID
+                clan.leader and clan.leader.ID == self.ID
             ):
-                game.clan.leader = None
-                game.clan.leader_predecessors += 1
-            if game.clan and game.clan.deputy and game.clan.deputy.ID == self.ID:
-                game.clan.deputy = None
-                game.clan.deputy_predecessors += 1
+                clan.leader = None
+                clan.leader_predecessors += 1
+            if clan and clan.deputy and clan.deputy.ID == self.ID:
+                clan.deputy = None
+                clan.deputy_predecessors += 1
 
         elif self.status == 'healer':
-            if game.clan is not None:
-                game.clan.new_medicine_cat(self)
+            if clan is not None:
+                clan.new_medicine_cat(self)
 
         elif self.status == "elder":
             if (
                 old_status == "leader"
-                and game.clan.leader
-                and game.clan.leader.ID == self.ID
+                and clan.leader
+                and clan.leader.ID == self.ID
             ):
-                game.clan.leader = None
-                game.clan.leader_predecessors += 1
+                clan.leader = None
+                clan.leader_predecessors += 1
 
-            if game.clan.deputy and game.clan.deputy.ID == self.ID:
-                game.clan.deputy = None
-                game.clan.deputy_predecessors += 1
+            if clan.deputy and clan.deputy.ID == self.ID:
+                clan.deputy = None
+                clan.deputy_predecessors += 1
 
         elif self.status == "mediator":
             pass
@@ -1719,6 +1720,10 @@ class Cat:
         game_mode = game.switches["game_mode"]
         biome = game.switches["biome"]
         camp = game.switches["camp_bg"]
+        if self.group not in ["outsider cat", " ", game.clan.name]:
+            clan = [c for c in game.clan.all_clans if c.name == self.group][0]
+        else:
+            clan = game.clan
         try:
             season = game.clan.current_season
         except Exception:
@@ -1790,7 +1795,7 @@ class Cat:
             chosen_thought,
             main_cat=self,
             random_cat=other_cat,
-            clan=game.clan,
+            clan=clan,
         )
 
         # insert thought
@@ -2340,6 +2345,7 @@ class Cat:
 
     def retire_cat(self):
         """This is only for cats that retire due to health condition"""
+        clan=[c for c in [game.clan] + game.clan.all_clans if c.name == self.group][0]
 
         # There are some special tasks we need to do for apprentice
         # Note that although you can un-retire cats, they will be a full warrior/med_cat/mediator
@@ -2350,11 +2356,11 @@ class Cat:
         ):
             _ment = Cat.fetch_cat(self.mentor) if self.mentor else None
             self.status_change(
-                "warrior"
+                "warrior", clan=clan
             )  # Temp switch them to warrior, so the following step will work
             self.rank_change_traits_skill(_ment)
 
-        self.status_change("elder")
+        self.status_change("elder", clan=clan)
         return
 
     def is_ill(self):

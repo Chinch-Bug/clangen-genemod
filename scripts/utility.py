@@ -973,7 +973,9 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
         else:
             picked_cats = [choice(orphans)]
     else:
-        if status:
+        if status == "any_apprentice":
+            all_clan_cats = [cat for cat in all_clan_cats if "apprentice" in cat.status]
+        elif status:
             all_clan_cats = [cat for cat in all_clan_cats if cat.status == status]
         
         if age == "mate":

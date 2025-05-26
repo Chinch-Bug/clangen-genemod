@@ -3229,7 +3229,7 @@
                 "exp": 10,
                 "weight": 20,
                 "new_cat": [
-                    ["age:adolescent", "backstory:otherclan2", "clancat", "change_clan"]
+                    ["age:adolescent", "status:any_apprentice", "backstory:otherclan2", "clancat", "change_clan"]
                 ],
                 "relationships": [
                     {
@@ -3246,7 +3246,7 @@
                 "exp": 10,
                 "weight": 10,
                 "new_cat": [
-                    ["age:adolescent", "backstory:otherclan2", "clancat"]
+                    ["age:adolescent", "status:any_apprentice", "backstory:otherclan2", "clancat", "change_clan"]
                 ],
                 "relationships": [
                     {
@@ -3272,7 +3272,7 @@
                 ],
                 "can_have_stat": ["any"],
                 "new_cat": [
-                    ["age:adolescent", "backstory:otherclan2", "clancat", "change_clan"]
+                    ["age:adolescent", "status:any_apprentice", "backstory:otherclan2", "clancat", "change_clan"]
                 ],
                 "relationships": [
                     {

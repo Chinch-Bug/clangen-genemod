@@ -52,38 +52,38 @@ class RoleScreen(Screens):
                 else:
                     print("invalid previous cat", self.previous_cat)
             elif event.ui_element == self.promote_leader:
-                if self.the_cat == game.clan.deputy:
-                    game.clan.deputy = None
-                game.clan.new_leader(self.the_cat)
+                if self.the_cat == self.clan.deputy:
+                    self.clan.deputy = None
+                self.clan.new_leader(self.the_cat)
                 if game.sort_type == "rank":
                     Cat.sort_cats()
                 self.update_selected_cat()
             elif event.ui_element == self.promote_deputy:
-                game.clan.deputy = self.the_cat
-                self.the_cat.status_change("deputy", resort=True)
+                self.clan.deputy = self.the_cat
+                self.the_cat.status_change("deputy", resort=True, clan=self.clan)
                 self.update_selected_cat()
             elif event.ui_element == self.switch_warrior:
-                self.the_cat.status_change("warrior", resort=True)
+                self.the_cat.status_change("warrior", resort=True, clan=self.clan)
                 self.update_selected_cat()
             elif event.ui_element == self.switch_med_cat:
-                self.the_cat.status_change("healer", resort=True)
+                self.the_cat.status_change("healer", resort=True, clan=self.clan)
                 self.update_selected_cat()
             elif event.ui_element == self.retire:
-                self.the_cat.status_change("elder", resort=True)
+                self.the_cat.status_change("elder", resort=True, clan=self.clan)
                 # Since you can't "unretire" a cat, apply the skill and trait change
                 # here
                 self.update_selected_cat()
             elif event.ui_element == self.switch_mediator:
-                self.the_cat.status_change("mediator", resort=True)
+                self.the_cat.status_change("mediator", resort=True, clan=self.clan)
                 self.update_selected_cat()
             elif event.ui_element == self.switch_warrior_app:
-                self.the_cat.status_change("apprentice", resort=True)
+                self.the_cat.status_change("apprentice", resort=True, clan=self.clan)
                 self.update_selected_cat()
             elif event.ui_element == self.switch_med_app:
-                self.the_cat.status_change("healer apprentice", resort=True)
+                self.the_cat.status_change("healer apprentice", resort=True, clan=self.clan)
                 self.update_selected_cat()
             elif event.ui_element == self.switch_mediator_app:
-                self.the_cat.status_change("mediator apprentice", resort=True)
+                self.the_cat.status_change("mediator apprentice", resort=True, clan=self.clan)
                 self.update_selected_cat()
 
         elif event.type == pygame.KEYDOWN and game.settings["keybinds"]:
@@ -225,6 +225,8 @@ class RoleScreen(Screens):
         if not self.the_cat:
             return
 
+        self.clan = [c for c in [game.clan] + game.clan.all_clans if c.name == self.the_cat.group][0]
+
         self.selected_cat_elements["cat_image"] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((245, 40), (150, 150))),
             pygame.transform.scale(
@@ -327,13 +329,13 @@ class RoleScreen(Screens):
 
         self.update_previous_next_cat_buttons()
 
-        if game.clan.leader:
-            leader_invalid = game.clan.leader.dead or game.clan.leader.outside
+        if self.clan.leader:
+            leader_invalid = self.clan.leader.dead or self.clan.leader.outside
         else:
             leader_invalid = True
 
-        if game.clan.deputy:
-            deputy_invalid = game.clan.deputy.dead or game.clan.deputy.outside
+        if self.clan.deputy:
+            deputy_invalid = self.clan.deputy.dead or self.clan.deputy.outside
         else:
             deputy_invalid = True
 
@@ -529,7 +531,7 @@ class RoleScreen(Screens):
         else:
             output = "screens.role.blurb_unknown"
 
-        return i18n.t(output, name=self.the_cat.name, clan=game.clan.name)
+        return i18n.t(output, name=self.the_cat.name, clan=self.clan.name)
 
     def exit_screen(self):
         self.back_button.kill()

@@ -617,10 +617,10 @@ class Events:
                         ),
                         "ceremony",
                         cat.ID,
-                        clan=game.clan.name
+                        clan=clan.name
                     )
                 )
-                cat.status_change("mediator")
+                cat.status_change("mediator", clan=clan)
 
     def get_moon_freshkill(self):
         """Adding auto freshkill for the current moon."""
@@ -824,7 +824,7 @@ class Events:
                             for illness, amount in injury_dict.items():
                                 possible_illnesses.extend([illness] * amount)
                             chosen_illness = random.choice(possible_illnesses)
-                            cat.get_ill(chosen_illness)
+                            cat.get_ill(chosen_illness, clan=game.clan)
                             involved_cats["sick"].append(cat.ID)
 
             # if it is raiding, lower the relation to other clans
@@ -983,11 +983,11 @@ class Events:
                 elif x.moons < 6:
                     x.status = "kitten"
                 elif x.moons < 12 and x.status != "apprentice":
-                    x.status_change("apprentice")
+                    x.status_change("apprentice", clan=clan)
                 elif x.moons < 120 and x.status != "warrior":
-                    x.status_change("warrior")
+                    x.status_change("warrior", clan=clan)
                 elif x.moons > 120:
-                    x.status_change("elder")
+                    x.status_change("elder", clan=clan)
 
     def handle_fading(self, cat, clan):
         """
@@ -1054,35 +1054,35 @@ class Events:
         """
         # aging the cat
         clan = [clan for clan in [game.clan] + game.clan.all_clans if clan.name == cat.group]
-        clan = clan[0] if len(clan) else None
+        clan = clan[0] if len(clan) else game.clan
         cat.one_moon()
         cat.manage_outside_trait()
 
         self.handle_outside_EX(cat)
 
         cat.skills.progress_skill(cat)
-        Pregnancy_Events.handle_having_kits(cat, clan=clan if clan else game.clan)
+        Pregnancy_Events.handle_having_kits(cat, clan=clan)
 
         if cat.is_ill() or cat.is_injured():
             if cat.is_ill() and cat.is_injured():
                 if random.getrandbits(1):
-                    triggered_death = Condition_Events.handle_injuries(cat, clan=clan if clan else game.clan)
+                    triggered_death = Condition_Events.handle_injuries(cat, clan=clan)
                     if not triggered_death:
-                        Condition_Events.handle_illnesses(cat, clan=clan if clan else game.clan)
+                        Condition_Events.handle_illnesses(cat, clan=clan)
                 else:
-                    triggered_death = Condition_Events.handle_illnesses(cat, clan=clan if clan else game.clan)
+                    triggered_death = Condition_Events.handle_illnesses(cat, clan=clan)
                     if not triggered_death:
-                        Condition_Events.handle_injuries(cat, clan=clan if clan else game.clan)
+                        Condition_Events.handle_injuries(cat, clan=clan)
             elif cat.is_ill():
-                Condition_Events.handle_illnesses(cat, clan=clan if clan else game.clan)
+                Condition_Events.handle_illnesses(cat, clan=clan)
             else:
-                Condition_Events.handle_injuries(cat, clan=clan if clan else game.clan)
+                Condition_Events.handle_injuries(cat, clan=clan)
             game.switches["skip_conditions"].clear()
             if cat.dead:
                 return
 
         if not cat.dead:
-            OutsiderEvents.killing_outsiders(cat)
+            OutsiderEvents.killing_outsiders(cat, clan)
     
     def kit_deaths(self, cats, clan=None):
         fading_kits = []
@@ -1644,7 +1644,7 @@ class Events:
             Cat.fetch_cat(cat.mentor) if cat.mentor else None
         )  # Grab current mentor, if they have one, before it's removed.
         old_name = str(cat.name)
-        cat.status_change(promoted_to)
+        cat.status_change(promoted_to, clan=clan)
         cat.rank_change_traits_skill(_ment)
 
         involved_cats = [cat.ID]  # Clearly, the cat the ceremony is about is involved.
@@ -2061,7 +2061,7 @@ class Events:
                 + list(range(ran[1][0], ran[1][1] + 1))
             )
 
-            if game.clan.game_mode == "classic":
+            if game.clan.game_mode == "classic" or cat.group != game.clan.name:
                 exp += random.randint(0, 3)
 
             cat.experience += max(exp * mentor_modifier, 1)
@@ -2278,7 +2278,8 @@ class Events:
                 sub_type=["murder"],
                 freshkill_pile=game.clan.freshkill_pile,
                 clan=clan,
-                second_clan=[c for c in clan if c.name == chosen_cat.group][0] if chosen_cat.group != cat.group and chosen_cat.group not in ["outsider cat", " "] else None
+                second_clan=[c for c in all_clans if c.name == chosen_cat.group][0] if chosen_cat.group != cat.group and chosen_cat.group not in [
+                    "outsider cat", " "] else None
             )
 
             return
@@ -2589,7 +2590,7 @@ class Events:
             or clan.deputy.outside
             or clan.deputy.status == "elder"
         ):
-            if not game.clan.clan_settings.get("deputy"):
+            if not game.clan.clan_settings.get("deputy") or clan != game.clan:
                 string = event_text_adjust(Cat, i18n.t("defaults.warn_no_deputy"), clan=clan)
                 game.cur_events_list.insert(0, Single_Event(string, clan=clan.name))
                 return
@@ -2686,7 +2687,7 @@ class Events:
                     return
 
             text = event_text_adjust(Cat, text, main_cat=random_cat, clan=clan)
-            random_cat.status_change("deputy")
+            random_cat.status_change("deputy", clan=clan)
             clan.deputy = random_cat
 
             game.cur_events_list.append(Single_Event(text, "ceremony", involved_cats,

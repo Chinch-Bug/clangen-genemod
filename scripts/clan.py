@@ -188,18 +188,18 @@ class Clan:
     # The clan couldn't save itself in time due to issues arising, for example, from this function: "if deputy is not None: self.deputy.status_change('deputy') -> game.clan.remove_med_cat(self)"
     def post_initialization_functions(self):
         if self.deputy is not None:
-            self.deputy.status_change("deputy")
+            self.deputy.status_change("deputy", clan=self)
             self.clan_cats.append(self.deputy.ID)
 
         if self.leader:
-            self.leader.status_change("leader")
+            self.leader.status_change("leader", clan=self)
             self.clan_cats.append(self.leader.ID)
 
         if self.medicine_cat is not None:
             self.clan_cats.append(self.medicine_cat.ID)
             self.med_cat_list.append(self.medicine_cat.ID)
             if self.medicine_cat.status != 'healer':
-                Cat.all_cats[self.medicine_cat.ID].status_change('healer')
+                Cat.all_cats[self.medicine_cat.ID].status_change('healer', clan=self)
     def create_clan(self, clancount="singleclan"):
         """
         This function is only called once a new clan is
@@ -257,7 +257,7 @@ class Clan:
             Cat.all_cats.get(cat_id).init_all_relationships()
             Cat.all_cats.get(cat_id).backstory = "clan_founder"
             if Cat.all_cats.get(cat_id).status == "apprentice":
-                Cat.all_cats.get(cat_id).status_change("apprentice")
+                Cat.all_cats.get(cat_id).status_change("apprentice", clan=self)
             Cat.all_cats.get(cat_id).thoughts()
         game.save_cats()
         self.save_clan()
@@ -406,7 +406,7 @@ class Clan:
             if not self.leader.history:
                 self.leader.history = History()
             self.leader.history.add_lead_ceremony(leader, self)
-            Cat.all_cats[leader.ID].status_change("leader")
+            Cat.all_cats[leader.ID].status_change("leader", clan=self)
             self.leader_predecessors += 1
             self.leader_lives = 9
         game.switches["new_leader"] = None
@@ -417,7 +417,7 @@ class Clan:
         """
         if deputy:
             self.deputy = deputy
-            Cat.all_cats[deputy.ID].status_change("deputy")
+            Cat.all_cats[deputy.ID].status_change("deputy", clan=self)
             self.deputy_predecessors += 1
 
     def new_medicine_cat(self, medicine_cat):
@@ -426,7 +426,7 @@ class Clan:
         """
         if medicine_cat:
             if medicine_cat.status != 'healer':
-                Cat.all_cats[medicine_cat.ID].status_change('healer')
+                Cat.all_cats[medicine_cat.ID].status_change('healer', clan=self)
             if medicine_cat.ID not in self.med_cat_list:
                 self.med_cat_list.append(medicine_cat.ID)
             medicine_cat = self.med_cat_list[0]
@@ -688,8 +688,11 @@ class Clan:
                         chosen_symbol=other_clan["chosen_symbol"],
                         leader=other_clan.get("leader"),
                         leader_lives=other_clan.get("leader_lives"),
+                        leader_predecessors=other_clan.get("leader_predecessors", 0),
                         deputy=other_clan.get("deputy"),
-                        medicine_cat=other_clan.get("medicine_cat")
+                        deputy_predecessors=other_clan.get("deputy_predecessors", 0),
+                        medicine_cat=other_clan.get("medicine_cat"),
+                        med_cat_predecessors=other_clan.get("med_cat_predecessors", 0),
                     )
                 )
         else:
@@ -1148,7 +1151,7 @@ class OtherClan:
         "gracious",
     ]
 
-    def __init__(self, name="", clancount="singleclan", relations=0, temperament="", chosen_symbol="", leader=None, leader_lives=9, deputy=None, medicine_cat=None):
+    def __init__(self, name="", clancount="singleclan", relations=0, temperament="", chosen_symbol="", leader=None, leader_lives=9, leader_predecessors=0, deputy=None, deputy_predecessors=0, medicine_cat=None, med_cat_predecessors=0):
         clan_names = names.names_dict["normal_prefixes"]
         clan_names.extend(names.names_dict["clan_prefixes"])
         self.name = name or choice(clan_names)
@@ -1168,8 +1171,11 @@ class OtherClan:
 
         self.leader = Cat.all_cats.get(leader)
         self.leader_lives = leader_lives if leader else 0
+        self.leader_predecessors = leader_predecessors
         self.deputy = Cat.all_cats.get(deputy)
+        self.deputy_predecessors = deputy_predecessors
         self.medicine_cat = Cat.all_cats.get(medicine_cat)
+        self.med_cat_predecessors = med_cat_predecessors
         self.med_cat_list = []
         self.med_cat_number = len(self.med_cat_list)
 
@@ -1191,8 +1197,11 @@ class OtherClan:
             "chosen_symbol" : self.chosen_symbol,
             "leader" : self.leader.ID if self.leader else None,
             "leader_lives" : self.leader_lives,
+            "leader_predecessors" : self.leader_predecessors,
             "deputy" : self.deputy.ID if self.deputy else None,
-            "medicine_cat" : self.medicine_cat.ID if self.medicine_cat else None,
+            "deputy_predecessors": self.deputy_predecessors,
+            "medicine_cat": self.medicine_cat.ID if self.medicine_cat else None,
+            "med_cat_predecessors": self.med_cat_predecessors,
         }
     
     def new_leader(self, leader):
@@ -1204,7 +1213,7 @@ class OtherClan:
             if not self.leader.history:
                 self.leader.history = History()
             self.leader.history.add_lead_ceremony(leader, self)
-            Cat.all_cats[leader.ID].status_change("leader")
+            Cat.all_cats[leader.ID].status_change("leader", clan=self)
             self.leader_lives = 9
 
     def new_deputy(self, deputy):
@@ -1213,7 +1222,7 @@ class OtherClan:
         """
         if deputy:
             self.deputy = deputy
-            Cat.all_cats[deputy.ID].status_change("deputy")
+            Cat.all_cats[deputy.ID].status_change("deputy", clan=self)
 
     def new_medicine_cat(self, medicine_cat):
         """
@@ -1221,7 +1230,7 @@ class OtherClan:
         """
         if medicine_cat:
             if medicine_cat.status != 'healer':
-                Cat.all_cats[medicine_cat.ID].status_change('healer')
+                Cat.all_cats[medicine_cat.ID].status_change('healer', clan=self)
             if medicine_cat.ID not in self.med_cat_list:
                 self.med_cat_list.append(medicine_cat.ID)
             medicine_cat = self.med_cat_list[0]

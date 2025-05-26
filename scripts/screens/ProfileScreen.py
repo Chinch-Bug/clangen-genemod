@@ -836,7 +836,7 @@ class ProfileScreen(Screens):
         # Optional - Only shows up for leaders
         if not the_cat.dead and "leader" in the_cat.status:
             output += i18n.t(
-                "screens.profile.lives_remaining_label", count=game.clan.leader_lives
+                "screens.profile.lives_remaining_label", count=[c for c in [game.clan] + game.clan.all_clans if c.name == the_cat.group][0].leader_lives
             )
             # NEWLINE ----------
             output += "\n"
