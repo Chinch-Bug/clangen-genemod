@@ -99,7 +99,7 @@ def get_alive_status_cats(
         get_status: list,
         working: bool = False,
         sort: bool = False,
-        clan: str = None
+        clan = None
 ) -> list:
     """
     returns a list of cat objects for all living cats of get_status in Clan
@@ -116,6 +116,9 @@ def get_alive_status_cats(
     ]
 
     if clan:
+        for c in alive_cats:
+            if not c.group:
+                pass
         alive_cats = [i for i in alive_cats if i.group.name == clan]
 
     if working:
@@ -686,8 +689,10 @@ def create_new_cat_block(
                     status = "elder"
                 elif chosen_cat.moons >= 12:
                     status = "warrior"
-            chosen_cat.status = status
             chosen_cat.outside = outside
+            if not outside:
+                chosen_cat.status = status
+                chosen_cat.group = clan
             if not alive:
                 chosen_cat.die()
 
