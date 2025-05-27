@@ -202,7 +202,7 @@ class LeaderDenScreen(Screens):
                         and not i.exiled
                         and not i.outside
                         and not i.not_working()
-                        and i.group == game.clan.name
+                        and i.group == game.clan
                         and i.status in ("mediator", "mediator apprentice")
                     ]
                     if mediators:
@@ -218,7 +218,7 @@ class LeaderDenScreen(Screens):
                     if not i.dead
                     and not i.exiled
                     and not i.outside
-                    and i.group == game.clan.name
+                    and i.group == game.clan
                     and i.status not in ("newborn", "kitten", "leader")
                 ]
                 if adults:
@@ -274,7 +274,7 @@ class LeaderDenScreen(Screens):
         )
 
         # if no one is alive, give a special notice
-        if not get_living_clan_cat_count(Cat, clan=game.clan.name):
+        if not get_living_clan_cat_count(Cat, clan=game.clan):
             self.no_leader = True
             self.screen_elements["clan_notice_text"].set_text(
                 "screens.leader_den.no_cats_clan"
@@ -985,7 +985,7 @@ class LeaderDenScreen(Screens):
         outsiders = [
             i
             for i in Cat.all_cats.values()
-            if (i.group in [game.clan.name, "outsider cat"]) and not i.dead and not i.driven_out and i.outside
+            if (i.group in [game.clan, None]) and not i.dead and not i.driven_out and i.outside
         ]
 
         # separate them into chunks for the pages

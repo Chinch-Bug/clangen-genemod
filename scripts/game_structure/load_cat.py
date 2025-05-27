@@ -53,7 +53,7 @@ def json_load():
     for i, cat in enumerate(cat_data):
         try:
             if not cat.get("group"):
-                cat["group"] = "outsider cat" if cat["status"] in ["kittypet", "loner", "rogue", "formerClancat"] else clanname
+                cat["group"] = None if cat["status"] in ["kittypet", "loner", "rogue", "formerClancat"] else clanname
             try:
                 new_cat = Cat(ID=cat["ID"],
                         prefix=cat["name_prefix"],

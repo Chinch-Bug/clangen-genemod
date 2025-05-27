@@ -47,7 +47,7 @@ class GroupEvents:
                 )
 
     @staticmethod
-    def start_interaction(cat: Cat, interact_cats: list, clan=game.clan) -> list:
+    def start_interaction(cat: Cat, interact_cats: list) -> list:
         """Start to define the possible group interactions.
 
         Parameters
@@ -110,7 +110,7 @@ class GroupEvents:
         chosen_interaction = choice(possibilities)
 
         # TRIGGER ALL NEEDED FUNCTIONS TO REFLECT THE INTERACTION
-        GroupEvents.injuring_cats(chosen_interaction, abbreviations_cat_id, clan)
+        GroupEvents.injuring_cats(chosen_interaction, abbreviations_cat_id)
         amount = game.config["relationship"]["in_decrease_value"][
             chosen_interaction.intensity
         ]
@@ -141,7 +141,7 @@ class GroupEvents:
             relevant_event_tabs.append("health")
 
         game.cur_events_list.append(
-            Single_Event(interaction_str, relevant_event_tabs, ids, clan=cat.group)
+            Single_Event(interaction_str, relevant_event_tabs, ids, clan=cat.group.name if cat.group else game.clan.name)
         )
         return ids
 
@@ -653,7 +653,7 @@ class GroupEvents:
             )
 
     @staticmethod
-    def injuring_cats(chosen_interaction, abbreviations_cat_id, clan=game.clan):
+    def injuring_cats(chosen_interaction, abbreviations_cat_id):
         """
         Injuring the cats based on the list of the injuries of the chosen group interaction.
         """
@@ -670,7 +670,7 @@ class GroupEvents:
 
             injuries = []
             for inj in injury_dict["injury_names"]:
-                injured_cat.get_injured(inj, True, clan=clan)
+                injured_cat.get_injured(inj, True)
                 injuries.append(inj)
 
             possible_scar = (

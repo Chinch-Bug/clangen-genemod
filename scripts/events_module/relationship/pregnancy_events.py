@@ -247,7 +247,7 @@ class Pregnancy_Events:
         if other_cat:
             other_cat_copy = []
             for x in other_cat:
-                if not(x.dead or (x.outside and x.group != "outsider cat") or x.birth_cooldown > 0 or x.no_kits):
+                if not(x.dead or (x.outside and x.group) or x.birth_cooldown > 0 or x.no_kits):
                     other_cat_copy.append(x)
             other_cat = other_cat_copy
         
@@ -303,7 +303,7 @@ class Pregnancy_Events:
             }
             text = choice(Pregnancy_Events.PREGNANT_STRINGS["announcement"])
             severity = random.choices(["minor", "major"], [3, 1], k=1)
-            cat.get_injured("pregnant", severity=severity[0], clan=clan)
+            cat.get_injured("pregnant", severity=severity[0])
             text += choice(Pregnancy_Events.PREGNANT_STRINGS[f"{severity[0]}_severity"])
 
             text = event_text_adjust(Cat, text, main_cat=cat, clan=clan)
@@ -343,8 +343,8 @@ class Pregnancy_Events:
                                         and (game.clan.clan_settings['same sex birth'] or xor('Y' in i.phenotype.sexgene, 'Y' in cat.phenotype.sexgene)) 
                                         and len(i.mate) == 0 and not i.birth_cooldown
                                         and i.group != cat.group]
-                outsider_affair_partners = [i for i in possible_affair_partners if i.group == "outsider cat"]
-                other_clan_affair_partners = [i for i in possible_affair_partners if i.group != "outsider cat"]
+                outsider_affair_partners = [i for i in possible_affair_partners if i.group is None]
+                other_clan_affair_partners = [i for i in possible_affair_partners if i.group]
 
                 if surrogate:
                     other_cat[0].birth_cooldown = game.config["pregnancy"]["birth_cooldown"]
@@ -428,7 +428,7 @@ class Pregnancy_Events:
                         "fever_coat": fever
                     }
                     severity = random.choices(["minor", "major"], [3, 1], k=1)
-                    pregnant_cat.get_injured("pregnant", severity=severity[0], clan=clan)
+                    pregnant_cat.get_injured("pregnant", severity=severity[0])
                     return
 
                 kits = Pregnancy_Events.get_kits(amount, cat, outside_parent if not surrogate else [pregnant_cat], clan, backkit=backkit)
@@ -449,7 +449,7 @@ class Pregnancy_Events:
                     if surrogate:
                         cats_involved.append(pregnant_cat.ID)
                         
-                        pregnant_cat.get_injured("recovering from birth", event_triggered=True, clan=clan)
+                        pregnant_cat.get_injured("recovering from birth", event_triggered=True)
                         print_event = i18n.t(
                             "conditions.pregnancy.outside_surrogate_dam",
                             name=cat.name,
@@ -468,13 +468,13 @@ class Pregnancy_Events:
                             if par:
                                 cats_involved.append(par.ID)
                                 par.birth_cooldown = game.config["pregnancy"]["birth_cooldown"]
-                                par.get_injured("recovering from birth", event_triggered=True, clan=clan)
-                                if par.group != cat.group and par.group != "outsider cat":
+                                par.get_injured("recovering from birth", event_triggered=True)
+                                if par.group != cat.group and par.group:
                                     Pregnancy_Events.rebuild_strings()
                                     events = Pregnancy_Events.PREGNANT_STRINGS
                                     secondary_event = choice(events["birth"]["otherclan_mother"])
                                     secondary_event = event_text_adjust(Cat, secondary_event, main_cat=par)
-                                    game.cur_events_list.append(Single_Event(secondary_event, "birth_death", cats_involved=cats_involved, clan=par.group))
+                                    game.cur_events_list.append(Single_Event(secondary_event, "birth_death", cats_involved=cats_involved, clan=par.group.name if par.group else game.clan))
                     for kit in kits:
                         cats_involved.append(kit.ID)
                     game.cur_events_list.append(Single_Event(print_event, "birth_death", cats_involved=cats_involved, clan=clan.name))
@@ -524,7 +524,7 @@ class Pregnancy_Events:
 
             text = choice(Pregnancy_Events.PREGNANT_STRINGS["announcement"])
             severity = random.choices(["minor", "major"], [3, 1], k=1)
-            pregnant_cat.get_injured("pregnant", severity=severity[0], clan=clan)
+            pregnant_cat.get_injured("pregnant", severity=severity[0])
             text += choice(Pregnancy_Events.PREGNANT_STRINGS[f"{severity[0]}_severity"])
             text = event_text_adjust(Cat, text, main_cat=pregnant_cat, clan=clan)
             game.cur_events_list.append(
@@ -696,8 +696,8 @@ class Pregnancy_Events:
                                     and (game.clan.clan_settings['same sex birth'] or xor('Y' in i.phenotype.sexgene, 'Y' in cat.phenotype.sexgene)) 
                                     and len(i.mate) == 0
                                     and i.group != cat.group]
-            outsider_affair_partners = [i for i in possible_affair_partners if i.group == "outsider cat"]
-            other_clan_affair_partners = [i for i in possible_affair_partners if i.group != "outsider cat"]
+            outsider_affair_partners = [i for i in possible_affair_partners if i.group is None]
+            other_clan_affair_partners = [i for i in possible_affair_partners if i.group]
 
             if (random.random() < 0.25 and len(other_clan_affair_partners)):
                 other_cat = [choice(other_clan_affair_partners)]
@@ -897,16 +897,16 @@ class Pregnancy_Events:
 
             if cat.status == "leader":
                 clan.leader_lives -= 1
-                cat.die(clan=clan)
+                cat.die()
                 death_event = i18n.t("conditions.pregnancy.leader_kitting_death")
             else:
-                cat.die(clan=clan)
+                cat.die()
                 death_event = i18n.t(
                     "conditions.pregnancy.kitting_death", name=cat.name
                 )
             History.add_death(cat, death_text=death_event)
         else:  # if cat doesn't die, give recovering from birth
-            cat.get_injured("recovering from birth", event_triggered=True, clan=clan)
+            cat.get_injured("recovering from birth", event_triggered=True)
             if "blood loss" in cat.injuries:
                 if cat.status == "leader":
                     death_event = i18n.t(
@@ -1159,7 +1159,7 @@ class Pregnancy_Events:
                 i
                 for i in Cat.all_cats_list
                 if i.is_potential_mate(cat, for_love_interest=True)
-                and i.group in [cat.group, "outsider cat"]
+                and i.group in [cat.group, None]
                 and (samesex or xor('Y' in i.phenotype.sexgene, 'Y' in cat.phenotype.sexgene))
                 and "infertility" not in i.permanent_condition
                 and i.ID not in cat.mate
@@ -1200,7 +1200,7 @@ class Pregnancy_Events:
         unknowns = []
         for outcat in Cat.all_cats:
             outcat = Cat.all_cats.get(outcat)
-            if not outcat.dead and outcat.group == "outsider cat" and 'infertility' not in outcat.permanent_condition :    
+            if not outcat.dead and outcat.group is None and 'infertility' not in outcat.permanent_condition:    
                 unknowns.append(outcat)
         outsiders = [i for i in unknowns if
                     i.is_potential_mate(cat, for_love_interest=True, outsider=True)
@@ -1250,7 +1250,7 @@ class Pregnancy_Events:
         for check_cat in all_cats:
             for x in check_cat.relationships.values():
                 check_cand = Cat.fetch_cat(x.cat_to)
-                if check_cand in all_cats or check_cand.dead or (check_cand.outside and not only_clanmate and check_cand.group != "outsider cat") or (check_cand.group != cat.group and only_clanmate):
+                if check_cand in all_cats or check_cand.dead or (check_cand.outside and not only_clanmate and check_cand.group) or (check_cand.group != cat.group and only_clanmate):
                     continue
                 if (x.romantic_love + x.platonic_like + x.admiration + x.trust + x.comfortable - x.dislike - x.jealousy) > 20:
                     if Pregnancy_Events.check_if_can_have_kits(check_cand, True, True) and not check_cand.mate and xor('Y' in check_cand.phenotype.sexgene, 'Y' in cat.phenotype.sexgene) and 'infertility' not in check_cand.permanent_condition:
@@ -1478,7 +1478,7 @@ class Pregnancy_Events:
 
                 sire = choice(blood_parent2)
                 chimera_sire = choice(blood_parent2)
-                kit = Cat(parent1=blood_parent.ID, parent2=sire.ID, extrapar=chimera_sire if sire.ID != chimera_sire.ID else None, group=clan.name, moons=litter_age, backstory=backstory, status='newborn' if litter_age == 0 else 'kitten')
+                kit = Cat(parent1=blood_parent.ID, parent2=sire.ID, extrapar=chimera_sire if sire.ID != chimera_sire.ID else None, group=clan, moons=litter_age, backstory=backstory, status='newborn' if litter_age == 0 else 'kitten')
             else:
                 # Two parents provided
                 second_blood = None
@@ -1489,9 +1489,9 @@ class Pregnancy_Events:
                         chimera_sire = None
 
                 if backkit:    
-                    kit = Cat(parent1=cat.ID, parent2=second_blood.ID if second_blood else None, group=clan.name, moons=0, backstory=backstory, status='newborn', extrapar = par2geno if not second_blood else chimera_sire)
+                    kit = Cat(parent1=cat.ID, parent2=second_blood.ID if second_blood else None, group=clan, moons=0, backstory=backstory, status='newborn', extrapar = par2geno if not second_blood else chimera_sire)
                 else:
-                    kit = Cat(parent1=cat.ID, parent2=second_blood.ID, group=clan.name, moons=0, status='newborn')
+                    kit = Cat(parent1=cat.ID, parent2=second_blood.ID, group=clan, moons=0, status='newborn')
                 
                 if 'Y' not in cat.phenotype.sexgene or not second_blood or second_blood.outside:
                     kit.thought = i18n.t("hardcoded.new_kit_thought", name=str(cat.name))
@@ -1843,7 +1843,7 @@ class Pregnancy_Events:
         living_cats = len(
             [
                 i for i in Cat.all_cats.values()
-                if not i.dead and not i.outside and not i.exiled and i.group == clan.name
+                if not i.dead and not i.outside and not i.exiled and i.group == clan
             ]
         )
         if living_cats < 10:

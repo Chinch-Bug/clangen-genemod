@@ -156,7 +156,7 @@ class AllegiancesScreen(Screens):
 
         living_cats = [
             cat for cat in Cat.all_cats.values()
-            if not cat.dead and not cat.outside and cat.group == game.clan.name
+            if not cat.dead and not cat.outside and cat.group == game.clan
         ]
         living_meds = []
         living_mediators = []

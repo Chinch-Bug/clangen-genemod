@@ -42,7 +42,7 @@ def event_for_season(seasons: list) -> bool:
     return False
 
 
-def event_for_tags(tags: list, cat, clan:str, other_cat=None) -> bool:
+def event_for_tags(tags: list, cat, clan, other_cat=None) -> bool:
     """
         checks if current tags disqualify the event
         """

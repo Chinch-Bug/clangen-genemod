@@ -183,7 +183,7 @@ class Condition_Events:
             else:
                 History.add_death(cat, condition="starving", death_text=history_event)
 
-            cat.die(clan=game.clan)
+            cat.die()
 
             # if the cat is the leader and isn't full dead
             # make them malnourished and refill nutrition slightly
@@ -192,7 +192,7 @@ class Condition_Events:
                     nutrition_info[cat.ID].max_score / 100 * (MAL_PERCENTAGE + 1)
                 )
                 nutrition_info[cat.ID].current_score = round(mal_score, 2)
-                cat.get_ill("malnourished", clan=game.clan)
+                cat.get_ill("malnourished")
 
             types = ["birth_death"]
             game.cur_events_list.append(
@@ -243,7 +243,7 @@ class Condition_Events:
             cat.illnesses.pop(illness)
         elif not heal and illness:
             event = random.choice(Condition_Events.ILLNESS_GOT_STRINGS[illness])
-            cat.get_ill(illness, clan=game.clan)
+            cat.get_ill(illness)
 
         if event:
             event_text = event_text_adjust(Cat, event, main_cat=cat)
@@ -307,7 +307,7 @@ class Condition_Events:
                 if chosen_illness == "kittencough" and cat.status != "kitten":
                     chosen_illness = "whitecough"
                 # make em sick
-                cat.get_ill(chosen_illness, clan=clan)
+                cat.get_ill(chosen_illness)
 
                 # create event text
                 if i18n.config.get("locale") == "en" and chosen_illness in (
@@ -406,7 +406,7 @@ class Condition_Events:
 
             if triggered:
                 # CLAN FOCUS!
-                if game.clan.clan_settings.get("rest and recover") and cat.group == game.clan.name:
+                if game.clan.clan_settings.get("rest and recover") and cat.group == game.clan:
                     stopping_chance = game.config["focus"]["rest and recover"][
                         "injury_prevent"
                     ]
@@ -563,7 +563,7 @@ class Condition_Events:
                 continue
 
             # moon skip to try and kill or heal cat
-            skipped = cat.moon_skip_illness(illness, clan=clan)
+            skipped = cat.moon_skip_illness(illness)
 
             # if event trigger was true, events should be skipped for this illness
             if skipped is True:
@@ -836,7 +836,7 @@ class Condition_Events:
             types = ["health"]
             if cat.dead:
                 types.append("birth_death")
-            game.cur_events_list.append(Single_Event(event_string, types, cat.ID, clan=cat.group))
+            game.cur_events_list.append(Single_Event(event_string, types, cat.ID, clan=cat.group.name if cat.group else game.clan.name))
 
         return triggered
 
@@ -867,7 +867,7 @@ class Condition_Events:
         for condition in conditions:
             # checking if the cat has a congenital condition to reveal and handling duration and death
             prev_lives = clan.leader_lives
-            status = cat.moon_skip_permanent_condition(condition, clan=clan)
+            status = cat.moon_skip_permanent_condition(condition)
 
             if condition in condition_progression:
                 progs = condition_progression[condition]
@@ -1218,10 +1218,10 @@ class Condition_Events:
                 game.switches["skip_conditions"].append(new_condition_name)
                 # here we give the new condition
                 if new_condition_name in Condition_Events.INJURIES:
-                    cat.get_injured(new_condition_name, event_triggered=event_triggered, clan=clan)
+                    cat.get_injured(new_condition_name, event_triggered=event_triggered)
                     break
                 elif new_condition_name in Condition_Events.ILLNESSES:
-                    cat.get_ill(new_condition_name, event_triggered=event_triggered, clan=clan)
+                    cat.get_ill(new_condition_name, event_triggered=event_triggered)
                     if dictionary == cat.illnesses or removed_condition:
                         break
                     keys = dictionary[condition].keys()

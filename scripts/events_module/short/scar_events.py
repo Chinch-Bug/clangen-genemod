@@ -96,7 +96,7 @@ class Scar_Events:
 
         amount_per_med = get_amount_cat_for_one_medic(clan)
         if medicine_cats_can_cover_clan(
-            game.cat_class.all_cats.values(), amount_per_med, clan=clan.name
+            game.cat_class.all_cats.values(), amount_per_med, clan=clan
         ):
             chance += 2
 

@@ -819,7 +819,7 @@ class EventsScreen(Screens):
         game.switches["saved_scroll_positions"] = {}
 
         if not clanswitch:
-            if get_living_clan_cat_count(Cat, clan=game.clan.name) == 0:
+            if get_living_clan_cat_count(Cat, clan=game.clan) == 0:
                 GameOver("events screen")
             self.current_clan = game.clan.name
             self.change_clan()

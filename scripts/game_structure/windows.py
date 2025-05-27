@@ -1361,8 +1361,7 @@ class KillCat(UIWindow):
                     "",
                     self.death_entry_box.get_text(),
                 )
-                clans = [clan for clan in game.clan.all_clans if clan.name == self.the_cat.group]
-                needed_clan = clans[0] if clans else game.clan
+                needed_clan = self.the_cat.group if self.the_cat.group else game.clan
                 if self.the_cat.status == "leader":
                     if death_message.startswith("was"):
                         death_message = death_message.replace(
@@ -1378,7 +1377,7 @@ class KillCat(UIWindow):
                     else:
                         needed_clan.leader_lives -= 1
 
-                self.the_cat.die(clan=needed_clan)
+                self.the_cat.die()
                 self.history.add_death(self.the_cat, death_message)
                 update_sprite(self.the_cat)
                 game.all_screens["profile screen"].exit_screen()

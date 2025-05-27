@@ -244,7 +244,7 @@ class GenerateEvents:
         other_clan,
         freshkill_active,
         freshkill_trigger_factor,
-        clan: str,
+        clan,
         sub_types=None,
     ):
         final_events = []
@@ -436,7 +436,7 @@ class GenerateEvents:
                 continue
 
             elif event.supplies:
-                clan_size = get_living_clan_cat_count(Cat_class, game.clan.name)
+                clan_size = get_living_clan_cat_count(Cat_class, game.clan)
                 discard = False
                 for supply in event.supplies:
                     trigger = supply["trigger"]

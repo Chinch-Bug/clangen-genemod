@@ -50,12 +50,12 @@ if TYPE_CHECKING:
 # ---------------------------------------------------------------------------- #
 
 
-def get_alive_clan_queens(living_cats):
+def get_alive_clan_queens(living_cats, clan=game.clan):
     living_kits = [
         cat
         for cat in living_cats
         if not (cat.dead or cat.outside) and cat.status in ("kitten", "newborn")
-        and cat.group == game.clan.name
+        and cat.group == clan
     ]
 
     queen_dict = {}
@@ -67,7 +67,7 @@ def get_alive_clan_queens(living_cats):
             for i in parents
             if cat.fetch_cat(i)
             and not (cat.fetch_cat(i).dead or cat.fetch_cat(i).outside)
-            and cat.fetch_cat(i).group == game.clan.name
+            and cat.fetch_cat(i).group == clan
         ]
         if not parents:
             continue
@@ -116,7 +116,7 @@ def get_alive_status_cats(
     ]
 
     if clan:
-        alive_cats = [i for i in alive_cats if i.group == clan]
+        alive_cats = [i for i in alive_cats if i.group.name == clan]
 
     if working:
         alive_cats = [i for i in alive_cats if not i.not_working()]
@@ -140,7 +140,7 @@ def get_living_cat_count(Cat):
     return count
 
 
-def get_living_clan_cat_count(Cat, clan:str=None):
+def get_living_clan_cat_count(Cat, clan=None):
     """
     Returns the int of all living cats within the Clan
     :param Cat: Cat class
@@ -203,7 +203,7 @@ def get_free_possible_mates(cat):
 
 
 def get_random_moon_cat(
-        Cat, main_cat, parent_child_modifier=True, mentor_app_modifier=True, clan:str=None
+        Cat, main_cat, parent_child_modifier=True, mentor_app_modifier=True, clan=None
 ):
     """
     returns a random cat for use in moon events
@@ -689,7 +689,7 @@ def create_new_cat_block(
             chosen_cat.status = status
             chosen_cat.outside = outside
             if not alive:
-                chosen_cat.die(clan=clan)
+                chosen_cat.die()
 
             if new_name:
                 name = f"{chosen_cat.name.prefix}"
@@ -884,7 +884,7 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
     give_mates = []
     picked_cats = []
     
-    all_clan_cats = [i for i in Cat.all_cats.values() if i.group == other_clan.name and not i.outside and not i.dead]
+    all_clan_cats = [i for i in Cat.all_cats.values() if i.group == other_clan and not i.outside and not i.dead]
     for a in attribute_list:
         match = re.match(r'status:\s?(.+)', a)
         if match:
@@ -966,7 +966,7 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
 
         
     if "litter" in attribute_list:
-        (parents, orphans) = get_alive_clan_queens(all_clan_cats)[0]
+        (parents, orphans) = get_alive_clan_queens(all_clan_cats, clan=other_clan)[0]
         if parents:
             litter = parents[choice(list(parents.keys()))]
             picked_cats = litter
@@ -991,7 +991,7 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
 
     if "change_clan" in attribute_list:
         for cat in picked_cats:
-            cat.group = clan.name
+            cat.group = clan
             if cat.status == "leader":
                 other_clan.leader = None
                 other_clan.leader_lives = 0
@@ -1028,7 +1028,7 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
         # UPDATE INHERITANCE
         cat.create_inheritance_new_cat()
     elif "change_clan_rev" in attribute_list:
-        give_mates[0].group = other_clan.name
+        give_mates[0].group = other_clan
         if give_mates[0].status == "leader":
             clan.leader = None
             clan.leader_lives = 0
@@ -1176,7 +1176,7 @@ def create_new_cat(
             new_cat = Cat(
                 moons=age,
                 status=status,
-                group=group.name if group and status not in ["kittypet", "loner", "rogue", "former Clancat"] else None,
+                group=group if group and status not in ["kittypet", "loner", "rogue", "former Clancat"] else None,
                 gender=_gender,
                 backstory=backstory,
                 parent1=parent1,
@@ -1214,7 +1214,7 @@ def create_new_cat(
                         moons=age,
                         prefix=name,
                         status=status,
-                        group=group.name if group and status not in ["kittypet", "loner", "rogue", "former Clancat"] else None,
+                        group=group if group and status not in ["kittypet", "loner", "rogue", "former Clancat"] else None,
                         gender=_gender,
                         backstory=backstory,
                         parent1=parent1,
@@ -1228,7 +1228,7 @@ def create_new_cat(
                     new_cat = Cat(
                         moons=age,
                         status=status,
-                        group=group.name if group and status not in ["kittypet", "loner", "rogue", "former Clancat"] else None,
+                        group=group if group and status not in ["kittypet", "loner", "rogue", "former Clancat"] else None,
                         gender=_gender,
                         backstory=backstory,
                         parent1=parent1,
@@ -1243,8 +1243,7 @@ def create_new_cat(
                     prefix=name,
                     suffix="",
                     status=status,
-                    group=group.name if group and status not in [
-                        "kittypet", "loner", "rogue", "former Clancat"] else None,
+                    group=group if group and status not in ["kittypet", "loner", "rogue", "former Clancat"] else None,
                     gender=_gender,
                     backstory=backstory,
                     parent1=parent1,
@@ -1347,7 +1346,7 @@ def create_new_cat(
             if new_cat.status in ["kittypet", "rogue", "loner"]:
                 new_cat.name.suffix = ""
         if not alive:
-            new_cat.die(clan=group)
+            new_cat.die()
 
         # newbie thought
         new_cat.thought = thought
@@ -2703,8 +2702,7 @@ def leader_ceremony_text_adjust(
         leader,
         life_giver=None,
         virtue=None,
-        extra_lives=None,
-        clan=game.clan
+        extra_lives=None
 ):
     """
     used to adjust the text for leader ceremonies
@@ -2729,7 +2727,7 @@ def leader_ceremony_text_adjust(
     if extra_lives:
         text = text.replace("[life_num]", str(extra_lives))
 
-    text = text.replace("c_n", str(clan.name) + "Clan")
+    text = text.replace("c_n", str(leader.group.name) + "Clan")
 
     return text
 

@@ -32,7 +32,7 @@ class OutsiderEvents:
                 death_history = "m_c died outside of the Clan."
                 if cat.exiled:
                     text = f"Rumors reach your Clan that the exiled {cat.name} has died recently."
-                elif cat.group == "outsider cat":
+                elif cat.group is None:
                     text = (
                         f"Rumors reach your Clan that the {cat.status} "
                         f"{cat.name} has died recently."
@@ -50,7 +50,7 @@ class OutsiderEvents:
                     )
 
                 History.add_death(cat, death_text=death_history)
-                cat.die(False, clan=clan)
+                cat.die(False)
                 game.cur_events_list.append(
                     Single_Event(text, "birth_death", cat_dict={"m_c": cat}, clan=clan.name)
                 )

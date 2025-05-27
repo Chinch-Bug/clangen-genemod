@@ -2269,10 +2269,10 @@ class MakeClanScreen(Screens):
             starting_members=self.members,
             starting_season=self.selected_season,
         )
-        for id in Cat.all_cats:
-            Cat.all_cats[id].group = self.clan_name
 
         game.clan.create_clan(self.clan_count_mode)
+        for id in Cat.all_cats:
+            Cat.all_cats[id].group = game.clan
 
         # game.clan.starclan_cats.clear()
         game.cur_events_list.clear()

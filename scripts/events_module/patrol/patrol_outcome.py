@@ -527,7 +527,7 @@ class PatrolOutcome:
                 catnames.append(str(_cat.name))
             # Kill Cat
             self.__handle_death_history(_cat, patrol)
-            _cat.die(body, game.clan)
+            _cat.die(body)
         if catnames is not []:
             results.append(
                 i18n.t(
@@ -629,9 +629,9 @@ class PatrolOutcome:
                     give_injury = choice(possible_injuries)
 
                 if give_injury in INJURIES:
-                    _cat.get_injured(give_injury, lethal=lethal, clan=game.clan)
+                    _cat.get_injured(give_injury, lethal=lethal)
                 elif give_injury in ILLNESSES:
-                    _cat.get_ill(give_injury, lethal=lethal, clan=game.clan)
+                    _cat.get_ill(give_injury, lethal=lethal)
                 elif give_injury in PERMANENT:
                     _cat.get_permanent_condition(give_injury)
                 else:
@@ -888,7 +888,7 @@ class PatrolOutcome:
                             'Y' not in sub_sub[0].phenotype.sexgene or game.clan.clan_settings['same sex birth']) \
                             and sub_sub[0].ID in (sub[0].parent1, sub[0].parent2) and not (
                             sub_sub[0].dead or sub_sub[0].outside):
-                        sub_sub[0].get_injured("recovering from birth", clan=game.clan)
+                        sub_sub[0].get_injured("recovering from birth")
                         break  # Break - only one parent ever gives birth
 
         return " ".join(results)

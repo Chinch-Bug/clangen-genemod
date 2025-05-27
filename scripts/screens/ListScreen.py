@@ -914,7 +914,7 @@ class ListScreen(Screens):
         self.current_group = "clan"
         self.death_status = "living"
         self.full_cat_list = [
-            cat for cat in Cat.all_cats_list if not cat.dead and not cat.outside and cat.group == game.clan.name
+            cat for cat in Cat.all_cats_list if not cat.dead and not cat.outside and cat.group == game.clan
         ]
 
     def get_other_clan_cats(self, clan):
@@ -924,7 +924,7 @@ class ListScreen(Screens):
         self.current_group = clan
         self.death_status = "living"
         self.full_cat_list = [
-            cat for cat in Cat.all_cats_list if not cat.dead and not cat.outside and cat.group == clan
+            cat for cat in Cat.all_cats_list if not cat.dead and not cat.outside and cat.group and cat.group.name == clan
         ]
 
     def get_cotc_cats(self):
@@ -935,7 +935,7 @@ class ListScreen(Screens):
         self.death_status = "living"
         self.full_cat_list = []
         for the_cat in Cat.all_cats_list:
-            if not the_cat.dead and the_cat.group == "outsider cat":
+            if not the_cat.dead and the_cat.group is None:
                 self.full_cat_list.append(the_cat)
 
     def get_sc_cats(self):

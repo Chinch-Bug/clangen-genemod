@@ -100,7 +100,7 @@ class Welcoming_Events:
                 ["relation", "interaction"],
                 [new_cat.ID, clan_cat.ID],
                 cat_dict={"m_c": new_cat, "r_c": clan_cat},
-                clan=new_cat.group,
+                clan=new_cat.group.name if new_cat.group else game.clan.name,
             )
         )
 

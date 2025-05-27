@@ -604,7 +604,7 @@ class Patrol:
             if flag:
                 continue
 
-            if not event_for_tags(patrol.tags, Cat, game.clan.name):
+            if not event_for_tags(patrol.tags, Cat, game.clan):
                 continue
 
             if patrol.other_clan and game.clan.clancount == 'multiclan' and not event_for_other_clan(Cat, patrol.other_clan_filter.get("has_rank"), self.other_clan):

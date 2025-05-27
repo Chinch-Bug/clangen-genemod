@@ -825,8 +825,8 @@ class ProfileScreen(Screens):
                 f"<font color='#FF0000'>{i18n.t('general.exiled', count=1)}</font>"
             )
         else:
-            if game.clan.clancount == "multiclan" and not the_cat.outside and the_cat.group != " ":
-                output += the_cat.group + "Clan "
+            if game.clan.clancount == "multiclan" and not the_cat.outside and the_cat.group:
+                output += the_cat.group.name + "Clan "
             output += i18n.t(f"general.{the_cat.status}", count=1)
 
         # NEWLINE ----------
@@ -836,7 +836,7 @@ class ProfileScreen(Screens):
         # Optional - Only shows up for leaders
         if not the_cat.dead and "leader" in the_cat.status:
             output += i18n.t(
-                "screens.profile.lives_remaining_label", count=[c for c in [game.clan] + game.clan.all_clans if c.name == the_cat.group][0].leader_lives
+                "screens.profile.lives_remaining_label", count=the_cat.group.leader_lives
             )
             # NEWLINE ----------
             output += "\n"

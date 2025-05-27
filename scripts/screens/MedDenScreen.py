@@ -261,7 +261,7 @@ class MedDenScreen(Screens):
                     not the_cat.dead
                     and not the_cat.outside
                     and (the_cat.injuries or the_cat.illnesses)
-                    and the_cat.group == game.clan.name
+                    and the_cat.group == game.clan
                 ):
                     self.injured_and_sick_cats.append(the_cat)
             for cat in self.injured_and_sick_cats:

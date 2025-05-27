@@ -185,7 +185,7 @@ class Relation_Events:
 
         possible_interaction_cats = [
             cat for cat in Cat.all_cats.values()
-            if not cat.dead and not cat.outside and not cat.exiled and cat.group == clan.name
+            if not cat.dead and not cat.outside and not cat.exiled and cat.group == clan
         ]
 
         if cat in possible_interaction_cats:
@@ -199,7 +199,7 @@ class Relation_Events:
             )
 
         interacted_cat_ids = GroupEvents.start_interaction(
-            cat, possible_interaction_cats, clan=clan
+            cat, possible_interaction_cats
         )
         for id in interacted_cat_ids:
             inter_cat = Cat.all_cats[id]

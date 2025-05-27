@@ -165,11 +165,11 @@ class Cat:
         if group:
             self.group = group
         elif status in ["loner", "rogue", "kittypet", "former Clancat"]:
-            self.group = "outsider cat"
+            self.group = None
         elif game.clan:
-            self.group = game.clan.name
+            self.group = game.clan
         else:
-            self.group = ""
+            self.group = None
         self.backstory = backstory
         self.age = None
         self.skills = CatSkills(skill_dict=skill_dict)
@@ -739,7 +739,7 @@ class Cat:
         """
         return not self.dead
 
-    def die(self, body: bool = True, clan=game.clan):
+    def die(self, body: bool = True):
         """Kills cat.
 
         body - defaults to True, use this to mark if the body was recovered so
@@ -749,7 +749,7 @@ class Cat:
         if (
             self.status == "leader"
             and "pregnant" in self.injuries
-            and clan.leader_lives > 0
+            and self.group.leader_lives > 0
         ):
             self.illnesses.clear()
 
@@ -767,18 +767,18 @@ class Cat:
         darkforest = game.clan.instructor.df
         isoutside = self.outside
         if self.status == "leader":
-            if clan.leader_lives > 0:
-                lives_left = clan.leader_lives
+            if self.group.leader_lives > 0:
+                lives_left = self.group.leader_lives
                 death_thought = Thoughts.leader_death_thought(
                     self, lives_left, darkforest
                 )
                 final_thought = event_text_adjust(self, death_thought, main_cat=self)
                 self.thought = final_thought
                 return ""
-            elif clan.leader_lives <= 0:
+            elif self.group.leader_lives <= 0:
                 self.dead = True
                 game.just_died.append(self.ID)
-                clan.leader_lives = 0
+                self.group.leader_lives = 0
                 death_thought = Thoughts.leader_death_thought(self, 0, darkforest)
                 final_thought = event_text_adjust(self, death_thought, main_cat=self)
                 self.thought = final_thought
@@ -803,7 +803,7 @@ class Cat:
 
         # if game.clan and game.clan.game_mode != 'classic' and not (self.outside or self.exiled) and body is not None:
         if game.clan and not self.outside and not self.exiled and self.moons > 1:
-            self.grief(body, clan=clan)
+            self.grief(body)
 
         if not self.outside:
             Cat.dead_cats.append(self)
@@ -834,7 +834,7 @@ class Cat:
                 fetched_cat.update_mentor()
         self.update_mentor()
 
-    def grief(self, body: bool, clan=game.clan):
+    def grief(self, body: bool):
         """
         compiles grief moon event text
         """
@@ -851,7 +851,7 @@ class Cat:
 
         # apply grief to cats with high positive relationships to dead cat
         for cat in Cat.all_cats.values():
-            if cat.dead or cat.outside or cat.moons < 1 or cat.group != clan.name:
+            if cat.dead or cat.outside or cat.moons < 1 or cat.group != self.group:
                 continue
 
             to_self = cat.relationships.get(self.ID, None)
@@ -896,9 +896,9 @@ class Cat:
                     major_chance -= 1
 
                 # decrease major grief chance if grave herbs are used
-                if body and not body_treated and ("rosemary" in game.clan.herb_supply.entire_supply or clan != game.clan):
+                if body and not body_treated and ("rosemary" in game.clan.herb_supply.entire_supply or self.group != game.clan):
                     body_treated = True
-                    if clan == game.clan:
+                    if self.group == game.clan:
                         game.clan.herb_supply.remove_herb("rosemary", -1)
                         game.herb_events_list.append(
                             f"Rosemary was used for {self.name}'s body."
@@ -926,9 +926,9 @@ class Cat:
 
                 text = choice(possible_strings)
                 text += " " + choice(MINOR_MAJOR_REACTION["major"])
-                text = event_text_adjust(Cat, text=text, main_cat=self, random_cat=cat, clan=clan)
+                text = event_text_adjust(Cat, text=text, main_cat=self, random_cat=cat, clan=self.group)
 
-                cat.get_ill("grief stricken", event_triggered=True, severity="major", clan=clan)
+                cat.get_ill("grief stricken", event_triggered=True, severity="major")
 
             # If major grief fails, but there are still very_high or high values,
             # it can fail to to minor grief. If they have a family relation, bypass the roll.
@@ -1014,7 +1014,7 @@ class Cat:
                     )
 
                 text = event_text_adjust(
-                    Cat, choice(possible_strings), main_cat=self, random_cat=cat
+                    Cat, choice(possible_strings), main_cat=self, random_cat=cat, clan=self.group
                 )
                 if cat.ID not in Cat.grief_strings:
                     Cat.grief_strings[cat.ID] = []
@@ -1042,7 +1042,7 @@ class Cat:
         self.outside = True
 
         if self.status in ("leader", "warrior"):
-            self.status_change("warrior", clan=[c for c in [game.clan] + game.clan.all_clans if c.name == self.group][0])
+            self.status_change("warrior")
 
         for app in self.apprentice.copy():
             app_ob = Cat.fetch_cat(app)
@@ -1075,12 +1075,13 @@ class Cat:
         
         return ids
 
-    def status_change(self, new_status, resort=False, clan=game.clan):
+    def status_change(self, new_status, resort=False):
         """ Changes the status of a cat. Additional functions are needed if you want to make a cat a leader or deputy.
             new_status = The new status of a cat. Can be 'apprentice', 'healer apprentice', 'warrior'
                         'healer', 'elder'.
             resort = If sorting type is 'rank', and resort is True, it will resort the cat list. This should
                     only be true for non-timeskip status changes. """
+        clan = self.group if self.group else game.clan
         old_status = self.status
         self.status = new_status
         self.name.status = new_status
@@ -1312,7 +1313,7 @@ class Cat:
 
             print(f"WARNING: saving history of cat #{self.ID} didn't work")
 
-    def generate_lead_ceremony(self, clan):
+    def generate_lead_ceremony(self):
         """Create a leader ceremony and add it to the history"""
 
         load_leader_ceremonies()
@@ -1352,8 +1353,7 @@ class Cat:
             intro = leader_ceremony_text_adjust(
                 Cat,
                 intro,
-                self,
-                clan=clan
+                self
             )
         else:
             intro = "this should not appear"
@@ -1600,8 +1600,7 @@ class Cat:
                     chosen_life["text"],
                     leader=self,
                     life_giver=giver,
-                    virtue=virtue,
-                    clan=clan
+                    virtue=virtue
                 )
             )
         if unknown_blessing:
@@ -1626,8 +1625,7 @@ class Cat:
                     chosen_text["text"],
                     leader=self,
                     virtue=chosen_text["virtue"],
-                    extra_lives=extra_lives,
-                    clan=clan
+                    extra_lives=extra_lives
                 )
             )
         all_lives = "<br><br>".join(lives)
@@ -1667,8 +1665,7 @@ class Cat:
                 Cat,
                 outro,
                 leader=self,
-                life_giver=giver,
-                clan=clan
+                life_giver=giver
             )
         else:
             outro = "this should not appear"
@@ -1720,13 +1717,6 @@ class Cat:
         game_mode = game.switches["game_mode"]
         biome = game.switches["biome"]
         camp = game.switches["camp_bg"]
-        if game.clan:
-            if self.group not in ["outsider cat", " ", game.clan.name]:
-                clan = [c for c in game.clan.all_clans if c.name == self.group][0]
-            else:
-                clan = None
-        else:
-            clan = False
         try:
             season = game.clan.current_season
         except Exception:
@@ -1787,12 +1777,15 @@ class Cat:
                     break
 
         other_cat = all_cats.get(other_cat)
-
-        if other_cat and clan is None:
-            if other_cat.group not in ["outsider cat", " ", game.clan.name]:
-                clan = [c for c in game.clan.all_clans if c.name == other_cat.group][0]
-            else:
+        
+        if game.clan:
+            clan = self.group
+            if other_cat and other_cat.group and clan is None:
+                clan = other_cat.group
+            elif clan is None:
                 clan = game.clan
+        else:
+            clan = None
 
         # get chosen thought
         chosen_thought = Thoughts.get_chosen_thought(
@@ -1837,7 +1830,7 @@ class Cat:
         if relevant_relationship.cat_to.is_ill():
             self.contact_with_ill_cat(relevant_relationship.cat_to)
 
-    def moon_skip_illness(self, illness, clan=game.clan):
+    def moon_skip_illness(self, illness):
         """handles the moon skip for illness"""
         if not self.is_ill():
             return True
@@ -1859,7 +1852,7 @@ class Cat:
                 self.leader_death_heal = True
                 game.clan.leader_lives -= 1
 
-            self.die(clan=clan)
+            self.die()
             return False
 
         moons_with = game.clan.age - self.illnesses[illness]["moon_start"]
@@ -1899,7 +1892,7 @@ class Cat:
         if mortality and not int(random() * mortality):
             if self.status == "leader":
                 clan.leader_lives -= 1
-            self.die(clan=clan)
+            self.die()
             return False
 
         moons_with = game.clan.age - self.injuries[injury]["moon_start"]
@@ -1925,7 +1918,7 @@ class Cat:
             self.healed_condition = True
             return False
 
-    def moon_skip_permanent_condition(self, condition, clan=game.clan):
+    def moon_skip_permanent_condition(self, condition):
         """handles the moon skip for permanent conditions"""
         if not self.is_disabled():
             return "skip"
@@ -1960,7 +1953,7 @@ class Cat:
         if mortality and not int(random() * mortality):
             if self.status == "leader":
                 game.clan.leader_lives -= 1
-            self.die(clan=clan)
+            self.die()
             return "died"
     
         if not mortality:
@@ -2048,7 +2041,7 @@ class Cat:
     #                                  conditions                                  #
     # ---------------------------------------------------------------------------- #
 
-    def get_ill(self, name, event_triggered=False, lethal=True, severity="default", clan=game.clan):
+    def get_ill(self, name, event_triggered=False, lethal=True, severity="default"):
         """Add an illness to this cat.
 
         :param name: name of the illness (str)
@@ -2069,9 +2062,9 @@ class Cat:
         duration = illness["duration"]
         med_duration = illness["medicine_duration"]
 
-        amount_per_med = get_amount_cat_for_one_medic(clan)
+        amount_per_med = get_amount_cat_for_one_medic(self.group)
 
-        if medicine_cats_can_cover_clan(Cat.all_cats.values(), amount_per_med, clan):
+        if medicine_cats_can_cover_clan(Cat.all_cats.values(), amount_per_med, self.group):
             duration = med_duration
         if severity != "minor":
             duration += randrange(-1, 1)
@@ -2099,7 +2092,7 @@ class Cat:
             medicine_mortality=med_mortality,
             risks=illness["risks"],
             event_triggered=event_triggered,
-            clan=clan.name
+            clan=self.group
         )
 
         if new_illness.name not in self.illnesses:
@@ -2113,7 +2106,7 @@ class Cat:
                 "event_triggered": new_illness.new,
             }
 
-    def get_injured(self, name, event_triggered=False, lethal=True, severity="default", clan=game.clan):
+    def get_injured(self, name, event_triggered=False, lethal=True, severity="default"):
         """Add an injury to this cat.
 
         :param name: The injury to add
@@ -2141,7 +2134,7 @@ class Cat:
 
         injury_severity = injury["severity"] if severity == "default" else severity
         if medicine_cats_can_cover_clan(
-            Cat.all_cats.values(), get_amount_cat_for_one_medic(clan), clan.name
+            Cat.all_cats.values(), get_amount_cat_for_one_medic(self.group if self.group else game.clan), self.group if self.group else game.clan
         ):
             duration = med_duration
         if severity != "minor":
@@ -2168,7 +2161,7 @@ class Cat:
             also_got=injury["also_got"],
             cause_permanent=injury["cause_permanent"],
             event_triggered=event_triggered,
-            clan=clan.name
+            clan=self.group.name if self.group else game.clan.name
         )
 
         if new_injury.name not in self.injuries:
@@ -2194,7 +2187,7 @@ class Cat:
                 needed_herbs = {"horsetail", "raspberry", "marigold", "cobwebs"}
                 usable_herbs = list(needed_herbs.intersection(clan_herbs))
 
-                if usable_herbs and clan == game.clan:
+                if usable_herbs and self.group == game.clan:
                     # deplete the herb
                     herb_used = choice(usable_herbs)
                     game.clan.herb_supply.remove_herb(herb_used, -1)
@@ -2209,14 +2202,14 @@ class Cat:
                 self.also_got = True
                 additional_injury = choice(new_injury.also_got)
                 if additional_injury in INJURIES:
-                    self.additional_injury(additional_injury, clan=clan)
+                    self.additional_injury(additional_injury)
                 else:
-                    self.get_ill(additional_injury, event_triggered=True, clan=clan)
+                    self.get_ill(additional_injury, event_triggered=True)
         else:
             self.also_got = False
 
-    def additional_injury(self, injury, clan=game.clan):
-        self.get_injured(injury, event_triggered=True, clan=clan)
+    def additional_injury(self, injury):
+        self.get_injured(injury, event_triggered=True)
 
     def congenital_condition(self, cat):
         possible_conditions = []
@@ -2354,8 +2347,6 @@ class Cat:
 
     def retire_cat(self):
         """This is only for cats that retire due to health condition"""
-        clan=[c for c in [game.clan] + game.clan.all_clans if c.name == self.group][0]
-
         # There are some special tasks we need to do for apprentice
         # Note that although you can un-retire cats, they will be a full warrior/med_cat/mediator
         if self.moons > 6 and self.status in (
@@ -2365,11 +2356,11 @@ class Cat:
         ):
             _ment = Cat.fetch_cat(self.mentor) if self.mentor else None
             self.status_change(
-                "warrior", clan=clan
+                "warrior"
             )  # Temp switch them to warrior, so the following step will work
             self.rank_change_traits_skill(_ment)
 
-        self.status_change("elder", clan=clan)
+        self.status_change("elder")
         return
 
     def is_ill(self):
@@ -3674,7 +3665,7 @@ class Cat:
                 else {i18n.config.get("locale"): self.pronouns},
                 "birth_cooldown": self.birth_cooldown,
                 "status": self.status,
-                "group": self.group,
+                "group": self.group.name if self.group else None,
                 "backstory": self.backstory or None,
                 "moons": self.moons,
                 "trait": self.personality.trait,
@@ -3775,8 +3766,8 @@ class Cat:
 
 
 # Creates a random cat
-def create_cat(status, moons=None, biome=None, kittypet=False, group=None):
-    new_cat = Cat(status=status, biome=biome, kittypet=kittypet, group=group)
+def create_cat(status, moons=None, biome=None, kittypet=False):
+    new_cat = Cat(status=status, biome=biome, kittypet=kittypet)
 
     if moons is not None:
         new_cat.moons = moons
