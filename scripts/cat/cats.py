@@ -1724,9 +1724,9 @@ class Cat:
             if self.group not in ["outsider cat", " ", game.clan.name]:
                 clan = [c for c in game.clan.all_clans if c.name == self.group][0]
             else:
-                clan = game.clan
+                clan = None
         else:
-            clan = None
+            clan = False
         try:
             season = game.clan.current_season
         except Exception:
@@ -1787,6 +1787,12 @@ class Cat:
                     break
 
         other_cat = all_cats.get(other_cat)
+
+        if other_cat and clan is None:
+            if other_cat.group not in ["outsider cat", " ", game.clan.name]:
+                clan = [c for c in game.clan.all_clans if c.name == other_cat.group][0]
+            else:
+                clan = game.clan
 
         # get chosen thought
         chosen_thought = Thoughts.get_chosen_thought(
