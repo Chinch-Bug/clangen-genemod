@@ -119,7 +119,7 @@ def get_alive_status_cats(
         for c in alive_cats:
             if not c.group:
                 pass
-        alive_cats = [i for i in alive_cats if i.group.name == clan]
+        alive_cats = [i for i in alive_cats if i.group and i.group.name == clan]
 
     if working:
         alive_cats = [i for i in alive_cats if not i.not_working()]

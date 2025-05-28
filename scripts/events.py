@@ -2588,7 +2588,7 @@ class Events:
             or clan.deputy.outside
             or clan.deputy.status == "elder"
         ):
-            if not game.clan.clan_settings.get("deputy") and clan != game.clan:
+            if not game.clan.clan_settings.get("deputy") and clan == game.clan:
                 string = event_text_adjust(Cat, i18n.t("defaults.warn_no_deputy"), clan=clan)
                 game.cur_events_list.insert(0, Single_Event(string, clan=clan.name))
                 return
