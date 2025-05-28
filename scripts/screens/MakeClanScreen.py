@@ -2271,8 +2271,6 @@ class MakeClanScreen(Screens):
         )
 
         game.clan.create_clan(self.clan_count_mode)
-        for id in Cat.all_cats:
-            Cat.all_cats[id].group = game.clan
 
         # game.clan.starclan_cats.clear()
         game.cur_events_list.clear()

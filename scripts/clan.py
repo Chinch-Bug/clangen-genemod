@@ -222,6 +222,8 @@ class Clan:
         for i in key_copy:  # Going through all currently existing cats
             # cat_class is a Cat-object
             not_found = True
+
+            Cat.all_cats[i].group = self
             for x in self.starting_members:
                 if Cat.all_cats[i] == x:
                     self.add_cat(Cat.all_cats[i])
