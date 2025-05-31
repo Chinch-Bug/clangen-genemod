@@ -344,7 +344,7 @@ class Pregnancy_Events:
                                         and len(i.mate) == 0 and not i.birth_cooldown
                                         and i.group != cat.group]
                 outsider_affair_partners = [i for i in possible_affair_partners if i.group is None]
-                other_clan_affair_partners = [i for i in possible_affair_partners if i.group]
+                other_clan_affair_partners = [i for i in possible_affair_partners if i.group and i.ID not in game.clan.pregnancy_data]
 
                 if surrogate:
                     other_cat[0].birth_cooldown = game.config["pregnancy"]["birth_cooldown"]

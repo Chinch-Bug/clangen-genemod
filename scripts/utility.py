@@ -584,7 +584,10 @@ def create_new_cat_block(
     elif "clancat" in attribute_list:
         cat_type = "former Clancat"
     else:
-        cat_type = choice(['kittypet', 'kittypet', 'loner', 'loner', 'former Clancat'])
+        if game.clan.clancount == "multiclan":
+            cat_type = choice(['kittypet', 'kittypet', 'loner', 'loner'])
+        else:
+            cat_type = choice(['kittypet', 'kittypet', 'loner', 'loner', 'former Clancat'])
 
     # LITTER
     litter = False
@@ -1043,6 +1046,10 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
             clan.remove_med_cat(cat)
         if give_mates[0].status in ["leader", "deputy"]:
             cat.status = "warrior"
+    
+    if "dead" in attribute_list:
+        for cat in picked_cats:
+            cat.die(True)
 
     for cat in picked_cats:
         cat.backstory = chosen_backstory

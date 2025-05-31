@@ -311,7 +311,7 @@ class Events:
                 and not game.clan.freshkill_pile.clan_has_enough_food()
             ):
                 event_string = i18n.t("defaults.warn_low_freshkill")
-                game.cur_events_list.insert(0, Single_Event(event_string, clan=game.clan))
+                game.cur_events_list.insert(0, Single_Event(event_string, clan=game.clan.name))
                 game.freshkill_event_list.append(event_string)
 
         self.handle_focus()
@@ -348,17 +348,18 @@ class Events:
             if not has_med:
                 string = i18n.t("defaults.warn_no_medcats")
                 game.cur_events_list.insert(0, Single_Event(string, "health", clan=game.clan.name))
-        for oc in game.clan.all_clans:
-            has_med = any(
-                str(cat.status) in {"healer", "healer apprentice"}
-                and not cat.dead
-                and not cat.outside
-                and cat.group == oc
-                for cat in Cat.all_cats.values()
-            )
-            if not has_med:
-                string = event_text_adjust(Cat, i18n.t("defaults.warn_no_medcats"), clan=oc)
-                game.cur_events_list.insert(0, Single_Event(string, "health", clan=oc.name))
+        if clancount:
+            for oc in game.clan.all_clans:
+                has_med = any(
+                    str(cat.status) in {"healer", "healer apprentice"}
+                    and not cat.dead
+                    and not cat.outside
+                    and cat.group == oc
+                    for cat in Cat.all_cats.values()
+                )
+                if not has_med:
+                    string = event_text_adjust(Cat, i18n.t("defaults.warn_no_medcats"), clan=oc)
+                    game.cur_events_list.insert(0, Single_Event(string, "health", clan=oc.name))
 
 
         # Clear the list of cats that died this moon.

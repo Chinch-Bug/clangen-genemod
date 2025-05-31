@@ -5002,7 +5002,11 @@
                 "text": "p_l seizes the opportunity to weaken o_c_n and orders the patrol to attack and kill the kits.",
                 "exp": 20,
                 "weight": 20,
-                "other_clan_rep": -2
+                "other_clan_rep": -2,
+                "new_cat": [
+                    [ "age: kitten", "clancat", "dead" ],
+                    [ "age: kitten", "clancat", "dead" ]
+                ]
             },
             {
                 "text": "p_l seizes the opportunity to weaken o_c_n and orders the patrol to steal the two kits.",
