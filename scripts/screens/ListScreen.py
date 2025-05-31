@@ -215,10 +215,12 @@ class ListScreen(Screens):
                 if "@checked_checkbox" in event.ui_element.get_object_ids():
                     element.change_object_id("@unchecked_checkbox")
                     element.set_tooltip("screens.list.search_genotypes_tooltip")
+                    self.cat_list_bar_elements["search_bar_entry"].set_tooltip("screens.list.search_genotypes_tutorial")
                     game.clan.clan_settings["search genotypes"] = False
                 else:
                     element.change_object_id("@checked_checkbox")
                     element.set_tooltip("screens.list.search_names_tooltip")
+                    self.cat_list_bar_elements["search_bar_entry"].set_tooltip("screens.list.search_genotypes_tutorial")
                     game.clan.clan_settings["search genotypes"] = True
                 self.cat_list_bar_elements["search_bar_entry"].placeholder_text="general.genotype_search" if game.clan.clan_settings["search genotypes"] else "general.name_search"
                 self.cat_list_bar_elements["search_bar_entry"].set_text("")
@@ -748,13 +750,26 @@ class ListScreen(Screens):
                     "poly" : ["Pd", "pd"],
                     "pax3" : ["NoDBE", "DBEre", "DBEalt", "DBEcel"],
                 }
-                find_gene = [key for key, value in gene_map.items() if search_text in value]
-                gene = find_gene[0] if len(find_gene) else None
-                self.current_listed_cats = [
-                    cat
-                    for cat in self.full_cat_list
-                    if gene and search_text in cat.phenotype[gene] or (gene and cat.chimerapheno and search_text in cat.chimerapheno[gene])
-                ]
+                orgroups = search_text.split("/")
+                self.current_listed_cats = []
+                for g in orgroups:
+                    alleles = g.split("&")
+                    found_cats = self.full_cat_list
+                    for a in alleles:
+                        allele = a.strip().strip("!")
+                        find_gene = [key for key, value in gene_map.items() if allele in value]
+                        gene = find_gene[0] if len(find_gene) else None
+                        if gene:
+                            found_cats = [
+                                cat
+                                for cat in found_cats
+                                if '!' not in a and (allele in cat.phenotype[gene] or
+                                (cat.chimerapheno and allele in cat.chimerapheno[gene]))
+                                or ('!' in a and allele not in cat.phenotype[gene] and
+                                    (not cat.chimerapheno or allele not in cat.chimerapheno[gene]))
+                            ]
+                    self.current_listed_cats += found_cats
+                self.current_listed_cats = list(set(self.current_listed_cats))
             else:
                 self.current_listed_cats = [
                     cat
