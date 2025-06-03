@@ -458,7 +458,6 @@ class Events:
                                 invited_cat.status = invited_cat.age
                                 if not invited_cat.name.suffix:
                                     invited_cat.name = Name(
-                                        Cat,
                                         invited_cat,
                                         invited_cat.name.prefix,
                                         invited_cat.name.suffix,

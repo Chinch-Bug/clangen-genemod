@@ -410,7 +410,6 @@ class Cat:
         if biome:
             self.name = Name(
                 self,
-                self,
                 prefix,
                 suffix,
                 biome=biome,
@@ -419,7 +418,6 @@ class Cat:
             )
         else:
             self.name = Name(
-                self, 
                 self, 
                 prefix, 
                 suffix, 
@@ -448,7 +446,7 @@ class Cat:
         :return: None
         """
         self.ID = ID
-        self.name = Name(self, self, prefix=prefix, suffix=suffix)
+        self.name = Name(self, prefix=prefix, suffix=suffix)
         self.parent1 = None
         self.parent2 = None
         self.parent3 = None

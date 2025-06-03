@@ -20,7 +20,6 @@ from pygame_gui.windows import UIMessageWindow
 from scripts.cat.history import History
 from scripts.cat.cats import Cat
 from scripts.cat.names import Name
-from scripts.cat.cats import Cat
 from scripts.cat_relations.inheritance import Inheritance
 from scripts.game_structure import image_cache
 from scripts.game_structure.game_essentials import game
@@ -799,7 +798,6 @@ class ChangeCatName(UIWindow):
                     use_suffix = self.the_cat.name.suffix
                 self.prefix_entry_box.set_text(
                     Name(
-                        Cat, 
                         self.the_cat,
                         None,
                         use_suffix,
@@ -813,7 +811,6 @@ class ChangeCatName(UIWindow):
                     use_prefix = self.the_cat.name.prefix
                 self.suffix_entry_box.set_text(
                     Name(
-                        Cat,
                         self.the_cat,
                         use_prefix,
                         None,
