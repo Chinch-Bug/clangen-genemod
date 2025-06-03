@@ -123,67 +123,74 @@ class Name:
                 name_fixpref = False
 
         if self.suffix and not load_existing_name:
-            # Prevent triple letter names from joining prefix and suffix from occurring (ex. Beeeye)
+            self.check_name(Cat, name_fixpref)
+
+    def check_name(self, Cat, name_fixpref):
+        # Prevent triple letter names from joining prefix and suffix from occurring (ex. Beeeye)
+        possible_three_letter = (
+            self.prefix[-2:] + self.suffix[0],
+            self.prefix[-1] + self.suffix[:2],
+        )
+        triple_letter = all(
+            i == possible_three_letter[0][0] for i in possible_three_letter[0]
+        ) or all(
+            i == possible_three_letter[1][0]
+            for i in possible_three_letter[1]
+            # Prevent double animal names (ex. Spiderfalcon)
+        )
+        double_animal = (
+            self.prefix in self.names_dict["animal_prefixes"]
+            and self.suffix in self.names_dict["animal_suffixes"]
+        )
+        # Prevent the inappropriate names
+        nono_name = self.prefix + self.suffix
+        # Prevent double names (ex. Iceice)
+        # Prevent suffixes containing the prefix (ex. Butterflyfly)
+
+        i = 0
+        while (
+            nono_name.lower() in self.names_dict["inappropriate_names"]
+            or triple_letter
+            or double_animal
+            or (
+                self.prefix.lower() in self.suffix.lower()
+                and str(self.prefix) != ""
+            )
+            or (
+                self.suffix.lower() in self.prefix.lower()
+                and str(self.suffix) != ""
+            )
+            or (
+                self.cat and hasattr(
+                    self.cat, "pelt") and not self.cat.pelt.scars
+                and self.suffix == "scar"
+            )
+        ):
+            # check if random die was for prefix
+            if name_fixpref and not (self.cat and hasattr(self.cat, "pelt") and not self.cat.pelt.scars and self.suffix == "scar"):
+                self.give_prefix(Cat, self.biome)
+            else:
+                self.suffix = None
+                self.give_suffix(self.skills, self.personality,
+                                 self.biome, self.honour)
+
+            nono_name = self.prefix + self.suffix
             possible_three_letter = (
                 self.prefix[-2:] + self.suffix[0],
                 self.prefix[-1] + self.suffix[:2],
             )
-            triple_letter = all(
-                i == possible_three_letter[0][0] for i in possible_three_letter[0]
-            ) or all(
-                i == possible_three_letter[1][0]
-                for i in possible_three_letter[1]
-            # Prevent double animal names (ex. Spiderfalcon)
-            )
-            double_animal = (
-                self.prefix in self.names_dict["animal_prefixes"]
-                and self.suffix in self.names_dict["animal_suffixes"]
-            )
-            # Prevent the inappropriate names
-            nono_name = self.prefix + self.suffix
-            # Prevent double names (ex. Iceice)
-            # Prevent suffixes containing the prefix (ex. Butterflyfly)
-
-            i = 0
-            while (
-                nono_name.lower() in self.names_dict["inappropriate_names"]
-                or triple_letter
-                or double_animal
-                or (
-                    self.prefix.lower() in self.suffix.lower()
-                    and str(self.prefix) != ""
-                )
-                or (
-                    self.suffix.lower() in self.prefix.lower()
-                    and str(self.suffix) != ""
-                )
+            if any(
+                i != possible_three_letter[0][0] for i in possible_three_letter[0]
+            ) and any(
+                i != possible_three_letter[1][0] for i in possible_three_letter[1]
             ):
-
-                # check if random die was for prefix
-                if name_fixpref:
-                    self.give_prefix(Cat, biome)
-                else:
-                    self.give_suffix(skills, personality, biome, honour)
-
-                nono_name = self.prefix + self.suffix
-                possible_three_letter = (
-                    self.prefix[-2:] + self.suffix[0],
-                    self.prefix[-1] + self.suffix[:2],
-                )
-                if any(
-                    i != possible_three_letter[0][0]
-                    for i in possible_three_letter[0]
-                ) and any(
-                    i != possible_three_letter[1][0]
-                    for i in possible_three_letter[1]
-                ):
-                    triple_letter = False
-                if (
-                    self.prefix not in self.names_dict["animal_prefixes"]
-                    or self.suffix not in self.names_dict["animal_suffixes"]
-                ):
-                    double_animal = False
-                i += 1
+                triple_letter = False
+            if (
+                self.prefix not in self.names_dict["animal_prefixes"]
+                or self.suffix not in self.names_dict["animal_suffixes"]
+            ):
+                double_animal = False
+            i += 1
 
     def filter(self, all, used):
         return [x for x in all if x not in used]
@@ -231,6 +238,8 @@ class Name:
 
         if random.random() < (1/chance):
             self.give_prefix(Cat, biome)
+        
+        self.check_name(Cat, True)
 
 
     # Generate possible prefix
@@ -442,6 +451,8 @@ class Name:
                 self.suffix = random.choice(self.names_dict["normal_suffixes"])
         else:
             self.suffix = random.choice(self.names_dict["normal_suffixes"])
+    
+        self.check_name(Cat, False)
 
     def __repr__(self):
         # Handles predefined suffixes (such as newborns being kit),
