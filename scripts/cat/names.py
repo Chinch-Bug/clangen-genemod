@@ -452,7 +452,7 @@ class Name:
         else:
             self.suffix = random.choice(self.names_dict["normal_suffixes"])
     
-        self.check_name(Cat, False)
+        self.check_name(self.cat, False)
 
     def __repr__(self):
         # Handles predefined suffixes (such as newborns being kit),
