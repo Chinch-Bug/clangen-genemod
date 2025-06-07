@@ -990,7 +990,7 @@ class MediationScreen(Screens):
     def on_use(self):
         super().on_use()
         # Only update the positions if the search text changes
-        if self.search_bar.is_focused and self.search_bar.get_text() == "name search":
+        if self.search_bar.is_focused and self.search_bar.get_text() == "general.name_search":
             self.search_bar.set_text("")
         if self.search_bar.get_text() != self.previous_search_text:
             self.update_search_cats(self.search_bar.get_text())
