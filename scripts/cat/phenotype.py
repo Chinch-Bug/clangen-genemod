@@ -883,38 +883,46 @@ class Phenotype(Genotype):
         else:
             banding = genes.wbtype
 
-
         if colour == "apricot":
-            if rufousing == "low":
+            if genes.ruftype == "low":
                 colour = "cream"
-                rufousing = "medium"
-            elif rufousing == "medium":
+                if rufousing != "silver":
+                    rufousing = "medium"
+            elif genes.ruftype == "medium":
                 colour = "cream"
-                rufousing = "rufoused"
+                if rufousing != "silver":
+                    rufousing = "rufoused"
             else:
                 colour = "red"
-                rufousing = "low"
+                if rufousing != "silver":
+                    rufousing = "low"
         elif colour == "honey-apricot":
-            if rufousing == "low":
+            if genes.ruftype == "low":
                 colour = "honey"
-                rufousing = "medium"
-            elif rufousing == "medium":
+                if rufousing != "silver":
+                    rufousing = "medium"
+            elif genes.ruftype == "medium":
                 colour = "honey"
-                rufousing = "rufoused"
+                if rufousing != "silver":
+                    rufousing = "rufoused"
             else:
                 colour = "red"
-                rufousing = "low"
+                if rufousing != "silver":
+                    rufousing = "low"
         elif colour == "ivory-apricot":
-            if rufousing == "low":
+            if genes.ruftype == "low":
                 colour = "ivory"
-                rufousing = "medium"
-            elif rufousing == "medium":
+                if rufousing != "silver":
+                    rufousing = "medium"
+            elif genes.ruftype == "medium":
                 colour = "ivory"
-                rufousing = "rufoused"
+                if rufousing != "silver":
+                    rufousing = "rufoused"
             else:
                 colour = "honey"
-                rufousing = "low"
-        
+                if rufousing != "silver":
+                    rufousing = "low"
+
         if (genes.ext[0] == "ec" and genes.agouti[0] == "a" and 'o' in genes.sexgene):
             unders_opacity = 0
         elif rufousing == "silver" or (genes.ext[0] == "ec" and genes.agouti[0] != "a" and 'o' in genes.sexgene):
