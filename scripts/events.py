@@ -1022,7 +1022,7 @@ class Events:
                     handle_short_events.handle_event(
                                             event_type="birth_death",
                                             main_cat=kit,
-                                            random_cat=random.choice(cats),
+                                            random_cat=get_random_moon_cat(Cat, kit),
                                             freshkill_pile=game.clan.freshkill_pile)
                     if kit.dead:
                         kit.moons -= 1
@@ -1759,7 +1759,6 @@ class Events:
 
             if game.clan.clan_settings["modded names"] and game.clan.clan_settings['new suffixes']:
                 cat.name.give_suffix(cat.skills, cat.personality, game.clan.biome, random_honor)
-                cat.name.check_name(Cat, False)
 
         if cat.status in ["warrior", "healer", "mediator"]:
             History.add_app_ceremony(cat, random_honor)

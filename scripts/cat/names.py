@@ -127,6 +127,8 @@ class Name:
             self.check_name(cat, name_fixpref)
     
     def check_name(self, cat, name_fixpref):
+        if not self.suffix:
+            return
         # Prevent triple letter names from joining prefix and suffix from occurring (ex. Beeeye)
         possible_three_letter = (
             self.prefix[-2:] + self.suffix[0],
@@ -469,7 +471,7 @@ class Name:
             else:
                 self.suffix = random.choice(self.names_dict["normal_suffixes"])
 
-        self.check_name(self.cat, True)
+        self.check_name(self.cat, False)
 
     def __repr__(self):
         # Handles predefined suffixes (such as newborns being kit),
