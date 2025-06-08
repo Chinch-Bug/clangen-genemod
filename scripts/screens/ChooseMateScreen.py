@@ -24,6 +24,7 @@ from scripts.utility import (
     ui_scale_dimensions,
     ui_scale_offset,
     shorten_text_to_fit,
+    search_cats,
 )
 from .Screens import Screens
 from ..game_structure.screen_settings import MANAGER
@@ -1259,82 +1260,7 @@ class ChooseMateScreen(Screens):
             )
         ]
 
-        if search_text not in ("", "general.name_search", "general.genotype_search"):
-            if self.search_genotype:
-                gene_map = {
-                    "furLength": ["L", "l"],
-                    "eumelanin": ["B", "b", "bl"],
-                    "sexgene": ["O", "o", "Y"],
-                    "dilute": ["D", "d"],
-                    "white": ["W", "ws", "w", "wt", "wg", "wsal"],
-                    "pointgene": ["C", "cb", "cs", "cm", "c"],
-                    "silver": ["I", "i"],
-                    "agouti": ["A", "Apb", "a"],
-                    "mack": ["Mc", "mc"],
-                    "ticked": ["Ta", "ta"],
-
-                    "wirehair": ["Wh", "wh"],
-                    "laperm": ["Lp", "lp"],
-                    "cornish": ["R", "r"],
-                    "urals": ["Ru", "ru"],
-                    "tenn": ["Tr", "tr"],
-                    "fleece": ["Fc", "fc"],
-                    "sedesp": ["Se", "Hr", "Re", "se", "hr", "re"],
-                    "ruhr": ["Hrbd", "hrbd"],
-                    "ruhrmod": ["hi", "ha"],
-                    "lykoi": ["Ly", "ly"],
-
-                    "pinkdilute": ["Dp", "dp"],
-                    "dilutemd": ["Dm", "dm"],
-                    "ext": ["Eg", "E", "ea", "er", "ec"],
-                    "corin": ["N", "sh", "sg", "fg"],
-                    "karp": ["K", "k"],
-                    "bleach": ["Lb", "lb"],
-                    "ghosting": ["Gh", "gh"],
-                    "satin": ["St", "st"],
-                    "glitter": ["Gl", "gl"],
-
-                    "curl": ["Cu", "cu"],
-                    "fold": ["Fd", "fd"],
-                    "manx": ["M", "Ab", "m", "ab"],
-                    "kab": ["Kab", "kab"],
-                    "toybob": ["Tb", "tb"],
-                    "jbob": ["Jb", "jb"],
-                    "kub": ["Kub", "kub"],
-                    "ring": ["Rt", "rt"],
-                    "munch": ["Mk", "mk"],
-                    "poly": ["Pd", "pd"],
-                    "pax3": ["NoDBE", "DBEre", "DBEalt", "DBEcel"],
-                }
-                orgroups = search_text.split("/")
-                possible_cats = valid_mates.copy()
-                valid_mates = []
-
-                for g in orgroups:
-                    alleles = g.split("&")
-                    found_cats = possible_cats
-                    for a in alleles:
-                        allele = a.strip().strip("!")
-                        find_gene = [
-                            key for key, value in gene_map.items() if allele in value]
-                        gene = find_gene[0] if len(find_gene) else None
-                        if gene:
-                            found_cats = [
-                                cat
-                                for cat in found_cats
-                                if '!' not in a and (allele in cat.phenotype[gene] or
-                                                     (cat.chimerapheno and allele in cat.chimerapheno[gene]))
-                                or ('!' in a and allele not in cat.phenotype[gene] and
-                                    (not cat.chimerapheno or allele not in cat.chimerapheno[gene]))
-                            ]
-                    valid_mates += found_cats
-                valid_mates = list(set(valid_mates))
-            else:
-                valid_mates = [
-                    cat
-                    for cat in valid_mates
-                    if search_text.lower() in str(cat.name).lower()
-                ]
+        valid_mates = search_cats(search_text, valid_mates, self.search_genotype)
 
         return valid_mates
 
