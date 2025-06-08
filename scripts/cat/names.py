@@ -96,8 +96,9 @@ class Name:
             self.genotype = cat.genotype
             self.phenotype = cat.phenotype
             self.chimpheno = cat.chimerapheno if cat.genotype.chimera else None
-            skills = cat.skills
-            personality = cat.personality
+            self.skills = cat.skills
+            self.personality = cat.personality
+            self.biome = biome
         
         except AttributeError:
             self.status = None
@@ -105,8 +106,9 @@ class Name:
             self.genotype = None
             self.phenotype = None
             self.chimpheno = None
-            skills = None
-            personality = None
+            self.skills = None
+            self.personality = None
+            self.biome = None
 
         name_fixpref = False
         # Set prefix
@@ -117,7 +119,7 @@ class Name:
 
         # Set suffix
         if self.suffix is None:
-            self.give_suffix(skills, personality, biome, honour)
+            self.give_suffix(self.skills, self.personality, biome, honour)
             if name_fixpref and self.prefix is None:
                 # needed for random dice when we're changing the Prefix
                 name_fixpref = False
