@@ -1091,7 +1091,7 @@ class Events:
 
         death_chances = game.config['death_related']['kit_death_chances']
         
-        for kit in living_cats:
+        for kit in cats:
             if kit.dead or (clan and kit.group != clan):
                 continue
             if kit.moons < 2 and not kit.dead:
