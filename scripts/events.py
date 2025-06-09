@@ -524,7 +524,6 @@ class Events:
                                 invited_cat.status = invited_cat.age
                                 if not invited_cat.name.suffix:
                                     invited_cat.name = Name(
-                                        Cat,
                                         invited_cat,
                                         invited_cat.name.prefix,
                                         invited_cat.name.suffix,
@@ -1091,8 +1090,7 @@ class Events:
         fading_kit_names = []
 
         death_chances = game.config['death_related']['kit_death_chances']
-        living_cats = [cat for cat in cats if not (cat.dead or cat.outside or cat.exiled) and (not clan or cat.group == clan)]
-
+        
         for kit in living_cats:
             if kit.dead or (clan and kit.group != clan):
                 continue
@@ -1108,7 +1106,7 @@ class Events:
                     handle_short_events.handle_event(
                                             event_type="birth_death",
                                             main_cat=kit,
-                                            random_cat=random.choice(living_cats),
+                                            random_cat=get_random_moon_cat(Cat, kit),
                                             freshkill_pile=game.clan.freshkill_pile,
                                             clan=clan)
                     if kit.dead:
@@ -1853,7 +1851,6 @@ class Events:
 
             if game.clan.clan_settings["modded names"] and game.clan.clan_settings['new suffixes']:
                 cat.name.give_suffix(cat.skills, cat.personality, game.clan.biome, random_honor)
-                cat.name.check_name(Cat, False)
 
         if cat.status in ["warrior", "healer", "mediator"]:
             History.add_app_ceremony(cat, random_honor)

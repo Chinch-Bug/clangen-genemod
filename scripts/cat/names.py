@@ -77,7 +77,6 @@ class Name:
                             names_dict["special_suffixes"][_tmp[0]] = _tmp[1]
 
     def __init__(self,
-                 Cat=None,
                  cat=None,
                  prefix=None,
                  suffix=None,
@@ -113,7 +112,7 @@ class Name:
         name_fixpref = False
         # Set prefix
         if prefix is None:
-            self.give_prefix(Cat, biome, no_suffix=True if suffix == "" else False)
+            self.give_prefix(cat, biome, no_suffix=True if suffix == "" else False)
             # needed for random dice when we're changing the Prefix
             name_fixpref = True
 
@@ -125,9 +124,11 @@ class Name:
                 name_fixpref = False
 
         if self.suffix and not load_existing_name:
-            self.check_name(Cat, name_fixpref)
+            self.check_name(cat, name_fixpref)
     
-    def check_name(self, Cat, name_fixpref):
+    def check_name(self, cat, name_fixpref):
+        if not self.suffix:
+            return
         # Prevent triple letter names from joining prefix and suffix from occurring (ex. Beeeye)
         possible_three_letter = (
             self.prefix[-2:] + self.suffix[0],
@@ -169,7 +170,7 @@ class Name:
         ):
             # check if random die was for prefix
             if name_fixpref and not(self.cat and hasattr(self.cat, "pelt") and not self.cat.pelt.scars and self.suffix == "scar"):
-                self.give_prefix(Cat, self.biome)
+                self.give_prefix(cat, self.biome)
             else:
                 self.suffix = None
                 self.give_suffix(self.skills, self.personality, self.biome, self.honour)
@@ -197,7 +198,7 @@ class Name:
     def filter(self, all, used):
         return [x for x in all if x not in used]
 
-    def change_prefix(self, Cat, moons, biome, change):
+    def change_prefix(self, cat, moons, biome, change):
         self.moons = moons
 
         colour_changed = False
@@ -239,17 +240,19 @@ class Name:
             chance /= game.config["cat_name_controls"]["prefix_change_chance"]["pelt-change-modifier"]
 
         if random.random() < (1/chance):
-            self.give_prefix(Cat, biome)
+            self.give_prefix(cat, biome)
+
+        self.check_name(cat, True)
 
 
     # Generate possible prefix
-    def give_prefix(self, Cat, biome, no_suffix=False):
+    def give_prefix(self, cat, biome, no_suffix=False):
         if not self.phenotype:
             self.prefix = random.choice(self.names_dict["normal_prefixes"])
             return
 
         try:
-            used_prefixes = [cat.name.prefix for cat in Cat.all_cats.values() if not cat.dead and not cat.status in ['kittypet', 'loner', 'rogue', 'former Clancat']]
+            used_prefixes = [cat.name.prefix for cat in cat.all_cats.values() if not cat.dead and not cat.status in ['kittypet', 'loner', 'rogue', 'former Clancat']]
         except:
             used_prefixes = []
 
@@ -326,7 +329,7 @@ class Name:
         with contextlib.suppress(NameError):
             if self.prefix in names.prefix_history:
                 # do this recurively until a name that isn't on the history list is chosses.
-                self.give_prefix(Cat, biome, no_suffix)
+                self.give_prefix(cat, biome, no_suffix)
                 # prevent infinite recursion
                 if len(names.prefix_history) > 0:
                     names.prefix_history.pop(0)
@@ -467,6 +470,8 @@ class Name:
                     self.suffix = random.choice(self.names_dict["normal_suffixes"])
             else:
                 self.suffix = random.choice(self.names_dict["normal_suffixes"])
+
+        self.check_name(self.cat, False)
 
     def __repr__(self):
         # Handles predefined suffixes (such as newborns being kit),

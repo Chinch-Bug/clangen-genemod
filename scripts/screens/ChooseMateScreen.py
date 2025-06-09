@@ -24,6 +24,7 @@ from scripts.utility import (
     ui_scale_dimensions,
     ui_scale_offset,
     shorten_text_to_fit,
+    search_cats,
 )
 from .Screens import Screens
 from ..game_structure.screen_settings import MANAGER
@@ -44,6 +45,12 @@ class ChooseMateScreen(Screens):
         self.the_cat = None
         self.selected_cat = None
         self.back_button = None
+
+        self.search_bar = None
+        self.search_bar_image = None
+        self.previous_search_text = ""
+        self.search_genotype = False
+        self.search_toggle_checkbox = None
 
         self.toggle_mate = None
         self.page_number = None
@@ -150,6 +157,20 @@ class ChooseMateScreen(Screens):
                     self.kits_selected_pair = True
                 self.update_offspring_container()
 
+            if event.ui_element == self.search_toggle_checkbox:
+                if "@checked_checkbox" in event.ui_element.get_object_ids():
+                    event.ui_element.change_object_id("@unchecked_checkbox")
+                    event.ui_element.set_tooltip(
+                        "screens.list.search_genotypes_tooltip")
+                    self.search_genotype = False
+                else:
+                    event.ui_element.change_object_id("@checked_checkbox")
+                    event.ui_element.set_tooltip("screens.list.search_names_tooltip")
+                    self.search_genotype = True
+                self.search_bar.placeholder_text = "general.genotype_search" if self.search_genotype else "general.name_search"
+                self.search_bar.set_text("")
+                self.update_potential_mates_container()
+
             # Next and last page buttons
             elif event.ui_element == self.offspring_next_page:
                 self.offspring_page += 1
@@ -251,6 +272,32 @@ class ChooseMateScreen(Screens):
             "buttons.back",
             get_button_dict(ButtonStyles.SQUOVAL, (105, 30)),
             object_id="@buttonstyles_squoval",
+            manager=MANAGER,
+        )
+
+        self.search_bar_image = pygame_gui.elements.UIImage(
+            ui_scale(pygame.Rect((95, 625), (118, 34))),
+            pygame.image.load(
+                "resources/images/search_bar.png").convert_alpha(),
+            manager=MANAGER,
+        )
+        self.search_bar = pygame_gui.elements.UITextEntryLine(
+            ui_scale(pygame.Rect((100, 629), (115, 27))),
+            object_id="#search_entry_box",
+            placeholder_text="general.genotype_search" if self.search_genotype else "general.name_search",
+            manager=MANAGER,
+        )
+
+        self.search_toggle_checkbox = UIImageButton(
+            ui_scale(pygame.Rect((60, 629), (38, 34))),
+            "",
+            object_id="@checked_checkbox"
+            if self.search_genotype
+            else "@unchecked_checkbox",
+            tool_tip_text="screens.list.search_names_tooltip"
+            if self.search_genotype
+            else "screens.list.search_genotypes_tooltip",
+            starting_height=1,
             manager=MANAGER,
         )
 
@@ -670,7 +717,7 @@ class ChooseMateScreen(Screens):
             container=self.potential_container,
         )
 
-        self.all_potential_mates = self.chunks(self.get_valid_mates(), 24)
+        self.all_potential_mates = self.chunks(self.get_valid_mates(self.search_bar.get_text().strip()), 24)
 
         # Update checkboxes
         # TODO
@@ -805,6 +852,14 @@ class ChooseMateScreen(Screens):
         self.potential_page_display = None
         self.offspring_page_display = None
         self.mate_page_display = None
+
+        self.search_bar_image.kill()
+        del self.search_bar_image
+        self.search_bar.kill()
+        del self.search_bar
+        self.search_toggle_checkbox.kill()
+        del self.search_toggle_checkbox
+        self.previous_search_text = None
 
     def update_current_cat_info(self, reset_selected_cat=True):
         """Updates all elements with the current cat, as well as the selected cat.
@@ -1172,10 +1227,16 @@ class ChooseMateScreen(Screens):
 
     def on_use(self):
         super().on_use()
+        # Only update the positions if the search text changes
+        if self.search_bar.is_focused and self.search_bar.get_text() in ("general.name_search", "general.genotype_search"):
+            self.search_bar.set_text("")
+        if self.search_bar.get_text() != self.previous_search_text:
+            self.update_potential_mates_container()
+        self.previous_search_text = self.search_bar.get_text()
 
         self.loading_screen_on_use(self.work_thread, self.update_both)
 
-    def get_valid_mates(self):
+    def get_valid_mates(self, search_text):
         """Get a list of valid mates for the current cat"""
 
         # Behold! The uglest list comprehension ever created!
@@ -1199,6 +1260,8 @@ class ChooseMateScreen(Screens):
                 and 'infertility' not in self.the_cat.permanent_condition)
             )
         ]
+
+        valid_mates = search_cats(search_text, valid_mates, self.search_genotype)
 
         return valid_mates
 

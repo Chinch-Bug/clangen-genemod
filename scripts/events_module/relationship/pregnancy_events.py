@@ -1,7 +1,7 @@
 import random
 from operator import xor
 from random import choice, randint
-from copy import copy
+from copy import copy, deepcopy
 from typing import Dict, List, Union, Optional
 
 import i18n
@@ -782,9 +782,9 @@ class Pregnancy_Events:
                     name = choice(names.names_dict["normal_prefixes"])
 
                     if game.clan.clan_settings["modded names"] and game.clan.clan_settings['new prefixes']:
-                        kit.name = Name(Cat, kit, suffix="")
+                        kit.name = Name(kit, suffix="")
                     else:
-                        kit.name = Name(Cat, kit, prefix=name, suffix="")
+                        kit.name = Name(kit, prefix=name, suffix="")
                 if other_cat and not other_cat[0].outside:
                     kit.backstory = "outsider2"
                 if pregnant_cat.outside and not pregnant_cat.exiled:
@@ -1503,9 +1503,7 @@ class Pregnancy_Events:
             if identical:
                 identical = False
                 ref_cat = copy(all_kitten[-1])
-                kit.phenotype = ref_cat.phenotype    
-
-                kit.phenotype = ref_cat.phenotype   
+                kit.phenotype = deepcopy(ref_cat.phenotype)    
                 kit.phenotype.tortiepattern = None
                 kit.phenotype.chimerapattern = None
                 kit.phenotype.merlepattern = None
@@ -1541,7 +1539,7 @@ class Pregnancy_Events:
             # Prevent duplicate prefixes in litter
             extant = [kitty.name.prefix for kitty in all_kitten if kitty.ID != kit.ID]
             while kit.name.prefix in extant:
-                kit.name = Name(Cat, kit)
+                kit.name = Name(kit)
 
             all_kitten.append(kit)
             # adoptive parents are set at the end, when everything else is decided

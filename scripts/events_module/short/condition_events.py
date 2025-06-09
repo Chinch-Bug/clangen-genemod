@@ -873,10 +873,10 @@ class Condition_Events:
                 progs = condition_progression[condition]
                 if isinstance(progs, list):
                     for cond in progs:
-                        if cond in condition:
+                        if cond in conditions:
                             cat.permanent_condition.pop(condition)
                             continue
-                elif progs in condition:
+                elif progs in conditions:
                     cat.permanent_condition.pop(condition)
                     continue
 
@@ -1073,7 +1073,6 @@ class Condition_Events:
                     if cat.age == CatAgeEnum.ADOLESCENT or "apprentice" in cat.status:
                         if game.clan.clan_settings["modded names"] and game.clan.clan_settings['new suffixes']:
                             cat.name.give_suffix(cat.skills, cat.personality, game.clan.biome, "hard work")
-                            cat.name.check_name(Cat, False)
                         event += i18n.t(
                             "hardcoded.condition_retire_adolescent_ceremony",
                             clan=clan.name,

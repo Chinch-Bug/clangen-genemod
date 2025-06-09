@@ -277,6 +277,85 @@ def get_warring_clan():
 
     return enemy_clan
 
+def search_cats(search_text, cat_list, search_genotype):
+    search_text = search_text.strip()
+    all_found = cat_list
+    if search_text not in ["", i18n.t("general.name_search"), i18n.t("general.genotype_search")]:
+        if search_genotype:
+            gene_map = {
+                "furLength": ["L", "l"],
+                "eumelanin": ["B", "b", "bl"],
+                "sexgene": ["O", "o", "Y"],
+                "dilute": ["D", "d"],
+                "white": ["W", "ws", "w", "wt", "wg", "wsal"],
+                "pointgene": ["C", "cb", "cs", "cm", "c"],
+                "silver": ["I", "i"],
+                "agouti": ["A", "Apb", "a"],
+                "mack": ["Mc", "mc"],
+                "ticked": ["Ta", "ta"],
+
+                "wirehair": ["Wh", "wh"],
+                "laperm": ["Lp", "lp"],
+                "cornish": ["R", "r"],
+                "urals": ["Ru", "ru"],
+                "tenn": ["Tr", "tr"],
+                "fleece": ["Fc", "fc"],
+                "sedesp": ["Se", "Hr", "Re", "se", "hr", "re"],
+                "ruhr": ["Hrbd", "hrbd"],
+                "ruhrmod": ["hi", "ha"],
+                "lykoi": ["Ly", "ly"],
+
+                "pinkdilute": ["Dp", "dp"],
+                "dilutemd": ["Dm", "dm"],
+                "ext": ["Eg", "E", "ea", "er", "ec"],
+                "corin": ["N", "sh", "sg", "fg"],
+                "karp": ["K", "k"],
+                "bleach": ["Lb", "lb"],
+                "ghosting": ["Gh", "gh"],
+                "satin": ["St", "st"],
+                "glitter": ["Gl", "gl"],
+
+                "curl": ["Cu", "cu"],
+                "fold": ["Fd", "fd"],
+                "manx": ["M", "Ab", "m", "ab"],
+                "kab": ["Kab", "kab"],
+                "toybob": ["Tb", "tb"],
+                "jbob": ["Jb", "jb"],
+                "kub": ["Kub", "kub"],
+                "ring": ["Rt", "rt"],
+                "munch": ["Mk", "mk"],
+                "poly": ["Pd", "pd"],
+                "pax3": ["NoDBE", "DBEre", "DBEalt", "DBEcel"],
+            }
+            orgroups = search_text.split("/")
+            all_found = []
+            for g in orgroups:
+                alleles = g.split("&")
+                found_cats = cat_list.copy()
+                for a in alleles:
+                    allele = a.strip().strip("!")
+                    find_gene = [
+                        key for key, value in gene_map.items() if allele in value]
+                    gene = find_gene[0] if len(find_gene) else None
+                    if gene:
+                        found_cats = [
+                            cat
+                            for cat in found_cats
+                            if '!' not in a and (allele in cat.phenotype[gene] or
+                                                    (cat.chimerapheno and allele in cat.chimerapheno[gene]))
+                            or ('!' in a and allele not in cat.phenotype[gene] and
+                                (not cat.chimerapheno or allele not in cat.chimerapheno[gene]))
+                        ]
+                all_found += found_cats
+            all_found = list(set(all_found))
+        else:
+            all_found = [
+                cat
+                for cat in cat_list
+                if search_text.lower() in str(cat.name).lower()
+            ]
+    return all_found
+
 
 # ---------------------------------------------------------------------------- #
 #                          Handling Outside Factors                            #
@@ -3225,32 +3304,34 @@ def generate_sprite(
                 return whichmain
         
             def AddStripes(whichmain, whichcolour, whichbase, coloursurface=None):
-                stripebase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                if((phenotype.corin[0] != 'N' and phenotype.wbtype == "shaded") or phenotype.wbtype == 'chinchilla'):
-                    if not ("rufoused" in whichcolour or 'medium' in whichcolour or 'low' in whichcolour or phenotype.wbtype == 'chinchilla'):
-                        stripebase.blit(CreateStripes(phenotype.FindRed(phenotype, sprite_age, special='red')[0], phenotype.FindRed(phenotype, sprite_age, special='red')[1], coloursurface=coloursurface), (0, 0))
-                        whichmain.blit(stripebase, (0, 0))
-                    stripebase = CreateStripes(whichcolour, whichbase, coloursurface=coloursurface)
-                    stripebase.set_alpha(120)
+                stripebase = pygame.Surface(
+                    (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                if ((phenotype.corin[0] != 'N' and phenotype.wbtype == "shaded") or phenotype.wbtype == 'chinchilla'):
+                    stripebase = CreateStripes(
+                        whichcolour, whichbase, coloursurface=coloursurface)
+                    stripebase.set_alpha(100)
+                elif (phenotype.wbtype == "shaded" or phenotype.corin[0] != 'N'):
+                    stripebase = CreateStripes(
+                        phenotype.FindRed(phenotype, sprite_age, special='red')[0], phenotype.FindRed(phenotype, sprite_age, special='red')[1], coloursurface=coloursurface)
+                    stripebase.set_alpha(50)
                     whichmain.blit(stripebase, (0, 0))
-                    stripebase = CreateStripes(whichcolour, whichbase, coloursurface=coloursurface, pattern='agouti')
-                elif(phenotype.wbtype == "shaded" or phenotype.corin[0] != 'N'):
-                    if not ("rufoused" in whichcolour or 'medium' in whichcolour or 'low' in whichcolour):
-                        stripebase.blit(CreateStripes(phenotype.FindRed(phenotype, sprite_age, special='red')[0], phenotype.FindRed(phenotype, sprite_age, special='red')[1], coloursurface=coloursurface), (0, 0))
-                        stripebase.set_alpha(120)
-                        whichmain.blit(stripebase, (0, 0))
-                    stripebase = CreateStripes(whichcolour, whichbase, coloursurface=coloursurface)
-                    stripebase.set_alpha(175)
+                    stripebase = CreateStripes(
+                        whichcolour, whichbase, coloursurface=coloursurface)
+                    stripebase.set_alpha(100)
                     whichmain.blit(stripebase, (0, 0))
-                    stripebase = CreateStripes(whichcolour, whichbase, coloursurface=coloursurface, pattern='agouti')
-                elif('ec' in phenotype.ext and 'Eg' not in phenotype.ext and not ('red' in whichcolour or 'cream' in whichcolour or 'honey' in whichcolour or 'ivory' in whichcolour or 'apricot' in whichcolour)):
-                    stripebase = CreateStripes(whichcolour, whichbase, coloursurface=coloursurface)
+                    stripebase = CreateStripes(
+                        whichcolour, whichbase, pattern="agouti", coloursurface=coloursurface)
+                    stripebase.set_alpha(200)
+                elif ('ec' in phenotype.ext and 'Eg' not in phenotype.ext and not ('red' in whichcolour or 'cream' in whichcolour or 'honey' in whichcolour or 'ivory' in whichcolour or 'apricot' in whichcolour)):
+                    stripebase = CreateStripes(
+                        whichcolour, whichbase, coloursurface=coloursurface)
                     stripebase.set_alpha(200)
                     whichmain.blit(stripebase, (0, 0))
-                    stripebase = CreateStripes(whichcolour, whichbase, coloursurface=coloursurface, pattern='agouti')
+                    stripebase = CreateStripes(
+                        whichcolour, whichbase, coloursurface=coloursurface, pattern='agouti')
                 else:
-                    stripebase.blit(CreateStripes(whichcolour, whichbase, coloursurface=coloursurface), (0, 0))
-                    pass
+                    stripebase.blit(CreateStripes(
+                        whichcolour, whichbase, coloursurface=coloursurface), (0, 0))
 
                 whichmain.blit(stripebase, (0, 0))
 
