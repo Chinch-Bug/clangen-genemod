@@ -144,11 +144,6 @@ class EventsScreen(Screens):
                 self.save_scroll_position()
                 game.switches["cat"] = element.cat_id
                 self.change_screen("profile screen")
-            elif element == self.choose_group_button:
-                if self.choose_living_dropdown.is_open:
-                    self.choose_living_dropdown.close()
-                else:
-                    self.choose_living_dropdown.open()
             elif element in self.choose_group_buttons.values():
                 self.choose_living_dropdown.close()
                 self.current_clan = element.text.replace("Clan", "")
