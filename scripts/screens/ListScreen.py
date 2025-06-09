@@ -738,7 +738,7 @@ class ListScreen(Screens):
         self.death_status = "living"
         self.full_cat_list = []
         for the_cat in Cat.all_cats_list:
-            if not the_cat.dead and the_cat.group is None:
+            if not the_cat.dead and the_cat.outside:
                 self.full_cat_list.append(the_cat)
 
     def get_sc_cats(self):
