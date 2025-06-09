@@ -1,7 +1,7 @@
 import random
 from operator import xor
 from random import choice, randint
-from copy import copy
+from copy import copy, deepcopy
 from typing import Dict, List, Union, Optional
 
 import i18n
@@ -1485,9 +1485,7 @@ class Pregnancy_Events:
             if identical:
                 identical = False
                 ref_cat = copy(all_kitten[-1])
-                kit.phenotype = ref_cat.phenotype    
-
-                kit.phenotype = ref_cat.phenotype   
+                kit.phenotype = deepcopy(ref_cat.phenotype)    
                 kit.phenotype.tortiepattern = None
                 kit.phenotype.chimerapattern = None
                 kit.phenotype.merlepattern = None
