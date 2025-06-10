@@ -99,6 +99,7 @@ class Name:
             self.skills = cat.skills
             self.personality = cat.personality
             self.biome = biome
+            self.honour = honour
         
         except AttributeError:
             self.status = None
@@ -109,6 +110,7 @@ class Name:
             self.skills = None
             self.personality = None
             self.biome = None
+            self.honour = None
 
         name_fixpref = False
         # Set prefix
