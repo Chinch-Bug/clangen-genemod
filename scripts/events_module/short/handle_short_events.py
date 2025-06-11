@@ -607,6 +607,7 @@ class HandleShortEvents:
                             kitty.get_permanent_condition("infertility", False, custom_reveal=2 if 'pregnant' in kitty.injuries else None)
                         if kitty.moons < 4:
                             kitty.status = 'kittypet'
+                            kitty.group = None
                             kitty.get_permanent_condition("infertility", False, event_triggered=True, custom_reveal=randint(4, 6))
                 self.multi_cat.append(kitty)
                 if kitty.ID not in self.involved_cats:

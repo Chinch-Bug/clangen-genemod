@@ -1058,7 +1058,7 @@ class Cat:
         if not self.exiled:
             History.add_beginning(self)
         self.exiled = False
-        game.clan.add_to_clan(self)
+        game.clan.add_to_clan(self, self.group)
 
         # check if there are kits under 12 moons with this cat and also add them to the clan
         children = self.get_children()
@@ -1782,6 +1782,8 @@ class Cat:
                 clan = other_cat.group
             elif clan is None:
                 clan = game.clan
+        elif self.group:
+            clan = self.group
         else:
             clan = None
 

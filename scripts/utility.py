@@ -2593,6 +2593,7 @@ def event_text_adjust(
     :param OtherClan other_clan: OtherClan object for other_clan (o_c_n), if present
     :param str chosen_herb: string of chosen_herb (chosen_herb), if present
     """
+    from scripts.clan import OtherClan
     vowels = ["A", "E", "I", "O", "U"]
 
     if not text:
@@ -2605,8 +2606,10 @@ def event_text_adjust(
         text = text[0]
 
     if isinstance(clan, str):
-        if "Clan" not in clan:
+        if "Clan" not in clan and game.clan:
             clan = game.clan if clan in [" ", game.clan.name, "outsider cat"] else [c for c in game.clan.all_clans if c.name == clan][0]
+        elif clan == main_cat.group:
+            clan = OtherClan(clan)
 
     replace_dict = {}
 

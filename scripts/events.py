@@ -902,9 +902,10 @@ class Events:
             for x in additional:
                 if x in Cat.all_cats:
                     Cat.all_cats[x].status = 'kittypet'
+                    Cat.all_cats[x].group = None
                     Cat.all_cats[x].name.suffix = ''
                     Cat.all_cats[x].get_permanent_condition("infertility", False, custom_reveal=4-Cat.all_cats[x].moons)
-        text = event_text_adjust(Cat, text, main_cat=eligible_cats[0], clan=game.clan)
+        text = event_text_adjust(Cat, text, main_cat=eligible_cats[0], clan=clan)
         game.cur_events_list.append(Single_Event(text, "misc", cat_IDs, clan=clan.name))
         
         self.handle_lost_cats_return(cat_IDs, clan)
@@ -954,7 +955,7 @@ class Events:
             if additional_cats:
                 text += i18n.t("hardcoded.event_lost_kits", count=len(additional_cats))
 
-            text = event_text_adjust(Cat, text, main_cat=lost_cat, clan=game.clan)
+            text = event_text_adjust(Cat, text, main_cat=lost_cat, clan=clan)
 
             game.cur_events_list.append(Single_Event(text, "misc", cat_IDs, clan=clan.name))
 
