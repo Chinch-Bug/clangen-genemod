@@ -274,7 +274,7 @@ def get_warring_clan():
 
 def search_cats(search_text, cat_list, search_genotype):
     search_text = search_text.strip()
-    all_found = cat_list
+    all_found = cat_list.copy()
     if search_text not in ["", i18n.t("general.name_search"), i18n.t("general.genotype_search")]:
         if search_genotype:
             gene_map = {

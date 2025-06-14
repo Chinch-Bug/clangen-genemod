@@ -575,8 +575,11 @@ class ListScreen(Screens):
             if game.clan.instructor in self.full_cat_list:
                 self.full_cat_list.remove(game.clan.instructor)
             self.full_cat_list.insert(0, game.clan.instructor)
-
+        
         self.current_listed_cats = search_cats(search_text, self.full_cat_list, game.clan.clan_settings["search genotypes"])
+        
+        Cat.sort_cats(self.current_listed_cats)
+        
 
         self.all_pages = (
             int(ceil(len(self.current_listed_cats) / 20.0))
