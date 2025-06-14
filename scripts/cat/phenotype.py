@@ -237,6 +237,7 @@ class Phenotype(Genotype):
             self.karpati = ""
             self.specwhite = ""
             self.vitiligo_string = ""
+            self.mutant_red = ""
     def SilverGoldFinder(self):
         self.silvergold = ""
 
