@@ -51,7 +51,7 @@ class Inheritance:
         self.cousins = {}
         self.grand_parents = {}
         self.grand_kits = {}
-        self.all_in_tree = []
+        self.others_in_tree = []
         self.all_involved = []
         self.all_but_cousins = []
 
@@ -67,8 +67,6 @@ class Inheritance:
         # if the cat is newly born, update all the related cats
         if born:
             self.update_all_related_inheritance()
-
-        self.all_in_tree += self.all_involved
 
         # SAVE INHERITANCE INTO ALL_INHERITANCES DICTIONARY
         self.all_inheritances[cat.ID] = self
@@ -89,7 +87,7 @@ class Inheritance:
         family_directory = get_save_dir() + "/" + clanname + "/inheritance"
         family_file_path = family_directory + "/" + self.cat.ID + "_inheritance.json"
 
-        if len(self.all_in_tree) == 0 or fade:
+        if len(self.others_in_tree) + len(self.all_involved) == 0 or fade:
             if os.path.exists(family_file_path):
                 os.remove(family_file_path)
             return
@@ -126,8 +124,8 @@ class Inheritance:
         if self.grand_kits:
             family["grand_kits"] = self.grand_kits
 
-        if self.all_in_tree:
-            family["all_in_tree"] = self.all_in_tree
+        if self.others_in_tree:
+            family["others_in_tree"] = list(set(self.others_in_tree))
         if self.all_involved:
             family["all_involved"] = self.all_involved
         if self.all_but_cousins:
@@ -147,6 +145,8 @@ class Inheritance:
         with open(family_cat_directory, "r", encoding="utf-8") as read_file:
             rel_data = ujson.loads(read_file.read())
             for key in rel_data.keys():
+                if key == "all_in_tree":
+                    self["others_in_tree"] = rel_data[key]
                 self[key] = rel_data[key]
 
         self.all_inheritances[self.cat.ID] = self
@@ -166,7 +166,7 @@ class Inheritance:
         self.cousins = {}
         self.grand_parents = {}
         self.grand_kits = {}
-        self.all_in_tree = []
+        self.others_in_tree = []
         self.all_involved = []
         self.all_but_cousins = []
         self.other_mates = []
@@ -412,7 +412,7 @@ class Inheritance:
                 "additional": [i18n.t("inheritance.current_mate")],
             }
             self.other_mates.append(relevant_id)
-            self.all_in_tree.append(relevant_id)
+            self.others_in_tree.append(relevant_id)
 
         for relevant_id in self.cat.previous_mates:
             mate_rel = RelationType.NOT_BLOOD
@@ -424,7 +424,7 @@ class Inheritance:
                 "additional": [i18n.t("inheritance.prev_mate")],
             }
             self.other_mates.append(relevant_id)
-            self.all_in_tree.append(relevant_id)
+            self.others_in_tree.append(relevant_id)
 
     def init_grandparents(self):
         """Create a grandparent relationship."""
@@ -471,7 +471,7 @@ class Inheritance:
                 other_id = inter_blood_parents[0]
                 other_cat = self.cat.fetch_cat(other_id)
                 if other_cat:
-                    self.all_in_tree.append(other_id)
+                    self.others_in_tree.append(other_id)
                     self.kits[inter_id]["additional"].append(
                         i18n.t("inheritance.second_parent", name=str(other_cat.name))
                     )
@@ -511,7 +511,7 @@ class Inheritance:
                     "type": rel_type,
                     "additional": [i18n.t("inheritance.mate_of_inter", name=str(inter_cat.name))],
                 }
-                self.all_in_tree.append(mate_id)
+                self.others_in_tree.append(mate_id)
 
     def init_siblings(self, inter_id, inter_cat):
         """Create a sibling relationship."""
@@ -588,7 +588,7 @@ class Inheritance:
                     ],
                 }
                 self.other_mates.append(mate_id)
-                self.all_in_tree.append(mate_id)
+                self.others_in_tree.append(mate_id)
 
             # iterate over all cats, to get the children of the sibling
             for _c in self.cat.all_cats.values():
@@ -935,7 +935,7 @@ class Inheritance:
     def get_all_cat_ids():
         id_list = []
         for inh in Inheritance.all_inheritances.values():
-            id_list = list(set(id_list + inh.all_in_tree))
+            id_list = list(set(id_list + inh.others_in_tree + inh.all_involved))
         
         return id_list
 
