@@ -2608,8 +2608,6 @@ def event_text_adjust(
     if isinstance(clan, str):
         if "Clan" not in clan and game.clan:
             clan = game.clan if clan in [" ", game.clan.name, "outsider cat"] else [c for c in game.clan.all_clans if c.name == clan][0]
-        elif clan == main_cat.group:
-            clan = OtherClan(clan)
 
     replace_dict = {}
 
@@ -2742,7 +2740,7 @@ def event_text_adjust(
     # clan_name
     if "c_n" in text:
         try:
-            clan_name = clan.name
+            clan_name = clan if isinstance(clan, str) else clan.name
         except AttributeError:
             clan_name = game.switches["clan_list"][0]
 
