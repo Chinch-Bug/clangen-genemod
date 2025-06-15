@@ -69,7 +69,7 @@ jobs:
           poetry-version: latest
       - name: Clear Poetry Cache
         run: |
-          poetry cache clear --all
+          poetry cache clear genemod --all
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
