@@ -4651,7 +4651,7 @@ def find_my_breed(phenotype):
     breed_mix = ""
     edited_sorted_breeds = sorted_breeds.copy()
     for breed in sorted_breeds:
-        if not edited_sorted_breeds.get(breed):
+        if edited_sorted_breeds.get(breed) is None:
             continue
         if sorted_breeds[breed] < mix_range:
             if breed_mix == "":
