@@ -566,19 +566,19 @@ class ListScreen(Screens):
         # make sure cat list is the same everywhere else in the game.
         Cat.sort_cats(self.full_cat_list)
         Cat.sort_cats(Cat.all_cats_list)
+        
+        self.current_listed_cats = search_cats(search_text, self.full_cat_list, game.clan.clan_settings["search genotypes"])
+        
+        Cat.sort_cats(self.current_listed_cats)
 
         # adding in the guide if necessary, this ensures the guide isn't affected by sorting as we always want them to
         # be the first cat on the list
         if (self.current_group == "dark_forest" and game.clan.instructor.df) or (
                 self.current_group == "starclan" and not game.clan.instructor.df
         ):
-            if game.clan.instructor in self.full_cat_list:
-                self.full_cat_list.remove(game.clan.instructor)
-            self.full_cat_list.insert(0, game.clan.instructor)
-        
-        self.current_listed_cats = search_cats(search_text, self.full_cat_list, game.clan.clan_settings["search genotypes"])
-        
-        Cat.sort_cats(self.current_listed_cats)
+            if game.clan.instructor in self.current_listed_cats:
+                self.current_listed_cats.remove(game.clan.instructor)
+            self.current_listed_cats.insert(0, game.clan.instructor)
         
 
         self.all_pages = (
