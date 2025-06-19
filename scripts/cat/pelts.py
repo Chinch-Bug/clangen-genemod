@@ -81,6 +81,7 @@ class Pelt:
     ]
 
     # make sure to add plural and singular forms of new accs to acc_display.json so that they will display nicely
+
     plant_accessories = [
         "MAPLE LEAF",
         "HOLLY",
@@ -136,18 +137,6 @@ class Pelt:
         "MONARCH BUTTERFLY",
         "CICADA WINGS",
         "BLACK CICADA",
-    ]
-
-    tail_accessories = [
-        "RED FEATHERS",
-        "BLUE FEATHERS",
-        "JAY FEATHERS",
-        "GULL FEATHERS",
-        "SPARROW FEATHERS",
-        "CLOVER",
-        "DAISY",
-        "WISTERIA",
-        "GOLDEN CREEPING JENNY",
     ]
     collars = [
         "CRIMSON",
@@ -210,6 +199,26 @@ class Pelt:
         "PURPLENYLON",
         "MULTINYLON",
         "INDIGONYLON",
+    ]
+
+    # this is used for acc-giving events, only change if you're adding a new category tag to the event filter
+    # adding a category here will automatically update the event editor's options
+    acc_categories = {
+        "PLANT": plant_accessories,
+        "WILD": wild_accessories,
+        "COLLAR": collars
+    }
+
+    tail_accessories = [
+        "RED FEATHERS",
+        "BLUE FEATHERS",
+        "JAY FEATHERS",
+        "GULL FEATHERS",
+        "SPARROW FEATHERS",
+        "CLOVER",
+        "DAISY",
+        "WISTERIA",
+        "GOLDEN CREEPING JENNY",
     ]
 
     head_accessories = [
