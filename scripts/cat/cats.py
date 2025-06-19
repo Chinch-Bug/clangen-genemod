@@ -3732,7 +3732,7 @@ class Cat:
             for check_cat in Cat.all_cats_list
             if check_cat.dead == self.dead
             and check_cat.outside == self.outside
-            and (check_cat.group == self.group or self.dead)
+            and (check_cat.group == self.group or self.dead or self.outside)
             and check_cat.df == self.df
             and not check_cat.faded
         ]

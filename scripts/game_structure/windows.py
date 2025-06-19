@@ -427,7 +427,7 @@ class DeleteCatCheck(UIWindow):
         self.reloadscreen = reloadscreen
 
         self.delete_check_message = UITextBoxTweaked(
-            f"Do you wish to delete your faded cats? This is permanent and cannot be undone.",
+            f"Do you wish to delete your faded cats? This is permanent and cannot be undone. Making a copy of save data is recommended in case any issues arise.",
             ui_scale(pygame.Rect((20, 20), (260, -1))),
             line_spacing=1,
             object_id="#text_box_30_horizcenter",

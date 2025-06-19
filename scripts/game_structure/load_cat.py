@@ -61,6 +61,7 @@ def json_load():
                         specsuffix_hidden=(cat["specsuffix_hidden"] if "specsuffix_hidden" in cat else False),
                         status=cat["status"],
                         group=cat.get("group"),
+                        backstory=cat["backstory"],
                         parent1=cat["parent1"],
                         parent2=cat["parent2"],
                         parent3=cat.get("parent3"),
