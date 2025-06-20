@@ -2049,7 +2049,7 @@ class EventEditScreen(Screens):
 
         # CHANGE LOCATION LIST
         if event.ui_element in self.location_element.values():
-            biome_list = game.clan.BIOME_TYPES
+            biome_list = game.BIOME_TYPES
             for biome in biome_list:
                 if event.ui_element == self.location_element[biome]:
                     self.update_location_info(biome=biome)
@@ -5833,7 +5833,7 @@ class EventEditScreen(Screens):
                 "top_target": self.editor_element["event_id"]
             }
         )
-        biome_list = game.clan.BIOME_TYPES
+        biome_list = game.BIOME_TYPES
         prev_element = None
         for biome in biome_list:
             y_pos = 10 if not prev_element else -2

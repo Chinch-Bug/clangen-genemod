@@ -1,7 +1,15 @@
 import html
 from functools import lru_cache
 from math import ceil
-from typing import Union, Tuple, Optional, Dict, Iterable, Callable, List
+from typing import (
+    Tuple,
+    Optional,
+    List,
+    Union,
+    Dict,
+    Iterable,
+    Callable,
+)
 
 import pygame
 import pygame_gui
@@ -15,6 +23,7 @@ from pygame_gui.elements import UIAutoResizingContainer, UISelectionList
 
 from scripts.game_structure import image_cache
 from scripts.game_structure.game_essentials import game
+from scripts.game_structure.screen_settings import screen
 from scripts.ui.generate_button import get_button_dict, ButtonStyles
 from scripts.ui.icon import Icon
 from scripts.utility import (
@@ -284,10 +293,19 @@ class UIImageButton(pygame_gui.elements.UIButton):
             generate_click_events_from: Iterable[int] = frozenset([pygame.BUTTON_LEFT]),
             visible: int = 1,
             sound_id=None,
-            text_kwargs=None,
-            tool_tip_text_kwargs=None,
+            mask: Union[pygame.Mask, pygame.Surface, None] = None,
+        mask_padding: int = 2,
+        *,
+        command: Union[Callable, Dict[int, Callable]] = None,
+        tool_tip_object_id: Optional[ObjectID] = None,
+        text_kwargs: Optional[Dict[str, str]] = None,
+        tool_tip_text_kwargs: Optional[Dict[str, str]] = None,
+        max_dynamic_width: Optional[int] = None,
     ):
         self.sound_id = sound_id
+        self.mask_padding = mask_padding if mask_padding is not None else 2
+        self.mask_info = [relative_rect[0:2], []]
+
         super().__init__(
             relative_rect=relative_rect,
             text=text,
@@ -305,7 +323,62 @@ class UIImageButton(pygame_gui.elements.UIButton):
             allow_double_clicks=allow_double_clicks,
             generate_click_events_from=generate_click_events_from,
             visible=visible,
+            command=command,
+            tool_tip_object_id=tool_tip_object_id,
+            max_dynamic_width=max_dynamic_width,
         )
+
+        self._mask = None
+        self.mask = mask
+
+    @property
+    def mask(self):
+        return self._mask
+
+    @mask.setter
+    def mask(self, val: Union[pygame.Mask, pygame.Surface, None]):
+        if not isinstance(val, Union[pygame.Mask, pygame.Surface, None]):
+            return
+
+        if val is None:
+            self._mask = None
+            return
+        if isinstance(val, pygame.Mask):
+            self._mask = val
+            self.mask_padding = (val.get_size()[0] - self.rect[2]) / 2
+        else:
+            # if you're looking for the cat's sprite mask, that's
+            # set in utility.py:update_mask
+            val = pygame.mask.from_surface(val, threshold=250)
+
+            inflated_mask = pygame.Mask(
+                (
+                    self.relative_rect[2] + self.mask_padding * 2,
+                    self.relative_rect[3] + self.mask_padding * 2,
+                )
+            )
+            inflated_mask.draw(val, (self.mask_padding, self.mask_padding))
+            for _ in range(self.mask_padding):
+                outline = inflated_mask.outline()
+                for point in outline:
+                    for dx in range(-1, 2):
+                        for dy in range(-1, 2):
+                            try:
+                                inflated_mask.set_at((point[0] + dx, point[1] + dy), 1)
+                            except IndexError:
+                                continue
+            self._mask = inflated_mask
+        self.mask_info[0] = (
+            self.rect[0] - self.mask_padding,
+            self.rect[1] - self.mask_padding,
+        )
+        self.mask_info[1] = [
+            (
+                x + self.mask_info[0][0],
+                y + self.mask_info[0][1],
+            )
+            for x, y in self.mask.outline()
+        ]
 
     def _set_any_images_from_theme(self):
         changed = False
@@ -317,6 +390,7 @@ class UIImageButton(pygame_gui.elements.UIButton):
             normal_image = pygame.transform.scale(
                 normal_image, self.relative_rect.size
             )  # auto-rescale the image
+            self.mask = normal_image
         except LookupError:
             normal_image = None
         finally:
@@ -376,6 +450,27 @@ class UIImageButton(pygame_gui.elements.UIButton):
 
     def return_sound_id(self):
         return self.sound_id
+
+    def hover_point(self, hover_x: int, hover_y: int) -> bool:
+        if self.mask is None:
+            return self.rect.collidepoint((hover_x, hover_y))
+        pos_in_mask = (hover_x - self.mask_info[0][0], hover_y - self.mask_info[0][1])
+        if (
+            0 <= pos_in_mask[0] < self.mask.get_size()[0]
+            and 0 <= pos_in_mask[1] < self.mask.get_size()[1]
+        ):
+            return bool(self.mask.get_at(pos_in_mask))
+        else:
+            return False
+
+    def check_hover(self, time_delta: float, hovered_higher_element: bool) -> bool:
+        hover = super().check_hover(time_delta, hovered_higher_element)
+        if game.debug_settings["showbounds"] and self.mask is not None:
+            if hover:
+                pygame.draw.lines(screen, (0, 255, 0), True, self.mask_info[1], width=2)
+            else:
+                pygame.draw.lines(screen, (255, 0, 0), True, self.mask_info[1], width=2)
+        return hover
 
 
 class UIModifiedScrollingContainer(pygame_gui.elements.UIScrollingContainer, IContainerLikeInterface):
@@ -717,10 +812,13 @@ class UISpriteButton:
             manager: IUIManagerInterface = None,
             container=None,
             object_id=None,
-            tool_tip_text=None,
-            text_kwargs=None,
-            tool_tip_text_kwargs=None,
-            anchors=None,
+            tool_tip_object_id=None,
+        tool_tip_text=None,
+        text_kwargs=None,
+        tool_tip_text_kwargs=None,
+        anchors=None,
+        mask=None,
+        mask_padding=None,
     ):
         # The transparent button. This a subclass that UIButton that also hold the cat_id.
 
@@ -735,9 +833,12 @@ class UISpriteButton:
             starting_height=starting_height,
             manager=manager,
             tool_tip_text=tool_tip_text,
+            tool_tip_object_id=tool_tip_object_id,
             tool_tip_text_kwargs=tool_tip_text_kwargs,
             container=container,
             anchors=anchors,
+            mask=mask,
+            mask_padding=mask_padding,
         )
         input_sprite = sprite.premul_alpha()
         # if it's going to be small on the screen, smoothscale out the crunch
@@ -752,7 +853,6 @@ class UISpriteButton:
             )
             else pygame.transform.scale(input_sprite, relative_rect.size)
         )
-
         self.image = pygame_gui.elements.UIImage(
             relative_rect,
             input_sprite,
@@ -761,6 +861,7 @@ class UISpriteButton:
             container=container,
             object_id=object_id,
             anchors=anchors,
+            starting_height=starting_height,
         )
         del input_sprite
         self.button.join_focus_sets(self.image)
@@ -807,6 +908,9 @@ class UISpriteButton:
     def get_abs_rect(self):
         return self.button.get_abs_rect()
 
+    def on_hovered(self):
+        self.button.on_hovered()
+
 
 class CatButton(UIImageButton):
     """Basic UIButton subclass for at sprite buttons. It stores the cat ID.
@@ -828,10 +932,14 @@ class CatButton(UIImageButton):
             tool_tip_text_kwargs=None,
             container=None,
             anchors=None,
-            auto_disable_if_no_data=False,
+            mask=None,
+        mask_padding=None,
+        auto_disable_if_no_data=False,
+        tool_tip_object_id=None,
     ):
         self.cat_id = cat_id
         self.cat_object = cat_object
+
         super().__init__(
             relative_rect,
             text,
@@ -846,6 +954,9 @@ class CatButton(UIImageButton):
             container=container,
             anchors=anchors,
             allow_double_clicks=True,
+            mask=mask,
+            mask_padding=mask_padding,
+            tool_tip_object_id=tool_tip_object_id,
         )
         if auto_disable_if_no_data and cat_id is None and cat_object is None:
             self.disable()
@@ -1426,6 +1537,7 @@ class UICatListDisplay(UIContainer):
             kitty.sprite,
             cat_object=kitty,
             cat_id=kitty.ID,
+            mask=None,
             container=container,
             object_id=f"#sprite{str(i)}",
             tool_tip_text=str(kitty.name) if self.tool_tip_name else None,
