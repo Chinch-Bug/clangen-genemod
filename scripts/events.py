@@ -147,6 +147,8 @@ class Events:
                 self.one_moon_cat(cat)
             else:
                 self.one_moon_outside_cat(cat)
+            
+            cat.pelt.rebuild_sprite = True
 
         # keeping this commented out till disasters are more polished
         # self.disaster_events.handle_disasters()

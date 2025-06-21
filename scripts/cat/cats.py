@@ -1081,8 +1081,9 @@ class Cat:
         children = self.get_children()
         ids = []
         for child_id in children:
-            child = Cat.all_cats[child_id]
+            child = Cat.fetch_cat(child_id)
             if (
+                    child and
                     child.outside
                     and not child.exiled
                     and not child.dead
