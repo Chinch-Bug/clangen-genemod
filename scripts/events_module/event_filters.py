@@ -280,6 +280,9 @@ def _check_cat_status(cat, statuses: list) -> bool:
     if cat.status in statuses:
         return True
 
+    if 'lost' in statuses and cat.status not in ["rogue", "loner", "kittypet", "former Clancat"] and cat.outside:
+        return True
+
     return False
 
 
