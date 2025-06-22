@@ -35,6 +35,10 @@ class Genotype:
         self.pointgene = ["", ""]
         self.silver = ["", ""]
         self.agouti = ["", ""]
+        self.pangere = choice([None, None, 
+                              "pangere small 1", "pangere small 1", "pangere small 1",
+                              "pangere small 2", "pangere small 2", "pangere small 2", 
+                              "pangere medium 1", "pangere medium 2"])
         self.mack = ["", ""]
         self.ticked = ["", ""]
         self.breakthrough = False
@@ -164,6 +168,7 @@ class Genotype:
         self.pointgene = jsonstring["pointgene"]
         self.silver = jsonstring["silver"]
         self.agouti = jsonstring["agouti"]
+        self.pangere = jsonstring.get("pangere")
         self.mack = jsonstring["mack"]
         self.ticked = jsonstring["ticked"]
         self.breakthrough = jsonstring["breakthrough"]
@@ -260,6 +265,7 @@ class Genotype:
             "pointgene" : self.pointgene,
             "silver" : self.silver,
             "agouti" : self.agouti,
+            "pangere" : self.pangere,
             "mack" : self.mack,
             "ticked" : self.ticked,
             "breakthrough" : self.breakthrough,

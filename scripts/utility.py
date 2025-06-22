@@ -3095,6 +3095,20 @@ def generate_sprite(
                 
                 if phenotype.caramel == 'caramel' and not is_red:    
                     whichmain.blit(sprites.sprites['caramel0'], (0, 0))
+
+                if phenotype.pangere:
+                    modifiers = {
+                        "chinchilla" : 9,
+                        "shaded" : 8,
+                        "high" : 7,
+                        "medium" : 6,
+                        "low" : 5
+                    }
+                    opacity = int(25 * (modifiers.get(phenotype.banding, 5)))
+                    pangere = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                    pangere.blit(sprites.sprites[phenotype.pangere + cat_sprite], (0, 0))
+                    pangere.set_alpha(opacity)
+                    whichmain.blit(pangere, (0, 0))
                 
                 return whichmain
         
