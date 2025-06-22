@@ -479,6 +479,7 @@
             }
         ],
         "other_clan": {
+            "current_rep": ["hostile"],
             "changed": 5
         }
     }

@@ -7418,6 +7418,7 @@
             }
         ],
         "other_clan": {
+            "current_rep": ["hostile"],
             "changed": 2
         }
     },
@@ -7453,6 +7454,7 @@
             }
         ],
         "other_clan": {
+            "current_rep": ["hostile"],
             "changed": 2
         }
     },
@@ -7487,6 +7489,7 @@
             }
         ],
         "other_clan": {
+            "current_rep": ["hostile"],
             "changed": 2
         }
     }

@@ -3580,7 +3580,7 @@ class Cat:
     @property
     def sprite(self):
         # Update the sprite
-        if self.pelt.rebuild_sprite:
+        if hasattr(self, "pelt") and self.pelt.rebuild_sprite:
             self.pelt.rebuild_sprite = False
             update_sprite(self)
             update_mask(self)

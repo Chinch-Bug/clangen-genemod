@@ -6253,6 +6253,7 @@
             }
         ],
         "other_clan": {
+            "current_rep": ["any"],
             "changed": 5
         }
     }
