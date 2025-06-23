@@ -207,7 +207,6 @@
             "warrior",
             "healer",
             "mediator",
-            "deputy",
             "leader",
             "elder"
         ],
@@ -266,7 +265,6 @@
             "healer",
             "mediator",
             "deputy",
-            "leader",
             "elder"
         ],
         "random_status_constraint": [
@@ -317,7 +315,6 @@
             "mediator apprentice",
             "warrior",
             "healer",
-            "mediator",
             "deputy",
             "leader",
             "elder"
@@ -340,8 +337,6 @@
         ],
         "main_status_constraint": [
             "apprentice",
-            "healer apprentice",
-            "mediator apprentice",
             "warrior",
             "healer",
             "mediator",
