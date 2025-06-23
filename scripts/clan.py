@@ -1161,6 +1161,10 @@ class OtherClan:
         "amiable",
         "gracious",
     ]
+    # Notes to self:
+    # Friendly to joiners: gracious, amiable   
+    # Neutral to joiners: cunning, logical, stoic, mellow, bloodthirsty
+    # Hostile to joiners: wary, proud
 
     def __init__(self, name="", clancount="singleclan", relations=0, temperament="", chosen_symbol="", leader=None, leader_lives=9, leader_predecessors=0, deputy=None, deputy_predecessors=0, medicine_cat=None, med_cat_predecessors=0):
         clan_names = names.names_dict["normal_prefixes"]

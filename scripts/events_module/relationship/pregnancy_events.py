@@ -45,10 +45,12 @@ class Pregnancy_Events:
         Pregnancy_Events.currently_loaded_lang = i18n.config.get("locale")
 
     @staticmethod
-    def set_biggest_family():
+    def set_biggest_family(clan):
         """Gets the biggest family of the clan."""
         biggest_family = None
         for cat in Cat.all_cats.values():
+            if cat.group != clan:
+                continue
             ancestors = cat.get_relatives()
             if not biggest_family:
                 biggest_family = ancestors
@@ -56,10 +58,10 @@ class Pregnancy_Events:
             elif len(biggest_family) < len(ancestors) + 1:
                 biggest_family = ancestors
                 biggest_family.append(cat.ID)
-        Pregnancy_Events.biggest_family = biggest_family
+        Pregnancy_Events.biggest_family[clan.name] = biggest_family
 
     @staticmethod
-    def biggest_family_is_big():
+    def biggest_family_is_big(clan):
         """Returns if the current biggest family is big enough to 'activates' additional inbreeding counters."""
 
         living_cats = len(
@@ -68,7 +70,7 @@ class Pregnancy_Events:
                 if not i.dead and not i.outside and not i.exiled
             ]
         )
-        return len(Pregnancy_Events.biggest_family) > (living_cats / 10)
+        return len(Pregnancy_Events.biggest_family[clan.name]) > (living_cats / 10)
 
     @staticmethod
     def handle_pregnancy_age(clan):
@@ -82,8 +84,8 @@ class Pregnancy_Events:
         if not clan:
             return
 
-        if not Pregnancy_Events.biggest_family:
-            Pregnancy_Events.set_biggest_family()
+        if not Pregnancy_Events.biggest_family.get(clan.name):
+            Pregnancy_Events.set_biggest_family(clan)
 
         # Handles if a cat is already pregnant
         if cat.ID in game.clan.pregnancy_data:
@@ -349,12 +351,13 @@ class Pregnancy_Events:
                 if surrogate:
                     other_cat[0].birth_cooldown = game.config["pregnancy"]["birth_cooldown"]
                     backkit = None
-                elif(random.random() < 0.25 and len(other_clan_affair_partners)):
-                    outside_parent = [choice(other_clan_affair_partners)]
+                elif random.random() < game.config["pregnancy"]["half-clan_chance"] and (game.clan.clancount == "singleclan" or len(other_clan_affair_partners)):
                     backkit = 'halfclan2'
-                    if random.random() < 0.2:
-                        outside_parent[0].set_mate(cat)
-                        cat.set_mate(outside_parent[0])
+                    if game.clan.clancount == "multiclan":
+                        outside_parent = [choice(other_clan_affair_partners)]
+                        if random.random() < 0.2:
+                            outside_parent[0].set_mate(cat)
+                            cat.set_mate(outside_parent[0])
                 elif(random.random() < 0.75 or len(outsider_affair_partners) < 1):
                     cat_type = choice(['loner', 'rogue', 'kittypet'])
                     backstories = {
@@ -699,12 +702,13 @@ class Pregnancy_Events:
             outsider_affair_partners = [i for i in possible_affair_partners if i.group is None]
             other_clan_affair_partners = [i for i in possible_affair_partners if i.group]
 
-            if (random.random() < 0.25 and len(other_clan_affair_partners)):
-                other_cat = [choice(other_clan_affair_partners)]
+            if random.random() < game.config["pregnancy"]["half-clan_chance"] and (game.clan.clancount == "singleclan" or len(other_clan_affair_partners)):
                 backkit = 'halfclan1'
-                if random.random() < 0.2:
-                    other_cat[0].set_mate(cat)
-                    cat.set_mate(other_cat[0])
+                if game.clan.clancount == "multiclan":
+                    other_cat = [choice(other_clan_affair_partners)]
+                    if random.random() < 0.2:
+                        other_cat[0].set_mate(cat)
+                        cat.set_mate(other_cat[0])
             elif(random.random() < 0.75 or len(possible_affair_partners) < 1):
                 cat_type = choice(['loner', 'rogue', 'kittypet'])
                 
@@ -770,7 +774,7 @@ class Pregnancy_Events:
                 kit.moons = 0
                 kit.dead = True
                 History.add_death(kit, str(kit.name) + " was stillborn.")
-        Pregnancy_Events.set_biggest_family()
+        Pregnancy_Events.set_biggest_family(clan)
         
         if pregnant_cat.outside:
             for kit in kits:
@@ -1144,12 +1148,12 @@ class Pregnancy_Events:
             special_affair = True
 
         # 'buff' affairs if the current biggest family is big + this cat doesn't belong there
-        if not Pregnancy_Events.biggest_family:
-            Pregnancy_Events.set_biggest_family()
+        if not Pregnancy_Events.biggest_family.get(clan.name):
+            Pregnancy_Events.set_biggest_family(clan)
 
         if (
-            Pregnancy_Events.biggest_family_is_big()
-            and cat.ID not in Pregnancy_Events.biggest_family
+            Pregnancy_Events.biggest_family_is_big(clan)
+            and cat.ID not in Pregnancy_Events.biggest_family[clan.name]
         ):
             chance = int(chance * 0.8)
 
@@ -1844,10 +1848,27 @@ class Pregnancy_Events:
                 if not i.dead and not i.outside and not i.exiled and i.group == clan
             ]
         )
+
         if living_cats < 10:
             inverse_chance = int(inverse_chance * 0.5)
         elif living_cats > 30:
             inverse_chance = int(inverse_chance * (living_cats / 30))
+
+        # POPULATION EQUALIZER
+        # - increase chance of new litters if secondary clans smaller than main Clan
+        if clan != game.clan:
+            main_clan_living_cats = len(
+                [
+                    i for i in Cat.all_cats.values()
+                    if not i.dead and not i.outside and not i.exiled and i.group == game.clan
+                ]
+            )
+            ratio = living_cats / main_clan_living_cats
+            if ratio < 0.5:
+                inverse_chance = int(inverse_chance * ratio)
+            elif ratio < 0.75:
+                inverse_chance = int(inverse_chance * ratio * 1.25)
+
 
         # COMPATIBILITY
         # - decrease / increase depending on the compatibility
@@ -1929,18 +1950,18 @@ class Pregnancy_Events:
 
         # 'INBREED' counter
         # - increase inverse chance if one of the current cats belongs in the biggest family
-        if not Pregnancy_Events.biggest_family:  # set the family if not already
-            Pregnancy_Events.set_biggest_family()
+        if not Pregnancy_Events.biggest_family.get(clan.name):  # set the family if not already
+            Pregnancy_Events.set_biggest_family(clan)
 
         InBiggest = False
         if second_parent:
             for x in second_parent:
                 if x == "Surrogate":
                     continue
-                if x.ID in Pregnancy_Events.biggest_family:
+                if x.ID in Pregnancy_Events.biggest_family[clan.name]:
                     InBiggest = True
 
-        if first_parent.ID in Pregnancy_Events.biggest_family or second_parent and InBiggest:
+        if first_parent.ID in Pregnancy_Events.biggest_family[clan.name] or second_parent and InBiggest:
             inverse_chance = int(inverse_chance * 1.7)
 
         # - decrease inverse chance if the current family is small
@@ -1953,7 +1974,7 @@ class Pregnancy_Events:
         settings_allow = (
             not second_parent and not game.clan.clan_settings["single parentage"]
         )
-        if settings_allow and Pregnancy_Events.biggest_family_is_big():
+        if settings_allow and Pregnancy_Events.biggest_family_is_big(clan):
             inverse_chance = int(inverse_chance * 0.9)
 
         return inverse_chance

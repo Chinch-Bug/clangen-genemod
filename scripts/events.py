@@ -2084,7 +2084,18 @@ class Events:
         elif clan_size < 30:
             base_chance = 300
 
-        reputation = game.clan.reputation
+
+        reputation = 50
+        if clan != game.clan:
+            if clan.temperament in ("gracious", "amiable"):
+                reputation = random.choice([random.randint(71, 100), random.randint(71, 100), random.randint(71, 100), random.randint(50, 70)])
+            elif clan.temperament in ("wary", "proud"):
+                reputation = random.choice([random.randint(1, 30), random.randint(1, 30), random.randint(1, 30), random.randint(31, 50)])
+            else:
+                reputation = random.choice([random.randint(1, 30), random.randint(31, 70), random.randint(31, 70), random.randint(71, 100)])
+        else:
+            reputation = game.clan.reputation
+
         # hostile
         if 1 <= reputation <= 30:
             if clan_size < 10:
@@ -2103,6 +2114,18 @@ class Events:
         # welcoming
         elif 71 <= reputation <= 100:
             chance = base_chance - reputation
+
+        if clan != game.clan:
+            # Increase chance if secondary Clan is smaller than main clan
+
+            main_clan_alive_cats = len([
+                kitty for kitty in Cat.all_cats.values()
+                if kitty.status != "leader" and not kitty.dead and not kitty.outside and kitty.group == game.clan
+            ])
+            ratio = clan_size / main_clan_alive_cats
+
+            if ratio < 0.75:
+                chance = int(chance * ratio * 1.25)
 
         chance = max(chance, 1)
 
