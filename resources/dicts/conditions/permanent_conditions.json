@@ -774,15 +774,15 @@
     "risks": [
       {
         "name": "persistent headaches",
-        "chance": 80
+        "chance": 160
       },
       {
         "name": "severe headache",
-        "chance": 60
+        "chance": 100
       },
       {
         "name": "headache",
-        "chance": 40
+        "chance": 50
       },
       {
         "name": "sunburn",
@@ -790,7 +790,7 @@
       },
       {
         "name": "failing eyesight",
-        "chance": 100
+        "chance": 200
       }
     ],
     "herbs": {
@@ -816,19 +816,19 @@
     "risks": [
       {
         "name": "persistent headaches",
-        "chance": 80
+        "chance": 160
       },
       {
         "name": "severe headache",
-        "chance": 60
+        "chance": 100
       },
       {
         "name": "headache",
-        "chance": 40
+        "chance": 50
       },
       {
         "name": "failing eyesight",
-        "chance": 100
+        "chance": 200
       }
     ],
     "herbs": {

@@ -684,6 +684,7 @@ class Inheritance:
 
                 self.cousins[inter_id] = {"type": rel_type, "additional": [add_info]}
                 self.all_involved.append(inter_id)
+                self.others_in_tree.append(inter_parent_id)
 
     def init_grand_kits(self, inter_id, inter_cat):
         """Create a grandkit relationship."""

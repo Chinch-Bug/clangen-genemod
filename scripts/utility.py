@@ -968,6 +968,7 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
     status = None
     age = None
     adoptive_parents = []
+    blood_parent = None
     give_mates = []
     picked_cats = []
     
@@ -979,6 +980,9 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
         match = re.match(r'age:\s?(.+)', a)
         if match:
             age = match.group(1)
+        match = re.match(r"parent:\s?(.+)", a)
+        if match:
+            parent = in_event_cats[match.group(1)]
         match = re.match(r"adoptive:\s?(.+)", a)
         if match:
             adoptive_indexes = match.group(1).split(",") if match else []
@@ -1054,7 +1058,9 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
         
     if "litter" in attribute_list:
         (parents, orphans) = get_alive_clan_queens(all_clan_cats, clan=other_clan)[0]
-        if parents:
+        if parent:
+            picked_cats = parents[parent.ID]
+        elif parents:
             litter = parents[choice(list(parents.keys()))]
             picked_cats = litter
         else:
@@ -1070,6 +1076,12 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
             if not all_clan_cats:
                 print("No possible mates found")
                 all_clan_cats = create_new_cat_block(Cat, Relationship, event, in_event_cats, i, attribute_list, other_clan)
+        if age == "has_kits":
+            (parents, orphans) = get_alive_clan_queens(all_clan_cats, clan=other_clan)
+            for par_id in parents.keys():
+                if Cat.fetch_cat(par_id) not in all_clan_cats:
+                    del parents[par_id]
+            all_clan_cats = [Cat.fetch_cat(par_id) for par_id in parents.keys()]
         elif age:
             all_clan_cats_age = [cat for cat in all_clan_cats if cat.age == age]
             if all_clan_cats_age:
@@ -1079,6 +1091,9 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
     if "change_clan" in attribute_list:
         for cat in picked_cats:
             cat.group = clan
+            if "rogue" in attribute_list:
+                cat.status = "former Clancat"
+                cat.outside = True
             if cat.status == "leader":
                 other_clan.leader = None
                 other_clan.leader_lives = 0
@@ -2664,7 +2679,7 @@ def event_text_adjust(
     # patrol_apprentices
     app_abbr = ["app1", "app2", "app3", "app4", "app5", "app6"]
     for i, abbr in enumerate(app_abbr):
-        if abbr not in text:
+        if abbr not in text or not patrol_apprentices:
             continue
         if len(patrol_apprentices) > i:
             replace_dict[abbr] = (
@@ -2684,7 +2699,7 @@ def event_text_adjust(
             replace_dict[f"n_c_pre:{i}"] = (str(cat_list[0].name.prefix), pronoun)
 
     # mur_c (murdered cat for reveals)
-    if "mur_c" in text:
+    if "mur_c" in text and victim_cat:
         replace_dict["mur_c"] = (str(victim_cat.name), get_pronouns(victim_cat))
 
     # lead_name
@@ -2707,7 +2722,7 @@ def event_text_adjust(
         text = process_text(text, replace_dict)
 
     # multi_cat
-    if "multi_cat" in text:
+    if "multi_cat" in text and multi_cats:
         name_list = []
         for _cat in multi_cats:
             name_list.append(str(_cat.name))
@@ -2716,7 +2731,7 @@ def event_text_adjust(
 
     # other_clan_name
     if "o_c_n" in text:
-        other_clan_name = other_clan.name
+        other_clan_name = other_clan.name if other_clan else "Default"
         pos = 0
         for x in range(text.count("o_c_n")):
             if "o_c_n" in text:
@@ -2768,19 +2783,19 @@ def event_text_adjust(
     text = adjust_prey_abbr(text)
 
     # acc_plural (only works for main_cat's acc)
-    if "acc_plural" in text:
+    if "acc_plural" in text and main_cat:
         text = text.replace(
             "acc_plural", i18n.t(f"cat.accessories.{main_cat.pelt.accessory[-1]}", count=2)
         )
 
     # acc_singular (only works for main_cat's acc)
-    if "acc_singular" in text:
+    if "acc_singular" in text and main_cat:
         text = text.replace(
             "acc_singular",
             i18n.t(f"cat.accessories.{main_cat.pelt.accessory[-1]}", count=1),
         )
 
-    if "given_herb" in text:
+    if "given_herb" in text and chosen_herb:
         text = text.replace(
             "given_herb", i18n.t(f"conditions.herbs.{chosen_herb}", count=2)
         )
@@ -3068,6 +3083,30 @@ def update_sprite(cat):
     cat.all_cats[cat.ID] = cat
 
 
+def update_mask(cat):
+    val = pygame.mask.from_surface(
+        pygame.transform.scale(cat.sprite, ui_scale_dimensions((50, 50))), threshold=250
+    )
+
+    inflated_mask = pygame.Mask(
+        (
+            val.get_size()[0] + 10,
+            val.get_size()[1] + 10,
+        )
+    )
+    inflated_mask.draw(val, (5, 5))
+    for _ in range(3):
+        outline = inflated_mask.outline()
+        for point in outline:
+            for dx in range(-1, 2):
+                for dy in range(-1, 2):
+                    try:
+                        inflated_mask.set_at((point[0] + dx, point[1] + dy), 1)
+                    except IndexError:
+                        continue
+    cat.sprite_mask = inflated_mask
+
+
 def clan_symbol_sprite(clan, return_string=False, force_light=False):
     """
     returns the clan symbol for the given clan_name, if no symbol exists then random symbol is chosen
@@ -3301,6 +3340,20 @@ def generate_sprite(
                 
                 if phenotype.caramel == 'caramel' and not is_red:    
                     whichmain.blit(sprites.sprites['caramel0'], (0, 0))
+
+                if phenotype.pangere:
+                    modifiers = {
+                        "chinchilla" : 9,
+                        "shaded" : 8,
+                        "high" : 7,
+                        "medium" : 6,
+                        "low" : 5
+                    }
+                    opacity = int(25 * (modifiers.get(phenotype.banding, 5)))
+                    pangere = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                    pangere.blit(sprites.sprites[phenotype.pangere + cat_sprite], (0, 0))
+                    pangere.set_alpha(opacity)
+                    whichmain.blit(pangere, (0, 0))
                 
                 return whichmain
         

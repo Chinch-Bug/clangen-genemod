@@ -169,20 +169,26 @@ def event_for_other_clan(Cat, ranks: list, other_clan) -> bool:
 
     for rank in ranks:
         final_ranks = [rank.replace("_mult", "")]
-        if "any_app" in rank:
-            final_ranks = ["apprentice", "mediator apprentice", "healer apprentice"]
-        if "any_warrior" in rank:
-            final_ranks = ["leader", "deputy", "warrior"]
-        if "any_fighter" in rank:
-            final_ranks = ["leader", "deputy", "warrior", "apprentice"]
-        if "any_healer" in rank:
-            final_ranks = ["healer", "healer apprentice"]
-        if "any_mediator" in rank:
-            final_ranks = ["mediator", "mediator apprentice"]
-        oc_cats = get_alive_status_cats(
-            Cat, final_ranks, working=True, clan=other_clan.name)
-        if not oc_cats or (len(oc_cats) < 2 and "mult" in rank):
-            return False
+        if "queen" in rank:
+            all_clan_cats = [i for i in Cat.all_cats.values() if i.group == other_clan and not i.outside and not i.dead]
+            (parents, orphans) = get_alive_clan_queens(all_clan_cats, clan=other_clan)
+            if not len(parents) or (len(parents) < 2 and "mult" in rank):
+                return False
+        else:            
+            if "any_app" in rank:
+                final_ranks = ["apprentice", "mediator apprentice", "healer apprentice"]
+            if "any_warrior" in rank:
+                final_ranks = ["leader", "deputy", "warrior"]
+            if "any_fighter" in rank:
+                final_ranks = ["leader", "deputy", "warrior", "apprentice"]
+            if "any_healer" in rank:
+                final_ranks = ["healer", "healer apprentice"]
+            if "any_mediator" in rank:
+                final_ranks = ["mediator", "mediator apprentice"]
+            oc_cats = get_alive_status_cats(
+                Cat, final_ranks, working=True, clan=other_clan.name)
+            if not oc_cats or (len(oc_cats) < 2 and "mult" in rank):
+                return False
         
     return True
 

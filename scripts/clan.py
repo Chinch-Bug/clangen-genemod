@@ -41,7 +41,8 @@ class Clan:
 
     """
 
-    BIOME_TYPES = ["Forest", "Plains", "Mountainous", "Beach", "Wetlands", "Desert"]
+    BIOME_TYPES = game.BIOME_TYPES
+
 
     CAT_TYPES = [
         "newborn",

@@ -165,6 +165,8 @@ class Events:
                 self.one_moon_cat(cat, cat.group if cat.group else game.clan)
             else:
                 self.one_moon_outside_cat(cat)
+            
+            cat.pelt.rebuild_sprite = True
 
         # keeping this commented out till disasters are more polished
         # self.disaster_events.handle_disasters()
@@ -1332,7 +1334,7 @@ class Events:
                 war_events = self.WAR_TXT["conclusion_events"]
             else:  # try to influence the relation with warring clan
                 game.clan.war["duration"] += 1
-                choice = random.choice(["rel_up", "rel_up", "neutral", "rel_down"])
+                choice = random.choice(["rel_up", "neutral", "rel_down", "rel_down"])
                 game.switches["war_rel_change_type"] = choice
                 war_events = self.WAR_TXT["progress_events"][choice]
                 if enemy_clan.relations < 0:

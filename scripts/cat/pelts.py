@@ -4,6 +4,7 @@ from re import sub
 
 import i18n
 
+import scripts.game_structure.screen_settings
 from scripts.cat.sprites import sprites
 from scripts.game_structure.game_essentials import game
 from .phenotype import Phenotype
@@ -81,6 +82,7 @@ class Pelt:
     ]
 
     # make sure to add plural and singular forms of new accs to acc_display.json so that they will display nicely
+
     plant_accessories = [
         "MAPLE LEAF",
         "HOLLY",
@@ -136,18 +138,6 @@ class Pelt:
         "MONARCH BUTTERFLY",
         "CICADA WINGS",
         "BLACK CICADA",
-    ]
-
-    tail_accessories = [
-        "RED FEATHERS",
-        "BLUE FEATHERS",
-        "JAY FEATHERS",
-        "GULL FEATHERS",
-        "SPARROW FEATHERS",
-        "CLOVER",
-        "DAISY",
-        "WISTERIA",
-        "GOLDEN CREEPING JENNY",
     ]
     collars = [
         "CRIMSON",
@@ -210,6 +200,26 @@ class Pelt:
         "PURPLENYLON",
         "MULTINYLON",
         "INDIGONYLON",
+    ]
+
+    # this is used for acc-giving events, only change if you're adding a new category tag to the event filter
+    # adding a category here will automatically update the event editor's options
+    acc_categories = {
+        "PLANT": plant_accessories,
+        "WILD": wild_accessories,
+        "COLLAR": collars
+    }
+
+    tail_accessories = [
+        "RED FEATHERS",
+        "BLUE FEATHERS",
+        "JAY FEATHERS",
+        "GULL FEATHERS",
+        "SPARROW FEATHERS",
+        "CLOVER",
+        "DAISY",
+        "WISTERIA",
+        "GOLDEN CREEPING JENNY",
     ]
 
     head_accessories = [
@@ -314,12 +324,14 @@ class Pelt:
                 self.cat_sprites['adult'] -= 3
                 self.cat_sprites['young adult'] -= 3
                 self.cat_sprites['senior adult'] -= 3
-        self.accessory = accessory
-        self.paralyzed = paralyzed
+        self.rebuild_sprite = True
+        self._accessory = accessory
+        self._paralyzed = paralyzed
         self.opacity = opacity
         self.scars = scars if isinstance(scars, list) else []
         self.tint = tint
         self.white_patches_tint = white_patches_tint
+        self.screen_scale = scripts.game_structure.screen_settings.screen_scale
         self.cat_sprites = {
             "kitten": kitten_sprite if kitten_sprite is not None else 0,
             "adolescent": adol_sprite if adol_sprite is not None else 0,
@@ -342,6 +354,24 @@ class Pelt:
         elif self.cat_sprites["adult"] < 9 and self.length == "long":
             self.cat_sprites["adult"] = randint(9, 11)
             self.cat_sprites["para_adult"] = 15
+
+    @property
+    def accessory(self):
+        return self._accessory
+
+    @accessory.setter
+    def accessory(self, val):
+        self.rebuild_sprite = True
+        self._accessory = val
+
+    @property
+    def paralyzed(self):
+        return self._paralyzed
+
+    @paralyzed.setter
+    def paralyzed(self, val):
+        self.rebuild_sprite = True
+        self._paralyzed = val
 
     @staticmethod
     def generate_new_pelt(phenotype, age:str="adult"):

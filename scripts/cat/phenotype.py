@@ -883,6 +883,7 @@ class Phenotype(Genotype):
             banding = "shaded"
         else:
             banding = genes.wbtype
+        self.banding = banding
 
         if colour == "apricot":
             if genes.ruftype == "low":
