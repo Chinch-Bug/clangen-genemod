@@ -6009,7 +6009,7 @@
         "location": ["any"],
         "season": ["any"],
         "sub_type": ["mass_death"],
-        "tags": ["lost"],
+        "tags": ["lost", "tnr"],
         "weight": 10,
         "event_text": "multi_cat are taken away by Twolegs.",
         "m_c": {
