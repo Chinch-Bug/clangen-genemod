@@ -23,7 +23,7 @@ jobs:
             python_arch: "x64"
             itch_channel: linux64_glibc_235
             api_artifact_name: linux2.35
-          
+            
           - os: windows-latest
             artifact_name: Genemod_Win64.zip
             python_version: "3.8"
