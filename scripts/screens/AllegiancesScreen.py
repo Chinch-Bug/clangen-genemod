@@ -183,7 +183,7 @@ class AllegiancesScreen(Screens):
 
         if hasattr(self, "scroll_container") and self.scroll_container:
             self.scroll_container.kill()
-        self.scroll_container = pygame_gui.elements.UIModifiedScrollingContainer(
+        self.scroll_container = UIModifiedScrollingContainer(
             ui_scale(pygame.Rect((50, 165), (715, 470))),
             allow_scroll_x=False,
             allow_scroll_y=True,
