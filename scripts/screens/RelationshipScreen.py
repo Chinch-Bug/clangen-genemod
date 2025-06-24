@@ -54,9 +54,9 @@ class RelationshipScreen(Screens):
         "romantic",
         "platonic",
         "dislike",
-        "comfortable",
+        "comfort",
         "jealousy",
-        "admiration",
+        "respect",
         "trust",
     )
 
