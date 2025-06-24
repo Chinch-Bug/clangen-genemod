@@ -257,7 +257,7 @@ class ListScreen(Screens):
         self.clan_name = game.clan.name + "Clan"
         
         if game.clan and game.clan.clancount == "multiclan":
-            group_names = list(self.living_group_names) 
+            group_names = ["general.your_clan", "general.cotc"]
             group_names += [clan.name +
                             "Clan" for clan in game.clan.all_clans if clan.name + "Clan" not in group_names]
             self.living_group_names = tuple(group_names)
