@@ -1493,6 +1493,7 @@ class Pregnancy_Events:
                 kit.phenotype.white_pattern = kit.pelt.generate_white(kit.phenotype.white, kit.phenotype.pointgene, kit.phenotype.whitegrade, kit.phenotype.vitiligo, None, kit.phenotype.pax3)
                 kit.phenotype.PhenotypeOutput(kit.phenotype.white_pattern)
                 kit.phenotype.SpriteInfo(kit.moons)
+                kit.pelt = ref_cat.pelt
                 
                 if ref_cat.chimerapheno:
                     kit.chimerapheno = ref_cat.chimerapheno   

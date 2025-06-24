@@ -304,7 +304,7 @@ class Pelt:
         self.cat_sprites["sick_adult"] = 18
         self.cat_sprites["sick_young"] = 19
         if phenotype.length == "longhaired" and phenotype.longtype == 'long' and phenotype.cornish[0] == "R" and phenotype.lykoi[0] == 'Ly' and phenotype.sedesp[0] != "re" and 'brush' not in phenotype.furtype:    
-            self.length="long"
+            self.length = "long"
             if self.cat_sprites['adult'] < 9:
                 self.cat_sprites['adult'] += 3
                 self.cat_sprites['young adult'] += 3
@@ -313,13 +313,13 @@ class Pelt:
             if phenotype.length == "mediumhaired":
                 self.length = 'medium'
             else:
-                self.length="short"
+                self.length = "short"
             if self.cat_sprites['adult'] > 8:
                 self.cat_sprites['adult'] -= 3
                 self.cat_sprites['young adult'] -= 3
                 self.cat_sprites['senior adult'] -= 3
         else:
-            self.length="hairless"
+            self.length = "hairless"
             if self.cat_sprites['adult'] > 8:
                 self.cat_sprites['adult'] -= 3
                 self.cat_sprites['young adult'] -= 3
