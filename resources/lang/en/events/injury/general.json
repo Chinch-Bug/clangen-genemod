@@ -16,7 +16,6 @@
             "trait": [
                 "daring",
                 "impulsive",
-
                 "troublesome"
             ]
         },
@@ -48,7 +47,6 @@
             "trait": [
                 "daring",
                 "impulsive",
-
                 "troublesome"
             ]
         },
@@ -114,7 +112,6 @@
             "trait": [
                 "daring",
                 "impulsive",
-
                 "troublesome"
             ]
         },
@@ -146,7 +143,6 @@
             "trait": [
                 "daring",
                 "impulsive",
-
                 "troublesome"
             ]
         },
@@ -701,7 +697,6 @@
             "trait": [
                 "calm",
                 "compassionate",
-                
                 "thoughtful",
                 "wise"
             ]
@@ -804,7 +799,6 @@
             "trait": [
                 "calm",
                 "compassionate",
-                
                 "thoughtful",
                 "daring",
                 "bold",
@@ -924,7 +918,6 @@
             "trait": [
                 "calm",
                 "compassionate",
-                
                 "thoughtful",
                 "daring",
                 "bold",
@@ -1315,7 +1308,6 @@
             "trait": [
                 "daring",
                 "impulsive",
-
                 "troublesome"
             ]
         },
@@ -2091,7 +2083,6 @@
             "trait": [
                 "compassionate",
                 "loving",
-                
                 "responsible",
                 "loyal",
                 "adventurous",
@@ -2165,7 +2156,6 @@
             "trait": [
                 "compassionate",
                 "loving",
-                
                 "responsible",
                 "loyal",
                 "adventurous",
@@ -2379,7 +2369,6 @@
             "trait": [
                 "compassionate",
                 "loving",
-                
                 "responsible",
                 "loyal",
                 "adventurous",
@@ -2545,7 +2534,6 @@
             "trait": [
                 "compassionate",
                 "loving",
-                
                 "responsible",
                 "loyal",
                 "adventurous",
@@ -2633,7 +2621,6 @@
             "trait": [
                 "compassionate",
                 "loving",
-                
                 "responsible",
                 "loyal",
                 "adventurous",
@@ -2843,7 +2830,6 @@
             "trait": [
                 "compassionate",
                 "loving",
-                
                 "responsible",
                 "loyal",
                 "adventurous",
@@ -2988,7 +2974,6 @@
             "trait": [
                 "compassionate",
                 "loving",
-                
                 "responsible",
                 "loyal",
                 "adventurous",
@@ -3070,7 +3055,6 @@
             "trait": [
                 "compassionate",
                 "loving",
-                
                 "responsible",
                 "loyal",
                 "adventurous",
@@ -5061,8 +5045,12 @@
     },
     {
         "event_id": "gen_injury_clawwoundcatbite_anydisobeypunish1",
-        "location": ["any"],
-        "season": ["any"],
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
         "weight": 10,
         "event_text": "m_c was hurt by {PRONOUN/m_c/poss} mentor, r_c, as a punishment for disobeying {PRONOUN/r_c/object}.",
         "m_c": {
@@ -5154,8 +5142,12 @@
     },
     {
         "event_id": "gen_injury_clawwoundcatbite_anymentorfight1",
-        "location": ["any"],
-        "season": ["any"],
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
         "weight": 10,
         "event_text": "m_c fought with {PRONOUN/m_c/poss} mentor, r_c, and was injured.",
         "m_c": {
@@ -5808,7 +5800,9 @@
     },
     {
         "event_id": "gen_injury_crackedpads_any1",
-        "location": ["any"],
+        "location": [
+            "any"
+        ],
         "season": [
             "leaf-bare"
         ],
@@ -6652,7 +6646,9 @@
     },
     {
         "event_id": "gen_injury_beesting_multiany3",
-        "location": ["any"],
+        "location": [
+            "any"
+        ],
         "season": [
             "greenleaf",
             "newleaf"
@@ -7503,13 +7499,26 @@
     },
     {
         "event_id": "gen_injury_war_predatorsaved",
-        "location": ["any"],
-        "season": ["any"],
-        "sub_type": ["war"],
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "war"
+        ],
         "weight": 20,
         "event_text": "m_c acts without thinking, saving the life of a o_c_n warrior by chasing off the predator attempting to make them their lunch.",
         "m_c": {
-            "status": ["warrior", "deputy", "leader", "healer", "healer apprentice", "apprentice"]
+            "status": [
+                "warrior",
+                "deputy",
+                "leader",
+                "healer",
+                "healer apprentice",
+                "apprentice"
+            ]
         },
         "injury": [
             {
@@ -7538,5 +7547,49 @@
                 "warrior_mult"
             ]
         }
+    },
+    {
+        "event_id": "gen_injury_sprain_anyapprentice1",
+        "location": [
+            "forest",
+            "plains",
+            "mountainous",
+            "desert"
+        ],
+        "season": [
+            "any"
+        ],
+        "weight": 30,
+        "event_text": "m_c was running around on patrol when {PRONOUN/m_c/poss} paw landed right in a rabbit hole. {PRONOUN/m_c/subject/CAP} limped the whole way home.",
+        "m_c": {
+            "status": [
+                "apprentice",
+                "healer apprentice",
+                "mediator apprentice"
+            ],
+            "trait": [
+                "adventurous",
+                "bold",
+                "daring",
+                "playful",
+                "childish",
+                "ambitious",
+                "confident",
+                "competitive",
+                "oblivious"
+            ]
+        },
+        "r_c": {},
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "sprain"
+                ],
+                "scars": []
+            }
+        ]
     }
 ]
