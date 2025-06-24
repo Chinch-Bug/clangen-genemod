@@ -135,19 +135,19 @@ class ClanScreen(Screens):
         i = 0
         all_positions = list(self.taken_spaces.values())
         used_positions = all_positions.copy()
-        cat_list = [
-            Cat.all_cats[x]
-            for i, x in enumerate(game.clan.clan_cats)
-            if i < self.max_sprites_displayed
-            and not Cat.all_cats[x].dead
-            and Cat.all_cats[x].in_camp
-            and not (Cat.all_cats[x].exiled or Cat.all_cats[x].outside or Cat.all_cats[x].group != game.clan)
-            and (
-                Cat.all_cats[x].status != "newborn"
-                or game.config["fun"]["all_cats_are_newborn"]
-                or game.config["fun"]["newborns_can_roam"]
-            )
-        ]
+        cat_list = []
+        for x in game.clan.clan_cats:
+            if (not Cat.all_cats[x].dead
+                and Cat.all_cats[x].in_camp
+                and not (Cat.all_cats[x].exiled or Cat.all_cats[x].outside or Cat.all_cats[x].group != game.clan)
+                and (
+                    Cat.all_cats[x].status != "newborn"
+                    or game.config["fun"]["all_cats_are_newborn"]
+                    or game.config["fun"]["newborns_can_roam"]
+                )):
+                cat_list.append(Cat.all_cats[x])
+                if len(cat_list) == self.max_sprites_displayed:
+                    break
         layers = []
         for x in cat_list:
             layers.append(2)
