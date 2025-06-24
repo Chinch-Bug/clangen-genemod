@@ -111,7 +111,7 @@ class HandleShortEvents:
 
         # check for war and assign self.other_clan accordingly
         if game.clan.war.get("at_war", False) and (not clan or clan == game.clan.name or clan == get_warring_clan()) and random.randint(1, 5) != 1:
-            enemy_clan = get_warring_clan()
+            enemy_clan = get_warring_clan() if get_warring_clan() != clan else game.clan
             self.other_clan = enemy_clan
             self.other_clan_name = f"{self.other_clan.name}Clan"
             self.sub_types.append("war")

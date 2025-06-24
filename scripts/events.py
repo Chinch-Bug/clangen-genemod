@@ -280,7 +280,7 @@ class Events:
                 if len(ghost_names[clan]) > 0:
                     game.cur_events_list.append(
                         Single_Event(
-                            event_text_adjust(Cat, event, clan=[cl for cl in [game.clan] + game.clan.all_clans if cl.name == clan][0]),
+                            event_text_adjust(Cat, event, main_cat=sorted_dead_cats[clan][0], clan=[cl for cl in [game.clan] + game.clan.all_clans if cl.name == clan][0]),
                             ["birth_death"],
                             [i.ID for i in sorted_dead_cats[clan] + sorted_dead_cats["outsider cat"]],
                             cat_dict={"m_c": (sorted_dead_cats[clan] + sorted_dead_cats["outsider cat"])[0]} 

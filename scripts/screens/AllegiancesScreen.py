@@ -152,17 +152,18 @@ class AllegiancesScreen(Screens):
         self.heading.kill()
         del self.heading
 
-        self.event_screen_container.kill()
-        self.choose_group_button.kill()
-        self.living_groups_container.kill()
-        for x in self.choose_group_buttons.values():
-            x.kill()
-        self.choose_living_dropdown.kill()
-        del self.event_screen_container
-        del self.choose_group_button
-        del self.living_groups_container
-        self.choose_group_buttons = {}
-        del self.choose_living_dropdown
+        if game.clan.clancount == 'multiclan':
+            self.event_screen_container.kill()
+            self.choose_group_button.kill()
+            self.living_groups_container.kill()
+            for x in self.choose_group_buttons.values():
+                x.kill()
+            self.choose_living_dropdown.kill()
+            del self.event_screen_container
+            del self.choose_group_button
+            del self.living_groups_container
+            self.choose_group_buttons = {}
+            del self.choose_living_dropdown
 
     def fill_allegiances(self):
         # Heading
