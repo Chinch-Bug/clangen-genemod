@@ -1246,4 +1246,3 @@ class Condition_Events:
 
 
 Condition_Events.rebuild_strings()
-

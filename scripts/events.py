@@ -679,7 +679,8 @@ class Events:
         elif game.clan.clan_settings.get("hunting"):
             # handle warrior
             healthy_warriors = [
-                cat for cat in Cat.all_cats.values()
+                cat
+                for cat in Cat.all_cats.values()
                 if cat.status in ("warrior", "leader", "deputy")
                 and cat.group == game.clan
                 and cat.available_to_work()
@@ -737,7 +738,9 @@ class Events:
                 clan=game.clan.name
             )
 
-            focus_text = game.clan.herb_supply.handle_focus(healthy_meds, healthy_warriors)
+            focus_text = game.clan.herb_supply.handle_focus(
+                healthy_meds, healthy_warriors
+            )
 
         elif game.clan.clan_settings.get("threaten outsiders"):
             amount = game.config["focus"]["outsiders"]["reputation"]
@@ -771,7 +774,8 @@ class Events:
             involved_cats = {"injured": [], "sick": []}
             # handle prey
             healthy_warriors = [
-                cat for cat in Cat.all_cats.values()
+                cat
+                for cat in Cat.all_cats.values()
                 if cat.available_to_work()
                 and cat.group == game.clan
                 and cat.status in ("warrior", "leader", "deputy")
@@ -784,7 +788,8 @@ class Events:
 
             # handle herbs
             healthy_meds = [
-                cat for cat in Cat.all_cats.values()
+                cat
+                for cat in Cat.all_cats.values()
                 if cat.available_to_work() and cat.status == "healer"
                 and cat.group == game.clan
             ]
@@ -855,10 +860,7 @@ class Events:
                         )
                     )
 
-            focus_text = i18n.t(
-                "hardcoded.focus_prey",
-                count=warrior_amount
-            )
+            focus_text = i18n.t("hardcoded.focus_prey", count=warrior_amount)
 
             if herb_focus_text:
                 focus_text += f" {herb_focus_text}"
@@ -1141,6 +1143,8 @@ class Events:
         -if the cat was not injured or ill, then they will do all of the above *and* trigger misc events, acc events,
         and new cat events
         """
+        if cat.faded:
+            return
         if cat.dead:
             cat.thoughts()
             if cat.ID in game.just_died:
@@ -2478,7 +2482,8 @@ class Events:
                 if illness == "kittencough":
                     # adjust alive cats list to only include kittens
                     alive_cats = [
-                        kitty for kitty in Cat.all_cats.values()
+                        kitty
+                        for kitty in Cat.all_cats.values()
                         if kitty.status in ("kitten", "newborn")
                         and not kitty.dead and not kitty.outside
                         and kitty.group == clan

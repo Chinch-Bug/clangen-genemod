@@ -272,7 +272,8 @@ class Relation_Events:
     def cats_with_relationship_constraints(main_cat, constraint):
         """Returns a list of cats, where the relationship from main_cat towards the cat fulfill the given constraints."""
         cat_list = [
-            cat for cat in Cat.all_cats.values()
+            cat
+            for cat in Cat.all_cats.values()
             if not cat.dead and not cat.outside and not cat.exiled
         ]
         cat_list.remove(main_cat)

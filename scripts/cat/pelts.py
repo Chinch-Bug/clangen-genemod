@@ -207,7 +207,7 @@ class Pelt:
     acc_categories = {
         "PLANT": plant_accessories,
         "WILD": wild_accessories,
-        "COLLAR": collars
+        "COLLAR": collars,
     }
 
     tail_accessories = [
@@ -740,9 +740,7 @@ class Pelt:
 
         if acc_display_choice == 1:
             self.accessory = [
-                choice(
-                    [choice(Pelt.plant_accessories), choice(Pelt.wild_accessories)]
-                )
+                choice([choice(Pelt.plant_accessories), choice(Pelt.wild_accessories)])
             ]
         else:
             self.accessory = []
