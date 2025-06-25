@@ -246,10 +246,10 @@ class MakeClanScreen(Screens):
     def handle_clan_count_mode_event(self, event):
         """Handle events for the clan count screen"""
         # Clan count mode selection buttons
-        if event.ui_element == self.elements['classic_mode_button']:
+        if event.ui_element == self.elements['singleclan_mode_button']:
             self.clan_count_mode = 'singleclan'
             self.refresh_text_and_buttons()
-        elif event.ui_element == self.elements['expanded_mode_button']:
+        elif event.ui_element == self.elements['multiclan_mode_button']:
             self.clan_count_mode = 'multiclan'
             self.refresh_text_and_buttons()
         # When the next_step button is pressed, go to the Clan naming page.
@@ -655,11 +655,11 @@ class MakeClanScreen(Screens):
             self.elements['mode_name'].set_text(display_name)
 
             if self.clan_count_mode == 'singleclan':
-                self.elements['classic_mode_button'].disable()
-                self.elements['expanded_mode_button'].enable()
+                self.elements['singleclan_mode_button'].disable()
+                self.elements['multiclan_mode_button'].enable()
             elif self.clan_count_mode == 'multiclan':
-                self.elements['classic_mode_button'].enable()
-                self.elements['expanded_mode_button'].disable()
+                self.elements['singleclan_mode_button'].enable()
+                self.elements['multiclan_mode_button'].disable()
         elif self.sub_screen == "game mode":
             # Set the mode explanation text
             if self.game_mode == "classic":
@@ -1471,16 +1471,16 @@ class MakeClanScreen(Screens):
 
         # Create all the elements.
 
-        self.elements["classic_mode_button"] = UISurfaceImageButton(
+        self.elements["singleclan_mode_button"] = UISurfaceImageButton(
             ui_scale(pygame.Rect((109, 240), (132, 30))),
-            "screens.make_clan.classic_label",
+            "screens.make_clan.singleclan_label",
             get_button_dict(ButtonStyles.SQUOVAL, (132, 30)),
             object_id="@buttonstyles_squoval",
             manager=MANAGER,
         )
-        self.elements["expanded_mode_button"] = UIImageButton(
+        self.elements["multiclan_mode_button"] = UIImageButton(
             ui_scale(pygame.Rect((94, 320), (162, 34))),
-            "screens.make_clan.expanded_label",
+            "screens.make_clan.multiclan_label",
             object_id="#expanded_mode_button",
             manager=MANAGER,
         )
