@@ -836,6 +836,8 @@ class Cat:
         else:
             game.clan.add_to_unknown(self)
 
+        self.pelt.rebuild_sprite = True
+
         return
 
     def exile(self):
@@ -1723,7 +1725,6 @@ class Cat:
         if old_age != self.age:
             # Things to do if the age changes
             self.personality.facet_wobble(facet_max=2)
-            self.pelt.rebuild_sprite = True
 
         # Set personality to correct type
         self.personality.set_kit(self.age.is_baby())
