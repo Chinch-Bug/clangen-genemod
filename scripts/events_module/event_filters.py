@@ -146,7 +146,7 @@ def event_for_clan_relations(required_rel: list, other_clan) -> bool:
 
     current_rel = other_clan.relations
 
-    if "hostile" in required_rel and 0 <= current_rel <= 6:
+    if "hostile" in required_rel and current_rel <= 6:
         return True
     elif "neutral" in required_rel and 7 <= current_rel <= 17:
         return True

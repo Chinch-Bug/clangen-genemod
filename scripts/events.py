@@ -237,7 +237,7 @@ class Events:
                                     and not kitty.dead
                                     and not kitty.outside
                                     and not kitty.exiled
-                                    and (not clancount or kitty.group.name == clan)
+                                    and (not clancount or (kitty.group and kitty.group.name == clan))
                                 ),
                                 Cat.all_cats.values(),
                             )
