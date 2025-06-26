@@ -9,11 +9,9 @@ TODO: Docs
 # pylint: enable=line-too-long
 
 import os
-import random
 import statistics
 from random import choice, randint
 
-import i18n
 import pygame
 import ujson
 
@@ -131,6 +129,7 @@ class Clan:
         # This is the first cat in starclan, to "guide" the other dead cats there.
         self.clan_cats = []
         self.biome = biome
+        self.override_biome = None
         self.camp_bg = camp_bg
         self.chosen_symbol = symbol
         self.game_mode = game_mode
