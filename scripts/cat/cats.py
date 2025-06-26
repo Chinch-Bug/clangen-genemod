@@ -17,6 +17,7 @@ import i18n
 import pygame
 import ujson  # type: ignore
 
+import scripts.game_structure.localization as pronouns
 from scripts.cat.enums import CatAgeEnum
 from scripts.cat.history import History
 from scripts.cat.names import Name
@@ -40,6 +41,7 @@ from scripts.event_class import Single_Event
 from scripts.events_module.generate_events import GenerateEvents
 from scripts.game_structure import image_cache
 from scripts.game_structure.game_essentials import game
+from scripts.game_structure.localization import load_lang_resource
 from scripts.game_structure.screen_settings import screen
 from scripts.housekeeping.datadir import get_save_dir
 from scripts.utility import (
@@ -51,9 +53,6 @@ from scripts.utility import (
     leader_ceremony_text_adjust,
     update_mask,
 )
-from scripts.game_structure.localization import load_lang_resource
-
-import scripts.game_structure.localization as pronouns
 
 import scripts.game_structure.screen_settings
 
@@ -439,7 +438,11 @@ class Cat:
         if "biome" in kwargs:
             biome = kwargs["biome"]
         elif game.clan is not None:
-            biome = game.clan.biome
+            biome = (
+                game.clan.biome
+                if not game.clan.override_biome
+                else game.clan.override_biome
+            )
         else:
             biome = None
             
@@ -845,6 +848,8 @@ class Cat:
                 game.clan.add_to_darkforest(self)
         else:
             game.clan.add_to_unknown(self)
+
+        self.pelt.rebuild_sprite = True
 
         return
 
@@ -1733,7 +1738,6 @@ class Cat:
         if old_age != self.age:
             # Things to do if the age changes
             self.personality.facet_wobble(facet_max=2)
-            self.pelt.rebuild_sprite = True
 
         # Set personality to correct type
         self.personality.set_kit(self.age.is_baby())
