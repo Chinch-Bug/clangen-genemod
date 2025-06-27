@@ -768,7 +768,7 @@ class ChangeCatName(UIWindow):
 
         self.heading = pygame_gui.elements.UITextBox(
             "windows.change_name_title",
-            ui_scale(pygame.Rect((0, 10), (400, 40))),
+            ui_scale(pygame.Rect((50, 10), (300, 40))),
             object_id="#text_box_30_horizcenter",
             manager=MANAGER,
             container=self,
