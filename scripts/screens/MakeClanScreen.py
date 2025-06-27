@@ -648,6 +648,7 @@ class MakeClanScreen(Screens):
     def refresh_text_and_buttons(self):
         """Refreshes the button states and text boxes"""
         if self.sub_screen == "clan count mode":
+            display_text = self.single_clan_text
             if self.clan_count_mode == 'singleclan':
                 display_text = self.single_clan_text
                 display_name = "Single Clan"

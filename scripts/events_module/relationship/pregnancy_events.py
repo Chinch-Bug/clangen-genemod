@@ -345,13 +345,13 @@ class Pregnancy_Events:
                     other_cat[0].birth_cooldown = game.config["pregnancy"]["birth_cooldown"]
                     backkit = None
                 elif(random.random() < 0.75 or len(possible_affair_partners) < 1):
+                    backstories = {
+                        'loner' : 'loner_backstories',
+                        'rogue' : 'rogue_backstories',
+                        'kittypet' : 'kittypet_backstories'
+                    }
                     if(randint(1, 4) > 1):
                         cat_type = choice(['loner', 'rogue', 'kittypet'])
-                        backstories = {
-                            'loner' : 'loner_backstories',
-                            'rogue' : 'rogue_backstories',
-                            'kittypet' : 'kittypet_backstories'
-                        }
                         backkit = 'outsider_roots2'
                     else:
                         cat_type = 'Clancat'
@@ -385,6 +385,7 @@ class Pregnancy_Events:
                     outside_parent = [choice(possible_affair_partners)]
                     backkit = 'outsider_roots2'
 
+                pregnant_cat = None
                 if surrogate:
                     pregnant_cat = other_cat[0]
                 if surrogate and not pregnant_cat.outside:
@@ -683,14 +684,14 @@ class Pregnancy_Events:
                                     and (clan.clan_settings['same sex birth'] or xor('Y' in i.phenotype.sexgene, 'Y' in cat.phenotype.sexgene)) 
                                     and len(i.mate) == 0]
             if(random.random() < 0.75 or len(possible_affair_partners) < 1):
+                backstories = {
+                    'loner' : 'loner_backstories',
+                    'rogue' : 'rogue_backstories',
+                    'kittypet' : 'kittypet_backstories'
+                }
                 if(randint(1, 4) > 1):
                     cat_type = choice(['loner', 'rogue', 'kittypet'])
                     
-                    backstories = {
-                        'loner' : 'loner_backstories',
-                        'rogue' : 'rogue_backstories',
-                        'kittypet' : 'kittypet_backstories'
-                    }
                     backkit = 'outsider_roots1'
                 else:
                     cat_type = 'Clancat'

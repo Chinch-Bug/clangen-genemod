@@ -575,6 +575,7 @@ class HandleShortEvents:
                     self.main_cat
                 )  # got to include the cat that rolled for death in the first place
 
+            tnr = False
             if 'tnr' in self.chosen_event.tags and game.clan.clan_settings['tnr_mode']:
                 if random.random() < game.config['tnr_mode']['Clan_tnr']:
                     tnr = True
