@@ -1616,7 +1616,9 @@ class Genotype:
             self.eumelanin[0] = "B"
             self.eumelanin[1] = "b"
 
-        if len(self.sexgene) > 2 and self.sexgene[2] == "O" and self.sexgene[0] == "o":
+        if len(self.sexgene) == 1:
+            pass
+        elif len(self.sexgene) > 2 and self.sexgene[2] == "O" and self.sexgene[0] == "o":
             self.sexgene[2] = self.sexgene[0]
             self.sexgene[0] = "O"
         elif len(self.sexgene) > 2 and self.sexgene[2] == "O":
