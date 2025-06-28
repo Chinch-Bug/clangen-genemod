@@ -863,7 +863,9 @@ class EventEditScreen(Screens):
                             break
 
             # TEXT PREVIEW
-            if event.ui_element == self.event_text_element["preview_button"]:
+            if event.ui_element == self.event_text_element[
+                "preview_button"
+            ] and self.event_text_element.get("event_text"):
                 # finds what the new preview state should be
                 index = self.preview_states.index(self.current_preview_state)
                 new_index = (index + 1) % 3
@@ -914,7 +916,7 @@ class EventEditScreen(Screens):
                 self.handle_outside_events(event)
 
         elif event.type == pygame_gui.UI_TEXT_ENTRY_CHANGED:
-            if self.event_text_element["event_text"] == event.ui_element:
+            if self.event_text_element.get("event_text") == event.ui_element:
                 self.event_text_info = self.event_text_element["event_text"].html_text
                 if "t_initial" in self.event_text_info:
                     self.event_text_info = ""
