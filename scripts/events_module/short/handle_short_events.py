@@ -563,7 +563,7 @@ class HandleShortEvents:
             population = []
             for n in range(2, max_deaths):
                 population.append(n)
-                weight = 1 / (0.75 * n)  # Lower chance for more dead cats
+                weight = 1 / (0.25 * n)  # Lower chance for more dead cats
                 weights.append(weight)
             dead_count = random.choices(population, weights=weights)[0]
             if dead_count < 2:
