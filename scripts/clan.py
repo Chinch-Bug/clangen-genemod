@@ -244,6 +244,8 @@ class Clan:
             if Cat.all_cats.get(cat_id).status == "apprentice":
                 Cat.all_cats.get(cat_id).status_change("apprentice")
             Cat.all_cats.get(cat_id).thoughts()
+            Cat.all_cats.get(cat_id).pelt.rebuild_sprite = True
+            
 
         game.save_cats()
         number_other_clans = randint(3, 5)

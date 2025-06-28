@@ -660,21 +660,22 @@ class Phenotype(Genotype):
         if self.white[0] == "W" or self.pointgene[0] == "c" or ('DBEalt' not in self.pax3 and 'NoDBE' not in self.pax3) or (self.brindledbi and (('o' not in self.sexgene) or (self.ext[0] == 'ea' and ((moons > 11 and self.agouti[0] != 'a') or (moons > 23))) or (self.ext[0] == 'er' and moons > 23) or (self.ext[0] == 'ec' and (self.agouti[0] != 'a' or moons > 5)))):
             self.spritecolour = "white"
             self.maincolour = self.spritecolour
-        elif('o' not in self.sexgene and self.specialred == 'blue-tipped'):
-            self.tortiepattern = ['BLUE-TIPPED']
-            main = self.FindRed(self, moons)
-            self.maincolour = main[0]
-            self.spritecolour = main[1]
-            self.mainunders = [main[2], main[3]]
-            main = self.FindRed(self, moons, 'blue-tipped')
-            self.patchmain = main[0]
-            self.patchcolour = main[1]
-            self.patchunders = [main[2], main[3]]
         elif ('o' not in self.sexgene) or (self.ext[0] == 'ea' and ((moons > 11 and self.agouti[0] != 'a') or (moons > 23))) or (self.ext[0] == 'er' and moons > 23) or (self.ext[0] == 'ec' and moons > 0 and (self.agouti[0] != 'a' or moons > 5)):
-            main = self.FindRed(self, moons, special=self.ext[0])
-            self.maincolour = main[0]
-            self.spritecolour = main[1]
-            self.mainunders = [main[2], main[3]]
+            if self.specialred == 'blue-tipped':
+                self.tortiepattern = ['BLUE-TIPPED']
+                main = self.FindRed(self, moons)
+                self.maincolour = main[0]
+                self.spritecolour = main[1]
+                self.mainunders = [main[2], main[3]]
+                main = self.FindRed(self, moons, 'blue-tipped')
+                self.patchmain = main[0]
+                self.patchcolour = main[1]
+                self.patchunders = [main[2], main[3]]
+            else:
+                main = self.FindRed(self, moons, special=self.ext[0])
+                self.maincolour = main[0]
+                self.spritecolour = main[1]
+                self.mainunders = [main[2], main[3]]
         elif('O' not in self.sexgene):
             main = self.FindBlack(self, moons)
             self.maincolour = main[0]
