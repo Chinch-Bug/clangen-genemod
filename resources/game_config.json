@@ -355,7 +355,8 @@
     ]
   },
   "event_generation": {
-    "debug_ensure_event_id": null
+    "debug_ensure_event_id": null,
+    "debug_type_override": null
   },
   "death_related": {
     "leader_death_chance": 50,
