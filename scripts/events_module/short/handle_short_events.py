@@ -249,7 +249,7 @@ class HandleShortEvents:
             self.handle_transition()
             if game.clan.clan_settings["modded names"] and game.clan.clan_settings['dynamic prefixes']:
                 chance = game.config["cat_name_controls"]["trans_prefix_change_chance"]
-                if chance and random.randint(1, chance) == 1:
+                if chance and randint(1, chance) == 1:
                     if not self.main_cat.history:
                         self.main_cat.history = History()
                     self.main_cat.history.prev_names.append(str(self.main_cat.name))
@@ -603,7 +603,7 @@ class HandleShortEvents:
 
             tnr = False
             if 'tnr' in self.chosen_event.tags and game.clan.clan_settings['tnr_mode']:
-                if random.random() < game.config['tnr_mode']['Clan_tnr']:
+                if random() < game.config['tnr_mode']['Clan_tnr']:
                     tnr = True
                     
             taken_cats = []
