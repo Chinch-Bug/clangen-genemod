@@ -703,7 +703,7 @@ class Phenotype(Genotype):
                 self.patchmain = main[0]
                 self.patchcolour = main[1]
                 self.patchunders = [main[2], main[3]]
-    def FindEumUnders(self, genes, wideband, rufousing):
+    def FindEumUnders(self, genes, wideband, rufousing, unders_ruf):
         if(genes.dilute[0] == "d"):
             if(genes.pinkdilute[0] == "dp"):
                 colour = "ivory"
@@ -718,6 +718,10 @@ class Phenotype(Genotype):
 
         if wideband in ["chinchilla", "shaded"]:
             colour = "lightbasecolours0"
+        elif unders_ruf == "rufoused":
+            colour = rufousing + colour + "3"
+        elif unders_ruf == "low":
+            colour = colour + "low" + "shaded" + "0"
         elif rufousing != "rufoused":
             colour = colour + "low" + wideband + "0"
         else:
@@ -825,8 +829,11 @@ class Phenotype(Genotype):
                     unders_colour = "lightbasecolours0"
                     unders_opacity = self.GetSilverUnders(banding)
                 else:
-                    unders_colour = self.FindEumUnders(genes, banding, rufousing)
-                    unders_opacity = 20
+                    unders_colour = self.FindEumUnders(genes, banding, rufousing, self.unders_ruftype)
+                    if self.unders_ruftype == "rufoused" and banding not in ["chinchilla", "shaded"]:
+                        unders_opacity = 30
+                    else:
+                        unders_opacity = 20
                 
                 colour = colour + rufousing + banding + "0"
                 self.banding = banding
@@ -952,8 +959,11 @@ class Phenotype(Genotype):
                 if('apricot' in maincolour):
                     self.caramel = 'caramel'
             if rufousing != "silver":
-                unders_colour = self.FindEumUnders(genes, banding, rufousing)
-                unders_opacity = 25
+                unders_colour = self.FindEumUnders(genes, banding, rufousing, self.unders_ruftype)
+                if self.unders_ruftype == "rufoused":
+                    unders_opacity = 45
+                else:
+                    unders_opacity = 25
         
         return [maincolour, colour, unders_colour, unders_opacity]
     
