@@ -3149,7 +3149,7 @@ def generate_sprite(
                     stripebase.set_alpha(100)
                 elif (phenotype.wbtype == "shaded" or phenotype.corin[0] != 'N'):
                     stripebase = CreateStripes(
-                        phenotype.FindRed(phenotype, sprite_age, special='red')[0], phenotype.FindRed(phenotype, sprite_age, special='red')[1], coloursurface=coloursurface)
+                        phenotype.FindRed(phenotype, sprite_age)[0], phenotype.FindRed(phenotype, sprite_age)[1], coloursurface=coloursurface)
                     stripebase.set_alpha(50)
                     whichmain.blit(stripebase, (0, 0))
                     stripebase = CreateStripes(
@@ -3159,7 +3159,7 @@ def generate_sprite(
                     stripebase = CreateStripes(
                         whichcolour, whichbase, pattern="agouti", coloursurface=coloursurface)
                     stripebase.set_alpha(200)
-                elif ('ec' in phenotype.ext and 'Eg' not in phenotype.ext and not ('red' in whichcolour or 'cream' in whichcolour or 'honey' in whichcolour or 'ivory' in whichcolour or 'apricot' in whichcolour)):
+                elif (('ec' in phenotype.ext or (phenotype.ext[0] == 'ea' and ((sprite_age > 7 and phenotype.ext[0] != "a") or sprite_age > 19))) and 'Eg' not in phenotype.ext and not ('red' in whichcolour or 'cream' in whichcolour or 'honey' in whichcolour or 'ivory' in whichcolour or 'apricot' in whichcolour)):
                     stripebase = CreateStripes(
                         whichcolour, whichbase, coloursurface=coloursurface)
                     stripebase.set_alpha(200)
@@ -3968,11 +3968,11 @@ def generate_sprite(
 
         if int(cat_sprite) == 20:
             age = 0
-        elif int(cat_sprite) < 3 and 5 < cat.moons < 1:
+        elif int(cat_sprite) < 3 and (5 < cat.moons or cat.moons < 1):
             age = 4
-        elif int(cat_sprite) < 6 and 11 < cat.moons < 6:
+        elif int(cat_sprite) < 6 and (11 < cat.moons or cat.moons < 6):
             age = 10
-        elif (int(cat_sprite == 19) or int(cat_sprite) == 17) and 12 < cat.moons < 6:
+        elif (int(cat_sprite == 19) or int(cat_sprite) == 17) and (12 < cat.moons or cat.moons < 6):
             age = 6
         elif int(cat_sprite) > 5 and cat_sprite not in ['17', '19'] and cat.moons < 12:
             age = 60

@@ -606,7 +606,7 @@ class ListScreen(Screens):
         ):
             if game.clan.instructor in self.current_listed_cats:
                 self.current_listed_cats.remove(game.clan.instructor)
-            self.current_listed_cats.insert(0, game.clan.instructor)
+                self.current_listed_cats.insert(0, game.clan.instructor)
         
 
         self.all_pages = (
