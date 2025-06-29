@@ -262,6 +262,7 @@ class Sprites:
         self.make_group('Other/caramel', (0, 0), 'caramel', 1, 1)
         self.make_group('Other/satin', (0, 0), 'satin', 1, 1)
         self.make_group('Other/salmiak', (0, 0), 'salmiak')
+        self.make_group('Other/nosebridge', (0, 0), 'rednose')
 
 
         #genemod extra

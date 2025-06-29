@@ -3364,6 +3364,25 @@ def generate_sprite(
                     pangere.set_alpha(opacity)
                     whichmain.blit(pangere, (0, 0))
                 
+                if phenotype.rednose and not phenotype.tabtype:
+                    modifiers = {
+                        "chinchilla" : 1,
+                        "shaded" : 3,
+                        "high" : 7,
+                        "medium" : 7,
+                        "low" : 7
+                    }
+                    opacity = int(25 * (modifiers.get(phenotype.banding, 5)))
+                    rednose = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                    rednose.blit(sprites.sprites["rednose" + cat_sprite], (0, 0))
+                    nose_colour = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                    nose_colour.blit(sprites.sprites[phenotype.FindRed(phenotype, sprite_age, "red")[0]], (0, 0))
+                    rednose.blit(nose_colour, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    rednose.set_alpha(opacity)
+                    whichmain.blit(rednose, (0, 0))
+
+
+                
                 return whichmain
         
             def AddStripes(whichmain, whichcolour, whichbase, coloursurface=None):

@@ -648,7 +648,7 @@ class MakeClanScreen(Screens):
             if self.clan_count_mode == 'singleclan':
                 display_text = self.single_clan_text
                 display_name = "Single Clan"
-            elif self.clan_count_mode == 'multiclan':
+            else:
                 display_text = self.multi_clan_text
                 display_name = "Multiple Clans"
             self.elements['mode_details'].set_text(display_text)

@@ -40,7 +40,7 @@ from scripts.housekeeping.datadir import (
     get_save_dir,
     get_cache_dir,
     get_saved_images_dir,
-    get_data_dir,
+    open_data_dir,
 )
 from scripts.housekeeping.progress_bar_updater import UIUpdateProgressBar
 from scripts.housekeeping.update import (
@@ -768,7 +768,7 @@ class ChangeCatName(UIWindow):
 
         self.heading = pygame_gui.elements.UITextBox(
             "windows.change_name_title",
-            ui_scale(pygame.Rect((0, 10), (400, 40))),
+            ui_scale(pygame.Rect((50, 10), (300, 40))),
             object_id="#text_box_30_horizcenter",
             manager=MANAGER,
             container=self,
@@ -889,9 +889,9 @@ class ChangeCatName(UIWindow):
                 self.the_cat.name.specsuffix_hidden = self.specsuffic_hidden
 
                 # Note: Prefixes are not allowed be all spaces or empty, but they can have spaces in them.
-                if sub(r"[^A-Za-z0-9 ]+", "", self.prefix_entry_box.get_text()) != "":
+                if sub(r"[^A-Za-z0-9-' ]+", "", self.prefix_entry_box.get_text()) != "":
                     self.the_cat.name.prefix = sub(
-                        r"[^A-Za-z0-9 ]+", "", self.prefix_entry_box.get_text()
+                        r"[^A-Za-z0-9-' ]+", "", self.prefix_entry_box.get_text()
                     )
 
                 # Suffixes can be empty, if you want. However, don't change the suffix if it's currently being hidden
@@ -902,7 +902,7 @@ class ChangeCatName(UIWindow):
                     or self.the_cat.name.specsuffix_hidden
                 ):
                     self.the_cat.name.suffix = sub(
-                        r"[^A-Za-z0-9 ]+", "", self.suffix_entry_box.get_text()
+                        r"[^A-Za-z0-9-' ]+", "", self.suffix_entry_box.get_text()
                     )
                     self.name_changed.show()
 
@@ -2010,15 +2010,7 @@ class SaveAsImage(UIWindow):
             if event.ui_element == self.close_button:
                 self.kill()
             elif event.ui_element == self.open_data_directory_button:
-                if system() == "Darwin":
-                    subprocess.Popen(["open", "-R", get_data_dir()])
-                elif system() == "Windows":
-                    os.startfile(get_data_dir())  # pylint: disable=no-member
-                elif system() == "Linux":
-                    try:
-                        subprocess.Popen(["xdg-open", get_data_dir()])
-                    except OSError:
-                        logger.exception("Failed to call to xdg-open.")
+                open_data_dir()
                 return True
             elif event.ui_element == self.save_as_image:
                 file_name = self.save_image()

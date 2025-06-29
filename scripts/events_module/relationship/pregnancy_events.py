@@ -395,6 +395,7 @@ class Pregnancy_Events:
                     outside_parent = [choice(outsider_affair_partners)]
                     backkit = 'outsider_roots2'
 
+                pregnant_cat = None
                 if surrogate:
                     pregnant_cat = other_cat[0]
                 if surrogate and not pregnant_cat.outside:

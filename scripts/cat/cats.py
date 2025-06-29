@@ -656,6 +656,7 @@ class Cat:
             self.get_permanent_condition('born without a tail', born_with=True, genetic=True)
         
         if ((len(self.phenotype.sexgene) > 2 and 'Y' in self.phenotype.sexgene and random() > 0.001) 
+            or len(self.phenotype.sexgene) == 1
             or (self.gender == 'intersex' and random() < 0.2) 
             or (self.gender == 'molly' and 'Y' in self.phenotype.sexgene) 
             or (self.gender == 'tom' and 'Y' not in self.phenotype.sexgene and random() > 0.001)):
@@ -3895,8 +3896,7 @@ def create_option_preview_cat(scar: str = None, acc: str = None):
     new_cat = Cat(
         loading_cat=True,
         pelt=Pelt(
-            genotype=pheno.toJSON(),
-            length="medium",
+            phenotype=pheno.toJSON(),
             reverse=False,
             tint="gray",
             scars=[scar] if scar else [],

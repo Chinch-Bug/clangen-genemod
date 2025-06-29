@@ -95,6 +95,13 @@ class Breed_generator:
             else:
                 genoclass.ticked[i] = "ta"
 
+        genoclass.pangere = choice([None, None,
+                                    "pangere small 1", "pangere small 1", "pangere small 1",
+                                    "pangere small 2", "pangere small 2", "pangere small 2",
+                                    "pangere medium 1", "pangere medium 2"])
+
+        genoclass.rednose = random() < 0.25
+
         if genoclass.odds["breakthrough"] > 0 and randint(1, genoclass.odds["breakthrough"]) == 1:
             genoclass.breakthrough = True
 
@@ -113,6 +120,8 @@ class Breed_generator:
         genoclass.tickgenes = ''
         genoclass.bengal = ''
         genoclass.sokoke = ''
+        genoclass.unders_ruf = ''
+        genoclass.unders_rufsum = 0
         
         for i in range(0, 8):
             genoclass.wideband += choice(genoclass.odds["wideband_kittypet"])
@@ -121,6 +130,10 @@ class Breed_generator:
         for i in range(0, 4):
             genoclass.rufousing += choice(genoclass.odds["rufousing_kittypet"])
             genoclass.rufsum += int(genoclass.rufousing[i])
+
+        for i in range(0, 4):
+            genoclass.unders_ruf += choice(genoclass.odds["rufousing"])
+            genoclass.unders_rufsum += int(genoclass.unders_ruf[i])
 
         for i in range(0, 4):
             genoclass.spotted += choice(genoclass.odds["spotted_kittypet"])
@@ -232,14 +245,11 @@ class Breed_generator:
 
         for i in range(0, 4):
             genoclass.rufousing += '2'
-
-        for i in range(0, 4):
+            genoclass.unders_ruf += '2'
             genoclass.tickgenes += '2'
 
         for i in range(0, 4):
             genoclass.bengal += '0'
-
-        for i in range(0, 4):
             genoclass.sokoke += '0'
 
         genoclass.body_value = randint(genoclass.body_indexes[3]+1, genoclass.body_indexes[4])
