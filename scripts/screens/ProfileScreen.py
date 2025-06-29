@@ -1767,7 +1767,7 @@ class ProfileScreen(Screens):
             if not (
                 self.the_cat.permanent_condition[i]["born_with"]
                 and self.the_cat.permanent_condition[i]["moons_until"] != -2
-            )
+            ) and game.clan.age - self.the_cat.permanent_condition[i]["moon_start"] > -1
         ]
         all_illness_injuries.extend(
             [[i, self.get_condition_details(i)] for i in self.the_cat.injuries]

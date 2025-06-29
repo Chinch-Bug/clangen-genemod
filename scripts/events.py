@@ -810,7 +810,7 @@ class Events:
             and not cat.dead
             and TNRed):
                 rejoin_upperbound = game.config["lost_cat"]["rejoin_tnr_chance"]
-                if random.randint(1, rejoin_upperbound) == 1:
+                if random.randint(1, rejoin_upperbound) == 1 or "recovering from birth" in cat.injuries:
                     Cat.outside_cats.update({cat.ID: cat})
                     eligible_cats.append(cat)
                     cat_IDs.append(cat.ID)
@@ -826,9 +826,11 @@ class Events:
             additional = cat.add_to_clan()
             for x in additional:
                 if x in Cat.all_cats:
+                    Cat.all_cats[x].outside = True
                     Cat.all_cats[x].status = 'kittypet'
+                    Cat.all_cats[x].backstory = 'kittypet' + str(random.randint(1, 4))
                     Cat.all_cats[x].name.suffix = ''
-                    Cat.all_cats[x].get_permanent_condition("infertility", False, custom_reveal=4-Cat.all_cats[x].moons)
+                    Cat.all_cats[x].get_permanent_condition("infertility", False, custom_reveal=4)
         text = event_text_adjust(Cat, text, main_cat=eligible_cats[0], clan=game.clan)
         game.cur_events_list.append(Single_Event(text, "misc", cat_IDs))
         
@@ -1015,14 +1017,14 @@ class Events:
         death_chances = game.config['death_related']['kit_death_chances']
 
         for kit in cats:
-            if kit.moons < 2 and not kit.dead:
+            if kit.moons < 2 and not kit.dead and not kit.status == "kittypet":
                 if random.random() < death_chances[str(kit.moons)]:
                     fading_kits.append(kit.ID)
                     fading_kit_names.append(str(kit.name))
                     kit.die(True)
                     History.add_death(kit, str(kit.name) + " failed to thrive.")
                     kit.moons -= 1
-            elif kit.moons < 6 and not kit.dead:
+            elif kit.moons < 6 and not kit.dead and not kit.status == "kittypet":
                 if random.random() < death_chances[str(kit.moons)]:
                     handle_short_events.handle_event(
                                             event_type="birth_death",
