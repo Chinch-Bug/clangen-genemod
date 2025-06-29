@@ -2214,6 +2214,7 @@ class ChangeCatToggles(UIWindow):
             elif event.ui_element == self.checkboxes["prevent_fading"]:
                 self.the_cat.prevent_fading = not self.the_cat.prevent_fading
                 self.refresh_checkboxes()
+                self.the_cat.pelt.rebuild_sprite = True
             elif event.ui_element == self.checkboxes["prevent_kits"]:
                 self.the_cat.no_kits = not self.the_cat.no_kits
                 self.refresh_checkboxes()

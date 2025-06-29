@@ -297,6 +297,7 @@ class ProfileScreen(Screens):
                     self.build_profile()
                     self.update_disabled_buttons_and_text()
                 if self.the_cat.dead:
+                    self.the_cat.pelt.rebuild_sprite = True
                     if self.the_cat.df is True:
                         self.the_cat.outside, self.the_cat.exiled = False, False
                         self.the_cat.df = False
