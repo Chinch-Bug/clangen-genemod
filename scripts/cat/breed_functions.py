@@ -132,8 +132,8 @@ class Breed_generator:
             genoclass.rufsum += int(genoclass.rufousing[i])
 
         for i in range(0, 4):
-            self.unders_ruf += choice(self.odds["rufousing"])
-            self.unders_rufsum += int(self.unders_ruf[i])
+            genoclass.unders_ruf += choice(genoclass.odds["rufousing"])
+            genoclass.unders_rufsum += int(genoclass.unders_ruf[i])
 
         for i in range(0, 4):
             genoclass.spotted += choice(genoclass.odds["spotted_kittypet"])
