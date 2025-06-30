@@ -836,6 +836,9 @@ class Phenotype(Genotype):
                         unders_opacity = 20
                 
                 colour = colour + rufousing + banding + "0"
+                
+                if (genes.ext[0] == 'ea' and ((moons > 7 and genes.agouti[0] != "a") or moons > 19)):
+                    colour = self.FindRed(genes, moons)[1]
                 self.banding = banding
                 
             else:
