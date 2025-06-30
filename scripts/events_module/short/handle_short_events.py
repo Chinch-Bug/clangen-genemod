@@ -123,7 +123,7 @@ class HandleShortEvents:
             )
             if self.other_clan and clan and self.other_clan.name == clan.name:
                 while self.other_clan.name == clan.name:
-                    self.other_clan = random.choice(
+                    self.other_clan = choice(
                         game.clan.all_clans + [game.clan]
                     )
             self.other_clan_name = f"{self.other_clan.name}Clan"
