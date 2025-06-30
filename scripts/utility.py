@@ -984,7 +984,7 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
             age = match.group(1)
         match = re.match(r"parent:\s?(.+)", a)
         if match:
-            parent = in_event_cats[match.group(1)]
+            blood_parent = in_event_cats[match.group(1)]
         match = re.match(r"adoptive:\s?(.+)", a)
         if match:
             adoptive_indexes = match.group(1).split(",") if match else []
@@ -1060,8 +1060,8 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
         
     if "litter" in attribute_list:
         (parents, orphans) = get_alive_clan_queens(all_clan_cats, clan=other_clan)[0]
-        if parent:
-            picked_cats = parents[parent.ID]
+        if blood_parent:
+            picked_cats = parents[blood_parent.ID]
         elif parents:
             litter = parents[choice(list(parents.keys()))]
             picked_cats = litter
