@@ -779,7 +779,7 @@ def create_new_cat_block(
     # Now we generate the new cat
     if not chosen_cat:
         generated_parents = []
-        if status in ["kitten", "newborn"]:
+        if status in ["kitten", "newborn"] or parent1:
             generated_parents = create_bio_parents(Cat, cat_type, flip=True if parent1 and 'Y' in parent1.phenotype.sexgene else False, second_parent=not parent1)
             if not parent1:
                 parent1 = generated_parents[1]
