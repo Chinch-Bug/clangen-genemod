@@ -156,8 +156,11 @@ class Events:
             if not clancount:
                 break
 
+        self.handle_future_events(clan=game.clan)
 
-        self.handle_future_events()
+        if clancount:
+            for clan in game.clan.all_clans:
+                self.handle_future_events(clan=clan)
 
         # Calling of "one_moon" functions.
         for cat in Cat.all_cats.copy().values():
@@ -393,7 +396,7 @@ class Events:
             except:
                 SaveError(traceback.format_exc())
 
-    def handle_future_events(self):
+    def handle_future_events(self, clan):
         """
         Handles aging future events and triggering them.
         """
@@ -405,7 +408,7 @@ class Events:
             if event.moon_delay <= -12:
                 removals.append(event)
             if event.moon_delay <= 0:
-                handle_short_events.trigger_future_event(event)
+                handle_short_events.trigger_future_event(event, clan)
 
         for event in removals:
             if event in game.clan.future_events:
@@ -1185,11 +1188,11 @@ class Events:
         if game.config["event_generation"]["debug_type_override"]:
             debug_type_override = game.config["event_generation"]["debug_type_override"]
             if debug_type_override in ["death", "injury"]:
-                self.handle_injuries_or_general_death(cat)
+                self.handle_injuries_or_general_death(cat, clan)
             elif debug_type_override == "misc":
-                self.other_interactions(cat)
+                self.other_interactions(cat, clan)
             elif debug_type_override == "new_cat":
-                self.invite_new_cats(cat)
+                self.invite_new_cats(cat, clan)
 
         # Handle Mediator Events
         self.mediator_events(cat, clan)
@@ -2209,6 +2212,7 @@ class Events:
                 main_cat=cat,
                 random_cat=random_cat,
                 freshkill_pile=game.clan.freshkill_pile,
+                clan=clan
             )
             return
 
@@ -2242,6 +2246,7 @@ class Events:
                 main_cat=cat,
                 random_cat=random_cat,
                 freshkill_pile=game.clan.freshkill_pile,
+                clan=clan
             )
             return
         elif game.config["event_generation"]["debug_type_override"] == "injury":

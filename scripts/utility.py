@@ -973,6 +973,7 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
     blood_parent = None
     give_mates = []
     picked_cats = []
+    chosen_backstory = None
     
     all_clan_cats = [i for i in Cat.all_cats.values() if i.group == other_clan and not i.outside and not i.dead]
     for a in attribute_list:

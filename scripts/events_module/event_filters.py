@@ -5,6 +5,7 @@ from scripts.game_structure.game_essentials import game
 from scripts.special_dates import get_special_date, contains_special_date_tag
 from scripts.utility import (
     get_alive_status_cats,
+    get_alive_clan_queens,
     get_living_clan_cat_count,
     filter_relationship_type,
 )

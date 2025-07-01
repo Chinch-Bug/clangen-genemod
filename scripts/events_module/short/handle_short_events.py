@@ -381,7 +381,7 @@ class HandleShortEvents:
             possible_cats=possible_cats,
         )
 
-    def trigger_future_event(self, event):
+    def trigger_future_event(self, event, clan):
         self.allowed_events = event.pool.get("event_id")
         self.excluded_events = event.pool.get("excluded_event_id")
 
@@ -393,6 +393,7 @@ class HandleShortEvents:
             victim_cat=Cat.fetch_cat(event.involved_cats.get("mur_c")),
             sub_type=event.pool.get("subtype"),
             ignore_subtyping=True if "subtype" in event.pool else False,
+            clan=clan
         )
 
         self.allowed_events = []

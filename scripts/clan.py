@@ -585,10 +585,6 @@ class Clan:
             get_save_dir() + "/" + game.switches["clan_list"][0] + "clan.json"
         ):
             version_info = self.load_clan_json()
-        elif os.path.exists(
-            get_save_dir() + "/" + game.switches["clan_list"][0] + "clan.txt"
-        ):
-            self.load_clan_txt()
         else:
             game.switches["error_message"] = "There was an error loading the clan.json"
 
