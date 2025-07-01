@@ -837,7 +837,8 @@ class Pregnancy_Events:
         event_list = []
 
         if surrogate and cat in other_cat:
-            involved_cats.append(pregnant_cat.ID)
+            if pregnant_cat.ID not in involved_cats:
+                involved_cats.append(pregnant_cat.ID)
             involved_cats.append(RandomChoice.ID)
             if random.random() < 0.5:
                 event_list.append(choice(events["birth"]["surrogate_birth"]))

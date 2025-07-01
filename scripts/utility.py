@@ -816,7 +816,7 @@ def create_new_cat_block(
     # Now we generate the new cat
     if not chosen_cat:
         generated_parents = []
-        if status in ["kitten", "newborn"]:
+        if status in ["kitten", "newborn"] or parent1:
             generated_parents = create_bio_parents(Cat, cat_type, flip=True if parent1 and 'Y' in parent1.phenotype.sexgene else False, second_parent=not parent1)
             if not parent1:
                 parent1 = generated_parents[1]
@@ -4215,7 +4215,7 @@ def generate_sprite(
             age = 0
         elif int(cat_sprite) < 3 and (5 < cat.moons or cat.moons < 1):
             age = 4
-        elif int(cat_sprite) < 6 and (11 < cat.moons or cat.moons < 6):
+        elif 2 < int(cat_sprite) < 6 and (11 < cat.moons or cat.moons < 6):
             age = 10
         elif (int(cat_sprite == 19) or int(cat_sprite) == 17) and (12 < cat.moons or cat.moons < 6):
             age = 6
