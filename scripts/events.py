@@ -2183,6 +2183,7 @@ class Events:
                 main_cat=cat,
                 random_cat=random_cat,
                 freshkill_pile=game.clan.freshkill_pile,
+                clan=clan
             )
             return
 

@@ -955,7 +955,7 @@ class EventEditScreen(Screens):
 
             # FUTURE EFFECTS TAB EVENTS
             elif self.current_editor_tab == "future effects":
-                self.handle_future_events(event, game.clan)
+                self.handle_future_events(event)
 
         elif event.type == pygame_gui.UI_TEXT_ENTRY_CHANGED:
             if self.event_text_element.get("event_text") == event.ui_element:
