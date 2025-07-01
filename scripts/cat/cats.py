@@ -1496,6 +1496,7 @@ class Cat:
                         if (
                             self.fetch_cat(kitty)
                             and self.fetch_cat(kitty).status == "leader"
+                            and (self.fetch_cat(kitty).group == self.group or self.fetch_cat(kitty).dead_for > 100)
                         ):
                             life_giving_leader = kitty
                             break
@@ -1506,6 +1507,7 @@ class Cat:
                         if (
                             self.fetch_cat(kitty)
                             and self.fetch_cat(kitty).status == "leader"
+                            and (self.fetch_cat(kitty).group == self.group or self.fetch_cat(kitty).dead_for > 100)
                         ):
                             life_giving_leader = kitty
                             break

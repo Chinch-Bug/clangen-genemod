@@ -474,7 +474,7 @@ class Pregnancy_Events:
                                 cats_involved.append(par.ID)
                                 par.birth_cooldown = game.config["pregnancy"]["birth_cooldown"]
                                 par.get_injured("recovering from birth", event_triggered=True)
-                                if par.group != cat.group and par.group:
+                                if par.group != cat.group and par.group and not par.outside:
                                     Pregnancy_Events.rebuild_strings()
                                     events = Pregnancy_Events.PREGNANT_STRINGS
                                     secondary_event = choice(events["birth"]["otherclan_mother"])
