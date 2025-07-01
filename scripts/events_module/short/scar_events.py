@@ -82,7 +82,7 @@ class Scar_Events:
     }
 
     @staticmethod
-    def handle_scars(cat, injury_name):
+    def handle_scars(cat, injury_name, clan=game.clan):
         """
         This function handles the scars
         """
@@ -94,9 +94,9 @@ class Scar_Events:
         moons_with = game.clan.age - cat.injuries[injury_name]["moon_start"]
         chance = max(5 - moons_with, 1)
 
-        amount_per_med = get_amount_cat_for_one_medic(game.clan)
+        amount_per_med = get_amount_cat_for_one_medic(clan)
         if medicine_cats_can_cover_clan(
-            game.cat_class.all_cats.values(), amount_per_med
+            game.cat_class.all_cats.values(), amount_per_med, clan=clan
         ):
             chance += 2
 

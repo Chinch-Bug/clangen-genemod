@@ -220,7 +220,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "warrior_mult"
+            ]
         }
     },
     {

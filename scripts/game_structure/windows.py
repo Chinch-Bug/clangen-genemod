@@ -1399,6 +1399,7 @@ class KillCat(UIWindow):
                     "",
                     self.death_entry_box.get_text(),
                 )
+                needed_clan = self.the_cat.group if self.the_cat.group else game.clan
                 if self.the_cat.status == "leader":
                     if death_message.startswith("was"):
                         death_message = death_message.replace(
@@ -1410,9 +1411,9 @@ class KillCat(UIWindow):
                         )
 
                     if self.take_all:
-                        game.clan.leader_lives = 0
+                        needed_clan.leader_lives = 0
                     else:
-                        game.clan.leader_lives -= 1
+                        needed_clan.leader_lives -= 1
 
                 self.the_cat.die()
                 self.history.add_death(self.the_cat, death_message)

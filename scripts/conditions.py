@@ -22,6 +22,7 @@ def amount_clanmembers_covered(all_cats, amount_per_med) -> int:
         for i in all_cats
         if not i.dead
         and not i.outside
+        and i.group == game.clan
         and not i.not_working()
         and i.status in ["healer", "healer apprentice"]
     ]
@@ -53,22 +54,22 @@ def amount_clanmembers_covered(all_cats, amount_per_med) -> int:
     )  # number of cats they can care for
 
 
-def medicine_cats_can_cover_clan(all_cats, amount_per_med) -> bool:
+def medicine_cats_can_cover_clan(all_cats, amount_per_med, clan) -> bool:
     """
     whether the player has enough meds for the whole clan
     """
-    relevant_cats = [c for c in all_cats if not c.dead and not c.outside]
+    relevant_cats = [c for c in all_cats if not c.dead and not c.outside and (c.group == clan if clan else True)]
     return amount_clanmembers_covered(all_cats, amount_per_med) > len(relevant_cats)
 
 
 def get_amount_cat_for_one_medic(clan):
     """Returns the amount of cats one healer can treat"""
     amount = 10
-    if clan and clan.game_mode == "cruel season":
-        amount = 7
-    if clan and clan.game_mode == "classic":
+    if clan and (clan != game.clan or clan.game_mode == "classic"):
         # just hope nobody has clans with more than 1,000,000 cats in classic
         amount = 1000000
+    elif clan and clan.game_mode == 'cruel season':
+        amount = 7
     return amount
 
 
@@ -92,6 +93,7 @@ class Illness:
         medicine_duration,
         medicine_mortality,
         risks,
+        clan=game.clan,
         herbs=None,
         event_triggered=False,
     ):
@@ -105,13 +107,14 @@ class Illness:
         self.risks = risks
         self.herbs = herbs if herbs else []
         self.new = event_triggered
+        self.clan = clan
 
         self.current_duration = duration
         self.current_mortality = mortality
 
         amount_per_med = get_amount_cat_for_one_medic(game.clan)
         if medicine_cats_can_cover_clan(
-            game.cat_class.all_cats.values(), amount_per_med
+            game.cat_class.all_cats.values(), amount_per_med, clan=clan
         ):
             self.current_duration = medicine_duration
             self.current_mortality = medicine_mortality
@@ -128,9 +131,9 @@ class Illness:
         """
         TODO: DOCS
         """
-        amount_per_med = get_amount_cat_for_one_medic(game.clan)
+        amount_per_med = get_amount_cat_for_one_medic(self.clan)
         if medicine_cats_can_cover_clan(
-            game.cat_class.all_cats.values(), amount_per_med
+            game.cat_class.all_cats.values(), amount_per_med, self.clan
         ):
             if value > self.medicine_duration:
                 value = self.medicine_duration
@@ -149,9 +152,9 @@ class Illness:
         """
         TODO: DOCS
         """
-        amount_per_med = get_amount_cat_for_one_medic(game.clan)
+        amount_per_med = get_amount_cat_for_one_medic(self.clan)
         if medicine_cats_can_cover_clan(
-            game.cat_class.all_cats.values(), amount_per_med
+            game.cat_class.all_cats.values(), amount_per_med, self.clan
         ):
             if value < self.medicine_mortality:
                 value = self.medicine_mortality
@@ -182,6 +185,7 @@ class Injury:
         cause_permanent=None,
         herbs=None,
         event_triggered=False,
+        clan=game.clan,
     ):
         self.name = name
         self.severity = severity
@@ -194,13 +198,14 @@ class Injury:
         self.cause_permanent = cause_permanent
         self.herbs = herbs if herbs else []
         self.new = event_triggered
+        self.clan = clan
 
         self.current_duration = duration
         self.current_mortality = mortality
 
-        amount_per_med = get_amount_cat_for_one_medic(game.clan)
+        amount_per_med = get_amount_cat_for_one_medic(self.clan)
         if medicine_cats_can_cover_clan(
-            game.cat_class.all_cats.values(), amount_per_med
+            game.cat_class.all_cats.values(), amount_per_med, self.clan
         ):
             self.current_duration = medicine_duration
 
@@ -213,9 +218,9 @@ class Injury:
 
     @current_duration.setter
     def current_duration(self, value):
-        amount_per_med = get_amount_cat_for_one_medic(game.clan)
+        amount_per_med = get_amount_cat_for_one_medic(self.clan)
         if medicine_cats_can_cover_clan(
-            game.cat_class.all_cats.values(), amount_per_med
+            game.cat_class.all_cats.values(), amount_per_med, self.clan
         ):
             if value > self.medicine_duration:
                 value = self.medicine_duration

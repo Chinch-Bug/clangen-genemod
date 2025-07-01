@@ -240,6 +240,7 @@ class Relationship:
                 interaction_str,
                 ["relation", "interaction"],
                 cat_dict={"m_c": self.cat_to, "r_c": self.cat_from},
+                clan=self.cat_from.group.name if self.cat_from.group else game.clan
             )
         )
 

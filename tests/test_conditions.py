@@ -18,7 +18,7 @@ class TestsMedCondition(unittest.TestCase):
         med.status = "healer"
 
         all_cats = [cat1, med]
-        self.assertTrue(medicine_cats_can_cover_clan(all_cats, 15))
+        self.assertTrue(medicine_cats_can_cover_clan(all_cats, 15, None))
 
     def test_fulfilled_many_cats(self):
         cat1 = Cat(moons=20)
@@ -36,7 +36,7 @@ class TestsMedCondition(unittest.TestCase):
         med2.status = "healer"
 
         all_cats = [cat1, cat2, cat3, cat4, med1, med2]
-        self.assertTrue(medicine_cats_can_cover_clan(all_cats, 2))
+        self.assertTrue(medicine_cats_can_cover_clan(all_cats, 2, None))
 
     def test_injured_fulfilled(self):
         cat1 = Cat(moons=20)
@@ -47,7 +47,7 @@ class TestsMedCondition(unittest.TestCase):
         med.injuries["small cut"] = {"severity": "minor"}
 
         all_cats = [cat1, med]
-        self.assertTrue(medicine_cats_can_cover_clan(all_cats, 15))
+        self.assertTrue(medicine_cats_can_cover_clan(all_cats, 15, None))
 
     def test_illness_fulfilled(self):
         cat1 = Cat(moons=20)
@@ -58,7 +58,7 @@ class TestsMedCondition(unittest.TestCase):
         med.illnesses["running nose"] = {"severity": "minor"}
 
         all_cats = [cat1, med]
-        self.assertTrue(medicine_cats_can_cover_clan(all_cats, 15))
+        self.assertTrue(medicine_cats_can_cover_clan(all_cats, 15, None))
 
 
 class TestsIllnesses(unittest.TestCase):

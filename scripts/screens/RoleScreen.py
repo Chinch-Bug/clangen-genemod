@@ -52,14 +52,14 @@ class RoleScreen(Screens):
                 else:
                     print("invalid previous cat", self.previous_cat)
             elif event.ui_element == self.promote_leader:
-                if self.the_cat == game.clan.deputy:
-                    game.clan.deputy = None
-                game.clan.new_leader(self.the_cat)
+                if self.the_cat == self.the_cat.group.deputy:
+                    self.the_cat.group.deputy = None
+                self.the_cat.group.new_leader(self.the_cat)
                 if game.sort_type == "rank":
                     Cat.sort_cats()
                 self.update_selected_cat()
             elif event.ui_element == self.promote_deputy:
-                game.clan.deputy = self.the_cat
+                self.the_cat.group.deputy = self.the_cat
                 self.the_cat.status_change("deputy", resort=True)
                 self.update_selected_cat()
             elif event.ui_element == self.switch_warrior:
@@ -326,13 +326,13 @@ class RoleScreen(Screens):
     def update_disabled_buttons(self):
         self.update_previous_next_cat_buttons()
 
-        if game.clan.leader:
-            leader_invalid = game.clan.leader.dead or game.clan.leader.outside
+        if self.the_cat.group.leader:
+            leader_invalid = self.the_cat.group.leader.dead or self.the_cat.group.leader.outside
         else:
             leader_invalid = True
 
-        if game.clan.deputy:
-            deputy_invalid = game.clan.deputy.dead or game.clan.deputy.outside
+        if self.the_cat.group.deputy:
+            deputy_invalid = self.the_cat.group.deputy.dead or self.the_cat.group.deputy.outside
         else:
             deputy_invalid = True
 
@@ -528,7 +528,7 @@ class RoleScreen(Screens):
         else:
             output = "screens.role.blurb_unknown"
 
-        return i18n.t(output, name=self.the_cat.name, clan=game.clan.name)
+        return i18n.t(output, name=self.the_cat.name, clan=self.the_cat.group.name)
 
     def exit_screen(self):
         self.back_button.kill()

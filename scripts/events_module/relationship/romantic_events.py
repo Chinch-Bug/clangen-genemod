@@ -318,6 +318,7 @@ class RomanticEvents:
                 relevant_event_tabs,
                 [cat_to.ID, cat_from.ID],
                 cat_dict={"m_c": cat_to, "r_c": cat_from},
+                clan=cat_from.group.name if cat_from.group else game.clan
             )
         )
 
@@ -417,7 +418,7 @@ class RomanticEvents:
                     )
                     game.cur_events_list.append(
                         Single_Event(
-                            text, "relation", cat_dict={"m_c": cat, "r_c": cat_mate}
+                            text, "relation", cat_dict={"m_c": cat, "r_c": cat_mate}, clan=cat.group.name if cat.group else game.clan
                         )
                     )
                     cat.unset_mate(cat_mate)
@@ -435,6 +436,7 @@ class RomanticEvents:
                     mate_string,
                     ["relation", "misc"],
                     cat_dict={"m_c": cat_from, "r_c": cat_to},
+                    clan=cat_from.group.name if cat_from.group else game.clan
                 )
             )
             return True
@@ -528,13 +530,14 @@ class RomanticEvents:
             relationship_from.comfortable -= 10
 
         text = choice(RomanticEvents.BREAKUP_STRINGS[breakup_type])
-        text = event_text_adjust(Cat, text, main_cat=cat_from, random_cat=cat_to)
+        text = event_text_adjust(Cat, text, main_cat=cat_from, random_cat=cat_to, clan=cat_from.group)
         game.cur_events_list.append(
             Single_Event(
                 text,
                 ["relation", "misc"],
                 [cat_from.ID, cat_to.ID],
                 cat_dict={"m_c": cat_from, "r_c": cat_to},
+                clan=cat_from.group.name if cat_from.group else game.clan
             )
         )
         return True
@@ -619,13 +622,14 @@ class RomanticEvents:
             cat_to.relationships[cat_from.ID].comfortable -= 10
 
         mate_string = RomanticEvents.prepare_relationship_string(
-            mate_string, cat_from, cat_to
+            mate_string, cat_from, cat_to, clan=cat_from.group
         )
         game.cur_events_list.append(
             Single_Event(
                 mate_string,
                 ["relation", "misc"],
                 cat_dict={"m_c": cat_from, "r_c": cat_to},
+                clan=cat_from.group.name if cat_from.group else game.clan,
             )
         )
 
@@ -946,7 +950,7 @@ class RomanticEvents:
         return True
 
     @staticmethod
-    def prepare_relationship_string(mate_string, cat_from, cat_to):
+    def prepare_relationship_string(mate_string, cat_from, cat_to, clan=game.clan):
         """Prepares the relationship event string for display"""
         # replace mates with their names
         if "[m_c_mates]" in mate_string:
@@ -996,7 +1000,7 @@ class RomanticEvents:
             mate_string = mate_string.replace("(r_c_mate/mates)", insert)
 
         mate_string = event_text_adjust(
-            Cat, mate_string, main_cat=cat_from, random_cat=cat_to
+            Cat, mate_string, main_cat=cat_from, random_cat=cat_to, clan=clan
         )
         return mate_string
 

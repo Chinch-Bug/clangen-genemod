@@ -141,7 +141,7 @@ class GroupEvents:
             relevant_event_tabs.append("health")
 
         game.cur_events_list.append(
-            Single_Event(interaction_str, relevant_event_tabs, ids)
+            Single_Event(interaction_str, relevant_event_tabs, ids, clan=cat.group.name if cat.group else game.clan.name)
         )
         return ids
 

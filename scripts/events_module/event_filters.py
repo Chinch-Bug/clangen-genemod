@@ -5,6 +5,7 @@ from scripts.game_structure.game_essentials import game
 from scripts.special_dates import get_special_date, contains_special_date_tag
 from scripts.utility import (
     get_alive_status_cats,
+    get_living_clan_cat_count,
     filter_relationship_type,
 )
 
@@ -45,7 +46,7 @@ def event_for_season(seasons: list) -> bool:
     return False
 
 
-def event_for_tags(tags: list, cat, other_cat=None) -> bool:
+def event_for_tags(tags: list, cat, clan, other_cat=None) -> bool:
     """
     checks if current tags disqualify the event
     """
@@ -98,20 +99,17 @@ def event_for_tags(tags: list, cat, other_cat=None) -> bool:
         for rank in ranks:
             if rank == "apps":
                 if not get_alive_status_cats(
-                    cat,
-                    ["apprentice", "healer apprentice", "mediator apprentice"],
-                ):
+                        cat,
+                        ["apprentice", "healer apprentice", "mediator apprentice"],
+                        clan=clan):
                     return False
                 else:
                     continue
 
-            if rank in ["leader", "deputy"] and not get_alive_status_cats(cat, [rank]):
+            if rank in ["leader", "deputy"] and not get_alive_status_cats(cat, [rank], clan=clan):
                 return False
-
-            if (
-                rank not in ["leader", "deputy"]
-                and not len(get_alive_status_cats(cat, [rank])) >= 2
-            ):
+            
+            if rank not in ["leader", "deputy"] and not len(get_alive_status_cats(cat, [rank], clan=clan)) >= 2:
                 return False
 
     special_date = get_special_date()
@@ -151,7 +149,7 @@ def event_for_clan_relations(required_rel: list, other_clan) -> bool:
 
     current_rel = other_clan.relations
 
-    if "hostile" in required_rel and 0 <= current_rel <= 6:
+    if "hostile" in required_rel and current_rel <= 6:
         return True
     elif "neutral" in required_rel and 7 <= current_rel <= 17:
         return True
@@ -160,6 +158,43 @@ def event_for_clan_relations(required_rel: list, other_clan) -> bool:
 
     return False
 
+
+def event_for_other_clan(Cat, ranks: list, other_clan) -> bool:
+    """
+    checks if the other clan has required cats
+    """
+
+    if ranks and "none" in ranks:
+        return True
+
+    if not ranks:
+        oc_cats = get_living_clan_cat_count(Cat, other_clan)
+        return oc_cats > 0
+
+    for rank in ranks:
+        final_ranks = [rank.replace("_mult", "")]
+        if "queen" in rank:
+            all_clan_cats = [i for i in Cat.all_cats.values() if i.group == other_clan and not i.outside and not i.dead]
+            (parents, orphans) = get_alive_clan_queens(all_clan_cats, clan=other_clan)
+            if not len(parents) or (len(parents) < 2 and "mult" in rank):
+                return False
+        else:            
+            if "any_app" in rank:
+                final_ranks = ["apprentice", "mediator apprentice", "healer apprentice"]
+            if "any_warrior" in rank:
+                final_ranks = ["leader", "deputy", "warrior"]
+            if "any_fighter" in rank:
+                final_ranks = ["leader", "deputy", "warrior", "apprentice"]
+            if "any_healer" in rank:
+                final_ranks = ["healer", "healer apprentice"]
+            if "any_mediator" in rank:
+                final_ranks = ["mediator", "mediator apprentice"]
+            oc_cats = get_alive_status_cats(
+                Cat, final_ranks, working=True, clan=other_clan.name)
+            if not oc_cats or (len(oc_cats) < 2 and "mult" in rank):
+                return False
+        
+    return True
 
 def event_for_freshkill_supply(pile, trigger, factor, clan_size) -> bool:
     """

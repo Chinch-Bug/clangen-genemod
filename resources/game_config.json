@@ -166,6 +166,7 @@
     "clanmate_surrogate_chance": 5,
     "multi-sire_chance": 5,
     "multi-sire_max_sires": 5,
+    "half-clan_chance": 0.25,
     "one_kit_possibility": {
       "young adult": 8,
       "adult": 9,

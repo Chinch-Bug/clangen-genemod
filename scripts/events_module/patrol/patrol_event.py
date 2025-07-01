@@ -6,6 +6,7 @@ from scripts.events_module.patrol.patrol_outcome import PatrolOutcome
 
 
 class PatrolEvent:
+
     def __init__(
         self,
         patrol_id,
@@ -14,6 +15,7 @@ class PatrolEvent:
         season: List[str] = None,
         types: List[str] = None,
         tags: List[str] = None,
+        other_clan_filter: dict = {},
         weight: int = 20,
         patrol_art: Union[str, None] = None,
         patrol_art_clean: Union[str, None] = None,
@@ -29,11 +31,13 @@ class PatrolEvent:
         min_max_status: dict = None,
         relationship_constraints: List[str] = None,
         pl_skill_constraints: List[str] = None,
-        pl_trait_constraints: List[str] = None,
+        pl_trait_constraints: List[str] = None
     ):
+
         self.patrol_id = patrol_id
         self.weight = weight
         self.types = types if types is not None else []
+        self.other_clan_filter = other_clan_filter if other_clan_filter else {"has_rank" : ["any_warrior_mult"]}
 
         self.patrol_art = patrol_art
         self.patrol_art_clean = patrol_art_clean

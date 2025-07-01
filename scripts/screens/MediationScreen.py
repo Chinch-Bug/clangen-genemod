@@ -373,6 +373,7 @@ class MediationScreen(Screens):
             for i in Cat.all_cats_list
             if (i.ID != self.mediators[self.selected_mediator].ID)
             and not (i.dead or i.outside)
+            and (i.group == self.mediators[self.selected_mediator].group)
         ]
         self.all_cats = self.chunks(self.all_cats_list, 24)
         self.current_listed_cats = self.all_cats_list

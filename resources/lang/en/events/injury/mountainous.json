@@ -141,7 +141,10 @@
         ],
         "other_clan": {
             "current_rep": ["hostile"],
-            "changed": 2
+            "changed": 2,
+            "has_rank": [
+                "warrior_mult"
+            ]
         }
     }
 ]

@@ -279,7 +279,11 @@ class ProfileScreen(Screens):
                 #if the cat is trans then set them to nonbinary
                 elif self.the_cat.genderalign.replace('intersex ', "") in ["trans molly", "trans tom"]:
                     self.the_cat.genderalign = is_intersex + 'sam'
-                self.the_cat.pronouns = get_new_pronouns(self.the_cat.genderalign)
+                new_pronouns = {}
+                new_pronouns[i18n.config.get("locale")] = get_new_pronouns(
+                    self.the_cat.genderalign
+                )
+                self.the_cat.pronouns = new_pronouns
 
                 self.clear_profile()
                 self.build_profile()
@@ -828,6 +832,8 @@ class ProfileScreen(Screens):
                 f"<font color='#FF0000'>{i18n.t('general.exiled', count=1)}</font>"
             )
         else:
+            if game.clan.clancount == "multiclan" and not the_cat.outside and the_cat.group:
+                output += the_cat.group.name + "Clan "
             output += i18n.t(f"general.{the_cat.status}", count=1)
 
         # NEWLINE ----------
@@ -837,7 +843,7 @@ class ProfileScreen(Screens):
         # Optional - Only shows up for leaders
         if not the_cat.dead and "leader" in the_cat.status:
             output += i18n.t(
-                "screens.profile.lives_remaining_label", count=game.clan.leader_lives
+                "screens.profile.lives_remaining_label", count=the_cat.group.leader_lives
             )
             # NEWLINE ----------
             output += "\n"

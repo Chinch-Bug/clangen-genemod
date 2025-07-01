@@ -2486,7 +2486,10 @@
     },
     "other_clan": {
       "current_rep": ["any"],
-      "changed": 1
+      "changed": 1,
+      "has_rank": [
+        "any_fighter"
+      ]
     }
   },
   {
@@ -2942,7 +2945,8 @@
     },
     "other_clan": {
       "current_rep": ["any"],
-      "changed": 1
+      "changed": 1,
+      "has_rank": ["any_healer"]
     }
   },
   {
@@ -2957,22 +2961,10 @@
       },
     "other_clan": {
       "current_rep": ["any"],
-      "changed": 3
-    }
-  },
-  {
-    "event_id": "gen_misc_any_medicinecatotherclan3",
-    "location": ["any"],
-    "season": ["any"],
-    "weight": 15,
-    "event_text": "m_c visits o_c_n to congratulate them on their new healer.",
-    "m_c": {
-        "status": ["healer"],
-        "skill": ["MEDIATOR,1"]
-      },
-    "other_clan": {
-      "current_rep": ["any"],
-      "changed": 2
+      "changed": 3,
+      "has_rank": [
+        "any_healer"
+      ]
     }
   },
   {
@@ -3109,7 +3101,10 @@
     },
     "other_clan": {
       "current_rep": ["any"],
-      "changed": -1
+      "changed": -1,
+      "has_rank": [
+        "any_healer"
+      ]
     }
   },
   {
@@ -3601,7 +3596,10 @@
     ],
     "other_clan": {
       "current_rep": ["ally", "neutral"],
-      "changed": -1
+      "changed": -1,
+      "has_rank": [
+        "healer"
+      ]
     }
   },
   {
@@ -3620,7 +3618,10 @@
     ],
     "other_clan": {
       "current_rep": ["ally", "neutral"],
-      "changed": -2
+      "changed": -2,
+      "has_rank": [
+        "healer"
+      ]
     }
   },
   {
@@ -3639,7 +3640,10 @@
     ],
     "other_clan": {
       "current_rep": ["ally"],
-      "changed": 1
+      "changed": 1,
+      "has_rank": [
+        "healer"
+      ]
     }
   },
   {
@@ -3658,7 +3662,10 @@
     ],
     "other_clan": {
       "current_rep": ["ally", "neutral"],
-      "changed": 1
+      "changed": 1,
+      "has_rank": [
+        "healer apprentice"
+      ]
     }
   },
   {
@@ -3677,7 +3684,10 @@
     ],
     "other_clan": {
       "current_rep": ["any"],
-      "changed": -1
+      "changed": -1,
+      "has_rank": [
+        "healer"
+      ]
     }
   },
   {
@@ -3696,7 +3706,10 @@
     ],
     "other_clan": {
       "current_rep": ["any"],
-      "changed": -1
+      "changed": -1,
+      "has_rank": [
+        "healer apprentice"
+      ]
     }
   },
   {
@@ -3715,7 +3728,10 @@
     ],
     "other_clan": {
       "current_rep": ["any"],
-      "changed": 2
+      "changed": 2,
+      "has_rank": [
+        "healer apprentice"
+      ]
     }
   },
   {
@@ -3734,7 +3750,10 @@
     ],
     "other_clan": {
       "current_rep": ["ally"],
-      "changed": 2
+      "changed": 2,
+      "has_rank": [
+        "healer"
+      ]
     }
   },
   {
@@ -3753,7 +3772,10 @@
     ],
     "other_clan": {
       "current_rep": ["any"],
-      "changed": -2
+      "changed": -2,
+      "has_rank": [
+        "healer apprentice"
+      ]
     }
   },
   {
@@ -3772,7 +3794,10 @@
     ],
     "other_clan": {
       "current_rep": ["any"],
-      "changed": -2
+      "changed": -2,
+      "has_rank": [
+        "healer"
+      ]
     }
   },
   {
@@ -3861,7 +3886,10 @@
     ],
     "other_clan": {
       "current_rep": ["ally"],
-      "changed": 1
+      "changed": 1,
+      "has_rank": [
+        "leader"
+      ]
     }
   },
   {
@@ -3883,7 +3911,10 @@
     ],
     "other_clan": {
       "current_rep": ["ally", "neutral"],
-      "changed": 1
+      "changed": 1,
+      "has_rank": [
+        "any_healer"
+      ]
     }
   },
   {
@@ -3903,7 +3934,10 @@
     ],
     "other_clan": {
       "current_rep": ["hostile"],
-      "changed": -2
+      "changed": -2,
+      "has_rank": [
+        "any_warrior_mult"
+      ]
     }
   },
   {
@@ -3923,7 +3957,10 @@
     ],
     "other_clan": {
       "current_rep": ["hostile"],
-      "changed": -2
+      "changed": -2,
+      "has_rank": [
+        "any_warrior_mult"
+      ]
     }
   },
   {
@@ -3947,7 +3984,10 @@
     ],
     "other_clan": {
       "current_rep": ["hostile"],
-      "changed": -2
+      "changed": -2,
+      "has_rank": [
+        "any_warrior_mult"
+      ]
     }
   },
   {
@@ -4793,7 +4833,6 @@
     "weight": 10,
     "event_text": "m_c has realized that molly doesn't describe how {PRONOUN/m_c/subject} {VERB/m_c/feel/feels} anymore.",
     "m_c": {
-      "age": ["young adult"],
       "gender": ["female"]
     },
     "new_gender": ["trans male", "nonbinary"]
@@ -4823,7 +4862,10 @@
         },
         "other_clan": {
             "current_rep": ["hostile"],
-            "changed": 3
+            "changed": 3,
+            "has_rank": [
+              "warrior"
+            ]
         },
         "injury": [
             {
@@ -4857,9 +4899,15 @@
                 "sincere"
             ]
         },
+        "new_cat": [
+          ["status:warrior", "dead", "clancat"]
+        ],
         "other_clan": {
             "current_rep": ["hostile"],
-            "changed": 1
+            "changed": 1,
+            "has_rank": [
+              "warrior"
+            ]
         }
     },
     {
@@ -4884,9 +4932,15 @@
                 "rebellious"
             ]
         },
+        "new_cat": [
+          [ "status:warrior", "dead", "clancat" ]
+        ],
         "other_clan": {
             "current_rep": ["hostile"],
-            "changed": -1
+            "changed": -1,
+            "has_rank": [
+              "warrior"
+            ]
         }
     },
     {
@@ -4912,9 +4966,15 @@
                 "rebellious"
             ]
         },
+        "new_cat": [
+          [ "status:warrior", "dead", "clancat" ]
+        ],
         "other_clan": {
             "current_rep": ["hostile"],
-            "changed": 1
+            "changed": 1,
+            "has_rank": [
+              "warrior"
+            ]
         }
     },
     {
@@ -4936,9 +4996,15 @@
                 "cunning"
             ]
         },
+        "new_cat": [
+          [ "status:warrior", "dead", "clancat" ]
+        ],
         "other_clan": {
             "current_rep": ["hostile"],
-            "changed": -2
+            "changed": -2,
+            "has_rank": [
+              "warrior"
+            ]
         }
     },
     {
@@ -4976,7 +5042,10 @@
         },
         "other_clan": {
             "current_rep": ["hostile"],
-            "changed": 2
+            "changed": 2,
+            "has_rank": [
+              "any_apprentice"
+            ]
         }
     },
     {
@@ -5010,7 +5079,10 @@
         },
         "other_clan": {
             "current_rep": ["hostile"],
-            "changed": 2
+            "changed": 2,
+            "has_rank": [
+              "any_apprentice"
+            ]
         }
     },
     {
@@ -5042,7 +5114,10 @@
         },
         "other_clan": {
             "current_rep": ["hostile"],
-            "changed": 1
+            "changed": 1,
+            "has_rank": [
+              "any_apprentice"
+            ]
         }
     },
     {
@@ -5061,7 +5136,10 @@
         ],
         "other_clan": {
             "current_rep": ["hostile"],
-            "changed": 2
+            "changed": 2,
+            "has_rank": [
+              "warrior"
+            ]
         }
     }
 ]

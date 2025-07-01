@@ -13,7 +13,7 @@ import pygame
 from scripts.cat.cats import Cat
 from scripts.cat.enums import CatAgeEnum
 from scripts.clan import Clan
-from scripts.events_module.event_filters import event_for_tags
+from scripts.events_module.event_filters import event_for_tags, event_for_other_clan
 from scripts.events_module.patrol.patrol_event import PatrolEvent
 from scripts.events_module.patrol.patrol_outcome import PatrolOutcome
 from scripts.game_structure import localization
@@ -190,14 +190,14 @@ class Patrol:
                 else:
                     self.patrol_statuses["healer cats"] = 1
             
-            if cat.status in ("apprentice", "healer apprentice"):
+            if cat.status in ("apprentice", "healer apprentice", "mediator apprentice"):
                 if "all apprentices" in self.patrol_statuses:
                     self.patrol_statuses["all apprentices"] += 1
                 else:
                     self.patrol_statuses["all apprentices"] = 1
 
             if (
-                cat.status in ("warrior", "deputy", "leader")
+                cat.status in ("warrior", "deputy", "leader", "mediator")
                 and cat.age != CatAgeEnum.ADOLESCENT
             ):
                 if "normal adult" in self.patrol_statuses:
@@ -637,9 +637,14 @@ class Patrol:
                     )
                 continue
 
-            if not event_for_tags(patrol.tags, Cat):
+            if not event_for_tags(patrol.tags, Cat, game.clan):
                 if self.debug_patrol and self.debug_patrol == patrol.patrol_id:
                     print("DEBUG: requested patrol does not meet constraints (tags)")
+                continue
+
+            if patrol.other_clan and game.clan.clancount == 'multiclan' and not event_for_other_clan(Cat, patrol.other_clan_filter.get("has_rank"), self.other_clan):
+                if self.debug_patrol and self.debug_patrol == patrol.patrol_id:
+                    print("DEBUG: requested patrol does not meet constraints (neighbour clan constraits)")
                 continue
 
             if biome not in patrol.biome and "any" not in patrol.biome:
@@ -767,6 +772,7 @@ class Patrol:
                 tags=patrol.get("tags"),
                 weight=patrol.get("weight", 20),
                 types=patrol.get("types"),
+                other_clan_filter=patrol.get("other_clan_filter"),
                 intro_text=patrol.get("intro_text"),
                 patrol_art=patrol.get("patrol_art"),
                 patrol_art_clean=patrol.get("patrol_art_clean"),

@@ -58,6 +58,9 @@
         "They should also start with a space in order to ensure there is a space between the announcement/litter sentence and the severity sentence."
     ],
     "birth": {
+      "otherclan_mother": [
+        "Many cats have been questioning where m_c's litter could have gone despite {PRONOUN/m_c/object} insisting {PRONOUN/m_c/subject} {VERB/m_c/were/was} never pregnant."
+      ],
       "two_parents_surrogate": [
         "m_c and r_c's eyes meet over their {insert} at the belly of {surrogate}, full of love for their growing family.",
         "In the quiet of the nursery, in the nest they've spent so long preparing, m_c and r_c welcome a {insert} with help from {surrogate}.",

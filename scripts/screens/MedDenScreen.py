@@ -19,7 +19,6 @@ from scripts.utility import (
     ui_scale,
     get_alive_status_cats,
     shorten_text_to_fit,
-    get_living_clan_cat_count,
     event_text_adjust,
     ui_scale_offset,
 )
@@ -263,6 +262,7 @@ class MedDenScreen(Screens):
                     not the_cat.dead
                     and not the_cat.outside
                     and (the_cat.injuries or the_cat.illnesses)
+                    and the_cat.group == game.clan
                 ):
                     self.injured_and_sick_cats.append(the_cat)
             for cat in self.injured_and_sick_cats:
@@ -429,7 +429,7 @@ class MedDenScreen(Screens):
 
         # get the med cats
         self.meds = get_alive_status_cats(
-            Cat, ["healer", "healer apprentice"], sort=True
+            Cat, ["healer", "healer apprentice"], sort=True, clan=game.clan.name
         )
 
         if not self.meds:

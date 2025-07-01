@@ -55,12 +55,15 @@ def json_load():
     # create new cat objects
     for i, cat in enumerate(cat_data):
         try:
+            if not cat.get("group"):
+                cat["group"] = None if cat["status"] in ["kittypet", "loner", "rogue", "formerClancat"] else clanname
             try:
                 new_cat = Cat(ID=cat["ID"],
                         prefix=cat["name_prefix"],
                         suffix=cat["name_suffix"],
-                        specsuffix_hidden=(cat["specsuffix_hidden"] if 'specsuffix_hidden' in cat else False),
+                        specsuffix_hidden=(cat["specsuffix_hidden"] if "specsuffix_hidden" in cat else False),
                         status=cat["status"],
+                        group=cat.get("group"),
                         backstory=cat["backstory"],
                         parent1=cat["parent1"],
                         parent2=cat["parent2"],
@@ -82,11 +85,13 @@ def json_load():
                         specsuffix_hidden=(cat["specsuffix_hidden"] if 'specsuffix_hidden' in cat else False),
                         gender=cat['gender'],
                         status=cat["status"],
+                        group=cat.get("group"),
                         parent1=cat["parent1"],
+                        parent2=cat["parent2"],
                         parent3=cat.get("parent3"),
                         moons=cat["moons"],
                         loading_cat=True)
-                
+
             new_cat.pelt = Pelt(
                 new_cat.phenotype,
                 tint=cat.get('tint', 'none'),

@@ -255,6 +255,12 @@ class ListScreen(Screens):
         super().screen_switches()
         self.show_mute_buttons()
         self.clan_name = game.clan.name + "Clan"
+        
+        if game.clan and game.clan.clancount == "multiclan":
+            group_names = ["general.your_clan", "general.cotc"]
+            group_names += [clan.name +
+                            "Clan" for clan in game.clan.all_clans if clan.name + "Clan" not in group_names]
+            self.living_group_names = tuple(group_names)
 
         self.set_disabled_menu_buttons(["catlist_screen"])
         self.show_menu_buttons()
@@ -562,6 +568,8 @@ class ListScreen(Screens):
                 self.get_ur_cats()
             elif new_group == "dark_forest":
                 self.get_df_cats()
+            elif new_group in self.living_group_names:
+                self.get_other_clan_cats(new_group)
             self.update_cat_list(
                 self.cat_list_bar_elements["search_bar_entry"].get_text()
             )
@@ -711,6 +719,9 @@ class ListScreen(Screens):
         elif self.current_group == "dark_forest":
             self.set_bg("dark_forest")
             self.update_heading_text("general.dark_forest")
+        else:
+            self.set_bg(None)
+            self.update_heading_text(self.current_group)
 
     def get_cat_list(self):
         """
@@ -725,8 +736,10 @@ class ListScreen(Screens):
                 self.get_ur_cats()
             elif game.last_list_forProfile == "cotc":
                 self.get_cotc_cats()
-            else:
+            elif game.last_list_forProfile == "your_clan":
                 self.get_your_clan_cats()
+            else:
+                self.get_other_clan_cats(game.last_list_forProfile)
         else:
             self.get_your_clan_cats()
 
@@ -737,7 +750,20 @@ class ListScreen(Screens):
         self.current_group = "your_clan"
         self.death_status = "living"
         self.full_cat_list = [
-            cat for cat in Cat.all_cats_list if not cat.dead and not cat.outside
+            cat for cat in Cat.all_cats_list if not cat.dead and not cat.outside and cat.group == game.clan
+        ]
+
+    def get_other_clan_cats(self, clan):
+        """
+        grabs clan cats
+        """
+        self.current_group = clan
+        self.selected_clan = clan.replace("Clan", "")
+        self.death_status = "living"
+        self.full_cat_list = [
+            cat for cat in Cat.all_cats_list 
+            if not cat.dead and not cat.outside 
+            and cat.group and cat.group.name == self.selected_clan
         ]
 
     def get_cotc_cats(self):
@@ -748,7 +774,7 @@ class ListScreen(Screens):
         self.death_status = "living"
         self.full_cat_list = []
         for the_cat in Cat.all_cats_list:
-            if not the_cat.dead and the_cat.outside and not the_cat.driven_out:
+            if not the_cat.dead and the_cat.outside:
                 self.full_cat_list.append(the_cat)
 
     def get_sc_cats(self):
