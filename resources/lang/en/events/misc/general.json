@@ -8682,7 +8682,7 @@
             "transition"
         ],
         "weight": 10,
-        "event_text": "m_c has realized that she-cat doesn't describe how {PRONOUN/m_c/subject} {VERB/m_c/feel/feels} anymore.",
+        "event_text": "m_c has realized that molly doesn't describe how {PRONOUN/m_c/subject} {VERB/m_c/feel/feels} anymore.",
         "m_c": {
             "age": [
                 "young adult"
