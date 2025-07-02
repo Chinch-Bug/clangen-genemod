@@ -1285,7 +1285,7 @@ class Pregnancy_Events:
             cat.relationships.values(), exclude_mate=True, potential_mate=True
         )
 
-        if mate and highest_romantic_relation:
+        if mate and mate_relation and highest_romantic_relation:
             # Love affair calculation when the cat has a mate
             chance_love_affair = Pregnancy_Events.get_love_affair_chance(
                 mate_relation, highest_romantic_relation
