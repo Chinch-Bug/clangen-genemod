@@ -136,9 +136,9 @@ class Events:
         # checking if a lost cat returns on their own
         rejoin_upperbound = game.config["lost_cat"]["rejoin_chance"]
         if random.randint(1, rejoin_upperbound) == 1:
-            self.handle_lost_cats_return(clan=game.clan if clancount else None)
+            self.handle_lost_cats_return(clan=game.clan)
         
-        self.handle_tnr_return(clan=game.clan if clancount else None)
+        self.handle_tnr_return(clan=game.clan)
 
         if clancount:
             for clan in game.clan.all_clans:

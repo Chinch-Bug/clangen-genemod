@@ -3560,8 +3560,8 @@
                 "weight": 20,
                 "other_clan_rep": -2,
                 "new_cat": [
-                    [ "age: kitten", "clancat", "dead" ],
-                    [ "age: kitten", "clancat", "dead" ]
+                    [ "age: kitten", "meeting", "clancat", "dead" ],
+                    [ "age: kitten", "meeting", "clancat", "dead" ]
                 ]
             },
             {

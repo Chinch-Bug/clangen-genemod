@@ -354,6 +354,7 @@ class Pregnancy_Events:
                     backkit = None
                 elif random.random() < game.config["pregnancy"]["half-clan_chance"] and (game.clan.clancount == "singleclan" or len(other_clan_affair_partners)):
                     backkit = 'halfclan2'
+                    outside_parent = None
                     if game.clan.clancount == "multiclan":
                         outside_parent = [choice(other_clan_affair_partners)]
                         if random.random() < 0.2:
