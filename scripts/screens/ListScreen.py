@@ -256,11 +256,11 @@ class ListScreen(Screens):
         self.show_mute_buttons()
         self.clan_name = game.clan.name + "Clan"
         
+        group_names = ["general.your_clan", "general.cotc"]
         if game.clan and game.clan.clancount == "multiclan":
-            group_names = ["general.your_clan", "general.cotc"]
             group_names += [clan.name +
                             "Clan" for clan in game.clan.all_clans if clan.name + "Clan" not in group_names]
-            self.living_group_names = tuple(group_names)
+        self.living_group_names = tuple(group_names)
 
         self.set_disabled_menu_buttons(["catlist_screen"])
         self.show_menu_buttons()
