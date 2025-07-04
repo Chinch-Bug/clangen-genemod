@@ -958,6 +958,7 @@ class Clan:
                                 pool=event["pool"],
                                 moon_delay=event["moon_delay"],
                                 involved_cats=event["involved_cats"],
+                                clan=clan.name,
                             )
                         )
                     except KeyError:

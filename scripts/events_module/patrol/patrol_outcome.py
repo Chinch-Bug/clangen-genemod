@@ -331,6 +331,7 @@ class PatrolOutcome:
             event=self,
             event_id=patrol.patrol_event.patrol_id,
             possible_cats=possible_cats,
+            clan=game.clan
         )
 
     def _allowed_stat_cat_specific(

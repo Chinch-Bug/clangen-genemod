@@ -339,7 +339,7 @@ class HandleShortEvents:
         if self.chosen_herb:
             game.herb_events_list.append(f"{self.chosen_event} {self.herb_notice}.")
 
-        self.gather_future_event()
+        self.gather_future_event(clan)
 
         game.cur_events_list.append(
             Single_Event(
@@ -359,7 +359,7 @@ class HandleShortEvents:
                 )
             )
 
-    def gather_future_event(self):
+    def gather_future_event(self, clan):
         """
         Handles gathering information for future event
         """
@@ -379,6 +379,7 @@ class HandleShortEvents:
             event=self.chosen_event,
             event_id=self.chosen_event.event_id,
             possible_cats=possible_cats,
+            clan=clan
         )
 
     def trigger_future_event(self, event, clan):
