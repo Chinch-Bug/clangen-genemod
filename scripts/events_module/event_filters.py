@@ -297,7 +297,7 @@ def event_for_cat(
             return False
 
     if cat_info.get("relationship_status", []):
-        if not filter_relationship_type(
+        if cat_group is None or not filter_relationship_type(
             group=cat_group,
             filter_types=cat_info["relationship_status"],
             event_id=event_id,

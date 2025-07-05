@@ -168,6 +168,15 @@ class Cat:
 
         self.history = None
 
+        if group:
+            self.group = group
+        elif status in ["loner", "rogue", "kittypet", "former Clancat"]:
+            self.group = None
+        elif game.clan:
+            self.group = game.clan
+        else:
+            self.group = None
+        
         if (
             faded
         ):  # This must be at the top. It's a smaller list of things to init, which is only for faded cats
@@ -189,14 +198,6 @@ class Cat:
             self.gender = 'masc'
         self.status = status.replace("medicine cat", "healer")
 
-        if group:
-            self.group = group
-        elif status in ["loner", "rogue", "kittypet", "former Clancat"]:
-            self.group = None
-        elif game.clan:
-            self.group = game.clan
-        else:
-            self.group = None
         self.backstory = backstory
         self.age = None
         self.skills = CatSkills(skill_dict=skill_dict)
@@ -3468,6 +3469,7 @@ class Cat:
             prefix=cat_info["name_prefix"],
             suffix=cat_info["name_suffix"],
             status=cat_info["status"],
+            group=cat_info.get("group"),
             moons=cat_info["moons"],
             faded=True,
             df=cat_info["df"] if "df" in cat_info else False,
@@ -3484,6 +3486,8 @@ class Cat:
         )
         cat_ob.faded = True
         cat_ob.dead_for = cat_info["dead_for"] if "dead_for" in cat_info else 1
+        if isinstance(cat_ob.group, str):
+            cat_ob.group = game.clan if cat_ob.group == game.clan.name else [c for c in game.clan.all_clans if c.name == cat_ob.group][0]
 
         return cat_ob
 
@@ -3716,6 +3720,7 @@ class Cat:
                 "name_prefix": self.name.prefix,
                 "name_suffix": self.name.suffix,
                 "status": self.status,
+                "group": self.group.name if self.group else None,
                 "moons": self.moons,
                 "dead_for": self.dead_for,
                 "parent1": self.parent1,
