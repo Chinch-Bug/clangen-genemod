@@ -326,11 +326,7 @@ class Condition_Events:
                     illness=illness,
                 )
 
-                event_string = event_text_adjust(
-                    Cat,
-                    text=event_string,
-                    main_cat=cat
-                )
+                event_string = event_text_adjust(Cat, text=event_string, main_cat=cat)
 
         # if an event happened, then add event to cur_event_list and save death if it happened.
         if event_string:
@@ -366,6 +362,17 @@ class Condition_Events:
         if cat.dead:
             triggered = True
             return triggered
+
+        if (
+            game.config["event_generation"]["debug_type_override"] == "injury"
+            and random_cat
+        ):
+            handle_short_events.handle_event(
+                event_type="health",
+                main_cat=cat,
+                random_cat=random_cat,
+                freshkill_pile=game.clan.freshkill_pile,
+            )
 
         # handle if the current cat is already injured
         if cat.is_injured():
@@ -1221,4 +1228,3 @@ class Condition_Events:
 
 
 Condition_Events.rebuild_strings()
-

@@ -23,15 +23,16 @@ from scripts.conditions import (
     get_amount_cat_for_one_medic,
 )
 from scripts.event_class import Single_Event
-from scripts.events_module.short.condition_events import Condition_Events
 from scripts.events_module.generate_events import GenerateEvents, generate_events
-from scripts.events_module.short.handle_short_events import handle_short_events
 from scripts.events_module.outsider_events import OutsiderEvents
-from scripts.events_module.relationship.relation_events import Relation_Events
-from scripts.events_module.relationship.pregnancy_events import Pregnancy_Events
-from scripts.game_structure.game_essentials import game
-from scripts.game_structure.windows import SaveError
 from scripts.events_module.patrol.patrol import Patrol
+from scripts.events_module.relationship.pregnancy_events import Pregnancy_Events
+from scripts.events_module.relationship.relation_events import Relation_Events
+from scripts.events_module.short.condition_events import Condition_Events
+from scripts.events_module.short.handle_short_events import handle_short_events
+from scripts.game_structure.game_essentials import game
+from scripts.game_structure.localization import load_lang_resource
+from scripts.game_structure.windows import SaveError
 from scripts.utility import (
     change_clan_relations,
     change_clan_reputation,
@@ -47,7 +48,6 @@ from scripts.utility import (
     history_text_adjust,
     unpack_rel_block,
 )
-from scripts.game_structure.localization import load_lang_resource
 
 
 class Events:
@@ -134,6 +134,8 @@ class Events:
         if random.randint(1, rejoin_upperbound) == 1:
             self.handle_lost_cats_return()
 
+        self.handle_future_events()
+
         # Calling of "one_moon" functions.
         for cat in Cat.all_cats.copy().values():
             if not cat.outside or cat.dead:
@@ -189,10 +191,9 @@ class Events:
 
                 if len(ghost_names) > 2:
                     alive_cats = [
-                        kitty for kitty in Cat.all_cats.values()
-                        if not kitty.dead
-                        and not kitty.outside
-                        and not kitty.exiled
+                        kitty
+                        for kitty in Cat.all_cats.values()
+                        if not kitty.dead and not kitty.outside and not kitty.exiled
                     ]
                     # finds a percentage of the living Clan to become shaken
 
@@ -233,9 +234,9 @@ class Events:
                     event,
                     ["birth_death"],
                     [i.ID for i in Cat.dead_cats],
-                    cat_dict={"m_c": Cat.dead_cats[0]}
-                    if len(Cat.dead_cats) == 1
-                    else None,
+                    cat_dict=(
+                        {"m_c": Cat.dead_cats[0]} if len(Cat.dead_cats) == 1 else None
+                    ),
                 )
             )
             if extra_event:
@@ -268,8 +269,8 @@ class Events:
             med_cats=get_alive_status_cats(
                 Cat,
                 get_status=["medicine cat", "medicine cat apprentice"],
-                working=True
-            )
+                working=True,
+            ),
         )
 
         if game.clan.game_mode in ("expanded", "cruel season"):
@@ -315,6 +316,24 @@ class Events:
                 game.save_events()
             except:
                 SaveError(traceback.format_exc())
+
+    def handle_future_events(self):
+        """
+        Handles aging future events and triggering them.
+        """
+        removals = []
+
+        for event in game.clan.future_events:
+            event.moon_delay -= 1
+            # we give events a buffer of 12 moons to allow any season-locked events a chance to trigger, then we remove
+            if event.moon_delay <= -12:
+                removals.append(event)
+            if event.moon_delay <= 0:
+                handle_short_events.trigger_future_event(event)
+
+        for event in removals:
+            if event in game.clan.future_events:
+                game.clan.future_events.remove(event)
 
     def handle_lead_den_event(self):
         """
@@ -457,7 +476,9 @@ class Events:
                                     )
                                     invited_cat.name.give_suffix(
                                         pelt=None,
-                                        biome=game.clan.biome,
+                                        biome=game.clan.biome
+                                        if not game.clan.override_biome
+                                        else game.clan.override_biome,
                                         tortiepattern=None,
                                     )
                                     invited_cat.specsuffix_hidden = False
@@ -599,7 +620,8 @@ class Events:
         elif game.clan.clan_settings.get("hunting"):
             # handle warrior
             healthy_warriors = [
-                cat for cat in Cat.all_cats.values()
+                cat
+                for cat in Cat.all_cats.values()
                 if cat.status in ("warrior", "leader", "deputy")
                 and cat.available_to_work()
             ]
@@ -609,9 +631,9 @@ class Events:
 
             # handle apprentices
             healthy_apprentices = [
-                cat for cat in Cat.all_cats.values()
-                if cat.status == "apprentice"
-                and cat.available_to_work()
+                cat
+                for cat in Cat.all_cats.values()
+                if cat.status == "apprentice" and cat.available_to_work()
             ]
             app_amount = (
                 len(healthy_apprentices) * game.config["focus"]["hunting"]["apprentice"]
@@ -628,16 +650,16 @@ class Events:
             healthy_meds = get_alive_status_cats(
                 Cat,
                 get_status=["medicine cat", "medicine cat apprentice"],
-                working=True
+                working=True,
             )
             # get warriors to help
             healthy_warriors = get_alive_status_cats(
-                Cat,
-                get_status=["warrior", "deputy", "leader"],
-                working=True
+                Cat, get_status=["warrior", "deputy", "leader"], working=True
             )
 
-            focus_text = game.clan.herb_supply.handle_focus(healthy_meds, healthy_warriors)
+            focus_text = game.clan.herb_supply.handle_focus(
+                healthy_meds, healthy_warriors
+            )
 
         elif game.clan.clan_settings.get("threaten outsiders"):
             amount = game.config["focus"]["outsiders"]["reputation"]
@@ -671,7 +693,8 @@ class Events:
             involved_cats = {"injured": [], "sick": []}
             # handle prey
             healthy_warriors = [
-                cat for cat in Cat.all_cats.values()
+                cat
+                for cat in Cat.all_cats.values()
                 if cat.available_to_work()
                 and cat.status in ("warrior", "leader", "deputy")
             ]
@@ -683,7 +706,8 @@ class Events:
 
             # handle herbs
             healthy_meds = [
-                cat for cat in Cat.all_cats.values()
+                cat
+                for cat in Cat.all_cats.values()
                 if cat.available_to_work() and cat.status == "medicine cat"
             ]
 
@@ -745,16 +769,15 @@ class Events:
             for condition_type, value in involved_cats.items():
                 game.cur_events_list.append(
                     Single_Event(
-                        i18n.t(text_snippet, condition=condition_type, count=len(value)),
+                        i18n.t(
+                            text_snippet, condition=condition_type, count=len(value)
+                        ),
                         "health",
                         value,
                     )
                 )
 
-            focus_text = i18n.t(
-                "hardcoded.focus_prey",
-                count=warrior_amount
-            )
+            focus_text = i18n.t("hardcoded.focus_prey", count=warrior_amount)
 
             if herb_focus_text:
                 focus_text += f" {herb_focus_text}"
@@ -937,6 +960,8 @@ class Events:
         -if the cat was not injured or ill, then they will do all of the above *and* trigger misc events, acc events,
         and new cat events
         """
+        if cat.faded:
+            return
         if cat.dead:
             cat.thoughts()
             if cat.ID in game.just_died:
@@ -950,8 +975,16 @@ class Events:
         # are connected to cats are located in there
         cat.one_moon()
 
+        if game.config["event_generation"]["debug_type_override"]:
+            debug_type_override = game.config["event_generation"]["debug_type_override"]
+            if debug_type_override in ["death", "injury"]:
+                self.handle_injuries_or_general_death(cat)
+            elif debug_type_override == "misc":
+                self.other_interactions(cat)
+            elif debug_type_override == "new_cat":
+                self.invite_new_cats(cat)
+
         # Handle Mediator Events
-        # TODO: this is not a great way to handle them, ideally they should be converted to ShortEvent format
         self.mediator_events(cat)
 
         # handle nutrition amount
@@ -1081,11 +1114,11 @@ class Events:
                     enemy_clan = other_clan
                     break
 
-            threshold = 5
+            threshold = 10
             if enemy_clan.temperament == "bloodthirsty":
-                threshold = 10
+                threshold = 12
             if enemy_clan.temperament in ["mellow", "amiable", "gracious"]:
-                threshold = 3
+                threshold = 7
 
             threshold -= int(game.clan.war["duration"])
             if enemy_clan.relations < 0:
@@ -1096,11 +1129,11 @@ class Events:
                 game.clan.war["at_war"] = False
                 game.clan.war["enemy"] = None
                 game.clan.war["duration"] = 0
-                enemy_clan.relations += 12
+                enemy_clan.relations += 2
                 war_events = self.WAR_TXT["conclusion_events"]
             else:  # try to influence the relation with warring clan
                 game.clan.war["duration"] += 1
-                choice = random.choice(["rel_up", "rel_up", "neutral", "rel_down"])
+                choice = random.choice(["rel_up", "neutral", "rel_down"])
                 game.switches["war_rel_change_type"] = choice
                 war_events = self.WAR_TXT["progress_events"][choice]
                 if enemy_clan.relations < 0:
@@ -1125,6 +1158,7 @@ class Events:
                     game.clan.war["at_war"] = True
                     game.clan.war["enemy"] = other_clan.name
                     war_events = self.WAR_TXT["trigger_events"]
+                    game.switches["war_rel_change_type"] = "rel_down"
 
         # if nothing happened, return
         if not war_events or not enemy_clan:
@@ -1139,6 +1173,7 @@ class Events:
                 if not game.clan.medicine_cat and "med_name" in event:
                     war_events.remove(event)
 
+        # grab our war "notice" for this moon
         event = random.choice(war_events)
         event = ongoing_event_text_adjust(
             Cat, event, other_clan_name=f"{enemy_clan.name}Clan", clan=game.clan
@@ -1822,7 +1857,8 @@ class Events:
         chance = 200
 
         alive_cats = [
-            kitty for kitty in Cat.all_cats.values()
+            kitty
+            for kitty in Cat.all_cats.values()
             if kitty.status != "leader" and not kitty.dead and not kitty.outside
         ]
 
@@ -1861,6 +1897,15 @@ class Events:
             Cat, main_cat=cat, parent_child_modifier=True, mentor_app_modifier=True
         )
 
+        if game.config["event_generation"]["debug_type_override"] == "new_cat":
+            handle_short_events.handle_event(
+                event_type="new_cat",
+                main_cat=cat,
+                random_cat=random_cat,
+                freshkill_pile=game.clan.freshkill_pile,
+            )
+            return
+
         if (
             not int(random.random() * chance)
             and not cat.age.is_baby()
@@ -1879,6 +1924,16 @@ class Events:
         """
         TODO: DOCS
         """
+        if game.config["event_generation"]["debug_type_override"] == "misc":
+            random_cat = get_random_moon_cat(Cat, main_cat=cat)
+            handle_short_events.handle_event(
+                event_type="misc",
+                main_cat=cat,
+                random_cat=random_cat,
+                freshkill_pile=game.clan.freshkill_pile,
+            )
+            return
+
         hit = int(random.random() * 30)
         if hit:
             return
@@ -1901,6 +1956,18 @@ class Events:
         random_cat = get_random_moon_cat(
             Cat, cat, parent_child_modifier=True, mentor_app_modifier=True
         )
+
+        if game.config["event_generation"]["debug_type_override"] == "death":
+            handle_short_events.handle_event(
+                event_type="birth_death",
+                main_cat=cat,
+                random_cat=random_cat,
+                freshkill_pile=game.clan.freshkill_pile,
+            )
+            return
+        elif game.config["event_generation"]["debug_type_override"] == "injury":
+            Condition_Events.handle_injuries(cat, random_cat)
+            return
 
         # chance to kill leader: 1/50 by default
         if (
@@ -2145,14 +2212,16 @@ class Events:
 
         # check how many kitties are already ill
         already_sick = [
-            kitty for kitty in Cat.all_cats.values()
+            kitty
+            for kitty in Cat.all_cats.values()
             if not kitty.dead and not kitty.outside and kitty.is_ill()
         ]
         already_sick_count = len(already_sick)
 
         # round up the living kitties
         alive_cats = [
-            kitty for kitty in Cat.all_cats.values()
+            kitty
+            for kitty in Cat.all_cats.values()
             if not kitty.dead and not kitty.outside and not kitty.is_ill()
         ]
         alive_count = len(alive_cats)
@@ -2189,9 +2258,11 @@ class Events:
                 if illness == "kittencough":
                     # adjust alive cats list to only include kittens
                     alive_cats = [
-                        kitty for kitty in Cat.all_cats.values()
+                        kitty
+                        for kitty in Cat.all_cats.values()
                         if kitty.status in ("kitten", "newborn")
-                        and not kitty.dead and not kitty.outside
+                        and not kitty.dead
+                        and not kitty.outside
                     ]
                     alive_count = len(alive_cats)
 
