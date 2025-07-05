@@ -3131,7 +3131,8 @@ def generate_sprite(
                     rednose = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                     rednose.blit(sprites.sprites["rednose" + cat_sprite], (0, 0))
                     nose_colour = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                    nose_colour.blit(sprites.sprites[phenotype.FindRed(phenotype, sprite_age, "red")[0]], (0, 0))
+                    stripecolour = phenotype.FindRed(phenotype, sprite_age, "red")[0]
+                    nose_colour.blit(sprites.sprites[stripecolourdict.get(stripecolour[:-1], stripecolour[:-1])+stripecolour[-1]], (0, 0))
                     rednose.blit(nose_colour, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                     rednose.set_alpha(opacity)
                     whichmain.blit(rednose, (0, 0))
