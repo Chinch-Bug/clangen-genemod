@@ -1,7 +1,7 @@
 [project]
 name = "clangen"
 version = "0.7.9"
-description = "Fan-edit of the warrior cat clangen game"
+description = "Fan-edit of the rabbit rabbit clangen game"
 license = "MPL-2.0"
 authors = [
     { name = "Sablesteel", email = "noemail@null.com" },
@@ -9,9 +9,9 @@ authors = [
 readme = "README.md"
 keywords = [
     "game",
-    "warrior cat",
+    "rabbit rabbit",
     "fan-edit",
-    "warrior cats",
+    "rabbit rabbits",
 ]
 requires-python = ">=3.10"
 dependencies = [

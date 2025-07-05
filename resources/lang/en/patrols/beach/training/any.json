@@ -9,7 +9,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "apprentice": [1, 6],
+            "rusasi": [1, 6],
             "normal adult": [1, 6]
         },
         "weight": 20,
@@ -54,13 +54,13 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["minor_injury"],
                         "scars": ["QUILLCHUNK"]
                     }
                 ],
                 "history_text": {
-                    "scar": "m_c got spiked by a sea urchin while training as an apprentice."
+                    "scar": "m_c got spiked by a sea urchin while training as an rusasi."
                 }
             }
         ]
@@ -95,7 +95,7 @@
                 ]
             },
             {
-                "text": "p_l digs through the sand, helping r_c clear it away enough for the other cat to scramble free.",
+                "text": "p_l digs through the sand, helping r_c clear it away enough for the other rabbit to scramble free.",
                 "exp": 20,
                 "weight": 5,
                 "relationships": [
@@ -153,7 +153,7 @@
                 "weight": 20
             },
             {
-                "text": "As s_c rarely has patience for other cats, {PRONOUN/s_c/subject} {VERB/s_c/tell/tells} r_c harshly that {PRONOUN/s_c/subject} {VERB/s_c/do/does}n't have time for some mouse-brain who got stuck, making r_c resentful as {PRONOUN/s_c/subject} {VERB/s_c/dig/digs} {PRONOUN/r_c/object} out of the sand.",
+                "text": "As s_c rarely has patience for other rabbits, {PRONOUN/s_c/subject} {VERB/s_c/tell/tells} r_c harshly that {PRONOUN/s_c/subject} {VERB/s_c/do/does}n't have time for some mouse-brain who got stuck, making r_c resentful as {PRONOUN/s_c/subject} {VERB/s_c/dig/digs} {PRONOUN/r_c/object} out of the sand.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": [
@@ -168,7 +168,7 @@
                 ]
             },
             {
-                "text": "Hurt and wheezing, r_c hears the patrol panicking as {PRONOUN/r_c/subject} {VERB/r_c/drift/drifts} to StarClan.",
+                "text": "Hurt and wheezing, r_c hears the patrol panicking as {PRONOUN/r_c/subject} {VERB/r_c/drift/drifts} to Inle.",
                 "exp": 0,
                 "weight": 10,
                 "dead_cats": ["r_c"],
@@ -179,12 +179,12 @@
                 }
             },
             {
-                "text": "The patrol eventually manages to rescue r_c, but {PRONOUN/r_c/subject} {VERB/r_c/need/needs} to be helped back to camp, battered and injured.",
+                "text": "The patrol eventually manages to rescue r_c, but {PRONOUN/r_c/subject} {VERB/r_c/need/needs} to be helped back to burrow, battered and injured.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["blunt_force_injury"],
                         "scars": ["CHEEK"]
                     }
@@ -196,7 +196,7 @@
                 }
             },
             {
-                "text": "The patrol can't help r_c in time, and as r_c starts to drift off to StarClan, the eyes of s_c glint malevolently. Was this...? r_c doesn't have a chance to finish {PRONOUN/r_c/poss} last thought.",
+                "text": "The patrol can't help r_c in time, and as r_c starts to drift off to Inle, the eyes of s_c glint malevolently. Was this...? r_c doesn't have a chance to finish {PRONOUN/r_c/poss} last thought.",
                 "exp": 0,
                 "weight": 10,
                 "stat_trait": [
@@ -214,7 +214,7 @@
                 }
             },
             {
-                "text": "Even though r_c made it out, {PRONOUN/r_c/subject} {VERB/r_c/swear/swears} someone pushed {PRONOUN/r_c/object}, and {VERB/r_c/blame/blames} s_c. s_c denies it and says they should get r_c back to camp to get {PRONOUN/r_c/poss} injury looked at.",
+                "text": "Even though r_c made it out, {PRONOUN/r_c/subject} {VERB/r_c/swear/swears} someone pushed {PRONOUN/r_c/object}, and {VERB/r_c/blame/blames} s_c. s_c denies it and says they should get r_c back to burrow to get {PRONOUN/r_c/poss} injury looked at.",
                 "exp": 0,
                 "weight": 10,
                 "stat_trait": [
@@ -226,7 +226,7 @@
                 ],
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["blunt_force_injury"],
                         "scars": ["CHEEK"]
                     }
@@ -255,7 +255,7 @@
         "chance_of_success": 50,
         "success_outcomes": [
             {
-                "text": "p_l comes running at {PRONOUN/r_c/poss} yowls, and r_c is soon freed, shaken but unharmed. The cats settle down as they comfort each other.",
+                "text": "p_l comes running at {PRONOUN/r_c/poss} yowls, and r_c is soon freed, shaken but unharmed. The rabbits settle down as they comfort each other.",
                 "exp": 20,
                 "weight": 20,
                 "relationships": [
@@ -269,7 +269,7 @@
                 ]
             },
             {
-                "text": "p_l digs through the loose sand, helping r_c clear it away enough for the other cat to scramble free.",
+                "text": "p_l digs through the loose sand, helping r_c clear it away enough for the other rabbit to scramble free.",
                 "exp": 20,
                 "weight": 5,
                 "relationships": [
@@ -336,7 +336,7 @@
                 ]
             },
             {
-                "text": "As s_c rarely has patience for other cats, {PRONOUN/s_c/subject} {VERB/s_c/tell/tells} r_c harshly that {PRONOUN/s_c/subject} {VERB/s_c/do/does}n't have time for some mouse-brain who got stuck, making r_c resentful as {PRONOUN/s_c/subject} {VERB/s_c/dig/digs} {PRONOUN/r_c/object} out of the sand.",
+                "text": "As s_c rarely has patience for other rabbits, {PRONOUN/s_c/subject} {VERB/s_c/tell/tells} r_c harshly that {PRONOUN/s_c/subject} {VERB/s_c/do/does}n't have time for some mouse-brain who got stuck, making r_c resentful as {PRONOUN/s_c/subject} {VERB/s_c/dig/digs} {PRONOUN/r_c/object} out of the sand.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": [
@@ -360,7 +360,7 @@
                 ]
             },
             {
-                "text": "Hurt and wheezing, r_c hears p_l panicking as {PRONOUN/r_c/subject} {VERB/r_c/drift/drifts} to StarClan.",
+                "text": "Hurt and wheezing, r_c hears p_l panicking as {PRONOUN/r_c/subject} {VERB/r_c/drift/drifts} to Inle.",
                 "exp": 0,
                 "weight": 10,
                 "dead_cats": ["r_c"],
@@ -380,12 +380,12 @@
                 ]
             },
             {
-                "text": "p_l eventually manages to rescue r_c, but {PRONOUN/r_c/subject} {VERB/r_c/need/needs} to be helped back to camp, battered and injured.",
+                "text": "p_l eventually manages to rescue r_c, but {PRONOUN/r_c/subject} {VERB/r_c/need/needs} to be helped back to burrow, battered and injured.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["blunt_force_injury"],
                         "scars": ["LEFTEAR"]
                     }
@@ -437,7 +437,7 @@
                 ]
             },
             {
-                "text": "p_l digs through the loose soil, helping r_c clear it away enough for the other cat to scramble free. r_c admires how smart p_l is.",
+                "text": "p_l digs through the loose soil, helping r_c clear it away enough for the other rabbit to scramble free. r_c admires how smart p_l is.",
                 "exp": 20,
                 "weight": 5,
                 "relationships": [
@@ -506,7 +506,7 @@
                 ]
             },
             {
-                "text": "As s_c rarely has patience for other cats, {PRONOUN/s_c/subject} {VERB/s_c/tell/tells} r_c harshly that {PRONOUN/s_c/subject} {VERB/s_c/do/does}n't have time for some mouse-brain who got stuck, making r_c resentful as {PRONOUN/s_c/subject} {VERB/s_c/dig/digs} {PRONOUN/r_c/object} out of the sand.",
+                "text": "As s_c rarely has patience for other rabbits, {PRONOUN/s_c/subject} {VERB/s_c/tell/tells} r_c harshly that {PRONOUN/s_c/subject} {VERB/s_c/do/does}n't have time for some mouse-brain who got stuck, making r_c resentful as {PRONOUN/s_c/subject} {VERB/s_c/dig/digs} {PRONOUN/r_c/object} out of the sand.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": [
@@ -531,7 +531,7 @@
                 ]
             },
             {
-                "text": "Hurt and wheezing, r_c hears p_l panicking as {PRONOUN/r_c/subject} {VERB/r_c/drift/drifts} to StarClan.",
+                "text": "Hurt and wheezing, r_c hears p_l panicking as {PRONOUN/r_c/subject} {VERB/r_c/drift/drifts} to Inle.",
                 "exp": 0,
                 "weight": 10,
                 "dead_cats": ["r_c"],
@@ -551,12 +551,12 @@
                 ]
             },
             {
-                "text": "p_l eventually manages to rescue r_c, but {PRONOUN/r_c/subject} {VERB/r_c/need/needs} to be helped back to camp, battered and injured.",
+                "text": "p_l eventually manages to rescue r_c, but {PRONOUN/r_c/subject} {VERB/r_c/need/needs} to be helped back to burrow, battered and injured.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["blunt_force_injury"],
                         "scars": ["LEFTEAR"]
                     }
@@ -612,7 +612,7 @@
                 "weight": 20
             },
             {
-                "text": "Hurt and wheezing, r_c does {PRONOUN/r_c/poss} best to hang on and wait for a patrol, but {PRONOUN/r_c/subject} {VERB/r_c/succumb/succumbs} to {PRONOUN/r_c/poss} injuries and {VERB/r_c/drift/drifts} to StarClan alone.",
+                "text": "Hurt and wheezing, r_c does {PRONOUN/r_c/poss} best to hang on and wait for a patrol, but {PRONOUN/r_c/subject} {VERB/r_c/succumb/succumbs} to {PRONOUN/r_c/poss} injuries and {VERB/r_c/drift/drifts} to Inle alone.",
                 "exp": 0,
                 "weight": 10,
                 "dead_cats": ["r_c"],
@@ -623,12 +623,12 @@
                 }
             },
             {
-                "text": "r_c eventually manages to pull {PRONOUN/r_c/self} free, but {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} wheezing and injured. It's all {PRONOUN/r_c/subject} can do to find some beach grass to shelter in through the night out on the shore, until a patrol finds {PRONOUN/r_c/object} the next morning and helps {PRONOUN/r_c/object} to the medicine cat den.",
+                "text": "r_c eventually manages to pull {PRONOUN/r_c/self} free, but {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} wheezing and injured. It's all {PRONOUN/r_c/subject} can do to find some beach grass to shelter in through the night out on the shore, until a patrol finds {PRONOUN/r_c/object} the next morning and helps {PRONOUN/r_c/object} to the healer den.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["blunt_force_injury"],
                         "scars": ["ONE"]
                     }
@@ -651,11 +651,11 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [1, 6]
+            "rusasi": [1, 6]
         },
         "weight": 20,
-        "intro_text": "r_c heads out along the coast alone, but maybe an apprentice shouldn't try to do a solo patrol.",
-        "decline_text": "r_c turns back to camp, deciding that this is a bad idea.",
+        "intro_text": "r_c heads out along the coast alone, but maybe an rusasi shouldn't try to do a solo patrol.",
+        "decline_text": "r_c turns back to burrow, deciding that this is a bad idea.",
         "chance_of_success": 40,
         "success_outcomes": [
             {
@@ -692,24 +692,24 @@
                 "weight": 20
             },
             {
-                "text": "s_c shivers a little, imagining what could be out there... No, definitely not. {PRONOUN/s_c/subject/CAP} {VERB/s_c/turn/turns} around and {VERB/s_c/slink/slinks} straight back to camp.",
+                "text": "s_c shivers a little, imagining what could be out there... No, definitely not. {PRONOUN/s_c/subject/CAP} {VERB/s_c/turn/turns} around and {VERB/s_c/slink/slinks} straight back to burrow.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": ["insecure", "lonesome", "nervous"],
                 "can_have_stat": ["app"]
             },
             {
-                "text": "The apprentice wanders along obliviously and slips, tumbling right down into a rocky pool. Bruised and sore, r_c has to report to the medicine cat den when {PRONOUN/r_c/subject} {VERB/r_c/return/returns} to camp.",
+                "text": "The rusasi wanders along obliviously and slips, tumbling right down into a rocky pool. Bruised and sore, r_c has to report to the healer den when {PRONOUN/r_c/subject} {VERB/r_c/return/returns} to burrow.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["minor_injury"],
                         "scars": ["RIGHTEAR"]
                     }
                 ],
-                "history_text": {"scar": "m_c got injured as an apprentice while exploring alone."}
+                "history_text": {"scar": "m_c got injured as an rusasi while exploring alone."}
             }
         ]
     },
@@ -727,7 +727,7 @@
         },
         "weight": 20,
         "intro_text": "r_c heads out along the coast alone, wanting to explore and have some time to {PRONOUN/r_c/self}.",
-        "decline_text": "r_c turns back to camp after getting some fresh sea air, deciding that {PRONOUN/r_c/poss} duties have to come first.",
+        "decline_text": "r_c turns back to burrow after getting some fresh sea air, deciding that {PRONOUN/r_c/poss} duties have to come first.",
         "chance_of_success": 60,
         "success_outcomes": [
             {
@@ -769,7 +769,7 @@
                 "weight": 20
             },
             {
-                "text": "s_c shivers a little, thinking of the dangers of solo patrols... No, definitely not. {PRONOUN/s_c/subject/CAP} {VERB/s_c/turn/turns} around and {VERB/s_c/slink/slinks} straight back to camp.",
+                "text": "s_c shivers a little, thinking of the dangers of solo patrols... No, definitely not. {PRONOUN/s_c/subject/CAP} {VERB/s_c/turn/turns} around and {VERB/s_c/slink/slinks} straight back to burrow.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": ["insecure", "lonesome", "nervous"]
@@ -786,11 +786,11 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "deputy": [1, 6]
+            "captain": [1, 6]
         },
         "weight": 20,
         "intro_text": "r_c heads out along the coast alone, wanting to explore and have some time to {PRONOUN/r_c/self}.",
-        "decline_text": "r_c turns back to camp after getting some fresh sea air, deciding that {PRONOUN/r_c/poss} duties have to come first.",
+        "decline_text": "r_c turns back to burrow after getting some fresh sea air, deciding that {PRONOUN/r_c/poss} duties have to come first.",
         "chance_of_success": 60,
         "success_outcomes": [
             {
@@ -804,7 +804,7 @@
                 "weight": 5
             },
             {
-                "text": "s_c rounds a corner and stumbles across a tiny, sparkling waterfall! Further investigation shows its origin is an equally tiny spring, and s_c purrs. This reliable source of fresh water could be important during times of drought, and its discovery helps to ease one of the many worries on the deputy's mind.",
+                "text": "s_c rounds a corner and stumbles across a tiny, sparkling waterfall! Further investigation shows its origin is an equally tiny spring, and s_c purrs. This reliable source of fresh water could be important during times of drought, and its discovery helps to ease one of the many worries on the captain's mind.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["CLEVER,1"]
@@ -832,7 +832,7 @@
                 "weight": 20
             },
             {
-                "text": "s_c wavers in {PRONOUN/s_c/poss} decision. {PRONOUN/s_c/subject/CAP} {VERB/s_c/have/has} so much work to do and so many other things demanding {PRONOUN/s_c/poss} time... No, definitely not. {PRONOUN/s_c/subject/CAP} {VERB/s_c/turn/turns} around and {VERB/s_c/march/marches} straight back to camp.",
+                "text": "s_c wavers in {PRONOUN/s_c/poss} decision. {PRONOUN/s_c/subject/CAP} {VERB/s_c/have/has} so much work to do and so many other things demanding {PRONOUN/s_c/poss} time... No, definitely not. {PRONOUN/s_c/subject/CAP} {VERB/s_c/turn/turns} around and {VERB/s_c/march/marches} straight back to burrow.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": ["insecure", "lonesome", "nervous"]
@@ -849,11 +849,11 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "leader": [1, 6]
+            "chief rabbit": [1, 6]
         },
         "weight": 20,
         "intro_text": "r_c heads out along the coast alone, wanting to explore and have some time to {PRONOUN/r_c/self}.",
-        "decline_text": "r_c turns back to camp after getting some fresh sea air, deciding that {PRONOUN/r_c/poss} duties have to come first.",
+        "decline_text": "r_c turns back to burrow after getting some fresh sea air, deciding that {PRONOUN/r_c/poss} duties have to come first.",
         "chance_of_success": 60,
         "success_outcomes": [
             {
@@ -867,7 +867,7 @@
                 "weight": 5
             },
             {
-                "text": "s_c rounds a corner and stumbles across a tiny, sparkling waterfall! Further investigation shows its origin is an equally tiny spring, and s_c purrs. This reliable source of fresh water could be important during times of drought, and its discovery helps to ease one of the many worries on the leader's mind.",
+                "text": "s_c rounds a corner and stumbles across a tiny, sparkling waterfall! Further investigation shows its origin is an equally tiny spring, and s_c purrs. This reliable source of fresh water could be important during times of drought, and its discovery helps to ease one of the many worries on the chief rabbit's mind.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["CLEVER,1"]
@@ -895,7 +895,7 @@
                 "weight": 20
             },
             {
-                "text": "s_c wavers in {PRONOUN/s_c/poss} decision. {PRONOUN/s_c/subject/CAP} {VERB/s_c/have/has} so much work to do and so many other things demanding {PRONOUN/s_c/poss} time... No, definitely not. {PRONOUN/s_c/subject/CAP} {VERB/s_c/turn/turns} around and {VERB/s_c/march/marches} straight back to camp.",
+                "text": "s_c wavers in {PRONOUN/s_c/poss} decision. {PRONOUN/s_c/subject/CAP} {VERB/s_c/have/has} so much work to do and so many other things demanding {PRONOUN/s_c/poss} time... No, definitely not. {PRONOUN/s_c/subject/CAP} {VERB/s_c/turn/turns} around and {VERB/s_c/march/marches} straight back to burrow.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": ["insecure", "lonesome", "nervous"]
@@ -912,7 +912,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [1, 6],
+            "rusasi": [1, 6],
             "normal adult": [1, 6]
         },
         "weight": 20,
@@ -963,7 +963,7 @@
                 ]
             },
             {
-                "text": "s_c points out the dangers of the creature, explaining how some c_n stories tell of a Dark Forest cat who tried to escape into the ocean, only to be cursed by StarClan into becoming a monster with legs sprouting from each claw. As app1 watches the octopus contort itself, more liquid than animal, {PRONOUN/app1/subject} can see how it could be a sea cat.",
+                "text": "s_c points out the dangers of the creature, explaining how some c_n stories tell of a The Lightless rabbit who tried to escape into the ocean, only to be cursed by Inle into becoming a monster with legs sprouting from each claw. As app1 watches the octopus contort itself, more liquid than animal, {PRONOUN/app1/subject} can see how it could be a sea rabbit.",
                 "exp": 15,
                 "weight": 20,
                 "stat_skill": ["SPEAKER,1"],
@@ -988,7 +988,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "app1 maintains that octopus are prey, not opponents or weird transformed dead cats or anything like that, just prey. p_l can't get {PRONOUN/app1/object} to take the training session seriously.",
+                "text": "app1 maintains that octopus are prey, not opponents or weird transformed dead rabbits or anything like that, just prey. p_l can't get {PRONOUN/app1/object} to take the training session seriously.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -1020,7 +1020,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [1, 6],
+            "rusasi": [1, 6],
             "normal adult": [1, 6]
         },
         "weight": 20,
@@ -1128,8 +1128,8 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [2, 2],
+            "rusasi": [1, 6],
+            "all rusasirahs": [2, 2],
             "normal adult": [1, 6]
         },
         "weight": 20,
@@ -1180,7 +1180,7 @@
                 ]
             },
             {
-                "text": "s_c points out the dangers of the creature, explaining how some c_n stories tell of a Dark Forest cat who tried to escape into the ocean, only to be cursed by StarClan into a monster with legs sprouting from each claw. app1 and app2 watch the octopus contort itself, more liquid than animal, and they can see how it could be a sea cat.",
+                "text": "s_c points out the dangers of the creature, explaining how some c_n stories tell of a The Lightless rabbit who tried to escape into the ocean, only to be cursed by Inle into a monster with legs sprouting from each claw. app1 and app2 watch the octopus contort itself, more liquid than animal, and they can see how it could be a sea rabbit.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["SPEAKER,1"],
@@ -1205,7 +1205,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "app1 maintains that octopus are prey, not opponents or weird transformed dead cats or anything like that, just prey. p_l can't get {PRONOUN/app1/object} to take the training session seriously. {PRONOUN/app1/subject/CAP} {VERB/app1/distract/distracts} app2 as well, and eventually p_l has to give up on teaching.",
+                "text": "app1 maintains that octopus are prey, not opponents or weird transformed dead rabbits or anything like that, just prey. p_l can't get {PRONOUN/app1/object} to take the training session seriously. {PRONOUN/app1/subject/CAP} {VERB/app1/distract/distracts} app2 as well, and eventually p_l has to give up on teaching.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -1237,8 +1237,8 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [2, 2],
+            "rusasi": [1, 6],
+            "all rusasirahs": [2, 2],
             "normal adult": [1, 6]
         },
         "weight": 20,
@@ -1346,12 +1346,12 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [2, 2]
+            "rusasi": [1, 6],
+            "all rusasirahs": [2, 2]
         },
         "weight": 20,
         "intro_text": "It's storming in c_n's territory today, and app1 waits for app2 up on one of the cliffs.",
-        "decline_text": "The apprentices are called back to camp to deal with an elder's wet bedding.",
+        "decline_text": "The rusasirahs are called back to burrow to deal with an elder's wet bedding.",
         "chance_of_success": 60,
         "success_outcomes": [
             {
@@ -1369,7 +1369,7 @@
                 ]
             },
             {
-                "text": "When app2 arrives, app1 shows {PRONOUN/app2/object} the spot {PRONOUN/app1/subject}{VERB/app1/'ve/'s} found, where the apprentices can see the gigantic storm waves breaking against the land. Both of them gasp when a lightning bolt strikes the sea, throwing the world into black and white. The apprentices huddle against each other, warmed by the other's pelt.",
+                "text": "When app2 arrives, app1 shows {PRONOUN/app2/object} the spot {PRONOUN/app1/subject}{VERB/app1/'ve/'s} found, where the rusasirahs can see the gigantic storm waves breaking against the land. Both of them gasp when a lightning bolt strikes the sea, throwing the world into black and white. The rusasirahs huddle against each other, warmed by the other's pelt.",
                 "exp": 10,
                 "weight": 5,
                 "relationships": [
@@ -1435,12 +1435,12 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [2, 2]
+            "rusasi": [1, 6],
+            "all rusasirahs": [2, 2]
         },
         "weight": 20,
         "intro_text": "It's storming in c_n's territory today, and app1 waits for app2 up on one of the cliffs.",
-        "decline_text": "The apprentices are called back to camp to deal with an elder's wet bedding.",
+        "decline_text": "The rusasirahs are called back to burrow to deal with an elder's wet bedding.",
         "chance_of_success": 60,
         "success_outcomes": [
             {
@@ -1458,7 +1458,7 @@
                 ]
             },
             {
-                "text": "When app2 arrives, app1 shows {PRONOUN/app2/object} the spot {PRONOUN/app1/subject}{VERB/app1/'ve/'s} found, where the apprentices can see the gigantic storm waves breaking against the land. Both of them gasp when a lightning bolt strikes the sea, throwing the world into black and white. The apprentices huddle against each other, warmed by the other's pelt.",
+                "text": "When app2 arrives, app1 shows {PRONOUN/app2/object} the spot {PRONOUN/app1/subject}{VERB/app1/'ve/'s} found, where the rusasirahs can see the gigantic storm waves breaking against the land. Both of them gasp when a lightning bolt strikes the sea, throwing the world into black and white. The rusasirahs huddle against each other, warmed by the other's pelt.",
                 "exp": 10,
                 "weight": 5,
                 "relationships": [
@@ -1524,16 +1524,16 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [2, 2]
+            "rusasi": [1, 6],
+            "all rusasirahs": [2, 2]
         },
         "weight": 20,
-        "intro_text": "app1 and app2 wander on a sandy beach near camp.",
-        "decline_text": "The apprentices are called back to camp to help watch camp.",
+        "intro_text": "app1 and app2 wander on a sandy beach near burrow.",
+        "decline_text": "The rusasirahs are called back to burrow to help watch burrow.",
         "chance_of_success": 60,
         "success_outcomes": [
             {
-                "text": "app2 drapes {PRONOUN/app1/object} with a bunch of seaweed and proclaims {PRONOUN/app1/subject} {VERB/app1/are/is} clothed like a Twoleg. {PRONOUN/app1/subject/CAP} {VERB/app1/chase/chases} after app2, who's not as keen to get seaweed slime all over {PRONOUN/app2/self}, and the two young cats play on the safe sands all afternoon.",
+                "text": "app2 drapes {PRONOUN/app1/object} with a bunch of seaweed and proclaims {PRONOUN/app1/subject} {VERB/app1/are/is} clothed like a Twoleg. {PRONOUN/app1/subject/CAP} {VERB/app1/chase/chases} after app2, who's not as keen to get seaweed slime all over {PRONOUN/app2/self}, and the two young rabbits play on the safe sands all afternoon.",
                 "exp": 10,
                 "weight": 20,
                 "relationships": [
@@ -1547,7 +1547,7 @@
                 ]
             },
             {
-                "text": "app1 finds a gigantic, flawless shell that washed up on the beach with last night's tide and calls app2 over. Both apprentices startle backwards when a hermit crab starts scurrying away from them. {PRONOUN/app1/subject/CAP} {VERB/app1/chase/chases} it, shouting joyfully, eyes wide and silly. The hermit crab has to wait until {PRONOUN/app1/subject} finally {VERB/app1/get/gets} bored to make its escape.",
+                "text": "app1 finds a gigantic, flawless shell that washed up on the beach with last night's tide and calls app2 over. Both rusasirahs startle backwards when a hermit crab starts scurrying away from them. {PRONOUN/app1/subject/CAP} {VERB/app1/chase/chases} it, shouting joyfully, eyes wide and silly. The hermit crab has to wait until {PRONOUN/app1/subject} finally {VERB/app1/get/gets} bored to make its escape.",
                 "exp": 10,
                 "weight": 5,
                 "relationships": [
@@ -1611,7 +1611,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "all apprentices": [-1, -1],
+            "all rusasirahs": [-1, -1],
             "normal adult": [1, 6]
         },
         "weight": 20,
@@ -1620,7 +1620,7 @@
         "chance_of_success": 60,
         "success_outcomes": [
             {
-                "text": "The cats go out together in the late of the day, as the gulls fly home to roost. r_c goes through {PRONOUN/r_c/poss} tricks, showing p_l how {PRONOUN/r_c/subject} {VERB/r_c/use/uses} the direction of the sun to avoid casting a shadow on pools as {PRONOUN/r_c/subject} {VERB/r_c/fish/fishes}. p_l watches with eyes that r_c notices are a bit too admiring for what's just a little trick. {PRONOUN/r_c/subject/CAP} {VERB/r_c/smirk/smirks}, showing off a little.",
+                "text": "The rabbits go out together in the late of the day, as the gulls fly home to roost. r_c goes through {PRONOUN/r_c/poss} tricks, showing p_l how {PRONOUN/r_c/subject} {VERB/r_c/use/uses} the direction of the sun to avoid casting a shadow on pools as {PRONOUN/r_c/subject} {VERB/r_c/fish/fishes}. p_l watches with eyes that r_c notices are a bit too admiring for what's just a little trick. {PRONOUN/r_c/subject/CAP} {VERB/r_c/smirk/smirks}, showing off a little.",
                 "exp": 10,
                 "weight": 20,
                 "relationships": [
@@ -1634,7 +1634,7 @@
                 ]
             },
             {
-                "text": "It's a long but satisfying training session, and both cats have ample opportunity to test themselves and work on their skills. It ends with them both sitting on a little outlook, watching the sun go down and catching the last of its rays on their pelts. r_c sees p_l watching {PRONOUN/r_c/object} instead of the sun and smiles.",
+                "text": "It's a long but satisfying training session, and both rabbits have ample opportunity to test themselves and work on their skills. It ends with them both sitting on a little outlook, watching the sun go down and catching the last of its rays on their pelts. r_c sees p_l watching {PRONOUN/r_c/object} instead of the sun and smiles.",
                 "exp": 10,
                 "weight": 5,
                 "relationships": [
@@ -1664,7 +1664,7 @@
                 ]
             },
             {
-                "text": "p_l marvels at the opportunity to have s_c's time to {PRONOUN/p_l/self}. s_c is such a popular cat, so friendly and fun to be around, and yet when the training session draws to a close under the setting sun, s_c looks surprised to be told so.",
+                "text": "p_l marvels at the opportunity to have s_c's time to {PRONOUN/p_l/self}. s_c is such a popular rabbit, so friendly and fun to be around, and yet when the training session draws to a close under the setting sun, s_c looks surprised to be told so.",
                 "exp": 10,
                 "weight": 20,
                 "stat_trait": [
@@ -1716,7 +1716,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "all apprentices": [-1, -1],
+            "all rusasirahs": [-1, -1],
             "normal adult": [1, 6]
         },
         "weight": 20,
@@ -1725,7 +1725,7 @@
         "chance_of_success": 60,
         "success_outcomes": [
             {
-                "text": "The cats go out together in the late of the day, as the gulls fly home to roost. r_c goes through {PRONOUN/r_c/poss} tricks, showing p_l how {PRONOUN/r_c/subject} {VERB/r_c/use/uses} the direction of the sun to avoid casting a shadow on pools as {PRONOUN/r_c/subject} {VERB/r_c/fish/fishes}. p_l watches with eyes that r_c notices are a bit too admiring for what's just a little trick. {PRONOUN/r_c/subject/CAP} {VERB/r_c/smirk/smirks}, showing off a little.",
+                "text": "The rabbits go out together in the late of the day, as the gulls fly home to roost. r_c goes through {PRONOUN/r_c/poss} tricks, showing p_l how {PRONOUN/r_c/subject} {VERB/r_c/use/uses} the direction of the sun to avoid casting a shadow on pools as {PRONOUN/r_c/subject} {VERB/r_c/fish/fishes}. p_l watches with eyes that r_c notices are a bit too admiring for what's just a little trick. {PRONOUN/r_c/subject/CAP} {VERB/r_c/smirk/smirks}, showing off a little.",
                 "exp": 10,
                 "weight": 20,
                 "relationships": [
@@ -1739,7 +1739,7 @@
                 ]
             },
             {
-                "text": "It's a long but satisfying training session, and both cats have ample opportunity to test themselves and work on their skills. It ends with them both sitting on a little outlook, watching the sun go down and catching the last of its rays on their pelts. r_c sees p_l watching {PRONOUN/r_c/object} instead of the sun and smiles.",
+                "text": "It's a long but satisfying training session, and both rabbits have ample opportunity to test themselves and work on their skills. It ends with them both sitting on a little outlook, watching the sun go down and catching the last of its rays on their pelts. r_c sees p_l watching {PRONOUN/r_c/object} instead of the sun and smiles.",
                 "exp": 10,
                 "weight": 5,
                 "relationships": [
@@ -1769,7 +1769,7 @@
                 ]
             },
             {
-                "text": "p_l marvels at the opportunity to have s_c's time to {PRONOUN/p_l/self}. s_c is such a popular cat, so friendly and fun to be around, and yet when the training session draws to a close under the setting sun, s_c looks surprised to be told so.",
+                "text": "p_l marvels at the opportunity to have s_c's time to {PRONOUN/p_l/self}. s_c is such a popular rabbit, so friendly and fun to be around, and yet when the training session draws to a close under the setting sun, s_c looks surprised to be told so.",
                 "exp": 10,
                 "weight": 20,
                 "stat_trait": [
@@ -1796,7 +1796,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "r_c tries, but both the cats are too tired after a long day's work and end up snapping at each other. It's nothing serious, but both agree to take some time to cool off.",
+                "text": "r_c tries, but both the rabbits are too tired after a long day's work and end up snapping at each other. It's nothing serious, but both agree to take some time to cool off.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -1821,12 +1821,12 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "all apprentices": [-1, -1],
+            "all rusasirahs": [-1, -1],
             "normal adult": [1, 6]
         },
         "weight": 20,
         "intro_text": "As p_l and r_c wander across the beach with only the stars to light their way, they notice sparkles of light where the waves break upon the shore.",
-        "decline_text": "A little freaked out, the warriors go to fetch a medicine cat to interpret this omen for them.",
+        "decline_text": "A little freaked out, the rabbits go to fetch a healer to interpret this omen for them.",
         "chance_of_success": 60,
         "success_outcomes": [
             {
@@ -1844,7 +1844,7 @@
                 ]
             },
             {
-                "text": "Stunned, the cats sit back and watch as the waves bring ripples of light. It's a breathless, magical scene, and r_c leans against p_l, their pelts keeping each other warm as they take in the magic of the sea.",
+                "text": "Stunned, the rabbits sit back and watch as the waves bring ripples of light. It's a breathless, magical scene, and r_c leans against p_l, their pelts keeping each other warm as they take in the magic of the sea.",
                 "exp": 10,
                 "weight": 5,
                 "relationships": [
@@ -1902,10 +1902,10 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "all apprentices": [-1, -1]
+            "all rusasirahs": [-1, -1]
         },
         "weight": 20,
-        "intro_text": "As p_l pads through the dunes near camp, looking for a good place for a sand bath before {PRONOUN/p_l/subject} {VERB/p_l/begin/begins} {PRONOUN/p_l/poss} training, {PRONOUN/p_l/subject} {VERB/p_l/round/rounds} a corner and {VERB/p_l/find/finds} r_c doing the same thing. p_l allows {PRONOUN/p_l/self} a sigh before {PRONOUN/p_l/subject} {VERB/p_l/join/joins} {PRONOUN/r_c/object}. While Clanmates will do better training together, r_c just rubs {PRONOUN/p_l/object} the wrong way.",
+        "intro_text": "As p_l pads through the dunes near burrow, looking for a good place for a sand bath before {PRONOUN/p_l/subject} {VERB/p_l/begin/begins} {PRONOUN/p_l/poss} training, {PRONOUN/p_l/subject} {VERB/p_l/round/rounds} a corner and {VERB/p_l/find/finds} r_c doing the same thing. p_l allows {PRONOUN/p_l/self} a sigh before {PRONOUN/p_l/subject} {VERB/p_l/join/joins} {PRONOUN/r_c/object}. While Clanmates will do better training together, r_c just rubs {PRONOUN/p_l/object} the wrong way.",
         "decline_text": "...It's fine to train somewhere else, p_l decides. {PRONOUN/p_l/subject/CAP} {VERB/p_l/don't/doesn't} really want to interact with r_c.",
         "chance_of_success": 60,
         "relationship_constraint": ["dislike_10"],
@@ -1941,7 +1941,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "Both warriors are stiffly polite with each other, and it's a boring and completely unproductive afternoon, though maybe r_c isn't quite the thorn in {PRONOUN/p_l/poss} paw p_l thought {PRONOUN/r_c/subject} {VERB/r_c/were/was}.",
+                "text": "Both rabbits are stiffly polite with each other, and it's a boring and completely unproductive afternoon, though maybe r_c isn't quite the thorn in {PRONOUN/p_l/poss} paw p_l thought {PRONOUN/r_c/subject} {VERB/r_c/were/was}.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -1966,17 +1966,17 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [2, 2],
+            "rusasi": [1, 6],
+            "all rusasirahs": [2, 2],
             "normal adult": [1, 6]
         },
         "weight": 20,
-        "intro_text": "p_l sees a pod of dolphins swimming in the distance and considers it a good learning opportunity for the apprentices.",
-        "decline_text": "The weather is turning rough, and p_l makes the decision to teach the apprentices about the dolphins another day. ",
+        "intro_text": "p_l sees a pod of dolphins swimming in the distance and considers it a good learning opportunity for the rusasirahs.",
+        "decline_text": "The weather is turning rough, and p_l makes the decision to teach the rusasirahs about the dolphins another day. ",
         "chance_of_success": 75,
         "success_outcomes": [
             {
-                "text": "p_l tells a mournful and haunting tale of all the cats that were swept out to sea and drowned before the dolphins took pity on one of them. The tiny white and red cat that was saved made the first traditions and bonds with the dolphins, and both the Clan and the dolphins wept at their death when it came.",
+                "text": "p_l tells a mournful and haunting tale of all the rabbits that were swept out to sea and drowned before the dolphins took pity on one of them. The tiny white and red rabbit that was saved made the first traditions and bonds with the dolphins, and both the Warren and the dolphins wept at their death when it came.",
                 "exp": 5,
                 "weight": 20,
                 "relationships": [
@@ -1990,7 +1990,7 @@
                 ]
             },
             {
-                "text": "p_l tells the apprentices about the red and white cat that was saved by the dolphins. They managed to keep afloat long enough for them to be saved by relaxing their entire body and floating on the waves.",
+                "text": "p_l tells the rusasirahs about the red and white rabbit that was saved by the dolphins. They managed to keep afloat long enough for them to be saved by relaxing their entire body and floating on the waves.",
                 "exp": 5,
                 "weight": 5,
                 "relationships": [
@@ -2006,7 +2006,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "A sudden storm cuts off p_l's words, and the patrol sprints back to camp to get warm and dry.",
+                "text": "A sudden storm cuts off p_l's words, and the patrol sprints back to burrow to get warm and dry.",
                 "exp": 0,
                 "weight": 20
             }
@@ -2023,8 +2023,8 @@
         "max_cats": 6,
         "min_max_status": {},
         "weight": 15,
-        "intro_text": "As the cats move along the shoreline, they spot something massive moving beneath the water.",
-        "decline_text": "The cats are feeling remarkably incurious today.",
+        "intro_text": "As the rabbits move along the shoreline, they spot something massive moving beneath the water.",
+        "decline_text": "The rabbits are feeling remarkably incurious today.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -2067,12 +2067,12 @@
         ],
         "fail_outcomes": [
             {
-                "text": "Frozen, the cats watch the massive lumbering frog, the size of a Twoleg and just as bipedal. It halts and, like the rumble of thunder, issues a massive croak that creaks like cracking wood. All r_c can do is shiver.",
+                "text": "Frozen, the rabbits watch the massive lumbering frog, the size of a Twoleg and just as bipedal. It halts and, like the rumble of thunder, issues a massive croak that creaks like cracking wood. All r_c can do is shiver.",
                 "exp": 0,
                 "weight": 20,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["shock", "non_lethal"]
                     }
                 ]
@@ -2094,11 +2094,11 @@
         "weight": 40,
         "chance_of_success": 60,
         "pl_skill_constraint": ["STORY,1"],
-        "intro_text": "As the patrol takes a break to bask, p_l begins a story. Once upon a time, many seasons ago, there was a strong, sleek-furred warrior, for whom swimming was easier than walking...",
+        "intro_text": "As the patrol takes a break to bask, p_l begins a story. Once upon a time, many seasons ago, there was a strong, sleek-furred rabbit, for whom swimming was easier than walking...",
         "decline_text": "A story is nice, but the patrol has to get back to their training, the rest will wait for another time.",
         "success_outcomes": [
             {
-                    "text": "They slipped into the ocean to feed their Clan, again and again, and each time they had to leave the water their heart broke a little more. Eventually, they didn't leave at all. Their fur grew fluffy and buoyant, and now the sea otter floats, happy and fulfilled with the oceanic world.",
+                    "text": "They slipped into the ocean to feed their Warren, again and again, and each time they had to leave the water their heart broke a little more. Eventually, they didn't leave at all. Their fur grew fluffy and buoyant, and now the sea otter floats, happy and fulfilled with the oceanic world.",
                     "exp": 40,
                     "weight": 20,
                     "art": "gen_hunt_fish",
@@ -2122,12 +2122,12 @@
             ],
             "fail_outcomes": [
                 {
-                    "text": "As r_c settles down eagerly for the tale, {PRONOUN/r_c/subject} {VERB/r_c/feel/feels} a spike of pain in {PRONOUN/r_c/poss} paw pad and {VERB/r_c/yelp/yelps}. {PRONOUN/r_c/subject/CAP} {VERB/r_c/have/has} to report to the medicine cat den, but p_l reassures {PRONOUN/r_c/object} that {PRONOUN/p_l/subject}'ll wait to tell this tale until r_c can hear it.",
+                    "text": "As r_c settles down eagerly for the tale, {PRONOUN/r_c/subject} {VERB/r_c/feel/feels} a spike of pain in {PRONOUN/r_c/poss} paw pad and {VERB/r_c/yelp/yelps}. {PRONOUN/r_c/subject/CAP} {VERB/r_c/have/has} to report to the healer den, but p_l reassures {PRONOUN/r_c/object} that {PRONOUN/p_l/subject}'ll wait to tell this tale until r_c can hear it.",
                     "exp": 0,
                     "weight": 20,
                     "injury": [
                         {
-                            "cats": ["r_c"],
+                            "rabbits": ["r_c"],
                             "injuries": ["small cut"]
                         }
                     ],
@@ -2158,17 +2158,17 @@
         "min_cats": 4,
         "max_cats": 6,
         "min_max_status": {
-            "apprentice":[2, 6],
+            "rusasi":[2, 6],
             "normal adult": [1, 6]
             },
         "weight": 40,
         "chance_of_success": 60,
         "pl_skill_constraint": ["LORE,1"],
-        "intro_text": "p_l notices app1 fall awkwardly again and calls a halt to the lesson, saying they all need to catch their breath. Instead, p_l will tell the apprentices about the Fox Warrior - have they heard this piece of Clan history?",
+        "intro_text": "p_l notices app1 fall awkwardly again and calls a halt to the lesson, saying they all need to catch their breath. Instead, p_l will tell the rusasirahs about the Fox Rabbit - have they heard this piece of Warren history?",
         "decline_text": "app1, surly and embarrassed, stalks off away from the training grounds before p_l can offer the comfort of {PRONOUN/p_l/poss} story.",
         "success_outcomes": [
                 {
-                    "text": "The Fox Warrior was not the biggest, or fastest, or strongest of his Clan. A fox took his eye, a dog weakened his leg, and frostbite almost took his life, yet he took them all without a flinch, never backing down. His only wish was to shield his Clan. Some say he still sneaks down from StarClan to defend c_n on occasion - a true warrior, never forgotten.",
+                    "text": "The Fox Rabbit was not the biggest, or fastest, or strongest of his Warren. A fox took his eye, a dog weakened his leg, and frostbite almost took his life, yet he took them all without a flinch, never backing down. His only wish was to shield his Warren. Some say he still sneaks down from Inle to defend c_n on occasion - a true rabbit, never forgotten.",
                     "exp": 30,
                     "weight": 20,
                     "art": "gen_hunt_vision",
@@ -2199,7 +2199,7 @@
             ],
             "fail_outcomes": [
                 {
-                    "text": "app1 can't sit still and listen to p_l's story, not when {PRONOUN/app1/poss} ego's smarting from {PRONOUN/app1/poss} failures. p_l doesn't push it, instead letting app1 go and run off {PRONOUN/app1/poss} energy - there'll be time enough for listening another day, and app1's persistence is as Fox Warrior-like as anyone could wish.",
+                    "text": "app1 can't sit still and listen to p_l's story, not when {PRONOUN/app1/poss} ego's smarting from {PRONOUN/app1/poss} failures. p_l doesn't push it, instead letting app1 go and run off {PRONOUN/app1/poss} energy - there'll be time enough for listening another day, and app1's persistence is as Fox Rabbit-like as anyone could wish.",
                     "exp": 0,
                     "weight": 20,
                     "relationships": [
@@ -2224,17 +2224,17 @@
         "min_cats": 4,
         "max_cats": 6,
         "min_max_status": {
-            "apprentice":[2, 6],
+            "rusasi":[2, 6],
             "normal adult": [1, 6]
             },
         "weight": 40,
         "chance_of_success": 60,
         "pl_skill_constraint": ["STORY,1"],
-        "intro_text": "After a fishing lesson, the apprentices look soggy and sorry for themselves. p_l waves {PRONOUN/p_l/poss} tail to suggest they stop for a moment and take a break. After all, even Maowi had to work hard to fish!",
+        "intro_text": "After a fishing lesson, the rusasirahs look soggy and sorry for themselves. p_l waves {PRONOUN/p_l/poss} tail to suggest they stop for a moment and take a break. After all, even Maowi had to work hard to fish!",
         "decline_text": "Taking a break turns into ending the patrol early.",
         "success_outcomes": [
                 {
-                    "text": "The great legend Maowi was once a young apprentice, p_l starts the story, who went out fishing with his older, already grown siblings. They had no faith in him, but speaking a great karakia to give StarClan's blessing to his claws, he won a stingray from the ocean that stretched from horizon to horizon and became c_n's territory.",
+                    "text": "The great legend Maowi was once a young rusasi, p_l starts the story, who went out fishing with his older, already grown siblings. They had no faith in him, but speaking a great karakia to give Inle's blessing to his claws, he won a stingray from the ocean that stretched from horizon to horizon and became c_n's territory.",
                     "exp": 30,
                     "weight": 20,
                     "art": "gen_bord_story",
@@ -2265,7 +2265,7 @@
             ],
             "fail_outcomes": [
                 {
-                    "text": "p_l tries to start a story to entertain the apprentices, but they're tired and sullen, and don't appreciate being told of the magical fishing talents of a Stars-blessed cat when they're finding it so hard to learn themselves.",
+                    "text": "p_l tries to start a story to entertain the rusasirahs, but they're tired and sullen, and don't appreciate being told of the magical fishing talents of a Stars-blessed rabbit when they're finding it so hard to learn themselves.",
                     "exp": 0,
                     "weight": 20,
                     "relationships": [
@@ -2296,10 +2296,10 @@
         "chance_of_success": 60,
         "pl_skill_constraint": ["STORY,1"],
         "intro_text": "The sun splashes orange, yellow, and gold across the sea where it meets the horizon. The seagulls call in the distance, rising on the last thermals of the day, as p_l begins the myth of How Maowi Slowed The Sun.",
-        "decline_text": "A story is nice, but the patrol has to get back to camp, the rest will wait for another time.",
+        "decline_text": "A story is nice, but the patrol has to get back to burrow, the rest will wait for another time.",
         "success_outcomes": [
             {
-                    "text": "Once, the sun raced across the sky, each day only lasting a single catnap. The great Maowi, alongside his siblings, said a karakia to StarClan to ask for their help in fighting the sun. They pinned the great flaming sun in a burrow, clawing at it until it gave in and promised to slow, and this is why the sun gives up its race in leaf-bare and slows the day, bringing greenleaf.",
+                    "text": "Once, the sun raced across the sky, each day only lasting a single catnap. The great Maowi, alongside his siblings, said a karakia to Inle to ask for their help in fighting the sun. They pinned the great flaming sun in a burrow, clawing at it until it gave in and promised to slow, and this is why the sun gives up its race in leaf-bare and slows the day, bringing greenleaf.",
                     "exp": 40,
                     "weight": 20,
                     "relationships": [

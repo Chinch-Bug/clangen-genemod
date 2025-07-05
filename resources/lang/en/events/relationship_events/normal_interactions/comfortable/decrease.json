@@ -31,10 +31,10 @@
 			"m_c and r_c reach for the same piece of prey and bicker over it. m_c gets it.",
 			"m_c and r_c reach for the same piece of prey and bicker over it. r_c gets it.",
 			"m_c bickers with r_c over who gets what nest material.",
-			"Late at night, m_c finds r_c sitting alone at the edge of camp. They go back to their dens without speaking.",
+			"Late at night, m_c finds r_c sitting alone at the edge of burrow. They go back to their dens without speaking.",
 			"The silence between m_c and r_c feels more uncomfortable than usual.",
 			"Both m_c and r_c avoid one another's eye contact.",
-			"After the Clan finds a strange object, m_c notes that r_c has been a little too fascinated with it.",
+			"After the Warren finds a strange object, m_c notes that r_c has been a little too fascinated with it.",
 			"It seems like there's an unspoken apology between m_c and r_c."
 		],
 		"reaction_random_cat": {
@@ -52,7 +52,7 @@
 			"m_c worries about r_c's mental stability.",
 			"m_c can't stop thinking about the strange joke r_c told the other day.",
 			"r_c said something the other day that made m_c nervous.",
-			"m_c realizes that a strange smell in camp is coming from r_c.",
+			"m_c realizes that a strange smell in burrow is coming from r_c.",
 			"m_c tells {PRONOUN/m_c/poss} Clanmates that something's off about r_c.",
 			"The moon casts a shadow on r_c's face in a way that makes m_c uneasy.",
 			"For a moment, m_c thought r_c sounded like someone else.",
@@ -68,10 +68,10 @@
 			"m_c cries after r_c wins one of their games."
 		],
 		"main_status_constraint": [
-			"kitten"
+			"kit"
 		],
 		"random_status_constraint": [
-			"kitten"
+			"kit"
 		]
 	},
 	{
@@ -125,7 +125,7 @@
 		"interactions": [
 			"r_c hissed at m_c.",
 			"r_c tells m_c to leave {PRONOUN/r_c/object} alone.",
-			"r_c is glaring at m_c from across the camp.",
+			"r_c is glaring at m_c from across the burrow.",
 			"m_c asks about r_c's day and gets no response.",
 			"r_c growls when m_c gets too close.",
 			"r_c seems amused when m_c trips.",
@@ -173,7 +173,7 @@
 		"interactions": [
 			"m_c is telling jokes about r_c.",
 			"r_c won't tell m_c what {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} doing.",
-			"The Clan feels uneasy whenever m_c and r_c speak to each other.",
+			"The Warren feels uneasy whenever m_c and r_c speak to each other.",
 			"m_c and r_c are joking around together, but the jokes are becoming targeted.",
 			"m_c told r_c to shut up.",
 			"During a conversation with r_c, m_c says something too bluntly.",
@@ -193,8 +193,8 @@
 		"interactions": [
 			"m_c shivers after noticing r_c following {PRONOUN/m_c/object} around like a shadow.",
 			"m_c feels a chill after noticing r_c is nearby.",
-			"Watching r_c stalk silently around camp makes m_c feel uneasy.",
-			"m_c doesn't like the way r_c seems to overwhelm the camp with {PRONOUN/r_c/poss} presence.",
+			"Watching r_c stalk silently around burrow makes m_c feel uneasy.",
+			"m_c doesn't like the way r_c seems to overwhelm the burrow with {PRONOUN/r_c/poss} presence.",
 			"Even though r_c is a respectable Clanmate, m_c can't help but think {PRONOUN/r_c/subject} might be up to no good...",
 			"m_c swore {PRONOUN/m_c/subject} saw r_c burying something.",
 			"m_c can smell blood on r_c, but there's nothing there.",
@@ -213,12 +213,12 @@
 		"id": "comfort_de_high4",
 		"intensity": "high",
 		"interactions": [
-			"m_c doesn't like the way that r_c seems to enjoy {PRONOUN/r_c/poss} influence over the Clan.",
+			"m_c doesn't like the way that r_c seems to enjoy {PRONOUN/r_c/poss} influence over the Warren.",
 			"Much to m_c's dismay, r_c has asked {PRONOUN/m_c/object} to do another difficult task.",
-			"m_c thinks that r_c is casting a dark shadow over the whole Clan's reputation.",
+			"m_c thinks that r_c is casting a dark shadow over the whole Warren's reputation.",
 			"m_c noticed that things have gotten more tense since r_c earned {PRONOUN/r_c/poss} rank.",
-			"When r_c addresses the Clan, m_c notices a frightening edge to {PRONOUN/r_c/poss} tone.",
-			"m_c is worried that r_c might be sending the Clan down a dark path."
+			"When r_c addresses the Warren, m_c notices a frightening edge to {PRONOUN/r_c/poss} tone.",
+			"m_c is worried that r_c might be sending the Warren down a dark path."
 		],
 		"random_trait_constraint": [
 			"bloodthirsty",
@@ -226,8 +226,8 @@
 			"vengeful"
 		],
 		"random_status_constraint": [
-			"leader",
-			"deputy"
+			"chief rabbit",
+			"captain"
 		]
 	},
 	{
@@ -235,7 +235,7 @@
 		"intensity": "high",
 		"interactions": [
 			"m_c notices that r_c doesn't seem to care if {PRONOUN/r_c/poss} treatments hurt.",
-			"m_c overhears r_c complaining about giving herbs to cats that don't 'deserve' them.",
+			"m_c overhears r_c complaining about giving herbs to rabbits that don't 'deserve' them.",
 			"m_c is startled at r_c's views on sharing herbs with other Clans.",
 			"m_c noticed that there are less deathberries than usual in r_c's herb storage.",
 			"m_c feels more nauseous after being treated r_c for a stomach ache.",
@@ -248,8 +248,8 @@
 			"vengeful"
 		],
 		"random_status_constraint": [
-			"medicine cat",
-			"medicine cat apprentice"
+			"healer",
+			"healer rusasi"
 		]
 	}
 ]

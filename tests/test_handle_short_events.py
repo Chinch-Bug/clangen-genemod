@@ -4,7 +4,7 @@ import unittest
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.events_module.short.handle_short_events import HandleShortEvents
 
 
@@ -37,7 +37,7 @@ class TestHandleAccessories(unittest.TestCase):
     def setUp(self):
         self.test = HandleShortEvents()
         self.test.chosen_event = self.event_class()
-        self.test.main_cat = Cat()
+        self.test.main_cat = Rabbit()
         self.pelts = self.pelt_class()
 
     def assert_intersection(self, a, b):
@@ -163,17 +163,17 @@ class TestReset(unittest.TestCase):
         test.sub_types = ["type1", "type2"]
         test.text = "text"
         test.involved_cats = ["cat1", "cat2"]
-        test.main_cat = "main cat"
-        test.random_cat = "random cat"
+        test.main_cat = "main rabbit"
+        test.random_cat = "random rabbit"
         test.new_cat_objects = ["cat1", "cat2"]
-        test.new_cats = [[Cat()]]
-        test.victim_cat = "victim cat"
+        test.new_cats = [[Rabbit()]]
+        test.victim_cat = "victim rabbit"
         test.murder_index = "murder index"
         test.multi_cat = ["cat1", "cat2"]
         test.dead_cats = ["cat1", "cat2"]
         test.chosen_herb = "chosen herb"
-        test.other_clan = "other clan"
-        test.other_clan_name = "other clan name"
+        test.other_clan = "other warren"
+        test.other_clan_name = "other warren name"
         test.chosen_event = "chosen event"
         test.additional_event_text = "additional event text"
 

@@ -8,10 +8,10 @@
             "any"
         ],
         "weight": 20,
-        "event_text": "m_c tried to sneak out of the camp, but fell and got a bruise before {PRONOUN/m_c/subject} even left the safety of the camp walls.",
+        "event_text": "m_c tried to sneak out of the burrow, but fell and got a bruise before {PRONOUN/m_c/subject} even left the safety of the burrow walls.",
         "m_c": {
             "status": [
-                "kitten"
+                "kit"
             ],
             "trait": [
                 "daring",
@@ -21,7 +21,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -39,10 +39,10 @@
             "any"
         ],
         "weight": 20,
-        "event_text": "m_c snuck out of camp and returned a bit bruised, but brimming with pride despite the scolding {PRONOUN/m_c/subject} {VERB/m_c/were/was} given.",
+        "event_text": "m_c snuck out of burrow and returned a bit bruised, but brimming with pride despite the scolding {PRONOUN/m_c/subject} {VERB/m_c/were/was} given.",
         "m_c": {
             "status": [
-                "kitten"
+                "kit"
             ],
             "trait": [
                 "daring",
@@ -52,7 +52,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -73,7 +73,7 @@
         "event_text": "m_c play-fought a bit too hard and got a little bruised.",
         "m_c": {
             "status": [
-                "kitten"
+                "kit"
             ],
             "trait": [
                 "daring",
@@ -86,7 +86,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -104,10 +104,10 @@
             "any"
         ],
         "weight": 20,
-        "event_text": "m_c tried to sneak out of the camp, but fell and scraped {PRONOUN/m_c/poss} paw before {PRONOUN/m_c/subject} even left the safety of the camp walls.",
+        "event_text": "m_c tried to sneak out of the burrow, but fell and scraped {PRONOUN/m_c/poss} paw before {PRONOUN/m_c/subject} even left the safety of the burrow walls.",
         "m_c": {
             "status": [
-                "kitten"
+                "kit"
             ],
             "trait": [
                 "daring",
@@ -117,7 +117,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -135,10 +135,10 @@
             "any"
         ],
         "weight": 20,
-        "event_text": "m_c snuck out of camp and returned scraped up, but brimming with pride despite the scolding {PRONOUN/m_c/subject} {VERB/m_c/were/was} given.",
+        "event_text": "m_c snuck out of burrow and returned scraped up, but brimming with pride despite the scolding {PRONOUN/m_c/subject} {VERB/m_c/were/was} given.",
         "m_c": {
             "status": [
-                "kitten"
+                "kit"
             ],
             "trait": [
                 "daring",
@@ -148,7 +148,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -169,7 +169,7 @@
         "event_text": "m_c play-fought a bit too hard and scraped {PRONOUN/m_c/self} up.",
         "m_c": {
             "status": [
-                "kitten"
+                "kit"
             ],
             "trait": [
                 "daring",
@@ -182,7 +182,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -203,12 +203,12 @@
         "event_text": "m_c woke up with a mild headache, but got up to play anyways, trying to ignore the nagging pain.",
         "m_c": {
             "status": [
-                "kitten"
+                "kit"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -229,12 +229,12 @@
         "event_text": "m_c woke up with a splitting headache, and couldn't get out of {PRONOUN/m_c/poss} nest. {PRONOUN/m_c/subject/CAP} spent the entire day curled up in the nursery, trying to avoid light and noise so that the throbbing pain could subside.",
         "m_c": {
             "status": [
-                "kitten"
+                "kit"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -252,7 +252,7 @@
             "any"
         ],
         "weight": 20,
-        "event_text": "m_c had a bad fall while taking a walk through the territory, returning to camp sore and bruised.",
+        "event_text": "m_c had a bad fall while taking a walk through the territory, returning to burrow sore and bruised.",
         "m_c": {
             "age": [
                 "adolescent",
@@ -264,7 +264,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -283,7 +283,7 @@
             "any"
         ],
         "tags": [
-            "clan:kitten"
+            "warren:kit"
         ],
         "weight": 40,
         "event_text": "m_c was play-fighting with the kits, but may have overdone it a bit. {PRONOUN/m_c/subject/CAP}'ll be sore for the next few days.",
@@ -304,12 +304,12 @@
         },
         "r_c": {
             "status": [
-                "kitten"
+                "kit"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -367,7 +367,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -397,7 +397,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -427,7 +427,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -458,12 +458,12 @@
                 "any"
             ],
             "skill": [
-                "CAMP,2"
+                "BURROW,2"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -494,12 +494,12 @@
                 "any"
             ],
             "skill": [
-                "CAMP,2"
+                "BURROW,2"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -510,7 +510,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after taking a bad fall.",
@@ -539,7 +539,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -578,7 +578,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -596,10 +596,10 @@
             "any"
         ],
         "tags": [
-            "clan:apprentice"
+            "warren:rusasi"
         ],
         "weight": 20,
-        "event_text": "m_c keeps pointedly reminding other cats that {PRONOUN/m_c/poss} ticks haven't been seen to yet, clearly uncomfortable with the itchy bites dotting {PRONOUN/m_c/poss} pelt.",
+        "event_text": "m_c keeps pointedly reminding other rabbits that {PRONOUN/m_c/poss} ticks haven't been seen to yet, clearly uncomfortable with the itchy bites dotting {PRONOUN/m_c/poss} pelt.",
         "m_c": {
             "age": [
                 "senior adult",
@@ -620,7 +620,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -638,7 +638,7 @@
             "any"
         ],
         "tags": [
-            "clan:warrior"
+            "warren:rabbit"
         ],
         "weight": 20,
         "event_text": "m_c has been getting more and more frustrated by the number of ticks {PRONOUN/m_c/subject} {VERB/m_c/have/has}, but doesn't want to bother anyone with {PRONOUN/m_c/poss} troubles. Regardless, {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} found out when someone spots {PRONOUN/m_c/object} scratching at the bites.",
@@ -661,7 +661,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -679,7 +679,7 @@
             "any"
         ],
         "tags": [
-            "clan:warrior"
+            "warren:rabbit"
         ],
         "weight": 20,
         "event_text": "m_c tried to interject and de-escalate an argument between two Clanmates, but r_c retaliated at the interruption. m_c limps away, fresh clawmarks scored through {PRONOUN/m_c/poss} pelt.",
@@ -692,7 +692,7 @@
                 "senior"
             ],
             "skill": [
-                "MEDIATOR,1"
+                "OWSLA,1"
             ],
             "trait": [
                 "calm",
@@ -728,7 +728,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -738,7 +738,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by r_c.",
@@ -821,7 +821,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -834,7 +834,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred while trying to save r_c from a rogue.",
@@ -940,7 +940,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -953,7 +953,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred while trying to save r_c from a dog.",
@@ -1005,10 +1005,10 @@
         "event_text": "m_c overdid {PRONOUN/m_c/poss} last sparring session, and has been wincing all day. Seems {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} a bit bruised.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "trait": [
                 "adventurous",
@@ -1021,7 +1021,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1045,15 +1045,15 @@
         "event_text": "A brutal battle against o_c_n leaves m_c injured.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1066,7 +1066,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred in a fight against o_c_n.",
@@ -1096,19 +1096,19 @@
         "event_text": "m_c came out worse for wear after a border skirmish with o_c_n.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
-                    "cat bite"
+                    "rabbit bite"
                 ],
                 "scars": [
                     "SIDE"
@@ -1117,7 +1117,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred in a fight against o_c_n.",
@@ -1141,7 +1141,7 @@
             "any"
         ],
         "weight": 20,
-        "event_text": "On a border patrol near the o_c_n border, m_c could no longer take o_c_n's jeers and smirks. {PRONOUN/m_c/subject/CAP} lashed out at the first jeering cat {PRONOUN/m_c/subject} saw, although the hotheaded move wasn't smart as m_c couldn't escape the skirmish without injury.",
+        "event_text": "On a border patrol near the o_c_n border, m_c could no longer take o_c_n's jeers and smirks. {PRONOUN/m_c/subject/CAP} lashed out at the first jeering rabbit {PRONOUN/m_c/subject} saw, although the hotheaded move wasn't smart as m_c couldn't escape the skirmish without injury.",
         "m_c": {
             "age": [
                 "adolescent",
@@ -1174,17 +1174,17 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
-                    "cat bite"
+                    "rabbit bite"
                 ]
             }
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred in a fight against o_c_n.",
@@ -1211,10 +1211,10 @@
             "war"
         ],
         "tags": [
-            "clan:kitten"
+            "warren:kit"
         ],
         "weight": 20,
-        "event_text": "While o_c_n attempted a surprise attack on the c_n camp, m_c fiercely guarded the nursery. However, it didn't end with m_c unscathed.",
+        "event_text": "While o_c_n attempted a surprise attack on the c_n burrow, m_c fiercely guarded the nursery. However, it didn't end with m_c unscathed.",
         "m_c": {
             "age": [
                 "adolescent",
@@ -1229,7 +1229,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1239,7 +1239,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred in a fight against o_c_n.",
@@ -1267,7 +1267,7 @@
         "event_text": "m_c trips over an unseen rabbit hole, spraining {PRONOUN/m_c/poss} paw.",
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1288,10 +1288,10 @@
             "leaf-bare"
         ],
         "weight": 20,
-        "event_text": "m_c snuck out of camp and returned cold and shivering, frostbite nipping at {PRONOUN/m_c/poss} paws.",
+        "event_text": "m_c snuck out of burrow and returned cold and shivering, frostbite nipping at {PRONOUN/m_c/poss} paws.",
         "m_c": {
             "status": [
-                "kitten"
+                "kit"
             ],
             "trait": [
                 "daring",
@@ -1301,7 +1301,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1314,11 +1314,11 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred as a kit by frostbite.",
-                "reg_death": "m_c died after {PRONOUN/m_c/subject} got frostbite sneaking out of camp."
+                "reg_death": "m_c died after {PRONOUN/m_c/subject} got frostbite sneaking out of burrow."
             }
         ]
     },
@@ -1336,25 +1336,25 @@
         "event_text": "m_c was grabbed by a hawk, but luckily r_c saves {PRONOUN/m_c/object}! The kit is still left injured from the ordeal.",
         "m_c": {
             "status": [
-                "kitten"
+                "kit"
             ]
         },
         "r_c": {
             "status": [
-                "apprentice",
-                "mediator apprentice",
-                "medicine cat apprentice",
-                "warrior",
-                "mediator",
-                "medicine cat",
-                "deputy",
-                "leader",
+                "rusasi",
+                "owsla rusasi",
+                "healer rusasi",
+                "rabbit",
+                "owsla",
+                "healer",
+                "captain",
+                "chief rabbit",
                 "elder"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1367,7 +1367,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred as a kit, when an eagle tried to carry {PRONOUN/m_c/object} off.",
@@ -1418,7 +1418,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1428,7 +1428,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c died from water-inhalation after falling in the river.",
@@ -1458,7 +1458,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1471,7 +1471,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by frostbite.",
@@ -1503,7 +1503,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1513,7 +1513,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after slipping on ice.",
@@ -1534,12 +1534,12 @@
         "event_text": "m_c was grabbed and dropped by an eagle, but {PRONOUN/m_c/subject} somehow survived.",
         "m_c": {
             "status": [
-                "kitten"
+                "kit"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1549,7 +1549,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after an eagle grabbed {PRONOUN/m_c/object}."
@@ -1575,7 +1575,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1603,7 +1603,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1629,7 +1629,7 @@
                 "adolescent"
             ],
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "trait": [
                 "adventurous",
@@ -1644,7 +1644,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1654,7 +1654,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after falling from a tall tree."
@@ -1670,7 +1670,7 @@
             "any"
         ],
         "weight": 20,
-        "event_text": "m_c had a bad fall while taking a walk through the territory, and comes back to camp quite sore.",
+        "event_text": "m_c had a bad fall while taking a walk through the territory, and comes back to burrow quite sore.",
         "m_c": {
             "age": [
                 "senior",
@@ -1685,7 +1685,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1720,7 +1720,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1733,7 +1733,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred when {PRONOUN/m_c/subject} fell off a cliff.",
@@ -1754,13 +1754,13 @@
         "event_text": "m_c survived a vicious eagle attack - with the claw marks to prove it!",
         "m_c": {
             "status": [
-                "kitten",
-                "apprentice"
+                "kit",
+                "rusasi"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1773,7 +1773,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by an eagle.",
@@ -1803,7 +1803,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1823,11 +1823,11 @@
             "leaf-fall"
         ],
         "weight": 20,
-        "event_text": "The ground inside the camp has turned into a muddy mess from the rain. m_c sprains {PRONOUN/m_c/poss} paw while trying to walk through the muck.",
+        "event_text": "The ground inside the burrow has turned into a muddy mess from the rain. m_c sprains {PRONOUN/m_c/poss} paw while trying to walk through the muck.",
         "m_c": {},
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1848,10 +1848,10 @@
         "event_text": "m_c fought a rogue, but was barely even hurt! {PRONOUN/m_c/subject/CAP}{VERB/m_c/'re/'s} a bit bruised, but bruises are better than clawmarks.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "skill": [
                 "FIGHTER,2"
@@ -1868,7 +1868,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1911,10 +1911,10 @@
         "event_text": "m_c fought a fox, but was barely even hurt! {PRONOUN/m_c/subject/CAP}{VERB/m_c/'re/'s} a bit bruised, but bruises are better than clawmarks.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "skill": [
                 "FIGHTER,2"
@@ -1931,7 +1931,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1952,10 +1952,10 @@
         "event_text": "m_c fought a dog, but was barely even hurt! {PRONOUN/m_c/subject/CAP}{VERB/m_c/'re/'s} a bit bruised, but bruises are better than clawmarks.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "skill": [
                 "FIGHTER,2"
@@ -1972,7 +1972,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1990,13 +1990,13 @@
             "any"
         ],
         "weight": 20,
-        "event_text": "m_c saved r_c from an enemy warrior, both making it out with hardly even a scratch.",
+        "event_text": "m_c saved r_c from an enemy rabbit, both making it out with hardly even a scratch.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "skill": [
                 "FIGHTER,2"
@@ -2029,7 +2029,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2069,9 +2069,9 @@
         "event_text": "m_c saved r_c from a dog, and was barely even hurt! {PRONOUN/m_c/subject/CAP}{VERB/m_c/'re/'s} a bit bruised, but bruises are better than clawmarks.",
         "m_c": {
             "status": [
-                "warrior",
-                "deputy",
-                "leader"
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "skill": [
                 "FIGHTER,2"
@@ -2104,7 +2104,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2142,10 +2142,10 @@
         "event_text": "m_c overdid {PRONOUN/m_c/poss} last sparring session, and has been wincing all day. Seems {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} a bit scraped up.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "trait": [
                 "adventurous",
@@ -2158,7 +2158,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2179,10 +2179,10 @@
         "event_text": "m_c fought a rogue, but was barely even hurt! {PRONOUN/m_c/subject/CAP}{VERB/m_c/'re/'s} a bit scraped up, but a few scrapes are better than clawmarks.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "skill": [
                 "FIGHTER,2"
@@ -2199,7 +2199,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2241,10 +2241,10 @@
         "event_text": "m_c fought a fox, but was barely even hurt! {PRONOUN/m_c/subject/CAP}{VERB/m_c/'re/'s} a bit scraped up, but a few scrapes are better than clawmarks.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "skill": [
                 "FIGHTER,2"
@@ -2261,7 +2261,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2282,9 +2282,9 @@
         "event_text": "m_c saved r_c from a fox, and was barely even hurt! {PRONOUN/m_c/subject/CAP}{VERB/m_c/'re/'s} a bit scraped up, but a few scrapes are better than clawmarks.",
         "m_c": {
             "status": [
-                "warrior",
-                "deputy",
-                "leader"
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "skill": [
                 "FIGHTER,2"
@@ -2317,7 +2317,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2355,10 +2355,10 @@
         "event_text": "m_c overdid {PRONOUN/m_c/poss} last sparring session and sprained a paw.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "trait": [
                 "adventurous",
@@ -2371,7 +2371,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2392,10 +2392,10 @@
         "event_text": "m_c fought a dog and got hurt.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "not_skill": [
                 "FIGHTER,2"
@@ -2412,7 +2412,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2425,7 +2425,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a dog.",
@@ -2446,10 +2446,10 @@
         "event_text": "m_c saved r_c from a fox, but was hurt.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "not_skill": [
                 "FIGHTER,2"
@@ -2482,7 +2482,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2495,7 +2495,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a fox while rescuing r_c.",
@@ -2530,13 +2530,13 @@
             "any"
         ],
         "weight": 20,
-        "event_text": "m_c was hurt while protecting r_c, the leader, from a fox.",
+        "event_text": "m_c was hurt while protecting r_c, the chief rabbit, from a fox.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "not_skill": [
                 "FIGHTER,2"
@@ -2557,12 +2557,12 @@
         },
         "r_c": {
             "status": [
-                "leader"
+                "chief rabbit"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2575,7 +2575,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a fox while protecting r_c.",
@@ -2612,10 +2612,10 @@
         "event_text": "m_c fought a rogue and got hurt.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "not_skill": [
                 "FIGHTER,2"
@@ -2632,11 +2632,11 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
-                    "cat bite"
+                    "rabbit bite"
                 ],
                 "scars": [
                     "CATBITE"
@@ -2645,7 +2645,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a rogue.",
@@ -2688,10 +2688,10 @@
         "event_text": "m_c fought a big dog and was badly injured.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "not_skill": [
                 "FIGHTER,3"
@@ -2708,7 +2708,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2721,7 +2721,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a big dog.",
@@ -2742,10 +2742,10 @@
         "event_text": "m_c saved r_c from a big dog, but was badly injured.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "not_skill": [
                 "FIGHTER,3"
@@ -2772,15 +2772,15 @@
                 "senior adult"
             ],
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2793,7 +2793,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a big dog while rescuing r_c.",
@@ -2832,10 +2832,10 @@
         "event_text": "m_c fought a hawk and got hurt.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "not_skill": [
                 "FIGHTER,2"
@@ -2852,7 +2852,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2865,7 +2865,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a hawk.",
@@ -2886,10 +2886,10 @@
         "event_text": "m_c saved r_c from a hawk, but was hurt.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "not_skill": [
                 "FIGHTER,2"
@@ -2918,7 +2918,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2931,7 +2931,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a hawk while rescuing r_c.",
@@ -2966,11 +2966,11 @@
             "any"
         ],
         "weight": 20,
-        "event_text": "m_c was hurt while protecting the leader, r_c, from a rogue.",
+        "event_text": "m_c was hurt while protecting the chief rabbit, r_c, from a rogue.",
         "m_c": {
             "status": [
-                "warrior",
-                "deputy"
+                "rabbit",
+                "captain"
             ],
             "not_skill": [
                 "FIGHTER,2"
@@ -2991,12 +2991,12 @@
         },
         "r_c": {
             "status": [
-                "leader"
+                "chief rabbit"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -3009,7 +3009,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a rogue while protecting r_c.",
@@ -3078,8 +3078,8 @@
         "event_text": "m_c was wounded during a harsh training exercise lead by r_c.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior"
+                "rusasi",
+                "rabbit"
             ],
             "not_skill": [
                 "FIGHTER,2"
@@ -3087,8 +3087,8 @@
         },
         "r_c": {
             "status": [
-                "deputy",
-                "leader"
+                "captain",
+                "chief rabbit"
             ],
             "trait": [
                 "bloodthirsty",
@@ -3099,12 +3099,12 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
                     "claw-wound",
-                    "cat bite"
+                    "rabbit bite"
                 ],
                 "scars": [
                     "BELLY",
@@ -3114,7 +3114,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred during a harsh training exercise with r_c.",
@@ -3160,11 +3160,11 @@
             "any"
         ],
         "weight": 20,
-        "event_text": "m_c was hurt by o_c_n warriors after being ordered by r_c to go over the border.",
+        "event_text": "m_c was hurt by o_c_n rabbits after being ordered by r_c to go over the border.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior"
+                "rusasi",
+                "rabbit"
             ],
             "not_skill": [
                 "FIGHTER,2"
@@ -3172,8 +3172,8 @@
         },
         "r_c": {
             "status": [
-                "leader",
-                "deputy"
+                "chief rabbit",
+                "captain"
             ],
             "trait": [
                 "bloodthirsty",
@@ -3189,12 +3189,12 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
                     "claw-wound",
-                    "cat bite"
+                    "rabbit bite"
                 ],
                 "scars": [
                     "CHEEK",
@@ -3204,11 +3204,11 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
-                "scar": "m_c was scarred by o_c_n warriors, after being ordered to go over the border by r_c.",
-                "reg_death": "m_c died from wounds caused by o_c_n warriors, after being ordered to go over the border by r_c."
+                "scar": "m_c was scarred by o_c_n rabbits, after being ordered to go over the border by r_c.",
+                "reg_death": "m_c died from wounds caused by o_c_n rabbits, after being ordered to go over the border by r_c."
             }
         ],
         "relationships": [
@@ -3277,9 +3277,9 @@
                 "any"
             ],
             "status": [
-                "warrior",
-                "deputy",
-                "leader"
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "trait": [
                 "ambitious",
@@ -3294,12 +3294,12 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
                     "claw-wound",
-                    "cat bite"
+                    "rabbit bite"
                 ],
                 "scars": [
                     "ONE",
@@ -3309,7 +3309,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a Clanmate that r_c encouraged {PRONOUN/m_c/object} to fight.",
@@ -3375,8 +3375,8 @@
                 "any"
             ],
             "status": [
-                "deputy",
-                "leader"
+                "captain",
+                "chief rabbit"
             ],
             "trait": [
                 "ambitious",
@@ -3391,7 +3391,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -3404,7 +3404,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a fox, while trying to follow r_c's orders.",
@@ -3453,8 +3453,8 @@
         "event_text": "m_c's leg was badly injured after r_c forced {PRONOUN/m_c/object} to fight a big dog.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior"
+                "rusasi",
+                "rabbit"
             ],
             "not_skill": [
                 "FIGHTER,3"
@@ -3465,8 +3465,8 @@
                 "any"
             ],
             "status": [
-                "deputy",
-                "leader"
+                "captain",
+                "chief rabbit"
             ],
             "trait": [
                 "ambitious",
@@ -3484,7 +3484,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -3497,7 +3497,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a big dog, while trying to follow r_c's orders.",
@@ -3546,12 +3546,12 @@
         "event_text": "m_c mistook a hare for a rabbit while hunting and {PRONOUN/m_c/poss} eyes were scratched, a valuable lesson learnt.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -3564,7 +3564,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred when a hare scratched {PRONOUN/m_c/poss} eyes.",
@@ -3587,12 +3587,12 @@
         "event_text": "Heightened battle training has left m_c sore and tired.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -3616,12 +3616,12 @@
         "event_text": "A harsh sparring session has left m_c bruised. {PRONOUN/m_c/subject/CAP} {VERB/m_c/worry/worries} that {PRONOUN/m_c/subject} will do badly in a real fight against o_c_n.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -3645,23 +3645,23 @@
         "event_text": "A horrible battle occurred between c_n and o_c_n patrols after the two patrols traded insults at the border. m_c and r_c were left badly injured.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "leader",
-                "deputy"
+                "rusasi",
+                "rabbit",
+                "chief rabbit",
+                "captain"
             ]
         },
         "r_c": {
             "status": [
-                "leader",
-                "deputy",
-                "warrior",
-                "apprentice"
+                "chief rabbit",
+                "captain",
+                "rabbit",
+                "rusasi"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c",
                     "r_c"
                 ],
@@ -3673,13 +3673,13 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c",
                     "r_c"
                 ],
-                "scar": "m_c was scarred after a fight with o_c_n cats.",
-                "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after fighting with o_c_n cats.",
-                "lead_death": "died from {PRONOUN/m_c/poss} wounds after fighting with o_c_n cats"
+                "scar": "m_c was scarred after a fight with o_c_n rabbits.",
+                "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after fighting with o_c_n rabbits.",
+                "lead_death": "died from {PRONOUN/m_c/poss} wounds after fighting with o_c_n rabbits"
             }
         ],
         "other_clan": {
@@ -3701,7 +3701,7 @@
         "event_text": "m_c was injured recklessly fighting a rogue that {PRONOUN/m_c/poss} mentor, r_c, encouraged {PRONOUN/m_c/object} to attack.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "relationship_status": [
                 "app/mentor"
@@ -3709,9 +3709,9 @@
         },
         "r_c": {
             "status": [
-                "warrior",
-                "deputy",
-                "leader"
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "skill": [
                 "FIGHTER,1"
@@ -3733,11 +3733,11 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
-                    "cat bite"
+                    "rabbit bite"
                 ],
                 "scars": [
                     "CATBITE"
@@ -3746,7 +3746,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred fighting a rogue that {PRONOUN/m_c/poss} mentor, r_c, encouraged {PRONOUN/m_c/object} to attack.",
@@ -3813,10 +3813,10 @@
             "any"
         ],
         "weight": 20,
-        "event_text": "m_c was injured recklessly fighting an enemy warrior that {PRONOUN/m_c/poss} mentor, r_c, encouraged {PRONOUN/m_c/object} to attack.",
+        "event_text": "m_c was injured recklessly fighting an enemy rabbit that {PRONOUN/m_c/poss} mentor, r_c, encouraged {PRONOUN/m_c/object} to attack.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "relationship_status": [
                 "app/mentor"
@@ -3849,11 +3849,11 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
-                    "cat bite"
+                    "rabbit bite"
                 ],
                 "scars": [
                     "CATBITE"
@@ -3862,11 +3862,11 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
-                "scar": "m_c was scarred fighting an enemy warrior that {PRONOUN/m_c/poss} mentor, r_c, encouraged {PRONOUN/m_c/object} to attack.",
-                "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after {PRONOUN/m_c/poss} mentor encouraged {PRONOUN/m_c/object} to fight an enemy warrior."
+                "scar": "m_c was scarred fighting an enemy rabbit that {PRONOUN/m_c/poss} mentor, r_c, encouraged {PRONOUN/m_c/object} to attack.",
+                "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after {PRONOUN/m_c/poss} mentor encouraged {PRONOUN/m_c/object} to fight an enemy rabbit."
             }
         ],
         "relationships": [
@@ -3917,7 +3917,7 @@
         "event_text": "m_c was injured recklessly fighting a dog that {PRONOUN/m_c/poss} mentor, r_c, encouraged {PRONOUN/m_c/object} to attack.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "relationship_status": [
                 "app/mentor"
@@ -3950,7 +3950,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -3963,7 +3963,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred fighting a dog that {PRONOUN/m_c/poss} mentor, r_c, encouraged {PRONOUN/m_c/object} to attack.",
@@ -4012,7 +4012,7 @@
         "event_text": "m_c was injured recklessly fighting a fox that {PRONOUN/m_c/poss} mentor, r_c, encouraged {PRONOUN/m_c/object} to attack.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "relationship_status": [
                 "app/mentor"
@@ -4045,7 +4045,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4058,7 +4058,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred fighting a fox that {PRONOUN/m_c/poss} mentor, r_c, encouraged {PRONOUN/m_c/object} to attack.",
@@ -4107,7 +4107,7 @@
         "event_text": "m_c could not handle r_c's harsh training, and was injured as a result.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "relationship_status": [
                 "app/mentor"
@@ -4147,11 +4147,11 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
-                    "cat bite"
+                    "rabbit bite"
                 ],
                 "scars": [
                     "CATBITE"
@@ -4160,7 +4160,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by {PRONOUN/m_c/poss} mentor, r_c's, harsh training.",
@@ -4198,7 +4198,7 @@
         "event_text": "m_c trained extra hard to impress {PRONOUN/m_c/poss} mentor, r_c, but was a bit too rough with {PRONOUN/m_c/poss} body, and has the bruises to show it.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "relationship_status": [
                 "app/mentor"
@@ -4220,7 +4220,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4244,12 +4244,12 @@
                 "adolescent"
             ],
             "status": [
-                "apprentice"
+                "rusasi"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4270,12 +4270,12 @@
         "event_text": "m_c was practicing {PRONOUN/m_c/poss} hunting pounce when {PRONOUN/m_c/subject} pounced right into a rock! Ow! {PRONOUN/m_c/subject/CAP} might be sore for a while.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4296,7 +4296,7 @@
         "event_text": "m_c overdid {PRONOUN/m_c/poss} last battle training session, and has been wincing all day. Seems {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} a bit bruised.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "trait": [
                 "adventurous",
@@ -4309,7 +4309,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4330,7 +4330,7 @@
         "event_text": "m_c overdid {PRONOUN/m_c/poss} last battle training session, and has been wincing all day. Seems {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} a bit scraped up.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "trait": [
                 "adventurous",
@@ -4343,7 +4343,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4364,7 +4364,7 @@
         "event_text": "m_c trained extra hard to impress {PRONOUN/m_c/poss} mentor, r_c, but twisted {PRONOUN/m_c/poss} paw at an awkward angle.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "relationship_status": [
                 "app/mentor"
@@ -4386,7 +4386,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4404,10 +4404,10 @@
             "any"
         ],
         "weight": 20,
-        "event_text": "m_c was rushing around the camp in excitement for a patrol when {PRONOUN/m_c/poss} paw landed wrong on a rock! {PRONOUN/m_c/subject/CAP} took a tumble, and can't help limping the rest of the day.",
+        "event_text": "m_c was rushing around the burrow in excitement for a patrol when {PRONOUN/m_c/poss} paw landed wrong on a rock! {PRONOUN/m_c/subject/CAP} took a tumble, and can't help limping the rest of the day.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "trait": [
                 "adventurous",
@@ -4419,7 +4419,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4437,10 +4437,10 @@
             "any"
         ],
         "weight": 20,
-        "event_text": "m_c snuck out at night on a dare, but soon came hobbling back to camp, head lowered in embarrassment. Seems like {PRONOUN/m_c/poss} paw got caught on something in the dark and caused {PRONOUN/m_c/object} to trip!",
+        "event_text": "m_c snuck out at night on a dare, but soon came hobbling back to burrow, head lowered in embarrassment. Seems like {PRONOUN/m_c/poss} paw got caught on something in the dark and caused {PRONOUN/m_c/object} to trip!",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "trait": [
                 "adventurous",
@@ -4458,7 +4458,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4479,7 +4479,7 @@
         "event_text": "m_c overdid {PRONOUN/m_c/poss} last battle training session and sprained a paw.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "trait": [
                 "adventurous",
@@ -4492,7 +4492,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4513,7 +4513,7 @@
         "event_text": "m_c trained extra hard to impress {PRONOUN/m_c/poss} mentor, r_c, but now finds {PRONOUN/m_c/poss} paws to be sore and bleeding.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "relationship_status": [
                 "app/mentor"
@@ -4535,7 +4535,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4556,7 +4556,7 @@
         "event_text": "m_c trained extra hard to impress {PRONOUN/m_c/poss} mentor, r_c, but is extremely sore when {PRONOUN/m_c/subject} {VERB/m_c/wake/wakes} up the next morning.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "relationship_status": [
                 "app/mentor"
@@ -4578,7 +4578,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4599,7 +4599,7 @@
         "event_text": "m_c was hurt by r_c for not defending the territory well enough.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "relationship_status": [
                 "app/mentor"
@@ -4631,12 +4631,12 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
                     "claw-wound",
-                    "cat bite"
+                    "rabbit bite"
                 ],
                 "scars": [
                     "BRIDGE",
@@ -4646,7 +4646,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by {PRONOUN/m_c/poss} mentor, r_c, for failing to defend the territory well enough.",
@@ -4695,7 +4695,7 @@
         "event_text": "m_c was hurt by {PRONOUN/m_c/poss} mentor, r_c, as a punishment for accidentally wandering over the border.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "relationship_status": [
                 "app/mentor"
@@ -4721,12 +4721,12 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
                     "claw-wound",
-                    "cat bite"
+                    "rabbit bite"
                 ],
                 "scars": [
                     "TOETRAP",
@@ -4736,7 +4736,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by {PRONOUN/m_c/poss} mentor, r_c, for accidentally crossing the border.",
@@ -4788,7 +4788,7 @@
                 "adolescent"
             ],
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "relationship_status": [
                 "app/mentor"
@@ -4823,12 +4823,12 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
                     "claw-wound",
-                    "cat bite"
+                    "rabbit bite"
                 ],
                 "scars": [
                     "TAILSCAR",
@@ -4838,7 +4838,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by {PRONOUN/m_c/poss} mentor, r_c, for messing with a Twoleg object.",
@@ -4887,7 +4887,7 @@
         "event_text": "m_c and r_c were practicing battle moves. r_c insisted they keep their claws out, and m_c got hurt.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "relationship_status": [
                 "app/mentor"
@@ -4920,7 +4920,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4933,7 +4933,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by {PRONOUN/m_c/poss} mentor, r_c, during battle training.",
@@ -4982,7 +4982,7 @@
         "event_text": "m_c was hurt by {PRONOUN/m_c/poss} mentor, r_c, as a punishment for disobeying {PRONOUN/r_c/object}.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "relationship_status": [
                 "app/mentor"
@@ -5015,12 +5015,12 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
                     "claw-wound",
-                    "cat bite"
+                    "rabbit bite"
                 ],
                 "scars": [
                     "LEFTEAR",
@@ -5030,7 +5030,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by {PRONOUN/m_c/poss} mentor, r_c, for disobeying {PRONOUN/r_c/object}.",
@@ -5079,7 +5079,7 @@
         "event_text": "m_c fought with {PRONOUN/m_c/poss} mentor, r_c, and was injured.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "relationship_status": [
                 "app/mentor"
@@ -5110,12 +5110,12 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
                     "claw-wound",
-                    "cat bite"
+                    "rabbit bite"
                 ],
                 "scars": [
                     "CHEEK",
@@ -5125,7 +5125,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred after fighting with {PRONOUN/m_c/poss} mentor, r_c.",
@@ -5174,7 +5174,7 @@
         "event_text": "m_c could not handle {PRONOUN/m_c/poss} mentor's, r_c, harsh training, and was injured as a result.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "relationship_status": [
                 "app/mentor"
@@ -5214,7 +5214,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5227,7 +5227,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by {PRONOUN/m_c/poss} mentor, r_c's, harsh training.",
@@ -5276,7 +5276,7 @@
         "event_text": "m_c's leg was badly hurt after r_c, {PRONOUN/m_c/poss} mentor, used a Twoleg trap during a training exercise.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "relationship_status": [
                 "app/mentor"
@@ -5303,7 +5303,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5316,7 +5316,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by {PRONOUN/m_c/poss} mentor, r_c, when {PRONOUN/r_c/subject} used a Twoleg trap for training.",
@@ -5377,7 +5377,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5410,7 +5410,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5423,7 +5423,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a snake bite.",
@@ -5456,7 +5456,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5489,7 +5489,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5522,7 +5522,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5555,7 +5555,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5588,7 +5588,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5621,7 +5621,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5654,7 +5654,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5687,7 +5687,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5716,7 +5716,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5745,7 +5745,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5763,7 +5763,7 @@
             "any"
         ],
         "weight": 20,
-        "event_text": "m_c helped to strengthen the camp walls, but scraped up {PRONOUN/m_c/poss} paw pads in the process.",
+        "event_text": "m_c helped to strengthen the burrow walls, but scraped up {PRONOUN/m_c/poss} paw pads in the process.",
         "m_c": {
             "age": [
                 "senior",
@@ -5776,7 +5776,7 @@
                 "any"
             ],
             "skill": [
-                "CAMP,2"
+                "BURROW,2"
             ],
             "trait": [
                 "ambitious",
@@ -5789,7 +5789,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5822,7 +5822,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5867,7 +5867,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5914,7 +5914,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5934,7 +5934,7 @@
             "any"
         ],
         "weight": 20,
-        "event_text": "m_c fought a rogue and, while {PRONOUN/m_c/subject} drove the trespasser away, {PRONOUN/m_c/subject} needed to be rushed to the medicine cat den afterwards.",
+        "event_text": "m_c fought a rogue and, while {PRONOUN/m_c/subject} drove the trespasser away, {PRONOUN/m_c/subject} needed to be rushed to the healer den afterwards.",
         "m_c": {
             "age": [
                 "senior",
@@ -5971,7 +5971,7 @@
         ],
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5984,7 +5984,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred when {PRONOUN/m_c/subject} fought a trespassing rogue.",
@@ -6017,7 +6017,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6030,7 +6030,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a Twoleg trap.",
@@ -6070,7 +6070,7 @@
                 "any"
             ],
             "status": [
-                "leader"
+                "chief rabbit"
             ],
             "trait": [
                 "ambitious",
@@ -6086,7 +6086,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6099,7 +6099,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was maimed by r_c for questioning {PRONOUN/r_c/poss} leadership.",
@@ -6163,7 +6163,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6176,7 +6176,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a dog.",
@@ -6209,7 +6209,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6222,7 +6222,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a fox.",
@@ -6243,12 +6243,12 @@
         "event_text": "m_c was hurt by r_c for disobeying orders.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "mediator",
-                "mediator apprentice",
-                "medicine cat",
-                "medicine cat apprentice"
+                "rusasi",
+                "rabbit",
+                "owsla",
+                "owsla rusasi",
+                "healer",
+                "healer rusasi"
             ],
             "not_trait": [
                 "loyal",
@@ -6260,8 +6260,8 @@
                 "any"
             ],
             "status": [
-                "leader",
-                "deputy"
+                "chief rabbit",
+                "captain"
             ],
             "trait": [
                 "bloodthirsty",
@@ -6275,18 +6275,18 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
-                    "cat bite",
+                    "rabbit bite",
                     "claw-wound"
                 ]
             }
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by r_c for disobeying orders.",
@@ -6337,12 +6337,12 @@
         "event_text": "m_c was hurt by r_c for speaking out against {PRONOUN/r_c/object}.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "mediator",
-                "mediator apprentice",
-                "medicine cat",
-                "medicine cat apprentice"
+                "rusasi",
+                "rabbit",
+                "owsla",
+                "owsla rusasi",
+                "healer",
+                "healer rusasi"
             ],
             "not_trait": [
                 "loyal"
@@ -6353,8 +6353,8 @@
                 "any"
             ],
             "status": [
-                "leader",
-                "deputy"
+                "chief rabbit",
+                "captain"
             ],
             "trait": [
                 "bloodthirsty",
@@ -6368,18 +6368,18 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
-                    "cat bite",
+                    "rabbit bite",
                     "claw-wound"
                 ]
             }
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by r_c for speaking out against {PRONOUN/r_c/object}.",
@@ -6441,7 +6441,7 @@
                 "any"
             ],
             "status": [
-                "leader"
+                "chief rabbit"
             ],
             "trait": [
                 "bloodthirsty",
@@ -6455,11 +6455,11 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
-                    "cat bite",
+                    "rabbit bite",
                     "claw-wound"
                 ],
                 "scars": [
@@ -6470,7 +6470,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by r_c to make an example out of {PRONOUN/m_c/object}.",
@@ -6518,7 +6518,7 @@
             "any"
         ],
         "weight": 20,
-        "event_text": "m_c was helping reinforce the camp walls when {PRONOUN/m_c/subject} got a thorn stuck in {PRONOUN/m_c/poss} paw.",
+        "event_text": "m_c was helping reinforce the burrow walls when {PRONOUN/m_c/subject} got a thorn stuck in {PRONOUN/m_c/poss} paw.",
         "m_c": {
             "age": [
                 "senior",
@@ -6533,7 +6533,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6562,7 +6562,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6592,7 +6592,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6605,7 +6605,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c, unbelievably, was scarred when {PRONOUN/m_c/subject} tried to eat a bee.",
@@ -6623,23 +6623,23 @@
             "any"
         ],
         "weight": 20,
-        "event_text": "m_c accidentally crossed the border on patrol and got {PRONOUN/m_c/poss} ear torn by an enemy warrior.",
+        "event_text": "m_c accidentally crossed the border on patrol and got {PRONOUN/m_c/poss} ear torn by an enemy rabbit.",
         "m_c": {
             "age": [
                 "any"
             ],
             "status": [
-                "apprentice",
-                "deputy",
-                "leader",
-                "warrior",
-                "medicine cat",
-                "medicine cat apprentice"
+                "rusasi",
+                "captain",
+                "chief rabbit",
+                "rabbit",
+                "healer",
+                "healer rusasi"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6652,12 +6652,12 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
-                "scar": "m_c's ear was torn when {PRONOUN/m_c/subject} accidentally crossed the border and was caught by an enemy warrior.",
-                "reg_death": "m_c died to an injury from an enemy warrior.",
-                "lead_death": "succumbed to an injury from an enemy warrior"
+                "scar": "m_c's ear was torn when {PRONOUN/m_c/subject} accidentally crossed the border and was caught by an enemy rabbit.",
+                "reg_death": "m_c died to an injury from an enemy rabbit.",
+                "lead_death": "succumbed to an injury from an enemy rabbit"
             }
         ],
         "other_clan": {
@@ -6677,23 +6677,23 @@
             "any"
         ],
         "weight": 20,
-        "event_text": "m_c caught a cat from another Clan trespassing on their territory and {PRONOUN/m_c/poss} ear was torn in the ensuing scuffle.",
+        "event_text": "m_c caught a rabbit from another Warren trespassing on their territory and {PRONOUN/m_c/poss} ear was torn in the ensuing scuffle.",
         "m_c": {
             "age": [
                 "any"
             ],
             "status": [
-                "apprentice",
-                "warrior",
-                "leader",
-                "deputy",
-                "medicine cat",
-                "medicine cat apprentice"
+                "rusasi",
+                "rabbit",
+                "chief rabbit",
+                "captain",
+                "healer",
+                "healer rusasi"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6706,12 +6706,12 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
-                "scar": "m_c's ear was torn in a scuffle when {PRONOUN/m_c/subject} chased off an enemy warrior.",
-                "reg_death": "m_c died after an enemy warrior injured {PRONOUN/m_c/object}.",
-                "lead_death": "after being injured by an enemy warrior"
+                "scar": "m_c's ear was torn in a scuffle when {PRONOUN/m_c/subject} chased off an enemy rabbit.",
+                "reg_death": "m_c died after an enemy rabbit injured {PRONOUN/m_c/object}.",
+                "lead_death": "after being injured by an enemy rabbit"
             }
         ],
         "other_clan": {
@@ -6734,17 +6734,17 @@
         "event_text": "m_c was attacked by a group of rats! {PRONOUN/m_c/subject/CAP} managed to fight them off, but didn't escape unscathed.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "mediator",
-                "mediator apprentice",
-                "medicine cat",
-                "medicine cat apprentice"
+                "rusasi",
+                "rabbit",
+                "owsla",
+                "owsla rusasi",
+                "healer",
+                "healer rusasi"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6757,7 +6757,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred when {PRONOUN/m_c/subject} {VERB/m_c/were/was} attacked by a group of rats.",
@@ -6776,15 +6776,15 @@
             "newleaf"
         ],
         "weight": 20,
-        "event_text": "The day is so nice out today that m_c decided to sneak out of camp and go play in the flowers without anyone noticing. {PRONOUN/m_c/subject/CAP} come back with a swollen paw, having stepped on a bee.",
+        "event_text": "The day is so nice out today that m_c decided to sneak out of burrow and go play in the flowers without anyone noticing. {PRONOUN/m_c/subject/CAP} come back with a swollen paw, having stepped on a bee.",
         "m_c": {
             "age": [
-                "kitten"
+                "kit"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6797,7 +6797,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c, unbelievably, was scarred when {PRONOUN/m_c/subject} stepped on a bee.",
@@ -6815,7 +6815,7 @@
             "newleaf"
         ],
         "weight": 20,
-        "event_text": "Camp was supposed to be safe, but m_c found bees trying to form a hive in a corner of camp. Annoyed by their buzzing, m_c attacked them, and got swarmed by bees.",
+        "event_text": "Burrow was supposed to be safe, but m_c found bees trying to form a hive in a corner of burrow. Annoyed by their buzzing, m_c attacked them, and got swarmed by bees.",
         "m_c": {
             "age": [
                 "any"
@@ -6826,7 +6826,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6839,7 +6839,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a swarm of bees.",
@@ -6868,7 +6868,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6897,7 +6897,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6918,18 +6918,18 @@
             "war"
         ],
         "weight": 20,
-        "event_text": "While patrolling the o_c_n borders, m_c stepped on a concealed pit trap set by what seemed to be o_c_n warriors. m_c freezes with shock as {PRONOUN/m_c/subject} {VERB/m_c/plunge/plunges} into the depths of the trap. The other cats on the patrol flank {PRONOUN/m_c/object} as {PRONOUN/m_c/subject} {VERB/m_c/limp/limps} back to the camp.",
+        "event_text": "While patrolling the o_c_n borders, m_c stepped on a concealed pit trap set by what seemed to be o_c_n rabbits. m_c freezes with shock as {PRONOUN/m_c/subject} {VERB/m_c/plunge/plunges} into the depths of the trap. The other rabbits on the patrol flank {PRONOUN/m_c/object} as {PRONOUN/m_c/subject} {VERB/m_c/limp/limps} back to the burrow.",
         "m_c": {
             "age": [
                 "any"
             ],
             "status": [
-                "apprentice",
-                "warrior",
-                "medicine cat",
-                "medicine cat apprentice",
-                "leader",
-                "deputy"
+                "rusasi",
+                "rabbit",
+                "healer",
+                "healer rusasi",
+                "chief rabbit",
+                "captain"
             ],
             "not_trait": [
                 "careful"
@@ -6937,7 +6937,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6947,7 +6947,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred after falling into a o_c_n trap.",
@@ -6977,10 +6977,10 @@
         "event_text": "During a skirmish with o_c_n, m_c took a blow meant for r_c.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "leader",
-                "deputy"
+                "rusasi",
+                "rabbit",
+                "chief rabbit",
+                "captain"
             ],
             "trait": [
                 "fierce",
@@ -6999,15 +6999,15 @@
         },
         "r_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "leader",
-                "deputy"
+                "rusasi",
+                "rabbit",
+                "chief rabbit",
+                "captain"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -7018,7 +7018,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred in a fight against o_c_n.",
@@ -7078,7 +7078,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c",
                     "r_c"
                 ],
@@ -7089,7 +7089,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c",
                     "r_c"
                 ],
@@ -7129,7 +7129,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -7139,7 +7139,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c {VERB/m_c/were/was} hurt while defending the fresh-kill pile from rats.",
@@ -7169,21 +7169,21 @@
             "war"
         ],
         "tags": [
-            "clan:medicine cat"
+            "warren:healer"
         ],
         "weight": 10,
-        "event_text": "m_c was left badly hurt during a battle with o_c_n. Surprisingly, the o_c_n medicine cat cares for {PRONOUN/m_c/object} until {PRONOUN/m_c/poss} Clanmates get there.",
+        "event_text": "m_c was left badly hurt during a battle with o_c_n. Surprisingly, the o_c_n healer cares for {PRONOUN/m_c/object} until {PRONOUN/m_c/poss} Clanmates get there.",
         "m_c": {
             "status": [
-                "warrior",
-                "leader",
-                "deputy",
-                "apprentice"
+                "rabbit",
+                "chief rabbit",
+                "captain",
+                "rusasi"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -7192,7 +7192,7 @@
                 "scars": []
             },
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -7203,12 +7203,12 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
-                "scar": "m_c was scarred after a skirmish with a warring Clan.",
-                "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after a skirmish with a warring Clan.",
-                "lead_death": "died from wounds after a skirmish with a warring Clan"
+                "scar": "m_c was scarred after a skirmish with a warring Warren.",
+                "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after a skirmish with a warring Warren.",
+                "lead_death": "died from wounds after a skirmish with a warring Warren"
             }
         ],
         "other_clan": {
@@ -7233,12 +7233,12 @@
         "event_text": "Having heard that o_c_n was running low on vital emergency herbs, m_c gathers up some excess stock and makes the trek. However, with a mouth full of leaves, m_c takes a claw to the face before {PRONOUN/m_c/subject} can explain {PRONOUN/m_c/poss} intentions.",
         "m_c": {
             "status": [
-                "medicine cat"
+                "healer"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -7254,12 +7254,12 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
-                "scar": "m_c was scarred after bringing herbs to a warring Clan.",
-                "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after bringing herbs to a warring Clan.",
-                "lead_death": "died from wounds after bringing herbs to a warring Clan"
+                "scar": "m_c was scarred after bringing herbs to a warring Warren.",
+                "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after bringing herbs to a warring Warren.",
+                "lead_death": "died from wounds after bringing herbs to a warring Warren"
             }
         ],
         "supplies": [
@@ -7290,15 +7290,15 @@
             "war"
         ],
         "weight": 20,
-        "event_text": "Despite the Clan's alarmingly low stock of herbs, m_c brings what scant amount they have to o_c_n, having heard of their crisis. However, with a full mouth, m_c takes a claw to the face before {PRONOUN/m_c/subject} can explain {PRONOUN/m_c/poss} intentions.",
+        "event_text": "Despite the Warren's alarmingly low stock of herbs, m_c brings what scant amount they have to o_c_n, having heard of their crisis. However, with a full mouth, m_c takes a claw to the face before {PRONOUN/m_c/subject} can explain {PRONOUN/m_c/poss} intentions.",
         "m_c": {
             "status": [
-                "medicine cat"
+                "healer"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -7314,12 +7314,12 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
-                "scar": "m_c was scarred after bringing herbs to a warring Clan.",
-                "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after bringing herbs to a warring Clan.",
-                "lead_death": "died from wounds after bringing herbs to a warring Clan"
+                "scar": "m_c was scarred after bringing herbs to a warring Warren.",
+                "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after bringing herbs to a warring Warren.",
+                "lead_death": "died from wounds after bringing herbs to a warring Warren"
             }
         ],
         "supplies": [
@@ -7350,13 +7350,13 @@
             "war"
         ],
         "weight": 20,
-        "event_text": "m_c gazes fearfully up at the o_c_n warrior, whose teeth are bared and ready to deliver the killing blow. Something in {PRONOUN/m_c/poss} eyes must have shaken them, however, as they bound away without finishing the job.",
+        "event_text": "m_c gazes fearfully up at the o_c_n rabbit, whose teeth are bared and ready to deliver the killing blow. Something in {PRONOUN/m_c/poss} eyes must have shaken them, however, as they bound away without finishing the job.",
         "m_c": {
             "status": [
                 "any"
             ],
             "age": [
-                "kitten",
+                "kit",
                 "adolescent",
                 "young adult",
                 "adult",
@@ -7366,7 +7366,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -7376,12 +7376,12 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
-                "scar": "m_c was scarred after a vicious attack from a warring Clan.",
-                "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after a vicious attack from a warring Clan.",
-                "lead_death": "died from wounds after an attack from a warring Clan"
+                "scar": "m_c was scarred after a vicious attack from a warring Warren.",
+                "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after a vicious attack from a warring Warren.",
+                "lead_death": "died from wounds after an attack from a warring Warren"
             }
         ],
         "other_clan": {
@@ -7400,15 +7400,15 @@
             "war"
         ],
         "weight": 20,
-        "event_text": "m_c acts without thinking, saving the life of a o_c_n warrior by chasing off the predator attempting to make them their lunch.",
+        "event_text": "m_c acts without thinking, saving the life of a o_c_n rabbit by chasing off the predator attempting to make them their lunch.",
         "m_c": {
             "status": [
-                "warrior",
-                "deputy",
-                "leader",
-                "medicine cat",
-                "medicine cat apprentice",
-                "apprentice"
+                "rabbit",
+                "captain",
+                "chief rabbit",
+                "healer",
+                "healer rusasi",
+                "rusasi"
             ],
             "trait": [
                 "fierce",
@@ -7422,7 +7422,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -7433,12 +7433,12 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
-                "scar": "m_c was scarred after protecting an enemy warrior.",
-                "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after protecting an enemy warrior.",
-                "lead_death": "died from wounds after protecting an enemy warrior"
+                "scar": "m_c was scarred after protecting an enemy rabbit.",
+                "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after protecting an enemy rabbit.",
+                "lead_death": "died from wounds after protecting an enemy rabbit"
             }
         ]
     },
@@ -7457,9 +7457,9 @@
         "event_text": "m_c was running around on patrol when {PRONOUN/m_c/poss} paw landed right in a rabbit hole. {PRONOUN/m_c/subject/CAP} limped the whole way home.",
         "m_c": {
             "status": [
-                "apprentice",
-                "medicine cat apprentice",
-                "mediator apprentice"
+                "rusasi",
+                "healer rusasi",
+                "owsla rusasi"
             ],
             "trait": [
                 "adventurous",
@@ -7475,7 +7475,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -7498,13 +7498,13 @@
             "war"
         ],
         "weight": 20,
-        "event_text": "A o_c_n warrior nearly fell from a cliff during a border skirmish. m_c pulled {PRONOUN/m_c/poss} enemy back up from certain death, despite {PRONOUN/m_c/poss} battle injuries.",
+        "event_text": "A o_c_n rabbit nearly fell from a cliff during a border skirmish. m_c pulled {PRONOUN/m_c/poss} enemy back up from certain death, despite {PRONOUN/m_c/poss} battle injuries.",
         "m_c": {
             "status": [
-                "warrior",
-                "deputy",
-                "leader",
-                "apprentice"
+                "rabbit",
+                "captain",
+                "chief rabbit",
+                "rusasi"
             ],
             "trait": [
                 "bold",
@@ -7526,7 +7526,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -7537,7 +7537,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c gained a scar from a border skirmish.",

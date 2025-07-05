@@ -13,53 +13,53 @@
             "many": "%{count} moons (in life)"
         },
         "moon_date": "moon %{moon}",
-        "leader": {
-            "one": "leader",
-            "many": "leaders"
+        "chief rabbit": {
+            "one": "chief rabbit",
+            "many": "chief rabbits"
         },
-        "deputy": {
-            "one": "deputy",
-            "many": "deputies"
+        "captain": {
+            "one": "captain",
+            "many": "captains"
         },
-        "warrior": {
-            "one": "warrior",
-            "many": "warriors"
+        "rabbit": {
+            "one": "rabbit",
+            "many": "rabbits"
         },
-        "medicine cat": {
-            "one": "medicine cat",
-            "many": "medicine cats"
+        "healer": {
+            "one": "healer",
+            "many": "healer rabbits"
         },
-        "mediator": {
-            "one": "mediator",
-            "many": "mediators"
+        "owsla": {
+            "one": "owsla",
+            "many": "owslas"
         },
-        "apprentice": {
-            "one": "apprentice",
-            "many": "apprentices"
+        "rusasi": {
+            "one": "rusasi",
+            "many": "rusasirahs"
         },
-        "medicine cat apprentice": {
-            "one": "medicine cat apprentice",
-            "many": "medicine cat apprentices"
+        "healer rusasi": {
+            "one": "healer rusasi",
+            "many": "healer rusasirahs"
         },
-        "mediator apprentice": {
-            "one": "mediator apprentice",
-            "many": "mediator apprentices"
+        "owsla rusasi": {
+            "one": "owsla rusasi",
+            "many": "owsla rusasirahs"
         },
         "queen": {
             "one": "queen",
             "many": "queens"
         },
         "queen/pregnant": {
-            "one": "queen/pregnant cat",
-            "many": "queens/pregnant cats"
+            "one": "queen/pregnant rabbit",
+            "many": "queens/pregnant rabbits"
         },
         "newborn": {
             "one": "newborn",
             "many": "newborns"
         },
-        "kitten": {
-            "one": "kitten",
-            "many": "kittens"
+        "kit": {
+            "one": "kit",
+            "many": "kits"
         },
         "kitten_profile": "young",
         "adolescent": "adolescent",
@@ -67,10 +67,6 @@
         "adult": "adult",
         "senior adult": "senior adult",
         "senior": "senior",
-        "kit": {
-            "one": "kit",
-            "many": "kits"
-        },
         "elder": {
             "one": "elder",
             "many": "elders"
@@ -100,9 +96,8 @@
             "one": "mate",
             "many": "mates"
         },
-        "she-cat": "she-cat",
-        "tom": "tom",
-        "cat": "cat",
+        "doe": "doe",
+        "buck": "buck",
         "female": "female",
         "male": "male",
         "trans female": "trans female",
@@ -110,8 +105,8 @@
         "nonbinary": "nonbinary",
         "is": "is",
         "are": "are",
-        "can_work": "This cat can work",
-        "cant_work": "This cat isn't able to work",
+        "can_work": "This rabbit can work",
+        "cant_work": "This rabbit isn't able to work",
         "cant_work_condition": "Can't work with this condition",
         "exp_label": "exp: %{exp}",
         "newleaf": "newleaf",
@@ -141,11 +136,11 @@
         "sibling": "sibling",
         "sibling_littermate": "sibling (littermate)",
         "cousin": "cousin",
-        "starclan": "StarClan",
-        "dark_forest": "Dark Forest",
+        "inle": "Inle",
+        "dark_forest": "The Lightless",
         "unknown_residence": "Unknown Residence",
-        "your_clan": "Your Clan",
-        "cotc": "Cats Outside the Clan",
+        "your_clan": "Your Warren",
+        "cotc": "Rabbits Outside the Warren",
         "empty": "empty",
         "none": "none",
         "name_search": "name search",
@@ -170,12 +165,12 @@
         "mentor_label": "mentor: %{mentor}",
         "apprentice_label": {
             "zero": "",
-            "one": "apprentice: %{apprentices}",
-            "many": "apprentices: %{apprentices}"
+            "one": "rusasi: %{rusasirahs}",
+            "many": "rusasirahs: %{rusasirahs}"
         },
         "former_apprentice_label": {
-            "one": "former apprentice: %{apprentices}",
-            "many": "former apprentices: %{apprentices}"
+            "one": "former rusasi: %{rusasirahs}",
+            "many": "former rusasirahs: %{rusasirahs}"
         },
         "apprentice_extra": {
             "zero": "",

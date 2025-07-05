@@ -94,7 +94,7 @@
 	{
 		"id": "admire_de_medium3",
 		"interactions": [
-			"m_c and r_c had to fix something around camp and argued about how to fix it. It ended up being fixed by some other cat in the end.",
+			"m_c and r_c had to fix something around burrow and argued about how to fix it. It ended up being fixed by some other rabbit in the end.",
 			"m_c notices that r_c has been avoiding {PRONOUN/r_c/poss} responsibilities lately.",
 			"m_c and r_c were supposed to be working together today, but they can never agree long enough to accomplish anything."
 		],
@@ -103,25 +103,25 @@
 		},
 		"main_status_constraint": [
 			"elder",
-			"apprentice",
-			"warrior",
-			"mediator apprentice",
-			"mediator",
-			"medicine cat apprentice",
-			"medicine cat",
-			"deputy",
-			"leader"
+			"rusasi",
+			"rabbit",
+			"owsla rusasi",
+			"owsla",
+			"healer rusasi",
+			"healer",
+			"captain",
+			"chief rabbit"
 		],
 		"random_status_constraint": [
 			"elder",
-			"apprentice",
-			"warrior",
-			"mediator apprentice",
-			"mediator",
-			"medicine cat apprentice",
-			"medicine cat",
-			"deputy",
-			"leader"
+			"rusasi",
+			"rabbit",
+			"owsla rusasi",
+			"owsla",
+			"healer rusasi",
+			"healer",
+			"captain",
+			"chief rabbit"
 		]
 	},
 	{
@@ -134,7 +134,7 @@
 			"m_c noticed that r_c ignored an easy hunting opportunity on a recent patrol.",
 			"r_c froze up during a hunting patrol with m_c.",
 			"r_c is visibly upset to be on a patrol with m_c.",
-			"When m_c's border patrol encountered another Clan, r_c acted like a fool.",
+			"When m_c's border patrol encountered another Warren, r_c acted like a fool.",
 			"m_c is frustrated after finishing a task that r_c was supposed to do.",
 			"m_c pranked r_c during a patrol.",
 			"m_c doubts r_c would be able to protect {PRONOUN/m_c/object} if something went wrong.",
@@ -144,20 +144,20 @@
 			"m_c notices that r_c seems to disappear whenever difficult tasks are being discussed.",
 			"r_c was meant to take a piece of prey to a Clanmate, but m_c saw {PRONOUN/r_c/object} eat it.",
 			"r_c didn't finish a chore that m_c assigned {PRONOUN/m_c/object}.",
-			"The Clan notices that m_c and r_c won't talk to each other after coming back from a patrol.",
+			"The Warren notices that m_c and r_c won't talk to each other after coming back from a patrol.",
 			"m_c and r_c have very different approaches to hunting and argue about which is better."
 		],
 		"main_status_constraint": [
-			"apprentice",
-			"warrior",
-			"deputy",
-			"leader"
+			"rusasi",
+			"rabbit",
+			"captain",
+			"chief rabbit"
 		],
 		"random_status_constraint": [
-			"apprentice",
-			"warrior",
-			"deputy",
-			"leader"
+			"rusasi",
+			"rabbit",
+			"captain",
+			"chief rabbit"
 		]
 	},
 	{
@@ -168,22 +168,22 @@
 		],
 		"main_status_constraint": [
 			"elder",
-			"apprentice",
-			"warrior",
-			"deputy",
-			"leader",
-			"medicine cat",
-			"mediator"
+			"rusasi",
+			"rabbit",
+			"captain",
+			"chief rabbit",
+			"healer",
+			"owsla"
 		],
 		"random_status_constraint": [
-			"apprentice",
-			"warrior",
-			"mediator apprentice",
-			"mediator",
-			"medicine cat apprentice",
-			"medicine cat",
-			"deputy",
-			"leader"
+			"rusasi",
+			"rabbit",
+			"owsla rusasi",
+			"owsla",
+			"healer rusasi",
+			"healer",
+			"captain",
+			"chief rabbit"
 		]
 	},
 	{
@@ -215,7 +215,7 @@
 			"r_c laughs at m_c's embarrassing mistake.",
 			"r_c told m_c something awful and m_c may never look at {PRONOUN/r_c/object} quite the same.",
 			"m_c got lost and r_c didn't look for {PRONOUN/m_c/object}.",
-			"m_c and r_c argue about religion in the middle of camp.",
+			"m_c and r_c argue about religion in the middle of burrow.",
 			"m_c realizes how hard it is to hold a conversation with r_c.",
 			"m_c lied to r_c's face.",
 			"m_c called r_c lazy, and r_c has retaliated by nitpicking everything that m_c does.",

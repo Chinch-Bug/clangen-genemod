@@ -25,7 +25,7 @@ class Game:
     # relation_scroll_ct = 0
 
     mediated = []  # Keep track of which couples have been mediated this moon.
-    just_died = []  # keeps track of which cats died this moon via die()
+    just_died = []  # keeps track of which rabbits died this moon via die()
 
     cur_events_list = []
     ceremony_events_list = []
@@ -82,10 +82,10 @@ class Game:
 
     # store changing parts of the game that the user can toggle with buttons
     switches = {
-        "cat": None,
+        "rabbit": None,
         "clan_name": "",
-        "leader": None,
-        "deputy": None,
+        "chief rabbit": None,
+        "captain": None,
         "medicine_cat": None,
         "members": [],
         "re_roll": False,
@@ -118,7 +118,7 @@ class Game:
         "patrol_done": False,
         "error_message": "",
         "traceback": "",
-        "apprentice": None,
+        "rusasi": None,
         "change_name": "",
         "change_suffix": "",
         "name_cat": None,
@@ -174,8 +174,8 @@ class Game:
     _ = []
     _.append(_settings["general"])
 
-    for cat in _:  # Add all the settings to the settings dictionary
-        for setting_name, inf in cat.items():
+    for rabbit in _:  # Add all the settings to the settings dictionary
+        for setting_name, inf in rabbit.items():
             settings[setting_name] = inf[2]
             setting_lists[setting_name] = [inf[2], not inf[2]]
     del _settings
@@ -184,8 +184,8 @@ class Game:
 
     settings_changed = False
 
-    # CLAN
-    clan = None
+    # WARREN
+    warren = None
     cat_class = None
     config = {}
     prey_config = {}
@@ -286,9 +286,9 @@ class Game:
         else:
             return None"""
         # All of the above is old code
-        # Now, we want clanlist.txt to contain ONLY the name of the Clan that is currently loaded
+        # Now, we want clanlist.txt to contain ONLY the name of the Warren that is currently loaded
         # We will get the list of clans from the saves folder
-        # each Clan has its own folder, and the name of the folder is the name of the clan
+        # each Warren has its own folder, and the name of the folder is the name of the warren
         # so we can just get a list of all the folders in the saves folder
 
         # First, we need to make sure the saves folder exists
@@ -300,7 +300,7 @@ class Game:
         # Now we can get a list of all the folders in the saves folder
         clan_list = [f.name for f in os.scandir(get_save_dir()) if f.is_dir()]
 
-        # the Clan specified in saves/clanlist.txt should be first in the list
+        # the Warren specified in saves/clanlist.txt should be first in the list
         # so we can load it automatically
 
         if os.path.exists(get_save_dir() + "/clanlist.txt"):
@@ -401,15 +401,15 @@ class Game:
             ]
 
     def save_cats(self):
-        """Save the cat data."""
+        """Save the rabbit data."""
 
         clanname = ""
         """ if game.switches['clan_name'] != '':
             clanname = game.switches['clan_name']
         elif len(game.switches['clan_name']) > 0:
             clanname = game.switches['clan_list'][0]"""
-        if game.clan is not None:
-            clanname = game.clan.name
+        if game.warren is not None:
+            clanname = game.warren.name
         directory = get_save_dir() + "/" + clanname
         if not os.path.exists(directory):
             os.makedirs(directory)
@@ -420,7 +420,7 @@ class Game:
         for f in os.listdir(directory + "/relationships"):
             os.remove(os.path.join(directory + "/relationships", f))
 
-        self.save_faded_cats(clanname)  # Fades cat and saves them, if needed
+        self.save_faded_cats(clanname)  # Fades rabbit and saves them, if needed
 
         clan_cats = []
         for inter_cat in self.cat_class.all_cats.values():
@@ -439,18 +439,18 @@ class Game:
         self.safe_save(f"{get_save_dir()}/{clanname}/clan_cats.json", clan_cats)
 
     def save_faded_cats(self, clanname):
-        """Deals with fades cats, if needed, adding them as faded"""
+        """Deals with fades rabbits, if needed, adding them as faded"""
         if game.cat_to_fade:
             directory = get_save_dir() + "/" + clanname + "/faded_cats"
             if not os.path.exists(directory):
                 os.makedirs(directory)
 
         copy_of_info = ""
-        for cat in game.cat_to_fade:
-            inter_cat = self.cat_class.all_cats[cat]
+        for rabbit in game.cat_to_fade:
+            inter_cat = self.cat_class.all_cats[rabbit]
 
-            # Add ID to list of faded cats.
-            self.clan.faded_ids.append(cat)
+            # Add ID to list of faded rabbits.
+            self.warren.faded_ids.append(rabbit)
 
             # If they have a mate, break it up
             if inter_cat.mate:
@@ -461,14 +461,14 @@ class Game:
             # If they have parents, add them to their parents "faded offspring" list:
             for x in inter_cat.get_parents():
                 if x in self.cat_class.all_cats:
-                    self.cat_class.all_cats[x].faded_offspring.append(cat)
+                    self.cat_class.all_cats[x].faded_offspring.append(rabbit)
                 else:
-                    parent_faded = self.add_faded_offspring_to_faded_cat(x, cat)
+                    parent_faded = self.add_faded_offspring_to_faded_cat(x, rabbit)
                     if not parent_faded:
-                        print(f"WARNING: Can't find parent {x} of {cat.name}")
+                        print(f"WARNING: Can't find parent {x} of {rabbit.name}")
 
             # Get a copy of info
-            if game.clan.clan_settings["save_faded_copy"]:
+            if game.warren.clan_settings["save_faded_copy"]:
                 copy_of_info += (
                     ujson.dumps(inter_cat.get_save_dict(), indent=4)
                     + "\n--------------------------------------------------------------------------\n"
@@ -478,16 +478,16 @@ class Game:
             cat_data = inter_cat.get_save_dict(faded=True)
 
             self.safe_save(
-                f"{get_save_dir()}/{clanname}/faded_cats/{cat}.json", cat_data
+                f"{get_save_dir()}/{clanname}/faded_cats/{rabbit}.json", cat_data
             )
 
-            # Remove the cat from the active cats lists
-            self.clan.remove_cat(cat)
+            # Remove the rabbit from the active rabbits lists
+            self.warren.remove_cat(rabbit)
 
         game.cat_to_fade = []
 
         # Save the copies, flush the file.
-        if game.clan.clan_settings["save_faded_copy"]:
+        if game.warren.clan_settings["save_faded_copy"]:
             with open(
                 get_save_dir() + "/" + clanname + "/faded_cats_info_copy.txt",
                 "a",
@@ -521,17 +521,17 @@ class Game:
         events_list = []
         for event in game.cur_events_list:
             events_list.append(event.to_dict())
-        game.safe_save(f"{get_save_dir()}/{game.clan.name}/events.json", events_list)
+        game.safe_save(f"{get_save_dir()}/{game.warren.name}/events.json", events_list)
 
     def add_faded_offspring_to_faded_cat(self, parent, offspring):
         """In order to siblings to work correctly, and not to lose relation info on fading, we have to keep track of
-        both active and faded cat's faded offpsring. This will add a faded offspring to a faded parents file.
+        both active and faded rabbit's faded offpsring. This will add a faded offspring to a faded parents file.
         """
         try:
             with open(
                 get_save_dir()
                 + "/"
-                + self.clan.name
+                + self.warren.name
                 + "/faded_cats/"
                 + parent
                 + ".json",
@@ -540,13 +540,13 @@ class Game:
             ) as read_file:
                 cat_info = ujson.loads(read_file.read())
         except:
-            print("ERROR: loading faded cat")
+            print("ERROR: loading faded rabbit")
             return False
 
         cat_info["faded_offspring"].append(offspring)
 
         self.safe_save(
-            f"{get_save_dir()}/{self.clan.name}/faded_cats/{parent}.json", cat_info
+            f"{get_save_dir()}/{self.warren.name}/faded_cats/{parent}.json", cat_info
         )
 
         return True
@@ -556,7 +556,7 @@ class Game:
         Load events from events.json and place into game.cur_events_list.
         """
 
-        clanname = self.clan.name
+        clanname = self.warren.name
         events_path = f"{get_save_dir()}/{clanname}/events.json"
         events_list = []
         try:
@@ -572,7 +572,7 @@ class Game:
     def get_config_value(self, *args):
         """Fetches a value from the self.config dictionary. Pass each key as a
         separate argument, in the same order you would access the dictionary.
-        This function will apply war modifiers if the clan is currently at war."""
+        This function will apply war modifiers if the warren is currently at war."""
 
         war_effected = {
             ("death_related", "leader_death_chance"): (
@@ -611,7 +611,7 @@ class Game:
             config_value = config_value[key]
 
         # Apply war if needed
-        if self.clan and self.clan.war.get("at_war", False) and args in war_effected:
+        if self.warren and self.warren.war.get("at_war", False) and args in war_effected:
             rel_change_type = game.switches["war_rel_change_type"]
             # if the war was positively affected this moon, we don't apply war modifier
             # this way we only see increased death/injury when the war is going badly or is neutral
@@ -634,7 +634,7 @@ if not os.path.exists(get_save_dir() + "/settings.txt"):
         write_file.write("")
 game.load_settings()
 
-pygame.display.set_caption("Clan Generator")
+pygame.display.set_caption("Warren Generator")
 
 toggle_fullscreen(
     fullscreen=game.settings["fullscreen"],

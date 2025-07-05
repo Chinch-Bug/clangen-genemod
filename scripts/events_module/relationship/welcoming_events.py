@@ -4,7 +4,7 @@ from random import choice
 
 import i18n
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.event_class import Single_Event
 from scripts.game_structure.game_essentials import game
 from scripts.utility import (
@@ -15,20 +15,20 @@ from scripts.game_structure.localization import load_lang_resource
 
 
 class Welcoming_Events:
-    """All events which are related to welcome a new cat in the clan."""
+    """All events which are related to welcome a new rabbit in the warren."""
 
     currently_loaded_lang = None
 
     @staticmethod
-    def welcome_cat(clan_cat: Cat, new_cat: Cat) -> None:
-        """Checks and triggers the welcome event from the Clan cat to the new cat.
+    def welcome_cat(clan_cat: Rabbit, new_cat: Rabbit) -> None:
+        """Checks and triggers the welcome event from the Warren rabbit to the new rabbit.
 
         Parameters
         ----------
-        clan_cat : Cat
-            the Clan cat which welcome the new cat
-        new_cat : Cat
-            new cat which will be welcomed
+        clan_cat : Rabbit
+            the Warren rabbit which welcome the new rabbit
+        new_cat : Rabbit
+            new rabbit which will be welcomed
 
         Returns
         -------
@@ -42,11 +42,11 @@ class Welcoming_Events:
 
         # setup the status as "key" to use it
         status = clan_cat.status
-        if status == "medicine cat" or status == "medicine cat apprentice":
-            status = "medicine"
+        if status == "healer" or status == "healer rusasi":
+            status = "healer"
 
-        if status == "mediator apprentice":
-            status = "mediator"
+        if status == "owsla rusasi":
+            status = "owsla"
 
         # collect all events
         possible_events = deepcopy(GENERAL_WELCOMING)
@@ -64,7 +64,7 @@ class Welcoming_Events:
 
         # prepare string for display
         interaction_str = event_text_adjust(
-            Cat, interaction_str, main_cat=clan_cat, random_cat=new_cat
+            Rabbit, interaction_str, main_cat=clan_cat, random_cat=new_cat
         )
 
         # influence the relationship
@@ -171,15 +171,15 @@ class Welcoming_Events:
         )
 
     @staticmethod
-    def filter_welcome_interactions(welcome_interactions: list, new_cat: Cat) -> list:
+    def filter_welcome_interactions(welcome_interactions: list, new_cat: Rabbit) -> list:
         """Filter welcome events based on states.
 
         Parameters
         ----------
         welcome_interactions : list
             a list of welcome interaction
-        new_cat : Cat
-            new cat which will be welcomed
+        new_cat : Rabbit
+            new rabbit which will be welcomed
 
         Returns
         -------
@@ -212,7 +212,7 @@ class Welcoming_Events:
                     and "under" not in interaction.new_cat_moons
                 ):
                     print(
-                        f"ERROR: The new cat welcoming event {interaction.id} has a not valid moon restriction for the new cat."
+                        f"ERROR: The new rabbit welcoming event {interaction.id} has a not valid moon restriction for the new rabbit."
                     )
                     continue
 

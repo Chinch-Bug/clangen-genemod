@@ -9,9 +9,9 @@
 		"m_c, r_c1, and r_c2 decide they're going to get r_c3 and r_c4 together. They talk about how much r_c3 loves r_c4 in front of r_c4, and, to their pleasure, find the two talking later."
 	],
 	"status_constraint": {
-		"m_c": ["warrior", "elder", "mediator"],
-		"r_c1": ["warrior", "elder", "mediator"],
-		"r_c2": ["warrior", "elder", "mediator"]
+		"m_c": ["rabbit", "elder", "owsla"],
+		"r_c1": ["rabbit", "elder", "owsla"],
+		"r_c2": ["rabbit", "elder", "owsla"]
 	},
 	"relationship_constraint": {
 		"m_c_to_r_c3": ["platonic_40"],

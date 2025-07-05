@@ -5,7 +5,7 @@
         "moons_until": 0,
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -28,7 +28,7 @@
         "moons_until": 0,
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -68,7 +68,7 @@
         "moons_until": 0,
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -104,7 +104,7 @@
         "moons_until": 3,
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -140,7 +140,7 @@
         "moons_until": 1,
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -176,7 +176,7 @@
         "moons_until": 0,
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -210,7 +210,7 @@
         "moons_until": 0,
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -233,7 +233,7 @@
         "moons_until": 0,
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -277,7 +277,7 @@
         "moons_until": 3,
         "mortality": {
             "newborn": 20,
-            "kitten": 20,
+            "kit": 20,
             "adolescent": 60,
             "young adult": 80,
             "adult": 90,
@@ -307,7 +307,7 @@
         "moons_until": 1,
         "mortality": {
             "newborn": 10,
-            "kitten": 10,
+            "kit": 10,
             "adolescent": 40,
             "young adult": 75,
             "adult": 65,
@@ -361,7 +361,7 @@
         "moons_until": 1,
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -384,7 +384,7 @@
         "moons_until": 2,
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -410,7 +410,7 @@
         "moons_until": 3,
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -437,7 +437,7 @@
         "moons_until": 2,
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -464,7 +464,7 @@
         "moons_until": 1,
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -488,7 +488,7 @@
         "moons_until": 2,
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -520,7 +520,7 @@
         "moons_until": 3,
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -550,7 +550,7 @@
         "moons_until": 2,
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -577,7 +577,7 @@
         "moons_until": 0,
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -604,7 +604,7 @@
         "moons_until": 0,
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -635,7 +635,7 @@
         "moons_until": 0,
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -666,7 +666,7 @@
         "moons_until": 4,
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,

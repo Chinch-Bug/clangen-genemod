@@ -4,7 +4,7 @@
 		"intensity": "low",
 		"interactions": [
 			"m_c thinks r_c isn't very considerate of others.",
-			"m_c gets a little irritated seeing r_c ignore a mess in camp.",
+			"m_c gets a little irritated seeing r_c ignore a mess in burrow.",
 			"r_c accidentally gave m_c a piece of fresh-kill {PRONOUN/m_c/subject} didn't like.",
 			"r_c doesn't seem very concerned when m_c complains about something aching.",
 			"m_c feels like r_c wasn't listening to {PRONOUN/m_c/object}.",
@@ -48,7 +48,7 @@
 			"r_c won't give up a warm, sunny spot for m_c, not even for a minute.",
 			"m_c keeps telling r_c to stop saying a joke, but r_c doesn't take {PRONOUN/m_c/poss} request seriously.",
 			"m_c is baffled by something r_c says about religion.",
-			"r_c makes a crude remark about the Clan to m_c."
+			"r_c makes a crude remark about the Warren to m_c."
 		]
 	},
 	{
@@ -61,7 +61,7 @@
 			"m_c is sick of replacing r_c's stinky bedding."
 		],
 		"main_status_constraint": [
-			"apprentice"
+			"rusasi"
 		],
 		"random_status_constraint": [
 			"elder"
@@ -70,8 +70,8 @@
 	{
 		"id": "platonic_de_med3",
 		"interactions": [
-			"r_c makes sure m_c is following the Warrior Code.",
-			"r_c snaps at m_c for making a joke about the Clan.",
+			"r_c makes sure m_c is following the Rabbit Code.",
+			"r_c snaps at m_c for making a joke about the Warren.",
 			"r_c has a fight with m_c about what's right."
 		],
 		"random_trait_constraint": [
@@ -100,36 +100,36 @@
 			"m_c doesn't like how r_c has been talking about {PRONOUN/m_c/poss} mentor.",
 			"m_c wishes {PRONOUN/m_c/subject} had r_c's mentor instead.",
 			"m_c thinks that r_c complains too much about {PRONOUN/r_c/poss} training.",
-			"r_c won't stop taking up so much room in the apprentice den at night, and keeps kicking m_c.",
-			"m_c notices that r_c doesn't take {PRONOUN/r_c/poss} training as seriously as the other apprentices."
+			"r_c won't stop taking up so much room in the rusasi den at night, and keeps kicking m_c.",
+			"m_c notices that r_c doesn't take {PRONOUN/r_c/poss} training as seriously as the other rusasirahs."
 		],
 		"main_status_constraint": [
-			"apprentice",
-			"mediator apprentice",
-			"medicine cat apprentice"
+			"rusasi",
+			"owsla rusasi",
+			"healer rusasi"
 		],
 		"random_status_constraint": [
-			"medicine cat apprentice",
-			"apprentice",
-			"mediator apprentice"
+			"healer rusasi",
+			"rusasi",
+			"owsla rusasi"
 		]
 	},
 	{
 		"id": "platonic_de_high2",
 		"intensity": "high",
 		"interactions": [
-			"m_c mocks r_c for becoming a medicine cat apprentice instead of a warrior apprentice.",
+			"m_c mocks r_c for becoming a healer rusasi instead of a rabbit rusasi.",
 			"m_c mocks r_c for smelling like gross herbs.",
 			"m_c mocks r_c for smelling like mouse bile.",
 			"m_c keeps trying to quiz r_c on herbs that r_c doesn't know yet.",
-			"m_c looks down on r_c, because there's no way {PRONOUN/r_c/subject} could ever be a useful medicine cat.",
+			"m_c looks down on r_c, because there's no way {PRONOUN/r_c/subject} could ever be a useful healer.",
 			"m_c doesn't trust r_c to heal {PRONOUN/m_c/object} wounds."
 		],
 		"main_status_constraint": [
-			"apprentice"
+			"rusasi"
 		],
 		"random_status_constraint": [
-			"medicine cat apprentice"
+			"healer rusasi"
 		],
 		"reaction_random_cat": {
 			"platonic": "decrease"
@@ -139,19 +139,19 @@
 		"id": "platonic_de_high3",
 		"intensity": "high",
 		"interactions": [
-			"m_c keeps leaving all of the boring apprentice tasks for r_c to do by {PRONOUN/r_c/self}.",
-			"m_c tells r_c's mentor that {PRONOUN/r_c/subject}{VERB/r_c/'ve/'s} been sneaking out of camp without permission.",
+			"m_c keeps leaving all of the boring rusasi tasks for r_c to do by {PRONOUN/r_c/self}.",
+			"m_c tells r_c's mentor that {PRONOUN/r_c/subject}{VERB/r_c/'ve/'s} been sneaking out of burrow without permission.",
 			"m_c has a disagreement with r_c over who is the better hunter.",
-			"m_c tells r_c to go back to the nursery if {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} gonna keep acting like a kitten!",
-			"m_c's mentor compliments r_c more than their own apprentice.",
-			"The Clan doesn't think the friendly apprentice competition between m_c and r_c is very friendly anymore.",
+			"m_c tells r_c to go back to the nursery if {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} gonna keep acting like a kit!",
+			"m_c's mentor compliments r_c more than their own rusasi.",
+			"The Warren doesn't think the friendly rusasi competition between m_c and r_c is very friendly anymore.",
 			"m_c accuses r_c of cheating; there's no way {PRONOUN/r_c/subject} could win so many practice fights fairly."
 		],
 		"main_status_constraint": [
-			"apprentice"
+			"rusasi"
 		],
 		"random_status_constraint": [
-			"apprentice"
+			"rusasi"
 		],
 		"reaction_random_cat": {
 			"dislike": "increase"
@@ -163,11 +163,11 @@
 		"interactions": [
 			"m_c snarls at r_c for coming too close to the herbs.",
 			"m_c shoos r_c away, not having time for curious little kits.",
-			"m_c tells r_c if {PRONOUN/r_c/subject} {VERB/r_c/don't/doesn't} stay away from the medicine den {PRONOUN/m_c/subject} will feed {PRONOUN/r_c/object} nasty tasting herbs!"
+			"m_c tells r_c if {PRONOUN/r_c/subject} {VERB/r_c/don't/doesn't} stay away from the healer den {PRONOUN/m_c/subject} will feed {PRONOUN/r_c/object} nasty tasting herbs!"
 		],
 		"main_status_constraint": [
-			"medicine cat",
-			"medicine cat apprentice"
+			"healer",
+			"healer rusasi"
 		],
 		"main_trait_constraint": [
 			"cold",
@@ -175,7 +175,7 @@
 			"fierce"
 		],
 		"random_status_constraint": [
-			"kitten"
+			"kit"
 		],
 		"reaction_random_cat": {
 			"platonic": "decrease"
@@ -186,7 +186,7 @@
 		"intensity": "high",
 		"interactions": [
 			"m_c feels betrayed by something r_c said.",
-			"m_c won't tell the Clan what's made {PRONOUN/m_c/object} so upset with r_c.",
+			"m_c won't tell the Warren what's made {PRONOUN/m_c/object} so upset with r_c.",
 			"After r_c says something seemingly innocent, m_c sulks for the rest of the day.",
 			"r_c's ego about something irritates m_c.",
 			"m_c is reevaluating how much {PRONOUN/m_c/subject} {VERB/m_c/value/values} r_c as a Clanmate.",
@@ -203,7 +203,7 @@
 		"intensity": "high",
 		"interactions": [
 			"r_c says something hateful to m_c.",
-			"In the middle of a squabble, r_c says something to m_c that makes the whole Clan gasp.",
+			"In the middle of a squabble, r_c says something to m_c that makes the whole Warren gasp.",
 			"m_c keeps getting on r_c for a bad habit, and it's putting a rift between them.",
 			"r_c doesn't respect m_c's personal space lately.",
 			"m_c snaps at r_c to leave {PRONOUN/m_c/object} alone.",
@@ -211,7 +211,7 @@
 			"r_c has been getting on m_c's nerves as of late.",
 			"m_c mocks r_c for something inconsequential.",
 			"m_c tells r_c something {PRONOUN/m_c/subject} {VERB/m_c/hate/hates} about {PRONOUN/r_c/object}.",
-			"The Clan watches m_c and r_c slowly lose their patience with one another.",
+			"The Warren watches m_c and r_c slowly lose their patience with one another.",
 			"A Clanmate has to comfort m_c when r_c says something cruel."
 		],
 		"reaction_random_cat": {

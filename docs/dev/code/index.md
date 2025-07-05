@@ -24,23 +24,23 @@ used to control chances of certain events happening, relationship values, patrol
 "high": 16
 }`
 
-This sets the exact relationship value changes after interactions. Interactions, found in the relationships tab, can have a high, medium, or low effect on cats. These effects can be positive or negative.
+This sets the exact relationship value changes after interactions. Interactions, found in the relationships tab, can have a high, medium, or low effect on rabbits. These effects can be positive or negative.
 
 `"max_interaction": 5`
 
-This sets the max amount of interactions a cat can have each moon.
+This sets the max amount of interactions a rabbit can have each moon.
 
 `"max_interaction_special": 8`
 
-This sets the max amount of interactions a cat with a special role (leader, deputy, medicine cat, or mediator) can have each moon.
+This sets the max amount of interactions a rabbit with a special role (chief rabbit, captain, healer, or owsla) can have each moon.
 
 `"compatibility_effect": 5`
 
-This sets the positive or negative effect that interactions will have on other cats based on their personalities. Some personalities are compatible with each other, some are neutral, some are not compatible. 
+This sets the positive or negative effect that interactions will have on other rabbits based on their personalities. Some personalities are compatible with each other, some are neutral, some are not compatible. 
 
 `"passive_influence_div": 1.5`
 
-This setting helps set a buff for interactions that increases other values other than the main value. For example, if a cat has a positive romantic interaction with another cat, their platonic like and comfort levels will also increase, and their dislike will decrease. Increasing this setting's value will decrease the buff.
+This setting helps set a buff for interactions that increases other values other than the main value. For example, if a rabbit has a positive romantic interaction with another rabbit, their platonic like and comfort levels will also increase, and their dislike will decrease. Increasing this setting's value will decrease the buff.
 
 `"chance_for_neutral": 10`
 
@@ -52,4 +52,4 @@ Often when a group event is happening, only a special group is used, which is de
 
 `"chance_romantic_not_mate": 15`
 
-This is the base chance of an romantic interaction with another cat, when a cat has a mate. 1/chance
+This is the base chance of an romantic interaction with another rabbit, when a rabbit has a mate. 1/chance

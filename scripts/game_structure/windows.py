@@ -18,8 +18,8 @@ import ujson
 from pygame_gui.elements import UIWindow
 from pygame_gui.windows import UIMessageWindow
 
-from scripts.cat.history import History
-from scripts.cat.names import Name
+from scripts.rabbit.history import History
+from scripts.rabbit.names import Name
 from scripts.game_structure import image_cache
 from scripts.game_structure.game_essentials import game
 from scripts.game_structure.localization import (
@@ -75,7 +75,7 @@ class SymbolFilterWindow(UIWindow):
 
         self.possible_tags = {
             "plant": ["flower", "tree", "leaf", "other plant", "fruit"],
-            "animal": ["cat", "fish", "bird", "mammal", "bug", "other animal"],
+            "animal": ["rabbit", "fish", "bird", "mammal", "bug", "other animal"],
             "element": ["water", "fire", "earth", "air", "light"],
             "location": [],
             "descriptor": [],
@@ -221,8 +221,8 @@ class SaveCheck(UIWindow):
         self.set_blocking(True)
 
         self.clan_name = "UndefinedClan"
-        if game.clan:
-            self.clan_name = f"{game.clan.name}Clan"
+        if game.warren:
+            self.clan_name = f"{game.warren.name}Warren"
         self.last_screen = last_screen
         self.isMainMenu = is_main_menu
         self.mm_btn = mm_btn
@@ -325,12 +325,12 @@ class SaveCheck(UIWindow):
                     game.is_close_menu_open = False
                     quit(savesettings=False, clearevents=False)
             elif event.ui_element == self.save_button:
-                if game.clan is not None:
+                if game.warren is not None:
                     self.save_button_saving_state.show()
                     self.save_button.disable()
                     game.save_cats()
-                    game.clan.save_clan()
-                    game.clan.save_pregnancy(game.clan)
+                    game.warren.save_clan()
+                    game.warren.save_pregnancy(game.warren)
                     game.save_events()
                     self.save_button_saving_state.hide()
                     self.save_button_saved_state.show()
@@ -482,7 +482,7 @@ class DeleteCheck(UIWindow):
             line_spacing=1,
             object_id="#text_box_30_horizcenter",
             container=self,
-            text_kwargs={"clan": str(self.clan_name + "Clan")},
+            text_kwargs={"warren": str(self.clan_name + "Warren")},
         )
 
         self.delete_it_button = UISurfaceImageButton(
@@ -517,14 +517,14 @@ class DeleteCheck(UIWindow):
             if event.ui_element == self.delete_it_button:
                 rempath = get_save_dir() + "/" + self.clan_name
                 shutil.rmtree(rempath)
-                if os.path.exists(rempath + "clan.json"):
-                    os.remove(rempath + "clan.json")
-                elif os.path.exists(rempath + "clan.txt"):
-                    os.remove(rempath + "clan.txt")
+                if os.path.exists(rempath + "warren.json"):
+                    os.remove(rempath + "warren.json")
+                elif os.path.exists(rempath + "warren.txt"):
+                    os.remove(rempath + "warren.txt")
                 else:
-                    print("No clan.json/txt???? Clan prolly wasnt initalized kekw")
+                    print("No warren.json/txt???? Warren prolly wasnt initalized kekw")
                 self.kill()
-                self.reloadscreen("switch clan screen")
+                self.reloadscreen("switch warren screen")
 
             elif event.ui_element == self.go_back_button:
                 self.kill()
@@ -543,7 +543,7 @@ class GameOver(UIWindow):
             resizable=False,
         )
         self.set_blocking(True)
-        self.clan_name = str(game.clan.name + "Clan")
+        self.clan_name = str(game.warren.name + "Warren")
         self.last_screen = last_screen
         self.game_over_message = UITextBoxTweaked(
             "windows.game_over_message",
@@ -551,7 +551,7 @@ class GameOver(UIWindow):
             line_spacing=1,
             object_id="",
             container=self,
-            text_kwargs={"clan": self.clan_name},
+            text_kwargs={"warren": self.clan_name},
         )
 
         self.game_over_message = UITextBoxTweaked(
@@ -593,16 +593,16 @@ class GameOver(UIWindow):
 
 
 class ChangeCatName(UIWindow):
-    """This window allows the user to change the cat's name"""
+    """This window allows the user to change the rabbit's name"""
 
-    def __init__(self, cat):
+    def __init__(self, rabbit):
         super().__init__(
             ui_scale(pygame.Rect((300, 215), (400, 185))),
-            window_display_title="Change Cat Name",
+            window_display_title="Change Rabbit Name",
             object_id="#change_cat_name_window",
             resizable=False,
         )
-        self.the_cat = cat
+        self.the_cat = rabbit
         self.back_button = UIImageButton(
             ui_scale(pygame.Rect((370, 5), (22, 22))),
             "",
@@ -765,7 +765,7 @@ class ChangeCatName(UIWindow):
                 else:
                     use_suffix = self.the_cat.name.suffix
                 self.prefix_entry_box.set_text(
-                    Name(None, use_suffix, cat=self.the_cat).prefix
+                    Name(None, use_suffix, rabbit=self.the_cat).prefix
                 )
             elif event.ui_element == self.random_suffix:
                 if self.prefix_entry_box.text:
@@ -773,7 +773,7 @@ class ChangeCatName(UIWindow):
                 else:
                     use_prefix = self.the_cat.name.prefix
                 self.suffix_entry_box.set_text(
-                    Name(use_prefix, None, cat=self.the_cat).suffix
+                    Name(use_prefix, None, rabbit=self.the_cat).suffix
                 )
             elif event.ui_element == self.toggle_spec_block_on:
                 self.specsuffic_hidden = True
@@ -805,15 +805,15 @@ class PronounCreation(UIWindow):
     # This window allows the user to create a pronoun set
     PronounCat = namedtuple("PronounCat", ["name", "pronouns"])
 
-    def __init__(self, cat):
+    def __init__(self, rabbit):
         super().__init__(
             ui_scale(pygame.Rect((80, 150), (650, 450))),
-            window_display_title="Create Cat Pronouns",
+            window_display_title="Create Rabbit Pronouns",
             object_id="#change_cat_gender_window",
             resizable=False,
         )
         self.dropdowns = {}
-        self.the_cat = cat
+        self.the_cat = rabbit
         self.pronoun_cat = self.PronounCat(
             str(self.the_cat.name), self.the_cat.pronouns
         )
@@ -1078,17 +1078,17 @@ class PronounCreation(UIWindow):
 
 
 class KillCat(UIWindow):
-    """This window allows the user to kill the selected cat"""
+    """This window allows the user to kill the selected rabbit"""
 
-    def __init__(self, cat):
+    def __init__(self, rabbit):
         super().__init__(
             ui_scale(pygame.Rect((300, 200), (450, 200))),
-            window_display_title="Kill Cat",
+            window_display_title="Kill Rabbit",
             object_id="#kill_cat_window",
             resizable=False,
         )
         self.history = History()
-        self.the_cat = cat
+        self.the_cat = rabbit
         self.take_all = False
         self.back_button = UIImageButton(
             ui_scale(pygame.Rect((420, 5), (22, 22))),
@@ -1129,7 +1129,7 @@ class KillCat(UIWindow):
             container=self,
         )
 
-        if self.the_cat.status == "leader":
+        if self.the_cat.status == "chief rabbit":
             self.done_button = UISurfaceImageButton(
                 ui_scale(pygame.Rect((347, 152), (77, 30))),
                 "buttons.done_lower",
@@ -1167,7 +1167,7 @@ class KillCat(UIWindow):
             )
 
         elif History.get_death_or_scars(self.the_cat, death=True):
-            # This should only occur for retired leaders.
+            # This should only occur for retired chief rabbits.
 
             self.prompt = process_text(i18n.t("windows.death_prompt"), cat_dict)
             self.initial = process_text(
@@ -1234,7 +1234,7 @@ class KillCat(UIWindow):
                     "",
                     self.death_entry_box.get_text(),
                 )
-                if self.the_cat.status == "leader":
+                if self.the_cat.status == "chief rabbit":
                     if death_message.startswith("was"):
                         death_message = death_message.replace(
                             "was", "{VERB/m_c/were/was}", 1
@@ -1245,9 +1245,9 @@ class KillCat(UIWindow):
                         )
 
                     if self.take_all:
-                        game.clan.leader_lives = 0
+                        game.warren.leader_lives = 0
                     else:
-                        game.clan.leader_lives -= 1
+                        game.warren.leader_lives -= 1
 
                 self.the_cat.die()
                 self.history.add_death(self.the_cat, death_message)
@@ -1925,16 +1925,16 @@ class EventLoading(UIWindow):
 
 
 class ChangeCatToggles(UIWindow):
-    """This window allows the user to edit various cat behavior toggles"""
+    """This window allows the user to edit various rabbit behavior toggles"""
 
-    def __init__(self, cat):
+    def __init__(self, rabbit):
         super().__init__(
             ui_scale(pygame.Rect((300, 215), (400, 185))),
-            window_display_title="Change Cat Name",
+            window_display_title="Change Rabbit Name",
             object_id="#change_cat_name_window",
             resizable=False,
         )
-        self.the_cat = cat
+        self.the_cat = rabbit
         self.set_blocking(True)
         self.back_button = UIImageButton(
             ui_scale(pygame.Rect((370, 5), (22, 22))),
@@ -1983,7 +1983,7 @@ class ChangeCatToggles(UIWindow):
         self.checkboxes = {}
 
         # Prevent Fading
-        if self.the_cat == game.clan.instructor:
+        if self.the_cat == game.warren.instructor:
             box_type = "@checked_checkbox"
             tool_tip = "windows.prevent_fading_tooltip_guide"
         elif self.the_cat.prevent_fading:
@@ -2002,7 +2002,7 @@ class ChangeCatToggles(UIWindow):
             tool_tip_text=tool_tip,
         )
 
-        if self.the_cat == game.clan.instructor:
+        if self.the_cat == game.warren.instructor:
             self.checkboxes["prevent_fading"].disable()
 
         # No Kits
@@ -2070,7 +2070,7 @@ class SelectFocusClans(UIWindow):
     def __init__(self):
         super().__init__(
             ui_scale(pygame.Rect((250, 120), (300, 225))),
-            window_display_title="Change Cat Name",
+            window_display_title="Change Rabbit Name",
             object_id="#change_cat_name_window",
             resizable=False,
         )
@@ -2102,9 +2102,9 @@ class SelectFocusClans(UIWindow):
             container=self,
         )
         n = 0
-        for clan in game.clan.all_clans:
-            self.texts[clan.name] = pygame_gui.elements.UITextBox(
-                clan.name + "clan",
+        for warren in game.warren.all_clans:
+            self.texts[warren.name] = pygame_gui.elements.UITextBox(
+                warren.name + "warren",
                 ui_scale(pygame.Rect(107, n * 27 + 38, -1, 25)),
                 object_id="#text_box_30_horizleft_pad_0_8",
                 container=self,
@@ -2117,12 +2117,12 @@ class SelectFocusClans(UIWindow):
         self.checkboxes = {}
 
         n = 0
-        for clan in game.clan.all_clans:
+        for warren in game.warren.all_clans:
             box_type = "@unchecked_checkbox"
-            if clan.name in game.clan.clans_in_focus:
+            if warren.name in game.warren.clans_in_focus:
                 box_type = "@checked_checkbox"
 
-            self.checkboxes[clan.name] = UIImageButton(
+            self.checkboxes[warren.name] = UIImageButton(
                 ui_scale(pygame.Rect((75, n * 27 + 35), (34, 34))),
                 "",
                 container=self,
@@ -2133,27 +2133,27 @@ class SelectFocusClans(UIWindow):
     def process_event(self, event):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
             if event.ui_element == self.back_button:
-                game.clan.clans_in_focus = []
-                game.all_screens["warrior den screen"].exit_screen()
-                game.all_screens["warrior den screen"].screen_switches()
+                game.warren.clans_in_focus = []
+                game.all_screens["rabbit den screen"].exit_screen()
+                game.all_screens["rabbit den screen"].screen_switches()
                 self.kill()
             if event.ui_element == self.save_button:
-                game.all_screens["warrior den screen"].save_focus()
-                game.all_screens["warrior den screen"].exit_screen()
-                game.all_screens["warrior den screen"].screen_switches()
+                game.all_screens["rabbit den screen"].save_focus()
+                game.all_screens["rabbit den screen"].exit_screen()
+                game.all_screens["rabbit den screen"].screen_switches()
                 self.kill()
             if event.ui_element in self.checkboxes.values():
                 for clan_name, value in self.checkboxes.items():
                     if value == event.ui_element:
                         if value.object_ids[1] == "@unchecked_checkbox":
-                            game.clan.clans_in_focus.append(clan_name)
+                            game.warren.clans_in_focus.append(clan_name)
                         if value.object_ids[1] == "@checked_checkbox":
-                            game.clan.clans_in_focus.remove(clan_name)
+                            game.warren.clans_in_focus.remove(clan_name)
                         self.refresh_checkboxes()
-                if len(game.clan.clans_in_focus) < 1 and self.save_button.is_enabled:
+                if len(game.warren.clans_in_focus) < 1 and self.save_button.is_enabled:
                     self.save_button.disable()
                 if (
-                    len(game.clan.clans_in_focus) >= 1
+                    len(game.warren.clans_in_focus) >= 1
                     and not self.save_button.is_enabled
                 ):
                     self.save_button.enable()

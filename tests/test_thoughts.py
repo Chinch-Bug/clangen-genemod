@@ -4,17 +4,17 @@ import unittest
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
 
-from scripts.cat.cats import Cat
-from scripts.cat.thoughts import Thoughts
+from scripts.rabbit.rabbits import Rabbit
+from scripts.rabbit.thoughts import Thoughts
 
 
 class TestNotWorkingThoughts(unittest.TestCase):
     def setUp(self):
-        self.main = Cat(status="warrior")
-        self.other = Cat(status="warrior")
+        self.main = Rabbit(status="rabbit")
+        self.other = Rabbit(status="rabbit")
         self.biome = "Forest"
         self.season = "Newleaf"
-        self.camp = "camp2"
+        self.burrow = "camp2"
 
         self.thoughts = [
             {"id": "test_not_working_true", "thoughts": [], "not_working": True},
@@ -34,7 +34,7 @@ class TestNotWorkingThoughts(unittest.TestCase):
                 "expanded",
                 self.biome,
                 self.season,
-                self.camp,
+                self.burrow,
             )
         ]
 
@@ -90,18 +90,18 @@ class TestNotWorkingThoughts(unittest.TestCase):
 class TestsGetStatusThought(unittest.TestCase):
     def test_medicine_thought(self):
         # given
-        medicine = Cat()
-        warrior = Cat()
-        medicine.status = "medicine cat"
-        warrior.status = "warrior"
-        medicine.trait = "bold"
+        healer = Rabbit()
+        rabbit = Rabbit()
+        healer.status = "healer"
+        rabbit.status = "rabbit"
+        healer.trait = "bold"
         biome = "Forest"
         season = "Newleaf"
-        camp = "camp2"
+        burrow = "camp2"
 
         # load thoughts
         thoughts = Thoughts.load_thoughts(
-            medicine, warrior, "expanded", biome, season, camp
+            healer, rabbit, "expanded", biome, season, burrow
         )
 
         # when
@@ -109,43 +109,43 @@ class TestsGetStatusThought(unittest.TestCase):
 
     def test_exiled_thoughts(self):
         # given
-        cat = Cat(status="exiled", moons=40)
-        cat.exiled = True
-        cat.outside = True
+        rabbit = Rabbit(status="exiled", moons=40)
+        rabbit.exiled = True
+        rabbit.outside = True
         biome = "Forest"
         season = "Newleaf"
-        camp = "camp2"
+        burrow = "camp2"
 
         # load thoughts
-        thoughts = Thoughts.load_thoughts(cat, None, "expanded", biome, season, camp)
+        thoughts = Thoughts.load_thoughts(rabbit, None, "expanded", biome, season, burrow)
 
     def test_lost_thoughts(self):
         # given
-        cat = Cat(status="warrior", moons=40)
-        cat.outside = True
+        rabbit = Rabbit(status="rabbit", moons=40)
+        rabbit.outside = True
         biome = "Forest"
         season = "Newleaf"
-        camp = "camp2"
+        burrow = "camp2"
 
         # load thoughts
-        thoughts = Thoughts.load_thoughts(cat, None, "expanded", biome, season, camp)
+        thoughts = Thoughts.load_thoughts(rabbit, None, "expanded", biome, season, burrow)
 
 
 class TestFamilyThoughts(unittest.TestCase):
     def test_family_thought_young_children(self):
         # given
-        parent = Cat(moons=40)
-        kit = Cat(parent1=parent.ID, moons=4)
+        parent = Rabbit(moons=40)
+        kit = Rabbit(parent1=parent.ID, moons=4)
         biome = "Forest"
         season = "Newleaf"
-        camp = "camp2"
+        burrow = "camp2"
 
         # when
         function_thoughts1 = Thoughts.load_thoughts(
-            parent, kit, "expanded", biome, season, camp
+            parent, kit, "expanded", biome, season, burrow
         )
         function_thoughts2 = Thoughts.load_thoughts(
-            kit, parent, "expanded", biome, season, camp
+            kit, parent, "expanded", biome, season, burrow
         )
 
         # then
@@ -157,8 +157,8 @@ class TestFamilyThoughts(unittest.TestCase):
 
     def test_family_thought_unrelated(self):
         # given
-        cat1 = Cat(moons=40)
-        cat2 = Cat(moons=40)
+        cat1 = Rabbit(moons=40)
+        cat2 = Rabbit(moons=40)
 
         # when
 

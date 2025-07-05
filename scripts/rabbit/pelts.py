@@ -5,7 +5,7 @@ from re import sub
 import i18n
 
 import scripts.game_structure.screen_settings
-from scripts.cat.sprites import sprites
+from scripts.rabbit.sprites import sprites
 from scripts.game_structure.game_essentials import game
 from scripts.game_structure.localization import get_lang_config
 from scripts.utility import adjust_list_text
@@ -205,7 +205,7 @@ class Pelt:
 
     # bite scars by @wood pank on discord
 
-    # scars from other cats, other animals
+    # scars from other rabbits, other animals
     scars1 = [
         "ONE",
         "TWO",
@@ -693,7 +693,7 @@ class Pelt:
         "RED",
     ]
 
-    """Holds all appearance information for a cat. """
+    """Holds all appearance information for a rabbit. """
 
     def __init__(
         self,
@@ -743,8 +743,8 @@ class Pelt:
         self.tint = tint
         self.white_patches_tint = white_patches_tint
         self.screen_scale = scripts.game_structure.screen_settings.screen_scale
-        self.cat_sprites = {
-            "kitten": kitten_sprite if kitten_sprite is not None else 0,
+        self.rabbit_sprites = {
+            "kit": kitten_sprite if kitten_sprite is not None else 0,
             "adolescent": adol_sprite if adol_sprite is not None else 0,
             "young adult": adult_sprite if adult_sprite is not None else 0,
             "adult": adult_sprite if adult_sprite is not None else 0,
@@ -795,7 +795,7 @@ class Pelt:
 
     def check_and_convert(self, convert_dict):
         """Checks for old-type properties for the appearance-related properties
-        that are stored in Pelt, and converts them. To be run when loading a cat in."""
+        that are stored in Pelt, and converts them. To be run when loading a rabbit in."""
 
         # First, convert from some old names that may be in white_patches.
         if self.white_patches == "POINTMARK":
@@ -843,25 +843,25 @@ class Pelt:
             self.eye_colour = "BLUE"
 
         if self.length == "long":
-            if self.cat_sprites["adult"] not in (9, 10, 11):
-                if self.cat_sprites["adult"] == 0:
-                    self.cat_sprites["adult"] = 9
-                elif self.cat_sprites["adult"] == 1:
-                    self.cat_sprites["adult"] = 10
-                elif self.cat_sprites["adult"] == 2:
-                    self.cat_sprites["adult"] = 11
-                self.cat_sprites["young adult"] = self.cat_sprites["adult"]
-                self.cat_sprites["senior adult"] = self.cat_sprites["adult"]
-                self.cat_sprites["para_adult"] = 16
+            if self.rabbit_sprites["adult"] not in (9, 10, 11):
+                if self.rabbit_sprites["adult"] == 0:
+                    self.rabbit_sprites["adult"] = 9
+                elif self.rabbit_sprites["adult"] == 1:
+                    self.rabbit_sprites["adult"] = 10
+                elif self.rabbit_sprites["adult"] == 2:
+                    self.rabbit_sprites["adult"] = 11
+                self.rabbit_sprites["young adult"] = self.rabbit_sprites["adult"]
+                self.rabbit_sprites["senior adult"] = self.rabbit_sprites["adult"]
+                self.rabbit_sprites["para_adult"] = 16
         else:
-            self.cat_sprites["para_adult"] = 15
-        if self.cat_sprites["senior"] not in (12, 13, 14):
-            if self.cat_sprites["senior"] == 3:
-                self.cat_sprites["senior"] = 12
-            elif self.cat_sprites["senior"] == 4:
-                self.cat_sprites["senior"] = 13
-            elif self.cat_sprites["senior"] == 5:
-                self.cat_sprites["senior"] = 14
+            self.rabbit_sprites["para_adult"] = 15
+        if self.rabbit_sprites["senior"] not in (12, 13, 14):
+            if self.rabbit_sprites["senior"] == 3:
+                self.rabbit_sprites["senior"] = 12
+            elif self.rabbit_sprites["senior"] == 4:
+                self.rabbit_sprites["senior"] = 13
+            elif self.rabbit_sprites["senior"] == 5:
+                self.rabbit_sprites["senior"] = 14
         if self.pattern in convert_dict["old_tortie_patches"]:
             old_pattern = self.pattern
             self.pattern = convert_dict["old_tortie_patches"][old_pattern][1]
@@ -888,11 +888,11 @@ class Pelt:
             self.accessory = [self.accessory]
 
     def init_eyes(self, parents):
-        """Sets eye color for this cat's pelt. Takes parents' eye colors into account.
+        """Sets eye color for this rabbit's pelt. Takes parents' eye colors into account.
         Heterochromia is possible based on the white-ness of the pelt, so the pelt color and white_patches must be
         set before this function is called.
 
-        :param parents: List[Cat] representing this cat's parents
+        :param parents: List[Rabbit] representing this rabbit's parents
 
         :return: None
         """
@@ -1138,7 +1138,7 @@ class Pelt:
         self.colour = chosen_pelt_color
         self.length = chosen_pelt_length
         self.tortiebase = (
-            chosen_tortie_base  # This will be none if the cat isn't a tortie.
+            chosen_tortie_base  # This will be none if the rabbit isn't a tortie.
         )
         return chosen_white
 
@@ -1202,19 +1202,19 @@ class Pelt:
         self.colour = chosen_pelt_color
         self.length = chosen_pelt_length
         self.tortiebase = (
-            chosen_tortie_base  # This will be none if the cat isn't a tortie.
+            chosen_tortie_base  # This will be none if the rabbit isn't a tortie.
         )
         return chosen_white
 
     def init_pattern_color(self, parents, gender) -> bool:
         """Inits self.name, self.colour, self.length,
-        self.tortiebase and determines if the cat
+        self.tortiebase and determines if the rabbit
         will have white patche or not.
-        Return TRUE is the cat should have white patches,
+        Return TRUE is the rabbit should have white patches,
         false is not."""
 
         if parents:
-            # If the cat has parents, use inheritance to decide pelt.
+            # If the rabbit has parents, use inheritance to decide pelt.
             chosen_white = self.pattern_color_inheritance(parents, gender)
         else:
             chosen_white = self.randomize_pattern_color(gender)
@@ -1222,9 +1222,9 @@ class Pelt:
         return chosen_white
 
     def init_sprite(self):
-        self.cat_sprites = {
+        self.rabbit_sprites = {
             "newborn": 20,
-            "kitten": random.randint(0, 2),
+            "kit": random.randint(0, 2),
             "adolescent": random.randint(3, 5),
             "senior": random.randint(12, 14),
             "sick_young": 19,
@@ -1235,19 +1235,19 @@ class Pelt:
         self.skin = choice(Pelt.skin_sprites)
 
         if self.length != "long":
-            self.cat_sprites["adult"] = random.randint(6, 8)
-            self.cat_sprites["para_adult"] = 16
+            self.rabbit_sprites["adult"] = random.randint(6, 8)
+            self.rabbit_sprites["para_adult"] = 16
         else:
-            self.cat_sprites["adult"] = random.randint(9, 11)
-            self.cat_sprites["para_adult"] = 15
-        self.cat_sprites["young adult"] = self.cat_sprites["adult"]
-        self.cat_sprites["senior adult"] = self.cat_sprites["adult"]
+            self.rabbit_sprites["adult"] = random.randint(9, 11)
+            self.rabbit_sprites["para_adult"] = 15
+        self.rabbit_sprites["young adult"] = self.rabbit_sprites["adult"]
+        self.rabbit_sprites["senior adult"] = self.rabbit_sprites["adult"]
 
     def init_scars(self, age):
         if age == "newborn":
             return
 
-        if age in ("kitten", "adolescent"):
+        if age in ("kit", "adolescent"):
             scar_choice = random.randint(0, 50)  # 2%
         elif age in ("young adult", "adult"):
             scar_choice = random.randint(0, 20)  # 5%
@@ -1266,7 +1266,7 @@ class Pelt:
             return
 
         acc_display_choice = random.randint(0, 80)
-        if age in ("kitten", "adolescent"):
+        if age in ("kit", "adolescent"):
             acc_display_choice = random.randint(0, 180)
         elif age in ("young adult", "adult"):
             acc_display_choice = random.randint(0, 100)
@@ -1475,7 +1475,7 @@ class Pelt:
         if self.name != "Tortie" and not random.getrandbits(
             game.config["cat_generation"]["random_point_chance"]
         ):
-            # Cat has colorpoint!
+            # Rabbit has colorpoint!
             self.points = choice(Pelt.point_markings)
         else:
             self.points = None
@@ -1508,7 +1508,7 @@ class Pelt:
             self.points = None
 
     def init_white_patches(self, pelt_white, parents: tuple):
-        # Vit can roll for anyone, not just cats who rolled to have white in their pelt.
+        # Vit can roll for anyone, not just rabbits who rolled to have white in their pelt.
         par_vit = []
         for p in parents:
             if p:
@@ -1519,7 +1519,7 @@ class Pelt:
         if not random.getrandbits(vit_chance):
             self.vitiligo = choice(Pelt.vit)
 
-        # If the cat was rolled previously to have white patches, then determine the patch they will have
+        # If the rabbit was rolled previously to have white patches, then determine the patch they will have
         # these functions also handle points.
         if pelt_white:
             if parents:
@@ -1579,29 +1579,29 @@ class Pelt:
         return (
             adjust_list_text(
                 [
-                    i18n.t(f"cat.eyes.{self.eye_colour}"),
-                    i18n.t(f"cat.eyes.{self.eye_colour2}"),
+                    i18n.t(f"rabbit.eyes.{self.eye_colour}"),
+                    i18n.t(f"rabbit.eyes.{self.eye_colour2}"),
                 ]
             )
             if self.eye_colour2
-            else i18n.t(f"cat.eyes.{self.eye_colour}")
+            else i18n.t(f"rabbit.eyes.{self.eye_colour}")
         )
 
     @staticmethod
-    def describe_appearance(cat, short=False):
-        """Return a description of a cat
+    def describe_appearance(rabbit, short=False):
+        """Return a description of a rabbit
 
-        :param Cat cat: The cat to describe
+        :param Rabbit rabbit: The rabbit to describe
         :param bool short: Whether to return a heavily-truncated description, default False
-        :return str: The cat's description
+        :return str: The rabbit's description
         """
 
         config = get_lang_config()["description"]
         ruleset = config["ruleset"]
         output = []
-        pelt_pattern, pelt_color = _describe_pattern(cat, short)
+        pelt_pattern, pelt_color = _describe_pattern(rabbit, short)
         for rule, args in ruleset.items():
-            temp = unpack_appearance_ruleset(cat, rule, short, pelt_pattern, pelt_color)
+            temp = unpack_appearance_ruleset(rabbit, rule, short, pelt_pattern, pelt_color)
 
             if args == "" or temp == "":
                 output.append(temp)
@@ -1610,7 +1610,7 @@ class Pelt:
             # handle args
             argpool = {
                 arg: unpack_appearance_ruleset(
-                    cat, arg, short, pelt_pattern, pelt_color
+                    rabbit, arg, short, pelt_pattern, pelt_color
                 )
                 for arg in args
             }
@@ -1647,31 +1647,31 @@ class Pelt:
         return Pelt.sprites_names[self.name]
 
 
-def _describe_pattern(cat, short=False):
-    color_name = [f"cat.pelts.{str(cat.pelt.colour)}"]
-    pelt_name = f"cat.pelts.{cat.pelt.name}{'' if short else '_long'}"
-    if cat.pelt.name in Pelt.torties:
-        pelt_name, color_name = _describe_torties(cat, color_name, short)
+def _describe_pattern(rabbit, short=False):
+    color_name = [f"rabbit.pelts.{str(rabbit.pelt.colour)}"]
+    pelt_name = f"rabbit.pelts.{rabbit.pelt.name}{'' if short else '_long'}"
+    if rabbit.pelt.name in Pelt.torties:
+        pelt_name, color_name = _describe_torties(rabbit, color_name, short)
 
     color_name = [i18n.t(piece, count=1) for piece in color_name]
     color_name = "".join(color_name)
 
-    if cat.pelt.white_patches:
-        if cat.pelt.white_patches == "FULLWHITE":
-            # If the cat is fullwhite, discard all other information. They are just white
-            color_name = i18n.t("cat.pelts.FULLWHITE")
+    if rabbit.pelt.white_patches:
+        if rabbit.pelt.white_patches == "FULLWHITE":
+            # If the rabbit is fullwhite, discard all other information. They are just white
+            color_name = i18n.t("rabbit.pelts.FULLWHITE")
             pelt_name = ""
-        elif cat.pelt.name != "Calico":
-            white = i18n.t("cat.pelts.FULLWHITE")
-            if i18n.t("cat.pelts.WHITE", count=1) in color_name:
+        elif rabbit.pelt.name != "Calico":
+            white = i18n.t("rabbit.pelts.FULLWHITE")
+            if i18n.t("rabbit.pelts.WHITE", count=1) in color_name:
                 color_name = white
-            elif cat.pelt.white_patches in Pelt.mostly_white:
+            elif rabbit.pelt.white_patches in Pelt.mostly_white:
                 color_name = adjust_list_text([white, color_name])
             else:
                 color_name = adjust_list_text([color_name, white])
 
-    if cat.pelt.points:
-        color_name = i18n.t("cat.pelts.point", color=color_name)
+    if rabbit.pelt.points:
+        color_name = i18n.t("rabbit.pelts.point", color=color_name)
         if "ginger point" in color_name:
             color_name.replace("ginger point", "flame point")
             # look, I'm leaving this as a quirk of the english language, if it's a problem elsewhere lmk
@@ -1679,40 +1679,40 @@ def _describe_pattern(cat, short=False):
     return pelt_name, color_name
 
 
-def _describe_torties(cat, color_name, short=False) -> [str, str]:
+def _describe_torties(rabbit, color_name, short=False) -> [str, str]:
     # Calicos and Torties need their own desciptions
     if short:
         # If using short, don't describe the colors of calicos and torties.
         # Just call them calico, tortie, or mottled
         if (
-            cat.pelt.colour
+            rabbit.pelt.colour
             in Pelt.black_colours + Pelt.brown_colours + Pelt.white_colours
-            and cat.pelt.tortiecolour
+            and rabbit.pelt.tortiecolour
             in Pelt.black_colours + Pelt.brown_colours + Pelt.white_colours
         ):
-            return "cat.pelts.mottled", ""
+            return "rabbit.pelts.mottled", ""
         else:
-            return f"cat.pelts.{cat.pelt.name}", ""
+            return f"rabbit.pelts.{rabbit.pelt.name}", ""
 
-    base = cat.pelt.tortiebase.lower()
+    base = rabbit.pelt.tortiebase.lower()
 
-    patches_color = f"cat.pelts.{cat.pelt.tortiecolour}"
+    patches_color = f"rabbit.pelts.{rabbit.pelt.tortiecolour}"
     color_name.append("/")
     color_name.append(patches_color)
 
     if (
-        cat.pelt.colour in Pelt.black_colours + Pelt.brown_colours + Pelt.white_colours
-        and cat.pelt.tortiecolour
+        rabbit.pelt.colour in Pelt.black_colours + Pelt.brown_colours + Pelt.white_colours
+        and rabbit.pelt.tortiecolour
         in Pelt.black_colours + Pelt.brown_colours + Pelt.white_colours
     ):
-        return "cat.pelts.mottled_long", color_name
+        return "rabbit.pelts.mottled_long", color_name
     else:
         if base in tuple(tabby.lower() for tabby in Pelt.tabbies) + (
             "bengal",
             "rosette",
             "speckled",
         ):
-            base = f"cat.pelts.{cat.pelt.tortiebase.capitalize()}_long"  # the extra space is intentional
+            base = f"rabbit.pelts.{rabbit.pelt.tortiebase.capitalize()}_long"  # the extra space is intentional
         else:
             base = ""
         return base, color_name
@@ -1728,33 +1728,33 @@ _scar_details = [
 ]
 
 
-def unpack_appearance_ruleset(cat, rule, short, pelt, color):
+def unpack_appearance_ruleset(rabbit, rule, short, pelt, color):
     if rule == "scarred":
-        if not short and len(cat.pelt.scars) >= 3:
-            return "cat.pelts.scarred"
+        if not short and len(rabbit.pelt.scars) >= 3:
+            return "rabbit.pelts.scarred"
     elif rule == "fur_length":
-        if not short and cat.pelt.length == "long":
-            return "cat.pelts.long_furred"
+        if not short and rabbit.pelt.length == "long":
+            return "rabbit.pelts.long_furred"
     elif rule == "pattern":
         return pelt
     elif rule == "color":
         return color
-    elif rule == "cat":
-        if cat.genderalign in ("female", "trans female"):
-            return "general.she-cat"
-        elif cat.genderalign in ("male", "trans male"):
-            return "general.tom"
+    elif rule == "rabbit":
+        if rabbit.genderalign in ("female", "trans female"):
+            return "general.she-rabbit"
+        elif rabbit.genderalign in ("male", "trans male"):
+            return "general.buck"
         else:
-            return "general.cat"
+            return "general.rabbit"
     elif rule == "vitiligo":
-        if not short and cat.pelt.vitiligo:
-            return "cat.pelts.vitiligo"
+        if not short and rabbit.pelt.vitiligo:
+            return "rabbit.pelts.vitiligo"
     elif rule == "amputation":
         if not short:
             scarlist = []
-            for scar in cat.pelt.scars:
+            for scar in rabbit.pelt.scars:
                 if scar in _scar_details:
-                    scarlist.append(i18n.t(f"cat.pelts.{scar}"))
+                    scarlist.append(i18n.t(f"rabbit.pelts.{scar}"))
             return (
                 adjust_list_text(list(set(scarlist))) if len(scarlist) > 0 else ""
             )  # note: this doesn't preserve order!

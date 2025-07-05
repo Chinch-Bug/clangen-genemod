@@ -9,25 +9,25 @@
 		],
 		"status_constraint": {
 			"m_c": [
-				"leader",
-				"deputy",
-				"warrior",
-				"medicine cat",
-				"mediator"
+				"chief rabbit",
+				"captain",
+				"rabbit",
+				"healer",
+				"owsla"
 			],
 			"r_c1": [
-				"leader",
-				"deputy",
-				"warrior",
-				"medicine cat",
-				"mediator"
+				"chief rabbit",
+				"captain",
+				"rabbit",
+				"healer",
+				"owsla"
 			],
 			"r_c2": [
-				"leader",
-				"deputy",
-				"warrior",
-				"medicine cat",
-				"mediator"
+				"chief rabbit",
+				"captain",
+				"rabbit",
+				"healer",
+				"owsla"
 			]
 		},
 		"relationship_constraint": {

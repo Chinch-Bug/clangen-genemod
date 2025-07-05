@@ -42,7 +42,7 @@
             ]
         },
         {
-            "text": "How is it even possible for the bucks to fight like that without getting massive head-damage or breaking their horns? The patrol watches until one of the bucks gives up and retreats. As the patrol walks back to camp, they all playfully headbutt each other, thankfully not as hard as the two buck goats did.",
+            "text": "How is it even possible for the bucks to fight like that without getting massive head-damage or breaking their horns? The patrol watches until one of the bucks gives up and retreats. As the patrol walks back to burrow, they all playfully headbutt each other, thankfully not as hard as the two buck goats did.",
             "exp": 20,
             "weight": 15,
             "relationships": [
@@ -63,12 +63,12 @@
             "weight": 20
         },
         {
-            "text": "The patrol watches with glee, too distracted by the show to realize that the fighting bucks are getting dangerously close. It's too late to react before the two goats are upon them, pushing their fight right into the group of cats. The patrol tries to scramble back, but not everyone gets away unharmed.",
+            "text": "The patrol watches with glee, too distracted by the show to realize that the fighting bucks are getting dangerously close. It's too late to react before the two goats are upon them, pushing their fight right into the group of rabbits. The patrol tries to scramble back, but not everyone gets away unharmed.",
             "exp": 0,
             "weight": 10,
             "injury": [
                 {
-                    "cats": ["r_c"],
+                    "rabbits": ["r_c"],
                     "injuries": ["blunt_force_injury"]
                 }
             ]

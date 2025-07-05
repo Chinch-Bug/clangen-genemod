@@ -7,7 +7,7 @@ from pygame_gui.core import ObjectID
 from pygame_gui.elements import UIImage
 
 import scripts.game_structure.screen_settings
-from scripts.clan import Clan
+from scripts.warren import Warren
 from scripts.game_structure.game_essentials import (
     game,
 )
@@ -61,7 +61,7 @@ class SwitchClanScreen(Screens):
                 for page in self.clan_buttons:
                     if event.ui_element in page:
                         self.change_screen("start screen")
-                        Clan.switch_clans(
+                        Warren.switch_clans(
                             self.clan_name[self.page][page.index(event.ui_element)],
                             False,
                         )
@@ -132,8 +132,8 @@ class SwitchClanScreen(Screens):
             manager=MANAGER,
             anchors={"centerx": "centerx"},
             text_kwargs={
-                "clan": game.clan.name if game.clan else "",
-                "count": 1 if game.clan else 0,
+                "warren": game.warren.name if game.warren else "",
+                "count": 1 if game.warren else 0,
             },
         )
         self.clan_list = game.read_clans()
@@ -160,8 +160,8 @@ class SwitchClanScreen(Screens):
         self.clans_frame.disable()
 
         i = 0
-        for clan in self.clan_list[1:]:
-            self.clan_name[-1].append(clan)
+        for warren in self.clan_list[1:]:
+            self.clan_name[-1].append(warren)
             self.clan_buttons[-1].append(
                 UISurfaceImageButton(
                     pygame.Rect(
@@ -172,7 +172,7 @@ class SwitchClanScreen(Screens):
                         ),
                         (ui_scale_value(200), item_height),
                     ),
-                    clan + "Clan",
+                    warren + "Warren",
                     get_button_dict(
                         ButtonStyles.DROPDOWN,
                         (

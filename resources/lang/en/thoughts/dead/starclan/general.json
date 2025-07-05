@@ -11,36 +11,36 @@
             "Is feeling sassy today",
             "Is thinking about a message to send",
             "Wishes {PRONOUN/m_c/subject} {VERB/m_c/were/was} still alive",
-            "Is admiring StarClan territory",
+            "Is admiring Inle territory",
             "Is thinking about {PRONOUN/m_c/poss} life",
             "Is missing a loved one",
-            "Is hoping to meet with a medicine cat soon",
+            "Is hoping to meet with a healer soon",
             "Is admiring the stars in {PRONOUN/m_c/poss} fur",
-            "Is watching over a Clan ceremony",
-            "Is hoping to give a life to a new leader",
+            "Is watching over a Warren ceremony",
+            "Is hoping to give a life to a new chief rabbit",
             "Is hoping {PRONOUN/m_c/subject} will be remembered",
-            "Is watching over the Clan",
-            "Is worried about the Clan",
+            "Is watching over the Warren",
+            "Is worried about the Warren",
             "Is relaxing in the sun",
             "Is wondering about Twolegs",
             "Is thinking about {PRONOUN/m_c/poss} ancient ancestors",
-            "Is worried about the cats in the Dark Forest",
-            "Is thinking of advice to give to a medicine cat",
-            "Is exploring StarClan",
-            "Is sad seeing how the Clan has changed",
+            "Is worried about the rabbits in the The Lightless",
+            "Is thinking of advice to give to a healer",
+            "Is exploring Inle",
+            "Is sad seeing how the Warren has changed",
             "Wishes {PRONOUN/m_c/subject} could speak to old friends",
             "Is sneezing on stardust",
-            "Is comforting another StarClan cat",
-            "Is exploring StarClan's hunting grounds",
-            "Is hunting mice in StarClan",
-            "Is chattering at the birds in StarClan",
-            "Is chasing rabbits in StarClan",
-            "Can feel some cat forgetting {PRONOUN/m_c/object}...",
+            "Is comforting another Inle rabbit",
+            "Is exploring Inle's hunting grounds",
+            "Is hunting mice in Inle",
+            "Is chattering at the birds in Inle",
+            "Is chasing rabbits in Inle",
+            "Can feel some rabbit forgetting {PRONOUN/m_c/object}...",
             "Is judging a codebreaker"
         ],
         "random_living_status":[
             "living",
-            "starclan",
+            "inle",
             "darkforest",
             "unknownresidence"
         ]
@@ -58,20 +58,20 @@
             "Is having a serious fight with r_c",
             "Wants to spend more time with r_c",
             "Is thinking about future prophecies with r_c",
-            "Is watching over the Clan with r_c",
-            "Is listening to long-forgotten stories about the Clan",
+            "Is watching over the Warren with r_c",
+            "Is listening to long-forgotten stories about the Warren",
             "Is gossiping with r_c"
         ],
         "random_living_status": [
-            "starclan"
+            "inle"
         ]
     },
     {
         "id": "founder_dead_to_dead_other",
         "thoughts": [
             "Is speaking with r_c about how c_n came to be",
-            "Is telling other StarClan cats stories of c_n's beginning",
-            "Is telling other StarClan cats about the ambitions, hopes, and dreams {PRONOUN/m_c/subject} had for c_n"
+            "Is telling other Inle rabbits stories of c_n's beginning",
+            "Is telling other Inle rabbits about the ambitions, hopes, and dreams {PRONOUN/m_c/subject} had for c_n"
         ],
         "main_age_constraint": [
             "adolescent",
@@ -82,14 +82,14 @@
         ],
         "main_backstory_constraint": ["clan_founder"],
         "random_living_status": [
-            "starclan"
+            "inle"
         ]
     },
     {
         "id": "founder_dead_to_dead_other_founder",
         "thoughts": [
             "Is reminiscing with r_c about how c_n came to be",
-            "Is speaking with r_c about how the Clan they founded has changed"
+            "Is speaking with r_c about how the Warren they founded has changed"
         ],
         "main_age_constraint": [
             "adolescent",
@@ -101,7 +101,7 @@
         "main_backstory_constraint": ["clan_founder"],
         "random_backstory_constraint": ["clan_founder"],
         "random_living_status": [
-            "starclan"
+            "inle"
         ]
     },
     {
@@ -118,7 +118,7 @@
             "Has seen r_c's future demise",
             "Is looking to visit r_c in a dream soon",
             "Accidentally found {PRONOUN/m_c/self} in r_c's dreams the other night",
-            "Knows what r_c's secret is and wants to tell some cat",
+            "Knows what r_c's secret is and wants to tell some rabbit",
             "Is judging r_c"
         ],
         "random_living_status": [
@@ -129,7 +129,7 @@
         "id": "general_dead_to_alive_df",
         "thoughts": [
             "Has a bad feeling about r_c...",
-            "Is wondering if r_c will go to StarClan or the Dark Forest...",
+            "Is wondering if r_c will go to Inle or the The Lightless...",
             "Is disappointed in r_c",
             "Is judging r_c"
         ],
@@ -150,7 +150,7 @@
     {
         "id": "founder_dead_to_alive_kit",
         "thoughts": [
-            "Is watching over the newest additions to {PRONOUN/m_c/poss} Clan"
+            "Is watching over the newest additions to {PRONOUN/m_c/poss} Warren"
         ],
         "main_age_constraint": [
             "adolescent",
@@ -161,7 +161,7 @@
         ],
         "main_backstory_constraint": ["clan_founder"],
         "random_status_constraint": [
-            "kitten"
+            "kit"
         ],
         "random_living_status": [
             "living"
@@ -170,35 +170,35 @@
     {
         "id": "gen_dead_med_cat",
         "thoughts": [
-            "Regrets leaving the Clan one medicine cat short",
-            "Is worried about the Clan's ability to survive the latest illness",
-            "Looks after the newborns in StarClan",
+            "Regrets leaving the Warren one healer short",
+            "Is worried about the Warren's ability to survive the latest illness",
+            "Looks after the newborns in Inle",
             "Is watching c_n, ready to send an omen"
         ],
         "main_status_constraint": [
-            "medicine cat",
-            "medicine cat apprentice"
+            "healer",
+            "healer rusasi"
         ]
     },
     {
         "id": "dead_med_cat_to_alive_med_cat",
         "thoughts": [
             "Has an important message for r_c",
-            "Is distraught that {PRONOUN/m_c/subject} can't help r_c take care of the Clan",
+            "Is distraught that {PRONOUN/m_c/subject} can't help r_c take care of the Warren",
             "Sends an omen of things to come to r_c",
             "Is excited that {PRONOUN/m_c/subject} {VERB/m_c/are/is} able to help c_n by sharing a new prophecy",
             "Whispers useful suggestions in r_c's ears",
             "Sends a vision of an undiscovered herb patch to r_c",
             "Lets {PRONOUN/m_c/poss} scent linger near r_c, if only for a moment",
-            "Led r_c to a hidden patch of herbs the Clan is running low on"
+            "Led r_c to a hidden patch of herbs the Warren is running low on"
         ],
         "main_status_constraint": [
-            "medicine cat",
-            "medicine cat apprentice"
+            "healer",
+            "healer rusasi"
         ],
         "random_status_constraint": [
-            "medicine cat",
-            "medicine cat apprentice"
+            "healer",
+            "healer rusasi"
         ],
         "random_living_status": [
             "living"
@@ -210,8 +210,8 @@
             "Sends an omen of things to come to r_c"
         ],
         "main_status_constraint": [
-            "medicine cat",
-            "medicine cat apprentice"
+            "healer",
+            "healer rusasi"
         ],
         "random_living_status": [
             "living"
@@ -221,14 +221,14 @@
         "id": "dead_med_cat_to_dead_other",
         "thoughts": [
             "Shares {PRONOUN/m_c/poss} knowledge with r_c",
-            "Is discussing Clan matters with r_c"
+            "Is discussing Warren matters with r_c"
         ],
         "main_status_constraint": [
-            "medicine cat",
-            "medicine cat apprentice"
+            "healer",
+            "healer rusasi"
         ],
         "random_living_status": [
-            "starclan"
+            "inle"
         ]
     },
     {
@@ -238,11 +238,11 @@
             "Hums calming melodies to soothe r_c"
         ],
         "main_status_constraint": [
-            "medicine cat",
-            "medicine cat apprentice"
+            "healer",
+            "healer rusasi"
         ],
         "random_living_status": [
-            "starclan"
+            "inle"
         ],
         "random_age_constraint": [
             "newborn"
@@ -252,12 +252,12 @@
         "id": "dead_parent_to_alive_child1",
         "thoughts": [
             "Can't stop fretting over r_c, even though there's nothing {PRONOUN/m_c/subject} can do",
-            "Is talking the ears off any cat willing to listen to {PRONOUN/m_c/object} go on and on and on about r_c",
+            "Is talking the ears off any rabbit willing to listen to {PRONOUN/m_c/object} go on and on and on about r_c",
             "Is feeling guilty watching r_c miss {PRONOUN/m_c/object}",
             "Deeply regrets leaving r_c without {PRONOUN/m_c/object}"
         ],
         "random_living_status": [
-            "starclan",
+            "inle",
             "darkforest",
             "unknownresidence"
         ],
@@ -275,7 +275,7 @@
             "Visited r_c's dream to tell {PRONOUN/r_c/object} just how immensely proud {PRONOUN/m_c/subject} {VERB/m_c/are/is} of {PRONOUN/r_c/object}"
         ],
         "random_living_status": [
-            "starclan",
+            "inle",
             "darkforest",
             "unknownresidence"
         ],
@@ -293,8 +293,8 @@
     {
         "id": "dead_outsider_parent_to_alive_child",
         "thoughts": [
-            "Regrets not joining a Clan if it meant being able to raise r_c",
-            "Still doesn't trust Clan cats, but is happy r_c is safe",
+            "Regrets not joining a Warren if it meant being able to raise r_c",
+            "Still doesn't trust Warren rabbits, but is happy r_c is safe",
             "Is just glad r_c was saved from meeting the same fate {PRONOUN/m_c/subject} did",
             "Is so grateful to c_n for saving r_c"
         ],
@@ -324,7 +324,7 @@
         ],
         "main_age_constraint": [
             "newborn",
-            "kitten"
+            "kit"
         ],
         "relationship_constraint": [
             "siblings"
@@ -334,7 +334,7 @@
         ],
         "random_age_constraint": [
             "newborn",
-            "kitten"
+            "kit"
         ]
     },
     {
@@ -345,7 +345,7 @@
         ],
         "main_age_constraint": [
             "newborn",
-            "kitten"
+            "kit"
         ],
         "main_skill_constraint": [
             "DREAM,1",
@@ -359,21 +359,21 @@
         ],
         "random_age_constraint": [
             "newborn",
-            "kitten"
+            "kit"
         ]
     },
     {
         "id": "gen_dead_app",
         "thoughts": [
-            "Wants to use {PRONOUN/m_c/poss} training to help StarClan",
+            "Wants to use {PRONOUN/m_c/poss} training to help Inle",
             "Is sad {PRONOUN/m_c/subject} couldn't complete {PRONOUN/m_c/poss} training",
             "Tries to continue {PRONOUN/m_c/poss} training on {PRONOUN/m_c/poss} own",
-            "Is listening intently to other StarClan cats' stories"
+            "Is listening intently to other Inle rabbits' stories"
         ],
         "main_status_constraint": [
-            "apprentice",
-            "medicine cat apprentice",
-            "mediator apprentice"
+            "rusasi",
+            "healer rusasi",
+            "owsla rusasi"
         ]
     },
     {
@@ -384,12 +384,12 @@
             "Wants to show r_c a new skill {PRONOUN/m_c/subject} learned"
         ],
         "main_status_constraint": [
-            "apprentice",
-            "medicine cat apprentice",
-            "mediator apprentice"
+            "rusasi",
+            "healer rusasi",
+            "owsla rusasi"
         ],
         "random_living_status": [
-            "starclan"
+            "inle"
         ]
     },
     {
@@ -399,9 +399,9 @@
             "Wishes {PRONOUN/m_c/subject} could train with r_c"
         ],
         "main_status_constraint": [
-            "apprentice",
-            "medicine cat apprentice",
-            "mediator apprentice"
+            "rusasi",
+            "healer rusasi",
+            "owsla rusasi"
         ],
         "relationship_constraint": [
             "siblings"
@@ -410,9 +410,9 @@
             "living"
         ],
         "random_status_constraint": [
-            "apprentice",
-            "medicine cat apprentice",
-            "mediator apprentice"
+            "rusasi",
+            "healer rusasi",
+            "owsla rusasi"
         ]
     },
     {
@@ -421,9 +421,9 @@
             "Hopes {PRONOUN/m_c/subject} made r_c proud"
         ],
         "main_status_constraint": [
-            "apprentice",
-            "medicine cat apprentice",
-            "mediator apprentice"
+            "rusasi",
+            "healer rusasi",
+            "owsla rusasi"
         ],
         "relationship_constraint": [
             "app/mentor"
@@ -443,9 +443,9 @@
             "mentor/app"
         ],
         "random_status_constraint": [
-            "apprentice",
-            "mediator apprentice",
-            "medicine cat apprentice"
+            "rusasi",
+            "owsla rusasi",
+            "healer rusasi"
         ],
         "random_living_status": [
             "living"
@@ -488,20 +488,20 @@
     {
         "id": "gen_dead_mediator",
         "thoughts": [
-            "Is trying to mediate StarClan cats' squabbles",
-            "Wishes {PRONOUN/m_c/subject} could help resolve the Clan's issues",
+            "Is trying to mediate Inle rabbits' squabbles",
+            "Wishes {PRONOUN/m_c/subject} could help resolve the Warren's issues",
             "Is watching the Clans for any signs of discord"
         ],
         "main_status_constraint": [
-            "mediator",
-            "mediator apprentice"
+            "owsla",
+            "owsla rusasi"
         ]
     },
     {
         "id": "dead_refugee_thoughts",
         "thoughts": [
-            "Is happy to hear {PRONOUN/m_c/poss} old leader is in the Dark Forest",
-            "Is so happy to reconnect with the cats from {PRONOUN/m_c/poss} old Clan"
+            "Is happy to hear {PRONOUN/m_c/poss} old chief rabbit is in the The Lightless",
+            "Is so happy to reconnect with the rabbits from {PRONOUN/m_c/poss} old Warren"
         ],
         "main_backstory_constraint": [
             "refugee1"

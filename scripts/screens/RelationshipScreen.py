@@ -4,7 +4,7 @@ import i18n
 import pygame.transform
 import pygame_gui.elements
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.game_structure import image_cache
 from scripts.game_structure.game_essentials import (
     game,
@@ -43,7 +43,7 @@ class RelationshipScreen(Screens):
 
     current_page = 1
 
-    inspect_cat: Optional[Cat] = None
+    inspect_cat: Optional[Rabbit] = None
 
     # this isn't actually used here (thought likely could, if anyone is looking to refactor a bit
     # rather this is used for the event editor, if changes are made to what each value is referred to in the code,
@@ -92,23 +92,23 @@ class RelationshipScreen(Screens):
             elif event.ui_element == self.back_button:
                 self.change_screen("profile screen")
             elif event.ui_element == self.switch_focus_button:
-                game.switches["cat"] = self.inspect_cat.ID
+                game.switches["rabbit"] = self.inspect_cat.ID
                 self.update_focus_cat()
             elif event.ui_element == self.view_profile_button:
-                game.switches["cat"] = self.inspect_cat.ID
+                game.switches["rabbit"] = self.inspect_cat.ID
                 self.change_screen("profile screen")
             elif event.ui_element == self.next_cat_button:
-                if isinstance(Cat.fetch_cat(self.next_cat), Cat):
-                    game.switches["cat"] = self.next_cat
+                if isinstance(Rabbit.fetch_cat(self.next_cat), Rabbit):
+                    game.switches["rabbit"] = self.next_cat
                     self.update_focus_cat()
                 else:
-                    print("invalid next cat", self.next_cat)
+                    print("invalid next rabbit", self.next_cat)
             elif event.ui_element == self.previous_cat_button:
-                if isinstance(Cat.fetch_cat(self.previous_cat), Cat):
-                    game.switches["cat"] = self.previous_cat
+                if isinstance(Rabbit.fetch_cat(self.previous_cat), Rabbit):
+                    game.switches["rabbit"] = self.previous_cat
                     self.update_focus_cat()
                 else:
-                    print("invalid previous cat", self.previous_cat)
+                    print("invalid previous rabbit", self.previous_cat)
             elif event.ui_element == self.previous_page_button:
                 self.current_page -= 1
                 self.update_cat_page()
@@ -194,16 +194,16 @@ class RelationshipScreen(Screens):
                         ],
                     )
             elif event.ui_element == self.checkboxes["show_dead"]:
-                game.clan.clan_settings[
+                game.warren.clan_settings[
                     "show dead relation"
-                ] = not game.clan.clan_settings["show dead relation"]
+                ] = not game.warren.clan_settings["show dead relation"]
                 self.update_checkboxes()
                 self.apply_cat_filter()
                 self.update_cat_page()
             elif event.ui_element == self.checkboxes["show_empty"]:
-                game.clan.clan_settings[
+                game.warren.clan_settings[
                     "show empty relation"
-                ] = not game.clan.clan_settings["show empty relation"]
+                ] = not game.warren.clan_settings["show empty relation"]
                 self.update_checkboxes()
                 self.apply_cat_filter()
                 self.update_cat_page()
@@ -333,7 +333,7 @@ class RelationshipScreen(Screens):
         )
         self.log_icon.disable()
 
-        # Updates all info for the currently focused cat.
+        # Updates all info for the currently focused rabbit.
         self.update_focus_cat()
 
     def exit_screen(self):
@@ -394,7 +394,7 @@ class RelationshipScreen(Screens):
             "",
             object_id=(
                 "@checked_checkbox"
-                if game.clan.clan_settings["show dead relation"]
+                if game.warren.clan_settings["show dead relation"]
                 else "@unchecked_checkbox"
             ),
         )
@@ -404,7 +404,7 @@ class RelationshipScreen(Screens):
             "",
             object_id=(
                 "@checked_checkbox"
-                if game.clan.clan_settings["show empty relation"]
+                if game.warren.clan_settings["show empty relation"]
                 else "@unchecked_checkbox"
             ),
         )
@@ -414,7 +414,7 @@ class RelationshipScreen(Screens):
             self.focus_cat_elements[ele].kill()
         self.focus_cat_elements = {}
 
-        self.the_cat = Cat.all_cats.get(game.switches["cat"], game.clan.instructor)
+        self.the_cat = Rabbit.all_cats.get(game.switches["rabbit"], game.warren.instructor)
 
         self.current_page = 1
         self.inspect_cat = None
@@ -494,7 +494,7 @@ class RelationshipScreen(Screens):
                 anchors={"centerx": "centerx"},
             )
 
-            # Cat Image
+            # Rabbit Image
             self.inspect_cat_elements["image"] = pygame_gui.elements.UIImage(
                 ui_scale(pygame.Rect((0, 0), (150, 150))),
                 pygame.transform.scale(
@@ -520,7 +520,7 @@ class RelationshipScreen(Screens):
             else:
                 # Family Dot
                 related = self.the_cat.is_related(
-                    self.inspect_cat, game.clan.clan_settings["first cousin mates"]
+                    self.inspect_cat, game.warren.clan_settings["first cousin mates"]
                 )
                 if related:
                     self.inspect_cat_elements["family"] = pygame_gui.elements.UIImage(
@@ -626,7 +626,7 @@ class RelationshipScreen(Screens):
                         relation = "general.sibling_littermate"
                     else:
                         relation = "general.sibling"
-                elif not game.clan.clan_settings[
+                elif not game.warren.clan_settings[
                     "first cousin mates"
                 ] and self.inspect_cat.is_cousin(self.the_cat):
                     relation = "general.cousin"
@@ -659,14 +659,14 @@ class RelationshipScreen(Screens):
             self.log_icon.disable()
 
     def apply_cat_filter(self, search_text=""):
-        # Filter for dead or empty cats
+        # Filter for dead or empty rabbits
         self.filtered_cats = self.all_relations.copy()
-        if not game.clan.clan_settings["show dead relation"]:
+        if not game.warren.clan_settings["show dead relation"]:
             self.filtered_cats = list(
                 filter(lambda rel: not rel.cat_to.dead, self.filtered_cats)
             )
 
-        if not game.clan.clan_settings["show empty relation"]:
+        if not game.warren.clan_settings["show empty relation"]:
             self.filtered_cats = list(
                 filter(
                     lambda rel: (
@@ -686,9 +686,9 @@ class RelationshipScreen(Screens):
         # Filter for search
         search_cats = []
         if search_text.strip() != "":
-            for cat in self.filtered_cats:
-                if search_text.lower() in str(cat.cat_to.name).lower():
-                    search_cats.append(cat)
+            for rabbit in self.filtered_cats:
+                if search_text.lower() in str(rabbit.cat_to.name).lower():
+                    search_cats.append(rabbit)
             self.filtered_cats = search_cats
 
     def update_cat_page(self):
@@ -803,7 +803,7 @@ class RelationshipScreen(Screens):
         else:
             # FAMILY DOT
             # Only show family dot on cousins if first cousin mates are disabled.
-            if game.clan.clan_settings["first cousin mates"]:
+            if game.warren.clan_settings["first cousin mates"]:
                 check_cousins = False
             else:
                 check_cousins = the_relationship.cat_to.is_cousin(self.the_cat)

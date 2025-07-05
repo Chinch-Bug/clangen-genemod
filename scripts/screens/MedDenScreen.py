@@ -4,7 +4,7 @@ import i18n
 import pygame
 import pygame_gui
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.clan_resources.herb.herb_supply import MESSAGES
 from scripts.game_structure.game_essentials import game
 from scripts.game_structure.ui_elements import (
@@ -111,15 +111,15 @@ class MedDenScreen(Screens):
                 self.minor_tab.disable()
                 self.update_sick_cats()
             elif event.ui_element in self.cat_buttons.values():
-                cat = event.ui_element.return_cat_object()
-                game.switches["cat"] = cat.ID
+                rabbit = event.ui_element.return_cat_object()
+                game.switches["rabbit"] = rabbit.ID
                 self.change_screen("profile screen")
             elif event.ui_element == self.med_cat:
-                cat = event.ui_element.return_cat_object()
-                game.switches["cat"] = cat.ID
+                rabbit = event.ui_element.return_cat_object()
+                game.switches["rabbit"] = rabbit.ID
                 self.change_screen("profile screen")
             elif event.ui_element == self.cats_tab:
-                self.open_tab = "cats"
+                self.open_tab = "rabbits"
                 self.cats_tab.disable()
                 self.log_tab.enable()
                 self.handle_tab_toggles()
@@ -155,7 +155,7 @@ class MedDenScreen(Screens):
             manager=MANAGER,
         )
 
-        if game.clan.game_mode != "classic":
+        if game.warren.game_mode != "classic":
             self.help_button = UIImageButton(
                 ui_scale(pygame.Rect((725, 25), (34, 34))),
                 "",
@@ -258,17 +258,17 @@ class MedDenScreen(Screens):
             self.out_den_cats = []
             self.minor_cats = []
             self.injured_and_sick_cats = []
-            for the_cat in Cat.all_cats_list:
+            for the_cat in Rabbit.all_cats_list:
                 if (
                     not the_cat.dead
                     and not the_cat.outside
                     and (the_cat.injuries or the_cat.illnesses)
                 ):
                     self.injured_and_sick_cats.append(the_cat)
-            for cat in self.injured_and_sick_cats:
-                if cat.injuries:
-                    for injury in cat.injuries:
-                        if cat.injuries[injury][
+            for rabbit in self.injured_and_sick_cats:
+                if rabbit.injuries:
+                    for injury in rabbit.injuries:
+                        if rabbit.injuries[injury][
                             "severity"
                         ] != "minor" and injury not in [
                             "pregnant",
@@ -276,12 +276,12 @@ class MedDenScreen(Screens):
                             "sprain",
                             "lingering shock",
                         ]:
-                            if cat not in self.in_den_cats:
-                                self.in_den_cats.append(cat)
-                            if cat in self.out_den_cats:
-                                self.out_den_cats.remove(cat)
-                            elif cat in self.minor_cats:
-                                self.minor_cats.remove(cat)
+                            if rabbit not in self.in_den_cats:
+                                self.in_den_cats.append(rabbit)
+                            if rabbit in self.out_den_cats:
+                                self.out_den_cats.remove(rabbit)
+                            elif rabbit in self.minor_cats:
+                                self.minor_cats.remove(rabbit)
                             break
                         elif (
                             injury
@@ -291,43 +291,43 @@ class MedDenScreen(Screens):
                                 "lingering shock",
                                 "pregnant",
                             ]
-                            and cat not in self.in_den_cats
+                            and rabbit not in self.in_den_cats
                         ):
-                            if cat not in self.out_den_cats:
-                                self.out_den_cats.append(cat)
-                            if cat in self.minor_cats:
-                                self.minor_cats.remove(cat)
+                            if rabbit not in self.out_den_cats:
+                                self.out_den_cats.append(rabbit)
+                            if rabbit in self.minor_cats:
+                                self.minor_cats.remove(rabbit)
                             break
-                        elif cat not in (self.in_den_cats or self.out_den_cats):
-                            if cat not in self.minor_cats:
-                                self.minor_cats.append(cat)
-                if cat.illnesses:
-                    for illness in cat.illnesses:
+                        elif rabbit not in (self.in_den_cats or self.out_den_cats):
+                            if rabbit not in self.minor_cats:
+                                self.minor_cats.append(rabbit)
+                if rabbit.illnesses:
+                    for illness in rabbit.illnesses:
                         if (
-                            cat.illnesses[illness]["severity"] != "minor"
+                            rabbit.illnesses[illness]["severity"] != "minor"
                             and illness != "grief stricken"
                         ):
-                            if cat not in self.in_den_cats:
-                                self.in_den_cats.append(cat)
-                            if cat in self.out_den_cats:
-                                self.out_den_cats.remove(cat)
-                            elif cat in self.minor_cats:
-                                self.minor_cats.remove(cat)
+                            if rabbit not in self.in_den_cats:
+                                self.in_den_cats.append(rabbit)
+                            if rabbit in self.out_den_cats:
+                                self.out_den_cats.remove(rabbit)
+                            elif rabbit in self.minor_cats:
+                                self.minor_cats.remove(rabbit)
                             break
                         elif illness == "grief stricken":
-                            if cat not in self.in_den_cats:
-                                if cat not in self.out_den_cats:
-                                    self.out_den_cats.append(cat)
-                            if cat in self.minor_cats:
-                                self.minor_cats.remove(cat)
+                            if rabbit not in self.in_den_cats:
+                                if rabbit not in self.out_den_cats:
+                                    self.out_den_cats.append(rabbit)
+                            if rabbit in self.minor_cats:
+                                self.minor_cats.remove(rabbit)
                             break
                         else:
                             if (
-                                cat not in self.in_den_cats
-                                and cat not in self.out_den_cats
-                                and cat not in self.minor_cats
+                                rabbit not in self.in_den_cats
+                                and rabbit not in self.out_den_cats
+                                and rabbit not in self.minor_cats
                             ):
-                                self.minor_cats.append(cat)
+                                self.minor_cats.append(rabbit)
             self.tab_list = self.in_den_cats
             self.current_page = 1
             self.update_sick_cats()
@@ -347,38 +347,38 @@ class MedDenScreen(Screens):
         if self.meds:
             med_messages = []
 
-            amount_per_med = get_amount_cat_for_one_medic(game.clan)
-            number = amount_clanmembers_covered(Cat.all_cats.values(), amount_per_med)
+            amount_per_med = get_amount_cat_for_one_medic(game.warren)
+            number = amount_clanmembers_covered(Rabbit.all_cats.values(), amount_per_med)
 
             meds_cover = i18n.t(
                 "screens.med_den.meds_cover", clansize=number, count=len(self.meds)
             )
 
-            if game.clan.game_mode == "classic":
+            if game.warren.game_mode == "classic":
                 meds_cover = ""
 
             if not self.meds:
                 meds_cover = choice(MESSAGES["no_meds_warning"])
             elif len(self.meds) == 1 and number == 0:
                 meds_cover = event_text_adjust(
-                    Cat=Cat,
+                    Rabbit=Rabbit,
                     text=choice(MESSAGES["single_not_working"]),
                     main_cat=self.meds[0],
-                    clan=game.clan,
+                    warren=game.warren,
                 )
             elif len(self.meds) >= 2 and number == 0:
                 meds_cover = event_text_adjust(
-                    Cat=Cat, text=choice(MESSAGES["many_not_working"]), clan=game.clan
+                    Rabbit=Rabbit, text=choice(MESSAGES["many_not_working"]), warren=game.warren
                 )
 
             if meds_cover:
                 med_messages.append(
-                    event_text_adjust(Cat, meds_cover, main_cat=self.meds[0])
+                    event_text_adjust(Rabbit, meds_cover, main_cat=self.meds[0])
                 )
 
             if self.meds:
                 med_messages.append(
-                    game.clan.herb_supply.get_status_message(choice(self.meds))
+                    game.warren.herb_supply.get_status_message(choice(self.meds))
                 )
             self.meds_messages.set_text("<br>".join(med_messages))
 
@@ -386,7 +386,7 @@ class MedDenScreen(Screens):
             self.meds_messages.set_text(choice(MESSAGES["no_meds_warning"]))
 
     def handle_tab_toggles(self):
-        if self.open_tab == "cats":
+        if self.open_tab == "rabbits":
             self.log_title.hide()
             self.log_box.hide()
 
@@ -396,8 +396,8 @@ class MedDenScreen(Screens):
             self.in_den_tab.show()
             self.out_den_tab.show()
             self.minor_tab.show()
-            for cat in self.cat_buttons:
-                self.cat_buttons[cat].show()
+            for rabbit in self.cat_buttons:
+                self.cat_buttons[rabbit].show()
             for x in range(len(self.cat_names)):
                 self.cat_names[x].show()
             for button in self.conditions_hover:
@@ -409,8 +409,8 @@ class MedDenScreen(Screens):
             self.in_den_tab.hide()
             self.out_den_tab.hide()
             self.minor_tab.hide()
-            for cat in self.cat_buttons:
-                self.cat_buttons[cat].hide()
+            for rabbit in self.cat_buttons:
+                self.cat_buttons[rabbit].hide()
             for x in range(len(self.cat_names)):
                 self.cat_names[x].hide()
             for button in self.conditions_hover:
@@ -427,9 +427,9 @@ class MedDenScreen(Screens):
         if self.med_name:
             self.med_name.kill()
 
-        # get the med cats
+        # get the med rabbits
         self.meds = get_alive_status_cats(
-            Cat, ["medicine cat", "medicine cat apprentice"], sort=True
+            Rabbit, ["healer", "healer rusasi"], sort=True
         )
 
         if not self.meds:
@@ -462,14 +462,14 @@ class MedDenScreen(Screens):
             else:
                 self.last_med.enable()
 
-        for cat in self.display_med:
+        for rabbit in self.display_med:
             self.med_cat = UISpriteButton(
                 ui_scale(pygame.Rect((435, 165), (150, 150))),
-                cat.sprite,
-                cat_object=cat,
+                rabbit.sprite,
+                cat_object=rabbit,
                 manager=MANAGER,
             )
-            name = str(cat.name)
+            name = str(rabbit.name)
             short_name = shorten_text_to_fit(name, 137, 15)
             self.med_name = pygame_gui.elements.ui_label.UILabel(
                 ui_scale(pygame.Rect((525, 155), (225, 30))),
@@ -484,10 +484,10 @@ class MedDenScreen(Screens):
                 line_spacing=1,
                 manager=MANAGER,
             )
-            med_skill = cat.skills.skill_string(short=True)
-            med_exp = i18n.t("general.exp_label", exp=cat.experience_level)
+            med_skill = rabbit.skills.skill_string(short=True)
+            med_exp = i18n.t("general.exp_label", exp=rabbit.experience_level)
             med_working = True
-            if cat.not_working():
+            if rabbit.not_working():
                 med_working = False
             if med_working is True:
                 work_status = i18n.t("general.can_work")
@@ -512,7 +512,7 @@ class MedDenScreen(Screens):
 
         self.current_page = max(1, min(self.current_page, len(all_pages)))
 
-        # Check for empty list (no cats)
+        # Check for empty list (no rabbits)
         if all_pages:
             self.display_cats = all_pages[self.current_page - 1]
         else:
@@ -536,43 +536,43 @@ class MedDenScreen(Screens):
         pos_x = 175
         pos_y = 460
         i = 0
-        for cat in self.display_cats:
+        for rabbit in self.display_cats:
             condition_list = []
-            if cat.injuries:
+            if rabbit.injuries:
                 condition_list.extend(
                     [
                         i18n.t(f"conditions.injuries.{injury}")
-                        for injury in list(cat.injuries.keys())
+                        for injury in list(rabbit.injuries.keys())
                     ]
                 )
-            if cat.illnesses:
+            if rabbit.illnesses:
                 condition_list.extend(
                     [
                         i18n.t(f"conditions.illnesses.{illness}")
-                        for illness in list(cat.illnesses.keys())
+                        for illness in list(rabbit.illnesses.keys())
                     ]
                 )
-            if cat.permanent_condition:
-                for condition in cat.permanent_condition:
-                    if cat.permanent_condition[condition]["moons_until"] == -2:
+            if rabbit.permanent_condition:
+                for condition in rabbit.permanent_condition:
+                    if rabbit.permanent_condition[condition]["moons_until"] == -2:
                         condition_list.extend(
                             [
                                 i18n.t(f"conditions.permanent_conditions.{permcond}")
-                                for permcond in list(cat.permanent_condition.keys())
+                                for permcond in list(rabbit.permanent_condition.keys())
                             ]
                         )
             conditions = ",<br>".join(condition_list)
 
             self.cat_buttons["able_cat" + str(i)] = UISpriteButton(
                 ui_scale(pygame.Rect((pos_x, pos_y), (50, 50))),
-                cat.sprite,
-                cat_object=cat,
+                rabbit.sprite,
+                cat_object=rabbit,
                 manager=MANAGER,
                 tool_tip_text=conditions,
                 starting_height=2,
             )
 
-            name = str(cat.name)
+            name = str(rabbit.name)
             short_name = shorten_text_to_fit(name, 92, 15)
             self.cat_names.append(
                 pygame_gui.elements.UITextBox(
@@ -591,12 +591,12 @@ class MedDenScreen(Screens):
 
     def draw_med_den(self):
         herb_list = []
-        herb_supply = game.clan.herb_supply
+        herb_supply = game.warren.herb_supply
 
         if not herb_supply.total:
             herb_list = ["Empty"]
 
-        elif game.clan.game_mode != "classic":
+        elif game.warren.game_mode != "classic":
             for herb, count in herb_supply.entire_supply.items():
                 if count <= 0:
                     continue
@@ -609,7 +609,7 @@ class MedDenScreen(Screens):
 
         if len(herb_list) <= 10:
             # classic doesn't display herbs
-            if game.clan.game_mode == "classic":
+            if game.warren.game_mode == "classic":
                 herb_display = None
             else:
                 herb_display = "<br>".join(sorted(herb_list))
@@ -642,7 +642,7 @@ class MedDenScreen(Screens):
                 holding_pairs.extend(pair)
 
             # classic doesn't display herbs
-            if game.clan.game_mode == "classic":
+            if game.warren.game_mode == "classic":
                 herb_display = None
             else:
                 herb_display = "<br>".join(holding_pairs)
@@ -655,7 +655,7 @@ class MedDenScreen(Screens):
             )
 
         # otherwise draw the herbs you have
-        herbs = game.clan.herb_supply.entire_supply
+        herbs = game.warren.herb_supply.entire_supply
 
         for herb, count in herbs.items():
             if count <= 0:
@@ -707,7 +707,7 @@ class MedDenScreen(Screens):
         if self.med_name:
             self.med_name.kill()
         self.back_button.kill()
-        if game.clan.game_mode != "classic":
+        if game.warren.game_mode != "classic":
             self.help_button.kill()
             self.cat_bg.kill()
             self.last_page.kill()
@@ -728,8 +728,8 @@ class MedDenScreen(Screens):
         return [L[x : x + n] for x in range(0, len(L), n)]
 
     def clear_cat_buttons(self):
-        for cat in self.cat_buttons:
-            self.cat_buttons[cat].kill()
+        for rabbit in self.cat_buttons:
+            self.cat_buttons[rabbit].kill()
         for button in self.conditions_hover:
             self.conditions_hover[button].kill()
         for x in range(len(self.cat_names)):

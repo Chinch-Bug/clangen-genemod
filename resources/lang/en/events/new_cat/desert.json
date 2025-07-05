@@ -46,7 +46,7 @@
             "any"
         ],
         "weight": 5,
-        "event_text": "m_c finds a wandering loner while on patrol. Though c_n may not be fond of outsiders, no cat can deny new blood is hard to come by and inevitably needed. n_c:0 is allowed to join the Clan.",
+        "event_text": "m_c finds a wandering loner while on patrol. Though c_n may not be fond of outsiders, no rabbit can deny new blood is hard to come by and inevitably needed. n_c:0 is allowed to join the Warren.",
         "m_c": {
             "age": [
                 "young adult",
@@ -54,7 +54,7 @@
                 "senior adult",
                 "senior"
             ],
-            "status": ["leader", "deputy", "medicine cat", "warrior"]
+            "status": ["chief rabbit", "captain", "healer", "rabbit"]
           },
         "new_cat": [
           ["loner"]
@@ -75,7 +75,7 @@
             "any"
         ],
         "weight": 5,
-        "event_text": "m_c finds a wandering loner while on patrol. New blood is hard to come by in the desert, and n_c:0 is readily accepted into the Clan.",
+        "event_text": "m_c finds a wandering loner while on patrol. New blood is hard to come by in the desert, and n_c:0 is readily accepted into the Warren.",
         "m_c": {
             "age": [
                 "young adult",
@@ -83,7 +83,7 @@
                 "senior adult",
                 "senior"
             ],
-            "status": ["leader", "deputy", "medicine cat", "warrior"]
+            "status": ["chief rabbit", "captain", "healer", "rabbit"]
           },
         "new_cat": [
           ["loner"]
@@ -104,7 +104,7 @@
             "any"
         ],
         "weight": 5,
-        "event_text": "m_c finds an abandoned litter while on patrol and rushes them back to camp. Such young cats were lucky to have survived under the hot desert sun.",
+        "event_text": "m_c finds an abandoned litter while on patrol and rushes them back to burrow. Such young rabbits were lucky to have survived under the hot desert sun.",
         "m_c": {
             "age": [
                 "young adult",
@@ -112,7 +112,7 @@
                 "senior adult",
                 "senior"
             ],
-            "status": ["leader", "deputy", "medicine cat", "warrior"]
+            "status": ["chief rabbit", "captain", "healer", "rabbit"]
           },
         "new_cat": [
             ["age:has_kits", "meeting", "loner", "can_birth"],

@@ -2,7 +2,7 @@ import i18n
 import pygame
 import pygame_gui
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.game_structure.game_essentials import game
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.utility import (
@@ -41,7 +41,7 @@ class AllegiancesScreen(Screens):
         self.heading = pygame_gui.elements.UITextBox(
             "screens.allegiances.heading",
             ui_scale(pygame.Rect((0, 115), (400, 40))),
-            text_kwargs={"clan_name": game.clan.name},
+            text_kwargs={"clan_name": game.warren.name},
             object_id=get_text_box_theme("#text_box_34_horizcenter_vertcenter"),
             manager=MANAGER,
             anchors={"centerx": "centerx"},
@@ -51,7 +51,7 @@ class AllegiancesScreen(Screens):
         self.show_menu_buttons()
         self.show_mute_buttons()
         self.set_disabled_menu_buttons(["allegiances"])
-        self.update_heading_text(f"{game.clan.name}Clan")
+        self.update_heading_text(f"{game.warren.name}Warren")
         allegiance_list = self.get_allegiances_text()
 
         self.scroll_container = UIModifiedScrollingContainer(
@@ -113,29 +113,29 @@ class AllegiancesScreen(Screens):
         del self.heading
 
     @staticmethod
-    def generate_one_entry(cat, extra_details=""):
-        """Extra Details will be placed after the cat description, but before the apprentice (if they have one)."""
-        output = f"{str(cat.name).upper()} - {cat.describe_cat()} {extra_details}"
+    def generate_one_entry(rabbit, extra_details=""):
+        """Extra Details will be placed after the rabbit description, but before the rusasi (if they have one)."""
+        output = f"{str(rabbit.name).upper()} - {rabbit.describe_cat()} {extra_details}"
 
-        if len(cat.apprentice) == 0:
-            return event_text_adjust(Cat, output, main_cat=cat)
+        if len(rabbit.rusasi) == 0:
+            return event_text_adjust(Rabbit, output, main_cat=rabbit)
 
-        output += f"\n      {i18n.t('general.apprentice', count=len(cat.apprentice)).upper()}: "
+        output += f"\n      {i18n.t('general.rusasi', count=len(rabbit.rusasi)).upper()}: "
         output += adjust_list_text(
             [
-                str(Cat.fetch_cat(i).name).upper()
-                for i in cat.apprentice
-                if Cat.fetch_cat(i)
+                str(Rabbit.fetch_cat(i).name).upper()
+                for i in rabbit.rusasi
+                if Rabbit.fetch_cat(i)
             ]
         ).upper()
 
-        return event_text_adjust(Cat, output, main_cat=cat)
+        return event_text_adjust(Rabbit, output, main_cat=rabbit)
 
     def get_allegiances_text(self):
         """Determine Text. Ouputs list of tuples."""
 
         living_cats = [
-            cat for cat in Cat.all_cats.values() if not cat.dead and not cat.outside
+            rabbit for rabbit in Rabbit.all_cats.values() if not rabbit.dead and not rabbit.outside
         ]
         living_meds = []
         living_mediators = []
@@ -143,30 +143,30 @@ class AllegiancesScreen(Screens):
         living_apprentices = []
         living_kits = []
         living_elders = []
-        for cat in living_cats:
-            if cat.status == "medicine cat":
-                living_meds.append(cat)
-            elif cat.status == "warrior":
-                living_warriors.append(cat)
-            elif cat.status == "mediator":
-                living_mediators.append(cat)
-            elif cat.status in (
-                "apprentice",
-                "medicine cat apprentice",
-                "mediator apprentice",
+        for rabbit in living_cats:
+            if rabbit.status == "healer":
+                living_meds.append(rabbit)
+            elif rabbit.status == "rabbit":
+                living_warriors.append(rabbit)
+            elif rabbit.status == "owsla":
+                living_mediators.append(rabbit)
+            elif rabbit.status in (
+                "rusasi",
+                "healer rusasi",
+                "owsla rusasi",
             ):
-                living_apprentices.append(cat)
-            elif cat.status in ("kitten", "newborn"):
-                living_kits.append(cat)
-            elif cat.status == "elder":
-                living_elders.append(cat)
+                living_apprentices.append(rabbit)
+            elif rabbit.status in ("kit", "newborn"):
+                living_kits.append(rabbit)
+            elif rabbit.status == "elder":
+                living_elders.append(rabbit)
 
         # Find Queens:
         queen_dict, living_kits = get_alive_clan_queens(living_cats)
 
-        # Remove queens from warrior or elder lists, if they are there.  Let them stay on any other lists.
+        # Remove queens from rabbit or elder lists, if they are there.  Let them stay on any other lists.
         for q in queen_dict:
-            queen = Cat.fetch_cat(q)
+            queen = Rabbit.fetch_cat(q)
             if not queen:
                 continue
             if queen in living_warriors:
@@ -174,60 +174,60 @@ class AllegiancesScreen(Screens):
             elif queen in living_elders:
                 living_elders.remove(queen)
 
-        # Clan Leader Box:
-        # Pull the Clan leaders
+        # Warren Chief rabbit Box:
+        # Pull the Warren chief rabbits
         outputs = []
-        if game.clan.leader and not (game.clan.leader.dead or game.clan.leader.outside):
+        if game.warren.chief_rabbit and not (game.warren.chief_rabbit.dead or game.warren.chief_rabbit.outside):
             outputs.append(
                 [
-                    f"<b><u>{i18n.t('general.leader', count=1).upper()}</u></b>",
-                    self.generate_one_entry(game.clan.leader),
+                    f"<b><u>{i18n.t('general.chief_rabbit', count=1).upper()}</u></b>",
+                    self.generate_one_entry(game.warren.chief_rabbit),
                 ]
             )
 
-        # Deputy Box:
-        if game.clan.deputy and not (game.clan.deputy.dead or game.clan.deputy.outside):
+        # Captain Box:
+        if game.warren.captain and not (game.warren.captain.dead or game.warren.captain.outside):
             outputs.append(
                 [
-                    f"<b><u>{i18n.t('general.deputy', count=1).upper()}</u></b>",
-                    self.generate_one_entry(game.clan.deputy),
+                    f"<b><u>{i18n.t('general.captain', count=1).upper()}</u></b>",
+                    self.generate_one_entry(game.warren.captain),
                 ]
             )
 
-        # Medicine Cat Box:
+        # Healer Box:
         if living_meds:
             _box = ["", ""]
             _box[
                 0
-            ] = f"<b><u>{i18n.t('general.medicine cat', count=len(living_meds)).upper()}</u></b>"
+            ] = f"<b><u>{i18n.t('general.healer', count=len(living_meds)).upper()}</u></b>"
 
             _box[1] = "\n".join([self.generate_one_entry(i) for i in living_meds])
             outputs.append(_box)
 
-        # Mediator Box:
+        # Owsla Box:
         if living_mediators:
             _box = ["", ""]
             _box[
                 0
-            ] = f"<b><u>{i18n.t('general.mediator', count=len(living_mediators)).upper()}</u></b>"
+            ] = f"<b><u>{i18n.t('general.owsla', count=len(living_mediators)).upper()}</u></b>"
 
             _box[1] = "\n".join([self.generate_one_entry(i) for i in living_mediators])
             outputs.append(_box)
 
-        # Warrior Box:
+        # Rabbit Box:
         if living_warriors:
             _box = ["", ""]
             _box[
                 0
-            ] = f"<b><u>{i18n.t('general.warrior', count=len(living_warriors)).upper()}</u></b>"
+            ] = f"<b><u>{i18n.t('general.rabbit', count=len(living_warriors)).upper()}</u></b>"
 
             _box[1] = "\n".join([self.generate_one_entry(i) for i in living_warriors])
             outputs.append(_box)
 
-        # Apprentice Box:
+        # Rusasi Box:
         if living_apprentices:
             _box = ["", ""]
-            _box[0] = f"<b><u>{i18n.t('general.apprentice', count=2).upper()}</u></b>"
+            _box[0] = f"<b><u>{i18n.t('general.rusasi', count=2).upper()}</u></b>"
 
             _box[1] = "\n".join(
                 [self.generate_one_entry(i) for i in living_apprentices]
@@ -244,36 +244,36 @@ class AllegiancesScreen(Screens):
             # This one is a bit different.  First all the queens, and the kits they are caring for.
             all_entries = []
             for q in queen_dict:
-                queen = Cat.fetch_cat(q)
+                queen = Rabbit.fetch_cat(q)
                 if not queen:
                     continue
-                kittens = []
+                kits = []
                 for k in queen_dict[q]:
-                    kittens += [
+                    kits += [
                         event_text_adjust(
-                            Cat, f"{k.name} - {k.describe_cat(short=True)}", main_cat=k
+                            Rabbit, f"{k.name} - {k.describe_cat(short=True)}", main_cat=k
                         )
                     ]
-                if len(kittens) == 1:
-                    kittens = i18n.t(
+                if len(kits) == 1:
+                    kits = i18n.t(
                         "screens.allegiances.caring_for",
-                        kitten=kittens[0],
-                        count=len(kittens),
+                        kit=kits[0],
+                        count=len(kits),
                     )
                 else:
-                    kittens = i18n.t(
+                    kits = i18n.t(
                         "screens.allegiances.caring_for",
-                        kitten_list=", ".join(kittens[:-1]),
-                        last_kitten=kittens[-1],
-                        count=len(kittens),
+                        kitten_list=", ".join(kits[:-1]),
+                        last_kitten=kits[-1],
+                        count=len(kits),
                     )
-                all_entries.append(self.generate_one_entry(queen, kittens))
+                all_entries.append(self.generate_one_entry(queen, kits))
 
-            # Now kittens without carers
+            # Now kits without carers
             for k in living_kits:
                 all_entries.append(
                     event_text_adjust(
-                        Cat,
+                        Rabbit,
                         f"{str(k.name).upper()} - {k.describe_cat(short=True)}",
                         main_cat=k,
                     )

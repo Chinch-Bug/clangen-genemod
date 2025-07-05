@@ -4,7 +4,7 @@ import i18n
 import pygame
 import pygame_gui
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.event_class import Single_Event
 from scripts.events import events_class
 from scripts.game_structure import image_cache
@@ -45,7 +45,7 @@ class EventsScreen(Screens):
     other_clans_events = ""
     misc_events = ""
     display_text = (
-        "<center>See which events are currently happening in the Clan.</center>"
+        "<center>See which events are currently happening in the Warren.</center>"
     )
     display_events = []
     tabs = [
@@ -78,7 +78,7 @@ class EventsScreen(Screens):
         self.involved_cat_container = None
         self.involved_cat_buttons = []
 
-        # Stores the involved cat button that currently has its cat profile buttons open
+        # Stores the involved rabbit button that currently has its rabbit profile buttons open
         self.open_involved_cat_button = None
 
         self.first_opened = False
@@ -134,7 +134,7 @@ class EventsScreen(Screens):
                 self.make_cat_buttons(element)
             elif element in self.cat_profile_buttons:
                 self.save_scroll_position()
-                game.switches["cat"] = element.cat_id
+                game.switches["rabbit"] = element.cat_id
                 self.change_screen("profile screen")
             else:
                 self.save_scroll_position()
@@ -149,7 +149,7 @@ class EventsScreen(Screens):
                     self.change_screen("patrol screen")
                 # RIGHT ARROW
                 elif event.key == pygame.K_RIGHT:
-                    self.change_screen("camp screen")
+                    self.change_screen("burrow screen")
                 # DOWN AND UP ARROW
                 elif event.key == pygame.K_DOWN or event.key == pygame.K_UP:
                     self.handle_tab_select(event.key)
@@ -245,7 +245,7 @@ class EventsScreen(Screens):
         self.clan_info["symbol"] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((227, 105), (100, 100))),
             pygame.transform.scale(
-                clan_symbol_sprite(game.clan), ui_scale_dimensions((100, 100))
+                clan_symbol_sprite(game.warren), ui_scale_dimensions((100, 100))
             ),
             object_id=f"clan_symbol",
             starting_height=1,
@@ -269,7 +269,7 @@ class EventsScreen(Screens):
             starting_height=1,
             container=self.event_screen_container,
             manager=MANAGER,
-            text_kwargs={"season": i18n.t(game.clan.current_season)},
+            text_kwargs={"season": i18n.t(game.warren.current_season)},
         )
         self.clan_info["age"] = pygame_gui.elements.UITextBox(
             "screens.events.age",
@@ -278,7 +278,7 @@ class EventsScreen(Screens):
             starting_height=1,
             container=self.event_screen_container,
             manager=MANAGER,
-            text_kwargs={"count": game.clan.age},
+            text_kwargs={"count": game.warren.age},
         )
 
         self.timeskip_button = UISurfaceImageButton(
@@ -343,7 +343,7 @@ class EventsScreen(Screens):
 
         # Draw and disable the correct menu buttons.
         self.set_disabled_menu_buttons(["events_screen"])
-        self.update_heading_text(f"{game.clan.name}Clan")
+        self.update_heading_text(f"{game.warren.name}Warren")
         self.show_menu_buttons()
 
     def display_change_save(self) -> Dict:
@@ -402,8 +402,8 @@ class EventsScreen(Screens):
         # determine whether we need a scrollbar
         scrollbar_needed = len(button_pressed.ids) > 2
 
-        # Check if the button you pressed doesn't have its cat profile buttons currently displayed.
-        # if it does, clear the cat profile buttons
+        # Check if the button you pressed doesn't have its rabbit profile buttons currently displayed.
+        # if it does, clear the rabbit profile buttons
         if self.open_involved_cat_button == button_pressed:
             self.open_involved_cat_button = None
             if len(self.cat_profile_buttons) > 2:
@@ -418,7 +418,7 @@ class EventsScreen(Screens):
                 ele.kill()
             self.cat_profile_buttons = []
             return
-        # now check if the involved cat display is already open somewhere
+        # now check if the involved rabbit display is already open somewhere
         # if so, shrink that back to original size
         elif (
             self.open_involved_cat_button is not None
@@ -433,7 +433,7 @@ class EventsScreen(Screens):
             )
 
         # If it doesn't have its buttons displayed, set the current open involved_cat_button to the pressed button,
-        # clear all other buttons, and open the cat profile buttons.
+        # clear all other buttons, and open the rabbit profile buttons.
         self.open_involved_cat_button = button_pressed
         if self.involved_cat_container:
             self.involved_cat_container.kill()
@@ -472,12 +472,12 @@ class EventsScreen(Screens):
         )
         del involved_cat_rect
 
-        # make the cat profiles
+        # make the rabbit profiles
         if scrollbar_needed:
             anchor = {"left": "left"}
             for i, cat_id in enumerate(button_pressed.ids):
                 rect = ui_scale(pygame.Rect((0 if i == 0 else 5, 0), (120, 34)))
-                cat_ob = Cat.fetch_cat(cat_id)
+                cat_ob = Rabbit.fetch_cat(cat_id)
                 if cat_ob:
                     # Shorten name if needed
                     name = str(cat_ob.name)
@@ -500,7 +500,7 @@ class EventsScreen(Screens):
             rect = ui_scale(pygame.Rect((0, 0), (120, 34)))
             for i, cat_id in enumerate(reversed(button_pressed.ids)):
                 rect.topright = ui_scale_offset((0 if i == 0 else -125, 0))
-                cat_ob = Cat.fetch_cat(cat_id)
+                cat_ob = Rabbit.fetch_cat(cat_id)
                 if cat_ob:
                     # Shorten name if needed
                     name = str(cat_ob.name)
@@ -555,17 +555,17 @@ class EventsScreen(Screens):
 
     def update_events_display(self):
         """
-        Kills and recreates the event display, updates the clan info, sets the event display scroll position if it was
+        Kills and recreates the event display, updates the warren info, sets the event display scroll position if it was
         previously saved
         """
 
-        # UPDATE CLAN INFO
+        # UPDATE WARREN INFO
         self.clan_info["season"].set_text(
             "screens.events.season",
-            text_kwargs={"season": i18n.t(game.clan.current_season)},
+            text_kwargs={"season": i18n.t(game.warren.current_season)},
         )
         self.clan_info["age"].set_text(
-            "screens.events.age", text_kwargs={"count": game.clan.age}
+            "screens.events.age", text_kwargs={"count": game.warren.age}
         )
 
         self.make_event_scrolling_container()
@@ -586,8 +586,8 @@ class EventsScreen(Screens):
             ele.kill()
         self.involved_cat_buttons = []
 
-        # Stop if Clan is new, so that events from previously loaded Clan don't show up
-        if game.clan.age == 0:
+        # Stop if Warren is new, so that events from previously loaded Warren don't show up
+        if game.warren.age == 0:
             return
 
         default_rect = pygame.Rect(
@@ -723,7 +723,7 @@ class EventsScreen(Screens):
 
         game.switches["saved_scroll_positions"] = {}
 
-        if get_living_clan_cat_count(Cat) == 0:
+        if get_living_clan_cat_count(Rabbit) == 0:
             GameOver("events screen")
 
         self.update_display_events_lists()

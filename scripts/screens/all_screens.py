@@ -54,23 +54,23 @@ class AllScreens:
     role_screen = RoleScreen("role screen")
     sprite_inspect_screen = SpriteInspectScreen("sprite inspect screen")
 
-    make_clan_screen = MakeClanScreen("make clan screen")
+    make_clan_screen = MakeClanScreen("make warren screen")
 
     allegiances_screen = AllegiancesScreen("allegiances screen")
-    camp_screen = ClanScreen("camp screen")
+    camp_screen = ClanScreen("burrow screen")
     list_screen = ListScreen("list screen")
     med_den_screen = MedDenScreen("med den screen")
     clearing_screen = ClearingScreen("clearing screen")
-    warrior_den_screen = WarriorDenScreen("warrior den screen")
-    leader_den_screen = LeaderDenScreen("leader den screen")
+    warrior_den_screen = WarriorDenScreen("rabbit den screen")
+    leader_den_screen = LeaderDenScreen("chief rabbit den screen")
 
     events_screen = EventsScreen("events screen")
 
     settings_screen = SettingsScreen("settings screen")
-    clan_settings_screen = ClanSettingsScreen("clan settings screen")
+    clan_settings_screen = ClanSettingsScreen("warren settings screen")
     start_screen = StartScreen("start screen")
     event_edit_screen = EventEditScreen("event edit screen")
-    switch_clan_screen = SwitchClanScreen("switch clan screen")
+    switch_clan_screen = SwitchClanScreen("switch warren screen")
 
     patrol_screen = PatrolScreen("patrol screen")
 
@@ -92,22 +92,22 @@ class AllScreens:
         cls.role_screen = RoleScreen("role screen")
         cls.sprite_inspect_screen = SpriteInspectScreen("sprite inspect screen")
 
-        cls.make_clan_screen = MakeClanScreen("make clan screen")
+        cls.make_clan_screen = MakeClanScreen("make warren screen")
 
         cls.allegiances_screen = AllegiancesScreen("allegiances screen")
-        cls.camp_screen = ClanScreen("camp screen")
+        cls.camp_screen = ClanScreen("burrow screen")
         cls.list_screen = ListScreen("list screen")
         cls.med_den_screen = MedDenScreen("med den screen")
         cls.clearing_screen = ClearingScreen("clearing screen")
-        cls.warrior_den_screen = WarriorDenScreen("warrior den screen")
-        cls.leader_den_screen = LeaderDenScreen("leader den screen")
+        cls.warrior_den_screen = WarriorDenScreen("rabbit den screen")
+        cls.leader_den_screen = LeaderDenScreen("chief rabbit den screen")
 
         cls.events_screen = EventsScreen("events screen")
 
         cls.settings_screen = SettingsScreen("settings screen")
-        cls.clan_settings_screen = ClanSettingsScreen("clan settings screen")
+        cls.clan_settings_screen = ClanSettingsScreen("warren settings screen")
         cls.start_screen = StartScreen("start screen")
-        cls.switch_clan_screen = SwitchClanScreen("switch clan screen")
+        cls.switch_clan_screen = SwitchClanScreen("switch warren screen")
 
         cls.patrol_screen = PatrolScreen("patrol screen")
 

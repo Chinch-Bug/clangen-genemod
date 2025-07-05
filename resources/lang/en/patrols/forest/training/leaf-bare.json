@@ -9,7 +9,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "all apprentices": [-1, -1]
+            "all rusasirahs": [-1, -1]
         },
         "weight": 20,
         "intro_text": "p_l thinks r_c is, well, really, just - uh, just swell, and {PRONOUN/p_l/subject} {VERB/p_l/think/thinks} r_c might like {PRONOUN/p_l/object} too. {PRONOUN/p_l/subject/CAP}{VERB/p_l/'ve/'s} been building up {PRONOUN/p_l/poss} confidence, and {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} going to ask r_c to spend some time together, just the two of them, this afternoon!",
@@ -39,7 +39,7 @@
                 ]
             },
             {
-                "text": "All of p_l's bravery is rewarded when r_c says yes! The pair head out for their romantic stroll, paws and tails leaving sweeping tracks in the frosted forest floor, an artwork irrelevant to two cats much more absorbed in each other than the world around them.",
+                "text": "All of p_l's bravery is rewarded when r_c says yes! The pair head out for their romantic stroll, paws and tails leaving sweeping tracks in the frosted forest floor, an artwork irrelevant to two rabbits much more absorbed in each other than the world around them.",
                 "exp": 20,
                 "weight": 5,
                 "relationships": [
@@ -60,10 +60,10 @@
                 ]
             },
             {
-                "text": "s_c has always had a skilled tongue, but it's rarely ever felt this important to choose {PRONOUN/s_c/poss} words carefully. It's all worth it to hear r_c's 'yes.' Their stroll together is awkward with the new tension of acknowledged romance, but neither cat would change it for the world.",
+                "text": "s_c has always had a skilled tongue, but it's rarely ever felt this important to choose {PRONOUN/s_c/poss} words carefully. It's all worth it to hear r_c's 'yes.' Their stroll together is awkward with the new tension of acknowledged romance, but neither rabbit would change it for the world.",
                 "exp": 20,
                 "weight": 20,
-                "stat_skill": ["SPEAKER,1", "MEDIATOR,1", "INSIGHTFUL,1"],
+                "stat_skill": ["SPEAKER,1", "OWSLA,1", "INSIGHTFUL,1"],
                 "relationships": [
                     {
                         "cats_to": ["p_l"],
@@ -116,17 +116,17 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "apprentice": [2, 6],
+            "rusasi": [2, 6],
             "normal adult": [1, 6]
             },
         "weight": 40,
         "chance_of_success": 60,
         "pl_skill_constraint": ["STORY,1"],
-        "intro_text": "Snow swirls around c_n's camp, piling up in unusually deep snowdrifts. p_l gathers some apprentices to {PRONOUN/p_l/object} for a story.",
-        "decline_text": "Trying to get apprentices to do anything is like - well, herding cats.",
+        "intro_text": "Snow swirls around c_n's burrow, piling up in unusually deep snowdrifts. p_l gathers some rusasirahs to {PRONOUN/p_l/object} for a story.",
+        "decline_text": "Trying to get rusasirahs to do anything is like - well, herding rabbits.",
         "success_outcomes": [
                 {
-                    "text": "See those bright, pure white drifts? That's stardust, swept down from StarClan as they clean out their nests in deep leaf-bare.",
+                    "text": "See those bright, pure white drifts? That's stardust, swept down from Inle as they clean out their nests in deep leaf-bare.",
                     "exp": 30,
                     "weight": 20,
                     "relationships": [
@@ -149,12 +149,12 @@
             ],
             "fail_outcomes": [
                 {
-                    "text": "One of the apprentices starts a snowball fight instead, and p_l becomes a soaked, shivering casualty of the conflict.",
+                    "text": "One of the rusasirahs starts a snowball fight instead, and p_l becomes a soaked, shivering casualty of the conflict.",
                     "exp": 0,
                     "weight": 20,
                     "injury": [
                         {
-                            "cats": ["p_l"],
+                            "rabbits": ["p_l"],
                             "injuries": ["shivering"]
                         }
                     ],
@@ -220,17 +220,17 @@
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
-            "apprentice": [1, 6],
+            "rusasi": [1, 6],
             "normal adult": [1, 6]
             },
         "weight": 40,
         "chance_of_success": 60,
         "pl_skill_constraint": ["STORY,1"],
-        "intro_text": "The wind blows across the lake, almost sounding like the moans of a hungry cat. p_l has a gleam in {PRONOUN/p_l/poss} eye that tells app1 {PRONOUN/p_l/subject} {VERB/p_l/have/has} a story to tell...",
+        "intro_text": "The wind blows across the lake, almost sounding like the moans of a hungry rabbit. p_l has a gleam in {PRONOUN/p_l/poss} eye that tells app1 {PRONOUN/p_l/subject} {VERB/p_l/have/has} a story to tell...",
         "decline_text": "app1 is too hungry and cold to stop for a story now! {PRONOUN/app1/subject/CAP} {VERB/app1/pad/pads} away in search of food.",
         "success_outcomes": [
                 {
-                    "text": "p_l tells a tale of a great cat who lives under the ice and controls the lake. Long ago, a trickster thought himself smarter than the lake cat and padded out onto the ice covering the lake to tease her. She broke the ice and drowned him in revenge, flooding the entire forest in newleaf. That's why it's always important to respect the ice in leaf-bare.",
+                    "text": "p_l tells a tale of a great rabbit who lives under the ice and controls the lake. Long ago, a trickster thought himself smarter than the lake rabbit and padded out onto the ice covering the lake to tease her. She broke the ice and drowned him in revenge, flooding the entire forest in newleaf. That's why it's always important to respect the ice in leaf-bare.",
                     "exp": 30,
                     "weight": 20,
                     "relationships": [
@@ -253,12 +253,12 @@
             ],
             "fail_outcomes": [
                 {
-                    "text": "Hearing p_l describe the Underwater Panther, how she's always waiting, just out of reach, ready to pull cats down - app1 starts shivering, and p_l calls the whole thing off to go get {PRONOUN/app1/object} warmed up.",
+                    "text": "Hearing p_l describe the Underwater Panther, how she's always waiting, just out of reach, ready to pull rabbits down - app1 starts shivering, and p_l calls the whole thing off to go get {PRONOUN/app1/object} warmed up.",
                     "exp": 0,
                     "weight": 20,
                     "injury": [
                         {
-                            "cats": ["app1"],
+                            "rabbits": ["app1"],
                             "injuries": ["shivering"]
                         }
                     ],
@@ -294,11 +294,11 @@
         "weight": 40,
         "chance_of_success": 60,
         "pl_skill_constraint": ["LORE,1"],
-        "intro_text": "Many seasons ago, p_l begins, a powerful, gifted apprentice walked the land, their skills coveted by the Clans around them. Pulled in many directions, they could not keep the peace, as all demanded their time and energy.",
-        "decline_text": "r_c doesn't have time to listen to p_l's story - {PRONOUN/r_c/subject} {VERB/r_c/apologize/apologizes}, but {PRONOUN/r_c/subject} rather {VERB/r_c/feel/feels} like that long dead overworked apprentice {PRONOUN/r_c/self}, right now!",
+        "intro_text": "Many seasons ago, p_l begins, a powerful, gifted rusasi walked the land, their skills coveted by the Clans around them. Pulled in many directions, they could not keep the peace, as all demanded their time and energy.",
+        "decline_text": "r_c doesn't have time to listen to p_l's story - {PRONOUN/r_c/subject} {VERB/r_c/apologize/apologizes}, but {PRONOUN/r_c/subject} rather {VERB/r_c/feel/feels} like that long dead overworked rusasi {PRONOUN/r_c/self}, right now!",
         "success_outcomes": [
                 {
-                    "text": "After moons of having their Clan attacked and targeted, the apprentice raged, calling on their hidden power. They summoned a powerful snowstorm and created leaf-bare in their anger before fleeing the Clans, never to return and never to walk the stars, their life and talents wasted by cruel, petty fighting.",
+                    "text": "After moons of having their Warren attacked and targeted, the rusasi raged, calling on their hidden power. They summoned a powerful snowstorm and created leaf-bare in their anger before fleeing the Clans, never to return and never to walk the stars, their life and talents wasted by cruel, petty fighting.",
                     "exp": 30,
                     "weight": 20,
                     "art": "scaryghost_INTRO",
@@ -357,7 +357,7 @@
                     ]
                 },
                 {
-                    "text": "s_c is so concerned with the health of the long-dead apprentice it actually derails p_l's story, and {PRONOUN/p_l/subject} {VERB/p_l/have/has} to gently remind {PRONOUN/s_c/object} that this apprentice is long beyond helping.",
+                    "text": "s_c is so concerned with the health of the long-dead rusasi it actually derails p_l's story, and {PRONOUN/p_l/subject} {VERB/p_l/have/has} to gently remind {PRONOUN/s_c/object} that this rusasi is long beyond helping.",
                     "exp": 0,
                     "weight": 20,
                     "art": "scaryghost_INTRO",

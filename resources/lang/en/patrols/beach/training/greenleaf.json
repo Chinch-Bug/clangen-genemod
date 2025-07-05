@@ -9,7 +9,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "all apprentices": [-1, -1],
+            "all rusasirahs": [-1, -1],
             "normal adult": [1, 6]
         },
         "weight": 20,
@@ -48,7 +48,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "r_c dips one paw in the water and hisses, proclaiming that it's much too cold and urging p_l to come back to camp with {PRONOUN/r_c/object} instead.",
+                "text": "r_c dips one paw in the water and hisses, proclaiming that it's much too cold and urging p_l to come back to burrow with {PRONOUN/r_c/object} instead.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -88,8 +88,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [2, 2]
+            "rusasi": [1, 6],
+            "all rusasirahs": [2, 2]
         },
         "weight": 20,
         "intro_text": "app1 notices app2's absence and follows {PRONOUN/app2/poss} unobscured trail to the cliff's edge. What in the seven seas is app2 doing out here? There's an eagle nest, app2 explains, {PRONOUN/app2/poss} tail swooping up over {PRONOUN/app2/poss} back to point - look, the chicks are trying to fly!",
@@ -97,7 +97,7 @@
         "chance_of_success": 60,
         "success_outcomes": [
             {
-                "text": "Wait, like, eagle apprentices? Intrigued, app1 sticks {PRONOUN/app1/poss} head out. Down below, two dappled feathered juveniles squabble, beating their wings frantically, clearly gearing up for something. app2 bets on the lighter colored one, but app1 thinks that the smaller dark patterned one has the heart for it, and {PRONOUN/app1/subject} {VERB/app1/leap/leaps} to {PRONOUN/app1/poss} paws when the darker chick takes to the wing first, throwing {PRONOUN/app1/poss} head back and yowling cheers to the sky as the little eagle makes it to the next tree over.",
+                "text": "Wait, like, eagle rusasirahs? Intrigued, app1 sticks {PRONOUN/app1/poss} head out. Down below, two dappled feathered juveniles squabble, beating their wings frantically, clearly gearing up for something. app2 bets on the lighter colored one, but app1 thinks that the smaller dark patterned one has the heart for it, and {PRONOUN/app1/subject} {VERB/app1/leap/leaps} to {PRONOUN/app1/poss} paws when the darker chick takes to the wing first, throwing {PRONOUN/app1/poss} head back and yowling cheers to the sky as the little eagle makes it to the next tree over.",
                 "exp": 20,
                 "weight": 20,
                 "relationships": [
@@ -118,7 +118,7 @@
                 ]
             },
             {
-                "text": "app1 has never seen those before! {PRONOUN/app1/subject/CAP} {VERB/app1/edge/edges} over beside app2, both apprentices staring down at the eagle nest in the tree below them, calling down advice. No, beat their wings harder! Harder! They can do it!",
+                "text": "app1 has never seen those before! {PRONOUN/app1/subject/CAP} {VERB/app1/edge/edges} over beside app2, both rusasirahs staring down at the eagle nest in the tree below them, calling down advice. No, beat their wings harder! Harder! They can do it!",
                 "exp": 20,
                 "weight": 5,
                 "relationships": [
@@ -146,7 +146,7 @@
                 "weight": 20
             },
             {
-                "text": "s_c crowds forward, daringly letting {PRONOUN/s_c/poss} paws dangle over the edge as {PRONOUN/s_c/subject} {VERB/s_c/look/looks} at the chicks - and the ground crumbles. Both apprentices flinch backwards with yelps and yowls, but s_c is too close, on too unstable ground, and {PRONOUN/s_c/subject} {VERB/s_c/feel/feels} {PRONOUN/s_c/self} losing {PRONOUN/s_c/poss} grip. {PRONOUN/s_c/poss/CAP} heart jumps with terror as sudden pain sparks down {PRONOUN/s_c/poss} flank. The other apprentice digs fangs into s_c's side, saving {PRONOUN/s_c/poss} life, if not {PRONOUN/s_c/poss} pelt.",
+                "text": "s_c crowds forward, daringly letting {PRONOUN/s_c/poss} paws dangle over the edge as {PRONOUN/s_c/subject} {VERB/s_c/look/looks} at the chicks - and the ground crumbles. Both rusasirahs flinch backwards with yelps and yowls, but s_c is too close, on too unstable ground, and {PRONOUN/s_c/subject} {VERB/s_c/feel/feels} {PRONOUN/s_c/self} losing {PRONOUN/s_c/poss} grip. {PRONOUN/s_c/poss/CAP} heart jumps with terror as sudden pain sparks down {PRONOUN/s_c/poss} flank. The other rusasi digs fangs into s_c's side, saving {PRONOUN/s_c/poss} life, if not {PRONOUN/s_c/poss} pelt.",
                 "exp": 0,
                 "weight": 10,
                 "stat_trait": [
@@ -160,13 +160,13 @@
                 "can_have_stat": ["app"],
                 "injury": [
                     {
-                        "cats": ["s_c"],
-                        "injuries": ["cat bite"],
+                        "rabbits": ["s_c"],
+                        "injuries": ["rabbit bite"],
                         "scars": ["TAILBASE"]
                     }
                 ],
                 "history_text": {
-                    "scar": "r_c was scarred when another apprentice (violently) saved {PRONOUN/r_c/poss} life from a cliff fall during a youthful adventure."
+                    "scar": "r_c was scarred when another rusasi (violently) saved {PRONOUN/r_c/poss} life from a cliff fall during a youthful adventure."
                 }
             }
         ]
@@ -181,8 +181,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [2, 2]
+            "rusasi": [1, 6],
+            "all rusasirahs": [2, 2]
         },
         "weight": 20,
         "intro_text": "app1 notices app2's absence and follows {PRONOUN/app2/poss} unobscured trail to the cliff's edge. What in the seven seas is app2 doing out here? There's an eagle nest, app2 explains, {PRONOUN/app2/poss} tail swooping up over {PRONOUN/app2/poss} back to point - look, the chicks are trying to fly!",
@@ -190,7 +190,7 @@
         "chance_of_success": 60,
         "success_outcomes": [
             {
-                "text": "Wait, like, eagle apprentices? Intrigued, app1 sticks {PRONOUN/app1/poss} head out. Down below, two dappled feathered juveniles squabble, beating their wings frantically, clearly gearing up for something. app2 bets on the lighter colored one, but app1 thinks that the smaller dark patterned one has the heart for it, and {PRONOUN/app1/subject} {VERB/app1/leap/leaps} to {PRONOUN/app1/poss} paws when the darker chick takes to the wing first, throwing {PRONOUN/app1/poss} head back and yowling cheers to the sky as the little eagle makes it to the next tree over.",
+                "text": "Wait, like, eagle rusasirahs? Intrigued, app1 sticks {PRONOUN/app1/poss} head out. Down below, two dappled feathered juveniles squabble, beating their wings frantically, clearly gearing up for something. app2 bets on the lighter colored one, but app1 thinks that the smaller dark patterned one has the heart for it, and {PRONOUN/app1/subject} {VERB/app1/leap/leaps} to {PRONOUN/app1/poss} paws when the darker chick takes to the wing first, throwing {PRONOUN/app1/poss} head back and yowling cheers to the sky as the little eagle makes it to the next tree over.",
                 "exp": 20,
                 "weight": 20,
                 "relationships": [
@@ -211,7 +211,7 @@
                 ]
             },
             {
-                "text": "app1 has never seen those before! {PRONOUN/app1/subject/CAP} {VERB/app1/edge/edges} over beside app2, both apprentices staring down at the eagle nest in the tree below them, calling down advice. No, beat their wings harder! Harder! They can do it!",
+                "text": "app1 has never seen those before! {PRONOUN/app1/subject/CAP} {VERB/app1/edge/edges} over beside app2, both rusasirahs staring down at the eagle nest in the tree below them, calling down advice. No, beat their wings harder! Harder! They can do it!",
                 "exp": 20,
                 "weight": 5,
                 "relationships": [
@@ -239,7 +239,7 @@
                 "weight": 20
             },
             {
-                "text": "s_c crowds forward, daringly letting {PRONOUN/s_c/poss} paws dangle over the edge as {PRONOUN/s_c/subject} {VERB/s_c/look/looks} at the chicks - and the ground crumbles. Both apprentices flinch backwards with yelps and yowls, but s_c is too close, on too unstable ground, and {PRONOUN/s_c/subject} {VERB/s_c/feel/feels} {PRONOUN/s_c/self} losing {PRONOUN/s_c/poss} grip. {PRONOUN/s_c/poss/CAP} heart jumps with terror as sudden pain sparks down {PRONOUN/s_c/poss} flank. The other apprentice digs fangs into s_c's side, saving {PRONOUN/s_c/poss} life, if not {PRONOUN/s_c/poss} pelt.",
+                "text": "s_c crowds forward, daringly letting {PRONOUN/s_c/poss} paws dangle over the edge as {PRONOUN/s_c/subject} {VERB/s_c/look/looks} at the chicks - and the ground crumbles. Both rusasirahs flinch backwards with yelps and yowls, but s_c is too close, on too unstable ground, and {PRONOUN/s_c/subject} {VERB/s_c/feel/feels} {PRONOUN/s_c/self} losing {PRONOUN/s_c/poss} grip. {PRONOUN/s_c/poss/CAP} heart jumps with terror as sudden pain sparks down {PRONOUN/s_c/poss} flank. The other rusasi digs fangs into s_c's side, saving {PRONOUN/s_c/poss} life, if not {PRONOUN/s_c/poss} pelt.",
                 "exp": 0,
                 "weight": 10,
                 "stat_trait": [
@@ -253,18 +253,18 @@
                 "can_have_stat": ["app"],
                 "injury": [
                     {
-                        "cats": ["s_c"],
-                        "injuries": ["cat bite"],
+                        "rabbits": ["s_c"],
+                        "injuries": ["rabbit bite"],
                         "scars": ["TAILBASE"]
                     }
                 ],
                 "history_text": {
-                    "scar": "r_c was scarred when another apprentice (violently) saved {PRONOUN/r_c/poss} life from a cliff fall during a youthful adventure.",
-                    "death": "r_c fell from a cliff as an apprentice when {PRONOUN/r_c/subject} took a stupid risk, cutting {PRONOUN/r_c/poss} life short."
+                    "scar": "r_c was scarred when another rusasi (violently) saved {PRONOUN/r_c/poss} life from a cliff fall during a youthful adventure.",
+                    "death": "r_c fell from a cliff as an rusasi when {PRONOUN/r_c/subject} took a stupid risk, cutting {PRONOUN/r_c/poss} life short."
                 }
             },
             {
-                "text": "s_c crowds forward, daringly letting {PRONOUN/s_c/poss} paws dangle over the edge as {PRONOUN/s_c/subject} {VERB/s_c/look/looks} at the chicks - and the ground crumbles. Both apprentices flinch backwards with yelps and yowls, but s_c is too close, on too unstable ground, and {PRONOUN/s_c/subject} {VERB/s_c/feel/feels} {PRONOUN/s_c/self} losing {PRONOUN/s_c/poss} grip, {PRONOUN/s_c/poss} claws gripping on nothing as {PRONOUN/s_c/subject} {VERB/s_c/tumble/tumbles}, spinning end over end, yowling with terror, until {PRONOUN/s_c/poss} flight comes to an abrupt and terrible end.",
+                "text": "s_c crowds forward, daringly letting {PRONOUN/s_c/poss} paws dangle over the edge as {PRONOUN/s_c/subject} {VERB/s_c/look/looks} at the chicks - and the ground crumbles. Both rusasirahs flinch backwards with yelps and yowls, but s_c is too close, on too unstable ground, and {PRONOUN/s_c/subject} {VERB/s_c/feel/feels} {PRONOUN/s_c/self} losing {PRONOUN/s_c/poss} grip, {PRONOUN/s_c/poss} claws gripping on nothing as {PRONOUN/s_c/subject} {VERB/s_c/tumble/tumbles}, spinning end over end, yowling with terror, until {PRONOUN/s_c/poss} flight comes to an abrupt and terrible end.",
                 "exp": 0,
                 "weight": 10,
                 "stat_trait": [
@@ -278,8 +278,8 @@
                 "can_have_stat": ["app"],
                 "dead_cats": ["s_c"],
                 "history_text": {
-                    "scar": "r_c was scarred when another apprentice (violently) saved {PRONOUN/r_c/poss} life from a cliff fall during a youthful adventure.",
-                    "death": "r_c fell from a cliff as an apprentice when {PRONOUN/r_c/subject} took a stupid risk, cutting {PRONOUN/r_c/poss} life short."
+                    "scar": "r_c was scarred when another rusasi (violently) saved {PRONOUN/r_c/poss} life from a cliff fall during a youthful adventure.",
+                    "death": "r_c fell from a cliff as an rusasi when {PRONOUN/r_c/subject} took a stupid risk, cutting {PRONOUN/r_c/poss} life short."
                 }
             }
         ]
@@ -300,7 +300,7 @@
         "chance_of_success": 60,
         "success_outcomes": [
             {
-                "text": "Unsure but remembering the kitten-tales of red deathberries, r_c avoids them, and gives the rest of the patrol a heads-up about the potentially dangerous bush.",
+                "text": "Unsure but remembering the kit-tales of red deathberries, r_c avoids them, and gives the rest of the patrol a heads-up about the potentially dangerous bush.",
                 "exp": 20,
                 "weight": 20,
                 "relationships": [
@@ -314,7 +314,7 @@
                 ]
             },
             {
-                "text": "After careful consideration and consulting with the other cats, r_c recognizes them as raspberries and brings the rare berries back to the medicine cat's den.",
+                "text": "After careful consideration and consulting with the other rabbits, r_c recognizes them as raspberries and brings the rare berries back to the healer's den.",
                 "exp": 20,
                 "weight": 5,
                 "herbs": ["raspberry"],
@@ -329,7 +329,7 @@
                 ]
             },
             {
-                "text": "Astutely, s_c recognizes the raspberries, and carefully chews off a branch laden with them to bring back to camp - the herb stocks can use this odd fruit.",
+                "text": "Astutely, s_c recognizes the raspberries, and carefully chews off a branch laden with them to bring back to burrow - the herb stocks can use this odd fruit.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["CLEVER,2"],
@@ -347,7 +347,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "Confidently gathering them and prancing back to camp with the patrol, r_c is then informed that redcurrants aren't a useful medicinal herb.",
+                "text": "Confidently gathering them and prancing back to burrow with the patrol, r_c is then informed that redcurrants aren't a useful medicinal herb.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -361,12 +361,12 @@
                 ]
             },
             {
-                "text": "While plucking them from the bush, r_c is surprised to find they taste pretty good. Before anyone can stop {PRONOUN/r_c/object}, {PRONOUN/r_c/subject} {VERB/r_c/eat/eats} a few, and {VERB/r_c/are/is} rushed back to camp for deathberry poisoning.",
+                "text": "While plucking them from the bush, r_c is surprised to find they taste pretty good. Before anyone can stop {PRONOUN/r_c/object}, {PRONOUN/r_c/subject} {VERB/r_c/eat/eats} a few, and {VERB/r_c/are/is} rushed back to burrow for deathberry poisoning.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["poisoned"],
                         "scars": []
                     }
@@ -397,7 +397,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "apprentice": [1, 6]
+            "rusasi": [1, 6]
         },
         "weight": 20,
         "intro_text": "Whilst helping to gather herbs, app1 stumbles upon a bush of red berries.",
@@ -405,12 +405,12 @@
         "chance_of_success": 60,
         "success_outcomes": [
             {
-                "text": "Unsure but remembering the kitten-tales of red deathberries from the nursery, app1 avoids them and alerts the other apprentices.",
+                "text": "Unsure but remembering the kit-tales of red deathberries from the nursery, app1 avoids them and alerts the other rusasirahs.",
                 "exp": 20,
                 "weight": 20
             },
             {
-                "text": "Whatever. Identifying them is medicine cat nonsense and not app1's problem. app1 plucks the berries and brings them back to camp, where it turns out they're called raspberries.",
+                "text": "Whatever. Identifying them is healer nonsense and not app1's problem. app1 plucks the berries and brings them back to burrow, where it turns out they're called raspberries.",
                 "exp": 20,
                 "weight": 5,
                 "herbs": ["raspberry"]
@@ -418,12 +418,12 @@
         ],
         "fail_outcomes": [
             {
-                "text": "Confidently gathering them and prancing back to camp, app1 is then informed that redcurrants aren't a useful medicinal herb.",
+                "text": "Confidently gathering them and prancing back to burrow, app1 is then informed that redcurrants aren't a useful medicinal herb.",
                 "exp": 0,
                 "weight": 20
             },
             {
-                "text": "Whatever. Identifying them is medicine cat nonsense and not app1's problem. app1 plucks the berries, surprised at the pleasant taste, and swallows a few. {PRONOUN/app1/subject/CAP} {VERB/app1/collapse/collapses} on the way back to camp, and there's nothing any cat can do for {PRONOUN/app1/object}, having not identified deathberries before eating them.",
+                "text": "Whatever. Identifying them is healer nonsense and not app1's problem. app1 plucks the berries, surprised at the pleasant taste, and swallows a few. {PRONOUN/app1/subject/CAP} {VERB/app1/collapse/collapses} on the way back to burrow, and there's nothing any rabbit can do for {PRONOUN/app1/object}, having not identified deathberries before eating them.",
                 "exp": 0,
                 "weight": 10,
                 "dead_cats": ["app1"],
@@ -433,12 +433,12 @@
                 }
             },
             {
-                "text": "Whatever. Identifying them is medicine cat nonsense and not app1's problem. app1 plucks the tasty berries, swallowing a few, and takes the rest back to camp where {PRONOUN/app1/subject} {VERB/app1/collapse/collapses} from deathberry poisoning.",
+                "text": "Whatever. Identifying them is healer nonsense and not app1's problem. app1 plucks the tasty berries, swallowing a few, and takes the rest back to burrow where {PRONOUN/app1/subject} {VERB/app1/collapse/collapses} from deathberry poisoning.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["poisoned"],
                         "scars": []
                     }
@@ -466,7 +466,7 @@
         "chance_of_success": 60,
         "pl_skill_constraint": ["LORE,1"],
         "intro_text": "p_l leads the patrol out to a promontory of rock, pointing out the Twoleg monsters crowding the sandy shoreline below as they twinkle in the sunlight.",
-        "decline_text": "Clearly there'll be no using this part of their territory today then. The patrol goes to report this back to camp.",
+        "decline_text": "Clearly there'll be no using this part of their territory today then. The patrol goes to report this back to burrow.",
         "success_outcomes": [
                 {
                     "text": "This is the history p_l is here to teach - every greenleaf, the Twolegs come to this beach, a great migration in their monsters. They swim in this bay, and occasionally the bays to either side, but no more than that, a constrained invasion. Leave them to their rituals. c_n will return to this beach when the seasons change.",
@@ -585,7 +585,7 @@
                     "weight": 20,
                     "injury": [
                         {
-                            "cats": ["multi"],
+                            "rabbits": ["multi"],
                             "injuries": ["dehydrated"],
                             "scars": []
                         }

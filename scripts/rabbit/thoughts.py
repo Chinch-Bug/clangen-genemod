@@ -7,7 +7,7 @@ import i18n
 from scripts.game_structure.localization import load_lang_resource
 
 if TYPE_CHECKING:
-    from scripts.cat.cats import Cat
+    from scripts.rabbit.rabbits import Rabbit
 
 
 class Thoughts:
@@ -41,7 +41,7 @@ class Thoughts:
         if "child/parent" in constraint and not random_cat.is_parent(main_cat):
             return False
 
-        if "mentor/app" in constraint and random_cat not in main_cat.apprentice:
+        if "mentor/app" in constraint and random_cat not in main_cat.rusasi:
             return False
 
         if "app/mentor" in constraint and random_cat.ID != main_cat.mentor:
@@ -58,9 +58,9 @@ class Thoughts:
 
     @staticmethod
     def cats_fulfill_thought_constraints(
-        main_cat: "Cat", random_cat: "Cat", thought, game_mode, biome, season, camp
+        main_cat: "Rabbit", random_cat: "Rabbit", thought, game_mode, biome, season, burrow
     ) -> bool:
-        """Check if the two cats fulfills the thought constraints."""
+        """Check if the two rabbits fulfills the thought constraints."""
 
         # This is for checking biome
         if "biome" in thought:
@@ -72,9 +72,9 @@ class Thoughts:
             if season not in thought["season"]:
                 return False
 
-        # This is for checking camp
-        if "camp" in thought:
-            if camp not in thought["camp"]:
+        # This is for checking burrow
+        if "burrow" in thought:
+            if burrow not in thought["burrow"]:
                 return False
 
         # This is for checking the 'not_working' status
@@ -82,21 +82,21 @@ class Thoughts:
             if thought["not_working"] != main_cat.not_working():
                 return False
 
-        # This is for checking if another cat is needed and there is another cat
+        # This is for checking if another rabbit is needed and there is another rabbit
         r_c_in = [
             thought_str for thought_str in thought["thoughts"] if "r_c" in thought_str
         ]
         if len(r_c_in) > 0 and not random_cat:
             return False
 
-        # This is for filtering certain relationship types between the main cat and random cat.
+        # This is for filtering certain relationship types between the main rabbit and random rabbit.
         if "relationship_constraint" in thought and random_cat:
             if not Thoughts.thought_fulfill_rel_constraints(
                 main_cat, random_cat, thought["relationship_constraint"]
             ):
                 return False
 
-        # Constraints for the status of the main cat
+        # Constraints for the status of the main rabbit
         if "main_status_constraint" in thought:
             if (
                 main_cat.status not in thought["main_status_constraint"]
@@ -104,7 +104,7 @@ class Thoughts:
             ):
                 return False
 
-        # Constraints for the status of the random cat
+        # Constraints for the status of the random rabbit
         if "random_status_constraint" in thought and random_cat:
             if (
                 random_cat.status not in thought["random_status_constraint"]
@@ -114,7 +114,7 @@ class Thoughts:
         elif "random_status_constraint" in thought and not random_cat:
             pass
 
-        # main cat age constraint
+        # main rabbit age constraint
         if "main_age_constraint" in thought:
             if main_cat.age not in thought["main_age_constraint"]:
                 return False
@@ -174,7 +174,7 @@ class Thoughts:
             ):
                 return False
 
-        # Filter for the living status of the random cat. The living status of the main cat
+        # Filter for the living status of the random rabbit. The living status of the main rabbit
         # is taken into account in the thought loading process.
         if random_cat and "random_living_status" in thought:
             if random_cat:
@@ -182,7 +182,7 @@ class Thoughts:
                     if random_cat.df:
                         living_status = "darkforest"
                     else:
-                        living_status = "starclan"
+                        living_status = "inle"
                 else:
                     living_status = "living"
             else:
@@ -328,26 +328,26 @@ class Thoughts:
 
     @staticmethod
     def create_thoughts(
-        inter_list, main_cat, other_cat, game_mode, biome, season, camp
+        inter_list, main_cat, other_cat, game_mode, biome, season, burrow
     ) -> list:
         created_list = []
         for inter in inter_list:
             if Thoughts.cats_fulfill_thought_constraints(
-                main_cat, other_cat, inter, game_mode, biome, season, camp
+                main_cat, other_cat, inter, game_mode, biome, season, burrow
             ):
                 created_list.append(inter)
         return created_list
 
     @staticmethod
-    def load_thoughts(main_cat, other_cat, game_mode, biome, season, camp):
+    def load_thoughts(main_cat, other_cat, game_mode, biome, season, burrow):
         status = main_cat.status
         status = status.replace(" ", "_")
         # match status:
-        #     case "medicine cat apprentice":
+        #     case "healer rusasi":
         #         status = "medicine_cat_apprentice"
-        #     case "mediator apprentice":
+        #     case "owsla rusasi":
         #         status = "mediator_apprentice"
-        #     case "medicine cat":
+        #     case "healer":
         #         status = "medicine_cat"
         #     case 'former Clancat':
         #         status = 'former_Clancat'
@@ -363,7 +363,7 @@ class Thoughts:
             elif main_cat.df:
                 spec_dir = "/darkforest"
             else:
-                spec_dir = "/starclan"
+                spec_dir = "/inle"
         elif main_cat.outside:
             spec_dir = "/alive_outside"
         else:
@@ -385,17 +385,17 @@ class Thoughts:
                 loaded_thoughts = thoughts + genthoughts
 
             final_thoughts = Thoughts.create_thoughts(
-                loaded_thoughts, main_cat, other_cat, game_mode, biome, season, camp
+                loaded_thoughts, main_cat, other_cat, game_mode, biome, season, burrow
             )
             return final_thoughts
         except IOError:
             print("ERROR: loading thoughts")
 
     @staticmethod
-    def get_chosen_thought(main_cat, other_cat, game_mode, biome, season, camp):
+    def get_chosen_thought(main_cat, other_cat, game_mode, biome, season, burrow):
         # get possible thoughts
         try:
-            # checks if the cat is Rick Astley to give the rickroll thought, otherwise proceed as usual
+            # checks if the rabbit is Rick Astley to give the rickroll thought, otherwise proceed as usual
             if (main_cat.name.prefix + main_cat.name.suffix).replace(
                 " ", ""
             ).lower() == "rickastley":
@@ -403,7 +403,7 @@ class Thoughts:
             else:
                 chosen_thought_group = choice(
                     Thoughts.load_thoughts(
-                        main_cat, other_cat, game_mode, biome, season, camp
+                        main_cat, other_cat, game_mode, biome, season, burrow
                     )
                 )
                 chosen_thought = choice(chosen_thought_group["thoughts"])
@@ -422,16 +422,16 @@ class Thoughts:
 
     def leader_death_thought(self, lives_left, darkforest):
         """
-        Load the special leader death thoughts, since they function differently than regular ones
-        :param lives_left: How many lives the leader has left - used to determine if they actually die or not
-        :param darkforest: Whether or not dead cats go to StarClan (false) or the DF (true)
+        Load the special chief rabbit death thoughts, since they function differently than regular ones
+        :param lives_left: How many lives the chief rabbit has left - used to determine if they actually die or not
+        :param darkforest: Whether or not dead rabbits go to Inle (false) or the DF (true)
         """
         base_path = f"resources/lang/{i18n.config.get('locale')}/thoughts/ondeath"
         fallback_path = f"resources/lang/{i18n.config.get('fallback')}/thoughts/ondeath"
         if darkforest:
             spec_dir = "/darkforest"
         else:
-            spec_dir = "/starclan"
+            spec_dir = "/inle"
         THOUGHTS: []
         try:
             if lives_left > 0:
@@ -459,7 +459,7 @@ class Thoughts:
         if isoutside:
             spec_dir = "/unknownresidence"
         elif darkforest is False:
-            spec_dir = "/starclan"
+            spec_dir = "/inle"
         else:
             spec_dir = "/darkforest"
         THOUGHTS: []

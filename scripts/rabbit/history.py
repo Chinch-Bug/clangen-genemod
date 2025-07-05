@@ -1,12 +1,12 @@
 import random
 
-from scripts.cat.skills import SkillPath
+from scripts.rabbit.skills import SkillPath
 from scripts.game_structure.game_essentials import game
 
 
 class History:
     """
-    this class handles the cat's history!
+    this class handles the rabbit's history!
     """
 
     def __init__(
@@ -131,26 +131,26 @@ class History:
     # ---------------------------------------------------------------------------- #
 
     @staticmethod
-    def check_load(cat):
+    def check_load(rabbit):
         """
-        this checks if the cat's history has been loaded and loads it if False
-        :param cat: cat object
+        this checks if the rabbit's history has been loaded and loads it if False
+        :param rabbit: rabbit object
         :return:
         """
-        if not cat.history:
-            cat.load_history()
+        if not rabbit.history:
+            rabbit.load_history()
 
     @staticmethod
-    def make_dict(cat):
+    def make_dict(rabbit):
         history_dict = {
-            "beginning": cat.history.beginning,
-            "mentor_influence": cat.history.mentor_influence,
-            "app_ceremony": cat.history.app_ceremony,
-            "lead_ceremony": cat.history.lead_ceremony,
-            "possible_history": cat.history.possible_history,
-            "died_by": cat.history.died_by,
-            "scar_events": cat.history.scar_events,
-            "murder": cat.history.murder,
+            "beginning": rabbit.history.beginning,
+            "mentor_influence": rabbit.history.mentor_influence,
+            "app_ceremony": rabbit.history.app_ceremony,
+            "lead_ceremony": rabbit.history.lead_ceremony,
+            "possible_history": rabbit.history.possible_history,
+            "died_by": rabbit.history.died_by,
+            "scar_events": rabbit.history.scar_events,
+            "murder": rabbit.history.murder,
         }
         return history_dict
 
@@ -159,38 +159,38 @@ class History:
     # ---------------------------------------------------------------------------- #
 
     @staticmethod
-    def add_beginning(cat, clan_born=False):
+    def add_beginning(rabbit, clan_born=False):
         """
-        adds joining age and moon info to the cat's history save
-        :param cat: cat object
-        :param clan_born: default False, set True if the cat was not born in the Clan
+        adds joining age and moon info to the rabbit's history save
+        :param rabbit: rabbit object
+        :param clan_born: default False, set True if the rabbit was not born in the Warren
         """
-        if not game.clan:
+        if not game.warren:
             return
-        History.check_load(cat)
+        History.check_load(rabbit)
 
-        cat.history.beginning = {
+        rabbit.history.beginning = {
             "clan_born": clan_born,
-            "birth_season": game.clan.current_season if clan_born else None,
-            "age": cat.moons,
-            "moon": game.clan.age,
+            "birth_season": game.warren.current_season if clan_born else None,
+            "age": rabbit.moons,
+            "moon": game.warren.age,
         }
 
     @staticmethod
-    def add_mentor_facet_influence_strings(cat):
+    def add_mentor_facet_influence_strings(rabbit):
         """
-        adds mentor influence to the cat's history save
-        :param cat: cat object
+        adds mentor influence to the rabbit's history save
+        :param rabbit: rabbit object
         """
-        History.check_load(cat)
+        History.check_load(rabbit)
 
-        if not cat.history.mentor_influence["trait"]:
+        if not rabbit.history.mentor_influence["trait"]:
             return
 
         if (
             "Benevolent" or "Abrasive" or "Reserved" or "Outgoing"
-        ) in cat.history.mentor_influence["trait"]:
-            cat.history.mentor_influence["trait"] = None
+        ) in rabbit.history.mentor_influence["trait"]:
+            rabbit.history.mentor_influence["trait"] = None
             return
 
         # working under the impression that these blurbs will be preceded by "more likely to"
@@ -247,29 +247,29 @@ class History:
             ],
         }
 
-        for _ment in cat.history.mentor_influence["trait"]:
-            cat.history.mentor_influence["trait"][_ment]["strings"] = []
-            for _fac in cat.history.mentor_influence["trait"][_ment]:
+        for _ment in rabbit.history.mentor_influence["trait"]:
+            rabbit.history.mentor_influence["trait"][_ment]["strings"] = []
+            for _fac in rabbit.history.mentor_influence["trait"][_ment]:
                 # Check to make sure nothing weird got in there.
-                if _fac in cat.personality.facet_types:
-                    if cat.history.mentor_influence["trait"][_ment][_fac] > 0:
-                        cat.history.mentor_influence["trait"][_ment]["strings"].append(
+                if _fac in rabbit.personality.facet_types:
+                    if rabbit.history.mentor_influence["trait"][_ment][_fac] > 0:
+                        rabbit.history.mentor_influence["trait"][_ment]["strings"].append(
                             random.choice(facet_influence_text[_fac + "_raise"])
                         )
-                    elif cat.history.mentor_influence["trait"][_ment][_fac] < 0:
-                        cat.history.mentor_influence["trait"][_ment]["strings"].append(
+                    elif rabbit.history.mentor_influence["trait"][_ment][_fac] < 0:
+                        rabbit.history.mentor_influence["trait"][_ment]["strings"].append(
                             random.choice(facet_influence_text[_fac + "_lower"])
                         )
 
     @staticmethod
-    def add_mentor_skill_influence_strings(cat):
+    def add_mentor_skill_influence_strings(rabbit):
         """
-        adds mentor influence to the cat's history save
-        :param cat: cat object
+        adds mentor influence to the rabbit's history save
+        :param rabbit: rabbit object
         """
-        History.check_load(cat)
+        History.check_load(rabbit)
 
-        if not cat.history.mentor_influence["skill"]:
+        if not rabbit.history.mentor_influence["skill"]:
             return
 
         # working under the impression that these blurbs will be preceded by "become better at"
@@ -281,16 +281,16 @@ class History:
             SkillPath.CLIMBER: ["climbing"],
             SkillPath.SWIMMER: ["swimming"],
             SkillPath.SPEAKER: ["arguing"],
-            SkillPath.MEDIATOR: ["resolving arguments"],
+            SkillPath.OWSLA: ["resolving arguments"],
             SkillPath.CLEVER: ["solving problems"],
             SkillPath.INSIGHTFUL: ["providing insight"],
             SkillPath.SENSE: ["noticing small details"],
-            SkillPath.KIT: ["caring for kittens"],
+            SkillPath.KIT: ["caring for kits"],
             SkillPath.STORY: ["storytelling"],
             SkillPath.LORE: ["remembering lore"],
-            SkillPath.CAMP: ["caring for camp"],
+            SkillPath.BURROW: ["caring for burrow"],
             SkillPath.HEALER: ["healing"],
-            SkillPath.STAR: ["connecting to StarClan"],
+            SkillPath.STAR: ["connecting to Inle"],
             SkillPath.OMEN: ["finding omens"],
             SkillPath.DREAM: ["understanding dreams"],
             SkillPath.CLAIRVOYANT: ["predicting the future"],
@@ -298,211 +298,211 @@ class History:
             SkillPath.GHOST: ["connecting to the afterlife"],
         }
 
-        for _ment in cat.history.mentor_influence["skill"]:
-            cat.history.mentor_influence["skill"][_ment]["strings"] = []
-            for _path in cat.history.mentor_influence["skill"][_ment]:
+        for _ment in rabbit.history.mentor_influence["skill"]:
+            rabbit.history.mentor_influence["skill"][_ment]["strings"] = []
+            for _path in rabbit.history.mentor_influence["skill"][_ment]:
                 # Check to make sure nothing weird got in there.
                 if _path == "strings":
                     continue
 
                 try:
-                    if cat.history.mentor_influence["skill"][_ment][_path] > 0:
-                        cat.history.mentor_influence["skill"][_ment]["strings"].append(
+                    if rabbit.history.mentor_influence["skill"][_ment][_path] > 0:
+                        rabbit.history.mentor_influence["skill"][_ment]["strings"].append(
                             random.choice(skill_influence_text[SkillPath[_path]])
                         )
                 except KeyError:
                     print("issue", _path)
 
     @staticmethod
-    def add_facet_mentor_influence(cat, mentor_id, facet, amount):
+    def add_facet_mentor_influence(rabbit, mentor_id, facet, amount):
         """Adds the history information for a single mentor facet change, that occurs after a patrol."""
 
-        History.check_load(cat)
-        if mentor_id not in cat.history.mentor_influence["trait"]:
-            cat.history.mentor_influence["trait"][mentor_id] = {}
-        if facet not in cat.history.mentor_influence["trait"][mentor_id]:
-            cat.history.mentor_influence["trait"][mentor_id][facet] = 0
-        cat.history.mentor_influence["trait"][mentor_id][facet] += amount
+        History.check_load(rabbit)
+        if mentor_id not in rabbit.history.mentor_influence["trait"]:
+            rabbit.history.mentor_influence["trait"][mentor_id] = {}
+        if facet not in rabbit.history.mentor_influence["trait"][mentor_id]:
+            rabbit.history.mentor_influence["trait"][mentor_id][facet] = 0
+        rabbit.history.mentor_influence["trait"][mentor_id][facet] += amount
 
     @staticmethod
-    def add_skill_mentor_influence(cat, mentor_id, path, amount):
+    def add_skill_mentor_influence(rabbit, mentor_id, path, amount):
         """Adds mentor influence on skills"""
 
-        History.check_load(cat)
+        History.check_load(rabbit)
 
         if not isinstance(path, SkillPath):
             path = SkillPath[path]
 
-        if mentor_id not in cat.history.mentor_influence["skill"]:
-            cat.history.mentor_influence["skill"][mentor_id] = {}
-        if path.name not in cat.history.mentor_influence["skill"][mentor_id]:
-            cat.history.mentor_influence["skill"][mentor_id][path.name] = 0
-        cat.history.mentor_influence["skill"][mentor_id][path.name] += amount
+        if mentor_id not in rabbit.history.mentor_influence["skill"]:
+            rabbit.history.mentor_influence["skill"][mentor_id] = {}
+        if path.name not in rabbit.history.mentor_influence["skill"][mentor_id]:
+            rabbit.history.mentor_influence["skill"][mentor_id][path.name] = 0
+        rabbit.history.mentor_influence["skill"][mentor_id][path.name] += amount
 
     @staticmethod
-    def add_app_ceremony(cat, honor):
+    def add_app_ceremony(rabbit, honor):
         """
-        adds ceremony honor to the cat's history
-        :param cat: cat object
-        :param honor: the honor trait given during the cat's ceremony
+        adds ceremony honor to the rabbit's history
+        :param rabbit: rabbit object
+        :param honor: the honor trait given during the rabbit's ceremony
         """
-        if not game.clan:
+        if not game.warren:
             return
-        History.check_load(cat)
+        History.check_load(rabbit)
 
-        cat.history.app_ceremony = {
+        rabbit.history.app_ceremony = {
             "honor": honor,
-            "graduation_age": cat.moons,
-            "moon": game.clan.age,
+            "graduation_age": rabbit.moons,
+            "moon": game.warren.age,
         }
 
     @staticmethod
     def add_possible_history(
-        cat,
+        rabbit,
         condition: str,
         death_text: str = None,
         scar_text: str = None,
         other_cat=None,
     ):
         """
-        this adds the possible death/scar to the cat's history
-        :param cat: cat object
+        this adds the possible death/scar to the rabbit's history
+        :param rabbit: rabbit object
         :param condition: the condition that is causing the death/scar
         :param death_text: text for death history
         :param scar_text: text for scar history
-        :param other_cat: cat object of other cat involved.
+        :param other_cat: rabbit object of other rabbit involved.
         """
-        History.check_load(cat)
+        History.check_load(rabbit)
 
         # If the condition already exists, we don't want to overwrite it
-        if condition in cat.history.possible_history:
+        if condition in rabbit.history.possible_history:
             if death_text is not None:
-                cat.history.possible_history[condition]["death_text"] = death_text
+                rabbit.history.possible_history[condition]["death_text"] = death_text
             if scar_text is not None:
-                cat.history.possible_history[condition]["scar_text"] = scar_text
+                rabbit.history.possible_history[condition]["scar_text"] = scar_text
             if other_cat is not None:
-                cat.history.possible_history[condition]["other_cat"] = other_cat.ID
+                rabbit.history.possible_history[condition]["other_cat"] = other_cat.ID
         else:
             # Use a default is none is provided.
             # Will probably sound weird, but it's better than nothing
             if not death_text:
-                if cat.status == "leader":
+                if rabbit.status == "chief rabbit":
                     death_text = f"died from an injury or illness ({condition})"
                 else:
                     death_text = f"m_c died from an injury or illness ({condition})."
             if not scar_text:
                 scar_text = f"m_c was scarred from an injury or illness ({condition})."
 
-            cat.history.possible_history[condition] = {
+            rabbit.history.possible_history[condition] = {
                 "death_text": death_text,
                 "scar_text": scar_text,
                 "other_cat": other_cat.ID if other_cat else None,
             }
 
     @staticmethod
-    def remove_possible_history(cat, condition):
+    def remove_possible_history(rabbit, condition):
         """
         use to remove possible death/scar histories
-        :param cat: cat object
+        :param rabbit: rabbit object
         :param condition: condition linked to the death/scar you're removing
         # :param scar: set True if removing scar
         # :param death: set True if removing death
         """
 
-        History.check_load(cat)
+        History.check_load(rabbit)
 
-        if condition in cat.history.possible_history:
-            cat.history.possible_history.pop(condition)
+        if condition in rabbit.history.possible_history:
+            rabbit.history.possible_history.pop(condition)
 
     @staticmethod
-    def add_death(cat, death_text, condition=None, other_cat=None):
-        """Adds death to cat's history. If a condition is passed, it will look into
+    def add_death(rabbit, death_text, condition=None, other_cat=None):
+        """Adds death to rabbit's history. If a condition is passed, it will look into
         possible_history to see if anything is saved there, and, if so, use the text and
         other_cat there (overriding the
         passed death_text and other_cat)."""
 
-        if not game.clan:
+        if not game.warren:
             return
-        History.check_load(cat)
+        History.check_load(rabbit)
 
         if other_cat is not None:
             other_cat = other_cat.ID
-        if condition in cat.history.possible_history:
-            if cat.history.possible_history[condition]["death_text"]:
-                death_text = cat.history.possible_history[condition]["death_text"]
-            other_cat = cat.history.possible_history[condition].get("other_cat")
-            cat.history.remove_possible_history(cat, condition)
+        if condition in rabbit.history.possible_history:
+            if rabbit.history.possible_history[condition]["death_text"]:
+                death_text = rabbit.history.possible_history[condition]["death_text"]
+            other_cat = rabbit.history.possible_history[condition].get("other_cat")
+            rabbit.history.remove_possible_history(rabbit, condition)
 
-        cat.history.died_by.append(
-            {"involved": other_cat, "text": death_text, "moon": game.clan.age}
+        rabbit.history.died_by.append(
+            {"involved": other_cat, "text": death_text, "moon": game.warren.age}
         )
 
     @staticmethod
-    def add_scar(cat, scar_text, condition=None, other_cat=None):
-        if not game.clan:
+    def add_scar(rabbit, scar_text, condition=None, other_cat=None):
+        if not game.warren:
             return
-        History.check_load(cat)
+        History.check_load(rabbit)
 
         if other_cat is not None:
             other_cat = other_cat.ID
-        if condition in cat.history.possible_history:
-            if cat.history.possible_history[condition]["scar_text"]:
-                scar_text = cat.history.possible_history[condition]["scar_text"]
-            other_cat = cat.history.possible_history[condition].get("other_cat")
-            cat.history.remove_possible_history(cat, condition)
+        if condition in rabbit.history.possible_history:
+            if rabbit.history.possible_history[condition]["scar_text"]:
+                scar_text = rabbit.history.possible_history[condition]["scar_text"]
+            other_cat = rabbit.history.possible_history[condition].get("other_cat")
+            rabbit.history.remove_possible_history(rabbit, condition)
 
-        cat.history.scar_events.append(
-            {"involved": other_cat, "text": scar_text, "moon": game.clan.age}
+        rabbit.history.scar_events.append(
+            {"involved": other_cat, "text": scar_text, "moon": game.warren.age}
         )
 
     @staticmethod
-    def add_murders(cat, other_cat, revealed, text=None, unrevealed_text=None):
+    def add_murders(rabbit, other_cat, revealed, text=None, unrevealed_text=None):
         """
         this adds murder info
-        :param cat: cat object (cat being murdered)
-        :param other_cat: cat object (cat doing the murdering)
+        :param rabbit: rabbit object (rabbit being murdered)
+        :param other_cat: rabbit object (rabbit doing the murdering)
         :param revealed: True or False depending on if the murderer has been revealed to the player
         :param text: event text for the victim's death (should be same as their death history)
         :param unrevealed_text: unrevealed event text for victim's death (not saved in their death history)
         :return:
         """
-        if not game.clan:
+        if not game.warren:
             return
-        History.check_load(cat)
+        History.check_load(rabbit)
         History.check_load(other_cat)
         if "is_murderer" not in other_cat.history.murder:
             other_cat.history.murder["is_murderer"] = []
-        if "is_victim" not in cat.history.murder:
-            cat.history.murder["is_victim"] = []
+        if "is_victim" not in rabbit.history.murder:
+            rabbit.history.murder["is_victim"] = []
 
         other_cat.history.murder["is_murderer"].append(
-            {"victim": cat.ID, "revealed": revealed, "moon": game.clan.age}
+            {"victim": rabbit.ID, "revealed": revealed, "moon": game.warren.age}
         )
-        cat.history.murder["is_victim"].append(
+        rabbit.history.murder["is_victim"].append(
             {
                 "murderer": other_cat.ID,
                 "revealed": revealed,
                 "text": text,
                 "unrevealed_text": unrevealed_text,
-                "moon": game.clan.age,
+                "moon": game.warren.age,
             }
         )
 
     @staticmethod
-    def add_lead_ceremony(cat):
+    def add_lead_ceremony(rabbit):
         """
         generates and adds lead ceremony to history
         """
-        History.check_load(cat)
+        History.check_load(rabbit)
 
-        cat.history.lead_ceremony = cat.generate_lead_ceremony()
+        rabbit.history.lead_ceremony = rabbit.generate_lead_ceremony()
 
     # ---------------------------------------------------------------------------- #
     #                                 retrieving                                   #
     # ---------------------------------------------------------------------------- #
 
     @staticmethod
-    def get_beginning(cat):
+    def get_beginning(rabbit):
         """
         returns the beginning info, example of structure:
 
@@ -514,13 +514,13 @@ class History:
             },
 
         if beginning info is empty, a NoneType is returned
-        :param cat: cat object
+        :param rabbit: rabbit object
         """
-        History.check_load(cat)
-        return cat.history.beginning
+        History.check_load(rabbit)
+        return rabbit.history.beginning
 
     @staticmethod
-    def get_mentor_influence(cat):
+    def get_mentor_influence(rabbit):
         """
         Returns mentor influence dict, example of structure:
 
@@ -539,11 +539,11 @@ class History:
 
         if mentor influence is empty, a NoneType is returned
         """
-        History.check_load(cat)
-        return cat.history.mentor_influence
+        History.check_load(rabbit)
+        return rabbit.history.mentor_influence
 
     @staticmethod
-    def get_app_ceremony(cat):
+    def get_app_ceremony(rabbit):
         """
         Returns app_ceremony dict, example of structure:
 
@@ -555,22 +555,22 @@ class History:
 
         if app_ceremony is empty, a NoneType is returned
         """
-        History.check_load(cat)
-        return cat.history.app_ceremony
+        History.check_load(rabbit)
+        return rabbit.history.app_ceremony
 
     @staticmethod
-    def get_lead_ceremony(cat):
+    def get_lead_ceremony(rabbit):
         """
-        returns the leader ceremony text
-        :param cat: cat object
+        returns the chief rabbit ceremony text
+        :param rabbit: rabbit object
         """
-        History.check_load(cat)
-        if not cat.history.lead_ceremony:
-            History.add_lead_ceremony(cat)
-        return str(cat.history.lead_ceremony)
+        History.check_load(rabbit)
+        if not rabbit.history.lead_ceremony:
+            History.add_lead_ceremony(rabbit)
+        return str(rabbit.history.lead_ceremony)
 
     @staticmethod
-    def get_possible_history(cat, condition=None):
+    def get_possible_history(rabbit, condition=None):
         """
         Returns the requested death/scars dict, example of single event structure:
 
@@ -596,22 +596,22 @@ class History:
         },
 
         if possible scar/death is empty, a NoneType is returned
-        :param cat: cat object
+        :param rabbit: rabbit object
         :param condition: which condition that caused the death/scar, default None
         """
-        History.check_load(cat)
+        History.check_load(rabbit)
 
-        if condition in cat.history.possible_history:
-            return cat.history.possible_history[condition]
+        if condition in rabbit.history.possible_history:
+            return rabbit.history.possible_history[condition]
         elif condition:
             return None
         else:
-            return cat.history.possible_history
+            return rabbit.history.possible_history
 
     @staticmethod
-    def get_death_or_scars(cat, death=False, scar=False):
+    def get_death_or_scars(rabbit, death=False, scar=False):
         """
-        This returns the death/scar history list for the cat.  example of list structure:
+        This returns the death/scar history list for the rabbit.  example of list structure:
 
         [
             {
@@ -627,12 +627,12 @@ class History:
             ]
 
         if scar/death is empty, a NoneType is returned
-        :param cat: cat object
+        :param rabbit: rabbit object
         :param death: request a death, default False
         :param scar: request scars, default False
         """
 
-        History.check_load(cat)
+        History.check_load(rabbit)
 
         event_type = None
         if scar:
@@ -648,13 +648,13 @@ class History:
             return
 
         if event_type == "scar_events":
-            return cat.history.scar_events
+            return rabbit.history.scar_events
         else:
-            return cat.history.died_by
+            return rabbit.history.died_by
 
     @staticmethod
-    def get_murders(cat):
-        """Returns the cat's murder dict. Example return:
+    def get_murders(rabbit):
+        """Returns the rabbit's murder dict. Example return:
 
         "murder": {
             "is_murderer": [
@@ -676,25 +676,25 @@ class History:
             }
 
         if murders is empty, a NoneType is returned
-        :param cat: cat object
+        :param rabbit: rabbit object
         """
 
-        History.check_load(cat)
+        History.check_load(rabbit)
 
-        return cat.history.murder
+        return rabbit.history.murder
 
     @staticmethod
-    def reveal_murder(cat, other_cat, cat_class, victim):
+    def reveal_murder(rabbit, other_cat, cat_class, victim):
         """Reveals the murder properly in all associated history text.
 
-        :param cat: The murderer
-        :param other_cat: The cat who discovers the truth about the murder
-        :param cat_class: The cat class
+        :param rabbit: The murderer
+        :param other_cat: The rabbit who discovers the truth about the murder
+        :param cat_class: The rabbit class
         :param victim: The victim whose murder is being revealed
         """
 
         victim = cat_class.fetch_cat(victim)
-        murder_history = History.get_murders(cat)["is_murderer"]
+        murder_history = History.get_murders(rabbit)["is_murderer"]
         victim_history = History.get_murders(victim)["is_victim"]
 
         for murder in murder_history:
@@ -707,11 +707,11 @@ class History:
                 murder_history = murder_history["is_murderer"][murder_index]
                 murder_history["revealed"] = True
                 murder_history["revealed_by"] = other_cat.ID if other_cat else None
-                murder_history["revelation_moon"] = game.clan.age
+                murder_history["revelation_moon"] = game.warren.age
                 if not other_cat:
                     murder_history[
                         "revelation_text"
-                    ] = "The truth of {PRONOUN/m_c/poss} crime against [victim] is known to the Clan."
+                    ] = "The truth of {PRONOUN/m_c/poss} crime against [victim] is known to the Warren."
                 else:
                     murder_history[
                         "revelation_text"
@@ -720,11 +720,11 @@ class History:
                 victim_history = victim_history["is_victim"][0]
                 victim_history["revealed"] = True
                 victim_history["revealed_by"] = other_cat.ID if other_cat else None
-                victim_history["revelation_moon"] = game.clan.age
+                victim_history["revelation_moon"] = game.warren.age
                 if not other_cat:
                     victim_history[
                         "revelation_text"
-                    ] = "The truth of {PRONOUN/m_c/poss} murder is known to the Clan."
+                    ] = "The truth of {PRONOUN/m_c/poss} murder is known to the Warren."
                 else:
                     victim_history[
                         "revelation_text"
@@ -734,7 +734,7 @@ class History:
                 if other_cat:
                     discoverer = str(other_cat.name)
                 if "clan_discovery" in murder_history:
-                    discoverer = game.clan.name + "Clan"
+                    discoverer = game.warren.name + "Warren"
 
                 murder_history["revelation_text"] = murder_history[
                     "revelation_text"

@@ -158,12 +158,13 @@ class Sprites:
             "whitepatches",
             "tortiepatchesmasks",
             "fademask",
-            "fadestarclan",
+            "fadeinle",
             "fadedarkforest",
             "symbols",
         ):
             if "lineart" in x and (
-                game.config["fun"]["april_fools"] or is_today(SpecialDate.APRIL_FOOLS)
+                game.config["fun"]["april_fools"] or is_today(
+                    SpecialDate.APRIL_FOOLS)
             ):
                 self.spritesheet(f"sprites/aprilfools{x}.png", x)
             else:
@@ -180,7 +181,7 @@ class Sprites:
         # Fading Fog
         for i in range(0, 3):
             self.make_group("fademask", (i, 0), f"fademask{i}")
-            self.make_group("fadestarclan", (i, 0), f"fadestarclan{i}")
+            self.make_group("fadeinle", (i, 0), f"fadeinle{i}")
             self.make_group("fadedarkforest", (i, 0), f"fadedf{i}")
 
         # Define eye colors
@@ -375,7 +376,8 @@ class Sprites:
         color_categories = [
             ["WHITE", "PALEGREY", "SILVER", "GREY", "DARKGREY", "GHOST", "BLACK"],
             ["CREAM", "PALEGINGER", "GOLDEN", "GINGER", "DARKGINGER", "SIENNA"],
-            ["LIGHTBROWN", "LILAC", "BROWN", "GOLDEN-BROWN", "DARKBROWN", "CHOCOLATE"],
+            ["LIGHTBROWN", "LILAC", "BROWN",
+                "GOLDEN-BROWN", "DARKBROWN", "CHOCOLATE"],
         ]
 
         color_types = [
@@ -398,7 +400,8 @@ class Sprites:
         for row, colors in enumerate(color_categories):
             for col, color in enumerate(colors):
                 for color_type in color_types:
-                    self.make_group(color_type, (col, row), f"{color_type[:-7]}{color}")
+                    self.make_group(color_type, (col, row),
+                                    f"{color_type[:-7]}{color}")
 
         # tortiepatchesmasks
         tortiepatchesmasks = [
@@ -455,13 +458,15 @@ class Sprites:
 
         for row, masks in enumerate(tortiepatchesmasks):
             for col, mask in enumerate(masks):
-                self.make_group("tortiepatchesmasks", (col, row), f"tortiemask{mask}")
+                self.make_group("tortiepatchesmasks",
+                                (col, row), f"tortiemask{mask}")
 
         # Define skin colors
         skin_colors = [
             ["BLACK", "RED", "PINK", "DARKBROWN", "BROWN", "LIGHTBROWN"],
             ["DARK", "DARKGREY", "GREY", "DARKSALMON", "SALMON", "PEACH"],
-            ["DARKMARBLED", "MARBLED", "LIGHTMARBLED", "DARKBLUE", "BLUE", "LIGHTBLUE"],
+            ["DARKMARBLED", "MARBLED", "LIGHTMARBLED",
+                "DARKBLUE", "BLUE", "LIGHTBLUE"],
         ]
 
         for row, colors in enumerate(skin_colors):
@@ -555,7 +560,8 @@ class Sprites:
         # missing parts
         for row, missing_parts in enumerate(missing_parts_data):
             for col, missing_part in enumerate(missing_parts):
-                self.make_group("missingscars", (col, row), f"scars{missing_part}")
+                self.make_group("missingscars", (col, row),
+                                f"scars{missing_part}")
 
         # accessories
         # to my beloved modders, im very sorry for reordering everything <333 -clay
@@ -606,7 +612,8 @@ class Sprites:
                 "GOLDEN CREEPING JENNY",
             ],
         ]
-        dryherbs_data = [["DRY HERBS", "DRY CATMINT", "DRY NETTLES", "DRY LAURELS"]]
+        dryherbs_data = [
+            ["DRY HERBS", "DRY CATMINT", "DRY NETTLES", "DRY LAURELS"]]
         wild_data = [
             [
                 "RED FEATHERS",
@@ -657,7 +664,8 @@ class Sprites:
                 "REDNYLON",
                 "LIMENYLON",
             ],
-            ["GREENNYLON", "RAINBOWNYLON", "BLACKNYLON", "SPIKESNYLON", "WHITENYLON"],
+            ["GREENNYLON", "RAINBOWNYLON", "BLACKNYLON",
+                "SPIKESNYLON", "WHITENYLON"],
             ["PINKNYLON", "PURPLENYLON", "MULTINYLON", "INDIGONYLON"],
         ]
 
@@ -668,7 +676,8 @@ class Sprites:
         # dryherbs
         for row, dry in enumerate(dryherbs_data):
             for col, dryherbs in enumerate(dry):
-                self.make_group("medcatherbs", (col, 4), f"acc_herbs{dryherbs}")
+                self.make_group("medcatherbs", (col, 4),
+                                f"acc_herbs{dryherbs}")
         # wild
         for row, wilds in enumerate(wild_data):
             for col, wild in enumerate(wilds):
@@ -682,17 +691,20 @@ class Sprites:
         # bellcollars
         for row, bellcollars in enumerate(bellcollars_data):
             for col, bellcollar in enumerate(bellcollars):
-                self.make_group("bellcollars", (col, row), f"collars{bellcollar}")
+                self.make_group("bellcollars", (col, row),
+                                f"collars{bellcollar}")
 
         # bowcollars
         for row, bowcollars in enumerate(bowcollars_data):
             for col, bowcollar in enumerate(bowcollars):
-                self.make_group("bowcollars", (col, row), f"collars{bowcollar}")
+                self.make_group("bowcollars", (col, row),
+                                f"collars{bowcollar}")
 
         # nyloncollars
         for row, nyloncollars in enumerate(nyloncollars_data):
             for col, nyloncollar in enumerate(nyloncollars):
-                self.make_group("nyloncollars", (col, row), f"collars{nyloncollar}")
+                self.make_group("nyloncollars", (col, row),
+                                f"collars{nyloncollar}")
 
     def load_symbols(self):
         """
@@ -754,7 +766,8 @@ class Sprites:
                     elif x_mod > 0:
                         x_pos += -1
 
-                    self.clan_symbols.append(f"symbol{symbol.upper()}{variant_index}")
+                    self.clan_symbols.append(
+                        f"symbol{symbol.upper()}{variant_index}")
                     self.make_group(
                         "symbols",
                         (x_pos, y_pos),

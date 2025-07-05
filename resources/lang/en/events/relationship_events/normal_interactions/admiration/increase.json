@@ -9,7 +9,7 @@
 			"m_c was flattered by r_c's politeness this morning.",
 			"m_c is impressed by r_c helping others today.",
 			"m_c sees r_c help a Clanmate get unstuck from some brambles.",
-			"m_c notices that r_c is fixing a damaged part of the camp without being asked.",
+			"m_c notices that r_c is fixing a damaged part of the burrow without being asked.",
 			"m_c sees a glimmer of determination in r_c's eyes.",
 			"m_c is motivated by r_c's big smile.",
 			"r_c's good morning to m_c meant a lot to {PRONOUN/m_c/object}.",
@@ -34,7 +34,7 @@
 			"m_c and r_c come up with a catchy song together.",
 			"m_c listens to r_c's big plans for the day.",
 			"r_c points out to m_c that a spider is in {PRONOUN/m_c/poss} nest before {PRONOUN/m_c/subject} {VERB/m_c/sit/sits} in it.",
-			"m_c and r_c work together to lead a scary bug out of the camp."
+			"m_c and r_c work together to lead a scary bug out of the burrow."
 		],
 		"reaction_random_cat": {
 			"admiration": "increase"
@@ -46,7 +46,7 @@
 		"interactions": [
 			"m_c wants to be just like r_c someday.",
 			"m_c really looks up to r_c!",
-			"m_c is awed by how much r_c has done for the Clan.",
+			"m_c is awed by how much r_c has done for the Warren.",
 			"m_c is really impressed by all of r_c's accomplishments.",
 			"m_c wants to hold an important position like r_c.",
 			"m_c dreams about being like m_c in the future.",
@@ -55,16 +55,16 @@
 			"m_c daydreams about sharing a suffix with r_c."
 		],
 		"main_status_constraint": [
-			"apprentice",
-			"mediator apprentice",
-			"medicine cat apprentice"
+			"rusasi",
+			"owsla rusasi",
+			"healer rusasi"
 		],
 		"random_status_constraint": [
 			"elder",
-			"leader",
-			"mediator",
-			"deputy",
-			"medicine cat"
+			"chief rabbit",
+			"owsla",
+			"captain",
+			"healer"
 		]
 	},
 	{
@@ -106,22 +106,22 @@
 		"id": "admire_med_inc_medium1",
 		"interactions": [
 			"m_c watched r_c show kindness and compassion towards {PRONOUN/r_c/poss} patients.",
-			"m_c caught a glimpse of r_c caring for a wounded warrior with confidence and grace.",
-			"m_c spent some time hanging out with r_c in the medicine den.",
-			"m_c hopes r_c knows how grateful {PRONOUN/m_c/subject} {VERB/m_c/are/is} to have {PRONOUN/r_c/object} as a medicine cat.",
+			"m_c caught a glimpse of r_c caring for a wounded rabbit with confidence and grace.",
+			"m_c spent some time hanging out with r_c in the healer den.",
+			"m_c hopes r_c knows how grateful {PRONOUN/m_c/subject} {VERB/m_c/are/is} to have {PRONOUN/r_c/object} as a healer.",
 			"m_c listens to r_c talk about herbs and healing methods with awe.",
 			"m_c sees the skill with which r_c heals a Clanmate.",
 			"m_c is surprised by how quickly r_c can heal a Clanmate.",
 			"m_c asks r_c about prophecies and they have a long chat.",
-			"m_c finds comfort in the quiet of r_c's medicine den.",
+			"m_c finds comfort in the quiet of r_c's healer den.",
 			"m_c is thankful for r_c's patience.",
 			"r_c soothes m_c about a bad dream {PRONOUN/m_c/subject} had.",
 			"Despite m_c being a bit dramatic about the thorn in {PRONOUN/m_c/poss} paw, r_c treats {PRONOUN/m_c/object} gently.",
 			"m_c went to r_c for advice about a dream {PRONOUN/m_c/subject} had."
 		],
 		"random_status_constraint": [
-			"medicine cat",
-			"medicine cat apprentice"
+			"healer",
+			"healer rusasi"
 		],
 		"also_influences": {
 			"comfortable": "increase",
@@ -134,22 +134,22 @@
 		"interactions": [
 			"m_c escorted r_c so {PRONOUN/r_c/subject} could gather herbs.",
 			"m_c thought of r_c on the last patrol and brought a herb back with {PRONOUN/m_c/object}.",
-			"m_c notices that r_c is trying really hard to be a great medicine cat.",
-			"m_c is suddenly struck by the thought of how much r_c does to keep the Clan healthy.",
-			"m_c thanks r_c for keeping the Clan healthy.",
+			"m_c notices that r_c is trying really hard to be a great healer.",
+			"m_c is suddenly struck by the thought of how much r_c does to keep the Warren healthy.",
+			"m_c thanks r_c for keeping the Warren healthy.",
 			"m_c watches r_c sort herbs as {PRONOUN/m_c/subject} {VERB/m_c/chat/chats} about how {PRONOUN/r_c/poss} day has gone.",
 			"m_c lets r_c know that {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} about to go out and asks if {PRONOUN/m_c/subject} {VERB/m_c/need/needs} to watch for any herbs.",
 			"m_c asks r_c if there's any herbs {PRONOUN/m_c/subject} should look out for while {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} out on patrol later."
 		],
 		"main_status_constraint": [
-			"apprentice",
-			"warrior",
-			"deputy",
-			"leader"
+			"rusasi",
+			"rabbit",
+			"captain",
+			"chief rabbit"
 		],
 		"random_status_constraint": [
-			"medicine cat apprentice",
-			"medicine cat"
+			"healer rusasi",
+			"healer"
 		],
 		"reaction_random_cat": {
 			"platonic": "increase",
@@ -173,18 +173,18 @@
 			"m_c always looks at r_c with wonder."
 		],
 		"main_status_constraint": [
-			"kitten"
+			"kit"
 		],
 		"random_status_constraint": [
 			"elder",
-			"apprentice",
-			"warrior",
-			"mediator apprentice",
-			"mediator",
-			"medicine cat apprentice",
-			"medicine cat",
-			"deputy",
-			"leader"
+			"rusasi",
+			"rabbit",
+			"owsla rusasi",
+			"owsla",
+			"healer rusasi",
+			"healer",
+			"captain",
+			"chief rabbit"
 		]
 	},
 	{
@@ -197,21 +197,21 @@
 			"m_c does anything {PRONOUN/m_c/subject} can to make r_c proud."
 		],
 		"main_status_constraint": [
-			"kitten"
+			"kit"
 		],
 		"relationship_constraint": [
 			"admiration_20"
 		],
 		"random_status_constraint": [
 			"elder",
-			"apprentice",
-			"warrior",
-			"mediator apprentice",
-			"mediator",
-			"medicine cat apprentice",
-			"medicine cat",
-			"deputy",
-			"leader"
+			"rusasi",
+			"rabbit",
+			"owsla rusasi",
+			"owsla",
+			"healer rusasi",
+			"healer",
+			"captain",
+			"chief rabbit"
 		],
 		"reaction_random_cat": {
 			"platonic": "increase"
@@ -228,7 +228,7 @@
 			"m_c remembers being like r_c and is impressed by {PRONOUN/r_c/poss} talent.",
 			"m_c thinks that r_c is so young, but so brave.",
 			"When talking with r_c about {PRONOUN/r_c/poss} future, m_c sees {PRONOUN/r_c/poss} passion.",
-			"m_c thinks that r_c will grow up to be an excellent member of the Clan.",
+			"m_c thinks that r_c will grow up to be an excellent member of the Warren.",
 			"m_c thinks r_c has a bright future ahead of {PRONOUN/r_c/object}."
 		],
 		"relationship_constraint": [
@@ -236,17 +236,17 @@
 		],
 		"main_status_constraint": [
 			"elder",
-			"warrior",
-			"mediator",
-			"medicine cat",
-			"deputy",
-			"leader"
+			"rabbit",
+			"owsla",
+			"healer",
+			"captain",
+			"chief rabbit"
 		],
 		"random_status_constraint": [
-			"kitten",
-			"apprentice",
-			"mediator apprentice",
-			"medicine cat apprentice"
+			"kit",
+			"rusasi",
+			"owsla rusasi",
+			"healer rusasi"
 		]
 	},
 	{
@@ -264,11 +264,11 @@
 			"admiration_30"
 		],
 		"main_status_constraint": [
-			"warrior",
-			"mediator",
-			"medicine cat",
-			"deputy",
-			"leader"
+			"rabbit",
+			"owsla",
+			"healer",
+			"captain",
+			"chief rabbit"
 		],
 		"random_status_constraint": [
 			"elder"
@@ -295,19 +295,19 @@
 			"admiration_60"
 		],
 		"main_status_constraint": [
-			"warrior",
-			"mediator",
-			"medicine cat",
-			"deputy",
-			"leader"
+			"rabbit",
+			"owsla",
+			"healer",
+			"captain",
+			"chief rabbit"
 		],
 		"random_status_constraint": [
 			"elder",
-			"warrior",
-			"mediator",
-			"medicine cat",
-			"deputy",
-			"leader"
+			"rabbit",
+			"owsla",
+			"healer",
+			"captain",
+			"chief rabbit"
 		],
 		"also_influences": {
 			"jealousy": "increase"
@@ -322,18 +322,18 @@
 			"m_c is impressed by r_c's competence in any situation.",
 			"m_c is amazed at how skilled r_c really is.",
 			"m_c overhears r_c educating Clanmates about their fallen ancestors.",
-			"m_c thinks the Clan's ancestors smile upon r_c.",
-			"m_c is proud to be in the same Clan as r_c.",
+			"m_c thinks the Warren's ancestors smile upon r_c.",
+			"m_c is proud to be in the same Warren as r_c.",
 			"m_c can't believe how talented r_c is!"
 		],
 		"random_status_constraint": [
-			"warrior",
-			"apprentice",
-			"mediator apprentice",
-			"medicine cat apprentice",
-			"medicine cat",
-			"deputy",
-			"leader"
+			"rabbit",
+			"rusasi",
+			"owsla rusasi",
+			"healer rusasi",
+			"healer",
+			"captain",
+			"chief rabbit"
 		]
 	},
 	{
@@ -348,7 +348,7 @@
 			"m_c and r_c strive to be like one another.",
 			"m_c and r_c learn a lot about each other when they're stuck in a den during a storm.",
 			"A cloud parts over m_c and r_c, shining a light on them. They interpret this as a sign that they are meant for great things soon.",
-			"When discussing the future, m_c and r_c discuss the policies they'd implement in a Clan of their own.",
+			"When discussing the future, m_c and r_c discuss the policies they'd implement in a Warren of their own.",
 			"m_c and r_c always challenge one another.",
 			"m_c and r_c always learn something new when they're together.",
 			"An injured butterfly lands in front of m_c and r_c. They take turns nurturing it for a few days until it can fly again."
@@ -379,13 +379,13 @@
 		"id": "admire_kit_inc_high1",
 		"intensity": "high",
 		"interactions": [
-			"m_c asks r_c if {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} really going to be the leader someday."
+			"m_c asks r_c if {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} really going to be the chief rabbit someday."
 		],
 		"main_status_constraint": [
-			"kitten"
+			"kit"
 		],
 		"random_status_constraint": [
-			"deputy"
+			"captain"
 		],
 		"reaction_random_cat": {
 			"platonic": "increase"

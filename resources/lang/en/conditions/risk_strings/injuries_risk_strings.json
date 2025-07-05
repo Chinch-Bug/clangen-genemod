@@ -11,9 +11,9 @@
             "m_c's skin is starting to feel feverish around the area of {PRONOUN/m_c/poss} wound. It looks a bit worse than it did yesterday."
         ]
     },
-    "cat bite": {
+    "rabbit bite": {
         "an infected wound": [
-            "The cat bite feels hot - m_c winces as r_c cleans it. It's becoming infected.",
+            "The rabbit bite feels hot - m_c winces as r_c cleans it. It's becoming infected.",
             "m_c's skin is starting to feel feverish around the area of {PRONOUN/m_c/poss} wound. It looks a bit worse than it did yesterday."
         ]
     },
@@ -59,7 +59,7 @@
     },
     "mangled leg": {
         "an infected wound": [
-            "r_c wonders if {PRONOUN/r_c/subject} might need to consult with a medicine cat from another Clan. m_c's mangled leg has become infected and swollen - and {PRONOUN/r_c/subject} {VERB/r_c/need/needs} more ideas.",
+            "r_c wonders if {PRONOUN/r_c/subject} might need to consult with a healer from another Warren. m_c's mangled leg has become infected and swollen - and {PRONOUN/r_c/subject} {VERB/r_c/need/needs} more ideas.",
             "As if the injury wasn't bad enough, the skin around m_c's mangled leg has started to swell and feel feverish."
         ]
     },
@@ -118,7 +118,7 @@
             "Along with a bit of coughing, m_c has developed a runny nose from the water in {PRONOUN/m_c/poss} lungs."
         ],
         "whitecough": [
-            "m_c hasn't managed to avoid whitecough, r_c tells {PRONOUN/m_c/object}. The water {PRONOUN/m_c/subject} inhaled must have been carrying illness with it. {PRONOUN/m_c/subject/CAP}{VERB/m_c/'re/'s} confined to camp while {PRONOUN/m_c/subject} {VERB/m_c/recover/recovers}.",
+            "m_c hasn't managed to avoid whitecough, r_c tells {PRONOUN/m_c/object}. The water {PRONOUN/m_c/subject} inhaled must have been carrying illness with it. {PRONOUN/m_c/subject/CAP}{VERB/m_c/'re/'s} confined to burrow while {PRONOUN/m_c/subject} {VERB/m_c/recover/recovers}.",
             "m_c's hacking no longer seems to be just from the water {PRONOUN/m_c/subject} inhaled. It must have progressed into whitecough.",
             "With {PRONOUN/m_c/poss} lungs already weakened by the water still in them, m_c is unable to fight off the whitecough that finds {PRONOUN/m_c/object}."
         ]

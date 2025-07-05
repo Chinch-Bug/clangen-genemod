@@ -11,12 +11,12 @@
         "event_text": "m_c was practicing {PRONOUN/m_c/poss} tree climbing skills when {PRONOUN/m_c/subject} slipped from a branch. {PRONOUN/m_c/subject/CAP}'{VERB/m_c/re/s} brought home badly injured.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -30,7 +30,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred after falling from a tree.",
@@ -51,12 +51,12 @@
         "event_text": "m_c was hunting on a night patrol and was nearly carried off by an owl. {PRONOUN/m_c/subject/CAP}'{VERB/m_c/re/s} left badly scratched.",
         "m_c": {
             "status": [
-                "apprentice"
+                "rusasi"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -69,7 +69,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred after an owl tried to carry {PRONOUN/m_c/object} off.",
@@ -90,16 +90,16 @@
         "event_text": "r_c dared m_c to climb one of the tallest trees in the territory. The dare left m_c tumbling to the ground and r_c sprinting home for help. ",
         "m_c": {
             "status": [
-                "apprentice",
-                "medicine cat apprentice",
-                "mediator apprentice"
+                "rusasi",
+                "healer rusasi",
+                "owsla rusasi"
             ]
         },
         "r_c": {
             "status": [
-                "apprentice",
-                "medicine cat apprentice",
-                "mediator apprentice"
+                "rusasi",
+                "healer rusasi",
+                "owsla rusasi"
             ],
             "trait": [
                 "adventurous",
@@ -119,7 +119,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -133,7 +133,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after falling from a tall tree and breaking {PRONOUN/m_c/poss} back.",
@@ -197,7 +197,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -230,7 +230,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -243,7 +243,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a falling tree.",
@@ -273,7 +273,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -290,7 +290,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c's pelt was burned by a forest fire.",
@@ -308,7 +308,7 @@
             "greenleaf"
         ],
         "weight": 30,
-        "event_text": "The dry greenleaf weather led to a fire starting in camp. m_c dove into the nursery to save r_c and was burnt in the process.",
+        "event_text": "The dry greenleaf weather led to a fire starting in burrow. m_c dove into the nursery to save r_c and was burnt in the process.",
         "m_c": {
             "age": [
                 "adolescent",
@@ -336,17 +336,17 @@
         },
         "r_c": {
             "age": [
-                "kitten",
+                "kit",
                 "newborn"
             ],
             "status": [
-                "kitten",
+                "kit",
                 "newborn"
             ]
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -362,7 +362,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "scar": "m_c's pelt was burned by a forest fire.",
@@ -411,12 +411,12 @@
             "leaf-bare"
         ],
         "weight": 30,
-        "event_text": "m_c and r_c played on the ice-covered pond near camp. They weren't quick enough to react to the sound of cracking beneath them, but m_c managed to drag r_c out of the freezing water.",
+        "event_text": "m_c and r_c played on the ice-covered pond near burrow. They weren't quick enough to react to the sound of cracking beneath them, but m_c managed to drag r_c out of the freezing water.",
         "m_c": {
             "status": [
-                "apprentice",
-                "medicine cat apprentice",
-                "mediator apprentice"
+                "rusasi",
+                "healer rusasi",
+                "owsla rusasi"
             ],
             "relationship_status": [
                 "platonic_10"
@@ -435,9 +435,9 @@
         },
         "r_c": {
             "status": [
-                "apprentice",
-                "medicine cat apprentice",
-                "mediator apprentice"
+                "rusasi",
+                "healer rusasi",
+                "owsla rusasi"
             ],
             "not_skill": [
                 "SWIMMER,1"
@@ -457,7 +457,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c",
                     "r_c"
                 ],
@@ -469,7 +469,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c",
                     "r_c"
                 ],
@@ -507,10 +507,10 @@
         "event_text": "m_c ran into a branch while following a scent trail. {PRONOUN/m_c/subject/CAP} returned home with an aching head.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "trait": [
                 "ambitious",
@@ -526,7 +526,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [
@@ -559,7 +559,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "injuries": [

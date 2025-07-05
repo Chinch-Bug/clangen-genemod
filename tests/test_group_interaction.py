@@ -4,8 +4,8 @@ import unittest
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
 
-from scripts.cat.cats import Cat, Relationship
-from scripts.cat.skills import Skill, SkillPath
+from scripts.rabbit.rabbits import Rabbit, Relationship
+from scripts.rabbit.skills import Skill, SkillPath
 from scripts.events_module.relationship.group_events import (
     GroupEvents,
     GroupInteraction,
@@ -16,12 +16,12 @@ class MainCatFiltering(unittest.TestCase):
     def test_main_cat_status_one(self):
         # given
         group_events = GroupEvents()
-        main_cat = Cat()
-        main_cat.status = "warrior"
+        main_cat = Rabbit()
+        main_cat.status = "rabbit"
         group_events.abbreviations_cat_id = {"m_c": main_cat.ID}
 
         interaction1 = GroupInteraction("1")
-        interaction1.status_constraint = {"m_c": ["warrior"]}
+        interaction1.status_constraint = {"m_c": ["rabbit"]}
 
         interaction2 = GroupInteraction("2")
         interaction2.status_constraint = {"m_c": ["healer"]}
@@ -39,15 +39,15 @@ class MainCatFiltering(unittest.TestCase):
     def test_main_cat_status_all(self):
         # given
         group_events = GroupEvents()
-        main_cat = Cat()
-        main_cat.status = "warrior"
+        main_cat = Rabbit()
+        main_cat.status = "rabbit"
         group_events.abbreviations_cat_id = {"m_c": main_cat.ID}
 
         interaction1 = GroupInteraction("1")
-        interaction1.status_constraint = {"m_c": ["warrior"]}
+        interaction1.status_constraint = {"m_c": ["rabbit"]}
 
         interaction2 = GroupInteraction("2")
-        interaction2.status_constraint = {"m_c": ["healer", "warrior"]}
+        interaction2.status_constraint = {"m_c": ["healer", "rabbit"]}
 
         # when
         all_interactions = [interaction1, interaction2]
@@ -63,7 +63,7 @@ class MainCatFiltering(unittest.TestCase):
     def test_main_cat_trait_one(self):
         # given
         group_events = GroupEvents()
-        main_cat = Cat()
+        main_cat = Rabbit()
         main_cat.personality.trait = "calm"
         group_events.abbreviations_cat_id = {"m_c": main_cat.ID}
 
@@ -86,7 +86,7 @@ class MainCatFiltering(unittest.TestCase):
     def test_main_cat_trait_all(self):
         # given
         group_events = GroupEvents()
-        main_cat = Cat()
+        main_cat = Rabbit()
         main_cat.personality.trait = "calm"
         group_events.abbreviations_cat_id = {"m_c": main_cat.ID}
 
@@ -110,7 +110,7 @@ class MainCatFiltering(unittest.TestCase):
     def test_main_cat_skill_one(self):
         # given
         group_events = GroupEvents()
-        main_cat = Cat(moons=40)
+        main_cat = Rabbit(moons=40)
         main_cat.skills.primary = Skill(SkillPath.HUNTER, points=9)
         group_events.abbreviations_cat_id = {"m_c": main_cat.ID}
 
@@ -133,7 +133,7 @@ class MainCatFiltering(unittest.TestCase):
     def test_main_cat_skill_all(self):
         # given
         group_events = GroupEvents()
-        main_cat = Cat()
+        main_cat = Rabbit()
         main_cat.skills.primary = Skill(SkillPath.HUNTER, 9)
         group_events.abbreviations_cat_id = {"m_c": main_cat.ID}
 
@@ -157,7 +157,7 @@ class MainCatFiltering(unittest.TestCase):
     def test_main_cat_backstory_one(self):
         # given
         group_events = GroupEvents()
-        main_cat = Cat()
+        main_cat = Rabbit()
         main_cat.backstory = "clanborn"
         group_events.abbreviations_cat_id = {"m_c": main_cat.ID}
 
@@ -180,7 +180,7 @@ class MainCatFiltering(unittest.TestCase):
     def test_main_cat_backstory_all(self):
         # given
         group_events = GroupEvents()
-        main_cat = Cat()
+        main_cat = Rabbit()
         main_cat.backstory = "clanborn"
         group_events.abbreviations_cat_id = {"m_c": main_cat.ID}
 
@@ -205,7 +205,7 @@ class MainCatFiltering(unittest.TestCase):
 class OtherFiltering(unittest.TestCase):
     def test_season_one(self):
         # given
-        main_cat = Cat()
+        main_cat = Rabbit()
         abbreviations_cat_id = {"m_c": main_cat.ID}
 
         interaction1 = GroupInteraction("1")
@@ -226,7 +226,7 @@ class OtherFiltering(unittest.TestCase):
 
     def test_season_multiple(self):
         # given
-        main_cat = Cat()
+        main_cat = Rabbit()
         abbreviations_cat_id = {"m_c": main_cat.ID}
 
         interaction1 = GroupInteraction("1")
@@ -248,7 +248,7 @@ class OtherFiltering(unittest.TestCase):
 
     def test_season_any(self):
         # given
-        main_cat = Cat()
+        main_cat = Rabbit()
         abbreviations_cat_id = {"m_c": main_cat.ID}
 
         interaction1 = GroupInteraction("1")
@@ -270,7 +270,7 @@ class OtherFiltering(unittest.TestCase):
 
     def test_biome_one(self):
         # given
-        main_cat = Cat()
+        main_cat = Rabbit()
         abbreviations_cat_id = {"m_c": main_cat.ID}
 
         interaction1 = GroupInteraction("1")
@@ -291,7 +291,7 @@ class OtherFiltering(unittest.TestCase):
 
     def test_biome_multiple(self):
         # given
-        main_cat = Cat()
+        main_cat = Rabbit()
         abbreviations_cat_id = {"m_c": main_cat.ID}
 
         interaction1 = GroupInteraction("1")
@@ -313,7 +313,7 @@ class OtherFiltering(unittest.TestCase):
 
     def test_biome_any(self):
         # given
-        main_cat = Cat()
+        main_cat = Rabbit()
         abbreviations_cat_id = {"m_c": main_cat.ID}
 
         interaction1 = GroupInteraction("1")
@@ -337,21 +337,21 @@ class OtherFiltering(unittest.TestCase):
 class Abbreviations(unittest.TestCase):
     def test_get_abbreviation_possibilities_all(self):
         # given
-        main_cat = Cat()
-        main_cat.status = "warrior"
+        main_cat = Rabbit()
+        main_cat.status = "rabbit"
 
-        random1 = Cat()
-        random1.status = "warrior"
-        random2 = Cat()
-        random2.status = "warrior"
-        random3 = Cat()
-        random3.status = "warrior"
+        random1 = Rabbit()
+        random1.status = "rabbit"
+        random2 = Rabbit()
+        random2.status = "rabbit"
+        random3 = Rabbit()
+        random3.status = "rabbit"
 
         interaction1 = GroupInteraction("1")
-        interaction1.status_constraint = {"r_c1": ["warrior"]}
+        interaction1.status_constraint = {"r_c1": ["rabbit"]}
 
         interaction2 = GroupInteraction("2")
-        interaction2.status_constraint = {"r_c1": ["healer", "warrior"]}
+        interaction2.status_constraint = {"r_c1": ["healer", "rabbit"]}
 
         # when
         all_interactions = [interaction1, interaction2]
@@ -365,27 +365,27 @@ class Abbreviations(unittest.TestCase):
 
         # then
         self.assertEqual(len(abbreviations_possibilities), 2)
-        # all cats would fit in
+        # all rabbits would fit in
         self.assertEqual(len(abbreviations_possibilities["1"]), 3)
         self.assertEqual(len(abbreviations_possibilities["2"]), 3)
 
     def test_get_abbreviation_possibilities_not_all(self):
         # given
-        main_cat = Cat()
-        main_cat.status = "warrior"
+        main_cat = Rabbit()
+        main_cat.status = "rabbit"
 
-        random1 = Cat()
-        random1.status = "warrior"
-        random2 = Cat()
-        random2.status = "warrior"
-        random3 = Cat()
-        random3.status = "medicine cat"
+        random1 = Rabbit()
+        random1.status = "rabbit"
+        random2 = Rabbit()
+        random2.status = "rabbit"
+        random3 = Rabbit()
+        random3.status = "healer"
 
         interaction1 = GroupInteraction("1")
-        interaction1.status_constraint = {"r_c1": ["warrior"]}
+        interaction1.status_constraint = {"r_c1": ["rabbit"]}
 
         interaction2 = GroupInteraction("2")
-        interaction2.status_constraint = {"r_c1": ["medicine cat"]}
+        interaction2.status_constraint = {"r_c1": ["healer"]}
 
         # when
         all_interactions = [interaction1, interaction2]
@@ -399,7 +399,7 @@ class Abbreviations(unittest.TestCase):
 
         # then
         self.assertEqual(len(abbreviations_possibilities), 2)
-        # all cats would fit in
+        # all rabbits would fit in
         self.assertEqual(len(abbreviations_possibilities["1"]["r_c1"]), 2)
         self.assertEqual(len(abbreviations_possibilities["2"]["r_c1"]), 1)
 
@@ -428,16 +428,16 @@ class Abbreviations(unittest.TestCase):
 
     def test_set_abbreviations_cats(self):
         # given
-        main_cat = Cat()
-        main_cat.status = "warrior"
+        main_cat = Rabbit()
+        main_cat.status = "rabbit"
         abbreviations_cat_id = {"m_c": main_cat.ID, "r_c1": None, "r_c2": None}
 
-        random1 = Cat()
-        random1.status = "warrior"
-        random2 = Cat()
-        random2.status = "warrior"
-        random3 = Cat()
-        random3.status = "medicine cat"
+        random1 = Rabbit()
+        random1.status = "rabbit"
+        random2 = Rabbit()
+        random2.status = "rabbit"
+        random3 = Rabbit()
+        random3.status = "healer"
 
         # when
         interaction_cats = [random1, random2, random3]
@@ -460,13 +460,13 @@ class Abbreviations(unittest.TestCase):
 class OtherCatsFiltering(unittest.TestCase):
     def test_relationship_allow_true(self):
         # given
-        parent = Cat()
-        main_cat = Cat(parent1=parent.ID)
-        main_cat.status = "warrior"
-        random1 = Cat(parent1=parent.ID)
-        random1.status = "warrior"
-        random2 = Cat()
-        random2.status = "warrior"
+        parent = Rabbit()
+        main_cat = Rabbit(parent1=parent.ID)
+        main_cat.status = "rabbit"
+        random1 = Rabbit(parent1=parent.ID)
+        random1.status = "rabbit"
+        random2 = Rabbit()
+        random2.status = "rabbit"
         abbreviations_cat_id = {
             "m_c": main_cat.ID,
             "r_c1": random1.ID,
@@ -591,13 +591,13 @@ class OtherCatsFiltering(unittest.TestCase):
 
     def test_relationship_allow_false(self):
         # given
-        parent = Cat()
-        main_cat = Cat(parent1=parent.ID)
-        main_cat.status = "warrior"
-        random1 = Cat(parent1=parent.ID)
-        random1.status = "warrior"
-        random2 = Cat()
-        random2.status = "warrior"
+        parent = Rabbit()
+        main_cat = Rabbit(parent1=parent.ID)
+        main_cat.status = "rabbit"
+        random1 = Rabbit(parent1=parent.ID)
+        random1.status = "rabbit"
+        random2 = Rabbit()
+        random2.status = "rabbit"
         abbreviations_cat_id = {
             "m_c": main_cat.ID,
             "r_c1": random1.ID,

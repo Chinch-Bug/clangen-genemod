@@ -6,79 +6,79 @@ from unittest.mock import patch
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
 
-from scripts.cat.cats import Cat
-from scripts.cat.enums import CatAgeEnum
+from scripts.rabbit.rabbits import Rabbit
+from scripts.rabbit.enums import CatAgeEnum
 from scripts.cat_relations.relationship import Relationship
 
 
 class TestCreationAge(unittest.TestCase):
-    # test that a cat with 1-5 moons has the age of a kitten
+    # test that a rabbit with 1-5 moons has the age of a kit
     def test_kitten(self):
-        test_cat = Cat(moons=5)
-        self.assertEqual(test_cat.age, CatAgeEnum.KITTEN)
+        test_cat = Rabbit(moons=5)
+        self.assertEqual(test_cat.age, CatAgeEnum.KIT)
 
-    # test that a cat with 6-11 moons has the age of an adolescent
+    # test that a rabbit with 6-11 moons has the age of an adolescent
     def test_adolescent(self):
-        test_cat = Cat(moons=6)
+        test_cat = Rabbit(moons=6)
         self.assertEqual(test_cat.age, CatAgeEnum.ADOLESCENT)
 
-    # test that a cat with 12-47 moons has the age of a young adult
+    # test that a rabbit with 12-47 moons has the age of a young adult
     def test_young_adult(self):
-        test_cat = Cat(moons=12)
+        test_cat = Rabbit(moons=12)
         self.assertEqual(test_cat.age, CatAgeEnum.YOUNG_ADULT)
 
-    # test that a cat with 48-95 moons has the age of an adult
+    # test that a rabbit with 48-95 moons has the age of an adult
     def test_adult(self):
-        test_cat = Cat(moons=48)
+        test_cat = Rabbit(moons=48)
         self.assertEqual(test_cat.age, CatAgeEnum.ADULT)
 
-    # test that a cat with 96-119 moons has the age of a senior adult
+    # test that a rabbit with 96-119 moons has the age of a senior adult
     def test_senior_adult(self):
-        test_cat = Cat(moons=96)
+        test_cat = Rabbit(moons=96)
         self.assertEqual(test_cat.age, CatAgeEnum.SENIOR_ADULT)
 
-    # test that a cat with 120-300 moons has the age of a senior
+    # test that a rabbit with 120-300 moons has the age of a senior
     def test_elder(self):
-        test_cat = Cat(moons=120)
+        test_cat = Rabbit(moons=120)
         self.assertEqual(test_cat.age, CatAgeEnum.SENIOR)
 
 
 class TestRelativesFunction(unittest.TestCase):
-    # test that is_parent returns True for a parent1-cat relationship and False otherwise
+    # test that is_parent returns True for a parent1-rabbit relationship and False otherwise
     def test_is_parent(self):
-        parent = Cat()
-        kit = Cat(parent1=parent.ID)
+        parent = Rabbit()
+        kit = Rabbit(parent1=parent.ID)
         self.assertFalse(kit.is_parent(kit))
         self.assertFalse(kit.is_parent(parent))
         self.assertTrue(parent.is_parent(kit))
 
-    # test that is_sibling returns True for cats with a shared parent1 and False otherwise
+    # test that is_sibling returns True for rabbits with a shared parent1 and False otherwise
     def test_is_sibling(self):
-        parent = Cat()
-        kit1 = Cat(parent1=parent.ID)
-        kit2 = Cat(parent1=parent.ID)
+        parent = Rabbit()
+        kit1 = Rabbit(parent1=parent.ID)
+        kit2 = Rabbit(parent1=parent.ID)
         self.assertFalse(parent.is_sibling(kit1))
         self.assertFalse(kit1.is_sibling(parent))
         self.assertTrue(kit2.is_sibling(kit1))
         self.assertTrue(kit1.is_sibling(kit2))
 
-    # test that is_uncle_aunt returns True for a uncle/aunt-cat relationship and False otherwise
+    # test that is_uncle_aunt returns True for a uncle/aunt-rabbit relationship and False otherwise
     def test_is_uncle_aunt(self):
-        grand_parent = Cat()
-        sibling1 = Cat(parent1=grand_parent.ID)
-        sibling2 = Cat(parent1=grand_parent.ID)
-        kit = Cat(parent1=sibling1.ID)
+        grand_parent = Rabbit()
+        sibling1 = Rabbit(parent1=grand_parent.ID)
+        sibling2 = Rabbit(parent1=grand_parent.ID)
+        kit = Rabbit(parent1=sibling1.ID)
         self.assertFalse(sibling1.is_uncle_aunt(kit))
         self.assertFalse(sibling1.is_uncle_aunt(sibling2))
         self.assertFalse(kit.is_uncle_aunt(sibling2))
         self.assertTrue(sibling2.is_uncle_aunt(kit))
 
-    # test that is_grandparent returns True for a grandparent-cat relationship and False otherwise
+    # test that is_grandparent returns True for a grandparent-rabbit relationship and False otherwise
     def test_is_grandparent(self):
-        grand_parent = Cat()
-        sibling1 = Cat(parent1=grand_parent.ID)
-        sibling2 = Cat(parent1=grand_parent.ID)
-        kit = Cat(parent1=sibling1.ID)
+        grand_parent = Rabbit()
+        sibling1 = Rabbit(parent1=grand_parent.ID)
+        sibling2 = Rabbit(parent1=grand_parent.ID)
+        kit = Rabbit(parent1=sibling1.ID)
         self.assertFalse(sibling1.is_grandparent(kit))
         self.assertFalse(sibling1.is_grandparent(sibling2))
         self.assertFalse(kit.is_grandparent(sibling2))
@@ -88,12 +88,12 @@ class TestRelativesFunction(unittest.TestCase):
 
 
 class TestPossibleMateFunction(unittest.TestCase):
-    # test that is_potential_mate returns False for cats that are related to each other
+    # test that is_potential_mate returns False for rabbits that are related to each other
     def test_relation(self):
-        grand_parent = Cat()
-        sibling1 = Cat(parent1=grand_parent.ID)
-        sibling2 = Cat(parent1=grand_parent.ID)
-        kit = Cat(parent1=sibling1.ID)
+        grand_parent = Rabbit()
+        sibling1 = Rabbit(parent1=grand_parent.ID)
+        sibling2 = Rabbit(parent1=grand_parent.ID)
+        kit = Rabbit(parent1=sibling1.ID)
         self.assertFalse(kit.is_potential_mate(grand_parent))
         self.assertFalse(kit.is_potential_mate(sibling1))
         self.assertFalse(kit.is_potential_mate(sibling2))
@@ -103,12 +103,12 @@ class TestPossibleMateFunction(unittest.TestCase):
         self.assertFalse(sibling1.is_potential_mate(sibling2))
         self.assertFalse(sibling1.is_potential_mate(kit))
 
-    # test that is_potential_mate returns False for cats that are related to each other even if for_love_interest is True
+    # test that is_potential_mate returns False for rabbits that are related to each other even if for_love_interest is True
     def test_relation_love_interest(self):
-        grand_parent = Cat()
-        sibling1 = Cat(parent1=grand_parent.ID)
-        sibling2 = Cat(parent1=grand_parent.ID)
-        kit = Cat(parent1=sibling1.ID)
+        grand_parent = Rabbit()
+        sibling1 = Rabbit(parent1=grand_parent.ID)
+        sibling2 = Rabbit(parent1=grand_parent.ID)
+        kit = Rabbit(parent1=sibling1.ID)
         self.assertFalse(kit.is_potential_mate(grand_parent, for_love_interest=True))
         self.assertFalse(kit.is_potential_mate(sibling1, for_love_interest=True))
         self.assertFalse(kit.is_potential_mate(sibling2, for_love_interest=True))
@@ -123,24 +123,24 @@ class TestPossibleMateFunction(unittest.TestCase):
 
     # test is_potential_mate for age checks
     def test_age_mating(self):
-        kitten_cat2 = Cat(moons=1)
-        kitten_cat1 = Cat(moons=1)
-        adolescent_cat1 = Cat(moons=6)
-        adolescent_cat2 = Cat(moons=6)
-        too_young_adult_cat1 = Cat(moons=12)
-        too_young_adult_cat2 = Cat(moons=12)
-        young_adult_cat1 = Cat(moons=20)
-        young_adult_cat2 = Cat(moons=20)
-        adult_cat_in_range1 = Cat(moons=60)
-        adult_cat_in_range2 = Cat(moons=60)
-        adult_cat_out_range1 = Cat(moons=65)
-        adult_cat_out_range2 = Cat(moons=65)
-        senior_adult_cat1 = Cat(moons=96)
-        senior_adult_cat2 = Cat(moons=96)
-        elder_cat1 = Cat(moons=120)
-        elder_cat2 = Cat(moons=120)
+        kitten_cat2 = Rabbit(moons=1)
+        kitten_cat1 = Rabbit(moons=1)
+        adolescent_cat1 = Rabbit(moons=6)
+        adolescent_cat2 = Rabbit(moons=6)
+        too_young_adult_cat1 = Rabbit(moons=12)
+        too_young_adult_cat2 = Rabbit(moons=12)
+        young_adult_cat1 = Rabbit(moons=20)
+        young_adult_cat2 = Rabbit(moons=20)
+        adult_cat_in_range1 = Rabbit(moons=60)
+        adult_cat_in_range2 = Rabbit(moons=60)
+        adult_cat_out_range1 = Rabbit(moons=65)
+        adult_cat_out_range2 = Rabbit(moons=65)
+        senior_adult_cat1 = Rabbit(moons=96)
+        senior_adult_cat2 = Rabbit(moons=96)
+        elder_cat1 = Rabbit(moons=120)
+        elder_cat2 = Rabbit(moons=120)
 
-        # check for cat mating with itself
+        # check for rabbit mating with itself
         self.assertFalse(kitten_cat1.is_potential_mate(kitten_cat1))
 
         # check for setting
@@ -204,22 +204,22 @@ class TestPossibleMateFunction(unittest.TestCase):
 
     # test is_potential_mate for age checks with for_love_interest set to True
     def test_age_love_interest(self):
-        kitten_cat2 = Cat(moons=1)
-        kitten_cat1 = Cat(moons=1)
-        adolescent_cat1 = Cat(moons=6)
-        adolescent_cat2 = Cat(moons=6)
-        young_adult_cat1 = Cat(moons=12)
-        young_adult_cat2 = Cat(moons=12)
-        adult_cat_in_range1 = Cat(moons=52)
-        adult_cat_in_range2 = Cat(moons=52)
-        adult_cat_out_range1 = Cat(moons=65)
-        adult_cat_out_range2 = Cat(moons=65)
-        senior_adult_cat1 = Cat(moons=96)
-        senior_adult_cat2 = Cat(moons=96)
-        elder_cat1 = Cat(moons=120)
-        elder_cat2 = Cat(moons=120)
+        kitten_cat2 = Rabbit(moons=1)
+        kitten_cat1 = Rabbit(moons=1)
+        adolescent_cat1 = Rabbit(moons=6)
+        adolescent_cat2 = Rabbit(moons=6)
+        young_adult_cat1 = Rabbit(moons=12)
+        young_adult_cat2 = Rabbit(moons=12)
+        adult_cat_in_range1 = Rabbit(moons=52)
+        adult_cat_in_range2 = Rabbit(moons=52)
+        adult_cat_out_range1 = Rabbit(moons=65)
+        adult_cat_out_range2 = Rabbit(moons=65)
+        senior_adult_cat1 = Rabbit(moons=96)
+        senior_adult_cat2 = Rabbit(moons=96)
+        elder_cat1 = Rabbit(moons=120)
+        elder_cat2 = Rabbit(moons=120)
 
-        # check for cat mating with itself
+        # check for rabbit mating with itself
         self.assertFalse(kitten_cat1.is_potential_mate(kitten_cat1, True))
 
         # check invalid constellations
@@ -272,13 +272,13 @@ class TestPossibleMateFunction(unittest.TestCase):
         self.assertTrue(elder_cat1.is_potential_mate(senior_adult_cat1, True))
         self.assertTrue(elder_cat1.is_potential_mate(elder_cat2, True))
 
-    # test that is_potential_mate returns False for exiled or dead cats
+    # test that is_potential_mate returns False for exiled or dead rabbits
     def test_dead_exiled(self):
-        exiled_cat = Cat()
+        exiled_cat = Rabbit()
         exiled_cat.exiled = True
-        dead_cat = Cat()
+        dead_cat = Rabbit()
         dead_cat.dead = True
-        normal_cat = Cat()
+        normal_cat = Rabbit()
         self.assertFalse(exiled_cat.is_potential_mate(normal_cat))
         self.assertFalse(normal_cat.is_potential_mate(exiled_cat))
         self.assertFalse(dead_cat.is_potential_mate(normal_cat))
@@ -286,8 +286,8 @@ class TestPossibleMateFunction(unittest.TestCase):
 
     @patch("scripts.game_structure.game_essentials.game.settings")
     def test_possible_setting(self, settings):
-        mentor = Cat(moons=50)
-        former_appr = Cat(moons=20)
+        mentor = Rabbit(moons=50)
+        former_appr = Rabbit(moons=20)
         mentor.former_apprentices.append(former_appr.ID)
 
         # TODO: check how this mocking is working
@@ -304,11 +304,11 @@ class TestPossibleMateFunction(unittest.TestCase):
 
 
 class TestMateFunctions(unittest.TestCase):
-    # test that set_mate adds the mate's ID to the cat's mate list
+    # test that set_mate adds the mate's ID to the rabbit's mate list
     def test_set_mate(self):
         # given
-        cat1 = Cat()
-        cat2 = Cat()
+        cat1 = Rabbit()
+        cat2 = Rabbit()
 
         # when
         cat1.set_mate(cat2)
@@ -318,11 +318,11 @@ class TestMateFunctions(unittest.TestCase):
         self.assertEqual(cat1.mate[0], cat2.ID)
         self.assertEqual(cat2.mate[0], cat1.ID)
 
-    # test that unset_mate removes the mate's ID from the cat's mate list
+    # test that unset_mate removes the mate's ID from the rabbit's mate list
     def test_unset_mate(self):
         # given
-        cat1 = Cat()
-        cat2 = Cat()
+        cat1 = Rabbit()
+        cat2 = Rabbit()
         cat1.mate.append(cat2.ID)
         cat2.mate.append(cat1.ID)
 
@@ -339,8 +339,8 @@ class TestMateFunctions(unittest.TestCase):
     # test for relationship comparisons
     def test_set_mate_relationship(self):
         # given
-        cat1 = Cat()
-        cat2 = Cat()
+        cat1 = Rabbit()
+        cat2 = Rabbit()
         relation1 = Relationship(cat1, cat2)
         old_relation1 = deepcopy(relation1)
         relation2 = Relationship(cat2, cat1)
@@ -371,11 +371,11 @@ class TestMateFunctions(unittest.TestCase):
         self.assertLessEqual(old_relation2.admiration, relation2.admiration)
         self.assertLessEqual(old_relation2.jealousy, relation2.jealousy)
 
-    # test for relationship comparisons for cats that are broken up
+    # test for relationship comparisons for rabbits that are broken up
     def test_unset_mate_relationship(self):
         # given
-        cat1 = Cat()
-        cat2 = Cat()
+        cat1 = Rabbit()
+        cat2 = Rabbit()
         relation1 = Relationship(
             cat1,
             cat2,
@@ -433,22 +433,22 @@ class TestMateFunctions(unittest.TestCase):
 
 
 class TestUpdateMentor(unittest.TestCase):
-    # test that an exiled cat apprentice becomes a former apprentice
+    # test that an exiled rabbit rusasi becomes a former rusasi
     def test_exile_apprentice(self):
         # given
-        app = Cat(moons=7, status="apprentice")
-        mentor = Cat(moons=20, status="warrior")
+        app = Rabbit(moons=7, status="rusasi")
+        mentor = Rabbit(moons=20, status="rabbit")
         app.update_mentor(mentor.ID)
 
         # when
-        self.assertTrue(app.ID in mentor.apprentice)
+        self.assertTrue(app.ID in mentor.rusasi)
         self.assertFalse(app.ID in mentor.former_apprentices)
         self.assertEqual(app.mentor, mentor.ID)
         app.exiled = True
         app.update_mentor()
 
         # then
-        self.assertFalse(app.ID in mentor.apprentice)
+        self.assertFalse(app.ID in mentor.rusasi)
         self.assertTrue(app.ID in mentor.former_apprentices)
         self.assertIsNone(app.mentor)
 
@@ -466,20 +466,20 @@ class TestNameRepr(unittest.TestCase):
         """
         statuses = [
             [["newborn"], 0, "kit"],
-            [["kitten"], 1, "kit"],
+            [["kit"], 1, "kit"],
             [
-                ["apprentice", "medicine cat apprentice", "mediator apprentice"],
+                ["rusasi", "healer rusasi", "owsla rusasi"],
                 6,
                 "paw",
             ],
-            [["warrior", "medicine cat", "mediator", "elder", "deputy"], 14, "test"],
-            [["leader"], 14, "star"],
+            [["rabbit", "healer", "owsla", "elder", "captain"], 14, "test"],
+            [["chief rabbit"], 14, "star"],
         ]
         for testset, moons, suffix in statuses:
             for status in testset:
                 with self.subTest("clancats", status=status):
-                    cat = Cat(moons=moons, status=status, suffix="test")
-                    self.assertTrue(str(cat.name).endswith(suffix))
+                    rabbit = Rabbit(moons=moons, status=status, suffix="test")
+                    self.assertTrue(str(rabbit.name).endswith(suffix))
 
     def test_specsuffix_clancats(self):
         """
@@ -488,21 +488,21 @@ class TestNameRepr(unittest.TestCase):
         """
         statuses = [
             [["newborn"], 0, "test"],
-            [["kitten"], 1, "test"],
+            [["kit"], 1, "test"],
             [
-                ["apprentice", "medicine cat apprentice", "mediator apprentice"],
+                ["rusasi", "healer rusasi", "owsla rusasi"],
                 6,
                 "test",
             ],
-            [["warrior", "medicine cat", "mediator", "elder", "deputy"], 14, "test"],
-            [["leader"], 14, "test"],
+            [["rabbit", "healer", "owsla", "elder", "captain"], 14, "test"],
+            [["chief rabbit"], 14, "test"],
         ]
         for testset, moons, suffix in statuses:
             for status in testset:
                 with self.subTest("clancats specsuffix", status=status):
-                    cat = Cat(moons=moons, status=status, suffix="test")
-                    cat.name.specsuffix_hidden = True
-                    self.assertTrue(str(cat.name).endswith(suffix))
+                    rabbit = Rabbit(moons=moons, status=status, suffix="test")
+                    rabbit.name.specsuffix_hidden = True
+                    self.assertTrue(str(rabbit.name).endswith(suffix))
 
     def test_outsiders(self):
         """
@@ -517,16 +517,16 @@ class TestNameRepr(unittest.TestCase):
         for status in outsider_statuses:
             for moons, suffix in age_suffix:
                 with self.subTest("outsiders", status=status, moons=moons):
-                    cat = Cat(status=status, moons=moons, suffix="test")
-                    cat.outside = True
-                    self.assertTrue(str(cat.name).endswith("test"))
+                    rabbit = Rabbit(status=status, moons=moons, suffix="test")
+                    rabbit.outside = True
+                    self.assertTrue(str(rabbit.name).endswith("test"))
 
         for status in ex_clancat_statuses:
             for moons, suffix in age_suffix:
-                with self.subTest("Clan-like names", status=status, moons=moons):
-                    cat = Cat(status=status, moons=moons, suffix="test")
-                    cat.outside = True
-                    self.assertTrue(str(cat.name).endswith(suffix))
+                with self.subTest("Warren-like names", status=status, moons=moons):
+                    rabbit = Rabbit(status=status, moons=moons, suffix="test")
+                    rabbit.outside = True
+                    self.assertTrue(str(rabbit.name).endswith(suffix))
 
     def test_specsuffix_outsiders(self):
         """
@@ -541,49 +541,49 @@ class TestNameRepr(unittest.TestCase):
         for status in outsider_statuses:
             for moons, suffix in age_suffix:
                 with self.subTest("outsiders", status=status, moons=moons):
-                    cat = Cat(status=status, moons=moons, suffix="test")
-                    cat.outside = True
-                    cat.name.specsuffix_hidden = True
-                    self.assertTrue(str(cat.name).endswith("test"))
+                    rabbit = Rabbit(status=status, moons=moons, suffix="test")
+                    rabbit.outside = True
+                    rabbit.name.specsuffix_hidden = True
+                    self.assertTrue(str(rabbit.name).endswith("test"))
 
         for status in ex_clancat_statuses:
             for moons, suffix in age_suffix:
-                with self.subTest("Clan-like names", status=status, moons=moons):
-                    cat = Cat(status=status, moons=moons, suffix="test")
-                    cat.name.specsuffix_hidden = True
-                    self.assertTrue(str(cat.name).endswith("test"))
+                with self.subTest("Warren-like names", status=status, moons=moons):
+                    rabbit = Rabbit(status=status, moons=moons, suffix="test")
+                    rabbit.name.specsuffix_hidden = True
+                    self.assertTrue(str(rabbit.name).endswith("test"))
 
     def test_lost(self):
         """
-        Test that lost cats return the correct suffix
+        Test that lost rabbits return the correct suffix
         :return:
         """
         statuses = [
             ["newborn", 0, "kit"],
-            ["kitten", 1, "kit"],
-            ["apprentice", 6, "paw"],
-            ["warrior", 14, "test"],
+            ["kit", 1, "kit"],
+            ["rusasi", 6, "paw"],
+            ["rabbit", 14, "test"],
         ]
         for status, moons, suffix in statuses:
             with self.subTest("lost clancats", moons=moons):
-                cat = Cat(status=status, moons=moons, suffix="test")
-                cat.outside = True
-                self.assertTrue(str(cat.name).endswith(suffix))
+                rabbit = Rabbit(status=status, moons=moons, suffix="test")
+                rabbit.outside = True
+                self.assertTrue(str(rabbit.name).endswith(suffix))
 
     def test_specsuffix_lost(self):
         """
-        Test that lost cats with specsuffix return the correct suffix
+        Test that lost rabbits with specsuffix return the correct suffix
         :return:
         """
         statuses = [
             ["newborn", 0, "kit"],
-            ["kitten", 1, "kit"],
-            ["apprentice", 6, "paw"],
-            ["warrior", 14, "test"],
+            ["kit", 1, "kit"],
+            ["rusasi", 6, "paw"],
+            ["rabbit", 14, "test"],
         ]
         for status, moons, suffix in statuses:
             with self.subTest("lost clancats", status=status):
-                cat = Cat(status=status, moons=moons, suffix="test")
-                cat.outside = True
-                cat.name.specsuffix_hidden = True
-                self.assertTrue(str(cat.name).endswith("test"))
+                rabbit = Rabbit(status=status, moons=moons, suffix="test")
+                rabbit.outside = True
+                rabbit.name.specsuffix_hidden = True
+                self.assertTrue(str(rabbit.name).endswith("test"))

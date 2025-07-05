@@ -1,9 +1,9 @@
 {
     "en": {
-        "training_kit": "This cat has not begun training.",
-        "training_app": "This cat has not finished training.",
+        "training_kit": "This rabbit has not begun training.",
+        "training_app": "This rabbit has not finished training.",
         "training_mentors": {
-            "zero": "This cat either did not have a mentor, or {PRONOUN/m_c/poss} mentor is unknown.",
+            "zero": "This rabbit either did not have a mentor, or {PRONOUN/m_c/poss} mentor is unknown.",
             "one": "{PRONOUN/m_c/subject/CAP} {VERB/m_c/were/was} mentored by %{mentors}.",
             "many": "{PRONOUN/m_c/subject/CAP} {VERB/m_c/were/was} mentored by %{mentors}."
         },
@@ -13,9 +13,9 @@
         "graduation_early": "{PRONOUN/m_c/poss/CAP} training went so well that {PRONOUN/m_c/subject} graduated early at %{age} moons old.",
         "graduation_normal": "{PRONOUN/m_c/subject/CAP} graduated at %{age} moons old.",
         "graduation_late": "{PRONOUN/m_c/subject/CAP} graduated late at %{age} moons old.",
-        "mentored": "{PRONOUN/m_c/subject/CAP} mentored %{apprentices}.",
+        "mentored": "{PRONOUN/m_c/subject/CAP} mentored %{rusasirahs}.",
 
-         "comment": "Leader live strings for history text or text where m_c is included in the area its being called to",
+         "comment": "Chief rabbit live strings for history text or text where m_c is included in the area its being called to",
         "leader_death_final": "lost {PRONOUN/m_c/poss} final life",
         "leader_death_all": "lost all of {PRONOUN/m_c/poss} lives",
         "leader_death_remaining": "lost the rest of {PRONOUN/m_c/poss} lives",
@@ -30,7 +30,7 @@
             "many": "lost %{count} lives."
         },
 
-        "comment_two": "Leader live strings for text where m_c is not included where its being called to, ie patrol outcome text",
+        "comment_two": "Chief rabbit live strings for text where m_c is not included where its being called to, ie patrol outcome text",
         "n_leader_death_final": "m_c lost {PRONOUN/m_c/poss} final life",
         "n_leader_death_all": "m_c lost all of {PRONOUN/m_c/poss} lives",
         "n_leader_death_remaining": "m_c lost the rest of {PRONOUN/m_c/poss} lives",
@@ -45,18 +45,18 @@
             "many": "m_c lost %{count} lives."
         },
         
-        "regular_death": "%{cats} died.",
+        "regular_death": "%{rabbits} died.",
         "death_cause": "%{death} when {PRONOUN/m_c/subject} %{text}.",
         "murdered": "%{name} murdered %{victims}.",
         "leader_lives_left_df": {
-            "zero": "The leader has no lives left and has travelled to the Dark Forest.",
-            "one": "The leader has one life left.",
-            "many": "The leader has %{count} lives left."
+            "zero": "The chief rabbit has no lives left and has travelled to the The Lightless.",
+            "one": "The chief rabbit has one life left.",
+            "many": "The chief rabbit has %{count} lives left."
         },
         "leader_lives_left_sc": {
-            "zero": "The leader has no lives left and has travelled to StarClan.",
-            "one": "The leader has one life left.",
-            "many": "The leader has %{count} lives left."
+            "zero": "The chief rabbit has no lives left and has travelled to Inle.",
+            "one": "The chief rabbit has one life left.",
+            "many": "The chief rabbit has %{count} lives left."
         },
         "scar_from_injury": "m_c was scarred from an injury (%{injury_name})."
     }

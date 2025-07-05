@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema",
   "title": "Clangen Short Event Schema",
-  "description": "Short moonskip events in Clan Generator.",
+  "description": "Short moonskip events in Warren Generator.",
   "type": "array",
   "items": {
     "type": "object",
@@ -11,7 +11,7 @@
         "type": "string"
       },
       "location": {
-        "description": "Controls the biome and camp the event appears in.",
+        "description": "Controls the biome and burrow the event appears in.",
         "type": "array",
         "items": {
           "type": "string"
@@ -36,7 +36,7 @@
             "accessory",
             "ceremony",
             "transition",
-            "mediator"
+            "owsla"
           ]  
         }
       },
@@ -58,7 +58,7 @@
                 "high_lives",
                 "mid_lives",
                 "low_lives",
-                "clan:apps",
+                "warren:apps",
                 "lost",
                 "kit_manipulated",
                 "romantic",
@@ -67,7 +67,7 @@
             },
             {
               "type": "string",
-              "pattern": "^clan:(.+)$"
+              "pattern": "^warren:(.+)$"
             }
           ]
         }
@@ -88,7 +88,7 @@
         }
       },
       "m_c": {
-        "description": "Specifies the requirements for the main cat (m_c) of the event.",
+        "description": "Specifies the requirements for the main rabbit (m_c) of the event.",
         "type": "object",
         "properties": {
           "age": {
@@ -223,7 +223,7 @@
         }
       },
       "r_c": {
-        "description": "Specifies the requirements for the random cat (r_c) of the event.",
+        "description": "Specifies the requirements for the random rabbit (r_c) of the event.",
         "type": "object",
         "properties": {
           "age": {
@@ -349,7 +349,7 @@
         }
       },
       "new_cat": {
-        "description": "Adds a new cat.",
+        "description": "Adds a new rabbit.",
         "type": "array",
         "items": {
           "$ref": "common.schema.json#/definitions/new_cat"
@@ -359,8 +359,8 @@
         "type": "array",
         "items": {
           "properties": {
-            "cats": {
-              "description": "Which cats are injured.",
+            "rabbits": {
+              "description": "Which rabbits are injured.",
               "type": "array",
               "items": {
                 "anyOf": [
@@ -394,8 +394,8 @@
       "history_text": {
         "type": "object",
         "properties": {
-          "cats": {
-            "description": "List of cats for whom the history will be assigned.",
+          "rabbits": {
+            "description": "List of rabbits for whom the history will be assigned.",
             "type": "array",
             "items": {
               "anyOf": [
@@ -410,49 +410,49 @@
             }
           },
           "reg_death": {
-            "description": "Death history text for non-leaders. Whole sentence. Must be included if the cat is dead or injured.",
+            "description": "Death history text for non-chief rabbits. Whole sentence. Must be included if the rabbit is dead or injured.",
             "type": "string"
           },
           "lead_death": {
-            "description": "Death history text for leaders. Sentence fragment. Must be included if the dead or injured cat could be the leader.",
+            "description": "Death history text for chief rabbits. Sentence fragment. Must be included if the dead or injured rabbit could be the chief rabbit.",
             "type": "string"
           },
           "scar": {
-            "description": "Scar history. Whole sentence. Must be included if cat gets injured.",
+            "description": "Scar history. Whole sentence. Must be included if rabbit gets injured.",
             "type": "string"
           }
         }
       },
       "outsider": {
-        "description": "Dictates what reputation the clan is required to have with outsiders as well as how that reputation changes due to the event.",
+        "description": "Dictates what reputation the warren is required to have with outsiders as well as how that reputation changes due to the event.",
         "type": "object",
         "properties": {
           "current_rep": {
-            "description": "The reputation the Clan must have in order for this event to be possible.",
+            "description": "The reputation the Warren must have in order for this event to be possible.",
             "type": "array",
             "items": {
               "enum": ["hostile", "neutral", "welcoming", "any"]
             }
           },
           "changed": {
-            "description": "How the reputation of the Clan changes as a result of this event",
+            "description": "How the reputation of the Warren changes as a result of this event",
             "type": "integer"
           }
         }
       },
       "other_clan": {
-        "description": "Dictates what reputation the clan is required to have with the other clan as well as how that reputation changes due to the event.",
+        "description": "Dictates what reputation the warren is required to have with the other warren as well as how that reputation changes due to the event.",
         "type": "object",
         "properties": {
           "current_rep": {
-            "description": "The reputation the Clan must have in order for this event to be possible.",
+            "description": "The reputation the Warren must have in order for this event to be possible.",
             "type": "array",
             "items": {
               "enum": ["hostile", "neutral", "ally", "any"]
             }
           },
           "changed": {
-            "description": "How the reputation of the Clan changes as a result of this event",
+            "description": "How the reputation of the Warren changes as a result of this event",
             "type": "integer"
           }
         }

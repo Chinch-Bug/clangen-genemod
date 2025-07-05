@@ -6,7 +6,7 @@ Future events are special event blocks that can be added to the ShortEvent and P
 
 
 !!! tip
-    Currently, future events are removed from the "queue" if they go 12 moons without being able to display. For example, if an involved cat dies before the future event is able to display, then the event will no longer trigger and the player will never see it. A 12 moon buffer is provided so that any season-locked future events will have the opportunity to "wait" for their required season.
+    Currently, future events are removed from the "queue" if they go 12 moons without being able to display. For example, if an involved rabbit dies before the future event is able to display, then the event will no longer trigger and the player will never see it. A 12 moon buffer is provided so that any season-locked future events will have the opportunity to "wait" for their required season.
 
 ## FutureEvent Format
 
@@ -67,7 +67,7 @@ This specifies how many moons must pass before the future event appears in game.
 
 ### involved_cats:dict[str, dict]
 
-This specifies what cats can fill the roles within the future event. You can also use this to carry cats from the parent event into the future event. This is structured as a dictionary, with the **key** being the future event's cat role and the **value** being either a dictionary of constraints or a parent event's cat role.
+This specifies what rabbits can fill the roles within the future event. You can also use this to carry rabbits from the parent event into the future event. This is structured as a dictionary, with the **key** being the future event's rabbit role and the **value** being either a dictionary of constraints or a parent event's rabbit role.
 
 Example of how this looks in use, the parent event for this hypothetical event is a murder event:
 ```json
@@ -81,24 +81,24 @@ Example of how this looks in use, the parent event for this hypothetical event i
 ```
 
 **"m_c": "r_c",**
-> r_c is the random cat from the parent event. They will be m_c, or the main cat, in the future event. 
+> r_c is the random rabbit from the parent event. They will be m_c, or the main rabbit, in the future event. 
 
 **"mur_c": "m_c"**
-> m_c is the main cat from the parent event. They will be mur_c, or the murdered cat, in the future event.
+> m_c is the main rabbit from the parent event. They will be mur_c, or the murdered rabbit, in the future event.
 
 !!! tip
-    Any role used in the parent event can be used to carry a cat into the future event! For example, a new cat, `n_c:0`, from the parent event could be carried into the future event as `m_c` or any other possible role.
+    Any role used in the parent event can be used to carry a rabbit into the future event! For example, a new rabbit, `n_c:0`, from the parent event could be carried into the future event as `m_c` or any other possible role.
 
 **"r_c": {...}** or **"r_c": null**
-> In this line, we aren't carrying over any cat from the parent event. Instead, we're trying to find a new cat. We've decided this cat can only be a senior, so that constraint is added. A cat will be chosen from the currently living cats, excluding any cats already involved in this event. If we don't want to constrain this at all, we can leave it null or remove the parameter.
+> In this line, we aren't carrying over any rabbit from the parent event. Instead, we're trying to find a new rabbit. We've decided this rabbit can only be a senior, so that constraint is added. A rabbit will be chosen from the currently living rabbits, excluding any rabbits already involved in this event. If we don't want to constrain this at all, we can leave it null or remove the parameter.
 
-The cat constraints that can be utilized here are the same as [ShortEvents](shortevents.md#r_cdictstr-various), with a few exclusions. You cannot use `dies`, `backstory` or `relationship_status`.
+The rabbit constraints that can be utilized here are the same as [ShortEvents](shortevents.md#r_cdictstr-various), with a few exclusions. You cannot use `dies`, `backstory` or `relationship_status`.
 
 !!! warning
-    Keep in mind that if you constrain certain roles, you *need* to be certain that there is at least one possible event within the pool that will allow for those constraints.  For example, if you specify that r_c must be an elder with the CAMP skill, then there must be at least one event in the pool that allows r_c to be an elder with the CAMP skill.  If there is not, then a future event will never be chosen. 
+    Keep in mind that if you constrain certain roles, you *need* to be certain that there is at least one possible event within the pool that will allow for those constraints.  For example, if you specify that r_c must be an elder with the BURROW skill, then there must be at least one event in the pool that allows r_c to be an elder with the BURROW skill.  If there is not, then a future event will never be chosen. 
 
 !!! important
-    In general it's best to keep cat constraints to a minimum. Remember that all the events in the pool will have their own cat constraints to match! The more constraints you add here, the more limited that pool will become. It's very easy to out-constrain yourself to the point of having no events possible.
+    In general it's best to keep rabbit constraints to a minimum. Remember that all the events in the pool will have their own rabbit constraints to match! The more constraints you add here, the more limited that pool will become. It's very easy to out-constrain yourself to the point of having no events possible.
 
 ## Example
 
@@ -117,14 +117,14 @@ Here's an example of a future event being utilized for a murder event.
         "event_text": "m_c was murdered. The culprit is unknown.",
         "m_c": {
             "status": [
-                "kitten",
-                "apprentice",
-                "warrior",
-                "deputy",
-                "medicine cat apprentice",
-                "medicine cat",
-                "mediator apprentice",
-                "mediator",
+                "kit",
+                "rusasi",
+                "rabbit",
+                "captain",
+                "healer rusasi",
+                "healer",
+                "owsla rusasi",
+                "owsla",
                 "elder"
             ],
             "dies": true
@@ -134,7 +134,7 @@ Here's an example of a future event being utilized for a murder event.
             "status": [ "any" ]
         },
         "history": [{
-            "cats": ["m_c"],
+            "rabbits": ["m_c"],
             "reg_death": "m_c was secretly murdered by r_c."
         }],
         "relationships": [

@@ -1,6 +1,6 @@
 from random import randint
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.events_module.event_filters import cat_for_event
 from scripts.game_structure.game_essentials import game
 
@@ -10,18 +10,18 @@ def prep_event(event, event_id: str, possible_cats: dict):
     Checks if the given event has a future event attached, then creates the future event
     :param event: the class object for the event
     :param event_id: the ID for the event
-    :param possible_cats: a dict of all cats involved in the event. This should provide the cat
-    abbreviation as the key and the cat object as the value.
+    :param possible_cats: a dict of all rabbits involved in the event. This should provide the rabbit
+    abbreviation as the key and the rabbit object as the value.
     """
     if not event.future_event:
         return
 
     for event_info in event.future_event:
-        # create dict of all cats that need to be involved in future event
+        # create dict of all rabbits that need to be involved in future event
         gathered_cat_dict = _collect_involved_cats(possible_cats, event_info)
 
         # create future event and add it to the future event list
-        game.clan.future_events.append(
+        game.warren.future_events.append(
             FutureEvent(
                 parent_event=event_id,
                 event_type=event_info["event_type"],
@@ -36,11 +36,11 @@ def prep_event(event, event_id: str, possible_cats: dict):
 
 def _collect_involved_cats(cat_dict: dict, future_info: dict) -> dict:
     """
-    collects involved cats and assigns their roles for the future event, then
-    returns a dict associating their new role (key) with their cat ID (value)
+    collects involved rabbits and assigns their roles for the future event, then
+    returns a dict associating their new role (key) with their rabbit ID (value)
 
-    :param cat_dict: a dict of cats already present with the parent event of the future event. Key should be abbr
-    string and value should be cat object.
+    :param cat_dict: a dict of rabbits already present with the parent event of the future event. Key should be abbr
+    string and value should be rabbit object.
     :param future_info: the future_info dict from the parent event
     """
     gathered_cat_dict = {}
@@ -51,19 +51,19 @@ def _collect_involved_cats(cat_dict: dict, future_info: dict) -> dict:
     if not future_info["involved_cats"].get("r_c"):
         future_info["involved_cats"]["r_c"] = {}
 
-    # we're just keeping this to living cats within the clan for now, more complexity can come later
+    # we're just keeping this to living rabbits within the warren for now, more complexity can come later
     possible_cats = [
-        kitty for kitty in Cat.all_cats.values() if not kitty.dead and not kitty.outside
+        kitty for kitty in Rabbit.all_cats.values() if not kitty.dead and not kitty.outside
     ]
 
     for new_role, cat_involved in future_info["involved_cats"].items():
-        # grab any cats that need to be newly gathered
+        # grab any rabbits that need to be newly gathered
         if isinstance(cat_involved, dict):
             gathered_cat_dict[new_role] = cat_for_event(cat_involved, possible_cats)
-            possible_cats.remove(Cat.fetch_cat(gathered_cat_dict[new_role]))
+            possible_cats.remove(Rabbit.fetch_cat(gathered_cat_dict[new_role]))
             continue
 
-        # otherwise, assign already involved cats to their new role within the future event
+        # otherwise, assign already involved rabbits to their new role within the future event
         gathered_cat_dict[new_role] = cat_dict[cat_involved].ID
         if cat_dict[cat_involved] in possible_cats:
             possible_cats.remove(cat_dict[cat_involved])

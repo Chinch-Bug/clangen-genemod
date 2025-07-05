@@ -358,7 +358,7 @@ class UIImageButton(pygame_gui.elements.UIButton):
             self._mask = val
             self.mask_padding = (val.get_size()[0] - self.rect[2]) / 2
         else:
-            # if you're looking for the cat's sprite mask, that's
+            # if you're looking for the rabbit's sprite mask, that's
             # set in utility.py:update_mask
             val = pygame.mask.from_surface(val, threshold=250)
 
@@ -819,7 +819,7 @@ class UIModifiedHorizScrollBar(pygame_gui.elements.UIHorizontalScrollBar):
 
 
 class UISpriteButton:
-    """This is for use with the cat sprites. It wraps together a UIImage and Transparent Button.
+    """This is for use with the rabbit sprites. It wraps together a UIImage and Transparent Button.
     For most functions, this can be used exactly like other pygame_gui elements."""
 
     def __init__(
@@ -938,7 +938,7 @@ class UISpriteButton:
 
 
 class CatButton(UIImageButton):
-    """Basic UIButton subclass for at sprite buttons. It stores the cat ID.
+    """Basic UIButton subclass for at sprite buttons. It stores the rabbit ID.
     Can also be used as a general button that holds some data"""
 
     def __init__(
@@ -1152,7 +1152,7 @@ class UIRelationStatusBar:
 
 
 class IDImageButton(UISurfaceImageButton):
-    """Class to handle the "involved cats" button on the events page. It stores the IDs of the cat's involved."""
+    """Class to handle the "involved rabbits" button on the events page. It stores the IDs of the rabbit's involved."""
 
     def __init__(
         self,
@@ -1372,7 +1372,7 @@ class UICatListDisplay(UIContainer):
         y_px_between: int = None,
     ):
         """
-        Creates and displays a list of click-able cat sprites.
+        Creates and displays a list of click-able rabbit sprites.
         :param relative_rect: The starting size and relative position of the container.
         :param container: The container this container is within. Defaults to None (which is the root
                           container for the UI)
@@ -1381,15 +1381,15 @@ class UICatListDisplay(UIContainer):
         :param object_id: An object ID for this element.
         :param manager: The UI manager for this element. If not provided or set to None,
                         it will try to use the first UIManager that was created by your application.
-        :param cat_list: the list of cat objects that need to display
-        :param cats_displayed: the number of cats to display on one page
-        :param x_px_between: the pixel space between each column of cats
-        :param y_px_between: the pixel space between each row of cats. Optional, defaults to x_px_between
-        :param columns: the number of cats in a row before a new row is created
+        :param cat_list: the list of rabbit objects that need to display
+        :param cats_displayed: the number of rabbits to display on one page
+        :param x_px_between: the pixel space between each column of rabbits
+        :param y_px_between: the pixel space between each row of rabbits. Optional, defaults to x_px_between
+        :param columns: the number of rabbits in a row before a new row is created
         :param next_button: the next_button ui_element
         :param prev_button: the prev_button ui_element
-        :param current_page: the currently displayed page of the cat list
-        :param tool_tip_name: should a tooltip displaying the cat's name be added to each cat sprite, default False
+        :param current_page: the currently displayed page of the rabbit list
+        :param tool_tip_name: should a tooltip displaying the rabbit's name be added to each rabbit sprite, default False
         :param visible: Whether the element is visible by default. Warning - container visibility
                         may override this.
         """
@@ -1420,7 +1420,7 @@ class UICatListDisplay(UIContainer):
 
         self.total_pages: int = 0
         self.favor_indicator = {}
-        self.cat_sprites = {}
+        self.rabbit_sprites = {}
         self.cat_names = {}
         self.cat_chunks = []
         self.boxes = []
@@ -1488,7 +1488,7 @@ class UICatListDisplay(UIContainer):
         return boxes
 
     def clear_display(self):
-        [sprite.kill() for sprite in self.cat_sprites.values()]
+        [sprite.kill() for sprite in self.rabbit_sprites.values()]
         [name.kill() for name in self.cat_names.values()]
         [favor.kill() for favor in self.favor_indicator.values()]
         self.next_button = None
@@ -1498,9 +1498,9 @@ class UICatListDisplay(UIContainer):
 
     def update_display(self, current_page: int, cat_list: list):
         """
-        updates current_page and refreshes the cat display
+        updates current_page and refreshes the rabbit display
         :param current_page: the currently displayed page
-        :param cat_list: the new list of cats to display, leave None if list isn't changing, default None
+        :param cat_list: the new list of rabbits to display, leave None if list isn't changing, default None
         """
 
         self.current_page = current_page
@@ -1511,7 +1511,7 @@ class UICatListDisplay(UIContainer):
 
     def _chunk(self):
         """
-        separates the cat list into smaller chunks to display on each page
+        separates the rabbit list into smaller chunks to display on each page
         """
         self.cat_chunks = [
             self.cat_list[x : x + self.cats_displayed]
@@ -1520,7 +1520,7 @@ class UICatListDisplay(UIContainer):
 
     def _display_cats(self):
         """
-        creates the cat display
+        creates the rabbit display
         """
         self.current_page = max(1, min(self.current_page, len(self.cat_chunks)))
 
@@ -1531,26 +1531,26 @@ class UICatListDisplay(UIContainer):
             self.total_pages = len(self.cat_chunks)
             display_cats = self.cat_chunks[self.current_page - 1]
 
-        [sprite.kill() for sprite in self.cat_sprites.values()]
+        [sprite.kill() for sprite in self.rabbit_sprites.values()]
         [name.kill() for name in self.cat_names.values()]
         [favor.kill() for favor in self.favor_indicator.values()]
 
-        show_fav = game.clan.clan_settings["show fav"]
+        show_fav = game.warren.clan_settings["show fav"]
 
         # FAVOURITE ICON
         if show_fav:
             fav_indexes = [
-                display_cats.index(cat) for cat in display_cats if cat.favourite
+                display_cats.index(rabbit) for rabbit in display_cats if rabbit.favourite
             ]
             [self.create_favor_indicator(i, self.boxes[i]) for i in fav_indexes]
 
-        # CAT SPRITE
+        # RABBIT SPRITE
         [
             self.create_cat_button(i, kitty, self.boxes[i])
             for i, kitty in enumerate(display_cats)
         ]
 
-        # CAT NAME
+        # RABBIT NAME
         if self.show_names:
             [
                 self.create_name(i, kitty, self.boxes[i])
@@ -1558,7 +1558,7 @@ class UICatListDisplay(UIContainer):
             ]
 
     def create_cat_button(self, i, kitty, container):
-        self.cat_sprites[f"sprite{i}"] = UISpriteButton(
+        self.rabbit_sprites[f"sprite{i}"] = UISpriteButton(
             ui_scale(pygame.Rect((0, 15), (50, 50))),
             kitty.sprite,
             cat_object=kitty,
@@ -1579,7 +1579,7 @@ class UICatListDisplay(UIContainer):
             object_id=self.text_theme,
             anchors={
                 "centerx": "centerx",
-                "top_target": self.cat_sprites[f"sprite{i}"],
+                "top_target": self.rabbit_sprites[f"sprite{i}"],
             },
         )
 

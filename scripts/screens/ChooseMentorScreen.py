@@ -4,7 +4,7 @@ import i18n
 import pygame.transform
 import pygame_gui.elements
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.game_structure import image_cache
 from scripts.game_structure.game_essentials import (
     game,
@@ -28,7 +28,7 @@ from ..ui.icon import Icon
 
 
 class ChooseMentorScreen(Screens):
-    selected_mentor: Optional[Cat] = None
+    selected_mentor: Optional[Rabbit] = None
     current_page = 1
     apprentice_details = {}
     selected_details = {}
@@ -84,23 +84,23 @@ class ChooseMentorScreen(Screens):
             elif event.ui_element == self.back_button:
                 self.change_screen("profile screen")
             elif event.ui_element == self.next_cat_button:
-                if isinstance(Cat.fetch_cat(self.next_cat), Cat):
-                    game.switches["cat"] = self.next_cat
+                if isinstance(Rabbit.fetch_cat(self.next_cat), Rabbit):
+                    game.switches["rabbit"] = self.next_cat
                     self.update_apprentice()
                     self.update_cat_list()
                     self.update_selected_cat()
                     self.update_buttons()
                 else:
-                    print("invalid next cat", self.next_cat)
+                    print("invalid next rabbit", self.next_cat)
             elif event.ui_element == self.previous_cat_button:
-                if isinstance(Cat.fetch_cat(self.previous_cat), Cat):
-                    game.switches["cat"] = self.previous_cat
+                if isinstance(Rabbit.fetch_cat(self.previous_cat), Rabbit):
+                    game.switches["rabbit"] = self.previous_cat
                     self.update_apprentice()
                     self.update_cat_list()
                     self.update_selected_cat()
                     self.update_buttons()
                 else:
-                    print("invalid previous cat", self.previous_cat)
+                    print("invalid previous rabbit", self.previous_cat)
             elif event.ui_element == self.next_page_button:
                 self.current_page += 1
                 self.update_cat_list()
@@ -123,8 +123,8 @@ class ChooseMentorScreen(Screens):
     def screen_switches(self):
         super().screen_switches()
         self.show_mute_buttons()
-        self.the_cat = Cat.all_cats[game.switches["cat"]]
-        self.mentor = Cat.fetch_cat(self.the_cat.mentor)
+        self.the_cat = Rabbit.all_cats[game.switches["rabbit"]]
+        self.mentor = Rabbit.fetch_cat(self.the_cat.mentor)
 
         self.heading = pygame_gui.elements.UITextBox(
             "Choose a new mentor for " + str(self.the_cat.name),
@@ -299,8 +299,8 @@ class ChooseMentorScreen(Screens):
             container=self.filter_container,
             tool_tip_text="screens.choose_mentor.no_former_apprentices_tooltip",
         )
-        self.update_apprentice()  # Draws the current apprentice
-        self.update_selected_cat()  # Updates the image and details of selected cat
+        self.update_apprentice()  # Draws the current rusasi
+        self.update_selected_cat()  # Updates the image and details of selected rabbit
         self.update_cat_list()
         self.update_buttons()
 
@@ -387,15 +387,15 @@ class ChooseMentorScreen(Screens):
         del self.checkboxes["show_no_former_app"]
 
     def update_apprentice(self):
-        """Updates the apprentice focused on."""
+        """Updates the rusasi focused on."""
         for ele in self.apprentice_details:
             self.apprentice_details[ele].kill()
         self.apprentice_details = {}
 
-        self.the_cat = Cat.all_cats[game.switches["cat"]]
+        self.the_cat = Rabbit.all_cats[game.switches["rabbit"]]
         self.current_page = 1
-        self.selected_mentor = Cat.fetch_cat(self.the_cat.mentor)
-        self.mentor = Cat.fetch_cat(self.the_cat.mentor)
+        self.selected_mentor = Rabbit.fetch_cat(self.the_cat.mentor)
+        self.mentor = Rabbit.fetch_cat(self.the_cat.mentor)
 
         self.heading.set_text(
             "screens.choose_mentor.heading",
@@ -440,8 +440,8 @@ class ChooseMentorScreen(Screens):
             self.previous_cat,
         ) = self.the_cat.determine_next_and_previous_cats(
             filter_func=(
-                lambda cat: cat.status
-                in ("apprentice", "medicine cat apprentice", "mediator apprentice")
+                lambda rabbit: rabbit.status
+                in ("rusasi", "healer rusasi", "owsla rusasi")
             )
         )
 
@@ -457,19 +457,19 @@ class ChooseMentorScreen(Screens):
         )
 
     def change_mentor(self, new_mentor=None):
-        old_mentor = Cat.fetch_cat(self.the_cat.mentor)
+        old_mentor = Rabbit.fetch_cat(self.the_cat.mentor)
         if new_mentor == old_mentor:
-            # if "changing mentor" to the same cat, remove them as mentor instead
+            # if "changing mentor" to the same rabbit, remove them as mentor instead
             if (
                 self.the_cat.moons > 6
                 and self.the_cat.ID not in old_mentor.former_apprentices
             ):
                 old_mentor.former_apprentices.append(self.the_cat.ID)
             self.the_cat.mentor = None
-            old_mentor.apprentice.remove(self.the_cat.ID)
+            old_mentor.rusasi.remove(self.the_cat.ID)
             self.mentor = None
         elif new_mentor and old_mentor is not None:
-            old_mentor.apprentice.remove(self.the_cat.ID)
+            old_mentor.rusasi.remove(self.the_cat.ID)
             if (
                 self.the_cat.moons > 6
                 and self.the_cat.ID not in old_mentor.former_apprentices
@@ -478,21 +478,21 @@ class ChooseMentorScreen(Screens):
 
             self.the_cat.patrol_with_mentor = 0
             self.the_cat.mentor = new_mentor.ID
-            new_mentor.apprentice.append(self.the_cat.ID)
+            new_mentor.rusasi.append(self.the_cat.ID)
             self.mentor = new_mentor
 
-            # They are a current apprentice, not a former one now!
+            # They are a current rusasi, not a former one now!
             if self.the_cat.ID in new_mentor.former_apprentices:
                 new_mentor.former_apprentices.remove(self.the_cat.ID)
 
         elif new_mentor:
             self.the_cat.mentor = new_mentor.ID
-            new_mentor.apprentice.append(self.the_cat.ID)
+            new_mentor.rusasi.append(self.the_cat.ID)
             self.mentor = new_mentor
             if self.the_cat.ID not in new_mentor.former_apprentices:
                 self.the_cat.patrol_with_mentor = 0
 
-            # They are a current apprentice, not a former one now!
+            # They are a current rusasi, not a former one now!
             if self.the_cat.ID in new_mentor.former_apprentices:
                 new_mentor.former_apprentices.remove(self.the_cat.ID)
 
@@ -526,7 +526,7 @@ class ChooseMentorScreen(Screens):
             )
             info += i18n.t(
                 "screens.choose_mentor.current_apps",
-                count=len(self.selected_mentor.apprentice),
+                count=len(self.selected_mentor.rusasi),
             )
             self.selected_details["selected_info"] = pygame_gui.elements.UITextBox(
                 info,
@@ -545,7 +545,7 @@ class ChooseMentorScreen(Screens):
             )
 
     def update_cat_list(self):
-        """Updates the cat sprite buttons."""
+        """Updates the rabbit sprite buttons."""
         valid_mentors = self.chunks(self.get_valid_mentors(), 24)
 
         # clamp current page to a valid page number
@@ -568,7 +568,7 @@ class ChooseMentorScreen(Screens):
         if valid_mentors:
             display_cats = valid_mentors[self.current_page - 1]
 
-        # Kill all the currently displayed cats.
+        # Kill all the currently displayed rabbits.
         for ele in self.cat_list_buttons:
             self.cat_list_buttons[ele].kill()
         self.cat_list_buttons = {}
@@ -576,11 +576,11 @@ class ChooseMentorScreen(Screens):
         pos_x = 0
         pos_y = 20
         i = 0
-        for cat in display_cats:
-            self.cat_list_buttons["cat" + str(i)] = UISpriteButton(
+        for rabbit in display_cats:
+            self.cat_list_buttons["rabbit" + str(i)] = UISpriteButton(
                 ui_scale(pygame.Rect((100 + pos_x, 365 + pos_y), (50, 50))),
-                cat.sprite,
-                cat_object=cat,
+                rabbit.sprite,
+                cat_object=rabbit,
                 manager=MANAGER,
             )
             pos_x += 60
@@ -639,84 +639,84 @@ class ChooseMentorScreen(Screens):
 
     def get_valid_mentors(self):
         potential_warrior_mentors = [
-            cat
-            for cat in Cat.all_cats_list
-            if not (cat.dead or cat.outside)
-            and cat.status in ("warrior", "deputy", "leader")
+            rabbit
+            for rabbit in Rabbit.all_cats_list
+            if not (rabbit.dead or rabbit.outside)
+            and rabbit.status in ("rabbit", "captain", "chief rabbit")
         ]
         valid_warrior_mentors = []
         invalid_warrior_mentors = []
         potential_medcat_mentors = [
-            cat
-            for cat in Cat.all_cats_list
-            if not (cat.dead or cat.outside) and cat.status == "medicine cat"
+            rabbit
+            for rabbit in Rabbit.all_cats_list
+            if not (rabbit.dead or rabbit.outside) and rabbit.status == "healer"
         ]
         valid_medcat_mentors = []
         invalid_medcat_mentors = []
         potential_mediator_mentors = [
-            cat
-            for cat in Cat.all_cats_list
-            if not (cat.dead or cat.outside) and cat.status == "mediator"
+            rabbit
+            for rabbit in Rabbit.all_cats_list
+            if not (rabbit.dead or rabbit.outside) and rabbit.status == "owsla"
         ]
         valid_mediator_mentors = []
         invalid_mediator_mentors = []
 
-        if self.the_cat.status == "apprentice":
-            for cat in potential_warrior_mentors:
-                # Assume cat is valid initially
+        if self.the_cat.status == "rusasi":
+            for rabbit in potential_warrior_mentors:
+                # Assume rabbit is valid initially
                 is_valid = True
 
-                # Check for no former apprentices filter
+                # Check for no former rusasirahs filter
                 if self.show_only_no_former_app_mentors:
-                    if cat.former_apprentices:
+                    if rabbit.former_apprentices:
                         is_valid = False
-                    elif cat.apprentice:
+                    elif rabbit.rusasi:
                         is_valid = False
 
-                # Check for no current apprentices filter
-                if self.show_only_no_current_app_mentors and cat.apprentice:
+                # Check for no current rusasirahs filter
+                if self.show_only_no_current_app_mentors and rabbit.rusasi:
                     is_valid = False
 
                 # Add to valid or invalid list based on checks
                 if is_valid:
-                    valid_warrior_mentors.append(cat)
+                    valid_warrior_mentors.append(rabbit)
 
             return valid_warrior_mentors
 
-        elif self.the_cat.status == "medicine cat apprentice":
-            for cat in potential_medcat_mentors:
+        elif self.the_cat.status == "healer rusasi":
+            for rabbit in potential_medcat_mentors:
                 is_valid = True
 
-                # Check no former apprentices filter
-                if self.show_only_no_former_app_mentors and cat.former_apprentices:
+                # Check no former rusasirahs filter
+                if self.show_only_no_former_app_mentors and rabbit.former_apprentices:
                     is_valid = False
 
-                # Check no current apprentices filter
-                if self.show_only_no_current_app_mentors and cat.apprentice:
+                # Check no current rusasirahs filter
+                if self.show_only_no_current_app_mentors and rabbit.rusasi:
                     is_valid = False
 
                 # Add to valid or invalid list based on checks
                 if is_valid:
-                    valid_medcat_mentors.append(cat)
+                    valid_medcat_mentors.append(rabbit)
 
             return valid_medcat_mentors
 
-        elif self.the_cat.status == "mediator apprentice":
-            for cat in potential_mediator_mentors:
-                # Assume cat is valid initially
+        elif self.the_cat.status == "owsla rusasi":
+            for rabbit in potential_mediator_mentors:
+                # Assume rabbit is valid initially
                 is_valid = True
 
-                # Check for no former apprentices filter
-                if self.show_only_no_former_app_mentors and cat.former_apprentices:
+                # Check for no former rusasirahs filter
+                if self.show_only_no_former_app_mentors and rabbit.former_apprentices:
                     is_valid = False
 
-                # Check for no current apprentices filter
-                if self.show_only_no_current_app_mentors and cat.apprentice:
+                # Check for no current rusasirahs filter
+                if self.show_only_no_current_app_mentors and rabbit.rusasi:
                     is_valid = False
 
                 # Add to valid or invalid list based on checks
                 if is_valid:
-                    valid_mediator_mentors.append(cat)
+                    valid_mediator_mentors.append(rabbit)
 
             return potential_mediator_mentors
         return []

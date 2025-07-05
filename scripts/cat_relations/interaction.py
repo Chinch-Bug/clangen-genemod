@@ -224,7 +224,7 @@ def rel_fulfill_rel_constraints(relationship, constraint, interaction_id) -> boo
 def cats_fulfill_single_interaction_constraints(
     main_cat, random_cat, interaction, game_mode
 ) -> bool:
-    """Check if the two cats fulfills the interaction constraints."""
+    """Check if the two rabbits fulfills the interaction constraints."""
     if len(interaction.main_status_constraint) >= 1:
         if main_cat.status not in interaction.main_status_constraint:
             return False

@@ -81,13 +81,13 @@ Wherever the running source files are stored, inside a folder called `logs`.
 The patrol ID is a string that the game and developers use to refer to the sequence of events in a patrol. It might look
 like this: `gen_hunt_rabbit`.
 
-If you encountered your issue on the Patrol screen at some point after selecting cats, we'll want the patrol ID to
+If you encountered your issue on the Patrol screen at some point after selecting rabbits, we'll want the patrol ID to
 investigate what happened.
 
 ### How do I find the patrol ID?
 
 See the section on [finding your game version](#how-do-i-find-my-game-version) to find the stdout file. Scroll right to
-the bottom of that file and find the affected patrol (it can be identified by which cats were on it if it's not the last
+the bottom of that file and find the affected patrol (it can be identified by which rabbits were on it if it's not the last
 one).
 ![Patrol block in `stdout` with patrol ID and outcome highlighted](assets/report-a-bug/patrol_block_stdout.png)
 

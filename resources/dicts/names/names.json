@@ -1,11 +1,11 @@
 {
   "special_suffixes": {
     "newborn": "kit",
-    "kitten": "kit",
-    "apprentice": "paw",
-    "medicine cat apprentice": "paw",
-    "mediator apprentice": "paw",
-    "leader": "star"
+    "kit": "kit",
+    "rusasi": "paw",
+    "healer rusasi": "paw",
+    "owsla rusasi": "paw",
+    "chief rabbit": "star"
     },
   "normal_suffixes" : [
     "fur", "fur", "fur", "fur", "fur", "fur", "fur", "fur", "fur", "fur", "fur",
@@ -330,7 +330,7 @@
     "Buttercup", "Buttermilk", "Butternut", "Butters", "Butterscotch", "Button", "Byeol", "Caakiri", "Cadence", "Cady", "Caesar", "Cake", "Calamari", "Call of Greatness", "Call of the Void", "Callie", 
     "Calliope", "Callisto", "Calorimetry", "Calvin", "Calypso", "Camilo", "Camouflage", "Campion", "Candi", "Candy", "Canela", "Canned Beans", "Canned Tuna", "Cannelloni", "Cannoli", "Canopus", "Capella", "Cappuccino", 
     "Capricorn", "Captain", "Curly", "Car Alarm", "Caramel", "Cardamom", "Cardboard", "Carlotta", "Carmen", "Carmin", "Carolina", "Caroline", "Carrie", "Cashmere", "Casper", "Cassandra", "Cassidy", "Castor", 
-    "Cat", "Catalina", "Catie", "Catrick", "Catty", "Cauliflower", "Cayenne", "Cece", "Cecelia", "Celebi", "Celeste", "Celia", "Centauri", "Centipede", "Cerberus", "Ceres", "Chai", "Chance", "Chanel", 
+    "Rabbit", "Catalina", "Catie", "Catrick", "Catty", "Cauliflower", "Cayenne", "Cece", "Cecelia", "Celebi", "Celeste", "Celia", "Centauri", "Centipede", "Cerberus", "Ceres", "Chai", "Chance", "Chanel", 
     "Chansey", "Chanterelle", "Chaos", "Chara", "Charcoal", "Chari", "Chariklo", "Charles", "Charlie", "Charlotte", "Charm", "Charon", "Chase", "Chasing Wind", "Chayanne", "Checkers", "Cheddar", 
     "Cheerio", "Cheese Beast", "Cheese", "Cheesecake", "Cheesepuff", "Cheeto Puff", "Cheeto", "Cheetoman", "Chef", "Chekhov's Gun", "Chekov", "Cherry", "Cherub", "Cherubi", "Cheshire", "Chester", 
     "Chevre", "Chewie", "Chewy", "Chiaki", "Chibi", "Chica", "Chicco", "Chickpea", "Chief", "Chihiro", "Chikorita", "Chiku", "Chip", "Chiquito", "Chispa", "Chloe", "Choccie", "Chocolate Chip", "Chocolate Pudding", 
@@ -364,8 +364,8 @@
     "Jim", "Jiminy Cricket", "Jimmy", "Jinn", "Jinx", "Jirachi", "Jitters", "Joanne", "John", "Johnny", "Joker", "Jolly Rancher", "Jolly", "Jonas", "Joob", "Jose", "Joy", "Jozi", "Jubie", "Judas", 
     "Jude", "Judy", "Julie", "Juliet", "June", "Junkrat", "Juno", "Jupiter", "Kabuki", "Kaede", "Kagamine Len", "Kagamine Rin", "Kai", "Kaia", "Kaito", "Kaizo", "Kale", "Kaleb", "Kamari", "Kamau", 
     "Karen", "Kariba", "Karkinos", "Karma", "Kasha", "Kasi", "Kate", "Katjie", "Katniss", "Katy", "KD", "Keanu", "Keiko", "Kellas", "Kelloggs", "Ken", "Kendra", "Kenny", "Kenya", "Kepler", "Kerberos", 
-    "Kermit", "Kerry", "Ketchup", "Ketsl", "Kettlingur", "Kevin", "Keyboard", "Keziah", "Kianna", "Kiara", "Kibble", "Kid Cat", "Kiki", "Kimani", "Kimberly", "Kimchi", "King", "Kingston", "Kion", "Kip", 
-    "Kipling", "Kirby", "Kiriko", "Kisha", "Kismet", "Kitty Cat", "Kitty Softpaws", "Kitty", "Kivu", "Kiwi", "Klee", "Klondike", "Knorrig", "Knox", "Koala", "Koba", "Koda", "Kodi", "Kodiak", "Koi", 
+    "Kermit", "Kerry", "Ketchup", "Ketsl", "Kettlingur", "Kevin", "Keyboard", "Keziah", "Kianna", "Kiara", "Kibble", "Kid Rabbit", "Kiki", "Kimani", "Kimberly", "Kimchi", "King", "Kingston", "Kion", "Kip", 
+    "Kipling", "Kirby", "Kiriko", "Kisha", "Kismet", "Kitty Rabbit", "Kitty Softpaws", "Kitty", "Kivu", "Kiwi", "Klee", "Klondike", "Knorrig", "Knox", "Koala", "Koba", "Koda", "Kodi", "Kodiak", "Koi", 
     "Kokichi", "Kokomi", "Kokum", "Komaru", "Kombucha", "Kong", "Kovu", "Kramig", "Kudu", "Kuma", "Kuromi", "Kushi", "Kyle", "Kyoko", "Kyu", "L", "Laburnum", "Lacy", "Lady Figment", "Lady Liberty", 
     "Lady", "Ladybug", "Laika", "Laila", "Lakota", "Laksha", "Laku", "Lapis", "Laranjito", "Larch", "Larimar", "Lark", "Laszlo", "Latte", "Lavender", "Lawn Mower", "Lawrence", "Lazarus", "Lazuli", 
     "Leche", "Lee", "Leif", "Lemmy", "Lemon Boy", "Lemon", "Leo", "Leon", "Leonardo", "Lester", "Levi", "Leviathan", "Levon", "Lex", "Li Shang", "Libra", "Lil Baby", "Lilac", "Lilith", "Lilleplutt", 

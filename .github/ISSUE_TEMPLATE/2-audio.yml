@@ -10,14 +10,14 @@ body:
       options:
         - label: I have searched the existing issues
           required: true
-        - label: This issue was encountered (or replicated) on a non-edited Clan
+        - label: This issue was encountered (or replicated) on a non-edited Warren
           required: true
   - type: textarea
     id: description
     attributes:
       label: Description
       description: Describe the bug
-      placeholder: "e.g. When I enter the medicine cat den, the music stalls for a second before it resumes again."
+      placeholder: "e.g. When I enter the healer den, the music stalls for a second before it resumes again."
     validations:
       required: true
   - type: dropdown

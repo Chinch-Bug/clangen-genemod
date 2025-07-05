@@ -46,7 +46,7 @@ valid_records = {
     "tags": {
         "classic": [],
         "cruel_season": [],
-        "clan": {},
+        "warren": {},
         "no_body": [],
         "skill_trait_required": [],
         "clan_wide": [],
@@ -58,12 +58,12 @@ valid_records = {
         "low_lives": [],
     },
     "new_accessory": {},
-    "injury": {"cats": {"m_c": [], "r_c": [], "n_c": []}, "injuries": {}, "scars": {}},
+    "injury": {"rabbits": {"m_c": [], "r_c": [], "n_c": []}, "injuries": {}, "scars": {}},
     "m_c": {
         "age": {
             "any": [],
             "newborn": [],
-            "kitten": [],
+            "kit": [],
             "adolescent": [],
             "young adult": [],
             "adult": [],
@@ -73,16 +73,16 @@ valid_records = {
         "status": {
             "any": [],
             "newborn": [],
-            "kitten": [],
-            "apprentice": [],
-            "warrior": [],
-            "medicine cat apprentice": [],
-            "medicine cat": [],
-            "mediator apprentice": [],
-            "mediator": [],
+            "kit": [],
+            "rusasi": [],
+            "rabbit": [],
+            "healer rusasi": [],
+            "healer": [],
+            "owsla rusasi": [],
+            "owsla": [],
             "elder": [],
-            "deputy": [],
-            "leader": [],
+            "captain": [],
+            "chief rabbit": [],
         },
         "relationship_status": {
             "siblings": [],
@@ -108,14 +108,14 @@ valid_records = {
             "CLIMBER": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "SWIMMER": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "SPEAKER": {"0": [], "1": [], "2": [], "3": [], "4": []},
-            "MEDIATOR": {"0": [], "1": [], "2": [], "3": [], "4": []},
+            "OWSLA": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "CLEVER": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "INSIGHTFUL": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "SENSE": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "KIT": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "STORY": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "LORE": {"0": [], "1": [], "2": [], "3": [], "4": []},
-            "CAMP": {"0": [], "1": [], "2": [], "3": [], "4": []},
+            "BURROW": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "HEALER": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "STAR": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "DUSK": {"0": [], "1": [], "2": [], "3": [], "4": []},
@@ -134,14 +134,14 @@ valid_records = {
             "CLIMBER": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "SWIMMER": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "SPEAKER": {"0": [], "1": [], "2": [], "3": [], "4": []},
-            "MEDIATOR": {"0": [], "1": [], "2": [], "3": [], "4": []},
+            "OWSLA": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "CLEVER": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "INSIGHTFUL": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "SENSE": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "KIT": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "STORY": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "LORE": {"0": [], "1": [], "2": [], "3": [], "4": []},
-            "CAMP": {"0": [], "1": [], "2": [], "3": [], "4": []},
+            "BURROW": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "HEALER": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "STAR": {"0": [], "1": [], "2": [], "3": [], "4": []},
             "DUSK": {"0": [], "1": [], "2": [], "3": [], "4": []},
@@ -275,7 +275,7 @@ valid_records = {
         "age": {
             "any": [],
             "newborn": [],
-            "kitten": [],
+            "kit": [],
             "adolescent": [],
             "young adult": [],
             "adult": [],
@@ -285,16 +285,16 @@ valid_records = {
         "status": {
             "any": [],
             "newborn": [],
-            "kitten": [],
-            "apprentice": [],
-            "warrior": [],
-            "medicine cat apprentice": [],
-            "medicine cat": [],
-            "mediator apprentice": [],
-            "mediator": [],
+            "kit": [],
+            "rusasi": [],
+            "rabbit": [],
+            "healer rusasi": [],
+            "healer": [],
+            "owsla rusasi": [],
+            "owsla": [],
             "elder": [],
-            "deputy": [],
-            "leader": [],
+            "captain": [],
+            "chief rabbit": [],
         },
         "relationship_status": {
             "romantic": [],
@@ -313,14 +313,14 @@ valid_records = {
             "CLIMBER": {"1": [], "2": [], "3": [], "4": []},
             "SWIMMER": {"1": [], "2": [], "3": [], "4": []},
             "SPEAKER": {"1": [], "2": [], "3": [], "4": []},
-            "MEDIATOR": {"1": [], "2": [], "3": [], "4": []},
+            "OWSLA": {"1": [], "2": [], "3": [], "4": []},
             "CLEVER": {"1": [], "2": [], "3": [], "4": []},
             "INSIGHTFUL": {"1": [], "2": [], "3": [], "4": []},
             "SENSE": {"1": [], "2": [], "3": [], "4": []},
             "KIT": {"1": [], "2": [], "3": [], "4": []},
             "STORY": {"1": [], "2": [], "3": [], "4": []},
             "LORE": {"1": [], "2": [], "3": [], "4": []},
-            "CAMP": {"1": [], "2": [], "3": [], "4": []},
+            "BURROW": {"1": [], "2": [], "3": [], "4": []},
             "HEALER": {"1": [], "2": [], "3": [], "4": []},
             "STAR": {"1": [], "2": [], "3": [], "4": []},
             "DUSK": {"1": [], "2": [], "3": [], "4": []},
@@ -338,14 +338,14 @@ valid_records = {
             "CLIMBER": {"1": [], "2": [], "3": [], "4": []},
             "SWIMMER": {"1": [], "2": [], "3": [], "4": []},
             "SPEAKER": {"1": [], "2": [], "3": [], "4": []},
-            "MEDIATOR": {"1": [], "2": [], "3": [], "4": []},
+            "OWSLA": {"1": [], "2": [], "3": [], "4": []},
             "CLEVER": {"1": [], "2": [], "3": [], "4": []},
             "INSIGHTFUL": {"1": [], "2": [], "3": [], "4": []},
             "SENSE": {"1": [], "2": [], "3": [], "4": []},
             "KIT": {"1": [], "2": [], "3": [], "4": []},
             "STORY": {"1": [], "2": [], "3": [], "4": []},
             "LORE": {"1": [], "2": [], "3": [], "4": []},
-            "CAMP": {"1": [], "2": [], "3": [], "4": []},
+            "BURROW": {"1": [], "2": [], "3": [], "4": []},
             "HEALER": {"1": [], "2": [], "3": [], "4": []},
             "STAR": {"1": [], "2": [], "3": [], "4": []},
             "DUSK": {"1": [], "2": [], "3": [], "4": []},
@@ -484,7 +484,7 @@ invalid_records = {
     "tags": {},
     "new_accessory": {},
     "weight": [],
-    "injury": {"cats": {}, "injuries": {}, "scars": {}, "history": {missing: []}},
+    "injury": {"rabbits": {}, "injuries": {}, "scars": {}, "history": {missing: []}},
     "m_c": {
         "age": {},
         "status": {},
@@ -511,7 +511,7 @@ invalid_records = {
 
 history_scarrable = [
     "bite-wound",
-    "cat-bite",
+    "rabbit-bite",
     "severe burn",
     "rat bite",
     "snake bite",
@@ -801,20 +801,20 @@ def ea_split(events):
                     )
                     break
 
-                if "cats" in injury:
+                if "rabbits" in injury:
                     ea_add_records(
                         event_id,
-                        injury["cats"],
-                        valid_records["injury"]["cats"],
-                        invalid_records["injury"]["cats"],
+                        injury["rabbits"],
+                        valid_records["injury"]["rabbits"],
+                        invalid_records["injury"]["rabbits"],
                         validation={
                             "type": "startswith",
-                            "data": valid_records["injury"]["cats"].keys(),
+                            "data": valid_records["injury"]["rabbits"].keys(),
                         },
                     )
                 else:
                     ea_invalid_record(
-                        event_id, missing, invalid_records["injury"]["cats"]
+                        event_id, missing, invalid_records["injury"]["rabbits"]
                     )
 
                 if "injuries" in injury:
@@ -938,19 +938,19 @@ def ea_invalid_record(event_id, record, invalid_log):
         invalid_log[record] = [event_id]
 
 
-def ea_handle_cat(event_id, cat, valid_log, error_log, rel_valid=True):
+def ea_handle_cat(event_id, rabbit, valid_log, error_log, rel_valid=True):
     # AGE
-    if "age" in cat:
-        ea_add_records(event_id, cat["age"], valid_log["age"], error_log["age"])
+    if "age" in rabbit:
+        ea_add_records(event_id, rabbit["age"], valid_log["age"], error_log["age"])
 
     # STATUS
-    if "status" in cat:
+    if "status" in rabbit:
         ea_add_records(
-            event_id, cat["status"], valid_log["status"], error_log["status"]
+            event_id, rabbit["status"], valid_log["status"], error_log["status"]
         )
 
     # RELATIONSHIP_STATUS
-    if "relationship_status" in cat:
+    if "relationship_status" in rabbit:
         validation = {
             "type": "startswith",
             "data": valid_log["relationship_status"].keys(),
@@ -958,7 +958,7 @@ def ea_handle_cat(event_id, cat, valid_log, error_log, rel_valid=True):
         if rel_valid:
             ea_add_records(
                 event_id,
-                cat["relationship_status"],
+                rabbit["relationship_status"],
                 valid_log["relationship_status"],
                 error_log["relationship_status"],
                 validation,
@@ -967,48 +967,48 @@ def ea_handle_cat(event_id, cat, valid_log, error_log, rel_valid=True):
             error_log["relationship_status"]["invalid block"].append(event_id)
 
     # SKILL
-    if "skill" in cat:
+    if "skill" in rabbit:
         ea_add_records_with_subtype(
             event_id,
-            cat["skill"],
+            rabbit["skill"],
             valid_log["skill"],
             error_log["skill"],
             delineator=",",
         )
 
     # NOT SKILL
-    if "not_skill" in cat:
+    if "not_skill" in rabbit:
         ea_add_records_with_subtype(
             event_id,
-            cat["not_skill"],
+            rabbit["not_skill"],
             valid_log["not_skill"],
             error_log["not_skill"],
             delineator=",",
         )
 
     # TRAIT
-    if "trait" in cat:
-        ea_add_records(event_id, cat["trait"], valid_log["trait"], error_log["trait"])
+    if "trait" in rabbit:
+        ea_add_records(event_id, rabbit["trait"], valid_log["trait"], error_log["trait"])
 
     # NOT TRAIT
-    if "not_trait" in cat:
+    if "not_trait" in rabbit:
         ea_add_records(
-            event_id, cat["not_trait"], valid_log["not_trait"], error_log["not_trait"]
+            event_id, rabbit["not_trait"], valid_log["not_trait"], error_log["not_trait"]
         )
 
     # BACKSTORY
-    if "backstory" in cat:
+    if "backstory" in rabbit:
         ea_add_records(
             event_id,
-            cat["backstory"],
+            rabbit["backstory"],
             valid_log["backstory"],
             error_log["backstory"],
             ignore_categories=True,
         )
 
     # DIES
-    if "dies" in cat:
-        ea_add_records(event_id, cat["dies"], valid_log["dies"], error_log["dies"])
+    if "dies" in rabbit:
+        ea_add_records(event_id, rabbit["dies"], valid_log["dies"], error_log["dies"])
 
 
 # -----------------------
@@ -1057,9 +1057,9 @@ def ea_problems():
     ea_header("Injury Errors", trailing_newline=False, big=True)
     no_injury_errors = True
 
-    if any(invalid_records["injury"]["cats"].values()):
-        ea_header("Missing/invalid cats")
-        ea_dump_records(invalid_records["injury"]["cats"])
+    if any(invalid_records["injury"]["rabbits"].values()):
+        ea_header("Missing/invalid rabbits")
+        ea_dump_records(invalid_records["injury"]["rabbits"])
         no_injury_errors = False
 
     if any(invalid_records["injury"]["injuries"].values()):
@@ -1209,7 +1209,7 @@ def ea_overview(count, subview="all"):
     print("Returning to main program.")
 
 
-def ea_overview_cat(count, cat="m_c"):
+def ea_overview_cat(count, rabbit="m_c"):
     ea_header("M_C Overview", big=True, trailing_newline=True)
     print(f"Total number of events: {count}\n")
     print(
@@ -1223,31 +1223,31 @@ def ea_overview_cat(count, cat="m_c"):
         )
         if cmd == "age":
             print("\nBreakdown by age:")
-            ea_group_report(valid_records[cat]["age"], True)
+            ea_group_report(valid_records[rabbit]["age"], True)
         elif cmd == "status":
             print("\nBreakdown by status:")
-            ea_group_report(valid_records[cat]["status"], True)
+            ea_group_report(valid_records[rabbit]["status"], True)
         elif cmd == "relationship_status":
             print("\nBreakdown by relationship_status:")
-            ea_subgroup_report(valid_records[cat]["relationship_status"], True)
+            ea_subgroup_report(valid_records[rabbit]["relationship_status"], True)
         elif cmd == "skill":
             print("\nBreakdown by skill:")
-            ea_subgroup_report(valid_records[cat]["skill"], True, is_skill=True)
+            ea_subgroup_report(valid_records[rabbit]["skill"], True, is_skill=True)
         elif cmd == "not_skill":
             print("\nBreakdown by not_skill:")
-            ea_subgroup_report(valid_records[cat]["not_skill"], True, is_skill=True)
+            ea_subgroup_report(valid_records[rabbit]["not_skill"], True, is_skill=True)
         elif cmd == "trait":
             print("\nBreakdown by trait:")
-            ea_subgroup_report(valid_records[cat]["trait"], True)
+            ea_subgroup_report(valid_records[rabbit]["trait"], True)
         elif cmd == "not_trait":
             print("\nBreakdown by not_trait:")
-            ea_subgroup_report(valid_records[cat]["not_trait"], True)
+            ea_subgroup_report(valid_records[rabbit]["not_trait"], True)
         elif cmd == "backstory":
             print("\nBreakdown by backstory:")
-            ea_subgroup_report(valid_records[cat]["backstory"], True)
+            ea_subgroup_report(valid_records[rabbit]["backstory"], True)
         elif cmd == "dies":
             print("\nBreakdown by backstory:")
-            ea_group_report(valid_records[cat]["dies"], True)
+            ea_group_report(valid_records[rabbit]["dies"], True)
         elif cmd in ("help", "h"):
             print(
                 "Valid categories:\n\nage\nstatus\nrelationship_status\nskill\nnot_skill\ntrait\nnot_trait\nbackstory\ndies"

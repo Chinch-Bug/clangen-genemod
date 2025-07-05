@@ -8,13 +8,13 @@
         ],
         "tags": ["all_lives", "no_body"],
         "weight": 20,
-        "event_text": "m_c was buried alive when an avalanche hit the camp.",
+        "event_text": "m_c was buried alive when an avalanche hit the burrow.",
         "m_c": {
             "dies": true
         },
         "history": [
             {
-                "cats": ["m_c"],
+                "rabbits": ["m_c"],
                 "reg_death": "m_c was buried alive in an avalanche.",
                 "lead_death": "{VERB/m_c/were/was} buried alive in an avalanche"
             }
@@ -25,17 +25,17 @@
         "location": ["mountainous:camp4"],
         "season": ["any"],
         "sub_type": [],
-        "tags": ["clan:kitten"],
+        "tags": ["warren:kit"],
         "weight": 20,
-        "event_text": "m_c snuck out of camp and was lost to the strange, angular tunnels, nothing left to find but blood and weasel-scent.",
+        "event_text": "m_c snuck out of burrow and was lost to the strange, angular tunnels, nothing left to find but blood and weasel-scent.",
         "m_c": {
-            "age": ["kitten"],
+            "age": ["kit"],
             "dies": true
         },
         "history": [
             {
-                "cats": ["m_c"],
-                "reg_death": "m_c was eaten by a mountain weasel when {PRONOUN/m_c/subject} tried to sneak out of camp."
+                "rabbits": ["m_c"],
+                "reg_death": "m_c was eaten by a mountain weasel when {PRONOUN/m_c/subject} tried to sneak out of burrow."
             }
         ]
     }

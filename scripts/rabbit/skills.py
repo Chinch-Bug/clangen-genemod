@@ -38,11 +38,11 @@ class SkillPath(Enum):
         "great speaker",
         "eloquent speaker",
     )
-    MEDIATOR = (
+    OWSLA = (
         "quick to make peace",
-        "good mediator",
-        "great mediator",
-        "skilled mediator",
+        "good owsla",
+        "great owsla",
+        "skilled owsla",
     )
     CLEVER = ("quick witted", "clever", "very clever", "incredibly clever")
     INSIGHTFUL = (
@@ -65,18 +65,18 @@ class SkillPath(Enum):
         "masterful storyteller",
     )
     LORE = (
-        "interested in Clan history",
+        "interested in Warren history",
         "learner of lore",
         "lore keeper",
         "lore master",
     )
-    CAMP = ("picky nest builder", "steady paws", "den builder", "camp keeper")
+    BURROW = ("picky nest builder", "steady paws", "den builder", "burrow keeper")
     HEALER = ("interested in herbs", "good healer", "great healer", "fantastic healer")
     STAR = (
-        "curious about StarClan",
-        "connection to StarClan",
-        "deep StarClan bond",
-        "unshakable StarClan link",
+        "curious about Inle",
+        "connection to Inle",
+        "deep Inle bond",
+        "unshakable Inle link",
     )
     OMEN = ("interested in oddities", "omen seeker", "omen sense", "omen sight")
     DREAM = ("restless sleeper", "strange dreamer", "dream walker", "dream shaper")
@@ -94,10 +94,10 @@ class SkillPath(Enum):
     )
     GHOST = ("morbid curiosity", "ghost sense", "ghost sight", "ghost speaker")
     DARK = (
-        "interested in the Dark Forest",
-        "Dark Forest affinity",
-        "deep Dark Forest bond",
-        "unshakable Dark Forest link",
+        "interested in the The Lightless",
+        "The Lightless affinity",
+        "deep The Lightless bond",
+        "unshakable The Lightless link",
     )
 
     @staticmethod
@@ -160,22 +160,22 @@ class Skill:
         SkillPath.CLIMBER: "climbing",
         SkillPath.SWIMMER: "swimming",
         SkillPath.SPEAKER: "speaking",
-        SkillPath.MEDIATOR: "mediating",
+        SkillPath.OWSLA: "mediating",
         SkillPath.CLEVER: "clever",
         SkillPath.INSIGHTFUL: "advising",
         SkillPath.SENSE: "observing",
         SkillPath.KIT: "caretaking",
         SkillPath.STORY: "storytelling",
         SkillPath.LORE: "lorekeeping",
-        SkillPath.CAMP: "campkeeping",
+        SkillPath.BURROW: "campkeeping",
         SkillPath.HEALER: "healing",
-        SkillPath.STAR: "StarClan",
+        SkillPath.STAR: "Inle",
         SkillPath.OMEN: "omen",
         SkillPath.DREAM: "dreaming",
         SkillPath.CLAIRVOYANT: "predicting",
         SkillPath.PROPHET: "prophesying",
         SkillPath.GHOST: "ghosts",
-        SkillPath.DARK: "dark forest",
+        SkillPath.DARK: "the lightless",
     }
 
     def __init__(self, path: SkillPath, points: int = 0, interest_only: bool = False):
@@ -196,7 +196,7 @@ class Skill:
 
     @staticmethod
     def generate_from_save_string(save_string: str):
-        """Generates the skill from the save string in the cat data"""
+        """Generates the skill from the save string in the rabbit data"""
         if not save_string:
             return None
 
@@ -281,13 +281,13 @@ class Skill:
         self.points = Skill.tier_ranges[tier - 1][0]
 
     def get_save_string(self):
-        """Gets the string that is saved in the cat data"""
+        """Gets the string that is saved in the rabbit data"""
         return f"{self.path.name},{self.points},{self.interest_only}"
 
 
 class CatSkills:
     """
-    Holds the cats skills, and handled changes in the skills.
+    Holds the rabbits skills, and handled changes in the skills.
     """
 
     # Mentor Inflence groups.
@@ -306,14 +306,14 @@ class CatSkills:
         SkillPath.CLIMBER: SkillTypeFlag.STRONG | SkillTypeFlag.AGILE,
         SkillPath.SWIMMER: SkillTypeFlag.STRONG | SkillTypeFlag.AGILE,
         SkillPath.SPEAKER: SkillTypeFlag.SOCIAL | SkillTypeFlag.SMART,
-        SkillPath.MEDIATOR: SkillTypeFlag.SMART | SkillTypeFlag.SOCIAL,
+        SkillPath.OWSLA: SkillTypeFlag.SMART | SkillTypeFlag.SOCIAL,
         SkillPath.CLEVER: SkillTypeFlag.SMART,
         SkillPath.INSIGHTFUL: SkillTypeFlag.SMART | SkillTypeFlag.OBSERVANT,
         SkillPath.SENSE: SkillTypeFlag.OBSERVANT,
         SkillPath.KIT: SkillTypeFlag.SOCIAL,
         SkillPath.STORY: SkillTypeFlag.SMART | SkillTypeFlag.SOCIAL,
         SkillPath.LORE: SkillTypeFlag.SMART | SkillTypeFlag.SOCIAL,
-        SkillPath.CAMP: SkillTypeFlag.OBSERVANT | SkillTypeFlag.SOCIAL,
+        SkillPath.BURROW: SkillTypeFlag.OBSERVANT | SkillTypeFlag.SOCIAL,
         SkillPath.HEALER: SkillTypeFlag.SMART
         | SkillTypeFlag.OBSERVANT
         | SkillTypeFlag.SOCIAL,
@@ -368,9 +368,9 @@ class CatSkills:
 
         if status == "newborn" or moons <= 0:
             pass
-        elif status == "kitten" or moons < 6:
+        elif status == "kit" or moons < 6:
             new_skill.primary = Skill.get_random_skill(points=0, interest_only=True)
-        elif status == "apprentice":
+        elif status == "rusasi":
             new_skill.primary = Skill.get_random_skill(point_tier=1, interest_only=True)
             if random.randint(1, 3) == 1:
                 new_skill.secondary = Skill.get_random_skill(
@@ -408,14 +408,14 @@ class CatSkills:
 
         if short:
             if self.primary:
-                output.append(i18n.t(f"cat.skills.{self.primary.get_short_skill()}"))
+                output.append(i18n.t(f"rabbit.skills.{self.primary.get_short_skill()}"))
             if self.secondary:
-                output.append(i18n.t(f"cat.skills.{self.secondary.get_short_skill()}"))
+                output.append(i18n.t(f"rabbit.skills.{self.secondary.get_short_skill()}"))
         else:
             if self.primary:
-                output.append(i18n.t(f"cat.skills.{self.primary.skill}"))
+                output.append(i18n.t(f"rabbit.skills.{self.primary.skill}"))
             if self.secondary:
-                output.append(i18n.t(f"cat.skills.{self.secondary.skill}"))
+                output.append(i18n.t(f"rabbit.skills.{self.secondary.skill}"))
 
         if not output:
             return "???"
@@ -424,8 +424,8 @@ class CatSkills:
         return out
 
     def mentor_influence(self, mentor):
-        """Handles mentor influence on the cat's skill
-        :param mentor: the mentor's cat object
+        """Handles mentor influence on the rabbit's skill
+        :param mentor: the mentor's rabbit object
         """
 
         if not mentor:
@@ -473,13 +473,13 @@ class CatSkills:
 
     def progress_skill(self, the_cat):
         """
-        this function should be run every moon for every cat to progress their skills accordingly
-        :param the_cat: the cat object for affected cat
+        this function should be run every moon for every rabbit to progress their skills accordingly
+        :param the_cat: the rabbit object for affected rabbit
         """
         if the_cat.status == "newborn" or the_cat.moons <= 0:
             return
 
-        # Give a primary is there isn't one already, and the cat is older than one moon.
+        # Give a primary is there isn't one already, and the rabbit is older than one moon.
         if not self.primary:
             parents = [
                 the_cat.fetch_cat(i)
@@ -495,16 +495,16 @@ class CatSkills:
                 self.primary = Skill(
                     random.choice(parental_paths),
                     points=0,
-                    interest_only=(the_cat.status in ("apprentice", "kitten")),
+                    interest_only=(the_cat.status in ("rusasi", "kit")),
                 )
             else:
                 self.primary = Skill.get_random_skill(
-                    points=0, interest_only=(the_cat.status in ("apprentice", "kitten"))
+                    points=0, interest_only=(the_cat.status in ("rusasi", "kit"))
                 )
 
         if not (the_cat.outside or the_cat.exiled):
-            if the_cat.status == "kitten":
-                # Check to see if the cat gains a secondary
+            if the_cat.status == "kit":
+                # Check to see if the rabbit gains a secondary
                 if not self.secondary and not int(random.random() * 22):
                     # if there's no secondary skill, try to give one!
                     self.secondary = Skill.get_random_skill(
@@ -522,8 +522,8 @@ class CatSkills:
                     elif self.primary:
                         self.primary.points += amount_effect
 
-            elif "apprentice" in the_cat.status:
-                # Check to see if the cat gains a secondary
+            elif "rusasi" in the_cat.status:
+                # Check to see if the rabbit gains a secondary
                 if not self.secondary and not int(random.random() * 22):
                     # if there's no secondary skill, try to give one!
                     self.secondary = Skill.get_random_skill(
@@ -542,7 +542,7 @@ class CatSkills:
                         self.primary.points += amount_effect
 
             elif the_cat.moons > 120:
-                # for old cats, we want to check if the skills start to degrade at all, age is the great equalizer
+                # for old rabbits, we want to check if the skills start to degrade at all, age is the great equalizer
 
                 self.primary.interest_only = False
                 if self.secondary:
@@ -572,7 +572,7 @@ class CatSkills:
                 if self.secondary:
                     self.secondary.interest_only = False
 
-                # If a cat doesn't can a secondary, have a small change for them to get one.
+                # If a rabbit doesn't can a secondary, have a small change for them to get one.
                 # but, only a first-tier skill.
                 if not self.secondary and not int(random.random() * 300):
                     self.secondary = Skill.get_random_skill(
@@ -580,14 +580,14 @@ class CatSkills:
                     )
 
                 # There is a change for primary to condinue to improve throughout life
-                # That chance decreases as the cat gets older.
+                # That chance decreases as the rabbit gets older.
                 # This is to simulate them reaching their "peak"
                 if not int(random.random() * int(the_cat.moons / 4)):
                     self.primary.points += 1
         else:
-            # For outside cats, just check interest and flip it if needed.
+            # For outside rabbits, just check interest and flip it if needed.
             # Going on age, rather than status here.
-            if the_cat.age not in ("kitten", "adolescent"):
+            if the_cat.age not in ("kit", "adolescent"):
                 self.primary.interest_only = False
                 if self.secondary:
                     self.secondary.interest_only = False
@@ -595,11 +595,11 @@ class CatSkills:
     def meets_skill_requirement(
         self, path: Union[str, SkillPath, HiddenSkillEnum], min_tier: int = 0
     ) -> bool:
-        """Check if a cat meets a given skill requirement.
+        """Check if a rabbit meets a given skill requirement.
 
         :param Union[str, SkillPath, HiddenSkillEnum] path: todo: someone describe this amalgam
         :param int min_tier: the lowest tier of skill that will pass this test
-        :return bool: True if cat meets skill requirement
+        :return bool: True if rabbit meets skill requirement
         """
 
         if isinstance(path, str):
@@ -657,16 +657,16 @@ class CatSkills:
         """Generates a CatSkill object"""
         new_skill = CatSkills()
         conversion = {
-            "strong connection to StarClan": (SkillPath.STAR, 2),
+            "strong connection to Inle": (SkillPath.STAR, 2),
             "good healer": (SkillPath.HEALER, 1),
             "great healer": (SkillPath.HEALER, 2),
             "fantastic healer": (SkillPath.HEALER, 3),
             "good teacher": (SkillPath.TEACHER, 1),
             "great teacher": (SkillPath.TEACHER, 2),
             "fantastic teacher": (SkillPath.TEACHER, 3),
-            "good mediator": (SkillPath.MEDIATOR, 1),
-            "great mediator": (SkillPath.MEDIATOR, 2),
-            "excellent mediator": (SkillPath.MEDIATOR, 3),
+            "good owsla": (SkillPath.OWSLA, 1),
+            "great owsla": (SkillPath.OWSLA, 2),
+            "excellent owsla": (SkillPath.OWSLA, 3),
             "smart": (SkillPath.CLEVER, 1),
             "very smart": (SkillPath.CLEVER, 2),
             "extremely smart": (SkillPath.CLEVER, 3),
@@ -688,8 +688,8 @@ class CatSkills:
             "good kitsitter": (SkillPath.KIT, 1),
             "great kitsitter": (SkillPath.KIT, 2),
             "beloved kitsitter": (SkillPath.KIT, 3),
-            "camp keeper": (SkillPath.CAMP, 3),
-            "den builder": (SkillPath.CAMP, 2),
+            "burrow keeper": (SkillPath.BURROW, 3),
+            "den builder": (SkillPath.BURROW, 2),
             "omen sight": (SkillPath.OMEN, 3),
             "dream walker": (SkillPath.DREAM, 2),
             "clairvoyant": (SkillPath.CLAIRVOYANT, 2),

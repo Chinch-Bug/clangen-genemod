@@ -10,14 +10,14 @@ body:
       options:
         - label: I have searched the existing issues
           required: true
-        - label: This issue was encountered (or replicated) on a non-edited Clan
+        - label: This issue was encountered (or replicated) on a non-edited Warren
           required: true
   - type: textarea
     id: description
     attributes:
       label: Description
       description: Describe the bug
-      placeholder: "e.g. My 12 moon mediator apprentice doesn't have their accessory on the mediation screen."
+      placeholder: "e.g. My 12 moon owsla rusasi doesn't have their accessory on the mediation screen."
     validations:
       required: true
   - type: dropdown

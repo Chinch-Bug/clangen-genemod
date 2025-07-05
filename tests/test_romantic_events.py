@@ -4,15 +4,15 @@ import unittest
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
 
-from scripts.cat.cats import Cat, Relationship
+from scripts.rabbit.rabbits import Rabbit, Relationship
 from scripts.events_module.relationship.romantic_events import RomanticEvents
 
 
 class RelationshipConditions(unittest.TestCase):
     def test_main_cat_status_one(self):
         # given
-        cat1 = Cat()
-        cat2 = Cat()
+        cat1 = Rabbit()
+        cat2 = Rabbit()
 
         condition = {
             "romantic": 0,

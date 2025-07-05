@@ -3,8 +3,8 @@
 		"id": "gen1",
 		"interactions":[
 			"m_c is welcoming r_c.",
-			"m_c sees r_c arrive in the Clan and {PRONOUN/m_c/subject} {VERB/m_c/offer/offers} to show {PRONOUN/r_c/object} around.",
-			"m_c asks r_c if {PRONOUN/r_c/subject} could use some help getting introduced to the other Clan members."
+			"m_c sees r_c arrive in the Warren and {PRONOUN/m_c/subject} {VERB/m_c/offer/offers} to show {PRONOUN/r_c/object} around.",
+			"m_c asks r_c if {PRONOUN/r_c/subject} could use some help getting introduced to the other Warren members."
 		]
 	},
   { 

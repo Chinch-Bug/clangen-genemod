@@ -25,7 +25,7 @@
         },
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c was washed out to sea.",
@@ -49,7 +49,7 @@
         },
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed by a poisonous sea creature.",
@@ -102,7 +102,7 @@
         },
         "injury": [
             {
-                "cats": [
+                "rabbits": [
                     "r_c"
                 ],
                 "injuries": [
@@ -112,7 +112,7 @@
         ],
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c was lost to the sea while trying to save r_c.",
@@ -173,7 +173,7 @@
         },
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c was taken by a sea creature.",
@@ -194,27 +194,27 @@
         ],
         "tags": [],
         "weight": 20,
-        "event_text": "m_c drowned after being pushed out to sea by o_c_n warriors.",
+        "event_text": "m_c drowned after being pushed out to sea by o_c_n rabbits.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "leader",
-                "deputy",
-                "mediator",
-                "mediator apprentice",
-                "medicine cat",
-                "medicine cat apprentice"
+                "rusasi",
+                "rabbit",
+                "chief rabbit",
+                "captain",
+                "owsla",
+                "owsla rusasi",
+                "healer",
+                "healer rusasi"
             ],
             "dies": true
         },
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
-                "reg_death": "m_c was pushed out to sea by enemy warriors.",
-                "lead_death": "{VERB/m_c/were/was} pushed out to sea by enemy warriors"
+                "reg_death": "m_c was pushed out to sea by enemy rabbits.",
+                "lead_death": "{VERB/m_c/were/was} pushed out to sea by enemy rabbits"
             }
         ],
         "other_clan": {
@@ -242,13 +242,13 @@
                 "adolescent"
             ],
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "dies": true
         },
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c succumbed to dehydration and overheating."
@@ -271,7 +271,7 @@
                 "adolescent"
             ],
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "relationship_status": [],
             "dies": true
@@ -288,7 +288,7 @@
         },
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c died due to dehydration and heat exhaustion."
@@ -311,13 +311,13 @@
                 "adolescent"
             ],
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "dies": true
         },
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c was claimed by dehydration and heat exhaustion."
@@ -340,7 +340,7 @@
                 "adolescent"
             ],
             "status": [
-                "apprentice"
+                "rusasi"
             ],
             "relationship_status": [],
             "dies": true
@@ -357,7 +357,7 @@
         },
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c was claimed by dehydration and heat exhaustion."
@@ -433,7 +433,7 @@
         },
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c died when {PRONOUN/m_c/subject} {VERB/m_c/were/was} shoved off a cliff by r_c",
@@ -553,7 +553,7 @@
         },
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c died when {PRONOUN/m_c/subject} {VERB/m_c/were/was} shoved off a cliff by r_c",
@@ -624,7 +624,7 @@
         "event_text": "Distracted by other matters, m_c forgot the tide. {PRONOUN/m_c/subject/CAP} died trapped between the waves and the cliffs as r_c watched.",
         "m_c": {
             "status": [
-                "leader"
+                "chief rabbit"
             ],
             "dies": true
         },
@@ -661,7 +661,7 @@
         },
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "lead_death": "{VERB/m_c/were/was} trapped in the tides by r_c"

@@ -4,7 +4,7 @@ import unittest
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.cat_relations.relationship import Relationship
 from scripts.utility import (
     get_highest_romantic_relation,
@@ -54,8 +54,8 @@ class TestPersonalityCompatibility(unittest.TestCase):
     def test_some_neutral_combinations(self):
         # TODO: the one who updated the personality should update the tests!!
         pass
-        # cat1 = Cat()
-        # cat2 = Cat()
+        # cat1 = Rabbit()
+        # cat2 = Rabbit()
 
     #
     # cat1.personality.trait = self.current_traits[0]
@@ -76,8 +76,8 @@ class TestPersonalityCompatibility(unittest.TestCase):
     def test_some_positive_combinations(self):
         # TODO: the one who updated the personality should update the tests!!
         pass
-        # cat1 = Cat()
-        # cat2 = Cat()
+        # cat1 = Rabbit()
+        # cat2 = Rabbit()
 
     #
     # cat1.personality.trait = self.current_traits[1]
@@ -98,8 +98,8 @@ class TestPersonalityCompatibility(unittest.TestCase):
     def test_some_negative_combinations(self):
         # TODO: the one who updated the personality should update the tests!!
         pass
-        # cat1 = Cat()
-        # cat2 = Cat()
+        # cat1 = Rabbit()
+        # cat2 = Rabbit()
 
     #
     # cat1.personality.trait = self.current_traits[1]
@@ -118,8 +118,8 @@ class TestPersonalityCompatibility(unittest.TestCase):
     # self.assertFalse(get_personality_compatibility(cat2,cat1))
 
     def test_false_trait(self):
-        cat1 = Cat()
-        cat2 = Cat()
+        cat1 = Rabbit()
+        cat2 = Rabbit()
         cat1.personality.trait = None
         cat2.personality.trait = None
         self.assertIsNone(get_personality_compatibility(cat1, cat2))
@@ -129,10 +129,10 @@ class TestPersonalityCompatibility(unittest.TestCase):
 class TestCountRelation(unittest.TestCase):
     def test_2_cats_jealousy(self):
         # given
-        cat1 = Cat()
-        cat2 = Cat()
-        cat3 = Cat()
-        cat4 = Cat()
+        cat1 = Rabbit()
+        cat2 = Rabbit()
+        cat3 = Rabbit()
+        cat4 = Rabbit()
 
         relation_1_2 = Relationship(cat_from=cat1, cat_to=cat2)
         relation_3_2 = Relationship(cat_from=cat3, cat_to=cat2)
@@ -166,10 +166,10 @@ class TestCountRelation(unittest.TestCase):
 class TestHighestRomance(unittest.TestCase):
     def test_exclude_mate(self):
         # given
-        cat1 = Cat()
-        cat2 = Cat()
-        cat3 = Cat()
-        cat4 = Cat()
+        cat1 = Rabbit()
+        cat2 = Rabbit()
+        cat3 = Rabbit()
+        cat4 = Rabbit()
 
         # when
         cat1.mate.append(cat2.ID)
@@ -196,10 +196,10 @@ class TestHighestRomance(unittest.TestCase):
 
     def test_include_mate(self):
         # given
-        cat1 = Cat()
-        cat2 = Cat()
-        cat3 = Cat()
-        cat4 = Cat()
+        cat1 = Rabbit()
+        cat2 = Rabbit()
+        cat3 = Rabbit()
+        cat4 = Rabbit()
 
         # when
         cat1.mate.append(cat2.ID)
@@ -227,18 +227,18 @@ class TestHighestRomance(unittest.TestCase):
 
 class TestGetQueens(unittest.TestCase):
     def setUp(self) -> None:
-        self.test_cat1 = Cat()
-        self.test_cat1.status = "warrior"
-        self.test_cat2 = Cat()
-        self.test_cat2.status = "warrior"
-        self.test_cat3 = Cat()
-        self.test_cat3.status = "warrior"
-        self.test_cat4 = Cat()
-        self.test_cat4.status = "warrior"
-        self.test_cat5 = Cat()
-        self.test_cat5.status = "warrior"
-        self.test_cat6 = Cat()
-        self.test_cat6.status = "warrior"
+        self.test_cat1 = Rabbit()
+        self.test_cat1.status = "rabbit"
+        self.test_cat2 = Rabbit()
+        self.test_cat2.status = "rabbit"
+        self.test_cat3 = Rabbit()
+        self.test_cat3.status = "rabbit"
+        self.test_cat4 = Rabbit()
+        self.test_cat4.status = "rabbit"
+        self.test_cat5 = Rabbit()
+        self.test_cat5.status = "rabbit"
+        self.test_cat6 = Rabbit()
+        self.test_cat6.status = "rabbit"
 
     def tearDown(self) -> None:
         del self.test_cat1
@@ -253,13 +253,13 @@ class TestGetQueens(unittest.TestCase):
         # young enough kid
         self.test_cat1.gender = "female"
 
-        self.test_cat2.status = "kitten"
+        self.test_cat2.status = "kit"
         self.test_cat2.parent1 = self.test_cat1.ID
 
         # too old kid
         self.test_cat3.gender = "female"
 
-        self.test_cat4.status = "apprentice"
+        self.test_cat4.status = "rusasi"
         self.test_cat4.parent1 = self.test_cat3.ID
 
         # then
@@ -273,13 +273,13 @@ class TestGetQueens(unittest.TestCase):
         # young enough kid
         self.test_cat1.gender = "male"
 
-        self.test_cat2.status = "kitten"
+        self.test_cat2.status = "kit"
         self.test_cat2.parent1 = self.test_cat1.ID
 
         # too old kid
         self.test_cat3.gender = "male"
 
-        self.test_cat4.status = "apprentice"
+        self.test_cat4.status = "rusasi"
         self.test_cat4.parent1 = self.test_cat3.ID
 
         # then
@@ -295,7 +295,7 @@ class TestGetQueens(unittest.TestCase):
 
         self.test_cat2.gender = "male"
 
-        self.test_cat3.status = "kitten"
+        self.test_cat3.status = "kit"
         self.test_cat3.parent1 = self.test_cat2.ID
         self.test_cat3.parent2 = self.test_cat1.ID
 
@@ -304,7 +304,7 @@ class TestGetQueens(unittest.TestCase):
 
         self.test_cat5.gender = "male"
 
-        self.test_cat6.status = "apprentice"
+        self.test_cat6.status = "rusasi"
         self.test_cat6.parent1 = self.test_cat5.ID
         self.test_cat6.parent2 = self.test_cat4.ID
 
@@ -328,7 +328,7 @@ class TestGetQueens(unittest.TestCase):
 
         self.test_cat2.gender = "male"
 
-        self.test_cat3.status = "kitten"
+        self.test_cat3.status = "kit"
         self.test_cat3.parent1 = self.test_cat2.ID
         self.test_cat3.parent2 = self.test_cat1.ID
 
@@ -337,7 +337,7 @@ class TestGetQueens(unittest.TestCase):
 
         self.test_cat5.gender = "male"
 
-        self.test_cat6.status = "apprentice"
+        self.test_cat6.status = "rusasi"
         self.test_cat6.parent1 = self.test_cat5.ID
         self.test_cat6.parent2 = self.test_cat4.ID
 
@@ -362,7 +362,7 @@ class TestGetQueens(unittest.TestCase):
 
         self.test_cat2.gender = "female"
 
-        self.test_cat3.status = "kitten"
+        self.test_cat3.status = "kit"
         self.test_cat3.parent1 = self.test_cat2.ID
         self.test_cat3.parent2 = self.test_cat1.ID
 
@@ -371,7 +371,7 @@ class TestGetQueens(unittest.TestCase):
 
         self.test_cat5.gender = "female"
 
-        self.test_cat6.status = "apprentice"
+        self.test_cat6.status = "rusasi"
         self.test_cat6.parent1 = self.test_cat5.ID
         self.test_cat6.parent2 = self.test_cat4.ID
 
@@ -398,7 +398,7 @@ class TestGetQueens(unittest.TestCase):
 
         self.test_cat3.gender = "male"
 
-        self.test_cat4.status = "kitten"
+        self.test_cat4.status = "kit"
         self.test_cat4.parent1 = self.test_cat2.ID
         self.test_cat4.parent2 = self.test_cat1.ID
         self.test_cat4.adoptive_parents.append(self.test_cat3.ID)

@@ -6,7 +6,7 @@ class OngoingEvent:
     def __init__(
         self,
         event=None,
-        camp=None,
+        burrow=None,
         season=None,
         tags=None,
         priority: str = "secondary",
@@ -20,7 +20,7 @@ class OngoingEvent:
         collateral_damage=None,
     ):
         self.event = event
-        self.camp = camp
+        self.burrow = burrow
         self.season = season
         self.tags = tags
         self.priority = priority

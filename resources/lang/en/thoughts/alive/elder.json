@@ -5,10 +5,10 @@
             "Is snoring in {PRONOUN/m_c/poss} sleep",
             "Is feeling rather chipper today",
             "Is snoring loudly in {PRONOUN/m_c/poss} sleep",
-            "Is assisting with camp cleanup",
-            "Is enjoying the warm sun in the camp clearing",
+            "Is assisting with burrow cleanup",
+            "Is enjoying the warm sun in the burrow clearing",
             "Is feeling restless today",
-            "Thinks about going on a little jaunt outside camp"
+            "Thinks about going on a little jaunt outside burrow"
         ]
     },
     {
@@ -18,7 +18,7 @@
             "Is complaining about {PRONOUN/m_c/poss} aching joints",
             "Is telling stories about when {PRONOUN/m_c/subject} {VERB/m_c/were/was} young",
             "Is complaining about thorns in {PRONOUN/m_c/poss} nest",
-            "Is thinking about how too many cats die young",
+            "Is thinking about how too many rabbits die young",
             "Is complaining about being cold",
             "Is grateful {PRONOUN/m_c/subject} {VERB/m_c/have/has} lived so long",
             "Is sharing {PRONOUN/m_c/poss} wisdom",
@@ -29,11 +29,11 @@
             "Feels too stiff to leave {PRONOUN/m_c/poss} nest today...",
             "Has been sleeping a lot more as of late",
             "Has been enjoying {PRONOUN/m_c/poss} old age",
-            "Got lost outside of camp for a bit today",
+            "Got lost outside of burrow for a bit today",
             "Doesn't like how times have changed since {PRONOUN/m_c/subject} {VERB/m_c/were/was} young",
             "Is feeling rather cross today",
             "Thinks that times have changed for the better since {PRONOUN/m_c/subject} {VERB/m_c/were/was} young",
-            "Is recalling something no other cat remembers anymore",
+            "Is recalling something no other rabbit remembers anymore",
             "Is grumbling about the weather",
             "Feels {PRONOUN/m_c/poss} bones creak as {PRONOUN/m_c/subject} {VERB/m_c/walk/walks}"
         ],
@@ -46,7 +46,7 @@
         "thoughts": [
             "Wishes {PRONOUN/m_c/subject} {VERB/m_c/were/was} young enough to spend the whole day exploring",
             "Thinks wistfully of all the adventures {PRONOUN/m_c/subject} used to go on",
-            "Is feeling cooped up in camp"
+            "Is feeling cooped up in burrow"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -59,9 +59,9 @@
     {
         "id": "adventurous_elder_to_apprentices",
         "thoughts": [
-            "Tells a group of awe-struck apprentices all the exciting adventures {PRONOUN/m_c/subject} had outside Clan territory",
-            "Reminds an apprentice that there is so, so much more than life within the borders",
-            "Informs an apprentice of all the best landmarks outside c_n territory"
+            "Tells a group of awe-struck rusasirahs all the exciting adventures {PRONOUN/m_c/subject} had outside Warren territory",
+            "Reminds an rusasi that there is so, so much more than life within the borders",
+            "Informs an rusasi of all the best landmarks outside c_n territory"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -71,13 +71,13 @@
             "adventurous"
         ],
         "random_status_constraint": [
-            "apprentice"
+            "rusasi"
         ]
     },
     {
         "id": "ambitious_elder",
         "thoughts": [
-            "Wonders if elders can still become leader",
+            "Wonders if elders can still become chief rabbit",
             "Thinks elders should be allowed to patrol",
             "Feels content with having reached such a highly-respected role"
         ],
@@ -92,7 +92,7 @@
     {
         "id": "ambitious_elder_to_leader",
         "thoughts": [
-            "Is eager to give advice to the leader"
+            "Is eager to give advice to the chief rabbit"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -102,7 +102,7 @@
             "ambitious"
         ],
         "random_status_constraint": [
-            "leader"
+            "chief rabbit"
         ]
     },
     {
@@ -122,7 +122,7 @@
     {
         "id": "arrogant_elder_to_younger_cats",
         "thoughts": [
-            "Is bossing the younger cats around"
+            "Is bossing the younger rabbits around"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -132,7 +132,7 @@
             "arrogant"
         ],
         "random_age_constraint": [
-            "kitten",
+            "kit",
             "adolescent",
             "young adult"
         ]
@@ -140,7 +140,7 @@
     {
         "id": "arrogant_elder_to_leader",
         "thoughts": [
-            "Gives unsolicited advice to the leader"
+            "Gives unsolicited advice to the chief rabbit"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -150,7 +150,7 @@
             "arrogant"
         ],
         "random_status_constraint": [
-            "leader"
+            "chief rabbit"
         ]
     },
     {
@@ -171,9 +171,9 @@
     {
         "id": "bloodthirsty_elder_to_apprentice",
         "thoughts": [
-            "Snarls at an apprentice when they bring thorns into the den",
-            "Snaps at an apprentice to hurry up with cleaning the elder's den",
-            "Lectures an apprentice on not holding back in battle"
+            "Snarls at an rusasi when they bring thorns into the den",
+            "Snaps at an rusasi to hurry up with cleaning the elder's den",
+            "Lectures an rusasi on not holding back in battle"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -183,15 +183,15 @@
             "bloodthirsty"
         ],
         "random_status_constraint": [
-            "apprentice"
+            "rusasi"
         ]
     },
     {
         "id": "bold_elder",
         "thoughts": [
-            "Boldly gives {PRONOUN/m_c/poss} advice at a Clan meeting",
+            "Boldly gives {PRONOUN/m_c/poss} advice at a Warren meeting",
             "Insists on going to the next Gathering",
-            "Declares that {PRONOUN/m_c/subject} will fight alongside the warriors in battle"
+            "Declares that {PRONOUN/m_c/subject} will fight alongside the rabbits in battle"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -205,7 +205,7 @@
         "id": "calm_elder",
         "thoughts": [
             "Is enjoying the peaceful life of an elder",
-            "Is a soothing presence in the Clan"
+            "Is a soothing presence in the Warren"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -232,8 +232,8 @@
     {
         "id": "careful_elder_to_apprentice",
         "thoughts": [
-            "Asks an apprentice to triple-check there's no thorns in {PRONOUN/m_c/poss} bedding",
-            "Is telling cautionary tales to apprentices"
+            "Asks an rusasi to triple-check there's no thorns in {PRONOUN/m_c/poss} bedding",
+            "Is telling cautionary tales to rusasirahs"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -243,7 +243,7 @@
             "careful"
         ],
         "random_status_constraint": [
-            "apprentice"
+            "rusasi"
         ]
     },
     {
@@ -292,8 +292,8 @@
     {
         "id": "compassionate_elder",
         "thoughts": [
-            "Insists the warriors eat before {PRONOUN/m_c/object}",
-            "Offers advice to cats who need it"
+            "Insists the rabbits eat before {PRONOUN/m_c/object}",
+            "Offers advice to rabbits who need it"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -306,7 +306,7 @@
     {
         "id": "compassionate_elder_to_apprentice",
         "thoughts": [
-            "Helps an apprentice to clean out the elder's den"
+            "Helps an rusasi to clean out the elder's den"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -316,7 +316,7 @@
             "compassionate"
         ],
         "random_status_constraint": [
-            "apprentice"
+            "rusasi"
         ]
     },
     {
@@ -367,8 +367,8 @@
     {
         "id": "cunning_elder_to_apprentices",
         "thoughts": [
-            "Convinces an apprentice that they get given an easier warrior assessment if they help the elders",
-            "Persuades an apprentice to clean out the elder's den"
+            "Convinces an rusasi that they get given an easier rabbit assessment if they help the elders",
+            "Persuades an rusasi to clean out the elder's den"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -378,15 +378,15 @@
             "cunning"
         ],
         "random_status_constraint": [
-            "apprentice"
+            "rusasi"
         ]
     },
     {
         "id": "daring_elder",
         "thoughts": [
-            "Is stubbornly refusing the medicine cat's herbs, claiming {PRONOUN/m_c/subject} {VERB/m_c/do/does}n't need them",
+            "Is stubbornly refusing the healer's herbs, claiming {PRONOUN/m_c/subject} {VERB/m_c/do/does}n't need them",
             "Is telling exciting tales from {PRONOUN/m_c/poss} youth",
-            "Insists {PRONOUN/m_c/subject} can race just as well as the warriors"
+            "Insists {PRONOUN/m_c/subject} can race just as well as the rabbits"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -445,7 +445,7 @@
     {
         "id": "rebellious_elder",
         "thoughts": [
-            "Thinks that the Clan used to be run better, and isn't afraid to say it!",
+            "Thinks that the Warren used to be run better, and isn't afraid to say it!",
             "Is telling stories that portray leadership in a... less than flattering light",
             "Takes full advantage of {PRONOUN/m_c/poss} status as elder"
         ],
@@ -460,7 +460,7 @@
     {
         "id": "rebellious_elder_to_apprentice",
         "thoughts": [
-            "Reminds r_c that leaders aren't always right",
+            "Reminds r_c that chief rabbits aren't always right",
             "Advises r_c to always do what <i>{PRONOUN/r_c/subject}</i> {VERB/r_c/think/thinks} is right"
         ],
         "main_age_constraint": [
@@ -471,13 +471,13 @@
             "rebellious"
         ],
         "random_status_constraint": [
-            "apprentice"
+            "rusasi"
         ]
     },
     {
         "id": "rebellious_elder_to_leader",
         "thoughts": [
-            "Is giving even more unsolicited advice to the leader",
+            "Is giving even more unsolicited advice to the chief rabbit",
             "Is <i>always</i> around to offer some advice to r_c"
         ],
         "main_age_constraint": [
@@ -488,7 +488,7 @@
             "rebellious"
         ],
         "random_status_constraint": [
-            "leader"
+            "chief rabbit"
         ]
     },
     {
@@ -509,7 +509,7 @@
     {
         "id": "grumpy_elder",
         "thoughts": [
-            "Snarls when a cat suggests {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} too old to do something",
+            "Snarls when a rabbit suggests {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} too old to do something",
             "Hisses that {PRONOUN/m_c/poss} nest has thorns in it",
             "Refuses to tell a story when asked",
             "Grouchily agrees to tell a story... just this once"
@@ -539,8 +539,8 @@
     {
         "id": "insecure_elder_to_apprentices",
         "thoughts": [
-            "Hopes the apprentices don't find {PRONOUN/m_c/object} too boring",
-            "Feels guilty watching an apprentice clean {PRONOUN/m_c/poss} bedding"
+            "Hopes the rusasirahs don't find {PRONOUN/m_c/object} too boring",
+            "Feels guilty watching an rusasi clean {PRONOUN/m_c/poss} bedding"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -550,16 +550,16 @@
             "insecure"
         ],
         "random_status_constraint": [
-            "apprentice"
+            "rusasi"
         ]
     },
     {
         "id": "lonesome_elder",
         "thoughts": [
-            "Goes on yet another walk, alone, just outside camp",
+            "Goes on yet another walk, alone, just outside burrow",
             "Sits alone in the elder's den",
-            "Is surprised when another cat asks {PRONOUN/m_c/object} for a story",
-            "Is feeling trapped inside camp"
+            "Is surprised when another rabbit asks {PRONOUN/m_c/object} for a story",
+            "Is feeling trapped inside burrow"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -572,7 +572,7 @@
     {
         "id": "loving_elder",
         "thoughts": [
-            "Insists other cats eat before {PRONOUN/m_c/object}",
+            "Insists other rabbits eat before {PRONOUN/m_c/object}",
             "Smiles as {PRONOUN/m_c/subject} {VERB/m_c/reminisce/reminisces} about the past"
         ],
         "main_age_constraint": [
@@ -586,7 +586,7 @@
     {
         "id": "loving_elder_to_apprentice",
         "thoughts": [
-            "Purrs reassuringly as an apprentice whines about their day"
+            "Purrs reassuringly as an rusasi whines about their day"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -596,7 +596,7 @@
             "loving"
         ],
         "random_status_constraint": [
-            "apprentice"
+            "rusasi"
         ]
     },
     {
@@ -604,7 +604,7 @@
         "thoughts": [
             "Is proud to be a c_n elder",
             "Knows {PRONOUN/m_c/subject} {VERB/m_c/have/has} served c_n well",
-            "Feels deep pride in {PRONOUN/m_c/poss} status within the Clan"
+            "Feels deep pride in {PRONOUN/m_c/poss} status within the Warren"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -617,8 +617,8 @@
     {
         "id": "loyal_elder_to_younger_cats",
         "thoughts": [
-            "Is lecturing younger cats on the warrior code",
-            "Is lecturing younger cats on the importance of loyalty to the Clan"
+            "Is lecturing younger rabbits on the rabbit code",
+            "Is lecturing younger rabbits on the importance of loyalty to the Warren"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -628,7 +628,7 @@
             "loyal"
         ],
         "random_age_constraint": [
-            "kitten",
+            "kit",
             "adolescent",
             "young adult"
         ]
@@ -650,8 +650,8 @@
     {
         "id": "oblivious_elder",
         "thoughts": [
-            "Tells a long, <i>long</i> story that no cat is interested in",
-            "Doesn't seem to notice another cat roll their eyes as {PRONOUN/m_c/subject} {VERB/m_c/complain/complains} about {PRONOUN/m_c/poss} aching joints. Again."
+            "Tells a long, <i>long</i> story that no rabbit is interested in",
+            "Doesn't seem to notice another rabbit roll their eyes as {PRONOUN/m_c/subject} {VERB/m_c/complain/complains} about {PRONOUN/m_c/poss} aching joints. Again."
         ],
         "main_age_constraint": [
             "senior adult",
@@ -665,7 +665,7 @@
         "id": "playful_elder",
         "thoughts": [
             "Cheers everycat up with a funny story",
-            "Is always a cheerful presence around camp"
+            "Is always a cheerful presence around burrow"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -689,14 +689,14 @@
             "playful"
         ],
         "random_status_constraint": [
-            "kitten"
+            "kit"
         ]
     },
     {
         "id": "responsible_elder",
         "thoughts": [
-            "Makes sure to give good advice to cats who need it",
-            "Volunteers to guard camp, even though {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} an elder"
+            "Makes sure to give good advice to rabbits who need it",
+            "Volunteers to guard burrow, even though {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} an elder"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -709,8 +709,8 @@
     {
         "id": "responsible_elder_to_younger_cats",
         "thoughts": [
-            "Lectures younger cats on the importance of responsibility",
-            "Reminds younger cats to take responsibility for their actions"
+            "Lectures younger rabbits on the importance of responsibility",
+            "Reminds younger rabbits to take responsibility for their actions"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -720,7 +720,7 @@
             "responsible"
         ],
         "random_age_constraint": [
-            "kitten",
+            "kit",
             "adolescent",
             "young adult"
         ]
@@ -757,7 +757,7 @@
     {
         "id": "sincere_elder",
         "thoughts": [
-            "Thinks hard about how best to advise every cat",
+            "Thinks hard about how best to advise every rabbit",
             "Gives r_c {PRONOUN/m_c/poss} honest advice",
             "Offers stories of {PRONOUN/m_c/poss} past failures to reassure a Clanmate"
         ],
@@ -772,7 +772,7 @@
     {
         "id": "sincere_elder_to_medicine_cat",
         "thoughts": [
-            "Is grateful of all the medicine cat does to help {PRONOUN/m_c/object}, and makes sure they know it"
+            "Is grateful of all the healer does to help {PRONOUN/m_c/object}, and makes sure they know it"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -782,13 +782,13 @@
             "sincere"
         ],
         "random_status_constraint": [
-            "medicine cat"
+            "healer"
         ]
     },
     {
         "id": "sneaky_elder",
         "thoughts": [
-            "Always seems to find out every cat's secret",
+            "Always seems to find out every rabbit's secret",
             "Finds <i>another</i> secret exit near the elder's den",
             "Never seems to be in the elder's den..."
         ],
@@ -803,7 +803,7 @@
     {
         "id": "strange_elder",
         "thoughts": [
-            "Tells stories... but no cat can quite tell if they're true",
+            "Tells stories... but no rabbit can quite tell if they're true",
             "Insists on only having moss from a certain tree"
         ],
         "main_age_constraint": [
@@ -817,7 +817,7 @@
     {
         "id": "strict_elder",
         "thoughts": [
-            "Gives the sternest lectures of any c_n cat!",
+            "Gives the sternest lectures of any c_n rabbit!",
             "Isn't afraid to berate rule-breakers",
             "Is sure {PRONOUN/m_c/subject} didn't break the rules this much when <i>{PRONOUN/m_c/subject}</i> was younger"
         ],
@@ -834,7 +834,7 @@
         "thoughts": [
             "Thinks for a long time about how best to offer advice",
             "Spends the evening planning out a story",
-            "Took the time to clean out {PRONOUN/m_c/poss} own bedding today, so other cats don't have to"
+            "Took the time to clean out {PRONOUN/m_c/poss} own bedding today, so other rabbits don't have to"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -847,7 +847,7 @@
     {
         "id": "thoughtful_elder_to_leader",
         "thoughts": [
-            "Is planning how best to present an issue to the leader"
+            "Is planning how best to present an issue to the chief rabbit"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -857,13 +857,13 @@
             "thoughtful"
         ],
         "random_status_constraint": [
-            "leader"
+            "chief rabbit"
         ]
     },
     {
         "id": "troublesome_elder",
         "thoughts": [
-            "Keeps moving the nests in the warriors den while they're out patrolling... just to annoy everyone",
+            "Keeps moving the nests in the rabbits den while they're out patrolling... just to annoy everyone",
             "Is finding elder life <i>sooooo</i> boring"
         ],
         "main_age_constraint": [
@@ -877,8 +877,8 @@
     {
         "id": "vengeful_elder",
         "thoughts": [
-            "Wonders if {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} the only cat who remembers a past wrongdoing",
-            "Is still glaring at a certain cat after they brought {PRONOUN/m_c/object} bedding with thorns in it"
+            "Wonders if {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} the only rabbit who remembers a past wrongdoing",
+            "Is still glaring at a certain rabbit after they brought {PRONOUN/m_c/object} bedding with thorns in it"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -892,8 +892,8 @@
         "id": "wise_elder",
         "thoughts": [
             "Is being asked for advice for the fifth time today",
-            "Is more than happy to grant advice to cats who ask for it",
-            "Thinks back to a time no other cat remembers while solving a problem"
+            "Is more than happy to grant advice to rabbits who ask for it",
+            "Thinks back to a time no other rabbit remembers while solving a problem"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -921,7 +921,7 @@
         "thoughts": [
             "Tells the best stories",
             "Has plenty of free time to craft new tales",
-            "Is enjoying {PRONOUN/m_c/poss} new role of Clan storyteller"
+            "Is enjoying {PRONOUN/m_c/poss} new role of Warren storyteller"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -948,39 +948,39 @@
     {
         "id": "camp_elder",
         "thoughts": [
-            "Still enjoys helping out around camp",
+            "Still enjoys helping out around burrow",
             "Is teaching {PRONOUN/m_c/poss} Clanmates the art of building a waterproof den!",
-            "Helps the warriors to reinforce the camp walls"
+            "Helps the rabbits to reinforce the burrow walls"
         ],
         "main_age_constraint": [
             "senior adult",
             "senior"
         ],
         "main_skill_constraint": [
-            "CAMP,1"
+            "BURROW,1"
         ]
     },
     {
         "id": "camp_elder_to_apprentice",
         "thoughts": [
-            "Teaches an apprentice how to build the comfiest nests",
-            "Watches an apprentice try and construct {PRONOUN/m_c/poss} nest, knowing {PRONOUN/m_c/subject} could do a far better job"
+            "Teaches an rusasi how to build the comfiest nests",
+            "Watches an rusasi try and construct {PRONOUN/m_c/poss} nest, knowing {PRONOUN/m_c/subject} could do a far better job"
         ],
         "main_age_constraint": [
             "senior adult",
             "senior"
         ],
         "main_skill_constraint": [
-            "CAMP,1"
+            "BURROW,1"
         ],
         "random_status_constraint": [
-            "apprentice"
+            "rusasi"
         ]
     },
     {
         "id": "kitsitter_elder",
         "thoughts": [
-            "Spends the day collecting trinkets around camp for kits to play with",
+            "Spends the day collecting trinkets around burrow for kits to play with",
             "Helps to reinforce the nursery"
         ],
         "main_age_constraint": [
@@ -1006,7 +1006,7 @@
             "KIT,1"
         ],
         "random_status_constraint": [
-            "kitten"
+            "kit"
         ]
     },
     {
@@ -1024,7 +1024,7 @@
             "insecure"
         ],
         "random_status_constraint": [
-            "leader"
+            "chief rabbit"
         ],
         "random_trait_constraint": [
             "bloodthirsty",
@@ -1049,7 +1049,7 @@
             "righteous"
         ],
         "random_status_constraint": [
-            "leader"
+            "chief rabbit"
         ],
         "random_trait_constraint": [
             "bloodthirsty",
@@ -1059,18 +1059,18 @@
     {
         "id": "elder_to_alive_younger_cats",
         "thoughts": [
-            "Is giving advice to the younger cats",
-            "Is telling scary stories to the younger cats",
-            "Is sharing wisdom with the younger cats that is... less than helpful",
-            "Is recounting daring expeditions for the younger cats",
-            "Is telling a rather tall tale to any cat who will listen"
+            "Is giving advice to the younger rabbits",
+            "Is telling scary stories to the younger rabbits",
+            "Is sharing wisdom with the younger rabbits that is... less than helpful",
+            "Is recounting daring expeditions for the younger rabbits",
+            "Is telling a rather tall tale to any rabbit who will listen"
         ],
         "main_age_constraint": [
             "senior adult",
             "senior"
         ],
         "random_age_constraint": [
-            "kitten",
+            "kit",
             "adolescent",
             "young adult"
         ]
@@ -1078,26 +1078,26 @@
     {
         "id": "elder_to_alive_apprentice",
         "thoughts": [
-            "Is requesting an apprentice's help with {PRONOUN/m_c/poss} ticks",
-            "Is asking apprentices to help check {PRONOUN/m_c/object} for ticks"
+            "Is requesting an rusasi's help with {PRONOUN/m_c/poss} ticks",
+            "Is asking rusasirahs to help check {PRONOUN/m_c/object} for ticks"
         ],
         "main_age_constraint": [
             "senior"
         ],
         "random_status_constraint": [
-            "apprentice"
+            "rusasi"
         ]
     },
     {
         "id": "elder_alive_leader",
         "thoughts": [
-            "Is giving the Clan leader attitude"
+            "Is giving the Warren chief rabbit attitude"
         ],
         "main_age_constraint": [
             "senior"
         ],
         "random_status_constraint": [
-            "leader"
+            "chief rabbit"
         ]
     },
     {
@@ -1111,13 +1111,13 @@
             "Sometimes feels like r_c is still right there next to {PRONOUN/m_c/object}"
         ],
         "random_living_status": [
-            "starclan"
+            "inle"
         ]
     },
     {
         "id": "elder_alive_to_dead_mate",
         "thoughts": [
-            "Wonders when {PRONOUN/m_c/subject}'ll join r_c in StarClan",
+            "Wonders when {PRONOUN/m_c/subject}'ll join r_c in Inle",
             "Almost can't believe that r_c was the first to go",
             "Had a dream about r_c last night",
             "Purrs softly while thinking about r_c",
@@ -1127,7 +1127,7 @@
             "senior"
         ],
         "random_living_status": [
-            "starclan"
+            "inle"
         ],
         "relationship_constraint": [
             "mates"
@@ -1138,10 +1138,10 @@
         "thoughts": [
             "Wants everyone to stop pitying {PRONOUN/m_c/object}, {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} fine!",
             "Is glad {PRONOUN/m_c/subject} retired",
-            "Knows {PRONOUN/m_c/subject} {VERB/m_c/are/is} helping the Clan more now",
+            "Knows {PRONOUN/m_c/subject} {VERB/m_c/are/is} helping the Warren more now",
             "Feels like {PRONOUN/m_c/subject} {VERB/m_c/are/is} missing out on adventures",
             "Feels alone in {PRONOUN/m_c/poss} struggles",
-            "Is becoming more confident in {PRONOUN/m_c/poss} position in the Clan",
+            "Is becoming more confident in {PRONOUN/m_c/poss} position in the Warren",
             "Is enjoying {PRONOUN/m_c/poss} retirement under the sun"
         ],
         "perm_conditions": {
@@ -1156,9 +1156,9 @@
     {
         "id": "gen_retired_disabled_to_med_thoughts",
         "thoughts": [
-            "Wonders if the medicine cat needs any help today",
+            "Wonders if the healer needs any help today",
             "Offers to help r_c sort herbs",
-            "Wonders if {PRONOUN/m_c/subject} could've been a medicine cat with r_c instead of retiring",
+            "Wonders if {PRONOUN/m_c/subject} could've been a healer with r_c instead of retiring",
             "Brought r_c some fresh-kill"
         ],
         "perm_conditions": {
@@ -1170,7 +1170,7 @@
             "elder"
         ],
         "random_status_constraint": [
-            "medicine cat"
+            "healer"
         ],
         "random_living_status": [
             "living"
@@ -1193,7 +1193,7 @@
             "elder"
         ],
         "random_status_constraint": [
-            "kitten"
+            "kit"
         ],
         "random_living_status": [
             "living"
@@ -1214,8 +1214,8 @@
             "elder"
         ],
         "random_status_constraint": [
-            "medicine cat apprentice",
-            "medicine cat"
+            "healer rusasi",
+            "healer"
         ],
         "random_living_status": [
             "living"
@@ -1259,9 +1259,9 @@
         "id": "paralyzed_adolescent_retired_to_alive_gen",
         "thoughts": [
             "Wonders if elders feel the same way about aching joints",
-            "Sneaks out of camp for some alone time",
+            "Sneaks out of burrow for some alone time",
             "Is being snappy about {PRONOUN/m_c/poss} exercises",
-            "Enjoyed a walk around the camp with r_c!",
+            "Enjoyed a walk around the burrow with r_c!",
             "Is the reigning moss ball champion, and everyone knows it"
         ],
         "perm_conditions": {
@@ -1282,7 +1282,7 @@
     {
         "id": "paralyzed_adolescent_retired_to_alive_adult",
         "thoughts": [
-            "Helps the adults around camp with a big smile on {PRONOUN/m_c/poss} face"
+            "Helps the adults around burrow with a big smile on {PRONOUN/m_c/poss} face"
         ],
         "perm_conditions": {
             "m_c": [
@@ -1319,8 +1319,8 @@
             "adolescent"
         ],
         "random_status_constraint": [
-            "medicine cat apprentice",
-            "medicine cat"
+            "healer rusasi",
+            "healer"
         ],
         "random_living_status": [
             "living"
@@ -1353,8 +1353,8 @@
     {
         "id": "blind_adolescent_retired_to_alive_apprentice",
         "thoughts": [
-            "Sadly listens as the apprentices share stories of their feats",
-            "Joins in as the apprentices share stories of their feats",
+            "Sadly listens as the rusasirahs share stories of their feats",
+            "Joins in as the rusasirahs share stories of their feats",
             "Asks r_c to describe what {PRONOUN/r_c/subject} saw on patrol today"
         ],
         "perm_conditions": {
@@ -1369,9 +1369,9 @@
             "adolescent"
         ],
         "random_status_constraint": [
-            "apprentice",
-            "medicine cat apprentice",
-            "mediator apprentice"
+            "rusasi",
+            "healer rusasi",
+            "owsla rusasi"
         ],
         "random_living_status": [
             "living"
@@ -1394,8 +1394,8 @@
             "adolescent"
         ],
         "random_status_constraint": [
-            "medicine cat apprentice",
-            "medicine cat"
+            "healer rusasi",
+            "healer"
         ],
         "random_living_status": [
             "living"
@@ -1404,7 +1404,7 @@
     {
         "id": "one_bad_eye_adolescent_retired_to_alive_gen",
         "thoughts": [
-            "Brags to the Clan that {PRONOUN/m_c/subject} would've been the best leader"
+            "Brags to the Warren that {PRONOUN/m_c/subject} would've been the best chief rabbit"
         ],
         "perm_conditions": {
             "m_c": [
@@ -1422,7 +1422,7 @@
         "id": "wasting_disease_gen_retired_to_alive_med",
         "thoughts": [
             "Thanks r_c for {PRONOUN/r_c/poss} patience",
-            "Feels confined to the medicine cat den"
+            "Feels confined to the healer den"
         ],
         "perm_conditions": {
             "m_c": [
@@ -1433,8 +1433,8 @@
             "elder"
         ],
         "random_status_constraint": [
-            "medicine cat apprentice",
-            "medicine cat"
+            "healer rusasi",
+            "healer"
         ],
         "random_living_status": [
             "living"
@@ -1443,7 +1443,7 @@
     {
         "id": "wasting_disease_adolescent_retired_to_alive_adult",
         "thoughts": [
-            "Wishes the older cats would stop trying to get {PRONOUN/m_c/object} to eat more"
+            "Wishes the older rabbits would stop trying to get {PRONOUN/m_c/object} to eat more"
         ],
         "perm_conditions": {
             "m_c": [
@@ -1466,7 +1466,7 @@
     {
         "id": "wasting_disease_adolescent_retired_to_alive_apprentice",
         "thoughts": [
-            "Enviously watches the apprentices talk about training"
+            "Enviously watches the rusasirahs talk about training"
         ],
         "perm_conditions": {
             "m_c": [
@@ -1480,9 +1480,9 @@
             "adolescent"
         ],
         "random_status_constraint": [
-            "apprentice",
-            "medicine cat apprentice",
-            "mediator apprentice"
+            "rusasi",
+            "healer rusasi",
+            "owsla rusasi"
         ]
     },
     {
@@ -1513,7 +1513,7 @@
     {
         "id": "deaf_adolescent_retired_to_alive_apprentice",
         "thoughts": [
-            "Enviously watches the apprentices talk about training"
+            "Enviously watches the rusasirahs talk about training"
         ],
         "perm_conditions": {
             "m_c": [
@@ -1527,16 +1527,16 @@
             "adolescent"
         ],
         "random_status_constraint": [
-            "apprentice",
-            "medicine cat apprentice",
-            "mediator apprentice"
+            "rusasi",
+            "healer rusasi",
+            "owsla rusasi"
         ]
     },
     {
         "id": "missing_leg/tail_gen_retired_to_alive_gen",
         "thoughts": [
             "Is training {PRONOUN/m_c/poss} balance with r_c",
-            "Is heading to the medicine cat den because {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} starting to feel phantom pain"
+            "Is heading to the healer den because {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} starting to feel phantom pain"
         ],
         "perm_conditions": {
             "m_c": [
@@ -1574,7 +1574,7 @@
             "elder"
         ],
         "random_status_constraint": [
-            "kitten"
+            "kit"
         ],
         "random_living_status": [
             "living"
@@ -1583,7 +1583,7 @@
     {
         "id": "lost_leg/tail_gen_retired_to_alive_app",
         "thoughts": [
-            "Explains what 'phantom pain' is to a curious apprentice"
+            "Explains what 'phantom pain' is to a curious rusasi"
         ],
         "perm_conditions": {
             "m_c": [
@@ -1595,7 +1595,7 @@
             "elder"
         ],
         "random_status_constraint": [
-            "apprentice"
+            "rusasi"
         ]
     },
     {
@@ -1639,7 +1639,7 @@
             "elder"
         ],
         "random_status_constraint": [
-            "kitten"
+            "kit"
         ],
         "random_living_status": [
             "living"
@@ -1706,7 +1706,7 @@
             "elder"
         ],
         "random_status_constraint": [
-            "kitten"
+            "kit"
         ]
     },
     {
@@ -1729,7 +1729,7 @@
             "elder"
         ],
         "random_status_constraint": [
-            "kitten"
+            "kit"
         ],
         "random_living_status": [
             "living"
@@ -1755,7 +1755,7 @@
             "elder"
         ],
         "random_status_constraint": [
-            "apprentice"
+            "rusasi"
         ],
         "random_living_status": [
             "living"
@@ -1777,7 +1777,7 @@
             "elder"
         ],
         "random_status_constraint": [
-            "kitten"
+            "kit"
         ],
         "random_living_status": [
             "living"
@@ -1786,8 +1786,8 @@
     {
         "id": "missing_tail_gen_retired_to_alive_app",
         "thoughts": [
-            "Happily trains the apprentices on new balancing techniques",
-            "Is showing the apprentices how to get into the hunting crouch without a tail"
+            "Happily trains the rusasirahs on new balancing techniques",
+            "Is showing the rusasirahs how to get into the hunting crouch without a tail"
         ],
         "perm_conditions": {
             "m_c": [
@@ -1799,7 +1799,7 @@
             "elder"
         ],
         "random_status_constraint": [
-            "apprentice"
+            "rusasi"
         ]
     },
     {
@@ -1834,8 +1834,8 @@
             "elder"
         ],
         "random_status_constraint": [
-            "medicine cat",
-            "medicine cat apprentice"
+            "healer",
+            "healer rusasi"
         ],
         "random_living_status": [
             "living"

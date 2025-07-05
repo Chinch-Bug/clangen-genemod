@@ -7,10 +7,10 @@ import platform
 import subprocess
 import ujson
 
-from scripts.cat.cats import Cat, BACKSTORIES, create_option_preview_cat
-from scripts.cat.pelts import Pelt
-from scripts.cat.personality import Personality
-from scripts.cat.skills import SkillPath, Skill
+from scripts.rabbit.rabbits import Rabbit, BACKSTORIES, create_option_preview_cat
+from scripts.rabbit.pelts import Pelt
+from scripts.rabbit.personality import Personality
+from scripts.rabbit.skills import SkillPath, Skill
 from scripts.events_module.short.condition_events import Condition_Events
 from scripts.events_module.short.handle_short_events import (
     INJURY_GROUPS,
@@ -68,9 +68,9 @@ class EventEditScreen(Screens):
         "med_name": "MedCat",
         "multi_cat": "DeadCat, PerishedCat, and RipCat",
     }
-    """Placeholder names for each possible cat abbreviation."""
-    # it's possible to have more than 6 new cats, but doubtful that we'll ever refer to more than 2 within event text
-    # either way, this adds 6 new cat abbreviations to our test name dict
+    """Placeholder names for each possible rabbit abbreviation."""
+    # it's possible to have more than 6 new rabbits, but doubtful that we'll ever refer to more than 2 within event text
+    # either way, this adds 6 new rabbit abbreviations to our test name dict
     for index in range(5):
         test_cat_names[f"n_c:{index}"] = f"NewCat{index}"
 
@@ -78,7 +78,7 @@ class EventEditScreen(Screens):
     """Possible preview states, 0 (no preview), 1 (plural), 2 (singular)."""
 
     test_pronouns: list = list(get_default_pronouns().values())
-    """Pronoun dicts to assign to our test cats."""
+    """Pronoun dicts to assign to our test rabbits."""
 
     all_camps: dict = {
         "Forest": ["Classic", "Gully", "Grotto", "Lakeside"],
@@ -86,7 +86,7 @@ class EventEditScreen(Screens):
         "Plains": ["Grasslands", "Tunnels", "Wastelands"],
         "Beach": ["Tidepools", "Tidal Cave", "Shipwreck", "Fjord"],
     }
-    """Dict with key as biome and value as camp name."""
+    """Dict with key as biome and value as burrow name."""
     # TODO: when possible, change this to pull this from a global attr
     all_seasons: tuple = ("newleaf", "greenleaf", "leaf-fall", "leaf-bare")
     """Tuple of all seasons possible."""
@@ -102,11 +102,11 @@ class EventEditScreen(Screens):
     rel_value_types: list = RelationshipScreen.rel_value_names
     """List of all relationship values."""
 
-    all_ranks: list = Cat.rank_sort_order.copy()
+    all_ranks: list = Rabbit.rank_sort_order.copy()
     """List of all possible ranks from highest to lowest."""
     all_ranks.reverse()
 
-    all_ages: list = [age.value for age in Cat.age_moons.keys()]
+    all_ages: list = [age.value for age in Rabbit.age_moons.keys()]
     """List of all possible ages from oldest to youngest."""
     all_ages.reverse()
 
@@ -133,22 +133,22 @@ class EventEditScreen(Screens):
         individual_stories.extend(all_backstories[pool])
 
     new_cat_types: list = TAGS["new_cat"]["types"]
-    """All possible cat types."""
+    """All possible rabbit types."""
 
     new_cat_bools: list = TAGS["new_cat"]["bool_settings"]
-    """New cat tag list. Holds tag name, setting, and conflicts."""
+    """New rabbit tag list. Holds tag name, setting, and conflicts."""
 
     new_cat_ranks: list = all_ranks.copy()
-    """All ranks available to new cats."""
+    """All ranks available to new rabbits."""
     for rank in TAGS["new_cat"]["disallowed_ranks"]:
         new_cat_ranks.remove(rank)
 
     new_cat_ages: list = all_ages.copy()
-    """List of all age tags available to new cats."""
+    """List of all age tags available to new rabbits."""
     new_cat_ages.extend(TAGS["new_cat"]["special_ages"])
 
     new_cat_genders: list = TAGS["new_cat"]["genders"]
-    """List of all gender tags available to new cats"""
+    """List of all gender tags available to new rabbits"""
 
     all_injury_pools: dict = INJURY_GROUPS
     """Dict of all injury pools. Key is pool name, value is the injuries within the pool."""
@@ -179,14 +179,14 @@ class EventEditScreen(Screens):
     """List of all possible outsider reputation levels."""
     all_outsider_reps.append("any")
     all_other_clan_reps: list = game.other_clan_reps.copy()
-    """List of all possible other clan relationship levels."""
+    """List of all possible other warren relationship levels."""
     all_other_clan_reps.append("any")
 
     section_tabs: dict = {
         "settings": Icon.PAW,
-        "main cat": Icon.CAT_HEAD,
-        "random cat": Icon.CAT_HEAD,
-        "new cats": Icon.CAT_HEAD,
+        "main rabbit": Icon.CAT_HEAD,
+        "random rabbit": Icon.CAT_HEAD,
+        "new rabbits": Icon.CAT_HEAD,
         "personal consequences": Icon.SCRATCHES,
         "outside consequences": Icon.CLAN_UNKNOWN,
         "future effects": Icon.NOTEPAD,
@@ -328,7 +328,7 @@ class EventEditScreen(Screens):
             "not_trait": [],
             "backstory": [],
         }
-        """The main cat's loaded information"""
+        """The main rabbit's loaded information"""
 
         self.random_cat_info: dict = {
             "rank": [],
@@ -341,13 +341,13 @@ class EventEditScreen(Screens):
             "not_trait": [],
             "backstory": [],
         }
-        """The random cat's loaded information"""
+        """The random rabbit's loaded information"""
 
         self.selected_new_cat_info: dict = {}
         """The loaded backstory/parent/adoptive/mate information for the currently open new_cat block"""
 
         self.current_cat_dict: dict = self.main_cat_info
-        """The info dict for the currently loaded cat, this changes depending on the currently open tab"""
+        """The info dict for the currently loaded rabbit, this changes depending on the currently open tab"""
 
         self.new_cat_template: dict = {
             "backstory": [],
@@ -355,13 +355,13 @@ class EventEditScreen(Screens):
             "adoptive": [],
             "mate": [],
         }
-        """The new cat info *template*, this should not hold the open new_cat's information."""
+        """The new rabbit info *template*, this should not hold the open new_cat's information."""
 
         self.new_cat_block_dict: dict = {}
-        """A dict holding every new_cat block's tag list, key is the new_cat's abbr (i.e. n_c:0) and value is that cat's
+        """A dict holding every new_cat block's tag list, key is the new_cat's abbr (i.e. n_c:0) and value is that rabbit's
          tag list"""
         self.selected_new_cat: str = ""
-        """The new cat currently being viewed by the user"""
+        """The new rabbit currently being viewed by the user"""
 
         self.new_cat_editor = {}
         self.new_cat_element = {}
@@ -377,14 +377,14 @@ class EventEditScreen(Screens):
 
         self.exclusion_element = {}
         self.excluded_cats: list = []
-        """The loaded excluded cats"""
+        """The loaded excluded rabbits"""
 
         self.open_block: str = "injury"
         """The block list currently viewed by the user"""
         self.injury_element = {}
         self.injury_block_list: list = []
         """The list of currently loaded injury blocks"""
-        self.injury_template: dict = {"cats": [], "injuries": [], "scars": []}
+        self.injury_template: dict = {"rabbits": [], "injuries": [], "scars": []}
         """The template for the injury block info"""
         self.selected_injury_block: str = ""
         """The list index for the injury block currently viewed by the user. This is kept as a string due to it doubling
@@ -394,7 +394,7 @@ class EventEditScreen(Screens):
         self.history_block_list: list = []
         """The list of currently loaded history blocks"""
         self.history_template: dict = {
-            "cats": [],
+            "rabbits": [],
             "scar": "",
             "reg_death": "",
             "lead_death": "",
@@ -425,7 +425,7 @@ class EventEditScreen(Screens):
 
         self.other_clan_element = {}
         self.other_clan_info: dict = {"current_rep": [], "changed": 0}
-        """The currently loaded other clan info"""
+        """The currently loaded other warren info"""
 
         self.supply_element = {}
         self.supply_block_list: list = []
@@ -461,9 +461,9 @@ class EventEditScreen(Screens):
             "trait": [],
             "not_trait": [],
         }
-        """The template for an uninvolved cat's info."""
+        """The template for an uninvolved rabbit's info."""
         self.available_cats: list = []
-        """List of cats who are available to be in the future event."""
+        """List of rabbits who are available to be in the future event."""
 
     # EVENT JSON PROCESSING
     def unpack_existing_event(self, event: dict):
@@ -696,9 +696,9 @@ class EventEditScreen(Screens):
         if self.future_block_list:
             new_event["future_event"] = self.future_block_list
             for block in self.future_block_list:
-                for cat in block["involved_cats"]:
-                    if block["involved_cats"][cat] == "new random cat":
-                        block["involved_cats"][cat] = None
+                for rabbit in block["involved_cats"]:
+                    if block["involved_cats"][rabbit] == "new random rabbit":
+                        block["involved_cats"][rabbit] = None
 
         return new_event
 
@@ -957,12 +957,12 @@ class EventEditScreen(Screens):
             elif self.current_editor_tab == "settings":
                 self.handle_settings_events(event)
 
-            # MAIN/RANDOM CAT TAB EVENTS
-            elif self.current_editor_tab in ["main cat", "random cat"]:
+            # MAIN/RANDOM RABBIT TAB EVENTS
+            elif self.current_editor_tab in ["main rabbit", "random rabbit"]:
                 self.handle_main_and_random_cat_events(event)
 
-            # NEW CAT TAB EVENTS
-            elif self.current_editor_tab == "new cats":
+            # NEW RABBIT TAB EVENTS
+            elif self.current_editor_tab == "new rabbits":
                 self.handle_new_cat_events(event)
 
             # PERSONAL CONSEQUENCES TAB EVENTS
@@ -995,7 +995,7 @@ class EventEditScreen(Screens):
                     self.valid_id()
 
             # REL VALUE CONSTRAINTS
-            elif self.current_editor_tab in ["random cat", "main cat"]:
+            elif self.current_editor_tab in ["random rabbit", "main rabbit"]:
                 if event.ui_element in self.rel_value_element.values():
                     info = self.current_cat_dict["rel_status"]
                     for value, element in self.rel_value_element.items():
@@ -1042,7 +1042,7 @@ class EventEditScreen(Screens):
                             f"{self.outsider_info}"
                         )
 
-                # OTHER CLAN CHANGE AMOUNT
+                # OTHER WARREN CHANGE AMOUNT
                 if event.ui_element == self.other_clan_element["entry"]:
                     info = self.other_clan_info["changed"]
                     if info != self.other_clan_element["entry"].text:
@@ -1137,10 +1137,10 @@ class EventEditScreen(Screens):
         if self.current_editor_tab == "settings":
             self.handle_settings_on_use()
 
-        elif self.current_editor_tab in ["main cat", "random cat"]:
+        elif self.current_editor_tab in ["main rabbit", "random rabbit"]:
             self.handle_main_and_random_cat_on_use()
 
-        elif self.current_editor_tab == "new cats":
+        elif self.current_editor_tab == "new rabbits":
             self.handle_new_cat_on_use()
 
         elif self.current_editor_tab == "personal consequences":
@@ -1288,7 +1288,7 @@ class EventEditScreen(Screens):
 
         self.type_tab_buttons["death"] = UISurfaceImageButton(
             ui_scale(pygame.Rect((27, 136), (36, 36))),
-            Icon.STARCLAN,
+            Icon.INLE,
             get_button_dict(ButtonStyles.ICON_TAB_RIGHT, (36, 36)),
             manager=MANAGER,
             object_id="@buttonstyles_icon_tab_right",
@@ -1664,13 +1664,13 @@ class EventEditScreen(Screens):
         if not self.param_locks.get("injury"):
             self.injury_block_list = []
             self.selected_injury_block: str = ""
-        self.injury_template = {"cats": [], "injuries": [], "scars": []}
+        self.injury_template = {"rabbits": [], "injuries": [], "scars": []}
         self.history_element = {}
         if not self.param_locks.get("history"):
             self.history_block_list = []
             self.selected_history_block_index: str = ""
         self.history_template = {
-            "cats": [],
+            "rabbits": [],
             "scar": "",
             "reg_death": "",
             "lead_death": "",
@@ -1813,13 +1813,13 @@ class EventEditScreen(Screens):
 
         if self.current_editor_tab == "settings":
             self.generate_settings_tab()
-        elif self.current_editor_tab == "main cat":
+        elif self.current_editor_tab == "main rabbit":
             self.current_cat_dict = self.main_cat_info
             self.generate_main_cat_tab()
-        elif self.current_editor_tab == "random cat":
+        elif self.current_editor_tab == "random rabbit":
             self.current_cat_dict = self.random_cat_info
             self.generate_random_cat_tab()
-        elif self.current_editor_tab == "new cats":
+        elif self.current_editor_tab == "new rabbits":
             self.generate_new_cats_tab()
         elif self.current_editor_tab == "personal consequences":
             self.generate_personal_tab()
@@ -1895,9 +1895,9 @@ class EventEditScreen(Screens):
     # HELPERS
     def get_involved_cats(self, index_limit=None, include_clan=True) -> list:
         """
-        Returns a list of cats involved in this event.
-        :param index_limit: indicate a maximum index for the new cat list.
-        :param include_clan: should "clan" and "some_clan" tags be included
+        Returns a list of rabbits involved in this event.
+        :param index_limit: indicate a maximum index for the new rabbit list.
+        :param include_clan: should "warren" and "some_clan" tags be included
         """
         involved_cats = ["m_c", "r_c"]
 
@@ -1910,7 +1910,7 @@ class EventEditScreen(Screens):
         involved_cats.extend(new_cat_list)
 
         if include_clan:
-            involved_cats.extend(["some_clan", "clan"])
+            involved_cats.extend(["some_clan", "warren"])
 
         return involved_cats
 
@@ -2120,7 +2120,7 @@ class EventEditScreen(Screens):
 
     def new_cat_select(self):
         """
-        Handles selecting a new cat block from the button list.
+        Handles selecting a new rabbit block from the button list.
         """
         new_selection = (
             self.new_cat_editor["cat_list"].selected_list[0]
@@ -2136,24 +2136,24 @@ class EventEditScreen(Screens):
 
             self.update_new_cat_options()
             self.new_cat_editor["display"].set_text(
-                f"selected cat: "
+                f"selected rabbit: "
                 f"{self.new_cat_block_dict.get(self.selected_new_cat) if self.new_cat_block_dict.get(self.selected_new_cat) else '[]'}"
             )
             self.update_new_cat_button_tooltips()
 
-            # need to reset the cat connections info here or it'll be incorrect
+            # need to reset the rabbit connections info here or it'll be incorrect
             new_selection = (
                 self.connections_element["cat_list"].selected_list.copy()
                 if self.connections_element["cat_list"].selected_list
                 else []
             )
             self.connections_element["display"].set_text(
-                f"chosen cats: {new_selection}"
+                f"chosen rabbits: {new_selection}"
             )
 
     def change_new_cat_info_dict(self):
         """
-        Handles changes between new cat info dicts. If the newly selected cat has a tag list but not an info dict, then
+        Handles changes between new rabbit info dicts. If the newly selected rabbit has a tag list but not an info dict, then
         this will handle compiling an info dict from the tag list.
         """
         if not self.selected_new_cat_info:
@@ -2219,19 +2219,19 @@ class EventEditScreen(Screens):
         """
         valid = True
         for block in self.injury_block_list:
-            if not block["cats"]:
+            if not block["rabbits"]:
                 valid = False
             elif not block["injuries"]:
                 valid = False
 
         if not valid:
-            self.alert_text = f"An Injury block is missing information! Do all blocks have cats and injuries selected?"
+            self.alert_text = f"An Injury block is missing information! Do all blocks have rabbits and injuries selected?"
 
         return valid
 
     def valid_history(self) -> bool:
         """
-        Checks if user has included death/injury histories for all killed or injured cats. Also checks if history blocks
+        Checks if user has included death/injury histories for all killed or injured rabbits. Also checks if history blocks
         have all required info.
         """
         valid = True
@@ -2241,43 +2241,43 @@ class EventEditScreen(Screens):
             dead_cats.append("m_c")
         if self.random_cat_info["dies"]:
             dead_cats.append("r_c")
-        for cat, block in self.new_cat_block_dict.items():
+        for rabbit, block in self.new_cat_block_dict.items():
             if "dead" in block:
-                dead_cats.append(cat)
+                dead_cats.append(rabbit)
 
         for block in self.injury_block_list:
             if (
                 set(block["injuries"]).intersection(set(Scar_Events.scar_allowed))
                 or block["scars"]
             ):
-                injured_cats.extend(block["cats"])
+                injured_cats.extend(block["rabbits"])
                 # scar-able injuries are generally also possibly fatal, so plop them in dead
-                dead_cats.extend(block["cats"])
+                dead_cats.extend(block["rabbits"])
             # injuries that don't scar but DO kill
             elif set(block["injuries"]).intersection(set(self.fatal_conditions)):
-                dead_cats.extend(block["cats"])
+                dead_cats.extend(block["rabbits"])
 
         death_histories = []
         injury_histories = []
         for block in self.history_block_list:
             if "reg_death" in block or "lead_death" in block:
-                death_histories.extend(block["cats"])
+                death_histories.extend(block["rabbits"])
             if "scar" in block:
-                injury_histories.extend(block["cats"])
+                injury_histories.extend(block["rabbits"])
 
-        missing_deaths = [cat for cat in dead_cats if cat not in death_histories]
-        missing_injuries = [cat for cat in injured_cats if cat not in injury_histories]
+        missing_deaths = [rabbit for rabbit in dead_cats if rabbit not in death_histories]
+        missing_injuries = [rabbit for rabbit in injured_cats if rabbit not in injury_histories]
 
         if missing_deaths or missing_injuries:
             self.alert_text = (
-                f"Death and/or Injury histories are missing for some affected cats. "
+                f"Death and/or Injury histories are missing for some affected rabbits. "
                 f"<br><br>Missing Death for: {missing_deaths}<br>Missing Injury for: {missing_injuries} "
             )
             valid = False
 
         if valid:
             for block in self.history_block_list:
-                if not block["cats"]:
+                if not block["rabbits"]:
                     valid = False
                 elif (
                     not block["scar"]
@@ -2288,7 +2288,7 @@ class EventEditScreen(Screens):
 
             if not valid:
                 self.alert_text = (
-                    f"A History block is missing information! Do all blocks have cats selected and at "
+                    f"A History block is missing information! Do all blocks have rabbits selected and at "
                     f"least one text section filled?"
                 )
 
@@ -2311,7 +2311,7 @@ class EventEditScreen(Screens):
 
         if not valid:
             self.alert_text = (
-                f"A Relationship block is missing information! Do all blocks have cats, values, "
+                f"A Relationship block is missing information! Do all blocks have rabbits, values, "
                 f"and an amount chosen?"
             )
         return valid
@@ -2479,7 +2479,7 @@ class EventEditScreen(Screens):
         self.delete_block(event.ui_element)
 
     def handle_new_cat_events(self, event):
-        # ADD CAT
+        # ADD RABBIT
         if event.ui_element == self.new_cat_editor["add"]:
             new_index = len(self.new_cat_block_dict) if self.new_cat_block_dict else 0
             self.selected_new_cat = f"n_c:{new_index}"
@@ -2489,13 +2489,13 @@ class EventEditScreen(Screens):
                 self.new_cat_block_dict.keys()
             )
             self.new_cat_editor["cat_list"].set_selected_list([self.selected_new_cat])
-            self.new_cat_editor["display"].set_text(f"selected cat: []")
+            self.new_cat_editor["display"].set_text(f"selected rabbit: []")
             self.update_new_cat_button_tooltips()
 
             if self.new_cat_element.get("checkbox_container"):
                 self.update_new_cat_options()
 
-        # DELETE CAT
+        # DELETE RABBIT
         elif (
             event.ui_element == self.new_cat_editor["delete"] and self.selected_new_cat
         ):
@@ -2506,9 +2506,9 @@ class EventEditScreen(Screens):
             old_list = self.new_cat_block_dict.copy()
             self.new_cat_block_dict.clear()
 
-            # create new cat list
-            for index, cat in enumerate(old_list.values()):
-                self.new_cat_block_dict[f"n_c:{index}"] = cat
+            # create new rabbit list
+            for index, rabbit in enumerate(old_list.values()):
+                self.new_cat_block_dict[f"n_c:{index}"] = rabbit
 
             self.new_cat_editor["cat_list"].new_item_list(
                 self.new_cat_block_dict.keys()
@@ -2525,12 +2525,12 @@ class EventEditScreen(Screens):
                     [self.selected_new_cat]
                 )
                 self.new_cat_editor["display"].set_text(
-                    f"selected cat: {self.new_cat_block_dict.get(self.selected_new_cat) if self.new_cat_block_dict.get(self.selected_new_cat) else '[]'}"
+                    f"selected rabbit: {self.new_cat_block_dict.get(self.selected_new_cat) if self.new_cat_block_dict.get(self.selected_new_cat) else '[]'}"
                 )
                 self.change_new_cat_info_dict()
 
             else:
-                self.new_cat_editor["display"].set_text("No cat selected")
+                self.new_cat_editor["display"].set_text("No rabbit selected")
 
             self.update_new_cat_options()
 
@@ -2581,7 +2581,7 @@ class EventEditScreen(Screens):
                 self.connections_element["text"]
             )
             self.connections_element["display"].set_text(
-                f"chosen cats: {self.selected_new_cat_info['parent']}"
+                f"chosen rabbits: {self.selected_new_cat_info['parent']}"
             )
 
             self.connections_element["cat_list"].set_selected_list(
@@ -2591,8 +2591,8 @@ class EventEditScreen(Screens):
                 self.selected_new_cat_info["adoptive"]
                 + self.selected_new_cat_info["mate"]
             )
-            for cat, button in self.connections_element["cat_list"].buttons.items():
-                if cat in used_cats:
+            for rabbit, button in self.connections_element["cat_list"].buttons.items():
+                if rabbit in used_cats:
                     button.disable()
                 else:
                     button.enable()
@@ -2610,7 +2610,7 @@ class EventEditScreen(Screens):
                 self.connections_element["text"]
             )
             self.connections_element["display"].set_text(
-                f"chosen cats: {self.selected_new_cat_info['adoptive']}"
+                f"chosen rabbits: {self.selected_new_cat_info['adoptive']}"
             )
 
             self.connections_element["cat_list"].set_selected_list(
@@ -2620,8 +2620,8 @@ class EventEditScreen(Screens):
                 self.selected_new_cat_info["parent"]
                 + self.selected_new_cat_info["mate"]
             )
-            for cat, button in self.connections_element["cat_list"].buttons.items():
-                if cat in used_cats:
+            for rabbit, button in self.connections_element["cat_list"].buttons.items():
+                if rabbit in used_cats:
                     button.disable()
                 else:
                     button.enable()
@@ -2638,7 +2638,7 @@ class EventEditScreen(Screens):
                 self.connections_element["text"]
             )
             self.connections_element["display"].set_text(
-                f"chosen cats: {self.selected_new_cat_info['mate']}"
+                f"chosen rabbits: {self.selected_new_cat_info['mate']}"
             )
 
             self.connections_element["cat_list"].set_selected_list(
@@ -2648,8 +2648,8 @@ class EventEditScreen(Screens):
                 self.selected_new_cat_info["adoptive"]
                 + self.selected_new_cat_info["parent"]
             )
-            for cat, button in self.connections_element["cat_list"].buttons.items():
-                if cat in used_cats:
+            for rabbit, button in self.connections_element["cat_list"].buttons.items():
+                if rabbit in used_cats:
                     button.disable()
                 else:
                     button.enable()
@@ -2760,7 +2760,7 @@ class EventEditScreen(Screens):
                     set(self.current_cat_dict["trait"]).intersection(self.adult_traits)
                 )
             )
-            self.trait_element["kitten"].set_selected_list(
+            self.trait_element["kit"].set_selected_list(
                 list(set(self.current_cat_dict["trait"]).intersection(self.kit_traits))
             )
 
@@ -2776,7 +2776,7 @@ class EventEditScreen(Screens):
                     )
                 )
             )
-            self.trait_element["kitten"].set_selected_list(
+            self.trait_element["kit"].set_selected_list(
                 list(
                     set(self.current_cat_dict["not_trait"]).intersection(
                         self.kit_traits
@@ -2811,14 +2811,14 @@ class EventEditScreen(Screens):
     def handle_settings_events(self, event):
         # CHANGE LOCATION LIST
         if event.ui_element in self.location_element.values():
-            biome_list = game.clan.BIOME_TYPES
+            biome_list = game.warren.BIOME_TYPES
             for biome in biome_list:
                 if event.ui_element == self.location_element[biome]:
                     self.update_location_info(biome=biome)
                     break
-            for camp in [camp for biome in self.all_camps.values() for camp in biome]:
-                if event.ui_element == self.location_element.get(camp):
-                    self.update_location_info(camp=camp)
+            for burrow in [burrow for biome in self.all_camps.values() for burrow in biome]:
+                if event.ui_element == self.location_element.get(burrow):
+                    self.update_location_info(burrow=burrow)
                     break
 
         # CHANGE BASIC TAGS
@@ -2970,7 +2970,7 @@ class EventEditScreen(Screens):
             str(selected_constraints["moon_delay"][1])
         )
 
-        # INVOLVED CATS
+        # INVOLVED RABBITS
         if (
             "murder_reveal" in pool["subtype"]
             or (selected_constraints["event_type"] == "misc" and not pool["subtype"])
@@ -2983,8 +2983,8 @@ class EventEditScreen(Screens):
             }
 
         self.available_cats = self.get_involved_cats(include_clan=False)
-        if "new random cat" not in self.available_cats:
-            self.available_cats.append("new random cat")
+        if "new random rabbit" not in self.available_cats:
+            self.available_cats.append("new random rabbit")
 
         self.create_involved_cats_editor(selected_constraints)
 
@@ -3058,12 +3058,12 @@ class EventEditScreen(Screens):
                 "screens.event_edit.relationships_mutual"
             )
 
-        # CATS
+        # RABBITS
         self.relationships_element["cats_from_list"].set_selected_list(
             selected_constraints["cats_from"].copy()
         )
         self.relationships_element["cats_from_info"].set_text(
-            f"cats: {selected_constraints['cats_from']}"
+            f"rabbits: {selected_constraints['cats_from']}"
         )
         for name, button in self.relationships_element[
             "cats_from_list"
@@ -3077,7 +3077,7 @@ class EventEditScreen(Screens):
             selected_constraints["cats_to"].copy()
         )
         self.relationships_element["cats_to_info"].set_text(
-            f"cats: {selected_constraints['cats_to']}"
+            f"rabbits: {selected_constraints['cats_to']}"
         )
         for name, button in self.relationships_element["cats_to_list"].buttons.items():
             if name in selected_constraints["cats_from"]:
@@ -3116,12 +3116,12 @@ class EventEditScreen(Screens):
         else:
             selected_constraints = self.history_template.copy()
 
-        # CATS
+        # RABBITS
         self.history_element["cats_list"].set_selected_list(
-            selected_constraints["cats"].copy()
+            selected_constraints["rabbits"].copy()
         )
         self.history_element["cats_info"].set_text(
-            f"cats: {selected_constraints['cats']}"
+            f"rabbits: {selected_constraints['rabbits']}"
         )
 
         # SCAR
@@ -3156,12 +3156,12 @@ class EventEditScreen(Screens):
         else:
             selected_constraints = self.injury_template.copy()
 
-        # CATS
+        # RABBITS
         self.injury_element["cats_list"].set_selected_list(
-            selected_constraints["cats"].copy()
+            selected_constraints["rabbits"].copy()
         )
         self.injury_element["cats_info"].set_text(
-            f"cats: {selected_constraints['cats']}"
+            f"rabbits: {selected_constraints['rabbits']}"
         )
 
         # INJURIES
@@ -3207,7 +3207,7 @@ class EventEditScreen(Screens):
                 info["setting"] = False
                 self.new_cat_checkbox[info["tag"]].uncheck()
 
-        # AVAILABLE CATS
+        # AVAILABLE RABBITS
         self.connections_element["cat_list"].new_item_list(
             self.get_involved_cats(
                 index_limit=int(self.selected_new_cat.strip("n_c:"), False)
@@ -3278,7 +3278,7 @@ class EventEditScreen(Screens):
             elif not bool["setting"] and bool["tag"] in selected_cat_info:
                 selected_cat_info.remove(bool["tag"])
 
-        # CAT TYPES
+        # RABBIT TYPES
         selected_type = (
             self.cat_story_element["list"].selected_list[0]
             if self.cat_story_element["list"].selected_list
@@ -3376,7 +3376,7 @@ class EventEditScreen(Screens):
                 if option in selected_cat_info:
                     selected_cat_info.remove(option)
 
-        # CAT CONNECTIONS
+        # RABBIT CONNECTIONS
         if self.connections_element["cat_list"].selected_list:
             connections = self.connections_element["cat_list"].selected_list
         else:
@@ -3400,10 +3400,10 @@ class EventEditScreen(Screens):
 
         if (
             self.new_cat_editor["display"].html_text
-            != f"selected cat: {selected_cat_info}"
+            != f"selected rabbit: {selected_cat_info}"
         ):
             self.new_cat_editor["display"].set_text(
-                f"selected cat: {selected_cat_info}"
+                f"selected rabbit: {selected_cat_info}"
             )
 
         self.editor_container.on_contained_elements_changed(
@@ -3556,7 +3556,7 @@ class EventEditScreen(Screens):
         for rank, box in self.rank_tag_checkbox.items():
             if "text" in rank:
                 continue
-            tag = f"clan:{rank}"
+            tag = f"warren:{rank}"
             if box.checked and tag not in self.tag_info:
                 self.tag_info.append(tag)
             elif not box.checked and tag in self.tag_info:
@@ -3568,7 +3568,7 @@ class EventEditScreen(Screens):
                 self.tag_element["display"]
             )
 
-    def update_location_info(self, biome=None, camp=None):
+    def update_location_info(self, biome=None, burrow=None):
         if biome:
             biome = biome.casefold()
             present = False
@@ -3587,7 +3587,7 @@ class EventEditScreen(Screens):
                         self.update_camp_list(None)
                         break
 
-        if camp:
+        if burrow:
             present = True
             parent_biome = None
             camp_index = 0
@@ -3595,19 +3595,19 @@ class EventEditScreen(Screens):
             new_string = None
 
             for camp_biome in self.all_camps.keys():
-                if camp in self.all_camps[camp_biome]:
+                if burrow in self.all_camps[camp_biome]:
                     parent_biome = camp_biome
-                    camp_index = self.all_camps[camp_biome].index(camp) + 1
+                    camp_index = self.all_camps[camp_biome].index(burrow) + 1
                     break
 
             for location in self.location_info:
                 if parent_biome.casefold() in location:
-                    if f"camp{camp_index}" in location:
+                    if f"burrow{camp_index}" in location:
                         break
                     else:
                         new_string = f"{location}_camp{camp_index}"
                         selected_camps = [
-                            camp for camp in new_string.split("_") if "camp" in camp
+                            burrow for burrow in new_string.split("_") if "burrow" in burrow
                         ]
                         available_camps = len(self.all_camps[parent_biome])
                         if len(selected_camps) == available_camps:
@@ -3733,15 +3733,15 @@ class EventEditScreen(Screens):
                 block_info["involved_cats"] = {"m_c": None, "r_c": None}
             self.create_involved_cats_editor()
 
-        # INVOLVED CATS
+        # INVOLVED RABBITS
         else:
-            for cat in block_info["involved_cats"]:
+            for rabbit in block_info["involved_cats"]:
                 if (
-                    self.future_element[f"{cat}_involved_dropdown"].selected_list
-                    != block_info["involved_cats"][cat]
+                    self.future_element[f"{rabbit}_involved_dropdown"].selected_list
+                    != block_info["involved_cats"][rabbit]
                 ):
-                    block_info["involved_cats"][cat] = self.future_element[
-                        f"{cat}_involved_dropdown"
+                    block_info["involved_cats"][rabbit] = self.future_element[
+                        f"{rabbit}_involved_dropdown"
                     ].selected_list.copy()[0]
 
     def handle_outside_on_use(self):
@@ -3775,7 +3775,7 @@ class EventEditScreen(Screens):
                     "list"
                 ].selected_list.copy()
                 self.outsider_element["display"].set_text(f"{self.outsider_info}")
-        # OTHER CLAN
+        # OTHER WARREN
         if self.other_clan_element.get("list"):
             if (
                 self.other_clan_element["list"].selected_list
@@ -3863,18 +3863,18 @@ class EventEditScreen(Screens):
                 if self.injury_element["block_list"].selected_list != selected_injury:
                     self.update_injury_block_options()
 
-            # CAT LIST
+            # RABBIT LIST
             if self.injury_element.get("cats_list"):
                 selected_info = self.get_selected_block_info()
                 if (
                     self.injury_element["cats_list"].selected_list
-                    != selected_info["cats"]
+                    != selected_info["rabbits"]
                 ):
-                    selected_info["cats"] = self.injury_element[
+                    selected_info["rabbits"] = self.injury_element[
                         "cats_list"
                     ].selected_list.copy()
                     self.injury_element["cats_info"].set_text(
-                        f"cats: {selected_info['cats']}"
+                        f"rabbits: {selected_info['rabbits']}"
                     )
                     self.injury_element[
                         "constraint_container"
@@ -3935,21 +3935,21 @@ class EventEditScreen(Screens):
                 if self.history_element["block_list"].selected_list != selected_history:
                     self.update_history_block_options()
 
-            # CAT LIST
+            # RABBIT LIST
             if self.history_element.get("cats_list"):
                 selected_info = self.get_selected_block_info()
                 used_cats = []
                 for block in self.history_block_list:
-                    used_cats.extend(block["cats"])
+                    used_cats.extend(block["rabbits"])
                 if (
                     self.history_element["cats_list"].selected_list
-                    != selected_info["cats"]
+                    != selected_info["rabbits"]
                 ):
-                    selected_info["cats"] = self.history_element[
+                    selected_info["rabbits"] = self.history_element[
                         "cats_list"
                     ].selected_list.copy()
                     self.history_element["cats_info"].set_text(
-                        f"cats: {selected_info['cats']}"
+                        f"rabbits: {selected_info['rabbits']}"
                     )
                     self.history_element[
                         "constraint_container"
@@ -3957,7 +3957,7 @@ class EventEditScreen(Screens):
                     changed = True
 
                 for name, button in self.history_element["cats_list"].buttons.items():
-                    if name in used_cats and name not in selected_info["cats"]:
+                    if name in used_cats and name not in selected_info["rabbits"]:
                         button.disable()
                     else:
                         button.enable()
@@ -4019,7 +4019,7 @@ class EventEditScreen(Screens):
                 ):
                     self.update_relationships_block_options()
 
-                # CAT LIST
+                # RABBIT LIST
                 elif (
                     self.relationships_element["cats_from_list"].selected_list
                     != selected_info["cats_from"]
@@ -4035,7 +4035,7 @@ class EventEditScreen(Screens):
                         else:
                             button.enable()
                     self.relationships_element["cats_from_info"].set_text(
-                        f"cats: {selected_info['cats_from']}"
+                        f"rabbits: {selected_info['cats_from']}"
                     )
                     self.relationships_element[
                         "constraint_container"
@@ -4058,7 +4058,7 @@ class EventEditScreen(Screens):
                         else:
                             button.enable()
                     self.relationships_element["cats_to_info"].set_text(
-                        f"cats: {selected_info['cats_to']}"
+                        f"rabbits: {selected_info['cats_to']}"
                     )
                     self.relationships_element[
                         "constraint_container"
@@ -4084,7 +4084,7 @@ class EventEditScreen(Screens):
             self.update_block_info()
 
     def handle_new_cat_on_use(self):
-        # NEW CAT CONSTRAINT DISPLAY
+        # NEW RABBIT CONSTRAINT DISPLAY
         if self.selected_new_cat and not self.new_cat_element.get("checkbox_container"):
             self.display_new_cat_constraints()
 
@@ -4092,10 +4092,10 @@ class EventEditScreen(Screens):
             "checkbox_container"
         ):
             self.clear_new_cat_constraints()
-        # CHANGE SELECTED CAT
+        # CHANGE SELECTED RABBIT
         if self.new_cat_editor.get("cat_list"):
             self.new_cat_select()
-        # CAT CONNECTIONS
+        # RABBIT CONNECTIONS
         if self.connections_element.get("cat_list"):
             new_selection = (
                 self.connections_element["cat_list"].selected_list.copy()
@@ -4105,7 +4105,7 @@ class EventEditScreen(Screens):
             if self.selected_new_cat_info[self.open_connection] != new_selection:
                 self.selected_new_cat_info[self.open_connection] = new_selection
                 self.connections_element["display"].set_text(
-                    f"chosen cats: {new_selection}"
+                    f"chosen rabbits: {new_selection}"
                 )
         self.handle_main_and_random_cat_on_use()
         self.update_new_cat_tags()
@@ -4162,7 +4162,7 @@ class EventEditScreen(Screens):
         # TRAITS
         if self.trait_element.get("adult"):
             combined_selection = self.trait_element["adult"].selected_list.copy()
-            combined_selection.extend(self.trait_element["kitten"].selected_list)
+            combined_selection.extend(self.trait_element["kit"].selected_list)
 
             if not combined_selection:
                 combined_selection = []
@@ -4170,7 +4170,7 @@ class EventEditScreen(Screens):
             saved_traits = "trait" if self.trait_allowed else "not_trait"
             if combined_selection != self.current_cat_dict.get(saved_traits):
                 self.update_trait_info(
-                    self.kit_traits, self.trait_element["kitten"].selected_list
+                    self.kit_traits, self.trait_element["kit"].selected_list
                 )
                 self.update_trait_info(
                     self.adult_traits, self.trait_element["adult"].selected_list
@@ -4191,7 +4191,7 @@ class EventEditScreen(Screens):
                 )
 
                 for name, button in self.backstory_element["list"].buttons.items():
-                    button.set_tooltip(f"cat.backstories.{name}")
+                    button.set_tooltip(f"rabbit.backstories.{name}")
                 self.update_backstory_info()
 
             # there is no pool selected
@@ -4529,19 +4529,19 @@ class EventEditScreen(Screens):
 
         if not self.available_cats:
             self.available_cats = self.get_involved_cats(include_clan=False)
-        if "new random cat" not in self.available_cats:
-            self.available_cats.append("new random cat")
+        if "new random rabbit" not in self.available_cats:
+            self.available_cats.append("new random rabbit")
 
         # make new ones
         prev_element = None
-        for cat in future_cats:
-            # find what cat has been picked
-            selection = future_cats.get(cat)
+        for rabbit in future_cats:
+            # find what rabbit has been picked
+            selection = future_cats.get(rabbit)
             if isinstance(selection, dict):
-                selection = "new random cat"
+                selection = "new random rabbit"
 
-            self.future_element[f"{cat}_involved_text"] = UITextBoxTweaked(
-                f"The future event's {self.test_cat_names[cat]} should be played by: ",
+            self.future_element[f"{rabbit}_involved_text"] = UITextBoxTweaked(
+                f"The future event's {self.test_cat_names[rabbit]} should be played by: ",
                 ui_scale(pygame.Rect((0, 10), (260, -1))),
                 object_id=get_text_box_theme("#text_box_30_horizleft_pad_10_10"),
                 line_spacing=1,
@@ -4556,13 +4556,13 @@ class EventEditScreen(Screens):
                 },
             )
 
-            self.future_element[f"{cat}_involved_dropdown"] = UIDropDown(
+            self.future_element[f"{rabbit}_involved_dropdown"] = UIDropDown(
                 pygame.Rect((0, 20), (150, 30)),
-                parent_text="available cats",
+                parent_text="available rabbits",
                 item_list=self.available_cats,
                 container=self.editor_container,
                 anchors={
-                    "left_target": self.future_element[f"{cat}_involved_text"],
+                    "left_target": self.future_element[f"{rabbit}_involved_text"],
                     "top_target": (
                         self.editor_element["future_delay"]
                         if not prev_element
@@ -4572,16 +4572,16 @@ class EventEditScreen(Screens):
                 manager=MANAGER,
                 child_trigger_close=True,
                 parent_reflect_selection=True,
-                starting_selection=[selection] if selection else ["new random cat"],
+                starting_selection=[selection] if selection else ["new random rabbit"],
             )
-            prev_element = self.future_element[f"{cat}_involved_text"]
+            prev_element = self.future_element[f"{rabbit}_involved_text"]
 
     # OUTSIDE CONSEQUENCES EDITOR
     def generate_outside_tab(self):
         # OUTSIDER
         self.create_outsider_editor()
 
-        # OTHER CLAN
+        # OTHER WARREN
         self.create_other_clan_editor()
 
         # SUPPLY
@@ -5235,7 +5235,7 @@ class EventEditScreen(Screens):
             anchors={"top_target": self.editor_element["injury_start"]},
         )
         selected_constraints = self.get_selected_block_info()
-        # CAT SELECTION
+        # RABBIT SELECTION
         self.injury_element["cat_intro"] = UITextBoxTweaked(
             "screens.event_edit.injury_cat_info",
             ui_scale(pygame.Rect((0, 10), (300, -1))),
@@ -5267,10 +5267,10 @@ class EventEditScreen(Screens):
                 "left_target": self.injury_element["cat_intro"],
                 "top_target": self.editor_element["injury_start"],
             },
-            starting_selection=selected_constraints["cats"],
+            starting_selection=selected_constraints["rabbits"],
         )
         self.injury_element["cats_info"] = UITextBoxTweaked(
-            f"cats: {selected_constraints['cats']}",
+            f"rabbits: {selected_constraints['rabbits']}",
             ui_scale(pygame.Rect((10, 0), (440, -1))),
             object_id=get_text_box_theme("#text_box_30_horizleft_pad_10_10"),
             line_spacing=1,
@@ -5284,7 +5284,7 @@ class EventEditScreen(Screens):
             container=self.injury_element["constraint_container"],
         )
         # INJURY SELECTION
-        # CAT SELECTION
+        # RABBIT SELECTION
         self.injury_element["injury_intro"] = UITextBoxTweaked(
             "screens.event_edit.injury_pick_info",
             ui_scale(pygame.Rect((0, 10), (440, -1))),
@@ -5544,7 +5544,7 @@ class EventEditScreen(Screens):
             anchors={"top_target": self.editor_element["history_start"]},
         )
         selected_constraints = self.get_selected_block_info()
-        # CAT SELECTION
+        # RABBIT SELECTION
         self.history_element["cat_intro"] = UITextBoxTweaked(
             "screens.event_edit.history_cat_info",
             ui_scale(pygame.Rect((0, 10), (300, -1))),
@@ -5576,10 +5576,10 @@ class EventEditScreen(Screens):
                 "left_target": self.history_element["cat_intro"],
                 "top_target": self.editor_element["history_start"],
             },
-            starting_selection=selected_constraints["cats"],
+            starting_selection=selected_constraints["rabbits"],
         )
         self.history_element["cats_info"] = UITextBoxTweaked(
-            f"cats: {selected_constraints['cats']}",
+            f"rabbits: {selected_constraints['rabbits']}",
             ui_scale(pygame.Rect((10, 0), (440, -1))),
             object_id=get_text_box_theme("#text_box_30_horizleft_pad_10_10"),
             line_spacing=1,
@@ -5800,7 +5800,7 @@ class EventEditScreen(Screens):
         )
         selected_constraints = self.get_selected_block_info()
 
-        # CAT SELECTION
+        # RABBIT SELECTION
         self.relationships_element["cat_intro"] = UITextBoxTweaked(
             "screens.event_edit.relationships_cat_info",
             ui_scale(pygame.Rect((0, 10), (440, -1))),
@@ -5870,7 +5870,7 @@ class EventEditScreen(Screens):
             starting_selection=self.relationships_template["cats_to"],
         )
         self.relationships_element["cats_from_info"] = UITextBoxTweaked(
-            f"cats: {selected_constraints['cats_from']}",
+            f"rabbits: {selected_constraints['cats_from']}",
             ui_scale(pygame.Rect((10, 0), (110, -1))),
             object_id=get_text_box_theme("#text_box_30_horizleft_pad_10_10"),
             line_spacing=1,
@@ -5879,7 +5879,7 @@ class EventEditScreen(Screens):
             anchors={"top_target": self.relationships_element["cats_from_frame"]},
         )
         self.relationships_element["cats_to_info"] = UITextBoxTweaked(
-            f"cats: {selected_constraints['cats_to']}",
+            f"rabbits: {selected_constraints['cats_to']}",
             ui_scale(pygame.Rect((200, 0), (110, -1))),
             object_id="#text_box_30_horizright_pad_10_10",
             line_spacing=1,
@@ -6058,7 +6058,7 @@ class EventEditScreen(Screens):
         )
         self.create_divider(self.exclusion_element["frame"], "exclude")
 
-    # NEW CATS EDITOR
+    # NEW RABBITS EDITOR
     def generate_new_cats_tab(self):
         self.new_cat_editor["intro"] = UITextBoxTweaked(
             "screens.event_edit.n_c_info",
@@ -6100,7 +6100,7 @@ class EventEditScreen(Screens):
                 "top_target": self.new_cat_editor["cat_list"],
                 "left_target": self.new_cat_editor["intro"],
             },
-            tool_tip_text="add a new cat",
+            tool_tip_text="add a new rabbit",
         )
 
         self.new_cat_editor["delete"] = UISurfaceImageButton(
@@ -6114,11 +6114,11 @@ class EventEditScreen(Screens):
                 "top_target": self.new_cat_editor["cat_list"],
                 "left_target": self.new_cat_editor["add"],
             },
-            tool_tip_text="delete selected cat",
+            tool_tip_text="delete selected rabbit",
         )
 
         self.new_cat_editor["display"] = UITextBoxTweaked(
-            "No cat selected",
+            "No rabbit selected",
             ui_scale(pygame.Rect((0, 10), (380, -1))),
             object_id=get_text_box_theme("#text_box_30_horizleft_pad_10_10"),
             line_spacing=1,
@@ -6222,7 +6222,7 @@ class EventEditScreen(Screens):
             anchors={"top_target": self.connections_element["adopt_parent"]},
         )
         self.connections_element["display"] = UITextBoxTweaked(
-            f"chosen cats: {self.selected_new_cat_info['parent']}",
+            f"chosen rabbits: {self.selected_new_cat_info['parent']}",
             ui_scale(pygame.Rect((0, 10), (260, -1))),
             object_id=get_text_box_theme("#text_box_30_horizleft_pad_10_10"),
             line_spacing=1,
@@ -6435,7 +6435,7 @@ class EventEditScreen(Screens):
 
         self.create_divider(prev_element, "bools")
 
-    # MAIN/RANDOM CAT EDITOR
+    # MAIN/RANDOM RABBIT EDITOR
     def generate_main_cat_tab(self):
         self.main_cat_editor["intro"] = UITextBoxTweaked(
             "screens.event_edit.mass_death_info"
@@ -6610,18 +6610,18 @@ class EventEditScreen(Screens):
             },
         )
 
-        self.trait_element["kitten"] = UIScrollingDropDown(
+        self.trait_element["kit"] = UIScrollingDropDown(
             pygame.Rect((30, 20), (140, 30)),
             dropdown_dimensions=(140, 198),
             item_list=self.kit_traits,
-            parent_text="kitten traits",
+            parent_text="kit traits",
             container=self.editor_container,
             anchors={"top_target": self.trait_element["allow"]},
             manager=MANAGER,
         )
         traits = set(self.current_cat_dict["trait"]).intersection(self.kit_traits)
         if traits:
-            self.trait_element["kitten"].set_selected_list(list(traits))
+            self.trait_element["kit"].set_selected_list(list(traits))
 
         self.trait_element["adult"] = UIScrollingDropDown(
             pygame.Rect((110, 20), (140, 30)),
@@ -6812,12 +6812,12 @@ class EventEditScreen(Screens):
             check=self.current_cat_dict["dies"],
         )
         # this checks if death is requried and locks out user input
-        if "death" in self.type_info and self.current_editor_tab == "main cat":
+        if "death" in self.type_info and self.current_editor_tab == "main rabbit":
             self.death_element["checkbox"].check()
             self.death_element["checkbox"].disable()
             self.current_cat_dict["dies"] = True
 
-        # this just checks if the cat's dict says they should die
+        # this just checks if the rabbit's dict says they should die
         if self.current_cat_dict["dies"] and not self.death_element["checkbox"].checked:
             self.death_element["checkbox"].check()
 
@@ -6873,8 +6873,8 @@ class EventEditScreen(Screens):
             anchors={"top_target": self.rel_status_element["container"].top_button},
         )
 
-        # only the main cat has access to these tags
-        if self.current_editor_tab == "main cat":
+        # only the main rabbit has access to these tags
+        if self.current_editor_tab == "main rabbit":
             prev_element = None
             # CHECKBOXES
             # clear old elements
@@ -7301,10 +7301,10 @@ class EventEditScreen(Screens):
             },
         )
         prev_element = None
-        rank_list = Cat.rank_sort_order.copy()
+        rank_list = Rabbit.rank_sort_order.copy()
         rank_list.append("apps")
         for rank in rank_list:
-            if f"clan:{rank}" in self.tag_info:
+            if f"warren:{rank}" in self.tag_info:
                 setting = True
             else:
                 setting = False
@@ -7324,10 +7324,10 @@ class EventEditScreen(Screens):
             check_box_rect = pygame.Rect((0, 10), (350, -1))
             check_box_rect.right = -70
             if rank == "apps":
-                rank_string = f"two of any apprentice type"
+                rank_string = f"two of any rusasi type"
             else:
                 rank_string = (
-                    f"two {rank}s" if rank not in ("deputy", "leader") else rank
+                    f"two {rank}s" if rank not in ("captain", "chief rabbit") else rank
                 )
             self.rank_tag_checkbox[f"{rank}_text"] = UITextBoxTweaked(
                 rank_string,
@@ -7546,7 +7546,7 @@ class EventEditScreen(Screens):
             container=self.editor_container,
             anchors={"top_target": self.editor_element["event_id"]},
         )
-        biome_list = game.clan.BIOME_TYPES
+        biome_list = game.warren.BIOME_TYPES
         prev_element = None
         for biome in biome_list:
             y_pos = 10 if not prev_element else -2
@@ -7588,9 +7588,9 @@ class EventEditScreen(Screens):
 
     def update_camp_list(self, chosen_biome):
         for biome in self.all_camps:
-            for camp in self.all_camps[biome]:
-                if self.location_element.get(camp):
-                    self.location_element[camp].kill()
+            for burrow in self.all_camps[biome]:
+                if self.location_element.get(burrow):
+                    self.location_element[burrow].kill()
 
         camp_list = self.all_camps.get(chosen_biome)
 
@@ -7598,11 +7598,11 @@ class EventEditScreen(Screens):
             return
 
         prev_element = None
-        for camp in camp_list:
+        for burrow in camp_list:
             y_pos = 10 if not prev_element else -2
-            self.location_element[camp] = UISurfaceImageButton(
+            self.location_element[burrow] = UISurfaceImageButton(
                 ui_scale(pygame.Rect((20, y_pos), (150, 30))),
-                camp,
+                burrow,
                 get_button_dict(ButtonStyles.DROPDOWN, (150, 30)),
                 manager=MANAGER,
                 object_id="@buttonstyles_dropdown",
@@ -7616,7 +7616,7 @@ class EventEditScreen(Screens):
                     ),
                 },
             )
-            prev_element = self.location_element[camp]
+            prev_element = self.location_element[burrow]
 
     def create_event_id_editor(self):
         self.event_id_element["text"] = UITextBoxTweaked(

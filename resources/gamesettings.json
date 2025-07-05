@@ -18,7 +18,7 @@
     "general": {
         "dark mode": [
             "Dark mode",
-            "Camp backgrounds will match with the mode: nighttime for dark mode and daytime for light mode.",
+            "Burrow backgrounds will match with the mode: nighttime for dark mode and daytime for light mode.",
             false
         ],
         "fullscreen scaling": [
@@ -33,7 +33,7 @@
         ],
         "custom cursor": [
             "Custom cursor",
-            "The cursor will be replaced with a cat paw. The cursor is currently unfinished and is prone to crashing.",
+            "The cursor will be replaced with a rabbit paw. The cursor is currently unfinished and is prone to crashing.",
             false
         ],
         "keybinds": [
@@ -43,7 +43,7 @@
         ],
         "shaders": [
             "Enable Shaders",
-            "This will add a shading layer onto the cat sprites.",
+            "This will add a shading layer onto the rabbit sprites.",
             false
         ],
         "gore": [
@@ -53,7 +53,7 @@
         ],
         "discord": [
             "Enable Discord integration",
-            "Discord will show info about your Clan, including your Clan name",
+            "Discord will show info about your Warren, including your Warren name",
             false
         ],
         "check_for_updates": [
@@ -72,13 +72,13 @@
             true
         ],
         "random relation": [
-            "Randomize relationship values when creating Clan",
-            "Clan founder cats will start the game with established relationships.",
+            "Randomize relationship values when creating Warren",
+            "Warren founder rabbits will start the game with established relationships.",
             true
         ],
         "they them default": [
             "Use they/them as default pronouns",
-            "If this setting is on new cats will generate with they/them pronouns, regardless of gender.",
+            "If this setting is on new rabbits will generate with they/them pronouns, regardless of gender.",
             false
         ]
     },

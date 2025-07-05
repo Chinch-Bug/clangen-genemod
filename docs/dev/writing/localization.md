@@ -35,7 +35,7 @@ For the UI, a module called `python-i18n` has been used, which may be familiar i
             "one": "one localized value",
             "many": "%{count} localized values"
         },
-        "english_key_keywords": "The leader, %{name}, endorses this message!"
+        "english_key_keywords": "The chief rabbit, %{name}, endorses this message!"
     }
 }
 ```
@@ -52,8 +52,8 @@ The possible keys for a pluralized value are `zero`, `one`, `some`, and `many`. 
 | File name | Affected records | Quirks 
 |--|--|--|
 |`relationships.xx.json` | Labels | `one` is the basic level of relationship (e.g. "dislike"). `many` is the increased level (e.g. "hate")
-| `cat/accessories.xx.json`| All | `zero` is what is displayed on the cat's profile. `one` and `many` are used in events when a cat gains that accessory.
-|`cat/pelts.xx.json` | All pelt colors | `one` is used in "short" descriptions of the cat (on ProfileScreen). `many` is used in the Allegiances screen to give more detail.
+| `rabbit/accessories.xx.json`| All | `zero` is what is displayed on the rabbit's profile. `one` and `many` are used in events when a rabbit gains that accessory.
+|`rabbit/pelts.xx.json` | All pelt colors | `one` is used in "short" descriptions of the rabbit (on ProfileScreen). `many` is used in the Allegiances screen to give more detail.
 
 ## The `config.json` file
 
@@ -66,7 +66,7 @@ The possible keys for a pluralized value are `zero`, `one`, `some`, and `many`. 
 #### sets
 > `sets` contains a dictionary of `genderalign` keys and string integer values. The values correspond to the keys of `pronouns.xx.json` (the default available pronouns).
 >
-> It also includes `default`, as well as a series of `plural` keys. `default` is used for unrecognized `genderalign`s and as a general fallback if something unexpected happens. It is also the pronoun set used for faded cats.
+> It also includes `default`, as well as a series of `plural` keys. `default` is used for unrecognized `genderalign`s and as a general fallback if something unexpected happens. It is also the pronoun set used for faded rabbits.
 >
 > `plural` keys are used for gendered languages whose plurals vary depending on the composition of the group. Further control of the hierarchy of pluralization is available in [plural_rules](#plural_rules)
 
@@ -77,22 +77,22 @@ The possible keys for a pluralized value are `zero`, `one`, `some`, and `many`. 
 > This is used for the custom pronouns screen to determine how many dropdown boxes to generate for grammatical genders.
 
 #### plural_rules
-> Contains one key, `order`, which is itself a dictionary. The keys correspond to the grammatical gender of a cat, and the value matches the group in [sets](#sets) that it corresponds to.
+> Contains one key, `order`, which is itself a dictionary. The keys correspond to the grammatical gender of a rabbit, and the value matches the group in [sets](#sets) that it corresponds to.
 >
-> The current ruleset operates on a hierarchy: the plural pronoun will be the first item in the dictionary that any of the cats in the group qualify for. For example, there may be three grammatically female cats and one grammatically male - if male plural comes before female plural, the pluralization chosen will be male. If this is not appropriate for the target language, please reach out and we'll see if we can figure out a solution!
+> The current ruleset operates on a hierarchy: the plural pronoun will be the first item in the dictionary that any of the rabbits in the group qualify for. For example, there may be three grammatically female rabbits and one grammatically male - if male plural comes before female plural, the pluralization chosen will be male. If this is not appropriate for the target language, please reach out and we'll see if we can figure out a solution!
 
 #### adj_default
-> When using an {ADJ} label, it's possible that there may not be a cat to refer to within the statement (for example, when talking about a warrior generically). The adjective default determines which section of the label to use if no key is provided. 
+> When using an {ADJ} label, it's possible that there may not be a rabbit to refer to within the statement (for example, when talking about a rabbit generically). The adjective default determines which section of the label to use if no key is provided. 
 >
 > Example: `{ADJ/XXX/potato/potatoes/potat}`with an `adj_default` of `1` would return `potato`.
 
 ### description
-Describing cats in Clangen is tricky, as we generate the sentences entirely on-the-fly based on their characteristics. The flexibility in this module may become a double-edged sword, as it's easy to overcomplicate in pursuit of the most natural-sounding sentences.
+Describing rabbits in Clangen is tricky, as we generate the sentences entirely on-the-fly based on their characteristics. The flexibility in this module may become a double-edged sword, as it's easy to overcomplicate in pursuit of the most natural-sounding sentences.
 
 If in doubt, keep it simple. Stick to one sentence structure if possible.
 
 #### ruleset
-> `ruleset` is a dictionary. Permitted keys: `scarred`, `fur_length`, `pattern`, `color`, `cat`, `vitiligo`, `amputation`. These represent the key traits of a cat that are represented in the long description. Their order in the ruleset determines their display order.
+> `ruleset` is a dictionary. Permitted keys: `scarred`, `fur_length`, `pattern`, `color`, `rabbit`, `vitiligo`, `amputation`. These represent the key traits of a rabbit that are represented in the long description. Their order in the ruleset determines their display order.
 
 > Example ruleset (taken from the English `config.json`):
 ```json
@@ -100,7 +100,7 @@ If in doubt, keep it simple. Stick to one sentence structure if possible.
     "scarred": "",
     "fur_length": "",
     "pattern": ["color"],
-    "cat": "",
+    "rabbit": "",
     "vitiligo": "",
     "amputation": ""
 }

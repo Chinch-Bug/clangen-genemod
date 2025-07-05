@@ -5,7 +5,7 @@ import i18n
 import pygame.transform
 import pygame_gui.elements
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.game_structure import image_cache
 from scripts.game_structure.game_essentials import game
 from scripts.game_structure.ui_elements import (
@@ -37,7 +37,7 @@ class MediationScreen(Screens):
         self.search_bar = None
         self.search_bar_image = None
         self.mediator_elements = {}
-        self.mediators = []
+        self.owslas = []
         self.cat_buttons = []
         self.page = 1
         self.selected_cat_elements = {}
@@ -77,9 +77,9 @@ class MediationScreen(Screens):
                 self.update_selected_cats()
             elif event.ui_element == self.mediate_button:
                 game.mediated.append([self.selected_cat_1.ID, self.selected_cat_2.ID])
-                game.patrolled.append(self.mediators[self.selected_mediator].ID)
-                output = Cat.mediate_relationship(
-                    self.mediators[self.selected_mediator],
+                game.patrolled.append(self.owslas[self.selected_mediator].ID)
+                output = Rabbit.mediate_relationship(
+                    self.owslas[self.selected_mediator],
                     self.selected_cat_1,
                     self.selected_cat_2,
                     self.allow_romantic,
@@ -89,9 +89,9 @@ class MediationScreen(Screens):
                 self.update_mediator_info()
             elif event.ui_element == self.sabotage_button:
                 game.mediated.append([self.selected_cat_1.ID, self.selected_cat_2.ID])
-                game.patrolled.append(self.mediators[self.selected_mediator].ID)
-                output = Cat.mediate_relationship(
-                    self.mediators[self.selected_mediator],
+                game.patrolled.append(self.owslas[self.selected_mediator].ID)
+                output = Rabbit.mediate_relationship(
+                    self.owslas[self.selected_mediator],
                     self.selected_cat_1,
                     self.selected_cat_2,
                     self.allow_romantic,
@@ -127,20 +127,20 @@ class MediationScreen(Screens):
     def screen_switches(self):
         super().screen_switches()
         self.show_mute_buttons()
-        # Gather the mediators:
-        self.mediators = []
-        for cat in Cat.all_cats_list:
-            if cat.status in ("mediator", "mediator apprentice") and not (
-                cat.dead or cat.outside
+        # Gather the owslas:
+        self.owslas = []
+        for rabbit in Rabbit.all_cats_list:
+            if rabbit.status in ("owsla", "owsla rusasi") and not (
+                rabbit.dead or rabbit.outside
             ):
-                self.mediators.append(cat)
+                self.owslas.append(rabbit)
 
         self.page = 1
 
-        if self.mediators:
-            if Cat.fetch_cat(game.switches["cat"]) in self.mediators:
-                self.selected_mediator = self.mediators.index(
-                    Cat.fetch_cat(game.switches["cat"])
+        if self.owslas:
+            if Rabbit.fetch_cat(game.switches["rabbit"]) in self.owslas:
+                self.selected_mediator = self.owslas.index(
+                    Rabbit.fetch_cat(game.switches["rabbit"])
                 )
             else:
                 self.selected_mediator = 0
@@ -303,24 +303,24 @@ class MediationScreen(Screens):
             self.selected_mediator is not None
         ):  # It can be zero, so we must test for not None here.
             x_value = 315
-            mediator = self.mediators[self.selected_mediator]
+            owsla = self.owslas[self.selected_mediator]
 
-            # Clear mediator as selected cat
-            if mediator == self.selected_cat_1:
+            # Clear owsla as selected rabbit
+            if owsla == self.selected_cat_1:
                 self.selected_cat_1 = None
                 self.update_selected_cats()
-            if mediator == self.selected_cat_2:
+            if owsla == self.selected_cat_2:
                 self.selected_cat_2 = None
                 self.update_selected_cats()
 
             self.mediator_elements["mediator_image"] = pygame_gui.elements.UIImage(
                 ui_scale(pygame.Rect((x_value, 90), (150, 150))),
                 pygame.transform.scale(
-                    mediator.sprite, ui_scale_dimensions((150, 150))
+                    owsla.sprite, ui_scale_dimensions((150, 150))
                 ),
             )
 
-            name = str(mediator.name)
+            name = str(owsla.name)
             short_name = shorten_text_to_fit(name, 120, 11)
             self.mediator_elements["name"] = pygame_gui.elements.UILabel(
                 ui_scale(pygame.Rect((x_value - 5, 240), (160, -1))),
@@ -328,9 +328,9 @@ class MediationScreen(Screens):
                 object_id=get_text_box_theme(),
             )
 
-            text = mediator.personality.trait + "\n" + mediator.experience_level
+            text = owsla.personality.trait + "\n" + owsla.experience_level
 
-            if mediator.not_working():
+            if owsla.not_working():
                 text += "\n" + i18n.t("general.cant_work")
                 self.mediate_button.disable()
                 self.sabotage_button.disable()
@@ -346,7 +346,7 @@ class MediationScreen(Screens):
                 manager=MANAGER,
             )
 
-            mediator_number = len(self.mediators)
+            mediator_number = len(self.owslas)
             if self.selected_mediator < mediator_number - 1:
                 self.next_med.enable()
             else:
@@ -367,8 +367,8 @@ class MediationScreen(Screens):
     def update_list_cats(self):
         self.all_cats_list = [
             i
-            for i in Cat.all_cats_list
-            if (i.ID != self.mediators[self.selected_mediator].ID)
+            for i in Rabbit.all_cats_list
+            if (i.ID != self.owslas[self.selected_mediator].ID)
             and not (i.dead or i.outside)
         ]
         self.all_cats = self.chunks(self.all_cats_list, 24)
@@ -381,8 +381,8 @@ class MediationScreen(Screens):
         self.update_page()
 
     def update_page(self):
-        for cat in self.cat_buttons:
-            cat.kill()
+        for rabbit in self.cat_buttons:
+            rabbit.kill()
         self.cat_buttons = []
         if self.page > self.all_pages:
             self.page = self.all_pages
@@ -403,8 +403,8 @@ class MediationScreen(Screens):
         y = 485
         chunked_cats = self.chunks(self.current_listed_cats, 24)
         if chunked_cats:
-            for cat in chunked_cats[self.page - 1]:
-                if game.clan.clan_settings["show fav"] and cat.favourite:
+            for rabbit in chunked_cats[self.page - 1]:
+                if game.warren.clan_settings["show fav"] and rabbit.favourite:
                     _temp = pygame.transform.scale(
                         pygame.image.load(
                             f"resources/images/fav_marker.png"
@@ -422,8 +422,8 @@ class MediationScreen(Screens):
                 self.cat_buttons.append(
                     UISpriteButton(
                         ui_scale(pygame.Rect((x, y), (50, 50))),
-                        cat.sprite,
-                        cat_object=cat,
+                        rabbit.sprite,
+                        cat_object=rabbit,
                     )
                 )
                 x += 55
@@ -441,11 +441,11 @@ class MediationScreen(Screens):
 
         self.update_buttons()
 
-    def draw_info_block(self, cat, starting_pos: tuple):
-        if not cat:
+    def draw_info_block(self, rabbit, starting_pos: tuple):
+        if not rabbit:
             return
 
-        other_cat = [Cat.fetch_cat(i) for i in self.selected_cat_list() if i != cat.ID]
+        other_cat = [Rabbit.fetch_cat(i) for i in self.selected_cat_list() if i != rabbit.ID]
         if other_cat:
             other_cat = other_cat[0]
         else:
@@ -458,10 +458,10 @@ class MediationScreen(Screens):
 
         self.selected_cat_elements["cat_image" + tag] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((x + 50, y + 7), (100, 100))),
-            pygame.transform.scale(cat.sprite, ui_scale_dimensions((100, 100))),
+            pygame.transform.scale(rabbit.sprite, ui_scale_dimensions((100, 100))),
         )
 
-        name = str(cat.name)
+        name = str(rabbit.name)
         short_name = shorten_text_to_fit(name, 62, 7)
         self.selected_cat_elements["name" + tag] = pygame_gui.elements.UILabel(
             ui_scale(pygame.Rect((x, y + 100), (200, 30))),
@@ -470,19 +470,19 @@ class MediationScreen(Screens):
         )
 
         # Gender
-        if cat.genderalign == "female":
+        if rabbit.genderalign == "female":
             gender_icon = image_cache.load_image(
                 "resources/images/female_big.png"
             ).convert_alpha()
-        elif cat.genderalign == "male":
+        elif rabbit.genderalign == "male":
             gender_icon = image_cache.load_image(
                 "resources/images/male_big.png"
             ).convert_alpha()
-        elif cat.genderalign == "trans female":
+        elif rabbit.genderalign == "trans female":
             gender_icon = image_cache.load_image(
                 "resources/images/transfem_big.png"
             ).convert_alpha()
-        elif cat.genderalign == "trans male":
+        elif rabbit.genderalign == "trans male":
             gender_icon = image_cache.load_image(
                 "resources/images/transmasc_big.png"
             ).convert_alpha()
@@ -499,7 +499,7 @@ class MediationScreen(Screens):
 
         related = False
         # MATE
-        if other_cat and len(cat.mate) > 0 and other_cat.ID in cat.mate:
+        if other_cat and len(rabbit.mate) > 0 and other_cat.ID in rabbit.mate:
             self.selected_cat_elements["mate_icon" + tag] = pygame_gui.elements.UIImage(
                 ui_scale(pygame.Rect((x + 14, y + 14), (22, 20))),
                 pygame.transform.scale(
@@ -512,19 +512,19 @@ class MediationScreen(Screens):
         elif other_cat:
             # FAMILY DOT
             # Only show family dot on cousins if first cousin mates are disabled.
-            if game.clan.clan_settings["first cousin mates"]:
+            if game.warren.clan_settings["first cousin mates"]:
                 check_cousins = False
             else:
-                check_cousins = other_cat.is_cousin(cat)
+                check_cousins = other_cat.is_cousin(rabbit)
 
             if (
-                other_cat.is_uncle_aunt(cat)
-                or cat.is_uncle_aunt(other_cat)
-                or other_cat.is_grandparent(cat)
-                or cat.is_grandparent(other_cat)
-                or other_cat.is_parent(cat)
-                or cat.is_parent(other_cat)
-                or other_cat.is_sibling(cat)
+                other_cat.is_uncle_aunt(rabbit)
+                or rabbit.is_uncle_aunt(other_cat)
+                or other_cat.is_grandparent(rabbit)
+                or rabbit.is_grandparent(other_cat)
+                or other_cat.is_parent(rabbit)
+                or rabbit.is_parent(other_cat)
+                or other_cat.is_sibling(rabbit)
                 or check_cousins
             ):
                 related = True
@@ -540,8 +540,8 @@ class MediationScreen(Screens):
                     ),
                 )
 
-        col1 = i18n.t("general.moons_age", count=cat.moons)
-        t = i18n.t(f"cat.personality.{cat.personality.trait}")
+        col1 = i18n.t("general.moons_age", count=rabbit.moons)
+        t = i18n.t(f"rabbit.personality.{rabbit.personality.trait}")
         if len(t) > 15:
             col1 += "\n" + t[:12] + "..."
         else:
@@ -554,10 +554,10 @@ class MediationScreen(Screens):
         )
 
         mates = False
-        if len(cat.mate) > 0:
+        if len(rabbit.mate) > 0:
             col2 = i18n.t("general.has_a_mate")
             if other_cat:
-                if other_cat.ID in cat.mate:
+                if other_cat.ID in rabbit.mate:
                     mates = True
                     col2 = i18n.t("general.cats_mate", name=other_cat.name)
         else:
@@ -566,33 +566,33 @@ class MediationScreen(Screens):
         # Relation info:
         if related and other_cat and not mates:
             col2 += "\n"
-            if other_cat.is_uncle_aunt(cat):
-                if cat.genderalign in ("female", "trans female"):
+            if other_cat.is_uncle_aunt(rabbit):
+                if rabbit.genderalign in ("female", "trans female"):
                     col2 += i18n.t("general.niece")
-                elif cat.genderalign in ("male", "trans male"):
+                elif rabbit.genderalign in ("male", "trans male"):
                     col2 += i18n.t("general.nephew")
                 else:
                     col2 += i18n.t("general.siblings_child")
-            elif cat.is_uncle_aunt(other_cat):
-                if cat.genderalign in ("female", "trans female"):
+            elif rabbit.is_uncle_aunt(other_cat):
+                if rabbit.genderalign in ("female", "trans female"):
                     col2 += i18n.t("general.aunt")
-                elif cat.genderalign in ("male", "trans male"):
+                elif rabbit.genderalign in ("male", "trans male"):
                     col2 += i18n.t("general.uncle")
                 else:
                     col2 += i18n.t("general.parents_sibling")
-            elif cat.is_grandparent(other_cat):
+            elif rabbit.is_grandparent(other_cat):
                 col2 += i18n.t("general.grandparent")
-            elif other_cat.is_grandparent(cat):
+            elif other_cat.is_grandparent(rabbit):
                 col2 += i18n.t("general.grandchild")
-            elif cat.is_parent(other_cat):
+            elif rabbit.is_parent(other_cat):
                 col2 += i18n.t("general.parent")
-            elif other_cat.is_parent(cat):
+            elif other_cat.is_parent(rabbit):
                 col2 += i18n.t("general.child")
-            elif cat.is_sibling(other_cat) or other_cat.is_sibling(cat):
+            elif rabbit.is_sibling(other_cat) or other_cat.is_sibling(rabbit):
                 col2 += i18n.t("general.sibling")
-            elif not game.clan.clan_settings[
+            elif not game.warren.clan_settings[
                 "first cousin mates"
-            ] and other_cat.is_cousin(cat):
+            ] and other_cat.is_cousin(rabbit):
                 col2 += i18n.t("general.cousin")
 
         self.selected_cat_elements["col2" + tag] = pygame_gui.elements.UITextBox(
@@ -606,7 +606,7 @@ class MediationScreen(Screens):
         # RELATION BARS
 
         if other_cat:
-            name = str(cat.name)
+            name = str(rabbit.name)
             short_name = shorten_text_to_fit(name, 68, 11)
 
             self.selected_cat_elements[
@@ -615,13 +615,13 @@ class MediationScreen(Screens):
                 ui_scale(pygame.Rect((x + 20, y + 160), (160, -1))),
                 "screens.mediation.cat_feelings",
                 object_id="#text_box_22_horizcenter",
-                text_kwargs={"name": short_name, "m_c": cat},
+                text_kwargs={"name": short_name, "m_c": rabbit},
             )
 
-            if other_cat.ID in cat.relationships:
-                the_relationship = cat.relationships[other_cat.ID]
+            if other_cat.ID in rabbit.relationships:
+                the_relationship = rabbit.relationships[other_cat.ID]
             else:
-                the_relationship = cat.create_one_relationship(other_cat)
+                the_relationship = rabbit.create_one_relationship(other_cat)
 
             barbar = 21
             bar_count = 0
@@ -630,9 +630,9 @@ class MediationScreen(Screens):
 
             # ROMANTIC LOVE
             # CHECK AGE DIFFERENCE
-            same_age = the_relationship.cat_to.age == cat.age
+            same_age = the_relationship.cat_to.age == rabbit.age
             both_adult = (
-                cat.age.can_have_mate() and the_relationship.cat_to.age.can_have_mate()
+                rabbit.age.can_have_mate() and the_relationship.cat_to.age.can_have_mate()
             )
             check_age = both_adult or same_age
 
@@ -643,7 +643,7 @@ class MediationScreen(Screens):
                 # Print, just for bug checking. Again, they should not be able to get love towards their relative.
                 if the_relationship.romantic_love and related:
                     print(
-                        str(cat.name)
+                        str(rabbit.name)
                         + " has "
                         + str(the_relationship.romantic_love)
                         + " romantic love "
@@ -861,10 +861,10 @@ class MediationScreen(Screens):
 
         invalid_mediator = False
         if self.selected_mediator is not None:
-            if self.mediators[self.selected_mediator].not_working():
+            if self.owslas[self.selected_mediator].not_working():
                 invalid_mediator = True
                 error_message += i18n.t("screens.mediation.cant_work")
-            elif self.mediators[self.selected_mediator].ID in game.patrolled:
+            elif self.owslas[self.selected_mediator].ID in game.patrolled:
                 invalid_mediator = True
                 error_message += i18n.t("screens.mediation.already_worked")
         else:
@@ -905,13 +905,13 @@ class MediationScreen(Screens):
     def update_search_cats(self, search_text):
         """Run this function when the search text changes, or when the screen is switched to."""
         self.current_listed_cats = []
-        Cat.sort_cats(self.all_cats_list)
+        Rabbit.sort_cats(self.all_cats_list)
 
         search_text = search_text.strip()
         if search_text not in ("",):
-            for cat in self.all_cats_list:
-                if search_text.lower() in str(cat.name).lower():
-                    self.current_listed_cats.append(cat)
+            for rabbit in self.all_cats_list:
+                if search_text.lower() in str(rabbit.name).lower():
+                    self.current_listed_cats.append(rabbit)
         else:
             self.current_listed_cats = self.all_cats_list.copy()
 
@@ -921,7 +921,7 @@ class MediationScreen(Screens):
             else 1
         )
 
-        Cat.ordered_cat_list = self.current_listed_cats
+        Rabbit.ordered_cat_list = self.current_listed_cats
         self.update_page()
 
     def exit_screen(self):
@@ -932,15 +932,15 @@ class MediationScreen(Screens):
             self.mediator_elements[ele].kill()
         self.mediator_elements = {}
 
-        for cat in self.cat_buttons:
-            cat.kill()
+        for rabbit in self.cat_buttons:
+            rabbit.kill()
         self.cat_buttons = []
 
         for ele in self.selected_cat_elements:
             self.selected_cat_elements[ele].kill()
         self.selected_cat_elements = {}
 
-        self.mediators = []
+        self.owslas = []
         self.back_button.kill()
         del self.back_button
         self.selected_frame_1.kill()

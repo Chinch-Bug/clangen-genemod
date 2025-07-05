@@ -5,7 +5,7 @@ import pygame
 import pygame_gui
 import ujson
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.game_structure.game_essentials import game
 from scripts.game_structure.ui_elements import (
     UISpriteButton,
@@ -96,15 +96,15 @@ class ClearingScreen(Screens):
             elif event.ui_element in (self.feed_one_button, self.feed_max_button):
                 amount = 1
                 if event.ui_element == self.feed_max_button:
-                    nutrition_info = game.clan.freshkill_pile.nutrition_info
+                    nutrition_info = game.warren.freshkill_pile.nutrition_info
                     max_amount = nutrition_info[self.focus_cat_object.ID].max_score
                     current_amount = nutrition_info[
                         self.focus_cat_object.ID
                     ].current_score
                     amount = max_amount - current_amount
-                game.clan.freshkill_pile.feed_cat(self.focus_cat_object, amount, 0)
+                game.warren.freshkill_pile.feed_cat(self.focus_cat_object, amount, 0)
                 Condition_Events.handle_nutrient(
-                    self.focus_cat_object, game.clan.freshkill_pile.nutrition_info
+                    self.focus_cat_object, game.warren.freshkill_pile.nutrition_info
                 )
                 self.update_cats_list()
                 self.update_nutrition_cats()
@@ -121,9 +121,9 @@ class ClearingScreen(Screens):
                     self.tactic_tab.enable()
                     self.handle_tab_toggles()
             elif event.ui_element == self.feed_all_button:
-                game.clan.freshkill_pile.already_fed = []
-                game.clan.freshkill_pile.feed_cats(self.hungry_cats, True)
-                game.clan.freshkill_pile.already_fed = []
+                game.warren.freshkill_pile.already_fed = []
+                game.warren.freshkill_pile.feed_cats(self.hungry_cats, True)
+                game.warren.freshkill_pile.already_fed = []
                 self.update_cats_list()
                 self.update_nutrition_cats()
                 self.update_focus_cat()
@@ -165,7 +165,7 @@ class ClearingScreen(Screens):
                 self.focus_cat_object = event.ui_element.return_cat_object()
                 self.update_focus_cat()
             elif event.ui_element == self.cats_tab:
-                self.open_tab = "cats"
+                self.open_tab = "rabbits"
                 self.cats_tab.disable()
                 self.log_tab.enable()
                 self.tactic_tab.enable()
@@ -192,13 +192,13 @@ class ClearingScreen(Screens):
     def update_cats_list(self):
         self.satisfied_cats = []
         self.hungry_cats = []
-        nutrition_info = game.clan.freshkill_pile.nutrition_info
+        nutrition_info = game.warren.freshkill_pile.nutrition_info
         low_nutrition_cats = [
             cat_id
             for cat_id, nutrient in nutrition_info.items()
             if nutrient.percentage <= 99
         ]
-        for the_cat in Cat.all_cats_list:
+        for the_cat in Rabbit.all_cats_list:
             if not the_cat.dead and not the_cat.outside:
                 if the_cat.ID in low_nutrition_cats:
                     self.hungry_cats.append(the_cat)
@@ -212,7 +212,7 @@ class ClearingScreen(Screens):
     def screen_switches(self):
         super().screen_switches()
         self.hide_menu_buttons()
-        if game.clan.game_mode == "classic":
+        if game.warren.game_mode == "classic":
             self.change_screen(game.last_screen_forupdate)
             return
 
@@ -385,7 +385,7 @@ class ClearingScreen(Screens):
             self.log_tab.disable()
             self.cats_tab.enable()
             self.tactic_tab.enable()
-        elif self.open_tab == "cats":
+        elif self.open_tab == "rabbits":
             self.log_tab.enable()
             self.cats_tab.disable()
             self.tactic_tab.enable()
@@ -400,7 +400,7 @@ class ClearingScreen(Screens):
         self.update_focus_cat()
 
     def handle_tab_toggles(self):
-        if self.open_tab == "cats":
+        if self.open_tab == "rabbits":
             self.tactic_title.hide()
             self.log_title.hide()
             self.log_box.hide()
@@ -410,8 +410,8 @@ class ClearingScreen(Screens):
             self.next_page.show()
             self.hungry_tab.show()
             self.satisfied_tab.show()
-            for cat in self.cat_buttons:
-                self.cat_buttons[cat].show()
+            for rabbit in self.cat_buttons:
+                self.cat_buttons[rabbit].show()
             for x in range(len(self.cat_names)):
                 self.cat_names[x].show()
             for button in self.conditions_hover:
@@ -424,8 +424,8 @@ class ClearingScreen(Screens):
             self.next_page.hide()
             self.hungry_tab.hide()
             self.satisfied_tab.hide()
-            for cat in self.cat_buttons:
-                self.cat_buttons[cat].hide()
+            for rabbit in self.cat_buttons:
+                self.cat_buttons[rabbit].hide()
             for x in range(len(self.cat_names)):
                 self.cat_names[x].hide()
             for button in self.conditions_hover:
@@ -441,8 +441,8 @@ class ClearingScreen(Screens):
             self.next_page.hide()
             self.hungry_tab.hide()
             self.satisfied_tab.hide()
-            for cat in self.cat_buttons:
-                self.cat_buttons[cat].hide()
+            for rabbit in self.cat_buttons:
+                self.cat_buttons[rabbit].hide()
             for x in range(len(self.cat_names)):
                 self.cat_names[x].hide()
             for button in self.conditions_hover:
@@ -467,7 +467,7 @@ class ClearingScreen(Screens):
         self.feed_max_button.show()
         self.stop_focus_button.show()
         self.feed_all_button.hide()
-        nutrition_info = game.clan.freshkill_pile.nutrition_info
+        nutrition_info = game.warren.freshkill_pile.nutrition_info
         p = 100
         if self.focus_cat_object.ID in nutrition_info:
             p = int(nutrition_info[self.focus_cat_object.ID].percentage)
@@ -500,13 +500,13 @@ class ClearingScreen(Screens):
             manager=MANAGER,
         )
         info_list = [self.focus_cat_object.skills.skill_string(short=True)]
-        nutrition_info = game.clan.freshkill_pile.nutrition_info
+        nutrition_info = game.warren.freshkill_pile.nutrition_info
         if self.focus_cat_object.ID in nutrition_info:
             nutrition_text = i18n.t(
                 "screens.clearing.nutrition_text",
                 nutrition_text=nutrition_info[self.focus_cat_object.ID].nutrition_text,
             )
-            if game.clan.clan_settings["showxp"]:
+            if game.warren.clan_settings["showxp"]:
                 nutrition_text += f" ({str(int(nutrition_info[self.focus_cat_object.ID].percentage))})"
             info_list.append(nutrition_text)
         work_status = i18n.t("general.can_work")
@@ -534,7 +534,7 @@ class ClearingScreen(Screens):
 
         self.current_page = max(1, min(self.current_page, len(all_pages)))
 
-        # Check for empty list (no cats)
+        # Check for empty list (no rabbits)
         if all_pages:
             self.display_cats = all_pages[self.current_page - 1]
         else:
@@ -558,22 +558,22 @@ class ClearingScreen(Screens):
         pos_x = 175
         pos_y = 460
         i = 0
-        for cat in self.display_cats:
+        for rabbit in self.display_cats:
             condition_list = []
-            if cat.illnesses:
-                if "starving" in cat.illnesses.keys():
+            if rabbit.illnesses:
+                if "starving" in rabbit.illnesses.keys():
                     condition_list.append("starving")
-                elif "malnourished" in cat.illnesses.keys():
+                elif "malnourished" in rabbit.illnesses.keys():
                     condition_list.append("malnourished")
             if self.cat_tab_open == self.hungry_tab:
-                nutrition_info = game.clan.freshkill_pile.nutrition_info
-                if cat.ID in nutrition_info:
+                nutrition_info = game.warren.freshkill_pile.nutrition_info
+                if rabbit.ID in nutrition_info:
                     full_text = i18n.t(
                         "screens.clearing.nutrition_text",
-                        nutrition_text=nutrition_info[cat.ID].nutrition_text,
+                        nutrition_text=nutrition_info[rabbit.ID].nutrition_text,
                     )
-                    if game.clan.clan_settings["showxp"]:
-                        full_text += f" ({str(int(nutrition_info[cat.ID].percentage))})"
+                    if game.warren.clan_settings["showxp"]:
+                        full_text += f" ({str(int(nutrition_info[rabbit.ID].percentage))})"
                     condition_list.append(full_text)
             conditions = (
                 ",<br>".join(condition_list) if len(condition_list) > 0 else None
@@ -581,14 +581,14 @@ class ClearingScreen(Screens):
 
             self.cat_buttons["able_cat" + str(i)] = UISpriteButton(
                 ui_scale(pygame.Rect((pos_x, pos_y), (50, 50))),
-                cat.sprite,
-                cat_object=cat,
+                rabbit.sprite,
+                cat_object=rabbit,
                 manager=MANAGER,
                 tool_tip_text=conditions,
                 starting_height=2,
             )
 
-            name = str(cat.name)
+            name = str(rabbit.name)
             short_name = shorten_text_to_fit(name, 92, 15)
             self.cat_names.append(
                 pygame_gui.elements.UITextBox(
@@ -617,9 +617,9 @@ class ClearingScreen(Screens):
 
         information_display = []
 
-        current_prey_amount = game.clan.freshkill_pile.total_amount
-        needed_amount = game.clan.freshkill_pile.amount_food_needed()
-        warrior_need = game.prey_config["prey_requirement"]["warrior"]
+        current_prey_amount = game.warren.freshkill_pile.total_amount
+        needed_amount = game.warren.freshkill_pile.amount_food_needed()
+        warrior_need = game.prey_config["prey_requirement"]["rabbit"]
         warrior_amount = int(current_prey_amount / warrior_need)
         general_text = i18n.t(
             "screens.clearing.prey_amount_info", warrior_amount=warrior_amount
@@ -651,8 +651,8 @@ class ClearingScreen(Screens):
 
         if self.pile_base:
             self.pile_base.kill()
-        current_prey_amount = game.clan.freshkill_pile.total_amount
-        needed_amount = round(game.clan.freshkill_pile.amount_food_needed(), 2)
+        current_prey_amount = game.warren.freshkill_pile.total_amount
+        needed_amount = round(game.warren.freshkill_pile.amount_food_needed(), 2)
         hover_display = i18n.t(
             "screens.clearing.freshkill_pile_tooltip",
             current_prey_amount=current_prey_amount,
@@ -667,7 +667,7 @@ class ClearingScreen(Screens):
         )
 
     def exit_screen(self):
-        if game.clan.game_mode == "classic":
+        if game.warren.game_mode == "classic":
             return
         self.info_messages.kill()
         self.stop_focus_button.kill()
@@ -705,8 +705,8 @@ class ClearingScreen(Screens):
         return [L[x : x + n] for x in range(0, len(L), n)]
 
     def clear_cat_buttons(self):
-        for cat in self.cat_buttons:
-            self.cat_buttons[cat].kill()
+        for rabbit in self.cat_buttons:
+            self.cat_buttons[rabbit].kill()
         for button in self.conditions_hover:
             self.conditions_hover[button].kill()
         for x in range(len(self.cat_names)):
@@ -797,7 +797,7 @@ class ClearingScreen(Screens):
                     "number": str(n),
                     "status": i18n.t(
                         f"general.{status}",
-                        count=2 if status not in ("leader", "deputy") else 1,
+                        count=2 if status not in ("chief rabbit", "captain") else 1,
                     ),
                     "prey": i18n.t("screens.clearing.prey_count", count=amount),
                 },
@@ -844,7 +844,7 @@ class ClearingScreen(Screens):
         for code, desc in settings_dict["freshkill_tactics"].items():
             if code == "ration prey":
                 continue
-            if game.clan.clan_settings[code]:
+            if game.warren.clan_settings[code]:
                 box_type = "@checked_checkbox"
             else:
                 box_type = "@unchecked_checkbox"
@@ -855,7 +855,7 @@ class ClearingScreen(Screens):
             if len(desc) == 4 and isinstance(desc[3], list):
                 x_val += 25
                 disabled = (
-                    game.clan.clan_settings.get(desc[3][0], not desc[3][1])
+                    game.warren.clan_settings.get(desc[3][0], not desc[3][1])
                     != desc[3][1]
                 )
 
@@ -879,7 +879,7 @@ class ClearingScreen(Screens):
         n = 0
         for code, desc in settings_dict["freshkill_tactics"].items():
             if code == "ration prey":
-                if game.clan.clan_settings[code]:
+                if game.warren.clan_settings[code]:
                     box_type = "@checked_checkbox"
                 else:
                     box_type = "@unchecked_checkbox"
@@ -890,7 +890,7 @@ class ClearingScreen(Screens):
                 if len(desc) == 4 and isinstance(desc[3], list):
                     x_val += 50
                     disabled = (
-                        game.clan.clan_settings.get(desc[3][0], not desc[3][1])
+                        game.warren.clan_settings.get(desc[3][0], not desc[3][1])
                         != desc[3][1]
                     )
 
@@ -917,7 +917,7 @@ class ClearingScreen(Screens):
                     value == event.ui_element
                     and value.object_ids[1] == "@unchecked_checkbox"
                 ):
-                    game.clan.switch_setting(key)
+                    game.warren.switch_setting(key)
                     active_key = key
                     self.settings_changed = True
                     self.create_checkboxes()
@@ -930,7 +930,7 @@ class ClearingScreen(Screens):
                     and key != active_key
                     and value.object_ids[1] == "@checked_checkbox"
                 ):
-                    game.clan.switch_setting(key)
+                    game.warren.switch_setting(key)
                     self.settings_changed = True
                     self.create_checkboxes()
                     break
@@ -938,7 +938,7 @@ class ClearingScreen(Screens):
         if event.ui_element in self.checkboxes.values():
             for key, value in self.checkboxes.items():
                 if value == event.ui_element:
-                    game.clan.switch_setting(key)
+                    game.warren.switch_setting(key)
                     active_key = key
                     self.settings_changed = True
                     self.create_checkboxes()

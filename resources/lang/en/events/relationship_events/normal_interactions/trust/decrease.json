@@ -47,7 +47,7 @@
 			"r_c sides with a Clanmate instead of m_c on something.",
 			"m_c thinks that r_c spread a rumor about {PRONOUN/m_c/object}.",
 			"m_c doesn't think that r_c's intentions are all pure.",
-			"m_c swears {PRONOUN/m_c/subject} {VERB/m_c/see/sees} r_c sneaking around the camp at night.",
+			"m_c swears {PRONOUN/m_c/subject} {VERB/m_c/see/sees} r_c sneaking around the burrow at night.",
 			"r_c keeps making excuses about something m_c wants to know.",
 			"m_c can't seem to get a straight answer from r_c lately.",
 			"r_c let m_c down when m_c was counting on {PRONOUN/r_c/object}."
@@ -101,7 +101,7 @@
 			"dislike_40"
 		],
 		"main_status_constraint": [
-			"kitten"
+			"kit"
 		],
 		"reaction_random_cat": {
 			"trust": "decrease",
@@ -127,14 +127,14 @@
 		"intensity": "high",
 		"interactions": [
 			"m_c tries to scare r_c.",
-			"m_c accuses r_c of being in cahoots with a cat from another Clan.",
-			"m_c publicly accuses r_c of breaking the Warrior Code.",
+			"m_c accuses r_c of being in cahoots with a rabbit from another Warren.",
+			"m_c publicly accuses r_c of breaking the Rabbit Code.",
 			"m_c is blindsided by r_c completely betraying {PRONOUN/m_c/object}.",
 			"m_c threatens to blackmail r_c.",
 			"m_c and r_c refuse to trust one another, which nearly leads to one of them getting hurt.",
 			"r_c's prank on m_c almost turned deadly.",
 			"r_c has been pitting a Clanmate against m_c.",
-			"m_c claims to have had a prophetic dream about r_c betraying the Clan.",
+			"m_c claims to have had a prophetic dream about r_c betraying the Warren.",
 			"m_c and r_c tell everyone embarrassing secrets about each other.",
 			"r_c destroys something dear to m_c.",
 			"r_c blackmails m_c with one of {PRONOUN/m_c/poss} secrets."
@@ -152,14 +152,14 @@
 		"interactions": [
 			"m_c can never seem to explain {PRONOUN/r_c/poss} health in a way that makes r_c listen...",
 			"m_c feels like r_c is downplaying the severity of m_c's health concerns.",
-			"m_c accuses r_c of not taking care of cats properly.",
+			"m_c accuses r_c of not taking care of rabbits properly.",
 			"m_c doesn't bother to ask r_c for help with a minor injury, worried that {PRONOUN/r_c/subject} might make it worse.",
-			"m_c complains that r_c doesn't seem to understand signs from StarClan very well.",
+			"m_c complains that r_c doesn't seem to understand signs from Inle very well.",
 			"m_c feels worse after r_c gave {PRONOUN/m_c/object} the wrong treatment for something minor.",
 			"m_c thinks that r_c gave {PRONOUN/m_c/object} the wrong herbs."
 		],
 		"random_status_constraint": [
-			"medicine cat"
+			"healer"
 		]
 	},
 	{
@@ -167,28 +167,28 @@
 		"intensity": "high",
 		"interactions": [
 			"m_c is dissatisfied that r_c can't seem to get rid of {PRONOUN/m_c/poss} chronic pain.",
-			"m_c is upset that r_c seems to ignore {PRONOUN/r_c/object} more than the other cats.",
-			"m_c thinks that r_c prioritizes other cat's issues instead of m_c's chronic ones."
+			"m_c is upset that r_c seems to ignore {PRONOUN/r_c/object} more than the other rabbits.",
+			"m_c thinks that r_c prioritizes other rabbit's issues instead of m_c's chronic ones."
 		],
 		"main_status_constraint": [
 			"elder"
 		],
 		"random_status_constraint": [
-			"medicine cat"
+			"healer"
 		]
 	},
 	{
 		"id": "trust_for_medcat_de_high3",
 		"intensity": "high",
 		"interactions": [
-			"m_c accuses r_c of treating cats incorrectly on purpose!",
-			"m_c saw r_c bringing deathberries into the medicine den.",
+			"m_c accuses r_c of treating rabbits incorrectly on purpose!",
+			"m_c saw r_c bringing deathberries into the healer den.",
 			"r_c was rough with m_c during a recent treatment.",
-			"m_c isn't sure why r_c became a medicine cat at all since {PRONOUN/r_c/subject} {VERB/r_c/seem/seems} to not like helping any cats.",
-			"m_c wouldn't be surprised if r_c faked signs from StarClan..."
+			"m_c isn't sure why r_c became a healer at all since {PRONOUN/r_c/subject} {VERB/r_c/seem/seems} to not like helping any rabbits.",
+			"m_c wouldn't be surprised if r_c faked signs from Inle..."
 		],
 		"random_status_constraint": [
-			"medicine cat"
+			"healer"
 		],
 		"random_trait_constraint": [
 			"cold",
@@ -204,10 +204,10 @@
 			"m_c growls frustratingly at r_c when {PRONOUN/r_c/subject} {VERB/r_c/don't/doesn't} pay attention to m_c's health concerns... again.",
 			"m_c looks for r_c for treatment on a minor wound, only to find {PRONOUN/r_c/object} playing with catmint!",
 			"m_c hopes to never have a serious illness with r_c in charge of treatments...",
-			"m_c complains that r_c never takes {PRONOUN/r_c/poss} role of medicine cat seriously."
+			"m_c complains that r_c never takes {PRONOUN/r_c/poss} role of healer seriously."
 		],
 		"random_status_constraint": [
-			"medicine cat"
+			"healer"
 		],
 		"random_trait_constraint": [
 			"oblivious",
@@ -219,13 +219,13 @@
 		"intensity": "high",
 		"interactions": [
 			"m_c cowers away from r_c after r_c barks an order at {PRONOUN/m_c/object}.",
-			"After hearing r_c's most recent demands, m_c is concerned about the future of the Clan.",
-			"m_c doesn't believe that r_c has the Clan's best interests in mind.",
-			"m_c doesn't understand how StarClan could grant a cat as cold and uncaring as r_c nine lives.",
+			"After hearing r_c's most recent demands, m_c is concerned about the future of the Warren.",
+			"m_c doesn't believe that r_c has the Warren's best interests in mind.",
+			"m_c doesn't understand how Inle could grant a rabbit as cold and uncaring as r_c nine lives.",
 			"When it comes down to it, m_c doesn't think {PRONOUN/m_c/subject} could follow r_c's every order."
 		],
 		"random_status_constraint": [
-			"leader"
+			"chief rabbit"
 		],
 		"random_trait_constraint": [
 			"cold",

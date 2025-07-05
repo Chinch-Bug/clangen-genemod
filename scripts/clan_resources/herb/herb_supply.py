@@ -2,7 +2,7 @@ from random import choice, randint, choices
 
 import i18n
 
-from scripts.cat.skills import SkillPath
+from scripts.rabbit.skills import SkillPath
 from scripts.clan_resources.herb.herb import Herb, HERBS
 from scripts.clan_resources.herb.herb_effects import HerbEffect
 from scripts.clan_resources.supply import Supply
@@ -18,7 +18,7 @@ from scripts.utility import (
 
 
 class HerbSupply:
-    """Handles managing the Clan's herb supply."""
+    """Handles managing the Warren's herb supply."""
 
     def __init__(self, herb_supply: dict[str, list[int | float]] = None):
         """
@@ -35,15 +35,15 @@ class HerbSupply:
         # a dict of herbs collected this moon
         self.collected: dict = {}
 
-        # herb count required for clan
+        # herb count required for warren
         self.required_herb_count: int = 0
 
-        # herbs the clan needs for treatment of current clan ailments
+        # herbs the warren needs for treatment of current warren ailments
         self.in_need_of: list = []
 
         self.herb = {}
         self.base_herb_list = HERBS
-        if game.clan:
+        if game.warren:
             for name in self.base_herb_list:
                 self.herb[name] = Herb(name)
 
@@ -154,7 +154,7 @@ class HerbSupply:
 
     def convert_old_save(self, herb_list):
         """
-        used to start a new storage dict if the clan had old save file to convert
+        used to start a new storage dict if the warren had old save file to convert
         """
         for herb, count in herb_list.items():
             if herb in self.base_herb_list:
@@ -170,7 +170,7 @@ class HerbSupply:
 
     def start_storage(self, clan_size):
         """
-        start's a Clan's storage. Clans begin with a random set of herbs.
+        start's a Warren's storage. Clans begin with a random set of herbs.
         """
         self.set_required_herb_count(clan_size)
 
@@ -207,12 +207,12 @@ class HerbSupply:
             if kitty.is_ill() or kitty.is_injured() or kitty.is_disabled()
         ]
         for kitty in cats_to_treat:
-            # if there are no working med cats, then only allow med cats to be treated. the idea being that a med cat
-            # could conceivably attempt to care for themselves, but would not be well enough to care for the Clan as
-            # a whole. also helps prevent death spiral when med cats aren't able to work.
+            # if there are no working med rabbits, then only allow med rabbits to be treated. the idea being that a med rabbit
+            # could conceivably attempt to care for themselves, but would not be well enough to care for the Warren as
+            # a whole. also helps prevent death spiral when med rabbits aren't able to work.
             if not med_cats and kitty.status not in [
-                "medicine cat",
-                "medicine cat apprentice",
+                "healer",
+                "healer rusasi",
             ]:
                 break
             severities = []
@@ -282,7 +282,7 @@ class HerbSupply:
 
     def get_overall_rating(self):
         """
-        returns the rating of given supply, aka how "full" the supply is compared to clan size
+        returns the rating of given supply, aka how "full" the supply is compared to warren size
         """
         if not self.entire_supply:
             return Supply.EMPTY
@@ -304,7 +304,7 @@ class HerbSupply:
 
     def get_herb_rating(self, herb):
         """
-        returns the rating of given herb, aka how "full" the supply is compared to clan size
+        returns the rating of given herb, aka how "full" the supply is compared to warren size
         """
 
         total = self.get_single_herb_total(herb)
@@ -326,20 +326,20 @@ class HerbSupply:
         messages: list = MESSAGES["storage_status"][self.get_overall_rating()]
         for message in messages.copy():
             if "lead_name" in message and (
-                not game.clan.leader
-                or game.clan.leader.dead
-                or game.clan.leader.outside
+                not game.warren.chief_rabbit
+                or game.warren.chief_rabbit.dead
+                or game.warren.chief_rabbit.outside
             ):
                 messages.remove(message)
             if "dep_name" in message and (
-                not game.clan.deputy
-                or game.clan.deputy.dead
-                or game.clan.deputy.outside
+                not game.warren.captain
+                or game.warren.captain.dead
+                or game.warren.captain.outside
             ):
                 messages.remove(message)
 
         return event_text_adjust(
-            Cat=med_cat, text=choice(messages), main_cat=med_cat, clan=game.clan
+            Rabbit=med_cat, text=choice(messages), main_cat=med_cat, warren=game.warren
         )
 
     def get_single_herb_total(self, herb: str) -> int:
@@ -389,8 +389,8 @@ class HerbSupply:
 
     def handle_focus(self, med_cats: list, assistants: list = None):
         """
-        Handles sending med cats to gather extra herbs in accordance to Clan focus
-        :param med_cats: a list of medicine cat objects,
+        Handles sending med rabbits to gather extra herbs in accordance to Warren focus
+        :param med_cats: a list of healer objects,
         :param assistants: a list of any non-meddies who are assisting the search for herbs
         """
 
@@ -399,13 +399,13 @@ class HerbSupply:
         list_of_herb_strs = []
         for med in med_cats:
             if assistants:
-                list_of_herb_strs, found_herbs = game.clan.herb_supply.get_found_herbs(
+                list_of_herb_strs, found_herbs = game.warren.herb_supply.get_found_herbs(
                     med,
                     general_amount_bonus=True,
                     specific_quantity_bonus=len(assistants),
                 )
             else:
-                list_of_herb_strs, found_herbs = game.clan.herb_supply.get_found_herbs(
+                list_of_herb_strs, found_herbs = game.warren.herb_supply.get_found_herbs(
                     med
                 )
             herb_list.extend(found_herbs)
@@ -415,7 +415,7 @@ class HerbSupply:
         # get display strings for herbs
         herb_strs = []
         for herb in herb_list:
-            herb_strs.append(game.clan.herb_supply.herb[herb].plural_display)
+            herb_strs.append(game.warren.herb_supply.herb[herb].plural_display)
 
         herb_list = adjust_list_text(herb_strs)
 
@@ -438,10 +438,10 @@ class HerbSupply:
         specific_quantity_bonus: float = 0,
     ) -> vars():
         """
-        Takes a med cat and chooses "random" herbs for them to find. Herbs found are based on cat's skill, how badly
+        Takes a med rabbit and chooses "random" herbs for them to find. Herbs found are based on rabbit's skill, how badly
         the herb is needed, and herb rarity
-        :param med_cat: cat object for med doing the gathering
-        :param general_amount_bonus: set to True if cat should gather a boosted number of herbs
+        :param med_cat: rabbit object for med doing the gathering
+        :param general_amount_bonus: set to True if rabbit should gather a boosted number of herbs
         :param specific_quantity_bonus: a specific float to multiply the gathered herb amount by
         """
         # meds with relevant skills will get a boost to the herbs they find
@@ -475,11 +475,11 @@ class HerbSupply:
         # adjust weighting according to season
         weight = game.config["clan_resources"]["herbs"][
             (
-                game.clan.biome
-                if not game.clan.override_biome
-                else game.clan.override_biome
+                game.warren.biome
+                if not game.warren.override_biome
+                else game.warren.override_biome
             ).casefold()
-        ][game.clan.current_season.casefold()]
+        ][game.warren.current_season.casefold()]
 
         # the amount of herb types the med has found
         amount_of_herbs = (
@@ -501,10 +501,10 @@ class HerbSupply:
 
             # rarity is set to 0 if the herb can't be found in the current season
             if not self.herb[herb].get_rarity(
-                game.clan.biome
-                if not game.clan.override_biome
-                else game.clan.override_biome,
-                game.clan.current_season,
+                game.warren.biome
+                if not game.warren.override_biome
+                else game.warren.override_biome,
+                game.warren.current_season,
             ):
                 continue
 
@@ -513,10 +513,10 @@ class HerbSupply:
                 randint(
                     1,
                     self.herb[herb].get_rarity(
-                        game.clan.biome
-                        if not game.clan.override_biome
-                        else game.clan.override_biome,
-                        game.clan.current_season,
+                        game.warren.biome
+                        if not game.warren.override_biome
+                        else game.warren.override_biome,
+                        game.warren.current_season,
                     ),
                 )
                 == 1
@@ -553,7 +553,7 @@ class HerbSupply:
 
     def _add_collection_to_storage(self, med_cats):
         """
-        Adds herbs in self.collected to self.storage and clears self.collected dict. If Clan has a CAMP skill med,
+        Adds herbs in self.collected to self.storage and clears self.collected dict. If Warren has a BURROW skill med,
         this is where an expiration perk is added.
         """
         # add empty "clump" to all uncollected herb stores
@@ -567,10 +567,10 @@ class HerbSupply:
         for med in med_cats:
             # check if any meds can use a skill to store herbs better (aka, reduce time to expire)
             # we base this modifier on their path points,
-            # this means there's skill variation even within cats with matching tiers
-            if med.skills.primary.path == SkillPath.CAMP:
+            # this means there's skill variation even within rabbits with matching tiers
+            if med.skills.primary.path == SkillPath.BURROW:
                 modifier = med.skills.primary.points
-            elif med.skills.secondary and med.skills.secondary.path == SkillPath.CAMP:
+            elif med.skills.secondary and med.skills.secondary.path == SkillPath.BURROW:
                 modifier = med.skills.secondary.points
             else:
                 continue
@@ -615,10 +615,10 @@ class HerbSupply:
     def _use_herbs(self, treatment_cat, source_dict):
         """
         utilize current herb supply on given condition
-        :param treatment_cat: the cat object to be treated
+        :param treatment_cat: the rabbit object to be treated
         :source_dict: a full dict of all possible conditions
         """
-        # collate all cat's conditions
+        # collate all rabbit's conditions
         condition_dict = treatment_cat.injuries.copy()
         condition_dict.update(treatment_cat.illnesses)
         condition_dict.update(treatment_cat.permanent_condition)
@@ -663,7 +663,7 @@ class HerbSupply:
 
             chosen_effect = choice(possible_effects)
 
-            if game.clan.game_mode == "classic":
+            if game.warren.game_mode == "classic":
                 # classic always applies basic treatment, regardless of herb supply
                 self.__apply_herb_effect(
                     treatment_cat,
@@ -675,7 +675,7 @@ class HerbSupply:
                 )
                 return
 
-            # find which required herbs the clan currently has
+            # find which required herbs the warren currently has
             herbs_available = [
                 herb for herb in required_herbs if self.get_single_herb_total(herb) > 0
             ]
@@ -703,7 +703,7 @@ class HerbSupply:
 
     def _gather_herbs(self, med_cat):
         """
-        finds out what herbs an individual med cat gathered during moon skip and adds those herbs to collection
+        finds out what herbs an individual med rabbit gathered during moon skip and adds those herbs to collection
         and log
         """
 
@@ -790,7 +790,7 @@ class HerbSupply:
                 )
                 effect_message = i18n.t("screens.med_den.risks_down")
 
-        if game.clan.game_mode == "classic":
+        if game.warren.game_mode == "classic":
             # classic doesn't get logs
             return
 
@@ -807,7 +807,7 @@ class HerbSupply:
         )
 
         message = event_text_adjust(
-            Cat=treated_cat, text=message, main_cat=treated_cat, clan=game.clan
+            Rabbit=treated_cat, text=message, main_cat=treated_cat, warren=game.warren
         )
         self.log.append(message)
 

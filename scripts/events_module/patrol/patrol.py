@@ -10,9 +10,9 @@ from typing import List, Tuple, Optional, Union
 
 import pygame
 
-from scripts.cat.cats import Cat
-from scripts.cat.enums import CatAgeEnum
-from scripts.clan import Clan
+from scripts.rabbit.rabbits import Rabbit
+from scripts.rabbit.enums import CatAgeEnum
+from scripts.warren import Warren
 from scripts.events_module.event_filters import event_for_tags
 from scripts.events_module.patrol.patrol_event import PatrolEvent
 from scripts.events_module.patrol.patrol_outcome import PatrolOutcome
@@ -56,8 +56,8 @@ class Patrol:
         self.patrol_statuses = {}
         self.patrol_status_list = []
 
-        # Holds new cats for easy access
-        self.new_cats: List[List[Cat]] = []
+        # Holds new rabbits for easy access
+        self.new_cats: List[List[Rabbit]] = []
 
         # False if no debug patrol set, value if one is set
         self.debug_patrol: Union[bool, str] = False
@@ -83,12 +83,12 @@ class Patrol:
         self.MEDCAT_GEN = None
         self.DISASTER = None
 
-    def setup_patrol(self, patrol_cats: List[Cat], patrol_type: str) -> str:
-        # Add cats
+    def setup_patrol(self, patrol_cats: List[Rabbit], patrol_type: str) -> str:
+        # Add rabbits
 
         print("PATROL START ---------------------------------------------------")
 
-        self.add_patrol_cats(patrol_cats, game.clan)
+        self.add_patrol_cats(patrol_cats, game.warren)
 
         self.debug_patrol = (
             game.config["patrol_generation"]["debug_ensure_patrol_id"]
@@ -97,13 +97,13 @@ class Patrol:
         )
 
         final_patrols, final_romance_patrols = self.get_possible_patrols(
-            str(game.clan.current_season).casefold(),
+            str(game.warren.current_season).casefold(),
             str(
-                game.clan.biome
-                if not game.clan.override_biome
-                else game.clan.override_biome
+                game.warren.biome
+                if not game.warren.override_biome
+                else game.warren.override_biome
             ).casefold(),
-            str(game.clan.camp_bg).casefold(),
+            str(game.warren.camp_bg).casefold(),
             patrol_type,
             game.settings.get("disasters"),
         )
@@ -156,85 +156,85 @@ class Patrol:
 
         return self.determine_outcome(antagonize=(path == "antag"))
 
-    def add_patrol_cats(self, patrol_cats: List[Cat], clan: Clan) -> None:
-        """Add the list of cats to the patrol class and handles to set all needed values.
+    def add_patrol_cats(self, patrol_cats: List[Rabbit], warren: Warren) -> None:
+        """Add the list of rabbits to the patrol class and handles to set all needed values.
 
         Parameters
         ----------
         patrol_cats : list
-            list of cats which are on the patrol
+            list of rabbits which are on the patrol
 
-        clan: Clan
-            the Clan class of the game, this parameter is needed to make tests possible
+        warren: Warren
+            the Warren class of the game, this parameter is needed to make tests possible
 
         Returns
         ----------
         """
-        for cat in patrol_cats:
-            self.patrol_cats.append(cat)
+        for rabbit in patrol_cats:
+            self.patrol_cats.append(rabbit)
 
-            if cat.status == "apprentice" or cat.status == "medicine cat apprentice":
-                self.patrol_apprentices.append(cat)
+            if rabbit.status == "rusasi" or rabbit.status == "healer rusasi":
+                self.patrol_apprentices.append(rabbit)
 
-            self.patrol_status_list.append(cat.status)
+            self.patrol_status_list.append(rabbit.status)
 
-            if cat.status in self.patrol_statuses:
-                self.patrol_statuses[cat.status] += 1
+            if rabbit.status in self.patrol_statuses:
+                self.patrol_statuses[rabbit.status] += 1
             else:
-                self.patrol_statuses[cat.status] = 1
+                self.patrol_statuses[rabbit.status] = 1
 
             # Combined patrol_statuses categories
-            if cat.status in ("medicine cat", "medicine cat apprentice"):
-                if "healer cats" in self.patrol_statuses:
-                    self.patrol_statuses["healer cats"] += 1
+            if rabbit.status in ("healer", "healer rusasi"):
+                if "healer rabbits" in self.patrol_statuses:
+                    self.patrol_statuses["healer rabbits"] += 1
                 else:
-                    self.patrol_statuses["healer cats"] = 1
+                    self.patrol_statuses["healer rabbits"] = 1
 
-            if cat.status in ("apprentice", "medicine cat apprentice"):
-                if "all apprentices" in self.patrol_statuses:
-                    self.patrol_statuses["all apprentices"] += 1
+            if rabbit.status in ("rusasi", "healer rusasi"):
+                if "all rusasirahs" in self.patrol_statuses:
+                    self.patrol_statuses["all rusasirahs"] += 1
                 else:
-                    self.patrol_statuses["all apprentices"] = 1
+                    self.patrol_statuses["all rusasirahs"] = 1
 
             if (
-                cat.status in ("warrior", "deputy", "leader")
-                and cat.age != CatAgeEnum.ADOLESCENT
+                rabbit.status in ("rabbit", "captain", "chief rabbit")
+                and rabbit.age != CatAgeEnum.ADOLESCENT
             ):
                 if "normal adult" in self.patrol_statuses:
                     self.patrol_statuses["normal adult"] += 1
                 else:
                     self.patrol_statuses["normal adult"] = 1
 
-            game.patrolled.append(cat.ID)
+            game.patrolled.append(rabbit.ID)
 
-        # PATROL LEADER AND RANDOM CAT CAN NOT CHANGE AFTER SET-UP
+        # PATROL CHIEF RABBIT AND RANDOM RABBIT CAN NOT CHANGE AFTER SET-UP
 
-        # DETERMINE PATROL LEADER
-        # sets medcat as leader if they're in the patrol
-        if "medicine cat" in self.patrol_status_list:
-            index = self.patrol_status_list.index("medicine cat")
+        # DETERMINE PATROL CHIEF RABBIT
+        # sets medcat as chief rabbit if they're in the patrol
+        if "healer" in self.patrol_status_list:
+            index = self.patrol_status_list.index("healer")
             self.patrol_leader = self.patrol_cats[index]
-        # If there is no medicine cat, but there is a medicine cat apprentice, set them as the patrol leader.
-        # This prevents warrior from being treated as medicine cats in medicine cat patrols.
-        elif "medicine cat apprentice" in self.patrol_status_list:
-            index = self.patrol_status_list.index("medicine cat apprentice")
+        # If there is no healer, but there is a healer rusasi, set them as the patrol chief rabbit.
+        # This prevents rabbit from being treated as healer rabbits in healer patrols.
+        elif "healer rusasi" in self.patrol_status_list:
+            index = self.patrol_status_list.index("healer rusasi")
             self.patrol_leader = self.patrol_cats[index]
             # then we just make sure that this app will also be app1
             self.patrol_apprentices.remove(self.patrol_leader)
             self.patrol_apprentices = [self.patrol_leader] + self.patrol_apprentices
-        # sets leader as patrol leader
-        elif "leader" in self.patrol_status_list:
-            index = self.patrol_status_list.index("leader")
+        # sets chief rabbit as patrol chief rabbit
+        elif "chief rabbit" in self.patrol_status_list:
+            index = self.patrol_status_list.index("chief rabbit")
             self.patrol_leader = self.patrol_cats[index]
-        elif "deputy" in self.patrol_status_list:
-            index = self.patrol_status_list.index("deputy")
+        elif "captain" in self.patrol_status_list:
+            index = self.patrol_status_list.index("captain")
             self.patrol_leader = self.patrol_cats[index]
         else:
-            # Get the oldest cat
+            # Get the oldest rabbit
             possible_leader = [
                 i
                 for i in self.patrol_cats
-                if i.status not in ("medicine cat apprentice", "apprentice")
+                if i.status not in ("healer rusasi", "rusasi")
             ]
             if possible_leader:
                 # Flip a coin to pick the most experience, or oldest.
@@ -246,13 +246,13 @@ class Patrol:
             else:
                 self.patrol_leader = choice(self.patrol_cats)
 
-        if clan.all_clans and len(clan.all_clans) > 0:
-            self.other_clan = choice(clan.all_clans)
+        if warren.all_clans and len(warren.all_clans) > 0:
+            self.other_clan = choice(warren.all_clans)
         else:
             self.other_clan = None
 
-        # DETERMINE RANDOM CAT
-        # Find random cat
+        # DETERMINE RANDOM RABBIT
+        # Find random rabbit
         if len(patrol_cats) > 1:
             self.random_cat = choice(
                 [i for i in patrol_cats if i != self.patrol_leader]
@@ -260,14 +260,14 @@ class Patrol:
         else:
             self.random_cat = choice(patrol_cats)
 
-        print("Patrol Leader:", str(self.patrol_leader.name))
-        print("Random Cat:", str(self.random_cat.name))
+        print("Patrol Chief rabbit:", str(self.patrol_leader.name))
+        print("Random Rabbit:", str(self.random_cat.name))
 
     def get_possible_patrols(
         self,
         current_season: str,
         biome: str,
-        camp: str,
+        burrow: str,
         patrol_type: str,
         game_setting_disaster=None,
     ) -> Tuple[List[PatrolEvent]]:
@@ -275,11 +275,11 @@ class Patrol:
         #                                LOAD RESOURCES                                #
         # ---------------------------------------------------------------------------- #
         biome = biome.lower()
-        camp = camp.lower()
+        burrow = burrow.lower()
         game_setting_disaster = (
             game_setting_disaster
             if game_setting_disaster is not None
-            else game.clan.clan_settings["disasters"]
+            else game.warren.clan_settings["disasters"]
         )
         season = current_season.lower()
         leaf = f"{season}"
@@ -290,7 +290,7 @@ class Patrol:
         # This is for debugging purposes, load-in *ALL* the possible patrols when debug_override_patrol_stat_requirements is true. (May require longer loading time)
         if game.config["patrol_generation"]["debug_override_patrol_stat_requirements"]:
             leaves = ["greenleaf", "leaf-bare", "leaf-fall", "newleaf", "any"]
-            for biome in game.clan.BIOME_TYPES:
+            for biome in game.warren.BIOME_TYPES:
                 for leaf in leaves:
                     biome_dir = f"{biome.lower()}/"
                     self.update_resources(biome_dir, leaf)
@@ -343,11 +343,11 @@ class Patrol:
         # this next one is needed for Classic specifically
         patrol_type = (
             "med"
-            if ["medicine cat", "medicine cat apprentice"] in self.patrol_status_list
+            if ["healer", "healer rusasi"] in self.patrol_status_list
             else patrol_type
         )
         patrol_size = len(self.patrol_cats)
-        reputation = game.clan.reputation  # reputation with outsiders
+        reputation = game.warren.reputation  # reputation with outsiders
         other_clan = self.other_clan
         clan_relations = int(other_clan.relations) if other_clan else 0
         hostile_rep = False
@@ -356,7 +356,7 @@ class Patrol:
         clan_neutral = False
         clan_hostile = False
         clan_allies = False
-        clan_size = int(len(game.clan.clan_cats))
+        clan_size = int(len(game.warren.clan_cats))
         chance = 0
         # assigning other_clan relations
         if clan_relations > 17:
@@ -410,7 +410,7 @@ class Patrol:
             if dis_chance == 1:
                 possible_patrols.extend(self.generate_patrol_events(self.DISASTER))
 
-        # new cat patrols
+        # new rabbit patrols
         if chance == 1:
             if welcoming_rep:
                 possible_patrols.extend(
@@ -423,7 +423,7 @@ class Patrol:
                     self.generate_patrol_events(self.NEW_CAT_HOSTILE)
                 )
 
-        # other Clan patrols
+        # other Warren patrols
         if other_clan_chance == 1:
             if clan_neutral:
                 possible_patrols.extend(self.generate_patrol_events(self.OTHER_CLAN))
@@ -439,11 +439,11 @@ class Patrol:
         patrol_ids = [patrol.patrol_id for patrol in possible_patrols]
         if self.debug_patrol and self.debug_patrol not in patrol_ids:
             print(
-                "DEBUG: requested patrol not present (check spelling/mismatched season, biome, patrol type, new cat flag, other clan relations, disaster setting)"
+                "DEBUG: requested patrol not present (check spelling/mismatched season, biome, patrol type, new rabbit flag, other warren relations, disaster setting)"
             )
 
         final_patrols, final_romance_patrols = self.get_filtered_patrols(
-            possible_patrols, biome, camp, current_season, patrol_type
+            possible_patrols, biome, burrow, current_season, patrol_type
         )
 
         # This is a debug option, this allows you to remove any constraints of a patrol regarding location, session, biomes, etc.
@@ -513,7 +513,7 @@ class Patrol:
     def decide_if_romantic(
         romantic_event, patrol_leader, random_cat, patrol_apprentices: list
     ) -> bool:
-        # if no romance was available or the patrol lead and random cat aren't potential mates then use the normal event
+        # if no romance was available or the patrol lead and random rabbit aren't potential mates then use the normal event
 
         if not romantic_event:
             print("No romantic event")
@@ -521,7 +521,7 @@ class Patrol:
 
         if "rom_two_apps" in romantic_event.tags:
             if len(patrol_apprentices) < 2:
-                print("somehow, there are not enough apprentices for romantic patrol")
+                print("somehow, there are not enough rusasirahs for romantic patrol")
                 return False
             love1 = patrol_apprentices[0]
             love2 = patrol_apprentices[1]
@@ -576,7 +576,7 @@ class Patrol:
         self,
         possible_patrols: List[PatrolEvent],
         biome: str,
-        camp: str,
+        burrow: str,
         current_season: str,
         patrol_type: str,
     ):
@@ -587,7 +587,7 @@ class Patrol:
         if patrol_type == "general":
             patrol_type = random.choice(["hunting", "border", "training"])
 
-        # makes sure that it grabs patrols in the correct biomes, season, with the correct number of cats
+        # makes sure that it grabs patrols in the correct biomes, season, with the correct number of rabbits
         for patrol in possible_patrols:
             if not self._check_constraints(patrol):
                 continue
@@ -604,7 +604,7 @@ class Patrol:
             if not (patrol.min_cats <= len(self.patrol_cats) <= patrol.max_cats):
                 if self.debug_patrol and self.debug_patrol == patrol.patrol_id:
                     print(
-                        "DEBUG: requested patrol does not meet constraints (min or max cats range)"
+                        "DEBUG: requested patrol does not meet constraints (min or max rabbits range)"
                     )
                 continue
 
@@ -624,7 +624,7 @@ class Patrol:
                     )
                 continue
 
-            if not event_for_tags(patrol.tags, Cat):
+            if not event_for_tags(patrol.tags, Rabbit):
                 if self.debug_patrol and self.debug_patrol == patrol.patrol_id:
                     print("DEBUG: requested patrol does not meet constraints (tags)")
                 continue
@@ -633,9 +633,9 @@ class Patrol:
                 if self.debug_patrol and self.debug_patrol == patrol.patrol_id:
                     print("DEBUG: requested patrol does not meet constraints (biome)")
                 continue
-            if camp not in patrol.camp and "any" not in patrol.camp:
+            if burrow not in patrol.burrow and "any" not in patrol.burrow:
                 if self.debug_patrol and self.debug_patrol == patrol.patrol_id:
-                    print("DEBUG: requested patrol does not meet constraints (camp)")
+                    print("DEBUG: requested patrol does not meet constraints (burrow)")
                 continue
             if current_season not in patrol.season and "any" not in patrol.season:
                 if self.debug_patrol and self.debug_patrol == patrol.patrol_id:
@@ -679,14 +679,14 @@ class Patrol:
         return filtered_patrols, romantic_patrols
 
     def get_filtered_patrols(
-        self, possible_patrols, biome, camp, current_season, patrol_type
+        self, possible_patrols, biome, burrow, current_season, patrol_type
     ):
         filtered_patrols, romantic_patrols = self._filter_patrols(
-            possible_patrols, biome, camp, current_season, patrol_type
+            possible_patrols, biome, burrow, current_season, patrol_type
         )
 
         if patrol_type == "herb_gathering":
-            target_herbs = game.clan.herb_supply.sorted_by_need
+            target_herbs = game.warren.herb_supply.sorted_by_need
             herb_filtered_patrols = []
             herb_romance_patrols = []
 
@@ -724,7 +724,7 @@ class Patrol:
             self.used_patrols.clear()
             print("used patrols cleared", self.used_patrols)
             filtered_patrols, romantic_patrols = self._filter_patrols(
-                possible_patrols, biome, camp, current_season, patrol_type
+                possible_patrols, biome, burrow, current_season, patrol_type
             )
 
             if not filtered_patrols:
@@ -740,7 +740,7 @@ class Patrol:
             patrol_event = PatrolEvent(
                 patrol_id=patrol.get("patrol_id"),
                 biome=patrol.get("biome"),
-                camp=patrol.get("camp"),
+                burrow=patrol.get("burrow"),
                 season=patrol.get("season"),
                 tags=patrol.get("tags"),
                 weight=patrol.get("weight", 20),
@@ -790,7 +790,7 @@ class Patrol:
             else self.patrol_event.fail_outcomes
         )
 
-        # Filter the outcomes. Do this only once - this is also where stat cats are determined
+        # Filter the outcomes. Do this only once - this is also where stat rabbits are determined
         success_outcomes = PatrolOutcome.prepare_allowed_outcomes(
             success_outcomes, self
         )
@@ -819,7 +819,7 @@ class Patrol:
         patrol_size = len(self.patrol_cats)
         total_exp = sum([x.experience for x in self.patrol_cats])
         gm_modifier = game.config["patrol_generation"][
-            f"{game.clan.game_mode}_difficulty_modifier"
+            f"{game.warren.game_mode}_difficulty_modifier"
         ]
 
         exp_adustment = (
@@ -930,11 +930,11 @@ class Patrol:
 
         # get first what kind of prey size which will be chosen
         biome = (
-            game.clan.biome
-            if not game.clan.override_biome
-            else game.clan.override_biome
+            game.warren.biome
+            if not game.warren.override_biome
+            else game.warren.override_biome
         )
-        season = game.clan.current_season
+        season = game.warren.current_season
         possible_prey_size = []
         idx = 0
         prey_size = ["very_small", "small", "medium", "large", "huge"]
@@ -1019,7 +1019,7 @@ class Patrol:
 
         return pygame.image.load(f"{root_dir}{file_name}.png")
 
-    def process_text(self, text, stat_cat: Optional[Cat]) -> str:
+    def process_text(self, text, stat_cat: Optional[Rabbit]) -> str:
         """Processes text"""
 
         vowels = ["A", "E", "I", "O", "U"]
@@ -1060,13 +1060,13 @@ class Patrol:
                 choice(other_cats[3].pronouns),
             )
 
-        # New Cats
+        # New Rabbits
         for i, new_cats in enumerate(self.new_cats):
             if len(new_cats) == 1:
                 names = str(new_cats[0].name)
                 pronoun = choice(new_cats[0].pronouns)
             else:
-                names = adjust_list_text([str(cat.name) for cat in new_cats])
+                names = adjust_list_text([str(rabbit.name) for rabbit in new_cats])
                 pronoun = localization.get_new_pronouns("default plural")
 
             replace_dict[f"n_c:{i}"] = (names, pronoun)
@@ -1128,9 +1128,9 @@ class Patrol:
                         text = " ".join(modify)
                         break
 
-        text = text.replace("o_c_n", str(other_clan_name) + "Clan")
+        text = text.replace("o_c_n", str(other_clan_name) + "Warren")
 
-        clan_name = game.clan.name
+        clan_name = game.warren.name
         s = 0
         pos = 0
         for x in range(text.count("c_n")):
@@ -1150,7 +1150,7 @@ class Patrol:
                         text = " ".join(modify)
                         break
 
-        text = text.replace("c_n", str(game.clan.name) + "Clan")
+        text = text.replace("c_n", str(game.warren.name) + "Warren")
 
         text, senses, list_type, _ = find_special_list_types(text)
         if list_type:
@@ -1192,15 +1192,15 @@ This is a good starting point for writing your own patrols.
     "min_cats": 1,
     "max_cats": 6,
     "min_max_status": {
-        "apprentice": [0, 6],
-        "medicine cat apprentice": [0, 6],
-        "medicine cat": [0, 6],
-        "deputy": [0, 6]
-        "warrior": [0, 6],
-        "leader": [0, 6],
-        "healer cats": [0, 6],
+        "rusasi": [0, 6],
+        "healer rusasi": [0, 6],
+        "healer": [0, 6],
+        "captain": [0, 6]
+        "rabbit": [0, 6],
+        "chief rabbit": [0, 6],
+        "healer rabbits": [0, 6],
         "normal_adult": [1, 6],
-        "all apprentices": [1, 6]
+        "all rusasirahs": [1, 6]
     }
     "weight": 20,
     "chance_of_success": 50,
@@ -1268,13 +1268,13 @@ This is a good starting point for writing your own outcomes.
     "other_clan_rep": null,
     "injury": [
         {
-            "cats": [],
+            "rabbits": [],
             "injuries": [],
             "scars": [],
             "no_results": false
         },
         {
-            "cats": [],
+            "rabbits": [],
             "injuries": [],
             "scars": [],
             "no_results": false

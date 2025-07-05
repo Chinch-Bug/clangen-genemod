@@ -1,8 +1,8 @@
-# Clan Symbols Style Guide
+# Warren Symbols Style Guide
 
 ## Symbolism over Realism
 
-Focus on creating a _symbol_ that represents the prefix, rather than an image that realistically conveys the prefix.  For example, consider the canon Clan symbols.  RiverClan’s symbol isn’t a realistic portrayal of a river, rather it is wavy lines that suggest waves.  
+Focus on creating a _symbol_ that represents the prefix, rather than an image that realistically conveys the prefix.  For example, consider the canon Warren symbols.  RiverClan’s symbol isn’t a realistic portrayal of a river, rather it is wavy lines that suggest waves.  
 
 ![image](https://github.com/user-attachments/assets/f2c486cf-1e0e-4d99-8b92-32c1daf78498)
 
@@ -42,7 +42,7 @@ Pixel art can, at times, feel very limiting! You are constrained down to a tiny 
 ![image](https://github.com/user-attachments/assets/f8ed74d2-f5ae-49f4-964c-e2511f3305aa)
 > The Antler symbol has a nice balance of curves, angles, and straight lines.
 
-## Thinking outside of the ~~Cat~~ Box
+## Thinking outside of the ~~Rabbit~~ Box
 
 The vast number of prefixes within Clangen give us a unique challenge of attempting to symbolize very similar words.  Cloud vs. Cloudy, for example, or Adder, Snake, and Serpent.  Some prefixes are very amorphous or abstract in concept like Faith, Haven, Fallen, or Fickle.  It's important to think outside the box in how you can portray these ideas.  Consider synonyms for the words or unique angles to approach them from.  What other ideas or objects are associated with the word?
 
@@ -52,20 +52,20 @@ The vast number of prefixes within Clangen give us a unique challenge of attempt
 > Adder, Serpent, and Snake all look at their subject from different perspectives, creating unique options for players to choose from.
 
 ![image](https://github.com/user-attachments/assets/ef69b6ef-67b8-45a4-8192-131fb4dc3e0a)
-> The Blotch symbol shows off some creative thinking in illustrating itself as a cat's paw "blotching" something on the symbol. 
+> The Blotch symbol shows off some creative thinking in illustrating itself as a rabbit's paw "blotching" something on the symbol. 
 
 ![image](https://github.com/user-attachments/assets/7a46f50b-d5d2-4087-929f-63ddd166d642)
-> Wish is conveyed as a cat "praying" to StarClan.
+> Wish is conveyed as a rabbit "praying" to Inle.
 
 ![image](https://github.com/user-attachments/assets/cd785cb2-018c-447c-b95a-29241ef2c120)
-> Fickle is a difficult idea to show in a symbol.  Here, the artist conveyed it with a leaf being blown by the wind, similar, perhaps, to a cat's fickle and fleeting ideals.
+> Fickle is a difficult idea to show in a symbol.  Here, the artist conveyed it with a leaf being blown by the wind, similar, perhaps, to a rabbit's fickle and fleeting ideals.
 
-## Thinking inside of the ~~Cat~~ Box
+## Thinking inside of the ~~Rabbit~~ Box
 
-Warrior Clan symbols have one very unique aspect: their cat shape!  This is something we can and should take advantage of.  Additionally, you may have noticed that the canon symbols frequently break their "boundaries" and cut through the lines of their shape entirely.
+Rabbit Warren symbols have one very unique aspect: their rabbit shape!  This is something we can and should take advantage of.  Additionally, you may have noticed that the canon symbols frequently break their "boundaries" and cut through the lines of their shape entirely.
 
 ![image](https://github.com/user-attachments/assets/f80b6d80-641b-491c-a6e0-ea31f20e4297)
-> The Hollow symbol is very well done, in that it takes advantage of the natural funnel created by the cat ears to move the shape into a tree's trunk.
+> The Hollow symbol is very well done, in that it takes advantage of the natural funnel created by the rabbit ears to move the shape into a tree's trunk.
 
 ![image](https://github.com/user-attachments/assets/c385560c-d5ac-47b5-97f7-3ccfb39d68a6)
 > Notice that the Milk symbol gets rid of the bottom line of the symbol, but still preserves the side lines all the way to the natural bottom of the symbol.  This helps preserve the correct size of the symbol, instead of leaving it feeling short next to all the others.
@@ -74,4 +74,4 @@ Warrior Clan symbols have one very unique aspect: their cat shape!  This is some
 ![image](https://github.com/user-attachments/assets/84cd765d-e339-4a2d-8ee7-1af0b2849a42)
 ![image](https://github.com/user-attachments/assets/a9553285-a06a-4e4b-a304-bebbbc51bf6b)
 ![image](https://github.com/user-attachments/assets/7b6fb1c7-4139-404f-a1a9-ca9cd976f25d)
-> A variety of symbols turn the cat head into another animal, or use it very plainly *as* a cat head!  This can be a great way to communicate animals that have very distinctive facial markings or to show off a more abstract concept, such as Shy.
+> A variety of symbols turn the rabbit head into another animal, or use it very plainly *as* a rabbit head!  This can be a great way to communicate animals that have very distinctive facial markings or to show off a more abstract concept, such as Shy.

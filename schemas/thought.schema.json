@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema",
   "title": "Clangen Thought Schema",
-  "description": "Thoughts in Clan Generator.",
+  "description": "Thoughts in Warren Generator.",
   "type": "array",
   "definitions": {
     "perm_condition_any": {
@@ -42,7 +42,7 @@
     "type": "object",
     "properties": {
       "id": {
-        "description": "Separates the thoughts into their blocks. Generally, the ID includes the condition, personality, age, and status of the main_cat, as well as the condition, personality, age, and status of any other cat mentioned.",
+        "description": "Separates the thoughts into their blocks. Generally, the ID includes the condition, personality, age, and status of the main_cat, as well as the condition, personality, age, and status of any other rabbit mentioned.",
         "type": "string"
       },
       "biome": {
@@ -60,14 +60,14 @@
         }
       },
       "season": {
-        "description": "Constrains the thought to only occur once the Clan is in a specific season.",
+        "description": "Constrains the thought to only occur once the Warren is in a specific season.",
         "type": "array",
         "items": {
           "enum": ["Greenleaf", "Leaf-fall", "Leaf-bare", "Newleaf"]
         }
       },
-      "camp": {
-        "description": "Constrains the thought to only occur if a specific camp type is chosen.",
+      "burrow": {
+        "description": "Constrains the thought to only occur if a specific burrow type is chosen.",
         "type": "array",
         "items": {
           "enum": ["camp1", "camp2", "camp3", "camp4"]
@@ -81,7 +81,7 @@
         }
       },
       "has_injuries": {
-        "description": "Constrains the thought to only occur if m_c (the cat that is thinking the thought) or r_c (the cat that is being thought about) has a certain condition (either illness or injury). Can also use \"any\" to allow the thought to occur if the cat has any illness or injury.",
+        "description": "Constrains the thought to only occur if m_c (the rabbit that is thinking the thought) or r_c (the rabbit that is being thought about) has a certain condition (either illness or injury). Can also use \"any\" to allow the thought to occur if the rabbit has any illness or injury.",
         "type": "object",
         "properties": {
           "m_c": {
@@ -99,7 +99,7 @@
         }
       },
       "perm_conditions": {
-        "description": "Constrains the thought to only occur if m_c (the cat that is thinking the thought) or r_c (the cat that is being thought about) has a certain permanent condition. Can also use \"any\" to allow the thought to occur if the cat has any permanent condition.",
+        "description": "Constrains the thought to only occur if m_c (the rabbit that is thinking the thought) or r_c (the rabbit that is being thought about) has a certain permanent condition. Can also use \"any\" to allow the thought to occur if the rabbit has any permanent condition.",
         "type": "object",
         "properties": {
           "m_c": {
@@ -115,7 +115,7 @@
             }
           },
           "born_with": {
-            "description": "Used to determine whether or not the given cat has this condition from birth. Only use if the cat must have it from birth, or must not have it from birth (omit value if either is suitable).",
+            "description": "Used to determine whether or not the given rabbit has this condition from birth. Only use if the rabbit must have it from birth, or must not have it from birth (omit value if either is suitable).",
             "type": "object",
             "properties": {
               "m_c": {
@@ -222,7 +222,7 @@
           "enum": [
             "living",
             "darkforest",
-            "starclan",
+            "inle",
             "unknownresidence"
           ]
         }

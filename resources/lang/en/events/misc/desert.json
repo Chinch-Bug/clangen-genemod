@@ -53,7 +53,7 @@
     ],
     "sub_type": ["accessory"],
     "weight": 20,
-    "event_text":  "m_c hunts down one of the first flowers that fortell the arrival of the coming rains, proudly wearing the acc_singular back to camp.",
+    "event_text":  "m_c hunts down one of the first flowers that fortell the arrival of the coming rains, proudly wearing the acc_singular back to burrow.",
     "new_accessory": [
       "LAVENDER",
       "JUNIPER",
@@ -141,7 +141,7 @@
       "BLACK CICADA"
     ],
     "m_c": {
-        "age": ["kitten"]
+        "age": ["kit"]
     }
   }, 
   {
@@ -153,7 +153,7 @@
       "leaf-fall"
     ],
     "weight": 30,
-    "event_text": "As nightfall leeches burning heat from the rocks, m_c tells stories of far off Clans, of cats for whom the dry season brings green leaves and bounty instead of withering heat.",
+    "event_text": "As nightfall leeches burning heat from the rocks, m_c tells stories of far off Clans, of rabbits for whom the dry season brings green leaves and bounty instead of withering heat.",
     "m_c": {
       "age": ["any"],
       "status": ["any"],
@@ -161,7 +161,7 @@
     },
     "relationships": [
       {
-        "cats_from": ["clan"],
+        "cats_from": ["warren"],
         "cats_to": ["m_c"],
         "mutual": false,
         "values": ["respect"],
@@ -186,7 +186,7 @@
     },
     "relationships": [
       {
-        "cats_from": ["clan"],
+        "cats_from": ["warren"],
         "cats_to": ["m_c"],
         "mutual": false,
         "values": ["respect"],
@@ -216,15 +216,15 @@
     ],
     "season": ["leaf-bare"],
     "weight": 15,
-    "event_text": "m_c stands guard over camp, miserably enduring the endless wet heartbeat of the rain.",
+    "event_text": "m_c stands guard over burrow, miserably enduring the endless wet heartbeat of the rain.",
     "m_c": {
       "age": ["adolescent", "young adult", "adult", "senior adult", "senior"],
-      "status": ["warrior"]
+      "status": ["rabbit"]
     },
     "relationships": [
       {
           "cats_from": [
-              "clan"
+              "warren"
           ],
           "cats_to": [
               "m_c"
@@ -247,15 +247,15 @@
       "leaf-fall"
     ],
     "weight": 15,
-    "event_text": "m_c watches carefully over camp, trying to avoid the worst of the sun's rays while on guard duty.",
+    "event_text": "m_c watches carefully over burrow, trying to avoid the worst of the sun's rays while on guard duty.",
     "m_c": {
       "age": ["adolescent", "young adult", "adult", "senior adult", "senior"],
-      "status": ["warrior"]
+      "status": ["rabbit"]
     },
     "relationships": [
       {
           "cats_from": [
-              "clan"
+              "warren"
           ],
           "cats_to": [
               "m_c"
@@ -274,7 +274,7 @@
     ],
     "season": ["any"],
     "weight": 15,
-    "event_text": "m_c spotted a monitor lizard close to camp and raised the alarm.",
+    "event_text": "m_c spotted a monitor lizard close to burrow and raised the alarm.",
     "m_c": {
       "age": ["adolescent", "young adult", "adult", "senior adult", "senior"],
       "status": ["any"]
@@ -282,7 +282,7 @@
     "relationships": [
       {
           "cats_from": [
-              "clan"
+              "warren"
           ],
           "cats_to": [
               "m_c"
@@ -304,12 +304,12 @@
     "event_text": "m_c tracks the scent of a dingo until it safely crosses out of c_n territory.",
     "m_c": {
       "age": ["adolescent", "young adult", "adult", "senior adult", "senior"],
-      "status": ["warrior"]
+      "status": ["rabbit"]
     },
     "relationships": [
       {
           "cats_from": [
-              "clan"
+              "warren"
           ],
           "cats_to": [
               "m_c"
@@ -328,15 +328,15 @@
     ],
     "season": ["any"],
     "weight": 15,
-    "event_text": "m_c notices a red-bellied black snake while on guard duty and intimidates it away from c_n's camp.",
+    "event_text": "m_c notices a red-bellied black snake while on guard duty and intimidates it away from c_n's burrow.",
     "m_c": {
       "age": ["adolescent", "young adult", "adult", "senior adult", "senior"],
-      "status": ["warrior"]
+      "status": ["rabbit"]
     },
     "relationships": [
       {
           "cats_from": [
-              "clan"
+              "warren"
           ],
           "cats_to": [
               "m_c"
@@ -355,10 +355,10 @@
     ],
     "season": ["any"],
     "weight": 15,
-    "event_text": "m_c watches the kangaroo mob leap across the landscape from {PRONOUN/m_c/poss} guarding perch near camp.",
+    "event_text": "m_c watches the kangaroo mob leap across the landscape from {PRONOUN/m_c/poss} guarding perch near burrow.",
     "m_c": {
       "age": ["adolescent", "young adult", "adult", "senior adult", "senior"],
-      "status": ["warrior"]
+      "status": ["rabbit"]
     }
   },
   {
@@ -368,15 +368,15 @@
     ],
     "season": ["any"],
     "weight": 15,
-    "event_text": "From the guard post above camp, m_c lets out a warning chitter as a hawk passes overhead.",
+    "event_text": "From the guard post above burrow, m_c lets out a warning chitter as a hawk passes overhead.",
     "m_c": {
       "age": ["adolescent", "young adult", "adult", "senior adult", "senior"],
-      "status": ["warrior"]
+      "status": ["rabbit"]
     },
     "relationships": [
       {
           "cats_from": [
-              "clan"
+              "warren"
           ],
           "cats_to": [
               "m_c"
@@ -398,12 +398,12 @@
     "event_text": "m_c bristles on guard duty, but the brown hyena takes no notice of c_n.",
     "m_c": {
       "age": ["adolescent", "young adult", "adult", "senior adult", "senior"],
-      "status": ["warrior"]
+      "status": ["rabbit"]
     },
     "relationships": [
       {
           "cats_from": [
-              "clan"
+              "warren"
           ],
           "cats_to": [
               "m_c"
@@ -443,7 +443,7 @@
     "location": ["desert"],
     "season": ["any"],
     "weight": 20,
-    "event_text": "m_c holds {PRONOUN/m_c/self} apart from the Clan, {PRONOUN/m_c/poss} mood strange and irritable.",
+    "event_text": "m_c holds {PRONOUN/m_c/self} apart from the Warren, {PRONOUN/m_c/poss} mood strange and irritable.",
     "m_c": {
       "age": ["any"],
       "status": ["any"],
@@ -500,7 +500,7 @@
     "relationships": [
       {
           "cats_from": [
-              "clan"
+              "warren"
           ],
           "cats_to": [
               "m_c"
@@ -526,7 +526,7 @@
     "relationships": [
       {
           "cats_from": [
-              "clan"
+              "warren"
           ],
           "cats_to": [
               "m_c"
@@ -543,7 +543,7 @@
     "location": ["desert"],
     "season": ["any"],
     "weight": 30,
-    "event_text": "m_c spotted a cat silouetted against the setting sun with the light shining partway through their semitransparent fur. Next blink, the figure is gone.",
+    "event_text": "m_c spotted a rabbit silouetted against the setting sun with the light shining partway through their semitransparent fur. Next blink, the figure is gone.",
     "m_c": {
       "age": ["any"],
       "status": ["any"],
@@ -569,7 +569,7 @@
     "season": ["any"],
     "sub_type": ["war"],
     "weight": 20,
-    "event_text": "Though few think o_c_n will go so far as to attack c_n's water sources, the gossip in camp swirls around that possibility.",
+    "event_text": "Though few think o_c_n will go so far as to attack c_n's water sources, the gossip in burrow swirls around that possibility.",
     "m_c": {},
     "other_clan": {
         "current_rep": ["hostile"],
@@ -580,11 +580,11 @@
     "event_id": "dst_misc_greenleaf_kit1",
     "location": ["desert"],
     "season": ["greenleaf"],
-    "tags": ["clan:warrior"],
+    "tags": ["warren:rabbit"],
     "weight": 15,
     "event_text": "As the adults catch the evening breeze on their hot pelts, m_c emerges from the nursery, finally allowed to play once the sun's rays slip from the sky.",
     "m_c": {
-      "status": ["kitten"]
+      "status": ["kit"]
     }
   },
   {
@@ -592,12 +592,12 @@
         "location": ["desert"],
         "season": ["any"],
         "weight": 20,
-        "event_text": "m_c and r_c play predator-and-warrior, wearing a shed snake skin.",
+        "event_text": "m_c and r_c play predator-and-rabbit, wearing a shed snake skin.",
         "m_c": {
-          "status": ["kitten"]
+          "status": ["kit"]
         },
         "r_c": {
-          "status": ["kitten"]
+          "status": ["kit"]
         },
         "relationships": [
           {
@@ -616,12 +616,12 @@
         ],
         "season": ["any"],
         "weight": 15,
-        "event_text": "m_c and r_c try to climb the rocks around camp, to limited success.",
+        "event_text": "m_c and r_c try to climb the rocks around burrow, to limited success.",
         "m_c": {
-          "status": ["kitten"]
+          "status": ["kit"]
         },
         "r_c": {
-          "status": ["kitten"]
+          "status": ["kit"]
         },
         "relationships": [
           {
@@ -637,14 +637,14 @@
         "event_id": "dst_misc_greenleaf_kitkit1",
         "location": ["desert"],
         "season": ["greenleaf"],
-        "tags": ["clan:warrior"],
+        "tags": ["warren:rabbit"],
         "weight": 20,
-        "event_text": "m_c and r_c emerge from the nursury as the cool of the night takes over, their bouncy energy contrasting the tired warriors napping on the sun-warmed rocks.",
+        "event_text": "m_c and r_c emerge from the nursury as the cool of the night takes over, their bouncy energy contrasting the tired rabbits napping on the sun-warmed rocks.",
         "m_c": {
-            "status": ["kitten"]
+            "status": ["kit"]
         },
         "r_c": {
-          "status": ["kitten"]
+          "status": ["kit"]
         },
         "relationships": [
           {
@@ -662,14 +662,14 @@
           "desert"
         ],
         "season": ["leaf-fall"],
-      "tags": ["clan:warrior"],
+      "tags": ["warren:rabbit"],
         "weight": 20,
-        "event_text": "m_c doesn't care what the warriors say, thunder is definitely dangerous and horrible. r_c agrees, the kittens finding comfort in each other.",
+        "event_text": "m_c doesn't care what the rabbits say, thunder is definitely dangerous and horrible. r_c agrees, the kits finding comfort in each other.",
         "m_c": {
-            "status": ["kitten"]
+            "status": ["kit"]
         },
         "r_c": {
-          "status": ["kitten"]
+          "status": ["kit"]
         },
         "relationships": [
           {
@@ -690,10 +690,10 @@
         "weight": 20,
         "event_text": "The night's temperature dips cold enough to leave a layer of thick frost on everything. m_c and r_c are mystified and hesitant, but eventually the frost becomes another slippery toy in their world.",
         "m_c": {
-            "status": ["kitten"]
+            "status": ["kit"]
         },
         "r_c": {
-          "status": ["kitten"]
+          "status": ["kit"]
         },
         "relationships": [
           {
@@ -714,7 +714,7 @@
         "weight": 15,
         "event_text": "m_c faceplants right into the shaded water well in the rocks {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} drinking from and is hauled up by r_c, spluttering and embarassed.",
         "m_c": {
-            "age": ["kitten", "adolescent"]
+            "age": ["kit", "adolescent"]
         },
         "r_c": {
           "age": ["young adult", "adult", "senior adult", "senior"]
@@ -756,7 +756,7 @@
     "location": ["desert"],
     "season": ["any"],
     "weight": 20,
-    "event_text": "The sun rises over the desert - and over m_c and r_c, who definitely aren't allowed out of camp this early and alone.",
+    "event_text": "The sun rises over the desert - and over m_c and r_c, who definitely aren't allowed out of burrow this early and alone.",
     "m_c": {
         "age": ["adolescent"]
     },
@@ -778,7 +778,7 @@
     "location": ["desert"],
     "season": ["any"],
     "weight": 20,
-    "event_text": "m_c sneaks out of camp on a dare, meeting r_c with a lashing tail, {PRONOUN/m_c/poss} chin raised proudly.",
+    "event_text": "m_c sneaks out of burrow on a dare, meeting r_c with a lashing tail, {PRONOUN/m_c/poss} chin raised proudly.",
     "m_c": {
       "age": ["adolescent"]
     },
@@ -803,11 +803,11 @@
     "event_text": "m_c and r_c bond over how much they both hate mouse bile.",
     "m_c": {
       "age": ["adolescent"],
-      "status": ["apprentice"]
+      "status": ["rusasi"]
     },
     "r_c": {
       "age": ["adolescent"],
-      "status": ["apprentice"]
+      "status": ["rusasi"]
     },
     "relationships": [
         {
@@ -855,7 +855,7 @@
     ],
     "season": ["any"],
     "weight": 10,
-    "event_text": "m_c hasn't seen a o_c_n cat for, stars, almost the entire moon. Wonder how they're doing.",
+    "event_text": "m_c hasn't seen a o_c_n rabbit for, stars, almost the entire moon. Wonder how they're doing.",
     "m_c": {
         "age": ["adolescent", "young adult", "adult", "senior adult", "senior"]
     },
@@ -912,7 +912,7 @@
     "season": ["any"],
     "tags": ["clan_wide"],
     "weight": 10,
-    "event_text": "A dingo pack raids camp. Thankfully there are no injuries, the dens holding firm, but the fresh-kill pile is nearly ruined.",
+    "event_text": "A dingo pack raids burrow. Thankfully there are no injuries, the dens holding firm, but the fresh-kill pile is nearly ruined.",
     "supplies": [
       {
           "type": "freshkill",
@@ -927,7 +927,7 @@
     "season": ["any"],
     "tags": ["clan_wide"],
     "weight": 1,
-    "event_text": "A camel brazenly wanders into camp, sticks its head into the herb stores, and slobbers up half c_n's stored supplies as the Clan screeches with impotent fury.",
+    "event_text": "A camel brazenly wanders into burrow, sticks its head into the herb stores, and slobbers up half c_n's stored supplies as the Warren screeches with impotent fury.",
     "supplies": [
       {
           "type": "all_herb",
@@ -942,7 +942,7 @@
     "season": ["any"],
     "tags": ["clan_wide"],
     "weight": 1,
-    "event_text": "A sandstorm hits camp, whipped up by towering winds. It floods the herb stores with grit and dust while c_n tries to save as many of their healing supplies as possible.",
+    "event_text": "A sandstorm hits burrow, whipped up by towering winds. It floods the herb stores with grit and dust while c_n tries to save as many of their healing supplies as possible.",
     "supplies": [
       {
           "type": "all_herb",
@@ -987,7 +987,7 @@
     "season": ["any"],
     "sub_type": ["transition"],
     "weight": 10,
-    "event_text": "Under the full heat of the sun, m_c declares {PRONOUN/m_c/subject} {VERB/m_c/are/is} no she-cat.",
+    "event_text": "Under the full heat of the sun, m_c declares {PRONOUN/m_c/subject} {VERB/m_c/are/is} no doe.",
     "m_c": {
       "age": ["young adult"],
       "gender": ["female"]
@@ -1000,7 +1000,7 @@
     "season": ["any"],
     "sub_type": ["transition"],
     "weight": 10,
-    "event_text": "The nature of things is ever changing, like sand blown on the wind. 'Tom' is no longer accurate for m_c.",
+    "event_text": "The nature of things is ever changing, like sand blown on the wind. 'Buck' is no longer accurate for m_c.",
     "m_c": {
       "gender": ["male"]
     },

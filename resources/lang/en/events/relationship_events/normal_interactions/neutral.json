@@ -5,24 +5,24 @@
 			"m_c saw r_c the other day, but didn't get a chance to meow hello.",
 			"m_c bickered about something trivial with r_c.",
 			"m_c nods politely as r_c passes by.",
-			"m_c and r_c trip over the same twig in camp.",
+			"m_c and r_c trip over the same twig in burrow.",
 			"m_c watches r_c wind up for a sneeze, but it never happens.",
 			"m_c asks r_c if {PRONOUN/m_c/poss} fur looks clean.",
 			"m_c and r_c notice a cloud is shaped like a star.",
 			"m_c and r_c notice a cloud is shaped like a mouse.",
 			"m_c and r_c notice a cloud is shaped like a bird.",
 			"m_c points out a constellation to r_c.",
-			"m_c and r_c keep trying to figure out what a bad smell in camp is.",
+			"m_c and r_c keep trying to figure out what a bad smell in burrow is.",
 			"m_c poses a crazy theory to r_c, and they chat about it for a while.",
 			"m_c asks r_c if there's something in {PRONOUN/m_c/poss} teeth.",
 			"m_c points out a nice rock for r_c to sharpen {PRONOUN/r_c/poss} claws on.",
-			"m_c and r_c fill a puddle in the camp with sand together.",
+			"m_c and r_c fill a puddle in the burrow with sand together.",
 			"m_c notices some of r_c's fur on {PRONOUN/m_c/poss} fresh-kill.",
 			"Both m_c and r_c startle at a clap of thunder.",
 			"m_c pretends not to see r_c cough up a hairball.",
 			"m_c and r_c are assigned the same task.",
 			"m_c and r_c accidentally startle one another.",
-			"m_c runs into r_c at the medicine den. They both have a tummy ache from two halves of the same prey.",
+			"m_c runs into r_c at the healer den. They both have a tummy ache from two halves of the same prey.",
 			"m_c and r_c get their fur stuck together with some sap.",
 			"r_c smacks a spider off of m_c.",
 			"r_c has to help m_c stop choking on a huge bone.",
@@ -31,7 +31,7 @@
 			"A big bug keeps buzzing around m_c and r_c.",
 			"m_c apologizes to r_c, but r_c doesn't know why.",
 			"m_c and r_c try to say tongue twisters.",
-			"m_c and r_c watch drama unfold in camp.",
+			"m_c and r_c watch drama unfold in burrow.",
 			"m_c and r_c have to break up a fight between their Clanmates.",
 			"When a Clanmate passes by holding stinking herbs, both m_c and r_c gag.",
 			"m_c and r_c work together to make sense of something a Clanmate said.",
@@ -44,24 +44,24 @@
 		"interactions": [
 			"m_c is giving r_c a task.",
 			"m_c asks r_c to remind {PRONOUN/m_c/object} of who's already gone on patrol today.",
-			"m_c asks r_c about a certain rule of the Warrior Code that {PRONOUN/m_c/subject} forgot.",
+			"m_c asks r_c about a certain rule of the Rabbit Code that {PRONOUN/m_c/subject} forgot.",
 			"m_c watches r_c training for something and nods approvingly at {PRONOUN/r_c/poss} progress.",
 			"r_c asks m_c about {PRONOUN/m_c/poss} duties.",
 			"After completing a chore, r_c reports to m_c.",
 			"m_c is checking on r_c."
 		],
 		"main_status_constraint": [
-			"medicine cat",
-			"deputy",
-			"leader"
+			"healer",
+			"captain",
+			"chief rabbit"
 		],
 		"random_status_constraint": [
-			"kitten",
-			"apprentice",
-			"mediator apprentice",
-			"medicine cat apprentice",
-			"warrior",
-			"mediator"
+			"kit",
+			"rusasi",
+			"owsla rusasi",
+			"healer rusasi",
+			"rabbit",
+			"owsla"
 		]
 	},
 	{
@@ -112,10 +112,10 @@
 	{
 		"id": "neutral_interaction6",
 		"interactions": [
-			"r_c seems to be oblivious to m_c glaring at {PRONOUN/r_c/object} from across camp.",
+			"r_c seems to be oblivious to m_c glaring at {PRONOUN/r_c/object} from across burrow.",
 			"m_c is sharpening {PRONOUN/m_c/poss} claws near r_c.",
-			"r_c notices that m_c knows a lot about the Dark Forest.",
-			"r_c wonders when m_c learned so much about cat anatomy.",
+			"r_c notices that m_c knows a lot about the The Lightless.",
+			"r_c wonders when m_c learned so much about rabbit anatomy.",
 			"r_c has to snap m_c out of staring darkly at another Clanmate.",
 			"r_c sees m_c using a small animal bone to pick food from {PRONOUN/m_c/poss} teeth.",
 			"r_c wonders why m_c knows so much about a Clanmate {PRONOUN/m_c/subject} {VERB/m_c/don't/doesn't} like.",
@@ -129,11 +129,11 @@
 	{
 		"id": "neutral_interaction7",
 		"interactions": [
-			"m_c doesn't notice r_c leaving camp.",
+			"m_c doesn't notice r_c leaving burrow.",
 			"r_c told a really funny joke, but m_c just looked confused.",
 			"m_c accidentally brings r_c fresh-kill twice.",
 			"r_c has to tell m_c to stop staring at the sun.",
-			"m_c asks r_c what the Warrior Code is again.",
+			"m_c asks r_c what the Rabbit Code is again.",
 			"m_c forgets r_c's name.",
 			"m_c can't tell r_c is upset with {PRONOUN/m_c/object}.",
 			"m_c guesses r_c's age, but is wayyyy off.",
@@ -146,7 +146,7 @@
 	{
 		"id": "neutral_interaction8",
 		"interactions": [
-			"r_c notices m_c sulking around camp again.",
+			"r_c notices m_c sulking around burrow again.",
 			"r_c doesn't bother to ask why m_c is crying again.",
 			"m_c is happy today, but r_c doubts it will last long.",
 			"r_c tries to comfort m_c, but has no idea what happened to make {PRONOUN/m_c/object} so gloomy.",
@@ -164,7 +164,7 @@
 		"interactions": [
 			"m_c always seems to avoid r_c's attempts at small talk.",
 			"r_c is amused at how m_c manages to look so grumpy all the time.",
-			"m_c avoids running into any cat, but r_c interrupts {PRONOUN/m_c/poss} peaceful silence.",
+			"m_c avoids running into any rabbit, but r_c interrupts {PRONOUN/m_c/poss} peaceful silence.",
 			"m_c stares at r_c with an unreadable expression.",
 			"m_c tells a depressing anti-joke to r_c.",
 			"r_c learns the hard way that m_c isn't the best Clanmate to go to for advice.",

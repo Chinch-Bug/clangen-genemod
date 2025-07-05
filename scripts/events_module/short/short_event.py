@@ -3,7 +3,7 @@ from typing import List
 
 class ShortEvent:
     """
-    A moon event that only affects the moon it was triggered on.  Can involve two cats directly and be restricted by various constraints.
+    A moon event that only affects the moon it was triggered on.  Can involve two rabbits directly and be restricted by various constraints.
     - full documentation available on GitHub wiki
     """
 

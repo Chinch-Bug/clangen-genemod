@@ -3,7 +3,7 @@
 
 This file contains:
   The start screen,
-  The switch clan screen,
+  The switch warren screen,
   The settings screen,
   And the statistics screen.
 
@@ -24,7 +24,7 @@ import pygame_gui
 from pygame_gui.core import ObjectID
 from requests.exceptions import RequestException, Timeout
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.game_structure import image_cache
 from scripts.game_structure.audio import music_manager
 from scripts.game_structure.game_essentials import (
@@ -73,9 +73,9 @@ class StartScreen(Screens):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
             self.mute_button_pressed(event)
             screens = {
-                self.continue_button: "camp screen",
-                self.switch_clan_button: "switch clan screen",
-                self.new_clan_button: "make clan screen",
+                self.continue_button: "burrow screen",
+                self.switch_clan_button: "switch warren screen",
+                self.new_clan_button: "make warren screen",
                 self.settings_button: "settings screen",
             }
             if event.ui_element in screens and not self.error_open:
@@ -108,7 +108,7 @@ class StartScreen(Screens):
             if (
                 event.key == pygame.K_RETURN or event.key == pygame.K_SPACE
             ) and self.continue_button.is_enabled:
-                self.change_screen("camp screen")
+                self.change_screen("burrow screen")
 
     # def on_use(self):
     #     """
@@ -369,7 +369,7 @@ class StartScreen(Screens):
         self.warning_label.text_horiz_alignment = "center"
         self.warning_label.rebuild()
 
-        if game.clan is not None and game.switches["error_message"] == "":
+        if game.warren is not None and game.switches["error_message"] == "":
             self.continue_button.enable()
         else:
             self.continue_button.disable()
@@ -413,11 +413,11 @@ class StartScreen(Screens):
 
             self.error_open = True
 
-        if game.clan is not None:
-            key_copy = tuple(Cat.all_cats.keys())
+        if game.warren is not None:
+            key_copy = tuple(Rabbit.all_cats.keys())
             for x in key_copy:
-                if x not in game.clan.clan_cats:
-                    game.clan.remove_cat(x)
+                if x not in game.warren.clan_cats:
+                    game.warren.remove_cat(x)
 
         # LOAD settings
         game.load_settings()

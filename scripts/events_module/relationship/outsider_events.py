@@ -1,14 +1,14 @@
 EXILED_CATS = {
     "cat_to": [
-        "bumped into (cat) at the Clan border.",
-        "caught a glimpse of (cat) from the distance.",
+        "bumped into (rabbit) at the Warren border.",
+        "caught a glimpse of (rabbit) from the distance.",
     ],
-    "cat_from": ["was wandering near the Clan territory and met (cat)."],
-    "both": ["ran into (cat) by chance."],
+    "cat_from": ["was wandering near the Warren territory and met (rabbit)."],
+    "both": ["ran into (rabbit) by chance."],
 }
 
 OUTSIDE_CATS = {
-    "cat_to": ["is thinking about (cat)."],
-    "cat_from": ["is thinking about (cat) as they wander far from Clan territory."],
-    "both": ["wonders where (cat) is right now."],
+    "cat_to": ["is thinking about (rabbit)."],
+    "cat_from": ["is thinking about (rabbit) as they wander far from Warren territory."],
+    "both": ["wonders where (rabbit) is right now."],
 }

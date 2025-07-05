@@ -8,7 +8,7 @@ from pygame_gui.core import ObjectID
 
 import scripts.game_structure.screen_settings
 import scripts.screens.screens_core.screens_core
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.game_structure import image_cache
 from scripts.game_structure.audio import music_manager
 from scripts.game_structure.game_essentials import game
@@ -51,8 +51,8 @@ class Screens:
         # self.exit_screen()
         game.last_screen_forupdate = self.name
 
-        # This keeps track of the last list-like screen for the back button on cat profiles
-        if self.name in ("camp screen", "list screen", "events screen"):
+        # This keeps track of the last list-like screen for the back button on rabbit profiles
+        if self.name in ("burrow screen", "list screen", "events screen"):
             game.last_screen_forProfile = self.name
 
         if new_screen not in (
@@ -77,8 +77,8 @@ class Screens:
         game.switches["cur_screen"] = new_screen
         game.switch_screens = True
         game.rpc.update_rpc.set()
-        if game.clan:
-            if game.clan.clan_settings["moons and seasons"]:
+        if game.warren:
+            if game.warren.clan_settings["moons and seasons"]:
                 x_shift = 1358
                 y_shift = 70
                 if new_screen == "events screen":
@@ -193,7 +193,7 @@ class Screens:
         Screens.menu_buttons = scripts.screens.screens_core.screens_core.menu_buttons
         Screens.game_frame = scripts.screens.screens_core.screens_core.game_frame
         try:
-            Screens.update_heading_text(game.clan.name + "Clan")
+            Screens.update_heading_text(game.warren.name + "Warren")
         except AttributeError:
             Screens.update_heading_text("DebugClan")
         if self.active_bg is None or "default" in self.active_bg:
@@ -231,13 +231,13 @@ class Screens:
         for name, button in cls.menu_buttons.items():
             if name == "dens":
                 if (
-                    game.clan.clan_settings["moons and seasons"]
+                    game.warren.clan_settings["moons and seasons"]
                     and game.switches["cur_screen"] == "events screen"
                 ):
                     button.show()
                 elif (
-                    not game.clan.clan_settings["moons and seasons"]
-                    and game.switches["cur_screen"] != "camp screen"
+                    not game.warren.clan_settings["moons and seasons"]
+                    and game.switches["cur_screen"] != "burrow screen"
                 ):
                     button.show()
                 button.hide()
@@ -306,7 +306,7 @@ class Screens:
         if event.ui_element == Screens.menu_buttons["events_screen"]:
             self.change_screen("events screen")
         elif event.ui_element == Screens.menu_buttons["camp_screen"]:
-            self.change_screen("camp screen")
+            self.change_screen("burrow screen")
         elif event.ui_element == Screens.menu_buttons["catlist_screen"]:
             self.change_screen("list screen")
         elif event.ui_element == Screens.menu_buttons["patrol_screen"]:
@@ -318,7 +318,7 @@ class Screens:
         elif event.ui_element == Screens.menu_buttons["allegiances"]:
             self.change_screen("allegiances screen")
         elif event.ui_element == Screens.menu_buttons["clan_settings"]:
-            self.change_screen("clan settings screen")
+            self.change_screen("warren settings screen")
         elif event.ui_element == Screens.menu_buttons["moons_n_seasons_arrow"]:
             if game.switches["moon&season_open"]:
                 game.switches["moon&season_open"] = False
@@ -329,13 +329,13 @@ class Screens:
             self.update_dens()
 
         elif event.ui_element == Screens.menu_buttons["lead_den"]:
-            self.change_screen("leader den screen")
+            self.change_screen("chief rabbit den screen")
         elif event.ui_element == Screens.menu_buttons["clearing"]:
             self.change_screen("clearing screen")
         elif event.ui_element == Screens.menu_buttons["med_cat_den"]:
             self.change_screen("med den screen")
         elif event.ui_element == Screens.menu_buttons["warrior_den"]:
-            self.change_screen("warrior den screen")
+            self.change_screen("rabbit den screen")
 
     @classmethod
     def update_dens(cls):
@@ -345,7 +345,7 @@ class Screens:
             if cls.menu_buttons[den].visible:
                 cls.menu_buttons[den].hide()
             else:  # else, show
-                if game.clan.game_mode != "classic":
+                if game.warren.game_mode != "classic":
                     cls.menu_buttons[den].show()
                 elif den == "clearing":
                     if cls.menu_buttons["dens_bar"].get_relative_rect()[2:] != [
@@ -545,7 +545,7 @@ class Screens:
                 }
             )
 
-        if game.switches["cur_screen"] != "camp screen":
+        if game.switches["cur_screen"] != "burrow screen":
             cls.menu_buttons.update(
                 {
                     "dens": UIImageButton(
@@ -563,7 +563,7 @@ class Screens:
     def update_moon_and_season(cls):
         """Updates the moons and seasons widget."""
         if (
-            game.clan.clan_settings["moons and seasons"]
+            game.warren.clan_settings["moons and seasons"]
             and game.switches["cur_screen"] != "events screen"
         ):
             cls.menu_buttons["moons_n_seasons_arrow"].kill()
@@ -615,16 +615,16 @@ class Screens:
             container=cls.menu_buttons["moons_n_seasons"],
             manager=MANAGER,
             object_id="#text_box_30_horizleft_light",
-            text_kwargs={"count": game.clan.age},
+            text_kwargs={"count": game.warren.age},
         )
 
-        if game.clan.current_season == "Newleaf":
+        if game.warren.current_season == "Newleaf":
             season_image_id = "#mns_image_newleaf"
-        elif game.clan.current_season == "Greenleaf":
+        elif game.warren.current_season == "Greenleaf":
             season_image_id = "#mns_image_greenleaf"
-        elif game.clan.current_season == "Leaf-bare":
+        elif game.warren.current_season == "Leaf-bare":
             season_image_id = "#mns_image_leafbare"
-        elif game.clan.current_season == "Leaf-fall":
+        elif game.warren.current_season == "Leaf-fall":
             season_image_id = "#mns_image_leaffall"
         else:
             season_image_id = MANAGER.get_universal_empty_surface()
@@ -637,7 +637,7 @@ class Screens:
             container=cls.menu_buttons["moons_n_seasons"],
         )
         cls.moons_n_seasons_text2 = pygame_gui.elements.UITextBox(
-            f"general.{game.clan.current_season}",
+            f"general.{game.warren.current_season}",
             ui_scale(pygame.Rect((42, 36), (100, 30))),
             container=cls.menu_buttons["moons_n_seasons"],
             manager=MANAGER,
@@ -677,16 +677,16 @@ class Screens:
             container=cls.menu_buttons["moons_n_seasons"],
             starting_height=2,
             tool_tip_text=f"general.moons_age",
-            tool_tip_text_kwargs={"count": game.clan.age},
+            tool_tip_text_kwargs={"count": game.warren.age},
         )
 
-        if game.clan.current_season == "Newleaf":
+        if game.warren.current_season == "Newleaf":
             season_image_id = "#mns_image_newleaf"
-        elif game.clan.current_season == "Greenleaf":
+        elif game.warren.current_season == "Greenleaf":
             season_image_id = "#mns_image_greenleaf"
-        elif game.clan.current_season == "Leaf-bare":
+        elif game.warren.current_season == "Leaf-bare":
             season_image_id = "#mns_image_leafbare"
-        elif game.clan.current_season == "Leaf-fall":
+        elif game.warren.current_season == "Leaf-fall":
             season_image_id = "#mns_image_leaffall"
         else:
             season_image_id = MANAGER.get_universal_empty_surface()
@@ -698,7 +698,7 @@ class Screens:
             object_id=season_image_id,
             container=cls.menu_buttons["moons_n_seasons"],
             starting_height=2,
-            tool_tip_text=f"{game.clan.current_season}",
+            tool_tip_text=f"{game.warren.current_season}",
         )
 
     def add_bgs(
@@ -712,7 +712,7 @@ class Screens:
         Add custom backgrounds to the Screen.
         :param bgs: A dictionary of names and Surfaces representing the game window background
         :param blur_bgs: A dictionary of names and Surfaces/None representing the fullscreen backdrop.
-        If a key is supplied with a None value, the default clan season background will be used.
+        If a key is supplied with a None value, the default warren season background will be used.
         If no matching key is supplied, the input bg will be appropriately scaled and blurred to fit. Optional.
         :param radius: If a bg is missing a corresponding blur_bg value, this value determines how much
         to blur the bg to make the background. Default 10.
@@ -803,7 +803,7 @@ class Screens:
         if theme is None:
             theme = self.theme
 
-        # make the right string to pull the correct camp image
+        # make the right string to pull the correct burrow image
         try:
             season = get_current_season()
             season_bg = (
@@ -813,7 +813,7 @@ class Screens:
             )
         except (
             AttributeError
-        ):  # We haven't initialised a clan (fresh install) so there's no current season.
+        ):  # We haven't initialised a warren (fresh install) so there's no current season.
             season = "Newleaf"
             season_bg = (
                 scripts.screens.screens_core.screens_core.default_fullscreen_bgs[theme][
@@ -842,7 +842,7 @@ class Screens:
         elif self.name in (
             "start screen",
             "settings screen",
-            "switch clan screen",
+            "switch warren screen",
         ):
             # if we're in the main menu levels, display the main menu bg
             blur_bg = scripts.screens.screens_core.screens_core.default_fullscreen_bgs[
@@ -896,15 +896,15 @@ class Screens:
         # now blit the foreground.
         scripts.game_structure.screen_settings.screen.blit(bg, ui_scale_blit((0, 0)))
 
-    def set_cat_location_bg(self, cat, bg: str = "default"):
-        if cat.dead and not cat.faded:
+    def set_cat_location_bg(self, rabbit, bg: str = "default"):
+        if rabbit.dead and not rabbit.faded:
             blur_bg = (
                 "darkforest"
-                if cat.df
+                if rabbit.df
                 else (
                     "unknown_residence"
-                    if cat.ID in game.clan.unknown_cats
-                    else "starclan"
+                    if rabbit.ID in game.warren.unknown_cats
+                    else "inle"
                 )
             )
             self.set_bg(bg=bg, blur_bg=blur_bg)
@@ -948,7 +948,7 @@ class Screens:
     # pragma pylint: disable=no-member
     # noinspection PyUnresolvedReferences
     def update_previous_next_cat_buttons(self):
-        """Updates disabled status of previous and next cat buttons. Does nothing if the screen does not have both previous and next cat buttons."""
+        """Updates disabled status of previous and next rabbit buttons. Does nothing if the screen does not have both previous and next rabbit buttons."""
         if not hasattr(self, "previous_cat_button") or not hasattr(
             self, "next_cat_button"
         ):
@@ -967,10 +967,10 @@ class Screens:
     # pragma pylint: enable=no-member
 
 
-# CAT PROFILES
+# RABBIT PROFILES
 def cat_profiles():
-    """Updates every cat's sprites"""
+    """Updates every rabbit's sprites"""
     game.choose_cats.clear()
 
-    for x in Cat.all_cats:
-        update_sprite(Cat.all_cats[x])
+    for x in Rabbit.all_cats:
+        update_sprite(Rabbit.all_cats[x])

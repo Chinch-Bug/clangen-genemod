@@ -4,7 +4,7 @@ import unittest
 import i18n
 import ujson
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.game_structure.localization import (
     get_new_pronouns,
     determine_plural_pronouns,
@@ -21,11 +21,11 @@ class TestLocalisation(unittest.TestCase):
         ) as read_file:
             cls.pronouns = ujson.loads(read_file.read())["en"]
 
-        male_cat = Cat(gender="male")
-        female_cat = Cat(gender="female")
-        nonbinary_cat = Cat()
+        male_cat = Rabbit(gender="male")
+        female_cat = Rabbit(gender="female")
+        nonbinary_cat = Rabbit()
         nonbinary_cat.genderalign = "nonbinary"
-        mystery_cat = Cat(gender="potato")
+        mystery_cat = Rabbit(gender="potato")
         cls.cat_combos_two = {
             "male-male": [[male_cat, male_cat], cls.pronouns["1"]],
             "male-female": [[male_cat, female_cat], cls.pronouns["1"]],
@@ -62,29 +62,29 @@ class TestLocalisation(unittest.TestCase):
 
         for key, value in self.cat_combos_two.items():
             input = []
-            for cat in value[0]:
-                input.append(cat.pronouns[0])
-            with self.subTest("two cat combination", combination=key):
+            for rabbit in value[0]:
+                input.append(rabbit.pronouns[0])
+            with self.subTest("two rabbit combination", combination=key):
                 self.assertDictEqual(
                     determine_plural_pronouns(input),
                     value[1],
                 )
 
     def test_insert_singular_pronouns(self):
-        male_cat = Cat(gender="male")
-        female_cat = Cat(gender="female")
-        nb_cat = Cat()
+        male_cat = Rabbit(gender="male")
+        female_cat = Rabbit(gender="female")
+        nb_cat = Rabbit()
         nb_cat.genderalign = "nonbinary"
 
-        for cat in (male_cat, female_cat, nb_cat):
+        for rabbit in (male_cat, female_cat, nb_cat):
             for pronoun in ("subject", "object", "poss", "inposs", "self"):
                 with self.subTest(
-                    "singular pronouns", cat=cat.genderalign, pronoun=pronoun
+                    "singular pronouns", rabbit=rabbit.genderalign, pronoun=pronoun
                 ):
                     text = f"{{PRONOUN/m_c/{pronoun}}}"
                     self.assertEqual(
-                        event_text_adjust(Cat, text, main_cat=cat),
-                        cat.pronouns[0][pronoun],
+                        event_text_adjust(Rabbit, text, main_cat=rabbit),
+                        rabbit.pronouns[0][pronoun],
                     )
 
     def test_insert_plural_pronouns(self):
@@ -94,7 +94,7 @@ class TestLocalisation(unittest.TestCase):
             with self.subTest("plural pronouns", combination=key):
                 self.assertEqual(
                     event_text_adjust(
-                        Cat, text, main_cat=value[0][0], random_cat=value[0][1]
+                        Rabbit, text, main_cat=value[0][0], random_cat=value[0][1]
                     ),
                     value[1]["subject"],
                 )

@@ -9,7 +9,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [1, 6]
+            "rusasi": [1, 6]
         },
         "weight": 20,
         "intro_text": "app1 crouches low behind some grass, searching for the ideal prey to fall to {PRONOUN/app1/poss} deadly claws. In front of the mighty hunter, a brightly colored beetle alights on a rock.",
@@ -22,7 +22,7 @@
                 "weight": 20
             },
             {
-                "text": "Ha! app1 leaps, tail lashing furiously as the beetle buzzes under {PRONOUN/app1/poss} forepaws, claws sheathed. {PRONOUN/app1/subject/CAP} {VERB/app1/bat/bats} the bug off the rock and onto the ground, pouncing after it, jumping and twisting as {PRONOUN/app1/poss} colorful prey flits around {PRONOUN/app1/poss} head in confused, concussed beetle-behavior, unused to being an apprentice's new favorite toy.",
+                "text": "Ha! app1 leaps, tail lashing furiously as the beetle buzzes under {PRONOUN/app1/poss} forepaws, claws sheathed. {PRONOUN/app1/subject/CAP} {VERB/app1/bat/bats} the bug off the rock and onto the ground, pouncing after it, jumping and twisting as {PRONOUN/app1/poss} colorful prey flits around {PRONOUN/app1/poss} head in confused, concussed beetle-behavior, unused to being an rusasi's new favorite toy.",
                 "exp": 20,
                 "weight": 5
             },
@@ -40,12 +40,12 @@
                 "weight": 20
             },
             {
-                "text": "Slimy, yet satisfying! Curiosity completed, app1 wanders off - but has to report to the medicine cat den later, when {PRONOUN/app1/poss} stomach reminds {PRONOUN/app1/object} why cats don't eat random bugs.",
+                "text": "Slimy, yet satisfying! Curiosity completed, app1 wanders off - but has to report to the healer den later, when {PRONOUN/app1/poss} stomach reminds {PRONOUN/app1/object} why rabbits don't eat random bugs.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["stomachache"],
                         "scars": []
                     }
@@ -63,16 +63,16 @@
         "min_cats": 3,
         "max_cats": 3,
         "min_max_status": {
-            "all apprentices": [-1, -1]
+            "all rusasirahs": [-1, -1]
         },
         "weight": 60,
         "intro_text": "p_l sees {PRONOUN/p_l/poss} mates exchanging curious glances as they all pad through the grass towards p_l's promised surprise. {PRONOUN/p_l/poss/CAP} own tail waves like a jaunty reed, twitching a little in {PRONOUN/p_l/poss} excitement and scattering dewdrops whenever it hits the grass.",
-        "decline_text": "The warriors get intercepted by a hunting patrol who need extra paws, and the possibility of a romantic afternoon evaporates.",
+        "decline_text": "The rabbits get intercepted by a hunting patrol who need extra paws, and the possibility of a romantic afternoon evaporates.",
         "chance_of_success": 60,
         "relationship_constraint": ["mates_with_pl"],
         "success_outcomes": [
             {
-                "text": "As they emerge into the vast clover fields, p_l gathers both of {PRONOUN/p_l/poss} mates close, putting weight into every meow. Holding a four-leaf clover out between {PRONOUN/p_l/poss} toe beans, p_l declares that for {PRONOUN/p_l/object}, these cats, this bond - they are both p_l's luck. And p_l's heart is theirs.",
+                "text": "As they emerge into the vast clover fields, p_l gathers both of {PRONOUN/p_l/poss} mates close, putting weight into every meow. Holding a four-leaf clover out between {PRONOUN/p_l/poss} toe beans, p_l declares that for {PRONOUN/p_l/object}, these rabbits, this bond - they are both p_l's luck. And p_l's heart is theirs.",
                 "exp": 30,
                 "weight": 20,
                 "relationships": [
@@ -193,7 +193,7 @@
                     ]
                 },
                 {
-                    "text": "Everything the patrol sees exists together in a delicate balance, s_c explains. A warrior must respect all life, from the crawling ant to the leaping rabbit. Yes, even though warriors hunt and eat them. One day, as each member of c_n dies, their bodies will become the dirt, and the dirt will feed the grass, and the rabbits eat the grass. Every creature is connected in the great cycle.",
+                    "text": "Everything the patrol sees exists together in a delicate balance, s_c explains. A rabbit must respect all life, from the crawling ant to the leaping rabbit. Yes, even though rabbits hunt and eat them. One day, as each member of c_n dies, their bodies will become the dirt, and the dirt will feed the grass, and the rabbits eat the grass. Every creature is connected in the great cycle.",
                     "exp": 30,
                     "weight": 20,
                     "art": "gen_bord_story",
@@ -219,7 +219,7 @@
             ],
             "fail_outcomes": [
                 {
-                    "text": "p_l spends too long admiring the scenery and gets left behind by the rest of the patrol. {PRONOUN/p_l/subject/CAP} {VERB/p_l/catch/catches} up, huffing and puffing, and no cat is too pleased with {PRONOUN/p_l/poss} lack of attention.",
+                    "text": "p_l spends too long admiring the scenery and gets left behind by the rest of the patrol. {PRONOUN/p_l/subject/CAP} {VERB/p_l/catch/catches} up, huffing and puffing, and no rabbit is too pleased with {PRONOUN/p_l/poss} lack of attention.",
                     "exp": 0,
                     "weight": 20,
                     "art": "running_warrior2",

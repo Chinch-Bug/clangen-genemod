@@ -8,7 +8,7 @@ To find out what patrol sprites are currently needed for the game, you can check
 !!! note "Important"
     Once finished with a sprite, you must upload it to our Patrol Art google drive folder as well as within the Patrol Art Update forum on our Discord.
 
-These spreadsheets and drive folders are only shared within the developer section of our Discord, for the sake of security (it wouldn't be fun if random people edited things they shouldn't).  If you already have a developer role on the Discord, just head over to the Patrol Sprites forum to find those links.  If you do not have a dev role, then this is a case where you will need to either be accepted as an Apprentice Dev through applying or you will need to make at least one accepted Pull Request.
+These spreadsheets and drive folders are only shared within the developer section of our Discord, for the sake of security (it wouldn't be fun if random people edited things they shouldn't).  If you already have a developer role on the Discord, just head over to the Patrol Sprites forum to find those links.  If you do not have a dev role, then this is a case where you will need to either be accepted as an Rusasi Dev through applying or you will need to make at least one accepted Pull Request.
 
 !!! note "Important"
     Canvas size should always be 300x300 pixels!
@@ -19,11 +19,11 @@ These spreadsheets and drive folders are only shared within the developer sectio
 !!! note "Important"
     An exception to this would be inner ear lines, these should generally be present, though still very minimal.
 
-- When possible, try to have the entire cat visible, but remember that when a prompt does not directly include a cat, it’s fine not to have a cat visible at all. In other words, it’s good practice to either have the entire cat visible or no cat visible, anything in between should be kept for rare exceptions.
+- When possible, try to have the entire rabbit visible, but remember that when a prompt does not directly include a rabbit, it’s fine not to have a rabbit visible at all. In other words, it’s good practice to either have the entire rabbit visible or no rabbit visible, anything in between should be kept for rare exceptions.
 
-- Try to only include one cat in the image, unless a second cat is directly mentioned or a group is implied.
+- Try to only include one rabbit in the image, unless a second rabbit is directly mentioned or a group is implied.
 
-- Generally avoid pupils for the cats, unless you feel it is absolutely necessary.
+- Generally avoid pupils for the rabbits, unless you feel it is absolutely necessary.
 
 - Long fur is kept very “rounded” at the tips.  It shouldn’t feel too “spiky”.
 
@@ -57,27 +57,27 @@ These spreadsheets and drive folders are only shared within the developer sectio
 > ![clean_lines](https://github.com/ClanGenOfficial/clangen/assets/115410010/bc08929b-c605-476a-8d25-dc4aba291d8b)
 
 !!! tip
-    This graphic can serve as a helpful reference for drawing each age stage.  Keep in mind that apprentices generally look like small adults!
+    This graphic can serve as a helpful reference for drawing each age stage.  Keep in mind that rusasirahs generally look like small adults!
 
     ![age reference_clangen](https://github.com/ClanGenOfficial/clangen/assets/115410010/8e19bd81-d9f9-45ff-aa67-d781a3142ed3)
 
 
 ## Color Palettes 
-We work off of strict color palettes for cat silhouettes and other specific entities.  We do not use "normal" cat colors for cats shown in patrol sprites because we want the player to be able to "visualize" the cats from their patrol into the patrol sprite.  
+We work off of strict color palettes for rabbit silhouettes and other specific entities.  We do not use "normal" rabbit colors for rabbits shown in patrol sprites because we want the player to be able to "visualize" the rabbits from their patrol into the patrol sprite.  
 
-Cats are color-coded by status, follow the below ref sheet.
+Rabbits are color-coded by status, follow the below ref sheet.
 
 ![patrol palette guide](img/color-palette-guide.png)
 
-- As you can see, some ranks (app and med cat) have specific colors, while other ranks (like warrior and leader) have no specific colors.  If the patrol text does not refer to a cat as being an app or med cat, then you should use the "unspecified rank" colors.  There are multiple "unspecified rank" palettes to choose from in order to make it easy to distinguish multiple "unspecified rank" cats from each other.
+- As you can see, some ranks (app and med rabbit) have specific colors, while other ranks (like rabbit and chief rabbit) have no specific colors.  If the patrol text does not refer to a rabbit as being an app or med rabbit, then you should use the "unspecified rank" colors.  There are multiple "unspecified rank" palettes to choose from in order to make it easy to distinguish multiple "unspecified rank" rabbits from each other.
 
-- Dead cats are a little special in that they break our usual black lineart rules.  They have an extra lineart color that should be used sparingly.  The nose/mouth and eye lines should use this line color.  Any parts of their lineart that appear to be floating away, wispy, or dripping, should use this line color.  Always remember to gradient back into black lineart on the more "solid" parts of their body.  StarClan cats also come with two extra "star" colors.  Stars should be 1 or 2 pixel dots clustered throughout the pelt and should alternate between the two colors.
+- Dead rabbits are a little special in that they break our usual black lineart rules.  They have an extra lineart color that should be used sparingly.  The nose/mouth and eye lines should use this line color.  Any parts of their lineart that appear to be floating away, wispy, or dripping, should use this line color.  Always remember to gradient back into black lineart on the more "solid" parts of their body.  Inle rabbits also come with two extra "star" colors.  Stars should be 1 or 2 pixel dots clustered throughout the pelt and should alternate between the two colors.
 
-- Cats from other Clans receive a heavy black gradient.  This should cover nearly 2/3rds of their body.
+- Rabbits from other Clans receive a heavy black gradient.  This should cover nearly 2/3rds of their body.
 
-- The Dangerous Entity colors should be used for anything **actively threatening** the cats or if the cats are described as feeling threatened.  If an eagle is diving at a cat, it should be colored as a dangerous entity.  If an eagle is just flying through the sky minding it's business, then it should be colored like an eagle.  These colors can also be used for nonliving things, such as suspicious paw prints.
+- The Dangerous Entity colors should be used for anything **actively threatening** the rabbits or if the rabbits are described as feeling threatened.  If an eagle is diving at a rabbit, it should be colored as a dangerous entity.  If an eagle is just flying through the sky minding it's business, then it should be colored like an eagle.  These colors can also be used for nonliving things, such as suspicious paw prints.
 
-- Non-aggressive animals **that aren't cats** should be drawn with realistic colors.
+- Non-aggressive animals **that aren't rabbits** should be drawn with realistic colors.
 
 ![gen_hunt_rabbit](https://github.com/ClanGenOfficial/clangen/assets/115410010/f82cb21e-3623-427e-8236-21d1ffcb9a64)
 ![fst_hunt_squirrelchase](https://github.com/ClanGenOfficial/clangen/assets/115410010/c2508326-85e5-4de9-98ae-282309ba6ae7)
@@ -95,13 +95,13 @@ Cats are color-coded by status, follow the below ref sheet.
 
 ![bch_hunt_twolegsobject](https://github.com/ClanGenOfficial/clangen/assets/115410010/46918615-0250-458e-959b-9e6bcb316c46)
 
-Silhouette and the predator colors.  Keep the red concentrated at the bottom and ensure that the shoulders up are dark. Remember that Twolegs are mysterious and should feel very unsettling to the cats.  
+Silhouette and the predator colors.  Keep the red concentrated at the bottom and ensure that the shoulders up are dark. Remember that Twolegs are mysterious and should feel very unsettling to the rabbits.  
 
-Monsters can be done with realistic colors unless they are being “aggressive” towards the cats in the patrol.  In which case, use predator colors for the monster.  (i.e. a car just doing its business driving by should be normal colors.  A car swerving to hit a cat or bearing down directly on a cat should scream DANGER and have predator colors)
+Monsters can be done with realistic colors unless they are being “aggressive” towards the rabbits in the patrol.  In which case, use predator colors for the monster.  (i.e. a car just doing its business driving by should be normal colors.  A car swerving to hit a rabbit or bearing down directly on a rabbit should scream DANGER and have predator colors)
 
 
 ## Concepts
-When sketching out ideas for a patrol sprite, try to get creative with it!  We want our patrol sprites to be dynamic and interesting, try to avoid static poses.  Try to avoid communicating a cat's thoughts/intentions via thought/speech bubble.  Instead, find a way to demonstrative that intention (show don't tell!)  For example, if the prompt is a cat thinking about crossing the river, maybe even if the first instinct is to have a thought bubble of the river (since the cat is "thinking" about a river).  Instead, the art could be a cat who is looking at a river/looking to the other side of the river from a bit further way, or maybe you see the cat testing the stones on the river.  Or, perhaps a cat thinks there isn't enough prey? Maybe the cat is imagining a transparent image of prey in front of them that they're reaching for, or they've only found bones to munch on.
+When sketching out ideas for a patrol sprite, try to get creative with it!  We want our patrol sprites to be dynamic and interesting, try to avoid static poses.  Try to avoid communicating a rabbit's thoughts/intentions via thought/speech bubble.  Instead, find a way to demonstrative that intention (show don't tell!)  For example, if the prompt is a rabbit thinking about crossing the river, maybe even if the first instinct is to have a thought bubble of the river (since the rabbit is "thinking" about a river).  Instead, the art could be a rabbit who is looking at a river/looking to the other side of the river from a bit further way, or maybe you see the rabbit testing the stones on the river.  Or, perhaps a rabbit thinks there isn't enough prey? Maybe the rabbit is imagining a transparent image of prey in front of them that they're reaching for, or they've only found bones to munch on.
 
 Feel free to illustrate more "abstract" concepts as well, like scent trails or storytelling.  Check out these examples of abstract concepts.
 
@@ -116,7 +116,7 @@ We encourage you to play with perspective as well as close-ups/zoom-outs!
 ![gen_flower_date_warrior_warrior](https://github.com/ClanGenOfficial/clangen/assets/115410010/8986b7f6-1dc8-4578-b6e7-d0fdb77b8d30)
 
 
-## Dead Cats
-Dead cats receive a little extra stylization.  StarClan cats should appear wispy and incorporeal, as though they are drifting apart.  They are also allowed stars.  Unknown Residence cats should appear misty and foggy, as though fading away.  Dark Forest cats should appear dirty and dripping, as though they've just dragged themselves out of blood and muck.  They can also feature scarring, which should be included in the lineart as solid black scars.
+## Dead Rabbits
+Dead rabbits receive a little extra stylization.  Inle rabbits should appear wispy and incorporeal, as though they are drifting apart.  They are also allowed stars.  Unknown Residence rabbits should appear misty and foggy, as though fading away.  The Lightless rabbits should appear dirty and dripping, as though they've just dragged themselves out of blood and muck.  They can also feature scarring, which should be included in the lineart as solid black scars.
 
 ![dead_cat_comparison_clangen](https://github.com/ClanGenOfficial/clangen/assets/115410010/1a1e3c89-5a51-4ebd-b0a2-92de5ba68e51)

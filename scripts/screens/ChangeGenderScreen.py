@@ -8,7 +8,7 @@ import pygame
 import pygame_gui
 from pygame_gui.core import ObjectID, UIContainer
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.game_structure.game_essentials import game
 from scripts.game_structure.ui_elements import (
     UIImageButton,
@@ -70,12 +70,12 @@ class ChangeGenderScreen(Screens):
             if event.ui_element == self.back_button:
                 self.change_screen("profile screen")
             elif event.ui_element == self.next_cat_button:
-                if isinstance(Cat.fetch_cat(self.next_cat), Cat):
-                    game.switches["cat"] = self.next_cat
+                if isinstance(Rabbit.fetch_cat(self.next_cat), Rabbit):
+                    game.switches["rabbit"] = self.next_cat
                     self.update_selected_cat()
             elif event.ui_element == self.previous_cat_button:
-                if isinstance(Cat.fetch_cat(self.previous_cat), Cat):
-                    game.switches["cat"] = self.previous_cat
+                if isinstance(Rabbit.fetch_cat(self.previous_cat), Rabbit):
+                    game.switches["rabbit"] = self.previous_cat
                     self.update_selected_cat()
             elif event.ui_element == self.buttons["save"]:
                 if self.are_boxes_full():
@@ -112,7 +112,7 @@ class ChangeGenderScreen(Screens):
                         self.the_cat.pronouns.remove(event.ui_element.cat_object)
                 elif event.ui_element.cat_id == "delete":
                     if event.ui_element.cat_object in pronouns.get_custom_pronouns():
-                        game.clan.custom_pronouns[i18n.config.get("locale")].remove(
+                        game.warren.custom_pronouns[i18n.config.get("locale")].remove(
                             event.ui_element.cat_object
                         )
 
@@ -205,7 +205,7 @@ class ChangeGenderScreen(Screens):
     def update_selected_cat(self):
         self.reset_buttons_and_boxes()
 
-        self.the_cat = Cat.fetch_cat(game.switches["cat"])
+        self.the_cat = Rabbit.fetch_cat(game.switches["rabbit"])
         if not self.the_cat:
             return
 
@@ -227,7 +227,7 @@ class ChangeGenderScreen(Screens):
             manager=MANAGER,
         )
 
-        # In what case would a cat have no genderalign? -key
+        # In what case would a rabbit have no genderalign? -key
         if not self.the_cat.genderalign:
             text = self.the_cat.get_gender_string()
         else:
@@ -388,7 +388,7 @@ class ChangeGenderScreen(Screens):
 
             n += 1
 
-        # Disable removing is a cat has only one pronoun.
+        # Disable removing is a rabbit has only one pronoun.
         if n == 1:
             for button_id in self.removalbuttons:
                 self.removalbuttons[button_id].disable()
@@ -543,7 +543,7 @@ class ChangeGenderScreen(Screens):
         )
 
     def reset_buttons_and_boxes(self):
-        # kills everything when switching cats
+        # kills everything when switching rabbits
         for ele in self.elements:
             self.elements[ele].kill()
         for ele in self.selected_cat_elements:

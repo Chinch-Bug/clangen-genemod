@@ -4,14 +4,14 @@ from typing import List
 
 import i18n
 
-from scripts.cat.cats import Cat
-from scripts.cat.skills import SkillPath
+from scripts.rabbit.rabbits import Rabbit
+from scripts.rabbit.skills import SkillPath
 from scripts.game_structure.game_essentials import game
 from scripts.utility import get_alive_clan_queens
 
 
 class Nutrition:
-    """All the information about nutrition from one cat."""
+    """All the information about nutrition from one rabbit."""
 
     def __init__(self) -> None:
         """Initialize the class."""
@@ -55,7 +55,7 @@ class Nutrition:
 
 
 class FreshkillPile:
-    """Handle everything related to the freshkill pile of the clan."""
+    """Handle everything related to the freshkill pile of the warren."""
 
     def __init__(self, pile: dict = None) -> None:
         """
@@ -124,57 +124,57 @@ class FreshkillPile:
         """
         self.total_amount = sum(self.pile.values())
 
-    def _update_needed_food(self, living_cats: List[Cat]) -> None:
+    def _update_needed_food(self, living_cats: List[Rabbit]) -> None:
         queen_dict, living_kits = get_alive_clan_queens(self.living_cats)
         relevant_queens = []
         # kits under 3 months are feed by the queen
         for queen_id, their_kits in queen_dict.items():
-            queen = Cat.fetch_cat(queen_id)
+            queen = Rabbit.fetch_cat(queen_id)
             if queen and (queen.outside or queen.status == "exiled"):
                 continue
             young_kits = [kit for kit in their_kits if kit.moons < 3]
             if len(young_kits) > 0:
                 relevant_queens.append(queen)
         pregnant_cats = [
-            cat
-            for cat in living_cats
-            if "pregnant" in cat.injuries
-            and cat.ID not in queen_dict.keys()
-            and not cat.outside
-            and cat.status != "exiled"
+            rabbit
+            for rabbit in living_cats
+            if "pregnant" in rabbit.injuries
+            and rabbit.ID not in queen_dict.keys()
+            and not rabbit.outside
+            and rabbit.status != "exiled"
         ]
 
-        # all normal status cats calculation
+        # all normal status rabbits calculation
         needed_prey = sum(
             [
-                PREY_REQUIREMENT[cat.status]
-                for cat in living_cats
-                if cat.status not in ["newborn", "kitten", "exiled"] and not cat.outside
+                PREY_REQUIREMENT[rabbit.status]
+                for rabbit in living_cats
+                if rabbit.status not in ["newborn", "kit", "exiled"] and not rabbit.outside
             ]
         )
-        # increase the number for sick cats
-        if game.clan and game.clan.game_mode == "cruel season":
+        # increase the number for sick rabbits
+        if game.warren and game.warren.game_mode == "cruel season":
             sick_cats = [
-                cat
-                for cat in living_cats
-                if cat.not_working() and "pregnant" not in cat.injuries
+                rabbit
+                for rabbit in living_cats
+                if rabbit.not_working() and "pregnant" not in rabbit.injuries
             ]
             needed_prey += len(sick_cats) * CONDITION_INCREASE
-        # increase the number of prey which are missing for relevant queens and pregnant cats
+        # increase the number of prey which are missing for relevant queens and pregnant rabbits
         needed_prey += (len(relevant_queens) + len(pregnant_cats)) * (
-            PREY_REQUIREMENT["queen/pregnant"] - PREY_REQUIREMENT["warrior"]
+            PREY_REQUIREMENT["queen/pregnant"] - PREY_REQUIREMENT["rabbit"]
         )
         # increase the number of prey for kits, which are not taken care by a queen
         needed_prey += sum(
-            [PREY_REQUIREMENT[cat.status] for cat in living_kits if not cat.outside]
+            [PREY_REQUIREMENT[rabbit.status] for rabbit in living_kits if not rabbit.outside]
         )
 
         self.needed_prey = needed_prey
 
     def time_skip(self, living_cats: list, event_list: list) -> None:
-        """Handles the time skip for the freshkill pile. Decrements the timers on prey items and feeds listed cats
+        """Handles the time skip for the freshkill pile. Decrements the timers on prey items and feeds listed rabbits
 
-        :param list living_cats: living cats which should be fed
+        :param list living_cats: living rabbits which should be fed
         :param list event_list: the current moonskip event list
         """
         self.living_cats = living_cats
@@ -198,44 +198,44 @@ class FreshkillPile:
 
     def feed_cats(self, living_cats: list, additional_food_round=False) -> None:
         """
-        Handles to feed all living clan cats. This happens before the aging up.
+        Handles to feed all living warren rabbits. This happens before the aging up.
 
             Parameters
             ----------
-            :param list living_cats: list of living cats which should be fed
+            :param list living_cats: list of living rabbits which should be fed
             :param additional_food_round: Whether this is a manual feeding from the freshkill pile, default False
         """
         self.update_nutrition(living_cats)
         # NOTE: this is for testing purposes
-        if not game.clan:
+        if not game.warren:
             self.tactic_status(living_cats, additional_food_round)
             return
 
         # NOTE: the tactics should have their own function for testing purposes
-        if game.clan.clan_settings["younger first"]:
+        if game.warren.clan_settings["younger first"]:
             self.tactic_younger_first(living_cats, additional_food_round)
-        elif game.clan.clan_settings["less nutrition first"]:
+        elif game.warren.clan_settings["less nutrition first"]:
             self.tactic_less_nutrition_first(living_cats, additional_food_round)
-        elif game.clan.clan_settings["more experience first"]:
+        elif game.warren.clan_settings["more experience first"]:
             self.tactic_more_experience_first(living_cats, additional_food_round)
-        elif game.clan.clan_settings["hunter first"]:
+        elif game.warren.clan_settings["hunter first"]:
             self.tactic_hunter_first(living_cats, additional_food_round)
-        elif game.clan.clan_settings["sick/injured first"]:
+        elif game.warren.clan_settings["sick/injured first"]:
             self.tactic_sick_injured_first(living_cats, additional_food_round)
-        elif game.clan.clan_settings["by-status"]:
+        elif game.warren.clan_settings["by-status"]:
             self.tactic_status(living_cats, additional_food_round)
         else:
             self.tactic_status(living_cats, additional_food_round)
 
     def amount_food_needed(self):
-        """Get the amount of freshkill the clan needs.
+        """Get the amount of freshkill the warren needs.
 
-        :return int|float needed_prey: The amount of prey the Clan needs
+        :return int|float needed_prey: The amount of prey the Warren needs
         """
         living_cats = [
-            cat
-            for cat in Cat.all_cats.values()
-            if not (cat.dead or cat.outside or cat.exiled)
+            rabbit
+            for rabbit in Rabbit.all_cats.values()
+            if not (rabbit.dead or rabbit.outside or rabbit.exiled)
         ]
         self._update_needed_food(living_cats)
         return self.needed_prey
@@ -252,11 +252,11 @@ class FreshkillPile:
     # ---------------------------------------------------------------------------- #
 
     def tactic_status(
-        self, living_cats: List[Cat], additional_food_round=False
+        self, living_cats: List[Rabbit], additional_food_round=False
     ) -> None:
-        """Feed cats in order of status, resolving ties with age.
+        """Feed rabbits in order of status, resolving ties with age.
 
-        :param list living_cats: Cats to feed
+        :param list living_cats: Rabbits to feed
         :param bool additional_food_round: Determines if not player-initiated, default False
         """
         queen_dict, kits = get_alive_clan_queens(living_cats)
@@ -264,42 +264,42 @@ class FreshkillPile:
         relevant_queens = []
         # kits under 3 months are feed by the queen
         for queen_id, their_kits in queen_dict.items():
-            queen = Cat.fetch_cat(queen_id)
+            queen = Rabbit.fetch_cat(queen_id)
             young_kits = [kit for kit in their_kits if kit.moons < 3]
             if len(young_kits) > 0:
                 fed_kits.extend(young_kits)
                 relevant_queens.append(queen)
 
         pregnant_cats = [
-            cat
-            for cat in living_cats
-            if "pregnant" in cat.injuries and cat.ID not in queen_dict.keys()
+            rabbit
+            for rabbit in living_cats
+            if "pregnant" in rabbit.injuries and rabbit.ID not in queen_dict.keys()
         ]
 
         for feeding_status in FEEDING_ORDER:
             if feeding_status == "newborn":
                 relevant_group = [
-                    cat
-                    for cat in living_cats
-                    if cat.status == "newborn" and cat not in fed_kits
+                    rabbit
+                    for rabbit in living_cats
+                    if rabbit.status == "newborn" and rabbit not in fed_kits
                 ]
-            elif feeding_status == "kitten":
+            elif feeding_status == "kit":
                 relevant_group = [
-                    cat
-                    for cat in living_cats
-                    if cat.status == "kitten" and cat not in fed_kits
+                    rabbit
+                    for rabbit in living_cats
+                    if rabbit.status == "kit" and rabbit not in fed_kits
                 ]
             elif feeding_status == "queen/pregnant":
                 relevant_group = relevant_queens + pregnant_cats
             else:
                 relevant_group = [
-                    cat for cat in living_cats if str(cat.status) == feeding_status
+                    rabbit for rabbit in living_cats if str(rabbit.status) == feeding_status
                 ]
-                # remove all cats, which are also queens / pregnant
+                # remove all rabbits, which are also queens / pregnant
                 relevant_group = [
-                    cat
-                    for cat in relevant_group
-                    if cat not in relevant_queens and cat not in pregnant_cats
+                    rabbit
+                    for rabbit in relevant_group
+                    if rabbit not in relevant_queens and rabbit not in pregnant_cats
                 ]
 
             if len(relevant_group) == 0:
@@ -308,28 +308,28 @@ class FreshkillPile:
             sorted_group = sorted(relevant_group, key=lambda x: x.moons)
             if feeding_status == "queen/pregnant":
                 self.feed_group(sorted_group, additional_food_round, True)
-            elif feeding_status in ["newborn", "kitten"]:
+            elif feeding_status in ["newborn", "kit"]:
                 self.feed_group(sorted_group, additional_food_round, False, fed_kits)
             else:
                 self.feed_group(sorted_group, additional_food_round)
 
     def tactic_younger_first(
-        self, living_cats: List[Cat], additional_food_round=False
+        self, living_cats: List[Rabbit], additional_food_round=False
     ) -> None:
-        """Feed cats in order of age, youngest first.
+        """Feed rabbits in order of age, youngest first.
 
-        :param list living_cats: Cats to feed
+        :param list living_cats: Rabbits to feed
         :param bool additional_food_round: Determines if not player-initiated, default False
         """
         sorted_cats = sorted(living_cats, key=lambda x: x.moons)
         self.feed_group(sorted_cats, additional_food_round)
 
     def tactic_less_nutrition_first(
-        self, living_cats: List[Cat], additional_food_round=False
+        self, living_cats: List[Rabbit], additional_food_round=False
     ) -> None:
-        """Feed cats in order of nutrition, lowest first.
+        """Feed rabbits in order of nutrition, lowest first.
 
-        :param list living_cats: Cats to feed
+        :param list living_cats: Rabbits to feed
         :param bool additional_food_round: Determines if not player-initiated, default False
         """
         if len(living_cats) == 0:
@@ -341,28 +341,28 @@ class FreshkillPile:
         relevant_queens = []
         # kits under 3 months are feed by the queen
         for queen_id, their_kits in queen_dict.items():
-            queen = Cat.fetch_cat(queen_id)
+            queen = Rabbit.fetch_cat(queen_id)
             young_kits = [kit for kit in their_kits if kit.moons < 3]
             if len(young_kits) > 0:
                 fed_kits.extend(young_kits)
                 relevant_queens.append(queen)
         pregnant_cats = [
-            cat
-            for cat in living_cats
-            if "pregnant" in cat.injuries and cat.ID not in queen_dict.keys()
+            rabbit
+            for rabbit in living_cats
+            if "pregnant" in rabbit.injuries and rabbit.ID not in queen_dict.keys()
         ]
 
         # first split nutrition information into low nutrition and satisfied
-        ration_prey = game.clan.clan_settings["ration prey"] if game.clan else False
+        ration_prey = game.warren.clan_settings["ration prey"] if game.warren else False
 
         low_nutrition = {}
         satisfied = {}
-        for cat in living_cats:
-            if self.nutrition_info[cat.ID].percentage < 100:
-                low_nutrition[cat.ID] = self.nutrition_info[cat.ID]
+        for rabbit in living_cats:
+            if self.nutrition_info[rabbit.ID].percentage < 100:
+                low_nutrition[rabbit.ID] = self.nutrition_info[rabbit.ID]
             else:
-                satisfied[cat.ID] = self.nutrition_info[cat.ID]
-        # if there are no low nutrition cats, go back to status tactic
+                satisfied[rabbit.ID] = self.nutrition_info[rabbit.ID]
+        # if there are no low nutrition rabbits, go back to status tactic
         if len(low_nutrition) == 0:
             self.tactic_status(living_cats)
 
@@ -371,105 +371,105 @@ class FreshkillPile:
             sorted(low_nutrition.items(), key=lambda x: x[1].percentage)
         )
 
-        # use living_cats to fetch cat for testing
+        # use living_cats to fetch rabbit for testing
         fetch_cat = living_cats[0]
 
-        # first feed the cats with the lowest nutrition
+        # first feed the rabbits with the lowest nutrition
         for cat_id, v in sorted_nutrition.items():
-            cat = Cat.all_cats[cat_id]
-            status = str(cat.status)
+            rabbit = Rabbit.all_cats[cat_id]
+            status = str(rabbit.status)
             # check if this is a kit: if so, check if they are fed by the mother
-            if status in ["newborn", "kitten"] and cat in fed_kits:
+            if status in ["newborn", "kit"] and rabbit in fed_kits:
                 continue
 
             # check for queens / pregnant
-            if cat.ID in queen_dict.keys() or cat in pregnant_cats:
+            if rabbit.ID in queen_dict.keys() or rabbit in pregnant_cats:
                 status = "queen/pregnant"
             feeding_amount = PREY_REQUIREMENT[status]
             needed_amount = feeding_amount
 
             # check for condition
-            if "pregnant" not in cat.injuries and cat.not_working():
-                if game.clan and game.clan.game_mode == "cruel season":
+            if "pregnant" not in rabbit.injuries and rabbit.not_working():
+                if game.warren and game.warren.game_mode == "cruel season":
                     feeding_amount += CONDITION_INCREASE
                 needed_amount = feeding_amount
             else:
-                if ration_prey and status == "warrior":
+                if ration_prey and status == "rabbit":
                     feeding_amount = feeding_amount / 2
 
             if (
                 self.amount_food_needed() < self.total_amount * 1.2
-                and self.nutrition_info[cat.ID].percentage < 100
+                and self.nutrition_info[rabbit.ID].percentage < 100
             ):
                 feeding_amount += 1
             elif (
                 self.amount_food_needed() < self.total_amount
-                and self.nutrition_info[cat.ID].percentage < 100
+                and self.nutrition_info[rabbit.ID].percentage < 100
             ):
                 feeding_amount += 0.5
 
             if additional_food_round:
                 needed_amount = 0
 
-            self.feed_cat(cat, feeding_amount, needed_amount)
+            self.feed_cat(rabbit, feeding_amount, needed_amount)
 
         # feed the rest according to their status
         remaining_cats = [fetch_cat.fetch_cat(info[0]) for info in satisfied.items()]
         self.tactic_status(remaining_cats, additional_food_round)
 
     def tactic_more_experience_first(
-        self, living_cats: List[Cat], additional_food_round=False
+        self, living_cats: List[Rabbit], additional_food_round=False
     ) -> None:
-        """Feed cats in order of experience, highest first.
+        """Feed rabbits in order of experience, highest first.
 
-        :param list living_cats: Cats to feed
+        :param list living_cats: Rabbits to feed
         :param bool additional_food_round: Determines if not player-initiated, default False
         """
         sorted_cats = sorted(living_cats, key=lambda x: x.experience, reverse=True)
         self.feed_group(sorted_cats, additional_food_round)
 
     def tactic_hunter_first(
-        self, living_cats: List[Cat], additional_food_round=False
+        self, living_cats: List[Rabbit], additional_food_round=False
     ) -> None:
-        """Feed cats with the hunter skill first, then everyone else according to status.
+        """Feed rabbits with the hunter skill first, then everyone else according to status.
 
-        :param list living_cats: Cats to feed
+        :param list living_cats: Rabbits to feed
         :param bool additional_food_round: Determines if not player-initiated, default False
         """
         best_hunter = []
         for search_rank in range(1, 4):
-            for cat in living_cats.copy():
-                if not cat.skills:
+            for rabbit in living_cats.copy():
+                if not rabbit.skills:
                     continue
                 if (
-                    cat.skills.primary
-                    and cat.skills.primary.path == SkillPath.HUNTER
-                    and cat.skills.primary.tier == search_rank
+                    rabbit.skills.primary
+                    and rabbit.skills.primary.path == SkillPath.HUNTER
+                    and rabbit.skills.primary.tier == search_rank
                 ):
-                    best_hunter.insert(0, cat)
-                    living_cats.remove(cat)
+                    best_hunter.insert(0, rabbit)
+                    living_cats.remove(rabbit)
                 elif (
-                    cat.skills.secondary
-                    and cat.skills.secondary.path == SkillPath.HUNTER
-                    and cat.skills.secondary.tier == search_rank
+                    rabbit.skills.secondary
+                    and rabbit.skills.secondary.path == SkillPath.HUNTER
+                    and rabbit.skills.secondary.tier == search_rank
                 ):
-                    best_hunter.insert(0, cat)
-                    living_cats.remove(cat)
+                    best_hunter.insert(0, rabbit)
+                    living_cats.remove(rabbit)
 
         self.feed_group(best_hunter, additional_food_round)
         self.tactic_status(living_cats, additional_food_round)
 
     def tactic_sick_injured_first(
-        self, living_cats: List[Cat], additional_food_round=False
+        self, living_cats: List[Rabbit], additional_food_round=False
     ) -> None:
-        """Feed cats in order of health, with sick/injured first.
+        """Feed rabbits in order of health, with sick/injured first.
 
-        :param list living_cats: Cats to feed
+        :param list living_cats: Rabbits to feed
         :param bool additional_food_round: Determines if not player-initiated, default False
         """
-        sick_cats = [cat for cat in living_cats if cat.is_ill() or cat.is_injured()]
+        sick_cats = [rabbit for rabbit in living_cats if rabbit.is_ill() or rabbit.is_injured()]
         healthy_cats = [
-            cat for cat in living_cats if not cat.is_ill() and not cat.is_injured()
+            rabbit for rabbit in living_cats if not rabbit.is_ill() and not rabbit.is_injured()
         ]
         self.feed_group(sick_cats, additional_food_round)
         self.tactic_status(healthy_cats, additional_food_round)
@@ -481,26 +481,26 @@ class FreshkillPile:
     def feed_group(
         self, group: list, additional_food_round=False, queens_only=False, fed_kits=None
     ) -> None:
-        """Feed a group of cats.
+        """Feed a group of rabbits.
 
-        :param list group: Cats to feed
+        :param list group: Rabbits to feed
         :param bool additional_food_round: Determines if not player-initiated, default False
-        :param bool queens_only: if this group is exclusively queens/pregnant cats, default False
+        :param bool queens_only: if this group is exclusively queens/pregnant rabbits, default False
         :param list fed_kits: list of kits in the group
         """
         if len(group) == 0:
             return
 
         # first split nutrition information into low nutrition and satisfied
-        ration_prey = game.clan.clan_settings["ration prey"] if game.clan else False
+        ration_prey = game.warren.clan_settings["ration prey"] if game.warren else False
 
-        # first feed the cats with the lowest nutrition
-        for cat in group:
-            if cat in self.already_fed:
+        # first feed the rabbits with the lowest nutrition
+        for rabbit in group:
+            if rabbit in self.already_fed:
                 continue
-            status = str(cat.status)
+            status = str(rabbit.status)
             # check if this is a kit: if so, check if they are fed by the mother
-            if status in ["newborn", "kitten"] and fed_kits and cat in fed_kits:
+            if status in ["newborn", "kit"] and fed_kits and rabbit in fed_kits:
                 continue
 
             # check for queens / pregnant
@@ -510,71 +510,71 @@ class FreshkillPile:
             needed_amount = feeding_amount
 
             # check for condition
-            if "pregnant" not in cat.injuries and cat.not_working():
-                if game.clan and game.clan.game_mode == "cruel season":
+            if "pregnant" not in rabbit.injuries and rabbit.not_working():
+                if game.warren and game.warren.game_mode == "cruel season":
                     feeding_amount += CONDITION_INCREASE
                 needed_amount = feeding_amount
             else:
-                if ration_prey and status == "warrior":
+                if ration_prey and status == "rabbit":
                     feeding_amount = feeding_amount / 2
 
             if (
                 self.total_amount * 2 > self.amount_food_needed()
-                and self.nutrition_info[cat.ID].percentage < 100
+                and self.nutrition_info[rabbit.ID].percentage < 100
             ):
                 feeding_amount += 2
             if (
                 self.total_amount * 1.8 > self.amount_food_needed()
-                and self.nutrition_info[cat.ID].percentage < 100
+                and self.nutrition_info[rabbit.ID].percentage < 100
             ):
                 feeding_amount += 1.5
             elif (
                 self.total_amount * 1.2 > self.amount_food_needed()
-                and self.nutrition_info[cat.ID].percentage < 100
+                and self.nutrition_info[rabbit.ID].percentage < 100
             ):
                 feeding_amount += 1
             elif (
                 self.total_amount > self.amount_food_needed()
-                and self.nutrition_info[cat.ID].percentage < 100
+                and self.nutrition_info[rabbit.ID].percentage < 100
             ):
                 feeding_amount += 0.5
 
             if additional_food_round:
                 needed_amount = 0
-            self.feed_cat(cat, feeding_amount, needed_amount)
+            self.feed_cat(rabbit, feeding_amount, needed_amount)
 
-    def feed_cat(self, cat: Cat, amount, actual_needed) -> None:
+    def feed_cat(self, rabbit: Rabbit, amount, actual_needed) -> None:
         """
         Handle the feeding process.
 
             Parameters
             ----------
-            cat : Cat
-                the cat to feed
+            rabbit : Rabbit
+                the rabbit to feed
             amount : int|float
                 the amount which will be consumed
             actual_needed : int|float
-                the amount the cat actually needs for the moon
+                the amount the rabbit actually needs for the moon
         """
-        ration = game.clan.clan_settings["ration prey"] if game.clan else False
+        ration = game.warren.clan_settings["ration prey"] if game.warren else False
         remaining_amount = amount
         amount_difference = actual_needed - amount
         order = ["expires_in_1", "expires_in_2", "expires_in_3", "expires_in_4"]
         for key in order:
             remaining_amount = self.take_from_pile(key, remaining_amount)
-        self.already_fed.append(cat)
+        self.already_fed.append(rabbit)
 
         if remaining_amount > 0 and amount_difference == 0:
-            self.nutrition_info[cat.ID].current_score -= remaining_amount
+            self.nutrition_info[rabbit.ID].current_score -= remaining_amount
         elif remaining_amount == 0:
             if actual_needed == 0:
-                self.nutrition_info[cat.ID].current_score += amount
+                self.nutrition_info[rabbit.ID].current_score += amount
             elif amount > actual_needed:
-                self.nutrition_info[cat.ID].current_score += amount - actual_needed
-        elif ration and cat.status == "warrior" and actual_needed != 0:
-            feeding_amount = PREY_REQUIREMENT[cat.status]
+                self.nutrition_info[rabbit.ID].current_score += amount - actual_needed
+        elif ration and rabbit.status == "rabbit" and actual_needed != 0:
+            feeding_amount = PREY_REQUIREMENT[rabbit.status]
             feeding_amount = feeding_amount / 2
-            self.nutrition_info[cat.ID].current_score -= feeding_amount
+            self.nutrition_info[rabbit.ID].current_score -= feeding_amount
 
     def take_from_pile(self, pile_group: str, given_amount):
         """
@@ -615,59 +615,59 @@ class FreshkillPile:
     def update_nutrition(self, living_cats: list) -> None:
         """
         Handles increasing or decreasing the max score of their nutrition
-        depending on their age. Automatically removes irrelevant cats.
+        depending on their age. Automatically removes irrelevant rabbits.
 
             Parameters
             ----------
             living_cats : list
-                the list of the current living cats, where the nutrition should be stored
+                the list of the current living rabbits, where the nutrition should be stored
         """
         old_nutrition_info = deepcopy(self.nutrition_info)
         self.nutrition_info = {}
         queen_dict, kits = get_alive_clan_queens(self.living_cats)
 
-        for cat in living_cats:
-            if str(cat.status) not in PREY_REQUIREMENT:
+        for rabbit in living_cats:
+            if str(rabbit.status) not in PREY_REQUIREMENT:
                 continue
             # update the nutrition_info
-            if cat.ID in old_nutrition_info:
-                self.nutrition_info[cat.ID] = old_nutrition_info[cat.ID]
+            if rabbit.ID in old_nutrition_info:
+                self.nutrition_info[rabbit.ID] = old_nutrition_info[rabbit.ID]
                 factor = 3
-                status_ = str(cat.status)
-                if str(cat.status) in ["newborn", "kitten"] or (
-                    cat.moons > 114 and str(cat.status) == "elder"
+                status_ = str(rabbit.status)
+                if str(rabbit.status) in ["newborn", "kit"] or (
+                    rabbit.moons > 114 and str(rabbit.status) == "elder"
                 ):
                     factor = 2
-                if cat.ID in queen_dict.keys() or "pregnant" in cat.injuries:
+                if rabbit.ID in queen_dict.keys() or "pregnant" in rabbit.injuries:
                     status_ = "queen/pregnant"
 
                 # check if the max_score is correct, otherwise update
                 required_max = PREY_REQUIREMENT[status_] * factor
-                current_score = self.nutrition_info[cat.ID].current_score
-                if self.nutrition_info[cat.ID].max_score != required_max:
-                    previous_max = self.nutrition_info[cat.ID].max_score
-                    self.nutrition_info[cat.ID].max_score = required_max
-                    self.nutrition_info[cat.ID].current_score = (
+                current_score = self.nutrition_info[rabbit.ID].current_score
+                if self.nutrition_info[rabbit.ID].max_score != required_max:
+                    previous_max = self.nutrition_info[rabbit.ID].max_score
+                    self.nutrition_info[rabbit.ID].max_score = required_max
+                    self.nutrition_info[rabbit.ID].current_score = (
                         current_score / previous_max * required_max
                     )
             else:
-                self.add_cat_to_nutrition(cat)
+                self.add_cat_to_nutrition(rabbit)
 
-    def add_cat_to_nutrition(self, cat: Cat) -> None:
+    def add_cat_to_nutrition(self, rabbit: Rabbit) -> None:
         """
         Parameters
         ----------
-        cat : Cat
-            the cat, which should be added to the nutrition info
+        rabbit : Rabbit
+            the rabbit, which should be added to the nutrition info
         """
         nutrition = Nutrition()
         factor = 3
-        if str(cat.status) in ["newborn", "kitten", "elder"]:
+        if str(rabbit.status) in ["newborn", "kit", "elder"]:
             factor = 2
 
         queen_dict, kits = get_alive_clan_queens(self.living_cats)
-        prey_status = str(cat.status)
-        if cat.ID in queen_dict.keys() or "pregnant" in cat.injuries:
+        prey_status = str(rabbit.status)
+        if rabbit.ID in queen_dict.keys() or "pregnant" in rabbit.injuries:
             prey_status = "queen/pregnant"
         max_score = PREY_REQUIREMENT[prey_status] * factor
         nutrition.max_score = max_score
@@ -676,15 +676,15 @@ class FreshkillPile:
 
         # adapt sickness (increase needed amount)
         if (
-            "pregnant" not in cat.injuries
-            and cat.not_working()
-            and game.clan
-            and game.clan.game_mode == "cruel season"
+            "pregnant" not in rabbit.injuries
+            and rabbit.not_working()
+            and game.warren
+            and game.warren.game_mode == "cruel season"
         ):
             nutrition.max_score += CONDITION_INCREASE * factor
             nutrition.current_score = nutrition.max_score
 
-        self.nutrition_info[cat.ID] = nutrition
+        self.nutrition_info[rabbit.ID] = nutrition
 
 
 # ---------------------------------------------------------------------------- #

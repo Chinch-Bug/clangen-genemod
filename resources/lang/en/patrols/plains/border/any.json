@@ -29,7 +29,7 @@
                 ]
             },
             {
-                "text": "s_c immediately leaps to protect {PRONOUN/s_c/poss} Clanmates. {PRONOUN/s_c/poss/CAP} ferocity in battle terrifies the rogues. Realizing that they've sorely underestimated the Clan cats, the rogues turn tail and run.",
+                "text": "s_c immediately leaps to protect {PRONOUN/s_c/poss} Clanmates. {PRONOUN/s_c/poss/CAP} ferocity in battle terrifies the rogues. Realizing that they've sorely underestimated the Warren rabbits, the rogues turn tail and run.",
                 "exp": 30,
                 "weight": 20,
                 "stat_skill": ["FIGHTER,3"],
@@ -61,13 +61,13 @@
         ],
         "fail_outcomes": [
             {
-                "text": "The rogues are terrifyingly coordinated and use the patrol's shock and confusion against them. The patrol cats are picked off one by one, and only a couple manage to escape the slaughter.",
+                "text": "The rogues are terrifyingly coordinated and use the patrol's shock and confusion against them. The patrol rabbits are picked off one by one, and only a couple manage to escape the slaughter.",
                 "exp": 0,
                 "weight": 10,
                 "dead_cats": ["multi"],
                 "history_text": {
                     "scar": "m_c was badly scarred when rogues ambushed {PRONOUN/m_c/poss} patrol.",
-                    "reg_death": "This cat was killed when rogues ambushed {PRONOUN/m_c/poss} patrol.",
+                    "reg_death": "This rabbit was killed when rogues ambushed {PRONOUN/m_c/poss} patrol.",
                     "lead_death": "{VERB/m_c/were/was} killed in a rogue ambush"
                 },
                 "relationships": [
@@ -86,14 +86,14 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["battle_injury"],
                         "scars": ["RIGHTBLIND"]
                     }
                 ],
                 "history_text": {
                     "scar": "m_c was badly scarred when rogues ambushed {PRONOUN/m_c/poss} patrol.",
-                    "reg_death": "This cat was killed when rogues ambushed {PRONOUN/m_c/poss} patrol.",
+                    "reg_death": "This rabbit was killed when rogues ambushed {PRONOUN/m_c/poss} patrol.",
                     "lead_death": "{VERB/m_c/were/was} killed in a rogue ambush"
                 },
                 "relationships": [
@@ -120,16 +120,16 @@
         "min_max_status": {},
         "weight": 20,
         "intro_text": "As the patrol is marking the border lines, a gang of rogues burst from the long grass! An ambush!",
-        "decline_text": "r_c turns tail and races away! The rogues have {PRONOUN/r_c/object} far outnumbered; warning the Clan is more important than dying needlessly.",
+        "decline_text": "r_c turns tail and races away! The rogues have {PRONOUN/r_c/object} far outnumbered; warning the Warren is more important than dying needlessly.",
         "chance_of_success": 10,
         "success_outcomes": [
             {
-                "text": "Stunned for a moment, r_c is nearly caught in the teeth of the first rogue, but {PRONOUN/r_c/subject} {VERB/r_c/manage/manages} to dodge and weave through the onslaught of attacks, eventually escaping the fray and pelting towards camp with yowls of warning bursting from {PRONOUN/r_c/poss} lungs.",
+                "text": "Stunned for a moment, r_c is nearly caught in the teeth of the first rogue, but {PRONOUN/r_c/subject} {VERB/r_c/manage/manages} to dodge and weave through the onslaught of attacks, eventually escaping the fray and pelting towards burrow with yowls of warning bursting from {PRONOUN/r_c/poss} lungs.",
                 "exp": 30,
                 "weight": 20
             },
             {
-                "text": "s_c snarls at the rogues, outnumbered but not cowed. {PRONOUN/s_c/subject/CAP} {VERB/s_c/throw/throws} {PRONOUN/s_c/self} at the intruders with such ferocity that the rogues are taken aback. Alarmed by the Clan cat's lack of fear and self-preservation, the rogues freeze. s_c sees {PRONOUN/s_c/poss} opportunity to run and takes it, racing back to the camp to gather more warriors and return.",
+                "text": "s_c snarls at the rogues, outnumbered but not cowed. {PRONOUN/s_c/subject/CAP} {VERB/s_c/throw/throws} {PRONOUN/s_c/self} at the intruders with such ferocity that the rogues are taken aback. Alarmed by the Warren rabbit's lack of fear and self-preservation, the rogues freeze. s_c sees {PRONOUN/s_c/poss} opportunity to run and takes it, racing back to the burrow to gather more rabbits and return.",
                 "exp": 30,
                 "weight": 20,
                 "stat_skill": ["FIGHTER,3"]
@@ -137,18 +137,18 @@
         ],
         "fail_outcomes": [
             {
-                "text": "s_c snarls at the rogues, outnumbered but not cowed. {PRONOUN/s_c/subject/CAP} {VERB/s_c/throw/throws} {PRONOUN/s_c/self} at the intruders with such ferocity that the rogues are taken aback. Their shock only lasts a moment before they descend upon the warrior once more. Eventually, s_c has no choice but to escape before {PRONOUN/s_c/subject}{VERB/s_c/'re/'s} killed.",
+                "text": "s_c snarls at the rogues, outnumbered but not cowed. {PRONOUN/s_c/subject/CAP} {VERB/s_c/throw/throws} {PRONOUN/s_c/self} at the intruders with such ferocity that the rogues are taken aback. Their shock only lasts a moment before they descend upon the rabbit once more. Eventually, s_c has no choice but to escape before {PRONOUN/s_c/subject}{VERB/s_c/'re/'s} killed.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": ["bloodthirsty", "fierce", "vengeful"]
             },
             {
-                "text": "The rogues greatly outnumber r_c and have no trouble killing the lone cat. {PRONOUN/r_c/poss/CAP} body is discovered the next day, covered in wounds and cold.",
+                "text": "The rogues greatly outnumber r_c and have no trouble killing the lone rabbit. {PRONOUN/r_c/poss/CAP} body is discovered the next day, covered in wounds and cold.",
                 "exp": 0,
                 "weight": 10,
                 "dead_cats": ["r_c"],
                 "history_text": {
-                    "reg_death": "This cat was killed when rogues ambushed {PRONOUN/m_c/object} while on a solo patrol.",
+                    "reg_death": "This rabbit was killed when rogues ambushed {PRONOUN/m_c/object} while on a solo patrol.",
                     "lead_death": "{VERB/m_c/were/was} killed in a rogue ambush"
                 }
             }
@@ -165,12 +165,12 @@
         "max_cats": 6,
         "min_max_status": {},
         "weight": 20,
-        "intro_text": "As the patrol is marking the border lines, a gang of rogues stride out of the long grass to confront the Clan cats!",
+        "intro_text": "As the patrol is marking the border lines, a gang of rogues stride out of the long grass to confront the Warren rabbits!",
         "decline_text": "The patrol turns tail and races away! The borders are left open for the rogues to muddy.",
         "chance_of_success": 10,
         "success_outcomes": [
             {
-                "text": "The rogues posture and jeer, eventually provoking a battle. The Clan cats are strong, however, and the rogues seem to be weakened by hunger. The patrol easily drives the intruders away.",
+                "text": "The rogues posture and jeer, eventually provoking a battle. The Warren rabbits are strong, however, and the rogues seem to be weakened by hunger. The patrol easily drives the intruders away.",
                 "exp": 30,
                 "weight": 20,
                 "relationships": [
@@ -184,7 +184,7 @@
                 ]
             },
             {
-                "text": "The rogues posture and jeer, eventually provoking a battle. The Clan cats are strong, however, and after a short fight, the rogues are forced to retreat.",
+                "text": "The rogues posture and jeer, eventually provoking a battle. The Warren rabbits are strong, however, and after a short fight, the rogues are forced to retreat.",
                 "exp": 30,
                 "weight": 5,
                 "relationships": [
@@ -198,7 +198,7 @@
                 ]
             },
             {
-                "text": "s_c takes the lead, confronting the gang with confidence. Eventually the rogues admit that they've been struggling to find enough prey and were looking to steal richer territory from the Clan. Tensions are eased when s_c informs the rogues of a prey-rich forest outside of c_n territory.",
+                "text": "s_c takes the lead, confronting the gang with confidence. Eventually the rogues admit that they've been struggling to find enough prey and were looking to steal richer territory from the Warren. Tensions are eased when s_c informs the rogues of a prey-rich forest outside of c_n territory.",
                 "exp": 30,
                 "weight": 20,
                 "stat_skill": ["SPEAKER,1"],
@@ -213,7 +213,7 @@
                 ]
             },
             {
-                "text": "s_c takes the lead, confronting the gang with confidence. Eventually the rogues admit that they've been struggling to find enough prey and were looking to steal richer territory from the Clan. Tensions are eased when s_c informs the rogues of a prey-rich forest outside of c_n territory.",
+                "text": "s_c takes the lead, confronting the gang with confidence. Eventually the rogues admit that they've been struggling to find enough prey and were looking to steal richer territory from the Warren. Tensions are eased when s_c informs the rogues of a prey-rich forest outside of c_n territory.",
                 "exp": 30,
                 "weight": 20,
                 "stat_trait": ["bold", "confident"],
@@ -230,13 +230,13 @@
         ],
         "fail_outcomes": [
             {
-                "text": "The rogues are terrifyingly coordinated and use the patrol's momentary surprise to their advantage. The patrol cats are picked off one by one, and only a couple manage to escape the slaughter.",
+                "text": "The rogues are terrifyingly coordinated and use the patrol's momentary surprise to their advantage. The patrol rabbits are picked off one by one, and only a couple manage to escape the slaughter.",
                 "exp": 0,
                 "weight": 10,
                 "dead_cats": ["multi"],
                 "history_text": {
                     "scar": "m_c was badly scarred when rogues attacked {PRONOUN/m_c/poss} patrol.",
-                    "reg_death": "This cat was killed when rogues attacked {PRONOUN/m_c/poss} patrol.",
+                    "reg_death": "This rabbit was killed when rogues attacked {PRONOUN/m_c/poss} patrol.",
                     "lead_death": "{VERB/m_c/were/was} killed in a rogue attack"
                 }
             },
@@ -246,14 +246,14 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["battle_injury"],
                         "scars": ["THROAT"]
                     }
                 ],
                 "history_text": {
                     "scar": "m_c was badly scarred when rogues attacked {PRONOUN/m_c/poss} patrol.",
-                    "reg_death": "This cat was killed when rogues attacked {PRONOUN/m_c/poss} patrol.",
+                    "reg_death": "This rabbit was killed when rogues attacked {PRONOUN/m_c/poss} patrol.",
                     "lead_death": "{VERB/m_c/were/was} killed in a rogue attack"
                 }
             }
@@ -359,7 +359,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["battle_injury"],
                         "scars": ["BRIDGE"]
                     }
@@ -458,7 +458,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["battle_injury"],
                         "scars": ["BRIDGE"]
                     }
@@ -481,7 +481,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [1, 6]
+            "rusasi": [1, 6]
         },
         "weight": 20,
         "intro_text": "While on patrol, app1 notices some suspicious pawprints in the mud by the short grass.",
@@ -501,7 +501,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "It turns out they were app1's own pawprints... app1 huffs with embarrassment, suddenly grateful {PRONOUN/app1/subject}{VERB/app1/'re/'s} alone. {PRONOUN/app1/subject/CAP} {VERB/app1/do/does}n't want to look dumb in front of other cats.",
+                "text": "It turns out they were app1's own pawprints... app1 huffs with embarrassment, suddenly grateful {PRONOUN/app1/subject}{VERB/app1/'re/'s} alone. {PRONOUN/app1/subject/CAP} {VERB/app1/do/does}n't want to look dumb in front of other rabbits.",
                 "exp": 0,
                 "weight": 20
             },
@@ -546,7 +546,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["battle_injury"],
                         "scars": ["CHEEK"]
                     }
@@ -569,7 +569,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "all apprentices": [-1, -1]
+            "all rusasirahs": [-1, -1]
         },
         "weight": 20,
         "intro_text": "While on patrol, r_c notices some suspicious pawprints in the mud by the short grass.",
@@ -688,7 +688,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["battle_injury"],
                         "scars": ["BRIDGE"]
                     }
@@ -720,7 +720,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "all apprentices": [-1, -1]
+            "all rusasirahs": [-1, -1]
         },
         "weight": 20,
         "intro_text": "While on patrol, r_c notices some suspicious pawprints in the mud by the short grass.",
@@ -839,7 +839,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["battle_injury"],
                         "scars": ["BRIDGE"]
                     }
@@ -871,7 +871,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [1, 6]
+            "rusasi": [1, 6]
         },
         "weight": 20,
         "intro_text": "While on patrol, app1 notices some suspicious pawprints in the mud by the short grass.",
@@ -891,7 +891,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "It turns out they were app1's own pawprints... app1 huffs with embarrassment, suddenly grateful that {PRONOUN/app1/poss} patrol is so small. Fewer eyes watching that embarrassing moment. {PRONOUN/app1/subject/CAP} {VERB/app1/do/does}n't want to look dumb in front of other cats.",
+                "text": "It turns out they were app1's own pawprints... app1 huffs with embarrassment, suddenly grateful that {PRONOUN/app1/poss} patrol is so small. Fewer eyes watching that embarrassing moment. {PRONOUN/app1/subject/CAP} {VERB/app1/do/does}n't want to look dumb in front of other rabbits.",
                 "exp": 0,
                 "weight": 20
             },
@@ -925,7 +925,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["battle_injury"],
                         "scars": ["CHEEK"]
                     }
@@ -997,7 +997,7 @@
                 ]
             },
             {
-                "text": "Boldly, s_c follows the pawprints to a trespassing rogue and confronts them. Fur puffed up and scowling, the patrol demands the rogue leave c_n territory. Intimidated by their confidence and the number of cats, the rogue gives in and leaves without a fight.",
+                "text": "Boldly, s_c follows the pawprints to a trespassing rogue and confronts them. Fur puffed up and scowling, the patrol demands the rogue leave c_n territory. Intimidated by their confidence and the number of rabbits, the rogue gives in and leaves without a fight.",
                 "exp": 10,
                 "weight": 20,
                 "stat_trait": [
@@ -1120,7 +1120,7 @@
                 ]
             },
             {
-                "text": "Boldly, s_c follows the pawprints to a trespassing rogue and confronts them. Fur puffed up and scowling, the patrol demands the rogue leave c_n territory. Intimidated by {PRONOUN/s_c/poss} confidence and the number of cats, the rogue gives in and leaves without a fight.",
+                "text": "Boldly, s_c follows the pawprints to a trespassing rogue and confronts them. Fur puffed up and scowling, the patrol demands the rogue leave c_n territory. Intimidated by {PRONOUN/s_c/poss} confidence and the number of rabbits, the rogue gives in and leaves without a fight.",
                 "exp": 10,
                 "weight": 20,
                 "stat_trait": [
@@ -1194,7 +1194,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "apprentice": [1, 6]
+            "rusasi": [1, 6]
         },
         "weight": 20,
         "intro_text": "While on patrol, app1 notices some suspicious pawprints in the mud by the short grass.",
@@ -1232,7 +1232,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "It turns out they were app1's own pawprints... app1 huffs with embarrassment and can't meet the eyes of the rest of the patrol. {PRONOUN/app1/subject/CAP} {VERB/app1/do/does}n't want to look dumb in front of other cats.",
+                "text": "It turns out they were app1's own pawprints... app1 huffs with embarrassment and can't meet the eyes of the rest of the patrol. {PRONOUN/app1/subject/CAP} {VERB/app1/do/does}n't want to look dumb in front of other rabbits.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -1291,12 +1291,12 @@
         "max_cats": 6,
         "min_max_status": {},
         "weight": 20,
-        "intro_text": "On {PRONOUN/r_c/poss} way to mark the far corners of {PRONOUN/r_c/poss} plains, r_c starts telling a story of {PRONOUN/r_c/poss} ancestors to keep every cat entertained.",
+        "intro_text": "On {PRONOUN/r_c/poss} way to mark the far corners of {PRONOUN/r_c/poss} plains, r_c starts telling a story of {PRONOUN/r_c/poss} ancestors to keep every rabbit entertained.",
         "decline_text": "r_c nearly trips into a rabbit burrow and decides to watch where {PRONOUN/r_c/poss} paws are going instead.",
         "chance_of_success": 10,
         "success_outcomes": [
             {
-                "text": "It keeps the cats' minds off the distance they have to cover. The patrol goes quickly and easily.",
+                "text": "It keeps the rabbits' minds off the distance they have to cover. The patrol goes quickly and easily.",
                 "exp": 20,
                 "weight": 20,
                 "relationships": [
@@ -1310,7 +1310,7 @@
                 ]
             },
             {
-                "text": "s_c spins a vivid, engaging tale of a massive war their ancestors fought over the border the patrol is headed to mark. Not only does it keep every cat entertained, but it also emphasizes the importance of the patrol and motivates everyone.",
+                "text": "s_c spins a vivid, engaging tale of a massive war their ancestors fought over the border the patrol is headed to mark. Not only does it keep every rabbit entertained, but it also emphasizes the importance of the patrol and motivates everyone.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["SPEAKER,1"],
@@ -1325,7 +1325,7 @@
                 ]
             },
             {
-                "text": "It's a fantastic idea, making the patrol fly by as cats chat and laugh with their Clanmates, and everyone ends the day feeling much closer to each other.",
+                "text": "It's a fantastic idea, making the patrol fly by as rabbits chat and laugh with their Clanmates, and everyone ends the day feeling much closer to each other.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -1394,8 +1394,8 @@
         "min_cats": 1,
         "max_cats": 6,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "healer cats": [-1, -1],
+            "rusasi": [1, 6],
+            "healer rabbits": [-1, -1],
             "normal adult": [-1, -1]
         },
         "weight": 20,
@@ -1418,7 +1418,7 @@
                 "weight": 20,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["shock", "minor_injury", "non_lethal"]
                     }
                 ]
@@ -1440,10 +1440,10 @@
         "relationship_constraint": [],
         "pl_skill_constraint": [],
         "intro_text": "As the patrol moves through the grass just after sunset, two moons rise in the sky...",
-        "decline_text": "One of those moons has the same metal as a monster, the same glowing eyes that glare from the creatures that kill on the Thunderpaths. The cats hide from its sight, trembling.",
+        "decline_text": "One of those moons has the same metal as a monster, the same glowing eyes that glare from the creatures that kill on the Thunderpaths. The rabbits hide from its sight, trembling.",
         "success_outcomes": [
             {
-                "text": "Two whole moons! That's got to be lucky, the cats decide, sitting on a little rock still warm from the sun to stargaze.",
+                "text": "Two whole moons! That's got to be lucky, the rabbits decide, sitting on a little rock still warm from the sun to stargaze.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -1481,11 +1481,11 @@
         "weight": 40,
         "chance_of_success": 60,
         "pl_skill_constraint": ["STORY,1"],
-        "intro_text": "As the cats remark the border, p_l asks if they remember the tale of the beautiful molly and the monstrous tom. Once upon a time, the mighty tom of the plains found a beautiful molly on the border of his lands, skinny and trembling...",
+        "intro_text": "As the rabbits remark the border, p_l asks if they remember the tale of the beautiful doe and the monstrous buck. Once upon a time, the mighty buck of the plains found a beautiful doe on the border of his lands, skinny and trembling...",
         "decline_text": "This... really isn't the time to stop for a story.",
         "success_outcomes": [
                 {
-                    "text": "Outraged, the tom drew his claws - only for the molly to disappear in a burst of starlight, StarClan judging the tom for his monstrous heart. His scent grew foul, his whiskers fell off, his claws blunted, and so the first coyote was born, howling his anger and loss.",
+                    "text": "Outraged, the buck drew his claws - only for the doe to disappear in a burst of starlight, Inle judging the buck for his monstrous heart. His scent grew foul, his whiskers fell off, his claws blunted, and so the first coyote was born, howling his anger and loss.",
                     "exp": 30,
                     "weight": 20,
                     "art": "gen_train_ghost",
@@ -1507,7 +1507,7 @@
                     ]
                 },
                 {
-                    "text": "With a terrifying anger, the tom unsheathed his claws... but luckily for the molly, she was a StarClan cat in disguise, and with a burst of starlight, StarClan judged him, and turned him into a horrifying monster... a <i>coyote</i>.",
+                    "text": "With a terrifying anger, the buck unsheathed his claws... but luckily for the doe, she was a Inle rabbit in disguise, and with a burst of starlight, Inle judged him, and turned him into a horrifying monster... a <i>coyote</i>.",
                     "exp": 30,
                     "weight": 20,
                     "art": "gen_train_ghost",
@@ -1535,7 +1535,7 @@
                     ]
                 },
                 {
-                    "text": "The powerful tom went to chase her off, but StarClan judged him a monster, and cursed him to become a coyote. It is a lesson all can take note of - the stars will judge you for your actions.",
+                    "text": "The powerful buck went to chase her off, but Inle judged him a monster, and cursed him to become a coyote. It is a lesson all can take note of - the stars will judge you for your actions.",
                     "exp": 30,
                     "weight": 20,
                     "art": "gen_train_ghost",
@@ -1563,7 +1563,7 @@
                     ]
                 },
                 {
-                    "text": "The tom drove the molly off and was cursed by StarClan for his cruelty. And good thing too, s_c pipes up! Evil like that should always be punished!",
+                    "text": "The buck drove the doe off and was cursed by Inle for his cruelty. And good thing too, s_c pipes up! Evil like that should always be punished!",
                     "exp": 30,
                     "weight": 20,
                     "art": "gen_train_ghost",

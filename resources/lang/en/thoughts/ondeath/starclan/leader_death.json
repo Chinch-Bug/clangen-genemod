@@ -3,7 +3,7 @@
 		"id": "leader_death_starclan_thoughts",
 		"thoughts": [
             "Is surprised to find {PRONOUN/m_c/self} walking the stars of Silverpelt",
-            "Is regretting leaving {PRONOUN/m_c/poss} Clan without {PRONOUN/m_c/object}"
+            "Is regretting leaving {PRONOUN/m_c/poss} Warren without {PRONOUN/m_c/object}"
 			]
 	}
 ]

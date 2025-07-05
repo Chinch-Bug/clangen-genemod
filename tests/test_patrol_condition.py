@@ -4,9 +4,9 @@ import unittest
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
 
-from scripts.cat.cats import Cat
-from scripts.cat.history import History
-from scripts.clan import Clan
+from scripts.rabbit.rabbits import Rabbit
+from scripts.rabbit.history import History
+from scripts.warren import Warren
 from scripts.events_module.patrol.patrol import Patrol
 
 
@@ -17,7 +17,7 @@ class TestCondition(unittest.TestCase):
             "mangled leg",
             "mangled tail",
             "torn pelt",
-            "cat bite",
+            "rabbit bite",
         ],
         "minor_injury": ["sprain", "sore", "bruises", "scrapes"],
         "blunt_force_injury": [
@@ -51,8 +51,8 @@ class TestCondition(unittest.TestCase):
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [-1, -1],
-            "healer cats": [1, 6],
+            "rusasi": [-1, -1],
+            "healer rabbits": [1, 6],
             "normal adult": [-1, -1],
         },
         "weight": 20,
@@ -95,12 +95,12 @@ class TestCondition(unittest.TestCase):
             },
             {
                 "text": "Not only does r_c end up soaked to the skin, they can't even find any dandelions"
-                " under the snow, and they're left shivering violently by the time they return to camp.",
+                " under the snow, and they're left shivering violently by the time they return to burrow.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE"],
                     }
@@ -114,12 +114,12 @@ class TestCondition(unittest.TestCase):
 
     def test_cold_injury(self):
         # GIVEN
-        clan = Clan()
-        patrol_cat = Cat(moons=20)
-        patrol_cat.status = "warrior"
+        warren = Warren()
+        patrol_cat = Rabbit(moons=20)
+        patrol_cat.status = "rabbit"
         patrol_cat.history = History()
         patrol = Patrol()
-        patrol.add_patrol_cats([patrol_cat], clan)
+        patrol.add_patrol_cats([patrol_cat], warren)
         patrol_event = patrol.generate_patrol_events([self.cold_patrol])
 
         # WHEN - THEN

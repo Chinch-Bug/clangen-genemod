@@ -6,7 +6,7 @@ import ujson
 
 
 class Personality:
-    """Hold personality information for a cat, and functions to deal with it"""
+    """Hold personality information for a rabbit, and functions to deal with it"""
 
     facet_types = ["lawfulness", "sociability", "aggression", "stability"]
     facet_range = [0, 16]

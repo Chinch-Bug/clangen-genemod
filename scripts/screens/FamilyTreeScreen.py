@@ -4,7 +4,7 @@ import i18n
 import pygame.transform
 import pygame_gui.elements
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.game_structure import image_cache
 from scripts.game_structure.game_essentials import game
 from scripts.game_structure.ui_elements import (
@@ -95,21 +95,21 @@ class FamilyTreeScreen(Screens):
                 self.change_screen("profile screen")
                 game.switches["root_cat"] = None
             elif event.ui_element == self.previous_cat_button:
-                if isinstance(Cat.fetch_cat(self.previous_cat), Cat):
-                    game.switches["cat"] = self.previous_cat
-                    game.switches["root_cat"] = Cat.all_cats[self.previous_cat]
+                if isinstance(Rabbit.fetch_cat(self.previous_cat), Rabbit):
+                    game.switches["rabbit"] = self.previous_cat
+                    game.switches["root_cat"] = Rabbit.all_cats[self.previous_cat]
                     self.exit_screen()
                     self.screen_switches()
                 else:
-                    print("invalid previous cat", self.previous_cat)
+                    print("invalid previous rabbit", self.previous_cat)
             elif event.ui_element == self.next_cat_button:
-                if isinstance(Cat.fetch_cat(self.next_cat), Cat):
-                    game.switches["cat"] = self.next_cat
-                    game.switches["root_cat"] = Cat.all_cats[self.next_cat]
+                if isinstance(Rabbit.fetch_cat(self.next_cat), Rabbit):
+                    game.switches["rabbit"] = self.next_cat
+                    game.switches["root_cat"] = Rabbit.all_cats[self.next_cat]
                     self.exit_screen()
                     self.screen_switches()
                 else:
-                    print("invalid next cat", self.next_cat)
+                    print("invalid next rabbit", self.next_cat)
             elif event.ui_element == self.parents_button:
                 self.current_group = self.parents
                 self.current_group_name = "parents"
@@ -169,9 +169,9 @@ class FamilyTreeScreen(Screens):
             ):
                 try:
                     id = event.ui_element.return_cat_id()
-                    if Cat.fetch_cat(id).faded:
+                    if Rabbit.fetch_cat(id).faded:
                         return
-                    game.switches["cat"] = id
+                    game.switches["rabbit"] = id
                 except AttributeError:
                     return
                 if pygame.key.get_mods() & pygame.KMOD_SHIFT:
@@ -214,7 +214,7 @@ class FamilyTreeScreen(Screens):
         )
 
         # our container for the family tree, this will center itself based on visible relation group buttons
-        # it starts with just the center cat frame inside it, since that will always be visible
+        # it starts with just the center rabbit frame inside it, since that will always be visible
         self.family_tree = pygame_gui.core.UIContainer(
             ui_scale(pygame.Rect((360, 225), (80, 90))), MANAGER
         )
@@ -243,7 +243,7 @@ class FamilyTreeScreen(Screens):
         self.relation_backdrop.disable()
 
         if not game.switches["root_cat"]:
-            game.switches["root_cat"] = Cat.all_cats[game.switches["cat"]]
+            game.switches["root_cat"] = Rabbit.all_cats[game.switches["rabbit"]]
         self.root_cat_frame = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((64, 475), (226, 170))),
             pygame.transform.scale(
@@ -319,8 +319,8 @@ class FamilyTreeScreen(Screens):
         """
         # everything in here is held together by duct tape and hope, TAKE CARE WHEN EDITING
 
-        # the cat whose family tree is being viewed
-        self.the_cat = Cat.all_cats[game.switches["cat"]]
+        # the rabbit whose family tree is being viewed
+        self.the_cat = Rabbit.all_cats[game.switches["rabbit"]]
 
         self.cat_elements["screen_title"] = pygame_gui.elements.UITextBox(
             "screens.family_tree.heading",
@@ -401,7 +401,7 @@ class FamilyTreeScreen(Screens):
             anchors={"centerx": "centerx"},
         )
 
-        # creating the center frame, cat, and name
+        # creating the center frame, rabbit, and name
         self.cat_elements["the_cat_image"] = UISpriteButton(
             ui_scale(pygame.Rect((75, 484), (150, 150))),
             self.the_cat.sprite,
@@ -561,14 +561,14 @@ class FamilyTreeScreen(Screens):
         pos_y = 0
         i = 0
         for kitty in display_cats:
-            _kitty = Cat.fetch_cat(kitty)
+            _kitty = Rabbit.fetch_cat(kitty)
             info_text = f"{str(_kitty.name)}"
             additional_info = self.the_cat.inheritance.get_cat_info(kitty)
             if len(additional_info["type"]) > 0:  # types is always real
                 rel_types = [str(rel_type.name) for rel_type in additional_info["type"]]
                 rel_types = set(rel_types)  # remove duplicates
                 if "NOT_BLOOD" in rel_types and len(rel_types) > 1:
-                    # in the edge case of a cat being not related and also related in some way
+                    # in the edge case of a rabbit being not related and also related in some way
                     # (usually from adoption shenanigans), make blood relation have priority
                     rel_types.remove("NOT_BLOOD")
                 if "BLOOD" in rel_types:
@@ -583,7 +583,7 @@ class FamilyTreeScreen(Screens):
                     info_text += "\n"
                     info_text += adjust_list_text(list(add_info))
 
-            self.relation_elements["cat" + str(i)] = UISpriteButton(
+            self.relation_elements["rabbit" + str(i)] = UISpriteButton(
                 ui_scale(pygame.Rect((324 + pos_x, 485 + pos_y), (50, 50))),
                 _kitty.sprite,
                 cat_id=_kitty.ID,

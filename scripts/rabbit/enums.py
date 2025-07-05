@@ -5,7 +5,7 @@ from strenum import StrEnum
 
 class CatAgeEnum(StrEnum):
     NEWBORN = "newborn"
-    KITTEN = "kitten"
+    KIT = "kit"
     ADOLESCENT = "adolescent"
     YOUNG_ADULT = "young adult"
     ADULT = "adult"
@@ -13,11 +13,11 @@ class CatAgeEnum(StrEnum):
     SENIOR = "senior"
 
     def is_baby(self):
-        return self in (CatAgeEnum.KITTEN, CatAgeEnum.NEWBORN)
+        return self in (CatAgeEnum.KIT, CatAgeEnum.NEWBORN)
 
     def can_have_mate(self):
         return self not in (
-            CatAgeEnum.KITTEN,
+            CatAgeEnum.KIT,
             CatAgeEnum.NEWBORN,
             CatAgeEnum.ADOLESCENT,
         )

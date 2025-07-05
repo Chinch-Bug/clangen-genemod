@@ -1,7 +1,7 @@
-# Camp BGs Style Guide
+# Burrow BGs Style Guide
 _by scribble (scribblecrumb)_
 
-Camp BGs are the background image you see when viewing the Clan screen.  They are meant to portray the camp that the Clan lives within.  During Clan creation the player has the opportunity to choose the biome their Clan lives in and then the camp within that biome that they will occupy.  Each biome has different camps available.
+Burrow BGs are the background image you see when viewing the Warren screen.  They are meant to portray the burrow that the Warren lives within.  During Warren creation the player has the opportunity to choose the biome their Warren lives in and then the burrow within that biome that they will occupy.  Each biome has different camps available.
 
 Camps must have day/night variations as well as seasonal variations.  They must feel unique to the other available camps.  We don't want to provide the user with a ton of extremely similar options, rather each option should have it's own distinct identity.
 
@@ -13,7 +13,7 @@ Camps must have day/night variations as well as seasonal variations.  They must 
 
 BG conceptualization is an important step.  We want all the BGs to feel unique from each other.  We have limited space, so redundant concepts should be discarded in favor of more fresh ideas.  Be sure to discuss with other BG artists as well so that we don’t accidentally begin work on identical concepts.
 
-When sketching your BG, remember to keep scale in mind.  You want this BG to match with the scale of the cat sprites that will sit on them.  Use the template to estimate cat size or pull sprites from the Resources folder and size them down to fit on the template.  Keep in mind that cat positioning and den label positioning can be tailored to the BG, but we should still follow the rough template to keep dens in the same area of the screen.
+When sketching your BG, remember to keep scale in mind.  You want this BG to match with the scale of the rabbit sprites that will sit on them.  Use the template to estimate rabbit size or pull sprites from the Resources folder and size them down to fit on the template.  Keep in mind that rabbit positioning and den label positioning can be tailored to the BG, but we should still follow the rough template to keep dens in the same area of the screen.
 
 ![bg_template](https://github.com/ClanGenOfficial/clangen/assets/115410010/c1ce6461-d7c3-4b84-b91c-89bb5f0d2c29)
 
@@ -60,18 +60,18 @@ You should avoid ever using straight black or white in your BG.  The only place 
 ### Lighting
 Lighting should be kept pretty ambiguous.  The majority of my BGs have sort of “middle of the day” lighting, but I rarely worry about adhering to a strict light source.  There are exceptions of course, like my mountain cave BG which has a very obvious light source.  Though, even in that BG, the lighting is still pretty uniform across the image.
 
-Remember, the cat sprites that will lay over top of your BG will not be modified in any way.  They will not appear to be affected by any lighting.  This becomes far more apparent and jarring when your BG has stark lighting changes.
+Remember, the rabbit sprites that will lay over top of your BG will not be modified in any way.  They will not appear to be affected by any lighting.  This becomes far more apparent and jarring when your BG has stark lighting changes.
 
 ### Seasons
-It’s good to keep in mind what you will be changing throughout the seasons.  This is something you should plan for ahead of time.  I’ve found it easiest to make sure I separate out my layers according to what will be changed.  Grass/plants growing and dying throughout the seasons is an easy and simple indicator.  Adding in small details like med cat herbs or kit toys that change with the season is also a fun touch that people appreciate. 
+It’s good to keep in mind what you will be changing throughout the seasons.  This is something you should plan for ahead of time.  I’ve found it easiest to make sure I separate out my layers according to what will be changed.  Grass/plants growing and dying throughout the seasons is an easy and simple indicator.  Adding in small details like med rabbit herbs or kit toys that change with the season is also a fun touch that people appreciate. 
 
 I also like to adjust the hue and saturation (or even get really specific abt colors with color balance) according to the season.  Leafbare being less saturated and more cool colors, Greenleaf with warmer colors and higher saturation, ect. 
 
-You can reference leafbare BGs that are snow-heavy to get an idea of how snow should look (keep in mind that some climates won’t have a lot of snow.)  I usually use three colors: pure white, a close-to-white blue, and a slightly darker purple.  Snow should drift and collect against objects inside the camp.  If you don’t have personal experience with how snow acts then I’d suggest looking up some reference images to get a feel for it!  It’s also good to consider both where cats would be walking and tracking through the snow as well as the positions that the cat sprites can take on the snow.  Spots where a sprite might be should have tramped down snow or no snow at all in order to prevent the sprites from looking like they are “on top” of the BG instead of within the BG.  Adding in cat tracks on other spots like a path to the camp entrance or paths between dens is also a fun detail.
+You can reference leafbare BGs that are snow-heavy to get an idea of how snow should look (keep in mind that some climates won’t have a lot of snow.)  I usually use three colors: pure white, a close-to-white blue, and a slightly darker purple.  Snow should drift and collect against objects inside the burrow.  If you don’t have personal experience with how snow acts then I’d suggest looking up some reference images to get a feel for it!  It’s also good to consider both where rabbits would be walking and tracking through the snow as well as the positions that the rabbit sprites can take on the snow.  Spots where a sprite might be should have tramped down snow or no snow at all in order to prevent the sprites from looking like they are “on top” of the BG instead of within the BG.  Adding in rabbit tracks on other spots like a path to the burrow entrance or paths between dens is also a fun detail.
 
 ![leafbare_camp2_light](https://github.com/ClanGenOfficial/clangen/assets/115410010/5326cf81-f13a-47b1-9d71-ce28af1320f4)
 
-_The trampled snow shows you that this camp is lived in despite not seeing any cats!_
+_The trampled snow shows you that this burrow is lived in despite not seeing any rabbits!_
 
 ### Dark Mode
 When converting a BG to Dark Mode, use a dark blue layer set to Multiply with a lowered opacity (opacity should be adjusted as needed to ensure the BG isn’t too dark).  Then adjust the saturation of the image to be lower and the hue to be more blue.  This, of course, should be adjusted individually for each variant.  Use your best judgment.  Reference other dark mode BGs to be sure that your BG isn’t significantly darker than the majority.

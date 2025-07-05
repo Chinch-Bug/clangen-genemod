@@ -3,7 +3,7 @@
         "id": "gen_dead_leader",
         "thoughts": [
             "Watches c_n proudly",
-            "Hopes {PRONOUN/m_c/subject} {VERB/m_c/have/has} been a good leader",
+            "Hopes {PRONOUN/m_c/subject} {VERB/m_c/have/has} been a good chief rabbit",
             "Is contemplating {PRONOUN/m_c/poss} legacy",
             "Thinks {PRONOUN/m_c/subject} could have made a better decision during {PRONOUN/m_c/poss} life"
         ]
@@ -17,7 +17,7 @@
             "Is glad that {PRONOUN/m_c/subject} chose r_c as {PRONOUN/m_c/poss} successor"
         ],
         "random_status_constraint": [
-            "leader"
+            "chief rabbit"
         ],
         "random_living_status": [
             "living"
@@ -26,7 +26,7 @@
     {
         "id": "dead_leader_founder",
         "thoughts": [
-            "Is proud of being one of c_n's first leaders"
+            "Is proud of being one of c_n's first chief rabbits"
         ],
         "main_backstory_constraint": ["clan_founder"]
     }

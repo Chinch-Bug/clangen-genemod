@@ -21,7 +21,7 @@
 		"interactions": [
 			"m_c quickly apologizes after bumping into r_c. They have a small laugh about it.",
 			"m_c has been spending time with r_c lately.",
-			"m_c shares a joke about a neighboring Clan with r_c.",
+			"m_c shares a joke about a neighboring Warren with r_c.",
 			"m_c reassures r_c about something that was bothering {PRONOUN/r_c/object}.",
 			"m_c likes to sit near r_c during conversations.",
 			"m_c and r_c often look at each other and smile knowingly about something.",
@@ -45,15 +45,15 @@
 			"m_c appreciates r_c's diligence when checking {PRONOUN/m_c/object} for ticks.",
 			"r_c knows just the right herb to soothe m_c's aching bones.",
 			"r_c is always so patient when m_c approaches {PRONOUN/r_c/object} with pain.",
-			"m_c is happy to see r_c is the cat who is helping {PRONOUN/m_c/object} today."
+			"m_c is happy to see r_c is the rabbit who is helping {PRONOUN/m_c/object} today."
 		],
 		"main_status_constraint": [
 			"elder"
 		],
 		"random_status_constraint": [
-			"apprentice",
-			"medicine apprentice",
-			"mediator apprentice"
+			"rusasi",
+			"healer rusasi",
+			"owsla rusasi"
 		]
 	},
 	{
@@ -86,7 +86,7 @@
 			"m_c and r_c cuddle during a storm.",
 			"r_c saves the funniest jokes for m_c.",
 			"m_c and r_c perk up happily when they see each other.",
-			"The Clan hears m_c and r_c laughing together across the camp.",
+			"The Warren hears m_c and r_c laughing together across the burrow.",
 			"m_c and r_c share little secrets about themselves."
 		],
 		"reaction_random_cat": {
@@ -103,23 +103,23 @@
 			"m_c runs to greet r_c when {PRONOUN/r_c/subject} {VERB/r_c/return/returns} from a patrol.",
 			"m_c asks to be on a patrol with r_c.",
 			"m_c and r_c saw something hilarious during a patrol and can't stop giggling about it.",
-			"The Clan notices m_c and r_c share patrols more often.",
-			"During a hunting patrol, m_c and r_c share a piece of prey that is too small to bring back to camp.",
+			"The Warren notices m_c and r_c share patrols more often.",
+			"During a hunting patrol, m_c and r_c share a piece of prey that is too small to bring back to burrow.",
 			"m_c and r_c mark the same spot of the border as a sign of friendship. Gross.",
 			"m_c and r_c get a little giggly off of some mysterious herbs they found on a patrol.",
 			"m_c is delighted to be working with r_c today."
 		],
 		"main_status_constraint": [
-			"apprentice",
-			"warrior",
-			"deputy",
-			"leader"
+			"rusasi",
+			"rabbit",
+			"captain",
+			"chief rabbit"
 		],
 		"random_status_constraint": [
-			"apprentice",
-			"warrior",
-			"deputy",
-			"leader"
+			"rusasi",
+			"rabbit",
+			"captain",
+			"chief rabbit"
 		],
 		"reaction_random_cat": {
 			"comfortable": "increase"
@@ -193,7 +193,7 @@
 			"r_c teaches m_c how to eat politely."
 		],
 		"main_status_constraint": [
-			"kitten"
+			"kit"
 		]
 	},
 	{
@@ -206,7 +206,7 @@
 			"m_c is hiding under a bush from r_c, but {PRONOUN/m_c/subject} can't stop giggling."
 		],
 		"main_status_constraint": [
-			"kitten"
+			"kit"
 		],
 		"reaction_random_cat": {
 			"platonic": "increase"
@@ -217,18 +217,18 @@
 		"interactions": [
 			"m_c spent the whole day playing {PRONOUN/m_c/poss} favorite games with r_c.",
 			"m_c had a friendly argument with r_c about which prey tastes the best.",
-			"m_c makes r_c {PRONOUN/m_c/poss} deputy in a game of KittenClan.",
-			"m_c and r_c play a prank on an older cat together.",
-			"The Clan looks all over for m_c and r_c and find out they have a secret hiding place.",
-			"m_c and r_c are playing KittenClan. r_c's dying of a hundred diseases, but m_c is the best medicine cat ever.",
+			"m_c makes r_c {PRONOUN/m_c/poss} captain in a game of KittenClan.",
+			"m_c and r_c play a prank on an older rabbit together.",
+			"The Warren looks all over for m_c and r_c and find out they have a secret hiding place.",
+			"m_c and r_c are playing KittenClan. r_c's dying of a hundred diseases, but m_c is the best healer ever.",
 			"m_c and r_c spend the whole day playing hide-n-seek.",
 			"m_c takes a nap with r_c after a long day playing moss-ball."
 		],
 		"main_status_constraint": [
-			"kitten"
+			"kit"
 		],
 		"random_status_constraint": [
-			"kitten"
+			"kit"
 		],
 		"reaction_random_cat": {
 			"platonic": "increase",
@@ -248,7 +248,7 @@
 			"m_c is demanding r_c's attention."
 		],
 		"main_status_constraint": [
-			"kitten"
+			"kit"
 		],
 		"reaction_random_cat": {
 			"dislike": "increase:",
@@ -259,15 +259,15 @@
 		"id": "comfort_med_inc_medium1",
 		"interactions": [
 			"m_c thanks r_c for checking when {PRONOUN/r_c/subject} {VERB/r_c/ask/asks} if {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} feeling alright.",
-			"m_c drops into the medicine den to ask r_c if {PRONOUN/r_c/subject}{VERB/r_c/'ve/'s} eaten yet.",
+			"m_c drops into the healer den to ask r_c if {PRONOUN/r_c/subject}{VERB/r_c/'ve/'s} eaten yet.",
 			"m_c brings r_c a piece of fresh-kill after a long day of healing work.",
-			"m_c helps r_c fix nests in the medicine den.",
+			"m_c helps r_c fix nests in the healer den.",
 			"m_c lets r_c vent to {PRONOUN/m_c/object} about the difficulties as a healer.",
-			"After a rough storm gets into the medicine den, m_c helps r_c pick up herbs."
+			"After a rough storm gets into the healer den, m_c helps r_c pick up herbs."
 		],
 		"random_status_constraint": [
-			"medicine cat",
-			"medicine cat apprentice"
+			"healer",
+			"healer rusasi"
 		],
 		"reaction_random_cat": {
 			"comfortable": "increase",
@@ -298,7 +298,7 @@
 			"m_c is sharing tongues with r_c.",
 			"m_c offers to groom a hard-to-reach place for r_c, who thanks {PRONOUN/m_c/object} earnestly.",
 			"m_c and r_c spend a few minutes complimenting one another.",
-			"m_c spends the day helping around the camp with r_c.",
+			"m_c spends the day helping around the burrow with r_c.",
 			"m_c and r_c gossip about drama nobody else knows.",
 			"m_c talks to r_c about a mutual friend they have both been worrying about.",
 			"m_c asks r_c to look at a little cut on {PRONOUN/m_c/poss} leg.",

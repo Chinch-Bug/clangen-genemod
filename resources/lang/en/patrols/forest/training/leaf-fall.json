@@ -9,7 +9,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "all apprentices": [-1, -1]
+            "all rusasirahs": [-1, -1]
         },
         "weight": 20,
         "intro_text": "p_l thinks r_c is, well, really, just - uh, just swell, and {PRONOUN/p_l/subject} {VERB/p_l/think/thinks} r_c might like {PRONOUN/p_l/object} too. {PRONOUN/p_l/subject/CAP}{VERB/p_l/'ve/'s} been building up {PRONOUN/p_l/poss} confidence, and {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} going to ask r_c to spend some time together, just the two of them, this afternoon!",
@@ -60,10 +60,10 @@
                 ]
             },
             {
-                "text": "s_c has always had a skilled tongue, but it's rarely ever felt this important to choose {PRONOUN/s_c/poss} words carefully. It's all worth it to hear r_c's 'yes.' Their stroll together is awkward with the new tension of acknowledged romance, but neither cat would change it for the world.",
+                "text": "s_c has always had a skilled tongue, but it's rarely ever felt this important to choose {PRONOUN/s_c/poss} words carefully. It's all worth it to hear r_c's 'yes.' Their stroll together is awkward with the new tension of acknowledged romance, but neither rabbit would change it for the world.",
                 "exp": 20,
                 "weight": 20,
-                "stat_skill": ["SPEAKER,1", "MEDIATOR,1", "INSIGHTFUL,1"],
+                "stat_skill": ["SPEAKER,1", "OWSLA,1", "INSIGHTFUL,1"],
                 "relationships": [
                     {
                         "cats_to": ["p_l"],
@@ -116,7 +116,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [1, 6]
+            "rusasi": [1, 6]
         },
         "weight": 20,
         "intro_text": "app1 crouches low behind some grass, searching for the ideal prey to fall to {PRONOUN/app1/poss} deadly claws. In front of the mighty hunter, a brightly colored beetle alights on a rock.",
@@ -129,7 +129,7 @@
                 "weight": 20
             },
             {
-                "text": "Ha! app1 leaps, tail lashing furiously as the beetle buzzes under {PRONOUN/app1/poss} forepaws, claws sheathed. {PRONOUN/app1/subject/CAP} {VERB/app1/bat/bats} the bug off the rock and onto the ground, pouncing after it, jumping and twisting as {PRONOUN/app1/poss} colorful prey flits around {PRONOUN/app1/poss} head in confused, concussed beetle-behavior, unused to being an apprentice's new favorite toy.",
+                "text": "Ha! app1 leaps, tail lashing furiously as the beetle buzzes under {PRONOUN/app1/poss} forepaws, claws sheathed. {PRONOUN/app1/subject/CAP} {VERB/app1/bat/bats} the bug off the rock and onto the ground, pouncing after it, jumping and twisting as {PRONOUN/app1/poss} colorful prey flits around {PRONOUN/app1/poss} head in confused, concussed beetle-behavior, unused to being an rusasi's new favorite toy.",
                 "exp": 20,
                 "weight": 5
             },
@@ -147,12 +147,12 @@
                 "weight": 20
             },
             {
-                "text": "Slimy, yet satisfying! Curiosity completed, app1 wanders off - but has to report to the medicine cat den later, when {PRONOUN/app1/poss} stomach reminds {PRONOUN/app1/object} why cats don't eat random bugs.",
+                "text": "Slimy, yet satisfying! Curiosity completed, app1 wanders off - but has to report to the healer den later, when {PRONOUN/app1/poss} stomach reminds {PRONOUN/app1/object} why rabbits don't eat random bugs.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["stomachache"],
                         "scars": []
                     }
@@ -170,7 +170,7 @@
     "min_cats": 4,
     "max_cats": 6,
     "min_max_status": {
-        "apprentice": [2, 4],
+        "rusasi": [2, 4],
         "normal adult": [2, 4]
     },
     "weight": 20,
@@ -202,7 +202,7 @@
     ],
     "fail_outcomes": [
         {
-            "text": "app1? app1?! It takes a good while to recover the apprentice from the far-deeper-than-expected leaf drift. No one is hurt, but it certainly derails the training they were intending on doing.",
+            "text": "app1? app1?! It takes a good while to recover the rusasi from the far-deeper-than-expected leaf drift. No one is hurt, but it certainly derails the training they were intending on doing.",
             "exp": 0,
             "weight": 20
         }
@@ -218,7 +218,7 @@
     "min_cats": 4,
     "max_cats": 6,
     "min_max_status": {
-        "apprentice": [2, 4],
+        "rusasi": [2, 4],
         "normal adult": [2, 2]
     },
     "weight": 20,
@@ -227,7 +227,7 @@
     "chance_of_success": 60,
     "success_outcomes": [
         {
-            "text": "app1 leaps out of the leaf drift, sending p_l falling into r_c as {PRONOUN/app1/subject} {VERB/app1/fly/flies} by to bowl app2 into yet more leaves. The two apprentices descend into furious mock combat, yowling with excitement, as r_c gazes up at p_l in bewilderment.",
+            "text": "app1 leaps out of the leaf drift, sending p_l falling into r_c as {PRONOUN/app1/subject} {VERB/app1/fly/flies} by to bowl app2 into yet more leaves. The two rusasirahs descend into furious mock combat, yowling with excitement, as r_c gazes up at p_l in bewilderment.",
             "exp": 10,
             "weight": 20,
             "relationships": [
@@ -257,7 +257,7 @@
     ],
     "fail_outcomes": [
         {
-            "text": "app1? app1?! It takes a good while to recover the apprentice from the far-deeper-than-expected leaf drift. No one is hurt, but it certainly derails the training they were intending on doing.",
+            "text": "app1? app1?! It takes a good while to recover the rusasi from the far-deeper-than-expected leaf drift. No one is hurt, but it certainly derails the training they were intending on doing.",
             "exp": 0,
             "weight": 20
         }
@@ -273,7 +273,7 @@
     "min_cats": 4,
     "max_cats": 6,
     "min_max_status": {
-        "apprentice": [2, 2],
+        "rusasi": [2, 2],
         "normal adult": [2, 4]
     },
     "weight": 20,
@@ -282,7 +282,7 @@
     "chance_of_success": 60,
     "success_outcomes": [
         {
-            "text": "app1 leaps out of the leaf drift, bowling app2 head over paws and batting at {PRONOUN/app2/subject} furiously. p_l and r_c share a long, exasperated look, rolling their eyes as the apprentices flicker between yelling insults and flirting while they spar. p_l's sure the apprentices think they're <i>very</i> subtle.",
+            "text": "app1 leaps out of the leaf drift, bowling app2 head over paws and batting at {PRONOUN/app2/subject} furiously. p_l and r_c share a long, exasperated look, rolling their eyes as the rusasirahs flicker between yelling insults and flirting while they spar. p_l's sure the rusasirahs think they're <i>very</i> subtle.",
             "exp": 10,
             "weight": 20,
             "relationships": [
@@ -312,7 +312,7 @@
     ],
     "fail_outcomes": [
         {
-            "text": "app1? app1?! It takes a good while to recover the apprentice from the far-deeper-than-expected leaf drift. No one is hurt, but it certainly derails the training they were intending on doing.",
+            "text": "app1? app1?! It takes a good while to recover the rusasi from the far-deeper-than-expected leaf drift. No one is hurt, but it certainly derails the training they were intending on doing.",
             "exp": 0,
             "weight": 20
         }
@@ -334,18 +334,18 @@
     "chance_of_success": 40,
     "success_outcomes": [
         {
-            "text": "Unsure but remembering the kitten-tales of red deathberries, r_c avoids them, and gives the rest of the patrol a head's up about the potentially dangerous bush.",
+            "text": "Unsure but remembering the kit-tales of red deathberries, r_c avoids them, and gives the rest of the patrol a head's up about the potentially dangerous bush.",
             "exp": 20,
             "weight": 20
         },
         {
-            "text": "After careful consideration, r_c recognizes them as raspberries and brings the rare berries back to the medicine cat's den.",
+            "text": "After careful consideration, r_c recognizes them as raspberries and brings the rare berries back to the healer's den.",
             "exp": 20,
             "weight": 5,
             "herbs": ["raspberry"]
         },
         {
-            "text": "Astutely, s_c recognizes the cranberries, and carefully chews off a branch laden with them to bring back to camp - the herb stocks can use this odd fruit.",
+            "text": "Astutely, s_c recognizes the cranberries, and carefully chews off a branch laden with them to bring back to burrow - the herb stocks can use this odd fruit.",
             "exp": 20,
             "weight": 20,
             "stat_skill": ["CLEVER,2"]
@@ -353,17 +353,17 @@
     ],
     "fail_outcomes": [
         {
-            "text": "Confidently gathering them and prancing back to camp with the patrol, r_c is then informed that redcurrants aren't a useful medicinal herb.",
+            "text": "Confidently gathering them and prancing back to burrow with the patrol, r_c is then informed that redcurrants aren't a useful medicinal herb.",
             "exp": 0,
             "weight": 20
         },
         {
-            "text": "While plucking them from the bush, r_c finds them tasty, and eats a few, only for p_l to notice what {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} eating. {PRONOUN/r_c/subject/CAP}{VERB/r_c/'re/'s} rushed back to camp, where the medicine cat might have a chance at saving {PRONOUN/r_c/object} from deathberry poisoning.",
+            "text": "While plucking them from the bush, r_c finds them tasty, and eats a few, only for p_l to notice what {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} eating. {PRONOUN/r_c/subject/CAP}{VERB/r_c/'re/'s} rushed back to burrow, where the healer might have a chance at saving {PRONOUN/r_c/object} from deathberry poisoning.",
             "exp": 0,
             "weight": 10,
             "injury": [
                 {
-                    "cats": ["r_c"],
+                    "rabbits": ["r_c"],
                     "injuries": ["poisoned"],
                     "scars": []
                 }
@@ -385,7 +385,7 @@
     "min_cats": 3,
     "max_cats": 6,
     "min_max_status": {
-        "apprentice": [1, 6]
+        "rusasi": [1, 6]
     },
     "weight": 10,
     "intro_text": "While helping gathering herbs, app1 stumbles upon a bush of red berries.",
@@ -393,12 +393,12 @@
     "chance_of_success": 20,
     "success_outcomes": [
         {
-            "text": "Unsure but remembering the kitten-tales of red deathberries, app1 avoids them and alerts the patrol, who, extremely worried, confirm that this a deathberry bush.",
+            "text": "Unsure but remembering the kit-tales of red deathberries, app1 avoids them and alerts the patrol, who, extremely worried, confirm that this a deathberry bush.",
             "exp": 20,
             "weight": 20
         },
         {
-            "text": "Whatever. Identifying them is a medicine cat problem. app1 plucks the berries and brings them back to camp, where it turns out they're called raspberries.",
+            "text": "Whatever. Identifying them is a healer problem. app1 plucks the berries and brings them back to burrow, where it turns out they're called raspberries.",
             "exp": 20,
             "weight": 5,
             "herbs": ["raspberry"]
@@ -406,12 +406,12 @@
     ],
     "fail_outcomes": [
         {
-            "text": "Confidently gathering them and prancing back to camp, app1 is then informed that redcurrants aren't a useful medicinal herb.",
+            "text": "Confidently gathering them and prancing back to burrow, app1 is then informed that redcurrants aren't a useful medicinal herb.",
             "exp": 0,
             "weight": 20
         },
         {
-            "text": "Whatever. Identifying them is a medicine cat problem. app1 plucks the berries, surprised at the pleasant taste, and swallows a few. {PRONOUN/app1/subject/CAP} {VERB/app1/collapse/collapses} on the way back to camp, and there's nothing any cat can do for {PRONOUN/r_c/object}, having not identified deathberries before eating them.",
+            "text": "Whatever. Identifying them is a healer problem. app1 plucks the berries, surprised at the pleasant taste, and swallows a few. {PRONOUN/app1/subject/CAP} {VERB/app1/collapse/collapses} on the way back to burrow, and there's nothing any rabbit can do for {PRONOUN/r_c/object}, having not identified deathberries before eating them.",
             "exp": 0,
             "weight": 10,
             "dead_cats": ["app1"],
@@ -421,12 +421,12 @@
             }
         },
         {
-            "text": "Whatever. Identifying them is a medicine cat problem. app1 plucks the tasty berries, swallowing a few, and takes the rest back to camp where the medicine cat immediately starts work trying to save {PRONOUN/app1/object} from deathberry poisoning.",
+            "text": "Whatever. Identifying them is a healer problem. app1 plucks the tasty berries, swallowing a few, and takes the rest back to burrow where the healer immediately starts work trying to save {PRONOUN/app1/object} from deathberry poisoning.",
             "exp": 0,
             "weight": 10,
             "injury": [
                 {
-                    "cats": ["app1"],
+                    "rabbits": ["app1"],
                     "injuries": ["poisoned"],
                     "scars": []
                 }
@@ -453,11 +453,11 @@
     "weight": 40,
     "chance_of_success": 60,
     "pl_skill_constraint": ["STORY,1"],
-    "intro_text": "Gather round, gather round. p_l sits in the center of the group, in the most prominent place, and drops {PRONOUN/p_l/poss} voice down low as a hush falls - today, {PRONOUN/p_l/subject}'ll tell the story of StarClan's Great Anger.",
-    "decline_text": "A leaf-fall rainshower chooses that moment to break - thematic, perhaps, but wet. The cats decide to pick up the story some other time.",
+    "intro_text": "Gather round, gather round. p_l sits in the center of the group, in the most prominent place, and drops {PRONOUN/p_l/poss} voice down low as a hush falls - today, {PRONOUN/p_l/subject}'ll tell the story of Inle's Great Anger.",
+    "decline_text": "A leaf-fall rainshower chooses that moment to break - thematic, perhaps, but wet. The rabbits decide to pick up the story some other time.",
     "success_outcomes": [
         {
-                "text": "At first, few but the medicine cats noticed the leaf-fall, its harshness, the snows early, the prey scarce. All noticed on the day StarClan hissed - the great sun itself blinking dark under their anger. All paid heed to the omens then, and the Clans turned back to the Stars, begging for life and sun to return. They learned a lesson not soon forgotten.",
+                "text": "At first, few but the healer rabbits noticed the leaf-fall, its harshness, the snows early, the prey scarce. All noticed on the day Inle hissed - the great sun itself blinking dark under their anger. All paid heed to the omens then, and the Clans turned back to the Stars, begging for life and sun to return. They learned a lesson not soon forgotten.",
                 "exp": 40,
                 "weight": 20,
                 "relationships": [
@@ -487,7 +487,7 @@
                 ]
             },
             {
-                "text": "If StarClan hissed at them, they should've hissed back, s_c argues. Their ancestors are nothing without them!",
+                "text": "If Inle hissed at them, they should've hissed back, s_c argues. Their ancestors are nothing without them!",
                 "exp": 0,
                 "weight": 20,
                 "can_have_stat": ["r_c"],

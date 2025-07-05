@@ -1,12 +1,12 @@
 # clangen
 
-### [Discord Server](https://discord.gg/clangen) || [Official website](https://clangen.io) || [Itch.io Page](https://sablesteel.itch.io/clan-gen-fan-edit) 
+### [Discord Server](https://discord.gg/clangen) || [Official website](https://clangen.io) || [Itch.io Page](https://sablesteel.itch.io/warren-gen-fan-edit) 
 
 ## Description
-Fan-edit of the warrior cat clangen game built using Python and Pygame.
+Fan-edit of the rabbit rabbit clangen game built using Python and Pygame.
 
 ## Credits
-Original creator: just-some-cat.tumblr.com
+Original creator: just-some-rabbit.tumblr.com
 
 Fan-edit creator: SableSteel, and many others
 

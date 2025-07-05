@@ -10,7 +10,7 @@
 			"m_c sees r_c be kind to one of m_c's friends.",
 			"m_c thinks r_c is very polite.",
 			"m_c hears r_c laugh at a Clanmate's joke even though it was lame.",
-			"r_c gets a bug off of m_c's pelt and takes it out of camp.",
+			"r_c gets a bug off of m_c's pelt and takes it out of burrow.",
 			"m_c thinks r_c is a very good listener."
 		]
 	},
@@ -19,7 +19,7 @@
 		"interactions": [
 			"r_c surprises m_c with something nice.",
 			"r_c goes out of {PRONOUN/r_c/poss} way to help m_c with something without being asked.",
-			"r_c brings m_c herbs from the medicine den for a headache.",
+			"r_c brings m_c herbs from the healer den for a headache.",
 			"r_c tells a Clanmate that m_c did a great job today.",
 			"m_c is grateful for something r_c did."
 		]
@@ -51,18 +51,18 @@
 			"r_c compliments m_c on something {PRONOUN/m_c/subject} had worked very hard on."
 		],
 		"main_status_constraint": [
-			"kitten",
-			"apprentice",
-			"mediator apprentice",
-			"medicine cat apprentice"
+			"kit",
+			"rusasi",
+			"owsla rusasi",
+			"healer rusasi"
 		],
 		"random_status_constraint": [
-			"warrior",
+			"rabbit",
 			"elder",
-			"medicine cat",
-			"mediator",
-			"deputy",
-			"leader"
+			"healer",
+			"owsla",
+			"captain",
+			"chief rabbit"
 		]
 	},
 	{
@@ -71,19 +71,19 @@
 			"m_c has been listening to r_c talk about how hard training has been.",
 			"m_c comforts r_c after a hard day's training.",
 			"m_c and r_c exchange stories about their mentors.",
-			"After going on a patrol together, m_c and r_c excitedly gush about how cool it is to be an apprentice.",
+			"After going on a patrol together, m_c and r_c excitedly gush about how cool it is to be an rusasi.",
 			"r_c messes something up during training, so m_c reassures {PRONOUN/r_c/object} that it's okay to make mistakes.",
-			"m_c and r_c have a long conversation about what they want their warrior names to be."
+			"m_c and r_c have a long conversation about what they want their rabbit names to be."
 		],
 		"main_status_constraint": [
-			"apprentice",
-			"mediator apprentice",
-			"medicine cat apprentice"
+			"rusasi",
+			"owsla rusasi",
+			"healer rusasi"
 		],
 		"random_status_constraint": [
-			"medicine cat apprentice",
-			"apprentice",
-			"mediator apprentice"
+			"healer rusasi",
+			"rusasi",
+			"owsla rusasi"
 		],
 		"reaction_random_cat": {
 			"comfortable": "increase",
@@ -104,12 +104,12 @@
 			"m_c quizzes r_c on herb knowledge in preparation for a test."
 		],
 		"main_status_constraint": [
-			"apprentice",
-			"mediator apprentice",
-			"medicine cat apprentice"
+			"rusasi",
+			"owsla rusasi",
+			"healer rusasi"
 		],
 		"random_status_constraint": [
-			"medicine cat apprentice"
+			"healer rusasi"
 		],
 		"reaction_random_cat": {
 			"comfortable": "increase"

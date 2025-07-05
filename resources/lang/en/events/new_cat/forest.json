@@ -8,7 +8,7 @@
             "any"
         ],
         "weight": 5,
-        "event_text": "m_c returned to camp with a kitten tottering behind {PRONOUN/m_c/object}, and explains that {PRONOUN/m_c/subject} found {PRONOUN/n_c:0/object} wandering - lost - around the forest, no parent in sight.",
+        "event_text": "m_c returned to burrow with a kit tottering behind {PRONOUN/m_c/object}, and explains that {PRONOUN/m_c/subject} found {PRONOUN/n_c:0/object} wandering - lost - around the forest, no parent in sight.",
         "m_c": {
             "age": [
                 "young adult",
@@ -23,7 +23,7 @@
         "new_cat": [
             [
                 "backstory:abandoned1, abandoned4",
-                "age:kitten"
+                "age:kit"
             ]
         ],
         "relationships": [
@@ -51,7 +51,7 @@
             "any"
         ],
         "weight": 5,
-        "event_text": "m_c found an abandoned kitten wandering around the forest and takes {PRONOUN/n_c:0/object} back to camp. Though c_n isn't happy about it, m_c persuades them to let n_c:0 stay in the Clan.",
+        "event_text": "m_c found an abandoned kit wandering around the forest and takes {PRONOUN/n_c:0/object} back to burrow. Though c_n isn't happy about it, m_c persuades them to let n_c:0 stay in the Warren.",
         "m_c": {
             "age": [
                 "young adult",
@@ -67,7 +67,7 @@
         "new_cat": [
             [
                 "backstory:abandoned1, abandoned4",
-                "age:kitten"
+                "age:kit"
             ]
         ],
         "relationships": [
@@ -79,7 +79,7 @@
                 "amount": 10
             },
             {
-                "cats_from": ["clan"],
+                "cats_from": ["warren"],
                 "cats_to": ["m_c", "n_c:0"],
                 "values": ["dislike"],
                 "amount": 5

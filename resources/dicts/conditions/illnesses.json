@@ -4,7 +4,7 @@
         "severity": "severe",
         "mortality": {
             "newborn": 2,
-            "kitten": 5,
+            "kit": 5,
             "adolescent": 10,
             "young adult": 20,
             "adult": 20,
@@ -13,7 +13,7 @@
         },
         "medicine_mortality": {
             "newborn": 30,
-            "kitten": 50,
+            "kit": 50,
             "adolescent": 70,
             "young adult": 100,
             "adult": 100,
@@ -41,7 +41,7 @@
         "severity": "major",
         "mortality": {
             "newborn": 3,
-            "kitten": 3,
+            "kit": 3,
             "adolescent": 8,
             "young adult": 10,
             "adult": 15,
@@ -50,7 +50,7 @@
         },
         "medicine_mortality": {
             "newborn": 10,
-            "kitten": 10,
+            "kit": 10,
             "adolescent": 15,
             "young adult": 30,
             "adult": 45,
@@ -76,7 +76,7 @@
         "severity": "minor",
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -85,7 +85,7 @@
         },
         "medicine_mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -113,7 +113,7 @@
         "severity": "severe",
         "mortality": {
             "newborn": 3,
-            "kitten": 3,
+            "kit": 3,
             "adolescent": 8,
             "young adult": 8,
             "adult": 10,
@@ -122,7 +122,7 @@
         },
         "medicine_mortality": {
             "newborn": 7,
-            "kitten": 7,
+            "kit": 7,
             "adolescent": 12,
             "young adult": 20,
             "adult": 25,
@@ -156,7 +156,7 @@
         "severity": "severe",
         "mortality": {
             "newborn": 2,
-            "kitten": 2,
+            "kit": 2,
             "adolescent": 15,
             "young adult": 0,
             "adult": 0,
@@ -165,7 +165,7 @@
         },
         "medicine_mortality": {
             "newborn": 5,
-            "kitten": 5,
+            "kit": 5,
             "adolescent": 60,
             "young adult": 0,
             "adult": 0,
@@ -199,7 +199,7 @@
         "severity": "major",
         "mortality": {
             "newborn": 3,
-            "kitten": 3,
+            "kit": 3,
             "adolescent": 8,
             "young adult": 8,
             "adult": 10,
@@ -208,7 +208,7 @@
         },
         "medicine_mortality": {
             "newborn": 5,
-            "kitten": 8,
+            "kit": 8,
             "adolescent": 13,
             "young adult": 15,
             "adult": 20,
@@ -239,7 +239,7 @@
         "severity": "severe",
         "mortality": {
             "newborn": 1,
-            "kitten": 1,
+            "kit": 1,
             "adolescent": 2,
             "young adult": 2,
             "adult": 2,
@@ -248,7 +248,7 @@
         },
         "medicine_mortality": {
             "newborn": 2,
-            "kitten": 2,
+            "kit": 2,
             "adolescent": 3,
             "young adult": 3,
             "adult": 3,
@@ -274,7 +274,7 @@
         "severity": "severe",
         "mortality": {
             "newborn": 1,
-            "kitten": 1,
+            "kit": 1,
             "adolescent": 2,
             "young adult": 2,
             "adult": 2,
@@ -283,7 +283,7 @@
         },
         "medicine_mortality": {
             "newborn": 2,
-            "kitten": 2,
+            "kit": 2,
             "adolescent": 3,
             "young adult": 3,
             "adult": 3,
@@ -313,7 +313,7 @@
         "severity": "minor",
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -322,7 +322,7 @@
         },
         "medicine_mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -352,7 +352,7 @@
         "severity": "major",
         "mortality": {
             "newborn": 10,
-            "kitten": 10,
+            "kit": 10,
             "adolescent": 20,
             "young adult": 60,
             "adult": 60,
@@ -361,7 +361,7 @@
         },
         "medicine_mortality": {
             "newborn": 15,
-            "kitten": 15,
+            "kit": 15,
             "adolescent": 60,
             "young adult": 70,
             "adult": 70,
@@ -396,7 +396,7 @@
         "severity": "major",
         "mortality": {
             "newborn": 2,
-            "kitten": 2,
+            "kit": 2,
             "adolescent": 3,
             "young adult": 5,
             "adult": 5,
@@ -405,7 +405,7 @@
         },
         "medicine_mortality": {
             "newborn": 5,
-            "kitten": 5,
+            "kit": 5,
             "adolescent": 10,
             "young adult": 15,
             "adult": 15,
@@ -433,7 +433,7 @@
         "severity": "severe",
         "mortality": {
             "newborn": 1,
-            "kitten": 1,
+            "kit": 1,
             "adolescent": 3,
             "young adult": 3,
             "adult": 5,
@@ -442,7 +442,7 @@
         },
         "medicine_mortality": {
             "newborn": 3,
-            "kitten": 3,
+            "kit": 3,
             "adolescent": 5,
             "young adult": 8,
             "adult": 10,
@@ -470,7 +470,7 @@
         "severity": "severe",
         "mortality": {
             "newborn": 2,
-            "kitten": 2,
+            "kit": 2,
             "adolescent": 5,
             "young adult": 5,
             "adult": 8,
@@ -479,7 +479,7 @@
         },
         "medicine_mortality": {
             "newborn": 5,
-            "kitten": 5,
+            "kit": 5,
             "adolescent": 10,
             "young adult": 15,
             "adult": 20,
@@ -504,7 +504,7 @@
         "severity": "major",
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -513,7 +513,7 @@
         },
         "medicine_mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -542,7 +542,7 @@
         "severity": "minor",
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -551,7 +551,7 @@
         },
         "medicine_mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -582,7 +582,7 @@
         "severity": "major",
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -591,7 +591,7 @@
         },
         "medicine_mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -618,7 +618,7 @@
         "severity": "major",
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -627,7 +627,7 @@
         },
         "medicine_mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -661,7 +661,7 @@
         "severity": "minor",
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -670,7 +670,7 @@
         },
         "medicine_mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -693,7 +693,7 @@
         "severity": "severe",
         "mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,
@@ -702,7 +702,7 @@
         },
         "medicine_mortality": {
             "newborn": 0,
-            "kitten": 0,
+            "kit": 0,
             "adolescent": 0,
             "young adult": 0,
             "adult": 0,

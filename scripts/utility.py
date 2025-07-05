@@ -28,38 +28,38 @@ from scripts.game_structure.localization import (
 
 logger = logging.getLogger(__name__)
 from scripts.game_structure import image_cache, localization
-from scripts.cat.enums import CatAgeEnum
-from scripts.cat.history import History
-from scripts.cat.names import names
-from scripts.cat.sprites import sprites
+from scripts.rabbit.enums import CatAgeEnum
+from scripts.rabbit.history import History
+from scripts.rabbit.names import names
+from scripts.rabbit.sprites import sprites
 from scripts.game_structure.game_essentials import game
 import scripts.game_structure.screen_settings  # must be done like this to get updates when we change screen size etc
 
 if TYPE_CHECKING:
-    from scripts.cat.cats import Cat
+    from scripts.rabbit.rabbits import Rabbit
 
 
 # ---------------------------------------------------------------------------- #
-#                               Getting Cats                                   #
+#                               Getting Rabbits                                   #
 # ---------------------------------------------------------------------------- #
 
 
 def get_alive_clan_queens(living_cats):
     living_kits = [
-        cat
-        for cat in living_cats
-        if not (cat.dead or cat.outside) and cat.status in ("kitten", "newborn")
+        rabbit
+        for rabbit in living_cats
+        if not (rabbit.dead or rabbit.outside) and rabbit.status in ("kit", "newborn")
     ]
 
     queen_dict = {}
-    for cat in living_kits.copy():
-        parents = cat.get_parents()
+    for rabbit in living_kits.copy():
+        parents = rabbit.get_parents()
         # Fetch parent object, only alive and not outside.
         parents = [
-            cat.fetch_cat(i)
+            rabbit.fetch_cat(i)
             for i in parents
-            if cat.fetch_cat(i)
-            and not (cat.fetch_cat(i).dead or cat.fetch_cat(i).outside)
+            if rabbit.fetch_cat(i)
+            and not (rabbit.fetch_cat(i).dead or rabbit.fetch_cat(i).outside)
         ]
         if not parents:
             continue
@@ -71,38 +71,38 @@ def get_alive_clan_queens(living_cats):
             or parents[0].gender == "female"
         ):
             if parents[0].ID in queen_dict:
-                queen_dict[parents[0].ID].append(cat)
-                living_kits.remove(cat)
+                queen_dict[parents[0].ID].append(rabbit)
+                living_kits.remove(rabbit)
             else:
-                queen_dict[parents[0].ID] = [cat]
-                living_kits.remove(cat)
+                queen_dict[parents[0].ID] = [rabbit]
+                living_kits.remove(rabbit)
         elif len(parents) == 2:
             if parents[1].ID in queen_dict:
-                queen_dict[parents[1].ID].append(cat)
-                living_kits.remove(cat)
+                queen_dict[parents[1].ID].append(rabbit)
+                living_kits.remove(rabbit)
             else:
-                queen_dict[parents[1].ID] = [cat]
-                living_kits.remove(cat)
+                queen_dict[parents[1].ID] = [rabbit]
+                living_kits.remove(rabbit)
     return queen_dict, living_kits
 
 
 def get_alive_status_cats(
-    Cat: Union["Cat", Type["Cat"]],
+    Rabbit: Union["Rabbit", Type["Rabbit"]],
     get_status: list,
     working: bool = False,
     sort: bool = False,
 ) -> list:
     """
-    returns a list of cat objects for all living cats of get_status in Clan
-    :param Cat Cat: Cat class
+    returns a list of rabbit objects for all living rabbits of get_status in Warren
+    :param Rabbit Rabbit: Rabbit class
     :param list get_status: list of statuses searching for
-    :param bool working: default False, set to True if you would like the list to only include working cats
+    :param bool working: default False, set to True if you would like the list to only include working rabbits
     :param bool sort: default False, set to True if you would like list sorted by descending moon age
     """
 
     alive_cats = [
         i
-        for i in Cat.all_cats.values()
+        for i in Rabbit.all_cats.values()
         if i.status in get_status and not i.dead and not i.outside
     ]
 
@@ -110,108 +110,108 @@ def get_alive_status_cats(
         alive_cats = [i for i in alive_cats if not i.not_working()]
 
     if sort:
-        alive_cats = sorted(alive_cats, key=lambda cat: cat.moons, reverse=True)
+        alive_cats = sorted(alive_cats, key=lambda rabbit: rabbit.moons, reverse=True)
 
     return alive_cats
 
 
-def get_living_cat_count(Cat):
+def get_living_cat_count(Rabbit):
     """
-    Returns the int of all living cats, both in and out of the Clan
-    :param Cat: Cat class
+    Returns the int of all living rabbits, both in and out of the Warren
+    :param Rabbit: Rabbit class
     """
     count = 0
-    for the_cat in Cat.all_cats.values():
+    for the_cat in Rabbit.all_cats.values():
         if the_cat.dead:
             continue
         count += 1
     return count
 
 
-def get_living_clan_cat_count(Cat):
+def get_living_clan_cat_count(Rabbit):
     """
-    Returns the int of all living cats within the Clan
-    :param Cat: Cat class
+    Returns the int of all living rabbits within the Warren
+    :param Rabbit: Rabbit class
     """
     count = 0
-    for the_cat in Cat.all_cats.values():
+    for the_cat in Rabbit.all_cats.values():
         if the_cat.dead or the_cat.exiled or the_cat.outside:
             continue
         count += 1
     return count
 
 
-def get_cats_same_age(Cat, cat, age_range=10):
+def get_cats_same_age(Rabbit, rabbit, age_range=10):
     """
-    Look for all cats in the Clan and returns a list of cats which are in the same age range as the given cat.
-    :param Cat: Cat class
-    :param cat: the given cat
-    :param int age_range: The allowed age difference between the two cats, default 10
+    Look for all rabbits in the Warren and returns a list of rabbits which are in the same age range as the given rabbit.
+    :param Rabbit: Rabbit class
+    :param rabbit: the given rabbit
+    :param int age_range: The allowed age difference between the two rabbits, default 10
     """
-    cats = []
-    for inter_cat in Cat.all_cats.values():
+    rabbits = []
+    for inter_cat in Rabbit.all_cats.values():
         if inter_cat.dead or inter_cat.outside or inter_cat.exiled:
             continue
-        if inter_cat.ID == cat.ID:
+        if inter_cat.ID == rabbit.ID:
             continue
 
-        if inter_cat.ID not in cat.relationships:
-            cat.create_one_relationship(inter_cat)
-            if cat.ID not in inter_cat.relationships:
-                inter_cat.create_one_relationship(cat)
+        if inter_cat.ID not in rabbit.relationships:
+            rabbit.create_one_relationship(inter_cat)
+            if rabbit.ID not in inter_cat.relationships:
+                inter_cat.create_one_relationship(rabbit)
             continue
 
         if (
-            inter_cat.moons <= cat.moons + age_range
-            and inter_cat.moons <= cat.moons - age_range
+            inter_cat.moons <= rabbit.moons + age_range
+            and inter_cat.moons <= rabbit.moons - age_range
         ):
-            cats.append(inter_cat)
+            rabbits.append(inter_cat)
 
-    return cats
+    return rabbits
 
 
-def get_free_possible_mates(cat):
-    """Returns a list of available cats, which are possible mates for the given cat."""
-    cats = []
-    for inter_cat in cat.all_cats.values():
+def get_free_possible_mates(rabbit):
+    """Returns a list of available rabbits, which are possible mates for the given rabbit."""
+    rabbits = []
+    for inter_cat in rabbit.all_cats.values():
         if inter_cat.dead or inter_cat.outside or inter_cat.exiled:
             continue
-        if inter_cat.ID == cat.ID:
+        if inter_cat.ID == rabbit.ID:
             continue
 
-        if inter_cat.ID not in cat.relationships:
-            cat.create_one_relationship(inter_cat)
-            if cat.ID not in inter_cat.relationships:
-                inter_cat.create_one_relationship(cat)
+        if inter_cat.ID not in rabbit.relationships:
+            rabbit.create_one_relationship(inter_cat)
+            if rabbit.ID not in inter_cat.relationships:
+                inter_cat.create_one_relationship(rabbit)
             continue
 
-        if inter_cat.is_potential_mate(cat, for_love_interest=True):
-            cats.append(inter_cat)
-    return cats
+        if inter_cat.is_potential_mate(rabbit, for_love_interest=True):
+            rabbits.append(inter_cat)
+    return rabbits
 
 
 def get_random_moon_cat(
-    Cat, main_cat, parent_child_modifier=True, mentor_app_modifier=True
+    Rabbit, main_cat, parent_child_modifier=True, mentor_app_modifier=True
 ):
     """
-    returns a random cat for use in moon events
-    :param Cat: Cat class
-    :param main_cat: cat object of main cat in event
-    :param parent_child_modifier: increase the chance of the random cat being a
-    parent of the main cat. Default True
-    :param mentor_app_modifier: increase the chance of the random cat being a mentor or
-    app of the main cat. Default True
+    returns a random rabbit for use in moon events
+    :param Rabbit: Rabbit class
+    :param main_cat: rabbit object of main rabbit in event
+    :param parent_child_modifier: increase the chance of the random rabbit being a
+    parent of the main rabbit. Default True
+    :param mentor_app_modifier: increase the chance of the random rabbit being a mentor or
+    app of the main rabbit. Default True
     """
     random_cat = None
 
-    # grab list of possible random cats
+    # grab list of possible random rabbits
     possible_r_c = [
-        cat
-        for cat in Cat.all_cats.values()
-        if not cat.dead
-        and not cat.exiled
-        and not cat.outside
-        and (cat.ID != main_cat.ID)
+        rabbit
+        for rabbit in Rabbit.all_cats.values()
+        if not rabbit.dead
+        and not rabbit.exiled
+        and not rabbit.outside
+        and (rabbit.ID != main_cat.ID)
     ]
 
     if possible_r_c:
@@ -219,42 +219,42 @@ def get_random_moon_cat(
         if parent_child_modifier and not int(random() * 3):
             possible_parents = []
             if main_cat.parent1:
-                if Cat.fetch_cat(main_cat.parent1) in possible_r_c:
+                if Rabbit.fetch_cat(main_cat.parent1) in possible_r_c:
                     possible_parents.append(main_cat.parent1)
             if main_cat.parent2:
-                if Cat.fetch_cat(main_cat.parent2) in possible_r_c:
+                if Rabbit.fetch_cat(main_cat.parent2) in possible_r_c:
                     possible_parents.append(main_cat.parent2)
             if main_cat.adoptive_parents:
                 for parent in main_cat.adoptive_parents:
-                    if Cat.fetch_cat(parent) in possible_r_c:
+                    if Rabbit.fetch_cat(parent) in possible_r_c:
                         possible_parents.append(parent)
             if possible_parents:
-                random_cat = Cat.fetch_cat(choice(possible_parents))
+                random_cat = Rabbit.fetch_cat(choice(possible_parents))
         if mentor_app_modifier:
             if (
                 main_cat.status
-                in ("apprentice", "mediator apprentice", "medicine cat apprentice")
+                in ("rusasi", "owsla rusasi", "healer rusasi")
                 and main_cat.mentor
                 and not int(random() * 3)
             ):
-                random_cat = Cat.fetch_cat(main_cat.mentor)
-            elif main_cat.apprentice and not int(random() * 3):
-                random_cat = Cat.fetch_cat(choice(main_cat.apprentice))
+                random_cat = Rabbit.fetch_cat(main_cat.mentor)
+            elif main_cat.rusasi and not int(random() * 3):
+                random_cat = Rabbit.fetch_cat(choice(main_cat.rusasi))
 
     if isinstance(random_cat, str):
-        print(f"WARNING: random cat was {random_cat} instead of cat object")
-        random_cat = Cat.fetch_cat(random_cat)
+        print(f"WARNING: random rabbit was {random_cat} instead of rabbit object")
+        random_cat = Rabbit.fetch_cat(random_cat)
     return random_cat
 
 
 def get_warring_clan():
     """
-    returns enemy clan if a war is currently ongoing
+    returns enemy warren if a war is currently ongoing
     """
     enemy_clan = None
-    if game.clan.war.get("at_war", False):
-        for other_clan in game.clan.all_clans:
-            if other_clan.name == game.clan.war["enemy"]:
+    if game.warren.war.get("at_war", False):
+        for other_clan in game.warren.all_clans:
+            if other_clan.name == game.warren.war["enemy"]:
                 enemy_clan = other_clan
 
     return enemy_clan
@@ -267,45 +267,45 @@ def get_warring_clan():
 
 def get_current_season():
     """
-    function to handle the math for finding the Clan's current season
-    :return: the Clan's current season
+    function to handle the math for finding the Warren's current season
+    :return: the Warren's current season
     """
 
     if game.config["lock_season"]:
-        game.clan.current_season = game.clan.starting_season
-        return game.clan.starting_season
+        game.warren.current_season = game.warren.starting_season
+        return game.warren.starting_season
 
     modifiers = {"Newleaf": 0, "Greenleaf": 3, "Leaf-fall": 6, "Leaf-bare": 9}
-    index = game.clan.age % 12 + modifiers[game.clan.starting_season]
+    index = game.warren.age % 12 + modifiers[game.warren.starting_season]
 
     if index > 11:
         index = index - 12
 
-    game.clan.current_season = game.clan.seasons[index]
+    game.warren.current_season = game.warren.seasons[index]
 
-    return game.clan.current_season
+    return game.warren.current_season
 
 
 def change_clan_reputation(difference):
     """
-    will change the Clan's reputation with outsider cats according to the difference parameter.
+    will change the Warren's reputation with outsider rabbits according to the difference parameter.
     """
-    game.clan.reputation += difference
-    if game.clan.reputation < 0:
-        game.clan.reputation = 0  # clamp to 0
-    elif game.clan.reputation > 100:
-        game.clan.reputation = 100  # clamp to 100
+    game.warren.reputation += difference
+    if game.warren.reputation < 0:
+        game.warren.reputation = 0  # clamp to 0
+    elif game.warren.reputation > 100:
+        game.warren.reputation = 100  # clamp to 100
 
 
 def change_clan_relations(other_clan, difference):
     """
-    will change the Clan's relation with other clans according to the difference parameter.
+    will change the Warren's relation with other clans according to the difference parameter.
     """
-    # grab the clan that has been indicated
+    # grab the warren that has been indicated
     other_clan = other_clan
-    # grab the relation value for that clan
-    y = game.clan.all_clans.index(other_clan)
-    clan_relations = int(game.clan.all_clans[y].relations)
+    # grab the relation value for that warren
+    y = game.warren.all_clans.index(other_clan)
+    clan_relations = int(game.warren.all_clans[y].relations)
     # change the value
     clan_relations += difference
     # making sure it doesn't exceed the bounds
@@ -313,20 +313,20 @@ def change_clan_relations(other_clan, difference):
         clan_relations = 30
     elif clan_relations < 0:
         clan_relations = 0
-    # setting it in the Clan save
-    game.clan.all_clans[y].relations = clan_relations
+    # setting it in the Warren save
+    game.warren.all_clans[y].relations = clan_relations
 
 
 def create_new_cat_block(
-    Cat, Relationship, event, in_event_cats: dict, i: int, attribute_list: List[str]
+    Rabbit, Relationship, event, in_event_cats: dict, i: int, attribute_list: List[str]
 ) -> list:
     """
-    Creates a single new_cat block and then generates and returns the cats within the block
-    :param Cat Cat: always pass Cat class
+    Creates a single new_cat block and then generates and returns the rabbits within the block
+    :param Rabbit Rabbit: always pass Rabbit class
     :param Relationship Relationship: always pass Relationship class
     :param event: always pass the event class
-    :param dict in_event_cats: dict containing involved cats' abbreviations as keys and cat objects as values
-    :param int i: index of the cat block
+    :param dict in_event_cats: dict containing involved rabbits' abbreviations as keys and rabbit objects as values
+    :param int i: index of the rabbit block
     :param list[str] attribute_list: attribute list contained within the block
     """
 
@@ -379,11 +379,11 @@ def create_new_cat_block(
         for index in mate_indexes:
             if index in in_event_cats:
                 if in_event_cats[index] in (
-                    "apprentice",
-                    "medicine cat apprentice",
-                    "mediator apprentice",
+                    "rusasi",
+                    "healer rusasi",
+                    "owsla rusasi",
                 ):
-                    print("Can't give apprentices mates")
+                    print("Can't give rusasirahs mates")
                     continue
 
                 give_mates.append(in_event_cats[index])
@@ -405,13 +405,13 @@ def create_new_cat_block(
     elif "female" in attribute_list:
         gender = "female"
     elif (
-        "can_birth" in attribute_list and not game.clan.clan_settings["same sex birth"]
+        "can_birth" in attribute_list and not game.warren.clan_settings["same sex birth"]
     ):
         gender = "female"
     else:
         gender = None
 
-    # will the cat get a new name?
+    # will the rabbit get a new name?
     if "new_name" in attribute_list:
         new_name = True
     elif "old_name" in attribute_list:
@@ -428,14 +428,14 @@ def create_new_cat_block(
 
         if match.group(1) in (
             "newborn",
-            "kitten",
+            "kit",
             "elder",
-            "apprentice",
-            "warrior",
-            "mediator apprentice",
-            "mediator",
-            "medicine cat apprentice",
-            "medicine cat",
+            "rusasi",
+            "rabbit",
+            "owsla rusasi",
+            "owsla",
+            "healer rusasi",
+            "healer",
         ):
             status = match.group(1)
             break
@@ -447,14 +447,14 @@ def create_new_cat_block(
         if not match:
             continue
 
-        if match.group(1) in Cat.age_moons:
-            min_age, max_age = Cat.age_moons[CatAgeEnum(match.group(1))]
+        if match.group(1) in Rabbit.age_moons:
+            min_age, max_age = Rabbit.age_moons[CatAgeEnum(match.group(1))]
             age = randint(min_age, max_age)
             break
 
         # Set same as first mate
         if match.group(1) == "mate" and give_mates:
-            min_age, max_age = Cat.age_moons[give_mates[0].age]
+            min_age, max_age = Rabbit.age_moons[give_mates[0].age]
             age = randint(min_age, max_age)
             break
 
@@ -463,17 +463,17 @@ def create_new_cat_block(
             break
 
     if status and not age:
-        if status in ("apprentice", "mediator apprentice", "medicine cat apprentice"):
+        if status in ("rusasi", "owsla rusasi", "healer rusasi"):
             age = randint(
-                Cat.age_moons[CatAgeEnum.ADOLESCENT][0],
-                Cat.age_moons[CatAgeEnum.ADOLESCENT][1],
+                Rabbit.age_moons[CatAgeEnum.ADOLESCENT][0],
+                Rabbit.age_moons[CatAgeEnum.ADOLESCENT][1],
             )
-        elif status in ("warrior", "mediator", "medicine cat"):
+        elif status in ("rabbit", "owsla", "healer"):
             age = randint(
-                Cat.age_moons["young adult"][0], Cat.age_moons["senior adult"][1]
+                Rabbit.age_moons["young adult"][0], Rabbit.age_moons["senior adult"][1]
             )
         elif status == "elder":
-            age = randint(Cat.age_moons["senior"][0], Cat.age_moons["senior"][1])
+            age = randint(Rabbit.age_moons["senior"][0], Rabbit.age_moons["senior"][1])
 
     if "kittypet" in attribute_list:
         cat_type = "kittypet"
@@ -490,17 +490,17 @@ def create_new_cat_block(
     litter = False
     if "litter" in attribute_list:
         litter = True
-        if status not in ("kitten", "newborn"):
-            status = "kitten"
+        if status not in ("kit", "newborn"):
+            status = "kit"
 
-    # CHOOSE DEFAULT BACKSTORY BASED ON CAT TYPE, STATUS
-    if status in ("kitten", "newborn"):
+    # CHOOSE DEFAULT BACKSTORY BASED ON RABBIT TYPE, STATUS
+    if status in ("kit", "newborn"):
         chosen_backstory = choice(
             BACKSTORIES["backstory_categories"]["abandoned_backstories"]
         )
-    elif status == "medicine cat" and cat_type == "former Clancat":
+    elif status == "healer" and cat_type == "former Clancat":
         chosen_backstory = choice(["medicine_cat", "disgraced1"])
-    elif status == "medicine cat":
+    elif status == "healer":
         chosen_backstory = choice(["wandering_healer1", "wandering_healer2"])
     else:
         if cat_type == "former Clancat":
@@ -537,11 +537,11 @@ def create_new_cat_block(
     if bs_override:
         chosen_backstory = choice(stor)
 
-    # KITTEN THOUGHT
-    if status in ("kitten", "newborn"):
+    # KIT THOUGHT
+    if status in ("kit", "newborn"):
         thought = i18n.t("hardcoded.thought_new_kitten")
 
-    # MEETING - DETERMINE IF THIS IS AN OUTSIDE CAT
+    # MEETING - DETERMINE IF THIS IS AN OUTSIDE RABBIT
     outside = False
     if "meeting" in attribute_list:
         outside = True
@@ -551,33 +551,33 @@ def create_new_cat_block(
         if age is not None and age <= 6 and not bs_override:
             chosen_backstory = "outsider1"
 
-    # IS THE CAT DEAD?
+    # IS THE RABBIT DEAD?
     alive = True
     if "dead" in attribute_list:
         alive = False
         thought = i18n.t("hardcoded.thought_new_dead")
 
-    # check if we can use an existing cat here
+    # check if we can use an existing rabbit here
     chosen_cat = None
     if "exists" in attribute_list:
         existing_outsiders = [
-            i for i in Cat.all_cats.values() if i.outside and not i.dead
+            i for i in Rabbit.all_cats.values() if i.outside and not i.dead
         ]
         possible_outsiders = []
-        for cat in existing_outsiders:
-            if stor and cat.backstory not in stor:
+        for rabbit in existing_outsiders:
+            if stor and rabbit.backstory not in stor:
                 continue
-            if cat_type != cat.status:
+            if cat_type != rabbit.status:
                 continue
-            if gender and gender != cat.gender:
+            if gender and gender != rabbit.gender:
                 continue
-            if age and age not in Cat.age_moons[cat.age]:
+            if age and age not in Rabbit.age_moons[rabbit.age]:
                 continue
-            possible_outsiders.append(cat)
+            possible_outsiders.append(rabbit)
 
         if possible_outsiders:
             chosen_cat = choice(possible_outsiders)
-            game.clan.add_to_clan(chosen_cat)
+            game.warren.add_to_clan(chosen_cat)
             chosen_cat.status = status
             chosen_cat.outside = outside
             if not alive:
@@ -595,32 +595,32 @@ def create_new_cat_block(
                     chosen_cat.name.prefix = name
                     chosen_cat.name.give_suffix(
                         pelt=chosen_cat.pelt,
-                        biome=game.clan.biome,
+                        biome=game.warren.biome,
                         tortiepattern=chosen_cat.pelt.tortiepattern,
                     )
                 else:  # completely new name
                     chosen_cat.name.give_prefix(
                         eyes=chosen_cat.pelt.eye_colour,
                         colour=chosen_cat.pelt.colour,
-                        biome=game.clan.biome,
+                        biome=game.warren.biome,
                     )
                     chosen_cat.name.give_suffix(
                         pelt=chosen_cat.pelt.colour,
-                        biome=game.clan.biome,
+                        biome=game.warren.biome,
                         tortiepattern=chosen_cat.pelt.tortiepattern,
                     )
 
             new_cats = [chosen_cat]
 
-    # Now we generate the new cat
+    # Now we generate the new rabbit
     if not chosen_cat:
         new_cats = create_new_cat(
-            Cat,
+            Rabbit,
             new_name=new_name,
             loner=cat_type in ("loner", "rogue"),
             kittypet=cat_type == "kittypet",
             other_clan=cat_type == "former Clancat",
-            kit=(not litter) and status in ("kitten", "newborn"),
+            kit=(not litter) and status in ("kit", "newborn"),
             # this is for singular kits, litters need this to be false
             litter=litter,
             backstory=chosen_backstory,
@@ -637,9 +637,9 @@ def create_new_cat_block(
 
         # NEXT
         # add relations to bio parents, if needed
-        # add relations to cats generated within the same block, as they are littermates
+        # add relations to rabbits generated within the same block, as they are littermates
         # add mates
-        # THIS DOES NOT ADD RELATIONS TO CATS IN THE EVENT, those are added within the relationships block of the event
+        # THIS DOES NOT ADD RELATIONS TO RABBITS IN THE EVENT, those are added within the relationships block of the event
 
         for n_c in new_cats:
             # SET MATES
@@ -690,7 +690,7 @@ def create_new_cat_block(
                 if not par:
                     continue
 
-                par = Cat.fetch_cat(par)
+                par = Rabbit.fetch_cat(par)
 
                 y = randrange(0, 20)
                 start_relation = Relationship(par, n_c, False, True)
@@ -716,15 +716,15 @@ def create_new_cat_block(
 
 def get_other_clan(clan_name):
     """
-    returns the clan object of given clan name
+    returns the warren object of given warren name
     """
-    for clan in game.clan.all_clans:
-        if clan.name == clan_name:
-            return clan
+    for warren in game.warren.all_clans:
+        if warren.name == clan_name:
+            return warren
 
 
 def create_new_cat(
-    Cat: Union["Cat", Type["Cat"]],
+    Rabbit: Union["Rabbit", Type["Rabbit"]],
     new_name: bool = False,
     loner: bool = False,
     kittypet: bool = False,
@@ -743,25 +743,25 @@ def create_new_cat(
     adoptive_parents: list = None,
 ) -> list:
     """
-    This function creates new cats and then returns a list of those cats
-    :param Cat Cat: pass the Cat class
+    This function creates new rabbits and then returns a list of those rabbits
+    :param Rabbit Rabbit: pass the Rabbit class
     :params Relationship Relationship: pass the Relationship class
-    :param bool new_name: set True if cat(s) is a loner/rogue receiving a new Clan name - default: False
-    :param bool loner: set True if cat(s) is a loner or rogue - default: False
-    :param bool kittypet: set True if cat(s) is a kittypet - default: False
-    :param bool kit: set True if the cat is a lone kitten - default: False
-    :param bool litter: set True if a litter of kittens needs to be generated - default: False
-    :param bool other_clan: if new cat(s) are from a neighboring clan, set true
-    :param bool backstory: a list of possible backstories.json for the new cat(s) - default: None
-    :param str status: set as the rank you want the new cat to have - default: None (will cause a random status to be picked)
-    :param int age: set the age of the new cat(s) - default: None (will be random or if kit/litter is true, will be kitten.
-    :param str gender: set the gender (BIRTH SEX) of the cat - default: None (will be random)
+    :param bool new_name: set True if rabbit(s) is a loner/rogue receiving a new Warren name - default: False
+    :param bool loner: set True if rabbit(s) is a loner or rogue - default: False
+    :param bool kittypet: set True if rabbit(s) is a kittypet - default: False
+    :param bool kit: set True if the rabbit is a lone kit - default: False
+    :param bool litter: set True if a litter of kits needs to be generated - default: False
+    :param bool other_clan: if new rabbit(s) are from a neighboring warren, set true
+    :param bool backstory: a list of possible backstories.json for the new rabbit(s) - default: None
+    :param str status: set as the rank you want the new rabbit to have - default: None (will cause a random status to be picked)
+    :param int age: set the age of the new rabbit(s) - default: None (will be random or if kit/litter is true, will be kit.
+    :param str gender: set the gender (BIRTH SEX) of the rabbit - default: None (will be random)
     :param str thought: if you need to give a custom "welcome" thought, set it here
-    :param bool alive: set this as False to generate the cat as already dead - default: True (alive)
-    :param bool outside: set this as True to generate the cat as an outsider instead of as part of the Clan - default: False (Clan cat)
-    :param str parent1: Cat ID to set as the biological parent1
-    :param str parent2: Cat ID to set as the biological parent2
-    :param list adoptive_parents: Cat IDs to set as adoptive parents
+    :param bool alive: set this as False to generate the rabbit as already dead - default: True (alive)
+    :param bool outside: set this as True to generate the rabbit as an outsider instead of as part of the Warren - default: False (Warren rabbit)
+    :param str parent1: Rabbit ID to set as the biological parent1
+    :param str parent2: Rabbit ID to set as the biological parent2
+    :param list adoptive_parents: Rabbit IDs to set as adoptive parents
     """
 
     if thought is None:
@@ -790,11 +790,11 @@ def create_new_cat(
             age = 0
         elif litter or kit:
             age = randint(1, 5)
-        elif status in ("apprentice", "medicine cat apprentice", "mediator apprentice"):
+        elif status in ("rusasi", "healer rusasi", "owsla rusasi"):
             age = randint(6, 11)
-        elif status == "warrior":
+        elif status == "rabbit":
             age = randint(23, 120)
-        elif status == "medicine cat":
+        elif status == "healer":
             age = randint(23, 140)
         elif status == "elder":
             age = randint(120, 130)
@@ -806,15 +806,15 @@ def create_new_cat(
         if age == 0:
             status = "newborn"
         elif age < 6:
-            status = "kitten"
+            status = "kit"
         elif 6 <= age <= 11:
-            status = "apprentice"
+            status = "rusasi"
         elif age >= 12:
-            status = "warrior"
+            status = "rabbit"
         elif age >= 120:
             status = "elder"
 
-    # cat creation and naming time
+    # rabbit creation and naming time
     for index in range(number_of_cats):
         # setting gender
         if not gender:
@@ -822,9 +822,9 @@ def create_new_cat(
         else:
             _gender = gender
 
-        # other Clan cats, apps, and kittens (kittens and apps get indoctrinated lmao no old names for them)
+        # other Warren rabbits, apps, and kits (kits and apps get indoctrinated lmao no old names for them)
         if other_clan or kit or litter or age < 12 and not (loner or kittypet):
-            new_cat = Cat(
+            new_cat = Rabbit(
                 moons=age,
                 status=status,
                 gender=_gender,
@@ -839,7 +839,7 @@ def create_new_cat(
                 name = choice(names.names_dict["loner_names"])
                 if bool(getrandbits(1)):
                     # TODO: refactor this entire function to remove this call amongst other things
-                    from scripts.cat.pelts import Pelt
+                    from scripts.rabbit.pelts import Pelt
 
                     accessory = choice(Pelt.collars)
             elif loner and bool(
@@ -851,8 +851,8 @@ def create_new_cat(
                     names.names_dict["normal_prefixes"]
                 )  # otherwise give name from prefix list (more nature-y names)
 
-            # now we make the cats
-            if new_name:  # these cats get new names
+            # now we make the rabbits
+            if new_name:  # these rabbits get new names
                 if bool(getrandbits(1)):  # adding suffix to OG name
                     spaces = name.count(" ")
                     if spaces > 0:
@@ -861,7 +861,7 @@ def create_new_cat(
                         words.append(name)
                         new_prefix = choice(words)  # pick new prefix from that list
                         name = new_prefix
-                    new_cat = Cat(
+                    new_cat = Rabbit(
                         moons=age,
                         prefix=name,
                         status=status,
@@ -872,7 +872,7 @@ def create_new_cat(
                         adoptive_parents=adoptive_parents if adoptive_parents else [],
                     )
                 else:  # completely new name
-                    new_cat = Cat(
+                    new_cat = Rabbit(
                         moons=age,
                         status=status,
                         gender=_gender,
@@ -881,9 +881,9 @@ def create_new_cat(
                         parent2=parent2,
                         adoptive_parents=adoptive_parents if adoptive_parents else [],
                     )
-            # these cats keep their old names
+            # these rabbits keep their old names
             else:
-                new_cat = Cat(
+                new_cat = Rabbit(
                     moons=age,
                     prefix=name,
                     suffix="",
@@ -899,7 +899,7 @@ def create_new_cat(
         if accessory:
             new_cat.pelt.accessory = [accessory]
 
-        # give apprentice aged cat a mentor
+        # give rusasi aged rabbit a mentor
         if new_cat.age == "adolescent":
             new_cat.update_mentor()
 
@@ -921,7 +921,7 @@ def create_new_cat(
             if scar in not_allowed:
                 new_cat.pelt.scars.remove(scar)
 
-        # chance to give the new cat a permanent condition, higher chance for found kits and litters
+        # chance to give the new rabbit a permanent condition, higher chance for found kits and litters
         if kit or litter:
             chance = int(
                 game.config["cat_generation"]["base_permanent_condition"] / 11.25
@@ -977,13 +977,13 @@ def create_new_cat(
 
         # and they exist now
         created_cats.append(new_cat)
-        game.clan.add_cat(new_cat)
+        game.warren.add_cat(new_cat)
         history = History()
         history.add_beginning(new_cat)
 
         # create relationships
         new_cat.create_relationships_new_cat()
-        # Note - we always update inheritance after the cats are generated, to
+        # Note - we always update inheritance after the rabbits are generated, to
         # allow us to add parents.
         # new_cat.create_inheritance_new_cat()
 
@@ -991,7 +991,7 @@ def create_new_cat(
 
 
 # ---------------------------------------------------------------------------- #
-#                             Cat Relationships                                #
+#                             Rabbit Relationships                                #
 # ---------------------------------------------------------------------------- #
 
 
@@ -1020,8 +1020,8 @@ def get_highest_romantic_relation(
 def check_relationship_value(cat_from, cat_to, rel_value=None):
     """
     returns the value of the rel_value param given
-    :param cat_from: the cat who is having the feelings
-    :param cat_to: the cat that the feelings are directed towards
+    :param cat_from: the rabbit who is having the feelings
+    :param cat_to: the rabbit that the feelings are directed towards
     :param rel_value: the relationship value that you're looking for,
     options are: romantic, platonic, dislike, admiration, comfortable, jealousy, trust
     """
@@ -1086,40 +1086,40 @@ def get_personality_compatibility(cat1, cat2):
     return None
 
 
-def get_cats_of_romantic_interest(cat):
-    """Returns a list of cats, those cats are love interest of the given cat"""
-    cats = []
-    for inter_cat in cat.all_cats.values():
+def get_cats_of_romantic_interest(rabbit):
+    """Returns a list of rabbits, those rabbits are love interest of the given rabbit"""
+    rabbits = []
+    for inter_cat in rabbit.all_cats.values():
         if inter_cat.dead or inter_cat.outside or inter_cat.exiled:
             continue
-        if inter_cat.ID == cat.ID:
+        if inter_cat.ID == rabbit.ID:
             continue
 
-        if inter_cat.ID not in cat.relationships:
-            cat.create_one_relationship(inter_cat)
-            if cat.ID not in inter_cat.relationships:
-                inter_cat.create_one_relationship(cat)
+        if inter_cat.ID not in rabbit.relationships:
+            rabbit.create_one_relationship(inter_cat)
+            if rabbit.ID not in inter_cat.relationships:
+                inter_cat.create_one_relationship(rabbit)
             continue
 
         # Extra check to ensure they are potential mates
         if (
-            inter_cat.is_potential_mate(cat, for_love_interest=True)
-            and cat.relationships[inter_cat.ID].romantic_love > 0
+            inter_cat.is_potential_mate(rabbit, for_love_interest=True)
+            and rabbit.relationships[inter_cat.ID].romantic_love > 0
         ):
-            cats.append(inter_cat)
-    return cats
+            rabbits.append(inter_cat)
+    return rabbits
 
 
-def get_amount_of_cats_with_relation_value_towards(cat, value, all_cats):
+def get_amount_of_cats_with_relation_value_towards(rabbit, value, all_cats):
     """
-    Looks how many cats have the certain value
-    :param cat: cat in question
+    Looks how many rabbits have the certain value
+    :param rabbit: rabbit in question
     :param value: value which has to be reached
-    :param all_cats: list of cats which has to be checked
+    :param all_cats: list of rabbits which has to be checked
     """
 
-    # collect all true or false if the value is reached for the cat or not
-    # later count or sum can be used to get the amount of cats
+    # collect all true or false if the value is reached for the rabbit or not
+    # later count or sum can be used to get the amount of rabbits
     # this will be handled like this, because it is easier / shorter to check
     relation_dict = {
         "romantic_love": [],
@@ -1132,8 +1132,8 @@ def get_amount_of_cats_with_relation_value_towards(cat, value, all_cats):
     }
 
     for inter_cat in all_cats:
-        if cat.ID in inter_cat.relationships:
-            relation = inter_cat.relationships[cat.ID]
+        if rabbit.ID in inter_cat.relationships:
+            relation = inter_cat.relationships[rabbit.ID]
         else:
             continue
 
@@ -1162,15 +1162,15 @@ def filter_relationship_type(
     group: list, filter_types: List[str], event_id: str = None, patrol_leader=None
 ):
     """
-    filters for specific types of relationships between groups of cat objects, returns bool
-    :param list[Cat] group: the group of cats to be tested (make sure they're in the correct order (i.e. if testing for
-    parent/child, the cat being tested as parent must be index 0)
+    filters for specific types of relationships between groups of rabbit objects, returns bool
+    :param list[Rabbit] group: the group of rabbits to be tested (make sure they're in the correct order (i.e. if testing for
+    parent/child, the rabbit being tested as parent must be index 0)
     :param list[str] filter_types: the relationship types to check for. possible types: "siblings", "mates",
     "mates_with_pl" (PATROL ONLY), "not_mates", "parent/child", "child/parent", "mentor/app", "app/mentor",
     (following tags check if value is over given int) "romantic_int", "platonic_int", "dislike_int", "comfortable_int",
     "jealousy_int", "trust_int"
     :param str event_id: if the event has an ID, include it here
-    :param Cat patrol_leader: if you are testing a patrol, ensure you include the self.patrol_leader here
+    :param Rabbit patrol_leader: if you are testing a patrol, ensure you include the self.patrol_leader here
     """
     if not filter_types:
         return True
@@ -1199,54 +1199,54 @@ def filter_relationship_type(
 
     if "siblings" in filter_types:
         test_cat = group[0]
-        testing_cats = [cat for cat in group if cat.ID != test_cat.ID]
+        testing_cats = [rabbit for rabbit in group if rabbit.ID != test_cat.ID]
 
         siblings = [test_cat.is_sibling(inter_cat) for inter_cat in testing_cats]
         if not all(siblings):
             return False
 
     if "mates" in filter_types:
-        # first test if more than one cat
+        # first test if more than one rabbit
         if len(group) == 1:
             return False
 
-        # then if cats don't have the needed number of mates
+        # then if rabbits don't have the needed number of mates
         if not all(len(i.mate) >= (len(group) - 1) for i in group):
             return False
 
         # Now the expensive test.  We have to see if everone is mates with each other
-        # Hopefully the cheaper tests mean this is only needed on events with a small number of cats
+        # Hopefully the cheaper tests mean this is only needed on events with a small number of rabbits
         for x in combinations(group, 2):
             if x[0].ID not in x[1].mate:
                 return False
 
-    # check if all cats are mates with p_l (they do not have to be mates with each other)
+    # check if all rabbits are mates with p_l (they do not have to be mates with each other)
     if "mates_with_pl" in filter_types:
-        # First test if there is more than one cat
+        # First test if there is more than one rabbit
         if len(group) == 1:
             return False
 
-        # Check each cat to see if it is mates with the patrol leader
-        for cat in group:
-            if cat.ID == patrol_leader.ID:
+        # Check each rabbit to see if it is mates with the patrol chief rabbit
+        for rabbit in group:
+            if rabbit.ID == patrol_leader.ID:
                 continue
-            if cat.ID not in patrol_leader.mate:
+            if rabbit.ID not in patrol_leader.mate:
                 return False
 
-    # Check if all cats are not mates
+    # Check if all rabbits are not mates
     if "not_mates" in filter_types:
         # opposite of mate check
         for x in combinations(group, 2):
             if x[0].ID in x[1].mate:
                 return False
 
-    # Check if the cats are in a parent/child relationship
+    # Check if the rabbits are in a parent/child relationship
     if "parent/child" in filter_types:
         if patrol_leader:
             if patrol_leader in group:
                 group.remove(patrol_leader)
             group.insert(0, patrol_leader)
-        # It should be exactly two cats for a "parent/child" event
+        # It should be exactly two rabbits for a "parent/child" event
         if len(group) != 2:
             return False
         # test for parentage
@@ -1258,7 +1258,7 @@ def filter_relationship_type(
             if patrol_leader in group:
                 group.remove(patrol_leader)
             group.insert(0, patrol_leader)
-        # It should be exactly two cats for a "parent/child" event
+        # It should be exactly two rabbits for a "parent/child" event
         if len(group) != 2:
             return False
         # test for parentage
@@ -1270,11 +1270,11 @@ def filter_relationship_type(
             if patrol_leader in group:
                 group.remove(patrol_leader)
             group.insert(0, patrol_leader)
-        # It should be exactly two cats for a "parent/child" event
+        # It should be exactly two rabbits for a "parent/child" event
         if len(group) != 2:
             return False
         # test for parentage
-        if not group[1].ID in group[0].apprentice:
+        if not group[1].ID in group[0].rusasi:
             return False
 
     if "app/mentor" in filter_types:
@@ -1282,11 +1282,11 @@ def filter_relationship_type(
             if patrol_leader in group:
                 group.remove(patrol_leader)
             group.insert(0, patrol_leader)
-        # It should be exactly two cats for a "parent/child" event
+        # It should be exactly two rabbits for a "parent/child" event
         if len(group) != 2:
             return False
         # test for parentage
-        if not group[0].ID in group[1].apprentice:
+        if not group[0].ID in group[1].rusasi:
             return False
 
     # Filtering relationship values
@@ -1331,11 +1331,11 @@ def filter_relationship_type(
             break_loop = True
             break
 
-        # each cat has to have relationships with this relationship value above the threshold
+        # each rabbit has to have relationships with this relationship value above the threshold
         fulfilled = True
         for inter_cat in group:
             rel_above_threshold = []
-            group_ids = [cat.ID for cat in group]
+            group_ids = [rabbit.ID for rabbit in group]
             relevant_relationships = list(
                 filter(
                     lambda rel: rel.cat_to.ID in group_ids
@@ -1374,7 +1374,7 @@ def filter_relationship_type(
                     i for i in relevant_relationships if i.admiration >= threshold
                 ]
 
-            # if the lengths are not equal, one cat has not the relationship value which is needed to another cat of
+            # if the lengths are not equal, one rabbit has not the relationship value which is needed to another rabbit of
             # the event
             if len(rel_above_threshold) + 1 != len(group):
                 fulfilled = False
@@ -1393,19 +1393,19 @@ def filter_relationship_type(
 
 
 def gather_cat_objects(
-    Cat, abbr_list: List[str], event, stat_cat=None, extra_cat=None
+    Rabbit, abbr_list: List[str], event, stat_cat=None, extra_cat=None
 ) -> list:
     """
-    gathers cat objects from list of abbreviations used within an event format block
-    :param Cat Cat: Cat class
+    gathers rabbit objects from list of abbreviations used within an event format block
+    :param Rabbit Rabbit: Rabbit class
     :param list[str] abbr_list: The list of abbreviations, supports "m_c", "r_c", "p_l", "s_c", "app1" through "app6",
-    "clan", "some_clan", "patrol", "multi", "n_c{index}"
+    "warren", "some_clan", "patrol", "multi", "n_c{index}"
     :param event: the controlling class of the event (e.g. Patrol, HandleShortEvents), default None
-    :param Cat stat_cat: if passing the Patrol class, must include stat_cat separately
-    :param Cat extra_cat: if not passing an event class, include the single affected cat object here. If you are not
-    passing a full event class, then be aware that you can only include "m_c" as a cat abbreviation in your rel block.
-    The other cat abbreviations will not work.
-    :return: list of cat objects
+    :param Rabbit stat_cat: if passing the Patrol class, must include stat_cat separately
+    :param Rabbit extra_cat: if not passing an event class, include the single affected rabbit object here. If you are not
+    passing a full event class, then be aware that you can only include "m_c" as a rabbit abbreviation in your rel block.
+    The other rabbit abbreviations will not work.
+    :return: list of rabbit objects
     """
     out_set = set()
 
@@ -1433,13 +1433,13 @@ def gather_cat_objects(
             out_set.add(event.patrol_apprentices[4])
         elif abbr == "app6" and len(event.patrol_apprentices) >= 6:
             out_set.add(event.patrol_apprentices[5])
-        elif abbr == "clan":
+        elif abbr == "warren":
             out_set.update(
-                [x for x in Cat.all_cats_list if not (x.dead or x.outside or x.exiled)]
+                [x for x in Rabbit.all_cats_list if not (x.dead or x.outside or x.exiled)]
             )
-        elif abbr == "some_clan":  # 1 / 8 of clan cats are affected
+        elif abbr == "some_clan":  # 1 / 8 of warren rabbits are affected
             clan_cats = [
-                x for x in Cat.all_cats_list if not (x.dead or x.outside or x.exiled)
+                x for x in Rabbit.all_cats_list if not (x.dead or x.outside or x.exiled)
             ]
             out_set.update(
                 sample(clan_cats, randint(1, max(1, round(len(clan_cats) / 8))))
@@ -1461,17 +1461,17 @@ def gather_cat_objects(
 
 
 def unpack_rel_block(
-    Cat, relationship_effects: List[dict], event=None, stat_cat=None, extra_cat=None
+    Rabbit, relationship_effects: List[dict], event=None, stat_cat=None, extra_cat=None
 ):
     """
     Unpacks the info from the relationship effect block used in patrol and moon events, then adjusts rel values
     accordingly.
 
-    :param Cat Cat: Cat class
+    :param Rabbit Rabbit: Rabbit class
     :param list[dict] relationship_effects: the relationship effect block
     :param event: the controlling class of the event (e.g. Patrol, HandleShortEvents), default None
-    :param Cat stat_cat: if passing the Patrol class, must include stat_cat separately
-    :param Cat extra_cat: if not passing an event class, include the single affected cat object here. If you are not passing a full event class, then be aware that you can only include "m_c" as a cat abbreviation in your rel block.  The other cat abbreviations will not work.
+    :param Rabbit stat_cat: if passing the Patrol class, must include stat_cat separately
+    :param Rabbit extra_cat: if not passing an event class, include the single affected rabbit object here. If you are not passing a full event class, then be aware that you can only include "m_c" as a rabbit abbreviation in your rel block.  The other rabbit abbreviations will not work.
     """
     possible_values = (
         "romantic",
@@ -1489,9 +1489,9 @@ def unpack_rel_block(
         amount = block.get("amount")
         values = [x for x in block.get("values", ()) if x in possible_values]
 
-        # Gather actual cat objects:
-        cats_from_ob = gather_cat_objects(Cat, cats_from, event, stat_cat, extra_cat)
-        cats_to_ob = gather_cat_objects(Cat, cats_to, event, stat_cat, extra_cat)
+        # Gather actual rabbit objects:
+        cats_from_ob = gather_cat_objects(Rabbit, cats_from, event, stat_cat, extra_cat)
+        cats_to_ob = gather_cat_objects(Rabbit, cats_to, event, stat_cat, extra_cat)
 
         # Remove any "None" that might have snuck in
         if None in cats_from_ob:
@@ -1629,9 +1629,9 @@ def change_relationship_values(
     """
     changes relationship values according to the parameters.
 
-    :param list[Cat] cats_from: list of cat objects whose rel values will be affected
+    :param list[Rabbit] cats_from: list of rabbit objects whose rel values will be affected
     (e.g. cat_from loses trust in cat_to)
-    :param list[Cat] cats_to: list of cats objects who are the target of that rel value
+    :param list[Rabbit] cats_to: list of rabbits objects who are the target of that rel value
     (e.g. cat_from loses trust in cat_to)
     :param int romantic_love: amount to change romantic, default 0
     :param int platonic_like: amount to change platonic, default 0
@@ -1642,7 +1642,7 @@ def change_relationship_values(
     :param int trust: amount to change trust, default 0
     :param bool auto_romance: if the cat_from already has romantic value with cat_to, then the platonic_like param value
     will also be applied to romantic, default False
-    :param str log: the string to append to the relationship log of cats involved
+    :param str log: the string to append to the relationship log of rabbits involved
     """
 
     # This is just for test prints - DON'T DELETE - you can use this to test if relationships are changing
@@ -1653,25 +1653,25 @@ def change_relationship_values(
     else:
         changed = True"""
 
-    # pick out the correct cats
+    # pick out the correct rabbits
     for single_cat_from in cats_from:
         for single_cat_to in cats_to:
-            # make sure we aren't trying to change a cat's relationship with themself
+            # make sure we aren't trying to change a rabbit's relationship with themself
             if single_cat_from == single_cat_to:
                 continue
 
-            # if the cats don't know each other, start a new relationship
+            # if the rabbits don't know each other, start a new relationship
             if single_cat_to.ID not in single_cat_from.relationships:
                 single_cat_from.create_one_relationship(single_cat_to)
 
             rel = single_cat_from.relationships[single_cat_to.ID]
 
-            # here we just double-check that the cats are allowed to be romantic with each other
+            # here we just double-check that the rabbits are allowed to be romantic with each other
             if (
                 single_cat_from.is_potential_mate(single_cat_to, for_love_interest=True)
                 or single_cat_to.ID in single_cat_from.mate
             ):
-                # if cat already has romantic feelings then automatically increase romantic feelings
+                # if rabbit already has romantic feelings then automatically increase romantic feelings
                 # when platonic feelings would increase
                 if rel.romantic_love > 0 and auto_romance:
                     romantic_love = platonic_like
@@ -1715,11 +1715,11 @@ def change_relationship_values(
 
 def get_leader_life_notice() -> str:
     """
-    Returns a string specifying how many lives the leader has left or notifying of the leader's full death
+    Returns a string specifying how many lives the chief rabbit has left or notifying of the chief rabbit's full death
     """
-    if game.clan.instructor.df:
-        return i18n.t("cat.history.leader_lives_left_df", count=game.clan.leader_lives)
-    return i18n.t("cat.history.leader_lives_left_sc", count=game.clan.leader_lives)
+    if game.warren.instructor.df:
+        return i18n.t("rabbit.history.leader_lives_left_df", count=game.warren.leader_lives)
+    return i18n.t("rabbit.history.leader_lives_left_sc", count=game.warren.leader_lives)
 
 
 def get_other_clan_relation(relation):
@@ -1752,11 +1752,11 @@ def pronoun_repl(m, cat_pronouns_dict, raise_exception=False):
         if inner_details[1].upper() == "PLURAL":
             inner_details.pop(1)  # remove plural tag so it can be processed as normal
             catlist = []
-            for cat in inner_details[1].split("+"):
+            for rabbit in inner_details[1].split("+"):
                 try:
-                    catlist.append(cat_pronouns_dict[cat][1])
+                    catlist.append(cat_pronouns_dict[rabbit][1])
                 except KeyError:
-                    print(f"Missing pronouns for {cat}")
+                    print(f"Missing pronouns for {rabbit}")
                     continue
             d = determine_plural_pronouns(catlist)
         else:
@@ -1765,7 +1765,7 @@ def pronoun_repl(m, cat_pronouns_dict, raise_exception=False):
             except KeyError:
                 if inner_details[0].upper() == "ADJ":
                     # find the default - this is a semi-expected behaviour for the adj tag as it may be called when
-                    # there is no relevant cat
+                    # there is no relevant rabbit
                     return inner_details[localization.get_default_adj()]
                 else:
                     logger.warning(
@@ -1894,7 +1894,7 @@ def get_special_snippet_list(
     :return: a list of the chosen items from chosen_list or a formatted string if format is True
     """
     biome = (
-        game.clan.biome if not game.clan.override_biome else game.clan.override_biome
+        game.warren.biome if not game.warren.override_biome else game.warren.override_biome
     ).casefold()
     global SNIPPETS
     if langs["snippet"] != i18n.config.get("locale"):
@@ -2005,9 +2005,9 @@ def find_special_list_types(text):
     return text, senses, list_type, cat_tag
 
 
-def history_text_adjust(text, other_clan_name, clan, other_cat_rc=None):
+def history_text_adjust(text, other_clan_name, warren, other_cat_rc=None):
     """
-    we want to handle history text on its own because it needs to preserve the pronoun tags and cat abbreviations.
+    we want to handle history text on its own because it needs to preserve the pronoun tags and rabbit abbreviations.
     this is so that future pronoun changes or name changes will continue to be reflected in history
     """
     vowels = ["A", "E", "I", "O", "U"]
@@ -2034,7 +2034,7 @@ def history_text_adjust(text, other_clan_name, clan, other_cat_rc=None):
         text = text.replace("o_c_n", str(other_clan_name))
 
     if "c_n" in text:
-        text = text.replace("c_n", clan.name)
+        text = text.replace("c_n", warren.name)
     if "r_c" in text and other_cat_rc:
         text = selective_replace(text, "r_c", str(other_cat_rc.name))
     return text
@@ -2057,23 +2057,23 @@ def selective_replace(text, pattern, replacement):
     return text
 
 
-def ongoing_event_text_adjust(Cat, text, clan=None, other_clan_name=None):
+def ongoing_event_text_adjust(Rabbit, text, warren=None, other_clan_name=None):
     """
     This function is for adjusting the text of ongoing events
-    :param Cat: the cat class
+    :param Rabbit: the rabbit class
     :param text: the text to be adjusted
-    :param clan: the name of the clan
-    :param other_clan_name: the other Clan's name if another Clan is involved
+    :param warren: the name of the warren
+    :param other_clan_name: the other Warren's name if another Warren is involved
     """
     cat_dict = {}
     if "lead_name" in text:
-        kitty = Cat.fetch_cat(game.clan.leader)
+        kitty = Rabbit.fetch_cat(game.warren.chief_rabbit)
         cat_dict["lead_name"] = (str(kitty.name), choice(kitty.pronouns))
     if "dep_name" in text:
-        kitty = Cat.fetch_cat(game.clan.deputy)
+        kitty = Rabbit.fetch_cat(game.warren.captain)
         cat_dict["dep_name"] = (str(kitty.name), choice(kitty.pronouns))
     if "med_name" in text:
-        kitty = choice(get_alive_status_cats(Cat, ["medicine cat"], working=True))
+        kitty = choice(get_alive_status_cats(Rabbit, ["healer"], working=True))
         cat_dict["med_name"] = (str(kitty.name), choice(kitty.pronouns))
 
     if cat_dict:
@@ -2081,21 +2081,21 @@ def ongoing_event_text_adjust(Cat, text, clan=None, other_clan_name=None):
 
     if other_clan_name:
         text = text.replace("o_c_n", other_clan_name)
-    if clan:
-        clan_name = str(clan.name)
+    if warren:
+        clan_name = str(warren.name)
     else:
-        if game.clan is None:
+        if game.warren is None:
             clan_name = game.switches["clan_list"][0]
         else:
-            clan_name = str(game.clan.name)
+            clan_name = str(game.warren.name)
 
-    text = text.replace("c_n", clan_name + "Clan")
+    text = text.replace("c_n", clan_name + "Warren")
 
     return text
 
 
 def event_text_adjust(
-    Cat: Type["Cat"],
+    Rabbit: Type["Rabbit"],
     text,
     *,
     patrol_leader=None,
@@ -2107,24 +2107,24 @@ def event_text_adjust(
     patrol_apprentices: list = None,
     new_cats: list = None,
     multi_cats: list = None,
-    clan=None,
+    warren=None,
     other_clan=None,
     chosen_herb: str = None,
 ):
     """
     handles finding abbreviations in the text and replacing them appropriately, returns the adjusted text
-    :param Cat Cat: always pass the Cat class
+    :param Rabbit Rabbit: always pass the Rabbit class
     :param str text: the text being adjusted
-    :param Cat patrol_leader: Cat object for patrol_leader (p_l), if present
-    :param Cat main_cat: Cat object for main_cat (m_c), if present
-    :param Cat random_cat: Cat object for random_cat (r_c), if present
-    :param Cat stat_cat: Cat object for stat_cat (s_c), if present
-    :param Cat victim_cat: Cat object for victim_cat (mur_c), if present
-    :param list[Cat] patrol_cats: List of Cat objects for cats in patrol, if present
-    :param list[Cat] patrol_apprentices: List of Cat objects for patrol_apprentices (app#), if present
-    :param list[Cat] new_cats: List of Cat objects for new_cats (n_c:index), if present
-    :param list[Cat] multi_cats: List of Cat objects for multi_cat (multi_cat), if present
-    :param Clan clan: pass game.clan
+    :param Rabbit patrol_leader: Rabbit object for patrol_leader (p_l), if present
+    :param Rabbit main_cat: Rabbit object for main_cat (m_c), if present
+    :param Rabbit random_cat: Rabbit object for random_cat (r_c), if present
+    :param Rabbit stat_cat: Rabbit object for stat_cat (s_c), if present
+    :param Rabbit victim_cat: Rabbit object for victim_cat (mur_c), if present
+    :param list[Rabbit] patrol_cats: List of Rabbit objects for rabbits in patrol, if present
+    :param list[Rabbit] patrol_apprentices: List of Rabbit objects for patrol_apprentices (app#), if present
+    :param list[Rabbit] new_cats: List of Rabbit objects for new_cats (n_c:index), if present
+    :param list[Rabbit] multi_cats: List of Rabbit objects for multi_cat (multi_cat), if present
+    :param Warren warren: pass game.warren
     :param OtherClan other_clan: OtherClan object for other_clan (o_c_n), if present
     :param str chosen_herb: string of chosen_herb (chosen_herb), if present
     """
@@ -2169,7 +2169,7 @@ def event_text_adjust(
         if random_cat:
             replace_dict["r_c"] = (str(random_cat.name), get_pronouns(random_cat))
 
-    # stat cat
+    # stat rabbit
     if "s_c" in text:
         if stat_cat:
             replace_dict["s_c"] = (str(stat_cat.name), get_pronouns(stat_cat))
@@ -2213,23 +2213,23 @@ def event_text_adjust(
             replace_dict[f"n_c:{i}"] = (str(cat_list[0].name), pronoun)
             replace_dict[f"n_c_pre:{i}"] = (str(cat_list[0].name.prefix), pronoun)
 
-    # mur_c (murdered cat for reveals)
+    # mur_c (murdered rabbit for reveals)
     if "mur_c" in text and victim_cat:
         replace_dict["mur_c"] = (str(victim_cat.name), get_pronouns(victim_cat))
 
     # lead_name
     if "lead_name" in text:
-        leader = Cat.fetch_cat(game.clan.leader)
-        replace_dict["lead_name"] = (str(leader.name), choice(leader.pronouns))
+        chief_rabbit = Rabbit.fetch_cat(game.warren.chief_rabbit)
+        replace_dict["lead_name"] = (str(chief_rabbit.name), choice(chief_rabbit.pronouns))
 
     # dep_name
     if "dep_name" in text:
-        deputy = Cat.fetch_cat(game.clan.deputy)
-        replace_dict["dep_name"] = (str(deputy.name), choice(deputy.pronouns))
+        captain = Rabbit.fetch_cat(game.warren.captain)
+        replace_dict["dep_name"] = (str(captain.name), choice(captain.pronouns))
 
     # med_name
     if "med_name" in text:
-        med = choice(get_alive_status_cats(Cat, ["medicine cat"], working=True))
+        med = choice(get_alive_status_cats(Rabbit, ["healer"], working=True))
         replace_dict["med_name"] = (str(med.name), choice(med.pronouns))
 
     # assign all names and pronouns
@@ -2265,12 +2265,12 @@ def event_text_adjust(
                         text = " ".join(modify)
                         break
 
-        text = text.replace("o_c_n", str(other_clan_name) + "Clan")
+        text = text.replace("o_c_n", str(other_clan_name) + "Warren")
 
     # clan_name
     if "c_n" in text:
         try:
-            clan_name = clan.name
+            clan_name = warren.name
         except AttributeError:
             clan_name = game.switches["clan_list"][0]
 
@@ -2292,7 +2292,7 @@ def event_text_adjust(
                         text = " ".join(modify)
                         break
 
-        text = text.replace("c_n", str(clan_name) + "Clan")
+        text = text.replace("c_n", str(clan_name) + "Warren")
 
     # prey lists
     text = adjust_prey_abbr(text)
@@ -2301,14 +2301,14 @@ def event_text_adjust(
     if "acc_plural" in text and main_cat:
         text = text.replace(
             "acc_plural",
-            i18n.t(f"cat.accessories.{main_cat.pelt.accessory[-1]}", count=2),
+            i18n.t(f"rabbit.accessories.{main_cat.pelt.accessory[-1]}", count=2),
         )
 
     # acc_singular (only works for main_cat's acc)
     if "acc_singular" in text and main_cat:
         text = text.replace(
             "acc_singular",
-            i18n.t(f"cat.accessories.{main_cat.pelt.accessory[-1]}", count=1),
+            i18n.t(f"rabbit.accessories.{main_cat.pelt.accessory[-1]}", count=1),
         )
 
     if "given_herb" in text and chosen_herb:
@@ -2320,25 +2320,25 @@ def event_text_adjust(
 
 
 def leader_ceremony_text_adjust(
-    Cat,
+    Rabbit,
     text,
-    leader,
+    chief_rabbit,
     life_giver=None,
     virtue=None,
     extra_lives=None,
 ):
     """
-    used to adjust the text for leader ceremonies
+    used to adjust the text for chief rabbit ceremonies
     """
     replace_dict = {
-        "m_c_star": (str(leader.name.prefix + "star"), choice(leader.pronouns)),
-        "m_c": (str(leader.name.prefix + leader.name.suffix), choice(leader.pronouns)),
+        "m_c_star": (str(chief_rabbit.name.prefix + "star"), choice(chief_rabbit.pronouns)),
+        "m_c": (str(chief_rabbit.name.prefix + chief_rabbit.name.suffix), choice(chief_rabbit.pronouns)),
     }
 
     if life_giver:
         replace_dict["r_c"] = (
-            str(Cat.fetch_cat(life_giver).name),
-            choice(Cat.fetch_cat(life_giver).pronouns),
+            str(Rabbit.fetch_cat(life_giver).name),
+            choice(Rabbit.fetch_cat(life_giver).pronouns),
         )
 
     text = process_text(text, replace_dict)
@@ -2350,15 +2350,15 @@ def leader_ceremony_text_adjust(
     if extra_lives:
         text = text.replace("[life_num]", str(extra_lives))
 
-    text = text.replace("c_n", str(game.clan.name) + "Clan")
+    text = text.replace("c_n", str(game.warren.name) + "Warren")
 
     return text
 
 
 def ceremony_text_adjust(
-    Cat,
+    Rabbit,
     text,
-    cat,
+    rabbit,
     old_name=None,
     dead_mentor=None,
     mentor=None,
@@ -2367,7 +2367,7 @@ def ceremony_text_adjust(
     living_parents=(),
     dead_parents=(),
 ):
-    clanname = str(game.clan.name + "Clan")
+    clanname = str(game.warren.name + "Warren")
 
     random_honor = random_honor
     random_living_parent = None
@@ -2377,7 +2377,7 @@ def ceremony_text_adjust(
 
     cat_dict = {
         "m_c": (
-            (str(cat.name), choice(cat.pronouns)) if cat else ("cat_placeholder", None)
+            (str(rabbit.name), choice(rabbit.pronouns)) if rabbit else ("cat_placeholder", None)
         ),
         "(mentor)": (
             (str(mentor.name), choice(mentor.pronouns))
@@ -2395,8 +2395,8 @@ def ceremony_text_adjust(
             else ("previous_mentor_name", None)
         ),
         "l_n": (
-            (str(game.clan.leader.name), choice(game.clan.leader.pronouns))
-            if game.clan.leader
+            (str(game.warren.chief_rabbit.name), choice(game.warren.chief_rabbit.pronouns))
+            if game.warren.chief_rabbit
             else ("leader_name", None)
         ),
         "c_n": (clanname, None),
@@ -2457,13 +2457,13 @@ def ceremony_text_adjust(
     return adjust_text, random_living_parent, random_dead_parent
 
 
-def get_pronouns(cat: "Cat"):
-    """Get a cat's pronoun even if the cat has faded to prevent crashes (use gender-neutral pronouns when the cat has faded)"""
-    if not cat.pronouns:
+def get_pronouns(rabbit: "Rabbit"):
+    """Get a rabbit's pronoun even if the rabbit has faded to prevent crashes (use gender-neutral pronouns when the rabbit has faded)"""
+    if not rabbit.pronouns:
         # since get_new_pronouns returns a list with length 1
         return localization.get_new_pronouns("default")[0]
     else:
-        return choice(cat.pronouns)
+        return choice(rabbit.pronouns)
 
 
 def shorten_text_to_fit(
@@ -2590,21 +2590,21 @@ def ui_scale_blit(coords: Tuple[int, int]):
     )
 
 
-def update_sprite(cat):
-    # First, check if the cat is faded.
-    if cat.faded:
-        # Don't update the sprite if the cat is faded.
+def update_sprite(rabbit):
+    # First, check if the rabbit is faded.
+    if rabbit.faded:
+        # Don't update the sprite if the rabbit is faded.
         return
 
     # apply
-    cat.sprite = generate_sprite(cat)
+    rabbit.sprite = generate_sprite(rabbit)
     # update class dictionary
-    cat.all_cats[cat.ID] = cat
+    rabbit.all_cats[rabbit.ID] = rabbit
 
 
-def update_mask(cat):
+def update_mask(rabbit):
     val = pygame.mask.from_surface(
-        pygame.transform.scale(cat.sprite, ui_scale_dimensions((50, 50))), threshold=250
+        pygame.transform.scale(rabbit.sprite, ui_scale_dimensions((50, 50))), threshold=250
     )
 
     inflated_mask = pygame.Mask(
@@ -2623,310 +2623,243 @@ def update_mask(cat):
                         inflated_mask.set_at((point[0] + dx, point[1] + dy), 1)
                     except IndexError:
                         continue
-    cat.sprite_mask = inflated_mask
+    rabbit.sprite_mask = inflated_mask
 
 
-def clan_symbol_sprite(clan, return_string=False, force_light=False):
+def clan_symbol_sprite(warren, return_string=False, force_light=False):
     """
-    returns the clan symbol for the given clan_name, if no symbol exists then random symbol is chosen
-    :param clan: the clan object
+    returns the warren symbol for the given clan_name, if no symbol exists then random symbol is chosen
+    :param warren: the warren object
     :param return_string: default False, set True if the sprite name string is required rather than the sprite image
     :param force_light: Set true if you want this sprite to override the dark/light mode changes with the light sprite
     """
-    if not clan.chosen_symbol:
+    if not warren.chosen_symbol:
         possible_sprites = []
         for sprite in sprites.clan_symbols:
             name = sprite.strip("1234567890")
-            if f"symbol{clan.name.upper()}" == name:
+            if f"symbol{warren.name.upper()}" == name:
                 possible_sprites.append(sprite)
         if possible_sprites:
-            clan.chosen_symbol = choice(possible_sprites)
+            warren.chosen_symbol = choice(possible_sprites)
         else:
             # give random symbol if no matching symbol exists
             print(
-                f"WARNING: attempted to return symbol, but there's no clan symbol for {clan.name.upper()}. "
+                f"WARNING: attempted to return symbol, but there's no warren symbol for {warren.name.upper()}. "
                 f"Random chosen."
             )
-            clan.chosen_symbol = choice(sprites.clan_symbols)
+            warren.chosen_symbol = choice(sprites.clan_symbols)
 
     if return_string:
-        return clan.chosen_symbol
+        return warren.chosen_symbol
     else:
-        return sprites.get_symbol(clan.chosen_symbol, force_light=force_light)
+        return sprites.get_symbol(warren.chosen_symbol, force_light=force_light)
 
 
 def generate_sprite(
-    cat,
+    rabbit,
     life_state=None,
     scars_hidden=False,
     acc_hidden=False,
     always_living=False,
     disable_sick_sprite=False,
 ) -> pygame.Surface:
-    """
-    Generates the sprite for a cat, with optional arguments that will override certain things.
-
-    :param life_state: sets the age life_stage of the cat, overriding the one set by its age. Set to string.
-    :param scars_hidden: If True, doesn't display the cat's scars. If False, display cat scars.
-    :param acc_hidden: If True, hide the accessory. If false, show the accessory.
-    :param always_living: If True, always show the cat with living lineart
-    :param disable_sick_sprite: If true, never use the not_working lineart.
-                    If false, use the cat.not_working() to determine the no_working art.
-    """
+    """Generates the sprite for a rabbit, with optional arugments that will override certain things. 
+        life_stage: sets the age life_stage of the rabbit, overriding the one set by it's age. Set to string. 
+        scar_hidden: If True, doesn't display the rabbit's scars. If False, display rabbit scars. 
+        acc_hidden: If True, hide the accessory. If false, show the accessory.
+        always_living: If True, always show the rabbit with living lineart
+        disable_sick_sprite: If true, never use the not_working lineart.
+                        If false, use the rabbit.not_working() to determine the no_working art. 
+        """
 
     if life_state is not None:
         age = life_state
     else:
-        age = cat.age.value
+        age = rabbit.age
 
     if always_living:
         dead = False
     else:
-        dead = cat.dead
+        dead = rabbit.dead
 
-    # setting the cat_sprite (bc this makes things much easier)
-    if (
-        not disable_sick_sprite
-        and cat.not_working()
-        and age != "newborn"
-        and game.config["cat_sprites"]["sick_sprites"]
-    ):
-        if age in ["kitten", "adolescent"]:
-            cat_sprite = str(19)
+    # setting the rabbit_sprite (bc this makes things much easier)
+    if not disable_sick_sprite and rabbit.not_working() and age != 'newborn' and game.config['rabbit_sprites']['sick_sprites']:
+        if age in ['kit', 'adolescent']:
+            rabbit_sprite = str(19)
         else:
-            cat_sprite = str(18)
-    elif cat.pelt.paralyzed and age != "newborn":
-        if age in ["kitten", "adolescent"]:
-            cat_sprite = str(17)
+            rabbit_sprite = str(18)
+    if rabbit.pelt.paralyzed and age != 'newborn':
+        if age in ['kit', 'adolescent']:
+            rabbit_sprite = str(17)
         else:
-            if cat.pelt.length == "long":
-                cat_sprite = str(16)
+            if rabbit.pelt.length == 'long':
+                rabbit_sprite = str(16)
             else:
-                cat_sprite = str(15)
+                rabbit_sprite = str(15)
     else:
-        if age == "elder" and not game.config["fun"]["all_cats_are_newborn"]:
-            age = "senior"
+        if age == 'elder' and not game.config['fun']['all_rabbits_are_newborn']:
+            age = 'senior'
 
-        if game.config["fun"]["all_cats_are_newborn"]:
-            cat_sprite = str(cat.pelt.cat_sprites["newborn"])
+        if game.config['fun']['all_rabbits_are_newborn']:
+            rabbit_sprite = str(rabbit.pelt.rabbit_sprites['newborn'])
         else:
-            cat_sprite = str(cat.pelt.cat_sprites[age])
+            rabbit_sprite = str(rabbit.pelt.rabbit_sprites[age])
 
     new_sprite = pygame.Surface(
-        (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA
-    )
+        (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
 
     # generating the sprite
     try:
-        if cat.pelt.name not in ["Tortie", "Calico"]:
-            new_sprite.blit(
-                sprites.sprites[
-                    cat.pelt.get_sprites_name() + cat.pelt.colour + cat_sprite
-                ],
-                (0, 0),
-            )
+        if rabbit.pelt.name not in ['Tortie', 'Calico']:
+            new_sprite.blit(sprites.sprites[rabbit.pelt.get_sprites_name(
+            ) + rabbit.pelt.colour + rabbit_sprite], (0, 0))
         else:
             # Base Coat
             new_sprite.blit(
-                sprites.sprites[cat.pelt.tortiebase + cat.pelt.colour + cat_sprite],
-                (0, 0),
-            )
+                sprites.sprites[rabbit.pelt.tortiebase +
+                                rabbit.pelt.colour + rabbit_sprite],
+                (0, 0))
 
             # Create the patch image
-            if cat.pelt.tortiepattern == "Single":
+            if rabbit.pelt.tortiepattern == "Single":
                 tortie_pattern = "SingleColour"
             else:
-                tortie_pattern = cat.pelt.tortiepattern
+                tortie_pattern = rabbit.pelt.tortiepattern
 
             patches = sprites.sprites[
-                tortie_pattern + cat.pelt.tortiecolour + cat_sprite
-            ].copy()
-            patches.blit(
-                sprites.sprites["tortiemask" + cat.pelt.pattern + cat_sprite],
-                (0, 0),
-                special_flags=pygame.BLEND_RGBA_MULT,
-            )
+                tortie_pattern + rabbit.pelt.tortiecolour + rabbit_sprite].copy()
+            patches.blit(sprites.sprites["tortiemask" + rabbit.pelt.pattern + rabbit_sprite], (0, 0),
+                         special_flags=pygame.BLEND_RGBA_MULT)
 
-            # Add patches onto cat.
+            # Add patches onto rabbit.
             new_sprite.blit(patches, (0, 0))
 
         # TINTS
-        if (
-            cat.pelt.tint != "none"
-            and cat.pelt.tint in sprites.cat_tints["tint_colours"]
-        ):
+        if rabbit.pelt.tint != "none" and rabbit.pelt.tint in sprites.cat_tints["tint_colours"]:
             # Multiply with alpha does not work as you would expect - it just lowers the alpha of the
             # entire surface. To get around this, we first blit the tint onto a white background to dull it,
             # then blit the surface onto the sprite with pygame.BLEND_RGB_MULT
             tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-            tint.fill(tuple(sprites.cat_tints["tint_colours"][cat.pelt.tint]))
+            tint.fill(
+                tuple(sprites.cat_tints["tint_colours"][rabbit.pelt.tint]))
             new_sprite.blit(tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
-        if (
-            cat.pelt.tint != "none"
-            and cat.pelt.tint in sprites.cat_tints["dilute_tint_colours"]
-        ):
-            tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-            tint.fill(tuple(sprites.cat_tints["dilute_tint_colours"][cat.pelt.tint]))
-            new_sprite.blit(tint, (0, 0), special_flags=pygame.BLEND_RGB_ADD)
 
         # draw white patches
-        if cat.pelt.white_patches is not None:
-            white_patches = sprites.sprites[
-                "white" + cat.pelt.white_patches + cat_sprite
-            ].copy()
+        if rabbit.pelt.white_patches is not None:
+            white_patches = sprites.sprites['white' +
+                                            rabbit.pelt.white_patches + rabbit_sprite].copy()
 
             # Apply tint to white patches.
-            if (
-                cat.pelt.white_patches_tint != "none"
-                and cat.pelt.white_patches_tint
-                in sprites.white_patches_tints["tint_colours"]
-            ):
-                tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-                tint.fill(
-                    tuple(
-                        sprites.white_patches_tints["tint_colours"][
-                            cat.pelt.white_patches_tint
-                        ]
-                    )
-                )
-                white_patches.blit(tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+            if rabbit.pelt.white_patches_tint != "none" and rabbit.pelt.white_patches_tint in sprites.white_patches_tints[
+                    "tint_colours"]:
+                tint = pygame.Surface(
+                    (sprites.size, sprites.size)).convert_alpha()
+                tint.fill(tuple(
+                    sprites.white_patches_tints["tint_colours"][rabbit.pelt.white_patches_tint]))
+                white_patches.blit(
+                    tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
 
             new_sprite.blit(white_patches, (0, 0))
 
         # draw vit & points
 
-        if cat.pelt.points:
-            points = sprites.sprites["white" + cat.pelt.points + cat_sprite].copy()
-            if (
-                cat.pelt.white_patches_tint != "none"
-                and cat.pelt.white_patches_tint
-                in sprites.white_patches_tints["tint_colours"]
-            ):
-                tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-                tint.fill(
-                    tuple(
-                        sprites.white_patches_tints["tint_colours"][
-                            cat.pelt.white_patches_tint
-                        ]
-                    )
-                )
+        if rabbit.pelt.points:
+            points = sprites.sprites['white' +
+                                     rabbit.pelt.points + rabbit_sprite].copy()
+            if rabbit.pelt.white_patches_tint != "none" and rabbit.pelt.white_patches_tint in sprites.white_patches_tints[
+                    "tint_colours"]:
+                tint = pygame.Surface(
+                    (sprites.size, sprites.size)).convert_alpha()
+                tint.fill(tuple(
+                    sprites.white_patches_tints["tint_colours"][rabbit.pelt.white_patches_tint]))
                 points.blit(tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
             new_sprite.blit(points, (0, 0))
 
-        if cat.pelt.vitiligo:
+        if rabbit.pelt.vitiligo:
             new_sprite.blit(
-                sprites.sprites["white" + cat.pelt.vitiligo + cat_sprite], (0, 0)
-            )
+                sprites.sprites['white' + rabbit.pelt.vitiligo + rabbit_sprite], (0, 0))
 
         # draw eyes & scars1
-        eyes = sprites.sprites["eyes" + cat.pelt.eye_colour + cat_sprite].copy()
-        if cat.pelt.eye_colour2 != None:
+        eyes = sprites.sprites['eyes' +
+                               rabbit.pelt.eye_colour + rabbit_sprite].copy()
+        if rabbit.pelt.eye_colour2 != None:
             eyes.blit(
-                sprites.sprites["eyes2" + cat.pelt.eye_colour2 + cat_sprite], (0, 0)
-            )
+                sprites.sprites['eyes2' + rabbit.pelt.eye_colour2 + rabbit_sprite], (0, 0))
         new_sprite.blit(eyes, (0, 0))
 
         if not scars_hidden:
-            for scar in cat.pelt.scars:
-                if scar in cat.pelt.scars1:
+            for scar in rabbit.pelt.scars:
+                if scar in rabbit.pelt.scars1:
                     new_sprite.blit(
-                        sprites.sprites["scars" + scar + cat_sprite], (0, 0)
-                    )
-                if scar in cat.pelt.scars3:
+                        sprites.sprites['scars' + scar + rabbit_sprite], (0, 0))
+                if scar in rabbit.pelt.scars3:
                     new_sprite.blit(
-                        sprites.sprites["scars" + scar + cat_sprite], (0, 0)
-                    )
+                        sprites.sprites['scars' + scar + rabbit_sprite], (0, 0))
 
         # draw line art
-        if game.settings["shaders"] and not dead:
+        if game.settings['shaders'] and not dead:
             new_sprite.blit(
-                sprites.sprites["shaders" + cat_sprite],
-                (0, 0),
-                special_flags=pygame.BLEND_RGB_MULT,
-            )
-            new_sprite.blit(sprites.sprites["lighting" + cat_sprite], (0, 0))
+                sprites.sprites['shaders' + rabbit_sprite], (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+            new_sprite.blit(
+                sprites.sprites['lighting' + rabbit_sprite], (0, 0))
 
         if not dead:
-            new_sprite.blit(sprites.sprites["lines" + cat_sprite], (0, 0))
-        elif cat.df:
-            new_sprite.blit(sprites.sprites["lineartdf" + cat_sprite], (0, 0))
+            new_sprite.blit(sprites.sprites['lines' + rabbit_sprite], (0, 0))
+        elif rabbit.df:
+            new_sprite.blit(
+                sprites.sprites['lineartdf' + rabbit_sprite], (0, 0))
         elif dead:
-            new_sprite.blit(sprites.sprites["lineartdead" + cat_sprite], (0, 0))
+            new_sprite.blit(
+                sprites.sprites['lineartdead' + rabbit_sprite], (0, 0))
         # draw skin and scars2
         blendmode = pygame.BLEND_RGBA_MIN
-        new_sprite.blit(sprites.sprites["skin" + cat.pelt.skin + cat_sprite], (0, 0))
+        new_sprite.blit(
+            sprites.sprites['skin' + rabbit.pelt.skin + rabbit_sprite], (0, 0))
 
         if not scars_hidden:
-            for scar in cat.pelt.scars:
-                if scar in cat.pelt.scars2:
+            for scar in rabbit.pelt.scars:
+                if scar in rabbit.pelt.scars2:
                     new_sprite.blit(
-                        sprites.sprites["scars" + scar + cat_sprite],
-                        (0, 0),
-                        special_flags=blendmode,
-                    )
+                        sprites.sprites['scars' + scar + rabbit_sprite], (0, 0), special_flags=blendmode)
 
         # draw accessories
-        from scripts.cat.pelts import Pelt
-
-        if not acc_hidden and cat.pelt.accessory:
-            cat_accessories = cat.pelt.accessory
-            categories = [
-                "collars",
-                "tail_accessories",
-                "body_accessories",
-                "head_accessories",
-            ]
-            for category in categories:
-                for accessory in cat_accessories:
-                    if accessory in getattr(Pelt, category):
-                        if accessory in cat.pelt.plant_accessories:
-                            new_sprite.blit(
-                                sprites.sprites["acc_herbs" + accessory + cat_sprite],
-                                (0, 0),
-                            )
-                        elif accessory in cat.pelt.wild_accessories:
-                            new_sprite.blit(
-                                sprites.sprites["acc_wild" + accessory + cat_sprite],
-                                (0, 0),
-                            )
-                        elif accessory in cat.pelt.collars:
-                            new_sprite.blit(
-                                sprites.sprites["collars" + accessory + cat_sprite],
-                                (0, 0),
-                            )
+        if not acc_hidden:
+            if rabbit.pelt.accessory in rabbit.pelt.plant_accessories:
+                new_sprite.blit(
+                    sprites.sprites['acc_herbs' + rabbit.pelt.accessory + rabbit_sprite], (0, 0))
+            elif rabbit.pelt.accessory in rabbit.pelt.wild_accessories:
+                new_sprite.blit(
+                    sprites.sprites['acc_wild' + rabbit.pelt.accessory + rabbit_sprite], (0, 0))
+            elif rabbit.pelt.accessory in rabbit.pelt.collars:
+                new_sprite.blit(
+                    sprites.sprites['collars' + rabbit.pelt.accessory + rabbit_sprite], (0, 0))
 
         # Apply fading fog
-        if (
-            cat.pelt.opacity <= 97
-            and not cat.prevent_fading
-            and game.clan.clan_settings["fading"]
-            and dead
-        ):
+        if rabbit.pelt.opacity <= 97 and not rabbit.prevent_fading and game.warren.warren_settings["fading"] and dead:
+
             stage = "0"
-            if 80 >= cat.pelt.opacity > 45:
+            if 80 >= rabbit.pelt.opacity > 45:
                 # Stage 1
                 stage = "1"
-            elif cat.pelt.opacity <= 45:
+            elif rabbit.pelt.opacity <= 45:
                 # Stage 2
                 stage = "2"
 
-            new_sprite.blit(
-                sprites.sprites["fademask" + stage + cat_sprite],
-                (0, 0),
-                special_flags=pygame.BLEND_RGBA_MULT,
-            )
+            new_sprite.blit(sprites.sprites['fademask' + stage + rabbit_sprite],
+                            (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
 
-            if cat.df:
-                temp = sprites.sprites["fadedf" + stage + cat_sprite].copy()
+            if rabbit.df:
+                temp = sprites.sprites['fadedf' + stage + rabbit_sprite].copy()
                 temp.blit(new_sprite, (0, 0))
                 new_sprite = temp
             else:
-                temp = sprites.sprites["fadestarclan" + stage + cat_sprite].copy()
+                temp = sprites.sprites['fadeinle' +
+                                       stage + rabbit_sprite].copy()
                 temp.blit(new_sprite, (0, 0))
                 new_sprite = temp
 
         # reverse, if assigned so
-        if cat.pelt.reverse:
+        if rabbit.pelt.reverse:
             new_sprite = pygame.transform.flip(new_sprite, True, False)
 
     except (TypeError, KeyError):
@@ -2934,8 +2867,7 @@ def generate_sprite(
 
         # Placeholder image
         new_sprite = image_cache.load_image(
-            f"sprites/error_placeholder.png"
-        ).convert_alpha()
+            f"sprites/error_placeholder.png").convert_alpha()
 
     return new_sprite
 

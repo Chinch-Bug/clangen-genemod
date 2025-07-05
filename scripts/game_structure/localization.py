@@ -17,8 +17,8 @@ default_pronouns: Dict[str, Dict[str, Dict[str, Union[str, int]]]] = {}
 def get_new_pronouns(genderalign: str) -> List[Dict[str, Union[str, int]]]:
     """
     Handles getting the right pronoun set for the language.
-    :param genderalign: The cat's gender alignment
-    :return: The default list of pronouns for the cat's genderalign in the selected lang
+    :param genderalign: The rabbit's gender alignment
+    :return: The default list of pronouns for the rabbit's genderalign in the selected lang
     """
     config = get_lang_config()["pronouns"]
     if game.settings["they them default"]:
@@ -44,7 +44,7 @@ def get_new_pronouns(genderalign: str) -> List[Dict[str, Union[str, int]]]:
 def determine_plural_pronouns(cat_list: List[Dict[str, Union[str, int]]]):
     """
     Returns the correct plural pronoun for the provided list
-    :param cat_list: The cats in question (or their *pronoun* genders)
+    :param cat_list: The rabbits in question (or their *pronoun* genders)
     :return: the correct plural pronoun
     """
 
@@ -142,17 +142,17 @@ def get_custom_pronouns(lang=None):
     if lang is None:
         lang = i18n.config.get("locale")
     try:
-        return game.clan.custom_pronouns[lang]
+        return game.warren.custom_pronouns[lang]
     except KeyError:
-        game.clan.custom_pronouns[lang] = []
-    return game.clan.custom_pronouns[lang]
+        game.warren.custom_pronouns[lang] = []
+    return game.warren.custom_pronouns[lang]
 
 
 def add_custom_pronouns(pronouns, lang=None):
     if lang is None:
         lang = i18n.config.get("locale")
     try:
-        game.clan.custom_pronouns[lang].append(pronouns)
+        game.warren.custom_pronouns[lang].append(pronouns)
     except KeyError:
-        game.clan.custom_pronouns[lang] = []
-        game.clan.custom_pronouns[lang].append(pronouns)
+        game.warren.custom_pronouns[lang] = []
+        game.warren.custom_pronouns[lang].append(pronouns)

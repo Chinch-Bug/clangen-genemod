@@ -25,8 +25,8 @@
 			"m_c and r_c roll up moss balls together.",
 			"m_c and r_c talk about what they see in the clouds.",
 			"m_c explains what a joke means to r_c.",
-			"m_c and r_c chat about Clan news.",
-			"m_c talks with r_c about some Clan drama.",
+			"m_c and r_c chat about Warren news.",
+			"m_c talks with r_c about some Warren drama.",
 			"m_c is asking r_c interesting questions.",
 			"m_c learns something new about a Clanmate from r_c.",
 			"m_c prevents something from falling on r_c.",
@@ -54,10 +54,10 @@
 		"interactions": [
 			"m_c is telling a story to r_c.",
 			"m_c is sharing a piece of fresh-kill with r_c.",
-			"m_c is making up a new Clan with r_c.",
+			"m_c is making up a new Warren with r_c.",
 			"m_c and r_c are chatting about what they're doing today.",
 			"m_c is talking about what to do tomorrow with r_c.",
-			"m_c is telling r_c something interesting about another Clan.",
+			"m_c is telling r_c something interesting about another Warren.",
 			"m_c and r_c laugh about something small together.",
 			"m_c spends some time sheltering with r_c during a storm.",
 			"m_c chats with r_c while grabbing something to eat."
@@ -72,7 +72,7 @@
 			"m_c waves to r_c with {PRONOUN/m_c/poss} tail as their patrols cross paths on the territory.",
 			"m_c calls to r_c to catch {PRONOUN/m_c/object} a fat mouse on {PRONOUN/r_c/poss} next hunting patrol.",
 			"m_c and r_c have a fun patrol and plan to tell stories about it later to their Clanmates.",
-			"m_c stands up for r_c on a border patrol when confronted by another Clan.",
+			"m_c stands up for r_c on a border patrol when confronted by another Warren.",
 			"m_c got into an unexpectedly in-depth conversation while on a patrol with r_c.",
 			"m_c and r_c had such a good time on a patrol that they came back late.",
 			"A Clanmate that went on patrol with m_c and r_c says they talked the entire time and almost left them behind.",
@@ -80,16 +80,16 @@
 			"m_c hopes {PRONOUN/m_c/subject} {VERB/m_c/are/is} assigned to patrol with r_c tomorrow."
 		],
 		"main_status_constraint": [
-			"apprentice",
-			"deputy",
-			"leader",
-			"warrior"
+			"rusasi",
+			"captain",
+			"chief rabbit",
+			"rabbit"
 		],
 		"random_status_constraint": [
-			"apprentice",
-			"deputy",
-			"leader",
-			"warrior"
+			"rusasi",
+			"captain",
+			"chief rabbit",
+			"rabbit"
 		],
 		"reaction_random_cat": {
 			"platonic": "increase"
@@ -204,25 +204,25 @@
 		],
 		"main_status_constraint": [
 			"elder",
-			"apprentice",
-			"warrior",
-			"mediator apprentice",
-			"mediator",
-			"medicine cat apprentice",
-			"medicine cat",
-			"deputy",
-			"leader"
+			"rusasi",
+			"rabbit",
+			"owsla rusasi",
+			"owsla",
+			"healer rusasi",
+			"healer",
+			"captain",
+			"chief rabbit"
 		],
 		"random_status_constraint": [
 			"elder",
-			"apprentice",
-			"warrior",
-			"mediator apprentice",
-			"mediator",
-			"medicine cat apprentice",
-			"medicine cat",
-			"deputy",
-			"leader"
+			"rusasi",
+			"rabbit",
+			"owsla rusasi",
+			"owsla",
+			"healer rusasi",
+			"healer",
+			"captain",
+			"chief rabbit"
 		]
 	},
 	{
@@ -231,13 +231,13 @@
 			"m_c noticed that r_c is falling behind in training and offered to help {PRONOUN/r_c/object} catch up."
 		],
 		"main_status_constraint": [
-			"apprentice",
-			"deputy",
-			"leader",
-			"warrior"
+			"rusasi",
+			"captain",
+			"chief rabbit",
+			"rabbit"
 		],
 		"random_status_constraint": [
-			"apprentice"
+			"rusasi"
 		],
 		"reaction_random_cat": {
 			"platonic": "increase"
@@ -252,24 +252,24 @@
 			"platonic": "increase"
 		},
 		"main_status_constraint": [
-			"kitten"
+			"kit"
 		]
 	},
 	{
 		"id": "platonic_kit_inc_med3",
 		"interactions": [
 			"m_c lets r_c play with {PRONOUN/m_c/poss} favorite toy.",
-			"m_c pretends to be a warrior with r_c.",
+			"m_c pretends to be a rabbit with r_c.",
 			"m_c is pretending to ward off foxes with r_c.",
 			"m_c is pretending to fight off badgers with r_c.",
-			"m_c is racing r_c back and forth across the camp clearing.",
+			"m_c is racing r_c back and forth across the burrow clearing.",
 			"m_c hopes r_c will be {PRONOUN/m_c/poss} friend forever."
 		],
 		"main_status_constraint": [
-			"kitten"
+			"kit"
 		],
 		"random_status_constraint": [
-			"kitten"
+			"kit"
 		],
 		"reaction_random_cat": {
 			"platonic": "increase"
@@ -284,18 +284,18 @@
 			"m_c decorates {PRONOUN/m_c/poss} nest with gifts that r_c brought {PRONOUN/m_c/object}."
 		],
 		"main_status_constraint": [
-			"kitten"
+			"kit"
 		],
 		"random_status_constraint": [
 			"elder",
-			"apprentice",
-			"warrior",
-			"mediator apprentice",
-			"mediator",
-			"medicine cat apprentice",
-			"medicine cat",
-			"deputy",
-			"leader"
+			"rusasi",
+			"rabbit",
+			"owsla rusasi",
+			"owsla",
+			"healer rusasi",
+			"healer",
+			"captain",
+			"chief rabbit"
 		],
 		"reaction_random_cat": {
 			"platonic": "increase"
@@ -307,12 +307,12 @@
 			"m_c ask r_c what it's like to be in training."
 		],
 		"main_status_constraint": [
-			"kitten"
+			"kit"
 		],
 		"random_status_constraint": [
-			"apprentice",
-			"mediator apprentice",
-			"medicine cat apprentice"
+			"rusasi",
+			"owsla rusasi",
+			"healer rusasi"
 		],
 		"reaction_random_cat": {
 			"platonic": "increase"
@@ -323,31 +323,31 @@
 		"interactions": [
 			"m_c is watching over r_c.",
 			"m_c trains playfully with r_c.",
-			"m_c gave r_c a trinket {PRONOUN/m_c/subject} found while out of the camp today.",
+			"m_c gave r_c a trinket {PRONOUN/m_c/subject} found while out of the burrow today.",
 			"m_c is charmed to hear that r_c really admires {PRONOUN/m_c/object}.",
 			"m_c is giving r_c a badger ride on {PRONOUN/m_c/poss} back!",
 			"m_c remembers how cute kits are because of time spent with r_c.",
-			"m_c is promising to take r_c outside of camp if {PRONOUN/r_c/subject} {VERB/r_c/behave/behaves}.",
+			"m_c is promising to take r_c outside of burrow if {PRONOUN/r_c/subject} {VERB/r_c/behave/behaves}.",
 			"m_c bats the moss-ball back to r_c when it flies in front of {PRONOUN/m_c/poss} paws.",
 			"m_c spends most of the afternoon describing the territory to r_c.",
 			"m_c purrs as r_c asks {PRONOUN/m_c/object} to show {PRONOUN/r_c/object} how to do a hunter's crouch. {PRONOUN/m_c/subject/CAP} {VERB/m_c/oblige/obliges}, happy to show {PRONOUN/m_c/poss} skills.",
-			"m_c whiskers twitch in amusement as r_c tells {PRONOUN/m_c/object} that {PRONOUN/r_c/subject} {VERB/r_c/hope/hopes} {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} {PRONOUN/r_c/poss} mentor when {PRONOUN/r_c/subject} {VERB/r_c/become/becomes} an apprentice.",
+			"m_c whiskers twitch in amusement as r_c tells {PRONOUN/m_c/object} that {PRONOUN/r_c/subject} {VERB/r_c/hope/hopes} {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} {PRONOUN/r_c/poss} mentor when {PRONOUN/r_c/subject} {VERB/r_c/become/becomes} an rusasi.",
 			"m_c tells r_c that {PRONOUN/m_c/subject} caught this prey just for {PRONOUN/r_c/object} as {PRONOUN/m_c/subject} {VERB/m_c/deliver/delivers} it to {PRONOUN/r_c/object}.",
-			"m_c joins a game as r_c runs up to {PRONOUN/m_c/object} yowling that {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} the greatest warrior ever and could never be defeated. The kit squeals in delight as m_c rolls over in surrender."
+			"m_c joins a game as r_c runs up to {PRONOUN/m_c/object} yowling that {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} the greatest rabbit ever and could never be defeated. The kit squeals in delight as m_c rolls over in surrender."
 		],
 		"main_status_constraint": [
 			"elder",
-			"apprentice",
-			"warrior",
-			"mediator apprentice",
-			"mediator",
-			"medicine cat apprentice",
-			"medicine cat",
-			"deputy",
-			"leader"
+			"rusasi",
+			"rabbit",
+			"owsla rusasi",
+			"owsla",
+			"healer rusasi",
+			"healer",
+			"captain",
+			"chief rabbit"
 		],
 		"random_status_constraint": [
-			"kitten"
+			"kit"
 		],
 		"reaction_random_cat": {
 			"platonic": "increase",
@@ -362,18 +362,18 @@
 			"m_c is asking r_c where kits come from."
 		],
 		"main_status_constraint": [
-			"kitten"
+			"kit"
 		],
 		"random_status_constraint": [
 			"elder",
-			"apprentice",
-			"warrior",
-			"mediator apprentice",
-			"mediator",
-			"medicine cat apprentice",
-			"medicine cat",
-			"deputy",
-			"leader"
+			"rusasi",
+			"rabbit",
+			"owsla rusasi",
+			"owsla",
+			"healer rusasi",
+			"healer",
+			"captain",
+			"chief rabbit"
 		],
 		"reaction_random_cat": {
 			"comfortable": "decrease",
@@ -389,18 +389,18 @@
 		"id": "platonic_app_med1",
 		"interactions": [
 			"m_c is telling r_c about a hunting technique.",
-			"m_c is thinking about how much r_c reminds {PRONOUN/m_c/subject} of {PRONOUN/m_c/poss} own apprentice days.",
-			"m_c is telling r_c about {PRONOUN/m_c/poss} own days as an apprentice.",
+			"m_c is thinking about how much r_c reminds {PRONOUN/m_c/subject} of {PRONOUN/m_c/poss} own rusasi days.",
+			"m_c is telling r_c about {PRONOUN/m_c/poss} own days as an rusasi.",
 			"m_c promises to teach r_c a new technique later."
 		],
 		"main_status_constraint": [
 			"elder",
-			"deputy",
-			"leader",
-			"warrior"
+			"captain",
+			"chief rabbit",
+			"rabbit"
 		],
 		"random_status_constraint": [
-			"apprentice"
+			"rusasi"
 		],
 		"reaction_random_cat": {
 			"platonic": "increase"
@@ -412,13 +412,13 @@
 			"m_c brings r_c a piece of prey to share after a long day of training.",
 			"m_c offers to help r_c clean out the elder's bedding.",
 			"m_c was playing with r_c and learned a fun new battle move from {PRONOUN/r_c/object}!",
-			"m_c is trying to guess what {PRONOUN/m_c/poss} and r_c's warrior names will be."
+			"m_c is trying to guess what {PRONOUN/m_c/poss} and r_c's rabbit names will be."
 		],
 		"main_status_constraint": [
-			"apprentice"
+			"rusasi"
 		],
 		"random_status_constraint": [
-			"apprentice"
+			"rusasi"
 		],
 		"reaction_random_cat": {
 			"platonic": "increase"
@@ -427,20 +427,20 @@
 	{
 		"id": "platonic_app_med3",
 		"interactions": [
-			"m_c daydreams with r_c about their future warrior ceremonies.",
+			"m_c daydreams with r_c about their future rabbit ceremonies.",
 			"m_c feels like training goes by much faster when {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} with r_c.",
 			"m_c is playfully making fun of their mentors with r_c.",
 			"m_c stays awake all night whispering secrets to r_c.",
-			"m_c promises not to tell r_c's mentor that {PRONOUN/r_c/subject}{VERB/r_c/'ve/'s} been sneaking out of camp."
+			"m_c promises not to tell r_c's mentor that {PRONOUN/r_c/subject}{VERB/r_c/'ve/'s} been sneaking out of burrow."
 		],
 		"relationship_constraint": [
 			"platonic_40"
 		],
 		"main_status_constraint": [
-			"apprentice"
+			"rusasi"
 		],
 		"random_status_constraint": [
-			"apprentice"
+			"rusasi"
 		]
 	},
 	{
@@ -453,41 +453,41 @@
 			"m_c begs {PRONOUN/m_c/poss} mentor to let r_c come with for some hunting practice."
 		],
 		"main_status_constraint": [
-			"apprentice"
+			"rusasi"
 		],
 		"random_status_constraint": [
-			"medicine cat apprentice"
+			"healer rusasi"
 		]
 	},
 	{
 		"id": "platonic_app_med5",
 		"interactions": [
 			"m_c gently grooms some cobwebs off r_c's fur.",
-			"m_c tells r_c that {PRONOUN/r_c/subject}'ll be an amazing medicine cat someday.",
-			"m_c believes in r_c, and reassures r_c that {PRONOUN/r_c/subject} made the right choice by becoming a medicine cat apprentice."
+			"m_c tells r_c that {PRONOUN/r_c/subject}'ll be an amazing healer someday.",
+			"m_c believes in r_c, and reassures r_c that {PRONOUN/r_c/subject} made the right choice by becoming a healer rusasi."
 		],
 		"relationship_constraint": [
 			"platonic_40"
 		],
 		"main_status_constraint": [
-			"apprentice"
+			"rusasi"
 		],
 		"random_status_constraint": [
-			"medicine cat apprentice"
+			"healer rusasi"
 		]
 	},
 	{
 		"id": "platonic_warrior_inc_med1",
 		"interactions": [
-			"m_c greets r_c as {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} exiting the warriors' den.",
-			"m_c chats quietly with r_c while they're both on camp guard duty.",
+			"m_c greets r_c as {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} exiting the rabbits' den.",
+			"m_c chats quietly with r_c while they're both on burrow guard duty.",
 			"m_c thanks r_c for covering for {PRONOUN/m_c/object} during a patrol earlier."
 		],
 		"main_status_constraint": [
-			"warrior"
+			"rabbit"
 		],
 		"random_status_constraint": [
-			"warrior"
+			"rabbit"
 		],
 		"reaction_random_cat": {
 			"platonic": "increase"
@@ -532,14 +532,14 @@
 		"id": "platonic_inc_high2",
 		"intensity": "high",
 		"interactions": [
-			"m_c is having a wonderful time discussing recent Clan news with r_c.",
+			"m_c is having a wonderful time discussing recent Warren news with r_c.",
 			"m_c and r_c enjoy each other's company.",
 			"While looking at the stars, m_c and r_c make up some constellations.",
 			"m_c eats with r_c all the time!",
 			"m_c dispels a bad rumor about r_c.",
 			"m_c and r_c plan all their days together.",
 			"m_c and r_c always have something to share with each other.",
-			"The whole Clan notices how close m_c and r_c are lately.",
+			"The whole Warren notices how close m_c and r_c are lately.",
 			"m_c is happy to run into r_c today."
 		],
 		"reaction_random_cat": {
@@ -591,7 +591,7 @@
 			"m_c and r_c can always rely on each other.",
 			"There's nothing that can separate m_c and r_c.",
 			"The first one to panic when r_c gets hurt is always m_c.",
-			"The Clan notices that m_c and r_c have picked up each other's mannerisms.",
+			"The Warren notices that m_c and r_c have picked up each other's mannerisms.",
 			"m_c and r_c are inseparable, and can almost always be found with each other."
 		],
 		"relationship_constraint": [
@@ -627,8 +627,8 @@
 			"r_c is a little hesitant to ask m_c to check on something minor, but knows that even though m_c can be grumpy sometimes, {PRONOUN/m_c/subject} always takes care of {PRONOUN/r_c/object}."
 		],
 		"main_status_constraint": [
-			"medicine cat",
-			"medicine cat apprentice"
+			"healer",
+			"healer rusasi"
 		],
 		"main_trait_constraint": [
 			"cold",

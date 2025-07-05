@@ -15,7 +15,7 @@ class Single_Event:
         """text: The event text.
         types: Which types of event, in a list or tuple. Current options are:
                 "relation", "ceremony", "birth_death", "health", "other_clans", "misc"
-        cat_involved: list or tuples of the IDs of cats involved in the event
+        cat_involved: list or tuples of the IDs of rabbits involved in the event
         cat_dict: dict suitable for event_text_adjust containing the
         """
 
@@ -39,9 +39,9 @@ class Single_Event:
         else:
             self.cats_involved = []
 
-        # if cats involved wasn't specified but cats dict was, use that as cats involved
+        # if rabbits involved wasn't specified but rabbits dict was, use that as rabbits involved
         if self.cat_dict and self.cats_involved == []:
-            self.cats_involved = [cat.ID for cat in self.cat_dict.values()]
+            self.cats_involved = [rabbit.ID for rabbit in self.cat_dict.values()]
 
     def to_dict(self):
         """
@@ -60,7 +60,7 @@ class Single_Event:
         }
 
     @staticmethod
-    def from_dict(dict, Cat):
+    def from_dict(dict, Rabbit):
         """
         Return new Single_Event based on dict.
 
@@ -73,7 +73,7 @@ class Single_Event:
         cat_dict = dict.get("cat_dict", None)
         if cat_dict:
             for abbr, kitty in cat_dict.copy().items():
-                cat_dict[abbr] = Cat.fetch_cat(kitty)
+                cat_dict[abbr] = Rabbit.fetch_cat(kitty)
 
         return Single_Event(
             text=dict["text"],

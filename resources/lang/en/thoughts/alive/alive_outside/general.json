@@ -4,33 +4,33 @@
         "thoughts": [
             "Desperately tries to find {PRONOUN/m_c/poss} way back",
             "Misses {PRONOUN/m_c/poss} nest",
-            "Is asking a group of loners if know where {PRONOUN/m_c/poss} Clan is",
+            "Is asking a group of loners if know where {PRONOUN/m_c/poss} Warren is",
             "Dreamed about finding {PRONOUN/m_c/poss} way home, only to wake up alone again",
             "Finds comfort in {PRONOUN/m_c/poss} solitude",
             "Takes stock of {PRONOUN/m_c/poss} surroundings",
             "Wonders if {PRONOUN/m_c/subject} will even find {PRONOUN/m_c/poss} way home",
             "Replays events in {PRONOUN/m_c/poss} mind, wondering what {PRONOUN/m_c/subject} could have done differently",
-            "Questions if {PRONOUN/m_c/subject} will even find {PRONOUN/m_c/poss} way to StarClan when {PRONOUN/m_c/subject} {verb/m_c/pass/passes}",
+            "Questions if {PRONOUN/m_c/subject} will even find {PRONOUN/m_c/poss} way to Inle when {PRONOUN/m_c/subject} {verb/m_c/pass/passes}",
             "Thought {PRONOUN/m_c/subject} saw one of {PRONOUN/m_c/poss} Clanmates, but realized it was just a loner",
-            "Worries {PRONOUN/m_c/poss} Clan thinks {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} a runaway traitor",
+            "Worries {PRONOUN/m_c/poss} Warren thinks {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} a runaway traitor",
             "Wonders how {PRONOUN/m_c/subject} will survive without {PRONOUN/m_c/poss} Clanmates",
             "Wonders if {PRONOUN/m_c/subject} will ever find {PRONOUN/m_c/poss} way back to c_n",
             "Is calling the names of {PRONOUN/m_c/poss} Clanmates, hoping someone hears {PRONOUN/m_c/object}",
-            "Wonders if StarClan is still watching over {PRONOUN/m_c/object}",
+            "Wonders if Inle is still watching over {PRONOUN/m_c/object}",
             "Wonders if c_n has declared {PRONOUN/m_c/object} dead yet",
-            "Wonders if the Clan is searching for {PRONOUN/m_c/object}",
+            "Wonders if the Warren is searching for {PRONOUN/m_c/object}",
             "Thanks a loner who gave {PRONOUN/m_c/object} shelter",
             "Is shaken by a nightmare that {PRONOUN/m_c/subject} couldn't wake up from",
-            "Wishes {PRONOUN/m_c/subject} {VERB/m_c/were/was} back in camp",
-            "Thinks {PRONOUN/m_c/subject} might've been visited by a StarClan cat",
+            "Wishes {PRONOUN/m_c/subject} {VERB/m_c/were/was} back in burrow",
+            "Thinks {PRONOUN/m_c/subject} might've been visited by a Inle rabbit",
             "Thinks {PRONOUN/m_c/subject} caught scent of a c_n patrol",
             "Wonders if {PRONOUN/m_c/subject} can maintain this life",
             "Wishes {PRONOUN/m_c/subject} {VERB/m_c/weren't/wasn't} as used to this as {PRONOUN/m_c/subject} {VERB/m_c/are/is}",
             "Got even more lost than {PRONOUN/m_c/subject} {VERB/m_c/were/was} before",
             "Is scared that {PRONOUN/m_c/subject} will never be found",
-            "Heard a rumor about a large group of cats in the area",
+            "Heard a rumor about a large group of rabbits in the area",
             "Is considering becoming a kittypet",
-            "Feels abandoned by StarClan",
+            "Feels abandoned by Inle",
             "Is starting to get used to living alone",
             "Feels homesick",
             "Is disturbed by sleeping alone",
@@ -48,14 +48,14 @@
             "Is sneezing"
         ],
         "main_status_constraint": [
-            "apprentice",
-            "mediator apprentice",
-            "medicine cat apprentice",
-            "warrior", 
-            "mediator", 
-            "medicine cat", 
-            "deputy", 
-            "leader", 
+            "rusasi",
+            "owsla rusasi",
+            "healer rusasi",
+            "rabbit", 
+            "owsla", 
+            "healer", 
+            "captain", 
+            "chief rabbit", 
             "elder"
         ]
     },
@@ -66,14 +66,14 @@
             "Thought {PRONOUN/m_c/subject} spotted r_c while wandering around earlier"
         ],
         "main_status_constraint": [
-            "apprentice",
-            "mediator apprentice",
-            "medicine cat apprentice",
-            "warrior",
-            "mediator",
-            "medicine cat",
-            "deputy",
-            "leader",
+            "rusasi",
+            "owsla rusasi",
+            "healer rusasi",
+            "rabbit",
+            "owsla",
+            "healer",
+            "captain",
+            "chief rabbit",
             "elder"
         ],
         "random_status_constraint": [
@@ -88,7 +88,7 @@
         "thoughts": [
             "Wonders how {PRONOUN/m_c/poss} family is doing",
             "Misses {PRONOUN/m_c/poss} family",
-            "Prays to StarClan that {PRONOUN/m_c/poss} loved ones are safe"
+            "Prays to Inle that {PRONOUN/m_c/poss} loved ones are safe"
         ],
         "relationship_constraint": [
             "siblings",
@@ -96,14 +96,14 @@
             "child/parent"
         ],
         "main_status_constraint": [
-            "apprentice",
-            "mediator apprentice",
-            "medicine cat apprentice",
-            "warrior", 
-            "mediator", 
-            "medicine cat", 
-            "deputy", 
-            "leader", 
+            "rusasi",
+            "owsla rusasi",
+            "healer rusasi",
+            "rabbit", 
+            "owsla", 
+            "healer", 
+            "captain", 
+            "chief rabbit", 
             "elder"
         ]
     },
@@ -116,14 +116,14 @@
             "siblings"
         ],
         "main_status_constraint": [
-            "apprentice",
-            "mediator apprentice",
-            "medicine cat apprentice",
-            "warrior", 
-            "mediator", 
-            "medicine cat", 
-            "deputy", 
-            "leader", 
+            "rusasi",
+            "owsla rusasi",
+            "healer rusasi",
+            "rabbit", 
+            "owsla", 
+            "healer", 
+            "captain", 
+            "chief rabbit", 
             "elder"
         ]
     },
@@ -136,11 +136,11 @@
             "parent/child"
         ],
         "main_status_constraint": [
-            "warrior", 
-            "mediator", 
-            "medicine cat", 
-            "deputy", 
-            "leader", 
+            "rabbit", 
+            "owsla", 
+            "healer", 
+            "captain", 
+            "chief rabbit", 
             "elder"
         ]
     }

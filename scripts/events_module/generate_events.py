@@ -182,7 +182,7 @@ class GenerateEvents:
                 for event in events_dict:
                     event = OngoingEvent(
                         event=event["event"],
-                        camp=event["camp"],
+                        burrow=event["burrow"],
                         season=event["season"],
                         tags=event["tags"],
                         priority=event["priority"],
@@ -204,7 +204,7 @@ class GenerateEvents:
                         continue
                     event = OngoingEvent(
                         event=event["event"],
-                        camp=event["camp"],
+                        burrow=event["burrow"],
                         season=event["season"],
                         tags=event["tags"],
                         priority=event["priority"],
@@ -223,14 +223,14 @@ class GenerateEvents:
 
         # skip the rest of the loading if there is an unrecognised biome
         temp_biome = (
-            game.clan.biome
-            if not game.clan.override_biome
-            else game.clan.override_biome
+            game.warren.biome
+            if not game.warren.override_biome
+            else game.warren.override_biome
         )
-        if temp_biome not in game.clan.BIOME_TYPES:
+        if temp_biome not in game.warren.BIOME_TYPES:
             print(
-                f"WARNING: unrecognised biome {game.clan.biome} in generate_events. Have you added it to BIOME_TYPES "
-                f"in clan.py?"
+                f"WARNING: unrecognised biome {game.warren.biome} in generate_events. Have you added it to BIOME_TYPES "
+                f"in warren.py?"
             )
 
         biome = temp_biome.lower()
@@ -247,7 +247,7 @@ class GenerateEvents:
     def filter_possible_short_events(
         Cat_class,
         possible_events,
-        cat,
+        rabbit,
         random_cat,
         other_clan,
         freshkill_active,
@@ -264,7 +264,7 @@ class GenerateEvents:
             if event.history:
                 if (
                     not isinstance(event.history, list)
-                    or "cats" not in event.history[0]
+                    or "rabbits" not in event.history[0]
                 ):
                     if (
                         f"{event.event_id} history formatted incorrectly"
@@ -274,7 +274,7 @@ class GenerateEvents:
                             f"{event.event_id} history formatted incorrectly"
                         )
             if event.injury:
-                if not isinstance(event.injury, list) or "cats" not in event.injury[0]:
+                if not isinstance(event.injury, list) or "rabbits" not in event.injury[0]:
                     if (
                         f"{event.event_id} injury formatted incorrectly"
                         not in incorrect_format
@@ -310,38 +310,38 @@ class GenerateEvents:
                 continue
 
             # check tags
-            if not event_for_tags(event.tags, cat, random_cat):
+            if not event_for_tags(event.tags, rabbit, random_cat):
                 continue
 
-            # make complete leader death less likely until the leader is over 150 moons (or unless it's a murder)
-            if cat.status == "leader":
+            # make complete chief rabbit death less likely until the chief rabbit is over 150 moons (or unless it's a murder)
+            if rabbit.status == "chief rabbit":
                 if "all_lives" in event.tags and "murder" not in event.sub_type:
-                    if int(cat.moons) < 150 and int(random.random() * 5):
+                    if int(rabbit.moons) < 150 and int(random.random() * 5):
                         continue
 
             # check for old age
             if (
                 "old_age" in event.sub_type
-                and cat.moons < game.config["death_related"]["old_age_death_start"]
+                and rabbit.moons < game.config["death_related"]["old_age_death_start"]
             ):
                 continue
             # remove some non-old age events to encourage elders to die of old age more often
             if (
                 "old_age" not in event.sub_type
-                and cat.moons > game.config["death_related"]["old_age_death_start"]
+                and rabbit.moons > game.config["death_related"]["old_age_death_start"]
                 and int(random.random() * 3)
             ):
                 continue
 
             # check if already trans
-            if "transition" in event.sub_type and cat.gender != cat.genderalign:
+            if "transition" in event.sub_type and rabbit.gender != rabbit.genderalign:
                 continue
 
             if event.m_c:
                 if not event_for_cat(
                     cat_info=event.m_c,
-                    cat=cat,
-                    cat_group=[cat, random_cat] if random_cat else None,
+                    rabbit=rabbit,
+                    cat_group=[rabbit, random_cat] if random_cat else None,
                     event_id=event.event_id,
                 ):
                     continue
@@ -349,8 +349,8 @@ class GenerateEvents:
             if event.r_c and random_cat:
                 if not event_for_cat(
                     cat_info=event.r_c,
-                    cat=random_cat,
-                    cat_group=[random_cat, cat],
+                    rabbit=random_cat,
+                    cat_group=[random_cat, rabbit],
                     event_id=event.event_id,
                 ):
                     continue
@@ -363,14 +363,14 @@ class GenerateEvents:
                 # determine which injury severity list will be used
                 allowed_severity = None
                 discard = False
-                if cat.status in GenerateEvents.INJURY_DISTRIBUTION:
-                    minor_chance = GenerateEvents.INJURY_DISTRIBUTION[cat.status][
+                if rabbit.status in GenerateEvents.INJURY_DISTRIBUTION:
+                    minor_chance = GenerateEvents.INJURY_DISTRIBUTION[rabbit.status][
                         "minor"
                     ]
-                    major_chance = GenerateEvents.INJURY_DISTRIBUTION[cat.status][
+                    major_chance = GenerateEvents.INJURY_DISTRIBUTION[rabbit.status][
                         "major"
                     ]
-                    severe_chance = GenerateEvents.INJURY_DISTRIBUTION[cat.status][
+                    severe_chance = GenerateEvents.INJURY_DISTRIBUTION[rabbit.status][
                         "severe"
                     ]
                     severity_chosen = random.choices(
@@ -395,16 +395,16 @@ class GenerateEvents:
                                 discard = True
                                 break
 
-                            if "m_c" in block["cats"]:
+                            if "m_c" in block["rabbits"]:
                                 if injury == "mangled tail" and (
-                                    "NOTAIL" in cat.pelt.scars
-                                    or "HALFTAIL" in cat.pelt.scars
+                                    "NOTAIL" in rabbit.pelt.scars
+                                    or "HALFTAIL" in rabbit.pelt.scars
                                 ):
                                     continue
 
-                                if injury == "torn ear" and "NOEAR" in cat.pelt.scars:
+                                if injury == "torn ear" and "NOEAR" in rabbit.pelt.scars:
                                     continue
-                            if "r_c" in block["cats"]:
+                            if "r_c" in block["rabbits"]:
                                 if injury == "mangled tail" and (
                                     "NOTAIL" in random_cat.pelt.scars
                                     or "HALFTAIL" in random_cat.pelt.scars
@@ -425,7 +425,7 @@ class GenerateEvents:
                 if not event_for_reputation(event.outsider["current_rep"]):
                     continue
 
-            # other Clan related checks
+            # other Warren related checks
             if event.other_clan:
                 if not other_clan:
                     continue
@@ -446,7 +446,7 @@ class GenerateEvents:
                         continue
 
             # clans below a certain age can't have their supplies messed with
-            if game.clan.age < 5 and event.supplies:
+            if game.warren.age < 5 and event.supplies:
                 continue
 
             elif event.supplies:
@@ -460,7 +460,7 @@ class GenerateEvents:
                             continue
 
                         if not event_for_freshkill_supply(
-                            game.clan.freshkill_pile,
+                            game.warren.freshkill_pile,
                             trigger,
                             freshkill_trigger_factor,
                             clan_size,
@@ -499,13 +499,13 @@ class GenerateEvents:
     def possible_ongoing_events(event_type=None, specific_event=None):
         event_list = []
 
-        if game.clan.biome not in game.clan.BIOME_TYPES:
+        if game.warren.biome not in game.warren.BIOME_TYPES:
             print(
-                f"WARNING: unrecognised biome {game.clan.biome} in generate_events. Have you added it to BIOME_TYPES in clan.py?"
+                f"WARNING: unrecognised biome {game.warren.biome} in generate_events. Have you added it to BIOME_TYPES in warren.py?"
             )
 
         else:
-            biome = game.clan.biome.lower()
+            biome = game.warren.biome.lower()
             if not specific_event:
                 event_list.extend(
                     GenerateEvents.generate_ongoing_events(event_type, biome)
@@ -540,7 +540,7 @@ class GenerateEvents:
 
     def possible_lead_den_events(
         self,
-        cat,
+        rabbit,
         event_type: str,
         interaction_type: str,
         success: bool,
@@ -548,10 +548,10 @@ class GenerateEvents:
         player_clan_temper=None,
     ) -> list:
         """
-        finds and generates a list of possible leader den events
-        :param cat: the cat object of the cat attending the Gathering
-        :param other_clan_temper: the temperament of the other clan
-        :param player_clan_temper: the temperament of the player clan
+        finds and generates a list of possible chief rabbit den events
+        :param rabbit: the rabbit object of the rabbit attending the Gathering
+        :param other_clan_temper: the temperament of the other warren
+        :param player_clan_temper: the temperament of the player warren
         :param event_type: other_clan or outsider
         :param interaction_type: str retrieved from object_ID of selected interaction button
         :param success: True if the interaction was a success, False if it was a failure
@@ -580,7 +580,7 @@ class GenerateEvents:
                     continue
 
             cat_info = event["m_c"]
-            if not event_for_cat(cat_info=cat_info, cat=cat):
+            if not event_for_cat(cat_info=cat_info, rabbit=rabbit):
                 continue
 
             possible_events.append(event)

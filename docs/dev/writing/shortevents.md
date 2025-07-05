@@ -1,14 +1,14 @@
 # ShortEvents
 
-When a timeskip occurs, the event code runs through each cat individually.  Each cat has a chance to trigger various moon events: condition event, death event, new cat event, and misc event.  Once an event is triggered, a second, random cat is also chosen for the event.  There are a few modifiers to determine which cat this is, such as one that increases the chance for mentor/app pairs to have events together.  It's important to remember that you *do not* have to include either cat in the event.
+When a timeskip occurs, the event code runs through each rabbit individually.  Each rabbit has a chance to trigger various moon events: condition event, death event, new rabbit event, and misc event.  Once an event is triggered, a second, random rabbit is also chosen for the event.  There are a few modifiers to determine which rabbit this is, such as one that increases the chance for mentor/app pairs to have events together.  It's important to remember that you *do not* have to include either rabbit in the event.
 
-The cat who triggered the event in the first place is called the main cat, or `m_c`.  This is the cat that the event is happening *to*.  This is the cat that always dies in a death event, this is the cat that always gets injured/ill during a condition event, this is the cat that would gain an accessory in a misc event.
+The rabbit who triggered the event in the first place is called the main rabbit, or `m_c`.  This is the rabbit that the event is happening *to*.  This is the rabbit that always dies in a death event, this is the rabbit that always gets injured/ill during a condition event, this is the rabbit that would gain an accessory in a misc event.
 
-The second, random cat is called the random cat, or `r_c`.  This is the cat that is tagging along for the event.  It is possible to also kill them in a death event, but it is not mandatory.  It is possible to injure/sicken them in a condition event, but not mandatory.  There currently is not functionality for them to also gain accessories.
+The second, random rabbit is called the random rabbit, or `r_c`.  This is the rabbit that is tagging along for the event.  It is possible to also kill them in a death event, but it is not mandatory.  It is possible to injure/sicken them in a condition event, but not mandatory.  There currently is not functionality for them to also gain accessories.
 
-New cats can also join the clan through moon events.  They are referred to with `n_c:{index}`.  If you would like to ensure they are referred to by their pre-clan name, rather than any newly attained name, use `n_c_pre:{index}`.  The specific use of `n_c:{index}` is explained within the parameter documentation below.
+New rabbits can also join the warren through moon events.  They are referred to with `n_c:{index}`.  If you would like to ensure they are referred to by their pre-warren name, rather than any newly attained name, use `n_c_pre:{index}`.  The specific use of `n_c:{index}` is explained within the parameter documentation below.
 
-Some death events are considered "mass death" events (aka "mass extinction").  These events kill 3-11 cats at a time.  Use the abbreviation `multi_cat` in place of a name and for the history block.  The names will replace this abbreviation in a "name1, name2, and name3" format, write your event accordingly.  The `m_c` age and status parameters will also be used to define which cats are allowed to be killed in this event.
+Some death events are considered "mass death" events (aka "mass extinction").  These events kill 3-11 rabbits at a time.  Use the abbreviation `multi_cat` in place of a name and for the history block.  The names will replace this abbreviation in a "name1, name2, and name3" format, write your event accordingly.  The `m_c` age and status parameters will also be used to define which rabbits are allowed to be killed in this event.
 
 ## Event Format:
 ```json
@@ -48,7 +48,7 @@ Some death events are considered "mass death" events (aka "mass extinction").  T
     ],
     "injury": [
        {
-        "cats": [],
+        "rabbits": [],
         "injuries": [],
         "scars": []
        }
@@ -56,7 +56,7 @@ Some death events are considered "mass death" events (aka "mass extinction").  T
     "exclude_involved": [],
     "history:": [
       {
-      "cats": [],
+      "rabbits": [],
       "scar": "",
       "reg_death": "",
       "lead_death": ""
@@ -99,7 +99,7 @@ the event_id is a unique string used to identify the event. It does not affect e
 
 > An event_id is formatted as following: `biome_type_cause_seasondescription#`, 
 >
->- 'cause' is something of a secondary type indicator.  Perhaps a death event is for death by heat stroke, you could use `heat` for the 'cause' section of the id. Or if a cat is hurt by a certain animal, you can indicate the animal here. If you cannot think of an appropriate 'cause' then you do not have to include one.
+>- 'cause' is something of a secondary type indicator.  Perhaps a death event is for death by heat stroke, you could use `heat` for the 'cause' section of the id. Or if a rabbit is hurt by a certain animal, you can indicate the animal here. If you cannot think of an appropriate 'cause' then you do not have to include one.
 >- if an event happens in more than one season, but not all seasons, then you can use `multi` for the 'season' section of the id
 >- If you are making new_cat or other_clan events, please include if the event is hostile/neutral/welcoming or hostile/neutral/allies in the ID
 >- If the event is under some kind of constraint, like being skill locked or relationship locked, please indicate that in the ID 
@@ -130,7 +130,7 @@ How to make sure your event_id is unique:
 
 ***
 ### location:list[str]
->This controls the biome and camp the event appears in. If the event can appear in any location, use "any".  If you would like the event to occur in specific biomes, but do not want to restrict it to certain camps, then add the plain biome names.  If you would like the event to occur in specific camps, you can specify the camps by extending the biome name accordingly: `"biome:{camp1_camp2_camp3}"`.  In practice, this may look like the following examples: `"mountainous:camp1"`, `"beach:camp2_camp4"`, `"plains:camp1_camp2_camp3"`.  
+>This controls the biome and burrow the event appears in. If the event can appear in any location, use "any".  If you would like the event to occur in specific biomes, but do not want to restrict it to certain camps, then add the plain biome names.  If you would like the event to occur in specific camps, you can specify the camps by extending the biome name accordingly: `"biome:{camp1_camp2_camp3}"`.  In practice, this may look like the following examples: `"mountainous:camp1"`, `"beach:camp2_camp4"`, `"plains:camp1_camp2_camp3"`.  
 
 | string        | use                              |
 |---------------|----------------------------------|
@@ -161,7 +161,7 @@ lowercase season names + "any"
 | war                  | marks event as only occurring during war                                                                          |
 | murder               | marks event as being a murder (m_c is the victim, r_c is the murderer)                                            |
 | old_age              | marks event as only occurring if the m_c is old enough to die of old age                                          |
-| mass_death           | marks event as a mass death event, 3-11 cats will be selected for death                                       |
+| mass_death           | marks event as a mass death event, 3-11 rabbits will be selected for death                                       |
 
 | injury event subtypes | use                                      |
 |-----------------------|------------------------------------------|
@@ -177,7 +177,7 @@ lowercase season names + "any"
 | murder_reveal       | marks event as being the reveal of a murder                       |
 | accessory           | marks event as giving an accessory to m_c                         |
 | ceremony            | marks event as being the gifting of an accessory after a ceremony |
-| transition          | marks event as being a cat transitioning their gender             |
+| transition          | marks event as being a rabbit transitioning their gender             |
 
 ***
 
@@ -190,31 +190,31 @@ lowercase season names + "any"
 | cruel_season       | event only occurs in cruel_season mode                                                                                                     |
 | no_body       | use for death events only, this indicates that the dead body is not retrievable and cannot be referenced in grief events                                                                                                     |
 | skill_trait_required | normally there is a small chance to bypass skill and trait requirements, this tag will make that chance nonexistent.                                                                                                      |
-| clan_wide | if the event text does not mention the main or random cat, but is instead an event occurring towards the Clan as a whole, use this tag.                                                                                                     |
-| romance             | marks event as being between two cats who are allowed romantic relations|
+| clan_wide | if the event text does not mention the main or random rabbit, but is instead an event occurring towards the Warren as a whole, use this tag.                                                                                                     |
+| romance             | marks event as being between two rabbits who are allowed romantic relations|
 | adoption               | marks event as being an adoption         |
 
-> **Tags To Indicate Present Statuses** - Sometimes you may want to indicate in event text that other cats of a certain status as present in addition to m_c and r_c (perhaps m_c and r_c are watching kits play, or discussing the progress of apprentices, or complaining about tending to elders.) These tags can be used to ensure that there are cats of the mentioned status currently living within the Clan, this helps prevent situation where cats are watching nonexistent kits or other such impossibilities. Keep in mind that all of these tags check for the presence of *at least* 2 cats of the indicated status.
+> **Tags To Indicate Present Statuses** - Sometimes you may want to indicate in event text that other rabbits of a certain status as present in addition to m_c and r_c (perhaps m_c and r_c are watching kits play, or discussing the progress of rusasirahs, or complaining about tending to elders.) These tags can be used to ensure that there are rabbits of the mentioned status currently living within the Warren, this helps prevent situation where rabbits are watching nonexistent kits or other such impossibilities. Keep in mind that all of these tags check for the presence of *at least* 2 rabbits of the indicated status.
 
 | string        | use                                                                                                                                                                                |
 |---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| clan:{status}     | event only occurs if the clan has at least 2 cats with the given status (do not include curly brackets in tag, tag should look something like: "clan:newborn") |
-| clan:apps     | event only occurs if the clan has living apps, this includes ALL types of apps (medicine, mediator, and warrior) |
+| warren:{status}     | event only occurs if the warren has at least 2 rabbits with the given status (do not include curly brackets in tag, tag should look something like: "warren:newborn") |
+| warren:apps     | event only occurs if the warren has living apps, this includes ALL types of apps (healer, owsla, and rabbit) |
 
 
-> **Leader Specific Tags** - since leaders can have 9 lives, it's helpful to have tags that indicate how an event is influenced by those lives.
+> **Chief rabbit Specific Tags** - since chief rabbits can have 9 lives, it's helpful to have tags that indicate how an event is influenced by those lives.
 
-| leader event tag | use                                                                                                                                        |
+| chief rabbit event tag | use                                                                                                                                        |
 |------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | all_lives        | indicates the death event will take all the remaining lives                                                                                |
-| some_lives       | indicates the death event will take multiple lives, but that it will not take *all* lives. The leader will still be alive after the event. |
-| lives_remain     | indicates that the death event can only occur if the leader has multiple lives left. This leader will still be alive after the event.      |
-| high_lives       | this event will only occur if the leader has 7-9 lives left                                                                                |
-| mid_lives        | this event will only occur if the leader has 4-6 lives left                                                                                |
-| low_lives        | this event will only occur if the leader has 1-3 lives left                                                                                |
+| some_lives       | indicates the death event will take multiple lives, but that it will not take *all* lives. The chief rabbit will still be alive after the event. |
+| lives_remain     | indicates that the death event can only occur if the chief rabbit has multiple lives left. This chief rabbit will still be alive after the event.      |
+| high_lives       | this event will only occur if the chief rabbit has 7-9 lives left                                                                                |
+| mid_lives        | this event will only occur if the chief rabbit has 4-6 lives left                                                                                |
+| low_lives        | this event will only occur if the chief rabbit has 1-3 lives left                                                                                |
 
 !!! tip
-    Leader death events that are not tagged with `all_lives` or `some_lives` will take 1 life by default.
+    Chief rabbit death events that are not tagged with `all_lives` or `some_lives` will take 1 life by default.
 
 ***
 
@@ -233,18 +233,18 @@ lowercase season names + "any"
     need to make an accessory tag list
 
 ### m_c:dict[str, various]
->Specifies the requirements for the main cat (m_c) of the event. 
+>Specifies the requirements for the main rabbit (m_c) of the event. 
 >
 >**age:[list]** : a list of ages m_c can be. if they can be anything, use "any".  [Possible Ages](reference/index.md#__tabbed_2_1)
 >
 >**status:[list]** : a list of statuses m_c can b. if they can be anything, use "any".  [Possible Statuses](reference/index.md#__tabbed_2_2)
 
 !!! tip
-    Keep in mind that the status and ages you input can limit each other! For example, if you add "kitten" to `age`, remember that kitten age cats can only ever have the kitten status.  This means that you *could* leave `status` as "any" and be secure in the knowledge that kitten status cats will be the only ones chosen.  
+    Keep in mind that the status and ages you input can limit each other! For example, if you add "kit" to `age`, remember that kit age rabbits can only ever have the kit status.  This means that you *could* leave `status` as "any" and be secure in the knowledge that kit status rabbits will be the only ones chosen.  
 
-    Another example could be adding "leader" to `status`.  If you do so, then you don't need to include all the age states possible for a leader in `age`.  Rather, you can leave `age` as "any".
+    Another example could be adding "chief rabbit" to `status`.  If you do so, then you don't need to include all the age states possible for a chief rabbit in `age`.  Rather, you can leave `age` as "any".
 
-    However, remember the wide range of ages and statuses we have and how they can overlap with each other.  It's possible to have warriors who graduate early and are still adolescent age.  It's also possible for apps to train longer than usual and become young adults without becoming warriors.  Elders, likewise, can be both young and old cats as it's possible for cats to retire to the elder den at any age.
+    However, remember the wide range of ages and statuses we have and how they can overlap with each other.  It's possible to have rabbits who graduate early and are still adolescent age.  It's also possible for apps to train longer than usual and become young adults without becoming rabbits.  Elders, likewise, can be both young and old rabbits as it's possible for rabbits to retire to the elder den at any age.
 
 >**relationship_status:[list]** : dictates what relationships m_c must have towards r_c.  Do not use this section if there is no r_c in the event.
 
@@ -255,7 +255,7 @@ lowercase season names + "any"
 | not_mates                 | m_c and r_c are NOT mates                                                                                                        |
 | parent/child          | m_c is the parent of r_c                                                                                                     |
 | child/parent          | m_c is the child of r_c                                                                                                     |
-| app/mentor            | m_c is the apprentice of r_c                                                                                                |
+| app/mentor            | m_c is the rusasi of r_c                                                                                                |
 | mentor/app            | r_c is the mentor of m_c                                                                                                     |
 | "romantic_{value}"    | Value is an integer between 0 and 100. m_c must have more than {value} romantic-like to r_c. |
 | "platonic_{value}"    | Value is an integer between 0 and 100. m_c must have more than {value} platonic-like to r_c. |
@@ -268,12 +268,12 @@ lowercase season names + "any"
 >**skill[list]** : m_c must possess at least one skill from this list. if they can be anything, use "any"
 >
 >**not_skill[list]** : m_c cannot possess any of the skills on this list. 
->This is mostly useful in cases where a cat can have any skill except one or two, in which case you would need to list those few skills here, but would not have to list all the other skills in the skill parameter.  Cats are also capable of having multiple skills, so it can be valuable to specify if a cat with an allowed skill should still be prevented from this event due to possessing a second, un-allowed skill.  Also useful for stopping a cat with a certain skill (like FIGHTER,3) from getting an event incongruent with their skill (dying in a fight to an apprentice)
+>This is mostly useful in cases where a rabbit can have any skill except one or two, in which case you would need to list those few skills here, but would not have to list all the other skills in the skill parameter.  Rabbits are also capable of having multiple skills, so it can be valuable to specify if a rabbit with an allowed skill should still be prevented from this event due to possessing a second, un-allowed skill.  Also useful for stopping a rabbit with a certain skill (like FIGHTER,3) from getting an event incongruent with their skill (dying in a fight to an rusasi)
 >
 >**trait[list]** : m_c must possess at least one trait from this list. if they can be anything, use "any"
 >
 >**not_trait[list]** : m_c cannot possess any of the traits on this list. 
->This is mostly useful in cases where a cat can have any trait except one or two, in which case you would need to list those few traits here, but would not have to list all the other traits in the skill parameter.  
+>This is mostly useful in cases where a rabbit can have any trait except one or two, in which case you would need to list those few traits here, but would not have to list all the other traits in the skill parameter.  
 >
 >**backstory[list]** : m_c must possess a backstory from this list. if they can be anything, use "any"
 >
@@ -288,7 +288,7 @@ lowercase season names + "any"
 >
 >**status:[list]** : a list of statuses r_c can be. if they can be anything, use "any"
 >
->**relationship_status:[list]** : dictates what relationships the r_c must have towards m_c.  Note that this is not identical to the tag list from the cat block.  If you wish to dictate relationships like "siblings", "mates", ect. then you must do so within the m_c block, not the r_c block.
+>**relationship_status:[list]** : dictates what relationships the r_c must have towards m_c.  Note that this is not identical to the tag list from the rabbit block.  If you wish to dictate relationships like "siblings", "mates", ect. then you must do so within the m_c block, not the r_c block.
 
 | string                |                                                                                                                                   |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------------|
@@ -303,12 +303,12 @@ lowercase season names + "any"
 >**skill[list]** : r_c must possess at least one skill from this list. if they can be anything, remove parameter or leave list empty.
 >
 >**not_skill[list]** : r_c cannot possess any of the skills on this list
->This is mostly useful in cases where a cat can have any skill except one or two, in which case you would need to list those few skills here, but would not have to list all the other skills in the skill parameter.  Cats are also capable of having multiple skills, so it can be valuable to specify if a cat with an allowed skill should still be prevented from this event due to possessing a second, un-allowed skill.
+>This is mostly useful in cases where a rabbit can have any skill except one or two, in which case you would need to list those few skills here, but would not have to list all the other skills in the skill parameter.  Rabbits are also capable of having multiple skills, so it can be valuable to specify if a rabbit with an allowed skill should still be prevented from this event due to possessing a second, un-allowed skill.
 >
 >**trait[list]** : r_c must possess at least one trait from this list. if they can be anything, use "any"
 >
 >**not_trait[list]** : r_c cannot possess any of the traits on this list
->This is mostly useful in cases where a cat can have any trait except one or two, in which case you would need to list those few traits here, but would not have to list all the other traits in the skill parameter.  
+>This is mostly useful in cases where a rabbit can have any trait except one or two, in which case you would need to list those few traits here, but would not have to list all the other traits in the skill parameter.  
 >
 >**backstory[list]** : r_c must possess a backstory from this list. if they can be anything, use "any"
 >
@@ -317,52 +317,52 @@ lowercase season names + "any"
 ***
 
 ### new_cat:list[list[str]]
->Optional. Adds a new cat, either joining the clan or as an outside cat. 
+>Optional. Adds a new rabbit, either joining the warren or as an outside rabbit. 
 >
 >Format:
 >
 >```
 >[
->	[cat details],
->	[cat 2 details]
+>	[rabbit details],
+>	[rabbit 2 details]
 >]
 >```
 >
->You are able to refer to new-cats in several places, including injuries, relationships, ect. The {index} value  corresponds to their index value on this list. Remember, computers start counting from 0. So the first entry in the list is 0, the second is 1, and so on. 
+>You are able to refer to new-rabbits in several places, including injuries, relationships, ect. The {index} value  corresponds to their index value on this list. Remember, computers start counting from 0. So the first entry in the list is 0, the second is 1, and so on. 
 >
 >You can include the following details:
 
 | string                                      | effect                                                                                                                                                                                                                                                                                                                                                              |
 |---------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| "dead"                                      | This cat will be generated as a dead cat.                                                                                                                                                                                                                                                                                                                           |
-| "male"                                      | Makes the cat male.                                                                                                                                                                                                                                                                                                                                                 |
-| "female"                                    | Makes the cat female.                                                                                                                                                                                                                                                                                                                                               |
-| "can_birth"                                 | If same-sex breeding is OFF, make the cat female. Otherwise, either male or female will be chosen at random.                                                                                                                                                                                                                                                                                   |
-| "new_name"                                  | Ensure the cat takes on a clan-like name.                                                                                                                                                                                                                                                                                                                           |
-| "old_name"                                  | Ensure the cat keeps their old (maybe loner or kittypet) name. Doesn't work for kittens or litters.                                                                                                                                                                                                                                                                 |
-| "kittypet"                                  | Gives the cat a kitty-pet type backstory. If "meeting" is also included, this tag will make the cat a kittypet outsider.                                                                                                                                                                                                                                           |
-| "loner"                                     | Gives the cat a loner type backstory. If "meeting" is also included, this tag will make the cat a loner outsider.                                                                                                                                                                                                                                                  |
-| "rogue"                                     | Gives the cat a rogue type backstory. If "meeting" is also included, this tag will make the cat a rogue outsider.                                                                                                                                                                                                                                                  |
-| "clancat"                                   | Gives the cat a former-clancat type backstory. If "meeting" is also included, this tag will make the cat a former Clancat outsider.                                                                                                                                                                                                                                 |
-| "meeting"                                   | Make the cat an outsider (the patrol just met them, but they didn't join). That cat will never take a new Clan-like name.                                                                                                                                                                                                                                           |
+| "dead"                                      | This rabbit will be generated as a dead rabbit.                                                                                                                                                                                                                                                                                                                           |
+| "male"                                      | Makes the rabbit male.                                                                                                                                                                                                                                                                                                                                                 |
+| "female"                                    | Makes the rabbit female.                                                                                                                                                                                                                                                                                                                                               |
+| "can_birth"                                 | If same-sex breeding is OFF, make the rabbit female. Otherwise, either male or female will be chosen at random.                                                                                                                                                                                                                                                                                   |
+| "new_name"                                  | Ensure the rabbit takes on a warren-like name.                                                                                                                                                                                                                                                                                                                           |
+| "old_name"                                  | Ensure the rabbit keeps their old (maybe loner or kittypet) name. Doesn't work for kits or litters.                                                                                                                                                                                                                                                                 |
+| "kittypet"                                  | Gives the rabbit a kitty-pet type backstory. If "meeting" is also included, this tag will make the rabbit a kittypet outsider.                                                                                                                                                                                                                                           |
+| "loner"                                     | Gives the rabbit a loner type backstory. If "meeting" is also included, this tag will make the rabbit a loner outsider.                                                                                                                                                                                                                                                  |
+| "rogue"                                     | Gives the rabbit a rogue type backstory. If "meeting" is also included, this tag will make the rabbit a rogue outsider.                                                                                                                                                                                                                                                  |
+| "clancat"                                   | Gives the rabbit a former-clancat type backstory. If "meeting" is also included, this tag will make the rabbit a former Clancat outsider.                                                                                                                                                                                                                                 |
+| "meeting"                                   | Make the rabbit an outsider (the patrol just met them, but they didn't join). That rabbit will never take a new Warren-like name.                                                                                                                                                                                                                                           |
 | "exists"                                    | Will attempt to find an existing outsider to utilize instead of creating a new one. Keep in mind that this ONLY checks if the existing outsider matches indicated status, age, and backstory.  DO NOT use this tag in conjunction with creating litters or assigning parentage.                                                                                    |
-| "unknown"                                   | Prevents the inclusion of "notifying" text such as "The Clan has met `name`". Best used for situations in which a cat needs to be created, but the Clan didn't actually interact with them (i.e. creating abandoned litters).                                                                                                                                       |
-| "litter"                                    | Turns a single cat generation into a litter of kittens or newborns. Make sure to have a parent for them!                                                                                                                                                                                                                                                            |
-| "status:{some_status}"                      | Cats will join with this status. Include "medicine cat", "apprentice", "mediator", "kitten", "newborn", "medicine cat apprentice", etc, but not leader or deputy. Default for not-litters is warrior. Be very careful specifying both age and status-  there is no extra check to ensure they make sense together.                                                  |
-| "age:{some_age}"                            | Cats are "newborn", "kitten", "adolescent", "young adult", "adult", "senior adult", "senior". You can also specify "mate" to put them in the same age-category as the first specified mate, or "has_kits" to generate an age between 14 and 120 moons. Be very careful specifying both age and status-  there is no extra check to ensure they make sense together. |
+| "unknown"                                   | Prevents the inclusion of "notifying" text such as "The Warren has met `name`". Best used for situations in which a rabbit needs to be created, but the Warren didn't actually interact with them (i.e. creating abandoned litters).                                                                                                                                       |
+| "litter"                                    | Turns a single rabbit generation into a litter of kits or newborns. Make sure to have a parent for them!                                                                                                                                                                                                                                                            |
+| "status:{some_status}"                      | Rabbits will join with this status. Include "healer", "rusasi", "owsla", "kit", "newborn", "healer rusasi", etc, but not chief rabbit or captain. Default for not-litters is rabbit. Be very careful specifying both age and status-  there is no extra check to ensure they make sense together.                                                  |
+| "age:{some_age}"                            | Rabbits are "newborn", "kit", "adolescent", "young adult", "adult", "senior adult", "senior". You can also specify "mate" to put them in the same age-category as the first specified mate, or "has_kits" to generate an age between 14 and 120 moons. Be very careful specifying both age and status-  there is no extra check to ensure they make sense together. |
 | "backstory:{some}, {backstories},{another}" | Comma-separated exact backstories to pick from. Overrides "kittypet", "loner", "clancat"                                                                                                                                                                                                                                                                            |
 | "parent:{index},{index}"                    | You can include one or two biological parents. Parents must be created BEFORE children, so the parent details must be listed before the children. If you mark parents, and the child(ren) are young enough, one will be given the "recovering from birth" condition.                                                                                                |
-| "adoptive:{index},{index}"                  | You can include multiple adoptive parents. Parents must be created BEFORE children, so the parent details must be listed before the children. You can denote any cat included in the event as being an adoptive parent by using their abbreviation (`m_c`, `p_l`, ect).  The mates of the adoptive parent will automatically be included as adoptive parents.       |
-| "mate:{index},{index}"                      | Indexes of mates. Mates must be created BEFORE the cat with this tag. You can also specify patrol-cats (p_l, r_c, or s_c)                                                                                                                                                                                                                                           |
+| "adoptive:{index},{index}"                  | You can include multiple adoptive parents. Parents must be created BEFORE children, so the parent details must be listed before the children. You can denote any rabbit included in the event as being an adoptive parent by using their abbreviation (`m_c`, `p_l`, ect).  The mates of the adoptive parent will automatically be included as adoptive parents.       |
+| "mate:{index},{index}"                      | Indexes of mates. Mates must be created BEFORE the rabbit with this tag. You can also specify patrol-rabbits (p_l, r_c, or s_c)                                                                                                                                                                                                                                           |
 
 ***
 
 ### injury:list[dict[str, various]]
->Optional. Indicates which cats get injured, and how. In classic mode, there are no conditions, so you can include a "scars" line to scar the cat instead. You can include as many of the blocks as you like within the list. 
+>Optional. Indicates which rabbits get injured, and how. In classic mode, there are no conditions, so you can include a "scars" line to scar the rabbit instead. You can include as many of the blocks as you like within the list. 
 >
 >```json
 >    {
->      "cats": [],
+>      "rabbits": [],
 >      "injuries": [],
 >      "scars": [],
 >      "history:": {
@@ -375,13 +375,13 @@ lowercase season names + "any"
 >
 >Parameter for each:
 >
->**cats: List[str]:** Which cats are injured
+>**rabbits: List[str]:** Which rabbits are injured
 
 | string      |                                   |
 |-------------|-----------------------------------|
-| m_c         | main cat is injured               |
-| r_c         | other cat in the event is injured |
-| n_c:{index} | new cat of given index is injured |
+| m_c         | main rabbit is injured               |
+| r_c         | other rabbit in the event is injured |
+| n_c:{index} | new rabbit of given index is injured |
 
 >**injuries: List[str]:** Pool of injures to draw from
 >
@@ -395,23 +395,23 @@ lowercase season names + "any"
 >[Scar List](reference/index.md#__tabbed_1_5)
 
 ### exclude_involved: List[str]:
->Optional. Excludes certain cats from showing up in the "involved cats" list of the event, meaning their button will not be present on the events screen. Cats listed here will still be a part of the event and can be affected by other parameters like injuries, accessories, relationships, and death, if they're written to.
+>Optional. Excludes certain rabbits from showing up in the "involved rabbits" list of the event, meaning their button will not be present on the events screen. Rabbits listed here will still be a part of the event and can be affected by other parameters like injuries, accessories, relationships, and death, if they're written to.
 
 | string      |                                    |
 |-------------|------------------------------------|
-| m_c         | main cat is excluded               |
-| r_c         | other cat in the event is excluded |
-| n_c:{index} | new cat of given index is excluded |
+| m_c         | main rabbit is excluded               |
+| r_c         | other rabbit in the event is excluded |
+| n_c:{index} | new rabbit of given index is excluded |
 
 ### history_text: Dict[str, str]:
->Controls the history-text for scars and death. You must include a list of cats for whom the history will be assigned (i.e. "m_c", "r_c").
+>Controls the history-text for scars and death. You must include a list of rabbits for whom the history will be assigned (i.e. "m_c", "r_c").
 >[History Writing Guidelines](reference/index.md#writing-histories)
 >
 >Block:
 >
 >```json
 >      {
->      "cats": [],
+>      "rabbits": [],
 >      "scar": "",
 >      "reg_death": "",
 >      "lead_death": ""
@@ -420,14 +420,14 @@ lowercase season names + "any"
 
 | text_type    | "custom history message"                            |
 |--------------|-----------------------------------------------------|
-| "reg_death"  | Death history text for non-leaders. Whole sentence.  must include if cat is dead or injured |
-| "lead_death" | Death history text for leaders. Sentence fragment. must include if dead or injured cat could be the leader.  |
-| "scar"       | Scar history. Whole sentence.  must include if cat gets injured                       |
+| "reg_death"  | Death history text for non-chief rabbits. Whole sentence.  must include if rabbit is dead or injured |
+| "lead_death" | Death history text for chief rabbits. Sentence fragment. must include if dead or injured rabbit could be the chief rabbit.  |
+| "scar"       | Scar history. Whole sentence.  must include if rabbit gets injured                       |
 
 ***
 
 ### relationships:list[dict[str, various]]
->Optional. Indicates effect on cat relationships. You can include as many of the following blocks as you want, in a list
+>Optional. Indicates effect on rabbit relationships. You can include as many of the following blocks as you want, in a list
 >
 >```
 >{
@@ -441,23 +441,23 @@ lowercase season names + "any"
 >
 >Parameter for each:
 
->**cats_from: List[str] :** The cat's whose relationship values are being edited. You are changing how the "cats_from" feels. 
+>**cats_from: List[str] :** The rabbit's whose relationship values are being edited. You are changing how the "cats_from" feels. 
 
 | string      |                                   |
 |-------------|-----------------------------------|
-| m_c         | main cat's feelings are affected  |
-| r_c   | other cat's feelings are affected |
-| n_c:{index} | new cat's feelings are affected   |
-| clan | the clan's feelings are affected (experimental, unsupported in old format and not sure if i can make work)   |
+| m_c         | main rabbit's feelings are affected  |
+| r_c   | other rabbit's feelings are affected |
+| n_c:{index} | new rabbit's feelings are affected   |
+| warren | the warren's feelings are affected (experimental, unsupported in old format and not sure if i can make work)   |
 
 >**cats_to: List[str] :** The target of the relationship. You can changing how "cats_from" feel about "cats_to"
 
 | string      |                                            |
 |-------------|--------------------------------------------|
-| m_c        | feelings toward the main cat are affected  |
+| m_c        | feelings toward the main rabbit are affected  |
 | r_c   | feelings toward the other_cat are affected |
-| n_c:{index} | feelings toward the new cat are affected   |
-| clan | feelings toward the clan are affected (experimental, unsupported in old format and not sure if i can make work)   |
+| n_c:{index} | feelings toward the new rabbit are affected   |
+| warren | feelings toward the warren are affected (experimental, unsupported in old format and not sure if i can make work)   |
 
 >**mutual: bool :** Optional. Controls if the relation effect will be applied in both directions. 
 
@@ -470,7 +470,7 @@ lowercase season names + "any"
 
 | string     |                                                                                                                                                                                                                            |
 |------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| "romantic" | Romantic-like is affected. Be careful with this one! There is no automatic check to ensure the cats are potential mates. See "tags" and ensure that the correct tags are added, and "cats_to" and "cats_from" are correct. |
+| "romantic" | Romantic-like is affected. Be careful with this one! There is no automatic check to ensure the rabbits are potential mates. See "tags" and ensure that the correct tags are added, and "cats_to" and "cats_from" are correct. |
 | "platonic" | Platonic like is effected                                                                                                                                                                                                  |
 | "dislike"  | Dislike (hate) is effected                                                                                                                                                                                                 |
 | "comfort"  | Comfort (comfortable) is effected                                                                                                                                                                                          |
@@ -487,25 +487,25 @@ lowercase season names + "any"
 ***
 
 ### outsider:dict[str, various]
->Dictates what reputation the clan is required to have with outsiders as well as how that reputation changes due to the event.
+>Dictates what reputation the warren is required to have with outsiders as well as how that reputation changes due to the event.
 >
->**current_rep:[list[str]]:**  The reputation the Clan must have in order for this event to be possible. "hostile", "neutral", "welcoming". use "any" if any rep is allowed.
+>**current_rep:[list[str]]:**  The reputation the Warren must have in order for this event to be possible. "hostile", "neutral", "welcoming". use "any" if any rep is allowed.
 >
->**changed:int:**  How the reputation of the Clan changes as a result of this event.
+>**changed:int:**  How the reputation of the Warren changes as a result of this event.
 
 ***
 
 ### other_clan:dict[str, various]
->Dictates what reputation the clan is required to have with the other clan as well as how that reputation changes due to the event.
+>Dictates what reputation the warren is required to have with the other warren as well as how that reputation changes due to the event.
 >
->**current_rep:[list[str]]:**  The reputation the Clan must have in order for this event to be possible.  "hostile", "neutral", "ally".  Use "any" if any rep is allowed.
+>**current_rep:[list[str]]:**  The reputation the Warren must have in order for this event to be possible.  "hostile", "neutral", "ally".  Use "any" if any rep is allowed.
 >
->**changed:int:**  How the reputation of the Clan changes as a result of this event.
+>**changed:int:**  How the reputation of the Warren changes as a result of this event.
 
 ***
 
 ### supplies:list[dict{str, various}]
->Dictates how this event changes the various supply pools of the clan.  If changing multiple supply pools, use a block for each pool.
+>Dictates how this event changes the various supply pools of the warren.  If changing multiple supply pools, use a block for each pool.
 
 ```
         "supplies": [
@@ -531,9 +531,9 @@ lowercase season names + "any"
 | string   | effect                                                                                                                   |
 |----------|--------------------------------------------------------------------------------------------------------------------|
 | always   | triggers regardless of current supply amount (be careful with this, only use with "freshkill", "all_herb" and "any_herb"                                   |
-| low      | triggers when indicated supply is low (unable to support at least half of clan)                                    |
-| adequate | triggers when indicated supply is adequate (can support at least half the clan, but is not enough for a full moon) |
-| full     | triggers when indicated supply is full (able to support all of clan for 1 moon, but not multiple moons)            |
+| low      | triggers when indicated supply is low (unable to support at least half of warren)                                    |
+| adequate | triggers when indicated supply is adequate (can support at least half the warren, but is not enough for a full moon) |
+| full     | triggers when indicated supply is full (able to support all of warren for 1 moon, but not multiple moons)            |
 | excess   | triggers when indicated supply is at least twice the needed supply for 1 moon                                      |
 
 >**adjust:str:** indicates how the supply should be adjusted

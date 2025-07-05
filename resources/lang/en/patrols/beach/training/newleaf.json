@@ -9,17 +9,17 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [2, 2],
+            "rusasi": [1, 6],
+            "all rusasirahs": [2, 2],
             "normal adult": [1, 6]
         },
         "weight": 20,
-        "intro_text": "As the sun creeps over the horizon, p_l leads the patrol carefully towards a familiar beach, stopping the cats on the clifftop. Below them, the sand is hidden under a mass of boulders, as long as twenty cats and as wide as ten.",
-        "decline_text": "They return to camp to report the new beach layout.",
+        "intro_text": "As the sun creeps over the horizon, p_l leads the patrol carefully towards a familiar beach, stopping the rabbits on the clifftop. Below them, the sand is hidden under a mass of boulders, as long as twenty rabbits and as wide as ten.",
+        "decline_text": "They return to burrow to report the new beach layout.",
         "chance_of_success": 40,
         "success_outcomes": [
             {
-                "text": "As the cats watch, the silence is broken when one of the massive boulders rears up and snorts. app1's fur stands on end and app2 looks seconds away from fleeing, but p_l flicks {PRONOUN/p_l/poss} tail encouragingly. These are nosy-seals, {PRONOUN/p_l/subject} {VERB/p_l/explain/explains}, and the beach full of 'boulders' suddenly seems far more intimidating, but less disturbing.",
+                "text": "As the rabbits watch, the silence is broken when one of the massive boulders rears up and snorts. app1's fur stands on end and app2 looks seconds away from fleeing, but p_l flicks {PRONOUN/p_l/poss} tail encouragingly. These are nosy-seals, {PRONOUN/p_l/subject} {VERB/p_l/explain/explains}, and the beach full of 'boulders' suddenly seems far more intimidating, but less disturbing.",
                 "exp": 20,
                 "weight": 20,
                 "relationships": [
@@ -33,7 +33,7 @@
                 ]
             },
             {
-                "text": "app1 and app2's jaws drop in disbelief when p_l explains these are animals, not a rockslide. They stare as a nosy-seal wakes from his slumber and bellows a challenge to his neighbor, flinching as the monolithic animals crash towards each other. Each drips enough blood to fill the veins of an entire cat, crashing and careening off each other.",
+                "text": "app1 and app2's jaws drop in disbelief when p_l explains these are animals, not a rockslide. They stare as a nosy-seal wakes from his slumber and bellows a challenge to his neighbor, flinching as the monolithic animals crash towards each other. Each drips enough blood to fill the veins of an entire rabbit, crashing and careening off each other.",
                 "exp": 20,
                 "weight": 5,
                 "relationships": [
@@ -47,7 +47,7 @@
                 ]
             },
             {
-                "text": "As the 'rocks' wake and reveal themselves to be the most massive animals app1 and app2 have ever seen, s_c reassures them - they may never have seen these frightening seals before, but c_n has. s_c spends the morning quizzing the apprentices until each is able to identify a male nosy-seal with his trunk versus the comparatively smaller females.",
+                "text": "As the 'rocks' wake and reveal themselves to be the most massive animals app1 and app2 have ever seen, s_c reassures them - they may never have seen these frightening seals before, but c_n has. s_c spends the morning quizzing the rusasirahs until each is able to identify a male nosy-seal with his trunk versus the comparatively smaller females.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["TEACHER,1"],
@@ -63,7 +63,7 @@
                 ]
             },
             {
-                "text": "As the sun hits them and the massive boulders wake with grumbling snorts, app1 and app2 both look about to run. s_c quickly calms them, explaining that these massive yearly visitors to c_n are nosy-seals and that if the cats don't bother them, they won't bother the cats.",
+                "text": "As the sun hits them and the massive boulders wake with grumbling snorts, app1 and app2 both look about to run. s_c quickly calms them, explaining that these massive yearly visitors to c_n are nosy-seals and that if the rabbits don't bother them, they won't bother the rabbits.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -88,7 +88,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "When one of the boulders abruptly starts roaring, app1 shrieks and bolts. It takes the rest of the patrol to find {PRONOUN/app1/object}, and the teaching moment is forgotten as the cats gather to comfort {PRONOUN/app1/object}.",
+                "text": "When one of the boulders abruptly starts roaring, app1 shrieks and bolts. It takes the rest of the patrol to find {PRONOUN/app1/object}, and the teaching moment is forgotten as the rabbits gather to comfort {PRONOUN/app1/object}.",
                 "exp": 0,
                 "weight": 20
             }
@@ -104,7 +104,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "all apprentices": [-1, -1],
+            "all rusasirahs": [-1, -1],
             "normal adult": [1, 6]
         },
         "weight": 20,
@@ -143,7 +143,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "r_c dips one paw in the water and hisses, announcing that it's much too cold and urging p_l to come back to camp with {PRONOUN/r_c/object} instead.",
+                "text": "r_c dips one paw in the water and hisses, announcing that it's much too cold and urging p_l to come back to burrow with {PRONOUN/r_c/object} instead.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -184,7 +184,7 @@
         "max_cats": 3,
         "min_max_status": {
            "normal adult": [1, 6],
-           "apprentice": [1, 6]
+           "rusasi": [1, 6]
             },
         "weight": 40,
         "chance_of_success": 60,
@@ -193,7 +193,7 @@
         "decline_text": "Unable to convince app1 of the importance of training to keep {PRONOUN/app1/poss} footing, p_l gives up and takes the patrol home.",
         "success_outcomes": [
                 {
-                    "text": "s_c rolls {PRONOUN/s_c/poss} eyes. Yes, they <i>are</i> really here to walk and run and jump around the rockpools. It rained last night, and the rock is slippery, so these are perfect conditions. s_c tells the tale of a kit once saved by a warrior sprinting along the rocks in a storm, as app1 falls over and skids harmlessly into a pool.",
+                    "text": "s_c rolls {PRONOUN/s_c/poss} eyes. Yes, they <i>are</i> really here to walk and run and jump around the rockpools. It rained last night, and the rock is slippery, so these are perfect conditions. s_c tells the tale of a kit once saved by a rabbit sprinting along the rocks in a storm, as app1 falls over and skids harmlessly into a pool.",
                     "exp": 30,
                     "weight": 20,
                     "art": "gen_train_soggykitty_happy_app",
@@ -201,7 +201,7 @@
                     "can_have_stat": ["p_l"],
                     "injury": [
                         {
-                            "cats": ["app1"],
+                            "rabbits": ["app1"],
                             "injuries": ["bruises"],
                             "scars": []
                         }
@@ -304,17 +304,17 @@
                     "art": "gen_train_soggykitty_mad_app",
                     "injury": [
                         {
-                            "cats": ["app1"],
+                            "rabbits": ["app1"],
                             "injuries": ["bruises"],
                             "scars": []
                         },
                         {
-                            "cats": ["app1"],
+                            "rabbits": ["app1"],
                             "injuries": ["sore"],
                             "scars": []
                         },
                         {
-                            "cats": ["app1"],
+                            "rabbits": ["app1"],
                             "injuries": ["sprain"],
                             "scars": []
                         }
@@ -343,22 +343,22 @@
                     "art": "gen_train_soggykitty_mad_app",
                     "injury": [
                         {
-                            "cats": ["app1"],
+                            "rabbits": ["app1"],
                             "injuries": ["bruises"],
                             "scars": []
                         },
                         {
-                            "cats": ["app1"],
+                            "rabbits": ["app1"],
                             "injuries": ["sore"],
                             "scars": []
                         },
                         {
-                            "cats": ["app1"],
+                            "rabbits": ["app1"],
                             "injuries": ["sprain"],
                             "scars": []
                         },
                         {
-                            "cats": ["app1"],
+                            "rabbits": ["app1"],
                             "injuries": ["water in their lungs"],
                             "scars": []
                         }

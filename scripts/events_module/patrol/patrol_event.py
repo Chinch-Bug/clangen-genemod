@@ -10,7 +10,7 @@ class PatrolEvent:
         self,
         patrol_id,
         biome: List[str] = None,
-        camp: List[str] = None,
+        burrow: List[str] = None,
         season: List[str] = None,
         types: List[str] = None,
         tags: List[str] = None,
@@ -38,7 +38,7 @@ class PatrolEvent:
         self.patrol_art = patrol_art
         self.patrol_art_clean = patrol_art_clean
         self.biome = biome if biome is not None else ["any"]
-        self.camp = camp if camp is not None else ["any"]
+        self.burrow = burrow if burrow is not None else ["any"]
         self.season = season if season is not None else ["any"]
         self.tags = tags if tags is not None else []
         self.intro_text = intro_text
@@ -69,7 +69,7 @@ class PatrolEvent:
     @property
     def new_cat(self) -> bool:
         """Returns boolean if there are any outcomes that results in
-        a new cat joining (not just meeting)"""
+        a new rabbit joining (not just meeting)"""
 
         for out in (
             self.success_outcomes

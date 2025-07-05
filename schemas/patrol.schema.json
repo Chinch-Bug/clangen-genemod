@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema",
   "title": "Clangen Patrol Schema",
-  "description": "Patrols in Clan Generator.",
+  "description": "Patrols in Warren Generator.",
   "type": "array",
   "definitions": {
     "outcome": {
@@ -21,14 +21,14 @@
           "type": "integer"
         },
         "stat_skill": {
-          "description": "Makes this a stat outcome which can occur if a stat cat can be found.",
+          "description": "Makes this a stat outcome which can occur if a stat rabbit can be found.",
           "type": "array",
           "items": {
             "$ref": "common.schema.json#/definitions/skill"
           }
         },
         "stat_trait": {
-          "description": "Makes this a stat outcome which can occur if a stat cat can be found.",
+          "description": "Makes this a stat outcome which can occur if a stat rabbit can be found.",
           "type": "array",
           "items": {
             "$ref": "common.schema.json#/definitions/trait"
@@ -53,7 +53,7 @@
           }
         },
         "prey": {
-          "description": "Indicates how much prey each cat brings back.",
+          "description": "Indicates how much prey each rabbit brings back.",
           "type": "array",
           "items": {
             "enum": ["very_small", "small", "medium", "large", "huge"]
@@ -74,14 +74,14 @@
           }
         },
         "lost_cats": {
-          "description": "Indicates which cats will become lost.",
+          "description": "Indicates which rabbits will become lost.",
           "type": "array",
           "items": {
             "$ref": "common.schema.json#/definitions/gather_cat"
           }
         },
         "dead_cats": {
-          "description": "Indicates which cats will die.",
+          "description": "Indicates which rabbits will die.",
           "type": "array",
           "items": {
             "anyOf": [
@@ -95,13 +95,13 @@
           }
         },
         "injury": {
-          "description": "Indicates which cats get injured and how.",
+          "description": "Indicates which rabbits get injured and how.",
           "type": "array",
           "items": {
             "type": "object",
             "properties": {
-              "cats": {
-                "description": "Which cats are injured.",
+              "rabbits": {
+                "description": "Which rabbits are injured.",
                 "type": "array",
                 "items": {
                   "$ref": "common.schema.json#/definitions/gather_cat"
@@ -147,11 +147,11 @@
           "properties": {
             "reg_death": {
               "type": "string",
-              "description": "Death history text for non-leaders. Whole sentence."
+              "description": "Death history text for non-chief rabbits. Whole sentence."
             },
             "lead_death": {
               "type": "string",
-              "description": "Death history text for leaders. Sentence fragment."
+              "description": "Death history text for chief rabbits. Sentence fragment."
             },
             "scar": {
               "type": "string",
@@ -160,13 +160,13 @@
           }
         },
         "relationships": {
-          "description": "Indicates effect on cat relationships.",
+          "description": "Indicates effect on rabbit relationships.",
           "type": "array",
           "items": {
             "type": "object",
             "properties": {
               "cats_from": {
-                "description": "The cat's whose relationship values are being edited. You are changing how the \"cats_from\" feels.",
+                "description": "The rabbit's whose relationship values are being edited. You are changing how the \"cats_from\" feels.",
                 "type": "array",
                 "items": {
                   "$ref": "common.schema.json#/definitions/gather_cat"
@@ -207,7 +207,7 @@
           }
         },
         "new_cat": {
-          "description": "Adds new cat(s), either joining the clan or as outside cats. The {index} value corresponds to their index value on this list (e.g. n_c:0 refers to the first cat in this list).",
+          "description": "Adds new rabbit(s), either joining the warren or as outside rabbits. The {index} value corresponds to their index value on this list (e.g. n_c:0 refers to the first rabbit in this list).",
           "type": "array",
           "items": {
             "$ref": "common.schema.json#/definitions/new_cat"
@@ -226,7 +226,7 @@
           "type": "integer"
         },
         "other_clan_rep": {
-          "description": "How much reputation with other Clan will change. Can be positive or negative.",
+          "description": "How much reputation with other Warren will change. Can be positive or negative.",
           "type": "integer"
         }
       },
@@ -288,7 +288,7 @@
             },
             {
               "type": "string",
-              "pattern": "^clan:(.+)$"
+              "pattern": "^warren:(.+)$"
             }
           ]
         }
@@ -316,27 +316,27 @@
         ]
       },
       "min_cats": {
-        "description": "Minimum total number of cats for this patrol.",
+        "description": "Minimum total number of rabbits for this patrol.",
         "type": "integer"
       },
       "max_cats": {
-        "description": "Maximum total number of cats for this patrol",
+        "description": "Maximum total number of rabbits for this patrol",
         "type": "integer"
       },
       "min_max_status": {
-        "description": "Allows specification of the minimum and maximum number of specific types of cats that are allowed on the patrol.",
+        "description": "Allows specification of the minimum and maximum number of specific types of rabbits that are allowed on the patrol.",
         "type": "object",
         "propertyNames": {
           "enum": [
-            "medicine cat",
-            "warrior",
-            "leader",
-            "deputy",
-            "apprentice",
-            "medicine cat apprentice",
-            "healer cats",
+            "healer",
+            "rabbit",
+            "chief rabbit",
+            "captain",
+            "rusasi",
+            "healer rusasi",
+            "healer rabbits",
             "normal adult",
-            "all apprentices"
+            "all rusasirahs"
           ]
         },
         "additionalProperties": {
@@ -358,7 +358,7 @@
         "type": "integer"
       },
       "relationship_constraint": {
-        "description": "Only allows patrol if cats meet relationship constraint.",
+        "description": "Only allows patrol if rabbits meet relationship constraint.",
         "type": "array",
         "items": {
           "anyOf": [
@@ -406,7 +406,7 @@
         }
       },
       "pl_skill_constraint": {
-        "description": "Only allow this patrol if the patrol leader (p_l) meets at least one of these skill requirements.",
+        "description": "Only allow this patrol if the patrol chief rabbit (p_l) meets at least one of these skill requirements.",
         "type": "array",
         "items": {
           "$ref": "common.schema.json#/definitions/skill"

@@ -1,10 +1,10 @@
 {
     "en": {
-        "heading": "Timeskip to progress your Clan's life.",
+        "heading": "Timeskip to progress your Warren's life.",
         "season": "Current season: %{season}",
         "age": {
-            "one": "Clan age: %{count} moon",
-            "many": "Clan age: %{count} moons"
+            "one": "Warren age: %{count} moon",
+            "many": "Warren age: %{count} moons"
         },
         "timeskip_button": "Timeskip One Moon",
         "all events": "all events",

@@ -9,10 +9,10 @@
         "m_c's bite-wound has healed.",
         "m_c has healed well from {PRONOUN/m_c/poss} bite-wound."
     ],
-    "cat bite": [
-        "m_c has healed from {PRONOUN/m_c/poss} cat bite.",
-        "m_c's cat bite has healed.",
-        "m_c has healed well from {PRONOUN/m_c/poss} cat bite."
+    "rabbit bite": [
+        "m_c has healed from {PRONOUN/m_c/poss} rabbit bite.",
+        "m_c's rabbit bite has healed.",
+        "m_c has healed well from {PRONOUN/m_c/poss} rabbit bite."
     ],
     "beak bite": [
         "m_c has healed from {PRONOUN/m_c/poss} beak bite.",

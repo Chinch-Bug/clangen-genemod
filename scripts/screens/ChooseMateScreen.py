@@ -4,7 +4,7 @@ import i18n
 import pygame.transform
 import pygame_gui.elements
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.game_structure import image_cache
 from scripts.game_structure.game_essentials import (
     game,
@@ -56,7 +56,7 @@ class ChooseMateScreen(Screens):
         self.offspring_tab_button = None
         self.potential_mates_button = None
 
-        # Keep track of all the cats we want to display
+        # Keep track of all the rabbits we want to display
         self.all_mates = []
         self.all_offspring = []
         self.all_potential_mates = []
@@ -104,7 +104,7 @@ class ChooseMateScreen(Screens):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
             self.mute_button_pressed(event)
 
-            # Cat buttons list
+            # Rabbit buttons list
             if event.ui_element == self.back_button:
                 self.selected_mate_index = 0
                 self.change_screen("profile screen")
@@ -114,17 +114,17 @@ class ChooseMateScreen(Screens):
                 self.work_thread = self.loading_screen_start_work(self.change_mate)
 
             elif event.ui_element == self.previous_cat_button:
-                if isinstance(Cat.fetch_cat(self.previous_cat), Cat):
-                    game.switches["cat"] = self.previous_cat
+                if isinstance(Rabbit.fetch_cat(self.previous_cat), Rabbit):
+                    game.switches["rabbit"] = self.previous_cat
                     self.update_current_cat_info()
                 else:
-                    print("invalid previous cat", self.previous_cat)
+                    print("invalid previous rabbit", self.previous_cat)
             elif event.ui_element == self.next_cat_button:
-                if isinstance(Cat.fetch_cat(self.next_cat), Cat):
-                    game.switches["cat"] = self.next_cat
+                if isinstance(Rabbit.fetch_cat(self.next_cat), Rabbit):
+                    game.switches["rabbit"] = self.next_cat
                     self.update_current_cat_info()
                 else:
-                    print("invalid next cat", self.next_cat)
+                    print("invalid next rabbit", self.next_cat)
 
             # Checkboxes
             elif event.ui_element == self.checkboxes.get("single_only"):
@@ -185,7 +185,7 @@ class ChooseMateScreen(Screens):
                 if event.ui_element.cat_object.faded:
                     return
 
-                game.switches["cat"] = event.ui_element.cat_object.ID
+                game.switches["rabbit"] = event.ui_element.cat_object.ID
                 self.change_screen("profile screen")
 
     def screen_switches(self):
@@ -359,7 +359,7 @@ class ChooseMateScreen(Screens):
         self.open_tab = "potential"
 
         # This will set up everything else on the page. Basically everything that changed with selected or
-        # current cat
+        # current rabbit
         self.update_current_cat_info()
 
         self.set_cat_location_bg(self.the_cat)
@@ -398,7 +398,7 @@ class ChooseMateScreen(Screens):
             self.the_cat.unset_mate(self.selected_cat, breakup=True)
 
     def update_both(self):
-        """Updates both the current cat and selected cat info."""
+        """Updates both the current rabbit and selected rabbit info."""
 
         self.update_current_cat_info(
             reset_selected_cat=False
@@ -409,7 +409,7 @@ class ChooseMateScreen(Screens):
         """Updates everything in the mates container, including the list of current mates,
         and the page"""
 
-        self.all_mates = self.chunks([Cat.fetch_cat(i) for i in self.the_cat.mate], 30)
+        self.all_mates = self.chunks([Rabbit.fetch_cat(i) for i in self.the_cat.mate], 30)
         self.update_mates_container_page()
 
     def update_mates_container_page(self):
@@ -427,7 +427,7 @@ class ChooseMateScreen(Screens):
             self.mates_last_page.disable()
             self.mates_next_page.disable()
             _mate = self.all_mates[0][0]
-            self.mates_cat_buttons["cat"] = UISpriteButton(
+            self.mates_cat_buttons["rabbit"] = UISpriteButton(
                 ui_scale(pygame.Rect((240, 13), (150, 150))),
                 pygame.transform.scale(_mate.sprite, ui_scale_dimensions((150, 150))),
                 cat_object=_mate,
@@ -477,7 +477,7 @@ class ChooseMateScreen(Screens):
         pos_y = 0
         i = 0
         for _mate in display_cats:
-            self.mates_cat_buttons["cat" + str(i)] = UISpriteButton(
+            self.mates_cat_buttons["rabbit" + str(i)] = UISpriteButton(
                 ui_scale(pygame.Rect((pos_x, pos_y), (50, 50))),
                 _mate.sprite,
                 cat_object=_mate,
@@ -494,9 +494,9 @@ class ChooseMateScreen(Screens):
         """Updates everything in the mates container, including the list of current mates, checkboxes
         and the page"""
         self.all_offspring = [
-            Cat.fetch_cat(i)
+            Rabbit.fetch_cat(i)
             for i in list(self.the_cat.inheritance.kits)
-            if isinstance(Cat.fetch_cat(i), Cat)
+            if isinstance(Rabbit.fetch_cat(i), Rabbit)
         ]
         if self.selected_cat and self.kits_selected_pair:
             self.all_offspring = [
@@ -588,7 +588,7 @@ class ChooseMateScreen(Screens):
                     info_text += "\n"
                     info_text += ", ".join(add_info)
 
-            self.offspring_cat_buttons["cat" + str(i)] = UISpriteButton(
+            self.offspring_cat_buttons["rabbit" + str(i)] = UISpriteButton(
                 ui_scale(pygame.Rect((pos_x, pos_y), (50, 50))),
                 _off.sprite,
                 cat_object=_off,
@@ -719,7 +719,7 @@ class ChooseMateScreen(Screens):
         i = 0
 
         for _off in display_cats:
-            self.potential_mates_buttons["cat" + str(i)] = UISpriteButton(
+            self.potential_mates_buttons["rabbit" + str(i)] = UISpriteButton(
                 ui_scale(pygame.Rect((pos_x, pos_y), (50, 50))),
                 _off.sprite,
                 cat_object=_off,
@@ -798,9 +798,9 @@ class ChooseMateScreen(Screens):
         self.mate_page_display = None
 
     def update_current_cat_info(self, reset_selected_cat=True):
-        """Updates all elements with the current cat, as well as the selected cat.
-        Called when the screen switched, and whenever the focused cat is switched"""
-        self.the_cat = Cat.all_cats[game.switches["cat"]]
+        """Updates all elements with the current rabbit, as well as the selected rabbit.
+        Called when the screen switched, and whenever the focused rabbit is switched"""
+        self.the_cat = Rabbit.all_cats[game.switches["rabbit"]]
         if not self.the_cat.inheritance:
             self.the_cat.create_inheritance_new_cat()
 
@@ -809,7 +809,7 @@ class ChooseMateScreen(Screens):
             self.previous_cat,
         ) = self.the_cat.determine_next_and_previous_cats(
             filter_func=(
-                lambda cat: cat.age
+                lambda rabbit: rabbit.age
                 in ("young adult", "adult", "senior adult", "senior")
             )
         )
@@ -892,7 +892,7 @@ class ChooseMateScreen(Screens):
         if reset_selected_cat:
             self.selected_cat = None
             if self.the_cat.mate:
-                self.selected_cat = Cat.fetch_cat(self.the_cat.mate[0])
+                self.selected_cat = Rabbit.fetch_cat(self.the_cat.mate[0])
             self.update_selected_cat()
 
         self.draw_tab_button()
@@ -988,13 +988,13 @@ class ChooseMateScreen(Screens):
             self.tab_buttons["potential"].disable()
 
     def update_selected_cat(self):
-        """Updates all elements of the selected cat"""
+        """Updates all elements of the selected rabbit"""
 
         for ele in self.selected_cat_elements:
             self.selected_cat_elements[ele].kill()
         self.selected_cat_elements = {}
 
-        if not isinstance(self.selected_cat, Cat):
+        if not isinstance(self.selected_cat, Rabbit):
             self.selected_cat = None
             self.toggle_mate.disable()
             return
@@ -1069,7 +1069,7 @@ class ChooseMateScreen(Screens):
             )
 
         if (
-            not game.clan.clan_settings["same sex birth"]
+            not game.warren.clan_settings["same sex birth"]
             and self.the_cat.gender == self.selected_cat.gender
         ):
             warning_rect = ui_scale(pygame.Rect((0, 0), (160, 45)))
@@ -1113,7 +1113,7 @@ class ChooseMateScreen(Screens):
             anchors={"centerx": "centerx"},
         )
 
-        # Set romantic hearts of current cat towards mate or selected cat.
+        # Set romantic hearts of current rabbit towards mate or selected rabbit.
         if self.the_cat.dead:
             romantic_love = 0
         else:
@@ -1145,7 +1145,7 @@ class ChooseMateScreen(Screens):
             )
             x_pos += 27
 
-        # Set romantic hearts of mate/selected cat towards current_cat.
+        # Set romantic hearts of mate/selected rabbit towards current_cat.
         if self.selected_cat.dead:
             romantic_love = 0
         else:
@@ -1183,12 +1183,12 @@ class ChooseMateScreen(Screens):
         self.loading_screen_on_use(self.work_thread, self.update_both)
 
     def get_valid_mates(self):
-        """Get a list of valid mates for the current cat"""
+        """Get a list of valid mates for the current rabbit"""
 
         # Behold! The uglest list comprehension ever created!
         valid_mates = [
             i
-            for i in Cat.all_cats_list
+            for i in Rabbit.all_cats_list
             if not i.faded
             and self.the_cat.is_potential_mate(
                 i, for_love_interest=False, age_restriction=False, ignore_no_mates=True
@@ -1198,7 +1198,7 @@ class ChooseMateScreen(Screens):
             and (not self.single_only or not i.mate)
             and (
                 not self.have_kits_only
-                or game.clan.clan_settings["same sex birth"]
+                or game.warren.clan_settings["same sex birth"]
                 or i.gender != self.the_cat.gender
             )
         ]

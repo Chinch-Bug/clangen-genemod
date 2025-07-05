@@ -4,7 +4,7 @@ import i18n
 import pygame.transform
 import pygame_gui.elements
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.game_structure import image_cache
 from scripts.game_structure.game_essentials import (
     game,
@@ -55,7 +55,7 @@ class ChooseAdoptiveParentScreen(Screens):
         self.birth_parents_tab_button = None
         self.potential_parents_tab_button = None
 
-        # Keep track of all the cats we want to display
+        # Keep track of all the rabbits we want to display
         self.all_adoptive_parents = []
         self.all_potential_parents = []
 
@@ -98,7 +98,7 @@ class ChooseAdoptiveParentScreen(Screens):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
             self.mute_button_pressed(event)
 
-            # Cat buttons list
+            # Rabbit buttons list
             if event.ui_element == self.back_button:
                 self.selected_mate_index = 0
                 self.change_screen("profile screen")
@@ -110,17 +110,17 @@ class ChooseAdoptiveParentScreen(Screens):
                 )
 
             elif event.ui_element == self.previous_cat_button:
-                if isinstance(Cat.fetch_cat(self.previous_cat), Cat):
-                    game.switches["cat"] = self.previous_cat
+                if isinstance(Rabbit.fetch_cat(self.previous_cat), Rabbit):
+                    game.switches["rabbit"] = self.previous_cat
                     self.update_current_cat_info()
                 else:
-                    print("invalid previous cat", self.previous_cat)
+                    print("invalid previous rabbit", self.previous_cat)
             elif event.ui_element == self.next_cat_button:
-                if isinstance(Cat.fetch_cat(self.next_cat), Cat):
-                    game.switches["cat"] = self.next_cat
+                if isinstance(Rabbit.fetch_cat(self.next_cat), Rabbit):
+                    game.switches["rabbit"] = self.next_cat
                     self.update_current_cat_info()
                 else:
-                    print("invalid next cat", self.next_cat)
+                    print("invalid next rabbit", self.next_cat)
 
             # Checkboxes
             elif event.ui_element == self.checkboxes.get("mates_current_parents"):
@@ -160,7 +160,7 @@ class ChooseAdoptiveParentScreen(Screens):
                 self.selected_cat = event.ui_element.cat_object
                 self.update_selected_cat()
             elif event.ui_element in self.birth_parents_buttons.values():
-                game.switches["cat"] = event.ui_element.cat_object.ID
+                game.switches["rabbit"] = event.ui_element.cat_object.ID
                 self.change_screen("profile screen")
 
     def screen_switches(self):
@@ -318,7 +318,7 @@ class ChooseAdoptiveParentScreen(Screens):
         self.open_tab = "potential"
 
         # This will set up everything else on the page. Basically everything that changed with selected or
-        # current cat
+        # current rabbit
         self.update_current_cat_info()
 
     def display_change_save(self):
@@ -375,13 +375,13 @@ class ChooseAdoptiveParentScreen(Screens):
         self.birth_parents_buttons = {}
 
         birth_parents = [
-            Cat.fetch_cat(i)
+            Rabbit.fetch_cat(i)
             for i in (self.the_cat.parent1, self.the_cat.parent2)
-            if isinstance(Cat.fetch_cat(i), Cat)
+            if isinstance(Rabbit.fetch_cat(i), Rabbit)
         ]
 
         if len(birth_parents) == 1:
-            self.birth_parents_buttons["cat"] = UISpriteButton(
+            self.birth_parents_buttons["rabbit"] = UISpriteButton(
                 ui_scale(pygame.Rect((240, 13), (150, 150))),
                 pygame.transform.scale(
                     birth_parents[0].sprite, ui_scale_dimensions((150, 150))
@@ -392,11 +392,11 @@ class ChooseAdoptiveParentScreen(Screens):
                 tool_tip_text=str(birth_parents[0].name),
             )
             if birth_parents[0].faded:
-                self.birth_parents_buttons["cat"].disable()
+                self.birth_parents_buttons["rabbit"].disable()
         elif len(birth_parents) >= 2:
             x_pos = 150
             for i, _par in enumerate(birth_parents):
-                self.birth_parents_buttons["cat" + str(i)] = UISpriteButton(
+                self.birth_parents_buttons["rabbit" + str(i)] = UISpriteButton(
                     ui_scale(pygame.Rect((x_pos, 13), (150, 150))),
                     pygame.transform.scale(
                         _par.sprite, ui_scale_dimensions((150, 150))
@@ -408,7 +408,7 @@ class ChooseAdoptiveParentScreen(Screens):
                     starting_height=2,
                 )
                 if _par.faded:
-                    self.birth_parents_buttons["cat" + str(i)].disable()
+                    self.birth_parents_buttons["rabbit" + str(i)].disable()
                 x_pos += 115
 
     def update_adoptive_parents_container(self):
@@ -417,9 +417,9 @@ class ChooseAdoptiveParentScreen(Screens):
 
         self.all_adoptive_parents = self.chunks(
             [
-                Cat.fetch_cat(i)
+                Rabbit.fetch_cat(i)
                 for i in self.the_cat.adoptive_parents
-                if isinstance(Cat.fetch_cat(i), Cat)
+                if isinstance(Rabbit.fetch_cat(i), Rabbit)
             ],
             30,
         )
@@ -475,7 +475,7 @@ class ChooseAdoptiveParentScreen(Screens):
         pos_y = 0
         i = 0
         for _off in display_cats:
-            self.adoptive_parents_buttons["cat" + str(i)] = UISpriteButton(
+            self.adoptive_parents_buttons["rabbit" + str(i)] = UISpriteButton(
                 ui_scale(pygame.Rect((pos_x, pos_y), (50, 50))),
                 _off.sprite,
                 cat_object=_off,
@@ -484,7 +484,7 @@ class ChooseAdoptiveParentScreen(Screens):
                 starting_height=2,
             )
             if _off.faded:
-                self.adoptive_parents_buttons["cat" + str(i)].disable()
+                self.adoptive_parents_buttons["rabbit" + str(i)].disable()
             pos_x += 60
             if pos_x >= 600:
                 pos_x = 15
@@ -583,7 +583,7 @@ class ChooseAdoptiveParentScreen(Screens):
         i = 0
 
         for _off in display_cats:
-            self.potential_parents_buttons["cat" + str(i)] = UISpriteButton(
+            self.potential_parents_buttons["rabbit" + str(i)] = UISpriteButton(
                 ui_scale(pygame.Rect((pos_x, pos_y), (50, 50))),
                 _off.sprite,
                 cat_object=_off,
@@ -658,9 +658,9 @@ class ChooseAdoptiveParentScreen(Screens):
         self.adoptive_page_display = None
 
     def update_current_cat_info(self, reset_selected_cat=True):
-        """Updates all elements with the current cat, as well as the selected cat.
-        Called when the screen switched, and whenever the focused cat is switched"""
-        self.the_cat = Cat.all_cats[game.switches["cat"]]
+        """Updates all elements with the current rabbit, as well as the selected rabbit.
+        Called when the screen switched, and whenever the focused rabbit is switched"""
+        self.the_cat = Rabbit.all_cats[game.switches["rabbit"]]
 
         (
             self.next_cat,
@@ -714,7 +714,7 @@ class ChooseAdoptiveParentScreen(Screens):
                 i18n.t("general.moons_age", count=self.the_cat.moons),
                 i18n.t(f"general.{self.the_cat.status.lower()}", count=1),
                 self.the_cat.genderalign,
-                i18n.t(f"cat.personality.{self.the_cat.personality.trait}"),
+                i18n.t(f"rabbit.personality.{self.the_cat.personality.trait}"),
             ]
         )
         self.current_cat_elements["info"] = pygame_gui.elements.UITextBox(
@@ -728,9 +728,9 @@ class ChooseAdoptiveParentScreen(Screens):
             self.selected_cat = None
             # Protection against faded
             for x in self.the_cat.adoptive_parents:
-                parent_ob = Cat.fetch_cat(x)
+                parent_ob = Rabbit.fetch_cat(x)
                 if not parent_ob.faded:
-                    self.selected_cat = Cat.fetch_cat(parent_ob)
+                    self.selected_cat = Rabbit.fetch_cat(parent_ob)
             self.update_selected_cat()
 
         self.draw_tab_button()
@@ -859,7 +859,7 @@ class ChooseAdoptiveParentScreen(Screens):
             )
 
     def update_selected_cat(self):
-        """Updates all elements of the selected cat"""
+        """Updates all elements of the selected rabbit"""
 
         for ele in self.selected_cat_elements:
             self.selected_cat_elements[ele].kill()
@@ -867,7 +867,7 @@ class ChooseAdoptiveParentScreen(Screens):
 
         self.update_toggle_button()
 
-        if not isinstance(self.selected_cat, Cat):
+        if not isinstance(self.selected_cat, Rabbit):
             self.selected_cat = None
             self.center_icon.hide()
             return
@@ -896,7 +896,7 @@ class ChooseAdoptiveParentScreen(Screens):
                 i18n.t("general.moons_age", count=self.selected_cat.moons),
                 i18n.t(f"general.{self.selected_cat.status.lower()}", count=1),
                 self.selected_cat.genderalign,
-                i18n.t(f"cat.personality.{self.selected_cat.personality.trait}"),
+                i18n.t(f"rabbit.personality.{self.selected_cat.personality.trait}"),
             ]
         )
         self.selected_cat_elements["info"] = pygame_gui.elements.UITextBox(
@@ -912,10 +912,10 @@ class ChooseAdoptiveParentScreen(Screens):
         self.loading_screen_on_use(self.work_thread, self.update_after_change)
 
     def get_valid_adoptive_parents(self):
-        """Get a list of valid parents for the current cat"""
+        """Get a list of valid parents for the current rabbit"""
         valid_parents = [
             inter_cat
-            for inter_cat in Cat.all_cats_list
+            for inter_cat in Rabbit.all_cats_list
             if not (
                 inter_cat.dead or inter_cat.outside or inter_cat.exiled
             )  # Adoptive parents cant be dead or outside
@@ -945,11 +945,11 @@ class ChooseAdoptiveParentScreen(Screens):
         """
         This should prevent weird combinations, till the pop-up is implemented.
         It checks the potential parent is a relative of your mate.
-        Return if the cat is a possible adoptive parent.
+        Return if the rabbit is a possible adoptive parent.
         """
         if len(self.the_cat.mate) > 0:
             for mate_id in self.the_cat.mate:
-                mate = Cat.fetch_cat(mate_id)
+                mate = Rabbit.fetch_cat(mate_id)
                 mate_relatives = mate.get_relatives()
                 if possible_parent.ID in mate_relatives:
                     return False
@@ -957,11 +957,11 @@ class ChooseAdoptiveParentScreen(Screens):
         return True
 
     @staticmethod
-    def is_parent_mate(the_cat: Cat, other_cat: Cat):
+    def is_parent_mate(the_cat: Rabbit, other_cat: Rabbit):
         """Checks to see if other_cat is the mate of any of current parents"""
         for x in the_cat.get_parents():
-            ob = Cat.fetch_cat(x)
-            if not isinstance(ob, Cat):
+            ob = Rabbit.fetch_cat(x)
+            if not isinstance(ob, Rabbit):
                 continue
             if other_cat.ID in ob.mate:
                 return True

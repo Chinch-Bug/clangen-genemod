@@ -58,7 +58,7 @@ def rebuild_core(*, should_rebuild_bgs=True):
     )
     menu_buttons["camp_screen"] = UISurfaceImageButton(
         ui_scale(pygame.Rect((0, 60), (58, 30))),
-        "screens.core.camp",
+        "screens.core.burrow",
         get_button_dict(ButtonStyles.MENU_MIDDLE, (58, 30)),
         visible=False,
         manager=MANAGER,
@@ -141,7 +141,7 @@ def rebuild_core(*, should_rebuild_bgs=True):
             "centerx": "centerx",
         },
     )
-    # it has to be at least 193 to make "cats outside the clan" fit
+    # it has to be at least 193 to make "rabbits outside the warren" fit
     heading_rect = ui_scale(pygame.Rect((0, 0), (193, 35)))
     heading_rect.bottomleft = ui_scale_offset((0, 1))  # yes, this is intentional.
     menu_buttons["heading"] = pygame_gui.elements.UITextBox(
@@ -371,7 +371,7 @@ def rebuild_bgs():
                 pygame.image.load("resources/images/menu_logoless.png").convert(),
                 temp_screen_size,
             ),
-            "starclan": pygame.transform.scale(
+            "inle": pygame.transform.scale(
                 pygame.image.load("resources/images/starclanbg.png").convert_alpha(),
                 temp_screen_size,
             ),
@@ -390,7 +390,7 @@ def rebuild_bgs():
                 pygame.image.load("resources/images/menu_logoless.png").convert(),
                 temp_screen_size,
             ),
-            "starclan": pygame.transform.scale(
+            "inle": pygame.transform.scale(
                 pygame.image.load("resources/images/starclanbg.png").convert_alpha(),
                 temp_screen_size,
             ),
@@ -412,7 +412,7 @@ def rebuild_bgs():
                 "mainmenu_bg",
                 "darkforest",
                 "unknown_residence",
-                "starclan",
+                "inle",
             ):
                 default_fullscreen_bgs[theme][name] = process_blur_bg(
                     default_fullscreen_bgs[theme][name], theme=theme
@@ -428,7 +428,7 @@ def rebuild_bgs():
                 default_fullscreen_bgs[theme][name] = process_blur_bg(
                     default_fullscreen_bgs[theme][name], theme=theme, blur_radius=10
                 )
-            elif name == "starclan":
+            elif name == "inle":
                 default_fullscreen_bgs[theme][name] = process_blur_bg(
                     default_fullscreen_bgs[theme][name], theme=theme, blur_radius=2
                 )
@@ -446,8 +446,8 @@ def get_camp_bgs():
     available_biome = ["forest", "mountainous", "plains", "beach"]
 
     try:
-        camp_nr = game.clan.camp_bg
-        biome = game.clan.biome.lower()
+        camp_nr = game.warren.camp_bg
+        biome = game.warren.biome.lower()
     except AttributeError:
         camp_nr = "camp1"
         biome = available_biome[0]

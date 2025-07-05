@@ -9,14 +9,14 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [-1, -1],
-            "medicine cat": [1, 6],
-            "all apprentices": [-1, -1],
+            "rusasi": [-1, -1],
+            "healer": [1, 6],
+            "all rusasirahs": [-1, -1],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "p_l and r_c head out to look for herbs, discussing the latest news and taking advantage of the rains of leaf-bare.",
-        "decline_text": "It seems like some mischievous cat has gotten into the herb storage and they have to sort it all over again.",
+        "decline_text": "It seems like some mischievous rabbit has gotten into the herb storage and they have to sort it all over again.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -35,7 +35,7 @@
                 ]
             },
             {
-                "text": "Carefully plucking some herbs, they discuss the latest signs from StarClan and ponder what to do about them. They manage to think up some tentative plans and return to camp to discuss them with the leader and deputy.",
+                "text": "Carefully plucking some herbs, they discuss the latest signs from Inle and ponder what to do about them. They manage to think up some tentative plans and return to burrow to discuss them with the chief rabbit and captain.",
                 "exp": 10,
                 "weight": 5,
                 "herbs": ["random_herbs"],
@@ -52,7 +52,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "They fail to interpret any signs, and are too irritated with each other to discuss any other news. Furthermore, neither cat manages to gather anything, the trip cut short by the ominous looking clouds springing up over the horizon.",
+                "text": "They fail to interpret any signs, and are too irritated with each other to discuss any other news. Furthermore, neither rabbit manages to gather anything, the trip cut short by the ominous looking clouds springing up over the horizon.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -77,17 +77,17 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [-1, -1],
-            "medicine cat": [1, 6],
+            "rusasi": [-1, -1],
+            "healer": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "p_l and r_c take a look at their supply of herbs and decide to combine their efforts into searching for more. Two sets of trained eyes are better than one!",
-        "decline_text": "Unfortunately they are interrupted by a cat claiming they have an emergency. Runny dirt is not an emergency. Ugh.",
+        "decline_text": "Unfortunately they are interrupted by a rabbit claiming they have an emergency. Runny dirt is not an emergency. Ugh.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
-                "text": "p_l and r_c decide to search on the normally barren scrublands, where recently fallen rain has brought the desert to life. As the sun rises in the sky, its usual heat is dulled by the welcome defense of the clouds, letting the medicine cats fetch the season's bounty.",
+                "text": "p_l and r_c decide to search on the normally barren scrublands, where recently fallen rain has brought the desert to life. As the sun rises in the sky, its usual heat is dulled by the welcome defense of the clouds, letting the healer rabbits fetch the season's bounty.",
                 "exp": 10,
                 "weight": 20,
                 "herbs": ["random_herbs"],
@@ -109,7 +109,7 @@
                 ]
             },
             {
-                "text": "p_l and r_c decide on a little friendly competition - one medicine cat to another, like all those silly bets the warriors make about hunting prey. They reunite when the sun is going down and walk into camp purring and playfully shoving each other with both their mouths full of herbs.",
+                "text": "p_l and r_c decide on a little friendly competition - one healer to another, like all those silly bets the rabbits make about hunting prey. They reunite when the sun is going down and walk into burrow purring and playfully shoving each other with both their mouths full of herbs.",
                 "exp": 10,
                 "weight": 5,
                 "herbs": ["random_herbs"],
@@ -133,7 +133,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "Both p_l and r_c are tense and it shows. Even though it should not be this hard to find any herbs they fail to find even a single one. They return to camp frustrated and irritated with each other.",
+                "text": "Both p_l and r_c are tense and it shows. Even though it should not be this hard to find any herbs they fail to find even a single one. They return to burrow frustrated and irritated with each other.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -186,16 +186,16 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "healer cats": [1, 6]
+            "healer rabbits": [1, 6]
         },
         "weight": 20,
         "pl_skill_constraint": ["LORE,1", "STORY,1", "HEALER,1"],
-        "intro_text": "Sniffing for daisies, p_l begins a story. Once, eons ago, during the Long Dawn after the Great Moonrise, cats staggered through the cold wide world, searching for a new home.",
+        "intro_text": "Sniffing for daisies, p_l begins a story. Once, eons ago, during the Long Dawn after the Great Moonrise, rabbits staggered through the cold wide world, searching for a new home.",
         "decline_text": "Today isn't the time to linger on old history.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "Their success was owed to many things - StarClan, the mysterious sun-drown-place, other Clans who helped them on their way. But the humble daisy saved many lives, keeping their strength up for long enough to travel to new territories.",
+                "text": "Their success was owed to many things - Inle, the mysterious sun-drown-place, other Clans who helped them on their way. But the humble daisy saved many lives, keeping their strength up for long enough to travel to new territories.",
                 "exp": 30,
                 "weight": 20,
                 "herbs": ["daisy"],
@@ -251,7 +251,7 @@
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
-            "healer cats": [1, 6]
+            "healer rabbits": [1, 6]
         },
         "weight": 20,
         "pl_skill_constraint": ["LORE,1", "STORY,1", "HEALER,1"],
@@ -260,7 +260,7 @@
         "chance_of_success": 60,
         "success_outcomes": [
             {
-                "text": "It's at least a little funny, how elder leaves are so suited for easing the pains of the Clan's elders. The tree isn't named for that - there's an old myth about a medicine cat asking an ancient tree for advice - but sometimes the coincidence amuses p_l.",
+                "text": "It's at least a little funny, how elder leaves are so suited for easing the pains of the Warren's elders. The tree isn't named for that - there's an old myth about a healer asking an ancient tree for advice - but sometimes the coincidence amuses p_l.",
                 "exp": 30,
                 "weight": 20,
                 "herbs": ["elder_leaves"],
@@ -361,7 +361,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "healer cats": [1, 6]
+            "healer rabbits": [1, 6]
         },
         "weight": 20,
         "pl_skill_constraint": ["LORE,1", "STORY,1", "HEALER,1"],
@@ -401,7 +401,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "There's no time for silly sayings! They're supposed to come back to camp with herbs, not stories!",
+                "text": "There's no time for silly sayings! They're supposed to come back to burrow with herbs, not stories!",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -426,12 +426,12 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "healer cats": [1, 6]
+            "healer rabbits": [1, 6]
         },
         "weight": 20,
         "pl_skill_constraint": ["LORE,1", "STORY,1", "HEALER,1"],
         "intro_text": "Keeping a supply of lungwort is serious business, p_l instructs.",
-        "decline_text": "Yes, the cats all know that, that's why they're here looking for the stuff.",
+        "decline_text": "Yes, the rabbits all know that, that's why they're here looking for the stuff.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -499,12 +499,12 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "healer cats": [1, 6]
+            "healer rabbits": [1, 6]
         },
         "weight": 20,
         "pl_skill_constraint": ["LORE,1", "STORY,1", "HEALER,1"],
         "intro_text": "As they lift their muzzles to try and catch mallow's sweet scent on the wind, p_l asks the patrol if they know how the herb got its name.",
-        "decline_text": "Before p_l can continue, a messenger arrives from camp - p_l's presence is needed there.",
+        "decline_text": "Before p_l can continue, a messenger arrives from burrow - p_l's presence is needed there.",
         "chance_of_success": 40,
         "success_outcomes": [
             {
@@ -532,7 +532,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "Try as they might, no one can sniff out any mallow, and the cats return to camp empty-pawed.",
+                "text": "Try as they might, no one can sniff out any mallow, and the rabbits return to burrow empty-pawed.",
                 "exp": 0,
                 "weight": 20
             },
@@ -569,7 +569,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "healer cats": [2, 6]
+            "healer rabbits": [2, 6]
         },
         "weight": 20,
         "pl_skill_constraint": ["LORE,1", "STORY,1", "HEALER,1"],
@@ -578,7 +578,7 @@
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "Once upon a time there was a plant that, unusually, loved not the midday sun's strength, but the sunset's quiet beauty. When it came time to bloom itself, it chose those colors, keeping a hint of the sunset's warmth for itself. When a medicine cat uses marigold to treat stiff joints, that warmth is gifted to their patients.",
+                "text": "Once upon a time there was a plant that, unusually, loved not the midday sun's strength, but the sunset's quiet beauty. When it came time to bloom itself, it chose those colors, keeping a hint of the sunset's warmth for itself. When a healer uses marigold to treat stiff joints, that warmth is gifted to their patients.",
                 "exp": 30,
                 "weight": 20,
                 "herbs": ["marigold"],
@@ -634,7 +634,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "healer cats": [1, 6]
+            "healer rabbits": [1, 6]
         },
         "weight": 20,
         "pl_skill_constraint": ["LORE,1", "STORY,1", "HEALER,1"],
@@ -643,7 +643,7 @@
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "It's said that when oak leaves are chewed or mixed into a poultice, their power to prevent infection is the result of the strength of ancient trees being given to the cats using them. The older the tree, the better its leaves are as herbs.",
+                "text": "It's said that when oak leaves are chewed or mixed into a poultice, their power to prevent infection is the result of the strength of ancient trees being given to the rabbits using them. The older the tree, the better its leaves are as herbs.",
                 "exp": 30,
                 "weight": 20,
                 "herbs": ["oak_leaves"],
@@ -699,8 +699,8 @@
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
-            "healer cats": [1, 6],
-            "apprentice": [1, 6]
+            "healer rabbits": [1, 6],
+            "rusasi": [1, 6]
         },
         "weight": 20,
         "pl_skill_constraint": ["LORE,1", "STORY,1", "HEALER,1"],
@@ -793,8 +793,8 @@
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
-            "healer cats": [1, 6],
-            "apprentice": [1, 6]
+            "healer rabbits": [1, 6],
+            "rusasi": [1, 6]
         },
         "weight": 20,
         "pl_skill_constraint": ["LORE,1", "STORY,1", "HEALER,1"],
@@ -803,7 +803,7 @@
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "The jagged edges of the raspberry leaves mark them as a gift from the stars. Their pain relief and ability to reduce bloodloss have saved countless lives, and brought kittens safely into the world.",
+                "text": "The jagged edges of the raspberry leaves mark them as a gift from the stars. Their pain relief and ability to reduce bloodloss have saved countless lives, and brought kits safely into the world.",
                 "exp": 30,
                 "weight": 20,
                 "herbs": ["raspberry"],
@@ -832,7 +832,7 @@
                 "weight": 20,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["torn pelt"],
                         "scars": ["SCRATCHSIDE"]
                     }
@@ -864,9 +864,9 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "healer cats": [1, 6],
-            "all apprentices": [1, 5],
-            "medicine cat": [1, 5]
+            "healer rabbits": [1, 6],
+            "all rusasirahs": [1, 5],
+            "healer": [1, 5]
         },
         "weight": 20,
         "intro_text": "app1 shovels tansy into {PRONOUN/app1/poss} mouth without a care in the world. p_l stops {PRONOUN/app1/object}, and tells {PRONOUN/app1/object} {PRONOUN/app1/subject} really <i>should</i> have a care.",
@@ -919,19 +919,19 @@
                 ]
             },
             {
-                "text": "p_l wanders off to do {PRONOUN/p_l/poss} own collecting. However, leaving the apprentice alone is a mistake. It takes a <i>lot</i> of tansy to poison a cat, but app1 was trying <i>very</i> hard to collect as much as possible.",
+                "text": "p_l wanders off to do {PRONOUN/p_l/poss} own collecting. However, leaving the rusasi alone is a mistake. It takes a <i>lot</i> of tansy to poison a rabbit, but app1 was trying <i>very</i> hard to collect as much as possible.",
                 "exp": 0,
                 "weight": 20,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["poisoned"],
                         "scars": []
                     }
                 ],
                 "history_text": {
-                    "reg_death": "m_c poisoned {PRONOUN/m_c/self} collecting excessive amounts of tansy as an apprentice.",
-                    "lead_death": "after collecting excessive amounts of tansy as an apprentice"
+                    "reg_death": "m_c poisoned {PRONOUN/m_c/self} collecting excessive amounts of tansy as an rusasi.",
+                    "lead_death": "after collecting excessive amounts of tansy as an rusasi"
                 },
                 "relationships": [
                     {
@@ -944,24 +944,24 @@
                 ]
             },
             {
-                "text": "app1 ignores p_l as p_l launches into a story about the dangers of tansy. That's the wrong move though, because by the time {PRONOUN/app1/subject}{VERB/app1/'re/'s} back at camp, nausea has well and truly set in.",
+                "text": "app1 ignores p_l as p_l launches into a story about the dangers of tansy. That's the wrong move though, because by the time {PRONOUN/app1/subject}{VERB/app1/'re/'s} back at burrow, nausea has well and truly set in.",
                 "exp": 0,
                 "weight": 20,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["stomachache"],
                         "scars": []
                     },
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["diarrhea"],
                         "scars": []
                     }
                 ],
                 "history_text": {
-                    "reg_death": "m_c poisoned {PRONOUN/m_c/self} collecting excessive amounts of tansy as an apprentice.",
-                    "lead_death": "after collecting excessive amounts of tansy as an apprentice"
+                    "reg_death": "m_c poisoned {PRONOUN/m_c/self} collecting excessive amounts of tansy as an rusasi.",
+                    "lead_death": "after collecting excessive amounts of tansy as an rusasi"
                 },
                 "relationships": [
                     {
@@ -985,18 +985,18 @@
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
-            "medicine cat": [1, 6],
-            "medicine cat apprentice": [1, 6],
+            "healer": [1, 6],
+            "healer rusasi": [1, 6],
             "normal adult":[-1, -1],
-            "apprentice":[-1, -1]
+            "rusasi":[-1, -1]
         },
         "weight": 20,
-        "intro_text": "Listen to the wisdom of the sages, p_l meows. app1 doesn't just need to learn to set bones and clean wounds; being a medicine cat is so much more than blood and bodies.",
+        "intro_text": "Listen to the wisdom of the sages, p_l meows. app1 doesn't just need to learn to set bones and clean wounds; being a healer is so much more than blood and bodies.",
         "decline_text": "They're interrupted by a Clanmate who needs them. It halts the lesson, but also reinforces p_l's point.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "Some sicknesses aren't physical, but live in the mind instead, p_l instructs. That's very normal, and just as a Clanmate with a twisted leg is just as loved and valued as one who can run without pain, an illness that is mental is just as valid of a struggle. Those cats are just as loved and supported in their needs.",
+                "text": "Some sicknesses aren't physical, but live in the mind instead, p_l instructs. That's very normal, and just as a Clanmate with a twisted leg is just as loved and valued as one who can run without pain, an illness that is mental is just as valid of a struggle. Those rabbits are just as loved and supported in their needs.",
                 "exp": 30,
                 "weight": 20,
                 "herbs": ["thyme"],

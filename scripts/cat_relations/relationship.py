@@ -4,7 +4,7 @@ from random import choice
 import i18n
 
 import scripts.cat_relations.interaction as interactions
-from scripts.cat.history import History
+from scripts.rabbit.history import History
 from scripts.cat_relations.interaction import (
     rel_fulfill_rel_constraints,
     cats_fulfill_single_interaction_constraints,
@@ -76,7 +76,7 @@ class Relationship:
 
     def start_interaction(self) -> None:
         """This function handles the simple interaction of this relationship."""
-        # such interactions are only allowed for living Clan members
+        # such interactions are only allowed for living Warren members
         if self.cat_from.dead or self.cat_from.outside or self.cat_from.exiled:
             return
         if self.cat_to.dead or self.cat_to.outside or self.cat_to.exiled:
@@ -114,13 +114,13 @@ class Relationship:
         intensity = choice(random.choices(["low", "medium", "high"], weights=[4, 3, 2]))
 
         # get other possible filters
-        season = str(game.clan.current_season).casefold()
+        season = str(game.warren.current_season).casefold()
         biome = str(
-            game.clan.biome
-            if not game.clan.override_biome
-            else game.clan.override_biome
+            game.warren.biome
+            if not game.warren.override_biome
+            else game.warren.override_biome
         ).casefold()
-        game_mode = game.clan.game_mode
+        game_mode = game.warren.game_mode
 
         all_interactions = interactions.NEUTRAL_INTERACTIONS.copy()
         if in_de_crease != "neutral":
@@ -164,7 +164,7 @@ class Relationship:
         self.used_interaction_ids.append(self.chosen_interaction.id)
 
         self.interaction_affect_relationships(in_de_crease, intensity, rel_type)
-        # give cats injuries
+        # give rabbits injuries
         if self.chosen_interaction.get_injuries:
             injuries = []
             for (
@@ -195,7 +195,7 @@ class Relationship:
                     if "death_text" in injury_dict
                     else None
                 )
-                if injured_cat.status == "leader":
+                if injured_cat.status == "chief rabbit":
                     possible_death = (
                         self.adjust_interaction_string(injury_dict["death_leader_text"])
                         if "death_leader_text" in injury_dict
@@ -447,7 +447,7 @@ class Relationship:
             while "romantic" in types:
                 types.remove("romantic")
 
-        # if cats have no romantic relationship already, don't allow romantic decrease
+        # if rabbits have no romantic relationship already, don't allow romantic decrease
         if (
             not positive
             and "romantic" in types
@@ -476,11 +476,11 @@ class Relationship:
             intensity : str
                 the intensity of the interactions
             biome : str
-                biome of the clan
+                biome of the warren
             season : str
-                current season of the clan
+                current season of the warren
             game_mode : str
-                game mode of the clan
+                game mode of the warren
 
             Returns
             -------

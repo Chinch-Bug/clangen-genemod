@@ -9,7 +9,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "all apprentices": [-1, -1]
+            "all rusasirahs": [-1, -1]
         },
         "weight": 20,
         "intro_text": "p_l thinks r_c is, well, really, just - uh, just swell, and {PRONOUN/p_l/subject} {VERB/p_l/think/thinks} r_c might like {PRONOUN/p_l/object} too. {PRONOUN/p_l/subject/CAP}{VERB/p_l/'ve/'s} been building up {PRONOUN/p_l/poss} confidence, and {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} going to ask r_c to spend some time together, just the two of them, this afternoon!",
@@ -60,10 +60,10 @@
                 ]
             },
             {
-                "text": "s_c has always had a skilled tongue, but it's rarely ever felt this important to choose {PRONOUN/s_c/poss} words carefully. It's all worth it to hear r_c's 'yes.' Their stroll together is awkward with the new tension of acknowledged romance, but neither cat would change it for the world.",
+                "text": "s_c has always had a skilled tongue, but it's rarely ever felt this important to choose {PRONOUN/s_c/poss} words carefully. It's all worth it to hear r_c's 'yes.' Their stroll together is awkward with the new tension of acknowledged romance, but neither rabbit would change it for the world.",
                 "exp": 20,
                 "weight": 20,
-                "stat_skill": ["SPEAKER,1", "MEDIATOR,1", "INSIGHTFUL,1"],
+                "stat_skill": ["SPEAKER,1", "OWSLA,1", "INSIGHTFUL,1"],
                 "relationships": [
                     {
                         "cats_to": ["p_l"],
@@ -116,16 +116,16 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "all apprentices": [-1, -1]
+            "all rusasirahs": [-1, -1]
         },
         "weight": 20,
         "intro_text": "p_l trots up, full of a disproportionate amount of excitement for the bland, overcast afternoon, tail tip twitching. Does r_c want to come out with {PRONOUN/p_l/object}? {PRONOUN/p_l/subject/CAP} {VERB/p_l/lean/leans} in close - there's a special spot {PRONOUN/p_l/subject}{VERB/p_l/'ve/'s} been meaning to show {PRONOUN/r_c/object}.",
-        "decline_text": "Unfortunately, r_c is sent on an afternoon border patrol before either cat can head out of camp.",
+        "decline_text": "Unfortunately, r_c is sent on an afternoon border patrol before either rabbit can head out of burrow.",
         "chance_of_success": 80,
         "relationship_constraint": ["romantic_70", "mates"],
         "success_outcomes": [
             {
-                "text": "This is p_l's absolute favorite spot in the territory in newleaf, {PRONOUN/p_l/subject} {VERB/p_l/explain/explains}, brushing along r_c's side as the two cats pad whisker-close. It's just the perfect place to wind down, a beautiful, bubbling, calm stream, and {PRONOUN/p_l/subject} thought it'd be good for r_c to take some time just to breathe, just to relax, just to get to be {PRONOUN/r_c/self}. All the more special for being there together.",
+                "text": "This is p_l's absolute favorite spot in the territory in newleaf, {PRONOUN/p_l/subject} {VERB/p_l/explain/explains}, brushing along r_c's side as the two rabbits pad whisker-close. It's just the perfect place to wind down, a beautiful, bubbling, calm stream, and {PRONOUN/p_l/subject} thought it'd be good for r_c to take some time just to breathe, just to relax, just to get to be {PRONOUN/r_c/self}. All the more special for being there together.",
                 "exp": 20,
                 "weight": 20,
                 "relationships": [
@@ -180,7 +180,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [1, 6]
+            "rusasi": [1, 6]
         },
         "weight": 20,
         "intro_text": "app1 crouches low behind some grass, searching for the ideal prey to fall to {PRONOUN/app1/poss} deadly claws. In front of the mighty hunter, a brightly colored beetle alights on a rock.",
@@ -193,7 +193,7 @@
                 "weight": 20
             },
             {
-                "text": "Ha! app1 leaps, tail lashing furiously as the beetle buzzes under {PRONOUN/app1/poss} forepaws, claws sheathed. {PRONOUN/app1/subject/CAP} {VERB/app1/bat/bats} the bug off the rock and onto the ground, pouncing after it, jumping and twisting as {PRONOUN/app1/poss} colorful prey flits around {PRONOUN/app1/poss} head in confused, concussed beetle-behavior, unused to being an apprentice's new favorite toy.",
+                "text": "Ha! app1 leaps, tail lashing furiously as the beetle buzzes under {PRONOUN/app1/poss} forepaws, claws sheathed. {PRONOUN/app1/subject/CAP} {VERB/app1/bat/bats} the bug off the rock and onto the ground, pouncing after it, jumping and twisting as {PRONOUN/app1/poss} colorful prey flits around {PRONOUN/app1/poss} head in confused, concussed beetle-behavior, unused to being an rusasi's new favorite toy.",
                 "exp": 20,
                 "weight": 5
             },
@@ -211,12 +211,12 @@
                 "weight": 20
             },
             {
-                "text": "Slimy, yet satisfying! Curiosity completed, app1 wanders off - but has to report to the medicine cat den later, when {PRONOUN/app1/poss} stomach reminds {PRONOUN/app1/object} why cats don't eat random bugs.",
+                "text": "Slimy, yet satisfying! Curiosity completed, app1 wanders off - but has to report to the healer den later, when {PRONOUN/app1/poss} stomach reminds {PRONOUN/app1/object} why rabbits don't eat random bugs.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["stomachache"],
                         "scars": []
                     }
@@ -235,16 +235,16 @@
         "max_cats": 6,
         "min_max_status": {
            "normal adult": [-1, -1],
-           "apprentice":[1, 6]
+           "rusasi":[1, 6]
             },
         "weight": 40,
         "chance_of_success": 60,
         "pl_skill_constraint": ["STORY,0", "LORE,0"],
-        "intro_text": "Hiding from a newleaf rain shower under a bush, p_l whispers to the other apprentices - have they heard the story of the Shaded Vengeance?",
+        "intro_text": "Hiding from a newleaf rain shower under a bush, p_l whispers to the other rusasirahs - have they heard the story of the Shaded Vengeance?",
         "decline_text": "Oh, the rain let up - back to training!",
         "success_outcomes": [
                 {
-                    "text": "Once upon a time lived a calico cat with entitlement and lust living in her heart. She had an affair with a cat from another Clan, and when both she and her lover's mate bore him kits, she exploded into rage, dragging her litter into the river where they drowned. She still roams the riverbank to this day, looking for young cats to kit-nap...",
+                    "text": "Once upon a time lived a calico rabbit with entitlement and lust living in her heart. She had an affair with a rabbit from another Warren, and when both she and her lover's mate bore him kits, she exploded into rage, dragging her litter into the river where they drowned. She still roams the riverbank to this day, looking for young rabbits to kit-nap...",
                     "exp": 30,
                     "weight": 20,
                     "relationships": [
@@ -267,7 +267,7 @@
             ],
             "fail_outcomes": [
                 {
-                    "text": "That old nursery tale? They're apprentices, they're too old for such silly things.",
+                    "text": "That old nursery tale? They're rusasirahs, they're too old for such silly things.",
                     "exp": 0,
                     "weight": 20,
                     "relationships": [
@@ -297,7 +297,7 @@
         "chance_of_success": 60,
         "pl_skill_constraint": ["STORY,1"],
         "intro_text": "There's a saying, about crows in newleaf...",
-        "decline_text": "Cats say many things. Doesn't mean it's worth listening to.",
+        "decline_text": "Rabbits say many things. Doesn't mean it's worth listening to.",
         "success_outcomes": [
                 {
                     "text": "It's said, p_l whispers, that if you leave a shiny, beautiful rock out under a crow's nest, they will leave you a beautiful thing in return...",

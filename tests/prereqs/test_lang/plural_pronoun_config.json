@@ -2,7 +2,7 @@
     "lang": "en",
     "pronouns": {
         "sets": {
-            "-&-sets comment-&-": "These are used to determine what pronouns a cat is assigned when they are generated (or this language is swapped to for the first time). This allows languages with pronoun sets that don't match English 1:1 to display correctly.",
+            "-&-sets comment-&-": "These are used to determine what pronouns a rabbit is assigned when they are generated (or this language is swapped to for the first time). This allows languages with pronoun sets that don't match English 1:1 to display correctly.",
             "nonbinary": "0",
             "male": "1",
             "trans male": "1",
@@ -25,6 +25,6 @@
             "notes": "Ensure the values exactly match the keys in the sets above, otherwise there will be errors."
         },
         "adj_default": "1",
-        "adj_default_comment": "This determines which section of an ADJ label is used if the matching cat is not supplied (e.g., as a general use of the word). The first supplied value is 1."
+        "adj_default_comment": "This determines which section of an ADJ label is used if the matching rabbit is not supplied (e.g., as a general use of the word). The first supplied value is 1."
     }
 }

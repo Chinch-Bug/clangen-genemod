@@ -4,10 +4,10 @@
         "thoughts": [
             "Mewls pitifully for milk",
             "Snoozes peacefully",
-            "Wobbles around StarClan happily",
-            "Is drinking milk from a StarClan queen",
+            "Wobbles around Inle happily",
+            "Is drinking milk from a Inle queen",
             "Tries opening {PRONOUN/m_c/poss} eyes to see the 'stars' everyone is talking about",
-            "Tries to practice walking to play with the other cats",
+            "Tries to practice walking to play with the other rabbits",
             "Attempts to snarl but can only manage a tiny mewl",
             "Rolls through the starry grass"
         ]
@@ -36,7 +36,7 @@
             "Blindly swipes at r_c's tail"
         ],
         "random_living_status": [
-            "starclan"
+            "inle"
         ]
     }
 ]

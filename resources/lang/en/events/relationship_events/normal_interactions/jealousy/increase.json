@@ -20,11 +20,11 @@
 	{
 		"id": "jel_inc_med1",
 		"interactions": [
-			"m_c thinks the prey r_c is biting into on the other side of camp looks delicious.",
+			"m_c thinks the prey r_c is biting into on the other side of burrow looks delicious.",
 			"m_c notices that r_c makes other Clanmates laugh more than {PRONOUN/m_c/subject} {VERB/m_c/do/does}.",
-			"m_c worries that the Clan trusts r_c more than {PRONOUN/m_c/object}.",
+			"m_c worries that the Warren trusts r_c more than {PRONOUN/m_c/object}.",
 			"m_c thinks that r_c stole one of {PRONOUN/m_c/poss} ideas.",
-			"The Clan likes one of r_c's suggestions, but it was just m_c's reworded.",
+			"The Warren likes one of r_c's suggestions, but it was just m_c's reworded.",
 			"m_c tries to do something like r_c, but just ends up getting embarrassed.",
 			"A Clanmate accuses m_c of copying one of r_c's jokes.",
 			"m_c wishes {PRONOUN/m_c/subject} looked more like r_c.",
@@ -38,27 +38,27 @@
 		"id": "jel_inc_med2",
 		"interactions": [
 			"m_c is jealous that r_c got to go to the last Gathering.",
-			"r_c was complimented by another Clan during the recent Gathering, but m_c wasn't."
+			"r_c was complimented by another Warren during the recent Gathering, but m_c wasn't."
 		],
 		"main_status_constraint": [
-			"mediator apprentice",
-			"apprentice",
-			"warrior"
+			"owsla rusasi",
+			"rusasi",
+			"rabbit"
 		],
 		"random_status_constraint": [
-			"mediator apprentice",
-			"apprentice",
-			"medicine cat apprentice",
-			"medicine cat",
-			"warrior",
-			"mediator",
-			"deputy"
+			"owsla rusasi",
+			"rusasi",
+			"healer rusasi",
+			"healer",
+			"rabbit",
+			"owsla",
+			"captain"
 		]
 	},
 	{
 		"id": "jealousy_inc_med3",
 		"interactions": [
-			"m_c is jealous that r_c was praised by the leader.",
+			"m_c is jealous that r_c was praised by the chief rabbit.",
 			"m_c is jealous that r_c got to fight in a border skirmish when {PRONOUN/m_c/subject} didn't.",
 			"m_c is jealous that r_c got to go on border patrol this morning.",
 			"r_c caught a giant piece of prey that m_c wishes {PRONOUN/m_c/subject} did.",
@@ -66,19 +66,19 @@
 			"m_c wishes {PRONOUN/m_c/subject} could be as good a fighter as r_c.",
 			"m_c tries not to get envious hearing one of r_c's crazy patrol stories.",
 			"m_c had a plan during a patrol, but r_c's was a lot better.",
-			"The leader was more impressed by what r_c brought back from a hunting patrol than what m_c did.",
+			"The chief rabbit was more impressed by what r_c brought back from a hunting patrol than what m_c did.",
 			"m_c is jealous that r_c went on patrol without {PRONOUN/m_c/object}.",
 			"m_c doesn't understand how r_c got so good at hunting."
 		],
 		"main_status_constraint": [
-			"apprentice",
-			"mediator apprentice",
-			"warrior"
+			"rusasi",
+			"owsla rusasi",
+			"rabbit"
 		],
 		"random_status_constraint": [
-			"apprentice",
-			"warrior",
-			"deputy"
+			"rusasi",
+			"rabbit",
+			"captain"
 		]
 	},
 	{
@@ -92,25 +92,25 @@
 			"m_c is upset that r_c always wins in their games."
 		],
 		"main_status_constraint": [
-			"kitten"
+			"kit"
 		],
 		"random_status_constraint": [
-			"kitten"
+			"kit"
 		]
 	},
 	{
 		"id": "jealousy_kit_inc_med2",
 		"interactions": [
 			"m_c hisses at r_c for getting a bigger piece of prey.",
-			"m_c tells r_c {PRONOUN/r_c/subject} {VERB/r_c/don't/doesn't} deserve all the attention from the older cats.",
+			"m_c tells r_c {PRONOUN/r_c/subject} {VERB/r_c/don't/doesn't} deserve all the attention from the older rabbits.",
 			"m_c says r_c's name is stupid, but m_c is just jealous.",
 			"An older Clanmate tells m_c to be nice to r_c."
 		],
 		"main_status_constraint": [
-			"kitten"
+			"kit"
 		],
 		"random_status_constraint": [
-			"kitten"
+			"kit"
 		],
 		"reaction_random_cat": {
 			"dislike": "increase"
@@ -119,20 +119,20 @@
 	{
 		"id": "jealousy_kit_inc_med3",
 		"interactions": [
-			"m_c looks at r_c and remembers how easy it was to be a kitten.",
-			"m_c doesn't get why r_c gets away with so much more than m_c did as a kitten.",
+			"m_c looks at r_c and remembers how easy it was to be a kit.",
+			"m_c doesn't get why r_c gets away with so much more than m_c did as a kit.",
 			"m_c is afraid that r_c is going to grow up bigger than {PRONOUN/m_c/object}.",
 			"r_c says that m_c said something mean, and no one will believe m_c's defense.",
 			"m_c gets scolded for not watching r_c when r_c does something naughty.",
 			"m_c is resentful that so much is expected of {PRONOUN/m_c/object}, yet no one expects anything of r_c."
 		],
 		"main_status_constraint": [
-			"apprentice",
-			"mediator apprentice",
-			"medicine cat apprentice"
+			"rusasi",
+			"owsla rusasi",
+			"healer rusasi"
 		],
 		"random_status_constraint": [
-			"kitten"
+			"kit"
 		],
 		"reaction_random_cat": {
 			"platonic": "decrease"
@@ -142,20 +142,20 @@
 		"id": "jel_inc_high1",
 		"intensity": "high",
 		"interactions": [
-			"m_c is jealous that r_c gets to do cool super secret medicine cat things.",
-			"m_c wants to commune with StarClan like r_c does.",
-			"r_c refuses to tell m_c too much about {PRONOUN/r_c/poss} medicine cat training.",
-			"m_c feels like r_c's life is easier as a medicine cat apprentice.",
+			"m_c is jealous that r_c gets to do cool super secret healer things.",
+			"m_c wants to commune with Inle like r_c does.",
+			"r_c refuses to tell m_c too much about {PRONOUN/r_c/poss} healer training.",
+			"m_c feels like r_c's life is easier as a healer rusasi.",
 			"m_c tries to get free catmint from r_c, but gets snitched on instead.",
 			"m_c thinks r_c's training sounds way easier than what m_c does now.",
 			"m_c thinks it's unfair that r_c always gets to go to Gatherings."
 		],
 		"main_status_constraint": [
-			"apprentice",
-			"mediator apprentice"
+			"rusasi",
+			"owsla rusasi"
 		],
 		"random_status_constraint": [
-			"medicine cat apprentice"
+			"healer rusasi"
 		]
 	},
 	{
@@ -183,13 +183,13 @@
 			"m_c doesn't like that Clanmates trust r_c more just because {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} older."
 		],
 		"main_status_constraint": [
-			"mediator apprentice",
-			"apprentice",
-			"medicine cat apprentice",
-			"medicine cat",
-			"warrior",
-			"mediator",
-			"deputy"
+			"owsla rusasi",
+			"rusasi",
+			"healer rusasi",
+			"healer",
+			"rabbit",
+			"owsla",
+			"captain"
 		],
 		"random_status_constraint": [
 			"elder"

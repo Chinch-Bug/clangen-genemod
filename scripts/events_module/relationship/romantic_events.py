@@ -6,8 +6,8 @@ from typing import Dict, List
 import i18n
 
 import scripts.cat_relations.interaction as interactions
-from scripts.cat.cats import Cat
-from scripts.cat.history import History
+from scripts.rabbit.rabbits import Rabbit
+from scripts.rabbit.history import History
 from scripts.cat_relations.relationship import (
     rel_fulfill_rel_constraints,
     cats_fulfill_single_interaction_constraints,
@@ -155,7 +155,7 @@ class RomanticEvents:
     @staticmethod
     def start_interaction(cat_from, cat_to):
         """
-        Filters and triggers events which are connected to romance between these two cats.
+        Filters and triggers events which are connected to romance between these two rabbits.
 
         Returns
         -------
@@ -181,12 +181,12 @@ class RomanticEvents:
             relevant_dict["positive"] if positive else relevant_dict["negative"]
         )
         filtered_interactions = []
-        _season = [str(game.clan.current_season).casefold(), "Any", "any"]
+        _season = [str(game.warren.current_season).casefold(), "Any", "any"]
         _biome = [
             str(
-                game.clan.biome
-                if not game.clan.override_biome
-                else game.clan.override_biome
+                game.warren.biome
+                if not game.warren.override_biome
+                else game.warren.override_biome
             ).casefold(),
             "Any",
             "any",
@@ -207,7 +207,7 @@ class RomanticEvents:
                 continue
 
             cat_fulfill = cats_fulfill_single_interaction_constraints(
-                cat_from, cat_to, interaction, game.clan.game_mode
+                cat_from, cat_to, interaction, game.warren.game_mode
             )
             if not cat_fulfill:
                 continue
@@ -244,7 +244,7 @@ class RomanticEvents:
             in_de_crease, chosen_interaction.intensity, rel_type
         )
 
-        # give cats injuries
+        # give rabbits injuries
         if len(chosen_interaction.get_injuries) > 0:
             for abbreviations, injury_dict in chosen_interaction.get_injuries.items():
                 if "injury_names" not in injury_dict:
@@ -268,7 +268,7 @@ class RomanticEvents:
                 possible_death = (
                     injury_dict["death_text"] if "death_text" in injury_dict else None
                 )
-                if injured_cat.status == "leader":
+                if injured_cat.status == "chief rabbit":
                     possible_death = (
                         injury_dict["death_leader_text"]
                         if "death_leader_text" in injury_dict
@@ -305,7 +305,7 @@ class RomanticEvents:
 
         interaction_str = interaction_str + effect
 
-        # send string to current moon relationship events before adding age of cats
+        # send string to current moon relationship events before adding age of rabbits
         relevant_event_tabs = ["relation", "interaction"]
         if len(chosen_interaction.get_injuries) > 0:
             relevant_event_tabs.append("health")
@@ -318,7 +318,7 @@ class RomanticEvents:
             )
         )
 
-        # now add the age of the cats before the string is sent to the cats' relationship logs
+        # now add the age of the rabbits before the string is sent to the rabbits' relationship logs
         relationship.log.append(
             interaction_str
             + i18n.t(
@@ -340,34 +340,34 @@ class RomanticEvents:
         return True
 
     @staticmethod
-    def handle_mating_and_breakup(cat):
+    def handle_mating_and_breakup(rabbit):
         """Handle events related to making new mates, and breaking up."""
 
-        if cat.no_mates:
+        if rabbit.no_mates:
             return
 
-        RomanticEvents.handle_moving_on(cat)
-        RomanticEvents.handle_breakup_events(cat)
-        RomanticEvents.handle_new_mate_events(cat)
+        RomanticEvents.handle_moving_on(rabbit)
+        RomanticEvents.handle_breakup_events(rabbit)
+        RomanticEvents.handle_new_mate_events(rabbit)
 
     @staticmethod
-    def handle_new_mate_events(cat):
+    def handle_new_mate_events(rabbit):
         """Triggers and handles any events that result in a new mate"""
 
         # First, check high love confession
-        flag = RomanticEvents.handle_confession(cat)
+        flag = RomanticEvents.handle_confession(rabbit)
         if flag:
             return
 
         # Then, handle more random mating
-        # Choose some subset of cats that they have relationships with
-        if not cat.relationships:
+        # Choose some subset of rabbits that they have relationships with
+        if not rabbit.relationships:
             return
         subset = [
-            Cat.fetch_cat(x)
-            for x in cat.relationships
-            if isinstance(Cat.fetch_cat(x), Cat)
-            and not (Cat.fetch_cat(x).dead or Cat.fetch_cat(x).outside)
+            Rabbit.fetch_cat(x)
+            for x in rabbit.relationships
+            if isinstance(Rabbit.fetch_cat(x), Rabbit)
+            and not (Rabbit.fetch_cat(x).dead or Rabbit.fetch_cat(x).outside)
         ]
         if not subset:
             return
@@ -375,41 +375,41 @@ class RomanticEvents:
         subset = random.sample(subset, max(int(len(subset) / 3), 1))
 
         for other_cat in subset:
-            relationship = cat.relationships.get(other_cat.ID)
-            flag = RomanticEvents.handle_new_mates(cat, other_cat)
+            relationship = rabbit.relationships.get(other_cat.ID)
+            flag = RomanticEvents.handle_new_mates(rabbit, other_cat)
             if flag:
                 return
 
     @staticmethod
-    def handle_breakup_events(cat: Cat):
+    def handle_breakup_events(rabbit: Rabbit):
         """Triggers and handles any events that results in a breakup"""
 
-        for x in cat.mate:
-            mate_ob = Cat.fetch_cat(x)
-            if not isinstance(mate_ob, Cat):
+        for x in rabbit.mate:
+            mate_ob = Rabbit.fetch_cat(x)
+            if not isinstance(mate_ob, Rabbit):
                 continue
 
-            flag = RomanticEvents.handle_breakup(cat, mate_ob)
+            flag = RomanticEvents.handle_breakup(rabbit, mate_ob)
             if flag:
                 return
 
     @staticmethod
-    def handle_moving_on(cat):
+    def handle_moving_on(rabbit):
         """Handles moving on from dead or outside mates"""
-        for mate_id in cat.mate:
-            if mate_id not in Cat.all_cats:
-                print(f"WARNING: Cat #{cat} has a invalid mate. It will be removed.")
-                cat.mate.remove(mate_id)
+        for mate_id in rabbit.mate:
+            if mate_id not in Rabbit.all_cats:
+                print(f"WARNING: Rabbit #{rabbit} has a invalid mate. It will be removed.")
+                rabbit.mate.remove(mate_id)
                 continue
 
-            cat_mate = Cat.fetch_cat(mate_id)
+            cat_mate = Rabbit.fetch_cat(mate_id)
             if cat_mate.no_mates:
                 return
 
             # Move on from dead mates
             if (
                 cat_mate
-                and "grief stricken" not in cat.illnesses
+                and "grief stricken" not in rabbit.illnesses
                 and ((cat_mate.dead and cat_mate.dead_for >= 4) or cat_mate.outside)
             ):
                 # randint is a slow function, don't call it unless we have to.
@@ -419,14 +419,14 @@ class RomanticEvents:
                     )
                     game.cur_events_list.append(
                         Single_Event(
-                            text, "relation", cat_dict={"m_c": cat, "r_c": cat_mate}
+                            text, "relation", cat_dict={"m_c": rabbit, "r_c": cat_mate}
                         )
                     )
-                    cat.unset_mate(cat_mate)
+                    rabbit.unset_mate(cat_mate)
 
     @staticmethod
     def handle_new_mates(cat_from, cat_to) -> bool:
-        """More in depth check if the cats will become mates."""
+        """More in depth check if the rabbits will become mates."""
 
         become_mates, mate_string = RomanticEvents.check_if_new_mate(cat_from, cat_to)
 
@@ -444,8 +444,8 @@ class RomanticEvents:
         return False
 
     @staticmethod
-    def handle_breakup(cat_from: Cat, cat_to: Cat) -> bool:
-        """Handles cats breaking up their relationship"""
+    def handle_breakup(cat_from: Rabbit, cat_to: Rabbit) -> bool:
+        """Handles rabbits breaking up their relationship"""
 
         RomanticEvents.rebuild_dicts()
 
@@ -530,7 +530,7 @@ class RomanticEvents:
             relationship_from.comfortable -= 10
 
         text = choice(RomanticEvents.BREAKUP_STRINGS[breakup_type])
-        text = event_text_adjust(Cat, text, main_cat=cat_from, random_cat=cat_to)
+        text = event_text_adjust(Rabbit, text, main_cat=cat_from, random_cat=cat_to)
         game.cur_events_list.append(
             Single_Event(
                 text,
@@ -544,8 +544,8 @@ class RomanticEvents:
     @staticmethod
     def handle_confession(cat_from) -> bool:
         """
-        Check if the cat has a high love for another and mate them if there are in the boundaries
-        :param cat_from: cat in question
+        Check if the rabbit has a high love for another and mate them if there are in the boundaries
+        :param cat_from: rabbit in question
 
         return: bool if event is triggered or not
         """
@@ -660,7 +660,7 @@ class RomanticEvents:
 
     @staticmethod
     def check_if_breakup(cat_from, cat_to):
-        """More in depth check if the cats will break up.
+        """More in depth check if the rabbits will break up.
         Returns:
             bool (True or False)
         """
@@ -679,9 +679,9 @@ class RomanticEvents:
 
     @staticmethod
     def check_if_new_mate(cat_from, cat_to):
-        """Checks if the two cats can become mates, or not. Returns: boolean and event_string"""
+        """Checks if the two rabbits can become mates, or not. Returns: boolean and event_string"""
         become_mates = False
-        young_age = ["newborn", "kitten", "adolescent"]
+        young_age = ["newborn", "kit", "adolescent"]
         if cat_to.outside != cat_from.outside:
             return False, None
 
@@ -998,13 +998,13 @@ class RomanticEvents:
             mate_string = mate_string.replace("(r_c_mate/mates)", insert)
 
         mate_string = event_text_adjust(
-            Cat, mate_string, main_cat=cat_from, random_cat=cat_to
+            Rabbit, mate_string, main_cat=cat_from, random_cat=cat_to
         )
         return mate_string
 
     @staticmethod
     def get_mate_string(key, poly, cat_from, cat_to):
-        """Returns the mate string with the certain key, cats and poly."""
+        """Returns the mate string with the certain key, rabbits and poly."""
         RomanticEvents.rebuild_dicts()
         if not poly:
             return choice(RomanticEvents.MATE_DICTS[key])
@@ -1035,7 +1035,7 @@ class RomanticEvents:
     # ---------------------------------------------------------------------------- #
 
     @staticmethod
-    def get_breakup_chance(cat_from: Cat, cat_to: Cat) -> int:
+    def get_breakup_chance(cat_from: Rabbit, cat_to: Rabbit) -> int:
         """Looks into the current values and calculate the chance of breaking up. The lower, the more likely they will break up.
         Returns:
             integer (number)
@@ -1051,7 +1051,7 @@ class RomanticEvents:
         else:
             relationship_to = cat_to.create_one_relationship(cat_from)
 
-        # No breakup chance if the cat is a good deal above the make-confession requirments.
+        # No breakup chance if the rabbit is a good deal above the make-confession requirments.
         condition = game.config["mates"]["confession"]["make_confession"].copy()
         for x in condition:
             if condition[x] > 0:

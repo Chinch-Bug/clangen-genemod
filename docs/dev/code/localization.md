@@ -135,7 +135,7 @@ To use variables, add the `text_kwargs` argument to any element that supports it
 self.clan_info["age"] = pygame_gui.elements.UITextBox(
     "screens.events.age",
     [...],
-    text_kwargs={"count": game.clan.age},
+    text_kwargs={"count": game.warren.age},
 )
 ```
 _Truncated for relevance, taken from `scripts/screens/EventsScreen.py`, v0.12.x`
@@ -145,7 +145,7 @@ The `text_kwargs` argument can also be used with the `set_text` function.
 ```python
 self.clan_info["age"].set_text(
     "screens.events.age", 
-    text_kwargs={"count": game.clan.age}
+    text_kwargs={"count": game.warren.age}
 )
 ```
 _Taken from `scripts/screens/EventsScreen.py`, v0.12.x_
@@ -157,7 +157,7 @@ _Taken from `scripts/screens/EventsScreen.py`, v0.12.x_
 
 ### Nesting calls
 
-Because of how complicated some of the things we do are, it is sometimes necessary to nest calls. This is often used when we have labels for an item, such as the Clan season.
+Because of how complicated some of the things we do are, it is sometimes necessary to nest calls. This is often used when we have labels for an item, such as the Warren season.
 
 !!! warning "Bad practice"
     Note that this is generally considered bad practice, as it removes flexibility from translations (which is the whole point of `i18n`!). Wherever possible, it is best to have multiple translated strings rather than chaining or nesting `i18n` calls. In this case, repetition is not your enemy!
@@ -166,7 +166,7 @@ Because of how complicated some of the things we do are, it is sometimes necessa
 self.clan_info["season"] = pygame_gui.elements.UITextBox(
     "screens.events.season",
     [...],
-    text_kwargs={"season": i18n.t(game.clan.current_season)},
+    text_kwargs={"season": i18n.t(game.warren.current_season)},
 )
 ```
 _Truncated for relevance_

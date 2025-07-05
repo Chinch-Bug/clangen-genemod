@@ -67,14 +67,14 @@
 		},
 		"status_constraint": {
 			"m_c": [
-				"leader"
+				"chief rabbit"
 			],
 			"r_c1": [
-				"warrior",
-				"deputy"
+				"rabbit",
+				"captain"
 			],
 			"r_c2": [
-				"warrior"
+				"rabbit"
 			]
 		},
 		"trait_constraint": {
@@ -121,14 +121,14 @@
 		"interactions": ["m_c and r_c1 discuss where they should be marking the border. r_c2 overhears, and disagrees with their decision, causing m_c and r_c1 to sneer at {PRONOUN/r_c2/object} in distaste."],
 		"status_constraint": {
 			"m_c": [
-				"leader"
+				"chief rabbit"
 			],
 			"r_c1": [
-				"warrior",
-				"deputy"
+				"rabbit",
+				"captain"
 			],
 			"r_c2": [
-				"warrior"
+				"rabbit"
 			]
 		},
 		"trait_constraint": {

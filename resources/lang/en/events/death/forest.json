@@ -14,16 +14,16 @@
         "event_text": "m_c was killed by a falling branch during a battle in a heavily wooded area of the forest.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
+                "rusasi",
+                "rabbit",
+                "captain",
+                "chief rabbit"
             ],
             "dies": true
         },
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c was crushed by a falling branch.",
@@ -57,7 +57,7 @@
         },
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c fell out of a tree while trying to escape from a dog.",
@@ -75,13 +75,13 @@
         ],
         "tags": [],
         "weight": 20,
-        "event_text": "m_c was crushed when a tree fell into camp.",
+        "event_text": "m_c was crushed when a tree fell into burrow.",
         "m_c": {
             "dies": true
         },
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c was crushed by a falling tree.",
@@ -104,14 +104,14 @@
         "event_text": "m_c was carried off by an owl, never to be seen again.",
         "m_c": {
             "age": [
-                "kitten",
+                "kit",
                 "adolescent"
             ],
             "dies": true
         },
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c was carried away by an owl."
@@ -133,7 +133,7 @@
         "event_text": "r_c spotted a circling shadow and yowled a warning to m_c. {PRONOUN/r_c/subject/CAP} {VERB/r_c/were/was}n't fast enough to save m_c from the owl.",
         "m_c": {
             "age": [
-                "kitten",
+                "kit",
                 "adolescent"
             ],
             "status": [
@@ -146,9 +146,9 @@
                 "any"
             ],
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy"
+                "rusasi",
+                "rabbit",
+                "captain"
             ],
             "not_skill": [
                 "RUNNER,2"
@@ -156,7 +156,7 @@
         },
         "history": [
             {
-                "cats": [
+                "rabbits": [
                     "m_c"
                 ],
                 "reg_death": "m_c was grabbed by an owl, never to be seen again."

@@ -4,19 +4,19 @@
             "blur": 20,
             "blend_strength": 200
         },
-        "leader den": [344, 100],
-        "medicine den": [105, 200],
+        "chief rabbit den": [344, 100],
+        "healer den": [105, 200],
         "nursery": [620, 200],
         "clearing": [317, 285],
-        "apprentice den": [70, 410],
-        "warrior den": [615, 440],
+        "rusasi den": [70, 410],
+        "rabbit den": [615, 440],
         "elder den": [348, 490],
-        "leader place": [
+        "chief rabbit place": [
             [[375, 195], "xy"],
             [[460, 102], "xy"],
             [[475, 269], "xy"]
         ],
-        "medicine place": [
+        "healer place": [
             [[80, 270], "xy"],
             [[127, 285], "xy"],
             [[208, 273], "xy"],
@@ -45,7 +45,7 @@
             [[400, 420], "xy"],
             [[475, 410], "xy"]
         ],
-        "apprentice place": [
+        "rusasi place": [
             [[70, 460], "xy"],
             [[125, 470], "xy"],
             [[165, 460], "xy"],
@@ -53,7 +53,7 @@
             [[150, 510], "xy"],
             [[35, 495], "xy"]
         ],
-        "warrior place": [
+        "rabbit place": [
             [[630, 490], "xy"],
             [[689, 500], "xy"],
             [[740, 526], "xy"],
@@ -72,20 +72,20 @@
         ]
     },
     "Forestcamp2": {
-        "leader den": [344, 94],
-        "medicine den": [80, 200],
+        "chief rabbit den": [344, 94],
+        "healer den": [80, 200],
         "nursery": [620, 200],
         "clearing": [360, 294],
-        "apprentice den": [82, 430],
-        "warrior den": [590, 430],
+        "rusasi den": [82, 430],
+        "rabbit den": [590, 430],
         "elder den": [348, 490],
-        "leader place": [
+        "chief rabbit place": [
             [[325, 124], "y"],
             [[382, 112], "y"],
             [[488, 116], "y"],
             [[403, 172], "xy"]
         ],
-        "medicine place": [
+        "healer place": [
             [[47, 234], "xy"],
             [[102, 257], "xy"],
             [[157, 257], "xy"],
@@ -118,7 +118,7 @@
             [[356, 390], "xy"],
             [[409, 391], "xy"]
         ],
-        "apprentice place": [
+        "rusasi place": [
             [[223, 413], "xy"],
             [[189, 462], "xy"],
             [[129, 457], "xy"],
@@ -128,7 +128,7 @@
             [[43, 586], "xy"],
             [[96, 580], "xy"]
         ],
-        "warrior place": [
+        "rabbit place": [
             [[502, 453], "xy"],
             [[558, 483], "xy"],
             [[617, 514], "xy"],
@@ -149,20 +149,20 @@
         ]
     },
     "Forestcamp3": {
-        "leader den": [344, 94],
-        "medicine den": [80, 200],
+        "chief rabbit den": [344, 94],
+        "healer den": [80, 200],
         "nursery": [620, 200],
         "clearing": [360, 294],
-        "apprentice den": [82, 430],
-        "warrior den": [590, 430],
+        "rusasi den": [82, 430],
+        "rabbit den": [590, 430],
         "elder den": [348, 490],
-        "leader place": [
+        "chief rabbit place": [
             [[600, 40], "xy"],
             [[360, 115], "xy"],
             [[350, 160], "xy"],
             [[400, 155], "xy"]
         ],
-        "medicine place": [
+        "healer place": [
             [[150, 275], "xy"],
             [[100, 265], "xy"],
             [[200, 265], "xy"],
@@ -198,7 +198,7 @@
             [[400, 420], "xy"],
             [[450, 450], "xy"]
         ],
-        "apprentice place": [
+        "rusasi place": [
             [[200, 420], "xy"],
             [[70, 470], "xy"],
             [[120, 470], "xy"],
@@ -207,7 +207,7 @@
             [[200, 520], "xy"],
             [[175, 570], "xy"]
         ],
-        "warrior place": [
+        "rabbit place": [
             [[700, 470], "xy"],
             [[600, 470], "xy"],
             [[550, 490], "xy"],
@@ -227,19 +227,19 @@
         ]
     },
     "Forestcamp4": {
-        "leader den": [325, 212],
-        "medicine den": [32, 250],
+        "chief rabbit den": [325, 212],
+        "healer den": [32, 250],
         "nursery": [570, 475],
         "clearing": [350, 394],
-        "apprentice den": [75, 480],
-        "warrior den": [640, 225],
+        "rusasi den": [75, 480],
+        "rabbit den": [640, 225],
         "elder den": [300, 575],
-        "leader place": [
+        "chief rabbit place": [
             [[275, 175], "xy"],
             [[285, 250], "xy"],
             [[350, 260], "xy"]
         ],
-        "medicine place": [
+        "healer place": [
             [[75, 300], "xy"],
             [[65, 350], "xy"],
             [[200, 312], "xy"],
@@ -269,14 +269,14 @@
             [[450, 435], "xy"],
             [[525, 360], "xy"]
         ],
-        "apprentice place": [
+        "rusasi place": [
             [[200, 550], "xy"],
             [[200, 575], "xy"],
             [[100, 575], "xy"],
             [[137, 550], "xy"],
             [[37, 575], "xy"]
         ],
-        "warrior place": [
+        "rabbit place": [
             [[675, 267], "xy"],
             [[675, 317], "xy"],
             [[725, 297], "xy"],
@@ -291,21 +291,21 @@
         ]
     },
     "Mountainouscamp1": {
-        "leader den": [399, 94],
-        "medicine den": [61, 169],
+        "chief rabbit den": [399, 94],
+        "healer den": [61, 169],
         "nursery": [635, 184],
         "clearing": [360, 294],
-        "apprentice den": [82, 401],
-        "warrior den": [590, 430],
+        "rusasi den": [82, 401],
+        "rabbit den": [590, 430],
         "elder den": [348, 490],
-        "leader place": [
+        "chief rabbit place": [
             [[384, 123], "xy"],
             [[437, 138], "xy"],
             [[321, 154], "xy"],
             [[324, 99], "xy"],
             [[379, 172], "xy"]
         ],
-        "medicine place": [
+        "healer place": [
             [[13, 203], "xy"],
             [[67, 233], "xy"],
             [[121, 238], "xy"],
@@ -346,7 +346,7 @@
             [[308, 428], "xy"],
             [[362, 428], "xy"]
         ],
-        "apprentice place": [
+        "rusasi place": [
             [[28, 425], "xy"],
             [[83, 443], "xy"],
             [[136, 443], "xy"],
@@ -356,7 +356,7 @@
             [[131, 497], "xy"],
             [[184, 512], "xy"]
         ],
-        "warrior place": [
+        "rabbit place": [
             [[514, 444], "xy"],
             [[568, 461], "xy"],
             [[623, 467], "xy"],
@@ -381,20 +381,20 @@
         ]
     },
     "Mountainouscamp2": {
-        "leader den": [399, 93],
-        "medicine den": [34, 186],
+        "chief rabbit den": [399, 93],
+        "healer den": [34, 186],
         "nursery": [589, 163],
         "clearing": [360, 294],
-        "apprentice den": [82, 430],
-        "warrior den": [590, 430],
+        "rusasi den": [82, 430],
+        "rabbit den": [590, 430],
         "elder den": [348, 490],
-        "leader place": [
+        "chief rabbit place": [
             [[347, 111], "x"],
             [[363, 161], "xy"],
             [[413, 155], "xy"],
             [[420, 241], "x"]
         ],
-        "medicine place": [
+        "healer place": [
             [[7, 329], "xy"],
             [[98, 262], "xy"],
             [[150, 250], "xy"],
@@ -434,7 +434,7 @@
             [[429, 425], "xy"],
             [[365, 428], "xy"]
         ],
-        "apprentice place": [
+        "rusasi place": [
             [[68, 458], "xy"],
             [[119, 460], "xy"],
             [[170, 464], "xy"],
@@ -444,7 +444,7 @@
             [[162, 581], "xy"],
             [[213, 567], "xy"]
         ],
-        "warrior place": [
+        "rabbit place": [
             [[536, 428], "y"],
             [[546, 480], "xy"],
             [[548, 530], "xy"],
@@ -469,20 +469,20 @@
         ]
     },
     "Mountainouscamp3": {
-        "leader den": [478, 95],
-        "medicine den": [35, 150],
+        "chief rabbit den": [478, 95],
+        "healer den": [35, 150],
         "nursery": [689, 175],
         "clearing": [399, 250],
-        "apprentice den": [38, 412],
-        "warrior den": [613, 393],
+        "rusasi den": [38, 412],
+        "rabbit den": [613, 393],
         "elder den": [336, 444],
-        "leader place": [
+        "chief rabbit place": [
             [[524, 257], "xy"],
             [[398, 105], "xy"],
             [[339, 136], "xy"],
             [[408, 157], "xy"]
         ],
-        "medicine place": [
+        "healer place": [
             [[179, 178], ""],
             [[79, 255], "xy"],
             [[200, 297], "xy"],
@@ -510,7 +510,7 @@
             [[359, 373], "xy"],
             [[462, 403], ""]
         ],
-        "apprentice place": [
+        "rusasi place": [
             [[57, 421], "xy"],
             [[117, 437], "xy"],
             [[172, 434], "xy"],
@@ -519,7 +519,7 @@
             [[141, 469], "xy"],
             [[267, 447], "xy"]
         ],
-        "warrior place": [
+        "rabbit place": [
             [[558, 451], "y"],
             [[627, 434], "xy"],
             [[682, 462], "xy"],
@@ -540,20 +540,20 @@
         ]
     },
     "Mountainouscamp4": {
-        "leader den": [416, 139],
-        "medicine den": [90, 140],
+        "chief rabbit den": [416, 139],
+        "healer den": [90, 140],
         "nursery": [622, 107],
         "clearing": [347, 312],
-        "apprentice den": [73, 442],
-        "warrior den": [650, 425],
+        "rusasi den": [73, 442],
+        "rabbit den": [650, 425],
         "elder den": [316, 491],
-        "leader place": [
+        "chief rabbit place": [
             [[365, 121], "xy"],
             [[375, 177], "xy"],
             [[414, 224], "xy"],
             [[464, 205], "xy"]
         ],
-        "medicine place": [
+        "healer place": [
             [[176, 123], ""],
             [[112, 198], "xy"],
             [[110, 253], "xy"],
@@ -583,7 +583,7 @@
             [[381, 407], "xy"],
             [[441, 418], "xy"]
         ],
-        "apprentice place": [
+        "rusasi place": [
             [[289, 401], "xy"],
             [[68, 485], "xy"],
             [[112, 490], "xy"],
@@ -592,7 +592,7 @@
             [[168, 544], "xy"],
             [[219, 535], "xy"]
         ],
-        "warrior place": [
+        "rabbit place": [
             [[518, 386], "y"],
             [[587, 436], "xy"],
             [[639, 466], "xy"],
@@ -613,19 +613,19 @@
         ]
     },
     "Beachcamp1": {
-        "leader den": [399, 94],
-        "medicine den": [61, 169],
+        "chief rabbit den": [399, 94],
+        "healer den": [61, 169],
         "nursery": [617, 167],
         "clearing": [360, 294],
-        "apprentice den": [82, 401],
-        "warrior den": [590, 430],
+        "rusasi den": [82, 401],
+        "rabbit den": [590, 430],
         "elder den": [348, 473],
-        "leader place": [
+        "chief rabbit place": [
             [[381, 129], "xy"],
             [[350, 179], "xy"],
             [[417, 186], "xy"]
         ],
-        "medicine place": [
+        "healer place": [
             [[82, 249], "xy"],
             [[137, 231], "xy"],
             [[102, 302], "xy"],
@@ -657,7 +657,7 @@
             [[443, 309], "x"],
             [[504, 340], ""]
         ],
-        "apprentice place": [
+        "rusasi place": [
             [[125, 372], ""],
             [[64, 476], "xy"],
             [[125, 455], "xy"],
@@ -666,7 +666,7 @@
             [[113, 523], "xy"],
             [[168, 511], "xy"]
         ],
-        "warrior place": [
+        "rabbit place": [
             [[563, 467], "xy"],
             [[624, 449], "xy"],
             [[690, 456], "xy"],
@@ -683,19 +683,19 @@
         ]
     },
     "Beachcamp2": {
-        "leader den": [320, 100],
-        "medicine den": [61, 169],
+        "chief rabbit den": [320, 100],
+        "healer den": [61, 169],
         "nursery": [617, 167],
         "clearing": [350, 310],
-        "apprentice den": [82, 440],
-        "warrior den": [590, 430],
+        "rusasi den": [82, 440],
+        "rabbit den": [590, 430],
         "elder den": [340, 525],
-        "leader place": [
+        "chief rabbit place": [
             [[381, 129], "xy"],
             [[350, 179], "xy"],
             [[417, 186], "xy"]
         ],
-        "medicine place": [
+        "healer place": [
             [[82, 249], "xy"],
             [[137, 231], "xy"],
             [[102, 302], "xy"],
@@ -726,7 +726,7 @@
             [[443, 309], "x"],
             [[504, 340], ""]
         ],
-        "apprentice place": [
+        "rusasi place": [
             [[125, 372], ""],
             [[64, 476], "xy"],
             [[125, 455], "xy"],
@@ -735,7 +735,7 @@
             [[113, 523], "xy"],
             [[168, 511], "xy"]
         ],
-        "warrior place": [
+        "rabbit place": [
             [[563, 467], "xy"],
             [[624, 449], "xy"],
             [[690, 456], "xy"],
@@ -752,19 +752,19 @@
         ]
     },
     "Beachcamp3": {
-        "leader den": [344, 94],
-        "medicine den": [80, 200],
+        "chief rabbit den": [344, 94],
+        "healer den": [80, 200],
         "nursery": [620, 200],
         "clearing": [360, 294],
-        "apprentice den": [82, 430],
-        "warrior den": [590, 430],
+        "rusasi den": [82, 430],
+        "rabbit den": [590, 430],
         "elder den": [348, 490],
-        "leader place": [
+        "chief rabbit place": [
             [[251, 142], "xy"],
             [[367, 137], "xy"],
             [[307, 124], "xy"]
         ],
-        "medicine place": [
+        "healer place": [
             [[131, 291], "xy"],
             [[203, 280], "xy"],
             [[287, 260], "xy"],
@@ -789,7 +789,7 @@
             [[408, 377], "xy"],
             [[357, 421], "xy"]
         ],
-        "apprentice place": [
+        "rusasi place": [
             [[25, 298], "xy"],
             [[59, 438], "xy"],
             [[113, 443], "xy"],
@@ -798,7 +798,7 @@
             [[87, 561], "xy"],
             [[201, 473], "xy"]
         ],
-        "warrior place": [
+        "rabbit place": [
             [[534, 408], "xy"],
             [[538, 529], "xy"],
             [[594, 500], "xy"],
@@ -817,19 +817,19 @@
         ]
     },
     "Beachcamp4": {
-        "leader den": [349, 125],
-        "medicine den": [100, 201],
+        "chief rabbit den": [349, 125],
+        "healer den": [100, 201],
         "nursery": [500, 183],
         "clearing": [313, 275],
-        "apprentice den": [51, 393],
-        "warrior den": [626, 345],
+        "rusasi den": [51, 393],
+        "rabbit den": [626, 345],
         "elder den": [308, 421],
-        "leader place": [
+        "chief rabbit place": [
             [[356, 142], ""],
             [[282, 179], "xy"],
             [[394, 192], ""]
         ],
-        "medicine place": [
+        "healer place": [
             [[47, 200], "xy"],
             [[75, 249], "xy"],
             [[124, 230], "xy"],
@@ -853,12 +853,12 @@
             [[479, 409], "xy"],
             [[696, 186], "xy"]
         ],
-        "apprentice place": [
+        "rusasi place": [
             [[21, 352], ""],
             [[22, 413], "xy"],
             [[68, 448], "xy"]
         ],
-        "warrior place": [
+        "rabbit place": [
             [[562, 418], "xy"],
             [[624, 394], "xy"],
             [[543, 475], "xy"],
@@ -878,20 +878,20 @@
         ]
     },
     "Plainscamp2": {
-        "leader den": [415, 94],
-        "medicine den": [11, 174],
+        "chief rabbit den": [415, 94],
+        "healer den": [11, 174],
         "nursery": [620, 200],
         "clearing": [371, 264],
-        "apprentice den": [106, 410],
-        "warrior den": [590, 430],
+        "rusasi den": [106, 410],
+        "rabbit den": [590, 430],
         "elder den": [429, 490],
-        "leader place": [
+        "chief rabbit place": [
             [[361, 110], "xy"],
             [[449, 146], ""],
             [[399, 161], "xy"],
             [[349, 170], "xy"]
         ],
-        "medicine place": [
+        "healer place": [
             [[68, 248], "xy"],
             [[119, 247], "xy"],
             [[170, 251], "xy"],
@@ -931,7 +931,7 @@
             [[418, 347], "xy"],
             [[440, 397], "xy"]
         ],
-        "apprentice place": [
+        "rusasi place": [
             [[64, 461], "xy"],
             [[115, 463], "xy"],
             [[167, 463], "xy"],
@@ -940,7 +940,7 @@
             [[140, 513], "xy"],
             [[191, 514], "xy"]
         ],
-        "warrior place": [
+        "rabbit place": [
             [[553, 487], "xy"],
             [[552, 539], "xy"],
             [[606, 463], "xy"],
@@ -965,19 +965,19 @@
             "blur": 20,
             "blend_strength": 180
         },
-        "leader den": [375, 102],
-        "medicine den": [95, 155],
+        "chief rabbit den": [375, 102],
+        "healer den": [95, 155],
         "nursery": [620, 200],
         "clearing": [365, 255],
-        "apprentice den": [100, 392],
-        "warrior den": [590, 415],
+        "rusasi den": [100, 392],
+        "rabbit den": [590, 415],
         "elder den": [429, 490],
-        "leader place": [
+        "chief rabbit place": [
             [[600, 95], "xy"],
             [[497, 245], "xy"],
             [[475, 190], "xy"]
         ],
-        "medicine place": [
+        "healer place": [
             [[82, 205], "xy"],
             [[145, 205], "xy"],
             [[107, 262], "xy"],
@@ -1005,7 +1005,7 @@
             [[457, 400], "xy"],
             [[375, 435], "xy"]
         ],
-        "apprentice place": [
+        "rusasi place": [
             [[20, 430], "xy"],
             [[102, 430], "xy"],
             [[142, 460], "xy"],
@@ -1014,7 +1014,7 @@
             [[200, 490], "xy"],
             [[130, 545], "xy"]
         ],
-        "warrior place": [
+        "rabbit place": [
             [[520, 432], "xy"],
             [[647, 492], "xy"],
             [[710, 445], "xy"],

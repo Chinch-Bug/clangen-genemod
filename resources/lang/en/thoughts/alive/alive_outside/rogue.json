@@ -3,7 +3,7 @@
         "id": "general_rogue_thoughts",
         "thoughts": [
             "Wishes the other rogues would leave {PRONOUN/m_c/object} alone",
-            "Snarls at any cat that comes near",
+            "Snarls at any rabbit that comes near",
             "Wanders off on {PRONOUN/m_c/poss} own",
             "Has been going missing quite a lot lately",
             "Sniffs for {PRONOUN/m_c/poss} next meal",
@@ -13,7 +13,7 @@
             "Wonders what it's like to live with Twolegs",
             "Is struggling to survive on {PRONOUN/m_c/poss} own",
             "Is fighting with another rogue over food",
-            "Laughs at the thought of dead cats 'watching over' c_n",
+            "Laughs at the thought of dead rabbits 'watching over' c_n",
             "Debates if {PRONOUN/m_c/subject} should join c_n"
         ]
     },
@@ -47,7 +47,7 @@
         "thoughts": [
             "Wants to show r_c in c_n a whole new world as a rogue",
             "Is waiting to ambush r_c in c_n",
-            "Watches r_c with slitted eyes as {PRONOUN/r_c/subject} {VERB/r_c/patrol/patrols} the Clan's border",
+            "Watches r_c with slitted eyes as {PRONOUN/r_c/subject} {VERB/r_c/patrol/patrols} the Warren's border",
             "Wonders if r_c would chase {PRONOUN/m_c/object} off immediately"
         ],
         "random_status_constraint": [
@@ -66,18 +66,18 @@
             "Is currently trying to figure out how to catch a bird"
         ],
         "main_age_constraint": [
-            "kitten"
+            "kit"
         ]
     },
     {
         "id": "adolescent_rogue_thoughts",
         "thoughts": [
-            "Is setting up a pile of thorns to catch a cat off guard",
+            "Is setting up a pile of thorns to catch a rabbit off guard",
             "Wishes {PRONOUN/m_c/subject} still had {PRONOUN/m_c/poss} family around",
             "Has been teaching {PRONOUN/m_c/self} how to hunt",
             "Misses {PRONOUN/m_c/poss} friends",
             "Regrets {PRONOUN/m_c/poss} actions",
-            "Wonders what being in a Clan is like",
+            "Wonders what being in a Warren is like",
             "Is spending a long time thinking about a cool rogue name"
         ],
         "main_age_constraint": [
@@ -88,7 +88,7 @@
         "id": "adult_rogue_thoughts",
         "thoughts": [
             "Hisses at a missed catch",
-            "Wonders if {PRONOUN/m_c/subject} should build {PRONOUN/m_c/poss} own Clan",
+            "Wonders if {PRONOUN/m_c/subject} should build {PRONOUN/m_c/poss} own Warren",
             "Is hoping {PRONOUN/m_c/subject} can find something to fill {PRONOUN/m_c/poss} belly tonight",
             "Licks at an old, aching scar in an attempt to soothe it",
             "Was almost found by a c_n patrol",
@@ -118,8 +118,8 @@
             "Tells {PRONOUN/m_c/self} {PRONOUN/m_c/subject} {VERB/m_c/are/is} going to kill r_c and take their position in c_n"
         ],
         "random_status_constraint": [
-            "leader",
-            "deputy"
+            "chief rabbit",
+            "captain"
         ],
         "main_trait_constraint": [
             "bloodthirsty"
@@ -164,7 +164,7 @@
     {
         "id": "vengeful_rogue",
         "thoughts": [
-            "Wants vengeance on {PRONOUN/m_c/poss} past Clan"
+            "Wants vengeance on {PRONOUN/m_c/poss} past Warren"
         ],
         "main_trait_constraint": [
             "vengeful"

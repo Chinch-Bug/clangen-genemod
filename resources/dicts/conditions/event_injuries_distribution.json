@@ -1,20 +1,20 @@
 {
-    "kitten": {
+    "kit": {
         "minor": 6,
         "major": 3,
         "severe": 1
     },
-    "apprentice": {
+    "rusasi": {
         "minor":5,
         "major": 2,
         "severe": 1
     },
-    "medicine cat apprentice": {
+    "healer rusasi": {
         "minor": 5,
         "major": 2,
         "severe": 1
     },
-    "warrior": {
+    "rabbit": {
         "minor": 2,
         "major": 3,
         "severe": 2
@@ -24,17 +24,17 @@
         "major": 3,
         "severe": 1
     },
-    "medicine cat": {
+    "healer": {
         "minor": 4,
         "major": 2,
         "severe": 1
     },
-    "deputy": {
+    "captain": {
         "minor": 1,
         "major": 2,
         "severe": 4
     },
-    "leader": {
+    "chief rabbit": {
         "minor": 1,
         "major": 2,
         "severe": 5

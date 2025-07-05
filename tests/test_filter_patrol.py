@@ -4,9 +4,9 @@ import unittest
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.cat_relations.relationship import Relationship
-from scripts.clan import Clan
+from scripts.warren import Warren
 from scripts.events_module.patrol.patrol import PatrolEvent, Patrol
 
 from scripts.utility import filter_relationship_type
@@ -18,9 +18,9 @@ from scripts.utility import filter_relationship_type
 class TestRelationshipConstraintPatrols(unittest.TestCase):
     def test_sibling_patrol(self):
         # given
-        parent = Cat()
-        cat1 = Cat(parent1=parent.ID)
-        cat2 = Cat(parent1=parent.ID)
+        parent = Rabbit()
+        cat1 = Rabbit(parent1=parent.ID)
+        cat2 = Rabbit(parent1=parent.ID)
         cat1.create_inheritance_new_cat()
         cat2.create_inheritance_new_cat()
 
@@ -32,7 +32,7 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
         no_con_patrol_event = PatrolEvent(patrol_id="test2")
         no_con_patrol_event.relationship_constraints = []
 
-        test_clan = Clan(name="test")
+        test_clan = Warren(name="test")
 
         # then
         patrol = Patrol()
@@ -75,9 +75,9 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
 
     def test_mates_patrol(self):
         # given
-        mate1 = Cat()
-        mate2 = Cat()
-        cat1 = Cat()
+        mate1 = Rabbit()
+        mate2 = Rabbit()
+        cat1 = Rabbit()
 
         mate1.mate.append(mate2.ID)
         mate2.mate.append(mate1.ID)
@@ -88,7 +88,7 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
         no_con_patrol_event = PatrolEvent(patrol_id="test2")
         no_con_patrol_event.relationship_constraints = []
 
-        test_clan = Clan(name="test")
+        test_clan = Warren(name="test")
 
         # then
         patrol = Patrol()
@@ -150,9 +150,9 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
 
     def test_parent_child_patrol(self):
         # given
-        parent = Cat()
-        cat1 = Cat(parent1=parent.ID)
-        cat2 = Cat(parent1=parent.ID)
+        parent = Rabbit()
+        cat1 = Rabbit(parent1=parent.ID)
+        cat2 = Rabbit(parent1=parent.ID)
 
         # when
         con_patrol_event = PatrolEvent(patrol_id="test1")
@@ -160,7 +160,7 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
         no_con_patrol_event = PatrolEvent(patrol_id="test2")
         no_con_patrol_event.relationship_constraints = []
 
-        test_clan = Clan(name="test")
+        test_clan = Warren(name="test")
 
         # then
         patrol = Patrol()
@@ -229,9 +229,9 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
 
     def test_child_parent_patrol(self):
         # given
-        parent = Cat()
-        cat1 = Cat(parent1=parent.ID)
-        cat2 = Cat(parent1=parent.ID)
+        parent = Rabbit()
+        cat1 = Rabbit(parent1=parent.ID)
+        cat2 = Rabbit(parent1=parent.ID)
 
         # when
         con_patrol_event = PatrolEvent(patrol_id="test1")
@@ -239,7 +239,7 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
         no_con_patrol_event = PatrolEvent(patrol_id="test2")
         no_con_patrol_event.relationship_constraints = []
 
-        test_clan = Clan(name="test")
+        test_clan = Warren(name="test")
 
         # then
         patrol = Patrol()
@@ -308,8 +308,8 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
 
     def test_romantic_constraint_patrol(self):
         # given
-        cat1 = Cat()
-        cat2 = Cat()
+        cat1 = Rabbit()
+        cat2 = Rabbit()
 
         relationship1 = Relationship(cat1, cat2)
         relationship2 = Relationship(cat2, cat1)
@@ -322,7 +322,7 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
         cat1.relationships[cat2.ID] = relationship1
         cat2.relationships[cat1.ID] = relationship2
 
-        test_clan = Clan(name="test")
+        test_clan = Warren(name="test")
 
         # when - correct
         con_patrol_event = PatrolEvent(patrol_id="test1")
@@ -376,8 +376,8 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
 
     def test_platonic_constraint_patrol(self):
         # given
-        cat1 = Cat()
-        cat2 = Cat()
+        cat1 = Rabbit()
+        cat2 = Rabbit()
 
         relationship1 = Relationship(cat1, cat2)
         relationship2 = Relationship(cat2, cat1)
@@ -390,7 +390,7 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
         cat1.relationships[cat2.ID] = relationship1
         cat2.relationships[cat1.ID] = relationship2
 
-        test_clan = Clan(name="test")
+        test_clan = Warren(name="test")
 
         # when - correct
         con_patrol_event = PatrolEvent(patrol_id="test1")
@@ -443,8 +443,8 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
 
     def test_dislike_constraint_patrol(self):
         # given
-        cat1 = Cat()
-        cat2 = Cat()
+        cat1 = Rabbit()
+        cat2 = Rabbit()
 
         relationship1 = Relationship(cat1, cat2)
         relationship2 = Relationship(cat2, cat1)
@@ -457,7 +457,7 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
         cat1.relationships[cat2.ID] = relationship1
         cat2.relationships[cat1.ID] = relationship2
 
-        test_clan = Clan(name="test")
+        test_clan = Warren(name="test")
 
         # when - correct
         con_patrol_event = PatrolEvent(patrol_id="test1")
@@ -511,8 +511,8 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
 
     def test_comfortable_constraint_patrol(self):
         # given
-        cat1 = Cat()
-        cat2 = Cat()
+        cat1 = Rabbit()
+        cat2 = Rabbit()
 
         relationship1 = Relationship(cat1, cat2)
         relationship2 = Relationship(cat2, cat1)
@@ -525,7 +525,7 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
         cat1.relationships[cat2.ID] = relationship1
         cat2.relationships[cat1.ID] = relationship2
 
-        test_clan = Clan(name="test")
+        test_clan = Warren(name="test")
 
         # when - correct
         con_patrol_event = PatrolEvent(patrol_id="test1")
@@ -579,8 +579,8 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
 
     def test_jealousy_patrol(self):
         # given
-        cat1 = Cat()
-        cat2 = Cat()
+        cat1 = Rabbit()
+        cat2 = Rabbit()
 
         relationship1 = Relationship(cat1, cat2)
         relationship2 = Relationship(cat2, cat1)
@@ -593,7 +593,7 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
         cat1.relationships[cat2.ID] = relationship1
         cat2.relationships[cat1.ID] = relationship2
 
-        test_clan = Clan(name="test")
+        test_clan = Warren(name="test")
 
         # when - correct
         con_patrol_event = PatrolEvent(patrol_id="test1")
@@ -647,8 +647,8 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
 
     def test_trust_patrol(self):
         # given
-        cat1 = Cat()
-        cat2 = Cat()
+        cat1 = Rabbit()
+        cat2 = Rabbit()
 
         relationship1 = Relationship(cat1, cat2)
         relationship2 = Relationship(cat2, cat1)
@@ -661,7 +661,7 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
         cat1.relationships[cat2.ID] = relationship1
         cat2.relationships[cat1.ID] = relationship2
 
-        test_clan = Clan(name="test")
+        test_clan = Warren(name="test")
 
         # when - correct
         con_patrol_event = PatrolEvent(patrol_id="test1")
@@ -715,9 +715,9 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
 
     def test_multiple_romantic_patrol(self):
         # given
-        cat1 = Cat()
-        cat2 = Cat()
-        cat3 = Cat()
+        cat1 = Rabbit()
+        cat2 = Rabbit()
+        cat3 = Rabbit()
 
         relationship1_2 = Relationship(cat1, cat2)
         relationship1_3 = Relationship(cat1, cat3)
@@ -747,7 +747,7 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
         cat3.relationships[cat1.ID] = relationship3_1
         cat3.relationships[cat2.ID] = relationship3_2
 
-        test_clan = Clan(name="test")
+        test_clan = Warren(name="test")
 
         # when - all is correct
         con_patrol_event = PatrolEvent(patrol_id="test1")
@@ -826,8 +826,8 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
 
     def test_multiple_constraint_patrol(self):
         # given
-        cat1 = Cat()
-        cat2 = Cat()
+        cat1 = Rabbit()
+        cat2 = Rabbit()
 
         relationship1 = Relationship(cat1, cat2)
         relationship2 = Relationship(cat2, cat1)
@@ -842,7 +842,7 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
         cat1.relationships[cat2.ID] = relationship1
         cat2.relationships[cat1.ID] = relationship2
 
-        test_clan = Clan(name="test")
+        test_clan = Warren(name="test")
 
         # when - correct
         con_patrol_event = PatrolEvent(patrol_id="test1")

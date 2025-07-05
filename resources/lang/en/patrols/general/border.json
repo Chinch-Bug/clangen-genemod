@@ -118,17 +118,17 @@
         ],
         "fail_outcomes": [
             {
-                "text": "p_l can't identify the scent, and return back to camp to report it.",
+                "text": "p_l can't identify the scent, and return back to burrow to report it.",
                 "exp": 0,
                 "weight": 20
             },
             {
-                "text": "p_l struggles to identify the faint scent and decides to return to camp for assistance.",
+                "text": "p_l struggles to identify the faint scent and decides to return to burrow for assistance.",
                 "exp": 0,
                 "weight": 20
             },
             {
-                "text": "Despite p_l's efforts, {PRONOUN/p_l/subject} cannot discern the source of the scent and returns to camp to report it.",
+                "text": "Despite p_l's efforts, {PRONOUN/p_l/subject} cannot discern the source of the scent and returns to burrow to report it.",
                 "exp": 0,
                 "weight": 20
             },
@@ -165,7 +165,7 @@
                 "weight": 20
             },
             {
-                "text": "The tracks lead p_l to a nearby red berry bush. p_l moves on, noting it down to inform the medicine cat.",
+                "text": "The tracks lead p_l to a nearby red berry bush. p_l moves on, noting it down to inform the healer.",
                 "exp": 5,
                 "weight": 20
             },
@@ -175,19 +175,19 @@
                 "weight": 20
             },
             {
-                "text": "p_l identifies the tracks as belonging to two-legs, and p_l decides to head back to camp to inform the others.",
+                "text": "p_l identifies the tracks as belonging to two-legs, and p_l decides to head back to burrow to inform the others.",
                 "exp": 5,
                 "weight": 20
             }
         ],
         "fail_outcomes": [
             {
-                "text": "p_l can't identify the tracks, and are forced to return to camp to report it.",
+                "text": "p_l can't identify the tracks, and are forced to return to burrow to report it.",
                 "exp": 0,
                 "weight": 20
             },
             {
-                "text": "Despite p_l efforts, {PRONOUN/p_l/subject} can't identify the tracks, and reports it back at camp.",
+                "text": "Despite p_l efforts, {PRONOUN/p_l/subject} can't identify the tracks, and reports it back at burrow.",
                 "exp": 0,
                 "weight": 20
             },
@@ -224,7 +224,7 @@
                 "weight": 20
             },
             {
-                "text": "The scratches didn't match any cats paws, that was for certain, and p_l returns to camp to report it, alert to any threats.",
+                "text": "The scratches didn't match any rabbits paws, that was for certain, and p_l returns to burrow to report it, alert to any threats.",
                 "exp": 0,
                 "weight": 20
             },
@@ -236,7 +236,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "Despite {PRONOUN/p_l/poss} efforts, p_l couldn't identify what had disturbed the border markings, leaving {PRONOUN/p_l/object} perplexed as {PRONOUN/p_l/subject} return to camp.",
+                "text": "Despite {PRONOUN/p_l/poss} efforts, p_l couldn't identify what had disturbed the border markings, leaving {PRONOUN/p_l/object} perplexed as {PRONOUN/p_l/subject} return to burrow.",
                 "exp": 0,
                 "weight": 20
             },
@@ -263,13 +263,13 @@
         "chance_of_success": 50,
         "success_outcomes": [
             {
-                "text": "Cats don't normally come with wings, much less bat ones, and the patrol flinches back from the foreign stranger. But unnatural or not, the stranger's still stuck, and with a deep breath, p_l orders them forward to free a fellow cat... ish... thing.",
+                "text": "Rabbits don't normally come with wings, much less bat ones, and the patrol flinches back from the foreign stranger. But unnatural or not, the stranger's still stuck, and with a deep breath, p_l orders them forward to free a fellow rabbit... ish... thing.",
                 "exp": 15,
                 "weight": 20,
                 "outsider_rep": 1
             },
             {
-                "text": "Frankly, extra limbs or not (bat wings, at that - this'll make a great story back at camp), the patrol needs to get this plump crying ball of fur back to their Twolegs. The world will eat this kittypet alive if they don't help them.",
+                "text": "Frankly, extra limbs or not (bat wings, at that - this'll make a great story back at burrow), the patrol needs to get this plump crying ball of fur back to their Twolegs. The world will eat this kittypet alive if they don't help them.",
                 "exp": 15,
                 "weight": 10,
                 "outsider_rep": 1
@@ -285,7 +285,7 @@
         ],
         "antag_fail_outcomes": [
             {
-                "text": "Swaggering up, p_l tries to intimidate the kittypet. But while the cat is easily successfully frightened, that doesn't make them any less stuck in place, and eventually the patrol is forced to help set them free, if only so they can leave c_n's borders.",
+                "text": "Swaggering up, p_l tries to intimidate the kittypet. But while the rabbit is easily successfully frightened, that doesn't make them any less stuck in place, and eventually the patrol is forced to help set them free, if only so they can leave c_n's borders.",
                 "exp": 0,
                 "weight": 20,
                 "outsider_rep": -1
@@ -293,7 +293,7 @@
         ],
         "antag_success_outcomes": [
             {
-                "text": "Hissing, p_l bowls the kittypet over, and with a ripping sound, the bat wing detaches from their back. The plump cat's crying increases in volume as they flee. p_l brings the trophy back to camp to boast.",
+                "text": "Hissing, p_l bowls the kittypet over, and with a ripping sound, the bat wing detaches from their back. The plump rabbit's crying increases in volume as they flee. p_l brings the trophy back to burrow to boast.",
                 "exp": 15,
                 "weight": 20,
                 "outsider_rep": -2
@@ -316,7 +316,7 @@
         "chance_of_success": 50,
         "success_outcomes": [
             {
-                "text": "The patrol cautiously heads in the direction of the strange, motionless eyes. The cats see an eerie face with glowing eyes in the distance, baring its fangs and smelling of smoke. p_l creeps up to the face to find that it belongs to a pumpkin! Spooked, r_c suggests heading back to camp to report this bizarre finding to the Clan. p_l agrees, not wanting to be near this... thing... any longer.",
+                "text": "The patrol cautiously heads in the direction of the strange, motionless eyes. The rabbits see an eerie face with glowing eyes in the distance, baring its fangs and smelling of smoke. p_l creeps up to the face to find that it belongs to a pumpkin! Spooked, r_c suggests heading back to burrow to report this bizarre finding to the Warren. p_l agrees, not wanting to be near this... thing... any longer.",
                 "exp": 10,
                 "weight": 20
             },
@@ -326,7 +326,7 @@
                 "weight": 5
             },
             {
-                "text": "As the patrol heads in the direction of the sinister glare of strange, motionless eyes, the scent of smoke creeps up on the patrol. s_c darts forward, finding the smoke scent coming from an odd pumpkin with some sort of... face? Thinking quickly {PRONOUN/s_c/subject} {VERB/s_c/scratch/scratches} dirt into the holes on the pumpkin, extinguishing the small flames. The patrol is left wondering what in the name of StarClan they're looking at.",
+                "text": "As the patrol heads in the direction of the sinister glare of strange, motionless eyes, the scent of smoke creeps up on the patrol. s_c darts forward, finding the smoke scent coming from an odd pumpkin with some sort of... face? Thinking quickly {PRONOUN/s_c/subject} {VERB/s_c/scratch/scratches} dirt into the holes on the pumpkin, extinguishing the small flames. The patrol is left wondering what in the name of Inle they're looking at.",
                 "exp": 15,
                 "weight": 10,
                 "stat_trait": [
@@ -343,7 +343,7 @@
                 ]
             },
             {
-                "text": "The patrol nervously heads towards the unblinking eyes, unsure of what lies ahead. As the strange object comes into view, s_c lets out a mrrow of laughter! {PRONOUN/s_c/subject/CAP} {VERB/s_c/explain/explains} that this is a Twoleg ritual performed around the start of leaf-bare. p_l is glad to have a cat with s_c's understanding of Twolegs on this patrol. With this knowledge, unneeded panic was surely avoided!",
+                "text": "The patrol nervously heads towards the unblinking eyes, unsure of what lies ahead. As the strange object comes into view, s_c lets out a mrrow of laughter! {PRONOUN/s_c/subject/CAP} {VERB/s_c/explain/explains} that this is a Twoleg ritual performed around the start of leaf-bare. p_l is glad to have a rabbit with s_c's understanding of Twolegs on this patrol. With this knowledge, unneeded panic was surely avoided!",
                 "exp": 15,
                 "weight": 10,
                 "stat_skill": [
@@ -360,7 +360,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "The patrol cautiously heads in the direction of the strange, motionless eyes. As they get closer to what seems to be some sort of pumpkin, a group of Twoleg kits springs out of nowhere and chases the frightened cats off! The patrol runs until the Twolegs stop following. Panting and defeated, they return to camp without much information about the strange face.",
+                "text": "The patrol cautiously heads in the direction of the strange, motionless eyes. As they get closer to what seems to be some sort of pumpkin, a group of Twoleg kits springs out of nowhere and chases the frightened rabbits off! The patrol runs until the Twolegs stop following. Panting and defeated, they return to burrow without much information about the strange face.",
                 "exp": 0,
                 "weight": 20
             },
@@ -410,24 +410,24 @@
                 "weight": 20
             },
             {
-                "text": "r_c cautiously approaches the Twoleg kits, intrigued by their colorful pelts. To r_c's surprise, one of the tiny Twolegs offers {PRONOUN/r_c/object} a strange, shiny object. It doesn't smell exactly like prey, but r_c decides to take it back to the camp for further investigation.",
+                "text": "r_c cautiously approaches the Twoleg kits, intrigued by their colorful pelts. To r_c's surprise, one of the tiny Twolegs offers {PRONOUN/r_c/object} a strange, shiny object. It doesn't smell exactly like prey, but r_c decides to take it back to the burrow for further investigation.",
                 "exp": 10,
                 "weight": 20
             },
             {
-                "text": "r_c decides to mimic the small Twolegs. Approaching a larger Twoleg den, {PRONOUN/r_c/subject} {VERB/r_c/meow/meows} softly at the entrance. The Twoleg that opens the entrance seems amused and hands r_c a morsel of food. The patrol brings it back to camp for further investigation.",
+                "text": "r_c decides to mimic the small Twolegs. Approaching a larger Twoleg den, {PRONOUN/r_c/subject} {VERB/r_c/meow/meows} softly at the entrance. The Twoleg that opens the entrance seems amused and hands r_c a morsel of food. The patrol brings it back to burrow for further investigation.",
                 "exp": 10,
                 "weight": 20
             }
         ],
         "fail_outcomes": [
             {
-                "text": "r_c, being ever so curious, decides to see if {PRONOUN/r_c/subject} can decipher the meaning behind this Twoleg ritual. However, after some time, {PRONOUN/r_c/subject} {VERB/r_c/give/gives} up, concluding that it's just another strange Twoleg custom that Clan cats will never understand.",
+                "text": "r_c, being ever so curious, decides to see if {PRONOUN/r_c/subject} can decipher the meaning behind this Twoleg ritual. However, after some time, {PRONOUN/r_c/subject} {VERB/r_c/give/gives} up, concluding that it's just another strange Twoleg custom that Warren rabbits will never understand.",
                 "exp": 0,
                 "weight": 10
             },
             {
-                "text": "The patrol attempts to get closer to the Twoleg kits, but their presence causes panic among the little creatures. The larger Twolegs nearby seem agitated, waving their paws and stomping around. The cats quickly retreat to avoid causing further disruption.",
+                "text": "The patrol attempts to get closer to the Twoleg kits, but their presence causes panic among the little creatures. The larger Twolegs nearby seem agitated, waving their paws and stomping around. The rabbits quickly retreat to avoid causing further disruption.",
                 "exp": 0,
                 "weight": 10
             }
@@ -445,7 +445,7 @@
         "min_max_status": {},
         "weight": 20,
         "intro_text": "On the outskirts of the territory, the patrol comes across a tall, motionless Twoleg rooted in the middle of a field.",
-        "decline_text": "The patrol doesn't want to risk going near this strange Twoleg and quickly heads back to camp to report the odd sighting.",
+        "decline_text": "The patrol doesn't want to risk going near this strange Twoleg and quickly heads back to burrow to report the odd sighting.",
         "chance_of_success": 50,
         "success_outcomes": [
             {
@@ -460,7 +460,7 @@
                 "stat_skill": ["FIGHTER,0"]
             },
             {
-                "text": "s_c stops the patrol, narrowing {PRONOUN/s_c/poss} eyes. That isn't a Twoleg! {PRONOUN/s_c/subject/CAP} came across one before during {PRONOUN/s_c/object} time outside the Clan. It's a 'scarecrow', {PRONOUN/s_c/subject} {VERB/s_c/explain/explains}, meant to protect the Twoleg fields from harm. The patrol continues on their way, giving the scarecrow a wide berth.",
+                "text": "s_c stops the patrol, narrowing {PRONOUN/s_c/poss} eyes. That isn't a Twoleg! {PRONOUN/s_c/subject/CAP} came across one before during {PRONOUN/s_c/object} time outside the Warren. It's a 'scarecrow', {PRONOUN/s_c/subject} {VERB/s_c/explain/explains}, meant to protect the Twoleg fields from harm. The patrol continues on their way, giving the scarecrow a wide berth.",
                 "exp": 10,
                 "weight": 20,
                 "stat_skill": [
@@ -493,13 +493,13 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "warrior": [2, 2]
+            "rabbit": [2, 2]
         },
         "weight": 20,
         "chance_of_success": 50,
         "relationship_constraint": ["dislike_20"],
         "intro_text": "p_l and r_c have been bickering non-stop the entire time they've been patrolling.",
-        "decline_text": "Unable to work together, the two return to camp.",
+        "decline_text": "Unable to work together, the two return to burrow.",
         "success_outcomes": [
             {
                 "text": "Despite the bickering, the two manage to patrol the border without incident.",
@@ -522,13 +522,13 @@
                 ]
             },
             {
-                "text": "p_l and r_c have been bickering the entire morning. But when {PRONOUN/p_l/subject} {VERB/p_l/spot/spots} the shadow of a rogue falling on r_c, {PRONOUN/p_l/subject} {VERB/p_l/react/reacts} without thought, leaping forward, claws ripping into the enemy's back and flipping them off r_c with a ferocious snarl. r_c is badly injured, but will live thanks to p_l dragging {PRONOUN/r_c/object} back to camp.",
+                "text": "p_l and r_c have been bickering the entire morning. But when {PRONOUN/p_l/subject} {VERB/p_l/spot/spots} the shadow of a rogue falling on r_c, {PRONOUN/p_l/subject} {VERB/p_l/react/reacts} without thought, leaping forward, claws ripping into the enemy's back and flipping them off r_c with a ferocious snarl. r_c is badly injured, but will live thanks to p_l dragging {PRONOUN/r_c/object} back to burrow.",
                 "exp": 10,
                 "weight": 5,
                 "art": "gen_battle_rogue_warrior",
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["battle_injury", "battle_injury"]
                     }
                 ],
@@ -582,7 +582,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "The bickering gets to be too much, and r_c storms back to camp irritated.",
+                "text": "The bickering gets to be too much, and r_c storms back to burrow irritated.",
                 "exp": 0,
                 "weight": 20
             },
@@ -592,7 +592,7 @@
                 "weight": 20,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["minor_injury"]
                     }
                 ],

@@ -10,8 +10,8 @@ from scripts.game_structure.ui_elements import CatButton, UISpriteButton
 
 logger = logging.getLogger(__name__)
 
-menu_screens = ["settings screen", "start screen", "switch clan screen"]
-creation_screens = ["make clan screen"]
+menu_screens = ["settings screen", "start screen", "switch warren screen"]
+creation_screens = ["make warren screen"]
 
 
 class MusicManager:
@@ -63,7 +63,7 @@ class MusicManager:
             self.fade_out_music()
             self.play_playlist(self.playlists["menu_playlist"])
 
-        # clan creation screen
+        # warren creation screen
         elif (
             screen in creation_screens
             and self.current_playlist != self.playlists["creation_playlist"]
@@ -203,10 +203,10 @@ class MusicManager:
 
     def get_biome_music(self):
         """
-        Finds the clan's biome and returns the appropriate playlist
+        Finds the warren's biome and returns the appropriate playlist
         """
         try:
-            biome = game.clan.biome
+            biome = game.warren.biome
         except AttributeError:
             biome = "Forest"
         new_playlist = []

@@ -2,26 +2,26 @@
     {
         "id": "gen_deputy",
         "thoughts": [
-            "Is assigning cats to a border patrol",
-            "Is assigning cats to a hunting patrol",
-            "Is wondering what it would be like to be a leader",
+            "Is assigning rabbits to a border patrol",
+            "Is assigning rabbits to a hunting patrol",
+            "Is wondering what it would be like to be a chief rabbit",
             "Is stressed about organizing patrols",
             "Wonders who will give {PRONOUN/m_c/object} {PRONOUN/m_c/poss} nine lives",
             "Feels overworked",
             "Is hoping for a break",
-            "Is assigning cats to the dawn patrol",
+            "Is assigning rabbits to the dawn patrol",
             "Can't believe {PRONOUN/m_c/subject} overslept today",
-            "Is unsure of what the rest of the Clan thinks of {PRONOUN/m_c/object} as deputy"
+            "Is unsure of what the rest of the Warren thinks of {PRONOUN/m_c/object} as captain"
         ]
     },
     {
         "id": "deputy_alive_leader",
         "thoughts": [
-            "Is doing {PRONOUN/m_c/poss} best to honor {PRONOUN/m_c/poss} Clan and {PRONOUN/m_c/poss} leader",
-            "Must speak with the leader soon about something {PRONOUN/m_c/subject} found while out on patrol"
+            "Is doing {PRONOUN/m_c/poss} best to honor {PRONOUN/m_c/poss} Warren and {PRONOUN/m_c/poss} chief rabbit",
+            "Must speak with the chief rabbit soon about something {PRONOUN/m_c/subject} found while out on patrol"
         ],
         "random_status_constraint": [
-            "leader"
+            "chief rabbit"
         ],
         "random_living_status": [
             "living"
@@ -30,10 +30,10 @@
     {
       "id": "deputy_to_alive_apprentice",
         "thoughts": [
-            "Is assessing the apprentices"
+            "Is assessing the rusasirahs"
         ],
         "random_status_constraint": [
-            "apprentice"
+            "rusasi"
         ],
         "random_living_status": [
             "living"
@@ -42,7 +42,7 @@
     {
         "id": "ambitious_deputy",
         "thoughts": [
-            "Is imagining the respect {PRONOUN/m_c/subject}'d command as the leader of the Clan",
+            "Is imagining the respect {PRONOUN/m_c/subject}'d command as the chief rabbit of the Warren",
             "Is considering innovative strategies to earn more recognition",
             "Feels a burning desire to prove {PRONOUN/m_c/self} worthy of leadership"
         ],
@@ -53,10 +53,10 @@
     {
         "id": "ambitious_teacher_deputy_to_leader",
         "thoughts": [
-            "Is planning a new training curriculum to impress the leader"
+            "Is planning a new training curriculum to impress the chief rabbit"
         ],
         "random_status_constraint": [
-            "leader"
+            "chief rabbit"
         ],
         "main_trait_constraint": [
             "ambitious"
@@ -71,7 +71,7 @@
     {
         "id": "bloodthirsty_deputy_to_gen",
         "thoughts": [
-            "Is fantasizing about leading the Clan into a victorious battle",
+            "Is fantasizing about leading the Warren into a victorious battle",
             "Feels a thrill imagining the chaos of a large-scale battle",
             "Tells the border patrol not to let any intruders go free without a scar to remember them by"
         ],
@@ -82,14 +82,14 @@
     {
       "id": "bloodthirsty_deputy_to_leader",
         "thoughts": [
-            "Thinks about killing the leader and staging it as an accident",
-            "Encourages the leader to start a war"
+            "Thinks about killing the chief rabbit and staging it as an accident",
+            "Encourages the chief rabbit to start a war"
         ],
         "main_trait_constraint": [
             "bloodthirsty"
         ],
         "random_status_constraint": [
-            "leader"
+            "chief rabbit"
         ],
         "random_living_status": [
             "living"
@@ -98,7 +98,7 @@
     {
         "id": "fierce_deputy",
         "thoughts": [
-            "Is sternly instructing a patrol about the importance of strength in defending the Clan",
+            "Is sternly instructing a patrol about the importance of strength in defending the Warren",
             "Feels a rush of adrenaline at the thought of an upcoming battle",
             "Impressed {PRONOUN/m_c/poss} Clanmates by scaring off an intruder"
         ],
@@ -109,11 +109,11 @@
     {  
         "id":"insecure_deputy",
         "thoughts": [
-            "Hopes {PRONOUN/m_c/subject}'ll make a decent leader someday",
-            "Wonders how {PRONOUN/m_c/subject} became deputy in the first place",
+            "Hopes {PRONOUN/m_c/subject}'ll make a decent chief rabbit someday",
+            "Wonders how {PRONOUN/m_c/subject} became captain in the first place",
             "Feels a pang of self-doubt when a patrol returns late",
-            "Questions whether {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} respected or just tolerated by the Clan",
-            "Worries that {PRONOUN/m_c/poss} mistakes will lead to the Clan's downfall"
+            "Questions whether {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} respected or just tolerated by the Warren",
+            "Worries that {PRONOUN/m_c/poss} mistakes will lead to the Warren's downfall"
         ],
         "main_trait_constraint":[
             "insecure"
@@ -122,13 +122,13 @@
     {
       "id": "insecure_deputy_to_leader",
         "thoughts": [
-            "Keeps confirming with the leader that the patrols {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} organizing sound right"
+            "Keeps confirming with the chief rabbit that the patrols {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} organizing sound right"
         ],
         "main_trait_constraint":[
             "insecure"
         ],
         "random_status_constraint": [
-            "leader"
+            "chief rabbit"
         ],
         "random_living_status": [
             "living"
@@ -137,9 +137,9 @@
     {
         "id": "nervous_deputy",
         "thoughts": [
-            "Is fretting over a recent increase in fox sightings near the camp",
+            "Is fretting over a recent increase in fox sightings near the burrow",
             "Feels a twinge of worry about an approaching storm",
-            "Is overthinking a recent encounter with a rival Clan"
+            "Is overthinking a recent encounter with a rival Warren"
         ],
         "main_trait_constraint": [
             "nervous"
@@ -149,7 +149,7 @@
         "id": "playful_deputy",
         "thoughts": [
             "Is inventing a fun game to make patrol assignments more engaging",
-            "Finds joy in the simple tasks of a deputy's duty"
+            "Finds joy in the simple tasks of a captain's duty"
         ],
         "main_trait_constraint": [
             "playful"
@@ -158,10 +158,10 @@
     {
         "id": "playful_deputy_to_younger",
         "thoughts": [
-            "Is amused by the antics of the younger cats"
+            "Is amused by the antics of the younger rabbits"
         ],
         "random_age_constraint": [
-            "kitten",
+            "kit",
             "adolescent"
         ],
         "random_living_status": [
@@ -180,14 +180,14 @@
     {
         "id": "rebellious_deputy_to_leader",
         "thoughts": [
-            "Feels an urge to challenge the leader's decision for the betterment of the Clan",
-            "Decides to change patrol routes on {PRONOUN/m_c/poss} own, hoping the leader will see the benefits"
+            "Feels an urge to challenge the chief rabbit's decision for the betterment of the Warren",
+            "Decides to change patrol routes on {PRONOUN/m_c/poss} own, hoping the chief rabbit will see the benefits"
         ],
         "main_trait_constraint": [
             "rebellious"
         ],
         "random_status_constraint": [
-            "leader"
+            "chief rabbit"
         ],
         "random_living_status": [
             "living"
@@ -196,7 +196,7 @@
     {
         "id": "strange_deputy",
         "thoughts": [
-            "Accidentally assigns the same cat to three patrols",
+            "Accidentally assigns the same rabbit to three patrols",
             "Insists a hunting patrol needs to only bring back mice",
             "Goes missing and comes back smelling like garlic",
             "Is making odd noises",
@@ -210,7 +210,7 @@
         "id": "wise_deputy",
         "thoughts": [
             "Is reflecting on a past lesson to make a crucial decision",
-            "Ponders how {PRONOUN/m_c/poss} decisions will impact the Clan in the long term",
+            "Ponders how {PRONOUN/m_c/poss} decisions will impact the Warren in the long term",
             "Feels a sense of understanding after meditating on an issue"
         ],
         "main_trait_constraint": [
@@ -220,13 +220,13 @@
     {
       "id": "wise_deputy_to_apprentice",
         "thoughts": [
-            "Is sharing words of wisdom with a confused apprentice"
+            "Is sharing words of wisdom with a confused rusasi"
         ],
         "main_trait_constraint": [
             "wise"
         ],
         "random_status_constraint": [
-            "apprentice"
+            "rusasi"
         ],
         "random_living_status": [
             "living"
@@ -235,7 +235,7 @@
     {
         "id": "clever_deputy",
         "thoughts": [
-            "Is solving a complex problem that has been troubling the Clan",
+            "Is solving a complex problem that has been troubling the Warren",
             "Feels intrigued by a recent challenge and is strategizing solutions",
             "Is considering a unique approach to organizing the patrols"
         ],
@@ -246,10 +246,10 @@
     {
         "id": "fighter_deputy",
         "thoughts": [
-            "Is instructing a group of warriors in advanced combat techniques",
-            "Feels a sense of protectiveness towards the Clan, ready to defend them at any moment",
-            "Is assessing the Clan's physical strength and readiness for potential threats",
-            "Organizes a mock battle to keep the Clan's skills sharp"
+            "Is instructing a group of rabbits in advanced combat techniques",
+            "Feels a sense of protectiveness towards the Warren, ready to defend them at any moment",
+            "Is assessing the Warren's physical strength and readiness for potential threats",
+            "Organizes a mock battle to keep the Warren's skills sharp"
         ],
         "main_skill_constraint": [
             "FIGHTER,1"
@@ -260,7 +260,7 @@
         "thoughts": [
             "Helps a Clanmate get a thorn out of their paw while out on patrol",
             "Feels empathy for a sick Clanmate and is thinking of ways to help",
-            "Is sharing knowledge about basic herbs with the Clan"
+            "Is sharing knowledge about basic herbs with the Warren"
         ],
         "main_skill_constraint": [
             "HEALER,1"
@@ -269,13 +269,13 @@
     {
       "id": "healer_deputy_to_medcat",
         "thoughts": [
-            "Takes a patrol out to gather herbs for the medicine cat den"
+            "Takes a patrol out to gather herbs for the healer den"
         ],
         "main_skill_constraint": [
             "HEALER,1"
         ],
         "random_status_constraint": [
-            "medicine cat"
+            "healer"
         ],
         "random_living_status": [
             "living"
@@ -295,7 +295,7 @@
     {
         "id": "story_deputy",
         "thoughts": [
-            "Is recalling an old story that might inspire the Clan in tough times",
+            "Is recalling an old story that might inspire the Warren in tough times",
             "Feels inspired to craft a new legend based on recent events",
             "Uses the stories of old to help guide {PRONOUN/m_c/self} decisions"
         ],
@@ -306,13 +306,13 @@
     {
       "id": "story_deputy_to_apprentice",
         "thoughts": [
-            "Is sharing tales of the Clan's legacy with wide-eyed apprentices"
+            "Is sharing tales of the Warren's legacy with wide-eyed rusasirahs"
         ],
         "main_skill_constraint": [
             "STORY,1"
         ],
         "random_status_constraint": [
-            "apprentice"
+            "rusasi"
         ],
         "random_living_status": [
             "living"
@@ -322,7 +322,7 @@
         "id": "teacher_deputy",
         "thoughts": [
             "Is devising an effective teaching strategy for new skills",
-            "Encourages the older cats to share their skills and techniques with the younger generations"
+            "Encourages the older rabbits to share their skills and techniques with the younger generations"
         ],
         "main_skill_constraint": [
             "TEACHER,1"
@@ -331,14 +331,14 @@
     {
         "id": "teacher_deputy_to_apprentice",
         "thoughts": [
-            "Feels satisfaction watching an apprentice master a lesson",
-            "Guides an apprentice through {PRONOUN/m_c/poss} hunting assessment"
+            "Feels satisfaction watching an rusasi master a lesson",
+            "Guides an rusasi through {PRONOUN/m_c/poss} hunting assessment"
         ],
         "main_skill_constraint": [
             "TEACHER,1"
         ],
         "random_status_constraint": [
-            "apprentice"
+            "rusasi"
         ],
         "random_living_status": [
             "living"
@@ -350,10 +350,10 @@
             "Wishes {PRONOUN/m_c/subject} could speak to r_c to learn how to assign patrols better"
         ],
         "random_status_constraint": [
-            "deputy"
+            "captain"
         ],
         "random_living_status": [
-            "starclan"
+            "inle"
         ]
     },
     {
@@ -362,8 +362,8 @@
             "Is proud of how far {PRONOUN/m_c/subject} {verb/m_c/have/has} come from {PRONOUN/m_c/poss} kittypet life",
             "Is annoyed to still hear gossip about {PRONOUN/m_c/poss} past",
             "Would never wish to return to {PRONOUN/m_c/poss} old kittypet life",
-            "Wishes other cats would trust in the leader's choice of making {PRONOUN/m_c/object} deputy",
-            "Wouldn't mind bragging about {PRONOUN/m_c/poss} position in the Clan to some old kittypet friends",
+            "Wishes other rabbits would trust in the chief rabbit's choice of making {PRONOUN/m_c/object} captain",
+            "Wouldn't mind bragging about {PRONOUN/m_c/poss} position in the Warren to some old kittypet friends",
             "Treats Clanmates fairly regardless of their pasts"
         ],
         "main_backstory_constraint": [
@@ -376,7 +376,7 @@
             "guided1"
         ],
         "main_status_constraint": [
-            "deputy"
+            "captain"
         ]
     }
 ]

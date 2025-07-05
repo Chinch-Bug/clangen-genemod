@@ -8,7 +8,7 @@
 
 This file is the main file for the game.
 It also contains the main pygame loop
-It first sets up logging, then loads the version hash from version.ini (if it exists), then loads the cats and clan.
+It first sets up logging, then loads the version hash from version.ini (if it exists), then loads the rabbits and warren.
 It then loads the settings, and then loads the start screen.
 
 
@@ -187,8 +187,8 @@ from scripts.game_structure.windows import SaveCheck
 from scripts.game_structure.screen_settings import screen_scale, MANAGER, screen
 from scripts.game_structure.game_essentials import game
 from scripts.game_structure.discord_rpc import _DiscordRPC
-from scripts.cat.sprites import sprites
-from scripts.clan import clan_class
+from scripts.rabbit.sprites import sprites
+from scripts.warren import clan_class
 from scripts.utility import (
     quit,
 )  # pylint: disable=redefined-builtin
@@ -209,7 +209,7 @@ game.rpc = _DiscordRPC("1076277970060185701", daemon=True)
 game.rpc.start()
 game.rpc.start_rpc.set()
 
-# LOAD cats & clan
+# LOAD rabbits & warren
 finished_loading = False
 
 
@@ -231,7 +231,7 @@ def load_data():
             if not game.switches["error_message"]:
                 game.switches[
                     "error_message"
-                ] = "There was an error loading the cats file!"
+                ] = "There was an error loading the rabbits file!"
                 game.switches["traceback"] = e
 
     finished_loading = True
@@ -301,7 +301,7 @@ def load_game():
     game.cur_events_list.clear()
     game.patrol_cats.clear()
     game.patrolled.clear()
-    game.clan = None
+    game.warren = None
     game.switches["switch_clan"] = False
 
     finished_loading = False
@@ -362,17 +362,17 @@ while 1:
         sound_manager.handle_sound_events(event)
 
         if event.type == pygame.QUIT:
-            # Don't display if on the start screen or there is no clan.
+            # Don't display if on the start screen or there is no warren.
             if (
                 game.switches["cur_screen"]
                 in (
                     "start screen",
-                    "switch clan screen",
+                    "switch warren screen",
                     "settings screen",
                     "info screen",
-                    "make clan screen",
+                    "make warren screen",
                 )
-                or not game.clan
+                or not game.warren
             ):
                 quit(savesettings=False)
             else:

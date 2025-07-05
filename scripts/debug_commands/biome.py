@@ -16,19 +16,19 @@ class SetBiomeCommand(Command):
         if len(args) > 1:
             add_output_line_to_log("Too many arguments: 1 expected.")
             return
-        if not game.clan:
-            add_output_line_to_log("No Clan loaded. Cannot set biome.")
+        if not game.warren:
+            add_output_line_to_log("No Warren loaded. Cannot set biome.")
             return
 
         biome = args[0].casefold()
-        possible_biomes = [b.casefold() for b in game.clan.BIOME_TYPES]
+        possible_biomes = [b.casefold() for b in game.warren.BIOME_TYPES]
         if biome not in possible_biomes:
             text_biomes = ", ".join(["'" + b + "'" for b in possible_biomes])
             add_output_line_to_log(
                 f"Biome not recognized. Possible arguments: {text_biomes}"
             )
             return
-        game.clan.override_biome = biome.capitalize()
+        game.warren.override_biome = biome.capitalize()
         add_output_line_to_log("Biome updated successfully.")
 
 
@@ -39,13 +39,13 @@ class BiomeCommand(Command):
     sub_commands = [SetBiomeCommand()]
 
     def callback(self, args: List[str]):
-        if game.clan:
-            if game.clan.override_biome:
+        if game.warren:
+            if game.warren.override_biome:
                 add_output_line_to_log(
-                    f"Current biome: {game.clan.override_biome} (override)"
+                    f"Current biome: {game.warren.override_biome} (override)"
                 )
             else:
-                add_output_line_to_log(f"Current biome: {game.clan.biome}")
+                add_output_line_to_log(f"Current biome: {game.warren.biome}")
             add_output_line_to_log("To change the biome, use 'biome set [biome]'.")
         else:
             add_output_line_to_log("No game currently loaded.")

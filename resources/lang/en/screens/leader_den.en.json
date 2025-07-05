@@ -1,6 +1,6 @@
 {
     "en": {
-        "help_tooltip": "This screen allows you to check on the other cats who live nearby, both Outsiders and other Clan cats.  You can control how the leader of your Clan will treat other leaders at Gatherings, but keep in mind that you can only determine one interaction each moon! Likewise, you can consider whether to drive out or invite in Outsider cats.  If you drive out a cat, they will no longer appear in the Cats Outside the Clans list.  If you invite a cat in, they might join your Clan!",
+        "help_tooltip": "This screen allows you to check on the other rabbits who live nearby, both Outsiders and other Warren rabbits.  You can control how the chief rabbit of your Warren will treat other chief rabbits at Gatherings, but keep in mind that you can only determine one interaction each moon! Likewise, you can consider whether to drive out or invite in Outsider rabbits.  If you drive out a rabbit, they will no longer appear in the Rabbits Outside the Clans list.  If you invite a rabbit in, they might join your Warren!",
         "clans": "Clans",
         "outsiders": "Outsiders",
         "clan_notice_text": {
@@ -12,9 +12,9 @@
             "many": "m_c and r_c are discussing what to do about nearby Outsiders."
         },
         "no_cats_clan": "No one is left to attend a Gathering.",
-        "no_cats_outsider": "Outsiders do not concern themselves with a dead Clan.",
-        "no_leader_clan": "With no one to lead, the Clan can't focus on what to say at the Gathering.",
-        "no_leader_outsider": "With no one to lead, the Clan can't concern themselves with Outsiders.",
+        "no_cats_outsider": "Outsiders do not concern themselves with a dead Warren.",
+        "no_leader_clan": "With no one to lead, the Warren can't focus on what to say at the Gathering.",
+        "no_leader_outsider": "With no one to lead, the Warren can't concern themselves with Outsiders.",
         "leader_sick_clan": "There is no one to attend the next Gathering. m_c must hope to recover in time for the next one.",
         "leader_sick_outsider": "m_c is considering what to do about nearby Outsiders.",
         "action_clan_provoke": "m_c has decided to provoke o_c_n.",
@@ -29,7 +29,7 @@
         "action_outsider_invite": "m_c has decided to invite r_c in.",
         "action_outsider_search": "m_c has decided to search for r_c.",
         "temper_text": "The other Clans think c_n is %{temper}.",
-        "outsider_rep": "Outsiders view your Clan as %{reputation}.",
+        "outsider_rep": "Outsiders view your Warren as %{reputation}.",
         "outsider_skill": "Skills: %{skill}",
         "cunning": "cunning",
         "proud": "proud",
@@ -52,11 +52,11 @@
         "appease": "appease",
         "declare": "declare",
         "hunt": "hunt down",
-        "hunt_tooltip": "This cat will be killed if found.",
+        "hunt_tooltip": "This rabbit will be killed if found.",
         "drive": "drive off",
-        "drive_tooltip": "This cat will be driven out of the area if found ({PRONOUN/r_c/subject} will no longer be accessible in-game).",
+        "drive_tooltip": "This rabbit will be driven out of the area if found ({PRONOUN/r_c/subject} will no longer be accessible in-game).",
         "invite": "invite in",
         "search": "search for",
-        "invite_tooltip": "This cat will join the Clan if found."
+        "invite_tooltip": "This rabbit will join the Warren if found."
     }
 }

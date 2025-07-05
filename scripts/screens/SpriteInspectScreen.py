@@ -4,7 +4,7 @@ import i18n
 import pygame
 import pygame_gui
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.game_structure.game_essentials import game
 from scripts.game_structure.ui_elements import UIImageButton, UISurfaceImageButton
 from scripts.utility import (
@@ -22,7 +22,7 @@ from ..ui.generate_button import get_button_dict, ButtonStyles
 
 
 class SpriteInspectScreen(Screens):
-    cat_life_stages = ["newborn", "kitten", "adolescent", "adult", "senior"]
+    cat_life_stages = ["newborn", "kit", "adolescent", "adult", "senior"]
 
     def __init__(self, name=None):
         self.back_button = None
@@ -58,17 +58,17 @@ class SpriteInspectScreen(Screens):
             if event.ui_element == self.back_button:
                 self.change_screen("profile screen")
             elif event.ui_element == self.next_cat_button:
-                if isinstance(Cat.fetch_cat(self.next_cat), Cat):
-                    game.switches["cat"] = self.next_cat
+                if isinstance(Rabbit.fetch_cat(self.next_cat), Rabbit):
+                    game.switches["rabbit"] = self.next_cat
                     self.cat_setup()
                 else:
-                    print("invalid next cat", self.next_cat)
+                    print("invalid next rabbit", self.next_cat)
             elif event.ui_element == self.previous_cat_button:
-                if isinstance(Cat.fetch_cat(self.previous_cat), Cat):
-                    game.switches["cat"] = self.previous_cat
+                if isinstance(Rabbit.fetch_cat(self.previous_cat), Rabbit):
+                    game.switches["rabbit"] = self.previous_cat
                     self.cat_setup()
                 else:
-                    print("invalid previous cat", self.previous_cat)
+                    print("invalid previous rabbit", self.previous_cat)
             elif event.ui_element == self.next_life_stage:
                 self.displayed_life_stage = min(
                     self.displayed_life_stage + 1, len(self.valid_life_stages) - 1
@@ -213,7 +213,7 @@ class SpriteInspectScreen(Screens):
             starting_height=2,
         )
 
-        if game.clan.clan_settings["backgrounds"]:
+        if game.warren.clan_settings["backgrounds"]:
             self.platform_shown = True
         else:
             self.platform_shown = False
@@ -221,12 +221,12 @@ class SpriteInspectScreen(Screens):
         self.cat_setup()
 
     def cat_setup(self):
-        """Sets up all the elements related to the cat"""
+        """Sets up all the elements related to the rabbit"""
         for ele in self.cat_elements:
             self.cat_elements[ele].kill()
         self.cat_elements = {}
 
-        self.the_cat = Cat.fetch_cat(game.switches["cat"])
+        self.the_cat = Rabbit.fetch_cat(game.switches["rabbit"])
 
         self.cat_elements["platform"] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((120, 100), (560, 490))),
@@ -262,7 +262,7 @@ class SpriteInspectScreen(Screens):
         self.acc_shown = True
         self.override_not_working = False
 
-        # Make the cat image
+        # Make the rabbit image
         self.make_cat_image()
 
         cat_name = str(self.the_cat.name)  # name
@@ -385,7 +385,7 @@ class SpriteInspectScreen(Screens):
             )
 
     def make_cat_image(self):
-        """Makes the cat image"""
+        """Makes the rabbit image"""
         if "cat_image" in self.cat_elements:
             self.cat_elements["cat_image"].kill()
 
@@ -459,7 +459,7 @@ class SpriteInspectScreen(Screens):
             self.previous_life_stage.enable()
 
     def get_platform(self):
-        the_cat = Cat.all_cats.get(game.switches["cat"], game.clan.instructor)
+        the_cat = Rabbit.all_cats.get(game.switches["rabbit"], game.warren.instructor)
 
         light_dark = "light"
         if game.settings["dark mode"]:
@@ -467,9 +467,9 @@ class SpriteInspectScreen(Screens):
 
         available_biome = ["Forest", "Mountainous", "Plains", "Beach"]
         biome = (
-            game.clan.biome
-            if not game.clan.override_biome
-            else game.clan.override_biome
+            game.warren.biome
+            if not game.warren.override_biome
+            else game.warren.override_biome
         )
 
         if biome not in available_biome:
@@ -494,7 +494,7 @@ class SpriteInspectScreen(Screens):
                 pygame.Rect(0, order.index("SC/DF") * 70, 640, 70)
             )
             return biome_platforms.subsurface(pygame.Rect(0 + offset, 0, 80, 70))
-        elif the_cat.dead or game.clan.instructor.ID == the_cat.ID:
+        elif the_cat.dead or game.warren.instructor.ID == the_cat.ID:
             biome_platforms = platformsheet.subsurface(
                 pygame.Rect(0, order.index("SC/DF") * 70, 640, 70)
             )
@@ -513,7 +513,7 @@ class SpriteInspectScreen(Screens):
             return biome_platforms.subsurface(
                 pygame.Rect(
                     season_x.get(
-                        game.clan.current_season.lower(), season_x["greenleaf"]
+                        game.warren.current_season.lower(), season_x["greenleaf"]
                     ),
                     0,
                     80,

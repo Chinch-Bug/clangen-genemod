@@ -39,7 +39,7 @@
 		"interactions": [
 			"m_c realized that {PRONOUN/m_c/subject} {VERB/m_c/were/was} too harsh in {PRONOUN/m_c/poss} judgement of r_c.",
 			"m_c is still a little hurt by r_c, but wants to try and make amends.",
-			"m_c decides to be the bigger cat and plans to make amends with r_c.",
+			"m_c decides to be the bigger rabbit and plans to make amends with r_c.",
 			"Despite past disagreements, r_c is kind to m_c in passing.",
 			"m_c hears r_c purring during a nap.",
 			"m_c is frustrated with r_c, but hears {PRONOUN/r_c/object} crying alone and immediately feels guilty.",
@@ -63,7 +63,7 @@
 			"m_c and r_c apologize to each other at the same time.",
 			"When explaining something, m_c is surprised that r_c understands.",
 			"m_c hesitantly asks to exchange fresh-kill with r_c. r_c agrees, since m_c's is {PRONOUN/r_c/poss} favorite kind, anyways.",
-			"The Clan is surprised to see m_c and r_c chatting casually over a meal.",
+			"The Warren is surprised to see m_c and r_c chatting casually over a meal.",
 			"m_c cheers r_c up after a small disagreement."
 		],
 		"reaction_random_cat": {
@@ -97,7 +97,7 @@
 			"m_c and r_c sincerely apologize to one another.",
 			"r_c admits that m_c did something clever.",
 			"m_c and r_c fight over a piece of prey, but soon decide to share it instead.",
-			"The Clan has noticed m_c and r_c are smiling at each other more today.",
+			"The Warren has noticed m_c and r_c are smiling at each other more today.",
 			"m_c and r_c realize they have more in common than previously thought.",
 			"r_c thinks that m_c isn't so bad after all."
 		],
@@ -109,10 +109,10 @@
 		"id": "dislike_de_high3",
 		"intensity": "high",
 		"interactions": [
-			"m_c and r_c heckled another Clan at the Gathering together.",
+			"m_c and r_c heckled another Warren at the Gathering together.",
 			"m_c and r_c worked well together on a patrol.",
 			"When they return from a patrol, m_c and r_c seem more at peace with each other than usual.",
-			"m_c and r_c defended their Clan at the Gathering together.",
+			"m_c and r_c defended their Warren at the Gathering together.",
 			"m_c and r_c had a great time on a patrol."
 		],
 		"reaction_random_cat": {
@@ -120,25 +120,25 @@
 		},
 		"main_status_constraint": [
 			"elder",
-			"apprentice",
-			"warrior",
-			"mediator apprentice",
-			"mediator",
-			"medicine cat apprentice",
-			"medicine cat",
-			"deputy",
-			"leader"
+			"rusasi",
+			"rabbit",
+			"owsla rusasi",
+			"owsla",
+			"healer rusasi",
+			"healer",
+			"captain",
+			"chief rabbit"
 		],
 		"random_status_constraint": [
 			"elder",
-			"apprentice",
-			"warrior",
-			"mediator apprentice",
-			"mediator",
-			"medicine cat apprentice",
-			"medicine cat",
-			"deputy",
-			"leader"
+			"rusasi",
+			"rabbit",
+			"owsla rusasi",
+			"owsla",
+			"healer rusasi",
+			"healer",
+			"captain",
+			"chief rabbit"
 		]
 	}
 ]

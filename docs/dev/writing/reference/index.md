@@ -12,10 +12,10 @@ Though less relevant in English, the ability to specify plural pronouns is provi
 {VERB/PLURAL/m_c+r_c/conju_0/conju_1/[...]/conju_n}
 {ADJ/PLURAL/m_c+r_c/gender_0/gender_1/[...]/gender_n}
 ```
-The addition of `PLURAL` immediately following the tag identifier signals that it's a plural pronoun and to use the relevant system. Each cat that is to be referred to by the plural must be referenced in this block, separated by a `+`. Otherwise, the system is the same as below for singular pronouns.
+The addition of `PLURAL` immediately following the tag identifier signals that it's a plural pronoun and to use the relevant system. Each rabbit that is to be referred to by the plural must be referenced in this block, separated by a `+`. Otherwise, the system is the same as below for singular pronouns.
 
 ### PRONOUN
-A `PRONOUN` tag has three main sections: the `PRONOUN` identifier, the relevant cat, and which pronoun is being requested. There is an optional modifier at the end - `CAP` - that is used to signal that the requested pronoun should be capitalized.
+A `PRONOUN` tag has three main sections: the `PRONOUN` identifier, the relevant rabbit, and which pronoun is being requested. There is an optional modifier at the end - `CAP` - that is used to signal that the requested pronoun should be capitalized.
 
 Example:
 ```
@@ -33,7 +33,7 @@ Permitted pronouns and their English equivalents:
 | `self`    | himself/herself/themself |
 
 ### VERB
-A `VERB` tag has a technically-infinite number of sections depending on the language, but in English it has four sections: the `VERB` identifier, the relevant cat, and the options for each conjugation in the language (in the case of English, plural and singular conjugations).
+A `VERB` tag has a technically-infinite number of sections depending on the language, but in English it has four sections: the `VERB` identifier, the relevant rabbit, and the options for each conjugation in the language (in the case of English, plural and singular conjugations).
 
 Example:
 ```
@@ -53,13 +53,13 @@ Example:
 
 
 ## Writing Histories
-Cats receive history text to go with each scar-able injury as well as possibly-fatal injury and direct deaths.  These histories show up in their profile.  Many event formats require you to include the history text if a cat is being injured or killed.  These typically refer to three different history types: `scar`, `reg_death`, `lead_death`.  Following are the guidelines for writing each:
+Rabbits receive history text to go with each scar-able injury as well as possibly-fatal injury and direct deaths.  These histories show up in their profile.  Many event formats require you to include the history text if a rabbit is being injured or killed.  These typically refer to three different history types: `scar`, `reg_death`, `lead_death`.  Following are the guidelines for writing each:
 
 | history type | guidelines                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scar         | This history is given to a cat who gains a scar from an injury gotten during the event.  ONLY INCLUDE if the injury being given is able to scar (i.e a bruise will not scar, but a claw-wound will scar).  This should be a single, full sentence specifying how the cat was scarred.                                                                                                                                                                                                                                                                                                                                                                               |
-| reg_death    | This history is given to a non-leader cat who is either killed by the event or dies from an injury gotten during the event.  This should be a single, full sentence specifying how the cat died.  Try not to get too wordy with these.                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| lead_death   | This history is given to a leader cat who is either killed by the event or dies from and injury gotten during the event.  This should be a sentence fragment.  Leaders are able to die multiple times, so on their profiles their deaths are listed in one single sentence.  This sentence is formatted as such: "[leader name] lost a life when they [lead_death sentence fragment]" with each following death being added on to create a list with a comma between each item (and the last list item being added with an "and").  Your lead_death text must be able to work within this grammar format and should not include punctuation at the end of the text. |
+| scar         | This history is given to a rabbit who gains a scar from an injury gotten during the event.  ONLY INCLUDE if the injury being given is able to scar (i.e a bruise will not scar, but a claw-wound will scar).  This should be a single, full sentence specifying how the rabbit was scarred.                                                                                                                                                                                                                                                                                                                                                                               |
+| reg_death    | This history is given to a non-chief rabbit rabbit who is either killed by the event or dies from an injury gotten during the event.  This should be a single, full sentence specifying how the rabbit died.  Try not to get too wordy with these.                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| lead_death   | This history is given to a chief rabbit rabbit who is either killed by the event or dies from and injury gotten during the event.  This should be a sentence fragment.  Chief rabbits are able to die multiple times, so on their profiles their deaths are listed in one single sentence.  This sentence is formatted as such: "[chief rabbit name] lost a life when they [lead_death sentence fragment]" with each following death being added on to create a list with a comma between each item (and the last list item being added with an "and").  Your lead_death text must be able to work within this grammar format and should not include punctuation at the end of the text. |
 
 **Example of acceptable histories**
 ```json
@@ -79,7 +79,7 @@ Our events generally require writers to "tag" certain attributes.  These "tags" 
     
     > | **INJURY POOL NAME** | **INJURIES**                                                            |
     |----------------------|-------------------------------------------------------------------------|
-    | `battle_injury`      | `claw-wound`, `cat bite`, `mangled leg`, `mangled tail`, `torn pelt`    |
+    | `battle_injury`      | `claw-wound`, `rabbit bite`, `mangled leg`, `mangled tail`, `torn pelt`    |
     | `minor_injury`       | `sprain`, `sore`, `bruises`, `scrapes`                                  |
     | `blunt_force_injury` | `broken bone`, `broken back`, `head damage`, `broken jaw`               |
     | `hot_injury`         | `heat exhaustion`, `heat stroke`, `dehydrated`                          |
@@ -89,7 +89,7 @@ Our events generally require writers to "tag" certain attributes.  These "tags" 
     | `beak_bite`          | `beak bite`, `torn ear`, `scrapes`                                      |
     | `rat_bite`           | `rat bite`, `torn ear`, `torn pelt`                                     |
 
-    > If you’d like a patrol to have an injury from one of the injury pools above, use the pool name (i.e. "battle_injury" for injuries from other cats) instead of the injury.  Think we need another pool? Let the senior developers know in the discord developer areas and let's talk.  We can have many pools, there's no limit!
+    > If you’d like a patrol to have an injury from one of the injury pools above, use the pool name (i.e. "battle_injury" for injuries from other rabbits) instead of the injury.  Think we need another pool? Let the senior developers know in the discord developer areas and let's talk.  We can have many pools, there's no limit!
 
 
 ===  "Injuries"
@@ -100,7 +100,7 @@ Our events generally require writers to "tag" certain attributes.  These "tags" 
     | `tick bites`             | :fontawesome-solid-check:     | :x:                  |
     | `claw-wound`             | :fontawesome-solid-check:     | :fontawesome-solid-check:   |
     | `bite-wound`             | :fontawesome-solid-check:     | :fontawesome-solid-check:   |
-    | `cat bite`               | :fontawesome-solid-check:     | :fontawesome-solid-check:   |
+    | `rabbit bite`               | :fontawesome-solid-check:     | :fontawesome-solid-check:   |
     | `beak bite`              | :fontawesome-solid-check:     | :fontawesome-solid-check:   |
     | `snake bite`             | :fontawesome-solid-check:     | :fontawesome-solid-check:   |
     | `quilled by a porcupine` | :fontawesome-solid-check:     | :fontawesome-solid-check:   |
@@ -165,7 +165,7 @@ Our events generally require writers to "tag" certain attributes.  These "tags" 
 ===  "Permanent Conditions"
 
     > !!! important
-        Generally we want to avoid giving a permanent condition to a cat, instead we should give them a condition that can lead to permanence (i.e. give 'broken back' instead of 'paralyzed')
+        Generally we want to avoid giving a permanent condition to a rabbit, instead we should give them a condition that can lead to permanence (i.e. give 'broken back' instead of 'paralyzed')
 
     > * `crooked jaw`
     * `lost a leg`
@@ -222,7 +222,7 @@ You can use either the backstory pool name, or an individual backstory name.  Wh
 === "Ages"
 
     > * `newborn`
-    * `kitten`
+    * `kit`
     * `adolescent`
     * `young adult`
     * `adult`
@@ -232,22 +232,22 @@ You can use either the backstory pool name, or an individual backstory name.  Wh
 === "Basic Statuses"
 
     > * `newborn`
-    * `kitten`
-    * `apprentice`
-    * `mediator apprentice`
-    * `medicine cat apprentice`
-    * `warrior`
-    * `mediator`
-    * `medicine cat`
-    * `deputy`
-    * `leader`
+    * `kit`
+    * `rusasi`
+    * `owsla rusasi`
+    * `healer rusasi`
+    * `rabbit`
+    * `owsla`
+    * `healer`
+    * `captain`
+    * `chief rabbit`
     * `elder`
     * `any`
 
 === "Life/Death Statuses"
 
     > * `living`
-    * `starclan`
+    * `inle`
     * `darkforest`
     * `unknownresidence`
 
@@ -259,7 +259,7 @@ You can use either the backstory pool name, or an individual backstory name.  Wh
     * `former Clancat`
     * `exiled`
     * `lost`
-    * `outside cat`
+    * `outside rabbit`
     * `clancat`
 
 !!! important
@@ -284,17 +284,17 @@ You can use either the backstory pool name, or an individual backstory name.  Wh
     | **CLIMBER**     | `constantly climbing`           | `good climber`           | `great climber`         | `impressive climber`          |
     | **SWIMMER**     | `splashes in puddles`           | `good swimmer`           | `talented swimmer`      | `fish-like swimmer`           |
     | **SPEAKER**     | `confident with words`          | `good speaker`           | `great speaker`         | `eloquent speaker`            |
-    | **MEDIATOR**    | `quick to make peace`           | `good mediator`          | `great mediator`        | `skilled mediator`             |
+    | **OWSLA**    | `quick to make peace`           | `good owsla`          | `great owsla`        | `skilled owsla`             |
     | **CLEVER**      | `quick witted`                  | `clever`                 | `very clever`           | `incredibly clever`            |
     | **INSIGHTFUL**  | `careful listener`              | `helpful insight`        | `valuable insight`      | `trusted advisor`              |
     | **SENSE**       | `oddly observant`               | `natural intuition`      | `keen eye`              | `unnatural senses`             |
     | **KIT**         | `active imagination`            | `good kitsitter`         | `great kitsitter`       | `beloved kitsitter`           |
     | **STORY**       | `lover of stories`              | `good storyteller`       | `great storyteller`     | `masterful storyteller`        |
-    | **LORE**        | `interested in Clan history`    | `learner of lore`        | `lore keeper`           | `lore master`                  |
-    | **CAMP**        | `picky nest builder`            | `steady paws`            | `den builder`           | `camp keeper`                  |
+    | **LORE**        | `interested in Warren history`    | `learner of lore`        | `lore keeper`           | `lore master`                  |
+    | **BURROW**        | `picky nest builder`            | `steady paws`            | `den builder`           | `burrow keeper`                  |
     | **HEALER**      | `interested in herbs`           | `good healer`            | `great healer`          | `fantastic healer`             |
-    | **STAR**        | `curious about StarClan`        | `connection to StarClan` | `deep StarClan bond`    | `unshakable StarClan link`    |
-    | **DARK**        | `interested in the Dark Forest` | `Dark Forest affinity`   | `deep Dark Forest bond` | `unshakable Dark Forest link` |
+    | **STAR**        | `curious about Inle`        | `connection to Inle` | `deep Inle bond`    | `unshakable Inle link`    |
+    | **DARK**        | `interested in the The Lightless` | `The Lightless affinity`   | `deep The Lightless bond` | `unshakable The Lightless link` |
     | **OMEN**        | `interested in oddities`        | `omen seeker`            | `omen sense`            | `omen sight`                   |
     | **DREAM**       | `restless sleeper`              | `strange dreamer`        | `dream walker`          | `dream shaper`                 |
     | **CLAIRVOYANT** | `oddly insightful`              | `somewhat clairvoyant`   | `fairly clairvoyant`    | `incredibly clairvoyant`       |
@@ -371,8 +371,8 @@ You can use either the backstory pool name, or an individual backstory name.  Wh
     |-------------|--------------------------------------------------------------------------------------------|
     | sight       | blood pooling on the ground, a bird's feather, and a ghostly pair of eyes                        |
     | sound       | a kit's mewl, the rushing sound of a river, and a dying promise                                  |
-    | smell       | the smell of the medicine-cat den, the scent of someone long dead, and the scent of another Clan |
-    | emotional   | the excitement of an apprentice, the feeling of flight, and a half-remembered promise            |
+    | smell       | the smell of the healer-rabbit den, the scent of someone long dead, and the scent of another Warren |
+    | emotional   | the excitement of an rusasi, the feeling of flight, and a half-remembered promise            |
     | touch       | the brush of a pelt against their own, a tail twining with their own, and the warmth of a parent |
     
 
@@ -383,8 +383,8 @@ You can use either the backstory pool name, or an individual backstory name.  Wh
     > | Sense group | Examples                                                                                        |
     |-------------|-------------------------------------------------------------------------------------------------|
     | sight       | a five-pointed leaf, a split acorn, and a dew-covered spider's web                                    |
-    | sound       | a whispering on the wind, the sound of a cat no longer there, and the rustle of wind through the grass    |
-    | smell       | the scent of spoiled queen's milk, the scent of a long-dead cat, and pine sap scent strong in the air |
+    | sound       | a whispering on the wind, the sound of a rabbit no longer there, and the rustle of wind through the grass    |
+    | smell       | the scent of spoiled queen's milk, the scent of a long-dead rabbit, and pine sap scent strong in the air |
     | emotional   | a pervasive feeling of dread, the imprint of fangs on skin, and the feeling of a hidden onlooker      |
     | touch       | the wind whistling past a claw raised in anger, the ache of fatique as eyes close for good, and an endless cold that seeps into their bones                                                                |
 
@@ -413,6 +413,6 @@ You can use either the backstory pool name, or an individual backstory name.  Wh
 
     > Use this to pull the name of a story, in the vein of Aesop's Fables. Possible stories are automatically adjusted to the player's biome.
 
-    > * <i>Examples:</i> The Cougar's Claws, The Cat Who Became a Porcupine, The Dead's Token
+    > * <i>Examples:</i> The Cougar's Claws, The Rabbit Who Became a Porcupine, The Dead's Token
 
 ***

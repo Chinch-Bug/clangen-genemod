@@ -6,10 +6,10 @@
     "rep_change": -2,
     "m_c": {
       "status": ["loner", "rogue", "kittypet"],
-      "new_thought": "Heard rumors that a Clan was hunting for {PRONOUN/m_c/object}",
+      "new_thought": "Heard rumors that a Warren was hunting for {PRONOUN/m_c/object}",
       "relationships": [
         {
-          "cats_to": [ "clan" ],
+          "cats_to": [ "warren" ],
           "cats_from": ["m_c"],
           "values": ["dislike"],
           "amount": 15
@@ -19,7 +19,7 @@
   },
   {
     "interaction_type": "hunt",
-    "event_text": "c_n trails m_c, but never manages to corner {PRONOUN/m_c/object}. The frustrated patrol returns to camp with nothing to show for it.",
+    "event_text": "c_n trails m_c, but never manages to corner {PRONOUN/m_c/object}. The frustrated patrol returns to burrow with nothing to show for it.",
     "reputation": ["any"],
     "rep_change": -2,
     "m_c": {
@@ -27,7 +27,7 @@
       "new_thought": "Shook off {PRONOUN/m_c/poss} pursuers easily",
       "relationships": [
         {
-          "cats_to": [ "clan" ],
+          "cats_to": [ "warren" ],
           "cats_from": ["m_c"],
           "values": ["dislike"],
           "amount": 15
@@ -45,7 +45,7 @@
       "new_thought": "Won't fall for such an obvious trap",
       "relationships": [
         {
-          "cats_to": [ "clan" ],
+          "cats_to": [ "warren" ],
           "cats_from": ["m_c"],
           "values": ["dislike"],
           "amount": 15
@@ -55,15 +55,15 @@
   },
   {
     "interaction_type": "hunt",
-    "event_text": "Despite a long search, m_c could not be found by the Clan.",
+    "event_text": "Despite a long search, m_c could not be found by the Warren.",
     "reputation": ["any"],
     "rep_change": -2,
     "m_c": {
       "status": ["loner", "rogue", "kittypet"],
-      "new_thought": "Heard rumors that a Clan was hunting for {PRONOUN/m_c/object}",
+      "new_thought": "Heard rumors that a Warren was hunting for {PRONOUN/m_c/object}",
       "relationships": [
         {
-          "cats_to": [ "clan" ],
+          "cats_to": [ "warren" ],
           "cats_from": ["m_c"],
           "values": ["dislike"],
           "amount": 15
@@ -78,10 +78,10 @@
     "rep_change": -2,
     "m_c": {
       "status": ["loner", "rogue", "kittypet", "former Clancat"],
-      "new_thought": "Heard rumors that a Clan was hunting for {PRONOUN/m_c/object}",
+      "new_thought": "Heard rumors that a Warren was hunting for {PRONOUN/m_c/object}",
       "relationships": [
         {
-          "cats_to": [ "clan" ],
+          "cats_to": [ "warren" ],
           "cats_from": ["m_c"],
           "values": ["dislike"],
           "amount": 15
@@ -96,10 +96,10 @@
     "rep_change": -2,
     "m_c": {
       "status": ["loner", "rogue", "kittypet", "former Clancat"],
-      "new_thought": "Heard rumors that a Clan was hunting for {PRONOUN/m_c/object}",
+      "new_thought": "Heard rumors that a Warren was hunting for {PRONOUN/m_c/object}",
       "relationships": [
         {
-          "cats_to": [ "clan" ],
+          "cats_to": [ "warren" ],
           "cats_from": ["m_c"],
           "values": ["dislike"],
           "amount": 15
@@ -109,23 +109,23 @@
   },
   {
     "interaction_type": "hunt",
-    "event_text": "Despite a long search, m_c could not be found by the Clan.",
+    "event_text": "Despite a long search, m_c could not be found by the Warren.",
     "reputation": ["any"],
     "rep_change": -2,
     "m_c": {
       "status": ["exiled", "lost"],
-      "new_thought": "Heard rumors that {PRONOUN/m_c/poss} old Clan was hunting for {PRONOUN/m_c/object}",
+      "new_thought": "Heard rumors that {PRONOUN/m_c/poss} old Warren was hunting for {PRONOUN/m_c/object}",
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["dislike"],
           "amount": 15
         },
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["platonic"],
           "amount": -5
@@ -144,7 +144,7 @@
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["dislike"],
           "amount": 20
@@ -163,14 +163,14 @@
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["dislike"],
           "amount": 20
         },
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["platonic"],
           "amount": -10
@@ -190,14 +190,14 @@
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["platonic"],
           "amount": 5
         },
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["dislike"],
           "amount": -10
@@ -217,7 +217,7 @@
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["dislike"],
           "amount": -50
@@ -232,10 +232,10 @@
     "rep_change": -2,
     "m_c": {
       "status": ["loner", "rogue", "kittypet"],
-      "new_thought": "Heard rumors that a Clan was looking for {PRONOUN/m_c/object}",
+      "new_thought": "Heard rumors that a Warren was looking for {PRONOUN/m_c/object}",
       "relationships": [
         {
-          "cats_to": [ "clan" ],
+          "cats_to": [ "warren" ],
           "cats_from": ["m_c"],
           "values": ["dislike"],
           "amount": 5
@@ -253,7 +253,7 @@
       "new_thought": "Can't be forced out that easily",
       "relationships": [
         {
-          "cats_to": [ "clan" ],
+          "cats_to": [ "warren" ],
           "cats_from": ["m_c"],
           "values": ["dislike"],
           "amount": 5
@@ -268,21 +268,21 @@
     "rep_change": -2,
     "m_c": {
       "status": ["loner", "rogue", "kittypet"],
-      "new_thought": "Considers Clan cats especially gullible"
+      "new_thought": "Considers Warren rabbits especially gullible"
     }
   },
   {
     "interaction_type": "drive",
-    "event_text": "Despite a long search, m_c could not be found by the Clan.",
+    "event_text": "Despite a long search, m_c could not be found by the Warren.",
     "reputation": ["any"],
     "rep_change": -1,
     "m_c": {
       "status": ["loner", "rogue", "kittypet"],
-      "new_thought": "Heard rumors that a Clan was looking for {PRONOUN/m_c/object}",
+      "new_thought": "Heard rumors that a Warren was looking for {PRONOUN/m_c/object}",
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["dislike"],
           "amount": 5
@@ -297,10 +297,10 @@
     "rep_change": -2,
     "m_c": {
       "status": ["loner", "rogue", "kittypet", "former Clancat"],
-      "new_thought": "Heard rumors that a Clan was looking for {PRONOUN/m_c/object}",
+      "new_thought": "Heard rumors that a Warren was looking for {PRONOUN/m_c/object}",
       "relationships": [
         {
-          "cats_to": [ "clan" ],
+          "cats_to": [ "warren" ],
           "cats_from": ["m_c"],
           "values": ["dislike"],
           "amount": 15
@@ -315,10 +315,10 @@
     "rep_change": -2,
     "m_c": {
       "status": ["loner", "rogue", "kittypet", "former Clancat"],
-      "new_thought": "Heard rumors that a Clan was looking for {PRONOUN/m_c/object}",
+      "new_thought": "Heard rumors that a Warren was looking for {PRONOUN/m_c/object}",
       "relationships": [
         {
-          "cats_to": [ "clan" ],
+          "cats_to": [ "warren" ],
           "cats_from": ["m_c"],
           "values": ["dislike"],
           "amount": 15
@@ -328,16 +328,16 @@
   },
   {
     "interaction_type": "drive",
-    "event_text": "Despite a long search, m_c could not be found by the Clan.",
+    "event_text": "Despite a long search, m_c could not be found by the Warren.",
     "reputation": ["any"],
     "rep_change": -1,
     "m_c": {
       "status": ["exiled", "lost"],
-      "new_thought": "Heard rumors that {PRONOUN/m_c/poss} old Clan wants {PRONOUN/m_c/object} gone",
+      "new_thought": "Heard rumors that {PRONOUN/m_c/poss} old Warren wants {PRONOUN/m_c/object} gone",
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["dislike"],
           "amount": 5
@@ -352,7 +352,7 @@
     "rep_change": -2,
     "m_c": {
       "status": ["loner", "rogue", "kittypet"],
-      "new_thought": "Heard rumors that a Clan was looking for {PRONOUN/m_c/object}"
+      "new_thought": "Heard rumors that a Warren was looking for {PRONOUN/m_c/object}"
     }
   },
   {
@@ -377,33 +377,33 @@
   },
   {
     "interaction_type": "invite",
-    "event_text": "Despite a long search, m_c could not be found by the Clan.",
+    "event_text": "Despite a long search, m_c could not be found by the Warren.",
     "reputation": ["any"],
     "rep_change": 1,
     "m_c": {
       "status": ["loner", "rogue", "kittypet"],
-      "new_thought": "Heard rumors that a Clan was looking for {PRONOUN/m_c/object}"
+      "new_thought": "Heard rumors that a Warren was looking for {PRONOUN/m_c/object}"
     }
   },
   {
     "interaction_type": "invite",
-    "event_text": "Despite a long search, m_c could not be found by the Clan.",
+    "event_text": "Despite a long search, m_c could not be found by the Warren.",
     "reputation": ["any"],
     "rep_change": 1,
     "m_c": {
       "status": ["exiled"],
-      "new_thought": "Heard rumors that {PRONOUN/m_c/poss} old Clan was searching for {PRONOUN/m_c/object}",
+      "new_thought": "Heard rumors that {PRONOUN/m_c/poss} old Warren was searching for {PRONOUN/m_c/object}",
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["dislike"],
           "amount": -5
         },
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["platonic"],
           "amount": 5
@@ -423,14 +423,14 @@
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["dislike"],
           "amount": 10
         },
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["platonic"],
           "amount": -5
@@ -445,7 +445,7 @@
     "rep_change": -2,
     "m_c": {
       "status": ["loner", "rogue", "kittypet", "former Clancat"],
-      "new_thought": "Heard rumors that a Clan was looking for {PRONOUN/m_c/object}"
+      "new_thought": "Heard rumors that a Warren was looking for {PRONOUN/m_c/object}"
       }
   },
   {
@@ -455,12 +455,12 @@
     "rep_change": -2,
     "m_c": {
       "status": ["loner", "rogue", "kittypet", "former Clancat"],
-      "new_thought": "Heard rumors that a Clan was looking for {PRONOUN/m_c/object}"
+      "new_thought": "Heard rumors that a Warren was looking for {PRONOUN/m_c/object}"
     }
   },
   {
     "interaction_type": "invite",
-    "event_text": "Despite a long search, m_c could not be found by the Clan.",
+    "event_text": "Despite a long search, m_c could not be found by the Warren.",
     "reputation": ["any"],
     "rep_change": 1,
     "m_c": {
@@ -469,14 +469,14 @@
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["dislike"],
           "amount": -5
         },
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["platonic"],
           "amount": 5
@@ -536,7 +536,7 @@
   },
   {
     "interaction_type": "search",
-    "event_text": "A c_n search patrol finally finds m_c, but {PRONOUN/m_c/poss} Clanmates are shocked to hear that m_c has unfinished business outside of the Clan. {PRONOUN/m_c/subject/CAP} {VERB/m_c/promise/promises} to return soon.",
+    "event_text": "A c_n search patrol finally finds m_c, but {PRONOUN/m_c/poss} Clanmates are shocked to hear that m_c has unfinished business outside of the Warren. {PRONOUN/m_c/subject/CAP} {VERB/m_c/promise/promises} to return soon.",
     "reputation": ["any"],
     "rep_change": 0,
     "m_c": {
@@ -556,7 +556,7 @@
   },
   {
     "interaction_type": "hunt",
-    "event_text": "Despite a long search, m_c could not be found by the Clan.",
+    "event_text": "Despite a long search, m_c could not be found by the Warren.",
     "reputation": ["any"],
     "rep_change": -1,
     "m_c": {
@@ -565,14 +565,14 @@
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["dislike"],
           "amount": 5
         },
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["platonic"],
           "amount": -5
@@ -582,7 +582,7 @@
   },
   {
     "interaction_type": "hunt",
-    "event_text": "Despite a long search, m_c could not be found by the Clan.",
+    "event_text": "Despite a long search, m_c could not be found by the Warren.",
     "reputation": ["any"],
     "rep_change": -1,
     "m_c": {
@@ -591,14 +591,14 @@
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["dislike"],
           "amount": 5
         },
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["platonic"],
           "amount": -5
@@ -618,14 +618,14 @@
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["dislike"],
           "amount": 5
         },
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["platonic"],
           "amount": -5
@@ -635,23 +635,23 @@
   },
   {
     "interaction_type": "search",
-    "event_text": "Despite a long search, m_c could not be found by the Clan.",
+    "event_text": "Despite a long search, m_c could not be found by the Warren.",
     "reputation": ["any"],
     "rep_change": 1,
     "m_c": {
       "status": ["lost"],
-      "new_thought": "Heard rumors that {PRONOUN/m_c/poss} Clan has been searching for {PRONOUN/m_c/object}",
+      "new_thought": "Heard rumors that {PRONOUN/m_c/poss} Warren has been searching for {PRONOUN/m_c/object}",
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["dislike"],
           "amount": -5
         },
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["platonic"],
           "amount": 5
@@ -661,7 +661,7 @@
   },
   {
     "interaction_type": "drive",
-    "event_text": "Some of c_n's best hunters challenge m_c to a hunt-off. The stakes are simple: if c_n wins, m_c leaves the territory; if m_c wins, then {PRONOUN/m_c/subject} will be allowed to hunt within the Clan's borders undisturbed. m_c wins by a landslide and, though they grumble about it, the c_n cats honor the agreement and leave {PRONOUN/m_c/object} alone.",
+    "event_text": "Some of c_n's best hunters challenge m_c to a hunt-off. The stakes are simple: if c_n wins, m_c leaves the territory; if m_c wins, then {PRONOUN/m_c/subject} will be allowed to hunt within the Warren's borders undisturbed. m_c wins by a landslide and, though they grumble about it, the c_n rabbits honor the agreement and leave {PRONOUN/m_c/object} alone.",
     "reputation": ["any"],
     "rep_change": -1,
     "m_c": {
@@ -674,13 +674,13 @@
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["dislike"],
           "amount": 5
         },
         {
-          "cats_from": ["clan"],
+          "cats_from": ["warren"],
           "cats_to": ["m_c"],
           "mutual": false,
           "values": ["respect"],
@@ -691,7 +691,7 @@
   },
   {
     "interaction_type": "drive",
-    "event_text": "The cats of c_n have been scouring the territory for m_c, but {PRONOUN/m_c/poss} strong senses have helped {PRONOUN/m_c/object} to stay two pawsteps ahead of {PRONOUN/m_c/poss} pursuers.",
+    "event_text": "The rabbits of c_n have been scouring the territory for m_c, but {PRONOUN/m_c/poss} strong senses have helped {PRONOUN/m_c/object} to stay two pawsteps ahead of {PRONOUN/m_c/poss} pursuers.",
     "reputation": ["any"],
     "rep_change": -1,
     "m_c": {
@@ -704,13 +704,13 @@
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": true,
           "values": ["dislike"],
           "amount": 5
         },
         {
-          "cats_from": ["clan"],
+          "cats_from": ["warren"],
           "cats_to": ["m_c"],
           "mutual": false,
           "values": ["respect"],
@@ -721,7 +721,7 @@
   },
   {
     "interaction_type": "drive",
-    "event_text": "The cats of c_n have been scouring the territory for m_c, but {PRONOUN/m_c/poss} strong senses have helped {PRONOUN/m_c/object} to stay two pawsteps ahead of {PRONOUN/m_c/poss} pursuers.",
+    "event_text": "The rabbits of c_n have been scouring the territory for m_c, but {PRONOUN/m_c/poss} strong senses have helped {PRONOUN/m_c/object} to stay two pawsteps ahead of {PRONOUN/m_c/poss} pursuers.",
     "reputation": ["any"],
     "rep_change": -1,
     "m_c": {
@@ -734,13 +734,13 @@
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": true,
           "values": ["dislike"],
           "amount": 5
         },
         {
-          "cats_from": ["clan"],
+          "cats_from": ["warren"],
           "cats_to": ["m_c"],
           "mutual": false,
           "values": ["respect"],
@@ -764,7 +764,7 @@
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": true,
           "values": ["dislike"],
           "amount": 5
@@ -787,13 +787,13 @@
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["dislike"],
           "amount": 5
         },
         {
-          "cats_from": ["clan"],
+          "cats_from": ["warren"],
           "cats_to": ["m_c"],
           "mutual": false,
           "values": ["respect"],
@@ -804,7 +804,7 @@
   },
   {
     "interaction_type": "drive",
-    "event_text": "The cats of c_n have been scouring the territory for m_c but, even in {PRONOUN/m_c/poss} advanced age, m_c's senses have remained sharp enough for {PRONOUN/m_c/object} to stay two pawsteps ahead of {PRONOUN/m_c/poss} pursuers.",
+    "event_text": "The rabbits of c_n have been scouring the territory for m_c but, even in {PRONOUN/m_c/poss} advanced age, m_c's senses have remained sharp enough for {PRONOUN/m_c/object} to stay two pawsteps ahead of {PRONOUN/m_c/poss} pursuers.",
     "reputation": ["any"],
     "rep_change": -1,
     "m_c": {
@@ -817,13 +817,13 @@
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": true,
           "values": ["dislike"],
           "amount": 5
         },
         {
-          "cats_from": ["clan"],
+          "cats_from": ["warren"],
           "cats_to": ["m_c"],
           "mutual": false,
           "values": ["respect"],
@@ -834,7 +834,7 @@
   },
   {
     "interaction_type": "hunt",
-    "event_text": "The cats of c_n have set up an ambush, hoping to get rid of m_c once and for all. However, even in {PRONOUN/m_c/poss} advanced age, m_c's senses are more than sharp enough to help {PRONOUN/m_c/object} evade the trap.",
+    "event_text": "The rabbits of c_n have set up an ambush, hoping to get rid of m_c once and for all. However, even in {PRONOUN/m_c/poss} advanced age, m_c's senses are more than sharp enough to help {PRONOUN/m_c/object} evade the trap.",
     "reputation": ["any"],
     "rep_change": -2,
     "m_c": {
@@ -843,17 +843,17 @@
       "skill": [
         "SENSE,1"
       ],
-      "new_thought": "Isn't ready to join StarClan just yet",
+      "new_thought": "Isn't ready to join Inle just yet",
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": true,
           "values": ["dislike"],
           "amount": 15
         },
         {
-          "cats_from": ["clan"],
+          "cats_from": ["warren"],
           "cats_to": ["m_c"],
           "mutual": false,
           "values": ["respect"],
@@ -869,11 +869,11 @@
     "rep_change": 0,
     "m_c": {
       "status": ["kittypet"],
-      "new_thought": "Smugly watches the Clan cats retreat",
+      "new_thought": "Smugly watches the Warren rabbits retreat",
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": true,
           "values": ["dislike"],
           "amount": 10
@@ -888,11 +888,11 @@
     "rep_change": 0,
     "m_c": {
       "status": ["kittypet"],
-      "new_thought": "Smugly watches the Clan cats retreat",
+      "new_thought": "Smugly watches the Warren rabbits retreat",
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": true,
           "values": ["dislike"],
           "amount": 10
@@ -907,7 +907,7 @@
     "rep_change": 0,
     "m_c": {
       "status": ["kittypet"],
-      "new_thought": "Curiously watches the Clan cats retreat"
+      "new_thought": "Curiously watches the Warren rabbits retreat"
     }
   },
   {
@@ -981,7 +981,7 @@
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["dislike"],
           "amount": 15
@@ -1000,7 +1000,7 @@
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["dislike"],
           "amount": 15
@@ -1010,7 +1010,7 @@
   },
   {
     "interaction_type": "search",
-    "event_text": "c_n puts out the word to all local groups of cats, desperate for any sign that m_c is still out there. They hear nothing back.",
+    "event_text": "c_n puts out the word to all local groups of rabbits, desperate for any sign that m_c is still out there. They hear nothing back.",
     "reputation": ["any"],
     "rep_change": 0,
     "m_c": {
@@ -1020,36 +1020,36 @@
   },
   {
     "interaction_type": "invite",
-    "event_text": "c_n tracks m_c down, but as soon as m_c scents Clan cats, {PRONOUN/m_c/subject} {VERB/m_c/turn/turns} tail and flees, warned off by their reputation.",
+    "event_text": "c_n tracks m_c down, but as soon as m_c scents Warren rabbits, {PRONOUN/m_c/subject} {VERB/m_c/turn/turns} tail and flees, warned off by their reputation.",
     "reputation": ["hostile"],
     "rep_change": 0,
     "m_c": {
       "status": ["loner", "rogue"],
-      "new_thought": "Knows better than to trust Clan cats"
+      "new_thought": "Knows better than to trust Warren rabbits"
     }
   },
   {
     "interaction_type": "invite",
-    "event_text": "No matter how much c_n searches, they can't find a whisker of m_c. It seems the Clan's reputation has taught the local kittypets to stay in their Twolegs' nest.",
+    "event_text": "No matter how much c_n searches, they can't find a whisker of m_c. It seems the Warren's reputation has taught the local kittypets to stay in their Twolegs' nest.",
     "reputation": ["hostile"],
     "rep_change": 0,
     "m_c": {
       "status": ["kittypet"],
-      "new_thought": "Shivers in {PRONOUN/m_c/poss} nest at the thought of Clan cats"
+      "new_thought": "Shivers in {PRONOUN/m_c/poss} nest at the thought of Warren rabbits"
     }
   },
   {
     "interaction_type": "hunt",
-    "event_text": "When c_n finds m_c, {PRONOUN/m_c/subject} {VERB/m_c/greet/greets} the Clan cats politely. m_c is stunned when c_n descends on {PRONOUN/m_c/object} with unsheathed claws, but {PRONOUN/m_c/subject} {VERB/m_c/react/reacts} just in time to sprint off.",
+    "event_text": "When c_n finds m_c, {PRONOUN/m_c/subject} {VERB/m_c/greet/greets} the Warren rabbits politely. m_c is stunned when c_n descends on {PRONOUN/m_c/object} with unsheathed claws, but {PRONOUN/m_c/subject} {VERB/m_c/react/reacts} just in time to sprint off.",
     "reputation": ["welcoming"],
     "rep_change": -1,
     "m_c": {
       "status": ["kittypet", "loner", "rogue"],
-      "new_thought": "Is stunned to discover Clan cats are much more vicious than {PRONOUN/m_c/subject} thought",
+      "new_thought": "Is stunned to discover Warren rabbits are much more vicious than {PRONOUN/m_c/subject} thought",
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["dislike"],
           "amount": 15
@@ -1059,16 +1059,16 @@
   },
   {
     "interaction_type": "hunt",
-    "event_text": "As soon as the c_n cats slink into view, m_c turns tail and sprints off. Every cat in the area knows how c_n treats outsiders.",
+    "event_text": "As soon as the c_n rabbits slink into view, m_c turns tail and sprints off. Every rabbit in the area knows how c_n treats outsiders.",
     "reputation": ["hostile"],
     "rep_change": 0,
     "m_c": {
       "status": ["kittypet", "loner", "rogue"],
-      "new_thought": "Shudders at the thought of running into a c_n warrior",
+      "new_thought": "Shudders at the thought of running into a c_n rabbit",
       "relationships": [
         {
           "cats_from": ["m_c"],
-          "cats_to": ["clan"],
+          "cats_to": ["warren"],
           "mutual": false,
           "values": ["dislike"],
           "amount": 15
@@ -1078,12 +1078,12 @@
   },
   {
     "interaction_type": "drive",
-    "event_text": "c_n searches all over, but m_c has been lying low. Every cat in the area knows how c_n treats outsiders.",
+    "event_text": "c_n searches all over, but m_c has been lying low. Every rabbit in the area knows how c_n treats outsiders.",
     "reputation": ["hostile"],
     "rep_change": 0,
     "m_c": {
       "status": ["kittypet", "loner", "rogue"],
-      "new_thought": "Shudders at the thought of running into a c_n warrior"
+      "new_thought": "Shudders at the thought of running into a c_n rabbit"
     }
   },
   {

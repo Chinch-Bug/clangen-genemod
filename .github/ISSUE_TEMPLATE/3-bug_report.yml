@@ -10,14 +10,14 @@ body:
       options:
         - label: I have searched the existing issues
           required: true
-        - label: This issue was encountered (or replicated) on a non-edited Clan
+        - label: This issue was encountered (or replicated) on a non-edited Warren
           required: true
   - type: textarea
     id: description
     attributes:
       label: Description
       description: Describe the bug
-      placeholder: "e.g. Cats are lost in a moon event but are still in the clan cat list."
+      placeholder: "e.g. Rabbits are lost in a moon event but are still in the warren rabbit list."
     validations:
       required: true
   - type: dropdown

@@ -19,32 +19,32 @@
 		"text": ["starving", "very hungry", "hungry", "satiated", "full", "stuffed"]
 	},
     "prey_requirement":{
-        "leader": 3,
-        "deputy": 3,
-        "medicine cat": 2,
-        "medicine cat apprentice": 1.5,
-        "mediator apprentice": 1.5,
-        "mediator": 2,
-        "warrior": 3,
-        "apprentice": 1.5,
+        "chief rabbit": 3,
+        "captain": 3,
+        "healer": 2,
+        "healer rusasi": 1.5,
+        "owsla rusasi": 1.5,
+        "owsla": 2,
+        "rabbit": 3,
+        "rusasi": 1.5,
         "elder": 1.5,
         "queen/pregnant": 4,
-        "kitten": 0.5,
+        "kit": 0.5,
         "newborn": 0.2
     },
     "feeding_order":[
         "newborn",
-        "kitten",
+        "kit",
         "queen/pregnant",
         "elder",
-        "medicine cat",
-        "medicine cat apprentice",
-        "apprentice",
-        "mediator apprentice",
-        "warrior",
-        "mediator",
-        "deputy",
-        "leader"
+        "healer",
+        "healer rusasi",
+        "rusasi",
+        "owsla rusasi",
+        "rabbit",
+        "owsla",
+        "captain",
+        "chief rabbit"
     ],
     "hunter_bonus": {"1": 1, "2": 2, "3": 3},
     "hunter_exp_bonus": {
@@ -108,12 +108,12 @@
         }
     },
     "comment": [
-        "activate_deaths - activates the whole system, otherwise nutrition status of the cats doesn't have an effect",
+        "activate_deaths - activates the whole system, otherwise nutrition status of the rabbits doesn't have an effect",
         "activate_events - activates if events for freshkill pile are triggered or not",
         "start_amount - defines the amount of prey when a new freshkill-pile is made",
-        "The auto parameters are for the prey each moon, each healthy warrior/apprentice will catch an amount of between these two values of prey.",
+        "The auto parameters are for the prey each moon, each healthy rabbit/rusasi will catch an amount of between these two values of prey.",
         "additional_prey - added amount for hunting patrol, to make it easier",
-        "base_event_trigger_factor - (will be adapted in code based on clan size) this number will be used to multiply with the amount of prey the Clan needs, if the pile is bigger than this number, prey events will be triggered",
+        "base_event_trigger_factor - (will be adapted in code based on warren size) this number will be used to multiply with the amount of prey the Warren needs, if the pile is bigger than this number, prey events will be triggered",
         "hunter_bonus is the factor which is be used to multiply on a hunting patrol.",
         "hunter_exp_bonus is the additional prey which will be added on a hunting patrol."
     ]

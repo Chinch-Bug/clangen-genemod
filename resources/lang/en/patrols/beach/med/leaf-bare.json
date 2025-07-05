@@ -9,12 +9,12 @@
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
-            "medicine cat": [1, 6],
-            "healer cats": [1, 6],
+            "healer": [1, 6],
+            "healer rabbits": [1, 6],
             "normal adult": [1, 6]
         },
         "weight": 20,
-        "intro_text": "p_l goes out with a warrior escort to look for useful fresh supplies that have survived leaf-bare so far, both for safety and for carrying capacity should {PRONOUN/p_l/subject} find anything.",
+        "intro_text": "p_l goes out with a rabbit escort to look for useful fresh supplies that have survived leaf-bare so far, both for safety and for carrying capacity should {PRONOUN/p_l/subject} find anything.",
         "decline_text": "{PRONOUN/p_l/poss/CAP} escort is called away on a different mission, and p_l decides to reorganize the herb store instead.",
         "chance_of_success": 60,
         "success_outcomes": [
@@ -34,7 +34,7 @@
                 ]
             },
             {
-                "text": "p_l and r_c have a pleasant conversation, swapping knowledge and insight from their unique perspectives. They return to camp with a growing fondness of each other - and mouths full of herbs.",
+                "text": "p_l and r_c have a pleasant conversation, swapping knowledge and insight from their unique perspectives. They return to burrow with a growing fondness of each other - and mouths full of herbs.",
                 "exp": 10,
                 "weight": 5,
                 "herbs": ["random_herbs", "many_herbs"],
@@ -49,10 +49,10 @@
                 ]
             },
             {
-                "text": "s_c has always been good at talking, so it isn't a big surprise that p_l finds it so easy to chat with {PRONOUN/s_c/object}. It's just an herb gathering patrol, but p_l feels more relaxed than {PRONOUN/p_l/subject}{VERB/p_l/'ve/'s} felt in moons when {PRONOUN/p_l/subject} {VERB/p_l/come/comes} back to camp, smiling softly.",
+                "text": "s_c has always been good at talking, so it isn't a big surprise that p_l finds it so easy to chat with {PRONOUN/s_c/object}. It's just an herb gathering patrol, but p_l feels more relaxed than {PRONOUN/p_l/subject}{VERB/p_l/'ve/'s} felt in moons when {PRONOUN/p_l/subject} {VERB/p_l/come/comes} back to burrow, smiling softly.",
                 "exp": 10,
                 "weight": 40,
-                "stat_skill": ["SPEAKER,1", "MEDIATOR,1"],
+                "stat_skill": ["SPEAKER,1", "OWSLA,1"],
                 "can_have_stat": ["r_c"],
                 "herbs": ["random_herbs"],
                 "relationships": [
@@ -68,7 +68,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "It's an exhausting day. p_l starts chatting with r_c to pass the time, but they have nothing in common, and the other cat bluntly refuses to talk about boring herbs.",
+                "text": "It's an exhausting day. p_l starts chatting with r_c to pass the time, but they have nothing in common, and the other rabbit bluntly refuses to talk about boring herbs.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -109,18 +109,18 @@
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
-            "all apprentices": [-1, -1],
-            "medicine cat": [1, 6],
-            "healer cats": [1, 6],
+            "all rusasirahs": [-1, -1],
+            "healer": [1, 6],
+            "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
-        "intro_text": "p_l heads out, leading a patrol of medicine cats to go find any fresh herbs that have survived leaf-bare so far.",
+        "intro_text": "p_l heads out, leading a patrol of healer rabbits to go find any fresh herbs that have survived leaf-bare so far.",
         "decline_text": "... And they're called back almost immediately, as one of the elders has started hacking something up.",
         "chance_of_success": 60,
         "success_outcomes": [
             {
-                "text": "The ground is slippery with frost, and as p_l falls, r_c catches {PRONOUN/p_l/object}. It's a nice reminder that the responsibility of looking after the Clan is a shared one, and the rescue also makes p_l shiver pleasantly.",
+                "text": "The ground is slippery with frost, and as p_l falls, r_c catches {PRONOUN/p_l/object}. It's a nice reminder that the responsibility of looking after the Warren is a shared one, and the rescue also makes p_l shiver pleasantly.",
                 "exp": 10,
                 "weight": 20,
                 "herbs": ["random_herbs"],
@@ -135,7 +135,7 @@
                 ]
             },
             {
-                "text": "p_l and r_c have a pleasant conversation, sharing possible new treatments and messages from StarClan. They return to camp with a growing fondness of each other - and mouths full of herbs.",
+                "text": "p_l and r_c have a pleasant conversation, sharing possible new treatments and messages from Inle. They return to burrow with a growing fondness of each other - and mouths full of herbs.",
                 "exp": 10,
                 "weight": 5,
                 "herbs": ["random_herbs", "many_herbs"],
@@ -150,10 +150,10 @@
                 ]
             },
             {
-                "text": "s_c has always been good at talking, so it isn't a big surprise that p_l finds it so easy to chat with {PRONOUN/s_c/object}. It's just an herb gathering patrol, but p_l feels more relaxed than {PRONOUN/p_l/subject}{VERB/p_l/'ve/'s} felt in moons when {PRONOUN/p_l/subject} {VERB/p_l/come/comes} back to camp, smiling softly.",
+                "text": "s_c has always been good at talking, so it isn't a big surprise that p_l finds it so easy to chat with {PRONOUN/s_c/object}. It's just an herb gathering patrol, but p_l feels more relaxed than {PRONOUN/p_l/subject}{VERB/p_l/'ve/'s} felt in moons when {PRONOUN/p_l/subject} {VERB/p_l/come/comes} back to burrow, smiling softly.",
                 "exp": 10,
                 "weight": 40,
-                "stat_skill": ["SPEAKER,1", "MEDIATOR,1"],
+                "stat_skill": ["SPEAKER,1", "OWSLA,1"],
                 "can_have_stat": ["r_c"],
                 "herbs": ["random_herbs"],
                 "relationships": [
@@ -210,8 +210,8 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [-1, -1],
-            "healer cats": [1, 6],
+            "rusasi": [-1, -1],
+            "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
@@ -220,7 +220,7 @@
         "chance_of_success": 40,
         "success_outcomes": [
             {
-                "text": "While blackberries don't lose their leaves completely, leaf-bare is hard on every plant. p_l has to balance the plant's needs, the Clan's needs, and {PRONOUN/p_l/poss} own frozen paws, as {PRONOUN/p_l/subject} {VERB/p_l/try/tries} to gather what {PRONOUN/p_l/subject} can.",
+                "text": "While blackberries don't lose their leaves completely, leaf-bare is hard on every plant. p_l has to balance the plant's needs, the Warren's needs, and {PRONOUN/p_l/poss} own frozen paws, as {PRONOUN/p_l/subject} {VERB/p_l/try/tries} to gather what {PRONOUN/p_l/subject} can.",
                 "exp": 10,
                 "weight": 20,
                 "herbs": ["blackberry"]
@@ -260,7 +260,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["p_l"],
+                        "rabbits": ["p_l"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE", "FROSTMITT", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -282,19 +282,19 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [-1, -1],
-            "medicine cat": [1, 6],
-            "medicine cat apprentice": [1, 6],
-            "healer cats": [1, 6],
+            "rusasi": [-1, -1],
+            "healer": [1, 6],
+            "healer rusasi": [1, 6],
+            "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "Hmm. p_l heads out with app1, deciding that they need more blackberry leaves in their stores.",
-        "decline_text": "p_l has second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially since {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} also bringing {PRONOUN/p_l/poss} apprentice, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "p_l has second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially since {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 40,
         "success_outcomes": [
             {
-                "text": "While blackberries don't lose their leaves completely, leaf-bare is hard on every plant. p_l has to balance the plant's needs, the Clan's needs, and {PRONOUN/p_l/poss} own frozen paws, as {PRONOUN/p_l/subject} {VERB/p_l/try/tries} to gather what {PRONOUN/p_l/subject} can. It's a great help having app1 with {PRONOUN/p_l/object}, though {PRONOUN/p_l/subject} {VERB/p_l/stay/stays} cognizant that the younger cat can't be out in the cold as long as {PRONOUN/p_l/object}.",
+                "text": "While blackberries don't lose their leaves completely, leaf-bare is hard on every plant. p_l has to balance the plant's needs, the Warren's needs, and {PRONOUN/p_l/poss} own frozen paws, as {PRONOUN/p_l/subject} {VERB/p_l/try/tries} to gather what {PRONOUN/p_l/subject} can. It's a great help having app1 with {PRONOUN/p_l/object}, though {PRONOUN/p_l/subject} {VERB/p_l/stay/stays} cognizant that the younger rabbit can't be out in the cold as long as {PRONOUN/p_l/object}.",
                 "exp": 30,
                 "weight": 20,
                 "herbs": ["blackberry"],
@@ -338,7 +338,7 @@
                 ]
             },
             {
-                "text": "s_c spots a sheltered corner that has protected a branch of blackberry from the cold and expertly maneuvers in to pluck the leaves for c_n. {PRONOUN/s_c/subject/CAP} {VERB/s_c/leave/leaves} app1 outside, not wanting to risk {PRONOUN/s_c/poss} apprentice in the snow and thorns.",
+                "text": "s_c spots a sheltered corner that has protected a branch of blackberry from the cold and expertly maneuvers in to pluck the leaves for c_n. {PRONOUN/s_c/subject/CAP} {VERB/s_c/leave/leaves} app1 outside, not wanting to risk {PRONOUN/s_c/poss} rusasi in the snow and thorns.",
                 "exp": 30,
                 "weight": 40,
                 "stat_skill": ["SENSE,2"],
@@ -399,7 +399,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE", "FROSTMITT", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -431,7 +431,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["p_l"],
+                        "rabbits": ["p_l"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE", "FROSTMITT", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -494,17 +494,17 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "medicine cat": [1, 6],
-            "healer cats": [1, 6],
+            "healer": [1, 6],
+            "healer rabbits": [1, 6],
             "normal adult": [1, 6]
         },
         "weight": 20,
         "intro_text": "Hmm. p_l heads out, deciding that {PRONOUN/p_l/subject} {VERB/p_l/need/needs} more blackberry leaves in {PRONOUN/p_l/poss} stores, bringing along anyone who isn't busy with other work.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} stopped before {PRONOUN/p_l/subject} {VERB/p_l/leave/leaves} burrow - these rabbits are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "While blackberries don't lose their leaves completely, leaf-bare is hard on every plant. p_l has to balance the plant's needs, the Clan's needs, and {PRONOUN/p_l/poss} own frozen paws, as {PRONOUN/p_l/subject} {VERB/p_l/try/tries} to gather what {PRONOUN/p_l/subject} can. The patrol sees {PRONOUN/p_l/poss} stress and gathers around to support {PRONOUN/p_l/object}.",
+                "text": "While blackberries don't lose their leaves completely, leaf-bare is hard on every plant. p_l has to balance the plant's needs, the Warren's needs, and {PRONOUN/p_l/poss} own frozen paws, as {PRONOUN/p_l/subject} {VERB/p_l/try/tries} to gather what {PRONOUN/p_l/subject} can. The patrol sees {PRONOUN/p_l/poss} stress and gathers around to support {PRONOUN/p_l/object}.",
                 "exp": 10,
                 "weight": 20,
                 "herbs": ["blackberry"],
@@ -579,7 +579,7 @@
                 "weight": 20
             },
             {
-                "text": "r_c carefully edges out onto a slippery, frozen rock, trying to get closer to a branch of blackberry leaves that are still green. {PRONOUN/r_c/subject/CAP} {VERB/r_c/overcompensate/overcompensates} {PRONOUN/r_c/poss} balance, falling into a deep snowbank that {PRONOUN/r_c/subject} just can't seem to claw {PRONOUN/r_c/poss} way out of, even with the other cats' help.",
+                "text": "r_c carefully edges out onto a slippery, frozen rock, trying to get closer to a branch of blackberry leaves that are still green. {PRONOUN/r_c/subject/CAP} {VERB/r_c/overcompensate/overcompensates} {PRONOUN/r_c/poss} balance, falling into a deep snowbank that {PRONOUN/r_c/subject} just can't seem to claw {PRONOUN/r_c/poss} way out of, even with the other rabbits' help.",
                 "exp": 0,
                 "weight": 5,
                 "dead_cats": ["r_c"],
@@ -609,7 +609,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE", "FROSTMITT", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -636,7 +636,7 @@
                 ]
             },
             {
-                "text": "p_l carefully edges out onto a slippery, frozen rock, trying to get closer to a branch of blackberry leaves that are still green. {PRONOUN/p_l/subject/CAP} {VERB/p_l/overcompensate/overcompensates} {PRONOUN/p_l/poss} balance, falling into a deep snowbank that {PRONOUN/p_l/subject} just can't seem to claw {PRONOUN/p_l/poss} way out of, even with the other cats' help.",
+                "text": "p_l carefully edges out onto a slippery, frozen rock, trying to get closer to a branch of blackberry leaves that are still green. {PRONOUN/p_l/subject/CAP} {VERB/p_l/overcompensate/overcompensates} {PRONOUN/p_l/poss} balance, falling into a deep snowbank that {PRONOUN/p_l/subject} just can't seem to claw {PRONOUN/p_l/poss} way out of, even with the other rabbits' help.",
                 "exp": 0,
                 "weight": 5,
                 "dead_cats": ["p_l"],
@@ -666,7 +666,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["p_l"],
+                        "rabbits": ["p_l"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE", "FROSTMITT", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -704,17 +704,17 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [-1, -1],
-            "healer cats": [1, 6],
+            "rusasi": [-1, -1],
+            "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
-        "intro_text": "As the snows of leaf-bare blow around camp, p_l eyes {PRONOUN/p_l/poss} herb stores. {PRONOUN/p_l/subject/CAP} should still be able to dig up burdock. p_l heads out to replenish the Clan's stocks.",
+        "intro_text": "As the snows of leaf-bare blow around burrow, p_l eyes {PRONOUN/p_l/poss} herb stores. {PRONOUN/p_l/subject/CAP} should still be able to dig up burdock. p_l heads out to replenish the Warren's stocks.",
         "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts about leaving {PRONOUN/p_l/poss} patients behind and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 20,
         "success_outcomes": [
             {
-                "text": "p_l's pawpads are nearly frozen, trying to dig up burdock in the cold, but somehow {PRONOUN/p_l/subject} {VERB/p_l/manage/manages} it, and it's worth all the effort and misery to know how crucial these fresh herbs could be for the Clan.",
+                "text": "p_l's pawpads are nearly frozen, trying to dig up burdock in the cold, but somehow {PRONOUN/p_l/subject} {VERB/p_l/manage/manages} it, and it's worth all the effort and misery to know how crucial these fresh herbs could be for the Warren.",
                 "exp": 10,
                 "weight": 20,
                 "herbs": ["burdock"]
@@ -740,12 +740,12 @@
                 "weight": 20
             },
             {
-                "text": "p_l digs and digs and digs, but eventually {PRONOUN/p_l/subject} {VERB/p_l/have/has} to admit failure and give up the search for burdock root. The cold has leached all the heat from {PRONOUN/p_l/poss} pelt, and {PRONOUN/p_l/subject} {VERB/p_l/arrive/arrives} back at camp miserable and cold.",
+                "text": "p_l digs and digs and digs, but eventually {PRONOUN/p_l/subject} {VERB/p_l/have/has} to admit failure and give up the search for burdock root. The cold has leached all the heat from {PRONOUN/p_l/poss} pelt, and {PRONOUN/p_l/subject} {VERB/p_l/arrive/arrives} back at burrow miserable and cold.",
                 "exp": 0,
                 "weight": 10,
 				"injury": [
                     {
-                        "cats": ["p_l"],
+                        "rabbits": ["p_l"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE", "FROSTMITT", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -776,19 +776,19 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [-1, -1],
-            "medicine cat": [1, 6],
-            "medicine cat apprentice": [1, 6],
-            "healer cats": [1, 6],
+            "rusasi": [-1, -1],
+            "healer": [1, 6],
+            "healer rusasi": [1, 6],
+            "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
-        "intro_text": "As the snows of leaf-bare blow around camp, p_l eyes {PRONOUN/p_l/poss} herb stores. {PRONOUN/p_l/subject/CAP} should still be able to dig up burdock. p_l heads out to replenish the Clan's stocks, bringing app1 along.",
-        "decline_text": "p_l has second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially since {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} also bringing {PRONOUN/p_l/poss} apprentice, and {VERB/p_l/decide/decides} to go another day.",
+        "intro_text": "As the snows of leaf-bare blow around burrow, p_l eyes {PRONOUN/p_l/poss} herb stores. {PRONOUN/p_l/subject/CAP} should still be able to dig up burdock. p_l heads out to replenish the Warren's stocks, bringing app1 along.",
+        "decline_text": "p_l has second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially since {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 20,
         "success_outcomes": [
             {
-                "text": "p_l's and app1's pawpads are nearly frozen, trying to dig up burdock in the cold, but somehow they manage it, and it's worth all the effort and misery to know how crucial these fresh herbs could be for the Clan.",
+                "text": "p_l's and app1's pawpads are nearly frozen, trying to dig up burdock in the cold, but somehow they manage it, and it's worth all the effort and misery to know how crucial these fresh herbs could be for the Warren.",
                 "exp": 30,
                 "weight": 20,
                 "herbs": ["burdock"],
@@ -879,12 +879,12 @@
                 ]
             },
             {
-                "text": "The patrol digs and digs and digs, but eventually has to admit failure and give up the search for burdock root. p_l in particular is shivering and chilled to the bone by the time {PRONOUN/p_l/subject} and app1 return to camp, empty-pawed and miserable.",
+                "text": "The patrol digs and digs and digs, but eventually has to admit failure and give up the search for burdock root. p_l in particular is shivering and chilled to the bone by the time {PRONOUN/p_l/subject} and app1 return to burrow, empty-pawed and miserable.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["p_l"],
+                        "rabbits": ["p_l"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE", "FROSTMITT", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -911,7 +911,7 @@
                 ]
             },
             {
-                "text": "The patrol digs and digs and digs, but eventually has to admit failure and give up the search for burdock root. The cold has leached all the heat from p_l's pelt, and even with app1's help, {PRONOUN/p_l/subject} just {VERB/p_l/don't/doesn't} have the energy to make it back to camp.",
+                "text": "The patrol digs and digs and digs, but eventually has to admit failure and give up the search for burdock root. The cold has leached all the heat from p_l's pelt, and even with app1's help, {PRONOUN/p_l/subject} just {VERB/p_l/don't/doesn't} have the energy to make it back to burrow.",
                 "exp": 0,
                 "weight": 5,
                 "dead_cats": ["p_l"],
@@ -936,12 +936,12 @@
                 ]
             },
             {
-                "text": "The patrol digs and digs and digs, but eventually has to admit failure and give up the search for burdock root. app1 in particular is shivering and chilled to the bone by the time {PRONOUN/app1/subject} and p_l return to camp, empty-pawed and miserable.",
+                "text": "The patrol digs and digs and digs, but eventually has to admit failure and give up the search for burdock root. app1 in particular is shivering and chilled to the bone by the time {PRONOUN/app1/subject} and p_l return to burrow, empty-pawed and miserable.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE", "FROSTMITT", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -968,7 +968,7 @@
                 ]
             },
             {
-                "text": "The patrol digs and digs and digs, but eventually has to admit failure and give up the search for burdock root. The cold has leached all the heat from app1's pelt, and even with p_l's help, {PRONOUN/app1/subject} just {VERB/app1/don't/doesn't} have the energy to make it back to camp.",
+                "text": "The patrol digs and digs and digs, but eventually has to admit failure and give up the search for burdock root. The cold has leached all the heat from app1's pelt, and even with p_l's help, {PRONOUN/app1/subject} just {VERB/app1/don't/doesn't} have the energy to make it back to burrow.",
                 "exp": 0,
                 "weight": 5,
                 "dead_cats": ["app1"],
@@ -1004,17 +1004,17 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "medicine cat": [1, 6],
-            "healer cats": [1, 6],
+            "healer": [1, 6],
+            "healer rabbits": [1, 6],
             "normal adult": [1, 6]
         },
         "weight": 20,
-        "intro_text": "As the snows of leaf-bare blow around camp, p_l eyes {PRONOUN/p_l/poss} herb stores. {PRONOUN/p_l/subject/CAP} should still be able to dig up burdock. p_l heads out to replenish the Clan's stocks, bringing along anyone who isn't busy with other work.",
-        "decline_text": "The patrol is stopped before it can leave camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "intro_text": "As the snows of leaf-bare blow around burrow, p_l eyes {PRONOUN/p_l/poss} herb stores. {PRONOUN/p_l/subject/CAP} should still be able to dig up burdock. p_l heads out to replenish the Warren's stocks, bringing along anyone who isn't busy with other work.",
+        "decline_text": "The patrol is stopped before it can leave burrow - these rabbits are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 20,
         "success_outcomes": [
             {
-                "text": "p_l's pawpads are nearly frozen, trying to dig up burdock in the cold, but somehow {PRONOUN/p_l/subject} {VERB/p_l/manage/manages} it, and it's worth all the effort and misery to know how crucial these fresh herbs could be for the Clan. {PRONOUN/p_l/poss/CAP} Clanmates purr at the sight of the dirty roots, having spent just as much energy digging for them as p_l.",
+                "text": "p_l's pawpads are nearly frozen, trying to dig up burdock in the cold, but somehow {PRONOUN/p_l/subject} {VERB/p_l/manage/manages} it, and it's worth all the effort and misery to know how crucial these fresh herbs could be for the Warren. {PRONOUN/p_l/poss/CAP} Clanmates purr at the sight of the dirty roots, having spent just as much energy digging for them as p_l.",
                 "exp": 10,
                 "weight": 20,
                 "herbs": ["burdock"],
@@ -1036,7 +1036,7 @@
                 ]
             },
             {
-                "text": "It's very difficult, especially with the plant's leafy top-half gone until newleaf, but p_l somehow manages to find a burdock plant and bring its roots home. Laying the thin roots out in a neat pile in the herb stores makes p_l's entire body thrum with a contented purr, and {PRONOUN/p_l/poss} Clanmates smile, appreciating the hard-working medicine cat.",
+                "text": "It's very difficult, especially with the plant's leafy top-half gone until newleaf, but p_l somehow manages to find a burdock plant and bring its roots home. Laying the thin roots out in a neat pile in the herb stores makes p_l's entire body thrum with a contented purr, and {PRONOUN/p_l/poss} Clanmates smile, appreciating the hard-working healer.",
                 "exp": 10,
                 "weight": 5,
                 "herbs": ["burdock"],
@@ -1084,7 +1084,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "Maybe {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} just coming down with a runny nose, but p_l doesn't manage to sniff out any burdock, and no one else on the patrol is very helpful either. They all return to camp without any burdock, pelts prickling with frustration.",
+                "text": "Maybe {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} just coming down with a runny nose, but p_l doesn't manage to sniff out any burdock, and no one else on the patrol is very helpful either. They all return to burrow without any burdock, pelts prickling with frustration.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -1110,7 +1110,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE", "FROSTMITT", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -1142,7 +1142,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["p_l"],
+                        "rabbits": ["p_l"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE", "FROSTMITT", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -1169,7 +1169,7 @@
                 ]
             },
             {
-                "text": "The patrol digs and digs and digs, but eventually has to admit failure and give up the search for burdock root. The cold has leached all the heat from p_l's pelt, and even with the other cats' help, {PRONOUN/p_l/subject} just {VERB/p_l/don't/doesn't} have the energy to make it back to camp.",
+                "text": "The patrol digs and digs and digs, but eventually has to admit failure and give up the search for burdock root. The cold has leached all the heat from p_l's pelt, and even with the other rabbits' help, {PRONOUN/p_l/subject} just {VERB/p_l/don't/doesn't} have the energy to make it back to burrow.",
                 "exp": 0,
                 "weight": 5,
                 "dead_cats": ["p_l"],
@@ -1194,7 +1194,7 @@
                 ]
             },
             {
-                "text": "The patrol digs and digs and digs, but eventually has to admit failure and give up the search for burdock root. The cold has leached all the heat from r_c's pelt, and even with the other cats' help, {PRONOUN/r_c/subject} just {VERB/r_c/don't/doesn't} have the energy to make it back to camp.",
+                "text": "The patrol digs and digs and digs, but eventually has to admit failure and give up the search for burdock root. The cold has leached all the heat from r_c's pelt, and even with the other rabbits' help, {PRONOUN/r_c/subject} just {VERB/r_c/don't/doesn't} have the energy to make it back to burrow.",
                 "exp": 0,
                 "weight": 5,
                 "dead_cats": ["r_c"],
@@ -1230,8 +1230,8 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [-1, -1],
-            "healer cats": [1, 6],
+            "rusasi": [-1, -1],
+            "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
@@ -1266,12 +1266,12 @@
                 "weight": 20
             },
             {
-                "text": "Not only does p_l end up soaked to the skin, {PRONOUN/p_l/subject} can't even find any daisies under the snow, and {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} left shivering violently by the time {PRONOUN/p_l/subject} {VERB/p_l/return/returns} to camp.",
+                "text": "Not only does p_l end up soaked to the skin, {PRONOUN/p_l/subject} can't even find any daisies under the snow, and {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} left shivering violently by the time {PRONOUN/p_l/subject} {VERB/p_l/return/returns} to burrow.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["p_l"],
+                        "rabbits": ["p_l"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE", "FROSTMITT", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -1282,7 +1282,7 @@
                 }
             },
             {
-                "text": "Not only does p_l end up soaked to the skin, {PRONOUN/p_l/subject} can't even find any daisies under the snow. Left exhausted after the fruitless search, p_l collapses on {PRONOUN/p_l/poss} way back to camp, and is unable to get up no matter how hard {PRONOUN/p_l/subject} {VERB/p_l/try/tries}.",
+                "text": "Not only does p_l end up soaked to the skin, {PRONOUN/p_l/subject} can't even find any daisies under the snow. Left exhausted after the fruitless search, p_l collapses on {PRONOUN/p_l/poss} way back to burrow, and is unable to get up no matter how hard {PRONOUN/p_l/subject} {VERB/p_l/try/tries}.",
                 "exp": 0,
                 "weight": 5,
                 "dead_cats": ["p_l"],
@@ -1302,15 +1302,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [-1, -1],
-            "medicine cat": [1, 6],
-            "medicine cat apprentice": [1, 6],
-            "healer cats": [1, 6],
+            "rusasi": [-1, -1],
+            "healer": [1, 6],
+            "healer rusasi": [1, 6],
+            "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "In the leaf-bare snow, the chances of finding any usable daisies seem slim. p_l hesitates - should {PRONOUN/p_l/subject} even try to look? And is bringing app1 a good idea?",
-        "decline_text": "p_l has second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially since {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} also bringing {PRONOUN/p_l/poss} apprentice, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "p_l has second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially since {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -1405,12 +1405,12 @@
                 ]
             },
             {
-                "text": "Not only do both cats end up soaked to the skin, they can't even find any daisies under the snow, and p_l's left shivering violently by the time {PRONOUN/p_l/subject} and app1 return to camp.",
+                "text": "Not only do both rabbits end up soaked to the skin, they can't even find any daisies under the snow, and p_l's left shivering violently by the time {PRONOUN/p_l/subject} and app1 return to burrow.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["p_l"],
+                        "rabbits": ["p_l"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE", "FROSTMITT", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -1437,7 +1437,7 @@
                 ]
             },
             {
-                "text": "Not only do both cats end up soaked to the skin, they can't even find any daisies under the snow. p_l's left so exhausted that {PRONOUN/p_l/subject} {VERB/p_l/collapse/collapses} on the way back to camp, unable to go any further even with app1's help.",
+                "text": "Not only do both rabbits end up soaked to the skin, they can't even find any daisies under the snow. p_l's left so exhausted that {PRONOUN/p_l/subject} {VERB/p_l/collapse/collapses} on the way back to burrow, unable to go any further even with app1's help.",
                 "exp": 0,
                 "weight": 5,
                 "dead_cats": ["p_l"],
@@ -1462,12 +1462,12 @@
                 ]
             },
             {
-                "text": "Not only do both cats end up soaked to the skin, they can't even find any daisies under the snow, and app1's left shivering violently by the time {PRONOUN/app1/subject} and p_l return to camp.",
+                "text": "Not only do both rabbits end up soaked to the skin, they can't even find any daisies under the snow, and app1's left shivering violently by the time {PRONOUN/app1/subject} and p_l return to burrow.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE", "FROSTMITT", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -1494,7 +1494,7 @@
                 ]
             },
             {
-                "text": "Not only do both cats end up soaked to the skin, they can't even find any daisies under the snow. app1's left so exhausted that {PRONOUN/app1/subject} {VERB/app1/collapse/collapses} on the way back to camp, unable to go any further even with p_l's help.",
+                "text": "Not only do both rabbits end up soaked to the skin, they can't even find any daisies under the snow. app1's left so exhausted that {PRONOUN/app1/subject} {VERB/app1/collapse/collapses} on the way back to burrow, unable to go any further even with p_l's help.",
                 "exp": 0,
                 "weight": 5,
                 "dead_cats": ["app1"],
@@ -1530,13 +1530,13 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "medicine cat": [1, 6],
-            "healer cats": [1, 6],
+            "healer": [1, 6],
+            "healer rabbits": [1, 6],
             "normal adult": [1, 6]
         },
         "weight": 20,
         "intro_text": "In the leaf-bare snow, the chances of finding any usable daisies seem slim. p_l hesitates - should {PRONOUN/p_l/poss} patrol even try to look?",
-        "decline_text": "The patrol is stopped before it can leave camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "decline_text": "The patrol is stopped before it can leave burrow - these rabbits are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 20,
         "success_outcomes": [
             {
@@ -1584,7 +1584,7 @@
                 ]
             },
             {
-                "text": "It's not just spotting things that s_c is talented at - finding daisies in leaf-bare is hard enough, but finding good, non-wilted leaves is next to impossible, and it's a mark of s_c's unique skills that {PRONOUN/s_c/subject} {VERB/s_c/manage/manages} it. It reminds everyone on the patrol just how lucky c_n is to have s_c as a medicine cat.",
+                "text": "It's not just spotting things that s_c is talented at - finding daisies in leaf-bare is hard enough, but finding good, non-wilted leaves is next to impossible, and it's a mark of s_c's unique skills that {PRONOUN/s_c/subject} {VERB/s_c/manage/manages} it. It reminds everyone on the patrol just how lucky c_n is to have s_c as a healer.",
                 "exp": 10,
                 "weight": 40,
                 "stat_skill": ["SENSE,2"],
@@ -1610,7 +1610,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "Not only do the cats end up soaked to the skin, but they can't even find any daisies under the snow. A wasted and horribly chilly day.",
+                "text": "Not only do the rabbits end up soaked to the skin, but they can't even find any daisies under the snow. A wasted and horribly chilly day.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -1631,12 +1631,12 @@
                 ]
             },
             {
-                "text": "Not only do the cats end up soaked to the skin, they can't even find any daisies under the snow, and p_l's left shivering violently by the time {PRONOUN/p_l/subject} and the others return to camp.",
+                "text": "Not only do the rabbits end up soaked to the skin, they can't even find any daisies under the snow, and p_l's left shivering violently by the time {PRONOUN/p_l/subject} and the others return to burrow.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["p_l"],
+                        "rabbits": ["p_l"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE", "FROSTMITT", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -1663,7 +1663,7 @@
                 ]
             },
             {
-                "text": "Not only do the cats end up soaked to the skin, they can't even find any daisies under the snow. p_l's left so exhausted that {PRONOUN/p_l/subject} {VERB/p_l/collapse/collapses} on the way back to camp, unable to go any further even with the other cats' help.",
+                "text": "Not only do the rabbits end up soaked to the skin, they can't even find any daisies under the snow. p_l's left so exhausted that {PRONOUN/p_l/subject} {VERB/p_l/collapse/collapses} on the way back to burrow, unable to go any further even with the other rabbits' help.",
                 "exp": 0,
                 "weight": 5,
                 "dead_cats": ["p_l"],
@@ -1688,12 +1688,12 @@
                 ]
             },
             {
-                "text": "Not only do the cats end up soaked to the skin, they can't even find any daisies under the snow, and r_c's left shivering violently by the time {PRONOUN/r_c/subject} and the others return to camp.",
+                "text": "Not only do the rabbits end up soaked to the skin, they can't even find any daisies under the snow, and r_c's left shivering violently by the time {PRONOUN/r_c/subject} and the others return to burrow.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE", "FROSTMITT", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -1720,7 +1720,7 @@
                 ]
             },
             {
-                "text": "Not only do the cats end up soaked to the skin, they can't even find any daisies under the snow. r_c's left so exhausted that {PRONOUN/r_c/subject} {VERB/r_c/collapse/collapses} on the way back to camp, unable to go any further even with the other cats' help.",
+                "text": "Not only do the rabbits end up soaked to the skin, they can't even find any daisies under the snow. r_c's left so exhausted that {PRONOUN/r_c/subject} {VERB/r_c/collapse/collapses} on the way back to burrow, unable to go any further even with the other rabbits' help.",
                 "exp": 0,
                 "weight": 5,
                 "dead_cats": ["r_c"],
@@ -1756,8 +1756,8 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [-1, -1],
-            "healer cats": [1, 6],
+            "rusasi": [-1, -1],
+            "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
@@ -1792,12 +1792,12 @@
                 "weight": 20
             },
             {
-                "text": "Not only does p_l end up soaked to the skin, {PRONOUN/p_l/subject} can't even find any dandelions under the snow, and {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} left shivering violently by the time {PRONOUN/p_l/subject} {VERB/p_l/return/returns} to camp.",
+                "text": "Not only does p_l end up soaked to the skin, {PRONOUN/p_l/subject} can't even find any dandelions under the snow, and {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} left shivering violently by the time {PRONOUN/p_l/subject} {VERB/p_l/return/returns} to burrow.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["p_l"],
+                        "rabbits": ["p_l"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE", "FROSTMITT", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -1808,7 +1808,7 @@
                 }
             },
             {
-                "text": "Not only does p_l end up soaked to the skin, {PRONOUN/p_l/subject} can't even find any dandelions under the snow. Left exhausted after the fruitless search, p_l collapses on {PRONOUN/p_l/poss} way back to camp, and is unable to get up no matter how hard {PRONOUN/p_l/subject} {VERB/p_l/try/tries}.",
+                "text": "Not only does p_l end up soaked to the skin, {PRONOUN/p_l/subject} can't even find any dandelions under the snow. Left exhausted after the fruitless search, p_l collapses on {PRONOUN/p_l/poss} way back to burrow, and is unable to get up no matter how hard {PRONOUN/p_l/subject} {VERB/p_l/try/tries}.",
                 "exp": 0,
                 "weight": 5,
                 "dead_cats": ["p_l"],
@@ -1828,15 +1828,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [-1, -1],
-            "medicine cat": [1, 6],
-            "medicine cat apprentice": [1, 6],
-            "healer cats": [1, 6],
+            "rusasi": [-1, -1],
+            "healer": [1, 6],
+            "healer rusasi": [1, 6],
+            "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "The cold of leaf-bare might have killed off a lot of greenery, but p_l knows that the dandelions are only playing dead. If {PRONOUN/p_l/subject} can get {PRONOUN/p_l/poss} paws on a plant, the roots will still hold fresh, milky-white sap. Seems it's time for app1 to learn about what resources are still available to gather during leaf-bare.",
-        "decline_text": "p_l has second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially since {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} also bringing {PRONOUN/p_l/poss} apprentice, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "p_l has second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially since {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 40,
         "success_outcomes": [
             {
@@ -1862,7 +1862,7 @@
                 ]
             },
             {
-                "text": "It's a truly miserable, gray day, but even the colds of leaf-bare can't dampen app1's happiness when {PRONOUN/app1/subject} {VERB/app1/manage/manages} to uncover a couple good dandelion plants. Watching app1 find joy in safeguarding the Clan gives p_l a swoop of pride and affection for the apprentice. The path of a medicine cat suits the young cat well.",
+                "text": "It's a truly miserable, gray day, but even the colds of leaf-bare can't dampen app1's happiness when {PRONOUN/app1/subject} {VERB/app1/manage/manages} to uncover a couple good dandelion plants. Watching app1 find joy in safeguarding the Warren gives p_l a swoop of pride and affection for the rusasi. The path of a healer suits the young rabbit well.",
                 "exp": 40,
                 "weight": 5,
                 "herbs": ["dandelion"],
@@ -1931,7 +1931,7 @@
                 ]
             },
             {
-                "text": "Not only does the duo end up soaked to the skin, they can't even find any dandelions under the snow. p_l's left so exhausted that {PRONOUN/p_l/subject} {VERB/p_l/collapse/collapses} on the way back to camp, unable to go any further even with app1's help.",
+                "text": "Not only does the duo end up soaked to the skin, they can't even find any dandelions under the snow. p_l's left so exhausted that {PRONOUN/p_l/subject} {VERB/p_l/collapse/collapses} on the way back to burrow, unable to go any further even with app1's help.",
                 "exp": 0,
                 "weight": 5,
                 "dead_cats": ["p_l"],
@@ -1956,7 +1956,7 @@
                 ]
             },
             {
-                "text": "Not only does the duo end up soaked to the skin, they can't even find any dandelions under the snow. app1's left so exhausted that {PRONOUN/app1/subject} {VERB/app1/collapse/collapses} on the way back to camp, unable to go any further even with p_l's help.",
+                "text": "Not only does the duo end up soaked to the skin, they can't even find any dandelions under the snow. app1's left so exhausted that {PRONOUN/app1/subject} {VERB/app1/collapse/collapses} on the way back to burrow, unable to go any further even with p_l's help.",
                 "exp": 0,
                 "weight": 5,
                 "dead_cats": ["app1"],
@@ -1981,12 +1981,12 @@
                 ]
             },
             {
-                "text": "Not only does the duo end up soaked to the skin, they can't even find any dandelions under the snow, and p_l's left shivering violently by the time {PRONOUN/p_l/subject} and app1 return to camp.",
+                "text": "Not only does the duo end up soaked to the skin, they can't even find any dandelions under the snow, and p_l's left shivering violently by the time {PRONOUN/p_l/subject} and app1 return to burrow.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["p_l"],
+                        "rabbits": ["p_l"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTTAIL", "FROSTFACE", "FROSTMITT", "FROSTSOCK"]
                     }
@@ -2013,12 +2013,12 @@
                 ]
             },
             {
-                "text": "Not only does the duo end up soaked to the skin, they can't even find any dandelions under the snow, and app1's left shivering violently by the time {PRONOUN/app1/subject} and p_l return to camp.",
+                "text": "Not only does the duo end up soaked to the skin, they can't even find any dandelions under the snow, and app1's left shivering violently by the time {PRONOUN/app1/subject} and p_l return to burrow.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTTAIL", "FROSTFACE", "FROSTMITT", "FROSTSOCK"]
                     }
@@ -2056,17 +2056,17 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "leader": [-1, -1],
-            "healer cats": [1, 6],
+            "chief rabbit": [-1, -1],
+            "healer rabbits": [1, 6],
             "normal adult": [1, 6]
         },
         "weight": 20,
         "intro_text": "The cold of leaf-bare might have killed off a lot of greenery, but p_l knows that the dandelions are only playing dead. If {PRONOUN/p_l/subject} can get {PRONOUN/p_l/poss} paws on a plant, the roots will still hold fresh, milky-white sap. {PRONOUN/p_l/subject/CAP} {VERB/p_l/bring/brings} along a patrol of shivering Clanmates - more paws will make light work of digging through the snow.",
-        "decline_text": "The patrol is stopped before it can leave camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "decline_text": "The patrol is stopped before it can leave burrow - these rabbits are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 20,
         "success_outcomes": [
             {
-                "text": "p_l can't say it's <i>fun,</i> swiping away snow to scrounge for the stems and roots of wilted dandelions below, but what matters currently is that it's <i>possible.</i> {PRONOUN/p_l/subject/CAP} specifically {VERB/p_l/ensure/ensures}  that, when {PRONOUN/p_l/subject} {VERB/p_l/return/returns} to camp with the additions to the herb stores, the whole camp sees {PRONOUN/p_l/object} praising {PRONOUN/p_l/poss} long-suffering patrol to the leader.",
+                "text": "p_l can't say it's <i>fun,</i> swiping away snow to scrounge for the stems and roots of wilted dandelions below, but what matters currently is that it's <i>possible.</i> {PRONOUN/p_l/subject/CAP} specifically {VERB/p_l/ensure/ensures}  that, when {PRONOUN/p_l/subject} {VERB/p_l/return/returns} to burrow with the additions to the herb stores, the whole burrow sees {PRONOUN/p_l/object} praising {PRONOUN/p_l/poss} long-suffering patrol to the chief rabbit.",
                 "exp": 10,
                 "weight": 20,
                 "herbs": ["dandelion"],
@@ -2088,7 +2088,7 @@
                 ]
             },
             {
-                "text": "It's a truly miserable, gray day, but even the colds of leaf-bare can't dampen p_l's joy when {PRONOUN/p_l/subject} {VERB/p_l/manage/manages} to uncover a couple good dandelion plants. {PRONOUN/p_l/subject/CAP} {VERB/p_l/make/makes} sure to check up on the pawpads of the warriors who helped {PRONOUN/p_l/object} once everyone is back in camp, wanting to make sure everyone is alright and not too chilled.",
+                "text": "It's a truly miserable, gray day, but even the colds of leaf-bare can't dampen p_l's joy when {PRONOUN/p_l/subject} {VERB/p_l/manage/manages} to uncover a couple good dandelion plants. {PRONOUN/p_l/subject/CAP} {VERB/p_l/make/makes} sure to check up on the pawpads of the rabbits who helped {PRONOUN/p_l/object} once everyone is back in burrow, wanting to make sure everyone is alright and not too chilled.",
                 "exp": 10,
                 "weight": 5,
                 "herbs": ["dandelion"],
@@ -2110,7 +2110,7 @@
                 ]
             },
             {
-                "text": "It's not just spotting things that s_c is talented at - finding dandelions in leaf-bare is hard enough, but finding good, non-wilted leaves is next to impossible, and it's a mark of s_c's unique skills that {PRONOUN/s_c/subject} {VERB/s_c/manage/manages} it. It reminds everyone on the patrol just how lucky c_n is to have s_c as a medicine cat.",
+                "text": "It's not just spotting things that s_c is talented at - finding dandelions in leaf-bare is hard enough, but finding good, non-wilted leaves is next to impossible, and it's a mark of s_c's unique skills that {PRONOUN/s_c/subject} {VERB/s_c/manage/manages} it. It reminds everyone on the patrol just how lucky c_n is to have s_c as a healer.",
                 "exp": 10,
                 "weight": 40,
                 "stat_skill": ["SENSE,2"],
@@ -2136,7 +2136,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "Not only do the cats end up soaked to the skin, but they can't even find any dandelions under the snow. A wasted and horribly chilly day.",
+                "text": "Not only do the rabbits end up soaked to the skin, but they can't even find any dandelions under the snow. A wasted and horribly chilly day.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -2157,12 +2157,12 @@
                 ]
             },
             {
-                "text": "Not only do the cats end up soaked to the skin, they can't even find any dandelions under the snow, and p_l is left shivering violently by the time {PRONOUN/p_l/subject} and the others return to camp.",
+                "text": "Not only do the rabbits end up soaked to the skin, they can't even find any dandelions under the snow, and p_l is left shivering violently by the time {PRONOUN/p_l/subject} and the others return to burrow.",
                 "exp": 0,
                 "weight": 20,
                 "injury": [
                     {
-                        "cats": ["p_l"],
+                        "rabbits": ["p_l"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE", "FROSTMITT", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -2189,7 +2189,7 @@
                 ]
             },
             {
-                "text": "Not only do the cats end up soaked to the skin, they can't even find any dandelions under the snow. r_c's left so exhausted that {PRONOUN/r_c/subject} {VERB/r_c/collapse/collapses} on the way back to camp, unable to go any further even with the other cats' help.",
+                "text": "Not only do the rabbits end up soaked to the skin, they can't even find any dandelions under the snow. r_c's left so exhausted that {PRONOUN/r_c/subject} {VERB/r_c/collapse/collapses} on the way back to burrow, unable to go any further even with the other rabbits' help.",
                 "exp": 0,
                 "weight": 5,
                 "dead_cats": ["r_c"],
@@ -2214,7 +2214,7 @@
                 ]
             },
             {
-                "text": "Not only do the cats end up soaked to the skin, they can't even find any dandelions under the snow. p_l's left so exhausted that {PRONOUN/p_l/subject} {VERB/p_l/collapse/collapses} on the way back to camp, unable to go any further even with the other cats' help.",
+                "text": "Not only do the rabbits end up soaked to the skin, they can't even find any dandelions under the snow. p_l's left so exhausted that {PRONOUN/p_l/subject} {VERB/p_l/collapse/collapses} on the way back to burrow, unable to go any further even with the other rabbits' help.",
                 "exp": 0,
                 "weight": 5,
                 "dead_cats": ["p_l"],
@@ -2239,12 +2239,12 @@
                 ]
             },
             {
-                "text": "Not only do the cats end up soaked to the skin, they can't even find any dandelions under the snow, and r_c is left shivering violently by the time {PRONOUN/r_c/subject} and the others return to camp.",
+                "text": "Not only do the rabbits end up soaked to the skin, they can't even find any dandelions under the snow, and r_c is left shivering violently by the time {PRONOUN/r_c/subject} and the others return to burrow.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE", "FROSTMITT", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -2282,8 +2282,8 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [-1, -1],
-            "healer cats": [1, 6],
+            "rusasi": [-1, -1],
+            "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
@@ -2332,7 +2332,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["p_l"],
+                        "rabbits": ["p_l"],
                         "injuries": ["blunt_force_injury", "cold_injury"],
                         "scars": ["SIDE"]
                     }
@@ -2354,15 +2354,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [-1, -1],
-            "medicine cat": [1, 6],
-            "medicine cat apprentice": [1, 6],
-            "healer cats": [1, 6],
+            "rusasi": [-1, -1],
+            "healer": [1, 6],
+            "healer rusasi": [1, 6],
+            "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "It's not finding fresh juniper that's the problem. As an evergreen plant,  juniper is known to grow reliably even during the cold seasons - the problem is that juniper grows in large shrubs sometimes large enough to be trees, and trying to climb in these slippery conditions is a disaster just waiting to happen. p_l hesitates, worried about bringing app1 along under these conditions, but tells {PRONOUN/p_l/self} it's a learning opportunity.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially since {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} also bringing {PRONOUN/p_l/poss} apprentice, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially since {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 40,
         "success_outcomes": [
             {
@@ -2462,7 +2462,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["p_l"],
+                        "rabbits": ["p_l"],
                         "injuries": ["blunt_force_injury", "cold_injury"],
                         "scars": ["SIDE"]
                     }
@@ -2519,7 +2519,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["blunt_force_injury", "cold_injury"],
                         "scars": ["SIDE"]
                     }
@@ -2582,17 +2582,17 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "leader": [-1, -1],
-            "healer cats": [1, 6],
+            "chief rabbit": [-1, -1],
+            "healer rabbits": [1, 6],
             "normal adult": [1, 6]
         },
         "weight": 20,
-        "intro_text": "It's not finding fresh juniper that's the problem. As an evergreen plant,  juniper is known to grow reliably even during the cold seasons - the problem is that juniper grows in large shrubs sometimes large enough to be trees, and trying to climb in these slippery conditions is a disaster just waiting to happen. Hopefully the warriors accompanying p_l will be able to help.",
-        "decline_text": "The cats are stopped before they can camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "intro_text": "It's not finding fresh juniper that's the problem. As an evergreen plant,  juniper is known to grow reliably even during the cold seasons - the problem is that juniper grows in large shrubs sometimes large enough to be trees, and trying to climb in these slippery conditions is a disaster just waiting to happen. Hopefully the rabbits accompanying p_l will be able to help.",
+        "decline_text": "The rabbits are stopped before they can burrow - these rabbits are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 20,
         "success_outcomes": [
             {
-                "text": "At least {PRONOUN/p_l/subject} {VERB/p_l/do/does}n't have to dig through the snow for these leaves. p_l sighs, slowly and carefully snipping off juniper among the tree's branches. The patrol joins {PRONOUN/p_l/object}, tense and focused, and it's a weary group that returns back to camp as the sun dips toward the horizon, exhausted - but successful.",
+                "text": "At least {PRONOUN/p_l/subject} {VERB/p_l/do/does}n't have to dig through the snow for these leaves. p_l sighs, slowly and carefully snipping off juniper among the tree's branches. The patrol joins {PRONOUN/p_l/object}, tense and focused, and it's a weary group that returns back to burrow as the sun dips toward the horizon, exhausted - but successful.",
                 "exp": 10,
                 "weight": 20,
                 "herbs": ["juniper"],
@@ -2636,7 +2636,7 @@
                 ]
             },
             {
-                "text": "Sometimes, it's not finding plants to harvest that is the problem, it's finding plants to <i>safely</i> harvest. s_c finds a juniper tree on a slope with easily accessible lower branches to harvest from without any cat needing to risk their safety climbing in leaf-bare.",
+                "text": "Sometimes, it's not finding plants to harvest that is the problem, it's finding plants to <i>safely</i> harvest. s_c finds a juniper tree on a slope with easily accessible lower branches to harvest from without any rabbit needing to risk their safety climbing in leaf-bare.",
                 "exp": 10,
                 "weight": 40,
                 "stat_skill": ["SENSE,2"],
@@ -2688,7 +2688,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["blunt_force_injury", "cold_injury"],
                         "scars": ["SIDE"]
                     }
@@ -2745,7 +2745,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["p_l"],
+                        "rabbits": ["p_l"],
                         "injuries": ["blunt_force_injury", "cold_injury"],
                         "scars": ["SIDE"]
                     }
@@ -2808,8 +2808,8 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [-1, -1],
-            "healer cats": [1, 6],
+            "rusasi": [-1, -1],
+            "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
@@ -2818,7 +2818,7 @@
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "p_l returns to camp with stone-cold paws and a new hatred for digging, but carrying bulbs of garlic.",
+                "text": "p_l returns to burrow with stone-cold paws and a new hatred for digging, but carrying bulbs of garlic.",
                 "exp": 30,
                 "weight": 20,
                 "herbs": ["wild_garlic"]
@@ -2844,7 +2844,7 @@
                 "weight": 20
             },
             {
-                "text": "When p_l arrives back at camp, {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} shivering and cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was both unproductive and senseless. At least {PRONOUN/p_l/poss} den is nice and warm, chasing away the chill.",
+                "text": "When p_l arrives back at burrow, {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} shivering and cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was both unproductive and senseless. At least {PRONOUN/p_l/poss} den is nice and warm, chasing away the chill.",
                 "exp": 0,
                 "weight": 20
             },
@@ -2858,12 +2858,12 @@
                 }
             },
             {
-                "text": "When p_l arrives back at camp, {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} shivering and cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was both unproductive and senseless.",
+                "text": "When p_l arrives back at burrow, {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} shivering and cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was both unproductive and senseless.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["p_l"],
+                        "rabbits": ["p_l"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTMITT", "FROSTFACE", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -2885,19 +2885,19 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [-1, -1],
-            "medicine cat": [1, 6],
-            "medicine cat apprentice": [1, 6],
-            "healer cats": [1, 6],
+            "rusasi": [-1, -1],
+            "healer": [1, 6],
+            "healer rusasi": [1, 6],
+            "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "There's a limited selection of herbs p_l can even look for in leaf-bare, but if {PRONOUN/p_l/subject} or app1 can only remember where the wild garlic grew in greenleaf it's theirs for the taking.",
-        "decline_text": "p_l has second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially since {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} also bringing {PRONOUN/p_l/poss} apprentice, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "p_l has second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially since {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "p_l and app1 return to camp with stone-cold paws and a new hatred for digging, but carrying bulbs of garlic.",
+                "text": "p_l and app1 return to burrow with stone-cold paws and a new hatred for digging, but carrying bulbs of garlic.",
                 "exp": 40,
                 "weight": 20,
                 "herbs": ["wild_garlic"],
@@ -2988,12 +2988,12 @@
                 ]
             },
             {
-                "text": "When the failed patrol arrives back at camp, app1 is shivering and cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was both unproductive and senseless. Luckily, p_l helps to keep app1's chill from getting worse.",
+                "text": "When the failed patrol arrives back at burrow, app1 is shivering and cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was both unproductive and senseless. Luckily, p_l helps to keep app1's chill from getting worse.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["shivering"],
                         "scars": ["FROSTMITT", "FROSTFACE", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -3020,12 +3020,12 @@
                 ]
             },
             {
-                "text": "When the failed patrol arrives back at camp, p_l is shivering and cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was both unproductive and senseless. Luckily, app1 helps to keep p_l's chill from getting worse.",
+                "text": "When the failed patrol arrives back at burrow, p_l is shivering and cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was both unproductive and senseless. Luckily, app1 helps to keep p_l's chill from getting worse.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["p_l"],
+                        "rabbits": ["p_l"],
                         "injuries": ["shivering"],
                         "scars": ["FROSTMITT", "FROSTFACE", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -3052,7 +3052,7 @@
                 ]
             },
             {
-                "text": "When the failed patrol arrives back at camp, it's clear that one member didn't survive the cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was unproductive, senseless, and had cost app1 {PRONOUN/app1/poss} life.",
+                "text": "When the failed patrol arrives back at burrow, it's clear that one member didn't survive the cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was unproductive, senseless, and had cost app1 {PRONOUN/app1/poss} life.",
                 "exp": 0,
                 "weight": 5,
                 "dead_cats": ["app1"],
@@ -3077,7 +3077,7 @@
                 ]
             },
             {
-                "text": "When the failed patrol arrives back at camp, it's clear that one member didn't survive the cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was unproductive, senseless, and had cost p_l {PRONOUN/p_l/poss} life.",
+                "text": "When the failed patrol arrives back at burrow, it's clear that one member didn't survive the cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was unproductive, senseless, and had cost p_l {PRONOUN/p_l/poss} life.",
                 "exp": 0,
                 "weight": 5,
                 "dead_cats": ["p_l"],
@@ -3102,12 +3102,12 @@
                 ]
             },
             {
-                "text": "When the failed patrol arrives back at camp, app1 is shivering and cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was both unproductive and senseless.",
+                "text": "When the failed patrol arrives back at burrow, app1 is shivering and cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was both unproductive and senseless.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTMITT", "FROSTFACE", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -3134,12 +3134,12 @@
                 ]
             },
             {
-                "text": "When the failed patrol arrives back at camp, p_l is shivering and cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was both unproductive and senseless.",
+                "text": "When the failed patrol arrives back at burrow, p_l is shivering and cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was both unproductive and senseless.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["p_l"],
+                        "rabbits": ["p_l"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTMITT", "FROSTFACE", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -3177,17 +3177,17 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "medicine cat": [1, 6],
-            "healer cats": [1, 6],
+            "healer": [1, 6],
+            "healer rabbits": [1, 6],
             "normal adult": [1, 6]
         },
         "weight": 20,
         "intro_text": "There's a limited selection of herbs p_l can even look for in leaf-bare, even with a patrol helping {PRONOUN/p_l/object}, but if {PRONOUN/p_l/subject} can remember where the wild garlic grew in greenleaf, it's {PRONOUN/p_l/inposs} for the taking.",
-        "decline_text": "The patrol is stopped before it can leave camp - these warriors are needed elsewhere. p_l's expedition will have to wait.",
+        "decline_text": "The patrol is stopped before it can leave burrow - these rabbits are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "p_l and the patrol return to camp with stone-cold paws and a new hatred for digging, but carrying bulbs of garlic.",
+                "text": "p_l and the patrol return to burrow with stone-cold paws and a new hatred for digging, but carrying bulbs of garlic.",
                 "exp": 30,
                 "weight": 20,
                 "herbs": ["wild_garlic"],
@@ -3278,12 +3278,12 @@
                 ]
             },
             {
-                "text": "When the failed patrol arrives back at camp, r_c is shivering and cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was both unproductive and senseless. Thankfully, with r_c's Clanmates by {PRONOUN/r_c/poss} side, the chill was prevented from seeping in.",
+                "text": "When the failed patrol arrives back at burrow, r_c is shivering and cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was both unproductive and senseless. Thankfully, with r_c's Clanmates by {PRONOUN/r_c/poss} side, the chill was prevented from seeping in.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["shivering"],
                         "scars": ["FROSTMITT", "FROSTFACE", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -3310,12 +3310,12 @@
                 ]
             },
             {
-                "text": "When the failed patrol arrives back at camp, p_l is shivering and cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was both unproductive and senseless. Thankfully, with p_l's Clanmates by {PRONOUN/p_l/poss} side, the chill was prevented from seeping in.",
+                "text": "When the failed patrol arrives back at burrow, p_l is shivering and cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was both unproductive and senseless. Thankfully, with p_l's Clanmates by {PRONOUN/p_l/poss} side, the chill was prevented from seeping in.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["p_l"],
+                        "rabbits": ["p_l"],
                         "injuries": ["shivering"],
                         "scars": ["FROSTMITT", "FROSTFACE", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -3342,7 +3342,7 @@
                 ]
             },
             {
-                "text": "When the failed patrol arrives back at camp, r_c is frozen stiff, beyond saving. Digging into the leaf-bare ground in a search for bulbs that weren't there was unproductive, senseless, and had cost r_c {PRONOUN/r_c/poss} life.",
+                "text": "When the failed patrol arrives back at burrow, r_c is frozen stiff, beyond saving. Digging into the leaf-bare ground in a search for bulbs that weren't there was unproductive, senseless, and had cost r_c {PRONOUN/r_c/poss} life.",
                 "exp": 0,
                 "weight": 5,
                 "dead_cats": ["r_c"],
@@ -3367,7 +3367,7 @@
                 ]
             },
             {
-                "text": "When the failed patrol arrives back at camp, p_l is frozen stiff, beyond saving. Digging into the leaf-bare ground in a search for bulbs that weren't there was unproductive, senseless, and had cost p_l {PRONOUN/p_l/poss} life.",
+                "text": "When the failed patrol arrives back at burrow, p_l is frozen stiff, beyond saving. Digging into the leaf-bare ground in a search for bulbs that weren't there was unproductive, senseless, and had cost p_l {PRONOUN/p_l/poss} life.",
                 "exp": 0,
                 "weight": 5,
                 "dead_cats": ["p_l"],
@@ -3392,12 +3392,12 @@
                 ]
             },
             {
-                "text": "When the failed patrol arrives back at camp, r_c is shivering and cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was both unproductive and senseless.",
+                "text": "When the failed patrol arrives back at burrow, r_c is shivering and cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was both unproductive and senseless.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTMITT", "FROSTFACE", "FROSTSOCK", "FROSTTAIL"]
                     }
@@ -3424,12 +3424,12 @@
                 ]
             },
             {
-                "text": "When the failed patrol arrives back at camp, p_l is shivering and cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was both unproductive and senseless.",
+                "text": "When the failed patrol arrives back at burrow, p_l is shivering and cold. Digging into the leaf-bare ground in a search for bulbs that weren't there was both unproductive and senseless.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["p_l"],
+                        "rabbits": ["p_l"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTMITT", "FROSTFACE", "FROSTSOCK", "FROSTTAIL"]
                     }

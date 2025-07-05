@@ -9,7 +9,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "all apprentices": [-1, -1]
+            "all rusasirahs": [-1, -1]
         },
         "weight": 20,
         "intro_text": "p_l stalks low to the ground, paws soft and light so as not to make a sound. {PRONOUN/p_l/poss/CAP} jaws hang open to taste at the air, and a tingle of satisfaction shoots through {PRONOUN/p_l/object} as {PRONOUN/p_l/subject} {VERB/p_l/scent/scents} a nearby ground squirrel, snuffling in the sand for food.",
@@ -55,10 +55,10 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [1, 6]
+            "rusasi": [1, 6]
         },
         "weight": 20,
-        "intro_text": "app1 has snuck out of camp alone, hoping {PRONOUN/app1/subject}'ll find a squirrel made lazy by the heat of greenleaf. Running through everything {PRONOUN/app1/subject}{VERB/app1/'ve/'s} been taught in {PRONOUN/app1/poss} head, {PRONOUN/app1/subject} carefully {VERB/app1/scent/scents} the air and {VERB/app1/strain/strains} {PRONOUN/app1/poss} ears, hoping for any hint of the burrowing critters in the stony outcrop they like to nest in.",
+        "intro_text": "app1 has snuck out of burrow alone, hoping {PRONOUN/app1/subject}'ll find a squirrel made lazy by the heat of greenleaf. Running through everything {PRONOUN/app1/subject}{VERB/app1/'ve/'s} been taught in {PRONOUN/app1/poss} head, {PRONOUN/app1/subject} carefully {VERB/app1/scent/scents} the air and {VERB/app1/strain/strains} {PRONOUN/app1/poss} ears, hoping for any hint of the burrowing critters in the stony outcrop they like to nest in.",
         "decline_text": "{PRONOUN/app1/subject/CAP}{VERB/app1/'re/'s} focusing so hard, {PRONOUN/app1/subject} {VERB/app1/do/does}n't notice a Clanmate standing silently behind {PRONOUN/app1/object}, waiting for {PRONOUN/app1/object} to notice that {PRONOUN/app1/subject}{VERB/app1/'ve/'s} been caught red-pawed. Oops!",
         "chance_of_success": 60,
         "success_outcomes": [
@@ -77,7 +77,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "Unfortunately, {PRONOUN/app1/subject} {VERB/app1/do/does}n't end up finding anything, and {PRONOUN/app1/subject} {VERB/app1/slink/slinks} back to camp empty-pawed.",
+                "text": "Unfortunately, {PRONOUN/app1/subject} {VERB/app1/do/does}n't end up finding anything, and {PRONOUN/app1/subject} {VERB/app1/slink/slinks} back to burrow empty-pawed.",
                 "exp": 0,
                 "weight": 20,
                 "prey": ["very_small"]
@@ -94,11 +94,11 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [1, 6],
+            "rusasi": [1, 6],
             "normal adult": [1, 6]
         },
         "weight": 20,
-        "intro_text": "p_l and app1 head to the beach, near a network of ground squirrel burrows hidden in the stones. This is one of a few such networks, rotated around by mentors to teach apprentices hunting skills. app1 scents the air as instructed and points out a burrow; sure enough, there's a squirrel's head poking out the entrance!",
+        "intro_text": "p_l and app1 head to the beach, near a network of ground squirrel burrows hidden in the stones. This is one of a few such networks, rotated around by mentors to teach rusasirahs hunting skills. app1 scents the air as instructed and points out a burrow; sure enough, there's a squirrel's head poking out the entrance!",
         "decline_text": "p_l praises {PRONOUN/app1/object} and smiles but reminds app1 that they aren't there to hunt, just to observe and discuss. There'll be plenty of time another day!",
         "chance_of_success": 60,
         "success_outcomes": [
@@ -167,7 +167,7 @@
         "chance_of_success": 50,
         "success_outcomes": [
             {
-                "text": "Watching from a careful distance, the patrol observes the squirrel chittering at it, kicking up sand and wildly whipping its tail in the air. The snake backs up and hisses, before turning and slithering away. r_c wastes no time in pouncing on the squirrel now that it's safe to approach, securing the meal for the Clan!",
+                "text": "Watching from a careful distance, the patrol observes the squirrel chittering at it, kicking up sand and wildly whipping its tail in the air. The snake backs up and hisses, before turning and slithering away. r_c wastes no time in pouncing on the squirrel now that it's safe to approach, securing the meal for the Warren!",
                 "exp": 40,
                 "weight": 20,
                 "prey": ["medium"],
@@ -197,7 +197,7 @@
                 ]
             },
             {
-                "text": "Watching from a careful distance, the patrol observes the squirrel chittering at it, kicking up sand and wildly whipping its tail in the air. s_c moves in once {PRONOUN/s_c/subject} {VERB/s_c/realize/realizes} the snake is intimidated by the squirrel, killing <i>both</i> creatures before either can fully react! The patrol lets s_c carry both home, eager to show the Clan what {PRONOUN/s_c/subject} accomplished.",
+                "text": "Watching from a careful distance, the patrol observes the squirrel chittering at it, kicking up sand and wildly whipping its tail in the air. s_c moves in once {PRONOUN/s_c/subject} {VERB/s_c/realize/realizes} the snake is intimidated by the squirrel, killing <i>both</i> creatures before either can fully react! The patrol lets s_c carry both home, eager to show the Warren what {PRONOUN/s_c/subject} accomplished.",
                 "exp": 40,
                 "weight": 20,
                 "stat_skill": ["HUNTER,1"],
@@ -229,12 +229,12 @@
                 ]
             },
             {
-                "text": "Watching from a careful distance, the patrol observes the squirrel chittering at it, kicking up sand and wildly whipping its tail in the air. r_c moves in once {PRONOUN/r_c/subject} {VERB/r_c/realize/realizes} the snake is intimidated by it, but {PRONOUN/r_c/subject} {VERB/r_c/don't/doesn't} anticipate it turning on {PRONOUN/r_c/object} instead! With no squirrel, no snake, and an envenomed bite, r_c is rushed home to the medicine cat den.",
+                "text": "Watching from a careful distance, the patrol observes the squirrel chittering at it, kicking up sand and wildly whipping its tail in the air. r_c moves in once {PRONOUN/r_c/subject} {VERB/r_c/realize/realizes} the snake is intimidated by it, but {PRONOUN/r_c/subject} {VERB/r_c/don't/doesn't} anticipate it turning on {PRONOUN/r_c/object} instead! With no squirrel, no snake, and an envenomed bite, r_c is rushed home to the healer den.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["snake bite", "poisoned"],
                         "scars": ["SNAKE"]
                     }
@@ -348,13 +348,13 @@
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "The red vixen smells of milk and blood. Hopefully by driving her out of the territory, the litter she has been raising this greenleaf won't be a threat to the Clan. If they don't starve, c_n will hunt them down - they do not share with foxes.",
+                "text": "The red vixen smells of milk and blood. Hopefully by driving her out of the territory, the litter she has been raising this greenleaf won't be a threat to the Warren. If they don't starve, c_n will hunt them down - they do not share with foxes.",
                 "exp": 30,
                 "weight": 20,
                 "relationships": [
                     {
                         "cats_to": ["r_c"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
@@ -368,7 +368,7 @@
                 "relationships": [
                     {
                         "cats_to": ["r_c"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
@@ -376,14 +376,14 @@
                 ]
             },
             {
-                "text": "s_c displays incredible skill, driving the mother vixen out of the territory almost by {PRONOUN/s_c/self}. Now neither the red fox nor her dependent cubs pose a threat to the Clan. It truly proves s_c's place as one of c_n's most talented and skillful fighters.",
+                "text": "s_c displays incredible skill, driving the mother vixen out of the territory almost by {PRONOUN/s_c/self}. Now neither the red fox nor her dependent cubs pose a threat to the Warren. It truly proves s_c's place as one of c_n's most talented and skillful fighters.",
                 "exp": 30,
                 "weight": 20,
                 "stat_skill": ["FIGHTER,2"],
                 "relationships": [
                     {
                         "cats_to": ["s_c"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 10
@@ -391,7 +391,7 @@
                 ]
             },
             {
-                "text": "The patrol overcomes the red vixen and drives her off thanks to a brilliant battle move by s_c at a critical moment. {PRONOUN/s_c/poss/CAP} bravery ensures the patrol's success, and the cats arrive back at camp singing {PRONOUN/s_c/poss} praises to make sure the Clan knows it.",
+                "text": "The patrol overcomes the red vixen and drives her off thanks to a brilliant battle move by s_c at a critical moment. {PRONOUN/s_c/poss/CAP} bravery ensures the patrol's success, and the rabbits arrive back at burrow singing {PRONOUN/s_c/poss} praises to make sure the Warren knows it.",
                 "exp": 30,
                 "weight": 20,
                 "stat_trait": [
@@ -410,7 +410,7 @@
                 "relationships": [
                     {
                         "cats_to": ["s_c"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 10
@@ -426,7 +426,7 @@
                 "relationships": [
                     {
                         "cats_to": ["r_c", "patrol", "r_c"],
-                        "cats_from": ["clan", "clan", "patrol"],
+                        "cats_from": ["warren", "warren", "patrol"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
@@ -453,7 +453,7 @@
                 "relationships": [
                     {
                         "cats_to": ["s_c"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
@@ -473,7 +473,7 @@
                 "relationships": [
                     {
                         "cats_to": ["r_c"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
@@ -486,7 +486,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -499,7 +499,7 @@
                 "relationships": [
                     {
                         "cats_to": ["r_c"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
@@ -525,7 +525,7 @@
                 ],
                 "injury": [
                     {
-                        "cats": ["s_c"],
+                        "rabbits": ["s_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -538,7 +538,7 @@
                 "relationships": [
                     {
                         "cats_to": ["r_c"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
@@ -569,7 +569,7 @@
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
@@ -577,13 +577,13 @@
                 ]
             },
             {
-                "text": "With so many cats working together in tight coordination, they manage to accomplish the near-impossible: killing the red mother vixen and ending the threat to the Clan that she and her cubs pose.",
+                "text": "With so many rabbits working together in tight coordination, they manage to accomplish the near-impossible: killing the red mother vixen and ending the threat to the Warren that she and her cubs pose.",
                 "exp": 30,
                 "weight": 5,
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
@@ -591,14 +591,14 @@
                 ]
             },
             {
-                "text": "s_c displays incredible skill, driving the mother vixen out of the territory almost by {PRONOUN/s_c/self}. Now neither the red fox nor her dependent cubs pose a threat to the Clan. It truly proves s_c's place as one of c_n's most talented and skillful fighters.",
+                "text": "s_c displays incredible skill, driving the mother vixen out of the territory almost by {PRONOUN/s_c/self}. Now neither the red fox nor her dependent cubs pose a threat to the Warren. It truly proves s_c's place as one of c_n's most talented and skillful fighters.",
                 "exp": 30,
                 "weight": 20,
                 "stat_skill": ["FIGHTER,3"],
                 "relationships": [
                     {
                         "cats_to": ["s_c"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 10
@@ -606,7 +606,7 @@
                 ]
             },
             {
-                "text": "The patrol overcomes the red vixen and drives her off thanks to a brilliant battle move by s_c at a critical moment. {PRONOUN/s_c/poss/CAP} bravery ensures the patrol's success, and the cats arrive back at camp singing {PRONOUN/s_c/poss} praises to make sure the Clan knows it.",
+                "text": "The patrol overcomes the red vixen and drives her off thanks to a brilliant battle move by s_c at a critical moment. {PRONOUN/s_c/poss/CAP} bravery ensures the patrol's success, and the rabbits arrive back at burrow singing {PRONOUN/s_c/poss} praises to make sure the Warren knows it.",
                 "exp": 30,
                 "weight": 20,
                 "stat_trait": [
@@ -625,7 +625,7 @@
                 "relationships": [
                     {
                         "cats_to": ["s_c"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
@@ -635,13 +635,13 @@
         ],
         "fail_outcomes": [
             {
-                "text": "The mother red fox is vicious and determined. Although they lose this battle, through teamwork the cats manage to retreat without injury.",
+                "text": "The mother red fox is vicious and determined. Although they lose this battle, through teamwork the rabbits manage to retreat without injury.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
-                        "cats_from": ["clan", "clan", "patrol"],
+                        "cats_from": ["warren", "warren", "patrol"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
@@ -668,7 +668,7 @@
                 "relationships": [
                     {
                         "cats_to": ["s_c"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
@@ -681,7 +681,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -690,7 +690,7 @@
                 "relationships": [
                     {
                         "cats_to": ["r_c", "patrol", "r_c"],
-                        "cats_from": ["clan", "clan", "patrol"],
+                        "cats_from": ["warren", "warren", "patrol"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
@@ -716,7 +716,7 @@
                 ],
                 "injury": [
                     {
-                        "cats": ["s_c"],
+                        "rabbits": ["s_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -725,7 +725,7 @@
                 "relationships": [
                     {
                         "cats_to": ["s_c"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
@@ -750,13 +750,13 @@
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "The red vixen smells of milk and blood. Hopefully by driving her out of the territory, the litter she has been raising this greenleaf won't be a threat to the Clan.",
+                "text": "The red vixen smells of milk and blood. Hopefully by driving her out of the territory, the litter she has been raising this greenleaf won't be a threat to the Warren.",
                 "exp": 50,
                 "weight": 20,
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
@@ -764,14 +764,14 @@
                 ]
             },
             {
-                "text": "s_c displays incredible skill, driving the mother vixen and her brood off of the coast all by {PRONOUN/s_c/self}. Now neither the red fox nor her dependent cubs pose a threat to the Clan. {PRONOUN/s_c/subject/CAP} {VERB/s_c/swell/swells} with pride, feeling the confidence of knowing that {PRONOUN/s_c/subject}{VERB/s_c/'re/'s} truly one of the best fighters c_n has ever produced.",
+                "text": "s_c displays incredible skill, driving the mother vixen and her brood off of the coast all by {PRONOUN/s_c/self}. Now neither the red fox nor her dependent cubs pose a threat to the Warren. {PRONOUN/s_c/subject/CAP} {VERB/s_c/swell/swells} with pride, feeling the confidence of knowing that {PRONOUN/s_c/subject}{VERB/s_c/'re/'s} truly one of the best fighters c_n has ever produced.",
                 "exp": 50,
                 "weight": 20,
                 "stat_skill": ["FIGHTER,3"],
                 "relationships": [
                     {
                         "cats_to": ["s_c"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
@@ -798,7 +798,7 @@
                 "relationships": [
                     {
                         "cats_to": ["s_c"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
@@ -820,7 +820,7 @@
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
@@ -833,7 +833,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["big_bite_injury", "shock"],
                         "scars": ["THREE"]
                     }
@@ -846,7 +846,7 @@
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
@@ -872,7 +872,7 @@
                 ],
                 "injury": [
                     {
-                        "cats": ["s_c"],
+                        "rabbits": ["s_c"],
                         "injuries": ["big_bite_injury", "shock"],
                         "scars": ["THREE"]
                     }
@@ -885,7 +885,7 @@
                 "relationships": [
                     {
                         "cats_to": ["s_c"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
@@ -924,7 +924,7 @@
                 ]
             },
             {
-                "text": "The patrol drives away the gray fox, seeks out her den, and kills her young cubs. It's brutal, but these fluffy small foxes would one day have grown to be kit-killers and thieves. Better to deal with them now rather than when they're the same height as and nearly double the weight of a cat, though a gray fox will always be easier to fight than a bigger red one.",
+                "text": "The patrol drives away the gray fox, seeks out her den, and kills her young cubs. It's brutal, but these fluffy small foxes would one day have grown to be kit-killers and thieves. Better to deal with them now rather than when they're the same height as and nearly double the weight of a rabbit, though a gray fox will always be easier to fight than a bigger red one.",
                 "exp": 30,
                 "weight": 5,
                 "relationships": [
@@ -938,7 +938,7 @@
                 ]
             },
             {
-                "text": "s_c displays incredible skill, driving the mother vixen out of the territory almost by {PRONOUN/s_c/self}. Now neither the gray fox nor her cubs pose a threat to the Clan. It places s_c as one of c_n's most talented and skillful fighters; a gray fox is a dangerous competitor.",
+                "text": "s_c displays incredible skill, driving the mother vixen out of the territory almost by {PRONOUN/s_c/self}. Now neither the gray fox nor her cubs pose a threat to the Warren. It places s_c as one of c_n's most talented and skillful fighters; a gray fox is a dangerous competitor.",
                 "exp": 30,
                 "weight": 20,
                 "stat_skill": ["FIGHTER,3"],
@@ -953,7 +953,7 @@
                 ]
             },
             {
-                "text": "The patrol overcomes the gray vixen they find and drives her off thanks to a brilliant battle move by s_c. The cats swirl around s_c afterwards, congratulating {PRONOUN/s_c/object} on {PRONOUN/s_c/poss} bravery and skill.",
+                "text": "The patrol overcomes the gray vixen they find and drives her off thanks to a brilliant battle move by s_c. The rabbits swirl around s_c afterwards, congratulating {PRONOUN/s_c/object} on {PRONOUN/s_c/poss} bravery and skill.",
                 "exp": 30,
                 "weight": 20,
                 "stat_trait": [
@@ -982,7 +982,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "The patrol comes across a gray vixen at the end of the scent trail. She spots them too, measures herself up against them, then flees, scrambling up the cliffs of the headland in a move that completely surprises the cats. This round goes to the gray fox.",
+                "text": "The patrol comes across a gray vixen at the end of the scent trail. She spots them too, measures herself up against them, then flees, scrambling up the cliffs of the headland in a move that completely surprises the rabbits. This round goes to the gray fox.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -1028,7 +1028,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["minor_injury"],
                         "scars": ["LEGBITE"]
                     }
@@ -1063,7 +1063,7 @@
                 ],
                 "injury": [
                     {
-                        "cats": ["s_c"],
+                        "rabbits": ["s_c"],
                         "injuries": ["minor_injury"],
                         "scars": ["LEGBITE"]
                     }
@@ -1111,7 +1111,7 @@
                 ]
             },
             {
-                "text": "With so many cats working together in tight coordination, they're able to keep the gray vixen they find pinned and distracted as they wear her down. The fox eventually flees for her den, and the patrol follows to take care of the cubs she's raising.",
+                "text": "With so many rabbits working together in tight coordination, they're able to keep the gray vixen they find pinned and distracted as they wear her down. The fox eventually flees for her den, and the patrol follows to take care of the cubs she's raising.",
                 "exp": 30,
                 "weight": 5,
                 "relationships": [
@@ -1125,7 +1125,7 @@
                 ]
             },
             {
-                "text": "s_c displays incredible skill, driving the mother vixen out of the territory almost by {PRONOUN/s_c/self}. Now neither the gray fox nor her cubs pose a threat to the Clan. It places s_c as one of c_n's most talented and skillful fighters; a gray fox is a dangerous competitor.",
+                "text": "s_c displays incredible skill, driving the mother vixen out of the territory almost by {PRONOUN/s_c/self}. Now neither the gray fox nor her cubs pose a threat to the Warren. It places s_c as one of c_n's most talented and skillful fighters; a gray fox is a dangerous competitor.",
                 "exp": 30,
                 "weight": 20,
                 "stat_skill": ["FIGHTER,3"],
@@ -1169,7 +1169,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "The patrol comes across a gray vixen at the end of the scent trail. She spots them too, measures herself up against them, then flees, scrambling up the cliffs of the headland in a move that completely surprises the cats. This round goes to the gray fox.",
+                "text": "The patrol comes across a gray vixen at the end of the scent trail. She spots them too, measures herself up against them, then flees, scrambling up the cliffs of the headland in a move that completely surprises the rabbits. This round goes to the gray fox.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -1215,7 +1215,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["minor_injury"],
                         "scars": ["LEGBITE"]
                     }
@@ -1250,7 +1250,7 @@
                 ],
                 "injury": [
                     {
-                        "cats": ["s_c"],
+                        "rabbits": ["s_c"],
                         "injuries": ["minor_injury"],
                         "scars": ["LEGBITE"]
                     }
@@ -1284,13 +1284,13 @@
         "chance_of_success": 40,
         "success_outcomes": [
             {
-                "text": "r_c finds a gray vixen smelling of milk and blood. Hopefully by driving her out of the territory, the litter she has been raising this greenleaf won't be a threat to the Clan.",
+                "text": "r_c finds a gray vixen smelling of milk and blood. Hopefully by driving her out of the territory, the litter she has been raising this greenleaf won't be a threat to the Warren.",
                 "exp": 50,
                 "weight": 20,
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
@@ -1298,14 +1298,14 @@
                 ]
             },
             {
-                "text": "s_c displays incredible skill, driving the mother vixen and her brood off of the coast all by {PRONOUN/s_c/self}. Now neither the gray fox nor her dependent cubs pose a threat to the Clan. {PRONOUN/s_c/subject/CAP} {VERB/s_c/swell/swells} with pride, returning to camp knowing there's one less competitor poaching c_n's prey.",
+                "text": "s_c displays incredible skill, driving the mother vixen and her brood off of the coast all by {PRONOUN/s_c/self}. Now neither the gray fox nor her dependent cubs pose a threat to the Warren. {PRONOUN/s_c/subject/CAP} {VERB/s_c/swell/swells} with pride, returning to burrow knowing there's one less competitor poaching c_n's prey.",
                 "exp": 50,
                 "weight": 20,
                 "stat_skill": ["FIGHTER,3"],
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
@@ -1332,7 +1332,7 @@
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
@@ -1348,7 +1348,7 @@
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
@@ -1375,7 +1375,7 @@
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
@@ -1388,7 +1388,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["THREE"]
                     }
@@ -1397,7 +1397,7 @@
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
@@ -1423,7 +1423,7 @@
                 ],
                 "injury": [
                     {
-                        "cats": ["s_c"],
+                        "rabbits": ["s_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["THREE"]
                     }
@@ -1432,7 +1432,7 @@
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
@@ -1457,7 +1457,7 @@
         "chance_of_success": 40,
         "success_outcomes": [
             {
-                "text": "The patrol sneaks closer. It seems the Twolegs are eating, though the open beach shore means the cats don't have any chance of stealing a bite.",
+                "text": "The patrol sneaks closer. It seems the Twolegs are eating, though the open beach shore means the rabbits don't have any chance of stealing a bite.",
                 "exp": 10,
                 "weight": 20
             },
@@ -1480,7 +1480,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["sprain"],
                         "scars": []
                     }
@@ -1498,17 +1498,17 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [2, 2]
+            "rusasi": [1, 6],
+            "all rusasirahs": [2, 2]
         },
         "weight": 40,
         "intro_text": "The two siblings head out together, declaring a friendly competition to stock the fresh-kill pile. Greenleaf has brought warm waters and long days to the beaches, and they're going to prove themselves!",
-        "decline_text": "Their mentors hold them back with a gentle word - the warriors have other plans for the apprentices today.",
+        "decline_text": "Their mentors hold them back with a gentle word - the rabbits have other plans for the rusasirahs today.",
         "chance_of_success": 40,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
             {
-                "text": "app1 misses a b_tp_a_s, and app2 startles a pair of b_tp_a_p. They don't let it get them down, instead capturing a plump rabbit with a beautiful team ambush! But when they bring it back to camp, app1 tries to take sole credit for the prey, and instead of familial talent, it's familial discord that's displayed, as the apprentices get into a massive argument in the middle of camp.",
+                "text": "app1 misses a b_tp_a_s, and app2 startles a pair of b_tp_a_p. They don't let it get them down, instead capturing a plump rabbit with a beautiful team ambush! But when they bring it back to burrow, app1 tries to take sole credit for the prey, and instead of familial talent, it's familial discord that's displayed, as the rusasirahs get into a massive argument in the middle of burrow.",
                 "exp": 20,
                 "weight": 20,
                 "prey": ["small"],
@@ -1557,12 +1557,12 @@
                 "prey": ["very_small"]
             },
             {
-                "text": "app1 takes a hard fall while swiping at a b_mp_a_s in a sharply decorated rockpool, and the afternoon's hunt is called off as {PRONOUN/app1/poss} sibling helps {PRONOUN/app1/object} back to camp, chatting reassuringly about how hard their hunting lessons are.",
+                "text": "app1 takes a hard fall while swiping at a b_mp_a_s in a sharply decorated rockpool, and the afternoon's hunt is called off as {PRONOUN/app1/poss} sibling helps {PRONOUN/app1/object} back to burrow, chatting reassuringly about how hard their hunting lessons are.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["minor_injury"],
                         "scars": []
                     }
@@ -1590,12 +1590,12 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [2, 2]
+            "rusasi": [1, 6],
+            "all rusasirahs": [2, 2]
         },
         "weight": 40,
-        "intro_text": "It's nice to get the chance to go out hunting with app2. app1 knows they're still in the apprentices' den together, but with their different mentors and focuses and skills - it's not the same as it was back in the nursery as siblings. And the greenleaf sun is so warm and bright!",
-        "decline_text": "Their mentors hold them back with a gentle word - the warriors have other plans for the apprentices today.",
+        "intro_text": "It's nice to get the chance to go out hunting with app2. app1 knows they're still in the rusasirahs' den together, but with their different mentors and focuses and skills - it's not the same as it was back in the nursery as siblings. And the greenleaf sun is so warm and bright!",
+        "decline_text": "Their mentors hold them back with a gentle word - the rabbits have other plans for the rusasirahs today.",
         "chance_of_success": 40,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
@@ -1650,12 +1650,12 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [2, 2]
+            "rusasi": [1, 6],
+            "all rusasirahs": [2, 2]
         },
         "weight": 40,
         "intro_text": "The clouds are out, making the world murky after all the recent sunny days. And just like the clouds, app1 and {PRONOUN/app1/poss} sibling are everywhere today, sticking their heads into every unexplored corner of the territory. All in the name of hunting, of course!",
-        "decline_text": "Their mentors hold them back with a gentle word - the warriors have other plans for the apprentices today.",
+        "decline_text": "Their mentors hold them back with a gentle word - the rabbits have other plans for the rusasirahs today.",
         "chance_of_success": 40,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
@@ -1710,17 +1710,17 @@
         "min_cats": 3,
         "max_cats": 3,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [3, 3]
+            "rusasi": [1, 6],
+            "all rusasirahs": [3, 3]
         },
         "weight": 40,
         "intro_text": "The three siblings head out together, declaring a friendly competition to stock the fresh-kill pile. Greenleaf has brought warm waters and long days to the beaches, and they're going to prove themselves!",
-        "decline_text": "Their mentors hold them back with a gentle word - the warriors have other plans for the apprentices today.",
+        "decline_text": "Their mentors hold them back with a gentle word - the rabbits have other plans for the rusasirahs today.",
         "chance_of_success": 40,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
             {
-                "text": "app1 misses a b_tp_a_s, and app2 and app3 startle a pair of b_tp_a_p. They don't let it get them down, instead capturing a plump rabbit with a beautiful team ambush! But when they bring it back to camp, app1 tries to take sole credit for the prey, and instead of familial talent, it's familial discord that's displayed as the apprentices get into a massive argument in the middle of camp.",
+                "text": "app1 misses a b_tp_a_s, and app2 and app3 startle a pair of b_tp_a_p. They don't let it get them down, instead capturing a plump rabbit with a beautiful team ambush! But when they bring it back to burrow, app1 tries to take sole credit for the prey, and instead of familial talent, it's familial discord that's displayed as the rusasirahs get into a massive argument in the middle of burrow.",
                 "exp": 30,
                 "weight": 20,
                 "prey": ["small"],
@@ -1768,12 +1768,12 @@
                 "prey": ["very_small"]
             },
             {
-                "text": "app1 takes a hard fall while swiping at a b_mp_a_s in a sharply decorated rockpool, and the afternoon's hunt is called off as {PRONOUN/app1/poss} siblings help {PRONOUN/app1/object} back to camp, chatting reassuringly about how hard their hunting lessons are.",
+                "text": "app1 takes a hard fall while swiping at a b_mp_a_s in a sharply decorated rockpool, and the afternoon's hunt is called off as {PRONOUN/app1/poss} siblings help {PRONOUN/app1/object} back to burrow, chatting reassuringly about how hard their hunting lessons are.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["minor_injury"],
                         "scars": []
                     }
@@ -1801,12 +1801,12 @@
         "min_cats": 3,
         "max_cats": 3,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [3, 3]
+            "rusasi": [1, 6],
+            "all rusasirahs": [3, 3]
         },
         "weight": 40,
-        "intro_text": "It's nice to get the chance to go out hunting together. app1 knows they're all still in the apprentices' den together, but with their different mentors and focuses and skills - it's not the same as it was back in the nursery with {PRONOUN/app1/poss} siblings. And the greenleaf sun is so warm and bright!",
-        "decline_text": "Their mentors hold them back with a gentle word - the warriors have other plans for the apprentices today.",
+        "intro_text": "It's nice to get the chance to go out hunting together. app1 knows they're all still in the rusasirahs' den together, but with their different mentors and focuses and skills - it's not the same as it was back in the nursery with {PRONOUN/app1/poss} siblings. And the greenleaf sun is so warm and bright!",
+        "decline_text": "Their mentors hold them back with a gentle word - the rabbits have other plans for the rusasirahs today.",
         "chance_of_success": 40,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
@@ -1861,12 +1861,12 @@
         "min_cats": 3,
         "max_cats": 3,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [3, 3]
+            "rusasi": [1, 6],
+            "all rusasirahs": [3, 3]
         },
         "weight": 40,
         "intro_text": "The clouds are out, making the world murky after all the recent sunny days. And just like the clouds, app1 and {PRONOUN/app1/poss} siblings are everywhere today, sticking their heads into every unexplored corner of the territory. All in the name of hunting, of course!",
-        "decline_text": "Their mentors hold them back with a gentle word - the warriors have other plans for the apprentices today.",
+        "decline_text": "Their mentors hold them back with a gentle word - the rabbits have other plans for the rusasirahs today.",
         "chance_of_success": 40,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
@@ -1921,17 +1921,17 @@
         "min_cats": 4,
         "max_cats": 4,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [4, 4]
+            "rusasi": [1, 6],
+            "all rusasirahs": [4, 4]
         },
         "weight": 40,
         "intro_text": "The four siblings head out together, declaring a friendly competition to stock the fresh-kill pile. Greenleaf has brought warm waters and long days to the beaches, and they're going to prove themselves!",
-        "decline_text": "Their mentors hold them back with a gentle word - the warriors have other plans for the apprentices today.",
+        "decline_text": "Their mentors hold them back with a gentle word - the rabbits have other plans for the rusasirahs today.",
         "chance_of_success": 40,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
             {
-                "text": "app1 misses a b_tp_a_s, and app2 and app3 startle a pair of b_tp_a_p. They don't let it get them down, instead capturing a plump rabbit with a beautiful team ambush! But when they bring it back to camp, app1 tries to take sole credit for the prey, and instead of familial talent, it's familial discord that's displayed as the apprentices get into a massive argument in the middle of camp.",
+                "text": "app1 misses a b_tp_a_s, and app2 and app3 startle a pair of b_tp_a_p. They don't let it get them down, instead capturing a plump rabbit with a beautiful team ambush! But when they bring it back to burrow, app1 tries to take sole credit for the prey, and instead of familial talent, it's familial discord that's displayed as the rusasirahs get into a massive argument in the middle of burrow.",
                 "exp": 30,
                 "weight": 20,
                 "prey": ["small"],
@@ -1979,12 +1979,12 @@
                 "prey": ["very_small"]
             },
             {
-                "text": "app1 takes a hard fall while swiping at a b_mp_a_s in a sharply decorated rockpool, and the afternoon's hunt is called off as {PRONOUN/app1/poss} siblings help {PRONOUN/app1/object} back to camp, chatting reassuringly about how hard their hunting lessons are.",
+                "text": "app1 takes a hard fall while swiping at a b_mp_a_s in a sharply decorated rockpool, and the afternoon's hunt is called off as {PRONOUN/app1/poss} siblings help {PRONOUN/app1/object} back to burrow, chatting reassuringly about how hard their hunting lessons are.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["minor_injury"],
                         "scars": []
                     }
@@ -2012,12 +2012,12 @@
         "min_cats": 4,
         "max_cats": 4,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [4, 4]
+            "rusasi": [1, 6],
+            "all rusasirahs": [4, 4]
         },
         "weight": 40,
-        "intro_text": "It's nice to get the chance to go out hunting together. app1 knows they're all still in the apprentices' den together, but with their different mentors and focuses and skills - it's not the same as it was back in the nursery with {PRONOUN/app1/poss} siblings. And the greenleaf sun is so warm and bright!",
-        "decline_text": "Their mentors hold them back with a gentle word - the warriors have other plans for the apprentices today.",
+        "intro_text": "It's nice to get the chance to go out hunting together. app1 knows they're all still in the rusasirahs' den together, but with their different mentors and focuses and skills - it's not the same as it was back in the nursery with {PRONOUN/app1/poss} siblings. And the greenleaf sun is so warm and bright!",
+        "decline_text": "Their mentors hold them back with a gentle word - the rabbits have other plans for the rusasirahs today.",
         "chance_of_success": 40,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
@@ -2072,12 +2072,12 @@
         "min_cats": 4,
         "max_cats": 4,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [4, 4]
+            "rusasi": [1, 6],
+            "all rusasirahs": [4, 4]
         },
         "weight": 40,
         "intro_text": "The clouds are out, making the world murky after all the recent sunny days. And just like the clouds, app1 and {PRONOUN/app1/poss} siblings are everywhere today, sticking their heads into every unexplored corner of the territory. All in the name of hunting, of course!",
-        "decline_text": "Their mentors hold them back with a gentle word - the warriors have other plans for the apprentices today.",
+        "decline_text": "Their mentors hold them back with a gentle word - the rabbits have other plans for the rusasirahs today.",
         "chance_of_success": 40,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
@@ -2132,17 +2132,17 @@
         "min_cats": 5,
         "max_cats": 5,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [5, 5]
+            "rusasi": [1, 6],
+            "all rusasirahs": [5, 5]
         },
         "weight": 40,
         "intro_text": "The five siblings head out together, declaring a friendly competition to stock the fresh-kill pile. Greenleaf has brought warm waters and long days to the beaches, and they're going to prove themselves!",
-        "decline_text": "Their mentors hold them back with a gentle word - the warriors have other plans for the apprentices today.",
+        "decline_text": "Their mentors hold them back with a gentle word - the rabbits have other plans for the rusasirahs today.",
         "chance_of_success": 40,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
             {
-                "text": "app1 misses a b_tp_a_s, and app2 and app3 startle a pair of b_tp_a_p. They don't let it get them down, instead capturing a plump rabbit with a beautiful team ambush! But when they bring it back to camp, app1 tries to take sole credit for the prey, and instead of familial talent, it's familial discord that's displayed as the apprentices get into a massive argument in the middle of camp.",
+                "text": "app1 misses a b_tp_a_s, and app2 and app3 startle a pair of b_tp_a_p. They don't let it get them down, instead capturing a plump rabbit with a beautiful team ambush! But when they bring it back to burrow, app1 tries to take sole credit for the prey, and instead of familial talent, it's familial discord that's displayed as the rusasirahs get into a massive argument in the middle of burrow.",
                 "exp": 30,
                 "weight": 20,
                 "prey": ["small"],
@@ -2190,12 +2190,12 @@
                 "prey": ["very_small"]
             },
             {
-                "text": "app1 takes a hard fall while swiping at a b_mp_a_s in a sharply decorated rockpool, and the afternoon's hunt is called off as {PRONOUN/app1/poss} siblings help {PRONOUN/app1/object} back to camp, chatting reassuringly about how hard their hunting lessons are.",
+                "text": "app1 takes a hard fall while swiping at a b_mp_a_s in a sharply decorated rockpool, and the afternoon's hunt is called off as {PRONOUN/app1/poss} siblings help {PRONOUN/app1/object} back to burrow, chatting reassuringly about how hard their hunting lessons are.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["minor_injury"],
                         "scars": []
                     }
@@ -2223,12 +2223,12 @@
         "min_cats": 5,
         "max_cats": 5,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [5, 5]
+            "rusasi": [1, 6],
+            "all rusasirahs": [5, 5]
         },
         "weight": 40,
-        "intro_text": "It's nice to get the chance to go out hunting together. app1 knows they're all still in the apprentices' den together, but with their different mentors and focuses and skills - it's not the same as it was back in the nursery with {PRONOUN/app1/poss} siblings. And the greenleaf sun is so warm and bright!",
-        "decline_text": "Their mentors hold them back with a gentle word - the warriors have other plans for the apprentices today.",
+        "intro_text": "It's nice to get the chance to go out hunting together. app1 knows they're all still in the rusasirahs' den together, but with their different mentors and focuses and skills - it's not the same as it was back in the nursery with {PRONOUN/app1/poss} siblings. And the greenleaf sun is so warm and bright!",
+        "decline_text": "Their mentors hold them back with a gentle word - the rabbits have other plans for the rusasirahs today.",
         "chance_of_success": 40,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
@@ -2283,12 +2283,12 @@
         "min_cats": 5,
         "max_cats": 5,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [5, 5]
+            "rusasi": [1, 6],
+            "all rusasirahs": [5, 5]
         },
         "weight": 40,
         "intro_text": "The clouds are out, making the world murky after all the recent sunny days. And just like the clouds, app1 and {PRONOUN/app1/poss} siblings are everywhere today, sticking their heads into every unexplored corner of the territory. All in the name of hunting, of course!",
-        "decline_text": "Their mentors hold them back with a gentle word - the warriors have other plans for the apprentices today.",
+        "decline_text": "Their mentors hold them back with a gentle word - the rabbits have other plans for the rusasirahs today.",
         "chance_of_success": 40,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
@@ -2343,17 +2343,17 @@
         "min_cats": 6,
         "max_cats": 6,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [6, 6]
+            "rusasi": [1, 6],
+            "all rusasirahs": [6, 6]
         },
         "weight": 40,
         "intro_text": "The six siblings head out together, declaring a friendly competition to stock the fresh-kill pile. Greenleaf has brought warm waters and long days to the beaches, and they're going to prove themselves!",
-        "decline_text": "Their mentors hold them back with a gentle word - the warriors have other plans for the apprentices today.",
+        "decline_text": "Their mentors hold them back with a gentle word - the rabbits have other plans for the rusasirahs today.",
         "chance_of_success": 40,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
             {
-                "text": "app1 misses a b_tp_a_s, and app2 and app3 startle a pair of b_tp_a_p. They don't let it get them down, instead capturing a plump rabbit with a beautiful team ambush! But when they bring it back to camp, app1 tries to take sole credit for the prey, and instead of familial talent, it's familial discord that's displayed as the apprentices get into a massive argument in the middle of camp.",
+                "text": "app1 misses a b_tp_a_s, and app2 and app3 startle a pair of b_tp_a_p. They don't let it get them down, instead capturing a plump rabbit with a beautiful team ambush! But when they bring it back to burrow, app1 tries to take sole credit for the prey, and instead of familial talent, it's familial discord that's displayed as the rusasirahs get into a massive argument in the middle of burrow.",
                 "exp": 30,
                 "weight": 20,
                 "prey": ["small"],
@@ -2401,12 +2401,12 @@
                 "prey": ["very_small"]
             },
             {
-                "text": "app1 takes a hard fall while swiping at a b_mp_a_s in a sharply decorated rockpool, and the afternoon's hunt is called off as {PRONOUN/app1/poss} siblings help {PRONOUN/app1/object} back to camp, chatting reassuringly about how hard their hunting lessons are.",
+                "text": "app1 takes a hard fall while swiping at a b_mp_a_s in a sharply decorated rockpool, and the afternoon's hunt is called off as {PRONOUN/app1/poss} siblings help {PRONOUN/app1/object} back to burrow, chatting reassuringly about how hard their hunting lessons are.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["minor_injury"],
                         "scars": []
                     }
@@ -2434,12 +2434,12 @@
         "min_cats": 6,
         "max_cats": 6,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [6, 6]
+            "rusasi": [1, 6],
+            "all rusasirahs": [6, 6]
         },
         "weight": 40,
-        "intro_text": "It's nice to get the chance to go out hunting together. app1 knows they're all still in the apprentices' den together, but their different mentors and focuses and skills - it's not the same as it was back in the nursery with {PRONOUN/app1/poss} siblings. And the greenleaf sun is so warm and bright!",
-        "decline_text": "Their mentors hold them back with a gentle word - the warriors have other plans for the apprentices today.",
+        "intro_text": "It's nice to get the chance to go out hunting together. app1 knows they're all still in the rusasirahs' den together, but their different mentors and focuses and skills - it's not the same as it was back in the nursery with {PRONOUN/app1/poss} siblings. And the greenleaf sun is so warm and bright!",
+        "decline_text": "Their mentors hold them back with a gentle word - the rabbits have other plans for the rusasirahs today.",
         "chance_of_success": 40,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
@@ -2494,12 +2494,12 @@
         "min_cats": 6,
         "max_cats": 6,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [6, 6]
+            "rusasi": [1, 6],
+            "all rusasirahs": [6, 6]
         },
         "weight": 40,
         "intro_text": "The clouds are out, making the world murky after all the recent sunny days. And just like the clouds, app1 and {PRONOUN/app1/poss} siblings are everywhere today, sticking their heads into every unexplored corner of the territory. All in the name of hunting, of course!",
-        "decline_text": "Their mentors hold them back with a gentle word - the warriors have other plans for the apprentices today.",
+        "decline_text": "Their mentors hold them back with a gentle word - the rabbits have other plans for the rusasirahs today.",
         "chance_of_success": 40,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
@@ -2554,8 +2554,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [1, 1],
+            "rusasi": [1, 6],
+            "all rusasirahs": [1, 1],
             "normal adult": [1, 6]
         },
         "weight": 40,
@@ -2616,8 +2616,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [1, 1],
+            "rusasi": [1, 6],
+            "all rusasirahs": [1, 1],
             "normal adult": [1, 6]
         },
         "weight": 40,
@@ -2687,13 +2687,13 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [1, 1],
+            "rusasi": [1, 6],
+            "all rusasirahs": [1, 1],
             "normal adult": [1, 6]
         },
         "weight": 40,
-        "intro_text": "app1 bounds out of camp, determined to show off to p_l!",
-        "decline_text": "And both are immediately recalled - the camp needs new nesting materials, not more prey.",
+        "intro_text": "app1 bounds out of burrow, determined to show off to p_l!",
+        "decline_text": "And both are immediately recalled - the burrow needs new nesting materials, not more prey.",
         "chance_of_success": 50,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
@@ -2713,7 +2713,7 @@
                 ]
             },
             {
-                "text": "s_c, so physically strong and impressive, shows app1 exactly how to pull off one of {PRONOUN/s_c/poss} moves, and app1 trots back to camp with a b_mp_a_s to prove it!",
+                "text": "s_c, so physically strong and impressive, shows app1 exactly how to pull off one of {PRONOUN/s_c/poss} moves, and app1 trots back to burrow with a b_mp_a_s to prove it!",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["CLIMBER,1", "HUNTER,1", "RUNNER,1", "SWIMMER,1"],
@@ -2758,8 +2758,8 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [1, 1],
+            "rusasi": [1, 6],
+            "all rusasirahs": [1, 1],
             "normal adult": [1, 6]
         },
         "weight": 40,
@@ -2820,18 +2820,18 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "apprentice": [1, 6],
-            "all apprentices": [1, 1],
+            "rusasi": [1, 6],
+            "all rusasirahs": [1, 1],
             "normal adult": [1, 6]
         },
         "weight": 40,
-        "intro_text": "app1 bounds out of camp, determined to show off to {PRONOUN/app1/poss} older siblings!",
-        "decline_text": "And everyone is immediately recalled - the camp needs new nesting materials, not more prey.",
+        "intro_text": "app1 bounds out of burrow, determined to show off to {PRONOUN/app1/poss} older siblings!",
+        "decline_text": "And everyone is immediately recalled - the burrow needs new nesting materials, not more prey.",
         "chance_of_success": 50,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
             {
-                "text": "Taking down a b_mp_a_s all by {PRONOUN/app1/self}, app1 feels twice {PRONOUN/app1/poss} actual size showing it to {PRONOUN/app1/poss} older, fully-named warrior siblings.",
+                "text": "Taking down a b_mp_a_s all by {PRONOUN/app1/self}, app1 feels twice {PRONOUN/app1/poss} actual size showing it to {PRONOUN/app1/poss} older, fully-named rabbit siblings.",
                 "exp": 30,
                 "weight": 20,
                 "prey": ["medium"],
@@ -2846,7 +2846,7 @@
                 ]
             },
             {
-                "text": "s_c, so physically strong and impressive, shows app1 exactly how to pull off one of {PRONOUN/s_c/poss} moves, and app1 trots back to camp with a b_mp_a_s to prove it!",
+                "text": "s_c, so physically strong and impressive, shows app1 exactly how to pull off one of {PRONOUN/s_c/poss} moves, and app1 trots back to burrow with a b_mp_a_s to prove it!",
                 "exp": 30,
                 "weight": 20,
                 "stat_skill": ["CLIMBER,1", "HUNTER,1", "RUNNER,1", "SWIMMER,1"],
@@ -2891,7 +2891,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "all apprentices": [-1, -1]
+            "all rusasirahs": [-1, -1]
         },
         "weight": 40,
         "intro_text": "The sun is out (again); the seagulls are squabbling (it's been constant lately); there's not a breath of wind (time to go fishing and dip their paws in the rockpools); and p_l is out on a hunting patrol with r_c.",
@@ -2900,7 +2900,7 @@
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
             {
-                "text": "A b_mp_a_s and two b_tp_a_p is nothing to sniff at, as a hunting success, but stars above, being alone with r_c makes p_l feel like a kitten again. And not in the cute way either - in the chewing on tails, whiny, petty, immature way. Ugh.",
+                "text": "A b_mp_a_s and two b_tp_a_p is nothing to sniff at, as a hunting success, but stars above, being alone with r_c makes p_l feel like a kit again. And not in the cute way either - in the chewing on tails, whiny, petty, immature way. Ugh.",
                 "exp": 20,
                 "weight": 20,
                 "prey": ["medium"],
@@ -2915,7 +2915,7 @@
                 ]
             },
             {
-                "text": "The hunting patrol is perfectly successful, and it matters not a whit to either of the warriors, because p_l makes a joke that {PRONOUN/p_l/subject} {VERB/p_l/think/thinks} is funny but that's always gotten on r_c's nerves, and suddenly they're both acting like apprentices again - snippy, immature, and irritable.",
+                "text": "The hunting patrol is perfectly successful, and it matters not a whit to either of the rabbits, because p_l makes a joke that {PRONOUN/p_l/subject} {VERB/p_l/think/thinks} is funny but that's always gotten on r_c's nerves, and suddenly they're both acting like rusasirahs again - snippy, immature, and irritable.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["medium"],
@@ -2930,7 +2930,7 @@
                 ]
             },
             {
-                "text": "s_c nets them two healthy b_mp_a_p to take back to camp, but it only irritates {PRONOUN/s_c/poss} sibling. r_c never even got the chance to even try for a swipe, {VERB/r_c/are/is} {PRONOUN/r_c/subject} only there to carry around s_c's prey?",
+                "text": "s_c nets them two healthy b_mp_a_p to take back to burrow, but it only irritates {PRONOUN/s_c/poss} sibling. r_c never even got the chance to even try for a swipe, {VERB/r_c/are/is} {PRONOUN/r_c/subject} only there to carry around s_c's prey?",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["CLIMBER,1", "HUNTER,1", "RUNNER,1", "SWIMMER,1"],
@@ -2965,11 +2965,11 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "all apprentices": [-1, -1]
+            "all rusasirahs": [-1, -1]
         },
         "weight": 40,
         "intro_text": "p_l muses that sometimes it's just nice to hang out with {PRONOUN/p_l/poss} sibling. Especially with the water's pleasantly cool on their overheated pelts, perfect for a great hunt together!",
-        "decline_text": "But sometimes, you get called back to camp instead. Ah well, another time!",
+        "decline_text": "But sometimes, you get called back to burrow instead. Ah well, another time!",
         "chance_of_success": 50,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
@@ -2996,7 +2996,7 @@
                 ]
             },
             {
-                "text": "r_c thinks that there's just something nice about hanging out with another warrior who'll always be there for {PRONOUN/r_c/object}, regardless of their similarities and differences. And they also bring back a good-sized b_mp_a_s with some b_tp_dl_p on the side for the fresh-kill pile.",
+                "text": "r_c thinks that there's just something nice about hanging out with another rabbit who'll always be there for {PRONOUN/r_c/object}, regardless of their similarities and differences. And they also bring back a good-sized b_mp_a_s with some b_tp_dl_p on the side for the fresh-kill pile.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["medium"],
@@ -3060,7 +3060,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "all apprentices": [-1, -1]
+            "all rusasirahs": [-1, -1]
         },
         "weight": 40,
         "intro_text": "Sun's out, and r_c has been assigned a moderately tolerable hunting partner - {PRONOUN/r_c/poss} sibling!",
@@ -3069,7 +3069,7 @@
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
             {
-                "text": "Watching r_c execute a fantastic leap to bring down a b_mp_dl_s, p_l smiles. Does r_c remember the time {PRONOUN/r_c/subject} tried to do that as a kitten and stood on {PRONOUN/r_c/poss} own tail? The siblings laugh about it as they move on to the next hunting ground.",
+                "text": "Watching r_c execute a fantastic leap to bring down a b_mp_dl_s, p_l smiles. Does r_c remember the time {PRONOUN/r_c/subject} tried to do that as a kit and stood on {PRONOUN/r_c/poss} own tail? The siblings laugh about it as they move on to the next hunting ground.",
                 "exp": 20,
                 "weight": 20,
                 "prey": ["medium"],
@@ -3099,7 +3099,7 @@
                 ]
             },
             {
-                "text": "r_c jokes that {PRONOUN/r_c/subject} can't possibly be related to s_c - clearly s_c was born from reef sharks, not cats, with the way {PRONOUN/s_c/subject} {VERB/s_c/glide/glides} through the water.",
+                "text": "r_c jokes that {PRONOUN/r_c/subject} can't possibly be related to s_c - clearly s_c was born from reef sharks, not rabbits, with the way {PRONOUN/s_c/subject} {VERB/s_c/glide/glides} through the water.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["SWIMMER,1"],
@@ -3128,7 +3128,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["water in their lungs"],
                         "scars": []
                     }
@@ -3147,11 +3147,11 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "all apprentices": [-1, -1]
+            "all rusasirahs": [-1, -1]
         },
         "weight": 40,
         "intro_text": "The hunting patrol heads out early, before the sun can turn the dunes into the bakingly hot expanse they've been recently.",
-        "decline_text": "They encounter a dawn patrol on their way back to camp and join up with them instead.",
+        "decline_text": "They encounter a dawn patrol on their way back to burrow and join up with them instead.",
         "chance_of_success": 50,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
@@ -3171,7 +3171,7 @@
                 ]
             },
             {
-                "text": "r_c always feels like {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} padding in p_l's footsteps, especially today, watching {PRONOUN/p_l/object} haul back such a good catch of prey for the Clan - a contribution that more than makes up for r_c's meager offerings.",
+                "text": "r_c always feels like {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} padding in p_l's footsteps, especially today, watching {PRONOUN/p_l/object} haul back such a good catch of prey for the Warren - a contribution that more than makes up for r_c's meager offerings.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["medium"],
@@ -3203,12 +3203,12 @@
                 "prey": ["very_small"]
             },
             {
-                "text": "r_c comes down with a debilitating headache, making {PRONOUN/r_c/object} stagger, dizzy and weak, as {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} helped back to camp.",
+                "text": "r_c comes down with a debilitating headache, making {PRONOUN/r_c/object} stagger, dizzy and weak, as {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} helped back to burrow.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["severe headache"],
                         "scars": []
                     }
@@ -3236,7 +3236,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "all apprentices": [-1, -1]
+            "all rusasirahs": [-1, -1]
         },
         "weight": 40,
         "intro_text": "The siblings head out to one of the further hunting grounds of the beach, where a long series of shallow rock pools promises good hunting and a way to cool off.",
@@ -3288,7 +3288,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["diarrhea"],
                         "scars": []
                     }
@@ -3307,7 +3307,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "all apprentices": [-1, -1]
+            "all rusasirahs": [-1, -1]
         },
         "weight": 40,
         "intro_text": "The sun is out (again); the seagulls are squabbling (it's been constant lately); there's not a breath of wind (time to go fishing and dip their paws in the rockpools); and p_l is out on a hunting patrol with {PRONOUN/p_l/poss} siblings.",
@@ -3316,7 +3316,7 @@
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
             {
-                "text": "A b_mp_a_s and a couple b_mp_a_p are nothing to sniff at, as a hunting success, but stars above, being alone with {PRONOUN/p_l/poss} siblings makes p_l feel like a kitten again. And not in the cute way either - in the chewing on tails, whiny, petty, immature way. Ugh.",
+                "text": "A b_mp_a_s and a couple b_mp_a_p are nothing to sniff at, as a hunting success, but stars above, being alone with {PRONOUN/p_l/poss} siblings makes p_l feel like a kit again. And not in the cute way either - in the chewing on tails, whiny, petty, immature way. Ugh.",
                 "exp": 20,
                 "weight": 20,
                 "prey": ["medium"],
@@ -3331,7 +3331,7 @@
                 ]
             },
             {
-                "text": "The hunting patrol is perfectly successful and it matters not a whit to any of the warriors, because p_l makes a joke that {PRONOUN/p_l/subject} {VERB/p_l/think/thinks} is funny but that's always gotten on r_c's nerves, and suddenly everyone's acting like apprentices again - snippy, immature, and irritable.",
+                "text": "The hunting patrol is perfectly successful and it matters not a whit to any of the rabbits, because p_l makes a joke that {PRONOUN/p_l/subject} {VERB/p_l/think/thinks} is funny but that's always gotten on r_c's nerves, and suddenly everyone's acting like rusasirahs again - snippy, immature, and irritable.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["medium"],
@@ -3346,7 +3346,7 @@
                 ]
             },
             {
-                "text": "s_c nets them four healthy b_mp_a_p to take back to camp, but it only irritates {PRONOUN/s_c/poss} siblings. r_c never even got the chance to even try for a swipe. {VERB/r_c/Are/Is} {PRONOUN/r_c/subject} only there to carry around s_c's prey?",
+                "text": "s_c nets them four healthy b_mp_a_p to take back to burrow, but it only irritates {PRONOUN/s_c/poss} siblings. r_c never even got the chance to even try for a swipe. {VERB/r_c/Are/Is} {PRONOUN/r_c/subject} only there to carry around s_c's prey?",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["CLIMBER,1", "HUNTER,1", "RUNNER,1", "SWIMMER,1"],
@@ -3381,11 +3381,11 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "all apprentices": [-1, -1]
+            "all rusasirahs": [-1, -1]
         },
         "weight": 40,
         "intro_text": "r_c muses that sometimes it's just nice to hang out with {PRONOUN/r_c/poss} siblings. Especially when the water's pleasantly cool on their overheated pelts, perfect for a great hunt together!",
-        "decline_text": "But sometimes, you get called back to camp instead. Ah well, another time!",
+        "decline_text": "But sometimes, you get called back to burrow instead. Ah well, another time!",
         "chance_of_success": 50,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
@@ -3412,7 +3412,7 @@
                 ]
             },
             {
-                "text": "There's just something nice about hanging out with other warriors who'll always be there for {PRONOUN/r_c/object}, regardless of their similarities and differences. And they also bring back a good-sized b_mp_a_s with some b_tp_dl_p on the side for the fresh-kill pile.",
+                "text": "There's just something nice about hanging out with other rabbits who'll always be there for {PRONOUN/r_c/object}, regardless of their similarities and differences. And they also bring back a good-sized b_mp_a_s with some b_tp_dl_p on the side for the fresh-kill pile.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["medium"],
@@ -3476,7 +3476,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "all apprentices": [-1, -1]
+            "all rusasirahs": [-1, -1]
         },
         "weight": 40,
         "intro_text": "Sun's out, and r_c has been assigned a moderately tolerable hunting patrol - {PRONOUN/r_c/poss} siblings!",
@@ -3485,7 +3485,7 @@
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
             {
-                "text": "Watching r_c execute a fantastic leap to bring down a b_mp_dl_s, p_l smiles. Does r_c remember the time {PRONOUN/r_c/subject} tried to do that as a kitten and stood on {PRONOUN/r_c/poss} own tail? The siblings laugh about it together as they move on to the next hunting ground.",
+                "text": "Watching r_c execute a fantastic leap to bring down a b_mp_dl_s, p_l smiles. Does r_c remember the time {PRONOUN/r_c/subject} tried to do that as a kit and stood on {PRONOUN/r_c/poss} own tail? The siblings laugh about it together as they move on to the next hunting ground.",
                 "exp": 20,
                 "weight": 20,
                 "prey": ["medium"],
@@ -3515,7 +3515,7 @@
                 ]
             },
             {
-                "text": "r_c jokes that {PRONOUN/r_c/subject} can't possibly be related to s_c - clearly s_c was born from reef sharks, not cats, with the way {PRONOUN/s_c/subject} {VERB/s_c/glide/glides} through the water.",
+                "text": "r_c jokes that {PRONOUN/r_c/subject} can't possibly be related to s_c - clearly s_c was born from reef sharks, not rabbits, with the way {PRONOUN/s_c/subject} {VERB/s_c/glide/glides} through the water.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["SWIMMER,1"],
@@ -3544,7 +3544,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["water in their lungs"],
                         "scars": []
                     }
@@ -3563,11 +3563,11 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "all apprentices": [-1, -1]
+            "all rusasirahs": [-1, -1]
         },
         "weight": 40,
         "intro_text": "The hunting patrol heads out early, before the sun can turn the dunes into the bakingly hot expanse they've been recently.",
-        "decline_text": "They encounter a dawn patrol on their way back to camp and join up with them instead.",
+        "decline_text": "They encounter a dawn patrol on their way back to burrow and join up with them instead.",
         "chance_of_success": 50,
         "relationship_constraint": ["siblings"],
         "success_outcomes": [
@@ -3587,7 +3587,7 @@
                 ]
             },
             {
-                "text": "r_c always feels like {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} padding in p_l's footsteps, especially today, watching {PRONOUN/p_l/object} haul back such a good catch of prey for the Clan - a contribution that more than makes up for r_c's meager offerings.",
+                "text": "r_c always feels like {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} padding in p_l's footsteps, especially today, watching {PRONOUN/p_l/object} haul back such a good catch of prey for the Warren - a contribution that more than makes up for r_c's meager offerings.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["medium"],
@@ -3619,12 +3619,12 @@
                 "prey": ["very_small"]
             },
             {
-                "text": "r_c comes down with a debilitating headache, making {PRONOUN/r_c/object} stagger, dizzy and weak, as {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} helped back to camp.",
+                "text": "r_c comes down with a debilitating headache, making {PRONOUN/r_c/object} stagger, dizzy and weak, as {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} helped back to burrow.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["severe headache"],
                         "scars": []
                     }
@@ -3652,7 +3652,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "all apprentices": [-1, -1]
+            "all rusasirahs": [-1, -1]
         },
         "weight": 40,
         "intro_text": "The siblings head out to one of the further hunting grounds of the beach, where a long series of shallow rock pools promise good hunting and a way to cool off.",
@@ -3704,7 +3704,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["diarrhea"],
                         "scars": []
                     }
@@ -3724,12 +3724,12 @@
         "max_cats": 6,
         "min_max_status": {},
         "weight": 20,
-        "intro_text": "p_l finds a patch of herbs that {PRONOUN/p_l/subject} {VERB/p_l/believe/believes} c_n might need for their stores. {PRONOUN/p_l/subject/CAP} freely {VERB/p_l/admit/admits} to {PRONOUN/p_l/poss} patrol {PRONOUN/p_l/subject} {VERB/p_l/are/is}n't a medicine cat and {VERB/p_l/ask/asks} {PRONOUN/p_l/poss} companions' advice. What do they know about this part of the coast's herbal properties, especially in the heat of greenleaf?",
-        "decline_text": "They decide to focus on hunting and leave the herb collecting to the medicine cats.",
+        "intro_text": "p_l finds a patch of herbs that {PRONOUN/p_l/subject} {VERB/p_l/believe/believes} c_n might need for their stores. {PRONOUN/p_l/subject/CAP} freely {VERB/p_l/admit/admits} to {PRONOUN/p_l/poss} patrol {PRONOUN/p_l/subject} {VERB/p_l/are/is}n't a healer and {VERB/p_l/ask/asks} {PRONOUN/p_l/poss} companions' advice. What do they know about this part of the coast's herbal properties, especially in the heat of greenleaf?",
+        "decline_text": "They decide to focus on hunting and leave the herb collecting to the healer rabbits.",
         "chance_of_success": 50,
         "success_outcomes": [
             {
-                "text": "It's not their normal task, but they're all smart enough to value supporting the Clan's medicine cat den. The patrol brings the herbs back to camp, and they are put to good use.",
+                "text": "It's not their normal task, but they're all smart enough to value supporting the Warren's healer den. The patrol brings the herbs back to burrow, and they are put to good use.",
                 "exp": 10,
                 "weight": 20,
                 "herbs": ["random_herbs"],
@@ -3744,7 +3744,7 @@
                 ]
             },
             {
-                "text": "s_c carefully plucks some of the herbs and takes them back to the camp to be identified before the patrol goes to the trouble of collecting them, smartly deciding to get an informed opinion before committing the patrol.",
+                "text": "s_c carefully plucks some of the herbs and takes them back to the burrow to be identified before the patrol goes to the trouble of collecting them, smartly deciding to get an informed opinion before committing the patrol.",
                 "exp": 10,
                 "weight": 20,
                 "stat_skill": [
@@ -3769,7 +3769,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "The patrol brings the herbs back to camp, only to find out that while the herbs promote good gut health, they're not a rare resource. Still, c_n will be eating an extra healthy dinner tonight with the herbs sprinkled into their fresh-kill.",
+                "text": "The patrol brings the herbs back to burrow, only to find out that while the herbs promote good gut health, they're not a rare resource. Still, c_n will be eating an extra healthy dinner tonight with the herbs sprinkled into their fresh-kill.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [

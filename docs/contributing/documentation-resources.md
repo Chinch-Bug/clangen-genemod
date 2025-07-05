@@ -50,10 +50,10 @@ We currently have custom icons set up, which can be utilized across the entire d
 |     :clangen-arrow-left:      |     `:clangen-arrow-left:`      |
 |  :clangen-arrow-left-double:  |  `:clangen-arrow-left-double:`  |
 |     :clangen-arrow-right:     |     `:clangen-arrow-right:`     |
-|      :clangen-cat-head:       |      `:clangen-cat-head:`       |
-|     :clangen-clan-blank:      |     `:clangen-clan-blank:`      |
-|    :clangen-clan-question:    |    `:clangen-clan-question:`    |
-|     :clangen-clan-strike:     |     `:clangen-clan-strike:`     |
+|      :clangen-rabbit-head:       |      `:clangen-rabbit-head:`       |
+|     :clangen-warren-blank:      |     `:clangen-warren-blank:`      |
+|    :clangen-warren-question:    |    `:clangen-warren-question:`    |
+|     :clangen-warren-strike:     |     `:clangen-warren-strike:`     |
 |        :clangen-dice:         |        `:clangen-dice:`         |
 |       :clangen-droplet:       |       `:clangen-droplet:`       |
 |        :clangen-herb:         |        `:clangen-herb:`         |
@@ -65,6 +65,6 @@ We currently have custom icons set up, which can be utilized across the entire d
 |      :clangen-scratches:      |      `:clangen-scratches:`      |
 |      :clangen-snowflake:      |      `:clangen-snowflake:`      |
 |       :clangen-sprout:        |       `:clangen-sprout:`        |
-|      :clangen-starclan:       |      `:clangen-starclan:`       |
+|      :clangen-inle:       |      `:clangen-inle:`       |
 |         :clangen-sun:         |         `:clangen-sun:`         |
 

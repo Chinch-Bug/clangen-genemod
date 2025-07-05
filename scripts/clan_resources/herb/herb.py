@@ -31,7 +31,7 @@ class Herb:
 
     def get_rarity(self, biome, season) -> int:
         """
-        returns rarity of the herb within clan's current biome and season
+        returns rarity of the herb within warren's current biome and season
         """
         rarity_dict = self._herb_dict.get("rarity", {})
 

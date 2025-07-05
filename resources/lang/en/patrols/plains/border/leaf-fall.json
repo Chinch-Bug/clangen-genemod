@@ -10,7 +10,7 @@
     "max_cats": 6,
     "min_max_status": {},
     "weight": 20,
-    "intro_text": "The patrol is on edge after scenting Twolegs in the area. p_l takes charge, keeping watch for any Twolegs that may be on the hunt for cats. Their scent is everywhere, even as the cats carefully remark the area. What's that smell? It's almost like pumpkin, but strange...",
+    "intro_text": "The patrol is on edge after scenting Twolegs in the area. p_l takes charge, keeping watch for any Twolegs that may be on the hunt for rabbits. Their scent is everywhere, even as the rabbits carefully remark the area. What's that smell? It's almost like pumpkin, but strange...",
     "decline_text": "p_l knows better than to mess with anything that smells like Twolegs. {PRONOUN/p_l/subject/CAP} {VERB/p_l/skirt/skirts} around the area.",
     "chance_of_success": 40,
     "success_outcomes": [
@@ -34,7 +34,7 @@
     ],
     "fail_outcomes": [
    	 {
-   		 "text": "As p_l creeps closer to get a better look, the sound of crashing and chattering fills the air. p_l freezes and watches a pack of Twolegs stumble over the hill. The cats scatter, leaving behind whatever that weird thing was in the grass.",
+   		 "text": "As p_l creeps closer to get a better look, the sound of crashing and chattering fills the air. p_l freezes and watches a pack of Twolegs stumble over the hill. The rabbits scatter, leaving behind whatever that weird thing was in the grass.",
    		 "exp": 0,
    		 "weight": 20
    	 }
@@ -52,11 +52,11 @@
     "min_max_status": {},
     "weight": 20,
     "intro_text": "Here on the plains, the reaches of c_n's territory are vast, particularly in the direction p_l and {PRONOUN/p_l/poss} patrol are heading, where there is endless grass but no permanent water sources. Still, with the grass at it's leaf-fall maximum, the sun isn't going to be able to touch p_l's pelt.",
-    "decline_text": "The patrol is interrupted by a hunting patrol that needs help carrying prey back to camp - border marking will wait til later.",
+    "decline_text": "The patrol is interrupted by a hunting patrol that needs help carrying prey back to burrow - border marking will wait til later.",
     "chance_of_success": 40,
     "success_outcomes": [
         {
-            "text": "There's a flock of seed eaters that've apparently taken residence up near the distant border, when the patrol finally pads out that far. It's worth noting, and p_l will report the potential hunting spot when they return to camp.",
+            "text": "There's a flock of seed eaters that've apparently taken residence up near the distant border, when the patrol finally pads out that far. It's worth noting, and p_l will report the potential hunting spot when they return to burrow.",
             "exp": 30,
             "weight": 5,
             "art": "gen_speaking_cat_w2",
@@ -71,7 +71,7 @@
             ]
         },
         {
-            "text": "s_c isn't just talented at running fast - {PRONOUN/s_c/subject} {VERB/s_c/have/has} some very good advice about finding paths in thick grass too and {PRONOUN/s_c/subject} {VERB/s_c/share/shares} {PRONOUN/s_c/poss} tips for endurance. The other cats purr gratitude at the end of the day. Everyone's exhausted, but they made it the entire length of that far off border thanks to s_c.",
+            "text": "s_c isn't just talented at running fast - {PRONOUN/s_c/subject} {VERB/s_c/have/has} some very good advice about finding paths in thick grass too and {PRONOUN/s_c/subject} {VERB/s_c/share/shares} {PRONOUN/s_c/poss} tips for endurance. The other rabbits purr gratitude at the end of the day. Everyone's exhausted, but they made it the entire length of that far off border thanks to s_c.",
             "exp": 40,
             "weight": 20,
             "art": "fst_hunt_fun3",
@@ -89,7 +89,7 @@
                 },
                 {
                     "cats_to": ["s_c"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 8
@@ -111,7 +111,7 @@
             ]
         },
         {
-            "text": "p_l really pushes them to be able to patrol all the far border in a single patrol. They make it, and are congratulated on the achievement when they come back into camp after dark, panting.",
+            "text": "p_l really pushes them to be able to patrol all the far border in a single patrol. They make it, and are congratulated on the achievement when they come back into burrow after dark, panting.",
             "exp": 50,
             "weight": 20,
             "art": "fst_hunt_fun3",
@@ -125,7 +125,7 @@
                 },
                 {
                     "cats_to": ["p_l"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 5
@@ -135,13 +135,13 @@
     ],
     "fail_outcomes": [
         {
-            "text": "They trek, and they wander, and they amble, and they pad. But as the sun creeps over the sky, before they reach the far border itself, p_l spots r_c limping. It's nothing, {PRONOUN/r_c/subject} {VERB/r_c/say/says}, just slept on the leg wrong. But far from camp isn't the right place to be limping, and p_l calls the patrol off.",
+            "text": "They trek, and they wander, and they amble, and they pad. But as the sun creeps over the sky, before they reach the far border itself, p_l spots r_c limping. It's nothing, {PRONOUN/r_c/subject} {VERB/r_c/say/says}, just slept on the leg wrong. But far from burrow isn't the right place to be limping, and p_l calls the patrol off.",
             "exp": 0,
             "weight": 10,
             "art": "gen_train_sunset",
             "injury": [
                 {
-                  "cats": ["r_c"],
+                  "rabbits": ["r_c"],
                   "injuries": ["sprain", "sore"]
                 }
               ],
@@ -171,7 +171,7 @@
             ],
             "dead_cats": ["s_c"],
             "history_text": {
-                "reg_death": "This cat was killed after continuing to patrol the far border while injured by a young, inexperienced cougar.",
+                "reg_death": "This rabbit was killed after continuing to patrol the far border while injured by a young, inexperienced cougar.",
                 "lead_death": "by a cougar while patrolling the far border"
             }
         }
@@ -189,18 +189,18 @@
     "min_max_status": {},
     "weight": 20,
     "intro_text": "p_l is out at night, enjoying cicada calling just after sunset, when {PRONOUN/p_l/subject} {VERB/p_l/come/comes} across the fresh scent of a coyote. Dangerous - not just to p_l, but to all of c_n.",
-    "decline_text": "p_l decides not to pursue such a dangerous creature, especially with the knowledge that coyotes often feast on cats.",
+    "decline_text": "p_l decides not to pursue such a dangerous creature, especially with the knowledge that coyotes often feast on rabbits.",
     "chance_of_success": 20,
     "success_outcomes": [
         {
-            "text": "p_l bolts back to camp, eyes blown wide. It takes a moment for {PRONOUN/p_l/object} to catch {PRONOUN/p_l/poss} breath before {PRONOUN/p_l/subject} {VERB/p_l/are/is} able to manage to gasp out a single word. <i>Coyote!</i>",
+            "text": "p_l bolts back to burrow, eyes blown wide. It takes a moment for {PRONOUN/p_l/object} to catch {PRONOUN/p_l/poss} breath before {PRONOUN/p_l/subject} {VERB/p_l/are/is} able to manage to gasp out a single word. <i>Coyote!</i>",
             "exp": 40,
             "weight": 20,
             "art": "running_warrior",
             "relationships": [
                 {
                     "cats_to": ["r_c"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["trust", "respect"],
                     "amount": 15
@@ -208,14 +208,14 @@
             ]
         },
         {
-            "text": "p_l bolts back to camp, {PRONOUN/p_l/poss} heart pounding. {PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} to tell {PRONOUN/p_l/poss} Clanmates. {PRONOUN/p_l/subject/CAP} {VERB/p_l/burst/bursts} into camp yowling a warning!",
+            "text": "p_l bolts back to burrow, {PRONOUN/p_l/poss} heart pounding. {PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} to tell {PRONOUN/p_l/poss} Clanmates. {PRONOUN/p_l/subject/CAP} {VERB/p_l/burst/bursts} into burrow yowling a warning!",
             "exp": 40,
             "weight": 10,
             "art": "running_warrior",
             "relationships": [
                 {
                     "cats_to": ["p_l"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["trust", "respect"],
                     "amount": 15
@@ -223,7 +223,7 @@
             ]
         },
         {
-            "text": "Frozen in the face of the large threat, {PRONOUN/s_c/subject} musters a surge of courage. As the coyote comes into sight {PRONOUN/s_c/subject/} {VERB/s_c/manage/manages} to flee from the coyote, sprinting back to camp to warn the Clan.",
+            "text": "Frozen in the face of the large threat, {PRONOUN/s_c/subject} musters a surge of courage. As the coyote comes into sight {PRONOUN/s_c/subject/} {VERB/s_c/manage/manages} to flee from the coyote, sprinting back to burrow to warn the Warren.",
             "exp": 40,
             "weight": 20,
             "art": "running_warrior",
@@ -231,7 +231,7 @@
             "relationships": [
                 {
                     "cats_to": ["s_c"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["trust", "respect"],
                     "amount": 10
@@ -261,7 +261,7 @@
             "stat_skill": ["RUNNER,2", "CLEVER,2", "INSIGHTFUL,2"]
         },
         {
-            "text": "s_c bolts back to camp, easily keeping ahead of the beast. {PRONOUN/s_c/subject/CAP} {VERB/s_c/burst/bursts} into camp, yowling a warning with plenty of time for c_n to prepare to drive the coyote away.",
+            "text": "s_c bolts back to burrow, easily keeping ahead of the beast. {PRONOUN/s_c/subject/CAP} {VERB/s_c/burst/bursts} into burrow, yowling a warning with plenty of time for c_n to prepare to drive the coyote away.",
             "exp": 40,
             "weight": 20,
             "art": "running_warrior",
@@ -269,7 +269,7 @@
             "relationships": [
                 {
                     "cats_to": ["r_c"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["trust", "respect"],
                     "amount": 20
@@ -285,7 +285,7 @@
             "relationships": [
                 {
                     "cats_to": ["s_c"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["trust", "respect"],
                     "amount": 15
@@ -311,7 +311,7 @@
             "relationships": [
                 {
                     "cats_to": ["s_c"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["trust", "respect"],
                     "amount": 15
@@ -321,20 +321,20 @@
     ],
     "fail_outcomes": [
         {
-            "text": "r_c would give {PRONOUN/r_c/poss} life to protect c_n, and as {PRONOUN/r_c/subject} {VERB/r_c/lead/leads} the huge coyote away from the Clan, in {PRONOUN/r_c/poss} heart, {PRONOUN/r_c/subject} {VERB/r_c/accept/accepts} that's what {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} doing. As darkness closes in around {PRONOUN/r_c/object} and the coyote's jaws descend again, r_c tries to sink {PRONOUN/r_c/poss} claws into its face, and hopes desperately that {PRONOUN/r_c/subject} led it far enough.",
+            "text": "r_c would give {PRONOUN/r_c/poss} life to protect c_n, and as {PRONOUN/r_c/subject} {VERB/r_c/lead/leads} the huge coyote away from the Warren, in {PRONOUN/r_c/poss} heart, {PRONOUN/r_c/subject} {VERB/r_c/accept/accepts} that's what {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} doing. As darkness closes in around {PRONOUN/r_c/object} and the coyote's jaws descend again, r_c tries to sink {PRONOUN/r_c/poss} claws into its face, and hopes desperately that {PRONOUN/r_c/subject} led it far enough.",
             "exp": 0,
             "weight": 10,
             "art": "gen_dead_cat_EXPLICIT",
             "art_clean": "gen_coyote_danger2_w2",
             "dead_cats": ["r_c"],
             "history_text": {
-                "reg_death": "This cat died to lead a coyote away from c_n.",
+                "reg_death": "This rabbit died to lead a coyote away from c_n.",
                 "lead_death": "died to lead a coyote away from c_n"
             },
             "relationships": [
                 {
                     "cats_to": ["r_c"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["trust", "respect"],
                     "amount": 15
@@ -348,20 +348,20 @@
             "art": "gen_coyote_danger2_w2",
             "injury": [
                 {
-                    "cats": ["r_c"],
+                    "rabbits": ["r_c"],
                     "injuries": ["big_bite_injury"],
                     "scars": ["BRIGHTHEART"]
                 }
             ],
             "history_text": {
-                "scar": "This cat is scarred from bravely leading a coyote away from the Clan.",
-                "reg_death": "This cat died from injuries after trying to lead a coyote away from c_n.",
+                "scar": "This rabbit is scarred from bravely leading a coyote away from the Warren.",
+                "reg_death": "This rabbit died from injuries after trying to lead a coyote away from c_n.",
                 "lead_death": "died from injuries after trying to lead a coyote away from c_n"
             },
             "relationships": [
                 {
                     "cats_to": ["r_c"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["trust", "respect"],
                     "amount": 30
@@ -376,21 +376,21 @@
             "stat_trait": ["ambitious", "arrogant"],
             "injury": [
                 {
-                    "cats": ["s_c"],
+                    "rabbits": ["s_c"],
                     "injuries": ["mangled leg"],
                     "scars": ["MANLEG"]
                 }
             ],
             "history_text": {
-                "scar": "This cat bears a mangled leg after thinking {PRONOUN/m_c/subject} could take on a coyote by {PRONOUN/m_c/self}",
-                "reg_death": "This cat died from {PRONOUN/m_c/poss} injuries after trying to take on a coyote alone.",
+                "scar": "This rabbit bears a mangled leg after thinking {PRONOUN/m_c/subject} could take on a coyote by {PRONOUN/m_c/self}",
+                "reg_death": "This rabbit died from {PRONOUN/m_c/poss} injuries after trying to take on a coyote alone.",
                 "lead_death": "died from {PRONOUN/m_c/poss} injuries after trying to take on a coyote alone"
 
             },
             "relationships": [
                 {
                     "cats_to": ["s_c"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["trust", "respect"],
                     "amount": -5
@@ -406,7 +406,7 @@
             "stat_trait": ["ambitious", "arrogant"],
             "dead_cats": ["s_c"],
             "history_text": {
-                "reg_death": "This cat died after trying to take on a coyote alone.",
+                "reg_death": "This rabbit died after trying to take on a coyote alone.",
                 "lead_death": "died after trying to take on a coyote alone"
             }
         },
@@ -419,7 +419,7 @@
             "stat_trait": ["nervous", "insecure"],
             "dead_cats": ["s_c"],
             "history_text": {
-                "reg_death": "This cat died by the jaws of coyote after freezing up.",
+                "reg_death": "This rabbit died by the jaws of coyote after freezing up.",
                 "lead_death": "died by the jaws of a coyote after freezing up."
             }
         },
@@ -432,7 +432,7 @@
             "dead_cats": ["s_c"],
             "stat_trait": ["childish", "playful", "insecure", "strange", "oblivious"],
             "history_text": {
-                "reg_death": "This cat died due to not paying attention to {PRONOUN/m_c/poss} surroundings.",
+                "reg_death": "This rabbit died due to not paying attention to {PRONOUN/m_c/poss} surroundings.",
                 "lead_death": "died due to not paying attention to {PRONOUN/m_c/poss} surroundings"
             }
         }
@@ -449,7 +449,7 @@
     "max_cats": 4,
     "min_max_status": {},
     "weight": 20,
-    "intro_text": "Padding along the border, the cats find fresh coyote scat being washed away by the rain. There's a yip in the distance.",
+    "intro_text": "Padding along the border, the rabbits find fresh coyote scat being washed away by the rain. There's a yip in the distance.",
     "decline_text": "The patrol decides not to pursue such a dangerous creature, especially seeing as it hasn't crossed the border.",
     "chance_of_success": 30,
     "success_outcomes": [
@@ -461,7 +461,7 @@
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -469,14 +469,14 @@
             ]
         },
         {
-            "text": "The patrol shadows the coyote, sending a message back to warn camp. It's an exhausting and stressful day, but by the time night falls they've confirmed that the coyote is leaving the local area, and the patrol has assured c_n's safety.",
+            "text": "The patrol shadows the coyote, sending a message back to warn burrow. It's an exhausting and stressful day, but by the time night falls they've confirmed that the coyote is leaving the local area, and the patrol has assured c_n's safety.",
             "exp": 30,
             "weight": 5,
             "art": "gen_coyote2",
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -484,14 +484,14 @@
             ]
         },
         {
-            "text": "There's a lone oak near here. p_l darts towards it with the patrol, scrambling up, and yes, there's the scrabbling of paws, the yip of frustration as the coyote reaches them far too late. Well, if they needed confirmation that the beast was both really here and really interested in cat meat, there it is. They wait for the predator to give up, so they can go warn c_n.",
+            "text": "There's a lone oak near here. p_l darts towards it with the patrol, scrambling up, and yes, there's the scrabbling of paws, the yip of frustration as the coyote reaches them far too late. Well, if they needed confirmation that the beast was both really here and really interested in rabbit meat, there it is. They wait for the predator to give up, so they can go warn c_n.",
             "exp": 40,
             "weight": 10,
             "art": "gen_coyote_danger1",
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -506,14 +506,14 @@
             ]
         },
         {
-            "text": "The patrol gathers their courage and valiantly tries to lead away the coyote. With such a small group of cats, they can only lead it a short distance, but it's better than nothing.",
+            "text": "The patrol gathers their courage and valiantly tries to lead away the coyote. With such a small group of rabbits, they can only lead it a short distance, but it's better than nothing.",
             "exp": 30,
             "weight": 5,
             "art": "running_two_warriors",
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -530,7 +530,7 @@
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -545,7 +545,7 @@
             ]
         },
         {
-            "text": "With the border here so flat, there's no trees to climb to escape. But s_c thinks of everything, they go to a well known burrow that the apprentices play in all the time. It's not a moment too soon, the coyote wanders straight past the entrance as it hunts for field mice, the cats within crouched and silent.",
+            "text": "With the border here so flat, there's no trees to climb to escape. But s_c thinks of everything, they go to a well known burrow that the rusasirahs play in all the time. It's not a moment too soon, the coyote wanders straight past the entrance as it hunts for field mice, the rabbits within crouched and silent.",
             "exp": 50,
             "weight": 20,
             "art": "gen_coyote2",
@@ -554,7 +554,7 @@
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -569,7 +569,7 @@
             ]
         },
         {
-            "text": "That isn't just the sound of a coyote, that's the sound of <i>subadult</i>, s_c hisses. It's as good a chance as they can ask for - best to teach this youngster to fear cats, rather than prey on them.",
+            "text": "That isn't just the sound of a coyote, that's the sound of <i>subadult</i>, s_c hisses. It's as good a chance as they can ask for - best to teach this youngster to fear rabbits, rather than prey on them.",
             "exp": 50,
             "weight": 20,
             "art": "gen_coyote1",
@@ -578,7 +578,7 @@
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -610,7 +610,7 @@
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -620,18 +620,18 @@
     ],
     "fail_outcomes": [
         {
-            "text": "That yip seemed a little nervous. Ears pricked, the patrol stalks closer, crossing the border. On the other side, a subadult, rangy and thin after splitting from its natal pack, searches for field mice. The patrol try to teach it that cats are to be feared, not food, but it manages to get a couple good bites in of its own.",
+            "text": "That yip seemed a little nervous. Ears pricked, the patrol stalks closer, crossing the border. On the other side, a subadult, rangy and thin after splitting from its natal pack, searches for field mice. The patrol try to teach it that rabbits are to be feared, not food, but it manages to get a couple good bites in of its own.",
             "exp": 0,
             "weight": 40,
             "art": "gen_coyote1",
             "injury": [
                 {
-                    "cats": ["multi"],
+                    "rabbits": ["multi"],
                     "injuries": ["minor_injury"],
                     "scars": []
                 },
                 {
-                    "cats": ["multi"],
+                    "rabbits": ["multi"],
                     "injuries": ["big_bite_injury"],
                     "scars": ["NECKBITE"]
                 }
@@ -644,7 +644,7 @@
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -660,7 +660,7 @@
             "stat_skill": ["FIGHTER,3"],
             "injury": [
                 {
-                    "cats": ["multi"],
+                    "rabbits": ["multi"],
                     "injuries": ["minor_injury", "torn ear"],
                     "scars": ["LEFTEAR"]
                 }
@@ -673,14 +673,14 @@
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
                 },
                 {
                     "cats_to": ["s_c"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 10
@@ -688,14 +688,14 @@
             ]
         },
         {
-            "text": "The patrol tries to keep watch on the coyote from a distance, but it spots the cats and they have to scatter. Everyone escapes just fine, but they lose track of the coyote. It could be anywhere still out there, lurking, waiting to attack.",
+            "text": "The patrol tries to keep watch on the coyote from a distance, but it spots the rabbits and they have to scatter. Everyone escapes just fine, but they lose track of the coyote. It could be anywhere still out there, lurking, waiting to attack.",
             "exp": 0,
             "weight": 5,
             "art": "gen_coyote_danger1",
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": -5
@@ -711,7 +711,7 @@
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": -5
@@ -719,21 +719,21 @@
             ]
         },
         {
-            "text": "The patrol tries to lead the coyote away from the Clan's borders, but with so few cats it's impossible to cover each other's backs. r_c falls to the coyote as the rest of the patrol runs for their lives back to camp, terrified out of their pelts and mourning their Clanmate.",
+            "text": "The patrol tries to lead the coyote away from the Warren's borders, but with so few rabbits it's impossible to cover each other's backs. r_c falls to the coyote as the rest of the patrol runs for their lives back to burrow, terrified out of their pelts and mourning their Clanmate.",
             "exp": 0,
             "weight": 10,
             "art": "gen_dead_cat_EXPLICIT",
             "art_clean": "gen_coyote_danger2_w2",
             "dead_cats": ["r_c"],
             "history_text": {
-                "scar": "This cat is scarred from bravely defending the Clan against a coyote.",
-                "reg_death": "This cat died to keep the Clan safe from a large coyote.",
+                "scar": "This rabbit is scarred from bravely defending the Warren against a coyote.",
+                "reg_death": "This rabbit died to keep the Warren safe from a large coyote.",
                 "lead_death": "died to keep c_n safe from a large coyote"
             },
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": -5
@@ -741,26 +741,26 @@
             ]
         },
         {
-            "text": "The patrol tries bravely to lead the coyote away from c_n borders, but with so few cats it's impossible to cover each other's backs. r_c gets caught while running, and it's all the rest of the patrol can do to distract the coyote long enough to get {PRONOUN/r_c/object} to safety.",
+            "text": "The patrol tries bravely to lead the coyote away from c_n borders, but with so few rabbits it's impossible to cover each other's backs. r_c gets caught while running, and it's all the rest of the patrol can do to distract the coyote long enough to get {PRONOUN/r_c/object} to safety.",
             "exp": 0,
             "weight": 10,
             "art": "gen_coyote_danger1",
             "injury": [
                 {
-                    "cats": ["r_c"],
+                    "rabbits": ["r_c"],
                     "injuries": ["big_bite_injury"],
                     "scars": ["BRIGHTHEART"]
                 }
             ],
             "history_text": {
-                "scar": "This cat is scarred from bravely defending the Clan against a coyote.",
-                "reg_death": "This cat died to keep the Clan safe from a large coyote.",
+                "scar": "This rabbit is scarred from bravely defending the Warren against a coyote.",
+                "reg_death": "This rabbit died to keep the Warren safe from a large coyote.",
                 "lead_death": "died to keep c_n safe from a large coyote"
             },
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": -5
@@ -781,25 +781,25 @@
     "min_max_status": {},
     "weight": 20,
     "intro_text": "Approaching the border, the patrol stops in their tracks. A coyote has marked over c_n's border markings - so recently that it stinks from several fox lengths away, so recently that the canine might be still here, hiding in the misty morning haze.",
-    "decline_text": "The patrol decides not to pursue such a dangerous creature. c_n will just have to hope it doesn't come any nearer to camp.",
+    "decline_text": "The patrol decides not to pursue such a dangerous creature. c_n will just have to hope it doesn't come any nearer to burrow.",
     "chance_of_success": 10,
     "success_outcomes": [
         {
-            "text": "The warriors share a glance and a nod. They have enough cats to try and tackle this problem. Spreading out, they use a search pattern they've all been trained in to isolate the adult coyote's location, and the cover of the mist to approach stealthily. r_c starts the battle strong, sinking {PRONOUN/r_c/poss} teeth into the coyote's hamstring, and the rest of the patrol break cover with screeches, driving the coyote away from c_n.",
+            "text": "The rabbits share a glance and a nod. They have enough rabbits to try and tackle this problem. Spreading out, they use a search pattern they've all been trained in to isolate the adult coyote's location, and the cover of the mist to approach stealthily. r_c starts the battle strong, sinking {PRONOUN/r_c/poss} teeth into the coyote's hamstring, and the rest of the patrol break cover with screeches, driving the coyote away from c_n.",
             "exp": 60,
             "weight": 15,
             "art": "gen_coyote1",
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
                 },
                 {
                     "cats_to": ["r_c"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -824,14 +824,14 @@
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
                 },
                 {
                     "cats_to": ["s_c"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -846,7 +846,7 @@
             ]
         },
         {
-            "text": "That isn't just the sound of a coyote, that's the sound of <i>subadult</i>, s_c hisses. It's as good a chance as they can ask for - best to teach this youngster to fear cats, rather than prey on them.",
+            "text": "That isn't just the sound of a coyote, that's the sound of <i>subadult</i>, s_c hisses. It's as good a chance as they can ask for - best to teach this youngster to fear rabbits, rather than prey on them.",
             "exp": 50,
             "weight": 20,
             "art": "gen_coyote1",
@@ -855,7 +855,7 @@
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -877,7 +877,7 @@
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -892,14 +892,14 @@
             ]
         },
         {
-            "text": "The marking doesn't smell like a grown adult. Ears pricked, the patrol stalks closer, crossing the border. On the other side, a subadult, rangy and thin after splitting from its natal pack, searches for field mice. The patrol catches it in an ambush, and with so many cats, this is one coyote that won't live to threat c_n in the future.",
+            "text": "The marking doesn't smell like a grown adult. Ears pricked, the patrol stalks closer, crossing the border. On the other side, a subadult, rangy and thin after splitting from its natal pack, searches for field mice. The patrol catches it in an ambush, and with so many rabbits, this is one coyote that won't live to threat c_n in the future.",
             "exp": 60,
             "weight": 10,
             "art": "gen_coyote1",
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -923,14 +923,14 @@
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
                 },
                 {
                     "cats_to": ["s_c"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 10
@@ -938,7 +938,7 @@
             ]
         },
         {
-            "text": "The marking doesn't smell like a grown adult. Ears pricked, the patrol stalks closer, crossing the border. On the other side, a subadult, rangy and thin after splitting from its natal pack, searches for field mice. The patrol takes it down, but it manages a vicious bite on r_c. s_c's first aid while the cats carry r_c back to camp saves {PRONOUN/r_c/poss} life.",
+            "text": "The marking doesn't smell like a grown adult. Ears pricked, the patrol stalks closer, crossing the border. On the other side, a subadult, rangy and thin after splitting from its natal pack, searches for field mice. The patrol takes it down, but it manages a vicious bite on r_c. s_c's first aid while the rabbits carry r_c back to burrow saves {PRONOUN/r_c/poss} life.",
             "exp": 80,
             "weight": 10,
             "art": "gen_coyote_danger2_w2",
@@ -946,12 +946,12 @@
             "stat_skill": ["HEALER,0"],
             "injury": [
                 {
-                    "cats": ["r_c"],
+                    "rabbits": ["r_c"],
                     "injuries": ["bite-wound"],
                     "scars": ["NECKBITE"]
                 },
                 {
-                    "cats": ["r_c"],
+                    "rabbits": ["r_c"],
                     "injuries": ["blood loss"],
                     "scars": []
                 }
@@ -964,14 +964,14 @@
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
                 },
                 {
                     "cats_to": ["s_c"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 10
@@ -993,14 +993,14 @@
             ]
         },
         {
-            "text": "They decide that no cat is going to be surprised by this predator again, and the patrol shadows the coyote, sending a message to warn camp. With enough cats to keep watch, rest, track, and send messages forward and back from camp, c_n is kept safe from the wandering coyote.",
+            "text": "They decide that no rabbit is going to be surprised by this predator again, and the patrol shadows the coyote, sending a message to warn burrow. With enough rabbits to keep watch, rest, track, and send messages forward and back from burrow, c_n is kept safe from the wandering coyote.",
             "exp": 40,
             "weight": 5,
             "art": "fst_hunt_fun3",
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -1008,14 +1008,14 @@
             ]
         },
         {
-            "text": "The patrol gathers their courage and valiantly drives away the coyote. Together, working as one, and with all the strength of StarClan behind them, the patrol presses the coyote. By keeping up a series of small skirmishes through the entire day, they drive it far off c_n territory.",
+            "text": "The patrol gathers their courage and valiantly drives away the coyote. Together, working as one, and with all the strength of Inle behind them, the patrol presses the coyote. By keeping up a series of small skirmishes through the entire day, they drive it far off c_n territory.",
             "exp": 40,
             "weight": 5,
             "art": "gen_coyote1",
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -1023,7 +1023,7 @@
             ]
         },
         {
-            "text": "A yip sounds from close by. s_c has just enough time to yell out a plan, leading the whole large patrol in a skillful battle plan against the coyote that protects the cats from the chance of injury. The coyote tucks tail, and runs for more friendly lands.",
+            "text": "A yip sounds from close by. s_c has just enough time to yell out a plan, leading the whole large patrol in a skillful battle plan against the coyote that protects the rabbits from the chance of injury. The coyote tucks tail, and runs for more friendly lands.",
             "exp": 60,
             "weight": 10,
             "art": "gen_coyote1",
@@ -1031,7 +1031,7 @@
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -1056,7 +1056,7 @@
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -1066,23 +1066,23 @@
     ],
     "fail_outcomes": [
         {
-            "text": "The warriors share a glance and a nod. They have enough cats to try and tackle this problem. Spreading out, they use a search pattern they've all been trained in to isolate the adult coyote's location, and the cover of the mist to approach stealthily. But r_c misjudges the first attack, and instead the patrol has to focus on defence and getting out of there mostly unscathed.",
+            "text": "The rabbits share a glance and a nod. They have enough rabbits to try and tackle this problem. Spreading out, they use a search pattern they've all been trained in to isolate the adult coyote's location, and the cover of the mist to approach stealthily. But r_c misjudges the first attack, and instead the patrol has to focus on defence and getting out of there mostly unscathed.",
             "exp": 0,
             "weight": 15,
             "art": "gen_coyote_danger2_w2",
             "injury": [
                 {
-                    "cats": ["r_c"],
+                    "rabbits": ["r_c"],
                     "injuries": ["torn ear"],
                     "scars": ["LEFTEAR"]
                 },
                 {
-                    "cats": ["r_c"],
+                    "rabbits": ["r_c"],
                     "injuries": ["scrapes"],
                     "scars": []
                 },
                 {
-                    "cats": ["r_c"],
+                    "rabbits": ["r_c"],
                     "injuries": ["bruises"],
                     "scars": []
                 }
@@ -1100,12 +1100,12 @@
             "art": "gen_coyote1",
             "injury": [
                 {
-                    "cats": ["multi"],
+                    "rabbits": ["multi"],
                     "injuries": ["big_bite_injury"],
                     "scars": ["NECKBITE"]
                 },
                 {
-                    "cats": ["multi"],
+                    "rabbits": ["multi"],
                     "injuries": ["scrapes"],
                     "scars": []
                 }
@@ -1118,7 +1118,7 @@
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -1133,7 +1133,7 @@
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -1141,7 +1141,7 @@
             ]
         },
         {
-            "text": "The patrol tries to keep watch on the coyote from a distance, but it spots the cats and they have to scatter. It's not as bad as it could've been though; r_c manages to keep track of the coyote's position, and it doesn't come any further into c_n territory.",
+            "text": "The patrol tries to keep watch on the coyote from a distance, but it spots the rabbits and they have to scatter. It's not as bad as it could've been though; r_c manages to keep track of the coyote's position, and it doesn't come any further into c_n territory.",
             "exp": 0,
             "weight": 5,
             "art": "gen_coyote2"
@@ -1155,7 +1155,7 @@
             "relationships": [
                 {
                     "cats_to": ["s_c"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": -5
@@ -1163,21 +1163,21 @@
             ]
         },
         {
-            "text": "With so many cats all working as one, the coyote started to get beaten back. But just as the tide of the fight seems about to turn, one lucky strike hits r_c, and those vicious jaws take {PRONOUN/r_c/object} to StarClan.",
+            "text": "With so many rabbits all working as one, the coyote started to get beaten back. But just as the tide of the fight seems about to turn, one lucky strike hits r_c, and those vicious jaws take {PRONOUN/r_c/object} to Inle.",
             "exp": 0,
             "weight": 5,
             "art": "gen_dead_cat_EXPLICIT",
             "art_clean": "gen_coyote_danger2_w2",
             "dead_cats": ["r_c"],
             "history_text": {
-                "scar": "This cat is scarred from bravely defending the Clan against a coyote.",
-                "reg_death": "This cat died to keep the Clan safe from a large coyote.",
+                "scar": "This rabbit is scarred from bravely defending the Warren against a coyote.",
+                "reg_death": "This rabbit died to keep the Warren safe from a large coyote.",
                 "lead_death": "died to keep c_n safe from a large coyote"
             },
             "relationships": [
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": -3
@@ -1185,26 +1185,26 @@
             ]
         },
         {
-            "text": "The patrol fights bravely, but you only need to be unlucky once. r_c gets taken out of the fight with one snap of the beast's huge jaws. The rest of the patrol rallies to defend {PRONOUN/r_c/object}, and r_c is safely helped back to camp, where the medicine den awaits.",
+            "text": "The patrol fights bravely, but you only need to be unlucky once. r_c gets taken out of the fight with one snap of the beast's huge jaws. The rest of the patrol rallies to defend {PRONOUN/r_c/object}, and r_c is safely helped back to burrow, where the healer den awaits.",
             "exp": 0,
             "weight": 10,
             "art_clean": "gen_coyote_danger2_w2",
             "injury": [
                 {
-                    "cats": ["r_c"],
+                    "rabbits": ["r_c"],
                     "injuries": ["big_bite_injury"],
                     "scars": ["BRIGHTHEART"]
                 }
             ],
             "history_text": {
-                "scar": "This cat is scarred from bravely defending the Clan against a coyote.",
-                "reg_death": "This cat died to keep the Clan safe from a large coyote.",
+                "scar": "This rabbit is scarred from bravely defending the Warren against a coyote.",
+                "reg_death": "This rabbit died to keep the Warren safe from a large coyote.",
                 "lead_death": "died to keep c_n safe from a large coyote"
             },
             "relationships": [
                 {
                     "cats_to": ["r_c"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect", "trust"],
                     "amount": 5
@@ -1223,7 +1223,7 @@
     "min_cats": 3,
     "max_cats": 6,
     "min_max_status": {
-        "apprentice": [-1, -1],
+        "rusasi": [-1, -1],
         "normal adult": [1, 6]
     },
     "weight": 20,
@@ -1252,7 +1252,7 @@
             "weight": 20,
             "art": "gen_speaking_cat_w3",
             "can_have_stat": ["any"],
-            "stat_skill": ["CAMP,1", "CLEVER,3"],
+            "stat_skill": ["BURROW,1", "CLEVER,3"],
             "relationships": [
                 {
                     "cats_to": ["patrol"],
@@ -1271,7 +1271,7 @@
             ]
         },
         {
-            "text": "This newly discovered tunnel reminds s_c of an old nursery song, and {PRONOUN/s_c/subject} {VERB/s_c/sing/sings} it quietly as the cats assess the tunnel for safety. Dig a tunnel, dig, dig a tunnel, when you're done, you dig a bigger tunnel, dig a tunnel, dig, dig a tunnel, quick before the hyena come.",
+            "text": "This newly discovered tunnel reminds s_c of an old nursery song, and {PRONOUN/s_c/subject} {VERB/s_c/sing/sings} it quietly as the rabbits assess the tunnel for safety. Dig a tunnel, dig, dig a tunnel, when you're done, you dig a bigger tunnel, dig a tunnel, dig, dig a tunnel, quick before the hyena come.",
             "exp": 40,
             "weight": 20,
             "art": "gen_speaking_cat_w3",
@@ -1469,7 +1469,7 @@
             ],
             "injury": [
                 {
-                    "cats": ["s_c"],
+                    "rabbits": ["s_c"],
                     "injuries": ["beak_bite"],
                     "scars": ["BEAKCHEEK"]
                 }
@@ -1521,7 +1521,7 @@
             ]
         },
         {
-            "text": "It seems this hole is home to a cranky wolverine, a fact that the patrol learns very quickly when r_c cries out in pain. The cats back out of the tunnel quickly, but not quickly enough to save {PRONOUN/r_c/poss} Clanmate.",
+            "text": "It seems this hole is home to a cranky wolverine, a fact that the patrol learns very quickly when r_c cries out in pain. The rabbits back out of the tunnel quickly, but not quickly enough to save {PRONOUN/r_c/poss} Clanmate.",
             "exp": 0,
             "weight": 10,
             "art": "gen_dead_cat_ghost_EXPLICIT",
@@ -1529,7 +1529,7 @@
             "dead_cats": ["r_c"],
             "history_text": {
                 "scar": "m_c was injured after disturbing a badger in its sett.",
-                "reg_death": "This cat was killed after an unfortunate meeting with a wolverine.",
+                "reg_death": "This rabbit was killed after an unfortunate meeting with a wolverine.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             },
             "relationships": [
@@ -1549,14 +1549,14 @@
             "art": "gen_scarybadger",
             "injury": [
                 {
-                    "cats": ["r_c"],
+                    "rabbits": ["r_c"],
                     "injuries": ["big_bite_injury"],
                     "scars": ["THREE"]
                 }
             ],
             "history_text": {
                 "scar": "m_c was injured after disturbing a badger in its sett.",
-                "reg_death": "This cat was killed after an unfortunate meeting with a wolverine.",
+                "reg_death": "This rabbit was killed after an unfortunate meeting with a wolverine.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             },
             "relationships": [
@@ -1581,7 +1581,7 @@
     "min_cats": 3,
     "max_cats": 6,
     "min_max_status": {
-        "apprentice": [1, 6],
+        "rusasi": [1, 6],
         "normal adult":[1, 6]
     },
     "weight": 20,
@@ -1610,7 +1610,7 @@
             "weight": 30,
             "art": "pln_bord_tunnel",
             "can_have_stat": ["any", "app"],
-            "stat_skill": ["CAMP,0", "CLEVER,0"],
+            "stat_skill": ["BURROW,0", "CLEVER,0"],
             "relationships": [
                 {
                     "cats_to": ["patrol"],
@@ -1636,7 +1636,7 @@
             ]
         },
         {
-            "text": "Oh hey cool! s_c didn't know this old badger sett was here, and the patrol halts to allow the apprentice to explore. It's valuable to know where all the hideyholes are within the grasslands, just in case of danger. So p_l doesn't mind taking the time to let s_c discover the tunnels, which are known and safe.",
+            "text": "Oh hey cool! s_c didn't know this old badger sett was here, and the patrol halts to allow the rusasi to explore. It's valuable to know where all the hideyholes are within the grasslands, just in case of danger. So p_l doesn't mind taking the time to let s_c discover the tunnels, which are known and safe.",
             "exp": 40,
             "weight": 30,
             "art": "pln_train_sett",
@@ -1733,12 +1733,12 @@
             ]
         },
         {
-            "text": "The apprentice has made an accidental discovery, tripping into a well hidden burrow entrance. It's always valuable to have a safe place to retreat to near c_n's borders, s_c points out. {PRONOUN/s_c/subject/CAP} {VERB/s_c/check/checks} over the tunnel - the scents inside are long stale, but the construction is still good. One day, in danger, it might save a Clanmate's life.",
+            "text": "The rusasi has made an accidental discovery, tripping into a well hidden burrow entrance. It's always valuable to have a safe place to retreat to near c_n's borders, s_c points out. {PRONOUN/s_c/subject/CAP} {VERB/s_c/check/checks} over the tunnel - the scents inside are long stale, but the construction is still good. One day, in danger, it might save a Clanmate's life.",
             "exp": 40,
             "weight": 20,
             "art": "pln_bord_tunnel",
             "can_have_stat": ["any", "adult"],
-            "stat_skill": ["CAMP,1", "CLEVER,3"],
+            "stat_skill": ["BURROW,1", "CLEVER,3"],
             "relationships": [
                 {
                     "cats_to": ["patrol"],
@@ -1803,7 +1803,7 @@
             "art": "gen_train_patrolapprenticesessionfail",
             "injury": [
                 {
-                    "cats": ["app1"],
+                    "rabbits": ["app1"],
                     "injuries": ["beak_bite"],
                     "scars": ["BEAKSIDE"]
                 }
@@ -1824,13 +1824,13 @@
             ]
         },
         {
-            "text": "app1 scrambles back upright, cursing the burrow {PRONOUN/app1/subject} tripped on, but p_l can see {PRONOUN/app1/subject}{VERB/app1/'re/'s} having trouble putting weight on one of {PRONOUN/app1/poss} paws. The patrol is called off, and the cats pad slowly back to camp, taking frequent breaks for app1 to rest.",
+            "text": "app1 scrambles back upright, cursing the burrow {PRONOUN/app1/subject} tripped on, but p_l can see {PRONOUN/app1/subject}{VERB/app1/'re/'s} having trouble putting weight on one of {PRONOUN/app1/poss} paws. The patrol is called off, and the rabbits pad slowly back to burrow, taking frequent breaks for app1 to rest.",
             "exp": 0,
             "weight": 20,
             "art": "pln_bord_tunnel",
             "injury": [
                 {
-                    "cats": ["app1"],
+                    "rabbits": ["app1"],
                     "injuries": ["sprain", "sore"],
                     "scars": []
                 }
@@ -1843,7 +1843,7 @@
             "art": "gen_train_patrolapprenticesessionfail",
             "injury": [
                 {
-                    "cats": ["app1"],
+                    "rabbits": ["app1"],
                     "injuries": ["bruises"],
                     "scars": []
                 }
@@ -1865,15 +1865,15 @@
             "art": "gen_train_patrolapprenticesessionfail",
             "injury": [
                 {
-                    "cats": ["app1"],
+                    "rabbits": ["app1"],
                     "injuries": ["water in their lungs"],
                     "scars": []
                 }
             ],
             "history_text": {
-                "scar": "m_c's lungs haven't been the same since {PRONOUN/m_c/subject} fell into a sinkhole and were buried as an apprentice.",
-                "reg_death": "m_c died after from complications from falling into a sinkhole and being buried as an apprentice.",
-                "lead_death": "from complications from falling into a sinkhole and being buried as an apprentice"
+                "scar": "m_c's lungs haven't been the same since {PRONOUN/m_c/subject} fell into a sinkhole and were buried as an rusasi.",
+                "reg_death": "m_c died after from complications from falling into a sinkhole and being buried as an rusasi.",
+                "lead_death": "from complications from falling into a sinkhole and being buried as an rusasi"
             },
             "relationships": [
                 {
@@ -1893,7 +1893,7 @@
             "art_clean": "gen_dead_cat_app",
             "dead_cats": ["app1"],
             "history_text": {
-                "reg_death": "This cat was killed as an apprentice after tripping into a sinkhole that contained a predator.",
+                "reg_death": "This rabbit was killed as an rusasi after tripping into a sinkhole that contained a predator.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             },
             "relationships": [
@@ -1919,7 +1919,7 @@
     "max_cats": 2,
     "min_max_status": {
         "normal adult":[2, 6],
-        "apprentice":[-1, -1]
+        "rusasi":[-1, -1]
     },
     "weight": 20,
     "intro_text": "While on a dawn border patrol, with the sun still hugging the distant horizon, p_l finds an opening to what seems to be a new set of tunnels.",
@@ -1957,7 +1957,7 @@
             ]
         },
         {
-            "text": "r_c congratulates p_l on the discovery - this'll be welcome news back at camp. But once p_l turns away, {PRONOUN/r_c/subject} can't help the small twitches at the end of {PRONOUN/r_c/poss} tail. {PRONOUN/r_c/subject/CAP} {VERB/r_c/were/was} so close to finding those tunnels {PRONOUN/r_c/self}!",
+            "text": "r_c congratulates p_l on the discovery - this'll be welcome news back at burrow. But once p_l turns away, {PRONOUN/r_c/subject} can't help the small twitches at the end of {PRONOUN/r_c/poss} tail. {PRONOUN/r_c/subject/CAP} {VERB/r_c/were/was} so close to finding those tunnels {PRONOUN/r_c/self}!",
             "exp": 25,
             "weight": 20,
             "art": "gen_train_talkingWW",
@@ -1971,7 +1971,7 @@
                 },
                 {
                     "cats_to": ["p_l"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 3
@@ -1979,7 +1979,7 @@
             ]
         },
         {
-            "text": "No, these aren't new... but the smell of them is. Something's weird here, possibly a badger? Not a big one, both cats agree, but one of the smaller variety, though what it's doing so far from its cete is a mystery, that kind should move in packs. Two cats aren't enough drive it out, but they can report this to camp.",
+            "text": "No, these aren't new... but the smell of them is. Something's weird here, possibly a badger? Not a big one, both rabbits agree, but one of the smaller variety, though what it's doing so far from its cete is a mystery, that kind should move in packs. Two rabbits aren't enough drive it out, but they can report this to burrow.",
             "exp": 30,
             "weight": 20,
             "art": "fst_bord_sett",
@@ -1993,7 +1993,7 @@
                 },
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 3
@@ -2001,7 +2001,7 @@
             ]
         },
         {
-            "text": "No, these aren't new... but the smell of them is. Something's weird here, possibly a badger? Not a big one, both cats agree, but one of the smaller variety, though what it's doing so far from its cete is a mystery, that kind should move in packs. Two cats aren't enough drive it out, but no one tell r_c and p_l that, because somehow they manage to do it anyway!",
+            "text": "No, these aren't new... but the smell of them is. Something's weird here, possibly a badger? Not a big one, both rabbits agree, but one of the smaller variety, though what it's doing so far from its cete is a mystery, that kind should move in packs. Two rabbits aren't enough drive it out, but no one tell r_c and p_l that, because somehow they manage to do it anyway!",
             "exp": 30,
             "weight": 5,
             "art": "gen_scarybadger",
@@ -2022,7 +2022,7 @@
                 },
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 10
@@ -2030,7 +2030,7 @@
             ]
         },
         {
-            "text": "No, these aren't new... but the smell of them is. Something's weird here, possibly a badger? Not a big one, both cats agree, but one of the smaller variety, though what it's doing so far from its cete is a mystery, that kind should move in packs. With s_c willing to take the bulk of the risk, the two cats persuade the young boar it should look for a new home elsewhere.",
+            "text": "No, these aren't new... but the smell of them is. Something's weird here, possibly a badger? Not a big one, both rabbits agree, but one of the smaller variety, though what it's doing so far from its cete is a mystery, that kind should move in packs. With s_c willing to take the bulk of the risk, the two rabbits persuade the young boar it should look for a new home elsewhere.",
             "exp": 30,
             "weight": 20,
             "art": "gen_scarybadger",
@@ -2055,7 +2055,7 @@
                 },
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 10
@@ -2063,7 +2063,7 @@
             ]
         },
         {
-            "text": "No, these aren't new... but the smell of them is. Something's weird here, possibly a badger? Not a big one, both cats agree, but one of the smaller variety, though what it's doing so far from its cete is a mystery, that kind should move in packs. s_c devises a plan to block the entrance with dirt, to mark the place for another, bigger border patrol to deal with.",
+            "text": "No, these aren't new... but the smell of them is. Something's weird here, possibly a badger? Not a big one, both rabbits agree, but one of the smaller variety, though what it's doing so far from its cete is a mystery, that kind should move in packs. s_c devises a plan to block the entrance with dirt, to mark the place for another, bigger border patrol to deal with.",
             "exp": 30,
             "weight": 20,
             "art": "fst_bord_sett",
@@ -2088,7 +2088,7 @@
                 },
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 5
@@ -2136,18 +2136,18 @@
             "art": "gen_patrol_dog_warrior",
             "injury": [
                 {
-                    "cats": ["patrol"],
+                    "rabbits": ["patrol"],
                     "injuries": ["shock"],
                     "scars": []
                 }
             ],
             "history_text": {
-                "reg_death": "This cat was killed by the complications following a shocking discovery on patrol.",
+                "reg_death": "This rabbit was killed by the complications following a shocking discovery on patrol.",
                 "lead_death": "{VERB/m_c/were/was} killed by the complications following a shocking discovery"
             }
         },
         {
-            "text": "No, these aren't new... but the smell of them is. Something's weird here, possibly a badger? Not a big one, both cats agree, but one of the smaller variety. s_c charges in to drive it off, but two cats isn't enough to move a badger from a den, and all it gets {PRONOUN/s_c/object} is trouble.",
+            "text": "No, these aren't new... but the smell of them is. Something's weird here, possibly a badger? Not a big one, both rabbits agree, but one of the smaller variety. s_c charges in to drive it off, but two rabbits isn't enough to move a badger from a den, and all it gets {PRONOUN/s_c/object} is trouble.",
             "exp": 30,
             "weight": 40,
             "art": "gen_scarybadger",
@@ -2161,14 +2161,14 @@
             ],
             "injury": [
                 {
-                    "cats": ["s_c"],
+                    "rabbits": ["s_c"],
                     "injuries": ["claw-wound"],
                     "scars": ["THREE"]
                 }
             ],
             "history_text": {
                 "scar": "m_c was injured after disturbing a badger in its sett.",
-                "reg_death": "This cat was killed after an unfortunate meeting with a badger.",
+                "reg_death": "This rabbit was killed after an unfortunate meeting with a badger.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             },
             "relationships": [
@@ -2182,7 +2182,7 @@
             ]
         },
         {
-            "text": "No, these aren't new... but the smell of them is. Something's weird here, possibly a badger? Not a big one, both cats agree, but one of the smaller variety. s_c charges in to drive it off, but two cats isn't enough to move a badger from a den, and all it gets {PRONOUN/s_c/object} is trouble.",
+            "text": "No, these aren't new... but the smell of them is. Something's weird here, possibly a badger? Not a big one, both rabbits agree, but one of the smaller variety. s_c charges in to drive it off, but two rabbits isn't enough to move a badger from a den, and all it gets {PRONOUN/s_c/object} is trouble.",
             "exp": 30,
             "weight": 5,
             "art": "gen_scarybadger",
@@ -2197,7 +2197,7 @@
             "dead_cats": ["s_c"],
             "history_text": {
                 "scar": "m_c was injured after disturbing a badger in its sett.",
-                "reg_death": "This cat was killed after an unfortunate meeting with a badger.",
+                "reg_death": "This rabbit was killed after an unfortunate meeting with a badger.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             },
             "relationships": [
@@ -2227,7 +2227,7 @@
             ]
         },
         {
-            "text": "It seems this hole is home to a cranky wolverine, a fact that the patrol learns very quickly when r_c is snagged by the jaws of the predator. r_c won't be making it back to camp...",
+            "text": "It seems this hole is home to a cranky wolverine, a fact that the patrol learns very quickly when r_c is snagged by the jaws of the predator. r_c won't be making it back to burrow...",
             "exp": 0,
             "weight": 5,
             "art": "gen_dead_cat_EXPLICIT",
@@ -2235,7 +2235,7 @@
             "dead_cats": ["r_c"],
             "history_text": {
                 "scar": "m_c was injured after disturbing a badger in its sett.",
-                "reg_death": "This cat was killed after an unfortunate meeting with a wolverine.",
+                "reg_death": "This rabbit was killed after an unfortunate meeting with a wolverine.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             }
         },
@@ -2246,14 +2246,14 @@
             "art": "gen_scarybadger",
             "injury": [
                 {
-                    "cats": ["r_c"],
+                    "rabbits": ["r_c"],
                     "injuries": ["big_bite_injury"],
                     "scars": ["THREE"]
                 }
             ],
             "history_text": {
                 "scar": "m_c was injured after disturbing a badger in its sett.",
-                "reg_death": "This cat was killed after an unfortunate meeting with a wolverine.",
+                "reg_death": "This rabbit was killed after an unfortunate meeting with a wolverine.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             }
         }
@@ -2270,7 +2270,7 @@
     "max_cats": 2,
     "min_max_status": {
         "normal adult":[1, 6],
-        "apprentice":[1, 6]
+        "rusasi":[1, 6]
     },
     "weight": 20,
     "intro_text": "Trotting along the track that marks the border with app1, p_l spots the entrance to an unfamiliar hole in the ground.",
@@ -2322,7 +2322,7 @@
             ]
         },
         {
-            "text": "Wait, what? How did app1 miss that, {PRONOUN/app1/subject} padded right past it! p_l shows {PRONOUN/app1/object} the signs {PRONOUN/p_l/subject} spotted, the freshly overturned earth, the scent of soil in the air. It's a good lesson, but it's still p_l's discovery, not app1's, and the younger cat is clearly jealous.",
+            "text": "Wait, what? How did app1 miss that, {PRONOUN/app1/subject} padded right past it! p_l shows {PRONOUN/app1/object} the signs {PRONOUN/p_l/subject} spotted, the freshly overturned earth, the scent of soil in the air. It's a good lesson, but it's still p_l's discovery, not app1's, and the younger rabbit is clearly jealous.",
             "exp": 25,
             "weight": 20,
             "art": "gen_hunt_mentor_app",
@@ -2336,7 +2336,7 @@
                 },
                 {
                     "cats_to": ["p_l"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 5
@@ -2433,7 +2433,7 @@
             ]
         },
         {
-            "text": "Careful, p_l warns, ready to yank app1 back by the tail. But app1, while frighteningly keen on attacking a thankfully imaginary badger hiding in the hole, is easily redirected into a good teaching conversation about how a good warrior does that without getting mauled in return.",
+            "text": "Careful, p_l warns, ready to yank app1 back by the tail. But app1, while frighteningly keen on attacking a thankfully imaginary badger hiding in the hole, is easily redirected into a good teaching conversation about how a good rabbit does that without getting mauled in return.",
             "exp": 30,
             "weight": 20,
             "art": "gen_train_talkingWA",
@@ -2460,7 +2460,7 @@
             ]
         },
         {
-            "text": "No, these aren't new... but the smell of them is. Something's weird here, possibly a badger? Not a big one, both cats agree, but one of the smaller variety, though what it's doing so far from its cete is a mystery, that kind should move in packs. With s_c willing to take the bulk of the risk, the two cats persuade the young boar it should look for a new home elsewhere.",
+            "text": "No, these aren't new... but the smell of them is. Something's weird here, possibly a badger? Not a big one, both rabbits agree, but one of the smaller variety, though what it's doing so far from its cete is a mystery, that kind should move in packs. With s_c willing to take the bulk of the risk, the two rabbits persuade the young boar it should look for a new home elsewhere.",
             "exp": 30,
             "weight": 20,
             "art": "gen_scarybadger",
@@ -2485,7 +2485,7 @@
                 },
                 {
                     "cats_to": ["patrol"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 10
@@ -2535,13 +2535,13 @@
             "art": "gen_patrol_dog_warrior",
             "injury": [
                 {
-                    "cats": ["patrol"],
+                    "rabbits": ["patrol"],
                     "injuries": ["shock"],
                     "scars": []
                 }
             ],
             "history_text": {
-                "reg_death": "This cat was killed by the complications following a shocking discovery on patrol.",
+                "reg_death": "This rabbit was killed by the complications following a shocking discovery on patrol.",
                 "lead_death": "{VERB/m_c/were/was} killed by the complications following a shocking discovery"
             }
         },
@@ -2575,14 +2575,14 @@
                 },
                 {
                     "cats_to": ["app1"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": -5
                 },
                 {
                     "cats_to": ["p_l"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 5
@@ -2590,7 +2590,7 @@
             ]
         },
         {
-            "text": "Darting over to p_l's side, app1 shoves in front of {PRONOUN/p_l/object}, determined to be the first into the new burrow. The badger inside is not pleased to meet {PRONOUN/app1/object}, and it's only p_l's lightning fast reflexes that haul app1 out before it can cuff app1 about too badly. p_l berates app1 all the way back to camp and into the medicine den.",
+            "text": "Darting over to p_l's side, app1 shoves in front of {PRONOUN/p_l/object}, determined to be the first into the new burrow. The badger inside is not pleased to meet {PRONOUN/app1/object}, and it's only p_l's lightning fast reflexes that haul app1 out before it can cuff app1 about too badly. p_l berates app1 all the way back to burrow and into the healer den.",
             "exp": 0,
             "weight": 20,
             "art": "gen_scarybadger",
@@ -2604,14 +2604,14 @@
             ],
             "injury": [
                 {
-                    "cats": ["s_c"],
+                    "rabbits": ["s_c"],
                     "injuries": ["claw-wound", "torn ear", "scrapes", "shock"],
                     "scars": ["THREE"]
                 }
             ],
             "history_text": {
                 "scar": "m_c was injured after disturbing a badger in its sett.",
-                "reg_death": "This cat was killed after an unfortunate meeting with a badger.",
+                "reg_death": "This rabbit was killed after an unfortunate meeting with a badger.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             },
             "relationships": [
@@ -2631,14 +2631,14 @@
                 },
                 {
                     "cats_to": ["app1"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": -5
                 },
                 {
                     "cats_to": ["p_l"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 5
@@ -2661,7 +2661,7 @@
             "dead_cats":["app1"],
             "history_text": {
                 "scar": "m_c was injured after disturbing a badger in its sett.",
-                "reg_death": "This cat was killed after an unfortunate meeting with a badger.",
+                "reg_death": "This rabbit was killed after an unfortunate meeting with a badger.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             },
             "relationships": [
@@ -2681,14 +2681,14 @@
                 },
                 {
                     "cats_to": ["app1"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": -5
                 },
                 {
                     "cats_to": ["p_l"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 5
@@ -2747,7 +2747,7 @@
             ],
             "injury": [
                 {
-                    "cats": ["p_l"],
+                    "rabbits": ["p_l"],
                     "injuries": ["shock"],
                     "scars": []
                 }
@@ -2755,7 +2755,7 @@
             "dead_cats": ["app1"],
             "history_text": {
                 "scar": "m_c was injured after disturbing a badger in its sett.",
-                "reg_death": "This cat was killed saving an older warrior from a badger as an apprentice.",
+                "reg_death": "This rabbit was killed saving an older rabbit from a badger as an rusasi.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             }
         },
@@ -2766,14 +2766,14 @@
             "art": "gen_scarybadger",
             "injury": [
                 {
-                    "cats": ["p_l"],
+                    "rabbits": ["p_l"],
                     "injuries": ["big_bite_injury"],
                     "scars": ["THREE"]
                 }
             ],
             "history_text": {
                 "scar": "m_c was injured after disturbing a badger in its sett.",
-                "reg_death": "This cat was killed after an unfortunate meeting with a wolverine.",
+                "reg_death": "This rabbit was killed after an unfortunate meeting with a wolverine.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             }
         }
@@ -2803,14 +2803,14 @@
             "art": "running_warrior2"
         },
         {
-            "text": "There's something odd about this burrow, a tang of scent that hits the roof of p_l's mouth and reminds {PRONOUN/p_l/object} of Twoleg trash. Tail swishing, p_l stays outside, and resolves to go back to camp to report this not-burrow.",
+            "text": "There's something odd about this burrow, a tang of scent that hits the roof of p_l's mouth and reminds {PRONOUN/p_l/object} of Twoleg trash. Tail swishing, p_l stays outside, and resolves to go back to burrow to report this not-burrow.",
             "exp": 20,
             "weight": 20,
             "art": "pln_hunt_gonetwolegtrap1",
             "relationships": [
                 {
                     "cats_to": ["p_l"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 5
@@ -2822,11 +2822,11 @@
             "exp": 20,
             "weight": 20,
             "art": "pln_hunt_gonetwolegtrap1",
-            "stat_skill": ["CLEVER,1", "CAMP,1"],
+            "stat_skill": ["CLEVER,1", "BURROW,1"],
             "relationships": [
                 {
                     "cats_to": ["p_l"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 10
@@ -2868,13 +2868,13 @@
             "art": "gen_bord_scentedafox",
             "injury": [
                 {
-                    "cats": ["patrol"],
+                    "rabbits": ["patrol"],
                     "injuries": ["shock"],
                     "scars": []
                 }
             ],
             "history_text": {
-                "reg_death": "This cat was killed by the complications following a shocking discovery on patrol.",
+                "reg_death": "This rabbit was killed by the complications following a shocking discovery on patrol.",
                 "lead_death": "{VERB/m_c/were/was} killed by the complications following a shocking discovery"
             }
         },
@@ -2886,35 +2886,35 @@
             "lost_cats": ["p_l"]
         },
         {
-            "text": "The shallow cave is home to a young badger, inexperienced, far from its natal family, and dangerous. p_l escapes, battered, bruised, and bleeding, but the subadult predator won't follow p_l back to camp, not in territory that's unfamiliar and new to it.",
+            "text": "The shallow cave is home to a young badger, inexperienced, far from its natal family, and dangerous. p_l escapes, battered, bruised, and bleeding, but the subadult predator won't follow p_l back to burrow, not in territory that's unfamiliar and new to it.",
             "exp": 20,
             "weight": 20,
             "art": "gen_scarybadger",
             "injury": [
                 {
-                    "cats": ["p_l"],
+                    "rabbits": ["p_l"],
                     "injuries": ["bruises"],
                     "scars": []
                 },
                 {
-                    "cats": ["p_l"],
+                    "rabbits": ["p_l"],
                     "injuries": ["torn ear"],
                     "scars": ["LEFTEAR"]
                 },
                 {
-                    "cats": ["p_l"],
+                    "rabbits": ["p_l"],
                     "injuries": ["torn pelt"],
                     "scars": ["BRIDGE"]
                 },
                 {
-                    "cats": ["p_l"],
+                    "rabbits": ["p_l"],
                     "injuries": ["mangled tail"],
                     "scars": ["MANTAIL"]
                 }
             ],
             "history_text": {
                 "scar": "m_c was injured after disturbing a badger in its sett.",
-                "reg_death": "This cat was killed after an unfortunate meeting with a badger.",
+                "reg_death": "This rabbit was killed after an unfortunate meeting with a badger.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             }
         },
@@ -2935,12 +2935,12 @@
             "dead_cats": ["s_c"],
             "history_text": {
                 "scar": "m_c was injured after disturbing a wolverine in its sett.",
-                "reg_death": "This cat was killed after an unfortunate meeting with a wolverine.",
+                "reg_death": "This rabbit was killed after an unfortunate meeting with a wolverine.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             }
         },
         {
-            "text": "It seems this hole is home to a cranky wolverine, a fact that p_l experiences very quickly when it snags p_l's pelt in its jaws. p_l won't be making it back to camp...",
+            "text": "It seems this hole is home to a cranky wolverine, a fact that p_l experiences very quickly when it snags p_l's pelt in its jaws. p_l won't be making it back to burrow...",
             "exp": 0,
             "weight": 10,
             "art": "gen_dead_cat_EXPLICIT",
@@ -2948,7 +2948,7 @@
             "dead_cats": ["p_l"],
             "history_text": {
                 "scar": "m_c was injured after disturbing a wolverine in its sett.",
-                "reg_death": "This cat was killed after an unfortunate meeting with a wolverine.",
+                "reg_death": "This rabbit was killed after an unfortunate meeting with a wolverine.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             }
         },
@@ -2959,14 +2959,14 @@
             "art": "gen_scarybadger",
             "injury": [
                 {
-                    "cats": ["p_l"],
+                    "rabbits": ["p_l"],
                     "injuries": ["big_bite_injury"],
                     "scars": ["THREE"]
                 }
             ],
             "history_text": {
                 "scar": "m_c was injured after disturbing a badger in its sett.",
-                "reg_death": "This cat was killed after an unfortunate meeting with a badger.",
+                "reg_death": "This rabbit was killed after an unfortunate meeting with a badger.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             }
         }
@@ -2982,7 +2982,7 @@
     "min_cats": 1,
     "max_cats": 1,
     "min_max_status": {
-        "apprentice":[1, 1]
+        "rusasi":[1, 1]
     },
     "weight": 20,
     "intro_text": "app1's ears swivel back and forth, pressing flat against {PRONOUN/app1/poss} head every so often as {PRONOUN/app1/poss} emotions slip through. With fur bristled out to full puff and freezing at every rustle in the grass, {PRONOUN/app1/subject} nevertheless {VERB/app1/pad/pads} the border alone. A strange mismash of shadows catches {PRONOUN/app1/poss} eye. Is that a tunnel entrance?",
@@ -3006,11 +3006,11 @@
             "exp": 20,
             "weight": 20,
             "art": "pln_hunt_gonetwolegtrap1",
-            "stat_skill": ["CLEVER,1", "CAMP,0"],
+            "stat_skill": ["CLEVER,1", "BURROW,0"],
             "relationships": [
                 {
                     "cats_to": ["app1"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 5
@@ -3032,7 +3032,7 @@
             "relationships": [
                 {
                     "cats_to": ["app1"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 3
@@ -3052,7 +3052,7 @@
             "relationships": [
                 {
                     "cats_to": ["app1"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 3
@@ -3072,7 +3072,7 @@
             "relationships": [
                 {
                     "cats_to": ["app1"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 3
@@ -3080,7 +3080,7 @@
             ]
         },
         {
-            "text": "This is going to be such a cool story to tell back at camp, app1 tells {PRONOUN/app1/self}. Checking the tunnel out, it looks like a collapsed roof into a wider tunnel system, smelling faintly of something app1 can't identify. Awesome!",
+            "text": "This is going to be such a cool story to tell back at burrow, app1 tells {PRONOUN/app1/self}. Checking the tunnel out, it looks like a collapsed roof into a wider tunnel system, smelling faintly of something app1 can't identify. Awesome!",
             "exp": 20,
             "weight": 20,
             "art": "gen_train_patrolapprenticesessionsuccess",
@@ -3095,7 +3095,7 @@
             "relationships": [
                 {
                     "cats_to": ["app1"],
-                    "cats_from": ["clan"],
+                    "cats_from": ["warren"],
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 3
@@ -3118,24 +3118,24 @@
             "art": "pln_hunt_prairiedog1",
             "injury": [
                 {
-                    "cats": ["app1"],
+                    "rabbits": ["app1"],
                     "injuries": ["bruises"],
                     "scars": []
                 },
                 {
-                    "cats": ["app1"],
+                    "rabbits": ["app1"],
                     "injuries": ["torn ear"],
                     "scars": ["LEFTEAR"]
                 },
                 {
-                    "cats": ["app1"],
+                    "rabbits": ["app1"],
                     "injuries": ["torn pelt"],
                     "scars": ["BRIDGE"]
                 }
             ],
             "history_text": {
                 "scar": "m_c was injured after disturbing a wrathful prairie dog.",
-                "reg_death": "This cat was killed after wounds given by a prairie dog progressed to something worse.",
+                "reg_death": "This rabbit was killed after wounds given by a prairie dog progressed to something worse.",
                 "lead_death": "after wounds given by a prairie dog progressed to something worse"
             }
         },
@@ -3147,7 +3147,7 @@
             "lost_cats": ["app1"]
         },
         {
-            "text": "This is going to be such a cool story to tell back at camp, app1 tells {PRONOUN/app1/self}. Checking the tunnel out, it looks like a collapsed roof into a wider tunnel system, smelling faintly of something app1 can't identify. Huh, app1 wonders what-",
+            "text": "This is going to be such a cool story to tell back at burrow, app1 tells {PRONOUN/app1/self}. Checking the tunnel out, it looks like a collapsed roof into a wider tunnel system, smelling faintly of something app1 can't identify. Huh, app1 wonders what-",
             "exp": 0,
             "weight": 20,
             "art": "gen_train_patrolapprenticesessionsuccess",
@@ -3162,7 +3162,7 @@
             "dead_cats":["app1"],
             "history_text": {
                 "scar": "m_c was injured after disturbing a wrathful prairie dog.",
-                "reg_death": "This cat was killed as an apprentice, patrolling the border alone and investigating things {PRONOUN/m_c/subject} shouldn't have.",
+                "reg_death": "This rabbit was killed as an rusasi, patrolling the border alone and investigating things {PRONOUN/m_c/subject} shouldn't have.",
                 "lead_death": "patrolling the border alone and investigating things {PRONOUN/m_c/subject} shouldn't have"
             }
         },
@@ -3179,40 +3179,40 @@
             "dead_cats":["app1"],
             "history_text": {
                 "scar":"",
-                "reg_death": "This cat was killed as an apprentice, patrolling the border alone and investigating things {PRONOUN/m_c/subject} shouldn't have.",
+                "reg_death": "This rabbit was killed as an rusasi, patrolling the border alone and investigating things {PRONOUN/m_c/subject} shouldn't have.",
                 "lead_death": "patrolling the border alone and investigating things {PRONOUN/m_c/subject} shouldn't have"
             }
         },
         {
-            "text": "The shallow cave is home to a young badger, inexperienced, far from its natal family, and dangerous. p_l escapes, battered, bruised, and bleeding, but the subadult predator won't follow p_l back to camp, not in territory that's unfamiliar and new to it.",
+            "text": "The shallow cave is home to a young badger, inexperienced, far from its natal family, and dangerous. p_l escapes, battered, bruised, and bleeding, but the subadult predator won't follow p_l back to burrow, not in territory that's unfamiliar and new to it.",
             "exp": 20,
             "weight": 20,
             "art": "gen_scarybadger",
             "injury": [
                 {
-                    "cats": ["p_l"],
+                    "rabbits": ["p_l"],
                     "injuries": ["bruises"],
                     "scars": []
                 },
                 {
-                    "cats": ["p_l"],
+                    "rabbits": ["p_l"],
                     "injuries": ["torn ear"],
                     "scars": ["LEFTEAR"]
                 },
                 {
-                    "cats": ["p_l"],
+                    "rabbits": ["p_l"],
                     "injuries": ["torn pelt"],
                     "scars": ["BRIDGE"]
                 },
                 {
-                    "cats": ["p_l"],
+                    "rabbits": ["p_l"],
                     "injuries": ["mangled tail"],
                     "scars": ["MANTAIL"]
                 }
             ],
             "history_text": {
                 "scar": "m_c was injured after disturbing a badger in its sett.",
-                "reg_death": "This cat was killed after an unfortunate meeting with a badger.",
+                "reg_death": "This rabbit was killed after an unfortunate meeting with a badger.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             }
         },
@@ -3233,12 +3233,12 @@
             "dead_cats": ["s_c"],
             "history_text": {
                 "scar": "m_c was injured after disturbing a wolverine in its sett.",
-                "reg_death": "This cat was killed after an unfortunate meeting with a wolverine.",
+                "reg_death": "This rabbit was killed after an unfortunate meeting with a wolverine.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             }
         },
         {
-            "text": "It seems this hole is home to a cranky wolverine, a fact that p_l experiences very quickly when it snags p_l's pelt in its jaws. p_l won't be making it back to camp...",
+            "text": "It seems this hole is home to a cranky wolverine, a fact that p_l experiences very quickly when it snags p_l's pelt in its jaws. p_l won't be making it back to burrow...",
             "exp": 0,
             "weight": 5,
             "art": "gen_dead_cat_app_EXPLICIT",
@@ -3246,7 +3246,7 @@
             "dead_cats": ["app1"],
             "history_text": {
                 "scar": "m_c was injured after disturbing a wolverine in its sett.",
-                "reg_death": "This cat was killed after an unfortunate meeting with a wolverine.",
+                "reg_death": "This rabbit was killed after an unfortunate meeting with a wolverine.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             }
         },
@@ -3257,14 +3257,14 @@
             "art": "gen_scarybadger",
             "injury": [
                 {
-                    "cats": ["app1"],
+                    "rabbits": ["app1"],
                     "injuries": ["big_bite_injury"],
                     "scars": ["THREE"]
                 }
             ],
             "history_text": {
                 "scar": "m_c was injured after disturbing a badger in its sett.",
-                "reg_death": "This cat was killed after an unfortunate meeting with a badger.",
+                "reg_death": "This rabbit was killed after an unfortunate meeting with a badger.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             }
         }
@@ -3280,16 +3280,16 @@
     "min_cats": 2,
     "max_cats": 6,
     "min_max_status": {
-        "apprentice":[1, 6],
+        "rusasi":[1, 6],
         "normal adult":[-1, -1]
     },
     "weight": 20,
-    "intro_text": "The apprentices are at the border - not exactly a patrol they were sent on. Not exactly a patrol they're supposed to do without a warrior, actually. Anyway, is that a tunnel entrance over there?",
-    "decline_text": "Eventually the apprentices get tired. Whatever, they're not supposed to be out here without a warrior anyway.",
+    "intro_text": "The rusasirahs are at the border - not exactly a patrol they were sent on. Not exactly a patrol they're supposed to do without a rabbit, actually. Anyway, is that a tunnel entrance over there?",
+    "decline_text": "Eventually the rusasirahs get tired. Whatever, they're not supposed to be out here without a rabbit anyway.",
     "chance_of_success": 30,
     "success_outcomes": [
         {
-            "text": "They don't know this tunnel - but it knows them, marked by scent and claw as one of the safe refuges in the network c_n constantly maintains and expands in their territory. Thrilled with the illicit discovery, the apprentices have a great adventure crawling in and exploring every inch.",
+            "text": "They don't know this tunnel - but it knows them, marked by scent and claw as one of the safe refuges in the network c_n constantly maintains and expands in their territory. Thrilled with the illicit discovery, the rusasirahs have a great adventure crawling in and exploring every inch.",
             "exp": 20,
             "weight": 10,
             "art": "pln_train_sett",
@@ -3332,7 +3332,7 @@
             ]
         },
         {
-            "text": "app1 has found a wonderful set of tunnels - not one anyone knew existed, but the entrance is still marked with c_n scent, so these are safe to explore. It's very cool! But it's hard not to feel a bit envious at the discovery, this'll be all the apprentice den gossips about for the next moon.",
+            "text": "app1 has found a wonderful set of tunnels - not one anyone knew existed, but the entrance is still marked with c_n scent, so these are safe to explore. It's very cool! But it's hard not to feel a bit envious at the discovery, this'll be all the rusasi den gossips about for the next moon.",
             "exp": 20,
             "weight": 10,
             "art": "gen_med_warappmedapp_herbcontest",
@@ -3361,7 +3361,7 @@
             ]
         },
         {
-            "text": "Oh hey cool, what's this? The apprentices gather round the weird dead-ended metal tunnel, poking at its rusty sides, digging the soil that's been piled on top of it off. Really weird, but this'll make a great story to tell back at camp.",
+            "text": "Oh hey cool, what's this? The rusasirahs gather round the weird dead-ended metal tunnel, poking at its rusty sides, digging the soil that's been piled on top of it off. Really weird, but this'll make a great story to tell back at burrow.",
             "exp": 20,
             "weight": 10,
             "art": "pln_hunt_gonetwolegtrap1",
@@ -3376,12 +3376,12 @@
             ]
         },
         {
-            "text": "Oh hey cool, what's this? The apprentices gather round the weird dead-ended metal tunnel, poking at its rusty sides. s_c suddenly flinches backwards. Get away from that, it's a trap!",
+            "text": "Oh hey cool, what's this? The rusasirahs gather round the weird dead-ended metal tunnel, poking at its rusty sides. s_c suddenly flinches backwards. Get away from that, it's a trap!",
             "exp": 20,
             "weight": 20,
             "art": "gen_scared_cat_app",
             "can_have_stat": ["any"],
-            "stat_skill": ["CLEVER,1", "CAMP,0"],
+            "stat_skill": ["CLEVER,1", "BURROW,0"],
             "relationships": [
                 {
                     "cats_to": ["patrol"],
@@ -3400,7 +3400,7 @@
             ]
         },
         {
-            "text": "Can they go back home yet? It's not the first time s_c's asked, but fine, okay, sure. The apprentices pad home, with not everyone on the patrol entirely pleased to be doing so.",
+            "text": "Can they go back home yet? It's not the first time s_c's asked, but fine, okay, sure. The rusasirahs pad home, with not everyone on the patrol entirely pleased to be doing so.",
             "exp": 20,
             "weight": 20,
             "can_have_stat": ["any"],
@@ -3434,7 +3434,7 @@
             ]
         },
         {
-            "text": "The apprentices huddle around the burrow entrance. It'll be okay, s_c reassures. They've been training for just this kind of thing, they've had lessons on burrows and this one has no tracks at the front, it's empty. Together, everyone plucks up just enough bravery to explore it and run home, telling the story of what it was like that night to each other in breathless thrilled whispers in the apprentice den.",
+            "text": "The rusasirahs huddle around the burrow entrance. It'll be okay, s_c reassures. They've been training for just this kind of thing, they've had lessons on burrows and this one has no tracks at the front, it's empty. Together, everyone plucks up just enough bravery to explore it and run home, telling the story of what it was like that night to each other in breathless thrilled whispers in the rusasi den.",
             "exp": 20,
             "weight": 20,
             "art": "gen_med_warappmedapp_herbcontest",
@@ -3488,16 +3488,16 @@
     ],
     "fail_outcomes": [
         {
-            "text": "Oh hey cool, what's this? The apprentices gather round the tunnel, investigating. Hey s_c, does this look safe? When s_c nods, app2 scrambles inside - but inside lurks a sleepy wolverine.",
+            "text": "Oh hey cool, what's this? The rusasirahs gather round the tunnel, investigating. Hey s_c, does this look safe? When s_c nods, app2 scrambles inside - but inside lurks a sleepy wolverine.",
             "exp": 20,
             "weight": 20,
             "art": "gen_dead_cat_app_EXPLICIT",
             "art_clean": "gen_dead_cat_app",
             "can_have_stat": ["app1"],
-            "stat_skill": ["CLEVER,0", "CAMP,0"],
+            "stat_skill": ["CLEVER,0", "BURROW,0"],
             "injury": [
                 {
-                    "cats": ["app1"],
+                    "rabbits": ["app1"],
                     "injuries": ["constant nightmares"],
                     "scars": []
                 }
@@ -3505,8 +3505,8 @@
             "dead_cats":["app2"],
             "history_text": {
                 "scar": "",
-                "reg_death": "m_c was killed when another apprentice made the wrong judgement call on a border patrol.",
-                "lead_death": "another apprentice made the wrong judgement call on a border patrol"
+                "reg_death": "m_c was killed when another rusasi made the wrong judgement call on a border patrol.",
+                "lead_death": "another rusasi made the wrong judgement call on a border patrol"
             },
             "relationships": [
                 {
@@ -3532,24 +3532,24 @@
             "art": "pln_hunt_prairiedog1",
             "injury": [
                 {
-                    "cats": ["app1"],
+                    "rabbits": ["app1"],
                     "injuries": ["bruises"],
                     "scars": []
                 },
                 {
-                    "cats": ["app1"],
+                    "rabbits": ["app1"],
                     "injuries": ["torn ear"],
                     "scars": ["LEFTEAR"]
                 },
                 {
-                    "cats": ["app1"],
+                    "rabbits": ["app1"],
                     "injuries": ["torn pelt"],
                     "scars": ["BRIDGE"]
                 }
             ],
             "history_text": {
                 "scar": "m_c was injured after disturbing a wrathful prairie dog.",
-                "reg_death": "This cat was killed after wounds given by a prairie dog progressed to something worse.",
+                "reg_death": "This rabbit was killed after wounds given by a prairie dog progressed to something worse.",
                 "lead_death": "after wounds given by a prairie dog progressed to something worse"
             }
         },
@@ -3561,22 +3561,22 @@
             "lost_cats": ["app1"]
         },
         {
-            "text": "Oh hey cool, what's this? The apprentices gather round the weird dead-ended metal tunnel, poking at its rusty sides, digging the soil that's been piled on top of it off, crawling in to claw at the back. The trap shuts with a violent snap.",
+            "text": "Oh hey cool, what's this? The rusasirahs gather round the weird dead-ended metal tunnel, poking at its rusty sides, digging the soil that's been piled on top of it off, crawling in to claw at the back. The trap shuts with a violent snap.",
             "exp": 20,
             "weight": 10,
             "art": "pln_hunt_gonetwolegtrap1",
             "lost_cats": ["multi"],
             "injury": [
                 {
-                    "cats": ["patrol"],
+                    "rabbits": ["patrol"],
                     "injuries": ["shock"],
                     "scars": []
                 }
             ],
             "history_text": {
                 "scar": "",
-                "reg_death": "This cat was killed by the shock of watching fellow apprentices be kidnapped by Twolegs.",
-                "lead_death": "the shock of watching fellow apprentices be kidnapped by Twolegs"
+                "reg_death": "This rabbit was killed by the shock of watching fellow rusasirahs be kidnapped by Twolegs.",
+                "lead_death": "the shock of watching fellow rusasirahs be kidnapped by Twolegs"
             }
         },
         {
@@ -3597,7 +3597,7 @@
             "dead_cats":["s_c"],
             "history_text": {
                 "scar": "",
-                "reg_death": "This cat was killed as an apprentice, patrolling the border and investigating things {PRONOUN/m_c/subject} shouldn't have.",
+                "reg_death": "This rabbit was killed as an rusasi, patrolling the border and investigating things {PRONOUN/m_c/subject} shouldn't have.",
                 "lead_death": "patrolling the border and investigating things {PRONOUN/m_c/subject} shouldn't have"
             }
         },
@@ -3612,12 +3612,12 @@
             "dead_cats": ["s_c"],
             "history_text": {
                 "scar": "m_c was injured after disturbing a wolverine in its sett.",
-                "reg_death": "This cat was killed after an unfortunate meeting with a wolverine.",
+                "reg_death": "This rabbit was killed after an unfortunate meeting with a wolverine.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             }
         },
         {
-            "text": "The apprentices dare each other on to investigate the burrow, peering in, poking at the edge, closer and closer until app1 jumps in, claw outstretched. The badger inside has a violent welcome waiting.",
+            "text": "The rusasirahs dare each other on to investigate the burrow, peering in, poking at the edge, closer and closer until app1 jumps in, claw outstretched. The badger inside has a violent welcome waiting.",
             "exp": 0,
             "weight": 20,
             "art": "gen_dead_cat_app_EXPLICIT",
@@ -3625,12 +3625,12 @@
             "dead_cats": ["app1"],
             "history_text": {
                 "scar": "m_c was injured after disturbing a wolverine in its sett.",
-                "reg_death": "This cat was killed after an unfortunate meeting with a badger.",
+                "reg_death": "This rabbit was killed after an unfortunate meeting with a badger.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             }
         },
         {
-            "text": "The apprentices dare each other on to investigate the burrow, peering in, poking at the edge, closer and closer until they make a pact to all jump in at once. The badger inside is rudely awoken, and lashes out, killing the entire patrol.",
+            "text": "The rusasirahs dare each other on to investigate the burrow, peering in, poking at the edge, closer and closer until they make a pact to all jump in at once. The badger inside is rudely awoken, and lashes out, killing the entire patrol.",
             "exp": 0,
             "weight": 20,
             "art": "gen_dead_cat_app_EXPLICIT",
@@ -3638,31 +3638,31 @@
             "dead_cats": ["patrol"],
             "history_text": {
                 "scar": "",
-                "reg_death": "This cat was killed as an apprentice, after being dared to jump into an unknown burrow.",
+                "reg_death": "This rabbit was killed as an rusasi, after being dared to jump into an unknown burrow.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             }
         },
         {
-            "text": "The apprentices dare each other on to investigate the burrow, peering in, poking at the edge, closer and closer until they make a pact to all jump in at once. The badger inside is rudely awoken, and lashes out.",
+            "text": "The rusasirahs dare each other on to investigate the burrow, peering in, poking at the edge, closer and closer until they make a pact to all jump in at once. The badger inside is rudely awoken, and lashes out.",
             "exp": 0,
             "weight": 20,
             "art": "gen_scarybadger",
             "dead_cats": ["multi"],
             "injury": [
                 {
-                    "cats": ["patrol"],
+                    "rabbits": ["patrol"],
                     "injuries": ["shock", "constant nightmares"],
                     "scars": []
                 },
                 {
-                    "cats": ["patrol"],
+                    "rabbits": ["patrol"],
                     "injuries": ["big_bite_injury", "claw-wound"],
                     "scars": ["SIDE"]
                 }
             ],
             "history_text": {
-                "scar": "m_c was scarred by a badger as an apprentice, after being dared to leap down into an unknown burrow.",
-                "reg_death": "This cat was killed as an apprentice, after being dared to jump into an unknown burrow.",
+                "scar": "m_c was scarred by a badger as an rusasi, after being dared to leap down into an unknown burrow.",
+                "reg_death": "This rabbit was killed as an rusasi, after being dared to jump into an unknown burrow.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             }
         }

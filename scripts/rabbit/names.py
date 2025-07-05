@@ -1,5 +1,5 @@
 """
-Module that handles the name generation for all cats.
+Module that handles the name generation for all rabbits.
 """
 
 import contextlib
@@ -76,19 +76,19 @@ class Name:
         biome=None,
         specsuffix_hidden=False,
         load_existing_name=False,
-        cat=None,
+        rabbit=None,
     ):
         self.prefix = prefix
         self.suffix = suffix
         self.specsuffix_hidden = specsuffix_hidden
 
-        self.cat = cat
+        self.rabbit = rabbit
 
         try:
-            color = cat.pelt.colour
-            eyes = cat.pelt.eye_colour
-            pelt = cat.pelt.name
-            tortiepattern = cat.pelt.tortiepattern
+            color = rabbit.pelt.colour
+            eyes = rabbit.pelt.eye_colour
+            pelt = rabbit.pelt.name
+            tortiepattern = rabbit.pelt.tortiepattern
         except AttributeError:
             color = None
             eyes = None
@@ -263,31 +263,31 @@ class Name:
         # Handles predefined suffixes (such as newborns being kit),
         # then suffixes based on ages (fixes #2004, just trust me)
 
-        # Handles suffix assignment with outside cats
-        if self.cat.status not in ("rogue", "loner", "kittypet") and self.cat.outside:
+        # Handles suffix assignment with outside rabbits
+        if self.rabbit.status not in ("rogue", "loner", "kittypet") and self.rabbit.outside:
             adjusted_status: str = ""
-            if self.cat.moons >= 15:
-                adjusted_status = "warrior"
-            elif self.cat.moons >= 6:
-                adjusted_status = "apprentice"
-            if self.cat.moons == 0:
+            if self.rabbit.moons >= 15:
+                adjusted_status = "rabbit"
+            elif self.rabbit.moons >= 6:
+                adjusted_status = "rusasi"
+            if self.rabbit.moons == 0:
                 adjusted_status = "newborn"
-            elif self.cat.moons < 6:
-                adjusted_status = "kitten"
-            elif self.cat.moons < 12:
-                adjusted_status = "apprentice"
+            elif self.rabbit.moons < 6:
+                adjusted_status = "kit"
+            elif self.rabbit.moons < 12:
+                adjusted_status = "rusasi"
             else:
-                adjusted_status = "warrior"
+                adjusted_status = "rabbit"
 
-            if adjusted_status != "warrior" and not self.specsuffix_hidden:
+            if adjusted_status != "rabbit" and not self.specsuffix_hidden:
                 return (
                     self.prefix + self.names_dict["special_suffixes"][adjusted_status]
                 )
         if (
-            self.cat.status in self.names_dict["special_suffixes"]
+            self.rabbit.status in self.names_dict["special_suffixes"]
             and not self.specsuffix_hidden
         ):
-            return self.prefix + self.names_dict["special_suffixes"][self.cat.status]
+            return self.prefix + self.names_dict["special_suffixes"][self.rabbit.status]
         if game.config["fun"]["april_fools"]:
             return f"{self.prefix}egg"
         return self.prefix + self.suffix

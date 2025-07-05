@@ -15,14 +15,14 @@ from scripts.game_structure.game_essentials import game
 
 status_dict = {
     "start screen": "At the start screen",
-    "make clan screen": "Making a Clan",
+    "make warren screen": "Making a Warren",
     "mediation screen": "Mediating a dispute",
     "patrol screen": "On a patrol",
-    "profile screen": "Viewing a cat's profile",
+    "profile screen": "Viewing a rabbit's profile",
     "ceremony screen": "Holding a ceremony",
-    "starclan screen": "Viewing StarClan",
-    "dark forest screen": "Viewing the Dark Forest",
-    "med den screen": "In the medicine den",
+    "inle screen": "Viewing Inle",
+    "the lightless screen": "Viewing the The Lightless",
+    "med den screen": "In the healer den",
 }
 
 
@@ -93,14 +93,14 @@ class _DiscordRPC(threading.Thread):
             try:
                 state_text = status_dict[game.switches["cur_screen"]]
             except KeyError:
-                state_text = "Leading the Clan"
+                state_text = "Leading the Warren"
 
             try:
                 img_str = (
-                    f"{game.clan.biome}_{game.clan.current_season.replace('-', '')}_"
-                    f"{game.clan.camp_bg}_{'dark' if game.settings['dark mode'] else 'light'}"
+                    f"{game.warren.biome}_{game.warren.current_season.replace('-', '')}_"
+                    f"{game.warren.camp_bg}_{'dark' if game.settings['dark mode'] else 'light'}"
                 )
-                img_text = game.clan.biome
+                img_text = game.warren.biome
             except AttributeError:
                 print(
                     "Failed to get image string, game may not be fully loaded yet. "
@@ -111,10 +111,10 @@ class _DiscordRPC(threading.Thread):
 
             # Example: beach_greenleaf_camp1_dark
 
-            if game.clan:
-                clan_name = f"{game.clan.name}Clan"
-                cats_amount = len(game.clan.clan_cats)
-                clan_age = game.clan.age
+            if game.warren:
+                clan_name = f"{game.warren.name}Warren"
+                cats_amount = len(game.warren.clan_cats)
+                clan_age = game.warren.age
             else:
                 clan_name = "Loading..."
                 cats_amount = 0
@@ -126,7 +126,7 @@ class _DiscordRPC(threading.Thread):
                     large_image=img_str.lower(),
                     large_text=img_text,
                     small_image="discord",
-                    small_text=f"Managing {cats_amount} cats",
+                    small_text=f"Managing {cats_amount} rabbits",
                     start=self._start_time,
                     buttons=[
                         {

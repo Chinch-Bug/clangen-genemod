@@ -16,7 +16,7 @@
             "Is yowling {PRONOUN/m_c/poss} woes into the endless darkness",
             "Is feeling hungry",
             "Is digging {PRONOUN/m_c/poss} claws into the mud",
-            "Is sending a message to one of the cats still living",
+            "Is sending a message to one of the rabbits still living",
             "Is snarling at the shadows",
             "Has been feeling more miserable than usual",
             "Is licking {PRONOUN/m_c/poss} wounds",
@@ -30,14 +30,14 @@
             "Has been behaving erratically recently",
             "Yearns to taste fresh-kill again",
             "Yearns to feel the sun on {PRONOUN/m_c/poss} pelt again",
-            "Is whispering lies into a living cat's ear",
+            "Is whispering lies into a living rabbit's ear",
             "Gingerly checks a recent wound",
             "Feels the shadows watching {PRONOUN/m_c/object}",
             "Wishes to be alone",
             "Misses the feeling of a warm nest",
             "Feels a sharp pang of hunger",
-            "Wonders why StarClan abandoned {PRONOUN/m_c/object}",
-            "Is cursing StarClan for sending {PRONOUN/m_c/object} here"
+            "Wonders why Inle abandoned {PRONOUN/m_c/object}",
+            "Is cursing Inle for sending {PRONOUN/m_c/object} here"
         ]
     },
     {
@@ -56,21 +56,21 @@
     {
         "id": "dark_forest_kind",
         "thoughts": [
-            "Wishes {PRONOUN/m_c/subject} could go to StarClan",
+            "Wishes {PRONOUN/m_c/subject} could go to Inle",
             "Feels regret for {PRONOUN/m_c/poss} actions",
             "Is curled up in a ball, crying",
-            "Sits longingly at the StarClan border",
+            "Sits longingly at the Inle border",
             "Is whimpering pathetically",
-            "Scarcely avoided a confrontation with a shadowy cat",
+            "Scarcely avoided a confrontation with a shadowy rabbit",
             "Bought {PRONOUN/m_c/self} some time to hide after talking {PRONOUN/m_c/poss} way out of training",
             "Is wondering if everything was really worth it...",
-            "Is fleeing from another member of the Dark Forest",
+            "Is fleeing from another member of the The Lightless",
             "Wants nothing more than to fade away...",
             "Wonders where everything went wrong",
-            "Is begging a shadowy cat for mercy",
+            "Is begging a shadowy rabbit for mercy",
             "Has lost all hope",
             "Wonders if there's anyone here {PRONOUN/m_c/subject} can actually trust",
-            "Tried crossing the border into StarClan to no avail"
+            "Tried crossing the border into Inle to no avail"
         ],
         "main_trait_status": [
             "careful",
@@ -88,24 +88,24 @@
     {
         "id": "dark_forest_evil",
         "thoughts": [
-            "Is fighting with another member of the Dark Forest",
+            "Is fighting with another member of the The Lightless",
             "Wishes {PRONOUN/m_c/subject} could hurt those who have wronged {PRONOUN/m_c/object}",
-            "Wants to unleash mayhem on the cats who hurt {PRONOUN/m_c/object} in life",
+            "Wants to unleash mayhem on the rabbits who hurt {PRONOUN/m_c/object} in life",
             "Is scheming",
-            "Found a living cat that {PRONOUN/m_c/subject} could manipulate",
-            "Found a living cat that, hopefully, will help {PRONOUN/m_c/poss} plans come to fruition",
-            "Wishes {PRONOUN/m_c/subject} could destroy the Clan that wronged {PRONOUN/m_c/object}",
+            "Found a living rabbit that {PRONOUN/m_c/subject} could manipulate",
+            "Found a living rabbit that, hopefully, will help {PRONOUN/m_c/poss} plans come to fruition",
+            "Wishes {PRONOUN/m_c/subject} could destroy the Warren that wronged {PRONOUN/m_c/object}",
             "Has no regrets",
             "Is discussing {PRONOUN/m_c/poss} plans eagerly",
             "Is thinking about revenge",
             "Is watching for {PRONOUN/m_c/poss} next victim",
-            "Is picking a fight with another member of the Dark Forest",
+            "Is picking a fight with another member of the The Lightless",
             "Is starting to get used to things around here",
             "Is starting to like the lawlessness here",
-            "Wants to lure new cats to train here",
+            "Wants to lure new rabbits to train here",
             "Is cleaning the blood from {PRONOUN/m_c/poss} claws",
             "Is the first to volunteer for training",
-            "Is trying to lure living cats to train in the Dark Forest"
+            "Is trying to lure living rabbits to train in the The Lightless"
         ],
         "main_trait_constraint": [
             "arrogant",
@@ -128,9 +128,9 @@
         "id": "dark_forest_sneaky",
         "thoughts": [
             "Isn't surprised in the slightest as to why {PRONOUN/m_c/subject} ended up here",
-            "Easily avoided encountering another shadowy cat",
+            "Easily avoided encountering another shadowy rabbit",
             "Talked {PRONOUN/m_c/poss} way out of a training session",
-            "Tricked a shadowy cat into doing {PRONOUN/m_c/poss} bidding"
+            "Tricked a shadowy rabbit into doing {PRONOUN/m_c/poss} bidding"
         ],
         "main_trait_constraint": [
             "sneaky",

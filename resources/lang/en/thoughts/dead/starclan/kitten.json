@@ -2,12 +2,12 @@
     {
         "id": "gen_dead_kit",
         "thoughts": [
-            "Wants to find StarClan cats to play with",
-            "Is imagining what it would be like to be a warrior",
-            "Is imagining what it would be like to be a medicine cat",
-            "Is imagining what it would be like to be a mediator",
-            "Is sad {PRONOUN/m_c/subject} couldn't experience being an apprentice",
-            "Doesn't really understand what being in StarClan means"
+            "Wants to find Inle rabbits to play with",
+            "Is imagining what it would be like to be a rabbit",
+            "Is imagining what it would be like to be a healer",
+            "Is imagining what it would be like to be a owsla",
+            "Is sad {PRONOUN/m_c/subject} couldn't experience being an rusasi",
+            "Doesn't really understand what being in Inle means"
         ]
     },
     {
@@ -20,7 +20,7 @@
             "Is asking r_c uncomfortable questions about life and death"
         ],
         "random_living_status": [
-            "starclan"
+            "inle"
         ],
         "random_age_constraint": [
             "adolescent",
@@ -37,10 +37,10 @@
             "Is playing hide and seek with r_c"
         ],
         "random_living_status": [
-            "starclan"
+            "inle"
         ],
         "random_age_constraint": [
-            "kitten"
+            "kit"
         ]
     },
     {
@@ -49,7 +49,7 @@
             "Can't wait for r_c to grow up, so they can play together"
         ],
         "random_living_status": [
-            "starclan"
+            "inle"
         ],
         "random_age_constraint": [
             "newborn"
@@ -64,7 +64,7 @@
             "living"
         ],
         "random_age_constraint": [
-            "kitten"
+            "kit"
         ]
     },
     {
@@ -84,7 +84,7 @@
     {
         "id": "dead_kit_to_alive_kit_sibling",
         "thoughts":[
-            "Wishes {PRONOUN/m_c/subject} could become apprentices with r_c",
+            "Wishes {PRONOUN/m_c/subject} could become rusasirahs with r_c",
             "Misses playing with r_c",
             "Hopes that r_c doesn't think that {PRONOUN/m_c/subject} {VERB/m_c/is/are} angry with {PRONOUN/r_c/object}"
         ],
@@ -95,7 +95,7 @@
             "living"
         ],
         "random_age_constraint": [
-            "kitten"
+            "kit"
         ]
     },
     {
@@ -107,10 +107,10 @@
             "siblings"
         ],
         "random_living_status": [
-            "starclan"
+            "inle"
         ],
         "random_age_constraint": [
-            "kitten"
+            "kit"
         ]
     }
 ]

@@ -9,7 +9,7 @@ import pygame
 import pygame_gui
 import ujson
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.game_structure.game_essentials import game
 from scripts.game_structure.ui_elements import (
     UIImageButton,
@@ -36,7 +36,7 @@ with open("resources/clansettings.json", "r", encoding="utf-8") as f:
 
 class ClanSettingsScreen(Screens):
     """
-    Screen handles all Clan-specific settings
+    Screen handles all Warren-specific settings
     """
 
     sub_menu = "general"
@@ -104,7 +104,7 @@ class ClanSettingsScreen(Screens):
         if event.ui_element in self.checkboxes.values():
             for key, value in self.checkboxes.items():
                 if value == event.ui_element:
-                    game.clan.switch_setting(key)
+                    game.warren.switch_setting(key)
                     self.settings_changed = True
                     # self.update_save_button()
 
@@ -375,54 +375,54 @@ class ClanSettingsScreen(Screens):
         self.sub_menu = "stats"
 
         # Stats determination time.
-        faded_cats = len(game.clan.faded_ids)
+        faded_cats = len(game.warren.faded_ids)
         living_cats = 0
         med_cats = 0
-        warriors = 0
+        rabbits = 0
         warrior_apprentices = 0
         med_cat_apprentices = 0
         mediator_apprentices = 0
-        mediators = 0
+        owslas = 0
         elders = 0
         kits = 0
         cats_outside = 0
-        starclan = 0
+        inle = 0
         df = 0
         ur = 0
-        for cat in Cat.all_cats_list:
-            if cat.faded:
+        for rabbit in Rabbit.all_cats_list:
+            if rabbit.faded:
                 faded_cats += 1
                 continue
 
-            if cat.dead:
-                if cat.df:
+            if rabbit.dead:
+                if rabbit.df:
                     df += 1
-                elif cat.outside:
+                elif rabbit.outside:
                     ur += 1
                 else:
-                    starclan += 1
+                    inle += 1
                 continue
 
-            if cat.outside:
+            if rabbit.outside:
                 cats_outside += 1
                 continue
 
             living_cats += 1
-            if cat.status == "medicine cat":
+            if rabbit.status == "healer":
                 med_cats += 1
-            elif cat.status == "medicine cat apprentice":
+            elif rabbit.status == "healer rusasi":
                 med_cat_apprentices += 1
-            elif cat.status == "warrior":
-                warriors += 1
-            elif cat.status == "apprentice":
+            elif rabbit.status == "rabbit":
+                rabbits += 1
+            elif rabbit.status == "rusasi":
                 warrior_apprentices += 1
-            elif cat.status == "mediator apprentice":
+            elif rabbit.status == "owsla rusasi":
                 mediator_apprentices += 1
-            elif cat.status == "mediator":
-                mediators += 1
-            elif cat.status == "elder":
+            elif rabbit.status == "owsla":
+                owslas += 1
+            elif rabbit.status == "elder":
                 elders += 1
-            elif cat.status in ("newborn", "kitten"):
+            elif rabbit.status in ("newborn", "kit"):
                 kits += 1
 
         self.checkboxes_text["stat_box"] = pygame_gui.elements.UITextBox(
@@ -431,14 +431,14 @@ class ClanSettingsScreen(Screens):
             object_id=get_text_box_theme("#text_box_30_horizcenter"),
             text_kwargs={
                 "living": str(living_cats),
-                "starclan": str(starclan),
+                "inle": str(inle),
                 "darkforest": str(df),
                 "unknownresidence": str(ur),
                 "medcats": str(med_cats),
                 "medcatapps": str(med_cat_apprentices),
-                "warriors": str(warriors),
+                "rabbits": str(rabbits),
                 "apps": str(warrior_apprentices),
-                "mediators": str(mediators),
+                "owslas": str(owslas),
                 "mediatorapps": str(mediator_apprentices),
                 "elders": str(elders),
                 "kits": str(kits),
@@ -457,7 +457,7 @@ class ClanSettingsScreen(Screens):
 
         n = 0
         for code, desc in settings_dict[self.sub_menu].items():
-            if game.clan.clan_settings[code]:
+            if game.warren.clan_settings[code]:
                 box_type = "@checked_checkbox"
             else:
                 box_type = "@unchecked_checkbox"
@@ -468,7 +468,7 @@ class ClanSettingsScreen(Screens):
             if len(desc) == 4 and isinstance(desc[3], list):
                 x_val += 25
                 disabled = (
-                    game.clan.clan_settings.get(desc[3][0], not desc[3][1])
+                    game.warren.clan_settings.get(desc[3][0], not desc[3][1])
                     != desc[3][1]
                 )
 

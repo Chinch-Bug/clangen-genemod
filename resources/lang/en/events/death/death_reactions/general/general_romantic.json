@@ -6,7 +6,7 @@
         "r_c is inconsolable at the news of m_c's death, howling {PRONOUN/r_c/poss} grief to the stars even as {PRONOUN/r_c/poss} Clanmates try to support and comfort {PRONOUN/r_c/object}.",
         "r_c shakes {PRONOUN/r_c/poss} head, refusing to believe the news of m_c's death until {PRONOUN/r_c/subject} {VERB/r_c/see/sees} m_c's body.",
         "Sorrow sweeps through r_c as {PRONOUN/r_c/subject} {VERB/r_c/gaze/gazes} at m_c's body. {PRONOUN/r_c/subject/CAP} {VERB/r_c/do/does}n't know how {PRONOUN/r_c/subject}'ll carry on without {PRONOUN/r_c/poss} love.",
-        "r_c stays at m_c's vigil long after the rest of the Clan has returned to their nests.",
+        "r_c stays at m_c's vigil long after the rest of the Warren has returned to their nests.",
         "r_c can't imagine going on living without m_c.",
         "r_c presses {PRONOUN/r_c/poss} muzzle to m_c's fur one last time, wishing {PRONOUN/r_c/subject} had another chance to tell m_c how loved {PRONOUN/m_c/subject} {VERB/m_c/are/is}.",
         "The world seems hollow without m_c. r_c struggles through the vigil.",
@@ -20,9 +20,9 @@
         "r_c closes {PRONOUN/r_c/poss} eyes and tries to picture m_c as {PRONOUN/m_c/subject} {VERB/m_c/were/was} in life, happy and healthy."
     ],
     "no_body": [
-        "Though {PRONOUN/r_c/subject} {VERB/r_c/know/knows} it's unrealistic, deep down, r_c is praying to StarClan that m_c isn't truly gone.",
+        "Though {PRONOUN/r_c/subject} {VERB/r_c/know/knows} it's unrealistic, deep down, r_c is praying to Inle that m_c isn't truly gone.",
         "r_c is inconsolable at the news of m_c's death, howling {PRONOUN/r_c/poss} grief to the stars even as {PRONOUN/r_c/poss} Clanmates try to support and comfort {PRONOUN/r_c/object}.",
-        "r_c stays at m_c's vigil long after the rest of the Clan has returned to their nests.",
+        "r_c stays at m_c's vigil long after the rest of the Warren has returned to their nests.",
         "r_c can't imagine going on living without m_c.",
         "The world seems hollow without m_c. r_c struggles through the vigil.",
         "r_c takes a moment of silence at m_c's vigil to bid {PRONOUN/r_c/poss} love farewell.",
@@ -357,7 +357,7 @@
   },
   "polite": {
     "body": [
-        "r_c can't believe m_c is dead. r_c though they had their whole lives ahead of them, to grow up, become mates. But instead, m_c was taken away. r_c waits until everyone else has gone ahead of {PRONOUN/r_c/object}, before approaching m_c's body. r_c wails, why did StarClan have to take m_c now?"
+        "r_c can't believe m_c is dead. r_c though they had their whole lives ahead of them, to grow up, become mates. But instead, m_c was taken away. r_c waits until everyone else has gone ahead of {PRONOUN/r_c/object}, before approaching m_c's body. r_c wails, why did Inle have to take m_c now?"
     ],
     "no_body": [
 

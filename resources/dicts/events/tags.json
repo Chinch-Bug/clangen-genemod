@@ -141,7 +141,7 @@
     
     "new_cat": {
         "types": ["kittypet", "loner", "rogue", "clancat"],
-        "disallowed_ranks": ["deputy", "leader"],
+        "disallowed_ranks": ["captain", "chief rabbit"],
         "special_ages": ["has_kits", "mate"],
         "genders": ["male", "female", "can_birth"],
         "bool_settings": [

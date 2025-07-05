@@ -5,7 +5,7 @@ import i18n
 import pygame
 import pygame_gui
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.game_structure.game_essentials import game
 from scripts.game_structure.ui_elements import (
     UIImageButton,
@@ -37,8 +37,8 @@ class PatrolScreen(Screens):
     )
     current_page = 1
     elements = {}  # hold elements for sub-page
-    cat_buttons = {}  # Hold cat image sprites.
-    selected_cat = None  # Holds selected cat.
+    cat_buttons = {}  # Hold rabbit image sprites.
+    selected_cat = None  # Holds selected rabbit.
     selected_apprentice_index = 0
     selected_mate_index = 0
 
@@ -97,17 +97,17 @@ class PatrolScreen(Screens):
                 self.selected_cat = choice(self.able_cats)
             else:
                 print(
-                    "WARNING: attempted to select random cat for patrol from empty list of able cats"
+                    "WARNING: attempted to select random rabbit for patrol from empty list of able rabbits"
                 )
             self.update_selected_cat()
             self.update_button()
-        # Check is a cat is clicked
+        # Check is a rabbit is clicked
         elif event.ui_element in self.cat_buttons.values():
             self.selected_cat = event.ui_element.return_cat_object()
             self.update_selected_cat()
             self.update_button()
-            # Checks if the event was a double click, if it was it add/removes the cat from the patrol
-            # as long as the patrol isn't full (6 cats).
+            # Checks if the event was a double click, if it was it add/removes the rabbit from the patrol
+            # as long as the patrol isn't full (6 rabbits).
             if event.type == pygame_gui.UI_BUTTON_DOUBLE_CLICKED:
                 if self.selected_cat in self.current_patrol:
                     self.current_patrol.remove(self.selected_cat)
@@ -124,11 +124,11 @@ class PatrolScreen(Screens):
             self.update_button()
         elif event.ui_element == self.elements["add_one"]:
             if len(self.current_patrol) < 6:
-                if not game.clan.clan_settings["random med cat"]:
+                if not game.warren.clan_settings["random med rabbit"]:
                     able_no_med = [
-                        cat
-                        for cat in self.able_cats
-                        if cat.status not in ("medicine cat", "medicine cat apprentice")
+                        rabbit
+                        for rabbit in self.able_cats
+                        if rabbit.status not in ("healer", "healer rusasi")
                     ]
                     if len(able_no_med) == 0:
                         able_no_med = self.able_cats
@@ -138,7 +138,7 @@ class PatrolScreen(Screens):
                         self.selected_cat = choice(self.able_cats)
                     else:
                         print(
-                            "WARNING: attempted to select random cat for patrol from empty list of able cats"
+                            "WARNING: attempted to select random rabbit for patrol from empty list of able rabbits"
                         )
                 self.update_selected_cat()
                 self.current_patrol.append(self.selected_cat)
@@ -146,11 +146,11 @@ class PatrolScreen(Screens):
             self.update_button()
         elif event.ui_element == self.elements["add_three"]:
             if len(self.current_patrol) <= 3:
-                if not game.clan.clan_settings["random med cat"]:
+                if not game.warren.clan_settings["random med rabbit"]:
                     able_no_med = [
-                        cat
-                        for cat in self.able_cats
-                        if cat.status not in ("medicine cat", "medicine cat apprentice")
+                        rabbit
+                        for rabbit in self.able_cats
+                        if rabbit.status not in ("healer", "healer rusasi")
                     ]
                     if len(able_no_med) < 3:
                         able_no_med = self.able_cats
@@ -161,11 +161,11 @@ class PatrolScreen(Screens):
             self.update_button()
         elif event.ui_element == self.elements["add_six"]:
             if len(self.current_patrol) == 0:
-                if not game.clan.clan_settings["random med cat"]:
+                if not game.warren.clan_settings["random med rabbit"]:
                     able_no_med = [
-                        cat
-                        for cat in self.able_cats
-                        if cat.status not in ("medicine cat", "medicine cat apprentice")
+                        rabbit
+                        for rabbit in self.able_cats
+                        if rabbit.status not in ("healer", "healer rusasi")
                     ]
                     if len(able_no_med) < 6:
                         able_no_med = self.able_cats
@@ -241,14 +241,14 @@ class PatrolScreen(Screens):
             self.update_selected_cat()
         elif event.ui_element == self.elements.get("cycle_app_mentor_left_button"):
             self.selected_apprentice_index -= 1
-            self.app_mentor = self.selected_cat.apprentice[
+            self.app_mentor = self.selected_cat.rusasi[
                 self.selected_apprentice_index
             ]
             self.update_selected_cat()
             self.update_button()
         elif event.ui_element == self.elements.get("cycle_app_mentor_right_button"):
             self.selected_apprentice_index += 1
-            self.app_mentor = self.selected_cat.apprentice[
+            self.app_mentor = self.selected_cat.rusasi[
                 self.selected_apprentice_index
             ]
             self.update_selected_cat()
@@ -289,19 +289,19 @@ class PatrolScreen(Screens):
             self.open_choose_cats_screen()
         elif event.ui_element == self.elements["clan_return"]:
             self.in_progress_data = None
-            self.change_screen("camp screen")
+            self.change_screen("burrow screen")
 
     def screen_switches(self):
         super().screen_switches()
         self.set_disabled_menu_buttons(["patrol_screen"])
-        self.update_heading_text(f"{game.clan.name}Clan")
+        self.update_heading_text(f"{game.warren.name}Warren")
         self.show_mute_buttons()
         self.show_menu_buttons()
 
         if (
             self.in_progress_data is not None
-            and self.in_progress_data["current_moon"] == game.clan.age
-            and self.in_progress_data["clan_name"] == game.clan.name
+            and self.in_progress_data["current_moon"] == game.warren.age
+            and self.in_progress_data["clan_name"] == game.warren.name
         ):
             self.display_change_load(self.in_progress_data)
         else:
@@ -334,8 +334,8 @@ class PatrolScreen(Screens):
         variable_dict["results_text"] = self.results_text
         variable_dict["outcome_art"] = self.outcome_art
 
-        variable_dict["current_moon"] = game.clan.age
-        variable_dict["clan_name"] = game.clan.name
+        variable_dict["current_moon"] = game.warren.age
+        variable_dict["clan_name"] = game.warren.name
 
         return variable_dict
 
@@ -365,7 +365,7 @@ class PatrolScreen(Screens):
     def update_button(self):
         """ " Updates button availabilities."""
         if self.patrol_stage == "choose_cats":
-            # Killing it now, because we have to switch it out for a "remove cat" button if the cat if
+            # Killing it now, because we have to switch it out for a "remove rabbit" button if the rabbit if
             # already in the patrol
             self.elements["add_remove_cat"].kill()
 
@@ -404,7 +404,7 @@ class PatrolScreen(Screens):
             else:
                 self.elements["patrol_start"].enable()
 
-            # Update add random cat buttons
+            # Update add random rabbit buttons
             # Enable all the buttons, to reset them
             self.elements["add_one"].enable()
             self.elements["add_three"].enable()
@@ -414,8 +414,8 @@ class PatrolScreen(Screens):
             # making sure meds don't get the option for other patrols
             if any(
                 (
-                    cat.status in ("medicine cat", "medicine cat apprentice")
-                    for cat in self.current_patrol
+                    rabbit.status in ("healer", "healer rusasi")
+                    for rabbit in self.current_patrol
                 )
             ):
                 self.patrol_type = "med"
@@ -462,11 +462,11 @@ class PatrolScreen(Screens):
             )
 
             able_no_med = [
-                cat
-                for cat in self.able_cats
-                if cat.status not in ("medicine cat", "medicine cat apprentice")
+                rabbit
+                for rabbit in self.able_cats
+                if rabbit.status not in ("healer", "healer rusasi")
             ]
-            if game.clan.clan_settings["random med cat"]:
+            if game.warren.clan_settings["random med rabbit"]:
                 able_no_med = self.able_cats
             if len(able_no_med) == 0:
                 able_no_med = self.able_cats
@@ -499,7 +499,7 @@ class PatrolScreen(Screens):
                 ):
                     if (
                         self.selected_apprentice_index
-                        == len(self.selected_cat.apprentice) - 1
+                        == len(self.selected_cat.rusasi) - 1
                     ):
                         self.elements["cycle_app_mentor_right_button"].disable()
                     else:
@@ -533,7 +533,7 @@ class PatrolScreen(Screens):
                         self.elements["cycle_mate_right_button"].hide()
 
     def open_choose_cats_screen(self):
-        """Opens the choose-cat patrol stage."""
+        """Opens the choose-rabbit patrol stage."""
         self.clear_page()  # Clear the page
         self.clear_cat_buttons()
         self.patrol_obj = Patrol()
@@ -598,7 +598,7 @@ class PatrolScreen(Screens):
             manager=MANAGER,
             anchors={"centerx": "centerx"},
         )
-        # No cat is selected when the screen is opened, so the button is disabled
+        # No rabbit is selected when the screen is opened, so the button is disabled
         self.elements["add_remove_cat"].disable()
 
         # Randomizing buttons
@@ -669,7 +669,7 @@ class PatrolScreen(Screens):
         )
         self.elements["herb"].disable()
 
-        # Able cat page buttons
+        # Able rabbit page buttons
         self.elements["last_page"] = UIImageButton(
             ui_scale(pygame.Rect((75, 462), (34, 34))),
             "",
@@ -752,8 +752,8 @@ class PatrolScreen(Screens):
         self.elements["patrol_start"].disable()
 
         # add prey information
-        if game.clan.game_mode != "classic":
-            current_amount = round(game.clan.freshkill_pile.total_amount, 2)
+        if game.warren.game_mode != "classic":
+            current_amount = round(game.warren.freshkill_pile.total_amount, 2)
             self.elements["current_prey"] = pygame_gui.elements.UITextBox(
                 "screens.patrol.current_prey",
                 ui_scale(pygame.Rect((300, 630), (200, 400))),
@@ -761,7 +761,7 @@ class PatrolScreen(Screens):
                 manager=MANAGER,
                 text_kwargs={"prey": str(current_amount)},
             )
-            needed_amount = round(game.clan.freshkill_pile.amount_food_needed(), 2)
+            needed_amount = round(game.warren.freshkill_pile.amount_food_needed(), 2)
             self.elements["needed_prey"] = pygame_gui.elements.UITextBox(
                 "screens.patrol.needed_prey",
                 ui_scale(pygame.Rect((300, 647), (200, 400))),
@@ -789,7 +789,7 @@ class PatrolScreen(Screens):
 
         if self.display_text is None:
             # No patrol events were found.
-            self.change_screen("camp screen")
+            self.change_screen("burrow screen")
             return
 
         # Layout images
@@ -863,7 +863,7 @@ class PatrolScreen(Screens):
             object_id="#text_box_22_horizleft",
             manager=MANAGER,
             text_kwargs={
-                "leader": str(self.patrol_obj.patrol_leader.name),
+                "chief rabbit": str(self.patrol_obj.patrol_leader.name),
                 "p_l": self.patrol_obj.patrol_leader,
                 "members": self.get_list_text(members),
                 "patrol_cats": members,
@@ -872,12 +872,12 @@ class PatrolScreen(Screens):
             },
         )
 
-        # Draw Patrol Cats
+        # Draw Patrol Rabbits
         pos_x = 400
         pos_y = 475
         for u in range(6):
             if u < len(self.patrol_obj.patrol_cats):
-                self.elements["cat" + str(u)] = pygame_gui.elements.UIImage(
+                self.elements["rabbit" + str(u)] = pygame_gui.elements.UIImage(
                     ui_scale(pygame.Rect((pos_x, pos_y), (50, 50))),
                     self.patrol_obj.patrol_cats[u].sprite,
                     manager=MANAGER,
@@ -979,20 +979,20 @@ class PatrolScreen(Screens):
         self.elements["antagonize"].hide()
 
     def update_cat_images_buttons(self):
-        """Updates all the cat sprite buttons. Also updates the skills tab, if open, and the next and
+        """Updates all the rabbit sprite buttons. Also updates the skills tab, if open, and the next and
         previous page buttons."""
-        self.clear_cat_buttons()  # Clear all the cat buttons
+        self.clear_cat_buttons()  # Clear all the rabbit buttons
 
         self.able_cats = []
 
-        # ASSIGN TO ABLE CATS
-        for the_cat in Cat.all_cats_list:
+        # ASSIGN TO ABLE RABBITS
+        for the_cat in Rabbit.all_cats_list:
             if (
                 not the_cat.dead
                 and the_cat.in_camp
                 and the_cat.ID not in game.patrolled
                 and the_cat.status
-                not in ("elder", "kitten", "mediator", "mediator apprentice")
+                not in ("elder", "kit", "owsla", "owsla rusasi")
                 and not the_cat.outside
                 and the_cat not in self.current_patrol
                 and not the_cat.not_working()
@@ -1013,7 +1013,7 @@ class PatrolScreen(Screens):
 
         self.current_page = max(1, min(self.current_page, len(all_pages)))
 
-        # Check for empty list (no able cats)
+        # Check for empty list (no able rabbits)
         if all_pages:
             display_cats = all_pages[self.current_page - 1]
         else:
@@ -1034,12 +1034,12 @@ class PatrolScreen(Screens):
             else:
                 self.elements["last_page"].enable()
 
-        # Draw able cats.
+        # Draw able rabbits.
         pos_y = 500
         pos_x = 50
         i = 0
-        for cat in display_cats:
-            if game.clan.clan_settings["show fav"] and cat.favourite:
+        for rabbit in display_cats:
+            if game.warren.clan_settings["show fav"] and rabbit.favourite:
                 self.fav[str(i)] = pygame_gui.elements.UIImage(
                     ui_scale(pygame.Rect((pos_x, pos_y), (50, 50))),
                     pygame.transform.scale(
@@ -1053,13 +1053,13 @@ class PatrolScreen(Screens):
             self.cat_buttons["able_cat" + str(i)] = UISpriteButton(
                 ui_scale(pygame.Rect((pos_x, pos_y), (50, 50))),
                 (
-                    pygame.transform.scale(cat.sprite, ui_scale_dimensions((50, 50)))
+                    pygame.transform.scale(rabbit.sprite, ui_scale_dimensions((50, 50)))
                     if game.settings["no sprite antialiasing"]
                     else pygame.transform.smoothscale(
-                        cat.sprite, ui_scale_dimensions((50, 50))
+                        rabbit.sprite, ui_scale_dimensions((50, 50))
                     )
                 ),
-                cat_object=cat,
+                cat_object=rabbit,
                 manager=MANAGER,
             )
             pos_x += 50
@@ -1071,23 +1071,23 @@ class PatrolScreen(Screens):
         if self.patrol_screen == "patrol_cats":
             # Hide Skills Info
             self.elements["skills_box"].hide()
-            # Draw cats in patrol
+            # Draw rabbits in patrol
             pos_y = 508
             pos_x = 525
             i = 0
-            for cat in self.current_patrol:
+            for rabbit in self.current_patrol:
                 self.cat_buttons["patrol_cat" + str(i)] = UISpriteButton(
                     ui_scale(pygame.Rect((pos_x, pos_y), (50, 50))),
                     (
                         pygame.transform.scale(
-                            cat.sprite, ui_scale_dimensions((50, 50))
+                            rabbit.sprite, ui_scale_dimensions((50, 50))
                         )
                         if game.settings["no sprite antialiasing"]
                         else pygame.transform.smoothscale(
-                            cat.sprite, ui_scale_dimensions((50, 50))
+                            rabbit.sprite, ui_scale_dimensions((50, 50))
                         )
                     ),
-                    cat_object=cat,
+                    cat_object=rabbit,
                     manager=MANAGER,
                 )
                 pos_x += 75
@@ -1128,7 +1128,7 @@ class PatrolScreen(Screens):
         )
 
     def update_selected_cat(self):
-        """Refreshes the image displaying the selected cat, traits, mentor/apprentice/mate ext"""
+        """Refreshes the image displaying the selected rabbit, traits, mentor/rusasi/mate ext"""
 
         # Kill and delete all relevant elements
         if "selected_image" in self.elements:
@@ -1141,7 +1141,7 @@ class PatrolScreen(Screens):
             self.elements["selected_bio"].kill()
             del self.elements["selected_bio"]
 
-        # Kill mate frame, apprentice/mentor frame, and respective images, if they exist:
+        # Kill mate frame, rusasi/mentor frame, and respective images, if they exist:
         if "mate_frame" in self.elements:
             self.elements["mate_frame"].kill()
             del self.elements["mate_frame"]  # No need to keep this in memory
@@ -1186,8 +1186,8 @@ class PatrolScreen(Screens):
             del self.elements["cycle_mate_right_button"]
 
         if self.selected_cat is not None:
-            # Now, if the selected cat is not None, we rebuild everything with the correct cat info
-            # Selected Cat Image
+            # Now, if the selected rabbit is not None, we rebuild everything with the correct rabbit info
+            # Selected Rabbit Image
             self.elements["selected_image"] = pygame_gui.elements.UIImage(
                 ui_scale(pygame.Rect((0, 175), (150, 150))),
                 pygame.transform.scale(
@@ -1222,11 +1222,11 @@ class PatrolScreen(Screens):
                 },
             )
 
-            # Show Cat's Mate, if they have one
+            # Show Rabbit's Mate, if they have one
             if len(self.selected_cat.mate) > 0:
                 if self.selected_mate_index > len(self.selected_cat.mate) - 1:
                     self.selected_mate_index = 0
-                self.mate = Cat.fetch_cat(
+                self.mate = Rabbit.fetch_cat(
                     self.selected_cat.mate[self.selected_mate_index]
                 )
                 self.elements["mate_frame"] = pygame_gui.elements.UIImage(
@@ -1266,7 +1266,7 @@ class PatrolScreen(Screens):
                     manager=MANAGER,
                     anchors={"top_target": self.elements["mate_frame"]},
                 )
-                # Disable mate_button if the cat is not able to go on a patrol
+                # Disable mate_button if the rabbit is not able to go on a patrol
                 if self.mate not in self.able_cats:
                     self.elements["mate_button"].disable()
 
@@ -1288,11 +1288,11 @@ class PatrolScreen(Screens):
                     )
                     self.update_button()
 
-            # Draw mentor or apprentice
+            # Draw mentor or rusasi
             relation = "should not display"
             if (
-                self.selected_cat.status in ("medicine cat apprentice", "apprentice")
-                or self.selected_cat.apprentice != []
+                self.selected_cat.status in ("healer rusasi", "rusasi")
+                or self.selected_cat.rusasi != []
             ):
                 self.elements["app_mentor_frame"] = pygame_gui.elements.UIImage(
                     ui_scale(pygame.Rect((495, 190), (166, 170))),
@@ -1302,27 +1302,27 @@ class PatrolScreen(Screens):
 
                 if (
                     self.selected_cat.status
-                    in ("medicine cat apprentice", "apprentice")
+                    in ("healer rusasi", "rusasi")
                     and self.selected_cat.mentor is not None
                 ):
-                    self.app_mentor = Cat.fetch_cat(self.selected_cat.mentor)
+                    self.app_mentor = Rabbit.fetch_cat(self.selected_cat.mentor)
                     relation = "general.mentor"
 
-                elif self.selected_cat.apprentice:
+                elif self.selected_cat.rusasi:
                     if (
                         self.selected_apprentice_index
-                        > len(self.selected_cat.apprentice) - 1
+                        > len(self.selected_cat.rusasi) - 1
                     ):
                         self.selected_apprentice_index = 0
-                    self.app_mentor = Cat.fetch_cat(
-                        self.selected_cat.apprentice[self.selected_apprentice_index]
+                    self.app_mentor = Rabbit.fetch_cat(
+                        self.selected_cat.rusasi[self.selected_apprentice_index]
                     )
-                    relation = "general.apprentice"
+                    relation = "general.rusasi"
                 else:
                     self.app_mentor = None
                     self.elements["app_mentor_frame"].hide()
 
-                # Failsafe, if apprentice or mentor is set to none.
+                # Failsafe, if rusasi or mentor is set to none.
                 if self.app_mentor is not None:
                     name = str(self.app_mentor.name)  # get name
                     if 10 <= len(name):  # check name length
@@ -1350,7 +1350,7 @@ class PatrolScreen(Screens):
                         manager=MANAGER,
                     )
 
-                    # Button to switch to that cat
+                    # Button to switch to that rabbit
                     self.elements["app_mentor_button"] = UIImageButton(
                         ui_scale(pygame.Rect((548, -4), (104, 26))),
                         (
@@ -1362,11 +1362,11 @@ class PatrolScreen(Screens):
                         manager=MANAGER,
                         anchors={"top_target": self.elements["app_mentor_frame"]},
                     )
-                    # Disable mate_button if the cat is not able to go on a patrol
+                    # Disable mate_button if the rabbit is not able to go on a patrol
                     if self.app_mentor not in self.able_cats:
                         self.elements["app_mentor_button"].disable()
 
-                    # Buttons to cycle between apprentices
+                    # Buttons to cycle between rusasirahs
                     if self.selected_cat.mentor == None:
                         self.elements[
                             "cycle_app_mentor_left_button"
@@ -1394,8 +1394,8 @@ class PatrolScreen(Screens):
         self.elements = {}
 
     def clear_cat_buttons(self):
-        for cat in self.cat_buttons:
-            self.cat_buttons[cat].kill()
+        for rabbit in self.cat_buttons:
+            self.cat_buttons[rabbit].kill()
         self.cat_buttons = {}
         for marker in self.fav:
             self.fav[marker].kill()

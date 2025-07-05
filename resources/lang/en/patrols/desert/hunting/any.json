@@ -21,7 +21,7 @@
                 "prey": ["medium"]
             },
             {
-                "text": "The shade of the metal forest offers countless desert creatures as possible prey, and the cats have a very successful hunt, hiding from the sunlight under Twoleg leaves.",
+                "text": "The shade of the metal forest offers countless desert creatures as possible prey, and the rabbits have a very successful hunt, hiding from the sunlight under Twoleg leaves.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["large"]
@@ -37,14 +37,14 @@
         ],
         "antag_fail_outcomes": [
             {
-                "text": "Your cats try to knock over a metal leaf, but there aren't enough of them to force it over.",
+                "text": "Your rabbits try to knock over a metal leaf, but there aren't enough of them to force it over.",
                 "exp": 0,
                 "weight": 20
             }
         ],
         "antag_success_outcomes": [
             {
-                "text": "The cats leap onto a Twoleg metal leaf, sending it over with a mighty crash. This is c_n territory, not Twoleg!",
+                "text": "The rabbits leap onto a Twoleg metal leaf, sending it over with a mighty crash. This is c_n territory, not Twoleg!",
                 "exp": 20,
                 "weight": 20
             }
@@ -66,13 +66,13 @@
         "chance_of_success": 10,
         "success_outcomes": [
             {
-                "text": "The patrol cats split up, using sentries to ensure that nothing disturbs their hunts.",
+                "text": "The patrol rabbits split up, using sentries to ensure that nothing disturbs their hunts.",
                 "exp": 20,
                 "weight": 20,
                 "prey": ["medium"]
             },
             {
-                "text": "The shade of the metal forest offers countless desert creatures as possible prey, and the cats have a very successful hunt, hiding from the sunlight under Twoleg leaves. ",
+                "text": "The shade of the metal forest offers countless desert creatures as possible prey, and the rabbits have a very successful hunt, hiding from the sunlight under Twoleg leaves. ",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["large"]
@@ -88,14 +88,14 @@
         ],
         "antag_fail_outcomes": [
             {
-                "text": "The cats try to knock over a metal leaf. It works, but several members of the patrol spring backward, yowling in pain - the Twolegs have trapped the leaf, storing fire that does not burn in it!",
+                "text": "The rabbits try to knock over a metal leaf. It works, but several members of the patrol spring backward, yowling in pain - the Twolegs have trapped the leaf, storing fire that does not burn in it!",
                 "exp": 0,
                 "weight": 20
             }
         ],
         "antag_success_outcomes": [
             {
-                "text": "The cats leap onto a Twoleg metal leaf, sending it over with a mighty crash. This is c_n territory, not Twoleg!",
+                "text": "The rabbits leap onto a Twoleg metal leaf, sending it over with a mighty crash. This is c_n territory, not Twoleg!",
                 "exp": 20,
                 "weight": 20
             }
@@ -215,7 +215,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [1, 6]
+            "rusasi": [1, 6]
         },
         "weight": 20,
         "intro_text": "r_c's mentor assesses them by sending them on a solo hunt.",
@@ -223,13 +223,13 @@
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "r_c manages a skillful catch, and brings it back to the camp to show everyone!",
+                "text": "r_c manages a skillful catch, and brings it back to the burrow to show everyone!",
                 "exp": 20,
                 "weight": 20,
                 "prey": ["medium"]
             },
             {
-                "text": "r_c focuses completely on {PRONOUN/r_c/poss} test, slipping into a clear-eyed, focused routine of catch and stash, catch and stash. Eventually {PRONOUN/r_c/subject}{VERB/r_c/'ve/'s} caught enough to need {PRONOUN/r_c/poss} mentor's help carrying it back to camp, and the sight of the fresh-kill pile stocked with {PRONOUN/r_c/poss} prey - {PRONOUN/r_c/subject} {VERB/r_c/feel/feels} ready to burst with happiness!",
+                "text": "r_c focuses completely on {PRONOUN/r_c/poss} test, slipping into a clear-eyed, focused routine of catch and stash, catch and stash. Eventually {PRONOUN/r_c/subject}{VERB/r_c/'ve/'s} caught enough to need {PRONOUN/r_c/poss} mentor's help carrying it back to burrow, and the sight of the fresh-kill pile stocked with {PRONOUN/r_c/poss} prey - {PRONOUN/r_c/subject} {VERB/r_c/feel/feels} ready to burst with happiness!",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["large"]
@@ -290,7 +290,7 @@
         "min_max_status": {},
         "weight": 20,
         "intro_text": "r_c heads out into the desert alone, wanting to sink their teeth into some prey and have some time to themselves.",
-        "decline_text": "r_c turns back to camp, deciding that a group hunt would be more effective.",
+        "decline_text": "r_c turns back to burrow, deciding that a group hunt would be more effective.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -300,7 +300,7 @@
                 "prey": ["medium"]
             },
             {
-                "text": "r_c finds a fat, dumb, slow ground squirrel, and they can barely drag the thing back to camp, but great StarClan, it's juicy when they sit down to eat it with their Clanmates.",
+                "text": "r_c finds a fat, dumb, slow ground squirrel, and they can barely drag the thing back to burrow, but great Inle, it's juicy when they sit down to eat it with their Clanmates.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["medium"]
@@ -313,7 +313,7 @@
                 "prey": ["medium"]
             },
             {
-                "text": "The prey is running terribly today. But s_c has patience, and wisely waits for the perfect opportunity instead of getting frustrated. They come back to camp with a good contribution to the Clan's stores, having had a relaxing day sitting with their thoughts while waiting for the prey to come to them.",
+                "text": "The prey is running terribly today. But s_c has patience, and wisely waits for the perfect opportunity instead of getting frustrated. They come back to burrow with a good contribution to the Warren's stores, having had a relaxing day sitting with their thoughts while waiting for the prey to come to them.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -338,7 +338,7 @@
                 "weight": 20
             },
             {
-                "text": "s_c starts the day with seemingly endless energy, but as one hunt fails after another, that energy runs dry. {PRONOUN/s_c/subject/CAP} {VERB/s_c/return/returns} to camp, empty-pawed and prickling with frustration.",
+                "text": "s_c starts the day with seemingly endless energy, but as one hunt fails after another, that energy runs dry. {PRONOUN/s_c/subject/CAP} {VERB/s_c/return/returns} to burrow, empty-pawed and prickling with frustration.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": ["bold", "childish", "confident", "daring", "playful"]
@@ -355,21 +355,21 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "deputy": [1, 6]
+            "captain": [1, 6]
         },
         "weight": 20,
         "intro_text": "r_c heads out into the desert alone, wanting to sink their teeth into some prey and have some time to themselves.",
-        "decline_text": "r_c turns back to camp, deciding that a group hunt would be more effective.",
+        "decline_text": "r_c turns back to burrow, deciding that a group hunt would be more effective.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "r_c heads off to one of their favorite spots in the desert, a dry riverbed with plenty of trees and bushes providing excellent ambush chances. And what do you know, they are bush! Or they were as far as that hare thought. They snicker to themselves as they pad back to camp.",
+                "text": "r_c heads off to one of their favorite spots in the desert, a dry riverbed with plenty of trees and bushes providing excellent ambush chances. And what do you know, they are bush! Or they were as far as that hare thought. They snicker to themselves as they pad back to burrow.",
                 "exp": 20,
                 "weight": 20,
                 "prey": ["medium"]
             },
             {
-                "text": "r_c finds a fat, dumb, slow ground squirrel, and they can barely drag the thing back to camp, but great StarClan, it's juicy when they sit down to eat it with their Clanmates. Purring, {PRONOUN/r_c/subject} {VERB/r_c/take/takes} the opportunity for a moment of peace, relaxing with their friends.",
+                "text": "r_c finds a fat, dumb, slow ground squirrel, and they can barely drag the thing back to burrow, but great Inle, it's juicy when they sit down to eat it with their Clanmates. Purring, {PRONOUN/r_c/subject} {VERB/r_c/take/takes} the opportunity for a moment of peace, relaxing with their friends.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["medium"]
@@ -382,7 +382,7 @@
                 "prey": ["medium"]
             },
             {
-                "text": "The prey is running terribly today. But s_c has patience, and wisely waits for the perfect opportunity instead of getting frustrated. They come back to camp with a good contribution to the Clan's stores, having had a relaxing day sitting with their thoughts while waiting for the prey to come to them.",
+                "text": "The prey is running terribly today. But s_c has patience, and wisely waits for the perfect opportunity instead of getting frustrated. They come back to burrow with a good contribution to the Warren's stores, having had a relaxing day sitting with their thoughts while waiting for the prey to come to them.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -407,7 +407,7 @@
                 "weight": 20
             },
             {
-                "text": "s_c starts the day with endless energy, but as one hunt fails after another, it very quickly runs dry. They give up and return to camp, to try and at least make progress on all the work piling up there.",
+                "text": "s_c starts the day with endless energy, but as one hunt fails after another, it very quickly runs dry. They give up and return to burrow, to try and at least make progress on all the work piling up there.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": ["bold", "childish", "confident", "daring", "playful"]
@@ -424,21 +424,21 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "leader": [1, 6]
+            "chief rabbit": [1, 6]
         },
         "weight": 20,
         "intro_text": "r_c heads out into the desert alone, wanting to sink their teeth into some prey and have some time to themselves.",
-        "decline_text": "r_c turns back to camp, deciding that a group hunt would be more effective.",
+        "decline_text": "r_c turns back to burrow, deciding that a group hunt would be more effective.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "r_c heads off to one of their favorite spots in the desert, a dry riverbed with plenty of trees and bushes providing excellent ambush chances. And what do you know, they are bush! Or they were as far as that hare thought. They snicker to themselves as they pad back to camp.",
+                "text": "r_c heads off to one of their favorite spots in the desert, a dry riverbed with plenty of trees and bushes providing excellent ambush chances. And what do you know, they are bush! Or they were as far as that hare thought. They snicker to themselves as they pad back to burrow.",
                 "exp": 20,
                 "weight": 20,
                 "prey": ["medium"]
             },
             {
-                "text": "r_c finds a fat, dumb, slow ground squirrel, and they can barely drag the thing back to camp, but great StarClan, it's juicy when they sit down to eat it with their Clanmates. Purring, {PRONOUN/r_c/subject} {VERB/r_c/take/takes} the opportunity for a moment of peace, relaxing with their friends.",
+                "text": "r_c finds a fat, dumb, slow ground squirrel, and they can barely drag the thing back to burrow, but great Inle, it's juicy when they sit down to eat it with their Clanmates. Purring, {PRONOUN/r_c/subject} {VERB/r_c/take/takes} the opportunity for a moment of peace, relaxing with their friends.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["medium"]
@@ -451,7 +451,7 @@
                 "prey": ["medium"]
             },
             {
-                "text": "The prey is running terribly today. But s_c has patience, and wisely waits for the perfect opportunity instead of getting frustrated. They come back to camp with a good contribution to the Clan's stores, having had a relaxing day sitting with their thoughts while waiting for the prey to come to them.",
+                "text": "The prey is running terribly today. But s_c has patience, and wisely waits for the perfect opportunity instead of getting frustrated. They come back to burrow with a good contribution to the Warren's stores, having had a relaxing day sitting with their thoughts while waiting for the prey to come to them.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -476,7 +476,7 @@
                 "weight": 20
             },
             {
-                "text": "s_c starts the day with endless energy, but as one hunt fails after another, it very quickly runs dry. They give up and return to camp, to try and at least make progress on all the work piling up there.",
+                "text": "s_c starts the day with endless energy, but as one hunt fails after another, it very quickly runs dry. They give up and return to burrow, to try and at least make progress on all the work piling up there.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": ["bold", "childish", "confident", "daring", "playful"]
@@ -499,7 +499,7 @@
         "chance_of_success": 60,
         "success_outcomes": [
             {
-                "text": "r_c immediately turns and heads for home to report this to their leader, alarmed by the sudden presence of Twolegs in their territory.",
+                "text": "r_c immediately turns and heads for home to report this to their chief rabbit, alarmed by the sudden presence of Twolegs in their territory.",
                 "exp": 20,
                 "weight": 20,
                 "prey": ["small"]
@@ -572,13 +572,13 @@
         "chance_of_success": 60,
         "success_outcomes": [
             {
-                "text": "The patrol immediately turns and heads for home to report this to their leader, alarmed by the sudden presence of Twolegs in their territory.",
+                "text": "The patrol immediately turns and heads for home to report this to their chief rabbit, alarmed by the sudden presence of Twolegs in their territory.",
                 "exp": 20,
                 "weight": 20,
                 "prey": ["small"]
             },
             {
-                "text": "Slyly, the cats use the unusual presence of the weird Twolegs to help their hunt, hiding on the outskirts of the area and waiting for the Twolegs to flush prey towards them. It works, and they leave the Twolegs to their business.",
+                "text": "Slyly, the rabbits use the unusual presence of the weird Twolegs to help their hunt, hiding on the outskirts of the area and waiting for the Twolegs to flush prey towards them. It works, and they leave the Twolegs to their business.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["small"]
@@ -591,7 +591,7 @@
                 "prey": ["small"]
             },
             {
-                "text": "s_c stops anyone from going near the Twolegs, repeating that true warriors have nothing to do with Twolegs and their monsters, and the patrol leaves back into the desert.",
+                "text": "s_c stops anyone from going near the Twolegs, repeating that true rabbits have nothing to do with Twolegs and their monsters, and the patrol leaves back into the desert.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -645,13 +645,13 @@
         "chance_of_success": 10,
         "success_outcomes": [
             {
-                "text": "The patrol immediately turns and heads for home to report this to their leader, alarmed by the sudden presence of Twolegs in their territory.",
+                "text": "The patrol immediately turns and heads for home to report this to their chief rabbit, alarmed by the sudden presence of Twolegs in their territory.",
                 "exp": 20,
                 "weight": 20,
                 "prey": ["small"]
             },
             {
-                "text": "Slyly, the cats use the unusual presence of the weird Twolegs to help their hunt, hiding on the outskirts of the area and waiting for the Twolegs to flush prey towards them. It works, and they leave the Twolegs to their business.",
+                "text": "Slyly, the rabbits use the unusual presence of the weird Twolegs to help their hunt, hiding on the outskirts of the area and waiting for the Twolegs to flush prey towards them. It works, and they leave the Twolegs to their business.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["small"]
@@ -664,7 +664,7 @@
                 "prey": ["small"]
             },
             {
-                "text": "s_c stops anyone from going near the Twolegs, repeating that true warriors have nothing to do with Twolegs and their monsters, and the patrol leaves back into the desert.",
+                "text": "s_c stops anyone from going near the Twolegs, repeating that true rabbits have nothing to do with Twolegs and their monsters, and the patrol leaves back into the desert.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -756,12 +756,12 @@
         ],
         "fail_outcomes": [
             {
-                "text": "r_c hears a monster thundering towards {PRONOUN/r_c/object}, but it screeches to a halt just in time. That was close! Maybe it's best to go back to camp.",
+                "text": "r_c hears a monster thundering towards {PRONOUN/r_c/object}, but it screeches to a halt just in time. That was close! Maybe it's best to go back to burrow.",
                 "exp": 0,
                 "weight": 20
             },
             {
-                "text": "r_c is hit by a monster while crossing and dies instantly. c_n is shaken by the death, and it's a reminder to every cat that just because their territory contains few Thunderpaths doesn't mean they can forget their dangers.",
+                "text": "r_c is hit by a monster while crossing and dies instantly. c_n is shaken by the death, and it's a reminder to every rabbit that just because their territory contains few Thunderpaths doesn't mean they can forget their dangers.",
                 "exp": 0,
                 "weight": 10,
                 "dead_cats": ["r_c"],
@@ -827,12 +827,12 @@
         ],
         "fail_outcomes": [
             {
-                "text": "r_c hears a monster thundering towards {PRONOUN/r_c/object}, but it screeches to a halt just in time. That was close! Maybe it's best to go back to camp.",
+                "text": "r_c hears a monster thundering towards {PRONOUN/r_c/object}, but it screeches to a halt just in time. That was close! Maybe it's best to go back to burrow.",
                 "exp": 0,
                 "weight": 20
             },
             {
-                "text": "r_c is crossing the Thunderpath and hears a monster thundering towards {PRONOUN/r_c/object}. {PRONOUN/r_c/subject/CAP} {VERB/r_c/freeze/freezes}. The monster swerves to hit {PRONOUN/r_c/object} deliberately, killing {PRONOUN/r_c/object} instantly. c_n is shaken by the death: it's a reminder to every cat that just because their territory contains few Thunderpaths doesn't mean they can forget their dangers.",
+                "text": "r_c is crossing the Thunderpath and hears a monster thundering towards {PRONOUN/r_c/object}. {PRONOUN/r_c/subject/CAP} {VERB/r_c/freeze/freezes}. The monster swerves to hit {PRONOUN/r_c/object} deliberately, killing {PRONOUN/r_c/object} instantly. c_n is shaken by the death: it's a reminder to every rabbit that just because their territory contains few Thunderpaths doesn't mean they can forget their dangers.",
                 "exp": 0,
                 "weight": 10,
                 "dead_cats": ["r_c"],
@@ -860,7 +860,7 @@
         "chance_of_success": 70,
         "success_outcomes": [
             {
-                "text": "Outraged, your cats charge the poacher, determined to rip its pelt off. No one steals from c_n! The fox jumps, startled, and streaks for the horizon, but with a full patrol your cats chase it until it drops the hare and crosses the border. Hrumph! Though it's only a small haul of prey for a hunting patrol, at least they've gotten rid of the prey thief.",
+                "text": "Outraged, your rabbits charge the poacher, determined to rip its pelt off. No one steals from c_n! The fox jumps, startled, and streaks for the horizon, but with a full patrol your rabbits chase it until it drops the hare and crosses the border. Hrumph! Though it's only a small haul of prey for a hunting patrol, at least they've gotten rid of the prey thief.",
                 "exp": 30,
                 "weight": 20,
                 "prey": ["small"],
@@ -875,7 +875,7 @@
                 ]
             },
             {
-                "text": "With many cats, they're able to catch the swift fox, even though it lives up to its name. It might be swift, but it's not much else, and the patrol manages to pull it down and kill the intruder, protecting c_n's lands. Oh, and they also win that hare too.",
+                "text": "With many rabbits, they're able to catch the swift fox, even though it lives up to its name. It might be swift, but it's not much else, and the patrol manages to pull it down and kill the intruder, protecting c_n's lands. Oh, and they also win that hare too.",
                 "exp": 30,
                 "weight": 5,
                 "prey": ["small"],
@@ -890,7 +890,7 @@
                 ]
             },
             {
-                "text": "s_c stops them before the patrol can start haring off after the swift fox. Instead, the cats sneak up on it, not allowing it to deploy its speed to escape. It's a successful strategy, and together they're able to bring down the fox, winning both the prey it poached and the chance to eliminate a thief.",
+                "text": "s_c stops them before the patrol can start haring off after the swift fox. Instead, the rabbits sneak up on it, not allowing it to deploy its speed to escape. It's a successful strategy, and together they're able to bring down the fox, winning both the prey it poached and the chance to eliminate a thief.",
                 "exp": 30,
                 "weight": 20,
                 "stat_skill": ["CLEVER,1"],
@@ -906,7 +906,7 @@
                 ]
             },
             {
-                "text": "s_c leads the charge! Their boldness sends the swift fox running, and though they lose the fox in a tumble of boulders the cats can at least bring the hare home for the fresh-kill pile.",
+                "text": "s_c leads the charge! Their boldness sends the swift fox running, and though they lose the fox in a tumble of boulders the rabbits can at least bring the hare home for the fresh-kill pile.",
                 "exp": 30,
                 "weight": 20,
                 "stat_trait": [
@@ -958,7 +958,7 @@
         "max_cats": 1,
         "min_max_status": {},
         "weight": 20,
-        "intro_text": "r_c spots a swift fox in the distance, trotting through the scrubland with a desert hare in its jaws. It's the biggest of the foxes in c_n's territory, the size of a cat, and r_c is alone. Should they try and take it on?",
+        "intro_text": "r_c spots a swift fox in the distance, trotting through the scrubland with a desert hare in its jaws. It's the biggest of the foxes in c_n's territory, the size of a rabbit, and r_c is alone. Should they try and take it on?",
         "decline_text": "Best not to risk a fight. r_c watches it go.",
         "chance_of_success": 60,
         "success_outcomes": [
@@ -975,7 +975,7 @@
                 "prey": ["large"]
             },
             {
-                "text": "r_c sneaks up on the fox, approaching through the cover of thornbushes. They burst out, snarling with claws extended, and batter the fox as it screams in surprise, dropping its stolen prey and jumping backwards. Only it flinches back into more thornbushes, and r_c picks up the dropped hare and pads back to camp, leaving the thief to struggle out of the thorns by itself.",
+                "text": "r_c sneaks up on the fox, approaching through the cover of thornbushes. They burst out, snarling with claws extended, and batter the fox as it screams in surprise, dropping its stolen prey and jumping backwards. Only it flinches back into more thornbushes, and r_c picks up the dropped hare and pads back to burrow, leaving the thief to struggle out of the thorns by itself.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["CLEVER,1", "FIGHTER,1"],
@@ -1009,7 +1009,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["LEGBITE"]
                     }
@@ -1035,14 +1035,14 @@
         "chance_of_success": 70,
         "success_outcomes": [
             {
-                "text": "One tiny kit fox against your cats? No contest, and the fox knows it. As soon as it sees them it trots off, leaving the cats to bring as much of the peccary back to camp as they can possibly carry.",
+                "text": "One tiny kit fox against your rabbits? No contest, and the fox knows it. As soon as it sees them it trots off, leaving the rabbits to bring as much of the peccary back to burrow as they can possibly carry.",
                 "exp": 20,
                 "weight": 20,
                 "prey": ["huge"],
                 "relationships": [
                     {
                         "cats_to": ["patrol", "patrol"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": 5
@@ -1050,14 +1050,14 @@
                 ]
             },
             {
-                "text": "The kit fox gives way to the bigger cats, melting away into the scrubby dry bush as your cats bring as much of this feast as they can back to the Clan. It knows that the patrol will leave more than enough scraps behind to fill its belly full of pork.",
+                "text": "The kit fox gives way to the bigger rabbits, melting away into the scrubby dry bush as your rabbits bring as much of this feast as they can back to the Warren. It knows that the patrol will leave more than enough scraps behind to fill its belly full of pork.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["huge"],
                 "relationships": [
                     {
                         "cats_to": ["patrol", "patrol"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": 5
@@ -1065,7 +1065,7 @@
                 ]
             },
             {
-                "text": "s_c is smart enough to stop anyone from pursuing the kit fox as it melts away before them. There's no point - the peccary carcass is the real prize here, and the patrol should focus on bringing its meat back for the Clan.",
+                "text": "s_c is smart enough to stop anyone from pursuing the kit fox as it melts away before them. There's no point - the peccary carcass is the real prize here, and the patrol should focus on bringing its meat back for the Warren.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["CLEVER,1"],
@@ -1073,7 +1073,7 @@
                 "relationships": [
                     {
                         "cats_to": ["patrol", "patrol"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": 5
@@ -1097,7 +1097,7 @@
                 "relationships": [
                     {
                         "cats_to": ["patrol", "patrol"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": 5
@@ -1107,13 +1107,13 @@
         ],
         "fail_outcomes": [
             {
-                "text": "One tiny kit fox against your cats? No contest. Your cats against the boar coming snuffling back? Also, no contest, and the patrol wisely backs off as the boar begins to cannibalize its victim.",
+                "text": "One tiny kit fox against your rabbits? No contest. Your rabbits against the boar coming snuffling back? Also, no contest, and the patrol wisely backs off as the boar begins to cannibalize its victim.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
                     {
                         "cats_to": ["patrol", "patrol"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": -5
@@ -1122,12 +1122,12 @@
                 "prey": ["very_small"]
             },
             {
-                "text": "One tiny kit fox against your cats? No contest. Your cats against the boar coming snuffling back? Also, no contest, and as the patrol flees, r_c feels something pull painfully in {PRONOUN/r_c/poss} leg.",
+                "text": "One tiny kit fox against your rabbits? No contest. Your rabbits against the boar coming snuffling back? Also, no contest, and as the patrol flees, r_c feels something pull painfully in {PRONOUN/r_c/poss} leg.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["sprain"],
                         "scars": []
                     }
@@ -1135,7 +1135,7 @@
                 "relationships": [
                     {
                         "cats_to": ["patrol", "patrol"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": -5
@@ -1161,14 +1161,14 @@
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "One tiny kit fox against your cats? No contest, and the fox knows it. As soon as it sees them it trots off, leaving the cats to bring as much of the peccary back to camp as they can possibly carry.",
+                "text": "One tiny kit fox against your rabbits? No contest, and the fox knows it. As soon as it sees them it trots off, leaving the rabbits to bring as much of the peccary back to burrow as they can possibly carry.",
                 "exp": 20,
                 "weight": 20,
                 "prey": ["huge"],
                 "relationships": [
                     {
                         "cats_to": ["patrol", "patrol"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": 5
@@ -1176,14 +1176,14 @@
                 ]
             },
             {
-                "text": "The kit fox gives way to the bigger cats, melting away into the scrubby dry bush as your cats bring as much of this feast as they can back to the Clan. It knows that the patrol will leave more than enough scraps behind to fill its belly full of pork.",
+                "text": "The kit fox gives way to the bigger rabbits, melting away into the scrubby dry bush as your rabbits bring as much of this feast as they can back to the Warren. It knows that the patrol will leave more than enough scraps behind to fill its belly full of pork.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["huge"],
                 "relationships": [
                     {
                         "cats_to": ["patrol", "patrol"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": 5
@@ -1191,7 +1191,7 @@
                 ]
             },
             {
-                "text": "s_c is smart enough to stop anyone from pursuing the kit fox as it melts away before them. There's no point - the peccary carcass is the real prize here, and the patrol should focus on bringing its meat back for the Clan.",
+                "text": "s_c is smart enough to stop anyone from pursuing the kit fox as it melts away before them. There's no point - the peccary carcass is the real prize here, and the patrol should focus on bringing its meat back for the Warren.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["CLEVER,1"],
@@ -1199,7 +1199,7 @@
                 "relationships": [
                     {
                         "cats_to": ["patrol", "patrol"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": 5
@@ -1223,7 +1223,7 @@
                 "relationships": [
                     {
                         "cats_to": ["patrol", "patrol"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": 5
@@ -1233,13 +1233,13 @@
         ],
         "fail_outcomes": [
             {
-                "text": "One tiny kit fox against your cats? No contest. Your cats against the boar coming snuffling back? Also, no contest, and the patrol wisely backs off as the boar begins to cannibalize its victim.",
+                "text": "One tiny kit fox against your rabbits? No contest. Your rabbits against the boar coming snuffling back? Also, no contest, and the patrol wisely backs off as the boar begins to cannibalize its victim.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
                     {
                         "cats_to": ["patrol", "patrol"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": -5
@@ -1248,12 +1248,12 @@
                 "prey": ["very_small"]
             },
             {
-                "text": "One tiny kit fox against your cats? No contest. Your cats against the boar coming snuffling back? Also, no contest, and as the patrol flees, r_c feels something pull painfully in {PRONOUN/r_c/poss} leg.",
+                "text": "One tiny kit fox against your rabbits? No contest. Your rabbits against the boar coming snuffling back? Also, no contest, and as the patrol flees, r_c feels something pull painfully in {PRONOUN/r_c/poss} leg.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["sprain"],
                         "scars": []
                     }
@@ -1261,7 +1261,7 @@
                 "relationships": [
                     {
                         "cats_to": ["patrol", "patrol"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": -5
@@ -1287,14 +1287,14 @@
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "One tiny kit fox? r_c sees it off with a pawswipe, not interested in trying to take the fox as prey when the peccary carcass exists. They try to bring as much of the peccary back to camp as they can possibly carry.",
+                "text": "One tiny kit fox? r_c sees it off with a pawswipe, not interested in trying to take the fox as prey when the peccary carcass exists. They try to bring as much of the peccary back to burrow as they can possibly carry.",
                 "exp": 30,
                 "weight": 20,
                 "prey": ["huge"],
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": 5
@@ -1302,14 +1302,14 @@
                 ]
             },
             {
-                "text": "The kit fox gives way to the bigger cat, melting away into the scrubby dry bush as r_c brings as much of the feast as they can back to the Clan. It knows that the cat will leave more than enough scraps behind to fill its belly full of pork.",
+                "text": "The kit fox gives way to the bigger rabbit, melting away into the scrubby dry bush as r_c brings as much of the feast as they can back to the Warren. It knows that the rabbit will leave more than enough scraps behind to fill its belly full of pork.",
                 "exp": 30,
                 "weight": 5,
                 "prey": ["huge"],
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": 5
@@ -1317,7 +1317,7 @@
                 ]
             },
             {
-                "text": "s_c is smart enough to stop themselves from pursuing the kit fox as it melts away before them. There's no point - the peccary carcass is the real prize here, and s_c is focused on bringing its meat back for the Clan.",
+                "text": "s_c is smart enough to stop themselves from pursuing the kit fox as it melts away before them. There's no point - the peccary carcass is the real prize here, and s_c is focused on bringing its meat back for the Warren.",
                 "exp": 30,
                 "weight": 20,
                 "stat_skill": ["CLEVER,1", "FIGHTER,1"],
@@ -1325,7 +1325,7 @@
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": 5
@@ -1349,7 +1349,7 @@
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": 5
@@ -1365,7 +1365,7 @@
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": -5
@@ -1384,7 +1384,7 @@
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": -5
@@ -1392,12 +1392,12 @@
                 ]
             },
             {
-                "text": "One tiny kit fox against your cats? No contest. r_c against the boar coming snuffling back? Also, no contest, and as the patrol flees, r_c feels something pull painfully in {PRONOUN/r_c/poss} leg.",
+                "text": "One tiny kit fox against your rabbits? No contest. r_c against the boar coming snuffling back? Also, no contest, and as the patrol flees, r_c feels something pull painfully in {PRONOUN/r_c/poss} leg.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["sprain"],
                         "scars": []
                     }
@@ -1409,7 +1409,7 @@
                 "relationships": [
                     {
                         "cats_to": ["patrol"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect"],
                         "amount": -5
@@ -1429,7 +1429,7 @@
         "max_cats": 4,
         "min_max_status": {},
         "weight": 20,
-        "intro_text": "r_c catches the scent of a fox. Tracking it down, the cats spot a kit fox wandering through their territory, carrying a mouse in its jaws.",
+        "intro_text": "r_c catches the scent of a fox. Tracking it down, the rabbits spot a kit fox wandering through their territory, carrying a mouse in its jaws.",
         "decline_text": "That's an insignificant amount of fresh-kill to start a fight over.",
         "chance_of_success": 70,
         "success_outcomes": [
@@ -1464,7 +1464,7 @@
                 ]
             },
             {
-                "text": "s_c pounces, snarling, and the fox turns tail with a yelp. Only s_c isn't alone, and cats circle the fox as it turns and snarls, darting in to finish it off without mercy. Kit foxes not only steal prey, for c_n, they are prey.",
+                "text": "s_c pounces, snarling, and the fox turns tail with a yelp. Only s_c isn't alone, and rabbits circle the fox as it turns and snarls, darting in to finish it off without mercy. Kit foxes not only steal prey, for c_n, they are prey.",
                 "exp": 15,
                 "weight": 20,
                 "stat_skill": ["FIGHTER,1"],
@@ -1533,7 +1533,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["LEGBITE"]
                     }
@@ -1574,7 +1574,7 @@
                 "prey": ["large"]
             },
             {
-                "text": "The kit fox locks eyes with r_c as they emerge from the grass, weighing up its options against the bigger cat. r_c doesn't hesitate, leaps to attack it, and with their skill they're able to bring down the kit fox. It should have run from them - trying to keep its mouse means r_c will be able to add both to the fresh-kill pile.",
+                "text": "The kit fox locks eyes with r_c as they emerge from the grass, weighing up its options against the bigger rabbit. r_c doesn't hesitate, leaps to attack it, and with their skill they're able to bring down the kit fox. It should have run from them - trying to keep its mouse means r_c will be able to add both to the fresh-kill pile.",
                 "exp": 25,
                 "weight": 5,
                 "prey": ["large"]
@@ -1622,7 +1622,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "cats": ["r_c"],
+                        "rabbits": ["r_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["LEGBITE"]
                     }
@@ -1643,7 +1643,7 @@
         "max_cats": 6,
         "min_max_status": {},
         "weight": 20,
-        "intro_text": "r_c catches the scent of a fox. Tracking it down, the cats spot a kit fox wandering through their territory, carrying a mouse in its jaws.",
+        "intro_text": "r_c catches the scent of a fox. Tracking it down, the rabbits spot a kit fox wandering through their territory, carrying a mouse in its jaws.",
         "decline_text": "That's an insignificant amount of fresh-kill to start a fight over.",
         "chance_of_success": 30,
         "success_outcomes": [
@@ -1678,7 +1678,7 @@
                 ]
             },
             {
-                "text": "s_c pounces, snarling, and the fox turns tail with a yelp. Only s_c isn't alone, and cats circle the fox as it turns and snarls, darting in to finish it off without mercy. Kit foxes not only steal prey, for c_n, they are prey.",
+                "text": "s_c pounces, snarling, and the fox turns tail with a yelp. Only s_c isn't alone, and rabbits circle the fox as it turns and snarls, darting in to finish it off without mercy. Kit foxes not only steal prey, for c_n, they are prey.",
                 "exp": 15,
                 "weight": 20,
                 "stat_skill": ["FIGHTER,1"],
@@ -1753,7 +1753,7 @@
         "min_cats": 1,
         "max_cats": 3,
         "min_max_status": {
-            "apprentice": [-1, -1]
+            "rusasi": [-1, -1]
         },
         "weight": 5,
         "intro_text": "The patrol catches scent of a mouse nearby.",
@@ -1761,7 +1761,7 @@
         "chance_of_success": 50,
         "success_outcomes": [
             {
-                "text": "r_c locates the mouse and begins to stalk. The mouse nibbles on a seed, unaware of the hunting cat. r_c waggles {PRONOUN/r_c/poss} haunches and leaps, pinning the mouse beneath a paw as {PRONOUN/r_c/subject} {VERB/r_c/make/makes} the killing bite.",
+                "text": "r_c locates the mouse and begins to stalk. The mouse nibbles on a seed, unaware of the hunting rabbit. r_c waggles {PRONOUN/r_c/poss} haunches and leaps, pinning the mouse beneath a paw as {PRONOUN/r_c/subject} {VERB/r_c/make/makes} the killing bite.",
                 "exp": 10,
                 "weight": 20,
                 "prey": ["small"]
@@ -1792,7 +1792,7 @@
         "min_cats": 1,
         "max_cats": 3,
         "min_max_status": {
-            "apprentice": [1, 6],
+            "rusasi": [1, 6],
             "normal adult": [1, 6]
         },
         "weight": 5,
@@ -1801,7 +1801,7 @@
         "chance_of_success": 50,
         "success_outcomes": [
             {
-                "text": "r_c pounces on the mouse, with a squeak of surprise from both prey and apprentice.",
+                "text": "r_c pounces on the mouse, with a squeak of surprise from both prey and rusasi.",
                 "exp": 10,
                 "weight": 20,
                 "prey": ["small"]
@@ -1844,7 +1844,7 @@
                 "prey": ["small"]
             },
             {
-                "text": "r_c creeps towards the bird, setting {PRONOUN/r_c/poss} paws down gently. The bird notices the cat sneaking towards it and attempts to take off. r_c bounds forward and smacks the bird to the ground with an outstretched paw. Outstanding!",
+                "text": "r_c creeps towards the bird, setting {PRONOUN/r_c/poss} paws down gently. The bird notices the rabbit sneaking towards it and attempts to take off. r_c bounds forward and smacks the bird to the ground with an outstretched paw. Outstanding!",
                 "exp": 15,
                 "weight": 5,
                 "prey": ["small"]
@@ -1959,7 +1959,7 @@
                 "stat_skill": ["RUNNER,1"],
                 "injury": [
                     {
-                        "cats": ["s_c"],
+                        "rabbits": ["s_c"],
                         "injuries": ["sprain"],
                         "scars": []
                     }
@@ -2027,7 +2027,7 @@
                 "stat_skill": ["RUNNER,1"],
                 "injury": [
                     {
-                        "cats": ["s_c"],
+                        "rabbits": ["s_c"],
                         "injuries": ["sprain"],
                         "scars": []
                     }
@@ -2058,12 +2058,12 @@
                 "prey": ["large"]
             },
             {
-                "text": "r_c catches the rabbit, but when {PRONOUN/r_c/subject} {VERB/r_c/report/reports} about the strange incident at camp, the dead rabbit is taken far away and buried.",
+                "text": "r_c catches the rabbit, but when {PRONOUN/r_c/subject} {VERB/r_c/report/reports} about the strange incident at burrow, the dead rabbit is taken far away and buried.",
                 "exp": 20,
                 "weight": 5
             },
             {
-                "text": "s_c stops the patrol from catching the rabbit and takes the opportunity to teach them about illnesses that can pass from prey to cat.",
+                "text": "s_c stops the patrol from catching the rabbit and takes the opportunity to teach them about illnesses that can pass from prey to rabbit.",
                 "exp": 30,
                 "weight": 20,
                 "stat_skill": ["CLEVER,1"],
@@ -2092,7 +2092,7 @@
                 "weight": 20
             },
             {
-                "text": "r_c catches the rabbit, but later {PRONOUN/r_c/subject} and the cats who eat it become violently ill.",
+                "text": "r_c catches the rabbit, but later {PRONOUN/r_c/subject} and the rabbits who eat it become violently ill.",
                 "exp": 0,
                 "weight": 20,
                 "prey": ["very_small"],
@@ -2106,7 +2106,7 @@
                     },
                     {
                         "cats_to": ["r_c"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["trust", "respect"],
                         "amount": -5
@@ -2114,13 +2114,13 @@
                 ],
                 "injury": [
                     {
-                        "cats": ["r_c", "some_clan"],
+                        "rabbits": ["r_c", "some_clan"],
                         "injuries": ["poisoned"],
                         "scars": []
                     }
                 ],
                 "history_text": {
-                    "reg_death": "This cat died after eating tainted prey.",
+                    "reg_death": "This rabbit died after eating tainted prey.",
                     "lead_death": "after eating tainted prey"
                 }
             }
@@ -2136,11 +2136,11 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [1, 6]
+            "rusasi": [1, 6]
         },
         "weight": 20,
         "intro_text": "r_c is tempted to eat the prey they just caught.",
-        "decline_text": "r_c decides against breaking the Warrior Code",
+        "decline_text": "r_c decides against breaking the Rabbit Code",
         "chance_of_success": 50,
         "success_outcomes": [
             {
@@ -2151,7 +2151,7 @@
                 "relationships": [
                     {
                         "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
@@ -2159,14 +2159,14 @@
                 ]
             },
             {
-                "text": "After all, they have caught enough on this solo hunt that they won't be able to carry it all back to camp. They stop for a quick snack and return to camp laden with prey for the fresh-kill pile.",
+                "text": "After all, they have caught enough on this solo hunt that they won't be able to carry it all back to burrow. They stop for a quick snack and return to burrow laden with prey for the fresh-kill pile.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["huge"],
                 "relationships": [
                     {
                         "cats_to": ["r_c"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
@@ -2176,13 +2176,13 @@
         ],
         "fail_outcomes": [
             {
-                "text": "r_c gives in to their grumbling belly, reasoning that no one will notice, but when they arrive back at camp empty-pawed and with blood on their lips they feel the stares of the warriors on their pelt. r_c slinks back to the apprentices' den, tail and ears low.",
+                "text": "r_c gives in to their grumbling belly, reasoning that no one will notice, but when they arrive back at burrow empty-pawed and with blood on their lips they feel the stares of the rabbits on their pelt. r_c slinks back to the rusasirahs' den, tail and ears low.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
                     {
                         "cats_to": ["r_c"],
-                        "cats_from": ["clan"],
+                        "cats_from": ["warren"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
@@ -2202,11 +2202,11 @@
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
-            "all apprentices": [-1, -1]
+            "all rusasirahs": [-1, -1]
         },
         "weight": 20,
         "intro_text": "r_c is tempted to eat the prey they just caught.",
-        "decline_text": "r_c decides against breaking the Warrior Code",
+        "decline_text": "r_c decides against breaking the Rabbit Code",
         "chance_of_success": 50,
         "success_outcomes": [
             {
@@ -2217,14 +2217,14 @@
                 "relationships": [
                     {
                         "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
                     },
                     {
                         "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["dislike"],
                         "amount": -5
@@ -2232,21 +2232,21 @@
                 ]
             },
             {
-                "text": "After all, the patrol has caught enough on this hunt that they'll have trouble carrying it all back to camp. They stop for a quick snack and return to camp laden with prey for the fresh-kill pile.",
+                "text": "After all, the patrol has caught enough on this hunt that they'll have trouble carrying it all back to burrow. They stop for a quick snack and return to burrow laden with prey for the fresh-kill pile.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["huge"],
                 "relationships": [
                     {
                         "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
                     },
                     {
                         "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["dislike"],
                         "amount": -5
@@ -2256,20 +2256,20 @@
         ],
         "fail_outcomes": [
             {
-                "text": "r_c gives in to their grumbling belly, reasoning that no one will notice, but when the patrol reforms and r_c arrives back empty-pawed with blood on their lips they feel the suspicious stares of the other warriors on their pelt.",
+                "text": "r_c gives in to their grumbling belly, reasoning that no one will notice, but when the patrol reforms and r_c arrives back empty-pawed with blood on their lips they feel the suspicious stares of the other rabbits on their pelt.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
                     {
                         "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
                     },
                     {
                         "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["dislike"],
                         "amount": 5
@@ -2278,20 +2278,20 @@
                 "prey": ["very_small"]
             },
             {
-                "text": "{PRONOUN/r_c/subject/CAP} {VERB/r_c/think/thinks} {PRONOUN/r_c/subject}{VERB/r_c/'ve/'s} gotten away with {PRONOUN/r_c/poss} clandestine snacking, but when r_c arrives back at camp, another patrol member pulls the deputy aside for a quiet word, glaring back at r_c. The deputy assigns {PRONOUN/r_c/object} to dig a new trench for the Clan's dirtplace, and r_c hears snide remarks when {PRONOUN/r_c/subject} slink in to {PRONOUN/r_c/poss} nest that night.",
+                "text": "{PRONOUN/r_c/subject/CAP} {VERB/r_c/think/thinks} {PRONOUN/r_c/subject}{VERB/r_c/'ve/'s} gotten away with {PRONOUN/r_c/poss} clandestine snacking, but when r_c arrives back at burrow, another patrol member pulls the captain aside for a quiet word, glaring back at r_c. The captain assigns {PRONOUN/r_c/object} to dig a new trench for the Warren's dirtplace, and r_c hears snide remarks when {PRONOUN/r_c/subject} slink in to {PRONOUN/r_c/poss} nest that night.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
                     {
                         "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
                     },
                     {
                         "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["dislike"],
                         "amount": 5
@@ -2311,11 +2311,11 @@
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
-            "apprentice": [1, 6]
+            "rusasi": [1, 6]
         },
         "weight": 20,
         "intro_text": "r_c is tempted to eat the prey they just caught.",
-        "decline_text": "r_c decides against breaking the Warrior Code",
+        "decline_text": "r_c decides against breaking the Rabbit Code",
         "chance_of_success": 50,
         "success_outcomes": [
             {
@@ -2326,14 +2326,14 @@
                 "relationships": [
                     {
                         "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
                     },
                     {
                         "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["dislike"],
                         "amount": -5
@@ -2341,21 +2341,21 @@
                 ]
             },
             {
-                "text": "After all, the patrol has caught enough on this hunt that they'll have trouble carrying it all back to camp. They stop for a quick snack and return to camp laden with prey for the fresh-kill pile.",
+                "text": "After all, the patrol has caught enough on this hunt that they'll have trouble carrying it all back to burrow. They stop for a quick snack and return to burrow laden with prey for the fresh-kill pile.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["large"],
                 "relationships": [
                     {
                         "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
                     },
                     {
                         "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["dislike"],
                         "amount": -5
@@ -2365,20 +2365,20 @@
         ],
         "fail_outcomes": [
             {
-                "text": "They think they've gotten away with their clandestine snacking, but when r_c arrives back at camp, another patrol member pulls the deputy aside for a quiet word, glaring back at r_c. The deputy assigns them to dig a new trench for the Clan's dirtplace; r_c prickles with humiliation and terrible smells.",
+                "text": "They think they've gotten away with their clandestine snacking, but when r_c arrives back at burrow, another patrol member pulls the captain aside for a quiet word, glaring back at r_c. The captain assigns them to dig a new trench for the Warren's dirtplace; r_c prickles with humiliation and terrible smells.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
                     {
                         "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
                     },
                     {
                         "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["clan", "patrol"],
+                        "cats_from": ["warren", "patrol"],
                         "mutual": false,
                         "values": ["dislike"],
                         "amount": 5
@@ -2399,7 +2399,7 @@
         "max_cats": 6,
         "min_max_status": {
            "normal adult": [1, 5],
-           "apprentice":[1, 5]
+           "rusasi":[1, 5]
             },
         "weight": 40,
         "chance_of_success": 50,
@@ -2446,16 +2446,16 @@
                     ],
                     "injury": [
                         {
-                        "cats": ["app1"],
+                        "rabbits": ["app1"],
                         "injuries": ["bite-wound", "poisoned"],
                         "scars": ["SNAKETWO"],
                         "no_results": false
                         }
                     ],
                     "history_text": {
-                        "scar": "m_c was permanently marked by the bite of a gila monster as an apprentice - but {PRONOUN/m_c/subject} survived.",
-                        "reg_death": "m_c died from the bite of a gila monster encountered on a hunt as a foolish apprentice.",
-                        "lead_death": "from the bite of a gila monster encountered on a hunt as a foolish apprentice"
+                        "scar": "m_c was permanently marked by the bite of a gila monster as an rusasi - but {PRONOUN/m_c/subject} survived.",
+                        "reg_death": "m_c died from the bite of a gila monster encountered on a hunt as a foolish rusasi.",
+                        "lead_death": "from the bite of a gila monster encountered on a hunt as a foolish rusasi"
                         }
                 }
             ]

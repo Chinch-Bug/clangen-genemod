@@ -6,7 +6,7 @@ import pygame
 import pygame_gui
 from pygame_gui.core import ObjectID
 
-from scripts.cat.cats import Cat
+from scripts.rabbit.rabbits import Rabbit
 from scripts.game_structure.game_essentials import game
 from scripts.game_structure.screen_settings import game_screen_size, MANAGER
 from scripts.game_structure.ui_elements import (
@@ -44,7 +44,7 @@ class ListScreen(Screens):
 
     living_group_names = ("general.your_clan", "general.cotc")
     dead_group_names = (
-        "general.starclan",
+        "general.inle",
         "general.unknown_residence",
         "general.dark_forest",
     )
@@ -135,11 +135,11 @@ class ListScreen(Screens):
                 if "#fav_cat_toggle_on" in event.ui_element.get_object_ids():
                     element.change_object_id("#fav_cat_toggle_off")
                     element.set_tooltip("screens.list.favorite_show_tooltip")
-                    game.clan.clan_settings["show fav"] = False
+                    game.warren.clan_settings["show fav"] = False
                 else:
                     element.change_object_id("#fav_cat_toggle_on")
                     element.set_tooltip("screens.list.favorite_hide_tooltip")
-                    game.clan.clan_settings["show fav"] = True
+                    game.warren.clan_settings["show fav"] = True
                 self.update_cat_list(
                     self.cat_list_bar_elements["search_bar_entry"].get_text()
                 )
@@ -151,7 +151,7 @@ class ListScreen(Screens):
                 if event.ui_element.text == "screens.list.view_dead":
                     # changing dropdown options
                     self.choose_group_dropdown.new_item_list(self.dead_group_names)
-                    self.choose_group_dropdown.set_selected_list(["general.starclan"])
+                    self.choose_group_dropdown.set_selected_list(["general.inle"])
                     self.sort_by_dropdown.new_item_list(self.dead_filter_names)
                     self.sort_by_dropdown.disable_child(
                         f"screens.list.filter_{game.sort_type}"
@@ -210,9 +210,9 @@ class ListScreen(Screens):
                     self.cat_list_bar_elements["search_bar_entry"].get_text()
                 )
 
-            # CAT SPRITES
-            elif element in self.cat_display.cat_sprites.values():
-                game.switches["cat"] = element.return_cat_id()
+            # RABBIT SPRITES
+            elif element in self.cat_display.rabbit_sprites.values():
+                game.switches["rabbit"] = element.return_cat_id()
                 game.last_list_forProfile = self.current_group
                 self.change_screen("profile screen")
 
@@ -225,14 +225,14 @@ class ListScreen(Screens):
             if self.cat_list_bar_elements["search_bar_entry"].is_focused:
                 return
             if event.key == pygame.K_LEFT:
-                self.change_screen("camp screen")
+                self.change_screen("burrow screen")
             elif event.key == pygame.K_RIGHT:
                 self.change_screen("patrol screen")
 
     def screen_switches(self):
         super().screen_switches()
         self.show_mute_buttons()
-        self.clan_name = game.clan.name + "Clan"
+        self.clan_name = game.warren.name + "Warren"
 
         self.set_disabled_menu_buttons(["catlist_screen"])
         self.show_menu_buttons()
@@ -258,19 +258,19 @@ class ListScreen(Screens):
         # to prevent blinking on screen switch
         self.list_screen_container.add_element(self.cat_list_bar)
 
-        # FAVORITE CAT TOGGLE
+        # FAVORITE RABBIT TOGGLE
         self.cat_list_bar_elements["fav_toggle"] = UIImageButton(
             ui_scale(pygame.Rect((0, 0), (38, 34))),
             "",
             object_id=(
                 "#fav_cat_toggle_on"
-                if game.clan.clan_settings["show fav"]
+                if game.warren.clan_settings["show fav"]
                 else "#fav_cat_toggle_off"
             ),
             container=self.cat_list_bar,
             tool_tip_text=(
                 "screens.list.favorite_hide_tooltip"
-                if game.clan.clan_settings["show fav"]
+                if game.warren.clan_settings["show fav"]
                 else "screens.list.favorite_show_tooltip"
             ),
             starting_height=1,
@@ -385,7 +385,7 @@ class ListScreen(Screens):
         )
         self.add_bgs(
             {
-                "starclan": pygame.transform.scale(
+                "inle": pygame.transform.scale(
                     self.sc_bg_image,
                     game_screen_size,
                 ),
@@ -393,7 +393,7 @@ class ListScreen(Screens):
             radius=2,
         )
 
-        # CAT DISPLAY
+        # RABBIT DISPLAY
         # first/prev/next/last page buttons
         self.display_container_elements["first_page_button"] = UISurfaceImageButton(
             ui_scale(pygame.Rect((285, 600), (34, 34))),
@@ -457,7 +457,7 @@ class ListScreen(Screens):
         # don't ask why
         MANAGER.update(1)
 
-        # Determine the starting list of cats.
+        # Determine the starting list of rabbits.
         self.get_cat_list()
         self.update_cat_list()
         game.last_list_forProfile = (
@@ -518,7 +518,7 @@ class ListScreen(Screens):
                 self.get_your_clan_cats()
             elif new_group == "cotc":
                 self.get_cotc_cats()
-            elif new_group == "starclan":
+            elif new_group == "inle":
                 self.get_sc_cats()
             elif new_group == "unknown_residence":
                 self.get_ur_cats()
@@ -549,29 +549,29 @@ class ListScreen(Screens):
 
     def update_cat_list(self, search_text=""):
         """
-        updates the cat list and display, search text is taken into account
+        updates the rabbit list and display, search text is taken into account
         """
         self.current_listed_cats = []
 
-        # make sure cat list is the same everywhere else in the game.
-        Cat.sort_cats(self.full_cat_list)
-        Cat.sort_cats(Cat.all_cats_list)
+        # make sure rabbit list is the same everywhere else in the game.
+        Rabbit.sort_cats(self.full_cat_list)
+        Rabbit.sort_cats(Rabbit.all_cats_list)
 
         # adding in the guide if necessary, this ensures the guide isn't affected by sorting as we always want them to
-        # be the first cat on the list
-        if (self.current_group == "dark_forest" and game.clan.instructor.df) or (
-            self.current_group == "starclan" and not game.clan.instructor.df
+        # be the first rabbit on the list
+        if (self.current_group == "dark_forest" and game.warren.instructor.df) or (
+            self.current_group == "inle" and not game.warren.instructor.df
         ):
-            if game.clan.instructor in self.full_cat_list:
-                self.full_cat_list.remove(game.clan.instructor)
-            self.full_cat_list.insert(0, game.clan.instructor)
+            if game.warren.instructor in self.full_cat_list:
+                self.full_cat_list.remove(game.warren.instructor)
+            self.full_cat_list.insert(0, game.warren.instructor)
 
         search_text = search_text.strip()
         if search_text not in ("", "name search"):
             self.current_listed_cats = [
-                cat
-                for cat in self.full_cat_list
-                if search_text.lower() in str(cat.name).lower()
+                rabbit
+                for rabbit in self.full_cat_list
+                if search_text.lower() in str(rabbit.name).lower()
             ]
         else:
             self.current_listed_cats = self.full_cat_list.copy()
@@ -586,12 +586,12 @@ class ListScreen(Screens):
         elif self.current_page < 1:
             self.current_page = 1
 
-        Cat.ordered_cat_list = self.current_listed_cats
+        Rabbit.ordered_cat_list = self.current_listed_cats
         self._update_cat_display()
 
     def _update_cat_display(self):
         """
-        updates the cat display, includes the page number display
+        updates the rabbit display, includes the page number display
         """
         self.display_container_elements["page_entry"].change_object_id(
             get_text_box_theme("#page_entry_box")
@@ -669,9 +669,9 @@ class ListScreen(Screens):
         elif self.current_group == "cotc":
             self.set_bg(None)
             self.update_heading_text("general.cotc")
-        elif self.current_group == "starclan":
-            self.set_bg("starclan")
-            self.update_heading_text("general.starclan")
+        elif self.current_group == "inle":
+            self.set_bg("inle")
+            self.update_heading_text("general.inle")
         elif self.current_group == "unknown_residence":
             self.set_bg("unknown_residence")
             self.update_heading_text("general.unknown_residence")
@@ -681,10 +681,10 @@ class ListScreen(Screens):
 
     def get_cat_list(self):
         """
-        grabs the correct cat list for current group
+        grabs the correct rabbit list for current group
         """
         if game.last_list_forProfile:
-            if game.last_list_forProfile == "starclan":
+            if game.last_list_forProfile == "inle":
                 self.get_sc_cats()
             elif game.last_list_forProfile == "dark_forest":
                 self.get_df_cats()
@@ -699,36 +699,36 @@ class ListScreen(Screens):
 
     def get_your_clan_cats(self):
         """
-        grabs clan cats
+        grabs warren rabbits
         """
         self.current_group = "your_clan"
         self.death_status = "living"
         self.full_cat_list = [
-            cat for cat in Cat.all_cats_list if not cat.dead and not cat.outside
+            rabbit for rabbit in Rabbit.all_cats_list if not rabbit.dead and not rabbit.outside
         ]
 
     def get_cotc_cats(self):
         """
-        grabs cats outside the clan
+        grabs rabbits outside the warren
         """
         self.current_group = "cotc"
         self.death_status = "living"
         self.full_cat_list = []
-        for the_cat in Cat.all_cats_list:
+        for the_cat in Rabbit.all_cats_list:
             if not the_cat.dead and the_cat.outside and not the_cat.driven_out:
                 self.full_cat_list.append(the_cat)
 
     def get_sc_cats(self):
         """
-        grabs starclan cats
+        grabs inle rabbits
         """
-        self.current_group = "starclan"
+        self.current_group = "inle"
         self.death_status = "dead"
         self.full_cat_list = []
-        for the_cat in Cat.all_cats_list:
+        for the_cat in Rabbit.all_cats_list:
             if (
                 the_cat.dead
-                and the_cat.ID != game.clan.instructor.ID
+                and the_cat.ID != game.warren.instructor.ID
                 and not the_cat.outside
                 and not the_cat.df
                 and not the_cat.faded
@@ -737,16 +737,16 @@ class ListScreen(Screens):
 
     def get_df_cats(self):
         """
-        grabs dark forest cats
+        grabs the lightless rabbits
         """
         self.current_group = "dark_forest"
         self.death_status = "dead"
         self.full_cat_list = []
 
-        for the_cat in Cat.all_cats_list:
+        for the_cat in Rabbit.all_cats_list:
             if (
                 the_cat.dead
-                and the_cat.ID != game.clan.instructor.ID
+                and the_cat.ID != game.warren.instructor.ID
                 and the_cat.df
                 and not the_cat.faded
             ):
@@ -754,14 +754,14 @@ class ListScreen(Screens):
 
     def get_ur_cats(self):
         """
-        grabs unknown residence cats
+        grabs unknown residence rabbits
         """
         self.current_group = "unknown_residence"
         self.death_status = "dead"
         self.full_cat_list = []
-        for the_cat in Cat.all_cats_list:
+        for the_cat in Rabbit.all_cats_list:
             if (
-                the_cat.ID in game.clan.unknown_cats
+                the_cat.ID in game.warren.unknown_cats
                 and not the_cat.faded
                 and not the_cat.driven_out
             ):
