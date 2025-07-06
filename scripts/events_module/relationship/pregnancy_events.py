@@ -1196,7 +1196,19 @@ class Pregnancy_Events:
             'kittypet' : 'kittypet_backstories'
         }
 
+        # gather up mates to participate in the *selection* ig
+        if len(cat.mate) > 0:
+            mate_copy = cat.mate
+            for x in mate_copy:
+                mate.append(cat.fetch_cat(x))
+
+        all_cats = [cat] + mate
+
         if not only_clanmate and (only_outside or randint(1, game.config['pregnancy']['clanmate_surrogate_chance']) != 1):
+            for outcat in outsiders[::-1]:
+                for cat in all_cats:
+                    if not cat.is_potential_mate(outcat, for_love_interest=True, outsider=True):
+                        outsiders.remove(outcat)
             if len(outsiders) > 0 and random.random() < 0.25:
                 return choice(outsiders)
             else:
@@ -1220,14 +1232,6 @@ class Pregnancy_Events:
                     outside_parent.thought = i18n.t("hardcoded.thought_outside_surrogate")
                 return outside_parent
         
-        # gather up mates to participate in the *selection* ig
-        if len(cat.mate) > 0:
-            mate_copy = cat.mate
-            for x in mate_copy:
-                mate.append(cat.fetch_cat(x))
-        
-        all_cats = [cat] + mate
-
         candidates = []
 
         for check_cat in all_cats:
