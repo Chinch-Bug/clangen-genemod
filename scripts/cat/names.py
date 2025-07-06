@@ -252,7 +252,7 @@ class Name:
             return
 
         try:
-            used_prefixes = [cat.name.prefix for cat in cat.all_cats.values() if not cat.dead and not cat.status in ['kittypet', 'loner', 'rogue', 'former Clancat']]
+            used_prefixes = [c.name.prefix for c in cat.all_cats.values() if not c.dead and c.group == cat.group and c.group]
         except:
             used_prefixes = []
 

@@ -6,7 +6,7 @@ import time
 from collections import namedtuple
 from copy import deepcopy
 from platform import system
-from random import choice
+from random import choice, random
 from re import search as re_search
 from re import sub
 from typing import TYPE_CHECKING
@@ -20,7 +20,7 @@ from pygame_gui.windows import UIMessageWindow
 
 from scripts.cat.history import History
 from scripts.cat.cats import Cat
-from scripts.cat.names import Name
+from scripts.cat.names import Name, names
 from scripts.cat_relations.inheritance import Inheritance
 from scripts.game_structure import image_cache
 from scripts.game_structure.game_essentials import game
@@ -918,14 +918,17 @@ class ChangeCatName(UIWindow):
                     use_suffix = self.suffix_entry_box.text
                 else:
                     use_suffix = self.the_cat.name.suffix
-                self.prefix_entry_box.set_text(
-                    Name(
-                        self.the_cat,
-                        None,
-                        use_suffix,
-                        biome=game.clan.biome
-                    ).prefix
-                )
+                if self.the_cat.group or random() < 0.5:
+                    self.prefix_entry_box.set_text(
+                        Name(
+                            self.the_cat,
+                            None,
+                            use_suffix,
+                            biome=game.clan.biome
+                        ).prefix
+                    )
+                else:
+                    self.prefix_entry_box.set_text(choice(names.names_dict["loner_names"]))
             elif event.ui_element == self.random_suffix:
                 if self.prefix_entry_box.text:
                     use_prefix = self.prefix_entry_box.text
