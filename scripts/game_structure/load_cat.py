@@ -8,6 +8,7 @@ import i18n
 import ujson
 
 from scripts.cat.cats import Cat, BACKSTORIES
+from scripts.clan import clan_class
 from scripts.game_structure.localization import get_new_pronouns
 from ..cat.personality import Personality
 from scripts.cat.pelts import Pelt
@@ -236,6 +237,9 @@ def json_load():
             ] = f"Cat{key}in clan_cats.json is missing {e}!"
             game.switches["traceback"] = e
             raise
+
+    version_info = clan_class.load_clan()
+    version_convert(version_info)
 
     # replace cat ids with cat objects and add other needed variables
     for cat in all_cats:

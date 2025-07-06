@@ -188,7 +188,6 @@ from scripts.game_structure.screen_settings import screen_scale, MANAGER, screen
 from scripts.game_structure.game_essentials import game
 from scripts.game_structure.discord_rpc import _DiscordRPC
 from scripts.cat.sprites import sprites
-from scripts.clan import clan_class
 from scripts.utility import (
     quit,
 )  # pylint: disable=redefined-builtin
@@ -222,8 +221,6 @@ def load_data():
         game.switches["clan_list"] = clan_list
         try:
             load_cats()
-            version_info = clan_class.load_clan()
-            version_convert(version_info)
             game.load_events()
             scripts.screens.screens_core.screens_core.rebuild_core()
         except Exception as e:
