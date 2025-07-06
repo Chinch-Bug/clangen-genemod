@@ -1449,7 +1449,11 @@ class Events:
                 cat = clan.leader
                 text = ""
                 if clan.deputy.personality.trait == "bloodthirsty":
-                    text = i18n.t("hardcoded.ceremony_leader_bloodthirsty")
+                    text = i18n.t(
+                        "hardcoded.ceremony_leader_bloodthirsty",
+                        oldname=clan.deputy.name,
+                        newname=cat.name,
+                        )
                 else:
                     c = random.randint(1, 3)
                     text = i18n.t(

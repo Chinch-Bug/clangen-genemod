@@ -3421,9 +3421,13 @@ class Cat:
         elif not isinstance(ID, str):  # Invalid type
             return None
         if ID in Cat.all_cats:
-            return Cat.all_cats[ID]
+            cat = Cat.all_cats[ID]
+            return cat
         else:
-            return ob if (ob := Cat.load_faded_cat(ID)) else None
+            cat = ob if (ob := Cat.load_faded_cat(ID)) else None
+            if cat and isinstance(cat.group, str):
+                cat.group = game.clan if cat.group == game.clan.name else [c for c in game.clan.all_clans if c.name == cat.group][0]
+            return cat
 
     @staticmethod
     def load_faded_cat(cat: str):
@@ -3486,9 +3490,6 @@ class Cat:
         )
         cat_ob.faded = True
         cat_ob.dead_for = cat_info["dead_for"] if "dead_for" in cat_info else 1
-        if isinstance(cat_ob.group, str):
-            cat_ob.group = game.clan if cat_ob.group == game.clan.name else [c for c in game.clan.all_clans if c.name == cat_ob.group][0]
-
         return cat_ob
 
     # ---------------------------------------------------------------------------- #
