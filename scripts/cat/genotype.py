@@ -454,8 +454,10 @@ class Genotype:
             self.unders_ruf += choice(self.odds["rufousing"])
             self.unders_rufsum += int(self.unders_ruf[i])
 
-    def Generator(self, special=None):
-        if self.odds["other_breed"] > 0 and randint(1, self.odds["other_breed"]) == 1:
+    def Generator(self, special=None, kittypet=False):
+        if kittypet and self.odds["kittypet_breed"] > 0 and randint(1, self.odds["kittypet_breed"]) == 1:
+            return self.BreedGenerator(special)
+        elif self.odds["other_breed"] > 0 and randint(1, self.odds["other_breed"]) == 1:
             return self.BreedGenerator(special)
 
         self.CommonGen(special)

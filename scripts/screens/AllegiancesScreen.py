@@ -15,6 +15,7 @@ from scripts.utility import (
     event_text_adjust,
 )
 from .Screens import Screens
+from ..cat.enums import CatRank
 from ..game_structure.ui_elements import UIModifiedScrollingContainer
 
 
@@ -159,7 +160,7 @@ class AllegiancesScreen(Screens):
         """Determine Text. Ouputs list of tuples."""
 
         living_cats = [
-            cat for cat in Cat.all_cats.values() if not cat.dead and not cat.outside
+            i for i in Cat.all_cats.values() if i.status.alive_in_player_clan
         ]
         living_meds = []
         living_mediators = []
@@ -168,21 +169,17 @@ class AllegiancesScreen(Screens):
         living_kits = []
         living_elders = []
         for cat in living_cats:
-            if cat.status == "healer":
+            if cat.status.rank == CatRank.MEDICINE_CAT:
                 living_meds.append(cat)
-            elif cat.status == "warrior":
+            elif cat.status.rank == CatRank.WARRIOR:
                 living_warriors.append(cat)
-            elif cat.status == "mediator":
+            elif cat.status.rank == CatRank.MEDIATOR:
                 living_mediators.append(cat)
-            elif cat.status in (
-                "apprentice",
-                "healer apprentice",
-                "mediator apprentice",
-            ):
+            elif cat.status.rank.is_any_apprentice_rank():
                 living_apprentices.append(cat)
-            elif cat.status in ("kitten", "newborn"):
+            elif cat.status.rank.is_baby():
                 living_kits.append(cat)
-            elif cat.status == "elder":
+            elif cat.status.rank == CatRank.ELDER:
                 living_elders.append(cat)
         if not len(living_meds):
             for cat in living_apprentices:
@@ -219,7 +216,7 @@ class AllegiancesScreen(Screens):
         # Clan Leader Box:
         # Pull the Clan leaders
         outputs = []
-        if game.clan.leader and not (game.clan.leader.dead or game.clan.leader.outside):
+        if game.clan.leader and game.clan.leader.status.alive_in_player_clan:
             x = self.generate_one_entry(game.clan.leader)
             outputs.append(
                 [
@@ -231,7 +228,7 @@ class AllegiancesScreen(Screens):
             )
 
         # Deputy Box:
-        if game.clan.deputy and not (game.clan.deputy.dead or game.clan.deputy.outside):
+        if game.clan.deputy and game.clan.deputy.status.alive_in_player_clan:
             x = self.generate_one_entry(game.clan.deputy)
             outputs.append(
                 [

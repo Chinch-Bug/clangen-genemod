@@ -7,6 +7,7 @@ import random
 
 import ujson
 
+from scripts.cat.enums import CatRank
 from scripts.game_structure.game_essentials import game
 from scripts.housekeeping.datadir import get_save_dir
 from .alt_namer import Namer
@@ -252,7 +253,7 @@ class Name:
             return
 
         try:
-            used_prefixes = [cat.name.prefix for cat in cat.all_cats.values() if not cat.dead and not cat.status in ['kittypet', 'loner', 'rogue', 'former Clancat']]
+            used_prefixes = [cat.name.prefix for cat in cat.all_cats.values() if not cat.dead and not cat.status.is_outsider]
         except:
             used_prefixes = []
 
@@ -478,30 +479,27 @@ class Name:
         # then suffixes based on ages (fixes #2004, just trust me)
 
         # Handles suffix assignment with outside cats
-        if self.cat.status not in ("rogue", "loner", "kittypet") and self.cat.outside:
-            adjusted_status: str = ""
-            if self.cat.moons >= 15:
-                adjusted_status = "warrior"
-            elif self.cat.moons >= 6:
-                adjusted_status = "apprentice"
+        if self.cat.status.is_former_clancat:
             if self.cat.moons == 0:
-                adjusted_status = "newborn"
+                adjusted_status = CatRank.NEWBORN
             elif self.cat.moons < 6:
-                adjusted_status = "kitten"
+                adjusted_status = CatRank.KITTEN
             elif self.cat.moons < 12:
-                adjusted_status = "apprentice"
+                adjusted_status = CatRank.APPRENTICE
             else:
-                adjusted_status = "warrior"
+                adjusted_status = CatRank.WARRIOR
 
-            if adjusted_status != "warrior" and not self.specsuffix_hidden:
+            if adjusted_status != CatRank.WARRIOR and not self.specsuffix_hidden:
                 return (
                     self.prefix + self.names_dict["special_suffixes"][adjusted_status]
                 )
         if (
-            self.cat.status in self.names_dict["special_suffixes"]
+            self.cat.status.rank in self.names_dict["special_suffixes"]
             and not self.specsuffix_hidden
         ):
-            return self.prefix + self.names_dict["special_suffixes"][self.cat.status]
+            return (
+                self.prefix + self.names_dict["special_suffixes"][self.cat.status.rank]
+            )
         return self.prefix + self.suffix
 
 

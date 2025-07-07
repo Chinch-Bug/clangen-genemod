@@ -9,12 +9,14 @@ import ujson
 
 from scripts.cat.cats import Cat, BACKSTORIES
 from scripts.game_structure.localization import get_new_pronouns
+from ..cat.enums import CatGroup, CatRank
 from ..cat.personality import Personality
 from scripts.cat.pelts import Pelt
 from scripts.cat_relations.inheritance import Inheritance
 from scripts.housekeeping.version import SAVE_VERSION_NUMBER
 from .game_essentials import game
 from ..cat.skills import CatSkills
+from ..cat.status import StatusDict
 from ..housekeeping.datadir import get_save_dir
 
 logger = logging.getLogger(__name__)
@@ -55,12 +57,23 @@ def json_load():
     # create new cat objects
     for i, cat in enumerate(cat_data):
         try:
+            if isinstance(cat["status"], str):
+                # this sucks, but we need to get the actual str age to make sure nothing goes wonky
+                age = None
+                for key_age in Cat.age_moons.keys():
+                    if cat["moons"] in range(
+                        Cat.age_moons[key_age][0], Cat.age_moons[key_age][1] + 1
+                    ):
+                        age = key_age
+                status_dict = {"rank": cat["status"], "age": age}
+            else:
+                status_dict = cat["status"]
             try:
                 new_cat = Cat(ID=cat["ID"],
                         prefix=cat["name_prefix"],
                         suffix=cat["name_suffix"],
                         specsuffix_hidden=(cat["specsuffix_hidden"] if 'specsuffix_hidden' in cat else False),
-                        status=cat["status"],
+                        status_dict=status_dict,
                         backstory=cat["backstory"],
                         parent1=cat["parent1"],
                         parent2=cat["parent2"],
@@ -81,7 +94,7 @@ def json_load():
                         suffix=cat["name_suffix"],
                         specsuffix_hidden=(cat["specsuffix_hidden"] if 'specsuffix_hidden' in cat else False),
                         gender=cat['gender'],
-                        status=cat["status"],
+                        status_dict=status_dict,
                         parent1=cat["parent1"],
                         parent3=cat.get("parent3"),
                         moons=cat["moons"],
@@ -120,6 +133,8 @@ def json_load():
                 accessory=cat["accessory"],
                 opacity=cat["opacity"] if "opacity" in cat else 100,
             )
+
+            # Runs a bunch of appearance-related conversion of old stuff.
             new_cat.pelt.check_and_convert()
 
             # converting old specialty saves into new scar parameter
@@ -172,7 +187,6 @@ def json_load():
             new_cat.no_kits = cat["no_kits"]
             new_cat.no_mates = cat["no_mates"] if "no_mates" in cat else False
             new_cat.no_retire = cat["no_retire"] if "no_retire" in cat else False
-            new_cat.exiled = cat["exiled"]
             new_cat.driven_out = cat["driven_out"] if "driven_out" in cat else False
 
             if "skill_dict" in cat:
@@ -188,7 +202,7 @@ def json_load():
                     else:
                         new_cat.backstory = "clanborn"
                 new_cat.skills = CatSkills.get_skills_from_old(
-                    cat["skill"], new_cat.status, new_cat.moons
+                    cat["skill"], new_cat.status.rank, new_cat.moons
                 )
 
             new_cat.mate = cat["mate"] if type(cat["mate"]) is list else [cat["mate"]]
@@ -197,14 +211,34 @@ def json_load():
             new_cat.previous_mates = (
                 cat["previous_mates"] if "previous_mates" in cat else []
             )
-            new_cat.dead = cat["dead"]
+
+            # checking for old dead
+            if cat.get("dead") or cat.get("df"):
+                if not new_cat.status.group or not new_cat.status.group.is_afterlife():
+                    if cat.get("df"):
+                        new_cat.status.send_to_afterlife(target=CatGroup.DARK_FOREST)
+                    elif cat.get("outside"):
+                        new_cat.status.send_to_afterlife(
+                            target=CatGroup.UNKNOWN_RESIDENCE
+                        )
+                    else:
+                        new_cat.status.send_to_afterlife(target=CatGroup.STARCLAN)
+
+                # these should properly change the cat's status to align with old bool info
+                if not new_cat.dead and cat.get("exiled"):
+                    new_cat.status.exile_from_group()
+                if (
+                    not new_cat.dead
+                    and cat.get("outside")
+                    and not new_cat.status.is_outsider
+                ):
+                    new_cat.status.become_lost()
+
             new_cat.dead_for = cat["dead_moons"]
             new_cat.experience = cat["experience"]
             new_cat.apprentice = cat["current_apprentice"]
             new_cat.former_apprentices = cat["former_apprentices"]
-            new_cat.df = cat["df"] if "df" in cat else False
 
-            new_cat.outside = cat["outside"] if "outside" in cat else False
             new_cat.faded_offspring = (
                 cat["faded_offspring"] if "faded_offspring" in cat else []
             )
