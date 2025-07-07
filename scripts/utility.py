@@ -3382,8 +3382,6 @@ def generate_sprite(
                     rednose.blit(nose_colour, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                     rednose.set_alpha(opacity)
                     whichmain.blit(rednose, (0, 0))
-
-
                 
                 return whichmain
         

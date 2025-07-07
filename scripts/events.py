@@ -1180,7 +1180,7 @@ class Events:
                 cat.dead_for += 1
             self.handle_fading(cat, clan)  # Deal with fading.
             return
-
+        
         # all actions, which do not trigger an event display and
         # are connected to cats are located in there
         cat.one_moon()

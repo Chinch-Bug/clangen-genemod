@@ -1912,10 +1912,10 @@ class Pregnancy_Events:
                     continue
                 if x.ID in first_parent.relationships:
                     second_parent_relation = first_parent.relationships[x.ID]
-                    if not second_parent_relation.opposite_relationship:
-                        second_parent_relation.link_relationship()
                 else:
                     second_parent_relation = first_parent.create_one_relationship(x)
+                if not second_parent_relation.opposite_relationship:
+                    second_parent_relation.link_relationship()
 
                 if not second_parent_relation:
                     continue
