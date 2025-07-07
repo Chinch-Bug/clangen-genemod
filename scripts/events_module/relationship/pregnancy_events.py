@@ -1234,6 +1234,7 @@ class Pregnancy_Events:
                 for cat in all_cats:
                     if not cat.is_potential_mate(outcat, for_love_interest=True, outsider=True):
                         outsiders.remove(outcat)
+                        break
             if len(outsiders) > 0 and random.random() < 0.25:
                 return choice(outsiders)
             else:
