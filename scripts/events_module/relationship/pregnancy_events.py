@@ -1,6 +1,6 @@
 import random
 from operator import xor
-from random import choice, randint, random
+from random import choice, choices, randint, random
 from copy import copy, deepcopy
 from typing import Dict, List, Union, Optional
 
