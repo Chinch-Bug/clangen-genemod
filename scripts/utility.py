@@ -424,7 +424,7 @@ def create_bio_parents(Cat, flip=False, second_parent=True):
     blood_parent = create_new_cat(Cat,
                                     original_social=original_social,
                                     alive=choice([True, True, True, False]),
-                                    age=ages[0],
+                                    moons=ages[0],
                                     gender='fem' if flip else 'masc',
                                     outside=True,
                                     is_parent=True)[0]
@@ -434,7 +434,7 @@ def create_bio_parents(Cat, flip=False, second_parent=True):
         blood_parent = create_new_cat(Cat,
                                     original_social=original_social,
                                     alive=choice([True, True, True, False]),
-                                    age=ages[0],
+                                    moons=ages[0],
                                     gender='fem' if flip else 'masc',
                                     outside=True,
                                     is_parent=True)[0]
@@ -443,7 +443,7 @@ def create_bio_parents(Cat, flip=False, second_parent=True):
         blood_parent2 = create_new_cat(Cat,
                                     original_social=original_social,
                                     alive=choice([True, True, True, False]),
-                                    age=ages[1] if ages[1] > 14 else 15,
+                                    moons=ages[1] if ages[1] > 14 else 15,
                                     gender='masc' if flip else 'fem',
                                     outside=True,
                                     is_parent=True)[0]
@@ -454,7 +454,7 @@ def create_bio_parents(Cat, flip=False, second_parent=True):
                                            original_social=original_social,
                                            alive=choice(
                                                [True, True, True, False]),
-                                    age=ages[0],
+                                    moons=ages[0],
                                     gender='masc' if flip else 'fem',
                                     outside=True,
                                     is_parent=True)[0]
@@ -836,7 +836,7 @@ def create_new_cat_block(
                 rank=rank,
                 original_social=cat_social,
                 original_group=cat_group,
-                age=age,
+                moons=age,
                 gender=gender,
                 thought=thought,
                 alive=alive,
@@ -1182,9 +1182,9 @@ def create_new_cat(
         if not is_parent and game.clan.clan_settings['tnr_mode'] and moons > 5:
             kittypet_n = game.config['tnr_mode']['kittypet_neuter']
             loner_n = game.config['tnr_mode']['loner_tnr']
-            if kittypet and random() < kittypet_n:
+            if original_social == CatSocial.KITTYPET and random() < kittypet_n:
                 new_cat.get_permanent_condition("infertility", False)
-            if loner and random() < loner_n:
+            if original_social in (CatSocial.LONER, CatSocial.ROGUE) and random() < loner_n:
                 new_cat.get_permanent_condition("infertility", False)
                 new_cat.pelt.scars.append("TNR")
         if not int(random() * chance):

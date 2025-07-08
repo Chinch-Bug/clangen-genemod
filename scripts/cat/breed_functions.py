@@ -2109,7 +2109,7 @@ class Breed_generator:
             genoclass.sokoke += '0'
 
         genoclass.body_value = randint(genoclass.body_indexes[2]+1, genoclass.body_indexes[4])
-        
+        genoclass.saturation = randint(0, 2)
         genoclass.breeds["Russian"] = 100
         return genoclass
     

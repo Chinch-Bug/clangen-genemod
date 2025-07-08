@@ -425,7 +425,7 @@ class Events:
                     additional_kits = outsider_cat.add_to_clan()
 
                     if additional_kits:
-                        event_text += i18n.t("hardcoded.event_lost_kits")
+                        event_text += i18n.t("hardcoded.event_lost_kits", count=len(additional_kits))
 
                         for kit_ID in additional_kits:
                             # add to involved cat list
@@ -2512,7 +2512,7 @@ class Events:
                 filter(
                     lambda x: x.status.alive_in_player_clan
                     and x.status.rank == CatRank.WARRIOR
-                    and ([i for i in x.former_apprentices if Cat.all_cats.get(i) and 'apprentice' not in Cat.all_cats.get(i).status]),
+                    and ([i for i in x.former_apprentices if Cat.all_cats.get(i) and not Cat.all_cats.get(i).status.rank.is_any_apprentice_rank()]),
                     Cat.all_cats_list,
                 )
             )

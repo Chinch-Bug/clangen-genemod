@@ -472,7 +472,7 @@ class Cat:
         :return: None
         """
         self.ID = ID
-        self.name = Name(self, prefix=prefix, suffix=suffix)
+        self.name = Name(self, prefix=prefix, suffix=suffix, load_existing_name=True)
         self.parent1 = None
         self.parent2 = None
         self.parent3 = None
@@ -482,7 +482,6 @@ class Cat:
         self._pronouns = {}  # Needs to be set as a dict
         self.moons = moons
         self.inheritance = None  # This should never be used, but just for safety
-        self.name = Name(prefix=prefix, suffix=suffix, cat=self)
 
         self.init_moons_age(moons)
 
