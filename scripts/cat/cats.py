@@ -3752,7 +3752,6 @@ class Cat:
                 "passes_genotype" : self.passes,
                 "white_pattern" : self.phenotype.white_pattern,
                 "chim_white" : self.chimerapheno.white_pattern if self.chimerapheno else "No",
-                "driven_out": self.driven_out,
                 "sprite_kitten": self.pelt.cat_sprites['kitten'],
                 "sprite_adolescent": self.pelt.cat_sprites['adolescent'],
                 "sprite_adult": self.pelt.cat_sprites['adult'],
