@@ -1536,11 +1536,11 @@ class Cat:
                 # pick the oldest leader in SC
                 leaders.sort(key=lambda x: -1 * int(x.dead_for))
                 ancient_leader = True
-                life_giving_leader = leaders[0]
+                life_giving_leader = leaders[0] if leaders else None
             else:
                 # pick previous leader
                 leaders.sort(key=lambda x: int(Cat.fetch_cat(x).dead_for))
-                life_giving_leader = leaders[0]
+                life_giving_leader = leaders[0] if leaders else None
 
         if life_giving_leader:
             life_givers.append(life_giving_leader)
