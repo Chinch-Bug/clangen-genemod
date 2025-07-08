@@ -798,7 +798,7 @@ def create_new_cat_block(
     # Now we generate the new cat
     if not chosen_cat:
         generated_parents = []
-        if status in ["kitten", "newborn"] or parent1:
+        if rank in (CatRank.KITTEN, CatRank.NEWBORN) or parent1:
             generated_parents = create_bio_parents(Cat, flip=True if parent1 and 'Y' in parent1.phenotype.sexgene else False, second_parent=not parent1)
             if not parent1:
                 parent1 = generated_parents[1]
@@ -1179,7 +1179,7 @@ def create_new_cat(
         else:
             chance = game.config["cat_generation"]["base_permanent_condition"] + 10
         
-        if not is_parent and game.clan.clan_settings['tnr_mode'] and age > 5:
+        if not is_parent and game.clan.clan_settings['tnr_mode'] and moons > 5:
             kittypet_n = game.config['tnr_mode']['kittypet_neuter']
             loner_n = game.config['tnr_mode']['loner_tnr']
             if kittypet and random() < kittypet_n:

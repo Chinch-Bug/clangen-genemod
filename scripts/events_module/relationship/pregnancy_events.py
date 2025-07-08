@@ -1,13 +1,13 @@
 import random
 from operator import xor
-from random import choice, choices, randint, random
+from random import choice, choices, randint, random, randrange
 from copy import copy, deepcopy
 from typing import Dict, List, Union, Optional
 
 import i18n
 
 from scripts.cat.cats import Cat
-from scripts.cat.enums import CatAge, CatGroup, CatRank
+from scripts.cat.enums import CatAge, CatGroup, CatRank, CatSocial
 from scripts.cat.history import History
 from scripts.cat.genotype import Genotype
 from scripts.cat.names import names, Name
