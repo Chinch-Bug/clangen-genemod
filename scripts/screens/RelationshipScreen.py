@@ -5,6 +5,7 @@ import pygame.transform
 import pygame_gui.elements
 
 from scripts.cat.cats import Cat
+from scripts.cat.enums import CatStanding
 from scripts.cat_relations.relationship import Relationship
 from scripts.game_structure import image_cache
 from scripts.game_structure.game_essentials import (
@@ -24,7 +25,6 @@ from scripts.utility import (
     ui_scale_dimensions,
     ui_scale_blit,
     ui_scale_offset,
-    event_text_adjust,
 )
 from .Screens import Screens
 from ..cat_relations.relationship import Relationship
@@ -446,7 +446,7 @@ class RelationshipScreen(Screens):
         else:
             self.all_relations = (list(self.the_cat.relationships.values()).copy() + blank_relations).sorted(key=lambda x: x.cat_to)
 
-        self.all_relations = [rel for rel in self.all_relations if rel.cat_to.group is None or rel.cat_from.group is None or rel.cat_from.group == rel.cat_to.group]
+        self.all_relations = [rel for rel in self.all_relations if rel.cat_to.status.is_outsider or rel.cat_from.status.is_outsider or rel.status.get_standing_with_group(self.the_cat.status.group)[-1] == CatStanding.MEMBER]
 
         self.focus_cat_elements["header"] = pygame_gui.elements.UITextBox(
             "screens.relationship.heading",

@@ -5,6 +5,7 @@ import random
 import i18n
 import ujson
 
+from scripts.cat.enums import CatRank
 from scripts.events_module.event_filters import (
     event_for_location,
     event_for_season,
@@ -313,11 +314,11 @@ class GenerateEvents:
                 continue
 
             # check tags
-            if not event_for_tags(event.tags, cat, clan=clan, other_cat=random_cat):
+            if not event_for_tags(event.tags, cat, clan=clan.enum, other_cat=random_cat):
                 continue
 
             # make complete leader death less likely until the leader is over 150 moons (or unless it's a murder)
-            if cat.status == "leader":
+            if cat.status.is_leader:
                 if "all_lives" in event.tags and "murder" not in event.sub_type:
                     if int(cat.moons) < 150 and int(random.random() * 5):
                         continue
@@ -366,14 +367,14 @@ class GenerateEvents:
                 # determine which injury severity list will be used
                 allowed_severity = None
                 discard = False
-                if cat.status in GenerateEvents.INJURY_DISTRIBUTION:
-                    minor_chance = GenerateEvents.INJURY_DISTRIBUTION[cat.status][
+                if cat.status.rank in GenerateEvents.INJURY_DISTRIBUTION:
+                    minor_chance = GenerateEvents.INJURY_DISTRIBUTION[cat.status.rank][
                         "minor"
                     ]
-                    major_chance = GenerateEvents.INJURY_DISTRIBUTION[cat.status][
+                    major_chance = GenerateEvents.INJURY_DISTRIBUTION[cat.status.rank][
                         "major"
                     ]
-                    severe_chance = GenerateEvents.INJURY_DISTRIBUTION[cat.status][
+                    severe_chance = GenerateEvents.INJURY_DISTRIBUTION[cat.status.rank][
                         "severe"
                     ]
                     severity_chosen = random.choices(
@@ -439,7 +440,7 @@ class GenerateEvents:
                     continue
 
                 if game.clan.clancount == 'multiclan' and event.other_clan and not event_for_other_clan(
-                    Cat_class, event.other_clan.get("has_rank"), other_clan
+                    Cat_class, event.other_clan.get("has_rank"), other_clan.enum if other_clan != game.clan else CatGroup.PLAYER_CLAN
                 ):
                     continue
 
@@ -458,7 +459,7 @@ class GenerateEvents:
                 continue
 
             elif event.supplies:
-                clan_size = get_living_clan_cat_count(Cat_class, game.clan)
+                clan_size = get_living_clan_cat_count(Cat_class)
                 discard = False
                 for supply in event.supplies:
                     trigger = supply["trigger"]

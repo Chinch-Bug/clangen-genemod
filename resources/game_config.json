@@ -272,7 +272,11 @@
     ]
   },
   "cat_generation": {
-    "base_permanent_condition": 90
+    "base_permanent_condition": 90,
+    "kittypet_gene_boost": false,
+    "comment": [
+      "kittypet gene boost gives kittypets a higher chance of rarer genes overall"
+    ]
   },
   "cat_name_controls": {
     "prefix_change_chance" : {

@@ -5,6 +5,7 @@ TODO: Docs
 
 
 """
+from scripts.cat.enums import CatRank, CatGroup
 
 # pylint: enable=line-too-long
 
@@ -12,7 +13,7 @@ from scripts.cat.skills import SkillPath
 from scripts.game_structure.game_essentials import game
 
 
-def amount_clanmembers_covered(all_cats, amount_per_med) -> int:
+def amount_clanmembers_covered(all_cats, amount_per_med, clan) -> int:
     """
     number of clan members the meds can treat
     """
@@ -20,14 +21,14 @@ def amount_clanmembers_covered(all_cats, amount_per_med) -> int:
     medicine_cats = [
         i
         for i in all_cats
-        if not i.dead
-        and not i.outside
-        and i.group == game.clan
+        if i.status.group == clan
         and not i.not_working()
-        and i.status in ["healer", "healer apprentice"]
+        and i.status.rank.is_any_medicine_rank()
     ]
-    full_med = [i for i in medicine_cats if i.status == "healer"]
-    apprentices = [i for i in medicine_cats if i.status == "healer apprentice"]
+    full_med = [i for i in medicine_cats if i.status.rank == CatRank.MEDICINE_CAT]
+    apprentices = [
+        i for i in medicine_cats if i.status.rank == CatRank.MEDICINE_APPRENTICE
+    ]
 
     total_exp = 0
     for cat in medicine_cats:
@@ -58,14 +59,14 @@ def medicine_cats_can_cover_clan(all_cats, amount_per_med, clan) -> bool:
     """
     whether the player has enough meds for the whole clan
     """
-    relevant_cats = [c for c in all_cats if not c.dead and not c.outside and (c.group == clan if clan else True)]
-    return amount_clanmembers_covered(all_cats, amount_per_med) > len(relevant_cats)
+    relevant_cats = [c for c in all_cats if c.status.group == clan]
+    return amount_clanmembers_covered(all_cats, amount_per_med, clan) > len(relevant_cats)
 
 
 def get_amount_cat_for_one_medic(clan):
     """Returns the amount of cats one healer can treat"""
     amount = 10
-    if clan and (clan != game.clan or clan.game_mode == "classic"):
+    if clan and (clan != CatGroup.PLAYER_CLAN or clan.game_mode == "classic"):
         # just hope nobody has clans with more than 1,000,000 cats in classic
         amount = 1000000
     elif clan and clan.game_mode == 'cruel season':
@@ -93,7 +94,7 @@ class Illness:
         medicine_duration,
         medicine_mortality,
         risks,
-        clan=game.clan,
+        clan:CatGroup=CatGroup.PLAYER_CLAN,
         herbs=None,
         event_triggered=False,
     ):
@@ -185,7 +186,7 @@ class Injury:
         cause_permanent=None,
         herbs=None,
         event_triggered=False,
-        clan=game.clan,
+        clan: CatGroup = CatGroup.PLAYER_CLAN,
     ):
         self.name = name
         self.severity = severity

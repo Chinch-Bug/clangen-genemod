@@ -79,6 +79,10 @@ class StartScreen(Screens):
                 self.settings_button: "settings screen",
             }
             if event.ui_element in screens and not self.error_open:
+                if event.ui_element == self.continue_button:
+                    for x in Cat.all_cats:
+                        if Cat.all_cats[x].dead:
+                            Cat.all_cats[x].pelt.rebuild_sprite = True
                 self.change_screen(screens[event.ui_element])
             elif event.ui_element == self.open_data_directory_button:
                 open_data_dir()

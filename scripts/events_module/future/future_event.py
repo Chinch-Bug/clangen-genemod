@@ -5,7 +5,7 @@ from scripts.events_module.event_filters import cat_for_event
 from scripts.game_structure.game_essentials import game
 
 
-def prep_event(event, event_id: str, possible_cats: dict, clan=game.clan):
+def prep_event(event, event_id: str, possible_cats: dict, clan):
     """
     Checks if the given event has a future event attached, then creates the future event
     :param event: the class object for the event
@@ -54,7 +54,7 @@ def _collect_involved_cats(cat_dict: dict, future_info: dict, clan) -> dict:
 
     # we're just keeping this to living cats within the clan for now, more complexity can come later
     possible_cats = [
-        kitty for kitty in Cat.all_cats.values() if not kitty.dead and not kitty.outside and kitty.group == clan
+        kitty for kitty in Cat.all_cats.values() if kitty.status.group == clan
     ]
 
     for new_role, cat_involved in future_info["involved_cats"].items():
