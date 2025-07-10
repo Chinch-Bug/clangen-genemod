@@ -6,6 +6,7 @@ import i18n
 
 import scripts.game_structure.screen_settings
 from scripts.cat.sprites import sprites
+from scripts.game_structure import constants
 from scripts.game_structure.game_essentials import game
 from .phenotype import Phenotype
 from scripts.game_structure.localization import get_lang_config
@@ -125,6 +126,11 @@ class Pelt:
         "ROSE MALLOW",
         "PICKLEWEED",
         "GOLDEN CREEPING JENNY",
+        "DESERT WILLOW",
+        "CACTUS FLOWER",
+        "PRAIRIE FIRE",
+        "VERBENA EAR",
+        "VERBENA PELT",
     ]
     wild_accessories = [
         "RED FEATHERS",
@@ -138,6 +144,7 @@ class Pelt:
         "MONARCH BUTTERFLY",
         "CICADA WINGS",
         "BLACK CICADA",
+        "ROAD RUNNER FEATHER",
     ]
     collars = [
         "CRIMSON",
@@ -263,12 +270,18 @@ class Pelt:
         "DRY LAURELS",
         "ROSE MALLOW",
         "PICKLEWEED",
+        "DESERT WILLOW",
+        "CACTUS FLOWER",
+        "PRAIRIE FIRE",
+        "VERBENA EAR",
     ]
 
     body_accessories = [
         "HERBS",
         "PETALS",
         "DRY HERBS",
+        "VERBENA PELT",
+        "ROAD RUNNER FEATHER",
     ]
     
     """Holds all appearance information for a cat. """

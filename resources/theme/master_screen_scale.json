@@ -208,7 +208,7 @@
 		"prototype": "@buttonstyles_menu_right",
 		"misc": {
 			"text_horiz_alignment": "right",
-			"text_horiz_alignment_padding": "8"
+			"text_horiz_alignment_padding": "18"
 		}
 	},
 	"@buttonstyles_menu_middle": { "prototype": "buttonstyles_prototype" },

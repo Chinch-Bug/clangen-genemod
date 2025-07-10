@@ -7,10 +7,11 @@ import random
 
 import ujson
 
+from scripts.game_structure import constants
 from scripts.cat.enums import CatRank
-from scripts.game_structure.game_essentials import game
 from scripts.housekeeping.datadir import get_save_dir
 from .alt_namer import Namer
+from scripts.clan_package.settings.clan_settings import get_clan_setting
 
 
 class Name:
@@ -236,9 +237,9 @@ class Name:
         elif self.prefix in self.mod_prefixes['general']['big'] and self.phenotype.height_label in ['teacup', 'tiny', 'small', 'below average', 'average']:
             colour_changed = True
             
-        chance = game.config["cat_name_controls"]["prefix_change_chance"][change]
+        chance = constants.CONFIG["cat_name_controls"]["prefix_change_chance"][change]
         if colour_changed:
-            chance /= game.config["cat_name_controls"]["prefix_change_chance"]["pelt-change-modifier"]
+            chance /= constants.CONFIG["cat_name_controls"]["prefix_change_chance"]["pelt-change-modifier"]
 
         if random.random() < (1/chance):
             self.give_prefix(cat, biome)
@@ -258,7 +259,7 @@ class Name:
             used_prefixes = []
 
         namer = Namer(used_prefixes, self.mod_prefixes, self.moons, self.phenotype, self.chimpheno)
-        if not game.clan or (game.clan.clan_settings["modded names"] and game.clan.clan_settings['new prefixes']):
+        if get_clan_setting("modded names") and get_clan_setting('new prefixes'):
             self.prefix = namer.start()
             if no_suffix:
                 if self.prefix == "Striped":
@@ -344,7 +345,7 @@ class Name:
     # Generate possible suffix
     def give_suffix(self, skills, personality, biome, honour=None):
         try:
-            if self.mod_suffixes and (not game.clan or (game.clan.clan_settings["modded names"] and game.clan.clan_settings['new suffixes'])) and skills and personality:
+            if self.mod_suffixes and (not game.clan or (get_clan_setting('modded names') and get_clan_setting('new suffixes'))) and skills and personality:
                 options = []
                 for i in range(4):
                     try:

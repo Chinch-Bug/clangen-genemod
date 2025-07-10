@@ -13,6 +13,7 @@ from scripts.cat.enums import CatAge, CatRank, CatGroup, CatSocial, CatStanding
 from scripts.cat.history import History
 from scripts.cat.pelts import Pelt
 from scripts.cat_relations.relationship import Relationship
+from scripts.clan_package.settings import get_clan_setting
 from scripts.clan_resources.freshkill import (
     FreshkillPile,
     FRESHKILL_EVENT_ACTIVE,
@@ -21,6 +22,8 @@ from scripts.clan_resources.freshkill import (
 from scripts.event_class import Single_Event
 from scripts.events_module.generate_events import GenerateEvents
 from scripts.events_module.relationship.relation_events import Relation_Events
+from scripts.game_structure import localization, constants
+from scripts.game_structure.game.switches import switch_get_value, Switch
 from scripts.game_structure.game_essentials import game
 from scripts.utility import (
     event_text_adjust,
@@ -53,6 +56,7 @@ class HandleShortEvents:
     ]
 
     def __init__(self):
+        self.future_event_failed = None
         self.current_lives = None
         self.herb_notice = None
         self.types = []
@@ -116,7 +120,7 @@ class HandleShortEvents:
         # check for war and assign self.other_clan accordingly
         war_chance = 5
         # if the war didn't go badly, then we decrease the chance of this event being war-focused
-        if game.switches["war_rel_change_type"] != "rel_down":
+        if switch_get_value(Switch.war_rel_change_type) != "rel_down":
             war_chance = 2
         if game.clan.war.get("at_war", False) and (not clan or clan == game.clan.name or clan == get_warring_clan()) and randint(1, war_chance) != 1:
             enemy_clan = get_warring_clan() if get_warring_clan() != clan else game.clan
@@ -156,23 +160,25 @@ class HandleShortEvents:
             ignore_subtyping=ignore_subtyping,
         )
 
-        if isinstance(game.config["event_generation"]["debug_ensure_event_id"], str):
+        if isinstance(
+            constants.CONFIG["event_generation"]["debug_ensure_event_id"], str
+        ):
             found = False
             for _event in final_events:
                 if (
                     _event.event_id
-                    == game.config["event_generation"]["debug_ensure_event_id"]
+                    == constants.CONFIG["event_generation"]["debug_ensure_event_id"]
                 ):
                     final_events = [_event]
                     print(
-                        f"FOUND debug_ensure_event_id: {game.config['event_generation']['debug_ensure_event_id']} "
+                        f"FOUND debug_ensure_event_id: {constants.CONFIG['event_generation']['debug_ensure_event_id']} "
                         f"was set as the only event option"
                     )
                     found = True
                     break
             if not found:
                 # this print is very spammy, but can be helpful if unsure why a debug event isn't triggering
-                # print(f"debug_ensure_event_id: {game.config['event_generation']['debug_ensure_event_id']} "
+                # print(f"debug_ensure_event_id: {constants.CONFIG['event_generation']['debug_ensure_event_id']} "
                 #      f"was not possible for {self.main_cat.name}.  {self.main_cat.name} was looking for a {event_type}: {self.sub_types} event")
                 pass
         # ---------------------------------------------------------------------------- #
@@ -180,6 +186,7 @@ class HandleShortEvents:
         # ---------------------------------------------------------------------------- #
         try:
             self.chosen_event = deepcopy(choice(final_events))
+            self.future_event_failed = False
             # this print is good for testing, but gets spammy in large clans
             # print(f"CHOSEN: {self.chosen_event.event_id}")
         except IndexError:
@@ -200,7 +207,7 @@ class HandleShortEvents:
 
         # checking if a mass death should happen, happens here so that we can toss the event if needed
         if "mass_death" in self.chosen_event.sub_type:
-            if not game.clan.clan_settings["disasters"]:
+            if not get_clan_setting("disasters"):
                 return
             self.handle_mass_death(clan=clan.enum)
             if len(self.multi_cat) <= 2:
@@ -265,8 +272,8 @@ class HandleShortEvents:
         # update gender
         if self.chosen_event.new_gender:
             self.handle_transition()
-            if game.clan.clan_settings["modded names"] and game.clan.clan_settings['dynamic prefixes']:
-                chance = game.config["cat_name_controls"]["trans_prefix_change_chance"]
+            if get_clan_setting("modded names") and get_clan_setting("dynamic prefixes"):
+                chance = constants.CONFIG["cat_name_controls"]["trans_prefix_change_chance"]
                 if chance and randint(1, chance) == 1:
                     if not self.main_cat.history:
                         self.main_cat.history = History()
@@ -286,15 +293,11 @@ class HandleShortEvents:
 
         # handle murder reveals
         if "murder_reveal" in self.chosen_event.sub_type:
-            if "clan_wide" in self.chosen_event.tags:
-                other_cat = None
-            else:
-                other_cat = self.random_cat
-            History.reveal_murder(
-                murderer=self.main_cat,
-                discoverer=other_cat,
-                cat_class=Cat,
+            self.main_cat.history.reveal_murder(
                 victim=self.victim_cat,
+                murderer_id=self.main_cat.ID,
+                clan_reveal="clan_wide" in self.chosen_event.tags,
+                aware_individuals=[self.random_cat],
             )
 
         # change outsider rep
@@ -390,6 +393,7 @@ class HandleShortEvents:
         self.allowed_events = event.pool.get("event_id")
         self.excluded_events = event.pool.get("excluded_event_id")
 
+        self.future_event_failed = True
         self.handle_event(
             event_type=event.event_type,
             main_cat=Cat.fetch_cat(event.involved_cats.get("m_c")),
@@ -397,14 +401,19 @@ class HandleShortEvents:
             freshkill_pile=game.clan.freshkill_pile,
             victim_cat=Cat.fetch_cat(event.involved_cats.get("mur_c")),
             sub_type=event.pool.get("subtype"),
-            ignore_subtyping=False if "subtype" in event.pool else True,
+            ignore_subtyping="subtype" not in event.pool,
             clan=clan
         )
 
         self.allowed_events = []
         self.excluded_events = []
 
-    def handle_new_cats(self, clan=None, other_clan=None):
+        if self.future_event_failed:
+            self.future_event_failed = False
+            return True
+        return False
+
+    def handle_new_cats(self, clan, other_clan):
         """
         handles adding new cats to the clan
         """
@@ -467,7 +476,7 @@ class HandleShortEvents:
                         sub_sub[0] != sub[0]
                         and (
                             'Y' not in sub_sub[0].phenotype.sexgene
-                            or game.clan.clan_settings["same sex birth"]
+                            or get_clan_setting("same sex birth")
                         )
                         and sub_sub[0].ID in (sub[0].parent1, sub[0].parent2)
                         and sub_sub[0].status.group == clan.enum
@@ -618,7 +627,7 @@ class HandleShortEvents:
         # if there's enough eligible cats, then we KILL
         if alive_count > 15:
             max_deaths = int(alive_count / 2)  # 1/2 of alive cats
-            if max_deaths > 10:  # make this into a game config setting?
+            if max_deaths > 10:  # make this into a constants.CONFIG setting?
                 max_deaths = 10  # we don't want to have massive events with a wall of names to read
             weights = []
             population = []
@@ -637,8 +646,8 @@ class HandleShortEvents:
                 )  # got to include the cat that rolled for death in the first place
 
             tnr = False
-            if 'tnr' in self.chosen_event.tags and game.clan.clan_settings['tnr_mode']:
-                if random() < game.config['tnr_mode']['Clan_tnr']:
+            if 'tnr' in self.chosen_event.tags and get_clan_setting("tnr_mode"):
+                if random() < constants.CONFIG['tnr_mode']['Clan_tnr']:
                     tnr = True
                     
             taken_cats = []
@@ -674,6 +683,12 @@ class HandleShortEvents:
             if "m_c" in block["cats"]:
                 # death history
                 if self.chosen_event.m_c["dies"]:
+                    # handle murder
+                    if "murder" in self.chosen_event.sub_type:
+                        self.random_cat.history.add_murder(
+                            murderer_id=self.random_cat.ID, victim=self.main_cat
+                        )
+
                     # find history
                     if self.main_cat.status.is_leader:
                         death_history = history_text_adjust(
@@ -688,13 +703,6 @@ class HandleShortEvents:
                             self.other_clan_name,
                             clan if clan else game.clan,
                             self.random_cat,
-                        )
-
-                    # handle murder
-                    if "murder" in self.chosen_event.sub_type:
-                        revealed = False
-                        History.add_murders(
-                            self.main_cat, self.random_cat, revealed, death_history
                         )
 
                     if self.main_cat.status.is_leader:
@@ -803,8 +811,8 @@ class HandleShortEvents:
             # find all possible injuries
             possible_injuries = []
             for injury in block["injuries"]:
-                if injury in INJURY_GROUPS:
-                    possible_injuries.extend(INJURY_GROUPS[injury])
+                if injury in constants.INJURY_GROUPS:
+                    possible_injuries.extend(constants.INJURY_GROUPS[injury])
                 else:
                     possible_injuries.append(injury)
 
@@ -1015,84 +1023,3 @@ class HandleShortEvents:
 
 
 handle_short_events = HandleShortEvents()
-
-# ---------------------------------------------------------------------------- #
-#                                LOAD RESOURCES                                #
-# ---------------------------------------------------------------------------- #
-EVENT_ALLOWED_CONDITIONS = [
-    "tick bites",
-    "claw-wound",
-    "bite-wound",
-    "cat bite",
-    "beak bite",
-    "snake bite",
-    "quilled by a porcupine",
-    "rat bite",
-    "mangled leg",
-    "mangled tail",
-    "broken jaw",
-    "broken bone",
-    "sore",
-    "bruises",
-    "scrapes",
-    "cracked pads",
-    "small cut",
-    "sprain",
-    "bee sting",
-    "joint pain",
-    "dislocated joint",
-    "torn pelt",
-    "torn ear",
-    "water in their lungs",
-    "shivering",
-    "frostbite",
-    "burn",
-    "severe burn",
-    "shock",
-    "dehydrated",
-    "head damage",
-    "damaged eyes",
-    "broken back",
-    "poisoned",
-    "headache",
-    "severe headache",
-    "fleas",
-    "seizure",
-    "diarrhea",
-    "running nose",
-    "kittencough",
-    "whitecough",
-    "greencough",
-    "yellowcough",
-    "redcough",
-    "carrionplace disease",
-    "heat stroke",
-    "heat exhaustion",
-    "stomachache",
-    "constant nightmares",
-]
-
-INJURY_GROUPS = {
-    "battle_injury": [
-        "claw-wound",
-        "mangled leg",
-        "mangled tail",
-        "torn pelt",
-        "cat bite",
-    ],
-    "minor_injury": ["sprain", "sore", "bruises", "scrapes"],
-    "blunt_force_injury": ["broken bone", "broken back", "head damage", "broken jaw"],
-    "hot_injury": ["heat exhaustion", "heat stroke", "dehydrated"],
-    "cold_injury": ["shivering", "frostbite"],
-    "big_bite_injury": [
-        "bite-wound",
-        "broken bone",
-        "torn pelt",
-        "mangled leg",
-        "mangled tail",
-    ],
-    "small_bite_injury": ["bite-wound", "torn ear", "torn pelt", "scrapes"],
-    "beak_bite": ["beak bite", "torn ear", "scrapes"],
-    "rat_bite": ["rat bite", "torn ear", "torn pelt"],
-    "sickness": ["greencough", "redcough", "whitecough", "yellowcough"],
-}

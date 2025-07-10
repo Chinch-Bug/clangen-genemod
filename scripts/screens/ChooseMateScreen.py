@@ -6,9 +6,7 @@ import pygame_gui.elements
 
 from scripts.cat.cats import Cat
 from scripts.game_structure import image_cache
-from scripts.game_structure.game_essentials import (
-    game,
-)
+
 from scripts.cat_relations.relationship import (
     Relationship
 )
@@ -27,6 +25,8 @@ from scripts.utility import (
     search_cats,
 )
 from .Screens import Screens
+from ..clan_package.settings import get_clan_setting
+from ..game_structure.game.switches import switch_set_value, switch_get_value, Switch
 from ..game_structure.screen_settings import MANAGER
 from ..ui.generate_box import BoxStyles, get_box
 from ..ui.generate_button import get_button_dict, ButtonStyles
@@ -126,13 +126,13 @@ class ChooseMateScreen(Screens):
 
             elif event.ui_element == self.previous_cat_button:
                 if isinstance(Cat.fetch_cat(self.previous_cat), Cat):
-                    game.switches["cat"] = self.previous_cat
+                    switch_set_value(Switch.cat, self.previous_cat)
                     self.update_current_cat_info()
                 else:
                     print("invalid previous cat", self.previous_cat)
             elif event.ui_element == self.next_cat_button:
                 if isinstance(Cat.fetch_cat(self.next_cat), Cat):
-                    game.switches["cat"] = self.next_cat
+                    switch_set_value(Switch.cat, self.next_cat)
                     self.update_current_cat_info()
                 else:
                     print("invalid next cat", self.next_cat)
@@ -210,7 +210,7 @@ class ChooseMateScreen(Screens):
                 if event.ui_element.cat_object.faded:
                     return
 
-                game.switches["cat"] = event.ui_element.cat_object.ID
+                switch_set_value(Switch.cat, event.ui_element.cat_object.ID)
                 self.change_screen("profile screen")
 
     def screen_switches(self):
@@ -866,7 +866,7 @@ class ChooseMateScreen(Screens):
     def update_current_cat_info(self, reset_selected_cat=True):
         """Updates all elements with the current cat, as well as the selected cat.
         Called when the screen switched, and whenever the focused cat is switched"""
-        self.the_cat = Cat.all_cats[game.switches["cat"]]
+        self.the_cat = Cat.all_cats[switch_get_value(Switch.cat)]
         if not self.the_cat.inheritance:
             self.the_cat.create_inheritance_new_cat()
 
@@ -1135,7 +1135,7 @@ class ChooseMateScreen(Screens):
             )
 
         if (
-            not game.clan.clan_settings["same sex birth"]
+            not get_clan_setting("same sex birth")
             and not (xor('Y' in self.the_cat.phenotype.sexgene, 'Y' in self.selected_cat.phenotype.sexgene) 
             and 'infertility' not in self.the_cat.permanent_condition 
             and 'infertility' not in self.selected_cat.permanent_condition)
@@ -1273,7 +1273,7 @@ class ChooseMateScreen(Screens):
             and (
                 not self.have_kits_only
                 or 
-                ((game.clan.clan_settings["same sex birth"]
+                ((get_clan_setting("same sex birth")
                 or xor('Y' in i.phenotype.sexgene, 'Y' in self.the_cat.phenotype.sexgene)) 
                 and 'infertility' not in i.permanent_condition
                 and 'infertility' not in self.the_cat.permanent_condition)

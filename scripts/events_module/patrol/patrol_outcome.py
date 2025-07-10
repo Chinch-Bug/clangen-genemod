@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: ascii -*-
 import random
-import re
 from os.path import exists as path_exists
 from random import choice, choices
 from typing import List, Dict, Union, TYPE_CHECKING, Optional, Tuple
@@ -9,8 +8,10 @@ from typing import List, Dict, Union, TYPE_CHECKING, Optional, Tuple
 import i18n
 import pygame
 
+from scripts.clan_package.settings import get_clan_setting
+from scripts.game_structure import constants
+from scripts.game_structure.game.settings import game_setting_get
 from scripts.events_module.future.future_event import prep_event
-from scripts.events_module.short.handle_short_events import INJURY_GROUPS
 
 if TYPE_CHECKING:
     from scripts.events_module.patrol.patrol import Patrol
@@ -229,11 +230,11 @@ class PatrolOutcome:
 
         tnr = False
         tnr2 = False
-        if 'tnr' in patrol.patrol_event.tags and game.clan.clan_settings['tnr_mode']:
-            if random.random() < game.config['tnr_mode']['Clan_tnr']:
+        if 'tnr' in patrol.patrol_event.tags and get_clan_setting('tnr_mode'):
+            if random.random() < constants.CONFIG['tnr_mode']['Clan_tnr']:
                 tnr = True
-        if 'tnr2' in patrol.patrol_event.tags and game.clan.clan_settings['tnr_mode']:
-            if random.random() < game.config['tnr_mode']['Clan_tnr2']:
+        if 'tnr2' in patrol.patrol_event.tags and get_clan_setting('tnr_mode'):
+            if random.random() < constants.CONFIG['tnr_mode']['Clan_tnr2']:
                 tnr = True
                 tnr2 = True
 
@@ -449,7 +450,7 @@ class PatrolOutcome:
         """Return outcome art, if not None. Return's None if there is no outcome art, or if outcome art can't be found."""
         root_dir = "resources/images/patrol_art/"
 
-        if game.settings.get("gore") and self.outcome_art_clean:
+        if game_setting_get("gore") and self.outcome_art_clean:
             file_name = self.outcome_art_clean
         else:
             file_name = self.outcome_art
@@ -612,7 +613,7 @@ class PatrolOutcome:
             return ""
 
         results = []
-        condition_lists = INJURY_GROUPS
+        condition_lists = constants.INJURY_GROUPS
 
         for block in self.injury:
             cats = gather_cat_objects(Cat, block.get("cats", ()), patrol, self.stat_cat)
@@ -925,7 +926,7 @@ class PatrolOutcome:
                         sub_sub[0] != sub[0]
                         and (
                             'Y' not in sub_sub[0].phenotype.sexgene 
-                            or game.clan.clan_settings['same sex birth']
+                            or get_clan_setting("same sex birth")
                         )
                         and sub_sub[0].ID in (sub[0].parent1, sub[0].parent2)
                         and not (sub_sub[0].dead or sub_sub[0].status.is_outsider)

@@ -179,7 +179,8 @@ class Status:
                     rank = CatRank.KITTYPET
             else:
                 rank = self.get_rank_from_age(age)
-                new_history["rank"] = rank
+
+            new_history["rank"] = rank
 
         # if not social, then social category is found via the rank
         if not social:
@@ -479,23 +480,19 @@ class Status:
         if target:
             self.add_to_group(
                 new_group=target,
-                standing_with_past_group=CatStanding.MEMBER
             )
             return
 
         # if we have an outsider who has never been a clancat, they go to the unknown residence
         if self.is_outsider and not self.is_former_clancat:
-            self.add_to_group(new_group=CatGroup.UNKNOWN_RESIDENCE,
-                              standing_with_past_group=CatStanding.MEMBER)
+            self.add_to_group(new_group=CatGroup.UNKNOWN_RESIDENCE)
             return
 
         # meanwhile clan cats go wherever their guide points them
         if game.clan:
-            self.add_to_group(new_group=game.clan.instructor.status.group,
-                              standing_with_past_group=CatStanding.MEMBER)
+            self.add_to_group(new_group=game.clan.instructor.status.group)
         else:
-            self.add_to_group(new_group=CatGroup.STARCLAN,
-                              standing_with_past_group=CatStanding.MEMBER)
+            self.add_to_group(new_group=CatGroup.STARCLAN)
 
     def _change_rank(self, new_rank: CatRank):
         """
@@ -553,6 +550,19 @@ class Status:
             ]
 
         return past_ranks[-1]
+
+    def get_last_living_group(self) -> Optional[CatGroup]:
+        """
+        Returns the last group this cat belonged to before death. If the cat had no group before dying, this will return None.
+        """
+        history = self.group_history
+        history.reverse()
+
+        for entry in history:
+            if not entry["group"] or not entry["group"].is_afterlife():
+                return entry["group"]
+
+        return None
 
     def is_lost(self, group: CatGroup = None) -> bool:
         """

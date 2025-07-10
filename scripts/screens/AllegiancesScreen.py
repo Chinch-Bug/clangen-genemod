@@ -45,7 +45,7 @@ class AllegiancesScreen(Screens):
     def handle_event(self, event):
         if event.type == pygame_gui.UI_BUTTON_PRESSED:
             if event.ui_element in self.names_buttons:
-                game.switches["cat"] = event.ui_element.return_cat_id()
+                switch_set_value(Switch.cat, event.ui_element.return_cat_id())
                 self.change_screen('profile screen')
             elif event.ui_element in self.choose_group_buttons.values():
                 self.choose_living_dropdown.close()
