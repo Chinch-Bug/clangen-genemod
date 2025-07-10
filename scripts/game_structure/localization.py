@@ -5,6 +5,7 @@ import i18n
 import i18n.translations
 import ujson
 
+from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure.game_essentials import game
 
 lang_config: Optional[Dict] = None
@@ -24,7 +25,7 @@ def get_new_pronouns(genderalign: str) -> List[Dict[str, Union[str, int]]]:
     """
 
     config = get_lang_config()["pronouns"]
-    if game.settings["they them default"]:
+    if game_setting_get("they them default"):
         pronouns = config["sets"].get("default")
     else:
         pronouns = config["sets"].get(adjust_gender_align(genderalign), config["sets"].get("default"))

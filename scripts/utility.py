@@ -25,6 +25,9 @@ from scripts.cat.phenotype import Genotype
 import ujson
 from pygame_gui.core import ObjectID
 
+from scripts.clan_package.settings import get_clan_setting
+from scripts.game_structure.game.settings import game_settings_save, game_setting_get
+from scripts.game_structure.game.switches import switch_get_value, Switch
 from scripts.cat.status import StatusDict
 from scripts.game_structure.localization import (
     load_lang_resource,
@@ -34,9 +37,8 @@ from scripts.game_structure.localization import (
 
 logger = logging.getLogger(__name__)
 from scripts.special_dates import SpecialDate, is_today
-from scripts.game_structure import image_cache, localization
+from scripts.game_structure import image_cache, localization, constants
 from scripts.cat.enums import CatAge, CatRank, CatSocial, CatGroup, CatStanding
-from scripts.cat.history import History
 from scripts.cat.names import names
 from scripts.cat.sprites import sprites
 from scripts.game_structure.game_essentials import game
@@ -361,7 +363,7 @@ def get_current_season():
     :return: the Clan's current season
     """
 
-    if game.config["lock_season"]:
+    if constants.CONFIG["lock_season"]:
         game.clan.current_season = game.clan.starting_season
         return game.clan.starting_season
 
@@ -379,7 +381,7 @@ def get_current_season():
         if index > 11:
             index = index - 12
 
-        game.clan.current_season = game.clan.seasons[index]
+        game.clan.current_season = constants.SEASON_CALENDAR[index]
 
         return game.clan.current_season
 
@@ -459,7 +461,7 @@ def create_bio_parents(Cat, flip=False, second_parent=True):
                                     outside=True,
                                     is_parent=True)[0]
     else:
-        par2geno = Genotype(game.config['genetics_config'], game.settings["ban problem genes"])
+        par2geno = Genotype(constants.CONFIG['genetics_config'], game_setting_get("ban problem genes"))
         par2geno.Generator('masc' if flip else 'fem')
 
     return [blood_parent, blood_parent2, par2geno]
@@ -547,9 +549,7 @@ def create_new_cat_block(
         gender = "male"
     elif "female" in attribute_list:
         gender = "female"
-    elif (
-        "can_birth" in attribute_list and not game.clan.clan_settings["same sex birth"]
-    ):
+    elif "can_birth" in attribute_list and not get_clan_setting("same sex birth"):
         gender = "female"
     else:
         gender = None
@@ -641,7 +641,7 @@ def create_new_cat_block(
     litter = False
     if "litter" in attribute_list:
         litter = True
-        if rank not in [CatRank.KITTEN, CatRank.NEWBORN]:
+        if rank not in (CatRank.KITTEN, CatRank.NEWBORN):
             rank = CatRank.KITTEN
 
     # CHOOSE DEFAULT BACKSTORY BASED ON CAT TYPE, STATUS
@@ -1046,7 +1046,7 @@ def create_new_cat(
             moons = randint(6, 120)
 
     # setting rank
-    if not rank:
+    if not rank and not outside:
         if moons == 0:
             rank = CatRank.NEWBORN
         elif moons < 6:
@@ -1174,14 +1174,14 @@ def create_new_cat(
         # chance to give the new cat a permanent condition, higher chance for found kits and litters
         if kit or litter:
             chance = int(
-                game.config["cat_generation"]["base_permanent_condition"] / 11.25
+                constants.CONFIG["cat_generation"]["base_permanent_condition"] / 11.25
             )
         else:
-            chance = game.config["cat_generation"]["base_permanent_condition"] + 10
+            chance = constants.CONFIG["cat_generation"]["base_permanent_condition"] + 10
         
-        if not is_parent and game.clan.clan_settings['tnr_mode'] and moons > 5:
-            kittypet_n = game.config['tnr_mode']['kittypet_neuter']
-            loner_n = game.config['tnr_mode']['loner_tnr']
+        if not is_parent and get_clan_setting('tnr_mode') and moons > 5:
+            kittypet_n = constants.CONFIG['tnr_mode']['kittypet_neuter']
+            loner_n = constants.CONFIG['tnr_mode']['loner_tnr']
             if original_social == CatSocial.KITTYPET and random() < kittypet_n:
                 new_cat.get_permanent_condition("infertility", False)
             if original_social in (CatSocial.LONER, CatSocial.ROGUE) and random() < loner_n:
@@ -2361,7 +2361,8 @@ def ongoing_event_text_adjust(Cat, text, clan=None, other_clan_name=None):
         clan_name = str(clan.name)
     else:
         if game.clan is None:
-            clan_name = game.switches["clan_list"][0]
+            # todo can this be Switch.clan_name ?
+            clan_name = switch_get_value(Switch.clan_list)[0]
         else:
             clan_name = str(game.clan.name)
 
@@ -2405,6 +2406,10 @@ def event_text_adjust(
     :param str chosen_herb: string of chosen_herb (chosen_herb), if present
     """
     vowels = ["A", "E", "I", "O", "U"]
+    if not patrol_apprentices:
+        patrol_apprentices = []
+    if not new_cats:
+        new_cats = []
 
     if not text:
         text = "This should not appear, report as a bug please! Tried to adjust the text, but no text was provided."
@@ -2523,7 +2528,7 @@ def event_text_adjust(
         text = text.replace("multi_cat", list_text)
 
     # other_clan_name
-    if "o_c_n" in text:
+    if "o_c_n" in text and other_clan:
         other_clan_name = other_clan.name
         pos = 0
         for x in range(text.count("o_c_n")):
@@ -2550,7 +2555,8 @@ def event_text_adjust(
         try:
             clan_name = clan.name
         except AttributeError:
-            clan_name = game.switches["clan_list"][0]
+            # todo can this be Switch.clan_name ?
+            clan_name = switch_get_value(Switch.clan_list)[0]
 
         pos = 0
         for x in range(text.count("c_n")):
@@ -2576,23 +2582,24 @@ def event_text_adjust(
     text = adjust_prey_abbr(text)
 
     # acc_plural (only works for main_cat's acc)
-    if "acc_plural" in text:
-        text = text.replace(
-            "acc_plural",
-            i18n.t(f"cat.accessories.{main_cat.pelt.accessory[-1]}", count=2),
-        )
+    if main_cat:
+        if "acc_plural" in text:
+            text = text.replace(
+                "acc_plural",
+                i18n.t(f"cat.accessories.{main_cat.pelt.accessory[-1]}", count=2),
+            )
 
-    # acc_singular (only works for main_cat's acc)
-    if "acc_singular" in text:
-        text = text.replace(
-            "acc_singular",
-            i18n.t(f"cat.accessories.{main_cat.pelt.accessory[-1]}", count=1),
-        )
+        # acc_singular (only works for main_cat's acc)
+        if "acc_singular" in text:
+            text = text.replace(
+                "acc_singular",
+                i18n.t(f"cat.accessories.{main_cat.pelt.accessory[-1]}", count=1),
+            )
 
-    if "given_herb" in text:
-        text = text.replace(
-            "given_herb", i18n.t(f"conditions.herbs.{chosen_herb}", count=2)
-        )
+        if "given_herb" in text:
+            text = text.replace(
+                "given_herb", i18n.t(f"conditions.herbs.{chosen_herb}", count=2)
+            )
 
     return text
 
@@ -2960,7 +2967,7 @@ def generate_sprite(
     if life_state is not None:
         age = life_state
     else:
-        if game.settings["ageup dead"] and cat.dead and cat.age in ["newborn", "kitten", "adolescent"]:
+        if game_setting_get("ageup dead") and cat.dead and cat.age in ["newborn", "kitten", "adolescent"]:
             age = "adult"
         else:
             age = cat.age.value
@@ -2976,7 +2983,7 @@ def generate_sprite(
         not disable_sick_sprite
         and cat.not_working()
         and age != "newborn"
-        and game.config["cat_sprites"]["sick_sprites"]
+        and constants.CONFIG["cat_sprites"]["sick_sprites"]
     ):
         if age in ["kitten", "adolescent"]:
             cat_sprite = str(19)
@@ -2991,10 +2998,10 @@ def generate_sprite(
             else:
                 cat_sprite = str(15)
     else:
-        if age == "elder" and not game.config["fun"]["all_cats_are_newborn"]:
+        if age == "elder" and not constants.CONFIG["fun"]["all_cats_are_newborn"]:
             age = "senior"
 
-        if game.config["fun"]["all_cats_are_newborn"]:
+        if constants.CONFIG["fun"]["all_cats_are_newborn"]:
             cat_sprite = str(cat.pelt.cat_sprites["newborn"])
         else:
             if cat.pelt.cat_sprites[age] < 9 and cat.pelt.cat_sprites[age] > 5 and (cat.pelt.length == 'medium' and get_current_season() == 'Leaf-bare'):
@@ -3865,7 +3872,7 @@ def generate_sprite(
 
             
             if (
-                game.settings['tints']
+                game_setting_get('tints')
                 and cat.pelt.tint != "none" 
                 and cat.pelt.tint in sprites.cat_tints["tint_colours"]
             ):
@@ -3873,7 +3880,7 @@ def generate_sprite(
                 tint.fill(tuple(sprites.cat_tints["tint_colours"][cat.pelt.tint]))
                 gensprite.blit(tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
             if (
-                game.settings['tints']
+                game_setting_get('tints')
                 and cat.pelt.tint != "none"
                 and cat.pelt.tint in sprites.cat_tints["dilute_tint_colours"]
             ):
@@ -3881,7 +3888,7 @@ def generate_sprite(
                 tint.fill(tuple(sprites.cat_tints["dilute_tint_colours"][cat.pelt.tint]))
                 gensprite.blit(tint, (0, 0), special_flags=pygame.BLEND_RGB_ADD)
 
-            if (game.config["fun"]["april_fools"] or is_today(SpecialDate.APRIL_FOOLS)) and "Dg" in phenotype.april_fools.get("danish_green", []):
+            if (constants.CONFIG["fun"]["april_fools"] or is_today(SpecialDate.APRIL_FOOLS)) and "Dg" in phenotype.april_fools.get("danish_green", []):
                 green = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 green.fill((0, 255, 0))
                 green.set_alpha(100)
@@ -3922,7 +3929,7 @@ def generate_sprite(
 
             
             if (
-                game.settings['tints']
+                game_setting_get('tints')
                 and cat.pelt.white_patches_tint != "none"
                 and cat.pelt.white_patches_tint
                 in sprites.white_patches_tints["tint_colours"]
@@ -4032,7 +4039,7 @@ def generate_sprite(
                     gensprite.blit(sprites.sprites['scars' + scar + cat_sprite], (0, 0))
 
         # draw line art
-        if game.settings['shaders'] and not dead:
+        if game_setting_get('shaders') and not dead:
             gensprite.blit(sprites.sprites['shaders' + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGB_MULT)
             gensprite.blit(sprites.sprites['lighting' + cat_sprite], (0, 0))
 
@@ -4129,7 +4136,7 @@ def generate_sprite(
                         special_flags=blendmode,
                     )
 
-        if game.config["fun"]["april_fools"] or is_today(SpecialDate.APRIL_FOOLS):
+        if constants.CONFIG["fun"]["april_fools"] or is_today(SpecialDate.APRIL_FOOLS):
             if cat.phenotype.bobtailnr != 1 and "Pc" in phenotype.april_fools.get("polycaudal", []):
                 tail = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 tail.blit(sprites.sprites['bobtail1' + cat_sprite], (0, 0))
@@ -4145,7 +4152,7 @@ def generate_sprite(
                 elif cat_sprite in ["2"]:
                     new_sprite.blit(tail, (0, -2))
             
-            if game.config["fun"]["april_fools_hats"]:
+            if constants.CONFIG["fun"]["april_fools_hats"]:
                 if not dead:
                     new_sprite.blit(sprites.sprites['aprilfoolslines' + cat_sprite], (0, 0))
                 elif cat.df:
@@ -4187,7 +4194,7 @@ def generate_sprite(
         if (
             cat.pelt.opacity <= 97
             and not cat.prevent_fading
-            and game.clan.clan_settings["fading"]
+            and get_clan_setting("fading")
             and dead
         ):
             stage = "0"
@@ -4281,7 +4288,7 @@ def is_iterable(y):
 
 def get_text_box_theme(theme_name=None):
     """Updates the name of the theme based on dark or light mode"""
-    if game.settings["dark mode"]:
+    if game_setting_get("dark mode"):
         if theme_name == "#allegiance":
             return '#allegiance_dark'
         return ObjectID("#dark", theme_name)
@@ -4294,7 +4301,7 @@ def quit(savesettings=False, clearevents=False):
     Quits the game, avoids a bunch of repeated lines
     """
     if savesettings:
-        game.save_settings(None)
+        game_settings_save(None)
     if clearevents:
         game.cur_events_list.clear()
     game.rpc.close_rpc.set()

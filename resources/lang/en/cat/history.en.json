@@ -34,28 +34,32 @@
       "n_leader_death_all": "m_c lost all of {PRONOUN/m_c/poss} lives",
       "n_leader_death_remaining": "m_c lost the rest of {PRONOUN/m_c/poss} lives",
       "n_leader_death_cardinal": {
-        "one": "m_c lost {PRONOUN/m_c/poss} %{cardinal} life",
-        "many": "m_c lost {PRONOUN/m_c/poss} %{cardinal} lives"
+          "one": "m_c lost {PRONOUN/m_c/poss} %{cardinal} life",
+          "many": "m_c lost {PRONOUN/m_c/poss} %{cardinal} lives"
       },
       "n_leader_death_retired": "m_c lost {PRONOUN/m_c/poss} last remaining life",
       "n_leader_death_default": "m_c lost a life",
       "n_leader_lost_lives": {
-        "one": "m_c lost a life.",
-        "many": "m_c lost %{count} lives."
+          "one": "m_c lost a life.",
+          "many": "m_c lost %{count} lives."
       },
+      
       "regular_death": "%{cats} died.",
-      "stillbirth": "%{name} was stillborn.",
       "death_cause": "%{death} when {PRONOUN/m_c/subject} %{text}.",
+      "stillbirth": "%{name} was stillborn.",
       "murdered": "%{name} murdered %{victims}.",
+      "murder_revealed_to_clan": "The Clan knows.",
+      "murder_not_revealed_to_clan": "The Clan is unaware.",
+      "murder_revealed_to_individual": "%{name} knows. ",
       "leader_lives_left_df": {
-        "zero": "The leader has no lives left and has travelled to the Dark Forest.",
-        "one": "The leader has one life left.",
-        "many": "The leader has %{count} lives left."
+          "zero": "The leader has no lives left and has travelled to the Dark Forest.",
+          "one": "The leader has one life left.",
+          "many": "The leader has %{count} lives left."
       },
       "leader_lives_left_sc": {
-        "zero": "The leader has no lives left and has travelled to StarClan.",
-        "one": "The leader has one life left.",
-        "many": "The leader has %{count} lives left."
+          "zero": "The leader has no lives left and has travelled to StarClan.",
+          "one": "The leader has one life left.",
+          "many": "The leader has %{count} lives left."
       },
       "scar_from_injury": "m_c was scarred from an injury (%{injury_name})."
     }

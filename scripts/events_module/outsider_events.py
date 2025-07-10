@@ -1,11 +1,15 @@
 import random
 
-from scripts.cat.cats import Cat
+from typing import TYPE_CHECKING
+
 from scripts.cat.enums import CatGroup
-from scripts.cat.history import History
+from scripts.clan_package.settings import get_clan_setting
 from scripts.event_class import Single_Event
 from scripts.game_structure.game_essentials import game
+from scripts.game_structure import constants
 
+if TYPE_CHECKING:
+    from scripts.cat.cats import Cat
 
 # ---------------------------------------------------------------------------- #
 #                               New Cat Event Class                              #
@@ -16,17 +20,16 @@ class OutsiderEvents:
     """All events with a connection to outsiders."""
 
     @staticmethod
-    def killing_outsiders(cat: Cat):
-        if "lead_den_outsider_event" in game.clan.clan_settings:
-            if game.clan.clan_settings["lead_den_outsider_event"]:
-                info_dict = game.clan.clan_settings["lead_den_outsider_event"]
-                if cat.ID == info_dict["cat_ID"]:
-                    return
+    def killing_outsiders(cat: "Cat"):
+        if get_clan_setting("lead_den_outsider_event"):
+            info_dict = get_clan_setting("lead_den_outsider_event")
+            if cat.ID == info_dict["cat_ID"]:
+                return
 
         # killing outside cats
         if cat.status.is_outsider:
-            age_start = game.config["death_related"]["old_age_death_start"]
-            death_curve_setting = game.config["death_related"]["old_age_death_curve"]
+            age_start = constants.CONFIG["death_related"]["old_age_death_start"]
+            death_curve_setting = constants.CONFIG["death_related"]["old_age_death_curve"]
             death_curve_value = 0.001 * death_curve_setting
             old_age_death_chance = ((1 + death_curve_value) ** (cat.moons - age_start)) - 1
             if random.getrandbits(6) == 1 or random.random() <= old_age_death_chance and not cat.dead:

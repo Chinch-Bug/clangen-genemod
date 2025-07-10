@@ -8,13 +8,19 @@ import i18n
 import ujson
 
 from scripts.cat.cats import Cat, BACKSTORIES
-from scripts.game_structure.localization import get_new_pronouns
 from ..cat.enums import CatGroup, CatRank
-from ..cat.personality import Personality
 from scripts.cat.pelts import Pelt
 from scripts.cat_relations.inheritance import Inheritance
+from scripts.game_structure.game.switches import (
+    switch_get_value,
+    switch_set_value,
+    Switch,
+)
+from scripts.game_structure.localization import get_new_pronouns
 from scripts.housekeeping.version import SAVE_VERSION_NUMBER
+from scripts.game_structure import constants
 from .game_essentials import game
+from ..cat.personality import Personality
 from ..cat.skills import CatSkills
 from ..cat.status import StatusDict
 from ..housekeeping.datadir import get_save_dir
@@ -25,10 +31,9 @@ logger = logging.getLogger(__name__)
 def load_cats():
     try:
         json_load()
-    except FileNotFoundError as e:
-        game.switches["error_message"] = "Can't find clan_cats.json!"
-        game.switches["traceback"] = e
-        raise
+    except FileNotFoundError:
+        switch_set_value(Switch.error_message, "Can't find clan_cats.json!")
+        switch_set_value(Switch.traceback, e)
 
 
 def json_load():
@@ -36,7 +41,7 @@ def json_load():
     Cat.all_cats_list.clear()
     Cat.dead_cats.clear()
     all_cats = []
-    clanname = game.switches["clan_list"][0]
+    clanname = switch_get_value(Switch.clan_list)[0]
     clan_cats_json_path = f"{get_save_dir()}/{clanname}/clan_cats.json"
     with open(
         f"resources/dicts/conversion_dict.json", "r", encoding="utf-8"
@@ -46,12 +51,12 @@ def json_load():
         with open(clan_cats_json_path, "r", encoding="utf-8") as read_file:
             cat_data = ujson.loads(read_file.read())
     except PermissionError as e:
-        game.switches["error_message"] = f"Can\t open {clan_cats_json_path}!"
-        game.switches["traceback"] = e
+        switch_set_value(Switch.error_message, f"Can\t open {clan_cats_json_path}!")
+        switch_set_value(Switch.traceback, e)
         raise
     except ujson.JSONDecodeError as e:
-        game.switches["error_message"] = f"{clan_cats_json_path} is malformed!"
-        game.switches["traceback"] = e
+        switch_set_value(Switch.error_message, f"{clan_cats_json_path} is malformed!")
+        switch_set_value(Switch.traceback, e)
         raise
 
     # create new cat objects
@@ -260,10 +265,10 @@ def json_load():
                 key = f" ID #{cat['ID']} "
             else:
                 key = f" at index {i} "
-            game.switches[
-                "error_message"
-            ] = f"Cat{key}in clan_cats.json is missing {e}!"
-            game.switches["traceback"] = e
+            switch_set_value(
+                Switch.error_message, f"Cat{key}in clan_cats.json is missing {e}!"
+            )
+            switch_set_value(Switch.traceback, e)
             raise
 
     # replace cat ids with cat objects and add other needed variables
@@ -286,10 +291,11 @@ def json_load():
             logger.exception(
                 f"There was an error loading relationships for cat #{cat}."
             )
-            game.switches[
-                "error_message"
-            ] = f"There was an error loading relationships for cat #{cat}."
-            game.switches["traceback"] = e
+            switch_set_value(
+                Switch.error_message,
+                f"There was an error loading relationships for cat #{cat}.",
+            )
+            switch_set_value(Switch.traceback, e)
             raise
 
         cat.inheritance = Inheritance(cat)
@@ -301,14 +307,15 @@ def json_load():
             logger.exception(
                 f"There was an error when thoughts for cat #{cat} are created."
             )
-            game.switches[
-                "error_message"
-            ] = f"There was an error when thoughts for cat #{cat} are created."
-            game.switches["traceback"] = e
+            switch_set_value(
+                Switch.error_message,
+                f"There was an error when thoughts for cat #{cat} are created.",
+            )
+            switch_set_value(Switch.traceback, e)
             raise
 
         # Save integrety checks
-        if game.config["save_load"]["load_integrity_checks"]:
+        if constants.CONFIG["save_load"]["load_integrity_checks"]:
             save_check()
 
 
