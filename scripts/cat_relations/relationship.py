@@ -77,9 +77,9 @@ class Relationship:
     def start_interaction(self) -> None:
         """This function handles the simple interaction of this relationship."""
         # such interactions are only allowed for living Clan members
-        if not self.cat_from.status.group.is_any_clan_group():
+        if not self.cat_from.status.is_any_clan_group():
             return
-        if not self.cat_to.status.group.is_any_clan_group():
+        if not self.cat_to.status.is_any_clan_group():
             return
 
         if self.currently_loaded_lang != i18n.config.get("locale"):

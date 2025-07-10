@@ -66,7 +66,7 @@ def json_load():
                         Cat.age_moons[key_age][0], Cat.age_moons[key_age][1] + 1
                     ):
                         age = key_age
-                status_dict = {"rank": cat["status"], "age": age, "group": cat.get("group")}
+                status_dict = {"rank": cat["status"], "age": age}
             else:
                 status_dict = cat["status"]
             try:
@@ -87,6 +87,8 @@ def json_load():
                         chim_white=cat["chim_white"] if 'chim_white' in cat else None,
                         chim_pattern=cat["chimera_pattern"] if "chimera_pattern" in cat else cat["genotype"]["chimerapattern"],
                         loading_cat=True)
+                if cat.get("group"):
+                    new_cat.group = cat.get("group")
             except Exception as e:
                 if cat.get("genotype", False):
                     raise e

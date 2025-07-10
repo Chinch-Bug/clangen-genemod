@@ -767,7 +767,7 @@ class ListScreen(Screens):
         self.death_status = "living"
         self.full_cat_list = [
             cat for cat in Cat.all_cats_list 
-            if cat.status.group.fetch_clan_object().name == self.selected_clan
+            if cat.status.is_any_clan_group() and cat.status.group.fetch_clan_object().name == self.selected_clan
         ]
 
     def get_cotc_cats(self):
@@ -781,7 +781,8 @@ class ListScreen(Screens):
             if (
                 not the_cat.dead
                 and the_cat.status.is_outsider
-                and the_cat.status.is_near(CatGroup.PLAYER_CLAN)
+                and (the_cat.status.is_near(CatGroup.PLAYER_CLAN) or 
+                next(filter(lambda c: c in the_cat.status.all_groups and the_cat.status.is_near(c), game.clan.other_clans), None))
             ):
                 self.full_cat_list.append(the_cat)
 

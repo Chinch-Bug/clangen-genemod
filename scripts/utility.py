@@ -878,7 +878,7 @@ def create_new_cat_block(
 
             if n_c.phenotype.manx[1] == "Ab" or n_c.phenotype.manx[1] == "M" or n_c.phenotype.munch[1] == "Mk" or ('NoDBE' not in n_c.phenotype.pax3 and 'DBEalt' not in n_c.phenotype.pax3):
                 n_c.moons = 0
-                n_c.status = "newborn"
+                n_c.status = {"group": n_c.status.group, "rank": CatRank.NEWBORN, "age": CatAge.NEWBORN}
                 n_c.dead = True
                 n_c.history.add_death(str(n_c.name) + " was stillborn.")
                 new_cats.remove(n_c)
@@ -1063,13 +1063,13 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
         if status == "any_apprentice":
             all_clan_cats = [cat for cat in all_clan_cats if cat.status.rank.is_any_apprentice_rank()]
         elif status:
-            all_clan_cats = [cat for cat in all_clan_cats if cat.status.rank == status]
+            all_clan_cats = [cat for cat in all_clan_cats if cat.status.rank.value == status]
         
         if age == "mate":
             all_clan_cats = [cat for cat in all_clan_cats if give_mates[0].is_potential_mate(cat, for_love_interest=True, outsider=True)]
             if not all_clan_cats:
                 print("No possible mates found")
-                all_clan_cats = create_new_cat_block(Cat, Relationship, event, in_event_cats, i, attribute_list, other_clan)
+                all_clan_cats = create_new_cat_block(Cat, Relationship, event, in_event_cats, i, attribute_list, other_clan.enum)
         if age == "has_kits":
             (parents, orphans) = get_alive_clan_queens(all_clan_cats, clan=other_clan)
             for par_id in parents.keys():
@@ -1077,7 +1077,7 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
                     del parents[par_id]
             all_clan_cats = [Cat.fetch_cat(par_id) for par_id in parents.keys()]
         elif age:
-            all_clan_cats_age = [cat for cat in all_clan_cats if cat.status.age == age]
+            all_clan_cats_age = [cat for cat in all_clan_cats if cat.age.value == age]
             if all_clan_cats_age:
                 all_clan_cats = all_clan_cats_age
         picked_cats = [choice(all_clan_cats)]
@@ -2622,6 +2622,11 @@ def event_text_adjust(
     """
     vowels = ["A", "E", "I", "O", "U"]
 
+    if isinstance(clan, CatGroup):
+        clan = clan.fetch_clan_object(game.clan)
+    if isinstance(other_clan, CatGroup):
+        other_clan = other_clan.fetch_clan_object()
+
     if not text:
         text = "This should not appear, report as a bug please! Tried to adjust the text, but no text was provided."
         print("WARNING: Tried to adjust text, but no text was provided.")
@@ -2722,7 +2727,7 @@ def event_text_adjust(
     # med_name
     if "med_name" in text:
         med = choice(
-            find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True, clan=clan)
+            find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True, clan=clan.enum)
         )
         replace_dict["med_name"] = (str(med.name), choice(med.pronouns))
 
@@ -2737,11 +2742,6 @@ def event_text_adjust(
             name_list.append(str(_cat.name))
         list_text = adjust_list_text(name_list)
         text = text.replace("multi_cat", list_text)
-
-    if isinstance(clan, CatGroup):
-        clan = clan.fetch_clan_object(game.clan)
-    if isinstance(other_clan, CatGroup):
-        other_clan = other_clan.fetch_clan_object()
 
     # other_clan_name
     if "o_c_n" in text:

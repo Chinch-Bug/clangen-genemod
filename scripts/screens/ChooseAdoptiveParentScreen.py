@@ -917,7 +917,7 @@ class ChooseAdoptiveParentScreen(Screens):
             inter_cat
             for inter_cat in Cat.all_cats_list
             # Adoptive parents must be part of the clan
-            if inter_cat.group == self.the_cat.group
+            if inter_cat.status.group == self.the_cat.status.group
             and inter_cat.ID != self.the_cat.ID  # Can't be your own adoptive parent
             and inter_cat.moons - self.the_cat.moons
             >= 14  # Adoptive parent must be at least 14 moons older. -> own child can't adopt you

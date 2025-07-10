@@ -655,7 +655,7 @@ class Condition_Events:
                 continue
 
             Condition_Events.give_risks(
-                cat, event_list, illness, illness_progression, illnesses, cat.illnesses, clan=clan.enum
+                cat, event_list, illness, illness_progression, illnesses, cat.illnesses, clan=clan
             )
 
         # joining event list into one event string
@@ -1059,7 +1059,7 @@ class Condition_Events:
                         )
                     elif clan.leader is not None:
                         if (
-                            clan.leader.status.group.is_any_clan_group()
+                            clan.leader.status.is_any_clan_group()
                             and cat.moons < 120
                         ):
                             retire_involved.append(clan.leader.ID)
@@ -1109,7 +1109,7 @@ class Condition_Events:
             # adjust chance of risk gain if Clan has enough meds
             chance = risk["chance"]
             if medicine_cats_can_cover_clan(
-                Cat.all_cats.values(), get_amount_cat_for_one_medic(clan), clan.enum
+                Cat.all_cats.values(), get_amount_cat_for_one_medic(clan.enum), clan.enum
             ):
                 chance += 10  # lower risk if enough meds
             if clan and clan.medicine_cat is None and chance != 0:

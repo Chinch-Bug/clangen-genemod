@@ -18,7 +18,7 @@ def prep_event(event, event_id: str, possible_cats: dict, clan):
 
     for event_info in event.future_event:
         # create dict of all cats that need to be involved in future event
-        gathered_cat_dict = _collect_involved_cats(possible_cats, event_info, clan)
+        gathered_cat_dict = _collect_involved_cats(possible_cats, event_info, clan.enum)
 
         # create future event and add it to the future event list
         game.clan.future_events.append(

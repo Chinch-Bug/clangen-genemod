@@ -672,13 +672,15 @@ class Clan:
         for cat in clan_data["clan_cats"].split(","):
             if cat in Cat.all_cats:
                 game.clan.add_cat(Cat.all_cats[cat])
-                if isinstance(Cat.all_cats[cat].status.group, str):
-                    if Cat.all_cats[cat].status.group == self.name:
-                        Cat.all_cats[cat].status.group = CatGroup.PLAYER_CLAN
+                if hasattr(Cat.all_cats[cat], "group"):
+                    if Cat.all_cats[cat].group == game.clan.name:
+                        pass
                     else:
-                        is_neighbour = next(filter(lambda c: c.name == Cat.all_cats[cat].status.group, self.all_clans), None)
+                        is_neighbour = next(
+                            filter(lambda c: c.name == Cat.all_cats[cat].group, game.clan.all_clans), None)
                         if is_neighbour:
-                            Cat.all_cats[cat].status.group = is_neighbour.enum
+                            Cat.all_cats[cat].status.group_history[0]["group"] = is_neighbour.enum
+                            Cat.all_cats[cat].status.standing_history[0]["group"] = is_neighbour.enum
 
             else:
                 print("WARNING: Cat not found:", cat)
@@ -883,7 +885,7 @@ class Clan:
         """
         Loads the Clan's saved future events
         """
-        if not game.clan.name:
+        if not clan.name:
             return
 
         # load the current file path, if it exists in save
@@ -900,7 +902,7 @@ class Clan:
                                 pool=event["pool"],
                                 moon_delay=event["moon_delay"],
                                 involved_cats=event["involved_cats"],
-                                clan=clan.name,
+                                clan=event["clan"],
                             )
                         )
                     except KeyError:

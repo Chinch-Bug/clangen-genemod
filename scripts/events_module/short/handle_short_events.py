@@ -9,7 +9,7 @@ from scripts.clan_resources.herb.herb import HERBS
 from scripts.events_module.future.future_event import prep_event
 from scripts.game_structure import localization
 from scripts.cat.cats import Cat
-from scripts.cat.enums import CatAge, CatRank, CatGroup
+from scripts.cat.enums import CatAge, CatRank, CatGroup, CatSocial, CatStanding
 from scripts.cat.history import History
 from scripts.cat.pelts import Pelt
 from scripts.cat_relations.relationship import Relationship
@@ -343,7 +343,7 @@ class HandleShortEvents:
         if self.chosen_herb:
             game.herb_events_list.append(f"{self.chosen_event} {self.herb_notice}.")
 
-        self.gather_future_event(clan.enum)
+        self.gather_future_event(clan)
 
         game.cur_events_list.append(
             Single_Event(
@@ -397,7 +397,7 @@ class HandleShortEvents:
             freshkill_pile=game.clan.freshkill_pile,
             victim_cat=Cat.fetch_cat(event.involved_cats.get("mur_c")),
             sub_type=event.pool.get("subtype"),
-            ignore_subtyping=True if "subtype" in event.pool else False,
+            ignore_subtyping=False if "subtype" in event.pool else True,
             clan=clan
         )
 
@@ -425,13 +425,13 @@ class HandleShortEvents:
             if ("clancat" not in attribute_list and "change_clan" not in attribute_list) or game.clan.clancount != 'multiclan':
                 self.new_cats.append(
                     create_new_cat_block(
-                        Cat, Relationship, self, in_event_cats, i, attribute_list, clan=clan
+                        Cat, Relationship, self, in_event_cats, i, attribute_list, clan=clan.enum
                     )
                 )
             else:
                 self.new_cats.append(
                     find_clan_cats(
-                        Cat, Relationship, self, in_event_cats, i, attribute_list, clan=clan, other_clan=other_clan
+                        Cat, Relationship, self, in_event_cats, i, attribute_list, clan=clan.enum, other_clan=other_clan.enum
                     )
                 )
 
@@ -470,7 +470,7 @@ class HandleShortEvents:
                             or game.clan.clan_settings["same sex birth"]
                         )
                         and sub_sub[0].ID in (sub[0].parent1, sub[0].parent2)
-                        and sub_sub[0].status.group.fetch_clan_object() == clan
+                        and sub_sub[0].status.group == clan.enum
                     ):
                         sub_sub[0].get_injured("recovering from birth")
                         break  # Break - only one parent ever gives birth
@@ -645,7 +645,7 @@ class HandleShortEvents:
             for kitty in self.dead_cats:
                 if "lost" in self.chosen_event.tags:
                     if not tnr or 'TNR' not in kitty.pelt.scars:
-                        kitty.become_lost(CatSocial.KITTYPET)
+                        kitty.become_lost(CatSocial.KITTYPET if tnr else CatSocial.LONER)
                         taken_cats.append(kitty)
                     if tnr and 'TNR' not in kitty.pelt.scars:
                         if kitty.moons > 3:
@@ -654,8 +654,7 @@ class HandleShortEvents:
                             if 'pregnant' in kitty.injuries:
                                 kitty.permanent_condition['infertility']['moon_start'] += 3
                         if kitty.moons < 4:
-                            kitty.status = 'kittypet'
-                            kitty.group = None
+                            kitty.become_lost(CatSocial.KITTYPET, CatStanding.LEFT)
                             kitty.get_permanent_condition("infertility", False, event_triggered=True, custom_reveal=randint(4, 6))
                 self.multi_cat.append(kitty)
                 if kitty.ID not in self.involved_cats:

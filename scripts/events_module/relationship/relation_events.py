@@ -131,7 +131,7 @@ class Relation_Events:
             cat_to_choose_from = [
                 cat.all_cats[mate_id]
                 for mate_id in cat.mate
-                if cat.all_cats[mate_id].status.group.is_any_clan_group()
+                if cat.all_cats[mate_id].status.is_any_clan_group()
             ]
 
         if not cat_to_choose_from:
@@ -230,7 +230,7 @@ class Relation_Events:
         for new_cat in new_cats:
             same_age_cats = get_cats_same_age(Cat, new_cat)
             alive_cats = [
-                i for i in new_cat.all_cats.values() if i.status.group == new_cat.group
+                i for i in new_cat.all_cats.values() if i.status.group == new_cat.status.group
             ]
             number = game.config["new_cat"]["cat_amount_welcoming"]
 

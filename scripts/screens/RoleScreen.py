@@ -330,12 +330,12 @@ class RoleScreen(Screens):
 
         clan = self.the_cat.status.group.fetch_clan_object(game.clan)
         if clan.leader:
-            leader_invalid = not clan.leader.status.group != self.the_cat.status.group
+            leader_invalid = clan.leader.status.group != self.the_cat.status.group
         else:
             leader_invalid = True
 
         if game.clan.deputy:
-            deputy_invalid = not game.clan.deputy.status.group != self.the_cat.status.group
+            deputy_invalid = clan.deputy.status.group != self.the_cat.status.group
         else:
             deputy_invalid = True
 
@@ -531,7 +531,7 @@ class RoleScreen(Screens):
         else:
             output = "screens.role.blurb_unknown"
 
-        return i18n.t(output, name=self.the_cat.name, clan=self.the_cat.group.name)
+        return i18n.t(output, name=self.the_cat.name, clan=self.the_cat.status.group.fetch_clan_object().name)
 
     def exit_screen(self):
         self.back_button.kill()

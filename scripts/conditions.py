@@ -13,7 +13,7 @@ from scripts.cat.skills import SkillPath
 from scripts.game_structure.game_essentials import game
 
 
-def amount_clanmembers_covered(all_cats, amount_per_med, clan) -> int:
+def amount_clanmembers_covered(all_cats, amount_per_med, clan=CatGroup.PLAYER_CLAN) -> int:
     """
     number of clan members the meds can treat
     """
@@ -55,7 +55,7 @@ def amount_clanmembers_covered(all_cats, amount_per_med, clan) -> int:
     )  # number of cats they can care for
 
 
-def medicine_cats_can_cover_clan(all_cats, amount_per_med, clan) -> bool:
+def medicine_cats_can_cover_clan(all_cats, amount_per_med, clan=CatGroup.PLAYER_CLAN) -> bool:
     """
     whether the player has enough meds for the whole clan
     """
@@ -63,13 +63,13 @@ def medicine_cats_can_cover_clan(all_cats, amount_per_med, clan) -> bool:
     return amount_clanmembers_covered(all_cats, amount_per_med, clan) > len(relevant_cats)
 
 
-def get_amount_cat_for_one_medic(clan):
+def get_amount_cat_for_one_medic(clan=CatGroup.PLAYER_CLAN):
     """Returns the amount of cats one healer can treat"""
     amount = 10
-    if clan and (clan != CatGroup.PLAYER_CLAN or clan.game_mode == "classic"):
+    if clan != CatGroup.PLAYER_CLAN or game.clan.game_mode == "classic":
         # just hope nobody has clans with more than 1,000,000 cats in classic
         amount = 1000000
-    elif clan and clan.game_mode == 'cruel season':
+    elif game.clan.game_mode == 'cruel season':
         amount = 7
     return amount
 

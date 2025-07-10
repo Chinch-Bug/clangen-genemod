@@ -5,7 +5,7 @@ import random
 import i18n
 import ujson
 
-from scripts.cat.enums import CatRank
+from scripts.cat.enums import CatRank, CatGroup
 from scripts.events_module.event_filters import (
     event_for_location,
     event_for_season,

@@ -646,7 +646,7 @@ class Patrol:
                     print("DEBUG: requested patrol does not meet constraints (tags)")
                 continue
 
-            if patrol.other_clan and game.clan.clancount == 'multiclan' and not event_for_other_clan(Cat, patrol.other_clan_filter.get("has_rank"), self.other_clan):
+            if patrol.other_clan and game.clan.clancount == 'multiclan' and not event_for_other_clan(Cat, patrol.other_clan_filter.get("has_rank"), self.other_clan.enum):
                 if self.debug_patrol and self.debug_patrol == patrol.patrol_id:
                     print("DEBUG: requested patrol does not meet constraints (neighbour clan constraits)")
                 continue

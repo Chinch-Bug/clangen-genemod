@@ -553,9 +553,9 @@ class History:
         murder_history = murderer.history.murder
         victim_history = victim.history.murder
 
-        for murder in murder_history:
+        for murder in murder_history.get("is_murderer", []):
             if murder["victim"] == victim.ID:
-                murder_index = murder_history.index(murder)
+                murder_index = murder_history["is_murderer"].index(murder)
                 break
 
         if murder_history:

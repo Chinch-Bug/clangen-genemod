@@ -299,7 +299,7 @@ class ProfileScreen(Screens):
                 KillCat(self.the_cat)
             elif event.ui_element == self.exile_cat_button:
                 # exiles a living cat
-                if self.the_cat.status.alive_in_player_clan:
+                if self.the_cat.status.is_any_clan_group():
                     Cat.exile(self.the_cat)
                     self.clear_profile()
                     self.build_profile()
@@ -843,10 +843,16 @@ class ProfileScreen(Screens):
             if game.clan.clancount == "multiclan" and not the_cat.status.is_outsider:
                 if not the_cat.dead:
                     output += the_cat.status.group.fetch_clan_object().name + "Clan "
-                elif the_cat.status.get_standing_with_group(CatGroup.PLAYER_CLAN)[-1] == CatStanding.MEMBER:
+                elif the_cat == game.clan.instructor:
+                    pass
+                elif CatGroup.PLAYER_CLAN in the_cat.status.all_groups and the_cat.status.get_standing_with_group(CatGroup.PLAYER_CLAN)[-1][-1] == CatStanding.MEMBER:
                     output += game.clan.name + "Clan "
                 else:
-                    output += next(filter(lambda c: the_cat.status.get_standing_with_group(c.enum)[-1] == CatStanding.MEMBER, game.clan.all_clans), None).name + "Clan "
+                    clan = next(filter(lambda c: c.enum in the_cat.status.all_groups and the_cat.status.get_standing_with_group(
+                        c.enum)[-1][-1] == CatStanding.MEMBER, game.clan.all_clans), None)
+                    prior_clan = next(filter(lambda c: c["group"].is_any_clan_group() and the_cat.status.get_standing_with_group(
+                        c["group"])[-1][-1] in (CatStanding.LOST, CatStanding.EXILED), the_cat.status.standing_history[::-1]), None)
+                    output += clan.name + "Clan " if clan else prior_clan["group"].fetch_clan_object().name + "Clan "
             output += i18n.t(f"general.{the_cat.status.rank}", count=1)
 
         # NEWLINE ----------
@@ -856,7 +862,7 @@ class ProfileScreen(Screens):
         # Optional - Only shows up for leaders
         if not the_cat.dead and CatRank.LEADER in the_cat.status.rank:
             output += i18n.t(
-                "screens.profile.lives_remaining_label", count=the_cat.group.leader_lives
+                "screens.profile.lives_remaining_label", count=the_cat.status.group.fetch_clan_object().leader_lives
             )
             # NEWLINE ----------
             output += "\n"
@@ -2244,7 +2250,7 @@ class ProfileScreen(Screens):
                     starting_height=2,
                 )
             self.exile_cat_button.set_text(text)
-            if not self.the_cat.status.alive_in_player_clan:
+            if not self.the_cat.status.is_any_clan_group():
                 self.exile_cat_button.disable()
 
             if self.the_cat.dead:

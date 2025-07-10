@@ -204,7 +204,7 @@ def event_for_other_clan(Cat, ranks: list, other_clan) -> bool:
                 final_ranks = ["healer", "healer apprentice"]
             if "any_mediator" in rank:
                 final_ranks = ["mediator", "mediator apprentice"]
-            oc_cats = get_alive_status_cats(
+            oc_cats = find_alive_cats_with_rank(
                 Cat, final_ranks, working=True, clan=other_clan)
             if not oc_cats or (len(oc_cats) < 2 and "mult" in rank):
                 return False

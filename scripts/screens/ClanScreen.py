@@ -451,7 +451,7 @@ class ClanScreen(Screens):
         for x in all_dens:
             first_choices[x].extend(first_choices[x])
 
-        for x in game.clan.clan_cats:
+        for x in Cat.all_cats:
             if not Cat.all_cats[x].status.alive_in_player_clan:
                 continue
 

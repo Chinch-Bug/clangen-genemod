@@ -9121,7 +9121,7 @@
                 "rebellious"
             ]
         },
-        "relationships": {
+        "relationships": [{
             "cats_from": [
                 "some_clan"
             ],
@@ -9135,7 +9135,7 @@
             ],
             "amount": -5,
             "log": "Was upset when m_c defied the Clan and maintained a friendship during war."
-        },
+        }],
         "other_clan": {
             "current_rep": ["hostile"],
             "changed": 2,

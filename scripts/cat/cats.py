@@ -811,7 +811,7 @@ class Cat:
         text = ""
         darkforest = game.clan.instructor.status.group == CatGroup.DARK_FOREST
         isoutside = self.status.is_outsider
-        clan = self.status.group.fetch_clan_object(None)
+        clan = self.status.group.fetch_clan_object(None) if self.status.group else None
         if self.status.is_leader:
             if clan.leader_lives > 0:
                 lives_left = clan.leader_lives
@@ -1174,7 +1174,7 @@ class Cat:
                 clan.deputy_predecessors += 1
 
         elif self.status.rank == CatRank.MEDICINE_CAT:
-            if gclan is not None:
+            if clan is not None:
                 clan.new_medicine_cat(self)
 
         elif self.status.rank == CatRank.ELDER:
@@ -1528,9 +1528,9 @@ class Cat:
         ancient_leader = False
         if not life_giving_leader:
             if starclan:
-                leaders = [x for x in cats_in_starclan if x.status.is_leader and (x.status.get_standing_with_group(self.status.group)[-1] == CatStanding.MEMBER or x.dead_for > 300)]
+                leaders = [x for x in cats_in_starclan if x.status.is_leader and ((self.status.group in x.status.all_groups and x.status.get_standing_with_group(self.status.group)[-1][-1] == CatStanding.MEMBER) or x.dead_for > 300)]
             else:
-                leaders = [x for x in cats_in_darkforest if x.status.is_leader and (x.status.get_standing_with_group(self.status.group)[-1] == CatStanding.MEMBER or x.dead_for > 300)]
+                leaders = [x for x in cats_in_darkforest if x.status.is_leader and ((self.status.group in x.status.all_groups and x.status.get_standing_with_group(self.status.group)[-1][-1] == CatStanding.MEMBER) or x.dead_for > 300)]
 
             # choosing if the life giving leader will be the oldest leader or previous leader
             coin_flip = randint(1, 2)
@@ -1736,7 +1736,7 @@ class Cat:
             self.status._change_rank(CatRank.KITTEN)
         self.in_camp = 1
 
-        if not self.status.group.is_any_clan_group():
+        if not self.status.is_clancat:
             # this is handled in events.py
             self.personality.set_kit(self.age.is_baby())
             self.thoughts()
@@ -1825,10 +1825,14 @@ class Cat:
 
         other_cat = all_cats.get(other_cat)
         
-        if self.status.group.is_any_clan_group():
+        if self.status.is_any_clan_group():
             clan = self.status.group
-        elif other_cat.group.is_any_clan_group():
-            clan = self.other_cat.group
+        elif self.status.is_clancat:
+            clan = self.status.group_history[-2]["group"]
+        elif other_cat.status.is_any_clan_group():
+            clan = other_cat.status.group
+        elif other_cat.status.is_clancat:
+            clan = other_cat.status.group_history[-2]["group"]
         else:
             clan = CatGroup.PLAYER_CLAN
 
@@ -1882,7 +1886,6 @@ class Cat:
 
         mortality = self.illnesses[illness]["mortality"]
 
-        clan = self.status.group.fetch_clan_object()
         # leader should have a higher chance of death
         if self.status.is_leader and mortality != 0:
             mortality = int(mortality * 0.7)
@@ -1892,7 +1895,7 @@ class Cat:
         if mortality and not int(random() * mortality):
             if self.status.is_leader:
                 self.leader_death_heal = True
-                clan.leader_lives -= 1
+                self.status.group.fetch_clan_object().leader_lives -= 1
 
             self.die()
             return False
@@ -1931,10 +1934,9 @@ class Cat:
             if mortality == 0:
                 mortality = 1
 
-        clan = self.status.group.fetch_clan_object()
         if mortality and not int(random() * mortality):
             if self.status.is_leader:
-                clan.leader_lives -= 1
+                self.status.group.fetch_clan_object().leader_lives -= 1
             self.die()
             return False
 
@@ -2106,9 +2108,9 @@ class Cat:
         duration = illness["duration"]
         med_duration = illness["medicine_duration"]
 
-        amount_per_med = get_amount_cat_for_one_medic(self.group)
+        amount_per_med = get_amount_cat_for_one_medic(self.status.group)
 
-        if medicine_cats_can_cover_clan(Cat.all_cats.values(), amount_per_med, self.group):
+        if medicine_cats_can_cover_clan(Cat.all_cats.values(), amount_per_med, self.status.group):
             duration = med_duration
         if severity != "minor":
             duration += randrange(-1, 1)
@@ -2178,7 +2180,7 @@ class Cat:
 
         injury_severity = injury["severity"] if severity == "default" else severity
         if medicine_cats_can_cover_clan(
-            Cat.all_cats.values(), get_amount_cat_for_one_medic(self.group if self.group else game.clan), self.group if self.group else game.clan
+            Cat.all_cats.values(), get_amount_cat_for_one_medic(self.status.group), self.status.group
         ):
             duration = med_duration
         if severity != "minor":
@@ -2234,7 +2236,7 @@ class Cat:
                 needed_herbs = {"horsetail", "raspberry", "marigold", "cobwebs"}
                 usable_herbs = list(needed_herbs.intersection(clan_herbs))
 
-                if usable_herbs and self.group == CatGroup.PLAYER_CLAN:
+                if usable_herbs and self.status.group == CatGroup.PLAYER_CLAN:
                     # deplete the herb
                     herb_used = choice(usable_herbs)
                     game.clan.herb_supply.remove_herb(herb_used, -1)
@@ -3409,10 +3411,7 @@ class Cat:
             cat = Cat.all_cats[ID]
             return cat
         else:
-            cat = ob if (ob := Cat.load_faded_cat(ID)) else None
-            if cat and isinstance(cat.group, str):
-                cat.group = game.clan if cat.group == game.clan.name else [c for c in game.clan.all_clans if c.name == cat.group][0]
-            return cat
+            return ob if (ob := Cat.load_faded_cat(ID)) else None
 
     @staticmethod
     def load_faded_cat(cat: str):
@@ -3424,7 +3423,7 @@ class Cat:
 
         try:
             with open(
-                get_save_dir() + "/" + clan + "/faded_cats/" + cat + ".json",
+                get_save_dir() + "/" + game.clan.name + "/faded_cats/" + cat + ".json",
                 "r",
                 encoding="utf-8",
             ) as read_file:

@@ -399,7 +399,7 @@ class Status:
             {"group": group, "standing": [new_standing], "near": True}
         )
 
-    def become_lost(self, new_social_status: CatSocial = CatSocial.KITTYPET):
+    def become_lost(self, new_social_status: CatSocial = CatSocial.KITTYPET, override_standing=CatStanding.LOST):
         """
         Removes from previous group and sets standing with that group to Lost.
         :param new_social_status: Indicates what social category the cat now belongs to (i.e. they've been taken by
@@ -408,7 +408,7 @@ class Status:
         # find matching rank enum
         rank = CatRank(new_social_status)
 
-        self._modify_group(rank, standing_with_past_group=CatStanding.LOST)
+        self._modify_group(rank, standing_with_past_group=override_standing)
 
     def exile_from_group(self):
         """
@@ -594,6 +594,9 @@ class Status:
                 return True
 
         return False
+
+    def is_any_clan_group(self) -> bool:
+        return self.group and self.group.is_any_clan_group()
 
 
 class StatusDict(TypedDict, total=False):

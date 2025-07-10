@@ -332,7 +332,7 @@ class PatrolOutcome:
             event=self,
             event_id=patrol.patrol_event.patrol_id,
             possible_cats=possible_cats,
-            clan=CatGroup.PLAYER_CLAN
+            clan=game.clan
         )
 
     def _allowed_stat_cat_specific(
@@ -879,13 +879,13 @@ class PatrolOutcome:
             if game.clan.clancount != "multiclan" or ("clancat" not in attribute_list and "change_clan" not in attribute_list):
                 patrol.new_cats.append(
                     create_new_cat_block(
-                        Cat, Relationship, patrol, in_event_cats, i, attribute_list, clan=game.clan
+                        Cat, Relationship, patrol, in_event_cats, i, attribute_list, clan=CatGroup.PLAYER_CLAN
                     )
                 )
             else:
                 patrol.new_cats.append(
                     find_clan_cats(
-                        Cat, Relationship, self, in_event_cats, i, attribute_list, clan=game.clan, other_clan=patrol.other_clan
+                        Cat, Relationship, self, in_event_cats, i, attribute_list, clan=CatGroup.PLAYER_CLAN, other_clan=patrol.other_clan.enum
                     )
                 )
             dead = []
