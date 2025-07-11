@@ -2,7 +2,7 @@ import os
 import unittest
 import ujson
 
-from scripts.cat.enums import CatRank
+from scripts.cat.enums import CatRank, CatGroup
 
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
@@ -18,7 +18,7 @@ class TestsMedCondition(unittest.TestCase):
         med = Cat(moons=20, status_dict={"rank": CatRank.MEDICINE_CAT})
 
         all_cats = [cat1, med]
-        self.assertTrue(medicine_cats_can_cover_clan(all_cats, 15, None))
+        self.assertTrue(medicine_cats_can_cover_clan(all_cats, 15, CatGroup.PLAYER_CLAN))
 
     def test_fulfilled_many_cats(self):
         cat1 = Cat(moons=20, status_dict={"rank": CatRank.WARRIOR})
@@ -30,7 +30,7 @@ class TestsMedCondition(unittest.TestCase):
         med2 = Cat(moons=20, status_dict={"rank": CatRank.MEDICINE_CAT})
 
         all_cats = [cat1, cat2, cat3, cat4, med1, med2]
-        self.assertTrue(medicine_cats_can_cover_clan(all_cats, 2, None))
+        self.assertTrue(medicine_cats_can_cover_clan(all_cats, 2, CatGroup.PLAYER_CLAN))
 
     def test_injured_fulfilled(self):
         cat1 = Cat(moons=20, status_dict={"rank": CatRank.WARRIOR})
@@ -39,7 +39,7 @@ class TestsMedCondition(unittest.TestCase):
         med.injuries["small cut"] = {"severity": "minor"}
 
         all_cats = [cat1, med]
-        self.assertTrue(medicine_cats_can_cover_clan(all_cats, 15, None))
+        self.assertTrue(medicine_cats_can_cover_clan(all_cats, 15, CatGroup.PLAYER_CLAN))
 
     def test_illness_fulfilled(self):
         cat1 = Cat(moons=20, status_dict={"rank": CatRank.WARRIOR})
@@ -48,7 +48,7 @@ class TestsMedCondition(unittest.TestCase):
         med.illnesses["running nose"] = {"severity": "minor"}
 
         all_cats = [cat1, med]
-        self.assertTrue(medicine_cats_can_cover_clan(all_cats, 15, None))
+        self.assertTrue(medicine_cats_can_cover_clan(all_cats, 15, CatGroup.PLAYER_CLAN))
 
 
 class TestsIllnesses(unittest.TestCase):
