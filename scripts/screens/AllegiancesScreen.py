@@ -10,6 +10,10 @@ from scripts.game_structure.ui_elements import (
     UIDropDownContainer, 
     UISurfaceImageButton
 )
+from scripts.game_structure.game.switches import (
+    switch_set_value,
+    Switch,
+)
 from scripts.ui.generate_button import get_button_dict, ButtonStyles
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.utility import (
@@ -78,7 +82,7 @@ class AllegiancesScreen(Screens):
         if game.clan.clancount == 'multiclan':
 
             self.event_screen_container = pygame_gui.core.UIContainer(
-                ui_scale(pygame.Rect((0, 100), (800, 200))),
+                ui_scale(pygame.Rect((0, 100), (800, 300))),
                 starting_height=1,
                 manager=MANAGER,
             )
