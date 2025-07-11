@@ -94,6 +94,8 @@ def json_load():
                         loading_cat=True)
                 if cat.get("group"):
                     new_cat.group = cat.get("group")
+                if cat.get("exiled"):
+                    new_cat.exile()
             except Exception as e:
                 if cat.get("genotype", False):
                     raise e
