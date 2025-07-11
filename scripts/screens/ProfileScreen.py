@@ -2237,9 +2237,11 @@ class ProfileScreen(Screens):
                 self.exile_cat_button.join_focus_sets(self.exile_layer)
 
             if self.the_cat.status.is_any_clan_group():
-                self.change_clan_button.enable()
+                if hasattr(self, "change_clan_button"):
+                    self.change_clan_button.enable()
             else:
-                self.change_clan_button.disable()
+                if hasattr(self, "change_clan_button"):
+                    self.change_clan_button.disable()
             
             if not self.the_cat.dead:
                 self.kill_cat_button.enable()

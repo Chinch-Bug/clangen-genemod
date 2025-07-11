@@ -13,6 +13,9 @@
             "Is clouded in confusion and fear",
             "Feels trapped in the sticky mud",
             "Is feeling incredibly lonely"
+        ],
+        "main_age_constraint": [
+            "newborn"
         ]
     },
     {
@@ -21,6 +24,9 @@
             "Desperately misses r_c",
             "Misses the fleeting feeling of warmth at r_c's belly",
             "Wishes that r_c could bathe {PRONOUN/m_c/object} again"
+        ],
+        "main_age_constraint": [
+            "newborn"
         ],
         "relationship_constraint": [
             "child/parent"
