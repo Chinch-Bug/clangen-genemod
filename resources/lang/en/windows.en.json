@@ -55,6 +55,8 @@
         "gender2": "feminine",
         "pronoun_confirm": "Pronoun saved and added to presets!",
         "pronoun_test_set": "Test Set",
+        "change_clan": "Change Clan",
+        "change_clan_prompt": "Send to where?",
         "kill_cat_method": "<b>-- How did this cat die? --</b>",
         "death_prompt": "This cat died when {PRONOUN/m_c/subject}...",
         "default_death": "{VERB/m_c/were/was} killed by a higher power.",

@@ -42,7 +42,7 @@ from ..game_structure.game.settings import game_setting_get
 from ..game_structure.game.switches import switch_set_value, switch_get_value, Switch
 from ..game_structure.localization import get_new_pronouns
 from ..game_structure.screen_settings import MANAGER
-from ..game_structure.windows import ChangeCatName, KillCat, ChangeCatToggles
+from ..game_structure.windows import ChangeCatName, KillCat, ChangeCatToggles, SelectSingleClan
 from ..housekeeping.datadir import get_save_dir
 from ..ui.generate_box import get_box, BoxStyles
 from ..ui.generate_button import ButtonStyles, get_button_dict
@@ -300,6 +300,8 @@ class ProfileScreen(Screens):
         elif self.open_tab == "dangerous":
             if event.ui_element == self.kill_cat_button:
                 KillCat(self.the_cat)
+            if event.ui_element == self.change_clan_button:
+                SelectSingleClan(self.the_cat)
             elif event.ui_element == self.exile_cat_button:
                 # exiles a living cat
                 if self.the_cat.status.is_any_clan_group():
@@ -2083,14 +2085,33 @@ class ProfileScreen(Screens):
                     ui_scale_dimensions((172, 36)),
                 ),
             )
-            self.kill_cat_button = UIImageButton(
-                ui_scale(pygame.Rect((578, 486), (172, 36))),
-                "screens.profile.kill_cat",
-                object_id="#kill_cat_button",
-                tool_tip_text="screens.profile.kill_cat_tooltip",
-                starting_height=2,
-                manager=MANAGER,
-            )
+            if game.clan.clancount == "multiclan":
+                self.change_clan_button = UISurfaceImageButton(
+                    ui_scale(pygame.Rect((578, 0), (172, 36))),
+                    "screens.profile.change_clan",
+                    get_button_dict(ButtonStyles.LADDER_MIDDLE, (172, 36)),
+                    object_id="@buttonstyles_ladder_middle",
+                    starting_height=2,
+                    manager=MANAGER,
+                    anchors={"top_target": self.exile_cat_button},
+                )
+                self.kill_cat_button = UIImageButton(
+                    ui_scale(pygame.Rect((578, 522), (172, 36))),
+                    "screens.profile.kill_cat",
+                    object_id="#kill_cat_button",
+                    tool_tip_text="screens.profile.kill_cat_tooltip",
+                    starting_height=2,
+                    manager=MANAGER,
+                )
+            else:
+                self.kill_cat_button = UIImageButton(
+                    ui_scale(pygame.Rect((578, 486), (172, 36))),
+                    "screens.profile.kill_cat",
+                    object_id="#kill_cat_button",
+                    tool_tip_text="screens.profile.kill_cat_tooltip",
+                    starting_height=2,
+                    manager=MANAGER,
+                )
             self.destroy_accessory_button = UISurfaceImageButton(
                 ui_scale(pygame.Rect((578, 0), (172, 36))),
                 "screens.profile.destroy_accessory",
@@ -2215,6 +2236,11 @@ class ProfileScreen(Screens):
                 self.exile_cat_button.enable()
                 self.exile_cat_button.join_focus_sets(self.exile_layer)
 
+            if self.the_cat.status.is_any_clan_group():
+                self.change_clan_button.enable()
+            else:
+                self.change_clan_button.disable()
+            
             if not self.the_cat.dead:
                 self.kill_cat_button.enable()
             else:
@@ -2370,6 +2396,8 @@ class ProfileScreen(Screens):
             if self.cis_trans_button:
                 self.cis_trans_button.kill()
         elif self.open_tab == "dangerous":
+            if hasattr(self, "change_clan_button"):
+               self.change_clan_button.kill()
             self.kill_cat_button.kill()
             self.exile_cat_button.kill()
             if hasattr(self, "exile_layer"):
