@@ -966,7 +966,7 @@ class Events:
                 Condition_Events.handle_illnesses(cat)
             else:
                 Condition_Events.handle_injuries(cat)
-            game.switches["skip_conditions"].clear()
+            switch_get_value(Switch.skip_conditions).clear()
             if cat.dead:
                 return
 

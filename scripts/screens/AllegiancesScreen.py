@@ -14,6 +14,10 @@ from scripts.utility import (
     adjust_list_text,
     event_text_adjust,
 )
+from scripts.game_structure.game.switches import (
+    switch_set_value,
+    Switch,
+)
 from .Screens import Screens
 from ..cat.enums import CatRank
 from ..game_structure.ui_elements import UIModifiedScrollingContainer
@@ -32,7 +36,7 @@ class AllegiancesScreen(Screens):
     def handle_event(self, event):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
             if event.ui_element in self.names_buttons:
-                game.switches["cat"] = event.ui_element.return_cat_id()
+                switch_set_value(Switch.cat, event.ui_element.return_cat_id())
                 self.change_screen('profile screen')
             else:
                 self.menu_button_pressed(event)

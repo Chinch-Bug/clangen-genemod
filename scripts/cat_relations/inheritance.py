@@ -15,6 +15,11 @@ import os
 import ujson
 from scripts.game_structure.game_essentials import game
 from scripts.housekeeping.datadir import get_save_dir
+from scripts.game_structure.game.switches import (
+    switch_get_value,
+    switch_set_value,
+    Switch,
+)
 from scripts.utility import adjust_list_text
 
 
@@ -78,10 +83,10 @@ class Inheritance:
     def save_inheritance(self, fade=False):
         # save inheritance
         clanname = None
-        if game.switches["clan_name"] != "":
-            clanname = game.switches["clan_name"]
-        elif len(game.switches["clan_name"]) > 0:
-            clanname = game.switches["clan_list"][0]
+        if switch_get_value(Switch.clan_name) != "":
+            clanname = switch_get_value(Switch.clan_name)
+        elif len(switch_get_value(Switch.clan_list)) > 0:
+            clanname = switch_get_value(Switch.clan_list)[0]
         elif game.clan is not None:
             clanname = game.clan.name
 
@@ -135,10 +140,10 @@ class Inheritance:
         game.safe_save(family_file_path, family)
 
     def load_inheritance(self):
-        if game.switches["clan_name"] != "":
-            clanname = game.switches["clan_name"]
+        if switch_get_value(Switch.clan_name) != "":
+            clanname = switch_get_value(Switch.clan_name)
         else:
-            clanname = game.switches["clan_list"][0]
+            clanname = switch_get_value(Switch.clan_list)[0]
 
         family_directory = get_save_dir() + "/" + clanname + "/inheritance/"
         family_cat_directory = family_directory + self.cat.ID + "_inheritance.json"
