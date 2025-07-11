@@ -128,6 +128,9 @@ class Name:
 
         if self.suffix and not load_existing_name:
             self.check_name(cat, name_fixpref)
+            if get_clan_setting("ancient names") and get_clan_setting("modded names"):
+                self.suffix = " " + self.suffix[0].upper() + self.suffix[1:]
+                self.specsuffix_hidden = True
     
     def check_name(self, cat, name_fixpref):
         if not self.suffix:

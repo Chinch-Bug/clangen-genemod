@@ -98,6 +98,12 @@
         "Cats will gain suffixes based on skills, traits, and what they're honoured for.",
         true,
         ["modded names", true]
+      ],
+      "ancient names": [
+        "Use Ancient names",
+        "Suffix will be automatically capitalized and separated (eg. Black Claw)",
+        false,
+        [ "modded names", true ]
       ]
     },
     "role": {
