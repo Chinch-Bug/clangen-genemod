@@ -21,6 +21,7 @@ from scripts.game_structure.game.switches import (
     Switch,
 )
 from scripts.utility import adjust_list_text
+from scripts.game_structure.game.save_load import safe_save
 
 
 class RelationType(StrEnum):
@@ -137,7 +138,7 @@ class Inheritance:
         if self.all_but_cousins:
             family["all_but_cousins"] = self.all_but_cousins
 
-        game.safe_save(family_file_path, family)
+        safe_save(family_file_path, family)
 
     def load_inheritance(self):
         if switch_get_value(Switch.clan_name) != "":
