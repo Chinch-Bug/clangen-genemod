@@ -191,7 +191,7 @@ class Events:
                     else:
                         game.cur_events_list.append(
                             Single_Event(_val[0], ["birth_death", "relation"], _val[1], clan=Cat.fetch_cat(
-                                cat_id).status.group.fetch_clan_object(gane.clan).name)
+                                cat_id).status.group.fetch_clan_object(game.clan).name)
                         )
 
             Cat.grief_strings.clear()
@@ -905,7 +905,7 @@ class Events:
                     # The outside-value must be set to True before the cat can go to cotc
                     Cat.outside_cats.update({cat.ID: cat})
 
-                if cat.status.is_lost(clan.enum) and ("infertility" not in cat.permanent_condition or game.clan.age - self.the_cat.permanent_condition["infertility"]["moon_start"] > -1):
+                if cat.status.is_lost(clan.enum) and ("infertility" not in cat.permanent_condition or game.clan.age - cat.permanent_condition["infertility"]["moon_start"] > -1):
                     eligible_cats.append(cat)
                 elif cat.status.is_lost(clan.enum):
                     pass
@@ -1898,10 +1898,7 @@ class Events:
         involved_cats = list(set(involved_cats))
 
         if str(cat.name) != old_name:
-            if cat.history:
-                cat.history.prev_names.append(old_name)
-            else:
-                cat.history = History(prev_names=[old_name])
+            cat.history.prev_names.append(old_name)
 
         game.cur_events_list.append(
             Single_Event(ceremony_text, "ceremony", involved_cats, clan=clan.name)

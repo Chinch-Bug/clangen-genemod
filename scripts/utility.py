@@ -779,10 +779,7 @@ def create_new_cat_block(
             if new_name:
                 name = f"{chosen_cat.name.prefix}"
 
-                if chosen_cat.history:
-                    chosen_cat.history.prev_names.append(str(chosen_cat.name))
-                else:
-                    chosen_cat.history = History(prev_names=[str(chosen_cat.name)])
+                chosen_cat.history.prev_names.append(str(chosen_cat.name))
                 spaces = name.count(" ")
                 if bool(getrandbits(1)):
                     if spaces > 0:  # adding suffix to OG name
@@ -846,7 +843,7 @@ def create_new_cat_block(
             new_cats[0] = create_new_cat(
                 Cat,
                 new_name=new_name,
-                kit=False if litter else status in ["kitten", "newborn"],
+                kit=False if litter else rank in (CatRank.KITTEN, CatRank.NEWBORN),
                 litter=litter,
                 backstory=chosen_backstory,
                 rank=rank,

@@ -1915,7 +1915,7 @@ class Cat:
 
         # CLAN FOCUS! - if the focus 'rest and recover' is selected
         elif (
-            get_clan_setting("rest and recover") and cat.status.group == CatGroup.PLAYER_CLAN
+            get_clan_setting("rest and recover") and self.status.group == CatGroup.PLAYER_CLAN
             and self.illnesses[illness]["duration"] + moons_prior - moons_with <= 0
         ):
             self.healed_condition = True
@@ -1963,7 +1963,7 @@ class Cat:
         elif (
             not self.injuries[injury]["complication"]
             and get_clan_setting("rest and recover")
-            and cat.status.group == CatGroup.PLAYER_CLAN
+            and self.status.group == CatGroup.PLAYER_CLAN
             and self.injuries[injury]["duration"] + moons_prior - moons_with <= 0
         ):
             self.healed_condition = True

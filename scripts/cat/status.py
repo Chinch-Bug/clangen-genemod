@@ -609,9 +609,6 @@ class Status:
 
         return False
 
-    def is_any_clan_group(self) -> bool:
-        return self.group and self.group.is_any_clan_group()
-
 
 class StatusDict(TypedDict, total=False):
     """
