@@ -258,7 +258,7 @@ class Name:
             return
 
         try:
-            used_prefixes = [c.name.prefix for c in cat.all_cats.values() if not c.status.group == cat.status.group]
+            used_prefixes = [c.name.prefix for c in cat.all_cats.values() if c.status.group == cat.status.group]
         except:
             used_prefixes = []
 

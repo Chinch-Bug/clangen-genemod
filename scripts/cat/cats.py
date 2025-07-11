@@ -673,7 +673,7 @@ class Cat:
 
     @property
     def dead(self) -> bool:
-        return self.status.group and self.status.group.is_afterlife()
+        return self.status.group is not None and self.status.group.is_afterlife()
 
     @dead.setter
     def dead(self, die: bool):
