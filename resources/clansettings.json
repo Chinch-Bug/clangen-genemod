@@ -170,6 +170,18 @@
         "Allow cats to have kittens with a biological parent outside your Clan.",
         false
       ],
+      "halfclan single": [
+        "Only half-clan",
+        "Litters with an outside second parent will always be half-clan.",
+        false,
+        [ "single parentage", true ]
+      ],
+      "outsiders single": [
+        "Only outsiders",
+        "Litters with an outside second parent will always be with an outsider cat.",
+        false,
+        [ "single parentage", true ]
+      ],
       "surrogates": [
         "Allow cats to get surrogates for litters",
         "Cats that cannot normally have biological litters can choose a surrogate if applicable.",

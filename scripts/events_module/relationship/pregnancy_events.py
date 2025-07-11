@@ -349,7 +349,7 @@ class Pregnancy_Events:
                 if surrogate:
                     other_cat[0].birth_cooldown = constants.CONFIG["pregnancy"]["birth_cooldown"]
                     backkit = None
-                elif random() < constants.CONFIG["pregnancy"]["half-clan_chance"] and (game.clan.clancount == "singleclan" or len(other_clan_affair_partners)):
+                elif (random() < constants.CONFIG["pregnancy"]["half-clan_chance"] or get_clan_setting("halfclan single")) and not get_clan_setting("outsiders single") and (game.clan.clancount == "singleclan" or len(other_clan_affair_partners)):
                     backkit = 'halfclan2'
                     outside_parent = None
                     if game.clan.clancount == "multiclan":
@@ -701,7 +701,7 @@ class Pregnancy_Events:
             outsider_affair_partners = [i for i in possible_affair_partners if not i.status.is_any_clan_group()]
             other_clan_affair_partners = [i for i in possible_affair_partners if i.status.is_any_clan_group()]
 
-            if random() < constants.CONFIG["pregnancy"]["half-clan_chance"] and (game.clan.clancount == "singleclan" or len(other_clan_affair_partners)):
+            if (random() < constants.CONFIG["pregnancy"]["half-clan_chance"] or get_clan_setting("halfclan single")) and (game.clan.clancount == "singleclan" or len(other_clan_affair_partners)):
                 backkit = 'halfclan1'
                 if game.clan.clancount == "multiclan":
                     other_cat = [choice(other_clan_affair_partners)]
