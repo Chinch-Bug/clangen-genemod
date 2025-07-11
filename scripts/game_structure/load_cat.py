@@ -96,6 +96,8 @@ def json_load():
                     new_cat.group = cat.get("group")
                 if cat.get("exiled"):
                     new_cat.exile()
+                elif not new_cat.status.is_outsider and cat.get("outside"):
+                    new_cat.become_lost()
             except Exception as e:
                 if cat.get("genotype", False):
                     raise e

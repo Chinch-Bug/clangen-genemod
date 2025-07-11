@@ -1838,7 +1838,7 @@ class Events:
             except KeyError:
                 random_honor = i18n.t("defaults.ceremony_honor")
 
-            if get_clan_setting('modded names') and get_clan_setting('new suffixes'):
+            if get_clan_setting('modded names') and get_clan_setting('new suffixes') and not cat.name.specsuffix_hidden:
                 cat.name.give_suffix(cat.skills, cat.personality, game.clan.biome, random_honor)
 
         if cat.status.rank in (CatRank.WARRIOR, CatRank.MEDICINE_CAT, CatRank.MEDIATOR):
