@@ -1059,6 +1059,7 @@ class Events:
                     else:
                         kit.die(False)
                     kit.history.add_death(str(kit.name) + " failed to thrive.")
+                    kit.moons -= 1
             elif kit.moons < 6 and kit.status.group == clan.enum:
                 if random.random() < death_chances[str(kit.moons)]:
                     handle_short_events.handle_event(
@@ -1067,6 +1068,8 @@ class Events:
                                             random_cat=get_random_moon_cat(Cat, kit, clan=clan.enum),
                                             freshkill_pile=game.clan.freshkill_pile,
                                             clan=clan)
+                    if kit.dead:
+                        kit.moons -= 1
 
         if len(fading_kits) > 0:
             event_text = ""
@@ -1101,6 +1104,8 @@ class Events:
         cat.status.increase_current_moons_as()
 
         if cat.dead:
+            if cat.ID in game.just_died:
+                cat.moons += 1
             cat.thoughts()
             self.handle_fading(cat, clan)  # Deal with fading.
             return
