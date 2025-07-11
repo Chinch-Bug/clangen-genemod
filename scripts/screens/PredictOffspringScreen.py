@@ -325,7 +325,8 @@ class PredictOffspringScreen(Screens):
         for cat in self.possible_mates:
             self.possible_mates_names.append(str(cat.name).lower())
 
-        if hasattr(self, "mate_dropdown"):
+        if hasattr(self, "mate_dropdown") and self.mate_dropdown:
+            self.mate_dropdown.kill()
             del self.mate_dropdown
         self.mate_dropdown = create_dropdown((555, 295), (155, 40), create_options_list(self.possible_mates_names, "upper"),
                                              get_selected_option("None", "upper"))
