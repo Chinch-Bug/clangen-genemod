@@ -155,10 +155,10 @@ class Events:
 
         # Calling of "one_moon" functions.
         for cat in Cat.all_cats.copy().values():
-            if cat.status.is_any_clan_group() or cat.dead:
-                self.one_moon_cat(cat, cat.status.group.fetch_clan_object(game.clan) if cat.status.group else game.clan)
-            else:
+            if not cat.status.group:
                 self.one_moon_outside_cat(cat)
+            elif cat.status.is_any_clan_group() or cat.status.group.is_afterlife():
+                self.one_moon_cat(cat, cat.status.get_last_living_group().fetch_clan_object(game.clan) if cat.status.get_last_living_group() else game.clan)
             
             cat.pelt.rebuild_sprite = True
 
