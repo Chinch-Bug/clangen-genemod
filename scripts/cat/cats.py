@@ -1122,6 +1122,7 @@ class Cat:
             if (
                 child and
                 not child.dead
+                and child.status.is_outsider
                 and not child.status.is_exiled(clan)
                 and child.moons < 12
             ):
