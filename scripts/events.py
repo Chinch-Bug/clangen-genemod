@@ -322,9 +322,9 @@ class Events:
         )
 
         if game.clan.game_mode in ("expanded", "cruel season"):
-            amount_per_med = get_amount_cat_for_one_medic(game.clan)
+            amount_per_med = get_amount_cat_for_one_medic(CatGroup.PLAYER_CLAN)
             med_fulfilled = medicine_cats_can_cover_clan(
-                Cat.all_cats.values(), amount_per_med, clan=game.clan
+                Cat.all_cats.values(), amount_per_med, clan=CatGroup.PLAYER_CLAN
             )
 
             if not med_fulfilled:

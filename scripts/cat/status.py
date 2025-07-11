@@ -2,6 +2,7 @@ from collections import defaultdict
 from itertools import groupby
 from random import choice
 from typing import TypedDict, Optional, List, Dict
+from copy import deepcopy
 
 from scripts.cat.enums import CatRank, CatSocial, CatStanding, CatAge, CatGroup
 from scripts.game_structure.game_essentials import game
@@ -555,7 +556,7 @@ class Status:
         """
         Returns the last group this cat belonged to before death. If the cat had no group before dying, this will return None.
         """
-        history = self.group_history
+        history = deepcopy(self.group_history)
         history.reverse()
 
         for entry in history:

@@ -1833,7 +1833,7 @@ class Cat:
         
         if self.status.is_clancat:
             clan = self.status.get_last_living_group()
-        elif other_cat.status.is_clancat:
+        elif other_cat and other_cat.status.is_clancat:
             clan = other_cat.status.get_last_living_group()
         else:
             clan = CatGroup.PLAYER_CLAN
