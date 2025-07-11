@@ -53,7 +53,7 @@ from ..ui.icon import Icon
 #               assigns backstory blurbs to the backstory                      #
 # ---------------------------------------------------------------------------- #
 def bs_blurb_text(cat):
-    if not cat.backstory and not cat.status.alive_in_player_clan:
+    if not cat.backstory and not cat.status.is_any_clan_group():
         return event_text_adjust(
             Cat,
             i18n.t(
@@ -643,7 +643,7 @@ class ProfileScreen(Screens):
             manager=MANAGER,
             starting_height=2,
         )
-        if not self.the_cat.status.alive_in_player_clan and (
+        if not self.the_cat.status.is_any_clan_group() and (
             self.the_cat.status.rank.is_any_medicine_rank()
             or self.the_cat.is_ill()
             or self.the_cat.is_injured()
@@ -700,7 +700,7 @@ class ProfileScreen(Screens):
                 object_id="#mediation_button",
                 manager=MANAGER,
             )
-            if not self.the_cat.status.alive_in_player_clan:
+            if not self.the_cat.status.is_any_clan_group():
                 self.profile_elements["mediation"].disable()
 
     def generate_column1(self, the_cat):
@@ -942,8 +942,8 @@ class ProfileScreen(Screens):
         bs_text = "this should not appear"
         # if cat has never been part of the player clan, then they get no backstory yet
         if (
-            not the_cat.status.alive_in_player_clan
-            and CatGroup.PLAYER_CLAN not in the_cat.status.all_groups
+            not the_cat.status.is_any_clan_group()
+            and not the_cat.status.get_last_living_group()
         ):
             bs_text = the_cat.status.social
         else:
@@ -1270,7 +1270,7 @@ class ProfileScreen(Screens):
         else:
             text = i18n.t("cat.backstories.unknown", name=self.the_cat.name)
 
-        if self.the_cat.status.alive_in_player_clan:
+        if self.the_cat.status.is_any_clan_group():
             beginning = self.the_cat.history.beginning
             if beginning:
                 text += " "
@@ -2121,7 +2121,7 @@ class ProfileScreen(Screens):
             if (
                 self.the_cat.age
                 not in ["young adult", "adult", "senior adult", "senior"]
-                or not self.the_cat.status.alive_in_player_clan
+                or not self.the_cat.status.is_any_clan_group()
             ):
                 self.choose_mate_button.disable()
             else:
@@ -2129,13 +2129,13 @@ class ProfileScreen(Screens):
 
         # Roles Tab
         elif self.open_tab == "roles":
-            if not self.the_cat.status.alive_in_player_clan:
+            if not self.the_cat.status.is_any_clan_group():
                 self.manage_roles.disable()
             else:
                 self.manage_roles.enable()
             if (
                 not self.the_cat.status.rank.is_any_apprentice_rank()
-                or not self.the_cat.status.alive_in_player_clan
+                or not self.the_cat.status.is_any_clan_group()
             ):
                 self.change_mentor_button.disable()
             else:

@@ -934,7 +934,7 @@ class ChangeCatName(UIWindow):
                     use_suffix = self.suffix_entry_box.text
                 else:
                     use_suffix = self.the_cat.name.suffix
-                if self.the_cat.group or random() < 0.5:
+                if self.the_cat.status.get_last_living_group() or random() < 0.5:
                     self.prefix_entry_box.set_text(
                         Name(
                             self.the_cat,
