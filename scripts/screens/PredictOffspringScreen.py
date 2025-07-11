@@ -212,20 +212,20 @@ class PredictOffspringScreen(Screens):
         )
 
         self.search_bar_image = pygame_gui.elements.UIImage(
-            ui_scale(pygame.Rect((95, 125), (118, 34))),
+            ui_scale(pygame.Rect((345, 125), (118, 34))),
             pygame.image.load(
                 "resources/images/search_bar.png").convert_alpha(),
             manager=MANAGER,
         )
         self.search_bar = pygame_gui.elements.UITextEntryLine(
-            ui_scale(pygame.Rect((100, 129), (115, 27))),
+            ui_scale(pygame.Rect((350, 129), (115, 27))),
             object_id="#search_entry_box",
             placeholder_text="general.genotype_search" if self.search_genotype else "general.name_search",
             manager=MANAGER,
         )
 
         self.search_toggle_checkbox = UIImageButton(
-            ui_scale(pygame.Rect((60, 129), (38, 34))),
+            ui_scale(pygame.Rect((310, 129), (38, 34))),
             "",
             object_id="@checked_checkbox"
             if self.search_genotype
