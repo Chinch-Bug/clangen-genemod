@@ -1485,7 +1485,9 @@ class Pregnancy_Events:
 
                 sire = choice(blood_parent2)
                 chimera_sire = choice(blood_parent2)
-                kit = Cat(parent1=blood_parent.ID, parent2=sire.ID, extrapar=chimera_sire if sire.ID != chimera_sire.ID else None, status_dict={"group": clan.enum}, moons=litter_age, backstory=backstory)
+                kit_status = {"group": clan.enum}
+                kit_status["rank"] = CatRank.NEWBORN if litter_age == 0 else CatRank.KITTEN
+                kit = Cat(parent1=blood_parent.ID, parent2=sire.ID, extrapar=chimera_sire if sire.ID != chimera_sire.ID else None, status_dict=kit_status, moons=litter_age, backstory=backstory)
             else:
                 # Two parents provided
                 second_blood = None
