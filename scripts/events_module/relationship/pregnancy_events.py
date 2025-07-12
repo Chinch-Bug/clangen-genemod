@@ -1212,6 +1212,7 @@ class Pregnancy_Events:
         Return the surrogate for a pregnancy
         """
         only_outside = get_clan_setting("only outside surrogates")
+        only_clancat = get_clan_setting("only clan surrogates") and game.clan.clancount == "multiclan"
         only_clanmate = get_clan_setting("only inclan surrogates")
         mate = []
         
@@ -1241,14 +1242,22 @@ class Pregnancy_Events:
 
         all_cats = [cat] + mate
 
-        if not only_clanmate and (only_outside or randint(1, constants.CONFIG['pregnancy']['clanmate_surrogate_chance']) != 1):
+        if not only_clanmate and (only_outside or only_clancat or randint(1, constants.CONFIG['pregnancy']['clanmate_surrogate_chance']) != 1):
             for outcat in outsiders[::-1]:
+                if only_clancat and outcat.status.is_outsider:
+                    outsiders.remove(outcat)
+                    break
                 for cat in all_cats:
                     if not cat.is_potential_mate(outcat, for_love_interest=True, outsider=True):
                         outsiders.remove(outcat)
                         break
+                    if cat.status.group == outcat.status.get_last_living_group() and only_outside:
+                        outsiders.remove(outcat)
+                        break
             if len(outsiders) > 0 and random() < 0.25:
                 return choice(outsiders)
+            elif only_clancat:
+                return None
             else:
                 cat_type = choice([CatSocial.LONER, CatSocial.ROGUE, CatSocial.KITTYPET])
                 mate_age = cat.moons + randint(0, 24)-12

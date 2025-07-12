@@ -193,9 +193,15 @@
         false,
         ["surrogates", true]
       ],
+      "only clan surrogates": [
+        "Only Clancat surrogates",
+        "If surrogates are enabled, only cats from any clan can be surrogates. Note: also selecting Clanmate surrogates will override this. No effect in singleclan saves.",
+        false,
+        [ "surrogates", true ]
+      ],
       "only outside surrogates": [
         "Only outsider surrogates",
-        "If surrogates are enabled, only outsiders can be surrogates. Note: also selecting Clanmate surrogates will take priority.",
+        "If surrogates are enabled, only cats outside the cat's clan can be surrogates. Note: also selecting Clanmate or Clancat surrogates will override this.",
         false,
         ["surrogates", true]
       ],
