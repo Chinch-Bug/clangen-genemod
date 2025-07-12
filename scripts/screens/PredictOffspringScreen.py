@@ -145,11 +145,20 @@ class PredictOffspringScreen(Screens):
                     
                     mate_index = self.possible_mates_names.index(selected_option)
                     self.selected_mate = self.possible_mates[mate_index-1]
-                    self.selected_mate_elements["image"] = pygame_gui.elements.UIImage(
-                            ui_scale(pygame.Rect((540, 130), (150, 150))),
-                            pygame.transform.scale(
-                                self.selected_mate.sprite, ui_scale_dimensions((150, 150))
-                            ),
+                    genelist = str(self.selected_mate.phenotype.PhenotypeOutput(self.selected_mate.phenotype.white_pattern, chimera=self.selected_mate.chimerapheno)) + \
+                        "\n" + str(self.selected_mate.phenotype.ShowGenes(True)
+                                   ) + "\n" + self.selected_mate.phenotype.FormatSomatic()
+                    if (self.selected_mate.chimerapheno):
+                        genelist += "\n\n" + str(self.selected_mate.chimerapheno.PhenotypeOutput(self.selected_mate.chimerapheno.white_pattern,
+                                                    chimera=self.selected_mate.chimerapheno)) + "\n" + str(self.selected_mate.chimerapheno.ShowGenes(True))
+
+                    self.selected_mate_elements["image"] = UISpriteButton(
+                        ui_scale(pygame.Rect((540, 130), (150, 150))),
+                        pygame.transform.scale(
+                            self.selected_mate.sprite, ui_scale_dimensions((150, 150))
+                        ),
+                        object_id="#offspring_predict_cat",
+                        tool_tip_text=genelist,
                     )
                 
                     
@@ -178,12 +187,21 @@ class PredictOffspringScreen(Screens):
         self.display_box.disable()
 
         self.update_potential_mates_container()
+
+        genelist = str(self.selected_cat.phenotype.PhenotypeOutput(self.selected_cat.phenotype.white_pattern, chimera=self.selected_cat.chimerapheno)) + \
+            "\n" + str(self.selected_cat.phenotype.ShowGenes(True)
+                       ) + "\n" + self.selected_cat.phenotype.FormatSomatic()
+        if (self.selected_cat.chimerapheno):
+            genelist += "\n\n" + str(self.selected_cat.chimerapheno.PhenotypeOutput(self.selected_cat.chimerapheno.white_pattern,
+                                                                            chimera=self.selected_cat.chimerapheno)) + "\n" + str(self.selected_cat.chimerapheno.ShowGenes(True))
         
-        self.selected_cat_elements["selected_image"] = pygame_gui.elements.UIImage(
-                ui_scale(pygame.Rect((70, 150), (200, 200))),
-                pygame.transform.scale(
-                    self.selected_cat.sprite, ui_scale_dimensions((200, 200))
-                ),
+        self.selected_cat_elements["selected_image"] = UISpriteButton(
+            ui_scale(pygame.Rect((70, 150), (200, 200))),
+            pygame.transform.scale(
+                self.selected_cat.sprite, ui_scale_dimensions((200, 200))
+            ),
+            object_id="#offspring_predict_cat",
+            tool_tip_text=genelist,
         )
         
         self.predict_button = UISurfaceImageButton(
