@@ -357,6 +357,9 @@ class Pregnancy_Events:
                         if random() < 0.2:
                             outside_parent[0].set_mate(cat)
                             cat.set_mate(outside_parent[0])
+                elif get_clan_setting("halfclan single"):
+                    print("No possible half-clan single parents found")
+                    return
                 elif(random() < 0.75 or len(outsider_affair_partners) < 1):
                     cat_type = choice(
                         [CatSocial.LONER, CatSocial.ROGUE, CatSocial.KITTYPET])
