@@ -302,7 +302,7 @@ class ProfileScreen(Screens):
         elif self.open_tab == "dangerous":
             if event.ui_element == self.kill_cat_button:
                 KillCat(self.the_cat)
-            if event.ui_element == self.change_clan_button:
+            if hasattr(self, "change_clan_button") and event.ui_element == self.change_clan_button:
                 SelectSingleClan(self.the_cat)
             elif event.ui_element == self.exile_cat_button:
                 # exiles a living cat
