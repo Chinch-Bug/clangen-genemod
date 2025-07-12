@@ -1095,6 +1095,13 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
             if cat.status.rank in [CatRank.LEADER, CatRank.DEPUTY]:
                 cat.status._change_rank(CatRank.WARRIOR)
 
+            for app in cat.apprentice.copy():
+                app_ob = Cat.fetch_cat(app)
+                if app_ob:
+                    app_ob.update_mentor()
+
+            cat.update_mentor()
+
         # ADOPTIVE PARENTS
         for par in adoptive_parents:
             if not par:
@@ -1307,11 +1314,7 @@ def create_new_cat(
             if new_cat.status.rank != rank:
                 new_cat.status._change_rank(rank)
             # give apprentice aged cat a mentor
-            if new_cat.status.rank in (
-                CatRank.APPRENTICE,
-                CatRank.MEDICINE_APPRENTICE,
-                CatRank.MEDIATOR_APPRENTICE,
-            ):
+            if new_cat.status.rank.is_any_apprentice_rank():
                 new_cat.update_mentor()
 
         # NAMES and accs

@@ -540,7 +540,7 @@ class Events:
                                     )
                                     invited_cat.specsuffix_hidden = False
                             # if cat is an apprentice, make sure they get a mentor!
-                            if invited_cat.status.rank == CatRank.APPRENTICE:
+                            if invited_cat.status.rank.is_any_apprentice_rank():
                                 invited_cat.update_mentor()
 
                         invited_cat.create_relationships_new_cat()

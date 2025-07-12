@@ -2576,7 +2576,7 @@ class Cat:
             return
         if self.ID in mentor_cat.apprentice:
             mentor_cat.apprentice.remove(self.ID)
-        if self.moons > 6:
+        if self.moons > 5:
             if self.ID not in mentor_cat.former_apprentices:
                 mentor_cat.former_apprentices.append(self.ID)
             if mentor_cat.ID not in self.former_mentor:
