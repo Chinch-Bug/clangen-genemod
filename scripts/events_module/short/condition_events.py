@@ -686,7 +686,7 @@ class Condition_Events:
         injury_progression = {"poisoned": "redcough", "shock": "lingering shock"}
 
         # need to hold this number so that we can check if the leader has died
-        starting_life_count = clan.leader_lives if cat.status.is_leader else 9
+        starting_life_count = clan.leader_lives
 
         injuries = deepcopy(cat.injuries)
         for injury in injuries:

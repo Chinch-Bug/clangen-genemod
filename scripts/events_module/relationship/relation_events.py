@@ -31,7 +31,7 @@ class Relation_Events:
     del base_path
 
     @staticmethod
-    def handle_relationships(cat: Cat, clan=CatGroup.PLAYER_CLAN):
+    def handle_relationships(cat: Cat):
         """Checks the relationships of the cat and trigger additional events if possible.
 
         Parameters
@@ -48,7 +48,7 @@ class Relation_Events:
 
         # currently try to trigger every moon, because there are not many group events
         # TODO: maybe change in future
-        Relation_Events.group_events(cat, clan=clan)
+        Relation_Events.group_events(cat)
 
         Relation_Events.same_age_events(cat)
 
@@ -165,7 +165,7 @@ class Relation_Events:
                 Relation_Events.trigger_event(random_cat)
 
     @staticmethod
-    def group_events(cat, clan=CatGroup.PLAYER_CLAN):
+    def group_events(cat):
         """
         This function triggers group events, based on the given cat.
         First it will be decided if a special type of group (found in relationship_events/group_interactions/group_types.json).
@@ -187,7 +187,7 @@ class Relation_Events:
             chosen_type = "all"
         possible_interaction_cats = list(
             filter(
-                lambda cat: (cat.status.group == clan),
+                lambda c: (c.status.group == cat.status.group),
                 Cat.all_cats.values(),
             )
         )
