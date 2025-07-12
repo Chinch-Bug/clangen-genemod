@@ -1142,7 +1142,7 @@ class Cat:
         :param resort: If sorting type is 'rank', and resort is True, it will resort the cat list. This should
                 only be true for non-timeskip status changes."""
 
-        clan = self.status.group.fetch_clan_object()
+        clan = self.status.get_last_living_group().fetch_clan_object()
         old_rank = self.status.rank
 
         # this is a private function, but it's meant to be used here.
