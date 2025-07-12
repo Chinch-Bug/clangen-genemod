@@ -509,6 +509,9 @@ class Pregnancy_Events:
                 if surrogate:
                     affair_partner = []
 
+            if pregnant_cat.status.group != clan.enum:
+                clan = pregnant_cat.status.group.fetch_clan_object(clan)
+
             fever = False
             if len(pregnant_cat.illnesses) > 0:
                 for illness in pregnant_cat.illnesses:
