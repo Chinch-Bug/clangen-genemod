@@ -5,7 +5,7 @@ import threading
 import time
 from collections import namedtuple
 from platform import system
-from random import choice
+from random import choice, random
 from re import search as re_search
 from re import sub
 from typing import TYPE_CHECKING
@@ -18,9 +18,9 @@ from pygame_gui.elements import UIWindow
 from pygame_gui.windows import UIMessageWindow
 
 from scripts.cat.cats import Cat
+from scripts.cat.enums import CatStanding, CatRank
 from scripts.cat.history import History
-from scripts.cat.cats import Cat
-from scripts.cat.names import Name
+from scripts.cat.names import Name, names
 from scripts.cat_relations.inheritance import Inheritance
 from scripts.cat.save_load import save_cats
 from scripts.game_structure import image_cache
@@ -934,14 +934,17 @@ class ChangeCatName(UIWindow):
                     use_suffix = self.suffix_entry_box.text
                 else:
                     use_suffix = self.the_cat.name.suffix
-                self.prefix_entry_box.set_text(
-                    Name(
-                        self.the_cat,
-                        None,
-                        use_suffix,
-                        biome=game.clan.biome
-                    ).prefix
-                )
+                if self.the_cat.status.get_last_living_group() or random() < 0.5:
+                    self.prefix_entry_box.set_text(
+                        Name(
+                            self.the_cat,
+                            None,
+                            use_suffix,
+                            biome=game.clan.biome
+                        ).prefix
+                    )
+                else:
+                    self.prefix_entry_box.set_text(choice(names.names_dict["loner_names"]))
             elif event.ui_element == self.random_suffix:
                 if self.prefix_entry_box.text:
                     use_prefix = self.prefix_entry_box.text
@@ -1426,9 +1429,9 @@ class KillCat(UIWindow):
                         )
 
                     if self.take_all:
-                        game.clan.leader_lives = 0
+                        self.the_cat.status.group.fetch_clan_object(game.clan).leader_lives = 0
                     else:
-                        game.clan.leader_lives -= 1
+                        self.the_cat.status.group.fetch_clan_object(game.clan).leader_lives -= 1
 
                 self.the_cat.die()
                 self.the_cat.history.add_death(death_message)
@@ -2240,6 +2243,112 @@ class ChangeCatToggles(UIWindow):
             elif event.ui_element == self.checkboxes["prevent_mates"]:
                 self.the_cat.no_mates = not self.the_cat.no_mates
                 self.refresh_checkboxes()
+
+        return super().process_event(event)
+
+
+class SelectSingleClan(UIWindow):
+    """This window allows the user to select a clan to switch a living clan cat to."""
+
+    def __init__(self, focus_cat):
+        super().__init__(
+            ui_scale(pygame.Rect((250, 120), (300, 225))),
+            window_display_title="Change Cat Name",
+            object_id="#change_cat_name_window",
+            resizable=False,
+        )
+        self.set_blocking(True)
+        self.the_cat = focus_cat
+        self.selected = None
+        self.back_button = UIImageButton(
+            ui_scale(pygame.Rect((270, 5), (22, 22))),
+            "",
+            object_id="#exit_window_button",
+            container=self,
+        )
+        self.save_button = UISurfaceImageButton(
+            ui_scale(pygame.Rect((80, 180), (139, 30))),
+            "windows.change_clan",
+            get_button_dict(ButtonStyles.SQUOVAL, (139, 30)),
+            object_id="@buttonstyles_squoval",
+            container=self,
+        )
+        self.save_button.disable()
+
+        self.checkboxes = {}
+        self.refresh_checkboxes()
+
+        # Text
+        self.texts = {}
+        self.texts["prompt"] = pygame_gui.elements.UITextBox(
+            "windows.change_clan_prompt",
+            ui_scale(pygame.Rect((25, 5), (250, 30))),
+            object_id="#text_box_30_horizcenter",
+            container=self,
+        )
+        n = 0
+        for clan in [game.clan] + game.clan.all_clans:
+            if self.the_cat.status.group == clan.enum:
+                continue
+            self.texts[clan.name] = pygame_gui.elements.UITextBox(
+                clan.name + "clan",
+                ui_scale(pygame.Rect(107, n * 27 + 38, -1, 25)),
+                object_id="#text_box_30_horizleft_pad_0_8",
+                container=self,
+            )
+            n += 1
+
+    def refresh_checkboxes(self):
+        for x in self.checkboxes.values():
+            x.kill()
+        self.checkboxes = {}
+
+        n = 0
+        for clan in [game.clan] + game.clan.all_clans:
+            if self.the_cat.status.group == clan.enum:
+                continue
+            box_type = "@checked_checkbox" if self.selected == clan else "@unchecked_checkbox"
+
+            self.checkboxes[clan.name] = UIImageButton(
+                ui_scale(pygame.Rect((75, n * 27 + 35), (34, 34))),
+                "",
+                container=self,
+                object_id=box_type,
+            )
+            n += 1
+
+    def process_event(self, event):
+        if event.type == pygame_gui.UI_BUTTON_START_PRESS:
+            if event.ui_element == self.back_button:
+                game.all_screens["profile screen"].exit_screen()
+                game.all_screens["profile screen"].screen_switches()
+                self.kill()
+            if event.ui_element == self.save_button:
+                self.the_cat.status._modify_group(
+                    CatRank.WARRIOR if self.the_cat.status.rank in (CatRank.LEADER, CatRank.DEPUTY) else self.the_cat.status.rank, 
+                    CatStanding.LEFT, self.selected.enum)
+                for app in self.the_cat.apprentice.copy():
+                    app_ob = Cat.fetch_cat(app)
+                    if app_ob:
+                        app_ob.update_mentor()
+
+                self.the_cat.update_mentor()
+                self.the_cat.backstory = "otherclan1"
+                self.the_cat.history.add_beginning(False)
+                self.the_cat.thoughts()
+                game.all_screens["profile screen"].exit_screen()
+                game.all_screens["profile screen"].screen_switches()
+                self.kill()
+            if event.ui_element in self.checkboxes.values():
+                for clan_name, value in self.checkboxes.items():
+                    if value == event.ui_element:
+                        if value.object_ids[1] == "@unchecked_checkbox":
+                            self.save_button.enable()
+                            self.selected = next(filter(lambda c: c.name == clan_name, game.clan.all_clans), game.clan)
+                        if value.object_ids[1] == "@checked_checkbox":
+                            self.save_button.disable()
+                            self.selected = None
+                        self.refresh_checkboxes()
 
         return super().process_event(event)
 

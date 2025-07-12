@@ -1137,7 +1137,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -1235,7 +1238,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -1758,10 +1764,11 @@
             }
         ],
         "other_clan": {
-            "current_rep": [
-                "hostile"
-            ],
-            "changed": -3
+            "current_rep": ["hostile"],
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -1989,7 +1996,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -2069,7 +2079,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -2
+            "changed": -2,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -2108,7 +2121,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -2147,7 +2163,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -3093,7 +3112,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -3132,7 +3154,10 @@
                 "hostile",
                 "neutral"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -3272,7 +3297,10 @@
                 "neutral",
                 "ally"
             ],
-            "changed": 5
+            "changed": 5,
+            "has_rank": [
+                "any_healer"
+            ]
         }
     },
     {
@@ -3311,7 +3339,10 @@
                 "hostile",
                 "neutral"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "deputy"
+            ]
         }
     },
     {
@@ -3366,7 +3397,10 @@
                 "neutral",
                 "ally"
             ],
-            "changed": 5
+            "changed": 5,
+            "has_rank": [
+                "deputy"
+            ]
         }
     },
     {
@@ -3405,7 +3439,10 @@
                 "hostile",
                 "neutral"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "leader"
+            ]
         }
     },
     {
@@ -3460,7 +3497,10 @@
                 "neutral",
                 "ally"
             ],
-            "changed": 5
+            "changed": 5,
+            "has_rank": [
+                "leader"
+            ]
         }
     },
     {
@@ -3513,7 +3553,10 @@
                 "hostile",
                 "neutral"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -3841,7 +3884,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -4714,7 +4760,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         },
         "supplies": [
             {
@@ -4767,7 +4816,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         },
         "supplies": [
             {
@@ -4856,7 +4908,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -4
+            "changed": -4,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -5966,7 +6021,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -5
+            "changed": -5,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -6066,7 +6124,10 @@
                 "hostile",
                 "neutral"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -6107,7 +6168,10 @@
                 "hostile",
                 "neutral"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "apprentice"
+            ]
         }
     },
     {
@@ -6158,7 +6222,10 @@
                 "neutral",
                 "ally"
             ],
-            "changed": 5
+            "changed": 5,
+            "has_rank": [
+                "any_apprentice"
+            ]
         }
     },
     {
@@ -6368,7 +6435,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "warrior"
+            ]
         }
     },
     {
@@ -6408,7 +6478,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "leader"
+            ]
         }
     },
     {
@@ -6448,7 +6521,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "deputy"
+            ]
         }
     },
     {
@@ -7305,7 +7381,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -7373,7 +7452,10 @@
                 "hostile",
                 "neutral"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -7421,7 +7503,10 @@
                 "hostile",
                 "neutral"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -8144,7 +8229,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": 0
+            "changed": 0,
+            "has_rank": [
+                "warrior_mult"
+            ]
         },
         "future_event": [
             {
@@ -8218,7 +8306,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -1
+            "changed": -1,
+            "has_rank": [
+                "deputy"
+            ]
         },
         "future_event": [
             {

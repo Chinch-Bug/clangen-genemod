@@ -6,7 +6,7 @@ import i18n.config
 
 from scripts.game_structure import constants
 from scripts.cat.cats import Cat
-from scripts.cat.enums import CatRank
+from scripts.cat.enums import CatRank, CatGroup
 from scripts.cat.history import History
 from scripts.cat_relations.interaction import (
     create_group_interaction,
@@ -142,8 +142,9 @@ class GroupEvents:
         if chosen_interaction.get_injuries:
             relevant_event_tabs.append("health")
 
+        clan = cat.status.group.fetch_clan_object(game.clan)
         game.cur_events_list.append(
-            Single_Event(interaction_str, relevant_event_tabs, ids)
+            Single_Event(interaction_str, relevant_event_tabs, ids, clan=clan.name)
         )
         return ids
 

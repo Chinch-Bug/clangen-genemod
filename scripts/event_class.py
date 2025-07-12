@@ -11,7 +11,7 @@ TODO: Docs
 class Single_Event:
     """A class to hold info regarding a single event"""
 
-    def __init__(self, text, types=None, cats_involved=None, cat_dict=None):
+    def __init__(self, text, types=None, cats_involved=None, cat_dict=None, clan=None):
         """text: The event text.
         types: Which types of event, in a list or tuple. Current options are:
                 "relation", "ceremony", "birth_death", "health", "other_clans", "misc"
@@ -20,6 +20,7 @@ class Single_Event:
         """
 
         self.text = text
+        self.clan = clan
 
         if isinstance(types, str):
             self.types = []
@@ -52,6 +53,14 @@ class Single_Event:
             for abbr, kitty in self.cat_dict.items():
                 cat_dict[abbr] = kitty.ID
 
+        if self.clan:
+            return {
+                "text": self.text,
+                "clan" : self.clan,
+                "types": self.types,
+                "cats_involved": self.cats_involved,
+                "cat_dict": cat_dict,
+            }
         return {
             "text": self.text,
             "types": self.types,
@@ -77,6 +86,7 @@ class Single_Event:
 
         return Single_Event(
             text=dict["text"],
+            clan=dict.get("clan"),
             types=dict.get("types", None),
             cats_involved=dict.get("cats_involved", None),
             cat_dict=cat_dict,

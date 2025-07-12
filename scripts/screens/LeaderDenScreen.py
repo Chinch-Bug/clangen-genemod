@@ -202,6 +202,7 @@ class LeaderDenScreen(Screens):
                     ranks=[CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE],
                     working=True,
                     sort=True,
+                    clan=CatGroup.PLAYER_CLAN
                 )
                 if meds:
                     self.helper_cat = meds[0]
@@ -209,9 +210,9 @@ class LeaderDenScreen(Screens):
                     mediators = [
                         i
                         for i in Cat.all_cats.values()
-                        if not i.dead
                         and not i.not_working()
                         and i.status.rank.is_any_mediator_rank()
+                        and i.status.alive_in_player_clan
                     ]
                     if mediators:
                         self.helper_cat = mediators[0]

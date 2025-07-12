@@ -93,7 +93,7 @@ class Status:
                     rank = self.get_rank_from_age(age)
                 else:  # god this should never happen, but I'm paranoid
                     rank = CatRank.WARRIOR
-            rank = CatRank(rank)
+            rank = CatRank(rank.replace("medicine cat", "healer"))
         if social and not isinstance(social, CatSocial):
             if social.casefold() == "former clancat":
                 social = CatSocial.CLANCAT
@@ -556,7 +556,7 @@ class Status:
         """
         Returns the last group this cat belonged to before death. If the cat had no group before dying, this will return None.
         """
-        history = deepcopy(self.group_history)
+        history = self.group_history.copy()
         history.reverse()
 
         for entry in history:
@@ -564,6 +564,9 @@ class Status:
                 return entry["group"]
 
         return None
+
+    def is_any_clan_group(self) -> bool:
+        return self.group and self.group.is_any_clan_group()
 
     def is_lost(self, group: CatGroup = None) -> bool:
         """
@@ -605,9 +608,6 @@ class Status:
                 return True
 
         return False
-
-    def is_any_clan_group(self) -> bool:
-        return self.group and self.group.is_any_clan_group()
 
 
 class StatusDict(TypedDict, total=False):

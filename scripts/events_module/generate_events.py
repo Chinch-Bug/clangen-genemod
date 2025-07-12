@@ -5,7 +5,7 @@ import random
 import i18n
 import ujson
 
-from scripts.cat.enums import CatRank
+from scripts.cat.enums import CatRank, CatGroup
 from scripts.events_module.event_filters import (
     event_for_location,
     event_for_season,
@@ -15,6 +15,7 @@ from scripts.events_module.event_filters import (
     event_for_freshkill_supply,
     event_for_herb_supply,
     event_for_clan_relations,
+    event_for_other_clan,
 )
 from scripts.events_module.ongoing.ongoing_event import OngoingEvent
 from scripts.events_module.short.short_event import ShortEvent
@@ -23,7 +24,7 @@ from scripts.game_structure.game.switches import switch_get_value, Switch
 from scripts.game_structure.game_essentials import game
 from scripts.game_structure.localization import load_lang_resource
 from scripts.utility import (
-    get_living_clan_cat_count,
+    get_living_clan_cat_count
 )
 
 
@@ -131,6 +132,7 @@ class GenerateEvents:
                         print(
                             f"WARNING: some events resources which are used in generate_events have no 'event_text'."
                         )
+                    new_cat_block = event["multiclan_cat"] if game.clan.clancount == "multiclan" and "multiclan_cat" in event else event.get("new_cat", [])
                     event = ShortEvent(
                         event_id=event["event_id"] if "event_id" in event else "",
                         location=event["location"] if "location" in event else ["any"],
@@ -144,7 +146,7 @@ class GenerateEvents:
                         ),
                         m_c=event["m_c"] if "m_c" in event else {},
                         r_c=event["r_c"] if "r_c" in event else {},
-                        new_cat=event["new_cat"] if "new_cat" in event else [],
+                        new_cat=new_cat_block,
                         injury=event["injury"] if "injury" in event else [],
                         exclude_involved=(
                             event["exclude_involved"]
@@ -255,6 +257,7 @@ class GenerateEvents:
         other_clan,
         freshkill_active,
         freshkill_trigger_factor,
+        clan,
         sub_types=None,
         allowed_events=None,
         excluded_events=None,
@@ -313,7 +316,7 @@ class GenerateEvents:
                 continue
 
             # check tags
-            if not event_for_tags(event.tags, cat, random_cat):
+            if not event_for_tags(event.tags, cat, clan=clan.enum, other_cat=random_cat):
                 continue
 
             # make complete leader death less likely until the leader is over 150 moons (or unless it's a murder)
@@ -434,8 +437,13 @@ class GenerateEvents:
                 if not other_clan:
                     continue
 
-                if not event_for_clan_relations(
-                    event.other_clan["current_rep"], other_clan
+                if "current_rep" in event.other_clan and not event_for_clan_relations(
+                    event.other_clan["current_rep"], other_clan if other_clan != game.clan else clan
+                ):
+                    continue
+
+                if game.clan.clancount == 'multiclan' and event.other_clan and not event_for_other_clan(
+                    Cat_class, event.other_clan.get("has_rank"), other_clan.enum if other_clan != game.clan else CatGroup.PLAYER_CLAN
                 ):
                     continue
 

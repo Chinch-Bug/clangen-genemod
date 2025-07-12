@@ -11,6 +11,7 @@ from scripts.game_structure import constants
 from scripts.cat.enums import CatRank
 from scripts.housekeeping.datadir import get_save_dir
 from .alt_namer import Namer
+from scripts.game_structure.game_essentials import game
 from scripts.clan_package.settings.clan_settings import get_clan_setting
 
 
@@ -127,6 +128,9 @@ class Name:
 
         if self.suffix and not load_existing_name:
             self.check_name(cat, name_fixpref)
+            if get_clan_setting("ancient names") and get_clan_setting("modded names"):
+                self.suffix = " " + self.suffix[0].upper() + self.suffix[1:]
+                self.specsuffix_hidden = True
     
     def check_name(self, cat, name_fixpref):
         if not self.suffix:
@@ -254,7 +258,7 @@ class Name:
             return
 
         try:
-            used_prefixes = [cat.name.prefix for cat in cat.all_cats.values() if not cat.dead and not cat.status.is_outsider]
+            used_prefixes = [c.name.prefix for c in cat.all_cats.values() if c.status.group == cat.status.group]
         except:
             used_prefixes = []
 

@@ -76,9 +76,9 @@ class Relationship:
     def start_interaction(self) -> None:
         """This function handles the simple interaction of this relationship."""
         # such interactions are only allowed for living Clan members
-        if not self.cat_from.status.alive_in_player_clan:
+        if not self.cat_from.status.is_any_clan_group():
             return
-        if not self.cat_to.status.alive_in_player_clan:
+        if not self.cat_to.status.is_any_clan_group():
             return
 
         if self.currently_loaded_lang != i18n.config.get("locale"):
@@ -234,11 +234,13 @@ class Relationship:
         relevant_event_tabs = ["relation", "interaction"]
         if self.chosen_interaction.get_injuries:
             relevant_event_tabs.append("health")
+        clan = self.cat_from.status.group.fetch_clan_object(game.clan)
         game.cur_events_list.append(
             Single_Event(
                 interaction_str,
                 ["relation", "interaction"],
                 cat_dict={"m_c": self.cat_to, "r_c": self.cat_from},
+                clan=clan.name
             )
         )
 

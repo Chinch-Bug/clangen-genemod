@@ -3,11 +3,13 @@ from random import choice
 
 import ujson
 
-from scripts.cat.enums import CatRank, CatAge
+from scripts.cat.enums import CatRank, CatGroup, CatAge
 from scripts.game_structure.game_essentials import game
 from scripts.special_dates import get_special_date, contains_special_date_tag
 from scripts.utility import (
     find_alive_cats_with_rank,
+    get_alive_clan_queens,
+    get_living_clan_cat_count,
     filter_relationship_type,
 )
 
@@ -48,7 +50,7 @@ def event_for_season(seasons: list) -> bool:
     return False
 
 
-def event_for_tags(tags: list, cat, other_cat=None) -> bool:
+def event_for_tags(tags: list, cat, clan=CatGroup.PLAYER_CLAN, other_cat=None) -> bool:
     """
     checks if current tags disqualify the event
     """
@@ -65,7 +67,7 @@ def event_for_tags(tags: list, cat, other_cat=None) -> bool:
     # check leader life tags
     if hasattr(cat, "ID"):
         if cat.status.is_leader:
-            leader_lives = game.clan.leader_lives
+            leader_lives = cat.status.group.fetch_clan_object(game.clan).leader_lives
 
             life_lookup = {
                 "some_lives": 4,
@@ -107,6 +109,7 @@ def event_for_tags(tags: list, cat, other_cat=None) -> bool:
                         CatRank.MEDIATOR_APPRENTICE,
                         CatRank.MEDICINE_APPRENTICE,
                     ],
+                    clan=clan
                 ):
                     return False
                 else:
@@ -115,12 +118,12 @@ def event_for_tags(tags: list, cat, other_cat=None) -> bool:
             if rank in [
                 CatRank.LEADER,
                 CatRank.DEPUTY,
-            ] and not find_alive_cats_with_rank(cat, [rank]):
+            ] and not find_alive_cats_with_rank(cat, [rank], clan=clan):
                 return False
 
             if (
                 rank not in [CatRank.LEADER, CatRank.DEPUTY]
-                and not len(find_alive_cats_with_rank(cat, [rank])) >= 2
+                and not len(find_alive_cats_with_rank(cat, [rank], clan=clan)) >= 2
             ):
                 return False
 
@@ -161,7 +164,7 @@ def event_for_clan_relations(required_rel: list, other_clan) -> bool:
 
     current_rel = other_clan.relations
 
-    if "hostile" in required_rel and 0 <= current_rel <= 6:
+    if "hostile" in required_rel and current_rel <= 6:
         return True
     elif "neutral" in required_rel and 7 <= current_rel <= 17:
         return True
@@ -170,6 +173,43 @@ def event_for_clan_relations(required_rel: list, other_clan) -> bool:
 
     return False
 
+
+def event_for_other_clan(Cat, ranks: list, other_clan) -> bool:
+    """
+    checks if the other clan has required cats
+    """
+
+    if ranks and "none" in ranks:
+        return True
+
+    if not ranks:
+        oc_cats = get_living_clan_cat_count(Cat, other_clan)
+        return oc_cats > 0
+
+    for rank in ranks:
+        final_ranks = [rank.replace("_mult", "")]
+        if "queen" in rank:
+            all_clan_cats = [i for i in Cat.all_cats.values() if i.status.group == other_clan]
+            (parents, orphans) = get_alive_clan_queens(all_clan_cats, clan=other_clan)
+            if not len(parents) or (len(parents) < 2 and "mult" in rank):
+                return False
+        else:            
+            if "any_app" in rank:
+                final_ranks = ["apprentice", "mediator apprentice", "healer apprentice"]
+            if "any_warrior" in rank:
+                final_ranks = ["leader", "deputy", "warrior"]
+            if "any_fighter" in rank:
+                final_ranks = ["leader", "deputy", "warrior", "apprentice"]
+            if "any_healer" in rank:
+                final_ranks = ["healer", "healer apprentice"]
+            if "any_mediator" in rank:
+                final_ranks = ["mediator", "mediator apprentice"]
+            oc_cats = find_alive_cats_with_rank(
+                Cat, final_ranks, working=True, clan=other_clan)
+            if not oc_cats or (len(oc_cats) < 2 and "mult" in rank):
+                return False
+        
+    return True
 
 def event_for_freshkill_supply(pile, trigger, factor, clan_size) -> bool:
     """
@@ -271,7 +311,7 @@ def event_for_cat(
             return False
 
     if cat_info.get("relationship_status", []):
-        if not filter_relationship_type(
+        if cat_group is None or not filter_relationship_type(
             group=cat_group,
             filter_types=cat_info["relationship_status"],
             event_id=event_id,

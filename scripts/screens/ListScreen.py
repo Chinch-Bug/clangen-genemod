@@ -203,16 +203,14 @@ class ListScreen(Screens):
             if element == self.cat_list_bar_elements["search_genotype_checkbox"]:
                 if "@checked_checkbox" in event.ui_element.get_object_ids():
                     element.change_object_id("@unchecked_checkbox")
-                    element.set_tooltip(
-                        "screens.list.search_genotypes_tooltip")
-                    self.cat_list_bar_elements["search_bar_entry"].set_tooltip(
-                        "screens.list.search_genotypes_tutorial")
+                    element.set_tooltip("screens.list.search_genotypes_tooltip")
+                    self.cat_list_bar_elements["search_bar_entry"].tool_tip_text = None
                     set_clan_setting("search genotypes", False)
                 else:
                     element.change_object_id("@checked_checkbox")
                     element.set_tooltip("screens.list.search_names_tooltip")
-                    self.cat_list_bar_elements["search_bar_entry"].set_tooltip(
-                        "screens.list.search_genotypes_tutorial")
+                    self.cat_list_bar_elements["search_bar_entry"].tool_tip_text = "screens.list.search_genotypes_tutorial"
+                    self.cat_list_bar_elements["search_bar_entry"].tool_tip_delay = 0
                     set_clan_setting("search genotypes", True)
                 self.cat_list_bar_elements["search_bar_entry"].placeholder_text = "general.genotype_search" if get_clan_setting("search genotypes") else "general.name_search"
                 self.cat_list_bar_elements["search_bar_entry"].set_text("")
@@ -265,6 +263,11 @@ class ListScreen(Screens):
         super().screen_switches()
         self.show_mute_buttons()
         self.clan_name = game.clan.name + "Clan"
+        
+        group_names = ["general.your_clan", "general.cotc"]
+        if game.clan and game.clan.clancount == "multiclan":
+            group_names += [clan.name + "Clan" for clan in game.clan.all_clans]
+        self.living_group_names = tuple(group_names)
 
         self.set_disabled_menu_buttons(["catlist_screen"])
         self.show_menu_buttons()
@@ -575,6 +578,8 @@ class ListScreen(Screens):
                 self.get_ur_cats()
             elif new_group == "dark_forest":
                 self.get_df_cats()
+            elif new_group in self.living_group_names:
+                self.get_other_clan_cats(new_group)
             self.update_cat_list(
                 self.cat_list_bar_elements["search_bar_entry"].get_text()
             )
@@ -724,6 +729,9 @@ class ListScreen(Screens):
         elif self.current_group == "dark_forest":
             self.set_bg("dark_forest")
             self.update_heading_text("general.dark_forest")
+        else:
+            self.set_bg(None)
+            self.update_heading_text(self.current_group)
 
     def get_cat_list(self):
         """
@@ -738,8 +746,10 @@ class ListScreen(Screens):
                 self.get_ur_cats()
             elif game.last_list_forProfile == "cotc":
                 self.get_cotc_cats()
-            else:
+            elif game.last_list_forProfile == "your_clan":
                 self.get_your_clan_cats()
+            else:
+                self.get_other_clan_cats(game.last_list_forProfile)
         else:
             self.get_your_clan_cats()
 
@@ -753,6 +763,18 @@ class ListScreen(Screens):
             cat for cat in Cat.all_cats_list if cat.status.alive_in_player_clan
         ]
 
+    def get_other_clan_cats(self, clan):
+        """
+        grabs clan cats
+        """
+        self.current_group = clan
+        self.selected_clan = clan.replace("Clan", "")
+        self.death_status = "living"
+        self.full_cat_list = [
+            cat for cat in Cat.all_cats_list 
+            if cat.status.is_any_clan_group() and cat.status.group.fetch_clan_object().name == self.selected_clan
+        ]
+
     def get_cotc_cats(self):
         """
         grabs cats outside the clan
@@ -764,7 +786,8 @@ class ListScreen(Screens):
             if (
                 not the_cat.dead
                 and the_cat.status.is_outsider
-                and the_cat.status.is_near(CatGroup.PLAYER_CLAN)
+                and (the_cat.status.is_near(CatGroup.PLAYER_CLAN) or 
+                next(filter(lambda c: c in the_cat.status.all_groups and the_cat.status.is_near(c), game.clan.other_clans), None))
             ):
                 self.full_cat_list.append(the_cat)
 

@@ -23,13 +23,14 @@ from scripts.utility import (
     unpack_rel_block,
     event_text_adjust,
     create_new_cat_block,
+    find_clan_cats,
     gather_cat_objects,
     adjust_list_text,
 )
 from scripts.game_structure.game_essentials import game
 from scripts.cat.skills import SkillPath
 from scripts.cat.cats import Cat, ILLNESSES, INJURIES, PERMANENT
-from scripts.cat.enums import CatAge, CatRank
+from scripts.cat.enums import CatAge, CatRank, CatGroup, CatSocial
 from scripts.cat.pelts import Pelt
 from scripts.cat_relations.relationship import Relationship
 from scripts.clan_resources.freshkill import (
@@ -204,7 +205,7 @@ class PatrolOutcome:
                         if isinstance(_d.get("history_text"), dict)
                         else None
                     ),
-                    new_cat=_d.get("new_cat"),
+                    new_cat=_d["multiclan_cat"] if game.clan.clancount == "multiclan" and "multiclan_cat" in _d else _d.get("new_cat"),
                     herbs=_d.get("herbs"),
                     prey=_d.get("prey"),
                     outsider_rep=_d.get("outsider_rep"),
@@ -332,6 +333,7 @@ class PatrolOutcome:
             event=self,
             event_id=patrol.patrol_event.patrol_id,
             possible_cats=possible_cats,
+            clan=game.clan
         )
 
     def _allowed_stat_cat_specific(
@@ -875,11 +877,18 @@ class PatrolOutcome:
             in_event_cats["s_c"] = self.stat_cat
 
         for i, attribute_list in enumerate(self.new_cat):
-            patrol.new_cats.append(
-                create_new_cat_block(
-                    Cat, Relationship, patrol, in_event_cats, i, attribute_list
+            if game.clan.clancount != "multiclan" or ("clancat" not in attribute_list and "change_clan" not in attribute_list):
+                patrol.new_cats.append(
+                    create_new_cat_block(
+                        Cat, Relationship, patrol, in_event_cats, i, attribute_list, clan=CatGroup.PLAYER_CLAN
+                    )
                 )
-            )
+            else:
+                patrol.new_cats.append(
+                    find_clan_cats(
+                        Cat, Relationship, self, in_event_cats, i, attribute_list, clan=CatGroup.PLAYER_CLAN, other_clan=patrol.other_clan.enum
+                    )
+                )
             dead = []
             outside = []
             new = []

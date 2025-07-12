@@ -53,11 +53,11 @@ if TYPE_CHECKING:
 # ---------------------------------------------------------------------------- #
 
 
-def get_alive_clan_queens(living_cats):
+def get_alive_clan_queens(living_cats, clan:CatGroup=CatGroup.PLAYER_CLAN):
     living_kits = [
         cat
         for cat in living_cats
-        if cat.status.alive_in_player_clan and cat.status.rank.is_baby()
+        if cat.status.group == clan and cat.status.rank.is_baby()
     ]
 
     queen_dict = {}
@@ -67,7 +67,7 @@ def get_alive_clan_queens(living_cats):
         parents = [
             cat.fetch_cat(i)
             for i in parents
-            if cat.fetch_cat(i) and cat.fetch_cat(i).status.alive_in_player_clan
+            if cat.fetch_cat(i) and cat.fetch_cat(i).status.group == clan
         ]
         if not parents:
             continue
@@ -99,6 +99,7 @@ def find_alive_cats_with_rank(
     ranks: list,
     working: bool = False,
     sort: bool = False,
+    clan: CatGroup = CatGroup.PLAYER_CLAN
 ) -> list:
     """
     returns a list of cat objects for all living cats with a listed rank in Clan
@@ -111,7 +112,7 @@ def find_alive_cats_with_rank(
     alive_cats = [
         i
         for i in Cat.all_cats.values()
-        if i.status.rank in ranks and i.status.alive_in_player_clan
+        if i.status.rank in ranks and i.status.group == clan
     ]
 
     if working:
@@ -136,14 +137,14 @@ def get_living_cat_count(Cat):
     return count
 
 
-def get_living_clan_cat_count(Cat):
+def get_living_clan_cat_count(Cat, clan=CatGroup.PLAYER_CLAN):
     """
     Returns the int of all living cats within the Clan
     :param Cat: Cat class
     """
     count = 0
     for the_cat in Cat.all_cats.values():
-        if not the_cat.status.alive_in_player_clan:
+        if the_cat.status.group != clan:
             continue
         count += 1
     return count
@@ -158,7 +159,7 @@ def get_cats_same_age(Cat, cat, age_range=10):
     """
     cats = []
     for inter_cat in Cat.all_cats.values():
-        if not inter_cat.status.alive_in_player_clan:
+        if inter_cat.status.group != cat.status.group:
             continue
         if inter_cat.ID == cat.ID:
             continue
@@ -182,7 +183,7 @@ def get_free_possible_mates(cat):
     """Returns a list of available cats, which are possible mates for the given cat."""
     cats = []
     for inter_cat in cat.all_cats.values():
-        if not inter_cat.status.alive_in_player_clan:
+        if inter_cat.status.group != cat.status.group:
             continue
         if inter_cat.ID == cat.ID:
             continue
@@ -199,7 +200,7 @@ def get_free_possible_mates(cat):
 
 
 def get_random_moon_cat(
-    Cat, main_cat, parent_child_modifier=True, mentor_app_modifier=True
+    Cat, main_cat, parent_child_modifier=True, mentor_app_modifier=True, clan: CatGroup=CatGroup.PLAYER_CLAN
 ):
     """
     returns a random cat for use in moon events
@@ -215,7 +216,7 @@ def get_random_moon_cat(
     # grab list of possible random cats
     possible_r_c = list(
         filter(
-            lambda c: c.status.alive_in_player_clan and (c.ID != main_cat.ID),
+            lambda c: c.status.group == clan and (c.ID != main_cat.ID),
             Cat.all_cats.values(),
         )
     )
@@ -248,11 +249,6 @@ def get_random_moon_cat(
                 random_cat = Cat.fetch_cat(main_cat.mentor)
             elif main_cat.apprentice and not int(random() * 3):
                 random_cat = Cat.fetch_cat(choice(main_cat.apprentice))
-
-    if random_cat and random_cat.dead:
-        print("Idk why or how, but apparently it picked a dead cat for an event. Not supposed to happen")
-        print(random_cat.ID)
-        random_cat = choice(possible_r_c)
 
     if isinstance(random_cat, str):
         print(f"WARNING: random cat was {random_cat} instead of cat object")
@@ -456,10 +452,10 @@ def create_bio_parents(Cat, flip=False, second_parent=True):
                                            original_social=original_social,
                                            alive=choice(
                                                [True, True, True, False]),
-                                    moons=ages[0],
-                                    gender='masc' if flip else 'fem',
-                                    outside=True,
-                                    is_parent=True)[0]
+                                            moons=ages[0],
+                                            gender='masc' if flip else 'fem',
+                                            outside=True,
+                                            is_parent=True)[0]
     else:
         par2geno = Genotype(constants.CONFIG['genetics_config'], game_setting_get("ban problem genes"))
         par2geno.Generator('masc' if flip else 'fem')
@@ -467,7 +463,7 @@ def create_bio_parents(Cat, flip=False, second_parent=True):
     return [blood_parent, blood_parent2, par2geno]
 
 def create_new_cat_block(
-    Cat, Relationship, event, in_event_cats: dict, i: int, attribute_list: List[str]
+    Cat, Relationship, event, in_event_cats: dict, i: int, attribute_list: List[str], clan:CatGroup=None
 ) -> list:
     """
     Creates a single new_cat block and then generates and returns the cats within the block
@@ -488,16 +484,19 @@ def create_new_cat_block(
     adoptive_parents = []
     for tag in attribute_list:
         parent_match = re.match(r"parent:\s?([,0-9]+)", tag)
+        sibling_match = re.match(r"sibling:\s?([,0-9]+)", tag)
         adoptive_match = re.match(r"adoptive:\s?(.+)", tag)
-        if not parent_match and not adoptive_match:
+        if not parent_match and not adoptive_match and not sibling_match:
             continue
 
         parent_indexes = parent_match.group(1).split(",") if parent_match else []
+        sibling_indexes = sibling_match.group(1).split(",") if sibling_match else []
         adoptive_indexes = adoptive_match.group(1).split(",") if adoptive_match else []
-        if not parent_indexes and not adoptive_indexes:
+        if not parent_indexes and not adoptive_indexes and not sibling_indexes:
             continue
 
         parent_indexes = [int(index) for index in parent_indexes]
+        sibling_indexes = [int(index) for index in sibling_indexes]
         for index in parent_indexes:
             if index >= i:
                 continue
@@ -506,6 +505,13 @@ def create_new_cat_block(
                 parent1 = event.new_cats[index][0]
             else:
                 parent2 = event.new_cats[index][0]
+        for index in sibling_indexes:
+            if index >= i:
+                continue
+
+            sibling = event.new_cats[index][0]
+            if not parent2:
+                parent2 = Cat.fetch_cat(sibling.parent2)
 
         adoptive_indexes = [
             int(index) if index.isdigit() else index for index in adoptive_indexes
@@ -569,7 +575,13 @@ def create_new_cat_block(
         if not match:
             continue
 
-        if match.group(1) in [
+        elif match.group(1) in (
+            CatRank.DEPUTY,
+            CatRank.LEADER
+        ):
+            rank = CatRank.WARRIOR
+            break
+        elif match.group(1) in [
             CatRank.NEWBORN,
             CatRank.KITTEN,
             CatRank.ELDER,
@@ -635,7 +647,10 @@ def create_new_cat_block(
         cat_social = CatSocial.CLANCAT
         cat_group = choice(game.clan.other_clans)
     else:
-        cat_social = choice([CatSocial.KITTYPET, CatSocial.LONER, "former Clancat"])
+        if game.clan.clancount == "multiclan":
+            cat_social = choice([CatSocial.KITTYPET, CatSocial.LONER])
+        else:
+            cat_social = choice([CatSocial.KITTYPET, CatSocial.LONER, "former Clancat"])
 
     # LITTER
     litter = False
@@ -747,13 +762,13 @@ def create_new_cat_block(
             if not alive:
                 chosen_cat.die()
             elif not outside:
-                chosen_cat.add_to_clan()
+                chosen_cat.add_to_clan(clan)
                 if chosen_cat.status.rank != rank:
-                    chosen_cat.rank_change(resort=True)
+                    chosen_cat.rank_change(rank, resort=True)
             elif outside:
                 # updates so that the clan is marked as knowing of this cat
                 current_standing = chosen_cat.status.get_standing_with_group(
-                    CatGroup.PLAYER_CLAN
+                    clan
                 )
                 if (
                     CatStanding.KNOWN not in current_standing
@@ -764,10 +779,7 @@ def create_new_cat_block(
             if new_name:
                 name = f"{chosen_cat.name.prefix}"
 
-                if chosen_cat.history:
-                    chosen_cat.history.prev_names.append(str(chosen_cat.name))
-                else:
-                    chosen_cat.history = History(prev_names=[str(chosen_cat.name)])
+                chosen_cat.history.prev_names.append(str(chosen_cat.name))
                 spaces = name.count(" ")
                 if bool(getrandbits(1)):
                     if spaces > 0:  # adding suffix to OG name
@@ -819,6 +831,7 @@ def create_new_cat_block(
             thought=thought,
             alive=alive,
             outside=outside,
+            group=clan,
             parent1=parent1.ID if parent1 else None,
             parent2=parent2.ID if parent2 else None,
             extrapar=generated_parents[2] if not parent2 and generated_parents else None,
@@ -830,7 +843,7 @@ def create_new_cat_block(
             new_cats[0] = create_new_cat(
                 Cat,
                 new_name=new_name,
-                kit=False if litter else status in ["kitten", "newborn"],
+                kit=False if litter else rank in (CatRank.KITTEN, CatRank.NEWBORN),
                 litter=litter,
                 backstory=chosen_backstory,
                 rank=rank,
@@ -862,7 +875,7 @@ def create_new_cat_block(
 
             if n_c.phenotype.manx[1] == "Ab" or n_c.phenotype.manx[1] == "M" or n_c.phenotype.munch[1] == "Mk" or ('NoDBE' not in n_c.phenotype.pax3 and 'DBEalt' not in n_c.phenotype.pax3):
                 n_c.moons = 0
-                n_c.status = "newborn"
+                n_c.status = {"group": n_c.status.group, "rank": CatRank.NEWBORN, "age": CatAge.NEWBORN}
                 n_c.dead = True
                 n_c.history.add_death(str(n_c.name) + " was stillborn.")
                 new_cats.remove(n_c)
@@ -945,6 +958,207 @@ def create_new_cat_block(
     return new_cats
 
 
+def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attribute_list: List[str], clan:CatGroup=None, other_clan:CatGroup=None):
+    status = None
+    age = None
+    adoptive_parents = []
+    blood_parent = None
+    give_mates = []
+    picked_cats = []
+    chosen_backstory = None
+    
+    all_clan_cats = [i for i in Cat.all_cats.values() if i.status.group == other_clan]
+    for a in attribute_list:
+        match = re.match(r'status:\s?(.+)', a)
+        if match:
+            status = match.group(1)
+        match = re.match(r'age:\s?(.+)', a)
+        if match:
+            age = match.group(1)
+        match = re.match(r"parent:\s?(.+)", a)
+        if match:
+            blood_parent = in_event_cats[match.group(1)]
+        match = re.match(r"adoptive:\s?(.+)", a)
+        if match:
+            adoptive_indexes = match.group(1).split(",") if match else []
+            if not adoptive_indexes:
+                continue
+
+            adoptive_indexes = [
+                int(index) if index.isdigit() else index for index in adoptive_indexes
+            ]
+            for index in adoptive_indexes:
+                if in_event_cats[index].ID not in adoptive_parents:
+                    adoptive_parents.append(in_event_cats[index].ID)
+                    adoptive_parents.extend(in_event_cats[index].mate)
+
+    # OPTION TO OVERRIDE DEFAULT BACKSTORY
+    bs_override = False
+    stor = []
+    for _tag in attribute_list:
+        match = re.match(r"backstory:\s?(.+)", _tag)
+        if match:
+            bs_list = [x for x in re.split(r", ?", match.group(1))]
+            stor = []
+            for story in bs_list:
+                if story in set(
+                        [
+                            backstory
+                            for backstory_block in BACKSTORIES[
+                                "backstory_categories"
+                            ].values()
+                            for backstory in backstory_block
+                        ]
+                ):
+                    stor.append(story)
+                elif story in BACKSTORIES["backstory_categories"]:
+                    stor.extend(BACKSTORIES["backstory_categories"][story])
+            bs_override = True
+            break
+    if bs_override and stor:
+        chosen_backstory = choice(stor)
+
+    for tag in attribute_list:
+        match = re.match(r"mate:\s?([_,0-9a-zA-Z]+)", tag)
+        if not match:
+            continue
+
+        mate_indexes = match.group(1).split(",")
+
+        # TODO: make this less ugly
+        for index in mate_indexes:
+            if index in in_event_cats:
+                if in_event_cats[index].status.rank.is_any_apprentice_rank():
+                    print("Can't give apprentices mates")
+                    continue
+
+                give_mates.append(in_event_cats[index])
+
+            try:
+                index = int(index)
+            except ValueError:
+                print(f"mate-index not correct: {index}")
+                continue
+
+            if index >= i:
+                continue
+
+            give_mates.extend(event.new_cats[index])
+
+
+        
+    if "litter" in attribute_list:
+        (parents, orphans) = get_alive_clan_queens(all_clan_cats, clan=other_clan)[0]
+        if blood_parent:
+            picked_cats = parents[blood_parent.ID]
+        elif parents:
+            litter = parents[choice(list(parents.keys()))]
+            picked_cats = litter
+        else:
+            picked_cats = [choice(orphans)]
+    else:
+        if status == "any_apprentice":
+            all_clan_cats = [cat for cat in all_clan_cats if cat.status.rank.is_any_apprentice_rank()]
+        elif status:
+            all_clan_cats = [cat for cat in all_clan_cats if cat.status.rank.value == status]
+        
+        if age == "mate":
+            all_clan_cats = [cat for cat in all_clan_cats if give_mates[0].is_potential_mate(cat, for_love_interest=True, outsider=True)]
+            if not all_clan_cats:
+                print("No possible mates found")
+                all_clan_cats = create_new_cat_block(Cat, Relationship, event, in_event_cats, i, attribute_list, other_clan.enum)
+        if age == "has_kits":
+            (parents, orphans) = get_alive_clan_queens(all_clan_cats, clan=other_clan)
+            for par_id in parents.keys():
+                if Cat.fetch_cat(par_id) not in all_clan_cats:
+                    del parents[par_id]
+            all_clan_cats = [Cat.fetch_cat(par_id) for par_id in parents.keys()]
+        elif age:
+            all_clan_cats_age = [cat for cat in all_clan_cats if cat.age.value == age]
+            if all_clan_cats_age:
+                all_clan_cats = all_clan_cats_age
+        picked_cats = [choice(all_clan_cats)]
+
+    if "change_clan" in attribute_list:
+        for cat in picked_cats:
+            cat.status.add_to_group(clan, standing_with_past_group=CatStanding.LEFT)
+            other = game.clan if cat.status.group == CatGroup.PLAYER_CLAN else next(filter(lambda c: c.enum == cat.status.group, game.clan.all_clans), None)
+            if "rogue" in attribute_list:
+                cat.become_lost(CatSocial.ROGUE)
+            if cat.status.rank == CatRank.LEADER:
+                other.leader = None
+                other.leader_lives = 0
+            if cat.status.rank == CatRank.DEPUTY:
+                other.deputy = None
+            if cat.status.rank == CatRank.MEDICINE_CAT:
+                other.remove_med_cat(cat)
+            if cat.status.rank in [CatRank.LEADER, CatRank.DEPUTY]:
+                cat.status._change_rank(CatRank.WARRIOR)
+
+            for app in cat.apprentice.copy():
+                app_ob = Cat.fetch_cat(app)
+                if app_ob:
+                    app_ob.update_mentor()
+
+            cat.update_mentor()
+
+        # ADOPTIVE PARENTS
+        for par in adoptive_parents:
+            if not par:
+                continue
+
+            par = Cat.fetch_cat(par)
+
+            y = randrange(0, 20)
+            start_relation = Relationship(par, cat, False, True)
+            start_relation.platonic_like += 30 + y
+            start_relation.comfortable = 10 + y
+            start_relation.admiration = 15 + y
+            start_relation.trust = 10 + y
+            par.relationships[cat.ID] = start_relation
+
+            y = randrange(0, 20)
+            start_relation = Relationship(cat, par, False, True)
+            start_relation.platonic_like += 30 + y
+            start_relation.comfortable = 10 + y
+            start_relation.admiration = 15 + y
+            start_relation.trust = 10 + y
+            cat.relationships[par.ID] = start_relation
+
+        # UPDATE INHERITANCE
+        cat.create_inheritance_new_cat()
+    elif "change_clan_rev" in attribute_list:
+        other = game.clan if give_mates[0].status.group == CatGroup.PLAYER_CLAN else next(filter(lambda c: c.enum == give_mates[0].status.group, game.clan.all_clans), None)
+        give_mates[0].status.add_to_group(other_clan, standing_with_past_group=CatStanding.LEFT)
+        if give_mates[0].status.rank == CatRank.LEADER:
+            other.leader = None
+            other.leader_lives = 0
+        if give_mates[0].status.rank == CatRank.DEPUTY:
+            other.deputy = None
+        if give_mates[0].rank == CatRank.MEDICINE_CAT:
+            other.remove_med_cat(cat)
+        if give_mates[0].status.rank in [CatRank.LEADER, CatRank.DEPUTY]:
+            give_mates[0].status._change_rank(CatRank.WARRIOR)
+    
+    if "dead" in attribute_list:
+        for cat in picked_cats:
+            cat.die()
+
+    for cat in picked_cats:
+        cat.backstory = chosen_backstory
+        
+        # SET MATES
+        for inter_cat in give_mates:
+            if cat == inter_cat or cat.ID in inter_cat.mate:
+                continue
+
+            # this is some duplicate work, since this triggers inheritance re-calcs
+            # TODO: optimize
+            cat.set_mate(inter_cat)
+
+    return picked_cats
+
+
 def get_other_clan(clan_name):
     """
     returns the clan object of given clan name
@@ -968,6 +1182,7 @@ def create_new_cat(
     thought: str = None,
     alive: bool = True,
     outside: bool = False,
+    group:CatGroup = None,
     parent1: str = None,
     parent2: str = None,
     extrapar: Genotype = None,
@@ -1094,16 +1309,12 @@ def create_new_cat(
 
         # now we actually add them to the clan, if they should be joining
         if not outside and alive:
-            new_cat.add_to_clan()
+            new_cat.add_to_clan(group)
             # check if cat is the correct rank
             if new_cat.status.rank != rank:
                 new_cat.status._change_rank(rank)
             # give apprentice aged cat a mentor
-            if new_cat.status.rank in (
-                CatRank.APPRENTICE,
-                CatRank.MEDICINE_APPRENTICE,
-                CatRank.MEDIATOR_APPRENTICE,
-            ):
+            if new_cat.status.rank.is_any_apprentice_rank():
                 new_cat.update_mentor()
 
         # NAMES and accs
@@ -1116,6 +1327,7 @@ def create_new_cat(
             new_cat.change_name()
         else:
             # give kittypets a kittypet name
+            overwrite_prefix = False
             if original_social == CatSocial.KITTYPET:
                 name = choice(names.names_dict["loner_names"])
                 # check if the kittypets come with a pretty acc
@@ -1133,6 +1345,8 @@ def create_new_cat(
             # otherwise give name from prefix list (more nature-y names)
             else:
                 name = choice(names.names_dict["normal_prefixes"])
+                if get_clan_setting("modded names") and get_clan_setting('new prefixes') and random() < 0.9:
+                    overwrite_prefix = True
 
                 # now, if this cat should take a new clan name, we give them such
             if new_name:
@@ -1151,6 +1365,8 @@ def create_new_cat(
             # else, let them keep their old name
             else:
                 new_cat.change_name(new_prefix=name, new_suffix="")
+                if overwrite_prefix:
+                    new_cat.name.give_prefix(Cat, game.clan.biome, no_suffix=True)
 
         # Remove disabling scars, if they generated.
         # these are removed bc the cat won't have the associated perm condition
@@ -1348,7 +1564,7 @@ def get_cats_of_romantic_interest(cat):
     """Returns a list of cats, those cats are love interest of the given cat"""
     cats = []
     for inter_cat in cat.all_cats.values():
-        if not inter_cat.status.alive_in_player_clan:
+        if inter_cat.status.group != cat.status.group:
             continue
         if inter_cat.ID == cat.ID:
             continue
@@ -1984,13 +2200,13 @@ def change_relationship_values(
 # ---------------------------------------------------------------------------- #
 
 
-def get_leader_life_notice() -> str:
+def get_leader_life_notice(clan) -> str:
     """
     Returns a string specifying how many lives the leader has left or notifying of the leader's full death
     """
     if game.clan.instructor.status.group == CatGroup.DARK_FOREST:
-        return i18n.t("cat.history.leader_lives_left_df", count=game.clan.leader_lives)
-    return i18n.t("cat.history.leader_lives_left_sc", count=game.clan.leader_lives)
+        return i18n.t("cat.history.leader_lives_left_df", count=clan.leader_lives)
+    return i18n.t("cat.history.leader_lives_left_sc", count=clan.leader_lives)
 
 
 def get_other_clan_relation(relation):
@@ -2384,8 +2600,8 @@ def event_text_adjust(
     patrol_apprentices: list = None,
     new_cats: list = None,
     multi_cats: list = None,
-    clan=None,
-    other_clan=None,
+    clan: CatGroup=None,
+    other_clan: CatGroup=None,
     chosen_herb: str = None,
 ):
     """
@@ -2410,6 +2626,11 @@ def event_text_adjust(
         patrol_apprentices = []
     if not new_cats:
         new_cats = []
+
+    if isinstance(clan, CatGroup):
+        clan = clan.fetch_clan_object(game.clan)
+    if isinstance(other_clan, CatGroup):
+        other_clan = other_clan.fetch_clan_object()
 
     if not text:
         text = "This should not appear, report as a bug please! Tried to adjust the text, but no text was provided."
@@ -2500,18 +2721,18 @@ def event_text_adjust(
 
     # lead_name
     if "lead_name" in text:
-        leader = Cat.fetch_cat(game.clan.leader)
+        leader = Cat.fetch_cat(clan.leader if clan else game.clan.leader)
         replace_dict["lead_name"] = (str(leader.name), choice(leader.pronouns))
 
     # dep_name
     if "dep_name" in text:
-        deputy = Cat.fetch_cat(game.clan.deputy)
+        deputy = Cat.fetch_cat(clan.deputy if clan else game.clan.deputy)
         replace_dict["dep_name"] = (str(deputy.name), choice(deputy.pronouns))
 
     # med_name
     if "med_name" in text:
         med = choice(
-            find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True)
+            find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True, clan=clan.enum)
         )
         replace_dict["med_name"] = (str(med.name), choice(med.pronouns))
 
@@ -2635,7 +2856,8 @@ def leader_ceremony_text_adjust(
     if extra_lives:
         text = text.replace("[life_num]", str(extra_lives))
 
-    text = text.replace("c_n", str(game.clan.name) + "Clan")
+    clan = leader.status.group.fetch_clan_object()
+    text = text.replace("c_n", str(clan.name) + "Clan")
 
     return text
 
@@ -2651,8 +2873,9 @@ def ceremony_text_adjust(
     random_honor=None,
     living_parents=(),
     dead_parents=(),
+    clan=game.clan
 ):
-    clanname = str(game.clan.name + "Clan")
+    clanname = str(clan.name + "Clan")
 
     random_honor = random_honor
     random_living_parent = None
@@ -2680,8 +2903,8 @@ def ceremony_text_adjust(
             else ("previous_mentor_name", None)
         ),
         "l_n": (
-            (str(game.clan.leader.name), choice(game.clan.leader.pronouns))
-            if game.clan.leader
+            (str(clan.leader.name), choice(clan.leader.pronouns))
+            if clan.leader
             else ("leader_name", None)
         ),
         "c_n": (clanname, None),
@@ -3181,8 +3404,6 @@ def generate_sprite(
                     rednose.blit(nose_colour, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                     rednose.set_alpha(opacity)
                     whichmain.blit(rednose, (0, 0))
-
-
                 
                 return whichmain
         

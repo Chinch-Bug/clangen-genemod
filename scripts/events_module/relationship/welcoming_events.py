@@ -6,7 +6,7 @@ import i18n
 
 from scripts.game_structure import constants
 from scripts.cat.cats import Cat
-from scripts.cat.enums import CatRank
+from scripts.cat.enums import CatRank, CatGroup
 from scripts.event_class import Single_Event
 from scripts.game_structure.game_essentials import game
 from scripts.utility import (
@@ -66,7 +66,7 @@ class Welcoming_Events:
 
         # prepare string for display
         interaction_str = event_text_adjust(
-            Cat, interaction_str, main_cat=clan_cat, random_cat=new_cat
+            Cat, interaction_str, main_cat=clan_cat, random_cat=new_cat, clan=clan_cat.status.group
         )
 
         # influence the relationship
@@ -95,6 +95,7 @@ class Welcoming_Events:
             trust=clan_cat_to_new["trust"],
         )
 
+        clan = clan_cat.status.group.fetch_clan_object(game.clan)
         # add it to the event list
         game.cur_events_list.append(
             Single_Event(
@@ -102,6 +103,7 @@ class Welcoming_Events:
                 ["relation", "interaction"],
                 [new_cat.ID, clan_cat.ID],
                 cat_dict={"m_c": new_cat, "r_c": clan_cat},
+                clan=clan.name,
             )
         )
 

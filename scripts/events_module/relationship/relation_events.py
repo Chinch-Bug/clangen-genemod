@@ -6,7 +6,7 @@ import ujson
 
 from scripts.game_structure import constants
 from scripts.cat.cats import Cat
-from scripts.cat.enums import CatRank
+from scripts.cat.enums import CatRank, CatGroup
 from scripts.events_module.relationship.group_events import GroupEvents
 from scripts.events_module.relationship.romantic_events import RomanticEvents
 from scripts.events_module.relationship.welcoming_events import Welcoming_Events
@@ -31,7 +31,7 @@ class Relation_Events:
     del base_path
 
     @staticmethod
-    def handle_relationships(cat: Cat):
+    def handle_relationships(cat: Cat, clan=CatGroup.PLAYER_CLAN):
         """Checks the relationships of the cat and trigger additional events if possible.
 
         Parameters
@@ -48,7 +48,7 @@ class Relation_Events:
 
         # currently try to trigger every moon, because there are not many group events
         # TODO: maybe change in future
-        Relation_Events.group_events(cat)
+        Relation_Events.group_events(cat, clan=clan)
 
         Relation_Events.same_age_events(cat)
 
@@ -131,7 +131,7 @@ class Relation_Events:
             cat_to_choose_from = [
                 cat.all_cats[mate_id]
                 for mate_id in cat.mate
-                if cat.all_cats[mate_id].status.alive_in_player_clan
+                if cat.all_cats[mate_id].status.is_any_clan_group()
             ]
 
         if not cat_to_choose_from:
@@ -165,7 +165,7 @@ class Relation_Events:
                 Relation_Events.trigger_event(random_cat)
 
     @staticmethod
-    def group_events(cat):
+    def group_events(cat, clan=CatGroup.PLAYER_CLAN):
         """
         This function triggers group events, based on the given cat.
         First it will be decided if a special type of group (found in relationship_events/group_interactions/group_types.json).
@@ -187,7 +187,7 @@ class Relation_Events:
             chosen_type = "all"
         possible_interaction_cats = list(
             filter(
-                lambda cat: (cat.status.alive_in_player_clan),
+                lambda cat: (cat.status.group == clan),
                 Cat.all_cats.values(),
             )
         )
@@ -232,7 +232,7 @@ class Relation_Events:
         for new_cat in new_cats:
             same_age_cats = get_cats_same_age(Cat, new_cat)
             alive_cats = [
-                i for i in new_cat.all_cats.values() if i.status.alive_in_player_clan
+                i for i in new_cat.all_cats.values() if i.status.group == new_cat.status.group
             ]
             number = constants.CONFIG["new_cat"]["cat_amount_welcoming"]
 
@@ -276,7 +276,7 @@ class Relation_Events:
         """Returns a list of cats, where the relationship from main_cat towards the cat fulfill the given constraints."""
         cat_list = list(
             filter(
-                lambda cat: cat.status.alive_in_player_clan,
+                lambda cat: cat.status.group == main_cat.status.group,
                 Cat.all_cats.values(),
             )
         )

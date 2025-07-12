@@ -13,6 +13,8 @@ import pygame_gui
 import ujson
 
 from scripts.cat.cats import Cat, BACKSTORIES
+from ..cat.enums import CatAge, CatRank, CatGroup
+from scripts.cat.pelts import Pelt
 from scripts.clan_resources.freshkill import FRESHKILL_ACTIVE
 from scripts.game_structure import image_cache
 from scripts.game_structure.game_essentials import game
@@ -40,7 +42,7 @@ from ..game_structure.game.settings import game_setting_get
 from ..game_structure.game.switches import switch_set_value, switch_get_value, Switch
 from ..game_structure.localization import get_new_pronouns
 from ..game_structure.screen_settings import MANAGER
-from ..game_structure.windows import ChangeCatName, KillCat, ChangeCatToggles
+from ..game_structure.windows import ChangeCatName, KillCat, ChangeCatToggles, SelectSingleClan
 from ..housekeeping.datadir import get_save_dir
 from ..ui.generate_box import get_box, BoxStyles
 from ..ui.generate_button import ButtonStyles, get_button_dict
@@ -51,7 +53,7 @@ from ..ui.icon import Icon
 #               assigns backstory blurbs to the backstory                      #
 # ---------------------------------------------------------------------------- #
 def bs_blurb_text(cat):
-    if not cat.backstory and not cat.status.alive_in_player_clan:
+    if not cat.backstory and not cat.status.is_any_clan_group():
         return event_text_adjust(
             Cat,
             i18n.t(
@@ -255,6 +257,8 @@ class ProfileScreen(Screens):
                 ChangeCatName(self.the_cat)
             elif event.ui_element == self.specify_gender_button:
                 self.change_screen("change gender screen")
+            elif event.ui_element == self.predict_offspring_button:
+                self.change_screen("predict offspring screen")
             # when button is pressed...
             elif event.ui_element == self.cis_trans_button:
                 #if the cat is anything besides m/f/transm/transf then turn them back to cis
@@ -283,7 +287,11 @@ class ProfileScreen(Screens):
                 #if the cat is trans then set them to nonbinary
                 elif self.the_cat.genderalign.replace('intersex ', "") in ["trans molly", "trans tom"]:
                     self.the_cat.genderalign = is_intersex + 'sam'
-                self.the_cat.pronouns = get_new_pronouns(self.the_cat.genderalign)
+                new_pronouns = {}
+                new_pronouns[i18n.config.get("locale")] = get_new_pronouns(
+                    self.the_cat.genderalign
+                )
+                self.the_cat.pronouns = new_pronouns
 
                 self.clear_profile()
                 self.build_profile()
@@ -294,9 +302,11 @@ class ProfileScreen(Screens):
         elif self.open_tab == "dangerous":
             if event.ui_element == self.kill_cat_button:
                 KillCat(self.the_cat)
+            if event.ui_element == self.change_clan_button:
+                SelectSingleClan(self.the_cat)
             elif event.ui_element == self.exile_cat_button:
                 # exiles a living cat
-                if self.the_cat.status.alive_in_player_clan:
+                if self.the_cat.status.is_any_clan_group():
                     Cat.exile(self.the_cat)
                     self.clear_profile()
                     self.build_profile()
@@ -637,7 +647,7 @@ class ProfileScreen(Screens):
             manager=MANAGER,
             starting_height=2,
         )
-        if not self.the_cat.status.alive_in_player_clan and (
+        if not self.the_cat.status.is_any_clan_group() and (
             self.the_cat.status.rank.is_any_medicine_rank()
             or self.the_cat.is_ill()
             or self.the_cat.is_injured()
@@ -694,7 +704,7 @@ class ProfileScreen(Screens):
                 object_id="#mediation_button",
                 manager=MANAGER,
             )
-            if not self.the_cat.status.alive_in_player_clan:
+            if not self.the_cat.status.is_any_clan_group():
                 self.profile_elements["mediation"].disable()
 
     def generate_column1(self, the_cat):
@@ -837,6 +847,16 @@ class ProfileScreen(Screens):
         if the_cat.status.is_outsider:
             output += i18n.t(f"general.{the_cat.status.social}", count=1)
         else:
+            if game.clan.clancount == "multiclan" and not the_cat.status.is_outsider:
+                if not the_cat.dead:
+                    output += the_cat.status.group.fetch_clan_object().name + "Clan "
+                elif the_cat == game.clan.instructor:
+                    pass
+                elif the_cat.status.get_last_living_group() == CatGroup.PLAYER_CLAN:
+                    output += game.clan.name + "Clan "
+                else:
+                    clan = next(filter(lambda c: the_cat.status.get_last_living_group() == c.enum, game.clan.all_clans), None)
+                    output += clan.name + "Clan "
             output += i18n.t(f"general.{the_cat.status.rank}", count=1)
 
         # NEWLINE ----------
@@ -846,7 +866,7 @@ class ProfileScreen(Screens):
         # Optional - Only shows up for leaders
         if not the_cat.dead and CatRank.LEADER in the_cat.status.rank:
             output += i18n.t(
-                "screens.profile.lives_remaining_label", count=game.clan.leader_lives
+                "screens.profile.lives_remaining_label", count=the_cat.status.group.fetch_clan_object().leader_lives
             )
             # NEWLINE ----------
             output += "\n"
@@ -926,8 +946,8 @@ class ProfileScreen(Screens):
         bs_text = "this should not appear"
         # if cat has never been part of the player clan, then they get no backstory yet
         if (
-            not the_cat.status.alive_in_player_clan
-            and CatGroup.PLAYER_CLAN not in the_cat.status.all_groups
+            not the_cat.status.is_any_clan_group()
+            and not the_cat.status.get_last_living_group()
         ):
             bs_text = the_cat.status.social
         else:
@@ -1254,7 +1274,7 @@ class ProfileScreen(Screens):
         else:
             text = i18n.t("cat.backstories.unknown", name=self.the_cat.name)
 
-        if self.the_cat.status.alive_in_player_clan:
+        if self.the_cat.status.is_any_clan_group():
             beginning = self.the_cat.history.beginning
             if beginning:
                 text += " "
@@ -2028,6 +2048,24 @@ class ProfileScreen(Screens):
                 manager=MANAGER,
                 anchors={"top_target": self.cis_trans_button},
             )
+            self.predict_offspring_button = UISurfaceImageButton(
+                ui_scale(pygame.Rect((402, 0), (172, 36))),
+                "predict offspring",
+                get_button_dict(ButtonStyles.LADDER_MIDDLE, (172, 36)),
+                object_id="@buttonstyles_ladder_middle",
+                starting_height=2,
+                manager=MANAGER,
+                anchors={"top_target": self.specify_gender_button},
+            )
+            if (
+                not self.the_cat.age.can_have_mate()
+                or self.the_cat.status.is_outsider
+                or self.the_cat.dead
+                or 'infertility' in self.the_cat.permanent_condition
+            ):
+                self.predict_offspring_button.disable()
+            else:
+                self.predict_offspring_button.enable()
             self.cat_toggles_button = UISurfaceImageButton(
                 ui_scale(pygame.Rect((402, 0), (172, 36))),
                 "screens.profile.toggles",
@@ -2035,7 +2073,7 @@ class ProfileScreen(Screens):
                 object_id="@buttonstyles_ladder_bottom",
                 starting_height=2,
                 manager=MANAGER,
-                anchors={"top_target": self.specify_gender_button},
+                anchors={"top_target": self.predict_offspring_button},
             )
 
             self.update_disabled_buttons_and_text()
@@ -2067,14 +2105,33 @@ class ProfileScreen(Screens):
                     ui_scale_dimensions((172, 36)),
                 ),
             )
-            self.kill_cat_button = UIImageButton(
-                ui_scale(pygame.Rect((578, 486), (172, 36))),
-                "screens.profile.kill_cat",
-                object_id="#kill_cat_button",
-                tool_tip_text="screens.profile.kill_cat_tooltip",
-                starting_height=2,
-                manager=MANAGER,
-            )
+            if game.clan.clancount == "multiclan":
+                self.change_clan_button = UISurfaceImageButton(
+                    ui_scale(pygame.Rect((578, 0), (172, 36))),
+                    "screens.profile.change_clan",
+                    get_button_dict(ButtonStyles.LADDER_MIDDLE, (172, 36)),
+                    object_id="@buttonstyles_ladder_middle",
+                    starting_height=2,
+                    manager=MANAGER,
+                    anchors={"top_target": self.exile_cat_button},
+                )
+                self.kill_cat_button = UIImageButton(
+                    ui_scale(pygame.Rect((578, 522), (172, 36))),
+                    "screens.profile.kill_cat",
+                    object_id="#kill_cat_button",
+                    tool_tip_text="screens.profile.kill_cat_tooltip",
+                    starting_height=2,
+                    manager=MANAGER,
+                )
+            else:
+                self.kill_cat_button = UIImageButton(
+                    ui_scale(pygame.Rect((578, 486), (172, 36))),
+                    "screens.profile.kill_cat",
+                    object_id="#kill_cat_button",
+                    tool_tip_text="screens.profile.kill_cat_tooltip",
+                    starting_height=2,
+                    manager=MANAGER,
+                )
             self.destroy_accessory_button = UISurfaceImageButton(
                 ui_scale(pygame.Rect((578, 0), (172, 36))),
                 "screens.profile.destroy_accessory",
@@ -2105,7 +2162,7 @@ class ProfileScreen(Screens):
             if (
                 self.the_cat.age
                 not in ["young adult", "adult", "senior adult", "senior"]
-                or not self.the_cat.status.alive_in_player_clan
+                or not self.the_cat.status.is_any_clan_group()
             ):
                 self.choose_mate_button.disable()
             else:
@@ -2113,13 +2170,13 @@ class ProfileScreen(Screens):
 
         # Roles Tab
         elif self.open_tab == "roles":
-            if not self.the_cat.status.alive_in_player_clan:
+            if not self.the_cat.status.is_any_clan_group():
                 self.manage_roles.disable()
             else:
                 self.manage_roles.enable()
             if (
                 not self.the_cat.status.rank.is_any_apprentice_rank()
-                or not self.the_cat.status.alive_in_player_clan
+                or not self.the_cat.status.is_any_clan_group()
             ):
                 self.change_mentor_button.disable()
             else:
@@ -2147,6 +2204,15 @@ class ProfileScreen(Screens):
             else:
                 self.cis_trans_button.set_text("screens.profile.change_gender_cis")
                 self.cis_trans_button.disable()
+            if (
+                not self.the_cat.age.can_have_mate()
+                or self.the_cat.status.is_outsider
+                or self.the_cat.dead
+                or 'infertility' in self.the_cat.permanent_condition
+            ):
+                self.predict_offspring_button.disable()
+            else:
+                self.predict_offspring_button.enable()
 
         # Dangerous Tab
         elif self.open_tab == "dangerous":
@@ -2192,13 +2258,20 @@ class ProfileScreen(Screens):
                     starting_height=2,
                 )
             self.exile_cat_button.set_text(text)
-            if not self.the_cat.status.alive_in_player_clan:
+            if not self.the_cat.status.is_any_clan_group():
                 self.exile_cat_button.disable()
 
             if self.the_cat.dead:
                 self.exile_cat_button.enable()
                 self.exile_cat_button.join_focus_sets(self.exile_layer)
 
+            if self.the_cat.status.is_any_clan_group():
+                if hasattr(self, "change_clan_button"):
+                    self.change_clan_button.enable()
+            else:
+                if hasattr(self, "change_clan_button"):
+                    self.change_clan_button.disable()
+            
             if not self.the_cat.dead:
                 self.kill_cat_button.enable()
             else:
@@ -2351,9 +2424,12 @@ class ProfileScreen(Screens):
             self.change_name_button.kill()
             self.cat_toggles_button.kill()
             self.specify_gender_button.kill()
+            self.predict_offspring_button.kill()
             if self.cis_trans_button:
                 self.cis_trans_button.kill()
         elif self.open_tab == "dangerous":
+            if hasattr(self, "change_clan_button"):
+               self.change_clan_button.kill()
             self.kill_cat_button.kill()
             self.exile_cat_button.kill()
             if hasattr(self, "exile_layer"):

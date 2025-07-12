@@ -139,18 +139,18 @@ class ClanScreen(Screens):
         i = 0
         all_positions = list(self.taken_spaces.values())
         used_positions = all_positions.copy()
-        cat_list = [
-            Cat.all_cats[x]
-            for i, x in enumerate(game.clan.clan_cats)
-            if i < self.max_sprites_displayed
-            and Cat.all_cats[x].in_camp
-            and Cat.all_cats[x].status.alive_in_player_clan
-            and (
-                Cat.all_cats[x].status.rank != CatRank.NEWBORN
-                or constants.CONFIG["fun"]["all_cats_are_newborn"]
-                or constants.CONFIG["fun"]["newborns_can_roam"]
-            )
-        ]
+        cat_list = []
+        for x in game.clan.clan_cats:
+            if (Cat.all_cats[x].in_camp
+                and Cat.all_cats[x].status.alive_in_player_clan
+                and (
+                    Cat.all_cats[x].status.rank != CatRank.NEWBORN
+                    or constants.CONFIG["fun"]["all_cats_are_newborn"]
+                    or constants.CONFIG["fun"]["newborns_can_roam"]
+                )):
+                cat_list.append(Cat.all_cats[x])
+                if len(cat_list) == self.max_sprites_displayed:
+                    break
         layers = []
         for x in cat_list:
             layers.append(2)
@@ -475,7 +475,7 @@ class ClanScreen(Screens):
         for x in all_dens:
             first_choices[x].extend(first_choices[x])
 
-        for x in game.clan.clan_cats:
+        for x in Cat.all_cats:
             if not Cat.all_cats[x].status.alive_in_player_clan:
                 continue
 

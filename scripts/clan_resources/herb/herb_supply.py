@@ -202,7 +202,7 @@ class HerbSupply:
             "minor": []
         }
         cats_to_treat = [kitty for kitty in clan_cats 
-                        if not kitty.status.is_outsider and 
+                        if kitty.status.alive_in_player_clan and 
                         (kitty.is_ill() or kitty.is_injured() or kitty.is_disabled())]
         for kitty in cats_to_treat:
             # if there are no working med cats, then only allow med cats to be treated. the idea being that a med cat

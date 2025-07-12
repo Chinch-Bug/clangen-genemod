@@ -8854,7 +8854,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": 3
+            "changed": 3,
+            "has_rank": [
+                "warrior"
+            ]
         },
         "injury": [
             {
@@ -8897,9 +8900,15 @@
                 "sincere"
             ]
         },
+        "new_cat": [
+          ["status:warrior", "dead", "clancat"]
+        ],
         "other_clan": {
             "current_rep": ["hostile"],
-            "changed": 1
+            "changed": 1,
+            "has_rank": [
+              "warrior"
+            ]
         }
     },
     {
@@ -8933,9 +8942,15 @@
                 "rebellious"
             ]
         },
+        "new_cat": [
+          [ "status:warrior", "dead", "clancat" ]
+        ],
         "other_clan": {
             "current_rep": ["hostile"],
-            "changed": -1
+            "changed": -1,
+            "has_rank": [
+              "warrior"
+            ]
         }
     },
     {
@@ -8970,9 +8985,15 @@
                 "rebellious"
             ]
         },
+        "new_cat": [
+          [ "status:warrior", "dead", "clancat" ]
+        ],
         "other_clan": {
             "current_rep": ["hostile"],
-            "changed": 1
+            "changed": 1,
+            "has_rank": [
+              "warrior"
+            ]
         }
     },
     {
@@ -9003,9 +9024,15 @@
                 "cunning"
             ]
         },
+        "new_cat": [
+          [ "status:warrior", "dead", "clancat" ]
+        ],
         "other_clan": {
             "current_rep": ["hostile"],
-            "changed": -2
+            "changed": -2,
+            "has_rank": [
+              "warrior"
+            ]
         }
     },
     {
@@ -9043,7 +9070,7 @@
                 "rebellious"
             ]
         },
-        "relationships": {
+        "relationships": [{
             "cats_from": [
                 "some_clan"
             ],
@@ -9057,10 +9084,13 @@
             ],
             "amount": -5,
             "log": "Was upset when m_c defied the Clan and maintained a friendship during war."
-        },
+        }],
         "other_clan": {
             "current_rep": ["hostile"],
-            "changed": 2
+            "changed": 2,
+            "has_rank": [
+              "any_apprentice"
+            ]
         }
     },
     {
@@ -9111,7 +9141,10 @@
         },
         "other_clan": {
             "current_rep": ["hostile"],
-            "changed": 2
+            "changed": 2,
+            "has_rank": [
+              "any_apprentice"
+            ]
         }
     },
     {
@@ -9173,7 +9206,10 @@
         },
         "other_clan": {
             "current_rep": ["hostile"],
-            "changed": 1
+            "changed": 1,
+            "has_rank": [
+              "any_apprentice"
+            ]
         }
     },
     {
@@ -9207,7 +9243,10 @@
         ],
         "other_clan": {
             "current_rep": ["hostile"],
-            "changed": 2
+            "changed": 2,
+            "has_rank": [
+              "warrior"
+            ]
         }
     },
     {
@@ -9305,7 +9344,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": 1
+            "changed": 1,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     }
 ]

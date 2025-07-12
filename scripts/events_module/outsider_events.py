@@ -20,7 +20,7 @@ class OutsiderEvents:
     """All events with a connection to outsiders."""
 
     @staticmethod
-    def killing_outsiders(cat: "Cat"):
+    def killing_outsiders(cat: "Cat", clan=game.clan):
         if get_clan_setting("lead_den_outsider_event"):
             info_dict = get_clan_setting("lead_den_outsider_event")
             if cat.ID == info_dict["cat_ID"]:
@@ -36,7 +36,7 @@ class OutsiderEvents:
                 death_history = "m_c died outside of the Clan."
                 if cat.status.is_exiled(CatGroup.PLAYER_CLAN):
                     text = f"Rumors reach your Clan that the exiled {cat.name} has died recently."
-                elif cat.status.is_lost():
+                elif cat.status.is_lost(clan):
                     text = (
                         f"Will they reach StarClan, even so far away? {cat.name} isn't sure, "
                         f"but as they drift away, they hope to see "
@@ -53,7 +53,7 @@ class OutsiderEvents:
                     death_history = "m_c died while roaming around."
 
                 cat.history.add_death(death_text=death_history)
-                cat.die()
+                cat.die(False)
                 game.cur_events_list.append(
-                    Single_Event(text, "birth_death", cat_dict={"m_c": cat})
+                    Single_Event(text, "birth_death", cat_dict={"m_c": cat}, clan=clan.name)
                 )

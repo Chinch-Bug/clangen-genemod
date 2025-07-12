@@ -14,7 +14,7 @@ from scripts.cat.cats import Cat
 from scripts.cat.enums import CatAge, CatRank
 from scripts.clan import Clan
 from scripts.clan_package.settings import get_clan_setting
-from scripts.events_module.event_filters import event_for_tags
+from scripts.events_module.event_filters import event_for_tags, event_for_other_clan
 from scripts.events_module.patrol.patrol_event import PatrolEvent
 from scripts.events_module.patrol.patrol_outcome import PatrolOutcome
 from scripts.game_structure import localization, constants
@@ -652,6 +652,11 @@ class Patrol:
                     print("DEBUG: requested patrol does not meet constraints (tags)")
                 continue
 
+            if patrol.other_clan and game.clan.clancount == 'multiclan' and not event_for_other_clan(Cat, patrol.other_clan_filter.get("has_rank"), self.other_clan.enum):
+                if self.debug_patrol and self.debug_patrol == patrol.patrol_id:
+                    print("DEBUG: requested patrol does not meet constraints (neighbour clan constraits)")
+                continue
+
             if biome not in patrol.biome and "any" not in patrol.biome:
                 if self.debug_patrol and self.debug_patrol == patrol.patrol_id:
                     print("DEBUG: requested patrol does not meet constraints (biome)")
@@ -777,6 +782,7 @@ class Patrol:
                 tags=patrol.get("tags"),
                 weight=patrol.get("weight", 20),
                 types=patrol.get("types"),
+                other_clan_filter=patrol.get("other_clan_filter"),
                 intro_text=patrol.get("intro_text"),
                 patrol_art=patrol.get("patrol_art"),
                 patrol_art_clean=patrol.get("patrol_art_clean"),

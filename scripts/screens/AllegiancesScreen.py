@@ -1,10 +1,20 @@
 import i18n
 import pygame
 import pygame_gui
+from pygame_gui.core import ObjectID
 
 from scripts.cat.cats import Cat
 from scripts.game_structure.game_essentials import game
-from scripts.game_structure.ui_elements import AllegiancesCat
+from scripts.game_structure.ui_elements import (
+    AllegiancesCat, 
+    UIDropDownContainer, 
+    UISurfaceImageButton
+)
+from scripts.game_structure.game.switches import (
+    switch_set_value,
+    Switch,
+)
+from scripts.ui.generate_button import get_button_dict, ButtonStyles
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.utility import (
     get_text_box_theme,
@@ -33,11 +43,28 @@ class AllegiancesScreen(Screens):
         self.scroll_container = None
         self.heading = None
 
+        self.event_screen_container = None
+        self.current_clan = None
+        self.choose_group_button = None
+        self.living_groups_container = None
+        self.choose_group_buttons = {}
+        self.choose_living_dropdown = None
+
     def handle_event(self, event):
-        if event.type == pygame_gui.UI_BUTTON_START_PRESS:
+        if event.type == pygame_gui.UI_BUTTON_PRESSED:
             if event.ui_element in self.names_buttons:
                 switch_set_value(Switch.cat, event.ui_element.return_cat_id())
                 self.change_screen('profile screen')
+            elif event.ui_element in self.choose_group_buttons.values():
+                self.choose_living_dropdown.close()
+                self.current_clan = event.ui_element.text.replace("Clan", "")
+                self.current_clan = [c for c in game.clan.all_clans if c.name == self.current_clan]
+                if self.current_clan:
+                    self.current_clan = self.current_clan[0]
+                else:
+                    self.current_clan = game.clan
+                
+                self.fill_allegiances()
             else:
                 self.menu_button_pressed(event)
                 self.mute_button_pressed(event)
@@ -47,23 +74,124 @@ class AllegiancesScreen(Screens):
 
     def screen_switches(self):
         super().screen_switches()
-        # Heading
-        self.heading = pygame_gui.elements.UITextBox(
-            "screens.allegiances.heading",
-            ui_scale(pygame.Rect((0, 115), (400, 40))),
-            text_kwargs={"clan_name": game.clan.name},
-            object_id=get_text_box_theme("#text_box_34_horizcenter_vertcenter"),
-            manager=MANAGER,
-            anchors={"centerx": "centerx"},
-        )
 
         # Set Menu Buttons.
         self.show_menu_buttons()
         self.show_mute_buttons()
         self.set_disabled_menu_buttons(["allegiances"])
         self.update_heading_text(f"{game.clan.name}Clan")
+
+        if not self.current_clan:
+            self.current_clan = game.clan
+        if game.clan.clancount == 'multiclan':
+
+            self.event_screen_container = pygame_gui.core.UIContainer(
+                ui_scale(pygame.Rect((0, 100), (800, 300))),
+                starting_height=1,
+                manager=MANAGER,
+            )
+            self.choose_group_button = UISurfaceImageButton(
+                ui_scale(pygame.Rect((600, 0), (190, 34))),
+                "screens.list.choose_group",
+                get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
+                object_id="@buttonstyles_dropdown",
+                manager=MANAGER,
+                starting_height=1,
+                container=self.event_screen_container,
+            )
+
+            self.living_groups_container = pygame_gui.elements.UIAutoResizingContainer(
+                ui_scale(pygame.Rect((600, 32), (0, 0))),
+                object_id="#choose_group_container",
+                manager=MANAGER,
+                starting_height=1,
+                container=self.event_screen_container,
+            )
+            self.living_groups_container.change_layer(10)
+            self.choose_group_buttons[game.clan.name] = UISurfaceImageButton(
+                ui_scale(pygame.Rect((0, 0), (190, 34))),
+                game.clan.name + "Clan",
+                get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
+                container=self.living_groups_container,
+                object_id=ObjectID(
+                    class_id="@buttonstyles_dropdown", object_id=None),
+                starting_height=2,
+                manager=MANAGER,
+            )
+            y_pos = 32
+            for clan in game.clan.all_clans:
+                self.choose_group_buttons[clan.name] = UISurfaceImageButton(
+                    ui_scale(pygame.Rect((0, y_pos), (190, 34))),
+                    clan.name + "Clan",
+                    get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
+                    container=self.living_groups_container,
+                    object_id=ObjectID(
+                        class_id="@buttonstyles_dropdown", object_id=None),
+                    starting_height=2,
+                    manager=MANAGER,
+                )
+                y_pos += 32
+
+            self.choose_living_dropdown = UIDropDownContainer(
+                self.living_groups_container.relative_rect,
+                container=self.event_screen_container,
+                object_id="#choose_living_dropdown",
+                starting_height=1,
+                parent_button=self.choose_group_button,
+                child_button_container=self.living_groups_container,
+                manager=MANAGER,
+            )
+
+            self.choose_living_dropdown.close()
+            self.choose_living_dropdown.show()
+
+        self.fill_allegiances()
+
+    def exit_screen(self):
+        for x in self.ranks_boxes:
+            x.kill()
+        del self.ranks_boxes
+        for x in self.names_boxes:
+            x.kill()
+        del self.names_boxes
+        for x in self.names_buttons:
+            x.kill()
+        del self.names_buttons
+        self.scroll_container.kill()
+        del self.scroll_container
+        self.heading.kill()
+        del self.heading
+
+        if game.clan.clancount == 'multiclan':
+            self.event_screen_container.kill()
+            self.choose_group_button.kill()
+            self.living_groups_container.kill()
+            for x in self.choose_group_buttons.values():
+                x.kill()
+            self.choose_living_dropdown.kill()
+            del self.event_screen_container
+            del self.choose_group_button
+            del self.living_groups_container
+            self.choose_group_buttons = {}
+            del self.choose_living_dropdown
+
+    def fill_allegiances(self):
+        # Heading
+        if hasattr(self, "heading") and self.heading:
+            self.heading.kill()
+        self.heading = pygame_gui.elements.UITextBox(
+            "screens.allegiances.heading",
+            ui_scale(pygame.Rect((0, 115), (400, 40))),
+            text_kwargs={"clan_name": self.current_clan.name},
+            object_id=get_text_box_theme(
+                "#text_box_34_horizcenter_vertcenter"),
+            manager=MANAGER,
+            anchors={"centerx": "centerx"},
+        )
         allegiance_list = self.get_allegiances_text()
 
+        if hasattr(self, "scroll_container") and self.scroll_container:
+            self.scroll_container.kill()
         self.scroll_container = UIModifiedScrollingContainer(
             ui_scale(pygame.Rect((50, 165), (715, 470))),
             allow_scroll_x=False,
@@ -93,18 +221,19 @@ class AllegiancesScreen(Screens):
             self.ranks_boxes[-1].disable()
             offset = 7
             self.names_buttons.append(AllegiancesCat(
-                                    pygame.Rect(
-                                    (offset, -self.ranks_boxes[-1].get_relative_rect()[3]+offset),
-                                    ui_scale_offset((565, -1))),
-                                    x[1],
-                                    object_id=get_text_box_theme("#allegiance"),
-                                    container=self.scroll_container, manager=MANAGER,
-                                    anchors={
-                                        "top_target": self.ranks_boxes[-1],
-                                        "left_target": self.ranks_boxes[-1],
-                                        "left": "left",
-                                        "right": "right",
-                                    }))
+                pygame.Rect(
+                    (offset, -
+                     self.ranks_boxes[-1].get_relative_rect()[3]+offset),
+                    ui_scale_offset((565, -1))),
+                x[1],
+                object_id=get_text_box_theme("#allegiance"),
+                container=self.scroll_container, manager=MANAGER,
+                anchors={
+                    "top_target": self.ranks_boxes[-1],
+                    "left_target": self.ranks_boxes[-1],
+                    "left": "left",
+                    "right": "right",
+                }))
             self.names_buttons[-1].set_cat_id(x[2])
             self.names_boxes.append(
                 pygame_gui.elements.UITextBox(
@@ -125,21 +254,6 @@ class AllegiancesScreen(Screens):
                 )
             )
             self.names_boxes[-1].disable()
-
-    def exit_screen(self):
-        for x in self.ranks_boxes:
-            x.kill()
-        del self.ranks_boxes
-        for x in self.names_boxes:
-            x.kill()
-        del self.names_boxes
-        for x in self.names_buttons:
-            x.kill()
-        del self.names_buttons
-        self.scroll_container.kill()
-        del self.scroll_container
-        self.heading.kill()
-        del self.heading
 
     @staticmethod
     def generate_one_entry(cat, extra_details=""):
@@ -164,7 +278,7 @@ class AllegiancesScreen(Screens):
         """Determine Text. Ouputs list of tuples."""
 
         living_cats = [
-            i for i in Cat.all_cats.values() if i.status.alive_in_player_clan
+            i for i in Cat.all_cats.values() if i.status.group and i.status.group.fetch_clan_object() == self.current_clan
         ]
         living_meds = []
         living_mediators = []
@@ -205,7 +319,7 @@ class AllegiancesScreen(Screens):
         living_elders = sorted(living_elders, key=lambda x: x.moons, reverse=True)
 
         # Find Queens:
-        queen_dict, living_kits = get_alive_clan_queens(living_cats)
+        queen_dict, living_kits = get_alive_clan_queens(living_cats, self.current_clan)
 
         # Remove queens from warrior or elder lists, if they are there.  Let them stay on any other lists.
         for q in queen_dict:
@@ -220,8 +334,8 @@ class AllegiancesScreen(Screens):
         # Clan Leader Box:
         # Pull the Clan leaders
         outputs = []
-        if game.clan.leader and game.clan.leader.status.alive_in_player_clan:
-            x = self.generate_one_entry(game.clan.leader)
+        if self.current_clan.leader and not (self.current_clan.leader.dead or self.current_clan.leader.status.is_outsider):
+            x = self.generate_one_entry(self.current_clan.leader)
             outputs.append(
                 [
                     f"<b><u>{i18n.t('general.leader', count=1).upper()}</u></b>",
@@ -232,8 +346,8 @@ class AllegiancesScreen(Screens):
             )
 
         # Deputy Box:
-        if game.clan.deputy and game.clan.deputy.status.alive_in_player_clan:
-            x = self.generate_one_entry(game.clan.deputy)
+        if self.current_clan.deputy and not (self.current_clan.deputy.dead or self.current_clan.deputy.status.is_outsider):
+            x = self.generate_one_entry(self.current_clan.deputy)
             outputs.append(
                 [
                     f"<b><u>{i18n.t('general.deputy', count=1).upper()}</u></b>",

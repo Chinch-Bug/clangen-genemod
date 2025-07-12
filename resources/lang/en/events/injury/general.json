@@ -1078,7 +1078,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -1129,7 +1132,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_fighter_mult"
+            ]
         }
     },
     {
@@ -1196,7 +1202,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_fighter_mult"
+            ]
         }
     },
     {
@@ -1251,7 +1260,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -3245,7 +3257,10 @@
                 "hostile",
                 "neutral"
             ],
-            "changed": -2
+            "changed": -2,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -3686,7 +3701,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -1
+            "changed": -1,
+            "has_rank": [
+                "any_fighter_mult"
+            ]
         }
     },
     {
@@ -6665,7 +6683,10 @@
                 "hostile",
                 "neutral"
             ],
-            "changed": -1
+            "changed": -1,
+            "has_rank": [
+                "any_warrior"
+            ]
         }
     },
     {
@@ -6719,7 +6740,10 @@
                 "hostile",
                 "neutral"
             ],
-            "changed": -1
+            "changed": -1,
+            "has_rank": [
+                "any_warrior"
+            ]
         }
     },
     {
@@ -6959,7 +6983,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -2
+            "changed": -2,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
         }
     },
     {
@@ -7046,7 +7073,11 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -1
+            "changed": -1,
+            "has_rank": [
+                "any_fighter_mult",
+                "any_warrior"
+            ]
         }
     },
     {
@@ -7215,7 +7246,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": 1
+            "changed": 1,
+            "has_rank": [
+                "warrior_mult"
+            ]
         }
     },
     {
@@ -7386,7 +7420,10 @@
         ],
         "other_clan": {
             "current_rep": ["hostile"],
-            "changed": 2
+            "changed": 2,
+            "has_rank": [
+                "warrior_mult"
+            ]
         }
     },
     {
@@ -7441,7 +7478,12 @@
                 "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after protecting an enemy warrior.",
                 "lead_death": "died from wounds after protecting an enemy warrior"
             }
-        ]
+        ],
+        "other_clan": {
+            "has_rank": [
+                "warrior_mult"
+            ]
+        }
     },
     {
         "event_id": "gen_injury_sprain_anyapprentice1",
@@ -7551,6 +7593,9 @@
             "current_rep": [
                 "hostile",
                 "neutral"
+            ],
+            "has_rank": [
+                "warrior"
             ]
         }
     }

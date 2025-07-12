@@ -5,7 +5,7 @@ from scripts.events_module.event_filters import cat_for_event
 from scripts.game_structure.game_essentials import game
 
 
-def prep_event(event, event_id: str, possible_cats: dict):
+def prep_event(event, event_id: str, possible_cats: dict, clan):
     """
     Checks if the given event has a future event attached, then creates the future event
     :param event: the class object for the event
@@ -18,7 +18,7 @@ def prep_event(event, event_id: str, possible_cats: dict):
 
     for event_info in event.future_event:
         # create dict of all cats that need to be involved in future event
-        gathered_cat_dict = _collect_involved_cats(possible_cats, event_info)
+        gathered_cat_dict = _collect_involved_cats(possible_cats, event_info, clan.enum)
 
         # create future event and add it to the future event list
         game.clan.future_events.append(
@@ -30,11 +30,12 @@ def prep_event(event, event_id: str, possible_cats: dict):
                     event_info["moon_delay"][0], event_info["moon_delay"][1]
                 ),
                 involved_cats=gathered_cat_dict,
+                clan=clan.name
             )
         )
 
 
-def _collect_involved_cats(cat_dict: dict, future_info: dict) -> dict:
+def _collect_involved_cats(cat_dict: dict, future_info: dict, clan) -> dict:
     """
     collects involved cats and assigns their roles for the future event, then
     returns a dict associating their new role (key) with their cat ID (value)
@@ -53,7 +54,7 @@ def _collect_involved_cats(cat_dict: dict, future_info: dict) -> dict:
 
     # we're just keeping this to living cats within the clan for now, more complexity can come later
     possible_cats = [
-        kitty for kitty in Cat.all_cats.values() if kitty.status.alive_in_player_clan
+        kitty for kitty in Cat.all_cats.values() if kitty.status.group == clan
     ]
 
     for new_role, cat_involved in future_info["involved_cats"].items():
@@ -79,11 +80,13 @@ class FutureEvent:
         pool: dict = None,
         moon_delay: int = 0,
         involved_cats: dict = None,
+        clan: str = None
     ):
         self.parent_event = parent_event
         self.event_type = event_type
         self.pool = pool
         self.moon_delay = moon_delay
+        self.clan = clan
 
         self.involved_cats = involved_cats
 
@@ -94,4 +97,5 @@ class FutureEvent:
             "pool": self.pool,
             "moon_delay": self.moon_delay,
             "involved_cats": self.involved_cats,
+            "clan": self.clan
         }

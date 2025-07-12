@@ -19,7 +19,9 @@
               "exists",
               "unknown",
               "litter",
-              "dead"
+              "dead",
+              "change_clan",
+              "change_clan_rev"
             ]
           },
           {
@@ -37,6 +39,10 @@
           {
             "type": "string",
             "pattern": "^parent:([,0-9]+)$"
+          },
+          {
+            "type": "string",
+            "pattern": "^sibling:([,0-9]+)$"
           },
           {
             "type": "string",

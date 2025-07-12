@@ -181,7 +181,6 @@ for module_name, module in list(sys.modules.items()):
             reload(module)
 
 # Load game
-
 from scripts.clan import clan_class
 from scripts.game_structure import constants
 from scripts.game_structure.game.save_load import read_clans
@@ -234,8 +233,6 @@ def load_data():
         switch_set_value(Switch.clan_name, clan_list[0])
         try:
             load_cats()
-            version_info = clan_class.load_clan()
-            version_convert(version_info)
             game.load_events()
             scripts.screens.screens_core.screens_core.rebuild_core()
         except Exception as e:

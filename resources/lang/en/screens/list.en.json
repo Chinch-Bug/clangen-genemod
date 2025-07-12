@@ -2,7 +2,7 @@
     "en": {
         "favorite_hide_tooltip": "hide favorite cat indicators",
         "favorite_show_tooltip": "show favorite cat indicators",
-        "search_genotypes_tooltip": "switch to searching in genotypes. For allele search: use / for OR, & for AND, ! for NOT. Eg: Apb & a & !Mc = Apba mcmc, D / d & a = D- or has d and has a",
+        "search_genotypes_tooltip": "switch to searching in genotypes",
         "search_genotypes_tutorial": "For allele search: use / for OR, & for AND, ! for NOT. Eg: Apb & a & !Mc = Apba mcmc, D / d & a = D- or has d and has a",
         "search_names_tooltip": "switch to searching in names",
         "view_dead": "view dead",
