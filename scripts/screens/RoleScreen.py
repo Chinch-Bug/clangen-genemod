@@ -336,7 +336,7 @@ class RoleScreen(Screens):
         else:
             leader_invalid = True
 
-        if game.clan.deputy:
+        if clan.deputy:
             deputy_invalid = clan.deputy.status.group != self.the_cat.status.group
         else:
             deputy_invalid = True
