@@ -203,16 +203,13 @@ class ListScreen(Screens):
             if element == self.cat_list_bar_elements["search_genotype_checkbox"]:
                 if "@checked_checkbox" in event.ui_element.get_object_ids():
                     element.change_object_id("@unchecked_checkbox")
-                    element.set_tooltip(
-                        "screens.list.search_genotypes_tooltip")
-                    self.cat_list_bar_elements["search_bar_entry"].set_tooltip(
-                        "screens.list.search_genotypes_tutorial")
+                    element.set_tooltip("screens.list.search_genotypes_tooltip")
                     set_clan_setting("search genotypes", False)
                 else:
                     element.change_object_id("@checked_checkbox")
                     element.set_tooltip("screens.list.search_names_tooltip")
-                    self.cat_list_bar_elements["search_bar_entry"].set_tooltip(
-                        "screens.list.search_genotypes_tutorial")
+                    self.cat_list_bar_elements["search_bar_entry"].tool_tip_text = "screens.list.search_genotypes_tutorial"
+                    self.cat_list_bar_elements["search_bar_entry"].tool_tip_delay = 0
                     set_clan_setting("search genotypes", True)
                 self.cat_list_bar_elements["search_bar_entry"].placeholder_text = "general.genotype_search" if get_clan_setting("search genotypes") else "general.name_search"
                 self.cat_list_bar_elements["search_bar_entry"].set_text("")

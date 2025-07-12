@@ -258,13 +258,24 @@ class PredictOffspringScreen(Screens):
     
         index = 0
         indey = 0
+    
         for offspring in self.predicted_offspring:
-            self.predicted_offspring_elements["offspring" + str(index) + str(indey)] = pygame_gui.elements.UIImage(
+            genelist = str(offspring.phenotype.PhenotypeOutput(offspring.phenotype.white_pattern, chimera=offspring.chimerapheno)) + \
+                "\n" + str(offspring.phenotype.ShowGenes(True)
+                           ) + "\n" + offspring.phenotype.FormatSomatic()
+            if (offspring.chimerapheno):
+                genelist += "\n\n" + str(offspring.chimerapheno.PhenotypeOutput(offspring.chimerapheno.white_pattern,
+                                        chimera=offspring.chimerapheno)) + "\n" + str(offspring.chimerapheno.ShowGenes(True))
+
+            self.predicted_offspring_elements["offspring" + str(index) + str(indey)] = UISpriteButton(
                     ui_scale(pygame.Rect((105 + (index*120), 395 + indey), (100, 100))),
                     pygame.transform.scale(
                         offspring.sprite, ui_scale_dimensions((100, 100))
                     ),
+                    object_id="#offspring_predict_cat",
+                    tool_tip_text=genelist,
             )
+
             if index < 4:
                 index += 1
             else:
