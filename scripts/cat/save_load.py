@@ -64,9 +64,10 @@ def save_faded_cats(clanname, cat_class: Type["Cat"], game: "Game"):
         if not fade_cat_dir.exists():
             fade_cat_dir.mkdir()
 
-    for f in os.listdir(fade_cat_dir):
-        if f.strip(".json") not in game.clan.faded_ids:
-            game.clan.faded_ids.append(f.strip(".json"))
+    if fade_cat_dir.exists():
+        for f in os.listdir(fade_cat_dir):
+            if f.strip(".json") not in game.clan.faded_ids:
+                game.clan.faded_ids.append(f.strip(".json"))
 
     copy_of_info = ""
     for cat in cat_to_fade:
