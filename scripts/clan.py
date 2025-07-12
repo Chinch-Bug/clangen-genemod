@@ -266,12 +266,12 @@ class Clan:
         """
         if (
             cat.ID in Cat.all_cats
-            and cat.status.alive_in_player_clan
+            and cat.status.is_any_clan_group()
             and cat.ID in Cat.outside_cats
         ):
             # The outside-value must be set to True before the cat can go to cotc
             Cat.outside_cats.pop(cat.ID)
-            cat.group = game.clan if not clan else clan
+            cat.group = CatGroup.PLAYER_CLAN if not clan else clan
 
     def remove_cat(self, ID):  # ID is cat.ID
         """

@@ -1112,7 +1112,7 @@ class Cat:
 
         self.status.add_to_group(new_group=clan, age=self.age)
 
-        game.clan.add_to_clan(self)
+        game.clan.add_to_clan(self, clan)
 
         # check if there are kits under 12 moons with this cat and also add them to the clan
         children = self.get_children()
@@ -1130,7 +1130,7 @@ class Cat:
                     # child.status.add_to_group(new_group=clan, age=self.age)
                     child.add_to_clan(clan)
                 else:
-                    game.clan.add_to_clan(self)
+                    game.clan.add_to_clan(self, clan)
                 child.history.add_beginning()
                 ids.append(child_id)
 

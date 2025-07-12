@@ -916,7 +916,7 @@ class Events:
             lost_cat = random.choice(eligible_cats)
             cat_IDs.append(lost_cat.ID)
 
-            additional_cats = lost_cat.add_to_clan()
+            additional_cats = lost_cat.add_to_clan(clan.enum)
             cat_IDs.extend(additional_cats)
             text = i18n.t(f"hardcoded.event_lost{random.choice(range(1,5))}")
 

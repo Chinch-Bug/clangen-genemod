@@ -762,7 +762,7 @@ def create_new_cat_block(
             if not alive:
                 chosen_cat.die()
             elif not outside:
-                chosen_cat.add_to_clan()
+                chosen_cat.add_to_clan(clan)
                 if chosen_cat.status.rank != rank:
                     chosen_cat.rank_change(rank, resort=True)
             elif outside:
@@ -1175,7 +1175,7 @@ def create_new_cat(
     thought: str = None,
     alive: bool = True,
     outside: bool = False,
-    group = None,
+    group:CatGroup = None,
     parent1: str = None,
     parent2: str = None,
     extrapar: Genotype = None,
