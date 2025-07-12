@@ -204,6 +204,7 @@ class ListScreen(Screens):
                 if "@checked_checkbox" in event.ui_element.get_object_ids():
                     element.change_object_id("@unchecked_checkbox")
                     element.set_tooltip("screens.list.search_genotypes_tooltip")
+                    self.cat_list_bar_elements["search_bar_entry"].tool_tip_text = None
                     set_clan_setting("search genotypes", False)
                 else:
                     element.change_object_id("@checked_checkbox")

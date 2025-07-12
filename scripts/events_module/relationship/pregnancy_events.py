@@ -171,7 +171,7 @@ class Pregnancy_Events:
         """Handle if the there is no pregnancy but the pair triggered kits chance."""
         if other_cat:
             for x in other_cat:
-                if not other_cat.status.group.fetch_clan_object() or x.birth_cooldown > 0 or x.no_kits:
+                if not x.status.is_any_clan_group() or x.birth_cooldown > 0 or x.no_kits:
                     other_cat.remove(x)
         
         if other_cat and len(other_cat) < 1:
