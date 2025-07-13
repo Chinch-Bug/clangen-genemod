@@ -799,7 +799,7 @@ class Cat:
         if (
             self.status.is_leader
             and "pregnant" in self.injuries
-            and self.group.leader_lives > 0
+            and self.status.group.fetch_clan_object().leader_lives > 0
         ):
             self.illnesses.clear()
 

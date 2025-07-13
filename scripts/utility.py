@@ -1048,7 +1048,7 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
 
         
     if "litter" in attribute_list:
-        (parents, orphans) = get_alive_clan_queens(all_clan_cats, clan=other_clan)[0]
+        (parents, orphans) = get_alive_clan_queens(all_clan_cats, clan=other_clan)
         if blood_parent:
             picked_cats = parents[blood_parent.ID]
         elif parents:
@@ -1081,10 +1081,7 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
 
     if "change_clan" in attribute_list:
         for cat in picked_cats:
-            cat.status.add_to_group(clan, standing_with_past_group=CatStanding.LEFT)
-            other = game.clan if cat.status.group == CatGroup.PLAYER_CLAN else next(filter(lambda c: c.enum == cat.status.group, game.clan.all_clans), None)
-            if "rogue" in attribute_list:
-                cat.become_lost(CatSocial.ROGUE)
+            other = cat.status.group.fetch_clan_object()
             if cat.status.rank == CatRank.LEADER:
                 other.leader = None
                 other.leader_lives = 0
@@ -1095,6 +1092,9 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
             if cat.status.rank in [CatRank.LEADER, CatRank.DEPUTY]:
                 cat.status._change_rank(CatRank.WARRIOR)
 
+            if "rogue" in attribute_list:
+                cat.become_lost(CatSocial.ROGUE)
+            cat.status.add_to_group(clan, standing_with_past_group=CatStanding.LEFT)
             for app in cat.apprentice.copy():
                 app_ob = Cat.fetch_cat(app)
                 if app_ob:
@@ -1146,6 +1146,7 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
 
     for cat in picked_cats:
         cat.backstory = chosen_backstory
+        cat.history.add_beginning()
         
         # SET MATES
         for inter_cat in give_mates:
