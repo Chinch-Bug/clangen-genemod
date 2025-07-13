@@ -75,7 +75,7 @@ class ListScreen(Screens):
         self.filter_options_visible = True
         self.group_options_visible = False
         self.death_status = "living"
-        self.current_group = "your_clan"
+        self.current_group = "general.your_clan"
         self.full_cat_list = []
         self.current_listed_cats = []
 
@@ -377,10 +377,10 @@ class ListScreen(Screens):
         self.choose_group_dropdown = UIDropDown(
             pygame.Rect((-2, 0), (190, 34)),
             parent_text="screens.list.choose_group",
-            item_list=self.living_group_names,
+            item_list=self.living_group_names if self.death_status == "living" else self.dead_group_names,
             manager=MANAGER,
             container=self.cat_list_bar,
-            starting_selection=["general.your_clan"],
+            starting_selection=[self.current_group],
             anchors={"left_target": self.cat_list_bar_elements["view_button"]},
         )
 
@@ -515,7 +515,7 @@ class ListScreen(Screens):
         self.get_cat_list()
         self.update_cat_list()
         game.last_list_forProfile = (
-            "your_clan"  # wipe the saved last_list to avoid inconsistencies
+            "general.your_clan"  # wipe the saved last_list to avoid inconsistencies
         )
 
     def display_change_save(self) -> Dict:
@@ -561,22 +561,20 @@ class ListScreen(Screens):
         # GROUP DROPDOWN
         if (
             self.choose_group_dropdown
-            and self.choose_group_dropdown.selected_list[0].replace("general.", "")
+            and self.choose_group_dropdown.selected_list[0]
             != self.current_group
         ):
             self.current_page = 1
-            new_group = self.choose_group_dropdown.selected_list[0].replace(
-                "general.", ""
-            )
-            if new_group == "your_clan":
+            new_group = self.choose_group_dropdown.selected_list[0]
+            if new_group == "general.your_clan":
                 self.get_your_clan_cats()
-            elif new_group == "cotc":
+            elif new_group == "general.cotc":
                 self.get_cotc_cats()
-            elif new_group == "starclan":
+            elif new_group == "general.starclan":
                 self.get_sc_cats()
-            elif new_group == "unknown_residence":
+            elif new_group == "general.unknown_residence":
                 self.get_ur_cats()
-            elif new_group == "dark_forest":
+            elif new_group == "general.dark_forest":
                 self.get_df_cats()
             elif new_group in self.living_group_names:
                 self.get_other_clan_cats(new_group)
@@ -616,10 +614,10 @@ class ListScreen(Screens):
         # adding in the guide if necessary, this ensures the guide isn't affected by sorting as we always want them to
         # be the first cat on the list
         if (
-            self.current_group == "dark_forest"
+            self.current_group == "general.dark_forest"
             and game.clan.instructor.status.group == CatGroup.DARK_FOREST
         ) or (
-            self.current_group == "starclan"
+            self.current_group == "general.starclan"
             and game.clan.instructor.status.group == CatGroup.STARCLAN
         ):
             if game.clan.instructor in self.current_listed_cats:
@@ -714,19 +712,19 @@ class ListScreen(Screens):
         """
         sets the background and heading according to current group
         """
-        if self.current_group == "your_clan":
+        if self.current_group == "general.your_clan":
             self.set_bg(None)
             self.update_heading_text(self.clan_name)
-        elif self.current_group == "cotc":
+        elif self.current_group == "general.cotc":
             self.set_bg(None)
             self.update_heading_text("general.cotc")
-        elif self.current_group == "starclan":
+        elif self.current_group == "general.starclan":
             self.set_bg("starclan")
             self.update_heading_text("general.starclan")
-        elif self.current_group == "unknown_residence":
+        elif self.current_group == "general.unknown_residence":
             self.set_bg("unknown_residence")
             self.update_heading_text("general.unknown_residence")
-        elif self.current_group == "dark_forest":
+        elif self.current_group == "general.dark_forest":
             self.set_bg("dark_forest")
             self.update_heading_text("general.dark_forest")
         else:
@@ -738,15 +736,15 @@ class ListScreen(Screens):
         grabs the correct cat list for current group
         """
         if game.last_list_forProfile:
-            if game.last_list_forProfile == "starclan":
+            if game.last_list_forProfile == "general.starclan":
                 self.get_sc_cats()
-            elif game.last_list_forProfile == "dark_forest":
+            elif game.last_list_forProfile == "general.dark_forest":
                 self.get_df_cats()
-            elif game.last_list_forProfile == "unknown_residence":
+            elif game.last_list_forProfile == "general.unknown_residence":
                 self.get_ur_cats()
-            elif game.last_list_forProfile == "cotc":
+            elif game.last_list_forProfile == "general.cotc":
                 self.get_cotc_cats()
-            elif game.last_list_forProfile == "your_clan":
+            elif game.last_list_forProfile == "general.your_clan":
                 self.get_your_clan_cats()
             else:
                 self.get_other_clan_cats(game.last_list_forProfile)
@@ -757,7 +755,7 @@ class ListScreen(Screens):
         """
         grabs clan cats
         """
-        self.current_group = "your_clan"
+        self.current_group = "general.your_clan"
         self.death_status = "living"
         self.full_cat_list = [
             cat for cat in Cat.all_cats_list if cat.status.alive_in_player_clan
@@ -795,7 +793,7 @@ class ListScreen(Screens):
         """
         grabs starclan cats
         """
-        self.current_group = "starclan"
+        self.current_group = "general.starclan"
         self.death_status = "dead"
         self.full_cat_list = []
         for the_cat in Cat.all_cats_list:
@@ -809,7 +807,7 @@ class ListScreen(Screens):
         """
         grabs dark forest cats
         """
-        self.current_group = "dark_forest"
+        self.current_group = "general.dark_forest"
         self.death_status = "dead"
         self.full_cat_list = []
 
@@ -824,7 +822,7 @@ class ListScreen(Screens):
         """
         grabs unknown residence cats
         """
-        self.current_group = "unknown_residence"
+        self.current_group = "general.unknown_residence"
         self.death_status = "dead"
         self.full_cat_list = []
         for the_cat in Cat.all_cats_list:

@@ -69,13 +69,6 @@ class Condition_Events:
     ) as read_file:
         ILLNESSES_SEASON_LIST = ujson.loads(read_file.read())
 
-    with open(
-        "resources/dicts/conditions/event_injuries_distribution.json",
-        "r",
-        encoding="utf-8",
-    ) as read_file:
-        INJURY_DISTRIBUTION = ujson.loads(read_file.read())
-
     # ---------------------------------------------------------------------------- #
     #                                   STRINGS                                    #
     # ---------------------------------------------------------------------------- #
@@ -359,7 +352,7 @@ class Condition_Events:
         return triggered
 
     @staticmethod
-    def handle_injuries(cat, random_cat=None, clan=None):
+    def handle_injuries(cat, clan=None):
         """
         This function handles injuries overall by randomly injuring cat (or not).
         Returns: boolean - if an event was triggered
@@ -378,12 +371,10 @@ class Condition_Events:
 
         if (
             constants.CONFIG["event_generation"]["debug_type_override"] == "injury"
-            and random_cat
         ):
             handle_short_events.handle_event(
                 event_type="health",
                 main_cat=cat,
-                random_cat=random_cat,
                 freshkill_pile=game.clan.freshkill_pile,
                 clan=clan
             )
@@ -436,7 +427,6 @@ class Condition_Events:
                 handle_short_events.handle_event(
                     event_type="health",
                     main_cat=cat,
-                    random_cat=random_cat,
                     freshkill_pile=game.clan.freshkill_pile,
                     clan=clan
                 )
