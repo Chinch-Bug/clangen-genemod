@@ -4162,7 +4162,7 @@
             "any"
         ],
         "tags": ["no_body"],
-        "weight": 30,
+        "frequency": 3,
         "event_text": "m_c snuck out of camp, and was never found.",
         "m_c": {
             "age": [

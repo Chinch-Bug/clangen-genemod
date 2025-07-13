@@ -625,7 +625,7 @@
         "event_id": "gen_new_cat_anyotherclanleader1",
         "location": [ "any" ],
         "season": [ "any" ],
-        "weight": 5,
+        "frequency": 1,
         "event_text": "m_c finds the leader of o_c_n at the border, who asks to join the Clan.",
         "m_c": {
             "age": [ "adolescent", "young adult", "adult", "senior adult", "senior" ],
@@ -712,7 +712,7 @@
         "location": ["any"],
         "season": ["any"],
         "sub_type": ["war"],
-        "frequency": 2,
+        "frequency": 1,
         "event_text": "n_c:0, the deputy of o_c_n, has defected to c_n in the war, m_c finds {PRONOUN/n_c:0/object} at the border. {PRONOUN/n_c:0/subject/CAP} {VERB/n_c:0/decide/decides} to keep {PRONOUN/n_c:0/poss} name.",
         "m_c": {
             "status": [

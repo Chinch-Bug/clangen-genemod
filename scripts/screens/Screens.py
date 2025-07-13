@@ -79,8 +79,8 @@ class Screens:
             "change gender screen",
         ]:
             game.last_list_forProfile = None
+            self.death_status = "living"
             self.current_group = "general.your_clan"
-            self.death_page = "living"
             self.current_page = 1
 
         switch_set_value(Switch.cur_screen, new_screen)
