@@ -319,7 +319,7 @@ class AllegiancesScreen(Screens):
         living_elders = sorted(living_elders, key=lambda x: x.moons, reverse=True)
 
         # Find Queens:
-        queen_dict, living_kits = get_alive_clan_queens(living_cats, self.current_clan)
+        queen_dict, living_kits = get_alive_clan_queens(living_cats, self.current_clan.enum)
 
         # Remove queens from warrior or elder lists, if they are there.  Let them stay on any other lists.
         for q in queen_dict:

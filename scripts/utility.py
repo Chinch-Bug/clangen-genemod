@@ -1183,8 +1183,10 @@ def create_new_cat(
 
     if (litter or kit):
         parent_thought = i18n.t("conditions.pregnancy.half_blood_kitting_thought", count=number_of_cats)
-        Cat.all_cats[parent1].thought = event_text_adjust(Cat, parent_thought, main_cat=Cat.all_cats[parent1])
-        Cat.all_cats[parent2].thought = event_text_adjust(Cat, parent_thought, main_cat=Cat.all_cats[parent2])
+        if Cat.all_cats[parent1].status.is_outsider:
+            Cat.all_cats[parent1].thought = event_text_adjust(Cat, parent_thought, main_cat=Cat.all_cats[parent1])
+        if Cat.all_cats[parent2].status.is_outsider:
+            Cat.all_cats[parent2].thought = event_text_adjust(Cat, parent_thought, main_cat=Cat.all_cats[parent2])
     
 
     if not isinstance(moons, int):
