@@ -8833,6 +8833,122 @@
         ]
     },
     {
+        "event_id": "gen_misc_nervous_transition_from_female1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "transition"
+        ],
+        "frequency": 2,
+        "event_text": "r_c helped m_c announce to the Clan that molly doesn't feel accurate for {PRONOUN/m_c/object} anymore.",
+        "m_c": {
+            "gender": [
+                "female"
+            ],
+            "trait": [
+                "nervous",
+                "insecure",
+                "gloomy",
+                "shy",
+                "skittish",
+                "quiet",
+                "self-conscious"
+            ]
+        },
+        "r_c": {
+            "not_trait": [
+                "nervous",
+                "insecure",
+                "gloomy",
+                "shy",
+                "skittish",
+                "quiet",
+                "self-conscious"
+            ]
+        },
+        "relationships": [{
+            "cats_from": [
+                "m_c"
+            ],
+            "cats_to": [
+                "r_c"
+            ],
+            "mutual": false,
+            "values": [
+                "platonic",
+                "trust"
+            ],
+            "amount": 5,
+            "log": "m_c Trusted r_c with something important"
+        }],
+        "new_gender": [
+            "trans male",
+            "nonbinary"
+        ]
+    },
+    {
+        "event_id": "gen_misc_nervous_transition_from_male1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "transition"
+        ],
+        "frequency": 2,
+        "event_text": "r_c helped m_c announce to the Clan that tom doesn't feel accurate for {PRONOUN/m_c/object} anymore.",
+        "m_c": {
+            "gender": [
+                "male"
+            ],
+            "trait": [
+                "nervous",
+                "insecure",
+                "gloomy",
+                "shy",
+                "skittish",
+                "quiet",
+                "self-conscious"
+            ]
+        },
+        "r_c": {
+            "not_trait": [
+                "nervous",
+                "insecure",
+                "gloomy",
+                "shy",
+                "skittish",
+                "quiet",
+                "self-conscious"
+            ]
+        },
+        "relationships": [ {
+                "cats_from": [
+                    "m_c"
+                ],
+                "cats_to": [
+                    "r_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "platonic",
+                    "trust"
+                ],
+                "amount": 5,
+                "log": "m_c Trusted r_c with something important"
+            } ],
+        "new_gender": [
+            "trans female",
+            "nonbinary"
+        ]
+    },
+    {
         "event_id": "gen_injury_scratches_war_lostkit",
         "location": [
             "any"

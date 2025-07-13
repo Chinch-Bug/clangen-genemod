@@ -563,6 +563,8 @@ def create_new_cat_block(
             age = randint(19, 120)
             break
 
+    if not rank and not age:
+        rank = choice([CatRank.WARRIOR, CatRank.WARRIOR, CatRank.WARRIOR, CatRank.APPRENTICE])
     if rank and not age:
         if rank in [
             CatRank.APPRENTICE,
@@ -2026,7 +2028,7 @@ def unpack_rel_block(
             comfortable,
             jealousy,
             trust,
-            log=log1,
+            log=event_text_adjust(Cat, log1, main_cat=cats_from_ob[0], random_cat=cats_to_ob[0])
         )
 
         if block.get("mutual"):
@@ -2040,7 +2042,7 @@ def unpack_rel_block(
                 comfortable,
                 jealousy,
                 trust,
-                log=log2,
+                log=event_text_adjust(Cat, log2, main_cat=cats_to_ob[0], random_cat=cats_from_ob[0]),
             )
 
 
