@@ -243,7 +243,6 @@ class Pregnancy_Events:
     def handle_zero_moon_pregnant(cat: Cat, other_cat=None, surrogate=False, clan=game.clan):
         """Handles if the cat is zero moons pregnant."""
 
-        
         if other_cat:
             other_cat_copy = []
             for x in other_cat:
@@ -360,7 +359,7 @@ class Pregnancy_Events:
                 elif get_clan_setting("halfclan single"):
                     print("No possible half-clan single parents found")
                     return
-                elif(random() < 0.75 or len(outsider_affair_partners) < 1):
+                elif(random() < 0.75 or not outsider_affair_partners):
                     cat_type = choice(
                         [CatSocial.LONER, CatSocial.ROGUE, CatSocial.KITTYPET])
                     backstories = {
@@ -468,17 +467,18 @@ class Pregnancy_Events:
                             name=cat.name,
                             insert=i18n.t("conditions.pregnancy.kit_amount", count=len(kits)),
                         )
-                        for par in outside_parent:
-                            if par:
-                                cats_involved.append(par.ID)
-                                par.birth_cooldown = constants.CONFIG["pregnancy"]["birth_cooldown"]
-                                par.get_injured("recovering from birth", event_triggered=True)
-                                if par.status.group != cat.status.group and not par.status.is_outsider:
-                                    Pregnancy_Events.rebuild_strings()
-                                    events = Pregnancy_Events.PREGNANT_STRINGS
-                                    secondary_event = choice(events["birth"]["otherclan_mother"])
-                                    secondary_event = event_text_adjust(Cat, secondary_event, main_cat=par)
-                                    game.cur_events_list.append(Single_Event(secondary_event, "birth_death", cats_involved=cats_involved, clan=par.status.group.fetch_clan_object(game.clan).name))
+                        if outside_parent:
+                            for par in outside_parent:
+                                if par:
+                                    cats_involved.append(par.ID)
+                                    par.birth_cooldown = constants.CONFIG["pregnancy"]["birth_cooldown"]
+                                    par.get_injured("recovering from birth", event_triggered=True)
+                                    if par.status.group != cat.status.group and not par.status.is_outsider:
+                                        Pregnancy_Events.rebuild_strings()
+                                        events = Pregnancy_Events.PREGNANT_STRINGS
+                                        secondary_event = choice(events["birth"]["otherclan_mother"])
+                                        secondary_event = event_text_adjust(Cat, secondary_event, main_cat=par)
+                                        game.cur_events_list.append(Single_Event(secondary_event, "birth_death", cats_involved=cats_involved, clan=par.status.group.fetch_clan_object(game.clan).name))
                     for kit in kits:
                         cats_involved.append(kit.ID)
                     game.cur_events_list.append(Single_Event(print_event, "birth_death", cats_involved=cats_involved, clan=clan.name))
@@ -707,14 +707,14 @@ class Pregnancy_Events:
             outsider_affair_partners = [i for i in possible_affair_partners if not i.status.is_any_clan_group()]
             other_clan_affair_partners = [i for i in possible_affair_partners if i.status.is_any_clan_group()]
 
-            if (random() < constants.CONFIG["pregnancy"]["half-clan_chance"] or get_clan_setting("halfclan single")) and (game.clan.clancount == "singleclan" or len(other_clan_affair_partners)):
+            if (random() < constants.CONFIG["pregnancy"]["half-clan_chance"] or get_clan_setting("halfclan single")) and not get_clan_setting("outsiders single") and (game.clan.clancount == "singleclan" or len(other_clan_affair_partners)):
                 backkit = 'halfclan1'
                 if game.clan.clancount == "multiclan":
                     other_cat = [choice(other_clan_affair_partners)]
                     if random() < 0.2:
                         other_cat[0].set_mate(cat)
                         cat.set_mate(other_cat[0])
-            elif(random() < 0.75 or len(possible_affair_partners) < 1):
+            elif (random() < 0.75 or not outsider_affair_partners):
                 cat_type = choice(
                     [CatSocial.LONER, CatSocial.ROGUE, CatSocial.KITTYPET])
                 

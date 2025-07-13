@@ -1168,7 +1168,8 @@ def create_new_cat(
         in (
             BACKSTORIES["backstory_categories"]["former_clancat_backstories"]
             or BACKSTORIES["backstory_categories"]["otherclan_categories"]
-        )
+        ) 
+        and original_social == CatSocial.CLANCAT
         and not original_group
     ):
         original_group = choice(game.clan.other_clans)
