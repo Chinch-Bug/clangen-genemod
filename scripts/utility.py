@@ -603,6 +603,13 @@ def create_new_cat_block(
         litter = True
         if rank not in (CatRank.KITTEN, CatRank.NEWBORN):
             rank = CatRank.KITTEN
+        if rank == CatRank.NEWBORN:
+            age = 0
+        else:
+            age = randint(
+                Cat.age_moons[CatAge.KITTEN][0],
+                Cat.age_moons[CatAge.KITTEN][1],
+            )
 
     # CHOOSE DEFAULT BACKSTORY BASED ON CAT TYPE, STATUS
     if rank in (CatRank.KITTEN, CatRank.NEWBORN):
