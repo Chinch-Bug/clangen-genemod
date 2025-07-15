@@ -352,7 +352,7 @@ class HandleShortEvents:
                 self.text + " " + self.additional_event_text,
                 self.types,
                 self.involved_cats,
-                clan=clan.name
+                clan=clan.enum
             )
         )
         if second_clan:
@@ -361,7 +361,7 @@ class HandleShortEvents:
                     self.text + " " + self.additional_event_text,
                     self.types,
                     self.involved_cats,
-                    clan=second_clan.name
+                    clan=second_clan.enum
                 )
             )
 
@@ -570,7 +570,6 @@ class HandleShortEvents:
             body = False
         else:
             body = True
-        pass
 
         if self.chosen_event.m_c["dies"] and self.main_cat not in dead_list:
             dead_list.append(self.main_cat)

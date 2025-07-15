@@ -194,6 +194,10 @@ class Game:
             for event_dict in events_list:
                 event_obj = Single_Event.from_dict(event_dict, game.cat_class)
                 if event_obj:
+                    if not event_obj.clan or event_obj.clan in [clanname, self.clan.enum.value]:
+                        event_obj.clan = self.clan.enum
+                    else:
+                        event_obj.clan = next(filter(lambda c: event_obj.clan in [c.enum.value, c.name], self.clan.all_clans), self.clan).enum
                     game.cur_events_list.append(event_obj)
         except FileNotFoundError:
             pass

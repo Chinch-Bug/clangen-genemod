@@ -197,7 +197,7 @@ class Condition_Events:
 
             types = ["birth_death"]
             game.cur_events_list.append(
-                Single_Event(event, types, cat_dict={"m_c": cat}, clan=game.clan.name)
+                Single_Event(event, types, cat_dict={"m_c": cat}, clan=game.clan.enum)
             )
             return
 
@@ -250,7 +250,7 @@ class Condition_Events:
             event_text = event_text_adjust(Cat, event, main_cat=cat)
             types = ["health"]
             game.cur_events_list.append(
-                Single_Event(event_text, types, cat_dict={"m_c": cat}, clan=game.clan.name)
+                Single_Event(event_text, types, cat_dict={"m_c": cat}, clan=game.clan.enum)
             )
 
     @staticmethod
@@ -340,7 +340,7 @@ class Condition_Events:
             if cat.dead:
                 types.append("birth_death")
             game.cur_events_list.append(
-                Single_Event(event_string, types, cat.ID, cat_dict={"m_c": cat}, clan=clan.name)
+                Single_Event(event_string, types, cat.ID, cat_dict={"m_c": cat}, clan=clan.enum)
             )
 
         # just double-checking that trigger is only returned True if the cat is dead
@@ -849,7 +849,7 @@ class Condition_Events:
             types = ["health"]
             if cat.dead:
                 types.append("birth_death")
-            game.cur_events_list.append(Single_Event(event_string, types, cat.ID, clan=clan.name))
+            game.cur_events_list.append(Single_Event(event_string, types, cat.ID, clan=clan.enum))
 
         return triggered
 
@@ -1003,7 +1003,7 @@ class Condition_Events:
         if len(event_list) > 0:
             event_string = " ".join(event_list)
             game.cur_events_list.append(
-                Single_Event(event_string, event_types, [cat.ID], cat_dict=cat_dict, clan=clan.name)
+                Single_Event(event_string, event_types, [cat.ID], cat_dict=cat_dict, clan=clan.enum)
             )
         return
 
@@ -1084,7 +1084,7 @@ class Condition_Events:
                             "ceremony",
                             retire_involved,
                             cat_dict=cat_dict,
-                            clan=clan.name
+                            clan=clan.enum
                         )
                     )
 

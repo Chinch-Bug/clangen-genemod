@@ -144,7 +144,7 @@ class GroupEvents:
 
         clan = cat.status.group.fetch_clan_object(game.clan)
         game.cur_events_list.append(
-            Single_Event(interaction_str, relevant_event_tabs, ids, clan=clan.name)
+            Single_Event(interaction_str, relevant_event_tabs, ids, clan=clan.enum)
         )
         return ids
 

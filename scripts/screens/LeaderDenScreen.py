@@ -338,7 +338,7 @@ class LeaderDenScreen(Screens):
             manager=MANAGER,
             text_kwargs={
                 "temper": i18n.t(f"screens.leader_den.{self.clan_temper}"),
-                "clan": game.clan.name,
+                "clan": game.clan.enum,
             },
         )
 

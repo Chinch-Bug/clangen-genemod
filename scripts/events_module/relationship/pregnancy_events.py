@@ -236,7 +236,7 @@ class Pregnancy_Events:
         cat.birth_cooldown = constants.CONFIG["pregnancy"]["birth_cooldown"]
 
         game.cur_events_list.append(
-            Single_Event(print_event, "birth_death", cats_involved=cats_involved, clan=clan.name)
+            Single_Event(print_event, "birth_death", cats_involved=cats_involved, clan=clan.enum)
         )
 
     @staticmethod
@@ -307,7 +307,7 @@ class Pregnancy_Events:
 
             text = event_text_adjust(Cat, text, main_cat=cat, clan=clan.enum)
             game.cur_events_list.append(
-                Single_Event(text, "birth_death", cat.ID, clan=clan.name)
+                Single_Event(text, "birth_death", cat.ID, clan=clan.enum)
             )
         else:
             if (not other_cat or surrogate) and 'Y' in cat.phenotype.sexgene:
@@ -406,7 +406,7 @@ class Pregnancy_Events:
                             "conditions.pregnancy.inclan_surrogate_dam",
                             name=cat.name,
                             insert=pregnant_cat.name)
-                    game.cur_events_list.append(Single_Event(text, "birth_death", cats_involved=cats_involved, clan=clan.name))
+                    game.cur_events_list.append(Single_Event(text, "birth_death", cats_involved=cats_involved, clan=clan.enum))
                     
                     fever = False
                     ids = [cat.ID]
@@ -478,10 +478,10 @@ class Pregnancy_Events:
                                         events = Pregnancy_Events.PREGNANT_STRINGS
                                         secondary_event = choice(events["birth"]["otherclan_mother"])
                                         secondary_event = event_text_adjust(Cat, secondary_event, main_cat=par)
-                                        game.cur_events_list.append(Single_Event(secondary_event, "birth_death", cats_involved=cats_involved, clan=par.status.group.fetch_clan_object(game.clan).name))
+                                        game.cur_events_list.append(Single_Event(secondary_event, "birth_death", cats_involved=cats_involved, clan=par.status.group))
                     for kit in kits:
                         cats_involved.append(kit.ID)
-                    game.cur_events_list.append(Single_Event(print_event, "birth_death", cats_involved=cats_involved, clan=clan.name))
+                    game.cur_events_list.append(Single_Event(print_event, "birth_death", cats_involved=cats_involved, clan=clan.enum))
                 return
 
             # if the other cat is afab and the current cat is amab, make the afab cat pregnant
@@ -536,7 +536,7 @@ class Pregnancy_Events:
             text = event_text_adjust(Cat, text, main_cat=pregnant_cat, clan=clan.enum)
             game.cur_events_list.append(
                 Single_Event(
-                    text, "birth_death", pregnant_cat.ID, clan=clan.name
+                    text, "birth_death", pregnant_cat.ID, clan=clan.enum
                 )
             )
 
@@ -603,7 +603,7 @@ class Pregnancy_Events:
 
         text = event_text_adjust(Cat, text, main_cat=cat, clan=cat.status.group)
         game.cur_events_list.append(
-            Single_Event(text, "birth_death", cat_dict={"m_c": cat}, clan=clan.name)
+            Single_Event(text, "birth_death", cat_dict={"m_c": cat}, clan=clan.enum)
         )
 
     @staticmethod
@@ -744,7 +744,7 @@ class Pregnancy_Events:
                                                 gender='masc',
                                                 outside=True,
                                                 is_parent=True)[0]
-                        out_par.thought = i18n.t("hardcoded.thought_outside_sire", name=str(cat.name))
+                        out_par.thought = i18n.t("hardcoded.thought_outside_sire", name=str(cat.enum))
                         
                     if random() < 0.1:
                         out_par.set_mate(cat)
@@ -967,7 +967,7 @@ class Pregnancy_Events:
         # display event
         game.cur_events_list.append(
             Single_Event(
-                print_event, ["health", "birth_death"], involved_cats, clan=clan.name
+                print_event, ["health", "birth_death"], involved_cats, clan=clan.enum
             )
         )
 

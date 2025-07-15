@@ -823,8 +823,7 @@ class Clan:
                 save_list = ujson.load(save_file)
                 for event in save_list:
                     try:
-                        game.clan.future_events.append(
-                            FutureEvent(
+                        event_obj = FutureEvent(
                                 parent_event=event["parent_event"],
                                 event_type=event["event_type"],
                                 pool=event["pool"],
@@ -832,7 +831,13 @@ class Clan:
                                 involved_cats=event["involved_cats"],
                                 clan=event["clan"],
                             )
-                        )
+                        if not event_obj.clan or event_obj.clan in [game.clan.name, CatGroup.PLAYER_CLAN.value]:
+                            event_obj.clan = CatGroup.PLAYER_CLAN
+                        else:
+                            event_obj.clan = next(filter(lambda c: event_obj.clan in [
+                                c.enum.value, c.name], game.clan.all_clans), game.clan).enum
+
+                        game.clan.future_events.append(event_obj)
                     except KeyError:
                         print(
                             f"WARNING: A saved future event was missing information and was not loaded. event: {event}"

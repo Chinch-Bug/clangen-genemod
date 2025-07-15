@@ -159,6 +159,9 @@ class Inheritance:
         self.all_inheritances[self.cat.ID] = self
         # parents
         self.init_parents()
+        if self.parents != rel_data.get("parents", {}):
+            self.update_inheritance()
+            self.update_all_related_inheritance()
     
     def update_inheritance(self):
         """Update inheritance of the given cat."""

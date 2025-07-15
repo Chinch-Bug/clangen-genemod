@@ -320,7 +320,7 @@ class RomanticEvents:
                 relevant_event_tabs,
                 [cat_to.ID, cat_from.ID],
                 cat_dict={"m_c": cat_to, "r_c": cat_from},
-                clan=clan.name
+                clan=clan.enum
             )
         )
 
@@ -427,7 +427,7 @@ class RomanticEvents:
                     clan = cat.status.group.fetch_clan_object(game.clan)
                     game.cur_events_list.append(
                         Single_Event(
-                            text, "relation", cat_dict={"m_c": cat, "r_c": cat_mate}, clan=clan.name
+                            text, "relation", cat_dict={"m_c": cat, "r_c": cat_mate}, clan=clan.enum
                         )
                     )
                     cat.unset_mate(cat_mate)
@@ -446,7 +446,7 @@ class RomanticEvents:
                     mate_string,
                     ["relation", "misc"],
                     cat_dict={"m_c": cat_from, "r_c": cat_to},
-                    clan=clan.name
+                    clan=clan.enum
                 )
             )
             return True
@@ -549,7 +549,7 @@ class RomanticEvents:
                 ["relation", "misc"],
                 [cat_from.ID, cat_to.ID],
                 cat_dict={"m_c": cat_from, "r_c": cat_to},
-                clan=clan.name
+                clan=clan.enum
             )
         )
         if clan != other_clan:
@@ -559,7 +559,7 @@ class RomanticEvents:
                     ["relation", "misc"],
                     [cat_from.ID, cat_to.ID],
                     cat_dict={"m_c": cat_from, "r_c": cat_to},
-                    clan=other_clan.name
+                    clan=other_clan.enum
                 )
             )
         return True
@@ -650,7 +650,7 @@ class RomanticEvents:
                 mate_string,
                 ["relation", "misc"],
                 cat_dict={"m_c": cat_from, "r_c": cat_to},
-                clan=clan.name,
+                clan=clan.enum,
             )
         )
 

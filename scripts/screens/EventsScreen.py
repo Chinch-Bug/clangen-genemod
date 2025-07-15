@@ -153,7 +153,7 @@ class EventsScreen(Screens):
                 self.change_screen("profile screen")
             elif element in self.choose_group_buttons.values():
                 self.choose_living_dropdown.close()
-                self.current_clan = element.text.replace("Clan", "")
+                self.current_clan = next(filter(lambda c: c.name == element.text.replace("Clan", ""), game.clan.all_clans), game.clan).enum
                 self.change_clan()
                 self.timeskip_done(True)
             else:
@@ -178,7 +178,7 @@ class EventsScreen(Screens):
                     self.handle_tab_switch(self.selected_display)
 
     def change_clan(self):
-        curr_clan = game.clan if self.current_clan == game.clan.name or not self.current_clan else [clan for clan in game.clan.all_clans if clan.name == self.current_clan][0]
+        curr_clan = next(filter(lambda c: c.enum == self.current_clan, game.clan.all_clans), game.clan)
         
         self.clan_info["symbol"].set_image(pygame.transform.scale(
                     clan_symbol_sprite(curr_clan), ui_scale_dimensions((100, 100))
@@ -274,9 +274,9 @@ class EventsScreen(Screens):
             manager=MANAGER,
         )
 
-        if self.current_clan not in [game.clan.name] + [c.name for c in game.clan.all_clans]:
-            self.current_clan = game.clan.name
-        curr_clan = game.clan if game.clan.clancount != "multiclan" or self.current_clan == game.clan.name or not self.current_clan else [clan for clan in game.clan.all_clans if clan.name == self.current_clan][0]
+        if self.current_clan not in [game.clan.enum] + [c for c in game.clan.other_clans]:
+            self.current_clan = game.clan.enum
+        curr_clan = next(filter(lambda c: c.enum == self.current_clan, game.clan.all_clans), game.clan)
 
         self.clan_info["symbol"] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((227, 105), (100, 100))),
@@ -330,7 +330,7 @@ class EventsScreen(Screens):
 
         if game.clan.clancount == 'multiclan':
             if not self.current_clan:
-                self.current_clan = game.clan.name
+                self.current_clan = game.clan.enum
             self.choose_group_button = UISurfaceImageButton(
                 ui_scale(pygame.Rect((500, 218), (190, 34))),
                 "screens.list.choose_group",
@@ -349,7 +349,7 @@ class EventsScreen(Screens):
                 starting_height=1,
             )
             self.living_groups_container.change_layer(10)
-            self.choose_group_buttons[game.clan.name] = UISurfaceImageButton(
+            self.choose_group_buttons[game.clan.enum] = UISurfaceImageButton(
                 ui_scale(pygame.Rect((0, 0), (190, 34))),
                 game.clan.name + "Clan",
                 get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
@@ -360,7 +360,7 @@ class EventsScreen(Screens):
             )
             y_pos = 32
             for clan in game.clan.all_clans:
-                self.choose_group_buttons[clan.name] = UISurfaceImageButton(
+                self.choose_group_buttons[clan.enum] = UISurfaceImageButton(
                     ui_scale(pygame.Rect((0, y_pos), (190, 34))),
                     clan.name + "Clan",
                     get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
@@ -627,33 +627,36 @@ class EventsScreen(Screens):
         Categorize events from game.cur_events_list into display categories for screen
         """
 
+        if not self.current_clan:
+            self.current_clan = game.clan.enum
+
         self.all_events = [
             x for x in game.cur_events_list if "interaction" not in x.types 
-            and (not self.current_clan or x.clan == self.current_clan) 
+            and (not x.clan or x.clan == self.current_clan) 
         ]
         self.ceremony_events = [
             x for x in game.cur_events_list if "ceremony" in x.types 
-            and (not self.current_clan or x.clan == self.current_clan) 
+            and (not x.clan or x.clan == self.current_clan)
         ]
         self.birth_death_events = [
             x for x in game.cur_events_list if "birth_death" in x.types 
-            and (not self.current_clan or x.clan == self.current_clan) 
+            and (not x.clan or x.clan == self.current_clan)
         ]
         self.relation_events = [
             x for x in game.cur_events_list if "relation" in x.types 
-            and (not self.current_clan or x.clan == self.current_clan) 
+            and (not x.clan or x.clan == self.current_clan)
         ]
         self.health_events = [
             x for x in game.cur_events_list if "health" in x.types 
-            and (not self.current_clan or x.clan == self.current_clan) 
+            and (not x.clan or x.clan == self.current_clan)
         ]
         self.other_clans_events = [
             x for x in game.cur_events_list if "other_clans" in x.types 
-            and (not self.current_clan or x.clan == self.current_clan) 
+            and (not x.clan or x.clan == self.current_clan)
         ]
         self.misc_events = [
             x for x in game.cur_events_list if "misc" in x.types 
-            and (not self.current_clan or x.clan == self.current_clan)
+            and (not x.clan or x.clan == self.current_clan)
         ]
 
     def update_events_display(self):
@@ -829,7 +832,7 @@ class EventsScreen(Screens):
         if not clanswitch:
             if get_living_clan_cat_count(Cat) == 0:
                 GameOver("events screen")
-            self.current_clan = game.clan.name
+            self.current_clan = game.clan.enum
             self.change_clan()
 
         self.update_display_events_lists()

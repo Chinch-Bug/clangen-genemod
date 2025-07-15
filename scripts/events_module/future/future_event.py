@@ -30,7 +30,7 @@ def prep_event(event, event_id: str, possible_cats: dict, clan):
                     event_info["moon_delay"][0], event_info["moon_delay"][1]
                 ),
                 involved_cats=gathered_cat_dict,
-                clan=clan.name
+                clan=clan.enum
             )
         )
 

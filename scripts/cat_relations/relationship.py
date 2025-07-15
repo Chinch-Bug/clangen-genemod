@@ -240,7 +240,7 @@ class Relationship:
                 interaction_str,
                 ["relation", "interaction"],
                 cat_dict={"m_c": self.cat_to, "r_c": self.cat_from},
-                clan=clan.name
+                clan=clan.enum
             )
         )
 
