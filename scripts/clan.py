@@ -210,7 +210,8 @@ class Clan:
                 Cat.all_cats[i].example = True
                 self.remove_cat(Cat.all_cats[i].ID)
 
-        number_other_clans = randint(3, 5)
+        allowed_range = constants.CONFIG["clan_creation"]["other_clans_range"]
+        number_other_clans = randint(allowed_range[0], allowed_range[1])
         for _ in range(number_other_clans):
             other_clan_names = [str(i.name) for i in self.all_clans] + [game.clan.name]
             other_clan_name = choice(
@@ -236,6 +237,13 @@ class Clan:
             Cat.all_cats.get(cat_id).thoughts()
             Cat.all_cats.get(cat_id).pelt.rebuild_sprite = True 
         save_cats(game.clan.name, Cat, game)
+
+        # create leader's ceremony
+        self.leader.generate_lead_ceremony()
+        if self.clancount == "multiclan":
+            for clan in self.all_clans:
+                clan.leader.generate_lead_ceremony()
+
         self.save_clan()
         save_clanlist(self.name)
         switch_set_value(Switch.clan_list, read_clans())
@@ -305,7 +313,7 @@ class Clan:
         """
 
         if leader:
-            leader.history.add_lead_ceremony()
+            leader.generate_lead_ceremony()
             self.leader = leader
             Cat.all_cats[leader.ID].rank_change(CatRank.LEADER)
             self.leader_predecessors += 1

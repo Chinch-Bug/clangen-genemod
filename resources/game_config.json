@@ -340,7 +340,10 @@
   },
   "cat_sprites": {
     "sick_sprites": true,
-    "comment": "Set this to false to disable sick sprites."
+    "comment": "Set this to false to disable sick sprites.",
+    "lineart_color_sc": [ 47, 51, 64 ],
+    "lineart_color_df": [ 30, 8, 11 ],
+    "lineart_color_comment": "This is used to recolor lineart to blend better in death"
   },
   "patrol_generation": {
     "classic_difficulty_modifier": 1,
@@ -402,6 +405,7 @@
   "clan_creation": {
     "rerolls": 3,
     "use_special_roller": true,
+    "other_clans_range": [2, 5],
     "comment": "Set rerolls to -1 for it to be infinite. Special roller uses kittypet raised odds of special traits appearing."
   },
   "genetics_config": {
