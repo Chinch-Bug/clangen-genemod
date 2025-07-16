@@ -2585,6 +2585,8 @@ def event_text_adjust(
 
     if isinstance(clan, CatGroup):
         clan = clan.fetch_clan_object(game.clan)
+    elif clan is None:
+        clan = game.clan
     if isinstance(other_clan, CatGroup):
         other_clan = other_clan.fetch_clan_object()
 
