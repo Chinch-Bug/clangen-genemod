@@ -278,7 +278,7 @@
   },
   "flat nose": {
     "fatigue": [
-      "It doesn't take much exercise to have m_c craving a break, struggling to catch {PRONOUN/m_c/poss} breath. {PRONOUN/m_c/subject/CAP} ask r_c for a second opinion.",
+      "It doesn't take much exercise to have m_c craving a break, struggling to catch {PRONOUN/m_c/poss} breath. {PRONOUN/m_c/subject/CAP} {VERB/m_c/ask/asks} r_c for a second opinion.",
       "All it takes is a little strain or stress to leave m_c feeling as heavy as stone."
     ],
     "exhaustion": [
