@@ -706,8 +706,8 @@ class HandleShortEvents:
 
                     if self.main_cat.status.is_leader:
                         self.current_lives -= 1
-                        if self.current_lives != self.main_cat.status.group.fetch_clan_object().leader_lives:
-                            while self.current_lives > self.main_cat.status.group.fetch_clan_object().leader_lives:
+                        if self.current_lives != self.main_cat.status.get_last_living_group().fetch_clan_object().leader_lives:
+                            while self.current_lives > self.main_cat.status.get_last_living_group().fetch_clan_object().leader_lives:
                                 self.main_cat.history.add_death(
                                     "multi_lives",
                                     other_cat=self.random_cat,
@@ -738,8 +738,8 @@ class HandleShortEvents:
 
                     if self.random_cat.status.is_leader:
                         self.current_lives_r_c -= 1
-                        if self.current_lives_r_c != self.random_cat.status.group.fetch_clan_object().leader_lives:
-                            while self.current_lives_r_c > self.random_cat.status.group.fetch_clan_object().leader_lives:
+                        if self.current_lives_r_c != self.random_cat.status.get_last_living_group().fetch_clan_object().leader_lives:
+                            while self.current_lives_r_c > self.random_cat.status.get_last_living_group().fetch_clan_object().leader_lives:
                                 self.random_cat.history.add_death(
                                     "multi_lives",
                                     other_cat=self.random_cat,
@@ -770,14 +770,14 @@ class HandleShortEvents:
                     if cat.status.is_leader:
                         if cat.status.group == self.main_cat.group:
                             self.current_lives -= 1
-                            if self.current_lives != cat.status.group.fetch_clan_object().leader_lives:
-                                while self.current_lives > cat.status.group.fetch_clan_object().leader_lives:
+                            if self.current_lives != cat.status.get_last_living_group().fetch_clan_object().leader_lives:
+                                while self.current_lives > cat.status.get_last_living_group().fetch_clan_object().leader_lives:
                                     cat.history.add_death("multi_lives")
                                     self.current_lives -= 1
                         else:
                             self.current_lives_r_c -= 1
-                            if self.current_lives_r_c != cat.status.group.fetch_clan_object().leader_lives:
-                                while self.current_lives_r_c > cat.status.group.fetch_clan_object().leader_lives:
+                            if self.current_lives_r_c != cat.status.get_last_living_group().fetch_clan_object().leader_lives:
+                                while self.current_lives_r_c > cat.status.get_last_living_group().fetch_clan_object().leader_lives:
                                     cat.history.add_death("multi_lives")
                                     self.current_lives_r_c -= 1
                     cat.history.add_death(death_history)
