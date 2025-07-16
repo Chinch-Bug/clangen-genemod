@@ -768,7 +768,7 @@ class HandleShortEvents:
                         )
 
                     if cat.status.is_leader:
-                        if cat.status.group == self.main_cat.group:
+                        if cat.status.group == self.main_cat.status.group:
                             self.current_lives -= 1
                             if self.current_lives != cat.status.get_last_living_group().fetch_clan_object().leader_lives:
                                 while self.current_lives > cat.status.get_last_living_group().fetch_clan_object().leader_lives:
