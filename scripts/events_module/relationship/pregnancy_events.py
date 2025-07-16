@@ -744,7 +744,7 @@ class Pregnancy_Events:
                                                 gender='masc',
                                                 outside=True,
                                                 is_parent=True)[0]
-                        out_par.thought = i18n.t("hardcoded.thought_outside_sire", name=str(cat.enum))
+                        out_par.thought = i18n.t("hardcoded.thought_outside_sire", name=str(cat.name))
                         
                     if random() < 0.1:
                         out_par.set_mate(cat)

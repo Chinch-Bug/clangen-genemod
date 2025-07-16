@@ -637,7 +637,7 @@ class MediationScreen(Screens):
                     relation = "general.cousin_male"
                 else:
                     relation = "general.cousin_nb"
-            col2.append(i18n.t("general.related_label", relation=i18n.t(relation)))
+            col2 += (i18n.t("general.related_label", relation=i18n.t(relation)))
 
         self.selected_cat_elements["col2" + tag] = pygame_gui.elements.UITextBox(
             col2,
