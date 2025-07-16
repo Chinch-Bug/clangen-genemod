@@ -36,7 +36,7 @@ class OutsiderEvents:
                 death_history = "m_c died outside of the Clan."
                 if cat.status.is_exiled(CatGroup.PLAYER_CLAN):
                     text = f"Rumors reach your Clan that the exiled {cat.name} has died recently."
-                elif cat.status.is_lost(clan):
+                elif cat.status.is_lost(cat.status.get_last_living_group()):
                     text = (
                         f"Will they reach StarClan, even so far away? {cat.name} isn't sure, "
                         f"but as they drift away, they hope to see "

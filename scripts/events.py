@@ -898,7 +898,7 @@ class Events:
         if not predetermined_cat_IDs:
             eligible_cats = []
             for cat in Cat.all_cats.values():
-                if not cat.status.is_outsider and not cat.dead:
+                if not cat.status.is_outsider or cat.dead:
                     continue
                 if cat.ID not in Cat.outside_cats:
                     # The outside-value must be set to True before the cat can go to cotc
