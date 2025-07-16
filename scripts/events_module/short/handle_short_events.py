@@ -594,7 +594,7 @@ class HandleShortEvents:
                     cat.status.group.fetch_clan_object().leader_lives -= 1
 
                 cat.die(body)
-                self.additional_event_text = get_leader_life_notice(cat.status.group.fetch_clan_object())
+                self.additional_event_text = get_leader_life_notice(cat.status.get_last_living_group().fetch_clan_object())
 
             else:
                 cat.die(body)
