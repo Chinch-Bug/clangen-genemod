@@ -1473,6 +1473,8 @@ class Cat:
         # if we have relations, then make sure we only take the top 8
         if dead_relations:
             for i, rel in enumerate(dead_relations):
+                if rel.cat_to.faded:
+                    continue
                 if i == 8:
                     break
                 if rel.cat_to.status.is_leader:
