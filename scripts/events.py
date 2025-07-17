@@ -2539,7 +2539,7 @@ class Events:
     def coming_out(self, cat, clan):
         """turnin' the kitties trans..."""
 
-        if cat.age.is_baby():
+        if cat.age.is_baby() or cat.gender != cat.genderalign:
             return
 
         transing_chance = constants.CONFIG["transition_related"]

@@ -848,9 +848,6 @@ class Clan:
         """
         saves the Clan's current future events
         """
-        if not clan.future_events:
-            return
-
         save_list = []
 
         for event in game.clan.future_events:
