@@ -796,10 +796,11 @@ class Cat:
         that grief messages will align with body status
         - if it is None, a lost cat died and therefore not trigger grief, since the clan does not know
         """
+        clan = self.status.get_last_living_group().fetch_clan_object()
         if (
             self.status.is_leader
             and "pregnant" in self.injuries
-            and self.status.group.fetch_clan_object().leader_lives > 0
+            and clan.leader_lives > 0
         ):
             self.illnesses.clear()
 
@@ -813,40 +814,20 @@ class Cat:
             self.illnesses.clear()
 
         # Deal with leader death
-        text = ""
-        darkforest = game.clan.instructor.status.group == CatGroup.DARK_FOREST
-        isoutside = self.status.is_outsider and not self.status.is_lost(
-            self.status.get_last_living_group()
-        )
-        clan = self.status.group.fetch_clan_object(None) if self.status.group else None
         if self.status.is_leader:
             if clan.leader_lives > 0:
                 lives_left = clan.leader_lives
-                death_thought = Thoughts.leader_death_thought(
-                    self, lives_left, darkforest
-                )
-                final_thought = event_text_adjust(self, death_thought, main_cat=self)
-                self.thought = final_thought
-                return ""
+                self.thoughts(just_died=True, lives_left=lives_left)
+                return
             elif clan.leader_lives <= 0:
                 self.dead = True
                 game.just_died.append(self.ID)
                 clan.leader_lives = 0
-                death_thought = Thoughts.leader_death_thought(self, 0, darkforest)
-                final_thought = event_text_adjust(self, death_thought, main_cat=self)
-                self.thought = final_thought
-                if not darkforest:
-                    text = (
-                        "They've lost their last life and have travelled to StarClan."
-                    )
-                else:
-                    text = "They've lost their last life and have travelled to the Dark Forest."
+                self.thoughts(just_died=True, lives_left=0)
         else:
             self.dead = True
             game.just_died.append(self.ID)
-            death_thought = Thoughts.new_death_thought(self, darkforest, isoutside)
-            final_thought = event_text_adjust(self, death_thought, main_cat=self)
-            self.thought = final_thought
+            self.thoughts(just_died=True)
 
         for app in self.apprentice.copy():
             fetched_cat = Cat.fetch_cat(app)
@@ -860,16 +841,10 @@ class Cat:
         # mark the sprite as outdated
         self.pelt.rebuild_sprite = True
 
-        # exiled cats are special, cus they get kicked out a heaven
-        if isoutside and self.status.is_exiled():
-            self.status.add_to_group(CatGroup.UNKNOWN_RESIDENCE)
-
         if not self.status.is_outsider or self.status.is_former_clancat:
             Cat.dead_cats.append(self)
 
         self.pelt.rebuild_sprite = True
-
-        return
 
     def exile(self):
         """This is used to send a cat into exile."""
@@ -1741,8 +1716,12 @@ class Cat:
         if self.status.rank.is_any_apprentice_rank():
             self.update_mentor()
 
-    def thoughts(self):
-        """Generates a thought for the cat, which displays on their profile."""
+    def thoughts(self, just_died=False, lives_left: int = 0):
+        """
+        Generates a thought for the cat, which displays on their profile.
+        :param just_died: Set True if the cat is generating a death thought
+        :param lives_left: If a leader is generating a death thought, include their lives left here
+        """
         all_cats = self.all_cats
         other_cat = choice(list(all_cats.keys()))
         game_mode = switch_get_value(Switch.game_mode)
@@ -1817,9 +1796,19 @@ class Cat:
             clan = CatGroup.PLAYER_CLAN
 
         # get chosen thought
-        chosen_thought = Thoughts.get_chosen_thought(
-            self, other_cat, game_mode, biome, season, camp, game_setting_get("ageup dead")
-        )
+        if just_died:
+            afterlife = (
+                self.status.group
+                if self.status.group and self.status.group.is_afterlife()
+                else game.clan.instructor.status.group
+            )
+            chosen_thought = Thoughts.new_death_thought(
+                self, other_cat, game_mode, biome, season, camp, afterlife, lives_left
+            )
+        else:
+            chosen_thought = Thoughts.get_chosen_thought(
+                self, other_cat, game_mode, biome, season, camp, game_setting_get("ageup dead")
+            )
 
         chosen_thought = event_text_adjust(
             self.__class__,

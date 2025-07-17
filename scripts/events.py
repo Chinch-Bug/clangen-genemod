@@ -898,13 +898,10 @@ class Events:
         if not predetermined_cat_IDs:
             eligible_cats = []
             for cat in Cat.all_cats.values():
-                if not cat.status.is_outsider or cat.dead:
+                if cat.dead or not cat.status.is_lost(clan.enum):
                     continue
-                if cat.ID not in Cat.outside_cats:
-                    # The outside-value must be set to True before the cat can go to cotc
-                    Cat.outside_cats.update({cat.ID: cat})
 
-                if cat.status.is_lost(clan.enum) and ("infertility" not in cat.permanent_condition or game.clan.age - cat.permanent_condition["infertility"]["moon_start"] > -1):
+                if "infertility" not in cat.permanent_condition or game.clan.age - cat.permanent_condition["infertility"]["moon_start"] > -1:
                     eligible_cats.append(cat)
                 elif cat.status.is_lost(clan.enum):
                     pass

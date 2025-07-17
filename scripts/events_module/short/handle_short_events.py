@@ -110,6 +110,11 @@ class HandleShortEvents:
         if sub_type:
             self.sub_types.extend(sub_type)
 
+        if not main_cat.status.is_any_clan_group() or (
+            random_cat and (not random_cat.status.is_any_clan_group() or main_cat.status.group != random_cat.status.group)
+        ):
+            self.future_event_failed = True
+            return
         self.main_cat = main_cat
         self.random_cat = random_cat
         self.victim_cat = victim_cat
