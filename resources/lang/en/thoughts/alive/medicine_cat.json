@@ -665,7 +665,7 @@
             "Brings soaked moss to the nursery for the new litter"
         ],
         "main_status_constraint": [
-            "medicine cat"
+            "healer"
         ],
         "random_age_constraint": [
             "newborn"
@@ -680,7 +680,7 @@
             "Reassures r_c that {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} doing a fine job"
         ],
         "main_status_constraint": [
-            "medicine cat"
+            "healer"
         ],
         "has_injuries": {
             "r_c": ["recovering from birth"]
