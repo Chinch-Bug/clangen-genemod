@@ -562,8 +562,8 @@ class HandleShortEvents:
         handles killing/murdering cats
         """
         dead_list = self.dead_cats if self.dead_cats else []
-        self.current_lives = int(self.main_cat.status.group.fetch_clan_object(game.clan).leader_lives)
-        self.current_lives_r_c = int(self.random_cat.status.group.fetch_clan_object(game.clan).leader_lives) if self.random_cat else None
+        self.current_lives = int(self.main_cat.status.get_last_living_group().fetch_clan_object(game.clan).leader_lives)
+        self.current_lives_r_c = int(self.random_cat.status.get_last_living_group().fetch_clan_object(game.clan).leader_lives) if self.random_cat else None
 
         # check if the bodies are retrievable
         if "no_body" in self.chosen_event.tags:
