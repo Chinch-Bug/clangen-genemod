@@ -903,7 +903,7 @@ class Cat:
 
         # apply grief to cats with high positive relationships to dead cat
         for cat in Cat.all_cats.values():
-            if cat.dead or cat.status.is_outsider or cat.moons < 1 or cat.status.group != self.status.group:
+            if cat.dead or cat.status.is_outsider or cat.moons < 1 or cat.status.group != self.status.get_last_living_group():
                 continue
 
             to_self = cat.relationships.get(self.ID, None)
