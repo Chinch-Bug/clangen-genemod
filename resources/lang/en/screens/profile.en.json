@@ -22,6 +22,8 @@
         "exile_guide_tooltip": "Changing where this cat resides will change where your Clan goes after death.",
         "kill_cat": "kill cat",
         "kill_cat_tooltip": "This will open a confirmation window and allow you to input a death reason",
+        "fade_cat": "fade cat",
+        "fade_cat_tooltip": "Fading a cat cannot be undone",
         "change_clan": "change clan",
         "change_clan_tooltip": "This will open a window to pick which Clan to move this cat to.",
         "destroy_accessory": "destroy accessory",
