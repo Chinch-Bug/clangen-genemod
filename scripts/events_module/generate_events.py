@@ -448,7 +448,7 @@ class GenerateEvents:
             return None, None
 
         cat_list = [
-            c for c in Cat_class.all_cats.values() if c.status.group == cat.status.group and c != cat
+            c for c in Cat_class.all_cats.values() if c.status.group == cat.status.group and not c.dead and c != cat
         ]
         chosen_cat = None
         chosen_event = None

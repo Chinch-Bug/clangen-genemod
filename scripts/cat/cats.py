@@ -796,7 +796,7 @@ class Cat:
         that grief messages will align with body status
         - if it is None, a lost cat died and therefore not trigger grief, since the clan does not know
         """
-        clan = self.status.get_last_living_group().fetch_clan_object()
+        clan = self.status.get_last_living_group().fetch_clan_object() if self.status.is_leader else None
         if (
             self.status.is_leader
             and "pregnant" in self.injuries
@@ -835,7 +835,7 @@ class Cat:
                 fetched_cat.update_mentor()
         self.update_mentor()
 
-        if clan and self.status.get_last_living_group().is_any_clan_group() and self.moons > 1:
+        if self.status.get_last_living_group().is_any_clan_group() and self.moons > 1:
             self.grief(body)
 
         # mark the sprite as outdated
