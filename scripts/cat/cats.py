@@ -835,7 +835,7 @@ class Cat:
                 fetched_cat.update_mentor()
         self.update_mentor()
 
-        if self.status.get_last_living_group().is_any_clan_group() and self.moons > 1:
+        if self.status.get_last_living_group() and self.moons > 1:
             self.grief(body)
 
         # mark the sprite as outdated
