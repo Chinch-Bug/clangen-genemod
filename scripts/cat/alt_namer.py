@@ -601,7 +601,7 @@ class Namer():
             if self.moons == 0 and 'C' not in self.phenotype.pointgene and params[4] != 'sepia':
                 return self.white('white')
             elif self.moons == 0 and params[4] == 'sepia':
-                return self.lilac(params)
+                return self.fawn(params)
 
             #naming for body colour
             elif (params[2]['pattern'] != '' and params[2]['type'] != 'dark') or random() < 0.25:
