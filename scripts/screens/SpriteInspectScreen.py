@@ -126,12 +126,14 @@ class SpriteInspectScreen(Screens):
                 self.make_cat_image()
                 self.update_checkboxes()
             elif event.ui_element == self.cat_elements["favourite_button"]:
-                self.the_cat.favourite = not self.the_cat.favourite
+                self.the_cat.favourite += 1
+                if self.the_cat.favourite > 5:
+                    self.the_cat.favourite = 0
                 self.cat_elements["favourite_button"].change_object_id(
-                    "#fav_star" if self.the_cat.favourite else "#not_fav_star"
+                    f"#fav_star{self.the_cat.favourite}" if self.the_cat.favourite else "#not_fav_star"
                 )
                 self.cat_elements["favourite_button"].set_tooltip(
-                    "Remove favorite" if self.the_cat.favourite else "Mark as favorite"
+                    "Remove favorite" if self.the_cat.favourite == 5 else f"Mark as favorite {self.the_cat.favourite+1}"
                 )
 
         return super().handle_event(event)
@@ -285,12 +287,12 @@ class SpriteInspectScreen(Screens):
         self.cat_elements["favourite_button"] = UIImageButton(
             favorite_button_rect,
             "",
-            object_id="#fav_star" if self.the_cat.favourite else "#not_fav_star",
+            object_id=f"#fav_star{self.the_cat.favourite}" if self.the_cat.favourite else "#not_fav_star",
             manager=MANAGER,
             tool_tip_text=(
                 "general.remove_favorite"
-                if self.the_cat.favourite
-                else "general.mark_favorite"
+                if self.the_cat.favourite ==  5
+                else i18n.t("general.mark_favorite") + f" {self.the_cat.favourite+1}"
             ),
             starting_height=2,
             anchors={"right": "right", "right_target": self.cat_elements["cat_name"]},

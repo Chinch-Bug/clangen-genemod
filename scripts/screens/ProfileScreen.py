@@ -203,12 +203,14 @@ class ProfileScreen(Screens):
             ):
                 self.change_screen("mediation screen")
             elif event.ui_element == self.profile_elements["favourite_button"]:
-                self.the_cat.favourite = not self.the_cat.favourite
+                self.the_cat.favourite += 1
+                if self.the_cat.favourite > 5:
+                    self.the_cat.favourite = 0
                 self.profile_elements["favourite_button"].change_object_id(
-                    "#fav_star" if self.the_cat.favourite else "#not_fav_star"
+                    f"#fav_star{self.the_cat.favourite}" if self.the_cat.favourite else "#not_fav_star"
                 )
                 self.profile_elements["favourite_button"].set_tooltip(
-                    "Remove favorite" if self.the_cat.favourite else "Mark as favorite"
+                    "Remove favorite" if self.the_cat.favourite == 5 else f"Mark as favorite {self.the_cat.favourite+1}"
                 )
             else:
                 self.handle_tab_events(event)
@@ -683,12 +685,12 @@ class ProfileScreen(Screens):
         self.profile_elements["favourite_button"] = UIImageButton(
             favorite_button_rect,
             "",
-            object_id="#fav_star" if self.the_cat.favourite else "#not_fav_star",
+            object_id=f"#fav_star{self.the_cat.favourite}" if self.the_cat.favourite else "#not_fav_star",
             manager=MANAGER,
             tool_tip_text=(
                 "general.remove_favorite"
-                if self.the_cat.favourite
-                else "general.mark_favorite"
+                if self.the_cat.favourite == 5
+                else i18n.t("general.mark_favorite") + f" {self.the_cat.favourite+1}"
             ),
             starting_height=2,
             anchors={

@@ -1146,17 +1146,85 @@
 			}
 		}
 	},
-	"#fav_star": {
+	"#fav_star1": {
 		"prototype": "@image_button",
 		"images": {
 			"normal_image": {
-				"path": "resources/images/buttons/fav_star.png"
+				"path": "resources/images/buttons/fav_star1.png"
 			},
 			"hovered_image": {
-				"path": "resources/images/buttons/fav_star_hover.png"
+				"path": "resources/images/buttons/fav_star_hover1.png"
 			},
 			"selected_image": {
-				"path": "resources/images/buttons/fav_star_hover.png"
+				"path": "resources/images/buttons/fav_star_hover1.png"
+			},
+			"disabled_image": {
+				"path": "resources/images/buttons/fav_star_unavailable.png"
+			}
+		}
+	},
+	"#fav_star2": {
+		"prototype": "@image_button",
+		"images": {
+			"normal_image": {
+				"path": "resources/images/buttons/fav_star2.png"
+			},
+			"hovered_image": {
+				"path": "resources/images/buttons/fav_star_hover2.png"
+			},
+			"selected_image": {
+				"path": "resources/images/buttons/fav_star_hover2.png"
+			},
+			"disabled_image": {
+				"path": "resources/images/buttons/fav_star_unavailable.png"
+			}
+		}
+	},
+	"#fav_star3": {
+		"prototype": "@image_button",
+		"images": {
+			"normal_image": {
+				"path": "resources/images/buttons/fav_star3.png"
+			},
+			"hovered_image": {
+				"path": "resources/images/buttons/fav_star_hover3.png"
+			},
+			"selected_image": {
+				"path": "resources/images/buttons/fav_star_hover3.png"
+			},
+			"disabled_image": {
+				"path": "resources/images/buttons/fav_star_unavailable.png"
+			}
+		}
+	},
+	"#fav_star4": {
+		"prototype": "@image_button",
+		"images": {
+			"normal_image": {
+				"path": "resources/images/buttons/fav_star4.png"
+			},
+			"hovered_image": {
+				"path": "resources/images/buttons/fav_star_hover4.png"
+			},
+			"selected_image": {
+				"path": "resources/images/buttons/fav_star_hover4.png"
+			},
+			"disabled_image": {
+				"path": "resources/images/buttons/fav_star_unavailable.png"
+			}
+		}
+	},
+	"#fav_star5": {
+		"prototype": "@image_button",
+		"images": {
+			"normal_image": {
+				"path": "resources/images/buttons/fav_star5.png"
+			},
+			"hovered_image": {
+				"path": "resources/images/buttons/fav_star_hover5.png"
+			},
+			"selected_image": {
+				"path": "resources/images/buttons/fav_star_hover5.png"
 			},
 			"disabled_image": {
 				"path": "resources/images/buttons/fav_star_unavailable.png"

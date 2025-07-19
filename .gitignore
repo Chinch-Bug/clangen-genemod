@@ -17,6 +17,7 @@ develop-eggs/
 dist/
 downloads/
 medibang/
+*.mdp
 eggs/
 .eggs/
 lib/
