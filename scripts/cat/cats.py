@@ -241,22 +241,22 @@ class Cat:
                             self.parent3 = extrapar.ID
                 except:
                     traceback.print_exc()
-                    self.phenotype.Generator()
+                    self.phenotype.Generator(kittypet=kittypet)
         else:
             if not chimera:
-                if self.status.social == CatSocial.KITTYPET and constants.CONFIG["cat_generation"]["kittypet_gene_boost"]:
+                if (kittypet or self.status.social == CatSocial.KITTYPET) and constants.CONFIG["cat_generation"]["kittypet_gene_boost"]:
                     self.phenotype.AltGenerator(special=self.gender)
                 else:
-                    self.phenotype.Generator(special=self.gender)
+                    self.phenotype.Generator(special=self.gender, kittypet=kittypet)
             else:
                 par1 = Phenotype(gene_config, game_setting_get("ban problem genes"))
                 par2 = Phenotype(gene_config, game_setting_get("ban problem genes"))
-                if self.status.social == CatSocial.KITTYPET and constants.CONFIG["cat_generation"]["kittypet_gene_boost"]:
+                if (kittypet or self.status.social == CatSocial.KITTYPET) and constants.CONFIG["cat_generation"]["kittypet_gene_boost"]:
                     par1.AltGenerator()
                     par2.AltGenerator()
                 else:
-                    par1.Generator()
-                    par2.Generator()
+                    par1.Generator(kittypet=kittypet)
+                    par2.Generator(kittypet=kittypet)
 
                 self.phenotype.KitGenerator(par1, par2)
                 self.chimerapheno.KitGenerator(par1, par2)
