@@ -617,9 +617,7 @@ class Patrol:
 
             # Don't check for repeat patrols if ensure_patrol_id is being used.
             if (
-                not isinstance(
-                    constants.CONFIG["patrol_generation"]["debug_ensure_patrol_id"], str
-                )
+                constants.CONFIG["patrol_generation"]["debug_ensure_patrol_id"] == ""
                 and patrol.patrol_id in self.used_patrols
             ):
                 continue

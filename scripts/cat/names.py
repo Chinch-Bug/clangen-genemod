@@ -243,7 +243,7 @@ class Name:
             
         chance = constants.CONFIG["cat_name_controls"]["prefix_change_chance"][change]
         if colour_changed:
-            chance /= constants.CONFIG["cat_name_controls"]["prefix_change_chance"]["pelt-change-modifier"]
+            chance /= constants.CONFIG["cat_name_controls"]["prefix_change_chance"]["pelt_change_modifier"]
 
         if random.random() < (1/chance):
             self.give_prefix(cat, biome)

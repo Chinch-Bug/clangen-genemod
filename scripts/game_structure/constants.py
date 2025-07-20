@@ -1,5 +1,6 @@
 from pygame import Cursor, image, SYSTEM_CURSOR_ARROW
 import ujson
+import tomllib
 
 BIOME_TYPES = ["Forest", "Plains", "Mountainous", "Beach", "Wetlands", "Desert"]
 
@@ -106,8 +107,8 @@ EVENT_ALLOWED_CONDITIONS = [
     "constant nightmares",
 ]
 
-with open(f"resources/game_config.json", "r", encoding="utf-8") as read_file:
-    CONFIG = ujson.loads(read_file.read())
+with open("resources/game_config.toml", "r", encoding="utf-8") as read_file:
+    CONFIG = tomllib.loads(read_file.read())
 
 with open("resources/placements.json", "r", encoding="utf-8") as read_file:
     LAYOUTS = ujson.loads(read_file.read())
