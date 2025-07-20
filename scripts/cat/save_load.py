@@ -64,18 +64,12 @@ def save_faded_cats(clanname, cat_class: Type["Cat"], game: "Game"):
         if not fade_cat_dir.exists():
             fade_cat_dir.mkdir()
 
-    if fade_cat_dir.exists():
-        for f in os.listdir(fade_cat_dir):
-            if f.strip(".json") not in game.clan.faded_ids:
-                game.clan.faded_ids.append(f.strip(".json"))
-
     copy_of_info = ""
     for cat in cat_to_fade:
         inter_cat = cat_class.all_cats[cat]
 
         # Add ID to list of faded cats.
         faded_ids.append(cat)
-        game.clan.faded_ids.append(cat)
 
         # If they have a mate, break it up
         if inter_cat.mate:

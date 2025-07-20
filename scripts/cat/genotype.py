@@ -239,10 +239,6 @@ class Genotype:
         self.shoulder_height = jsonstring.get("shoulder_height", '')
         self.body_label = jsonstring.get("body_type_label", '')
 
-        if "Clippercat" in self.breeds:
-            self.breeds["New Zealand"] = self.breeds["Clippercat"] + self.breeds.get("New Zealand", 0)
-            del self.breeds["Clippercat"]
-
         self.GeneSort()
         self.PolyEval()
         self.EyeColourName()
