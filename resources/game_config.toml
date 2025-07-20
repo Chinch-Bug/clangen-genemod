@@ -672,7 +672,7 @@ dev_tools = false
 
   [graduation.max_apprentice_age]
     # max apprentice ages. after this, they're forcibly promoted
-    "medicine cat apprentice" = 30
+    "healer apprentice" = 30
     apprentice = 25
     "mediator apprentice" = 25
 
@@ -712,7 +712,7 @@ dev_tools = false
 
     # injury chance of each warrior(leader/deputy) or medicine cat to get injured
     injury_chance_warrior = 18
-    "injury_chance_medicine cat" = 33
+    "injury_chance_healer" = 33
 
     # the more clan which are raided the more likely it is to get injured
     chance_increase_per_clan = 3
@@ -743,7 +743,7 @@ dev_tools = false
 
     # injury chance of each warrior(leader/deputy) or medicine cat to get injured
     injury_chance_warrior = 25
-    "injury_chance_medicine cat" = 35
+    "healer" = 35
 
     # illness chance of each warrior(leader/deputy) and medicine cat to get sick
     illness_chance = 35
