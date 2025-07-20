@@ -2077,7 +2077,7 @@ class Events:
                         Cat.all_cats.values(),
                     )
                 ))
-            ratio = clan_size / main_clan_alive_cats
+            ratio = clan_size / (main_clan_alive_cats or 1)
 
             if ratio < 0.75:
                 base_chance = int(base_chance * ratio * 1.25)

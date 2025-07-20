@@ -1873,7 +1873,7 @@ class Pregnancy_Events:
                     if i.status.alive_in_player_clan
                 ]
             )
-            ratio = living_cats / main_clan_living_cats
+            ratio = living_cats / (main_clan_living_cats or 1)
             if ratio < 0.5:
                 inverse_chance = int(inverse_chance * ratio)
             elif ratio < 0.75:
