@@ -4128,7 +4128,7 @@ def generate_sprite(
                 tint.fill(tuple(sprites.cat_tints["dilute_tint_colours"][cat.pelt.tint]))
                 gensprite.blit(tint, (0, 0), special_flags=pygame.BLEND_RGB_ADD)
 
-            if (constants.CONFIG["fun"]["april_fools"] or is_today(SpecialDate.APRIL_FOOLS)) and "Dg" in phenotype.april_fools.get("danish_green", []):
+            if is_today(SpecialDate.APRIL_FOOLS) and "Dg" in phenotype.april_fools.get("danish_green", []):
                 green = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 green.fill((0, 255, 0))
                 green.set_alpha(100)
@@ -4400,7 +4400,7 @@ def generate_sprite(
                         special_flags=blendmode,
                     )
 
-        if constants.CONFIG["fun"]["april_fools"] or is_today(SpecialDate.APRIL_FOOLS):
+        if is_today(SpecialDate.APRIL_FOOLS):
             if cat.phenotype.bobtailnr != 1 and "Pc" in phenotype.april_fools.get("polycaudal", []):
                 tail = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 tail.blit(sprites.sprites['bobtail1' + cat_sprite], (0, 0))

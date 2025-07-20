@@ -2192,7 +2192,7 @@ class ProfileScreen(Screens):
             if (
                 self.the_cat.age
                 not in ["young adult", "adult", "senior adult", "senior"]
-                or not self.the_cat.status.is_any_clan_group()
+                or not self.the_cat.status.group
             ):
                 self.choose_mate_button.disable()
             else:

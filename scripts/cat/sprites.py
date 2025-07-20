@@ -138,7 +138,7 @@ class Sprites:
             'fademask', 'fadestarclan', 'fadedarkforest',
             'symbols'
         ]:
-            if "lineart" in x and (constants.CONFIG["fun"]["april_fools"] or is_today(SpecialDate.APRIL_FOOLS)):
+            if "lineart" in x and is_today(SpecialDate.APRIL_FOOLS):
                 self.spritesheet(f"sprites/aprilfools{x}.png", "aprilfools"+x)
             self.spritesheet(f"sprites/{x}.png", x)
 
@@ -293,7 +293,7 @@ class Sprites:
         self.make_group("line_sc_overlay", (0, 0), "sc_overlay")
 
 
-        if constants.CONFIG["fun"]["april_fools"] or is_today(SpecialDate.APRIL_FOOLS):
+        if is_today(SpecialDate.APRIL_FOOLS):
             self.make_group("aprilfoolslineart", (0, 0), "aprilfoolslines")
             self.make_group("aprilfoolslineartdead", (0, 0), "aprilfoolslineartdead")
             self.make_group("aprilfoolslineartdf", (0, 0), "aprilfoolslineartdf")

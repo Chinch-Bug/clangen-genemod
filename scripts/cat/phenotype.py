@@ -399,7 +399,7 @@ class Phenotype(Genotype):
                 self.tailtype = 'no '
                 self.bobtailnr = 1
 
-        if self.odds["april_fools"] or is_today(SpecialDate.APRIL_FOOLS):
+        if is_today(SpecialDate.APRIL_FOOLS):
             if "Pc" in self.april_fools.get("polycaudal", []) and self.tailtype != "no ":
                 self.tailtype = "double " + self.tailtype
         if(self.tailtype != ''):
@@ -428,7 +428,7 @@ class Phenotype(Genotype):
             }
             self.mutant_red = mut_red_desc.get(self.specialred, "")
             
-        if self.odds["april_fools"] or is_today(SpecialDate.APRIL_FOOLS):
+        if is_today(SpecialDate.APRIL_FOOLS):
             if "Dg" in self.april_fools.get("danish_green", []):
                 self.colour = "Danish green"
         self.SolidWhite(pattern=pattern)

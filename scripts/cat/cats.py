@@ -207,7 +207,6 @@ class Cat:
 
         self.adoptive_parents = adoptive_parents if adoptive_parents else []
         gene_config = constants.CONFIG['genetics_config']
-        gene_config.update(constants.CONFIG['fun'])
         gene_config.update(constants.CONFIG['april_fools_genes'])
         self.phenotype = Phenotype(gene_config, game_setting_get("ban problem genes"))
         self.chimerapheno = None
@@ -3870,7 +3869,6 @@ def create_option_preview_cat(scar: str = None, acc: str = None):
     Creates a cat with the specified scar
     """
     gene_config = constants.CONFIG['genetics_config']
-    gene_config.update(constants.CONFIG['fun'])
     gene_config.update(constants.CONFIG['april_fools_genes'])
     pheno = Phenotype(gene_config, game_setting_get("ban problem genes"))
     pheno.Generator()

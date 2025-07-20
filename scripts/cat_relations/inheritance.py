@@ -260,7 +260,9 @@ class Inheritance:
                 if cat_id in self.siblings:
                     self.all_inheritances[cat_id].init_siblings(self.cat.ID, self.cat)
                 if cat_id in self.parents_siblings:
-                    self.all_inheritances[cat_id].init_siblings(self.cat.ID, self.cat)
+                    for par in self.parents:
+                        if par in self.all_inheritances[cat_id].siblings:
+                            self.all_inheritances[cat_id].init_siblings(par, self.cat.fetch_cat(par))
                 if cat_id in self.siblings_kits:
                     self.all_inheritances[cat_id].init_parents_siblings(self.cat.ID, self.cat)
                 if cat_id in self.cousins:
