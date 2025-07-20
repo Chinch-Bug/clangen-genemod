@@ -1438,7 +1438,7 @@ class UICatListDisplay(UIContainer):
         self.show_names = show_names
 
         self._favor_circle = []
-        for i in range(5):
+        for i in range(6):
             self._favor_circle.append(pygame.transform.scale(
                 pygame.image.load(f"resources/images/fav_marker{i+1}.png").convert_alpha(),
                 ui_scale_dimensions((50, 50)),
@@ -1551,7 +1551,7 @@ class UICatListDisplay(UIContainer):
 
         # FAVOURITE ICON
         if show_fav:
-            for mark in range(5):
+            for mark in range(6):
                 fav_indexes = [
                     display_cats.index(cat) for cat in display_cats if cat.favourite == mark+1
                 ]

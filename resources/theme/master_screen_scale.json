@@ -1231,6 +1231,23 @@
 			}
 		}
 	},
+	"#fav_star6": {
+		"prototype": "@image_button",
+		"images": {
+			"normal_image": {
+				"path": "resources/images/buttons/fav_star6.png"
+			},
+			"hovered_image": {
+				"path": "resources/images/buttons/fav_star_hover6.png"
+			},
+			"selected_image": {
+				"path": "resources/images/buttons/fav_star_hover6.png"
+			},
+			"disabled_image": {
+				"path": "resources/images/buttons/fav_star_unavailable.png"
+			}
+		}
+	},
 	"#not_fav_star": {
 		"prototype": "@image_button",
 		"images": {

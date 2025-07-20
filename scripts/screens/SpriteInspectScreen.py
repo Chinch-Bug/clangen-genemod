@@ -127,13 +127,13 @@ class SpriteInspectScreen(Screens):
                 self.update_checkboxes()
             elif event.ui_element == self.cat_elements["favourite_button"]:
                 self.the_cat.favourite += 1
-                if self.the_cat.favourite > 5:
+                if self.the_cat.favourite > 6:
                     self.the_cat.favourite = 0
                 self.cat_elements["favourite_button"].change_object_id(
                     f"#fav_star{self.the_cat.favourite}" if self.the_cat.favourite else "#not_fav_star"
                 )
                 self.cat_elements["favourite_button"].set_tooltip(
-                    "Remove favorite" if self.the_cat.favourite == 5 else f"Mark as favorite {self.the_cat.favourite+1}"
+                    "Remove favorite" if self.the_cat.favourite == 6 else f"Mark as favorite {self.the_cat.favourite+1}"
                 )
 
         return super().handle_event(event)
