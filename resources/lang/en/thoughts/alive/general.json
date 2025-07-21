@@ -85,7 +85,8 @@
             "Is waiting to watch the sunset",
             "Is grooming, grooming, grooming away...",
             "Purrs whenever the sun hits {PRONOUN/m_c/object} just right",
-            "Sprawls out in a warm patch of sunlight"
+            "Sprawls out in a warm patch of sunlight",
+            "Meows"
         ]
     },
     {
@@ -3267,7 +3268,7 @@
     {
         "id": "apprentices_thoughts",
         "thoughts": [
-            "Gossips",
+            "Is gossiping",
             "Acts angsty",
             "Dreads {PRONOUN/m_c/poss} apprentice duties",
             "Fell into the nearby creek yesterday and is still feeling damp",

@@ -1380,10 +1380,10 @@ class Pregnancy_Events:
         ##### SELECT BACKSTORY #####
         if backkit:
             backstory = backkit
-        elif cat and "pregnant" in cat.injuries and other_cat and other_cat.status.group != cat.status.group:
-            backkit = 'halfclan1' if other_cat.status.group else 'outsider_roots1'
-        elif cat and other_cat and other_cat.status.group != cat.status.group:
-            backkit = 'halfclan2' if other_cat.status.group else 'outsider_roots2'
+        elif cat and "pregnant" in cat.injuries and other_cat and other_cat[0].status.group != cat.status.group:
+            backkit = 'halfclan1' if other_cat[0].status.group else 'outsider_roots1'
+        elif cat and other_cat and other_cat[0].status.group != cat.status.group:
+            backkit = 'halfclan2' if other_cat[0].status.group else 'outsider_roots2'
         else:  # cat is adopted
             backstory = choice(["abandoned1", "abandoned2", "abandoned3", "abandoned4"])
         ###########################

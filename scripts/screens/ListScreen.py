@@ -243,7 +243,6 @@ class ListScreen(Screens):
             # CAT SPRITES
             elif element in self.cat_display.cat_sprites.values():
                 switch_set_value(Switch.cat, element.return_cat_id())
-                game.last_list_forProfile = self.current_group
                 self.change_screen("profile screen")
 
             # MENU BUTTONS
@@ -372,6 +371,10 @@ class ListScreen(Screens):
             and switch_get_value(Switch.sort_type) == "death"
         ):
             switch_set_value(Switch.sort_type, "rank")
+
+        if not game.last_list_forProfile:
+            self.death_status = "living"
+            self.current_group = "general.your_clan"
 
         # CHOOSE GROUP DROPDOWN
         self.choose_group_dropdown = UIDropDown(
@@ -514,9 +517,6 @@ class ListScreen(Screens):
         # Determine the starting list of cats.
         self.get_cat_list()
         self.update_cat_list()
-        game.last_list_forProfile = (
-            "general.your_clan"  # wipe the saved last_list to avoid inconsistencies
-        )
 
     def display_change_save(self) -> Dict:
         variable_dict = super().display_change_save()
@@ -730,6 +730,8 @@ class ListScreen(Screens):
         else:
             self.set_bg(None)
             self.update_heading_text(self.current_group)
+
+        game.last_list_forProfile = self.current_group
 
     def get_cat_list(self):
         """
