@@ -1381,9 +1381,9 @@ class Pregnancy_Events:
         if backkit:
             backstory = backkit
         elif cat and "pregnant" in cat.injuries and other_cat and other_cat.status.group != cat.status.group:
-            backkit = 'halfclan1' other_cat.status.group else 'outsider_roots1'
+            backkit = 'halfclan1' if other_cat.status.group else 'outsider_roots1'
         elif cat and other_cat and other_cat.status.group != cat.status.group:
-            backkit = 'halfclan2' other_cat.status.group else 'outsider_roots2'
+            backkit = 'halfclan2' if other_cat.status.group else 'outsider_roots2'
         else:  # cat is adopted
             backstory = choice(["abandoned1", "abandoned2", "abandoned3", "abandoned4"])
         ###########################
