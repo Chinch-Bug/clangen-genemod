@@ -1379,10 +1379,6 @@ class Pregnancy_Events:
         ##### SELECT BACKSTORY #####
         if backkit:
             backstory = backkit
-        elif cat and "pregnant" in cat.injuries:
-            backstory = choice(['halfclan1', 'outsider_roots1'])
-        elif cat:
-            backstory = choice(["halfclan2", "outsider_roots2"])
         else:  # cat is adopted
             backstory = choice(["abandoned1", "abandoned2", "abandoned3", "abandoned4"])
         ###########################

@@ -1908,7 +1908,7 @@ class Events:
         if not cat:
             return
 
-        if not cat.status.group != clan.enum:
+        if cat.status.group != clan.enum:
             return
 
         # check if cat already has max acc

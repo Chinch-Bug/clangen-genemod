@@ -743,7 +743,7 @@ dev_tools = false
 
     # injury chance of each warrior(leader/deputy) or medicine cat to get injured
     injury_chance_warrior = 25
-    "healer" = 35
+    injury_chance_healer = 35
 
     # illness chance of each warrior(leader/deputy) and medicine cat to get sick
     illness_chance = 35
