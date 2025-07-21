@@ -11,6 +11,16 @@
         ]
     },
     {
+        "id": "newborn_death_starclan_thoughts",
+        "thoughts": [
+            "Is confused about the new cats around",
+            "Is wondering when everyone is coming back",
+            "Mewls for milk out of habit",
+            "Woke up from {PRONOUN/m_c/poss} nap"
+        ],
+        "main_age_constraint": [ "newborn" ]
+    },
+    {
         "id": "parent_death_to_newborn",
         "thoughts": [
             "Clings to the warmth of {PRONOUN/m_c/poss} litter",

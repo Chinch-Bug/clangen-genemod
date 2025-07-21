@@ -836,6 +836,7 @@ def create_new_cat_block(
                 n_c.moons = 0
                 n_c.status = {"group": n_c.status.group, "rank": CatRank.NEWBORN, "age": CatAge.NEWBORN}
                 n_c.dead = True
+                n_c.thoughts(just_died=True)
                 n_c.history.add_death(str(n_c.name) + " was stillborn.")
                 new_cats.remove(n_c)
                 continue
