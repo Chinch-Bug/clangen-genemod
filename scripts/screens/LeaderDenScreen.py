@@ -210,7 +210,7 @@ class LeaderDenScreen(Screens):
                     mediators = [
                         i
                         for i in Cat.all_cats.values()
-                        and not i.not_working()
+                        if not i.not_working()
                         and i.status.rank.is_any_mediator_rank()
                         and i.status.alive_in_player_clan
                     ]
