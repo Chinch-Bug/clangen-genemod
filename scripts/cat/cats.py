@@ -2123,6 +2123,7 @@ class Cat:
                 "risks": new_illness.risks,
                 "event_triggered": new_illness.new,
             }
+            self.pelt.rebuild_sprite = True
 
     def get_injured(self, name, event_triggered=False, lethal=True, severity="default"):
         """Add an injury to this cat.
@@ -2197,6 +2198,8 @@ class Cat:
                 "cause_permanent": new_injury.cause_permanent,
                 "event_triggered": new_injury.new,
             }
+            
+            self.pelt.rebuild_sprite = True
 
         if len(new_injury.also_got) > 0 and not int(random() * 5):
             avoided = False
@@ -2306,15 +2309,15 @@ class Cat:
             )  # creating a range in which a condition can present
             moons_until = max(moons_until, 0)
 
-        if name == 'partially hairless' and self.phenotype.length != 'fur-pointed':
-            moons_until = 11
-        if custom_reveal:
-            moons_until = custom_reveal
-
         if born_with and not self.status.rank.is_baby():
             moons_until = -2
         elif born_with is False:
             moons_until = 0
+
+        if name == 'partially hairless' and self.phenotype.length != 'fur-pointed':
+            moons_until = 11
+        if custom_reveal:
+            moons_until = custom_reveal
 
         if name == "paralyzed":
             self.pelt.paralyzed = True

@@ -95,7 +95,7 @@ class Screens:
         if game.last_screen_forupdate == "start screen":
             rebuild_den_dropdown(
                 left_align=not get_clan_setting("moons and seasons"),
-                game_mode=game.clan.game_mode,
+                game_mode=game.clan.game_mode if game.clan else "classic",
             )
 
     def __init__(self, name=None):
