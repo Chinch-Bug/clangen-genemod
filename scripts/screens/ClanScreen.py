@@ -27,7 +27,7 @@ from scripts.utility import (
 from .Screens import Screens
 from ..cat.save_load import save_cats
 from ..clan_package.settings import get_clan_setting
-from ..clan_package.settings.clan_settings import set_clan_setting
+from ..clan_package.settings.clan_settings import switch_clan_setting
 from ..game_structure.game.switches import switch_set_value, switch_get_value, Switch
 from ..cat.enums import CatRank
 from ..ui.generate_button import ButtonStyles, get_button_dict
@@ -82,7 +82,7 @@ class ClanScreen(Screens):
                 switch_set_value(Switch.cat, event.ui_element.return_cat_id())
                 self.change_screen("profile screen")
             if event.ui_element == self.label_toggle:
-                set_clan_setting("den labels", not get_clan_setting("den_labels"))
+                switch_clan_setting("den labels")
                 self.update_buttons_and_text()
             if event.ui_element == self.med_den_label:
                 self.change_screen("med den screen")

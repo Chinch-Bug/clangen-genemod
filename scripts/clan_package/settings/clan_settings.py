@@ -42,6 +42,8 @@ def get_clan_setting(name: str, *, default=None):
 
 
 def set_clan_setting(name: str, value):
+    if name in _settings["__other"].keys() and name != "favourite sub tab":
+        raise ValueError(f"Use switch_clan_setting() to change setting '{name}'.")
     clan_settings[name] = value
 
 
@@ -63,13 +65,14 @@ def reset_loaded_clan_settings():
     for _setting in all_settings:  # Add all the settings to the settings dictionary
         for setting_name, inf in _setting.items():
             clan_settings[setting_name] = inf[2]
+
     for setting, values in _settings["__other"].items():
         clan_settings[setting] = values[0]
+        setting_lists[setting] = values
 
 
 # Init Settings
 clan_settings = {}
-setting_lists = {}
 with open("resources/clansettings.json", "r", encoding="utf-8") as read_file:
     _settings = ujson.loads(read_file.read())
 
@@ -87,6 +90,3 @@ setting_lists = {
     for key, inf in category.items()
 }
 reset_loaded_clan_settings()
-
-for setting, values in _settings["__other"].items():
-    setting_lists[setting] = values
