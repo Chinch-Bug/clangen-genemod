@@ -474,7 +474,7 @@
                 {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": ["murder_reveal"]
+                    "sub_type": ["murder_reveal"]
                 },
                 "moon_delay": [1,24],
                 "involved_cats": {
@@ -594,7 +594,7 @@
                 {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": ["murder_reveal"]
+                    "sub_type": ["murder_reveal"]
                 },
                 "moon_delay": [1,24],
                 "involved_cats": {
@@ -701,7 +701,7 @@
                 {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": ["murder_reveal"]
+                    "sub_type": ["murder_reveal"]
                 },
                 "moon_delay": [1,24],
                 "involved_cats": {

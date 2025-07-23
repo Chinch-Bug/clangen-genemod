@@ -79,7 +79,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -179,7 +179,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -282,7 +282,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -386,7 +386,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -485,7 +485,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -587,7 +587,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -689,7 +689,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -793,7 +793,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -895,7 +895,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -2463,7 +2463,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -2566,7 +2566,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -2659,7 +2659,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -2769,7 +2769,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -3826,7 +3826,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -4227,6 +4227,76 @@
         ]
     },
     {
+        "event_id": "gen_death_drown_multi2_murder",
+        "location": [
+            "plains",
+            "forest",
+            "mountainous"
+        ],
+        "season": [
+            "leaf-fall",
+            "newleaf",
+            "greenleaf"
+        ],
+        "sub_type": ["murder"],
+        "tags": ["all_lives"],
+        "frequency": 3,
+        "event_text": "m_c fell into a river and drowned.",
+        "r_c": {
+            "age": [
+                "adolescent",
+                "young adult",
+                "adult",
+                "senior adult",
+                "senior"
+            ]
+        },
+        "m_c": {
+            "age": [
+                "adolescent",
+                "young adult",
+                "adult",
+                "senior adult",
+                "senior"
+            ],
+            "not_skill": [
+                "SWIMMER,2"
+            ],
+            "dies": true
+        },
+        "history": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "reg_death": "m_c was thrown into a river by r_c and drowned.",
+                "lead_death": "thrown into a river by r_c and drowned"
+            }
+        ],
+        "future_event": [
+            {
+                "event_type": "misc",
+                "pool": {
+                    "sub_type": ["hidden_murder_reveal"]
+                },
+                "moon_delay": [
+                    1,
+                    24
+                ],
+                "involved_cats": {
+                    "m_c": "r_c",
+                    "mur_c": "m_c",
+                    "r_c": {
+                        "age": [
+                            "any"
+                        ]
+                    }
+                }
+            }
+        ],
+        "exclude_involved": ["r_c"]
+    },
+    {
         "event_id": "gen_death_sneak_any1",
         "location": [
             "any"
@@ -4506,7 +4576,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -4600,7 +4670,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -4699,7 +4769,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -4783,7 +4853,7 @@
         "season": [
             "any"
         ],
-        "subtype": [
+        "sub_type": [
             "war"
         ],
         "tags": [],
@@ -4984,6 +5054,65 @@
                 "lead_death": "died while wandering the territory"
             }
         ]
+    },
+    {
+        "event_id": "gen_death_wander_any1_murder",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": ["murder"],
+        "tags": ["all_lives"],
+        "frequency": 2,
+        "event_text": "m_c wandered out into the territory and was later found dead.",
+        "m_c": {
+            "age": [
+                "adolescent",
+                "young adult",
+                "adult",
+                "senior adult",
+                "senior"
+            ],
+            "status": [],
+            "dies": true
+        },
+        "history": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "reg_death": "m_c died while wandering the territory.",
+                "lead_death": "died while wandering the territory"
+            }
+        ],
+        "future_event": [
+            {
+                "event_type": "misc",
+                "pool": {
+                    "sub_type": ["hidden_murder_reveal"]
+                },
+                "moon_delay": [
+                    1,
+                    24
+                ],
+                "involved_cats": {
+                    "m_c": "r_c",
+                    "mur_c": "m_c",
+                    "r_c": {
+                        "age": [
+                            "adolescent",
+                            "young adult",
+                            "adult",
+                            "senior adult",
+                            "senior"
+                        ]
+                    }
+                }
+            }
+        ],
+        "exclude_involved": ["r_c"]
     },
     {
         "event_id": "gen_death_fox_any2",
@@ -6867,7 +6996,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -6955,7 +7084,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -7066,7 +7195,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -7161,7 +7290,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -7266,7 +7395,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -7410,6 +7539,33 @@
                     "m_c"
                 ],
                 "reg_death": "m_c died in a training accident."
+            }
+        ]
+    },
+    {
+        "event_id": "gen_death_train_any1_murder",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": ["murder"],
+        "tags": [],
+        "frequency": 4,
+        "event_text": "m_c died in a training accident.",
+        "m_c": {
+            "status": [
+                "apprentice"
+            ],
+            "dies": true
+        },
+        "history": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "reg_death": "m_c was murdered by r_c in a \"training accident.\""
             }
         ]
     },
@@ -7585,7 +7741,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -8238,7 +8394,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -8315,7 +8471,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -8396,7 +8552,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -8472,7 +8628,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
@@ -8548,7 +8704,7 @@
             {
                 "event_type": "misc",
                 "pool": {
-                    "subtype": [
+                    "sub_type": [
                         "murder_reveal"
                     ]
                 },
