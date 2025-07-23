@@ -40,6 +40,9 @@ def game_settings_load():
             settings_data = ujson.loads(read_file.read())
     except FileNotFoundError:
         return
+    except JSONDecodeError:
+        print("Unable to load settings.json!")
+        return
 
     for key, value in settings_data.items():
         if key in settings:
