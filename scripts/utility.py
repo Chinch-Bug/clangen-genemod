@@ -29,7 +29,6 @@ from pygame_gui.core import ObjectID
 from scripts.clan_package.settings import get_clan_setting
 from scripts.game_structure.game.settings import game_settings_save, game_setting_get
 from scripts.game_structure.game.switches import switch_get_value, Switch
-from scripts.cat.status import StatusDict
 from scripts.game_structure.localization import (
     load_lang_resource,
     determine_plural_pronouns,
@@ -407,13 +406,14 @@ def create_bio_parents(Cat, flip=False, second_parent=True):
     return [blood_parent, blood_parent2, par2geno]
 
 def create_new_cat_block(
-    Cat: Optional["Cat"], 
-    Relationship, 
-    event, 
-    in_event_cats: dict, 
-    i: int, 
+    Cat: Optional["Cat"],
+    Relationship,
+    event,
+    in_event_cats: dict,
+    i: int,
     attribute_list: List[str], 
-    clan:CatGroup=None
+    clan:CatGroup=None,
+    other_clan=None,
 ) -> list:
     """
     Creates a single new_cat block and then generates and returns the cats within the block
@@ -545,9 +545,6 @@ def create_new_cat_block(
             rank = match.group(1)
             break
 
-    # GROUP - # for now, this just gets set to None. event formats don't yet pass group info
-    cat_group = None
-
     # SET AGE
     age = None
     for _tag in attribute_list:
@@ -589,6 +586,8 @@ def create_new_cat_block(
         elif rank == CatRank.ELDER:
             age = randint(Cat.age_moons["senior"][0], Cat.age_moons["senior"][1])
 
+    cat_group = None
+
     if "kittypet" in attribute_list:
         cat_social = CatSocial.KITTYPET
     elif "rogue" in attribute_list:
@@ -597,7 +596,10 @@ def create_new_cat_block(
         cat_social = CatSocial.LONER
     elif "clancat" in attribute_list or "former Clancat" in attribute_list:
         cat_social = CatSocial.CLANCAT
-        cat_group = choice(game.clan.other_clans)
+        if other_clan:
+            cat_group = other_clan.enum
+        else:
+            cat_group = choice(game.clan.other_clans)
     else:
         if game.clan.clancount == "multiclan":
             cat_social = choice([CatSocial.KITTYPET, CatSocial.LONER])
@@ -1026,7 +1028,7 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
             all_clan_cats = [cat for cat in all_clan_cats if give_mates[0].is_potential_mate(cat, for_love_interest=True, outsider=True)]
             if not all_clan_cats:
                 print("No possible mates found")
-                all_clan_cats = create_new_cat_block(Cat, Relationship, event, in_event_cats, i, attribute_list, other_clan.enum)
+                all_clan_cats = create_new_cat_block(Cat, Relationship, event, in_event_cats, i, attribute_list, other_clan = other_clan)
         if age == "has_kits":
             (parents, orphans) = get_alive_clan_queens(all_clan_cats, clan=other_clan)
             for par_id in parents.keys():
@@ -1279,6 +1281,10 @@ def create_new_cat(
             # give apprentice aged cat a mentor
             if new_cat.status.rank.is_any_apprentice_rank():
                 new_cat.update_mentor()
+                # ensuring that any cats joining as an apprentice will display the correct skills
+                new_cat.skills.primary.interest_only = True
+                if new_cat.skills.secondary:
+                    new_cat.skills.secondary.interest_only = True
 
         # NAMES and accs
         # clancat adults should have already generated with a clan-ish name, thus they skip all of this re-naming
@@ -1288,7 +1294,7 @@ def create_new_cat(
         ):
             # babies change name, in case their initial name isn't clan-ish
             new_cat.change_name()
-        else:
+        elif not original_group or not original_group.is_other_clan_group():
             # give kittypets a kittypet name
             overwrite_prefix = False
             if original_social == CatSocial.KITTYPET:

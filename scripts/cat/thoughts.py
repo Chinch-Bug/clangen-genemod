@@ -147,7 +147,7 @@ class Thoughts:
             if living_status and living_status != "living":
                 return False
 
-        if random_cat and random_cat.status.is_lost(main_cat.status.group):
+        if random_cat and random_cat.status.is_lost():
             outside_status = "lost"
         elif random_cat and random_cat.status.is_outsider:
             outside_status = "outside"

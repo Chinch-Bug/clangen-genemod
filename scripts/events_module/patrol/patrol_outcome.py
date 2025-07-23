@@ -887,7 +887,7 @@ class PatrolOutcome:
             if game.clan.clancount != "multiclan" or ("clancat" not in attribute_list and "change_clan" not in attribute_list):
                 patrol.new_cats.append(
                     create_new_cat_block(
-                        Cat, Relationship, patrol, in_event_cats, i, attribute_list, clan=CatGroup.PLAYER_CLAN
+                        Cat, Relationship, patrol, in_event_cats, i, attribute_list, clan=CatGroup.PLAYER_CLAN, other_clan=patrol.other_clan
                     )
                 )
             else:

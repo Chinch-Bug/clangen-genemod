@@ -785,8 +785,8 @@ class ListScreen(Screens):
         for the_cat in Cat.all_cats_list:
             if (
                 not the_cat.dead
-                and the_cat.status.is_outsider
-                and (the_cat.status.is_near(CatGroup.PLAYER_CLAN) or 
+                and (the_cat.status.is_outsider or (the_cat.status.is_other_clancat and game.clan.clancount == "singleclan"))
+                and (the_cat.status.is_near(CatGroup.PLAYER_CLAN) or
                 next(filter(lambda c: c in the_cat.status.all_groups and the_cat.status.is_near(c), game.clan.other_clans), None))
             ):
                 self.full_cat_list.append(the_cat)

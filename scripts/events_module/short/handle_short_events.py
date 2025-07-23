@@ -440,7 +440,7 @@ class HandleShortEvents:
             if ("clancat" not in attribute_list and "change_clan" not in attribute_list) or game.clan.clancount != 'multiclan':
                 self.new_cats.append(
                     create_new_cat_block(
-                        Cat, Relationship, self, in_event_cats, i, attribute_list, clan=clan.enum
+                        Cat, Relationship, self, in_event_cats, i, attribute_list, clan=clan.enum, other_clan=other_clan
                     )
                 )
             else:

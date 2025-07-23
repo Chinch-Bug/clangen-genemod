@@ -153,13 +153,12 @@ class Events:
                 self.handle_future_events(clan=clan)
 
         # Calling of "one_moon" functions.
-        for cat in Cat.all_cats.copy().values():
-            if not cat.status.group:
-                self.one_moon_outside_cat(cat)
+        other_clan_cats = [c for c in Cat.all_cats_list if c.status.is_other_clancat]
+        for cat in Cat.all_cats_list.copy():
+            if not cat.status.group or (cat.status.is_other_clancat and game.clan.clancount == "singleclan"):
+                self.one_moon_outside_cat(cat, other_clan_cats)
             elif cat.status.is_any_clan_group() or cat.status.group.is_afterlife():
                 self.one_moon_cat(cat, cat.status.get_last_living_group().fetch_clan_object(game.clan) if cat.status.get_last_living_group() else game.clan)
-            
-            cat.pelt.rebuild_sprite = True
 
         # keeping this commented out till disasters are more polished
         # self.disaster_events.handle_disasters()
@@ -1002,13 +1001,13 @@ class Events:
                 add_cat_to_fade_id(cat.ID)
                 cat.set_faded()
 
-    def one_moon_outside_cat(self, cat):
+    def one_moon_outside_cat(self, cat, other_clan_cats: list = None):
         """
         exiled cat events
         """
         # aging the cat
-        clan = next(filter(lambda c: cat.status.is_lost(c.enum) or cat.status.is_exiled(c.enum), game.clan.all_clans), game.clan)
-        cat.one_moon()
+        clan = next(filter(lambda c: cat.status.is_lost() or cat.status.is_exiled(), game.clan.all_clans), game.clan)
+        cat.one_moon(other_clan_cats)
         cat.manage_outside_trait()
 
         self.handle_outside_EX(cat)
@@ -1978,7 +1977,7 @@ class Events:
     # This gives outsiders exp. There may be a better spot for it to go,
     # but I put it here to keep the exp functions together
     def handle_outside_EX(self, cat):
-        if cat.status.is_outsider:
+        if cat.status.is_outsider or cat.status.is_other_clancat:
             if cat.not_working() and int(random.random() * 3):
                 return
 

@@ -132,7 +132,7 @@ class CatGroup(StrEnum):
         )
 
     def is_other_clan_group(self) -> bool:
-        return True if self.is_any_clan_group() and not self.PLAYER_CLAN else False
+        return self.is_any_clan_group() and self != self.PLAYER_CLAN
     
     def fetch_clan_object(self, default=None):
         clan = game.clan if self == self.PLAYER_CLAN else next(filter(lambda c: c.enum == self, game.clan.all_clans), default)
