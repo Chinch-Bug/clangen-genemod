@@ -4431,7 +4431,7 @@ def generate_sprite(
             if constants.CONFIG["fun"]["april_fools_hats"]:
                 if not dead:
                     new_sprite.blit(sprites.sprites['aprilfoolslines' + cat_sprite], (0, 0))
-                elif cat.df:
+                elif cat.status.group == CatGroup.DARK_FOREST:
                     new_sprite.blit(sprites.sprites['aprilfoolslineartdf' + cat_sprite], (0, 0))
                 else:
                     new_sprite.blit(sprites.sprites['aprilfoolslineartdead' + cat_sprite], (0, 0))
