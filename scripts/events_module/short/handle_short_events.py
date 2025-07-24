@@ -667,6 +667,7 @@ class HandleShortEvents:
                     if tnr and 'TNR' not in kitty.pelt.scars:
                         if kitty.moons > 3:
                             kitty.pelt.scars.append("TNR")
+                            kitty.pelt.rebuild_sprite = True
                             kitty.get_permanent_condition("infertility", False)
                             if 'pregnant' in kitty.injuries:
                                 kitty.permanent_condition['infertility']['moon_start'] += 3

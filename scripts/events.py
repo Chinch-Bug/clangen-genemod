@@ -216,8 +216,7 @@ class Events:
                     sorted_dead_cats[group.name].append(ghost)
             for clan in [game.clan] + game.clan.all_clans:
                 if clan.name not in ghost_names:
-                    ghost_names[clan.name] = []
-                    sorted_dead_cats[clan.name] = []
+                    continue
                 insert = adjust_list_text(ghost_names[clan.name])
 
                 if len(ghost_names[clan.name]) > 1:
@@ -269,26 +268,25 @@ class Events:
                     event = i18n.t("hardcoded.event_deaths", count=1)
                     #event = event_text_adjust(Cat, event, main_cat=Cat.dead_cats[0])
 
-                if len(ghost_names[clan.name]) > 0:
+                game.cur_events_list.append(
+                    Single_Event(
+                        event_text_adjust(Cat, event, main_cat=sorted_dead_cats[clan.name][0], clan=clan.enum),
+                        ["birth_death"],
+                        [i.ID for i in sorted_dead_cats[clan.name]],
+                        cat_dict={"m_c": (sorted_dead_cats[clan.name])[0]} 
+                        if len(sorted_dead_cats[clan.name]) == 1 else None,
+                        clan=clan.enum
+                    )
+                )
+                if extra_event:
                     game.cur_events_list.append(
                         Single_Event(
-                            event_text_adjust(Cat, event, main_cat=sorted_dead_cats[clan.name][0], clan=clan.enum),
-                            ["birth_death"],
-                            [i.ID for i in sorted_dead_cats[clan.name]],
-                            cat_dict={"m_c": (sorted_dead_cats[clan.name])[0]} 
-                            if len(sorted_dead_cats[clan.name]) == 1 else None,
+                            event_text_adjust(Cat, extra_event, clan=clan.enum), 
+                            ["birth_death"], 
+                            [i.ID for i in shaken_cats.get(clan.name, [])], 
                             clan=clan.enum
                         )
                     )
-                    if extra_event:
-                        game.cur_events_list.append(
-                            Single_Event(
-                                event_text_adjust(Cat, extra_event, clan=clan.enum), 
-                                ["birth_death"], 
-                                [i.ID for i in shaken_cats.get(clan.name, [])], 
-                                clan=clan.enum
-                            )
-                        )
                 
                 if not clancount:
                     break

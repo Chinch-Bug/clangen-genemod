@@ -8,7 +8,7 @@ from pygame_gui.core import ObjectID
 from scripts.cat.cats import Cat
 from scripts.clan_package.settings import switch_clan_setting
 from scripts.clan_package.settings.clan_settings import (
-    set_clan_setting,
+    switch_clan_setting,
     get_clan_setting,
 )
 from scripts.game_structure.game.settings import game_setting_get
@@ -205,13 +205,13 @@ class ListScreen(Screens):
                     element.change_object_id("@unchecked_checkbox")
                     element.set_tooltip("screens.list.search_genotypes_tooltip")
                     self.cat_list_bar_elements["search_bar_entry"].tool_tip_text = None
-                    set_clan_setting("search genotypes", False)
+                    switch_clan_setting("search genotypes")
                 else:
                     element.change_object_id("@checked_checkbox")
                     element.set_tooltip("screens.list.search_names_tooltip")
                     self.cat_list_bar_elements["search_bar_entry"].tool_tip_text = "screens.list.search_genotypes_tutorial"
                     self.cat_list_bar_elements["search_bar_entry"].tool_tip_delay = 0
-                    set_clan_setting("search genotypes", True)
+                    switch_clan_setting("search genotypes")
                 self.cat_list_bar_elements["search_bar_entry"].placeholder_text = "general.genotype_search" if get_clan_setting("search genotypes") else "general.name_search"
                 self.cat_list_bar_elements["search_bar_entry"].set_text("")
                 self.update_cat_list(
@@ -262,6 +262,10 @@ class ListScreen(Screens):
         super().screen_switches()
         self.show_mute_buttons()
         self.clan_name = game.clan.name + "Clan"
+
+        if not game.last_list_forProfile:
+            self.death_status = "living"
+            self.current_group = "general.your_clan"
         
         group_names = ["general.your_clan", "general.cotc"]
         if game.clan and game.clan.clancount == "multiclan":
@@ -371,10 +375,6 @@ class ListScreen(Screens):
             and switch_get_value(Switch.sort_type) == "death"
         ):
             switch_set_value(Switch.sort_type, "rank")
-
-        if not game.last_list_forProfile:
-            self.death_status = "living"
-            self.current_group = "general.your_clan"
 
         # CHOOSE GROUP DROPDOWN
         self.choose_group_dropdown = UIDropDown(

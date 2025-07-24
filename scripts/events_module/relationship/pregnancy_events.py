@@ -787,14 +787,12 @@ class Pregnancy_Events:
                 )
                 kit.backstory = "outsider1"
 
-                if pregnant_cat.status.is_exiled(clan.enum):
+                if pregnant_cat.status.is_exiled():
                     name = choice(names.names_dict["normal_prefixes"])
                     kit.name = Name(prefix=name, suffix="", cat=kit)
 
-                    if get_clan_setting("modded names") and get_clan_setting("new prefixes"):
-                        kit.name = Name(kit, suffix="")
-                    else:
-                        kit.name = Name(kit, prefix=name, suffix="")
+                    if get_clan_setting("modded names") and get_clan_setting("new prefixes") and random() > 0.25:
+                        kit.name.give_prefix(kit, game.clan.biome, True)
 
                 if other_cat and not other_cat[0].status.is_outsider:
                     kit.backstory = "outsider2"
@@ -832,7 +830,7 @@ class Pregnancy_Events:
                 if x.dead:
                     Dead_Mate = True
                     WhoDied = x
-                if x.status.group == cat.status.group:
+                if x.status.group == cat.status.group or not (x.status.is_lost() or x.status.is_exiled()) or (x.status.is_outsider and x.status.is_near(cat.status.group)):
                     All_Mates_Outside = False
                 if len(x.mate) > 0:
                     Both_Unmated = False

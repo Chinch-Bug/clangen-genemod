@@ -234,11 +234,11 @@
   },
   "partially hairless": {
     "body sunburn": [
-      "m_c's skin is warm and red, aching from the new sunburn",
-      "m_c's skin is warm and red, aching from the new sunburn"
+      "m_c's skin is warm and red, aching from the new sunburn.",
+      "m_c's skin is warm and red, aching from the new sunburn."
     ],
     "itchy skin": [
-      "m_c can't stop scratching at {PRONOUN/m_c/poss} itchy skin",
+      "m_c can't stop scratching at {PRONOUN/m_c/poss} itchy skin.",
       "m_c struggles to listen to the warnings not to scratch the itchy spots of skin."
     ],
     "shivering": [

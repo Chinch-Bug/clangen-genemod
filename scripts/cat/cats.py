@@ -835,8 +835,9 @@ class Cat:
                 fetched_cat.update_mentor()
         self.update_mentor()
 
-        if self.status.get_last_living_group() and self.moons > 1:
-            self.grief(body)
+        if self.status.get_last_living_group():
+            if self.moons > 1:
+                self.grief(body)
             Cat.dead_cats.append(self)
 
         # mark the sprite as outdated
@@ -2313,7 +2314,9 @@ class Cat:
         if name == 'partially hairless' and self.phenotype.length != 'fur-pointed':
             moons_until = 11
         if custom_reveal:
-            moons_until = custom_reveal
+            moons_until = custom_reveal - self.moons
+            if moons_until < -2:
+                moons_until = -2
 
         if name == "paralyzed":
             self.pelt.paralyzed = True

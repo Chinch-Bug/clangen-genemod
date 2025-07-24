@@ -29,7 +29,7 @@ from scripts.utility import (
 from .Screens import Screens
 from ..cat_relations.relationship import Relationship
 from ..clan_package.settings import get_clan_setting
-from ..clan_package.settings.clan_settings import set_clan_setting
+from ..clan_package.settings.clan_settings import switch_clan_setting
 from ..game_structure.game.settings import game_setting_get
 from ..game_structure.game.switches import switch_set_value, switch_get_value, Switch
 from ..game_structure.screen_settings import MANAGER, screen
@@ -199,15 +199,15 @@ class RelationshipScreen(Screens):
                         ],
                     )
             elif event.ui_element == self.checkboxes["show_dead"]:
-                set_clan_setting(
-                    "show dead relation", not get_clan_setting("show dead relation")
+                switch_clan_setting(
+                    "show dead relation"
                 )
                 self.update_checkboxes()
                 self.apply_cat_filter()
                 self.update_cat_page()
             elif event.ui_element == self.checkboxes["show_empty"]:
-                set_clan_setting(
-                    "show empty relation", not get_clan_setting("show empty relation")
+                switch_clan_setting(
+                    "show empty relation"
                 )
                 self.update_checkboxes()
                 self.apply_cat_filter()
