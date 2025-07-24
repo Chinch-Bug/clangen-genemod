@@ -159,6 +159,7 @@ class Events:
                 self.one_moon_outside_cat(cat, other_clan_cats)
             elif cat.status.is_any_clan_group() or cat.status.group.is_afterlife():
                 self.one_moon_cat(cat, cat.status.get_last_living_group().fetch_clan_object(game.clan) if cat.status.get_last_living_group() else game.clan)
+            cat.pelt.rebuild_sprite = True
 
         # keeping this commented out till disasters are more polished
         # self.disaster_events.handle_disasters()

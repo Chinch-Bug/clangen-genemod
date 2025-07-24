@@ -226,6 +226,7 @@ class Clan:
             other_clan = OtherClan(name=other_clan_name, clancount=self.clancount)
             # self.all_clans.append(other_clan)
 
+        self.instructor.status.group_history.insert(0, {"rank": instructor_rank, "group": choice(game.clan.other_clans + [CatGroup.PLAYER_CLAN]), "moons_as": self.instructor.moons})
         for cat_id in Cat.all_cats:
             if cat_id not in self.clan_cats:
                 self.clan_cats.append(cat_id)

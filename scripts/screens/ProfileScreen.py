@@ -905,22 +905,22 @@ class ProfileScreen(Screens):
             # NEWLINE ----------
             output += "\n"
 
-        if the_cat.status.is_other_clancat:
+        if the_cat.status.is_other_clancat or game.clan.clancount == "multiclan":
             output += f"{cat_clan} "
 
         if the_cat.status.is_outsider:
             output += i18n.t(f"general.{the_cat.status.social}", count=1)
         else:
-            if game.clan.clancount == "multiclan" and not the_cat.status.is_outsider:
-                if not the_cat.dead:
-                    output += the_cat.status.group.fetch_clan_object().name + "Clan "
-                elif the_cat == game.clan.instructor:
-                    pass
-                elif the_cat.status.get_last_living_group() == CatGroup.PLAYER_CLAN:
-                    output += game.clan.name + "Clan "
-                else:
-                    clan = next(filter(lambda c: the_cat.status.get_last_living_group() == c.enum, game.clan.all_clans), None)
-                    output += clan.name + "Clan "
+            # if game.clan.clancount == "multiclan" and not the_cat.status.is_outsider:
+            #     if not the_cat.dead:
+            #         output += the_cat.status.group.fetch_clan_object().name + "Clan "
+            #     elif the_cat == game.clan.instructor:
+            #         pass
+            #     elif the_cat.status.get_last_living_group() == CatGroup.PLAYER_CLAN:
+            #         output += game.clan.name + "Clan "
+            #     else:
+            #         clan = next(filter(lambda c: the_cat.status.get_last_living_group() == c.enum, game.clan.all_clans), None)
+            #         output += clan.name + "Clan "
             output += i18n.t(f"general.{the_cat.status.rank}", count=1)
 
         # NEWLINE ----------
@@ -1335,11 +1335,11 @@ class ProfileScreen(Screens):
                 "cat.backstories.cats_outside_the_clan",
                 status=i18n.t(f"general.{self.the_cat.status.rank}", count=1),
             )
-        elif self.the_cat.status.is_other_clancat:
+        elif self.the_cat.status.is_other_clancat and game.clan.clancount == "singleclan":
             clan = [
                 clan
                 for clan in game.clan.all_clans
-                if clan.enum == self.the_cat.status.group
+                if clan.enum == self.the_cat.status.get_last_living_group()
             ]
             bs_blurb = i18n.t("cat.backstories.other_clan_cat", clan=clan[0])
         if bs_blurb is not None:
