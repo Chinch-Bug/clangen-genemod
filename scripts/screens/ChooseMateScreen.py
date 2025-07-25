@@ -1259,7 +1259,7 @@ class ChooseMateScreen(Screens):
     def get_valid_mates(self, search_text):
         """Get a list of valid mates for the current cat"""
 
-        # Behold! The uglest list comprehension ever created!
+        # Behold! The ugliest list comprehension ever created!
         valid_mates = [
             i
             for i in Cat.all_cats_list
