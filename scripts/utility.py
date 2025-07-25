@@ -4121,6 +4121,9 @@ def generate_sprite(
                 
                 elif (phenotype.bleach[0] == "lb" and sprite_age > 3) or (phenotype.wbtype == "shaded" and 'smoke' in phenotype.silvergold):
                     gensprite.blit(sprites.sprites['bleach' + cat_sprite], (0, 0))
+                elif ('masked' in phenotype.silvergold and phenotype.wbsum < 16):
+                    gensprite.blit(sprites.sprites['bleach' + cat_sprite], (0, 0))
+                    gensprite.blit(sprites.sprites['bleach' + cat_sprite], (0, 0))
 
             
             if (
