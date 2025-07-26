@@ -429,7 +429,7 @@
         "season": ["leaf-bare"],
         "types": ["herb_gathering"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "any_healer",
                 "warrior"
@@ -504,7 +504,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "any_apprentice",
                 "deputy",
@@ -617,7 +617,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "any_apprentice",
                 "deputy",
@@ -723,7 +723,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior"
@@ -820,7 +820,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior"
@@ -932,7 +932,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior"
@@ -1044,7 +1044,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior",
@@ -1125,7 +1125,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior",
@@ -1206,7 +1206,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior"
@@ -1286,7 +1286,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior"
@@ -1382,7 +1382,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior"
@@ -1478,7 +1478,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior",
@@ -1545,7 +1545,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior",
@@ -1612,7 +1612,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior"
@@ -1710,7 +1710,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior"
@@ -1822,7 +1822,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior"
@@ -1934,7 +1934,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior",
@@ -2015,7 +2015,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior",
@@ -2096,7 +2096,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior"
@@ -2198,7 +2198,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior"
@@ -2294,7 +2294,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior"
@@ -2390,7 +2390,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior",
@@ -2457,7 +2457,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior",
@@ -2523,7 +2523,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior"
@@ -2617,7 +2617,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior"
@@ -2729,7 +2729,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior"
@@ -2841,7 +2841,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior",
@@ -2922,7 +2922,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior",
@@ -3137,7 +3137,7 @@
         "season": [ "any" ],
         "types": [ "border" ],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "any_warrior_mult"
@@ -3419,7 +3419,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "kitten_mult",
                 "warrior",
@@ -3596,7 +3596,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "leader"
             ]
@@ -3700,7 +3700,7 @@
         "season": ["any"],
         "types": ["border"],
         "tags": [],
-        "other_clan_filters": {
+        "other_clan_filter": {
             "has_rank": [
                 "apprentice",
                 "warrior"
