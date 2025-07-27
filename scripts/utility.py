@@ -667,6 +667,7 @@ def create_new_cat_block(
         if (
             chosen_backstory
             in BACKSTORIES["backstory_categories"]["baby_clancat_backstories"]
+            or game.clan.clancount == "multiclan"
         ):
             cat_social = CatSocial.CLANCAT
         elif (
@@ -688,11 +689,12 @@ def create_new_cat_block(
     outside = False
     if "meeting" in attribute_list:
         outside = True
-        rank = None
-        new_name = False
-        thought = i18n.t("hardcoded.thought_meeting")
-        if age is not None and age <= 6 and not bs_override:
-            chosen_backstory = "outsider1"
+        if game.clan.clancount != "multiclan" or "clancat" not in attribute_list:
+            new_name = False
+            rank = None
+            thought = i18n.t("hardcoded.thought_meeting")
+            if age is not None and age <= 6 and not bs_override:
+                chosen_backstory = "outsider1"
 
     # IS THE CAT DEAD?
     alive = True

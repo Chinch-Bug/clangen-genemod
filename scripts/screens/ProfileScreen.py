@@ -905,7 +905,7 @@ class ProfileScreen(Screens):
             # NEWLINE ----------
             output += "\n"
 
-        if the_cat.status.is_other_clancat or game.clan.clancount == "multiclan":
+        if the_cat.status.is_other_clancat or (game.clan.clancount == "multiclan" and the_cat.status.is_clancat):
             output += f"{cat_clan} "
 
         if the_cat.status.is_outsider:

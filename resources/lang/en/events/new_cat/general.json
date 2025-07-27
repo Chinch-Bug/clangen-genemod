@@ -78,7 +78,8 @@
                 "backstory:abandoned2, outsider1",
                 "litter",
                 "change_clan",
-                "clancat"
+                "clancat",
+                "exists"
             ]
         ],
         "other_clan": {
@@ -608,6 +609,7 @@
             [
                 "old_name",
                 "clancat",
+                "exists",
                 "status:warrior",
                 "change_clan",
                 "backstory:refugee1,guided4,ostracized_warrior,disgraced1,disgraced2,disgraced3,otherclan1,otherclan2,otherclan3,otherclan4"
@@ -634,6 +636,7 @@
         "new_cat": [
             [
                 "clancat",
+                "exists",
                 "status:leader",
                 "backstory:retired_leader",
                 "change_clan"
@@ -660,6 +663,7 @@
             [
                 "old_name",
                 "clancat",
+                "exists",
                 "status:warrior",
                 "change_clan",
                 "backstory:refugee1,guided4,ostracized_warrior,disgraced1,disgraced2,disgraced3,otherclan1,otherclan2,otherclan3,otherclan4"
@@ -776,6 +780,7 @@
                 "new_name",
                 "backstory:otherclan1",
                 "clancat",
+                "exists",
                 "age:has_kits",
                 "change_clan"
             ],
@@ -785,6 +790,7 @@
                 "age:newborn",
                 "backstory:abandoned2",
                 "clancat",
+                "exists",
                 "change_clan"
             ]
         ],
@@ -821,6 +827,7 @@
                 "can_birth",
                 "age:has_kits",
                 "clancat",
+                "exists",
                 "rogue",
                 "meeting",
                 "new_name",
@@ -832,6 +839,7 @@
                 "backstory:stolenkit1",
                 "age:newborn",
                 "clancat",
+                "exists",
                 "change_clan"
             ]
         ],
@@ -875,7 +883,8 @@
                 "backstory:stolenkit1",
                 "age:newborn",
                 "change_clan",
-                "clancat"
+                "clancat",
+                "exists"
             ]
         ],
         "relationships": [

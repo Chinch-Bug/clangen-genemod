@@ -9468,7 +9468,7 @@
             ]
         },
         "new_cat": [
-          ["status:warrior", "dead", "clancat"]
+          ["status:warrior", "dead", "clancat", "exists"]
         ],
         "other_clan": {
             "current_rep": ["hostile"],
@@ -9510,7 +9510,7 @@
             ]
         },
         "new_cat": [
-          [ "status:warrior", "dead", "clancat" ]
+          [ "status:warrior", "dead", "clancat", "exists" ]
         ],
         "other_clan": {
             "current_rep": ["hostile"],
@@ -9553,7 +9553,7 @@
             ]
         },
         "new_cat": [
-          [ "status:warrior", "dead", "clancat" ]
+          [ "status:warrior", "dead", "clancat", "exists" ]
         ],
         "other_clan": {
             "current_rep": ["hostile"],
@@ -9592,7 +9592,7 @@
             ]
         },
         "new_cat": [
-          [ "status:warrior", "dead", "clancat" ]
+          [ "status:warrior", "dead", "clancat", "exists" ]
         ],
         "other_clan": {
             "current_rep": ["hostile"],

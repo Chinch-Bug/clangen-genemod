@@ -1436,6 +1436,14 @@
                 "text": "The patrol can't bear to leave the kit alone, so they take it to the border of the closest Clan and wait for a patrol to arrive. The other Clan agrees to take the kit.",
                 "exp": 10,
                 "weight": 20,
+                "multiclan_cat": [
+                    [
+                        "status:kitten",
+                        "clancat",
+                        "meeting",
+                        "backstory:abandoned2"
+                    ]
+                ],
                 "outsider_rep": -2
             }
         ]
@@ -1500,6 +1508,14 @@
                 "text": "p_l can't bear to leave the kit alone, so {PRONOUN/p_l/subject} {VERB/p_l/take/takes} it to the border of the closest Clan and {VERB/p_l/wait/waits} for a patrol to arrive. The other Clan agrees to take the kit.",
                 "exp": 10,
                 "weight": 20,
+                "multiclan_cat": [
+                    [
+                        "status:kitten",
+                        "clancat",
+                        "meeting",
+                        "backstory:abandoned2"
+                    ]
+                ],
                 "outsider_rep": -2
             }
         ]
@@ -3229,7 +3245,7 @@
                 "exp": 10,
                 "weight": 20,
                 "new_cat": [
-                    ["age:adolescent", "status:any_apprentice", "backstory:otherclan2", "clancat", "change_clan"]
+                    ["age:adolescent", "status:any_apprentice", "backstory:otherclan2", "clancat", "exists", "change_clan"]
                 ],
                 "relationships": [
                     {
@@ -3246,7 +3262,7 @@
                 "exp": 10,
                 "weight": 10,
                 "new_cat": [
-                    ["age:adolescent", "status:any_apprentice", "backstory:otherclan2", "clancat", "change_clan"]
+                    ["age:adolescent", "status:any_apprentice", "backstory:otherclan2", "clancat", "exists", "change_clan"]
                 ],
                 "relationships": [
                     {
@@ -3272,7 +3288,7 @@
                 ],
                 "can_have_stat": ["any"],
                 "new_cat": [
-                    ["age:adolescent", "status:any_apprentice", "backstory:otherclan2", "clancat", "change_clan"]
+                    ["age:adolescent", "status:any_apprentice", "backstory:otherclan2", "clancat", "exists", "change_clan"]
                 ],
                 "relationships": [
                     {

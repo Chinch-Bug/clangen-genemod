@@ -145,7 +145,7 @@
             }
             ],
             "new_cat": [
-                ["meeting", "clancat", "mate:p_l", "age:mate", "change_clan"]
+                ["meeting", "clancat", "exists", "mate:p_l", "age:mate", "change_clan"]
     ],
     
             "art": "gen_flower_date_warrior_other_clan"
@@ -179,7 +179,7 @@
     }
     ],
     "new_cat": [
-        ["clancat", "mate:p_l", "age:mate", "change_clan"]
+        ["clancat", "exists", "mate:p_l", "age:mate", "change_clan"]
     ],
     "art": "gen_flower_date_warrior_other_clan"
     },
@@ -212,7 +212,7 @@
     }
     ],
     "new_cat": [
-        ["meeting", "clancat", "mate:p_l", "age:mate", "change_clan"]
+        ["meeting", "clancat", "exists", "mate:p_l", "age:mate", "change_clan"]
     ],
     "art": "gen_flower_date_warrior_other_clan"
     }
@@ -248,7 +248,7 @@
     }
     ],
     "new_cat": [
-        ["change_clan_rev", "clancat", "mate:p_l", "age:mate"]
+        ["change_clan_rev", "clancat", "exists", "mate:p_l", "age:mate"]
     ],
     "art": "gen_flower_date_warrior_other_clan"
     },
@@ -287,7 +287,7 @@
     }
     ],
     "new_cat": [
-        ["meeting", "clancat", "mate:p_l", "age:mate"]
+        ["meeting", "clancat", "exists", "mate:p_l", "age:mate"]
     ],
     "art": "gen_flower_date_warrior_other_clan"
     },
@@ -335,7 +335,7 @@
     }
     ],
     "new_cat": [
-        ["meeting", "clancat", "mate:p_l", "age:mate"]
+        ["meeting", "clancat", "exists", "mate:p_l", "age:mate"]
     ],
     "art": "gen_battle_warrior_other_clan"
     },
@@ -380,7 +380,7 @@
     }
     ],
     "new_cat": [
-        ["meeting", "clancat", "mate:p_l", "age:mate"]
+        ["meeting", "clancat", "exists", "mate:p_l", "age:mate"]
     ],
     "art": "gen_battle_warrior_other_clan"
     },
@@ -419,7 +419,7 @@
     }
     ],
     "new_cat": [
-        ["meeting", "clancat", "mate:p_l", "age:mate"]
+        ["meeting", "clancat", "exists", "mate:p_l", "age:mate"]
     ],
     "art": "gen_battle_warrior_other_clan"
     }
@@ -481,7 +481,7 @@
             }
             ],
             "new_cat": [
-                ["dead", "mate:p_l", "age:mate", "clancat"]
+                ["dead", "mate:p_l", "age:mate", "clancat", "exists"]
             ],
             "art": "gen_battle_warrior_other_clan"
             },
@@ -514,7 +514,7 @@
             }
             ],
             "new_cat": [
-                ["meeting", "clancat", "mate:p_l", "age:mate"]
+                ["meeting", "clancat", "exists", "mate:p_l", "age:mate"]
     ],
     
             "art": "gen_bord_twocat_hostile_warrior_warrior"
@@ -556,7 +556,7 @@
     }
             ],
             "new_cat": [
-                ["dead", "mate:p_l", "age:mate", "clancat"]
+                ["dead", "mate:p_l", "age:mate", "clancat", "exists"]
             ],
             "art": "gen_battle_warrior_other_clan"
             }
@@ -5004,8 +5004,8 @@
                 "weight": 20,
                 "other_clan_rep": -2,
                 "new_cat": [
-                    [ "age: kitten", "meeting", "clancat", "dead" ],
-                    [ "age: kitten", "meeting", "clancat", "dead" ]
+                    [ "age: kitten", "meeting", "clancat", "exists", "dead" ],
+                    [ "age: kitten", "meeting", "clancat", "exists", "dead" ]
                 ]
             },
             {
