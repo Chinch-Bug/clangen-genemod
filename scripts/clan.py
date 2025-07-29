@@ -606,7 +606,7 @@ class Clan:
                     clan_data["other_clan_temperament"].split(","),
                     other_clan_enums,
                 ):
-                    OtherClan(name, relation=int(relation), temperament=temper)
+                    OtherClan(name, relations=int(relation), temperament=temper)
             else:
                 for name, relation, temper, symbol, enum in zip(
                     clan_data["other_clans_names"].split(","),
@@ -615,7 +615,7 @@ class Clan:
                     clan_data["other_clan_chosen_symbol"].split(","),
                     other_clan_enums,
                 ):
-                    OtherClan(name, relation=int(relation), temperament=temper, chosen_symbol=symbol)
+                    OtherClan(name, relations=int(relation), temperament=temper, chosen_symbol=symbol)
 
         for cat in clan_data["clan_cats"].split(","):
             if cat in Cat.all_cats:
