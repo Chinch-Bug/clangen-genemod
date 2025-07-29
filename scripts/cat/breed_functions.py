@@ -1973,12 +1973,11 @@ class Breed_generator:
         for i in range(0, 4):
             genoclass.tickgenes += '0'
 
-
         for i in range(0, 4):
             genoclass.bengal += '0'
 
         for i in range(0, 4):
-            genoclass.sokoke += '0'
+            genoclass.sokoke += '2'
         
         genoclass.breeds["Pixie-Bob"] = 100
         return genoclass

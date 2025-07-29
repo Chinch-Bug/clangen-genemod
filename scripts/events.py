@@ -2222,7 +2222,6 @@ class Events:
         
         # disaster death chance
         if get_clan_setting("disasters"):
-            living_cats = get_living_clan_cat_count(Cat, clan.enum)
             if not random.getrandbits(10):  # 1/1010
                 handle_short_events.handle_event(
                     event_type="birth_death",
