@@ -3593,7 +3593,7 @@ def generate_sprite(
                     phenotype.SpriteInfo(10)
                     nose.blit(sprites.sprites['nosecolours' + str(nose_dict.get(phenotype.maincolour[:-1]))], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                     phenotype.SpriteInfo(sprite_age)
-                elif maincolour != spritecolour and "masked" not in phenotype.silvergold:
+                elif maincolour != spritecolour and "masked" not in phenotype.silvergold and "charcoal" not in phenotype.tabtype:
                     nose.blit(sprites.sprites['nosecolours2'], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                     nose.set_alpha(200)
                 else:
