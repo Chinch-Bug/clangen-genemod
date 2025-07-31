@@ -564,9 +564,9 @@ class Breed_generator:
     def Bengal(genoclass, special):
         genoclass = Breed_generator.AllColours(genoclass, special)
 
-        if self.odds["dense_blotched"] > 0 and randint(1, self.odds["dense_blotched"]) == 1:
-            self.sheeted = True
-            
+        if genoclass.odds["dense_blotched"] > 0 and randint(1, genoclass.odds["dense_blotched"]) == 1:
+            genoclass.sheeted = True
+
         # FUR LENGTH
         
         a = randint(1, 10)
