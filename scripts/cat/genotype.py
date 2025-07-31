@@ -40,6 +40,7 @@ class Genotype:
         self.mack = ["", ""]
         self.ticked = ["", ""]
         self.breakthrough = False
+        self.sheeted = False
 
         self.wirehair = ["wh", "wh"]
         self.laperm = ["lp", "lp"]
@@ -175,6 +176,7 @@ class Genotype:
         self.mack = jsonstring["mack"]
         self.ticked = jsonstring["ticked"]
         self.breakthrough = jsonstring["breakthrough"]
+        self.sheeted = jsonstring.get("sheeted", False)
 
         self.wirehair = jsonstring["wirehair"]
         self.laperm = jsonstring["laperm"]
@@ -270,6 +272,7 @@ class Genotype:
             "mack" : self.mack,
             "ticked" : self.ticked,
             "breakthrough" : self.breakthrough,
+            "sheeted" : self.sheeted,
 
             "wirehair" : self.wirehair,
             "laperm" : self.laperm,
@@ -435,6 +438,9 @@ class Genotype:
 
         if self.odds["breakthrough"] > 0 and randint(1, self.odds["breakthrough"]) == 1:
             self.breakthrough = True
+
+        if self.odds["dense_blotched"] > 0 and randint(1, self.odds["dense_blotched"]) == 1:
+            self.sheeted = True
 
         self.pangere = choice([None, None,
                               "pangere small 1", "pangere small 1", "pangere small 1",
@@ -1124,8 +1130,25 @@ class Genotype:
         self.mack = [choice(par1.mack), choice(par2.mack)]
         self.ticked = [choice(par1.ticked), choice(par2.ticked)]
 
-        if self.odds["breakthrough"] > 0 and randint(1, self.odds["breakthrough"]) == 1:
-            self.breakthrough = True
+        
+
+        if self.odds["breakthrough"] <= 0:
+            pass
+        elif (par1.breakthrough and par2.breakthrough):
+            self.breakthrough = randint(1, round((self.odds["breakthrough"]/4))) == 1
+        elif(par1.breakthrough or par2.breakthrough):
+            self.breakthrough = randint(1, round((self.odds['breakthrough']/2))) == 1
+        else:
+            self.breakthrough = randint(1, self.odds['breakthrough']) == 1
+
+        if self.odds["dense_blotched"] <= 0:
+            pass
+        elif (par1.dense_blotched and par2.dense_blotched):
+            self.sheeted = randint(1, round((self.odds["dense_blotched"]/4))) == 1
+        elif(par1.breakthrough or par2.breakthrough):
+            self.sheeted = randint(1, round((self.odds['dense_blotched']/2))) == 1
+        else:
+            self.sheeted = randint(1, self.odds['dense_blotched']) == 1
 
         self.wirehair = [choice(par1.wirehair), choice(par2.wirehair)]
         self.laperm = [choice(par1.laperm), choice(par2.laperm)]

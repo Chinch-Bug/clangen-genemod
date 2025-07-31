@@ -226,15 +226,17 @@ class Sprites:
 
         # genemod tabby patterns
 
-        for a, i in enumerate(['mackerel', 'brokenmack', 'spotted', 'classic', 'fullbar']):
+        for a, i in enumerate(['mackerel', 'brokenmack', 'spotted', 'blotched', 'fullbar', 'fullbaralt']):
             self.make_group('Other/tabbypatterns', (a, 0), f'{i}')
-        for a, i in enumerate(['braided', 'brokenbraid', 'rosetted', 'marbled', 'redbar']):
+        for a, i in enumerate(['braided', 'brokenbraid', 'rosetted', 'marbled', 'redbar', 'redbaralt']):
             self.make_group('Other/tabbypatterns', (a, 1), f'{i}')
-        for a, i in enumerate(['pinstripe', 'brokenpins', 'servaline', 'fullbarc', 'agouti']):
+        for a, i in enumerate(['pinstripe', 'brokenpins', 'servaline', 'blotchtail', 'agouti']):
             self.make_group('Other/tabbypatterns', (a, 2), f'{i}')
-        for a, i in enumerate(['pinsbraided', 'brokenpinsbraid', 'leopard', 'redbarc', 'charcoal']):
+        for a, i in enumerate(['pinsbraided', 'brokenpinsbraid', 'leopard', 'blotchbar', 'pinsbar', 'charcoal']):
             self.make_group('Other/tabbypatterns', (a, 3), f'{i}')
-        
+        for a, i in enumerate(['macktail', 'bengtail', 'partialrosetted', 'sheeted', 'goldengradient', 'tabbypads']):
+            self.make_group('Other/tabbypatterns', (a, 4), f'{i}')
+
         #genemod point markings
 
         self.make_group('points_spring', (0, 0), 'pointsm')

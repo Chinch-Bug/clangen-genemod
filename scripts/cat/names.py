@@ -388,7 +388,7 @@ class Name:
                         appearance += self.mod_suffixes['other']['appearance'].get('ticked', [])
                     if 'spotted' in self.phenotype.tabby or 'servaline' in self.phenotype.tabby:
                         appearance += self.mod_suffixes['other']['appearance'].get('spotted', [])
-                    if 'classic' in self.phenotype.tabby or 'marbled' in self.phenotype.tabby:
+                    if ('blotched' in self.phenotype.tabby or 'marbled' in self.phenotype.tabby) and "sheeted" not in self.phenotype.tabby:
                         appearance += self.mod_suffixes['other']['appearance'].get('swirled', [])
                     if 'mackerel' in self.phenotype.tabby or 'braided' in self.phenotype.tabby or 'pinstripe' in self.phenotype.tabby:
                         appearance += self.mod_suffixes['other']['appearance'].get('striped', [])
@@ -438,7 +438,7 @@ class Name:
                             pelt.append("Ticked")
                     if 'spotted' in self.phenotype.tabby or 'servaline' in self.phenotype.tabby:
                         pelt.append("Spotted")
-                    if 'classic' in self.phenotype.tabby or 'marbled' in self.phenotype.tabby:
+                    if ('blotched' in self.phenotype.tabby or 'marbled' in self.phenotype.tabby) and "sheeted" not in self.phenotype.tabby:
                         pelt.append("Classic")
                     if 'mackerel' in self.phenotype.tabby or 'braided' in self.phenotype.tabby or 'pinstripe' in self.phenotype.tabby:
                         pelt.append("Mackerel")

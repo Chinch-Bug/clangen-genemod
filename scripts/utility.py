@@ -3307,83 +3307,152 @@ def generate_sprite(
                 phenotype.SpriteInfo(sprite_age)
                 phenotype.silver = old_silver
                 
-            def CreateStripes(stripecolour, whichbase, coloursurface=None, pattern=None, special = None):
-                notred = ('red' not in stripecolour and 'cream' not in stripecolour and 'honey' not in stripecolour and 'ivory' not in stripecolour and 'apricot' not in stripecolour)
-                stripebase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                
-                if not pattern and not special and 'solid' not in whichbase:
-                    if('chinchilla' in whichbase):
-                        stripebase.blit(sprites.sprites['chinchillashading' + cat_sprite], (0, 0))   
-                    elif('shaded' in whichbase):
-                        stripebase.blit(sprites.sprites['shadedshading' + cat_sprite], (0, 0))       
-                    else:           
-                        stripebase.blit(sprites.sprites[phenotype.wbtype + 'shading' + cat_sprite], (0, 0))      
+            def CreateStripes(stripecolour, whichbase, coloursurface=None, preset_pattern=None, special=None):
+                stripebase = pygame.Surface(
+                    (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
 
-                if pattern:
-                    stripebase.blit(sprites.sprites[pattern + cat_sprite], (0, 0))
+                if not preset_pattern and not special and 'solid' not in whichbase:
+                    if ('chinchilla' in whichbase):
+                        stripebase.blit(
+                            sprites.sprites['chinchillashading' + cat_sprite], (0, 0))
+                    elif ('shaded' in whichbase):
+                        stripebase.blit(
+                            sprites.sprites['shadedshading' + cat_sprite], (0, 0))
+                    else:
+                        stripebase.blit(
+                            sprites.sprites[phenotype.wbtype + 'shading' + cat_sprite], (0, 0))
+
+                not_red = (
+                    'red' not in stripecolour and 'cream' not in stripecolour and 'honey' not in stripecolour and 'ivory' not in stripecolour and 'apricot' not in stripecolour)
+
+                if preset_pattern:
+                    for pat in preset_pattern:
+                        stripebase.blit(
+                            sprites.sprites[pat + cat_sprite], (0, 0))
                 elif 'ghost' in phenotype.tabby:
-                    ghoststripes = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                    ghoststripes.blit(sprites.sprites[phenotype.GetTabbySprite() + cat_sprite], (0, 0))
+                    ghoststripes = pygame.Surface(
+                        (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                    ghoststripes.blit(
+                        sprites.sprites[phenotype.GetTabbySprite()[0] + cat_sprite], (0, 0))
                     ghoststripes.set_alpha(25)
                     stripebase.blit(ghoststripes, (0, 0))
-                    stripebase.blit(sprites.sprites[phenotype.GetTabbySprite(special='ghost') + cat_sprite], (0, 0))
-                else:    
-                    stripebase.blit(sprites.sprites[phenotype.GetTabbySprite() + cat_sprite], (0, 0))
+                    pattern = phenotype.GetTabbySprite(special='ghost')
+                    for pat in pattern:
+                        stripebase.blit(
+                            sprites.sprites[pat + cat_sprite], (0, 0))
+                else:
+                    pattern = phenotype.GetTabbySprite()
+                    for pat in pattern:
+                        stripebase.blit(
+                            sprites.sprites[pat + cat_sprite], (0, 0))
+                        if (phenotype.bengtype == "mild bengal") and pat in ["braided", "brokenbraid"]:
+                            stripebase2 = pygame.Surface(
+                                (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                            stripebase2.blit(
+                                sprites.sprites[pat + cat_sprite], (0, 0))
+                            stripebase2.set_alpha(127)
+                            stripebase.blit(stripebase2, (0, 0))
+                    if pattern[0] in ["marbled", "blotched"] and phenotype.sheeted:
+                        stripebase.blit(
+                            sprites.sprites["sheeted" + cat_sprite], (0, 0))
 
-                charc = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                charc_shading = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                if(phenotype.agouti[0] == "Apb" and notred and hasattr(phenotype, "banding")):
-                    charc_shading.blit(sprites.sprites['lightbasecolours0'], (0, 0))
-                    modifiers = {
-                        "chinchilla" : 2,
-                        "shaded" : 3,
-                        "high" : 5,
-                        "medium" : 6,
-                        "low" : 7
-                    }
-                    opacity = int(25 * (modifiers.get(phenotype.banding, 5) / (1 * (int("silver" in whichbase) + 1))))
-                    charc_shading.set_alpha(opacity)
-                    charc.blit(charc_shading, (0, 0))
-                    charc.blit(sprites.sprites['charcoal' + cat_sprite], (0, 0))
-                
-                if(phenotype.agouti == ["Apb", "Apb"]):
-                    charc.set_alpha(125)
+                if not_red:
+                    stripebase.blit(
+                        sprites.sprites["tabbypads" + cat_sprite], (0, 0))
+
+                charc = pygame.Surface(
+                    (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                charc_shading = pygame.Surface(
+                    (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                if (phenotype.agouti[0] == "Apb" and not_red):
+                    if special != "no_shading":
+                        charc_shading.blit(
+                            sprites.sprites['lightbasecolours0'], (0, 0))
+                        modifiers = {
+                            "chinchilla": 2,
+                            "shaded": 3,
+                            "high": 5,
+                            "medium": 6,
+                            "low": 7
+                        }
+                        opacity = int(
+                            25 * (modifiers.get(phenotype.banding, 5) / (1 * (int("silver" in whichbase) + 1))))
+                        charc_shading.set_alpha(opacity)
+                        charc.blit(charc_shading, (0, 0))
+                    charc.blit(
+                        sprites.sprites['charcoal' + cat_sprite], (0, 0))
+                    if not preset_pattern and "fullbar" not in pattern[0] and "redbar" not in pattern[0]:
+                        charc.blit(
+                            sprites.sprites[pattern[0] + cat_sprite], (0, 0))
+
+                    if (phenotype.agouti == ["Apb", "Apb"]):
+                        charc.set_alpha(191)
                 stripebase.blit(charc, (0, 0))
 
+                if 'chinchilla' in whichbase or 'shaded' in whichbase:
+                    golden_gradient = pygame.Surface(
+                        (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                    golden_gradient2 = pygame.Surface(
+                        (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                    golden_gradient2.blit(
+                        sprites.sprites["goldengradient" + cat_sprite], (0, 0))
+
+                    if 'chinchilla' in whichbase:
+                        golden_gradient2.set_alpha(150)
+                    if 'shaded' in whichbase:
+                        if phenotype.corin[0] != "N":
+                            golden_gradient2.set_alpha(200)
+                    golden_gradient.blit(golden_gradient2, (0, 0))
+
+                    stripebase.blit(golden_gradient, (0, 0),
+                                    special_flags=pygame.BLEND_RGBA_MIN)
+                    golden_gradient = pygame.Surface(
+                        (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                    golden_gradient.fill((255, 255, 255))
+                    stripebase.blit(golden_gradient, (0, 0),
+                                    special_flags=pygame.BLEND_RGB_MAX)
+
                 if coloursurface:
-                    stripebase.blit(coloursurface, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    stripebase.blit(coloursurface, (0, 0),
+                                    special_flags=pygame.BLEND_RGBA_MULT)
                 elif 'basecolours' in stripecolour:
-                    stripebase.blit(sprites.sprites[stripecolour], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    stripebase.blit(
+                        sprites.sprites[stripecolour], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                 else:
-                    surf = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                    surf.blit(sprites.sprites[stripecolourdict.get(stripecolour[:-1], stripecolour[:-1])+stripecolour[-1]], (0, 0))
-                    if phenotype.caramel == 'caramel' and not ('red' in stripecolour or 'cream' in stripecolour or 'honey' in stripecolour or 'ivory' in stripecolour or 'apricot' in stripecolour):    
+                    surf = pygame.Surface(
+                        (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                    surf.blit(sprites.sprites[stripecolourdict.get(
+                        stripecolour[:-1], stripecolour[:-1])+stripecolour[-1]], (0, 0))
+                    if phenotype.caramel == 'caramel' and not ('red' in stripecolour or 'cream' in stripecolour or 'honey' in stripecolour or 'ivory' in stripecolour or 'apricot' in stripecolour):
                         surf.blit(sprites.sprites['caramel0'], (0, 0))
 
-                    stripebase.blit(surf, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
-                
-                middle = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                if(phenotype.soktype == "full sokoke" and not pattern and 'agouti' not in phenotype.tabby):
+                    stripebase.blit(
+                        surf, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+
+                middle = pygame.Surface(
+                    (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                if (phenotype.soktype == "full sokoke" and not preset_pattern and 'agouti' not in phenotype.tabby):
                     middle.blit(stripebase, (0, 0))
-                    stripebase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                    stripebase = pygame.Surface(
+                        (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                     middle.set_alpha(150)
                     stripebase.blit(middle, (0, 0))
-                    middle = CreateStripes(stripecolour, whichbase, coloursurface, pattern=phenotype.GetTabbySprite(special='redbar'))
+                    middle = CreateStripes(
+                        stripecolour, whichbase, coloursurface, special="no_shading", preset_pattern=phenotype.GetTabbySprite(special='redbar'))
                     stripebase.blit(middle, (0, 0))
-                elif(phenotype.soktype == "mild fading" and not pattern and 'agouti' not in phenotype.tabby):
+                elif (phenotype.soktype == "mild fading" and not preset_pattern and 'agouti' not in phenotype.tabby):
                     middle.blit(stripebase, (0, 0))
-                    stripebase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                    stripebase = pygame.Surface(
+                        (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                     middle.set_alpha(204)
                     stripebase.blit(middle, (0, 0))
-                    middle = CreateStripes(stripecolour, whichbase, coloursurface, pattern=phenotype.GetTabbySprite(special='redbar'))
+                    middle = CreateStripes(
+                        stripecolour, whichbase, coloursurface, special="no_shading", preset_pattern=phenotype.GetTabbySprite(special='redbar'))
                     stripebase.blit(middle, (0, 0))
-
-                # if cat.phenotype.furLength[0] == 'l':
-                #     stripebase = pygame.transform.box_blur(stripebase, 1)
 
                 return stripebase
 
-            def TabbyBase(whichcolour, whichbase, cat_unders, special = None):
+            def TabbyBase(whichcolour, whichbase, cat_unders, special=None):
                 is_red = ('red' in whichcolour or 'cream' in whichcolour or 'honey' in whichcolour or 'ivory' in whichcolour or 'apricot' in whichcolour)
                 whichmain = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 whichmain.blit(sprites.sprites[whichbase], (0, 0))
@@ -3443,29 +3512,13 @@ def generate_sprite(
             def AddStripes(whichmain, whichcolour, whichbase, coloursurface=None):
                 stripebase = pygame.Surface(
                     (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                if ((phenotype.corin[0] != 'N' and phenotype.wbtype == "shaded") or phenotype.wbtype == 'chinchilla'):
-                    stripebase = CreateStripes(
-                        whichcolour, whichbase, coloursurface=coloursurface)
-                    stripebase.set_alpha(100)
-                elif (phenotype.wbtype == "shaded" or phenotype.corin[0] != 'N'):
-                    stripebase = CreateStripes(
-                        phenotype.FindRed(phenotype, sprite_age)[0], phenotype.FindRed(phenotype, sprite_age)[1], coloursurface=coloursurface)
-                    stripebase.set_alpha(50)
-                    whichmain.blit(stripebase, (0, 0))
-                    stripebase = CreateStripes(
-                        whichcolour, whichbase, coloursurface=coloursurface)
-                    stripebase.set_alpha(100)
-                    whichmain.blit(stripebase, (0, 0))
-                    stripebase = CreateStripes(
-                        whichcolour, whichbase, pattern="agouti", coloursurface=coloursurface)
-                    stripebase.set_alpha(200)
-                elif (('ec' in phenotype.ext or (phenotype.ext[0] == 'ea' and ((sprite_age > 7 and phenotype.ext[0] != "a") or sprite_age > 19))) and 'Eg' not in phenotype.ext and not ('red' in whichcolour or 'cream' in whichcolour or 'honey' in whichcolour or 'ivory' in whichcolour or 'apricot' in whichcolour)):
+                if (('ec' in phenotype.ext or (phenotype.ext[0] == 'ea' and ((sprite_age > 7 and phenotype.ext[0] != "a") or sprite_age > 19))) and 'Eg' not in phenotype.ext and not ('red' in whichcolour or 'cream' in whichcolour or 'honey' in whichcolour or 'ivory' in whichcolour or 'apricot' in whichcolour)):
                     stripebase = CreateStripes(
                         whichcolour, whichbase, coloursurface=coloursurface)
                     stripebase.set_alpha(200)
                     whichmain.blit(stripebase, (0, 0))
                     stripebase = CreateStripes(
-                        whichcolour, whichbase, coloursurface=coloursurface, pattern='agouti')
+                        whichcolour, whichbase, coloursurface=coloursurface, preset_pattern=['agouti'])
                 else:
                     stripebase.blit(CreateStripes(
                         whichcolour, whichbase, coloursurface=coloursurface), (0, 0))
@@ -3819,7 +3872,7 @@ def generate_sprite(
                             if phenotype.length != "longhaired":
                                 stripebase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                             
-                                stripebase.blit(CreateStripes(whichcolour.replace("black", "cinnamon"), 'solid', pattern="fullbar"), (0, 0))
+                                stripebase.blit(CreateStripes(whichcolour.replace("black", "cinnamon"), 'solid', preset_pattern=["fullbar"]), (0, 0))
                                 stripebase.set_alpha(150)
 
                                 whichmain.blit(stripebase, (0, 0))
