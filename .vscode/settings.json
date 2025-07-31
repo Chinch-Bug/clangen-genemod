@@ -59,5 +59,6 @@
         "Twolegs",
         "ujson",
         "verdana"
-    ]
+    ],
+    "json.format.keepLines": true
 }

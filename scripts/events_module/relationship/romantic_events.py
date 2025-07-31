@@ -693,7 +693,7 @@ class RomanticEvents:
         # Moving on, not breakups, occur when one mate is dead or outside.
         if (
             (not cat_from.status.is_any_clan_group() and (cat_from.status.is_lost() or cat_from.status.is_exiled()))
-            or not (cat_to.status.is_any_clan_group() and (cat_to.status.is_lost() or cat_to.status.is_exiled()))
+            or (not cat_to.status.is_any_clan_group() and (cat_to.status.is_lost() or cat_to.status.is_exiled()))
         ):
             return False
 
