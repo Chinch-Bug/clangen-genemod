@@ -540,7 +540,7 @@ class RomanticEvents:
             relationship_from.comfortable -= 10
 
         text = choice(RomanticEvents.BREAKUP_STRINGS[breakup_type])
-        text = event_text_adjust(Cat, text, main_cat=cat_from, random_cat=cat_to, clan=cat_from.group)
+        text = event_text_adjust(Cat, text, main_cat=cat_from, random_cat=cat_to, clan=cat_from.status.group)
         clan = cat_from.status.group.fetch_clan_object(game.clan)
         other_clan = cat_to.status.group.fetch_clan_object(game.clan)
         game.cur_events_list.append(
