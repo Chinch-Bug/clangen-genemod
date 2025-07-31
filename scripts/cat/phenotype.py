@@ -566,11 +566,7 @@ class Phenotype(Genotype):
             all_patterns.append(tail)
 
         return all_patterns
-
-
-                
-
-        return pattern     
+  
     def ChooseTortiePattern(self, spec = None):
         self.def_tortie_low_patterns = ['DELILAH', 'MOTTLED', 'EYEDOT', 'BANDANA', 'SMUDGED', 'EMBER', 'BRINDLE', 'SAFI', 'BELOVED', 'BODY', 
                                     'SHILOH', 'FRECKLED']

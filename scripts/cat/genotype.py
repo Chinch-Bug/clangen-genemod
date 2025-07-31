@@ -1143,9 +1143,9 @@ class Genotype:
 
         if self.odds["dense_blotched"] <= 0:
             pass
-        elif (par1.dense_blotched and par2.dense_blotched):
+        elif (par1.sheeted and par2.sheeted):
             self.sheeted = randint(1, round((self.odds["dense_blotched"]/4))) == 1
-        elif(par1.breakthrough or par2.breakthrough):
+        elif (par1.sheeted or par2.sheeted):
             self.sheeted = randint(1, round((self.odds['dense_blotched']/2))) == 1
         else:
             self.sheeted = randint(1, self.odds['dense_blotched']) == 1
