@@ -28,6 +28,7 @@ from scripts.utility import (
     change_relationship_values,
     find_alive_cats_with_rank,
     adjust_list_text,
+    get_living_clan_cat_count,
 )
 
 
@@ -1866,13 +1867,10 @@ class Pregnancy_Events:
         # POPULATION EQUALIZER
         # - increase chance of new litters if secondary clans smaller than main Clan
         if clan != game.clan:
-            main_clan_living_cats = len(
-                [
-                    i for i in Cat.all_cats.values()
-                    if i.status.alive_in_player_clan
-                ]
-            )
+            main_clan_living_cats = get_living_clan_cat_count(Cat)
             ratio = living_cats / (main_clan_living_cats or 1)
+            if ratio < 0.33:
+                inverse_chance = int(inverse_chance * ratio / 2)
             if ratio < 0.5:
                 inverse_chance = int(inverse_chance * ratio)
             elif ratio < 0.75:
