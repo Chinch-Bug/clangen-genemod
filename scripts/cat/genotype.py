@@ -65,6 +65,7 @@ class Genotype:
 
         self.curl = ["cu", "cu"]
         self.fold = ["fd", "fd"]
+        self.fourear = ["Dup", "Dup"]
         self.manx = ["ab", "ab"]
         self.manxtype = choice(["long", "most", "most", "stubby", "stubby", "stubby", "stubby", "stubby", "stubby", "stumpy", "stumpy", "stumpy", "stumpy", "stumpy", "stumpy", "stumpy", "stumpy", "riser", "riser", "riser", "riser", "riser", "riser", "riser", "riser", "riser", "rumpy", "rumpy", "rumpy", "rumpy", "rumpy", "rumpy", "rumpy", "rumpy", "rumpy", "rumpy"])
         self.kab = ["Kab", "Kab"]
@@ -201,6 +202,7 @@ class Genotype:
     
         self.curl = jsonstring["curl"]
         self.fold = jsonstring["fold"]
+        self.fourear = jsonstring.get("fourear", ["Dup", "Dup"])
         self.manx = jsonstring["manx"]
         self.manxtype = jsonstring["manxtype"]
         self.kab = jsonstring["kab"]
@@ -297,6 +299,7 @@ class Genotype:
 
             "curl" : self.curl,
             "fold" : self.fold,
+            "fourear": self.fourear,
             "manx" : self.manx,
             "manxtype" : self.manxtype,
             "kab" : self.kab,
@@ -435,6 +438,10 @@ class Genotype:
                 self.ticked[i] = "Ta"
             else:
                 self.ticked[i] = "ta"
+
+        # DOUBLE EARS
+            if self.odds["four_ears"] > 0 and randint(1, self.odds["four_ears"]) == 1:
+                self.fourear[i] = "dup"
 
         if self.odds["breakthrough"] > 0 and randint(1, self.odds["breakthrough"]) == 1:
             self.breakthrough = True
@@ -1180,6 +1187,7 @@ class Genotype:
 
         self.curl = [choice(par1.curl), choice(par2.curl)]
         self.fold = [choice(par1.fold), choice(par2.fold)]
+        self.fourear = [choice(par1.fourear), choice(par2.fourear)]
         
         self.manx = [choice(par1.manx), choice(par2.manx)]
         self.kab = [choice(par1.kab), choice(par2.kab)]
@@ -1579,7 +1587,7 @@ class Genotype:
         for gene in ["furLength", "dilute", 'silver', 'mack', 'ticked',
                      'wirehair', 'laperm', 'cornish', 'urals', 'tenn', 'fleece', 'ruhr', 'lykoi',
                      'pinkdilute', 'dilutemd', 'karp', 'bleach', 'ghosting', 'satin', 'glitter',
-                     'curl', 'fold', 'kab', 'toybob', 'jbob', 'kub', 'ring', 'munch', 'poly']:
+                     'curl', 'fold', "fourear", 'kab', 'toybob', 'jbob', 'kub', 'ring', 'munch', 'poly']:
             if self[gene][0] != self[gene][1] and self[gene][0].islower():
                 self[gene][0], self[gene][1] = self[gene][1], self[gene][0]
         for gene in self.april_fools.keys():
@@ -1988,11 +1996,11 @@ class Genotype:
             for x in [self.pinkdilute, self.dilutemd, self.ext, self.corin, self.karp, self.bleach, self.ghosting, self.satin, self.glitter]:
                 if x[0] != x[1] or x[0] not in ['Dp', 'dm', 'E', 'N', 'k', 'Lb', 'gh', 'St', 'Gl']:
                     self.Other_Colour.append(x)
-            for x in [self.curl, self.fold, self.manx, self.kab, self.toybob, self.jbob, self.kub, self.ring, self.munch, self.poly, self.pax3]:
+            for x in [self.curl, self.fold, self.fourear, self.manx, self.kab, self.toybob, self.jbob, self.kub, self.ring, self.munch, self.poly, self.pax3]:
                 if x == self.manx:
                     if x[0] == 'M' or x[0] == 'Ab':
                         self.Body_Genes.append(x)
-                elif x[0] != x[1] or x[0] not in ['cu', 'fd', 'm', 'ab', 'Kab', 'tb', 'Jb', 'kub', 'Rt', 'mk', 'pd', 'NoDBE']:
+                elif x[0] != x[1] or x[0] not in ['cu', 'fd', 'Dup', 'm', 'ab', 'Kab', 'tb', 'Jb', 'kub', 'Rt', 'mk', 'pd', 'NoDBE']:
                     self.Body_Genes.append(x)
             for x in self.april_fools.values():
                 if x[0] != x[1] or not x[0].islower():
@@ -2000,7 +2008,7 @@ class Genotype:
         else:
             self.Fur_Genes = [self.wirehair, self.laperm, self.cornish, self.urals, self.tenn, self.fleece, self.sedesp, self.ruhr, self.ruhrmod, self.lykoi]
             self.Other_Colour = [self.pinkdilute, self.dilutemd, self.ext, self.corin, self.karp, self.bleach, self.ghosting, self.satin, self.glitter]
-            self.Body_Genes = [self.curl, self.fold, self.manx, self.kab, self.toybob, self.jbob, self.kub, self.ring, self.munch, self.poly, self.pax3]
+            self.Body_Genes = [self.curl, self.fold, self.fourear, self.manx, self.kab, self.toybob, self.jbob, self.kub, self.ring, self.munch, self.poly, self.pax3]
             april_fools_output = [self.april_fools.values()]
         self.Polygenes = ["Wideband:", self.wideband, self.wbtype, "Rufousing:", self.rufousing, self.ruftype, "Underbelly rufousing:", self.unders_ruf, self.unders_ruftype, "Saturation:", self.saturation, "Bengal:", self.bengal, self.bengtype, "Sokoke:", self.sokoke, self.soktype, "Spotted:", self.spotted, self.spottype, "Ticked:", self.tickgenes, self.ticktype, "Refraction:", self.refraction, "Pigmentation:", self.pigmentation]
 
@@ -2023,7 +2031,7 @@ class Genotype:
             self.MainCoatmutation()
 
     def Bodymutation(self):
-        whichgene = ["curl", "fold", "manx", "karel", "kuril", "toybob", "japanese", "ringtail", "munchkin", "polydactyl", "polydactyl", "polydactyl", "polydactyl"]
+        whichgene = ["curl", "fold", "fourear", "manx", "karel", "kuril", "toybob", "japanese", "ringtail", "munchkin", "polydactyl", "polydactyl", "polydactyl", "polydactyl"]
         
         if self.ban_genes:
             whichgene.remove("fold")
@@ -2043,6 +2051,13 @@ class Genotype:
                 self.fold[0] = 'Fd'
             elif(self.fold[1] == 'fd'):
                 self.fold[1] = 'Fd'
+            else:
+                self.Mutate()
+        elif(which == 'fourear'):
+            if(self.fourear[1] == 'Dup'):
+                self.fourear[1] = 'dup'
+            elif(self.fourear[0] == 'Dup'):
+                self.fourear[0] = 'dup'
             else:
                 self.Mutate()
         elif(which == 'manx'):

@@ -575,6 +575,7 @@ dev_tools = false
   het_dom_white_one_blue_eye = 10
   homo_dom_white_one_blue_eye = 3
 
+  # All genes are 1/x chances. They can be set to 0 to prevent it from appearing at all
   longhair = 2
   cinnamon = 30
   chocolate = 15
@@ -624,6 +625,7 @@ dev_tools = false
 
   curl = 300
   fold = 300
+  four_ears = 300
   manx = 300
   "american bobtail" = 300
   "karelian bobtail" = 500

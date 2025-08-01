@@ -349,13 +349,19 @@ class Phenotype(Genotype):
     def EarFinder(self):
         self.eartype = ""
 
-        if(self.fold[0] == 'Fd'):
-            self.eartype += 'folded'
-            if(self.curl[0] == 'Cu'):
-                self.eartype += ' back'
-            self.eartype += ' ears'
-        elif(self.curl[0] == 'Cu'):
-            self.eartype = 'curled back ears' 
+        if self.fourear[0] == "dup":
+            self.eartype = "four "
+
+        if self.fold[0] == 'Fd':
+            self.eartype += "folded "
+        if self.curl[0] == 'Cu':
+            if self.fold[0] != 'Fd':
+                self.eartype += "curled "
+            self.eartype += "back "
+
+        if self.eartype:
+            self.eartype += "ears"
+        
     def LegFinder(self):
         self.pawtype = ""
 
@@ -535,25 +541,25 @@ class Phenotype(Genotype):
         else:
             if (self.bengtype == "normal markings"):
                 if (self.spotsum < 3):
-                    all_patterns = ['mackerel', 'fullbar']
+                    all_patterns = ['mackerel', 'fullbaralt']
                 elif (self.spotsum < 6):
-                    all_patterns = ['brokenmack', 'fullbar']
+                    all_patterns = ['brokenmack', 'fullbaralt']
                 else:
-                    all_patterns = ['spotted', 'fullbar']
+                    all_patterns = ['spotted', 'fullbaralt']
             elif (self.bengtype == "mild bengal"):
                 if (self.spotsum < 3):
-                    all_patterns = ['braided', 'fullbar']
+                    all_patterns = ['braided', 'fullbaralt']
                 elif (self.spotsum < 6):
-                    all_patterns = ['brokenbraid', 'fullbar']
+                    all_patterns = ['brokenbraid', 'fullbaralt']
                 else:
-                    all_patterns = ['partialrosetted', 'fullbar']
+                    all_patterns = ['partialrosetted', 'fullbaralt']
             else:
                 if (self.spotsum < 3):
-                    all_patterns = ['braided', 'fullbar']
+                    all_patterns = ['braided', 'fullbaralt']
                 elif (self.spotsum < 6):
-                    all_patterns = ['brokenbraid', 'fullbar']
+                    all_patterns = ['brokenbraid', 'fullbaralt']
                 else:
-                    all_patterns = ['rosetted', 'fullbar']
+                    all_patterns = ['rosetted', 'fullbaralt']
 
         if all_patterns[0] != "agouti":
             if self.bengtype != "normal markings":
