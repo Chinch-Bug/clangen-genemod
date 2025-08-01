@@ -773,7 +773,7 @@ def create_new_cat_block(
     # Now we generate the new cat
     if not chosen_cat:
         generated_parents = []
-        if rank in (CatRank.KITTEN, CatRank.NEWBORN) or parent1:
+        if rank in (CatRank.KITTEN, CatRank.NEWBORN) or age in (CatRank.KITTEN, CatRank.NEWBORN) or parent1:
             generated_parents = create_bio_parents(Cat, flip=True if parent1 and 'Y' in parent1.phenotype.sexgene else False, second_parent=not parent1)
             if not parent1:
                 parent1 = generated_parents[1]
@@ -1757,7 +1757,7 @@ def filter_relationship_type(
         if len(group) != 2:
             return False
         # test for parentage
-        if not group[1].ID in group[0].apprentice:
+        if group[1].ID not in group[0].apprentice:
             return False
 
     if "not_mentor" in filter_types:
@@ -1772,8 +1772,10 @@ def filter_relationship_type(
         if len(group) != 2:
             return False
         # test for parentage
-        if not group[0].ID in group[1].apprentice:
+        if group[0].ID not in group[1].apprentice:
             return False
+
+        pass
 
     if "not_app" in filter_types:
         test_cat = group[0]
