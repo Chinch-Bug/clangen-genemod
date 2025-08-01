@@ -534,24 +534,24 @@ class Phenotype(Genotype):
                 all_patterns = ['marbled', 'blotchbar']
         else:
             if (self.bengtype == "normal markings"):
-                if (self.spotsum == 4):
-                    all_patterns = ['brokenmack', 'fullbar']
-                elif (self.spotsum < 6):
+                if (self.spotsum < 3):
                     all_patterns = ['mackerel', 'fullbar']
+                elif (self.spotsum < 6):
+                    all_patterns = ['brokenmack', 'fullbar']
                 else:
                     all_patterns = ['spotted', 'fullbar']
             elif (self.bengtype == "mild bengal"):
-                if (self.spotsum == 4):
-                    all_patterns = ['brokenbraid', 'fullbar']
-                elif (self.spotsum < 6):
+                if (self.spotsum < 3):
                     all_patterns = ['braided', 'fullbar']
+                elif (self.spotsum < 6):
+                    all_patterns = ['brokenbraid', 'fullbar']
                 else:
                     all_patterns = ['partialrosetted', 'fullbar']
             else:
-                if (self.spotsum == 4):
-                    all_patterns = ['brokenbraid', 'fullbar']
-                elif (self.spotsum < 6):
+                if (self.spotsum < 3):
                     all_patterns = ['braided', 'fullbar']
+                elif (self.spotsum < 6):
+                    all_patterns = ['brokenbraid', 'fullbar']
                 else:
                     all_patterns = ['rosetted', 'fullbar']
 
