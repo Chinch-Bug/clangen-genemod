@@ -1179,6 +1179,13 @@ def create_new_cat(
     if thought is None:
         thought = i18n.t("hardcoded.thought_new_cat")
 
+    if backstory is None:
+        if original_social == CatSocial.KITTYPET:
+            backstory = BACKSTORIES["backstory_categories"]["kittypet_backstories"]
+        if original_social == CatSocial.ROGUE:
+            backstory = BACKSTORIES["backstory_categories"]["rogue_backstories"]
+        if original_social == CatSocial.LONER:
+            backstory = BACKSTORIES["backstory_categories"]["loner_backstories"]
     if isinstance(backstory, list):
         backstory = choice(backstory)
 
@@ -1186,7 +1193,7 @@ def create_new_cat(
         backstory
         in (
             BACKSTORIES["backstory_categories"]["former_clancat_backstories"]
-            or BACKSTORIES["backstory_categories"]["otherclan_categories"]
+            or BACKSTORIES["backstory_categories"]["otherclan_backstories"]
         ) 
         and original_social == CatSocial.CLANCAT
         and not original_group
