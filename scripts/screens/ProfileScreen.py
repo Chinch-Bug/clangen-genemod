@@ -2157,7 +2157,7 @@ class ProfileScreen(Screens):
                 not self.the_cat.age.can_have_mate()
                 or self.the_cat.status.is_outsider
                 or self.the_cat.dead
-                or 'infertility' in self.the_cat.permanent_condition
+                or 'sterile' in self.the_cat.permanent_condition
             ):
                 self.predict_offspring_button.disable()
             else:
@@ -2304,7 +2304,7 @@ class ProfileScreen(Screens):
                 not self.the_cat.age.can_have_mate()
                 or self.the_cat.status.is_outsider
                 or self.the_cat.dead
-                or 'infertility' in self.the_cat.permanent_condition
+                or 'sterile' in self.the_cat.permanent_condition
             ):
                 self.predict_offspring_button.disable()
             else:

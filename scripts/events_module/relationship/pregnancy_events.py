@@ -135,22 +135,22 @@ class Pregnancy_Events:
         chance = Pregnancy_Events.get_balanced_kit_chance(cat, second_parent if second_parent else None, is_affair, clan)
         
         All_Infertile = True
-        if 'infertility' not in cat.permanent_condition:
+        if 'sterile' not in cat.permanent_condition:
             All_Infertile = False
         elif second_parent:
             for x in second_parent:
-                if x != "Surrogate" and 'infertility' not in x.permanent_condition:
+                if x != "Surrogate" and 'sterile' not in x.permanent_condition:
                     All_Infertile = False
 
         if not int(random() * chance):
             # If you've reached here - congrats, kits!
-            if kits_are_adopted or ('infertility' in cat.permanent_condition and (not second_parent or second_parent[0] != "Surrogate")) or (second_parent and All_Infertile):
+            if kits_are_adopted or ('sterile' in cat.permanent_condition and (not second_parent or second_parent[0] != "Surrogate")) or (second_parent and All_Infertile):
                 Pregnancy_Events.handle_adoption(cat, second_parent, clan)
             else:
                 surrogate = False
                 if second_parent and second_parent[0] == "Surrogate":
                     x = 1
-                    while 'infertility' in cat.permanent_condition:
+                    while 'sterile' in cat.permanent_condition:
                         cat = second_parent[x]
                         x += 1
                     if cat in second_parent:
@@ -338,7 +338,7 @@ class Pregnancy_Events:
                 possible_affair_partners = [i for i in unknowns if
                                         i.is_potential_mate(cat, for_love_interest=True, outsider=True) 
                                         and Pregnancy_Events.check_if_can_have_kits(i, True, True) 
-                                        and 'infertility' not in i.permanent_condition 
+                                        and 'sterile' not in i.permanent_condition 
                                         and (get_clan_setting('same sex birth') or xor('Y' in i.phenotype.sexgene, 'Y' in cat.phenotype.sexgene)) 
                                         and len(i.mate) == 0 and not i.birth_cooldown
                                         and i.status.group != cat.status.group]
@@ -370,7 +370,7 @@ class Pregnancy_Events:
                     backkit = 'outsider_roots2'
                     mate_age = cat.moons + randint(0, 24)-12
                     outside_parent = None
-                    while not outside_parent or 'infertility' in outside_parent.permanent_condition:
+                    while not outside_parent or 'sterile' in outside_parent.permanent_condition:
                         if outside_parent and Cat.all_cats[outside_parent.ID]:
                             del Cat.all_cats[outside_parent.ID]
                         outside_parent = create_new_cat(Cat,
@@ -700,7 +700,7 @@ class Pregnancy_Events:
             possible_affair_partners = [i for i in unknowns if
                                     i.is_potential_mate(cat, for_love_interest=True, outsider=True) 
                                     and Pregnancy_Events.check_if_can_have_kits(i, True, True) 
-                                    and 'infertility' not in i.permanent_condition 
+                                    and 'sterile' not in i.permanent_condition 
                                     and (get_clan_setting('same sex birth') or xor('Y' in i.phenotype.sexgene, 'Y' in cat.phenotype.sexgene)) 
                                     and len(i.mate) == 0
                                     and i.status.group != cat.status.group]
@@ -733,7 +733,7 @@ class Pregnancy_Events:
 
                     mate_age = cat.moons + randint(0, 24)-12
                     out_par = None
-                    while not out_par or 'infertility' in out_par.permanent_condition:
+                    while not out_par or 'sterile' in out_par.permanent_condition:
                         if out_par and Cat.all_cats[out_par.ID]:
                             del Cat.all_cats[out_par.ID]
                         out_par = create_new_cat(Cat,
@@ -1038,10 +1038,10 @@ class Pregnancy_Events:
                 return False, False, second_parent
 
             # Check to see if the pair can have kits.
-            if not xor('Y' in cat.phenotype.sexgene, 'Y' in second_parent[0].phenotype.sexgene) or ("infertility" in cat.permanent_condition or "infertility" in second_parent[0].permanent_condition):
-                if same_sex_birth and not "infertility" in second_parent[0].permanent_condition and not "infertility" in cat.permanent_condition:
+            if not xor('Y' in cat.phenotype.sexgene, 'Y' in second_parent[0].phenotype.sexgene) or ("sterile" in cat.permanent_condition or "sterile" in second_parent[0].permanent_condition):
+                if same_sex_birth and not "sterile" in second_parent[0].permanent_condition and not "sterile" in cat.permanent_condition:
                     return True, False, second_parent
-                elif surrogates and not ("infertility" in second_parent[0].permanent_condition and "infertility" in cat.permanent_condition):
+                elif surrogates and not ("sterile" in second_parent[0].permanent_condition and "sterile" in cat.permanent_condition):
                     return True, False, ["Surrogate"] + second_parent
                 elif not same_sex_adoption:
                     return False, False, second_parent
@@ -1062,7 +1062,7 @@ class Pregnancy_Events:
             second_parent_copy = []
 
             for x in second_parent:
-                if (xor('Y' in cat.phenotype.sexgene, 'Y' in x.phenotype.sexgene) or same_sex_birth) and not "infertility" in x.permanent_condition:
+                if (xor('Y' in cat.phenotype.sexgene, 'Y' in x.phenotype.sexgene) or same_sex_birth) and not "sterile" in x.permanent_condition:
                     second_parent_copy.append(x)
             
             if len(second_parent_copy) < 1:
@@ -1072,7 +1072,7 @@ class Pregnancy_Events:
                     return True, True, second_parent
                 else:
                     return False, False, second_parent
-            if "infertility" in cat.permanent_condition:
+            if "sterile" in cat.permanent_condition:
                 if surrogates:
                     return True, False, ["Surrogate"] + second_parent
                 elif same_sex_adoption:
@@ -1178,7 +1178,7 @@ class Pregnancy_Events:
                 if i.is_potential_mate(cat, for_love_interest=True)
                 and i.status.group in [cat.status.group, None]
                 and (samesex or xor('Y' in i.phenotype.sexgene, 'Y' in cat.phenotype.sexgene))
-                and "infertility" not in i.permanent_condition
+                and "sterile" not in i.permanent_condition
                 and i.ID not in cat.mate
             ]
             if special_affair:
@@ -1219,7 +1219,7 @@ class Pregnancy_Events:
         unknowns = []
         for outcat in Cat.all_cats:
             outcat = Cat.all_cats.get(outcat)
-            if not outcat.dead and not outcat.status.is_lost(clan.enum) and not outcat.status.is_exiled(clan.enum) and "infertility" not in outcat.permanent_condition:
+            if not outcat.dead and not outcat.status.is_lost(clan.enum) and not outcat.status.is_exiled(clan.enum) and "sterile" not in outcat.permanent_condition:
                 unknowns.append(outcat)
         outsiders = [i for i in unknowns if
                     i.is_potential_mate(cat, for_love_interest=True, outsider=True)
@@ -1261,7 +1261,7 @@ class Pregnancy_Events:
                 cat_type = choice([CatSocial.LONER, CatSocial.ROGUE, CatSocial.KITTYPET])
                 mate_age = cat.moons + randint(0, 24)-12
                 outside_parent = None
-                while not outside_parent or 'infertility' in outside_parent.permanent_condition:
+                while not outside_parent or 'sterile' in outside_parent.permanent_condition:
                     if outside_parent and Cat.all_cats[outside_parent.ID]:
                         del Cat.all_cats[outside_parent.ID]
                     outside_parent = create_new_cat(Cat,
@@ -1283,7 +1283,7 @@ class Pregnancy_Events:
                 if check_cand in all_cats or check_cand.dead or (check_cand.status.is_outsider and not check_cand.status.is_lost(clan.enum) and not check_cand.status.is_exiled(clan.enum) and not only_clanmate):
                     continue
                 if (x.romantic_love + x.platonic_like + x.admiration + x.trust + x.comfortable - x.dislike - x.jealousy) > 20:
-                    if Pregnancy_Events.check_if_can_have_kits(check_cand, True, True) and not check_cand.mate and xor('Y' in check_cand.phenotype.sexgene, 'Y' in cat.phenotype.sexgene) and 'infertility' not in check_cand.permanent_condition:
+                    if Pregnancy_Events.check_if_can_have_kits(check_cand, True, True) and not check_cand.mate and xor('Y' in check_cand.phenotype.sexgene, 'Y' in cat.phenotype.sexgene) and 'sterile' not in check_cand.permanent_condition:
                         possible = True
                         for couple in all_cats:
                             if not couple.is_potential_mate(check_cand):
@@ -1301,7 +1301,7 @@ class Pregnancy_Events:
                 cat_type = choice([CatSocial.LONER, CatSocial.ROGUE, CatSocial.KITTYPET])
                 mate_age = cat.moons + randint(0, 24)-12
                 outside_parent = None
-                while not outside_parent or 'infertility' in outside_parent.permanent_condition:
+                while not outside_parent or 'sterile' in outside_parent.permanent_condition:
                     if outside_parent and Cat.all_cats[outside_parent.ID]:
                         del Cat.all_cats[outside_parent.ID]
                     outside_parent = create_new_cat(Cat,
@@ -1484,7 +1484,7 @@ class Pregnancy_Events:
                     for i in range(0, nr_of_parents):
                         blood_par2 = None
                         parage = parage + randint(0, 24) - 12
-                        while not blood_par2 or 'infertility' in blood_par2.permanent_condition:
+                        while not blood_par2 or 'sterile' in blood_par2.permanent_condition:
                             if blood_par2 and Cat.all_cats[blood_par2.ID]:
                                 del Cat.all_cats[blood_par2.ID]
                             cat_type = choice([CatSocial.LONER, CatSocial.ROGUE, CatSocial.KITTYPET])

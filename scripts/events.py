@@ -856,8 +856,8 @@ class Events:
         for cat in Cat.all_cats.values():
             if not cat.status.is_lost(clan.enum):
                 continue
-            TNRed = True if ('infertility' in cat.permanent_condition and 'TNR' in cat.pelt.scars and 
-            game.clan.age - cat.permanent_condition['infertility']['moon_start'] == 1) else False
+            TNRed = True if ('sterile' in cat.permanent_condition and 'TNR' in cat.pelt.scars and 
+            game.clan.age - cat.permanent_condition['sterile']['moon_start'] == 1) else False
             if (cat.status.is_outsider
             and not cat.dead
             and TNRed):
@@ -879,7 +879,7 @@ class Events:
                 if x in Cat.all_cats:
                     Cat.all_cats[x].backstory = 'kittypet' + str(random.randint(1, 4))
                     Cat.all_cats[x].name.suffix = ''
-                    Cat.all_cats[x].get_permanent_condition("infertility", False, custom_reveal=4)
+                    Cat.all_cats[x].get_permanent_condition("sterile", False, custom_reveal=4)
         text = event_text_adjust(Cat, text, main_cat=eligible_cats[0], clan=clan.enum)
         game.cur_events_list.append(Single_Event(text, "misc", cat_IDs, clan=clan.enum))
         
@@ -899,7 +899,7 @@ class Events:
                 if cat.dead or not cat.status.is_lost(clan.enum):
                     continue
 
-                if "infertility" not in cat.permanent_condition or game.clan.age - cat.permanent_condition["infertility"]["moon_start"] > -1:
+                if "sterile" not in cat.permanent_condition or game.clan.age - cat.permanent_condition["sterile"]["moon_start"] > -1:
                     eligible_cats.append(cat)
                 elif cat.status.is_lost(clan.enum):
                     pass

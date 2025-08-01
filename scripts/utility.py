@@ -369,7 +369,7 @@ def create_bio_parents(Cat, flip=False, second_parent=True):
                                     gender='fem' if flip else 'masc',
                                     outside=True,
                                     is_parent=True)[0]
-    while 'infertility' in blood_parent.permanent_condition:
+    while 'sterile' in blood_parent.permanent_condition:
         if(blood_parent):
             del Cat.all_cats[blood_parent.ID]
         blood_parent = create_new_cat(Cat,
@@ -388,7 +388,7 @@ def create_bio_parents(Cat, flip=False, second_parent=True):
                                     gender='masc' if flip else 'fem',
                                     outside=True,
                                     is_parent=True)[0]
-        while 'infertility' in blood_parent2.permanent_condition:
+        while 'sterile' in blood_parent2.permanent_condition:
             if blood_parent2 and Cat.all_cats[blood_parent2.ID]:
                 del Cat.all_cats[blood_parent2.ID]
             blood_parent2 = create_new_cat(Cat,
@@ -801,7 +801,7 @@ def create_new_cat_block(
             is_parent= "age:has_kits" in attribute_list,
             adoptive_parents=adoptive_parents if adoptive_parents else None
             )
-        while "age:has_kits" in attribute_list and "infertility" in new_cats[0].permanent_condition:
+        while "age:has_kits" in attribute_list and "sterile" in new_cats[0].permanent_condition:
             del Cat.all_cats[new_cats[0].ID]
             new_cats[0] = create_new_cat(
                 Cat,
@@ -1377,9 +1377,9 @@ def create_new_cat(
             kittypet_n = constants.CONFIG['tnr_mode']['kittypet_neuter']
             loner_n = constants.CONFIG['tnr_mode']['loner_tnr']
             if original_social == CatSocial.KITTYPET and random() < kittypet_n:
-                new_cat.get_permanent_condition("infertility", False)
+                new_cat.get_permanent_condition("sterile", False)
             if original_social in (CatSocial.LONER, CatSocial.ROGUE) and random() < loner_n:
-                new_cat.get_permanent_condition("infertility", False)
+                new_cat.get_permanent_condition("sterile", False)
                 new_cat.pelt.scars.append("TNR")
         if not int(random() * chance):
             possible_conditions = []
@@ -3463,7 +3463,7 @@ def generate_sprite(
                 is_red = ('red' in whichcolour or 'cream' in whichcolour or 'honey' in whichcolour or 'ivory' in whichcolour or 'apricot' in whichcolour)
                 whichmain = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 whichmain.blit(sprites.sprites[whichbase], (0, 0))
-                if special !='copper' and sprite_age > 12 and (phenotype.silver[0] == 'I' and phenotype.corin[0] == 'fg' and (get_current_season() == 'Leaf-fall' or get_current_season() == 'Leaf-bare' or 'infertility' in cat.permanent_condition)):
+                if special !='copper' and sprite_age > 12 and (phenotype.silver[0] == 'I' and phenotype.corin[0] == 'fg' and (get_current_season() == 'Leaf-fall' or get_current_season() == 'Leaf-bare' or 'sterile' in cat.permanent_condition)):
                     sunshine = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                     
                     colours = phenotype.FindRed(phenotype, sprite_age, special='low')
@@ -3879,7 +3879,7 @@ def generate_sprite(
                             if phenotype.length != "longhaired":
                                 stripebase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                             
-                                stripebase.blit(CreateStripes(whichcolour.replace("black", "cinnamon"), 'solid', preset_pattern=["fullbar"]), (0, 0))
+                                stripebase.blit(CreateStripes("cinnamon2", 'solid', preset_pattern=["fullbaralt"]), (0, 0))
                                 stripebase.set_alpha(150)
 
                                 whichmain.blit(stripebase, (0, 0))

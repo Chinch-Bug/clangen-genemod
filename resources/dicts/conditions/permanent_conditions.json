@@ -664,7 +664,7 @@
     }
   },
 
-  "infertility": {
+  "sterile": {
     "severity": "minor",
     "congenital": "sometimes",
     "moons_until": 12,

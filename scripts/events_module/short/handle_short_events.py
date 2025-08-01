@@ -668,12 +668,12 @@ class HandleShortEvents:
                         if kitty.moons > 3:
                             kitty.pelt.scars.append("TNR")
                             kitty.pelt.rebuild_sprite = True
-                            kitty.get_permanent_condition("infertility", False)
+                            kitty.get_permanent_condition("sterile", False)
                             if 'pregnant' in kitty.injuries:
-                                kitty.permanent_condition['infertility']['moon_start'] += 3
+                                kitty.permanent_condition['sterile']['moon_start'] += 3
                         if kitty.moons < 4:
                             kitty.become_lost(CatSocial.KITTYPET, CatStanding.LEFT)
-                            kitty.get_permanent_condition("infertility", False, event_triggered=True, custom_reveal=randint(4, 6))
+                            kitty.get_permanent_condition("sterile", False, event_triggered=True, custom_reveal=randint(4, 6))
                 self.multi_cat.append(kitty)
                 if kitty.ID not in self.involved_cats:
                     self.involved_cats.append(kitty.ID)

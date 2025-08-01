@@ -603,9 +603,9 @@ class PatrolOutcome:
             if tnr and 'TNR' not in _cat.pelt.scars:
                 if not tnr2:
                     _cat.pelt.scars.append("TNR")
-                _cat.get_permanent_condition("infertility", False)
+                _cat.get_permanent_condition("sterile", False)
                 if 'pregnant' in _cat.injuries:
-                    _cat.permanent_condition['infertility']['moon_start'] += 3
+                    _cat.permanent_condition['sterile']['moon_start'] += 3
 
         return i18n.t(
             "screens.patrol.lost_cats",

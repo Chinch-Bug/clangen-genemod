@@ -344,7 +344,7 @@ class PredictOffspringScreen(Screens):
             for i in Cat.all_cats_list
             if i.is_potential_mate(self.selected_cat, for_love_interest=False, age_restriction=False, ignore_no_mates=True)
             and i.status.group == self.selected_cat.status.group
-            and "infertility" not in i.permanent_condition
+            and "sterile" not in i.permanent_condition
             and (get_clan_setting("same sex birth") or xor('Y' in i.phenotype.sexgene, 'Y' in self.selected_cat.phenotype.sexgene))
         ]
 

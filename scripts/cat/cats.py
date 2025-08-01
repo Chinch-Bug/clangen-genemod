@@ -638,7 +638,7 @@ class Cat:
             or (self.gender == 'intersex' and random() < 0.2) 
             or (self.gender == 'molly' and 'Y' in self.phenotype.sexgene) 
             or (self.gender == 'tom' and 'Y' not in self.phenotype.sexgene and random() > 0.001)):
-            self.get_permanent_condition('infertility', born_with=True, genetic=True)
+            self.get_permanent_condition('sterile', born_with=True, genetic=True)
         
         if self.phenotype.fold[0] == 'Fd' or ('manx syndrome' in self.permanent_condition and 'M' in self.phenotype.manx and self.phenotype.bobtailnr < 4 and self.phenotype.bobtailnr > 1 and random() < 0.05):
             if not self.phenotype.fold[1] == 'Fd':
@@ -2500,6 +2500,9 @@ class Cat:
 
             if "paralyzed" in self.permanent_condition and not self.pelt.paralyzed:
                 self.pelt.paralyzed = True
+            if "infertility" in self.permanent_condition:
+                self.permanent_condition["sterile"] = self.permanent_condition["infertility"]
+                del self.permanent_condition["infertility"]
 
         except Exception as e:
             print(
