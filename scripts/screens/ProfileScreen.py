@@ -1719,7 +1719,7 @@ class ProfileScreen(Screens):
                         text = text
 
                     if moons:
-                        text += f" ({i18n.t('general.moon_date', moon=death['moon'])})"
+                        text += f" ({i18n.t('general.moons_date', moon=death['moon'])})"
                     all_deaths.append(text)
 
             if (
@@ -1765,7 +1765,7 @@ class ProfileScreen(Screens):
 
             text = i18n.t("cat.history.murdered", name=self.the_cat.name, victims=name)
             if moons:
-                text += f" ({i18n.t('general.moon_date', moon=victim['moon'])}) "
+                text += f" ({i18n.t('general.moons_date', moon=victim['moon'])}) "
             text += f" {self.the_cat.history.get_murder_status_text(murder=victim, Cat=Cat)}"
             victim_text += f"{text}<br>"
 

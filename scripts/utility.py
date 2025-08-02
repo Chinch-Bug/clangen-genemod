@@ -1381,6 +1381,7 @@ def create_new_cat(
             if original_social in (CatSocial.LONER, CatSocial.ROGUE) and random() < loner_n:
                 new_cat.get_permanent_condition("sterile", False)
                 new_cat.pelt.scars.append("TNR")
+                new_cat.pelt.rebuild_sprite = True
         if not int(random() * chance):
             possible_conditions = []
             for condition in PERMANENT:

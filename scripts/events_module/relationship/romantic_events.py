@@ -391,7 +391,7 @@ class RomanticEvents:
 
         for x in cat.mate:
             mate_ob = Cat.fetch_cat(x)
-            if not isinstance(mate_ob, Cat):
+            if not isinstance(mate_ob, Cat) or mate_ob.dead:
                 continue
 
             flag = RomanticEvents.handle_breakup(cat, mate_ob)
