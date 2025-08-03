@@ -2364,7 +2364,6 @@ class Events:
                     event_type="birth_death",
                     main_cat=chosen_cat,
                     random_cat=cat,
-                    victim_cat=chosen_target,
                     sub_type=["murder"],
                     freshkill_pile=game.clan.freshkill_pile,
                     clan=clan,
