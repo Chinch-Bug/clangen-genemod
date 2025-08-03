@@ -775,8 +775,8 @@
       "senior adult": 75,
       "senior": 50
     },
-    "duration": 5,
-    "medicine_duration": 3,
+    "duration": 3,
+    "medicine_duration": 1,
     "infectiousness": 40,
     "risks": [
       {

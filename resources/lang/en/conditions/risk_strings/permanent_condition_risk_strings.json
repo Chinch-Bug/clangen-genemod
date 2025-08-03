@@ -212,8 +212,8 @@
   },
   "fully hairless": {
     "body sunburn": [
-      "m_c's skin is warm and red, aching from the new sunburn",
-      "m_c's skin is warm and red, aching from the new sunburn"
+      "m_c's skin is warm and red, aching from the new sunburn.",
+      "m_c's skin is warm and red, aching from the new sunburn."
     ],
     "ear infection": [
       "Without hair to keep things out of {PRONOUN/m_c/poss} ears, m_c has been complaining about pain inside them.",
