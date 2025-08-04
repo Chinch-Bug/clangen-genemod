@@ -691,7 +691,7 @@ class Events:
                 healthy_other = list(
                     filter(
                         lambda c: c.moons > 3
-                        and not c.status.alive_in_player_clan
+                        and c.status.alive_in_player_clan
                         and not c.not_working(),
                         Cat.all_cats.values(),
                     )

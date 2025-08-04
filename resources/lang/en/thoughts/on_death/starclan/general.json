@@ -36,6 +36,7 @@
             "Feels at peace knowing {PRONOUN/m_c/poss} Clanmates will care for {PRONOUN/m_c/poss} kits"
         ],
         "random_age_constraint": ["newborn"],
-        "relationship_constraint": ["parent/child"]
+        "relationship_constraint": ["parent/child"],
+        "random_living_status": ["living"]
     }
 ]
