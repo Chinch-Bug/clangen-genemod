@@ -239,6 +239,7 @@
                 "name": "a festering wound",
                 "chance": 5
             }
+
         ],
         "also_got": [
             "torn pelt"
@@ -280,6 +281,10 @@
             {
                 "name": "an infected wound",
                 "chance": 40
+            },
+            {
+                "name": "tick illness",
+                "chance": 60
             }
         ],
         "also_got": [],
@@ -1141,7 +1146,8 @@
         ],
         "also_got": [],
         "cause_permanent": [
-            "recurring shock"
+            "recurring shock",
+            "absent"
         ],
         "herbs": {
             "1": [
@@ -1270,7 +1276,8 @@
             "blind",
             "constantly dizzy",
             "partial hearing loss",
-            "persistent headaches"
+            "persistent headaches",
+            "absent"
         ],
         "herbs": {
             "1": [
@@ -1530,6 +1537,7 @@
         "also_got": [
         ],
         "cause_permanent": [
+            "absent"
         ],
         "herbs": {
             "1": [
