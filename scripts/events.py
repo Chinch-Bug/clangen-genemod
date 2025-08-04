@@ -518,7 +518,7 @@ class Events:
                                     "healer_backstories"
                                 ]
                             ):
-                                if invited_cat.status.age == CatAge.ADOLESCENT:
+                                if invited_cat.age == CatAge.ADOLESCENT:
                                     invited_cat.status._change_rank(CatRank.MEDICINE_APPRENTICE)
                                 else:
                                     invited_cat.status._change_rank(CatRank.MEDICINE_CAT)
