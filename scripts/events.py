@@ -184,13 +184,13 @@ class Events:
                             _val[0],
                             main_cat=Cat.fetch_cat(cat_id),
                             random_cat=Cat.fetch_cat(_val[1][0]),
+                            clan=Cat.fetch_cat(cat_id).status.group
                         )
 
                         Cat.fetch_cat(cat_id).thought = text
                     else:
                         game.cur_events_list.append(
-                            Single_Event(_val[0], ["birth_death", "relation"], _val[1], clan=Cat.fetch_cat(
-                                cat_id).status.group)
+                            Single_Event(_val[0], ["birth_death", "relation"], _val[1], clan=Cat.fetch_cat(cat_id).status.group)
                         )
 
             Cat.grief_strings.clear()

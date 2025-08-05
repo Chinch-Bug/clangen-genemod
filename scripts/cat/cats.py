@@ -950,7 +950,7 @@ class Cat:
 
                 text = choice(possible_strings)
                 text += " " + choice(MINOR_MAJOR_REACTION["major"])
-                text = event_text_adjust(Cat, text=text, main_cat=self, random_cat=cat, clan=self.status.group)
+                text = event_text_adjust(Cat, text=text, main_cat=self, random_cat=cat, clan=cat.status.group)
 
                 cat.get_ill("grief stricken", event_triggered=True, severity="major")
 
