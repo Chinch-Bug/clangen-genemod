@@ -1053,7 +1053,7 @@ class Condition_Events:
                     cat_dict = {"m_c": cat}
                     if cat.age == CatAge.ADOLESCENT:
                         event = i18n.t(
-                            "hardcoded.condition_retire_adolescent", name=cat.name
+                            "hardcoded.condition_retire_adolescent", name=str(cat.name)
                         )
                     elif clan.leader is not None:
                         if (

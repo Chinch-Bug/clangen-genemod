@@ -2257,7 +2257,7 @@ class Cat:
             PERMANENT = ujson.loads(read_file.read())
         if name not in PERMANENT:
             print(
-                self.name,
+                self.name if self.name else "[new cat]",
                 f"WARNING: {name} is not in the permanent conditions collection.",
             )
             return
