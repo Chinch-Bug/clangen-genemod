@@ -43,7 +43,7 @@ from ..game_structure.game.settings import game_setting_get
 from ..game_structure.game.switches import switch_set_value, switch_get_value, Switch
 from ..game_structure.localization import get_new_pronouns
 from ..game_structure.screen_settings import MANAGER
-from ..game_structure.windows import ChangeCatName, KillCat, ChangeCatToggles, SelectSingleClan
+from ..game_structure.windows import ChangeCatName, KillCat, ChangeCatToggles, ChangeCatClan
 from ..housekeeping.datadir import get_save_dir
 from ..ui.generate_box import get_box, BoxStyles
 from ..ui.generate_button import ButtonStyles, get_button_dict
@@ -312,7 +312,7 @@ class ProfileScreen(Screens):
                 else:
                     KillCat(self.the_cat)
             if hasattr(self, "change_clan_button") and event.ui_element == self.change_clan_button:
-                SelectSingleClan(self.the_cat)
+                ChangeCatClan(self.the_cat)
             elif event.ui_element == self.exile_cat_button:
                 # exiles a living cat
                 if self.the_cat.status.is_any_clan_group():
@@ -2368,12 +2368,12 @@ class ProfileScreen(Screens):
                 self.exile_cat_button.enable()
                 self.exile_cat_button.join_focus_sets(self.exile_layer)
 
-            if self.the_cat.status.is_any_clan_group():
-                if hasattr(self, "change_clan_button"):
-                    self.change_clan_button.enable()
-            else:
+            if self.the_cat.dead:
                 if hasattr(self, "change_clan_button"):
                     self.change_clan_button.disable()
+            else:
+                if hasattr(self, "change_clan_button"):
+                    self.change_clan_button.enable()
             
             if not self.the_cat == game.clan.instructor:
                 self.kill_cat_button.enable()

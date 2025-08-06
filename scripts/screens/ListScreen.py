@@ -44,6 +44,7 @@ class ListScreen(Screens):
         "screens.list.filter_id",
         "screens.list.filter_exp",
         "screens.list.filter_death",
+        "screens.list.filter_clan",
     )
     living_filter_names = (
         "screens.list.filter_rank",
@@ -177,8 +178,8 @@ class ListScreen(Screens):
                     # changing dropdown options
                     self.choose_group_dropdown.new_item_list(self.living_group_names)
                     self.choose_group_dropdown.set_selected_list(["general.your_clan"])
-                    self.sort_by_dropdown.new_item_list(self.dead_filter_names)
-                    if switch_get_value(Switch.sort_type) == "death":
+                    self.sort_by_dropdown.new_item_list(self.living_filter_names)
+                    if switch_get_value(Switch.sort_type) in ("death", "clan"):
                         switch_set_value(Switch.sort_type, "rank")
                     self.sort_by_dropdown.disable_child(
                         f"screens.list.filter_{switch_get_value(Switch.sort_type)}"
@@ -372,7 +373,7 @@ class ListScreen(Screens):
 
         if (
             self.death_status != "dead"
-            and switch_get_value(Switch.sort_type) == "death"
+            and switch_get_value(Switch.sort_type) in ("death", "clan")
         ):
             switch_set_value(Switch.sort_type, "rank")
 
@@ -418,11 +419,11 @@ class ListScreen(Screens):
         self.sort_by_dropdown = UIDropDown(
             pygame.Rect((-2, 0), (63, 34)),
             f"screens.list.filter_{switch_get_value(Switch.sort_type)}",
-            item_list=self.living_filter_names,
+            item_list=self.living_filter_names if self.death_status == "living" else self.dead_filter_names,
             manager=MANAGER,
             container=self.cat_list_bar,
             parent_override=self.cat_list_bar_elements["sort_by_button"],
-            starting_selection=["screens.list.filter_rank"],
+            starting_selection=[f"screens.list.filter_{switch_get_value(Switch.sort_type)}"],
             anchors={"left_target": self.cat_list_bar_elements["sort_by_label"]},
         )
 

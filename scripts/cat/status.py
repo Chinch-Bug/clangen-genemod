@@ -349,7 +349,7 @@ class Status:
                 ]
             )
         elif age in (CatAge.YOUNG_ADULT, CatAge.ADULT, CatAge.SENIOR_ADULT):
-            rank = choice([CatRank.WARRIOR, CatRank.MEDICINE_CAT, CatRank.MEDIATOR])
+            rank = choice([CatRank.WARRIOR, CatRank.WARRIOR, CatRank.WARRIOR, CatRank.WARRIOR, CatRank.MEDICINE_CAT, CatRank.MEDIATOR])
         else:
             rank = CatRank.ELDER
 
@@ -631,6 +631,20 @@ class Status:
                 return True
 
         return False
+
+    def clan_order(self):
+        clan_order_list = [
+            CatGroup.OTHER_CLAN5,
+            CatGroup.OTHER_CLAN4,
+            CatGroup.OTHER_CLAN3,
+            CatGroup.OTHER_CLAN2,
+            CatGroup.OTHER_CLAN1,
+            CatGroup.PLAYER_CLAN,
+        ]
+        if self.get_last_living_group() in clan_order_list:
+            return clan_order_list.index(self.get_last_living_group())
+        else:
+            return 0
 
 
 class StatusDict(TypedDict, total=False):

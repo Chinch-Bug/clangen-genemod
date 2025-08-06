@@ -17,7 +17,7 @@ import ujson
 from pygame_gui.elements import UIWindow
 from pygame_gui.windows import UIMessageWindow
 
-from scripts.cat.cats import Cat
+from scripts.cat.cats import Cat, BACKSTORIES
 from scripts.cat.enums import CatStanding, CatRank
 from scripts.cat.history import History
 from scripts.cat.names import Name, names
@@ -2250,7 +2250,7 @@ class ChangeCatToggles(UIWindow):
         return super().process_event(event)
 
 
-class SelectSingleClan(UIWindow):
+class ChangeCatClan(UIWindow):
     """This window allows the user to select a clan to switch a living clan cat to."""
 
     def __init__(self, focus_cat):
@@ -2327,17 +2327,29 @@ class SelectSingleClan(UIWindow):
                 game.all_screens["profile screen"].screen_switches()
                 self.kill()
             if event.ui_element == self.save_button:
-                self.the_cat.status._modify_group(
-                    CatRank.WARRIOR if self.the_cat.status.rank in (CatRank.LEADER, CatRank.DEPUTY) else self.the_cat.status.rank, 
-                    CatStanding.LEFT, self.selected.enum)
-                for app in self.the_cat.apprentice.copy():
-                    app_ob = Cat.fetch_cat(app)
-                    if app_ob:
-                        app_ob.update_mentor()
-
+                if self.the_cat.status.group:
+                    self.the_cat.backstory = "otherclan1"
+                    self.the_cat.history.add_beginning(False)
+                    self.the_cat.status._modify_group(
+                        CatRank.WARRIOR if self.the_cat.status.rank in (CatRank.LEADER, CatRank.DEPUTY) else self.the_cat.status.rank, 
+                        CatStanding.LEFT, self.selected.enum)
+                    for app in self.the_cat.apprentice.copy():
+                        app_ob = Cat.fetch_cat(app)
+                        if app_ob:
+                            app_ob.update_mentor()
+                else:
+                    self.the_cat.add_to_clan(self.selected.enum)
+                    if (
+                        self.the_cat.backstory
+                        in BACKSTORIES["backstory_categories"][
+                            "healer_backstories"
+                        ]
+                    ):
+                        if self.the_cat.age == CatAge.ADOLESCENT:
+                            self.the_cat.status._change_rank(CatRank.MEDICINE_APPRENTICE)
+                        else:
+                            self.the_cat.status._change_rank(CatRank.MEDICINE_CAT)
                 self.the_cat.update_mentor()
-                self.the_cat.backstory = "otherclan1"
-                self.the_cat.history.add_beginning(False)
                 self.the_cat.thoughts()
                 game.all_screens["profile screen"].exit_screen()
                 game.all_screens["profile screen"].screen_switches()
