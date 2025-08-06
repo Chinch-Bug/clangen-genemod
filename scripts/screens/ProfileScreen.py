@@ -873,7 +873,7 @@ class ProfileScreen(Screens):
                     c
                     for c in game.clan.all_clans
                     if c.enum == the_cat.status.get_last_living_group()
-                ][0].name
+                ][0].displayname
             # otherwise they had no clan
             else:
                 name = None
