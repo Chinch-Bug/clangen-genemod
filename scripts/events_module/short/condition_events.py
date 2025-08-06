@@ -1172,7 +1172,8 @@ class Condition_Events:
                     # if it is a progressive condition, then remove the old condition and keep the new one
                     if (
                         condition in progression
-                        and new_condition_name == progression.get(condition)
+                        and (new_condition_name == progression.get(condition) or 
+                             (isinstance(progression.get(condition), list) and new_condition_name in progression.get(condition)))
                     ):
                         removed_condition = True
                         dictionary.pop(condition)

@@ -1216,27 +1216,6 @@ class Pregnancy_Events:
         only_clanmate = get_clan_setting("only inclan surrogates")
         mate = []
 
-        # TODO: restructure this plz
-        
-        
-        unknowns = []
-        for outcat in Cat.all_cats:
-            outcat = Cat.all_cats.get(outcat)
-            if not outcat.dead and not outcat.status.is_lost() and not outcat.status.is_exiled(clan.enum) and "sterile" not in outcat.permanent_condition:
-                unknowns.append(outcat)
-        outsiders = [i for i in unknowns if
-                    i.is_potential_mate(cat, for_love_interest=True, outsider=True)
-                    and Pregnancy_Events.check_if_can_have_kits(i, True, True) 
-                    and (get_clan_setting('same sex birth') or xor('Y' in i.phenotype.sexgene, 'Y' in cat.phenotype.sexgene)) 
-                    and len(i.mate) == 0
-                    and i.status.group != cat.status.group]
-        backstories = {
-            CatSocial.LONER : 'loner_backstories',
-            CatSocial.ROGUE : 'rogue_backstories',
-            CatSocial.KITTYPET: 'kittypet_backstories'
-        }
-                
-
         # gather up mates to participate in the *selection* ig
         if len(cat.mate) > 0:
             mate_copy = cat.mate
@@ -1245,81 +1224,93 @@ class Pregnancy_Events:
 
         all_cats = [cat] + mate
 
-        if not only_clanmate and (only_outside or only_clancat or randint(1, constants.CONFIG['pregnancy']['clanmate_surrogate_chance']) != 1):
-            for outcat in outsiders[::-1]:
-                if only_clancat and outcat.status.is_outsider:
-                    outsiders.remove(outcat)
-                    break
-                for cat in all_cats:
-                    if not cat.is_potential_mate(outcat, for_love_interest=True, outsider=True):
-                        outsiders.remove(outcat)
-                        break
-                    if cat.status.group == outcat.status.get_last_living_group() and only_outside:
-                        outsiders.remove(outcat)
-                        break
-            if only_clancat and not outsiders:
-                return None
-            elif len(outsiders) > 0 and (random() < 0.25 or only_clancat):
-                return choice(outsiders)
-            else:
-                cat_type = choice([CatSocial.LONER, CatSocial.ROGUE, CatSocial.KITTYPET])
-                mate_age = cat.moons + randint(0, 24)-12
-                outside_parent = None
-                while not outside_parent or 'sterile' in outside_parent.permanent_condition:
-                    if outside_parent and Cat.all_cats[outside_parent.ID]:
-                        del Cat.all_cats[outside_parent.ID]
-                    outside_parent = create_new_cat(Cat,
-                            original_social=cat_type,
-                            backstory=BACKSTORIES["backstory_categories"][backstories[cat_type]],
-                            alive=True,
-                            moons=mate_age if mate_age > 14 else 15,
-                            gender='fem' if 'Y' in cat.phenotype.sexgene else 'masc',
-                            outside=True,
-                            is_parent=True)[0]
-                    outside_parent.thought = i18n.t("hardcoded.thought_outside_surrogate")
-                return outside_parent
+        backstories = {
+            CatSocial.LONER : 'loner_backstories',
+            CatSocial.ROGUE : 'rogue_backstories',
+            CatSocial.KITTYPET: 'kittypet_backstories'
+        }
         
-        candidates = []
+        all_candidates = []
+        for cand_cat in Cat.all_cats:
+            cand_cat = Cat.all_cats.get(cand_cat)
+            if (not cand_cat.dead and not cand_cat.status.is_lost() and not cand_cat.status.is_exiled(clan.enum) and 
+            not cand_cat in all_cats and "sterile" not in cand_cat.permanent_condition 
+            and Pregnancy_Events.check_if_can_have_kits(cand_cat, True, True)
+            and (get_clan_setting('same sex birth') or xor('Y' in cand_cat.phenotype.sexgene, 'Y' in cat.phenotype.sexgene))):
+                all_candidates.append(cand_cat)
 
-        for check_cat in all_cats:
-            for x in check_cat.relationships.values():
-                check_cand = Cat.fetch_cat(x.cat_to)
-                if check_cand in all_cats or check_cand.dead or check_cand.status.group != cat.status.group:
+        if (only_clanmate or randint(1, constants.CONFIG['pregnancy']['clanmate_surrogate_chance']) != 1) and not only_outside:
+            candidates = []
+            for cand in all_candidates:
+                if cand.status.group != cat.status.group:
                     continue
-                if (x.romantic_love + x.platonic_like + x.admiration + x.trust + x.comfortable - x.dislike - x.jealousy) > 20:
-                    if Pregnancy_Events.check_if_can_have_kits(check_cand, True, True) and not check_cand.mate and xor('Y' in check_cand.phenotype.sexgene, 'Y' in cat.phenotype.sexgene) and 'sterile' not in check_cand.permanent_condition:
-                        possible = True
-                        for couple in all_cats:
-                            if not couple.is_potential_mate(check_cand):
-                                possible = False
-                                break
-                        if possible:
-                            candidates.append(check_cand)
+                possible = True
+                for couple in all_cats:
+                    if not couple.is_potential_mate(cand, ignore_no_mates=True):
+                        possible = False
+                        break
+                    if x := couple.relationships.get(cand.ID):
+                        if (x.romantic_love + x.platonic_like + x.admiration + x.trust + x.comfortable - x.dislike - x.jealousy) < 5:
+                            possible = False
+                            break
+                if possible:
+                    candidates.append(cand)
+            if candidates:
+                return choice(candidates)
+            elif only_clanmate:
+                return None
+
+        if only_clancat or random() < constants.CONFIG['pregnancy']['half-clan_chance']:
+            candidates = []
+            for cand in all_candidates:
+                if not cand.status.group or cand.status.group == cat.status.group:
+                    continue
+                possible = True
+                for couple in all_cats:
+                    if not cand.is_potential_mate(couple, ignore_no_mates=True, outsider=True):
+                        possible = False
+                        break
+                if possible:
+                    candidates.append(cand)
+
+            if candidates:
+                return choice(candidates)
+            elif only_clancat:
+                return None
         
-        if len(candidates) > 0:
-            return choice(candidates)
-        elif not only_clanmate:
-            if len(outsiders) > 0 and random() < 0.25:
-                return choice(outsiders)
-            else:
-                cat_type = choice([CatSocial.LONER, CatSocial.ROGUE, CatSocial.KITTYPET])
-                mate_age = cat.moons + randint(0, 24)-12
-                outside_parent = None
-                while not outside_parent or 'sterile' in outside_parent.permanent_condition:
-                    if outside_parent and Cat.all_cats[outside_parent.ID]:
-                        del Cat.all_cats[outside_parent.ID]
-                    outside_parent = create_new_cat(Cat,
-                            original_social=cat_type,
-                            backstory=BACKSTORIES["backstory_categories"][backstories[cat_type]],
-                            alive=True,
-                            moons=mate_age if mate_age > 14 else 15,
-                            gender='fem' if 'Y' in cat.phenotype.sexgene else 'masc',
-                            outside=True,
-                            is_parent=True)[0]
-                    outside_parent.thought = i18n.t("hardcoded.thought_outside_surrogate")
-                return outside_parent
-        else:
-            return None
+        if random() < 0.25:
+            candidates = []
+            for cand in all_candidates:
+                if cand.status.group:
+                    continue
+                possible = True
+                for couple in all_cats:
+                    if not cand.is_potential_mate(couple, ignore_no_mates=True, outsider=True):
+                        possible = False
+                        break
+                if possible:
+                    candidates.append(cand)
+
+            if candidates:
+                return choice(candidates)
+
+        cat_type = choice(
+            [CatSocial.LONER, CatSocial.ROGUE, CatSocial.KITTYPET])
+        mate_age = cat.moons + randint(0, 24)-12
+        outside_parent = None
+        while not outside_parent or 'sterile' in outside_parent.permanent_condition:
+            if outside_parent and Cat.all_cats[outside_parent.ID]:
+                del Cat.all_cats[outside_parent.ID]
+            outside_parent = create_new_cat(Cat,
+                                            original_social=cat_type,
+                                            backstory=BACKSTORIES["backstory_categories"][backstories[cat_type]],
+                                            alive=True,
+                                            moons=mate_age if mate_age > 14 else 15,
+                                            gender='fem' if 'Y' in cat.phenotype.sexgene else 'masc',
+                                            outside=True,
+                                            is_parent=True)[0]
+            outside_parent.thought = i18n.t("hardcoded.thought_outside_surrogate")
+        return outside_parent
         
 
     @staticmethod
