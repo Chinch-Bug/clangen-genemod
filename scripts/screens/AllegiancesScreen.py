@@ -301,12 +301,12 @@ class AllegiancesScreen(Screens):
                 living_elders.append(cat)
         if not len(living_meds):
             for cat in living_apprentices:
-                if cat.status == "healer apprentice":
+                if cat.status.rank == CatRank.MEDICINE_APPRENTICE:
                     living_meds.append(cat)
                     living_apprentices.remove(cat)
         if not len(living_mediators):
             for cat in living_apprentices:
-                if cat.status == "mediator apprentice":
+                if cat.status.rank == CatRank.MEDIATOR_APPRENTICE:
                     living_mediators.append(cat)
                     living_apprentices.remove(cat)
 

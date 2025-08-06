@@ -2445,7 +2445,7 @@ class Genotype:
                     continue
             if self[gene][0] in ['I', 'b', 'bl', 'd', 'wg', 'wsal', 'cs', 'cb', 'cm', 'c', 'Apb', 'a']:
                 filtered_mutes["main"].remove(gene)
-            elif self[gene][1] in ['B', 'D', 'w', 'C', 'A']:
+            elif len(self[gene]) > 1 and self[gene][1] in ['B', 'D', 'w', 'C', 'A']:
                 filtered_mutes["main"].remove(gene)
             
         if "eumelanin" in filtered_mutes["main"] and self.sexgene[0] != "o":

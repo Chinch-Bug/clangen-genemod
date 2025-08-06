@@ -1220,13 +1220,14 @@ class Pregnancy_Events:
         unknowns = []
         for outcat in Cat.all_cats:
             outcat = Cat.all_cats.get(outcat)
-            if not outcat.dead and not outcat.status.is_lost(clan.enum) and not outcat.status.is_exiled(clan.enum) and "sterile" not in outcat.permanent_condition:
+            if not outcat.dead and not outcat.status.is_lost() and not outcat.status.is_exiled(clan.enum) and "sterile" not in outcat.permanent_condition:
                 unknowns.append(outcat)
         outsiders = [i for i in unknowns if
                     i.is_potential_mate(cat, for_love_interest=True, outsider=True)
                     and Pregnancy_Events.check_if_can_have_kits(i, True, True) 
                     and (get_clan_setting('same sex birth') or xor('Y' in i.phenotype.sexgene, 'Y' in cat.phenotype.sexgene)) 
-                    and len(i.mate) == 0]
+                    and len(i.mate) == 0
+                    and i.status.group != cat.status.group]
         backstories = {
             CatSocial.LONER : 'loner_backstories',
             CatSocial.ROGUE : 'rogue_backstories',
@@ -1254,10 +1255,10 @@ class Pregnancy_Events:
                     if cat.status.group == outcat.status.get_last_living_group() and only_outside:
                         outsiders.remove(outcat)
                         break
-            if len(outsiders) > 0 and random() < 0.25:
-                return choice(outsiders)
-            elif only_clancat:
+            if only_clancat and not outsiders:
                 return None
+            elif len(outsiders) > 0 and (random() < 0.25 or only_clancat):
+                return choice(outsiders)
             else:
                 cat_type = choice([CatSocial.LONER, CatSocial.ROGUE, CatSocial.KITTYPET])
                 mate_age = cat.moons + randint(0, 24)-12
@@ -1281,7 +1282,7 @@ class Pregnancy_Events:
         for check_cat in all_cats:
             for x in check_cat.relationships.values():
                 check_cand = Cat.fetch_cat(x.cat_to)
-                if check_cand in all_cats or check_cand.dead or (check_cand.status.is_outsider and not check_cand.status.is_lost(clan.enum) and not check_cand.status.is_exiled(clan.enum) and not only_clanmate):
+                if check_cand in all_cats or check_cand.dead or check_cand.status.group != cat.status.group:
                     continue
                 if (x.romantic_love + x.platonic_like + x.admiration + x.trust + x.comfortable - x.dislike - x.jealousy) > 20:
                     if Pregnancy_Events.check_if_can_have_kits(check_cand, True, True) and not check_cand.mate and xor('Y' in check_cand.phenotype.sexgene, 'Y' in cat.phenotype.sexgene) and 'sterile' not in check_cand.permanent_condition:
