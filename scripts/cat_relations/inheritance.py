@@ -89,7 +89,7 @@ class Inheritance:
         elif len(switch_get_value(Switch.clan_list)) > 0:
             clanname = switch_get_value(Switch.clan_list)[0]
         elif game.clan is not None:
-            clanname = game.clan.name
+            clanname = game.clan.displayname
 
         family_directory = get_save_dir() + "/" + clanname + "/inheritance"
         family_file_path = family_directory + "/" + self.cat.ID + "_inheritance.json"

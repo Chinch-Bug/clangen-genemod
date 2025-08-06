@@ -127,21 +127,21 @@ class HandleShortEvents:
         # if the war didn't go badly, then we decrease the chance of this event being war-focused
         if switch_get_value(Switch.war_rel_change_type) != "rel_down":
             war_chance = 2
-        if game.clan.war.get("at_war", False) and (not clan or clan == game.clan.name or clan == get_warring_clan()) and randint(1, war_chance) != 1:
+        if game.clan.war.get("at_war", False) and (not clan or clan == game.clan.displayname or clan == get_warring_clan()) and randint(1, war_chance) != 1:
             enemy_clan = get_warring_clan() if get_warring_clan() != clan else game.clan
             self.other_clan = enemy_clan
-            self.other_clan_name = f"{self.other_clan.name}Clan"
+            self.other_clan_name = f"{self.other_clan.displayname}Clan"
             self.sub_types.append("war")
         else:
             self.other_clan = choice(
                 game.clan.all_clans if game.clan.all_clans else None
             )
-            if self.other_clan and clan and self.other_clan.name == clan.name:
-                while self.other_clan.name == clan.name:
+            if self.other_clan and clan and self.other_clan.displayname == clan.displayname:
+                while self.other_clan.displayname == clan.displayname:
                     self.other_clan = choice(
                         game.clan.all_clans + [game.clan]
                     )
-            self.other_clan_name = f"{self.other_clan.name}Clan"
+            self.other_clan_name = f"{self.other_clan.displayname}Clan"
 
         # NOW find the possible events and filter
         if event_type == "birth_death":

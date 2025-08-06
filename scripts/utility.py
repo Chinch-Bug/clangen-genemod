@@ -206,7 +206,7 @@ def get_warring_clan():
     enemy_clan = None
     if game.clan.war.get("at_war", False):
         for other_clan in game.clan.all_clans:
-            if other_clan.name == game.clan.war["enemy"]:
+            if other_clan.displayname == game.clan.war["enemy"]:
                 enemy_clan = other_clan
 
     return enemy_clan
@@ -1129,7 +1129,7 @@ def get_other_clan(clan_name):
     returns the clan object of given clan name
     """
     for clan in game.clan.all_clans:
-        if clan.name == clan_name:
+        if clan.displayname == clan_name:
             return clan
 
 
@@ -2559,7 +2559,7 @@ def history_text_adjust(text, other_clan_name, clan, other_cat_rc=None):
         text = text.replace("o_c_n", str(other_clan_name))
 
     if "c_n" in text:
-        text = text.replace("c_n", clan.name)
+        text = text.replace("c_n", clan.displayname)
     if "r_c" in text and other_cat_rc:
         text = selective_replace(text, "r_c", str(other_cat_rc.name))
     return text
@@ -2609,13 +2609,13 @@ def ongoing_event_text_adjust(Cat, text, clan=None, other_clan_name=None):
     if other_clan_name:
         text = text.replace("o_c_n", other_clan_name)
     if clan:
-        clan_name = str(clan.name)
+        clan_name = str(clan.displayname)
     else:
         if game.clan is None:
             # todo can this be Switch.clan_name ?
             clan_name = switch_get_value(Switch.clan_list)[0]
         else:
-            clan_name = str(game.clan.name)
+            clan_name = str(game.clan.displayname)
 
     text = text.replace("c_n", clan_name + "Clan")
 
@@ -2787,7 +2787,7 @@ def event_text_adjust(
 
     # other_clan_name
     if "o_c_n" in text and other_clan:
-        other_clan_name = other_clan.name
+        other_clan_name = other_clan.displayname
         pos = 0
         for x in range(text.count("o_c_n")):
             if "o_c_n" in text:
@@ -2811,7 +2811,7 @@ def event_text_adjust(
     # clan_name
     if "c_n" in text:
         try:
-            clan_name = clan.name
+            clan_name = clan.displayname
         except AttributeError:
             # todo can this be Switch.clan_name ?
             clan_name = switch_get_value(Switch.clan_list)[0]
@@ -2894,10 +2894,9 @@ def leader_ceremony_text_adjust(
         text = text.replace("[life_num]", str(extra_lives))
 
     clan = leader.status.group.fetch_clan_object()
-    text = text.replace("c_n", str(clan.name) + "Clan")
+    text = text.replace("c_n", str(clan.displayname) + "Clan")
 
     return text
-
 
 def ceremony_text_adjust(
     Cat,
@@ -2912,7 +2911,7 @@ def ceremony_text_adjust(
     dead_parents=(),
     clan=game.clan
 ):
-    clanname = str(clan.name + "Clan")
+    clanname = str(clan.displayname + "Clan")
 
     random_honor = random_honor
     random_living_parent = None
@@ -3187,14 +3186,14 @@ def clan_symbol_sprite(clan, return_string=False, force_light=False):
         possible_sprites = []
         for sprite in sprites.clan_symbols:
             name = sprite.strip("1234567890")
-            if f"symbol{clan.name.upper()}" == name:
+            if f"symbol{clan.displayname.upper()}" == name:
                 possible_sprites.append(sprite)
         if possible_sprites:
             clan.chosen_symbol = choice(possible_sprites)
         else:
             # give random symbol if no matching symbol exists
             print(
-                f"WARNING: attempted to return symbol, but there's no clan symbol for {clan.name.upper()}. "
+                f"WARNING: attempted to return symbol, but there's no clan symbol for {clan.displayname.upper()}. "
                 f"Random chosen."
             )
             clan.chosen_symbol = choice(sprites.clan_symbols)

@@ -332,7 +332,8 @@ class ProfileScreen(Screens):
                                 new_group=CatGroup.STARCLAN
                             )
                             self.the_cat.thought = i18n.t(
-                                "screens.profile.guide_thought_sc", clan=game.clan.name
+                                "screens.profile.guide_thought_sc",
+                                clan=game.clan.displayname,
                             )
                         # SC -> DF
                         else:
@@ -341,7 +342,8 @@ class ProfileScreen(Screens):
                             )
 
                             self.the_cat.thought = i18n.t(
-                                "screens.profile.guide_thought_df", clan=game.clan.name
+                                "screens.profile.guide_thought_df",
+                                clan=game.clan.displayname,
                             )
                         self.the_cat.pelt.rebuild_sprite = True
                     else:
@@ -600,11 +602,11 @@ class ProfileScreen(Screens):
         if self.the_cat.dead and game.clan.instructor is self.the_cat:
             if self.the_cat.status.group == CatGroup.STARCLAN:  # StarClan
                 self.the_cat.thought = i18n.t(
-                    "screens.profile.guide_thought_sc", clan=game.clan.name
+                    "screens.profile.guide_thought_sc", clan=game.clan.displayname
                 )
             elif self.the_cat.status.group == CatGroup.DARK_FOREST:  # Dark Forest
                 self.the_cat.thought = i18n.t(
-                    "screens.profile.guide_thought_df", clan=game.clan.name
+                    "screens.profile.guide_thought_df", clan=game.clan.displayname
                 )
 
         self.profile_elements["cat_name"] = pygame_gui.elements.UITextBox(
@@ -864,7 +866,7 @@ class ProfileScreen(Screens):
         if the_cat.dead:
             old_clan = the_cat.status.get_last_living_group()
             if old_clan == CatGroup.PLAYER_CLAN:
-                name = game.clan.name
+                name = game.clan.displayname
             # if they had an old clan that wasn't the player's, find it!
             elif old_clan:
                 name = [
@@ -884,7 +886,7 @@ class ProfileScreen(Screens):
         # otherwise, assume the cat takes the player clan's name
         # it's okay if this is an outsider, if they don't actually have a group to refer to then they won't use this variable
         else:
-            name = game.clan.name
+            name = game.clan.displayname
 
         if the_cat.status.is_exiled():
             if not name:
@@ -894,7 +896,7 @@ class ProfileScreen(Screens):
                     if c.enum == the_cat.status.get_last_living_group()
                 ]
             if not name:
-                name = game.clan.name
+                name = game.clan.displayname
 
         cat_clan = i18n.t(f"general.clan", name=f"{name}")
 
@@ -915,14 +917,14 @@ class ProfileScreen(Screens):
         else:
             # if game.clan.clancount == "multiclan" and not the_cat.status.is_outsider:
             #     if not the_cat.dead:
-            #         output += the_cat.status.group.fetch_clan_object().name + "Clan "
+            #         output += the_cat.status.group.fetch_clan_object().displayname + "Clan "
             #     elif the_cat == game.clan.instructor:
             #         pass
             #     elif the_cat.status.get_last_living_group() == CatGroup.PLAYER_CLAN:
-            #         output += game.clan.name + "Clan "
+            #         output += game.clan.displayname + "Clan "
             #     else:
             #         clan = next(filter(lambda c: the_cat.status.get_last_living_group() == c.enum, game.clan.all_clans), None)
-            #         output += clan.name + "Clan "
+            #         output += clan.displayname + "Clan "
             output += i18n.t(f"general.{the_cat.status.rank}", count=1)
 
         # NEWLINE ----------
@@ -1217,7 +1219,7 @@ class ProfileScreen(Screens):
 
     def save_user_notes(self):
         """Saves user-entered notes."""
-        clanname = game.clan.name
+        clanname = game.clan.displayname
 
         notes = self.user_notes
 
@@ -1236,7 +1238,7 @@ class ProfileScreen(Screens):
 
     def load_user_notes(self):
         """Loads user-entered notes."""
-        clanname = game.clan.name
+        clanname = game.clan.displayname
 
         notes_directory = get_save_dir() + "/" + clanname + "/notes"
         notes_file_path = notes_directory + "/" + self.the_cat.ID + "_notes.json"

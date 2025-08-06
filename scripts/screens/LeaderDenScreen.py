@@ -338,7 +338,7 @@ class LeaderDenScreen(Screens):
             manager=MANAGER,
             text_kwargs={
                 "temper": i18n.t(f"screens.leader_den.{self.clan_temper}"),
-                "clan": game.clan.enum,
+                "clan": game.clan.displayname,
             },
         )
 
@@ -433,7 +433,7 @@ class LeaderDenScreen(Screens):
             manager=MANAGER,
         )
         for i, other_clan in enumerate(game.clan.all_clans):
-            if other_clan.name == game.clan.name:
+            if other_clan.displayname == game.clan.displayname:
                 continue
             x_pos = 128
             self.other_clan_selection_elements[f"container{i}"] = UIContainer(
@@ -468,7 +468,7 @@ class LeaderDenScreen(Screens):
                 f"clan_name{i}"
             ] = pygame_gui.elements.UILabel(
                 ui_scale(pygame.Rect((0, 20), (133, -1))),
-                text=f"{other_clan.name}Clan",
+                text=f"{other_clan.displayname}Clan",
                 object_id=get_text_box_theme("#text_box_30_horizcenter"),
                 container=self.other_clan_selection_elements[f"container{i}"],
                 manager=MANAGER,
@@ -618,7 +618,7 @@ class LeaderDenScreen(Screens):
 
         self.focus_clan_elements["clan_name"] = pygame_gui.elements.UILabel(
             ui_scale(pygame.Rect((0, 15), (215, -1))),
-            text=f"{self.focus_clan.name}Clan",
+            text=f"{self.focus_clan.displayname}Clan",
             object_id="#text_box_30_horizcenter",
             container=self.focus_clan_container,
             manager=MANAGER,
@@ -726,7 +726,7 @@ class LeaderDenScreen(Screens):
             "lead_den_clan_event",
             {
                 "cat_ID": gathering_cat.ID,
-                "other_clan": self.focus_clan.name,
+                "other_clan": self.focus_clan.displayname,
                 "player_clan_temper": self.clan_temper,
                 "interaction_type": interaction_type,
                 "success": success,

@@ -241,7 +241,7 @@ class SaveCheck(UIWindow):
 
         self.clan_name = "UndefinedClan"
         if game.clan:
-            self.clan_name = f"{game.clan.name}Clan"
+            self.clan_name = f"{game.clan.displayname}Clan"
         self.last_screen = last_screen
         self.isMainMenu = is_main_menu
         self.mm_btn = mm_btn
@@ -716,7 +716,7 @@ class GameOver(UIWindow):
             resizable=False,
         )
         self.set_blocking(True)
-        self.clan_name = str(game.clan.name + "Clan")
+        self.clan_name = str(game.clan.displayname + "Clan")
         self.last_screen = last_screen
         self.game_over_message = UITextBoxTweaked(
             "windows.game_over_message",
@@ -2293,8 +2293,8 @@ class ChangeCatClan(UIWindow):
         for clan in [game.clan] + game.clan.all_clans:
             if self.the_cat.status.group == clan.enum:
                 continue
-            self.texts[clan.name] = pygame_gui.elements.UITextBox(
-                clan.name + "clan",
+            self.texts[clan.displayname] = pygame_gui.elements.UITextBox(
+                clan.displayname + "clan",
                 ui_scale(pygame.Rect(107, n * 27 + 38, -1, 25)),
                 object_id="#text_box_30_horizleft_pad_0_8",
                 container=self,
@@ -2312,7 +2312,7 @@ class ChangeCatClan(UIWindow):
                 continue
             box_type = "@checked_checkbox" if self.selected == clan else "@unchecked_checkbox"
 
-            self.checkboxes[clan.name] = UIImageButton(
+            self.checkboxes[clan.displayname] = UIImageButton(
                 ui_scale(pygame.Rect((75, n * 27 + 35), (34, 34))),
                 "",
                 container=self,
@@ -2359,7 +2359,7 @@ class ChangeCatClan(UIWindow):
                     if value == event.ui_element:
                         if value.object_ids[1] == "@unchecked_checkbox":
                             self.save_button.enable()
-                            self.selected = next(filter(lambda c: c.name == clan_name, game.clan.all_clans), game.clan)
+                            self.selected = next(filter(lambda c: c.displayname == clan_name, game.clan.all_clans), game.clan)
                         if value.object_ids[1] == "@checked_checkbox":
                             self.save_button.disable()
                             self.selected = None
@@ -2407,8 +2407,8 @@ class SelectFocusClans(UIWindow):
         )
         n = 0
         for clan in game.clan.all_clans:
-            self.texts[clan.name] = pygame_gui.elements.UITextBox(
-                clan.name + "clan",
+            self.texts[clan.displayname] = pygame_gui.elements.UITextBox(
+                clan.displayname + "clan",
                 ui_scale(pygame.Rect(107, n * 27 + 38, -1, 25)),
                 object_id="#text_box_30_horizleft_pad_0_8",
                 container=self,
@@ -2423,10 +2423,10 @@ class SelectFocusClans(UIWindow):
         n = 0
         for clan in game.clan.all_clans:
             box_type = "@unchecked_checkbox"
-            if clan.name in game.clan.clans_in_focus:
+            if clan.displayname in game.clan.clans_in_focus:
                 box_type = "@checked_checkbox"
 
-            self.checkboxes[clan.name] = UIImageButton(
+            self.checkboxes[clan.displayname] = UIImageButton(
                 ui_scale(pygame.Rect((75, n * 27 + 35), (34, 34))),
                 "",
                 container=self,

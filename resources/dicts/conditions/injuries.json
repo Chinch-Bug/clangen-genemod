@@ -283,7 +283,7 @@
                 "chance": 40
             },
             {
-                "name": "tick illness",
+                "name": "tick fever",
                 "chance": 60
             }
         ],
@@ -728,11 +728,10 @@
         "herbs": {
             "1": [
             "dandelion",
-            "poppy",
             "raspberry"
         ],
             "2": [],
-            "3": []
+            "3": ["poppy"]
         }
     },
 

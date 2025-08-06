@@ -2454,7 +2454,7 @@ class Cat:
         elif len(switch_get_value(Switch.clan_list)) > 0:
             clanname = switch_get_value(Switch.clan_list)[0]
         elif game.clan is not None:
-            clanname = game.clan.name
+            clanname = game.clan.displayname
 
         condition_directory = get_save_dir() + "/" + clanname + "/conditions"
         condition_file_path = condition_directory + "/" + self.ID + "_conditions.json"
@@ -3408,11 +3408,11 @@ class Cat:
             clan = (
                 switch_get_value(Switch.clan_list)[0]
                 if game.clan is None
-                else game.clan.name
+                else game.clan.displayname
             )
 
             with open(
-                get_save_dir() + "/" + game.clan.name + "/faded_cats/" + cat + ".json",
+                get_save_dir() + "/" + game.clan.displayname + "/faded_cats/" + cat + ".json",
                 "r",
                 encoding="utf-8",
             ) as read_file:

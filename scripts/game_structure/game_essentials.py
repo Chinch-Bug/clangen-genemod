@@ -150,7 +150,7 @@ class Game:
         events_list = []
         for event in game.cur_events_list:
             events_list.append(event.to_dict())
-        safe_save(f"{get_save_dir()}/{game.clan.name}/events.json", events_list)
+        safe_save(f"{get_save_dir()}/{game.clan.displayname}/events.json", events_list)
 
     def add_faded_offspring_to_faded_cat(self, parent, offspring):
         """In order to siblings to work correctly, and not to lose relation info on fading, we have to keep track of
@@ -160,7 +160,7 @@ class Game:
             with open(
                 get_save_dir()
                 + "/"
-                + self.clan.name
+                + self.clan.displayname
                 + "/faded_cats/"
                 + parent
                 + ".json",
@@ -175,7 +175,7 @@ class Game:
         cat_info["faded_offspring"].append(offspring)
 
         safe_save(
-            f"{get_save_dir()}/{self.clan.name}/faded_cats/{parent}.json", cat_info
+            f"{get_save_dir()}/{self.clan.displayname}/faded_cats/{parent}.json", cat_info
         )
 
         return True
@@ -185,7 +185,7 @@ class Game:
         Load events from events.json and place into game.cur_events_list.
         """
 
-        clanname = self.clan.name
+        clanname = self.clan.displayname
         events_path = f"{get_save_dir()}/{clanname}/events.json"
         events_list = []
         try:
@@ -197,7 +197,7 @@ class Game:
                     if not event_obj.clan or event_obj.clan in [clanname, self.clan.enum.value]:
                         event_obj.clan = self.clan.enum
                     else:
-                        event_obj.clan = next(filter(lambda c: event_obj.clan in [c.enum.value, c.name], self.clan.all_clans), self.clan).enum
+                        event_obj.clan = next(filter(lambda c: event_obj.clan in [c.enum.value, c.displayname], self.clan.all_clans), self.clan).enum
                     game.cur_events_list.append(event_obj)
         except FileNotFoundError:
             pass

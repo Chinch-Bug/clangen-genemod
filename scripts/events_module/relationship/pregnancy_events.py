@@ -62,7 +62,7 @@ class Pregnancy_Events:
             elif len(biggest_family) < len(ancestors) + 1:
                 biggest_family = ancestors
                 biggest_family.append(cat.ID)
-        Pregnancy_Events.biggest_family[clan.name] = biggest_family
+        Pregnancy_Events.biggest_family[clan.displayname] = biggest_family
 
     @staticmethod
     def biggest_family_is_big(clan):
@@ -71,7 +71,7 @@ class Pregnancy_Events:
         living_cats = len(
             [i for i in Cat.all_cats.values() if i.status.group == clan.enum]
         )
-        return len(Pregnancy_Events.biggest_family[clan.name]) > (living_cats / 10)
+        return len(Pregnancy_Events.biggest_family[clan.displayname]) > (living_cats / 10)
 
     @staticmethod
     def handle_pregnancy_age(clan):
@@ -85,7 +85,7 @@ class Pregnancy_Events:
         if not clan:
             return
 
-        if not Pregnancy_Events.biggest_family.get(clan.name):
+        if not Pregnancy_Events.biggest_family.get(clan.displayname):
             Pregnancy_Events.set_biggest_family(clan)
 
         # Handles if a cat is already pregnant
@@ -1162,12 +1162,12 @@ class Pregnancy_Events:
             special_affair = True
 
         # 'buff' affairs if the current biggest family is big + this cat doesn't belong there
-        if not Pregnancy_Events.biggest_family.get(clan.name):
+        if not Pregnancy_Events.biggest_family.get(clan.displayname):
             Pregnancy_Events.set_biggest_family(clan)
 
         if (
             Pregnancy_Events.biggest_family_is_big(clan)
-            and cat.ID not in Pregnancy_Events.biggest_family[clan.name]
+            and cat.ID not in Pregnancy_Events.biggest_family[clan.displayname]
         ):
             chance = int(chance * 0.8)
 
@@ -1951,7 +1951,7 @@ class Pregnancy_Events:
 
         # 'INBREED' counter
         # - increase inverse chance if one of the current cats belongs in the biggest family
-        if not Pregnancy_Events.biggest_family.get(clan.name):  # set the family if not already
+        if not Pregnancy_Events.biggest_family.get(clan.displayname):  # set the family if not already
             Pregnancy_Events.set_biggest_family(clan)
 
         InBiggest = False
@@ -1959,10 +1959,10 @@ class Pregnancy_Events:
             for x in second_parent:
                 if x == "Surrogate":
                     continue
-                if x.ID in Pregnancy_Events.biggest_family[clan.name]:
+                if x.ID in Pregnancy_Events.biggest_family[clan.displayname]:
                     InBiggest = True
 
-        if first_parent.ID in Pregnancy_Events.biggest_family[clan.name] or second_parent and InBiggest:
+        if first_parent.ID in Pregnancy_Events.biggest_family[clan.displayname] or second_parent and InBiggest:
             inverse_chance = int(inverse_chance * 1.7)
 
         # - decrease inverse chance if the current family is small

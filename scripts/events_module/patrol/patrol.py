@@ -1154,7 +1154,7 @@ class Patrol:
         text = process_text(text, replace_dict)
         text = adjust_prey_abbr(text)
 
-        other_clan_name = self.other_clan.name
+        other_clan_name = self.other_clan.displayname
         s = 0
         for x in range(text.count("o_c_n")):
             if "o_c_n" in text:
@@ -1176,7 +1176,7 @@ class Patrol:
 
         text = text.replace("o_c_n", str(other_clan_name) + "Clan")
 
-        clan_name = game.clan.name
+        clan_name = game.clan.displayname
         s = 0
         pos = 0
         for x in range(text.count("c_n")):
@@ -1196,7 +1196,7 @@ class Patrol:
                         text = " ".join(modify)
                         break
 
-        text = text.replace("c_n", str(game.clan.name) + "Clan")
+        text = text.replace("c_n", str(game.clan.displayname) + "Clan")
 
         # TODO: check if this can be handled in event_text_adjust
         return text

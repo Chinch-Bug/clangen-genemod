@@ -1072,7 +1072,7 @@ class Condition_Events:
                             cat.name.give_suffix(cat.skills, cat.personality, game.clan.biome, "hard work")
                         event += i18n.t(
                             "hardcoded.condition_retire_adolescent_ceremony",
-                            clan=clan.name,
+                            clan=clan.displayname,
                             newname=cat.name.prefix + cat.name.suffix,
                         )
 

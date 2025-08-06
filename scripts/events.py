@@ -122,7 +122,7 @@ class Events:
             self.handle_lead_den_event()
 
         clancount = game.clan.clancount == "multiclan"
-        clannames = [game.clan.name] + [c.name for c in game.clan.all_clans]
+        clannames = [game.clan.displayname] + [c.displayname for c in game.clan.all_clans]
         # checking if a lost cat returns on their own
         rejoin_upperbound = constants.CONFIG["lost_cat"]["rejoin_chance"]
         if random.randint(1, rejoin_upperbound) == 1:
@@ -140,9 +140,9 @@ class Events:
         faded_kits = {}
         for clan in [game.clan] + game.clan.all_clans:
             if get_clan_setting('modded_kits'):
-                faded_kits[clan.name] = self.kit_deaths(Cat.all_cats_list, clan=clan)
+                faded_kits[clan.displayname] = self.kit_deaths(Cat.all_cats_list, clan=clan)
             else:
-                faded_kits[clan.name] = []
+                faded_kits[clan.displayname] = []
             if not clancount:
                 break
 
@@ -202,11 +202,11 @@ class Events:
             extra_event = None
             for ghost in Cat.dead_cats:
                 if CatGroup.PLAYER_CLAN in ghost.status.all_groups and ghost.status.get_last_living_group() == CatGroup.PLAYER_CLAN:
-                    if game.clan.name not in ghost_names:
-                        ghost_names[game.clan.name] = []
-                        sorted_dead_cats[game.clan.name] = []
-                    ghost_names[game.clan.name].append(str(ghost.name))
-                    sorted_dead_cats[game.clan.name].append(ghost)
+                    if game.clan.displayname not in ghost_names:
+                        ghost_names[game.clan.displayname] = []
+                        sorted_dead_cats[game.clan.displayname] = []
+                    ghost_names[game.clan.displayname].append(str(ghost.name))
+                    sorted_dead_cats[game.clan.displayname].append(ghost)
                 elif group := next(filter(lambda c: ghost.status.get_last_living_group() == c, game.clan.other_clans), None):
                     group = group.fetch_clan_object()
                     if group.name not in ghost_names:
@@ -215,16 +215,16 @@ class Events:
                     ghost_names[group.name].append(str(ghost.name))
                     sorted_dead_cats[group.name].append(ghost)
             for clan in [game.clan] + game.clan.all_clans:
-                if clan.name not in ghost_names:
+                if clan.displayname not in ghost_names:
                     continue
-                insert = adjust_list_text(ghost_names[clan.name])
+                insert = adjust_list_text(ghost_names[clan.displayname])
 
-                if len(ghost_names[clan.name]) > 1:
+                if len(ghost_names[clan.displayname]) > 1:
                     event = i18n.t(
-                        "hardcoded.event_deaths", count=len(ghost_names[clan.name]), insert=insert
+                        "hardcoded.event_deaths", count=len(ghost_names[clan.displayname]), insert=insert
                     )
 
-                    if len(ghost_names[clan.name])-len(faded_kits[clan.name]) > 2:
+                    if len(ghost_names[clan.displayname])-len(faded_kits[clan.displayname]) > 2:
                         alive_cats = list(
                             filter(
                                 lambda kitty: (
@@ -238,7 +238,7 @@ class Events:
                         if len(alive_cats) == 0:
                             return
                         else:
-                            shaken_cats[clan.name] = random.sample(
+                            shaken_cats[clan.displayname] = random.sample(
                                 alive_cats,
                                 k=max(
                                     int((len(alive_cats) * random.randint(4, 6)) / 100),
@@ -247,7 +247,7 @@ class Events:
                             )
 
                         shaken_cat_names = []
-                        for cat in shaken_cats[clan.name]:
+                        for cat in shaken_cats[clan.displayname]:
                             shaken_cat_names.append(str(cat.name))
                             cat.get_injured(
                                 "shock",
@@ -270,11 +270,11 @@ class Events:
 
                 game.cur_events_list.append(
                     Single_Event(
-                        event_text_adjust(Cat, event, main_cat=sorted_dead_cats[clan.name][0], clan=clan.enum),
+                        event_text_adjust(Cat, event, main_cat=sorted_dead_cats[clan.displayname][0], clan=clan.enum),
                         ["birth_death"],
-                        [i.ID for i in sorted_dead_cats[clan.name]],
-                        cat_dict={"m_c": (sorted_dead_cats[clan.name])[0]} 
-                        if len(sorted_dead_cats[clan.name]) == 1 else None,
+                        [i.ID for i in sorted_dead_cats[clan.displayname]],
+                        cat_dict={"m_c": (sorted_dead_cats[clan.displayname])[0]} 
+                        if len(sorted_dead_cats[clan.displayname]) == 1 else None,
                         clan=clan.enum
                     )
                 )
@@ -283,7 +283,7 @@ class Events:
                         Single_Event(
                             event_text_adjust(Cat, extra_event, clan=clan.enum), 
                             ["birth_death"], 
-                            [i.ID for i in shaken_cats.get(clan.name, [])], 
+                            [i.ID for i in shaken_cats.get(clan.displayname, [])], 
                             clan=clan.enum
                         )
                     )
@@ -382,7 +382,7 @@ class Events:
         removals = []
 
         for event in game.clan.future_events:
-            if event.clan != clan.name:
+            if event.clan != clan.displayname:
                 continue
             event.moon_delay -= 1
             # we give events a buffer of 12 moons to allow any season-locked events a chance to trigger, then we remove
@@ -744,7 +744,7 @@ class Events:
             if get_clan_setting("sabotage other clans"):
                 amount = amount * -1
             for name in game.clan.clans_in_focus:
-                clan = [clan for clan in game.clan.all_clans if clan.name == name][0]
+                clan = [clan for clan in game.clan.all_clans if clan.displayname == name][0]
                 change_clan_relations(clan, amount)
             focus_text = None
 
@@ -824,7 +824,7 @@ class Events:
             # if it is raiding, lower the relation to other clans
             if get_clan_setting("raid other clans"):
                 for name in game.clan.clans_in_focus:
-                    clan = [clan for clan in game.clan.all_clans if clan.name == name][
+                    clan = [clan for clan in game.clan.all_clans if clan.displayname == name][
                         0
                     ]
                     amount = -constants.CONFIG["focus"]["raid other clans"]["relation"]
@@ -1277,7 +1277,7 @@ class Events:
         if game.clan.war["at_war"]:
             # Grab the enemy clan object
             for other_clan in game.clan.all_clans:
-                if other_clan.name == game.clan.war["enemy"]:
+                if other_clan.displayname == game.clan.war["enemy"]:
                     enemy_clan = other_clan
                     break
 
@@ -1324,7 +1324,7 @@ class Events:
                 ):
                     enemy_clan = other_clan
                     game.clan.war["at_war"] = True
-                    game.clan.war["enemy"] = other_clan.name
+                    game.clan.war["enemy"] = other_clan.displayname
                     war_events = self.WAR_TXT["trigger_events"]
                     switch_set_value(Switch.war_rel_change_type, "rel_down")
 
@@ -1344,7 +1344,7 @@ class Events:
         # grab our war "notice" for this moon
         event = random.choice(war_events)
         event = ongoing_event_text_adjust(
-            Cat, event, other_clan_name=f"{enemy_clan.name}Clan", clan=game.clan
+            Cat, event, other_clan_name=f"{enemy_clan.displayname}Clan", clan=game.clan
         )
         game.cur_events_list.append(Single_Event(event, "other_clans", clan=game.clan.enum))
 
@@ -2212,7 +2212,7 @@ class Events:
         
         # disaster death chance
         if get_clan_setting("disasters"):
-            if not random.getrandbits(9):  # 1/1010
+            if not random.getrandbits(9):  # 1/512
                 handle_short_events.handle_event(
                     event_type="birth_death",
                     main_cat=cat,
