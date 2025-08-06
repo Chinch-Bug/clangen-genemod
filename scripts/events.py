@@ -2212,7 +2212,7 @@ class Events:
         
         # disaster death chance
         if get_clan_setting("disasters"):
-            if not random.getrandbits(10):  # 1/1010
+            if not random.getrandbits(9):  # 1/1010
                 handle_short_events.handle_event(
                     event_type="birth_death",
                     main_cat=cat,
