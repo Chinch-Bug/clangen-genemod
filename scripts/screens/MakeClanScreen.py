@@ -1570,13 +1570,13 @@ class MakeClanScreen(Screens):
             manager=MANAGER,
         )
         self.elements["title"] = pygame_gui.elements.UITextBox(
-            "screens.make_clan.displayname_clan_title",
+            "screens.make_clan.name_clan_title",
             ui_scale(pygame.Rect((0, 525), (300, 40))),
             object_id="@clangen_32",
             anchors={"centerx": "centerx"},
         )
         self.elements["subtitle"] = pygame_gui.elements.UITextBox(
-            "screens.make_clan.displayname_clan_subtitle",
+            "screens.make_clan.name_clan_subtitle",
             ui_scale(pygame.Rect((0, -5), (300, 30))),
             object_id="@buttonstyles_rounded_rect",
             anchors={"centerx": "centerx", "top_target": self.elements["title"]},

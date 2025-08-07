@@ -882,7 +882,7 @@ class ProfileScreen(Screens):
         elif the_cat.status.is_other_clancat:
             name = [c for c in game.clan.all_clans if c.enum == the_cat.status.group][
                 0
-            ].name
+            ].displayname
         # otherwise, assume the cat takes the player clan's name
         # it's okay if this is an outsider, if they don't actually have a group to refer to then they won't use this variable
         else:
