@@ -4182,9 +4182,6 @@ def generate_sprite(
                     fevercoat.blit(sprites.sprites['bleach' + cat_sprite], (0, 0))
                     fevercoat.blit(sprites.sprites['bleach' + cat_sprite], (0, 0))
                     fevercoat.blit(sprites.sprites['bleach' + cat_sprite], (0, 0))
-                    fevercoat.blit(sprites.sprites['bleach' + cat_sprite], (0, 0))
-                    fevercoat.blit(sprites.sprites['bleach' + cat_sprite], (0, 0))
-                    fevercoat.blit(sprites.sprites['lightbasecolours0'], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                     if (sprite_age > 2):
                         fevercoat.set_alpha(150)
                     gensprite.blit(fevercoat, (0, 0))

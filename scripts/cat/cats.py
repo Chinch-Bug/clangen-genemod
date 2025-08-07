@@ -652,7 +652,7 @@ class Cat:
         
         if(self.phenotype.pointgene[0] == 'c'):
             self.get_permanent_condition('albinism', born_with=True, genetic=True)
-        elif('albino' in self.phenotype.lefteyetype or self.phenotype.pinkdilute[0] == 'dp'):
+        elif('albino' in self.phenotype.lefteyetype):
             self.get_permanent_condition('ocular albinism', born_with=True, genetic=True)
         
         if self.phenotype.length == 'hairless':

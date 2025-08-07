@@ -66,6 +66,8 @@ def save_faded_cats(clanname, cat_class: Type["Cat"], game: "Game"):
 
     copy_of_info = ""
     for cat in cat_to_fade:
+        if cat not in cat_class.all_cats:
+            continue
         inter_cat = cat_class.all_cats[cat]
 
         # Add ID to list of faded cats.
