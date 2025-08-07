@@ -912,12 +912,12 @@ class Condition_Events:
 
                 if cat.status.rank != CatRank.LEADER:
                     cat.history.add_death(
-                        death_text=i18n.t("defaults.complications_death_history"),
+                        death_text=i18n.t("defaults.complications_death_history", condition=translated_condition),
                         condition=translated_condition,
                     )
                 else:
                     cat.history.add_death(
-                        death_text=i18n.t("defaults.complications_death_history"),
+                        death_text=i18n.t("defaults.complications_death_history_leader", condition=translated_condition),
                         condition=translated_condition,
                     )
 
