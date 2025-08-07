@@ -82,12 +82,10 @@ def switch_clan_setting(setting_name):
 
     clan_settings[setting_name] = setting_lists[setting_name][list_index]
 
-
 def reset_loaded_clan_settings():
     global clan_settings
-
-    with open("resources/game_config.toml", "r", encoding="utf-8") as read_file:
-        constants.CONFIG.update(tomllib.loads(read_file.read()))
+    from scripts.game_structure.constants import reset_config
+    reset_config()
 
     clan_settings = {}
 

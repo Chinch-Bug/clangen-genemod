@@ -30,7 +30,7 @@ from .screens_core.screens_core import rebuild_den_dropdown
 from ..cat import save_load
 from ..cat.enums import CatRank
 from ..cat.sprites import sprites
-from ..clan_package.settings import get_clan_setting
+from ..clan_package.settings import get_clan_setting, load_clan_settings
 from ..game_structure.game.settings import game_setting_set, game_setting_get
 from ..game_structure.game.switches import switch_get_value, Switch
 from ..game_structure.screen_settings import MANAGER, screen
@@ -142,6 +142,9 @@ class MakeClanScreen(Screens):
             self.ui_images["pick_clan"],
             ui_scale_dimensions((800, 700)),
         )
+        
+        from scripts.game_structure.constants import reset_config
+        reset_config()
 
         # Reset variables
         self.game_mode: str = "classic"
@@ -181,6 +184,7 @@ class MakeClanScreen(Screens):
             self.mute_button_pressed(event)
 
             if event.ui_element == self.main_menu:
+                load_clan_settings()
                 self.change_screen("start screen")
             if self.sub_screen == "game mode":
                 self.handle_game_mode_event(event)

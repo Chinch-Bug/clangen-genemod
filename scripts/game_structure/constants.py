@@ -119,6 +119,11 @@ EVENT_ALLOWED_CONDITIONS = [
 with open("resources/game_config.toml", "r", encoding="utf-8") as read_file:
     CONFIG = tomllib.loads(read_file.read())
 
+def reset_config():
+    global CONFIG
+    with open("resources/game_config.toml", "r", encoding="utf-8") as read_file:
+        CONFIG = tomllib.loads(read_file.read())
+
 with open("resources/placements.json", "r", encoding="utf-8") as read_file:
     LAYOUTS = ujson.loads(read_file.read())
 
