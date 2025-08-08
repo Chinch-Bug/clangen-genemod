@@ -126,7 +126,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["n_c:0"],
                         "mutual": true,
-                        "values": ["romantic", "platonic"],
+                        "values": ["romance", "like"],
                         "amount": 46
             },	
             {
@@ -160,7 +160,7 @@
                 "cats_to": ["p_l"],
                 "cats_from": ["n_c:0"],
                 "mutual": true,
-                "values": ["romantic", "platonic"],
+                "values": ["romance", "like"],
                 "amount": 46
     },	
     {
@@ -193,7 +193,7 @@
                 "cats_to": ["p_l"],
                 "cats_from": ["n_c:0"],
                 "mutual": true,
-                "values": ["romantic", "platonic"],
+                "values": ["romance", "like"],
                 "amount": 46
     },	
     {
@@ -229,7 +229,7 @@
                 "cats_to": ["p_l"],
                 "cats_from": ["n_c:0"],
                 "mutual": true,
-                "values": ["romantic", "platonic"],
+                "values": ["romance", "like"],
                 "amount": 46
     },	
     {
@@ -268,7 +268,7 @@
                 "cats_to": ["p_l"],
                 "cats_from": ["n_c:0"],
                 "mutual": true,
-                "values": ["romantic", "platonic"],
+                "values": ["romance", "like"],
                 "amount": 24
     },	
     {
@@ -316,7 +316,7 @@
                 "cats_to": ["p_l"],
                 "cats_from": ["n_c:0"],
                 "mutual": true,
-                "values": ["romantic", "platonic"],
+                "values": ["romance", "like"],
                 "amount": 46
     },	
     {
@@ -361,7 +361,7 @@
                 "cats_to": ["p_l"],
                 "cats_from": ["n_c:0"],
                 "mutual": true,
-                "values": ["romantic", "platonic"],
+                "values": ["romance", "like"],
                 "amount": 46
     },	
     {
@@ -400,7 +400,7 @@
                 "cats_to": ["p_l"],
                 "cats_from": ["n_c:0"],
                 "mutual": true,
-                "values": ["romantic", "platonic"],
+                "values": ["romance", "like"],
                 "amount": 46
     },	
     {
@@ -448,7 +448,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["n_c:0"],
                         "mutual": true,
-                        "values": ["romantic", "platonic"],
+                        "values": ["romance", "like"],
                         "amount": 46
             },	
             {
@@ -469,15 +469,15 @@
                     "cats_to": ["clan"],
                     "cats_from": [ "p_l" ],
                     "mutual": false,
-                    "values": ["comfort", "platonic" ],
+                    "values": ["comfort", "like" ],
                     "amount": -10
             },	
             {
                     "cats_to": ["clan"],
                     "cats_from": [ "p_l" ],
                     "mutual": false,
-                    "values": ["dislike"],
-                    "amount": 10
+                    "values": ["like"],
+                    "amount": -10
             }
             ],
             "new_cat": [
@@ -495,7 +495,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["n_c:0"],
                         "mutual": true,
-                        "values": ["romantic", "platonic"],
+                        "values": ["romance", "like"],
                         "amount": 22
             },	
             {
@@ -532,7 +532,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["n_c:0"],
                         "mutual": true,
-                        "values": ["romantic", "platonic"],
+                        "values": ["romance", "like"],
                         "amount": 48
             },	
             {
@@ -576,7 +576,7 @@
         },
         "weight": 20,
         "chance_of_success": 40,
-        "relationship_constraint": ["dislike_60"],
+        "relationship_constraint": ["hates"],
         "intro_text": "p_l and r_c have been arguing non-stop the entire time they've been patrolling.",
         "decline_text": "Unable to work together, the two return to camp.",
         "success_outcomes": [
@@ -602,8 +602,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": -10
+                        "values": ["like"],
+                        "amount": 10
                     }	
                 ],
                 "other_clan_rep": -1
@@ -663,7 +663,7 @@
                         "cats_to": ["s_c"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["dislike", "trust", "comfort"],
+                        "values": ["trust", "comfort"],
                         "amount": 5
                     }	
                 ]
@@ -680,7 +680,7 @@
                         "cats_to": ["s_c"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["platonic"],
+                        "values": ["like"],
                         "amount": 5
                     }	
                 ]
@@ -719,14 +719,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["r_c"],
-                        "mutual": false,
-                        "values": ["trust", "platonic"],
+                        "values": ["trust", "like"],
                         "amount": 5
                     },
                     {
@@ -774,14 +767,14 @@
                         "cats_to": ["s_c"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 10
+                        "values": ["like"],
+                        "amount": -10
                     },
                     {
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -5
                     }		
                 ]
@@ -797,8 +790,8 @@
                         "cats_to": ["s_c"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 5
+                        "values": ["like"],
+                        "amount": -5
                     }	
                 ]
             },
@@ -4409,7 +4402,7 @@
         "intro_text": "As the patrol is checking the border lines, they notice that a o_c_n scent has strayed into their territory. o_c_n has been hostile recently, this can't be good.",
         "decline_text": "p_l decides that it isn't important right now. {PRONOUN/p_l/subject/CAP}'ll report it when the patrol gets back to camp.",
         "chance_of_success": 10,
-        "relationship_constraint": ["dislike_60"],
+        "relationship_constraint": ["hates"],
         "success_outcomes": [
             {
                 "text": "p_l has felt the glares r_c has sent {PRONOUN/p_l/poss} way all morning, and given them back just as vehemently when r_c's own back is turned. But when {PRONOUN/p_l/subject} {VERB/p_l/spot/spots} the shadow of a o_c_n warrior falling on r_c, {PRONOUN/p_l/subject} {VERB/p_l/react/reacts} without thought, leaping forward, claws ripping into the enemy's back and flipping them off r_c with a ferocious snarl.",
@@ -4420,15 +4413,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "trust"],
+                        "values": ["respect", "trust", "like"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -4441,15 +4427,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "trust"],
+                        "values": ["respect", "trust", "like"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -4470,15 +4449,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "trust"],
+                        "values": ["respect", "trust", "like"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ],
                 "other_clan_rep": -1
@@ -4504,15 +4476,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "trust"],
+                        "values": ["respect", "trust", "like"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ],
                 "other_clan_rep": -1

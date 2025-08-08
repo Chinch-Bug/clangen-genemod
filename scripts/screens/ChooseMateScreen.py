@@ -1188,8 +1188,8 @@ class ChooseMateScreen(Screens):
             if self.selected_cat.ID in self.the_cat.relationships:
                 relation = self.the_cat.relationships[self.selected_cat.ID]
             else:
-                relation = Relationship(self.the_cat, self.selected_cat)
-            romantic_love = relation.romantic_love
+                relation = self.the_cat.create_one_relationship(self.selected_cat)
+            romantic_love = relation.romance
 
         if 10 <= romantic_love <= 30:
             heart_number = 1
@@ -1220,8 +1220,8 @@ class ChooseMateScreen(Screens):
             if self.the_cat.ID in self.selected_cat.relationships:
                 relation = self.selected_cat.relationships[self.the_cat.ID]
             else:
-                relation = Relationship(self.selected_cat, self.the_cat)
-            romantic_love = relation.romantic_love
+                relation = self.selected_cat.create_one_relationship(self.the_cat)
+            romantic_love = relation.romance
 
         if 10 <= romantic_love <= 30:
             heart_number = 1

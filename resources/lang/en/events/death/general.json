@@ -58,21 +58,9 @@
                     "m_c"
                 ],
                 "values": [
-                    "platonic"
+                    "like"
                 ],
                 "amount": -15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": 15
             }
         ],
         "future_event": [
@@ -158,21 +146,9 @@
                     "m_c"
                 ],
                 "values": [
-                    "platonic"
+                    "like"
                 ],
                 "amount": -15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": 15
             }
         ],
         "future_event": [
@@ -261,21 +237,9 @@
                     "m_c"
                 ],
                 "values": [
-                    "platonic"
+                    "like"
                 ],
                 "amount": -15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": 15
             }
         ],
         "future_event": [
@@ -365,21 +329,9 @@
                     "m_c"
                 ],
                 "values": [
-                    "platonic"
+                    "like"
                 ],
                 "amount": -15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": 15
             }
         ],
         "future_event": [
@@ -463,19 +415,7 @@
                     "m_c"
                 ],
                 "values": [
-                    "dislike"
-                ],
-                "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "platonic",
+                    "like",
                     "comfort"
                 ],
                 "amount": -15
@@ -565,19 +505,7 @@
                     "m_c"
                 ],
                 "values": [
-                    "dislike"
-                ],
-                "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "platonic",
+                    "like",
                     "comfort"
                 ],
                 "amount": -15
@@ -667,19 +595,7 @@
                     "m_c"
                 ],
                 "values": [
-                    "dislike"
-                ],
-                "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "platonic",
+                    "like",
                     "comfort"
                 ],
                 "amount": -15
@@ -771,19 +687,7 @@
                     "m_c"
                 ],
                 "values": [
-                    "dislike"
-                ],
-                "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "platonic",
+                    "like",
                     "comfort"
                 ],
                 "amount": -15
@@ -873,19 +777,7 @@
                     "m_c"
                 ],
                 "values": [
-                    "dislike"
-                ],
-                "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "platonic",
+                    "like",
                     "comfort"
                 ],
                 "amount": -15
@@ -1204,7 +1096,7 @@
                     "m_c"
                 ],
                 "values": [
-                    "platonic",
+                    "like",
                     "respect"
                 ],
                 "amount": 15
@@ -1220,18 +1112,6 @@
                     "trust"
                 ],
                 "amount": 25
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": -15
             }
         ],
         "other_clan": {
@@ -1306,23 +1186,11 @@
                     "m_c"
                 ],
                 "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "respect"
                 ],
                 "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": -15
             }
         ]
     },
@@ -1744,23 +1612,11 @@
                     "m_c"
                 ],
                 "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "respect"
                 ],
                 "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": -15
             }
         ],
         "other_clan": {
@@ -1820,23 +1676,11 @@
                     "m_c"
                 ],
                 "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "respect"
                 ],
                 "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": -15
             }
         ],
         "other_clan": {
@@ -1895,23 +1739,11 @@
                     "m_c"
                 ],
                 "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "respect"
                 ],
                 "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": -15
             }
         ],
         "other_clan": {
@@ -1973,23 +1805,11 @@
                     "m_c"
                 ],
                 "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "respect"
                 ],
                 "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": -15
             }
         ],
         "other_clan": {
@@ -2440,19 +2260,7 @@
                     "m_c"
                 ],
                 "values": [
-                    "dislike"
-                ],
-                "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "comfort"
                 ],
@@ -2543,19 +2351,7 @@
                     "m_c"
                 ],
                 "values": [
-                    "dislike"
-                ],
-                "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "comfort"
                 ],
@@ -2636,19 +2432,7 @@
                     "m_c"
                 ],
                 "values": [
-                    "dislike"
-                ],
-                "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "comfort"
                 ],
@@ -2746,19 +2530,7 @@
                     "m_c"
                 ],
                 "values": [
-                    "dislike"
-                ],
-                "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "comfort"
                 ],
@@ -3803,19 +3575,7 @@
                     "m_c"
                 ],
                 "values": [
-                    "dislike"
-                ],
-                "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "comfort"
                 ],
@@ -4004,23 +3764,11 @@
                     "m_c"
                 ],
                 "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "respect"
                 ],
                 "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": -15
             }
         ]
     },
@@ -4553,19 +4301,7 @@
                     "m_c"
                 ],
                 "values": [
-                    "dislike"
-                ],
-                "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "comfort"
                 ],
@@ -4647,19 +4383,7 @@
                     "m_c"
                 ],
                 "values": [
-                    "dislike"
-                ],
-                "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "comfort"
                 ],
@@ -4746,19 +4470,7 @@
                     "m_c"
                 ],
                 "values": [
-                    "dislike"
-                ],
-                "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "comfort"
                 ],
@@ -5670,24 +5382,12 @@
                     "m_c"
                 ],
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust",
                     "respect"
                 ],
                 "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": -15
             }
         ]
     },
@@ -5754,24 +5454,12 @@
                     "m_c"
                 ],
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust",
                     "respect"
                 ],
                 "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": -15
             }
         ]
     },
@@ -5839,24 +5527,12 @@
                     "m_c"
                 ],
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust",
                     "respect"
                 ],
                 "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": -15
             }
         ]
     },
@@ -5918,24 +5594,12 @@
                     "m_c"
                 ],
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust",
                     "respect"
                 ],
                 "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": -15
             }
         ]
     },
@@ -5997,24 +5661,12 @@
                     "m_c"
                 ],
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust",
                     "respect"
                 ],
                 "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": -15
             }
         ]
     },
@@ -6078,24 +5730,12 @@
                     "m_c"
                 ],
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust",
                     "respect"
                 ],
                 "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": -15
             }
         ]
     },
@@ -6228,24 +5868,12 @@
                     "m_c"
                 ],
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust",
                     "respect"
                 ],
                 "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": -15
             }
         ],
         "other_clan": {
@@ -6973,23 +6601,11 @@
                     "r_c"
                 ],
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust"
                 ],
                 "amount": -15
-            },
-            {
-                "cats_from": [
-                    "m_c"
-                ],
-                "cats_to": [
-                    "r_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": 15
             }
         ],
         "future_event": [
@@ -7075,7 +6691,7 @@
                     "m_c"
                 ],
                 "values": [
-                    "platonic"
+                    "like"
                 ],
                 "amount": -15
             }
@@ -7172,23 +6788,11 @@
                     "r_c"
                 ],
                 "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "respect"
                 ],
                 "amount": -15
-            },
-            {
-                "cats_from": [
-                    "m_c"
-                ],
-                "cats_to": [
-                    "r_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": 15
             }
         ],
         "future_event": [
@@ -7267,23 +6871,11 @@
                     "m_c"
                 ],
                 "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "respect"
                 ],
                 "amount": -15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "dislike"
-                ],
-                "amount": 15
             }
         ],
         "future_event": [
@@ -7720,19 +7312,7 @@
                     "m_c"
                 ],
                 "values": [
-                    "dislike"
-                ],
-                "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "platonic"
+                    "like"
                 ],
                 "amount": -15
             }
@@ -8363,22 +7943,9 @@
                 ],
                 "mutual": false,
                 "values": [
-                    "platonic"
+                    "like"
                 ],
                 "amount": -10
-            },
-            {
-                "cats_from": [
-                    "clan"
-                ],
-                "cats_to": [
-                    "r_c"
-                ],
-                "mutual": false,
-                "values": [
-                    "dislike"
-                ],
-                "amount": 10
             }
         ],
         "other_clan": {

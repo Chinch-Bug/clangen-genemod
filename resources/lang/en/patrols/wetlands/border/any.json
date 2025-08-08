@@ -1312,7 +1312,7 @@
                     {
                         "cats_from": ["n_c:0"],
                         "cats_to": ["patrol"],
-                        "values": ["platonic", "trust", "comfort"],
+                        "values": ["like", "trust", "comfort"],
                         "amount": 10
                     }
                 ],
@@ -2321,7 +2321,7 @@
                         "cats_to": ["r_c", "patrol"],
                         "cats_from": ["patrol", "patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort"],
+                        "values": ["like", "respect", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -2336,7 +2336,7 @@
                         "cats_to": ["s_c", "patrol"],
                         "cats_from": ["patrol", "patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort"],
+                        "values": ["like", "respect", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -2356,7 +2356,7 @@
                         "cats_to": ["s_c", "patrol"],
                         "cats_from": ["patrol", "patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort"],
+                        "values": ["like", "respect", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -2372,7 +2372,7 @@
                         "cats_to": ["r_c", "patrol"],
                         "cats_from": ["patrol", "patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort"],
+                        "values": ["like", "respect", "comfort"],
                         "amount": -5
                     }
                 ]
@@ -2394,7 +2394,7 @@
                         "cats_to": ["s_c", "patrol"],
                         "cats_from": ["patrol", "patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort"],
+                        "values": ["like", "respect", "comfort"],
                         "amount": -5
                     }
                 ]

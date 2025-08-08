@@ -20,7 +20,6 @@ from pygame import Rect
 from scripts.game_structure.ui_elements import (
     UIImageButton,
     UISpriteButton,
-    UIRelationStatusBar,
     UISurfaceImageButton,
 )
 from scripts.utility import (

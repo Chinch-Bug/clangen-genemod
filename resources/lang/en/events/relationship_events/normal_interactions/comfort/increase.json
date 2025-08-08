@@ -33,7 +33,7 @@
 			"m_c and r_c make each other laugh."
 		],
 		"reaction_random_cat": {
-			"comfortable": "increase"
+			"comfort": "increase"
 		}
 	},
 	{
@@ -90,7 +90,7 @@
 			"m_c and r_c share little secrets about themselves."
 		],
 		"reaction_random_cat": {
-			"comfortable": "increase"
+			"comfort": "increase"
 		}
 	},
 	{
@@ -122,7 +122,7 @@
 			"leader"
 		],
 		"reaction_random_cat": {
-			"comfortable": "increase"
+			"comfort": "increase"
 		}
 	},
 	{
@@ -275,7 +275,7 @@
             "elder"
         ],
 		"reaction_random_cat": {
-			"platonic": "increase"
+			"like": "increase"
 		}
 	},
 	{
@@ -297,11 +297,11 @@
 			"kitten"
 		],
 		"reaction_random_cat": {
-			"platonic": "increase",
-			"comfortable": "increase"
+			"like": "increase",
+			"comfort": "increase"
 		},
 		"also_influences": {
-			"platonic": "increase"
+			"like": "increase"
 		}
 	},
 	{
@@ -317,8 +317,8 @@
 			"kitten"
 		],
 		"reaction_random_cat": {
-			"dislike": "increase:",
-			"comfortable": "decrease"
+			"like": "decrease:",
+			"comfort": "decrease"
 		}
 	},
 	{
@@ -347,7 +347,7 @@
 			"healer apprentice"
 		],
 		"reaction_random_cat": {
-			"comfortable": "increase",
+			"comfort": "increase",
 			"trust": "increase"
 		}
 	},
@@ -382,7 +382,7 @@
 			"After something happens, m_c and r_c find comfort in one another's company."
 		],
 		"reaction_random_cat": {
-			"comfortable": "increase"
+			"comfort": "increase"
 		}
 	},
 	{
@@ -398,7 +398,7 @@
 			"m_c and r_c have multiple inside jokes with one another."
 		],
 		"relationship_constraint": [
-			"comfortable_30"
+			"relates_to"
 		]
 	},
 	{
@@ -412,10 +412,10 @@
 			"m_c always goes to r_c first when {PRONOUN/m_c/subject} needs advice."
 		],
 		"relationship_constraint": [
-			"comfortable_30"
+			"relates_to"
 		],
 		"reaction_random_cat": {
-			"comfortable": "increase",
+			"comfort": "increase",
 			"trust": "increase"
 		}
 	}
