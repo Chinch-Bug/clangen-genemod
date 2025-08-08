@@ -667,7 +667,7 @@ def create_new_cat_block(
         if (
             chosen_backstory
             in BACKSTORIES["backstory_categories"]["baby_clancat_backstories"]
-            or game.clan.clancount == "multiclan"
+            or (game.clan.clancount == "multiclan" and "clancat" in attribute_list)
         ):
             cat_social = CatSocial.CLANCAT
         elif (

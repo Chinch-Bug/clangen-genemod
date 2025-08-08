@@ -184,7 +184,8 @@ class MakeClanScreen(Screens):
             self.mute_button_pressed(event)
 
             if event.ui_element == self.main_menu:
-                load_clan_settings()
+                if switch_get_value(Switch.clan_list):
+                    load_clan_settings()
                 self.change_screen("start screen")
             if self.sub_screen == "game mode":
                 self.handle_game_mode_event(event)
