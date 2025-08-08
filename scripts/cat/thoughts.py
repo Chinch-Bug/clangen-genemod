@@ -75,7 +75,9 @@ class Thoughts:
             return False
 
         # This is for filtering certain relationship types between the main cat and random cat.
-        if "relationship_constraint" in thought and random_cat:
+        if "relationship_constraint" in thought:
+            if not random_cat:
+                return False
             if not Thoughts.thought_fulfill_rel_constraints(
                 main_cat, random_cat, thought["relationship_constraint"]
             ):

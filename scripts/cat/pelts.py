@@ -496,7 +496,7 @@ class Pelt:
                                 white_pattern.append(order[i] + pawtype)
                             else:
                                 white_pattern.append(order[i] + choice([' toes', ' mitten', ' mitten', ' low sock']))
-                        white_pattern.append(choice(['belt', 'belt', 'pants'] + [None] * 9))
+                        white_pattern.append(choice(['belt', 'belt', 'pants'] + [None] * 12))
 
                         #face
                         if 'beard' in white_pattern:
@@ -515,7 +515,7 @@ class Pelt:
                         #belly
                         if 'underbelly1' not in white_pattern:
                             white_pattern.append('belly')
-                        white_pattern.append(choice(['belt', 'belt', 'pants'] + [None] * 5))
+                        white_pattern.append(choice(['belt', 'belt', 'pants'] + [None] * 7))
 
                         #paws
                         nropaws = choice([4, 4, 4, 4, 3, 3, 2, 2, 1, 0])
@@ -546,7 +546,7 @@ class Pelt:
                     while len(white_pattern) < 4:
                         #chest
                         white_pattern.append('underbelly1')
-                        white_pattern.append(choice(['belt', 'belt', 'pants'] + [None] * 3))
+                        white_pattern.append(choice(['belt', 'belt', 'pants'] + [None] * 7))
 
                         #paws
                         nropaws = 4
@@ -579,7 +579,7 @@ class Pelt:
                     while len(white_pattern) < 4:
                         #chest
                         white_pattern.append('underbelly1')
-                        white_pattern.append(choice(['belt', 'belt', 'pants'] + [None] * 3))
+                        white_pattern.append(choice(['belt', 'belt', 'pants'] + [None] * 7))
 
                         #paws
                         nropaws = 4

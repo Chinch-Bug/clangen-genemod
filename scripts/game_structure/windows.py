@@ -18,7 +18,7 @@ from pygame_gui.elements import UIWindow
 from pygame_gui.windows import UIMessageWindow
 
 from scripts.cat.cats import Cat, BACKSTORIES
-from scripts.cat.enums import CatStanding, CatRank
+from scripts.cat.enums import CatStanding, CatRank, CatAge
 from scripts.cat.history import History
 from scripts.cat.names import Name, names
 from scripts.cat_relations.inheritance import Inheritance
