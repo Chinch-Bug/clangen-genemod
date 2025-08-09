@@ -382,7 +382,7 @@ class Events:
         removals = []
 
         for event in game.clan.future_events:
-            if event.clan != clan.displayname:
+            if event.clan != clan.enum:
                 continue
             event.moon_delay -= 1
             # we give events a buffer of 12 moons to allow any season-locked events a chance to trigger, then we remove
@@ -2267,7 +2267,7 @@ class Events:
             targets = [
                 i
                 for i in relationships
-                if i.total_relationship_value() < 0
+                if i.total_relationship_value < 0
                 and Cat.fetch_cat(i.cat_to).status.is_any_clan_group()
             ]
             if not targets:
