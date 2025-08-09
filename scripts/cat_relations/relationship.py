@@ -706,9 +706,7 @@ class Relationship:
         """
         Returns the tier group for the given value.
         """
-        for group, interval in constants.CONFIG["relationship"][
-            "value_intervals"
-        ].items():
+        for group, interval in constants.CONFIG["relationship"]["value_intervals"].items():
             if rel_type <= interval:
                 return group
 
