@@ -1249,7 +1249,7 @@ class Pregnancy_Events:
                         possible = False
                         break
                     if x := couple.relationships.get(cand.ID):
-                        if (x.romance + x.romance + x.admiration + x.trust + x.comfortable - x.dislike - x.jealousy) < 5:
+                        if (x.romance + x.like + x.respect + x.trust + x.comfort) < 5:
                             possible = False
                             break
                 if possible:
