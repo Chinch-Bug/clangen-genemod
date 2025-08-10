@@ -572,6 +572,9 @@ class Pelt:
                         white_pattern.append(choice([None, None, None, choice(['break/nose1', 'break/nose2'])]))
                         white_pattern = clean_white(white_pattern)
             else:
+                if "NoDBE" not in pax3 and (random() < 0.75):
+                    white_pattern = [choice(["REVERSEPANTS"])]
+
                 if(randint(1, 4) == 1):
                     white_pattern.append(choice(maingame_white["high"].get(str(KITgrade))))
 

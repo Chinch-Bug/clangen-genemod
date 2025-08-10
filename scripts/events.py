@@ -1644,7 +1644,7 @@ class Events:
             elif promoted_to == 'elder':
                 cer_type = 'warrior-elder'
             
-            cat.name.change_prefix(Cat, cat.moons, game.clan.biome, cer_type)
+            cat.name.change_prefix(cat.moons, game.clan.biome, cer_type)
             
 
         # Time to gather ceremonies. First, lets gather all the ceremony ID's.

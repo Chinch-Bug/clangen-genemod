@@ -1335,9 +1335,9 @@
                     "comfort"
                 ],
                 "amount": -5,
-                "log": [
-                    "m_c was discomforted by a reminder of r_c's unnatural powers."
-                ]
+                "log": {
+                    "cats_from": "m_c was discomforted by a reminder of r_c's unnatural powers."
+                }
             }
         ]
     },
@@ -9129,7 +9129,10 @@
                 "trust"
             ],
             "amount": 5,
-            "log": "m_c Trusted r_c with something important"
+            "log": {
+                "cats_from": "m_c Trusted r_c with something important",
+                "cats_to": "m_c Trusted r_c with something important"
+            }
         }],
         "new_gender": [
             "trans male",
@@ -9187,7 +9190,10 @@
                     "trust"
                 ],
                 "amount": 5,
-                "log": "m_c Trusted r_c with something important"
+                "log": {
+                    "cats_from": "m_c Trusted r_c with something important",
+                    "cats_to": "m_c Trusted r_c with something important"
+                }
             } ],
         "new_gender": [
             "trans female",
@@ -9485,7 +9491,7 @@
                 "oblivious"
             ]
         },
-        "relationships": {
+        "relationships": [{
             "cats_from": [
                 "some_clan"
             ],
@@ -9501,7 +9507,7 @@
             "log": {
                 "cats_from": "Was upset when m_c defied the Clan and maintained a friendship during war."
             }
-        },
+        }],
         "other_clan": {
             "current_rep": ["hostile"],
             "changed": 2,

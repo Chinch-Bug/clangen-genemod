@@ -212,7 +212,7 @@ class Namer():
             elif phenotype.silvergold:
                 tabby['type'] = 'golden'
 
-        if (phenotype.white[1] in ['ws', 'wt'] and phenotype.whitegrade > 2) or (self.moons < 6 and phenotype.karp[0] == 'K'):
+        if (phenotype.white[1] in ['ws', 'wt'] and phenotype.whitegrade > 2) or (self.moons < 6 and phenotype.karp[0] == 'K') or (self.moons > 100 and phenotype.vitiligo):
             white = 'high'
         elif phenotype.white[1] in ['ws', 'wt'] or (phenotype.white[0] in ['ws', 'wt'] and phenotype.whitegrade > 4) or phenotype.white[0] == 'wsal' or (self.moons > 12 and phenotype.vitiligo) or phenotype.karp[0] == 'K':
             white = 'mid'

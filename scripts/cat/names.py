@@ -204,7 +204,7 @@ class Name:
     def filter(self, all, used):
         return [x for x in all if x not in used]
 
-    def change_prefix(self, cat, moons, biome, change):
+    def change_prefix(self, moons, biome, change):
         self.moons = moons
 
         colour_changed = False
@@ -234,7 +234,7 @@ class Name:
             colour_changed = True
         elif self.phenotype.ext[0] == 'ea' and ((change == "apprentice-warrior" and self.phenotype.agouti[0] != 'a') or (self.moons > 23 and change == "apprentice-warrior")):
             colour_changed = True
-        elif change == "apprentice-warrior" and self.phenotype.vitiligo:
+        elif change in ["apprentice-warrior", "warrior-elder"] and self.phenotype.vitiligo:
             colour_changed = True
         elif self.prefix in self.mod_prefixes['general']['small'] and self.phenotype.height_label in ['goliath', 'giant', 'large', 'above average', 'average']:
             colour_changed = True
@@ -246,9 +246,9 @@ class Name:
             chance /= constants.CONFIG["cat_name_controls"]["prefix_change_chance"]["pelt_change_modifier"]
 
         if random.random() < (1/chance):
-            self.give_prefix(cat, biome)
+            self.give_prefix(self.cat, biome)
 
-        self.check_name(cat, True)
+        self.check_name(self.cat, True)
 
 
     # Generate possible prefix

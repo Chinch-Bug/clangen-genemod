@@ -1989,8 +1989,8 @@ def unpack_rel_block(
         to_log = None
         from_log = None
         if "log" in block:
-            to_log = block["log"].get("cats_to") + effect
-            from_log = block["log"].get("cats_from") + effect
+            to_log = block["log"].get("cats_to") + effect if block["log"].get("cats_to") else ""
+            from_log = block["log"].get("cats_from") + effect if block["log"].get("cats_from") else ""
             if not to_log and not from_log:
                 print(f"something is wrong with relationship log: {block['log']}")
 
