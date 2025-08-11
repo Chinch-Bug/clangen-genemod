@@ -557,7 +557,7 @@ class DeleteCheck(UIWindow):
 class DeleteCatCheck(UIWindow):
     def __init__(self, reloadscreen, clan_name):
         super().__init__(
-            ui_scale(pygame.Rect((250, 200), (300, 180))),
+            ui_scale(pygame.Rect((250, 200), (300, 275))),
             window_display_title="Delete Faded Cats Check",
             object_id="#delete_check_window",
             resizable=False,
@@ -568,21 +568,21 @@ class DeleteCatCheck(UIWindow):
 
         self.delete_check_message = UITextBoxTweaked(
             f"Do you wish to delete your faded cats? This is permanent and cannot be undone. Making a copy of save data is recommended in case any issues arise.",
-            ui_scale(pygame.Rect((20, 20), (260, -1))),
+            ui_scale(pygame.Rect((20, 20), (250, -1))),
             line_spacing=1,
             object_id="#text_box_30_horizcenter",
             container=self,
         )
 
         self.delete_it_button = UISurfaceImageButton(
-            ui_scale(pygame.Rect((71, 100), (153, 30))),
+            ui_scale(pygame.Rect((71, 160), (153, 30))),
             "Delete it!",
             get_button_dict(ButtonStyles.SQUOVAL, (153, 30)),
             object_id="@buttonstyles_squoval",
             container=self,
         )
         self.go_back_button = UISurfaceImageButton(
-            ui_scale(pygame.Rect((71, 145), (153, 30))),
+            ui_scale(pygame.Rect((71, 205), (153, 30))),
             "No! Go back!",
             get_button_dict(ButtonStyles.SQUOVAL, (153, 30)),
             object_id="@buttonstyles_squoval",
@@ -614,13 +614,18 @@ class DeleteCatCheck(UIWindow):
                     if not cat.history:
                         continue
                     if cat.history.died_by:
-                        for event in cat.history.died_by:
-                            if 'r_c' in event["text"]:
-                                history_event_cats.append(event["involved"])
+                        for died in cat.history.died_by:
+                            if 'r_c' in died["text"]:
+                                history_event_cats.append(died["involved"])
                     if cat.history.scar_events:
-                        for event in cat.history.scar_events:
-                            if 'r_c' in event["text"]:
-                                history_event_cats.append(event["involved"])
+                        for scar in cat.history.scar_events:
+                            if 'r_c' in scar["text"]:
+                                history_event_cats.append(scar["involved"])
+                    if cat.history.murder:
+                        for killed in cat.history.murder.get("is_murderer", []):
+                            history_event_cats.append(killed["victim"])
+                        for killed in cat.history.murder.get("is_victim", []):
+                            history_event_cats.append(killed["murderer"])
                 #get murder cats
                 #put together all living cat + family tree data with all that
                 safe_ids = Inheritance.get_all_cat_ids() + list(Cat.all_cats.keys()) + list(set(mentors)) + list(set(history_event_cats))

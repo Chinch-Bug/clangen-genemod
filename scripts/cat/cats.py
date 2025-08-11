@@ -1059,6 +1059,13 @@ class Cat:
         for x in self.apprentice:
             Cat.fetch_cat(x).update_mentor()
 
+        if self.status.is_leader:
+            self.status.group.fetch_clan_object().leader = None
+        if self.status.rank == CatRank.DEPUTY:
+            self.status.group.fetch_clan_object().deputy = None
+        if self.status.rank.is_any_medicine_rank():
+            self.status.group.fetch_clan_object().remove_med_cat(self)
+
     def add_to_clan(self, clan: CatGroup = CatGroup.PLAYER_CLAN, add_kits=True) -> list:
         """Makes an "outside cat" a Clan cat. Returns a list of IDs for any additional cats that
         are coming with them."""

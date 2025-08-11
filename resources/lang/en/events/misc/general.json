@@ -9130,8 +9130,7 @@
             ],
             "amount": 5,
             "log": {
-                "cats_from": "m_c Trusted r_c with something important",
-                "cats_to": "m_c Trusted r_c with something important"
+                "cats_from": "m_c Trusted r_c with something important"
             }
         }],
         "new_gender": [
@@ -9191,8 +9190,7 @@
                 ],
                 "amount": 5,
                 "log": {
-                    "cats_from": "m_c Trusted r_c with something important",
-                    "cats_to": "m_c Trusted r_c with something important"
+                    "cats_from": "m_c Trusted r_c with something important"
                 }
             } ],
         "new_gender": [
