@@ -1635,13 +1635,13 @@ class Pregnancy_Events:
                 if second_kitten.ID == kitten.ID:
                     continue
                 try:
-                    kitten.relationships[second_kitten.ID].romance += 20 + y
+                    kitten.relationships[second_kitten.ID].like += 20 + y
                     kitten.relationships[second_kitten.ID].comfortable += 10 + y
                     kitten.relationships[second_kitten.ID].trust += 10 + y
                 except:
                     start_relation = Relationship(kitten, second_kitten, False, True)
                     kitten.relationships[second_kitten.ID] = start_relation
-                    kitten.relationships[second_kitten.ID].romance = 20 + y
+                    kitten.relationships[second_kitten.ID].like = 20 + y
                     kitten.relationships[second_kitten.ID].comfortable = 10 + y
                     kitten.relationships[second_kitten.ID].trust = 10 + y
             
