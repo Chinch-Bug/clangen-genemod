@@ -249,7 +249,7 @@ class Clan:
                 Cat.all_cats.get(cat_id).rank_change(CatRank.APPRENTICE)
             Cat.all_cats.get(cat_id).thoughts()
             Cat.all_cats.get(cat_id).pelt.rebuild_sprite = True 
-        save_cats(game.clan.displayname, Cat, game)
+        save_cats(game.clan.name, Cat, game)
 
         # create leader's ceremony
         self.leader.generate_lead_ceremony()
@@ -688,9 +688,9 @@ class Clan:
         """
         Load the information about what cat is pregnant and in what 'state' they are in the pregnancy.
         """
-        if not game.clan.displayname:
+        if not game.clan.name:
             return
-        file_path = get_save_dir() + f"/{game.clan.displayname}/pregnancy.json"
+        file_path = get_save_dir() + f"/{game.clan.name}/pregnancy.json"
         if os.path.exists(file_path):
             with open(
                 file_path, "r", encoding="utf-8"
@@ -703,21 +703,21 @@ class Clan:
         """
         Save the information about what cat is pregnant and in what 'state' they are in the pregnancy.
         """
-        if not game.clan.displayname:
+        if not game.clan.name:
             return
 
         safe_save(
-            f"{get_save_dir()}/{game.clan.displayname}/pregnancy.json", clan.pregnancy_data
+            f"{get_save_dir()}/{game.clan.name}/pregnancy.json", clan.pregnancy_data
         )
 
     def load_disaster(self, clan):
         """
         TODO: DOCS
         """
-        if not game.clan.displayname:
+        if not game.clan.name:
             return
 
-        file_path = get_save_dir() + f"/{game.clan.displayname}/disasters/primary.json"
+        file_path = get_save_dir() + f"/{game.clan.name}/disasters/primary.json"
         try:
             if os.path.exists(file_path):
                 with open(
@@ -743,7 +743,7 @@ class Clan:
                     else:
                         clan.primary_disaster = {}
             else:
-                os.makedirs(get_save_dir() + f"/{game.clan.displayname}/disasters")
+                os.makedirs(get_save_dir() + f"/{game.clan.name}/disasters")
                 clan.primary_disaster = None
                 with open(file_path, "w", encoding="utf-8") as rel_file:
                     json_string = ujson.dumps(clan.primary_disaster, indent=4)
@@ -751,7 +751,7 @@ class Clan:
         except:
             clan.primary_disaster = None
 
-        file_path = get_save_dir() + f"/{game.clan.displayname}/disasters/secondary.json"
+        file_path = get_save_dir() + f"/{game.clan.name}/disasters/secondary.json"
         try:
             if os.path.exists(file_path):
                 with open(file_path, "r", encoding="utf-8") as read_file:
@@ -773,7 +773,7 @@ class Clan:
                     else:
                         clan.secondary_disaster = {}
             else:
-                os.makedirs(get_save_dir() + f"/{game.clan.displayname}/disasters")
+                os.makedirs(get_save_dir() + f"/{game.clan.name}/disasters")
                 clan.secondary_disaster = None
                 with open(file_path, "w", encoding="utf-8") as rel_file:
                     json_string = ujson.dumps(clan.secondary_disaster, indent=4)
@@ -786,11 +786,11 @@ class Clan:
         """
         TODO: DOCS
         """
-        if not clan.displayname:
+        if not clan.name:
             return
-        file_path = get_save_dir() + f"/{clan.displayname}/disasters/primary.json"
-        if not os.path.isdir(f"{get_save_dir()}/{clan.displayname}/disasters"):
-            os.mkdir(f"{get_save_dir()}/{clan.displayname}/disasters")
+        file_path = get_save_dir() + f"/{clan.name}/disasters/primary.json"
+        if not os.path.isdir(f"{get_save_dir()}/{clan.name}/disasters"):
+            os.mkdir(f"{get_save_dir()}/{clan.name}/disasters")
         if clan.primary_disaster:
             disaster = {
                 "event": clan.primary_disaster.event,
@@ -806,7 +806,7 @@ class Clan:
         else:
             disaster = {}
 
-        safe_save(f"{get_save_dir()}/{clan.displayname}/disasters/primary.json", disaster)
+        safe_save(f"{get_save_dir()}/{clan.name}/disasters/primary.json", disaster)
 
         if clan.secondary_disaster:
             disaster = {
@@ -823,17 +823,17 @@ class Clan:
         else:
             disaster = {}
 
-        safe_save(f"{get_save_dir()}/{clan.displayname}/disasters/secondary.json", disaster)
+        safe_save(f"{get_save_dir()}/{clan.name}/disasters/secondary.json", disaster)
 
     def load_future_events(self, clan):
         """
         Loads the Clan's saved future events
         """
-        if not clan.displayname:
+        if not clan.name:
             return
 
         # load the current file path, if it exists in save
-        file_path = f"{get_save_dir()}/{game.clan.displayname}/future_events.json"
+        file_path = f"{get_save_dir()}/{game.clan.name}/future_events.json"
         if os.path.exists(file_path):
             with open(file_path, "r", encoding="utf-8") as save_file:
                 save_list = ujson.load(save_file)
@@ -869,19 +869,19 @@ class Clan:
         for event in game.clan.future_events:
             save_list.append(event.to_dict())
 
-        safe_save(f"{get_save_dir()}/{game.clan.displayname}/future_events.json", save_list)
+        safe_save(f"{get_save_dir()}/{game.clan.name}/future_events.json", save_list)
 
     def load_herb_supply(self, clan):
         """
         Loads the Clan's saved herb supply info
         """
-        if not game.clan.displayname:
+        if not game.clan.name:
             return
 
         save_dir = get_save_dir()
 
-        current_file_path = save_dir + f"/{game.clan.displayname}/herb_supply.json"
-        old_file_path = save_dir + f"/{game.clan.displayname}/herbs.json"
+        current_file_path = save_dir + f"/{game.clan.name}/herb_supply.json"
+        old_file_path = save_dir + f"/{game.clan.name}/herbs.json"
 
         try:
             # load the old file path and convert the save data into current format
@@ -925,22 +925,22 @@ class Clan:
         }
 
         safe_save(
-            f"{get_save_dir()}/{game.clan.displayname}/herb_supply.json",
+            f"{get_save_dir()}/{game.clan.name}/herb_supply.json",
             combined_supply_dict,
         )
 
         # delete old herb save file if it exists
-        if os.path.exists(get_save_dir() + f"/{game.clan.displayname}/herbs.json"):
-            os.remove(get_save_dir() + f"/{game.clan.displayname}/herbs.json")
+        if os.path.exists(get_save_dir() + f"/{game.clan.name}/herbs.json"):
+            os.remove(get_save_dir() + f"/{game.clan.name}/herbs.json")
 
     def load_freshkill_pile(self, clan):
         """
         TODO: DOCS
         """
-        if not game.clan.displayname or clan.game_mode == "classic":
+        if not game.clan.name or clan.game_mode == "classic":
             return
 
-        file_path = get_save_dir() + f"/{game.clan.displayname}/freshkill_pile.json"
+        file_path = get_save_dir() + f"/{game.clan.name}/freshkill_pile.json"
         try:
             if os.path.exists(file_path):
                 with open(
@@ -949,7 +949,7 @@ class Clan:
                     pile = ujson.load(read_file)
                     clan.freshkill_pile = FreshkillPile(pile)
 
-                file_path = get_save_dir() + f"/{game.clan.displayname}/nutrition_info.json"
+                file_path = get_save_dir() + f"/{game.clan.name}/nutrition_info.json"
                 if os.path.exists(file_path) and clan.freshkill_pile:
                     with open(file_path, "r", encoding="utf-8") as read_file:
                         nutritions = ujson.load(read_file)
@@ -974,7 +974,7 @@ class Clan:
             return
 
         safe_save(
-            f"{get_save_dir()}/{game.clan.displayname}/freshkill_pile.json",
+            f"{get_save_dir()}/{game.clan.name}/freshkill_pile.json",
             clan.freshkill_pile.pile,
         )
 
@@ -986,7 +986,7 @@ class Clan:
                 "percentage": nutr.percentage,
             }
 
-        safe_save(f"{get_save_dir()}/{game.clan.displayname}/nutrition_info.json", data)
+        safe_save(f"{get_save_dir()}/{game.clan.name}/nutrition_info.json", data)
 
     ## Properties
 

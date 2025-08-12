@@ -582,7 +582,7 @@ class HandleShortEvents:
         handles killing/murdering cats
         """
         dead_list = self.dead_cats if self.dead_cats else []
-        self.current_lives = int(self.main_cat.status.get_last_living_group().fetch_clan_object(game.clan).leader_lives)
+        self.current_lives = int(clan.leader_lives)
         self.current_lives_r_c = int(self.random_cat.status.get_last_living_group().fetch_clan_object(game.clan).leader_lives) if self.random_cat else None
 
         # check if the bodies are retrievable
@@ -625,7 +625,7 @@ class HandleShortEvents:
         cats that will die are added to self.dead_cats
         """
         # gather living clan cats except leader bc leader lives would be frustrating to handle in these
-        alive_cats = [i for i in Cat.all_cats.values() if i.status.group == clan]
+        alive_cats = [i for i in Cat.all_cats.values() if i.status.group == self.main_cat.status.group]
 
         # make sure all cats in the pool fit the event requirements
         requirements = self.chosen_event.m_c
@@ -670,6 +670,7 @@ class HandleShortEvents:
                     tnr = True
                     
             taken_cats = []
+            left_cats = []
             for kitty in self.dead_cats:
                 if "lost" in self.chosen_event.tags:
                     if not tnr or 'TNR' not in kitty.pelt.scars:
@@ -685,10 +686,15 @@ class HandleShortEvents:
                         if kitty.moons < 4:
                             kitty.become_lost(CatSocial.KITTYPET, CatStanding.LEFT)
                             kitty.get_permanent_condition("sterile", False, event_triggered=True, custom_reveal=randint(4, 6))
+                    elif tnr:
+                        left_cats.append(kitty)
+                        continue
                 self.multi_cat.append(kitty)
                 if kitty.ID not in self.involved_cats:
                     self.involved_cats.append(kitty.ID)
             for kitty in taken_cats:
+                self.dead_cats.remove(kitty)
+            for kitty in left_cats:
                 self.dead_cats.remove(kitty)
 
         else:
@@ -789,18 +795,11 @@ class HandleShortEvents:
                         )
 
                     if cat.status.is_leader:
-                        if cat.status.group == self.main_cat.status.group:
-                            self.current_lives -= 1
-                            if self.current_lives != cat.status.get_last_living_group().fetch_clan_object().leader_lives:
-                                while self.current_lives > cat.status.get_last_living_group().fetch_clan_object().leader_lives:
-                                    cat.history.add_death("multi_lives")
-                                    self.current_lives -= 1
-                        else:
-                            self.current_lives_r_c -= 1
-                            if self.current_lives_r_c != cat.status.get_last_living_group().fetch_clan_object().leader_lives:
-                                while self.current_lives_r_c > cat.status.get_last_living_group().fetch_clan_object().leader_lives:
-                                    cat.history.add_death("multi_lives")
-                                    self.current_lives_r_c -= 1
+                        self.current_lives -= 1
+                        if self.current_lives != cat.status.get_last_living_group().fetch_clan_object().leader_lives:
+                            while self.current_lives > cat.status.get_last_living_group().fetch_clan_object().leader_lives:
+                                cat.history.add_death("multi_lives")
+                                self.current_lives -= 1
                     cat.history.add_death(death_history)
 
             # new_cat history

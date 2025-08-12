@@ -30,6 +30,9 @@ logger = logging.getLogger(__name__)
 
 
 def load_cats():
+    switch_set_value(
+        Switch.error_message, ""
+    )
     try:
         json_load()
     except FileNotFoundError as e:

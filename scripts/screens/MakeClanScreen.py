@@ -32,7 +32,7 @@ from ..cat.enums import CatRank
 from ..cat.sprites import sprites
 from ..clan_package.settings import get_clan_setting, load_clan_settings
 from ..game_structure.game.settings import game_setting_set, game_setting_get
-from ..game_structure.game.switches import switch_get_value, Switch
+from ..game_structure.game.switches import switch_get_value, switch_set_value, Switch
 from ..game_structure.screen_settings import MANAGER, screen
 from ..game_structure.windows import SymbolFilterWindow
 from ..ui.generate_box import get_box, BoxStyles
@@ -2254,6 +2254,9 @@ class MakeClanScreen(Screens):
         scripts.screens.screens_core.screens_core.rebuild_bgs()
 
     def save_clan(self):
+        switch_set_value(
+            Switch.error_message, ""
+        )
         game.mediated.clear()
         game.patrolled.clear()
         save_load.faded_ids.clear()
