@@ -1,5 +1,5 @@
 from .genotype import Genotype
-from random import choice, randint
+from random import choice, randint, random
 from scripts.cat.breed_functions import find_my_breed
 from scripts.special_dates import SpecialDate, is_today
 
