@@ -1370,9 +1370,9 @@ class Pregnancy_Events:
         elif cat:
             par2geno.Generator('masc')
         ##### SELECT BACKSTORY #####
-        if cat and "pregnant" in cat.injuries and other_cat and other_cat[0].status.group != cat.status.group:
+        if cat and "pregnant" in cat.injuries and other_cat and other_cat[0].status.get_last_living_group() != cat.status.group:
             backkit = 'halfclan1' if other_cat[0].status.group else 'outsider_roots1'
-        elif cat and other_cat and other_cat[0].status.group != cat.status.group:
+        elif cat and other_cat and other_cat[0].status.get_last_living_group() != cat.status.group:
             backkit = 'halfclan2' if other_cat[0].status.group else 'outsider_roots2'
         if backkit:
             backstory = backkit
