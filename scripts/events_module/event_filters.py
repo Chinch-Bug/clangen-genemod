@@ -4,7 +4,6 @@ from random import choice
 from scripts.cat_relations.enums import RelType
 
 from scripts.cat.enums import CatRank, CatGroup, CatAge
-from scripts.game_structure.game_essentials import game
 from scripts.special_dates import get_special_date, contains_special_date_tag
 from scripts.utility import (
     find_alive_cats_with_rank,
@@ -12,6 +11,7 @@ from scripts.utility import (
     get_living_clan_cat_count,
     filter_relationship_type,
 )
+from scripts.game_structure import game
 
 
 def event_for_location(locations: list) -> bool:

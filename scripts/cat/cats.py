@@ -41,11 +41,10 @@ from scripts.conditions import (
 )
 from scripts.event_class import Single_Event
 from scripts.events_module.generate_events import GenerateEvents
-from scripts.game_structure import image_cache, constants
+from scripts.game_structure import image_cache, constants, game
 from scripts.game_structure.game.save_load import safe_save
 from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure.game.switches import switch_get_value, Switch
-from scripts.game_structure.game_essentials import game
 from scripts.game_structure.localization import load_lang_resource
 from scripts.game_structure.screen_settings import screen
 from scripts.housekeeping.datadir import get_save_dir
@@ -146,8 +145,9 @@ class Cat:
         chim_white=None,
         chim_pattern=None,
         loading_cat=False,  # Set to true if you are loading a cat at start-up.
-        **kwargs
-        ):
+        disable_random=False,
+        **kwargs,
+    ):
         """Initialise the cat.
 
         :param prefix: Cat's prefix (e.g. Fire- for Fireheart)
@@ -170,6 +170,7 @@ class Cat:
         :param chim_white: Chimera white pattern list, default None
         :param chim_pattern: Chimera distribution pattern, default None
         :param loading_cat: If loading a cat rather than generating a new one, default False
+        :param disable_random: If True, disables as much random generation junk as possible
         :param kwargs: TODO what are the possible args here? ["biome", ]
         """
 
@@ -196,7 +197,7 @@ class Cat:
             self.gender = 'masc'
         self.status: Status = Status(**status_dict) if status_dict else Status()
         self.backstory = backstory
-        self.age = None
+        self.age: Optional[CatAge] = None
         self.skills = CatSkills(skill_dict=skill_dict)
         self.personality = Personality(
             trait="troublesome", lawful=0, aggress=0, stable=0, social=0
@@ -363,8 +364,8 @@ class Cat:
 
         # age and status
         if status_dict is None and moons is None:
-            self.age = choice(list(CatAge))
-            self.status.generate_new_status(age=self.age)
+            self.age = CatAge.NEWBORN if disable_random else choice([*CatAge])
+            self.status.generate_new_status(age=self.age, disable_random=disable_random)
         elif moons is not None:
             self.moons = moons
             if moons > 300:
@@ -380,9 +381,11 @@ class Cat:
                     ):
                         self.age = key_age
             if status_dict is None:
-                self.status.generate_new_status(age=self.age)
+                self.status.generate_new_status(
+                    age=self.age, disable_random=disable_random
+                )
         else:
-            if self.status.rank == CatRank.NEWBORN:
+            if disable_random or self.status.rank == CatRank.NEWBORN:
                 self.age = CatAge.NEWBORN
             elif self.status.rank == CatRank.KITTEN:
                 self.age = CatAge.KITTEN
@@ -400,16 +403,19 @@ class Cat:
                     ]
                 )
         if moons is None:
-            self.moons = randint(
-                self.age_moons[self.age][0], self.age_moons[self.age][1]
-            )
+            if disable_random:
+                self.moons = 0
+            else:
+                self.moons = randint(
+                    self.age_moons[self.age][0], self.age_moons[self.age][1]
+                )
 
 
         # backstory
         if self.backstory is None:
             self.backstory = "clanborn"
         else:
-            self.backstory = self.backstory
+            self.backstory = self.backstory  # fixme why does this exist
 
         # sex!?!??!?!?!??!?!?!?!??
         # if self.gender is None:
@@ -420,7 +426,7 @@ class Cat:
 
         # These things should only run when generating a new cat, rather than loading one in.
         if not loading_cat:
-            self.init_generate_cat(skill_dict)
+            self.init_generate_cat(skill_dict, disable_random)
 
         # In camp status
         self.in_camp = 1
@@ -515,17 +521,20 @@ class Cat:
                 ):
                     self.age = key_age
 
-    def init_generate_cat(self, skill_dict):
+    def init_generate_cat(self, skill_dict, disable_random):
         """
         Used to roll a new cat
         :param skill_dict: TODO what is a skill dict exactly
+        :param disable_random: If true, disable randomisation code
         :return: None
         """
         # trans cat chances
         self.genderalign = self.gender
         trans_chance = randint(0, 50)
         nb_chance = randint(0, 75)
-        if self.age.is_baby():
+
+        # GENDER IDENTITY
+        if self.age.is_baby() or disable_random:
             # newborns can't be trans, sorry babies
             nb_chance = 0
             trans_chance = 0
@@ -568,7 +577,7 @@ class Cat:
         self.personality = Personality(kit_trait=self.age.is_baby())
 
         # experience and current patrol status
-        if self.age.is_baby():
+        if self.age.is_baby() or disable_random:
             self.experience = 0
         elif self.age == CatAge.ADOLESCENT:
             m = self.moons
@@ -3119,14 +3128,8 @@ class Cat:
         if allow_romantic and (mates or cat1.is_potential_mate(cat2)):
             rel_values.append(RelType.ROMANCE)
 
-        # Determine the number of positive traits to effect, and choose the traits
-        chosen_pos = sample(rel_values, k=randint(2, len(rel_values)))
-
-        # Determine negative trains effected
-        available = [v for v in rel_values if v not in chosen_pos]
-        chosen_neg = sample(
-            available, k=randint(1, 2)
-        ) if len(available) > 1 else available
+        # Determine the number of traits to effect, and choose the traits
+        chosen_rel = sample(rel_values, k=randint(2, len(rel_values)))
 
         if compat is True:
             personality_bonus = 2
@@ -3136,7 +3139,7 @@ class Cat:
             personality_bonus = 0
 
         # Effects on traits
-        for rel_type in chosen_pos + chosen_neg:
+        for rel_type in chosen_rel:
             # The EX bonus in not applied upon a fail.
             if apply_bonus:
                 if mediator.experience_level == "very low":
@@ -3155,11 +3158,6 @@ class Cat:
             else:
                 bonus = 0
 
-            if sabotage or rel_type in chosen_neg:
-                decrease = True
-            else:
-                decrease = sabotage or rel_type in chosen_neg
-
             ran = (5, 10) if rel_type == RelType.ROMANCE and mates else (4, 6)
 
             amount = ((randint(ran[0], ran[1]) + bonus) + personality_bonus) * (
@@ -3167,10 +3165,10 @@ class Cat:
             )
 
             setattr(rel1, rel_type, getattr(rel1, rel_type) + amount)
-            setattr(rel2, rel_type, getattr(rel1, rel_type) + amount)
+            setattr(rel2, rel_type, getattr(rel2, rel_type) + amount)
 
             output += i18n.t(
-                f"screens.mediation.output_{'decrease' if decrease else 'increase'}",
+                f"screens.mediation.output_{'decrease' if sabotage else 'increase'}",
                 trait=i18n.t(f"screens.mediation.{rel_type}"),
             )
 
@@ -3198,6 +3196,8 @@ class Cat:
 
         if self.status.group == CatGroup.DARK_FOREST:
             file_name += "_df"
+        elif self.status.group == CatGroup.UNKNOWN_RESIDENCE:
+            file_name += "_ur"
 
         file_name += ".png"
 

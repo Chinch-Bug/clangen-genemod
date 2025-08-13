@@ -7,8 +7,8 @@ import i18n
 import scripts.game_structure.screen_settings
 from scripts.cat.sprites import sprites
 from scripts.game_structure import constants
-from scripts.game_structure.game_essentials import game
 from .phenotype import Phenotype
+from scripts.game_structure import game
 from scripts.game_structure.localization import get_lang_config
 from scripts.utility import adjust_list_text
 
@@ -804,7 +804,7 @@ class Pelt:
         if base_tints or color_tints:
             self.tint = choice(base_tints + color_tints)
         else:
-            self.tint = "none"
+            self.tint = None
 
         # WHITE PATCHES TINT
         # Now for white patches
@@ -815,10 +815,10 @@ class Pelt:
         else:
             color_tints = []
 
-        if base_tints or color_tints:
-            self.white_patches_tint = choice(base_tints + color_tints)
-        else:
-            self.white_patches_tint = "none"
+            if base_tints or color_tints:
+                self.white_patches_tint = choice(base_tints + color_tints)
+            else:
+                self.white_patches_tint = None
 
     @staticmethod
     def describe_appearance(cat, short=False):

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from strenum import StrEnum
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 
 
 class CatAge(StrEnum):

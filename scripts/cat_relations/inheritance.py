@@ -13,7 +13,7 @@ from strenum import StrEnum  # pylint: disable=no-name-in-module
 
 import os
 import ujson
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 from scripts.housekeeping.datadir import get_save_dir
 from scripts.game_structure.game.save_load import safe_save
 from scripts.utility import adjust_list_text

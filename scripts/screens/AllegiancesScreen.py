@@ -4,16 +4,7 @@ import pygame_gui
 from pygame_gui.core import ObjectID
 
 from scripts.cat.cats import Cat
-from scripts.game_structure.game_essentials import game
-from scripts.game_structure.ui_elements import (
-    AllegiancesCat, 
-    UIDropDownContainer, 
-    UISurfaceImageButton
-)
-from scripts.game_structure.game.switches import (
-    switch_set_value,
-    Switch,
-)
+from scripts.game_structure import game
 from scripts.ui.generate_button import get_button_dict, ButtonStyles
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.utility import (
@@ -30,7 +21,12 @@ from scripts.game_structure.game.switches import (
 )
 from .Screens import Screens
 from ..cat.enums import CatRank
-from ..game_structure.ui_elements import UIModifiedScrollingContainer
+from scripts.game_structure.ui_elements import (
+    AllegiancesCat,
+    UIDropDownContainer,
+    UISurfaceImageButton,
+    UIModifiedScrollingContainer
+)
 
 
 class AllegiancesScreen(Screens):

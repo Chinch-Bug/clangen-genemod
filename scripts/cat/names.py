@@ -11,7 +11,7 @@ from scripts.game_structure import constants
 from scripts.cat.enums import CatRank, CatGroup
 from scripts.housekeeping.datadir import get_save_dir
 from .alt_namer import Namer
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 from scripts.clan_package.settings.clan_settings import get_clan_setting
 
 

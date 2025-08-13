@@ -10,7 +10,7 @@ from scripts.cat.genotype import Genotype
 from scripts.cat.cats import Cat
 from ..cat.enums import CatAge, CatRank, CatGroup
 from scripts.game_structure import image_cache
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 from ..game_structure.game.settings import game_setting_get
 from ..clan_package.settings import get_clan_setting
 from ..game_structure.game.switches import switch_get_value, Switch

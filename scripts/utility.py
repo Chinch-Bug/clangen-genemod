@@ -41,7 +41,7 @@ from scripts.game_structure import image_cache, localization, constants
 from scripts.cat.enums import CatAge, CatRank, CatSocial, CatGroup, CatStanding
 from scripts.cat.names import names
 from scripts.cat.sprites import sprites
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 import scripts.game_structure.screen_settings  # must be done like this to get updates when we change screen size etc
 
 if TYPE_CHECKING:
@@ -4064,7 +4064,6 @@ def generate_sprite(
             
             if (
                 game_setting_get('tints')
-                and cat.pelt.tint != "none" 
                 and cat.pelt.tint in sprites.cat_tints["tint_colours"]
             ):
                 tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
@@ -4072,7 +4071,6 @@ def generate_sprite(
                 gensprite.blit(tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
             if (
                 game_setting_get('tints')
-                and cat.pelt.tint != "none"
                 and cat.pelt.tint in sprites.cat_tints["dilute_tint_colours"]
             ):
                 tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
@@ -4230,25 +4228,53 @@ def generate_sprite(
                     gensprite.blit(sprites.sprites['scars' + scar + cat_sprite], (0, 0))
 
         # setting the lineart color to override on accessories & missing bits
-        lineart_color = pygame.Color(
-            constants.CONFIG["cat_sprites"]["lineart_color_df"]
-            if cat.status.group == CatGroup.DARK_FOREST
-            else constants.CONFIG["cat_sprites"]["lineart_color_sc"]
+        lineart_color = (
+            pygame.Color(
+                constants.CONFIG["cat_sprites"]["lineart_color_sc"]
+                if cat.status.group == CatGroup.STARCLAN
+                else constants.CONFIG["cat_sprites"]["lineart_color_df"]
+            )
+            if cat.status.group != CatGroup.UNKNOWN_RESIDENCE
+            else None
         )
 
-        def _recolor_lineart(sprite, color) -> pygame.Surface:
+        gradient_surface = (
+            sprites.sprites["gradient_ur" + cat_sprite]
+            if dead and cat.status.group == CatGroup.UNKNOWN_RESIDENCE
+            else None
+        )
+
+        def _recolor_lineart(
+            sprite, color=None, source: pygame.Surface = None
+        ) -> pygame.Surface:
             """
             Helper function to set the appropriate lineart color for the living status of the cat
             :param sprite: lineart to recolor
-            :param color: color to apply
+            :param color: color to apply to all pixels
+            :param source: source surface of same size as sprite to use instead of color
             :return:
             """
             if not dead:
                 return sprite
+
+            if color is None and source is None:
+                raise ValueError(
+                    "Must provide either `color` or `source` for _recolor_lineart"
+                )
+
             out = sprite.copy()
-            pixel_array = pygame.PixelArray(out)
-            pixel_array.replace((0, 0, 0), color, distance=0)
-            del pixel_array
+            if color:
+                pixel_array = pygame.PixelArray(out)
+                pixel_array.replace((0, 0, 0), color, distance=0)
+                del pixel_array
+                return out
+
+            width, height = sprite.get_size()
+            for x in range(width):
+                for y in range(height):
+                    if sprite.get_at((x, y)) == pygame.Color(0, 0, 0):
+                        color = source.get_at((x, y))
+                        sprite.set_at((x, y), color)
             return out
 
         # draw line art
@@ -4285,7 +4311,18 @@ def generate_sprite(
             elif(cat.phenotype.curl[0] == 'Cu'):
                 earlines.blit(sprites.sprites['fold_curllines' + cat_sprite], (0, 0))
             else:
-                earlines.blit(sprites.sprites['foldlines' + cat_sprite], (0, 0))
+                earlines.blit(
+                    sprites.sprites['foldlines' + cat_sprite], (0, 0))
+        elif cat.status.group == CatGroup.UNKNOWN_RESIDENCE:
+            if(cat.phenotype.fold[0] != 'Fd'):
+                if(cat.phenotype.curl[0] == 'Cu'):
+                    earlines.blit(sprites.sprites['curllineartur' + cat_sprite], (0, 0))
+                else:
+                    earlines.blit(sprites.sprites['lineartur' + cat_sprite], (0, 0))
+            elif(cat.phenotype.curl[0] == 'Cu'):
+                earlines.blit(sprites.sprites['fold_curllineartur' + cat_sprite], (0, 0))
+            else:
+                earlines.blit(sprites.sprites['foldlineartur' + cat_sprite], (0, 0))
         elif cat.status.group == CatGroup.DARK_FOREST:
             if(cat.phenotype.fold[0] != 'Fd'):
                 if(cat.phenotype.curl[0] == 'Cu'):
@@ -4345,7 +4382,9 @@ def generate_sprite(
                 if scar in cat.pelt.scars2:
                     new_sprite.blit(
                         _recolor_lineart(
-                            sprites.sprites["scars" + scar + cat_sprite], lineart_color
+                            sprites.sprites["scars" + scar + cat_sprite],
+                            lineart_color,
+                            gradient_surface,
                         ),
                         (0, 0),
                         special_flags=blendmode,
@@ -4396,6 +4435,7 @@ def generate_sprite(
                                         "acc_herbs" + accessory + cat_sprite
                                     ],
                                     lineart_color,
+                                    gradient_surface,
                                 ),
                                 (0, 0),
                             )
@@ -4406,6 +4446,7 @@ def generate_sprite(
                                         "acc_wild" + accessory + cat_sprite
                                     ],
                                     lineart_color,
+                                    gradient_surface,
                                 ),
                                 (0, 0),
                             )
@@ -4414,16 +4455,10 @@ def generate_sprite(
                                 _recolor_lineart(
                                     sprites.sprites["collars" + accessory + cat_sprite],
                                     lineart_color,
+                                    gradient_surface,
                                 ),
                                 (0, 0),
                             )
-
-        # apply experimental sparkle layer
-        if dead and cat.status.group == CatGroup.STARCLAN:
-            new_sprite.blit(
-                sprites.sprites["sc_overlay" + cat_sprite],
-                (0, 0),
-            )
 
         # Apply fading fog
         if (
@@ -4446,15 +4481,61 @@ def generate_sprite(
                 special_flags=pygame.BLEND_RGBA_MULT,
             )
 
-            if cat.status.group == CatGroup.DARK_FOREST:
-                temp = sprites.sprites["fadedf" + stage + cat_sprite].copy()
-                temp.blit(new_sprite, (0, 0))
-                new_sprite = temp
-            else:
+            if cat.status.group == CatGroup.STARCLAN:
                 temp = sprites.sprites["fadestarclan" + stage + cat_sprite].copy()
                 temp.blit(new_sprite, (0, 0))
                 new_sprite = temp
-        
+            elif cat.status.group == CatGroup.UNKNOWN_RESIDENCE:
+                temp = sprites.sprites["fadeur" + stage + cat_sprite].copy()
+                temp.blit(new_sprite, (0, 0))
+                new_sprite = temp
+            else:
+                temp = sprites.sprites["fadedf" + stage + cat_sprite].copy()
+                temp.blit(new_sprite, (0, 0))
+                new_sprite = temp
+
+        # ok! we have the sprite! now, do some layer things if the cat's already dead
+        if dead:
+            temp_sprite = pygame.Surface(
+                (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA
+            )
+
+            if cat.status.group == CatGroup.STARCLAN:
+                # no underlay
+
+                # cat sprite
+                temp_sprite.blit(new_sprite, (0, 0))
+
+                # overlay
+                temp_sprite.blit(
+                    sprites.sprites["sc_overlay" + cat_sprite],
+                    (0, 0),
+                )
+            elif cat.status.group == CatGroup.UNKNOWN_RESIDENCE:
+                # underlay
+                temp_sprite.blit(
+                    sprites.sprites["ur_underlay" + cat_sprite],
+                    (0, 0),
+                )
+
+                # cat sprite
+                temp_sprite.blit(new_sprite, (0, 0))
+
+                # overlay
+                temp_sprite.blit(
+                    sprites.sprites["ur_overlay" + cat_sprite],
+                    (0, 0),
+                )
+            elif cat.status.group == CatGroup.DARK_FOREST:
+                # no underlay
+
+                # cat sprite
+                temp_sprite.blit(new_sprite, (0, 0))
+
+                # no overlay
+
+            new_sprite = temp_sprite
+
         return new_sprite
 
     try:
