@@ -1355,7 +1355,10 @@ class ProfileScreen(Screens):
                 "cat.backstories.cats_outside_the_clan",
                 status=i18n.t(f"general.{self.the_cat.status.rank}", count=1),
             )
-        elif self.the_cat.status.is_other_clancat and game.clan.clancount == "singleclan":
+        elif (
+            self.the_cat.status.is_other_clancat and game.clan.clancount == "singleclan"
+            and self.the_cat != game.clan.instructor
+        ):
             clan = [
                 clan
                 for clan in game.clan.all_clans
