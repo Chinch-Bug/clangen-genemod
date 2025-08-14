@@ -117,7 +117,6 @@ class RelTier(StrEnum):
         return self in (
             self.HATES,
             self.ENVIES,
-            self.HATES,
             self.DISTRUSTS,
             self.FEARS,
         )

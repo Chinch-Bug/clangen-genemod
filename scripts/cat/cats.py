@@ -845,8 +845,8 @@ class Cat:
                 fetched_cat.update_mentor()
         self.update_mentor()
 
-        if self.status.get_last_living_group():
-            if self.moons > 1:
+        if group := self.status.get_last_living_group():
+            if self.moons > 1 and not self.status.is_lost(group) and not self.status.is_exiled(group):
                 self.grief(body)
             Cat.dead_cats.append(self)
 
