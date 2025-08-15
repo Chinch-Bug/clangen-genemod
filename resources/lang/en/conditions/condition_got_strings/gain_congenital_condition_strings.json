@@ -49,11 +49,11 @@
         "m_c isn't bothered by being deaf, though the Clan seems to want to comfort {PRONOUN/m_c/object} when everyone finds out that's why learning to talk has been so hard."
     ],
     "partial hearing loss in one ear": [
-        "r_c is called in to assess m_c's hearing. While it's seems fine, m_c often seems to turn {PRONOUN/m_c/poss} head one way to listen.",
+        "r_c is called in to assess m_c's hearing. While it seems fine, m_c often seems to turn {PRONOUN/m_c/poss} head one way to listen.",
         "m_c often turns {PRONOUN/m_c/poss} head when listening, until it's clear that {PRONOUN/m_c/poss} hearing is limited in one ear."
     ],
     "deaf in one ear": [
-        "r_c is called in to assess m_c's hearing. While it's seems fine, m_c always turns {PRONOUN/m_c/poss} head away one way to listen.",
+        "r_c is called in to assess m_c's hearing. While it seems fine, m_c always turns {PRONOUN/m_c/poss} head away one way to listen.",
         "m_c often turns {PRONOUN/m_c/poss} head when listening, until it's clear that {PRONOUN/m_c/poss} hearing is limited to one ear."
     ],
     "constant joint pain": [

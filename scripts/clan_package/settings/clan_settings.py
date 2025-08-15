@@ -2,23 +2,11 @@ import os
 from pathlib import Path
 
 import ujson
-import tomllib
 
 from scripts.game_structure.game.save_load import safe_save
 from scripts.game_structure.game.switches import Switch, switch_get_value
 from scripts.housekeeping.datadir import get_save_dir
-from scripts.game_structure import constants
 
-
-def recursive_merge(dict1, dict2):
-    for key, value in dict2.items():
-        if key in dict1 and isinstance(dict1[key], dict) and isinstance(value, dict):
-            # Recursively merge nested dictionaries
-            dict1[key] = recursive_merge(dict1[key], value)
-        else:
-            # Merge non-dictionary values
-            dict1[key] = value
-    return dict1
 
 def load_clan_settings():
     reset_loaded_clan_settings()
@@ -37,19 +25,6 @@ def load_clan_settings():
         for key, value in _load_settings.items():
             if key in clan_settings:
                 clan_settings[key] = value
-
-    if os.path.exists(
-        get_save_dir() +
-        f"/{switch_get_value(Switch.clan_list)[0]}/game_config.toml"
-    ):
-        with open(
-            get_save_dir()
-            + f"/{switch_get_value(Switch.clan_list)[0]}/game_config.toml",
-            "r",
-            encoding="utf-8",
-        ) as read_file:
-            config_override = tomllib.loads(read_file.read())
-            constants.CONFIG = recursive_merge(constants.CONFIG, config_override)
 
     # if settings files does not exist, default has been loaded by __init__
 
@@ -84,9 +59,6 @@ def switch_clan_setting(setting_name):
 
 def reset_loaded_clan_settings():
     global clan_settings
-    from scripts.game_structure.constants import reset_config
-    reset_config()
-
     clan_settings = {}
 
     for _setting in all_settings:  # Add all the settings to the settings dictionary

@@ -232,6 +232,7 @@ def load_data():
         switch_set_value(Switch.clan_list, clan_list)
         switch_set_value(Switch.clan_name, clan_list[0])
         try:
+            constants.load_clan_config()
             load_cats()
             game.load_events()
             scripts.screens.screens_core.screens_core.rebuild_core()
