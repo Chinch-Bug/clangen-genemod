@@ -321,7 +321,7 @@ class Phenotype(Genotype):
                     elif(self.tabby == "mackerel"):
                         self.tabby = "braided"
                     elif("blotched" in self.tabby):
-                        self.tabby.replace("blotched", "marbled")
+                        self.tabby = self.tabby.replace("blotched", "marbled")
 
                     elif(self.tabby == "servaline"):
                         self.tabby += "-rosetted"
