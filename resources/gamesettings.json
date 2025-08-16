@@ -21,6 +21,11 @@
         "Camp backgrounds will match with the mode: nighttime for dark mode and daytime for light mode.",
         false
       ],
+      "flip camp mode": [
+        "Flip camp background mode",
+        "Camp backgrounds will show nighttime when in light mode and daytime while in dark mode.",
+        false
+      ],
       "fullscreen scaling": [
         "Ignore fullscreen scaling rules",
         "If enabled, fullscreen will display as large as possible (toggle fullscreen to update). This may include visual artifacts.",

@@ -2,6 +2,8 @@
     "en": {
       "dark mode": "Dark mode",
       "dark mode_tooltip": "Camp backgrounds will match with the mode: nighttime for dark mode and daytime for light mode.",
+      "flip camp mode": "Flip camp background mode",
+      "flip camp mode_tooltip": "Camp backgrounds will show nighttime when in light mode and daytime while in dark mode.",
       "fullscreen scaling": "Ignore fullscreen scaling rules",
       "fullscreen scaling_tooltip": "If enabled, fullscreen will display as large as possible (toggle fullscreen to update). This may include visual artifacts.",
       "no sprite antialiasing": "Disable sprite antialiasing",

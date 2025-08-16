@@ -1,6 +1,7 @@
 import random
 import traceback
 from copy import deepcopy
+from operator import xor
 
 import pygame
 import pygame_gui
@@ -349,7 +350,7 @@ class ClanScreen(Screens):
         switch_set_value(Switch.saved_clan, False)
 
     def update_camp_bg(self):
-        light_dark = "dark" if game_setting_get("dark mode") else "light"
+        light_dark = "dark" if xor(game_setting_get("dark mode"), game_setting_get("flip camp mode")) else "light"
 
         camp_bg_base_dir = "resources/images/camp_bg/"
         leaves = ["newleaf", "greenleaf", "leafbare", "leaffall"]
