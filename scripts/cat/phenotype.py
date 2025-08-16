@@ -703,7 +703,7 @@ class Phenotype(Genotype):
             if self.tortiepattern is None:
                 self.tortiepattern = self.ChooseTortiePattern()
                 for i in range(len(self.tortiepattern)):
-                    if randint(1, round(10/((i+1)*2))) == 1:
+                    if randint(1, round(15/((i+1)*2))) == 1:
                         if 'rev' in self.tortiepattern[i]:
                             self.tortiepattern[i] = self.tortiepattern[i].replace('rev', '')
                         else:

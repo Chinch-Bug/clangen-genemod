@@ -106,11 +106,6 @@
         "New prefixes will be generated from a new pelt-based list",
         true
       ],
-      "dynamic prefixes": [
-        "Allow changing prefixes",
-        "Cats may change prefixes during ceremonies",
-        false
-      ],
       "new suffixes": [
         "Use new suffixes",
         "Cats will gain suffixes based on skills, traits, and what they're honoured for.",
