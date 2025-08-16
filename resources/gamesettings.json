@@ -100,6 +100,26 @@
         "Use they/them as default pronouns",
         "If this setting is on new cats will generate with they/them pronouns, regardless of gender.",
         false
+      ],
+      "new prefixes": [
+        "Use new prefixes",
+        "New prefixes will be generated from a new pelt-based list",
+        true
+      ],
+      "dynamic prefixes": [
+        "Allow changing prefixes",
+        "Cats may change prefixes during ceremonies",
+        false
+      ],
+      "new suffixes": [
+        "Use new suffixes",
+        "Cats will gain suffixes based on skills, traits, and what they're honoured for.",
+        true
+      ],
+      "ancient names": [
+        "Use Ancient names",
+        "Suffix will be automatically capitalized and separated (eg. Black Claw)",
+        false
       ]
     },
     "..": "these are special. they do not have a display name or a tooltip",

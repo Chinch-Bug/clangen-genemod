@@ -4,4 +4,5 @@ from scripts.clan_package.settings.clan_settings import (
     get_clan_setting,
     set_clan_setting,
     switch_clan_setting,
+    reset_loaded_clan_settings,
 )

@@ -28,7 +28,7 @@ from .screens_core.screens_core import rebuild_den_dropdown
 from ..cat import save_load
 from ..cat.enums import CatRank
 from ..cat.sprites import sprites
-from ..clan_package.settings import get_clan_setting
+from ..clan_package.settings import get_clan_setting, load_clan_settings, reset_loaded_clan_settings
 from ..game_structure.game.settings import game_setting_set, game_setting_get
 from ..game_structure.game.switches import switch_get_value, switch_set_value, Switch
 from ..game_structure.screen_settings import MANAGER, screen
@@ -115,6 +115,7 @@ class MakeClanScreen(Screens):
         self.set_mute_button_position("topright")
         self.show_mute_buttons()
         self.set_bg("default", "mainmenu_bg")
+        reset_loaded_clan_settings()
 
         self.clan_frame_img = pygame.transform.scale(
             self.ui_images["clan_frame"],
@@ -181,6 +182,8 @@ class MakeClanScreen(Screens):
             self.mute_button_pressed(event)
 
             if event.ui_element == self.main_menu:
+                if switch_get_value(Switch.clan_list):
+                    load_clan_settings()
                 self.change_screen("start screen")
             if self.sub_screen == "game mode":
                 self.handle_game_mode_event(event)
