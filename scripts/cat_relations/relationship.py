@@ -538,6 +538,13 @@ class Relationship:
         return self.romance + self.like + self.respect + self.comfort + self.trust
 
     @property
+    def has_negative(self) -> bool:
+        """
+        Returns True if the relationship has a negative value.
+        """
+        return any(tier for tier in self.get_reltype_tiers() if tier.is_any_neg)
+
+    @property
     def has_extreme_negative(self) -> bool:
         """
         Returns True if the relationship has an extreme negative value.

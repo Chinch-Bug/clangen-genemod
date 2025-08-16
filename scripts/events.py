@@ -2257,9 +2257,9 @@ class Events:
         random_murder_chance = int(
             constants.CONFIG["death_related"]["base_random_murder_chance"]
         )
-        random_murder_chance -= 0.5 * (
-            (cat.personality.aggression) + (16 - cat.personality.stability)
-        )
+        # random_murder_chance -= 0.5 * (
+        #     (cat.personality.aggression) + (16 - cat.personality.stability)
+        # )
 
         # Check to see if random murder is triggered.
         # If so, we allow targets to be anyone they have even the smallest amount of negativity for
@@ -2308,7 +2308,7 @@ class Events:
         negative_relation = [
             i
             for i in relationships
-            if i.has_extreme_negative
+            if i.has_negative
             and Cat.fetch_cat(i.cat_to).status.is_any_clan_group()
         ]
         targets.extend(negative_relation)
@@ -2323,9 +2323,10 @@ class Events:
             extreme_neg = len(
                 [l for l in chosen_target.get_reltype_tiers() if l.is_extreme_neg]
             )
+            mid_neg = len([l for l in chosen_target.get_reltype_tiers() if l.is_mid_neg])
             neg = len([l for l in chosen_target.get_reltype_tiers() if l.is_low_neg])
 
-            relation_modifier = (extreme_neg * 10) + (neg * 5)
+            relation_modifier = (extreme_neg * 10) + (mid_neg * 6) + (neg * 4)
 
             kill_chance -= relation_modifier
 
