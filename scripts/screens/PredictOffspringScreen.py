@@ -102,6 +102,9 @@ class PredictOffspringScreen(Screens):
         self.search_genotype = False
         self.search_toggle_checkbox = None
 
+        self.outsider_toggle_checkbox = None
+        self.include_outsiders = False
+
     def handle_event(self, event):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
             
@@ -128,6 +131,15 @@ class PredictOffspringScreen(Screens):
                     self.search_genotype = True
                 self.search_bar.placeholder_text = "general.genotype_search" if self.search_genotype else "general.name_search"
                 self.search_bar.set_text("")
+                self.update_potential_mates_container()
+
+            if event.ui_element == self.outsider_toggle_checkbox:
+                if "@checked_checkbox" in event.ui_element.get_object_ids():
+                    event.ui_element.change_object_id("@unchecked_checkbox")
+                    self.include_outsiders = False
+                else:
+                    event.ui_element.change_object_id("@checked_checkbox")
+                    self.include_outsiders = True
                 self.update_potential_mates_container()
             
         elif event.type == pygame_gui.UI_DROP_DOWN_MENU_CHANGED:
@@ -224,8 +236,14 @@ class PredictOffspringScreen(Screens):
         
         self.selected_cat_elements["label"] = pygame_gui.elements.UILabel(
             ui_scale(pygame.Rect((530, 110), (200, 30))),
-            "Second Parent",
+            "screens.offspring_predict.second_parent",
             object_id="#text_box_30_horizcenter",
+        )
+
+        self.selected_cat_elements["outsider_checkbox_label"] = pygame_gui.elements.UILabel(
+            ui_scale(pygame.Rect((350, 163), (130, 30))),
+            "screens.offspring_predict.show_outsiders",
+            object_id=get_text_box_theme("#text_box_30"),
         )
 
         self.search_bar_image = pygame_gui.elements.UIImage(
@@ -250,6 +268,16 @@ class PredictOffspringScreen(Screens):
             tool_tip_text="screens.list.search_names_tooltip"
             if self.search_genotype
             else "screens.list.search_genotypes_tooltip",
+            starting_height=1,
+            manager=MANAGER,
+        )
+
+        self.outsider_toggle_checkbox = UIImageButton(
+            ui_scale(pygame.Rect((310, 160), (38, 34))),
+            "",
+            object_id="@checked_checkbox"
+            if self.include_outsiders
+            else "@unchecked_checkbox",
             starting_height=1,
             manager=MANAGER,
         )
@@ -313,6 +341,8 @@ class PredictOffspringScreen(Screens):
         del self.search_bar
         self.search_toggle_checkbox.kill()
         del self.search_toggle_checkbox
+        self.outsider_toggle_checkbox.kill()
+        del self.outsider_toggle_checkbox
         self.previous_search_text = None
         
         self.possible_mates_box.kill()
@@ -341,8 +371,8 @@ class PredictOffspringScreen(Screens):
         self.possible_mates = [
             i
             for i in Cat.all_cats_list
-            if i.is_potential_mate(self.selected_cat, for_love_interest=False, age_restriction=False, ignore_no_mates=True)
-            and i.status.group == self.selected_cat.status.group
+            if i.is_potential_mate(self.selected_cat, for_love_interest=False, age_restriction=False, ignore_no_mates=True, outsider=True)
+            and (i.status.group == self.selected_cat.status.group or self.include_outsiders)
             and "sterile" not in i.permanent_condition
             and (get_clan_setting("same sex birth") or xor('Y' in i.phenotype.sexgene, 'Y' in self.selected_cat.phenotype.sexgene))
         ]
