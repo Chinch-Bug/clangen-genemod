@@ -170,6 +170,7 @@ class Sprites:
             self.make_group('Break/'+x.replace('.png', ""), (0, 0), 'break/'+x.replace('.png', ""))
 
         # ...idk what to call these
+        self.make_group('genemod/fourears', (0, 0), 'fourears')
 
         self.make_group('genemod/normal border', (0, 0), 'normbord')
         self.make_group('genemod/foldborder', (0, 0), 'foldbord')
@@ -179,24 +180,24 @@ class Sprites:
         self.make_group('genemod/fold_curllineart', (0, 0), 'fold_curllines')
         self.make_group('genemod/curllineart', (0, 0), 'curllines')
 
-        self.make_group('genemod/foldlineartdf', (0, 0), 'foldlineartdf')
-        self.make_group('genemod/fold_curllineartdf', (0, 0), 'fold_curllineartdf')
-        self.make_group('genemod/curllineartdf', (0, 0), 'curllineartdf')
+        # self.make_group('genemod/foldlineartdf', (0, 0), 'foldlineartdf')
+        # self.make_group('genemod/fold_curllineartdf', (0, 0), 'fold_curllineartdf')
+        # self.make_group('genemod/curllineartdf', (0, 0), 'curllineartdf')
 
-        self.make_group('genemod/foldlineartur', (0, 0), 'foldlineartur')
-        self.make_group('genemod/fold_curllineartur', (0, 0), 'fold_curllineartur')
-        self.make_group('genemod/curllineartur', (0, 0), 'curllineartur')
+        # self.make_group('genemod/foldlineartur', (0, 0), 'foldlineartur')
+        # self.make_group('genemod/fold_curllineartur', (0, 0), 'fold_curllineartur')
+        # self.make_group('genemod/curllineartur', (0, 0), 'curllineartur')
 
-        self.make_group('genemod/foldlineartdead', (0, 0), 'foldlineartdead')
-        self.make_group('genemod/fold_curllineartdead', (0, 0), 'fold_curllineartdead')
-        self.make_group('genemod/curllineartdead', (0, 0), 'curllineartdead')
+        # self.make_group('genemod/foldlineartdead', (0, 0), 'foldlineartdead')
+        # self.make_group('genemod/fold_curllineartdead', (0, 0), 'fold_curllineartdead')
+        # self.make_group('genemod/curllineartdead', (0, 0), 'curllineartdead')
 
         self.make_group('genemod/isolateears', (0, 0), 'isolateears')
         self.make_group('genemod/noears', (0, 0), 'noears')
         
         self.make_group('genemod/rexlines', (0, 0), 'rexlineart')
-        self.make_group('genemod/rexlinesdead', (0, 0), 'rexlineartdead')
-        self.make_group('genemod/rexlinesdf', (0, 0), 'rexlineartdf')
+        # self.make_group('genemod/rexlinesdead', (0, 0), 'rexlineartdead')
+        # self.make_group('genemod/rexlinesdf', (0, 0), 'rexlineartdf')
         self.make_group('genemod/rexborder', (0, 0), 'rexbord')
 
         for a, x in enumerate(range(1, 6)):

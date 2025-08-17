@@ -12,7 +12,7 @@ from scripts.cat.skills import Skill, SkillPath
 from scripts.clan import Clan
 from scripts.clan_resources.freshkill import FreshkillPile
 from scripts.utility import get_alive_clan_queens
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 
 
 class FreshkillPileTest(unittest.TestCase):

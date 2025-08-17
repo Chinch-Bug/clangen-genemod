@@ -128,14 +128,26 @@ class ClanSettingsScreen(Screens):
                         scroll_pos = self.checkboxes_text[
                             "container_general"
                         ].vert_scroll_bar.start_percentage
+                    if (
+                        "container_relation" in self.checkboxes_text
+                        and self.checkboxes_text["container_relation"].vert_scroll_bar
+                    ):
+                        scroll_pos = self.checkboxes_text[
+                            "container_relation"
+                        ].vert_scroll_bar.start_percentage
 
                     if self.sub_menu in self.opens:
                         self.opens[self.sub_menu]()
 
                     if scroll_pos is not None:
-                        self.checkboxes_text[
-                            "container_general"
-                        ].vert_scroll_bar.set_scroll_from_start_percentage(scroll_pos)
+                        if self.sub_menu == "relation":
+                            self.checkboxes_text[
+                                "container_relation"
+                            ].vert_scroll_bar.set_scroll_from_start_percentage(scroll_pos)
+                        else:
+                            self.checkboxes_text[
+                                "container_general"
+                            ].vert_scroll_bar.set_scroll_from_start_percentage(scroll_pos)
 
                     break
 
@@ -395,6 +407,10 @@ class ClanSettingsScreen(Screens):
             )
             self.checkboxes_text[code].disable()
             n += 1
+
+        self.checkboxes_text["container_relation"].set_scrollable_area_dimensions(
+            ui_scale_dimensions((780, n * 39 + 40))
+        )
 
         self.checkboxes_text["instr"] = pygame_gui.elements.UITextBox(
             "screens.clan_settings.relation_info",

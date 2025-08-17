@@ -684,7 +684,7 @@ class ProfileScreen(Screens):
             manager=MANAGER,
             starting_height=2,
         )
-        if not self.the_cat.status.is_any_clan_group() and (
+        if self.the_cat.status.is_any_clan_group() and (
             self.the_cat.status.rank.is_any_medicine_rank()
             or self.the_cat.is_ill()
             or self.the_cat.is_injured()

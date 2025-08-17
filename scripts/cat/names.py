@@ -91,6 +91,7 @@ class Name:
         self.prefix = prefix
         self.suffix = suffix
         self.specsuffix_hidden = specsuffix_hidden
+        no_suffixes = get_clan_setting("no suffixes") and get_clan_setting("modded names")
 
         try:
             self.cat = cat
@@ -115,21 +116,26 @@ class Name:
         name_fixpref = False
         # Set prefix
         if prefix is None:
-            self.give_prefix(cat, biome, no_suffix=True if suffix == "" else False)
+            self.give_prefix(cat, biome, no_suffix=True if (suffix == "" or no_suffixes) else False)
             # needed for random dice when we're changing the Prefix
             name_fixpref = True
 
         # Set suffix
         if self.suffix is None:
-            self.give_suffix(self.skills, self.personality, biome, honour)
-            if name_fixpref and self.prefix is None:
-                # needed for random dice when we're changing the Prefix
-                name_fixpref = False
+            if no_suffixes and not load_existing_name:
+                self.suffix = ""
+            else:
+                self.give_suffix(self.skills, self.personality, biome, honour)
+                if name_fixpref and self.prefix is None:
+                    # needed for random dice when we're changing the Prefix
+                    name_fixpref = False
 
         if self.suffix and not load_existing_name:
             self.check_name(cat, name_fixpref)
             if get_clan_setting("ancient names") and get_clan_setting("modded names"):
                 self.suffix = " " + self.suffix.title()
+                self.specsuffix_hidden = True
+            elif get_clan_setting("no special suffixes") and get_clan_setting("modded names"):
                 self.specsuffix_hidden = True
     
     def check_name(self, cat, name_fixpref):

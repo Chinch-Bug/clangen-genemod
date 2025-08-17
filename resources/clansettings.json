@@ -104,6 +104,18 @@
         "Suffix will be automatically capitalized and separated (eg. Black Claw)",
         false,
         [ "modded names", true ]
+      ],
+      "no suffixes": [
+        "No suffixes",
+        "New cats will never have suffixes",
+        false,
+        [ "modded names", true ]
+      ],
+      "no special suffixes": [
+        "No special suffixes",
+        "New cats will have special suffix automatically hidden",
+        false,
+        [ "modded names", true ]
       ]
     },
     "role": {
