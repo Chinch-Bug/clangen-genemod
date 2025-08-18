@@ -480,10 +480,11 @@ class ClanSettingsScreen(Screens):
 
         self.checkboxes_text["stat_box"] = pygame_gui.elements.UITextBox(
             "screens.clan_settings.stats_text",
-            ui_scale(pygame.Rect((150, 200), (530, 345))),
+            ui_scale(pygame.Rect((150, 200), (530, 375))),
             object_id=get_text_box_theme("#text_box_30_horizcenter"),
             text_kwargs={
                 "living": str(living_cats),
+                "cotc": str(cats_outside),
                 "starclan": str(starclan),
                 "darkforest": str(df),
                 "unknownresidence": str(ur),

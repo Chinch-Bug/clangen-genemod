@@ -4308,6 +4308,8 @@ def generate_sprite(
                 earlines.blit(sprites.sprites['curllines' + cat_sprite], (0, 0))
             else:
                 earlines.blit(sprites.sprites['lines' + cat_sprite], (0, 0))
+            if phenotype.fourear[0] == "dup":
+                earlines.blit(sprites.sprites['fourears' + cat_sprite], (0, 0))
         elif(cat.phenotype.curl[0] == 'Cu'):
             earlines.blit(sprites.sprites['fold_curllines' + cat_sprite], (0, 0))
         else:
@@ -4342,26 +4344,24 @@ def generate_sprite(
         #         earlines.blit(sprites.sprites['fold_curllineartdead' + cat_sprite], (0, 0))
         #     else:
         #         earlines.blit(sprites.sprites['foldlineartdead' + cat_sprite], (0, 0))
-        if phenotype.fourear[0] == "dup":
-            earlines.blit(sprites.sprites['fourears' + cat_sprite], (0, 0))
 
         earlines.blit(sprites.sprites['isolateears' + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
 
         lineart.blit(earlines, (0, 0))
         if('rexed' in phenotype.furtype or 'wiry' in phenotype.furtype):
-            # if not dead:
-            bodylines.blit(sprites.sprites['rexlineart' + cat_sprite], (0, 0))
-            # elif cat.status.group == CatGroup.DARK_FOREST:
-            #     bodylines.blit(sprites.sprites['rexlineartdf' + cat_sprite], (0, 0))
-            # else:
-            #     bodylines.blit(sprites.sprites['rexlineartdead' + cat_sprite], (0, 0))
+            if not dead:
+                bodylines.blit(sprites.sprites['rexlineart' + cat_sprite], (0, 0))
+            elif cat.status.group == CatGroup.DARK_FOREST:
+                bodylines.blit(sprites.sprites['rexlineartdf' + cat_sprite], (0, 0))
+            else:
+                bodylines.blit(sprites.sprites['rexlineartdead' + cat_sprite], (0, 0))
         else:
-            # if not dead:
-            bodylines.blit(sprites.sprites['lines' + cat_sprite], (0, 0))
-            # elif cat.status.group == CatGroup.DARK_FOREST:
-            #     bodylines.blit(sprites.sprites['lineartdf' + cat_sprite], (0, 0))
-            # else:
-            #     bodylines.blit(sprites.sprites['lineartdead' + cat_sprite], (0, 0))
+            if not dead:
+                bodylines.blit(sprites.sprites['lines' + cat_sprite], (0, 0))
+            elif cat.status.group == CatGroup.DARK_FOREST:
+                bodylines.blit(sprites.sprites['lineartdf' + cat_sprite], (0, 0))
+            else:
+                bodylines.blit(sprites.sprites['lineartdead' + cat_sprite], (0, 0))
             
         bodylines.blit(sprites.sprites['noears' + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
         if cat_sprite != '20':

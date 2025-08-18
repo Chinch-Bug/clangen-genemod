@@ -7,6 +7,6 @@
         "role": "role settings",
         "role_info": "Change Clan-specific settings regarding cat roles",
         "stats": "clan stats",
-        "stats_text": "Living Clan Cats: %{living}\nStarClan Cats: %{starclan}\nDark Forest Cats: %{darkforest}\nUnknown Residence Cats: %{unknownresidence}\nHealers: %{medcats}\nHealer Apprentices: %{medcatapps}\nWarriors: %{warriors}\nWarrior Apprentices: %{apps}\nMediators: %{mediators}\nMediator Apprentices: %{mediatorapps}\nElders: %{elders}\nKittens and Newborns: %{kits}\nFaded Cats: %{faded}"
+        "stats_text": "Living Clan Cats: %{living}\nCats Outside the Clan: %{cotc}\nStarClan Cats: %{starclan}\nDark Forest Cats: %{darkforest}\nUnknown Residence Cats: %{unknownresidence}\nHealers: %{medcats}\nHealer Apprentices: %{medcatapps}\nWarriors: %{warriors}\nWarrior Apprentices: %{apps}\nMediators: %{mediators}\nMediator Apprentices: %{mediatorapps}\nElders: %{elders}\nKittens and Newborns: %{kits}\nFaded Cats: %{faded}"
     }
 }

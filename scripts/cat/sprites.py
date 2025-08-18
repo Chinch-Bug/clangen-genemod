@@ -196,8 +196,8 @@ class Sprites:
         self.make_group('genemod/noears', (0, 0), 'noears')
         
         self.make_group('genemod/rexlines', (0, 0), 'rexlineart')
-        # self.make_group('genemod/rexlinesdead', (0, 0), 'rexlineartdead')
-        # self.make_group('genemod/rexlinesdf', (0, 0), 'rexlineartdf')
+        self.make_group('genemod/rexlinesdead', (0, 0), 'rexlineartdead')
+        self.make_group('genemod/rexlinesdf', (0, 0), 'rexlineartdf')
         self.make_group('genemod/rexborder', (0, 0), 'rexbord')
 
         for a, x in enumerate(range(1, 6)):

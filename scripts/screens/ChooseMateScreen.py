@@ -927,11 +927,20 @@ class ChooseMateScreen(Screens):
 
         del heading_rect
 
-        self.current_cat_elements["image"] = pygame_gui.elements.UIImage(
+        genelist = str(self.the_cat.phenotype.PhenotypeOutput(self.the_cat.phenotype.white_pattern, chimera=self.the_cat.chimerapheno)) + \
+            "\n" + str(self.the_cat.phenotype.ShowGenes(True)
+                       ) + "\n" + self.the_cat.phenotype.FormatSomatic()
+        if (self.the_cat.chimerapheno):
+            genelist += "\n\n" + str(self.the_cat.chimerapheno.PhenotypeOutput(self.the_cat.chimerapheno.white_pattern,
+                                                                               chimera=self.the_cat.chimerapheno)) + "\n" + str(self.the_cat.chimerapheno.ShowGenes(True))
+
+        self.current_cat_elements["image"] = UISpriteButton(
             ui_scale(pygame.Rect((50, 150), (150, 150))),
             pygame.transform.scale(
                 self.the_cat.sprite, ui_scale_dimensions((150, 150))
             ),
+            object_id="#offspring_predict_cat",
+            tool_tip_text=genelist,
         )
         name = str(self.the_cat.name)  # get name
         if 11 <= len(name):  # check name length
@@ -1084,13 +1093,21 @@ class ChooseMateScreen(Screens):
             anchors={"centerx": "centerx"},
         )
 
-        self.selected_cat_elements["image"] = pygame_gui.elements.UIImage(
+        genelist = str(self.selected_cat.phenotype.PhenotypeOutput(self.selected_cat.phenotype.white_pattern, chimera=self.selected_cat.chimerapheno)) + \
+            "\n" + str(self.selected_cat.phenotype.ShowGenes(True)
+                       ) + "\n" + self.selected_cat.phenotype.FormatSomatic()
+        if (self.selected_cat.chimerapheno):
+            genelist += "\n\n" + str(self.selected_cat.chimerapheno.PhenotypeOutput(self.selected_cat.chimerapheno.white_pattern,
+                                                                                    chimera=self.selected_cat.chimerapheno)) + "\n" + str(self.selected_cat.chimerapheno.ShowGenes(True))
+
+        self.selected_cat_elements["image"] = UISpriteButton(
             ui_scale(pygame.Rect((600, 150), (150, 150))),
             pygame.transform.scale(
                 self.selected_cat.sprite, ui_scale_dimensions((150, 150))
             ),
+            object_id="#offspring_predict_cat",
+            tool_tip_text=genelist,
         )
-
         name = str(self.selected_cat.name)
         if 11 <= len(name):  # check name length
             short_name = str(name)[0:9]
