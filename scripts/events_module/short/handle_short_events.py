@@ -609,7 +609,7 @@ class HandleShortEvents:
                 if "all_lives" in self.chosen_event.tags:
                     cat.status.group.fetch_clan_object().leader_lives -= 10
                 elif "some_lives" in self.chosen_event.tags:
-                    cat.status.group.fetch_clan_object().leader_lives -= randrange(2, self.current_lives - 1)
+                    cat.status.group.fetch_clan_object().leader_lives -= randrange(2, self.current_lives - 1) if self.current_lives > 3 else 2
                 else:
                     cat.status.group.fetch_clan_object().leader_lives -= 1
 
