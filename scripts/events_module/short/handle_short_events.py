@@ -127,7 +127,7 @@ class HandleShortEvents:
         # if the war didn't go badly, then we decrease the chance of this event being war-focused
         if switch_get_value(Switch.war_rel_change_type) != "rel_down":
             war_chance = 2
-        if game.clan.war.get("at_war", False) and (not clan or clan == game.clan.displayname or clan == get_warring_clan()) and randint(1, war_chance) != 1:
+        if game.clan.war.get("at_war", False) and (not clan or clan == game.clan or clan == get_warring_clan()) and randint(1, war_chance) != 1:
             enemy_clan = get_warring_clan() if get_warring_clan() != clan else game.clan
             self.other_clan = enemy_clan
             self.other_clan_name = f"{self.other_clan.displayname}Clan"

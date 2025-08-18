@@ -87,7 +87,7 @@ class AllegiancesScreen(Screens):
                 manager=MANAGER,
             )
             self.choose_group_button = UISurfaceImageButton(
-                ui_scale(pygame.Rect((600, 0), (190, 34))),
+                ui_scale(pygame.Rect((510, 0), (190, 34))),
                 "screens.list.choose_group",
                 get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
                 object_id="@buttonstyles_dropdown",
@@ -97,7 +97,7 @@ class AllegiancesScreen(Screens):
             )
 
             self.living_groups_container = pygame_gui.elements.UIAutoResizingContainer(
-                ui_scale(pygame.Rect((600, 32), (0, 0))),
+                ui_scale(pygame.Rect((510, 32), (0, 0))),
                 object_id="#choose_group_container",
                 manager=MANAGER,
                 starting_height=1,
