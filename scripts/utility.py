@@ -4274,11 +4274,7 @@ def generate_sprite(
                 for y in range(height):
                     if sprite.get_at((x, y)) == (pygame.Color(0, 0, 0)):
                         color = source.get_at((x, y))
-                        sprite.set_at((x, y), color)
-                        pass
-                    else:
-                        col = sprite.get_at((x, y))
-                        pass
+                        out.set_at((x, y), color)
             return out
 
         # draw line art
@@ -4309,35 +4305,15 @@ def generate_sprite(
         # if not dead:
         if(cat.phenotype.fold[0] != 'Fd'):
             if(cat.phenotype.curl[0] == 'Cu'):
-                earlines.blit(_recolor_lineart(
-                            sprites.sprites['curllines' + cat_sprite],
-                            lineart_color,
-                            gradient_surface,
-                        ), (0, 0))
+                earlines.blit(sprites.sprites['curllines' + cat_sprite], (0, 0))
             else:
-                earlines.blit(_recolor_lineart(
-                            sprites.sprites['lines' + cat_sprite],
-                            lineart_color,
-                            gradient_surface,
-                        ), (0, 0))
+                earlines.blit(sprites.sprites['lines' + cat_sprite], (0, 0))
             if phenotype.fourear[0] == "dup":
-                earlines.blit(_recolor_lineart(
-                            sprites.sprites['fourears' + cat_sprite],
-                            lineart_color,
-                            gradient_surface,
-                        ), (0, 0))
+                earlines.blit(sprites.sprites['fourears' + cat_sprite], (0, 0))
         elif(cat.phenotype.curl[0] == 'Cu'):
-            earlines.blit(_recolor_lineart(
-                            sprites.sprites['fold_curllines' + cat_sprite],
-                            lineart_color,
-                            gradient_surface,
-                        ), (0, 0))
+            earlines.blit(sprites.sprites['fold_curllines' + cat_sprite], (0, 0))
         else:
-            earlines.blit(_recolor_lineart(
-                            sprites.sprites['foldlines' + cat_sprite],
-                            lineart_color,
-                            gradient_surface,
-                        ), (0, 0))
+            earlines.blit(sprites.sprites['foldlines' + cat_sprite], (0, 0))
         # elif cat.status.group == CatGroup.UNKNOWN_RESIDENCE:
         #     if(cat.phenotype.fold[0] != 'Fd'):
         #         if(cat.phenotype.curl[0] == 'Cu'):
