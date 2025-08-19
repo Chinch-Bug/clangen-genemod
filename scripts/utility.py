@@ -1635,8 +1635,8 @@ def get_leader_life_notice() -> str:
     Returns a string specifying how many lives the chief rabbit has left or notifying of the chief rabbit's full death
     """
     if game.warren.instructor.status.group == CatGroup.DARK_FOREST:
-        return i18n.t("rabbit.history.leader_lives_left_df", count=game.warren.leader_lives)
-    return i18n.t("rabbit.history.leader_lives_left_sc", count=game.warren.leader_lives)
+        return i18n.t("cat.history.leader_lives_left_df", count=game.warren.leader_lives)
+    return i18n.t("cat.history.leader_lives_left_sc", count=game.warren.leader_lives)
 
 
 def get_other_clan_relation(relation):
@@ -2239,14 +2239,14 @@ def event_text_adjust(
         if "acc_plural" in text:
             text = text.replace(
                 "acc_plural",
-                i18n.t(f"rabbit.accessories.{main_cat.pelt.accessory[-1]}", count=2),
+                i18n.t(f"cat.accessories.{main_cat.pelt.accessory[-1]}", count=2),
             )
 
         # acc_singular (only works for main_cat's acc)
         if "acc_singular" in text:
             text = text.replace(
                 "acc_singular",
-                i18n.t(f"rabbit.accessories.{main_cat.pelt.accessory[-1]}", count=1),
+                i18n.t(f"cat.accessories.{main_cat.pelt.accessory[-1]}", count=1),
             )
 
         if "given_herb" in text:
@@ -2635,19 +2635,19 @@ def generate_sprite(
         and constants.CONFIG["cat_sprites"]["sick_sprites"]
     ):
         if age in ["kitten", "adolescent"]:
-            rabbit_sprite = str(19)
+            cat_sprite = str(19)
         else:
-            rabbit_sprite = str(18)
+            cat_sprite = str(18)
 
     # paralyzed sprites
     elif rabbit.pelt.paralyzed and age != "newborn":
         if age in ["kitten", "adolescent"]:
-            rabbit_sprite = str(17)
+            cat_sprite = str(17)
         else:
             if rabbit.pelt.length == 'long':
-                rabbit_sprite = str(16)
+                cat_sprite = str(16)
             else:
-                rabbit_sprite = str(15)
+                cat_sprite = str(15)
 
     # default sprites
     else:
@@ -2655,9 +2655,9 @@ def generate_sprite(
             age = "senior"
 
         if constants.CONFIG["fun"]["all_cats_are_newborn"]:
-            rabbit_sprite = str(cat.pelt.cat_sprites["newborn"])
+            cat_sprite = str(rabbit.pelt.cat_sprites["newborn"])
         else:
-            rabbit_sprite = str(rabbit.pelt.cat_sprites[age])
+            cat_sprite = str(rabbit.pelt.cat_sprites[age])
 
     new_sprite = pygame.Surface(
         (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
@@ -2666,11 +2666,11 @@ def generate_sprite(
     try:
         if rabbit.pelt.name not in ['Tortie', 'Calico']:
             new_sprite.blit(sprites.sprites[rabbit.pelt.get_sprites_name(
-            ) + rabbit.pelt.colour + rabbit_sprite], (0, 0))
+            ) + rabbit.pelt.colour + cat_sprite], (0, 0))
         else:
             # Base Coat
             new_sprite.blit(
-                sprites.sprites[rabbit.pelt.tortie_base + rabbit.pelt.colour + rabbit_sprite],
+                sprites.sprites[rabbit.pelt.tortie_base + rabbit.pelt.colour + cat_sprite],
                 (0, 0),
             )
 
@@ -2681,10 +2681,10 @@ def generate_sprite(
                 tortie_pattern = rabbit.pelt.tortie_pattern
 
             patches = sprites.sprites[
-                tortie_pattern + rabbit.pelt.tortie_colour + rabbit_sprite
+                tortie_pattern + rabbit.pelt.tortie_colour + cat_sprite
             ].copy()
             patches.blit(
-                sprites.sprites["tortiemask" + rabbit.pelt.tortie_marking + rabbit_sprite],
+                sprites.sprites["tortiemask" + rabbit.pelt.tortie_marking + cat_sprite],
                 (0, 0),
                 special_flags=pygame.BLEND_RGBA_MULT,
             )
@@ -2709,13 +2709,13 @@ def generate_sprite(
             and rabbit.pelt.tint in sprites.cat_tints["dilute_tint_colours"]
         ):
             tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-            tint.fill(tuple(sprites.cat_tints["dilute_tint_colours"][cat.pelt.tint]))
+            tint.fill(tuple(sprites.cat_tints["dilute_tint_colours"][rabbit.pelt.tint]))
             new_sprite.blit(tint, (0, 0), special_flags=pygame.BLEND_RGB_ADD)
 
         # draw white patches
         if rabbit.pelt.white_patches is not None:
             white_patches = sprites.sprites['white' +
-                                            rabbit.pelt.white_patches + rabbit_sprite].copy()
+                                            rabbit.pelt.white_patches + cat_sprite].copy()
 
             # Apply tint to white patches.
             if (
@@ -2738,7 +2738,7 @@ def generate_sprite(
         # draw vit & points
 
         if rabbit.pelt.points:
-            points = sprites.sprites["white" + rabbit.pelt.points + rabbit_sprite].copy()
+            points = sprites.sprites["white" + rabbit.pelt.points + cat_sprite].copy()
             if (
                 rabbit.pelt.white_patches_tint is not None
                 and rabbit.pelt.white_patches_tint
@@ -2757,39 +2757,39 @@ def generate_sprite(
 
         if rabbit.pelt.vitiligo:
             new_sprite.blit(
-                sprites.sprites['white' + rabbit.pelt.vitiligo + rabbit_sprite], (0, 0))
+                sprites.sprites['white' + rabbit.pelt.vitiligo + cat_sprite], (0, 0))
 
         # draw eyes & scars1
         eyes = sprites.sprites['eyes' +
-                               rabbit.pelt.eye_colour + rabbit_sprite].copy()
+                               rabbit.pelt.eye_colour + cat_sprite].copy()
         if rabbit.pelt.eye_colour2 != None:
             eyes.blit(
-                sprites.sprites['eyes2' + rabbit.pelt.eye_colour2 + rabbit_sprite], (0, 0))
+                sprites.sprites['eyes2' + rabbit.pelt.eye_colour2 + cat_sprite], (0, 0))
         new_sprite.blit(eyes, (0, 0))
 
         if not scars_hidden:
             for scar in rabbit.pelt.scars:
                 if scar in rabbit.pelt.scars1:
                     new_sprite.blit(
-                        sprites.sprites['scars' + scar + rabbit_sprite], (0, 0))
+                        sprites.sprites['scars' + scar + cat_sprite], (0, 0))
                 if scar in rabbit.pelt.scars3:
                     new_sprite.blit(
-                        sprites.sprites['scars' + scar + rabbit_sprite], (0, 0))
+                        sprites.sprites['scars' + scar + cat_sprite], (0, 0))
 
         # setting the lineart color to override on accessories & missing bits
         lineart_color = (
             pygame.Color(
                 constants.CONFIG["cat_sprites"]["lineart_color_sc"]
-                if cat.status.group == CatGroup.STARCLAN
+                if rabbit.status.group == CatGroup.STARCLAN
                 else constants.CONFIG["cat_sprites"]["lineart_color_df"]
             )
-            if cat.status.group != CatGroup.UNKNOWN_RESIDENCE
+            if rabbit.status.group != CatGroup.UNKNOWN_RESIDENCE
             else None
         )
 
         gradient_surface = (
             sprites.sprites["gradient_ur" + cat_sprite]
-            if dead and cat.status.group == CatGroup.UNKNOWN_RESIDENCE
+            if dead and rabbit.status.group == CatGroup.UNKNOWN_RESIDENCE
             else None
         )
 
@@ -2829,23 +2829,23 @@ def generate_sprite(
         # draw line art
         if game_setting_get("shaders") and not dead:
             new_sprite.blit(
-                sprites.sprites['shaders' + rabbit_sprite], (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                sprites.sprites['shaders' + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGB_MULT)
             new_sprite.blit(
-                sprites.sprites['lighting' + rabbit_sprite], (0, 0))
+                sprites.sprites['lighting' + cat_sprite], (0, 0))
 
         if not dead:
             new_sprite.blit(sprites.sprites["lines" + cat_sprite], (0, 0))
-        elif rabbit.status.group == CatGroup.UNKNOWN_RESIDENCE:
-            new_sprite.blit(sprites.sprites["lineartur" + cat_sprite], (0, 0))
+        # elif rabbit.status.group == CatGroup.UNKNOWN_RESIDENCE:
+        #     new_sprite.blit(sprites.sprites["lineartur" + cat_sprite], (0, 0))
         elif rabbit.status.group == CatGroup.DARK_FOREST:
             new_sprite.blit(sprites.sprites["lineartdf" + cat_sprite], (0, 0))
         elif dead:
             new_sprite.blit(
-                sprites.sprites['lineartdead' + rabbit_sprite], (0, 0))
+                sprites.sprites['lineartdead' + cat_sprite], (0, 0))
         # draw skin and scars2
         blendmode = pygame.BLEND_RGBA_MIN
         new_sprite.blit(
-            sprites.sprites['skin' + rabbit.pelt.skin + rabbit_sprite], (0, 0))
+            sprites.sprites['skin' + rabbit.pelt.skin + cat_sprite], (0, 0))
 
         if not scars_hidden:
             for scar in rabbit.pelt.scars:
@@ -2863,8 +2863,8 @@ def generate_sprite(
         # draw accessories
         from scripts.rabbit.pelts import Pelt
 
-        if not acc_hidden and cat.pelt.accessory:
-            cat_accessories = cat.pelt.accessory
+        if not acc_hidden and rabbit.pelt.accessory:
+            cat_accessories = rabbit.pelt.accessory
             categories = [
                 "collars",
                 "tail_accessories",
@@ -2874,7 +2874,7 @@ def generate_sprite(
             for category in categories:
                 for accessory in cat_accessories:
                     if accessory in getattr(Pelt, category):
-                        if accessory in cat.pelt.plant_accessories:
+                        if accessory in rabbit.pelt.plant_accessories:
                             new_sprite.blit(
                                 _recolor_lineart(
                                     sprites.sprites[
@@ -2885,7 +2885,7 @@ def generate_sprite(
                                 ),
                                 (0, 0),
                             )
-                        elif accessory in cat.pelt.wild_accessories:
+                        elif accessory in rabbit.pelt.wild_accessories:
                             new_sprite.blit(
                                 _recolor_lineart(
                                     sprites.sprites[
@@ -2896,7 +2896,7 @@ def generate_sprite(
                                 ),
                                 (0, 0),
                             )
-                        elif accessory in cat.pelt.collars:
+                        elif accessory in rabbit.pelt.collars:
                             new_sprite.blit(
                                 _recolor_lineart(
                                     sprites.sprites["collars" + accessory + cat_sprite],
@@ -2908,8 +2908,8 @@ def generate_sprite(
 
         # Apply fading fog
         if (
-            cat.pelt.opacity <= 97
-            and not cat.prevent_fading
+            rabbit.pelt.opacity <= 97
+            and not rabbit.prevent_fading
             and get_clan_setting("fading")
             and dead
         ):
@@ -2921,19 +2921,19 @@ def generate_sprite(
                 # Stage 2
                 stage = "2"
 
-            new_sprite.blit(sprites.sprites['fademask' + stage + rabbit_sprite],
+            new_sprite.blit(sprites.sprites['fademask' + stage + cat_sprite],
                             (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
 
             if rabbit.status.group == CatGroup.STARCLAN:
-                temp = sprites.sprites["fadestarclan" + stage + rabbit_sprite].copy()
+                temp = sprites.sprites["fadestarclan" + stage + cat_sprite].copy()
                 temp.blit(new_sprite, (0, 0))
                 new_sprite = temp
             elif rabbit.status.group == CatGroup.UNKNOWN_RESIDENCE:
-                temp = sprites.sprites["fadeur" + stage + rabbit_sprite].copy()
+                temp = sprites.sprites["fadeur" + stage + cat_sprite].copy()
                 temp.blit(new_sprite, (0, 0))
                 new_sprite = temp
             else:
-                temp = sprites.sprites["fadedf" + stage + rabbit_sprite].copy()
+                temp = sprites.sprites["fadedf" + stage + cat_sprite].copy()
                 temp.blit(new_sprite, (0, 0))
                 new_sprite = temp
 
@@ -2943,7 +2943,7 @@ def generate_sprite(
                 (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA
             )
 
-            if cat.status.group == CatGroup.STARCLAN:
+            if rabbit.status.group == CatGroup.STARCLAN:
                 # no underlay
 
                 # cat sprite
@@ -2954,7 +2954,7 @@ def generate_sprite(
                     sprites.sprites["sc_overlay" + cat_sprite],
                     (0, 0),
                 )
-            elif cat.status.group == CatGroup.UNKNOWN_RESIDENCE:
+            elif rabbit.status.group == CatGroup.UNKNOWN_RESIDENCE:
                 # underlay
                 temp_sprite.blit(
                     sprites.sprites["ur_underlay" + cat_sprite],
@@ -2969,7 +2969,7 @@ def generate_sprite(
                     sprites.sprites["ur_overlay" + cat_sprite],
                     (0, 0),
                 )
-            elif cat.status.group == CatGroup.DARK_FOREST:
+            elif rabbit.status.group == CatGroup.DARK_FOREST:
                 # no underlay
 
                 # cat sprite

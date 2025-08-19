@@ -71,9 +71,9 @@ class StartScreen(Screens):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
             self.mute_button_pressed(event)
             screens = {
-                self.continue_button: "burrow screen",
+                self.continue_button: "camp screen",
                 self.switch_clan_button: "switch warren screen",
-                self.new_clan_button: "make warren screen",
+                self.new_clan_button: "make clan screen",
                 self.settings_button: "settings screen",
             }
             if event.ui_element in screens and not self.error_open:
@@ -104,7 +104,7 @@ class StartScreen(Screens):
             if (
                 event.key == pygame.K_RETURN or event.key == pygame.K_SPACE
             ) and self.continue_button.is_enabled:
-                self.change_screen("burrow screen")
+                self.change_screen("camp screen")
 
     # def on_use(self):
     #     """

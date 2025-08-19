@@ -92,7 +92,7 @@
 - Litters can no longer spawn with duplicate names (i.e. two kits named Stonekit)
 - Healer rabbits captured by twolegs no longer have their role erased
 - Rabbit history no longer lists rabbits as murdering themselves
-- Kicked rabbits out of the walls (fixed some possible rabbit positionings on burrow screen)
+- Kicked rabbits out of the walls (fixed some possible rabbit positionings on camp screen)
 - Adolescents can no longer be considered "normal adults" in patrols simply because they graduated to rabbit early.
 - Kits adopted during moon events now receive correct inheritance info and begin with a positive relationship toward new adoptive parent(s)
 - Mates of adoptive parents now automatically adopt any newly adopted kits received on moonskip

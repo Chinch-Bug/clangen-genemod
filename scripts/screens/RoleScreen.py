@@ -22,7 +22,7 @@ from scripts.utility import (
 from .Screens import Screens
 from ..game_structure.game.settings import game_setting_get
 from ..game_structure.game.switches import switch_set_value, switch_get_value, Switch
-from ..cat.enums import CatRank
+from ..rabbit.enums import CatRank
 from ..game_structure.screen_settings import MANAGER
 from ..ui.generate_box import BoxStyles, get_box
 from ..ui.generate_button import get_button_dict, ButtonStyles
@@ -247,7 +247,7 @@ class RoleScreen(Screens):
 
         text = [
             "<b>" + i18n.t(f"general.{self.the_cat.status.rank}", count=1) + "</b>",
-            i18n.t(f"rabbit.personality.{self.the_cat.personality.trait}"),
+            i18n.t(f"cat.personality.{self.the_cat.personality.trait}"),
             i18n.t("general.moons_age", count=self.the_cat.moons)
             + "  |  "
             + self.the_cat.genderalign,

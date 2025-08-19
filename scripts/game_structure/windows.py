@@ -2157,13 +2157,13 @@ class SelectFocusClans(UIWindow):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
             if event.ui_element == self.back_button:
                 game.warren.clans_in_focus = []
-                game.all_screens["rabbit den screen"].exit_screen()
-                game.all_screens["rabbit den screen"].screen_switches()
+                game.all_screens["warrior den screen"].exit_screen()
+                game.all_screens["warrior den screen"].screen_switches()
                 self.kill()
             if event.ui_element == self.save_button:
-                game.all_screens["rabbit den screen"].save_focus()
-                game.all_screens["rabbit den screen"].exit_screen()
-                game.all_screens["rabbit den screen"].screen_switches()
+                game.all_screens["warrior den screen"].save_focus()
+                game.all_screens["warrior den screen"].exit_screen()
+                game.all_screens["warrior den screen"].screen_switches()
                 self.kill()
             if event.ui_element in self.checkboxes.values():
                 for clan_name, value in self.checkboxes.items():

@@ -17,7 +17,7 @@ from scripts.game_structure import game
 
 status_dict = {
     "start screen": "At the start screen",
-    "make warren screen": "Making a Warren",
+    "make clan screen": "Making a Warren",
     "mediation screen": "Mediating a dispute",
     "patrol screen": "On a patrol",
     "profile screen": "Viewing a rabbit's profile",

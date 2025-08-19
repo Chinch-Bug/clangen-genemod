@@ -11,7 +11,7 @@ from pygame_gui.core import ObjectID
 import scripts.screens.screens_core.screens_core
 from scripts.rabbit.rabbits import create_example_cats, create_cat, Rabbit
 from scripts.rabbit.names import names
-from scripts.clan import Clan
+from scripts.warren import Warren
 from scripts.events_module.patrol.patrol import Patrol
 from scripts.game_structure import image_cache, constants
 from scripts.game_structure import game
@@ -24,9 +24,9 @@ from scripts.utility import get_text_box_theme, ui_scale, ui_scale_blit, ui_scal
 from scripts.utility import ui_scale_dimensions
 from .Screens import Screens
 from .screens_core.screens_core import rebuild_den_dropdown
-from ..cat import save_load
-from ..cat.enums import CatRank
-from ..cat.sprites import sprites
+from ..rabbit import save_load
+from ..rabbit.enums import CatRank
+from ..rabbit.sprites import sprites
 from ..clan_package.settings import get_clan_setting
 from ..game_structure.game.settings import game_setting_set, game_setting_get
 from ..game_structure.game.switches import switch_get_value, Switch
@@ -543,7 +543,7 @@ class MakeClanScreen(Screens):
 
     def handle_saved_clan_event(self, event):
         if event.ui_element == self.elements["continue"]:
-            self.change_screen("burrow screen")
+            self.change_screen("camp screen")
 
     def exit_screen(self):
         self.main_menu.kill()
@@ -2145,7 +2145,7 @@ class MakeClanScreen(Screens):
         else:
             clan_name = self.clan_name
 
-        game.warren = Clan(
+        game.warren = Warren(
             name=clan_name,
             displayname=displayname,
             leader=self.leader,

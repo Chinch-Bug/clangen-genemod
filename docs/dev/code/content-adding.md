@@ -63,7 +63,7 @@ Format:
 },
 ```
 
-After that, we can go and add the button to the Make Warren Screen. Navigate to "scripts/screens/MakeClanScreen.py". You'll be editing the "refresh_selected_camp", "handle_choose_background_key" and "handle_choose_background" functions. Let's find "refresh_selected_camp" with Ctrl + F by searching for one of the existing burrow names + "_tab". Like: `wasteland_tab`.
+After that, we can go and add the button to the Make clan screen. Navigate to "scripts/screens/MakeClanScreen.py". You'll be editing the "refresh_selected_camp", "handle_choose_background_key" and "handle_choose_background" functions. Let's find "refresh_selected_camp" with Ctrl + F by searching for one of the existing burrow names + "_tab". Like: `wasteland_tab`.
 
 Each biome will have an if-statement like this:
 
@@ -142,9 +142,9 @@ The editing process is quite straightforward and simple, although tedious; it in
 
 Few numbers to keep in mind:
 
-- A single rabbit sprite on the burrow screen counts for 100x100 pixels
-- Burrow screen length is 1600 pixels. This means that to not have rabbit sprites go behind the screens, their x-coordinate should not be placed beyond 1500 pixels.
-- Burrow screen height is 1400 pixels. Like before, the rabbit sprite y-coordinates shouldn't be placed beyond 1300 pixels.
+- A single rabbit sprite on the camp screen counts for 100x100 pixels
+- camp screen length is 1600 pixels. This means that to not have rabbit sprites go behind the screens, their x-coordinate should not be placed beyond 1500 pixels.
+- camp screen height is 1400 pixels. Like before, the rabbit sprite y-coordinates shouldn't be placed beyond 1300 pixels.
 
 Photo-editing/painting programs may help you figure out the right placements, if they have measuring tools available.
 

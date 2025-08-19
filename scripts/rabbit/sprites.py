@@ -198,7 +198,7 @@ class Sprites:
         # Fading Fog
         for i in range(0, 3):
             self.make_group("fademask", (i, 0), f"fademask{i}")
-            self.make_group("fadeinle", (i, 0), f"fadeinle{i}")
+            self.make_group("fadeinle", (i, 0), f"fadestarclan{i}")
             self.make_group("fadedarkforest", (i, 0), f"fadedf{i}")
             self.make_group("fadeunknownresidence", (i, 0), f"fadeur{i}")
 
@@ -737,6 +737,9 @@ class Sprites:
         loads clan symbols
         """
 
+        old_size = self.size
+        self.size = 50
+
         if os.path.exists("resources/dicts/clan_symbols.json"):
             with open(
                 "resources/dicts/clan_symbols.json", encoding="utf-8"
@@ -804,6 +807,8 @@ class Sprites:
                     )
 
             y_pos += 1
+
+        self.size = old_size
 
     def get_symbol(self, symbol: str, force_light=False):
         """Change the color of the symbol to match the requested theme, then return it

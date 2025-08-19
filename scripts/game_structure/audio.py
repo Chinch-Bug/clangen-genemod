@@ -12,7 +12,7 @@ from scripts.game_structure.ui_elements import CatButton, UISpriteButton
 logger = logging.getLogger(__name__)
 
 menu_screens = ["settings screen", "start screen", "switch warren screen"]
-creation_screens = ["make warren screen"]
+creation_screens = ["make clan screen"]
 
 
 class MusicManager:

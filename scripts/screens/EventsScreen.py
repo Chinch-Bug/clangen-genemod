@@ -156,7 +156,7 @@ class EventsScreen(Screens):
                     self.change_screen("patrol screen")
                 # RIGHT ARROW
                 elif event.key == pygame.K_RIGHT:
-                    self.change_screen("burrow screen")
+                    self.change_screen("camp screen")
                 # DOWN AND UP ARROW
                 elif event.key == pygame.K_DOWN or event.key == pygame.K_UP:
                     self.handle_tab_select(event.key)

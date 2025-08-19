@@ -5,7 +5,7 @@ from strenum import StrEnum
 
 class CatAge(StrEnum):
     NEWBORN = "newborn"
-    KIT = "kit"
+    KITTEN = "kit"
     ADOLESCENT = "adolescent"
     YOUNG_ADULT = "young adult"
     ADULT = "adult"

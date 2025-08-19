@@ -235,7 +235,7 @@ class ListScreen(Screens):
             if self.cat_list_bar_elements["search_bar_entry"].is_focused:
                 return
             if event.key == pygame.K_LEFT:
-                self.change_screen("burrow screen")
+                self.change_screen("camp screen")
             elif event.key == pygame.K_RIGHT:
                 self.change_screen("patrol screen")
 

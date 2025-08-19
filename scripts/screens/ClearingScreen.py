@@ -23,7 +23,7 @@ from scripts.utility import (
 from .Screens import Screens
 from ..clan_package.settings import get_clan_setting, switch_clan_setting
 from scripts.events_module.short.condition_events import Condition_Events
-from ..cat.enums import CatRank
+from ..rabbit.enums import CatRank
 from ..game_structure.screen_settings import MANAGER
 from ..ui.generate_box import BoxStyles, get_box
 from ..ui.generate_button import ButtonStyles, get_button_dict

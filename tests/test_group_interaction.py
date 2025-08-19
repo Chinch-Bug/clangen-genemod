@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from scripts.clan import Clan
+from scripts.warren import Warren
 
 from scripts.rabbit.enums import CatRank
 

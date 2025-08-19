@@ -181,7 +181,7 @@ for module_name, module in list(sys.modules.items()):
             reload(module)
 
 # Load game
-from scripts.clan import clan_class
+from scripts.warren import clan_class
 from scripts.game_structure.audio import sound_manager, music_manager
 from scripts.game_structure.load_cat import load_cats, version_convert
 from scripts.game_structure.windows import SaveCheck
@@ -196,6 +196,7 @@ from scripts.game_structure.game.switches import (
     Switch,
 )
 from scripts.game_structure.discord_rpc import _DiscordRPC
+from scripts.rabbit.sprites import sprites
 from scripts.utility import (
     quit,
 )  # pylint: disable=redefined-builtin
@@ -381,7 +382,7 @@ while 1:
                     "switch warren screen",
                     "settings screen",
                     "info screen",
-                    "make warren screen",
+                    "make clan screen",
                 )
                 or not game.warren
             ):

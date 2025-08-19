@@ -19,7 +19,7 @@ from .switches import switch_get_value, Switch
 pygame.init()
 
 if TYPE_CHECKING:
-    from scripts.clan import Clan
+    from scripts.warren import Warren
 
 
 event_editing = False
@@ -75,7 +75,7 @@ debug_settings = {
 }
 
 # CLAN
-clan: Optional["Clan"] = None
+warren: Optional["Warren"] = None
 cat_class = None
 with open(f"resources/prey_config.json", "r", encoding="utf-8") as read_file:
     prey_config = ujson.loads(read_file.read())
@@ -158,7 +158,7 @@ def save_events():
     events_list = []
     for event in cur_events_list:
         events_list.append(event.to_dict())
-    safe_save(f"{get_save_dir()}/{clan.name}/events.json", events_list)
+    safe_save(f"{get_save_dir()}/{warren.name}/events.json", events_list)
 
 
 def add_faded_offspring_to_faded_cat(parent, offspring):
@@ -168,7 +168,7 @@ def add_faded_offspring_to_faded_cat(parent, offspring):
 
     global clan
 
-    path = f"{get_save_dir()}/{clan.name}/faded_cats/{parent}.json"
+    path = f"{get_save_dir()}/{warren.name}/faded_cats/{parent}.json"
 
     try:
         with open(
@@ -195,7 +195,7 @@ def load_events():
 
     global clan
 
-    clanname = clan.name
+    clanname = warren.name
     events_path = f"{get_save_dir()}/{clanname}/events.json"
     events_list = []
     try:
@@ -253,7 +253,7 @@ def get_config_value(*args):
         config_value = config_value[key]
 
     # Apply war if needed
-    if clan and clan.war.get("at_war", False) and args in war_effected:
+    if clan and warren.war.get("at_war", False) and args in war_effected:
         rel_change_type = switch_get_value(Switch.war_rel_change_type)
         # if the war was positively affected this moon, we don't apply war modifier
         # this way we only see increased death/injury when the war is going badly or is neutral

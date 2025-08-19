@@ -9,7 +9,7 @@
             "one": "(next change in %{moons})",
             "many": "(next change in %{moons})"
         },
-        "involved_clans": "<br><b>Involved Warrens:</b> %{warrens}",
+        "involved_clans": "<br><b>Involved Warrens:</b> %{clans}",
         "what_to_focus": "What should your rabbits focus on?",
         "selected_info": "<b>Selected information:</b>\n%{info}"
     }

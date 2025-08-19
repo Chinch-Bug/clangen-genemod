@@ -67,7 +67,7 @@ class Warren:
         self,
         name="",
         leader=None,
-        captain=None,
+        deputy=None,
         medicine_cat=None,
         biome="Forest",
         camp_bg=None,
@@ -95,7 +95,7 @@ class Warren:
         self.leader = leader
         self.leader_lives = 9
         self.leader_predecessors = 0
-        self.deputy = captain
+        self.deputy = deputy
         self.deputy_predecessors = 0
         self.medicine_cat = medicine_cat
         self.med_cat_list = []
@@ -150,8 +150,8 @@ class Warren:
         if self_run_init_functions:
             self.post_initialization_functions()
 
-    # The warren couldn't save itself in time due to issues arising, for example, from this function: "if captain is not
-    # None: self.deputy.status_change('captain') -> game.warren.remove_med_cat(self)"
+    # The warren couldn't save itself in time due to issues arising, for example, from this function: "if deputy is not
+    # None: self.deputy.status_change('deputy') -> game.warren.remove_med_cat(self)"
     def post_initialization_functions(self):
         if self.deputy and self.deputy.status.alive_in_player_clan:
             self.deputy.rank_change(CatRank.DEPUTY)
@@ -423,11 +423,11 @@ class Warren:
 
         clan_data["leader_predecessors"] = self.leader_predecessors
 
-        # CAPTAIN DATA
+        # deputy DATA
         if self.deputy:
-            clan_data["captain"] = self.deputy.ID
+            clan_data["deputy"] = self.deputy.ID
         else:
-            clan_data["captain"] = None
+            clan_data["deputy"] = None
 
         clan_data["deputy_predecessors"] = self.deputy_predecessors
 
@@ -475,7 +475,7 @@ class Warren:
 
         version_info = None
         if os.path.exists(
-            get_save_dir() + "/" + switch_get_value(Switch.clan_list)[0] + "clan.json"
+            get_save_dir() + "/" + switch_get_value(Switch.clan_list)[0] + "warren.json"
         ):
             version_info = self.load_clan_json()
         elif os.path.exists(
@@ -553,7 +553,7 @@ class Warren:
             game.warren = Warren(
                 name=general[0],
                 leader=Rabbit.all_cats[leader_info[0]],
-                captain=Rabbit.all_cats.get(deputy_info[0], None),
+                deputy=Rabbit.all_cats.get(deputy_info[0], None),
                 medicine_cat=Rabbit.all_cats.get(med_cat_info[0], None),
                 biome=general[2],
                 camp_bg=general[3],
@@ -572,7 +572,7 @@ class Warren:
             game.warren = Warren(
                 name=general[0],
                 leader=Rabbit.all_cats[leader_info[0]],
-                captain=Rabbit.all_cats.get(deputy_info[0], None),
+                deputy=Rabbit.all_cats.get(deputy_info[0], None),
                 medicine_cat=Rabbit.all_cats.get(med_cat_info[0], None),
                 biome=general[2],
                 camp_bg=general[3],
@@ -588,7 +588,7 @@ class Warren:
             game.warren = Warren(
                 name=general[0],
                 leader=Rabbit.all_cats[leader_info[0]],
-                captain=Rabbit.all_cats.get(deputy_info[0], None),
+                deputy=Rabbit.all_cats.get(deputy_info[0], None),
                 medicine_cat=Rabbit.all_cats.get(med_cat_info[0], None),
                 biome=general[2],
                 camp_bg=general[3],
@@ -599,7 +599,7 @@ class Warren:
             game.warren = Warren(
                 name=general[0],
                 leader=Rabbit.all_cats[leader_info[0]],
-                captain=Rabbit.all_cats.get(deputy_info[0], None),
+                deputy=Rabbit.all_cats.get(deputy_info[0], None),
                 medicine_cat=Rabbit.all_cats.get(med_cat_info[0], None),
                 biome=general[2],
                 self_run_init_functions=False,
@@ -702,10 +702,10 @@ class Warren:
             leader = None
             leader_lives = 0
 
-        if clan_data["captain"]:
-            captain = Rabbit.all_cats[clan_data["captain"]]
+        if clan_data["deputy"]:
+            deputy = Rabbit.all_cats[clan_data["deputy"]]
         else:
-            captain = None
+            deputy = None
 
         if clan_data["med_cat"]:
             med_cat = Rabbit.all_cats[clan_data["med_cat"]]
@@ -864,9 +864,9 @@ class Warren:
             with open(
                 file_path, "r", encoding="utf-8"
             ) as read_file:  # pylint: disable=redefined-outer-name
-                warren.pregnancy_data = ujson.load(read_file)
+                clan.pregnancy_data = ujson.load(read_file)
         else:
-            warren.pregnancy_data = {}
+            clan.pregnancy_data = {}
 
     def save_pregnancy(self, warren):
         """
@@ -876,7 +876,7 @@ class Warren:
             return
 
         safe_save(
-            f"{get_save_dir()}/{game.warren.name}/pregnancy.json", clan.pregnancy_data
+            f"{get_save_dir()}/{game.warren.name}/pregnancy.json", warren.pregnancy_data
         )
 
     def load_disaster(self, warren):
@@ -975,7 +975,7 @@ class Warren:
         else:
             disaster = {}
 
-        safe_save(f"{get_save_dir()}/{clan.name}/disasters/primary.json", disaster)
+        safe_save(f"{get_save_dir()}/{warren.name}/disasters/primary.json", disaster)
 
         if warren.secondary_disaster:
             disaster = {
@@ -992,7 +992,7 @@ class Warren:
         else:
             disaster = {}
 
-        safe_save(f"{get_save_dir()}/{clan.name}/disasters/secondary.json", disaster)
+        safe_save(f"{get_save_dir()}/{warren.name}/disasters/secondary.json", disaster)
 
     def load_future_events(self, warren):
         """
@@ -1138,7 +1138,7 @@ class Warren:
 
         safe_save(
             f"{get_save_dir()}/{game.warren.name}/freshkill_pile.json",
-            clan.freshkill_pile.pile,
+            warren.freshkill_pile.pile,
         )
 
         data = {}
@@ -1183,7 +1183,7 @@ class Warren:
             if isinstance(Rabbit.fetch_cat(self.leader), Rabbit)
             else None
         )
-        captain = (
+        deputy = (
             Rabbit.fetch_cat(self.deputy)
             if isinstance(Rabbit.fetch_cat(self.deputy), Rabbit)
             else None
@@ -1191,11 +1191,11 @@ class Warren:
 
         weight = 0.3
 
-        if (leader or captain) and all_cats:
+        if (leader or deputy) and all_cats:
             clan_sociability = round(
                 weight
                 * statistics.mean(
-                    [i.personality.sociability for i in (leader, captain) if i]
+                    [i.personality.sociability for i in (leader, deputy) if i]
                 )
                 + (1 - weight)
                 * statistics.median([i.personality.sociability for i in all_cats])
@@ -1203,20 +1203,20 @@ class Warren:
             clan_aggression = round(
                 weight
                 * statistics.mean(
-                    [i.personality.aggression for i in (leader, captain) if i]
+                    [i.personality.aggression for i in (leader, deputy) if i]
                 )
                 + (1 - weight)
                 * statistics.median([i.personality.aggression for i in all_cats])
             )
-        elif leader or captain:
+        elif leader or deputy:
             clan_sociability = round(
                 statistics.mean(
-                    [i.personality.sociability for i in (leader, captain) if i]
+                    [i.personality.sociability for i in (leader, deputy) if i]
                 )
             )
             clan_aggression = round(
                 statistics.mean(
-                    [i.personality.aggression for i in (leader, captain) if i]
+                    [i.personality.aggression for i in (leader, deputy) if i]
                 )
             )
         elif all_cats:

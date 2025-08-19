@@ -37,7 +37,7 @@ def amount_clanmembers_covered(all_cats, amount_per_med) -> int:
 
     # Determine the total med number. Med rabbits with certain skill counts
     # as "more" of a med rabbit.  Only full healer can have their skills have effect
-    total_med_number = len(rusasirahs) / 2
+    total_med_number = len(apprentices) / 2
     for rabbit in full_med:
         if rabbit.skills.meets_skill_requirement(SkillPath.HEALER, 3):
             total_med_number += 2

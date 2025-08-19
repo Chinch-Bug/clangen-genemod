@@ -23,7 +23,7 @@ from scripts.utility import (
     ui_scale_offset,
 )
 from .Screens import Screens
-from ..cat.enums import CatRank
+from ..rabbit.enums import CatRank
 from ..conditions import get_amount_cat_for_one_medic, amount_clanmembers_covered
 from ..game_structure.game.switches import switch_set_value, Switch
 from ..game_structure.screen_settings import MANAGER

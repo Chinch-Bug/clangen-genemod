@@ -1595,12 +1595,12 @@ class Pelt:
         return (
             adjust_list_text(
                 [
-                    i18n.t(f"rabbit.eyes.{self.eye_colour}"),
-                    i18n.t(f"rabbit.eyes.{self.eye_colour2}"),
+                    i18n.t(f"cat.eyes.{self.eye_colour}"),
+                    i18n.t(f"cat.eyes.{self.eye_colour2}"),
                 ]
             )
             if self.eye_colour2
-            else i18n.t(f"rabbit.eyes.{self.eye_colour}")
+            else i18n.t(f"cat.eyes.{self.eye_colour}")
         )
 
     @staticmethod
@@ -1664,8 +1664,8 @@ class Pelt:
 
 
 def _describe_pattern(rabbit, short=False):
-    color_name = [f"rabbit.pelts.{str(rabbit.pelt.colour)}"]
-    pelt_name = f"rabbit.pelts.{rabbit.pelt.name}{'' if short else '_long'}"
+    color_name = [f"cat.pelts.{str(rabbit.pelt.colour)}"]
+    pelt_name = f"cat.pelts.{rabbit.pelt.name}{'' if short else '_long'}"
     if rabbit.pelt.name in Pelt.torties:
         pelt_name, color_name = _describe_torties(rabbit, color_name, short)
 
@@ -1675,11 +1675,11 @@ def _describe_pattern(rabbit, short=False):
     if rabbit.pelt.white_patches:
         if rabbit.pelt.white_patches == "FULLWHITE":
             # If the rabbit is fullwhite, discard all other information. They are just white
-            color_name = i18n.t("rabbit.pelts.FULLWHITE")
+            color_name = i18n.t("cat.pelts.FULLWHITE")
             pelt_name = ""
         elif rabbit.pelt.name != "Calico":
-            white = i18n.t("rabbit.pelts.FULLWHITE")
-            if i18n.t("rabbit.pelts.WHITE", count=1) in color_name:
+            white = i18n.t("cat.pelts.FULLWHITE")
+            if i18n.t("cat.pelts.WHITE", count=1) in color_name:
                 color_name = white
             elif rabbit.pelt.white_patches in Pelt.mostly_white:
                 color_name = adjust_list_text([white, color_name])
@@ -1687,7 +1687,7 @@ def _describe_pattern(rabbit, short=False):
                 color_name = adjust_list_text([color_name, white])
 
     if rabbit.pelt.points:
-        color_name = i18n.t("rabbit.pelts.point", color=color_name)
+        color_name = i18n.t("cat.pelts.point", color=color_name)
         if "ginger point" in color_name:
             color_name.replace("ginger point", "flame point")
             # look, I'm leaving this as a quirk of the english language, if it's a problem elsewhere lmk
@@ -1706,13 +1706,13 @@ def _describe_torties(rabbit, color_name, short=False) -> [str, str]:
             and rabbit.pelt.tortie_colour
             in Pelt.black_colours + Pelt.brown_colours + Pelt.white_colours
         ):
-            return "rabbit.pelts.mottled", ""
+            return "cat.pelts.mottled", ""
         else:
-            return f"rabbit.pelts.{rabbit.pelt.name}", ""
+            return f"cat.pelts.{rabbit.pelt.name}", ""
 
     base = rabbit.pelt.tortie_base.lower()
 
-    patches_color = f"rabbit.pelts.{rabbit.pelt.tortie_colour}"
+    patches_color = f"cat.pelts.{rabbit.pelt.tortie_colour}"
     color_name.append("/")
     color_name.append(patches_color)
 
@@ -1721,14 +1721,14 @@ def _describe_torties(rabbit, color_name, short=False) -> [str, str]:
         and rabbit.pelt.tortie_colour
         in Pelt.black_colours + Pelt.brown_colours + Pelt.white_colours
     ):
-        return "rabbit.pelts.mottled_long", color_name
+        return "cat.pelts.mottled_long", color_name
     else:
         if base in tuple(tabby.lower() for tabby in Pelt.tabbies) + (
             "bengal",
             "rosette",
             "speckled",
         ):
-            base = f"rabbit.pelts.{cat.pelt.tortie_base.capitalize()}_long"  # the extra space is intentional
+            base = f"cat.pelts.{cat.pelt.tortie_base.capitalize()}_long"  # the extra space is intentional
         else:
             base = ""
         return base, color_name
@@ -1747,10 +1747,10 @@ _scar_details = [
 def unpack_appearance_ruleset(rabbit, rule, short, pelt, color):
     if rule == "scarred":
         if not short and len(rabbit.pelt.scars) >= 3:
-            return "rabbit.pelts.scarred"
+            return "cat.pelts.scarred"
     elif rule == "fur_length":
         if not short and rabbit.pelt.length == "long":
-            return "rabbit.pelts.long_furred"
+            return "cat.pelts.long_furred"
     elif rule == "pattern":
         return pelt
     elif rule == "color":
@@ -1764,13 +1764,13 @@ def unpack_appearance_ruleset(rabbit, rule, short, pelt, color):
             return "general.rabbit"
     elif rule == "vitiligo":
         if not short and rabbit.pelt.vitiligo:
-            return "rabbit.pelts.vitiligo"
+            return "cat.pelts.vitiligo"
     elif rule == "amputation":
         if not short:
             scarlist = []
             for scar in rabbit.pelt.scars:
                 if scar in _scar_details:
-                    scarlist.append(i18n.t(f"rabbit.pelts.{scar}"))
+                    scarlist.append(i18n.t(f"cat.pelts.{scar}"))
             return (
                 adjust_list_text(list(set(scarlist))) if len(scarlist) > 0 else ""
             )  # note: this doesn't preserve order!

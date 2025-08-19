@@ -23,11 +23,11 @@ from scripts.utility import (
     ui_scale_value,
 )
 from .Screens import Screens
-from ..cat.save_load import save_cats
+from ..rabbit.save_load import save_cats
 from ..clan_package.settings import get_clan_setting
 from ..clan_package.settings.clan_settings import switch_clan_setting
 from ..game_structure.game.switches import switch_set_value, switch_get_value, Switch
-from ..cat.enums import CatRank
+from ..rabbit.enums import CatRank
 from ..ui.generate_button import ButtonStyles, get_button_dict
 
 
@@ -87,7 +87,7 @@ class ClanScreen(Screens):
             if event.ui_element == self.clearing_label:
                 self.change_screen("clearing screen")
             if event.ui_element == self.warrior_den_label:
-                self.change_screen("rabbit den screen")
+                self.change_screen("warrior den screen")
             if event.ui_element == self.leader_den_label:
                 self.change_screen("leader den screen")
             else:

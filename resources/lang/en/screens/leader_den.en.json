@@ -1,7 +1,7 @@
 {
     "en": {
         "help_tooltip": "This screen allows you to check on the other rabbits who live nearby, both Outsiders and other Warren rabbits.  You can control how the chief rabbit of your Warren will treat other chief rabbits at Gatherings, but keep in mind that you can only determine one interaction each moon! Likewise, you can consider whether to drive out or invite in Outsider rabbits.  If you drive out a rabbit, they will no longer appear in the Rabbits Outside the Warrens list.  If you invite a rabbit in, they might join your Warren!",
-        "warrens": "Warrens",
+        "clans": "Warrens",
         "outsiders": "Outsiders",
         "clan_notice_text": {
             "one": "m_c is considering how to handle the next Gathering.",

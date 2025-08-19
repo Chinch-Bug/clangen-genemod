@@ -319,7 +319,7 @@ def event_for_cat(
     return True
 
 
-def _check_cat_age(rabbit, ages: list) -> bool:
+def _check_cat_age(cat, ages: list) -> bool:
     """
     checks if a rabbit's age is within ages list
     """
@@ -330,7 +330,7 @@ def _check_cat_age(rabbit, ages: list) -> bool:
     if not ages or "any" in ages:
         return True
 
-    return rabbit.age.value in ages
+    return cat.age.value in ages
 
 
 def _check_cat_status(cat, statuses: list) -> bool:

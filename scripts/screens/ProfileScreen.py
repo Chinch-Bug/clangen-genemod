@@ -29,8 +29,8 @@ from scripts.utility import (
     adjust_list_text,
 )
 from .Screens import Screens
-from ..cat.enums import CatAge, CatRank, CatGroup
-from ..cat.sprites import sprites
+from ..rabbit.enums import CatAge, CatRank, CatGroup
+from ..rabbit.sprites import sprites
 from ..clan_package.settings import get_clan_setting
 from ..game_structure.game.save_load import safe_save
 from ..game_structure.game.settings import game_setting_get
@@ -52,14 +52,14 @@ def bs_blurb_text(cat):
         return event_text_adjust(
             Rabbit,
             i18n.t(
-                "rabbit.backstories.cats_outside_the_clan",
+                "cat.backstories.cats_outside_the_clan",
                 status=i18n.t(f"general.{cat.status.rank}"),
             ),
             main_cat=cat,
         )
     else:
         return event_text_adjust(
-            Rabbit, i18n.t(f"rabbit.backstories.{cat.backstory}"), main_cat=cat
+            Rabbit, i18n.t(f"cat.backstories.{cat.backstory}"), main_cat=cat
         )
 
 
@@ -73,7 +73,7 @@ def backstory_text(rabbit):
 
     for category, values in BACKSTORIES["backstory_categories"].items():
         if backstory in values:
-            return i18n.t(f"rabbit.backstories.{category}")
+            return i18n.t(f"cat.backstories.{category}")
     raise Exception(f"No matching short backstory for {backstory}")
 
 
@@ -742,7 +742,7 @@ class ProfileScreen(Screens):
         # PELT TYPE
         output += i18n.t(
             "screens.profile.pelt_label",
-            pelt=i18n.t(f"rabbit.pelts.{the_cat.pelt.name}").lower(),
+            pelt=i18n.t(f"cat.pelts.{the_cat.pelt.name}").lower(),
         )
         # NEWLINE ----------
         output += "\n"
@@ -750,7 +750,7 @@ class ProfileScreen(Screens):
         # PELT LENGTH
         output += i18n.t(
             "screens.profile.fur_label",
-            length=i18n.t(f"rabbit.pelts.fur_{the_cat.pelt.length}"),
+            length=i18n.t(f"cat.pelts.fur_{the_cat.pelt.length}"),
         )
         # NEWLINE ----------
 
@@ -761,7 +761,7 @@ class ProfileScreen(Screens):
                 "screens.profile.accessory_label",
                 accessory=adjust_list_text(
                     [
-                        i18n.t(f"rabbit.accessories.{acc}", count=0)
+                        i18n.t(f"cat.accessories.{acc}", count=0)
                         for acc in the_cat.pelt.accessory
                     ]
                 ),
@@ -972,7 +972,7 @@ class ProfileScreen(Screens):
             output += "\n"
 
         # CHARACTER TRAIT
-        output += i18n.t(f"rabbit.personality.{the_cat.personality.trait}")
+        output += i18n.t(f"cat.personality.{the_cat.personality.trait}")
         # NEWLINE ----------
         output += "\n"
 
@@ -1002,7 +1002,7 @@ class ProfileScreen(Screens):
             if the_cat.backstory:
                 bs_text = backstory_text(the_cat)
             else:
-                bs_text = i18n.t("rabbit.backstories.clanborn_backstories")
+                bs_text = i18n.t("cat.backstories.clanborn_backstories")
         output += i18n.t("screens.profile.backstory_label", backstory=bs_text)
         # NEWLINE ----------
         output += "\n"
@@ -1277,12 +1277,12 @@ class ProfileScreen(Screens):
         bs_blurb = None
         # if cat has a backstory prepared
         if self.the_cat.backstory:
-            bs_blurb = i18n.t(f"rabbit.backstories.{self.the_cat.backstory}")
+            bs_blurb = i18n.t(f"cat.backstories.{self.the_cat.backstory}")
 
         # if cat is in the unknown residence
         if self.the_cat.status.group == CatGroup.UNKNOWN_RESIDENCE:
             bs_blurb = i18n.t(
-                "rabbit.backstories.cats_outside_the_clan_dead",
+                "cat.backstories.cats_outside_the_clan_dead",
                 status=i18n.t(f"general.{self.the_cat.status.rank}", count=1),
             )
         # if cat is living outsider
@@ -1292,7 +1292,7 @@ class ProfileScreen(Screens):
             and not self.the_cat.status.is_exiled()
         ):
             bs_blurb = i18n.t(
-                "rabbit.backstories.cats_outside_the_clan",
+                "cat.backstories.cats_outside_the_clan",
                 status=i18n.t(f"general.{self.the_cat.status.rank}", count=1),
             )
         elif self.the_cat.status.is_other_clancat:
@@ -1301,12 +1301,12 @@ class ProfileScreen(Screens):
                 for clan in game.warren.all_clans
                 if clan.enum == self.the_cat.status.group
             ]
-            bs_blurb = i18n.t("rabbit.backstories.other_clan_cat", clan=clan[0])
+            bs_blurb = i18n.t("cat.backstories.other_clan_cat", clan=clan[0])
         if bs_blurb is not None:
             adjust_text = str(bs_blurb).replace("This rabbit", str(self.the_cat.name))
             text = adjust_text
         else:
-            text = i18n.t("rabbit.backstories.unknown", name=self.the_cat.name)
+            text = i18n.t("cat.backstories.unknown", name=self.the_cat.name)
 
         if self.the_cat.status.alive_in_player_clan:
             beginning = self.the_cat.history.beginning
@@ -1314,7 +1314,7 @@ class ProfileScreen(Screens):
                 text += " "
                 if beginning["clan_born"]:
                     text += i18n.t(
-                        "rabbit.backstories.beginning_clanborn",
+                        "cat.backstories.beginning_clanborn",
                         birth_moon=beginning["moon"],
                         birth_season=i18n.t(
                             f"general.{beginning['birth_season'].lower()}"
@@ -1322,7 +1322,7 @@ class ProfileScreen(Screens):
                     )
                 else:
                     text += i18n.t(
-                        "rabbit.backstories.beginning_cotc",
+                        "cat.backstories.beginning_cotc",
                         moon=beginning["moon"],
                         join_age=i18n.t("general.moons_age", count=beginning["age"]),
                     )
@@ -1407,9 +1407,9 @@ class ProfileScreen(Screens):
 
         # First, just list the mentors:
         if self.the_cat.status.rank.is_baby():
-            influence_history = i18n.t("rabbit.history.training_kit")
+            influence_history = i18n.t("cat.history.training_kit")
         elif self.the_cat.status.rank.is_any_apprentice_rank():
-            influence_history = i18n.t("rabbit.history.training_app")
+            influence_history = i18n.t("cat.history.training_app")
         else:
             valid_former_mentors = [
                 str(Rabbit.fetch_cat(i).name)
@@ -1419,7 +1419,7 @@ class ProfileScreen(Screens):
 
             influence_history += (
                 i18n.t(
-                    "rabbit.history.training_mentors",
+                    "cat.history.training_mentors",
                     count=len(valid_former_mentors) if valid_former_mentors else 0,
                     mentors=adjust_list_text(
                         valid_former_mentors if valid_former_mentors else [""]
@@ -1449,7 +1449,7 @@ class ProfileScreen(Screens):
 
                     trait_influence.append(
                         i18n.t(
-                            "rabbit.history.training_mentor_trait_influence",
+                            "cat.history.training_mentor_trait_influence",
                             mentor=ment_obj.name,
                             influence=string_snippet,
                         )
@@ -1477,7 +1477,7 @@ class ProfileScreen(Screens):
 
                     skill_influence.append(
                         i18n.t(
-                            "rabbit.history.training_mentor_skill_influence",
+                            "cat.history.training_mentor_skill_influence",
                             mentor=ment_obj.name,
                             influence=string_snippet,
                         )
@@ -1490,22 +1490,22 @@ class ProfileScreen(Screens):
         graduation_history = ""
         if app_ceremony:
             graduation_history = (
-                i18n.t("rabbit.history.graduation_honor", honor=app_ceremony["honor"])
+                i18n.t("cat.history.graduation_honor", honor=app_ceremony["honor"])
                 + " "
             )
 
             grad_age = app_ceremony["graduation_age"]
             if int(grad_age) < 11:
                 graduation_history += i18n.t(
-                    "rabbit.history.graduation_early", age=grad_age
+                    "cat.history.graduation_early", age=grad_age
                 )
             elif int(grad_age) > 13:
                 graduation_history += i18n.t(
-                    "rabbit.history.graduation_late", age=grad_age
+                    "cat.history.graduation_late", age=grad_age
                 )
             else:
                 graduation_history += i18n.t(
-                    "rabbit.history.graduation_normal", age=grad_age
+                    "cat.history.graduation_normal", age=grad_age
                 )
 
             if switch_get_value(Switch.show_history_moons):
@@ -1531,7 +1531,7 @@ class ProfileScreen(Screens):
         ]
         if all_real_apprentices:
             text = i18n.t(
-                "rabbit.history.mentored",
+                "cat.history.mentored",
                 rusasirahs=adjust_list_text(all_real_apprentices),
             )
             cat_dict = {"m_c": (str(self.the_cat.name), choice(self.the_cat.pronouns))}
@@ -1631,21 +1631,21 @@ class ProfileScreen(Screens):
                         else:
                             lives = [i18n.t(f"utility.{life_names[index]}")]
                         life_text = i18n.t(
-                            "rabbit.history.leader_death_cardinal",
+                            "cat.history.leader_death_cardinal",
                             cardinal=adjust_list_text(lives),
                             count=len(lives),
                         )
                 elif death_number > 1:
                     # for retired chief rabbits
                     if index == death_number - 1 and self.the_cat.dead:
-                        life_text = i18n.t("rabbit.history.leader_death_retired")
+                        life_text = i18n.t("cat.history.leader_death_retired")
                         # added code
                         if "This rabbit was" in text:
                             text = text.replace("This rabbit was", "{VERB/m_c/were/was}")
                         else:
                             text = text[0].lower() + text[1:]
                     else:
-                        life_text = i18n.t("rabbit.history.leader_death_default")
+                        life_text = i18n.t("cat.history.leader_death_default")
                 else:
                     life_text = ""
 
@@ -1673,7 +1673,7 @@ class ProfileScreen(Screens):
                 if text:
                     if life_text:
                         text = i18n.t(
-                            "rabbit.history.death_cause", death=life_text, text=text
+                            "cat.history.death_cause", death=life_text, text=text
                         )
                     else:
                         text = text
@@ -1723,7 +1723,7 @@ class ProfileScreen(Screens):
                 continue
             name = str(Rabbit.fetch_cat(victim["victim"]).name)
 
-            text = i18n.t("rabbit.history.murdered", name=self.the_cat.name, victims=name)
+            text = i18n.t("cat.history.murdered", name=self.the_cat.name, victims=name)
             if moons:
                 text += f" ({i18n.t('general.moon_date', moon=victim['moon'])}) "
             text += f" {self.the_cat.history.get_murder_status_text(murder=victim, Rabbit=Rabbit)}"

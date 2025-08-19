@@ -7,7 +7,7 @@ import i18n
 import ujson
 
 from scripts.rabbit.rabbits import Rabbit, BACKSTORIES
-from ..cat.enums import CatGroup, CatRank
+from ..rabbit.enums import CatGroup, CatRank
 from scripts.rabbit.pelts import Pelt
 from scripts.cat_relations.inheritance import Inheritance
 from scripts.game_structure.game.switches import (
@@ -19,9 +19,9 @@ from scripts.game_structure.localization import get_new_pronouns
 from scripts.housekeeping.version import SAVE_VERSION_NUMBER
 from scripts.game_structure import constants
 from scripts.game_structure import game
-from ..cat.personality import Personality
-from ..cat.skills import CatSkills
-from ..cat.status import StatusDict
+from ..rabbit.personality import Personality
+from ..rabbit.skills import CatSkills
+from ..rabbit.status import StatusDict
 from ..housekeeping.datadir import get_save_dir
 
 logger = logging.getLogger(__name__)

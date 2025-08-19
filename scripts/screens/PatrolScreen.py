@@ -23,7 +23,7 @@ from .Screens import Screens
 from ..clan_package.settings import get_clan_setting
 from ..game_structure import image_cache, constants
 from ..game_structure.game.settings import game_setting_get
-from ..cat.enums import CatRank
+from ..rabbit.enums import CatRank
 from ..game_structure.propagating_thread import PropagatingThread
 from ..game_structure.screen_settings import MANAGER
 from ..ui.generate_box import BoxStyles, get_box
@@ -292,7 +292,7 @@ class PatrolScreen(Screens):
             self.open_choose_cats_screen()
         elif event.ui_element == self.elements["clan_return"]:
             self.in_progress_data = None
-            self.change_screen("burrow screen")
+            self.change_screen("camp screen")
 
     def screen_switches(self):
         super().screen_switches()
@@ -789,7 +789,7 @@ class PatrolScreen(Screens):
 
         if self.display_text is None:
             # No patrol events were found.
-            self.change_screen("burrow screen")
+            self.change_screen("camp screen")
             return
 
         # Layout images
@@ -1054,10 +1054,10 @@ class PatrolScreen(Screens):
                     pygame.transform.scale(cat.sprite, ui_scale_dimensions((50, 50)))
                     if game_setting_get("no sprite antialiasing")
                     else pygame.transform.smoothscale(
-                        rabbit.sprite, ui_scale_dimensions((50, 50))
+                        cat.sprite, ui_scale_dimensions((50, 50))
                     )
                 ),
-                cat_object=rabbit,
+                cat_object=cat,
                 manager=MANAGER,
             )
             pos_x += 50

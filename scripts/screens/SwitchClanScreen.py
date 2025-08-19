@@ -7,7 +7,7 @@ from pygame_gui.core import ObjectID
 from pygame_gui.elements import UIImage
 
 import scripts.game_structure.screen_settings
-from scripts.clan import Clan
+from scripts.warren import Warren
 from scripts.game_structure import game
 from scripts.game_structure.ui_elements import UIImageButton, UISurfaceImageButton
 from scripts.game_structure.windows import DeleteCheck

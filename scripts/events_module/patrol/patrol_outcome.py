@@ -490,7 +490,7 @@ class PatrolOutcome:
                 if cat.status.rank.is_any_apprentice_rank():
                     cat.experience = cat.experience + app_exp
                 else:
-                    rabbit.experience = rabbit.experience + gained_exp
+                    cat.experience = cat.experience + gained_exp
 
         return ""
 
@@ -525,7 +525,7 @@ class PatrolOutcome:
                     game.warren.leader_lives = 0
                     results.append(
                         event_text_adjust(
-                            Rabbit, i18n.t("rabbit.history.n_leader_death_all"), main_cat=_cat
+                            Rabbit, i18n.t("cat.history.n_leader_death_all"), main_cat=_cat
                         )
                     )
                 elif "some_lives" in self.dead_cats:
@@ -534,7 +534,7 @@ class PatrolOutcome:
                     results.append(
                         event_text_adjust(
                             Rabbit,
-                            i18n.t("rabbit.history.n_leader_lost_lives", count=lives_lost),
+                            i18n.t("cat.history.n_leader_lost_lives", count=lives_lost),
                             main_cat=_cat,
                         )
                     )
@@ -543,7 +543,7 @@ class PatrolOutcome:
                     results.append(
                         event_text_adjust(
                             Rabbit,
-                            i18n.t("rabbit.history.n_leader_lost_lives", count=1),
+                            i18n.t("cat.history.n_leader_lost_lives", count=1),
                             main_cat=_cat,
                         )
                     )
@@ -555,7 +555,7 @@ class PatrolOutcome:
         if catnames is not []:
             results.append(
                 i18n.t(
-                    "rabbit.history.regular_death",
+                    "cat.history.regular_death",
                     rabbits=adjust_list_text(catnames),
                     count=len(catnames),
                 )

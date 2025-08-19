@@ -13,7 +13,7 @@ import pygame
 from scripts.rabbit.rabbits import Rabbit
 from scripts.cat_relations.enums import RelType
 from scripts.rabbit.enums import CatAge, CatRank
-from scripts.clan import Clan
+from scripts.warren import Warren
 from scripts.clan_package.settings import get_clan_setting
 from scripts.events_module.event_filters import event_for_tags
 from scripts.events_module.patrol.patrol_event import PatrolEvent
@@ -208,7 +208,7 @@ class Patrol:
                 else:
                     self.patrol_statuses["normal adult"] = 1
 
-            game.patrolled.append(rabbit.ID)
+            game.patrolled.append(cat.ID)
 
         # PATROL CHIEF RABBIT AND RANDOM RABBIT CAN NOT CHANGE AFTER SET-UP
 

@@ -94,7 +94,7 @@ class Screens:
         ):
             rebuild_den_dropdown(
                 left_align=not get_clan_setting("moons and seasons"),
-                game_mode=game.warren.game_mode,
+                game_mode=game.warren.game_mode if game.warren else "classic",
             )
 
     def __init__(self, name=None):
@@ -298,7 +298,7 @@ class Screens:
         if event.ui_element == Screens.menu_buttons["events_screen"]:
             self.change_screen("events screen")
         elif event.ui_element == Screens.menu_buttons["camp_screen"]:
-            self.change_screen("burrow screen")
+            self.change_screen("camp screen")
         elif event.ui_element == Screens.menu_buttons["catlist_screen"]:
             self.change_screen("list screen")
         elif event.ui_element == Screens.menu_buttons["patrol_screen"]:
@@ -312,7 +312,7 @@ class Screens:
         elif event.ui_element == Screens.menu_buttons["allegiances"]:
             self.change_screen("allegiances screen")
         elif event.ui_element == Screens.menu_buttons["clan_settings"]:
-            self.change_screen("warren settings screen")
+            self.change_screen("clan settings screen")
         elif event.ui_element == Screens.menu_buttons["moons_n_seasons_arrow"]:
             switch_set_value(
                 Switch.moon_and_seasons_open,
@@ -323,13 +323,13 @@ class Screens:
             self.update_dens()
 
         elif event.ui_element == Screens.menu_buttons["lead_den"]:
-            self.change_screen("chief rabbit den screen")
+            self.change_screen("leader den screen")
         elif event.ui_element == Screens.menu_buttons["clearing"]:
             self.change_screen("clearing screen")
         elif event.ui_element == Screens.menu_buttons["med_cat_den"]:
             self.change_screen("med den screen")
         elif event.ui_element == Screens.menu_buttons["warrior_den"]:
-            self.change_screen("rabbit den screen")
+            self.change_screen("warrior den screen")
 
     @classmethod
     def update_dens(cls):

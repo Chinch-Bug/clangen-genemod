@@ -26,9 +26,9 @@ from scripts.utility import (
 )  # pylint: disable=redefined-builtin
 from .Screens import Screens
 from .screens_core.screens_core import rebuild_den_dropdown
-from ..cat import save_load
+from ..rabbit import save_load
 from ..clan_package.settings import get_clan_setting, switch_clan_setting
-from ..cat.enums import CatRank, CatGroup
+from ..rabbit.enums import CatRank, CatGroup
 from ..game_structure.screen_settings import MANAGER, toggle_fullscreen
 from ..housekeeping.version import get_version_info
 from ..ui.generate_button import get_button_dict, ButtonStyles
@@ -386,15 +386,15 @@ class ClanSettingsScreen(Screens):
         faded_cats = len(save_load.get_faded_ids())
         living_cats = 0
         med_cats = 0
-        rabbits = 0
+        warriors = 0
         warrior_apprentices = 0
         med_cat_apprentices = 0
         mediator_apprentices = 0
-        owslas = 0
+        mediators = 0
         elders = 0
         kits = 0
         cats_outside = 0
-        inle = 0
+        starclan = 0
         df = 0
         ur = 0
         for cat in Rabbit.all_cats_list:
@@ -404,7 +404,7 @@ class ClanSettingsScreen(Screens):
 
             if cat.dead:
                 if cat.status.group == CatGroup.STARCLAN:
-                    inle += 1
+                    starclan += 1
                 elif cat.status.group == CatGroup.DARK_FOREST:
                     df += 1
                 else:
@@ -439,14 +439,14 @@ class ClanSettingsScreen(Screens):
             object_id=get_text_box_theme("#text_box_30_horizcenter"),
             text_kwargs={
                 "living": str(living_cats),
-                "inle": str(inle),
+                "inle": str(starclan),
                 "darkforest": str(df),
                 "unknownresidence": str(ur),
                 "medcats": str(med_cats),
                 "medcatapps": str(med_cat_apprentices),
-                "rabbits": str(rabbits),
+                "rabbits": str(warriors),
                 "apps": str(warrior_apprentices),
-                "owslas": str(owslas),
+                "owslas": str(mediators),
                 "mediatorapps": str(mediator_apprentices),
                 "elders": str(elders),
                 "kits": str(kits),

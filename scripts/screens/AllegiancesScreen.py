@@ -14,7 +14,7 @@ from scripts.utility import (
     event_text_adjust,
 )
 from .Screens import Screens
-from ..cat.enums import CatRank
+from ..rabbit.enums import CatRank
 from ..game_structure.ui_elements import UIModifiedScrollingContainer
 
 

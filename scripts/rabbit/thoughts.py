@@ -275,12 +275,12 @@ class Thoughts:
 
     @staticmethod
     def create_thoughts(
-        inter_list, main_cat, other_cat, game_mode, biome, season, burrow
+        inter_list, main_cat, other_cat, game_mode, biome, season, camp
     ) -> list:
         created_list = []
         for inter in inter_list:
             if Thoughts.cats_fulfill_thought_constraints(
-                main_cat, other_cat, inter, game_mode, biome, season, burrow
+                main_cat, other_cat, inter, game_mode, biome, season, camp
             ):
                 created_list.append(inter)
         return created_list
@@ -289,6 +289,19 @@ class Thoughts:
     def load_thoughts(main_cat, other_cat, game_mode, biome, season, camp):
         rank = main_cat.status.rank
         rank = rank.replace(" ", "_")
+
+        old_ranks = {
+            "chief_rabbit": "leader",
+            "captain": "deputy",
+            "healer": "medicine_cat",
+            "rusasirah": "apprentice",
+            "healer_rusasirah": "medicine_cat_apprentice",
+            "owsla": "mediator",
+            "owsla_rusasirah": "mediator_apprentice",
+            "kit": "kitten",
+            "rabbit": "warrior"
+        }
+        rank = old_ranks.get(rank, rank)
 
         if not main_cat.dead:
             life_dir = "alive"
@@ -323,14 +336,14 @@ class Thoughts:
                 loaded_thoughts = thoughts + genthoughts
 
             final_thoughts = Thoughts.create_thoughts(
-                loaded_thoughts, main_cat, other_cat, game_mode, biome, season, burrow
+                loaded_thoughts, main_cat, other_cat, game_mode, biome, season, camp
             )
             return final_thoughts
         except IOError:
             print("ERROR: loading thoughts")
 
     @staticmethod
-    def get_chosen_thought(main_cat, other_cat, game_mode, biome, season, burrow):
+    def get_chosen_thought(main_cat, other_cat, game_mode, biome, season, camp):
         # get possible thoughts
         try:
             # checks if the rabbit is Rick Astley to give the rickroll thought, otherwise proceed as usual
@@ -341,7 +354,7 @@ class Thoughts:
             else:
                 chosen_thought_group = choice(
                     Thoughts.load_thoughts(
-                        main_cat, other_cat, game_mode, biome, season, burrow
+                        main_cat, other_cat, game_mode, biome, season, camp
                     )
                 )
                 chosen_thought = choice(chosen_thought_group["thoughts"])
