@@ -4191,7 +4191,7 @@ class EventEditScreen(Screens):
                 )
 
                 for name, button in self.backstory_element["list"].buttons.items():
-                    button.set_tooltip(f"rabbit.backstories.{name}")
+                    button.set_tooltip(f"cat.backstories.{name}")
                 self.update_backstory_info()
 
             # there is no pool selected

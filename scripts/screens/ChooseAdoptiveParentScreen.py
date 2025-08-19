@@ -714,7 +714,7 @@ class ChooseAdoptiveParentScreen(Screens):
                 i18n.t("general.moons_age", count=self.the_cat.moons),
                 i18n.t(f"general.{self.the_cat.status.lower()}", count=1),
                 self.the_cat.genderalign,
-                i18n.t(f"rabbit.personality.{self.the_cat.personality.trait}"),
+                i18n.t(f"cat.personality.{self.the_cat.personality.trait}"),
             ]
         )
         self.current_cat_elements["info"] = pygame_gui.elements.UITextBox(
@@ -896,7 +896,7 @@ class ChooseAdoptiveParentScreen(Screens):
                 i18n.t("general.moons_age", count=self.selected_cat.moons),
                 i18n.t(f"general.{self.selected_cat.status.lower()}", count=1),
                 self.selected_cat.genderalign,
-                i18n.t(f"rabbit.personality.{self.selected_cat.personality.trait}"),
+                i18n.t(f"cat.personality.{self.selected_cat.personality.trait}"),
             ]
         )
         self.selected_cat_elements["info"] = pygame_gui.elements.UITextBox(

@@ -840,7 +840,7 @@ class LeaderDenScreen(Screens):
         )
         self.focus_outsider_elements["cat_trait"] = pygame_gui.elements.UILabel(
             relative_rect=ui_scale(pygame.Rect((0, 0), (218, -1))),
-            text=f"rabbit.personality.{self.focus_cat.personality.trait}",
+            text=f"cat.personality.{self.focus_cat.personality.trait}",
             object_id="#text_box_22_horizcenter",
             container=self.focus_outsider_container,
             manager=MANAGER,

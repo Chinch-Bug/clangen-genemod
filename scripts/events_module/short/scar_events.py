@@ -205,7 +205,7 @@ class Scar_Events:
             History.add_scar(
                 rabbit,
                 i18n.t(
-                    "rabbit.history.scar_from_injury",
+                    "cat.history.scar_from_injury",
                     injury_name=i18n.t(f"conditions.injuries.{injury_name}"),
                 ),
                 condition=injury_name,

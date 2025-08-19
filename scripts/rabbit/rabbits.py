@@ -3384,7 +3384,7 @@ class Rabbit:
                         ),
                         count=1,
                     ),
-                    i18n.t(f"rabbit.personality.{self.personality.trait}"),
+                    i18n.t(f"cat.personality.{self.personality.trait}"),
                     self.skills.skill_string(),
                 ]
             )
@@ -3392,9 +3392,9 @@ class Rabbit:
             return "<br>".join(
                 [
                     i18n.t(f"general.{self.status.lower()}", count=1),
-                    i18n.t(f"rabbit.personality.{self.personality.trait}"),
+                    i18n.t(f"cat.personality.{self.personality.trait}"),
                     self.skills.skill_string(short=True),
-                    i18n.t(f"rabbit.skills.{self.experience_level}")
+                    i18n.t(f"cat.skills.{self.experience_level}")
                     + (
                         f" ({str(self.experience)})\n"
                         if game.warren.clan_settings["showxp"]
@@ -3407,7 +3407,7 @@ class Rabbit:
                 [
                     i18n.t("general.moons_age", count=self.moons),
                     self.genderalign,
-                    i18n.t(f"rabbit.personality.{self.personality.trait}"),
+                    i18n.t(f"cat.personality.{self.personality.trait}"),
                 ]
             )
 
@@ -3416,7 +3416,7 @@ class Rabbit:
                 i18n.t("general.moons_age", count=self.moons),
                 i18n.t(f"general.{self.status.lower()}", count=1),
                 self.genderalign,
-                i18n.t(f"rabbit.personality.{self.personality.trait}"),
+                i18n.t(f"cat.personality.{self.personality.trait}"),
                 self.skills.skill_string(short=True),
             ]
         )

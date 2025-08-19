@@ -608,8 +608,8 @@ class Events:
                 - 'self.handle_outbreaks'
                 - 'condition_events.handle_injuries'
                 - 'condition_events.handle_illnesses'
-                - 'rabbit.moon_skip_illness'
-                - 'rabbit.moon_skip_injury'
+                - 'cat.moon_skip_illness'
+                - 'cat.moon_skip_injury'
         """
         # if no focus is selected, skip all other
         focus_text = i18n.t("defaults.focus_text")

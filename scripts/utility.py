@@ -1718,8 +1718,8 @@ def get_leader_life_notice() -> str:
     Returns a string specifying how many lives the chief rabbit has left or notifying of the chief rabbit's full death
     """
     if game.warren.instructor.df:
-        return i18n.t("rabbit.history.leader_lives_left_df", count=game.warren.leader_lives)
-    return i18n.t("rabbit.history.leader_lives_left_sc", count=game.warren.leader_lives)
+        return i18n.t("cat.history.leader_lives_left_df", count=game.warren.leader_lives)
+    return i18n.t("cat.history.leader_lives_left_sc", count=game.warren.leader_lives)
 
 
 def get_other_clan_relation(relation):
@@ -2301,14 +2301,14 @@ def event_text_adjust(
     if "acc_plural" in text and main_cat:
         text = text.replace(
             "acc_plural",
-            i18n.t(f"rabbit.accessories.{main_cat.pelt.accessory[-1]}", count=2),
+            i18n.t(f"cat.accessories.{main_cat.pelt.accessory[-1]}", count=2),
         )
 
     # acc_singular (only works for main_cat's acc)
     if "acc_singular" in text and main_cat:
         text = text.replace(
             "acc_singular",
-            i18n.t(f"rabbit.accessories.{main_cat.pelt.accessory[-1]}", count=1),
+            i18n.t(f"cat.accessories.{main_cat.pelt.accessory[-1]}", count=1),
         )
 
     if "given_herb" in text and chosen_herb:
@@ -2697,10 +2697,10 @@ def generate_sprite(
             else:
                 rabbit_sprite = str(15)
     else:
-        if age == 'elder' and not game.config['fun']['all_rabbits_are_newborn']:
+        if age == 'elder' and not game.config['fun']['all_cats_are_newborn']:
             age = 'senior'
 
-        if game.config['fun']['all_rabbits_are_newborn']:
+        if game.config['fun']['all_cats_are_newborn']:
             rabbit_sprite = str(rabbit.pelt.rabbit_sprites['newborn'])
         else:
             rabbit_sprite = str(rabbit.pelt.rabbit_sprites[age])
