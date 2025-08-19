@@ -650,7 +650,7 @@ class Cat:
             or (self.gender == 'tom' and 'Y' not in self.phenotype.sexgene and random() > 0.001)):
             self.get_permanent_condition('sterile', born_with=True, genetic=True)
         
-        if self.phenotype.fold[0] == 'Fd' or ('manx syndrome' in self.permanent_condition and 'M' in self.phenotype.manx and self.phenotype.bobtailnr < 4 and self.phenotype.bobtailnr > 1 and random() < 0.05):
+        if self.phenotype.fold[0] == 'Fd' or ('manx syndrome' in self.permanent_condition and self.phenotype.bobtailnr < 4 and self.phenotype.bobtailnr > 1 and random() < 0.05):
             if not self.phenotype.fold[1] == 'Fd':
                 self.get_permanent_condition('constant joint pain', born_with=True, genetic=True, custom_reveal=randint(3, 60))
             else:

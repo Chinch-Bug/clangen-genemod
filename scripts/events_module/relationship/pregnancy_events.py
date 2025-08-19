@@ -1521,6 +1521,7 @@ class Pregnancy_Events:
             if identical:
                 identical = False
                 ref_cat = copy(all_kitten[-1])
+                kit.permanent_condition = ref_cat.permanent_condition
                 kit.phenotype = deepcopy(ref_cat.phenotype)    
                 kit.phenotype.tortiepattern = None
                 kit.phenotype.chimerapattern = None

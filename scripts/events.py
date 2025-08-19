@@ -201,13 +201,16 @@ class Events:
             shaken_cats = {}
             extra_event = None
             for ghost in Cat.dead_cats:
-                if CatGroup.PLAYER_CLAN in ghost.status.all_groups and ghost.status.get_last_living_group() == CatGroup.PLAYER_CLAN:
+                last_living = ghost.status.get_last_living_group()
+                if ghost.status.is_exiled(last_living):
+                    pass
+                if CatGroup.PLAYER_CLAN in ghost.status.all_groups and last_living == CatGroup.PLAYER_CLAN:
                     if game.clan.displayname not in ghost_names:
                         ghost_names[game.clan.displayname] = []
                         sorted_dead_cats[game.clan.displayname] = []
                     ghost_names[game.clan.displayname].append(str(ghost.name))
                     sorted_dead_cats[game.clan.displayname].append(ghost)
-                elif group := next(filter(lambda c: ghost.status.get_last_living_group() == c, game.clan.other_clans), None):
+                elif group := next(filter(lambda c: last_living == c, game.clan.other_clans), None):
                     group = group.fetch_clan_object()
                     if group.displayname not in ghost_names:
                         ghost_names[group.displayname] = []

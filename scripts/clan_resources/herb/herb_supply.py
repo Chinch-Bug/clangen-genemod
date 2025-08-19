@@ -825,7 +825,7 @@ class HerbSupply:
             return
 
         # grab the correct condition dict so that we can modify it
-        con_info = treatment_cat.permanent_condition[condition]
+        con_info = treatment_cat.illnesses[condition] if condition == "redcough" else treatment_cat.permanent_condition[condition]
 
         if effect == HerbEffect.RISK:
             for risk in con_info[effect]:
