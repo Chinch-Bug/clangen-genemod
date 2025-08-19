@@ -188,7 +188,7 @@
     },
     "emotional": {
       "general": [
-        ["the excitement of an rusasi", "an rusasi's vigor", "the naivety of an rusasi"],
+        ["the excitement of an rusasirah", "an rusasirah's vigor", "the naivety of an rusasirah"],
         ["the strength of a rabbit", "the steadfastness of a rabbit", "a rabbit's loyalty"],
         ["the ache of an elder's bones", "the wisdom of an elder"],
         ["the sensation of falling"],
@@ -227,7 +227,7 @@
     "touch": {
       "general": [
         ["the brush of a pelt against {PRONOUN/cat_tag/poss} own"],
-        ["the touch of a mentor to an rusasi's forehead"],
+        ["the touch of a mentor to an rusasirah's forehead"],
         ["a tail twining with {PRONOUN/cat_tag/poss} own"],
         ["the warmth of a parent"],
         ["the dampness of rain"],
@@ -513,7 +513,7 @@
     "sound": {
       "general": [
         ["the rumble of many paws over the ground"],
-        ["echoes of a past conversation", "echoes of a past argument"],
+        ["the echoes of a past conversation", "the echoes of a past argument"],
         ["whispers of a deed long past", "whispers of a secret long lost"],
         ["a betrayal on the wind"],
         ["the crackling of a burning branch"],
@@ -578,7 +578,7 @@
         ["a rabbit's last breath"],
         ["a promise kept", "a half-remembered promise", "a promise already broken", "a promise not yet made"],
         ["a story half-remembered"],
-        ["the excitement of an rusasi", "an rusasi's vigor", "the naivety of an rusasi"],
+        ["the excitement of an rusasirah", "an rusasirah's vigor", "the naivety of an rusasirah"],
         ["the strength of a rabbit", "the steadfastness of a rabbit", "a rabbit's loyalty"],
         ["the ache of an elder's bones", "an elder's wisdom"],
         ["drowning"],
@@ -621,7 +621,7 @@
         ["falling through the air", "flying through the air"],
         ["the warmth of a parent", "the embrace of a family","the warmth of family in the darkness before a kit's eyes open"],
         ["tails entwining", "the slip of wet fur", "teeth snapping against fur", "claws against a scruff"],
-        ["a mentor's touch to an rusasi's forehead"],
+        ["a mentor's touch to an rusasirah's forehead"],
         ["slipping on muddy earth despite the dry ground", "sinking into muddy earth"],
         ["paws damp with water", "paws damp with blood", "paws heavy with blood"],
         ["another rabbit's violent shove"],

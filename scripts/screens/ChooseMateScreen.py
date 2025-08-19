@@ -6,9 +6,6 @@ import pygame_gui.elements
 
 from scripts.rabbit.rabbits import Rabbit
 from scripts.game_structure import image_cache
-from scripts.game_structure.game_essentials import (
-    game,
-)
 from scripts.game_structure.ui_elements import (
     UIImageButton,
     UISpriteButton,
@@ -23,6 +20,8 @@ from scripts.utility import (
     shorten_text_to_fit,
 )
 from .Screens import Screens
+from ..clan_package.settings import get_clan_setting
+from ..game_structure.game.switches import switch_set_value, switch_get_value, Switch
 from ..game_structure.screen_settings import MANAGER
 from ..ui.generate_box import BoxStyles, get_box
 from ..ui.generate_button import get_button_dict, ButtonStyles
@@ -115,13 +114,13 @@ class ChooseMateScreen(Screens):
 
             elif event.ui_element == self.previous_cat_button:
                 if isinstance(Rabbit.fetch_cat(self.previous_cat), Rabbit):
-                    game.switches["rabbit"] = self.previous_cat
+                    switch_set_value(Switch.cat, self.previous_cat)
                     self.update_current_cat_info()
                 else:
                     print("invalid previous rabbit", self.previous_cat)
             elif event.ui_element == self.next_cat_button:
                 if isinstance(Rabbit.fetch_cat(self.next_cat), Rabbit):
-                    game.switches["rabbit"] = self.next_cat
+                    switch_set_value(Switch.cat, self.next_cat)
                     self.update_current_cat_info()
                 else:
                     print("invalid next rabbit", self.next_cat)
@@ -185,7 +184,7 @@ class ChooseMateScreen(Screens):
                 if event.ui_element.cat_object.faded:
                     return
 
-                game.switches["rabbit"] = event.ui_element.cat_object.ID
+                switch_set_value(Switch.cat, event.ui_element.cat_object.ID)
                 self.change_screen("profile screen")
 
     def screen_switches(self):
@@ -798,9 +797,9 @@ class ChooseMateScreen(Screens):
         self.mate_page_display = None
 
     def update_current_cat_info(self, reset_selected_cat=True):
-        """Updates all elements with the current rabbit, as well as the selected rabbit.
-        Called when the screen switched, and whenever the focused rabbit is switched"""
-        self.the_cat = Rabbit.all_cats[game.switches["rabbit"]]
+        """Updates all elements with the current cat, as well as the selected cat.
+        Called when the screen switched, and whenever the focused cat is switched"""
+        self.the_cat = Rabbit.all_cats[switch_get_value(Switch.cat)]
         if not self.the_cat.inheritance:
             self.the_cat.create_inheritance_new_cat()
 
@@ -1069,7 +1068,7 @@ class ChooseMateScreen(Screens):
             )
 
         if (
-            not game.warren.clan_settings["same sex birth"]
+            not get_clan_setting("same sex birth")
             and self.the_cat.gender == self.selected_cat.gender
         ):
             warning_rect = ui_scale(pygame.Rect((0, 0), (160, 45)))
@@ -1121,7 +1120,7 @@ class ChooseMateScreen(Screens):
                 relation = self.the_cat.relationships[self.selected_cat.ID]
             else:
                 relation = self.the_cat.create_one_relationship(self.selected_cat)
-            romantic_love = relation.romantic_love
+            romantic_love = relation.romance
 
         if 10 <= romantic_love <= 30:
             heart_number = 1
@@ -1153,7 +1152,7 @@ class ChooseMateScreen(Screens):
                 relation = self.selected_cat.relationships[self.the_cat.ID]
             else:
                 relation = self.selected_cat.create_one_relationship(self.the_cat)
-            romantic_love = relation.romantic_love
+            romantic_love = relation.romance
 
         if 10 <= romantic_love <= 30:
             heart_number = 1
@@ -1185,7 +1184,7 @@ class ChooseMateScreen(Screens):
     def get_valid_mates(self):
         """Get a list of valid mates for the current rabbit"""
 
-        # Behold! The uglest list comprehension ever created!
+        # Behold! The ugliest list comprehension ever created!
         valid_mates = [
             i
             for i in Rabbit.all_cats_list
@@ -1193,12 +1192,13 @@ class ChooseMateScreen(Screens):
             and self.the_cat.is_potential_mate(
                 i, for_love_interest=False, age_restriction=False, ignore_no_mates=True
             )
-            and i.outside == self.the_cat.outside
+            and i.status.is_outsider == self.the_cat.status.is_outsider
+            and i.status.group == self.the_cat.status.group
             and i.ID not in self.the_cat.mate
             and (not self.single_only or not i.mate)
             and (
                 not self.have_kits_only
-                or game.warren.clan_settings["same sex birth"]
+                or get_clan_setting("same sex birth")
                 or i.gender != self.the_cat.gender
             )
         ]

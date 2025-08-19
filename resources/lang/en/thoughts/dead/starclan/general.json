@@ -7,7 +7,7 @@
             "Is looking forward to today",
             "Is feeling down...",
             "Is feeling happy!",
-            "Is curious about other Clans",
+            "Is curious about other Warrens",
             "Is feeling sassy today",
             "Is thinking about a message to send",
             "Wishes {PRONOUN/m_c/subject} {VERB/m_c/were/was} still alive",
@@ -177,7 +177,7 @@
         ],
         "main_status_constraint": [
             "healer",
-            "healer rusasi"
+            "healer rusasirah"
         ]
     },
     {
@@ -194,11 +194,11 @@
         ],
         "main_status_constraint": [
             "healer",
-            "healer rusasi"
+            "healer rusasirah"
         ],
         "random_status_constraint": [
             "healer",
-            "healer rusasi"
+            "healer rusasirah"
         ],
         "random_living_status": [
             "living"
@@ -211,7 +211,7 @@
         ],
         "main_status_constraint": [
             "healer",
-            "healer rusasi"
+            "healer rusasirah"
         ],
         "random_living_status": [
             "living"
@@ -225,7 +225,7 @@
         ],
         "main_status_constraint": [
             "healer",
-            "healer rusasi"
+            "healer rusasirah"
         ],
         "random_living_status": [
             "inle"
@@ -239,7 +239,7 @@
         ],
         "main_status_constraint": [
             "healer",
-            "healer rusasi"
+            "healer rusasirah"
         ],
         "random_living_status": [
             "inle"
@@ -363,6 +363,14 @@
         ]
     },
     {
+        "id": "gen_dead_to_newborn",
+        "thoughts": [
+            "Is glad to see new life in c_n",
+            "Watches over the new litter"
+        ],
+        "random_age_constraint": ["newborn"]
+    },
+    {
         "id": "gen_dead_app",
         "thoughts": [
             "Wants to use {PRONOUN/m_c/poss} training to help Inle",
@@ -371,9 +379,9 @@
             "Is listening intently to other Inle rabbits' stories"
         ],
         "main_status_constraint": [
-            "rusasi",
-            "healer rusasi",
-            "owsla rusasi"
+            "rusasirah",
+            "healer rusasirah",
+            "owsla rusasirah"
         ]
     },
     {
@@ -384,9 +392,9 @@
             "Wants to show r_c a new skill {PRONOUN/m_c/subject} learned"
         ],
         "main_status_constraint": [
-            "rusasi",
-            "healer rusasi",
-            "owsla rusasi"
+            "rusasirah",
+            "healer rusasirah",
+            "owsla rusasirah"
         ],
         "random_living_status": [
             "inle"
@@ -399,9 +407,9 @@
             "Wishes {PRONOUN/m_c/subject} could train with r_c"
         ],
         "main_status_constraint": [
-            "rusasi",
-            "healer rusasi",
-            "owsla rusasi"
+            "rusasirah",
+            "healer rusasirah",
+            "owsla rusasirah"
         ],
         "relationship_constraint": [
             "siblings"
@@ -410,9 +418,9 @@
             "living"
         ],
         "random_status_constraint": [
-            "rusasi",
-            "healer rusasi",
-            "owsla rusasi"
+            "rusasirah",
+            "healer rusasirah",
+            "owsla rusasirah"
         ]
     },
     {
@@ -421,9 +429,9 @@
             "Hopes {PRONOUN/m_c/subject} made r_c proud"
         ],
         "main_status_constraint": [
-            "rusasi",
-            "healer rusasi",
-            "owsla rusasi"
+            "rusasirah",
+            "healer rusasirah",
+            "owsla rusasirah"
         ],
         "relationship_constraint": [
             "app/mentor"
@@ -443,9 +451,9 @@
             "mentor/app"
         ],
         "random_status_constraint": [
-            "rusasi",
-            "owsla rusasi",
-            "healer rusasi"
+            "rusasirah",
+            "owsla rusasirah",
+            "healer rusasirah"
         ],
         "random_living_status": [
             "living"
@@ -490,11 +498,11 @@
         "thoughts": [
             "Is trying to mediate Inle rabbits' squabbles",
             "Wishes {PRONOUN/m_c/subject} could help resolve the Warren's issues",
-            "Is watching the Clans for any signs of discord"
+            "Is watching the Warrens for any signs of discord"
         ],
         "main_status_constraint": [
             "owsla",
-            "owsla rusasi"
+            "owsla rusasirah"
         ]
     },
     {

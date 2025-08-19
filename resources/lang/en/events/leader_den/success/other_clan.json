@@ -91,7 +91,7 @@
   },
   {
     "interaction_type": "offend",
-    "event_text": "During o_c_n's chief rabbit's Gathering speech, they bring up a recent death in the Warren. m_c hurries the other chief rabbit along, reminding them that the other Clans don't care.",
+    "event_text": "During o_c_n's chief rabbit's Gathering speech, they bring up a recent death in the Warren. m_c hurries the other chief rabbit along, reminding them that the other Warrens don't care.",
     "rel_change": -3,
     "m_c": {
       "trait": ["ambitious", "arrogant", "confident", "bold", "daring", "cold", "bloodthirsty", "fierce", "grumpy", "shameless", "oblivious" ]
@@ -346,7 +346,7 @@
   },
   {
     "interaction_type": "praise",
-    "event_text": "At the Gathering, o_c_n's chief rabbit speaks at length about the perseverance of one of their healer rabbits in caring for a seriously injured Clanmate. m_c feels it would be too awkward to congratulate o_c_n directly, but nevertheless nods to the healer in question.",
+    "event_text": "At the Gathering, o_c_n's chief rabbit speaks at length about the perseverance of one of their healer rabbits in caring for a seriously injured Warrenmate. m_c feels it would be too awkward to congratulate o_c_n directly, but nevertheless nods to the healer in question.",
     "rel_change": 4,
     "m_c": {
       "skill": ["HEALER,1"],
@@ -677,7 +677,7 @@
   },
   {
     "interaction_type": "praise",
-    "event_text": "m_c speaks to {PRONOUN/m_c/poss} Clanmates before the Gathering, making it clear what tonight's goal is. When c_n arrives at the Gathering place, they all disperse to find o_c_n rabbits and take advantage of their prideful nature.",
+    "event_text": "m_c speaks to {PRONOUN/m_c/poss} Warrenmates before the Gathering, making it clear what tonight's goal is. When c_n arrives at the Gathering place, they all disperse to find o_c_n rabbits and take advantage of their prideful nature.",
     "rel_change": 3,
     "m_c": {},
     "player_clan_temper": ["cunning"],
@@ -758,7 +758,7 @@
   },
   {
     "interaction_type": "provoke",
-    "event_text": "m_c senses a presence from beyond the grave hovering around o_c_n's chief rabbit at the Gathering, and makes sure to bring up this dead Clanmate every chance {PRONOUN/m_c/subject} {VERB/m_c/get/gets}, just to get under o_c_n's chief rabbit's skin.",
+    "event_text": "m_c senses a presence from beyond the grave hovering around o_c_n's chief rabbit at the Gathering, and makes sure to bring up this dead Warrenmate every chance {PRONOUN/m_c/subject} {VERB/m_c/get/gets}, just to get under o_c_n's chief rabbit's skin.",
     "rel_change": -5,
     "m_c": {
       "skill": ["GHOST,1"],
@@ -769,7 +769,7 @@
   },
   {
     "interaction_type": "provoke",
-    "event_text": "As o_c_n's chief rabbit announces new rusasirahs at the Gathering, m_c interrupts to offer plenty of unsolicited advice about how best to train an rusasi.",
+    "event_text": "As o_c_n's chief rabbit announces new rusasirahs at the Gathering, m_c interrupts to offer plenty of unsolicited advice about how best to train an rusasirah.",
     "rel_change": -5,
     "m_c": {
       "skill": ["TEACHER,1"],
@@ -894,7 +894,7 @@
   },
   {
     "interaction_type": "provoke",
-    "event_text": "During the Gathering, m_c makes a surprise outburst about how o_c_n has had the other Clans under their paw for far too long, and it's time for c_n and their allies to rise up against o_c_n.",
+    "event_text": "During the Gathering, m_c makes a surprise outburst about how o_c_n has had the other Warrens under their paw for far too long, and it's time for c_n and their allies to rise up against o_c_n.",
     "rel_change": -7,
     "m_c": {
       "skill": ["SPEAKER,1"],
@@ -1042,7 +1042,7 @@
   },
   {
     "interaction_type": "provoke",
-    "event_text": "At the Gathering, m_c makes a comparison between the story of a misbehaving c_n rusasi and o_c_n's behavior at their shared border. o_c_n's chief rabbit hisses at the implication",
+    "event_text": "At the Gathering, m_c makes a comparison between the story of a misbehaving c_n rusasirah and o_c_n's behavior at their shared border. o_c_n's chief rabbit hisses at the implication",
     "rel_change": -3,
     "m_c": {
       "skill": [ "TEACHER,1"],
@@ -1199,7 +1199,7 @@
   },
   {
     "interaction_type": "befriend",
-    "event_text": "At the Gathering, m_c nudges {PRONOUN/m_c/poss} Clanmates to go sit with o_c_nners and chat with them.",
+    "event_text": "At the Gathering, m_c nudges {PRONOUN/m_c/poss} Warrenmates to go sit with o_c_nners and chat with them.",
     "rel_change": 1,
     "m_c": {},
     "player_clan_temper": ["any"],
@@ -1287,7 +1287,7 @@
   },
   {
     "interaction_type": "befriend",
-    "event_text": "During the Gathering, m_c brings up an old legend about two Clans that put aside their differences and formed an alliance, bringing strength to both of them. o_c_n's chief rabbit listens with interest.",
+    "event_text": "During the Gathering, m_c brings up an old legend about two Warrens that put aside their differences and formed an alliance, bringing strength to both of them. o_c_n's chief rabbit listens with interest.",
     "rel_change": 3,
     "m_c": {
       "skill": ["STORY,1"]
@@ -1786,7 +1786,7 @@
   },
   {
     "interaction_type": "antagonize",
-    "event_text": "Before entering the Gathering meeting place, m_c signals for {PRONOUN/m_c/poss} Clanmates to hang back. m_c eavesdrops on o_c_n, picking up all the Warren secrets that boastful rabbits and indiscreet rusasirahs share, then strolls into the Gathering to use this information in {PRONOUN/m_c/poss} speech.",
+    "event_text": "Before entering the Gathering meeting place, m_c signals for {PRONOUN/m_c/poss} Warrenmates to hang back. m_c eavesdrops on o_c_n, picking up all the Warren secrets that boastful rabbits and indiscreet rusasirahs share, then strolls into the Gathering to use this information in {PRONOUN/m_c/poss} speech.",
     "rel_change": -6,
     "m_c": {
       "skill": [ "SENSE,3" ],
@@ -1889,7 +1889,7 @@
   },
   {
     "interaction_type": "appease",
-    "event_text": "During the Gathering, m_c suggests o_c_n and c_n put aside their differences for the sake of both Clans.",
+    "event_text": "During the Gathering, m_c suggests o_c_n and c_n put aside their differences for the sake of both Warrens.",
     "rel_change": 2,
     "m_c": {},
     "player_clan_temper": ["any"],
@@ -1905,7 +1905,7 @@
   },
   {
     "interaction_type": "appease",
-    "event_text": "When o_c_n arrives at the Gathering, they are surprised to find c_n on its best behavior. m_c nods at {PRONOUN/m_c/poss} Clanmates from the chief rabbit's perch.",
+    "event_text": "When o_c_n arrives at the Gathering, they are surprised to find c_n on its best behavior. m_c nods at {PRONOUN/m_c/poss} Warrenmates from the chief rabbit's perch.",
     "rel_change": 1,
     "m_c": {},
     "player_clan_temper": ["any"],
@@ -1913,7 +1913,7 @@
   },
   {
     "interaction_type": "appease",
-    "event_text": "During the Gathering, m_c suggests o_c_n and c_n put aside their differences for the sake of both Clans.",
+    "event_text": "During the Gathering, m_c suggests o_c_n and c_n put aside their differences for the sake of both Warrens.",
     "rel_change": 3,
     "m_c": {},
     "player_clan_temper": ["any"],
@@ -1977,7 +1977,7 @@
   },
   {
     "interaction_type": "appease",
-    "event_text": "At the end of the Gathering, m_c takes o_c_n's chief rabbit aside and admits that both their Clans would be better off with reduced hostilities. o_c_n's chief rabbit grudgingly agrees.",
+    "event_text": "At the end of the Gathering, m_c takes o_c_n's chief rabbit aside and admits that both their Warrens would be better off with reduced hostilities. o_c_n's chief rabbit grudgingly agrees.",
     "rel_change": 2,
     "m_c": {},
     "player_clan_temper": ["any"],
@@ -2031,7 +2031,7 @@
   },
   {
     "interaction_type": "appease",
-    "event_text": "At the Gathering, o_c_n's chief rabbit gets in m_c's face. m_c squares {PRONOUN/m_c/poss} shoulders and lets {PRONOUN/m_c/poss} muscular physique speak for itself; o_c_n's chief rabbit suddenly acquires an appetite for peace. m_c's Clanmates giddily report the next morning that the chief rabbit looked like a kit next to {PRONOUN/m_c/object}.",
+    "event_text": "At the Gathering, o_c_n's chief rabbit gets in m_c's face. m_c squares {PRONOUN/m_c/poss} shoulders and lets {PRONOUN/m_c/poss} muscular physique speak for itself; o_c_n's chief rabbit suddenly acquires an appetite for peace. m_c's Warrenmates giddily report the next morning that the chief rabbit looked like a kit next to {PRONOUN/m_c/object}.",
     "rel_change": 3,
     "m_c": {
       "skill": [ "SWIMMER,2", "CLIMBER,2", "RUNNER,2", "FIGHTER,3" ],
@@ -2042,7 +2042,7 @@
   },
   {
     "interaction_type": "appease",
-    "event_text": "During the Gathering, m_c lays out a compelling case for peace between their Clans, until even o_c_n's chief rabbit admits it is probably for the best if they cease hostilities.",
+    "event_text": "During the Gathering, m_c lays out a compelling case for peace between their Warrens, until even o_c_n's chief rabbit admits it is probably for the best if they cease hostilities.",
     "rel_change": 5,
     "m_c": {
       "skill": [ "OWSLA,3", "SPEAKER,3" ]
@@ -2073,7 +2073,7 @@
   },
   {
     "interaction_type": "appease",
-    "event_text": "m_c spends the Gathering attempting small talk with o_c_n's chief rabbit and doing {PRONOUN/m_c/poss} best to smooth over the harsh edges of their Clans' relationship.",
+    "event_text": "m_c spends the Gathering attempting small talk with o_c_n's chief rabbit and doing {PRONOUN/m_c/poss} best to smooth over the harsh edges of their Warrens' relationship.",
     "rel_change": 2,
     "m_c": {
       "status": ["chief rabbit"],
@@ -2162,7 +2162,7 @@
   {
 
     "interaction_type": "antagonize",
-    "event_text": "At the Gathering, m_c threatens to send o_c_n's chief rabbit to join their recently-deceased Clanmate in Inle, before o_c_n's chief rabbit even announces the rabbit's death. o_c_n's chief rabbit is rattled and enraged.",
+    "event_text": "At the Gathering, m_c threatens to send o_c_n's chief rabbit to join their recently-deceased Warrenmate in Inle, before o_c_n's chief rabbit even announces the rabbit's death. o_c_n's chief rabbit is rattled and enraged.",
     "rel_change": -7,
     "m_c": {
       "trait": ["bloodthirsty"],
@@ -2195,7 +2195,7 @@
   },
   {
     "interaction_type": "antagonize",
-    "event_text": "At the Gathering, m_c surveys o_c_n's rabbits and picks out the weakest-looking among them. m_c shares these insights with o_c_n's chief rabbit, explaining how {PRONOUN/m_c/subject} will target them in the next skirmish between their Clans.",
+    "event_text": "At the Gathering, m_c surveys o_c_n's rabbits and picks out the weakest-looking among them. m_c shares these insights with o_c_n's chief rabbit, explaining how {PRONOUN/m_c/subject} will target them in the next skirmish between their Warrens.",
     "rel_change": -6,
     "m_c": {
       "trait": ["bloodthirsty"],
@@ -2209,7 +2209,7 @@
     "event_text": "o_c_n's chief rabbit looks at m_c with a soft sympathy, agreeing graciously to the stuttered offers of friendship.",
     "rel_change": 3,
     "m_c": {
-      "status": ["rusasi", "owsla rusasi", "healer rusasi"],
+      "status": ["rusasirah", "owsla rusasirah", "healer rusasirah"],
       "trait": ["nervous", "insecure", "gloomy", "thoughtful", "careful", "sneaky", "cunning"]
     },
     "player_clan_temper": ["any"],
@@ -2217,10 +2217,10 @@
   },
   {
     "interaction_type": "befriend",
-    "event_text": "o_c_n's chief rabbit seems impressed when the rusasi approaches them with confident overtures of friendship.",
+    "event_text": "o_c_n's chief rabbit seems impressed when the rusasirah approaches them with confident overtures of friendship.",
     "rel_change": 3,
     "m_c": {
-      "status": ["rusasi", "owsla rusasi", "healer rusasi"],
+      "status": ["rusasirah", "owsla rusasirah", "healer rusasirah"],
       "trait": ["fierce", "troublesome", "bloodthirsty", "cold", "charismatic", "playful", "bold", "daring", "righteous", "strict", "compassionate", "thoughtful", "ambitious", "confident", "adventurous", "calm", "careful", "faithful", "loving", "responsible", "loyal", "shameless", "sneaky", "strange", "vengeful", "wise", "arrogant", "competitive", "cunning", "oblivious", "sincere", "flamboyant", "rebellious"]
     },
     "player_clan_temper": ["any"],
@@ -2228,10 +2228,10 @@
   },
   {
     "interaction_type": "praise",
-    "event_text": "o_c_n's chief rabbit stands beside m_c during the Gathering, offering silent support to the rusasi and, later, accepting m_c's thanks.",
+    "event_text": "o_c_n's chief rabbit stands beside m_c during the Gathering, offering silent support to the rusasirah and, later, accepting m_c's thanks.",
     "rel_change": 1,
     "m_c": {
-      "status": ["rusasi", "owsla rusasi", "healer rusasi"],
+      "status": ["rusasirah", "owsla rusasirah", "healer rusasirah"],
       "trait": ["nervous", "insecure", "gloomy", "playful", "childish", "charismatic", "bold", "daring", "righteous", "strict", "compassionate", "thoughtful", "careful", "calm", "faithful", "loving", "responsible", "shameless", "wise", "cunning", "sincere"]
     },
     "player_clan_temper": ["any"],
@@ -2242,7 +2242,7 @@
     "event_text": "o_c_n's chief rabbit stares down at m_c and regards {PRONOUN/m_c/poss} stuttered words skeptically, eventually turning away. Their dismissal seems harsh, but their actions throughout the rest of the Gathering have a distinct softness towards the struggling c_n.",
     "rel_change": 10,
     "m_c": {
-      "status": ["rusasi", "owsla rusasi", "healer rusasi"],
+      "status": ["rusasirah", "owsla rusasirah", "healer rusasirah"],
       "trait": ["nervous", "insecure", "gloomy", "cunning"]
     },
     "player_clan_temper": ["any"],
@@ -2250,10 +2250,10 @@
   },
   {
     "interaction_type": "appease",
-    "event_text": "o_c_n's chief rabbit seems startled at the appearance of m_c leading a Warren. They may not say any words directly to the rusasi, but they don't aim any unnecessary jabs at them either.",
+    "event_text": "o_c_n's chief rabbit seems startled at the appearance of m_c leading a Warren. They may not say any words directly to the rusasirah, but they don't aim any unnecessary jabs at them either.",
     "rel_change": 10,
     "m_c": {
-      "status": ["rusasi", "owsla rusasi", "healer rusasi"]
+      "status": ["rusasirah", "owsla rusasirah", "healer rusasirah"]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["gracious", "amiable", "mellow"]
@@ -2263,17 +2263,17 @@
     "event_text": "o_c_n's chief rabbit regards m_c's appearance at the head of c_n impassively. Later on in the Gathering, however, the chief rabbit announces their intent to end hostilities with c_n, citing that o_c_n isn't so cruel as to continue attacking an obviously beaten Warren.",
     "rel_change": 10,
     "m_c": {
-      "status": ["rusasi", "owsla rusasi", "healer rusasi"]
+      "status": ["rusasirah", "owsla rusasirah", "healer rusasirah"]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["stoic"]
   },
   {
     "interaction_type": "appease",
-    "event_text": "The chief rabbit of o_c_n laughs at the sight of c_n being led by m_c. The rabbit makes a comment on how piteous m_c's warren must be, to have an rusasi leading them, and eventually announces that it would be dishonorable for them to continue attacking such dregs.",
+    "event_text": "The chief rabbit of o_c_n laughs at the sight of c_n being led by m_c. The rabbit makes a comment on how piteous m_c's warren must be, to have an rusasirah leading them, and eventually announces that it would be dishonorable for them to continue attacking such dregs.",
     "rel_change": 10,
     "m_c": {
-      "status": ["rusasi", "owsla rusasi", "healer rusasi"]
+      "status": ["rusasirah", "owsla rusasirah", "healer rusasirah"]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["bloodthirsty", "proud", "logical"]
@@ -2283,7 +2283,7 @@
     "event_text": "When c_n arrives at the Gathering and m_c takes {PRONOUN/m_c/poss} place with the Warren chief rabbits, o_c_n's chief rabbit watches with gleaming eyes. They later announce their *sincere* sympathies for c_n's struggles and offer a paw of friendship. m_c can't help but feel that {PRONOUN/m_c/poss} acceptance has come with some hidden cost.",
     "rel_change": 10,
     "m_c": {
-      "status": ["rusasi", "owsla rusasi", "healer rusasi"]
+      "status": ["rusasirah", "owsla rusasirah", "healer rusasirah"]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["cunning"]
@@ -2293,7 +2293,7 @@
     "event_text": "When m_c joins the Warren chief rabbits at the Gathering {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} off-put by the distinct looks of disapproval being aimed at o_c_n's chief rabbit. Later on, the chief rabbit stutters out their intent to lower hostilities with c_n.",
     "rel_change": 10,
     "m_c": {
-      "status": ["rusasi", "owsla rusasi", "healer rusasi"]
+      "status": ["rusasirah", "owsla rusasirah", "healer rusasirah"]
     },
     "player_clan_temper": ["any"],
     "other_clan_temper": ["wary"]
@@ -2448,7 +2448,7 @@
   },
   {
     "interaction_type": "appease",
-    "event_text": "m_c dreams the night before the Gathering and hears the whispers of {PRONOUN/m_c/poss} ancestors. When {PRONOUN/m_c/subject} {VERB/m_c/speak/speaks} at the Gathering, o_c_n's chief rabbit shows open disdain, only for clouds to begin covering the moon. The Gathering ends quickly as the enemy chief rabbit blusters and the other Clans rally behind c_n.",
+    "event_text": "m_c dreams the night before the Gathering and hears the whispers of {PRONOUN/m_c/poss} ancestors. When {PRONOUN/m_c/subject} {VERB/m_c/speak/speaks} at the Gathering, o_c_n's chief rabbit shows open disdain, only for clouds to begin covering the moon. The Gathering ends quickly as the enemy chief rabbit blusters and the other Warrens rally behind c_n.",
     "rel_change": 8,
     "m_c": {
       "skill": ["STAR,3"]

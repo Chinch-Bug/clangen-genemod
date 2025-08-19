@@ -13,7 +13,7 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 5,
+        "frequency": 4,
         "event_text": "m_c can't keep this secret anymore. {PRONOUN/m_c/subject/CAP} {VERB/m_c/request/requests} a Warren meeting, where {PRONOUN/m_c/subject} {VERB/m_c/reveal/reveals} the terrible secret {PRONOUN/m_c/subject}{VERB/m_c/'ve/'s} kept; {PRONOUN/m_c/subject} killed mur_c.",
         "m_c": {
             "age": [
@@ -33,20 +33,8 @@
         "relationships": [
             {
                 "cats_from": [
-                    "warren"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "mutual": false,
-                "values": [
-                    "dislike"
-                ],
-                "amount": 30
-            },
-            {
-                "cats_from": [
-                    "warren"
+                    "warren",
+                    "high_lawful"
                 ],
                 "cats_to": [
                     "m_c"
@@ -55,7 +43,8 @@
                 "values": [
                     "trust",
                     "respect",
-                    "comfort"
+                    "comfort",
+                    "like"
                 ],
                 "amount": -30
             }
@@ -72,7 +61,7 @@
         "sub_type": [
             "murder_reveal"
         ],
-        "weight": 10,
+        "frequency": 3,
         "event_text": "r_c is stunned when {PRONOUN/r_c/subject} {VERB/r_c/discover/discovers} m_c carelessly bragging about killing mur_c to a wandering loner.",
         "m_c": {
             "age": [
@@ -114,7 +103,7 @@
         "sub_type": [
             "murder_reveal"
         ],
-        "weight": 10,
+        "frequency": 3,
         "event_text": "m_c is truthful when r_c questions {PRONOUN/m_c/object} about mur_c's strange death. m_c claims that mur_c deserved to die after what {PRONOUN/mur_c/subject} did to m_c.",
         "m_c": {
             "age": [
@@ -160,7 +149,7 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 5,
+        "frequency": 4,
         "event_text": "m_c boldly confesses to the entire Warren that {PRONOUN/m_c/subject} killed mur_c. m_c claims that mur_c deserved to pay for what {PRONOUN/mur_c/subject} did.",
         "m_c": {
             "age": [
@@ -182,16 +171,20 @@
         "relationships": [
             {
                 "cats_from": [
-                    "warren"
+                    "warren",
+                    "high_lawful"
                 ],
                 "cats_to": [
                     "m_c"
                 ],
                 "mutual": false,
                 "values": [
-                    "dislike"
+                    "trust",
+                    "respect",
+                    "comfort",
+                    "like"
                 ],
-                "amount": 30
+                "amount": -15
             },
             {
                 "cats_from": [
@@ -204,7 +197,8 @@
                 "values": [
                     "trust",
                     "respect",
-                    "comfort"
+                    "comfort",
+                    "like"
                 ],
                 "amount": -30
             }
@@ -224,7 +218,7 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 10,
+        "frequency": 3,
         "event_text": "m_c's cold eyes don't blink when {PRONOUN/m_c/subject} {VERB/m_c/are/is} accused of murdering mur_c, and only simply states that the Warren is better off without mur_c anyways.",
         "m_c": {
             "age": [
@@ -252,7 +246,7 @@
         "sub_type": [
             "murder_reveal"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c doesn't change expressions in the slightest when r_c accuses {PRONOUN/m_c/object} of murdering mur_c. Who cares?",
         "m_c": {
             "age": [
@@ -295,7 +289,7 @@
         "sub_type": [
             "murder_reveal"
         ],
-        "weight": 5,
+        "frequency": 2,
         "event_text": "r_c avoids m_c at all costs after accidentally witnessing mur_c's murder. r_c knows {PRONOUN/r_c/subject} can't keep it a secret but is terrified of what m_c might do.",
         "m_c": {
             "age": [
@@ -331,22 +325,10 @@
                 ],
                 "mutual": false,
                 "values": [
-                    "dislike"
-                ],
-                "amount": 30
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "mutual": false,
-                "values": [
                     "trust",
                     "respect",
-                    "comfort"
+                    "comfort",
+                    "like"
                 ],
                 "amount": -30
             }
@@ -363,7 +345,7 @@
         "sub_type": [
             "murder_reveal"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "r_c gathers all the courage {PRONOUN/r_c/subject} {VERB/r_c/have/has} and quietly tells m_c {PRONOUN/r_c/subject} {VERB/r_c/know/knows} what {PRONOUN/m_c/subject} did to mur_c. m_c glares menacingly and threatens r_c with the same fate if {PRONOUN/r_c/subject} {VERB/r_c/don't/doesn't} keep {PRONOUN/r_c/poss} mouth shut.",
         "m_c": {
             "age": [
@@ -399,24 +381,35 @@
                 ],
                 "mutual": false,
                 "values": [
-                    "dislike"
-                ],
-                "amount": 30
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "mutual": false,
-                "values": [
                     "trust",
                     "respect",
-                    "comfort"
+                    "comfort",
+                    "like"
                 ],
                 "amount": -30
+            }
+        ],
+        "future_event": [
+            {
+                "event_type": "death",
+                "pool": {
+                    "sub_type": [
+                        "murder"
+                    ],
+                    "event_id": [],
+                    "excluded_event_id": [
+                        "gen_death_murder_anydep1",
+                        "gen_death_murder_anydep2"
+                    ]
+                },
+                "moon_delay": [
+                    1,
+                    10
+                ],
+                "involved_cats": {
+                    "m_c": "r_c",
+                    "r_c": "m_c"
+                }
             }
         ]
     },
@@ -431,7 +424,7 @@
         "sub_type": [
             "murder_reveal"
         ],
-        "weight": 10,
+        "frequency": 3,
         "event_text": "m_c laughs menacingly as r_c accuses {PRONOUN/m_c/object} of murdering mur_c. So what if {PRONOUN/m_c/subject} did? What is r_c going to do about it?",
         "m_c": {
             "age": [
@@ -474,7 +467,7 @@
         "sub_type": [
             "murder_reveal"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c can't keep this secret anymore. When {PRONOUN/m_c/subject} {VERB/m_c/find/finds} {PRONOUN/m_c/self} alone with r_c, {PRONOUN/m_c/subject} {VERB/m_c/tell/tells} the story of mur_c's death.",
         "m_c": {
             "age": [
@@ -484,7 +477,7 @@
                 "any"
             ],
             "relationship_status": [
-                "trust_20"
+                "listens_to"
             ]
         },
         "r_c": {
@@ -528,7 +521,7 @@
         "sub_type": [
             "murder_reveal"
         ],
-        "weight": 5,
+        "frequency": 2,
         "event_text": "r_c overheard m_c muttering in {PRONOUN/m_c/poss} sleep, claws slashing at the air. {PRONOUN/m_c/poss/CAP} muttering confirms what r_c always suspected -  m_c was the one responsible for mur_c's death.",
         "m_c": {
             "age": [
@@ -578,7 +571,7 @@
         "sub_type": [
             "murder_reveal"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "r_c wasn't even suspecting {PRONOUN/m_c/object}. But as soon as r_c mentions mur_c's death, m_c breaks down, telling how {PRONOUN/m_c/subject} didn't intend to do it, that it was all just an accident. Between wails, m_c desperately begs for r_c to understand {PRONOUN/m_c/subject} never wanted mur_c to die.",
         "m_c": {
             "age": [
@@ -619,22 +612,10 @@
                 ],
                 "mutual": false,
                 "values": [
-                    "dislike"
-                ],
-                "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "mutual": false,
-                "values": [
                     "trust",
                     "respect",
-                    "comfort"
+                    "comfort",
+                    "like"
                 ],
                 "amount": -15
             }
@@ -651,7 +632,8 @@
         "sub_type": [
             "murder_reveal"
         ],
-        "weight": 15,
+        "tags": ["clan_wide"],
+        "frequency": 3,
         "event_text": "c_n is surprised when m_c gathers everyone to say something important. {PRONOUN/m_c/subject/CAP} {VERB/m_c/have/has} decided it's time to make something clear: {PRONOUN/m_c/subject} killed mur_c, but not for the reasons they might think. m_c knew mur_c was planning to do something that would've damaged c_n greatly, and {PRONOUN/m_c/subject} needed to act quickly before it was too late.",
         "m_c": {
             "age": [
@@ -675,14 +657,30 @@
         "relationships": [
             {
                 "cats_from": [
-                    "warren"
+                    "warren",
+                    "high_lawful"
                 ],
                 "cats_to": [
                     "m_c"
                 ],
                 "mutual": false,
                 "values": [
-                    "dislike"
+                    "like"
+                ],
+                "amount": -20
+            },
+            {
+                "cats_from": [
+                    "warren",
+                    "high_aggress",
+                    "low_lawful"
+                ],
+                "cats_to": [
+                    "m_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "respect"
                 ],
                 "amount": 20
             },
@@ -714,7 +712,7 @@
         "sub_type": [
             "murder_reveal"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "r_c quietly takes m_c aside and tells {PRONOUN/m_c/object} {PRONOUN/r_c/subject} {VERB/r_c/know/knows} what {PRONOUN/m_c/subject} did to mur_c. Before m_c has time to defend {PRONOUN/m_c/self}, r_c eerily smiles and assures {PRONOUN/m_c/object} {PRONOUN/r_c/subject} won't tell anyone, that {PRONOUN/r_c/subject} {VERB/r_c/agree/agrees} with what m_c did. m_c squints {PRONOUN/m_c/poss} eyes, not sure if {PRONOUN/m_c/subject} should trust r_c's words.",
         "m_c": {
             "age": [
@@ -755,22 +753,10 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "dislike"
-                ],
-                "amount": 30
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "mutual": true,
-                "values": [
                     "trust",
                     "respect",
-                    "comfort"
+                    "comfort",
+                    "like"
                 ],
                 "amount": -30
             }
@@ -787,7 +773,7 @@
         "sub_type": [
             "murder_reveal"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "One day, when m_c and r_c are alone together, r_c gathers the courage to finally tell m_c what {PRONOUN/r_c/subject}{VERB/r_c/'ve/'s} been holding off for so long: {PRONOUN/r_c/subject} {VERB/r_c/know/knows} m_c was the one who killed mur_c, and has been waiting for {PRONOUN/m_c/object} to do the right thing and confess, but if {PRONOUN/m_c/subject} {VERB/m_c/don't/doesn't} do it, then r_c will have to be the one to tell the Warren. m_c is shocked, but also kind of admires r_c's guts to tell {PRONOUN/m_c/object} that when they're all alone together.",
         "m_c": {
             "age": [
@@ -828,22 +814,10 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "dislike"
-                ],
-                "amount": 30
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "mutual": false,
-                "values": [
                     "trust",
                     "respect",
-                    "comfort"
+                    "comfort",
+                    "like"
                 ],
                 "amount": -30
             },
@@ -873,8 +847,8 @@
         "sub_type": [
             "murder_reveal"
         ],
-        "weight": 20,
-        "event_text": "r_c sighs. {PRONOUN/r_c/subject/CAP} {VERB/r_c/find/finds} {PRONOUN/r_c/self} unintentionally walking into one of {PRONOUN/r_c/poss} Clanmates' dreams again. It could have been just another boring or nonsensical dream, but r_c is horrified to discover this dream is m_c's recollection of murdering mur_c. {PRONOUN/r_c/subject/CAP} {VERB/r_c/wake/wakes} up in shock, wondering what to do with this new knowledge.",
+        "frequency": 4,
+        "event_text": "r_c sighs. {PRONOUN/r_c/subject/CAP} {VERB/r_c/find/finds} {PRONOUN/r_c/self} unintentionally walking into one of {PRONOUN/r_c/poss} Warrenmates' dreams again. It could have been just another boring or nonsensical dream, but r_c is horrified to discover this dream is m_c's recollection of murdering mur_c. {PRONOUN/r_c/subject/CAP} {VERB/r_c/wake/wakes} up in shock, wondering what to do with this new knowledge.",
         "m_c": {
             "age": [
                 "any"
@@ -908,13 +882,81 @@
                 ],
                 "mutual": false,
                 "values": [
+                    "trust",
+                    "respect",
+                    "comfort",
+                    "like"
+                ],
+                "amount": -30
+            }
+        ]
+    },
+    {
+        "event_id": "gen_misc_hiddenmurderreveal_medcat1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "hidden_murder_reveal"
+        ],
+        "tags": [
+            "clan_wide"
+        ],
+        "frequency": 4,
+        "event_text": "r_c announces that mur_c's death was no accident. m_c confesses there and then, detailing the act as if mur_c was a piece of fresh-kill.",
+        "m_c": {
+            "age": [
+                "any"
+            ],
+            "trait": [
+                "arrogant",
+                "ambitious",
+                "bloodthirsty",
+                "bold",
+                "childish",
+                "confident",
+                "cunning",
+                "daring",
+                "fierce",
+                "flamboyant",
+                "oblivious",
+                "rebellious",
+                "shameless",
+                "strange",
+                "troublesome",
+                "vengeful"
+            ]
+        },
+        "r_c": {
+            "age": [
+                "any"
+            ],
+            "status": [
+                "healer",
+                "healer rusasirah"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "warren",
+                    "high_lawful"
+                ],
+                "cats_to": [
+                    "m_c"
+                ],
+                "mutual": false,
+                "values": [
                     "dislike"
                 ],
                 "amount": 30
             },
             {
                 "cats_from": [
-                    "r_c"
+                    "warren"
                 ],
                 "cats_to": [
                     "m_c"
@@ -930,6 +972,230 @@
         ]
     },
     {
+        "event_id": "gen_misc_hiddenmurderreveal_remorse1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "hidden_murder_reveal"
+        ],
+        "tags": [
+            "clan_wide"
+        ],
+        "frequency": 3,
+        "event_text": "m_c admits quietly to r_c that {PRONOUN/m_c/subject} lost {PRONOUN/m_c/poss} temper on that terrible, fateful day... r_c's death was at {PRONOUN/m_c/poss} paws.",
+        "m_c": {
+            "age": [
+                "any"
+            ],
+            "status": [
+                "any"
+            ],
+            "trait": [
+                "careful",
+                "childish",
+                "compassionate",
+                "competitive",
+                "confident",
+                "faithful",
+                "nervous"
+            ]
+        },
+        "r_c": {
+            "age": [
+                "adolescent",
+                "young adult",
+                "adult",
+                "senior adult",
+                "senior"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "warren"
+                ],
+                "cats_to": [
+                    "m_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "trust",
+                    "respect",
+                    "comfort"
+                ],
+                "amount": -20
+            }
+        ]
+    },
+    {
+        "event_id": "gen_misc_accidentmurderreveal_failuretoact",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "hidden_murder_reveal"
+        ],
+        "tags": [
+            "clan_wide"
+        ],
+        "frequency": 3,
+        "event_text": "m_c unexpectedly breaks mid-conversation, confessing in a rush that {PRONOUN/m_c/subject} could have saved mur_c... but {PRONOUN/m_c/subject} panicked. In that way, m_c believes, {PRONOUN/m_c/subject} murdered mur_c.",
+        "m_c": {
+            "age": [
+                "any"
+            ],
+            "status": [
+                "any"
+            ],
+            "trait": [
+                "careful",
+                "childish",
+                "cold",
+                "compassionate",
+                "competitive",
+                "confident",
+                "faithful",
+                "insecure",
+                "lonesome",
+                "loving",
+                "loyal",
+                "nervous",
+                "oblivious",
+                "playful",
+                "rebellious",
+                "responsible",
+                "righteous",
+                "sincere",
+                "strange",
+                "strict",
+                "thoughtful",
+                "wise"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "warren"
+                ],
+                "cats_to": [
+                    "m_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "trust",
+                    "respect",
+                    "comfort"
+                ],
+                "amount": -15
+            }
+        ]
+    },
+    {
+        "event_id": "gen_misc_hiddenmurderreveal_remorse2",
+        "location": [
+            "plains",
+            "mountainous",
+            "beach",
+            "forest_camp4"
+        ],
+        "season": [
+            "newleaf",
+            "greenleaf",
+            "leaf-fall"
+        ],
+        "sub_type": [
+            "hidden_murder_reveal"
+        ],
+        "tags": [
+            "clan_wide"
+        ],
+        "frequency": 2,
+        "event_text": "m_c stands in the water for hours on end, but the flow cannot wash away mur_c's blood, nor the guilt coiled heavy in {PRONOUN/m_c/poss} chest.",
+        "m_c": {
+            "age": [
+                "any"
+            ],
+            "status": [
+                "any"
+            ],
+            "trait": [
+                "careful",
+                "childish",
+                "compassionate",
+                "competitive",
+                "confident",
+                "faithful",
+                "nervous"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "warren"
+                ],
+                "cats_to": [
+                    "m_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "trust",
+                    "respect",
+                    "comfort"
+                ],
+                "amount": -20
+            }
+        ]
+    },
+    {
+        "event_id": "gen_misc_hiddenmurderreveal_simple1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "hidden_murder_reveal"
+        ],
+        "tags": [
+            "clan_wide"
+        ],
+        "frequency": 4,
+        "event_text": "Previously believed to be a natural course of events, mur_c's death is now known for what it was: a murder at the paws of m_c.",
+        "m_c": {
+            "age": [
+                "any"
+            ],
+            "status": [
+                "any"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "warren"
+                ],
+                "cats_to": [
+                    "m_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "trust",
+                    "respect",
+                    "comfort"
+                ],
+                "amount": -20
+            }
+        ]
+    },
+    {
         "event_id": "gen_misc_any_misc2",
         "location": [
             "any"
@@ -937,7 +1203,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c went for a long walk this morning, deep in thought.",
         "m_c": {
             "age": [
@@ -953,6 +1219,129 @@
         }
     },
     {
+        "event_id": "gen_misc_hiddenmurderreveal_sc_forgives",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "hidden_murder_reveal"
+        ],
+        "tags": [
+            "clan_wide"
+        ],
+        "frequency": 3,
+        "event_text": "r_c tells m_c that mur_c forgives {PRONOUN/m_c/object}. m_c's tearful admission of guilt finally makes the vision from StarClan make sense.",
+        "m_c": {
+            "age": [
+                "any"
+            ],
+            "status": [
+                "any"
+            ]
+        },
+        "r_c": {
+            "age": ["any"],
+            "skill": ["STAR,1", "PROPHET,1"]
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "warren"
+                ],
+                "cats_to": [
+                    "m_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "trust",
+                    "respect",
+                    "comfort"
+                ],
+                "amount": -10
+            }
+        ]
+    },
+    {
+        "event_id": "gen_misc_murderreveal_ghostgossip1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "hidden_murder_reveal"
+        ],
+        "tags": [
+            "clan_wide"
+        ],
+        "frequency": 3,
+        "event_text": "r_c yowls in shock, stammering that mur_c just appeared to {PRONOUN/r_c/object} and said {PRONOUN/mur_c/subject} {VERB/mur_c/were/was} murdered by m_c!",
+        "m_c": {
+            "age": [
+                "any"
+            ],
+            "status": [
+                "any"
+            ]
+        },
+        "r_c": {
+            "age": ["any"],
+            "skill": ["GHOST,1"]
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "warren"
+                ],
+                "cats_to": [
+                    "m_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "trust",
+                    "respect",
+                    "comfort"
+                ],
+                "amount": -20
+            },
+            {
+                "cats_from": [
+                    "warren",
+                    "high_stable"
+                ],
+                "cats_to": [
+                    "r_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "respect"
+                ],
+                "amount": 10
+            },
+            {
+                "cats_from": [
+                    "some_clan"
+                ],
+                "cats_to": [
+                    "r_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "trust",
+                    "comfort"
+                ],
+                "amount": -5,
+                "log": [
+                    "m_c was discomforted by a reminder of r_c's unnatural powers."
+                ]
+            }
+        ]
+    },
+    {
         "event_id": "multi_misc_any_collar_accessory1",
         "location": [
             "forest",
@@ -965,7 +1354,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 5,
+        "frequency": 1,
         "event_text": "m_c disappears for a few days, then returns to burrow with a acc_singular around {PRONOUN/m_c/poss} neck.",
         "new_accessory": [
             "COLLAR"
@@ -990,7 +1379,7 @@
         "season": [
             "any"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c accidentally trespasses onto o_c_n's territory.",
         "m_c": {
             "age": [
@@ -1018,7 +1407,7 @@
         "season": [
             "any"
         ],
-        "weight": 30,
+        "frequency": 4,
         "event_text": "m_c spends the evening regaling the Warren with stories of story_list.",
         "m_c": {
             "age": [
@@ -1047,7 +1436,7 @@
         "season": [
             "any"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c was trying to fluff up {PRONOUN/m_c/poss} nest when {PRONOUN/m_c/subject} saw a thorn inside of {PRONOUN/m_c/poss} bedding. Another prank, but it could not fool {PRONOUN/m_c/object}!",
         "m_c": {
             "age": [
@@ -1066,7 +1455,7 @@
         "season": [
             "any"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c wasn't looking where {PRONOUN/m_c/subject} {VERB/m_c/were/was} going and tripped over a small trunk, but came out of it with only {PRONOUN/m_c/poss} pride bruised.",
         "m_c": {
             "age": [
@@ -1085,8 +1474,8 @@
         "season": [
             "any"
         ],
-        "weight": 10,
-        "event_text": "m_c misstepped and slipped from a rock, but landed on {PRONOUN/m_c/poss} feet nimbly, {PRONOUN/m_c/poss} Clanmates commenting on the show of dexterity.",
+        "frequency": 2,
+        "event_text": "m_c misstepped and slipped from a rock, but landed on {PRONOUN/m_c/poss} feet nimbly, {PRONOUN/m_c/poss} Warrenmates commenting on the show of dexterity.",
         "m_c": {
             "age": [
                 "any"
@@ -1107,7 +1496,7 @@
         "season": [
             "any"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c tossed a snake out of the burrow before it could bite someone.",
         "m_c": {
             "age": [
@@ -1144,7 +1533,7 @@
         "season": [
             "any"
         ],
-        "weight": 5,
+        "frequency": 1,
         "event_text": "m_c tries to convince r_c to run away with {PRONOUN/m_c/object}.",
         "m_c": {
             "age": [
@@ -1177,7 +1566,7 @@
         "season": [
             "any"
         ],
-        "weight": 5,
+        "frequency": 1,
         "event_text": "m_c believes {PRONOUN/m_c/subject}'{VERB/m_c/re/s} meant for something greater.",
         "m_c": {
             "age": [
@@ -1196,7 +1585,7 @@
         "season": [
             "any"
         ],
-        "weight": 5,
+        "frequency": 1,
         "event_text": "m_c believes {PRONOUN/m_c/subject} {VERB/m_c/are/is} part of a new prophecy.",
         "m_c": {
             "age": [
@@ -1215,7 +1604,7 @@
         "season": [
             "any"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c went missing for a few days.",
         "m_c": {
             "age": [
@@ -1234,7 +1623,7 @@
         "season": [
             "any"
         ],
-        "weight": 5,
+        "frequency": 1,
         "event_text": "m_c is caught breaking the Rabbit Code.",
         "m_c": {
             "age": [
@@ -1247,7 +1636,27 @@
             "status": [
                 "any"
             ]
-        }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "warren",
+                    "high_lawful",
+                    "high_stable"
+                ],
+                "cats_to": [
+                    "m_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "respect",
+                    "like",
+                    "trust",
+                    "comfort"
+                ],
+                "amount": -10
+            }
+        ]
     },
     {
         "event_id": "gen_misc_any_misc14",
@@ -1257,7 +1666,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c is caught outside of the Warren's territory.",
         "m_c": {
             "age": [
@@ -1280,7 +1689,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c considers, as {PRONOUN/m_c/subject} {VERB/m_c/look/looks} out over the Warren, if perhaps this isn't where {PRONOUN/m_c/subject} {VERB/m_c/belong/belongs}.",
         "m_c": {
             "age": [
@@ -1305,7 +1714,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "The world around {PRONOUN/m_c/object} feels smaller lately; m_c looks out at the horizon and yearns for something unnameable.",
         "m_c": {
             "age": [
@@ -1328,7 +1737,7 @@
         "season": [
             "any"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c's dreams are filled with flashing teeth and blood-scent. {PRONOUN/m_c/subject/CAP} {VERB/m_c/wake/wakes} up screaming.",
         "m_c": {
             "age": [
@@ -1350,7 +1759,7 @@
         "season": [
             "any"
         ],
-        "weight": 30,
+        "frequency": 4,
         "event_text": "m_c thought {PRONOUN/m_c/subject} saw a familiar wispy form lingering at the edge of burrow, but it disappeared before {PRONOUN/m_c/subject} could be sure.",
         "m_c": {
             "age": [
@@ -1378,8 +1787,8 @@
         "tags": [
             "warren:kit"
         ],
-        "weight": 20,
-        "event_text": "The older rabbits look fondly upon the kits who are dashing in and out of leaf piles at the edge of burrow.",
+        "frequency": 4,
+        "event_text": "The older cats look fondly upon the kits who are dashing in and out of leaf piles at the edge of burrow.",
         "m_c": {
             "age": [
                 "senior",
@@ -1404,7 +1813,7 @@
         "season": [
             "leaf-bare"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c and r_c begin a small burrow snowball fight while on guard duty, eventually getting the whole Warren to join in.",
         "m_c": {
             "status": [
@@ -1429,24 +1838,12 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
-                    "trust"
+                    "trust",
+                    "like"
                 ],
                 "amount": 5
-            },
-            {
-                "cats_to": [
-                    "m_c"
-                ],
-                "cats_from": [
-                    "r_c"
-                ],
-                "mutual": true,
-                "values": [
-                    "dislike"
-                ],
-                "amount": -5
             }
         ]
     },
@@ -1460,11 +1857,11 @@
         "season": [
             "leaf-bare"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c encourages r_c to play in the snow with {PRONOUN/m_c/object} during a patrol.",
         "m_c": {
             "status": [
-                "rusasi",
+                "rusasirah",
                 "rabbit",
                 "captain",
                 "chief rabbit"
@@ -1475,7 +1872,7 @@
         },
         "r_c": {
             "status": [
-                "rusasi",
+                "rusasirah",
                 "rabbit",
                 "captain",
                 "chief rabbit"
@@ -1508,7 +1905,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c always seems to have acc_plural stuck in {PRONOUN/m_c/poss} fur.",
         "new_accessory": [
             "HERBS",
@@ -1543,7 +1940,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "r_c finds acc_plural while out on a walk and decides to give them to m_c.",
         "new_accessory": [
             "WILD",
@@ -1579,24 +1976,12 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
-                    "trust"
+                    "trust",
+                    "like"
                 ],
                 "amount": 5
-            },
-            {
-                "cats_from": [
-                    "m_c"
-                ],
-                "cats_to": [
-                    "r_c"
-                ],
-                "mutual": true,
-                "values": [
-                    "dislike"
-                ],
-                "amount": -5
             }
         ]
     },
@@ -1611,7 +1996,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c finds acc_plural while out on a walk and decides to keep them.",
         "new_accessory": [
             "WILD",
@@ -1638,7 +2023,7 @@
             "ceremony",
             "accessory"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c was given acc_plural as a congratulations, r_c watches from the side with a jealous glint in {PRONOUN/r_c/poss} eyes.",
         "new_accessory": [
             "WILD",
@@ -1670,7 +2055,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "respect"
                 ],
@@ -1689,7 +2074,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c received a present, acc_plural, from r_c and decided to keep it with {PRONOUN/m_c/object} on {PRONOUN/m_c/poss} pelt.",
         "new_accessory": [
             "WILD",
@@ -1721,7 +2106,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort"
                 ],
                 "amount": 5
@@ -1740,7 +2125,7 @@
             "ceremony",
             "accessory"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c decides to pick something to adorn {PRONOUN/m_c/poss} pelt as celebration.",
         "new_accessory": [
             "WILD",
@@ -1767,7 +2152,7 @@
             "ceremony",
             "accessory"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "r_c gives m_c something to adorn {PRONOUN/m_c/poss} pelt as congratulations.",
         "new_accessory": [
             "WILD",
@@ -1799,23 +2184,10 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort"
                 ],
                 "amount": 5
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "mutual": true,
-                "values": [
-                    "dislike"
-                ],
-                "amount": -5
             }
         ]
     },
@@ -1833,7 +2205,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c found a mysterious acc_singular growing in the frost and decided to wear it.",
         "new_accessory": [
             "FORGET ME NOTS",
@@ -1863,7 +2235,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c and r_c are so cuddled up and cozy in their nest they almost miss the dawn patrol.",
         "m_c": {
             "age": [
@@ -1892,7 +2264,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "romantic",
+                    "romance",
                     "comfort",
                     "trust"
                 ],
@@ -1911,7 +2283,7 @@
         "tags": [
             "warren:kit"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c listens bashfully as r_c tells the story of how {PRONOUN/r_c/subject} fell in love with {PRONOUN/r_c/poss} mate to a group of starry-eyed kits.",
         "m_c": {
             "age": [
@@ -1942,8 +2314,8 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "romantic",
-                    "platonic",
+                    "romance",
+                    "like",
                     "trust"
                 ],
                 "amount": 10
@@ -1961,8 +2333,8 @@
         "tags": [
             "warren:elder"
         ],
-        "weight": 15,
-        "event_text": "m_c watches r_c give an elder the best piece of prey on the pile. {PRONOUN/m_c/subject/CAP} {VERB/m_c/feel/feels} lucky to have such a kind rabbit as {PRONOUN/m_c/poss} mate.",
+        "frequency": 3,
+        "event_text": "m_c watches r_c give an elder the best piece of prey on the pile. {PRONOUN/m_c/subject/CAP} {VERB/m_c/feel/feels} lucky to have such a kind cat as {PRONOUN/m_c/poss} mate.",
         "m_c": {
             "age": [
                 "any"
@@ -2009,7 +2381,7 @@
         "tags": [
             "warren:kit"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c and r_c watch the Warren's kits play and exchange significant glances.",
         "m_c": {
             "age": [
@@ -2055,9 +2427,9 @@
             "any"
         ],
         "tags": [
-            "romantic"
+            "romance"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c and r_c take a late night patrol out of burrow to watch the sun rise.",
         "m_c": {
             "age": [
@@ -2083,7 +2455,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "romantic",
+                    "romance",
                     "comfort",
                     "trust"
                 ],
@@ -2099,7 +2471,7 @@
         "season": [
             "newleaf"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c sits still as r_c helps remove some leftover leaf-bare fluff from the back of {PRONOUN/m_c/poss} neck.",
         "m_c": {
             "age": [
@@ -2130,7 +2502,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "trust"
                 ],
                 "amount": 10
@@ -2145,7 +2517,7 @@
         "season": [
             "greenleaf"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "It's tough working in such extreme heat. m_c and r_c spend their evening relaxing together and cooling down in the shade.",
         "m_c": {
             "age": [
@@ -2176,7 +2548,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "romantic",
+                    "romance",
                     "comfort",
                     "trust"
                 ],
@@ -2195,8 +2567,8 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 15,
-        "event_text": "m_c gives r_c a acc_singular to make up for a bad fight between them.",
+        "frequency": 3,
+        "event_text": "r_c gives m_c a acc_singular to make up for a bad fight between them.",
         "new_accessory": [
             "WILD",
             "PLANT"
@@ -2230,7 +2602,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "romantic",
+                    "romance",
                     "comfort",
                     "trust"
                 ],
@@ -2249,7 +2621,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "r_c gifts {PRONOUN/r_c/poss} beloved m_c with a acc_singular to wear in {PRONOUN/m_c/poss} pelt.",
         "new_accessory": [
             "WILD",
@@ -2284,7 +2656,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "romantic",
+                    "romance",
                     "comfort",
                     "trust"
                 ],
@@ -2307,7 +2679,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c and r_c spend the evening chasing cicadas around burrow. m_c keeps a trophy of {PRONOUN/m_c/poss} catch on {PRONOUN/m_c/poss} pelt.",
         "new_accessory": [
             "CICADA WINGS",
@@ -2342,7 +2714,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "romantic",
+                    "romance",
                     "comfort",
                     "trust"
                 ],
@@ -2362,7 +2734,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "r_c gives m_c the prettiest fallen leaf {PRONOUN/r_c/subject} can find. m_c wears it with pride.",
         "new_accessory": [
             "MAPLE LEAF"
@@ -2396,7 +2768,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "romantic",
+                    "romance",
                     "comfort",
                     "trust"
                 ],
@@ -2412,7 +2784,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c thinks about the possibility of retiring.",
         "m_c": {
             "age": [
@@ -2440,7 +2812,7 @@
             "greenleaf",
             "newleaf"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c picks some flowers around the burrow to bring back to the healer den.",
         "m_c": {
             "status": [
@@ -2459,7 +2831,7 @@
         "tags": [
             "warren:rabbit"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c chases fireflies around the burrow while the rabbits sleep.",
         "m_c": {
             "status": [
@@ -2475,7 +2847,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c and r_c try to sneak out of burrow, but are caught and returned to the nursery.",
         "m_c": {
             "status": [
@@ -2497,7 +2869,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic"
+                    "like"
                 ],
                 "amount": 20
             }
@@ -2515,7 +2887,7 @@
             "newleaf",
             "greenleaf"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c and r_c sneak out of burrow to chase butterflies.",
         "m_c": {
             "status": [
@@ -2537,7 +2909,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "comfort"
                 ],
@@ -2556,7 +2928,7 @@
         "tags": [
             "warren:rabbit"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c and r_c chase fireflies around the burrow while the rabbits try to sleep.",
         "m_c": {
             "status": [
@@ -2578,7 +2950,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "comfort"
                 ],
@@ -2599,8 +2971,8 @@
         "tags": [
             "warren:rabbit"
         ],
-        "weight": 20,
-        "event_text": "m_c and r_c lead a small leaf-gathering hunt, which the adult rabbits watch with amused purrs.",
+        "frequency": 4,
+        "event_text": "m_c and r_c lead a small leaf-gathering hunt, which the adult cats watch with amused purrs.",
         "m_c": {
             "status": [
                 "kit"
@@ -2621,7 +2993,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust"
                 ],
@@ -2639,7 +3011,7 @@
         "season": [
             "leaf-fall"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c and r_c play with the leaves around the burrow.",
         "m_c": {
             "status": [
@@ -2661,7 +3033,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "comfort"
                 ],
@@ -2678,7 +3050,7 @@
         "season": [
             "leaf-bare"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c and r_c make little snow lumps at the entrance to the burrow.",
         "m_c": {
             "status": [
@@ -2700,7 +3072,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "comfort"
                 ],
@@ -2721,7 +3093,7 @@
         "tags": [
             "warren:rabbit"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c and r_c flick snow at the rabbits, giggling as they hide behind the nursery.",
         "m_c": {
             "status": [
@@ -2743,7 +3115,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "trust",
                     "comfort"
                 ],
@@ -2762,8 +3134,8 @@
         "sub_type": [
             "war"
         ],
-        "weight": 30,
-        "event_text": "m_c was comforted by r_c after having nightmares about the big, bad o_c_n rabbits.",
+        "frequency": 4,
+        "event_text": "m_c was comforted by r_c after having nightmares about the big, bad o_c_n cats.",
         "m_c": {
             "status": [
                 "kit"
@@ -2810,7 +3182,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c was playing with acc_plural earlier, and decides to wear some of them.",
         "new_accessory": [
             "RED FEATHERS",
@@ -2836,7 +3208,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c snuck out of burrow, and brought back with {PRONOUN/m_c/object} some acc_singular from when {PRONOUN/m_c/poss} fur got snagged in a bush.",
         "new_accessory": [
             "HOLLY",
@@ -2861,7 +3233,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c caught an insect while sneaking outside of the burrow and proudly wears its wings as a trophy of {PRONOUN/m_c/poss} journey.",
         "new_accessory": [
             "MOTH WINGS",
@@ -2892,7 +3264,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "As the wind blows many petals in the burrow, m_c picks a few to decorate {PRONOUN/m_c/self}.",
         "new_accessory": [
             "PETALS"
@@ -2918,7 +3290,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "As the wind brings many fallen leaves in the burrow, m_c picks a acc_singular to decorate {PRONOUN/m_c/poss} pelt.",
         "new_accessory": [
             "OAK LEAVES",
@@ -2941,7 +3313,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c is just too cute - r_c gives {PRONOUN/m_c/object} a pretty acc_singular as a gift.",
         "new_accessory": [
             "WILD",
@@ -2971,7 +3343,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust",
                     "respect"
@@ -2991,7 +3363,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "r_c gives m_c a pretty acc_singular {PRONOUN/r_c/subject} found while playing.",
         "new_accessory": [
             "WILD",
@@ -3017,24 +3389,11 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust"
                 ],
                 "amount": 10
-            },
-            {
-                "cats_to": [
-                    "m_c"
-                ],
-                "cats_from": [
-                    "r_c"
-                ],
-                "mutual": true,
-                "values": [
-                    "dislike"
-                ],
-                "amount": -10
             }
         ]
     },
@@ -3049,7 +3408,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c starts bringing a pretty acc_singular everywhere {PRONOUN/m_c/subject} {VERB/m_c/go/goes}, and r_c loudly complains that {PRONOUN/r_c/subject} {VERB/r_c/want/wants} one, too.",
         "new_accessory": [
             "WILD",
@@ -3080,24 +3439,11 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "dislike",
-                    "jealousy"
+                    "like",
+                    "comfort",
+                    "respect"
                 ],
-                "amount": 20
-            },
-            {
-                "cats_to": [
-                    "m_c"
-                ],
-                "cats_from": [
-                    "r_c"
-                ],
-                "mutual": true,
-                "values": [
-                    "platonic",
-                    "comfort"
-                ],
-                "amount": -5
+                "amount": -15
             }
         ]
     },
@@ -3112,7 +3458,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "No matter how hard r_c tries, there's always something stuck in m_c's fur.",
         "new_accessory": [
             "HERBS",
@@ -3150,7 +3496,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 25,
+        "frequency": 4,
         "event_text": "m_c finds some acc_singular to wear in {PRONOUN/m_c/poss} fur to impress r_c!",
         "new_accessory": [
             "WILD",
@@ -3185,7 +3531,7 @@
         "season": [
             "any"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c is scolded after sneaking out of burrow.",
         "m_c": {
             "age": [
@@ -3205,7 +3551,7 @@
         "season": [
             "any"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c falls into a river, but is saved by r_c.",
         "m_c": {
             "age": [
@@ -3231,7 +3577,7 @@
                 ],
                 "mutual": false,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "respect",
                     "trust"
@@ -3248,7 +3594,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c sneaks out of burrow with r_c.",
         "m_c": {
             "age": [
@@ -3271,7 +3617,7 @@
                 "mutual": true,
                 "values": [
                     "trust",
-                    "platonic"
+                    "like"
                 ],
                 "amount": 15
             }
@@ -3285,7 +3631,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c and r_c sneak out of burrow to see the sun rise.",
         "m_c": {
             "age": [
@@ -3307,7 +3653,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust"
                 ],
@@ -3323,7 +3669,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c and r_c sneak out of burrow to see the moon rise.",
         "m_c": {
             "age": [
@@ -3345,7 +3691,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust"
                 ],
@@ -3361,14 +3707,14 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c and r_c try to sneak out of burrow, but are caught by their mentors.",
         "m_c": {
             "age": [
                 "adolescent"
             ],
             "status": [
-                "rusasi"
+                "rusasirah"
             ]
         },
         "r_c": {
@@ -3376,7 +3722,7 @@
                 "adolescent"
             ],
             "status": [
-                "rusasi"
+                "rusasirah"
             ]
         },
         "relationships": [
@@ -3389,7 +3735,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "trust"
                 ],
                 "amount": 15
@@ -3408,7 +3754,7 @@
             "greenleaf",
             "leaf-fall"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c and r_c were practicing climbing when they found a nest of strange eggs.",
         "m_c": {
             "age": [
@@ -3430,7 +3776,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "trust"
                 ],
                 "amount": 15
@@ -3451,7 +3797,7 @@
             "greenleaf",
             "leaf-fall"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c and r_c sneak out of burrow to go bird watching.",
         "m_c": {
             "age": [
@@ -3473,7 +3819,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "trust"
                 ],
                 "amount": 15
@@ -3490,7 +3836,7 @@
         "season": [
             "leaf-fall"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c and r_c play in the fallen leaves outside of burrow.",
         "m_c": {
             "age": [
@@ -3512,7 +3858,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "trust"
                 ],
                 "amount": 15
@@ -3529,7 +3875,7 @@
         "season": [
             "leaf-bare"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c and r_c play in the snow outside of burrow.",
         "m_c": {
             "age": [
@@ -3551,7 +3897,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "trust"
                 ],
                 "amount": 15
@@ -3576,9 +3922,9 @@
             "accessory"
         ],
         "tags": [
-            "romantic"
+            "romance"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c and r_c were chatting about their day and the chores when r_c mentioned {PRONOUN/r_c/subject} liked the smell of wild fruit. m_c decides to wear acc_plural on {PRONOUN/m_c/poss} pelt, hoping that r_c notices {PRONOUN/m_c/object}.",
         "new_accessory": [
             "BLUE BERRIES",
@@ -3590,7 +3936,7 @@
                 "adolescent"
             ],
             "status": [
-                "rusasi"
+                "rusasirah"
             ]
         },
         "r_c": {
@@ -3598,7 +3944,7 @@
                 "adolescent"
             ],
             "status": [
-                "rusasi"
+                "rusasirah"
             ]
         },
         "relationships": [
@@ -3611,7 +3957,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "romantic",
+                    "romance",
                     "comfort",
                     "trust",
                     "respect"
@@ -3635,19 +3981,19 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c hears r_c complaining about the dry rye stalks underneath {PRONOUN/r_c/poss} paws when {PRONOUN/r_c/subject} {VERB/r_c/finish/finishes} cleaning the elders' den for the umpteenth time. The next day, m_c adorns {PRONOUN/m_c/poss} pelt with acc_plural.",
         "new_accessory": [
             "RYE STALK"
         ],
         "m_c": {
             "status": [
-                "rusasi"
+                "rusasirah"
             ]
         },
         "r_c": {
             "status": [
-                "rusasi"
+                "rusasirah"
             ]
         }
     },
@@ -3664,7 +4010,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c gets dared to hunt outside in the snow alone, and returns with acc_singular in {PRONOUN/m_c/poss} pelt.",
         "new_accessory": [
             "WILD",
@@ -3672,7 +4018,7 @@
         ],
         "m_c": {
             "status": [
-                "rusasi"
+                "rusasirah"
             ]
         }
     },
@@ -3687,7 +4033,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c is nearly blindsided by r_c as {PRONOUN/m_c/subject} {VERB/m_c/walk/walks} into burrow after a long training day, listening to the kit squeak about a type of feather. r_c leads m_c to the nursery, where {PRONOUN/r_c/subject} carefully {VERB/r_c/put/puts} acc_plural in m_c's fur.",
         "new_accessory": [
             "BLUE FEATHERS",
@@ -3716,7 +4062,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort"
                 ],
                 "amount": 20
@@ -3734,11 +4080,11 @@
         "sub_type": [
             "war"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c is struggling to cope with the violence and chaos of war surrounding {PRONOUN/m_c/object}, finding it difficult to wake up in the morning due to the stress and strain of constant battle training.",
         "m_c": {
             "status": [
-                "rusasi"
+                "rusasirah"
             ],
             "trait": [
                 "nervous",
@@ -3762,7 +4108,7 @@
         "sub_type": [
             "war"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c feels like {PRONOUN/m_c/subject} might be growing up too fast in the midst of war.",
         "m_c": {
             "age": [
@@ -3788,7 +4134,7 @@
         "season": [
             "any"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c was caught sharing prey with a kittypet, who was chased off by a patrol.",
         "m_c": {
             "age": [
@@ -3816,17 +4162,32 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic"
+                    "like"
                 ],
                 "amount": 10
+            },
+            {
+                "cats_from": [
+                    "warren",
+                    "high_lawful",
+                    "high_stable"
+                ],
+                "cats_to": [
+                    "m_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "respect",
+                    "trust"
+                ],
+                "amount": -5
             }
         ],
-        "outsider": {
-            "current_rep": [
-                "any"
-            ],
-            "changed": -5
-        }
+        "outsider": {},
+        "current_rep": [
+            "any"
+        ],
+        "changed": -5
     },
     {
         "event_id": "multi_misc_any_scandalous_kittypet2",
@@ -3839,7 +4200,7 @@
         "season": [
             "any"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c was seen touching noses with a kittypet. Scandalous!",
         "m_c": {
             "age": [
@@ -3866,17 +4227,32 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic"
+                    "like"
                 ],
                 "amount": 15
+            },
+            {
+                "cats_from": [
+                    "warren",
+                    "high_lawful",
+                    "high_stable"
+                ],
+                "cats_to": [
+                    "m_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "respect",
+                    "trust"
+                ],
+                "amount": -5
             }
         ],
-        "outsider": {
-            "current_rep": [
-                "any"
-            ],
-            "changed": 5
-        }
+        "outsider": {},
+        "current_rep": [
+            "any"
+        ],
+        "changed": 5
     },
     {
         "event_id": "multi_misc_any_scandalous_kittypet3",
@@ -3889,7 +4265,7 @@
         "season": [
             "any"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c was seen playing with a kittypet over the border.",
         "m_c": {
             "age": [
@@ -3917,17 +4293,32 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic"
+                    "like"
                 ],
                 "amount": 10
+            },
+            {
+                "cats_from": [
+                    "warren",
+                    "high_lawful",
+                    "high_stable"
+                ],
+                "cats_to": [
+                    "m_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "respect",
+                    "trust"
+                ],
+                "amount": -5
             }
         ],
-        "outsider": {
-            "current_rep": [
-                "any"
-            ],
-            "changed": 7
-        }
+        "outsider": {},
+        "current_rep": [
+            "any"
+        ],
+        "changed": 7
     },
     {
         "event_id": "multi_misc_any_scandalous_kittypet4",
@@ -3940,7 +4331,7 @@
         "season": [
             "any"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c was seen chasing a kittypet off of the territory.",
         "m_c": {
             "age": [
@@ -3968,9 +4359,9 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "dislike"
+                    "like"
                 ],
-                "amount": 10
+                "amount": -10
             }
         ],
         "outsider": {
@@ -3991,7 +4382,7 @@
         "season": [
             "any"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c was seen in a very serious conversation with a kittypet, who ran away when another patrol approached.",
         "m_c": {
             "age": [
@@ -4035,7 +4426,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c caught a glimpse of a kittypet wandering in the distance.",
         "m_c": {
             "age": [
@@ -4064,8 +4455,8 @@
         "season": [
             "any"
         ],
-        "weight": 20,
-        "event_text": "m_c found the scent of a stranger near the border, though the rabbit {PRONOUN/nc:0/self} is long gone. Smells like Twolegs.",
+        "frequency": 4,
+        "event_text": "m_c found the scent of a stranger near the border, though the cat {PRONOUN/n_c:0/self} is long gone. Smells like Twolegs.",
         "m_c": {
             "age": [
                 "adolescent",
@@ -4093,7 +4484,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "On a bit of c_n's territory that borders unclaimed land, m_c finds scent that indicates there's a loner wandering somewhere out there.",
         "m_c": {
             "age": [
@@ -4122,7 +4513,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "An outsider places their scent near the border, a polite courtesy that indicates they don't mean trouble.",
         "m_c": {
             "age": [
@@ -4157,7 +4548,7 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "c_n finds tracks crossing the border and then hurriedly backtracking, indicating the owner didn't intrude intentionally.",
         "m_c": {
             "age": [
@@ -4189,8 +4580,8 @@
         "season": [
             "any"
         ],
-        "weight": 20,
-        "event_text": "Someone has been hunting in c_n territory, a stranger without a Warren scent. c_n doesn't know their face, but they memorise their smell.",
+        "frequency": 4,
+        "event_text": "Someone has been hunting in c_n territory, a stranger without a Warren scent. c_n doesn't know {PRONOUN/n_c:0/poss} face, but they memorize {PRONOUN/n_c:0/poss} smell.",
         "m_c": {
             "age": [
                 "adolescent",
@@ -4221,7 +4612,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "c_n's vast territory can be difficult to defend due to its size. The tracks of a rogue have now crossed their border repeatedly.",
         "m_c": {
             "age": [
@@ -4253,7 +4644,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c finds prey blood and the scent of an intruder.",
         "m_c": {
             "age": [
@@ -4285,8 +4676,8 @@
         "season": [
             "any"
         ],
-        "weight": 20,
-        "event_text": "A rabbit has been trying to conceal their presence out in the borderlands...",
+        "frequency": 4,
+        "event_text": "A cat has been trying to conceal their presence out in the borderlands...",
         "m_c": {
             "age": [
                 "adolescent",
@@ -4318,7 +4709,7 @@
         "season": [
             "any"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c was seen touching noses with someone from o_c_n. Scandalous!",
         "m_c": {
             "age": [
@@ -4329,12 +4720,29 @@
                 "senior"
             ]
         },
-        "other_clan": {
-            "current_rep": [
-                "any"
-            ],
-            "changed": 1
-        }
+        "relationships": [
+            {
+                "cats_from": [
+                    "warren",
+                    "high_lawful",
+                    "high_stable"
+                ],
+                "cats_to": [
+                    "m_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "respect",
+                    "trust"
+                ],
+                "amount": -5
+            }
+        ],
+        "other_clan": {},
+        "current_rep": [
+            "any"
+        ],
+        "changed": 1
     },
     {
         "event_id": "multi_misc_any_scandalous_other_clan2",
@@ -4347,8 +4755,8 @@
         "season": [
             "any"
         ],
-        "weight": 10,
-        "event_text": "m_c was loitering around o_c_n's border, looking for a specific rabbit.",
+        "frequency": 2,
+        "event_text": "m_c was loitering around o_c_n's border, looking for a specific cat.",
         "m_c": {
             "age": [
                 "adolescent",
@@ -4370,7 +4778,7 @@
         "season": [
             "any"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c was seen racing along the border with {PRONOUN/m_c/poss} rival from o_c_n.",
         "m_c": {
             "age": [
@@ -4400,8 +4808,8 @@
             "any"
         ],
         "tags": [],
-        "weight": 10,
-        "event_text": "m_c was seen arguing, and borderline-fighting, with a rabbit from o_c_n.",
+        "frequency": 2,
+        "event_text": "m_c was seen arguing, and borderline-fighting, with a cat from o_c_n.",
         "m_c": {
             "age": [
                 "adolescent",
@@ -4429,8 +4837,8 @@
         "season": [
             "any"
         ],
-        "weight": 10,
-        "event_text": "m_c was seen speaking calmly to a rabbit from o_c_n.",
+        "frequency": 2,
+        "event_text": "m_c was seen speaking calmly to a cat from o_c_n.",
         "m_c": {
             "age": [
                 "adolescent",
@@ -4457,7 +4865,7 @@
         "season": [
             "any"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c sees that o_c_n has been cleaning the border trackways, and adds {PRONOUN/m_c/poss} own paws the the effort.",
         "m_c": {
             "age": [
@@ -4488,8 +4896,8 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 10,
-        "event_text": "The thornbush might be on o_c_n's side of the border, but both Clans benefit from uprooting it before it can block the path further.",
+        "frequency": 2,
+        "event_text": "The thornbush might be on o_c_n's side of the border, but both Warrens benefit from uprooting it before it can block the path further.",
         "m_c": {
             "age": [
                 "adolescent",
@@ -4516,8 +4924,8 @@
         "season": [
             "any"
         ],
-        "weight": 10,
-        "event_text": "Trying to see o_c_n rabbits in the flesh can be hard when the Clans live so far apart. m_c has to wait hours for a o_c_n patrol to pass on the message about local loner activity.",
+        "frequency": 2,
+        "event_text": "Trying to see o_c_n cats in the flesh can be hard when the Warrens live so far apart. m_c has to wait hours for a o_c_n patrol to pass on the message about local loner activity.",
         "m_c": {
             "age": [
                 "adolescent",
@@ -4547,8 +4955,8 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 10,
-        "event_text": "Tracks don't lie, even if o_c_n may. One of them has been traipsing across the border. It remains to be seen if that rabbit is a confused rusasi or a deliberate provocateur.",
+        "frequency": 2,
+        "event_text": "Tracks don't lie, even if o_c_n may. One of them has been traipsing across the border. It remains to be seen if that cat is a confused rusasirah or a deliberate provocateur.",
         "m_c": {
             "age": [
                 "adolescent",
@@ -4578,7 +4986,7 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "An area of the border looks a little too pristine. Almost like o_c_n have been covering something up there.",
         "m_c": {
             "age": [
@@ -4607,7 +5015,7 @@
         "season": [
             "any"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c was seen arguing, and borderline-fighting, with a loner.",
         "m_c": {
             "age": [
@@ -4635,9 +5043,9 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "dislike"
+                    "like"
                 ],
-                "amount": 15
+                "amount": -15
             }
         ],
         "outsider": {
@@ -4658,7 +5066,7 @@
         "season": [
             "any"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c was seen touching noses with a loner. Scandalous!",
         "m_c": {
             "age": [
@@ -4685,17 +5093,32 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic"
+                    "like"
                 ],
                 "amount": 15
+            },
+            {
+                "cats_from": [
+                    "warren",
+                    "high_lawful",
+                    "high_stable"
+                ],
+                "cats_to": [
+                    "m_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "respect",
+                    "trust"
+                ],
+                "amount": -5
             }
         ],
-        "outsider": {
-            "current_rep": [
-                "any"
-            ],
-            "changed": 5
-        }
+        "outsider": {},
+        "current_rep": [
+            "any"
+        ],
+        "changed": 5
     },
     {
         "event_id": "multi_misc_any_scandalous_loner3",
@@ -4708,8 +5131,8 @@
         "season": [
             "any"
         ],
-        "weight": 10,
-        "event_text": "m_c was seen talking calmly to a loner, before both rabbits went their separate ways.",
+        "frequency": 2,
+        "event_text": "m_c was seen talking calmly to a loner, before both cats went their separate ways.",
         "m_c": {
             "age": [
                 "adolescent",
@@ -4754,7 +5177,7 @@
         "season": [
             "any"
         ],
-        "weight": 5,
+        "frequency": 1,
         "event_text": "m_c was seen taking food from a Twoleg!",
         "m_c": {
             "age": [
@@ -4764,7 +5187,26 @@
                 "senior adult",
                 "senior"
             ]
-        }
+        },
+        "relationships": [
+            {
+                "cats_from": [
+                    "warren",
+                    "high_lawful",
+                    "high_stable"
+                ],
+                "cats_to": [
+                    "m_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "respect",
+                    "trust",
+                    "comfort"
+                ],
+                "amount": -10
+            }
+        ]
     },
     {
         "event_id": "multi_misc_any_scandalous_rogue1",
@@ -4777,7 +5219,7 @@
         "season": [
             "any"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c was caught sharing prey with a rogue, who was chased off by a patrol.",
         "m_c": {
             "age": [
@@ -4805,17 +5247,32 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic"
+                    "like"
                 ],
                 "amount": 10
+            },
+            {
+                "cats_from": [
+                    "warren",
+                    "high_lawful",
+                    "high_stable"
+                ],
+                "cats_to": [
+                    "m_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "respect",
+                    "trust"
+                ],
+                "amount": -5
             }
         ],
-        "outsider": {
-            "current_rep": [
-                "any"
-            ],
-            "changed": 5
-        }
+        "outsider": {},
+        "current_rep": [
+            "any"
+        ],
+        "changed": 5
     },
     {
         "event_id": "gen_misc_any_scandalous_rogue2",
@@ -4825,7 +5282,7 @@
         "season": [
             "any"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c was seen touching noses with a rogue. Scandalous!",
         "m_c": {
             "age": [
@@ -4852,17 +5309,32 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic"
+                    "like"
                 ],
                 "amount": 15
+            },
+            {
+                "cats_from": [
+                    "warren",
+                    "high_lawful",
+                    "high_stable"
+                ],
+                "cats_to": [
+                    "m_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "respect",
+                    "trust"
+                ],
+                "amount": -5
             }
         ],
-        "outsider": {
-            "current_rep": [
-                "any"
-            ],
-            "changed": 5
-        }
+        "outsider": {},
+        "current_rep": [
+            "any"
+        ],
+        "changed": 5
     },
     {
         "event_id": "multi_misc_any_scandalous_rogue3",
@@ -4875,7 +5347,7 @@
         "season": [
             "any"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c was seen chasing a rogue off of the territory.",
         "m_c": {
             "age": [
@@ -4886,7 +5358,7 @@
                 "senior"
             ],
             "status": [
-                "rusasi",
+                "rusasirah",
                 "rabbit",
                 "captain",
                 "chief rabbit",
@@ -4916,9 +5388,9 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "dislike"
+                    "like"
                 ],
-                "amount": 10
+                "amount": -10
             }
         ]
     },
@@ -4933,15 +5405,15 @@
         "sub_type": [
             "war"
         ],
-        "weight": 40,
-        "event_text": "m_c goes to o_c_n in an attempt to ease the tension of war between the Clans: it goes well, and o_c_n begins to draw back from c_n's territory!",
+        "frequency": 4,
+        "event_text": "m_c goes to o_c_n in an attempt to ease the tension of war between the Warrens: it goes well, and o_c_n begins to draw back from c_n's territory!",
         "m_c": {
             "age": [
                 "any"
             ],
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ],
             "skill": [
                 "OWSLA,2"
@@ -4962,15 +5434,15 @@
         "sub_type": [
             "war"
         ],
-        "weight": 20,
-        "event_text": "m_c is checking in on every rabbit in the burrow to make sure everyone is staying healthy in the midst of war.",
+        "frequency": 4,
+        "event_text": "m_c is checking in on every cat in the burrow to make sure everyone is staying healthy in the midst of war.",
         "m_c": {
             "age": [
                 "any"
             ],
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ],
             "trait": [
                 "calm",
@@ -5017,15 +5489,15 @@
         "sub_type": [
             "war"
         ],
-        "weight": 15,
-        "event_text": "m_c goes to o_c_n in an attempt to ease the tension of war between the Clans: it doesn't go well, and o_c_n further advances in c_n's territory.",
+        "frequency": 3,
+        "event_text": "m_c goes to o_c_n in an attempt to ease the tension of war between the Warrens: it doesn't go well, and o_c_n further advances in c_n's territory.",
         "m_c": {
             "age": [
                 "any"
             ],
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "other_clan": {
@@ -5040,12 +5512,12 @@
         "season": [
             "any"
         ],
-        "weight": 10,
-        "event_text": "m_c pulls r_c to the side, quietly asking {PRONOUN/r_c/object} about {PRONOUN/r_c/poss} crush on a fellow Clanmate.",
+        "frequency": 2,
+        "event_text": "m_c pulls r_c to the side, quietly asking {PRONOUN/r_c/object} about {PRONOUN/r_c/poss} crush on a fellow Warrenmate.",
         "m_c": {
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "r_c": {
@@ -5073,22 +5545,10 @@
                 "mutual": false,
                 "values": [
                     "comfort",
-                    "trust"
+                    "trust",
+                    "like"
                 ],
                 "amount": 5
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "mutual": false,
-                "values": [
-                    "dislike"
-                ],
-                "amount": -5
             }
         ]
     },
@@ -5100,12 +5560,12 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c spots r_c looking a little bit lonely, and invites {PRONOUN/r_c/object} to watch as {PRONOUN/m_c/subject} {VERB/m_c/perform/performs} {PRONOUN/m_c/poss} duties.",
         "m_c": {
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "r_c": {
@@ -5123,23 +5583,10 @@
                 ],
                 "mutual": false,
                 "values": [
-                    "platonic",
+                    "like",
                     "trust"
                 ],
                 "amount": 10
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "mutual": false,
-                "values": [
-                    "dislike"
-                ],
-                "amount": -5
             }
         ]
     },
@@ -5154,15 +5601,15 @@
         "sub_type": [
             "war"
         ],
-        "weight": 30,
+        "frequency": 4,
         "event_text": "m_c is giving r_c advice on the war, though it's unclear how helpful it really is.",
         "m_c": {
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ],
             "relationship_status": [
-                "dislike_20"
+                "dislikes"
             ],
             "trait": [
                 "cunning"
@@ -5200,21 +5647,9 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "dislike"
-                ],
-                "amount": 10
-            },
-            {
-                "cats_to": [
-                    "m_c"
-                ],
-                "cats_from": [
-                    "r_c"
-                ],
-                "mutual": true,
-                "values": [
                     "trust",
-                    "comfort"
+                    "comfort",
+                    "like"
                 ],
                 "amount": -10
             }
@@ -5231,12 +5666,12 @@
         "sub_type": [
             "war"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c is conversing with r_c about ways to potentially end this war without bloodshed.",
         "m_c": {
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "r_c": {
@@ -5287,12 +5722,12 @@
         "sub_type": [
             "war"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c is conversing with r_c about ways to potentially end this war- but not without bloodshed.",
         "m_c": {
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "r_c": {
@@ -5341,8 +5776,8 @@
         "season": [
             "any"
         ],
-        "weight": 15,
-        "event_text": "m_c visits the other healer rabbits.",
+        "frequency": 3,
+        "event_text": "m_c visits the other medicine cats.",
         "m_c": {
             "status": [
                 "healer"
@@ -5363,8 +5798,8 @@
         "season": [
             "any"
         ],
-        "weight": 15,
-        "event_text": "m_c visits o_c_n to converse with their healer rabbits about an omen Inle sent.",
+        "frequency": 3,
+        "event_text": "m_c visits o_c_n to converse with their medicine cats about an omen StarClan sent.",
         "m_c": {
             "status": [
                 "healer"
@@ -5388,7 +5823,7 @@
         "season": [
             "any"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c visits o_c_n to congratulate them on their new healer.",
         "m_c": {
             "status": [
@@ -5417,7 +5852,7 @@
             "ceremony",
             "accessory"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "r_c presents m_c with acc_plural as a congratulations.",
         "new_accessory": [
             "WILD",
@@ -5443,24 +5878,11 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust"
                 ],
                 "amount": 5
-            },
-            {
-                "cats_to": [
-                    "m_c"
-                ],
-                "cats_from": [
-                    "r_c"
-                ],
-                "mutual": true,
-                "values": [
-                    "dislike"
-                ],
-                "amount": -5
             }
         ]
     },
@@ -5472,7 +5894,7 @@
         "season": [
             "any"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c speaks to r_c about an omen {PRONOUN/m_c/subject} saw while on patrol recently.",
         "m_c": {
             "age": [
@@ -5499,7 +5921,7 @@
         "season": [
             "any"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c speaks to r_c about a potential omen and what it means.",
         "m_c": {
             "age": [
@@ -5526,8 +5948,8 @@
         "season": [
             "any"
         ],
-        "weight": 10,
-        "event_text": "m_c walks into the dreams of {PRONOUN/m_c/poss} Clanmates while everyone sleeps.",
+        "frequency": 2,
+        "event_text": "m_c walks into the dreams of {PRONOUN/m_c/poss} Warrenmates while everyone sleeps.",
         "m_c": {
             "status": [
                 "healer"
@@ -5545,11 +5967,11 @@
         "season": [
             "any"
         ],
-        "weight": 10,
-        "event_text": "m_c tosses in {PRONOUN/m_c/poss} sleep as {PRONOUN/m_c/poss} dreamself pads through the thoughts of {PRONOUN/m_c/poss} Clanmates, picking up snippets of dream_list/m_c. {PRONOUN/m_c/subject/CAP} slowly {VERB/m_c/blink/blinks} awake, wondering whose dreams {PRONOUN/m_c/subject} walked in.",
+        "frequency": 2,
+        "event_text": "m_c tosses in {PRONOUN/m_c/poss} sleep as {PRONOUN/m_c/poss} dreamself pads through the thoughts of {PRONOUN/m_c/poss} Warrenmates, picking up snippets of dream_list/m_c. {PRONOUN/m_c/subject/CAP} slowly {VERB/m_c/blink/blinks} awake, wondering whose dreams {PRONOUN/m_c/subject} walked in.",
         "m_c": {
             "status": [
-                "healer rusasi",
+                "healer rusasirah",
                 "healer"
             ],
             "skill": [
@@ -5565,7 +5987,7 @@
         "season": [
             "any"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c correctly warns the chief rabbit of an ambush, thanks to {PRONOUN/m_c/poss} clairvoyant nature.",
         "m_c": {
             "status": [
@@ -5584,12 +6006,12 @@
         "season": [
             "any"
         ],
-        "weight": 15,
-        "event_text": "m_c spends {PRONOUN/m_c/poss} day communing with Inle, attempting to figure out a recent prophecy.",
+        "frequency": 3,
+        "event_text": "m_c spends {PRONOUN/m_c/poss} day communing with StarClan, attempting to figure out a recent prophecy.",
         "m_c": {
             "status": [
                 "healer",
-                "healer rusasi"
+                "healer rusasirah"
             ],
             "skill": [
                 "PROPHET,2"
@@ -5604,7 +6026,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c has been worried that c_n will lose the knowledge r_c has gained through {PRONOUN/r_c/poss} long life, but by sitting with r_c and discussing {PRONOUN/r_c/poss} experiences, m_c will ensure the lessons learned in the past are never forgotten.",
         "m_c": {
             "status": [
@@ -5631,7 +6053,7 @@
         "season": [
             "any"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c was seen loudly bickering with the healer of o_c_n.",
         "m_c": {
             "status": [
@@ -5653,7 +6075,7 @@
         "season": [
             "any"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c was seen talking with a traveling loner healer on the border.",
         "m_c": {
             "status": [
@@ -5678,7 +6100,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic"
+                    "like"
                 ],
                 "amount": 5
             }
@@ -5695,12 +6117,12 @@
         "sub_type": [
             "war"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c's knowledge of herbs and healing is being put to the test, with injuries becoming more severe in the midst of war.",
         "m_c": {
             "status": [
                 "healer",
-                "healer rusasi"
+                "healer rusasirah"
             ]
         }
     },
@@ -5715,11 +6137,11 @@
         "sub_type": [
             "war"
         ],
-        "weight": 20,
-        "event_text": "m_c watches every little thing around {PRONOUN/m_c/object} for any omen that indicates what the Warren should do in the war. The losses weigh heavy on the hearts of every rabbit.",
+        "frequency": 4,
+        "event_text": "m_c watches every little thing around {PRONOUN/m_c/object} for any omen that indicates what the Warren should do in the war. The losses weigh heavy on the hearts of every cat.",
         "m_c": {
             "status": [
-                "healer rusasi",
+                "healer rusasirah",
                 "healer"
             ],
             "skill": [
@@ -5738,14 +6160,14 @@
         "sub_type": [
             "war"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c preps battle herbs into small bundles to rush to the battlefield in case of severe injuries.",
         "m_c": {
             "age": [
                 "any"
             ],
             "status": [
-                "healer rusasi",
+                "healer rusasirah",
                 "healer"
             ]
         }
@@ -5761,12 +6183,12 @@
         "sub_type": [
             "war"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "c_n is in a badly need of herbs, and m_c knows it, but can't bring {PRONOUN/m_c/self} to leave {PRONOUN/m_c/poss} patients' side.",
         "m_c": {
             "status": [
                 "healer",
-                "healer rusasi"
+                "healer rusasirah"
             ]
         }
     },
@@ -5785,14 +6207,14 @@
         "sub_type": [
             "war"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c hopes to find the herbs that c_n needs in the war, and goes to look for them even in this leaf-bare's harsh weather.",
         "m_c": {
             "age": [
                 "any"
             ],
             "status": [
-                "healer rusasi",
+                "healer rusasirah",
                 "healer"
             ]
         },
@@ -5814,7 +6236,7 @@
         "season": [
             "any"
         ],
-        "weight": 5,
+        "frequency": 1,
         "event_text": "m_c is getting increasingly annoyed with r_c because {PRONOUN/r_c/subject} {VERB/r_c/keep/keeps} bothering {PRONOUN/m_c/object} about the most trivial of wounds and aches.",
         "m_c": {
             "age": [
@@ -5829,7 +6251,7 @@
                 "any"
             ],
             "status": [
-                "healer rusasi"
+                "healer rusasirah"
             ]
         },
         "relationships": [
@@ -5842,9 +6264,9 @@
                 ],
                 "mutual": false,
                 "values": [
-                    "dislike"
+                    "like"
                 ],
-                "amount": 10
+                "amount": -10
             }
         ]
     },
@@ -5856,7 +6278,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c is brought back to burrow after wandering off.",
         "m_c": {
             "age": [
@@ -5875,8 +6297,8 @@
         "season": [
             "any"
         ],
-        "weight": 20,
-        "event_text": "m_c awakens with multiple objects stacked on {PRONOUN/m_c/object}, and the sound of giggling rabbits in the distance.",
+        "frequency": 2,
+        "event_text": "m_c awakens with multiple objects stacked on {PRONOUN/m_c/object}, and the sound of giggling cats in the distance.",
         "m_c": {
             "status": [
                 "elder"
@@ -5891,7 +6313,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c speaks to r_c about how to better defend the burrow.",
         "m_c": {
             "age": [
@@ -5922,7 +6344,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c helps reinforce the dens in the burrow while the rest of the burrow is on patrol.",
         "m_c": {
             "age": [
@@ -5944,8 +6366,8 @@
         "season": [
             "any"
         ],
-        "weight": 20,
-        "event_text": "m_c places small feathers and shining stones near the nest of each Clanmate while they're on patrol.",
+        "frequency": 4,
+        "event_text": "m_c places small feathers and shining stones near the nest of each Warrenmate while they're on patrol.",
         "m_c": {
             "age": [
                 "any"
@@ -5966,7 +6388,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c keeps an eye on the burrow while the rabbits are on patrol.",
         "m_c": {
             "age": [
@@ -5991,8 +6413,8 @@
         "tags": [
             "warren:apps"
         ],
-        "weight": 20,
-        "event_text": "m_c calls the younger rabbits to {PRONOUN/m_c/poss} den to tell stories of the Warren's past.",
+        "frequency": 4,
+        "event_text": "m_c calls the younger cats to {PRONOUN/m_c/poss} den to tell stories of the Warren's past.",
         "m_c": {
             "age": [
                 "any"
@@ -6016,7 +6438,7 @@
         "tags": [
             "warren:kit"
         ],
-        "weight": 30,
+        "frequency": 4,
         "event_text": "m_c calls out to some eager kits, and after they have situated themselves in front of m_c, {PRONOUN/m_c/subject} {VERB/m_c/start/starts} telling the kits a thrilling story of times long past.",
         "m_c": {
             "age": [
@@ -6056,7 +6478,7 @@
         "season": [
             "any"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "m_c thinks about retiring from being captain.",
         "m_c": {
             "age": [
@@ -6076,14 +6498,14 @@
         "season": [
             "any"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c travels to o_c_n to bring them an important message.",
         "m_c": {
             "status": [
                 "healer",
                 "captain",
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "other_clan": {
@@ -6101,14 +6523,14 @@
         "season": [
             "any"
         ],
-        "weight": 10,
-        "event_text": "m_c travels to the other Clans to bring them an important message.",
+        "frequency": 2,
+        "event_text": "m_c travels to the other Warrens to bring them an important message.",
         "m_c": {
             "status": [
                 "healer",
                 "captain",
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "other_clan": {
@@ -6129,7 +6551,7 @@
         "sub_type": [
             "war"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "As the captain, m_c is doing {PRONOUN/m_c/poss} best to prepare for leadership in the case the worst happens.",
         "m_c": {
             "status": [
@@ -6151,7 +6573,7 @@
         "tags": [
             "low_lives"
         ],
-        "weight": 5,
+        "frequency": 1,
         "event_text": "m_c is struggling to accept the fact that {PRONOUN/m_c/subject} may have to step up as chief rabbit if r_c loses {PRONOUN/r_c/poss} last life.",
         "m_c": {
             "age": [
@@ -6189,7 +6611,7 @@
         "tags": [
             "low_lives"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c is struggling to accept the fact that {PRONOUN/m_c/subject} may have to step up as chief rabbit if r_c loses {PRONOUN/r_c/poss} last life. How could {PRONOUN/m_c/subject} {VERB/m_c/go/goes} on without {PRONOUN/m_c/poss} beloved chief rabbit? How difficult will it to be to lead in {PRONOUN/r_c/poss} stead?",
         "m_c": {
             "status": [
@@ -6216,7 +6638,7 @@
                 ],
                 "mutual": false,
                 "values": [
-                    "platonic",
+                    "like",
                     "respect",
                     "trust"
                 ],
@@ -6235,7 +6657,7 @@
         "sub_type": [
             "war"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c is heavily relying on the tactical advice and experience of the elders, namely r_c.",
         "m_c": {
             "status": [
@@ -6287,7 +6709,7 @@
         "tags": [
             "low_lives"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c thinks about retiring.",
         "m_c": {
             "status": [
@@ -6306,7 +6728,7 @@
         "tags": [
             "low_lives"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c confesses {PRONOUN/m_c/subject} {VERB/m_c/don't/doesn't} have many lives left.",
         "m_c": {
             "status": [
@@ -6322,7 +6744,7 @@
         "season": [
             "any"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "m_c feels as though the responsibility of leadership is crushing {PRONOUN/m_c/object}.",
         "m_c": {
             "status": [
@@ -6338,7 +6760,7 @@
         "season": [
             "any"
         ],
-        "weight": 30,
+        "frequency": 4,
         "event_text": "m_c calls a Warren meeting to give an important announcement.",
         "m_c": {
             "status": [
@@ -6357,7 +6779,7 @@
         "sub_type": [
             "war"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c feels burdened with the weight of {PRONOUN/m_c/poss} decisions, knowing that every choice {PRONOUN/m_c/subject} {VERB/m_c/make/makes} could mean the difference between victory and defeat.",
         "m_c": {
             "status": [
@@ -6376,8 +6798,8 @@
         "sub_type": [
             "war"
         ],
-        "weight": 20,
-        "event_text": "m_c's relationships with {PRONOUN/m_c/poss} Clanmates are strained, with some questioning {PRONOUN/m_c/poss} decisions and others relying on {PRONOUN/m_c/object} more heavily than ever.",
+        "frequency": 4,
+        "event_text": "m_c's relationships with {PRONOUN/m_c/poss} Warrenmates are strained, with some questioning {PRONOUN/m_c/poss} decisions and others relying on {PRONOUN/m_c/object} more heavily than ever.",
         "m_c": {
             "status": [
                 "chief rabbit"
@@ -6395,7 +6817,7 @@
         "sub_type": [
             "war"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c is forced to be a symbol of strength and unity for {PRONOUN/m_c/poss} Warren, even in the face of {PRONOUN/m_c/poss} own doubts and fears.",
         "m_c": {
             "status": [
@@ -6411,7 +6833,7 @@
         "season": [
             "any"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c assesses r_c's progress.",
         "m_c": {
             "age": [
@@ -6426,9 +6848,9 @@
                 "any"
             ],
             "status": [
-                "rusasi",
-                "owsla rusasi",
-                "healer rusasi"
+                "rusasirah",
+                "owsla rusasirah",
+                "healer rusasirah"
             ]
         }
     },
@@ -6443,7 +6865,7 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "The Warren worked hard to gather plenty of fresh-kill, but woke up to find pawprints leading away from the fresh-kill pile, and missing prey.",
         "supplies": [
             {
@@ -6466,7 +6888,7 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "The Warren gathered a stockpile of food to save, the more the better, but one night the fresh-kill pile was drastically reduced and paw prints were found on the ground.",
         "supplies": [
             {
@@ -6489,7 +6911,7 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 5,
+        "frequency": 1,
         "event_text": "The o_c_n healer comes asking if c_n has any herbs to spare. Unfortunately, the c_n herb stocks are far too low and c_n is unable to provide any help.",
         "supplies": [
             {
@@ -6519,8 +6941,8 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 2,
-        "event_text": "A healer from o_c_n comes to c_n, asking for herbs to heal their sick Clanmates. c_n quickly shoos them away, not willing to admit that they already don't have enough to support themselves.",
+        "frequency": 2,
+        "event_text": "A healer from o_c_n comes to c_n, asking for herbs to heal their sick Warrenmates. c_n quickly shoos them away, not willing to admit that they already don't have enough to support themselves.",
         "supplies": [
             {
                 "type": "all_herb",
@@ -6549,7 +6971,7 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "The o_c_n healer comes asking if c_n have any given_herb to spare. Graciously, your Warren decides to aid their allies and share the herbs.",
         "supplies": [
             {
@@ -6578,8 +7000,8 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 2,
-        "event_text": "The healer rusasi from o_c_n comes asking for given_herb. They refuse to say why their Warren needs them but c_n still provides them with what they need.",
+        "frequency": 2,
+        "event_text": "The healer rusasirah from o_c_n comes asking for given_herb. They refuse to say why their Warren needs them but c_n still provides them with what they need.",
         "supplies": [
             {
                 "type": "any_herb",
@@ -6608,7 +7030,7 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 5,
+        "frequency": 1,
         "event_text": "The o_c_n healer comes asking if c_n have any given_herb to spare. However, c_n only has enough for themselves and they refuse to share.",
         "supplies": [
             {
@@ -6637,8 +7059,8 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 2,
-        "event_text": "The healer rusasi from o_c_n comes asking for herbs. They refuse to say why their Warren needs them and c_n decides not to share their precious few given_herb.",
+        "frequency": 2,
+        "event_text": "The healer rusasirah from o_c_n comes asking for herbs. They refuse to say why their Warren needs them and c_n decides not to share their precious few given_herb.",
         "supplies": [
             {
                 "type": "any_herb",
@@ -6666,8 +7088,8 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 2,
-        "event_text": "The o_c_n healer rusasi comes to c_n's burrow, pleading for help with a yellowcough epidemic. c_n provides the rabbit with some of their extra lungwort.",
+        "frequency": 2,
+        "event_text": "The o_c_n healer rusasirah comes to c_n's burrow, pleading for help with a yellowcough epidemic. c_n provides the cat with some of their extra lungwort.",
         "supplies": [
             {
                 "type": "lungwort",
@@ -6696,7 +7118,7 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 2,
+        "frequency": 2,
         "event_text": "A healer from o_c_n comes to c_n, asking for lungwort to heal a case of yellowcough. c_n has some extra, and so decides to share with their allies.",
         "supplies": [
             {
@@ -6726,8 +7148,8 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 2,
-        "event_text": "The o_c_n healer rusasi comes to c_n's burrow, pleading for help with a yellowcough epidemic. However, c_n has nothing that they are willing to share.",
+        "frequency": 2,
+        "event_text": "The o_c_n healer rusasirah comes to c_n's burrow, pleading for help with a yellowcough epidemic. However, c_n has nothing that they are willing to share.",
         "supplies": [
             {
                 "type": "lungwort",
@@ -6755,7 +7177,7 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 2,
+        "frequency": 2,
         "event_text": "A healer from o_c_n comes to c_n, asking for lungwort to heal a case of yellowcough. However, c_n hardly has enough for their own Warren and so refuses.",
         "supplies": [
             {
@@ -6783,12 +7205,12 @@
             "any"
         ],
         "tags": [],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "The herb stores are low, m_c decides to ask o_c_n for aid in these hard times. Thankfully, the allied Warren is happy to share their excess herbs.",
         "m_c": {
             "status": [
                 "healer",
-                "healer rusasi"
+                "healer rusasirah"
             ]
         },
         "supplies": [
@@ -6819,12 +7241,12 @@
             "warren:chief rabbit",
             "warren:healer"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "lead_name hears from med_name that the Warren is low on herbs. m_c is sent to bargain with o_c_n for whatever herbs they can spare.",
         "m_c": {
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "supplies": [
@@ -6855,7 +7277,7 @@
             "warren:chief rabbit",
             "warren:healer"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "lead_name hears from med_name that the Warren is low on herbs. m_c is sent to bargain with o_c_n for whatever herbs they can spare.",
         "m_c": {
             "status": [
@@ -6892,7 +7314,7 @@
             "any"
         ],
         "tags": [],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "While at the Gathering, m_c pulls the o_c_n chief rabbit aside and requests herbs from their Warren. The other chief rabbit is happy to help.",
         "m_c": {
             "status": [
@@ -6924,12 +7346,12 @@
             "any"
         ],
         "tags": [],
-        "weight": 20,
-        "event_text": "While at the Gathering, m_c speaks to the other healer rabbits and expresses worry over {PRONOUN/m_c/poss} herb stores. The healer rabbits offer to bring some extra herbs to c_n later, to help bolster {PRONOUN/m_c/poss} supply.",
+        "frequency": 4,
+        "event_text": "While at the Gathering, m_c speaks to the other medicine cats and expresses worry over {PRONOUN/m_c/poss} herb stores. The medicine cats offer to bring some extra herbs to c_n later, to help bolster {PRONOUN/m_c/poss} supply.",
         "m_c": {
             "status": [
                 "healer",
-                "healer rusasi"
+                "healer rusasirah"
             ]
         },
         "supplies": [
@@ -6957,13 +7379,13 @@
         "season": [
             "any"
         ],
-        "subtype": [
+        "sub_type": [
             "war"
         ],
         "tags": [
             "clan_wide"
         ],
-        "weight": 5,
+        "frequency": 1,
         "event_text": "o_c_n breaks into the burrow and ravages the herb stores, taking some for themselves and attempting to destroy the rest. The Warren manages to recover some of the herbs, but the store was still badly damaged.",
         "supplies": [
             {
@@ -6991,13 +7413,13 @@
         "season": [
             "any"
         ],
-        "subtype": [
+        "sub_type": [
             "war"
         ],
         "tags": [
             "clan_wide"
         ],
-        "weight": 5,
+        "frequency": 1,
         "event_text": "o_c_n breaks into the burrow and ravages the herb stores, taking some for themselves and destroying the rest.",
         "supplies": [
             {
@@ -7025,13 +7447,13 @@
         "season": [
             "any"
         ],
-        "subtype": [
+        "sub_type": [
             "war"
         ],
         "tags": [
             "clan_wide"
         ],
-        "weight": 5,
+        "frequency": 1,
         "event_text": "c_n breaks into the o_c_n burrow and steals precious herbs from their healer den.",
         "m_c": {
             "status": [
@@ -7082,7 +7504,7 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 1,
+        "frequency": 1,
         "event_text": "Some sort of pest got into the herb stores and ruined much of the supplies. c_n will have to clean it out and start over anew.",
         "supplies": [
             {
@@ -7107,7 +7529,7 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 1,
+        "frequency": 1,
         "event_text": "Abnormally strong winds blew through the burrow last night and scattered the herb store into a useless state. The Warren manages to recover some of the herbs, but the resulting supply is much smaller than before.",
         "supplies": [
             {
@@ -7132,7 +7554,7 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 1,
+        "frequency": 1,
         "event_text": "Some kind of blight has infected the herb stores. c_n has no choice but to clear out all the old herbs.",
         "supplies": [
             {
@@ -7157,8 +7579,8 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 1,
-        "event_text": "Freezing temperatures have not just affected the rabbits. It's also frostbitten the stored herbs. Many of them are useless now and will have to be replaced.",
+        "frequency": 1,
+        "event_text": "Freezing temperatures have not just affected the cats. It's also frostbitten the stored herbs. Many of them are useless now and will have to be replaced.",
         "supplies": [
             {
                 "type": "all_herb",
@@ -7182,7 +7604,7 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 1,
+        "frequency": 1,
         "event_text": "The newleaf rain has left the air humid and the whole burrow damp. The herb stores are found to be growing mold and many herbs have to be thrown out.",
         "supplies": [
             {
@@ -7207,7 +7629,7 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 1,
+        "frequency": 1,
         "event_text": "The persistent, dry heat managed to cause a small fire in the herb stores. While no one was injured, many of the herbs are little more than ashes now.",
         "supplies": [
             {
@@ -7232,7 +7654,7 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 15,
+        "frequency": 3,
         "event_text": "As the herb stores are being inspected, it's noticed that some of the given_herb went bad. They'll need to be replaced.",
         "supplies": [
             {
@@ -7257,7 +7679,7 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "The Warren has gathered plenty of moss recently, time to refresh the dens!",
         "supplies": [
             {
@@ -7281,7 +7703,7 @@
         "tags": [
             "clan_wide"
         ],
-        "weight": 30,
+        "frequency": 4,
         "event_text": "The herb stores have quite a lot of given_herb, the excess is given back to the earth.",
         "supplies": [
             {
@@ -7305,7 +7727,7 @@
             "ceremony",
             "accessory"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "r_c is so proud of how far {PRONOUN/r_c/poss} child has grown. With a look of pride, r_c presents m_c with acc_plural as a congratulations.",
         "new_accessory": [
             "WILD",
@@ -7334,7 +7756,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust"
                 ],
@@ -7354,15 +7776,15 @@
             "ceremony",
             "accessory"
         ],
-        "weight": 20,
-        "event_text": "r_c is so proud of how far {PRONOUN/r_c/poss} kit has grown. With a look of pride, r_c presents m_c with acc_plural as a congratulations for becoming an rusasi.",
+        "frequency": 4,
+        "event_text": "r_c is so proud of how far {PRONOUN/r_c/poss} kit has grown. With a look of pride, r_c presents m_c with acc_plural as a congratulations for becoming an rusasirah.",
         "new_accessory": [
             "WILD",
             "PLANT"
         ],
         "m_c": {
             "status": [
-                "rusasi"
+                "rusasirah"
             ],
             "relationship_status": [
                 "child/parent"
@@ -7383,7 +7805,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust"
                 ],
@@ -7403,7 +7825,7 @@
             "ceremony",
             "accessory"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "r_c is so proud of how far {PRONOUN/r_c/poss} child has grown. With a look of pride, r_c presents m_c with acc_plural as a congratulations for becoming a rabbit. r_c knew that m_c would do great things for c_n.",
         "new_accessory": [
             "WILD",
@@ -7432,7 +7854,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust"
                 ],
@@ -7452,7 +7874,7 @@
             "ceremony",
             "accessory"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "r_c is so proud of how far {PRONOUN/r_c/poss} child has grown. With a look of pride, r_c presents m_c with acc_plural as a congratulations. m_c takes it, but as r_c turns away, a complicated expression crosses {PRONOUN/m_c/poss} face. Perhaps {PRONOUN/m_c/subject} had the wrong idea about r_c.",
         "new_accessory": [
             "WILD",
@@ -7464,7 +7886,7 @@
             ],
             "relationship_status": [
                 "child/parent",
-                "dislike_20"
+                "dislikes"
             ]
         },
         "r_c": {
@@ -7482,7 +7904,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust"
                 ],
@@ -7495,11 +7917,11 @@
                 "cats_from": [
                     "r_c"
                 ],
-                "mutual": false,
+                "mutual": true,
                 "values": [
-                    "dislike"
+                    "like"
                 ],
-                "amount": -10
+                "amount": 10
             }
         ]
     },
@@ -7515,14 +7937,14 @@
             "ceremony",
             "accessory"
         ],
-        "weight": 20,
-        "event_text": "r_c hands over acc_singular to m_c, telling m_c that {PRONOUN/m_c/subject} better not forget about {PRONOUN/r_c/object} now that m_c is an rusasi.",
+        "frequency": 4,
+        "event_text": "r_c hands over acc_singular to m_c, telling m_c that {PRONOUN/m_c/subject} better not forget about {PRONOUN/r_c/object} now that m_c is an rusasirah.",
         "new_accessory": [
             "FORGET ME NOTS"
         ],
         "m_c": {
             "status": [
-                "rusasi"
+                "rusasirah"
             ],
             "relationship_status": [
                 "siblings"
@@ -7543,7 +7965,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort"
                 ],
                 "amount": 10
@@ -7562,7 +7984,7 @@
             "ceremony",
             "accessory"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "r_c hands over acc_singular to m_c, telling m_c that {PRONOUN/m_c/subject} better not forget about {PRONOUN/r_c/object} now that m_c is a rabbit.",
         "new_accessory": [
             "FORGET ME NOTS"
@@ -7590,7 +8012,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort"
                 ],
                 "amount": 10
@@ -7609,15 +8031,15 @@
             "ceremony",
             "accessory"
         ],
-        "weight": 20,
-        "event_text": "m_c is feeling a bit overwhelmed, now that {PRONOUN/m_c/subject} {VERB/m_c/are/is} an rusasi. Luckily, r_c is there with a gift of acc_plural and some comforting words to cheer m_c up.",
+        "frequency": 4,
+        "event_text": "m_c is feeling a bit overwhelmed, now that {PRONOUN/m_c/subject} {VERB/m_c/are/is} an rusasirah. Luckily, r_c is there with a gift of acc_plural and some comforting words to cheer m_c up.",
         "new_accessory": [
             "WILD",
             "PLANT"
         ],
         "m_c": {
             "status": [
-                "rusasi"
+                "rusasirah"
             ],
             "trait": [
                 "nervous",
@@ -7642,7 +8064,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust"
                 ],
@@ -7657,7 +8079,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust"
                 ],
@@ -7677,8 +8099,8 @@
             "ceremony",
             "accessory"
         ],
-        "weight": 20,
-        "event_text": "r_c feels so lucky to have {PRONOUN/r_c/poss} own sibling become a healer rusasi. Knowing how time consuming it is to gather herbs, r_c spends a long time gathering up acc_plural to help out m_c. While m_c appreciates the efforts, none of these are particularly useful. Instead m_c uses the acc_plural to decorate {PRONOUN/m_c/poss} pelt.",
+        "frequency": 4,
+        "event_text": "r_c feels so lucky to have {PRONOUN/r_c/poss} own sibling become a healer rusasirah. Knowing how time consuming it is to gather herbs, r_c spends a long time gathering up acc_plural to help out m_c. While m_c appreciates the efforts, none of these are particularly useful. Instead m_c uses the acc_plural to decorate {PRONOUN/m_c/poss} pelt.",
         "new_accessory": [
             "HERBS",
             "DRY HERBS",
@@ -7688,7 +8110,7 @@
         ],
         "m_c": {
             "status": [
-                "healer rusasi"
+                "healer rusasirah"
             ],
             "relationship_status": [
                 "siblings"
@@ -7696,10 +8118,10 @@
         },
         "r_c": {
             "status": [
-                "rusasi",
+                "rusasirah",
                 "rabbit",
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "relationships": [
@@ -7712,7 +8134,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust"
                 ],
@@ -7745,7 +8167,7 @@
             "ceremony",
             "accessory"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c can't help but feel hurt when {PRONOUN/m_c/poss} sibling isn't there to congratulate {PRONOUN/m_c/object} for becoming a rabbit. However, when {PRONOUN/m_c/subject} later {VERB/m_c/go/goes} to {PRONOUN/m_c/poss} new nest {PRONOUN/m_c/subject} {VERB/m_c/find/finds} r_c there waiting for {PRONOUN/m_c/object}, with a gift of acc_plural. Together the siblings work on making m_c's new nest feel more comfortable.",
         "new_accessory": [
             "WILD"
@@ -7756,7 +8178,7 @@
             ],
             "relationship_status": [
                 "siblings",
-                "platonic_50"
+                "cherishes"
             ]
         },
         "r_c": {
@@ -7764,7 +8186,7 @@
                 "rabbit"
             ],
             "relationship_status": [
-                "platonic_50"
+                "cherishes"
             ]
         },
         "relationships": [
@@ -7777,7 +8199,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust"
                 ],
@@ -7797,7 +8219,7 @@
             "ceremony",
             "accessory"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c has been so excited for {PRONOUN/m_c/poss} first lesson with r_c. However, instead of something like hunting or moss gathering, r_c takes {PRONOUN/m_c/object} on a tour of the territory. At the end of the lesson, r_c gives m_c acc_plural, saying {PRONOUN/r_c/subject} {VERB/r_c/are/is} glad to be m_c's mentor.",
         "new_accessory": [
             "WILD",
@@ -7805,9 +8227,9 @@
         ],
         "m_c": {
             "status": [
-                "rusasi",
-                "healer rusasi",
-                "owsla rusasi"
+                "rusasirah",
+                "healer rusasirah",
+                "owsla rusasirah"
             ],
             "relationship_status": [
                 "app/mentor"
@@ -7835,7 +8257,7 @@
                 ],
                 "mutual": false,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust"
                 ],
@@ -7850,7 +8272,7 @@
                 ],
                 "mutual": false,
                 "values": [
-                    "platonic"
+                    "like"
                 ],
                 "amount": 5
             }
@@ -7868,17 +8290,17 @@
             "ceremony",
             "accessory"
         ],
-        "weight": 20,
-        "event_text": "As a new mentor, r_c wants to make a good initial impression on {PRONOUN/r_c/poss} rusasi, and after some careful consideration {PRONOUN/r_c/subject} {VERB/r_c/decide/decides} the best way is a gift. Taking m_c to the side, r_c gives {PRONOUN/m_c/object} acc_plural, telling {PRONOUN/m_c/object} with a soft voice that if m_c has any sort of issue then {PRONOUN/m_c/subject} can come to {PRONOUN/r_c/object} for help.",
+        "frequency": 4,
+        "event_text": "As a new mentor, r_c wants to make a good initial impression on {PRONOUN/r_c/poss} rusasirah, and after some careful consideration {PRONOUN/r_c/subject} {VERB/r_c/decide/decides} the best way is a gift. Taking m_c to the side, r_c gives {PRONOUN/m_c/object} acc_plural, telling {PRONOUN/m_c/object} with a soft voice that if m_c has any sort of issue then {PRONOUN/m_c/subject} can come to {PRONOUN/r_c/object} for help.",
         "new_accessory": [
             "WILD",
             "PLANT"
         ],
         "m_c": {
             "status": [
-                "rusasi",
-                "healer rusasi",
-                "owsla rusasi"
+                "rusasirah",
+                "healer rusasirah",
+                "owsla rusasirah"
             ],
             "relationship_status": [
                 "app/mentor"
@@ -7902,7 +8324,7 @@
                 ],
                 "mutual": false,
                 "values": [
-                    "platonic",
+                    "like",
                     "comfort",
                     "trust"
                 ],
@@ -7917,7 +8339,7 @@
                 ],
                 "mutual": false,
                 "values": [
-                    "platonic"
+                    "like"
                 ],
                 "amount": 5
             }
@@ -7935,7 +8357,7 @@
             "ceremony",
             "accessory"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c yowls in shock, claws unsheathing from an unexpected weight pinning {PRONOUN/m_c/object}. When {PRONOUN/m_c/subject} {VERB/m_c/are/is} able to get up, m_c's surprised and a bit upset to see that it had been {PRONOUN/m_c/poss} mentor who attacked {PRONOUN/m_c/object}. r_c doesn't seem to notice m_c's discomfort as {PRONOUN/r_c/subject} excitedly {VERB/r_c/tell/tells} m_c about the acc_plural that now adorns {PRONOUN/m_c/poss} pelt.",
         "new_accessory": [
             "WILD",
@@ -7943,9 +8365,9 @@
         ],
         "m_c": {
             "status": [
-                "rusasi",
-                "healer rusasi",
-                "owsla rusasi"
+                "rusasirah",
+                "healer rusasirah",
+                "owsla rusasirah"
             ],
             "relationship_status": [
                 "app/mentor"
@@ -7976,21 +8398,9 @@
                 ],
                 "mutual": false,
                 "values": [
-                    "dislike"
-                ],
-                "amount": 5
-            },
-            {
-                "cats_to": [
-                    "r_c"
-                ],
-                "cats_from": [
-                    "m_c"
-                ],
-                "mutual": false,
-                "values": [
                     "trust",
-                    "comfort"
+                    "comfort",
+                    "like"
                 ],
                 "amount": -5
             },
@@ -8003,7 +8413,7 @@
                 ],
                 "mutual": false,
                 "values": [
-                    "platonic"
+                    "like"
                 ],
                 "amount": 5
             }
@@ -8026,7 +8436,7 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "r_c found a little patch of acc_plural and decided to gift them to m_c.",
         "new_accessory": [
             "POPPY",
@@ -8078,13 +8488,13 @@
             "newleaf",
             "greenleaf"
         ],
-        "subtype": [
+        "sub_type": [
             "accessory"
         ],
         "tags": [
-            "romantic"
+            "romance"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "Flowers can be so pretty, even before they bloom, just like m_c. r_c blushes as {PRONOUN/r_c/subject} {VERB/r_c/see/sees} m_c wear the acc_singular {PRONOUN/r_c/subject} got {PRONOUN/m_c/object}.",
         "new_accessory": [
             "BULB WHITE",
@@ -8117,7 +8527,7 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "romantic",
+                    "romance",
                     "comfort",
                     "trust"
                 ],
@@ -8133,8 +8543,8 @@
         "season": [
             "any"
         ],
-        "weight": 20,
-        "event_text": "m_c thinks Inle is trying to warn {PRONOUN/m_c/object} about r_c.",
+        "frequency": 4,
+        "event_text": "m_c thinks StarClan is trying to warn {PRONOUN/m_c/object} about r_c.",
         "m_c": {
             "age": [
                 "adolescent",
@@ -8166,9 +8576,9 @@
                 ],
                 "mutual": true,
                 "values": [
-                    "dislike"
+                    "like"
                 ],
-                "amount": 20
+                "amount": -20
             }
         ]
     },
@@ -8183,8 +8593,8 @@
         "sub_type": [
             "accessory"
         ],
-        "weight": 10,
-        "event_text": "A stray acc_singular in its last moments of life leads m_c to a new herb gathering spot {PRONOUN/m_c/subject} {VERB/m_c/have/has} never found before. It gives a final flutter before it gently descends to the ground. Is it a sign from Inle, or a coincidence? m_c doesn't know, but {PRONOUN/m_c/subject} {VERB/m_c/decide/decides} to keep it with {PRONOUN/m_c/object} in its honor.",
+        "frequency": 2,
+        "event_text": "A stray acc_singular in its last moments of life leads m_c to a new herb gathering spot {PRONOUN/m_c/subject} {VERB/m_c/have/has} never found before. It gives a final flutter before it gently descends to the ground. Is it a sign from StarClan, or a coincidence? m_c doesn't know, but {PRONOUN/m_c/subject} {VERB/m_c/decide/decides} to keep it with {PRONOUN/m_c/object} in its honor.",
         "new_accessory": [
             "BLACK CICADA",
             "CICADA WINGS",
@@ -8213,10 +8623,7 @@
         "season": [
             "any"
         ],
-        "sub_type": [
-            "owsla"
-        ],
-        "weight": 40,
+        "weight": 4,
         "event_text": "m_c travels to o_c_n to resolve some recent border disputes.",
         "m_c": {
             "age": [
@@ -8224,7 +8631,7 @@
             ],
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "other_clan": {
@@ -8242,10 +8649,7 @@
         "season": [
             "any"
         ],
-        "sub_type": [
-            "owsla"
-        ],
-        "weight": 20,
+        "weight": 2,
         "event_text": "m_c travels to o_c_n to resolve some recent border disputes. The meeting goes better than expected, and m_c returns with a plan to solve the issue for good.",
         "m_c": {
             "age": [
@@ -8253,7 +8657,7 @@
             ],
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "other_clan": {
@@ -8271,10 +8675,7 @@
         "season": [
             "any"
         ],
-        "sub_type": [
-            "owsla"
-        ],
-        "weight": 10,
+        "weight": 2,
         "event_text": "m_c travels to o_c_n to resolve some recent border disputes. However, no progress was made.",
         "m_c": {
             "age": [
@@ -8282,7 +8683,7 @@
             ],
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "other_clan": {
@@ -8300,10 +8701,7 @@
         "season": [
             "any"
         ],
-        "sub_type": [
-            "owsla"
-        ],
-        "weight": 20,
+        "weight": 4,
         "event_text": "m_c travels to o_c_n to resolve some recent border disputes. However, it seems m_c only made o_c_n more upset.",
         "m_c": {
             "age": [
@@ -8311,7 +8709,7 @@
             ],
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "other_clan": {
@@ -8329,10 +8727,7 @@
         "season": [
             "any"
         ],
-        "sub_type": [
-            "owsla"
-        ],
-        "weight": 40,
+        "weight": 4,
         "event_text": "m_c travels to o_c_n to resolve some recent hunting disputes.",
         "m_c": {
             "age": [
@@ -8340,7 +8735,7 @@
             ],
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "other_clan": {
@@ -8358,10 +8753,7 @@
         "season": [
             "any"
         ],
-        "sub_type": [
-            "owsla"
-        ],
-        "weight": 20,
+        "weight": 4,
         "event_text": "m_c travels to o_c_n to resolve some recent hunting disputes. The meeting goes better than expected, and m_c returns with a plan to solve the issue for good.",
         "m_c": {
             "age": [
@@ -8369,7 +8761,7 @@
             ],
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "other_clan": {
@@ -8387,10 +8779,7 @@
         "season": [
             "any"
         ],
-        "sub_type": [
-            "owsla"
-        ],
-        "weight": 10,
+        "weight": 2,
         "event_text": "m_c travels to o_c_n to resolve some recent hunting disputes. However, no progress was made.",
         "m_c": {
             "age": [
@@ -8398,7 +8787,7 @@
             ],
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "other_clan": {
@@ -8416,10 +8805,7 @@
         "season": [
             "any"
         ],
-        "sub_type": [
-            "owsla"
-        ],
-        "weight": 20,
+        "weight": 4,
         "event_text": "m_c travels to o_c_n to resolve some recent hunting disputes. However, it seems m_c only made o_c_n more upset.",
         "m_c": {
             "age": [
@@ -8427,7 +8813,7 @@
             ],
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "other_clan": {
@@ -8445,10 +8831,7 @@
         "season": [
             "any"
         ],
-        "sub_type": [
-            "owsla"
-        ],
-        "weight": 40,
+        "weight": 4,
         "event_text": "m_c travels to o_c_n to resolve some recent herb-gathering disputes.",
         "m_c": {
             "age": [
@@ -8456,7 +8839,7 @@
             ],
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "other_clan": {
@@ -8474,10 +8857,7 @@
         "season": [
             "any"
         ],
-        "sub_type": [
-            "owsla"
-        ],
-        "weight": 20,
+        "weight": 4,
         "event_text": "m_c travels to o_c_n to resolve some recent herb-gathering disputes. The meeting goes better than expected, and m_c returns with a plan to solve the issue for good.",
         "m_c": {
             "age": [
@@ -8485,7 +8865,7 @@
             ],
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "other_clan": {
@@ -8503,10 +8883,7 @@
         "season": [
             "any"
         ],
-        "sub_type": [
-            "owsla"
-        ],
-        "weight": 10,
+        "weight": 2,
         "event_text": "m_c travels to o_c_n to resolve some recent herb-gathering disputes. However, no progress was made.",
         "m_c": {
             "age": [
@@ -8514,7 +8891,7 @@
             ],
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "other_clan": {
@@ -8532,10 +8909,7 @@
         "season": [
             "any"
         ],
-        "sub_type": [
-            "owsla"
-        ],
-        "weight": 20,
+        "weight": 4,
         "event_text": "m_c travels to o_c_n to resolve some recent herb-gathering disputes. However, it seems m_c only made o_c_n more upset.",
         "m_c": {
             "age": [
@@ -8543,7 +8917,7 @@
             ],
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "other_clan": {
@@ -8561,10 +8935,7 @@
         "season": [
             "any"
         ],
-        "sub_type": [
-            "owsla"
-        ],
-        "weight": 40,
+        "weight": 4,
         "event_text": "m_c travels to o_c_n to resolve some recent personal disputes.",
         "m_c": {
             "age": [
@@ -8572,7 +8943,7 @@
             ],
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "other_clan": {
@@ -8590,10 +8961,7 @@
         "season": [
             "any"
         ],
-        "sub_type": [
-            "owsla"
-        ],
-        "weight": 20,
+        "weight": 4,
         "event_text": "m_c travels to o_c_n to resolve some recent personal disputes. The meeting goes better than expected, and m_c returns with a plan to solve the issue for good.",
         "m_c": {
             "age": [
@@ -8601,7 +8969,7 @@
             ],
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "other_clan": {
@@ -8619,10 +8987,7 @@
         "season": [
             "any"
         ],
-        "sub_type": [
-            "owsla"
-        ],
-        "weight": 10,
+        "weight": 2,
         "event_text": "m_c travels to o_c_n to resolve some recent personal disputes. However, no progress was made.",
         "m_c": {
             "age": [
@@ -8630,7 +8995,7 @@
             ],
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "other_clan": {
@@ -8648,10 +9013,7 @@
         "season": [
             "any"
         ],
-        "sub_type": [
-            "owsla"
-        ],
-        "weight": 20,
+        "weight": 4,
         "event_text": "m_c travels to o_c_n to resolve some recent personal disputes. However, it seems m_c only made o_c_n more upset.",
         "m_c": {
             "age": [
@@ -8659,7 +9021,7 @@
             ],
             "status": [
                 "owsla",
-                "owsla rusasi"
+                "owsla rusasirah"
             ]
         },
         "other_clan": {
@@ -8680,12 +9042,9 @@
         "sub_type": [
             "transition"
         ],
-        "weight": 10,
-        "event_text": "m_c has realized that doe doesn't describe how {PRONOUN/m_c/subject} {VERB/m_c/feel/feels} anymore.",
+        "frequency": 4,
+        "event_text": "m_c has realized that she-cat doesn't describe how {PRONOUN/m_c/subject} {VERB/m_c/feel/feels} anymore.",
         "m_c": {
-            "age": [
-                "young adult"
-            ],
             "gender": [
                 "female"
             ]
@@ -8706,8 +9065,8 @@
         "sub_type": [
             "transition"
         ],
-        "weight": 10,
-        "event_text": "m_c has realized that buck doesn't describe how {PRONOUN/m_c/subject} {VERB/m_c/feel/feels} anymore.",
+        "frequency": 4,
+        "event_text": "m_c has realized that tom doesn't describe how {PRONOUN/m_c/subject} {VERB/m_c/feel/feels} anymore.",
         "m_c": {
             "gender": [
                 "male"
@@ -8729,7 +9088,7 @@
         "sub_type": [
             "war"
         ],
-        "weight": 10,
+        "frequency": 2,
         "event_text": "A o_c_n rabbit is caught in the territory, m_c scruffed in their jaws. The rabbit found the kit alone on the border and just wanted to bring {PRONOUN/m_c/object} home. No matter what their chief rabbit might say about c_n, {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} just an innocent kit. The rabbit is escorted off the territory as m_c settles back into burrow, only slightly dinged up from {PRONOUN/m_c/poss} adventure.",
         "m_c": {
             "status": [
@@ -8764,12 +9123,12 @@
         "sub_type": [
             "war"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "Whilst out collecting herbs, m_c stumbles upon a o_c_n rabbit attempting to pack a wound with leaves. Their movements are slow and uncoordinated - without help, they'll soon be hunting with their ancestors. It would be so easy to just... walk past. But {PRONOUN/m_c/subject} can't. It's just a few pieces of cobweb and a few moments of {PRONOUN/m_c/poss} time... nobody has to know.",
         "m_c": {
             "status": [
                 "healer",
-                "healer rusasi"
+                "healer rusasirah"
             ],
             "trait": [
                 "righteous",
@@ -8798,12 +9157,12 @@
         "sub_type": [
             "war"
         ],
-        "weight": 20,
-        "event_text": "Whilst out collecting herbs, m_c stumbles upon a o_c_n rabbit attempting to pack a wound with leaves. Their movements are slow and uncoordinated - without help, they'll soon be hunting with their ancestors. It would be so easy to just... walk past. But {PRONOUN/m_c/subject} can't. A few berries placed into their jaws with some soothing words... and that's one less o_c_n rabbit to deal with.",
+        "frequency": 4,
+        "event_text": "Whilst out collecting herbs, m_c stumbles upon a o_c_n rabbit attempting to pack a wound with leaves. Their movements are slow and uncoordinated - without help, they'll soon be hunting with their ancestors. It would be so easy to just... walk past. But {PRONOUN/m_c/subject} can't. A few berries placed into their jaws with some soothing words... and that's one less o_c_n cat to deal with.",
         "m_c": {
             "status": [
                 "healer",
-                "healer rusasi"
+                "healer rusasirah"
             ],
             "trait": [
                 "fierce",
@@ -8833,12 +9192,12 @@
         "sub_type": [
             "war"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "A severely injured o_c_n rabbit stumbles upon m_c, out collecting herbs. It's clear that no amount of intervention will save them. m_c soothingly offers a pawful of small red berries to ease their journey to Silverpelt.",
         "m_c": {
             "status": [
                 "healer",
-                "healer rusasi"
+                "healer rusasirah"
             ],
             "trait": [
                 "daring",
@@ -8869,12 +9228,12 @@
         "sub_type": [
             "war"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "A severely injured o_c_n rabbit stumbles upon m_c, out collecting herbs. It's clear that no amount of intervention will save them. m_c tells them this with no small amount of personal satisfaction, watching passively as they slowly succumb.",
         "m_c": {
             "status": [
                 "healer",
-                "healer rusasi"
+                "healer rusasirah"
             ],
             "trait": [
                 "bloodthirsty",
@@ -8901,13 +9260,13 @@
         "sub_type": [
             "war"
         ],
-        "weight": 20,
-        "event_text": "m_c is discovered gambolling along the border with an rusasi from o_c_n! Despite the reminder that the two Clans are far from allies, m_c loudly declares that {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} not giving up {PRONOUN/m_c/poss} friend over some dumb war.",
+        "frequency": 4,
+        "event_text": "m_c is discovered gambolling along the border with an rusasirah from o_c_n! Despite the reminder that the two Warrens are far from allies, m_c loudly declares that {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} not giving up {PRONOUN/m_c/poss} friend over some dumb war.",
         "m_c": {
             "status": [
-                "rusasi",
-                "healer rusasi",
-                "owsla rusasi"
+                "rusasirah",
+                "healer rusasirah",
+                "owsla rusasirah"
             ],
             "trait": [
                 "troublesome",
@@ -8934,11 +9293,10 @@
             ],
             "mutual": false,
             "values": [
-                "platonic",
+                "like",
                 "trust"
             ],
-            "amount": -5,
-            "log": "Was upset when m_c defied the Warren and maintained a friendship during war."
+            "amount": -5
         },
         "other_clan": {
             "changed": 2
@@ -8955,13 +9313,13 @@
         "sub_type": [
             "war"
         ],
-        "weight": 20,
-        "event_text": "m_c is discovered gambolling along the border with an rusasi from o_c_n! m_c's tail twitches as {PRONOUN/m_c/subject} {VERB/m_c/apologize/apologizes}, plucking up the courage to insist that {PRONOUN/m_c/poss} friend isn't like the rest of o_c_n at all! This war sucks.",
+        "frequency": 4,
+        "event_text": "m_c is discovered gambolling along the border with an rusasirah from o_c_n! m_c's tail twitches as {PRONOUN/m_c/subject} {VERB/m_c/apologize/apologizes}, plucking up the courage to insist that {PRONOUN/m_c/poss} friend isn't like the rest of o_c_n at all! This war sucks.",
         "m_c": {
             "status": [
-                "rusasi",
-                "healer rusasi",
-                "owsla rusasi"
+                "rusasirah",
+                "healer rusasirah",
+                "owsla rusasirah"
             ],
             "trait": [
                 "charismatic",
@@ -8984,11 +9342,13 @@
             ],
             "mutual": false,
             "values": [
-                "platonic",
+                "like",
                 "trust"
             ],
             "amount": -5,
-            "log": "Was upset when m_c defied the Warren and maintained a friendship during war."
+            "log": {
+                "cats_from": "Was upset when m_c defied the Warren and maintained a friendship during war."
+            }
         },
         "other_clan": {
             "changed": 2
@@ -9005,8 +9365,8 @@
         "sub_type": [
             "war"
         ],
-        "weight": 20,
-        "event_text": "m_c is plagued by strange dreams where the chief rabbits of o_c_n and c_n come together peacefully to trade fresh-kill.",
+        "frequency": 4,
+        "event_text": "m_c is plagued by strange dreams where the leaders of o_c_n and c_n come together peacefully to trade fresh-kill.",
         "m_c": {
             "status": [
                 "any"
@@ -9041,13 +9401,13 @@
         "sub_type": [
             "war"
         ],
-        "weight": 20,
-        "event_text": "m_c is discovered gambolling along the border with an rusasi from o_c_n! m_c deflates as {PRONOUN/m_c/subject} {VERB/m_c/are/is} berated in front of the entire Warren for consorting with the enemy in the middle of a war... but it's clear that nobody really blames m_c for something as innocent as friendship in such difficult times.",
+        "frequency": 4,
+        "event_text": "m_c is discovered gambolling along the border with an rusasirah from o_c_n! m_c deflates as {PRONOUN/m_c/subject} {VERB/m_c/are/is} berated in front of the entire Warren for consorting with the enemy in the middle of a war... but it's clear that nobody really blames m_c for something as innocent as friendship in such difficult times.",
         "m_c": {
             "status": [
-                "rusasi",
-                "healer rusasi",
-                "owsla rusasi"
+                "rusasirah",
+                "healer rusasirah",
+                "owsla rusasirah"
             ]
         },
         "other_clan": {
@@ -9066,7 +9426,7 @@
             "war",
             "accessory"
         ],
-        "weight": 5,
+        "frequency": 1,
         "event_text": "During a meeting, a o_c_n rabbit pushes acc_plural roughly into m_c's pelt with a derisive sniff and a snide remark... but everyone watching knows well that the gesture is genuine. It does suit m_c, after all.",
         "m_c": {
             "status": [
@@ -9102,7 +9462,7 @@
         "tags": [
             "warren:rabbit"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "More rabbits have been posted around the edges of burrow to keep watch on m_c's order",
         "m_c": {
             "status": [
@@ -9137,7 +9497,7 @@
         "sub_type": [
             "war"
         ],
-        "weight": 20,
+        "frequency": 4,
         "event_text": "m_c has been assigning more rabbits to watch the entrances into burrow.",
         "m_c": {
             "status": [
@@ -9168,8 +9528,8 @@
         "sub_type": [
             "war"
         ],
-        "weight": 10,
-        "event_text": "A skirmish with o_c_n was interrupted by a dog. The two Clans were forced to work together to drive it off. ",
+        "frequency": 2,
+        "event_text": "A skirmish with o_c_n was interrupted by a dog. The two Warrens were forced to work together to drive it off. ",
         "m_c": {
             "status": [
                 "rabbit"

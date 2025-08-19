@@ -18,7 +18,7 @@
         "decline_text": "A leaf-fall rain shower chooses that moment to break - thematic, perhaps, but wet. The rabbits decide to pick up the story some other time.",
         "success_outcomes": [
             {
-                    "text": "At first, few but the healer rabbits noticed how harsh this leaf-fall was: the snows early, the prey scarce. But all rabbits noticed on the day Inle hissed - the great sun itself went dark under their anger. All paid heed to the omens then, and the Clans turned back to Inle, begging for life and sun to return. They learned a lesson not soon forgotten.",
+                    "text": "At first, few but the healer rabbits noticed how harsh this leaf-fall was: the snows early, the prey scarce. But all rabbits noticed on the day Inle hissed - the great sun itself went dark under their anger. All paid heed to the omens then, and the Warrens turned back to Inle, begging for life and sun to return. They learned a lesson not soon forgotten.",
                     "exp": 40,
                     "weight": 20,
                     "relationships": [
@@ -34,7 +34,7 @@
             ],
             "fail_outcomes": [
                 {
-                    "text": "r_c refuses to believe their ancestors ever blotted out the sun - not that they couldn't, but that they wouldn't ever hurt the Clans, their own beloved descendants.",
+                    "text": "r_c refuses to believe their ancestors ever blotted out the sun - not that they couldn't, but that they wouldn't ever hurt the Warrens, their own beloved descendants.",
                     "exp": 0,
                     "weight": 20,
                     "relationships": [
@@ -42,7 +42,7 @@
                             "cats_to": ["r_c"],
                             "cats_from": ["p_l"],
                             "mutual": false,
-                            "values": ["respect", "platonic"],
+                            "values": ["respect", "like"],
                             "amount": 5
                         }
                     ]
@@ -60,15 +60,8 @@
                             "cats_to": ["r_c"],
                             "cats_from": ["p_l"],
                             "mutual": false,
-                            "values": ["respect", "trust", "platonic"],
+                            "values": ["respect", "trust", "like"],
                             "amount": -5
-                        },
-                        {
-                            "cats_to": ["r_c"],
-                            "cats_from": ["p_l"],
-                            "mutual": false,
-                            "values": ["dislike"],
-                            "amount": 5
                         },
                         {
                             "cats_to": ["r_c"],

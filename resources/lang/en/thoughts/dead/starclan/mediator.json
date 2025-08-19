@@ -6,8 +6,8 @@
             "Is a bit exasperated upon watching c_n's arguments",
             "Wishes {PRONOUN/m_c/subject} could help r_c solve {PRONOUN/r_c/poss} conflicts",
             "Is eagerly listening to gossip surrounding another Warren",
-            "Wants to solve the disagreements between c_n and the surrounding Clans",
-            "Is theorizing with other Inle rabbits on how to resolve the problems within the Clans"
+            "Wants to solve the disagreements between c_n and the surrounding Warrens",
+            "Is theorizing with other Inle rabbits on how to resolve the problems within the Warrens"
         ],
         "random_living_status": [
             "living"
@@ -32,7 +32,7 @@
         "thoughts": [
             "Feels bored and is trying to use {PRONOUN/m_c/poss} skills to create drama in Inle",
             "Is getting reprimanded by another Inle rabbit for walking in r_c's dreams to meddle with {PRONOUN/r_c/poss} relationships",
-            "Is attempting to stir up chaos between other Clans",
+            "Is attempting to stir up chaos between other Warrens",
             "Is trying to bite {PRONOUN/m_c/poss} tongue while speaking with other Inle rabbits"
         ],
         "main_trait_constraint": [
@@ -45,7 +45,7 @@
     {
         "id": "compassionate_mediator",
         "thoughts": [
-            "Has been thinking carefully about how to avoid pitting the Clans against each other",
+            "Has been thinking carefully about how to avoid pitting the Warrens against each other",
             "Worries that the newest prophecy is going to cause mayhem",
             "Wonders why everyone can't just get along"
         ],

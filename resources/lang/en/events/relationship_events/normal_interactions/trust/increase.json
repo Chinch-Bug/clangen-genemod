@@ -10,7 +10,7 @@
 			"m_c gets some good advice from r_c about something trivial.",
 			"r_c respects m_c's opinion despite disagreeing with it.",
 			"r_c vents about something trivial to m_c.",
-			"r_c sends a Clanmate to help m_c with something {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} struggling with.",
+			"r_c sends a Warrenmate to help m_c with something {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} struggling with.",
 			"r_c respects m_c's opinion despite disagreeing with it."
 		]
 	},
@@ -19,9 +19,9 @@
 		"intensity": "low",
 		"interactions": [
 			"m_c includes r_c in a conversation that r_c struggled to join.",
-			"r_c helps m_c hide from a Clanmate.",
+			"r_c helps m_c hide from a Warrenmate.",
 			"r_c makes a small sacrifice that benefits m_c.",
-			"r_c lets m_c know that a Clanmate was talking badly about {PRONOUN/m_c/object}.",
+			"r_c lets m_c know that a Warrenmate was talking badly about {PRONOUN/m_c/object}.",
 			"r_c tells m_c that {PRONOUN/r_c/subject} was worried about {PRONOUN/m_c/object}."
 		],
 		"reaction_random_cat": {
@@ -36,7 +36,7 @@
 		],
 		"reaction_random_cat": {
 			"trust": "increase",
-			"admiration": "increase"
+			"respect": "increase"
 		},
 		"main_status_constraint": [
 			"elder"
@@ -63,7 +63,7 @@
 			"m_c is grateful that r_c has kept a secret of {PRONOUN/m_c/inposs}.",
 			"r_c seems respectful of m_c's boundaries as of late.",
 			"r_c explained something in detail to m_c that others wouldn't explain to {PRONOUN/m_c/object}.",
-			"m_c overhears r_c dispelling a false rumor about a Clanmate.",
+			"m_c overhears r_c dispelling a false rumor about a Warrenmate.",
 			"r_c helps m_c fix a matted piece of fur on {PRONOUN/m_c/poss} back.",
 			"m_c notices how r_c is being helpful around burrow."
 		]
@@ -93,13 +93,13 @@
 			"m_c and r_c work well on a patrol together."
 		],
 		"main_status_constraint": [
-			"rusasi",
+			"rusasirah",
 			"rabbit",
 			"captain",
 			"chief rabbit"
 		],
 		"random_status_constraint": [
-			"rusasi",
+			"rusasirah",
 			"rabbit",
 			"captain",
 			"chief rabbit"
@@ -113,7 +113,7 @@
 		"interactions": [
 			"r_c is telling m_c in great detail how {PRONOUN/r_c/subject} would protect {PRONOUN/m_c/object} from any danger.",
 			"r_c gets riled up on m_c's behalf during a debate.",
-			"r_c snaps at a Clanmate for disagreeing with m_c."
+			"r_c snaps at a Warrenmate for disagreeing with m_c."
 		],
 		"random_trait_constraint": [
 			"fierce"
@@ -148,7 +148,7 @@
 		"interactions": [
 			"r_c is teaching m_c how to walk without making a sound.",
 			"r_c is showing m_c how to sneak up on {PRONOUN/m_c/poss} enemies.",
-			"r_c convinces m_c to help {PRONOUN/r_c/object} pull a prank on a Clanmate.",
+			"r_c convinces m_c to help {PRONOUN/r_c/object} pull a prank on a Warrenmate.",
 			"m_c is whispering quietly with r_c."
 		],
 		"random_trait_constraint": [
@@ -184,9 +184,9 @@
 		],
 		"random_status_constraint": [
 			"kit",
-			"rusasi",
-			"owsla rusasi",
-			"healer rusasi"
+			"rusasirah",
+			"owsla rusasirah",
+			"healer rusasirah"
 		],
 		"reaction_random_cat": {
 			"trust": "increase"
@@ -202,11 +202,11 @@
 		],
 		"main_status_constraint": [
 			"kit",
-			"rusasi",
+			"rusasirah",
 			"rabbit",
-			"owsla rusasi",
+			"owsla rusasirah",
 			"owsla",
-			"healer rusasi",
+			"healer rusasirah",
 			"healer",
 			"captain",
 			"chief rabbit"
@@ -266,22 +266,22 @@
 			"During the last gathering, m_c and r_c defended their Warren against another Warren's heckling."
 		],
 		"main_status_constraint": [
-			"rusasi",
+			"rusasirah",
 			"rabbit",
 			"owsla",
 			"healer",
 			"captain",
-			"healer rusasi",
+			"healer rusasirah",
 			"chief rabbit"
 		],
 		"random_status_constraint": [
-			"rusasi",
+			"rusasirah",
 			"rabbit",
 			"owsla",
 			"healer",
 			"captain",
 			"chief rabbit",
-			"healer rusasi"
+			"healer rusasirah"
 		],
 		"reaction_random_cat": {
 			"trust": "increase"
@@ -297,7 +297,7 @@
 			"m_c and r_c swap secrets with each other."
 		],
 		"relationship_constraint": [
-			"trust_30"
+			"listens_to"
 		],
 		"reaction_random_cat": {
 			"trust": "increase"
@@ -308,16 +308,16 @@
 		"intensity": "high",
 		"interactions": [
 			"m_c goes to r_c for advice about some recent troubles.",
-			"m_c asks r_c to help {PRONOUN/m_c/object} find the right words to say to a Clanmate.",
+			"m_c asks r_c to help {PRONOUN/m_c/object} find the right words to say to a Warrenmate.",
 			"m_c asks r_c for help resolving an argument with a friend."
 		],
 		"relationship_constraint": [
-			"trust_30"
+			"listens_to"
 		],
 		"random_status_constraint": [
 			"elder",
 			"owsla",
-			"owsla rusasi"
+			"owsla rusasirah"
 		]
 	},
 	{
@@ -329,18 +329,18 @@
 			"r_c has a lot of faith in m_c's skill."
 		],
 		"main_status_constraint": [
-			"healer rusasi",
+			"healer rusasirah",
 			"healer",
 			"chief rabbit"
 		],
 		"relationship_constraint": [
-			"trust_30"
+			"listens_to"
 		],
 		"random_status_constraint": [
 			"elder",
 			"rabbit",
 			"owsla",
-			"healer rusasi",
+			"healer rusasirah",
 			"healer",
 			"captain",
 			"chief rabbit"
@@ -355,7 +355,7 @@
 			"m_c talks with r_c about difficult decisions."
 		],
 		"relationship_constraint": [
-			"trust_50"
+			"trusts"
 		],
 		"main_status_constraint": [
 			"chief rabbit"
@@ -378,7 +378,7 @@
 			"m_c discusses plans to expand the territory with r_c."
 		],
 		"relationship_constraint": [
-			"trust_50"
+			"trusts"
 		],
 		"main_status_constraint": [
 			"chief rabbit"
@@ -403,11 +403,11 @@
 			"m_c asks r_c about a specific treatment method."
 		],
 		"main_status_constraint": [
-			"healer rusasi",
+			"healer rusasirah",
 			"healer"
 		],
 		"random_status_constraint": [
-			"healer rusasi",
+			"healer rusasirah",
 			"healer"
 		],
 		"reaction_random_cat": {
@@ -421,7 +421,7 @@
 			"m_c feels like {PRONOUN/m_c/subject} can count on r_c to give {PRONOUN/m_c/object} the best treatment possible."
 		],
 		"random_status_constraint": [
-			"healer rusasi",
+			"healer rusasirah",
 			"healer"
 		]
 	}

@@ -10,12 +10,12 @@
         "max_cats": 6,
         "min_max_status": {
            "normal adult": [1, 6],
-           "rusasi": [2, 6]
+           "rusasirah": [2, 6]
             },
         "weight": 40,
         "chance_of_success": 60,
         "pl_skill_constraint": ["STORY,1"],
-        "intro_text": "A winter gale howls outside burrow - today's rusasi lesson will occur in the shelter of the den. p_l gathers {PRONOUN/p_l/poss} audience close. On the longest night of leaf-bare, if a rabbit is unlucky, they might spot great white islands appearing out of the sea-mist.",
+        "intro_text": "A winter gale howls outside burrow - today's rusasirah lesson will occur in the shelter of the den. p_l gathers {PRONOUN/p_l/poss} audience close. On the longest night of leaf-bare, if a rabbit is unlucky, they might spot great white islands appearing out of the sea-mist.",
         "decline_text": "app1 shivers, and goes to close a breach in the den walls before the warmth is driven out. Myths will have to wait.",
         "success_outcomes": [
             {
@@ -27,7 +27,7 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": true,
-                            "values": ["platonic", "comfort"],
+                            "values": ["like", "comfort"],
                             "amount": 10
                         },
                         {
@@ -43,13 +43,6 @@
                             "mutual": false,
                             "values": ["comfort"],
                             "amount": 5
-                        },
-                        {
-                            "cats_to": ["patrol"],
-                            "cats_from": ["patrol"],
-                            "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -5
                         }
                         ]
                 }
@@ -86,11 +79,11 @@
         "weight": 40,
         "chance_of_success": 60,
         "pl_skill_constraint": ["STORY,1", "LORE,1"],
-        "intro_text": "The waves crash outside burrow, an ever present noise brought into sharp focus by their unusual power and ferocity. The wind is blocked by burrow walls, but p_l's Clanmates have their fur puffed out regardless. Now isn't a good time to leave shelter.",
+        "intro_text": "The waves crash outside burrow, an ever present noise brought into sharp focus by their unusual power and ferocity. The wind is blocked by burrow walls, but p_l's Warrenmates have their fur puffed out regardless. Now isn't a good time to leave shelter.",
         "decline_text": "The patrol stays in their nests instead of training.",
         "success_outcomes": [
                 {
-                    "text": "Let us speak of the nursery tales, s_c begins. Of Clans founded amid driftwood and loss, of the moon giving her blessing to rabbits who swim under her gaze, of the magic of the sea, currently awful, but just as much awe inspiring. Outside it rages - but here in burrow, c_n is safe.",
+                    "text": "Let us speak of the nursery tales, s_c begins. Of Warrens founded amid driftwood and loss, of the moon giving her blessing to rabbits who swim under her gaze, of the magic of the sea, currently awful, but just as much awe inspiring. Outside it rages - but here in burrow, c_n is safe.",
                     "exp": 40,
                     "weight": 20,
                     "art": "bch_train_stormwaves",
@@ -101,7 +94,7 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": true,
-                            "values": ["platonic", "comfort"],
+                            "values": ["like", "comfort"],
                             "amount": 10
                         },
                         {
@@ -121,7 +114,7 @@
                         ]
                 },
                 {
-                    "text": "This day will be a day of heroes, s_c whispers, capturing {PRONOUN/s_c/poss} Clanmates' attention. Heroes born, or made, or found - such things always appear in c_n's history, a stranger arriving soaked from a storm, a new life brought into the world as winds howl outside, a rabbit rising to need. The storms mark it.",
+                    "text": "This day will be a day of heroes, s_c whispers, capturing {PRONOUN/s_c/poss} Warrenmates' attention. Heroes born, or made, or found - such things always appear in c_n's history, a stranger arriving soaked from a storm, a new life brought into the world as winds howl outside, a rabbit rising to need. The storms mark it.",
                     "exp": 40,
                     "weight": 20,
                     "art": "bch_train_stormwaves",

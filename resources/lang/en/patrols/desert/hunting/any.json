@@ -215,7 +215,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
         "intro_text": "r_c's mentor assesses them by sending them on a solo hunt.",
@@ -300,7 +300,7 @@
                 "prey": ["medium"]
             },
             {
-                "text": "r_c finds a fat, dumb, slow ground squirrel, and they can barely drag the thing back to burrow, but great Inle, it's juicy when they sit down to eat it with their Clanmates.",
+                "text": "r_c finds a fat, dumb, slow ground squirrel, and they can barely drag the thing back to burrow, but great Inle, it's juicy when they sit down to eat it with their Warrenmates.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["medium"]
@@ -369,7 +369,7 @@
                 "prey": ["medium"]
             },
             {
-                "text": "r_c finds a fat, dumb, slow ground squirrel, and they can barely drag the thing back to burrow, but great Inle, it's juicy when they sit down to eat it with their Clanmates. Purring, {PRONOUN/r_c/subject} {VERB/r_c/take/takes} the opportunity for a moment of peace, relaxing with their friends.",
+                "text": "r_c finds a fat, dumb, slow ground squirrel, and they can barely drag the thing back to burrow, but great Inle, it's juicy when they sit down to eat it with their Warrenmates. Purring, {PRONOUN/r_c/subject} {VERB/r_c/take/takes} the opportunity for a moment of peace, relaxing with their friends.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["medium"]
@@ -438,7 +438,7 @@
                 "prey": ["medium"]
             },
             {
-                "text": "r_c finds a fat, dumb, slow ground squirrel, and they can barely drag the thing back to burrow, but great Inle, it's juicy when they sit down to eat it with their Clanmates. Purring, {PRONOUN/r_c/subject} {VERB/r_c/take/takes} the opportunity for a moment of peace, relaxing with their friends.",
+                "text": "r_c finds a fat, dumb, slow ground squirrel, and they can barely drag the thing back to burrow, but great Inle, it's juicy when they sit down to eat it with their Warrenmates. Purring, {PRONOUN/r_c/subject} {VERB/r_c/take/takes} the opportunity for a moment of peace, relaxing with their friends.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["medium"]
@@ -1753,7 +1753,7 @@
         "min_cats": 1,
         "max_cats": 3,
         "min_max_status": {
-            "rusasi": [-1, -1]
+            "rusasirah": [-1, -1]
         },
         "weight": 5,
         "intro_text": "The patrol catches scent of a mouse nearby.",
@@ -1792,7 +1792,7 @@
         "min_cats": 1,
         "max_cats": 3,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "normal adult": [1, 6]
         },
         "weight": 5,
@@ -1801,7 +1801,7 @@
         "chance_of_success": 50,
         "success_outcomes": [
             {
-                "text": "r_c pounces on the mouse, with a squeak of surprise from both prey and rusasi.",
+                "text": "r_c pounces on the mouse, with a squeak of surprise from both prey and rusasirah.",
                 "exp": 10,
                 "weight": 20,
                 "prey": ["small"]
@@ -2074,13 +2074,6 @@
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["s_c"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["jealous"],
-                        "amount": -5
                     }
                 ]
             }
@@ -2136,7 +2129,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
         "intro_text": "r_c is tempted to eat the prey they just caught.",
@@ -2221,13 +2214,6 @@
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["warren", "patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             },
@@ -2243,13 +2229,6 @@
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["warren", "patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             }
@@ -2266,13 +2245,6 @@
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
-                    },
-                    {
-                        "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["warren", "patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
                     }
                 ],
                 "prey": ["very_small"]
@@ -2288,13 +2260,6 @@
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
-                    },
-                    {
-                        "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["warren", "patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
                     }
                 ],
                 "prey": ["very_small"]
@@ -2311,7 +2276,7 @@
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
         "intro_text": "r_c is tempted to eat the prey they just caught.",
@@ -2330,13 +2295,6 @@
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["warren", "patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             },
@@ -2352,13 +2310,6 @@
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["warren", "patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             }
@@ -2375,13 +2326,6 @@
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
-                    },
-                    {
-                        "cats_to": ["r_c", "r_c"],
-                        "cats_from": ["warren", "patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
                     }
                 ],
                 "prey": ["very_small"]
@@ -2399,7 +2343,7 @@
         "max_cats": 6,
         "min_max_status": {
            "normal adult": [1, 5],
-           "rusasi":[1, 5]
+           "rusasirah":[1, 5]
             },
         "weight": 40,
         "chance_of_success": 50,
@@ -2415,16 +2359,23 @@
                     "relationships": [
                         {
                             "cats_to": ["p_l"],
-                            "cats_from": ["patrol"],
+                            "cats_from": ["app1"],
                             "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -10
+                            "values": ["comfort", "trust", "respect"],
+                            "amount": 10
                         },
                         {
                             "cats_to": ["p_l"],
                             "cats_from": ["app1"],
                             "mutual": false,
-                            "values": ["comfort", "trust", "respect", "dislike"],
+                            "values": ["like"],
+                            "amount": -10
+                        },
+                        {
+                            "cats_to": ["p_l"],
+                            "cats_from": ["patrol"],
+                            "mutual": false,
+                            "values": ["like"],
                             "amount": 10
                         }
                     ]
@@ -2453,9 +2404,9 @@
                         }
                     ],
                     "history_text": {
-                        "scar": "m_c was permanently marked by the bite of a gila monster as an rusasi - but {PRONOUN/m_c/subject} survived.",
-                        "reg_death": "m_c died from the bite of a gila monster encountered on a hunt as a foolish rusasi.",
-                        "lead_death": "from the bite of a gila monster encountered on a hunt as a foolish rusasi"
+                        "scar": "m_c was permanently marked by the bite of a gila monster as an rusasirah - but {PRONOUN/m_c/subject} survived.",
+                        "reg_death": "m_c died from the bite of a gila monster encountered on a hunt as a foolish rusasirah.",
+                        "lead_death": "from the bite of a gila monster encountered on a hunt as a foolish rusasirah"
                         }
                 }
             ]

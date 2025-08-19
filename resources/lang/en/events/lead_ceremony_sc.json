@@ -15,7 +15,7 @@
       "tags": [],
       "lead_trait": [],
       "text": [
-        "m_c leaves to speak with Inle. {PRONOUN/m_c/subject/CAP} {VERB/m_c/close/closes} {PRONOUN/m_c/poss} eyes and {VERB/m_c/are/is} immediately surrounded by {PRONOUN/m_c/poss} loved ones, friends, and Clanmates who have passed on. Stars shine throughout their pelts, and their eyes are warm as they greet the new chief rabbit."
+        "m_c leaves to speak with Inle. {PRONOUN/m_c/subject/CAP} {VERB/m_c/close/closes} {PRONOUN/m_c/poss} eyes and {VERB/m_c/are/is} immediately surrounded by {PRONOUN/m_c/poss} loved ones, friends, and Warrenmates who have passed on. Stars shine throughout their pelts, and their eyes are warm as they greet the new chief rabbit."
       ]
     },
     "new_clan": {
@@ -71,7 +71,7 @@
       "tags": [],
       "lead_trait": [],
       "star_trait": ["faithful", "loving", "responsible", "thoughtful", "wise", "charismatic"],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "r_c pads up to the new chief rabbit, softly touching {PRONOUN/r_c/poss} nose to m_c's head. {PRONOUN/r_c/subject/CAP} {VERB/r_c/give/gives} a life for [virtue].",
@@ -84,7 +84,7 @@
       "tags": ["leader_parent"],
       "lead_trait": [],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain", "healer rusasi", "owsla rusasi"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain", "healer rusasirah", "owsla rusasirah"],
       "life_giving": [
         {
           "text": "m_c is breathless when {PRONOUN/m_c/subject} {VERB/m_c/see/sees} r_c approach. Fierce pride burns in r_c's eyes as {PRONOUN/r_c/subject} {VERB/r_c/greet/greets} {PRONOUN/r_c/poss} child, pressing {PRONOUN/r_c/poss} nose to m_c's forehead and giving {PRONOUN/m_c/object} a life for [virtue].",
@@ -110,7 +110,7 @@
       "tags": ["leader_child"],
       "lead_trait": [],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain", "healer rusasi", "owsla rusasi"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain", "healer rusasirah", "owsla rusasirah"],
       "life_giving": [
         {
           "text": "It feels like a dream when r_c emerges from the star-filled crowd. m_c can barely stand {PRONOUN/m_c/poss} ground, resisting the temptation to run forward and press into {PRONOUN/m_c/poss} kit's fur. Love shines in r_c's eyes as {PRONOUN/r_c/subject} {VERB/r_c/give/gives} a life for [virtue].",
@@ -123,7 +123,7 @@
       "tags": [],
       "lead_trait": ["bloodthirsty"],
       "star_trait": ["faithful", "loving", "responsible", "thoughtful", "wise", "charismatic"],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain", "healer rusasi", "owsla rusasi"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain", "healer rusasirah", "owsla rusasirah"],
       "life_giving": [
         {
           "text": "r_c stalks up to the new chief rabbit, eyes burning with unexpected ferocity. {PRONOUN/r_c/subject/CAP} {VERB/r_c/touch/touches} {PRONOUN/r_c/poss} nose to m_c's head, giving {PRONOUN/m_c/object} a life for [virtue]. m_c reels back with the emotion of the life that courses through {PRONOUN/m_c/object}.",
@@ -177,7 +177,7 @@
       "tags": [],
       "lead_trait": ["adventurous"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain", "healer rusasi", "owsla rusasi"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain", "healer rusasirah", "owsla rusasirah"],
       "life_giving": [
         {
           "text": "r_c presses {PRONOUN/r_c/poss} nose to m_c's forehead, offering a life for [virtue]. Before {PRONOUN/r_c/subject} {VERB/r_c/return/returns} to the line of Inle rabbits, {PRONOUN/r_c/subject} {VERB/r_c/whisper/whispers} to keep an eye on c_n, not just the horizons.",
@@ -194,7 +194,7 @@
       "tags": [],
       "lead_trait": [],
       "star_trait": ["adventurous"],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain", "healer rusasi", "owsla rusasi"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain", "healer rusasirah", "owsla rusasirah"],
       "life_giving": [
         {
           "text": "r_c rushes up to m_c's side like a whirlwind, {PRONOUN/r_c/poss} fur sticking up at all angles. {PRONOUN/r_c/subject/CAP} {VERB/r_c/give/gives} the new chief rabbit a life for [virtue] before dashing off into the crowd of starlight.",
@@ -207,7 +207,7 @@
       "tags": [],
       "lead_trait": ["ambitious"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain", "healer rusasi", "owsla rusasi"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain", "healer rusasirah", "owsla rusasirah"],
       "life_giving": [
         {
           "text": "r_c steps in front of m_c, a worried look crossing {PRONOUN/r_c/poss} face for a moment before {PRONOUN/r_c/subject} {VERB/r_c/shake/shakes} {PRONOUN/r_c/poss} head. {PRONOUN/r_c/subject/CAP} {VERB/r_c/press/presses} {PRONOUN/r_c/poss} muzzle against m_c's and {VERB/r_c/give/gives} a life for [virtue].",
@@ -224,7 +224,7 @@
       "tags": [],
       "lead_trait": ["bold"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain", "healer rusasi", "owsla rusasi"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain", "healer rusasirah", "owsla rusasirah"],
       "life_giving": [
         {
           "text": "Knowing that c_n may tread upon new ground under m_c's leadership, r_c carefully gives a life for [virtue] and urges caution before being so bold.",
@@ -245,7 +245,7 @@
       "tags": [],
       "lead_trait": ["calm"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain", "healer rusasi", "owsla rusasi"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain", "healer rusasirah", "owsla rusasirah"],
       "life_giving": [
         {
           "text": "m_c, recognized for {PRONOUN/m_c/poss} composure, greets r_c with a courteous nod as {PRONOUN/r_c/subject} approaches. Approval alight in {PRONOUN/r_c/poss} expression, r_c bestows upon m_c a life for [virtue]. As it settles within {PRONOUN/m_c/object}, {PRONOUN/m_c/subject} {VERB/m_c/feel/feels} a subtle yet powerful shift within, one of cool initiative.",
@@ -258,7 +258,7 @@
       "tags": [],
       "lead_trait": [],
       "star_trait": ["calm"],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain", "healer rusasi", "owsla rusasi"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain", "healer rusasirah", "owsla rusasirah"],
       "life_giving": [
         {
           "text": "r_c approaches gracefully, {PRONOUN/r_c/poss} serene presence washing over m_c like cool river water in greenleaf. In the moment of peace, r_c extends an offer: a life infused with the essence of [virtue].",
@@ -275,7 +275,7 @@
       "tags": [],
       "lead_trait": ["careful"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain", "healer rusasi", "owsla rusasi"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain", "healer rusasirah", "owsla rusasirah"],
       "life_giving": [
         {
           "text": "r_c steps forward to m_c, holding {PRONOUN/m_c/poss} gaze. Pressing {PRONOUN/r_c/poss} muzzle against m_c's, {PRONOUN/r_c/subject} {VERB/r_c/nod/nods} and {VERB/r_c/grant/grants} {PRONOUN/m_c/object} a life of [virtue].",
@@ -292,7 +292,7 @@
       "tags": [],
       "lead_trait": ["charismatic"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain", "healer rusasi", "owsla rusasi"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain", "healer rusasirah", "owsla rusasirah"],
       "life_giving": [
         {
           "text": "r_c can only hope that m_c uses {PRONOUN/m_c/poss} honeyed words and silver tongue well as {PRONOUN/r_c/subject} {VERB/r_c/give/gives} a life for [virtue].",
@@ -309,7 +309,7 @@
       "tags": [],
       "lead_trait": ["childish"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain", "healer rusasi", "owsla rusasi"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain", "healer rusasirah", "owsla rusasirah"],
       "life_giving": [
         {
           "text": "There is some doubt in r_c's eyes as {PRONOUN/r_c/subject} {VERB/r_c/consider/considers} the rabbit before {PRONOUN/r_c/object}. Eventually, attempting to stress the importance of leadership, {PRONOUN/r_c/subject} {VERB/r_c/give/gives} a life for [virtue].",
@@ -330,7 +330,7 @@
       "tags": [],
       "lead_trait": ["cold"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "r_c approaches m_c with narrowed eyes, slightly unsettled by {PRONOUN/m_c/poss} aloofness. m_c is startled by the radiant warmth that surges through {PRONOUN/m_c/poss} chest as {PRONOUN/m_c/object} {VERB/r_c/are/is} granted a life for [virtue]. For the first time in a long while, a smile softens {PRONOUN/m_c/poss} cold demeanor.",
@@ -343,7 +343,7 @@
       "tags": [],
       "lead_trait": [],
       "star_trait": ["cold"],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "The air grows crisp and brittle as r_c, a rabbit known for {PRONOUN/r_c/poss} cold demeanor, draws near. With a gaze as piercing as the leaf-bare moon, {PRONOUN/r_c/subject} {VERB/r_c/examine/examines} m_c with caution, gifting a life for [virtue].",
@@ -360,7 +360,7 @@
       "tags": [],
       "lead_trait": ["compassionate"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "The rabbits of Inle are well aware of m_c's compassionate nature. r_c steps forward and gives the new chief rabbit a life for [virtue], whispering to keep {PRONOUN/m_c/poss} heart pure and open to others.",
@@ -373,7 +373,7 @@
       "tags": [],
       "lead_trait": [],
       "star_trait": ["compassionate"],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "Stars flicker in r_c's fur and pride lights {PRONOUN/r_c/poss} friendly gaze. {PRONOUN/r_c/subject/CAP} {VERB/r_c/give/gives} m_c a life for [virtue], the sensation like a warm nest surrounded by loved ones.",
@@ -390,7 +390,7 @@
       "tags": [],
       "lead_trait": ["confident"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "Warning that overconfidence can be a slow and insidious killer, r_c gives m_c a life for [virtue].",
@@ -407,7 +407,7 @@
       "tags": [],
       "lead_trait": ["daring"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "Urging caution and care upon the path {PRONOUN/m_c/subject} {VERB/m_c/tread/treads}, r_c gives the new chief rabbit a life for [virtue].",
@@ -424,7 +424,7 @@
       "tags": [],
       "lead_trait": ["fierce", "bloodthirsty"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "Not all battles must end in death. Not all problems can be dealt with claws alone. r_c hopes that m_c will remember this as the life of [virtue] is given.",
@@ -441,7 +441,7 @@
       "tags": [],
       "lead_trait": ["insecure"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "r_c advances, gently nudging m_c to correct {PRONOUN/m_c/poss} posture to one that emanates confidence and commands respect. Only then does r_c grant a life for [virtue], hoping it will remind m_c of {PRONOUN/m_c/poss} worth and the faith c_n has in {PRONOUN/m_c/object}.",
@@ -454,7 +454,7 @@
       "tags": [],
       "lead_trait": ["lonesome"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "r_c gazes at the lonesome chief rabbit with a deep sympathy as {PRONOUN/r_c/subject} {VERB/r_c/approach/approaches}, sensing the weight of {PRONOUN/m_c/poss} solitude. m_c's eyes begin to well up as a life for [virtue] flows through {PRONOUN/m_c/object}, a warm embrace that wards off the cold isolation, even if for a brief moment.",
@@ -467,7 +467,7 @@
       "tags": [],
       "lead_trait": ["loving"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "r_c approaches m_c, nodding in respect to the new chief rabbit. {PRONOUN/r_c/subject/CAP} {VERB/r_c/touch/touches} {PRONOUN/r_c/poss} nose to m_c's forehead and grants a life for [virtue]. In a parting whisper, r_c murmurs that {PRONOUN/m_c/poss} loving nature will shelter the Warren in dark times.",
@@ -484,7 +484,7 @@
       "tags": [],
       "lead_trait": [],
       "star_trait": ["loving"],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "m_c's ears perk up as {PRONOUN/m_c/subject} {VERB/m_c/begin/begins} to hear a deep, resonant rumbling. Reciprocating the intense purr, m_c gently bumps heads with r_c, a rabbit known for the endless love {PRONOUN/r_c/subject} {VERB/r_c/hold/holds} for {PRONOUN/r_c/poss} Warren. A warm, sweet feeling cascades over m_c as {PRONOUN/m_c/subject} {VERB/m_c/receive/receives} a life for [virtue].",
@@ -501,7 +501,7 @@
       "tags": [],
       "lead_trait": ["loyal"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "m_c squares {PRONOUN/m_c/poss} shoulders, standing up as straight as {PRONOUN/m_c/subject} can, as r_c approaches. r_c's whiskers twitch in amusement as {PRONOUN/r_c/subject} {VERB/r_c/give/gives} a life for [virtue].",
@@ -518,7 +518,7 @@
       "tags": [],
       "lead_trait": ["nervous"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "m_c tries to keep {PRONOUN/m_c/poss} whiskers from trembling as r_c pads forward. r_c looks at {PRONOUN/m_c/object} sympathetically before pressing {PRONOUN/r_c/poss} nose to m_c's head, giving a life for [virtue]. {PRONOUN/r_c/subject/CAP} {VERB/r_c/tell/tells} {PRONOUN/m_c/object} that {PRONOUN/m_c/poss} Warren needs {PRONOUN/m_c/object} now.",
@@ -539,7 +539,7 @@
       "tags": [],
       "lead_trait": ["playful"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "Endeared by m_c's playful nature and kit-like wonder at the world, r_c happily gives the new chief rabbit a life for [virtue].",
@@ -556,10 +556,10 @@
       "tags": [],
       "lead_trait": [],
       "star_trait": ["responsible"],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
-          "text": "m_c looks up as r_c pads towards {PRONOUN/m_c/object}. r_c dips {PRONOUN/m_c/poss} head and offers a life for [virtue]. {PRONOUN/r_c/subject/CAP} {VERB/r_c/remark/remarks} that, although {PRONOUN/m_c/poss} Clanmates may push {PRONOUN/m_c/object} to the very edge sometimes, a chief rabbit must remain firm yet fair.",
+          "text": "m_c looks up as r_c pads towards {PRONOUN/m_c/object}. r_c dips {PRONOUN/m_c/poss} head and offers a life for [virtue]. {PRONOUN/r_c/subject/CAP} {VERB/r_c/remark/remarks} that, although {PRONOUN/m_c/poss} Warrenmates may push {PRONOUN/m_c/object} to the very edge sometimes, a chief rabbit must remain firm yet fair.",
           "virtue": ["patience", "grace", "judgment", "justice"]
         }
       ]
@@ -569,7 +569,7 @@
       "tags": [],
       "lead_trait": ["responsible"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "A cool breeze buffets m_c's fur as {PRONOUN/m_c/subject} {VERB/m_c/watch/watches} r_c approach. r_c gives a life for [virtue]. {PRONOUN/r_c/subject/CAP} add that it may seem easy to follow the Rabbit Code, but the Code doesn't always have the answers.",
@@ -603,7 +603,7 @@
       "tags": [],
       "lead_trait": ["shameless"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text":  "r_c winces at a question m_c asks, tail low with second-claw embarrassment. Nonetheless, {PRONOUN/r_c/subject} {VERB/r_c/give/gives} a life for [virtue].",
@@ -637,7 +637,7 @@
       "tags": [],
       "lead_trait": [],
       "star_trait": ["sneaky"],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "Eyes aglow with mischief, r_c closes the distance, carrying a precious offering for m_c; a life imbued with the virtue of [virtue]. Like a fleeting wisp of smoke, r_c departs, leaving behind no trace of {PRONOUN/r_c/poss} enigmatic presence.",
@@ -654,7 +654,7 @@
       "tags": [],
       "lead_trait": ["strange"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "When r_c approaches, m_c's gaze is fixed on something in the misty distance. r_c has to clear {PRONOUN/r_c/poss} throat multiple times before the new chief rabbit's gaze snaps back to {PRONOUN/r_c/object}. Sighing, r_c gives {PRONOUN/m_c/object} a life for [virtue].",
@@ -684,7 +684,7 @@
       "tags": [],
       "lead_trait": [],
       "star_trait": ["strict"],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "m_c squares {PRONOUN/m_c/poss} jaw as r_c approaches, preparing to receive another life. r_c gazes at {PRONOUN/m_c/object}, an intensity in {PRONOUN/r_c/poss} eyes that makes m_c want to shrink back. r_c gives a life for [virtue], implying that m_c could use it.",
@@ -697,7 +697,7 @@
       "tags": [],
       "lead_trait": ["thoughtful"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "Valuing m_c's thoughtful nature, r_c hopes that {PRONOUN/m_c/subject} will not let the stress of leadership get to {PRONOUN/m_c/object} as the Inle rabbit gives a life for [virtue].",
@@ -714,7 +714,7 @@
       "tags": [],
       "lead_trait": ["troublesome"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "r_c grits {PRONOUN/r_c/poss} teeth to not chide m_c like a kit once more about {PRONOUN/m_c/poss} troublesome ways, and gives {PRONOUN/m_c/object} a life for [virtue].",
@@ -731,7 +731,7 @@
       "tags": [],
       "lead_trait": ["vengeful"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "r_c approaches, {PRONOUN/r_c/poss} starry gaze unreadable. {PRONOUN/r_c/subject/CAP} {VERB/r_c/grant/grants} m_c a life for [virtue], urging {PRONOUN/m_c/object} to remember that a chief rabbit's greatest power is found not in fury, but in the courage to forgive. The life blazes through m_c's chest, but soothing calm soon follows, easing {PRONOUN/m_c/poss} shaky breath.",
@@ -748,7 +748,7 @@
       "tags": [],
       "lead_trait": ["wise"],
       "star_trait": [],
-      "rank": ["rabbit", "elder", "healer", "owsla", "rusasi", "captain"],
+      "rank": ["rabbit", "elder", "healer", "owsla", "rusasirah", "captain"],
       "life_giving": [
         {
           "text": "There is no doubt in r_c's mind that m_c will become a chief rabbit of legend. It is {PRONOUN/r_c/poss} pleasure to give the new chief rabbit a life for [virtue].",
@@ -902,7 +902,7 @@
       "tags": [],
       "lead_trait": [],
       "star_trait": [],
-      "rank": ["rusasi", "healer rusasi", "owsla rusasi"],
+      "rank": ["rusasirah", "healer rusasirah", "owsla rusasirah"],
       "life_giving": [
         {
           "text": "A young rabbit emerges from the starry ranks to give a life. Starlight reflects in {PRONOUN/r_c/poss} youthful eyes. r_c stretches up to give a life for [virtue].",
@@ -914,7 +914,7 @@
       "tags": [],
       "lead_trait": ["bloodthirsty"],
       "star_trait": [],
-      "rank": ["rusasi", "healer rusasi", "owsla rusasi"],
+      "rank": ["rusasirah", "healer rusasirah", "owsla rusasirah"],
       "life_giving": [
         {
           "text": "A young rabbit emerges from the starry ranks to give a life. {PRONOUN/r_c/subject/CAP} {VERB/r_c/hesitate/hesitates}, before an older rabbit nudges {PRONOUN/r_c/object} forward, whispering something in {PRONOUN/r_c/poss} ear. r_c stretches up to give a life for [virtue].",
@@ -927,7 +927,7 @@
       "tags": ["leader_child"],
       "lead_trait": [],
       "star_trait": [],
-      "rank": ["rusasi", "healer rusasi", "owsla rusasi"],
+      "rank": ["rusasirah", "healer rusasirah", "owsla rusasirah"],
       "life_giving": [
         {
           "text": "r_c bounds out of the crowd, <i>mrrp</i>-ing as {PRONOUN/r_c/subject} {VERB/r_c/press/presses} {PRONOUN/r_c/self} into m_c's fur. m_c chokes back a startled laugh before returning the affection as r_c offers a life for [virtue].",

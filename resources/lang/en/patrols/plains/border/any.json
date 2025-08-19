@@ -29,7 +29,7 @@
                 ]
             },
             {
-                "text": "s_c immediately leaps to protect {PRONOUN/s_c/poss} Clanmates. {PRONOUN/s_c/poss/CAP} ferocity in battle terrifies the rogues. Realizing that they've sorely underestimated the Warren rabbits, the rogues turn tail and run.",
+                "text": "s_c immediately leaps to protect {PRONOUN/s_c/poss} Warrenmates. {PRONOUN/s_c/poss/CAP} ferocity in battle terrifies the rogues. Realizing that they've sorely underestimated the Warren rabbits, the rogues turn tail and run.",
                 "exp": 30,
                 "weight": 20,
                 "stat_skill": ["FIGHTER,3"],
@@ -481,7 +481,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
         "intro_text": "While on patrol, app1 notices some suspicious pawprints in the mud by the short grass.",
@@ -501,7 +501,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "It turns out they were app1's own pawprints... app1 huffs with embarrassment, suddenly grateful {PRONOUN/app1/subject}{VERB/app1/'re/'s} alone. {PRONOUN/app1/subject/CAP} {VERB/app1/do/does}n't want to look dumb in front of other rabbits.",
+                "text": "It turns out they were app1's own pawprints... app1 huffs with embarrassment, suddenly grateful {PRONOUN/app1/subject}{VERB/app1/'re/'s} alone. {PRONOUN/app1/subject/CAP} {VERB/app1/don't/doesn't} want to look dumb in front of other cats.",
                 "exp": 0,
                 "weight": 20
             },
@@ -871,7 +871,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
         "intro_text": "While on patrol, app1 notices some suspicious pawprints in the mud by the short grass.",
@@ -891,7 +891,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "It turns out they were app1's own pawprints... app1 huffs with embarrassment, suddenly grateful that {PRONOUN/app1/poss} patrol is so small. Fewer eyes watching that embarrassing moment. {PRONOUN/app1/subject/CAP} {VERB/app1/do/does}n't want to look dumb in front of other rabbits.",
+                "text": "It turns out they were app1's own pawprints... app1 huffs with embarrassment, suddenly grateful that {PRONOUN/app1/poss} patrol is so small. Fewer eyes watching that embarrassing moment. {PRONOUN/app1/subject/CAP} {VERB/app1/don't/doesn't} want to look dumb in front of other cats.",
                 "exp": 0,
                 "weight": 20
             },
@@ -1194,7 +1194,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
         "intro_text": "While on patrol, app1 notices some suspicious pawprints in the mud by the short grass.",
@@ -1232,7 +1232,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "It turns out they were app1's own pawprints... app1 huffs with embarrassment and can't meet the eyes of the rest of the patrol. {PRONOUN/app1/subject/CAP} {VERB/app1/do/does}n't want to look dumb in front of other rabbits.",
+                "text": "It turns out they were app1's own pawprints... app1 huffs with embarrassment and can't meet the eyes of the rest of the patrol. {PRONOUN/app1/subject/CAP} {VERB/app1/don't/doesn't} want to look dumb in front of other cats.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -1304,7 +1304,7 @@
                         "cats_to": ["r_c", "patrol"],
                         "cats_from": ["patrol", "patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort"],
+                        "values": ["like", "respect", "comfort"],
                         "amount": 10
                     }
                 ]
@@ -1319,13 +1319,13 @@
                         "cats_to": ["s_c", "patrol"],
                         "cats_from": ["patrol", "patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort"],
+                        "values": ["like", "respect", "comfort"],
                         "amount": 10
                     }
                 ]
             },
             {
-                "text": "It's a fantastic idea, making the patrol fly by as rabbits chat and laugh with their Clanmates, and everyone ends the day feeling much closer to each other.",
+                "text": "It's a fantastic idea, making the patrol fly by as rabbits chat and laugh with their Warrenmates, and everyone ends the day feeling much closer to each other.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -1339,7 +1339,7 @@
                         "cats_to": ["s_c", "patrol"],
                         "cats_from": ["patrol", "patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort"],
+                        "values": ["like", "respect", "comfort"],
                         "amount": 10
                     }
                 ]
@@ -1347,7 +1347,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "{PRONOUN/r_c/subject/CAP} {VERB/r_c/try/tries}, but {PRONOUN/r_c/poss} Clanmates seem unenthused, so r_c stops.",
+                "text": "{PRONOUN/r_c/subject/CAP} {VERB/r_c/try/tries}, but {PRONOUN/r_c/poss} Warrenmates seem unenthused, so r_c stops.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -1355,7 +1355,7 @@
                         "cats_to": ["r_c", "patrol"],
                         "cats_from": ["patrol", "patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort"],
+                        "values": ["like", "respect", "comfort"],
                         "amount": -10
                     }
                 ]
@@ -1377,7 +1377,7 @@
                         "cats_to": ["s_c", "patrol"],
                         "cats_from": ["patrol", "patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort"],
+                        "values": ["like", "respect", "comfort"],
                         "amount": -10
                     }
                 ]
@@ -1394,7 +1394,7 @@
         "min_cats": 1,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "healer rabbits": [-1, -1],
             "normal adult": [-1, -1]
         },
@@ -1451,7 +1451,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": true,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
                     }
                     
@@ -1494,15 +1494,8 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["respect", "platonic"],
+                            "values": ["respect", "like"],
                             "amount": 5
-                        },
-                        {
-                            "cats_to": ["p_l"],
-                            "cats_from": ["patrol"],
-                            "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -5
                         }
                     ]
                 },
@@ -1522,15 +1515,8 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["respect", "platonic"],
+                            "values": ["respect", "like"],
                             "amount": 5
-                        },
-                        {
-                            "cats_to": ["p_l"],
-                            "cats_from": ["patrol"],
-                            "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -5
                         }
                     ]
                 },
@@ -1550,15 +1536,8 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["respect", "platonic"],
+                            "values": ["respect", "like"],
                             "amount": 5
-                        },
-                        {
-                            "cats_to": ["p_l"],
-                            "cats_from": ["patrol"],
-                            "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -5
                         }
                     ]
                 },
@@ -1579,22 +1558,8 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["respect", "platonic"],
+                            "values": ["respect", "like"],
                             "amount": 5
-                        },
-                        {
-                            "cats_to": ["p_l"],
-                            "cats_from": ["patrol"],
-                            "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -5
-                        },
-                        {
-                            "cats_to": ["s_c"],
-                            "cats_from": ["patrol"],
-                            "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -5
                         }
                     ]
                 }

@@ -86,7 +86,7 @@
         "prevent_romance": "Limit romantic interactions and mate changes",
         "prevent_romance_tooltip": "Prevent rabbit from automatically taking a mate, breaking up, or having romantic interactions with non-mates.",
         "change_focus": "Change Focus",
-        "focus_prompt": "<b>Which Clans will you target?</b>",
+        "focus_prompt": "<b>Which Warrens will you target?</b>",
         "confirm_changes": "Confirm changes",
         "revert": "Revert",
         "display_change_confirm": "Do you want to keep these changes? Display changes will be reverted in %{count} seconds.",

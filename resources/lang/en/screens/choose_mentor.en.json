@@ -1,7 +1,7 @@
 {
     "en": {
         "heading": "Choose a new mentor for m_c",
-        "info": "If an rusasi is 6 moons old and their mentor is changed, they will not be listed as a former rusasi on their old mentor's profile. Rusasirahs without a mentor will have one automatically assigned next moon. An rusasi's mentor can have an influence on their trait and skill later in life.\nChoose your mentors wisely.",
+        "info": "If an rusasirah is 6 moons old and their mentor is changed, they will not be listed as a former rusasirah on their old mentor's profile. Rusasirahs without a mentor will have one automatically assigned next moon. An rusasirah's mentor can have an influence on their trait and skill later in life.\nChoose your mentors wisely.",
         "current_mentor": {
             "zero": "m_c does not have a mentor",
             "one": "m_c's current mentor is r_c"
@@ -13,7 +13,7 @@
         "no_current_apprentices": "No current rusasirahs",
         "no_current_apprentices_tooltip": "Only show mentors with no current rusasirahs",
         "no_former_apprentices": "No former rusasirahs",
-        "no_former_apprentices_tooltip": "Only show mentors who have not had an rusasi",
+        "no_former_apprentices_tooltip": "Only show mentors who have not had an rusasirah",
         "former_apps": {
             "zero": "",
             "one": "\n%{count} former app",

@@ -118,12 +118,12 @@ Here's an example of a future event being utilized for a murder event.
         "m_c": {
             "status": [
                 "kit",
-                "rusasi",
+                "rusasirah",
                 "rabbit",
                 "captain",
-                "healer rusasi",
+                "healer rusasirah",
                 "healer",
-                "owsla rusasi",
+                "owsla rusasirah",
                 "owsla",
                 "elder"
             ],

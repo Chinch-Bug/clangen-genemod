@@ -21,7 +21,7 @@
                 "art": "gen_bord_roguerunaway"
             },
             {
-                "text": "s_c immediately leaps to protect {PRONOUN/s_c/poss} Clanmates. {PRONOUN/s_c/poss/CAP} ferocity in battle terrifies the rogues. Realizing that they've sorely underestimated the Warren rabbits, the rogues turn tail and run.",
+                "text": "s_c immediately leaps to protect {PRONOUN/s_c/poss} Warrenmates. {PRONOUN/s_c/poss/CAP} ferocity in battle terrifies the rogues. Realizing that they've sorely underestimated the Warren rabbits, the rogues turn tail and run.",
                 "exp": 30,
                 "weight": 20,
                 "stat_skill": ["FIGHTER,3"],
@@ -403,7 +403,7 @@
                         "cats_to": ["r_c", "patrol"],
                         "cats_from": ["patrol", "patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort"],
+                        "values": ["like", "respect", "comfort"],
                         "amount": 10
                     }
                 ]
@@ -418,13 +418,13 @@
                         "cats_to": ["s_c", "patrol"],
                         "cats_from": ["patrol", "patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort"],
+                        "values": ["like", "respect", "comfort"],
                         "amount": 10
                     }
                 ]
             },
             {
-                "text": "It's a fantastic idea, making the patrol fly by as rabbits chat and laugh with their Clanmates, and everyone ends the day feeling much closer to each other.",
+                "text": "It's a fantastic idea, making the patrol fly by as rabbits chat and laugh with their Warrenmates, and everyone ends the day feeling much closer to each other.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -438,7 +438,7 @@
                         "cats_to": ["s_c", "patrol"],
                         "cats_from": ["patrol", "patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort"],
+                        "values": ["like", "respect", "comfort"],
                         "amount": 10
                     }
                 ]
@@ -454,7 +454,7 @@
                         "cats_to": ["r_c", "patrol"],
                         "cats_from": ["patrol", "patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort"],
+                        "values": ["like", "respect", "comfort"],
                         "amount": -10
                     }
                 ],
@@ -470,7 +470,7 @@
                         "cats_to": ["s_c", "patrol"],
                         "cats_from": ["patrol", "patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort"],
+                        "values": ["like", "respect", "comfort"],
                         "amount": -10
                     }
                 ]
@@ -503,7 +503,7 @@
       "weight": 5
     },
     {
-      "text": "As the patrol attempts to cross, a particularly nasty current rushes towards them. Acting fast, s_c navigates the current like a fish, assisting {PRONOUN/s_c/poss} Clanmates to safety. The patrol hastily finishes securing the border and returns to burrow a little shaken, but okay, thanks to s_c.",
+      "text": "As the patrol attempts to cross, a particularly nasty current rushes towards them. Acting fast, s_c navigates the current like a fish, assisting {PRONOUN/s_c/poss} Warrenmates to safety. The patrol hastily finishes securing the border and returns to burrow a little shaken, but okay, thanks to s_c.",
       "exp": 20,
       "weight": 20,
       "stat_skill": ["SWIMMER,3"],
@@ -518,7 +518,7 @@
       ]
     },
     {
-      "text": "While attempting to cross, the patrol is overcome by a strong rush of water. Without thinking of {PRONOUN/s_c/poss} own safety, s_c focuses on {PRONOUN/s_c/poss} struggling Clanmates. s_c valiantly rescues the entire patrol and collapses from exhaustion on the riverbed. In awe of s_c's selflessness the patrol helps {PRONOUN/s_c/object} back to burrow, and thanks to {PRONOUN/s_c/object} each one of them is alive.",
+      "text": "While attempting to cross, the patrol is overcome by a strong rush of water. Without thinking of {PRONOUN/s_c/poss} own safety, s_c focuses on {PRONOUN/s_c/poss} struggling Warrenmates. s_c valiantly rescues the entire patrol and collapses from exhaustion on the riverbed. In awe of s_c's selflessness the patrol helps {PRONOUN/s_c/object} back to burrow, and thanks to {PRONOUN/s_c/object} each one of them is alive.",
       "exp": 20,
       "weight": 20,
       "stat_trait": ["daring", "bold", "righteous"],
@@ -786,7 +786,7 @@
       ]
     },
     {
-      "text": "p_l turns away from the border, {PRONOUN/p_l/poss} heart pounding. {PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} to tell {PRONOUN/p_l/poss} clanmates before someone ends up in a wolf's belly.",
+      "text": "p_l turns away from the border, {PRONOUN/p_l/poss} heart pounding. {PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} to tell {PRONOUN/p_l/poss} warrenmates before someone ends up in a wolf's belly.",
       "exp": 40,
       "weight": 10,
       "relationships": [
@@ -971,7 +971,7 @@
       }
     },
     {
-      "text": "r_c turns to flee, but the desert is a terrible place to find cover. It's only by the grace of Inle that {PRONOUN/r_c/poss} eyes are drawn to a small cave, a rocky refuge as the wolves bark their fury outside. Not all of r_c makes it inside.",
+      "text": "r_c turns to flee and it's only by the grace of Starclan that {PRONOUN/r_c/poss} eyes are drawn to a small cave, a rocky refuge as the wolves bark their fury outside. Not all of r_c makes it inside.",
       "exp": 40,
       "weight": 20,
       "injury": [
@@ -982,8 +982,8 @@
         }
       ],
       "history_text": {
-        "scar": "This rabbit is missing half their tail from a large wolf biting it off.",
-        "reg_death": "This rabbit died from the wounds suffered in a confrontation with a large wolf.",
+        "scar": "This cat's tail was mangled by a wolf.",
+        "reg_death": "This cat died from the wounds suffered in a confrontation with a large wolf.",
         "lead_death": "died from a confrontation with a large wolf"
       }
     },

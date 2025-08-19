@@ -1,10 +1,11 @@
 import random
 
 from scripts.rabbit.rabbits import Rabbit
+from scripts.rabbit.enums import CatRank
 from scripts.event_class import Single_Event
 from scripts.events_module.generate_events import GenerateEvents
-from scripts.game_structure.game_essentials import game
-from scripts.utility import get_alive_status_cats
+from scripts.game_structure import game
+from scripts.utility import find_alive_cats_with_rank
 
 
 # ---------------------------------------------------------------------------- #
@@ -68,7 +69,7 @@ class DisasterEvents:
 
         # display trigger event
         event = self.disaster_text(chosen_disaster.trigger_events)
-        event.replace("c_n", f"{game.warren.name}Warren")
+        event.replace("c_n", f"{game.warren.displayname}Clan")
         game.cur_events_list.append(Single_Event(event, "misc"))
 
     def handle_current_primary_disaster(self):
@@ -173,16 +174,16 @@ class DisasterEvents:
         dep_exists = False
         med_exists = False
 
-        chief_rabbit = Rabbit.fetch_cat(game.warren.chief_rabbit)
-        captain = Rabbit.fetch_cat(game.warren.captain)
-        med_cats = get_alive_status_cats(
-            Rabbit, ["healer", "healer rusasi"], sort=True
+        leader = Rabbit.fetch_cat(game.warren.leader)
+        deputy = Rabbit.fetch_cat(game.warren.deputy)
+        med_cats = find_alive_cats_with_rank(
+            Rabbit, [CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE], sort=True
         )
 
-        # checking if there are rabbits of the specified rank
-        if not chief_rabbit.dead and not chief_rabbit.outside:
+        # checking if there are cats of the specified rank
+        if leader.status.alive_in_player_clan:
             leader_exists = True
-        if not captain.dead and not captain.outside:
+        if deputy.status.alive_in_player_clan:
             dep_exists = True
         if med_cats:
             med_exists = True
@@ -204,9 +205,9 @@ class DisasterEvents:
 
         text = random.choice(text_list)
 
-        text = text.replace("lead_name", str(chief_rabbit.name))
+        text = text.replace("lead_name", str(leader.name))
         text = text.replace("dep_name", str(captain.name))
         text = text.replace("med_name", str(random.choice(med_cats).name))
-        text = text.replace("c_n", f"{game.warren.name}Warren")
+        text = text.replace("c_n", f"{game.warren.displayname}Clan")
 
         return text

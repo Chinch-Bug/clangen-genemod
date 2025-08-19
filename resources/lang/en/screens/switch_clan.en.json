@@ -2,7 +2,7 @@
     "en": {
         "current_clan": {
             "zero": "There is no Warren currently loaded.",
-            "one": "The currently loaded Warren is %{warren}Warren."
+            "one": "The currently loaded Warren is %{warren}Warren\n(id: %{clan_id})."
         }
     }
 }

@@ -68,7 +68,7 @@
             false
         ],
         "12_moon_graduation": [
-            "Disable experience-based rusasi graduation",
+            "Disable experience-based rusasirah graduation",
             "All rusasirahs will graduate at 12 moons.",
             false
         ],
@@ -166,14 +166,14 @@
         ],
         "hunting":[
             "Feeding the Warren",
-            "The Warren will focus on hunting, each working rabbit (including captain and chief rabbit) and each working rusasi will gather additional prey on each moonskip.",
+            "The Warren will focus on hunting, each working rabbit (including captain and chief rabbit) and each working rusasirah will gather additional prey on each moonskip.",
             false,
             "hunting_focus",
             "#hunting_focus_button"
         ],
         "herb gathering":[
             "Assisting with Herb Gathering",
-            "The Warren will focus on herb gathering, each healer and healer rusasi will gather additional herbs on each moonskip due to extra help from the rabbits.",
+            "The Warren will focus on herb gathering, each healer and healer rusasirah will gather additional herbs on each moonskip due to extra help from the rabbits.",
             false,
             "herb_focus",
             "#herb_focus_button"
@@ -200,22 +200,22 @@
             "#rest_focus_button"
         ],
         "sabotage other clans": [
-            "Sabotaging Other Clans",
-            "Your owslas and rabbits work together to undermine the other Clans. Only available if you have a working owsla. Selecting this will also allow you to choose which Clans you target.",
+            "Sabotaging Other Warrens",
+            "Your owslas and rabbits work together to undermine the other Warrens. Only available if you have a working owsla. Selecting this will also allow you to choose which Warrens you target.",
             false,
             "sabotage_focus",
             "#sabotage_focus_button"
         ],
         "aid other clans": [
-            "Helping Other Clans",
-            "Your owsla and rabbits work together to help the other Clans with whatever they need. Only available if you have a working owsla. Selecting this will also allow you to choose which Clans you target.",
+            "Helping Other Warrens",
+            "Your owsla and rabbits work together to help the other Warrens with whatever they need. Only available if you have a working owsla. Selecting this will also allow you to choose which Warrens you target.",
             false,
             "help_focus",
             "#help_focus_button"
         ],
         "raid other clans": [
-            "Raiding Other Clans",
-            "Your rabbits begin crossing borders for resources. Prey and herbs will greatly increase each moonskip, but injuries and illnesses will increase and the relationship with other Clans decrease. You will be able to choose which Clans you target.",
+            "Raiding Other Warrens",
+            "Your rabbits begin crossing borders for resources. Prey and herbs will greatly increase each moonskip, but injuries and illnesses will increase and the relationship with other Warrens decrease. You will be able to choose which Warrens you target.",
             false,
             "raid_focus",
             "#raid_focus_button"

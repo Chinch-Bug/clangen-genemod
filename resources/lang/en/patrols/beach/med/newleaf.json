@@ -4,7 +4,7 @@
         "biome": ["beach"],
         "season": ["newleaf"],
         "types": ["herb_gathering"],
-        "tags": ["romantic"],
+        "tags": ["romance"],
         "patrol_art": "med_general_intro",
         "min_cats": 2,
         "max_cats": 6,
@@ -27,7 +27,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "respect"],
+                        "values": ["romance", "like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -44,7 +44,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["s_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "respect"],
+                        "values": ["romance", "like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -60,7 +60,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "respect"],
+                        "values": ["romance", "like", "respect"],
                         "amount": -5
                     }
                 ]
@@ -76,7 +76,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["s_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "respect"],
+                        "values": ["romance", "like", "respect"],
                         "amount": -5
                     }
                 ]
@@ -88,7 +88,7 @@
         "biome": ["beach"],
         "season": ["newleaf"],
         "types": ["herb_gathering"],
-        "tags": ["romantic"],
+        "tags": ["romance"],
         "patrol_art": "gen_flower_date_med_med",
         "min_cats": 2,
         "max_cats": 6,
@@ -113,7 +113,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "respect"],
+                        "values": ["romance", "like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -130,7 +130,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["s_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "respect"],
+                        "values": ["romance", "like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -146,7 +146,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "respect"],
+                        "values": ["romance", "like", "respect"],
                         "amount": -5
                     }
                 ]
@@ -162,7 +162,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["s_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "respect"],
+                        "values": ["romance", "like", "respect"],
                         "amount": -5
                     }
                 ]
@@ -179,7 +179,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -195,7 +195,7 @@
                 "herbs": ["betony"]
             },
             {
-                "text": "Betony is especially useful for rabbits who breathe with a rasp, and p_l is always keen to help Clanmates with the condition. With the great haul of betony p_l brings back, {PRONOUN/p_l/subject}'ll be able to dose {PRONOUN/p_l/poss} Clanmates and prevent coughs and chest infections.",
+                "text": "Betony is especially useful for rabbits who breathe with a rasp, and p_l is always keen to help Warrenmates with the condition. With the great haul of betony p_l brings back, {PRONOUN/p_l/subject}'ll be able to dose {PRONOUN/p_l/poss} Warrenmates and prevent coughs and chest infections.",
                 "exp": 10,
                 "weight": 5,
                 "herbs": ["many_herbs", "betony"]
@@ -226,15 +226,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "The betony plants stretch outwards, racing to take advantage of the newleaf sun. p_l takes the time to test app1 on {PRONOUN/app1/poss} knowledge of the leaves - soon these plants will flower and the purple blooms will identify them, but it's important to know them from leaf alone.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasirah, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -247,20 +247,13 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
             {
-                "text": "Betony is especially useful for rabbits who breathe with a rasp, and p_l is always keen to help Clanmates with the condition. With the great haul of betony p_l brings back, {PRONOUN/p_l/subject}'ll be able to dose {PRONOUN/p_l/poss} Clanmates and prevent coughs and chest infections. app1, however, is more interested in how betony prevents gross, runny dirt.",
+                "text": "Betony is especially useful for rabbits who breathe with a rasp, and p_l is always keen to help Warrenmates with the condition. With the great haul of betony p_l brings back, {PRONOUN/p_l/subject}'ll be able to dose {PRONOUN/p_l/poss} Warrenmates and prevent coughs and chest infections. app1, however, is more interested in how betony prevents gross, runny dirt.",
                 "exp": 20,
                 "weight": 5,
                 "herbs": ["many_herbs", "betony"],
@@ -269,15 +262,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -293,15 +279,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -316,15 +295,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -358,20 +330,13 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
             {
-                "text": "Betony is especially useful for rabbits who breathe with a rasp, and p_l is always keen to help Clanmates with the condition. With the great haul of betony p_l's patrol brings back, {PRONOUN/p_l/subject}'ll be able to dose {PRONOUN/p_l/poss} Clanmates and prevent coughs and chest infections.",
+                "text": "Betony is especially useful for rabbits who breathe with a rasp, and p_l is always keen to help Warrenmates with the condition. With the great haul of betony p_l's patrol brings back, {PRONOUN/p_l/subject}'ll be able to dose {PRONOUN/p_l/poss} Warrenmates and prevent coughs and chest infections.",
                 "exp": 10,
                 "weight": 5,
                 "herbs": ["many_herbs", "betony"],
@@ -380,15 +345,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -403,15 +361,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -426,15 +377,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -450,7 +394,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -491,15 +435,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "Newleaf should bring new leaves on the blackberry brambles. p_l heads out to collect some, bringing app1 along.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasirah, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -512,15 +456,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -534,15 +471,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -558,15 +488,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -581,15 +504,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -623,20 +539,13 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
             {
-                "text": "Perfect - there's a good crop of blackberry leaves just waiting for {PRONOUN/p_l/object}, and the bramble seems to be sending out new exploratory branches too, promising more growth in the future. {PRONOUN/p_l/poss/CAP} Clanmates send p_l away for a nap in the sunshine, as they organize the blackberry leaves, and p_l smiles appreciatively.",
+                "text": "Perfect - there's a good crop of blackberry leaves just waiting for {PRONOUN/p_l/object}, and the bramble seems to be sending out new exploratory branches too, promising more growth in the future. {PRONOUN/p_l/poss/CAP} Warrenmates send p_l away for a nap in the sunshine, as they organize the blackberry leaves, and p_l smiles appreciatively.",
                 "exp": 10,
                 "weight": 5,
                 "herbs": ["many_herbs", "blackberry"],
@@ -645,15 +554,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -668,15 +570,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -691,15 +586,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -715,7 +603,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -768,15 +656,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "Worried about {PRONOUN/p_l/poss} stores of burdock, and anticipating the plants' newleaf growth, p_l heads out to replenish the Warren's stocks, bringing app1 along.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasirah, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -789,15 +677,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -811,15 +692,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -835,15 +709,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -858,15 +725,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -901,20 +761,13 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
             {
-                "text": "Luck is on p_l's side today - the burdock is both plentiful and easy to find. As {PRONOUN/p_l/subject} {VERB/p_l/lay/lays} the fat roots out in a towering but neat pile in the herb stores, p_l's entire body thrums with a contented purr, and {PRONOUN/p_l/poss} Clanmates smile, happy to help out their hardworking healer.",
+                "text": "Luck is on p_l's side today - the burdock is both plentiful and easy to find. As {PRONOUN/p_l/subject} {VERB/p_l/lay/lays} the fat roots out in a towering but neat pile in the herb stores, p_l's entire body thrums with a contented purr, and {PRONOUN/p_l/poss} Warrenmates smile, happy to help out their hardworking healer.",
                 "exp": 10,
                 "weight": 5,
                 "herbs": ["many_herbs", "burdock"],
@@ -923,15 +776,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -946,15 +792,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -969,15 +808,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -993,7 +825,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -1040,15 +872,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
-        "intro_text": "p_l waits until {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} out of burrow to reveal to app1 that {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} off to find catmint - a 'helpful' group of 'helpers' can be a little, well, unhelpful. Catmint is just too exciting for many of {PRONOUN/p_l/poss} Clanmates to keep their heads around.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
+        "intro_text": "p_l waits until {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} out of burrow to reveal to app1 that {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} off to find catmint - a 'helpful' group of 'helpers' can be a little, well, unhelpful. Catmint is just too exciting for many of {PRONOUN/p_l/poss} Warrenmates to keep their heads around.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasirah, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 40,
         "success_outcomes": [
             {
@@ -1061,15 +893,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -1083,15 +908,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -1107,15 +925,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -1130,15 +941,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -1173,15 +977,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike", "jealous"],
-                        "amount": -10
                     }
                 ]
             },
@@ -1195,15 +992,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike", "jealous"],
-                        "amount": -10
                     }
                 ]
             },
@@ -1218,15 +1008,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike", "jealous"],
-                        "amount": -10
                     }
                 ]
             }
@@ -1241,15 +1024,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike", "jealous"],
-                        "amount": 10
                     }
                 ]
             }
@@ -1265,7 +1041,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -1306,15 +1082,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "With the snows of leaf-bare nearly vanished, newleaf winning its place in the seasonal cycle, p_l heads out to gather daisy leaves, bringing app1 along for a lesson.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasirah, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -1327,15 +1103,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -1349,20 +1118,13 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
             {
-                "text": "Daisies aren't hard to find in the warmer seasons, and s_c collects enough that {PRONOUN/s_c/subject} {VERB/s_c/have/has} trouble not dropping any on the way back to burrow. At least with app1 here with {PRONOUN/s_c/object} the load is shared, and {PRONOUN/s_c/subject} {VERB/s_c/purr/purrs} in appreciation of the rusasi.",
+                "text": "Daisies aren't hard to find in the warmer seasons, and s_c collects enough that {PRONOUN/s_c/subject} {VERB/s_c/have/has} trouble not dropping any on the way back to burrow. At least with app1 here with {PRONOUN/s_c/object} the load is shared, and {PRONOUN/s_c/subject} {VERB/s_c/purr/purrs} in appreciation of the rusasirah.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["SENSE,2"],
@@ -1373,15 +1135,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -1396,15 +1151,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -1438,15 +1186,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -1460,15 +1201,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -1483,15 +1217,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -1506,15 +1233,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -1539,7 +1259,7 @@
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "Their success was owed to many things - Inle, the mysterious sun-drown-place, other Clans who helped them on their way. But the humble daisy saved many lives, keeping their strength up for long enough to travel to new territories.",
+                "text": "Their success was owed to many things - Inle, the mysterious sun-drown-place, other Warrens who helped them on their way. But the humble daisy saved many lives, keeping their strength up for long enough to travel to new territories.",
                 "exp": 30,
                 "weight": 20,
                 "herbs": ["daisy"],
@@ -1548,22 +1268,15 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
                     },
                     {
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic"],
+                        "values": ["like"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -1595,7 +1308,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -1642,19 +1355,19 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "The strengthening sun in the sky will bring dandelion plants out - always the first to take advantage of newleaf, those ones. p_l heads out to look for them, taking app1 to learn about one of the most useful and common herbs in the healer arsenal.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasirah, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
-                "text": "Truly, dandelions are an essential herb to keep in stock, crucial for poisons and stings. Both the potent milk in their roots and stems, and the fast-acting leaves... Even the fluffy dandelion heads are useful as a c_n kit's favorite, short lived toy- or even an rusasi's. app1's eyes bulge with excitement, crouching low, fixated on the fluffy head. With one quick leap, app1 pounces! The bulbous white seed splits apart, the wind carrying it to places far beyond c_n territory.",
+                "text": "Truly, dandelions are an essential herb to keep in stock, crucial for poisons and stings. Both the potent milk in their roots and stems, and the fast-acting leaves... Even the fluffy dandelion heads are useful as a c_n kit's favorite, short lived toy- or even an rusasirah's. app1's eyes bulge with excitement, crouching low, fixated on the fluffy head. With one quick leap, app1 pounces! The bulbous white seed splits apart, the wind carrying it to places far beyond c_n territory.",
                 "exp": 20,
                 "weight": 20,
                 "herbs": ["dandelion"],
@@ -1663,15 +1376,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -1685,15 +1391,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -1709,15 +1408,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -1732,15 +1424,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -1760,7 +1445,7 @@
             "normal adult": [1, 6]
         },
         "weight": 20,
-        "intro_text": "The strengthening sun in the sky will bring dandelion plants out - always the first to take advantage of newleaf, those ones. p_l heads out to look for them, bringing a group of {PRONOUN/p_l/poss} Clanmates along for the gathering patrol.",
+        "intro_text": "The strengthening sun in the sky will bring dandelion plants out - always the first to take advantage of newleaf, those ones. p_l heads out to look for them, bringing a group of {PRONOUN/p_l/poss} Warrenmates along for the gathering patrol.",
         "decline_text": "The patrol is stopped before they can leave burrow - these rabbits are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
@@ -1774,15 +1459,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -1796,15 +1474,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -1819,15 +1490,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -1842,15 +1506,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -1866,7 +1523,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -1897,7 +1554,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "Unfortunately, the elder tree p_l has picked out seems to have a bug infestation of some kind, and {PRONOUN/p_l/subject} {VERB/p_l/do/does}n't want to use these tattered, diseased-looking leaves.",
+                "text": "Unfortunately, the elder tree p_l has picked out seems to have a bug infestation of some kind, and {PRONOUN/p_l/subject} {VERB/p_l/don't/doesn't} want to use these tattered, diseased-looking leaves.",
                 "exp": 0,
                 "weight": 20
             },
@@ -1934,15 +1591,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "As newleaf brings green back to the world, p_l has been eagerly anticipating the unfurling of the new leaf buds on the elder trees. There's a particular tree in a sheltered dip along a stream {PRONOUN/p_l/subject} {VERB/p_l/want/wants} to check on today, bringing app1 to show {PRONOUN/app1/object} why choosing to harvest from a sheltered plant can be helpful.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasirah, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 60,
         "success_outcomes": [
             {
@@ -1955,15 +1612,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -1977,15 +1627,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -2001,22 +1644,15 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
         ],
         "fail_outcomes": [
             {
-                "text": "Unfortunately, the elder tree p_l has picked out seems to have a bug infestation of some kind, and {PRONOUN/p_l/subject} {VERB/p_l/do/does}n't want to use these tattered, diseased-looking leaves.",
+                "text": "Unfortunately, the elder tree p_l has picked out seems to have a bug infestation of some kind, and {PRONOUN/p_l/subject} {VERB/p_l/don't/doesn't} want to use these tattered, diseased-looking leaves.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -2024,15 +1660,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             },
@@ -2074,7 +1703,7 @@
             "normal adult": [1, 6]
         },
         "weight": 20,
-        "intro_text": "As newleaf brings green back to the world, p_l has been eagerly anticipating the unfurling of the new leaf buds on the elder trees. There's a particular tree in a sheltered dip along a stream {PRONOUN/p_l/subject} {VERB/p_l/want/wants} to check on today, bringing a group of {PRONOUN/p_l/poss} Clanmates with {PRONOUN/p_l/object}.",
+        "intro_text": "As newleaf brings green back to the world, p_l has been eagerly anticipating the unfurling of the new leaf buds on the elder trees. There's a particular tree in a sheltered dip along a stream {PRONOUN/p_l/subject} {VERB/p_l/want/wants} to check on today, bringing a group of {PRONOUN/p_l/poss} Warrenmates with {PRONOUN/p_l/object}.",
         "decline_text": "The patrol is stopped before they can leave burrow - these rabbits are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 20,
         "success_outcomes": [
@@ -2088,15 +1717,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -2110,15 +1732,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -2133,22 +1748,15 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
         ],
         "fail_outcomes": [
             {
-                "text": "Unfortunately, the elder tree p_l has picked out seems to have a bug infestation of some kind, and {PRONOUN/p_l/subject} {VERB/p_l/do/does}n't want to use these tattered, diseased-looking leaves.",
+                "text": "Unfortunately, the elder tree p_l has picked out seems to have a bug infestation of some kind, and {PRONOUN/p_l/subject} {VERB/p_l/don't/doesn't} want to use these tattered, diseased-looking leaves.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -2156,15 +1764,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             },
@@ -2221,7 +1822,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "platonic"],
+                        "values": ["respect", "like"],
                         "amount": 5
                     },
                     {
@@ -2230,13 +1831,6 @@
                         "mutual": false,
                         "values": ["comfort", "trust"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             }
@@ -2251,15 +1845,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": -5
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["r_c"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
                     }
                 ]
             },
@@ -2281,7 +1868,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["s_c"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": -5
                     },
                     {
@@ -2290,13 +1877,6 @@
                         "mutual": false,
                         "values": ["trust"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["s_c"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
                     }
                 ]
             }
@@ -2312,7 +1892,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -2359,15 +1939,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "Newleaf has brought new life to c_n's territory, and p_l heads out to gather fresh goldenrod for the stores with app1.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasirah, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -2380,15 +1960,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -2402,15 +1975,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -2426,15 +1992,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -2449,15 +2008,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -2478,7 +2030,7 @@
             "normal adult": [1, 6]
         },
         "weight": 20,
-        "intro_text": "Newleaf has brought new life to c_n's territory, and p_l heads out to gather fresh goldenrod for the stores with a patrol of {PRONOUN/p_l/poss} Clanmates to assist {PRONOUN/p_l/object}.",
+        "intro_text": "Newleaf has brought new life to c_n's territory, and p_l heads out to gather fresh goldenrod for the stores with a patrol of {PRONOUN/p_l/poss} Warrenmates to assist {PRONOUN/p_l/object}.",
         "decline_text": "The patrol is stopped before they can leave burrow - these rabbits are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
@@ -2492,15 +2044,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -2514,15 +2059,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -2537,15 +2075,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -2560,15 +2091,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -2584,7 +2108,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -2631,19 +2155,19 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "With newleaf having won against the snows of leaf-bare, it's far safer to go gather juniper needles from the trees. p_l heads out, promising app1 {PRONOUN/app1/subject}'ll enjoy learning about this herb.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasirah, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
-                "text": "Even evergreens make sure to send out new leaves in newleaf, and p_l snips off the new, still soft needles, taking them home for c_n with app1 and teaching the rusasi about juniper's many uses.",
+                "text": "Even evergreens make sure to send out new leaves in newleaf, and p_l snips off the new, still soft needles, taking them home for c_n with app1 and teaching the rusasirah about juniper's many uses.",
                 "exp": 20,
                 "weight": 20,
                 "herbs": ["juniper"],
@@ -2652,15 +2176,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -2674,20 +2191,13 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
             {
-                "text": "s_c trots off to a good juniper tree, hopping onto a low branch to harvest its needles. As {PRONOUN/s_c/subject} {VERB/s_c/work/works}, {PRONOUN/s_c/subject} {VERB/s_c/chat/chats} to app1 about juniper's calming effects. This is one of the few herbs {PRONOUN/s_c/poss} Clanmates compete to go on patrols to help collect, as everyone enjoys the scent.",
+                "text": "s_c trots off to a good juniper tree, hopping onto a low branch to harvest its needles. As {PRONOUN/s_c/subject} {VERB/s_c/work/works}, {PRONOUN/s_c/subject} {VERB/s_c/chat/chats} to app1 about juniper's calming effects. This is one of the few herbs {PRONOUN/s_c/poss} Warrenmates compete to go on patrols to help collect, as everyone enjoys the scent.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["SENSE,2"],
@@ -2698,15 +2208,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -2721,15 +2224,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -2763,15 +2259,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -2785,15 +2274,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -2808,15 +2290,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -2831,15 +2306,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -2873,22 +2341,15 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
                     },
                     {
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic"],
+                        "values": ["like"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -2903,7 +2364,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["p_l"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -5
                     }
                 ]
@@ -2920,9 +2381,9 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -2943,13 +2404,6 @@
                         "mutual": false,
                         "values": ["respect", "comfort", "trust"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             },
@@ -2965,13 +2419,6 @@
                         "mutual": false,
                         "values": ["respect", "comfort", "trust"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             },
@@ -2989,13 +2436,6 @@
                         "mutual": false,
                         "values": ["respect", "comfort", "trust"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             },
@@ -3013,13 +2453,6 @@
                         "mutual": false,
                         "values": ["respect", "comfort", "trust"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             }
@@ -3036,13 +2469,6 @@
                         "mutual": false,
                         "values": ["respect", "comfort", "trust"],
                         "amount": -5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
                     }
                 ]
             }
@@ -3196,7 +2622,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["dislike"],
+                        "values": ["like"],
                         "amount": -5
                     }
                 ]
@@ -3211,8 +2637,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": -5
+                        "values": ["like"],
+                        "amount": 5
                     }
                 ]
             },
@@ -3228,8 +2654,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": -5
+                        "values": ["like"],
+                        "amount": 5
                     }
                 ]
             },
@@ -3245,8 +2671,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": -5
+                        "values": ["like"],
+                        "amount": 5
                     }
                 ]
             }
@@ -3261,8 +2687,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 5
+                        "values": ["like"],
+                        "amount": -5
                     }
                 ]
             },
@@ -3277,8 +2703,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 5
+                        "values": ["like"],
+                        "amount": -5
                     }
                 ]
             },
@@ -3298,8 +2724,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 5
+                        "values": ["like"],
+                        "amount": -5
                     }
                 ]
             }
@@ -3324,7 +2750,7 @@
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "Lungwort doesn't help with many ailments. But it is the <b>only</b> cure for yellowcough, and Clans have wasted away and died out for want of it, plague sweeping through their ranks, breath rasping in failing lungs till none remained to witness. c_n <i>needs</i> a steady supply of lungwort.",
+                "text": "Lungwort doesn't help with many ailments. But it is the <b>only</b> cure for yellowcough, and Warrens have wasted away and died out for want of it, plague sweeping through their ranks, breath rasping in failing lungs till none remained to witness. c_n <i>needs</i> a steady supply of lungwort.",
                 "exp": 20,
                 "weight": 20,
                 "art": "gen_bord_story",
@@ -3334,8 +2760,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
+                        "values": ["like"],
+                        "amount": 5
                     },
                     {
                         "cats_to": ["p_l"],
@@ -3343,30 +2769,16 @@
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 25
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             }
         ],
         "fail_outcomes": [
             {
-                "text": "Just thinking of the histories, the Clans lost to plagues that only lungwort can cure - it makes r_c distracted, {PRONOUN/r_c/poss} tail lashing agitatedly, and {PRONOUN/r_c/subject} {VERB/r_c/seem/seems} to mistake <i>everything</i> as lungwort... Once r_c suggests that deathberries are lungwort, p_l decides to call the patrol to a halt.",
+                "text": "Just thinking of the histories, the Warrens lost to plagues that only lungwort can cure - it makes r_c distracted, {PRONOUN/r_c/poss} tail lashing agitatedly, and {PRONOUN/r_c/subject} {VERB/r_c/seem/seems} to mistake <i>everything</i> as lungwort... Once r_c suggests that deathberries are lungwort, p_l decides to call the patrol to a halt.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
-                    {
-                        "cats_to": ["r_c"],
-                        "cats_from": ["p_l"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
-                    },
                     {
                         "cats_to": ["r_c"],
                         "cats_from": ["p_l"],
@@ -3388,7 +2800,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -3435,15 +2847,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "Newleaf has brought new life to c_n's territory, and p_l heads out to gather fresh mallow for the stores with app1.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasirah, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -3456,20 +2868,13 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
             {
-                "text": "While the mallow shrubs are soft both in scent and in touch, the plants are engaged in their own vigorous newleaf competition between each other, leaving p_l with tons to harvest. {PRONOUN/p_l/subject/CAP} {VERB/p_l/test/tests} app1 on {PRONOUN/app1/poss} knowledge as the healer rabbits work, and the rusasi passes with flying colors.",
+                "text": "While the mallow shrubs are soft both in scent and in touch, the plants are engaged in their own vigorous newleaf competition between each other, leaving p_l with tons to harvest. {PRONOUN/p_l/subject/CAP} {VERB/p_l/test/tests} app1 on {PRONOUN/app1/poss} knowledge as the healer rabbits work, and the rusasirah passes with flying colors.",
                 "exp": 20,
                 "weight": 5,
                 "herbs": ["many_herbs", "mallow"],
@@ -3478,15 +2883,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -3502,15 +2900,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -3525,15 +2916,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -3553,7 +2937,7 @@
             "normal adult": [1, 6]
         },
         "weight": 20,
-        "intro_text": "Newleaf has brought new life to c_n's territory, and p_l heads out to gather fresh mallow for the stores with a patrol of {PRONOUN/p_l/poss} Clanmates to assist {PRONOUN/p_l/object}.",
+        "intro_text": "Newleaf has brought new life to c_n's territory, and p_l heads out to gather fresh mallow for the stores with a patrol of {PRONOUN/p_l/poss} Warrenmates to assist {PRONOUN/p_l/object}.",
         "decline_text": "The patrol is stopped before they can leave burrow - these rabbits are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
@@ -3567,15 +2951,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -3589,15 +2966,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -3612,15 +2982,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -3635,15 +2998,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -3677,15 +3033,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -3705,15 +3054,8 @@
                         "cats_to": ["r_c"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["r_c"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -3729,7 +3071,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -3776,15 +3118,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "With newleaf comes the opportunity to scout out c_n's territory and find where marigold might be growing this year with app1.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasirah, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -3797,15 +3139,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -3819,15 +3154,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -3843,15 +3171,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -3866,15 +3187,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -3895,7 +3209,7 @@
             "normal adult": [1, 6]
         },
         "weight": 20,
-        "intro_text": "With newleaf comes the opportunity to scout out c_n's territory and find where marigold might be growing this year, with a patrol of {PRONOUN/p_l/poss} Clanmates to assist {PRONOUN/p_l/object}.",
+        "intro_text": "With newleaf comes the opportunity to scout out c_n's territory and find where marigold might be growing this year, with a patrol of {PRONOUN/p_l/poss} Warrenmates to assist {PRONOUN/p_l/object}.",
         "decline_text": "The patrol is stopped before they can leave burrow - these rabbits are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
@@ -3909,15 +3223,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -3931,15 +3238,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -3954,15 +3254,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -3977,15 +3270,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -4019,22 +3305,15 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
                     },
                     {
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic"],
+                        "values": ["like"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -4066,7 +3345,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -4113,15 +3392,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "With newleaf comes the opportunity to scout out c_n's territory and find where mullein might be growing this year with app1.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasirah, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -4134,15 +3413,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -4156,15 +3428,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -4180,15 +3445,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -4203,15 +3461,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -4231,7 +3482,7 @@
             "normal adult": [1, 6]
         },
         "weight": 20,
-        "intro_text": "With newleaf comes the opportunity to scout out c_n's territory and find where mullein might be growing this year, with a patrol of {PRONOUN/p_l/poss} Clanmates to assist {PRONOUN/p_l/object}.",
+        "intro_text": "With newleaf comes the opportunity to scout out c_n's territory and find where mullein might be growing this year, with a patrol of {PRONOUN/p_l/poss} Warrenmates to assist {PRONOUN/p_l/object}.",
         "decline_text": "The patrol is stopped before they can leave burrow - these rabbits are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
@@ -4245,15 +3496,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -4267,15 +3511,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -4290,15 +3527,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -4313,15 +3543,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -4337,7 +3560,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -4384,15 +3607,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "As the branches of the oak trees start to green, p_l brings app1 to collect its leaves.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasirah, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -4405,20 +3628,13 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
             {
-                "text": "As a basic infection-preventing herb, oak leaves are useful for nearly all of the various scrapes, cuts, and injuries p_l sees in the healer den. {PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} always happy to bring a good crop of them back to the herb stores. {PRONOUN/p_l/subject/CAP} {VERB/p_l/use/uses} the afternoon to give app1 the chance to lead their expedition, which makes the rusasi to swell with confidence.",
+                "text": "As a basic infection-preventing herb, oak leaves are useful for nearly all of the various scrapes, cuts, and injuries p_l sees in the healer den. {PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} always happy to bring a good crop of them back to the herb stores. {PRONOUN/p_l/subject/CAP} {VERB/p_l/use/uses} the afternoon to give app1 the chance to lead their expedition, which makes the rusasirah to swell with confidence.",
                 "exp": 20,
                 "weight": 5,
                 "herbs": ["many_herbs", "oak_leaves"],
@@ -4427,15 +3643,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -4451,15 +3660,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -4474,15 +3676,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -4502,7 +3697,7 @@
             "normal adult": [1, 6]
         },
         "weight": 20,
-        "intro_text": "As the branches of the oak trees start to green, p_l heads out to collect its leaves with {PRONOUN/p_l/poss} Clanmates coming along. Many paws will make light work, after all.",
+        "intro_text": "As the branches of the oak trees start to green, p_l heads out to collect its leaves with {PRONOUN/p_l/poss} Warrenmates coming along. Many paws will make light work, after all.",
         "decline_text": "The patrol is stopped before they can leave burrow - these rabbits are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
@@ -4516,20 +3711,13 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
             {
-                "text": "As a basic infection-preventing herb, oak leaves are useful for nearly all of the various scrapes, cuts, and injuries p_l sees in the healer den. {PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} always happy to bring a good crop of them back to the herb stores. {PRONOUN/p_l/poss/CAP} Clanmates are, as expected, a huge help carrying everything back home.",
+                "text": "As a basic infection-preventing herb, oak leaves are useful for nearly all of the various scrapes, cuts, and injuries p_l sees in the healer den. {PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} always happy to bring a good crop of them back to the herb stores. {PRONOUN/p_l/poss/CAP} Warrenmates are, as expected, a huge help carrying everything back home.",
                 "exp": 10,
                 "weight": 5,
                 "herbs": ["many_herbs", "oak_leaves"],
@@ -4538,15 +3726,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -4561,15 +3742,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -4584,15 +3758,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -4626,22 +3793,15 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
                     },
                     {
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic"],
+                        "values": ["like"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -4673,7 +3833,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -4720,15 +3880,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "The plantain plants have reawoken, and p_l plans to go gather some of their leaves. app1 asks to come along!",
-        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasirah, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -4741,15 +3901,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -4763,15 +3916,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -4787,15 +3933,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -4810,15 +3949,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -4852,15 +3984,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -4874,15 +3999,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -4897,15 +4015,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -4920,15 +4031,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -4944,7 +4048,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -4991,15 +4095,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "As the poppy starts to bloom and set seed in newleaf, p_l jumps at the opportunity, explaining to app1 that they have to take advantage of its short growing season while they can.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasirah, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -5012,15 +4116,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -5034,15 +4131,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -5058,15 +4148,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -5081,15 +4164,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -5109,7 +4185,7 @@
             "normal adult": [1, 6]
         },
         "weight": 20,
-        "intro_text": "As the poppy starts to bloom and set seed in newleaf, p_l jumps at the opportunity. {PRONOUN/p_l/subject/CAP} {VERB/p_l/assemble/assembles} a good-sized patrol full of Clanmates to help {PRONOUN/p_l/object} out with the gathering of this important herb.",
+        "intro_text": "As the poppy starts to bloom and set seed in newleaf, p_l jumps at the opportunity. {PRONOUN/p_l/subject/CAP} {VERB/p_l/assemble/assembles} a good-sized patrol full of Warrenmates to help {PRONOUN/p_l/object} out with the gathering of this important herb.",
         "decline_text": "The patrol is stopped before they can leave burrow - these rabbits are needed elsewhere. p_l's expedition will have to wait.",
         "chance_of_success": 30,
         "success_outcomes": [
@@ -5123,15 +4199,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -5145,15 +4214,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -5168,15 +4230,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -5191,15 +4246,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -5215,7 +4263,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -5262,15 +4310,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "With newleaf bringing ragwort back on the medicinal menu, p_l heads out to find where the silly plants have decided to sprout this year. {PRONOUN/p_l/subject/CAP} {VERB/p_l/explain/explains} to app1 the annoyances of the type of plant that dies completely in leaf-bare, leaving {PRONOUN/p_l/object} to search for all-new spots every newleaf.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasirah, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -5283,15 +4331,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -5305,15 +4346,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -5329,15 +4363,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -5352,15 +4379,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -5395,15 +4415,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -5417,15 +4430,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -5440,15 +4446,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -5463,15 +4462,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -5488,7 +4480,7 @@
         "max_cats": 6,
         "min_max_status": {
             "healer rabbits": [1, 6],
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
         "pl_skill_constraint": ["LORE,1", "STORY,1", "HEALER,1"],
@@ -5506,7 +4498,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
                     },
                     {
@@ -5515,13 +4507,6 @@
                         "mutual": false,
                         "values": ["trust", "comfort"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -5536,13 +4521,6 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["app1"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["app1"],
-                        "mutual": true,
                         "values": ["respect"],
                         "amount": -10
                     }
@@ -5553,13 +4531,6 @@
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["app1"],
-                        "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 10
-                    },
                     {
                         "cats_to": ["p_l"],
                         "cats_from": ["app1"],
@@ -5582,7 +4553,7 @@
         "max_cats": 6,
         "min_max_status": {
             "healer rabbits": [1, 6],
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
         "pl_skill_constraint": ["LORE,1", "STORY,1", "HEALER,1"],
@@ -5600,15 +4571,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -5635,8 +4599,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 5
+                        "values": ["like"],
+                        "amount": -5
                     }
                 ]
             }
@@ -5652,7 +4616,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -5699,15 +4663,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "As newleaf brings green to c_n's lands, p_l goes out in a search for tansy. {PRONOUN/p_l/subject/CAP} {VERB/p_l/bring/brings} app1 with {PRONOUN/p_l/object} for an important lesson on its use.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasirah, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -5720,15 +4684,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -5742,15 +4699,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -5766,15 +4716,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -5789,15 +4732,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -5831,15 +4767,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -5853,20 +4782,13 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
             {
-                "text": "Tansy might smell sharp enough to be enjoyed freshening up dens, but it sure tastes... interesting. s_c isn't sure {PRONOUN/s_c/subject}'ll ever get used to it, but at least it's a reminder to be careful around the potentially poisonous herb, which is extra helpful when gathering with {PRONOUN/s_c/poss} less-experienced Clanmates.",
+                "text": "Tansy might smell sharp enough to be enjoyed freshening up dens, but it sure tastes... interesting. s_c isn't sure {PRONOUN/s_c/subject}'ll ever get used to it, but at least it's a reminder to be careful around the potentially poisonous herb, which is extra helpful when gathering with {PRONOUN/s_c/poss} less-experienced Warrenmates.",
                 "exp": 10,
                 "weight": 20,
                 "stat_skill": ["SENSE,2"],
@@ -5876,15 +4798,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -5899,15 +4814,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -5933,7 +4841,7 @@
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "Tansy isn't mallow or dandelion, to be played with by kits. In high concentrations or potency, it can kill the elderly, pregnant, or compromised, and it will <i>definitely</i> make app1 sick if {PRONOUN/app1/subject} {VERB/app1/do/does}n't respect it.",
+                "text": "Tansy isn't mallow or dandelion, to be played with by kits. In high concentrations or potency, it can kill the elderly, pregnant, or compromised, and it will <i>definitely</i> make app1 sick if {PRONOUN/app1/subject} {VERB/app1/don't/doesn't} respect it.",
                 "exp": 30,
                 "weight": 20,
                 "herbs": ["tansy"],
@@ -5942,15 +4850,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -5965,20 +4866,13 @@
                         "cats_to": ["app1"],
                         "cats_from": ["p_l"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["app1"],
-                        "cats_from": ["p_l"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             },
             {
-                "text": "p_l wanders off to do {PRONOUN/p_l/poss} own collecting. However, leaving the rusasi alone is a mistake. It takes a <i>lot</i> of tansy to poison a rabbit, but app1 was trying <i>very</i> hard to collect as much as possible.",
+                "text": "p_l wanders off to do {PRONOUN/p_l/poss} own collecting. However, leaving the rusasirah alone is a mistake. It takes a <i>lot</i> of tansy to poison a rabbit, but app1 was trying <i>very</i> hard to collect as much as possible.",
                 "exp": 0,
                 "weight": 20,
                 "injury": [
@@ -5989,8 +4883,8 @@
                     }
                 ],
                 "history_text": {
-                    "reg_death": "m_c poisoned {PRONOUN/m_c/self} collecting excessive amounts of tansy as an rusasi.",
-                    "lead_death": "after collecting excessive amounts of tansy as an rusasi"
+                    "reg_death": "m_c poisoned {PRONOUN/m_c/self} collecting excessive amounts of tansy as an rusasirah.",
+                    "lead_death": "after collecting excessive amounts of tansy as an rusasirah"
                 },
                 "relationships": [
                     {
@@ -6019,8 +4913,8 @@
                     }
                 ],
                 "history_text": {
-                    "reg_death": "m_c poisoned {PRONOUN/m_c/self} collecting excessive amounts of tansy as an rusasi.",
-                    "lead_death": "after collecting excessive amounts of tansy as an rusasi"
+                    "reg_death": "m_c poisoned {PRONOUN/m_c/self} collecting excessive amounts of tansy as an rusasirah.",
+                    "lead_death": "after collecting excessive amounts of tansy as an rusasirah"
                 },
                 "relationships": [
                     {
@@ -6044,7 +4938,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -6091,15 +4985,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "With the newleaf sun hidden behind cloudy drizzle, it's a damp day to find thyme. p_l lets app1 take the lead, testing {PRONOUN/app1/poss} knowledge.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasirah, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -6112,15 +5006,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -6134,15 +5021,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -6158,15 +5038,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -6181,15 +5054,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -6223,15 +5089,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -6245,15 +5104,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -6268,15 +5120,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -6291,15 +5136,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -6316,17 +5154,17 @@
         "max_cats": 6,
         "min_max_status": {
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "normal adult":[-1, -1],
-            "rusasi":[-1, -1]
+            "rusasirah":[-1, -1]
         },
         "weight": 20,
         "intro_text": "Listen to the wisdom of the sages, p_l meows. app1 doesn't just need to learn to set bones and clean wounds; being a healer is so much more than blood and bodies.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} interrupted by a Clanmate who needs {PRONOUN/p_l/object}. It halts the lesson, but also reinforces p_l's point.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} interrupted by a Warrenmate who needs {PRONOUN/p_l/object}. It halts the lesson, but also reinforces p_l's point.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
-                "text": "Some sicknesses aren't physical, but live in the mind instead, p_l instructs. That's very normal, and just as a Clanmate with a twisted leg is just as loved and valued as one who can run without pain, an illness that is mental is just as valid of a struggle. Those rabbits are just as loved and supported in their needs.",
+                "text": "Some sicknesses aren't physical, but live in the mind instead, p_l instructs. That's very normal, and just as a Warrenmate with a twisted leg is just as loved and valued as one who can run without pain, an illness that is mental is just as valid of a struggle. Those rabbits are just as loved and supported in their needs.",
                 "exp": 30,
                 "weight": 20,
                 "herbs": ["thyme"],
@@ -6335,22 +5173,15 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
         ],
         "fail_outcomes": [
             {
-                "text": "app1 feels overwhelmed with the responsibility of supporting Clanmates going through mental struggles - physical fights are so much simpler to support them with. p_l halts the lesson to comfort {PRONOUN/app1/object}.",
+                "text": "app1 feels overwhelmed with the responsibility of supporting Warrenmates going through mental struggles - physical fights are so much simpler to support them with. p_l halts the lesson to comfort {PRONOUN/app1/object}.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -6375,7 +5206,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -6422,15 +5253,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "p_l uses the blustery newleaf morning to try catch the scent of wild garlic on the breeze, encouraging app1 to try the technique.",
-        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasi, and {VERB/p_l/decide/decides} to go another day.",
+        "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} second thoughts leaving {PRONOUN/p_l/poss} patients behind, especially with {PRONOUN/p_l/object} also bringing {PRONOUN/p_l/poss} rusasirah, and {VERB/p_l/decide/decides} to go another day.",
         "chance_of_success": 70,
         "success_outcomes": [
             {
@@ -6443,15 +5274,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -6465,15 +5289,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -6489,15 +5306,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -6512,15 +5322,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -6554,15 +5357,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -6576,15 +5372,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -6599,15 +5388,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -6622,15 +5404,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }

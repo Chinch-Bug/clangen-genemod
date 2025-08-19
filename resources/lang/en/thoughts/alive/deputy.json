@@ -33,7 +33,7 @@
             "Is assessing the rusasirahs"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ],
         "random_living_status": [
             "living"
@@ -100,7 +100,7 @@
         "thoughts": [
             "Is sternly instructing a patrol about the importance of strength in defending the Warren",
             "Feels a rush of adrenaline at the thought of an upcoming battle",
-            "Impressed {PRONOUN/m_c/poss} Clanmates by scaring off an intruder"
+            "Impressed {PRONOUN/m_c/poss} Warrenmates by scaring off an intruder"
         ],
         "main_trait_constraint": [
             "fierce"
@@ -220,13 +220,13 @@
     {
       "id": "wise_deputy_to_apprentice",
         "thoughts": [
-            "Is sharing words of wisdom with a confused rusasi"
+            "Is sharing words of wisdom with a confused rusasirah"
         ],
         "main_trait_constraint": [
             "wise"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ],
         "random_living_status": [
             "living"
@@ -258,8 +258,8 @@
     {
         "id": "healer_deputy",
         "thoughts": [
-            "Helps a Clanmate get a thorn out of their paw while out on patrol",
-            "Feels empathy for a sick Clanmate and is thinking of ways to help",
+            "Helps a Warrenmate get a thorn out of their paw while out on patrol",
+            "Feels empathy for a sick Warrenmate and is thinking of ways to help",
             "Is sharing knowledge about basic herbs with the Warren"
         ],
         "main_skill_constraint": [
@@ -312,7 +312,7 @@
             "STORY,1"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ],
         "random_living_status": [
             "living"
@@ -331,14 +331,14 @@
     {
         "id": "teacher_deputy_to_apprentice",
         "thoughts": [
-            "Feels satisfaction watching an rusasi master a lesson",
-            "Guides an rusasi through {PRONOUN/m_c/poss} hunting assessment"
+            "Feels satisfaction watching an rusasirah master a lesson",
+            "Guides an rusasirah through {PRONOUN/m_c/poss} hunting assessment"
         ],
         "main_skill_constraint": [
             "TEACHER,1"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ],
         "random_living_status": [
             "living"
@@ -364,7 +364,7 @@
             "Would never wish to return to {PRONOUN/m_c/poss} old kittypet life",
             "Wishes other rabbits would trust in the chief rabbit's choice of making {PRONOUN/m_c/object} captain",
             "Wouldn't mind bragging about {PRONOUN/m_c/poss} position in the Warren to some old kittypet friends",
-            "Treats Clanmates fairly regardless of their pasts"
+            "Treats Warrenmates fairly regardless of their pasts"
         ],
         "main_backstory_constraint": [
             "kittypet1",

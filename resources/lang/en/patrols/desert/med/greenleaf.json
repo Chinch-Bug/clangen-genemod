@@ -9,7 +9,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
             "all rusasirahs": [-1, -1],
             "normal adult": [-1, -1]
@@ -29,7 +29,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": 5
                     }
                 ]
@@ -44,7 +44,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": 5
                     }
                 ]
@@ -60,7 +60,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": -5
                     }
                 ]
@@ -77,7 +77,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -96,15 +96,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             },
@@ -118,15 +111,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             }
@@ -141,15 +127,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
                     }
                 ]
             },
@@ -162,15 +141,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
                     }
                 ]
             }

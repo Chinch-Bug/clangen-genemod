@@ -1,7 +1,7 @@
 {
     "en": {
-        "help_tooltip": "This screen allows you to check on the other rabbits who live nearby, both Outsiders and other Warren rabbits.  You can control how the chief rabbit of your Warren will treat other chief rabbits at Gatherings, but keep in mind that you can only determine one interaction each moon! Likewise, you can consider whether to drive out or invite in Outsider rabbits.  If you drive out a rabbit, they will no longer appear in the Rabbits Outside the Clans list.  If you invite a rabbit in, they might join your Warren!",
-        "clans": "Clans",
+        "help_tooltip": "This screen allows you to check on the other rabbits who live nearby, both Outsiders and other Warren rabbits.  You can control how the chief rabbit of your Warren will treat other chief rabbits at Gatherings, but keep in mind that you can only determine one interaction each moon! Likewise, you can consider whether to drive out or invite in Outsider rabbits.  If you drive out a rabbit, they will no longer appear in the Rabbits Outside the Warrens list.  If you invite a rabbit in, they might join your Warren!",
+        "warrens": "Warrens",
         "outsiders": "Outsiders",
         "clan_notice_text": {
             "one": "m_c is considering how to handle the next Gathering.",
@@ -28,7 +28,7 @@
         "action_outsider_drive": "m_c has decided to drive r_c off.",
         "action_outsider_invite": "m_c has decided to invite r_c in.",
         "action_outsider_search": "m_c has decided to search for r_c.",
-        "temper_text": "The other Clans think c_n is %{temper}.",
+        "temper_text": "The other Warrens think c_n is %{temper}.",
         "outsider_rep": "Outsiders view your Warren as %{reputation}.",
         "outsider_skill": "Skills: %{skill}",
         "cunning": "cunning",

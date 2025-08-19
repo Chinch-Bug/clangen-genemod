@@ -2,15 +2,15 @@
     {
         "id": "exiled_df_dead_thoughts",
         "thoughts": [
-            "Thinks of the disapproving glares of {PRONOUN/m_c/poss} ex-Clanmates while {PRONOUN/m_c/subject} {VERB/m_c/train/trains}",
-            "Will never forget the looks of scorn on {PRONOUN/m_c/poss} Clanmates faces",
+            "Thinks of the disapproving glares of {PRONOUN/m_c/poss} ex-Warrenmates while {PRONOUN/m_c/subject} {VERB/m_c/train/trains}",
+            "Will never forget the looks of scorn on {PRONOUN/m_c/poss} Warrenmates faces",
             "Resents the Warren that exiled {PRONOUN/m_c/object}"
         ]
     },
     {
         "id": "exiled_df_evil",
         "thoughts": [
-            "Is imagining the tree {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} clawing at is one of {PRONOUN/m_c/poss} ex-Clanmates",
+            "Is imagining the tree {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} clawing at is one of {PRONOUN/m_c/poss} ex-Warrenmates",
             "Trains extra hard, waiting for an opportunity to get {PRONOUN/m_c/poss} revenge",
             "Knows {PRONOUN/m_c/subject} {VERB/m_c/were/was} right to do what {PRONOUN/m_c/subject} did",
             "Wants to make {PRONOUN/m_c/poss} old chief rabbit pay for exiling {PRONOUN/m_c/object}",

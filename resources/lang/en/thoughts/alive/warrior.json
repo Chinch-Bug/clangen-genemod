@@ -25,7 +25,7 @@
             "Has the rusasirahs very engaged in a very, very tall tale"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ],
         "random_living_status": [
             "living"
@@ -70,7 +70,7 @@
     {
         "id": "warrior_gen_warrior",
         "thoughts": [
-            "Is sparring with some Clanmates",
+            "Is sparring with some Warrenmates",
             "Wants to critique r_c's fighting techniques",
             "Wants to compliment r_c's fighting techniques"
         ],
@@ -160,7 +160,7 @@
             "Volunteered for extra duties",
             "Volunteered to stand guard of the burrow",
             "Shares the best hunting spots with the other rabbits",
-            "Does {PRONOUN/m_c/poss} Clanmates' chores with a smile on {PRONOUN/m_c/poss} face"
+            "Does {PRONOUN/m_c/poss} Warrenmates' chores with a smile on {PRONOUN/m_c/poss} face"
         ],
         "main_trait_constraint": [
             "compassionate"
@@ -172,7 +172,7 @@
             "Takes r_c's place in the dawn patrol so {PRONOUN/r_c/subject} can sleep in a little"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ],
         "main_trait_constraint": [
             "compassionate"
@@ -184,12 +184,12 @@
     {
         "id": "daring_warrior",
         "thoughts": [
-            "Is challenging any Clanmate {PRONOUN/m_c/subject} can to a sparring match... with minimal recruiting success",
-            "Is challenging some Clanmates to a sparring match, two-on-one!",
+            "Is challenging any Warrenmate {PRONOUN/m_c/subject} can to a sparring match... with minimal recruiting success",
+            "Is challenging some Warrenmates to a sparring match, two-on-one!",
             "Batted at a snake on a patrol recently and fled",
             "Is walking along the edge of a very tall cliff",
             "Recently avoided a monster on the Thunderpath by the skin of {PRONOUN/m_c/poss} teeth!",
-            "Challenges a Clanmate to a friendly spar"
+            "Challenges a Warrenmate to a friendly spar"
         ],
         "main_trait_constraint": [
             "daring"
@@ -229,7 +229,7 @@
         ],
         "random_status_constraint": [
             "healer",
-            "healer rusasi"
+            "healer rusasirah"
         ],
         "main_trait_constraint": [
             "fierce"
@@ -244,7 +244,7 @@
             "Is arguing for more battle training for the rusasirahs"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ],
         "main_trait_constraint": [
             "fierce"
@@ -260,7 +260,7 @@
             "Is telling the chief rabbit details about {PRONOUN/m_c/poss} recent patrol",
             "Listened to the chief rabbit's orders recently, despite {PRONOUN/m_c/poss} own doubts",
             "Proclaimed {PRONOUN/m_c/poss} unwavering loyalty to the chief rabbit",
-            "Is suspicious of a Clanmate who questions their chief rabbit"
+            "Is suspicious of a Warrenmate who questions their chief rabbit"
         ],
         "main_trait_constraint": [
             "loyal"

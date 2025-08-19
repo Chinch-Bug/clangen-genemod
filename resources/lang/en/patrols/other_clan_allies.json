@@ -21,7 +21,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "The patrols share recent Warren news with each other: how prey has been running lately, new rusasirahs or kits, and other such information. They part on good terms, comradery between the Clans continuing to grow.",
+                "text": "The patrols share recent Warren news with each other: how prey has been running lately, new rusasirahs or kits, and other such information. They part on good terms, comradery between the Warrens continuing to grow.",
                 "exp": 10,
                 "weight": 5,
                 "other_clan_rep": 2
@@ -34,7 +34,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "s_c excitedly trots up to the other patrol, greeting them pleasantly. They seem to be on good terms with the other rabbits on this patrol and strike up conversation about specific happenings in their Warren, asking if so-and-so had kits or if a certain rusasi had been made a rabbit yet.",
+                "text": "s_c excitedly trots up to the other patrol, greeting them pleasantly. They seem to be on good terms with the other rabbits on this patrol and strike up conversation about specific happenings in their Warren, asking if so-and-so had kits or if a certain rusasirah had been made a rabbit yet.",
                 "exp": 10,
                 "weight": 20,
                 "stat_trait": ["charismatic", "thoughtful", "wise", "confident"],
@@ -95,20 +95,20 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "The patrols share recent Warren news with each other: how prey has been running lately, new rusasirahs or kits, and other such information. They part on good terms, comradery between the Clans continuing to grow.",
+                "text": "The patrols share recent Warren news with each other: how prey has been running lately, new rusasirahs or kits, and other such information. They part on good terms, comradery between the Warrens continuing to grow.",
                 "exp": 10,
                 "weight": 5,
                 "other_clan_rep": 2
             },
             {
-                "text": "s_c approaches the other patrol first, calling out a greeting and then remarking on a recent battle between o_c_n and one of the other Clans. s_c compliments the o_c_n rabbits on their battle prowess.",
+                "text": "s_c approaches the other patrol first, calling out a greeting and then remarking on a recent battle between o_c_n and one of the other Warrens. s_c compliments the o_c_n rabbits on their battle prowess.",
                 "exp": 10,
                 "weight": 20,
                 "stat_skill": ["FIGHTER,1"],
                 "other_clan_rep": 2
             },
             {
-                "text": "s_c approaches the other patrol first, calling out a greeting and then remarking on a recent battle between o_c_n and one of the other Clans. s_c compliments the o_c_n rabbits on their battle prowess.",
+                "text": "s_c approaches the other patrol first, calling out a greeting and then remarking on a recent battle between o_c_n and one of the other Warrens. s_c compliments the o_c_n rabbits on their battle prowess.",
                 "exp": 10,
                 "weight": 20,
                 "stat_trait": [
@@ -182,7 +182,7 @@
                 "prey": ["medium"]
             },
             {
-                "text": "s_c leaps for the rabbit, making a swift kill just before a o_c_n patrol comes into view. The o_c_n rabbits seem miffed by this trespass, but not yet hostile thanks to your alliance. Thankfully s_c smooths things over with the other patrol by graciously gifting them the rabbit. They part ways, fortunately without damaging the relationship between Clans.",
+                "text": "s_c leaps for the rabbit, making a swift kill just before a o_c_n patrol comes into view. The o_c_n rabbits seem miffed by this trespass, but not yet hostile thanks to your alliance. Thankfully s_c smooths things over with the other patrol by graciously gifting them the rabbit. They part ways, fortunately without damaging the relationship between Warrens.",
                 "exp": 10,
                 "weight": 20,
                 "stat_skill": ["SPEAKER,1"],
@@ -253,7 +253,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
@@ -307,11 +307,11 @@
         "min_max_status": {},
         "weight": 20,
         "intro_text": "As the patrol is checking the border lines, they notice that a o_c_n scent has strayed into their territory. o_c_n is their ally, but this is a bit suspicious.",
-        "decline_text": "p_l decides that it isn't important. After all, o_c_n wouldn't do anything to jeopardize the alliance. Maybe an rusasi simply lost their way.",
+        "decline_text": "p_l decides that it isn't important. After all, o_c_n wouldn't do anything to jeopardize the alliance. Maybe an rusasirah simply lost their way.",
         "chance_of_success": 60,
         "success_outcomes": [
             {
-                "text": "After poking around a bit, the patrol discovers a o_c_n rusasi wandering nearby, hopelessly lost. The rusasi is distraught upon discovering they're on the wrong side of the border, but p_l only chuckles and gently guides the young rabbit back to their own territory.",
+                "text": "After poking around a bit, the patrol discovers a o_c_n rusasirah wandering nearby, hopelessly lost. The rusasirah is distraught upon discovering they're on the wrong side of the border, but p_l only chuckles and gently guides the young rabbit back to their own territory.",
                 "exp": 10,
                 "weight": 20,
                 "other_clan_rep": 2
@@ -345,7 +345,7 @@
                 "other_clan_rep": -1
             },
             {
-                "text": "s_c can't contain {PRONOUN/s_c/poss} annoyance at the trespass when the patrol finds a lost o_c_n rusasi to be the source of the scent, reprimanding them heavily. The rusasi is nearly in tears when s_c finally lets them go and the patrol leads them back to the border line, tension thick in the air.",
+                "text": "s_c can't contain {PRONOUN/s_c/poss} annoyance at the trespass when the patrol finds a lost o_c_n rusasirah to be the source of the scent, reprimanding them heavily. The rusasirah is nearly in tears when s_c finally lets them go and the patrol leads them back to the border line, tension thick in the air.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": ["bloodthirsty", "cold", "fierce", "strict", "vengeful"],
@@ -411,11 +411,11 @@
         "min_max_status": {},
         "weight": 20,
         "intro_text": "As p_l is checking the border lines, {PRONOUN/p_l/subject} {VERB/p_l/notice/notices} that a o_c_n scent has strayed into their territory. o_c_n is their ally, but this is a bit suspicious.",
-        "decline_text": "p_l decides that it isn't important. After all, o_c_n wouldn't do anything to jeopardize the alliance.  Maybe an rusasi simply lost their way.",
+        "decline_text": "p_l decides that it isn't important. After all, o_c_n wouldn't do anything to jeopardize the alliance.  Maybe an rusasirah simply lost their way.",
         "chance_of_success": 60,
         "success_outcomes": [
             {
-                "text": "After poking around a bit, p_l discovers a o_c_n rusasi wandering nearby, hopelessly lost. The rusasi is distraught upon discovering they're on the wrong side of the border, but p_l only chuckles and gently guides the young rabbit back to their own territory.",
+                "text": "After poking around a bit, p_l discovers a o_c_n rusasirah wandering nearby, hopelessly lost. The rusasirah is distraught upon discovering they're on the wrong side of the border, but p_l only chuckles and gently guides the young rabbit back to their own territory.",
                 "exp": 10,
                 "weight": 20,
                 "other_clan_rep": 2
@@ -442,7 +442,7 @@
                 "other_clan_rep": -1
             },
             {
-                "text": "s_c can't contain {PRONOUN/s_c/poss} annoyance at the trespass when {PRONOUN/s_c/subject} {VERB/s_c/find/finds} a lost o_c_n rusasi to be the source of the scent, reprimanding them heavily. The rusasi is nearly in tears when s_c finally lets them go and grumpily leads them back to the border line, tension thick in the air.",
+                "text": "s_c can't contain {PRONOUN/s_c/poss} annoyance at the trespass when {PRONOUN/s_c/subject} {VERB/s_c/find/finds} a lost o_c_n rusasirah to be the source of the scent, reprimanding them heavily. The rusasirah is nearly in tears when s_c finally lets them go and grumpily leads them back to the border line, tension thick in the air.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": ["bloodthirsty", "cold", "fierce", "strict", "vengeful"],
@@ -520,7 +520,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "r_c comes across a o_c_n rusasi on the wrong side of the border and holding prey. {PRONOUN/r_c/subject/CAP} {VERB/r_c/see/sees} the young rabbit off with a stern warning and then {VERB/r_c/bring/brings} the prey back to c_n burrow to report the incident to the captain.",
+                "text": "r_c comes across a o_c_n rusasirah on the wrong side of the border and holding prey. {PRONOUN/r_c/subject/CAP} {VERB/r_c/see/sees} the young rabbit off with a stern warning and then {VERB/r_c/bring/brings} the prey back to c_n burrow to report the incident to the captain.",
                 "exp": 20,
                 "weight": 5,
                 "other_clan_rep": 2
@@ -533,7 +533,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol. It even includes a young rusasi, whose eyes go round and fur fluffs up at encountering a real c_n rabbit! s_c plays along, acting very impressed with the hardworking rusasi, and the rusasi's mentor purrs gratefully.",
+                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol. It even includes a young rusasirah, whose eyes go round and fur fluffs up at encountering a real c_n rabbit! s_c plays along, acting very impressed with the hardworking rusasirah, and the rusasirah's mentor purrs gratefully.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -596,7 +596,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "r_c comes across a o_c_n rusasi on the wrong side of the border and holding prey. Unimpressed, r_c brings them back to their border as the rusasi tries to melt into the ground in shame, returning them to a mentor whose face goes slack with horror to see c_n's captain.",
+                "text": "r_c comes across a o_c_n rusasirah on the wrong side of the border and holding prey. Unimpressed, r_c brings them back to their border as the rusasirah tries to melt into the ground in shame, returning them to a mentor whose face goes slack with horror to see c_n's captain.",
                 "exp": 20,
                 "weight": 5,
                 "other_clan_rep": 2
@@ -609,7 +609,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol, which includes a young rusasi. Their eyes go round and they tuck their paws together neatly, sitting pretty for inspection. s_c plays along, acting very impressed with the hardworking rusasi, and the rusasi's mentor purrs gratefully at the c_n captain's kindness.",
+                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol, which includes a young rusasirah. Their eyes go round and they tuck their paws together neatly, sitting pretty for inspection. s_c plays along, acting very impressed with the hardworking rusasirah, and the rusasirah's mentor purrs gratefully at the c_n captain's kindness.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -686,7 +686,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "r_c comes across a o_c_n rusasi on the wrong side of the border and holding prey. Unimpressed, r_c brings them back to their border as the rusasi tries to melt into the ground in shame, returning them to a mentor who tucks their tail and apologizes profusely.",
+                "text": "r_c comes across a o_c_n rusasirah on the wrong side of the border and holding prey. Unimpressed, r_c brings them back to their border as the rusasirah tries to melt into the ground in shame, returning them to a mentor who tucks their tail and apologizes profusely.",
                 "exp": 20,
                 "weight": 5,
                 "other_clan_rep": 2
@@ -699,7 +699,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol, which includes a young rusasi. Their eyes go round and they hide behind their mentor, but s_c manages to coax them out, praising the little rusasi to their mentor, who purrs gratefully at the c_n chief rabbit's kindness.",
+                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol, which includes a young rusasirah. Their eyes go round and they hide behind their mentor, but s_c manages to coax them out, praising the little rusasirah to their mentor, who purrs gratefully at the c_n chief rabbit's kindness.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -796,7 +796,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} the o_c_n captain out with their new rusasi. Their fellow captain encourages their rusasi to quiz s_c, and s_c compliments them both on how the young rabbit's training is progressing.",
+                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} the o_c_n captain out with their new rusasirah. Their fellow captain encourages their rusasirah to quiz s_c, and s_c compliments them both on how the young rabbit's training is progressing.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -862,7 +862,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} the o_c_n chief rabbit out with their new rusasi. Their fellow chief rabbit encourages their rusasi to quiz s_c, and s_c compliments them both on how the young rabbit's training is progressing.",
+                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} the o_c_n chief rabbit out with their new rusasirah. Their fellow chief rabbit encourages their rusasirah to quiz s_c, and s_c compliments them both on how the young rabbit's training is progressing.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -922,7 +922,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "r_c comes across a o_c_n rusasi on the wrong side of the border and holding prey. {PRONOUN/r_c/subject/CAP} {VERB/r_c/see/sees} the young rabbit off with a stern warning and then {VERB/r_c/bring/brings} the prey back to c_n burrow to report the incident to the captain.",
+                "text": "r_c comes across a o_c_n rusasirah on the wrong side of the border and holding prey. {PRONOUN/r_c/subject/CAP} {VERB/r_c/see/sees} the young rabbit off with a stern warning and then {VERB/r_c/bring/brings} the prey back to c_n burrow to report the incident to the captain.",
                 "exp": 20,
                 "weight": 5,
                 "other_clan_rep": 2
@@ -935,7 +935,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol. It even includes a young rusasi, whose eyes go round and fur fluffs up at encountering a real c_n rabbit! s_c plays along, acting very impressed with the hardworking rusasi, and the rusasi's mentor purrs gratefully.",
+                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol. It even includes a young rusasirah, whose eyes go round and fur fluffs up at encountering a real c_n rabbit! s_c plays along, acting very impressed with the hardworking rusasirah, and the rusasirah's mentor purrs gratefully.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -998,7 +998,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "r_c comes across a o_c_n rusasi on the wrong side of the border and holding prey. Unimpressed, r_c brings them back to their border as the rusasi tries to melt into the ground in shame, returning them to a mentor whose face goes slack with horror to see c_n's captain.",
+                "text": "r_c comes across a o_c_n rusasirah on the wrong side of the border and holding prey. Unimpressed, r_c brings them back to their border as the rusasirah tries to melt into the ground in shame, returning them to a mentor whose face goes slack with horror to see c_n's captain.",
                 "exp": 20,
                 "weight": 5,
                 "other_clan_rep": 2
@@ -1011,7 +1011,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol, which includes a young rusasi. Their eyes go round and they tuck their paws together neatly, sitting pretty for inspection. s_c plays along, acting very impressed with the hardworking rusasi, and the rusasi's mentor purrs gratefully at the c_n captain's kindness.",
+                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol, which includes a young rusasirah. Their eyes go round and they tuck their paws together neatly, sitting pretty for inspection. s_c plays along, acting very impressed with the hardworking rusasirah, and the rusasirah's mentor purrs gratefully at the c_n captain's kindness.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -1088,7 +1088,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "r_c comes across a o_c_n rusasi on the wrong side of the border and holding prey. Unimpressed, r_c brings them back to their border as the rusasi tries to melt into the ground in shame, returning them to a mentor who tucks their tail and apologizes profusely.",
+                "text": "r_c comes across a o_c_n rusasirah on the wrong side of the border and holding prey. Unimpressed, r_c brings them back to their border as the rusasirah tries to melt into the ground in shame, returning them to a mentor who tucks their tail and apologizes profusely.",
                 "exp": 20,
                 "weight": 5,
                 "other_clan_rep": 2
@@ -1101,7 +1101,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol, which includes a young rusasi. Their eyes go round and they hide behind their mentor, but s_c manages to coax them out, praising the little rusasi to their mentor, who purrs gratefully at the c_n chief rabbit's kindness.",
+                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol, which includes a young rusasirah. Their eyes go round and they hide behind their mentor, but s_c manages to coax them out, praising the little rusasirah to their mentor, who purrs gratefully at the c_n chief rabbit's kindness.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -1198,7 +1198,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} the o_c_n captain out with their new rusasi. Their fellow captain encourages their rusasi to quiz s_c, and s_c compliments them both on how the young rabbit's training is progressing.",
+                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} the o_c_n captain out with their new rusasirah. Their fellow captain encourages their rusasirah to quiz s_c, and s_c compliments them both on how the young rabbit's training is progressing.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -1264,7 +1264,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} the o_c_n chief rabbit out with their new rusasi. Their fellow chief rabbit encourages their rusasi to quiz s_c, and s_c compliments them both on how the young rabbit's training is progressing.",
+                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} the o_c_n chief rabbit out with their new rusasirah. Their fellow chief rabbit encourages their rusasirah to quiz s_c, and s_c compliments them both on how the young rabbit's training is progressing.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -1324,7 +1324,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "r_c comes across a o_c_n rusasi on the wrong side of the border and holding prey. {PRONOUN/r_c/subject/CAP} {VERB/r_c/see/sees} the young rabbit off with a stern warning and then {VERB/r_c/bring/brings} the prey back to c_n burrow to report the incident to the captain.",
+                "text": "r_c comes across a o_c_n rusasirah on the wrong side of the border and holding prey. {PRONOUN/r_c/subject/CAP} {VERB/r_c/see/sees} the young rabbit off with a stern warning and then {VERB/r_c/bring/brings} the prey back to c_n burrow to report the incident to the captain.",
                 "exp": 20,
                 "weight": 5,
                 "other_clan_rep": 2
@@ -1337,7 +1337,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol. It even includes a young rusasi, whose eyes go round and fur fluffs up at encountering a real c_n rabbit! s_c plays along, acting very impressed with the hardworking rusasi, and the rusasi's mentor purrs gratefully.",
+                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol. It even includes a young rusasirah, whose eyes go round and fur fluffs up at encountering a real c_n rabbit! s_c plays along, acting very impressed with the hardworking rusasirah, and the rusasirah's mentor purrs gratefully.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -1400,7 +1400,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "r_c comes across a o_c_n rusasi on the wrong side of the border and holding prey. Unimpressed, r_c brings them back to their border as the rusasi tries to melt into the ground in shame, returning them to a mentor whose face goes slack with horror to see c_n's captain.",
+                "text": "r_c comes across a o_c_n rusasirah on the wrong side of the border and holding prey. Unimpressed, r_c brings them back to their border as the rusasirah tries to melt into the ground in shame, returning them to a mentor whose face goes slack with horror to see c_n's captain.",
                 "exp": 20,
                 "weight": 5,
                 "other_clan_rep": 2
@@ -1413,7 +1413,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol, which includes a young rusasi. Their eyes go round and they tuck their paws together neatly, sitting pretty for inspection. s_c plays along, acting very impressed with the hardworking rusasi, and the rusasi's mentor purrs gratefully at the c_n captain's kindness.",
+                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol, which includes a young rusasirah. Their eyes go round and they tuck their paws together neatly, sitting pretty for inspection. s_c plays along, acting very impressed with the hardworking rusasirah, and the rusasirah's mentor purrs gratefully at the c_n captain's kindness.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -1490,7 +1490,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "r_c comes across a o_c_n rusasi on the wrong side of the border and holding prey. Unimpressed, r_c brings them back to their border as the rusasi tries to melt into the ground in shame, returning them to a mentor who tucks their tail and apologizes profusely.",
+                "text": "r_c comes across a o_c_n rusasirah on the wrong side of the border and holding prey. Unimpressed, r_c brings them back to their border as the rusasirah tries to melt into the ground in shame, returning them to a mentor who tucks their tail and apologizes profusely.",
                 "exp": 20,
                 "weight": 5,
                 "other_clan_rep": 2
@@ -1503,7 +1503,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol, which includes a young rusasi. Their eyes go round and they hide behind their mentor, but s_c manages to coax them out, praising the little rusasi to their mentor, who purrs gratefully at the c_n chief rabbit's kindness.",
+                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol, which includes a young rusasirah. Their eyes go round and they hide behind their mentor, but s_c manages to coax them out, praising the little rusasirah to their mentor, who purrs gratefully at the c_n chief rabbit's kindness.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -1600,7 +1600,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} the o_c_n captain out with their new rusasi. Their fellow captain encourages their rusasi to quiz s_c, and s_c compliments them both on how the young rabbit's training is progressing.",
+                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} the o_c_n captain out with their new rusasirah. Their fellow captain encourages their rusasirah to quiz s_c, and s_c compliments them both on how the young rabbit's training is progressing.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -1666,7 +1666,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} the o_c_n chief rabbit out with their new rusasi. Their fellow chief rabbit encourages their rusasi to quiz s_c, and s_c compliments them both on how the young rabbit's training is progressing.",
+                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} the o_c_n chief rabbit out with their new rusasirah. Their fellow chief rabbit encourages their rusasirah to quiz s_c, and s_c compliments them both on how the young rabbit's training is progressing.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -1726,7 +1726,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "r_c comes across a o_c_n rusasi on the wrong side of the border and holding prey. {PRONOUN/r_c/subject/CAP} {VERB/r_c/see/sees} the young rabbit off with a stern warning and then {VERB/r_c/bring/brings} the prey back to c_n burrow to report the incident to the captain.",
+                "text": "r_c comes across a o_c_n rusasirah on the wrong side of the border and holding prey. {PRONOUN/r_c/subject/CAP} {VERB/r_c/see/sees} the young rabbit off with a stern warning and then {VERB/r_c/bring/brings} the prey back to c_n burrow to report the incident to the captain.",
                 "exp": 20,
                 "weight": 5,
                 "other_clan_rep": 2
@@ -1739,7 +1739,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol. It even includes a young rusasi, whose eyes go round and fur fluffs up at encountering a real c_n rabbit! s_c plays along, acting very impressed with the hardworking rusasi, and the rusasi's mentor purrs gratefully.",
+                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol. It even includes a young rusasirah, whose eyes go round and fur fluffs up at encountering a real c_n rabbit! s_c plays along, acting very impressed with the hardworking rusasirah, and the rusasirah's mentor purrs gratefully.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -1802,7 +1802,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "r_c comes across a o_c_n rusasi on the wrong side of the border and holding prey. Unimpressed, r_c brings them back to their border as the rusasi tries to melt into the ground in shame, returning them to a mentor whose face goes slack with horror to see c_n's captain.",
+                "text": "r_c comes across a o_c_n rusasirah on the wrong side of the border and holding prey. Unimpressed, r_c brings them back to their border as the rusasirah tries to melt into the ground in shame, returning them to a mentor whose face goes slack with horror to see c_n's captain.",
                 "exp": 20,
                 "weight": 5,
                 "other_clan_rep": 2
@@ -1815,7 +1815,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol, which includes a young rusasi. Their eyes go round and they tuck their paws together neatly, sitting pretty for inspection. s_c plays along, acting very impressed with the hardworking rusasi, and the rusasi's mentor purrs gratefully at the c_n captain's kindness.",
+                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol, which includes a young rusasirah. Their eyes go round and they tuck their paws together neatly, sitting pretty for inspection. s_c plays along, acting very impressed with the hardworking rusasirah, and the rusasirah's mentor purrs gratefully at the c_n captain's kindness.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -1892,7 +1892,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "r_c comes across a o_c_n rusasi on the wrong side of the border and holding prey. Unimpressed, r_c brings them back to their border as the rusasi tries to melt into the ground in shame, returning them to a mentor who tucks their tail and apologizes profusely.",
+                "text": "r_c comes across a o_c_n rusasirah on the wrong side of the border and holding prey. Unimpressed, r_c brings them back to their border as the rusasirah tries to melt into the ground in shame, returning them to a mentor who tucks their tail and apologizes profusely.",
                 "exp": 20,
                 "weight": 5,
                 "other_clan_rep": 2
@@ -1905,7 +1905,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol, which includes a young rusasi. Their eyes go round and they hide behind their mentor, but s_c manages to coax them out, praising the little rusasi to their mentor, who purrs gratefully at the c_n chief rabbit's kindness.",
+                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} a o_c_n border patrol, which includes a young rusasirah. Their eyes go round and they hide behind their mentor, but s_c manages to coax them out, praising the little rusasirah to their mentor, who purrs gratefully at the c_n chief rabbit's kindness.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -2002,7 +2002,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} the o_c_n captain out with their new rusasi. Their fellow captain encourages their rusasi to quiz s_c, and s_c compliments them both on how the young rabbit's training is progressing.",
+                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} the o_c_n captain out with their new rusasirah. Their fellow captain encourages their rusasirah to quiz s_c, and s_c compliments them both on how the young rabbit's training is progressing.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -2068,7 +2068,7 @@
                 "other_clan_rep": 2
             },
             {
-                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} the o_c_n chief rabbit out with their new rusasi. Their fellow chief rabbit encourages their rusasi to quiz s_c, and s_c compliments them both on how the young rabbit's training is progressing.",
+                "text": "As s_c marks the border, {PRONOUN/s_c/subject} {VERB/s_c/encounter/encounters} the o_c_n chief rabbit out with their new rusasirah. Their fellow chief rabbit encourages their rusasirah to quiz s_c, and s_c compliments them both on how the young rabbit's training is progressing.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -2114,7 +2114,7 @@
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi":[1, 6],
+            "rusasirah":[1, 6],
             "normal adult": [1, 6]
         },
         "weight": 40,
@@ -2133,22 +2133,22 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "platonic"],
+                        "values": ["respect", "like"],
                         "amount": 10
                     },
                     {
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["comfort", "trust", "platonic"],
+                        "values": ["comfort", "trust", "like"],
                         "amount": 5
                     },
                     {
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
+                        "values": ["like"],
+                        "amount": 5
                     }
                 ]
             }
@@ -2171,7 +2171,7 @@
         ],
         "antag_fail_outcomes": [
             {
-                "text": "Once, there was a rabbit called Scrap. Possessed of few talents and no courage, she- Oh, she was a typical c_n rabbit then, the o_c_n rusasi laughs. p_l glares, breaking into a hiss that startles the impudent adolescent away from the border.",
+                "text": "Once, there was a rabbit called Scrap. Possessed of few talents and no courage, she- Oh, she was a typical c_n rabbit then, the o_c_n rusasirah laughs. p_l glares, breaking into a hiss that startles the impudent adolescent away from the border.",
                 "exp": 0,
                 "weight": 20,
                 "other_clan_rep": -1

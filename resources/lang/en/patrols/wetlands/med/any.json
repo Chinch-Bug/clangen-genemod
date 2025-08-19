@@ -9,7 +9,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
@@ -76,9 +76,9 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -143,9 +143,9 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -183,7 +183,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
@@ -233,15 +233,15 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 20,
         "intro_text": "p_l is out to gather a few herbs at the behest of their mentor. The wind is gently rustling the vegetation as they pad along.",
-        "decline_text": "Just before the rusasi can leave, their mentor calls for their attention. Apparently, they have a different task that's more pressing.",
+        "decline_text": "Just before the rusasirah can leave, their mentor calls for their attention. Apparently, they have a different task that's more pressing.",
         "chance_of_success": 50,
         "success_outcomes": [
             {
@@ -268,7 +268,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
             "all rusasirahs": [-1, -1],
             "normal adult": [-1, -1]
@@ -288,7 +288,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": 5
                     }
                 ]
@@ -303,7 +303,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": 5
                     }
                 ]
@@ -319,7 +319,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": -5
                     }
                 ]
@@ -336,7 +336,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -355,15 +355,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             },
@@ -377,15 +370,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             }
@@ -400,15 +386,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
                     }
                 ]
             },
@@ -421,15 +400,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
                     }
                 ]
             }

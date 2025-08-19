@@ -157,7 +157,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
         "intro_text": "r_c's mentor assesses {PRONOUN/r_c/object} by sending {PRONOUN/r_c/object} on a solo hunt.",
@@ -230,7 +230,7 @@
                         "scars": ["LEFTEAR"]
                     }
                 ],
-                "history_text": { "scar": "m_c got injured as an rusasi, exploring alone." },
+                "history_text": { "scar": "m_c got injured as an rusasirah, exploring alone." },
                 "prey": ["very_small"]
             }
         ]
@@ -257,7 +257,7 @@
                 "prey": ["medium"]
             },
             {
-                "text": "r_c finds a fat, dumb, slow rabbit, and {PRONOUN/r_c/subject} can barely drag the thing back to burrow, but great Inle, it's juicy when {PRONOUN/r_c/subject} {VERB/r_c/sit/sits} down to eat it with {PRONOUN/r_c/poss} Clanmates.",
+                "text": "r_c finds a fat, dumb, slow rabbit, and {PRONOUN/r_c/subject} can barely drag the thing back to burrow, but great Inle, it's juicy when {PRONOUN/r_c/subject} {VERB/r_c/sit/sits} down to eat it with {PRONOUN/r_c/poss} Warrenmates.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["medium"]
@@ -326,7 +326,7 @@
                 "prey": ["medium"]
             },
             {
-                "text": "r_c finds a fat, dumb, slow rabbit, and {PRONOUN/r_c/subject} can barely drag the thing back to burrow, but great Inle, it's juicy when {PRONOUN/r_c/subject} {VERB/r_c/sit/sits} down to eat it with {PRONOUN/r_c/poss} Clanmates. Purring, {PRONOUN/r_c/subject} {VERB/r_c/take/takes} the opportunity for a moment of peace, relaxing with {PRONOUN/r_c/poss} friends.",
+                "text": "r_c finds a fat, dumb, slow rabbit, and {PRONOUN/r_c/subject} can barely drag the thing back to burrow, but great Inle, it's juicy when {PRONOUN/r_c/subject} {VERB/r_c/sit/sits} down to eat it with {PRONOUN/r_c/poss} Warrenmates. Purring, {PRONOUN/r_c/subject} {VERB/r_c/take/takes} the opportunity for a moment of peace, relaxing with {PRONOUN/r_c/poss} friends.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["medium"]
@@ -395,7 +395,7 @@
                 "prey": ["medium"]
             },
             {
-                "text": "r_c finds a fat, dumb, slow rabbit, and {PRONOUN/r_c/subject} can barely drag the thing back to burrow, but great Inle, it's juicy when {PRONOUN/r_c/subject} {VERB/r_c/sit/sits} down to eat it with {PRONOUN/r_c/poss} Clanmates. Purring, {PRONOUN/r_c/subject} {VERB/r_c/take/takes} the opportunity for a moment of peace, relaxing with {PRONOUN/r_c/poss} friends.",
+                "text": "r_c finds a fat, dumb, slow rabbit, and {PRONOUN/r_c/subject} can barely drag the thing back to burrow, but great Inle, it's juicy when {PRONOUN/r_c/subject} {VERB/r_c/sit/sits} down to eat it with {PRONOUN/r_c/poss} Warrenmates. Purring, {PRONOUN/r_c/subject} {VERB/r_c/take/takes} the opportunity for a moment of peace, relaxing with {PRONOUN/r_c/poss} friends.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["medium"]
@@ -1185,7 +1185,7 @@
         "min_cats": 1,
         "max_cats": 3,
         "min_max_status": {
-            "rusasi": [-1, -1]
+            "rusasirah": [-1, -1]
         },
         "weight": 5,
         "intro_text": "The patrol catches scent of a mouse nearby.",
@@ -1224,7 +1224,7 @@
         "min_cats": 1,
         "max_cats": 3,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "normal adult": [1, 6]
         },
         "weight": 5,
@@ -1233,7 +1233,7 @@
         "chance_of_success": 50,
         "success_outcomes": [
             {
-                "text": "r_c pounces on the mouse, with a squeak of surprise from both prey and rusasi.",
+                "text": "r_c pounces on the mouse, with a squeak of surprise from both prey and rusasirah.",
                 "exp": 10,
                 "weight": 20,
                 "prey": ["small"]
@@ -1581,13 +1581,6 @@
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["s_c"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["jealous"],
-                        "amount": -5
                     }
                 ]
             }
@@ -1643,7 +1636,7 @@
         "max_cats": 6,
         "min_max_status": {
            "normal adult": [1, 5],
-           "rusasi":[1, 5]
+           "rusasirah":[1, 5]
             },
         "weight": 40,
         "chance_of_success": 50,
@@ -1661,14 +1654,14 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -10
+                            "values": ["like"],
+                            "amount": 10
                         },
                         {
                             "cats_to": ["p_l"],
                             "cats_from": ["app1"],
                             "mutual": false,
-                            "values": ["comfort", "trust", "respect", "dislike"],
+                            "values": ["comfort", "trust", "respect"],
                             "amount": 10
                         }
                     ]
@@ -1699,8 +1692,8 @@
                     ],
                     "history_text": {
                         "scar": "m_c was scarred after underestimating a grouse.",
-                        "reg_death": "m_c died after underestimating a grouse on a hunt as a foolish rusasi.",
-                        "lead_death": "from a grouse encountered on a hunt as a foolish rusasi"
+                        "reg_death": "m_c died after underestimating a grouse on a hunt as a foolish rusasirah.",
+                        "lead_death": "from a grouse encountered on a hunt as a foolish rusasirah"
                         }
                 }
             ]

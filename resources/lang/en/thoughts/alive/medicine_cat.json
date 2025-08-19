@@ -21,18 +21,18 @@
             "Made a mess of the herbs and is panicking",
             "Has been hearing the voices of Inle rabbits...",
             "Has the foul taste of bitter herbs in {PRONOUN/m_c/poss} mouth",
-            "Wonders if {PRONOUN/m_c/subject} could borrow some catmint from the other Clans",
+            "Wonders if {PRONOUN/m_c/subject} could borrow some catmint from the other Warrens",
             "Is happy that {PRONOUN/m_c/subject} chose life as a healer",
-            "Is proud of {PRONOUN/m_c/poss} ability to care for {PRONOUN/m_c/poss} Clanmates"
+            "Is proud of {PRONOUN/m_c/poss} ability to care for {PRONOUN/m_c/poss} Warrenmates"
         ]
     },
     {
         "id": "med_cat_alive_young",
         "thoughts": [
-            "Is thinking about taking on a new rusasi"
+            "Is thinking about taking on a new rusasirah"
         ],
         "random_status_constraint": [
-            "rusasi",
+            "rusasirah",
             "kit"
         ]
     },
@@ -54,7 +54,7 @@
         "id": "adventurous_medicine_cat_to_lead",
         "thoughts": [
             "Helps the chief rabbit with {PRONOUN/r_c/poss} duties",
-            "Begs the chief rabbit to give {PRONOUN/m_c/object} the bounciest kit as {PRONOUN/m_c/poss} rusasi"
+            "Begs the chief rabbit to give {PRONOUN/m_c/object} the bounciest kit as {PRONOUN/m_c/poss} rusasirah"
         ],
         "main_trait_constraint": [
             "adventurous"
@@ -158,13 +158,13 @@
     {
         "id": "calm_medicine_cat_apprentice",
         "thoughts": [
-            "Calms down an rusasi who is panicking over {PRONOUN/r_c/poss} minor injury"
+            "Calms down an rusasirah who is panicking over {PRONOUN/r_c/poss} minor injury"
         ],
         "main_trait_constraint": [
             "calm"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ]
     },
     {
@@ -227,16 +227,16 @@
             "compassionate"
         ],
         "random_status_constraint": [
-            "rusasi",
-            "healer rusasi",
-            "owsla rusasi"
+            "rusasirah",
+            "healer rusasirah",
+            "owsla rusasirah"
         ]
     },
 
     {
         "id": "confident_medicine_cat",
         "thoughts": [
-            "Is proud of {PRONOUN/m_c/poss} ability to care for {PRONOUN/m_c/poss} Clanmates",
+            "Is proud of {PRONOUN/m_c/poss} ability to care for {PRONOUN/m_c/poss} Warrenmates",
             "Does not doubt {PRONOUN/m_c/self} while treating a rabbit"
         ],
         "main_trait_constraint": [
@@ -282,12 +282,12 @@
     {
         "id": "lonesome_medicine_cat",
         "thoughts": [
-            "Wishes {PRONOUN/m_c/poss} Clanmates could understand {PRONOUN/m_c/poss} struggles",
+            "Wishes {PRONOUN/m_c/poss} Warrenmates could understand {PRONOUN/m_c/poss} struggles",
             "Wishes there were more healer rabbits in the Warren",
             "Wonders why the rabbits won't share prey with {PRONOUN/m_c/object}",
             "Wishes {PRONOUN/m_c/subject} could make friends with someone",
             "Wishes the rabbits shared an interest in herbs",
-            "Wishes for an rusasi, as {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} a bit lonely",
+            "Wishes for an rusasirah, as {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} a bit lonely",
             "Hasn't talked to any rabbits for a few days"
         ],
         "main_trait_constraint": [
@@ -297,7 +297,7 @@
     {
         "id": "lonesome_medicine_cat_to_lead",
         "thoughts": [
-            "Wants to talk to the chief rabbit about having a new rusasi"
+            "Wants to talk to the chief rabbit about having a new rusasirah"
         ],
         "main_trait_constraint": [
             "lonesome"
@@ -482,7 +482,7 @@
         ],
         "main_status_constraint": [
             "healer",
-            "healer rusasi"
+            "healer rusasirah"
         ],
         "random_living_status": [
             "inle"
@@ -656,5 +656,35 @@
                 "pregnant"
             ]
         }
+    },
+    {
+        "id": "med_cat_to_newborn",
+        "thoughts": [
+            "Checks over r_c",
+            "Checks on the new litter",
+            "Brings soaked moss to the nursery for the new litter"
+        ],
+        "main_status_constraint": [
+            "healer"
+        ],
+        "random_age_constraint": [
+            "newborn"
+        ]
+    },
+    {
+        "id": "med_cat_to_new_parent",
+        "thoughts": [
+            "Checks in on r_c",
+            "Brings r_c raspberry to help {PRONOUN/r_c/poss} recovery",
+            "Sleeps in the nursery after the birth",
+            "Reassures r_c that {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} doing a fine job"
+        ],
+        "main_status_constraint": [
+            "healer"
+        ],
+        "has_injuries": {
+            "r_c": ["recovering from birth"]
+        }
     }
+
 ]

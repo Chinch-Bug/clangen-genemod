@@ -24,7 +24,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic"],
+                        "values": ["like"],
                         "amount": 5
                     }
                 ]
@@ -39,7 +39,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic"],
+                        "values": ["like"],
                         "amount": 5
                     }
                 ]
@@ -55,7 +55,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic"],
+                        "values": ["like"],
                         "amount": -5
                     }
                 ],
@@ -1122,7 +1122,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
         "intro_text": "app1 scents a squirrel on the air! Greenleaf has made prey fat and unaware, so surely this will be an easy catch?",
@@ -1161,7 +1161,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "normal adult": [1, 6]
         },
         "weight": 20,
@@ -1247,13 +1247,13 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": 5
                     }
                 ]
             },
             {
-                "text": "A mischievous look in {PRONOUN/p_l/poss} eye, p_l challenges {PRONOUN/p_l/poss} Clanmates - whoever catches one of the squirrels gets to skip dawn patrol for a whole moon. They're all eager to shimmy up the trees at that, and before long r_c calls out in triumph. Not only do they have the squirrel, but they now also have a pawful of oak leaves for the healer too!",
+                "text": "A mischievous look in {PRONOUN/p_l/poss} eye, p_l challenges {PRONOUN/p_l/poss} Warrenmates - whoever catches one of the squirrels gets to skip dawn patrol for a whole moon. They're all eager to shimmy up the trees at that, and before long r_c calls out in triumph. Not only do they have the squirrel, but they now also have a pawful of oak leaves for the healer too!",
                 "exp": 40,
                 "weight": 5,
                 "herbs": ["oak_leaves"],
@@ -1263,13 +1263,13 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": 5
                     }
                 ]
             },
             {
-                "text": "With a glint in {PRONOUN/s_c/poss} eye, s_c is up in the trees before anyone can say anything. There's rustling, a short pause, then squirrel carcasses begin falling to the ground, one by one. s_c descends when {PRONOUN/s_c/subject} {VERB/s_c/finish/finishes} with a mouthful of oak leaves, curling {PRONOUN/s_c/poss} tail in pride at the looks on {PRONOUN/s_c/poss} Clanmates faces.",
+                "text": "With a glint in {PRONOUN/s_c/poss} eye, s_c is up in the trees before anyone can say anything. There's rustling, a short pause, then squirrel carcasses begin falling to the ground, one by one. s_c descends when {PRONOUN/s_c/subject} {VERB/s_c/finish/finishes} with a mouthful of oak leaves, curling {PRONOUN/s_c/poss} tail in pride at the looks on {PRONOUN/s_c/poss} Warrenmates faces.",
                 "exp": 40,
                 "weight": 20,
                 "stat_skill": ["HUNTER,1", "CLIMBER,1"],
@@ -1280,7 +1280,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": 5
                     }
                 ]
@@ -1296,14 +1296,14 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": -5
                     }
                 ],
                 "prey": ["very_small"]
             },
             {
-                "text": "The patrol fans out, some rabbits climbing, some staying on the ground. The hunt comes to an abrupt end, however, when r_c yowls in fear as {PRONOUN/r_c/subject} {VERB/r_c/plummet/plummets} from the branches and lands heavily on the ground. {PRONOUN/r_c/poss/CAP} Clanmates help {PRONOUN/r_c/object} home and settle {PRONOUN/r_c/object} into the healer den, guilt and regret prickling at them for pursuing such a foolhardy hunt.",
+                "text": "The patrol fans out, some rabbits climbing, some staying on the ground. The hunt comes to an abrupt end, however, when r_c yowls in fear as {PRONOUN/r_c/subject} {VERB/r_c/plummet/plummets} from the branches and lands heavily on the ground. {PRONOUN/r_c/poss/CAP} Warrenmates help {PRONOUN/r_c/object} home and settle {PRONOUN/r_c/object} into the healer den, guilt and regret prickling at them for pursuing such a foolhardy hunt.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
@@ -1318,7 +1318,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": -5
                     }
                 ],
@@ -1416,7 +1416,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [2, 2]
         },
         "weight": 20,
@@ -1435,8 +1435,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous", "dislike"],
-                        "amount": 10
+                        "values": ["respect", "like"],
+                        "amount": -10
                     }
                 ]
             },
@@ -1452,8 +1452,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous", "dislike"],
-                        "amount": 10
+                        "values": ["respect", "like"],
+                        "amount": -10
                     }
                 ]
             }
@@ -1468,8 +1468,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous", "dislike"],
-                        "amount": -10
+                        "values": ["respect", "like"],
+                        "amount": 10
                     }
                 ],
                 "prey": ["very_small"]
@@ -1490,8 +1490,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous", "dislike"],
-                        "amount": -10
+                        "values": ["respect", "like"],
+                        "amount": 10
                     }
                 ],
                 "prey": ["very_small"]
@@ -1508,7 +1508,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [2, 2]
         },
         "weight": 20,
@@ -1527,7 +1527,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -1542,7 +1542,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -1567,7 +1567,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [2, 2]
         },
         "weight": 20,
@@ -1586,7 +1586,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "jealous"],
+                        "values": ["respect"],
                         "amount": 5
                     }
                 ]
@@ -1601,7 +1601,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "jealous"],
+                        "values": ["respect"],
                         "amount": 5
                     }
                 ]
@@ -1626,7 +1626,7 @@
         "min_cats": 3,
         "max_cats": 3,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [3, 3]
         },
         "weight": 20,
@@ -1645,8 +1645,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous", "dislike"],
-                        "amount": 5
+                        "values": ["respect", "like"],
+                        "amount": -5
                     }
                 ]
             },
@@ -1660,8 +1660,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous", "dislike"],
-                        "amount": 5
+                        "values": ["respect", "like"],
+                        "amount": -5
                     }
                 ]
             }
@@ -1676,8 +1676,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous", "dislike"],
-                        "amount": -5
+                        "values": ["respect", "like"],
+                        "amount": 5
                     }
                 ],
                 "prey": ["very_small"]
@@ -1698,8 +1698,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous", "dislike"],
-                        "amount": -5
+                        "values": ["respect", "like"],
+                        "amount": 5
                     }
                 ],
                 "prey": ["very_small"]
@@ -1716,7 +1716,7 @@
         "min_cats": 3,
         "max_cats": 3,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [3, 3]
         },
         "weight": 20,
@@ -1735,7 +1735,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -1750,7 +1750,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -1775,7 +1775,7 @@
         "min_cats": 3,
         "max_cats": 3,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [3, 3]
         },
         "weight": 20,
@@ -1794,7 +1794,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "jealous"],
+                        "values": ["respect"],
                         "amount": 5
                     }
                 ]
@@ -1809,7 +1809,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "jealous"],
+                        "values": ["respect"],
                         "amount": 5
                     }
                 ]
@@ -1834,7 +1834,7 @@
         "min_cats": 4,
         "max_cats": 4,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [4, 4]
         },
         "weight": 20,
@@ -1853,8 +1853,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous", "dislike"],
-                        "amount": 10
+                        "values": ["respect", "like"],
+                        "amount": -10
                     }
                 ]
             },
@@ -1868,8 +1868,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous", "dislike"],
-                        "amount": 10
+                        "values": ["respect", "like"],
+                        "amount": -10
                     }
                 ]
             }
@@ -1884,8 +1884,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous", "dislike"],
-                        "amount": -10
+                        "values": ["respect", "like"],
+                        "amount": 10
                     }
                 ],
                 "prey": ["very_small"]
@@ -1906,8 +1906,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous", "dislike"],
-                        "amount": -10
+                        "values": ["respect", "like"],
+                        "amount": 10
                     }
                 ],
                 "prey": ["very_small"]
@@ -1924,7 +1924,7 @@
         "min_cats": 4,
         "max_cats": 4,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [4, 4]
         },
         "weight": 20,
@@ -1943,7 +1943,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -1958,7 +1958,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -1983,7 +1983,7 @@
         "min_cats": 4,
         "max_cats": 4,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [4, 4]
         },
         "weight": 20,
@@ -2002,7 +2002,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "jealous"],
+                        "values": ["respect"],
                         "amount": 5
                     }
                 ]
@@ -2017,7 +2017,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "jealous"],
+                        "values": ["respect"],
                         "amount": 5
                     }
                 ]
@@ -2042,7 +2042,7 @@
         "min_cats": 5,
         "max_cats": 5,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [5, 5]
         },
         "weight": 20,
@@ -2061,8 +2061,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous", "dislike"],
-                        "amount": 10
+                        "values": ["respect", "like"],
+                        "amount": -10
                     }
                 ]
             },
@@ -2076,8 +2076,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous", "dislike"],
-                        "amount": 10
+                        "values": ["respect", "like"],
+                        "amount": -10
                     }
                 ]
             }
@@ -2092,8 +2092,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous", "dislike"],
-                        "amount": -10
+                        "values": ["respect", "like"],
+                        "amount": 10
                     }
                 ],
                 "prey": ["very_small"]
@@ -2114,8 +2114,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous", "dislike"],
-                        "amount": -10
+                        "values": ["respect", "like"],
+                        "amount": 10
                     }
                 ],
                 "prey": ["very_small"]
@@ -2132,7 +2132,7 @@
         "min_cats": 5,
         "max_cats": 5,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [5, 5]
         },
         "weight": 20,
@@ -2151,7 +2151,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -2166,7 +2166,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -2191,7 +2191,7 @@
         "min_cats": 5,
         "max_cats": 5,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [5, 5]
         },
         "weight": 20,
@@ -2210,7 +2210,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "jealous"],
+                        "values": ["respect"],
                         "amount": 5
                     }
                 ]
@@ -2225,7 +2225,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "jealous"],
+                        "values": ["respect"],
                         "amount": 5
                     }
                 ]
@@ -2250,7 +2250,7 @@
         "min_cats": 6,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
         "intro_text": "The six siblings head out together, declaring a friendly competition to stock the fresh-kill pile. There's no better time of year to hunt, no easier time to hone their skills, and they're going to take advantage of it!",
@@ -2268,8 +2268,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous", "dislike"],
-                        "amount": 10
+                        "values": ["respect", "like"],
+                        "amount": -10
                     }
                 ]
             },
@@ -2283,8 +2283,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous", "dislike"],
-                        "amount": 10
+                        "values": ["respect", "like"],
+                        "amount": -10
                     }
                 ]
             }
@@ -2299,8 +2299,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous", "dislike"],
-                        "amount": -10
+                        "values": ["respect", "like"],
+                        "amount": 10
                     }
                 ],
                 "prey": ["very_small"]
@@ -2321,8 +2321,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous", "dislike"],
-                        "amount": -10
+                        "values": ["respect", "like"],
+                        "amount": 10
                     }
                 ],
                 "prey": ["very_small"]
@@ -2339,7 +2339,7 @@
         "min_cats": 6,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
         "intro_text": "It's nice to get the chance to go out hunting together. app1 knows they're all still in the rusasirahs' den, but with different mentors and focuses and skills - it's not the same as it was back in the nursery with {PRONOUN/app1/poss} littermates. And the greenleaf sun is so warm and bright!",
@@ -2357,7 +2357,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -2372,7 +2372,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -2397,7 +2397,7 @@
         "min_cats": 6,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
         "intro_text": "The clouds are out, making the world murky after all the recent sunny days. And just like the clouds, app1 and {PRONOUN/app1/poss} littermates are everywhere today, sticking their heads into every unexplored corner of the territory. All in the name of hunting, of course!",
@@ -2415,7 +2415,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "jealous"],
+                        "values": ["respect"],
                         "amount": 5
                     }
                 ]
@@ -2430,7 +2430,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "jealous"],
+                        "values": ["respect"],
                         "amount": 5
                     }
                 ]
@@ -2455,7 +2455,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [1, 1],
             "normal adult": [1, 6]
         },
@@ -2475,7 +2475,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "jealous"],
+                        "values": ["respect"],
                         "amount": 5
                     }
                 ]
@@ -2492,7 +2492,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "jealous"],
+                        "values": ["respect"],
                         "amount": 5
                     }
                 ]
@@ -2517,7 +2517,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [1, 1],
             "normal adult": [1, 6]
         },
@@ -2537,7 +2537,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -2554,7 +2554,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -2570,7 +2570,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -5
                     }
                 ],
@@ -2588,7 +2588,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [1, 1],
             "normal adult": [1, 6]
         },
@@ -2608,7 +2608,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -2625,7 +2625,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -2641,7 +2641,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -5
                     }
                 ],
@@ -2659,7 +2659,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [1, 1],
             "normal adult": [1, 6]
         },
@@ -2679,7 +2679,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "jealous"],
+                        "values": ["respect"],
                         "amount": 5
                     }
                 ]
@@ -2696,7 +2696,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["respect", "jealous"],
+                        "values": ["respect"],
                         "amount": 5
                     }
                 ]
@@ -2721,7 +2721,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [1, 1],
             "normal adult": [1, 6]
         },
@@ -2741,7 +2741,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -2758,7 +2758,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -2774,7 +2774,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -5
                     }
                 ],
@@ -2810,8 +2810,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
+                        "values": ["like"],
+                        "amount": -5
                     }
                 ]
             },
@@ -2825,8 +2825,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
+                        "values": ["like"],
+                        "amount": -5
                     }
                 ]
             },
@@ -2841,8 +2841,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
+                        "values": ["like"],
+                        "amount": -5
                     }
                 ]
             }
@@ -2884,15 +2884,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             },
@@ -2906,15 +2899,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             },
@@ -2929,15 +2915,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             }
@@ -2979,7 +2958,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -2994,7 +2973,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -3010,7 +2989,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -3066,8 +3045,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous"],
-                        "amount": 10
+                        "values": ["respect"],
+                        "amount": -10
                     }
                 ]
             },
@@ -3081,8 +3060,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous"],
-                        "amount": 10
+                        "values": ["respect"],
+                        "amount": -10
                     }
                 ]
             }
@@ -3097,8 +3076,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous"],
-                        "amount": -10
+                        "values": ["respect"],
+                        "amount": 10
                     }
                 ],
                 "prey": ["very_small"]
@@ -3119,8 +3098,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous"],
-                        "amount": -10
+                        "values": ["respect"],
+                        "amount": 10
                     }
                 ],
                 "prey": ["very_small"]
@@ -3155,8 +3134,8 @@
                         "cats_to": ["r_c"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
+                        "values": ["like"],
+                        "amount": -10
                     }
                 ]
             },
@@ -3170,8 +3149,8 @@
                         "cats_to": ["r_c"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
+                        "values": ["like"],
+                        "amount": -10
                     }
                 ]
             }
@@ -3226,8 +3205,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
+                        "values": ["like"],
+                        "amount": -5
                     }
                 ]
             },
@@ -3241,8 +3220,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
+                        "values": ["like"],
+                        "amount": -5
                     }
                 ]
             },
@@ -3257,8 +3236,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
+                        "values": ["like"],
+                        "amount": -5
                     }
                 ]
             }
@@ -3300,15 +3279,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             },
@@ -3322,15 +3294,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             },
@@ -3345,15 +3310,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             }
@@ -3395,7 +3353,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -3410,7 +3368,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -3426,7 +3384,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -3482,8 +3440,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous"],
-                        "amount": 10
+                        "values": ["respect"],
+                        "amount": -10
                     }
                 ]
             },
@@ -3497,8 +3455,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous"],
-                        "amount": 10
+                        "values": ["respect"],
+                        "amount": -10
                     }
                 ]
             }
@@ -3513,8 +3471,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous"],
-                        "amount": -10
+                        "values": ["respect"],
+                        "amount": 10
                     }
                 ],
                 "prey": ["very_small"]
@@ -3535,8 +3493,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["jealous"],
-                        "amount": -10
+                        "values": ["respect"],
+                        "amount": 10
                     }
                 ],
                 "prey": ["very_small"]
@@ -3571,8 +3529,8 @@
                         "cats_to": ["r_c"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
+                        "values": ["like"],
+                        "amount": -10
                     }
                 ]
             },
@@ -3586,8 +3544,8 @@
                         "cats_to": ["r_c"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
+                        "values": ["like"],
+                        "amount": -10
                     }
                 ]
             }

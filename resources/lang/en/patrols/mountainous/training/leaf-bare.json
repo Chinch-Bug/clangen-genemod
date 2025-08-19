@@ -4,12 +4,12 @@
         "biome": ["mountainous"],
         "season": ["leaf-bare"],
         "types": ["training"],
-        "tags": ["rom_two_apps", "romantic"],
+        "tags": ["rom_two_apps", "romance"],
         "patrol_art": "mtn_train_snowcrunching",
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [2, 2]
         },
         "weight": 20,
@@ -26,7 +26,7 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -40,7 +40,7 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -63,7 +63,7 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -104,7 +104,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "normal adult": [1, 6]
         },
         "weight": 20,
@@ -175,7 +175,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "normal adult": [1, 6]
         },
         "weight": 20,
@@ -246,7 +246,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [2, 2],
             "normal adult": [1, 6]
         },
@@ -318,7 +318,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [2, 2],
             "normal adult": [1, 6]
         },
@@ -451,7 +451,7 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["s_c"],
                             "mutual": false,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": 10
                         }
                     ]
@@ -486,7 +486,7 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["s_c"],
                             "mutual": false,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": 10
                         }
                     ]
@@ -518,7 +518,7 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["s_c"],
                             "mutual": false,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": 5
                         }
                     ]
@@ -585,8 +585,8 @@
                             "cats_to": ["s_c"],
                             "cats_from": ["p_l"],
                             "mutual": false,
-                            "values": ["dislike"],
-                            "amount": 5
+                            "values": ["like"],
+                            "amount": -5
                         }
                     ]
                 }
@@ -607,7 +607,7 @@
         "weight": 40,
         "chance_of_success": 60,
         "pl_skill_constraint": ["STORY,1", "LORE,1"],
-        "intro_text": "p_l gathers some of {PRONOUN/p_l/poss} Clanmates, huddled together for warmth, and offers a tale to take everyone's mind off of the storm raging outside burrow.",
+        "intro_text": "p_l gathers some of {PRONOUN/p_l/poss} Warrenmates, huddled together for warmth, and offers a tale to take everyone's mind off of the storm raging outside burrow.",
         "decline_text": "The wind, howling and vast, drowns p_l out. There'll be no stories today.",
         "success_outcomes": [
                 {
@@ -626,14 +626,14 @@
                             "cats_to": ["patrol"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -5
+                            "values": ["like"],
+                            "amount": 5
                         },
                         {
                             "cats_to": ["patrol"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["comfort", "platonic"],
+                            "values": ["comfort", "like"],
                             "amount": 5
                         }
                     ]
@@ -679,11 +679,11 @@
         "weight": 40,
         "chance_of_success": 60,
         "pl_skill_constraint": ["LORE,1"],
-        "intro_text": "Many seasons ago, p_l begins, there was born a powerful, Stars-gifted rusasi, one coveted by the Clans around them. Pulled in many directions, they could not keep the peace, as all demanded their time and skill.",
-        "decline_text": "r_c doesn't have time to listen to p_l's story - {PRONOUN/r_c/subject} {VERB/r_c/apologize/apologizes}, but {PRONOUN/r_c/subject} rather {VERB/r_c/feel/feels} like that long dead overworked rusasi {PRONOUN/r_c/self}, right now!",
+        "intro_text": "Many seasons ago, p_l begins, there was born a powerful, Stars-gifted rusasirah, one coveted by the Warrens around them. Pulled in many directions, they could not keep the peace, as all demanded their time and skill.",
+        "decline_text": "r_c doesn't have time to listen to p_l's story - {PRONOUN/r_c/subject} {VERB/r_c/apologize/apologizes}, but {PRONOUN/r_c/subject} rather {VERB/r_c/feel/feels} like that long dead overworked rusasirah {PRONOUN/r_c/self}, right now!",
         "success_outcomes": [
                 {
-                    "text": "After moons of having their Warren attacked and targeted, the rusasi raged, calling on their hidden power. They summoned a powerful snowstorm and created leaf-bare in their anger before fleeing the Clans, never to return and never to walk the stars, their life and talents wasted by cruel petty fighting.",
+                    "text": "After moons of having their Warren attacked and targeted, the rusasirah raged, calling on their hidden power. They summoned a powerful snowstorm and created leaf-bare in their anger before fleeing the Warrens, never to return and never to walk the stars, their life and talents wasted by cruel petty fighting.",
                     "exp": 30,
                     "weight": 20,
                     "art": "scaryghost_INTRO",
@@ -692,22 +692,22 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["respect", "platonic"],
+                            "values": ["respect", "like"],
                             "amount": 10
                         },
                         {
                             "cats_to": ["patrol"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["comfort", "trust", "platonic"],
+                            "values": ["comfort", "trust", "like"],
                             "amount": 5
                         },
                         {
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -5
+                            "values": ["like"],
+                            "amount": 5
                         }
                     ]
                 }
@@ -722,27 +722,27 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["r_c"],
                             "mutual": true,
-                            "values": ["respect", "platonic", "comfort"],
+                            "values": ["respect", "like", "comfort"],
                             "amount": -5
                         },
                         {
                             "cats_to": ["p_l"],
                             "cats_from": ["r_c"],
                             "mutual": true,
-                            "values": ["dislike"],
-                            "amount": 5
+                            "values": ["like"],
+                            "amount": -5
                         },
                         {
                             "cats_to": ["p_l"],
                             "cats_from": ["r_c"],
                             "mutual": false,
-                            "values": ["jealous"],
-                            "amount": 5
+                            "values": ["respect"],
+                            "amount": -5
                         }
                     ]
                 },
                 {
-                    "text": "s_c is so concerned with the health of the long dead rusasi it actually derails p_l's story, and {PRONOUN/p_l/subject} {VERB/p_l/have/has} to gently remind {PRONOUN/s_c/object} that this rusasi is long beyond helping.",
+                    "text": "s_c is so concerned with the health of the long dead rusasirah it actually derails p_l's story, and {PRONOUN/p_l/subject} {VERB/p_l/have/has} to gently remind {PRONOUN/s_c/object} that this rusasirah is long beyond helping.",
                     "exp": 0,
                     "weight": 20,
                     "art": "scaryghost_INTRO",
@@ -757,7 +757,7 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["r_c"],
                             "mutual": true,
-                            "values": ["respect", "platonic", "comfort"],
+                            "values": ["respect", "like", "comfort"],
                             "amount": -5
                         }
                     ]
@@ -774,7 +774,7 @@
         "min_cats": 4,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi":[2, 6],
+            "rusasirah":[2, 6],
             "normal adult": [1, 6]
             },
         "weight": 40,
@@ -946,7 +946,7 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["app1", "app2"],
                             "mutual": false,
-                            "values": ["respect", "platonic"],
+                            "values": ["respect", "like"],
                             "amount": -5
                         }
                     ]

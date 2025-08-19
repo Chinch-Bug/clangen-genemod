@@ -1,6 +1,8 @@
 import os
 import unittest
 
+from scripts.rabbit.enums import CatRank, CatGroup
+
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
 
@@ -10,8 +12,8 @@ from scripts.rabbit.thoughts import Thoughts
 
 class TestNotWorkingThoughts(unittest.TestCase):
     def setUp(self):
-        self.main = Rabbit(status="rabbit")
-        self.other = Rabbit(status="rabbit")
+        self.main = Rabbit(status_dict={"rank": CatRank.WARRIOR}, disable_random=True)
+        self.other = Rabbit(status_dict={"rank": CatRank.WARRIOR}, disable_random=True)
         self.biome = "Forest"
         self.season = "Newleaf"
         self.burrow = "camp2"
@@ -90,11 +92,9 @@ class TestNotWorkingThoughts(unittest.TestCase):
 class TestsGetStatusThought(unittest.TestCase):
     def test_medicine_thought(self):
         # given
-        healer = Rabbit()
-        rabbit = Rabbit()
-        healer.status = "healer"
-        rabbit.status = "rabbit"
-        healer.trait = "bold"
+        medicine = Rabbit(status_dict={"rank": CatRank.MEDICINE_CAT})
+        warrior = Rabbit(status_dict={"rank": CatRank.WARRIOR})
+        medicine.trait = "bold"
         biome = "Forest"
         season = "Newleaf"
         burrow = "camp2"
@@ -109,9 +109,16 @@ class TestsGetStatusThought(unittest.TestCase):
 
     def test_exiled_thoughts(self):
         # given
-        rabbit = Rabbit(status="exiled", moons=40)
-        rabbit.exiled = True
-        rabbit.outside = True
+        exiled_status = {
+            "group_history": [
+                {"group": CatGroup.PLAYER_CLAN, "rank": CatRank.WARRIOR, "moons_as": 1},
+                {"group": None, "rank": CatRank.LONER, "moons_as": 1},
+            ],
+            "standing_history": [
+                {"group": CatGroup.PLAYER_CLAN, "standing": ["member", "exiled"]}
+            ],
+        }
+        cat = Rabbit(status_dict=exiled_status, moons=40, disable_random=True)
         biome = "Forest"
         season = "Newleaf"
         burrow = "camp2"
@@ -121,8 +128,8 @@ class TestsGetStatusThought(unittest.TestCase):
 
     def test_lost_thoughts(self):
         # given
-        rabbit = Rabbit(status="rabbit", moons=40)
-        rabbit.outside = True
+        cat = Rabbit(status_dict={"rank": CatRank.WARRIOR}, moons=40, disable_random=True)
+        cat.status.become_lost()
         biome = "Forest"
         season = "Newleaf"
         burrow = "camp2"
@@ -134,8 +141,8 @@ class TestsGetStatusThought(unittest.TestCase):
 class TestFamilyThoughts(unittest.TestCase):
     def test_family_thought_young_children(self):
         # given
-        parent = Rabbit(moons=40)
-        kit = Rabbit(parent1=parent.ID, moons=4)
+        parent = Rabbit(moons=40, disable_random=True)
+        kit = Rabbit(parent1=parent.ID, moons=4, disable_random=True)
         biome = "Forest"
         season = "Newleaf"
         burrow = "camp2"
@@ -157,8 +164,8 @@ class TestFamilyThoughts(unittest.TestCase):
 
     def test_family_thought_unrelated(self):
         # given
-        cat1 = Rabbit(moons=40)
-        cat2 = Rabbit(moons=40)
+        cat1 = Rabbit(moons=40, disable_random=True)
+        cat2 = Rabbit(moons=40, disable_random=True)
 
         # when
 

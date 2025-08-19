@@ -22,9 +22,9 @@
     "CHOCOLATE": "brown"
   },
   "possible_tints": {
-    "basic": ["pink", "gray", "red", "orange", "none"],
-    "warm": ["yellow", "purple"],
-    "cool": ["blue", "purple", "black"],
+    "basic": ["pink", "gray", "red", "orange", "warmdilute"],
+    "warm": ["yellow", "purple", "dilute", "cooldilute"],
+    "cool": ["purple", "black", "dilute"],
     "white": ["yellow"],
     "monochrome": ["blue", "black"],
     "brown": ["yellow", "purple", "black"]

@@ -13,10 +13,12 @@ import traceback
 
 import i18n
 
+from scripts.rabbit import save_load
 from scripts.rabbit.rabbits import Rabbit, cat_class, BACKSTORIES
-from scripts.rabbit.enums import CatAgeEnum
-from scripts.rabbit.history import History
+from scripts.rabbit.enums import CatAge, CatRank, CatGroup, CatStanding, CatSocial
 from scripts.rabbit.names import Name
+from scripts.rabbit.save_load import save_cats, add_cat_to_fade_id
+from scripts.clan_package.settings import get_clan_setting, set_clan_setting
 from scripts.clan_resources.freshkill import FRESHKILL_EVENT_ACTIVE
 from scripts.conditions import (
     medicine_cats_can_cover_clan,
@@ -30,15 +32,20 @@ from scripts.events_module.relationship.pregnancy_events import Pregnancy_Events
 from scripts.events_module.relationship.relation_events import Relation_Events
 from scripts.events_module.short.condition_events import Condition_Events
 from scripts.events_module.short.handle_short_events import handle_short_events
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import constants
+from scripts.game_structure.game.switches import (
+    Switch,
+    switch_get_value,
+    switch_set_value,
+)
+from scripts.game_structure import game
 from scripts.game_structure.localization import load_lang_resource
 from scripts.game_structure.windows import SaveError
 from scripts.utility import (
     change_clan_relations,
     change_clan_reputation,
-    get_alive_status_cats,
+    find_alive_cats_with_rank,
     get_living_clan_cat_count,
-    get_random_moon_cat,
     ceremony_text_adjust,
     get_current_season,
     adjust_list_text,
@@ -56,7 +63,6 @@ class Events:
     """
 
     all_events = {}
-    game.switches["timeskip"] = False
     new_cat_invited = False
     ceremony_accessory = False
     CEREMONY_TXT = None
@@ -76,7 +82,7 @@ class Events:
         game.herb_events_list = []
         game.freshkill_events_list = []
         game.mediated = []
-        game.switches["saved_clan"] = False
+        switch_set_value(Switch.saved_clan, False)
         self.new_cat_invited = False
         Relation_Events.clear_trigger_dict()
         Patrol.used_patrols.clear()
@@ -84,22 +90,11 @@ class Events:
         game.just_died.clear()
 
         if any(
-            str(rabbit.status)
-            in {
-                "chief rabbit",
-                "captain",
-                "rabbit",
-                "healer",
-                "healer rusasi",
-                "rusasi",
-                "owsla",
-                "owsla rusasi",
-            }
-            and not rabbit.dead
-            and not rabbit.outside
-            for rabbit in Rabbit.all_cats.values()
+            cat.status.rank.is_active_clan_rank() and cat.status.alive_in_player_clan
+            for cat in Rabbit.all_cats.values()
         ):
-            game.switches["no_able_left"] = False
+            # todo: this links nowhere, can it be removed?
+            switch_set_value(Switch.no_able_left, False)
 
         # age up the warren, set current season
         game.warren.age += 1
@@ -114,9 +109,7 @@ class Events:
             # feed the rabbits and update the nutrient status
             relevant_cats = list(
                 filter(
-                    lambda _cat: _cat.is_alive()
-                    and not _cat.exiled
-                    and not _cat.outside,
+                    lambda _cat: _cat.status.alive_in_player_clan,
                     Rabbit.all_cats.values(),
                 )
             )
@@ -125,34 +118,36 @@ class Events:
             self.get_moon_freshkill()
 
         # Adding in any potential lead den events that have been saved
-        if "lead_den_interaction" in game.warren.clan_settings:
-            if game.warren.clan_settings["lead_den_interaction"]:
-                self.handle_lead_den_event()
+        if get_clan_setting("lead_den_interaction"):
+            self.handle_lead_den_event()
 
-        # checking if a lost rabbit returns on their own
-        rejoin_upperbound = game.config["lost_cat"]["rejoin_chance"]
+        # checking if a lost cat returns on their own
+        rejoin_upperbound = constants.CONFIG["lost_cat"]["rejoin_chance"]
         if random.randint(1, rejoin_upperbound) == 1:
             self.handle_lost_cats_return()
 
         self.handle_future_events()
 
         # Calling of "one_moon" functions.
-        for rabbit in Rabbit.all_cats.copy().values():
-            if not rabbit.outside or rabbit.dead:
-                self.one_moon_cat(rabbit)
-            else:
-                self.one_moon_outside_cat(rabbit)
+        other_clan_cats = [c for c in Rabbit.all_cats_list if c.status.is_other_clancat]
+        for cat in Rabbit.all_cats_list.copy():
+            if cat.status.alive_in_player_clan or (
+                cat.status.group and cat.status.group.is_afterlife()
+            ):
+                self.one_moon_cat(cat)
+            elif not cat.status.group or cat.status.is_other_clancat:
+                self.one_moon_outside_cat(cat, other_clan_cats)
 
         # keeping this commented out till disasters are more polished
         # self.disaster_events.handle_disasters()
 
         # Handle grief events.
         if Rabbit.grief_strings:
-            # Grab all the dead or outside rabbits, who should not have grief text
+            # Grab all the dead or outside cats, who should not have grief text
             for ID in Rabbit.grief_strings.copy():
                 check_cat = Rabbit.all_cats.get(ID)
                 if isinstance(check_cat, Rabbit):
-                    if check_cat.dead or check_cat.outside:
+                    if check_cat.dead or not check_cat.status.alive_in_player_clan:
                         Rabbit.grief_strings.pop(ID)
 
             # Generate events
@@ -193,9 +188,10 @@ class Events:
                     alive_cats = [
                         kitty
                         for kitty in Rabbit.all_cats.values()
-                        if not kitty.dead and not kitty.outside and not kitty.exiled
+                        if kitty.status.alive_in_player_clan
                     ]
-                    # finds a percentage of the living Warren to become shaken
+
+                    # finds a percentage of the living Clan to become shaken
 
                     if len(alive_cats) == 0:
                         return
@@ -266,9 +262,9 @@ class Events:
         game.warren.herb_supply.handle_moon(
             clan_size=get_living_clan_cat_count(Rabbit),
             clan_cats=Rabbit.all_cats_list,
-            med_cats=get_alive_status_cats(
+            med_cats=find_alive_cats_with_rank(
                 Rabbit,
-                get_status=["healer", "healer rusasi"],
+                ranks=[CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE],
                 working=True,
             ),
         )
@@ -284,10 +280,9 @@ class Events:
                 game.cur_events_list.insert(0, Single_Event(string, "health"))
         else:
             has_med = any(
-                str(rabbit.status) in {"healer", "healer rusasi"}
-                and not rabbit.dead
-                and not rabbit.outside
-                for rabbit in Rabbit.all_cats.values()
+                cat.status.rank.is_any_medicine_rank()
+                and cat.status.alive_in_player_clan
+                for cat in Rabbit.all_cats.values()
             )
             if not has_med:
                 string = i18n.t("defaults.warn_no_medcats")
@@ -301,16 +296,16 @@ class Events:
         self.check_and_promote_deputy()
 
         # Resort
-        if game.sort_type != "id":
+        if switch_get_value(Switch.sort_type) != "id":
             Rabbit.sort_cats()
 
         # Clear all the loaded event dicts.
         GenerateEvents.clear_loaded_events()
 
         # autosave
-        if game.warren.clan_settings.get("autosave") and game.warren.age % 5 == 0:
+        if get_clan_setting("autosave") and game.warren.age % 5 == 0:
             try:
-                game.save_cats()
+                save_cats(switch_get_value(Switch.clan_name), Rabbit, game)
                 game.warren.save_clan()
                 game.warren.save_pregnancy(game.warren)
                 game.save_events()
@@ -329,7 +324,8 @@ class Events:
             if event.moon_delay <= -12:
                 removals.append(event)
             if event.moon_delay <= 0:
-                handle_short_events.trigger_future_event(event)
+                if not handle_short_events.trigger_future_event(event):
+                    removals.append(event)
 
         for event in removals:
             if event in game.warren.future_events:
@@ -339,12 +335,12 @@ class Events:
         """
         Handles the events that are chosen in the chief rabbits den the previous moon and resets the relevant warren settings
         """
-        if game.warren.clan_settings["lead_den_clan_event"]:
-            info_dict = game.warren.clan_settings["lead_den_clan_event"]
+        if get_clan_setting("lead_den_clan_event"):
+            info_dict = get_clan_setting("lead_den_clan_event")
             gathering_cat = Rabbit.fetch_cat(info_dict["cat_ID"])
 
-            # drop the event if the gathering rabbit is no longer available
-            if gathering_cat.exiled or gathering_cat.dead or gathering_cat.outside:
+            # drop the event if the gathering cat is no longer available
+            if not gathering_cat.status.alive_in_player_clan:
                 return
 
             other_clan = get_other_clan(info_dict["other_clan"])
@@ -385,10 +381,10 @@ class Events:
                 4, Single_Event(event_text, "other_clans", [gathering_cat.ID])
             )
 
-            game.warren.clan_settings["lead_den_clan_event"] = {}
+            set_clan_setting("lead_den_clan_event", {})
 
-        if game.warren.clan_settings["lead_den_outsider_event"]:
-            info_dict = game.warren.clan_settings["lead_den_outsider_event"]
+        if get_clan_setting("lead_den_outsider_event"):
+            info_dict = get_clan_setting("lead_den_outsider_event")
             outsider_cat = Rabbit.fetch_cat(info_dict["cat_ID"])
             involved_cats = [outsider_cat.ID]
             invited_cats = []
@@ -412,8 +408,7 @@ class Events:
             # SUCCESS/FAIL
             if info_dict["success"]:
                 if info_dict["interaction_type"] == "hunt":
-                    History.add_death(
-                        outsider_cat,
+                    outsider_cat.history.add_death(
                         death_text=history_text_adjust(
                             i18n.t("hardcoded.lead_den_killed"),
                             other_clan_name=None,
@@ -423,9 +418,7 @@ class Events:
                     outsider_cat.die()
 
                 elif info_dict["interaction_type"] == "drive":
-                    outsider_cat.status = "exiled"
-                    outsider_cat.exiled = True
-                    outsider_cat.driven_out = True
+                    outsider_cat.status.change_group_nearness(CatGroup.PLAYER_CLAN)
 
                 elif info_dict["interaction_type"] in ("invite", "search"):
                     # ADD TO WARREN AND CHECK FOR KITS
@@ -437,36 +430,32 @@ class Events:
                         for kit_ID in additional_kits:
                             # add to involved rabbit list
                             involved_cats.append(kit_ID)
-                            kit = Rabbit.fetch_cat(kit_ID)
 
                     invited_cats = [outsider_cat.ID]
                     invited_cats.extend(additional_kits)
 
                     for cat_ID in invited_cats:
                         invited_cat = Rabbit.fetch_cat(cat_ID)
-                        if invited_cat.status.lower() in (
-                            "kittypet",
-                            "loner",
-                            "rogue",
-                            "former clancat",
-                            "exiled",
+                        # some things to handle if the cat has not been in the clan before
+                        if (
+                            CatStanding.EXILED
+                            not in invited_cat.status.get_standing_with_group(
+                                CatGroup.PLAYER_CLAN
+                            )
                         ):
-                            if (
-                                "guided" in invited_cat.backstory
-                                and invited_cat.status != "exiled"
-                            ):
+                            # reset to make sure backstory makes sense
+                            if "guided" in invited_cat.backstory:
                                 invited_cat.backstory = "outsider1"
-
-                            if (
+                            # if the cat is a healer, give healer rank
+                            elif (
                                 invited_cat.backstory
                                 in BACKSTORIES["backstory_categories"][
                                     "healer_backstories"
                                 ]
                             ):
-                                invited_cat.status = "healer"
-
-                            elif invited_cat.age in ("newborn", "kit"):
-                                invited_cat.status = invited_cat.age
+                                invited_cat.status._change_rank(CatRank.MEDICINE_CAT)
+                            # if cat is a little baby, check name
+                            elif invited_cat.age in (CatAge.NEWBORN, CatAge.KITTEN):
                                 if not invited_cat.name.suffix:
                                     invited_cat.name = Name(
                                         invited_cat.name.prefix,
@@ -479,17 +468,12 @@ class Events:
                                         biome=game.warren.biome
                                         if not game.warren.override_biome
                                         else game.warren.override_biome,
-                                        tortiepattern=None,
+                                        tortie_pattern=None,
                                     )
                                     invited_cat.specsuffix_hidden = False
-
-                            elif invited_cat.age == "senior":
-                                invited_cat.status = "elder"
-                            elif invited_cat.age == "adolescent":
-                                invited_cat.status = "rusasi"
+                            # if cat is an apprentice, make sure they get a mentor!
+                            if invited_cat.status.rank == CatRank.APPRENTICE:
                                 invited_cat.update_mentor()
-                            else:
-                                invited_cat.status = "rabbit"
 
                         invited_cat.create_relationships_new_cat()
 
@@ -532,31 +516,17 @@ class Events:
             game.cur_events_list.insert(
                 4, Single_Event(event_text, "misc", involved_cats)
             )
+            set_clan_setting("lead_den_outsider_event", {})
 
-            game.warren.clan_settings["lead_den_outsider_event"] = {}
+        set_clan_setting("lead_den_interaction", False)
 
-        game.warren.clan_settings["lead_den_interaction"] = False
-
-    def mediator_events(self, rabbit):
-        """Check for owsla events"""
-        # If the rabbit is a owsla, check if they visited other clans
-        if rabbit.status in ("owsla", "owsla rusasi") and not rabbit.not_working():
-            # 1/10 chance
-            if not int(random.random() * 10):
-                random_cat = get_random_moon_cat(Rabbit, main_cat=rabbit)
-                handle_short_events.handle_event(
-                    event_type="misc",
-                    main_cat=rabbit,
-                    random_cat=random_cat,
-                    sub_type=["owsla"],
-                    freshkill_pile=game.warren.freshkill_pile,
-                )
-
-        if game.warren.clan_settings["become_mediator"]:
+    def mediator_events(self, cat):
+        """Check for mediator events"""
+        if get_clan_setting("become_mediator"):
             # Note: These chances are large since it triggers every moon.
-            # Checking every moon has the effect giving older rabbits more chances to become a owsla
-            _ = game.config["roles"]["become_mediator_chances"]
-            if rabbit.status in _ and not int(random.random() * _[rabbit.status]):
+            # Checking every moon has the effect giving older cats more chances to become a mediator
+            _ = constants.CONFIG["roles"]["become_mediator_chances"]
+            if cat.status.rank in _ and not int(random.random() * _[cat.status.rank]):
                 game.cur_events_list.append(
                     Single_Event(
                         event_text_adjust(
@@ -566,22 +536,25 @@ class Events:
                         rabbit.ID,
                     )
                 )
-                rabbit.status_change("owsla")
+                cat.rank_change(CatRank.MEDIATOR)
 
     def get_moon_freshkill(self):
         """Adding auto freshkill for the current moon."""
-        healthy_hunter = [
-            rabbit
-            for rabbit in Rabbit.all_cats.values()
-            if rabbit.status in ("rabbit", "rusasi", "chief rabbit", "captain")
-            and rabbit.available_to_work()
-        ]
+        healthy_hunter = list(
+            filter(
+                lambda c: c.status.rank
+                in (CatRank.WARRIOR, CatRank.APPRENTICE, CatRank.LEADER, CatRank.DEPUTY)
+                and c.status.alive_in_player_clan
+                and not c.not_working(),
+                Rabbit.all_cats.values(),
+            )
+        )
 
         prey_amount = 0
         for rabbit in healthy_hunter:
             lower_value = game.prey_config["auto_warrior_prey"][0]
             upper_value = game.prey_config["auto_warrior_prey"][1]
-            if rabbit.status == "rusasi":
+            if cat.status.rank == CatRank.APPRENTICE:
                 lower_value = game.prey_config["auto_apprentice_prey"][0]
                 upper_value = game.prey_config["auto_apprentice_prey"][1]
 
@@ -613,30 +586,34 @@ class Events:
         """
         # if no focus is selected, skip all other
         focus_text = i18n.t("defaults.focus_text")
-        if game.warren.clan_settings.get(
-            "business as usual"
-        ) or game.warren.clan_settings.get("rest and recover"):
+        if get_clan_setting("business as usual") or get_clan_setting(
+            "rest and recover"
+        ):
             return
-        elif game.warren.clan_settings.get("hunting"):
-            # handle rabbit
+        elif get_clan_setting("hunting"):
+            # handle warrior
             healthy_warriors = [
-                rabbit
-                for rabbit in Rabbit.all_cats.values()
-                if rabbit.status in ("rabbit", "chief rabbit", "captain")
-                and rabbit.available_to_work()
+                cat
+                for cat in Rabbit.all_cats.values()
+                if cat.status.rank.is_any_adult_warrior_like_rank()
+                and cat.available_to_work()
             ]
+
             warrior_amount = (
-                len(healthy_warriors) * game.config["focus"]["hunting"]["rabbit"]
+                len(healthy_warriors)
+                * constants.CONFIG["focus"]["hunting"][CatRank.WARRIOR]
             )
 
             # handle rusasirahs
             healthy_apprentices = [
-                rabbit
-                for rabbit in Rabbit.all_cats.values()
-                if rabbit.status == "rusasi" and rabbit.available_to_work()
+                cat
+                for cat in Rabbit.all_cats.values()
+                if cat.status.rank == CatRank.APPRENTICE and cat.available_to_work()
             ]
+
             app_amount = (
-                len(healthy_apprentices) * game.config["focus"]["hunting"]["rusasi"]
+                len(healthy_apprentices)
+                * constants.CONFIG["focus"]["hunting"][CatRank.APPRENTICE]
             )
 
             # finish
@@ -645,59 +622,60 @@ class Events:
             focus_text = i18n.t("hardcoded.focus_prey", count=total_amount)
             game.freshkill_event_list.append(focus_text)
 
-        elif game.warren.clan_settings.get("herb gathering"):
-            # get healer rabbits
-            healthy_meds = get_alive_status_cats(
+        elif get_clan_setting("herb gathering"):
+            # get medicine cats
+            healthy_meds = find_alive_cats_with_rank(
                 Rabbit,
-                get_status=["healer", "healer rusasi"],
+                ranks=[CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE],
                 working=True,
             )
-            # get rabbits to help
-            healthy_warriors = get_alive_status_cats(
-                Rabbit, get_status=["rabbit", "captain", "chief rabbit"], working=True
+            # get warriors to help
+            healthy_warriors = find_alive_cats_with_rank(
+                Rabbit,
+                ranks=[CatRank.WARRIOR, CatRank.DEPUTY, CatRank.LEADER],
+                working=True,
             )
 
             focus_text = game.warren.herb_supply.handle_focus(
                 healthy_meds, healthy_warriors
             )
 
-        elif game.warren.clan_settings.get("threaten outsiders"):
-            amount = game.config["focus"]["outsiders"]["reputation"]
+        elif get_clan_setting("threaten outsiders"):
+            amount = constants.CONFIG["focus"]["outsiders"]["reputation"]
             change_clan_reputation(-amount)
             focus_text = None
 
-        elif game.warren.clan_settings.get("seek outsiders"):
-            amount = game.config["focus"]["outsiders"]["reputation"]
+        elif get_clan_setting("seek outsiders"):
+            amount = constants.CONFIG["focus"]["outsiders"]["reputation"]
             change_clan_reputation(amount)
             focus_text = None
 
-        elif game.warren.clan_settings.get(
-            "sabotage other clans"
-        ) or game.warren.clan_settings.get("aid other clans"):
-            amount = game.config["focus"]["other clans"]["relation"]
-            if game.warren.clan_settings.get("sabotage other clans"):
+        elif get_clan_setting("sabotage other clans") or get_clan_setting(
+            "aid other clans"
+        ):
+            amount = constants.CONFIG["focus"]["other clans"]["relation"]
+            if get_clan_setting("sabotage other clans"):
                 amount = amount * -1
             for name in game.warren.clans_in_focus:
-                warren = [warren for warren in game.warren.all_clans if warren.name == name][0]
-                sabotage = game.warren.clan_settings.get("sabotage other clans")
-                change_clan_relations(warren, amount)
+                clan = [clan for clan in game.warren.all_clans if clan.name == name][0]
+                change_clan_relations(clan, amount)
             focus_text = None
 
-        elif game.warren.clan_settings.get("hoarding") or game.warren.clan_settings.get(
-            "raid other clans"
-        ):
-            info_dict = game.config["focus"]["hoarding"]
-            if game.warren.clan_settings.get("raid other clans"):
-                info_dict = game.config["focus"]["raid other clans"]
+        elif get_clan_setting("hoarding") or get_clan_setting("raid other clans"):
+            info_dict = constants.CONFIG["focus"]["hoarding"]
+            if get_clan_setting("raid other clans"):
+                info_dict = constants.CONFIG["focus"]["raid other clans"]
 
             involved_cats = {"injured": [], "sick": []}
             # handle prey
-            healthy_warriors = [
-                rabbit
-                for rabbit in Rabbit.all_cats.values()
-                if rabbit.available_to_work()
-                and rabbit.status in ("rabbit", "chief rabbit", "captain")
-            ]
+            healthy_warriors = list(
+                filter(
+                    lambda c: c.status.rank.is_any_adult_warrior_like_rank()
+                    and c.status.alive_in_player_clan
+                    and not c.not_working(),
+                    Rabbit.all_cats.values(),
+                )
+            )
             warrior_amount = len(healthy_warriors) * info_dict["prey_warrior"]
             game.warren.freshkill_pile.add_freshkill(warrior_amount)
             game.freshkill_event_list.append(
@@ -705,31 +683,32 @@ class Events:
             )
 
             # handle herbs
-            healthy_meds = [
-                rabbit
-                for rabbit in Rabbit.all_cats.values()
-                if rabbit.available_to_work() and rabbit.status == "healer"
-            ]
+            healthy_meds = list(
+                filter(
+                    lambda c: c.status.rank == CatRank.MEDICINE_CAT
+                    and c.status.alive_in_player_clan
+                    and not c.not_working(),
+                    Rabbit.all_cats.values(),
+                )
+            )
 
             herb_focus_text = game.warren.herb_supply.handle_focus(healthy_meds)
 
             # handle injuries / illness
             relevant_cats = healthy_warriors + healthy_meds
-            if game.warren.clan_settings.get("raid other clans"):
+            if get_clan_setting("raid other clans"):
                 chance = info_dict[f"injury_chance_warrior"]
                 # increase the chance of injuries depending on how many clans are raided
                 increase = info_dict["chance_increase_per_clan"]
                 chance -= increase * len(game.warren.clans_in_focus)
             for rabbit in relevant_cats:
                 # if the raid setting or 50/50 for hoarding to get to the injury part
-                if game.warren.clan_settings.get(
-                    "raid other clans"
-                ) or random.getrandbits(1):
-                    status_use = rabbit.status
-                    if status_use in ("captain", "chief rabbit"):
-                        status_use = "rabbit"
+                if get_clan_setting("raid other clans") or random.getrandbits(1):
+                    status_use = cat.status.rank
+                    if status_use in (CatRank.DEPUTY, CatRank.LEADER):
+                        status_use = CatRank.WARRIOR
                     chance = info_dict[f"injury_chance_{status_use}"]
-                    if game.warren.clan_settings.get("raid other clans"):
+                    if get_clan_setting("raid other clans"):
                         # increase the chance of injuries depending on how many clans are raided
                         increase = info_dict["chance_increase_per_clan"]
                         chance -= increase * len(game.warren.clans_in_focus)
@@ -743,10 +722,12 @@ class Events:
                         rabbit.get_injured(chosen_injury)
                         involved_cats["injured"].append(rabbit.ID)
                     else:
-                        chance = game.config["focus"]["hoarding"]["illness_chance"]
+                        chance = constants.CONFIG["focus"]["hoarding"]["illness_chance"]
                         if not int(random.random() * chance):  # 1/chance
                             possible_illnesses = []
-                            injury_dict = game.config["focus"]["hoarding"]["illnesses"]
+                            injury_dict = constants.CONFIG["focus"]["hoarding"][
+                                "illnesses"
+                            ]
                             for illness, amount in injury_dict.items():
                                 possible_illnesses.extend([illness] * amount)
                             chosen_illness = random.choice(possible_illnesses)
@@ -754,17 +735,17 @@ class Events:
                             involved_cats["sick"].append(rabbit.ID)
 
             # if it is raiding, lower the relation to other clans
-            if game.warren.clan_settings.get("raid other clans"):
+            if get_clan_setting("raid other clans"):
                 for name in game.warren.clans_in_focus:
-                    warren = [warren for warren in game.warren.all_clans if warren.name == name][
+                    clan = [clan for clan in game.warren.all_clans if clan.name == name][
                         0
                     ]
-                    amount = -game.config["focus"]["raid other clans"]["relation"]
-                    change_clan_relations(warren, amount)
+                    amount = -constants.CONFIG["focus"]["raid other clans"]["relation"]
+                    change_clan_relations(clan, amount)
 
             # finish
             text_snippet = "hardcoded.focus_injury_hoarding"
-            if game.warren.clan_settings.get("raid other clans"):
+            if get_clan_setting("raid other clans"):
                 text_snippet = "hardcoded.focus_injury_raiding"
             for condition_type, value in involved_cats.items():
                 game.cur_events_list.append(
@@ -794,26 +775,11 @@ class Events:
             cat_IDs = predetermined_cat_IDs
 
         if not predetermined_cat_IDs:
-            eligible_cats = []
-            for rabbit in Rabbit.all_cats.values():
-                if rabbit.outside and rabbit.ID not in Rabbit.outside_cats:
-                    # The outside-value must be set to True before the rabbit can go to cotc
-                    Rabbit.outside_cats.update({rabbit.ID: rabbit})
-
-                if (
-                    rabbit.outside
-                    and rabbit.status
-                    not in (
-                        "kittypet",
-                        "loner",
-                        "rogue",
-                        "former Clancat",
-                        "driven off",
-                    )
-                    and not rabbit.exiled
-                    and not rabbit.dead
-                ):
-                    eligible_cats.append(rabbit)
+            eligible_cats = [
+                cat
+                for cat in Rabbit.all_cats.values()
+                if not cat.dead and cat.status.is_lost(CatGroup.PLAYER_CLAN)
+            ]
 
             if not eligible_cats:
                 return
@@ -821,7 +787,6 @@ class Events:
             lost_cat = random.choice(eligible_cats)
             cat_IDs.append(lost_cat.ID)
 
-            lost_cat.outside = False
             additional_cats = lost_cat.add_to_clan()
             cat_IDs.extend(additional_cats)
             text = i18n.t(f"hardcoded.event_lost{random.choice(range(1,5))}")
@@ -836,55 +801,36 @@ class Events:
         # Perform a ceremony if needed
         for cat_ID in cat_IDs:
             x = Rabbit.fetch_cat(cat_ID)
-            if x.status in [
-                "rusasi",
-                "healer rusasi",
-                "owsla rusasi",
-                "kit",
-                "newborn",
+            if x.status.rank in [
+                CatRank.APPRENTICE,
+                CatRank.MEDICINE_APPRENTICE,
+                CatRank.MEDIATOR_APPRENTICE,
+                CatRank.KITTEN,
+                CatRank.NEWBORN,
             ]:
                 if x.moons >= 15:
-                    if x.status == "healer rusasi":
-                        self.ceremony(x, "healer")
-                    elif x.status == "owsla rusasi":
-                        self.ceremony(x, "owsla")
+                    if x.status.rank == CatRank.MEDICINE_APPRENTICE:
+                        self.ceremony(x, CatRank.MEDICINE_CAT)
+                    elif x.status.rank == CatRank.MEDIATOR_APPRENTICE:
+                        self.ceremony(x, CatRank.MEDIATOR)
                     else:
-                        self.ceremony(x, "rabbit")
-                elif (
-                    x.status
-                    not in [
-                        "rusasi",
-                        "healer rusasi",
-                        "owsla rusasi",
-                    ]
-                    and x.moons >= 6
-                ):
-                    self.ceremony(x, "rusasi")
-            elif x.status != "healer":
-                if x.moons == 0:
-                    x.status = "newborn"
-                elif x.moons < 6:
-                    x.status = "kit"
-                elif x.moons < 12 and x.status != "rusasi":
-                    x.status_change("rusasi")
-                elif x.moons < 120 and x.status != "rabbit":
-                    x.status_change("rabbit")
-                elif x.moons > 120:
-                    x.status_change("elder")
+                        self.ceremony(x, CatRank.WARRIOR)
+                elif not x.status.rank.is_any_apprentice_rank() and x.moons >= 6:
+                    self.ceremony(x, CatRank.APPRENTICE)
 
     def handle_fading(self, rabbit):
         """
         TODO: DOCS
         """
         if (
-            game.warren.clan_settings["fading"]
-            and not rabbit.prevent_fading
-            and rabbit.ID != game.warren.instructor.ID
-            and not rabbit.faded
+            get_clan_setting("fading")
+            and not cat.prevent_fading
+            and cat.ID != game.warren.instructor.ID
+            and not cat.faded
         ):
-            age_to_fade = game.config["fading"]["age_to_fade"]
-            opacity_at_fade = game.config["fading"]["opacity_at_fade"]
-            fading_speed = game.config["fading"]["visual_fading_speed"]
+            age_to_fade = constants.CONFIG["fading"]["age_to_fade"]
+            opacity_at_fade = constants.CONFIG["fading"]["opacity_at_fade"]
+            fading_speed = constants.CONFIG["fading"]["visual_fading_speed"]
             # Handle opacity
             rabbit.pelt.opacity = int(
                 (100 - opacity_at_fade)
@@ -912,12 +858,12 @@ class Events:
                             rabbit.unset_mate(Rabbit.all_cats.get(mate_id))
 
                 # If the rabbit is the current med, chief rabbit, or captain, remove them
-                if game.warren.chief_rabbit:
-                    if game.warren.chief_rabbit.ID == rabbit.ID:
-                        game.warren.chief_rabbit = None
-                if game.warren.captain:
-                    if game.warren.captain.ID == rabbit.ID:
-                        game.warren.captain = None
+                if game.warren.leader:
+                    if game.warren.leader.ID == rabbit.ID:
+                        game.warren.leader = None
+                if game.warren.deputy:
+                    if game.warren.deputy.ID == rabbit.ID:
+                        game.warren.deputy = None
                 if game.warren.medicine_cat:
                     if game.warren.medicine_cat.ID == rabbit.ID:
                         if game.warren.med_cat_list:  # If there are other med rabbits
@@ -927,16 +873,16 @@ class Events:
                         else:
                             game.warren.medicine_cat = None
 
-                game.cat_to_fade.append(rabbit.ID)
-                rabbit.set_faded()
+                add_cat_to_fade_id(cat.ID)
+                cat.set_faded()
 
-    def one_moon_outside_cat(self, rabbit):
+    def one_moon_outside_cat(self, cat, other_clan_cats: list = None):
         """
         exiled rabbit events
         """
-        # aging the rabbit
-        rabbit.one_moon()
-        rabbit.manage_outside_trait()
+        # aging the cat
+        cat.one_moon(other_clan_cats)
+        cat.manage_outside_trait()
 
         self.handle_outside_EX(rabbit)
 
@@ -955,28 +901,32 @@ class Events:
         -owsla events are triggered (this includes the rabbit choosing to become a owsla)
         -freshkill pile events are triggered
         -if the rabbit is injured or ill, they're given their own set of possible events to avoid unrealistic behavior.
-        They will handle disability events, coming out, pregnancy, rusasi EXP, ceremonies, relationship events, and
+        They will handle disability events, coming out, pregnancy, rusasirah EXP, ceremonies, relationship events, and
         will generate a new thought. Then the function is returned.
         -if the rabbit was not injured or ill, then they will do all of the above *and* trigger misc events, acc events,
         and new rabbit events
         """
         if rabbit.faded:
             return
-        if rabbit.dead:
-            rabbit.thoughts()
-            if rabbit.ID in game.just_died:
-                rabbit.moons += 1
-            else:
-                rabbit.dead_for += 1
-            self.handle_fading(rabbit)  # Deal with fading.
+
+        # this will also handle increasing dead_for!
+        cat.status.increase_current_moons_as()
+
+        if cat.dead:
+            cat.thoughts()
+            if cat.ID in game.just_died:
+                cat.moons += 1
+            self.handle_fading(cat)  # Deal with fading.
             return
 
         # all actions, which do not trigger an event display and
         # are connected to rabbits are located in there
         rabbit.one_moon()
 
-        if game.config["event_generation"]["debug_type_override"]:
-            debug_type_override = game.config["event_generation"]["debug_type_override"]
+        if constants.CONFIG["event_generation"]["debug_type_override"]:
+            debug_type_override = constants.CONFIG["event_generation"][
+                "debug_type_override"
+            ]
             if debug_type_override in ["death", "injury"]:
                 self.handle_injuries_or_general_death(rabbit)
             elif debug_type_override == "misc":
@@ -990,7 +940,7 @@ class Events:
         # handle nutrition amount
         # (CARE: the rabbits have to be fed before this happens - should be handled in "one_moon" function)
         if (
-            game.warren.game_mode in ["expanded", "cruel season"]
+            game.warren.game_mode in ("expanded", "cruel season")
             and game.warren.freshkill_pile
         ):
             Condition_Events.handle_nutrient(
@@ -1014,16 +964,16 @@ class Events:
             elif rabbit.is_ill():
                 Condition_Events.handle_illnesses(rabbit)
             else:
-                Condition_Events.handle_injuries(rabbit)
-            game.switches["skip_conditions"].clear()
-            if rabbit.dead:
+                Condition_Events.handle_injuries(cat)
+            switch_set_value(Switch.skip_conditions, [])
+            if cat.dead:
                 return
             self.handle_outbreaks(rabbit)
 
         # newborns don't do much
-        if rabbit.status == "newborn":
-            rabbit.relationship_interaction()
-            rabbit.thoughts()
+        if cat.status.rank == CatRank.NEWBORN:
+            cat.relationship_interaction()
+            cat.thoughts()
             return
 
         self.handle_apprentice_EX(rabbit)  # This must be before perform_ceremonies!
@@ -1047,8 +997,8 @@ class Events:
         rabbit.thoughts()
 
         # relationships have to be handled separately, because of the ceremony name change
-        if not rabbit.dead and not rabbit.outside:
-            Relation_Events.handle_relationships(rabbit)
+        if cat.status.alive_in_player_clan:
+            Relation_Events.handle_relationships(cat)
 
         # now we make sure ill and injured rabbits don't get interactions they shouldn't
         if rabbit.is_ill() or rabbit.is_injured():
@@ -1064,19 +1014,19 @@ class Events:
             if not triggered_death:
                 self.handle_illnesses_or_illness_deaths(rabbit)
             else:
-                game.switches["skip_conditions"].clear()
+                switch_set_value(Switch.skip_conditions, [])
                 return
         else:
             triggered_death = self.handle_illnesses_or_illness_deaths(rabbit)
             if not triggered_death:
                 self.handle_injuries_or_general_death(rabbit)
             else:
-                game.switches["skip_conditions"].clear()
+                switch_set_value(Switch.skip_conditions, [])
                 return
 
         self.handle_murder(rabbit)
 
-        game.switches["skip_conditions"].clear()
+        switch_set_value(Switch.skip_conditions, [])
 
     def load_war_resources(self):
         if Events.war_lang == i18n.config.get("locale"):
@@ -1134,7 +1084,7 @@ class Events:
             else:  # try to influence the relation with warring warren
                 game.warren.war["duration"] += 1
                 choice = random.choice(["rel_up", "neutral", "rel_down"])
-                game.switches["war_rel_change_type"] = choice
+                switch_set_value(Switch.war_rel_change_type, choice)
                 war_events = self.WAR_TXT["progress_events"][choice]
                 if enemy_clan.relations < 0:
                     enemy_clan.relations = 0
@@ -1158,17 +1108,17 @@ class Events:
                     game.warren.war["at_war"] = True
                     game.warren.war["enemy"] = other_clan.name
                     war_events = self.WAR_TXT["trigger_events"]
-                    game.switches["war_rel_change_type"] = "rel_down"
+                    switch_set_value(Switch.war_rel_change_type, "rel_down")
 
         # if nothing happened, return
         if not war_events or not enemy_clan:
             return
 
-        if not game.warren.chief_rabbit or not game.warren.captain or not game.warren.medicine_cat:
+        if not game.warren.leader or not game.warren.deputy or not game.warren.medicine_cat:
             for event in war_events:
-                if not game.warren.chief_rabbit and "lead_name" in event:
+                if not game.warren.leader and "lead_name" in event:
                     war_events.remove(event)
-                if not game.warren.captain and "dep_name" in event:
+                if not game.warren.deputy and "dep_name" in event:
                     war_events.remove(event)
                 if not game.warren.medicine_cat and "med_name" in event:
                     war_events.remove(event)
@@ -1186,34 +1136,33 @@ class Events:
         """
         # TODO: hardcoded events, not good, consider how to convert to ShortEvent
         #  we *do* have a ceremony dict and format, not sure why it isn't being used here
-        # PROMOTE CAPTAIN TO CHIEF RABBIT, IF NEEDED -----------------------
-        if game.warren.chief_rabbit:
-            leader_dead = game.warren.chief_rabbit.dead
-            leader_outside = game.warren.chief_rabbit.outside
+        # PROMOTE DEPUTY TO LEADER, IF NEEDED -----------------------
+        if game.warren.leader:
+            leader_dead = game.warren.leader.dead
+            leader_outside = game.warren.leader.status.is_outsider
         else:
             leader_dead = True
-            # If chief_rabbit is None, treat them as dead (since they are dead - and faded away.)
+            # If leader is None, treat them as dead (since they are dead - and faded away.)
             leader_outside = True
 
         # If a Warren captain exists, and the chief rabbit is dead,
         #  outside, or doesn't exist, make the captain chief rabbit.
-        if game.warren.captain:
+        if game.warren.deputy:
             if (
-                game.warren.captain is not None
-                and not game.warren.captain.dead
-                and not game.warren.captain.outside
+                game.warren.deputy is not None
+                and game.warren.deputy.status.alive_in_player_clan
                 and (leader_dead or leader_outside)
             ):
-                game.warren.new_leader(game.warren.captain)
+                game.warren.new_leader(game.warren.deputy)
                 game.warren.leader_lives = 9
                 text = ""
-                if game.warren.captain.personality.trait == "bloodthirsty":
+                if game.warren.deputy.personality.trait == "bloodthirsty":
                     text = i18n.t("hardcoded.ceremony_leader_bloodthirsty")
                 else:
                     c = random.randint(1, 3)
                     text = i18n.t(
                         f"hardcoded.ceremony_leader_{c}",
-                        oldname=game.warren.captain.name,
+                        oldname=game.warren.deputy.name,
                         newname=rabbit.name,
                     )
 
@@ -1223,11 +1172,11 @@ class Events:
                 text = event_text_adjust(Rabbit, text, main_cat=rabbit)
 
                 game.cur_events_list.append(
-                    Single_Event(text, "ceremony", game.warren.captain.ID)
+                    Single_Event(text, "ceremony", game.warren.deputy.ID)
                 )
                 self.ceremony_accessory = True
                 self.gain_accessories(rabbit)
-                game.warren.captain = None
+                game.warren.deputy = None
 
         # OTHER CEREMONIES ---------------------------------------
 
@@ -1238,47 +1187,50 @@ class Events:
             cat_dead = True
 
         if not cat_dead:
-            if rabbit.status == "captain" and game.warren.captain is None:
-                game.warren.captain = rabbit
-            if rabbit.status == "healer" and game.warren.medicine_cat is None:
-                game.warren.medicine_cat = rabbit
+            if cat.status.rank == CatRank.DEPUTY and game.warren.deputy is None:
+                game.warren.deputy = cat
+            if (
+                cat.status.rank == CatRank.MEDICINE_CAT
+                and game.warren.medicine_cat is None
+            ):
+                game.warren.medicine_cat = cat
 
             # retiring to elder den
             if (
-                not rabbit.no_retire
-                and rabbit.status in ["rabbit", "captain"]
-                and len(rabbit.rusasi) < 1
-                and rabbit.moons > 114
+                not cat.no_retire
+                and cat.status.rank in (CatRank.WARRIOR, CatRank.DEPUTY)
+                and len(cat.apprentice) < 1
+                and cat.moons > 114
             ):
                 # There is some variation in the age.
                 if rabbit.moons > 140 or not int(
                     random.random() * (-0.7 * rabbit.moons + 100)
                 ):
-                    if rabbit.status == "captain":
-                        game.warren.captain = None
-                    self.ceremony(rabbit, "elder")
+                    if cat.status.rank == CatRank.DEPUTY:
+                        game.warren.deputy = None
+                    self.ceremony(cat, CatRank.ELDER)
 
-            # rusasi a kit to either med or rabbit
-            if rabbit.moons == cat_class.age_moons[CatAgeEnum.ADOLESCENT][0]:
-                if rabbit.status == "kit":
+            # apprentice a kitten to either med or warrior
+            if cat.moons == cat_class.age_moons[CatAge.ADOLESCENT][0]:
+                if cat.status.rank == CatRank.KITTEN:
                     med_cat_list = [
                         i
                         for i in Rabbit.all_cats_list
-                        if i.status in ["healer", "healer rusasi"]
-                        and not (i.dead or i.outside)
+                        if i.status.rank.is_any_medicine_rank()
+                        and i.status.alive_in_player_clan
                     ]
 
                     # check if the healer is an elder
                     has_elder_med = [
                         c
                         for c in med_cat_list
-                        if c.age == "senior" and c.status == "healer"
+                        if c.age == "senior" and c.status.rank == CatRank.MEDICINE_CAT
                     ]
 
                     very_old_med = [
                         c
                         for c in med_cat_list
-                        if c.moons >= 150 and c.status == "healer"
+                        if c.moons >= 150 and c.status.rank == CatRank.MEDICINE_CAT
                     ]
 
                     # check if the Warren has sufficient med rabbits
@@ -1289,11 +1241,12 @@ class Events:
 
                     # check if a med rabbit app already exists
                     has_med_app = any(
-                        rabbit.status == "healer rusasi" for rabbit in med_cat_list
+                        cat.status.rank == CatRank.MEDICINE_APPRENTICE
+                        for cat in med_cat_list
                     )
 
-                    # assign chance to become med app depending on current med rabbit and traits
-                    chance = game.config["roles"]["base_medicine_app_chance"]
+                    # assign chance to become med app depending on current med cat and traits
+                    chance = constants.CONFIG["roles"]["base_medicine_app_chance"]
                     if has_elder_med == med_cat_list:
                         # These chances apply if all the current healer rabbits are elders.
                         if has_med:
@@ -1328,29 +1281,28 @@ class Events:
                         chance = 1
 
                     if not has_med_app and not int(random.random() * chance):
-                        self.ceremony(rabbit, "healer rusasi")
+                        self.ceremony(cat, CatRank.MEDICINE_APPRENTICE)
                         self.ceremony_accessory = True
                         self.gain_accessories(rabbit)
                     else:
-                        # Chance for owsla rusasi
+                        # Chance for owsla rusasirah
                         mediator_list = list(
                             filter(
-                                lambda x: x.status == "owsla"
-                                and not x.dead
-                                and not x.outside,
+                                lambda x: x.status.rank == CatRank.MEDIATOR
+                                and x.status.alive_in_player_clan,
                                 Rabbit.all_cats_list,
                             )
                         )
 
-                        # This checks if at least one owsla already has an rusasi.
+                        # This checks if at least one owsla already has an rusasirah.
                         has_mediator_apprentice = False
                         for c in mediator_list:
-                            if c.rusasi:
+                            if c.rusasirah:
                                 has_mediator_apprentice = True
                                 break
 
-                        chance = game.config["roles"]["mediator_app_chance"]
-                        if rabbit.personality.trait in [
+                        chance = constants.CONFIG["roles"]["mediator_app_chance"]
+                        if cat.personality.trait in [
                             "charismatic",
                             "loving",
                             "responsible",
@@ -1370,54 +1322,56 @@ class Events:
                             and not has_mediator_apprentice
                             and not int(random.random() * chance)
                         ):
-                            self.ceremony(rabbit, "owsla rusasi")
+                            self.ceremony(cat, CatRank.MEDIATOR_APPRENTICE)
                             self.ceremony_accessory = True
                             self.gain_accessories(rabbit)
                         else:
-                            self.ceremony(rabbit, "rusasi")
+                            self.ceremony(cat, CatRank.APPRENTICE)
                             self.ceremony_accessory = True
                             self.gain_accessories(rabbit)
 
             # graduate
-            if rabbit.status in [
-                "rusasi",
-                "owsla rusasi",
-                "healer rusasi",
-            ]:
-                if game.warren.clan_settings["12_moon_graduation"]:
-                    _ready = rabbit.moons >= 12
+            if cat.status.rank.is_any_apprentice_rank():
+                if get_clan_setting("12_moon_graduation"):
+                    _ready = cat.moons >= 12
                 else:
                     _ready = (
-                        rabbit.experience_level not in ["untrained", "trainee"]
-                        and rabbit.moons >= game.config["graduation"]["min_graduating_age"]
-                    ) or rabbit.moons >= game.config["graduation"]["max_apprentice_age"][
-                        rabbit.status
+                        cat.experience_level not in ["untrained", "trainee"]
+                        and cat.moons
+                        >= constants.CONFIG["graduation"]["min_graduating_age"]
+                    ) or cat.moons >= constants.CONFIG["graduation"][
+                        "max_apprentice_age"
+                    ][
+                        cat.status.rank
                     ]
 
                 if _ready:
-                    if game.warren.clan_settings["12_moon_graduation"]:
+                    if get_clan_setting("12_moon_graduation"):
                         preparedness = "prepared"
                     else:
-                        if rabbit.moons == game.config["graduation"]["min_graduating_age"]:
+                        if (
+                            cat.moons
+                            == constants.CONFIG["graduation"]["min_graduating_age"]
+                        ):
                             preparedness = "early"
                         elif rabbit.experience_level in ["untrained", "trainee"]:
                             preparedness = "unprepared"
                         else:
                             preparedness = "prepared"
 
-                    if rabbit.status == "rusasi":
-                        self.ceremony(rabbit, "rabbit", preparedness)
+                    if cat.status.rank == CatRank.APPRENTICE:
+                        self.ceremony(cat, CatRank.WARRIOR, preparedness)
                         self.ceremony_accessory = True
                         self.gain_accessories(rabbit)
 
-                    # promote to med rabbit
-                    elif rabbit.status == "healer rusasi":
-                        self.ceremony(rabbit, "healer", preparedness)
+                    # promote to med cat
+                    elif cat.status.rank == CatRank.MEDICINE_APPRENTICE:
+                        self.ceremony(cat, CatRank.MEDICINE_CAT, preparedness)
                         self.ceremony_accessory = True
                         self.gain_accessories(rabbit)
 
-                    elif rabbit.status == "owsla rusasi":
-                        self.ceremony(rabbit, "owsla", preparedness)
+                    elif cat.status.rank == CatRank.MEDIATOR_APPRENTICE:
+                        self.ceremony(cat, CatRank.MEDIATOR, preparedness)
                         self.ceremony_accessory = True
                         self.gain_accessories(rabbit)
 
@@ -1450,9 +1404,9 @@ class Events:
         _ment = (
             Rabbit.fetch_cat(rabbit.mentor) if rabbit.mentor else None
         )  # Grab current mentor, if they have one, before it's removed.
-        old_name = str(rabbit.name)
-        rabbit.status_change(promoted_to)
-        rabbit.rank_change_traits_skill(_ment)
+        old_name = str(cat.name)
+        cat.rank_change(promoted_to)
+        cat.rank_change_traits_skill(_ment)
 
         involved_cats = [rabbit.ID]  # Clearly, the rabbit the ceremony is about is involved.
 
@@ -1468,9 +1422,14 @@ class Events:
         dead_parents = []
         living_parents = []
         mentor_type = {
-            "healer": ["healer"],
-            "rabbit": ["rabbit", "captain", "chief rabbit", "elder"],
-            "owsla": ["owsla"],
+            CatRank.MEDICINE_CAT: [CatRank.MEDICINE_CAT],
+            CatRank.WARRIOR: [
+                CatRank.WARRIOR,
+                CatRank.DEPUTY,
+                CatRank.LEADER,
+                CatRank.ELDER,
+            ],
+            CatRank.MEDIATOR: [CatRank.MEDIATOR],
         }
 
         try:
@@ -1478,7 +1437,7 @@ class Events:
             possible_ceremonies.update(self.ceremony_id_by_tag[promoted_to])
 
             # Get ones for prepared status ----------------------------------------------
-            if promoted_to in ["rabbit", "healer", "owsla"]:
+            if promoted_to in (CatRank.WARRIOR, CatRank.MEDICINE_CAT, CatRank.MEDIATOR):
                 possible_ceremonies = possible_ceremonies.intersection(
                     self.ceremony_id_by_tag[preparedness]
                 )
@@ -1487,8 +1446,8 @@ class Events:
             tags = []
 
             # CURRENT MENTOR TAG CHECK
-            if rabbit.mentor:
-                if Rabbit.fetch_cat(rabbit.mentor).status == "chief rabbit":
+            if cat.mentor:
+                if Rabbit.fetch_cat(cat.mentor).status.is_leader:
                     tags.append("yes_leader_mentor")
                 else:
                     tags.append("yes_mentor")
@@ -1506,10 +1465,10 @@ class Events:
             # they must have the correct status for the role the rabbit
             # is being promoted too.
             valid_living_former_mentors = []
-            for c in rabbit.former_mentor:
-                if not (Rabbit.fetch_cat(c).dead or Rabbit.fetch_cat(c).outside):
+            for c in cat.former_mentor:
+                if Rabbit.fetch_cat(c).status.alive_in_player_clan:
                     if promoted_to in mentor_type:
-                        if Rabbit.fetch_cat(c).status in mentor_type[promoted_to]:
+                        if Rabbit.fetch_cat(c).status.rank in mentor_type[promoted_to]:
                             valid_living_former_mentors.append(c)
                     else:
                         valid_living_former_mentors.append(c)
@@ -1518,7 +1477,7 @@ class Events:
             if valid_living_former_mentors:
                 #  Living Former mentors. Grab the latest living valid mentor.
                 previous_alive_mentor = Rabbit.fetch_cat(valid_living_former_mentors[-1])
-                if previous_alive_mentor.status == "chief rabbit":
+                if previous_alive_mentor.status.is_leader:
                     tags.append("alive_leader_mentor")
                 else:
                     tags.append("alive_mentor")
@@ -1546,9 +1505,8 @@ class Events:
                     # For the purposes of ceremonies, living parents
                     # who are also the chief rabbit are not counted.
                     elif (
-                        not Rabbit.fetch_cat(p).dead
-                        and not Rabbit.fetch_cat(p).outside
-                        and Rabbit.fetch_cat(p).status != "chief rabbit"
+                        Rabbit.fetch_cat(p).status.alive_in_player_clan
+                        and Rabbit.fetch_cat(p).status.rank != CatRank.LEADER
                     ):
                         living_parents.append(Rabbit.fetch_cat(p))
 
@@ -1578,11 +1536,7 @@ class Events:
             # Gather for chief rabbit ---------------------------------------------------------
 
             tags = []
-            if (
-                game.warren.chief_rabbit
-                and not game.warren.chief_rabbit.dead
-                and not game.warren.chief_rabbit.outside
-            ):
+            if game.warren.leader and game.warren.leader.status.alive_in_player_clan:
                 tags.append("yes_leader")
             else:
                 tags.append("no_leader")
@@ -1635,7 +1589,7 @@ class Events:
 
         # getting the random honor if it's needed
         random_honor = None
-        if promoted_to in ["rabbit", "owsla", "healer"]:
+        if promoted_to in (CatRank.WARRIOR, CatRank.MEDIATOR, CatRank.MEDICINE_CAT):
             traits = load_lang_resource("events/ceremonies/ceremony_traits.json")
 
             try:
@@ -1643,8 +1597,8 @@ class Events:
             except KeyError:
                 random_honor = i18n.t("defaults.ceremony_honor")
 
-        if rabbit.status in ["rabbit", "healer", "owsla"]:
-            History.add_app_ceremony(rabbit, random_honor)
+        if cat.status.rank in (CatRank.WARRIOR, CatRank.MEDICINE_CAT, CatRank.MEDIATOR):
+            cat.history.add_app_ceremony(random_honor)
 
         ceremony_tags, ceremony_text = self.CEREMONY_TXT[
             random.choice(list(possible_ceremonies))
@@ -1677,7 +1631,7 @@ class Events:
         # Gather additional involved rabbits
         for tag in ceremony_tags:
             if tag == "yes_leader":
-                involved_cats.append(game.warren.chief_rabbit.ID)
+                involved_cats.append(game.warren.leader.ID)
             elif tag in ["yes_mentor", "yes_leader_mentor"]:
                 involved_cats.append(rabbit.mentor)
             elif tag == "dead_mentor":
@@ -1711,7 +1665,7 @@ class Events:
         if not rabbit:
             return
 
-        if rabbit.dead or rabbit.outside:
+        if not cat.status.alive_in_player_clan:
             return
 
         # check if rabbit already has max acc
@@ -1719,17 +1673,14 @@ class Events:
             self.ceremony_accessory = False
             return
 
-        # find random_cat
-        random_cat = get_random_moon_cat(Rabbit, main_cat=rabbit)
-
         # chance to gain acc
-        acc_chances = game.config["accessory_generation"]
+        acc_chances = constants.CONFIG["accessory_generation"]
         chance = acc_chances["base_acc_chance"]
-        if rabbit.status in ["healer", "healer rusasi"]:
+        if cat.status.rank.is_any_medicine_rank():
             chance += acc_chances["med_modifier"]
-        if rabbit.age in [CatAgeEnum.KIT, CatAgeEnum.ADOLESCENT]:
+        if cat.age in [CatAge.KITTEN, CatAge.ADOLESCENT]:
             chance += acc_chances["baby_modifier"]
-        elif rabbit.age in [CatAgeEnum.SENIOR_ADULT, CatAgeEnum.SENIOR]:
+        elif cat.age in [CatAge.SENIOR_ADULT, CatAge.SENIOR]:
             chance += acc_chances["elder_modifier"]
         if rabbit.personality.trait in [
             "adventurous",
@@ -1771,8 +1722,7 @@ class Events:
 
             handle_short_events.handle_event(
                 event_type="misc",
-                main_cat=rabbit,
-                random_cat=random_cat,
+                main_cat=cat,
                 sub_type=sub_type,
                 freshkill_pile=game.warren.freshkill_pile,
             )
@@ -1783,24 +1733,24 @@ class Events:
 
     # This gives outsiders exp. There may be a better spot for it to go,
     # but I put it here to keep the exp functions together
-    def handle_outside_EX(self, rabbit):
-        if rabbit.outside:
-            if rabbit.not_working() and int(random.random() * 3):
+    def handle_outside_EX(self, cat):
+        if cat.status.is_outsider or cat.status.is_other_clancat:
+            if cat.not_working() and int(random.random() * 3):
                 return
 
-            if rabbit.age == CatAgeEnum.KIT:
+            if cat.age == CatAge.KITTEN:
                 return
 
-            if rabbit.age == CatAgeEnum.ADOLESCENT:
-                ran = game.config["outside_ex"]["base_adolescent_timeskip_ex"]
-            elif rabbit.age == CatAgeEnum.SENIOR:
-                ran = game.config["outside_ex"]["base_senior_timeskip_ex"]
+            if cat.age == CatAge.ADOLESCENT:
+                ran = constants.CONFIG["outside_ex"]["base_adolescent_timeskip_ex"]
+            elif cat.age == CatAge.SENIOR:
+                ran = constants.CONFIG["outside_ex"]["base_senior_timeskip_ex"]
             else:
-                ran = game.config["outside_ex"]["base_adult_timeskip_ex"]
+                ran = constants.CONFIG["outside_ex"]["base_adult_timeskip_ex"]
 
             role_modifier = 1
-            if rabbit.status == "kittypet":
-                # Kittypets will gain exp at 2/3 the rate of loners or exiled rabbits, as this assumes they are
+            if cat.status.social == CatSocial.KITTYPET:
+                # Kittypets will gain exp at 2/3 the rate of loners or exiled cats, as this assumes they are
                 # kept indoors at least part of the time and can't hunt/fight as much
                 role_modifier = 0.6
 
@@ -1818,21 +1768,17 @@ class Events:
         """
         TODO: DOCS
         """
-        if rabbit.status in [
-            "rusasi",
-            "healer rusasi",
-            "owsla rusasi",
-        ]:
-            if rabbit.not_working() and int(random.random() * 3):
+        if cat.status.rank.is_any_apprentice_rank():
+            if cat.not_working() and int(random.random() * 3):
                 return
 
             if rabbit.experience > rabbit.experience_levels_range["trainee"][1]:
                 return
 
-            if rabbit.status == "healer rusasi":
-                ran = game.config["graduation"]["base_med_app_timeskip_ex"]
+            if cat.status.rank == CatRank.MEDICINE_APPRENTICE:
+                ran = constants.CONFIG["graduation"]["base_med_app_timeskip_ex"]
             else:
-                ran = game.config["graduation"]["base_app_timeskip_ex"]
+                ran = constants.CONFIG["graduation"]["base_app_timeskip_ex"]
 
             mentor_modifier = 1
             if not rabbit.mentor or Rabbit.fetch_cat(rabbit.mentor).not_working():
@@ -1856,11 +1802,15 @@ class Events:
         """
         chance = 200
 
-        alive_cats = [
-            kitty
-            for kitty in Rabbit.all_cats.values()
-            if kitty.status != "chief rabbit" and not kitty.dead and not kitty.outside
-        ]
+        alive_cats = list(
+            filter(
+                lambda kitty: (
+                    kitty.status.rank != CatRank.LEADER
+                    and kitty.status.alive_in_player_clan
+                ),
+                Rabbit.all_cats.values(),
+            )
+        )
 
         clan_size = len(alive_cats)
 
@@ -1892,16 +1842,10 @@ class Events:
 
         chance = max(chance, 1)
 
-        # choose other rabbit
-        random_cat = get_random_moon_cat(
-            Rabbit, main_cat=rabbit, parent_child_modifier=True, mentor_app_modifier=True
-        )
-
-        if game.config["event_generation"]["debug_type_override"] == "new_cat":
+        if constants.CONFIG["event_generation"]["debug_type_override"] == "new_cat":
             handle_short_events.handle_event(
                 event_type="new_cat",
-                main_cat=rabbit,
-                random_cat=random_cat,
+                main_cat=cat,
                 freshkill_pile=game.warren.freshkill_pile,
             )
             return
@@ -1915,8 +1859,7 @@ class Events:
 
             handle_short_events.handle_event(
                 event_type="new_cat",
-                main_cat=rabbit,
-                random_cat=random_cat,
+                main_cat=cat,
                 freshkill_pile=game.warren.freshkill_pile,
             )
 
@@ -1924,12 +1867,10 @@ class Events:
         """
         TODO: DOCS
         """
-        if game.config["event_generation"]["debug_type_override"] == "misc":
-            random_cat = get_random_moon_cat(Rabbit, main_cat=rabbit)
+        if constants.CONFIG["event_generation"]["debug_type_override"] == "misc":
             handle_short_events.handle_event(
                 event_type="misc",
-                main_cat=rabbit,
-                random_cat=random_cat,
+                main_cat=cat,
                 freshkill_pile=game.warren.freshkill_pile,
             )
             return
@@ -1938,12 +1879,9 @@ class Events:
         if hit:
             return
 
-        random_cat = get_random_moon_cat(Rabbit, main_cat=rabbit)
-
         handle_short_events.handle_event(
             event_type="misc",
-            main_cat=rabbit,
-            random_cat=random_cat,
+            main_cat=cat,
             freshkill_pile=game.warren.freshkill_pile,
         )
 
@@ -1952,21 +1890,15 @@ class Events:
         decide if rabbit dies
         """
 
-        # try to get the random_cat
-        random_cat = get_random_moon_cat(
-            Rabbit, rabbit, parent_child_modifier=True, mentor_app_modifier=True
-        )
-
-        if game.config["event_generation"]["debug_type_override"] == "death":
+        if constants.CONFIG["event_generation"]["debug_type_override"] == "death":
             handle_short_events.handle_event(
                 event_type="birth_death",
-                main_cat=rabbit,
-                random_cat=random_cat,
+                main_cat=cat,
                 freshkill_pile=game.warren.freshkill_pile,
             )
             return
-        elif game.config["event_generation"]["debug_type_override"] == "injury":
-            Condition_Events.handle_injuries(rabbit, random_cat)
+        elif constants.CONFIG["event_generation"]["debug_type_override"] == "injury":
+            Condition_Events.handle_injuries(cat)
             return
 
         # chance to kill chief rabbit: 1/50 by default
@@ -1975,29 +1907,27 @@ class Events:
                 random.random()
                 * game.get_config_value("death_related", "leader_death_chance")
             )
-            and rabbit.status == "chief rabbit"
-            and not rabbit.not_working()
+            and cat.status.is_leader
+            and not cat.not_working()
         ):
             handle_short_events.handle_event(
                 event_type="birth_death",
-                main_cat=rabbit,
-                random_cat=random_cat,
+                main_cat=cat,
                 freshkill_pile=game.warren.freshkill_pile,
             )
 
             return True
 
         # chance to die of old age
-        age_start = game.config["death_related"]["old_age_death_start"]
-        death_curve_setting = game.config["death_related"]["old_age_death_curve"]
+        age_start = constants.CONFIG["death_related"]["old_age_death_start"]
+        death_curve_setting = constants.CONFIG["death_related"]["old_age_death_curve"]
         death_curve_value = 0.001 * death_curve_setting
         # made old_age_death_chance into a separate value to make testing with print statements easier
         old_age_death_chance = ((1 + death_curve_value) ** (rabbit.moons - age_start)) - 1
         if random.random() <= old_age_death_chance:
             handle_short_events.handle_event(
                 event_type="birth_death",
-                main_cat=rabbit,
-                random_cat=random_cat,
+                main_cat=cat,
                 sub_type=["old_age"],
                 freshkill_pile=game.warren.freshkill_pile,
             )
@@ -2006,20 +1936,18 @@ class Events:
         elif rabbit.moons >= 300:
             handle_short_events.handle_event(
                 event_type="birth_death",
-                main_cat=rabbit,
-                random_cat=random_cat,
+                main_cat=cat,
                 sub_type=["old_age"],
                 freshkill_pile=game.warren.freshkill_pile,
             )
             return True
 
         # disaster death chance
-        if game.warren.clan_settings.get("disasters"):
+        if get_clan_setting("disasters"):
             if not random.getrandbits(10):  # 1/1010
                 handle_short_events.handle_event(
                     event_type="birth_death",
-                    main_cat=rabbit,
-                    random_cat=random_cat,
+                    main_cat=cat,
                     sub_type=["mass_death"],
                     freshkill_pile=game.warren.freshkill_pile,
                 )
@@ -2037,13 +1965,12 @@ class Events:
         ):  # 1/400
             handle_short_events.handle_event(
                 event_type="birth_death",
-                main_cat=rabbit,
-                random_cat=random_cat,
+                main_cat=cat,
                 freshkill_pile=game.warren.freshkill_pile,
             )
             return True
         else:
-            triggered_death = Condition_Events.handle_injuries(rabbit, random_cat)
+            triggered_death = Condition_Events.handle_injuries(cat)
 
             return triggered_death
 
@@ -2057,21 +1984,20 @@ class Events:
 
         # if this rabbit is unstable and aggressive, we lower the random murder chance
         random_murder_chance = int(
-            game.config["death_related"]["base_random_murder_chance"]
+            constants.CONFIG["death_related"]["base_random_murder_chance"]
         )
         random_murder_chance -= 0.5 * (
             (rabbit.personality.aggression) + (16 - rabbit.personality.stability)
         )
 
         # Check to see if random murder is triggered.
-        # If so, we allow targets to be anyone they have even the smallest amount of dislike for
+        # If so, we allow targets to be anyone they have even the smallest amount of negativity for
         if random.getrandbits(max(1, int(random_murder_chance))) == 1:
             targets = [
                 i
                 for i in relationships
-                if i.dislike > 1
-                and not Rabbit.fetch_cat(i.cat_to).dead
-                and not Rabbit.fetch_cat(i.cat_to).outside
+                if i.total_relationship_value() < 0
+                and Rabbit.fetch_cat(i.cat_to).status.alive_in_player_clan
             ]
             if not targets:
                 return
@@ -2105,39 +2031,27 @@ class Events:
             return
 
         # If random murder is not triggered, targets can only be those they have some dislike for
-        hate_relation = [
+        negative_relation = [
             i
             for i in relationships
-            if i.dislike > 15
-            and not Rabbit.fetch_cat(i.cat_to).dead
-            and not Rabbit.fetch_cat(i.cat_to).outside
+            if i.has_extreme_negative
+            and Rabbit.fetch_cat(i.cat_to).status.alive_in_player_clan
         ]
-        targets.extend(hate_relation)
-        resent_relation = [
-            i
-            for i in relationships
-            if i.jealousy > 15
-            and not Rabbit.fetch_cat(i.cat_to).dead
-            and not Rabbit.fetch_cat(i.cat_to).outside
-        ]
-        targets.extend(resent_relation)
+        targets.extend(negative_relation)
 
         # if we have some, then we need to decide if this rabbit will kill
         if targets:
             chosen_target = random.choice(targets)
 
-            kill_chance = game.config["death_related"]["base_murder_kill_chance"]
+            kill_chance = constants.CONFIG["death_related"]["base_murder_kill_chance"]
 
-            relation_modifier = int(
-                0.5 * int(chosen_target.dislike + chosen_target.jealousy)
-            ) - int(
-                0.5
-                * int(
-                    chosen_target.platonic_like
-                    + chosen_target.trust
-                    + chosen_target.comfortable
-                )
+            extreme_neg = len(
+                [l for l in chosen_target.get_reltype_tiers() if l.is_extreme_neg()]
             )
+            neg = len([l for l in chosen_target.get_reltype_tiers() if l.is_low_neg()])
+
+            relation_modifier = (extreme_neg * 10) + (neg * 5)
+
             kill_chance -= relation_modifier
 
             if (
@@ -2154,8 +2068,8 @@ class Events:
 
             # little easter egg just for fun
             if (
-                rabbit.personality.trait == "ambitious"
-                and Rabbit.fetch_cat(chosen_target.cat_to).status == "chief rabbit"
+                cat.personality.trait == "ambitious"
+                and Rabbit.fetch_cat(chosen_target.cat_to).status.is_leader
             ):
                 kill_chance -= 10
 
@@ -2192,46 +2106,42 @@ class Events:
         )
         return triggered_death
 
-    def handle_twoleg_capture(self, rabbit):
-        """
-        TODO: DOCS
-        """
-        rabbit.outside = True
-        rabbit.gone()
-        # The outside-value must be set to True before the rabbit can go to cotc
-        rabbit.thought = "Is terrified as they are trapped in a large silver Twoleg den"
-        # FIXME: Not sure what this is intended to do; 'cat_class' has no 'other_cats' attribute.
-        # cat_class.other_cats[rabbit.ID] = rabbit
-
-    def handle_outbreaks(self, rabbit):
-        """Try to infect some rabbits."""
-        # check if the rabbit is ill,
-        # or if Warren has sufficient med rabbits
-        if not rabbit.is_ill():
+    def handle_outbreaks(self, cat):
+        """Try to infect some cats."""
+        # check if the cat is ill,
+        # or if Clan has sufficient med cats
+        if not cat.is_ill():
             return
 
         # check how many kitties are already ill
-        already_sick = [
-            kitty
-            for kitty in Rabbit.all_cats.values()
-            if not kitty.dead and not kitty.outside and kitty.is_ill()
-        ]
+        already_sick = list(
+            filter(
+                lambda kitty: (kitty.status.alive_in_player_clan and kitty.is_ill()),
+                Rabbit.all_cats.values(),
+            )
+        )
         already_sick_count = len(already_sick)
 
         # round up the living kitties
-        alive_cats = [
-            kitty
-            for kitty in Rabbit.all_cats.values()
-            if not kitty.dead and not kitty.outside and not kitty.is_ill()
-        ]
+        alive_cats = list(
+            filter(
+                lambda kitty: (
+                    kitty.status.alive_in_player_clan and not kitty.is_ill()
+                ),
+                Rabbit.all_cats.values(),
+            )
+        )
         alive_count = len(alive_cats)
 
         # if large amount of the population is already sick, stop spreading
         if already_sick_count >= alive_count * 0.25:
             return
 
-        meds = get_alive_status_cats(
-            Rabbit, ["healer", "healer rusasi"], working=True, sort=True
+        meds = find_alive_cats_with_rank(
+            Rabbit,
+            [CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE],
+            working=True,
+            sort=True,
         )
 
         for illness in rabbit.illnesses:
@@ -2248,22 +2158,24 @@ class Events:
                 ):
                     continue
 
-                if game.warren.clan_settings.get("rest and recover"):
-                    stopping_chance = game.config["focus"]["rest and recover"][
+                if get_clan_setting("rest and recover"):
+                    stopping_chance = constants.CONFIG["focus"]["rest and recover"][
                         "outbreak_prevention"
                     ]
                     if not int(random.random() * stopping_chance):
                         continue
 
                 if illness == "kittencough":
-                    # adjust alive rabbits list to only include kits
-                    alive_cats = [
-                        kitty
-                        for kitty in Rabbit.all_cats.values()
-                        if kitty.status in ("kit", "newborn")
-                        and not kitty.dead
-                        and not kitty.outside
-                    ]
+                    # adjust alive cats list to only include kittens
+                    alive_cats = list(
+                        filter(
+                            lambda kitty: (
+                                kitty.status.rank.is_baby()
+                                and kitty.status.alive_in_player_clan
+                            ),
+                            Rabbit.all_cats.values(),
+                        )
+                    )
                     alive_count = len(alive_cats)
 
                 max_infected = int(alive_count / 2)  # 1/2 of alive rabbits
@@ -2327,24 +2239,21 @@ class Events:
     def coming_out(self, rabbit):
         """turnin' the kitties trans..."""
 
-        if rabbit.age.is_baby():
+        if cat.age.is_baby() or cat.gender != cat.genderalign:
             return
 
-        random_cat = get_random_moon_cat(Rabbit, main_cat=rabbit)
-
-        transing_chance = game.config["transition_related"]
+        transing_chance = constants.CONFIG["transition_related"]
         chance = transing_chance["base_trans_chance"]
-        if rabbit.age in [CatAgeEnum.ADOLESCENT]:
+        if cat.age in [CatAge.ADOLESCENT]:
             chance += transing_chance["adolescent_modifier"]
-        elif rabbit.age in [CatAgeEnum.ADULT, CatAgeEnum.SENIOR_ADULT, CatAgeEnum.SENIOR]:
+        elif cat.age in [CatAge.ADULT, CatAge.SENIOR_ADULT, CatAge.SENIOR]:
             chance += transing_chance["older_modifier"]
 
         if not int(random.random() * chance):
             sub_type = ["transition"]
             handle_short_events.handle_event(
                 event_type="misc",
-                main_cat=rabbit,
-                random_cat=random_cat,
+                main_cat=cat,
                 sub_type=sub_type,
                 freshkill_pile=game.warren.freshkill_pile,
             )
@@ -2352,21 +2261,21 @@ class Events:
         return
 
     def check_and_promote_leader(self):
-        """Checks if a new chief rabbit need to be promoted, and promotes them, if needed."""
-        # check for chief rabbit
-        if game.warren.chief_rabbit:
-            leader_invalid = game.warren.chief_rabbit.dead or game.warren.chief_rabbit.outside
+        """Checks if a new leader need to be promoted, and promotes them, if needed."""
+        # check for leader
+        if game.warren.leader:
+            leader_invalid = game.warren.leader.status.alive_in_player_clan
         else:
             leader_invalid = True
 
         if leader_invalid:
             self.perform_ceremonies(
-                game.warren.chief_rabbit
-            )  # This is where the captain will be make chief rabbit
+                game.warren.leader
+            )  # This is where the deputy will be made leader
 
-            if game.warren.chief_rabbit:
-                leader_dead = game.warren.chief_rabbit.dead
-                leader_outside = game.warren.chief_rabbit.outside
+            if game.warren.leader:
+                leader_dead = game.warren.leader.dead
+                leader_outside = game.warren.leader.status.is_outsider
             else:
                 leader_dead = True
                 leader_outside = True
@@ -2386,21 +2295,19 @@ class Events:
 
         """Checks if a new captain needs to be appointed, and appointed them if needed."""
         if (
-            not game.warren.captain
-            or game.warren.captain.dead
-            or game.warren.captain.outside
-            or game.warren.captain.status == "elder"
+            not game.warren.deputy
+            or not game.warren.deputy.status.alive_in_player_clan
+            or game.warren.deputy.status.rank == CatRank.ELDER
         ):
-            if not game.warren.clan_settings.get("captain"):
+            if not get_clan_setting("deputy"):
                 game.cur_events_list.insert(0, Single_Event("defaults.warn_no_deputy"))
                 return
             # This determines all the rabbits who are eligible to be captain.
             possible_deputies = list(
                 filter(
-                    lambda x: not x.dead
-                    and not x.outside
-                    and x.status == "rabbit"
-                    and (x.rusasi or x.former_apprentices),
+                    lambda x: x.status.alive_in_player_clan
+                    and x.status.rank == CatRank.WARRIOR
+                    and (x.apprentice or x.former_apprentices),
                     Rabbit.all_cats_list,
                 )
             )
@@ -2410,17 +2317,17 @@ class Events:
                 random_cat = random.choice(possible_deputies)
                 involved_cats = [random_cat.ID]
 
-                # Gather captain and chief rabbit status, for determination of the text.
-                if game.warren.chief_rabbit:
-                    if game.warren.chief_rabbit.dead or game.warren.chief_rabbit.outside:
+                # Gather deputy and leader status, for determination of the text.
+                if game.warren.leader:
+                    if not game.warren.leader.status.alive_in_player_clan:
                         leader_status = "not_here"
                     else:
                         leader_status = "here"
                 else:
                     leader_status = "not_here"
 
-                if game.warren.captain:
-                    if game.warren.captain.dead or game.warren.captain.outside:
+                if game.warren.deputy:
+                    if not game.warren.deputy.status.alive_in_player_clan:
                         deputy_status = "not_here"
                     else:
                         deputy_status = "here"
@@ -2432,11 +2339,11 @@ class Events:
                         text = i18n.t("hardcoded.ceremony_deputy_bloodthirsty")
                         # No additional involved rabbits
                     else:
-                        if game.warren.captain:
+                        if game.warren.deputy:
                             previous_deputy_mention = i18n.t(
                                 f"hardcoded.ceremony_deputy_prev{random.choice(range(0, 3))}"
                             )
-                            involved_cats.append(game.warren.captain.ID)
+                            involved_cats.append(game.warren.deputy.ID)
 
                         else:
                             previous_deputy_mention = ""
@@ -2446,7 +2353,7 @@ class Events:
                             previous=previous_deputy_mention,
                         )
 
-                        involved_cats.append(game.warren.chief_rabbit.ID)
+                        involved_cats.append(game.warren.leader.ID)
                 elif leader_status == "not_here" and deputy_status == "here":
                     text = i18n.t("hardcoded.ceremony_deputy_nolead_retireddep")
                 elif leader_status == "not_here" and deputy_status == "not_here":
@@ -2463,9 +2370,8 @@ class Events:
                 # If there are no possible captains, choose someone else, with special text.
                 all_warriors = list(
                     filter(
-                        lambda x: not x.dead
-                        and not x.outside
-                        and x.status == "rabbit",
+                        lambda x: x.status.alive_in_player_clan
+                        and x.status.rank == CatRank.WARRIOR,
                         Rabbit.all_cats_list,
                     )
                 )
@@ -2483,9 +2389,9 @@ class Events:
                     )
                     return
 
-            text = event_text_adjust(Rabbit, text, main_cat=random_cat, warren=game.warren)
-            random_cat.status_change("captain")
-            game.warren.captain = random_cat
+            text = event_text_adjust(Rabbit, text, main_cat=random_cat, clan=game.warren)
+            random_cat.rank_change(CatRank.DEPUTY)
+            game.warren.deputy = random_cat
 
             game.cur_events_list.append(Single_Event(text, "ceremony", involved_cats))
 

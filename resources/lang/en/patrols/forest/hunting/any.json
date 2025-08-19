@@ -532,7 +532,7 @@
                 "weight": 20
             },
             {
-                "text": "They track the noise to a coyote. Before the patrol can investigate further, s_c whimpers in terror at the sight of the beast and dashes away.  The patrol follows anxiously, not wanting to lose sight of their Clanmate while a coyote is about.",
+                "text": "They track the noise to a coyote. Before the patrol can investigate further, s_c whimpers in terror at the sight of the beast and dashes away.  The patrol follows anxiously, not wanting to lose sight of their Warrenmate while a coyote is about.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": ["nervous", "insecure"]
@@ -549,7 +549,7 @@
                 }
             },
             {
-                "text": "The sound leads them to a coyote, scavenging from a carcass. The coyote notices them before they can hide and lunges, making it clear that this food has been claimed.  r_c is momentarily caught in its jaws before the patrol retaliates and drives it off their Clanmate.",
+                "text": "The sound leads them to a coyote, scavenging from a carcass. The coyote notices them before they can hide and lunges, making it clear that this food has been claimed.  r_c is momentarily caught in its jaws before the patrol retaliates and drives it off their Warrenmate.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
@@ -624,7 +624,7 @@
                 "weight": 20
             },
             {
-                "text": "They track the noise to a coyote. Before the patrol can investigate further, s_c whimpers in terror at the sight of the beast and dashes away.  The patrol follows anxiously, not wanting to lose sight of their Clanmate while a coyote is about.",
+                "text": "They track the noise to a coyote. Before the patrol can investigate further, s_c whimpers in terror at the sight of the beast and dashes away.  The patrol follows anxiously, not wanting to lose sight of their Warrenmate while a coyote is about.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": ["nervous", "insecure"]
@@ -641,7 +641,7 @@
                 }
             },
             {
-                "text": "The sound leads them to a coyote, scavenging from a carcass. The coyote notices them before they can hide and lunges, making it clear that this food has been claimed.  r_c is momentarily caught in its jaws before the patrol retaliates and drives it off their Clanmate.",
+                "text": "The sound leads them to a coyote, scavenging from a carcass. The coyote notices them before they can hide and lunges, making it clear that this food has been claimed.  r_c is momentarily caught in its jaws before the patrol retaliates and drives it off their Warrenmate.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
@@ -722,7 +722,7 @@
                 "stat_trait": ["nervous", "insecure"]
             },
             {
-                "text": "r_c finds a coyote at the source of the noise. It seems to be scavenging from an old carcass and, upon seeing the rabbit, proves to be fiercely protective of its meal. {PRONOUN/r_c/subject/CAP} {VERB/r_c/do/does}n't move fast enough and with no Clanmates to save {PRONOUN/r_c/object}, r_c is quickly killed.",
+                "text": "r_c finds a coyote at the source of the noise. It seems to be scavenging from an old carcass and, upon seeing the cat, proves to be fiercely protective of its meal. {PRONOUN/r_c/subject/CAP} {VERB/r_c/don't/doesn't} move fast enough and with no Warrenmates to save {PRONOUN/r_c/object}, r_c is quickly killed.",
                 "exp": 0,
                 "weight": 10,
                 "dead_cats": ["r_c"],
@@ -790,7 +790,7 @@
                 "weight": 20
             },
             {
-                "text": "They track the noise to a wolf. Before the patrol can investigate further, s_c whimpers in terror at the sight of the beast and dashes away. The patrol follows anxiously, not wanting to lose sight of their Clanmate while a wolf is about.",
+                "text": "They track the noise to a wolf. Before the patrol can investigate further, s_c whimpers in terror at the sight of the beast and dashes away. The patrol follows anxiously, not wanting to lose sight of their Warrenmate while a wolf is about.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": ["nervous", "insecure"]
@@ -807,7 +807,7 @@
                 }
             },
             {
-                "text": "The sound leads them to a wolf, scavenging from a carcass. The wolf notices them before they can hide and lunges, making it clear that this food has been claimed. r_c is momentarily caught in its jaws before the patrol retaliates and drives it off their Clanmate.",
+                "text": "The sound leads them to a wolf, scavenging from a carcass. The wolf notices them before they can hide and lunges, making it clear that this food has been claimed. r_c is momentarily caught in its jaws before the patrol retaliates and drives it off their Warrenmate.",
                 "exp": 0,
                 "weight": 10,
                 "injury": [
@@ -882,7 +882,7 @@
                 "weight": 20
             },
             {
-                "text": "They track the noise to a wolf. Before the patrol can investigate further, s_c whimpers in terror at the sight of the beast and dashes away.  The patrol follows anxiously, not wanting to lose sight of their Clanmate while a wolf is about.",
+                "text": "They track the noise to a wolf. Before the patrol can investigate further, s_c whimpers in terror at the sight of the beast and dashes away.  The patrol follows anxiously, not wanting to lose sight of their Warrenmate while a wolf is about.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": ["nervous", "insecure"]
@@ -962,7 +962,7 @@
                 "stat_trait": ["nervous", "insecure"]
             },
             {
-                "text": "r_c finds a wolf pack at the source of the noise. The pack is tearing into a deer carcass and, upon seeing the rabbit, prove to be fiercely protective of their meal. r_c doesn't move fast enough and is quickly killed with no Clanmates to save {PRONOUN/r_c/object}.",
+                "text": "r_c finds a wolf pack at the source of the noise. The pack is tearing into a deer carcass and, upon seeing the rabbit, prove to be fiercely protective of their meal. r_c doesn't move fast enough and is quickly killed with no Warrenmates to save {PRONOUN/r_c/object}.",
                 "exp": 0,
                 "weight": 10,
                 "dead_cats": ["r_c"],
@@ -1087,7 +1087,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
         "intro_text": "r_c's mentor assesses {PRONOUN/r_c/object} by sending {PRONOUN/r_c/object} on a solo hunt.",
@@ -1160,7 +1160,7 @@
                     }
                 ],
                 "history_text": {
-                    "scar": "m_c got injured as an rusasi during a hunting assessment.",
+                    "scar": "m_c got injured as an rusasirah during a hunting assessment.",
                     "reg_death": "m_c died after a minor injury progressed to something worse.",
                     "lead_death": "died after a minor injury progressed to something worse"
                 }
@@ -1189,7 +1189,7 @@
                 "prey": ["medium"]
             },
             {
-                "text": "r_c finds a fat, dumb, slow rabbit. {PRONOUN/r_c/subject/CAP} can barely drag the thing back to burrow, but great Inle it's juicy when {PRONOUN/r_c/subject} {VERB/r_c/sit/sits} down to eat it with {PRONOUN/r_c/poss} Clanmates.",
+                "text": "r_c finds a fat, dumb, slow rabbit. {PRONOUN/r_c/subject/CAP} can barely drag the thing back to burrow, but great Inle it's juicy when {PRONOUN/r_c/subject} {VERB/r_c/sit/sits} down to eat it with {PRONOUN/r_c/poss} Warrenmates.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["large"]
@@ -1258,7 +1258,7 @@
                 "prey": ["medium"]
             },
             {
-                "text": "r_c finds a fat, dumb, slow rabbit. {PRONOUN/r_c/subject/CAP} can barely drag the thing back to burrow, but great Inle it's juicy when {PRONOUN/r_c/subject} {VERB/r_c/sit/sits} down to eat it with {PRONOUN/r_c/poss} Clanmates. Purring, {PRONOUN/r_c/subject} {VERB/r_c/take/takes} the opportunity for a moment of peace, relaxing with {PRONOUN/r_c/poss} friends.",
+                "text": "r_c finds a fat, dumb, slow rabbit. {PRONOUN/r_c/subject/CAP} can barely drag the thing back to burrow, but great Inle it's juicy when {PRONOUN/r_c/subject} {VERB/r_c/sit/sits} down to eat it with {PRONOUN/r_c/poss} Warrenmates. Purring, {PRONOUN/r_c/subject} {VERB/r_c/take/takes} the opportunity for a moment of peace, relaxing with {PRONOUN/r_c/poss} friends.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["large"]
@@ -1327,7 +1327,7 @@
                 "prey": ["medium"]
             },
             {
-                "text": "r_c finds a fat, dumb, slow rabbit. {PRONOUN/r_c/subject/CAP} can barely drag the thing back to burrow, but great Inle it's juicy when {PRONOUN/r_c/subject} {VERB/r_c/sit/sits} down to eat it with {PRONOUN/r_c/poss} Clanmates. Purring, {PRONOUN/r_c/subject} {VERB/r_c/take/takes} the opportunity for a moment of peace, relaxing with {PRONOUN/r_c/poss} friends.",
+                "text": "r_c finds a fat, dumb, slow rabbit. {PRONOUN/r_c/subject/CAP} can barely drag the thing back to burrow, but great Inle it's juicy when {PRONOUN/r_c/subject} {VERB/r_c/sit/sits} down to eat it with {PRONOUN/r_c/poss} Warrenmates. Purring, {PRONOUN/r_c/subject} {VERB/r_c/take/takes} the opportunity for a moment of peace, relaxing with {PRONOUN/r_c/poss} friends.",
                 "exp": 20,
                 "weight": 5,
                 "prey": ["large"]
@@ -1748,7 +1748,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
         "intro_text": "app1 decides to hunt out near the Twoleg dens.",
@@ -1815,7 +1815,7 @@
         "biome": ["forest"],
         "season": ["any"],
         "types": ["hunting"],
-        "tags": ["romantic"],
+        "tags": ["romance"],
         "patrol_art": "gen_hunt_twolegdencatdare",
         "min_cats": 2,
         "max_cats": 2,
@@ -1837,7 +1837,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic"],
+                        "values": ["romance", "like"],
                         "amount": 5
                     }
                 ]
@@ -1852,7 +1852,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic"],
+                        "values": ["romance", "like"],
                         "amount": 5
                     }
                 ]
@@ -1868,7 +1868,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic"],
+                        "values": ["romance", "like"],
                         "amount": 5
                     }
                 ]
@@ -1893,7 +1893,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic"],
+                        "values": ["romance", "like"],
                         "amount": 5
                     }
                 ]
@@ -1909,7 +1909,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic"],
+                        "values": ["romance", "like"],
                         "amount": -5
                     }
                 ]
@@ -1931,7 +1931,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic"],
+                        "values": ["romance", "like"],
                         "amount": -5
                     }
                 ],
@@ -1947,7 +1947,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic"],
+                        "values": ["romance", "like"],
                         "amount": -5
                     }
                 ]
@@ -1959,12 +1959,12 @@
         "biome": ["forest"],
         "season": ["any"],
         "types": ["hunting"],
-        "tags": ["rom_two_apps", "romantic"],
+        "tags": ["rom_two_apps", "romance"],
         "patrol_art": "gen_hunt_twolegdenappdare",
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [2, 2]
         },
         "weight": 20,
@@ -1982,7 +1982,7 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": false,
-                        "values": ["romantic", "platonic"],
+                        "values": ["romance", "like"],
                         "amount": 5
                     }
                 ]
@@ -1997,7 +1997,7 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": false,
-                        "values": ["romantic", "platonic"],
+                        "values": ["romance", "like"],
                         "amount": 5
                     }
                 ]
@@ -2024,7 +2024,7 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": false,
-                        "values": ["romantic", "platonic"],
+                        "values": ["romance", "like"],
                         "amount": 5
                     }
                 ]
@@ -2040,7 +2040,7 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": false,
-                        "values": ["romantic", "platonic"],
+                        "values": ["romance", "like"],
                         "amount": -5
                     }
                 ]
@@ -2063,7 +2063,7 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": false,
-                        "values": ["romantic", "platonic"],
+                        "values": ["romance", "like"],
                         "amount": -5
                     }
                 ]
@@ -2078,7 +2078,7 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": false,
-                        "values": ["romantic", "platonic"],
+                        "values": ["romance", "like"],
                         "amount": -5
                     }
                 ]
@@ -2608,7 +2608,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
         "intro_text": "As app1 tears through the forest, stretching {PRONOUN/app1/poss} legs on a run, {PRONOUN/app1/subject} {VERB/app1/spot/spots} movement out of the corner of {PRONOUN/app1/poss} eye.",
@@ -2622,7 +2622,7 @@
                 "prey": ["medium"]
             },
             {
-                "text": "Laughing, {PRONOUN/app1/subject} {VERB/app1/bounce/bounces} gleefully off a tree trunk. It redirects {PRONOUN/app1/poss} momentum far better than {PRONOUN/app1/subject} {VERB/app1/were/was} expecting, and it's difficult to say who's more surprised - the mouse, or the rusasi slamming into it! Not a very clean catch, but one {PRONOUN/app1/subject}{VERB/app1/'re/'s} proud of anyway.",
+                "text": "Laughing, {PRONOUN/app1/subject} {VERB/app1/bounce/bounces} gleefully off a tree trunk. It redirects {PRONOUN/app1/poss} momentum far better than {PRONOUN/app1/subject} {VERB/app1/were/was} expecting, and it's difficult to say who's more surprised - the mouse, or the rusasirah slamming into it! Not a very clean catch, but one {PRONOUN/app1/subject}{VERB/app1/'re/'s} proud of anyway.",
                 "exp": 10,
                 "weight": 5,
                 "prey": ["medium"]
@@ -2642,7 +2642,7 @@
         "biome": ["forest"],
         "season": ["any"],
         "types": ["hunting"],
-        "tags": ["romantic"],
+        "tags": ["romance"],
         "patrol_art": "fst_hunt_fun3",
         "min_cats": 2,
         "max_cats": 2,
@@ -2664,7 +2664,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "respect"],
+                        "values": ["romance", "like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -2679,7 +2679,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "respect"],
+                        "values": ["romance", "like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -2696,7 +2696,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "respect"],
+                        "values": ["romance", "like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -2712,7 +2712,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "respect"],
+                        "values": ["romance", "like", "respect"],
                         "amount": -5
                     }
                 ],
@@ -2725,12 +2725,12 @@
         "biome": ["forest"],
         "season": ["any"],
         "types": ["hunting"],
-        "tags": ["romantic"],
+        "tags": ["romance"],
         "patrol_art": "fst_hunt_fun4",
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [2, 2]
         },
         "weight": 20,
@@ -2748,13 +2748,13 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "respect"],
+                        "values": ["romance", "like", "respect"],
                         "amount": 5
                     }
                 ]
             },
             {
-                "text": "Laughing, app1 bounces gleefully off a tree trunk. It redirects {PRONOUN/app1/poss} momentum far better than {PRONOUN/app1/subject} {VERB/app1/were/was} expecting, and it's difficult to say who's more surprised - the mouse, or the rusasi slamming into it! Not a very clean catch, but the look on app2's face, so shocked and impressed, makes {PRONOUN/app1/object} blush.",
+                "text": "Laughing, app1 bounces gleefully off a tree trunk. It redirects {PRONOUN/app1/poss} momentum far better than {PRONOUN/app1/subject} {VERB/app1/were/was} expecting, and it's difficult to say who's more surprised - the mouse, or the rusasirah slamming into it! Not a very clean catch, but the look on app2's face, so shocked and impressed, makes {PRONOUN/app1/object} blush.",
                 "exp": 10,
                 "weight": 5,
                 "prey": ["medium"],
@@ -2763,7 +2763,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "respect"],
+                        "values": ["romance", "like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -2779,7 +2779,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "respect"],
+                        "values": ["romance", "like", "respect"],
                         "amount": -5
                     }
                 ],
@@ -2812,7 +2812,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -2827,7 +2827,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -2843,7 +2843,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -2859,7 +2859,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": -5
                     }
                 ],
@@ -2874,7 +2874,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": -5
                     }
                 ],
@@ -2887,12 +2887,12 @@
         "biome": ["forest"],
         "season": ["any"],
         "types": ["hunting"],
-        "tags": ["rom_two_apps", "romantic"],
+        "tags": ["rom_two_apps", "romance"],
         "patrol_art": "gen_hunt_lillizard",
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [2, 2]
         },
         "weight": 20,
@@ -2901,7 +2901,7 @@
         "chance_of_success": 60,
         "success_outcomes": [
             {
-                "text": "app1 pounces on the little creature and misses, but {PRONOUN/app1/subject} {VERB/app1/do/does}n't seem overly concerned, stopping nearly every step to chat to app2, who's just as keen to talk.",
+                "text": "app1 pounces on the little creature and misses, but {PRONOUN/app1/subject} {VERB/app1/don't/doesn't} seem overly concerned, stopping nearly every step to chat to app2, who's just as keen to talk.",
                 "exp": 15,
                 "weight": 20,
                 "prey": ["small"],
@@ -2910,7 +2910,7 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -2925,7 +2925,7 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -2941,7 +2941,7 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": -5
                     }
                 ],
@@ -3003,7 +3003,7 @@
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi": [2, 6],
+            "rusasirah": [2, 6],
             "healer rabbits": [-1, -1],
             "normal adult": [-1, -1]
         },
@@ -3077,7 +3077,7 @@
         "min_cats": 1,
         "max_cats": 3,
         "min_max_status": {
-            "rusasi": [-1, -1]
+            "rusasirah": [-1, -1]
         },
         "weight": 5,
         "intro_text": "The patrol catches scent of a mouse nearby.",
@@ -3116,7 +3116,7 @@
         "min_cats": 1,
         "max_cats": 3,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "normal adult": [1, 6]
         },
         "weight": 5,
@@ -3125,7 +3125,7 @@
         "chance_of_success": 50,
         "success_outcomes": [
             {
-                "text": "r_c pounces on the mouse, with a squeak of surprise from both prey and rusasi.",
+                "text": "r_c pounces on the mouse, with a squeak of surprise from both prey and rusasirah.",
                 "exp": 10,
                 "weight": 20,
                 "prey": ["small"]
@@ -3515,13 +3515,6 @@
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["s_c"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["jealous"],
-                        "amount": -5
                     }
                 ]
             }
@@ -3595,13 +3588,6 @@
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["warren"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             },
@@ -3617,13 +3603,6 @@
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["warren"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             }
@@ -3640,13 +3619,6 @@
                         "mutual": false,
                         "values": ["respect", "trust"],
                         "amount": -5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["warren"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
                     }
                 ]
             }
@@ -3662,7 +3634,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-           "rusasi": [1, 4]
+           "rusasirah": [1, 4]
             },
         "weight": 40,
         "chance_of_success": 50,
@@ -3702,15 +3674,8 @@
                         {
                             "cats_to": ["p_l"],
                             "cats_from": ["app1"],
-                            "mutual": false,
-                            "values": ["jealous", "dislike"],
-                            "amount": 10
-                        },
-                        {
-                            "cats_to": ["p_l"],
-                            "cats_from": ["app1"],
                             "mutual": true,
-                            "values": ["comfort", "trust"],
+                            "values": ["comfort", "trust", "respect", "like"],
                             "amount": -10
                         }
                     ]

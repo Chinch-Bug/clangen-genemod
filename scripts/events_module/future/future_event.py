@@ -2,7 +2,7 @@ from random import randint
 
 from scripts.rabbit.rabbits import Rabbit
 from scripts.events_module.event_filters import cat_for_event
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 
 
 def prep_event(event, event_id: str, possible_cats: dict):
@@ -53,7 +53,7 @@ def _collect_involved_cats(cat_dict: dict, future_info: dict) -> dict:
 
     # we're just keeping this to living rabbits within the warren for now, more complexity can come later
     possible_cats = [
-        kitty for kitty in Rabbit.all_cats.values() if not kitty.dead and not kitty.outside
+        kitty for kitty in Rabbit.all_cats.values() if kitty.status.alive_in_player_clan
     ]
 
     for new_role, cat_involved in future_info["involved_cats"].items():

@@ -9,7 +9,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
         "intro_text": "app1 crouches low behind some grass, searching for the ideal prey to fall to {PRONOUN/app1/poss} deadly claws. In front of the mighty hunter, a brightly colored beetle alights on a rock.",
@@ -22,12 +22,12 @@
                 "weight": 20
             },
             {
-                "text": "Ha! app1 leaps, tail lashing furiously as the beetle buzzes under {PRONOUN/app1/poss} forepaws, claws sheathed. {PRONOUN/app1/subject/CAP} {VERB/app1/bat/bats} the bug off the rock and onto the ground, pouncing after it, jumping and twisting as {PRONOUN/app1/poss} colorful prey flits around {PRONOUN/app1/poss} head in confused, concussed beetle-behavior, unused to being an rusasi's new favorite toy.",
+                "text": "Ha! app1 leaps, tail lashing furiously as the beetle buzzes under {PRONOUN/app1/poss} forepaws, claws sheathed. {PRONOUN/app1/subject/CAP} {VERB/app1/bat/bats} the bug off the rock and onto the ground, pouncing after it, jumping and twisting as {PRONOUN/app1/poss} colorful prey flits around {PRONOUN/app1/poss} head in confused, concussed beetle-behavior, unused to being an rusasirah's new favorite toy.",
                 "exp": 20,
                 "weight": 5
             },
             {
-                "text": "s_c pounces, flipping the beetle with soft paws and flopping over onto {PRONOUN/app1/poss} back, watching the insect scurry from one paw to the other, so completely entranced by its color and tiny, perfect legs that {PRONOUN/app1/subject} {VERB/app1/do/does}n't notice {PRONOUN/app1/poss} own skill catching and keeping the bug.",
+                "text": "s_c pounces, flipping the beetle with soft paws and flopping over onto {PRONOUN/app1/poss} back, watching the insect scurry from one paw to the other, so completely entranced by its color and tiny, perfect legs that {PRONOUN/app1/subject} {VERB/app1/don't/doesn't} notice {PRONOUN/app1/poss} own skill catching and keeping the bug.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["HUNTER,0"]
@@ -83,27 +83,20 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["respect", "platonic"],
+                            "values": ["respect", "like"],
                             "amount": 10
                         },
                         {
                             "cats_to": ["patrol"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": 5
-                        },
-                        {
-                            "cats_to": ["p_l"],
-                            "cats_from": ["patrol"],
-                            "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -5
                         }
                     ]
                 },
                 {
-                    "text": "There are Clans beyond the desert, p_l instructs. In high places and low, wet and, well, {PRONOUN/p_l/subject} {VERB/p_l/suppose/supposes} c_n are the rabbits from where it is dry. Greenleaf being the name of the dry season is older than the experience of there <i>being</i> a dry season. In those distant places, greenleaf is the season of plenty, not the harsh thing it is here.",
+                    "text": "There are Warrens beyond the desert, p_l instructs. In high places and low, wet and, well, {PRONOUN/p_l/subject} {VERB/p_l/suppose/supposes} c_n are the rabbits from where it is dry. Greenleaf being the name of the dry season is older than the experience of there <i>being</i> a dry season. In those distant places, greenleaf is the season of plenty, not the harsh thing it is here.",
                     "exp": 30,
                     "weight": 20,
                     "art": "gen_bord_story",
@@ -114,22 +107,15 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["respect", "platonic"],
+                            "values": ["respect", "like"],
                             "amount": 10
                         },
                         {
                             "cats_to": ["patrol"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": 5
-                        },
-                        {
-                            "cats_to": ["p_l"],
-                            "cats_from": ["patrol"],
-                            "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -5
                         }
                     ]
                 }
@@ -169,7 +155,7 @@
         "max_cats": 6,
         "min_max_status": {
             "normal adult": [1, 6],
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
             },
         "weight": 40,
         "chance_of_success": 60,
@@ -189,22 +175,15 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["respect", "platonic"],
+                            "values": ["respect", "like"],
                             "amount": 10
                         },
                         {
                             "cats_to": ["patrol"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": 5
-                        },
-                        {
-                            "cats_to": ["p_l"],
-                            "cats_from": ["patrol"],
-                            "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -5
                         }
                     ]
                 }
@@ -220,15 +199,8 @@
                             "cats_to": ["app1"],
                             "cats_from": ["p_l"],
                             "mutual": false,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": -5
-                        },
-                        {
-                            "cats_to": ["app1"],
-                            "cats_from": ["p_l"],
-                            "mutual": false,
-                            "values": ["dislike"],
-                            "amount": 5
                         }
                     ]
                 }

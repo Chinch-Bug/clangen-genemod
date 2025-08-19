@@ -479,8 +479,8 @@
                         "cats_from": ["n_c:0", "n_c:1", "n_c:3"],
                         "cats_to": ["patrol"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 50
+                        "values": ["like"],
+                        "amount": -50
                     }
                 ]
             },
@@ -552,8 +552,8 @@
                         "cats_from": ["n_c:0", "n_c:1", "n_c:3"],
                         "cats_to": ["patrol"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 50
+                        "values": ["like"],
+                        "amount": -50
                     }
                 ]
             },
@@ -1556,8 +1556,8 @@
                         "cats_from": ["n_c:0", "n_c:1", "n_c:3"],
                         "cats_to": ["patrol"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 50
+                        "values": ["like"],
+                        "amount": -50
                     }
                 ]
             },
@@ -1753,7 +1753,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": 5
                     }
                 ]
@@ -1769,7 +1769,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": 5
                     }
                 ]
@@ -1785,7 +1785,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": 5
                     }
                 ]
@@ -1806,7 +1806,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": -5
                     }
                 ]
@@ -1979,7 +1979,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": 5
                     }
                 ]
@@ -1995,7 +1995,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2011,7 +2011,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2029,7 +2029,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": -5
                     }
                 ]
@@ -2065,13 +2065,13 @@
                         "cats_from": ["n_c:0", "n_c:1", "n_c:3"],
                         "cats_to": ["patrol"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 50
+                        "values": ["like"],
+                        "amount": -50
                     }
                 ]
             },
             {
-                "text": "s_c immediately leaps to protect {PRONOUN/s_c/poss} Clanmates. {PRONOUN/s_c/poss/CAP} ferocity in battle terrifies the rogues. Realizing that they've sorely underestimated the Warren rabbits, the rogues turn tail and run.",
+                "text": "s_c immediately leaps to protect {PRONOUN/s_c/poss} Warrenmates. {PRONOUN/s_c/poss/CAP} ferocity in battle terrifies the rogues. Realizing that they've sorely underestimated the Warren rabbits, the rogues turn tail and run.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["FIGHTER,3"],
@@ -2085,8 +2085,8 @@
                         "cats_from": ["n_c:0", "n_c:1", "n_c:3"],
                         "cats_to": ["patrol"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 50
+                        "values": ["like"],
+                        "amount": -50
                     }
                 ]
             },
@@ -2105,8 +2105,8 @@
                         "cats_from": ["n_c:0", "n_c:1", "n_c:3"],
                         "cats_to": ["patrol"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 50
+                        "values": ["like"],
+                        "amount": -50
                     }
                 ]
             }
@@ -2137,8 +2137,8 @@
                         "cats_from": ["n_c:0", "n_c:1", "n_c:3"],
                         "cats_to": ["patrol"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 50
+                        "values": ["like"],
+                        "amount": -50
                     }
                 ],
                 "injury": [
@@ -2185,13 +2185,13 @@
                         "cats_from": ["n_c:0", "n_c:1", "n_c:3"],
                         "cats_to": ["patrol"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 50
+                        "values": ["like"],
+                        "amount": -50
                     }
                 ]
             },
             {
-                "text": "s_c immediately leaps to protect {PRONOUN/s_c/poss} Clanmates. {PRONOUN/s_c/poss/CAP} ferocity in battle terrifies the rogues. Realizing that they've sorely underestimated the Warren rabbits, the rogues turn tail and run.",
+                "text": "s_c immediately leaps to protect {PRONOUN/s_c/poss} Warrenmates. {PRONOUN/s_c/poss/CAP} ferocity in battle terrifies the rogues. Realizing that they've sorely underestimated the Warren rabbits, the rogues turn tail and run.",
                 "exp": 30,
                 "weight": 20,
                 "stat_skill": ["FIGHTER,3"],
@@ -2205,8 +2205,8 @@
                         "cats_from": ["n_c:0", "n_c:1", "n_c:3"],
                         "cats_to": ["patrol"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 50
+                        "values": ["like"],
+                        "amount": -50
                     }
                 ]
             },
@@ -2225,8 +2225,8 @@
                         "cats_from": ["n_c:0", "n_c:1", "n_c:3"],
                         "cats_to": ["patrol"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 50
+                        "values": ["like"],
+                        "amount": -50
                     }
                 ]
             }
@@ -2257,8 +2257,8 @@
                         "cats_from": ["n_c:0", "n_c:1", "n_c:3"],
                         "cats_to": ["patrol"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 50
+                        "values": ["like"],
+                        "amount": -50
                     }
                 ],
                 "injury": [
@@ -2305,13 +2305,13 @@
                         "cats_from": ["n_c:0", "n_c:1", "n_c:3"],
                         "cats_to": ["patrol"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 50
+                        "values": ["like"],
+                        "amount": -50
                     }
                 ]
             },
             {
-                "text": "s_c immediately leaps to protect {PRONOUN/s_c/poss} Clanmates. {PRONOUN/s_c/poss/CAP} ferocity in battle terrifies the rogues. Realizing that they've sorely underestimated the Warren rabbits, the rogues turn tail and run.",
+                "text": "s_c immediately leaps to protect {PRONOUN/s_c/poss} Warrenmates. {PRONOUN/s_c/poss/CAP} ferocity in battle terrifies the rogues. Realizing that they've sorely underestimated the Warren rabbits, the rogues turn tail and run.",
                 "exp": 30,
                 "weight": 20,
                 "stat_skill": ["FIGHTER,3"],
@@ -2325,8 +2325,8 @@
                         "cats_from": ["n_c:0", "n_c:1", "n_c:3"],
                         "cats_to": ["patrol"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 50
+                        "values": ["like"],
+                        "amount": -50
                     }
                 ]
             },
@@ -2345,8 +2345,8 @@
                         "cats_from": ["n_c:0", "n_c:1", "n_c:3"],
                         "cats_to": ["patrol"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 50
+                        "values": ["like"],
+                        "amount": -50
                     }
                 ]
             }
@@ -2377,8 +2377,8 @@
                         "cats_from": ["n_c:0", "n_c:1", "n_c:3"],
                         "cats_to": ["patrol"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 50
+                        "values": ["like"],
+                        "amount": -50
                     }
                 ],
                 "injury": [
@@ -2425,13 +2425,13 @@
                         "cats_from": ["n_c:0", "n_c:1", "n_c:3"],
                         "cats_to": ["patrol"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 50
+                        "values": ["like"],
+                        "amount": -50
                     }
                 ]
             },
             {
-                "text": "s_c immediately leaps to protect {PRONOUN/s_c/poss} Clanmates. {PRONOUN/s_c/poss/CAP} ferocity in battle terrifies the rogues. Realizing that they've sorely underestimated the Warren rabbits, the rogues turn tail and run.",
+                "text": "s_c immediately leaps to protect {PRONOUN/s_c/poss} Warrenmates. {PRONOUN/s_c/poss/CAP} ferocity in battle terrifies the rogues. Realizing that they've sorely underestimated the Warren rabbits, the rogues turn tail and run.",
                 "exp": 30,
                 "weight": 20,
                 "stat_skill": ["FIGHTER,3"],
@@ -2445,8 +2445,8 @@
                         "cats_from": ["n_c:0", "n_c:1", "n_c:3"],
                         "cats_to": ["patrol"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 50
+                        "values": ["like"],
+                        "amount": -50
                     }
                 ]
             },
@@ -2465,8 +2465,8 @@
                         "cats_from": ["n_c:0", "n_c:1", "n_c:3"],
                         "cats_to": ["patrol"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 50
+                        "values": ["like"],
+                        "amount": -50
                     }
                 ]
             }
@@ -2497,8 +2497,8 @@
                         "cats_from": ["n_c:0", "n_c:1", "n_c:3"],
                         "cats_to": ["patrol"],
                         "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 50
+                        "values": ["like"],
+                        "amount": -50
                     }
                 ],
                 "injury": [

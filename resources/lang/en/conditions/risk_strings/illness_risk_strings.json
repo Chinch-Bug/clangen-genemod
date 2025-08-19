@@ -55,6 +55,12 @@
 
         ]
     },
+    "diarrhea": {
+        "dehydrated": [
+            "Diarrhea has been taking a toll on m_c, and r_c is fighting hard to keep {PRONOUN/m_c/object} hydrated.",
+            "m_c feels hollow and dry due to {PRONOUN/m_c/poss} digestion problems."
+        ]
+    },
     "fleas": {
         "torn pelt": [
             "m_c has been scratching incessantly at the fleas infesting {PRONOUN/m_c/poss} pelt. r_c scolds {PRONOUN/m_c/object} for it as {PRONOUN/r_c/subject} gently {VERB/r_c/clean/cleans} the now raw areas of m_c's pelt.",
@@ -68,7 +74,7 @@
         "lasting grief": [
             "m_c gazes blankly at the wall of the healer den, not acknowledging r_c beside {PRONOUN/m_c/object}. r_c sighs and sits beside {PRONOUN/m_c/object}, hoping that {PRONOUN/r_c/poss} presence can provide some comfort.",
             "m_c curls up in {PRONOUN/m_c/poss} nest, numb to the other rabbits beside {PRONOUN/m_c/object}. There's a hole inside {PRONOUN/m_c/poss} heart now that {PRONOUN/m_c/subject} {VERB/m_c/feel/feels} could never again be filled.",
-            "m_c pads out of burrow, wanting nothing more than to be away from the pitying looks of {PRONOUN/m_c/poss} Clanmates.",
+            "m_c pads out of burrow, wanting nothing more than to be away from the pitying looks of {PRONOUN/m_c/poss} Warrenmates.",
             "m_c wishes desperately to hear the voice of {PRONOUN/m_c/poss} loved one again, to see their face and smell their scent. The reality of the situation makes m_c want to wail into the sky.",
             "m_c realizes one day that this grief will never leave - {PRONOUN/m_c/subject}'ll just have to learn to live with it. There's nothing else to do."
         ],

@@ -208,7 +208,7 @@
             ]
         },
         {
-            "text": "p_l bolts back to burrow, {PRONOUN/p_l/poss} heart pounding. {PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} to tell {PRONOUN/p_l/poss} Clanmates. {PRONOUN/p_l/subject/CAP} {VERB/p_l/burst/bursts} into burrow yowling a warning!",
+            "text": "p_l bolts back to burrow, {PRONOUN/p_l/poss} heart pounding. {PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} to tell {PRONOUN/p_l/poss} Warrenmates. {PRONOUN/p_l/subject/CAP} {VERB/p_l/burst/bursts} into burrow yowling a warning!",
             "exp": 40,
             "weight": 10,
             "art": "running_warrior",
@@ -500,7 +500,7 @@
                     "cats_to": ["p_l"],
                     "cats_from": ["patrol"],
                     "mutual": false,
-                    "values": ["respect", "trust", "platonic"],
+                    "values": ["respect", "trust", "like"],
                     "amount": 5
                 }
             ]
@@ -593,7 +593,7 @@
             ]
         },
         {
-            "text": "s_c selflessly takes the lion's share of the run as the patrol leads the coyote on, exhausting {PRONOUN/s_c/self} almost to the point of danger, but leading the coyote far away from c_n borders. {PRONOUN/s_c/poss/CAP} Clanmates support {PRONOUN/s_c/object} on the long walk home once it's all over, their purrs mixing with s_c's exhausted pants.",
+            "text": "s_c selflessly takes the lion's share of the run as the patrol leads the coyote on, exhausting {PRONOUN/s_c/self} almost to the point of danger, but leading the coyote far away from c_n borders. {PRONOUN/s_c/poss/CAP} Warrenmates support {PRONOUN/s_c/object} on the long walk home once it's all over, their purrs mixing with s_c's exhausted pants.",
             "exp": 30,
             "weight": 10,
             "art": "running_two_warriors",
@@ -719,7 +719,7 @@
             ]
         },
         {
-            "text": "The patrol tries to lead the coyote away from the Warren's borders, but with so few rabbits it's impossible to cover each other's backs. r_c falls to the coyote as the rest of the patrol runs for their lives back to burrow, terrified out of their pelts and mourning their Clanmate.",
+            "text": "The patrol tries to lead the coyote away from the Warren's borders, but with so few rabbits it's impossible to cover each other's backs. r_c falls to the coyote as the rest of the patrol runs for their lives back to burrow, terrified out of their pelts and mourning their Warrenmate.",
             "exp": 0,
             "weight": 10,
             "art": "gen_dead_cat_EXPLICIT",
@@ -982,13 +982,6 @@
                     "mutual": false,
                     "values": ["respect"],
                     "amount": 30
-                },
-                {
-                    "cats_to": ["s_c"],
-                    "cats_from": ["r_c"],
-                    "mutual": false,
-                    "values": ["dislike"],
-                    "amount": -30
                 }
             ]
         },
@@ -1039,7 +1032,7 @@
             ]
         },
         {
-            "text": "s_c selflessly throws {PRONOUN/s_c/self} into the fight, and every time the coyote tries to grab at {PRONOUN/s_c/poss} Clanmates, {PRONOUN/s_c/subject}{VERB/s_c/'re/'s} there with claws, fur puffed out to twice {PRONOUN/s_c/poss} normal size. With s_c defending them, the patrol drives the coyote off, yowling triumphantly.",
+            "text": "s_c selflessly throws {PRONOUN/s_c/self} into the fight, and every time the coyote tries to grab at {PRONOUN/s_c/poss} Warrenmates, {PRONOUN/s_c/subject}{VERB/s_c/'re/'s} there with claws, fur puffed out to twice {PRONOUN/s_c/poss} normal size. With s_c defending them, the patrol drives the coyote off, yowling triumphantly.",
             "exp": 50,
             "weight": 5,
             "art": "gen_coyote1",
@@ -1223,7 +1216,7 @@
     "min_cats": 3,
     "max_cats": 6,
     "min_max_status": {
-        "rusasi": [-1, -1],
+        "rusasirah": [-1, -1],
         "normal adult": [1, 6]
     },
     "weight": 20,
@@ -1247,7 +1240,7 @@
             ]
         },
         {
-            "text": "It's always valuable to have a safe place to retreat to near c_n's borders, s_c points out. {PRONOUN/s_c/subject/CAP} {VERB/s_c/check/checks} over the tunnel - the scents inside are long stale, but the construction is still good. The patrol carefully marks the burrow. One day, in danger, it might save a Clanmate's life.",
+            "text": "It's always valuable to have a safe place to retreat to near c_n's borders, s_c points out. {PRONOUN/s_c/subject/CAP} {VERB/s_c/check/checks} over the tunnel - the scents inside are long stale, but the construction is still good. The patrol carefully marks the burrow. One day, in danger, it might save a Warrenmate's life.",
             "exp": 40,
             "weight": 20,
             "art": "gen_speaking_cat_w3",
@@ -1521,7 +1514,7 @@
             ]
         },
         {
-            "text": "It seems this hole is home to a cranky wolverine, a fact that the patrol learns very quickly when r_c cries out in pain. The rabbits back out of the tunnel quickly, but not quickly enough to save {PRONOUN/r_c/poss} Clanmate.",
+            "text": "It seems this hole is home to a cranky wolverine, a fact that the patrol learns very quickly when r_c cries out in pain. The rabbits back out of the tunnel quickly, but not quickly enough to save {PRONOUN/r_c/poss} Warrenmate.",
             "exp": 0,
             "weight": 10,
             "art": "gen_dead_cat_ghost_EXPLICIT",
@@ -1581,7 +1574,7 @@
     "min_cats": 3,
     "max_cats": 6,
     "min_max_status": {
-        "rusasi": [1, 6],
+        "rusasirah": [1, 6],
         "normal adult":[1, 6]
     },
     "weight": 20,
@@ -1630,13 +1623,13 @@
                     "cats_to": ["p_l"],
                     "cats_from": ["s_c"],
                     "mutual": false,
-                    "values": ["platonic"],
+                    "values": ["like"],
                     "amount": 5
                 }
             ]
         },
         {
-            "text": "Oh hey cool! s_c didn't know this old badger sett was here, and the patrol halts to allow the rusasi to explore. It's valuable to know where all the hideyholes are within the grasslands, just in case of danger. So p_l doesn't mind taking the time to let s_c discover the tunnels, which are known and safe.",
+            "text": "Oh hey cool! s_c didn't know this old badger sett was here, and the patrol halts to allow the rusasirah to explore. It's valuable to know where all the hideyholes are within the grasslands, just in case of danger. So p_l doesn't mind taking the time to let s_c discover the tunnels, which are known and safe.",
             "exp": 40,
             "weight": 30,
             "art": "pln_train_sett",
@@ -1659,13 +1652,13 @@
                     "cats_to": ["p_l"],
                     "cats_from": ["s_c"],
                     "mutual": false,
-                    "values": ["platonic"],
+                    "values": ["like"],
                     "amount": 5
                 }
             ]
         },
         {
-            "text": "s_c shivers, levering {PRONOUN/s_c/self} out of the burrow entrance {PRONOUN/s_c/subject} tripped into. p_l asks if {PRONOUN/s_c/subject} {VERB/s_c/want/wants} to explore it, but s_c shakes {PRONOUN/s_c/poss} head no. {PRONOUN/s_c/subject/CAP} can't explain it, but the tunnel gives {PRONOUN/s_c/object} flashes of clair_list.",
+            "text": "s_c shivers, levering {PRONOUN/s_c/self} out of the burrow entrance {PRONOUN/s_c/subject} tripped into. p_l asks if {PRONOUN/s_c/subject} {VERB/s_c/want/wants} to explore it, but s_c shakes {PRONOUN/s_c/poss} head no. {PRONOUN/s_c/subject/CAP} can't explain it, but the tunnel gives {PRONOUN/s_c/object} flashes of clair_list/s_c.",
             "exp": 40,
             "weight": 30,
             "art": "gen_train_patrolapprenticesessionfail",
@@ -1705,7 +1698,7 @@
                     "cats_to": ["s_c"],
                     "cats_from": ["patrol"],
                     "mutual": false,
-                    "values": ["platonic"],
+                    "values": ["like"],
                     "amount": 5
                 }
             ]
@@ -1733,7 +1726,7 @@
             ]
         },
         {
-            "text": "The rusasi has made an accidental discovery, tripping into a well hidden burrow entrance. It's always valuable to have a safe place to retreat to near c_n's borders, s_c points out. {PRONOUN/s_c/subject/CAP} {VERB/s_c/check/checks} over the tunnel - the scents inside are long stale, but the construction is still good. One day, in danger, it might save a Clanmate's life.",
+            "text": "The rusasirah has made an accidental discovery, tripping into a well hidden burrow entrance. It's always valuable to have a safe place to retreat to near c_n's borders, s_c points out. {PRONOUN/s_c/subject/CAP} {VERB/s_c/check/checks} over the tunnel - the scents inside are long stale, but the construction is still good. One day, in danger, it might save a Warrenmate's life.",
             "exp": 40,
             "weight": 20,
             "art": "pln_bord_tunnel",
@@ -1871,9 +1864,9 @@
                 }
             ],
             "history_text": {
-                "scar": "m_c's lungs haven't been the same since {PRONOUN/m_c/subject} fell into a sinkhole and were buried as an rusasi.",
-                "reg_death": "m_c died after from complications from falling into a sinkhole and being buried as an rusasi.",
-                "lead_death": "from complications from falling into a sinkhole and being buried as an rusasi"
+                "scar": "m_c's lungs haven't been the same since {PRONOUN/m_c/subject} fell into a sinkhole and were buried as an rusasirah.",
+                "reg_death": "m_c died after from complications from falling into a sinkhole and being buried as an rusasirah.",
+                "lead_death": "from complications from falling into a sinkhole and being buried as an rusasirah"
             },
             "relationships": [
                 {
@@ -1893,7 +1886,7 @@
             "art_clean": "gen_dead_cat_app",
             "dead_cats": ["app1"],
             "history_text": {
-                "reg_death": "This rabbit was killed as an rusasi after tripping into a sinkhole that contained a predator.",
+                "reg_death": "This rabbit was killed as an rusasirah after tripping into a sinkhole that contained a predator.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             },
             "relationships": [
@@ -1919,7 +1912,7 @@
     "max_cats": 2,
     "min_max_status": {
         "normal adult":[2, 6],
-        "rusasi":[-1, -1]
+        "rusasirah":[-1, -1]
     },
     "weight": 20,
     "intro_text": "While on a dawn border patrol, with the sun still hugging the distant horizon, p_l finds an opening to what seems to be a new set of tunnels.",
@@ -1966,8 +1959,8 @@
                     "cats_to": ["p_l"],
                     "cats_from": ["r_c"],
                     "mutual": false,
-                    "values": ["jealous", "respect"],
-                    "amount": 15
+                    "values": ["respect"],
+                    "amount": -15
                 },
                 {
                     "cats_to": ["p_l"],
@@ -2270,7 +2263,7 @@
     "max_cats": 2,
     "min_max_status": {
         "normal adult":[1, 6],
-        "rusasi":[1, 6]
+        "rusasirah":[1, 6]
     },
     "weight": 20,
     "intro_text": "Trotting along the track that marks the border with app1, p_l spots the entrance to an unfamiliar hole in the ground.",
@@ -2331,8 +2324,8 @@
                     "cats_to": ["p_l"],
                     "cats_from": ["app1"],
                     "mutual": false,
-                    "values": ["jealous", "respect"],
-                    "amount": 15
+                    "values": ["respect"],
+                    "amount": -15
                 },
                 {
                     "cats_to": ["p_l"],
@@ -2741,7 +2734,7 @@
                     "cats_to": ["app1"],
                     "cats_from": ["patrol"],
                     "mutual": false,
-                    "values": ["respect", "trust", "platonic"],
+                    "values": ["respect", "trust", "like"],
                     "amount": 25
                 }
             ],
@@ -2755,7 +2748,7 @@
             "dead_cats": ["app1"],
             "history_text": {
                 "scar": "m_c was injured after disturbing a badger in its sett.",
-                "reg_death": "This rabbit was killed saving an older rabbit from a badger as an rusasi.",
+                "reg_death": "This rabbit was killed saving an older rabbit from a badger as an rusasirah.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             }
         },
@@ -2982,7 +2975,7 @@
     "min_cats": 1,
     "max_cats": 1,
     "min_max_status": {
-        "rusasi":[1, 1]
+        "rusasirah":[1, 1]
     },
     "weight": 20,
     "intro_text": "app1's ears swivel back and forth, pressing flat against {PRONOUN/app1/poss} head every so often as {PRONOUN/app1/poss} emotions slip through. With fur bristled out to full puff and freezing at every rustle in the grass, {PRONOUN/app1/subject} nevertheless {VERB/app1/pad/pads} the border alone. A strange mismash of shadows catches {PRONOUN/app1/poss} eye. Is that a tunnel entrance?",
@@ -3002,7 +2995,7 @@
             "art": "pln_hunt_gonetwolegtrap1"
         },
         {
-            "text": "This is no burrow. app1 shivers. {PRONOUN/app1/subject/CAP} {VERB/app1/do/does}n't know what it <i>is</i>, but tunnels don't have straight edges and sharp corners, app1 knows that much. {PRONOUN/app1/subject/CAP} should go report this to {PRONOUN/app1/poss} mentor maybe? Yeah, yeah that sounds good.",
+            "text": "This is no burrow. app1 shivers. {PRONOUN/app1/subject/CAP} {VERB/app1/don't/doesn't} know what it <i>is</i>, but tunnels don't have straight edges and sharp corners, app1 knows that much. {PRONOUN/app1/subject/CAP} should go report this to {PRONOUN/app1/poss} mentor maybe? Yeah, yeah that sounds good.",
             "exp": 20,
             "weight": 20,
             "art": "pln_hunt_gonetwolegtrap1",
@@ -3018,7 +3011,7 @@
             ]
         },
         {
-            "text": "app1 is brave, but {PRONOUN/app1/subject}{VERB/app1/'re/'s} not stupid. {PRONOUN/app1/subject/CAP} {VERB/app1/do/does}n't just stick {PRONOUN/app1/poss} head into an unknown tunnel, instead wait and scenting and watching for ages until a furry flat head pokes above ground. A stoat. It eyes app1, but both are far away enough to shuffle awkwardly around each other rather than fighting, as the thin predator heads off to find food and app1 turns for home.",
+            "text": "app1 is brave, but {PRONOUN/app1/subject}{VERB/app1/'re/'s} not stupid. {PRONOUN/app1/subject/CAP} {VERB/app1/don't/doesn't} just stick {PRONOUN/app1/poss} head into an unknown tunnel, instead wait and scenting and watching for ages until a furry flat head pokes above ground. A stoat. It eyes app1, but both are far away enough to shuffle awkwardly around each other rather than fighting, as the thin predator heads off to find food and app1 turns for home.",
             "exp": 20,
             "weight": 20,
             "art": "gen_scared_cat_app",
@@ -3162,7 +3155,7 @@
             "dead_cats":["app1"],
             "history_text": {
                 "scar": "m_c was injured after disturbing a wrathful prairie dog.",
-                "reg_death": "This rabbit was killed as an rusasi, patrolling the border alone and investigating things {PRONOUN/m_c/subject} shouldn't have.",
+                "reg_death": "This rabbit was killed as an rusasirah, patrolling the border alone and investigating things {PRONOUN/m_c/subject} shouldn't have.",
                 "lead_death": "patrolling the border alone and investigating things {PRONOUN/m_c/subject} shouldn't have"
             }
         },
@@ -3179,7 +3172,7 @@
             "dead_cats":["app1"],
             "history_text": {
                 "scar":"",
-                "reg_death": "This rabbit was killed as an rusasi, patrolling the border alone and investigating things {PRONOUN/m_c/subject} shouldn't have.",
+                "reg_death": "This rabbit was killed as an rusasirah, patrolling the border alone and investigating things {PRONOUN/m_c/subject} shouldn't have.",
                 "lead_death": "patrolling the border alone and investigating things {PRONOUN/m_c/subject} shouldn't have"
             }
         },
@@ -3280,7 +3273,7 @@
     "min_cats": 2,
     "max_cats": 6,
     "min_max_status": {
-        "rusasi":[1, 6],
+        "rusasirah":[1, 6],
         "normal adult":[-1, -1]
     },
     "weight": 20,
@@ -3298,7 +3291,7 @@
                     "cats_to": ["patrol"],
                     "cats_from": ["patrol"],
                     "mutual": false,
-                    "values": ["trust", "platonic"],
+                    "values": ["trust", "like"],
                     "amount": 15
                 }
             ]
@@ -3319,31 +3312,17 @@
                     "cats_to": ["app1"],
                     "cats_from": ["patrol"],
                     "mutual": false,
-                    "values": ["dislike"],
-                    "amount": 15
-                },
-                {
-                    "cats_to": ["app1"],
-                    "cats_from": ["patrol"],
-                    "mutual": false,
                     "values": ["respect"],
                     "amount": -10
                 }
             ]
         },
         {
-            "text": "app1 has found a wonderful set of tunnels - not one anyone knew existed, but the entrance is still marked with c_n scent, so these are safe to explore. It's very cool! But it's hard not to feel a bit envious at the discovery, this'll be all the rusasi den gossips about for the next moon.",
+            "text": "app1 has found a wonderful set of tunnels - not one anyone knew existed, but the entrance is still marked with c_n scent, so these are safe to explore. It's very cool! But it's hard not to feel a bit envious at the discovery, this'll be all the rusasirah den gossips about for the next moon.",
             "exp": 20,
             "weight": 10,
             "art": "gen_med_warappmedapp_herbcontest",
             "relationships": [
-                {
-                    "cats_to": ["app1"],
-                    "cats_from": ["patrol"],
-                    "mutual": false,
-                    "values": ["jealous"],
-                    "amount": 15
-                },
                 {
                     "cats_to": ["app1"],
                     "cats_from": ["patrol"],
@@ -3355,7 +3334,7 @@
                     "cats_to": ["patrol"],
                     "cats_from": ["patrol"],
                     "mutual": false,
-                    "values": ["platonic", "trust"],
+                    "values": ["like", "trust"],
                     "amount": 10
                 }
             ]
@@ -3370,7 +3349,7 @@
                     "cats_to": ["patrol"],
                     "cats_from": ["patrol"],
                     "mutual": false,
-                    "values": ["trust", "platonic"],
+                    "values": ["trust", "like"],
                     "amount": 15
                 }
             ]
@@ -3387,7 +3366,7 @@
                     "cats_to": ["patrol"],
                     "cats_from": ["patrol"],
                     "mutual": false,
-                    "values": ["trust", "platonic"],
+                    "values": ["trust", "like"],
                     "amount": 5
                 },
                 {
@@ -3414,13 +3393,6 @@
                     "cats_to": ["s_c"],
                     "cats_from": ["patrol"],
                     "mutual": false,
-                    "values": ["dislike"],
-                    "amount": 10
-                },
-                {
-                    "cats_to": ["s_c"],
-                    "cats_from": ["patrol"],
-                    "mutual": false,
                     "values": ["respect"],
                     "amount": -10
                 },
@@ -3434,7 +3406,7 @@
             ]
         },
         {
-            "text": "The rusasirahs huddle around the burrow entrance. It'll be okay, s_c reassures. They've been training for just this kind of thing, they've had lessons on burrows and this one has no tracks at the front, it's empty. Together, everyone plucks up just enough bravery to explore it and run home, telling the story of what it was like that night to each other in breathless thrilled whispers in the rusasi den.",
+            "text": "The rusasirahs huddle around the burrow entrance. It'll be okay, s_c reassures. They've been training for just this kind of thing, they've had lessons on burrows and this one has no tracks at the front, it's empty. Together, everyone plucks up just enough bravery to explore it and run home, telling the story of what it was like that night to each other in breathless thrilled whispers in the rusasirah den.",
             "exp": 20,
             "weight": 20,
             "art": "gen_med_warappmedapp_herbcontest",
@@ -3450,14 +3422,14 @@
                     "cats_to": ["s_c"],
                     "cats_from": ["patrol"],
                     "mutual": false,
-                    "values": ["platonic", "respect", "trust"],
+                    "values": ["like", "respect", "trust"],
                     "amount": 10
                 },
                 {
                     "cats_to": ["patrol"],
                     "cats_from": ["patrol"],
                     "mutual": false,
-                    "values": ["platonic"],
+                    "values": ["like"],
                     "amount": 5
                 },
                 {
@@ -3505,8 +3477,8 @@
             "dead_cats":["app2"],
             "history_text": {
                 "scar": "",
-                "reg_death": "m_c was killed when another rusasi made the wrong judgement call on a border patrol.",
-                "lead_death": "another rusasi made the wrong judgement call on a border patrol"
+                "reg_death": "m_c was killed when another rusasirah made the wrong judgement call on a border patrol.",
+                "lead_death": "another rusasirah made the wrong judgement call on a border patrol"
             },
             "relationships": [
                 {
@@ -3597,7 +3569,7 @@
             "dead_cats":["s_c"],
             "history_text": {
                 "scar": "",
-                "reg_death": "This rabbit was killed as an rusasi, patrolling the border and investigating things {PRONOUN/m_c/subject} shouldn't have.",
+                "reg_death": "This rabbit was killed as an rusasirah, patrolling the border and investigating things {PRONOUN/m_c/subject} shouldn't have.",
                 "lead_death": "patrolling the border and investigating things {PRONOUN/m_c/subject} shouldn't have"
             }
         },
@@ -3638,7 +3610,7 @@
             "dead_cats": ["patrol"],
             "history_text": {
                 "scar": "",
-                "reg_death": "This rabbit was killed as an rusasi, after being dared to jump into an unknown burrow.",
+                "reg_death": "This rabbit was killed as an rusasirah, after being dared to jump into an unknown burrow.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             }
         },
@@ -3661,8 +3633,8 @@
                 }
             ],
             "history_text": {
-                "scar": "m_c was scarred by a badger as an rusasi, after being dared to leap down into an unknown burrow.",
-                "reg_death": "This rabbit was killed as an rusasi, after being dared to jump into an unknown burrow.",
+                "scar": "m_c was scarred by a badger as an rusasirah, after being dared to leap down into an unknown burrow.",
+                "reg_death": "This rabbit was killed as an rusasirah, after being dared to jump into an unknown burrow.",
                 "lead_death": "{VERB/m_c/were/was} killed by a predator hiding in its burrow"
             }
         }

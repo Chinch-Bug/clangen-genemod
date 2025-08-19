@@ -7,13 +7,21 @@ import i18n
 import ujson
 
 from scripts.rabbit.rabbits import Rabbit, BACKSTORIES
-from scripts.game_structure.localization import get_new_pronouns
-from ..rabbit.personality import Personality
+from ..cat.enums import CatGroup, CatRank
 from scripts.rabbit.pelts import Pelt
 from scripts.cat_relations.inheritance import Inheritance
+from scripts.game_structure.game.switches import (
+    switch_get_value,
+    switch_set_value,
+    Switch,
+)
+from scripts.game_structure.localization import get_new_pronouns
 from scripts.housekeeping.version import SAVE_VERSION_NUMBER
-from .game_essentials import game
-from ..rabbit.skills import CatSkills
+from scripts.game_structure import constants
+from scripts.game_structure import game
+from ..cat.personality import Personality
+from ..cat.skills import CatSkills
+from ..cat.status import StatusDict
 from ..housekeeping.datadir import get_save_dir
 
 logger = logging.getLogger(__name__)
@@ -26,8 +34,8 @@ def load_cats():
         try:
             csv_load(Rabbit.all_cats)
         except FileNotFoundError as e:
-            game.switches["error_message"] = "Can't find clan_cats.json!"
-            game.switches["traceback"] = e
+            switch_set_value(Switch.error_message, "Can't find clan_cats.json!")
+            switch_set_value(Switch.traceback, e)
             raise
 
 
@@ -36,7 +44,7 @@ def json_load():
     Rabbit.all_cats_list.clear()
     Rabbit.dead_cats.clear()
     all_cats = []
-    clanname = game.switches["clan_list"][0]
+    clanname = switch_get_value(Switch.clan_list)[0]
     clan_cats_json_path = f"{get_save_dir()}/{clanname}/clan_cats.json"
     with open(
         f"resources/dicts/conversion_dict.json", "r", encoding="utf-8"
@@ -46,129 +54,155 @@ def json_load():
         with open(clan_cats_json_path, "r", encoding="utf-8") as read_file:
             cat_data = ujson.loads(read_file.read())
     except PermissionError as e:
-        game.switches["error_message"] = f"Can\t open {clan_cats_json_path}!"
-        game.switches["traceback"] = e
+        switch_set_value(Switch.error_message, f"Can\t open {clan_cats_json_path}!")
+        switch_set_value(Switch.traceback, e)
         raise
     except ujson.JSONDecodeError as e:
-        game.switches["error_message"] = f"{clan_cats_json_path} is malformed!"
-        game.switches["traceback"] = e
+        switch_set_value(Switch.error_message, f"{clan_cats_json_path} is malformed!")
+        switch_set_value(Switch.traceback, e)
         raise
 
     old_tortie_patches = convert["old_tortie_patches"]
 
     # create new rabbit objects
-    for i, rabbit in enumerate(cat_data):
+    for i, cat in enumerate(cat_data):
         try:
+            # accounting for old saves
+            # checks first if status is in the old format
+            # if it is then we use the old info to provide an initial status dict
+            if isinstance(cat["status"], str):
+                # this sucks, but we need to get the actual str age to make sure nothing goes wonky
+                age = None
+                for key_age in Rabbit.age_moons.keys():
+                    if cat["moons"] in range(
+                        Rabbit.age_moons[key_age][0], Rabbit.age_moons[key_age][1] + 1
+                    ):
+                        age = key_age
+                status_dict = {"rank": cat["status"], "age": age}
+            else:
+                status_dict = cat["status"]
+
             new_cat = Rabbit(
-                ID=rabbit["ID"],
-                prefix=rabbit["name_prefix"],
-                suffix=rabbit["name_suffix"],
+                ID=cat["ID"],
+                prefix=cat["name_prefix"],
+                suffix=cat["name_suffix"],
                 specsuffix_hidden=(
-                    rabbit["specsuffix_hidden"] if "specsuffix_hidden" in rabbit else False
+                    cat["specsuffix_hidden"] if "specsuffix_hidden" in cat else False
                 ),
-                gender=rabbit["gender"],
-                status=rabbit["status"],
-                parent1=rabbit["parent1"],
-                parent2=rabbit["parent2"],
-                moons=rabbit["moons"],
-                eye_colour=rabbit["eye_colour"],
+                gender=cat["gender"],
+                status_dict=status_dict,
+                parent1=cat["parent1"],
+                parent2=cat["parent2"],
+                moons=cat["moons"],
+                eye_colour=cat["eye_colour"],
                 loading_cat=True,
             )
 
-            if rabbit["eye_colour"] == "BLUE2":
-                rabbit["eye_colour"] = "COBALT"
-            if rabbit["eye_colour"] in ["BLUEYELLOW", "BLUEGREEN"]:
-                if rabbit["eye_colour"] == "BLUEYELLOW":
-                    rabbit["eye_colour2"] = "YELLOW"
-                elif rabbit["eye_colour"] == "BLUEGREEN":
-                    rabbit["eye_colour2"] = "GREEN"
-                rabbit["eye_colour"] = "BLUE"
-            if "eye_colour2" in rabbit:
-                if rabbit["eye_colour2"] == "BLUE2":
-                    rabbit["eye_colour2"] = "COBALT"
+            if cat["eye_colour"] == "BLUE2":
+                cat["eye_colour"] = "COBALT"
+            if cat["eye_colour"] in ["BLUEYELLOW", "BLUEGREEN"]:
+                if cat["eye_colour"] == "BLUEYELLOW":
+                    cat["eye_colour2"] = "YELLOW"
+                elif cat["eye_colour"] == "BLUEGREEN":
+                    cat["eye_colour2"] = "GREEN"
+                cat["eye_colour"] = "BLUE"
+            if "eye_colour2" in cat:
+                if cat["eye_colour2"] == "BLUE2":
+                    cat["eye_colour2"] = "COBALT"
+
+            if "tint" in cat:
+                if cat["tint"] == "none":
+                    cat["tint"] = None
+            if "white_patches_tint" in cat:
+                if cat["white_patches_tint"] == "none":
+                    cat["white_patches_tint"] = None
+
+            if "pattern" in cat:
+                cat["tortie_marking"] = cat["pattern"]
+                del cat["pattern"]
 
             new_cat.pelt = Pelt(
-                name=rabbit["pelt_name"],
-                length=rabbit["pelt_length"],
-                colour=rabbit["pelt_color"],
-                eye_color=rabbit["eye_colour"],
-                eye_colour2=rabbit["eye_colour2"] if "eye_colour2" in rabbit else None,
-                paralyzed=rabbit["paralyzed"],
+                name=cat["pelt_name"],
+                length=cat["pelt_length"],
+                colour=cat["pelt_color"],
+                eye_color=cat["eye_colour"],
+                eye_colour2=cat["eye_colour2"] if "eye_colour2" in cat else None,
+                paralyzed=cat["paralyzed"],
                 kitten_sprite=(
-                    rabbit["sprite_kitten"]
-                    if "sprite_kitten" in rabbit
-                    else rabbit["spirit_kitten"]
+                    cat["sprite_kitten"]
+                    if "sprite_kitten" in cat
+                    else cat["spirit_kitten"]
                 ),
                 adol_sprite=(
-                    rabbit["sprite_adolescent"]
-                    if "sprite_adolescent" in rabbit
-                    else rabbit["spirit_adolescent"]
+                    cat["sprite_adolescent"]
+                    if "sprite_adolescent" in cat
+                    else cat["spirit_adolescent"]
                 ),
                 adult_sprite=(
-                    rabbit["sprite_adult"]
-                    if "sprite_adult" in rabbit
-                    else rabbit["spirit_adult"]
+                    cat["sprite_adult"]
+                    if "sprite_adult" in cat
+                    else cat["spirit_adult"]
                 ),
                 senior_sprite=(
-                    rabbit["sprite_senior"]
-                    if "sprite_senior" in rabbit
-                    else rabbit["spirit_elder"]
+                    cat["sprite_senior"]
+                    if "sprite_senior" in cat
+                    else cat["spirit_elder"]
                 ),
                 para_adult_sprite=(
-                    rabbit["sprite_para_adult"] if "sprite_para_adult" in rabbit else None
+                    cat["sprite_para_adult"] if "sprite_para_adult" in cat else None
                 ),
-                reverse=rabbit["reverse"],
-                vitiligo=rabbit["vitiligo"] if "vitiligo" in rabbit else None,
-                points=rabbit["points"] if "points" in rabbit else None,
+                reverse=cat["reverse"],
+                vitiligo=cat["vitiligo"] if "vitiligo" in cat else None,
+                points=cat["points"] if "points" in cat else None,
                 white_patches_tint=(
-                    rabbit["white_patches_tint"]
-                    if "white_patches_tint" in rabbit
+                    cat["white_patches_tint"]
+                    if "white_patches_tint" in cat
                     else "offwhite"
                 ),
-                white_patches=rabbit["white_patches"],
-                tortiebase=rabbit["tortie_base"],
-                tortiecolour=rabbit["tortie_color"],
-                tortiepattern=rabbit["tortie_pattern"],
-                pattern=rabbit["pattern"],
-                skin=rabbit["skin"],
-                tint=rabbit["tint"] if "tint" in rabbit else "none",
-                scars=rabbit["scars"] if "scars" in rabbit else [],
-                accessory=rabbit["accessory"],
-                opacity=rabbit["opacity"] if "opacity" in rabbit else 100,
+                white_patches=cat["white_patches"],
+                tortie_base=cat["tortie_base"],
+                tortie_colour=cat["tortie_color"],
+                tortie_pattern=cat["tortie_pattern"],
+                tortie_marking=cat["tortie_marking"],
+                skin=cat["skin"],
+                tint=cat["tint"] if "tint" in cat else None,
+                scars=cat["scars"] if "scars" in cat else [],
+                accessory=cat["accessory"],
+                opacity=cat["opacity"] if "opacity" in cat else 100,
             )
 
-            # Runs a bunch of apperence-related convertion of old stuff.
+            # Runs a bunch of appearance-related conversion of old stuff.
             new_cat.pelt.check_and_convert(convert)
 
             # converting old specialty saves into new scar parameter
-            if "specialty" in rabbit or "specialty2" in rabbit:
-                if rabbit["specialty"] is not None:
-                    new_cat.pelt.scars.append(rabbit["specialty"])
-                if rabbit["specialty2"] is not None:
-                    new_cat.pelt.scars.append(rabbit["specialty2"])
+            if "specialty" in cat or "specialty2" in cat:
+                if cat["specialty"] is not None:
+                    new_cat.pelt.scars.append(cat["specialty"])
+                if cat["specialty2"] is not None:
+                    new_cat.pelt.scars.append(cat["specialty2"])
 
             new_cat.adoptive_parents = (
-                rabbit["adoptive_parents"] if "adoptive_parents" in rabbit else []
+                cat["adoptive_parents"] if "adoptive_parents" in cat else []
             )
 
-            new_cat.genderalign = rabbit["gender_align"]
+            new_cat.genderalign = cat["gender_align"]
             new_cat.pronouns = (
-                rabbit["pronouns"]
-                if "pronouns" in rabbit
+                cat["pronouns"]
+                if "pronouns" in cat
                 else {i18n.config.get("locale"): get_new_pronouns(new_cat.genderalign)}
             )
-            new_cat.backstory = rabbit["backstory"] if "backstory" in rabbit else None
+            new_cat.backstory = cat["backstory"] if "backstory" in cat else None
             if new_cat.backstory in BACKSTORIES["conversion"]:
                 new_cat.backstory = BACKSTORIES["conversion"][new_cat.backstory]
             new_cat.birth_cooldown = (
-                rabbit["birth_cooldown"] if "birth_cooldown" in rabbit else 0
+                cat["birth_cooldown"] if "birth_cooldown" in cat else 0
             )
-            new_cat.moons = rabbit["moons"]
+            new_cat.moons = cat["moons"]
 
-            if "facets" in rabbit:
-                facets = [int(i) for i in rabbit["facets"].split(",")]
+            if "facets" in cat and cat["facets"] is not None:
+                facets = [int(i) for i in cat["facets"].split(",")]
                 new_cat.personality = Personality(
-                    trait=rabbit["trait"],
+                    trait=cat["trait"],
                     kit_trait=new_cat.age in ["newborn", "kit"],
                     lawful=facets[0],
                     social=facets[1],
@@ -177,25 +211,23 @@ def json_load():
                 )
             else:
                 new_cat.personality = Personality(
-                    trait=rabbit["trait"], kit_trait=new_cat.age in ["newborn", "kit"]
+                    trait=cat["trait"], kit_trait=new_cat.age in ["newborn", "kit"]
                 )
 
-            new_cat.mentor = rabbit["mentor"]
+            new_cat.mentor = cat["mentor"]
             new_cat.former_mentor = (
-                rabbit["former_mentor"] if "former_mentor" in rabbit else []
+                cat["former_mentor"] if "former_mentor" in cat else []
             )
             new_cat.patrol_with_mentor = (
-                rabbit["patrol_with_mentor"] if "patrol_with_mentor" in rabbit else 0
+                cat["patrol_with_mentor"] if "patrol_with_mentor" in cat else 0
             )
-            new_cat.no_kits = rabbit["no_kits"]
-            new_cat.no_mates = rabbit["no_mates"] if "no_mates" in rabbit else False
-            new_cat.no_retire = rabbit["no_retire"] if "no_retire" in rabbit else False
-            new_cat.exiled = rabbit["exiled"]
-            new_cat.driven_out = rabbit["driven_out"] if "driven_out" in rabbit else False
+            new_cat.no_kits = cat["no_kits"]
+            new_cat.no_mates = cat["no_mates"] if "no_mates" in cat else False
+            new_cat.no_retire = cat["no_retire"] if "no_retire" in cat else False
 
-            if "skill_dict" in rabbit:
-                new_cat.skills = CatSkills(rabbit["skill_dict"])
-            elif "skill" in rabbit:
+            if "skill_dict" in cat:
+                new_cat.skills = CatSkills(cat["skill_dict"])
+            elif "skill" in cat:
                 if new_cat.backstory is None:
                     if "skill" == "formerly a loner":
                         backstory = choice(["loner1", "loner2", "rogue1", "rogue2"])
@@ -206,114 +238,151 @@ def json_load():
                     else:
                         new_cat.backstory = "clanborn"
                 new_cat.skills = CatSkills.get_skills_from_old(
-                    rabbit["skill"], new_cat.status, new_cat.moons
+                    cat["skill"], new_cat.status.rank, new_cat.age
                 )
 
-            new_cat.mate = rabbit["mate"] if type(rabbit["mate"]) is list else [rabbit["mate"]]
+            new_cat.mate = cat["mate"] if type(cat["mate"]) is list else [cat["mate"]]
             if None in new_cat.mate:
                 new_cat.mate = [i for i in new_cat.mate if i is not None]
             new_cat.previous_mates = (
-                rabbit["previous_mates"] if "previous_mates" in rabbit else []
+                cat["previous_mates"] if "previous_mates" in cat else []
             )
-            new_cat.dead = rabbit["dead"]
-            new_cat.dead_for = rabbit["dead_moons"]
-            new_cat.experience = rabbit["experience"]
-            new_cat.rusasi = rabbit["current_apprentice"]
-            new_cat.former_apprentices = rabbit["former_apprentices"]
-            new_cat.df = rabbit["df"] if "df" in rabbit else False
 
-            new_cat.outside = rabbit["outside"] if "outside" in rabbit else False
+            # checking for old dead
+            if (
+                cat.get("dead")
+                or cat.get("df")
+                or cat.get("driven_out")
+                or cat.get("exiled")
+                or cat.get("outside")
+            ):
+                if cat.get("dead") and (
+                    not new_cat.status.group or not new_cat.status.group.is_afterlife()
+                ):
+                    if cat.get("df"):
+                        new_cat.status.send_to_afterlife(target=CatGroup.DARK_FOREST)
+                    elif cat.get("outside"):
+                        new_cat.status.send_to_afterlife(
+                            target=CatGroup.UNKNOWN_RESIDENCE
+                        )
+                    else:
+                        new_cat.status.send_to_afterlife(target=CatGroup.STARCLAN)
+
+                else:
+                    # these should properly change the cat's status to align with old bool info
+                    if cat.get("exiled"):
+                        new_cat.status.exile_from_group()
+                    elif cat.get("outside") and not new_cat.status.is_outsider:
+                        new_cat.status.become_lost()
+
+                    if cat.get("driven_out"):
+                        new_cat.status.change_group_nearness(CatGroup.PLAYER_CLAN)
+
+            new_cat.dead_for = cat["dead_moons"]
+            new_cat.experience = cat["experience"]
+            new_cat.apprentice = cat["current_apprentice"]
+            new_cat.former_apprentices = cat["former_apprentices"]
+
             new_cat.faded_offspring = (
-                rabbit["faded_offspring"] if "faded_offspring" in rabbit else []
+                cat["faded_offspring"] if "faded_offspring" in cat else []
             )
             new_cat.prevent_fading = (
-                rabbit["prevent_fading"] if "prevent_fading" in rabbit else False
+                cat["prevent_fading"] if "prevent_fading" in cat else False
             )
-            new_cat.favourite = rabbit["favourite"] if "favourite" in rabbit else False
+            new_cat.favourite = cat["favourite"] if "favourite" in cat else False
 
-            if "died_by" in rabbit or "scar_event" in rabbit or "mentor_influence" in rabbit:
+            if "died_by" in cat or "scar_event" in cat or "mentor_influence" in cat:
                 new_cat.convert_history(
-                    rabbit["died_by"] if "died_by" in rabbit else [],
-                    rabbit["scar_event"] if "scar_event" in rabbit else [],
+                    cat["died_by"] if "died_by" in cat else [],
+                    cat["scar_event"] if "scar_event" in cat else [],
                 )
 
             all_cats.append(new_cat)
 
         except KeyError as e:
-            if "ID" in rabbit:
-                key = f" ID #{rabbit['ID']} "
+            if "ID" in cat:
+                key = f" ID #{cat['ID']} "
             else:
                 key = f" at index {i} "
-            game.switches[
-                "error_message"
-            ] = f"Rabbit{key}in clan_cats.json is missing {e}!"
-            game.switches["traceback"] = e
+            switch_set_value(
+                Switch.error_message, f"Rabbit{key}in clan_cats.json is missing {e}!"
+            )
+            switch_set_value(Switch.traceback, e)
             raise
 
-    # replace rabbit ids with rabbit objects and add other needed variables
-    for rabbit in all_cats:
-        rabbit.load_conditions()
+    # replace cat ids with cat objects and add other needed variables
+    other_clan_cats = [c for c in Rabbit.all_cats_list if c.status.is_other_clancat]
+    for cat in all_cats:
+        cat.load_conditions()
 
-        # this is here to handle paralyzed rabbits in old saves
-        if rabbit.pelt.paralyzed and "paralyzed" not in rabbit.permanent_condition:
-            rabbit.get_permanent_condition("paralyzed")
-        elif "paralyzed" in rabbit.permanent_condition and not rabbit.pelt.paralyzed:
-            rabbit.pelt.paralyzed = True
+        # this is here to handle paralyzed cats in old saves
+        if cat.pelt.paralyzed and "paralyzed" not in cat.permanent_condition:
+            cat.get_permanent_condition("paralyzed")
+        elif "paralyzed" in cat.permanent_condition and not cat.pelt.paralyzed:
+            cat.pelt.paralyzed = True
 
         # load the relationships
         try:
-            if not rabbit.dead:
-                rabbit.load_relationship_of_cat()
-                if rabbit.relationships is not None and len(rabbit.relationships) < 1:
-                    rabbit.init_all_relationships()
+            if not cat.dead:
+                cat.load_relationship_of_cat()
+                if cat.relationships is not None and len(cat.relationships) < 1:
+                    cat.init_all_relationships()
             else:
-                rabbit.relationships = {}
+                cat.relationships = {}
         except Exception as e:
             logger.exception(
-                f"There was an error loading relationships for rabbit #{rabbit}."
+                f"There was an error loading relationships for rabbit #{cat}."
             )
-            game.switches[
-                "error_message"
-            ] = f"There was an error loading relationships for rabbit #{rabbit}."
-            game.switches["traceback"] = e
+            switch_set_value(
+                Switch.error_message,
+                f"There was an error loading relationships for cat #{cat}.",
+            )
+            switch_set_value(Switch.traceback, e)
             raise
 
-        rabbit.inheritance = Inheritance(rabbit)
+        cat.inheritance = Inheritance(cat)
 
         try:
             # initialization of thoughts
-            rabbit.thoughts()
+            cat.thoughts(other_clan_cats=other_clan_cats)
         except Exception as e:
             logger.exception(
-                f"There was an error when thoughts for rabbit #{rabbit} are created."
+                f"There was an error when thoughts for rabbit #{cat} are created."
             )
-            game.switches[
-                "error_message"
-            ] = f"There was an error when thoughts for rabbit #{rabbit} are created."
-            game.switches["traceback"] = e
+            switch_set_value(
+                Switch.error_message,
+                f"There was an error when thoughts for cat #{cat} are created.",
+            )
+            switch_set_value(Switch.traceback, e)
             raise
 
         # Save integrety checks
-        if game.config["save_load"]["load_integrity_checks"]:
+        if constants.CONFIG["save_load"]["load_integrity_checks"]:
             save_check()
 
 
 def csv_load(all_cats):
-    if game.switches["clan_list"][0].strip() == "":
+    if switch_get_value(Switch.clan_list)[0].strip() == "":
         cat_data = ""
     else:
         if os.path.exists(
-            get_save_dir() + "/" + game.switches["clan_list"][0] + "rabbits.csv"
+            get_save_dir() + "/" + switch_get_value(Switch.clan_list)[0] + "cats.csv"
         ):
             with open(
-                get_save_dir() + "/" + game.switches["clan_list"][0] + "rabbits.csv",
+                get_save_dir()
+                + "/"
+                + switch_get_value(Switch.clan_list)[0]
+                + "cats.csv",
                 "r",
                 encoding="utf-8",
             ) as read_file:
                 cat_data = read_file.read()
         else:
             with open(
-                get_save_dir() + "/" + game.switches["clan_list"][0] + "rabbits.txt",
+                get_save_dir()
+                + "/"
+                + switch_get_value(Switch.clan_list)[0]
+                + "cats.txt",
                 "r",
                 encoding="utf-8",
             ) as read_file:
@@ -323,10 +392,10 @@ def csv_load(all_cats):
         for i in cat_data.split("\n"):
             # RABBIT: ID(0) - prefix:suffix(1) - gender(2) - status(3) - age(4) - trait(5) - parent1(6) - parent2(7) - mentor(8)
             # PELT: pelt(9) - colour(10) - white(11) - length(12)
-            # SPRITE: kit(13) - rusasi(14) - rabbit(15) - elder(16) - eye colour(17) - reverse(18)
+            # SPRITE: kit(13) - rusasirah(14) - rabbit(15) - elder(16) - eye colour(17) - reverse(18)
             # - white patches(19) - pattern(20) - tortiebase(21) - tortiepattern(22) - tortiecolour(23) - skin(24) - skill(25) - NONE(26) - spec(27) - accessory(28) -
             # spec2(29) - moons(30) - mate(31)
-            # dead(32) - SPRITE:dead(33) - exp(34) - dead for _ moons(35) - current rusasi(36)
+            # dead(32) - SPRITE:dead(33) - exp(34) - dead for _ moons(35) - current rusasirah(36)
             # (BOOLS, either TRUE OR FALSE) paralyzed(37) - no kits(38) - exiled(39)
             # genderalign(40) - former rusasirahs list (41)[FORMER APPS SHOULD ALWAYS BE MOVED TO THE END]
             if i.strip() != "":
@@ -339,78 +408,88 @@ def csv_load(all_cats):
                         attr[x] = True
                     elif attr[x].upper() == "FALSE":
                         attr[x] = False
-                game.switches[
-                    "error_message"
-                ] = "1There was an error loading rabbit # " + str(attr[0])
+                switch_set_value(
+                    Switch.error_message,
+                    f"There was an error loading cat # {str(attr[0])} (code: 1)",
+                )
                 the_pelt = Pelt(
                     colour=attr[2], name=attr[11], length=attr[9], eye_color=attr[17]
                 )
-                game.switches[
-                    "error_message"
-                ] = "2There was an error loading rabbit # " + str(attr[0])
+                switch_set_value(
+                    Switch.error_message,
+                    f"There was an error loading cat # {str(attr[0])} (code: 2)",
+                )
                 the_cat = Rabbit(
                     ID=attr[0],
                     prefix=attr[1].split(":")[0],
                     suffix=attr[1].split(":")[1],
                     gender=attr[2],
-                    status=attr[3],
+                    status={"rank": attr[3]},
                     pelt=the_pelt,
                     parent1=attr[6],
                     parent2=attr[7],
                 )
 
-                game.switches[
-                    "error_message"
-                ] = "3There was an error loading rabbit # " + str(attr[0])
+                switch_set_value(
+                    Switch.error_message,
+                    f"There was an error loading cat # {str(attr[0])} (code: 3)",
+                )
                 the_cat.age, the_cat.mentor = attr[4], attr[8]
-                game.switches[
-                    "error_message"
-                ] = "4There was an error loading rabbit # " + str(attr[0])
+                switch_set_value(
+                    Switch.error_message,
+                    f"There was an error loading cat # {str(attr[0])} (code: 4)",
+                )
                 (
-                    the_cat.pelt.rabbit_sprites["kit"],
-                    the_cat.pelt.rabbit_sprites["adolescent"],
+                    the_cat.pelt.cat_sprites["kit"],
+                    the_cat.pelt.cat_sprites["adolescent"],
                 ) = int(attr[13]), int(attr[14])
-                game.switches[
-                    "error_message"
-                ] = "5There was an error loading rabbit # " + str(attr[0])
-                the_cat.pelt.rabbit_sprites["adult"], the_cat.pelt.rabbit_sprites["elder"] = (
+                switch_set_value(
+                    Switch.error_message,
+                    f"There was an error loading cat # {str(attr[0])} (code: 5)",
+                )
+                the_cat.pelt.cat_sprites["adult"], the_cat.pelt.cat_sprites["elder"] = (
                     int(attr[15]),
                     int(attr[16]),
                 )
-                game.switches[
-                    "error_message"
-                ] = "6There was an error loading rabbit # " + str(attr[0])
+                switch_set_value(
+                    Switch.error_message,
+                    f"There was an error loading cat # {str(attr[0])} (code: 6)",
+                )
                 (
-                    the_cat.pelt.rabbit_sprites["young adult"],
-                    the_cat.pelt.rabbit_sprites["senior adult"],
+                    the_cat.pelt.cat_sprites["young adult"],
+                    the_cat.pelt.cat_sprites["senior adult"],
                 ) = int(attr[15]), int(attr[15])
-                game.switches[
-                    "error_message"
-                ] = "7There was an error loading rabbit # " + str(attr[0])
+                switch_set_value(
+                    Switch.error_message,
+                    f"There was an error loading cat # {str(attr[0])} (code: 7)",
+                )
                 (
                     the_cat.pelt.reverse,
                     the_cat.pelt.white_patches,
-                    the_cat.pelt.pattern,
+                    the_cat.pelt.tortie_marking,
                 ) = (attr[18], attr[19], attr[20])
-                game.switches[
-                    "error_message"
-                ] = "8There was an error loading rabbit # " + str(attr[0])
+                switch_set_value(
+                    Switch.error_message,
+                    f"There was an error loading cat # {str(attr[0])} (code: 8)",
+                )
                 (
-                    the_cat.pelt.tortiebase,
-                    the_cat.pelt.tortiepattern,
-                    the_cat.pelt.tortiecolour,
+                    the_cat.pelt.tortie_base,
+                    the_cat.pelt.tortie_pattern,
+                    the_cat.pelt.tortie_colour,
                 ) = (attr[21], attr[22], attr[23])
-                game.switches[
-                    "error_message"
-                ] = "9There was an error loading rabbit # " + str(attr[0])
+                switch_set_value(
+                    Switch.error_message,
+                    f"There was an error loading cat # {str(attr[0])} (code: 9)",
+                )
                 the_cat.trait, the_cat.pelt.skin, the_cat.specialty = (
                     attr[5],
                     attr[24],
                     attr[27],
                 )
-                game.switches[
-                    "error_message"
-                ] = "10There was an error loading rabbit # " + str(attr[0])
+                switch_set_value(
+                    Switch.error_message,
+                    f"There was an error loading cat # {str(attr[0])} (code: 10)",
+                )
                 the_cat.skill = attr[25]
                 if len(attr) > 28:
                     the_cat.pelt.accessory = [attr[28]]
@@ -418,9 +497,10 @@ def csv_load(all_cats):
                     the_cat.specialty2 = attr[29]
                 else:
                     the_cat.specialty2 = None
-                game.switches[
-                    "error_message"
-                ] = "11There was an error loading rabbit # " + str(attr[0])
+                switch_set_value(
+                    Switch.error_message,
+                    f"There was an error loading cat # {str(attr[0])} (code: 11)",
+                )
                 if len(attr) > 34:
                     the_cat.experience = int(attr[34])
                     experiencelevels = [
@@ -439,9 +519,10 @@ def csv_load(all_cats):
                     ]
                 else:
                     the_cat.experience = 0
-                game.switches[
-                    "error_message"
-                ] = "12There was an error loading rabbit # " + str(attr[0])
+                switch_set_value(
+                    Switch.error_message,
+                    f"There was an error loading cat # {str(attr[0])} (code: 12)",
+                )
                 if len(attr) > 30:
                     # Attributes that are to be added after the update
                     the_cat.moons = int(attr[30])
@@ -449,91 +530,98 @@ def csv_load(all_cats):
                         # assigning mate to rabbit, if any
                         the_cat.mate = [attr[31]]
                     if len(attr) >= 32:
-                        # Is the rabbit dead
-                        the_cat.dead = attr[32]
-                        the_cat.pelt.rabbit_sprites["dead"] = attr[33]
-                game.switches[
-                    "error_message"
-                ] = "13There was an error loading rabbit # " + str(attr[0])
+                        # Is the cat dead
+                        the_cat.status.send_to_afterlife(target=CatGroup.STARCLAN)
+                        the_cat.pelt.cat_sprites["dead"] = attr[33]
+                switch_set_value(
+                    Switch.error_message,
+                    f"There was an error loading cat # {str(attr[0])} (code: 13)",
+                )
                 if len(attr) > 35:
                     the_cat.dead_for = int(attr[35])
-                game.switches[
-                    "error_message"
-                ] = "14There was an error loading rabbit # " + str(attr[0])
+                switch_set_value(
+                    Switch.error_message,
+                    f"There was an error loading cat # {str(attr[0])} (code: 14)",
+                )
                 if len(attr) > 36 and attr[36] is not None:
-                    the_cat.rusasi = attr[36].split(";")
-                game.switches[
-                    "error_message"
-                ] = "15There was an error loading rabbit # " + str(attr[0])
+                    the_cat.apprentice = attr[36].split(";")
+                switch_set_value(
+                    Switch.error_message,
+                    f"There was an error loading cat # {str(attr[0])} (code: 15)",
+                )
                 if len(attr) > 37:
                     the_cat.pelt.paralyzed = bool(attr[37])
                 if len(attr) > 38:
                     the_cat.no_kits = bool(attr[38])
                 if len(attr) > 39:
-                    the_cat.exiled = bool(attr[39])
+                    if bool(attr[39]):
+                        the_cat.status.exile_from_group()
                 if len(attr) > 40:
                     the_cat.genderalign = attr[40]
                 if len(attr) > 41 and attr[41] is not None:  # KEEP THIS AT THE END
                     the_cat.former_apprentices = attr[41].split(";")
-        game.switches[
-            "error_message"
-        ] = "There was an error loading this warren's mentors, rusasirahs, relationships, or sprite info."
+        switch_set_value(
+            Switch.error_message,
+            "There was an error loading this clan's mentors, apprentices, relationships, or sprite info.",
+        )
         for inter_cat in all_cats.values():
-            # Load the mentors and rusasirahs after all rabbits have been loaded
-            game.switches["error_message"] = (
-                "There was an error loading this warren's mentors/rusasirahs. Last rabbit read was "
-                + str(inter_cat)
+            # Load the mentors and apprentices after all cats have been loaded
+            switch_set_value(
+                Switch.error_message,
+                f"There was an error loading this clan's mentors/apprentices. Last cat read was {inter_cat}",
             )
             inter_cat.mentor = Rabbit.all_cats.get(inter_cat.mentor)
             apps = []
             former_apps = []
-            for app_id in inter_cat.rusasi:
+            for app_id in inter_cat.apprentice:
                 app = Rabbit.all_cats.get(app_id)
-                # Make sure if rabbit isn't an rusasi, they're a former rusasi
-                if "rusasi" in app.status:
+                # Make sure if cat isn't an apprentice, they're a former apprentice
+                if app.status.rank == CatRank.APPRENTICE:
                     apps.append(app)
                 else:
                     former_apps.append(app)
             for f_app_id in inter_cat.former_apprentices:
                 f_app = Rabbit.all_cats.get(f_app_id)
                 former_apps.append(f_app)
-            inter_cat.rusasi = [
+            inter_cat.rusasirah = [
                 a.ID for a in apps
             ]  # Switch back to IDs. I don't want to risk breaking everything.
             inter_cat.former_apprentices = [a.ID for a in former_apps]
             if not inter_cat.dead:
-                game.switches["error_message"] = (
-                    "There was an error loading this warren's relationships. Last rabbit read was "
-                    + str(inter_cat)
+                switch_set_value(
+                    Switch.error_message,
+                    f"There was an error loading this clan's relationships. Last cat read was {inter_cat}",
                 )
                 inter_cat.load_relationship_of_cat()
-            game.switches["error_message"] = (
-                "There was an error loading a rabbit's sprite info. Last rabbit read was "
-                + str(inter_cat)
+            switch_set_value(
+                Switch.error_message,
+                f"There was an error loading a cat's sprite info. Last cat read was {inter_cat}",
             )
             # update_sprite(inter_cat)
         # generate the relationship if some is missing
         if not the_cat.dead:
-            game.switches[
-                "error_message"
-            ] = "There was an error when relationships where created."
+            switch_set_value(
+                Switch.error_message,
+                f"There was an error when relationships were created.",
+            )
             for id in all_cats.keys():
                 the_cat = all_cats.get(id)
-                game.switches[
-                    "error_message"
-                ] = f"There was an error when relationships for rabbit #{the_cat} are created."
+                switch_set_value(
+                    Switch.error_message,
+                    f"There was an error when relationships for cat #{the_cat} are created.",
+                )
                 if the_cat.relationships is not None and len(the_cat.relationships) < 1:
                     the_cat.create_all_relationships()
-        game.switches["error_message"] = ""
+        switch_set_value(Switch.error_message, "")
 
 
 def save_check():
-    """Checks through loaded rabbits, checks and attempts to fix issues
+    """Checks through loaded cats, checks and attempts to fix issues
     NOT currently working."""
     return
 
-    for rabbit in Rabbit.all_cats:
-        cat_ob = Rabbit.all_cats[rabbit]
+    for cat in Rabbit.all_cats:
+        cat_ob = Rabbit.all_cats[cat]
 
         # Not-mutural mate relations
         # if cat_ob.mate:

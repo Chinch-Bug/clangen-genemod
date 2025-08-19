@@ -3,15 +3,15 @@
         "id": "mediator_gen",
         "thoughts": [
             "Is feeling a sense of pride after mediating a difficult argument",
-            "Wishes {PRONOUN/m_c/poss} Clanmates would just talk to each other",
+            "Wishes {PRONOUN/m_c/poss} Warrenmates would just talk to each other",
             "Is upset over a recent negotiation with a rival Warren",
             "Negotiates an herb trade with another Warren",
             "Is negotiating with a kittypet to make use of the herbs in their Twoleg garden",
-            "Is dismayed at how quickly {PRONOUN/m_c/poss} Clanmates get into arguments",
+            "Is dismayed at how quickly {PRONOUN/m_c/poss} Warrenmates get into arguments",
             "Feels exhausted after mediating so many arguments",
             "Feels pride for {PRONOUN/m_c/poss} work",
             "Is mediating a couple's relationship",
-            "Is mediating a long time friendship between two Clanmates",
+            "Is mediating a long time friendship between two Warrenmates",
             "Is feeling frustrated after a failed negotiation",
             "Is feeling exhausted from resolving petty arguments",
             "Wants to solve a dispute with another Warren",
@@ -20,14 +20,14 @@
             "Is proud of how well {PRONOUN/m_c/subject} {VERB/m_c/are/is} doing as a owsla",
             "Accidentally made an argument worse",
             "Is proud of getting through a difficult mediation session",
-            "Feels exhausted from {PRONOUN/m_c/poss} Clanmates' bickering",
+            "Feels exhausted from {PRONOUN/m_c/poss} Warrenmates' bickering",
             "Is listening to both sides of an argument",
             "Is feeling a bit underappreciated for {PRONOUN/m_c/poss} mediation",
             "Is wondering if {PRONOUN/m_c/subject} made the right decision in becoming a owsla",
             "Is relieved {PRONOUN/m_c/subject} broke up an argument before it started",
             "Is hoping the Warren can stay peaceful",
             "Is contemplating teaching the Warren communication skills",
-            "Is mediating a small disagreement between two Clanmates",
+            "Is mediating a small disagreement between two Warrenmates",
             "Wonders if c_n considers {PRONOUN/m_c/object} to be a good owsla"
         ]
     },
@@ -40,7 +40,7 @@
         ],
         "random_status_constraint": [
             "owsla",
-            "owsla rusasi"
+            "owsla rusasirah"
         ],
         "random_living_status": [
             "living"
@@ -92,7 +92,7 @@
     {
         "id": "cold_mediator",
         "thoughts": [
-            "Is judging two Clanmates for their foolish argument",
+            "Is judging two Warrenmates for their foolish argument",
             "Wishes to break up a sickeningly lovey-dovey couple",
             "Is sitting back and watching an argument take place"
         ],
@@ -113,8 +113,8 @@
     {
         "id": "fierce_mediator",
         "thoughts": [
-            "Is greatly annoyed by a Clanmate's inability to accept they were in the wrong",
-            "Is fighting the urge to shake some sense into a Clanmate"
+            "Is greatly annoyed by a Warrenmate's inability to accept they were in the wrong",
+            "Is fighting the urge to shake some sense into a Warrenmate"
         ],
         "main_trait_constraint": [
             "fierce"
@@ -153,7 +153,7 @@
     {
         "id": "righteous_mediator",
         "thoughts": [
-            "Is greatly annoyed by a Clanmate's inability to accept they were in the wrong"
+            "Is greatly annoyed by a Warrenmate's inability to accept they were in the wrong"
         ],
         "main_trait_constraint": [
             "righteous"
@@ -192,5 +192,13 @@
         "random_living_status": [
             "inle"
         ]
+    },
+    {
+        "id": "mediator_to_newborn",
+        "thoughts": [
+            "Readies {PRONOUN/m_c/self} for the emotions a new birth might provoke"
+        ],
+        "main_status_constraint": [ "owsla"],
+        "random_status_constraint": [ "newborn"]
     }
 ]

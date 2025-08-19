@@ -8,7 +8,7 @@
         "healer den": [105, 200],
         "nursery": [620, 200],
         "clearing": [317, 285],
-        "rusasi den": [70, 410],
+        "rusasirah den": [70, 410],
         "rabbit den": [615, 440],
         "elder den": [348, 490],
         "chief rabbit place": [
@@ -45,7 +45,7 @@
             [[400, 420], "xy"],
             [[475, 410], "xy"]
         ],
-        "rusasi place": [
+        "rusasirah place": [
             [[70, 460], "xy"],
             [[125, 470], "xy"],
             [[165, 460], "xy"],
@@ -76,7 +76,7 @@
         "healer den": [80, 200],
         "nursery": [620, 200],
         "clearing": [360, 294],
-        "rusasi den": [82, 430],
+        "rusasirah den": [82, 430],
         "rabbit den": [590, 430],
         "elder den": [348, 490],
         "chief rabbit place": [
@@ -118,7 +118,7 @@
             [[356, 390], "xy"],
             [[409, 391], "xy"]
         ],
-        "rusasi place": [
+        "rusasirah place": [
             [[223, 413], "xy"],
             [[189, 462], "xy"],
             [[129, 457], "xy"],
@@ -153,7 +153,7 @@
         "healer den": [80, 200],
         "nursery": [620, 200],
         "clearing": [360, 294],
-        "rusasi den": [82, 430],
+        "rusasirah den": [82, 430],
         "rabbit den": [590, 430],
         "elder den": [348, 490],
         "chief rabbit place": [
@@ -198,7 +198,7 @@
             [[400, 420], "xy"],
             [[450, 450], "xy"]
         ],
-        "rusasi place": [
+        "rusasirah place": [
             [[200, 420], "xy"],
             [[70, 470], "xy"],
             [[120, 470], "xy"],
@@ -231,7 +231,7 @@
         "healer den": [32, 250],
         "nursery": [570, 475],
         "clearing": [350, 394],
-        "rusasi den": [75, 480],
+        "rusasirah den": [75, 480],
         "rabbit den": [640, 225],
         "elder den": [300, 575],
         "chief rabbit place": [
@@ -269,7 +269,7 @@
             [[450, 435], "xy"],
             [[525, 360], "xy"]
         ],
-        "rusasi place": [
+        "rusasirah place": [
             [[200, 550], "xy"],
             [[200, 575], "xy"],
             [[100, 575], "xy"],
@@ -295,7 +295,7 @@
         "healer den": [61, 169],
         "nursery": [635, 184],
         "clearing": [360, 294],
-        "rusasi den": [82, 401],
+        "rusasirah den": [82, 401],
         "rabbit den": [590, 430],
         "elder den": [348, 490],
         "chief rabbit place": [
@@ -346,7 +346,7 @@
             [[308, 428], "xy"],
             [[362, 428], "xy"]
         ],
-        "rusasi place": [
+        "rusasirah place": [
             [[28, 425], "xy"],
             [[83, 443], "xy"],
             [[136, 443], "xy"],
@@ -385,7 +385,7 @@
         "healer den": [34, 186],
         "nursery": [589, 163],
         "clearing": [360, 294],
-        "rusasi den": [82, 430],
+        "rusasirah den": [82, 430],
         "rabbit den": [590, 430],
         "elder den": [348, 490],
         "chief rabbit place": [
@@ -434,7 +434,7 @@
             [[429, 425], "xy"],
             [[365, 428], "xy"]
         ],
-        "rusasi place": [
+        "rusasirah place": [
             [[68, 458], "xy"],
             [[119, 460], "xy"],
             [[170, 464], "xy"],
@@ -473,7 +473,7 @@
         "healer den": [35, 150],
         "nursery": [689, 175],
         "clearing": [399, 250],
-        "rusasi den": [38, 412],
+        "rusasirah den": [38, 412],
         "rabbit den": [613, 393],
         "elder den": [336, 444],
         "chief rabbit place": [
@@ -510,7 +510,7 @@
             [[359, 373], "xy"],
             [[462, 403], ""]
         ],
-        "rusasi place": [
+        "rusasirah place": [
             [[57, 421], "xy"],
             [[117, 437], "xy"],
             [[172, 434], "xy"],
@@ -544,7 +544,7 @@
         "healer den": [90, 140],
         "nursery": [622, 107],
         "clearing": [347, 312],
-        "rusasi den": [73, 442],
+        "rusasirah den": [73, 442],
         "rabbit den": [650, 425],
         "elder den": [316, 491],
         "chief rabbit place": [
@@ -583,7 +583,7 @@
             [[381, 407], "xy"],
             [[441, 418], "xy"]
         ],
-        "rusasi place": [
+        "rusasirah place": [
             [[289, 401], "xy"],
             [[68, 485], "xy"],
             [[112, 490], "xy"],
@@ -617,7 +617,7 @@
         "healer den": [61, 169],
         "nursery": [617, 167],
         "clearing": [360, 294],
-        "rusasi den": [82, 401],
+        "rusasirah den": [82, 401],
         "rabbit den": [590, 430],
         "elder den": [348, 473],
         "chief rabbit place": [
@@ -657,7 +657,7 @@
             [[443, 309], "x"],
             [[504, 340], ""]
         ],
-        "rusasi place": [
+        "rusasirah place": [
             [[125, 372], ""],
             [[64, 476], "xy"],
             [[125, 455], "xy"],
@@ -687,7 +687,7 @@
         "healer den": [61, 169],
         "nursery": [617, 167],
         "clearing": [350, 310],
-        "rusasi den": [82, 440],
+        "rusasirah den": [82, 440],
         "rabbit den": [590, 430],
         "elder den": [340, 525],
         "chief rabbit place": [
@@ -726,7 +726,7 @@
             [[443, 309], "x"],
             [[504, 340], ""]
         ],
-        "rusasi place": [
+        "rusasirah place": [
             [[125, 372], ""],
             [[64, 476], "xy"],
             [[125, 455], "xy"],
@@ -756,7 +756,7 @@
         "healer den": [80, 200],
         "nursery": [620, 200],
         "clearing": [360, 294],
-        "rusasi den": [82, 430],
+        "rusasirah den": [82, 430],
         "rabbit den": [590, 430],
         "elder den": [348, 490],
         "chief rabbit place": [
@@ -789,7 +789,7 @@
             [[408, 377], "xy"],
             [[357, 421], "xy"]
         ],
-        "rusasi place": [
+        "rusasirah place": [
             [[25, 298], "xy"],
             [[59, 438], "xy"],
             [[113, 443], "xy"],
@@ -821,7 +821,7 @@
         "healer den": [100, 201],
         "nursery": [500, 183],
         "clearing": [313, 275],
-        "rusasi den": [51, 393],
+        "rusasirah den": [51, 393],
         "rabbit den": [626, 345],
         "elder den": [308, 421],
         "chief rabbit place": [
@@ -853,7 +853,7 @@
             [[479, 409], "xy"],
             [[696, 186], "xy"]
         ],
-        "rusasi place": [
+        "rusasirah place": [
             [[21, 352], ""],
             [[22, 413], "xy"],
             [[68, 448], "xy"]
@@ -882,7 +882,7 @@
         "healer den": [11, 174],
         "nursery": [620, 200],
         "clearing": [371, 264],
-        "rusasi den": [106, 410],
+        "rusasirah den": [106, 410],
         "rabbit den": [590, 430],
         "elder den": [429, 490],
         "chief rabbit place": [
@@ -931,7 +931,7 @@
             [[418, 347], "xy"],
             [[440, 397], "xy"]
         ],
-        "rusasi place": [
+        "rusasirah place": [
             [[64, 461], "xy"],
             [[115, 463], "xy"],
             [[167, 463], "xy"],
@@ -969,7 +969,7 @@
         "healer den": [95, 155],
         "nursery": [620, 200],
         "clearing": [365, 255],
-        "rusasi den": [100, 392],
+        "rusasirah den": [100, 392],
         "rabbit den": [590, 415],
         "elder den": [429, 490],
         "chief rabbit place": [
@@ -1005,7 +1005,7 @@
             [[457, 400], "xy"],
             [[375, 435], "xy"]
         ],
-        "rusasi place": [
+        "rusasirah place": [
             [[20, 430], "xy"],
             [[102, 430], "xy"],
             [[142, 460], "xy"],

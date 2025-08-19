@@ -9,7 +9,7 @@
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
@@ -30,7 +30,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -46,7 +46,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -61,7 +61,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -85,7 +85,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -106,7 +106,7 @@
                         "cats_to": ["s_c"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -126,7 +126,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 10
                     }
                 ]
@@ -151,7 +151,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -192,7 +192,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -5
                     }
                 ]
@@ -207,7 +207,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -5
                     }
                 ]
@@ -227,7 +227,7 @@
                         "cats_to": ["s_c"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic"],
+                        "values": ["like"],
                         "amount": -5
                     }
                 ]
@@ -314,7 +314,7 @@
                 "herbs": ["random_herbs"]
             },
             {
-                "text": "The sunlight feels great, however r_c presses on, wanting to be able to take care of {PRONOUN/r_c/poss} Clanmates.",
+                "text": "The sunlight feels great, however r_c presses on, wanting to be able to take care of {PRONOUN/r_c/poss} Warrenmates.",
                 "exp": 20,
                 "weight": 20,
                 "art": "gen_med_gatheringcatmint_greenleaf1",
@@ -355,7 +355,7 @@
                 ]
             },
             {
-                "text": "s_c lies in the patch of sun, huffing. {PRONOUN/s_c/subject/CAP} deserves a nice break, away from all {PRONOUN/s_c/poss} Clanmates. {PRONOUN/s_c/subject/CAP} could always just say {PRONOUN/s_c/subject} failed to find any herbs after all.",
+                "text": "s_c lies in the patch of sun, huffing. {PRONOUN/s_c/subject/CAP} deserves a nice break, away from all {PRONOUN/s_c/poss} Warrenmates. {PRONOUN/s_c/subject/CAP} could always just say {PRONOUN/s_c/subject} failed to find any herbs after all.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait":[
@@ -407,15 +407,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["platonic", "trust"],
+                        "values": ["like", "trust"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": true,
-                        "values": ["jealous"],
-                        "amount": -5
                     }
                 ]
             },
@@ -431,18 +424,11 @@
                         "mutual": true,
                         "values": ["respect", "trust"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": true,
-                        "values": ["jealous"],
-                        "amount": -5
                     }
                 ]
             },
             {
-                "text": "p_l takes r_c aside, giving {PRONOUN/r_c/object} the full benefits of p_l's experience as they discuss r_c's vision, which contained clair_list. As a healer, {PRONOUN/p_l/subject} {VERB/p_l/don't/doesn't} take the responsibility lightly, and both of them work together to divine the vision's meaning.",
+                "text": "p_l takes r_c aside, giving {PRONOUN/r_c/object} the full benefits of p_l's experience as they discuss r_c's vision, which contained clair_list/r_c. As a healer, {PRONOUN/p_l/subject} {VERB/p_l/don't/doesn't} take the responsibility lightly, and both of them work together to divine the vision's meaning.",
                 "exp": 20,
                 "weight": 20,
                 "herbs": ["random_herbs"],
@@ -453,18 +439,11 @@
                         "mutual": true,
                         "values": ["respect", "trust"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": true,
-                        "values": ["jealous"],
-                        "amount": -5
                     }
                 ]
             },
             {
-                "text": "p_l and r_c have an in-depth conversation about r_c's vision as they walk. p_l listens to r_c's dream of clair_list. p_l reassures r_c, but inwardly was left worried over what it could mean.",
+                "text": "p_l and r_c have an in-depth conversation about r_c's vision as they walk. p_l listens to r_c's dream of clair_list/r_c. p_l reassures r_c, but inwardly was left worried over what it could mean.",
                 "exp": 20,
                 "weight": 20,
                 "herbs": ["random_herbs"],
@@ -475,13 +454,6 @@
                         "mutual": true,
                         "values": ["respect", "trust"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": true,
-                        "values": ["jealous"],
-                        "amount": -5
                     }
                 ]
             },
@@ -504,8 +476,8 @@
                         "cats_to": ["r_c"],
                         "cats_from": ["patrol"],
                         "mutual": true,
-                        "values": ["jealous"],
-                        "amount": -5
+                        "values": ["respect"],
+                        "amount": 5
                     }
                 ]
             },
@@ -565,13 +537,6 @@
                         "mutual": true,
                         "values": ["respect", "trust"],
                         "amount": -5
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["patrol"],
-                        "mutual": true,
-                        "values": ["jealous"],
-                        "amount": 5
                     }
                 ]
             },
@@ -619,14 +584,14 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["respect", "trust", "platonic"],
+                        "values": ["respect", "trust", "like"],
                         "amount": -5
                     },
                     {
                         "cats_to": ["p_l", "r_c"],
                         "cats_from": ["patrol"],
                         "mutual": true,
-                        "values": ["comfort", "platonic"],
+                        "values": ["comfort", "like"],
                         "amount": -5
                     }
                 ]
@@ -648,8 +613,8 @@
                         "cats_to": ["r_c"],
                         "cats_from": ["s_c"],
                         "mutual": false,
-                        "values": ["jealous"],
-                        "amount": 15
+                        "values": ["respect"],
+                        "amount": -15
                     }
                 ]
             },
@@ -674,15 +639,8 @@
                         "cats_to": ["s_c"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["respect", "trust", "comfort", "platonic"],
+                        "values": ["respect", "trust", "comfort", "like"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["s_c"],
-                        "cats_from": ["r_c"],
-                        "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             },
@@ -833,10 +791,10 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "healer rusasi": [1, 1],
+            "healer rusasirah": [1, 1],
             "healer": [1, 1],
             "rabbit": [-1, -1],
-            "rusasi":[-1, -1]
+            "rusasirah":[-1, -1]
         },
         "weight": 20,
         "intro_text": "app1 looks to p_l, wondering if {PRONOUN/app1/subject} should speak to p_l about the dream {PRONOUN/app1/subject} had last night.",
@@ -868,8 +826,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["jealous"],
-                        "amount": -5
+                        "values": ["respect"],
+                        "amount": 5
                     }
                 ]
             },
@@ -886,18 +844,11 @@
                         "mutual": true,
                         "values": ["respect", "trust"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["app1"],
-                        "mutual": true,
-                        "values": ["jealous"],
-                        "amount": -5
                     }
                 ]
             },
             {
-                "text": "s_c listens intently as app1 describes the dream, involving glimpses of clair_list/app1, and tells app1 that {PRONOUN/s_c/subject} {VERB/s_c/have/has} seen the dream, too. s_c soothes the rusasi, explaining that this dream was nothing but a mild warning.",
+                "text": "s_c listens intently as app1 describes the dream, involving glimpses of clair_list/app1, and tells app1 that {PRONOUN/s_c/subject} {VERB/s_c/have/has} seen the dream, too. s_c soothes the rusasirah, explaining that this dream was nothing but a mild warning.",
                 "exp": 20,
                 "weight": 20,
                 "art":"gen_train_talkingMA",
@@ -977,7 +928,7 @@
                 ]
             },
             {
-                "text": "At first app1 doesn't speak up. But p_l notices the rusasi is distracted, and gently asks what's wrong. app1 admits to the vision, and the two have a discussion of the clair_list app1 experienced in the dream, leaving app1 feeling relieved.",
+                "text": "At first app1 doesn't speak up. But p_l notices the rusasirah is distracted, and gently asks what's wrong. app1 admits to the vision, and the two have a discussion of the clair_list app1 experienced in the dream, leaving app1 feeling relieved.",
                 "exp": 20,
                 "weight": 20,
                 "herbs": ["random_herbs"],
@@ -988,13 +939,6 @@
                         "mutual": true,
                         "values": ["respect", "trust"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["app1"],
-                        "mutual": true,
-                        "values": ["jealous"],
-                        "amount": -5
                     }
                 ]
             }
@@ -1030,13 +974,6 @@
                         "mutual": true,
                         "values": ["respect", "comfort"],
                         "amount": -5
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["app1"],
-                        "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 5
                     }
                 ]
             },
@@ -1055,7 +992,7 @@
                 ]
             },
             {
-                "text": "p_l's eyes go wide, fur puffing up, and tells the rusasi that {PRONOUN/app1/poss} dream is a warning of death and destruction, thoroughly freaking app1 out.",
+                "text": "p_l's eyes go wide, fur puffing up, and tells the rusasirah that {PRONOUN/app1/poss} dream is a warning of death and destruction, thoroughly freaking app1 out.",
                 "exp": 0,
                 "weight": 20,
                 "art": "gen_train_argueMA",
@@ -1081,7 +1018,7 @@
                 ]
             },
             {
-                "text": "s_c stares at the rusasi with undisguised envy, desperately wishing {PRONOUN/s_c/subject} {VERB/s_c/were/was} the one to receive the vision. Glancing at the older rabbit nervously, app1 mumbles that it wasn't important.",
+                "text": "s_c stares at the rusasirah with undisguised envy, desperately wishing {PRONOUN/s_c/subject} {VERB/s_c/were/was} the one to receive the vision. Glancing at the older rabbit nervously, app1 mumbles that it wasn't important.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": [
@@ -1094,20 +1031,20 @@
                         "cats_to": ["s_c"],
                         "cats_from": ["app1"],
                         "mutual": true,
-                        "values": ["respect", "trust", "comfort", "platonic"],
+                        "values": ["respect", "trust", "comfort", "like"],
                         "amount": -5
                     },
                     {
                         "cats_to": ["app1"],
                         "cats_from": ["s_c"],
                         "mutual": true,
-                        "values": ["jealous"],
-                        "amount": 5
+                        "values": ["respect"],
+                        "amount": -5
                     }
                 ]
             },
             {
-                "text": "s_c stares at the rusasi with a cold look, telling {PRONOUN/app1/object} to figure out {PRONOUN/app1/poss} dreams {PRONOUN/app1/self}, and that it's doubtful someone like app1 would have a vision.",
+                "text": "s_c stares at the rusasirah with a cold look, telling {PRONOUN/app1/object} to figure out {PRONOUN/app1/poss} dreams {PRONOUN/app1/self}, and that it's doubtful someone like app1 would have a vision.",
                 "exp": 0,
                 "weight": 10,
                 "can_have_stat":["p_l"],
@@ -1127,20 +1064,13 @@
                         "cats_to": ["s_c"],
                         "cats_from": ["app1"],
                         "mutual": false,
-                        "values": ["respect", "trust", "comfort", "platonic"],
+                        "values": ["respect", "trust", "comfort", "like"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["s_c"],
-                        "cats_from": ["app1"],
-                        "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 5
                     }
                 ]
             },
             {
-                "text": "At first app1 doesn't speak up, however p_l notices the rusasi is distracted, and gently asks what's wrong. Instead of opening up though, app1 shuts down, refusing to talk about what was bothering {PRONOUN/app1/object} and just says that they should focus on gathering herbs.",
+                "text": "At first app1 doesn't speak up, however p_l notices the rusasirah is distracted, and gently asks what's wrong. Instead of opening up though, app1 shuts down, refusing to talk about what was bothering {PRONOUN/app1/object} and just says that they should focus on gathering herbs.",
                 "exp": 0,
                 "weight": 20,
                 "herbs": ["random_herbs"],
@@ -1244,7 +1174,7 @@
         ],
         "antag_fail_outcomes": [
             {
-                "text": "r_c feels hounded, never given a moment's peace.  {PRONOUN/r_c/subject/CAP} {VERB/r_c/hiss/hisses} at the Inle rabbit. But when {PRONOUN/r_c/subject} {VERB/r_c/turn/turns} around, there's only a rather upset looking Clanmate, there to fetch {PRONOUN/r_c/object} to burrow to help with an emergency.",
+                "text": "r_c feels hounded, never given a moment's peace.  {PRONOUN/r_c/subject/CAP} {VERB/r_c/hiss/hisses} at the Inle rabbit. But when {PRONOUN/r_c/subject} {VERB/r_c/turn/turns} around, there's only a rather upset looking Warrenmate, there to fetch {PRONOUN/r_c/object} to burrow to help with an emergency.",
                 "exp": 0,
                 "weight": 20,
                 "art": "gen_angry_cat_med"
@@ -1371,7 +1301,7 @@
         ],
         "antag_fail_outcomes": [
             {
-                "text": "p_l feels hounded, never given a moment's peace. {PRONOUN/p_l/subject/CAP} {VERB/p_l/hiss/hisses} at the Inle rabbit. But when {PRONOUN/p_l/subject} {VERB/p_l/turn/turns} around, there's only a rather upset looking Clanmate, there to fetch {PRONOUN/p_l/object} to burrow to help with an emergency.",
+                "text": "p_l feels hounded, never given a moment's peace. {PRONOUN/p_l/subject/CAP} {VERB/p_l/hiss/hisses} at the Inle rabbit. But when {PRONOUN/p_l/subject} {VERB/p_l/turn/turns} around, there's only a rather upset looking Warrenmate, there to fetch {PRONOUN/p_l/object} to burrow to help with an emergency.",
                 "exp": 0,
                 "art": "gen_angry_cat_med",
                 "weight": 20
@@ -1423,7 +1353,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "healer rusasi": [1, 6]
+            "healer rusasirah": [1, 6]
         },
         "weight": 5,
         "intro_text": "As app1 pads through c_n territory, {PRONOUN/app1/subject} {VERB/app1/feel/feels} a presence join {PRONOUN/app1/object}.",
@@ -1458,7 +1388,7 @@
         ],
         "antag_fail_outcomes": [
             {
-                "text": "app1 feels hounded, never given a moment's peace, and {PRONOUN/app1/subject} {VERB/app1/hiss/hisses} at the Inle rabbit. But when {PRONOUN/app1/subject} {VERB/app1/turn/turns} around, there's only a rather upset looking Clanmate, there to fetch {PRONOUN/app1/object} to burrow to help with an emergency.",
+                "text": "app1 feels hounded, never given a moment's peace, and {PRONOUN/app1/subject} {VERB/app1/hiss/hisses} at the Inle rabbit. But when {PRONOUN/app1/subject} {VERB/app1/turn/turns} around, there's only a rather upset looking Warrenmate, there to fetch {PRONOUN/app1/object} to burrow to help with an emergency.",
                 "exp": 0,
                 "art": "gen_angry_cat_app",
                 "weight": 20
@@ -1489,9 +1419,9 @@
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -1583,7 +1513,7 @@
         ],
         "antag_fail_outcomes": [
             {
-                "text": "app1 feels hounded, never given a moment's peace, and {PRONOUN/app1/subject} {VERB/app1/hiss/hisses} at the Inle rabbit. But when {PRONOUN/app1/subject} {VERB/app1/turn/turns} around, there's only a rather upset looking Clanmate, there to fetch {PRONOUN/app1/object} to burrow to help with an emergency.",
+                "text": "app1 feels hounded, never given a moment's peace, and {PRONOUN/app1/subject} {VERB/app1/hiss/hisses} at the Inle rabbit. But when {PRONOUN/app1/subject} {VERB/app1/turn/turns} around, there's only a rather upset looking Warrenmate, there to fetch {PRONOUN/app1/object} to burrow to help with an emergency.",
                 "exp": 0,
                 "art": "gen_angry_cat_app",
                 "weight": 20
@@ -1768,14 +1698,14 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
         "weight": 5,
         "intro_text": "The gaggle of healer rabbits strolls through c_n's territory, chatting amicably amongst themselves. It's a rare opportunity for all of them to be out like this together, and each rabbit plans to make the most of it.",
-        "decline_text": "Before they get very far, one of their Clanmates catches up to inform them of a small emergency back at burrow that needs their attention. Oh well, maybe they'll get the chance again another day.",
+        "decline_text": "Before they get very far, one of their Warrenmates catches up to inform them of a small emergency back at burrow that needs their attention. Oh well, maybe they'll get the chance again another day.",
         "chance_of_success": 20,
         "success_outcomes": [
             {
@@ -1788,7 +1718,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -1803,7 +1733,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -1819,7 +1749,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -1849,15 +1779,15 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi": [-1, -1],
-            "healer rusasi": [1, 6],
+            "rusasirah": [-1, -1],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "all rusasirahs": [3, 6],
             "normal adult": [-1, -1]
         },
         "weight": 5,
         "intro_text": "The rusasirahs stroll through c_n's territory, chatting amicably amongst themselves. The senior healer rabbits are all busy back at burrow, so the young rabbits get the chance to be out on their own today, which has everyone excited!",
-        "decline_text": "Before they get very far, one of their Clanmates catches up to inform them that they're wanted back at burrow. Oh well, maybe they'll get the chance again another day.",
+        "decline_text": "Before they get very far, one of their Warrenmates catches up to inform them that they're wanted back at burrow. Oh well, maybe they'll get the chance again another day.",
         "chance_of_success": 30,
         "success_outcomes": [
             {
@@ -1871,7 +1801,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -1887,7 +1817,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -1927,7 +1857,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "healer rusasi": [1, 6],
+            "healer rusasirah": [1, 6],
             "healer rabbits": [1, 6],
             "normal adult": [1, 6]
         },
@@ -1946,13 +1876,13 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": 5
                     }
                 ]
             },
             {
-                "text": "r_c doesn't let on that p_l is being a little obnoxious, smiling instead and going about {PRONOUN/r_c/poss} work. {PRONOUN/r_c/subject/CAP} {VERB/r_c/remember/remembers} what it was like to be an rusasi, excited for every opportunity to prove {PRONOUN/r_c/self}. Even if p_l is a bit much right now, being mean to {PRONOUN/p_l/object} won't help things. There's no harm in letting {PRONOUN/p_l/object} feel important today.",
+                "text": "r_c doesn't let on that p_l is being a little obnoxious, smiling instead and going about {PRONOUN/r_c/poss} work. {PRONOUN/r_c/subject/CAP} {VERB/r_c/remember/remembers} what it was like to be an rusasirah, excited for every opportunity to prove {PRONOUN/r_c/self}. Even if p_l is a bit much right now, being mean to {PRONOUN/p_l/object} won't help things. There's no harm in letting {PRONOUN/p_l/object} feel important today.",
                 "exp": 20,
                 "weight": 5,
                 "herbs": ["random_herbs"],
@@ -1961,7 +1891,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": 5
                     }
                 ]
@@ -1978,7 +1908,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": -5
                     }
                 ]
@@ -1995,15 +1925,15 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 1],
-            "healer rusasi": [1, 1],
+            "rusasirah": [1, 1],
+            "healer rusasirah": [1, 1],
             "all rusasirahs": [2, 2]
         },
         "weight": 20,
         "intro_text": "app2 trots over to p_l, the two rusasirahs grinning at each other with raised tails. p_l needs an escort to gather herbs, and as luck would have it, the only rabbit free at the moment is {PRONOUN/p_l/poss} sibling, app2!",
         "decline_text": "... Or so they thought. app2 is called away by {PRONOUN/app2/poss} mentor for training, and {PRONOUN/app2/subject} {VERB/app2/scamper/scampers} off with an apologetic glance back, leaving p_l by {PRONOUN/p_l/self} with {PRONOUN/p_l/poss} tail sagging to the ground.",
         "chance_of_success": 40,
-        "relationship_constraint": ["siblings", "platonic_20"],
+        "relationship_constraint": ["siblings", "likes"],
         "success_outcomes": [
             {
                 "text": "p_l and app2 walk with their tails entwined and pelts brushing together, thrilled to be able to patrol together. p_l doesn't regret becoming a healer, but {PRONOUN/p_l/subject} {VERB/p_l/do/does} feel secluded at times, watching app2 train and patrol with everyone. The siblings make the most of their time together, returning home side-by-side with their jaws full of herbs.",
@@ -2016,7 +1946,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2032,7 +1962,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2049,7 +1979,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2066,7 +1996,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -5
                     }
                 ]
@@ -2082,7 +2012,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -5
                     }
                 ]
@@ -2107,7 +2037,7 @@
         "intro_text": "r_c trots over to p_l, the two rabbits grinning at each other with raised tails. p_l wants an escort to gather herbs, and as luck would have it, the only rabbit free at the moment is {PRONOUN/p_l/poss} sibling, r_c!",
         "decline_text": "... Or so they thought. r_c is called away by the captain, and {PRONOUN/r_c/subject} {VERB/r_c/rush/rushes} off with an apologetic glance back, leaving p_l by {PRONOUN/p_l/self} with {PRONOUN/p_l/poss} tail sagging to the ground.",
         "chance_of_success": 50,
-        "relationship_constraint": ["siblings", "platonic_20"],
+        "relationship_constraint": ["siblings", "likes"],
         "success_outcomes": [
             {
                 "text": "p_l and r_c walk with their tails entwined and pelts brushing together, thrilled to be able to patrol together. p_l doesn't regret becoming a healer, but {PRONOUN/p_l/subject} {VERB/p_l/do/does} feel secluded at times, watching r_c train and patrol with everyone. The siblings make the most of their time together, returning home side-by-side with their jaws full of herbs.",
@@ -2119,7 +2049,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2134,7 +2064,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2150,7 +2080,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2166,7 +2096,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2182,7 +2112,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -5
                     }
                 ]
@@ -2197,7 +2127,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -5
                     }
                 ]
@@ -2214,14 +2144,14 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 1],
+            "rusasirah": [1, 1],
             "healer": [1, 1],
             "healer rabbits": [1,1],
             "all rusasirahs": [1, 1]
         },
         "weight": 5,
         "intro_text": "p_l leads app1 through c_n's territory, enjoying the nice day. {PRONOUN/p_l/subject/CAP} {VERB/p_l/glance/glances} back and {VERB/p_l/realize/realizes} app1 looks like {PRONOUN/app1/subject} {VERB/app1/want/wants} to ask {PRONOUN/p_l/object} a question.",
-        "decline_text": "Just as app1 opens {PRONOUN/app1/poss} mouth to speak, p_l spots a Clanmate trying to remove a thorn from their paw over app1's shoulder and hurries away to help.",
+        "decline_text": "Just as app1 opens {PRONOUN/app1/poss} mouth to speak, p_l spots a Warrenmate trying to remove a thorn from their paw over app1's shoulder and hurries away to help.",
         "chance_of_success": 50,
         "success_outcomes": [
             {
@@ -2234,7 +2164,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2249,7 +2179,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2264,13 +2194,13 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
             },
             {
-                "text": "p_l sits down and motions for app1 to join {PRONOUN/p_l/object}, looking at {PRONOUN/app1/object} inquisitively. app1 studiously looks at {PRONOUN/app1/poss} paws, tail curled around {PRONOUN/app1/poss} leg in shame, and mutters that {PRONOUN/app1/subject} {VERB/app1/do/does}n't want to talk about it. p_l gently reassures {PRONOUN/app1/object} that it's okay to ask questions, and though app1 doesn't ask, {PRONOUN/app1/subject} {VERB/app1/seem/seems} more chipper... and {PRONOUN/app1/subject}{VERB/app1/'re/'s} a big help anyways.",
+                "text": "p_l sits down and motions for app1 to join {PRONOUN/p_l/object}, looking at {PRONOUN/app1/object} inquisitively. app1 studiously looks at {PRONOUN/app1/poss} paws, tail curled around {PRONOUN/app1/poss} leg in shame, and mutters that {PRONOUN/app1/subject} {VERB/app1/don't/doesn't} want to talk about it. p_l gently reassures {PRONOUN/app1/object} that it's okay to ask questions, and though app1 doesn't ask, {PRONOUN/app1/subject} {VERB/app1/seem/seems} more chipper... and {PRONOUN/app1/subject}{VERB/app1/'re/'s} a big help anyways.",
                 "exp": 20,
                 "weight": 5,
                 "herbs": ["random_herbs"],
@@ -2279,7 +2209,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2295,7 +2225,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2311,7 +2241,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2327,7 +2257,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2343,7 +2273,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2359,7 +2289,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2374,7 +2304,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2390,7 +2320,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2398,7 +2328,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "p_l sits down and motions for app1 to join {PRONOUN/p_l/object}, looking at {PRONOUN/app1/object} inquisitively. app1 studiously looks at {PRONOUN/app1/poss} paws, tail curled around {PRONOUN/app1/poss} leg in shame, and mutters that {PRONOUN/app1/subject} {VERB/app1/do/does}n't want to talk about it. The rusasi unfortunately isn't much help from then on, and the patrol returns home empty-pawed.",
+                "text": "p_l sits down and motions for app1 to join {PRONOUN/p_l/object}, looking at {PRONOUN/app1/object} inquisitively. app1 studiously looks at {PRONOUN/app1/poss} paws, tail curled around {PRONOUN/app1/poss} leg in shame, and mutters that {PRONOUN/app1/subject} {VERB/app1/don't/doesn't} want to talk about it. The rusasirah unfortunately isn't much help from then on, and the patrol returns home empty-pawed.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -2406,7 +2336,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -5
                     }
                 ]
@@ -2421,7 +2351,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -5
                     }
                 ]
@@ -2457,7 +2387,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2472,7 +2402,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2488,7 +2418,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2503,7 +2433,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2518,7 +2448,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2534,7 +2464,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2549,7 +2479,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2564,13 +2494,13 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
             },
             {
-                "text": "r_c makes a humming sound and asks p_l if {PRONOUN/p_l/subject}{VERB/p_l/'ve/'s} considered taking on another rusasi. p_l swishes {PRONOUN/p_l/poss} tail, and says {PRONOUN/p_l/subject}{VERB/p_l/'ve/'s} just been waiting for the right rabbit to show interest, but wonders if r_c has any preferences. It certainly makes for good conversation, and it's all too soon that they have their mouths too full of herbs to continue.",
+                "text": "r_c makes a humming sound and asks p_l if {PRONOUN/p_l/subject}{VERB/p_l/'ve/'s} considered taking on another rusasirah. p_l swishes {PRONOUN/p_l/poss} tail, and says {PRONOUN/p_l/subject}{VERB/p_l/'ve/'s} just been waiting for the right rabbit to show interest, but wonders if r_c has any preferences. It certainly makes for good conversation, and it's all too soon that they have their mouths too full of herbs to continue.",
                 "exp": 20,
                 "weight": 20,
                 "herbs": ["random_herbs"],
@@ -2579,13 +2509,13 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
             },
             {
-                "text": "r_c, deep in thought, asks p_l if {PRONOUN/p_l/subject}{VERB/p_l/'ve/'s} considered taking on another rusasi. p_l swishes {PRONOUN/p_l/poss} tail, and asks what brought this on. {PRONOUN/r_c/subject/CAP} {VERB/r_c/were/was} honestly just wondering, r_c explains, as {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} not sure {PRONOUN/r_c/self} when {PRONOUN/r_c/subject} {VERB/r_c/want/wants} to. p_l nods, and says {PRONOUN/p_l/subject}{VERB/p_l/'ve/'s} been thinking about it - but they've reached the herbs and have to pick them now.",
+                "text": "r_c, deep in thought, asks p_l if {PRONOUN/p_l/subject}{VERB/p_l/'ve/'s} considered taking on another rusasirah. p_l swishes {PRONOUN/p_l/poss} tail, and asks what brought this on. {PRONOUN/r_c/subject/CAP} {VERB/r_c/were/was} honestly just wondering, r_c explains, as {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} not sure {PRONOUN/r_c/self} when {PRONOUN/r_c/subject} {VERB/r_c/want/wants} to. p_l nods, and says {PRONOUN/p_l/subject}{VERB/p_l/'ve/'s} been thinking about it - but they've reached the herbs and have to pick them now.",
                 "exp": 20,
                 "weight": 5,
                 "herbs": ["random_herbs"],
@@ -2594,7 +2524,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -2673,13 +2603,6 @@
                         "mutual": false,
                         "values": ["comfort"],
                         "amount": -5
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["r_c"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
                     }
                 ]
             },
@@ -2709,8 +2632,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 6],
-            "healer rusasi": [1, 6],
+            "rusasirah": [1, 6],
+            "healer rusasirah": [1, 6],
             "all rusasirahs": [2, 2]
         },
         "weight": 5,
@@ -2743,13 +2666,6 @@
                         "mutual": false,
                         "values": ["respect", "comfort"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike", "jealous"],
-                        "amount": -5
                     }
                 ]
             },
@@ -2765,13 +2681,6 @@
                         "mutual": false,
                         "values": ["respect", "comfort"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike", "jealous"],
-                        "amount": -5
                     }
                 ]
             },
@@ -2788,13 +2697,6 @@
                         "mutual": false,
                         "values": ["respect", "comfort"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike", "jealous"],
-                        "amount": -5
                     }
                 ]
             }
@@ -2812,13 +2714,6 @@
                         "mutual": false,
                         "values": ["respect", "comfort"],
                         "amount": -5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike", "jealous"],
-                        "amount": 5
                     }
                 ]
             },
@@ -2835,13 +2730,6 @@
                         "mutual": false,
                         "values": ["respect", "comfort"],
                         "amount": -5
-                    },
-                    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike", "jealous"],
-                        "amount": 5
                     }
                 ]
             },
@@ -2862,7 +2750,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -2882,7 +2770,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -2898,7 +2786,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 5
                     }
                 ]
@@ -2915,7 +2803,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -5
                     }
                 ]
@@ -2931,7 +2819,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": -5
                     }
                 ]
@@ -2943,7 +2831,7 @@
         "biome": ["any"],
         "season": ["any"],
         "types": ["herb_gathering"],
-        "tags": ["romantic"],
+        "tags": ["romance"],
         "patrol_art": "gen_med_gatheringcatmint_newleaf1",
         "min_cats": 2,
         "max_cats": 2,
@@ -2957,7 +2845,7 @@
         "intro_text": "p_l thinks r_c is a bit of a feather-brain, so when {PRONOUN/r_c/subject} {VERB/r_c/come/comes} up to p_l while p_l is gathering herbs and {VERB/r_c/suggest/suggests} replenishing the Warren's catmint supply with a gleam in {PRONOUN/r_c/poss} eye, p_l hesitates.",
         "decline_text": "{PRONOUN/p_l/subject/CAP} {VERB/p_l/are/is}n't going to go after an herb renowned for the silliness it can cause with a rabbit {PRONOUN/p_l/subject} {VERB/p_l/dislike/dislikes}. It's simply a bad idea.",
         "chance_of_success": 40,
-        "relationship_constraint": ["dislike_20"],
+        "relationship_constraint": ["dislikes"],
         "success_outcomes": [
             {
                 "text": "They find absolutely no catmint together, but r_c seems strangely okay with that, just interested in chatting with p_l. So maybe {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} a <i>nice</i> feather-brain.",
@@ -2969,15 +2857,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic"],
+                        "values": ["romance"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["r_c"],
-                        "mutual": true,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             },
@@ -2992,15 +2873,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic"],
+                        "values": ["romance"],
                         "amount": 10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["r_c"],
-                        "mutual": true,
-                        "values": ["dislike"],
-                        "amount": -10
                     }
                 ]
             }
@@ -3016,15 +2890,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic"],
+                        "values": ["romance"],
                         "amount": -10
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["r_c"],
-                        "mutual": true,
-                        "values": ["dislike"],
-                        "amount": 10
                     }
                 ]
             }
@@ -3066,7 +2933,7 @@
     	],
     	"fail_outcomes": [
         	{
-                "text": "Surely, <i>surely</i> it's nothing - but p_l can't deny {PRONOUN/p_l/poss} instincts. This Death's Head Moth is an omen, and {PRONOUN/p_l/subject} {VERB/p_l/take/takes} off running, sprinting towards the training arena where {PRONOUN/p_l/poss} Clanmates said they'd be. But it's too late. By the time p_l arrives, r_c is choking on {PRONOUN/r_c/poss} last breaths, victim of a terrible accident.",
+                "text": "Surely, <i>surely</i> it's nothing - but p_l can't deny {PRONOUN/p_l/poss} instincts. This Death's Head Moth is an omen, and {PRONOUN/p_l/subject} {VERB/p_l/take/takes} off running, sprinting towards the training arena where {PRONOUN/p_l/poss} Warrenmates said they'd be. But it's too late. By the time p_l arrives, r_c is choking on {PRONOUN/r_c/poss} last breaths, victim of a terrible accident.",
             	"exp": 0,
             	"weight": 20,
                 "dead_cats": ["r_c"],
@@ -3082,7 +2949,7 @@
         "biome": ["any"],
         "season": ["leaf-fall"],
         "types": ["herb_gathering"],
-        "tags": ["romantic", "halloween"],
+        "tags": ["romance", "halloween"],
         "patrol_art": "gen_med_pumpkinpatch1",
         "min_cats": 2,
         "max_cats": 2,
@@ -3106,7 +2973,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic"],
+                        "values": ["romance", "like"],
                         "amount": 5
                     }
                 ]
@@ -3125,7 +2992,7 @@
         "biome": ["any"],
         "season": ["leaf-fall"],
         "types": ["herb_gathering"],
-        "tags": ["romantic", "halloween"],
+        "tags": ["romance", "halloween"],
         "patrol_art": "gen_med_pumpkinpatch2",
         "min_cats": 2,
         "max_cats": 2,
@@ -3147,7 +3014,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic"],
+                        "values": ["romance", "like"],
                         "amount": 5
                     }
                 ]
@@ -3212,7 +3079,7 @@
         "min_cats": 1,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -3273,7 +3140,7 @@
                 "herbs": ["many_herbs", "catmint"]
             },
             {
-                "text": "Sensing the black rabbit's strong aura, s_c urges it to speak, and listens carefully as it imparts a bone-chilling omen, omen_list.",
+                "text": "Sensing the black cat's strong aura, s_c urges it to speak, and listens carefully as it imparts a bone-chilling omen, omen_list/s_c.",
                 "exp": 30,
                 "weight": 20,
                 "stat_skill": [
@@ -3305,13 +3172,13 @@
         "biome": ["any"],
         "season": ["any"],
         "types": ["herb_gathering"],
-        "tags": ["romantic"],
+        "tags": ["romance"],
         "patrol_art": "running_warrior_med",
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
-            "healer rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
+            "healer rusasirah": [-1, -1],
             "healer": [1, 1]
         },
         "weight": 20,
@@ -3329,7 +3196,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "respect", "comfort", "trust"],
+                        "values": ["romance", "like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -3345,7 +3212,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "respect", "comfort", "trust"],
+                        "values": ["romance", "like", "respect", "comfort", "trust"],
                         "amount": 10
                     }
                 ]
@@ -3362,7 +3229,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "respect", "comfort", "trust"],
+                        "values": ["romance", "like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -3384,7 +3251,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "respect", "comfort", "trust"],
+                        "values": ["romance", "like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -3400,7 +3267,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "respect", "comfort", "trust"],
+                        "values": ["romance", "like", "respect", "comfort", "trust"],
                         "amount": -5
                     }
                 ]
@@ -3412,7 +3279,7 @@
         "biome": ["any"],
         "season": ["any"],
         "types": ["herb_gathering"],
-        "tags": ["romantic"],
+        "tags": ["romance"],
         "patrol_art": "running_two_meds",
         "min_cats": 2,
         "max_cats": 2,
@@ -3434,7 +3301,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "respect", "comfort", "trust"],
+                        "values": ["romance", "like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -3450,7 +3317,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "respect", "comfort", "trust"],
+                        "values": ["romance", "like", "respect", "comfort", "trust"],
                         "amount": 10
                     }
                 ]
@@ -3467,7 +3334,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "respect", "comfort", "trust"],
+                        "values": ["romance", "like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -3489,7 +3356,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "respect", "comfort", "trust"],
+                        "values": ["romance", "like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -3505,7 +3372,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "respect", "comfort", "trust"],
+                        "values": ["romance", "like", "respect", "comfort", "trust"],
                         "amount": -5
                     }
                 ]
@@ -3517,13 +3384,13 @@
         "biome": ["any"],
         "season": ["any"],
         "types": ["herb_gathering"],
-        "tags": ["romantic"],
+        "tags": ["romance"],
         "patrol_art": "running_med_warrior",
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
-            "healer rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
+            "healer rusasirah": [-1, -1],
             "healer": [1, 1]
         },
         "weight": 20,
@@ -3541,7 +3408,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "respect", "comfort", "trust"],
+                        "values": ["romance", "like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -3557,7 +3424,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "respect", "comfort", "trust"],
+                        "values": ["romance", "like", "respect", "comfort", "trust"],
                         "amount": 10
                     }
                 ]
@@ -3574,7 +3441,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "respect", "comfort", "trust"],
+                        "values": ["romance", "like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -3596,7 +3463,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "respect", "comfort", "trust"],
+                        "values": ["romance", "like", "respect", "comfort", "trust"],
                         "amount": 5
                     }
                 ]
@@ -3612,7 +3479,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "respect", "comfort", "trust"],
+                        "values": ["romance", "like", "respect", "comfort", "trust"],
                         "amount": -5
                     }
                 ]
@@ -3629,16 +3496,16 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "healer rusasi": [1, 1],
+            "healer rusasirah": [1, 1],
             "healer": [1, 1]
         },
         "weight": 20,
-        "intro_text": "While out collecting herbs, p_l notices how quiet and dejected app1 is acting. After p_l asks {PRONOUN/app1/object} what's wrong, app1 admits {PRONOUN/app1/subject} {VERB/app1/do/does}n't feel cut out to be a healer.",
+        "intro_text": "While out collecting herbs, p_l notices how quiet and dejected app1 is acting. After p_l asks {PRONOUN/app1/object} what's wrong, app1 admits {PRONOUN/app1/subject} {VERB/app1/don't/doesn't} feel cut out to be a healer.",
 	    "decline_text": "Unsure of what to say, p_l continues the herb patrol as usual, leaving app1 to {PRONOUN/app1/poss} sour mood.",
         "chance_of_success": 60,
         "success_outcomes": [
             {
-                "text": "Smiling softly, s_c reassures app1 that {PRONOUN/s_c/subject} didn't feel ready to be a healer, either, when {PRONOUN/s_c/subject} {VERB/s_c/were/was} an rusasi. s_c tells app1 a story from {PRONOUN/s_c/poss} own apprenticeship, when {PRONOUN/s_c/subject} accidentally swapped all the thyme for yarrow. Great Inle was {PRONOUN/s_c/poss} mentor unhappy when all their patients started throwing up! Before long, app1 is laughing at s_c's own mishaps, {PRONOUN/app1/poss} own troubles forgotten.",
+                "text": "Smiling softly, s_c reassures app1 that {PRONOUN/s_c/subject} didn't feel ready to be a healer, either, when {PRONOUN/s_c/subject} {VERB/s_c/were/was} an rusasirah. s_c tells app1 a story from {PRONOUN/s_c/poss} own apprenticeship, when {PRONOUN/s_c/subject} accidentally swapped all the thyme for yarrow. Great Inle was {PRONOUN/s_c/poss} mentor unhappy when all their patients started throwing up! Before long, app1 is laughing at s_c's own mishaps, {PRONOUN/app1/poss} own troubles forgotten.",
                 "exp": 20,
                 "weight": 20,
 		        "stat_trait": [
@@ -3658,15 +3525,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": true,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 10
-                    },
-		    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": true,
-                        "values": ["dislike", "jealous"],
-                        "amount": -10
                     }
                 ]
             },
@@ -3695,15 +3555,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 10
-                    },
-		    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": true,
-                        "values": ["dislike", "jealous"],
-                        "amount": -10
                     }
                 ]
             },
@@ -3717,16 +3570,9 @@
 					"cats_to": ["patrol"],
 					"cats_from": ["patrol"],
 					"mutual": false,
-					"values": ["platonic",
+					"values": ["like",
 					"comfort", "trust"],
 					"amount": 10
-					},
-				{
-					"cats_to": ["patrol"],
-					"cats_from": ["patrol"],
-					"mutual": true,
-					"values": ["dislike", "jealous"],
-					"amount": -10
 					}
 				]
 			},
@@ -3742,20 +3588,13 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 10
-                    },
-		    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": true,
-                        "values": ["dislike", "jealous"],
-                        "amount": -10
                     }
                 ]
             },
             {
-                "text": "Fine, s_c tells app1. Healer rabbits had to work hard to learn the skills they needed - if app1 didn't want to spend moons memorising herbs, trying {PRONOUN/app1/poss} best and making mistakes, then {PRONOUN/app1/subject} should go find an easier role. Walking away from app1, s_c is pleased to hear the rusasi eagerly bounding after {PRONOUN/s_c/object}.",
+                "text": "Fine, s_c tells app1. Healer rabbits had to work hard to learn the skills they needed - if app1 didn't want to spend moons memorising herbs, trying {PRONOUN/app1/poss} best and making mistakes, then {PRONOUN/app1/subject} should go find an easier role. Walking away from app1, s_c is pleased to hear the rusasirah eagerly bounding after {PRONOUN/s_c/object}.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": ["ambitious", "bold", "cold", "competitive", "cunning", "daring", "fierce", "grumpy", "strict", "strange", "sneaky", "lonesome"],
@@ -3766,20 +3605,13 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": 10
-                    },
-		    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": true,
-                        "values": ["dislike", "jealous"],
-                        "amount": -10
                     }
                 ]
             },
 	    {
-                "text": "Tail lashing, s_c snaps that {PRONOUN/s_c/subject} didn't train app1 just for them to give up. s_c had <i>chosen</i> app1 to be {PRONOUN/s_c/poss} rusasi, so app1 better pull {PRONOUN/app1/self} together and deal with it! Snapped out of {PRONOUN/app1/poss} gloom, app1 looks at {PRONOUN/app1/poss} intelligent, imposing mentor, and realises {PRONOUN/s_c/subject}{VERB/s_c/'re/'s} right - s_c wouldn't have chosen just anycat to be {PRONOUN/s_c/poss} rusasi. s_c knew app1 could be a great healer, and now app1 realised it, too.",
+                "text": "Tail lashing, s_c snaps that {PRONOUN/s_c/subject} didn't train app1 just for them to give up. s_c had <i>chosen</i> app1 to be {PRONOUN/s_c/poss} rusasirah, so app1 better pull {PRONOUN/app1/self} together and deal with it! Snapped out of {PRONOUN/app1/poss} gloom, app1 looks at {PRONOUN/app1/poss} intelligent, imposing mentor, and realises {PRONOUN/s_c/subject}{VERB/s_c/'re/'s} right - s_c wouldn't have chosen just anycat to be {PRONOUN/s_c/poss} rusasirah. s_c knew app1 could be a great healer, and now app1 realised it, too.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": ["arrogant", "bloodthirsty", "confident", "gloomy", "vengeful", "sneaky"],
@@ -3790,20 +3622,13 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": 10
-                    },
-		    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": true,
-                        "values": ["dislike", "jealous"],
-                        "amount": -10
                     }
                 ]
             },
 	    {
-                "text": "s_c gasps in over-exaggerated shock - is someone doubting the most awesome, smart, and brilliant rusasi in c_n?! app1 can't help but smile as s_c continues {PRONOUN/s_c/poss} flabbergasted performance, soon devolving into full-on laughter.",
+                "text": "s_c gasps in over-exaggerated shock - is someone doubting the most awesome, smart, and brilliant rusasirah in c_n?! app1 can't help but smile as s_c continues {PRONOUN/s_c/poss} flabbergasted performance, soon devolving into full-on laughter.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": ["charismatic", "flamboyant", "childish", "playful"],
@@ -3814,15 +3639,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": 10
-                    },
-		    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": true,
-                        "values": ["dislike", "jealous"],
-                        "amount": -10
                     }
                 ]
             }
@@ -3838,7 +3656,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort", "trust"],
+                        "values": ["like", "respect", "comfort", "trust"],
                         "amount": -5
                     }
                 ]
@@ -3891,15 +3709,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
-                    },
-		    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ],
 	        "art": "gen_med_collectingmullein"
@@ -3916,15 +3727,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
-                    },
-		    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             },
@@ -3940,15 +3744,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
-                    },
-		    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             },
@@ -3962,15 +3759,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort", "trust"],
+                        "values": ["like", "comfort", "trust"],
                         "amount": 5
-                    },
-					{
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             },
@@ -3986,15 +3776,8 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "trust"],
+                        "values": ["like", "respect", "trust"],
                         "amount": 5
-                    },
-		    {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             }
@@ -4009,7 +3792,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": -5
                     }
                 ]
@@ -4026,8 +3809,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 1],
-            "healer rusasi": [1, 1]
+            "rusasirah": [1, 1],
+            "healer rusasirah": [1, 1]
         },
         "weight": 20,
         "chance_of_success": 50,
@@ -4065,7 +3848,7 @@
                 "art": "fst_med_herblocation2"
             },
             {
-                "text": "s_c rolls {PRONOUN/s_c/poss} eyes. That kind of information is only for very <i>important</i> rabbits - which doesn't include app2, s_c is quick to inform {PRONOUN/app2/object}. Now run along and help gather herbs like a good little rusasi.",
+                "text": "s_c rolls {PRONOUN/s_c/poss} eyes. That kind of information is only for very <i>important</i> rabbits - which doesn't include app2, s_c is quick to inform {PRONOUN/app2/object}. Now run along and help gather herbs like a good little rusasirah.",
                 "exp": 10,
                 "weight": 40,
                 "can_have_stat": ["healer"],
@@ -4077,12 +3860,6 @@
                         "cat_from": [ "s_c" ],
                         "values": [ "trust", "comfort" ],
                         "amount": -5
-                    },
-                    {
-                        "cat_to": [ "s_c" ],
-                        "cat_from": [ "app2" ],
-                        "values": [ "dislike", "jealous" ],
-                        "amount": 10
                     }
                 ],
                 "art": "gen_train_argueAA"
@@ -4100,12 +3877,6 @@
                         "cat_from": [ "s_c" ],
                         "values": [ "trust", "comfort" ],
                         "amount": -5
-                    },
-                    {
-                        "cat_to": [ "s_c" ],
-                        "cat_from": [ "app2" ],
-                        "values": [ "dislike" ],
-                        "amount": 5
                     }
                 ],
                 "art": "gen_train_argueAA"
@@ -4128,7 +3899,7 @@
                 ]
             },
             {
-                "text": "Come on, s_c persuades {PRONOUN/p_l/object}. Just one little look? A look isn't harming any rabbit. No rabbit's gotten poisoned from <i>looking</i> at deathberries, right? p_l caves and shows s_c the way to the deathberry bush, but neither rusasi manages to actually gather any of the herbs they were looking for along the way.",
+                "text": "Come on, s_c persuades {PRONOUN/p_l/object}. Just one little look? A look isn't harming any rabbit. No rabbit's gotten poisoned from <i>looking</i> at deathberries, right? p_l caves and shows s_c the way to the deathberry bush, but neither rusasirah manages to actually gather any of the herbs they were looking for along the way.",
                 "exp": 0,
                 "weight": 40,
                 "stat_skill": [ "SPEAKER,1"],
@@ -4144,7 +3915,7 @@
                 ]
             },
             {
-                "text": "Come on, s_c persuades {PRONOUN/p_l/object}. Just one little look? A look isn't harming any rabbit. No rabbit's gotten poisoned from <i>looking</i> at deathberries, right? p_l caves and shows s_c the way to the deathberry bush, but neither rusasi manages to actually gather any of the herbs they were looking for along the way.",
+                "text": "Come on, s_c persuades {PRONOUN/p_l/object}. Just one little look? A look isn't harming any rabbit. No rabbit's gotten poisoned from <i>looking</i> at deathberries, right? p_l caves and shows s_c the way to the deathberry bush, but neither rusasirah manages to actually gather any of the herbs they were looking for along the way.",
                 "exp": 0,
                 "weight": 40,
                 "stat_trait": [ "charismatic", "cunning" ],
@@ -4202,15 +3973,8 @@
                         "cat_to": [ "app2" ],
                         "cat_from": [ "p_l" ],
                         "mutual": false,
-                        "values": [ "platonic" ],
+                        "values": [ "like" ],
                         "amount": -10
-                    },
-                    {
-                        "cat_to": [ "app2" ],
-                        "cat_from": [ "p_l" ],
-                        "mutual": false,
-                        "values": [ "dislike" ],
-                        "amount": 10
                     }
                 ],
                 "art": "gen_train_argueAA"
@@ -4226,15 +3990,8 @@
                         "cat_to": [ "app2" ],
                         "cat_from": [ "p_l" ],
                         "mutual": false,
-                        "values": [ "platonic", "comfort" ],
+                        "values": [ "like", "comfort" ],
                         "amount": 10
-                    },
-                    {
-                        "cat_to": [ "app2" ],
-                        "cat_from": [ "p_l" ],
-                        "mutual": false,
-                        "values": [ "dislike" ],
-                        "amount": -10
                     }
                 ],
                 "art": "gen_speaking_cat_app"
@@ -4250,21 +4007,14 @@
                         "cat_to": [ "app2" ],
                         "cat_from": [ "p_l" ],
                         "mutual": false,
-                        "values": [ "platonic", "comfort" ],
+                        "values": [ "like", "comfort" ],
                         "amount": 10
-                    },
-                    {
-                        "cat_to": [ "app2" ],
-                        "cat_from": [ "p_l" ],
-                        "mutual": false,
-                        "values": [ "dislike" ],
-                        "amount": -10
                     }
                 ],
                 "art": "gen_speaking_cat_app"
             },
             {
-                "text": "p_l is unsettled by the request, but leads {PRONOUN/app2/object} to the deathberry bushes anyway. When {PRONOUN/p_l/subject} {VERB/p_l/look/looks} back, p_l is startled to see app2's fur bushed out and {PRONOUN/app2/poss} eyes wide, staring at the berries. app2's a talented fighter, but none of {PRONOUN/app2/poss} skills can protect {PRONOUN/app2/object} from the threat of poison. With this insight into {PRONOUN/p_l/poss} Clanmate gained, p_l leads {PRONOUN/app2/object} away.",
+                "text": "p_l is unsettled by the request, but leads {PRONOUN/app2/object} to the deathberry bushes anyway. When {PRONOUN/p_l/subject} {VERB/p_l/look/looks} back, p_l is startled to see app2's fur bushed out and {PRONOUN/app2/poss} eyes wide, staring at the berries. app2's a talented fighter, but none of {PRONOUN/app2/poss} skills can protect {PRONOUN/app2/object} from the threat of poison. With this insight into {PRONOUN/p_l/poss} Warrenmate gained, p_l leads {PRONOUN/app2/object} away.",
                 "exp": 0,
                 "weight": 40,
                 "stat_trait": [ "fierce", "competitive", "ambitious", "bold", "daring", "bloodthirsty" ],
@@ -4275,7 +4025,7 @@
                         "cat_to": [ "app2" ],
                         "cat_from": [ "p_l" ],
                         "mutual": false,
-                        "values": [ "platonic" ],
+                        "values": [ "like" ],
                         "amount": 5
                     }
                 ]
@@ -4314,13 +4064,13 @@
         "biome": [ "any" ],
         "season": [ "any" ],
         "types": [ "herb_gathering"],
-        "tags": [ "romantic" ],
+        "tags": [ "romance" ],
         "patrol_art": "gen_warrior_med_meadow",
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [-1, -1],
-            "healer rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
+            "healer rusasirah": [-1, -1],
             "healer": [1, 1],
             "normal adult": [1, 1]
         },
@@ -4339,28 +4089,28 @@
                         "cats_to": ["r_c"],
                         "cats_from": ["p_l"],
                         "mutual": false,
-                        "values": ["trust", "platonic"],
+                        "values": ["trust", "like"],
                         "amount": 10
             },  
             {
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["platonic"],
+                        "values": ["like"],
                         "amount": 5
                     },  
              {
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic"],
+                        "values": ["romance"],
                         "amount": 5
               }
             ],
                 "art": "gen_bump_heads_warrior_med"
             },
             {
-                "text": "s_c pounces on the snake and crushes its head with {PRONOUN/s_c/poss} unsheathed claws. p_l purrs at {PRONOUN/p_l/poss} Clanmate's quick thinking, heart fluttering when {PRONOUN/p_l/subject} {VERB/p_l/realize/realizes} s_c may have saved {PRONOUN/p_l/poss} life. {PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} all the time {PRONOUN/p_l/subject} {VERB/p_l/need/needs} to gather plenty of herbs.",
+                "text": "s_c pounces on the snake and crushes its head with {PRONOUN/s_c/poss} unsheathed claws. p_l purrs at {PRONOUN/p_l/poss} Warrenmate's quick thinking, heart fluttering when {PRONOUN/p_l/subject} {VERB/p_l/realize/realizes} s_c may have saved {PRONOUN/p_l/poss} life. {PRONOUN/p_l/subject/CAP} {VERB/p_l/have/has} all the time {PRONOUN/p_l/subject} {VERB/p_l/need/needs} to gather plenty of herbs.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["FIGHTER,1"],
@@ -4371,14 +4121,14 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["platonic"],
+                        "values": ["like"],
                         "amount": 5
             },  
                     {
                         "cats_to": ["r_c"],
                         "cats_from": ["p_l"],
                         "mutual": false,
-                        "values": ["trust", "platonic"],
+                        "values": ["trust", "like"],
                         "amount": 15
                     }
                     ,  
@@ -4386,7 +4136,7 @@
                         "cats_to": ["r_c"],
                         "cats_from": ["p_l"],
                         "mutual": true,
-                        "values": ["romantic"],
+                        "values": ["romance"],
                         "amount": 10
                     }
             ],
@@ -4402,14 +4152,14 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["platonic"],
+                        "values": ["like"],
                         "amount": 5
             },  
             {
                         "cats_to": ["r_c"],
                         "cats_from": ["p_l"],
                         "mutual": false,
-                        "values": ["platonic", "trust", "romantic"],
+                        "values": ["like", "trust", "romance"],
                         "amount": 15
                     }
             ],
@@ -4427,14 +4177,14 @@
                         "cats_to": ["r_c"],
                         "cats_from": ["p_l"],
                         "mutual": false,
-                        "values": ["platonic"],
+                        "values": ["like"],
                         "amount": 5
             },  
             {
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "trust"],
+                        "values": ["romance", "like", "trust"],
                         "amount": 15
                     }
             ],
@@ -4448,17 +4198,10 @@
                 "weight": 40,
                 "relationships": [
             {
-                        "cats_to": ["r_c"],
-                        "cats_from": ["p_l"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 10
-            },
-            {
                 "cats_to": ["r_c"],
                 "cats_from": ["p_l"],
                 "mutual": false,
-                "values": ["platonic", "trust", "respect"],
+                "values": ["like", "trust", "respect"],
                 "amount": -10
             }
             ],
@@ -4475,7 +4218,7 @@
                         "cats_to": ["r_c"],
                         "cats_from": ["p_l"],
                         "mutual": false,
-                        "values": ["respect", "trust", "platonic"],
+                        "values": ["respect", "trust", "like"],
                         "amount": -10
             }
             ],
@@ -4505,14 +4248,14 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["platonic", "romantic"],
+                        "values": ["like", "romance"],
                         "amount": 5
             },  
             {
                         "cats_to": ["r_c"],
                         "cats_from": ["p_l"],
                         "mutual": false,
-                        "values": ["romantic", "platonic", "trust", "respect"],
+                        "values": ["romance", "like", "trust", "respect"],
                         "amount": 10
                     }
             ],
@@ -4532,7 +4275,7 @@
                         "cats_to": ["r_c"],
                         "cats_from": ["p_l"],
                         "mutual": false,
-                        "values": ["platonic", "trust", "respect"],
+                        "values": ["like", "trust", "respect"],
                         "amount": 15
             }
             ]
@@ -4582,12 +4325,12 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "healer rusasi": [2, 2]
+            "healer rusasirah": [2, 2]
         },
         "weight": 20,
         "chance_of_success": 50,
         "intro_text": "app1 and app2 head out to collect herbs together.",
-        "decline_text": "A Clanmate calls them back to burrow.",
+        "decline_text": "A Warrenmate calls them back to burrow.",
         "success_outcomes":
         [
             {
@@ -4600,16 +4343,9 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": true,
-                        "values": ["comfort", "respect", "platonic"],
+                        "values": ["comfort", "respect", "like"],
                         "amount": 10
-            },  
-            {
-                        "cats_to": ["app1"],
-                        "cats_from": ["app2"],
-                        "mutual": true,
-                        "values": ["dislike"],
-                        "amount": -5
-                    }
+            }
             ],
             "art": "gen_med_warappmedapp_herbcontest"
             },
@@ -4623,14 +4359,14 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
             },  
             {
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": true,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
                     }
             ],
@@ -4648,16 +4384,9 @@
                             "cats_to": ["app1"],
                             "cats_from": ["app2"],
                             "mutual": false,
-                            "values": ["dislike", "respect"],
-                            "amount": 5
-                },  
-                {
-                            "cats_to": ["app1"],
-                            "cats_from": ["app2"],
-                            "mutual": false,
-                            "values": ["jealous"],
-                            "amount": 10
-                        }
+                            "values": ["like", "respect"],
+                            "amount": -5
+                }
                 ],
                 "art": "app_cat_looking_up"
                 },
@@ -4674,21 +4403,14 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": false,
-                        "values": ["dislike", "respect"],
-                        "amount": 10
-            },  
-            {
-                        "cats_to": ["app1"],
-                        "cats_from": ["app2"],
-                        "mutual": false,
-                        "values": ["jealous"],
-                        "amount": 15
-                    }
+                        "values": ["like", "respect"],
+                        "amount": -10
+            }
             ],
             "art": "app_cat_looking_up"
             },
             {
-                "text": "s_c seems uncertain of {PRONOUN/s_c/self}, and app2 reminds {PRONOUN/s_c/object} that {PRONOUN/s_c/subject}{VERB/s_c/'re/'s} a healer rusasi for a reason. Grateful for {PRONOUN/app2/poss} confidence in {PRONOUN/s_c/object}, s_c leads the two of them on a successful patrol.",
+                "text": "s_c seems uncertain of {PRONOUN/s_c/self}, and app2 reminds {PRONOUN/s_c/object} that {PRONOUN/s_c/subject}{VERB/s_c/'re/'s} a healer rusasirah for a reason. Grateful for {PRONOUN/app2/poss} confidence in {PRONOUN/s_c/object}, s_c leads the two of them on a successful patrol.",
                 "exp": 30,
                 "weight": 20,
                 "stat_trait": ["insecure", "nervous", "childish", "gloomy"],
@@ -4699,14 +4421,14 @@
                             "cats_to": ["app1"],
                             "cats_from": ["app2"],
                             "mutual": true,
-                            "values": ["platonic", "comfort"],
+                            "values": ["like", "comfort"],
                             "amount": 5
                 },  
                 {
                             "cats_to": ["app2"],
                             "cats_from": ["app1"],
                             "mutual": false,
-                            "values": ["platonic", "comfort", "trust"],
+                            "values": ["like", "comfort", "trust"],
                             "amount": 10
                         }
                 ],
@@ -4724,14 +4446,14 @@
                             "cats_to": ["app1"],
                             "cats_from": ["app2"],
                             "mutual": true,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": 5
                 },  
                 {
                             "cats_to": ["app1"],
                             "cats_from": ["app2"],
                             "mutual": false,
-                            "values": ["platonic", "comfort", "trust"],
+                            "values": ["like", "comfort", "trust"],
                             "amount": 10
                         }
                 ],
@@ -4749,21 +4471,21 @@
                             "cats_to": ["app1"],
                             "cats_from": ["app2"],
                             "mutual": true,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": 5
                 },  
                 {
                             "cats_to": ["app1"],
                             "cats_from": ["app2"],
                             "mutual": false,
-                            "values": ["platonic", "comfort", "trust"],
+                            "values": ["like", "comfort", "trust"],
                             "amount": 10
                         }
                 ],
                 "art": "gen_bump_heads_apps"
             },
             {
-                "text": "As they gather herbs, s_c suddenly stops and calls app2 over to show {PRONOUN/app2/object} omen_list_sight. The rusasirahs discuss what it might mean on their way back to burrow.",
+                "text": "As they gather herbs, s_c suddenly stops and calls app2 over to show {PRONOUN/app2/object} omen_list_sight/s_c. The apprentices discuss what it might mean on their way back to burrow.",
                 "exp": 30,
                 "weight": 30,
                 "stat_skill": [ "OMEN,1"],
@@ -4774,14 +4496,14 @@
                             "cats_to": ["app1"],
                             "cats_from": ["app2"],
                             "mutual": true,
-                            "values": ["platonic", "trust"],
+                            "values": ["like", "trust"],
                             "amount": 5
                 }
                 ],
                 "art": "gen_app_crouching_perplexed"
             },
             {
-                "text": "app2 scents juniper off to {PRONOUN/app2/poss} left. s_c scents clair_list_smell to the right. No matter how carefully {PRONOUN/app2/subject} {VERB/app2/scent/scents} the air, app2 can't catch that scent and suggests it might be a sign. They discuss it while herb-gathering.",
+                "text": "app2 scents juniper off to {PRONOUN/app2/poss} left. s_c scents clair_list_smell/s_c to the right. No matter how carefully {PRONOUN/app2/subject} {VERB/app2/scent/scents} the air, app2 can't catch that scent and suggests it might be a sign. They discuss it while herb-gathering.",
                 "exp": 30,
                 "weight": 30,
                 "stat_skill": [ "CLAIRVOYANT,1"],
@@ -4792,14 +4514,14 @@
                             "cats_to": ["app1"],
                             "cats_from": ["app2"],
                             "mutual": true,
-                            "values": ["platonic", "trust"],
+                            "values": ["like", "trust"],
                             "amount": 5
                 }
                 ],
                 "art": "gen_apprentice_found_scent_clanmate"
             },
             {
-                "text": "As the rusasirahs gather herbs, app2 brushes {PRONOUN/app2/poss} pelt against s_c's. s_c is filled with prophecy_list_emotion. {PRONOUN/s_c/subject/CAP} {VERB/s_c/share/shares} this with app2, wondering if it might be a sign.",
+                "text": "As the apprentices gather herbs, app2 brushes {PRONOUN/app2/poss} pelt against s_c's. s_c is filled with prophecy_list_emotion/s_c. {PRONOUN/s_c/subject/CAP} {VERB/s_c/share/shares} this with app2, wondering if it might be a sign.",
                 "exp": 30,
                 "weight": 30,
                 "stat_skill": [ "PROPHET,1"],
@@ -4810,7 +4532,7 @@
                             "cats_to": ["app1"],
                             "cats_from": ["app2"],
                             "mutual": true,
-                            "values": ["platonic", "trust"],
+                            "values": ["like", "trust"],
                             "amount": 5
                 }
                 ],
@@ -4828,7 +4550,7 @@
                             "cats_to": ["app1"],
                             "cats_from": ["app2"],
                             "mutual": true,
-                            "values": ["platonic", "trust", "respect", "comfort"],
+                            "values": ["like", "trust", "respect", "comfort"],
                             "amount": 5
                 }
                 ],
@@ -4846,15 +4568,8 @@
                             "cats_to": ["app1"],
                             "cats_from": ["app2"],
                             "mutual": false,
-                            "values": ["platonic", "comfort"],
+                            "values": ["like", "comfort"],
                             "amount": -5
-                },
-                {
-                    "cats_to": ["app1"],
-                    "cats_from": ["app2"],
-                    "mutual": false,
-                    "values": ["dislike"],
-                    "amount": 10
                 }
                 ],
                 "art": "app_cat_looking_up"
@@ -4871,15 +4586,8 @@
                             "cats_to": ["app1"],
                             "cats_from": ["app2"],
                             "mutual": true,
-                            "values": ["platonic", "comfort", "respect"],
+                            "values": ["like", "comfort", "respect"],
                             "amount": 5
-                },
-                {
-                    "cats_to": ["app1"],
-                    "cats_from": ["app2"],
-                    "mutual": false,
-                    "values": ["dislike"],
-                    "amount": -5
                 }
                 ],
                 "art": "fst_hunt_fun4"
@@ -4889,7 +4597,7 @@
         "fail_outcomes":
         [
             {
-                "text": "No matter how much they search, neither rusasi can find a patch of herbs ready to be harvested. app1 blames app2, and app2 blames app1. They return to burrow still squabbling.",
+                "text": "No matter how much they search, neither rusasirah can find a patch of herbs ready to be harvested. app1 blames app2, and app2 blames app1. They return to burrow still squabbling.",
                 "exp": 0,
                 "weight": 20,
                     "relationships": [
@@ -4897,15 +4605,8 @@
                             "cats_to": ["app1"],
                             "cats_from": ["app2"],
                             "mutual": true,
-                            "values": ["platonic", "comfort", "respect"],
+                            "values": ["like", "comfort", "respect"],
                             "amount": -5
-                },
-                {
-                    "cats_to": ["app1"],
-                    "cats_from": ["app2"],
-                    "mutual": true,
-                    "values": ["dislike"],
-                    "amount": 10
                 }
                 ],
                 "art": "gen_train_argueAA"
@@ -4921,15 +4622,15 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["r_c"],
                             "mutual": false,
-                            "values": ["platonic", "comfort", "trust"],
+                            "values": ["like", "comfort", "trust"],
                             "amount": 5
                 },
                 {
                     "cats_to": ["p_l"],
                     "cats_from": ["r_c"],
                     "mutual": true,
-                    "values": ["jealous"],
-                    "amount": -10
+                    "values": ["respect"],
+                    "amount": 10
                 }
                 ],
                 "art": "gen_happy_cat2"
@@ -4943,22 +4644,15 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["r_c"],
                             "mutual": true,
-                            "values": ["platonic", "comfort", "respect"],
+                            "values": ["like", "comfort", "respect"],
                             "amount": -5
-                },
-                {
-                    "cats_to": ["p_l"],
-                    "cats_from": ["r_c"],
-                    "mutual": true,
-                    "values": ["dislike"],
-                    "amount": 10
                 },
                 {
                     "cats_to": ["r_c"],
                     "cats_from": ["p_l"],
                     "mutual": false,
-                    "values": ["jealous"],
-                    "amount": 10
+                    "values": ["respect"],
+                    "amount": -10
                 }
                 ],
                 "art": "gen_train_argueAA"
@@ -4983,13 +4677,6 @@
                     "mutual": true,
                     "values": ["comfort"],
                     "amount": -5
-                },
-                {
-                    "cats_to": ["s_c"],
-                    "cats_from": ["p_l"],
-                    "mutual": false,
-                    "values": ["dislike", "jealous", "respect"],
-                    "amount": 5
                 }
                 ],
                 "art": "gen_train_patrolapprenticesessionfail"
@@ -5003,16 +4690,9 @@
                             "cats_to": ["app1"],
                             "cats_from": ["app2"],
                             "mutual": true,
-                            "values": ["comfort", "platonic"],
+                            "values": ["comfort", "like"],
                             "amount": 10
-                },
-                {
-                    "cats_to": ["app1"],
-                    "cats_from": ["app2"],
-                    "mutual": true,
-                    "values": ["dislike"],
-                    "amount": -5
-        }
+                }
                 ],
                 "art": "gen_app_siblings"
             },
@@ -5027,7 +4707,7 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["s_c"],
                             "mutual": true,
-                            "values": ["comfort", "platonic"],
+                            "values": ["comfort", "like"],
                             "amount": 5
                 },
                 {
@@ -5050,16 +4730,9 @@
                             "cats_to": ["s_c"],
                             "cats_from": ["p_l"],
                             "mutual": false,
-                            "values": ["comfort", "platonic", "respect"],
+                            "values": ["comfort", "like", "respect"],
                             "amount": -5
-                },
-                {
-                    "cats_to": ["s_c"],
-                    "cats_from": ["p_l"],
-                    "mutual": false,
-                    "values": ["dislike"],
-                    "amount": 10
-        }
+                }
                 ],
                 "art": "gen_angry_cat_app"
             },
@@ -5074,7 +4747,7 @@
                             "cats_to": ["s_c"],
                             "cats_from": ["r_c"],
                             "mutual": false,
-                            "values": ["trust", "platonic", "respect"],
+                            "values": ["trust", "like", "respect"],
                             "amount": -5
                 }
                 ],
@@ -5092,16 +4765,9 @@
                             "cats_to": ["app2"],
                             "cats_from": ["s_c"],
                             "mutual": false,
-                            "values": ["platonic", "trust", "respect", "comfort"],
+                            "values": ["like", "trust", "respect", "comfort"],
                             "amount": -5
-                },
-                {
-                    "cats_to": ["app2"],
-                    "cats_from": ["s_c"],
-                    "mutual": false,
-                    "values": ["dislike"],
-                    "amount": 10
-        }
+                }
                 ],
                 "art": "gen_train_argueAA"
             },
@@ -5116,15 +4782,8 @@
                             "cats_to": ["s_c"],
                             "cats_from": ["app2"],
                             "mutual": true,
-                            "values": ["platonic", "comfort", "respect"],
+                            "values": ["like", "comfort", "respect"],
                             "amount": -5
-                },
-                {
-                    "cats_to": ["app2"],
-                    "cats_from": ["s_c"],
-                    "mutual": false,
-                    "values": ["dislike"],
-                    "amount": 5
                 }
                 ],
                 "art": "gen_train_argueAA"
@@ -5141,15 +4800,8 @@
                             "cats_to": ["s_c"],
                             "cats_from": ["r_c"],
                             "mutual": true,
-                            "values": ["platonic", "comfort", "respect"],
+                            "values": ["like", "comfort", "respect"],
                             "amount": -5
-                },
-                {
-                    "cats_to": ["s_c"],
-                    "cats_from": ["r_c"],
-                    "mutual": false,
-                    "values": ["dislike"],
-                    "amount": 5
                 }
                 ],
                 "art": "gen_train_argueAA"
@@ -5166,15 +4818,15 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "healer rusasi": [3, 6],
+            "healer rusasirah": [3, 6],
             "healer": [-1, -1],
             "normal adult": [-1, -1],
-            "rusasi": [-1, -1]
+            "rusasirah": [-1, -1]
         },
         "weight": 20,
         "chance_of_success": 50,
         "intro_text": "A patrol of healer rusasirahs heads out to collect herbs together.",
-        "decline_text": "A Clanmate calls them back to burrow.",
+        "decline_text": "A Warrenmate calls them back to burrow.",
         "success_outcomes":
         [
             {
@@ -5187,16 +4839,9 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": true,
-                        "values": ["comfort", "respect", "platonic"],
+                        "values": ["comfort", "respect", "like"],
                         "amount": 10
-            },  
-            {
-                        "cats_to": ["patrol"],
-                        "cats_from": ["patrol"],
-                        "mutual": true,
-                        "values": ["dislike"],
-                        "amount": -5
-                    }
+            }
             ],
             "art": "gen_med_warappmedapp_herbcontest"
             },
@@ -5210,14 +4855,14 @@
                         "cats_to": ["app1"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect"],
+                        "values": ["like", "respect"],
                         "amount": 10
             },  
             {
                         "cats_to": ["app1"],
                         "cats_from": ["patrol"],
                         "mutual": true,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
                     }
             ],
@@ -5235,16 +4880,9 @@
                             "cats_to": ["app1"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["dislike", "respect"],
-                            "amount": 5
-                },  
-                {
-                            "cats_to": ["app1"],
-                            "cats_from": ["patrol"],
-                            "mutual": false,
-                            "values": ["jealous"],
-                            "amount": 10
-                        }
+                            "values": ["like", "respect"],
+                            "amount": -5
+                }
                 ],
                 "art": "app_cat_looking_up"
                 },
@@ -5261,21 +4899,13 @@
                         "cats_to": ["app1"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["dislike", "respect"],
-                        "amount": 10
-            },  
-            {
-                        "cats_to": ["app1"],
-                        "cats_from": ["patrol"],
-                        "mutual": false,
-                        "values": ["jealous"],
-                        "amount": 15
-                    }
-            ],
+                        "values": ["like", "respect"],
+                        "amount": -10
+            }],
             "art": "app_cat_looking_up"
             },
             {
-                "text": "s_c seems uncertain of {PRONOUN/s_c/self}, and app2 reminds {PRONOUN/s_c/object} that {PRONOUN/s_c/subject}{VERB/s_c/'re/'s} a healer rusasi for a reason. Grateful for {PRONOUN/app2/poss} confidence in {PRONOUN/s_c/object}, s_c leads the group on a successful patrol.",
+                "text": "s_c seems uncertain of {PRONOUN/s_c/self}, and app2 reminds {PRONOUN/s_c/object} that {PRONOUN/s_c/subject}{VERB/s_c/'re/'s} a healer rusasirah for a reason. Grateful for {PRONOUN/app2/poss} confidence in {PRONOUN/s_c/object}, s_c leads the group on a successful patrol.",
                 "exp": 30,
                 "weight": 20,
                 "stat_trait": ["insecure", "nervous", "childish", "gloomy"],
@@ -5286,14 +4916,14 @@
                             "cats_to": ["app1"],
                             "cats_from": ["app2"],
                             "mutual": true,
-                            "values": ["platonic", "comfort"],
+                            "values": ["like", "comfort"],
                             "amount": 5
                 },  
                 {
                             "cats_to": ["app2"],
                             "cats_from": ["app1"],
                             "mutual": false,
-                            "values": ["platonic", "comfort", "trust"],
+                            "values": ["like", "comfort", "trust"],
                             "amount": 10
                         },  
                 {
@@ -5318,14 +4948,14 @@
                             "cats_to": ["app1"],
                             "cats_from": ["app2"],
                             "mutual": true,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": 5
                 },  
                 {
                             "cats_to": ["app1"],
                             "cats_from": ["app2"],
                             "mutual": false,
-                            "values": ["platonic", "comfort", "trust"],
+                            "values": ["like", "comfort", "trust"],
                             "amount": 10
                         }
                 ],
@@ -5343,29 +4973,22 @@
                             "cats_to": ["app1"],
                             "cats_from": ["app2", "app3"],
                             "mutual": true,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": 5
                 },  
                 {
                             "cats_to": ["app1"],
                             "cats_from": ["app2", "app3"],
                             "mutual": false,
-                            "values": ["platonic", "comfort", "trust"],
+                            "values": ["like", "comfort", "trust"],
                             "amount": 10
-                        },
-                {
-                            "cats_to": ["app2"],
-                               "cats_from": ["app3"],
-                            "mutual": true,
-                           "values": ["dislike"],
-                               "amount": -15
-                                }
+                        }
 
                 ],
                 "art": "gen_bump_heads_apps"
             },
             {
-                "text": "As they gather herbs, s_c suddenly stops and calls the other rusasirahs over to show them omen_list_sight. The rusasirahs discuss what it might mean on their way back to burrow.",
+                "text": "As they gather herbs, s_c suddenly stops and calls the other apprentices over to show them omen_list_sight/s_c. The apprentices discuss what it might mean on their way back to burrow.",
                 "exp": 30,
                 "weight": 30,
                 "stat_skill": [ "OMEN,1"],
@@ -5376,14 +4999,14 @@
                             "cats_to": ["app1"],
                             "cats_from": ["patrol"],
                             "mutual": true,
-                            "values": ["platonic", "trust"],
+                            "values": ["like", "trust"],
                             "amount": 5
                 }
                 ],
                 "art": "gen_app_crouching_perplexed"
             },
             {
-                "text": "app2 scents juniper off to {PRONOUN/app2/poss} left. s_c scents clair_list_smell to the right. No matter how carefully the others scent the air, they can't catch the scent s_c describes. Perhaps it's a sign? They discuss it while herb-gathering",
+                "text": "app2 scents juniper off to {PRONOUN/app2/poss} left. s_c scents clair_list_smell/s_c to the right. No matter how carefully the others scent the air, they can't catch the scent s_c describes. Perhaps it's a sign? They discuss it while herb-gathering",
                 "exp": 30,
                 "weight": 30,
                 "stat_skill": [ "CLAIRVOYANT,1"],
@@ -5394,7 +5017,7 @@
                             "cats_to": ["app1"],
                             "cats_from": ["patrol"],
                             "mutual": true,
-                            "values": ["platonic", "trust"],
+                            "values": ["like", "trust"],
                             "amount": 5
                 }
                 ],
@@ -5412,7 +5035,7 @@
                             "cats_to": ["app1"],
                             "cats_from": ["app2"],
                             "mutual": true,
-                            "values": ["platonic", "trust"],
+                            "values": ["like", "trust"],
                             "amount": 5
                 }
                 ],
@@ -5430,7 +5053,7 @@
                             "cats_to": ["app1"],
                             "cats_from": ["patrol"],
                             "mutual": true,
-                            "values": ["platonic", "trust", "respect", "comfort"],
+                            "values": ["like", "trust", "respect", "comfort"],
                             "amount": 5
                 }
                 ],
@@ -5448,15 +5071,8 @@
                             "cats_to": ["s_c"],
                             "cats_from": ["app2", "app3"],
                             "mutual": false,
-                            "values": ["platonic", "comfort"],
+                            "values": ["like", "comfort"],
                             "amount": -5
-                },
-                {
-                    "cats_to": ["s_c"],
-                    "cats_from": ["app2", "app3"],
-                    "mutual": false,
-                    "values": ["dislike"],
-                    "amount": 10
                 }
                 ],
                 "art": "app_cat_looking_up"
@@ -5473,15 +5089,8 @@
                             "cats_to": ["app1"],
                             "cats_from": ["patrol"],
                             "mutual": true,
-                            "values": ["platonic", "comfort", "respect"],
+                            "values": ["like", "comfort", "respect"],
                             "amount": 5
-                },
-                {
-                    "cats_to": ["app1"],
-                    "cats_from": ["patrol"],
-                    "mutual": false,
-                    "values": ["dislike"],
-                    "amount": -5
                 }
                 ],
                 "art": "fst_hunt_fun4"
@@ -5491,7 +5100,7 @@
         "fail_outcomes":
         [
             {
-                "text": "No matter how much they search, no rusasi can find a patch of herbs ready to be harvested. app1 blames app2, app2 blames app1, and app3 only makes things worse. They return to burrow still squabbling.",
+                "text": "No matter how much they search, no rusasirah can find a patch of herbs ready to be harvested. app1 blames app2, app2 blames app1, and app3 only makes things worse. They return to burrow still squabbling.",
                 "exp": 0,
                 "weight": 20,
                     "relationships": [
@@ -5499,15 +5108,8 @@
                             "cats_to": ["patrol"],
                             "cats_from": ["patrol"],
                             "mutual": true,
-                            "values": ["platonic", "comfort", "respect"],
+                            "values": ["like", "comfort", "respect"],
                             "amount": -5
-                },
-                {
-                    "cats_to": ["patrol"],
-                    "cats_from": ["patrol"],
-                    "mutual": true,
-                    "values": ["dislike"],
-                    "amount": 10
                 }
                 ],
                 "art": "gen_train_argueAA"
@@ -5523,22 +5125,22 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["r_c"],
                             "mutual": false,
-                            "values": ["platonic", "comfort", "trust"],
+                            "values": ["like", "comfort", "trust"],
                             "amount": 10
                 },
                 {
                     "cats_to": ["p_l"],
                     "cats_from": ["patrol"],
                     "mutual": false,
-                    "values": ["platonic", "comfort", "trust"],
+                    "values": ["like", "comfort", "trust"],
                     "amount": -5
         },
                 {
                     "cats_to": ["p_l"],
                     "cats_from": ["r_c"],
                     "mutual": false,
-                    "values": ["jealous"],
-                    "amount": -10
+                    "values": ["respect"],
+                    "amount": 10
                 }
                 ],
                 "art": "gen_happy_cat2"
@@ -5552,22 +5154,22 @@
                             "cats_to": ["patrol"],
                             "cats_from": ["patrol"],
                             "mutual": true,
-                            "values": ["platonic", "comfort", "respect"],
+                            "values": ["like", "comfort", "respect"],
                             "amount": -5
                 },
                 {
                     "cats_to": ["p_l"],
                     "cats_from": ["patrol"],
                     "mutual": true,
-                    "values": ["dislike"],
-                    "amount": 10
+                    "values": ["like"],
+                    "amount": -10
                 },
                 {
                     "cats_to": ["r_c"],
                     "cats_from": ["p_l"],
                     "mutual": false,
-                    "values": ["jealous"],
-                    "amount": 10
+                    "values": ["respect"],
+                    "amount": -10
                 }
                 ],
                 "art": "gen_train_argueAA"
@@ -5597,8 +5199,8 @@
                     "cats_to": ["s_c"],
                     "cats_from": ["p_l"],
                     "mutual": false,
-                    "values": ["dislike", "jealous", "respect"],
-                    "amount": 5
+                    "values": ["like", "respect"],
+                    "amount": -5
                 }
                 ],
                 "art": "gen_train_patrolapprenticesessionfail"
@@ -5612,16 +5214,9 @@
                             "cats_to": ["patrol"],
                             "cats_from": ["patrol"],
                             "mutual": true,
-                            "values": ["comfort", "platonic"],
+                            "values": ["comfort", "like"],
                             "amount": 10
-                },
-                {
-                    "cats_to": ["patrol"],
-                    "cats_from": ["patrol"],
-                    "mutual": true,
-                    "values": ["dislike"],
-                    "amount": -5
-        }
+                }
                 ],
                 "art": "gen_app_siblings"
             },
@@ -5636,7 +5231,7 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["s_c"],
                             "mutual": true,
-                            "values": ["comfort", "platonic"],
+                            "values": ["comfort", "like"],
                             "amount": 5
                 },
                 {
@@ -5650,14 +5245,14 @@
                     "cats_to": ["s_c"],
                     "cats_from": ["patrol"],
                     "mutual": true,
-                    "values": ["comfort", "platonic"],
+                    "values": ["comfort", "like"],
                     "amount": -10
         },
         {
             "cats_to": ["s_c"],
             "cats_from": ["p_l"],
             "mutual": true,
-            "values": ["comfort", "platonic"],
+            "values": ["comfort", "like"],
             "amount": 10
 }
                 ]
@@ -5673,16 +5268,9 @@
                             "cats_to": ["s_c"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["comfort", "platonic", "respect"],
+                            "values": ["comfort", "like", "respect"],
                             "amount": -5
-                },
-                {
-                    "cats_to": ["s_c"],
-                    "cats_from": ["patrol"],
-                    "mutual": false,
-                    "values": ["dislike"],
-                    "amount": 10
-        }
+                }
                 ],
                 "art": "gen_angry_cat_app"
             },
@@ -5697,7 +5285,7 @@
                             "cats_to": ["s_c"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["trust", "platonic", "respect"],
+                            "values": ["trust", "like", "respect"],
                             "amount": -5
                 }
                 ],
@@ -5715,16 +5303,9 @@
                             "cats_to": ["patrol"],
                             "cats_from": ["s_c"],
                             "mutual": false,
-                            "values": ["platonic", "trust", "respect", "comfort"],
+                            "values": ["like", "trust", "respect", "comfort"],
                             "amount": -5
-                },
-                {
-                    "cats_to": ["patrol"],
-                    "cats_from": ["s_c"],
-                    "mutual": false,
-                    "values": ["dislike"],
-                    "amount": 10
-        }
+                }
                 ],
                 "art": "gen_train_argueAA"
             },
@@ -5739,15 +5320,8 @@
                             "cats_to": ["s_c"],
                             "cats_from": ["patrol"],
                             "mutual": true,
-                            "values": ["platonic", "comfort", "respect"],
+                            "values": ["like", "comfort", "respect"],
                             "amount": -5
-                },
-                {
-                    "cats_to": ["patrol"],
-                    "cats_from": ["s_c"],
-                    "mutual": false,
-                    "values": ["dislike"],
-                    "amount": 5
                 }
                 ],
                 "art": "gen_train_argueAA"
@@ -5764,15 +5338,8 @@
                             "cats_to": ["s_c"],
                             "cats_from": ["patrol"],
                             "mutual": true,
-                            "values": ["platonic", "comfort", "respect"],
+                            "values": ["like", "comfort", "respect"],
                             "amount": -5
-                },
-                {
-                    "cats_to": ["s_c"],
-                    "cats_from": ["patrol"],
-                    "mutual": false,
-                    "values": ["dislike"],
-                    "amount": 5
                 }
                 ],
                 "art": "gen_train_argueAA"

@@ -10,7 +10,7 @@
         "max_cats": 6,
         "min_max_status": {
            "normal adult": [1, 6],
-           "rusasi": [2, 6]
+           "rusasirah": [2, 6]
             },
         "weight": 40,
         "chance_of_success": 60,
@@ -27,14 +27,14 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["respect", "platonic"],
+                            "values": ["respect", "like"],
                             "amount": 5
                         },
                         {
                             "cats_to": ["patrol"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": 5
                         }
                         ]
@@ -50,7 +50,7 @@
                             "cats_to": ["patrol"],
                             "cats_from": ["p_l"],
                             "mutual": false,
-                            "values": ["trust", "respect", "platonic"],
+                            "values": ["trust", "respect", "like"],
                             "amount": -5
                         }
                     ]

@@ -14,7 +14,7 @@
             "Is finding the responsibility of leadership to be quite the heavy burden",
             "Is feeling blessed by Inle this moon",
             "Is thinking about forming an alliance",
-            "Is making a solemn vow to protect {PRONOUN/m_c/poss} Clanmates",
+            "Is making a solemn vow to protect {PRONOUN/m_c/poss} Warrenmates",
             "Called an important Warren meeting recently",
             "Thinks {PRONOUN/m_c/subject} {VERB/m_c/have/has} been hearing the voices of Inle rabbits...",
             "Is pondering recent dreams {PRONOUN/m_c/subject} {VERB/m_c/have/has} had... perhaps from Inle?",
@@ -64,7 +64,7 @@
             "Is asking r_c if {PRONOUN/r_c/subject} {VERB/r_c/are/is} ready for an assessment"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ],
         "random_living_status": [
             "living"
@@ -114,12 +114,12 @@
         "thoughts": [
             "Encourages rabbits to start fights on border patrols",
             "Is debating if {PRONOUN/m_c/subject} should declare a war with another Warren",
-            "Is wondering if {PRONOUN/m_c/subject} could hold rusasi ceremonies 2 moons earlier",
-            "Hopes to postpone the retirement of {PRONOUN/m_c/poss} Clanmates",
+            "Is wondering if {PRONOUN/m_c/subject} could hold rusasirah ceremonies 2 moons earlier",
+            "Hopes to postpone the retirement of {PRONOUN/m_c/poss} Warrenmates",
             "Asks the healer rabbits to have a stock of deathberries at {PRONOUN/m_c/poss} disposal",
             "Doesn't understand Inle's resentment towards {PRONOUN/m_c/object}",
             "Is thinking about taking kits from another Warren",
-            "Encourages rabbits to destroy other Clans' herb supplies",
+            "Encourages rabbits to destroy other Warrens' herb supplies",
             "Demands the rabbits train with their claws unsheathed",
             "Considers exiling elders from now on",
             "Thinks about driving out an opposing Warren",
@@ -175,7 +175,7 @@
     {
         "id": "cold_leader",
         "thoughts": [
-            "Rolls {PRONOUN/m_c/poss} eyes when r_c suggests sharing their fresh-kill with other Clans"
+            "Rolls {PRONOUN/m_c/poss} eyes when r_c suggests sharing their fresh-kill with other Warrens"
         ],
         "main_trait_constraint": [
             "cold"
@@ -321,5 +321,17 @@
         "main_status_constraint": [
             "chief rabbit"
         ]
+    },
+    {
+        "id": "leader_to_newborn",
+        "thoughts": [
+            "Believes c_n is thriving with the birth of the new litter",
+            "Feels more pressure to protect c_n after meeting the new litter",
+            "Welcomes the new litter to the Warren",
+            "Calls a Warren meeting to announce the new litter",
+            "Already considers who could mentor r_c"
+        ],
+        "main_status_constraint": ["chief rabbit"],
+        "random_age_constraint": ["newborn"]
     }
 ]

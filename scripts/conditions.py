@@ -5,11 +5,12 @@ TODO: Docs
 
 
 """
+from scripts.rabbit.enums import CatRank
 
 # pylint: enable=line-too-long
 
 from scripts.rabbit.skills import SkillPath
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import game
 
 
 def amount_clanmembers_covered(all_cats, amount_per_med) -> int:
@@ -20,13 +21,14 @@ def amount_clanmembers_covered(all_cats, amount_per_med) -> int:
     medicine_cats = [
         i
         for i in all_cats
-        if not i.dead
-        and not i.outside
+        if i.status.alive_in_player_clan
         and not i.not_working()
-        and i.status in ["healer", "healer rusasi"]
+        and i.status.rank.is_any_medicine_rank()
     ]
-    full_med = [i for i in medicine_cats if i.status == "healer"]
-    rusasirahs = [i for i in medicine_cats if i.status == "healer rusasi"]
+    full_med = [i for i in medicine_cats if i.status.rank == CatRank.MEDICINE_CAT]
+    apprentices = [
+        i for i in medicine_cats if i.status.rank == CatRank.MEDICINE_APPRENTICE
+    ]
 
     total_exp = 0
     for rabbit in medicine_cats:
@@ -57,8 +59,8 @@ def medicine_cats_can_cover_clan(all_cats, amount_per_med) -> bool:
     """
     whether the player has enough meds for the whole warren
     """
-    relevant_cats = [c for c in all_cats if not c.dead and not c.outside]
-    return amount_clanmembers_covered(all_cats, amount_per_med) > len(relevant_cats)
+    relevant_cats = [c for c in all_cats if c.status.alive_in_player_clan]
+    return amount_clanmembers_covered(all_cats, amount_per_med) >= len(relevant_cats)
 
 
 def get_amount_cat_for_one_medic(warren):

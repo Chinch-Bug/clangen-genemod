@@ -60,8 +60,8 @@
         "id": "adventurous_elder_to_apprentices",
         "thoughts": [
             "Tells a group of awe-struck rusasirahs all the exciting adventures {PRONOUN/m_c/subject} had outside Warren territory",
-            "Reminds an rusasi that there is so, so much more than life within the borders",
-            "Informs an rusasi of all the best landmarks outside c_n territory"
+            "Reminds an rusasirah that there is so, so much more than life within the borders",
+            "Informs an rusasirah of all the best landmarks outside c_n territory"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -71,7 +71,7 @@
             "adventurous"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ]
     },
     {
@@ -171,9 +171,9 @@
     {
         "id": "bloodthirsty_elder_to_apprentice",
         "thoughts": [
-            "Snarls at an rusasi when they bring thorns into the den",
-            "Snaps at an rusasi to hurry up with cleaning the elder's den",
-            "Lectures an rusasi on not holding back in battle"
+            "Snarls at an rusasirah when they bring thorns into the den",
+            "Snaps at an rusasirah to hurry up with cleaning the elder's den",
+            "Lectures an rusasirah on not holding back in battle"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -183,7 +183,7 @@
             "bloodthirsty"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ]
     },
     {
@@ -232,7 +232,7 @@
     {
         "id": "careful_elder_to_apprentice",
         "thoughts": [
-            "Asks an rusasi to triple-check there's no thorns in {PRONOUN/m_c/poss} bedding",
+            "Asks an rusasirah to triple-check there's no thorns in {PRONOUN/m_c/poss} bedding",
             "Is telling cautionary tales to rusasirahs"
         ],
         "main_age_constraint": [
@@ -243,7 +243,7 @@
             "careful"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ]
     },
     {
@@ -264,7 +264,7 @@
         "id": "childish_elder",
         "thoughts": [
             "Whines about {PRONOUN/m_c/poss} nest being too rough",
-            "Is happy {PRONOUN/m_c/subject} {VERB/m_c/do/does}n't have to patrol anymore",
+            "Is happy {PRONOUN/m_c/subject} {VERB/m_c/don't/doesn't} have to patrol anymore",
             "Bats a moss ball around the elder's den"
         ],
         "main_age_constraint": [
@@ -279,7 +279,7 @@
         "id": "cold_elder",
         "thoughts": [
             "Hates how much {PRONOUN/m_c/subject} {VERB/m_c/have/has} to rely on others",
-            "Flatly refuses to tell a story when a Clanmate asks"
+            "Flatly refuses to tell a story when a Warrenmate asks"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -306,7 +306,7 @@
     {
         "id": "compassionate_elder_to_apprentice",
         "thoughts": [
-            "Helps an rusasi to clean out the elder's den"
+            "Helps an rusasirah to clean out the elder's den"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -316,13 +316,13 @@
             "compassionate"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ]
     },
     {
         "id": "competitive_elder",
         "thoughts": [
-            "Challenges a Clanmate to a game of moss ball",
+            "Challenges a Warrenmate to a game of moss ball",
             "Misses the 'friendly' hunting competitions {PRONOUN/m_c/subject} used to compete in",
             "Is coming up with new competitions for elders"
         ],
@@ -338,7 +338,7 @@
         "id": "confident_elder",
         "thoughts": [
             "Is proud of all {PRONOUN/m_c/subject}{VERB/m_c/'ve/'s} achieved",
-            "Offers advice to {PRONOUN/m_c/poss} Clanmates",
+            "Offers advice to {PRONOUN/m_c/poss} Warrenmates",
             "Brags about all {PRONOUN/m_c/poss} past achievements",
             "Tells <i>another</i> story about {PRONOUN/m_c/self}"
         ],
@@ -353,7 +353,7 @@
     {
         "id": "cunning_elder",
         "thoughts": [
-            "Persuades a Clanmate to bring {PRONOUN/m_c/object} fresh-kill, though {PRONOUN/m_c/subject} could have got it {PRONOUN/m_c/self}",
+            "Persuades a Warrenmate to bring {PRONOUN/m_c/object} fresh-kill, though {PRONOUN/m_c/subject} could have got it {PRONOUN/m_c/self}",
             "Always ends up with the nicest piece of prey, without anycat realising"
         ],
         "main_age_constraint": [
@@ -367,8 +367,8 @@
     {
         "id": "cunning_elder_to_apprentices",
         "thoughts": [
-            "Convinces an rusasi that they get given an easier rabbit assessment if they help the elders",
-            "Persuades an rusasi to clean out the elder's den"
+            "Convinces an rusasirah that they get given an easier rabbit assessment if they help the elders",
+            "Persuades an rusasirah to clean out the elder's den"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -378,13 +378,13 @@
             "cunning"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ]
     },
     {
         "id": "daring_elder",
         "thoughts": [
-            "Is stubbornly refusing the healer's herbs, claiming {PRONOUN/m_c/subject} {VERB/m_c/do/does}n't need them",
+            "Is stubbornly refusing the healer's herbs, claiming {PRONOUN/m_c/subject} {VERB/m_c/don't/doesn't} need them",
             "Is telling exciting tales from {PRONOUN/m_c/poss} youth",
             "Insists {PRONOUN/m_c/subject} can race just as well as the rabbits"
         ],
@@ -401,7 +401,7 @@
         "thoughts": [
             "Is glad {PRONOUN/m_c/subject}{VERB/m_c/'ve/'s} served c_n for so long",
             "Is proud to have stuck by {PRONOUN/m_c/poss} own beliefs all {PRONOUN/m_c/poss} life",
-            "Reminds {PRONOUN/m_c/poss} Clanmates to follow their hearts"
+            "Reminds {PRONOUN/m_c/poss} Warrenmates to follow their hearts"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -471,7 +471,7 @@
             "rebellious"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ]
     },
     {
@@ -540,7 +540,7 @@
         "id": "insecure_elder_to_apprentices",
         "thoughts": [
             "Hopes the rusasirahs don't find {PRONOUN/m_c/object} too boring",
-            "Feels guilty watching an rusasi clean {PRONOUN/m_c/poss} bedding"
+            "Feels guilty watching an rusasirah clean {PRONOUN/m_c/poss} bedding"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -550,7 +550,7 @@
             "insecure"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ]
     },
     {
@@ -586,7 +586,7 @@
     {
         "id": "loving_elder_to_apprentice",
         "thoughts": [
-            "Purrs reassuringly as an rusasi whines about their day"
+            "Purrs reassuringly as an rusasirah whines about their day"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -596,7 +596,7 @@
             "loving"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ]
     },
     {
@@ -636,7 +636,7 @@
     {
         "id": "nervous_elder",
         "thoughts": [
-            "Worries that {PRONOUN/m_c/subject} would be defenceless in battle",
+            "Worries that {PRONOUN/m_c/subject} would be defenseless in battle",
             "Frets that a fox might break into the elder's den"
         ],
         "main_age_constraint": [
@@ -729,7 +729,7 @@
         "id": "righteous_elder",
         "thoughts": [
             "Gives unsolicited advice due to {PRONOUN/m_c/poss} own morals",
-            "Advises {PRONOUN/m_c/poss} Clanmates to stick to what they believe is right"
+            "Advises {PRONOUN/m_c/poss} Warrenmates to stick to what they believe is right"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -759,7 +759,7 @@
         "thoughts": [
             "Thinks hard about how best to advise every rabbit",
             "Gives r_c {PRONOUN/m_c/poss} honest advice",
-            "Offers stories of {PRONOUN/m_c/poss} past failures to reassure a Clanmate"
+            "Offers stories of {PRONOUN/m_c/poss} past failures to reassure a Warrenmate"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -949,7 +949,7 @@
         "id": "camp_elder",
         "thoughts": [
             "Still enjoys helping out around burrow",
-            "Is teaching {PRONOUN/m_c/poss} Clanmates the art of building a waterproof den!",
+            "Is teaching {PRONOUN/m_c/poss} Warrenmates the art of building a waterproof den!",
             "Helps the rabbits to reinforce the burrow walls"
         ],
         "main_age_constraint": [
@@ -963,8 +963,8 @@
     {
         "id": "camp_elder_to_apprentice",
         "thoughts": [
-            "Teaches an rusasi how to build the comfiest nests",
-            "Watches an rusasi try and construct {PRONOUN/m_c/poss} nest, knowing {PRONOUN/m_c/subject} could do a far better job"
+            "Teaches an rusasirah how to build the comfiest nests",
+            "Watches an rusasirah try and construct {PRONOUN/m_c/poss} nest, knowing {PRONOUN/m_c/subject} could do a far better job"
         ],
         "main_age_constraint": [
             "senior adult",
@@ -974,7 +974,7 @@
             "BURROW,1"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ]
     },
     {
@@ -1078,14 +1078,14 @@
     {
         "id": "elder_to_alive_apprentice",
         "thoughts": [
-            "Is requesting an rusasi's help with {PRONOUN/m_c/poss} ticks",
+            "Is requesting an rusasirah's help with {PRONOUN/m_c/poss} ticks",
             "Is asking rusasirahs to help check {PRONOUN/m_c/object} for ticks"
         ],
         "main_age_constraint": [
             "senior"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ]
     },
     {
@@ -1131,6 +1131,21 @@
         ],
         "relationship_constraint": [
             "mates"
+        ]
+    },
+    {
+        "id": "elder_to_newborn",
+        "thoughts": [
+            "Thinks of all the stories {PRONOUN/m_c/subject} will share with r_c",
+            "Hopes to live to see r_c made a rabbit",
+            "Feels content knowing c_n's legacy will continue through r_c",
+            "Feels sentimental at the arrival of a new litter"
+        ],
+        "main_age_constraint": [
+            "senior"
+        ],
+        "random_age_constraint": [
+            "newborn"
         ]
     },
     {
@@ -1214,7 +1229,7 @@
             "elder"
         ],
         "random_status_constraint": [
-            "healer rusasi",
+            "healer rusasirah",
             "healer"
         ],
         "random_living_status": [
@@ -1319,7 +1334,7 @@
             "adolescent"
         ],
         "random_status_constraint": [
-            "healer rusasi",
+            "healer rusasirah",
             "healer"
         ],
         "random_living_status": [
@@ -1369,9 +1384,9 @@
             "adolescent"
         ],
         "random_status_constraint": [
-            "rusasi",
-            "healer rusasi",
-            "owsla rusasi"
+            "rusasirah",
+            "healer rusasirah",
+            "owsla rusasirah"
         ],
         "random_living_status": [
             "living"
@@ -1394,7 +1409,7 @@
             "adolescent"
         ],
         "random_status_constraint": [
-            "healer rusasi",
+            "healer rusasirah",
             "healer"
         ],
         "random_living_status": [
@@ -1433,7 +1448,7 @@
             "elder"
         ],
         "random_status_constraint": [
-            "healer rusasi",
+            "healer rusasirah",
             "healer"
         ],
         "random_living_status": [
@@ -1480,15 +1495,15 @@
             "adolescent"
         ],
         "random_status_constraint": [
-            "rusasi",
-            "healer rusasi",
-            "owsla rusasi"
+            "rusasirah",
+            "healer rusasirah",
+            "owsla rusasirah"
         ]
     },
     {
         "id": "deaf_gen_retired_to_alive_gen",
         "thoughts": [
-            "Idly feels the thumps of {PRONOUN/m_c/poss} Clanmates' pawsteps on the ground",
+            "Idly feels the thumps of {PRONOUN/m_c/poss} Warrenmates' pawsteps on the ground",
             "Has learned to feel vibrations through the ground",
             "Is teaching r_c tail signals",
             "Tries to read r_c's posture",
@@ -1527,9 +1542,9 @@
             "adolescent"
         ],
         "random_status_constraint": [
-            "rusasi",
-            "healer rusasi",
-            "owsla rusasi"
+            "rusasirah",
+            "healer rusasirah",
+            "owsla rusasirah"
         ]
     },
     {
@@ -1583,7 +1598,7 @@
     {
         "id": "lost_leg/tail_gen_retired_to_alive_app",
         "thoughts": [
-            "Explains what 'phantom pain' is to a curious rusasi"
+            "Explains what 'phantom pain' is to a curious rusasirah"
         ],
         "perm_conditions": {
             "m_c": [
@@ -1595,7 +1610,7 @@
             "elder"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ]
     },
     {
@@ -1755,7 +1770,7 @@
             "elder"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ],
         "random_living_status": [
             "living"
@@ -1799,7 +1814,7 @@
             "elder"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ]
     },
     {
@@ -1835,7 +1850,7 @@
         ],
         "random_status_constraint": [
             "healer",
-            "healer rusasi"
+            "healer rusasirah"
         ],
         "random_living_status": [
             "living"

@@ -7,8 +7,7 @@ import pygame
 import pygame_gui
 
 from scripts.rabbit.rabbits import Rabbit
-from scripts.game_structure import image_cache
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure import image_cache, game
 from scripts.game_structure.ui_elements import (
     UITextBoxTweaked,
     UISurfaceImageButton,
@@ -21,6 +20,9 @@ from scripts.utility import (
     adjust_list_text,
 )
 from .Screens import Screens
+from ..game_structure.game.settings import game_setting_get
+from ..game_structure.game.switches import switch_set_value, switch_get_value, Switch
+from ..cat.enums import CatRank
 from ..game_structure.screen_settings import MANAGER
 from ..ui.generate_box import BoxStyles, get_box
 from ..ui.generate_button import get_button_dict, ButtonStyles
@@ -41,59 +43,59 @@ class RoleScreen(Screens):
                 self.change_screen("profile screen")
             elif event.ui_element == self.next_cat_button:
                 if isinstance(Rabbit.fetch_cat(self.next_cat), Rabbit):
-                    game.switches["rabbit"] = self.next_cat
+                    switch_set_value(Switch.cat, self.next_cat)
                     self.update_selected_cat()
                 else:
                     print("invalid next rabbit", self.next_cat)
             elif event.ui_element == self.previous_cat_button:
                 if isinstance(Rabbit.fetch_cat(self.previous_cat), Rabbit):
-                    game.switches["rabbit"] = self.previous_cat
+                    switch_set_value(Switch.cat, self.previous_cat)
                     self.update_selected_cat()
                 else:
                     print("invalid previous rabbit", self.previous_cat)
             elif event.ui_element == self.promote_leader:
-                if self.the_cat == game.warren.captain:
-                    game.warren.captain = None
+                if self.the_cat == game.warren.deputy:
+                    game.warren.deputy = None
                 game.warren.new_leader(self.the_cat)
-                if game.sort_type == "rank":
+                if switch_get_value(Switch.sort_type) == "rank":
                     Rabbit.sort_cats()
                 self.update_selected_cat()
             elif event.ui_element == self.promote_deputy:
-                game.warren.captain = self.the_cat
-                self.the_cat.status_change("captain", resort=True)
+                game.warren.deputy = self.the_cat
+                self.the_cat.rank_change(CatRank.DEPUTY, resort=True)
                 self.update_selected_cat()
             elif event.ui_element == self.switch_warrior:
-                self.the_cat.status_change("rabbit", resort=True)
+                self.the_cat.rank_change(CatRank.WARRIOR, resort=True)
                 self.update_selected_cat()
             elif event.ui_element == self.switch_med_cat:
-                self.the_cat.status_change("healer", resort=True)
+                self.the_cat.rank_change(CatRank.MEDICINE_CAT, resort=True)
                 self.update_selected_cat()
             elif event.ui_element == self.retire:
-                self.the_cat.status_change("elder", resort=True)
-                # Since you can't "unretire" a rabbit, apply the skill and trait change
+                self.the_cat.rank_change(CatRank.ELDER, resort=True)
+                # Since you can't "unretire" a cat, apply the skill and trait change
                 # here
                 self.update_selected_cat()
             elif event.ui_element == self.switch_mediator:
-                self.the_cat.status_change("owsla", resort=True)
+                self.the_cat.rank_change(CatRank.MEDIATOR, resort=True)
                 self.update_selected_cat()
             elif event.ui_element == self.switch_warrior_app:
-                self.the_cat.status_change("rusasi", resort=True)
+                self.the_cat.rank_change(CatRank.APPRENTICE, resort=True)
                 self.update_selected_cat()
             elif event.ui_element == self.switch_med_app:
-                self.the_cat.status_change("healer rusasi", resort=True)
+                self.the_cat.rank_change(CatRank.MEDICINE_APPRENTICE, resort=True)
                 self.update_selected_cat()
             elif event.ui_element == self.switch_mediator_app:
-                self.the_cat.status_change("owsla rusasi", resort=True)
+                self.the_cat.rank_change(CatRank.MEDIATOR_APPRENTICE, resort=True)
                 self.update_selected_cat()
 
-        elif event.type == pygame.KEYDOWN and game.settings["keybinds"]:
+        elif event.type == pygame.KEYDOWN and game_setting_get("keybinds"):
             if event.key == pygame.K_ESCAPE:
                 self.change_screen("profile screen")
             elif event.key == pygame.K_RIGHT:
-                game.switches["rabbit"] = self.next_cat
+                switch_set_value(Switch.cat, self.next_cat)
                 self.update_selected_cat()
             elif event.key == pygame.K_LEFT:
-                game.switches["rabbit"] = self.previous_cat
+                switch_set_value(Switch.cat, self.previous_cat)
                 self.update_selected_cat()
 
     def screen_switches(self):
@@ -223,7 +225,7 @@ class RoleScreen(Screens):
             self.selected_cat_elements[ele].kill()
         self.selected_cat_elements = {}
 
-        self.the_cat = Rabbit.fetch_cat(game.switches["rabbit"])
+        self.the_cat = Rabbit.fetch_cat(switch_get_value(Switch.cat))
         if not self.the_cat:
             return
 
@@ -244,8 +246,8 @@ class RoleScreen(Screens):
         )
 
         text = [
-            "<b>" + i18n.t(f"general.{self.the_cat.status}", count=1) + "</b>",
-            i18n.t(f"cat.personality.{self.the_cat.personality.trait}"),
+            "<b>" + i18n.t(f"general.{self.the_cat.status.rank}", count=1) + "</b>",
+            i18n.t(f"rabbit.personality.{self.the_cat.personality.trait}"),
             i18n.t("general.moons_age", count=self.the_cat.moons)
             + "  |  "
             + self.the_cat.genderalign,
@@ -260,18 +262,18 @@ class RoleScreen(Screens):
                 )
             )
 
-        if self.the_cat.rusasi:
+        if self.the_cat.rusasirah:
             rusasirahs = adjust_list_text(
                 [
                     str(Rabbit.fetch_cat(x).name)
-                    for x in self.the_cat.rusasi
+                    for x in self.the_cat.rusasirah
                     if Rabbit.fetch_cat(x)
                 ]
             )
             text.append(
                 i18n.t(
                     "general.apprentice_label",
-                    count=len(self.the_cat.rusasi),
+                    count=len(self.the_cat.rusasirah),
                     rusasirahs=rusasirahs,
                 )
             )
@@ -293,21 +295,21 @@ class RoleScreen(Screens):
 
         main_dir = "resources/images/"
         paths = {
-            "chief rabbit": "leader_icon.png",
-            "captain": "deputy_icon.png",
-            "healer": "medic_icon.png",
-            "healer rusasi": "medic_app_icon.png",
-            "owsla": "mediator_icon.png",
-            "owsla rusasi": "mediator_app_icon.png",
-            "rabbit": "warrior_icon.png",
-            "rusasi": "warrior_app_icon.png",
-            "kit": "kit_icon.png",
-            "newborn": "kit_icon.png",
-            "elder": "elder_icon.png",
+            CatRank.LEADER: "leader_icon.png",
+            CatRank.DEPUTY: "deputy_icon.png",
+            CatRank.MEDICINE_CAT: "medic_icon.png",
+            CatRank.MEDICINE_APPRENTICE: "medic_app_icon.png",
+            CatRank.MEDIATOR: "mediator_icon.png",
+            CatRank.MEDIATOR_APPRENTICE: "mediator_app_icon.png",
+            CatRank.WARRIOR: "warrior_icon.png",
+            CatRank.APPRENTICE: "warrior_app_icon.png",
+            CatRank.KITTEN: "kit_icon.png",
+            CatRank.NEWBORN: "kit_icon.png",
+            CatRank.ELDER: "elder_icon.png",
         }
 
-        if self.the_cat.status in paths:
-            icon_path = os.path.join(main_dir, paths[self.the_cat.status])
+        if self.the_cat.status.rank in paths:
+            icon_path = os.path.join(main_dir, paths[self.the_cat.status.rank])
         else:
             icon_path = os.path.join(main_dir, "buttonrank.png")
 
@@ -328,17 +330,17 @@ class RoleScreen(Screens):
     def update_disabled_buttons(self):
         self.update_previous_next_cat_buttons()
 
-        if game.warren.chief_rabbit:
-            leader_invalid = game.warren.chief_rabbit.dead or game.warren.chief_rabbit.outside
+        if game.warren.leader:
+            leader_invalid = not game.warren.leader.status.alive_in_player_clan
         else:
             leader_invalid = True
 
-        if game.warren.captain:
-            deputy_invalid = game.warren.captain.dead or game.warren.captain.outside
+        if game.warren.deputy:
+            deputy_invalid = not game.warren.deputy.status.alive_in_player_clan
         else:
             deputy_invalid = True
 
-        if self.the_cat.status == "rusasi":
+        if self.the_cat.status.rank == CatRank.APPRENTICE:
             # LEADERSHIP
             self.promote_leader.disable()
             self.promote_deputy.disable()
@@ -353,7 +355,7 @@ class RoleScreen(Screens):
             self.switch_med_app.enable()
             self.switch_warrior_app.disable()
             self.switch_mediator_app.enable()
-        elif self.the_cat.status == "rabbit":
+        elif self.the_cat.status.rank == CatRank.WARRIOR:
             # LEADERSHIP
             if leader_invalid:
                 self.promote_leader.enable()
@@ -375,7 +377,7 @@ class RoleScreen(Screens):
             self.switch_med_app.disable()
             self.switch_warrior_app.disable()
             self.switch_mediator_app.disable()
-        elif self.the_cat.status == "captain":
+        elif self.the_cat.status.rank == CatRank.DEPUTY:
             if leader_invalid:
                 self.promote_leader.enable()
             else:
@@ -393,7 +395,7 @@ class RoleScreen(Screens):
             self.switch_med_app.disable()
             self.switch_warrior_app.disable()
             self.switch_mediator_app.disable()
-        elif self.the_cat.status == "healer":
+        elif self.the_cat.status.rank == CatRank.MEDICINE_CAT:
             self.promote_leader.disable()
             self.promote_deputy.disable()
 
@@ -406,7 +408,7 @@ class RoleScreen(Screens):
             self.switch_med_app.disable()
             self.switch_warrior_app.disable()
             self.switch_mediator_app.disable()
-        elif self.the_cat.status == "owsla":
+        elif self.the_cat.status.rank == CatRank.MEDIATOR:
             if leader_invalid:
                 self.promote_leader.enable()
             else:
@@ -426,7 +428,7 @@ class RoleScreen(Screens):
             self.switch_med_app.disable()
             self.switch_warrior_app.disable()
             self.switch_mediator_app.disable()
-        elif self.the_cat.status == "elder":
+        elif self.the_cat.status.rank == CatRank.ELDER:
             if leader_invalid:
                 self.promote_leader.enable()
             else:
@@ -447,7 +449,7 @@ class RoleScreen(Screens):
             self.switch_med_app.disable()
             self.switch_warrior_app.disable()
             self.switch_mediator_app.disable()
-        elif self.the_cat.status == "healer rusasi":
+        elif self.the_cat.status.rank == CatRank.MEDICINE_APPRENTICE:
             self.promote_leader.disable()
             self.promote_deputy.disable()
 
@@ -461,7 +463,7 @@ class RoleScreen(Screens):
             self.switch_med_app.disable()
             self.switch_warrior_app.enable()
             self.switch_mediator_app.enable()
-        elif self.the_cat.status == "owsla rusasi":
+        elif self.the_cat.status.rank == CatRank.MEDIATOR_APPRENTICE:
             self.promote_leader.disable()
             self.promote_deputy.disable()
 
@@ -475,7 +477,7 @@ class RoleScreen(Screens):
             self.switch_med_app.enable()
             self.switch_warrior_app.enable()
             self.switch_mediator_app.disable()
-        elif self.the_cat.status == "chief rabbit":
+        elif self.the_cat.status.is_leader:
             self.promote_leader.disable()
             self.promote_deputy.disable()
 
@@ -505,32 +507,32 @@ class RoleScreen(Screens):
             self.switch_mediator_app.disable()
 
     def get_role_blurb(self):
-        if self.the_cat.status == "rabbit":
+        if self.the_cat.status.rank == CatRank.WARRIOR:
             output = "screens.role.blurb_warrior"
-        elif self.the_cat.status == "chief rabbit":
+        elif self.the_cat.status.is_leader:
             output = "screens.role.blurb_leader"
-        elif self.the_cat.status == "captain":
+        elif self.the_cat.status.rank == CatRank.DEPUTY:
             output = "screens.role.blurb_deputy"
-        elif self.the_cat.status == "healer":
+        elif self.the_cat.status.rank == CatRank.MEDICINE_CAT:
             output = "screens.role.blurb_medicine_cat"
-        elif self.the_cat.status == "owsla":
+        elif self.the_cat.status.rank == CatRank.MEDIATOR:
             output = "screens.role.blurb_mediator"
-        elif self.the_cat.status == "elder":
+        elif self.the_cat.status.rank == CatRank.ELDER:
             output = "screens.role.blurb_elder"
-        elif self.the_cat.status == "rusasi":
+        elif self.the_cat.status.rank == CatRank.APPRENTICE:
             output = "screens.role.blurb_apprentice"
-        elif self.the_cat.status == "healer rusasi":
+        elif self.the_cat.status.rank == CatRank.MEDICINE_APPRENTICE:
             output = "screens.role.blurb_medcat_app"
-        elif self.the_cat.status == "owsla rusasi":
+        elif self.the_cat.status.rank == CatRank.MEDIATOR_APPRENTICE:
             output = "screens.role.blurb_mediator_app"
-        elif self.the_cat.status == "kit":
+        elif self.the_cat.status.rank == CatRank.KITTEN:
             output = "screens.role.blurb_kitten"
-        elif self.the_cat.status == "newborn":
+        elif self.the_cat.status.rank == CatRank.NEWBORN:
             output = "screens.role.blurb_newborn"
         else:
             output = "screens.role.blurb_unknown"
 
-        return i18n.t(output, name=self.the_cat.name, warren=game.warren.name)
+        return i18n.t(output, name=self.the_cat.name, clan=game.warren.displayname)
 
     def exit_screen(self):
         self.back_button.kill()

@@ -29,27 +29,20 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["respect", "platonic"],
+                            "values": ["respect", "like"],
                             "amount": 10
                         },
                         {
                             "cats_to": ["patrol"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": 5
-                        },
-                        {
-                            "cats_to": ["p_l"],
-                            "cats_from": ["patrol"],
-                            "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -5
                         }
                     ]
                 },
                 {
-                    "text": "There are Clans beyond the desert, p_l explains. In high places and low, wet and, well, {PRONOUN/p_l/subject} {VERB/p_l/suppose/supposes} c_n are the rabbits from where it is dry. Greenleaf being the name of the dry season is older than the experience of there <i>being</i> a dry season. In those distant places, greenleaf is the season of plenty, not the harsh thing it is here.",
+                    "text": "There are Warrens beyond the desert, p_l explains. In high places and low, wet and, well, {PRONOUN/p_l/subject} {VERB/p_l/suppose/supposes} c_n are the rabbits from where it is dry. Greenleaf being the name of the dry season is older than the experience of there <i>being</i> a dry season. In those distant places, greenleaf is the season of plenty, not the harsh thing it is here.",
                     "exp": 30,
                     "weight": 20,
                     "art": "gen_bord_story",
@@ -60,22 +53,15 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["respect", "platonic"],
+                            "values": ["respect", "like"],
                             "amount": 10
                         },
                         {
                             "cats_to": ["patrol"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": 5
-                        },
-                        {
-                            "cats_to": ["p_l"],
-                            "cats_from": ["patrol"],
-                            "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -5
                         }
                     ]
                 }

@@ -55,7 +55,7 @@ Examples;
 
 ![image](https://github.com/ClanGenOfficial/clangen/assets/115410010/596a96f8-98db-43c5-a99b-faa0f8ef7773)
 
-_This rusasi doesn’t have any helper lines, because you can see from a glance that it is holding one front paw up and other legs down, and tail up. The raised paw can be interpreted from either side of the rabbit, but it doesn’t confuse the eye most times and thinking about perspective, the pose looks flat either way._
+_This rusasirah doesn’t have any helper lines, because you can see from a glance that it is holding one front paw up and other legs down, and tail up. The raised paw can be interpreted from either side of the rabbit, but it doesn’t confuse the eye most times and thinking about perspective, the pose looks flat either way._
 
 ![image](https://github.com/ClanGenOfficial/clangen/assets/115410010/842e9870-0b7a-4653-b5a3-282ce85dd23c)
 

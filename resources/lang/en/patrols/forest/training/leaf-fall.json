@@ -4,7 +4,7 @@
         "biome": ["forest"],
         "season": ["leaf-fall"],
         "types": ["training"],
-        "tags": ["romantic"],
+        "tags": ["romance"],
         "patrol_art": "gen_flower_date_warrior_warrior",
         "min_cats": 2,
         "max_cats": 2,
@@ -15,7 +15,7 @@
         "intro_text": "p_l thinks r_c is, well, really, just - uh, just swell, and {PRONOUN/p_l/subject} {VERB/p_l/think/thinks} r_c might like {PRONOUN/p_l/object} too. {PRONOUN/p_l/subject/CAP}{VERB/p_l/'ve/'s} been building up {PRONOUN/p_l/poss} confidence, and {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} going to ask r_c to spend some time together, just the two of them, this afternoon!",
         "decline_text": "Unfortunately, r_c is sent on an afternoon border patrol before p_l can say anything.",
         "chance_of_success": 60,
-        "relationship_constraint": ["romantic_20", "not_mates"],
+        "relationship_constraint": ["fancies", "not_mates"],
         "success_outcomes": [
             {
                 "text": "r_c agrees to the walk, tail-tip twitching with excitement. It's a feeling p_l openly mirrors, ears forward, pelt prickling with anxiety in the best way as they pad through the forest together. The two stop under a great oak and curl up in the piles of bright leaves beneath it.",
@@ -26,15 +26,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["r_c"],
-                        "mutual": true,
-                        "values": ["dislike", "jealous"],
-                        "amount": -5
                     }
                 ]
             },
@@ -47,15 +40,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["r_c"],
-                        "mutual": true,
-                        "values": ["dislike", "jealous"],
-                        "amount": -5
                     }
                 ]
             },
@@ -69,15 +55,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["r_c"],
-                        "mutual": true,
-                        "values": ["dislike", "jealous"],
-                        "amount": -5
                     }
                 ]
             }
@@ -92,15 +71,8 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": -5
-                    },
-                    {
-                        "cats_to": ["p_l"],
-                        "cats_from": ["r_c"],
-                        "mutual": true,
-                        "values": ["dislike", "jealous"],
-                        "amount": 5
                     }
                 ]
             }
@@ -116,7 +88,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
         "intro_text": "app1 crouches low behind some grass, searching for the ideal prey to fall to {PRONOUN/app1/poss} deadly claws. In front of the mighty hunter, a brightly colored beetle alights on a rock.",
@@ -129,12 +101,12 @@
                 "weight": 20
             },
             {
-                "text": "Ha! app1 leaps, tail lashing furiously as the beetle buzzes under {PRONOUN/app1/poss} forepaws, claws sheathed. {PRONOUN/app1/subject/CAP} {VERB/app1/bat/bats} the bug off the rock and onto the ground, pouncing after it, jumping and twisting as {PRONOUN/app1/poss} colorful prey flits around {PRONOUN/app1/poss} head in confused, concussed beetle-behavior, unused to being an rusasi's new favorite toy.",
+                "text": "Ha! app1 leaps, tail lashing furiously as the beetle buzzes under {PRONOUN/app1/poss} forepaws, claws sheathed. {PRONOUN/app1/subject/CAP} {VERB/app1/bat/bats} the bug off the rock and onto the ground, pouncing after it, jumping and twisting as {PRONOUN/app1/poss} colorful prey flits around {PRONOUN/app1/poss} head in confused, concussed beetle-behavior, unused to being an rusasirah's new favorite toy.",
                 "exp": 20,
                 "weight": 5
             },
             {
-                "text": "s_c pounces, flipping the beetle with soft paws and flopping over onto {PRONOUN/app1/poss} back, watching the insect scurry from one paw to the other, so completely entranced by its color and tiny, perfect legs that {PRONOUN/app1/subject} {VERB/app1/do/does}n't notice {PRONOUN/app1/poss} own skill catching and keeping the bug.",
+                "text": "s_c pounces, flipping the beetle with soft paws and flopping over onto {PRONOUN/app1/poss} back, watching the insect scurry from one paw to the other, so completely entranced by its color and tiny, perfect legs that {PRONOUN/app1/subject} {VERB/app1/don't/doesn't} notice {PRONOUN/app1/poss} own skill catching and keeping the bug.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["HUNTER,0"]
@@ -170,7 +142,7 @@
     "min_cats": 4,
     "max_cats": 6,
     "min_max_status": {
-        "rusasi": [2, 4],
+        "rusasirah": [2, 4],
         "normal adult": [2, 4]
     },
     "weight": 20,
@@ -187,22 +159,15 @@
                     "cats_to": ["patrol"],
                     "cats_from": ["patrol"],
                     "mutual": false,
-                    "values": ["platonic", "trust"],
+                    "values": ["like", "trust"],
                     "amount": 10
-                },
-                {
-                    "cats_to": ["patrol"],
-                    "cats_from": ["patrol"],
-                    "mutual": false,
-                    "values": ["dislike"],
-                    "amount": -5
                 }
             ]
         }
     ],
     "fail_outcomes": [
         {
-            "text": "app1? app1?! It takes a good while to recover the rusasi from the far-deeper-than-expected leaf drift. No one is hurt, but it certainly derails the training they were intending on doing.",
+            "text": "app1? app1?! It takes a good while to recover the rusasirah from the far-deeper-than-expected leaf drift. No one is hurt, but it certainly derails the training they were intending on doing.",
             "exp": 0,
             "weight": 20
         }
@@ -213,12 +178,12 @@
     "biome": ["forest"],
     "season": ["leaf-fall"],
     "types": ["training"],
-    "tags": ["romantic"],
+    "tags": ["romance"],
     "patrol_art": "train_general_intro",
     "min_cats": 4,
     "max_cats": 6,
     "min_max_status": {
-        "rusasi": [2, 4],
+        "rusasirah": [2, 4],
         "normal adult": [2, 2]
     },
     "weight": 20,
@@ -235,21 +200,14 @@
                     "cats_to": ["patrol"],
                     "cats_from": ["patrol"],
                     "mutual": false,
-                    "values": ["platonic", "trust"],
+                    "values": ["like", "trust"],
                     "amount": 10
-                },
-                {
-                    "cats_to": ["patrol"],
-                    "cats_from": ["patrol"],
-                    "mutual": false,
-                    "values": ["dislike"],
-                    "amount": -5
                 },
                 {
                     "cats_to": ["p_l"],
                     "cats_from": ["r_c"],
                     "mutual": true,
-                    "values": ["romantic"],
+                    "values": ["romance"],
                     "amount": 10
                 }
             ]
@@ -257,7 +215,7 @@
     ],
     "fail_outcomes": [
         {
-            "text": "app1? app1?! It takes a good while to recover the rusasi from the far-deeper-than-expected leaf drift. No one is hurt, but it certainly derails the training they were intending on doing.",
+            "text": "app1? app1?! It takes a good while to recover the rusasirah from the far-deeper-than-expected leaf drift. No one is hurt, but it certainly derails the training they were intending on doing.",
             "exp": 0,
             "weight": 20
         }
@@ -268,12 +226,12 @@
     "biome": ["forest"],
     "season": ["leaf-fall"],
     "types": ["training"],
-    "tags": ["romantic", "rom_two_apps"],
+    "tags": ["romance", "rom_two_apps"],
     "patrol_art": "train_general_intro",
     "min_cats": 4,
     "max_cats": 6,
     "min_max_status": {
-        "rusasi": [2, 2],
+        "rusasirah": [2, 2],
         "normal adult": [2, 4]
     },
     "weight": 20,
@@ -290,21 +248,14 @@
                     "cats_to": ["patrol"],
                     "cats_from": ["patrol"],
                     "mutual": false,
-                    "values": ["platonic", "trust"],
+                    "values": ["like", "trust"],
                     "amount": 10
-                },
-                {
-                    "cats_to": ["patrol"],
-                    "cats_from": ["patrol"],
-                    "mutual": false,
-                    "values": ["dislike"],
-                    "amount": -5
                 },
                 {
                     "cats_to": ["app1"],
                     "cats_from": ["app2"],
                     "mutual": true,
-                    "values": ["romantic"],
+                    "values": ["romance"],
                     "amount": 10
                 }
             ]
@@ -312,7 +263,7 @@
     ],
     "fail_outcomes": [
         {
-            "text": "app1? app1?! It takes a good while to recover the rusasi from the far-deeper-than-expected leaf drift. No one is hurt, but it certainly derails the training they were intending on doing.",
+            "text": "app1? app1?! It takes a good while to recover the rusasirah from the far-deeper-than-expected leaf drift. No one is hurt, but it certainly derails the training they were intending on doing.",
             "exp": 0,
             "weight": 20
         }
@@ -385,7 +336,7 @@
     "min_cats": 3,
     "max_cats": 6,
     "min_max_status": {
-        "rusasi": [1, 6]
+        "rusasirah": [1, 6]
     },
     "weight": 10,
     "intro_text": "While helping gathering herbs, app1 stumbles upon a bush of red berries.",
@@ -457,7 +408,7 @@
     "decline_text": "A leaf-fall rainshower chooses that moment to break - thematic, perhaps, but wet. The rabbits decide to pick up the story some other time.",
     "success_outcomes": [
         {
-                "text": "At first, few but the healer rabbits noticed the leaf-fall, its harshness, the snows early, the prey scarce. All noticed on the day Inle hissed - the great sun itself blinking dark under their anger. All paid heed to the omens then, and the Clans turned back to the Stars, begging for life and sun to return. They learned a lesson not soon forgotten.",
+                "text": "At first, few but the healer rabbits noticed the leaf-fall, its harshness, the snows early, the prey scarce. All noticed on the day Inle hissed - the great sun itself blinking dark under their anger. All paid heed to the omens then, and the Warrens turned back to the Stars, begging for life and sun to return. They learned a lesson not soon forgotten.",
                 "exp": 40,
                 "weight": 20,
                 "relationships": [
@@ -473,7 +424,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "r_c refuses to believe their ancestors ever blotted out the sun - not that they couldn't, but that they wouldn't ever hurt the Clans, their own beloved descendants.",
+                "text": "r_c refuses to believe their ancestors ever blotted out the sun - not that they couldn't, but that they wouldn't ever hurt the Warrens, their own beloved descendants.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -481,7 +432,7 @@
                         "cats_to": ["r_c"],
                         "cats_from": ["p_l"],
                         "mutual": false,
-                        "values": ["respect", "platonic"],
+                        "values": ["respect", "like"],
                         "amount": 5
                     }
                 ]
@@ -499,15 +450,8 @@
                         "cats_to": ["r_c"],
                         "cats_from": ["p_l"],
                         "mutual": false,
-                        "values": ["respect", "trust", "platonic"],
+                        "values": ["respect", "trust", "like"],
                         "amount": -5
-                    },
-                    {
-                        "cats_to": ["r_c"],
-                        "cats_from": ["p_l"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": 5
                     },
                     {
                         "cats_to": ["r_c"],

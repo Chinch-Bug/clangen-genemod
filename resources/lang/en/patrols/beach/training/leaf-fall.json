@@ -23,7 +23,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "trust"],
+                        "values": ["like", "trust"],
                         "amount": 5
                     }
                 ]
@@ -37,7 +37,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "trust"],
+                        "values": ["like", "trust"],
                         "amount": 5
                     }
                 ]
@@ -52,7 +52,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "trust"],
+                        "values": ["like", "trust"],
                         "amount": 5
                     }
                 ]
@@ -67,7 +67,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "trust"],
+                        "values": ["like", "trust"],
                         "amount": 5
                     }
                 ]
@@ -84,7 +84,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "trust"],
+                        "values": ["like", "trust"],
                         "amount": -5
                     }
                 ]
@@ -99,7 +99,7 @@
                         "cats_to": ["s_c"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "trust"],
+                        "values": ["like", "trust"],
                         "amount": -5
                     }
                 ]
@@ -133,7 +133,7 @@
                 "weight": 5
             },
             {
-                "text": "There are green and black lizards! s_c realizes they're not real immediately and decides to come back to this location to collect fake lizards for future pranks on Clanmates.",
+                "text": "There are green and black lizards! s_c realizes they're not real immediately and decides to come back to this location to collect fake lizards for future pranks on Warrenmates.",
                 "stat_trait": [
                     "adventurous",
                     "shameless",
@@ -172,7 +172,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [2, 2]
         },
         "weight": 20,
@@ -189,15 +189,8 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["app1"],
-                        "cats_from": ["app2"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             },
@@ -210,15 +203,8 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["app1"],
-                        "cats_from": ["app2"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             }
@@ -230,7 +216,7 @@
                 "weight": 20
             },
             {
-                "text": "s_c crowds forward, daringly letting {PRONOUN/s_c/poss} paws dangle over the edge as {PRONOUN/s_c/subject} {VERB/s_c/look/looks} at the chicks - and the ground crumbles. Both rusasirahs flinch backwards with yelps and yowls, but s_c is too close, on too unstable ground, and {PRONOUN/s_c/subject} {VERB/s_c/feel/feels} {PRONOUN/s_c/self} losing {PRONOUN/s_c/poss} grip. {PRONOUN/s_c/poss/CAP} heart jumps with terror as sudden pain sparks down {PRONOUN/s_c/poss} flank. The other rusasi digs fangs into s_c's side, saving {PRONOUN/s_c/poss} life, if not {PRONOUN/s_c/poss} pelt.",
+                "text": "s_c crowds forward, daringly letting {PRONOUN/s_c/poss} paws dangle over the edge as {PRONOUN/s_c/subject} {VERB/s_c/look/looks} at the chicks - and the ground crumbles. Both rusasirahs flinch backwards with yelps and yowls, but s_c is too close, on too unstable ground, and {PRONOUN/s_c/subject} {VERB/s_c/feel/feels} {PRONOUN/s_c/self} losing {PRONOUN/s_c/poss} grip. {PRONOUN/s_c/poss/CAP} heart jumps with terror as sudden pain sparks down {PRONOUN/s_c/poss} flank. The other rusasirah digs fangs into s_c's side, saving {PRONOUN/s_c/poss} life, if not {PRONOUN/s_c/poss} pelt.",
                 "exp": 0,
                 "weight": 10,
                 "stat_trait": [
@@ -250,7 +236,7 @@
                     }
                 ],
                 "history_text": {
-                    "scar": "r_c was scarred when another rusasi (violently) saved {PRONOUN/r_c/poss} life from a cliff fall during a youthful adventure."
+                    "scar": "r_c was scarred when another rusasirah (violently) saved {PRONOUN/r_c/poss} life from a cliff fall during a youthful adventure."
                 }
             }
         ]
@@ -265,7 +251,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [2, 2]
         },
         "weight": 20,
@@ -282,15 +268,8 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["app1"],
-                        "cats_from": ["app2"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             },
@@ -303,15 +282,8 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
-                    },
-                    {
-                        "cats_to": ["app1"],
-                        "cats_from": ["app2"],
-                        "mutual": false,
-                        "values": ["dislike"],
-                        "amount": -5
                     }
                 ]
             }
@@ -323,7 +295,7 @@
                 "weight": 20
             },
             {
-                "text": "s_c crowds forward, daringly letting {PRONOUN/s_c/poss} paws dangle over the edge as {PRONOUN/s_c/subject} {VERB/s_c/look/looks} at the chicks - and the ground crumbles. Both rusasirahs flinch backwards with yelps and yowls, but s_c is too close, on too unstable ground, and {PRONOUN/s_c/subject} {VERB/s_c/feel/feels} {PRONOUN/s_c/self} losing {PRONOUN/s_c/poss} grip. {PRONOUN/s_c/poss/CAP} heart jumps with terror as sudden pain sparks down {PRONOUN/s_c/poss} flank. The other rusasi digs {PRONOUN/r_c/poss} fangs into s_c's side, saving {PRONOUN/s_c/poss} life, if not {PRONOUN/s_c/poss} pelt.",
+                "text": "s_c crowds forward, daringly letting {PRONOUN/s_c/poss} paws dangle over the edge as {PRONOUN/s_c/subject} {VERB/s_c/look/looks} at the chicks - and the ground crumbles. Both rusasirahs flinch backwards with yelps and yowls, but s_c is too close, on too unstable ground, and {PRONOUN/s_c/subject} {VERB/s_c/feel/feels} {PRONOUN/s_c/self} losing {PRONOUN/s_c/poss} grip. {PRONOUN/s_c/poss/CAP} heart jumps with terror as sudden pain sparks down {PRONOUN/s_c/poss} flank. The other rusasirah digs {PRONOUN/r_c/poss} fangs into s_c's side, saving {PRONOUN/s_c/poss} life, if not {PRONOUN/s_c/poss} pelt.",
                 "exp": 0,
                 "weight": 10,
                 "stat_trait": [
@@ -343,8 +315,8 @@
                     }
                 ],
                 "history_text": {
-                    "scar": "r_c was scarred when another rusasi (violently) saved {PRONOUN/r_c/poss} life from a cliff fall during a youthful adventure.",
-                    "death": "r_c fell from a cliff as an rusasi when {PRONOUN/r_c/subject} took a stupid risk, cutting {PRONOUN/r_c/poss} life short."
+                    "scar": "r_c was scarred when another rusasirah (violently) saved {PRONOUN/r_c/poss} life from a cliff fall during a youthful adventure.",
+                    "death": "r_c fell from a cliff as an rusasirah when {PRONOUN/r_c/subject} took a stupid risk, cutting {PRONOUN/r_c/poss} life short."
                 }
             },
             {
@@ -362,7 +334,7 @@
                 "can_have_stat": ["app"],
                 "dead_cats": ["s_c"],
                 "history_text": {
-                    "scar": "r_c was scarred when another rusasi (violently) saved {PRONOUN/r_c/poss} life from a cliff fall during a youthful adventure.",
+                    "scar": "r_c was scarred when another rusasirah (violently) saved {PRONOUN/r_c/poss} life from a cliff fall during a youthful adventure.",
                     "death": "r_c fell from a cliff when {PRONOUN/r_c/subject} took a stupid risk, cutting {PRONOUN/r_c/poss} life short."
                 }
             }
@@ -435,7 +407,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 10,
         "intro_text": "While helping gathering herbs, app1 stumbles upon a bush of red berries.",
@@ -498,7 +470,7 @@
         "min_cats": 4,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi":[1, 6],
+            "rusasirah":[1, 6],
             "normal adult": [1, 6]
             },
         "weight": 40,
@@ -519,7 +491,7 @@
                             "cats_to": ["s_c"],
                             "cats_from": ["app1"],
                             "mutual": false,
-                            "values": ["respect", "platonic", "comfort", "trust"],
+                            "values": ["respect", "like", "comfort", "trust"],
                             "amount": 10
                         },
                         {
@@ -528,13 +500,6 @@
                             "mutual": false,
                             "values": ["respect", "trust"],
                             "amount": 5
-                        },
-                        {
-                            "cats_to": ["s_c"],
-                            "cats_from": ["app1"],
-                            "mutual": true,
-                            "values": ["dislike"],
-                            "amount": -5
                         }
                     ]
                 },
@@ -550,7 +515,7 @@
                             "cats_to": ["s_c"],
                             "cats_from": ["app1"],
                             "mutual": false,
-                            "values": ["respect", "platonic", "comfort", "trust"],
+                            "values": ["respect", "like", "comfort", "trust"],
                             "amount": 10
                         },
                         {
@@ -559,13 +524,6 @@
                             "mutual": false,
                             "values": ["respect", "trust"],
                             "amount": 5
-                        },
-                        {
-                            "cats_to": ["s_c"],
-                            "cats_from": ["app1"],
-                            "mutual": true,
-                            "values": ["dislike"],
-                            "amount": -5
                         }
                     ]
                 },
@@ -581,7 +539,7 @@
                             "cats_to": ["s_c"],
                             "cats_from": ["app1"],
                             "mutual": false,
-                            "values": ["respect", "platonic", "comfort", "trust"],
+                            "values": ["respect", "like", "comfort", "trust"],
                             "amount": 10
                         },
                         {
@@ -590,13 +548,6 @@
                             "mutual": false,
                             "values": ["respect", "trust"],
                             "amount": 5
-                        },
-                        {
-                            "cats_to": ["s_c"],
-                            "cats_from": ["app1"],
-                            "mutual": true,
-                            "values": ["dislike"],
-                            "amount": -5
                         }
                     ]
                 }
@@ -627,7 +578,7 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["app1"],
                             "mutual": false,
-                            "values": ["respect", "platonic", "comfort", "trust"],
+                            "values": ["respect", "like", "comfort", "trust"],
                             "amount": -5
                         },
                         {
@@ -646,7 +597,7 @@
                         }
                     ],
                     "history_text": {
-                        "scar":"m_c was scarred from the bite of the cold rock pool {PRONOUN/m_c/subject} swam in as an rusasi.",
+                        "scar":"m_c was scarred from the bite of the cold rock pool {PRONOUN/m_c/subject} swam in as an rusasirah.",
                         "reg_death": "Falling into a cold rock pool gave m_c problems that eventually resulted in {PRONOUN/m_c/poss} death.",
                         "lead_death": "falling into a cold rock pool gave m_c problems that eventually resulted in {PRONOUN/m_c/poss} death"
                     }

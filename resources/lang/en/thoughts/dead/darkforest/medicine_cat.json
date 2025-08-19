@@ -4,11 +4,11 @@
         "thoughts": [
           "Is indicating the closest bush of deathberries to r_c",
             "Is deliberately whispering contradicting herbs to r_c so {PRONOUN/r_c/subject} will make a mistake",
-          "Wants to switch the places herbs are stored in so r_c will accidentally poison a Clanmate"
+          "Wants to switch the places herbs are stored in so r_c will accidentally poison a Warrenmate"
             ],  
         "random_status_constraint": [
                 "healer",
-                "healer rusasi"
+                "healer rusasirah"
             ],
          "random_living_status": [
                 "living"
@@ -22,7 +22,7 @@
                "Is trying to teach r_c poisonous herbs in {PRONOUN/r_c/poss} dreams"
             ],
         "random_status_constraint": [
-          "healer rusasi"
+          "healer rusasirah"
         ],
         "random_living_status" : [
               "living"

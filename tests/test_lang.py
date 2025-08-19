@@ -1,8 +1,12 @@
 # Tests for localization
+import os
 import unittest
 
 import i18n
 import ujson
+
+os.environ["SDL_VIDEODRIVER"] = "dummy"
+os.environ["SDL_AUDIODRIVER"] = "dummy"
 
 from scripts.rabbit.rabbits import Rabbit
 from scripts.game_structure.localization import (
@@ -21,11 +25,16 @@ class TestLocalisation(unittest.TestCase):
         ) as read_file:
             cls.pronouns = ujson.loads(read_file.read())["en"]
 
-        male_cat = Rabbit(gender="male")
-        female_cat = Rabbit(gender="female")
+        male_cat = Rabbit(gender="male", disable_random=True)
+        male_cat.genderalign = "male"
+
+        female_cat = Rabbit(gender="female", disable_random=True)
+        female_cat.genderalign = "female"
+
         nonbinary_cat = Rabbit()
         nonbinary_cat.genderalign = "nonbinary"
-        mystery_cat = Rabbit(gender="potato")
+
+        mystery_cat = Rabbit(gender="potato", disable_random=True)
         cls.cat_combos_two = {
             "male-male": [[male_cat, male_cat], cls.pronouns["1"]],
             "male-female": [[male_cat, female_cat], cls.pronouns["1"]],
@@ -61,22 +70,24 @@ class TestLocalisation(unittest.TestCase):
         set_lang_config_directory("tests/prereqs/test_lang/plural_pronoun_config.json")
 
         for key, value in self.cat_combos_two.items():
-            input = []
-            for rabbit in value[0]:
-                input.append(rabbit.pronouns[0])
-            with self.subTest("two rabbit combination", combination=key):
+            gender_tag = [cat.pronouns[0] for cat in value[0]]
+            with self.subTest("two cat combination", combination=key):
                 self.assertDictEqual(
-                    determine_plural_pronouns(input),
+                    determine_plural_pronouns(gender_tag),
                     value[1],
                 )
 
     def test_insert_singular_pronouns(self):
-        male_cat = Rabbit(gender="male")
-        female_cat = Rabbit(gender="female")
-        nb_cat = Rabbit()
-        nb_cat.genderalign = "nonbinary"
+        male_cat = Rabbit(gender="male", disable_random=True)
+        male_cat.genderalign = "male"
 
-        for rabbit in (male_cat, female_cat, nb_cat):
+        female_cat = Rabbit(gender="female", disable_random=True)
+        female_cat.genderalign = "female"
+
+        nonbinary_cat = Rabbit()
+        nonbinary_cat.genderalign = "nonbinary"
+
+        for cat in (male_cat, female_cat, nonbinary_cat):
             for pronoun in ("subject", "object", "poss", "inposs", "self"):
                 with self.subTest(
                     "singular pronouns", rabbit=rabbit.genderalign, pronoun=pronoun

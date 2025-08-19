@@ -1,18 +1,18 @@
 {
   "app_0": [
     [
-      "rusasi",
+      "rusasirah",
       "general_mentor",
       "general_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "m_c has reached the age of six moons and has been made an rusasi."
+    "m_c has reached the age of six moons and has been made an rusasirah."
   ],
   "app_1": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -20,11 +20,11 @@
       "general_backstory",
       "all_traits"
     ],
-    "m_c has reached the age of six moons and has been made an rusasi, with (mentor) as {PRONOUN/m_c/poss} mentor."
+    "m_c has reached the age of six moons and has been made an rusasirah, with (mentor) as {PRONOUN/m_c/poss} mentor."
   ],
   "app_2": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -32,11 +32,11 @@
       "general_backstory",
       "all_traits"
     ],
-    "Newly-made rusasi m_c touches noses with {PRONOUN/m_c/poss} new mentor, (mentor)."
+    "Newly-made rusasirah m_c touches noses with {PRONOUN/m_c/poss} new mentor, (mentor)."
   ],
   "app_3": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -51,7 +51,7 @@
   ],
   "app_4": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -74,7 +74,7 @@
   ],
   "app_5": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -92,7 +92,7 @@
   ],
   "app_6": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -113,7 +113,7 @@
   ],
   "app_7": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -128,7 +128,7 @@
   ],
   "app_8": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -148,7 +148,7 @@
   ],
   "app_9": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -165,7 +165,7 @@
   ],
   "app_10": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -187,7 +187,7 @@
   ],
   "app_11": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -203,11 +203,11 @@
       "wise",
       "cunning"
     ],
-    "m_c sits up straighter as {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} called forward to be made an rusasi. While {PRONOUN/m_c/subject} {VERB/m_c/try/tries} to look calm and collected, {PRONOUN/m_c/subject} still {VERB/m_c/tremble/trembles} a bit as {PRONOUN/m_c/subject} {VERB/m_c/touch/touches} noses with (mentor)."
+    "m_c sits up straighter as {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} called forward to be made an rusasirah. While {PRONOUN/m_c/subject} {VERB/m_c/try/tries} to look calm and collected, {PRONOUN/m_c/subject} still {VERB/m_c/tremble/trembles} a bit as {PRONOUN/m_c/subject} {VERB/m_c/touch/touches} noses with (mentor)."
   ],
   "app_12": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -228,7 +228,7 @@
   ],
   "app_13": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -247,22 +247,22 @@
       "flamboyant",
       "rebellious"
     ],
-    "m_c fidgets impatiently beside (mentor) as {PRONOUN/m_c/subject} {VERB/m_c/wait/waits} for the meeting to end. {PRONOUN/m_c/subject/CAP}{VERB/m_c/'re/'s} finally an rusasi! {PRONOUN/m_c/subject/CAP} {VERB/m_c/want/wants} to hurry up, get out there and go, go, go!"
+    "m_c fidgets impatiently beside (mentor) as {PRONOUN/m_c/subject} {VERB/m_c/wait/waits} for the meeting to end. {PRONOUN/m_c/subject/CAP}{VERB/m_c/'re/'s} finally an rusasirah! {PRONOUN/m_c/subject/CAP} {VERB/m_c/want/wants} to hurry up, get out there and go, go, go!"
   ],
   "app_14": [
     [
-      "rusasi",
+      "rusasirah",
       "no_mentor",
       "general_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "Newly-made rusasi m_c wishes {PRONOUN/m_c/subject} had someone to mentor {PRONOUN/m_c/object}."
+    "Newly-made rusasirah m_c wishes {PRONOUN/m_c/subject} had someone to mentor {PRONOUN/m_c/object}."
   ],
   "app_15": [
     [
-      "rusasi",
+      "rusasirah",
       "no_mentor",
       "general_parents",
       "general_leader",
@@ -273,7 +273,7 @@
   ],
   "app_16": [
     [
-      "rusasi",
+      "rusasirah",
       "no_mentor",
       "general_parents",
       "general_leader",
@@ -284,7 +284,7 @@
   ],
   "app_17": [
     [
-      "rusasi",
+      "rusasirah",
       "no_mentor",
       "general_parents",
       "general_leader",
@@ -295,7 +295,7 @@
   ],
   "app_18": [
     [
-      "rusasi",
+      "rusasirah",
       "no_mentor",
       "general_parents",
       "general_leader",
@@ -306,7 +306,7 @@
   ],
   "app_19": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -318,7 +318,7 @@
   ],
   "app_20": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -344,7 +344,7 @@
   ],
   "app_21": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -361,7 +361,7 @@
   ],
   "app_22": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -380,11 +380,11 @@
       "wise",
       "thoughtful"
     ],
-    "Surprising (mentor), the first thing that m_c does after {PRONOUN/m_c/poss} rusasi ceremony is gather moss, just to make sure everyone has fresh bedding."
+    "Surprising (mentor), the first thing that m_c does after {PRONOUN/m_c/poss} rusasirah ceremony is gather moss, just to make sure everyone has fresh bedding."
   ],
   "app_23": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -406,7 +406,7 @@
   ],
   "app_24": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -428,7 +428,7 @@
   ],
   "app_25": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -447,7 +447,7 @@
   ],
   "app_26": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -470,7 +470,7 @@
   ],
   "app_27": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -492,11 +492,11 @@
       "oblivious",
       "flamboyant"
     ],
-    "As m_c touches noses with (mentor), {PRONOUN/m_c/subject} {VERB/m_c/hope/hopes} {PRONOUN/m_c/subject}'ll get to do something that will really impress the Warren on {PRONOUN/m_c/poss} first day. Maybe {PRONOUN/m_c/subject} could catch a big, fat rabbit? Or chase off a fox! That'll show the Warren {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} the best rusasi anyone's ever seen!"
+    "As m_c touches noses with (mentor), {PRONOUN/m_c/subject} {VERB/m_c/hope/hopes} {PRONOUN/m_c/subject}'ll get to do something that will really impress the Warren on {PRONOUN/m_c/poss} first day. Maybe {PRONOUN/m_c/subject} could catch a big, fat rabbit? Or chase off a fox! That'll show the Warren {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} the best rusasirah anyone's ever seen!"
   ],
   "app_28": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -517,7 +517,7 @@
   ],
   "app_29": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -538,7 +538,7 @@
   ],
   "app_30": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -552,11 +552,11 @@
       "grumpy",
       "rebellious"
     ],
-    "m_c has been pestering everyone for moons on when {PRONOUN/m_c/subject} finally {VERB/m_c/get/gets} to be an rusasi, and everyone is relieved that they're finally free of the young rabbit's nagging... Until {PRONOUN/m_c/subject} {VERB/m_c/start/starts} asking about when {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} going to be a rabbit as soon as the meeting ends."
+    "m_c has been pestering everyone for moons on when {PRONOUN/m_c/subject} finally {VERB/m_c/get/gets} to be an rusasirah, and everyone is relieved that they're finally free of the young rabbit's nagging... Until {PRONOUN/m_c/subject} {VERB/m_c/start/starts} asking about when {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} going to be a rabbit as soon as the meeting ends."
   ],
   "app_31": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -573,7 +573,7 @@
   ],
   "app_32": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -591,7 +591,7 @@
   ],
   "app_33": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "general_parents",
@@ -604,7 +604,7 @@
   ],
   "app_34": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "general_parents",
       "no_leader",
@@ -615,40 +615,40 @@
   ],
   "app_35": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "general_parents",
       "no_leader",
       "general_backstory",
       "all_traits"
     ],
-    "The Warren cheers for the new rusasi, m_c. They allow {PRONOUN/m_c/object} to choose {PRONOUN/m_c/poss} own mentor: m_c chooses (mentor)."
+    "The Warren cheers for the new rusasirah, m_c. They allow {PRONOUN/m_c/object} to choose {PRONOUN/m_c/poss} own mentor: m_c chooses (mentor)."
   ],
   "app_36": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "general_parents",
       "no_leader",
       "general_backstory",
       "all_traits"
     ],
-    "With m_c's rusasi ceremony completed, there's still the problem of figuring out who will mentor {PRONOUN/m_c/object}. (mentor) steps forward first, so m_c touches noses with {PRONOUN/(mentor)/object}."
+    "With m_c's rusasirah ceremony completed, there's still the problem of figuring out who will mentor {PRONOUN/m_c/object}. (mentor) steps forward first, so m_c touches noses with {PRONOUN/(mentor)/object}."
   ],
   "app_37": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "alive1_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-      "Watching with pride as m_c is named and given to (mentor) to rusasi under, p1 {VERB/p1/know/knows} that {PRONOUN/(mentor)/subject} {VERB/(mentor)/were/was} a good choice."
+      "Watching with pride as m_c is named and given to (mentor) to rusasirah under, p1 {VERB/p1/know/knows} that {PRONOUN/(mentor)/subject} {VERB/(mentor)/were/was} a good choice."
   ],
   "app_38": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "alive1_parents",
@@ -660,7 +660,7 @@
   ],
   "app_39": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "alive1_parents",
@@ -668,11 +668,11 @@
       "general_backstory",
       "all_traits"
     ],
-    "Even though {PRONOUN/m_c/subject} {VERB/m_c/are/is} excited to finally be made an rusasi, it takes a bit of coaxing by p1 for (old_name) to step forward for {PRONOUN/m_c/poss} ceremony. p1 watches in pride as {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} named m_c and touches noses with (mentor)."
+    "Even though {PRONOUN/m_c/subject} {VERB/m_c/are/is} excited to finally be made an rusasirah, it takes a bit of coaxing by p1 for (old_name) to step forward for {PRONOUN/m_c/poss} ceremony. p1 watches in pride as {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} named m_c and touches noses with (mentor)."
   ],
   "app_40": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "dead1_parents",
@@ -684,7 +684,7 @@
   ],
   "app_41": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "dead1_parents",
@@ -692,11 +692,11 @@
       "clanborn",
       "all_traits"
     ],
-    "m_c wishes that {PRONOUN/m_c/subject} could be happier about being made an rusasi as {PRONOUN/m_c/subject} {VERB/m_c/touch/touches} noses with (mentor), but all {PRONOUN/m_c/subject} can think about is how much {PRONOUN/m_c/subject} {VERB/m_c/wish/wishes} that dead_par1 was still there to chant {PRONOUN/m_c/poss} name with the rest of the Warren."
+    "m_c wishes that {PRONOUN/m_c/subject} could be happier about being made an rusasirah as {PRONOUN/m_c/subject} {VERB/m_c/touch/touches} noses with (mentor), but all {PRONOUN/m_c/subject} can think about is how much {PRONOUN/m_c/subject} {VERB/m_c/wish/wishes} that dead_par1 was still there to chant {PRONOUN/m_c/poss} name with the rest of the Warren."
   ],
   "app_42": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "dead1_parents",
@@ -708,7 +708,7 @@
   ],
   "app_43": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "dead1_parents",
@@ -720,7 +720,7 @@
   ],
   "app_44": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "dead1_parents",
@@ -732,7 +732,7 @@
   ],
   "app_45": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "dead2_parents",
@@ -744,18 +744,18 @@
   ],
   "app_46": [
     [
-      "rusasi",
+      "rusasirah",
       "general_mentor",
       "alive2_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "(old_name) runs up to the front of the crowd, eager to get {PRONOUN/m_c/poss} new name. When {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} called m_c for the first time, p1 and p2's voices can be heard the loudest as the Warren welcomes the new rusasi."
+    "(old_name) runs up to the front of the crowd, eager to get {PRONOUN/m_c/poss} new name. When {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} called m_c for the first time, p1 and p2's voices can be heard the loudest as the Warren welcomes the new rusasirah."
   ],
   "app_47": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "dead2_parents",
@@ -767,7 +767,7 @@
   ],
   "app_48": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "dead2_parents",
@@ -775,11 +775,11 @@
       "clanborn",
       "all_traits"
     ],
-    "m_c wishes that {PRONOUN/m_c/subject} could be happier about being made an rusasi as {PRONOUN/m_c/subject} {VERB/m_c/touch/touches} noses with (mentor), but all {PRONOUN/m_c/subject} can think about is how much {PRONOUN/m_c/subject} {VERB/m_c/wish/wishes} that dead_par1 and dead_par2 were still there to chant {PRONOUN/m_c/poss} name with the rest of the Warren."
+    "m_c wishes that {PRONOUN/m_c/subject} could be happier about being made an rusasirah as {PRONOUN/m_c/subject} {VERB/m_c/touch/touches} noses with (mentor), but all {PRONOUN/m_c/subject} can think about is how much {PRONOUN/m_c/subject} {VERB/m_c/wish/wishes} that dead_par1 and dead_par2 were still there to chant {PRONOUN/m_c/poss} name with the rest of the Warren."
   ],
   "app_49": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "dead2_parents",
@@ -791,7 +791,7 @@
   ],
   "app_50": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "dead2_parents",
@@ -803,7 +803,7 @@
   ],
   "app_51": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "dead2_parents",
@@ -815,7 +815,7 @@
   ],
   "app_52": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "yes_leader_mentor",
       "dead2_parents",
@@ -827,7 +827,7 @@
   ],
   "app_53": [
     [
-      "rusasi",
+      "rusasirah",
       "yes_leader_mentor",
       "general_parents",
       "yes_leader",
@@ -838,7 +838,7 @@
   ],
   "app_54":[
     [
-      "rusasi",
+      "rusasirah",
       "yes_mentor",
       "general_parents",
       "yes_leader",
@@ -851,18 +851,18 @@
   ],
   "med_app_0": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "general_mentor",
       "general_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-      "(old_name), like every young kit, had dreams of becoming a rabbit from a young age. However, as {PRONOUN/m_c/subject} grew older, {PRONOUN/m_c/subject} knew that {PRONOUN/m_c/poss} destiny lay in the healer den. {PRONOUN/m_c/subject/CAP} happily {VERB/m_c/take/takes} up {PRONOUN/m_c/poss} new place as a healer rusasi - looking forward to healing {PRONOUN/m_c/poss} Clanmates for many moons to come."
+      "(old_name), like every young kit, had dreams of becoming a rabbit from a young age. However, as {PRONOUN/m_c/subject} grew older, {PRONOUN/m_c/subject} knew that {PRONOUN/m_c/poss} destiny lay in the healer den. {PRONOUN/m_c/subject/CAP} happily {VERB/m_c/take/takes} up {PRONOUN/m_c/poss} new place as a healer rusasirah - looking forward to healing {PRONOUN/m_c/poss} Warrenmates for many moons to come."
   ],
   "med_app_1": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
@@ -873,7 +873,7 @@
   ],
   "med_app_2": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
@@ -884,18 +884,18 @@
   ],
   "med_app_3": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "Interested in all the myths and stories told by the elders and queens, m_c decides to become a healer rusasi, hoping to someday speak to those gone before. (mentor) loves {PRONOUN/m_c/poss} determination and eagerness to learn and agrees to take {PRONOUN/m_c/object} on as {PRONOUN/(mentor)/poss} rusasi."
+    "Interested in all the myths and stories told by the elders and queens, m_c decides to become a healer rusasirah, hoping to someday speak to those gone before. (mentor) loves {PRONOUN/m_c/poss} determination and eagerness to learn and agrees to take {PRONOUN/m_c/object} on as {PRONOUN/(mentor)/poss} rusasirah."
   ],
   "med_app_4": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
@@ -906,7 +906,7 @@
   ],
   "med_app_5": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
@@ -914,11 +914,11 @@
       "ambitious",
       "arrogant"
     ],
-    "Wanting to stand out among {PRONOUN/m_c/poss} Clanmates more, m_c decides to become a healer and is apprenticed to (mentor)."
+    "Wanting to stand out among {PRONOUN/m_c/poss} Warrenmates more, m_c decides to become a healer and is apprenticed to (mentor)."
   ],
   "med_app_6": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
@@ -929,7 +929,7 @@
   ],
   "med_app_7": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
@@ -938,55 +938,55 @@
       "insecure",
       "gloomy"
     ],
-    "Worried {PRONOUN/m_c/subject} may not be a good hunter or fighter but still wanting to make {PRONOUN/m_c/poss} Warren proud somehow, m_c decides to become a healer rusasi under (mentor)."
+    "Worried {PRONOUN/m_c/subject} may not be a good hunter or fighter but still wanting to make {PRONOUN/m_c/poss} Warren proud somehow, m_c decides to become a healer rusasirah under (mentor)."
   ],
   "med_app_8": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "(mentor) stands before the Warren and announces that {PRONOUN/(mentor)/subject} won't be there forever and that it is time {PRONOUN/(mentor)/subject} took on an rusasi. {PRONOUN/(mentor)/subject/CAP} {VERB/(mentor)/tell/tells} the Warren that {PRONOUN/(mentor)/subject} {VERB/(mentor)/have/has} specifically chosen (old_name), now m_c, to be {PRONOUN/(mentor)/poss} new rusasi."
+    "(mentor) stands before the Warren and announces that {PRONOUN/(mentor)/subject} won't be there forever and that it is time {PRONOUN/(mentor)/subject} took on an rusasirah. {PRONOUN/(mentor)/subject/CAP} {VERB/(mentor)/tell/tells} the Warren that {PRONOUN/(mentor)/subject} {VERB/(mentor)/have/has} specifically chosen (old_name), now m_c, to be {PRONOUN/(mentor)/poss} new rusasirah."
   ],
   "med_app_9": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "(mentor) has no doubt in {PRONOUN/(mentor)/poss} mind of who {PRONOUN/(mentor)/poss} new rusasi should be. (old_name) has always been looking for an excuse to be in {PRONOUN/(mentor)/poss} den, asking endless questions about what each herb is and what it's used for. As (mentor) announces that the newly named m_c will be {PRONOUN/(mentor)/poss} rusasi, {PRONOUN/(mentor)/subject} {VERB/(mentor)/see/sees} m_c's eyes shining in delight and excitement. (mentor) knows {PRONOUN/(mentor)/subject} {VERB/(mentor)/were/was} right in choosing {PRONOUN/m_c/object}."
+    "(mentor) has no doubt in {PRONOUN/(mentor)/poss} mind of who {PRONOUN/(mentor)/poss} new rusasirah should be. (old_name) has always been looking for an excuse to be in {PRONOUN/(mentor)/poss} den, asking endless questions about what each herb is and what it's used for. As (mentor) announces that the newly named m_c will be {PRONOUN/(mentor)/poss} rusasirah, {PRONOUN/(mentor)/subject} {VERB/(mentor)/see/sees} m_c's eyes shining in delight and excitement. (mentor) knows {PRONOUN/(mentor)/subject} {VERB/(mentor)/were/was} right in choosing {PRONOUN/m_c/object}."
   ],
   "med_app_10": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "no_mentor",
       "general_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "Newly-made healer rusasi m_c learns the way of healing through guidance from Inle."
+    "Newly-made healer rusasirah m_c learns the way of healing through guidance from Inle."
   ],
   "med_app_11": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "no_mentor",
       "general_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "Inle speaks: the new healer rusasi shall be m_c. m_c is unsure if {PRONOUN/m_c/subject} {VERB/m_c/are/is} ready for the role without a mentor, but the stars promise to guide {PRONOUN/m_c/object}."
+    "Inle speaks: the new healer rusasirah shall be m_c. m_c is unsure if {PRONOUN/m_c/subject} {VERB/m_c/are/is} ready for the role without a mentor, but the stars promise to guide {PRONOUN/m_c/object}."
   ],
   "med_app_12": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "no_mentor",
       "general_parents",
       "general_leader",
@@ -997,7 +997,7 @@
   ],
   "med_app_13": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "no_mentor",
       "general_parents",
       "general_leader",
@@ -1008,84 +1008,84 @@
   ],
   "med_app_14": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "no_mentor",
       "general_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "Interested in herbs even in {PRONOUN/m_c/poss} kithood, m_c is eager to be made the new healer rusasi and learn how to heal from those who came before {PRONOUN/m_c/object}."
+    "Interested in herbs even in {PRONOUN/m_c/poss} kithood, m_c is eager to be made the new healer rusasirah and learn how to heal from those who came before {PRONOUN/m_c/object}."
   ],
   "med_app_15": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "no_mentor",
       "general_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "The thought alone of fighting and hurting another rabbit makes m_c shiver. Knowing the Warren needs a healer, {PRONOUN/m_c/subject} {VERB/m_c/seize/seizes} the chance to do good for the Warren without harming others. {PRONOUN/m_c/subject/CAP} {VERB/m_c/take/takes} on the role of healer rusasi."
+    "The thought alone of fighting and hurting another rabbit makes m_c shiver. Knowing the Warren needs a healer, {PRONOUN/m_c/subject} {VERB/m_c/seize/seizes} the chance to do good for the Warren without harming others. {PRONOUN/m_c/subject/CAP} {VERB/m_c/take/takes} on the role of healer rusasirah."
   ],
   "med_app_16": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "no_mentor",
       "general_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "Knowing the Warren is in desperate need of a healer and wanting to do something to stand out and seem more important, m_c announces mid-meeting that {PRONOUN/m_c/subject} {VERB/m_c/want/wants} to be the new healer rusasi."
+    "Knowing the Warren is in desperate need of a healer and wanting to do something to stand out and seem more important, m_c announces mid-meeting that {PRONOUN/m_c/subject} {VERB/m_c/want/wants} to be the new healer rusasirah."
   ],
   "med_app_17": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "general_mentor",
       "dead1_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "m_c decides to become a healer rusasi in hopes that {PRONOUN/m_c/subject} will be able to see dead_par1 in Inle."
+    "m_c decides to become a healer rusasirah in hopes that {PRONOUN/m_c/subject} will be able to see dead_par1 in Inle."
   ],
   "med_app_18": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "general_mentor",
       "dead1_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "As the new healer rusasi, m_c dreams of Inle for the first time. {PRONOUN/m_c/subject/CAP} {VERB/m_c/are/is} greeted by many Inle rabbits, one of whom {PRONOUN/m_c/subject} {VERB/m_c/recognize/recognizes} as dead_par1, who is watching with pride as the rest of Inle's ranks accept the new healer rusasi."
+    "As the new healer rusasirah, m_c dreams of Inle for the first time. {PRONOUN/m_c/subject/CAP} {VERB/m_c/are/is} greeted by many Inle rabbits, one of whom {PRONOUN/m_c/subject} {VERB/m_c/recognize/recognizes} as dead_par1, who is watching with pride as the rest of Inle's ranks accept the new healer rusasirah."
   ],
   "med_app_19": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "general_mentor",
       "dead2_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "m_c decides to become a healer rusasi in hopes that {PRONOUN/m_c/subject} will be able to see dead_par1 and dead_par2 in Inle."
+    "m_c decides to become a healer rusasirah in hopes that {PRONOUN/m_c/subject} will be able to see dead_par1 and dead_par2 in Inle."
   ],
   "med_app_20": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "general_mentor",
       "dead2_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "As the new healer rusasi, m_c dreams of Inle for the first time. {PRONOUN/m_c/subject/CAP} {VERB/m_c/are/is} greeted by many Inle rabbits, two of whom {PRONOUN/m_c/subject} {VERB/m_c/recognize/recognizes} as dead_par1 and dead_par2, who are watching with pride as the rest of Inle's ranks accept the new healer rusasi."
+    "As the new healer rusasirah, m_c dreams of Inle for the first time. {PRONOUN/m_c/subject/CAP} {VERB/m_c/are/is} greeted by many Inle rabbits, two of whom {PRONOUN/m_c/subject} {VERB/m_c/recognize/recognizes} as dead_par1 and dead_par2, who are watching with pride as the rest of Inle's ranks accept the new healer rusasirah."
   ],
   "med_app_21": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "general_mentor",
       "general_leader",
       "general_backstory",
@@ -1095,17 +1095,17 @@
   ],
   "med_app_22": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "general_mentor",
       "general_leader",
       "general_backstory",
       "wise"
     ],
-      "m_c sees no reason to sully {PRONOUN/m_c/poss} claws with blood, {PRONOUN/m_c/subject} {VERB/m_c/are/is} far more interested in the knowledge and wisdom that can be gained by a healer rusasi. (mentor) promises to teach {PRONOUN/m_c/object} all {PRONOUN/(mentor)/subject} {VERB/(mentor)/know/knows} and they go into the healer den together immediately after the ceremony."
+      "m_c sees no reason to sully {PRONOUN/m_c/poss} claws with blood, {PRONOUN/m_c/subject} {VERB/m_c/are/is} far more interested in the knowledge and wisdom that can be gained by a healer rusasirah. (mentor) promises to teach {PRONOUN/m_c/object} all {PRONOUN/(mentor)/subject} {VERB/(mentor)/know/knows} and they go into the healer den together immediately after the ceremony."
   ],
   "med_app_23": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "general_mentor",
       "general_leader",
       "general_backstory",
@@ -1115,7 +1115,7 @@
   ],
   "med_app_24": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "general_mentor",
       "general_leader",
       "general_backstory",
@@ -1125,7 +1125,7 @@
   ],
   "med_app_25": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "general_mentor",
       "general_leader",
       "general_backstory",
@@ -1139,7 +1139,7 @@
   ],
   "med_app_26": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "general_mentor",
       "general_leader",
       "general_backstory",
@@ -1147,31 +1147,31 @@
       "arrogant",
       "rebellious"
     ],
-      "Right after {PRONOUN/m_c/poss} healer rusasi ceremony, m_c declares that {PRONOUN/m_c/subject} won't hesitate to tell (mentor) if {PRONOUN/(mentor)/subject}{VERB/(mentor)/'re/'s} being a mouse-brain. All the other rabbits immediately gasp and look to (mentor)'s reaction. They relax as {PRONOUN/(mentor)/subject} only {VERB/(mentor)/laugh/laughs} and says that m_c better prove that {PRONOUN/m_c/subject} {VERB/m_c/have/has} the skills to back that up."
+      "Right after {PRONOUN/m_c/poss} healer rusasirah ceremony, m_c declares that {PRONOUN/m_c/subject} won't hesitate to tell (mentor) if {PRONOUN/(mentor)/subject}{VERB/(mentor)/'re/'s} being a mouse-brain. All the other rabbits immediately gasp and look to (mentor)'s reaction. They relax as {PRONOUN/(mentor)/subject} only {VERB/(mentor)/laugh/laughs} and says that m_c better prove that {PRONOUN/m_c/subject} {VERB/m_c/have/has} the skills to back that up."
   ],
   "med_app_27": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "general_mentor",
       "general_leader",
       "general_backstory",
       "vengeful"
     ],
-      "While m_c does not really like other rabbits, {PRONOUN/m_c/subject} {VERB/m_c/dislike/dislikes} fighting even more. {PRONOUN/m_c/subject/CAP} {VERB/m_c/prefer/prefers} a more cunning approach, and being a healer gives {PRONOUN/m_c/object} the opportunity to do so. (mentor) takes {PRONOUN/m_c/object} on as rusasi, admiring {PRONOUN/m_c/poss} sharp tongue and the cunning gleam in {PRONOUN/m_c/poss} eyes."
+      "While m_c does not really like other rabbits, {PRONOUN/m_c/subject} {VERB/m_c/dislike/dislikes} fighting even more. {PRONOUN/m_c/subject/CAP} {VERB/m_c/prefer/prefers} a more cunning approach, and being a healer gives {PRONOUN/m_c/object} the opportunity to do so. (mentor) takes {PRONOUN/m_c/object} on as rusasirah, admiring {PRONOUN/m_c/poss} sharp tongue and the cunning gleam in {PRONOUN/m_c/poss} eyes."
   ],
   "med_app_28": [
     [
-      "healer rusasi",
+      "healer rusasirah",
       "general_mentor",
       "general_leader",
       "general_backstory",
       "adventurous"
     ],
-    "m_c has always longed for adventure and {PRONOUN/m_c/subject} {VERB/m_c/feel/feels} like being a healer rusasi will be the greatest adventure of them all. (mentor) eagerly accepts such an eager and willing rusasi."
+    "m_c has always longed for adventure and {PRONOUN/m_c/subject} {VERB/m_c/feel/feels} like being a healer rusasirah will be the greatest adventure of them all. (mentor) eagerly accepts such an eager and willing rusasirah."
   ],
   "mediator_app_0": [
     [
-      "owsla rusasi",
+      "owsla rusasirah",
       "general_mentor",
       "general_parents",
       "general_leader",
@@ -1182,7 +1182,7 @@
   ],
   "mediator_app_1": [
     [
-      "owsla rusasi",
+      "owsla rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
@@ -1193,7 +1193,7 @@
   ],
   "mediator_app_2": [
     [
-      "owsla rusasi",
+      "owsla rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
@@ -1204,7 +1204,7 @@
   ],
   "mediator_app_3": [
     [
-      "owsla rusasi",
+      "owsla rusasirah",
       "no_mentor",
       "general_parents",
       "general_leader",
@@ -1215,7 +1215,7 @@
   ],
   "mediator_app_4": [
     [
-      "owsla rusasi",
+      "owsla rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
@@ -1223,11 +1223,11 @@
       "thoughtful",
       "compassionate"
     ],
-    "Impressed by {PRONOUN/m_c/poss} eagerness, (mentor) chooses m_c as the Warren's new owsla rusasi."
+    "Impressed by {PRONOUN/m_c/poss} eagerness, (mentor) chooses m_c as the Warren's new owsla rusasirah."
   ],
   "mediator_app_5": [
     [
-      "owsla rusasi",
+      "owsla rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
@@ -1239,73 +1239,73 @@
   ],
   "mediator_app_6": [
     [
-      "owsla rusasi",
+      "owsla rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "m_c has always been interested in helping {PRONOUN/m_c/poss} Warren but was never good with herbs or fighting: {PRONOUN/m_c/subject} found {PRONOUN/m_c/poss} calling as a owsla rusasi under (mentor), where m_c can serve with {PRONOUN/m_c/poss} words."
+    "m_c has always been interested in helping {PRONOUN/m_c/poss} Warren but was never good with herbs or fighting: {PRONOUN/m_c/subject} found {PRONOUN/m_c/poss} calling as a owsla rusasirah under (mentor), where m_c can serve with {PRONOUN/m_c/poss} words."
   ],
   "mediator_app_7": [
     [
-      "owsla rusasi",
+      "owsla rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "Despite the odd choice, m_c is firm that {PRONOUN/m_c/subject}'ll be (mentor)'s rusasi: {PRONOUN/m_c/subject} {VERB/m_c/want/wants} to help the Warren through words and influence, not through claw or fang."
+    "Despite the odd choice, m_c is firm that {PRONOUN/m_c/subject}'ll be (mentor)'s rusasirah: {PRONOUN/m_c/subject} {VERB/m_c/want/wants} to help the Warren through words and influence, not through claw or fang."
   ],
   "mediator_app_8": [
     [
-      "owsla rusasi",
+      "owsla rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "Being a owsla rusasi was all that m_c could be good at: with (mentor)'s guidance, m_c hopes {PRONOUN/m_c/subject} can change the Warren."
+    "Being a owsla rusasirah was all that m_c could be good at: with (mentor)'s guidance, m_c hopes {PRONOUN/m_c/subject} can change the Warren."
   ],
   "mediator_app_9": [
     [
-      "owsla rusasi",
+      "owsla rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "m_c had been waiting for this moment: {PRONOUN/m_c/subject}'ll finally be a owsla rusasi and be guided by (mentor) on how to solve the Warren's issues - {PRONOUN/m_c/poss} one goal in life."
+    "m_c had been waiting for this moment: {PRONOUN/m_c/subject}'ll finally be a owsla rusasirah and be guided by (mentor) on how to solve the Warren's issues - {PRONOUN/m_c/poss} one goal in life."
   ],
   "mediator_app_10": [
     [
-      "owsla rusasi",
+      "owsla rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-      "m_c always wanted to help {PRONOUN/m_c/poss} Clanmates, but didn't want to heal or fight: {PRONOUN/m_c/subject} {VERB/m_c/chose/chooses} to become a owsla rusasi, hoping that (mentor) can teach {PRONOUN/m_c/object} how to resolve the Warren's issues."
+      "m_c always wanted to help {PRONOUN/m_c/poss} Warrenmates, but didn't want to heal or fight: {PRONOUN/m_c/subject} {VERB/m_c/chose/chooses} to become a owsla rusasirah, hoping that (mentor) can teach {PRONOUN/m_c/object} how to resolve the Warren's issues."
   ],
   "mediator_app_11": [
     [
-      "owsla rusasi",
+      "owsla rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "(old_name) can't contain the energy flowing through {PRONOUN/m_c/object}: {PRONOUN/m_c/subject} {VERB/m_c/are/is} officially going to begin training to be a owsla! {PRONOUN/m_c/subject/CAP} {VERB/m_c/earn/earns} {PRONOUN/m_c/poss} rusasi name, m_c, and will be guided by (mentor) on {PRONOUN/m_c/poss} journey."
+    "(old_name) can't contain the energy flowing through {PRONOUN/m_c/object}: {PRONOUN/m_c/subject} {VERB/m_c/are/is} officially going to begin training to be a owsla! {PRONOUN/m_c/subject/CAP} {VERB/m_c/earn/earns} {PRONOUN/m_c/poss} rusasirah name, m_c, and will be guided by (mentor) on {PRONOUN/m_c/poss} journey."
   ],
   "mediator_app_12": [
     [
-      "owsla rusasi",
+      "owsla rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
@@ -1316,36 +1316,36 @@
   ],
   "mediator_app_13": [
     [
-      "owsla rusasi",
+      "owsla rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "Knowing that the Warren needed someone to mediate their problems, (old_name) decided to become a owsla rusasi. {PRONOUN/m_c/subject/CAP} {VERB/m_c/earn/earns} {PRONOUN/m_c/poss} rusasi name, m_c, and is given (mentor) to mentor {PRONOUN/m_c/object}."
+    "Knowing that the Warren needed someone to mediate their problems, (old_name) decided to become a owsla rusasirah. {PRONOUN/m_c/subject/CAP} {VERB/m_c/earn/earns} {PRONOUN/m_c/poss} rusasirah name, m_c, and is given (mentor) to mentor {PRONOUN/m_c/object}."
   ],
   "mediator_app_14": [
     [
-      "owsla rusasi",
+      "owsla rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-      "(old_name) had taken to following (mentor) around while {PRONOUN/(mentor)/subject} did {PRONOUN/(mentor)/poss} tasks, asking questions and listening. It wasn't a surprise {PRONOUN/m_c/subject} chose to become a owsla rusasi under (mentor) after earning {PRONOUN/m_c/poss} rusasi name: m_c."
+      "(old_name) had taken to following (mentor) around while {PRONOUN/(mentor)/subject} did {PRONOUN/(mentor)/poss} tasks, asking questions and listening. It wasn't a surprise {PRONOUN/m_c/subject} chose to become a owsla rusasirah under (mentor) after earning {PRONOUN/m_c/poss} rusasirah name: m_c."
   ],
   "mediator_app_15": [
     [
-      "owsla rusasi",
+      "owsla rusasirah",
       "yes_mentor",
       "general_parents",
       "general_leader",
       "general_backstory",
       "all_traits"
     ],
-    "(old_name) always dreamed of becoming a owsla: Now that {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} m_c, an rusasi being mentored by (mentor), it feels like a wish come true."
+    "(old_name) always dreamed of becoming a owsla: Now that {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} m_c, an rusasirah being mentored by (mentor), it feels like a wish come true."
   ],
   "med_0": [
     [
@@ -1369,7 +1369,7 @@
     "general_backstory",
     "all_traits"
   ],
-  "(old_name) has struggled to learn the skills of a healer, but {PRONOUN/m_c/subject} {VERB/m_c/refuse/refuses} to train as a rabbit. {PRONOUN/m_c/subject/CAP} {VERB/m_c/are/is} too old to remain an rusasi and, as the other healer rabbits look with pity, {PRONOUN/m_c/subject} {VERB/m_c/are/is} hesitantly given the name m_c."
+  "(old_name) has struggled to learn the skills of a healer, but {PRONOUN/m_c/subject} {VERB/m_c/refuse/refuses} to train as a rabbit. {PRONOUN/m_c/subject/CAP} {VERB/m_c/are/is} too old to remain an rusasirah and, as the other healer rabbits look with pity, {PRONOUN/m_c/subject} {VERB/m_c/are/is} hesitantly given the name m_c."
 ],
   "med_0_b": [
   [
@@ -1381,7 +1381,7 @@
     "general_backstory",
     "all_traits"
   ],
-    "(old_name) has shown exceptional aptitude and skill during {PRONOUN/m_c/poss} short apprenticeship. Although it's rare for a healer rusasi to be given {PRONOUN/m_c/poss} name so young, m_c more than deserves the honor."
+    "(old_name) has shown exceptional aptitude and skill during {PRONOUN/m_c/poss} short apprenticeship. Although it's rare for a healer rusasirah to be given {PRONOUN/m_c/poss} name so young, m_c more than deserves the honor."
 ],
   "med_1": [
     [
@@ -1501,7 +1501,7 @@
       "general_backstory",
       "all_traits"
     ],
-    "The time has come for (old_name) to be given {PRONOUN/m_c/poss} full healer name. (old_name) requests that one of the other Clans' healer rabbits name {PRONOUN/m_c/object}. The eldest of the healer rabbits steps forward and gives (old_name) the name m_c."
+    "The time has come for (old_name) to be given {PRONOUN/m_c/poss} full healer name. (old_name) requests that one of the other Warrens' healer rabbits name {PRONOUN/m_c/object}. The eldest of the healer rabbits steps forward and gives (old_name) the name m_c."
   ],
   "med_10": [
     [
@@ -1678,7 +1678,7 @@
       "daring",
       "rebellious"
     ],
-    "(old_name)'s methods are a little unconventional, but it's hard to argue with results - and (old_name) gets results. {PRONOUN/m_c/subject/CAP} {VERB/m_c/gain/gains} {PRONOUN/m_c/poss} healer name of m_c, whilst the oldest healer in the Clans warns {PRONOUN/m_c/object} not to do anything too risky."
+    "(old_name)'s methods are a little unconventional, but it's hard to argue with results - and (old_name) gets results. {PRONOUN/m_c/subject/CAP} {VERB/m_c/gain/gains} {PRONOUN/m_c/poss} healer name of m_c, whilst the oldest healer in the Warrens warns {PRONOUN/m_c/object} not to do anything too risky."
   ],
   "med_24": [
     [
@@ -1888,7 +1888,7 @@
       "general_backstory",
       "thoughtful"
     ],
-      "Even though this is {PRONOUN/m_c/poss} healer naming ceremony, (old_name) can only think about {PRONOUN/m_c/poss} Clanmates back at burrow. {PRONOUN/m_c/subject/CAP} {VERB/m_c/ask/asks} if {PRONOUN/m_c/subject} can return early after {PRONOUN/m_c/subject} {VERB/m_c/get/gets} {PRONOUN/m_c/poss} name of m_c."
+      "Even though this is {PRONOUN/m_c/poss} healer naming ceremony, (old_name) can only think about {PRONOUN/m_c/poss} Warrenmates back at burrow. {PRONOUN/m_c/subject/CAP} {VERB/m_c/ask/asks} if {PRONOUN/m_c/subject} can return early after {PRONOUN/m_c/subject} {VERB/m_c/get/gets} {PRONOUN/m_c/poss} name of m_c."
   ],
   "med_41": [
     [
@@ -2346,7 +2346,7 @@
       "daring",
       "grumpy"
     ],
-    "(old_name) looks up at the chief rabbit with pride. {PRONOUN/m_c/subject/CAP} knew all that hard work - proving {PRONOUN/m_c/subject} {VERB/m_c/were/was} the best rusasi in the Warren - was worth it, even if it caused {PRONOUN/m_c/object} a lot of trouble. {PRONOUN/m_c/subject/CAP} {VERB/m_c/hold/holds} {PRONOUN/m_c/poss} head high as {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} named m_c after {PRONOUN/m_c/poss} r_h."
+    "(old_name) looks up at the chief rabbit with pride. {PRONOUN/m_c/subject/CAP} knew all that hard work - proving {PRONOUN/m_c/subject} {VERB/m_c/were/was} the best rusasirah in the Warren - was worth it, even if it caused {PRONOUN/m_c/object} a lot of trouble. {PRONOUN/m_c/subject/CAP} {VERB/m_c/hold/holds} {PRONOUN/m_c/poss} head high as {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} named m_c after {PRONOUN/m_c/poss} r_h."
   ],
   "warrior_24": [
     [
@@ -2370,7 +2370,7 @@
       "general_backstory",
       "compassionate"
     ],
-    "(old_name) purrs as {PRONOUN/m_c/subject} {VERB/m_c/feel/feels} the joy and pride of {PRONOUN/m_c/poss} Clanmates wash over {PRONOUN/m_c/object}. l_n looks down upon {PRONOUN/m_c/object}, eyes glowing with pride as {PRONOUN/l_n/subject} {VERB/l_n/name/names} {PRONOUN/m_c/object} m_c after {PRONOUN/m_c/poss} r_h."
+    "(old_name) purrs as {PRONOUN/m_c/subject} {VERB/m_c/feel/feels} the joy and pride of {PRONOUN/m_c/poss} Warrenmates wash over {PRONOUN/m_c/object}. l_n looks down upon {PRONOUN/m_c/object}, eyes glowing with pride as {PRONOUN/l_n/subject} {VERB/l_n/name/names} {PRONOUN/m_c/object} m_c after {PRONOUN/m_c/poss} r_h."
   ],
   "warrior_26": [
     [
@@ -2394,7 +2394,7 @@
       "general_backstory",
       "faithful"
     ],
-    "As l_n gives (old_name) the name m_c, {PRONOUN/l_n/subject} {VERB/l_n/swear/swears} that {PRONOUN/l_n/subject} {VERB/l_n/see/sees} some starry rabbits yowling their support amongst {PRONOUN/l_n/poss} other Clanmates."
+    "As l_n gives (old_name) the name m_c, {PRONOUN/l_n/subject} {VERB/l_n/swear/swears} that {PRONOUN/l_n/subject} {VERB/l_n/see/sees} some starry rabbits yowling their support amongst {PRONOUN/l_n/poss} other Warrenmates."
   ],
   "warrior_28": [
     [
@@ -2432,7 +2432,7 @@
       "lonesome",
       "gloomy"
     ],
-    "(old_name), now named m_c for {PRONOUN/m_c/poss} r_h, can only awkwardly thank {PRONOUN/m_c/poss} Clanmates as {PRONOUN/m_c/subject} {VERB/m_c/weave/weaves} through the crowd of purring rabbits. Once the meeting comes to a close, {PRONOUN/m_c/subject} {VERB/m_c/slink/slinks} out of burrow to be alone for a while."
+    "(old_name), now named m_c for {PRONOUN/m_c/poss} r_h, can only awkwardly thank {PRONOUN/m_c/poss} Warrenmates as {PRONOUN/m_c/subject} {VERB/m_c/weave/weaves} through the crowd of purring rabbits. Once the meeting comes to a close, {PRONOUN/m_c/subject} {VERB/m_c/slink/slinks} out of burrow to be alone for a while."
   ],
   "warrior_31": [
     [
@@ -2457,7 +2457,7 @@
       "general_backstory",
       "loyal"
     ],
-    "(old_name) looks around at {PRONOUN/m_c/poss} Clanmates with adoration while l_n announces that {PRONOUN/m_c/poss} new name will be m_c, after {PRONOUN/m_c/poss} r_h. m_c is happy to be a rabbit now, but mostly {PRONOUN/m_c/subject} just {VERB/m_c/want/wants} to celebrate with {PRONOUN/m_c/poss} Warren, whether it's for {PRONOUN/m_c/object} or not."
+    "(old_name) looks around at {PRONOUN/m_c/poss} Warrenmates with adoration while l_n announces that {PRONOUN/m_c/poss} new name will be m_c, after {PRONOUN/m_c/poss} r_h. m_c is happy to be a rabbit now, but mostly {PRONOUN/m_c/subject} just {VERB/m_c/want/wants} to celebrate with {PRONOUN/m_c/poss} Warren, whether it's for {PRONOUN/m_c/object} or not."
   ],
   "warrior_33": [
     [
@@ -2517,7 +2517,7 @@
       "general_backstory",
       "responsible"
     ],
-    "(old_name) has shown more maturity than most rabbits {PRONOUN/m_c/poss} age, always offering to take on the worst rusasi jobs first and counting the prey in the pile to know just how much to catch on patrol. l_n was tempted to make {PRONOUN/m_c/object} a rabbit sooner, but now will have to do. {PRONOUN/l_n/subject/CAP} {VERB/l_n/name/names} {PRONOUN/m_c/object} m_c after {PRONOUN/m_c/poss} r_h."
+    "(old_name) has shown more maturity than most rabbits {PRONOUN/m_c/poss} age, always offering to take on the worst rusasirah jobs first and counting the prey in the pile to know just how much to catch on patrol. l_n was tempted to make {PRONOUN/m_c/object} a rabbit sooner, but now will have to do. {PRONOUN/l_n/subject/CAP} {VERB/l_n/name/names} {PRONOUN/m_c/object} m_c after {PRONOUN/m_c/poss} r_h."
   ],
   "warrior_38": [
     [
@@ -2643,7 +2643,7 @@
       "wise",
       "cunning"
     ],
-    "(old_name)'s advice has helped many rabbits throughout {PRONOUN/m_c/poss} days as an rusasi. Even l_n has sought {PRONOUN/m_c/object} out at times. l_n has no doubts in {PRONOUN/l_n/poss} mind that (old_name) is ready to be a rabbit, and names {PRONOUN/m_c/object} m_c, honoring {PRONOUN/m_c/poss} r_h."
+    "(old_name)'s advice has helped many rabbits throughout {PRONOUN/m_c/poss} days as an rusasirah. Even l_n has sought {PRONOUN/m_c/object} out at times. l_n has no doubts in {PRONOUN/l_n/poss} mind that (old_name) is ready to be a rabbit, and names {PRONOUN/m_c/object} m_c, honoring {PRONOUN/m_c/poss} r_h."
   ],
   "warrior_48": [
     [
@@ -2667,7 +2667,7 @@
       "general_backstory",
       "all_traits"
     ],
-    "(old_name) sits with {PRONOUN/m_c/poss} Warren, purring as {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} congratulated on finishing {PRONOUN/m_c/poss} training. When given the option to choose {PRONOUN/m_c/poss} name, however, (old_name) can't really think of a suffix, and asks {PRONOUN/m_c/poss} Clanmates for some suggestions. After hearing a few ideas, (old_name) decides to be named m_c. The Warren cheers {PRONOUN/m_c/poss} new name, and honors {PRONOUN/m_c/object} for {PRONOUN/m_c/poss} r_h."
+    "(old_name) sits with {PRONOUN/m_c/poss} Warren, purring as {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} congratulated on finishing {PRONOUN/m_c/poss} training. When given the option to choose {PRONOUN/m_c/poss} name, however, (old_name) can't really think of a suffix, and asks {PRONOUN/m_c/poss} Warrenmates for some suggestions. After hearing a few ideas, (old_name) decides to be named m_c. The Warren cheers {PRONOUN/m_c/poss} new name, and honors {PRONOUN/m_c/object} for {PRONOUN/m_c/poss} r_h."
   ],
   "warrior_50": [
     [
@@ -2703,7 +2703,7 @@
       "general_backstory",
       "all_traits"
     ],
-    "Chief rabbit or no chief rabbit, c_n needs more rabbits, and (old_name) has been working incredibly hard lately. The Warren agrees that {PRONOUN/m_c/subject} should be made a rabbit. They gather around the rusasi, and (previous_mentor) is nudged forward to do the honor of giving {PRONOUN/m_c/object} {PRONOUN/m_c/poss} name. Purring in pride for {PRONOUN/(previous_mentor)/poss} rusasi, (previous_mentor) rests {PRONOUN/(previous_mentor)/poss} muzzle on (old_name)'s head, and names {PRONOUN/m_c/object} m_c, honoring {PRONOUN/m_c/poss} r_h."
+    "Chief rabbit or no chief rabbit, c_n needs more rabbits, and (old_name) has been working incredibly hard lately. The Warren agrees that {PRONOUN/m_c/subject} should be made a rabbit. They gather around the rusasirah, and (previous_mentor) is nudged forward to do the honor of giving {PRONOUN/m_c/object} {PRONOUN/m_c/poss} name. Purring in pride for {PRONOUN/(previous_mentor)/poss} rusasirah, (previous_mentor) rests {PRONOUN/(previous_mentor)/poss} muzzle on (old_name)'s head, and names {PRONOUN/m_c/object} m_c, honoring {PRONOUN/m_c/poss} r_h."
   ],
   "warrior_53": [
     [
@@ -2763,7 +2763,7 @@
       "general_backstory",
       "all_traits"
     ],
-    "Are dead_par1 and dead_par2 watching from Inle? (old_name) wonders this as {PRONOUN/m_c/subject} {VERB/m_c/step/steps} in front of the Warren. {PRONOUN/m_c/subject/CAP} {VERB/m_c/hope/hopes} so. {PRONOUN/m_c/subject/CAP} truly {VERB/m_c/do/does}. As {PRONOUN/m_c/subject} {VERB/m_c/are/is} given the name m_c in honor of {PRONOUN/m_c/poss} r_h, m_c hopes that {PRONOUN/m_c/poss} parents are there, cheering with their Clanmates in the stars for their kit."
+    "Are dead_par1 and dead_par2 watching from Inle? (old_name) wonders this as {PRONOUN/m_c/subject} {VERB/m_c/step/steps} in front of the Warren. {PRONOUN/m_c/subject/CAP} {VERB/m_c/hope/hopes} so. {PRONOUN/m_c/subject/CAP} truly {VERB/m_c/do/does}. As {PRONOUN/m_c/subject} {VERB/m_c/are/is} given the name m_c in honor of {PRONOUN/m_c/poss} r_h, m_c hopes that {PRONOUN/m_c/poss} parents are there, cheering with their Warrenmates in the stars for their kit."
   ],
   "warrior_58": [
     [
@@ -2898,7 +2898,7 @@
       "competitive",
       "flamboyant"
     ],
-    "Named m_c for {PRONOUN/m_c/poss} r_h, the new rabbit squares {PRONOUN/m_c/poss} shoulders before c_n, heart full of the hard-won joy of {PRONOUN/m_c/poss} Clanmates yowling {PRONOUN/m_c/poss} name, of p1's happy slitted eyes of pride and p2's voice leading the call. All {PRONOUN/m_c/poss} efforts to get here have been worth it. This is just the beginning."
+    "Named m_c for {PRONOUN/m_c/poss} r_h, the new rabbit squares {PRONOUN/m_c/poss} shoulders before c_n, heart full of the hard-won joy of {PRONOUN/m_c/poss} Warrenmates yowling {PRONOUN/m_c/poss} name, of p1's happy slitted eyes of pride and p2's voice leading the call. All {PRONOUN/m_c/poss} efforts to get here have been worth it. This is just the beginning."
   ],
   "warrior_66": [
     [

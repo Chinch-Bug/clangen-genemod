@@ -18,7 +18,7 @@
 
     Developers who have been added to the team via application acceptance, but have not yet contributed to the dev or base game.
 
-    [Expections](#rusasi-developer-expectations){ .md-button .md-button--primary}
+    [Expections](#rusasirah-developer-expectations){ .md-button .md-button--primary}
 
 - __Developer__
 
@@ -62,22 +62,22 @@ Betas are often invited to playtest private, in development features before they
 !!! caution
     If you repeatedly break confidentiality, you are liable to be kicked from the beta testing program without warning.
 
-## Rusasi Developer Expectations
+## Rusasirah Developer Expectations
 Be sure to check out the [Developer Expectations](#developer-expectations) for further helpful information.
 
 ### Activity expectations
 
-- We expect rusasi developers to contribute to the ClanGen development version within 3 months of getting the rusasi developer role. If you take longer and lose the role due to inactivity, you're always welcome to reapply to be a developer!
+- We expect rusasirah developers to contribute to the ClanGen development version within 3 months of getting the rusasirah developer role. If you take longer and lose the role due to inactivity, you're always welcome to reapply to be a developer!
 
 ### Collaboration
 - Clangen is all about collaboration. We need to be flexible with each other when developing the game, and open to having our work edited, improved, and iterated on.
 - Therefore, please be kind and constructive toward your fellow developers.
-- We want to bring rusasi developer's attention to the `good-first-issue` label in our [github issues](https://github.com/ClanGenOfficial/clangen/issues)!  This label is given to issues that senior devs feel will be relatively simple to handle or will make a good introduction to the codebase.  We encourage you to check out issues with this label and consider working on them.  Feel free to ask for help from other contributors, these are meant to be learning experiences!
+- We want to bring rusasirah developer's attention to the `good-first-issue` label in our [github issues](https://github.com/ClanGenOfficial/clangen/issues)!  This label is given to issues that senior devs feel will be relatively simple to handle or will make a good introduction to the codebase.  We encourage you to check out issues with this label and consider working on them.  Feel free to ask for help from other contributors, these are meant to be learning experiences!
 - Make use of the private developer channels in the server to get to know fellow devs and find good places to start contributing.
 
 ### Getting the full developer role
 - You'll get your full developer role when you have gotten content into the developmental version of ClanGen, or into a private branch for a new ClanGen feature/content update that is overseen by a senior developer.
-- While an rusasi developer, you can't make private testing threads. Ask a more senior dev to make one for testing out your game changes if you feel it's needed.
+- While an rusasirah developer, you can't make private testing threads. Ask a more senior dev to make one for testing out your game changes if you feel it's needed.
 
 
 ## Developer Expectations

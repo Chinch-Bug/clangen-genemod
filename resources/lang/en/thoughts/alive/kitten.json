@@ -9,8 +9,8 @@
             "Is rolling around on the ground",
             "Is chasing {PRONOUN/m_c/poss} tail",
             "Is playing with a stick",
-            "Is nervous for {PRONOUN/m_c/poss} rusasi ceremony",
-            "Is excited for {PRONOUN/m_c/poss} rusasi ceremony",
+            "Is nervous for {PRONOUN/m_c/poss} rusasirah ceremony",
+            "Is excited for {PRONOUN/m_c/poss} rusasirah ceremony",
             "Is scared after having a nightmare",
             "Wants to snuggle",
             "Is bouncing around in excitement",
@@ -38,7 +38,7 @@
             "Wants to be big someday",
             "Wants to have fun",
             "Is playing pretend",
-            "Is going through an angsty phase, much to {PRONOUN/m_c/poss} Clanmates' chagrin",
+            "Is going through an angsty phase, much to {PRONOUN/m_c/poss} Warrenmates' chagrin",
             "Is fighting sleep... and failing",
             "Knocked {PRONOUN/m_c/self} over with a sneeze",
             "Wants a badger ride",
@@ -115,7 +115,7 @@
         ],
         "random_status_constraint": [
             "healer",
-            "healer rusasi"
+            "healer rusasirah"
         ],
         "random_living_status": [
             "living"
@@ -128,7 +128,7 @@
             "Was hissed at by r_c for being too noisy",
             "Asks r_c what it is like to be so old",
             "Hopes r_c has a new story to tell {PRONOUN/m_c/object}",
-            "Hopes {PRONOUN/m_c/subject} {VERB/m_c/do/does}n't get as grumpy as r_c when {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} old"
+            "Hopes {PRONOUN/m_c/subject} {VERB/m_c/don't/doesn't} get as grumpy as r_c when {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} old"
         ],
         "random_status_constraint": [
             "elder"
@@ -188,7 +188,7 @@
     {
         "id": "guarding_kit",
         "thoughts": [
-            "Guards the fresh-kill pile to make sure each Clanmate only takes one piece",
+            "Guards the fresh-kill pile to make sure each Warrenmate only takes one piece",
             "Demands to be allowed to guard burrow",
             "Wants to guard the nursery"
         ],
@@ -214,9 +214,9 @@
             "troublesome"
         ],
         "random_status_constraint": [
-            "rusasi",
-            "healer rusasi",
-            "owsla rusasi",
+            "rusasirah",
+            "healer rusasirah",
+            "owsla rusasirah",
             "rabbit",
             "healer",
             "owsla",
@@ -230,7 +230,7 @@
         "thoughts": [
             "Can't wait to be captain so {PRONOUN/m_c/subject} can assign patrols",
             "Tells r_c to catch {PRONOUN/m_c/object} some fresh prey",
-            "Wants to be chief rabbit so everycat will have to listen to {PRONOUN/m_c/object} all the time",
+            "Wants to be chief rabbit so everyone will have to listen to {PRONOUN/m_c/object} all the time",
             "Tells r_c to change the bedding in the nursery",
             "Tells r_c to play with {PRONOUN/m_c/object}",
             "Is mad no one will listen to {PRONOUN/m_c/object}",
@@ -356,10 +356,10 @@
             "Stares into nothing in particular",
             "Makes up a tale on the spot for the other kits",
             "Is annoying the elders for more tales",
-            "Wonders what the ancient Clans were like",
+            "Wonders what the ancient Warrens were like",
             "Wonders what it would be like to live in a different Warren",
             "Is pretending to be a Twoleg kit",
-            "Wants r_c to pretend to be {PRONOUN/m_c/poss} rusasi",
+            "Wants r_c to pretend to be {PRONOUN/m_c/poss} rusasirah",
             "Is pretending to be a rock",
             "Is going everywhere backwards today",
             "Asks r_c if {PRONOUN/r_c/subject} like to daydream too",
@@ -404,13 +404,13 @@
     {
         "id": "fearless_kit_to_apprentice",
         "thoughts": [
-            "Picks a fight with an rusasi so {PRONOUN/m_c/subject} can show {PRONOUN/m_c/poss} skills"
+            "Picks a fight with an rusasirah so {PRONOUN/m_c/subject} can show {PRONOUN/m_c/poss} skills"
         ],
         "main_trait_constraint": [
             "fearless"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ],
         "random_living_status": [
             "living"
@@ -440,7 +440,7 @@
             "Is complaining of a tummyache after eating too much",
             "Is awfully close to getting a nip on the rump for misbehaving",
             "Is waiting for an opportunity to sprint out of sight",
-            "Is tired of waiting to be an rusasi",
+            "Is tired of waiting to be an rusasirah",
             "Doesn't think twice about anything",
             "Speaks without thinking and gets scolded for being rude",
             "Doesn't have time to listen to rules",
@@ -453,8 +453,8 @@
             "Is zooming around",
             "Pounced on r_c",
             "Is practicing {PRONOUN/m_c/poss} pounce on r_c's tail",
-            "Is complaining of a tummyache after sneaking into the healer den's herb storage and eating something {PRONOUN/m_c/subject} shouldn't have",
-            "Picked up something nobody else got a good look at and is now running from several rabbits",
+            "Is complaining of a tummyache after sneaking into the healer's herb storage and eating some burdock",
+            "Picked up something nobody else got a good look at and is now running from several cats",
             "Is pretending to be a mouse and trying to get others to chase {PRONOUN/m_c/object}",
             "Nips at r_c and runs away giggling",
             "Rearranges all of the herbs as a prank"
@@ -585,12 +585,12 @@
     {
         "id": "self-conscious_kit",
         "thoughts": [
-            "Doesn't think {PRONOUN/m_c/subject} will ever be an rusasi",
+            "Doesn't think {PRONOUN/m_c/subject} will ever be an rusasirah",
             "Thinks r_c doesn't like {PRONOUN/m_c/object}",
             "Is too shy to go to the fresh-kill pile alone",
             "Hides sheepishly behind r_c",
-            "Is afraid other rabbits will think {PRONOUN/m_c/subject} {VERB/m_c/are/is} silly",
-            "Doesn't want to be an rusasi because {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} afraid of disappointing the Warren",
+            "Is afraid other cats will think {PRONOUN/m_c/subject} {VERB/m_c/are/is} silly",
+            "Doesn't want to be an rusasirah for fear of disappointing the Warren",
             "Hates making mistakes",
             "Is afraid of being in the way",
             "Stays at the edges of burrow to avoid getting taken by a hawk",
@@ -635,7 +635,7 @@
             "Is doing {PRONOUN/m_c/poss} best not to get stepped on",
             "Is trying to stop {PRONOUN/m_c/poss} paws from shaking",
             "Is nervous about leaving {PRONOUN/m_c/poss} siblings",
-            "Doesn't want to be an rusasi yet",
+            "Doesn't want to be an rusasirah yet",
             "Is thinking about how nervous {PRONOUN/m_c/subject} {VERB/m_c/are/is}",
             "Is worrying about {PRONOUN/m_c/poss} family and friends",
             "Is trying to be brave",
@@ -827,5 +827,35 @@
                 "pregnant"
             ]
         }
+    },
+    {
+        "id": "kit_to_newborn",
+        "thoughts": [
+            "Asks when r_c will be big enough to play with",
+            "Tries to give r_c a juicy piece of prey",
+            "Gives r_c {PRONOUN/m_c/poss} favorite feather",
+            "Gives r_c {PRONOUN/m_c/poss} favorite petal",
+            "Gives r_c {PRONOUN/m_c/poss} favorite rock",
+            "Gives r_c {PRONOUN/m_c/poss} favorite stick",
+            "Says r_c is too small to share toys with",
+            "Can't wait for r_c to grow up",
+            "Teases r_c for being so small",
+            "Isn't allowed to wrestle r_c",
+            "Advises r_c on the best parts of the nursery",
+            "Refuses to believe {PRONOUN/m_c/subject} {VERB/m_c/were/was} ever as small as r_c",
+            "Asks when r_c will start eating solid prey",
+            "Wonders what kind of Warrenmate r_c will become",
+            "Wants r_c to be {PRONOUN/m_c/poss} rusasirah",
+            "Was sent out of the nursery for being too rowdy around the new litter"
+        ],
+        "main_status_constraint": [
+            "kit"
+        ],
+        "random_age_constraint": [
+            "newborn"
+        ],
+        "random_living_status": [
+            "living"
+        ]
     }
 ]

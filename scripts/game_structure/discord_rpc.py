@@ -11,7 +11,9 @@ import asyncio
 import threading
 from time import time
 
-from scripts.game_structure.game_essentials import game
+from scripts.game_structure.game.settings import game_setting_get
+from scripts.game_structure.game.switches import switch_get_value, Switch
+from scripts.game_structure import game
 
 status_dict = {
     "start screen": "At the start screen",
@@ -51,7 +53,7 @@ class _DiscordRPC(threading.Thread):
 
     def get_rpc(self):
         # Check if pypresence is available.
-        if not game.settings["discord"]:
+        if not game_setting_get("discord"):
             return
         try:
             # raise ImportError # uncomment this line to disable rpc without uninstalling pypresence
@@ -91,14 +93,14 @@ class _DiscordRPC(threading.Thread):
     def update(self):
         if self._connected:
             try:
-                state_text = status_dict[game.switches["cur_screen"]]
+                state_text = status_dict[switch_get_value(Switch.cur_screen)]
             except KeyError:
                 state_text = "Leading the Warren"
 
             try:
                 img_str = (
                     f"{game.warren.biome}_{game.warren.current_season.replace('-', '')}_"
-                    f"{game.warren.camp_bg}_{'dark' if game.settings['dark mode'] else 'light'}"
+                    f"{game.warren.camp_bg}_{'dark' if game_setting_get('dark mode') else 'light'}"
                 )
                 img_text = game.warren.biome
             except AttributeError:
@@ -112,7 +114,7 @@ class _DiscordRPC(threading.Thread):
             # Example: beach_greenleaf_camp1_dark
 
             if game.warren:
-                clan_name = f"{game.warren.name}Warren"
+                clan_name = f"{game.warren.displayname}Clan"
                 cats_amount = len(game.warren.clan_cats)
                 clan_age = game.warren.age
             else:

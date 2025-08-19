@@ -44,7 +44,7 @@
                 ]
             },
             {
-                "text": "{PRONOUN/s_c/subject/CAP} {VERB/s_c/do/does}n't feel like {PRONOUN/s_c/subject} {VERB/s_c/have/has} the skill or power to take on a dog single-pawed, but s_c would give {PRONOUN/s_c/poss} life for c_n. {PRONOUN/s_c/subject/CAP} {VERB/s_c/charge/charges} in courageously to lead the dog away from c_n territory. Each booming bark could be the herald of {PRONOUN/s_c/poss} doom, each rancid breath the last thing {PRONOUN/s_c/subject} might ever smell, but somehow, limbs and lungs burning, {PRONOUN/s_c/subject} eventually {VERB/s_c/leap/leaps} to refuge.",
+                "text": "{PRONOUN/s_c/subject/CAP} {VERB/s_c/don't/doesn't} feel like {PRONOUN/s_c/subject} {VERB/s_c/have/has} the skill or power to take on a dog single-pawed, but s_c would give {PRONOUN/s_c/poss} life for c_n. {PRONOUN/s_c/subject/CAP} {VERB/s_c/charge/charges} in courageously to lead the dog away from c_n territory. Each booming bark could be the herald of {PRONOUN/s_c/poss} doom, each rancid breath the last thing {PRONOUN/s_c/subject} might ever smell, but somehow, limbs and lungs burning, {PRONOUN/s_c/subject} eventually {VERB/s_c/leap/leaps} to refuge.",
                 "exp": 40,
                 "weight": 20,
                 "stat_trait": [
@@ -177,7 +177,7 @@
                 ]
             },
             {
-                "text": "s_c selflessly takes the lion's share of the run the patrol leads the dog on, exhausting {PRONOUN/s_c/self} almost to the point of danger but leading the dog far away from c_n borders. {PRONOUN/s_c/poss/CAP} Clanmates support {PRONOUN/s_c/object} on the long walk home once it's all over, their purrs mixing with s_c's exhausted pants.",
+                "text": "s_c selflessly takes the lion's share of the run the patrol leads the dog on, exhausting {PRONOUN/s_c/self} almost to the point of danger but leading the dog far away from c_n borders. {PRONOUN/s_c/poss/CAP} Warrenmates support {PRONOUN/s_c/object} on the long walk home once it's all over, their purrs mixing with s_c's exhausted pants.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -232,7 +232,7 @@
                 ]
             },
             {
-                "text": "The patrol tries to lead the dog away from the Warren's borders, but with so few rabbits it's impossible to cover each other's backs. r_c falls to the dog as the rest of the patrol runs for their lives back to burrow, terrified out of their pelts and mourning their Clanmate.",
+                "text": "The patrol tries to lead the dog away from the Warren's borders, but with so few rabbits it's impossible to cover each other's backs. r_c falls to the dog as the rest of the patrol runs for their lives back to burrow, terrified out of their pelts and mourning their Warrenmate.",
                 "exp": 0,
                 "weight": 10,
                 "dead_cats": ["r_c"],
@@ -338,7 +338,7 @@
                 ]
             },
             {
-                "text": "s_c selflessly throw {PRONOUN/s_c/self} into the fight, and every time the dog tries to grab at {PRONOUN/s_c/poss} Clanmates, {PRONOUN/s_c/subject}{VERB/s_c/'re/'s} there with unsheathed claws, fur puffed out to twice {PRONOUN/s_c/poss} normal size. With s_c defending them, the patrol drives the dog off, yowling triumphantly.",
+                "text": "s_c selflessly throw {PRONOUN/s_c/self} into the fight, and every time the dog tries to grab at {PRONOUN/s_c/poss} Warrenmates, {PRONOUN/s_c/subject}{VERB/s_c/'re/'s} there with unsheathed claws, fur puffed out to twice {PRONOUN/s_c/poss} normal size. With s_c defending them, the patrol drives the dog off, yowling triumphantly.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -378,7 +378,7 @@
                 ]
             },
             {
-                "text": "s_c tries to protect {PRONOUN/s_c/poss} Clanmates, but too much defense gets in the way of actually attacking the dog. Without everyone committed to driving the dog off, the patrol has to fall back, but they do so in good order.",
+                "text": "s_c tries to protect {PRONOUN/s_c/poss} Warrenmates, but too much defense gets in the way of actually attacking the dog. Without everyone committed to driving the dog off, the patrol has to fall back, but they do so in good order.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": ["nervous", "compassionate", "thoughtful", "careful"],
@@ -592,7 +592,7 @@
                 ]
             },
             {
-                "text": "The patrol paces towards the small dog, claws out, fur up, backed up with the courage of their Clanmates. The dog breaks into a barking fit, but that's their opportunity to attack, covering each other as they push the creature away from their territory.",
+                "text": "The patrol paces towards the small dog, claws out, fur up, backed up with the courage of their Warrenmates. The dog breaks into a barking fit, but that's their opportunity to attack, covering each other as they push the creature away from their territory.",
                 "exp": 10,
                 "weight": 5,
                 "relationships": [
@@ -660,7 +660,7 @@
         "chance_of_success": 10,
         "success_outcomes": [
             {
-                "text": "The patrol paces towards the small dog, claws out, fur up, backed up with the courage of their Clanmates. The dog breaks into a barking fit, but that's their opportunity to attack, covering each other as they push the creature away from their territory.",
+                "text": "The patrol paces towards the small dog, claws out, fur up, backed up with the courage of their Warrenmates. The dog breaks into a barking fit, but that's their opportunity to attack, covering each other as they push the creature away from their territory.",
                 "exp": 10,
                 "weight": 20,
                 "relationships": [

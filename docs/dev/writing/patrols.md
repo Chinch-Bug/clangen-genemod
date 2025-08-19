@@ -20,8 +20,8 @@ When writing the text for patrol events, we use a variety of abbreviations that 
 |-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | p_l         | Random rabbit, a (mostly) randomly selected rabbit in the patrol.  When used on it's own this will generate the rabbit's name, when used in a pronoun tag this will generate that rabbit's pronouns.                                                                                                                                                                                                                                                                   |
 | s_c         | Stat rabbit, a rabbit with one of the indicated outcome stats.    When used on it's own this will generate the rabbit's name, when used in a pronoun tag this will generate that rabbit's pronouns.                                                                                                                                                                                                                                                                    |
-| app1        | The first rusasi on the patrol.  When used on it's own this will generate the rabbit's name, when used in a pronoun tag this will generate that rabbit's pronouns.                                                                                                                                                                                                                                                                                           |
-| app2        | The second rusasi on the patrol.  When used on it's own this will generate the rabbit's name, when used in a pronoun tag this will generate that rabbit's pronouns.                                                                                                                                                                                                                                                                                          |
+| app1        | The first rusasirah on the patrol.  When used on it's own this will generate the rabbit's name, when used in a pronoun tag this will generate that rabbit's pronouns.                                                                                                                                                                                                                                                                                           |
+| app2        | The second rusasirah on the patrol.  When used on it's own this will generate the rabbit's name, when used in a pronoun tag this will generate that rabbit's pronouns.                                                                                                                                                                                                                                                                                          |
 | n_c:{index} | The newly generated rabbit specified in list index {index}. The list is 0-indexed, so the first entry is 0. If more than one rabbit is generated in a single list entry (for example, a litter), this will use the first generated rabbit. Currently, there is no way to retrieve the name's or pronouns of other members of a litter.  When used on it's own this will generate the rabbit's name, when used in a pronoun tag this will generate that rabbit's pronouns. |
 
 !!! todo "TODO"
@@ -30,74 +30,100 @@ When writing the text for patrol events, we use a variety of abbreviations that 
 ## Formatting
 
 !!! tip
-	If you are new to patrol writing, I recommend going through the [Full Featured Patrol Example](#full-featured-patrol-example) line by line and reading the following parameter explanations as you do.
+    If you are new to patrol writing, I recommend going through the [Full Featured Patrol Example](#full-featured-patrol-example) line by line and reading the following parameter explanations as you do.
 
-	Likewise, before beginning, be sure to at least read the first section of [Coding Terms for Writers to Know](index.md#coding-terms-for-writers-to-know). This explains much of the terminology used here.
+    Likewise, before beginning, be sure to at least read the first section of [Coding Terms for Writers to Know](index.md#coding-terms-for-writers-to-know). This explains much of the terminology used here.
 
 ### Patrol Template
 This is a good starting point for writing your own patrols. 
 
 ```json
 {
-	"patrol_id": "some_unique_id",
-	"biome": [],
-	"season": [],
-	"types": [],
-	"tags": [],
-	"patrol_art": null,
-	"patrol_art_clean": null,
-	"min_cats": 1,
-	"max_cats": 6,
-	"min_max_status": {
-		"rusasi": [0, 6],
-		"healer rusasi": [0, 6],
-		"healer": [0, 6],
-		"captain": [0, 6],
-		"rabbit": [0, 6],
-		"chief rabbit": [0, 6],
-		"healer rabbits": [0, 6],
-		"normal adult": [0, 6],
-		"all rusasirahs": [0, 6]
-	},
-	"weight": 20,
-	"chance_of_success": 50,
-	"relationship_constraint": [],
-	"pl_skill_constraint": [],
-	"intro_text": "The patrol heads out.",
-	"decline_text": "And they head right back!",
-	"success_outcomes": [
-		{
-			SEE OUTCOME BLOCK TEMPLATE
+    "patrol_id": "some_unique_id",
+    "biome": [],
+    "season": [],
+    "types": [],
+    "tags": [],
+    "patrol_art": null,
+    "patrol_art_clean": null,
+    "min_cats": 1,
+    "max_cats": 6,
+    "min_max_status": {
+        "apprentice": [
+            0,
+            6
+        ],
+        "medicine cat apprentice": [
+            0,
+            6
+        ],
+        "medicine cat": [
+            0,
+            6
+        ],
+        "deputy": [
+            0,
+            6
+        ],
+        "warrior": [
+            0,
+            6
+        ],
+        "leader": [
+            0,
+            6
+        ],
+        "healer cats": [
+            0,
+            6
+        ],
+        "normal adult": [
+            0,
+            6
+        ],
+        "all apprentices": [
+            0,
+            6
+        ]
+    },
+    "weight": 20,
+    "chance_of_success": 50,
+    "relationship_constraint": [],
+    "pl_skill_constraint": [],
+    "intro_text": "The patrol heads out.",
+    "decline_text": "And they head right back!",
+    "success_outcomes": [
+        {
+            SEE OUTCOME BLOCK TEMPLATE
         },
         {
-			SEE OUTCOME BLOCK TEMPLATE
-		}
-	],
-	"fail_outcomes": [
-		{
-			SEE OUTCOME BLOCK TEMPLATE
+            SEE OUTCOME BLOCK TEMPLATE
+        }
+    ],
+    "fail_outcomes": [
+        {
+            SEE OUTCOME BLOCK TEMPLATE
         },
         {
-			SEE OUTCOME BLOCK TEMPLATE
-		}
-	],
-
-	"antag_success_outcomes": [
-		{
-			SEE OUTCOME BLOCK TEMPLATE
+            SEE OUTCOME BLOCK TEMPLATE
+        }
+    ],
+    "antag_success_outcomes": [
+        {
+            SEE OUTCOME BLOCK TEMPLATE
         },
         {
-			SEE OUTCOME BLOCK TEMPLATE
-		}
-	],
-	"antag_fail_outcomes": [
-		{
-			SEE OUTCOME BLOCK TEMPLATE
+            SEE OUTCOME BLOCK TEMPLATE
+        }
+    ],
+    "antag_fail_outcomes": [
+        {
+            SEE OUTCOME BLOCK TEMPLATE
         },
         {
-			SEE OUTCOME BLOCK TEMPLATE
-		}
-	]
+            SEE OUTCOME BLOCK TEMPLATE
+        }
+    ]
 }
 ```
 
@@ -171,7 +197,7 @@ Please have a look at the [full biome differences list](index.md#clangen-biomes)
 **Differences between the types** 
 > Training patrols are an easy difficulty for [success chance](#chance-of-success-int), but the lowest with regards to [exp reward](#exp-int). They are a relatively safe patrol type of low danger, and the [injuries](#injury-listdictstr-various) rabbits can obtain on them should either be rare (low weighed outcome), or minor. Training patrols have high [relationship rewards](#relationships-listdictstr-various).
 
-> Hunting patrols are of moderate difficulty for [success chance](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#chance-of-success-int).  Hunting patrols are subject to [extra filtering](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Advanced-documentation#todo-hunting-filtering-in-depth) that effects what patrols are available based on their [prey reward](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#prey-liststr). This filtering ensures that we cannot starve out the player's rabbits simply by adding too many patrols that give out a certain prey reward. Hunting patrols are of medium danger, and the [injuries](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#injury-listdictstr-various) rabbits can obtain on them should either be minor and common (high weighed outcome), moderate and of a normal weight, or severe and of a low weight. The same guidelines apply to [killing rabbits](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#dead_cats-liststr) on this patrol type. Hunting patrols should have only minor [relationship rewards](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#relationships-listdictstr-various) (less than 5) unless the hunting patrol text focuses on the relationship, e.g a rabbit and a rusasi hunting together with the rabbit teaching the rusasi.
+> Hunting patrols are of moderate difficulty for [success chance](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#chance-of-success-int).  Hunting patrols are subject to [extra filtering](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Advanced-documentation#todo-hunting-filtering-in-depth) that effects what patrols are available based on their [prey reward](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#prey-liststr). This filtering ensures that we cannot starve out the player's rabbits simply by adding too many patrols that give out a certain prey reward. Hunting patrols are of medium danger, and the [injuries](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#injury-listdictstr-various) rabbits can obtain on them should either be minor and common (high weighed outcome), moderate and of a normal weight, or severe and of a low weight. The same guidelines apply to [killing rabbits](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#dead_cats-liststr) on this patrol type. Hunting patrols should have only minor [relationship rewards](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#relationships-listdictstr-various) (less than 5) unless the hunting patrol text focuses on the relationship, e.g a rabbit and a rusasirah hunting together with the rabbit teaching the rusasirah.
 
 > Border patrols needs to be the hardest and most dangerous, with a high difficulty for [success chance](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#chance-of-success-int).  This is where experienced rabbits should shine! The [injuries](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#injury-listdictstr-various) rabbits can obtain on them should be a wide range. Failure outcomes on border patrols that don't cause injury should be rare. You are encouraged to apply minor injuries even on success outcome. The same guidelines apply to [killing rabbits](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#dead_cats-liststr) on this patrol type, with the exception that you cannot kill rabbits on any success outcomes. This is by far the mostly likely patrol type to have rabbits become [lost](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#lost_cats-liststr) on.
 
@@ -181,7 +207,7 @@ Please have a look at the [full biome differences list](index.md#clangen-biomes)
 
 
 !!! tip
-	There are two further subtypes of patrols which occur as isolated events within the four main types. These are other_clan and new_cat patrols. Other warren patrols deal with the Clans neighboring the player Warren and are discussed [here](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#other_clan_rep). New rabbit patrols deal with patrols where a new rabbit joins the player Warren. The chance of finding a new_cat patrol is discussed [here](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#outsider_rep), the new_cat tag is discussed [here](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#tags-liststr), and the code to generate a new_cat is discussed [here](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#new_cat-listliststr). A patrol is firstly one of the four types, e.g herb gathering, and then can also be a other_clan or new_cat (or both!) patrol in addition to the four basic types. 
+    There are two further subtypes of patrols which occur as isolated events within the four main types. These are other_clan and new_cat patrols. Other clan patrols deal with the Clans neighboring the player Clan and are discussed [here](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#other_clan_rep). New cat patrols deal with patrols where a new cat joins the player Clan. The chance of finding a new_cat patrol is discussed [here](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#outsider_rep), the new_cat tag is discussed [here](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#tags-liststr), and the code to generate a new_cat is discussed [here](https://github.com/ClanGenOfficial/clangen/wiki/%5BWriting%5D-%E2%80%90-Patrols#new_cat-listliststr). A patrol is firstly one of the four types, e.g herb gathering, and then can also be a other_clan or new_cat (or both!) patrol in addition to the four basic types. 
 
 
 ***
@@ -243,8 +269,8 @@ Please have a look at the [full biome differences list](index.md#clangen-biomes)
 | "rabbit"                 | Total number of rabbits (not including chief rabbit or captain)           |
 | "chief rabbit"                  | Total number of chief rabbits                                             |
 | "captain"                  | Total number of captains                                            |
-| "rusasi"              | Total number of rabbit rusasirahs                                 |
-| "healer rusasi" | Total number of healer rusasirahs                            |
+| "rusasirah"              | Total number of rabbit rusasirahs                                 |
+| "healer rusasirah" | Total number of healer rusasirahs                            |
 | "healer rabbits"             | Total number of healer rabbits and healer rusasirahs combined |
 | "normal adult"            | Total number of rabbits, chief rabbits and captains                      |
 | "all rusasirahs"         | Total number of rabbit rusasirahs and healer rusasirahs.   |
@@ -262,7 +288,7 @@ Please have a look at the [full biome differences list](index.md#clangen-biomes)
 > The general hunting and border jsons have balancing patrols in them. These have very low weights (between 1-5) and aren't very interesting patrols, but they are made so that no matter what biome and season it is, the game has a pool of valid hunting and border patrols to choose from. 
 
 !!! tip
-	Hunting patrols have an additional level of filtering active above the patrol weights. First the game decides what prey reward the patrol should give (based on chances that change depending on the biome and season), and then, from the patrols that give that prey reward _as a non-stat success_, the acceptable patrols are weighed against each other. This naturally makes patrols that give huge prey rewards rare, no matter how many of those patrols you write. Don't worry about weighing hunting patrols according to their prey reward. Instead make each hunting patrol give roughly the same prey reward for all non-stat successes. The hunting filtering code will make sure the appropriate amount of prey is given. 
+    Hunting patrols have an additional level of filtering active above the patrol weights. First the game decides what prey reward the patrol should give (based on chances that change depending on the biome and season), and then, from the patrols that give that prey reward _as a non-stat success_, the acceptable patrols are weighed against each other. This naturally makes patrols that give huge prey rewards rare, no matter how many of those patrols you write. Don't worry about weighing hunting patrols according to their prey reward. Instead make each hunting patrol give roughly the same prey reward for all non-stat successes. The hunting filtering code will make sure the appropriate amount of prey is given. 
 
 
 ***
@@ -484,22 +510,7 @@ Please have a look at the [full biome differences list](index.md#clangen-biomes)
 ***
 
 #### relationship_constraint: List[str]
->Optional. Only allows the patrol if the rabbits meet relationship constraints
-
-| relationship          |                                                                                                                                   |
-|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------|
-| "siblings"            | All rabbits on the patrol must be siblings                                                                                           |
-| "mates"               | All rabbits on the patrol must be mates with each-other                                                                              |
-| "mates_with_pl"       | All rabbits on the patrol must be mates with p_l, but don't necessarily have to be mates with each-other.                            |
-| "parent/child"        | p_l must be the parent of r_c                                                                                                     |
-| "child/parent"        | r_c must be the parent of p_l                                                                                                     |
-| "romantic_{value}"    | Value is an integer between 0 and 100. Every patrol member must have more than {value} romantic-like to all other patrol members. |
-| "platonic_{value}"    | Value is an integer between 0 and 100. Every patrol member must have more than {value} platonic-like to all other patrol members. |
-| "dislike_{value}"     | Value is an integer between 0 and 100. Every patrol member must have more than {value} dislike to all other patrol members.       |
-| "comfortable_{value}" | Value is an integer between 0 and 100. Every patrol member must have more than {value} comfort to all other patrol members.       |
-| "jealousy_{value}"    | Value is an integer between 0 and 100. Every patrol member must have more than {value} jealousy to all other patrol members.      |
-| "trust_{value}"       | Value is an integer between 0 and 100. Every patrol member must have more than {value} trust to all other patrol members.         |
-
+>Optional. Only allows the patrol if the cats meet relationship constraints. You can include any tags in [Relationship Levels](reference/tag-lists.md#relationship-levels) and [Relationship Types](reference/tag-lists.md#relationship-types).
 
 ***
 
@@ -528,8 +539,8 @@ This is a good starting point for writing your own outcomes.
 
 ```json
 {
-	"text": "The raw displayed outcome text.",
-	"exp": 0,
+    "text": "The raw displayed outcome text.",
+    "exp": 0,
     "weight": 20,
     "stat_skill": [],
     "stat_trait": [],
@@ -537,29 +548,29 @@ This is a good starting point for writing your own outcomes.
     "prey": [],
     "herbs": [],
     "lost_cats": [],
-	"dead_cats": [],
-	"outsider_rep": null,
-	"other_clan_rep": null,
-	"injury": [
+    "dead_cats": [],
+    "outsider_rep": null,
+    "other_clan_rep": null,
+    "injury": [
         {
-			"rabbits": [],
-			"injuries": [],
-			"scars": [],
-			"no_results": false
+            "cats": [],
+            "injuries": [],
+            "scars": [],
+            "no_results": false
         }
     ],
-	"history_text": {
-		"reg_death": "m_c died while on a patrol.",
-		"lead_death": "died on patrol",
-		"scars": "m_c was scarred on patrol"
-	    },
-	"relationships": [
+    "history_text": {
+        "reg_death": "m_c died while on a patrol.",
+        "lead_death": "died on patrol",
+        "scars": "m_c was scarred on patrol"
+    },
+    "relationships": [
         {
-			"cats_to": [],
-			"cats_from": [],
-			"mutual": false,
-			"values": [],
-			"amount": 5
+            "cats_to": [],
+            "cats_from": [],
+            "mutual": false,
+            "values": [],
+            "amount": 5
         }
     ],
     "new_cat": [],
@@ -608,22 +619,24 @@ What each parameter does, and what the options are for outcomes.
 
 >To override default behavior:
 
-| string         | new behavior                                                                                                                                                                                                                                                 |
+| string      | new behavior                                                                                                                                                                                                                                                 |
 |-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| "p_l"       | Patrol chief rabbit (p_l) can be stat rabbit                                                                                                                                                                                                                          |
-| "r_c"       | Random rabbit can be stat rabbit                                                                                                                                                                                                                                   |
-| "app1"      | app1 (the first rusasi) can be stat rabbit                                                                                                                                                                                                                  |
-| "app2"      | app2 (the second rusasi) can be stat rabbit                                                                                                                                                                                                                 |
-| "not_pl_rc" | Any rabbit but p_l or r_c can be stat_cat. This is the default behavior for 3 + rabbit patrols. This allows that requirement to be applied to 2 and 1 rabbit patrols. Note that, with this constraint, no rabbits will be allowed to be stat_cat on 1 and 2 rabbit patrols. |
-| "any"       | Any rabbit can be stat_cat. Still subject to the additional requirement tags below, if present. Be careful with using s_c's name when this is used - it might lead to self-interaction                                                                          |
+| "p_l"       | Patrol leader (p_l) can be stat cat                                                                                                                                                                                                                          |
+| "r_c"       | Random cat can be stat cat                                                                                                                                                                                                                                   |
+| "app1"      | app1 (the first apprentice) can be stat cat                                                                                                                                                                                                                  |
+| "app2"      | app2 (the second apprentice) can be stat cat                                                                                                                                                                                                                 |
+| "not_pl_rc" | Any cat but p_l or r_c can be stat_cat. This is the default behavior for 3 + cat patrols. This allows that requirement to be applied to 2 and 1 cat patrols. Note that, with this constraint, no cats will be allowed to be stat_cat on 1 and 2 cat patrols. |
+| "not_pl"    | Any cat but p_l can be stat cat                                                                                                                                                                                                                              |
+| "not_rc"    | Any cat but r_c can be stat cat                                                                                                                                                                                                                              |
+| "any"       | Any cat can be stat_cat. Still subject to the additional requirement tags below, if present. Be careful with using s_c's name when this is used - it might lead to self-interaction                                                                          |
 
 >To add additional requirements to stat_cat:
 
 | string      | additional requirement                                                                                                                             |
 |----------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| "adult"  | Stat rabbit can't be an rusasi. Note that this doesn't override default behavior, only adds an additional requirement.                            |
-| "app"    | Stat rabbit must be an rusasi. Note that this doesn't override default behavior, only adds an additional requirement.                             |
-| "healer" | Stat rabbit must be a healer or healer rusasi. Note that this doesn't override default behavior, only adds an additional requirement. |
+| "adult"  | Stat rabbit can't be an rusasirah. Note that this doesn't override default behavior, only adds an additional requirement.                            |
+| "app"    | Stat rabbit must be an rusasirah. Note that this doesn't override default behavior, only adds an additional requirement.                             |
+| "healer" | Stat rabbit must be a healer or healer rusasirah. Note that this doesn't override default behavior, only adds an additional requirement. |
 
 >
 
@@ -647,8 +660,8 @@ What each parameter does, and what the options are for outcomes.
 | "p_l"    | Patrol chief rabbit (p_l) becomes lost                  |
 | "r_c"    | Random rabbit becomes lost                           |
 | "s_c"    | stat rabbit (s_c) becomes lost                       |
-| "app1"   | app1 (the first rusasi) becomes lost          |
-| "app2"   | app2 (the second rusasi) becomes lost         |
+| "app1"   | app1 (the first rusasirah) becomes lost          |
+| "app2"   | app2 (the second rusasirah) becomes lost         |
 | "patrol" | The entire patrol becomes lost                    |
 | "multi"  | Multiple, but not all, of the patrol becomes lost |
 
@@ -664,8 +677,8 @@ What each parameter does, and what the options are for outcomes.
 | "p_l"    | Patrol chief rabbit (p_l) will die                  |
 | "r_c"    | Random rabbit will die                           |
 | "s_c"    | stat rabbit (s_c) will die                       |
-| "app1"   | app1 (the first rusasi) will die          |
-| "app2"   | app2 (the second rusasi) will die         |
+| "app1"   | app1 (the first rusasirah) will die          |
+| "app2"   | app2 (the second rusasirah) will die         |
 | "patrol" | The entire patrol will die                    |
 | "multi"  | Multiple, but not all, of the patrol will die |
 
@@ -678,10 +691,10 @@ What each parameter does, and what the options are for outcomes.
 >
 >```json
 >{
->	 "rabbits": [],
->	 "injuries": [],
->	 "scars": [],
->	 "no_results": false
+>     "cats": [],
+>     "injuries": [],
+>     "scars": [],
+>     "no_results": false
 >}
 >```
 >
@@ -694,21 +707,21 @@ What each parameter does, and what the options are for outcomes.
 | "p_l"    | Patrol chief rabbit (p_l) become injured                   |
 | "r_c"    | Random rabbit become injured                            |
 | "s_c"    | stat rabbit (s_c) become injured                        |
-| "app1"   | app1 (the first rusasi) become injured           |
-| "app2"   | app2 (the second rusasi) become injured          |
+| "app1"   | app1 (the first rusasirah) become injured           |
+| "app2"   | app2 (the second rusasirah) become injured          |
 | "patrol" | The entire patrol becomes injured                    |
 | "multi"  | Multiple, but not all, of the patrol becomes injured |
 
 >**injuries: List[str]:** Pool of injures to draw from
 >
->[Injury List](reference/index.md#__tabbed_1_1)
+>[Injury List](reference/tag-lists.md#__tabbed_1_1)
 >
 >The above list includes both singular injuries and injury pools.  Adding an injury pool will allow for any of the injuries within that pool to be possible.  One will be chosen at random.  You don't have to pick just one injury or injury pool, you can include as many as you like!
 
 >**scars: List[str]:** 
 >Optional. If in classic mode, a scar is chosen from this pool to be given instead of an injury.  If in expanded mode, a scar is chosen from this pool to possibly be given upon healing their injury.
 >
->[Scar List](reference/index.md#__tabbed_1_5)
+>[Scar List](reference/tag-lists.md#__tabbed_1_5)
 
 >**no_results: bool:** 
 >Optional. Controls if the injury "got" message shows up in patrol results, as well as potential history text.
@@ -746,11 +759,11 @@ What each parameter does, and what the options are for outcomes.
 >
 >```
 >{
->	 "cats_from": [],
+>     "cats_from": [],
 >   "cats_to": [],
->	 "mutual": false
->	 "values" [],
->	 "amount": 5
+>     "mutual": false
+>     "values" [],
+>     "amount": 5
 >}
 >```
 >
@@ -763,8 +776,8 @@ What each parameter does, and what the options are for outcomes.
 | "p_l"         | Patrol chief rabbit (p_l)'s feeling are effected                          |
 | "r_c"         | Random rabbit's feeling are effected                                   |
 | "s_c"         | stat rabbit (s_c)'s feeling are effected                               |
-| "app1"        | app1 (the first rusasi)'s feeling are effected                  |
-| "app2"        | app2 (the second rusasi)'s feeling are effected                 |
+| "app1"        | app1 (the first rusasirah)'s feeling are effected                  |
+| "app2"        | app2 (the second rusasirah)'s feeling are effected                 |
 | "patrol"      | The entire patrol's feeling are effected                            |
 | "warren"        | The entire warren's feeling are effected                              |
 | "n_c:{index}" | The new rabbit(s) with the index number {index}'s feeling are effected |
@@ -776,11 +789,25 @@ What each parameter does, and what the options are for outcomes.
 | "p_l"         | Feelings toward patrol chief rabbit (p_l) are effected                          |
 | "r_c"         | Feelings toward random rabbit's feeling are effected                         |
 | "s_c"         | Feelings toward stat rabbit (s_c) are effected                               |
-| "app1"        | Feelings toward app1 (the first rusasi) are effected                  |
-| "app2"        | Feelings toward app2 (the second rusasi) are effected                 |
+| "app1"        | Feelings toward app1 (the first rusasirah) are effected                  |
+| "app2"        | Feelings toward app2 (the second rusasirah) are effected                 |
 | "patrol"      | Feelings toward the entire patrol are effected                            |
 | "warren"        | Feelings toward the entire warren are effected                              |
 | "n_c:{index}" | Feelings toward the new rabbit(s) with the index number {index} are effected |
+
+> Group modifiers: These will modify the cats already being gathered according to the other strings. For example, a block with `"cats_from": ["clan", "low_lawful"]` will gather all the cats in the Clan with a 0-8 lawfulness facet.  These can be combined to get cats with specific ranges of multiple facets.
+
+| modifier     |                                                |
+|--------------|------------------------------------------------|
+| low_lawful   | cats with a 0-8 lawfulness facet are affected  |
+| high_lawful  | cats with a 9-16 lawfulness facet are affected |
+| low_social   | cats with a 0-8 sociable facet are affected    |
+| high_social  | cats with a 9-16 sociable facet are affected   |
+| low_stable   | cats with a 0-8 stability facet are affected   |
+| high_stable  | cats with a 9-16 stability facet are affected  |
+| low_aggress  | cats with a 0-8 aggression facet are affected  |
+| high_aggress | cats with a 9-16 aggression facet are affected |
+
 
 >**mutual: bool :** Optional. Controls if the relation effect will be applied in both directions. 
 
@@ -818,8 +845,8 @@ What each parameter does, and what the options are for outcomes.
 >
 >```
 >[
->	[rabbit details],
->	[rabbit 2 details]
+>    [cat details],
+>    [cat 2 details]
 >]
 >```
 >
@@ -839,7 +866,7 @@ What each parameter does, and what the options are for outcomes.
 | "clancat"                                   | Gives the rabbit a former-clancat type backstory. If "meeting" is also included, this tag will make the rabbit a former Clancat outsider.                                                                                                                                                                                                                                 |
 | "meeting"                                   | Make the rabbit an outsider (the patrol just met them, but they didn't join). That rabbit will never take a new warren-like name.                                                                                                                                                                                                                                           |
 | "litter"                                    | Turns a single rabbit generation into a litter of kits or newborns. Make sure to have a parent for them!                                                                                                                                                                                                                                                            |
-| "status:{some_status}"                      | Rabbits will join with this status. Include "healer", "rusasi", "owsla", "kit", "newborn", "healer rusasi", etc, but not chief rabbit or captain. Default for not-litters is rabbit. Be very careful specifying both age and status-  there is no extra check to ensure they make sense together.                                                  |
+| "status:{some_status}"                      | Rabbits will join with this status. Include "healer", "rusasirah", "owsla", "kit", "newborn", "healer rusasirah", etc, but not chief rabbit or captain. Default for not-litters is rabbit. Be very careful specifying both age and status-  there is no extra check to ensure they make sense together.                                                  |
 | "age:{some_age}"                            | Rabbits are "newborn", "kit", "adolescent", "young adult", "adult", "senior adult", "senior". You can also specify "mate" to put them in the same age-category as the first specified mate, or "has_kits" to generate an age between 14 and 120 moons. Be very careful specifying both age and status-  there is no extra check to ensure they make sense together. |
 | "backstory:{some}, {backstories},{another}" | Comma-separated exact backstories to pick from. Overrides "kittypet", "loner", "clancat"                                                                                                                                                                                                                                                                            |
 | "parent:{index},{index}"                    | You can include one or two biological parents. Parents must be created BEFORE children, so the parent details must be listed before the children. If you mark parents, and the child(ren) are young enough, one will be given the "recovering from birth" condition.                                                                                                |
@@ -875,7 +902,7 @@ What each parameter does, and what the options are for outcomes.
 >
 > The exception to this is if the player Warren has less than 20 rabbits. If the player Warren is small, the chance to get a new_cat patrol is overridden and becomes equal to the chance of the welcoming reputation. However, the new_cat patrols that are generated with the small_clan chance will still be generated from the json that is appropriate to the Warren's reputation.
 >
-> Patrols that encounter outsiders without using the new_cat code or tag can effect outsider_rep without being a new-rabbit patrol. Patrols that generate a new_cat do not have to add the new_cat tag unless the rabbit is an outsider, for example, when stealing an rusasi from an other_clan, the new_cat code block is used to make the rusasi, but outsider_rep and the new_cat tag are not used, due to the rusasi being from an interaction with an other_clan. Always default to using the new_cat tag if unsure.
+> Patrols that encounter outsiders without using the new_cat code or tag can effect outsider_rep without being a new-rabbit patrol. Patrols that generate a new_cat do not have to add the new_cat tag unless the rabbit is an outsider, for example, when stealing an rusasirah from an other_clan, the new_cat code block is used to make the rusasirah, but outsider_rep and the new_cat tag are not used, due to the rusasirah being from an interaction with an other_clan. Always default to using the new_cat tag if unsure.
 
 Outsider reputation changes
 > Defaults:
@@ -929,32 +956,38 @@ This is a perfectly good patrol, with the bare minimum features needed!
 
 ```json
 {
-	"patrol_id": "some_unique_id",
-	"biome": ["Any"],
-	"season": ["Any"],
-	"types": ["hunting"],
-	"tags": [],
-	"patrol_art": "hunt_general_intro",
-	"min_cats": 1,
-	"max_cats": 6,
-	"weight": 20,
-	"chance_of_success": 50,
-	"intro_text": "The patrol heads out.",
-	"decline_text": "And they head right back!",
-	"success_outcomes": [
-		{
-			"text": "Wow! The patrol did great!",
-			"exp": 10,
-			"weight": 20
-		}
-	],
-	"fail_outcomes": [
-		{
-			"text": "Oof. The patrol didn't do so hot.",
-			"exp": 0,
-			"weight": 20
-		}
-	]
+    "patrol_id": "some_unique_id",
+    "biome": [
+        "Any"
+    ],
+    "season": [
+        "Any"
+    ],
+    "types": [
+        "hunting"
+    ],
+    "tags": [],
+    "patrol_art": "hunt_general_intro",
+    "min_cats": 1,
+    "max_cats": 6,
+    "weight": 20,
+    "chance_of_success": 50,
+    "intro_text": "The patrol heads out.",
+    "decline_text": "And they head right back!",
+    "success_outcomes": [
+        {
+            "text": "Wow! The patrol did great!",
+            "exp": 10,
+            "weight": 20
+        }
+    ],
+    "fail_outcomes": [
+        {
+            "text": "Oof. The patrol didn't do so hot.",
+            "exp": 0,
+            "weight": 20
+        }
+    ]
 }
 ```
 
@@ -962,134 +995,201 @@ This is a perfectly good patrol, with the bare minimum features needed!
 This uses almost all features somewhere. Yes, it is long. Most patrols are not this long. 
 
 !!! tip
-	If you are new to patrol writing, I recommend going through this example line by line and reading the parameter explanation from above alongside it.
+    If you are new to patrol writing, I recommend going through this example line by line and reading the parameter explanation from above alongside it.
 
 ```json
 {
-	"patrol_id": "some_unique_id",
-	"biome": ["Any"],
-	"season": ["Any"],
-	"types": ["hunting"],
-	"tags": ["disaster", "new_cat"],
-	"patrol_art": "explict_art_name",
-	"patrol_art_clean": "hunt_general_intro",
-	"min_cats": 3,
-	"max_cats": 6,
-	"min_max_status": {
-		"rabbit": [1, 6],
-		"chief rabbit": [1, 6],
-		"normal adult": [1, 6],
-		"rusasi": [-1, -1]
-	},
-	"weight": 20,
-	"chance_of_success": 50,
-	"relationship_constraint": ["siblings", "platonic_20"],
-	"pl_skill_constraint": ["FIGHTER,1"],
-	"intro_text": "The patrol heads out.",
-	"decline_text": "And they head right back!",
-	"success_outcomes": [
-		{
-			"text": "Wow! The patrol did great!",
-			"exp": 10,
-			"weight": 20,
-			"relationships": [
-				{
-					"cat_to": ["p_l"],
-					"cat_from": ["r_c"],
-					"values": ["platonic", "comfort"],
-					"amount": 5
-				},
-				{
-					"cat_to": ["p_l"],
-					"cat_from": ["r_c"],
-					"values": ["dislike"],
-					"amount": -5
-				}
-				
-			],
-			"prey": ["medium"],
-			"art": "patrol_outcome_art",
-			"art_clean": "patrol_outcome_art_clean"
-		},
+    "patrol_id": "some_unique_id",
+    "biome": [
+        "Any"
+    ],
+    "season": [
+        "Any"
+    ],
+    "types": [
+        "hunting"
+    ],
+    "tags": [
+        "disaster",
+        "new_cat"
+    ],
+    "patrol_art": "explict_art_name",
+    "patrol_art_clean": "hunt_general_intro",
+    "min_cats": 3,
+    "max_cats": 6,
+    "min_max_status": {
+        "warrior": [
+            1,
+            6
+        ],
+        "leader": [
+            1,
+            6
+        ],
+        "normal adult": [
+            1,
+            6
+        ],
+        "apprentice": [
+            -1,
+            -1
+        ]
+    },
+    "weight": 20,
+    "chance_of_success": 50,
+    "relationship_constraint": [
+        "siblings",
+        "platonic_20"
+    ],
+    "pl_skill_constraint": [
+        "FIGHTER,1"
+    ],
+    "intro_text": "The patrol heads out.",
+    "decline_text": "And they head right back!",
+    "success_outcomes": [
         {
-			"text": "Wow! This is an uncommon outcome, and someone new joined!",
-			"exp": 2,
-            "weight": 10,
-			"new_cat": [
-				["can_birth", "age:has_kits"],
-				["litter", "parent:0"]
-			],
-            "art": "patrol_outcome_art"
-		},
-        {
-			"text": "Wow! s_c did extra great!",
-			"exp": 10,
-			"weight": 20,
-			"stat_trait": ["loving", "cold"],
-			"stat_skill": ["TEACHER,1"],
-			"can_have_stat": ["p_l", "adult"]
-		}
-	],
-	"fail_outcomes": [
-		{
-			"text": "Oof. The patrol didn't do so hot. They also all died.",
-			"exp": 0,
-			"weight": 20,
-			"dead_cats": ["patrol"],
-			"history_text": {
-				"reg_death": "m_c died while on a patrol.",
-				"lead_death": "died on patrol"
-			},
-			"art": "patrol_outcome_art",
-			"art_clean": "patrol_outcome_art_clean"
-		},
-        {
-			"text": "Wow, a fail-stat outcome. Cool.",
-			"exp": 0,
-			"weight": 20,
-			"stat_trait": ["grumpy", "nervous"],
-			"stat_skill": ["SPEAKER,1"],
-			"art": "patrol_outcome_art"
-		},
-        {
-			"text": "They didn't die.. , but they got hurt and lost!",
-			"exp": 0,
-			"weight": 20,
-			"lost_cats": ["r_c"],
-			"injury": [
+            "text": "Wow! The patrol did great!",
+            "exp": 10,
+            "weight": 20,
+            "relationships": [
                 {
-					"rabbits": ["p_l"],
-					"injuries": ["battle_injury"],
-					"scars": ["ONE"]
-				}
-			],
-			"history_text": 
+                    "cat_to": [
+                        "p_l"
+                    ],
+                    "cat_from": [
+                        "r_c"
+                    ],
+                    "values": [
+                        "platonic",
+                        "comfort"
+                    ],
+                    "amount": 5
+                },
                 {
-                    "reg_death": "m_c died from an patrol.",
-                    "lead_death": "died from a patrol",
-                    "scar": "m_c was scarred on patrol"
+                    "cat_to": [
+                        "p_l"
+                    ],
+                    "cat_from": [
+                        "r_c"
+                    ],
+                    "values": [
+                        "dislike"
+                    ],
+                    "amount": -5
                 }
-		}
-	],
-	"antag_success_outcomes": [
-		{
-			"text": "Wow, you did the antagonize!",
-			"exp": 0,
-			"weight": 20,
-			"outsider_rep": -1,
-			"other_clan_rep": -2,
-            "art": "patrol_outcome_art"
-		}
-	],
-	"antag_fail_outcomes": [
+            ],
+            "prey": [
+                "medium"
+            ],
+            "art": "patrol_outcome_art",
+            "art_clean": "patrol_outcome_art_clean"
+        },
         {
-			"text": "Wow, you did the antagonize, and failed!",
-			"exp": 0,
-			"weight": 20,
-			"outsider_rep": 0,
-			"other_clan_rep": -2
-		}
-	]
+            "text": "Wow! This is an uncommon outcome, and someone new joined!",
+            "exp": 2,
+            "weight": 10,
+            "new_cat": [
+                [
+                    "can_birth",
+                    "age:has_kits"
+                ],
+                [
+                    "litter",
+                    "parent:0"
+                ]
+            ],
+            "art": "patrol_outcome_art"
+        },
+        {
+            "text": "Wow! s_c did extra great!",
+            "exp": 10,
+            "weight": 20,
+            "stat_trait": [
+                "loving",
+                "cold"
+            ],
+            "stat_skill": [
+                "TEACHER,1"
+            ],
+            "can_have_stat": [
+                "p_l",
+                "adult"
+            ]
+        }
+    ],
+    "fail_outcomes": [
+        {
+            "text": "Oof. The patrol didn't do so hot. They also all died.",
+            "exp": 0,
+            "weight": 20,
+            "dead_cats": [
+                "patrol"
+            ],
+            "history_text": {
+                "reg_death": "m_c died while on a patrol.",
+                "lead_death": "died on patrol"
+            },
+            "art": "patrol_outcome_art",
+            "art_clean": "patrol_outcome_art_clean"
+        },
+        {
+            "text": "Wow, a fail-stat outcome. Cool.",
+            "exp": 0,
+            "weight": 20,
+            "stat_trait": [
+                "grumpy",
+                "nervous"
+            ],
+            "stat_skill": [
+                "SPEAKER,1"
+            ],
+            "art": "patrol_outcome_art"
+        },
+        {
+            "text": "They didn't die.. , but they got hurt and lost!",
+            "exp": 0,
+            "weight": 20,
+            "lost_cats": [
+                "r_c"
+            ],
+            "injury": [
+                {
+                    "cats": [
+                        "p_l"
+                    ],
+                    "injuries": [
+                        "battle_injury"
+                    ],
+                    "scars": [
+                        "ONE"
+                    ]
+                }
+            ],
+            "history_text": {
+                "reg_death": "m_c died from an patrol.",
+                "lead_death": "died from a patrol",
+                "scar": "m_c was scarred on patrol"
+            }
+        }
+    ],
+    "antag_success_outcomes": [
+        {
+            "text": "Wow, you did the antagonize!",
+            "exp": 0,
+            "weight": 20,
+            "outsider_rep": -1,
+            "other_clan_rep": -2,
+            "art": "patrol_outcome_art"
+        }
+    ],
+    "antag_fail_outcomes": [
+        {
+            "text": "Wow, you did the antagonize, and failed!",
+            "exp": 0,
+            "weight": 20,
+            "outsider_rep": 0,
+            "other_clan_rep": -2
+        }
+    ]
 }
-
 ```

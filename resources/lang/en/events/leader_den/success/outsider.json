@@ -34,8 +34,8 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": -5
+          "values": ["like"],
+          "amount": 5
         },
         {
           "cats_from": ["m_c"],
@@ -61,8 +61,8 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": -5
+          "values": ["like"],
+          "amount": 5
         },
         {
           "cats_from": ["m_c"],
@@ -88,8 +88,8 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": -5
+          "values": ["like"],
+          "amount": 5
         },
         {
           "cats_from": ["m_c"],
@@ -119,8 +119,8 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": -5
+          "values": ["like"],
+          "amount": 5
         },
         {
           "cats_from": ["m_c"],
@@ -218,8 +218,8 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": -5
+          "values": ["like"],
+          "amount": 5
         },
         {
           "cats_from": ["warren"],
@@ -248,7 +248,7 @@
   },
   {
     "interaction_type": "invite",
-    "event_text": "c_n finds m_c and invites {PRONOUN/m_c/object} in, but m_c replies c_n would only slow m_c down. A challenge is set: if m_c can outhunt a full patrol of c_n rabbits by sundown, then c_n will acknowledge {PRONOUN/m_c/poss} superiority. By moonhigh, m_c is c_n's newest Clanmate.",
+    "event_text": "c_n finds m_c and invites {PRONOUN/m_c/object} in, but m_c replies c_n would only slow m_c down. A challenge is set: if m_c can outhunt a full patrol of c_n rabbits by sundown, then c_n will acknowledge {PRONOUN/m_c/poss} superiority. By moonhigh, m_c is c_n's newest Warrenmate.",
     "reputation": ["any"],
     "rep_change": 0,
     "m_c": {
@@ -281,8 +281,8 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": -5
+          "values": ["like"],
+          "amount": 5
         },
         {
           "cats_from": ["m_c"],
@@ -317,7 +317,7 @@
   },
   {
     "interaction_type": "hunt",
-    "event_text": "m_c may have been exiled from c_n, but that hasn't stopped {PRONOUN/m_c/object} from sneaking back into the territory to hunt. However, m_c's luck runs out when {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} caught by a patrol, {PRONOUN/m_c/poss} former Clanmates not even giving {PRONOUN/m_c/object} a chance to run.",
+    "event_text": "m_c may have been exiled from c_n, but that hasn't stopped {PRONOUN/m_c/object} from sneaking back into the territory to hunt. However, m_c's luck runs out when {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} caught by a patrol, {PRONOUN/m_c/poss} former Warrenmates not even giving {PRONOUN/m_c/object} a chance to run.",
     "reputation": ["any"],
     "rep_change": -10,
     "m_c": {
@@ -347,7 +347,7 @@
   },
   {
     "interaction_type": "drive",
-    "event_text": "m_c may have been exiled from c_n, but that hasn't stopped {PRONOUN/m_c/object} from sneaking back into the territory to hunt. However, m_c's luck runs out when {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} caught by a patrol, and {PRONOUN/m_c/poss} former Clanmates chase {PRONOUN/m_c/object} right back over the border.",
+    "event_text": "m_c may have been exiled from c_n, but that hasn't stopped {PRONOUN/m_c/object} from sneaking back into the territory to hunt. However, m_c's luck runs out when {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} caught by a patrol, and {PRONOUN/m_c/poss} former Warrenmates chase {PRONOUN/m_c/object} right back over the border.",
     "reputation": ["any"],
     "rep_change": -2,
     "m_c": {
@@ -361,7 +361,7 @@
   },
   {
     "interaction_type": "search",
-    "event_text": "Patrol after patrol has been sent out in search of m_c, always returning without their lost Clanmate. Then, just as the Warren is about to give up all hope, m_c manages to track them down, resulting in a joyful reunion.",
+    "event_text": "Patrol after patrol has been sent out in search of m_c, always returning without their lost Warrenmate. Then, just as the Warren is about to give up all hope, m_c manages to track them down, resulting in a joyful reunion.",
     "reputation": ["any"],
     "rep_change": 1,
     "m_c": {
@@ -377,8 +377,8 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": -5
+          "values": ["like"],
+          "amount": 5
         },
         {
           "cats_from": ["m_c"],
@@ -405,8 +405,8 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": 15
+          "values": ["like"],
+          "amount": -15
         }
       ]
     }
@@ -526,12 +526,12 @@
   },
   {
     "interaction_type": "hunt",
-    "event_text": "c_n knows that there is no territory far enough to drive m_c out to - {PRONOUN/m_c/subject} must be driven out of this life. {PRONOUN/m_c/subject/CAP} {VERB/m_c/see/sees} {PRONOUN/m_c/poss} old Clanmates coming, but {PRONOUN/m_c/subject} {VERB/m_c/do/does}'nt have time to run.",
+    "event_text": "c_n knows that there is no territory far enough to drive m_c out to - {PRONOUN/m_c/subject} must be driven out of this life. {PRONOUN/m_c/subject/CAP} {VERB/m_c/see/sees} {PRONOUN/m_c/poss} old Warrenmates coming, but {PRONOUN/m_c/subject} {VERB/m_c/do/does}'nt have time to run.",
     "reputation": ["any"],
     "rep_change": -3,
     "m_c": {
       "status": ["exiled" ],
-      "new_thought": "Curses {PRONOUN/m_c/poss} old Clanmates",
+      "new_thought": "Curses {PRONOUN/m_c/poss} old Warrenmates",
       "kit_thought": "Wonders what happened to m_c"
     }
   },
@@ -549,7 +549,7 @@
   },
   {
     "interaction_type": "drive",
-    "event_text": "Exiling m_c wasn't enough - {PRONOUN/m_c/subject} must be driven far out of the surrounding territory. m_c only stands {PRONOUN/m_c/poss} ground for a heartbeat when {PRONOUN/m_c/poss} old Clanmates find {PRONOUN/m_c/object}. {PRONOUN/m_c/subject/CAP} {VERB/m_c/know/knows} {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} outnumbered, and {PRONOUN/m_c/subject} {VERB/m_c/flee/flees}.",
+    "event_text": "Exiling m_c wasn't enough - {PRONOUN/m_c/subject} must be driven far out of the surrounding territory. m_c only stands {PRONOUN/m_c/poss} ground for a heartbeat when {PRONOUN/m_c/poss} old Warrenmates find {PRONOUN/m_c/object}. {PRONOUN/m_c/subject/CAP} {VERB/m_c/know/knows} {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} outnumbered, and {PRONOUN/m_c/subject} {VERB/m_c/flee/flees}.",
     "reputation": ["any"],
     "rep_change": -1,
     "m_c": {
@@ -610,18 +610,18 @@
     "rep_change": 3,
     "m_c": {
       "status": [ "rogue" ],
-      "new_thought": "Tries to remember all the names of {PRONOUN/m_c/poss} new 'Clanmates'",
+      "new_thought": "Tries to remember all the names of {PRONOUN/m_c/poss} new 'Warrenmates'",
       "kit_thought": "Explores their new home"
     }
   },
   {
     "interaction_type": "invite",
-    "event_text": "When c_n finds {PRONOUN/m_c/object}, m_c is highly skeptical of {PRONOUN/m_c/poss} old Clanmates' offer to return... The Clanmates that drove {PRONOUN/m_c/object} from {PRONOUN/m_c/poss} nest, from {PRONOUN/m_c/poss} home, now want {PRONOUN/m_c/object} to return? Warily, m_c allows {PRONOUN/m_c/self} to be led back to burrow.",
+    "event_text": "When c_n finds {PRONOUN/m_c/object}, m_c is highly skeptical of {PRONOUN/m_c/poss} old Warrenmates' offer to return... The Warrenmates that drove {PRONOUN/m_c/object} from {PRONOUN/m_c/poss} nest, from {PRONOUN/m_c/poss} home, now want {PRONOUN/m_c/object} to return? Warily, m_c allows {PRONOUN/m_c/self} to be led back to burrow.",
     "reputation": ["any"],
     "rep_change": 1,
     "m_c": {
       "status": [ "exiled" ],
-      "new_thought": "Tentatively reconnects with {PRONOUN/m_c/poss} old Clanmates",
+      "new_thought": "Tentatively reconnects with {PRONOUN/m_c/poss} old Warrenmates",
       "kit_thought": "Is learning the truth behind all the stories"
     }
   },
@@ -638,7 +638,7 @@
   },
   {
     "interaction_type": "drive",
-    "event_text": "c_n finds m_c and drives {PRONOUN/m_c/object} far beyond c_n's borders. For all m_c's training, {PRONOUN/m_c/subject} {VERB/m_c/do/does}n't stand a chance against a whole patrol.",
+    "event_text": "c_n finds m_c and drives {PRONOUN/m_c/object} far beyond c_n's borders. For all m_c's training, {PRONOUN/m_c/subject} {VERB/m_c/don't/doesn't} stand a chance against a whole patrol.",
     "reputation": ["any"],
     "rep_change": -2,
     "m_c": {
@@ -648,7 +648,7 @@
   },
   {
     "interaction_type": "hunt",
-    "event_text": "c_n finds m_c and leaps on {PRONOUN/m_c/object}. m_c puts up a good fight, drawing on all {PRONOUN/m_c/poss} training, but {PRONOUN/m_c/subject} {VERB/m_c/do/does}n't stand a chance against a whole patrol.",
+    "event_text": "c_n finds m_c and leaps on {PRONOUN/m_c/object}. m_c puts up a good fight, drawing on all {PRONOUN/m_c/poss} training, but {PRONOUN/m_c/subject} {VERB/m_c/don't/doesn't} stand a chance against a whole patrol.",
     "reputation": ["any"],
     "rep_change": -3,
     "m_c": {
@@ -659,24 +659,24 @@
   },
   {
     "interaction_type": "search",
-    "event_text": "c_n turns the world upside down searching for their lost Clanmate. They cannot rest until m_c is safely home - and they don't. When they come upon {PRONOUN/m_c/object} at last, c_n is overjoyed to bring {PRONOUN/m_c/object} back to burrow where {PRONOUN/m_c/subject} {VERB/m_c/belong/belongs}.",
+    "event_text": "c_n turns the world upside down searching for their lost Warrenmate. They cannot rest until m_c is safely home - and they don't. When they come upon {PRONOUN/m_c/object} at last, c_n is overjoyed to bring {PRONOUN/m_c/object} back to burrow where {PRONOUN/m_c/subject} {VERB/m_c/belong/belongs}.",
     "reputation": ["any"],
     "rep_change": 1,
     "m_c": {
       "status": [ "lost" ],
-      "new_thought": "Never lost hope in {PRONOUN/m_c/poss} Clanmates finding {PRONOUN/m_c/object}",
+      "new_thought": "Never lost hope in {PRONOUN/m_c/poss} Warrenmates finding {PRONOUN/m_c/object}",
       "kit_thought": "Is learning the truth behind all the stories"
     }
   },
   {
     "interaction_type": "search",
-    "event_text": "c_n scours the outside territory for m_c, and eventually, their old Clanmate turns up. m_c joyfully reunites with the Warren, swearing that {PRONOUN/m_c/poss} faith in {PRONOUN/m_c/poss} Clanmates never wavered.",
+    "event_text": "c_n scours the outside territory for m_c, and eventually, their old Warrenmate turns up. m_c joyfully reunites with the Warren, swearing that {PRONOUN/m_c/poss} faith in {PRONOUN/m_c/poss} Warrenmates never wavered.",
     "reputation": ["any"],
     "rep_change": 1,
     "m_c": {
       "status": [ "lost" ],
       "trait": ["loyal", "confident", "bold", "faithful", "righteous"],
-      "new_thought": "Swears {PRONOUN/m_c/poss} loyalty to all the Clanmates that helped bring {PRONOUN/m_c/object} home",
+      "new_thought": "Swears {PRONOUN/m_c/poss} loyalty to all the Warrenmates that helped bring {PRONOUN/m_c/object} home",
       "kit_thought": "Is learning the truth behind all the stories"
     }
   }

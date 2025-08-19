@@ -9,7 +9,7 @@
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
         "intro_text": "The patrol wants to hold a training session for r_c. They decide to focus on how best hunt and hide while wading through cheek-deep water.",
@@ -63,7 +63,7 @@
         "chance_of_success": 50,
         "success_outcomes": [
             {
-                "text": "p_l fishes their Clanmate out from the swamp and settles down to groom the water from their pelt. Everyone is relieved to have gotten off so lightly.",
+                "text": "p_l fishes their Warrenmate out from the swamp and settles down to groom the water from their pelt. Everyone is relieved to have gotten off so lightly.",
                 "exp": 20,
                 "weight": 20,
                 "relationships": [
@@ -71,7 +71,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -85,7 +85,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -100,13 +100,13 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
                     }
                 ]
             },
             {
-                "text": "s_c calls to {PRONOUN/s_c/poss} disoriented Clanmate, helping r_c find the shoreline as the swamped rabbit struggles back to dry land.",
+                "text": "s_c calls to {PRONOUN/s_c/poss} disoriented Warrenmate, helping r_c find the shoreline as the swamped rabbit struggles back to dry land.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -122,7 +122,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -130,7 +130,7 @@
         ],
         "fail_outcomes": [
             {
-                "text": "The patrol works all day to free their Clanmate and gets nothing else done.",
+                "text": "The patrol works all day to free their Warrenmate and gets nothing else done.",
                 "exp": 0,
                 "weight": 20,
                 "relationships": [
@@ -138,13 +138,13 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": -5
                     }
                 ]
             },
             {
-                "text": "Harshly, s_c tells {PRONOUN/s_c/poss} Clanmate that {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} on {PRONOUN/r_c/poss} own - this patrol is too important to wait for some mouse-brain who got stuck.",
+                "text": "Harshly, s_c tells {PRONOUN/s_c/poss} Warrenmate that {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} on {PRONOUN/r_c/poss} own - this patrol is too important to wait for some mouse-brain who got stuck.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": [
@@ -162,7 +162,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": -5
                     }
                 ]
@@ -181,7 +181,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": -5
                     }
                 ]
@@ -204,7 +204,7 @@
         "chance_of_success": 50,
         "success_outcomes": [
             {
-                "text": "{PRONOUN/r_c/poss/CAP} Clanmates come running at {PRONOUN/r_c/poss} yowls, and r_c is soon back on dry land, shaken but unharmed. The patrol settles down as everyone comforts each other.",
+                "text": "{PRONOUN/r_c/poss/CAP} Warrenmates come running at {PRONOUN/r_c/poss} yowls, and r_c is soon back on dry land, shaken but unharmed. The patrol settles down as everyone comforts each other.",
                 "exp": 20,
                 "weight": 20,
                 "relationships": [
@@ -212,7 +212,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -226,7 +226,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -241,13 +241,13 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
                     }
                 ]
             },
             {
-                "text": "s_c calls to {PRONOUN/s_c/poss} disoriented Clanmate, helping r_c find the shoreline as the swamped rabbit struggles back to dry land. r_c holds s_c's voice in {PRONOUN/r_c/poss} mind, letting it lead {PRONOUN/r_c/object} back to safety.",
+                "text": "s_c calls to {PRONOUN/s_c/poss} disoriented Warrenmate, helping r_c find the shoreline as the swamped rabbit struggles back to dry land. r_c holds s_c's voice in {PRONOUN/r_c/poss} mind, letting it lead {PRONOUN/r_c/object} back to safety.",
                 "exp": 20,
                 "weight": 20,
                 "stat_trait": [
@@ -263,7 +263,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -279,13 +279,13 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": -5
                     }
                 ]
             },
             {
-                "text": "Harshly, s_c tells {PRONOUN/s_c/poss} Clanmate that {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} on {PRONOUN/r_c/poss} own - this patrol is too important to wait for some mouse-brain who got stuck.",
+                "text": "Harshly, s_c tells {PRONOUN/s_c/poss} Warrenmate that {PRONOUN/r_c/subject}{VERB/r_c/'re/'s} on {PRONOUN/r_c/poss} own - this patrol is too important to wait for some mouse-brain who got stuck.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": [
@@ -303,7 +303,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": -5
                     }
                 ]
@@ -322,7 +322,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "comfort"],
+                        "values": ["like", "comfort"],
                         "amount": -5
                     }
                 ]
@@ -383,10 +383,10 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
-        "intro_text": "r_c heads out into the swamps alone, but maybe an rusasi shouldn't try to do a solo patrol.",
+        "intro_text": "r_c heads out into the swamps alone, but maybe an rusasirah shouldn't try to do a solo patrol.",
         "decline_text": "r_c turns back to burrow, deciding that this is a bad idea.",
         "chance_of_success": 30,
         "success_outcomes": [
@@ -622,12 +622,12 @@
         "biome": ["wetlands"],
         "season": ["any"],
         "types": ["training"],
-        "tags": ["rom_two_apps", "romantic"],
+        "tags": ["rom_two_apps", "romance"],
         "patrol_art": "train_general_intro",
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [2, 2]
         },
         "weight": 20,
@@ -644,7 +644,7 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -658,7 +658,7 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -683,7 +683,7 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -699,7 +699,7 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": -5
                     }
                 ]
@@ -713,7 +713,7 @@
                         "cats_to": ["app1"],
                         "cats_from": ["app2"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": -5
                     }
                 ]
@@ -725,7 +725,7 @@
         "biome": ["wetlands"],
         "season": ["any"],
         "types": ["training"],
-        "tags": ["romantic"],
+        "tags": ["romance"],
         "patrol_art": "train_general_intro",
         "min_cats": 2,
         "max_cats": 2,
@@ -733,10 +733,10 @@
             "all rusasirahs": [-1, -1]
         },
         "weight": 20,
-        "intro_text": "p_l paddles across a little streamlet on {PRONOUN/p_l/poss} way to a hump of raised ground near burrow that's good for training. Upon arrival, {PRONOUN/p_l/subject} {VERB/p_l/find/finds} r_c doing the same thing. p_l allows {PRONOUN/p_l/self} a sigh before {PRONOUN/p_l/subject} {VERB/p_l/join/joins} {PRONOUN/r_c/object}. While Clanmates will do better training together, r_c just rubs {PRONOUN/p_l/object} the wrong way.",
+        "intro_text": "p_l paddles across a little streamlet on {PRONOUN/p_l/poss} way to a hump of raised ground near burrow that's good for training. Upon arrival, {PRONOUN/p_l/subject} {VERB/p_l/find/finds} r_c doing the same thing. p_l allows {PRONOUN/p_l/self} a sigh before {PRONOUN/p_l/subject} {VERB/p_l/join/joins} {PRONOUN/r_c/object}. While Warrenmates will do better training together, r_c just rubs {PRONOUN/p_l/object} the wrong way.",
         "decline_text": "...It's fine to train somewhere else, p_l decides. {PRONOUN/p_l/subject/CAP} {VERB/p_l/don't/doesn't} really want to interact with r_c.",
         "chance_of_success": 60,
-        "relationship_constraint": ["dislike_10"],
+        "relationship_constraint": ["dislikes"],
         "success_outcomes": [
             {
                 "text": "r_c shows {PRONOUN/p_l/object} a deft technique {PRONOUN/r_c/subject}{VERB/r_c/'ve/'s} been working on to judge the depth and danger of quagmires, and p_l can't let {PRONOUN/p_l/self} look bad in comparison, showing off {PRONOUN/p_l/poss} battle backflip with a smug smirk.",
@@ -747,7 +747,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["romantic", "dislike"],
+                        "values": ["romance"],
                         "amount": 10
                     }
                 ]
@@ -761,7 +761,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["romantic", "dislike"],
+                        "values": ["romance"],
                         "amount": 10
                     }
                 ]
@@ -777,7 +777,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["romantic", "dislike"],
+                        "values": ["romance"],
                         "amount": -10
                     }
                 ]
@@ -789,7 +789,7 @@
         "biome": ["wetlands"],
         "season": ["any"],
         "types": ["training"],
-        "tags": ["romantic"],
+        "tags": ["romance"],
         "patrol_art": "train_general_intro",
         "min_cats": 2,
         "max_cats": 2,
@@ -811,7 +811,7 @@
                         "cats_to": ["r_c"],
                         "cats_from": ["p_l"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -825,7 +825,7 @@
                         "cats_to": ["r_c"],
                         "cats_from": ["p_l"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -841,7 +841,7 @@
                         "cats_to": ["r_c"],
                         "cats_from": ["p_l"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -866,7 +866,7 @@
                         "cats_to": ["r_c"],
                         "cats_from": ["p_l"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -882,7 +882,7 @@
                         "cats_to": ["r_c"],
                         "cats_from": ["p_l"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": -5
                     }
                 ]
@@ -896,7 +896,7 @@
                         "cats_to": ["r_c"],
                         "cats_from": ["p_l"],
                         "mutual": true,
-                        "values": ["romantic", "platonic", "comfort"],
+                        "values": ["romance", "like", "comfort"],
                         "amount": -5
                     }
                 ]
@@ -913,7 +913,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [1, 6]
+            "rusasirah": [1, 6]
         },
         "weight": 20,
         "intro_text": "app1 crouches low behind some grass, searching for the ideal prey to fall to {PRONOUN/app1/poss} deadly claws. In front of the mighty hunter, a brightly colored beetle alights on a rock.",
@@ -926,12 +926,12 @@
                 "weight": 20
             },
             {
-                "text": "Ha! app1 leaps, tail lashing as the beetle buzzes under {PRONOUN/app1/poss} paws. {PRONOUN/app1/subject/CAP} {VERB/app1/bat/bats} the bug off the rock and onto the ground, then {VERB/app1/pounce/pounces} after it. app1 jumps and twists as {PRONOUN/app1/poss} colorful prey flits around {PRONOUN/app1/poss} head in typical concussed beetle fashion, unused to being an rusasi's new favorite toy.",
+                "text": "Ha! app1 leaps, tail lashing as the beetle buzzes under {PRONOUN/app1/poss} paws. {PRONOUN/app1/subject/CAP} {VERB/app1/bat/bats} the bug off the rock and onto the ground, then {VERB/app1/pounce/pounces} after it. app1 jumps and twists as {PRONOUN/app1/poss} colorful prey flits around {PRONOUN/app1/poss} head in typical concussed beetle fashion, unused to being an rusasirah's new favorite toy.",
                 "exp": 20,
                 "weight": 5
             },
             {
-                "text": "s_c pounces, flipping the beetle with soft paws and flopping over onto {PRONOUN/app1/poss} back. {PRONOUN/s_c/subject/CAP} {VERB/s_c/watch/watches} the insect scurry from one paw to the other, so entranced by its color and tiny, perfect legs that {PRONOUN/app1/subject} {VERB/app1/do/does}n't notice {PRONOUN/app1/poss} own skill in catching and keeping the bug.",
+                "text": "s_c pounces, flipping the beetle with soft paws and flopping over onto {PRONOUN/app1/poss} back. {PRONOUN/s_c/subject/CAP} {VERB/s_c/watch/watches} the insect scurry from one paw to the other, so entranced by its color and tiny, perfect legs that {PRONOUN/app1/subject} {VERB/app1/don't/doesn't} notice {PRONOUN/app1/poss} own skill in catching and keeping the bug.",
                 "exp": 20,
                 "weight": 20,
                 "stat_skill": ["HUNTER,0"]
@@ -967,14 +967,14 @@
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "normal adult": [1, 6]
             },
         "weight": 40,
         "chance_of_success": 60,
         "pl_skill_constraint": ["STORY,1"],
         "intro_text": "p_l holds up their tail and freezes in place. app1 swallows {PRONOUN/app1/poss} terror as the ground rumbles ominously beneath them. Crouching down, following p_l's guidance, {PRONOUN/app1/subject} {VERB/app1/stare/stares} in awe as a giant, hulking beast with tree branches on its head emerges from the swamp.",
-        "decline_text": "app1 scurries away before the moose draws near, leaving the reeking scent of fear in {PRONOUN/app1/poss} wake. p_l sighs in annoyance and follows after {PRONOUN/p_l/poss} rusasi.",
+        "decline_text": "app1 scurries away before the moose draws near, leaving the reeking scent of fear in {PRONOUN/app1/poss} wake. p_l sighs in annoyance and follows after {PRONOUN/p_l/poss} rusasirah.",
         "success_outcomes": [
                 {
                     "text": "Once upon a time, p_l murmurs, voice barely a whisper, Twolegs attacked the wetlands, ripping down trees, choking off rivers, and reshaping the earth itself. Seeing the destruction, the stars blessed the fallen trees to rise, undead and massive, and drive the Twolegs from the swamps. Moose are very dangerous - but their presence shields c_n.",
@@ -985,7 +985,7 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": true,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": 5
                         },
                         {
@@ -998,7 +998,7 @@
                     ]
                 },
                 {
-                    "text": "As the gigantic moose wanders by, p_l quietly begins to {PRONOUN/p_l/poss} tale. The ancestors of the Clans were starving. They almost gave up settling in the swamp, but then they came across a battle between two giants. A wolf brought down a moose and left after eating its fill. The rabbits were able to survive off the remaining meat, and some rabbits still live amongst its bones!",
+                    "text": "As the gigantic moose wanders by, p_l quietly begins to {PRONOUN/p_l/poss} tale. The ancestors of the Warrens were starving. They almost gave up settling in the swamp, but then they came across a battle between two giants. A wolf brought down a moose and left after eating its fill. The rabbits were able to survive off the remaining meat, and some rabbits still live amongst its bones!",
                     "exp": 30,
                     "weight": 20,
                     "relationships": [
@@ -1006,7 +1006,7 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": true,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": 5
                         },
                         {
@@ -1053,7 +1053,7 @@
         "max_cats": 6,
         "min_max_status": {
             "normal adult": [1, 6],
-            "rusasi":[1, 6]
+            "rusasirah":[1, 6]
             },
         "weight": 20,
         "chance_of_success": 60,
@@ -1062,7 +1062,7 @@
         "decline_text": "No, and though {PRONOUN/app1/subject}{VERB/app1/'re/'s} polite, app1 doesn't want to hear about it. {PRONOUN/app1/subject/CAP}{VERB/app1/'d/'s} just like some help drying off.",
         "success_outcomes": [
                 {
-                    "text": "Long ago, rebels were driven from their former Clans and sought a new life. But the lands were crowded with other rabbits, vicious and territorial, and the refugees were chased beyond land and familiarity. It was only in the waters that others cringed from where they found safety. c_n remembers those lessons still and treasures their swamps for the safety they provide.",
+                    "text": "Long ago, rebels were driven from their former Warrens and sought a new life. But the lands were crowded with other rabbits, vicious and territorial, and the refugees were chased beyond land and familiarity. It was only in the waters that others cringed from where they found safety. c_n remembers those lessons still and treasures their swamps for the safety they provide.",
                     "exp": 30,
                     "weight": 20,
                     "relationships": [
@@ -1070,29 +1070,29 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["respect", "platonic"],
+                            "values": ["respect", "like"],
                             "amount": 10
                         },
                         {
                             "cats_to": ["patrol"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["comfort", "trust", "platonic"],
+                            "values": ["comfort", "trust", "like"],
                             "amount": 5
                         },
                         {
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -5
+                            "values": ["like"],
+                            "amount": 5
                         }
                     ]
                 }
             ],
             "fail_outcomes": [
                 {
-                    "text": "p_l tries to share the long ago history of the safe refuge the swamps offered - but app1 throws back {PRONOUN/app1/poss} head and yowls. {PRONOUN/app1/subject/CAP} {VERB/app1/do/does}n't <i>care</i> what some ancient rabbit did; {PRONOUN/app1/subject} <i>{VERB/app1/hate/hates}</i> this. Water is awful!",
+                    "text": "p_l tries to share the long ago history of the safe refuge the swamps offered - but app1 throws back {PRONOUN/app1/poss} head and yowls. {PRONOUN/app1/subject/CAP} {VERB/app1/don't/doesn't} <i>care</i> what some ancient cat did; {PRONOUN/app1/subject} <i>{VERB/app1/hate/hates}</i> this. Water is awful!",
                     "exp": 0,
                     "weight": 20,
                     "art": "gen_train_argue",
@@ -1101,27 +1101,27 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["app1"],
                             "mutual": true,
-                            "values": ["respect", "platonic", "comfort"],
+                            "values": ["respect", "like", "comfort"],
                             "amount": -5
                         },
                         {
                             "cats_to": ["p_l"],
                             "cats_from": ["app1"],
                             "mutual": true,
-                            "values": ["dislike"],
-                            "amount": 15
+                            "values": ["like"],
+                            "amount": -15
                         },
                         {
                             "cats_to": ["p_l"],
                             "cats_from": ["app1"],
                             "mutual": false,
-                            "values": ["jealous"],
-                            "amount": 5
+                            "values": ["respect"],
+                            "amount": -5
                         }
                     ]
                 },
                 {
-                    "text": "Long ago, rebels were driven from their former Clans and sought a new life, p_l begins. But app1 interrupts {PRONOUN/p_l/object} - so these rebels were too cowardly to fight? The exiles should've attacked and taken over, not surrendered and run.",
+                    "text": "Long ago, rebels were driven from their former Warrens and sought a new life, p_l begins. But app1 interrupts {PRONOUN/p_l/object} - so these rebels were too cowardly to fight? The exiles should've attacked and taken over, not surrendered and run.",
                     "exp": 0,
                     "weight": 20,
                     "art": "gen_train_argue",
@@ -1138,22 +1138,22 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["s_c"],
                             "mutual": true,
-                            "values": ["respect", "platonic", "comfort"],
+                            "values": ["respect", "like", "comfort"],
                             "amount": -5
                         },
                         {
                             "cats_to": ["p_l"],
                             "cats_from": ["s_c"],
                             "mutual": true,
-                            "values": ["dislike"],
-                            "amount": 15
+                            "values": ["like"],
+                            "amount": -15
                         },
                         {
                             "cats_to": ["p_l"],
                             "cats_from": ["s_c"],
                             "mutual": false,
-                            "values": ["jealous"],
-                            "amount": 5
+                            "values": ["respect"],
+                            "amount": -5
                         }
                     ]
                 }
@@ -1187,22 +1187,22 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["respect", "platonic"],
+                            "values": ["respect", "like"],
                             "amount": 10
                         },
                         {
                             "cats_to": ["patrol"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["comfort", "trust", "platonic"],
+                            "values": ["comfort", "trust", "like"],
                             "amount": 5
                         },
                         {
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -5
+                            "values": ["like"],
+                            "amount": 5
                         }
                     ]
                 }
@@ -1217,7 +1217,7 @@
                             "cats_to": ["patrol"],
                             "cats_from": ["p_l"],
                             "mutual": false,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": -5
                         }
                     ]
@@ -1235,7 +1235,7 @@
         "max_cats": 6,
         "min_max_status": {
             "normal adult": [1, 6],
-            "rusasi": [2, 6]
+            "rusasirah": [2, 6]
             },
         "weight": 20,
         "chance_of_success": 60,
@@ -1244,7 +1244,7 @@
         "decline_text": "On second thought, app1 looks a bit nervous. p_l will wait to explain this until another, happier, day.",
         "success_outcomes": [
                 {
-                    "text": "In the heartbreaking event that a Clanmate is lost and you're nearby, p_l explains seriously, you cannot leave their body in the wetlands. Their body and spirit will both sink into the murk, the bog will take them, and they'll never be able to find their way to Inle.",
+                    "text": "In the heartbreaking event that a Warrenmate is lost and you're nearby, p_l explains seriously, you cannot leave their body in the wetlands. Their body and spirit will both sink into the murk, the bog will take them, and they'll never be able to find their way to Inle.",
                     "exp": 30,
                     "weight": 20,
                     "art": "scaryghost_INTRO",
@@ -1262,20 +1262,20 @@
                             "cats_to": ["patrol"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": 5
                         },
                         {
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -5
+                            "values": ["like"],
+                            "amount": 5
                         }
                     ]
                 },
                 {
-                    "text": "In the heartbreaking event that a Clanmate is lost and you're nearby, p_l explains seriously, you cannot leave their body in the wetlands. Bodies don't decay in the bog. It traps the spirit deep in its murky depths...",
+                    "text": "In the heartbreaking event that a Warrenmate is lost and you're nearby, p_l explains seriously, you cannot leave their body in the wetlands. Bodies don't decay in the bog. It traps the spirit deep in its murky depths...",
                     "exp": 30,
                     "weight": 20,
                     "art": "scaryghost_INTRO",
@@ -1293,15 +1293,15 @@
                             "cats_to": ["patrol"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": 5
                         },
                         {
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -5
+                            "values": ["like"],
+                            "amount": 5
                         }
                     ]
                 }
@@ -1335,7 +1335,7 @@
         "max_cats": 6,
         "min_max_status": {
             "normal adult": [-1, -1],
-            "rusasi": [2, 6]
+            "rusasirah": [2, 6]
             },
         "weight": 20,
         "chance_of_success": 60,
@@ -1362,15 +1362,15 @@
                             "cats_to": ["patrol"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": 5
                         },
                         {
                             "cats_to": ["s_c"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -5
+                            "values": ["like"],
+                            "amount": 5
                         }
                     ]
                 },
@@ -1393,15 +1393,15 @@
                             "cats_to": ["patrol"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["platonic"],
+                            "values": ["like"],
                             "amount": 5
                         },
                         {
                             "cats_to": ["s_c"],
                             "cats_from": ["patrol"],
                             "mutual": false,
-                            "values": ["dislike"],
-                            "amount": -5
+                            "values": ["like"],
+                            "amount": 5
                         }
                     ]
                 }

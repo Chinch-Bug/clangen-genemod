@@ -56,7 +56,7 @@
             "Frets about future battles {PRONOUN/m_c/subject} might fight in",
             "Wonders how much defeat hurts",
             "Bristles at the thought of being beneath an enemy",
-            "Feels antsy around other Clans knowing they might meet in battle",
+            "Feels antsy around other Warrens knowing they might meet in battle",
             "Gulps when {PRONOUN/m_c/subject} {VERB/m_c/see/sees} claws unsheathe during a border patrol",
             "Huffs as {PRONOUN/m_c/subject} {VERB/m_c/fly/flies} past {PRONOUN/m_c/poss} target and {VERB/m_c/flop/flops} onto the ground",
             "Swears {PRONOUN/m_c/subject}'ll catch the moss ball this time!",
@@ -166,7 +166,7 @@
     {
         "id": "warrior_apprentice_to_clanborn_warrior",
         "thoughts": [
-            "Wonders if r_c was a good rusasi"
+            "Wonders if r_c was a good rusasirah"
         ],
         "backstory_constraint": {
             "r_c": ["clan_founder_backstories",
@@ -208,15 +208,15 @@
         ],
         "random_status_constraint": [
             "healer",
-            "healer rusasi"
+            "healer rusasirah"
         ]
     },
     {
         "id": "warrior_apprentice_to_clanborn_warrior",
         "thoughts": [
-            "Wonders if r_c was a good rusasi",
+            "Wonders if r_c was a good rusasirah",
             "Asks r_c what the Warren was like when {PRONOUN/r_c/subject} {VERB/r_c/were/was} {PRONOUN/m_c/poss} age",
-            "Asks r_c if the rusasirahs' den has changed since {PRONOUN/r_c/subject} {VERB/r_c/were/was} an rusasi",
+            "Asks r_c if the rusasirahs' den has changed since {PRONOUN/r_c/subject} {VERB/r_c/were/was} an rusasirah",
             "Heard a scary story about the rusasirahs' den from r_c",
             "Is jumpy about a particular spot in the rusasirahs' den r_c claimed was haunted",
             "Is listening to a story r_c heard when {PRONOUN/r_c/subject} {VERB/r_c/were/was} a kit"
@@ -260,7 +260,7 @@
             "Is in a squabble about the best time to hunt"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ],
         "random_living_status": [
             "living"
@@ -274,11 +274,11 @@
             "Promises r_c that once {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} a rabbit, {PRONOUN/m_c/subject}'ll take care of {PRONOUN/r_c/object}"
         ],
         "main_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ],
         "random_status_constraint": [
-            "healer rusasi",
-            "owsla rusasi"
+            "healer rusasirah",
+            "owsla rusasirah"
         ],
         "random_living_status": [
             "living"
@@ -320,9 +320,9 @@
             "Looks at r_c and wonders if {PRONOUN/m_c/subject} {VERB/m_c/were/was} ever that small",
             "Brought back some feathers for the kits to play with",
             "Is showing off {PRONOUN/m_c/poss} new battle moves to the kits",
-            "Wonders if r_c can be {PRONOUN/m_c/poss} rusasi someday",
-            "Wants to be a rabbit before r_c is an rusasi",
-            "Hopes r_c will be an rusasi with {PRONOUN/m_c/object}",
+            "Wonders if r_c can be {PRONOUN/m_c/poss} rusasirah someday",
+            "Wants to be a rabbit before r_c is an rusasirah",
+            "Hopes r_c will be an rusasirah with {PRONOUN/m_c/object}",
             "Is letting r_c see the rusasirahs' den",
             "Takes time to play with r_c in between training sessions",
             "Is scolded by a rabbit for wrestling with r_c",
@@ -342,7 +342,7 @@
             "Begs to be made a rabbit early",
             "Wants to go on both a border and hunting patrol",
             "Is asking for extra, extra training",
-            "Wants to be made a rabbit so {PRONOUN/m_c/subject} can hurry up and get {PRONOUN/m_c/poss} own rusasi",
+            "Wants to be made a rabbit so {PRONOUN/m_c/subject} can hurry up and get {PRONOUN/m_c/poss} own rusasirah",
             "Is staying out late to hunt",
             "Doesn't like to take breaks",
             "Offers to go on every patrol today",
@@ -361,12 +361,12 @@
         "thoughts": [
             "Has been catching the most prey out of all the rusasirahs",
             "Is confident that {PRONOUN/m_c/subject} could beat the other rusasirahs",
-            "Wants to be the most promising rusasi",
+            "Wants to be the most promising rusasirah",
             "Is trying to outshine the other rusasirahs",
             "Wants to be made a rabbit before r_c"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ],
         "main_trait_constraint": [
             "ambitious"
@@ -378,7 +378,7 @@
     {
         "id": "bold_warrior_apprentice",
         "thoughts": [
-            "Taunted a rival Warren's rusasi at the border",
+            "Taunted a rival Warren's rusasirah at the border",
             "Took the biggest piece of prey from the pile",
             "Is claiming to be ready for {PRONOUN/m_c/poss} assessment early",
             "Assigns {PRONOUN/m_c/self} to a patrol",
@@ -388,7 +388,7 @@
             "Tells {PRONOUN/m_c/poss} mentor {PRONOUN/m_c/subject} {VERB/m_c/are/is} going on patrol without {PRONOUN/r_c/object}"
         ],
         "main_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ],
         "main_trait_constraint": [
             "bold"
@@ -405,7 +405,7 @@
             "Doesn't listen to r_c's advice"
         ],
         "main_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ],
         "random_status_constraint": [
             "rabbit"
@@ -469,7 +469,7 @@
             "Asks if {PRONOUN/m_c/subject} can chase pretty bugs instead of prey",
             "Isn't paying attention to the lesson... again",
             "Overslept and missed the dawn patrol",
-            "Says {PRONOUN/m_c/subject} {VERB/m_c/do/does}n't want to do anything today",
+            "Says {PRONOUN/m_c/subject} {VERB/m_c/don't/doesn't} want to do anything today",
             "Is not allowed to leave burrow without asking first"
         ],
         "main_trait_constraint": [
@@ -511,7 +511,7 @@
             "Is planning on bringing a lot of fresh-kill back from patrol",
             "Wants to lead the next dawn patrol",
             "Perfects a new fighting stance during today's training session",
-            "Is sure that r_c thinks {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} the best rusasi",
+            "Is sure that r_c thinks {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} the best rusasirah",
             "Is a very quick learner",
             "Is sure {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} doing a good job today",
             "Knows {PRONOUN/m_c/subject} will get picked first for today's hunting patrol"
@@ -569,7 +569,7 @@
             "Is wondering if {PRONOUN/m_c/subject} {VERB/m_c/are/is} good enough to be a rabbit...",
             "Is reluctant to spar with {PRONOUN/m_c/poss} mentor today",
             "Hopes {PRONOUN/m_c/subject} {VERB/m_c/are/is} not assigned to a border patrol",
-            "Is worried about being an rusasi forever",
+            "Is worried about being an rusasirah forever",
             "Is fighting back tears after missing a catch",
             "Is afraid to lose in a real fight",
             "Is avoiding everyone today",
@@ -804,7 +804,7 @@
             "Admits to r_c that {PRONOUN/m_c/subject} {VERB/m_c/feel/feels} like a failure, and {PRONOUN/m_c/poss} mentor reassures {PRONOUN/m_c/subject}",
             "Feels hurt when r_c doesn't notice {PRONOUN/m_c/object} struggling",
             "Wonders if r_c really likes {PRONOUN/m_c/object}, or just pretends to",
-            "Doesn't feel worthy of being r_c's rusasi"
+            "Doesn't feel worthy of being r_c's rusasirah"
         ],
         "main_trait_constraint": [
             "insecure",
@@ -840,7 +840,7 @@
             "Wishes r_c could be a bit more understanding",
             "Feels like r_c doesn't like {PRONOUN/m_c/object}",
             "Is surprised when r_c gives {PRONOUN/m_c/object} the day off on a hard day",
-            "Gets a lecture on being more confident when {PRONOUN/m_c/subject} {VERB/m_c/complain/complains} about never succeeding with a particular move",
+            "Complained about never succeeding with a particular move and was lectured on being more confident",
             "Knows r_c is trying {PRONOUN/r_c/poss} best to help {PRONOUN/m_c/object}",
             "Is found crying in {PRONOUN/m_c/poss} nest by r_c, and is comforted",
             "Is surprised when {PRONOUN/m_c/poss} mentor brings {PRONOUN/m_c/object} {PRONOUN/m_c/poss} favorite prey",
@@ -878,7 +878,7 @@
             "Hides behind r_c during the Gathering",
             "Wonders how r_c can speak with others so easily",
             "Tries out some suggestions r_c gave {PRONOUN/m_c/object} to be able to be more outgoing",
-            "Hides away from {PRONOUN/m_c/poss} mentor when {PRONOUN/m_c/subject} {VERB/m_c/learn/learns} {PRONOUN/r_c/subject} {VERB/r_c/want/wants} to take them to the far edges of the territory today"
+            "Hid from {PRONOUN/m_c/poss} mentor when {PRONOUN/m_c/subject} learned {PRONOUN/r_c/subject} {VERB/r_c/want/wants} to take {PRONOUN/m_c/object} to the far edges of the territory today"
         ],
         "main_trait_constraint": [
             "insecure",
@@ -957,7 +957,7 @@
         "thoughts": [
             "Hopes to become a rabbit soon so others will stop teasing {PRONOUN/m_c/object} about being a kittypet",
             "Hopes to earn some fierce scars to hide {PRONOUN/m_c/poss} past",
-            "Trains all day long to prove {PRONOUN/m_c/self} to be as good as any other rusasi"
+            "Trains all day long to prove {PRONOUN/m_c/self} to be as good as any other rusasirah"
         ],
         "main_backstory_constraint": [
             "kittypet1",
@@ -969,7 +969,7 @@
             "guided1"
         ],
         "main_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ],
         "random_living_status": [
             "living"
@@ -991,10 +991,10 @@
             "guided1"
         ],
         "main_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ],
         "random_status_constraint": [
-            "rusasi"
+            "rusasirah"
         ],
         "random_backstory_constraint": [
             "clan_founder",

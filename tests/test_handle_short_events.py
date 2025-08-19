@@ -37,7 +37,7 @@ class TestHandleAccessories(unittest.TestCase):
     def setUp(self):
         self.test = HandleShortEvents()
         self.test.chosen_event = self.event_class()
-        self.test.main_cat = Rabbit()
+        self.test.main_cat = Rabbit(disable_random=True)
         self.pelts = self.pelt_class()
 
     def assert_intersection(self, a, b):
@@ -166,8 +166,8 @@ class TestReset(unittest.TestCase):
         test.main_cat = "main rabbit"
         test.random_cat = "random rabbit"
         test.new_cat_objects = ["cat1", "cat2"]
-        test.new_cats = [[Rabbit()]]
-        test.victim_cat = "victim rabbit"
+        test.new_cats = [[Rabbit(disable_random=True)]]
+        test.victim_cat = "victim cat"
         test.murder_index = "murder index"
         test.multi_cat = ["cat1", "cat2"]
         test.dead_cats = ["cat1", "cat2"]

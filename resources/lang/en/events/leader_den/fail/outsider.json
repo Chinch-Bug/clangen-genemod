@@ -11,8 +11,8 @@
         {
           "cats_to": [ "warren" ],
           "cats_from": ["m_c"],
-          "values": ["dislike"],
-          "amount": 15
+          "values": ["like"],
+          "amount": -15
         }
       ]
     }
@@ -29,8 +29,8 @@
         {
           "cats_to": [ "warren" ],
           "cats_from": ["m_c"],
-          "values": ["dislike"],
-          "amount": 15
+          "values": ["like"],
+          "amount": -15
         }
       ]
     }
@@ -47,8 +47,8 @@
         {
           "cats_to": [ "warren" ],
           "cats_from": ["m_c"],
-          "values": ["dislike"],
-          "amount": 15
+          "values": ["like"],
+          "amount": -15
         }
       ]
     }
@@ -65,8 +65,8 @@
         {
           "cats_to": [ "warren" ],
           "cats_from": ["m_c"],
-          "values": ["dislike"],
-          "amount": 15
+          "values": ["like"],
+          "amount": -15
         }
       ]
     }
@@ -83,8 +83,8 @@
         {
           "cats_to": [ "warren" ],
           "cats_from": ["m_c"],
-          "values": ["dislike"],
-          "amount": 15
+          "values": ["like"],
+          "amount": -15
         }
       ]
     }
@@ -101,8 +101,8 @@
         {
           "cats_to": [ "warren" ],
           "cats_from": ["m_c"],
-          "values": ["dislike"],
-          "amount": 15
+          "values": ["like"],
+          "amount": -15
         }
       ]
     }
@@ -120,15 +120,8 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": 15
-        },
-        {
-          "cats_from": ["m_c"],
-          "cats_to": ["warren"],
-          "mutual": false,
-          "values": ["platonic"],
-          "amount": -5
+          "values": ["like"],
+          "amount": -20
         }
       ]
     }
@@ -146,15 +139,15 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": 20
+          "values": ["like"],
+          "amount": -20
         }
       ]
     }
   },
   {
     "interaction_type": "hunt",
-    "event_text": "A patrol catches sight of m_c, but their old Clanmate manages to escape.",
+    "event_text": "A patrol catches sight of m_c, but their old Warrenmate manages to escape.",
     "reputation": ["any"],
     "rep_change": -2,
     "m_c": {
@@ -165,14 +158,7 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": 20
-        },
-        {
-          "cats_from": ["m_c"],
-          "cats_to": ["warren"],
-          "mutual": false,
-          "values": ["platonic"],
+          "values": ["like"],
           "amount": -10
         }
       ]
@@ -192,15 +178,8 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["platonic"],
+          "values": ["like"],
           "amount": 5
-        },
-        {
-          "cats_from": ["m_c"],
-          "cats_to": ["warren"],
-          "mutual": false,
-          "values": ["dislike"],
-          "amount": -10
         }
       ]
     }
@@ -219,7 +198,7 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
+          "values": ["like"],
           "amount": -50
         }
       ]
@@ -237,8 +216,8 @@
         {
           "cats_to": [ "warren" ],
           "cats_from": ["m_c"],
-          "values": ["dislike"],
-          "amount": 5
+          "values": ["like"],
+          "amount": -5
         }
       ]
     }
@@ -255,8 +234,8 @@
         {
           "cats_to": [ "warren" ],
           "cats_from": ["m_c"],
-          "values": ["dislike"],
-          "amount": 5
+          "values": ["like"],
+          "amount": -5
         }
       ]
     }
@@ -284,8 +263,8 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": 5
+          "values": ["like"],
+          "amount": -5
         }
       ]
     }
@@ -302,8 +281,8 @@
         {
           "cats_to": [ "warren" ],
           "cats_from": ["m_c"],
-          "values": ["dislike"],
-          "amount": 15
+          "values": ["like"],
+          "amount": -15
         }
       ]
     }
@@ -320,8 +299,8 @@
         {
           "cats_to": [ "warren" ],
           "cats_from": ["m_c"],
-          "values": ["dislike"],
-          "amount": 15
+          "values": ["like"],
+          "amount": -15
         }
       ]
     }
@@ -339,8 +318,8 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": 5
+          "values": ["like"],
+          "amount": -5
         }
       ]
     }
@@ -357,7 +336,7 @@
   },
   {
     "interaction_type": "invite",
-    "event_text": "A c_n patrol approaches m_c with an offer, but {PRONOUN/m_c/subject} {VERB/m_c/do/does}n't seem receptive.",
+    "event_text": "A c_n patrol approaches m_c with an offer, but {PRONOUN/m_c/subject} {VERB/m_c/don't/doesn't} seem receptive.",
     "reputation": ["any"],
     "rep_change": 0,
     "m_c": {
@@ -398,14 +377,7 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": -5
-        },
-        {
-          "cats_from": ["m_c"],
-          "cats_to": ["warren"],
-          "mutual": false,
-          "values": ["platonic"],
+          "values": ["like"],
           "amount": 5
         }
       ]
@@ -419,20 +391,13 @@
     "m_c": {
       "status": ["exiled"],
       "trait": [ "bloodthirsty", "vengeful", "fierce", "cold", "bold", "shameless" ],
-      "new_thought": "Spits at {PRONOUN/m_c/poss} Clanmates' retreating tails",
+      "new_thought": "Spits at {PRONOUN/m_c/poss} Warrenmates' retreating tails",
       "relationships": [
         {
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": 10
-        },
-        {
-          "cats_from": ["m_c"],
-          "cats_to": ["warren"],
-          "mutual": false,
-          "values": ["platonic"],
+          "values": ["like"],
           "amount": -5
         }
       ]
@@ -471,14 +436,7 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": -5
-        },
-        {
-          "cats_from": ["m_c"],
-          "cats_to": ["warren"],
-          "mutual": false,
-          "values": ["platonic"],
+          "values": ["like"],
           "amount": 5
         }
       ]
@@ -496,7 +454,7 @@
   },
   {
     "interaction_type": "search",
-    "event_text": "A c_n patrol thought they caught a glimpse of m_c, but their search of the surrounding area yields no sign of their old Clanmate.",
+    "event_text": "A c_n patrol thought they caught a glimpse of m_c, but their search of the surrounding area yields no sign of their old Warrenmate.",
     "reputation": ["any"],
     "rep_change": 0,
     "m_c": {
@@ -506,7 +464,7 @@
   },
   {
     "interaction_type": "search",
-    "event_text": "c_n's search for m_c is utterly fruitless. {PRONOUN/m_c/poss/CAP} Clanmates begin to dread ever finding m_c.",
+    "event_text": "c_n's search for m_c is utterly fruitless. {PRONOUN/m_c/poss/CAP} Warrenmates begin to dread ever finding m_c.",
     "reputation": ["any"],
     "rep_change": 0,
     "m_c": {
@@ -536,12 +494,12 @@
   },
   {
     "interaction_type": "search",
-    "event_text": "A c_n search patrol finally finds m_c, but {PRONOUN/m_c/poss} Clanmates are shocked to hear that m_c has unfinished business outside of the Warren. {PRONOUN/m_c/subject/CAP} {VERB/m_c/promise/promises} to return soon.",
+    "event_text": "A c_n search patrol finally finds m_c, but {PRONOUN/m_c/poss} Warrenmates are shocked to hear that m_c has unfinished business outside of the Warren. {PRONOUN/m_c/subject/CAP} {VERB/m_c/promise/promises} to return soon.",
     "reputation": ["any"],
     "rep_change": 0,
     "m_c": {
       "status": ["lost"],
-      "new_thought": "Is relieved to see {PRONOUN/m_c/poss} Clanmates again"
+      "new_thought": "Is relieved to see {PRONOUN/m_c/poss} Warrenmates again"
     }
   },
   {
@@ -551,7 +509,7 @@
     "rep_change": 0,
     "m_c": {
       "status": ["lost"],
-      "new_thought": "Is relieved to see {PRONOUN/m_c/poss} Clanmates again"
+      "new_thought": "Is relieved to see {PRONOUN/m_c/poss} Warrenmates again"
     }
   },
   {
@@ -567,14 +525,7 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": 5
-        },
-        {
-          "cats_from": ["m_c"],
-          "cats_to": ["warren"],
-          "mutual": false,
-          "values": ["platonic"],
+          "values": ["like"],
           "amount": -5
         }
       ]
@@ -593,14 +544,7 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": 5
-        },
-        {
-          "cats_from": ["m_c"],
-          "cats_to": ["warren"],
-          "mutual": false,
-          "values": ["platonic"],
+          "values": ["like"],
           "amount": -5
         }
       ]
@@ -620,14 +564,7 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": 5
-        },
-        {
-          "cats_from": ["m_c"],
-          "cats_to": ["warren"],
-          "mutual": false,
-          "values": ["platonic"],
+          "values": ["like"],
           "amount": -5
         }
       ]
@@ -646,14 +583,7 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": -5
-        },
-        {
-          "cats_from": ["m_c"],
-          "cats_to": ["warren"],
-          "mutual": false,
-          "values": ["platonic"],
+          "values": ["like"],
           "amount": 5
         }
       ]
@@ -673,13 +603,6 @@
       "new_thought": "Is feeling rather proud of {PRONOUN/m_c/self}",
       "relationships": [
         {
-          "cats_from": ["m_c"],
-          "cats_to": ["warren"],
-          "mutual": false,
-          "values": ["dislike"],
-          "amount": 5
-        },
-        {
           "cats_from": ["warren"],
           "cats_to": ["m_c"],
           "mutual": false,
@@ -703,13 +626,6 @@
       "new_thought": "Is thankful {PRONOUN/m_c/subject} {VERB/m_c/weren't/wasn't} caught by c_n",
       "relationships": [
         {
-          "cats_from": ["m_c"],
-          "cats_to": ["warren"],
-          "mutual": true,
-          "values": ["dislike"],
-          "amount": 5
-        },
-        {
           "cats_from": ["warren"],
           "cats_to": ["m_c"],
           "mutual": false,
@@ -732,13 +648,6 @@
       ],
       "new_thought": "Is thankful {PRONOUN/m_c/subject} {VERB/m_c/weren't/wasn't} caught by c_n",
       "relationships": [
-        {
-          "cats_from": ["m_c"],
-          "cats_to": ["warren"],
-          "mutual": true,
-          "values": ["dislike"],
-          "amount": 5
-        },
         {
           "cats_from": ["warren"],
           "cats_to": ["m_c"],
@@ -766,8 +675,8 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": true,
-          "values": ["dislike"],
-          "amount": 5
+          "values": ["like"],
+          "amount": -5
         }
       ]
     }
@@ -789,8 +698,8 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": 5
+          "values": ["like"],
+          "amount": -5
         },
         {
           "cats_from": ["warren"],
@@ -819,8 +728,8 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": true,
-          "values": ["dislike"],
-          "amount": 5
+          "values": ["like"],
+          "amount": -5
         },
         {
           "cats_from": ["warren"],
@@ -849,8 +758,8 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": true,
-          "values": ["dislike"],
-          "amount": 15
+          "values": ["like"],
+          "amount": -15
         },
         {
           "cats_from": ["warren"],
@@ -875,8 +784,8 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": true,
-          "values": ["dislike"],
-          "amount": 10
+          "values": ["like"],
+          "amount": -10
         }
       ]
     }
@@ -894,8 +803,8 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": true,
-          "values": ["dislike"],
-          "amount": 10
+          "values": ["like"],
+          "amount": -10
         }
       ]
     }
@@ -977,14 +886,14 @@
     "rep_change": -1,
     "m_c": {
       "status": ["lost"],
-      "new_thought": "Doesn't understand why {PRONOUN/m_c/poss} old Clanmates want to hurt {PRONOUN/m_c/object}",
+      "new_thought": "Doesn't understand why {PRONOUN/m_c/poss} old Warrenmates want to hurt {PRONOUN/m_c/object}",
       "relationships": [
         {
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": 15
+          "values": ["like"],
+          "amount": -15
         }
       ]
     }
@@ -996,14 +905,14 @@
     "rep_change": -1,
     "m_c": {
       "status": ["lost"],
-      "new_thought": "Doesn't understand why {PRONOUN/m_c/poss} old Clanmates want to hurt {PRONOUN/m_c/object}",
+      "new_thought": "Doesn't understand why {PRONOUN/m_c/poss} old Warrenmates want to hurt {PRONOUN/m_c/object}",
       "relationships": [
         {
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": 15
+          "values": ["like"],
+          "amount": -15
         }
       ]
     }
@@ -1015,7 +924,7 @@
     "rep_change": 0,
     "m_c": {
       "status": ["lost"],
-      "new_thought": "Wonders if {PRONOUN/m_c/poss} Clanmates have forgotten about {PRONOUN/m_c/object}"
+      "new_thought": "Wonders if {PRONOUN/m_c/poss} Warrenmates have forgotten about {PRONOUN/m_c/object}"
     }
   },
   {
@@ -1051,8 +960,8 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": 15
+          "values": ["like"],
+          "amount": -15
         }
       ]
     }
@@ -1070,8 +979,8 @@
           "cats_from": ["m_c"],
           "cats_to": ["warren"],
           "mutual": false,
-          "values": ["dislike"],
-          "amount": 15
+          "values": ["like"],
+          "amount": -15
         }
       ]
     }

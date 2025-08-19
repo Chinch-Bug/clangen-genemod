@@ -8,7 +8,7 @@ To find out what patrol sprites are currently needed for the game, you can check
 !!! note "Important"
     Once finished with a sprite, you must upload it to our Patrol Art google drive folder as well as within the Patrol Art Update forum on our Discord.
 
-These spreadsheets and drive folders are only shared within the developer section of our Discord, for the sake of security (it wouldn't be fun if random people edited things they shouldn't).  If you already have a developer role on the Discord, just head over to the Patrol Sprites forum to find those links.  If you do not have a dev role, then this is a case where you will need to either be accepted as an Rusasi Dev through applying or you will need to make at least one accepted Pull Request.
+These spreadsheets and drive folders are only shared within the developer section of our Discord, for the sake of security (it wouldn't be fun if random people edited things they shouldn't).  If you already have a developer role on the Discord, just head over to the Patrol Sprites forum to find those links.  If you do not have a dev role, then this is a case where you will need to either be accepted as an Rusasirah Dev through applying or you will need to make at least one accepted Pull Request.
 
 !!! note "Important"
     Canvas size should always be 300x300 pixels!

@@ -1,6 +1,8 @@
 import os
 import unittest
 
+from scripts.rabbit.enums import CatRank
+
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
 
@@ -51,7 +53,7 @@ class TestCondition(unittest.TestCase):
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "rusasi": [-1, -1],
+            "rusasirah": [-1, -1],
             "healer rabbits": [1, 6],
             "normal adult": [-1, -1],
         },
@@ -114,10 +116,11 @@ class TestCondition(unittest.TestCase):
 
     def test_cold_injury(self):
         # GIVEN
-        warren = Warren()
-        patrol_cat = Rabbit(moons=20)
-        patrol_cat.status = "rabbit"
-        patrol_cat.history = History()
+        clan = Clan()
+        patrol_cat = Rabbit(
+            moons=20, status_dict={"rank": CatRank.WARRIOR}, disable_random=True
+        )
+        patrol_cat.history = History(cat=patrol_cat)
         patrol = Patrol()
         patrol.add_patrol_cats([patrol_cat], warren)
         patrol_event = patrol.generate_patrol_events([self.cold_patrol])

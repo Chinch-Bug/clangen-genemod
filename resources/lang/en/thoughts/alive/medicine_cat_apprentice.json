@@ -26,17 +26,17 @@
         "thoughts": [
             "Wonders if r_c would have been a better healer",
             "Wishes the other rusasirahs could understand how {PRONOUN/m_c/subject} feel",
-            "Wishes {PRONOUN/m_c/subject} understood the rusasi's inside jokes",
+            "Wishes {PRONOUN/m_c/subject} understood the rusasirah's inside jokes",
             "Hopes r_c will come with {PRONOUN/m_c/object} to help gather herbs",
             "Is assuring r_c that everything is okay",
             "Is wondering if Inle is visiting r_c's dreams",
-            "Is realizing how lonely it can be to be a healer rusasi",
+            "Is realizing how lonely it can be to be a healer rusasirah",
             "Is watching other rusasirahs train"
         ],
         "random_status_constraint": [
-            "rusasi",
-            "owsla rusasi",
-            "healer rusasi"
+            "rusasirah",
+            "owsla rusasirah",
+            "healer rusasirah"
         ],
         "random_living_status": [
             "living"
@@ -83,7 +83,7 @@
     {
         "id": "insecure_medicine_cat_apprentice",
         "thoughts": [
-            "Is wondering if {PRONOUN/m_c/subject} {VERB/m_c/are/is} a good enough healer rusasi",
+            "Is wondering if {PRONOUN/m_c/subject} {VERB/m_c/are/is} a good enough healer rusasirah",
             "Is always worrying about {PRONOUN/m_c/poss} patients",
             "Is worried about a greencough outbreak",
             "Is terrified of misdiagnosing something serious",
@@ -167,7 +167,7 @@
             "Is meeting secretly with r_c to discuss a new 'treatment' method",
             "Is helping r_c secretly gather deathberries",
             "Is delighted to find r_c feels the same way about weak rabbits",
-            "Is glad r_c is against sharing life-saving herbs with enemy Clans",
+            "Is glad r_c is against sharing life-saving herbs with enemy Warrens",
             "Is standing with r_c, both glaring over their newest vict-, erm, 'patients'",
             "Is learning the best way to make a death look like an accident from r_c",
             "Is discussing attacking other healer rabbits at the next half-moon with r_c"
@@ -293,9 +293,9 @@
             "Wonders if {PRONOUN/m_c/subject} would have swapped secrets with r_c"
         ],
         "random_status_constraint": [
-            "rusasi",
-            "owsla rusasi",
-            "healer rusasi"
+            "rusasirah",
+            "owsla rusasirah",
+            "healer rusasirah"
         ],
         "random_living_status": [
             "inle"

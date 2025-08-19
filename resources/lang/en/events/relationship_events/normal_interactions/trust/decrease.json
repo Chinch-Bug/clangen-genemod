@@ -6,14 +6,14 @@
 			"m_c doesn't think that r_c has been completely honest lately.",
 			"m_c thinks r_c has been acting strangely.",
 			"r_c won't tell m_c what's got {PRONOUN/r_c/object} acting weird.",
-			"m_c sees r_c whispering suspiciously to a Clanmate.",
+			"m_c sees r_c whispering suspiciously to a Warrenmate.",
 			"m_c smells something strange on r_c.",
 			"m_c feels like r_c has been quieter than usual.",
 			"m_c noticed that r_c wasn't in {PRONOUN/r_c/poss} nest last night.",
 			"Though m_c asks around, {PRONOUN/m_c/subject} can't find r_c anywhere.",
 			"m_c asks r_c a simple question, but r_c reacts strangely to it.",
 			"r_c forgot something that m_c asked {PRONOUN/r_c/object} to remember.",
-			"r_c won't stop looking at a specific Clanmate while talking to m_c.",
+			"r_c won't stop looking at a specific Warrenmate while talking to m_c.",
 			"m_c has a weird feeling about something r_c said the other day."
 		]
 	},
@@ -23,7 +23,7 @@
 		"interactions": [
 			"m_c shared a embarrassing story about r_c {PRONOUN/m_c/subject} {VERB/m_c/were/was} asked not to share...",
 			"m_c's friend doesn't trust r_c.",
-			"m_c learns that r_c told a Clanmate one of {PRONOUN/m_c/poss} secrets.",
+			"r_c learns that m_c told a Warrenmate one of {PRONOUN/r_c/poss} secrets.",
 			"r_c snitches on m_c for something minor.",
 			"m_c saw r_c hide something before talking to {PRONOUN/m_c/object}.",
 			"r_c won't tell m_c what {PRONOUN/r_c/subject} ate this morning.",
@@ -44,7 +44,7 @@
 			"r_c gave m_c a gift that doesn't make sense.",
 			"r_c forgot something important about m_c.",
 			"r_c keeps calling m_c by the wrong name.",
-			"r_c sides with a Clanmate instead of m_c on something.",
+			"r_c sides with a Warrenmate instead of m_c on something.",
 			"m_c thinks that r_c spread a rumor about {PRONOUN/m_c/object}.",
 			"m_c doesn't think that r_c's intentions are all pure.",
 			"m_c swears {PRONOUN/m_c/subject} {VERB/m_c/see/sees} r_c sneaking around the burrow at night.",
@@ -94,18 +94,18 @@
 			"m_c constantly pulling pranks on r_c.",
 			"m_c always shifts the blame to r_c!",
 			"m_c won't stop crying whenever r_c starts winning in a game.",
-			"m_c grins while r_c is being scolded by an older Clanmate.",
+			"m_c grins while r_c is being scolded by an older Warrenmate.",
 			"m_c is relentlessly pestering r_c."
 		],
 		"relationship_constraint": [
-			"dislike_40"
+			"dislikes"
 		],
 		"main_status_constraint": [
 			"kit"
 		],
 		"reaction_random_cat": {
 			"trust": "decrease",
-			"dislike": "increase"
+			"like": "decrease"
 		}
 	},
 	{
@@ -133,14 +133,14 @@
 			"m_c threatens to blackmail r_c.",
 			"m_c and r_c refuse to trust one another, which nearly leads to one of them getting hurt.",
 			"r_c's prank on m_c almost turned deadly.",
-			"r_c has been pitting a Clanmate against m_c.",
+			"r_c has been pitting a Warrenmate against m_c.",
 			"m_c claims to have had a prophetic dream about r_c betraying the Warren.",
 			"m_c and r_c tell everyone embarrassing secrets about each other.",
 			"r_c destroys something dear to m_c.",
 			"r_c blackmails m_c with one of {PRONOUN/m_c/poss} secrets."
 		],
 		"relationship_constraint": [
-			"dislike_40"
+			"hates"
 		],
 		"reaction_random_cat": {
 			"trust": "decrease"

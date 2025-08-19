@@ -9,7 +9,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "rusasi": [1, 6],
+            "rusasirah": [1, 6],
             "all rusasirahs": [2, 2],
             "normal adult": [1, 6]
         },
@@ -27,7 +27,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort"],
+                        "values": ["like", "respect", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -41,7 +41,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort"],
+                        "values": ["like", "respect", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -57,7 +57,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort"],
+                        "values": ["like", "respect", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -80,7 +80,7 @@
                         "cats_to": ["patrol"],
                         "cats_from": ["patrol"],
                         "mutual": false,
-                        "values": ["platonic", "respect", "comfort"],
+                        "values": ["like", "respect", "comfort"],
                         "amount": 5
                     }
                 ]
@@ -99,7 +99,7 @@
         "biome": ["beach"],
         "season": ["newleaf"],
         "types": ["training"],
-        "tags": ["romantic"],
+        "tags": ["romance"],
         "patrol_art": "train_general_intro",
         "min_cats": 2,
         "max_cats": 2,
@@ -121,7 +121,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["romantic"],
+                        "values": ["romance"],
                         "amount": 5
                     }
                 ]
@@ -135,7 +135,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["romantic"],
+                        "values": ["romance"],
                         "amount": 5
                     }
                 ]
@@ -151,7 +151,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["romantic"],
+                        "values": ["romance"],
                         "amount": -5
                     }
                 ]
@@ -166,7 +166,7 @@
                         "cats_to": ["p_l"],
                         "cats_from": ["r_c"],
                         "mutual": false,
-                        "values": ["romantic"],
+                        "values": ["romance"],
                         "amount": -5
                     }
                 ]
@@ -184,7 +184,7 @@
         "max_cats": 3,
         "min_max_status": {
            "normal adult": [1, 6],
-           "rusasi": [1, 6]
+           "rusasirah": [1, 6]
             },
         "weight": 40,
         "chance_of_success": 60,
@@ -211,7 +211,7 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": true,
-                            "values": ["platonic", "trust"],
+                            "values": ["like", "trust"],
                             "amount": 5
                         },
                         {
@@ -224,7 +224,7 @@
                         ]
                 },
                 {
-                    "text": "s_c chides app1 for {PRONOUN/app1/poss} skepticism. Rock scrambling is its own art form, in c_n's territory. What if app1 needs to cross an exposed area during a storm, or if a battle between Clans occurred in the tide pools? app1 concedes and pays attention as s_c teaches, gaining sure-footed confidence that will serve {PRONOUN/app1/object} well.",
+                    "text": "s_c chides app1 for {PRONOUN/app1/poss} skepticism. Rock scrambling is its own art form, in c_n's territory. What if app1 needs to cross an exposed area during a storm, or if a battle between Warrens occurred in the tide pools? app1 concedes and pays attention as s_c teaches, gaining sure-footed confidence that will serve {PRONOUN/app1/object} well.",
                     "exp": 30,
                     "weight": 20,
                     "art": "gen_train_soggykitty_happy_app",
@@ -235,7 +235,7 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": true,
-                            "values": ["platonic", "trust"],
+                            "values": ["like", "trust"],
                             "amount": 5
                         },
                         {
@@ -259,7 +259,7 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["patrol"],
                             "mutual": true,
-                            "values": ["platonic", "trust"],
+                            "values": ["like", "trust"],
                             "amount": 5
                         },
                         {
@@ -283,7 +283,7 @@
                             "cats_to": ["p_l"],
                             "cats_from": ["app1"],
                             "mutual": false,
-                            "values": ["platonic", "trust", "dislike"],
+                            "values": ["like", "trust"],
                             "amount": 5
                         },
                         {
