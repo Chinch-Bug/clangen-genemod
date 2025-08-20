@@ -28,6 +28,7 @@ from scripts.game_structure import image_cache
 from scripts.game_structure import game
 from scripts.game_structure.screen_settings import screen
 from scripts.game_structure.game.settings import game_setting_get
+from scripts.game_structure import constants
 from scripts.ui.generate_button import get_button_dict, ButtonStyles
 from scripts.ui.icon import Icon
 from scripts.utility import (
@@ -1180,19 +1181,20 @@ class UIRelationStatusScaleBar(pygame_gui.elements.UIImage):
             (relative_rect[2], relative_rect[3]),
         )
         if tier.is_neutral:
-            bar.fill((130, 117, 82))
+            bar.fill(tuple(constants.CONFIG["relationship"]["colours"]["neutral"]))
         elif tier.is_low_pos:
-            bar.fill((182, 174, 51))
+            bar.fill(tuple(constants.CONFIG["relationship"]["colours"]["low_pos"]))
         elif tier.is_mid_pos:
-            bar.fill((150, 195, 49))
+            bar.fill(tuple(constants.CONFIG["relationship"]["colours"]["mid_pos"]))
         elif tier.is_extreme_pos:
-            bar.fill((154, 241, 32))
+            bar.fill(tuple(constants.CONFIG["relationship"]["colours"]["extreme_pos"]))
         elif tier.is_low_neg:
-            bar.fill((186, 128, 60))
+            bar.fill(tuple(constants.CONFIG["relationship"]["colours"]["low_neg"]))
         elif tier.is_mid_neg:
-            bar.fill((214, 90, 53))
+            bar.fill(tuple(constants.CONFIG["relationship"]["colours"]["mid_neg"]))
         elif tier.is_extreme_neg:
-            bar.fill((233, 38, 30))
+            bar.fill(
+                tuple(constants.CONFIG["relationship"]["colours"]["extreme_neg"]))
 
         # bar element is the base of this entire element
         super().__init__(

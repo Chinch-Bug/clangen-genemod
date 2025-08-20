@@ -1067,32 +1067,6 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
                     app_ob.update_mentor()
 
             cat.update_mentor()
-
-        # ADOPTIVE PARENTS
-        for par in adoptive_parents:
-            if not par:
-                continue
-
-            par = Cat.fetch_cat(par)
-
-            y = randrange(0, 20)
-            start_relation = Relationship(par, cat, False, True)
-            start_relation.like += 30 + y
-            start_relation.comfortable = 10 + y
-            start_relation.respect = 15 + y
-            start_relation.trust = 10 + y
-            par.relationships[cat.ID] = start_relation
-
-            y = randrange(0, 20)
-            start_relation = Relationship(cat, par, False, True)
-            start_relation.like += 30 + y
-            start_relation.comfortable = 10 + y
-            start_relation.respect = 15 + y
-            start_relation.trust = 10 + y
-            cat.relationships[par.ID] = start_relation
-
-        # UPDATE INHERITANCE
-        cat.create_inheritance_new_cat()
     elif "change_clan_rev" in attribute_list:
         other = game.clan if give_mates[0].status.group == CatGroup.PLAYER_CLAN else next(filter(lambda c: c.enum == give_mates[0].status.group, game.clan.all_clans), None)
         give_mates[0].status.add_to_group(other_clan, standing_with_past_group=CatStanding.LEFT)
@@ -1122,6 +1096,33 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
             # this is some duplicate work, since this triggers inheritance re-calcs
             # TODO: optimize
             cat.set_mate(inter_cat)
+
+        # ADOPTIVE PARENTS
+        for par in adoptive_parents:
+            if not par:
+                continue
+
+            cat.adoptive_parents.append(par)
+            par = Cat.fetch_cat(par)
+
+            y = randrange(0, 20)
+            start_relation = Relationship(par, cat, False, True)
+            start_relation.like += 30 + y
+            start_relation.comfortable = 10 + y
+            start_relation.respect = 15 + y
+            start_relation.trust = 10 + y
+            par.relationships[cat.ID] = start_relation
+
+            y = randrange(0, 20)
+            start_relation = Relationship(cat, par, False, True)
+            start_relation.like += 30 + y
+            start_relation.comfortable = 10 + y
+            start_relation.respect = 15 + y
+            start_relation.trust = 10 + y
+            cat.relationships[par.ID] = start_relation
+
+        if adoptive_parents:
+            cat.create_inheritance_new_cat()
 
     return picked_cats
 

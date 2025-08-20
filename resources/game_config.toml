@@ -51,6 +51,16 @@ dev_tools = false
       mid_pos = 69
       extreme_pos = 100
 
+[relationship.colours]
+  # colours are RGB values, each number is a value from 0 to 255
+  neutral = [130, 117, 82]
+  low_pos = [182, 174, 51]
+  mid_pos = [150, 195, 49]
+  extreme_pos = [154, 241, 32]
+  low_neg = [186, 128, 60]
+  mid_neg = [214, 90, 53]
+  extreme_neg = [233, 38, 30]
+
 [mates]
   # maximum age difference allowed for cats to be romantic with each other
   age_range = 40

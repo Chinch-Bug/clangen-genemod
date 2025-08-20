@@ -439,6 +439,7 @@ class ClanSettingsScreen(Screens):
         elders = 0
         kits = 0
         cats_outside = 0
+        other_clan_cats = 0
         starclan = 0
         df = 0
         ur = 0
@@ -458,6 +459,10 @@ class ClanSettingsScreen(Screens):
 
             if cat.status.is_outsider:
                 cats_outside += 1
+                continue
+
+            if cat.status.group.is_other_clan_group():
+                other_clan_cats += 1
                 continue
 
             living_cats += 1
@@ -480,11 +485,12 @@ class ClanSettingsScreen(Screens):
 
         self.checkboxes_text["stat_box"] = pygame_gui.elements.UITextBox(
             "screens.clan_settings.stats_text",
-            ui_scale(pygame.Rect((150, 200), (530, 375))),
+            ui_scale(pygame.Rect((150, 200), (530, 400))),
             object_id=get_text_box_theme("#text_box_30_horizcenter"),
             text_kwargs={
                 "living": str(living_cats),
                 "cotc": str(cats_outside),
+                "oc_cats": str(other_clan_cats),
                 "starclan": str(starclan),
                 "darkforest": str(df),
                 "unknownresidence": str(ur),
