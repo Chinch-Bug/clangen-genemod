@@ -2099,7 +2099,7 @@ def get_leader_life_notice(clan) -> str:
     """
     Returns a string specifying how many lives the leader has left or notifying of the leader's full death
     """
-    if game.clan.instructor.status.group == CatGroup.DARK_FOREST:
+    if clan.instructor.status.group == CatGroup.DARK_FOREST:
         return i18n.t("cat.history.leader_lives_left_df", count=clan.leader_lives)
     return i18n.t("cat.history.leader_lives_left_sc", count=clan.leader_lives)
 

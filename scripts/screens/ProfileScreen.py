@@ -325,7 +325,7 @@ class ProfileScreen(Screens):
                 # if the cat is dead, moves them to the opposite afterlife
                 if self.the_cat.dead:
                     self.the_cat.pelt.rebuild_sprite = True
-                    if self.the_cat == game.clan.instructor:
+                    if self.the_cat in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_clans]:
                         # DF -> SC
                         if self.the_cat.status.group == CatGroup.DARK_FOREST:
                             self.the_cat.status.add_to_group(
@@ -599,14 +599,14 @@ class ProfileScreen(Screens):
             cat_name = i18n.t("general.dead_label", name=cat_name)
 
         # Instructor thoughts
-        if self.the_cat.dead and game.clan.instructor is self.the_cat:
+        if self.the_cat.dead and self.the_cat in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_clans if clan.instructor]:
             if self.the_cat.status.group == CatGroup.STARCLAN:  # StarClan
                 self.the_cat.thought = i18n.t(
-                    "screens.profile.guide_thought_sc", clan=game.clan.displayname
+                    "screens.profile.guide_thought_sc", clan=self.the_cat.status.get_last_living_group().fetch_clan_object().displayname
                 )
             elif self.the_cat.status.group == CatGroup.DARK_FOREST:  # Dark Forest
                 self.the_cat.thought = i18n.t(
-                    "screens.profile.guide_thought_df", clan=game.clan.displayname
+                    "screens.profile.guide_thought_df", clan=self.the_cat.status.get_last_living_group().fetch_clan_object().displayname
                 )
 
         self.profile_elements["cat_name"] = pygame_gui.elements.UITextBox(
@@ -918,12 +918,12 @@ class ProfileScreen(Screens):
             # NEWLINE ----------
             output += "\n"
 
-        if the_cat == game.clan.instructor:
+        if the_cat in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_clans if clan.instructor]:
             output += i18n.t(f"general.guide")
             output += "\n"
 
         if the_cat.dead:
-            if the_cat == game.clan.instructor or the_cat.status.is_outsider:
+            if the_cat in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_clans if clan.instructor] or the_cat.status.is_outsider:
                 output += i18n.t(
                     f"general.past_no_group",
                     rank=i18n.t(f"general.{the_cat.status.rank}", count=1),
@@ -1357,7 +1357,6 @@ class ProfileScreen(Screens):
             )
         elif (
             self.the_cat.status.is_other_clancat and game.clan.clancount == "singleclan"
-            and self.the_cat != game.clan.instructor
         ):
             clan = [
                 clan
@@ -2347,7 +2346,7 @@ class ProfileScreen(Screens):
                 object_id="@buttonstyles_ladder_top",
                 tool_tip_text=(
                     "screens.profile.exile_guide_tooltip"
-                    if self.the_cat.dead and game.clan.instructor.ID == self.the_cat.ID
+                    if self.the_cat.dead and self.the_cat.ID in [game.clan.instructor.ID] + [clan.instructor.ID for clan in game.clan.all_clans if clan.instructor]
                     else (
                         "screens.profile.exile_tooltip"
                         if not self.the_cat.dead
@@ -2359,7 +2358,7 @@ class ProfileScreen(Screens):
             )
             text = "screens.profile.exile"
             if self.the_cat.dead:
-                if self.the_cat == game.clan.instructor:
+                if self.the_cat in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_clans if clan.instructor]:
                     text = "screens.profile.exile_df"
                     layer = self.df
                     if self.the_cat.status.group == CatGroup.DARK_FOREST:
@@ -2398,7 +2397,7 @@ class ProfileScreen(Screens):
                 if hasattr(self, "change_clan_button"):
                     self.change_clan_button.enable()
             
-            if not self.the_cat == game.clan.instructor:
+            if self.the_cat not in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_clans if clan.instructor]:
                 self.kill_cat_button.enable()
             else:
                 self.kill_cat_button.disable()
@@ -2649,7 +2648,7 @@ class ProfileScreen(Screens):
                 biome_platforms.subsurface(pygame.Rect(0 + offset, 0, 80, 70)),
                 (240, 210),
             )
-        elif the_cat.dead or game.clan.instructor.ID == the_cat.ID:
+        elif the_cat.dead or the_cat.ID in [game.clan.instructor.ID] + [clan.instructor.ID for clan in game.clan.all_clans if clan.instructor]:
             biome_platforms = platformsheet.subsurface(
                 pygame.Rect(0, order.index("SC/DF") * 70, 640, 70)
             )

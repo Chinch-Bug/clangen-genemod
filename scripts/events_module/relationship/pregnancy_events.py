@@ -1534,9 +1534,9 @@ class Pregnancy_Events:
                 kit.pelt.white_patches_tint = ref_cat.pelt.white_patches_tint
                 
                 if ref_cat.chimerapheno:
-                    kit.chimerapheno = ref_cat.chimerapheno   
+                    kit.chimerapheno = deepcopy(ref_cat.chimerapheno)   
                     kit.chimerapheno.tortiepattern = None
-                    kit.chimerapheno.chimerapattern = None
+                    kit.chimerapheno.chimerapattern = kit.chimerapheno.ChooseTortiePattern("chimera")
                     kit.chimerapheno.merlepattern = None
                     kit.chimerapheno.white_pattern = kit.pelt.generate_white(kit.chimerapheno.white, kit.chimerapheno.pointgene, kit.chimerapheno.whitegrade, kit.chimerapheno.vitiligo, None, kit.chimerapheno.pax3)
                     kit.chimerapheno.PhenotypeOutput(kit.chimerapheno.white_pattern)

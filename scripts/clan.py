@@ -196,6 +196,7 @@ class Clan:
         )
 
         self.clancount = clancount
+        self.instructor.status.group_history.insert(0, {"rank": instructor_rank, "group": CatGroup.PLAYER_CLAN, "moons_as": self.instructor.moons})
         self.instructor.dead_for = randint(20, 200)
         self.add_cat(self.instructor)
         self.all_clans = []
@@ -236,8 +237,6 @@ class Clan:
             other_clan = OtherClan(name=other_clan_name, clancount=self.clancount)
             # self.all_clans.append(other_clan)
 
-        if self.clancount == "multiclan":
-            self.instructor.status.group_history.insert(0, {"rank": instructor_rank, "group": choice(game.clan.other_clans + [CatGroup.PLAYER_CLAN]), "moons_as": self.instructor.moons})
         for cat_id in Cat.all_cats:
             if cat_id not in self.clan_cats:
                 self.clan_cats.append(cat_id)
@@ -576,6 +575,10 @@ class Clan:
         # Instructor Info
         if clan_data["instructor"] in Cat.all_cats:
             game.clan.instructor = Cat.all_cats[clan_data["instructor"]]
+            if not game.clan.instructor.status.get_last_living_group():
+                game.clan.instructor.status.group_history.insert(0, {"rank": game.clan.instructor.status.rank, "group": CatGroup.PLAYER_CLAN, "moons_as": self.instructor.moons})
+            elif game.clan.instructor.status.get_last_living_group() != CatGroup.PLAYER_CLAN:
+                game.clan.instructor.status.group_history[0]["group"] = CatGroup.PLAYER_CLAN
             game.clan.add_cat(game.clan.instructor)
         else:
             game.clan.instructor = Cat(
@@ -584,6 +587,7 @@ class Clan:
                     "group": CatGroup.STARCLAN,
                 }
             )
+            game.clan.instructor.status.group_history.insert(0, {"rank": game.clan.instructor.status.rank, "group": CatGroup.PLAYER_CLAN, "moons_as": self.instructor.moons})
             # update_sprite(game.clan.instructor)
             game.clan.instructor.dead = True
             game.clan.add_cat(game.clan.instructor)
@@ -608,6 +612,7 @@ class Clan:
                     relations=int(other_clan["relations"]),
                     temperament=other_clan["temperament"],
                     chosen_symbol=other_clan["chosen_symbol"],
+                    instructor=other_clan.get("instructor"),
                     leader=other_clan.get("leader"),
                     leader_lives=other_clan.get("leader_lives"),
                     leader_predecessors=other_clan.get("leader_predecessors", 0),
@@ -1124,7 +1129,7 @@ class OtherClan:
         CatGroup.OTHER_CLAN5,
     )
 
-    def __init__(self, name="", clancount="singleclan", relations=0, temperament="", chosen_symbol="", leader=None, leader_lives=9, leader_predecessors=0, deputy=None, deputy_predecessors=0, medicine_cat=None, med_cat_predecessors=0):
+    def __init__(self, name="", clancount="singleclan", relations=0, temperament="", chosen_symbol="", instructor=None, leader=None, leader_lives=9, leader_predecessors=0, deputy=None, deputy_predecessors=0, medicine_cat=None, med_cat_predecessors=0):
         clan_names = names.names_dict["normal_prefixes"]
         clan_names.extend(names.names_dict["clan_prefixes"])
         self.displayname = name or choice(clan_names)
@@ -1149,6 +1154,7 @@ class OtherClan:
                 game.clan.other_clans.append(enum)
                 break
 
+        self.instructor = Cat.all_cats.get(instructor)
         self.leader = Cat.all_cats.get(leader)
         self.leader_lives = leader_lives if leader else 0
         self.leader_predecessors = leader_predecessors
@@ -1159,10 +1165,50 @@ class OtherClan:
         self.med_cat_list = []
         self.med_cat_number = len(self.med_cat_list)
 
+        if self.leader and not self.instructor:
+            instructor_rank = choice((
+                CatRank.APPRENTICE,
+                CatRank.MEDIATOR_APPRENTICE,
+                CatRank.MEDICINE_APPRENTICE,
+                CatRank.WARRIOR,
+                CatRank.MEDICINE_CAT,
+                CatRank.LEADER,
+                CatRank.MEDIATOR,
+                CatRank.DEPUTY,
+                CatRank.ELDER,
+            ))
+            self.instructor = Cat(
+                status_dict={
+                    "rank": instructor_rank,
+                    "group": CatGroup.STARCLAN,
+                }
+            )
+            self.instructor.dead_for = randint(20, 200)
+            self.instructor.status.group_history.insert(0, {"rank": instructor_rank, "group": self.enum, "moons_as": self.instructor.moons})
+            game.clan.add_cat(self.instructor)
+
         game.clan.all_clans.append(self)
 
         random_rank = [CatRank.WARRIOR, CatRank.WARRIOR, CatRank.ELDER, CatRank.APPRENTICE, CatRank.KITTEN]
         if clancount == "multiclan":
+            instructor_rank = choice(
+                (
+                    CatRank.APPRENTICE,
+                    CatRank.MEDIATOR_APPRENTICE,
+                    CatRank.MEDICINE_APPRENTICE,
+                    CatRank.WARRIOR,
+                    CatRank.MEDICINE_CAT,
+                    CatRank.LEADER,
+                    CatRank.MEDIATOR,
+                    CatRank.DEPUTY,
+                    CatRank.ELDER,
+                )
+            )
+            self.instructor = Cat(status_dict={"rank": instructor_rank, "group": CatGroup.STARCLAN})
+            self.instructor.dead = True
+            self.instructor.dead_for = randint(20, 200)
+            self.instructor.status.group_history.insert(0, {"rank": instructor_rank, "group": self.enum, "moons_as": self.instructor.moons})
+
             self.new_leader(Cat(status_dict={"rank": CatRank.LEADER, "group": self.enum}, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]))
             self.new_deputy(Cat(status_dict={"rank": CatRank.DEPUTY, "group": self.enum}, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]))
             self.new_medicine_cat(Cat(status_dict={"rank": CatRank.MEDICINE_CAT, "group": self.enum}, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]))
@@ -1178,6 +1224,7 @@ class OtherClan:
             "relations" : self.relations,
             "temperament" : self.temperament,
             "chosen_symbol" : self.chosen_symbol,
+            "instructor": self.instructor.ID if self.instructor else None,
             "leader" : self.leader.ID if self.leader else None,
             "leader_lives" : self.leader_lives,
             "leader_predecessors" : self.leader_predecessors,

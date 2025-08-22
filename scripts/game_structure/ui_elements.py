@@ -1193,8 +1193,7 @@ class UIRelationStatusScaleBar(pygame_gui.elements.UIImage):
         elif tier.is_mid_neg:
             bar.fill(tuple(constants.CONFIG["relationship"]["colours"]["mid_neg"]))
         elif tier.is_extreme_neg:
-            bar.fill(
-                tuple(constants.CONFIG["relationship"]["colours"]["extreme_neg"]))
+            bar.fill(tuple(constants.CONFIG["relationship"]["colours"]["extreme_neg"]))
 
         # bar element is the base of this entire element
         super().__init__(
@@ -1342,7 +1341,6 @@ class UIRelationDisplay(pygame_gui.elements.UIAutoResizingContainer):
                 i18n.t(f"relationships.romance", count=relationship.romance)
             )
             self.rel_elements[f"romance_text"].tool_tip_delay = 0
-            self.rel_elements[f"romance_text"].disable()
             self.rel_elements[f"romance_text"].disable()
             self.rel_elements[f"romance_bar"] = UIRelationStatusFillBar(
                 ui_scale(

@@ -515,14 +515,14 @@ class Status:
 
         # if we have an outsider who has never been a clancat, they go to the unknown residence
         if self.is_outsider and (
-            self.is_exiled(CatGroup.PLAYER_CLAN) or not self.is_former_clancat
+            self.is_exiled() or not self.is_former_clancat
         ):
             self.add_to_group(new_group=CatGroup.UNKNOWN_RESIDENCE)
             return
 
         # meanwhile clan cats go wherever their guide points them
         if game.clan:
-            self.add_to_group(new_group=game.clan.instructor.status.group)
+            self.add_to_group(new_group=self.get_last_living_group().fetch_clan_object().instructor.status.group)
         else:
             self.add_to_group(new_group=CatGroup.STARCLAN)
 

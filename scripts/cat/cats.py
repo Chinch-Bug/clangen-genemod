@@ -1370,7 +1370,7 @@ class Cat:
         load_leader_ceremonies()
 
         # determine which dict we're pulling from
-        if game.clan.instructor.status.group == CatGroup.DARK_FOREST:
+        if self.status.group.fetch_clan_object(game.clan).instructor.status.group == CatGroup.DARK_FOREST:
             starclan = False
             ceremony_dict: Dict = LEAD_CEREMONY_DF
         else:
@@ -1430,7 +1430,7 @@ class Cat:
                     if kitty.status.group != CatGroup.DARK_FOREST:
                         continue
                 # guides aren't allowed here
-                if kitty == game.clan.instructor:
+                if kitty in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_clans if clan.instructor]:
                     continue
                 else:
                     dead_relations.append(rel)
@@ -1526,7 +1526,7 @@ class Cat:
                 if "unknown_blessing" in tags:
                     continue
 
-                if "guide" in tags and giver_cat != game.clan.instructor:
+                if "guide" in tags and giver_cat not in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_clans if clan.instructor]:
                     continue
                 if game.clan.age != 0 and "new_clan" in tags:
                     continue
@@ -1784,12 +1784,19 @@ class Cat:
                         other_cat = None
                         break
 
+        if self.status.is_clancat:
+            clan = self.status.get_last_living_group()
+        elif other_cat and other_cat.status.is_clancat:
+            clan = other_cat.status.get_last_living_group()
+        else:
+            clan = CatGroup.PLAYER_CLAN
+
         # get chosen thought
         if just_died:
             afterlife = (
                 self.status.group
                 if self.status.group and self.status.group.is_afterlife()
-                else game.clan.instructor.status.group
+                else clan.fetch_clan_object().instructor.status.group
             )
             chosen_thought = Thoughts.new_death_thought(
                 self, other_cat, game_mode, biome, season, camp, afterlife, lives_left
@@ -1798,13 +1805,6 @@ class Cat:
             chosen_thought = Thoughts.get_chosen_thought(
                 self, other_cat, game_mode, biome, season, camp, game_setting_get("ageup dead")
             )
-
-        if self.status.is_clancat:
-            clan = self.status.get_last_living_group()
-        elif other_cat and other_cat.status.is_clancat:
-            clan = other_cat.status.get_last_living_group()
-        else:
-            clan = CatGroup.PLAYER_CLAN
 
         chosen_thought = event_text_adjust(
             self.__class__,
@@ -2918,8 +2918,14 @@ class Cat:
                 if game_setting_get("random relation"):
                     if (
                         game.clan
-                        and the_cat == game.clan.instructor
-                        and game.clan.instructor.dead_for >= self.moons
+                        and the_cat in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_clans if clan.instructor]
+                        and the_cat.dead_for >= self.moons
+                    ):
+                        pass
+                    elif (
+                        game.clan
+                        and the_cat in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_clans if clan.instructor]
+                        and the_cat.status.get_last_living_group() != self.status.group
                     ):
                         pass
                     elif (randint(1, 20) == 1 or (self.status.group != the_cat.status.group and random() < 0.8)) and romance < 1:
@@ -3638,9 +3644,12 @@ class Cat:
                 if filter_func(check_cat)
             ]
 
-        if game.clan.instructor in sorted_specific_list:
-            sorted_specific_list.remove(game.clan.instructor)
-            sorted_specific_list.insert(0, game.clan.instructor)
+        all_instructors = [game.clan.instructor] + [clan.instructor for clan in game.clan.all_clans if clan.instructor]
+
+        for ins in all_instructors[::-1]:
+            if ins in sorted_specific_list:
+                sorted_specific_list.remove(ins)
+                sorted_specific_list.insert(0, ins)
 
         idx = sorted_specific_list.index(self)
 

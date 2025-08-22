@@ -204,7 +204,7 @@ class Events:
                 last_living = ghost.status.get_last_living_group()
                 if ghost.status.is_exiled(last_living):
                     pass
-                if CatGroup.PLAYER_CLAN in ghost.status.all_groups and last_living == CatGroup.PLAYER_CLAN:
+                elif CatGroup.PLAYER_CLAN in ghost.status.all_groups and last_living == CatGroup.PLAYER_CLAN:
                     if game.clan.displayname not in ghost_names:
                         ghost_names[game.clan.displayname] = []
                         sorted_dead_cats[game.clan.displayname] = []
@@ -576,8 +576,6 @@ class Events:
 
             if "relationships" in cat_dict:
                 unpack_rel_block(Cat, cat_dict["relationships"], extra_cat=outsider_cat)
-
-                pass
 
             # adjust text and add to event list
             event_text = event_text_adjust(
@@ -954,7 +952,7 @@ class Events:
         if (
             get_clan_setting("fading")
             and not cat.prevent_fading
-            and cat.ID != game.clan.instructor.ID
+            and cat.ID not in [clan.instructor.ID for clan in game.clan.all_clans if clan.instructor] + [game.clan.instructor.ID]
             and not cat.faded
         ) or forced:
             age_to_fade = constants.CONFIG["fading"]["age_to_fade"]

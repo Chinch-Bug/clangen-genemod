@@ -614,16 +614,19 @@ class ListScreen(Screens):
 
         # adding in the guide if necessary, this ensures the guide isn't affected by sorting as we always want them to
         # be the first cat on the list
-        if (
-            self.current_group == "general.dark_forest"
-            and game.clan.instructor.status.group == CatGroup.DARK_FOREST
-        ) or (
-            self.current_group == "general.starclan"
-            and game.clan.instructor.status.group == CatGroup.STARCLAN
-        ):
-            if game.clan.instructor in self.current_listed_cats:
-                self.current_listed_cats.remove(game.clan.instructor)
-                self.current_listed_cats.insert(0, game.clan.instructor)
+
+        all_instructors = [game.clan.instructor] + [clan.instructor for clan in game.clan.all_clans if clan.instructor]
+        for ins in all_instructors[::-1]:
+            if (
+                self.current_group == "general.dark_forest"
+                and ins.status.group == CatGroup.DARK_FOREST
+            ) or (
+                self.current_group == "general.starclan"
+                and ins.status.group == CatGroup.STARCLAN
+            ):
+                if ins in self.current_listed_cats:
+                    self.current_listed_cats.remove(ins)
+                    self.current_listed_cats.insert(0, ins)
         
 
         self.all_pages = (
@@ -830,8 +833,7 @@ class ListScreen(Screens):
         self.full_cat_list = []
         for the_cat in Cat.all_cats_list:
             if (
-                the_cat.ID != game.clan.instructor.ID
-                and the_cat.status.group == CatGroup.UNKNOWN_RESIDENCE
+                the_cat.status.group == CatGroup.UNKNOWN_RESIDENCE
                 and not the_cat.faded
                 and the_cat.status.is_near(CatGroup.PLAYER_CLAN)
             ):
