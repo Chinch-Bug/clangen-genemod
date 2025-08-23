@@ -1363,7 +1363,7 @@ class Events:
         # PROMOTE DEPUTY TO LEADER, IF NEEDED -----------------------
         if clan.leader:
             leader_dead = clan.leader.dead
-            leader_outside = clan.leader.status.is_outsider
+            leader_outside = clan.leader.status.group != clan.enum
         else:
             leader_dead = True
             # If leader is None, treat them as dead (since they are dead - and faded away.)
@@ -1375,7 +1375,7 @@ class Events:
             if (
                 clan.deputy is not None
                 and not clan.deputy.dead
-                and not clan.deputy.status.is_outsider
+                and not clan.deputy.status.group != clan.enum
                 and (leader_dead or leader_outside)
             ):
                 clan.new_leader(clan.deputy)
@@ -2553,7 +2553,7 @@ class Events:
 
             if clan.leader:
                 leader_dead = clan.leader.dead
-                leader_outside = clan.leader.status.is_outsider
+                leader_outside = clan.leader.status.group != clan.enum
             else:
                 leader_dead = True
                 leader_outside = True

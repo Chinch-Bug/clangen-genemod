@@ -2340,6 +2340,12 @@ class ChangeCatClan(UIWindow):
             if event.ui_element == self.save_button:
                 if self.the_cat.status.group:
                     self.the_cat.backstory = "otherclan1"
+                    if self.the_cat.status.rank == CatRank.LEADER:
+                        self.the_cat.status.group.fetch_clan_object().leader = None
+                    elif self.the_cat.status.rank == CatRank.DEPUTY:
+                        self.the_cat.status.group.fetch_clan_object().deputy = None
+                    elif self.the_cat.status.rank == CatRank.LEADER:
+                        self.the_cat.status.group.fetch_clan_object().remove_med_cat(self.the_cat)
                     self.the_cat.history.add_beginning(False)
                     self.the_cat.status._modify_group(
                         CatRank.WARRIOR if self.the_cat.status.rank in (CatRank.LEADER, CatRank.DEPUTY) else self.the_cat.status.rank, 
