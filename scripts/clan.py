@@ -653,7 +653,7 @@ class Clan:
                     clan_data["other_clan_chosen_symbol"].split(","),
                     other_clan_enums,
                 ):
-                    OtherClan(name, relations=int(relation), temperament=temper, chosen_symbol=symbol)
+                    OtherClan(name, temperament=temper, chosen_symbol=symbol)
                     game.clan.relations[CatGroup.PLAYER_CLAN][enum] = int(relation)
         if "relations" not in clan_data and game.clan.clancount == "multiclan":
             for i, enum in enumerate(game.clan.other_clans[:-1]):
