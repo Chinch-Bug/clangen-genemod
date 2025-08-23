@@ -390,7 +390,7 @@ class GenerateEvents:
                     continue
 
                 if "current_rep" in event.other_clan and not event_for_clan_relations(
-                    event.other_clan["current_rep"], other_clan if other_clan != game.clan else clan
+                    event.other_clan["current_rep"], clan, other_clan
                 ):
                     continue
 

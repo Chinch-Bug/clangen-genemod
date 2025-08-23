@@ -138,9 +138,9 @@ class PatrolOutcome:
                 if not isinstance(out.stat_cat, Cat):
                     continue
 
-            if "lead_name" in out.text and not game.clan.leader:
+            if "lead_name" in out.text and not patrol.clan.leader:
                 continue
-            if "dep_name" in out.text and not game.clan.deputy:
+            if "dep_name" in out.text and not patrol.clan.deputy:
                 continue
 
             # TODO: outcome relationship constraints
@@ -248,7 +248,7 @@ class PatrolOutcome:
             patrol_cats=patrol.patrol_cats,
             patrol_apprentices=patrol.patrol_apprentices,
             new_cats=patrol.new_cats,
-            clan=game.clan,
+            clan=patrol.clan,
             other_clan=patrol.other_clan,
         )
 
@@ -271,7 +271,7 @@ class PatrolOutcome:
                         patrol_cats=patrol.patrol_cats,
                         patrol_apprentices=patrol.patrol_apprentices,
                         new_cats=patrol.new_cats,
-                        clan=game.clan,
+                        clan=patrol.clan,
                         other_clan=patrol.other_clan,
                     )
                 elif isinstance(log, list):
@@ -285,7 +285,7 @@ class PatrolOutcome:
                             patrol_cats=patrol.patrol_cats,
                             patrol_apprentices=patrol.patrol_apprentices,
                             new_cats=patrol.new_cats,
-                            clan=game.clan,
+                            clan=patrol.clan,
                             other_clan=patrol.other_clan,
                         )
 
@@ -294,7 +294,7 @@ class PatrolOutcome:
                 Cat, self.relationship_effects, patrol, stat_cat=self.stat_cat
             )
         )
-        results.append(self._handle_rep_changes())
+        results.append(self._handle_rep_changes(patrol))
         results.append(self._handle_other_clan_relations(patrol))
         results.append(self._handle_prey(patrol))
         results.append(self._handle_herbs(patrol))
@@ -333,7 +333,7 @@ class PatrolOutcome:
             event=self,
             event_id=patrol.patrol_event.patrol_id,
             possible_cats=possible_cats,
-            clan=game.clan
+            clan=patrol.clan
         )
 
     def _allowed_stat_cat_specific(
@@ -539,29 +539,32 @@ class PatrolOutcome:
         for _cat in cats_to_kill:
             if _cat.status.is_leader:
                 if "all_lives" in self.dead_cats:
-                    game.clan.leader_lives = 0
+                    patrol.clan.leader_lives = 0
                     results.append(
                         event_text_adjust(
-                            Cat, i18n.t("cat.history.n_leader_death_all"), main_cat=_cat
+                            Cat, i18n.t("cat.history.n_leader_death_all"), main_cat=_cat, clan=patrol.clan
                         )
                     )
                 elif "some_lives" in self.dead_cats:
-                    lives_lost = random.randint(1, max(1, game.clan.leader_lives - 1))
-                    game.clan.leader_lives -= lives_lost
+                    lives_lost = random.randint(
+                        1, max(1, patrol.clan.leader_lives - 1))
+                    patrol.clan.leader_lives -= lives_lost
                     results.append(
                         event_text_adjust(
                             Cat,
                             i18n.t("cat.history.n_leader_lost_lives", count=lives_lost),
-                            main_cat=_cat,
+                            main_cat=_cat, 
+                            clan=patrol.clan
                         )
                     )
                 else:
-                    game.clan.leader_lives -= 1
+                    patrol.clan.leader_lives -= 1
                     results.append(
                         event_text_adjust(
                             Cat,
                             i18n.t("cat.history.n_leader_lost_lives", count=1),
                             main_cat=_cat,
+                            clan=patrol.clan
                         )
                     )
             else:
@@ -708,13 +711,13 @@ class PatrolOutcome:
 
         return " ".join(results)
 
-    def _handle_rep_changes(self) -> str:
+    def _handle_rep_changes(self, patrol: "Patrol") -> str:
         """Handles any changes in outsider rep"""
 
         if not isinstance(self.outsider_rep, int):
             return ""
 
-        change_clan_reputation(self.outsider_rep)
+        change_clan_reputation(self.outsider_rep, patrol.clan)
         if self.outsider_rep > 0:
             return i18n.t("screens.patrol.outsider_rep_improved")
         elif self.outsider_rep == 0:
@@ -728,7 +731,7 @@ class PatrolOutcome:
         if not isinstance(self.other_clan_rep, int) or patrol.other_clan is None:
             return ""
 
-        change_clan_relations(patrol.other_clan, self.other_clan_rep)
+        change_clan_relations(patrol.clan, patrol.other_clan, self.other_clan_rep)
         if self.other_clan_rep > 0:
             return i18n.t("screens.patrol.clan_rep_improved", clan=patrol.other_clan)
         elif self.other_clan_rep == 0:
@@ -739,7 +742,7 @@ class PatrolOutcome:
     def _handle_herbs(self, patrol: "Patrol") -> str:
         """Handle giving herbs"""
 
-        if not self.herbs or game.clan.game_mode == "classic":
+        if not self.herbs or game.clan.game_mode == "classic" or patrol.clan != game.clan:
             return ""
 
         list_of_herb_strs = []
@@ -799,7 +802,7 @@ class PatrolOutcome:
         if not FRESHKILL_ACTIVE:
             return ""
 
-        if not self.prey or game.clan.game_mode == "classic":
+        if not self.prey or game.clan.game_mode == "classic" or patrol.clan != game.clan:
             return ""
 
         basic_amount = PREY_REQUIREMENT[CatRank.WARRIOR]
@@ -887,13 +890,13 @@ class PatrolOutcome:
             if game.clan.clancount != "multiclan" or (("clancat" not in attribute_list and "change_clan" not in attribute_list) or "exists" not in attribute_list):
                 patrol.new_cats.append(
                     create_new_cat_block(
-                        Cat, Relationship, patrol, in_event_cats, i, attribute_list, clan=CatGroup.PLAYER_CLAN, other_clan=patrol.other_clan
+                        Cat, Relationship, patrol, in_event_cats, i, attribute_list, clan=patrol.clan.enum, other_clan=patrol.other_clan
                     )
                 )
             else:
                 patrol.new_cats.append(
                     find_clan_cats(
-                        Cat, Relationship, self, in_event_cats, i, attribute_list, clan=CatGroup.PLAYER_CLAN, other_clan=patrol.other_clan.enum
+                        Cat, Relationship, self, in_event_cats, i, attribute_list, clan=patrol.clan.enum, other_clan=patrol.other_clan.enum
                     )
                 )
             dead = []
@@ -902,7 +905,7 @@ class PatrolOutcome:
             for cat in patrol.new_cats[-1]:
                 if cat.dead:
                     dead.append(str(cat.name))
-                elif cat.status.group != CatGroup.PLAYER_CLAN:
+                elif cat.status.group != patrol.clan.enum:
                     outside.append(str(cat.name))
                 else:
                     new.append(str(cat.name))

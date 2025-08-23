@@ -319,14 +319,14 @@ class HandleShortEvents:
 
         # change outsider rep
         if self.chosen_event.outsider:
-            change_clan_reputation(self.chosen_event.outsider["changed"])
+            change_clan_reputation(self.chosen_event.outsider["changed"], clan)
             if "misc" not in self.types:
                 self.types.append("misc")
 
         # change other_clan rep
-        if self.chosen_event.other_clan and clan == game.clan:
+        if self.chosen_event.other_clan:
             change_clan_relations(
-                self.other_clan, self.chosen_event.other_clan["changed"]
+                clan, self.other_clan, self.chosen_event.other_clan["changed"]
             )
             if "other_clans" not in self.types:
                 self.types.append("other_clans")

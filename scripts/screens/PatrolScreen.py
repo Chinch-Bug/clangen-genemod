@@ -4,6 +4,7 @@ from typing import Dict, Optional
 import i18n
 import pygame
 import pygame_gui
+from pygame_gui.core import ObjectID
 
 from scripts.cat.cats import Cat
 from scripts.events_module.patrol.patrol import Patrol
@@ -12,6 +13,7 @@ from scripts.game_structure.ui_elements import (
     UIImageButton,
     UISpriteButton,
     UISurfaceImageButton,
+    UIDropDownContainer,
 )
 from scripts.utility import (
     get_text_box_theme,
@@ -72,14 +74,30 @@ class PatrolScreen(Screens):
         self.start_patrol_thread: Optional[PropagatingThread] = None
         self.proceed_patrol_thread: Optional[PropagatingThread] = None
         self.outcome_art = None
+        
+        self.event_screen_container = None
+        self.current_clan = None
+        self.choose_group_button = None
+        self.living_groups_container = None
+        self.choose_group_buttons = {}
+        self.choose_living_dropdown = None
 
     def handle_event(self, event):
         if event.type == pygame_gui.UI_BUTTON_DOUBLE_CLICKED:
             if self.patrol_stage == "choose_cats":
                 self.handle_choose_cats_events(event)
 
-        elif event.type == pygame_gui.UI_BUTTON_START_PRESS:
-            if self.patrol_stage == "choose_cats":
+        elif event.type == pygame_gui.UI_BUTTON_PRESSED:
+            if event.ui_element in self.choose_group_buttons.values():
+                self.choose_living_dropdown.close()
+                self.current_clan = event.ui_element.text.replace("Clan", "")
+                self.current_clan = [c for c in game.clan.all_clans if c.displayname == self.current_clan]
+                if self.current_clan:
+                    self.current_clan = self.current_clan[0]
+                else:
+                    self.current_clan = game.clan
+                self.handle_switch_clan_events()
+            elif self.patrol_stage == "choose_cats":
                 self.handle_choose_cats_events(event)
             elif self.patrol_stage == "patrol_events":
                 self.handle_patrol_events_event(event)
@@ -94,6 +112,13 @@ class PatrolScreen(Screens):
                 self.change_screen("list screen")
             # elif event.key == pygame.K_RIGHT:
             # self.change_screen('list screen')
+
+    def handle_switch_clan_events(self):
+        self.update_heading_text(f"{self.current_clan.displayname}Clan")
+        self.current_patrol = []
+        self.open_choose_cats_screen()
+        self.update_cat_images_buttons()
+        self.update_button()
 
     def handle_choose_cats_events(self, event):
         if event.ui_element == self.elements["random"]:
@@ -289,6 +314,9 @@ class PatrolScreen(Screens):
 
     def handle_patrol_complete_events(self, event):
         if event.ui_element == self.elements["patrol_again"]:
+            if self.event_screen_container:
+                self.event_screen_container.show()
+                self.choose_living_dropdown.close()
             self.in_progress_data = None
             self.open_choose_cats_screen()
         elif event.ui_element == self.elements["clan_return"]:
@@ -299,13 +327,76 @@ class PatrolScreen(Screens):
         super().screen_switches()
         self.set_disabled_menu_buttons(["patrol_screen"])
         self.update_heading_text(f"{game.clan.displayname}Clan")
+
+        if not self.current_clan:
+            self.current_clan = game.clan
+        if game.clan.clancount == 'multiclan':
+            self.event_screen_container = pygame_gui.core.UIContainer(
+                ui_scale(pygame.Rect((0, 100), (800, 300))),
+                starting_height=1,
+                manager=MANAGER,
+            )
+            self.choose_group_button = UISurfaceImageButton(
+                ui_scale(pygame.Rect((510, 0), (190, 34))),
+                "screens.list.choose_group",
+                get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
+                object_id="@buttonstyles_dropdown",
+                manager=MANAGER,
+                starting_height=1,
+                container=self.event_screen_container,
+            )
+
+            self.living_groups_container = pygame_gui.elements.UIAutoResizingContainer(
+                ui_scale(pygame.Rect((510, 32), (0, 0))),
+                object_id="#choose_group_container",
+                manager=MANAGER,
+                starting_height=1,
+                container=self.event_screen_container,
+            )
+            self.living_groups_container.change_layer(10)
+            self.choose_group_buttons[game.clan.displayname] = UISurfaceImageButton(
+                ui_scale(pygame.Rect((0, 0), (190, 34))),
+                game.clan.displayname + "Clan",
+                get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
+                container=self.living_groups_container,
+                object_id=ObjectID(
+                    class_id="@buttonstyles_dropdown", object_id=None),
+                starting_height=2,
+                manager=MANAGER,
+            )
+            y_pos = 32
+            for clan in game.clan.all_clans:
+                self.choose_group_buttons[clan.displayname] = UISurfaceImageButton(
+                    ui_scale(pygame.Rect((0, y_pos), (190, 34))),
+                    clan.displayname + "Clan",
+                    get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
+                    container=self.living_groups_container,
+                    object_id=ObjectID(
+                        class_id="@buttonstyles_dropdown", object_id=None),
+                    starting_height=2,
+                    manager=MANAGER,
+                )
+                y_pos += 32
+
+            self.choose_living_dropdown = UIDropDownContainer(
+                self.living_groups_container.relative_rect,
+                container=self.event_screen_container,
+                object_id="#choose_living_dropdown",
+                starting_height=1,
+                parent_button=self.choose_group_button,
+                child_button_container=self.living_groups_container,
+                manager=MANAGER,
+            )
+
+            self.choose_living_dropdown.close()
+            self.choose_living_dropdown.show()
         self.show_mute_buttons()
         self.show_menu_buttons()
 
         if (
             self.in_progress_data is not None
             and self.in_progress_data["current_moon"] == game.clan.age
-            and self.in_progress_data["clan_name"] == game.clan.displayname
+            and self.in_progress_data["clan_name"] == self.current_clan.displayname
         ):
             self.display_change_load(self.in_progress_data)
         else:
@@ -339,7 +430,7 @@ class PatrolScreen(Screens):
         variable_dict["outcome_art"] = self.outcome_art
 
         variable_dict["current_moon"] = game.clan.age
-        variable_dict["clan_name"] = game.clan.displayname
+        variable_dict["clan_name"] = self.current_clan.displayname
 
         return variable_dict
 
@@ -748,7 +839,7 @@ class PatrolScreen(Screens):
         self.elements["patrol_start"].disable()
 
         # add prey information
-        if game.clan.game_mode != "classic":
+        if game.clan.game_mode != "classic" and self.current_clan == game.clan:
             current_amount = round(game.clan.freshkill_pile.total_amount, 2)
             self.elements["current_prey"] = pygame_gui.elements.UITextBox(
                 "screens.patrol.current_prey",
@@ -772,7 +863,7 @@ class PatrolScreen(Screens):
         """Runs patrol start. To be run in a separate thread."""
         try:
             self.display_text = self.patrol_obj.setup_patrol(
-                self.current_patrol, self.patrol_type
+                self.current_patrol, self.patrol_type, self.current_clan
             )
         except RuntimeError:
             self.display_text = None
@@ -782,6 +873,9 @@ class PatrolScreen(Screens):
         self.clear_page()
         self.clear_cat_buttons()
         self.patrol_stage = "patrol_events"
+
+        if self.event_screen_container:
+            self.event_screen_container.hide()
 
         if self.display_text is None:
             # No patrol events were found.
@@ -987,7 +1081,7 @@ class PatrolScreen(Screens):
                 the_cat.in_camp
                 and the_cat.ID not in game.patrolled
                 and the_cat.status.rank.is_allowed_to_patrol(get_clan_setting("allow_mediator_patrols"))
-                and the_cat.status.alive_in_player_clan
+                and the_cat.status.group == self.current_clan.enum
                 and the_cat not in self.current_patrol
                 and not the_cat.not_working()
             ):
@@ -1401,6 +1495,18 @@ class PatrolScreen(Screens):
         self.clear_page()
         self.clear_cat_buttons()
         self.hide_menu_buttons()
+        if game.clan.clancount == 'multiclan':
+            self.event_screen_container.kill()
+            self.choose_group_button.kill()
+            self.living_groups_container.kill()
+            for x in self.choose_group_buttons.values():
+                x.kill()
+            self.choose_living_dropdown.kill()
+            del self.event_screen_container
+            del self.choose_group_button
+            del self.living_groups_container
+            self.choose_group_buttons = {}
+            del self.choose_living_dropdown
 
     def on_use(self):
         super().on_use()

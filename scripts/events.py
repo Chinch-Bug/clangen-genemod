@@ -429,7 +429,7 @@ class Events:
 
             # change relations and append relation text
             rel_change = chosen_event["rel_change"]
-            other_clan.relations += rel_change
+            game.clan.set_relations(game.clan, other_clan, None, rel_change)
             if rel_change > 0:
                 event_text += i18n.t("hardcoded.relations_improved")
             elif rel_change == 0:
@@ -730,12 +730,12 @@ class Events:
 
         elif get_clan_setting("threaten outsiders"):
             amount = constants.CONFIG["focus"]["outsiders"]["reputation"]
-            change_clan_reputation(-amount)
+            change_clan_reputation(-amount, game.clan)
             focus_text = None
 
         elif get_clan_setting("seek outsiders"):
             amount = constants.CONFIG["focus"]["outsiders"]["reputation"]
-            change_clan_reputation(amount)
+            change_clan_reputation(amount, game.clan)
             focus_text = None
 
         elif get_clan_setting("sabotage other clans") or get_clan_setting(
@@ -746,7 +746,7 @@ class Events:
                 amount = amount * -1
             for name in game.clan.clans_in_focus:
                 clan = [clan for clan in game.clan.all_clans if clan.displayname == name][0]
-                change_clan_relations(clan, amount)
+                change_clan_relations(game.clan, clan, amount)
             focus_text = None
 
         elif get_clan_setting("hoarding") or get_clan_setting("raid other clans"):
@@ -829,7 +829,7 @@ class Events:
                         0
                     ]
                     amount = -constants.CONFIG["focus"]["raid other clans"]["relation"]
-                    change_clan_relations(clan, amount)
+                    change_clan_relations(game.clan, clan, amount)
 
             # finish
             text_snippet = "hardcoded.focus_injury_hoarding"
@@ -1289,15 +1289,16 @@ class Events:
                 threshold = 7
 
             threshold -= int(game.clan.war["duration"])
-            if enemy_clan.relations < 0:
-                enemy_clan.relations = 0
+            rel_value = game.clan.get_relations(game.clan, enemy_clan)
+            if rel_value < 0:
+                rel_value = 0
 
             # check if war should conclude, if not, continue
-            if enemy_clan.relations >= threshold and game.clan.war["duration"] > 1:
+            if rel_value >= threshold and game.clan.war["duration"] > 1:
                 game.clan.war["at_war"] = False
                 game.clan.war["enemy"] = None
                 game.clan.war["duration"] = 0
-                enemy_clan.relations += 2
+                rel_value += 2
                 war_events = self.WAR_TXT["conclusion_events"]
             else:  # try to influence the relation with warring clan
                 game.clan.war["duration"] += 1
@@ -1305,12 +1306,14 @@ class Events:
                     ["rel_up", "neutral", "rel_down", "rel_down"])
                 switch_set_value(Switch.war_rel_change_type, choice)
                 war_events = self.WAR_TXT["progress_events"][choice]
-                if enemy_clan.relations < 0:
-                    enemy_clan.relations = 0
+                if rel_value < 0:
+                    rel_value = 0
                 if choice == "rel_up":
-                    enemy_clan.relations += 2
-                elif choice == "rel_down" and enemy_clan.relations > 1:
-                    enemy_clan.relations -= 1
+                    rel_value += 2
+                elif choice == "rel_down" and rel_value > 1:
+                    rel_value -= 1
+
+            game.clan.set_relations(game.clan, enemy_clan, rel_value)
 
         else:  # try to start a war if no war in progress
             for other_clan in game.clan.all_clans:
@@ -1320,8 +1323,10 @@ class Events:
                 if other_clan.temperament in ["mellow", "amiable", "gracious"]:
                     threshold = 3
 
-                if int(other_clan.relations) <= threshold and not int(
-                    random.random() * int(other_clan.relations)
+                rel_value = game.clan.get_relations(game.clan, other_clan)
+
+                if int(rel_value) <= threshold and not int(
+                    random.random() * int(rel_value)
                 ):
                     enemy_clan = other_clan
                     game.clan.war["at_war"] = True
@@ -2072,15 +2077,7 @@ class Events:
                 base_chance = int(base_chance * ratio * 1.25)
 
         reputation = 50
-        if clan != game.clan:
-            if clan.temperament in ("gracious", "amiable"):
-                reputation = random.choice([random.randint(71, 100), random.randint(71, 100), random.randint(71, 100), random.randint(50, 70)])
-            elif clan.temperament in ("wary", "proud"):
-                reputation = random.choice([random.randint(1, 30), random.randint(1, 30), random.randint(1, 30), random.randint(31, 50)])
-            else:
-                reputation = random.choice([random.randint(1, 30), random.randint(31, 70), random.randint(31, 70), random.randint(71, 100)])
-        else:
-            reputation = game.clan.reputation
+        reputation = clan.reputation
 
         # hostile
         if 1 <= reputation <= 30:

@@ -161,14 +161,14 @@ def event_for_reputation(required_rep: list) -> bool:
     return False
 
 
-def event_for_clan_relations(required_rel: list, other_clan) -> bool:
+def event_for_clan_relations(required_rel: list, clan, other_clan) -> bool:
     """
     checks if the clan has clan relations matching required_rel
     """
     if "any" in required_rel:
         return True
 
-    current_rel = other_clan.relations
+    current_rel = game.clan.get_relations(clan, other_clan)
 
     if "hostile" in required_rel and current_rel <= 6:
         return True

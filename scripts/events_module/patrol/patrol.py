@@ -31,6 +31,7 @@ from scripts.utility import (
     filter_relationship_type,
     get_special_snippet_list,
     adjust_list_text,
+    get_living_clan_cat_count,
 )
 
 logger = logging.getLogger(__name__)
@@ -86,11 +87,12 @@ class Patrol:
         self.MEDCAT_GEN = None
         self.DISASTER = None
 
-    def setup_patrol(self, patrol_cats: List[Cat], patrol_type: str) -> str:
+    def setup_patrol(self, patrol_cats: List[Cat], patrol_type: str, clan) -> str:
         # Add cats
 
         print("PATROL START ---------------------------------------------------")
 
+        self.clan = clan
         self.add_patrol_cats(patrol_cats, game.clan)
 
         self.debug_patrol = (
@@ -254,8 +256,10 @@ class Patrol:
             else:
                 self.patrol_leader = choice(self.patrol_cats)
 
+        all_options = (clan.all_clans + [clan])
+        all_options.remove(self.clan)
         if clan.all_clans and len(clan.all_clans) > 0:
-            self.other_clan = choice(clan.all_clans)
+            self.other_clan = choice(all_options)
         else:
             self.other_clan = None
 
@@ -358,16 +362,16 @@ class Patrol:
             else patrol_type
         )
         patrol_size = len(self.patrol_cats)
-        reputation = game.clan.reputation  # reputation with outsiders
+        reputation = self.clan.reputation  # reputation with outsiders
         other_clan = self.other_clan
-        clan_relations = int(other_clan.relations) if other_clan else 0
+        clan_relations = game.clan.get_relations(self.clan, other_clan) if other_clan else 0
         hostile_rep = False
         neutral_rep = False
         welcoming_rep = False
         clan_neutral = False
         clan_hostile = False
         clan_allies = False
-        clan_size = int(len(game.clan.clan_cats))
+        clan_size = int(get_living_clan_cat_count(Cat, self.clan.enum))
         chance = 0
         # assigning other_clan relations
         if clan_relations > 17:
@@ -1167,7 +1171,7 @@ class Patrol:
 
         text = text.replace("o_c_n", str(other_clan_name) + "Clan")
 
-        clan_name = game.clan.displayname
+        clan_name = self.clan.displayname
         s = 0
         pos = 0
         for x in range(text.count("c_n")):
@@ -1187,7 +1191,7 @@ class Patrol:
                         text = " ".join(modify)
                         break
 
-        text = text.replace("c_n", str(game.clan.displayname) + "Clan")
+        text = text.replace("c_n", str(self.clan.displayname) + "Clan")
 
         # TODO: check if this can be handled in event_text_adjust
         return text
