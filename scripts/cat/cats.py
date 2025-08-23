@@ -208,7 +208,7 @@ class Cat:
 
         self.passes = passes
 
-        self.adoptive_parents = adoptive_parents if adoptive_parents else []
+        self.adoptive_parents = adoptive_parents.copy() if adoptive_parents else []
         gene_config = constants.CONFIG['genetics_config']
         gene_config.update(constants.CONFIG['april_fools_genes'])
         self.phenotype = Phenotype(gene_config, game_setting_get("ban problem genes"))
