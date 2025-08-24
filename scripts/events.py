@@ -2320,7 +2320,7 @@ class Events:
             mid_neg = len([l for l in chosen_target.get_reltype_tiers() if l.is_mid_neg])
             neg = len([l for l in chosen_target.get_reltype_tiers() if l.is_low_neg])
 
-            relation_modifier = (extreme_neg * 10) + (mid_neg * 6) + (neg * 4)
+            relation_modifier = (extreme_neg * 8) + (mid_neg * 5) + (neg * 3)
 
             kill_chance -= relation_modifier
 
@@ -2328,13 +2328,13 @@ class Events:
                 len(chosen_target.log) > 0
                 and "(high negative effect)" in chosen_target.log[-1]
             ):
-                kill_chance -= 40
+                kill_chance -= 10
 
             if (
                 len(chosen_target.log) > 0
                 and "(medium negative effect)" in chosen_target.log[-1]
             ):
-                kill_chance -= 10
+                kill_chance -= 5
 
             # little easter egg just for fun
             if (
