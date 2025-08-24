@@ -2252,9 +2252,7 @@ class Events:
             return
 
         # if this cat is unstable and aggressive, we lower the random murder chance
-        random_murder_chance = int(
-            constants.CONFIG["death_related"]["base_random_murder_chance"]
-        )
+        random_murder_chance = int(constants.CONFIG["death_related"]["base_random_murder_chance"])
         # random_murder_chance -= 0.5 * (
         #     (cat.personality.aggression) + (16 - cat.personality.stability)
         # )
@@ -2263,15 +2261,14 @@ class Events:
         # If so, we allow targets to be anyone they have even the smallest amount of negativity for
         if random.getrandbits(max(1, random_murder_chance)) == 1:
             targets = [
-                i
-                for i in relationships
-                if Cat.fetch_cat(i.cat_to).status.is_any_clan_group()
+                Cat.fetch_cat(i)
+                for i in Cat.all_cats
+                if Cat.fetch_cat(i).status.is_any_clan_group()
             ]
             if not targets:
                 return
 
-            chosen_target = random.choice(targets)
-            chosen_cat = Cat.fetch_cat(chosen_target.cat_to)
+            chosen_cat = random.choice(targets)
 
             handle_short_events.handle_event(
                 event_type="birth_death",
