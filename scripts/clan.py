@@ -601,7 +601,6 @@ class Clan:
             )
             game.clan.instructor.status.group_history.insert(0, {"rank": game.clan.instructor.status.rank, "group": CatGroup.PLAYER_CLAN, "moons_as": self.instructor.moons})
             # update_sprite(game.clan.instructor)
-            game.clan.instructor.dead = True
             game.clan.add_cat(game.clan.instructor)
 
         # check for symbol
@@ -1257,7 +1256,6 @@ class OtherClan:
                 )
             )
             self.instructor = Cat(status_dict={"rank": instructor_rank, "group": CatGroup.STARCLAN})
-            self.instructor.dead = True
             self.instructor.dead_for = randint(20, 200)
             self.instructor.status.group_history.insert(0, {"rank": instructor_rank, "group": self.enum, "moons_as": self.instructor.moons})
 

@@ -322,9 +322,9 @@ class Relationship:
                 setattr(
                     self,
                     rel_out,
-                    getattr(self, rel_out) + choice(buffs)
+                    getattr(self, rel_out) + (choice(buffs)
                     if rel_type != rel_out
-                    else amount,
+                    else amount),
                 )
         else:
             setattr(self, rel_type, getattr(self, rel_type) + amount)

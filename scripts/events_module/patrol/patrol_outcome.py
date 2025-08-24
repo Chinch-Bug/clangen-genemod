@@ -732,12 +732,15 @@ class PatrolOutcome:
             return ""
 
         change_clan_relations(patrol.clan, patrol.other_clan, self.other_clan_rep)
+        text = ""
         if self.other_clan_rep > 0:
-            return i18n.t("screens.patrol.clan_rep_improved", clan=patrol.other_clan)
+            text = i18n.t("screens.patrol.clan_rep_improved")
         elif self.other_clan_rep == 0:
-            return i18n.t("screens.patrol.clan_rep_neutral", clan=patrol.other_clan)
+            text = i18n.t("screens.patrol.clan_rep_neutral")
         else:
-            return i18n.t("screens.patrol.clan_rep_worsened", clan=patrol.other_clan)
+            text = i18n.t("screens.patrol.clan_rep_worsened")
+        text = event_text_adjust(Cat, text, other_clan=patrol.other_clan.enum)
+        return text
 
     def _handle_herbs(self, patrol: "Patrol") -> str:
         """Handle giving herbs"""

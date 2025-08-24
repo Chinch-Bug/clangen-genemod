@@ -1067,7 +1067,7 @@ class Condition_Events:
                     else:
                         event = i18n.t("hardcoded.condition_retire_no_leader")
 
-                    if cat.age == CatAge.ADOLESCENT or cat.status.rank.is_any_apprentice_rank:
+                    if cat.age == CatAge.ADOLESCENT or cat.status.rank.is_any_apprentice_rank():
                         if get_clan_setting("modded names") and get_clan_setting("new suffixes"):
                             cat.name.give_suffix(cat.skills, cat.personality, game.clan.biome, "hard work")
                         event += i18n.t(

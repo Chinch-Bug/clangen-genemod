@@ -580,7 +580,7 @@ class Phenotype(Genotype):
                                 'CHEST', 'GRUMPYFACE', 'SIDEMASK', 'PACMAN', 'BRIE' ,'ORIOLE', 'ROBIN', 'PAIGE', 'HEARTBEAT']
         self.def_tortie_high_patterns = ['THREE', 'FOUR', 'REDTAIL', 'STREAK', 'MASK', 'SWOOP', 'ARMTAIL', 'STREAMSTRIKE', 'DAUB',
                                 'ROSETAIL', 'DAPPLENIGHT', 'BLANKET']
-        if random() < 0.1:
+        if random() < 0.25:
             self.def_tortie_high_patterns += ["HALF"]
         tortie_low_patterns = self.def_tortie_low_patterns
         tortie_mid_patterns = self.def_tortie_mid_patterns
@@ -596,7 +596,7 @@ class Phenotype(Genotype):
             chosen.append(choice([choice(tortie_low_patterns), choice(tortie_low_patterns), choice(tortie_mid_patterns), choice(tortie_mid_patterns), choice(tiny_patches), choice(tiny_patches), choice(tiny_patches), choice(tiny_patches), choice(tiny_patches), choice(tiny_patches)]))
 
         elif spec:
-            chosen.append(choice([choice(tortie_high_patterns), choice(tortie_high_patterns), choice(tortie_mid_patterns), choice(tortie_mid_patterns), choice(tortie_low_patterns)]))
+            chosen.append((choice([choice(tortie_high_patterns), choice(tortie_high_patterns), choice(tortie_mid_patterns), choice(tortie_mid_patterns), choice(tortie_low_patterns)])).replace("rev", ""))
 
         elif randint(1, self.odds['cryptic_tortie']) == 1:
             chosen.append('CRYPTIC')
