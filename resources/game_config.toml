@@ -572,8 +572,8 @@ dev_tools = false
 
   # All genes are 1/x chances. They can be set to 0 to prevent it from appearing at all
   longhair = 2
-  cinnamon = 30
-  chocolate = 15
+  cinnamon = 35
+  chocolate = 20
   red = 4
   dilute = 2
   "dominant white" = 20

@@ -2261,12 +2261,11 @@ class Events:
 
         # Check to see if random murder is triggered.
         # If so, we allow targets to be anyone they have even the smallest amount of negativity for
-        if random.getrandbits(max(1, int(random_murder_chance))) == 1:
+        if random.getrandbits(max(1, random_murder_chance)) == 1:
             targets = [
                 i
                 for i in relationships
-                if i.total_relationship_value < 0
-                and Cat.fetch_cat(i.cat_to).status.is_any_clan_group()
+                if Cat.fetch_cat(i.cat_to).status.is_any_clan_group()
             ]
             if not targets:
                 return
@@ -2292,10 +2291,10 @@ class Events:
             murder_capable -= 3
         if cat.personality.lawfulness < 6:
             murder_capable -= 2
-        if cat.personality.aggression > 10:
-            murder_capable -= 1
-        elif cat.personality.aggression > 12:
+        if cat.personality.aggression > 12:
             murder_capable -= 3
+        elif cat.personality.aggression > 10:
+            murder_capable -= 1
 
         murder_capable = max(1, murder_capable)
 
