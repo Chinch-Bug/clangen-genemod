@@ -510,7 +510,7 @@ class Pregnancy_Events:
                     affair_partner = []
 
             if pregnant_cat.status.group != clan.enum:
-                clan = pregnant_cat.status.group.fetch_clan_object(clan)
+                clan = pregnant_cat.status.group.fetch_clan_object(clan) if pregnant_cat.status.group else game.clan
 
             fever = False
             if len(pregnant_cat.illnesses) > 0:
