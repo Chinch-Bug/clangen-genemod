@@ -28,7 +28,7 @@
         "action_outsider_drive": "m_c has decided to drive r_c off.",
         "action_outsider_invite": "m_c has decided to invite r_c in.",
         "action_outsider_search": "m_c has decided to search for r_c.",
-        "temper_text": "The other Clans think %{clan}Clan is %{temper}.",
+        "temper_text": "The other Clans think c_n is %{temper}.",
         "outsider_rep": "Outsiders view your Clan as %{reputation}.",
         "outsider_skill": "Skills: %{skill}",
         "cunning": "cunning",

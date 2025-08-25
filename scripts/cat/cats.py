@@ -2041,6 +2041,8 @@ class Cat:
         """Checks if the given cat is related to the current cat, according to the inheritance."""
         if not self.inheritance:
             self.inheritance = Inheritance(self)
+        if other_cat.ID in [self.parent1, self.parent2, self.parent3] + self.adoptive_parents and other_cat.ID not in self.inheritance.all_involved:
+            print(f"Parent not in family tree all_involved list??? Current involved list: {self.inheritance.all_involved}")
         if cousin_allowed:
             return other_cat.ID in self.inheritance.all_but_cousins
         return other_cat.ID in self.inheritance.all_involved

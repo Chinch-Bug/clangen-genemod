@@ -1171,7 +1171,7 @@ class Pregnancy_Events:
         ):
             chance = int(chance * 0.8)
 
-            # "regular" random affair
+        # "regular" random affair
         if not int(random() * chance):
             possible_affair_partners = [
                 i

@@ -249,6 +249,11 @@ class Inheritance:
             ):
                 # self.all_inheritances[cat_id].update_inheritance()
 
+                if self.cat.ID in self.all_inheritances[cat_id].all_involved:
+                    self.all_inheritances[cat_id].all_involved.remove(self.cat.ID)
+                    if self.cat.ID in self.all_inheritances[cat_id].all_but_cousins:
+                        self.all_inheritances[cat_id].all_but_cousins.remove(self.cat.ID)
+
                 if cat_id in self.kits:
                     self.all_inheritances[cat_id].init_parents()
                 if cat_id in self.grand_kits:
