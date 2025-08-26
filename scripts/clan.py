@@ -652,10 +652,14 @@ class Clan:
                 ):
                     OtherClan(name, temperament=temper, chosen_symbol=symbol)
                     game.clan.relations[CatGroup.PLAYER_CLAN][enum] = int(relation)
-        if "relations" not in clan_data and game.clan.clancount == "multiclan":
+        if game.clan.clancount == "multiclan":
             for i, enum in enumerate(game.clan.other_clans[:-1]):
                 game.clan.relations[enum] = {}
                 for o_enum in game.clan.other_clans[i+1:]:
+                    if "relations" in clan_data:
+                        if rel := clan_data.get(enum.value, {}).get(o_enum.value):
+                            game.clan.relations[enum][o_enum] = rel
+                            continue
                     game.clan.relations[enum][o_enum] = randint(8, 12)
 
         for cat in clan_data["clan_cats"].split(","):
