@@ -2317,11 +2317,11 @@ class Cat:
             moons_until = 0
 
         if name == 'partially hairless' and self.phenotype.length != 'fur-pointed':
-            moons_until = 11
+            moons_until = 11 - self.moons
         if custom_reveal:
             moons_until = custom_reveal - self.moons
-            if moons_until < -2:
-                moons_until = -2
+        if moons_until < -2:
+            moons_until = -2
 
         if name == "paralyzed":
             self.pelt.paralyzed = True
