@@ -1168,6 +1168,7 @@ class Events:
             return
 
         self.handle_apprentice_EX(cat)  # This must be before perform_ceremonies!
+        self.handle_adult_EX(cat)
         # this HAS TO be before the cat.is_disabled() so that disabled kits can choose a med cat or mediator position
         self.perform_ceremonies(cat, clan)
         cat.skills.progress_skill(cat)  # This must be done after ceremonies.
@@ -2016,10 +2017,34 @@ class Events:
                 + list(range(ran[1][0], ran[1][1] + 1))
             )
 
-            if game.clan.game_mode == "classic":
-                exp += random.randint(0, 3)
-
             cat.experience += max(exp * role_modifier, 1)
+
+    def handle_adult_EX(self, cat):
+        if cat.not_working() and int(random.random() * 3):
+            return
+
+        if cat.ID in game.patrolled:
+            return
+
+        if cat.age in [CatAge.NEWBORN, CatAge.KITTEN] or cat.status.rank.is_any_apprentice_rank():
+            return
+
+        if cat.age == CatAge.SENIOR:
+            ran = constants.CONFIG["outside_ex"]["base_senior_timeskip_ex"]
+        else:
+            ran = constants.CONFIG["outside_ex"]["base_adult_timeskip_ex"]
+
+        role_modifier = 1
+        if cat.status.rank.is_any_medicine_rank():
+            # Healers just gain exp slower because reasons idk
+            role_modifier = 0.6
+
+        exp = random.choice(
+            list(range(ran[0][0], ran[0][1] + 1))
+            + list(range(ran[1][0], ran[1][1] + 1))
+        )
+
+        cat.experience += max(exp * role_modifier, 1)
 
     def handle_apprentice_EX(self, cat):
         """
@@ -2033,9 +2058,9 @@ class Events:
                 return
 
             if cat.status.rank == CatRank.MEDICINE_APPRENTICE:
-                ran = constants.CONFIG["graduation"]["base_med_app_timeskip_ex"]
+                ran = constants.CONFIG["clancat_ex"]["base_med_app_timeskip_ex"]
             else:
-                ran = constants.CONFIG["graduation"]["base_app_timeskip_ex"]
+                ran = constants.CONFIG["clancat_ex"]["base_app_timeskip_ex"]
 
             mentor_modifier = 1
             if not cat.mentor or Cat.fetch_cat(cat.mentor).not_working():
@@ -2047,7 +2072,7 @@ class Events:
                 + list(range(ran[1][0], ran[1][1] + 1))
             )
 
-            if game.clan.game_mode == "classic" or cat.status.group != CatGroup.PLAYER_CLAN:
+            if cat.status.group != CatGroup.PLAYER_CLAN:
                 exp += random.randint(0, 3)
 
             cat.experience += max(exp * mentor_modifier, 1)
