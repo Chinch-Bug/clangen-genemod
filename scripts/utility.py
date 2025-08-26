@@ -3527,7 +3527,7 @@ def generate_sprite(
             def MakeCat(whichmain, whichcolour, whichbase, cat_unders, special=None):
                 is_red = ('red' in whichcolour or 'cream' in whichcolour or 'honey' in whichcolour or 'ivory' in whichcolour or 'apricot' in whichcolour)
                 
-                if (phenotype.white[0] == 'W' or phenotype.pointgene[0] == 'c' or whichcolour == 'white' or phenotype.white_pattern == ['full white']):
+                if (phenotype.white[0] == 'W' or phenotype.pointgene[0] == 'c' or whichbase == 'white' or phenotype.white_pattern == ['full white']):
                     whichmain.blit(sprites.sprites['lightbasecolours0'], (0, 0))
                 elif(whichcolour != whichbase and special != 'masked silver'):
                     if(phenotype.pointgene[0] == "C"):
@@ -3996,12 +3996,12 @@ def generate_sprite(
                     for pattern in phenotype.tortiepattern:
                         tortpatches = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                         if 'rev' in pattern:
-                            isred = not ('red' in phenotype.maincolour or 'cream' in phenotype.maincolour or 'honey' in phenotype.maincolour or 'ivory' in phenotype.maincolour or 'apricot' in phenotype.maincolour)
+                            isred = ('red' in phenotype.maincolour or 'cream' in phenotype.maincolour or 'honey' in phenotype.maincolour or 'ivory' in phenotype.maincolour or 'apricot' in phenotype.maincolour or 'white' in phenotype.maincolour)
                             tortpatches = MakeCat(tortpatches, phenotype.maincolour, phenotype.spritecolour, phenotype.mainunders)
                         else:
-                            isred = not ('red' in phenotype.patchmain or 'cream' in phenotype.patchmain or 'honey' in phenotype.patchmain or 'ivory' in phenotype.patchmain or 'apricot' in phenotype.patchmain)
+                            isred = ('red' in phenotype.patchmain or 'cream' in phenotype.patchmain or 'honey' in phenotype.patchmain or 'ivory' in phenotype.patchmain or 'apricot' in phenotype.patchmain or 'white' in phenotype.patchmain)
                             tortpatches = MakeCat(tortpatches, phenotype.patchmain, phenotype.patchcolour, phenotype.patchunders)
-                        if phenotype.caramel == 'caramel' and isred: 
+                        if phenotype.caramel == 'caramel' and not isred: 
                             tortpatches.blit(sprites.sprites['caramel0'], (0, 0))
                         tortpatches = ApplyPatchEffects(tortpatches)
                         

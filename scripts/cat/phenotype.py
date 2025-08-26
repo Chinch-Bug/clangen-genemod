@@ -675,7 +675,7 @@ class Phenotype(Genotype):
             if self.merlepattern is None:
                 self.merlepattern = self.ChooseTortiePattern(spec = 'merle')
 
-        if self.white[0] == "W" or self.pointgene[0] == "c" or ('DBEalt' not in self.pax3 and 'NoDBE' not in self.pax3) or (self.brindledbi and (('o' not in self.sexgene) or (self.ext[0] == 'ea' and ((moons > 11 and self.agouti[0] != 'a') or (moons > 23))) or (self.ext[0] == 'er' and moons > 23) or (self.ext[0] == 'ec' and (self.agouti[0] != 'a' or moons > 5)))):
+        if self.white[0] == "W" or self.pointgene[0] == "c" or ('DBEalt' not in self.pax3 and 'NoDBE' not in self.pax3) or (self.brindledbi and self.specialred not in ["blue-tipped", "blue-red", "cinnamon"] and (('o' not in self.sexgene) or (self.ext[0] == 'ea' and ((moons > 11 and self.agouti[0] != 'a') or (moons > 23))) or (self.ext[0] == 'er' and moons > 23) or (self.ext[0] == 'ec' and (self.agouti[0] != 'a' or moons > 5)))):
             self.spritecolour = "white"
             self.maincolour = self.spritecolour
         elif ('o' not in self.sexgene) or (self.ext[0] == 'ea' and ((moons > 11 and self.agouti[0] != 'a') or (moons > 23))) or (self.ext[0] == 'er' and moons > 23) or (self.ext[0] == 'ec' and moons > 0 and (self.agouti[0] != 'a' or moons > 5)):
@@ -899,7 +899,7 @@ class Phenotype(Genotype):
         
         rufousing = ""
         banding = ""
-        if genes.silver[0] == "I" and special != 'nosilver' or (moons < 3 and genes.karp[0] == "K"):
+        if (genes.silver[0] == "I" and special != 'nosilver') or (moons < 3 and genes.karp[0] == "K") or (self.brindledbi):
             rufousing = "silver"
         elif genes.pointgene[0] not in ["C", "cm"] or special=='low':
             rufousing = "low"
@@ -967,7 +967,9 @@ class Phenotype(Genotype):
             colour = colour.replace('cream', 'lilac')
             colour = colour.replace('honey', 'dove')
             colour = colour.replace('ivory', 'lavender')
-            if(genes.specialred == 'cinnamon'):
+            if self.brindledbi:
+                maincolour = "lightbasecolours0"
+            elif genes.specialred == 'cinnamon':
                 if('red' in maincolour):
                     maincolour = 'cinnamon3'
                 elif('cream' in maincolour or maincolour == 'apricot'):
@@ -985,6 +987,9 @@ class Phenotype(Genotype):
                     unders_opacity = 45
                 else:
                     unders_opacity = 25
+        elif self.brindledbi:
+            maincolour = "lightbasecolours0"
+            colour = "white"
         
         return [maincolour, colour, unders_colour, unders_opacity]
     
