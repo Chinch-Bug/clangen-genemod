@@ -209,7 +209,7 @@ def load_events():
         pass
 
 
-def get_config_value(*args):
+def get_config_value(active_clan: "CatGroup", *args):
     """Fetches a value from the config dictionary. Pass each key as a
     separate argument, in the same order you would access the dictionary.
     This function will apply war modifiers if the clan is currently at war."""
@@ -253,11 +253,17 @@ def get_config_value(*args):
         config_value = config_value[key]
 
     # Apply war if needed
-    if clan and clan.war.get("at_war", False) and args in war_effected:
-        rel_change_type = switch_get_value(Switch.war_rel_change_type)
+    if clan and clan.get_wars(active_clan) and args in war_effected:
+        rel_change_types = switch_get_value(Switch.war_rel_change_type)
+        all_pos = True
+        for key in rel_change_types:
+            for other_key in rel_change_types[key]:
+                if rel_change_types[key][other_key] != "rel_up" and active_clan in [key, other_key]:
+                    all_pos = False
+
         # if the war was positively affected this moon, we don't apply war modifier
         # this way we only see increased death/injury when the war is going badly or is neutral
-        if rel_change_type != "rel_up":
+        if not all_pos:
             # Grabs the modifier
             mod = constants.CONFIG
             for key in war_effected[args]:

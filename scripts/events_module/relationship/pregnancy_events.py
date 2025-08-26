@@ -830,7 +830,7 @@ class Pregnancy_Events:
                 if x.dead:
                     Dead_Mate = True
                     WhoDied = x
-                if x.status.group == cat.status.group or not (x.status.is_lost() or x.status.is_exiled()) or (x.status.is_outsider and x.status.is_near(cat.status.group)):
+                if x.status.group == cat.status.group or not (x.status.is_lost() or x.status.is_exiled()):
                     All_Mates_Outside = False
                 if len(x.mate) > 0:
                     Both_Unmated = False

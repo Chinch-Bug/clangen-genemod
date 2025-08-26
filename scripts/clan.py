@@ -142,11 +142,7 @@ class Clan:
         self.herb_supply = HerbSupply()
         self.primary_disaster = None
         self.secondary_disaster = None
-        self.war = {
-            "at_war": False,
-            "enemy": None,
-            "duration": 0,
-        }
+        self.war = {CatGroup.PLAYER_CLAN: {}}
         self.future_events = []
         self.last_focus_change = None
         self.clans_in_focus = []
@@ -238,14 +234,16 @@ class Clan:
                 )
             other_clan = OtherClan(name=other_clan_name, clancount=self.clancount)
             game.clan.relations[CatGroup.PLAYER_CLAN][other_clan.enum] = randint(8, 12)
+            game.clan.war[CatGroup.PLAYER_CLAN][other_clan.enum] = {"at_war": False, "duration": 0}
             
             # self.all_clans.append(other_clan)
 
         if self.clancount == "multiclan":
             for i, enum in enumerate(game.clan.other_clans[:-1]):
-                game.clan.relations[enum] = {}
+                game.clan.war[enum] = {}
                 for o_enum in game.clan.other_clans[i+1:]:
-                    game.clan.relations[enum][o_enum] = randint(8, 12)
+                    game.clan.war[enum][o_enum] = randint(8, 12)
+                    game.clan.war[enum][o_enum] = {"at_war": False, "duration": 0}
 
         for cat_id in Cat.all_cats:
             if cat_id not in self.clan_cats:
@@ -676,7 +674,19 @@ class Clan:
             else:
                 print("WARNING: Cat not found:", cat)
         if "war" in clan_data:
-            game.clan.war = clan_data["war"]
+            if clan_data["war"].get("at_war") is not None:
+                for c in game.clan.all_clans:
+                    if c.displayname == clan_data["war"]["enemy"]:
+                        game.clan.war[CatGroup.PLAYER_CLAN][c.enum] = {"at_war": True, "duration": clan_data["war"]["duration"]}
+                    else:
+                        game.clan.war[CatGroup.PLAYER_CLAN][c.enum] = {"at_war": False, "duration": 0}
+                if game.clan.clancount == "multiclan":
+                    for i, enum in enumerate(game.clan.other_clans[:-1]):
+                        game.clan.war[enum] = {}
+                        for o_enum in game.clan.other_clans[i+1:]:
+                            game.clan.war[enum][o_enum] = {"at_war": False, "duration": 0}
+            else:
+                game.clan.war = clan_data["war"]
 
         load_faded_cat_ids(clan_data["clanname"])
 
@@ -1134,6 +1144,23 @@ class Clan:
         value = value or game.clan.relations[main_enum][other_enum]
         
         game.clan.relations[main_enum][other_enum] = int(value + offset)
+
+    def get_wars(self, clan):
+        enemies = []
+        for key in game.clan.war:
+            if key == clan:
+                for o_key in game.clan.war[key]:
+                    if game.clan.war[key][o_key]["at_war"]:
+                        enemies.append(o_key)
+            elif game.clan.war[key].get(clan, {"at_war": False})["at_war"]:
+                enemies.append(key)
+        return enemies
+
+    def check_war(self, clan, other_clan):
+        if match := game.clan.war.get(clan):
+            return match[other_clan]["at_war"]
+        return game.clan.war[other_clan][clan]["at_war"]
+
 
 
 class OtherClan:

@@ -402,7 +402,12 @@ class GenerateEvents:
                 # during a war we want to encourage the clans to have positive events
                 # when the overall war notice was positive
                 if "war" in event.sub_type:
-                    rel_change_type = switch_get_value(Switch.war_rel_change_type)
+                    rel_change_types = switch_get_value(Switch.war_rel_change_type)
+                    rel_change_type = "rel_down"
+                    if rel_change_types.get(clan.enum):
+                        rel_change_type = rel_change_types[clan.enum].get(other_clan.enum, "rel_down")
+                    elif rel_change_types.get(other_clan.enum):
+                        rel_change_type = rel_change_types[other_clan.enum].get(clan.enum, "rel_down")
                     if (
                         event.other_clan["changed"] < 0
                         and rel_change_type != "rel_down"

@@ -198,19 +198,6 @@ def get_free_possible_mates(cat):
             cats.append(inter_cat)
     return cats
 
-
-def get_warring_clan():
-    """
-    returns enemy clan if a war is currently ongoing
-    """
-    enemy_clan = None
-    if game.clan.war.get("at_war", False):
-        for other_clan in game.clan.all_clans:
-            if other_clan.displayname == game.clan.war["enemy"]:
-                enemy_clan = other_clan
-
-    return enemy_clan
-
 def search_cats(search_text, cat_list, search_genotype):
     search_text = search_text.strip()
     all_found = cat_list.copy()

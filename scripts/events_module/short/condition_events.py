@@ -277,7 +277,7 @@ class Condition_Events:
             random_number = int(
                 random.random()
                 * game.get_config_value(
-                    "condition_related", f"{game.clan.game_mode}_illness_chance"
+                    clan.enum, "condition_related", f"{game.clan.game_mode}_illness_chance"
                 )
             )
             if (
@@ -361,7 +361,7 @@ class Condition_Events:
         random_number = int(
             random.random()
             * game.get_config_value(
-                "condition_related", f"{game.clan.game_mode}_injury_chance"
+                clan.enum, "condition_related", f"{game.clan.game_mode}_injury_chance"
             )
         )
 

@@ -52,7 +52,7 @@ _switches: Dict[str, Union[str, int, bool, list, dict, None]] = {
     "skip_conditions": [],
     "show_history_moons": False,
     "fps": 30,
-    "war_rel_change_type": "neutral",
+    "war_rel_change_type": {},
     "disallowed_symbol_tags": [],
     "saved_scroll_positions": {},
     "moon_and_seasons_open": False,

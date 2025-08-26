@@ -29,7 +29,6 @@ from scripts.utility import (
     change_clan_relations,
     change_relationship_values,
     history_text_adjust,
-    get_warring_clan,
     unpack_rel_block,
     change_clan_reputation,
     create_new_cat_block,
@@ -124,23 +123,27 @@ class HandleShortEvents:
 
         # check for war and assign self.other_clan accordingly
         war_chance = 5
+        enemies = game.clan.get_wars(clan.enum)
+        chosen_enemy = choice(enemies) if enemies else None
+        rel_change_types = switch_get_value(Switch.war_rel_change_type)
+        rel_changed = None
+        if rel_change_types.get(clan.enum):
+            rel_changed = rel_change_types[clan.enum][chosen_enemy]
+        elif rel_change_types.get(chosen_enemy):
+            rel_changed = rel_change_types[chosen_enemy][clan.enum]
         # if the war didn't go badly, then we decrease the chance of this event being war-focused
-        if switch_get_value(Switch.war_rel_change_type) != "rel_down":
+        if rel_changed != "rel_down":
             war_chance = 2
-        if game.clan.war.get("at_war", False) and (not clan or clan == game.clan or clan == get_warring_clan()) and randint(1, war_chance) != 1:
-            enemy_clan = get_warring_clan() if get_warring_clan() != clan else game.clan
-            self.other_clan = enemy_clan
+        if chosen_enemy and randint(1, war_chance) != 1:
+            self.other_clan = chosen_enemy.fetch_clan_object()
             self.other_clan_name = f"{self.other_clan.displayname}Clan"
             self.sub_types.append("war")
         else:
             self.other_clan = choice(
-                game.clan.all_clans if game.clan.all_clans else None
+                game.clan.all_clans + [game.clan] if game.clan.all_clans else None
             )
-            if self.other_clan and clan and self.other_clan.displayname == clan.displayname:
-                while self.other_clan.displayname == clan.displayname:
-                    self.other_clan = choice(
-                        game.clan.all_clans + [game.clan]
-                    )
+            while self.other_clan == clan:
+                self.other_clan = choice(game.clan.all_clans + [game.clan])
             self.other_clan_name = f"{self.other_clan.displayname}Clan"
 
         # NOW find the possible events and filter
