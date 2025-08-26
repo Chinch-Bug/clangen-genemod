@@ -1317,7 +1317,7 @@ class Events:
                     if started_war:
                         continue
                     active_wars = max(len(game.clan.get_wars(clan)), len(game.clan.get_wars(enemy)))
-                    if active_wars and random.random() > (0.125 / active_wars):
+                    if active_wars and random.random() > 0.125:
                         continue
                     threshold = 5
                     if enemy_clan.temperament == "bloodthirsty":

@@ -686,7 +686,12 @@ class Clan:
                         for o_enum in game.clan.other_clans[i+1:]:
                             game.clan.war[enum][o_enum] = {"at_war": False, "duration": 0}
             else:
-                game.clan.war = clan_data["war"]
+                for key in clan_data["war"]:
+                    game.clan.war[CatGroup(key)] = {}
+                    for other_key in clan_data["war"][key]:
+                        game.clan.war[CatGroup(key)][CatGroup(other_key)] = clan_data["war"][key][other_key]
+                # game.clan.war = clan_data["war"]
+                
 
         load_faded_cat_ids(clan_data["clanname"])
 

@@ -58,5 +58,5 @@ class OutsiderEvents:
                 cat.history.add_death(death_text=death_history)
                 cat.die()
                 game.cur_events_list.append(
-                    Single_Event(text, "birth_death", cat_dict={"m_c": cat})
+                    Single_Event(text, "birth_death", cat_dict={"m_c": cat}, clan=clan.enum)
                 )
