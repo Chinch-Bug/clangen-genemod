@@ -129,31 +129,31 @@ class Condition_Events:
         cls.current_loaded_lang = i18n.config.get("locale")
 
     @staticmethod
-    def handle_nutrient(rabbit: Rabbit, nutrition_info: dict) -> None:
+    def handle_nutrient(cat: Rabbit, nutrition_info: dict) -> None:
         """
-        Handles gaining conditions or death for rabbits with low nutrient.
+        Handles gaining conditions or death for cats with low nutrient.
         This function should only be called if the game is in 'expanded' or 'cruel season' mode.
 
         Starvation and malnutrtion must be handled separately from other illnesses due to their distinct death triggers.
 
             Parameters
             ----------
-            rabbit : Rabbit
-                the rabbit which has to be checked and updated
+            cat : Rabbit
+                the cat which has to be checked and updated
             nutrition_info : dict
                 dictionary of all nutrition information (can be found in the freshkill pile)
         """
         if not FRESHKILL_ACTIVE:
             return
 
-        if rabbit.ID not in nutrition_info.keys():
+        if cat.ID not in nutrition_info.keys():
             print(
-                f"WARNING: Could not find rabbit with ID {rabbit.ID}({rabbit.name}) in the nutrition information."
+                f"WARNING: Could not find cat with ID {cat.ID}({cat.name}) in the nutrition information."
             )
             return
 
         # get all events for a certain rank of a cat
-        cat_nutrition = nutrition_info[rabbit.ID]
+        cat_nutrition = nutrition_info[cat.ID]
 
         event = None
         illness = None
@@ -161,10 +161,10 @@ class Condition_Events:
 
         Condition_Events.rebuild_strings()
 
-        # handle death first, if percentage is 0 or lower, the rabbit will die
+        # handle death first, if percentage is 0 or lower, the cat will die
         if cat_nutrition.percentage <= 0:
             text = ""
-            if rabbit.status.is_leader:
+            if cat.status.is_leader:
                 game.warren.leader_lives -= 1
                 # kill and retrieve leader life text
                 text = get_leader_life_notice()
@@ -174,38 +174,38 @@ class Condition_Events:
             # first event in string lists is always appropriate for history formatting
             history_event = possible_string_list[0]
 
-            event = event_text_adjust(Rabbit, event.strip(), main_cat=rabbit)
+            event = event_text_adjust(Rabbit, event.strip(), main_cat=cat)
 
-            if rabbit.status.is_leader:
+            if cat.status.is_leader:
                 history_event = history_event.replace("m_c ", "").replace(".", "")
-                rabbit.history.add_death(
+                cat.history.add_death(
                     condition="starving", death_text=history_event.strip()
                 )
             else:
-                rabbit.history.add_death(condition="starving", death_text=history_event)
+                cat.history.add_death(condition="starving", death_text=history_event)
 
-            rabbit.die()
+            cat.die()
 
-            # if the rabbit is the chief rabbit and isn't full dead
+            # if the cat is the chief rabbit and isn't full dead
             # make them malnourished and refill nutrition slightly
-            if rabbit.status.is_leader and game.warren.leader_lives > 0:
+            if cat.status.is_leader and game.warren.leader_lives > 0:
                 mal_score = (
-                    nutrition_info[rabbit.ID].max_score / 100 * (MAL_PERCENTAGE + 1)
+                    nutrition_info[cat.ID].max_score / 100 * (MAL_PERCENTAGE + 1)
                 )
-                nutrition_info[rabbit.ID].current_score = round(mal_score, 2)
-                rabbit.get_ill("malnourished")
+                nutrition_info[cat.ID].current_score = round(mal_score, 2)
+                cat.get_ill("malnourished")
 
             types = ["birth_death"]
             game.cur_events_list.append(
-                Single_Event(event, types, cat_dict={"m_c": rabbit})
+                Single_Event(event, types, cat_dict={"m_c": cat})
             )
             return
 
-        # heal rabbit if percentage is high enough and rabbit is ill
+        # heal cat if percentage is high enough and cat is ill
         if (
             cat_nutrition.percentage > MAL_PERCENTAGE
-            and rabbit.is_ill()
-            and "malnourished" in rabbit.illnesses
+            and cat.is_ill()
+            and "malnourished" in cat.illnesses
         ):
             illness = "malnourished"
             event = random.choice(
@@ -213,15 +213,15 @@ class Condition_Events:
             )
             heal = True
 
-        # heal rabbit if percentage is high enough and rabbit is ill
+        # heal cat if percentage is high enough and cat is ill
         elif (
             cat_nutrition.percentage > STARV_PERCENTAGE
-            and rabbit.is_ill()
-            and "starving" in rabbit.illnesses
+            and cat.is_ill()
+            and "starving" in cat.illnesses
         ):
             if cat_nutrition.percentage < MAL_PERCENTAGE:
-                if "malnourished" not in rabbit.illnesses:
-                    rabbit.get_ill("malnourished")
+                if "malnourished" not in cat.illnesses:
+                    cat.get_ill("malnourished")
                 illness = "starving"
                 heal = True
             else:
@@ -230,7 +230,7 @@ class Condition_Events:
 
         elif MAL_PERCENTAGE >= cat_nutrition.percentage > STARV_PERCENTAGE:
             # because of the smaller 'nutrition buffer', kitten and elder should get the starving condition.
-            if rabbit.status.rank in (CatRank.KITTEN, CatRank.ELDER):
+            if cat.status.rank in (CatRank.KITTEN, CatRank.ELDER):
                 illness = "starving"
             else:
                 illness = "malnourished"
@@ -241,38 +241,38 @@ class Condition_Events:
         # handle the gaining/healing illness
         if heal:
             event = random.choice(Condition_Events.ILLNESS_HEALED_STRINGS[illness])
-            rabbit.illnesses.pop(illness)
+            cat.illnesses.pop(illness)
         elif not heal and illness:
             event = random.choice(Condition_Events.ILLNESS_GOT_STRINGS[illness])
-            rabbit.get_ill(illness)
+            cat.get_ill(illness)
 
         if event:
-            event_text = event_text_adjust(Rabbit, event, main_cat=rabbit)
+            event_text = event_text_adjust(Rabbit, event, main_cat=cat)
             types = ["health"]
             game.cur_events_list.append(
-                Single_Event(event_text, types, cat_dict={"m_c": rabbit})
+                Single_Event(event_text, types, cat_dict={"m_c": cat})
             )
 
     @staticmethod
-    def handle_illnesses(rabbit, season=None):
+    def handle_illnesses(cat, season=None):
         """
-        This function handles the illnesses overall by randomly making rabbit ill (or not).
-        It will return a bool to indicate if the rabbit is dead.
+        This function handles the illnesses overall by randomly making cat ill (or not).
+        It will return a bool to indicate if the cat is dead.
         """
         # return immediately if they're already dead
         triggered = False
-        if rabbit.dead:
-            if rabbit.dead:
+        if cat.dead:
+            if cat.dead:
                 triggered = True
             return triggered
 
         event_string = None
 
-        if rabbit.is_ill():
-            event_string = Condition_Events.handle_already_ill(rabbit)
+        if cat.is_ill():
+            event_string = Condition_Events.handle_already_ill(cat)
         else:
             # ---------------------------------------------------------------------------- #
-            #                              make rabbits sick                                  #
+            #                              make cats sick                                  #
             # ---------------------------------------------------------------------------- #
             random_number = int(
                 random.random()
@@ -281,8 +281,8 @@ class Condition_Events:
                 )
             )
             if (
-                not rabbit.dead
-                and not rabbit.is_ill()
+                not cat.dead
+                and not cat.is_ill()
                 and random_number <= 10
                 and not event_string
             ):
@@ -305,10 +305,10 @@ class Condition_Events:
                 random_index = int(random.random() * len(possible_illnesses))
                 chosen_illness = possible_illnesses[random_index]
                 # if a non-kitten got kittencough, switch it to whitecough instead
-                if chosen_illness == "kittencough" and not rabbit.status.rank.is_baby():
+                if chosen_illness == "kittencough" and not cat.status.rank.is_baby():
                     chosen_illness = "whitecough"
                 # make em sick
-                rabbit.get_ill(chosen_illness)
+                cat.get_ill(chosen_illness)
 
                 # create event text
                 if i18n.config.get("locale") == "en" and chosen_illness in (
@@ -327,19 +327,19 @@ class Condition_Events:
                     illness=illness,
                 )
 
-                event_string = event_text_adjust(Rabbit, text=event_string, main_cat=rabbit)
+                event_string = event_text_adjust(Rabbit, text=event_string, main_cat=cat)
 
         # if an event happened, then add event to cur_event_list and save death if it happened.
         if event_string:
             types = ["health"]
-            if rabbit.dead:
+            if cat.dead:
                 types.append("birth_death")
             game.cur_events_list.append(
-                Single_Event(event_string, types, rabbit.ID, cat_dict={"m_c": rabbit})
+                Single_Event(event_string, types, cat.ID, cat_dict={"m_c": cat})
             )
 
-        # just double-checking that trigger is only returned True if the rabbit is dead
-        if rabbit.dead:
+        # just double-checking that trigger is only returned True if the cat is dead
+        if cat.dead:
             triggered = True
         else:
             triggered = False
@@ -347,9 +347,9 @@ class Condition_Events:
         return triggered
 
     @staticmethod
-    def handle_injuries(rabbit, random_cat=None):
+    def handle_injuries(cat, random_cat=None):
         """
-        This function handles injuries overall by randomly injuring rabbit (or not).
+        This function handles injuries overall by randomly injuring cat (or not).
         Returns: boolean - if an event was triggered
         """
         triggered = False
@@ -360,7 +360,7 @@ class Condition_Events:
             )
         )
 
-        if rabbit.dead:
+        if cat.dead:
             triggered = True
             return triggered
 
@@ -370,28 +370,28 @@ class Condition_Events:
         ):
             handle_short_events.handle_event(
                 event_type="health",
-                main_cat=rabbit,
+                main_cat=cat,
                 random_cat=random_cat,
                 freshkill_pile=game.warren.freshkill_pile,
             )
 
-        # handle if the current rabbit is already injured
-        if rabbit.is_injured():
-            for injury in rabbit.injuries:
-                if injury == "pregnant" and rabbit.ID not in game.warren.pregnancy_data:
+        # handle if the current cat is already injured
+        if cat.is_injured():
+            for injury in cat.injuries:
+                if injury == "pregnant" and cat.ID not in game.warren.pregnancy_data:
                     print(
-                        f"INFO: deleted pregnancy condition of {rabbit.ID} due no pregnancy data in the warren."
+                        f"INFO: deleted pregnancy condition of {cat.ID} due no pregnancy data in the warren."
                     )
-                    del rabbit.injuries[injury]
+                    del cat.injuries[injury]
                     return triggered
                 elif injury == "pregnant":
                     return triggered
-            triggered = Condition_Events.handle_already_injured(rabbit)
+            triggered = Condition_Events.handle_already_injured(cat)
         else:
             # EVENTS
             if (
                 not triggered
-                and rabbit.personality.trait
+                and cat.personality.trait
                 in (
                     "adventurous",
                     "bold",
@@ -422,15 +422,15 @@ class Condition_Events:
 
                 handle_short_events.handle_event(
                     event_type="health",
-                    main_cat=rabbit,
+                    main_cat=cat,
                     random_cat=random_cat,
                     freshkill_pile=game.warren.freshkill_pile,
                 )
 
         # just double-checking that trigger is only returned True if the cat is dead
-        if rabbit.status.rank != CatRank.LEADER:
+        if cat.status.rank != CatRank.LEADER:
             # only checks for non-leaders, as leaders will not be dead if they are just losing a life
-            if rabbit.dead:
+            if cat.dead:
                 triggered = True
             else:
                 triggered = False
@@ -439,10 +439,10 @@ class Condition_Events:
 
     @staticmethod
     def handle_permanent_conditions(
-        rabbit, condition=None, injury_name=None, scar=None, born_with=False
+        cat, condition=None, injury_name=None, scar=None, born_with=False
     ):
         """
-        this function handles overall the permanent conditions of a rabbit.
+        this function handles overall the permanent conditions of a cat.
         returns boolean if event was triggered
         """
 
@@ -528,7 +528,7 @@ class Condition_Events:
             perm_condition = condition
 
         if perm_condition is not None:
-            got_condition = rabbit.get_permanent_condition(perm_condition, born_with)
+            got_condition = cat.get_permanent_condition(perm_condition, born_with)
 
         if got_condition is True:
             return perm_condition
@@ -538,9 +538,9 @@ class Condition_Events:
     # ---------------------------------------------------------------------------- #
 
     @staticmethod
-    def handle_already_ill(rabbit):
+    def handle_already_ill(cat):
         starting_life_count = game.warren.leader_lives
-        rabbit.healed_condition = False
+        cat.healed_condition = False
         event_list = []
         illness_progression = {
             "running nose": "whitecough",
@@ -555,25 +555,25 @@ class Condition_Events:
         }
         Condition_Events.rebuild_strings()
         # ---------------------------------------------------------------------------- #
-        #                         handle currently sick rabbits                           #
+        #                         handle currently sick cats                           #
         # ---------------------------------------------------------------------------- #
 
         # making a copy, so we can iterate through copy and modify the real dict at the same time
-        illnesses = deepcopy(rabbit.illnesses)
+        illnesses = deepcopy(cat.illnesses)
         for illness in illnesses:
             if illness in switch_get_value(Switch.skip_conditions):
                 continue
 
-            # moon skip to try and kill or heal rabbit
-            skipped = rabbit.moon_skip_illness(illness)
+            # moon skip to try and kill or heal cat
+            skipped = cat.moon_skip_illness(illness)
 
             # if event trigger was true, events should be skipped for this illness
             if skipped is True:
                 continue
 
             # death event text and break bc any other illnesses no longer matter
-            if rabbit.dead or (
-                rabbit.status.is_leader and starting_life_count != game.warren.leader_lives
+            if cat.dead or (
+                cat.status.is_leader and starting_life_count != game.warren.leader_lives
             ):
                 try:
                     possible_string_list = Condition_Events.ILLNESS_DEATH_STRINGS[
@@ -589,20 +589,20 @@ class Condition_Events:
                     event = i18n.t("defaults.illness_death_event")
                     history_event = (
                         i18n.t("defaults.illness_death_history")
-                        if rabbit.status.rank != CatRank.LEADER
+                        if cat.status.rank != CatRank.LEADER
                         else i18n.t("defaults.illness_death_history_leader")
                     )
 
-                event = event_text_adjust(Rabbit, event, main_cat=rabbit)
+                event = event_text_adjust(Rabbit, event, main_cat=cat)
 
-                if rabbit.status.is_leader:
+                if cat.status.is_leader:
                     event = event + " " + get_leader_life_notice()
                     history_event = history_event.replace("m_c ", "").replace(".", "")
-                    rabbit.history.add_death(
+                    cat.history.add_death(
                         condition=illness, death_text=history_event.strip()
                     )
                 else:
-                    rabbit.history.add_death(condition=illness, death_text=history_event)
+                    cat.history.add_death(condition=illness, death_text=history_event)
 
                 # clear event list to get rid of any healed or risk event texts from other illnesses
                 event_list.clear()
@@ -611,12 +611,12 @@ class Condition_Events:
                 break
 
             # if the leader died, then break before handling other illnesses cus they'll be fully healed or dead-dead
-            if rabbit.status.is_leader and starting_life_count != game.warren.leader_lives:
+            if cat.status.is_leader and starting_life_count != game.warren.leader_lives:
                 break
 
             # heal the cat
-            elif rabbit.healed_condition is True:
-                rabbit.history.remove_possible_history(illness)
+            elif cat.healed_condition is True:
+                cat.history.remove_possible_history(illness)
                 switch_append_list_value(Switch.skip_conditions, illness)
                 # gather potential event strings for healed illness
                 possible_string_list = Condition_Events.ILLNESS_HEALED_STRINGS[illness]
@@ -624,28 +624,28 @@ class Condition_Events:
                 # choose event string
                 random_index = int(random.random() * len(possible_string_list))
                 event = possible_string_list[random_index]
-                event = event_text_adjust(Rabbit, event, main_cat=rabbit)
+                event = event_text_adjust(Rabbit, event, main_cat=cat)
                 event_list.append(event)
                 game.herb_events_list.append(event)
 
-                rabbit.illnesses.pop(illness)
+                cat.illnesses.pop(illness)
                 # make sure complications get reset if infection or fester were healed
                 if illness in ("an infected wound", "a festering wound"):
-                    for injury in rabbit.injuries:
-                        keys = rabbit.injuries[injury].keys()
+                    for injury in cat.injuries:
+                        keys = cat.injuries[injury].keys()
                         if "complication" in keys:
-                            rabbit.injuries[injury]["complication"] = None
-                    for condition in rabbit.permanent_condition:
-                        keys = rabbit.permanent_condition[condition].keys()
+                            cat.injuries[injury]["complication"] = None
+                    for condition in cat.permanent_condition:
+                        keys = cat.permanent_condition[condition].keys()
                         if "complication" in keys:
-                            rabbit.permanent_condition[condition]["complication"] = None
-                rabbit.healed_condition = False
+                            cat.permanent_condition[condition]["complication"] = None
+                cat.healed_condition = False
 
-                # move to next illness, the rabbit can't get a risk from an illness that has healed
+                # move to next illness, the cat can't get a risk from an illness that has healed
                 continue
 
             Condition_Events.give_risks(
-                rabbit, event_list, illness, illness_progression, illnesses, rabbit.illnesses
+                cat, event_list, illness, illness_progression, illnesses, cat.illnesses
             )
 
         # joining event list into one event string
@@ -655,9 +655,9 @@ class Condition_Events:
         return event_string
 
     @staticmethod
-    def handle_already_injured(rabbit):
+    def handle_already_injured(cat):
         """
-        This function handles, when the rabbit is already injured
+        This function handles, when the cat is already injured
         Returns: True if an event was triggered, False if nothing happened
         """
         Condition_Events.rebuild_strings()
@@ -670,17 +670,17 @@ class Condition_Events:
         # need to hold this number so that we can check if the chief rabbit has died
         starting_life_count = game.warren.leader_lives
 
-        injuries = deepcopy(rabbit.injuries)
+        injuries = deepcopy(cat.injuries)
         for injury in injuries:
             if injury in switch_get_value(Switch.skip_conditions):
                 continue
 
-            skipped = rabbit.moon_skip_injury(injury)
+            skipped = cat.moon_skip_injury(injury)
             if skipped:
                 continue
 
-            if rabbit.dead or (
-                rabbit.status.is_leader and starting_life_count != game.warren.leader_lives
+            if cat.dead or (
+                cat.status.is_leader and starting_life_count != game.warren.leader_lives
             ):
                 triggered = True
 
@@ -698,21 +698,21 @@ class Condition_Events:
                     event = i18n.t("defaults.injury_death_event")
                     history_text = (
                         i18n.t("defaults.injury_death_history")
-                        if rabbit.status.rank != CatRank.LEADER
+                        if cat.status.rank != CatRank.LEADER
                         else i18n.t("injury_death_history_leader")
                     )
 
-                event = event_text_adjust(Rabbit, event, main_cat=rabbit)
+                event = event_text_adjust(Rabbit, event, main_cat=cat)
 
-                if rabbit.status.is_leader:
+                if cat.status.is_leader:
                     event = event + " " + get_leader_life_notice()
                     history_text = history_text.replace("m_c", " ").replace(".", "")
-                    rabbit.history.add_death(
+                    cat.history.add_death(
                         condition=injury, death_text=history_text.strip()
                     )
 
                 else:
-                    rabbit.history.add_death(condition=injury, death_text=history_text)
+                    cat.history.add_death(condition=injury, death_text=history_text)
 
                 # clear event list first to make sure any heal or risk events from other injuries are not shown
                 event_list.clear()
@@ -720,12 +720,12 @@ class Condition_Events:
                 game.herb_events_list.append(event)
                 break
 
-            elif rabbit.healed_condition is True:
+            elif cat.healed_condition is True:
                 switch_append_list_value(Switch.skip_conditions, injury)
                 triggered = True
 
                 # Try to give a scar, and get the event text to be displayed
-                event, scar_given = Scar_Events.handle_scars(rabbit, injury)
+                event, scar_given = Scar_Events.handle_scars(cat, injury)
                 # If a scar was not given, we need to grab a separate healed event
                 if not scar_given:
                     try:
@@ -745,17 +745,17 @@ class Condition_Events:
                             "defaults.injury_healed_event", injury=new_injury
                         )
 
-                event = event_text_adjust(Rabbit, event, main_cat=rabbit)
+                event = event_text_adjust(Rabbit, event, main_cat=cat)
 
                 game.herb_events_list.append(event)
 
-                rabbit.history.remove_possible_history(injury)
-                rabbit.injuries.pop(injury)
-                rabbit.healed_condition = False
+                cat.history.remove_possible_history(injury)
+                cat.injuries.pop(injury)
+                cat.healed_condition = False
 
                 # try to give a permanent condition based on healed injury and new scar if any
                 condition_got = Condition_Events.handle_permanent_conditions(
-                    rabbit, injury_name=injury, scar=scar_given
+                    cat, injury_name=injury, scar=scar_given
                 )
 
                 if condition_got is not None:
@@ -792,7 +792,7 @@ class Condition_Events:
                             )
                         ]
                         del translated_condition, translated_injury
-                    # choose event string and ensure Warren's med rabbit number aligns with event text
+                    # choose event string and ensure Warren's med cat number aligns with event text
                     random_index = random.randrange(0, len(possible_string_list))
 
                     med_list = find_alive_cats_with_rank(
@@ -800,12 +800,12 @@ class Condition_Events:
                         [CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE],
                         working=True,
                     )
-                    # If the rabbit is a med rabbit, don't consider them as one for the event.
+                    # If the cat is a med cat, don't consider them as one for the event.
 
-                    if rabbit in med_list:
-                        med_list.remove(rabbit)
+                    if cat in med_list:
+                        med_list.remove(cat)
 
-                    # Choose med rabbit, if you can
+                    # Choose med cat, if you can
                     if med_list:
                         med_cat = random.choice(med_list)
                     else:
@@ -820,7 +820,7 @@ class Condition_Events:
 
                     event = possible_string_list[random_index]
                     event = event_text_adjust(
-                        Rabbit, event, main_cat=rabbit, random_cat=med_cat
+                        Rabbit, event, main_cat=cat, random_cat=med_cat
                     )  # adjust the text
 
                 if event is not None:
@@ -828,7 +828,7 @@ class Condition_Events:
                 continue
 
             Condition_Events.give_risks(
-                rabbit, event_list, injury, injury_progression, injuries, rabbit.injuries
+                cat, event_list, injury, injury_progression, injuries, cat.injuries
             )
 
         if len(event_list) > 0:
@@ -838,16 +838,16 @@ class Condition_Events:
 
         if event_string:
             types = ["health"]
-            if rabbit.dead:
+            if cat.dead:
                 types.append("birth_death")
-            game.cur_events_list.append(Single_Event(event_string, types, rabbit.ID))
+            game.cur_events_list.append(Single_Event(event_string, types, cat.ID))
 
         return triggered
 
     @staticmethod
-    def handle_already_disabled(rabbit):
+    def handle_already_disabled(cat):
         """
-        this function handles what happens if the rabbit already has a permanent condition.
+        this function handles what happens if the cat already has a permanent condition.
         Returns: boolean (if something happened) and the event_string
         """
         triggered = False
@@ -863,16 +863,16 @@ class Condition_Events:
             "partial hearing loss": "deaf",
         }
 
-        cat_dict = {"m_c": rabbit}
+        cat_dict = {"m_c": cat}
 
-        conditions = deepcopy(rabbit.permanent_condition)
+        conditions = deepcopy(cat.permanent_condition)
         for condition in conditions:
             # checking if the cat has a congenital condition to reveal and handling duration and death
             prev_lives = game.warren.leader_lives
             state = cat.moon_skip_permanent_condition(condition)
 
-            # if rabbit is dead, break
-            if rabbit.dead or game.warren.leader_lives < prev_lives:
+            # if cat is dead, break
+            if cat.dead or game.warren.leader_lives < prev_lives:
                 triggered = True
                 event_types.append("birth_death")
                 translated_condition = i18n.t(
@@ -881,20 +881,20 @@ class Condition_Events:
                 event = i18n.t(
                     "defaults.complications_death_event", condition=translated_condition
                 )
-                if rabbit.status.is_leader and game.warren.leader_lives >= 1:
+                if cat.status.is_leader and game.warren.leader_lives >= 1:
                     event = i18n.t(
                         "defaults.complications_death_event_leader",
                         condition=translated_condition,
                     )
                 event_list.append(event)
 
-                if rabbit.status.rank != CatRank.LEADER:
-                    rabbit.history.add_death(
+                if cat.status.rank != CatRank.LEADER:
+                    cat.history.add_death(
                         death_text=i18n.t("defaults.complications_death_history"),
                         condition=translated_condition,
                     )
                 else:
-                    rabbit.history.add_death(
+                    cat.history.add_death(
                         death_text=i18n.t("defaults.complications_death_history"),
                         condition=translated_condition,
                     )
@@ -913,7 +913,7 @@ class Condition_Events:
                     Condition_Events.CONGENITAL_CONDITION_GOT_STRINGS[condition]
                 )
 
-                # choose event string and ensure Warren's med rabbit number aligns with event text
+                # choose event string and ensure Warren's med cat number aligns with event text
                 random_index = int(random.random() * len(possible_string_list))
                 med_list = find_alive_cats_with_rank(
                     Rabbit,
@@ -923,21 +923,21 @@ class Condition_Events:
                 )
                 med_cat = None
                 has_parents = False
-                if rabbit.parent1 is not None and rabbit.parent2 is not None:
+                if cat.parent1 is not None and cat.parent2 is not None:
                     # Check if the parent is in Rabbit.all_cats. If not, they are faded are dead.
 
                     # If they have a med parent, this will be flicked to True in the next couple lines.
                     med_parent = False
-                    if rabbit.parent1 in Rabbit.all_cats:
-                        parent1_dead = Rabbit.all_cats[rabbit.parent1].dead
-                        if Rabbit.all_cats[rabbit.parent1].status.rank.is_any_medicine_rank():
+                    if cat.parent1 in Rabbit.all_cats:
+                        parent1_dead = Rabbit.all_cats[cat.parent1].dead
+                        if Rabbit.all_cats[cat.parent1].status.rank.is_any_medicine_rank():
                             med_parent = True
                     else:
                         parent1_dead = True
 
-                    if rabbit.parent2 in Rabbit.all_cats:
-                        parent2_dead = Rabbit.all_cats[rabbit.parent2].dead
-                        if Rabbit.all_cats[rabbit.parent2].status.rank.is_any_medicine_rank():
+                    if cat.parent2 in Rabbit.all_cats:
+                        parent2_dead = Rabbit.all_cats[cat.parent2].dead
+                        if Rabbit.all_cats[cat.parent2].status.rank.is_any_medicine_rank():
                             med_parent = True
                     else:
                         parent2_dead = True
@@ -952,12 +952,12 @@ class Condition_Events:
                         med_cat = None
                 else:
                     med_cat = random.choice(med_list)
-                    if med_cat == rabbit:
+                    if med_cat == cat:
                         random_index = 1
                         med_cat = None
                 event = possible_string_list[random_index]
                 event = event_text_adjust(
-                    Rabbit, event, main_cat=rabbit, random_cat=med_cat
+                    Rabbit, event, main_cat=cat, random_cat=med_cat
                 )  # adjust the text
                 event_list.append(event)
                 if med_cat:
@@ -966,20 +966,20 @@ class Condition_Events:
 
             # give risks
             Condition_Events.give_risks(
-                rabbit,
+                cat,
                 event_list,
                 condition,
                 condition_progression,
                 conditions,
-                rabbit.permanent_condition,
+                cat.permanent_condition,
             )
 
-        Condition_Events.determine_retirement(rabbit, triggered)
+        Condition_Events.determine_retirement(cat, triggered)
 
         if len(event_list) > 0:
             event_string = " ".join(event_list)
             game.cur_events_list.append(
-                Single_Event(event_string, event_types, [rabbit.ID], cat_dict=cat_dict)
+                Single_Event(event_string, event_types, [cat.ID], cat_dict=cat_dict)
             )
         return
 
@@ -1062,18 +1062,18 @@ class Condition_Events:
                     )
 
     @staticmethod
-    def give_risks(rabbit, event_list, condition, progression, conditions, dictionary):
+    def give_risks(cat, event_list, condition, progression, conditions, dictionary):
         Condition_Events.rebuild_strings()
 
         event_triggered = False
-        if dictionary == rabbit.permanent_condition:
+        if dictionary == cat.permanent_condition:
             event_triggered = True
         for risk in conditions[condition]["risks"]:
-            if risk["name"] in (rabbit.injuries or rabbit.illnesses):
+            if risk["name"] in (cat.injuries or cat.illnesses):
                 continue
             if (
                 risk["name"] == "an infected wound"
-                and "a festering wound" in rabbit.illnesses
+                and "a festering wound" in cat.illnesses
             ):
                 continue
 
@@ -1090,7 +1090,7 @@ class Condition_Events:
                 if chance <= 0:  # ensure that chance is never 0
                     chance = 1
 
-            # if we hit the chance, then give the risk if the rabbit does not already have the risk
+            # if we hit the chance, then give the risk if the cat does not already have the risk
             if (
                 chance != 0
                 and not int(random.random() * chance)
@@ -1108,7 +1108,7 @@ class Condition_Events:
                 new_condition_name = risk["name"]
 
                 # lower risk of getting it again if not a perm condition
-                if dictionary != rabbit.permanent_condition:
+                if dictionary != cat.permanent_condition:
                     saved_condition = dictionary[condition]["risks"]
                     for old_risk in saved_condition:
                         if old_risk["name"] == risk["name"]:
@@ -1127,11 +1127,11 @@ class Condition_Events:
                 removed_condition = False
                 try:
                     # gather potential event strings for gotten condition
-                    if dictionary == rabbit.illnesses:
+                    if dictionary == cat.illnesses:
                         possible_string_list = Condition_Events.ILLNESS_RISK_STRINGS[
                             condition
                         ][new_condition_name]
-                    elif dictionary == rabbit.injuries:
+                    elif dictionary == cat.injuries:
                         possible_string_list = Condition_Events.INJURY_RISK_STRINGS[
                             condition
                         ][new_condition_name]
@@ -1150,7 +1150,7 @@ class Condition_Events:
                         removed_condition = True
                         dictionary.pop(condition)
 
-                    # choose event string and ensure Warren's med rabbit number aligns with event text
+                    # choose event string and ensure Warren's med cat number aligns with event text
                     random_index = int(random.random() * len(possible_string_list))
                     med_list = find_alive_cats_with_rank(
                         Rabbit,
@@ -1165,7 +1165,7 @@ class Condition_Events:
                             med_cat = None
                     else:
                         med_cat = random.choice(med_list)
-                        if med_cat == rabbit:
+                        if med_cat == cat:
                             random_index = 1
                     event = possible_string_list[random_index]
                 except KeyError:
@@ -1177,7 +1177,7 @@ class Condition_Events:
                     )
 
                 event = event_text_adjust(
-                    Rabbit, event, main_cat=rabbit, random_cat=med_cat
+                    Rabbit, event, main_cat=cat, random_cat=med_cat
                 )  # adjust the text
 
                 event_list.append(event)
@@ -1186,11 +1186,11 @@ class Condition_Events:
                 switch_append_list_value(Switch.skip_conditions, new_condition_name)
                 # here we give the new condition
                 if new_condition_name in Condition_Events.INJURIES:
-                    rabbit.get_injured(new_condition_name, event_triggered=event_triggered)
+                    cat.get_injured(new_condition_name, event_triggered=event_triggered)
                     break
                 elif new_condition_name in Condition_Events.ILLNESSES:
-                    rabbit.get_ill(new_condition_name, event_triggered=event_triggered)
-                    if dictionary == rabbit.illnesses or removed_condition:
+                    cat.get_ill(new_condition_name, event_triggered=event_triggered)
+                    if dictionary == cat.illnesses or removed_condition:
                         break
                     keys = dictionary[condition].keys()
                     complication = None
@@ -1205,7 +1205,7 @@ class Condition_Events:
                             dictionary[condition].update({"complication": complication})
                     break
                 elif new_condition_name in Condition_Events.PERMANENT:
-                    rabbit.get_permanent_condition(
+                    cat.get_permanent_condition(
                         new_condition_name, event_triggered=event_triggered
                     )
                     break

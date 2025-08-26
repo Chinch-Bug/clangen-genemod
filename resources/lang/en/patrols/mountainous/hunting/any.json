@@ -225,7 +225,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["minor_injury"],
                         "scars": ["LEFTEAR"]
                     }
@@ -489,7 +489,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -557,7 +557,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -628,7 +628,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -942,7 +942,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["blunt_force_injury"],
                         "scars": ["MANLEG"]
                     }
@@ -1030,7 +1030,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["blunt_force_injury"],
                         "scars": ["MANTAIL"]
                     }
@@ -1072,7 +1072,7 @@
                 "weight": 20,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["persistent headaches"]
                     }
                 ]
@@ -1102,7 +1102,7 @@
                 "weight": 20,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["seizure prone"]
                     }
                 ],
@@ -1162,7 +1162,7 @@
                 "weight": 20,
                 "injury": [
                     {
-                        "rabbits": ["patrol"],
+                        "cats": ["patrol"],
                         "injuries": ["yellowcough"]
                     }
                 ],
@@ -1466,7 +1466,7 @@
                 "stat_skill": ["RUNNER,1"],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["sprain"],
                         "scars": []
                     }
@@ -1534,7 +1534,7 @@
                 "stat_skill": ["RUNNER,1"],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["sprain"],
                         "scars": []
                     }
@@ -1613,7 +1613,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["r_c", "some_clan"],
+                        "cats": ["r_c", "some_clan"],
                         "injuries": ["poisoned"],
                         "scars": []
                     }
@@ -1684,7 +1684,7 @@
                     ],
                     "injury": [
                         {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["small cut", "beak_bite"],
                         "scars": ["SNOUT", "BEAKCHEEK"],
                         "no_results": false

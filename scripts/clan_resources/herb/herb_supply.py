@@ -286,6 +286,8 @@ class HerbSupply:
             self.total_of_herb(lowest_herb) + self.total_of_herb(highest_herb)
         ) / 2
 
+        if game.warren.game_mode == "classic":
+            return Supply.FULL
         if self.low_qualifier < average_count <= self.adequate_qualifier:
             return Supply.LOW
         if self.adequate_qualifier < average_count <= self.full_qualifier:
@@ -328,7 +330,7 @@ class HerbSupply:
                 messages.remove(message)
 
         return event_text_adjust(
-            Rabbit=med_cat, text=choice(messages), main_cat=med_cat, warren=game.warren
+            Rabbit=med_cat, text=choice(messages), main_cat=med_cat, clan=game.warren
         )
 
     def get_single_herb_total(self, herb: str) -> int:
@@ -803,7 +805,7 @@ class HerbSupply:
         )
 
         message = event_text_adjust(
-            Rabbit=treated_cat, text=message, main_cat=treated_cat, warren=game.warren
+            Rabbit=treated_cat, text=message, main_cat=treated_cat, clan=game.warren
         )
         self.log.append(message)
 

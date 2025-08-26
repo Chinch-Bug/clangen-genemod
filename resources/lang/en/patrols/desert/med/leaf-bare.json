@@ -706,7 +706,7 @@
                 "weight": 20,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["torn pelt"],
                         "scars": ["SCRATCHSIDE"]
                     }
@@ -784,7 +784,7 @@
                 "weight": 20,
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["poisoned"],
                         "scars": []
                     }
@@ -809,12 +809,12 @@
                 "weight": 20,
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["stomachache"],
                         "scars": []
                     },
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["diarrhea"],
                         "scars": []
                     }

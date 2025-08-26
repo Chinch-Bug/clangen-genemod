@@ -134,7 +134,7 @@ Here's an example of a future event being utilized for a murder event.
             "status": [ "any" ]
         },
         "history": [{
-            "rabbits": ["m_c"],
+            "cats": ["m_c"],
             "reg_death": "m_c was secretly murdered by r_c."
         }],
         "relationships": [

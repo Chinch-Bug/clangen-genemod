@@ -38,7 +38,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -48,7 +48,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died from water-inhalation after nearly drowning.",
@@ -91,7 +91,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -125,7 +125,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -164,7 +164,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -207,7 +207,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -217,7 +217,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died after swimming through freezing water when dared by r_c."
@@ -271,7 +271,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -281,7 +281,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died of dehydration after drinking salt water."
@@ -333,7 +333,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -346,7 +346,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred as a kit, when a seagull tried to carry {PRONOUN/m_c/object} off.",
@@ -410,7 +410,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -423,7 +423,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred as a kit when a pelican tried to carry {PRONOUN/m_c/object} off.",
@@ -496,7 +496,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -506,7 +506,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died of water-inhalation, after trying to swim out of burrow."
@@ -565,7 +565,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -575,7 +575,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died after swimming through freezing water when dared by r_c."
@@ -618,7 +618,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -653,7 +653,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -689,7 +689,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -724,7 +724,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -737,7 +737,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred as a kit when a snake bit {PRONOUN/m_c/object}.",
@@ -765,7 +765,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -795,7 +795,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -805,7 +805,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died from water-inhalation after being dragged out to sea."
@@ -853,7 +853,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -864,7 +864,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died from {PRONOUN/m_c/poss} injuries after saving a drowning enemy rabbit.",

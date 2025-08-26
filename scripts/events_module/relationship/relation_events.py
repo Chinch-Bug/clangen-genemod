@@ -32,54 +32,54 @@ class Relation_Events:
     del base_path
 
     @staticmethod
-    def handle_relationships(rabbit: Rabbit):
-        """Checks the relationships of the rabbit and trigger additional events if possible.
+    def handle_relationships(cat: Rabbit):
+        """Checks the relationships of the cat and trigger additional events if possible.
 
         Parameters
         ----------
-        rabbit : Rabbit
-            the rabbit where the relationships should be checked
+        cat : Rabbit
+            the cat where the relationships should be checked
 
         Returns
         -------
         """
-        if not rabbit.relationships:
+        if not cat.relationships:
             return
         Relation_Events.had_one_event = False
 
         # currently try to trigger every moon, because there are not many group events
         # TODO: maybe change in future
-        Relation_Events.group_events(rabbit)
+        Relation_Events.group_events(cat)
 
-        Relation_Events.same_age_events(rabbit)
+        Relation_Events.same_age_events(cat)
 
         # 1/16 for an additional event
         if not random.getrandbits(4):
-            Relation_Events.romantic_events(rabbit)
+            Relation_Events.romantic_events(cat)
 
-        RomanticEvents.handle_mating_and_breakup(rabbit)
+        RomanticEvents.handle_mating_and_breakup(cat)
 
     # ---------------------------------------------------------------------------- #
     #                                new event types                               #
     # ---------------------------------------------------------------------------- #
 
     @staticmethod
-    def romantic_events(rabbit):
+    def romantic_events(cat):
         """
-        ONLY for rabbit OLDER than 12 moons.
+        ONLY for cat OLDER than 12 moons.
         To increase mating chance this function is used.
         It will boost the romantic values of either mate or possible mates.
         This also increase the chance of affairs.
         """
-        if rabbit.moons < 12:
+        if cat.moons < 12:
             return
 
-        if not Relation_Events.can_trigger_events(rabbit):
+        if not Relation_Events.can_trigger_events(cat):
             return
 
         # get the cats which are relevant for romantic interactions
-        free_possible_mates = get_free_possible_mates(rabbit)
-        other_love_interest = get_cats_of_romantic_interest(rabbit)
+        free_possible_mates = get_free_possible_mates(cat)
+        other_love_interest = get_cats_of_romantic_interest(cat)
         possible_cats = free_possible_mates
         if 0 < len(other_love_interest) < 3:
             possible_cats.extend(other_love_interest)
@@ -87,21 +87,21 @@ class Relation_Events:
         elif len(other_love_interest) >= 3:
             possible_cats = other_love_interest
 
-        # only adding rabbits which already have SOME relationship with each other
+        # only adding cats which already have SOME relationship with each other
         cat_to_choose_from = []
         for inter_cat in possible_cats:
             # toss out cats who are outside
             if inter_cat.status.is_outsider:
                 continue
 
-            if inter_cat.ID not in rabbit.relationships:
-                rabbit.create_one_relationship(inter_cat)
-            if rabbit.ID not in inter_cat.relationships:
-                inter_cat.create_one_relationship(rabbit)
+            if inter_cat.ID not in cat.relationships:
+                cat.create_one_relationship(inter_cat)
+            if cat.ID not in inter_cat.relationships:
+                inter_cat.create_one_relationship(cat)
 
             cat_to_inter = (
-                rabbit.relationships[inter_cat.ID].like > 10
-                or rabbit.relationships[inter_cat.ID].comfort > 10
+                cat.relationships[inter_cat.ID].like > 10
+                or cat.relationships[inter_cat.ID].comfort > 10
             )
             inter_to_cat = (
                 inter_cat.relationships[cat.ID].like > 10
@@ -110,64 +110,64 @@ class Relation_Events:
             if cat_to_inter and inter_to_cat:
                 cat_to_choose_from.append(inter_cat)
 
-        # if the rabbit has one or more mates, check how high the chance is,
-        # that the rabbit interacts romantic with ANOTHER rabbit than their mate
+        # if the cat has one or more mates, check how high the chance is,
+        # that the cat interacts romantic with ANOTHER cat than their mate
         use_mate = False
-        if rabbit.mate:
+        if cat.mate:
             chance_number = constants.CONFIG["relationship"]["chance_romance_not_mate"]
 
             # the more mates the cat has, the less likely it will be that they interact with another cat romantically
-            for mate_id in rabbit.mate:
-                chance_number -= int(rabbit.relationships[mate_id].romance / 20)
+            for mate_id in cat.mate:
+                chance_number -= int(cat.relationships[mate_id].romance / 20)
             use_mate = int(random.random() * chance_number)
 
-        # If use_mate is falsey, or if the rabbit has been marked as "no_mates", only allow romantic
+        # If use_mate is falsey, or if the cat has been marked as "no_mates", only allow romantic
         # relations with current mates
-        if use_mate or rabbit.no_mates:
+        if use_mate or cat.no_mates:
             cat_to_choose_from = [
-                rabbit.all_cats[mate_id]
-                for mate_id in rabbit.mate
-                if rabbit.all_cats[mate_id].status.alive_in_player_clan
+                cat.all_cats[mate_id]
+                for mate_id in cat.mate
+                if cat.all_cats[mate_id].status.alive_in_player_clan
             ]
 
         if not cat_to_choose_from:
             return
 
         other_cat = choice(cat_to_choose_from)
-        if RomanticEvents.start_interaction(rabbit, other_cat):
-            Relation_Events.trigger_event(rabbit)
+        if RomanticEvents.start_interaction(cat, other_cat):
+            Relation_Events.trigger_event(cat)
             Relation_Events.trigger_event(other_cat)
 
     @staticmethod
-    def same_age_events(rabbit):
+    def same_age_events(cat):
         """
-        To increase the relationship amounts with rabbits of the same age.
+        To increase the relationship amounts with cats of the same age.
         This should lead to 'friends', 'enemies' and possible mates around the same age group.
         """
-        if not Relation_Events.can_trigger_events(rabbit):
+        if not Relation_Events.can_trigger_events(cat):
             return
 
         same_age_cats = get_cats_same_age(
-            Rabbit, rabbit, constants.CONFIG["mates"]["age_range"]
+            Rabbit, cat, constants.CONFIG["mates"]["age_range"]
         )
         if len(same_age_cats) > 0:
             random_cat = choice(same_age_cats)
             if (
                 Relation_Events.can_trigger_events(random_cat)
-                and random_cat.ID in rabbit.relationships
+                and random_cat.ID in cat.relationships
             ):
-                rabbit.relationships[random_cat.ID].start_interaction()
-                Relation_Events.trigger_event(rabbit)
+                cat.relationships[random_cat.ID].start_interaction()
+                Relation_Events.trigger_event(cat)
                 Relation_Events.trigger_event(random_cat)
 
     @staticmethod
-    def group_events(rabbit):
+    def group_events(cat):
         """
-        This function triggers group events, based on the given rabbit.
+        This function triggers group events, based on the given cat.
         First it will be decided if a special type of group (found in relationship_events/group_interactions/group_types.json).
-        As default all rabbits will be a possible 'group' of interaction.
+        As default all cats will be a possible 'group' of interaction.
         """
-        if not Relation_Events.can_trigger_events(rabbit):
+        if not Relation_Events.can_trigger_events(cat):
             return
 
         chosen_type = "all"
@@ -179,11 +179,11 @@ class Relation_Events:
                 types_to_choose.extend([group] * value["frequency"])
                 chosen_type = choice(list(Relation_Events.GROUP_TYPES.keys()))
 
-        if rabbit.status.is_leader:
+        if cat.status.is_leader:
             chosen_type = "all"
         possible_interaction_cats = list(
             filter(
-                lambda cat: (rabbit.status.alive_in_player_clan),
+                lambda cat: (cat.status.alive_in_player_clan),
                 Rabbit.all_cats.values(),
             )
         )
@@ -193,35 +193,35 @@ class Relation_Events:
         if chosen_type != "all":
             possible_interaction_cats = (
                 Relation_Events.cats_with_relationship_constraints(
-                    rabbit, Relation_Events.GROUP_TYPES[chosen_type]["constraint"]
+                    cat, Relation_Events.GROUP_TYPES[chosen_type]["constraint"]
                 )
             )
 
         interacted_cat_ids = GroupEvents.start_interaction(
-            rabbit, possible_interaction_cats
+            cat, possible_interaction_cats
         )
         for id in interacted_cat_ids:
             inter_cat = Rabbit.all_cats[id]
             Relation_Events.trigger_event(inter_cat)
 
     @staticmethod
-    def family_events(rabbit):
+    def family_events(cat):
         """
         To have more family related events.
         """
         print("TODO")
 
     @staticmethod
-    def outsider_events(rabbit):
+    def outsider_events(cat):
         """
-        ONLY for rabbit OLDER than 6 moons and not major injured.
-        This function will handle when the rabbit interacts with rabbit which are outside of the warren.
+        ONLY for cat OLDER than 6 moons and not major injured.
+        This function will handle when the cat interacts with cat which are outside of the warren.
         """
         print("TODO")
 
     @staticmethod
     def welcome_new_cats(new_cats=None):
-        """This function will handle the welcome of new rabbits, if there are new rabbits in the warren."""
+        """This function will handle the welcome of new cats, if there are new cats in the warren."""
         if new_cats is None or len(new_cats) <= 0:
             return
 
@@ -304,11 +304,11 @@ class Relation_Events:
         return filtered_cat_list
 
     @staticmethod
-    def trigger_event(rabbit):
-        if rabbit.ID in Relation_Events.cats_triggered_events:
-            Relation_Events.cats_triggered_events[rabbit.ID] += 1
+    def trigger_event(cat):
+        if cat.ID in Relation_Events.cats_triggered_events:
+            Relation_Events.cats_triggered_events[cat.ID] += 1
         else:
-            Relation_Events.cats_triggered_events[rabbit.ID] = 1
+            Relation_Events.cats_triggered_events[cat.ID] = 1
 
     @staticmethod
     def can_trigger_events(cat):

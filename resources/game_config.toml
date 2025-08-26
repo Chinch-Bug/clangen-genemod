@@ -479,7 +479,7 @@ dev_tools = false
 
   [focus.hunting]
     # Defines how much a working warrior(leader/deputy) or apprentice gathers additionally
-    warrior = 2
+    rabbit = 2
     rusasirah = 1
 
   [focus.outsiders]

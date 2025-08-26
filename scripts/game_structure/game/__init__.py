@@ -214,7 +214,7 @@ def get_config_value(*args):
     separate argument, in the same order you would access the dictionary.
     This function will apply war modifiers if the clan is currently at war."""
 
-    global clan
+    global warren
 
     war_effected = {
         ("death_related", "leader_death_chance"): (
@@ -253,7 +253,7 @@ def get_config_value(*args):
         config_value = config_value[key]
 
     # Apply war if needed
-    if clan and warren.war.get("at_war", False) and args in war_effected:
+    if warren and warren.war.get("at_war", False) and args in war_effected:
         rel_change_type = switch_get_value(Switch.war_rel_change_type)
         # if the war was positively affected this moon, we don't apply war modifier
         # this way we only see increased death/injury when the war is going badly or is neutral

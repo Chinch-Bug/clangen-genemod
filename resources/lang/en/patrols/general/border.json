@@ -528,7 +528,7 @@
                 "art": "gen_battle_rogue_warrior",
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["battle_injury", "battle_injury"]
                     }
                 ],
@@ -599,7 +599,7 @@
                 "weight": 20,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["minor_injury"]
                     }
                 ],

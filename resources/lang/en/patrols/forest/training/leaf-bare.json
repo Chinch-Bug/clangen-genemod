@@ -126,7 +126,7 @@
                     "weight": 20,
                     "injury": [
                         {
-                            "rabbits": ["p_l"],
+                            "cats": ["p_l"],
                             "injuries": ["shivering"]
                         }
                     ],
@@ -223,7 +223,7 @@
                     "weight": 20,
                     "injury": [
                         {
-                            "rabbits": ["app1"],
+                            "cats": ["app1"],
                             "injuries": ["shivering"]
                         }
                     ],

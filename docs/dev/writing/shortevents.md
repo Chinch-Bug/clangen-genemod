@@ -347,7 +347,7 @@ lowercase season names + "any"
 >
 >```json
 >    {
->      "rabbits": [],
+>      "cats": [],
 >      "injuries": [],
 >      "scars": [],
 >      "history:": {

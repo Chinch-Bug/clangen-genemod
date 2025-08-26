@@ -1266,13 +1266,13 @@ This is a good starting point for writing your own outcomes.
     "other_clan_rep": null,
     "injury": [
         {
-            "rabbits": [],
+            "cats": [],
             "injuries": [],
             "scars": [],
             "no_results": false
         },
         {
-            "rabbits": [],
+            "cats": [],
             "injuries": [],
             "scars": [],
             "no_results": false

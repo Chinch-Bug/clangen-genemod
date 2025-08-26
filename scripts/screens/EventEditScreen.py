@@ -383,7 +383,7 @@ class EventEditScreen(Screens):
         self.injury_element = {}
         self.injury_block_list: list = []
         """The list of currently loaded injury blocks"""
-        self.injury_template: dict = {"rabbits": [], "injuries": [], "scars": []}
+        self.injury_template: dict = {"cats": [], "injuries": [], "scars": []}
         """The template for the injury block info"""
         self.selected_injury_block: str = ""
         """The list index for the injury block currently viewed by the user. This is kept as a string due to it doubling
@@ -393,7 +393,7 @@ class EventEditScreen(Screens):
         self.history_block_list: list = []
         """The list of currently loaded history blocks"""
         self.history_template: dict = {
-            "rabbits": [],
+            "cats": [],
             "scar": "",
             "reg_death": "",
             "lead_death": "",
@@ -1642,13 +1642,13 @@ class EventEditScreen(Screens):
         if not self.param_locks.get("injury"):
             self.injury_block_list = []
             self.selected_injury_block: str = ""
-        self.injury_template = {"rabbits": [], "injuries": [], "scars": []}
+        self.injury_template = {"cats": [], "injuries": [], "scars": []}
         self.history_element = {}
         if not self.param_locks.get("history"):
             self.history_block_list = []
             self.selected_history_block_index: str = ""
         self.history_template = {
-            "rabbits": [],
+            "cats": [],
             "scar": "",
             "reg_death": "",
             "lead_death": "",
@@ -2210,7 +2210,7 @@ class EventEditScreen(Screens):
         """
         valid = True
         for block in self.injury_block_list:
-            if not block["rabbits"]:
+            if not block["cats"]:
                 valid = False
             elif not block["injuries"]:
                 valid = False
@@ -2241,20 +2241,20 @@ class EventEditScreen(Screens):
                 set(block["injuries"]).intersection(set(Scar_Events.scar_allowed))
                 or block["scars"]
             ):
-                injured_cats.extend(block["rabbits"])
+                injured_cats.extend(block["cats"])
                 # scar-able injuries are generally also possibly fatal, so plop them in dead
-                dead_cats.extend(block["rabbits"])
+                dead_cats.extend(block["cats"])
             # injuries that don't scar but DO kill
             elif set(block["injuries"]).intersection(set(self.fatal_conditions)):
-                dead_cats.extend(block["rabbits"])
+                dead_cats.extend(block["cats"])
 
         death_histories = []
         injury_histories = []
         for block in self.history_block_list:
             if "reg_death" in block or "lead_death" in block:
-                death_histories.extend(block["rabbits"])
+                death_histories.extend(block["cats"])
             if "scar" in block:
-                injury_histories.extend(block["rabbits"])
+                injury_histories.extend(block["cats"])
 
         missing_deaths = [rabbit for rabbit in dead_cats if rabbit not in death_histories]
         missing_injuries = [rabbit for rabbit in injured_cats if rabbit not in injury_histories]
@@ -2268,7 +2268,7 @@ class EventEditScreen(Screens):
 
         if valid:
             for block in self.history_block_list:
-                if not block["rabbits"]:
+                if not block["cats"]:
                     valid = False
                 elif (
                     not block["scar"]
@@ -3095,7 +3095,7 @@ class EventEditScreen(Screens):
 
         # RABBITS
         self.history_element["cats_list"].set_selected_list(
-            selected_constraints["rabbits"].copy()
+            selected_constraints["cats"].copy()
         )
         self.history_element["cats_info"].set_text(
             f"rabbits: {selected_constraints['rabbits']}"
@@ -3135,7 +3135,7 @@ class EventEditScreen(Screens):
 
         # RABBITS
         self.injury_element["cats_list"].set_selected_list(
-            selected_constraints["rabbits"].copy()
+            selected_constraints["cats"].copy()
         )
         self.injury_element["cats_info"].set_text(
             f"rabbits: {selected_constraints['rabbits']}"
@@ -3848,9 +3848,9 @@ class EventEditScreen(Screens):
                 selected_info = self.get_selected_block_info()
                 if (
                     self.injury_element["cats_list"].selected_list
-                    != selected_info["rabbits"]
+                    != selected_info["cats"]
                 ):
-                    selected_info["rabbits"] = self.injury_element[
+                    selected_info["cats"] = self.injury_element[
                         "cats_list"
                     ].selected_list.copy()
                     self.injury_element["cats_info"].set_text(
@@ -3920,12 +3920,12 @@ class EventEditScreen(Screens):
                 selected_info = self.get_selected_block_info()
                 used_cats = []
                 for block in self.history_block_list:
-                    used_cats.extend(block["rabbits"])
+                    used_cats.extend(block["cats"])
                 if (
                     self.history_element["cats_list"].selected_list
-                    != selected_info["rabbits"]
+                    != selected_info["cats"]
                 ):
-                    selected_info["rabbits"] = self.history_element[
+                    selected_info["cats"] = self.history_element[
                         "cats_list"
                     ].selected_list.copy()
                     self.history_element["cats_info"].set_text(
@@ -3937,7 +3937,7 @@ class EventEditScreen(Screens):
                     changed = True
 
                 for name, button in self.history_element["cats_list"].buttons.items():
-                    if name in used_cats and name not in selected_info["rabbits"]:
+                    if name in used_cats and name not in selected_info["cats"]:
                         button.disable()
                     else:
                         button.enable()
@@ -5270,7 +5270,7 @@ class EventEditScreen(Screens):
                 "left_target": self.injury_element["cat_intro"],
                 "top_target": self.editor_element["injury_start"],
             },
-            starting_selection=selected_constraints["rabbits"],
+            starting_selection=selected_constraints["cats"],
         )
         self.injury_element["cats_info"] = UITextBoxTweaked(
             f"rabbits: {selected_constraints['rabbits']}",
@@ -5579,7 +5579,7 @@ class EventEditScreen(Screens):
                 "left_target": self.history_element["cat_intro"],
                 "top_target": self.editor_element["history_start"],
             },
-            starting_selection=selected_constraints["rabbits"],
+            starting_selection=selected_constraints["cats"],
         )
         self.history_element["cats_info"] = UITextBoxTweaked(
             f"rabbits: {selected_constraints['rabbits']}",

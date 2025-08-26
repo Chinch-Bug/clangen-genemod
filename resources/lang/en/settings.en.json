@@ -42,7 +42,7 @@
         "backgrounds_tooltip": "Even with this off, the burrow you choose will still affect the events you encounter.",
         "moons and seasons": "Show moons and seasons widget",
         "moons and seasons_tooltip": "Displays Warren age and current Warren season on several pages.",
-        "captain": "Allow chief rabbits to automatically choose a new captain",
+        "deputy": "Allow chief rabbits to automatically choose a new captain",
         "deputy_tooltip": "The Rabbit Code rules will be taken into account when choosing a captain.",
         "12_moon_graduation": "Disable experience-based rusasirah graduation",
         "12_moon_graduation_tooltip": "All rusasirahs will graduate at 12 moons.",

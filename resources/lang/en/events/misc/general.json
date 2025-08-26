@@ -9046,7 +9046,7 @@
             "transition"
         ],
         "frequency": 4,
-        "event_text": "m_c has realized that she-cat doesn't describe how {PRONOUN/m_c/subject} {VERB/m_c/feel/feels} anymore.",
+        "event_text": "m_c has realized that doe doesn't describe how {PRONOUN/m_c/subject} {VERB/m_c/feel/feels} anymore.",
         "m_c": {
             "gender": [
                 "female"
@@ -9069,7 +9069,7 @@
             "transition"
         ],
         "frequency": 4,
-        "event_text": "m_c has realized that tom doesn't describe how {PRONOUN/m_c/subject} {VERB/m_c/feel/feels} anymore.",
+        "event_text": "m_c has realized that buck doesn't describe how {PRONOUN/m_c/subject} {VERB/m_c/feel/feels} anymore.",
         "m_c": {
             "gender": [
                 "male"
@@ -9106,7 +9106,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [

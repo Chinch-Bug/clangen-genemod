@@ -118,14 +118,14 @@ class AllegiancesScreen(Screens):
         """Extra Details will be placed after the rabbit description, but before the rusasirah (if they have one)."""
         output = f"{str(rabbit.name).upper()} - {rabbit.describe_cat()} {extra_details}"
 
-        if len(rabbit.rusasirah) == 0:
+        if len(rabbit.apprentice) == 0:
             return event_text_adjust(Rabbit, output, main_cat=rabbit)
 
-        output += f"\n      {i18n.t('general.rusasirah', count=len(rabbit.rusasirah)).upper()}: "
+        output += f"\n      {i18n.t('general.apprentice', count=len(rabbit.apprentice)).upper()}: "
         output += adjust_list_text(
             [
                 str(Rabbit.fetch_cat(i).name).upper()
-                for i in rabbit.rusasirah
+                for i in rabbit.apprentice
                 if Rabbit.fetch_cat(i)
             ]
         ).upper()
@@ -224,7 +224,7 @@ class AllegiancesScreen(Screens):
         # Rusasirah Box:
         if living_apprentices:
             _box = ["", ""]
-            _box[0] = f"<b><u>{i18n.t('general.rusasirah', count=2).upper()}</u></b>"
+            _box[0] = f"<b><u>{i18n.t('general.apprentice', count=2).upper()}</u></b>"
 
             _box[1] = "\n".join(
                 [self.generate_one_entry(i) for i in living_apprentices]

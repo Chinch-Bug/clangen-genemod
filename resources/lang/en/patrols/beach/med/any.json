@@ -968,7 +968,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["small cut"],
                         "scars": []
                     }
@@ -1018,7 +1018,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["small cut"],
                         "scars": []
                     }

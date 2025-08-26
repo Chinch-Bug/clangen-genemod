@@ -221,7 +221,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTTAIL"]
                     }
@@ -323,7 +323,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE"]
                     }
@@ -430,7 +430,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTTAIL"]
                     }
@@ -503,7 +503,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTMITT"]
                     }
@@ -605,7 +605,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTMITT"]
                     }
@@ -712,7 +712,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTMITT"]
                     }
@@ -785,7 +785,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["p_l"],
+                        "cats": ["p_l"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE"]
                     }
@@ -887,7 +887,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE"]
                     }
@@ -994,7 +994,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE"]
                     }
@@ -1067,7 +1067,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE"]
                     }
@@ -1169,7 +1169,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE"]
                     }
@@ -1277,7 +1277,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE"]
                     }
@@ -1349,7 +1349,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["blunt_force_injury", "cold_injury"],
                         "scars": ["SIDE"]
                     }
@@ -1451,7 +1451,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["blunt_force_injury", "cold_injury"],
                         "scars": ["SIDE"]
                     }
@@ -1559,7 +1559,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["blunt_force_injury", "cold_injury"],
                         "scars": ["SIDE"]
                     }
@@ -1632,7 +1632,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTMITT"]
                     }
@@ -1733,7 +1733,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTMITT"]
                     }
@@ -1841,7 +1841,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTMITT"]
                     }

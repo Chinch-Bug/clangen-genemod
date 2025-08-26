@@ -2143,7 +2143,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["battle_injury"],
                         "scars": ["THROAT"]
                     }
@@ -2263,7 +2263,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["battle_injury"],
                         "scars": ["TWO"]
                     }
@@ -2383,7 +2383,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["battle_injury"],
                         "scars": ["ONE"]
                     }
@@ -2503,7 +2503,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["battle_injury"],
                         "scars": ["THREE"]
                     }

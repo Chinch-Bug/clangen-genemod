@@ -43,7 +43,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was secretly murdered by r_c."
@@ -131,7 +131,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was murdered by r_c."
@@ -222,7 +222,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was murdered by r_c."
@@ -314,7 +314,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was secretly murdered by r_c, who made the death look accidental."
@@ -400,7 +400,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was murdered by r_c, who fed {PRONOUN/m_c/object} deathberries."
@@ -490,7 +490,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was murdered by r_c, who fed {PRONOUN/m_c/object} foxglove seeds."
@@ -580,7 +580,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was murdered by r_c, who fed {PRONOUN/m_c/object} nightshade berries."
@@ -672,7 +672,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was murdered by r_c, who fed {PRONOUN/m_c/object} water hemlock."
@@ -762,7 +762,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was murdered by r_c, who purposefully fed {PRONOUN/m_c/object} the wrong herbs."
@@ -841,7 +841,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed by a fox.",
@@ -871,7 +871,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed by a snake.",
@@ -926,7 +926,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed by a snake while saving a kit.",
@@ -952,7 +952,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c went missing and was found dead.",
@@ -981,7 +981,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was found dead near the o_c_n border.",
@@ -1016,7 +1016,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -1077,7 +1077,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died defending r_c from o_c_n rabbits.",
@@ -1164,7 +1164,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed in a fire while trying to save r_c.",
@@ -1206,7 +1206,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died of greencough.",
@@ -1238,7 +1238,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died from infected wounds.",
@@ -1280,7 +1280,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -1337,7 +1337,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -1381,7 +1381,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -1423,7 +1423,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -1465,7 +1465,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -1507,7 +1507,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -1550,7 +1550,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "Curiosity killed this rabbit."
@@ -1590,7 +1590,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c sacrificed {PRONOUN/m_c/self} for r_c in battle.",
@@ -1653,7 +1653,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c sacrificed {PRONOUN/m_c/self} for r_c in battle.",
@@ -1716,7 +1716,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c sacrificed {PRONOUN/m_c/self} for r_c in battle.",
@@ -1782,7 +1782,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c sacrificed {PRONOUN/m_c/self} for r_c in an ambush.",
@@ -1835,7 +1835,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed investigating enemy territory."
@@ -1878,7 +1878,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c drowned in a river attempting to escape an enemy attack.",
@@ -1916,7 +1916,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c fell into a pit trap set by an enemy Warren.",
@@ -1955,7 +1955,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was hit by a monster.",
@@ -1994,7 +1994,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died of old age.",
@@ -2026,7 +2026,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died of old age.",
@@ -2058,7 +2058,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died of old age.",
@@ -2093,7 +2093,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died of a heart attack."
@@ -2139,7 +2139,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -2173,7 +2173,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed by an unknown predator.",
@@ -2226,7 +2226,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was murdered by r_c."
@@ -2316,7 +2316,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -2397,7 +2397,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c {VERB/m_c/were/was} pushed into a ravine by r_c.",
@@ -2495,7 +2495,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was lured onto thin ice by r_c, resulting in {PRONOUN/m_c/poss} death.",
@@ -2603,7 +2603,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -2638,7 +2638,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c fell into a sinkhole.",
@@ -2666,7 +2666,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c fell into a hidden burrow.",
@@ -2694,7 +2694,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was buried alive when a burrow collapsed.",
@@ -2726,7 +2726,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died of dehydration and heat stroke.",
@@ -2754,7 +2754,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c froze to death.",
@@ -2780,7 +2780,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c froze to death.",
@@ -2813,7 +2813,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c froze to death after falling through ice.",
@@ -2853,7 +2853,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c suffocated underground.",
@@ -2892,7 +2892,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died in a border skirmish against o_c_n.",
@@ -2947,7 +2947,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was accidentally killed by r_c in battle.",
@@ -3031,7 +3031,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed while trying to save o_c_n's healer.",
@@ -3071,7 +3071,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed by the captain of o_c_n.",
@@ -3126,7 +3126,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed while trying to save o_c_n's captain.",
@@ -3165,7 +3165,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed by the chief rabbit of o_c_n.",
@@ -3220,7 +3220,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed while trying to save o_c_n's chief rabbit.",
@@ -3272,7 +3272,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -3319,7 +3319,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was buried alive in an avalanche.",
@@ -3355,7 +3355,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was buried alive in a landslide.",
@@ -3390,7 +3390,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was buried alive in a mudslide.",
@@ -3429,7 +3429,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c slipped off the edge of a cliff.",
@@ -3460,7 +3460,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "slipped off the edge of a cliff"
@@ -3517,7 +3517,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was pushed off a cliff by r_c."
@@ -3589,7 +3589,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was crushed by a falling boulder.",
@@ -3645,7 +3645,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was grabbed by a hawk, never to be seen again."
@@ -3702,7 +3702,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died defending r_c from a hawk",
@@ -3751,7 +3751,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was carried away by an eagle."
@@ -3788,7 +3788,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was swept away by the river.",
@@ -3821,7 +3821,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was taken by a hawk."
@@ -3850,7 +3850,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c failed to thrive."
@@ -3887,7 +3887,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c fell into the river and drowned.",
@@ -3993,7 +3993,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died when {PRONOUN/m_c/subject} snuck out of burrow."
@@ -4027,7 +4027,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died when {PRONOUN/m_c/subject} got into the herb stores and ate deathberries."
@@ -4056,7 +4056,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed by a snake."
@@ -4085,7 +4085,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died of kittencough."
@@ -4122,7 +4122,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -4160,7 +4160,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -4207,7 +4207,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed in battle training with r_c."
@@ -4289,7 +4289,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c ate deathberries and succumbed to the poison."
@@ -4376,7 +4376,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c drowned in a stream while r_c watched."
@@ -4451,7 +4451,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed when o_c_n rabbits broke into burrow.",
@@ -4505,7 +4505,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed when o_c_n rabbits broke into burrow.",
@@ -4577,7 +4577,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed by a o_c_n rabbit while trying to aid an injured Warrenmate.",
@@ -4640,7 +4640,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died of greencough."
@@ -4671,7 +4671,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died while wandering the territory.",
@@ -4764,7 +4764,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed by a fox.",
@@ -4798,7 +4798,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed by a badger.",
@@ -4832,7 +4832,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed by a dog.",
@@ -4858,7 +4858,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died of whitecough.",
@@ -4884,7 +4884,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c succumbed to illness.",
@@ -4910,7 +4910,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died of greencough.",
@@ -4942,7 +4942,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died of a heart attack due to stress.",
@@ -4977,7 +4977,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died when {PRONOUN/m_c/subject} {VERB/m_c/were/was} struck by lightning.",
@@ -5013,7 +5013,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was swept away by a flood.",
@@ -5046,7 +5046,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c fell from a tall tree.",
@@ -5079,7 +5079,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was mauled by a dog.",
@@ -5112,7 +5112,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed by a badger.",
@@ -5145,7 +5145,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed in a fight with a rogue.",
@@ -5169,7 +5169,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was bitten by a venomous spider.",
@@ -5193,7 +5193,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died after eating tainted fresh-kill.",
@@ -5224,7 +5224,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "failed to interpret a warning from Inle"
@@ -5278,7 +5278,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died defending r_c from a dog",
@@ -5350,7 +5350,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died defending r_c from a badger.",
@@ -5422,7 +5422,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -5490,7 +5490,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died saving r_c from drowning.",
@@ -5557,7 +5557,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died saving r_c from a monster.",
@@ -5626,7 +5626,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died saving r_c from a snake.",
@@ -5690,7 +5690,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died defending the kits from o_c_n rabbits",
@@ -5761,7 +5761,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died defending r_c from o_c_n rabbits.",
@@ -5819,7 +5819,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed by a o_c_n rusasirah.",
@@ -5870,7 +5870,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died trying to save an rusasirah from o_c_n.",
@@ -5912,7 +5912,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "succumbed to old age"
@@ -5946,7 +5946,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "succumbed to old age"
@@ -5977,7 +5977,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "{VERB/m_c/were/was} brutally attacked by a rogue"
@@ -6008,7 +6008,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "{VERB/m_c/were/was} mauled by dogs"
@@ -6048,7 +6048,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "{VERB/m_c/were/was} killed in a fire trying to save {PRONOUN/m_c/poss} Warrenmates"
@@ -6082,7 +6082,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "{VERB/m_c/were/was} brutally murdered by a rabbit from o_c_n"
@@ -6122,7 +6122,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "{VERB/m_c/were/was} brutally murdered by the chief rabbit of o_c_n"
@@ -6162,7 +6162,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "{VERB/m_c/were/was} brutally murdered by the captain of o_c_n"
@@ -6198,7 +6198,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "contracted greencough"
@@ -6228,7 +6228,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "contracted whitecough"
@@ -6258,7 +6258,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "contracted yellowcough"
@@ -6292,7 +6292,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "died of old age"
@@ -6326,7 +6326,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "died of old age"
@@ -6358,7 +6358,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "died of old age"
@@ -6392,7 +6392,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "died of old age"
@@ -6426,7 +6426,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "died of old age"
@@ -6476,7 +6476,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was pushed under a monster by r_c.",
@@ -6567,7 +6567,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "{VERB/m_c/were/was} murdered by r_c"
@@ -6658,13 +6658,13 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "{VERB/m_c/were/was} murdered by r_c in an attempt to usurp {PRONOUN/m_c/poss} position"
             },
             {
-                "rabbits": [
+                "cats": [
                     "r_c"
                 ],
                 "reg_death": "m_c was killed by r_c in self-defense."
@@ -6747,7 +6747,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "{VERB/m_c/were/was} indirectly murdered by r_c in a fatal dog attack"
@@ -6868,7 +6868,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "saved a drowning kit that was set up by r_c"
@@ -6927,7 +6927,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "became a bit too curious"
@@ -6983,7 +6983,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "defended r_c from o_c_n rabbits"
@@ -7015,7 +7015,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died in a training accident."
@@ -7077,7 +7077,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed by o_c_n rabbits after accidentally trespassing."
@@ -7125,7 +7125,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed by o_c_n rabbits after deliberately trespassing."
@@ -7179,7 +7179,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed in battle training with r_c."
@@ -7248,7 +7248,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c froze to death."
@@ -7283,7 +7283,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c froze to death after falling through ice."
@@ -7312,7 +7312,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was eaten by a predator."
@@ -7340,7 +7340,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was eaten by a predator."
@@ -7369,7 +7369,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed by a rat."
@@ -7400,7 +7400,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was eaten by a raccoon."
@@ -7425,7 +7425,7 @@
         "event_text": "multi_cat drown after the burrow becomes flooded.",
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "multi_cat"
                 ],
                 "reg_death": "m_c drowned when the burrow flooded.",
@@ -7484,7 +7484,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "multi_cat"
                 ],
                 "reg_death": "m_c was killed by a rogue ambush.",
@@ -7516,7 +7516,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "multi_cat"
                 ],
                 "reg_death": "m_c was killed in a badger attack.",
@@ -7540,7 +7540,7 @@
         "event_text": "multi_cat freeze during a snowstorm.",
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "multi_cat"
                 ],
                 "reg_death": "m_c died in a snowstorm.",
@@ -7564,7 +7564,7 @@
         "event_text": "multi_cat die after the water dries up from a drought.",
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "multi_cat"
                 ],
                 "reg_death": "m_c died to a drought.",
@@ -7590,7 +7590,7 @@
         "event_text": "multi_cat die to a greencough outbreak.",
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "multi_cat"
                 ],
                 "reg_death": "m_c died from greencough.",
@@ -7616,7 +7616,7 @@
         "event_text": "multi_cat starve when no prey can be found.",
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "multi_cat"
                 ],
                 "reg_death": "m_c starved.",
@@ -7642,7 +7642,7 @@
         "event_text": "multi_cat eat tainted fresh-kill and die.",
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "multi_cat"
                 ],
                 "reg_death": "m_c died from tainted fresh-kill.",
@@ -7693,7 +7693,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed by a fox that snuck into burrow.",
@@ -7740,7 +7740,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "r_c"
                 ],
                 "injuries": [
@@ -7750,7 +7750,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -7807,7 +7807,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died after r_c killed {PRONOUN/m_c/object} during a battle with o_c_n.",
@@ -7896,7 +7896,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died when the o_c_n captain killed {PRONOUN/m_c/object} in battle, r_c allowed {PRONOUN/m_c/poss} death to happen.",
@@ -7983,7 +7983,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died when r_c lured {PRONOUN/m_c/object} into a Twoleg trap.",
@@ -8059,7 +8059,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was murdered by r_c.",
@@ -8130,13 +8130,13 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "{VERB/m_c/were/was} murdered by r_c"
             },
             {
-                "rabbits": [
+                "cats": [
                     "r_c"
                 ],
                 "reg_death": "r_c died after launching a failed assassination attempt on the Warren's chief rabbit."

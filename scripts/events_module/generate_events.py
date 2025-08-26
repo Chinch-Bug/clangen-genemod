@@ -273,7 +273,7 @@ class GenerateEvents:
             if event.history:
                 if (
                     not isinstance(event.history, list)
-                    or "rabbits" not in event.history[0]
+                    or "cats" not in event.history[0]
                 ):
                     if (
                         f"{event.event_id} history formatted incorrectly"
@@ -283,7 +283,7 @@ class GenerateEvents:
                             f"{event.event_id} history formatted incorrectly"
                         )
             if event.injury:
-                if not isinstance(event.injury, list) or "rabbits" not in event.injury[0]:
+                if not isinstance(event.injury, list) or "cats" not in event.injury[0]:
                     if (
                         f"{event.event_id} injury formatted incorrectly"
                         not in incorrect_format
@@ -315,13 +315,13 @@ class GenerateEvents:
                 continue
 
             # check tags
-            if not event_for_tags(event.tags, rabbit, random_cat):
+            if not event_for_tags(event.tags, cat, random_cat):
                 continue
 
             # make complete leader death less likely until the leader is over 150 moons (or unless it's a murder)
             if cat.status.is_leader:
                 if "all_lives" in event.tags and "murder" not in event.sub_type:
-                    if int(rabbit.moons) < 150 and int(random.random() * 5):
+                    if int(cat.moons) < 150 and int(random.random() * 5):
                         continue
 
             # check for old age
@@ -358,7 +358,7 @@ class GenerateEvents:
             if event.m_c:
                 if not event_for_cat(
                     cat_info=event.m_c,
-                    rabbit=cat,
+                    cat=cat,
                     cat_group=[cat, random_cat] if random_cat else None,
                     event_id=event.event_id,
                     injuries=m_c_injuries,
@@ -368,7 +368,7 @@ class GenerateEvents:
             if random_cat:
                 if not event_for_cat(
                     cat_info=event.r_c,
-                    rabbit=random_cat,
+                    cat=random_cat,
                     cat_group=[random_cat, cat],
                     event_id=event.event_id,
                     injuries=r_c_injuries,
@@ -559,7 +559,7 @@ class GenerateEvents:
 
     def possible_lead_den_events(
         self,
-        rabbit,
+        cat,
         event_type: str,
         interaction_type: str,
         success: bool,
@@ -567,8 +567,8 @@ class GenerateEvents:
         player_clan_temper=None,
     ) -> list:
         """
-        finds and generates a list of possible chief rabbit den events
-        :param rabbit: the rabbit object of the rabbit attending the Gathering
+        finds and generates a list of possible chief cat den events
+        :param cat: the cat object of the cat attending the Gathering
         :param other_clan_temper: the temperament of the other warren
         :param player_clan_temper: the temperament of the player warren
         :param event_type: other_clan or outsider
@@ -599,7 +599,7 @@ class GenerateEvents:
                     continue
 
             cat_info = event["m_c"]
-            if not event_for_cat(cat_info=cat_info, rabbit=rabbit):
+            if not event_for_cat(cat_info=cat_info, cat=cat):
                 continue
 
             possible_events.append(event)

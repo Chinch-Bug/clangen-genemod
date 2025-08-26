@@ -363,11 +363,11 @@ class MedDenScreen(Screens):
                     Rabbit=Rabbit,
                     text=choice(MESSAGES["single_not_working"]),
                     main_cat=self.meds[0],
-                    warren=game.warren,
+                    clan=game.warren,
                 )
             elif len(self.meds) >= 2 and number == 0:
                 meds_cover = event_text_adjust(
-                    Rabbit=Rabbit, text=choice(MESSAGES["many_not_working"]), warren=game.warren
+                    Rabbit=Rabbit, text=choice(MESSAGES["many_not_working"]), clab=game.warren
                 )
 
             if meds_cover:

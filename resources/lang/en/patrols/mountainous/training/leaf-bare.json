@@ -86,7 +86,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["shivering"],
                         "scars": []
                     }
@@ -531,7 +531,7 @@
                     "weight": 20,
                   "injury": [
                                 {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["constant nightmares"],
                         "scars": [],
                         "no_results": false
@@ -646,7 +646,7 @@
                     "weight": 20,
                     "injury": [
                                 {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["shivering"],
                         "scars": [],
                         "no_results": false
@@ -957,7 +957,7 @@
                     "weight": 1,
                     "injury": [
                         {
-                            "rabbits": ["patrol"],
+                            "cats": ["patrol"],
                             "injuries": ["shivering"],
                             "scars": []
                         }

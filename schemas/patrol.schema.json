@@ -101,7 +101,7 @@
           "items": {
             "type": "object",
             "properties": {
-              "rabbits": {
+              "cats": {
                 "description": "Which rabbits are injured.",
                 "type": "array",
                 "items": {

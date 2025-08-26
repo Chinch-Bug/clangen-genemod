@@ -417,7 +417,7 @@ class TestUpdateMentor(unittest.TestCase):
         app.update_mentor(mentor.ID)
 
         # when
-        self.assertTrue(app.ID in mentor.rusasirah)
+        self.assertTrue(app.ID in mentor.apprentice)
         self.assertFalse(app.ID in mentor.former_apprentices)
         self.assertEqual(app.mentor, mentor.ID)
 
@@ -425,7 +425,7 @@ class TestUpdateMentor(unittest.TestCase):
         app.update_mentor()
 
         # then
-        self.assertFalse(app.ID in mentor.rusasirah)
+        self.assertFalse(app.ID in mentor.apprentice)
         self.assertTrue(app.ID in mentor.former_apprentices)
         self.assertIsNone(app.mentor)
 

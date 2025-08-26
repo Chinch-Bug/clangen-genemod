@@ -624,7 +624,7 @@
         ],
         "injury": [
            {
-            "rabbits": ["n_c:0"],
+            "cats": ["n_c:0"],
             "injuries": ["battle_injury", "big_bite_injury"]
            }
         ],

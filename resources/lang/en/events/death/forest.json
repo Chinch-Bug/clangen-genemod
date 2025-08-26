@@ -23,7 +23,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was crushed by a falling branch.",
@@ -57,7 +57,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c fell out of a tree while trying to escape from a dog.",
@@ -81,7 +81,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was crushed by a falling tree.",
@@ -111,7 +111,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was carried away by an owl."
@@ -156,7 +156,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was grabbed by an owl, never to be seen again."

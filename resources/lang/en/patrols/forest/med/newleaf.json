@@ -1512,7 +1512,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["minor_injury"],
                         "scars": []
                     }
@@ -1610,7 +1610,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["minor_injury"],
                         "scars": []
                     }
@@ -1713,7 +1713,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["minor_injury"],
                         "scars": []
                     }
@@ -2353,7 +2353,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["p_l"],
+                        "cats": ["p_l"],
                         "injuries": ["sore"],
                         "scars": []
                     }
@@ -2476,7 +2476,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["patrol"],
+                        "cats": ["patrol"],
                         "injuries": ["sore"],
                         "scars": []
                     }
@@ -5195,7 +5195,7 @@
                 "weight": 20,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["torn pelt"],
                         "scars": ["SCRATCHSIDE"]
                     }
@@ -5273,7 +5273,7 @@
                 "weight": 20,
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["poisoned"],
                         "scars": []
                     }
@@ -5298,12 +5298,12 @@
                 "weight": 20,
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["stomachache"],
                         "scars": []
                     },
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["diarrhea"],
                         "scars": []
                     }

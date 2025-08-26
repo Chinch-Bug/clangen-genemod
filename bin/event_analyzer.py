@@ -58,7 +58,7 @@ valid_records = {
         "low_lives": [],
     },
     "new_accessory": {},
-    "injury": {"rabbits": {"m_c": [], "r_c": [], "n_c": []}, "injuries": {}, "scars": {}},
+    "injury": {"cats": {"m_c": [], "r_c": [], "n_c": []}, "injuries": {}, "scars": {}},
     "m_c": {
         "age": {
             "any": [],
@@ -484,7 +484,7 @@ invalid_records = {
     "tags": {},
     "new_accessory": {},
     "weight": [],
-    "injury": {"rabbits": {}, "injuries": {}, "scars": {}, "history": {missing: []}},
+    "injury": {"cats": {}, "injuries": {}, "scars": {}, "history": {missing: []}},
     "m_c": {
         "age": {},
         "status": {},
@@ -801,20 +801,20 @@ def ea_split(events):
                     )
                     break
 
-                if "rabbits" in injury:
+                if "cats" in injury:
                     ea_add_records(
                         event_id,
-                        injury["rabbits"],
-                        valid_records["injury"]["rabbits"],
-                        invalid_records["injury"]["rabbits"],
+                        injury["cats"],
+                        valid_records["injury"]["cats"],
+                        invalid_records["injury"]["cats"],
                         validation={
                             "type": "startswith",
-                            "data": valid_records["injury"]["rabbits"].keys(),
+                            "data": valid_records["injury"]["cats"].keys(),
                         },
                     )
                 else:
                     ea_invalid_record(
-                        event_id, missing, invalid_records["injury"]["rabbits"]
+                        event_id, missing, invalid_records["injury"]["cats"]
                     )
 
                 if "injuries" in injury:
@@ -1057,9 +1057,9 @@ def ea_problems():
     ea_header("Injury Errors", trailing_newline=False, big=True)
     no_injury_errors = True
 
-    if any(invalid_records["injury"]["rabbits"].values()):
+    if any(invalid_records["injury"]["cats"].values()):
         ea_header("Missing/invalid rabbits")
-        ea_dump_records(invalid_records["injury"]["rabbits"])
+        ea_dump_records(invalid_records["injury"]["cats"])
         no_injury_errors = False
 
     if any(invalid_records["injury"]["injuries"].values()):

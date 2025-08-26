@@ -1953,7 +1953,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["bite-wound"],
                         "scars": ["NECKBITE"]
                     }
@@ -1977,7 +1977,7 @@
                 "stat_trait": ["troublesome", "vengeful", "bloodthirsty", "bold"],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["bite-wound"],
                         "scars": ["NECKBITE"]
                     }
@@ -2110,7 +2110,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["bite-wound"],
                         "scars": ["THREE"]
                     }
@@ -2137,7 +2137,7 @@
                 "stat_trait": ["troublesome", "vengeful", "bloodthirsty", "bold"],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["bite-wound"],
                         "scars": ["THREE"]
                     }
@@ -2252,7 +2252,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -2276,7 +2276,7 @@
                 "stat_trait": ["troublesome", "vengeful", "bloodthirsty", "bold"],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -2388,7 +2388,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -2412,7 +2412,7 @@
                 "stat_trait": ["troublesome", "vengeful", "bloodthirsty", "bold"],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -2545,7 +2545,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["THREE"]
                     }
@@ -2573,7 +2573,7 @@
                 "stat_trait": ["troublesome", "vengeful", "bloodthirsty", "bold"],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["THREE"]
                     }
@@ -2721,7 +2721,7 @@
                 "stat_trait": ["troublesome", "vengeful", "bloodthirsty", "bold"],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["bite-wound"],
                         "scars": ["NECKBITE"]
                     }
@@ -2984,7 +2984,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["bite-wound"],
                         "scars": ["THREE"]
                     }
@@ -3008,7 +3008,7 @@
                 "stat_trait": ["troublesome", "vengeful", "bloodthirsty", "bold"],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["bite-wound"],
                         "scars": ["THREE"]
                     }
@@ -3150,7 +3150,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -3185,7 +3185,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -3327,7 +3327,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["LEGBITE"]
                     }
@@ -3362,7 +3362,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["LEGBITE"]
                     }
@@ -3504,7 +3504,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["RIGHTBLIND"]
                     }
@@ -3539,7 +3539,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["RIGHTBLIND"]
                     }
@@ -3696,7 +3696,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -3731,7 +3731,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -3888,7 +3888,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -3922,7 +3922,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -4018,7 +4018,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["ONE"]
                     }
@@ -4044,7 +4044,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["ONE"]
                     }
@@ -4147,7 +4147,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -4171,7 +4171,7 @@
                 "stat_trait": ["troublesome", "vengeful", "bloodthirsty", "bold"],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -4283,7 +4283,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -4307,7 +4307,7 @@
                 "stat_trait": ["troublesome", "vengeful", "bloodthirsty", "bold"],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -4440,7 +4440,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["MANLEG"]
                     }
@@ -4468,7 +4468,7 @@
                 "stat_trait": ["troublesome", "vengeful", "bloodthirsty", "bold"],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["MANLEG"]
                     }
@@ -4616,7 +4616,7 @@
                 "stat_trait": ["troublesome", "vengeful", "bloodthirsty", "bold"],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["bite-wound"],
                         "scars": ["NECKBITE"]
                     }
@@ -4879,7 +4879,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["bite-wound"],
                         "scars": ["THREE"]
                     }
@@ -4903,7 +4903,7 @@
                 "stat_trait": ["troublesome", "vengeful", "bloodthirsty", "bold"],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["bite-wound"],
                         "scars": ["THREE"]
                     }
@@ -5045,7 +5045,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["LEGBITE"]
                     }
@@ -5080,7 +5080,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["LEGBITE"]
                     }
@@ -5222,7 +5222,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -5257,7 +5257,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -5397,7 +5397,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["LEFTBLIND"]
                     }
@@ -5431,7 +5431,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["LEFTBLIND"]
                     }
@@ -5587,7 +5587,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -5622,7 +5622,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -5779,7 +5779,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -5813,7 +5813,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -5909,7 +5909,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["CHEEK"]
                     }
@@ -5935,7 +5935,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["small_bite_injury"],
                         "scars": ["CHEEK"]
                     }
@@ -6120,7 +6120,7 @@
                 "stat_skill": ["RUNNER,1"],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["sprain"],
                         "scars": []
                     }
@@ -6188,7 +6188,7 @@
                 "stat_skill": ["RUNNER,1"],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["sprain"],
                         "scars": []
                     }
@@ -6267,7 +6267,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["r_c", "some_clan"],
+                        "cats": ["r_c", "some_clan"],
                         "injuries": ["poisoned"],
                         "scars": []
                     }
@@ -6332,7 +6332,7 @@
                     ],
                     "injury": [
                         {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["water in their lungs"],
                         "no_results": false
                         }

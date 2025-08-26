@@ -67,7 +67,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["quilled by a porcupine"],
                         "scars": ["QUILLSCRATCH"]
                     }
@@ -142,7 +142,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["quilled by a porcupine"],
                         "scars": ["QUILLSCRATCH"]
                     }
@@ -342,7 +342,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["sprain"],
                         "scars": ["TOETRAP"]
                     }
@@ -402,7 +402,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["ONE"]
                     }
@@ -554,7 +554,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -646,7 +646,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -812,7 +812,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -1154,7 +1154,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["minor_injury"],
                         "scars": ["LEFTEAR"]
                     }
@@ -1421,7 +1421,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -1495,7 +1495,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -1730,7 +1730,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["torn pelt"],
                         "scars": []
                     }
@@ -2282,7 +2282,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["blunt_force_injury"],
                         "scars": ["MANLEG"]
                     }
@@ -2370,7 +2370,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["blunt_force_injury"],
                         "scars": ["MANTAIL"]
                     }
@@ -2453,7 +2453,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["blunt_force_injury"],
                         "scars": ["MANLEG"]
                     }
@@ -2541,7 +2541,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["blunt_force_injury"],
                         "scars": ["MANTAIL"]
                     }
@@ -3056,7 +3056,7 @@
                 "weight": 20,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["shock"]
                     }
                 ],
@@ -3400,7 +3400,7 @@
                 "stat_skill": ["RUNNER,1"],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["sprain"],
                         "scars": []
                     }
@@ -3468,7 +3468,7 @@
                 "stat_skill": ["RUNNER,1"],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["sprain"],
                         "scars": []
                     }
@@ -3547,7 +3547,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["r_c", "some_clan"],
+                        "cats": ["r_c", "some_clan"],
                         "injuries": ["poisoned"],
                         "scars": []
                     }

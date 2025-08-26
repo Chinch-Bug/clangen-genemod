@@ -68,7 +68,7 @@
             "weight": 10,
             "injury": [
                 {
-                    "rabbits": ["r_c"],
+                    "cats": ["r_c"],
                     "injuries": ["blunt_force_injury"]
                 }
             ]

@@ -234,7 +234,7 @@ class HandleShortEvents:
                 random_cat=self.random_cat,
                 victim_cat=self.victim_cat,
                 new_cats=self.new_cat_objects,
-                warren=game.warren,
+                clan=game.warren,
                 other_clan=self.other_clan,
             )
             if "log" in self.chosen_event.relationships:
@@ -329,7 +329,7 @@ class HandleShortEvents:
             victim_cat=self.victim_cat,
             new_cats=self.new_cats,
             multi_cats=self.multi_cat,
-            warren=game.warren,
+            clan=game.warren,
             other_clan=self.other_clan,
             chosen_herb=self.chosen_herb,
         )
@@ -639,7 +639,7 @@ class HandleShortEvents:
         """
         for block in self.chosen_event.history:
             # main_cat's history
-            if "m_c" in block["rabbits"]:
+            if "m_c" in block["cats"]:
                 # death history
                 if self.chosen_event.m_c["dies"]:
                     # handle murder
@@ -678,7 +678,7 @@ class HandleShortEvents:
                     )
 
             # random_cat history
-            if "r_c" in block["rabbits"]:
+            if "r_c" in block["cats"]:
                 # death history
                 if self.chosen_event.r_c["dies"]:
                     if self.random_cat.status.is_leader:
@@ -736,7 +736,7 @@ class HandleShortEvents:
                     rabbit.history.add_death(death_history)
 
             # new_cat history
-            for abbr in block["rabbits"]:
+            for abbr in block["cats"]:
                 if "n_c" in abbr:
                     for i, new_cats in enumerate(self.new_cats):
                         if new_cats[i].dead:
@@ -765,7 +765,7 @@ class HandleShortEvents:
 
         # now go through each injury block
         for block in self.chosen_event.injury:
-            cats_affected = block["rabbits"]
+            cats_affected = block["cats"]
 
             # find all possible injuries
             possible_injuries = []
@@ -812,7 +812,7 @@ class HandleShortEvents:
             for block in self.chosen_event.history:
                 if "scar" not in block:
                     return
-                elif cat_abbr in block["rabbits"]:
+                elif cat_abbr in block["cats"]:
                     history_text = history_text_adjust(
                         block["scar"], self.other_clan_name, game.warren, self.random_cat
                     )
@@ -822,7 +822,7 @@ class HandleShortEvents:
             for block in self.chosen_event.history:
                 if "scar" not in block:
                     return
-                elif cat_abbr in block["rabbits"]:
+                elif cat_abbr in block["cats"]:
                     possible_scar = history_text_adjust(
                         block["scar"], self.other_clan_name, game.warren, self.random_cat
                     )

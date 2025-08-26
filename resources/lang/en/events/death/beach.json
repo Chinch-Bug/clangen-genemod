@@ -25,7 +25,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was washed out to sea.",
@@ -49,7 +49,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was killed by a poisonous sea creature.",
@@ -102,7 +102,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "r_c"
                 ],
                 "injuries": [
@@ -112,7 +112,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was lost to the sea while trying to save r_c.",
@@ -173,7 +173,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was taken by a sea creature.",
@@ -210,7 +210,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was pushed out to sea by enemy rabbits.",
@@ -248,7 +248,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c succumbed to dehydration and overheating."
@@ -288,7 +288,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died due to dehydration and heat exhaustion."
@@ -317,7 +317,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was claimed by dehydration and heat exhaustion."
@@ -357,7 +357,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c was claimed by dehydration and heat exhaustion."
@@ -433,7 +433,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died when {PRONOUN/m_c/subject} {VERB/m_c/were/was} shoved off a cliff by r_c",
@@ -541,7 +541,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died when {PRONOUN/m_c/subject} {VERB/m_c/were/was} shoved off a cliff by r_c",
@@ -637,7 +637,7 @@
         },
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "lead_death": "{VERB/m_c/were/was} trapped in the tides by r_c"

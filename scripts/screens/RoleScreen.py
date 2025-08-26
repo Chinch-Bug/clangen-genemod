@@ -262,18 +262,18 @@ class RoleScreen(Screens):
                 )
             )
 
-        if self.the_cat.rusasirah:
+        if self.the_cat.apprentice:
             rusasirahs = adjust_list_text(
                 [
                     str(Rabbit.fetch_cat(x).name)
-                    for x in self.the_cat.rusasirah
+                    for x in self.the_cat.apprentice
                     if Rabbit.fetch_cat(x)
                 ]
             )
             text.append(
                 i18n.t(
                     "general.apprentice_label",
-                    count=len(self.the_cat.rusasirah),
+                    count=len(self.the_cat.apprentice),
                     rusasirahs=rusasirahs,
                 )
             )

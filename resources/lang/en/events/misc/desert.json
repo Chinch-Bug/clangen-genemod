@@ -987,7 +987,7 @@
     "season": ["any"],
     "sub_type": ["transition"],
     "frequency": 2,
-    "event_text": "Under the full heat of the sun, m_c declares {PRONOUN/m_c/subject} {VERB/m_c/are/is} no she-cat.",
+    "event_text": "Under the full heat of the sun, m_c declares {PRONOUN/m_c/subject} {VERB/m_c/are/is} no doe.",
     "m_c": {
       "age": ["young adult"],
       "gender": ["female"]
@@ -1000,7 +1000,7 @@
     "season": ["any"],
     "sub_type": ["transition"],
     "frequency": 2,
-    "event_text": "The nature of things is ever changing, like sand blown on the wind. 'Tom' is no longer accurate for m_c.",
+    "event_text": "The nature of things is ever changing, like sand blown on the wind. 'Buck' is no longer accurate for m_c.",
     "m_c": {
       "gender": ["male"]
     },

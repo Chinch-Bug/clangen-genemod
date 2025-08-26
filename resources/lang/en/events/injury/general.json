@@ -21,7 +21,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -52,7 +52,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -86,7 +86,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -117,7 +117,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -148,7 +148,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -182,7 +182,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -208,7 +208,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -234,7 +234,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -264,7 +264,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -309,7 +309,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -354,7 +354,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -384,7 +384,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -414,7 +414,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -450,7 +450,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -486,7 +486,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -497,7 +497,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after taking a bad fall.",
@@ -526,7 +526,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -565,7 +565,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -607,7 +607,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -648,7 +648,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -715,7 +715,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -725,7 +725,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by r_c.",
@@ -795,7 +795,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -808,7 +808,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred while trying to save r_c from a rogue.",
@@ -901,7 +901,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -914,7 +914,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred while trying to save r_c from a dog.",
@@ -969,7 +969,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1001,7 +1001,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1014,7 +1014,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred in a fight against o_c_n.",
@@ -1052,7 +1052,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1065,7 +1065,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred in a fight against o_c_n.",
@@ -1122,7 +1122,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1132,7 +1132,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred in a fight against o_c_n.",
@@ -1177,7 +1177,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1187,7 +1187,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred in a fight against o_c_n.",
@@ -1215,7 +1215,7 @@
         "event_text": "m_c trips over an unseen rabbit hole, spraining {PRONOUN/m_c/poss} paw.",
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1249,7 +1249,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1262,7 +1262,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred as a kit by frostbite.",
@@ -1302,7 +1302,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1315,7 +1315,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred as a kit, when an eagle tried to carry {PRONOUN/m_c/object} off.",
@@ -1366,7 +1366,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1376,7 +1376,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died from water-inhalation after falling in the river.",
@@ -1406,7 +1406,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1419,7 +1419,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by frostbite.",
@@ -1451,7 +1451,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1461,7 +1461,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after slipping on ice.",
@@ -1487,7 +1487,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1497,7 +1497,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after an eagle grabbed {PRONOUN/m_c/object}."
@@ -1523,7 +1523,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1551,7 +1551,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1592,7 +1592,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1602,7 +1602,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after falling from a tall tree."
@@ -1633,7 +1633,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1668,7 +1668,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1681,7 +1681,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred when {PRONOUN/m_c/subject} fell off a cliff.",
@@ -1708,7 +1708,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1721,7 +1721,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by an eagle.",
@@ -1751,7 +1751,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1775,7 +1775,7 @@
         "m_c": {},
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1816,7 +1816,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1879,7 +1879,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1920,7 +1920,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -1977,7 +1977,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2052,7 +2052,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2106,7 +2106,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2147,7 +2147,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2209,7 +2209,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2265,7 +2265,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2319,7 +2319,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2360,7 +2360,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2373,7 +2373,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a dog.",
@@ -2430,7 +2430,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2443,7 +2443,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a fox while rescuing r_c.",
@@ -2510,7 +2510,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2523,7 +2523,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a fox while protecting r_c.",
@@ -2580,7 +2580,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2593,7 +2593,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a rogue.",
@@ -2656,7 +2656,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2669,7 +2669,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a big dog.",
@@ -2728,7 +2728,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2741,7 +2741,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a big dog while rescuing r_c.",
@@ -2800,7 +2800,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2813,7 +2813,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a hawk.",
@@ -2866,7 +2866,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2879,7 +2879,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a hawk while rescuing r_c.",
@@ -2944,7 +2944,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -2957,7 +2957,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a rogue while protecting r_c.",
@@ -3035,7 +3035,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -3050,7 +3050,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred during a harsh training exercise with r_c.",
@@ -3113,7 +3113,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -3128,7 +3128,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by o_c_n rabbits, after being ordered to go over the border by r_c.",
@@ -3206,7 +3206,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -3221,7 +3221,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a Warrenmate that r_c encouraged {PRONOUN/m_c/object} to fight.",
@@ -3291,7 +3291,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -3304,7 +3304,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a fox, while trying to follow r_c's orders.",
@@ -3372,7 +3372,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -3385,7 +3385,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a big dog, while trying to follow r_c's orders.",
@@ -3427,7 +3427,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -3440,7 +3440,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred when a hare scratched {PRONOUN/m_c/poss} eyes.",
@@ -3468,7 +3468,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -3497,7 +3497,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -3537,7 +3537,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -3549,7 +3549,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -3609,7 +3609,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -3622,7 +3622,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred fighting a rogue that {PRONOUN/m_c/poss} mentor, r_c, encouraged {PRONOUN/m_c/object} to attack.",
@@ -3713,7 +3713,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -3726,7 +3726,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred fighting an enemy rabbit that {PRONOUN/m_c/poss} mentor, r_c, encouraged {PRONOUN/m_c/object} to attack.",
@@ -3802,7 +3802,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -3815,7 +3815,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred fighting a dog that {PRONOUN/m_c/poss} mentor, r_c, encouraged {PRONOUN/m_c/object} to attack.",
@@ -3885,7 +3885,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -3898,7 +3898,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred fighting a fox that {PRONOUN/m_c/poss} mentor, r_c, encouraged {PRONOUN/m_c/object} to attack.",
@@ -3975,7 +3975,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -3988,7 +3988,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by {PRONOUN/m_c/poss} mentor, r_c's, harsh training.",
@@ -4047,7 +4047,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4076,7 +4076,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4102,7 +4102,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4136,7 +4136,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4170,7 +4170,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4213,7 +4213,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4246,7 +4246,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4285,7 +4285,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4319,7 +4319,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4362,7 +4362,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4405,7 +4405,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4458,7 +4458,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4473,7 +4473,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by {PRONOUN/m_c/poss} mentor, r_c, for failing to defend the territory well enough.",
@@ -4536,7 +4536,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4551,7 +4551,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by {PRONOUN/m_c/poss} mentor, r_c, for accidentally crossing the border.",
@@ -4626,7 +4626,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4641,7 +4641,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by {PRONOUN/m_c/poss} mentor, r_c, for messing with a Twoleg object.",
@@ -4711,7 +4711,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4724,7 +4724,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by {PRONOUN/m_c/poss} mentor, r_c, during battle training.",
@@ -4794,7 +4794,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4809,7 +4809,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by {PRONOUN/m_c/poss} mentor, r_c, for disobeying {PRONOUN/r_c/object}.",
@@ -4877,7 +4877,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4892,7 +4892,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred after fighting with {PRONOUN/m_c/poss} mentor, r_c.",
@@ -4969,7 +4969,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -4982,7 +4982,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by {PRONOUN/m_c/poss} mentor, r_c's, harsh training.",
@@ -5046,7 +5046,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5059,7 +5059,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by {PRONOUN/m_c/poss} mentor, r_c, when {PRONOUN/r_c/subject} used a Twoleg trap for training.",
@@ -5108,7 +5108,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5141,7 +5141,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5154,7 +5154,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a snake bite.",
@@ -5187,7 +5187,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5220,7 +5220,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5253,7 +5253,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5286,7 +5286,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5319,7 +5319,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5352,7 +5352,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5385,7 +5385,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5418,7 +5418,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5447,7 +5447,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5476,7 +5476,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5520,7 +5520,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5553,7 +5553,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5598,7 +5598,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5645,7 +5645,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5702,7 +5702,7 @@
         ],
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5715,7 +5715,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred when {PRONOUN/m_c/subject} fought a trespassing rogue.",
@@ -5748,7 +5748,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5761,7 +5761,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a Twoleg trap.",
@@ -5817,7 +5817,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5830,7 +5830,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was maimed by r_c for questioning {PRONOUN/r_c/poss} leadership.",
@@ -5882,7 +5882,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5895,7 +5895,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a dog.",
@@ -5928,7 +5928,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -5941,7 +5941,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a fox.",
@@ -5994,7 +5994,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6005,7 +6005,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by r_c for disobeying orders.",
@@ -6074,7 +6074,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6085,7 +6085,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by r_c for speaking out against {PRONOUN/r_c/object}.",
@@ -6148,7 +6148,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6163,7 +6163,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by r_c to make an example out of {PRONOUN/m_c/object}.",
@@ -6213,7 +6213,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6242,7 +6242,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6272,7 +6272,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6285,7 +6285,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c, unbelievably, was scarred when {PRONOUN/m_c/subject} tried to eat a bee.",
@@ -6319,7 +6319,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6332,7 +6332,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c's ear was torn when {PRONOUN/m_c/subject} accidentally crossed the border and was caught by an enemy rabbit.",
@@ -6373,7 +6373,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6386,7 +6386,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c's ear was torn in a scuffle when {PRONOUN/m_c/subject} chased off an enemy rabbit.",
@@ -6424,7 +6424,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6437,7 +6437,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred when {PRONOUN/m_c/subject} {VERB/m_c/were/was} attacked by a group of rats.",
@@ -6464,7 +6464,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6477,7 +6477,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c, unbelievably, was scarred when {PRONOUN/m_c/subject} stepped on a bee.",
@@ -6506,7 +6506,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6519,7 +6519,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a swarm of bees.",
@@ -6548,7 +6548,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6577,7 +6577,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6617,7 +6617,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6627,7 +6627,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred after falling into a o_c_n trap.",
@@ -6687,7 +6687,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6698,7 +6698,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred in a fight against o_c_n.",
@@ -6758,7 +6758,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -6769,7 +6769,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -6809,7 +6809,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6819,7 +6819,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c {VERB/m_c/were/was} hurt while defending the fresh-kill pile from rats.",
@@ -6863,7 +6863,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6872,7 +6872,7 @@
                 "scars": []
             },
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6883,7 +6883,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred after a skirmish with a warring Warren.",
@@ -6918,7 +6918,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6934,7 +6934,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred after bringing herbs to a warring Warren.",
@@ -6978,7 +6978,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -6994,7 +6994,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred after bringing herbs to a warring Warren.",
@@ -7046,7 +7046,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -7056,7 +7056,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred after a vicious attack from a warring Warren.",
@@ -7102,7 +7102,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -7113,7 +7113,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred after protecting an enemy rabbit.",
@@ -7155,7 +7155,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -7206,7 +7206,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -7217,7 +7217,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c gained a scar from a border skirmish.",

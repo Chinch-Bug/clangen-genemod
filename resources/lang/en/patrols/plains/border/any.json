@@ -86,7 +86,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["battle_injury"],
                         "scars": ["RIGHTBLIND"]
                     }
@@ -246,7 +246,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["battle_injury"],
                         "scars": ["THROAT"]
                     }
@@ -359,7 +359,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["battle_injury"],
                         "scars": ["BRIDGE"]
                     }
@@ -458,7 +458,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["battle_injury"],
                         "scars": ["BRIDGE"]
                     }
@@ -546,7 +546,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["battle_injury"],
                         "scars": ["CHEEK"]
                     }
@@ -688,7 +688,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["battle_injury"],
                         "scars": ["BRIDGE"]
                     }
@@ -839,7 +839,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["battle_injury"],
                         "scars": ["BRIDGE"]
                     }
@@ -925,7 +925,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["battle_injury"],
                         "scars": ["CHEEK"]
                     }
@@ -1418,7 +1418,7 @@
                 "weight": 20,
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["shock", "minor_injury", "non_lethal"]
                     }
                 ]

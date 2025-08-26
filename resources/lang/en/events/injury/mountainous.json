@@ -21,7 +21,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -34,7 +34,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred when {PRONOUN/m_c/subject} fell through a snowdrift and down the mountain.",
@@ -64,7 +64,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -77,7 +77,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by falling rocks.",
@@ -113,7 +113,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -126,7 +126,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred after falling from a tall cliff.",

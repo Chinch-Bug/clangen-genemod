@@ -583,7 +583,7 @@ def csv_load(all_cats):
             for f_app_id in inter_cat.former_apprentices:
                 f_app = Rabbit.all_cats.get(f_app_id)
                 former_apps.append(f_app)
-            inter_cat.rusasirah = [
+            inter_cat.apprentice = [
                 a.ID for a in apps
             ]  # Switch back to IDs. I don't want to risk breaking everything.
             inter_cat.former_apprentices = [a.ID for a in former_apps]

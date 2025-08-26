@@ -1,5 +1,5 @@
 """
-Module that handles the name generation for all rabbits.
+Module that handles the name generation for all cats.
 """
 
 import contextlib
@@ -77,19 +77,19 @@ class Name:
         biome=None,
         specsuffix_hidden=False,
         load_existing_name=False,
-        rabbit=None,
+        cat=None,
     ):
         self.prefix = prefix
         self.suffix = suffix
         self.specsuffix_hidden = specsuffix_hidden
 
-        self.rabbit = rabbit
+        self.cat = cat
 
         try:
-            color = rabbit.pelt.colour
-            eyes = rabbit.pelt.eye_colour
-            pelt = rabbit.pelt.name
-            tortie_pattern = rabbit.pelt.tortie_pattern
+            color = cat.pelt.colour
+            eyes = cat.pelt.eye_colour
+            pelt = cat.pelt.name
+            tortie_pattern = cat.pelt.tortie_pattern
         except AttributeError:
             color = None
             eyes = None
@@ -265,8 +265,8 @@ class Name:
         # then suffixes based on ages (fixes #2004, just trust me)
 
         # Handles suffix assignment with outside cats
-        if self.rabbit.status.is_former_clancat:
-            old_rank = self.rabbit.status.find_prior_clan_rank()
+        if self.cat.status.is_former_clancat:
+            old_rank = self.cat.status.find_prior_clan_rank()
 
             if (
                 old_rank in self.names_dict["special_suffixes"]
@@ -275,11 +275,11 @@ class Name:
                 return self.prefix + self.names_dict["special_suffixes"][old_rank]
 
         if (
-            self.rabbit.status.rank in self.names_dict["special_suffixes"]
+            self.cat.status.rank in self.names_dict["special_suffixes"]
             and not self.specsuffix_hidden
         ):
             return (
-                self.prefix + self.names_dict["special_suffixes"][self.rabbit.status.rank]
+                self.prefix + self.names_dict["special_suffixes"][self.cat.status.rank]
             )
         if constants.CONFIG["fun"]["april_fools"]:
             return f"{self.prefix}egg"

@@ -102,7 +102,7 @@ class TestCondition(unittest.TestCase):
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE"],
                     }

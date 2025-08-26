@@ -73,7 +73,7 @@
                     "weight": 20,
                     "injury": [
                         {
-                            "rabbits": ["multi"],
+                            "cats": ["multi"],
                             "injuries": ["dehydrated"],
                             "scars": []
                         }

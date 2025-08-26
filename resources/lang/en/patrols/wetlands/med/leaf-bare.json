@@ -299,7 +299,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": [
+                        "cats": [
                             "r_c"
                         ],
                         "injuries": [
@@ -499,7 +499,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": [
+                        "cats": [
                             "r_c"
                         ],
                         "injuries": [

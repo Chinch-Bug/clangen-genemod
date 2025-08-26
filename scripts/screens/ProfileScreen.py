@@ -928,10 +928,10 @@ class ProfileScreen(Screens):
 
         # CURRENT RUSASIRAHS
         # Optional - only shows up if the rabbit has an rusasirah currently
-        if the_cat.rusasirah:
+        if the_cat.apprentice:
             apps = [
                 str(Rabbit.fetch_cat(i).name)
-                for i in the_cat.rusasirah
+                for i in the_cat.apprentice
                 if Rabbit.fetch_cat(i)
             ]
             if len(apps) > 0:

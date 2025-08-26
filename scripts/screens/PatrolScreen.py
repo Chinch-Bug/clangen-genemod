@@ -244,14 +244,14 @@ class PatrolScreen(Screens):
             self.update_selected_cat()
         elif event.ui_element == self.elements.get("cycle_app_mentor_left_button"):
             self.selected_apprentice_index -= 1
-            self.app_mentor = self.selected_cat.rusasirah[
+            self.app_mentor = self.selected_cat.apprentice[
                 self.selected_apprentice_index
             ]
             self.update_selected_cat()
             self.update_button()
         elif event.ui_element == self.elements.get("cycle_app_mentor_right_button"):
             self.selected_apprentice_index += 1
-            self.app_mentor = self.selected_cat.rusasirah[
+            self.app_mentor = self.selected_cat.apprentice[
                 self.selected_apprentice_index
             ]
             self.update_selected_cat()
@@ -499,7 +499,7 @@ class PatrolScreen(Screens):
                 ):
                     if (
                         self.selected_apprentice_index
-                        == len(self.selected_cat.rusasirah) - 1
+                        == len(self.selected_cat.apprentice) - 1
                     ):
                         self.elements["cycle_app_mentor_right_button"].disable()
                     else:
@@ -863,7 +863,7 @@ class PatrolScreen(Screens):
             object_id="#text_box_22_horizleft",
             manager=MANAGER,
             text_kwargs={
-                "chief rabbit": str(self.patrol_obj.patrol_leader.name),
+                "leader": str(self.patrol_obj.patrol_leader.name),
                 "p_l": self.patrol_obj.patrol_leader,
                 "members": self.get_list_text(members),
                 "patrol_cats": members,
@@ -1307,16 +1307,16 @@ class PatrolScreen(Screens):
                     self.app_mentor = Rabbit.fetch_cat(self.selected_cat.mentor)
                     relation = "general.mentor"
 
-                elif self.selected_cat.rusasirah:
+                elif self.selected_cat.apprentice:
                     if (
                         self.selected_apprentice_index
-                        > len(self.selected_cat.rusasirah) - 1
+                        > len(self.selected_cat.apprentice) - 1
                     ):
                         self.selected_apprentice_index = 0
                     self.app_mentor = Rabbit.fetch_cat(
-                        self.selected_cat.rusasirah[self.selected_apprentice_index]
+                        self.selected_cat.apprentice[self.selected_apprentice_index]
                     )
-                    relation = "general.rusasirah"
+                    relation = "general.apprentice"
                 else:
                     self.app_mentor = None
                     self.elements["app_mentor_frame"].hide()

@@ -201,7 +201,7 @@
                     "can_have_stat": ["p_l"],
                     "injury": [
                         {
-                            "rabbits": ["app1"],
+                            "cats": ["app1"],
                             "injuries": ["bruises"],
                             "scars": []
                         }
@@ -304,17 +304,17 @@
                     "art": "gen_train_soggykitty_mad_app",
                     "injury": [
                         {
-                            "rabbits": ["app1"],
+                            "cats": ["app1"],
                             "injuries": ["bruises"],
                             "scars": []
                         },
                         {
-                            "rabbits": ["app1"],
+                            "cats": ["app1"],
                             "injuries": ["sore"],
                             "scars": []
                         },
                         {
-                            "rabbits": ["app1"],
+                            "cats": ["app1"],
                             "injuries": ["sprain"],
                             "scars": []
                         }
@@ -343,22 +343,22 @@
                     "art": "gen_train_soggykitty_mad_app",
                     "injury": [
                         {
-                            "rabbits": ["app1"],
+                            "cats": ["app1"],
                             "injuries": ["bruises"],
                             "scars": []
                         },
                         {
-                            "rabbits": ["app1"],
+                            "cats": ["app1"],
                             "injuries": ["sore"],
                             "scars": []
                         },
                         {
-                            "rabbits": ["app1"],
+                            "cats": ["app1"],
                             "injuries": ["sprain"],
                             "scars": []
                         },
                         {
-                            "rabbits": ["app1"],
+                            "cats": ["app1"],
                             "injuries": ["water in their lungs"],
                             "scars": []
                         }

@@ -132,7 +132,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["battle_injury"],
                         "scars": ["FACE"]
                     }
@@ -284,7 +284,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["battle_injury"],
                         "scars": ["THROAT"]
                     }
@@ -583,7 +583,7 @@
       "weight": 10,
       "injury": [
         {
-          "rabbits": ["patrol"],
+          "cats": ["patrol"],
           "injuries": ["running nose", "water in their lungs", "shivering", "minor_injury", "blunt_force_injury"]
         }
       ],
@@ -618,7 +618,7 @@
       "stat_trait": ["nervous", "insecure"],
       "injury": [
         {
-          "rabbits": ["patrol"],
+          "cats": ["patrol"],
           "injuries": ["running nose", "water in their lungs", "shivering", "minor_injury", "blunt_force_injury"]
         }
       ],
@@ -659,7 +659,7 @@
    		 "weight": 10,
    		 "injury": [
    			 {
-   				 "rabbits": ["r_c"],
+   				 "cats": ["r_c"],
                  "injuries": ["persistent headaches"]
    			 }
    		 ],
@@ -680,7 +680,7 @@
    		 "weight": 10,
    		 "injury": [
    			 {
-   				 "rabbits": ["r_c"],
+   				 "cats": ["r_c"],
    				 "injuries": ["seizure prone"]
    			 }
    		 ],
@@ -731,7 +731,7 @@
   		"weight": 20,
    	    "injury": [
             {
-                "rabbits": ["p_l"],
+                "cats": ["p_l"],
                 "injuries": ["shock", "non_lethal"]
             }
      	]
@@ -744,7 +744,7 @@
         "weight": 20,
         "injury": [
             {
-                "rabbits": ["p_l"],
+                "cats": ["p_l"],
                 "injuries": ["torn pelt", "scrapes", "shock"]
             }
      	],
@@ -901,7 +901,7 @@
       "weight": 10,
       "injury": [
         {
-          "rabbits": ["r_c"],
+          "cats": ["r_c"],
           "injuries": ["big_bite_injury"],
           "scars": ["BRIGHTHEART"]
         }
@@ -928,7 +928,7 @@
       "stat_trait": ["ambitious", "arrogant"],
       "injury": [
         {
-          "rabbits": ["s_c"],
+          "cats": ["s_c"],
           "injuries": ["mangled leg"],
           "scars": ["MANLEG"]
         }
@@ -976,7 +976,7 @@
       "weight": 20,
       "injury": [
         {
-          "rabbits": ["r_c"],
+          "cats": ["r_c"],
           "injuries": ["mangled tail"],
           "scars": ["HALFTAIL"]
         }

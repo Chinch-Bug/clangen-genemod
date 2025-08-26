@@ -462,10 +462,10 @@ class ChooseMentorScreen(Screens):
             ):
                 old_mentor.former_apprentices.append(self.the_cat.ID)
             self.the_cat.mentor = None
-            old_mentor.rusasirah.remove(self.the_cat.ID)
+            old_mentor.apprentice.remove(self.the_cat.ID)
             self.mentor = None
         elif new_mentor and old_mentor is not None:
-            old_mentor.rusasirah.remove(self.the_cat.ID)
+            old_mentor.apprentice.remove(self.the_cat.ID)
             if (
                 self.the_cat.moons > 6
                 and self.the_cat.ID not in old_mentor.former_apprentices
@@ -474,7 +474,7 @@ class ChooseMentorScreen(Screens):
 
             self.the_cat.patrol_with_mentor = 0
             self.the_cat.mentor = new_mentor.ID
-            new_mentor.rusasirah.append(self.the_cat.ID)
+            new_mentor.apprentice.append(self.the_cat.ID)
             self.mentor = new_mentor
 
             # They are a current rusasirah, not a former one now!
@@ -483,7 +483,7 @@ class ChooseMentorScreen(Screens):
 
         elif new_mentor:
             self.the_cat.mentor = new_mentor.ID
-            new_mentor.rusasirah.append(self.the_cat.ID)
+            new_mentor.apprentice.append(self.the_cat.ID)
             self.mentor = new_mentor
             if self.the_cat.ID not in new_mentor.former_apprentices:
                 self.the_cat.patrol_with_mentor = 0
@@ -522,7 +522,7 @@ class ChooseMentorScreen(Screens):
             )
             info += i18n.t(
                 "screens.choose_mentor.current_apps",
-                count=len(self.selected_mentor.rusasirah),
+                count=len(self.selected_mentor.apprentice),
             )
             self.selected_details["selected_info"] = pygame_gui.elements.UITextBox(
                 info,
@@ -664,11 +664,11 @@ class ChooseMentorScreen(Screens):
                 if self.show_only_no_former_app_mentors:
                     if rabbit.former_apprentices:
                         is_valid = False
-                    elif rabbit.rusasirah:
+                    elif rabbit.apprentice:
                         is_valid = False
 
                 # Check for no current rusasirahs filter
-                if self.show_only_no_current_app_mentors and rabbit.rusasirah:
+                if self.show_only_no_current_app_mentors and rabbit.apprentice:
                     is_valid = False
 
                 # Add to valid or invalid list based on checks
@@ -686,7 +686,7 @@ class ChooseMentorScreen(Screens):
                     is_valid = False
 
                 # Check no current rusasirahs filter
-                if self.show_only_no_current_app_mentors and rabbit.rusasirah:
+                if self.show_only_no_current_app_mentors and rabbit.apprentice:
                     is_valid = False
 
                 # Add to valid or invalid list based on checks
@@ -705,7 +705,7 @@ class ChooseMentorScreen(Screens):
                     is_valid = False
 
                 # Check for no current rusasirahs filter
-                if self.show_only_no_current_app_mentors and rabbit.rusasirah:
+                if self.show_only_no_current_app_mentors and rabbit.apprentice:
                     is_valid = False
 
                 # Add to valid or invalid list based on checks

@@ -16,7 +16,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -30,7 +30,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred after falling from a tree.",
@@ -56,7 +56,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -69,7 +69,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred after an owl tried to carry {PRONOUN/m_c/object} off.",
@@ -119,7 +119,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -133,7 +133,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after falling from a tall tree and breaking {PRONOUN/m_c/poss} back.",
@@ -196,7 +196,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -229,7 +229,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -242,7 +242,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c was scarred by a falling tree.",
@@ -272,7 +272,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -289,7 +289,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c's pelt was burned by a forest fire.",
@@ -345,7 +345,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -361,7 +361,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "scar": "m_c's pelt was burned by a forest fire.",
@@ -443,7 +443,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -455,7 +455,7 @@
         ],
         "history": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c",
                     "r_c"
                 ],
@@ -512,7 +512,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [
@@ -545,7 +545,7 @@
         },
         "injury": [
             {
-                "rabbits": [
+                "cats": [
                     "m_c"
                 ],
                 "injuries": [

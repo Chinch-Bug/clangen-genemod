@@ -62,7 +62,7 @@
         ]
     },
     "role": {
-        "captain": [
+        "deputy": [
             "Allow chief rabbits to automatically choose a new captain",
             "The Rabbit Code rules will be taken into account when choosing a captain.",
             false

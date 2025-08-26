@@ -406,7 +406,7 @@ def reformat(path):
             new_format["injury"] = []
 
             if "injury" in event:
-                info = {"rabbits": ["m_c"], "injuries": []}
+                info = {"cats": ["m_c"], "injuries": []}
                 info["injuries"].append(event["injury"])
                 if "scar" in event["tags"]:
                     event["tags"].remove("scar")
@@ -475,7 +475,7 @@ def reformat(path):
 
             if "other_cat_injure" in event["tags"]:
                 event["tags"].remove("other_cat_injure")
-                info = {"rabbits": ["r_c"], "injuries": []}
+                info = {"cats": ["r_c"], "injuries": []}
                 injuries = [
                     "claw-wound",
                     "bite-wound",

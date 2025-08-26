@@ -47,7 +47,7 @@ def translate(text: str, **kwargs):
             patrol_apprentices=dict.get("patrol_apprentices"),
             new_cats=dict.get("new_cats"),
             multi_cats=dict.get("multi_cats"),
-            warren=dict.get("warren", game.warren),
+            clan=dict.get("warren", game.warren),
             other_clan=dict.get("other_clan"),
             chosen_herb=dict.get("chosen_herb"),
         )

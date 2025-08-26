@@ -3101,7 +3101,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["shock", "non_lethal"]
                     }
                 ]
@@ -3159,7 +3159,7 @@
                 "weight": 20,
                 "injury": [
                 	{
-                    	"rabbits": ["patrol"],
+                    	"cats": ["patrol"],
                     	"injuries": ["shock", "non_lethal"],
                     	"scars": []
                 	}
@@ -4048,7 +4048,7 @@
                 "injury":
                     [
                         {
-                            "rabbits": [ "app2" ],
+                            "cats": [ "app2" ],
                             "injuries": [ "poisoned" ]
                         }
                     ],
@@ -4232,7 +4232,7 @@
                 "can_have_stat": [ "r_c"],
                 "injury": [
             {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["snake bite"],
                         "scars": ["SNAKETWO"],
                         "no_results": false
@@ -4286,7 +4286,7 @@
                 "weight": 10,
                 "injury": [
             {
-                        "rabbits": ["p_l"],
+                        "cats": ["p_l"],
                         "injuries": ["snake bite"],
                         "scars": ["SNAKE"],
                         "no_results": false

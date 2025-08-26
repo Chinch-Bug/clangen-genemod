@@ -113,7 +113,7 @@
                 "weight": 10,
                 "injury": [
                     {
-                      "rabbits": ["r_c"],
+                      "cats": ["r_c"],
                       "injuries": ["sprain", "sore"]
                     }
                   ],
@@ -153,11 +153,11 @@
                 "weight": 20,
                 "injury": [
                     {
-                      "rabbits": ["patrol"],
+                      "cats": ["patrol"],
                       "injuries": ["shivering"]
                     },
                     {
-                        "rabbits": ["multi"],
+                        "cats": ["multi"],
                         "injuries": ["frostbite"],
                         "scars": ["FROSTSOCK", "FROSTTAIL"],
                         "no_results": false
@@ -189,7 +189,7 @@
                 ],
                 "injury": [
                     {
-                      "rabbits": ["multi"],
+                      "cats": ["multi"],
                       "injuries": ["shivering"]
                     }
                   ],
@@ -390,7 +390,7 @@
                 "art": "gen_coyote_danger2_w2",
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["BRIGHTHEART"]
                     }
@@ -418,7 +418,7 @@
                 "stat_trait": ["ambitious", "arrogant"],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["mangled leg"],
                         "scars": ["MANLEG"]
                     }
@@ -669,7 +669,7 @@
                 "weight": 20,
                 "injury": [
                     {
-                        "rabbits": ["patrol"],
+                        "cats": ["patrol"],
                         "injuries": ["shock"],
                         "scars": []
                     }
@@ -697,12 +697,12 @@
                 "art": "gen_coyote_danger1",
                 "injury": [
                     {
-                        "rabbits": ["patrol"],
+                        "cats": ["patrol"],
                         "injuries": ["minor_injury"],
                         "scars": []
                     },
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -731,7 +731,7 @@
                 "stat_skill": ["FIGHTER,3"],
                 "injury": [
                     {
-                        "rabbits": ["multi"],
+                        "cats": ["multi"],
                         "injuries": ["minor_injury", "torn ear"],
                         "scars": ["LEFTEAR"]
                     }
@@ -818,7 +818,7 @@
                 "art": "running_two_warriors",
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["BRIGHTHEART"]
                     }
@@ -1110,7 +1110,7 @@
                 "art": "gen_coyote_danger2_w2",
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["torn ear"],
                         "scars": ["LEFTEAR"]
                     }
@@ -1129,7 +1129,7 @@
                 "art_clean": "gen_dead_cat",
                 "injury": [
                     {
-                        "rabbits": ["patrol"],
+                        "cats": ["patrol"],
                         "injuries": ["shock"],
                         "scars": []
                     }
@@ -1157,12 +1157,12 @@
                 "art": "gen_coyote_danger1",
                 "injury": [
                     {
-                        "rabbits": ["patrol"],
+                        "cats": ["patrol"],
                         "injuries": ["minor_injury"],
                         "scars": []
                     },
                     {
-                        "rabbits": ["patrol"],
+                        "cats": ["patrol"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["NECKBITE"]
                     }
@@ -1191,7 +1191,7 @@
                 "stat_skill": ["FIGHTER,3"],
                 "injury": [
                     {
-                        "rabbits": ["multi"],
+                        "cats": ["multi"],
                         "injuries": ["minor_injury", "torn ear"],
                         "scars": ["LEFTEAR"]
                     }
@@ -1236,12 +1236,12 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["multi"],
+                        "cats": ["multi"],
                         "injuries": ["big_bite_injury", "scrapes"],
                         "scars": ["NECKBITE"]
                     },
                     {
-                        "rabbits": ["multi"],
+                        "cats": ["multi"],
                         "injuries": ["scrapes"],
                         "scars": []
                     }
@@ -1278,12 +1278,12 @@
                 "stat_skill": ["HEALER,0"],
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["bite-wound"],
                         "scars": ["NECKBITE"]
                     },
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["blood loss"],
                         "scars": []
                     }
@@ -1368,7 +1368,7 @@
                 "art": "gen_coyote_danger2_w2",
                 "injury": [
                     {
-                        "rabbits": ["r_c"],
+                        "cats": ["r_c"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["BRIGHTHEART"]
                     }
@@ -1602,7 +1602,7 @@
                 "stat_skill": ["LORE,2"],
                 "injury": [
                     {
-                        "rabbits": ["multi"],
+                        "cats": ["multi"],
                         "injuries": ["shivering"],
                         "scars": ["FROSTFACE"]
                     }
@@ -1638,7 +1638,7 @@
                 "art": "gen_bord_flashflood",
                 "injury": [
                     {
-                        "rabbits": ["patrol"],
+                        "cats": ["patrol"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE"]
                     }
@@ -1665,7 +1665,7 @@
                 "art": "gen_bord_flashflood",
                 "injury": [
                     {
-                        "rabbits": ["patrol"],
+                        "cats": ["patrol"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE"]
                     }
@@ -1695,7 +1695,7 @@
                 "stat_skill": ["RUNNER,3"],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["frostbite"],
                         "scars": ["FROSTFACE"]
                     }
@@ -1732,7 +1732,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["patrol"],
+                        "cats": ["patrol"],
                         "injuries": ["frostbite"],
                         "scars": ["FROSTFACE"]
                     }
@@ -1959,7 +1959,7 @@
                 "art": "mtn_hunt_newleafsnowstorm",
                 "injury": [
                     {
-                        "rabbits": ["patrol"],
+                        "cats": ["patrol"],
                         "injuries": ["shivering"],
                         "scars": ["FROSTTAIL"]
                     }
@@ -1977,7 +1977,7 @@
                 "art": "gen_coyote1",
                 "injury": [
                     {
-                        "rabbits": ["patrol"],
+                        "cats": ["patrol"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["MANLEG"]
                     }
@@ -1995,7 +1995,7 @@
                 "art": "gen_scarybadger",
                 "injury": [
                     {
-                        "rabbits": ["p_l"],
+                        "cats": ["p_l"],
                         "injuries": ["claw-wound"],
                         "scars": ["MANLEG"]
                     }
@@ -2301,12 +2301,12 @@
                 "art": "mtn_hunt_newleafsnowstorm",
                 "injury": [
                     {
-                        "rabbits": ["p_l"],
+                        "cats": ["p_l"],
                         "injuries": ["shivering"],
                         "scars": ["FROSTMITT"]
                     },
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["frostbite"],
                         "scars": ["FROSTMITT"]
                     }
@@ -2333,7 +2333,7 @@
                 "art": "mtn_hunt_newleafsnowstorm",
                 "injury": [
                     {
-                        "rabbits": ["patrol"],
+                        "cats": ["patrol"],
                         "injuries": ["shivering"],
                         "scars": ["FROSTMITT"]
                     }
@@ -2412,17 +2412,17 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["claw-wound", "torn ear", "scrapes", "shock"],
                         "scars": ["THREE"]
                     },
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["torn ear", "scrapes", "shock"],
                         "scars": ["LEFTEAR"]
                     },
                     {
-                        "rabbits": ["s_c"],
+                        "cats": ["s_c"],
                         "injuries": ["scrapes", "shock"],
                         "scars": []
                     }
@@ -2564,7 +2564,7 @@
                 ],
                 "injury": [
                     {
-                        "rabbits": ["p_l"],
+                        "cats": ["p_l"],
                         "injuries": ["shock"],
                         "scars": []
                     }
@@ -2583,7 +2583,7 @@
                 "art": "gen_scarybadger",
                 "injury": [
                     {
-                        "rabbits": ["p_l"],
+                        "cats": ["p_l"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["THREE"]
                     }
@@ -2698,7 +2698,7 @@
                 "art": "gen_bord_flashflood",
                 "injury": [
                     {
-                        "rabbits": ["patrol"],
+                        "cats": ["patrol"],
                         "injuries": ["shivering"],
                         "scars": ["FROSTMITT"]
                     }
@@ -2758,7 +2758,7 @@
                 "art": "gen_scarybadger",
                 "injury": [
                     {
-                        "rabbits": ["p_l"],
+                        "cats": ["p_l"],
                         "injuries": ["big_bite_injury"],
                         "scars": ["THREE"]
                     }
@@ -2948,12 +2948,12 @@
                 "art": "gen_bord_flashflood",
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["sore"],
                         "scars": []
                     },
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["frostbite"],
                         "scars": ["FROSTFACE"]
                     }
@@ -2971,17 +2971,17 @@
                 "art": "pln_hunt_prairiedog1",
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["bruises"],
                         "scars": []
                     },
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["torn ear"],
                         "scars": ["LEFTEAR"]
                     },
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["torn pelt"],
                         "scars": ["BRIDGE"]
                     }
@@ -3043,22 +3043,22 @@
                 "art": "gen_scarybadger",
                 "injury": [
                     {
-                        "rabbits": ["p_l"],
+                        "cats": ["p_l"],
                         "injuries": ["bruises"],
                         "scars": []
                     },
                     {
-                        "rabbits": ["p_l"],
+                        "cats": ["p_l"],
                         "injuries": ["torn ear"],
                         "scars": ["LEFTEAR"]
                     },
                     {
-                        "rabbits": ["p_l"],
+                        "cats": ["p_l"],
                         "injuries": ["torn pelt"],
                         "scars": ["BRIDGE"]
                     },
                     {
-                        "rabbits": ["p_l"],
+                        "cats": ["p_l"],
                         "injuries": ["mangled tail"],
                         "scars": ["MANTAIL"]
                     }
@@ -3292,7 +3292,7 @@
                 "stat_skill": ["CLEVER,0", "BURROW,0"],
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["constant nightmares"],
                         "scars": []
                     }
@@ -3327,17 +3327,17 @@
                 "art": "pln_hunt_prairiedog1",
                 "injury": [
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["bruises"],
                         "scars": []
                     },
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["torn ear"],
                         "scars": ["LEFTEAR"]
                     },
                     {
-                        "rabbits": ["app1"],
+                        "cats": ["app1"],
                         "injuries": ["torn pelt"],
                         "scars": ["BRIDGE"]
                     }
@@ -3356,7 +3356,7 @@
                 "lost_cats": ["app1"],
                 "injury": [
                     {
-                        "rabbits": ["patrol"],
+                        "cats": ["patrol"],
                         "injuries": ["shock"],
                         "scars": []
                     }
@@ -3375,7 +3375,7 @@
                 "lost_cats": ["multi"],
                 "injury": [
                     {
-                        "rabbits": ["patrol"],
+                        "cats": ["patrol"],
                         "injuries": ["shock"],
                         "scars": []
                     }
@@ -3430,12 +3430,12 @@
                 "dead_cats": ["multi"],
                 "injury": [
                     {
-                        "rabbits": ["patrol"],
+                        "cats": ["patrol"],
                         "injuries": ["shock", "constant nightmares"],
                         "scars": []
                     },
                     {
-                        "rabbits": ["patrol"],
+                        "cats": ["patrol"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE"]
                     }
@@ -3465,12 +3465,12 @@
                 "art": "gen_train_soggykitty_mad_app",
                 "injury": [
                     {
-                        "rabbits": ["patrol"],
+                        "cats": ["patrol"],
                         "injuries": ["shock", "constant nightmares"],
                         "scars": []
                     },
                     {
-                        "rabbits": ["patrol"],
+                        "cats": ["patrol"],
                         "injuries": ["cold_injury"],
                         "scars": ["FROSTFACE"]
                     }

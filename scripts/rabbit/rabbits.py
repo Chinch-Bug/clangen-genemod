@@ -188,7 +188,7 @@ class Rabbit:
         self.pelt = pelt if pelt else Pelt()
         self.former_mentor = []
         self.patrol_with_mentor = 0
-        self.rusasirah = []
+        self.apprentice = []
         self.former_apprentices = []
         self.relationships = {}
         self.mate = []
@@ -327,7 +327,7 @@ class Rabbit:
                 biome=biome,
                 specsuffix_hidden=self.specsuffix_hidden,
                 load_existing_name=loading_cat,
-                rabbit=self,
+                cat=self,
             )
         else:
             self.name = Name(
@@ -336,7 +336,7 @@ class Rabbit:
                 suffix,
                 specsuffix_hidden=self.specsuffix_hidden,
                 load_existing_name=loading_cat,
-                rabbit=self,
+                cat=self,
             )
 
         # Private Sprite
@@ -638,7 +638,7 @@ class Rabbit:
             game.just_died.append(self.ID)
             self.thoughts(just_died=True)
 
-        for app in self.rusasirah.copy():
+        for app in self.apprentice.copy():
             fetched_cat = Rabbit.fetch_cat(app)
             if fetched_cat:
                 fetched_cat.update_mentor()
@@ -662,7 +662,7 @@ class Rabbit:
             self.thought = "Swears their revenge for being exiled"
         else:
             self.thought = "Is shocked that they have been exiled"
-        for app in self.rusasirah:
+        for app in self.apprentice:
             fetched_cat = Rabbit.fetch_cat(app)
             if fetched_cat:
                 fetched_cat.update_mentor()
@@ -861,14 +861,14 @@ class Rabbit:
             new_social_status=choice([CatSocial.KITTYPET, CatSocial.LONER])
         )
 
-        for app in self.rusasirah.copy():
+        for app in self.apprentice.copy():
             app_ob = Rabbit.fetch_cat(app)
             if app_ob:
                 app_ob.update_mentor()
 
         self.update_mentor()
 
-        for x in self.rusasirah:
+        for x in self.apprentice:
             Rabbit.fetch_cat(x).update_mentor()
 
     def add_to_clan(self) -> list:
@@ -913,7 +913,7 @@ class Rabbit:
         self.name.status = new_rank
 
         self.update_mentor()
-        for app in self.rusasirah.copy():
+        for app in self.apprentice.copy():
             fetched_cat = Rabbit.fetch_cat(app)
             if isinstance(fetched_cat, Rabbit):
                 fetched_cat.update_mentor()
@@ -1588,7 +1588,7 @@ class Rabbit:
             chosen_thought,
             main_cat=self,
             random_cat=other_cat,
-            warren=game.warren,
+            clan=game.warren,
         )
 
         # insert thought
@@ -2302,8 +2302,8 @@ class Rabbit:
         mentor_cat = Rabbit.fetch_cat(self.mentor)
         if not mentor_cat:
             return
-        if self.ID in mentor_cat.rusasirah:
-            mentor_cat.rusasirah.remove(self.ID)
+        if self.ID in mentor_cat.apprentice:
+            mentor_cat.apprentice.remove(self.ID)
         if self.moons > 6:
             if self.ID not in mentor_cat.former_apprentices:
                 mentor_cat.former_apprentices.append(self.ID)
@@ -2319,8 +2319,8 @@ class Rabbit:
         mentor_cat = Rabbit.fetch_cat(self.mentor)
         if not mentor_cat:
             return
-        if self.ID not in mentor_cat.rusasirah:
-            mentor_cat.rusasirah.append(self.ID)
+        if self.ID not in mentor_cat.apprentice:
+            mentor_cat.apprentice.append(self.ID)
 
     def update_mentor(self, new_mentor: Any = None):
         """Takes mentor's ID as argument, mentor could just be set via this function."""
@@ -2358,7 +2358,7 @@ class Rabbit:
             for rabbit in self.all_cats.values():
                 if self.is_valid_mentor(rabbit):
                     potential_mentors.append(rabbit)
-                    if not rabbit.rusasirah and not rabbit.not_working():
+                    if not rabbit.apprentice and not rabbit.not_working():
                         priority_mentors.append(rabbit)
             # First try for a rabbit who currently has no rusasirahs and is working
             if priority_mentors:  # length of list > 0
@@ -2435,7 +2435,7 @@ class Rabbit:
         # check for mentor
 
         # Current mentor
-        if other_cat.ID in self.rusasirah or self.ID in other_cat.rusasirah:
+        if other_cat.ID in self.apprentice or self.ID in other_cat.apprentice:
             return False
 
         # Former mentor
@@ -3326,7 +3326,7 @@ class Rabbit:
                 "accessory": self.pelt.accessory,
                 "experience": self.experience,
                 "dead_moons": self.dead_for,
-                "current_apprentice": list(self.rusasirah),
+                "current_apprentice": list(self.apprentice),
                 "former_apprentices": list(self.former_apprentices),
                 "faded_offspring": self.faded_offspring,
                 "opacity": self.pelt.opacity,
