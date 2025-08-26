@@ -77,8 +77,7 @@ debug_settings = {
 # CLAN
 clan: Optional["Clan"] = None
 cat_class = None
-with open(f"resources/prey_config.json", "r", encoding="utf-8") as read_file:
-    prey_config = ujson.loads(read_file.read())
+prey_config = constants.CONFIG["clan_resources"]["freshkill"]
 
 rpc = None
 
@@ -137,8 +136,6 @@ DEPRECATED: use get_game_setting() and set_game_setting() or helpers instead.
 WILL CRASH if you try and use this anyway.
 """
 settings: Any
-
-del read_file  # cleanup from load
 
 
 def update_game():

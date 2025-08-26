@@ -1,6 +1,6 @@
 import os
 import unittest
-import ujson
+import tomllib
 
 from scripts.cat.enums import CatRank
 
@@ -18,8 +18,9 @@ from scripts.game_structure import game
 class FreshkillPileTest(unittest.TestCase):
     def setUp(self) -> None:
         self.prey_config = None
-        with open("resources/prey_config.json", "r") as read_file:
-            self.prey_config = ujson.loads(read_file.read())
+        with open("resources/game_config.toml", "r", encoding="utf-8") as read_file:
+            self.prey_config = tomllib.loads(read_file.read())
+        self.prey_config = self.prey_config["clan_resources"]["freshkill"]
         self.amount = self.prey_config["start_amount"]
         self.prey_requirement = self.prey_config["prey_requirement"]
         self.condition_increase = self.prey_config["condition_increase"]

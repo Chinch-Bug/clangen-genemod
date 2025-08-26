@@ -136,6 +136,7 @@ def other_config_refreshes():
     global CONFIG
     from scripts.cat.cats import Cat
     from scripts.cat.enums import CatAge
+    from scripts.game_structure import game
     Cat.age_moons = {
         CatAge.NEWBORN: CONFIG["cat_ages"]["newborn"],
         CatAge.KITTEN: CONFIG["cat_ages"]["kitten"],
@@ -145,6 +146,7 @@ def other_config_refreshes():
         CatAge.SENIOR_ADULT: CONFIG["cat_ages"]["senior adult"],
         CatAge.SENIOR: CONFIG["cat_ages"]["senior"],
     }
+    game.prey_config = CONFIG["clan_resources"]["freshkill"]
 
 def load_clan_config():
     global CONFIG
