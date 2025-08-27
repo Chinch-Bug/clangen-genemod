@@ -1934,7 +1934,7 @@ class Pregnancy_Events:
         
         # AGE
         # - decrease the inverse chance if the whole clan is really old
-        avg_age = int(sum((cat.moons for cat in Cat.all_cats.values())) / living_cats)
+        avg_age = int(sum((cat.moons for cat in Cat.all_cats.values() if cat.status.group == clan.enum)) / living_cats)
         if avg_age > 80:
             inverse_chance = int(inverse_chance * 0.8)
 
@@ -1961,7 +1961,7 @@ class Pregnancy_Events:
             inverse_chance = int(inverse_chance * 0.7)
 
         # - decrease inverse chance single parents if settings allow an biggest family is huge
-        settings_allow = not second_parent and not get_clan_setting("single parentage")
+        settings_allow = not second_parent and get_clan_setting("single parentage")
         if settings_allow and Pregnancy_Events.biggest_family_is_big(clan):
             inverse_chance = int(inverse_chance * 0.9)
 
