@@ -632,6 +632,8 @@ class Clan:
                 )
                 if "relations" in other_clan:
                     game.clan.relations[CatGroup.PLAYER_CLAN][enum] = int(other_clan["relations"])
+                else:
+                    game.clan.relations[CatGroup.PLAYER_CLAN][enum] = clan_data["relations"][CatGroup.PLAYER_CLAN.value][enum.value]
         else:
             if "other_clan_chosen_symbol" not in clan_data:
                 for name, relation, temper, enum in zip(
