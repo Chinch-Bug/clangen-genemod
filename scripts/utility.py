@@ -702,6 +702,9 @@ def create_new_cat_block(
                 continue
             if age and age not in Cat.age_moons[cat.age]:
                 continue
+            for picked_cats in event.new_cats:
+                if cat in picked_cats:
+                    continue
             possible_outsiders.append(cat)
 
         if possible_outsiders:

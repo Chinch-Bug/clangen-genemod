@@ -610,13 +610,13 @@ class Status:
         Returns True if the cat is considered "lost" by a group.
         :param group: use this to specify a certain group to check lost status against
         """
-        for entry in self.standing_history:
+        for entry in self.standing_history[::-1]:
             if group and entry["group"] != group:
                 continue
             if CatStanding.LOST == entry["standing"][-1]:
                 return True
 
-        return False
+            return False
 
     def is_exiled(self, group: CatGroup = None) -> bool:
         """
@@ -625,7 +625,7 @@ class Status:
         """
         # if no group given
         if not group:
-            for entry in self.standing_history:
+            for entry in self.standing_history[::-1]:
                 if CatStanding.EXILED in entry["standing"]:
                     return True
             return False
