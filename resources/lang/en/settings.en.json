@@ -86,6 +86,8 @@
       "retirement_tooltip": "When this setting is off, cats with permanent conditions will choose whether or not they want to retire",
       "become_mediator": "Allow warriors and elders to choose to become mediators",
       "become_mediator_tooltip": "Warriors and elders will have a chance to become mediators upon moonskip.",
+      "become_healer": "Allow warriors and apprentices to choose to become healers",
+      "become_healer_tooltip": "Warriors and apprentices will have a chance to become healers upon moonskip.",
       "no_litters": "Prevent new litters",
       "no_litters_tooltip": "While this setting is toggled on, no new litters or pregnancies should occur in the Clan.",
       "affair": "Allow cats to breed with cats that aren't their mates",

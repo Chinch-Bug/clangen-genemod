@@ -431,7 +431,7 @@ class EventsScreen(Screens):
         self.make_event_scrolling_container()
         self.open_involved_cat_button = None
         self.update_display_events_lists()
-        self.handle_tab_switch(self.current_display)
+        self.update_events_display()
 
         # Draw and disable the correct menu buttons.
         self.set_disabled_menu_buttons(["events_screen"])

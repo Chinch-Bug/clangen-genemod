@@ -613,6 +613,26 @@ class Events:
                 )
                 cat.rank_change(CatRank.MEDIATOR)
 
+    def become_healer_events(self, cat, clan):
+        """Check for mediator events"""
+        if get_clan_setting("become_healer"):
+            # Note: These chances are large since it triggers every moon.
+            # Checking every moon has the effect giving older cats more chances to become a mediator
+            _ = constants.CONFIG["roles"]["become_healer_chances"]
+            if cat.status.rank in _ and not int(random.random() * _[cat.status.rank]):
+                game.cur_events_list.append(
+                    Single_Event(
+                        event_text_adjust(
+                            Cat, i18n.t("hardcoded.event_healer_app"), main_cat=cat
+                        ),
+                        "ceremony",
+                        cat.ID,
+                        clan=clan.enum
+                    )
+                )
+                cat.rank_change(CatRank.MEDICINE_APPRENTICE if cat.status.rank.is_any_apprentice_rank() else CatRank.MEDICINE_CAT)
+                cat.experience = int(cat.experience * 0.75)
+
     def get_moon_freshkill(self):
         """Adding auto freshkill for the current moon."""
         healthy_hunter = list(
@@ -1011,7 +1031,7 @@ class Events:
         exiled cat events
         """
         # aging the cat
-        clan = next(filter(lambda c: cat.status.is_lost() or cat.status.is_exiled(), game.clan.all_clans), game.clan)
+        clan = next(filter(lambda c: cat.status.is_lost(c) or cat.status.is_exiled(c), game.clan.all_clans), game.clan)
         cat.one_moon(other_clan_cats)
         cat.manage_outside_trait()
 
@@ -1040,6 +1060,7 @@ class Events:
 
         if not cat.dead:
             OutsiderEvents.killing_outsiders(cat, clan)
+            OutsiderEvents.outsider_wander(cat, clan)
     
     def kit_deaths(self, cats, clan=None):
         fading_kits = []
@@ -1126,6 +1147,7 @@ class Events:
 
         # Handle Mediator Events
         self.mediator_events(cat, clan)
+        self.become_healer_events(cat, clan)
 
         # handle nutrition amount
         # (CARE: the cats have to be fed before this happens - should be handled in "one_moon" function)

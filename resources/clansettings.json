@@ -139,6 +139,11 @@
         "Warriors and elders will have a chance to become mediators upon timeskip.",
         false
       ],
+      "become_healer": [
+        "Allow warriors and apprentices to choose to become healers",
+        "Warriors and apprentices will have a chance to become healers upon timeskip.",
+        false
+      ],
       "random med cat": [
         "Allow healers to be randomly selected on patrol",
         "Healers can be selected with the patrol buttons +1, +3,+6.",

@@ -403,6 +403,11 @@ dev_tools = false
   warrior = 5000
   elder = 400
 
+[roles.become_healer_chances]
+  # 1/chance that a cat will switch to mediator. rolls every moon, so keep it high.
+  warrior = 5000
+  apprentice = 1000
+
 [lost_cat]
   # 1/chance that a lost cat will return on their own
   rejoin_chance = 20
@@ -638,14 +643,14 @@ dev_tools = false
   wideband = ["2", "1", "1", "1", "0"]
   rufousing = ["2", "1", "1", "1", "0"]
   spotted = ["2", "1", "0"]
-  tickmod = ["2", "1", "1", "1", "0", "0", "0", "0"]
-  bengal = ["2", "1", "1", "1", "0", "0", "0", "0", "0", "0"]
+  tickmod = ["2", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0"]
+  bengal = ["2", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0"]
   sokoke = ["2", "2", "1", "1", "1", "1", "0", "0", "0"]
   wideband_kittypet = ["2", "1", "1", "0"]
   rufousing_kittypet = ["2", "1", "1", "0"]
   spotted_kittypet = ["2", "1", "0"]
-  tickmod_kittypet = ["2", "1", "1", "1", "0", "0", "0", "0"]
-  bengal_kittypet = ["2", "1", "1", "1", "0", "0", "0", "0"]
+  tickmod_kittypet = ["2", "1", "1", "1", "0", "0", "0", "0", "0"]
+  bengal_kittypet = ["2", "1", "1", "1", "0", "0", "0", "0", "0"]
   sokoke_kittypet = ["2", "2", "1", "1", "1", "1", "0", "0", "0"]
 [april_fools_genes]
   green = 10
@@ -678,6 +683,7 @@ dev_tools = false
   # passive exp gain for adult clancats, not applied if the cat patrols that moon
   base_adult_timeskip_ex = [[4, 12], [6, 7]]
   base_senior_timeskip_ex = [[3, 9], [3, 4]]
+
 [outside_ex]
   # base possible experience gain for cats outside the clan
   # [[lowest_exp_gain, highest_exp_gain], [lowest_exp_gain2, highest_exp_gain2]]
@@ -685,6 +691,11 @@ dev_tools = false
   base_adolescent_timeskip_ex = [[2, 10], [4, 5]]
   base_adult_timeskip_ex = [[4, 12], [6, 7]]
   base_senior_timeskip_ex = [[3, 9], [3, 4]]
+
+[outsider_events]
+  # chances for random outsider deaths or leaving the territory are 2^x
+  outsider_death = 6
+  outsider_wander_off = 7
 
 [focus]
   # NOTE: 'raid other clans' should be more dangerous than 'hoarding'!!!

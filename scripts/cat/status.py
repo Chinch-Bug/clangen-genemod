@@ -635,13 +635,13 @@ class Status:
 
         return standing and standing[-1] == CatStanding.EXILED
 
-    def is_near(self, group: CatGroup) -> bool:
+    def is_near(self, group: CatGroup = None) -> bool:
         """
         Returns True if the cat is near the specified group
         :param group: The group the cat is or is not near
         """
-        for entry in self.standing_history:
-            if entry.get("group") == group and entry.get("near"):
+        for entry in self.standing_history[::-1]:
+            if (not group or entry.get("group") == group) and entry.get("near"):
                 return True
 
         return False

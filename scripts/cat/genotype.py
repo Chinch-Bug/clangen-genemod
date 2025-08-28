@@ -1079,6 +1079,8 @@ class Genotype:
                 if random() < 0.5:
                     self.sexgene[0] = choice(mum)
                     self.sexgene[1] = pap[0]
+                    if len(pap) > 2:
+                        self.sexgene[1] = choice([pap[0], pap[1]])
                     self.sexgene[2] = 'Y'
                 else:
                     self.sexgene[2] = 'Y'
@@ -1107,6 +1109,8 @@ class Genotype:
                     self.sexgene[0] = mum[a]
                     self.sexgene[1] = mum[b]
                 self.sexgene[2] = pap[0]
+                if len(pap) > 2:
+                    self.sexgene[2] = choice([pap[0], pap[1]])
 
         else:
             if(randint(1, 2) == 1):
@@ -1115,6 +1119,8 @@ class Genotype:
                 self.sex = "tom"
             else:
                 self.sexgene = [choice(mum), pap[0]]
+                if len(pap) > 2:
+                    self.sexgene[1] = choice([pap[0], pap[1]])
                 self.sex = "molly"
         
         
