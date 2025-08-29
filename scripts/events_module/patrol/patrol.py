@@ -92,7 +92,7 @@ class Patrol:
 
         print("PATROL START ---------------------------------------------------")
 
-        self.clan = clan
+        self.clan = clan.enum.fetch_clan_object()
         self.add_patrol_cats(patrol_cats, game.clan)
 
         self.debug_patrol = (

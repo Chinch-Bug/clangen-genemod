@@ -369,7 +369,7 @@ class FreshkillPileTest(unittest.TestCase):
         kid.parent2 = mother
 
         no_parent = Cat(
-            status_dict={"rank": CatRank.WARRIOR}, moons=1, disable_random=True
+            status_dict={"rank": CatRank.WARRIOR}, disable_random=True
         )
 
         freshkill_pile = FreshkillPile()

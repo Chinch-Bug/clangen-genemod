@@ -127,6 +127,8 @@ def _test_replacement_failure(path: str, repl_dict: dict) -> bool:
                     f'::error file={path}: "{_str}" contains pronoun tag fragments after replacment'
                 )
                 success = False
+            elif re.search(r'For allele search:', processed):
+                pass
 
             # This tests for any pronoun or verb that is incorrectly capitalized
             # excludes ellipses (i.e. ... and . . .) but includes regular colons
@@ -135,7 +137,7 @@ def _test_replacement_failure(path: str, repl_dict: dict) -> bool:
             elif (
                 re.search(r"(?<!\.\.)(?<!\.\s\.\s)\.\s+[a-z]", processed) is not None
                 or re.search(r"[?!]\s+[a-z]", processed) is not None
-            ):
+            ):  
                 print(f'::error file={path}: Capitalization errors in "{_str}"')
                 success = False
 

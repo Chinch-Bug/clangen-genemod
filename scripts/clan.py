@@ -94,6 +94,7 @@ class Clan:
             self.displayname = name
         else:
             self.displayname = displayname
+        self.clancount = "singleclan"
         self.leader = leader
         self.leader_lives = 9
         self.leader_predecessors = 0
