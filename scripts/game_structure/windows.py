@@ -1463,66 +1463,66 @@ class KillCat(UIWindow):
         return super().process_event(event)
 
 
-class UpdateWindow(UIWindow):
-    def __init__(self, last_screen, announce_restart_callback):
-        super().__init__(
-            ui_scale(pygame.Rect((250, 200), (300, 160))),
-            window_display_title="Game Over",
-            object_id="#game_over_window",
-            resizable=False,
-        )
-        self.set_blocking(True)
-        self.last_screen = last_screen
-        self.update_message = pygame_gui.elements.UITextBox(
-            "windows.update_message",
-            ui_scale(pygame.Rect((20, 10), (260, -1))),
-            object_id="#text_box_30_horizcenter_spacing_95",
-            starting_height=4,
-            container=self,
-        )
-        self.announce_restart_callback = announce_restart_callback
+# class UpdateWindow(UIWindow):
+#     def __init__(self, last_screen, announce_restart_callback):
+#         super().__init__(
+#             ui_scale(pygame.Rect((250, 200), (300, 160))),
+#             window_display_title="Game Over",
+#             object_id="#game_over_window",
+#             resizable=False,
+#         )
+#         self.set_blocking(True)
+#         self.last_screen = last_screen
+#         self.update_message = pygame_gui.elements.UITextBox(
+#             "windows.update_message",
+#             ui_scale(pygame.Rect((20, 10), (260, -1))),
+#             object_id="#text_box_30_horizcenter_spacing_95",
+#             starting_height=4,
+#             container=self,
+#         )
+#         self.announce_restart_callback = announce_restart_callback
 
-        self.step_text = UITextBoxTweaked(
-            "windows.downloading_update",
-            ui_scale(pygame.Rect((20, 40), (260, -1))),
-            line_spacing=1,
-            object_id="#text_box_30_horizcenter",
-            container=self,
-        )
+#         self.step_text = UITextBoxTweaked(
+#             "windows.downloading_update",
+#             ui_scale(pygame.Rect((20, 40), (260, -1))),
+#             line_spacing=1,
+#             object_id="#text_box_30_horizcenter",
+#             container=self,
+#         )
 
-        self.progress_bar = UIUpdateProgressBar(
-            ui_scale(pygame.Rect((20, 65), (260, 45))),
-            self.step_text,
-            object_id="progress_bar",
-            container=self,
-        )
+#         self.progress_bar = UIUpdateProgressBar(
+#             ui_scale(pygame.Rect((20, 65), (260, 45))),
+#             self.step_text,
+#             object_id="progress_bar",
+#             container=self,
+#         )
 
-        self.update_thread = threading.Thread(
-            target=self_update,
-            daemon=True,
-            args=(
-                UpdateChannel(get_version_info().release_channel),
-                self.progress_bar,
-                announce_restart_callback,
-            ),
-        )
-        self.update_thread.start()
+#         self.update_thread = threading.Thread(
+#             target=self_update,
+#             daemon=True,
+#             args=(
+#                 UpdateChannel(get_version_info().release_channel),
+#                 self.progress_bar,
+#                 announce_restart_callback,
+#             ),
+#         )
+#         self.update_thread.start()
 
-        self.cancel_button = UIImageButton(
-            ui_scale(pygame.Rect((200, 115), (78, 30))),
-            "",
-            object_id="#cancel_button",
-            container=self,
-        )
+#         self.cancel_button = UIImageButton(
+#             ui_scale(pygame.Rect((200, 115), (78, 30))),
+#             "",
+#             object_id="#cancel_button",
+#             container=self,
+#         )
 
-        self.cancel_button.enable()
+#         self.cancel_button.enable()
 
-    def process_event(self, event):
-        if event.type == pygame_gui.UI_BUTTON_START_PRESS:
-            if event.ui_element == self.cancel_button:
-                self.kill()
+#     def process_event(self, event):
+#         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
+#             if event.ui_element == self.cancel_button:
+#                 self.kill()
 
-        return super().process_event(event)
+#         return super().process_event(event)
 
 
 class AnnounceRestart(UIWindow):

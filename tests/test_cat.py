@@ -276,6 +276,8 @@ class TestPossibleMateFunction(unittest.TestCase):
     # test that is_potential_mate returns False for exiled or dead cats
     def test_dead_exiled(self):
         exiled_cat = Cat(disable_random=True)
+        if game.clan:
+            game.clan.instructor = Cat(disable_random=True)
         exiled_cat.status.exile_from_group()
         dead_cat = Cat(disable_random=True)
         dead_cat.dead = True

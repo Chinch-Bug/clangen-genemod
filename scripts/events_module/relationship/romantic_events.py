@@ -381,6 +381,7 @@ class RomanticEvents:
                 and "grief stricken" not in cat.illnesses
                 and (
                     (cat_mate.dead and cat_mate.dead_for >= 4)
+                    or (cat_mate.status.is_outsider and not cat_mate.status.is_near(cat.status.group))
                 )
             ):
                 # randint is a slow function, don't call it unless we have to.
