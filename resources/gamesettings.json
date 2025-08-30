@@ -76,11 +76,6 @@
         "Discord will show info about your Clan, including your Clan name",
         false
       ],
-      "check_for_updates": [
-        "Check for updates",
-        "Automatically checks for updates on startup",
-        true
-      ],
       "show_changelog": [
         "Display changelog on startup",
         "Shows the changelog of the latest release on startup",

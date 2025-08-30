@@ -52,11 +52,11 @@ from scripts.housekeeping.datadir import (
     open_data_dir,
 )
 from scripts.housekeeping.progress_bar_updater import UIUpdateProgressBar
-from scripts.housekeeping.update import (
-    self_update,
-    UpdateChannel,
-    get_latest_version_number,
-)
+# from scripts.housekeeping.update import (
+#     self_update,
+#     UpdateChannel,
+#     get_latest_version_number,
+# )
 from scripts.housekeeping.version import get_version_info
 from scripts.ui.generate_box import BoxStyles, get_box
 from scripts.ui.generate_button import ButtonStyles, get_button_dict

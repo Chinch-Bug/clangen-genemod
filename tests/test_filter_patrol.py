@@ -39,6 +39,7 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
 
         # then
         patrol = Patrol()
+        patrol.clan = test_clan
         patrol.add_patrol_cats([cat1, cat2], test_clan)
         self.assertTrue(
             filter_relationship_type(
@@ -58,6 +59,7 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
         )
 
         patrol = Patrol()
+        patrol.clan = test_clan
         patrol.add_patrol_cats([cat1, cat2, parent], test_clan)
         self.assertFalse(
             filter_relationship_type(
@@ -95,6 +97,7 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
 
         # then
         patrol = Patrol()
+        patrol.clan = test_clan
         patrol.add_patrol_cats([mate1, mate2], test_clan)
         self.assertTrue(
             filter_relationship_type(
@@ -114,6 +117,7 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
         )
 
         patrol = Patrol()
+        patrol.clan = test_clan
         patrol.add_patrol_cats([mate1, cat1], test_clan)
         self.assertFalse(
             filter_relationship_type(
@@ -133,6 +137,7 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
         )
 
         patrol = Patrol()
+        patrol.clan = test_clan
         patrol.add_patrol_cats([mate1, mate2, cat1], test_clan)
         self.assertFalse(
             filter_relationship_type(

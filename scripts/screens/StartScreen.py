@@ -127,7 +127,7 @@ class StartScreen(Screens):
         self.settings_button.kill()
         self.error_label.kill()
         self.warning_label.kill()
-        self.update_button.kill()
+        # self.update_button.kill()
         self.quit.kill()
         if self.event_edit:
             self.event_edit.kill()
@@ -295,48 +295,48 @@ class StartScreen(Screens):
         self.open_data_directory_button.hide()
         self.closebtn.hide()
 
-        self.update_button = UISurfaceImageButton(
-            ui_scale(pygame.Rect((577, 25), (153, 30))),
-            "buttons.update_available",
-            get_button_dict(ButtonStyles.SQUOVAL, (153, 30)),
-            object_id="@buttonstyles_squoval",
-            manager=MANAGER,
-        )
-        self.update_button.visible = 0
+        # self.update_button = UISurfaceImageButton(
+        #     ui_scale(pygame.Rect((577, 25), (153, 30))),
+        #     "buttons.update_available",
+        #     get_button_dict(ButtonStyles.SQUOVAL, (153, 30)),
+        #     object_id="@buttonstyles_squoval",
+        #     manager=MANAGER,
+        # )
+        # self.update_button.visible = 0
 
-        try:
-            global has_checked_for_update
-            global update_available
-            if (
-                not get_version_info().is_source_build
-                and not get_version_info().is_itch
-                and get_version_info().upstream.lower()
-                == "Chinch-Bug/clangen-genemod".lower()
-                and game_setting_get("check_for_updates")
-                and not has_checked_for_update
-            ):
-                if has_update(UpdateChannel(get_version_info().release_channel)):
-                    update_available = True
-                    show_popup = True
-                    if os.path.exists(f"{get_cache_dir()}/suppress_update_popup"):
-                        with open(
-                            f"{get_cache_dir()}/suppress_update_popup",
-                            "r",
-                            encoding="utf-8",
-                        ) as read_file:
-                            if read_file.readline() == get_latest_version_number():
-                                show_popup = False
+        # try:
+        #     global has_checked_for_update
+        #     global update_available
+        #     if (
+        #         not get_version_info().is_source_build
+        #         and not get_version_info().is_itch
+        #         and get_version_info().upstream.lower()
+        #         == "Chinch-Bug/clangen-genemod".lower()
+        #         and game_setting_get("check_for_updates")
+        #         and not has_checked_for_update
+        #     ):
+        #         if has_update(UpdateChannel(get_version_info().release_channel)):
+        #             update_available = True
+        #             show_popup = True
+        #             if os.path.exists(f"{get_cache_dir()}/suppress_update_popup"):
+        #                 with open(
+        #                     f"{get_cache_dir()}/suppress_update_popup",
+        #                     "r",
+        #                     encoding="utf-8",
+        #                 ) as read_file:
+        #                     if read_file.readline() == get_latest_version_number():
+        #                         show_popup = False
 
-                    if show_popup:
-                        UpdateAvailablePopup(show_checkbox=True)
+        #             if show_popup:
+        #                 UpdateAvailablePopup(show_checkbox=True)
 
-                has_checked_for_update = True
+        #         has_checked_for_update = True
 
-            if update_available:
-                self.update_button.visible = 1
-        except (RequestException, Timeout):
-            logger.exception("Failed to check for update")
-            has_checked_for_update = True
+        #     if update_available:
+        #         self.update_button.visible = 1
+        # except (RequestException, Timeout):
+        #     logger.exception("Failed to check for update")
+        #     has_checked_for_update = True
 
         if game_setting_get("show_changelog"):
             show_changelog = True

@@ -690,7 +690,7 @@ def create_new_cat_block(
     chosen_cat: Optional["Cat"] = None
     if "exists" in attribute_list:
         existing_outsiders = [
-            i for i in Cat.all_cats.values() if i.status.is_outsider and not i.dead and i.status.is_near()
+            i for i in Cat.all_cats.values() if i.status.is_outsider and not i.dead and i.status.is_near() and not i.status.is_lost()
         ]
         possible_outsiders = []
         for cat in existing_outsiders:
@@ -771,7 +771,8 @@ def create_new_cat_block(
         new_cats = create_new_cat(
             Cat,
             new_name=new_name,
-            kit=False if litter else rank in (CatRank.KITTEN, CatRank.NEWBORN),
+            kit=False if litter else rank in (CatRank.KITTEN, CatRank.NEWBORN) or age in range(
+                Cat.age_moons[CatAge.KITTEN][0], Cat.age_moons[CatAge.KITTEN][1]+1),
             # this is for singular kits, litters need this to be false
             litter=litter,
             backstory=chosen_backstory,

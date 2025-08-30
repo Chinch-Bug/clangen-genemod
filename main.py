@@ -73,12 +73,12 @@ except NameError:
 if directory:
     os.chdir(directory)
 
-if os.path.exists("auto-updated"):
-    print("Clangen starting, deleting auto-updated file")
-    os.remove("auto-updated")
-    shutil.rmtree("Downloads", ignore_errors=True)
-    print("Update Complete!")
-    print("New version: " + get_version_info().version_number)
+# if os.path.exists("auto-updated"):
+#     print("Clangen starting, deleting auto-updated file")
+#     os.remove("auto-updated")
+#     shutil.rmtree("Downloads", ignore_errors=True)
+#     print("Update Complete!")
+#     print("New version: " + get_version_info().version_number)
 
 setup_data_dir()
 timestr = time.strftime("%Y%m%d_%H%M%S")
