@@ -1365,7 +1365,7 @@ class Events:
                         started_war = True
 
                 # if nothing happened, return
-                if not war_events or not enemy_clan:
+                if not war_events or not enemy_clan or main_clan == enemy_clan:
                     continue
 
                 if not main_clan.leader or not main_clan.deputy or not main_clan.medicine_cat:

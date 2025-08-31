@@ -581,7 +581,7 @@ def create_new_cat_block(
     elif "clancat" in attribute_list or "former Clancat" in attribute_list:
         cat_social = CatSocial.CLANCAT
         if other_clan:
-            cat_group = other_clan.enum
+            cat_group = other_clan
         else:
             cat_group = choice(game.clan.other_clans)
     else:

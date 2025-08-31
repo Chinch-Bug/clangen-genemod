@@ -400,7 +400,11 @@
                         "injuries": ["blunt_force_injury"],
                         "no_results": true
                     }
-                ]
+                ],
+                "new_cat": [
+                    [ "loner", "status:warrior" ]
+                ],
+                "outsider_rep": 1
             }
         ],
         "fail_outcomes": [
@@ -465,7 +469,11 @@
                         "injuries": ["blunt_force_injury"],
                         "no_results": true
                     }
-                ]
+                ],
+                "new_cat": [
+                    [ "loner", "status:warrior" ]
+                ],
+                "outsider_rep": 1
             }
         ],
         "fail_outcomes": [

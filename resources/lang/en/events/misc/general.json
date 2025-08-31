@@ -986,7 +986,7 @@
             "clan_wide"
         ],
         "frequency": 3,
-        "event_text": "m_c admits quietly to r_c that {PRONOUN/m_c/subject} lost {PRONOUN/m_c/poss} temper on that terrible, fateful day... r_c's death was at {PRONOUN/m_c/poss} paws.",
+        "event_text": "m_c admits quietly to r_c that {PRONOUN/m_c/subject} lost {PRONOUN/m_c/poss} temper on that terrible, fateful day... mur_c's death was at {PRONOUN/m_c/poss} paws.",
         "m_c": {
             "age": [
                 "any"
