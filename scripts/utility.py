@@ -2475,7 +2475,7 @@ def ongoing_event_text_adjust(Cat, text, clan=None, other_clan_name=None):
 
     text = text.replace("c_n", clan_name + "Clan")
 
-    text.replace("medicine cat", "healer").replace("medicine den", "healer den")
+    text = text.replace("medicine cat", "healer").replace("medicine den", "healer den")
 
     return text
 
@@ -2717,7 +2717,7 @@ def event_text_adjust(
                 "given_herb", i18n.t(f"conditions.herbs.{chosen_herb}", count=2)
             )
 
-    text.replace("medicine cat", "healer").replace("medicine den", "healer den")
+    text = text.replace("medicine cat", "healer").replace("medicine den", "healer den")
 
     return text
 
@@ -2756,7 +2756,7 @@ def leader_ceremony_text_adjust(
     clan = leader.status.group.fetch_clan_object()
     text = text.replace("c_n", str(clan.displayname) + "Clan")
 
-    text.replace("medicine cat", "healer").replace("medicine den", "healer den")
+    text = text.replace("medicine cat", "healer").replace("medicine den", "healer den")
 
     return text
 
@@ -2860,7 +2860,7 @@ def ceremony_text_adjust(
 
     adjust_text = process_text(adjust_text, cat_dict)
 
-    adjust_text.replace("medicine cat", "healer").replace("medicine den", "healer den")
+    adjust_text = adjust_text.replace("medicine cat", "healer").replace("medicine den", "healer den")
 
     return adjust_text, random_living_parent, random_dead_parent
 

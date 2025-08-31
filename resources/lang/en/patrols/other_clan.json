@@ -3572,8 +3572,8 @@
                 "stat_trait":["bloodthirsty", "cold", "troublesome","shameless", "arrogant", "ambitious"],
                 "other_clan_rep": -8,
                 "new_cat": [
-                    ["age: kitten", "backstory: otherclan5", "change_clan"],
-                    ["age: kitten", "backstory: otherclan5", "change_clan"]
+                    ["age: kitten", "backstory: otherclan5", "clancat", "exists", "change_clan"],
+                    ["age: kitten", "backstory: otherclan5", "clancat", "exists", "change_clan"]
                 ]
             },
             {
