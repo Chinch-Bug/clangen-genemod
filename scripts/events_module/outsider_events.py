@@ -61,7 +61,7 @@ class OutsiderEvents:
                 cat.history.add_death(death_text=death_history)
                 cat.die()
                 game.cur_events_list.append(
-                    Single_Event(text, "birth_death", cat_dict={"m_c": cat}, clan=clan.enum)
+                    Single_Event(text, "birth_death", cat_dict={"m_c": cat}, clan=clan.group_ID)
                 )
 
     @staticmethod
@@ -90,6 +90,6 @@ class OutsiderEvents:
                 text = event_text_adjust(cat, text, main_cat=cat)
                 game.cur_events_list.append(
                     Single_Event(text, "misc", cat_dict={
-                                 "m_c": cat}, clan=clan.enum)
+                                 "m_c": cat}, clan=clan.group_ID)
                 )
-                cat.status.standing_history[-1]["near"] = False
+                cat.status.change_group_nearness(clan.group_ID)

@@ -143,9 +143,9 @@ class GroupEvents:
         if chosen_interaction.get_injuries:
             relevant_event_tabs.append("health")
 
-        clan = cat.status.group.fetch_clan_object(game.clan)
+        clan = cat.status.fetch_clan_object(game.clan)
         game.cur_events_list.append(
-            Single_Event(interaction_str, relevant_event_tabs, ids, clan=clan.enum)
+            Single_Event(interaction_str, relevant_event_tabs, ids, clan=clan.group_ID)
         )
         return ids
 

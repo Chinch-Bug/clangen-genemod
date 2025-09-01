@@ -94,9 +94,9 @@ class Scar_Events:
         moons_with = game.clan.age - cat.injuries[injury_name]["moon_start"]
         chance = max(5 - moons_with, 1)
 
-        amount_per_med = get_amount_cat_for_one_medic(cat.status.group)
+        amount_per_med = get_amount_cat_for_one_medic()
         if medicine_cats_can_cover_clan(
-            game.cat_class.all_cats.values(), amount_per_med, clan=cat.status.group
+            game.cat_class.all_cats.values(), amount_per_med, clan=cat.status.group_ID
         ):
             chance += 2
 

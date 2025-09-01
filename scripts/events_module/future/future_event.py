@@ -18,7 +18,7 @@ def prep_event(event, event_id: str, possible_cats: dict, clan):
 
     for event_info in event.future_event:
         # create dict of all cats that need to be involved in future event
-        gathered_cat_dict = _collect_involved_cats(possible_cats, event_info, clan.enum)
+        gathered_cat_dict = _collect_involved_cats(possible_cats, event_info, clan.group_ID)
 
         # create future event and add it to the future event list
         game.clan.future_events.append(
@@ -30,7 +30,7 @@ def prep_event(event, event_id: str, possible_cats: dict, clan):
                     event_info["moon_delay"][0], event_info["moon_delay"][1]
                 ),
                 involved_cats=gathered_cat_dict,
-                clan=clan.enum
+                clan=clan.group_ID
             )
         )
 
@@ -54,7 +54,7 @@ def _collect_involved_cats(cat_dict: dict, future_info: dict, clan) -> dict:
 
     # we're just keeping this to living cats within the clan for now, more complexity can come later
     possible_cats = [
-        kitty for kitty in Cat.all_cats.values() if kitty.status.group == clan
+        kitty for kitty in Cat.all_cats.values() if kitty.status.group_ID == clan
     ]
 
     for new_role, cat_involved in future_info["involved_cats"].items():

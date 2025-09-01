@@ -134,7 +134,7 @@ class MediationScreen(Screens):
         for cat in Cat.all_cats_list:
             if (
                 cat.status.rank.is_any_mediator_rank()
-                and cat.status.group == Cat.fetch_cat(switch_get_value(Switch.cat)).status.group
+                and cat.status.group_ID == Cat.fetch_cat(switch_get_value(Switch.cat)).status.group_ID
             ):
                 self.mediators.append(cat)
 
@@ -372,7 +372,7 @@ class MediationScreen(Screens):
             i
             for i in Cat.all_cats_list
             if (i.ID != self.mediators[self.selected_mediator].ID)
-            and i.status.group == self.mediators[self.selected_mediator].status.group
+            and i.status.group_ID == self.mediators[self.selected_mediator].status.group_ID
         ]
         self.all_cats = self.chunks(self.all_cats_list, 24)
         self.current_listed_cats = self.all_cats_list

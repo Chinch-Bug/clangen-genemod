@@ -1437,9 +1437,9 @@ class KillCat(UIWindow):
                         )
 
                     if self.take_all:
-                        self.the_cat.status.group.fetch_clan_object(game.clan).leader_lives = 0
+                        self.the_cat.status.fetch_clan_object(game.clan).leader_lives = 0
                     else:
-                        self.the_cat.status.group.fetch_clan_object(game.clan).leader_lives -= 1
+                        self.the_cat.status.fetch_clan_object(game.clan).leader_lives -= 1
 
                 self.the_cat.die()
                 self.the_cat.history.add_death(death_message)
@@ -2179,7 +2179,7 @@ class ChangeCatToggles(UIWindow):
         self.checkboxes = {}
 
         # Prevent Fading
-        if self.the_cat in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_clans if clan.instructor]:
+        if self.the_cat in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_other_clans if clan.instructor]:
             box_type = "@checked_checkbox"
             tool_tip = "windows.prevent_fading_tooltip_guide"
         elif self.the_cat.prevent_fading:
@@ -2198,7 +2198,7 @@ class ChangeCatToggles(UIWindow):
             tool_tip_text=tool_tip,
         )
 
-        if self.the_cat in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_clans if clan.instructor]:
+        if self.the_cat in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_other_clans if clan.instructor]:
             self.checkboxes["prevent_fading"].disable()
 
         # No Kits
@@ -2301,8 +2301,8 @@ class ChangeCatClan(UIWindow):
             container=self,
         )
         n = 0
-        for clan in [game.clan] + game.clan.all_clans:
-            if self.the_cat.status.group == clan.enum:
+        for clan in [game.clan] + game.clan.all_other_clans:
+            if self.the_cat.status.group_ID == clan.group_ID:
                 continue
             self.texts[clan.displayname] = pygame_gui.elements.UITextBox(
                 clan.displayname + "clan",
@@ -2318,8 +2318,8 @@ class ChangeCatClan(UIWindow):
         self.checkboxes = {}
 
         n = 0
-        for clan in [game.clan] + game.clan.all_clans:
-            if self.the_cat.status.group == clan.enum:
+        for clan in [game.clan] + game.clan.all_other_clans:
+            if self.the_cat.status.group_ID == clan.group_ID:
                 continue
             box_type = "@checked_checkbox" if self.selected == clan else "@unchecked_checkbox"
 
@@ -2341,21 +2341,21 @@ class ChangeCatClan(UIWindow):
                 if self.the_cat.status.group:
                     self.the_cat.backstory = "otherclan1"
                     if self.the_cat.status.rank == CatRank.LEADER:
-                        self.the_cat.status.group.fetch_clan_object().leader = None
+                        self.the_cat.status.fetch_clan_object().leader = None
                     elif self.the_cat.status.rank == CatRank.DEPUTY:
-                        self.the_cat.status.group.fetch_clan_object().deputy = None
+                        self.the_cat.status.fetch_clan_object().deputy = None
                     elif self.the_cat.status.rank == CatRank.LEADER:
-                        self.the_cat.status.group.fetch_clan_object().remove_med_cat(self.the_cat)
+                        self.the_cat.status.fetch_clan_object().remove_med_cat(self.the_cat)
                     self.the_cat.history.add_beginning(False)
                     self.the_cat.status._modify_group(
                         CatRank.WARRIOR if self.the_cat.status.rank in (CatRank.LEADER, CatRank.DEPUTY) else self.the_cat.status.rank, 
-                        CatStanding.LEFT, self.selected.enum)
+                        CatStanding.LEFT, self.selected.group_ID)
                     for app in self.the_cat.apprentice.copy():
                         app_ob = Cat.fetch_cat(app)
                         if app_ob:
                             app_ob.update_mentor()
                 else:
-                    self.the_cat.add_to_clan(self.selected.enum)
+                    self.the_cat.add_to_clan(self.selected.group_ID)
                     if (
                         self.the_cat.backstory
                         in BACKSTORIES["backstory_categories"][
@@ -2376,7 +2376,7 @@ class ChangeCatClan(UIWindow):
                     if value == event.ui_element:
                         if value.object_ids[1] == "@unchecked_checkbox":
                             self.save_button.enable()
-                            self.selected = next(filter(lambda c: c.displayname == clan_name, game.clan.all_clans), game.clan)
+                            self.selected = next(filter(lambda c: c.displayname == clan_name, game.clan.all_other_clans), game.clan)
                         if value.object_ids[1] == "@checked_checkbox":
                             self.save_button.disable()
                             self.selected = None
@@ -2423,7 +2423,7 @@ class SelectFocusClans(UIWindow):
             container=self,
         )
         n = 0
-        for clan in game.clan.all_clans:
+        for clan in game.clan.all_other_clans:
             self.texts[clan.displayname] = pygame_gui.elements.UITextBox(
                 clan.displayname + "clan",
                 ui_scale(pygame.Rect(107, n * 27 + 38, -1, 25)),
@@ -2438,7 +2438,7 @@ class SelectFocusClans(UIWindow):
         self.checkboxes = {}
 
         n = 0
-        for clan in game.clan.all_clans:
+        for clan in game.clan.all_other_clans:
             box_type = "@unchecked_checkbox"
             if clan.displayname in game.clan.clans_in_focus:
                 box_type = "@checked_checkbox"

@@ -461,7 +461,7 @@ class ClanSettingsScreen(Screens):
                 cats_outside += 1
                 continue
 
-            if cat.status.group.is_other_clan_group():
+            if cat.status.group == CatGroup.OTHER_CLAN:
                 other_clan_cats += 1
                 continue
 

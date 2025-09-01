@@ -270,7 +270,7 @@ class ListScreen(Screens):
         
         group_names = ["general.your_clan", "general.cotc"]
         if game.clan and game.clan.clancount == "multiclan":
-            group_names += [clan.displayname + "Clan" for clan in game.clan.all_clans]
+            group_names += [clan.displayname + "Clan" for clan in game.clan.all_other_clans]
         self.living_group_names = tuple(group_names)
 
         self.set_disabled_menu_buttons(["catlist_screen"])
@@ -615,7 +615,7 @@ class ListScreen(Screens):
         # adding in the guide if necessary, this ensures the guide isn't affected by sorting as we always want them to
         # be the first cat on the list
 
-        all_instructors = [game.clan.instructor] + [clan.instructor for clan in game.clan.all_clans if clan.instructor]
+        all_instructors = [game.clan.instructor] + [clan.instructor for clan in game.clan.all_other_clans if clan.instructor]
         for ins in all_instructors[::-1]:
             if (
                 self.current_group == "general.dark_forest"
@@ -776,7 +776,7 @@ class ListScreen(Screens):
         self.death_status = "living"
         self.full_cat_list = [
             cat for cat in Cat.all_cats_list 
-            if cat.status.is_any_clan_group() and cat.status.group.fetch_clan_object().displayname == self.selected_clan
+            if cat.status.group.is_any_clan_group() and cat.status.fetch_clan_object().displayname == self.selected_clan
         ]
 
     def get_cotc_cats(self):

@@ -1284,7 +1284,7 @@ class ChooseMateScreen(Screens):
             and self.the_cat.is_potential_mate(
                 i, for_love_interest=False, age_restriction=False, ignore_no_mates=True
             )
-            and i.status.group == self.the_cat.status.group
+            and i.status.group_ID == self.the_cat.status.group_ID
             and i.ID not in self.the_cat.mate
             and (not self.single_only or not i.mate)
             and (

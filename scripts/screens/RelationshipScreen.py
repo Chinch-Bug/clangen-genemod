@@ -425,7 +425,7 @@ class RelationshipScreen(Screens):
         else:
             self.all_relations = (list(self.the_cat.relationships.values()).copy() + blank_relations).sorted(key=lambda x: x.cat_to)
 
-        self.all_relations = [rel for rel in self.all_relations if rel.cat_to.status.is_outsider or rel.cat_from.status.is_outsider or self.the_cat.status.group in rel.cat_to.status.all_groups]
+        self.all_relations = [rel for rel in self.all_relations if rel.cat_to.status.is_outsider or rel.cat_from.status.is_outsider or self.the_cat.status.group_ID in rel.cat_to.status.all_groups]
 
         self.focus_cat_elements["header"] = pygame_gui.elements.UITextBox(
             "screens.relationship.heading",

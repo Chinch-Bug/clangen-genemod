@@ -319,7 +319,7 @@ class GenerateEvents:
                 continue
 
             # check tags
-            if not event_for_tags(event.tags, cat, clan=clan.enum, other_cat=random_cat):
+            if not event_for_tags(event.tags, cat, clan=clan.group_ID, other_cat=random_cat):
                 continue
 
             # make complete leader death less likely until the leader is over 150 moons (or unless it's a murder)
@@ -395,7 +395,7 @@ class GenerateEvents:
                     continue
 
                 if game.clan.clancount == 'multiclan' and event.other_clan and not event_for_other_clan(
-                    Cat_class, event.other_clan.get("has_rank"), other_clan.enum if other_clan != game.clan else CatGroup.PLAYER_CLAN
+                    Cat_class, event.other_clan.get("has_rank"), other_clan.group_ID if other_clan != game.clan else CatGroup.PLAYER_CLAN
                 ):
                     continue
 
@@ -404,10 +404,10 @@ class GenerateEvents:
                 if "war" in event.sub_type:
                     rel_change_types = switch_get_value(Switch.war_rel_change_type)
                     rel_change_type = "rel_down"
-                    if rel_change_types.get(clan.enum):
-                        rel_change_type = rel_change_types[clan.enum].get(other_clan.enum, "rel_down")
-                    elif rel_change_types.get(other_clan.enum):
-                        rel_change_type = rel_change_types[other_clan.enum].get(clan.enum, "rel_down")
+                    if rel_change_types.get(clan.group_ID):
+                        rel_change_type = rel_change_types[clan.group_ID].get(other_clan.group_ID, "rel_down")
+                    elif rel_change_types.get(other_clan.group_ID):
+                        rel_change_type = rel_change_types[other_clan.group_ID].get(clan.group_ID, "rel_down")
                     if (
                         event.other_clan["changed"] < 0
                         and rel_change_type != "rel_down"
@@ -454,7 +454,7 @@ class GenerateEvents:
             return None, None
 
         cat_list = [
-            c for c in Cat_class.all_cats.values() if c.status.group == cat.status.group and not c.dead and c != cat
+            c for c in Cat_class.all_cats.values() if c.status.group_ID == cat.status.group_ID and not c.dead and c != cat
         ]
         chosen_cat = None
         chosen_event = None

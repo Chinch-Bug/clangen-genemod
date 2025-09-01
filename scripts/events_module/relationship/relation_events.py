@@ -130,7 +130,7 @@ class Relation_Events:
             cat_to_choose_from = [
                 cat.all_cats[mate_id]
                 for mate_id in cat.mate
-                if cat.all_cats[mate_id].status.is_any_clan_group()
+                if cat.all_cats[mate_id].status.group.is_any_clan_group()
             ]
 
         if not cat_to_choose_from:
@@ -186,7 +186,7 @@ class Relation_Events:
             chosen_type = "all"
         possible_interaction_cats = list(
             filter(
-                lambda c: (c.status.group == cat.status.group),
+                lambda c: (c.status.group_ID == cat.status.group_ID),
                 Cat.all_cats.values(),
             )
         )
@@ -231,7 +231,7 @@ class Relation_Events:
         for new_cat in new_cats:
             same_age_cats = get_cats_same_age(Cat, new_cat)
             alive_cats = [
-                i for i in new_cat.all_cats.values() if i.status.group == new_cat.status.group
+                i for i in new_cat.all_cats.values() if i.status.group_ID == new_cat.status.group_ID
             ]
             number = constants.CONFIG["new_cat"]["cat_amount_welcoming"]
 
@@ -275,7 +275,7 @@ class Relation_Events:
         """Returns a list of cats, where the relationship from main_cat towards the cat fulfill the given constraints."""
         cat_list = list(
             filter(
-                lambda cat: cat.status.group == main_cat.status.group,
+                lambda cat: cat.status.group_ID == main_cat.status.group_ID,
                 Cat.all_cats.values(),
             )
         )

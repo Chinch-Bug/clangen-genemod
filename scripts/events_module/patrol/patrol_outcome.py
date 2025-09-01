@@ -739,7 +739,7 @@ class PatrolOutcome:
             text = i18n.t("screens.patrol.clan_rep_neutral")
         else:
             text = i18n.t("screens.patrol.clan_rep_worsened")
-        text = event_text_adjust(Cat, text, other_clan=patrol.other_clan.enum)
+        text = event_text_adjust(Cat, text, other_clan=patrol.other_clan)
         return text
 
     def _handle_herbs(self, patrol: "Patrol") -> str:
@@ -893,13 +893,13 @@ class PatrolOutcome:
             if game.clan.clancount != "multiclan" or (("clancat" not in attribute_list and "change_clan" not in attribute_list) or "exists" not in attribute_list):
                 patrol.new_cats.append(
                     create_new_cat_block(
-                        Cat, Relationship, patrol, in_event_cats, i, attribute_list, clan=patrol.clan.enum, other_clan=patrol.other_clan
+                        Cat, Relationship, patrol, in_event_cats, i, attribute_list, clan=patrol.clan, other_clan=patrol.other_clan
                     )
                 )
             else:
                 patrol.new_cats.append(
                     find_clan_cats(
-                        Cat, Relationship, self, in_event_cats, i, attribute_list, clan=patrol.clan.enum, other_clan=patrol.other_clan.enum
+                        Cat, Relationship, self, in_event_cats, i, attribute_list, clan=patrol.clan, other_clan=patrol.other_clan
                     )
                 )
             dead = []
@@ -908,7 +908,7 @@ class PatrolOutcome:
             for cat in patrol.new_cats[-1]:
                 if cat.dead:
                     dead.append(str(cat.name))
-                elif cat.status.group != patrol.clan.enum:
+                elif cat.status.group_ID != patrol.clan.group_ID:
                     outside.append(str(cat.name))
                 else:
                     new.append(str(cat.name))

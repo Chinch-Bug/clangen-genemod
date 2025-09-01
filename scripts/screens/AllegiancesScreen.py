@@ -54,7 +54,7 @@ class AllegiancesScreen(Screens):
             elif event.ui_element in self.choose_group_buttons.values():
                 self.choose_living_dropdown.close()
                 self.current_clan = event.ui_element.text.replace("Clan", "")
-                self.current_clan = [c for c in game.clan.all_clans if c.displayname == self.current_clan]
+                self.current_clan = [c for c in game.clan.all_other_clans if c.displayname == self.current_clan]
                 if self.current_clan:
                     self.current_clan = self.current_clan[0]
                 else:
@@ -115,7 +115,7 @@ class AllegiancesScreen(Screens):
                 manager=MANAGER,
             )
             y_pos = 32
-            for clan in game.clan.all_clans:
+            for clan in game.clan.all_other_clans:
                 self.choose_group_buttons[clan.displayname] = UISurfaceImageButton(
                     ui_scale(pygame.Rect((0, y_pos), (190, 34))),
                     clan.displayname + "Clan",
@@ -274,7 +274,7 @@ class AllegiancesScreen(Screens):
         """Determine Text. Ouputs list of tuples."""
 
         living_cats = [
-            i for i in Cat.all_cats.values() if i.status.group and i.status.group.fetch_clan_object() == self.current_clan
+            i for i in Cat.all_cats.values() if i.status.fetch_clan_object() == self.current_clan
         ]
         living_meds = []
         living_mediators = []
@@ -315,7 +315,7 @@ class AllegiancesScreen(Screens):
         living_elders = sorted(living_elders, key=lambda x: x.moons, reverse=True)
 
         # Find Queens:
-        queen_dict, living_kits = get_alive_clan_queens(living_cats, self.current_clan.enum)
+        queen_dict, living_kits = get_alive_clan_queens(living_cats, self.current_clan.group_ID)
 
         # Remove queens from warrior or elder lists, if they are there.  Let them stay on any other lists.
         for q in queen_dict:

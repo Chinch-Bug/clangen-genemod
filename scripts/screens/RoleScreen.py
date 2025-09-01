@@ -54,7 +54,7 @@ class RoleScreen(Screens):
                 else:
                     print("invalid previous cat", self.previous_cat)
             elif event.ui_element == self.promote_leader:
-                clan = self.the_cat.status.group.fetch_clan_object(game.clan)
+                clan = self.the_cat.status.fetch_clan_object(game.clan)
                 if self.the_cat == clan.deputy:
                     clan.deputy = None
                 clan.new_leader(self.the_cat)
@@ -62,7 +62,7 @@ class RoleScreen(Screens):
                     Cat.sort_cats()
                 self.update_selected_cat()
             elif event.ui_element == self.promote_deputy:
-                self.the_cat.status.group.fetch_clan_object(game.clan).deputy = self.the_cat
+                self.the_cat.status.fetch_clan_object(game.clan).deputy = self.the_cat
                 self.the_cat.rank_change(CatRank.DEPUTY, resort=True)
                 self.update_selected_cat()
             elif event.ui_element == self.switch_warrior:
@@ -329,14 +329,14 @@ class RoleScreen(Screens):
     def update_disabled_buttons(self):
         self.update_previous_next_cat_buttons()
 
-        clan = self.the_cat.status.group.fetch_clan_object(game.clan)
+        clan = self.the_cat.status.fetch_clan_object(game.clan)
         if clan.leader:
-            leader_invalid = clan.leader.status.group != self.the_cat.status.group
+            leader_invalid = clan.leader.status.group_ID != self.the_cat.status.group_ID
         else:
             leader_invalid = True
 
         if clan.deputy:
-            deputy_invalid = clan.deputy.status.group != self.the_cat.status.group
+            deputy_invalid = clan.deputy.status.group_ID != self.the_cat.status.group_ID
         else:
             deputy_invalid = True
 
@@ -532,7 +532,7 @@ class RoleScreen(Screens):
         else:
             output = "screens.role.blurb_unknown"
 
-        return i18n.t(output, name=self.the_cat.name, clan=self.the_cat.status.group.fetch_clan_object().displayname)
+        return i18n.t(output, name=self.the_cat.name, clan=self.the_cat.status.fetch_clan_object().displayname)
 
     def exit_screen(self):
         self.back_button.kill()

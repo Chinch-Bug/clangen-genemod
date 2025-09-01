@@ -67,7 +67,7 @@ class Welcoming_Events:
 
         # prepare string for display
         interaction_str = event_text_adjust(
-            Cat, interaction_str, main_cat=clan_cat, random_cat=new_cat, clan=clan_cat.status.group
+            Cat, interaction_str, main_cat=clan_cat, random_cat=new_cat, clan=clan_cat.status.fetch_clan_object(game.clan)
         )
 
         # influence the relationship
@@ -80,7 +80,7 @@ class Welcoming_Events:
             cats_to=[new_cat], cats_from=[clan_cat], **clan_cat_to_new
         )
 
-        clan = clan_cat.status.group.fetch_clan_object(game.clan)
+        clan = clan_cat.status.fetch_clan_object(game.clan)
         # add it to the event list
         game.cur_events_list.append(
             Single_Event(
@@ -88,7 +88,7 @@ class Welcoming_Events:
                 ["relation", "interaction"],
                 [new_cat.ID, clan_cat.ID],
                 cat_dict={"m_c": new_cat, "r_c": clan_cat},
-                clan=clan.enum,
+                clan=clan.group_ID,
             )
         )
 
