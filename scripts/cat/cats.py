@@ -1111,7 +1111,7 @@ class Cat:
                     # child.status.add_to_group(new_group=clan, age=self.age)
                     child.add_to_clan(clan)
                 else:
-                    game.clan.add_to_clan(self, clan)
+                    game.clan.add_to_clan(self)
                 child.history.add_beginning()
                 ids.append(child_id)
 

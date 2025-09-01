@@ -211,7 +211,7 @@ def load_events():
             if event_obj:
                 if event_obj.clan and event_obj.clan == CatGroup.PLAYER_CLAN.value:
                     event_obj.clan = CatGroup.PLAYER_CLAN_ID
-                elif event.obj.clan and len(event_obj.clan) > 2:
+                elif event_obj.clan and len(event_obj.clan) > 2:
                     event_obj.clan = str(int(event_obj.clan[-1])+4)
                 cur_events_list.append(event_obj)
     except FileNotFoundError:

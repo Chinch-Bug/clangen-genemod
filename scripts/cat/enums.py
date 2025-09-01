@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from strenum import StrEnum
-from scripts.game_structure import game
 
 
 class CatAge(StrEnum):
@@ -128,7 +127,3 @@ class CatGroup(StrEnum):
             self.PLAYER_CLAN,
             self.OTHER_CLAN,
         )
-
-    def fetch_clan_object(self, default=None):
-        clan = game.clan if self == CatGroup.PLAYER_CLAN_ID else next(filter(lambda c: c.group_ID == self, game.clan.all_other_clans), default)
-        return clan
