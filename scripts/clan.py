@@ -192,7 +192,7 @@ class Clan:
         )
 
         self.clancount = clancount
-        self.instructor.status.group_history.insert(0, {"rank": instructor_rank, "group_ID": CatGroup.PLAYER_CLAN, "moons_as": self.instructor.moons})
+        self.instructor.status.group_history.insert(0, {"rank": instructor_rank, "group": CatGroup.PLAYER_CLAN_ID, "moons_as": self.instructor.moons})
         self.instructor.dead_for = randint(20, 200)
         self.add_cat(self.instructor)
         self.all_other_clans = []
@@ -236,7 +236,7 @@ class Clan:
 
         if self.clancount == "multiclan":
             for i, clan in enumerate(game.clan.all_other_clans[:-1]):
-                game.clan.war[enum.group_ID] = {}
+                game.clan.war[clan.group_ID] = {}
                 for o_clan in game.clan.all_other_clans[i+1:]:
                     game.clan.war[clan.group_ID][o_clan.group_ID] = randint(8, 12)
                     game.clan.war[clan.group_ID][o_clan.group_ID] = {"at_war": False, "duration": 0}
@@ -671,8 +671,8 @@ class Clan:
                         is_neighbour = next(
                             filter(lambda c: c.displayname == Cat.all_cats[cat].group, game.clan.all_other_clans), None)
                         if is_neighbour:
-                            Cat.all_cats[cat].status.group_history[0]["group_id"] = is_neighbour.group_ID
-                            Cat.all_cats[cat].status.standing_history[0]["group_id"] = is_neighbour.group_ID
+                            Cat.all_cats[cat].status.group_history[0]["group"] = is_neighbour.group_ID
+                            Cat.all_cats[cat].status.standing_history[0]["group"] = is_neighbour.group_ID
 
             else:
                 print("WARNING: Cat not found:", cat)
