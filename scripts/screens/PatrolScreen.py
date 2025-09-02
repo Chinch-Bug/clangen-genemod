@@ -328,7 +328,7 @@ class PatrolScreen(Screens):
         self.set_disabled_menu_buttons(["patrol_screen"])
         self.update_heading_text(f"{game.clan.displayname}Clan")
 
-        if not self.current_clan:
+        if not self.current_clan or self.current_clan.group_ID == game.clan.group_ID:
             self.current_clan = game.clan
         if game.clan.clancount == 'multiclan':
             self.event_screen_container = pygame_gui.core.UIContainer(
