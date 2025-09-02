@@ -69,6 +69,16 @@ used_group_IDs: dict = {
     CatGroup.UNKNOWN_RESIDENCE_ID: CatGroup.UNKNOWN_RESIDENCE,
     CatGroup.DARK_FOREST_ID: CatGroup.DARK_FOREST,
 }
+
+def reset_group_IDs():
+    global used_group_IDs
+    
+    used_group_IDs = {
+        CatGroup.PLAYER_CLAN_ID: CatGroup.PLAYER_CLAN,
+        CatGroup.STARCLAN_ID: CatGroup.STARCLAN,
+        CatGroup.UNKNOWN_RESIDENCE_ID: CatGroup.UNKNOWN_RESIDENCE,
+        CatGroup.DARK_FOREST_ID: CatGroup.DARK_FOREST,
+    }
 """Int IDs already in use. Key is the group ID, value is the group type."""
 
 # store changing parts of the game that the user can toggle with buttons

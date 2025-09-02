@@ -173,6 +173,7 @@ class Clan:
         """
         switch_set_value(Switch.clan_name, self.name)
         reset_loaded_clan_settings()
+        game.reset_group_IDs()
         instructor_rank = choice(
             (
                 CatRank.APPRENTICE,
@@ -237,8 +238,9 @@ class Clan:
         if self.clancount == "multiclan":
             for i, clan in enumerate(game.clan.all_other_clans[:-1]):
                 game.clan.war[clan.group_ID] = {}
+                game.clan.relations[clan.group_ID] = {}
                 for o_clan in game.clan.all_other_clans[i+1:]:
-                    game.clan.war[clan.group_ID][o_clan.group_ID] = randint(8, 12)
+                    game.clan.relations[clan.group_ID][o_clan.group_ID] = randint(8, 12)
                     game.clan.war[clan.group_ID][o_clan.group_ID] = {"at_war": False, "duration": 0}
 
         for cat_id in Cat.all_cats:
@@ -632,7 +634,7 @@ class Clan:
                     game.clan.relations[CatGroup.PLAYER_CLAN_ID][ID] = int(other_clan["relations"])
                 else:
                     if not clan_data["relations"].get(CatGroup.PLAYER_CLAN_ID):
-                        game.clan.relations[CatGroup.PLAYER_CLAN_ID][ID] = clan_data["relations"]["player_clan"]["other_clan"+str(int(ID)-4)]
+                        game.clan.relations[CatGroup.PLAYER_CLAN_ID][ID] = clan_data["relations"]["player_clan"]["other_clan"+str(len(game.clan.all_other_clans))]
         else:
             if "other_clan_chosen_symbol" not in clan_data:
                 for name, relation, temper, enum in zip(
@@ -651,12 +653,12 @@ class Clan:
                     OtherClan(name, temperament=temper, chosen_symbol=symbol)
                     game.clan.relations[CatGroup.PLAYER_CLAN_ID][ID] = int(relation)
         if game.clan.clancount == "multiclan":
-            if "relations" not in clan_data or not clan_data["relations"].get(game.clan.group_ID):
+            if "relations" not in clan_data or not clan_data["relations"].get(game.clan.group_ID) or len(clan_data["relations"]) < len(game.clan.all_other_clans):
                 for i, clan in enumerate(game.clan.all_other_clans[:-1]):
                     game.clan.relations[clan.group_ID] = {}
-                    for o_clan in game.clan.all_other_clans[i+1:]:
+                    for j, o_clan in enumerate(game.clan.all_other_clans[i+1:]):
                         if "relations" in clan_data:
-                            if rel := clan_data["relations"].get("other_clan" + (str(int(clan.group_ID)-4)), {}).get("other_clan" + (str(int(o_clan.group_ID)-4))):
+                            if rel := clan_data["relations"].get("other_clan" + (str(i+1)), {}).get("other_clan" + (str(j+1))):
                                 game.clan.relations[clan.group_ID][o_clan.group_ID] = rel
                                 continue
                         game.clan.relations[clan.group_ID][o_clan.group_ID] = randint(8, 12)
@@ -695,12 +697,12 @@ class Clan:
                     for key in clan_data["war"]:
                         clan_id = key
                         if len(key) > 2:
-                            clan_id = CatGroup.PLAYER_CLAN_ID if key == "player_clan" else str(int(key[-1])+4)
+                            clan_id = CatGroup.PLAYER_CLAN_ID if key == "player_clan" else game.clan.all_other_clans[int(key[-1])-1].group_ID
                         game.clan.war[clan_id] = {}
                         for other_key in clan_data["war"][key]:
                             other_clan_id = other_key
                             if len(other_key) > 2:
-                                other_clan_id = str(int(other_key[-1])+4)
+                                other_clan_id = game.clan.all_other_clans[int(other_key[-1])-1].group_ID
                             game.clan.war[clan_id][other_clan_id] = clan_data["war"][key][other_key]
                 
 
@@ -901,7 +903,7 @@ class Clan:
                         if not event_obj.clan or event_obj.clan in [game.clan.displayname, CatGroup.PLAYER_CLAN.value]:
                             event_obj.clan = CatGroup.PLAYER_CLAN_ID
                         elif len(event_obj.clan) > 2:
-                            event_obj.clan = str(int(event_obj.clan[-1])+4)
+                            event_obj.clan = game.clan.all_other_clans[int(event_obj.clan[-1])-1].group_ID
 
                         game.clan.future_events.append(event_obj)
                     except KeyError:
