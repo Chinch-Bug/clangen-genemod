@@ -188,7 +188,7 @@ class Clan:
         )
 
         self.instructor = Cat(
-            status_dict={"rank": instructor_rank, "group_ID": CatGroup.STARCLAN},
+            status_dict={"rank": instructor_rank, "group_ID": CatGroup.STARCLAN_ID},
         )
 
         self.clancount = clancount
