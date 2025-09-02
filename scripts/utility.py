@@ -581,7 +581,7 @@ def create_new_cat_block(
     elif "clancat" in attribute_list or "former Clancat" in attribute_list:
         cat_social = CatSocial.CLANCAT
         if other_clan:
-            cat_group = other_clan.group_id
+            cat_group = other_clan.group_ID
         else:
             cat_group = choice([x.group_ID for x in game.clan.all_other_clans])
     else:
@@ -1290,7 +1290,7 @@ def create_new_cat(
         # NAMES and accs
         # clancat adults should have already generated with a clan-ish name, thus they skip all of this re-naming
         # little babies will take a clancat name, we love indoctrination
-        if (kit or litter or moons < 12) and (not original_group or not original_group.is_any_clan_group()):
+        if (kit or litter or moons < 12) and (not original_group or not game.used_group_IDs[original_group].is_any_clan_group()):
             # babies change name, in case their initial name isn't clan-ish
             new_cat.change_name()
         elif original_group != CatGroup.OTHER_CLAN:
