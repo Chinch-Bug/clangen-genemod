@@ -1445,7 +1445,7 @@ class ProfileScreen(Screens):
         """
         returns adjusted apprenticeship history text (mentor influence and app ceremony)
         """
-        if not [g for g in self.the_cat.status.all_groups if g]:
+        if not [g for g in self.the_cat.status.all_groups if g and game.used_group_IDs[g].is_any_clan_group()]:
             return ""
 
         mentor_influence = self.the_cat.history.mentor_influence
