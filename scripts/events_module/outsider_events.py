@@ -78,7 +78,7 @@ class OutsiderEvents:
                     text = f"The Clan hasn't scented the exiled {cat.name} nearby in a while."
                 elif cat.status.is_lost():
                     text = (
-                        f"Time away from the Clan has given {cat.name} a lot of room to think."
+                        f"Time away from the Clan has given {cat.name} a lot of room to think. "
                         "Following a call to adventure, {PRONOUN/m_c/subject/CAP} {VERB/m_c/wander/wanders} even farther afield."
                     )
 

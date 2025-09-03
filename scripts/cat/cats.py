@@ -3340,7 +3340,7 @@ class Cat:
         elif sort_type == "death":
             given_list.sort(key=lambda x: -1 * int(x.dead_for))
         elif sort_type == "clan":
-            given_list.sort(key=lambda x: (x.status.group_ID, Cat.rank_order(
+            given_list.sort(key=lambda x: (x.status.group_ID if x.status.group_ID else 0, Cat.rank_order(
                 x), Cat.get_adjusted_age(x)), reverse=True)
 
         return
