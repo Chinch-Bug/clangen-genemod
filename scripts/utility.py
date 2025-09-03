@@ -1293,7 +1293,7 @@ def create_new_cat(
         if (kit or litter or moons < 12) and (not original_group or not game.used_group_IDs[original_group].is_any_clan_group()):
             # babies change name, in case their initial name isn't clan-ish
             new_cat.change_name()
-        elif original_group != CatGroup.OTHER_CLAN:
+        elif not original_group or not game.used_group_IDs[original_group].is_any_clan_group():
             # give kittypets a kittypet name
             overwrite_prefix = False
             if original_social == CatSocial.KITTYPET:

@@ -127,10 +127,11 @@ class HandleShortEvents:
         chosen_enemy = choice(enemies) if enemies else None
         rel_change_types = switch_get_value(Switch.war_rel_change_type)
         rel_changed = None
-        if rel_change_types.get(clan.group_ID):
-            rel_changed = rel_change_types[clan.group_ID][chosen_enemy]
-        elif rel_change_types.get(chosen_enemy):
-            rel_changed = rel_change_types[chosen_enemy][clan.group_ID]
+        if chosen_enemy:
+            if rel_change_types.get(clan.group_ID):
+                rel_changed = rel_change_types[clan.group_ID][chosen_enemy]
+            elif rel_change_types.get(chosen_enemy):
+                rel_changed = rel_change_types[chosen_enemy][clan.group_ID]
         # if the war didn't go badly, then we decrease the chance of this event being war-focused
         if rel_changed != "rel_down":
             war_chance = 2
