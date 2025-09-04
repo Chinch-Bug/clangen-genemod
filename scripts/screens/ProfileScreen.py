@@ -1345,7 +1345,7 @@ class ProfileScreen(Screens):
             clan = [
                 clan
                 for clan in game.clan.all_other_clans
-                if clan.group_ID == self.the_cat.status.group_ID
+                if clan.group_ID == self.the_cat.status.get_last_living_group()
             ]
             bs_blurb = i18n.t("cat.backstories.other_clan_cat", clan=clan[0])
         if bs_blurb is not None:

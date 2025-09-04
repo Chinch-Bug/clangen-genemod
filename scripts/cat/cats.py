@@ -1694,6 +1694,11 @@ class Cat:
     def one_moon(self, other_clan_cats: list = None):
         """Handles a moon skip for an alive cat."""
         old_age = self.age
+
+        if self.dead and not self.faded:
+            self.thoughts()
+            return
+            
         self.moons += 1
         if self.moons == 1 and self.status.rank == CatRank.NEWBORN:
             self.status._change_rank(CatRank.KITTEN)
@@ -1703,10 +1708,6 @@ class Cat:
             # this is handled in events.py
             self.personality.set_kit(self.age.is_baby())
             self.thoughts(other_clan_cats=other_clan_cats)
-            return
-
-        if self.dead and not self.faded:
-            self.thoughts()
             return
 
         if old_age != self.age:

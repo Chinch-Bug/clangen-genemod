@@ -238,6 +238,7 @@ def search_cats(search_text, cat_list, search_genotype):
 
                 "curl": ["Cu", "cu"],
                 "fold": ["Fd", "fd"],
+                "fourear": ["Dup", "dup"],
                 "manx": ["M", "Ab", "m", "ab"],
                 "kab": ["Kab", "kab"],
                 "toybob": ["Tb", "tb"],
@@ -588,7 +589,7 @@ def create_new_cat_block(
         if game.clan.clancount == "multiclan":
             cat_social = choice([CatSocial.KITTYPET, CatSocial.LONER])
         else:
-            cat_social = choice([CatSocial.KITTYPET, CatSocial.LONER, "former Clancat"])
+            cat_social = choice([CatSocial.KITTYPET, CatSocial.LONER, CatSocial.CLANCAT])
 
     # LITTER
     litter = False
@@ -1290,7 +1291,7 @@ def create_new_cat(
         # NAMES and accs
         # clancat adults should have already generated with a clan-ish name, thus they skip all of this re-naming
         # little babies will take a clancat name, we love indoctrination
-        if (kit or litter or moons < 12) and (not original_group or not game.used_group_IDs[original_group].is_any_clan_group()):
+        if not outside and (kit or litter or moons < 12) and (not original_group or not game.used_group_IDs[original_group].is_any_clan_group()):
             # babies change name, in case their initial name isn't clan-ish
             new_cat.change_name()
         elif not original_group or not game.used_group_IDs[original_group].is_any_clan_group():
@@ -1361,7 +1362,7 @@ def create_new_cat(
                 constants.CONFIG["cat_generation"]["base_permanent_condition"] / 11.25
             )
         else:
-            chance = constants.CONFIG["cat_generation"]["base_permanent_condition"] + 10
+            chance = constants.CONFIG["cat_generation"]["base_permanent_condition"]
         
         if not is_parent and get_clan_setting('tnr_mode') and moons > 5:
             kittypet_n = constants.CONFIG['tnr_mode']['kittypet_neuter']

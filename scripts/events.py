@@ -157,7 +157,7 @@ class Events:
         # Calling of "one_moon" functions.
         other_clan_cats = [c for c in Cat.all_cats_list if c.status.is_other_clancat]
         for cat in Cat.all_cats_list.copy():
-            if not cat.status.group or (cat.status.is_other_clancat and game.clan.clancount == "singleclan"):
+            if not cat.status.group_ID or (cat.status.is_other_clancat and game.clan.clancount == "singleclan"):
                 self.one_moon_outside_cat(cat, other_clan_cats)
             elif cat.status.group.is_any_clan_group() or cat.status.group.is_afterlife():
                 self.one_moon_cat(cat, cat.status.fetch_clan_object(game.clan))
@@ -1030,7 +1030,13 @@ class Events:
         """
         # aging the cat
         clan = next(filter(lambda c: cat.status.is_lost(c) or cat.status.is_exiled(c), game.clan.all_other_clans), game.clan)
+        # this will also handle increasing dead_for!
+        cat.status.increase_current_moons_as()
+
         cat.one_moon(other_clan_cats)
+        if cat.dead:
+            return
+
         cat.manage_outside_trait()
 
         self.handle_outside_EX(cat)
