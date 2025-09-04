@@ -696,6 +696,8 @@ dev_tools = false
   # chances for random outsider deaths or leaving the territory are 2^x
   outsider_death = 6
   outsider_wander_off = 7
+  # outsider_return is a 2^x chance for outsiders chased away or having left the territory to return by themselves
+  outsider_return = 6
 
 [focus]
   # NOTE: 'raid other clans' should be more dangerous than 'hoarding'!!!

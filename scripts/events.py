@@ -1029,7 +1029,7 @@ class Events:
         exiled cat events
         """
         # aging the cat
-        clan = next(filter(lambda c: cat.status.is_lost(c) or cat.status.is_exiled(c), game.clan.all_other_clans), game.clan)
+        clan = next(filter(lambda c: cat.status.is_lost(c.group_ID) or cat.status.is_exiled(c.group_ID), game.clan.all_other_clans), game.clan)
         # this will also handle increasing dead_for!
         cat.status.increase_current_moons_as()
 

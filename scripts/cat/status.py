@@ -580,8 +580,10 @@ class Status:
         """
         for entry in self.standing_history:
             if entry.get("group") == group_ID:
-                if entry["near"]:
+                if entry.get("near") is not None:
                     entry["near"] = not entry["near"]
+                else:
+                    entry["near"] = False
 
     # RETRIEVE INFO
     def get_standing_with_group(self, group_ID: str) -> Optional[list[CatStanding]]:

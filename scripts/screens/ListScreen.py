@@ -54,7 +54,7 @@ class ListScreen(Screens):
         "screens.list.filter_exp",
     )
 
-    living_group_names = ("general.your_clan", "general.cotc")
+    living_group_names = ("general.your_clan", "general.cotc", "general.cbtc")
     dead_group_names = (
         "general.starclan",
         "general.unknown_residence",
@@ -268,7 +268,7 @@ class ListScreen(Screens):
             self.death_status = "living"
             self.current_group = "general.your_clan"
         
-        group_names = ["general.your_clan", "general.cotc"]
+        group_names = ["general.your_clan", "general.cotc", "general.cbtc"]
         if game.clan and game.clan.clancount == "multiclan":
             group_names += [clan.displayname + "Clan" for clan in game.clan.all_other_clans]
         self.living_group_names = tuple(group_names)
@@ -571,6 +571,8 @@ class ListScreen(Screens):
                 self.get_your_clan_cats()
             elif new_group == "general.cotc":
                 self.get_cotc_cats()
+            elif new_group == "general.cbtc":
+                self.get_cbtc_cats()
             elif new_group == "general.starclan":
                 self.get_sc_cats()
             elif new_group == "general.unknown_residence":
@@ -722,6 +724,9 @@ class ListScreen(Screens):
         elif self.current_group == "general.cotc":
             self.set_bg(None)
             self.update_heading_text("general.cotc")
+        elif self.current_group == "general.cbtc":
+            self.set_bg(None)
+            self.update_heading_text("general.cbtc")
         elif self.current_group == "general.starclan":
             self.set_bg("starclan")
             self.update_heading_text("general.starclan")
@@ -750,6 +755,8 @@ class ListScreen(Screens):
                 self.get_ur_cats()
             elif game.last_list_forProfile == "general.cotc":
                 self.get_cotc_cats()
+            elif game.last_list_forProfile == "general.cbtc":
+                self.get_cbtc_cats()
             elif game.last_list_forProfile == "general.your_clan":
                 self.get_your_clan_cats()
             else:
@@ -791,6 +798,21 @@ class ListScreen(Screens):
                 not the_cat.dead
                 and (the_cat.status.is_outsider or (the_cat.status.is_other_clancat and game.clan.clancount == "singleclan"))
                 and the_cat.status.is_near()
+            ):
+                self.full_cat_list.append(the_cat)
+
+    def get_cbtc_cats(self):
+        """
+        grabs cats outside the clan
+        """
+        self.current_group = "general.cbtc"
+        self.death_status = "living"
+        self.full_cat_list = []
+        for the_cat in Cat.all_cats_list:
+            if (
+                not the_cat.dead
+                and (the_cat.status.is_outsider or (the_cat.status.is_other_clancat and game.clan.clancount == "singleclan"))
+                and not the_cat.status.is_near()
             ):
                 self.full_cat_list.append(the_cat)
 

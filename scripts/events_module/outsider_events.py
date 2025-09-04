@@ -93,3 +93,23 @@ class OutsiderEvents:
                                  "m_c": cat}, clan=clan.group_ID)
                 )
                 cat.status.change_group_nearness(clan.group_ID)
+            elif random.getrandbits(int(constants.CONFIG["outsider_events"]["outsider_return"])) == 1 and not cat.dead and not cat.status.is_near():
+                if cat.status.is_exiled():
+                    text = f"The exiled {cat.name} has been spotted near the border again recently."
+                elif cat.status.is_lost():
+                    text = (
+                        f"Feeling homesick, {cat.name} has travelled far to return back to familiar territory. "
+                        "The Clan is happy to hear rumours of {PRONOUN/m_c/poss} roaming nearby."
+                    )
+
+                else:
+                    social = i18n.t(f"general.{cat.status.social}", count=1)
+                    text = (
+                        f"New sightings of the {social}, {cat.name}, have been reported lately."
+                    )
+                text = event_text_adjust(cat, text, main_cat=cat)
+                game.cur_events_list.append(
+                    Single_Event(text, "misc", cat_dict={
+                                 "m_c": cat}, clan=clan.group_ID)
+                )
+                cat.status.change_group_nearness(clan.group_ID)
