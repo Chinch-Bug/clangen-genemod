@@ -128,7 +128,7 @@ class HandleShortEvents:
         rel_change_types = switch_get_value(Switch.war_rel_change_type)
         rel_changed = None
         if chosen_enemy:
-            if rel_change_types.get(clan.group_ID):
+            if rel_change_types.get(clan.group_ID) and rel_change_types[clan.group_ID].get(chosen_enemy):
                 rel_changed = rel_change_types[clan.group_ID][chosen_enemy]
             elif rel_change_types.get(chosen_enemy):
                 rel_changed = rel_change_types[chosen_enemy][clan.group_ID]
