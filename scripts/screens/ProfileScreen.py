@@ -1014,8 +1014,9 @@ class ProfileScreen(Screens):
         bs_text = "this should not appear"
         # if cat has never been part of the player clan, then they get no backstory yet
         if (
-            not the_cat.status.group.is_any_clan_group()
-            and not the_cat.status.get_last_living_group()
+            not the_cat.status.get_last_living_group() or
+            (not the_cat.status.get_last_living_group() == CatGroup.PLAYER_CLAN_ID
+            and game.clan.clancount == "singleclan")
         ):
             bs_text = the_cat.status.social
         else:
@@ -1354,7 +1355,8 @@ class ProfileScreen(Screens):
         else:
             text = i18n.t("cat.backstories.unknown", name=self.the_cat.name)
 
-        if self.the_cat.status.group.is_any_clan_group():
+        if ((self.the_cat.status.fetch_clan_object() and game.clan.clancount == "multiclan") or 
+            self.the_cat.status.get_last_living_group() == CatGroup.PLAYER_CLAN_ID):
             beginning = self.the_cat.history.beginning
             if beginning:
                 text += " "

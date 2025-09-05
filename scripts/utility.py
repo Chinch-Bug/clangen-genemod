@@ -340,16 +340,21 @@ def change_clan_relations(clan, other_clan, difference):
     # setting it in the Clan save
     game.clan.set_relations(clan, other_clan, clan_relations)
 
-def create_bio_parents(Cat, flip=False, second_parent=True):
+def create_bio_parents(Cat, flip=False, second_parent=True, clan=None):
     ages = [randint(15,120), 0]
     ages[1] = ages[0] + randint(0, 24) - 12
     original_social = choice([CatSocial.KITTYPET, CatSocial.LONER, CatSocial.ROGUE])
+    thought = None
+    if clan:
+        original_social = CatSocial.CLANCAT
+        thought = i18n.t("hardcoded.thought_kit_dead")
     
     blood_parent2 = None
     par2geno = None
     blood_parent = create_new_cat(Cat,
                                     original_social=original_social,
-                                    alive=choice([True, True, True, False]),
+                                    original_group=clan,
+                                    alive=choice([True, True, True, False]) if clan else choice([True, False]),
                                     moons=ages[0],
                                     gender='fem' if flip else 'masc',
                                     outside=True,
@@ -359,16 +364,20 @@ def create_bio_parents(Cat, flip=False, second_parent=True):
             del Cat.all_cats[blood_parent.ID]
         blood_parent = create_new_cat(Cat,
                                     original_social=original_social,
-                                    alive=choice([True, True, True, False]),
+                                    original_group=clan,
+                                    alive=choice([True, True, True, False]) if clan else choice([True, False]),
                                     moons=ages[0],
                                     gender='fem' if flip else 'masc',
                                     outside=True,
                                     is_parent=True)[0]
     if second_parent:
         original_social = choice([CatSocial.KITTYPET, CatSocial.LONER, CatSocial.ROGUE])
+        if clan:
+            original_social = CatSocial.CLANCAT
         blood_parent2 = create_new_cat(Cat,
                                     original_social=original_social,
-                                    alive=choice([True, True, True, False]),
+                                    original_group=clan,
+                                    alive=choice([True, True, True, False]) if clan else choice([True, False]),
                                     moons=ages[1] if ages[1] > 14 else 15,
                                     gender='masc' if flip else 'fem',
                                     outside=True,
@@ -378,8 +387,9 @@ def create_bio_parents(Cat, flip=False, second_parent=True):
                 del Cat.all_cats[blood_parent2.ID]
             blood_parent2 = create_new_cat(Cat,
                                            original_social=original_social,
+                                           original_group=clan,
                                            alive=choice(
-                                               [True, True, True, False]),
+                                               [True, True, True, False]) if clan else choice([True, False]),
                                             moons=ages[0],
                                             gender='masc' if flip else 'fem',
                                             outside=True,
@@ -387,6 +397,25 @@ def create_bio_parents(Cat, flip=False, second_parent=True):
     else:
         par2geno = Genotype(constants.CONFIG['genetics_config'], game_setting_get("ban problem genes"))
         par2geno.Generator('masc' if flip else 'fem')
+
+    if thought:
+        if blood_parent:
+            blood_parent.thought = event_text_adjust(Cat, thought, main_cat = blood_parent)
+            
+            if blood_parent.status.rank == CatRank.MEDICINE_CAT:
+                blood_parent.backstory = choice(["medicine_cat", "disgraced1"])
+            else:
+                blood_parent.backstory = choice(
+                    BACKSTORIES["backstory_categories"].get(f"former_clancat_backstories", ["outsider1"])
+                )
+        if blood_parent2:
+            blood_parent2.thought = event_text_adjust(Cat, thought, main_cat = blood_parent2)
+            if blood_parent2.status.rank == CatRank.MEDICINE_CAT:
+                blood_parent2.backstory = choice(["medicine_cat", "disgraced1"])
+            else:
+                blood_parent2.backstory = choice(
+                    BACKSTORIES["backstory_categories"].get(f"former_clancat_backstories", ["outsider1"])
+                )
 
     return [blood_parent, blood_parent2, par2geno]
 
@@ -764,7 +793,7 @@ def create_new_cat_block(
     if not chosen_cat:
         generated_parents = []
         if rank in (CatRank.KITTEN, CatRank.NEWBORN) or age in range(Cat.age_moons[CatAge.KITTEN][0], Cat.age_moons[CatAge.KITTEN][1]+1) or parent1:
-            generated_parents = create_bio_parents(Cat, flip=True if parent1 and 'Y' in parent1.phenotype.sexgene else False, second_parent=not parent1)
+            generated_parents = create_bio_parents(Cat, flip=True if parent1 and 'Y' in parent1.phenotype.sexgene else False, second_parent=not parent1, clan=cat_group)
             if not parent1:
                 parent1 = generated_parents[1]
             if not parent2:

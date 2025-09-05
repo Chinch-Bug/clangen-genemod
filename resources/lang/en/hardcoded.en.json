@@ -106,6 +106,7 @@
       "thought_new_kitten": "Is snuggled safe in the nursery",
       "thought_meeting": "Is wondering about those new cats",
       "thought_new_dead": "Explores a new, starry world",
+      "thought_kit_dead": "Can't believe what happened to {PRONOUN/m_c/poss} kit",
       "thought_outside_dam": "Is wondering what {PRONOUN/m_c/poss} kits are doing",
       "thought_outside_sire": "Is wondering how %{name} is doing",
       "thought_outside_surrogate": "Wonders about those oddly named cats",

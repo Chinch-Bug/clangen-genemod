@@ -3294,12 +3294,12 @@
         "weight": 20,
         "event_text": "m_c dashes off from {PRONOUN/m_c/poss} mentor and tumbles face first into a cactus! Thankfully r_c is able to remove the spines with little difficulty.",
         "m_c": {
-            "status": ["apprentice", "mediator apprentice", "medicine cat apprentice"],
+            "status": ["apprentice", "mediator apprentice", "healer apprentice"],
             "trait": ["adventurous", "arrogant", "bold", "childish", "confident", "daring", "oblivious", "playful", "rebellious", "shameless", "troublesome"],
             "relationship_status": ["app/mentor"]
         },
         "r_c": {
-            "status": ["warrior", "mediator", "medicine cat"]
+            "status": ["warrior", "mediator", "healer"]
         },
         "injury": [
             {
