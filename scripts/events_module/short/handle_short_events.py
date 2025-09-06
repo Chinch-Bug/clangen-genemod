@@ -370,7 +370,7 @@ class HandleShortEvents:
 
         self.gather_future_event(clan)
     
-        if event_type == "injury" and cat.status.is_outsider:
+        if event_type == "injury" and self.main_cat.status.is_outsider:
             return
 
         game.cur_events_list.append(
