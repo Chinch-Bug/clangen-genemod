@@ -2358,6 +2358,7 @@ class Events:
             return
 
         # If random murder is not triggered, targets can only be those they have some dislike for
+        # If random murder is not triggered, targets can only be those they have extreme negativity for
         negative_relation = [
             i
             for i in relationships
@@ -2376,10 +2377,15 @@ class Events:
             extreme_neg = len(
                 [l for l in chosen_target.get_reltype_tiers() if l.is_extreme_neg]
             )
-            mid_neg = len([l for l in chosen_target.get_reltype_tiers() if l.is_mid_neg])
-            neg = len([l for l in chosen_target.get_reltype_tiers() if l.is_low_neg])
+            neg = len(
+                [
+                    l
+                    for l in chosen_target.get_reltype_tiers()
+                    if (l.is_low_neg or l.is_mid_neg)
+                ]
+            )
 
-            relation_modifier = (extreme_neg * 8) + (mid_neg * 5) + (neg * 3)
+            relation_modifier = (extreme_neg * 8) + (neg * 4)
 
             kill_chance -= relation_modifier
 

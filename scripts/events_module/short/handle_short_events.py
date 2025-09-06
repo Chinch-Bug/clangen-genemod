@@ -369,6 +369,9 @@ class HandleShortEvents:
             game.herb_events_list.append(f"{self.text} {self.herb_notice}")
 
         self.gather_future_event(clan)
+    
+        if event_type == "injury" and cat.status.is_outsider:
+            return
 
         game.cur_events_list.append(
             Single_Event(
