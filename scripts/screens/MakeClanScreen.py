@@ -155,6 +155,10 @@ class MakeClanScreen(Screens):
         self.deputy = None
         self.med_cat = None
         self.members = []
+        
+        switch_set_value(
+            Switch.disallowed_symbol_tags, []
+        )
 
         # Buttons that appear on every screen.
         self.menu_warning = pygame_gui.elements.UITextBox(

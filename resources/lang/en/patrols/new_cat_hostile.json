@@ -1412,6 +1412,7 @@
                 "text": "p_l starts to pad towards the bush. Before {PRONOUN/p_l/subject} can even reach it, however, a gang of rogues burst out of hiding! A fight ensues and though the rogues are eventually driven off, r_c is killed in the process.",
                 "exp": 0,
                 "weight": 10,
+                "dead_cats": ["r_c"],
                 "new_cat": [
                     ["rogue", "meeting"],
                     ["rogue", "meeting"],
