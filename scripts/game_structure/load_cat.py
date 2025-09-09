@@ -56,7 +56,7 @@ def json_load():
         with open(clan_cats_json_path, "r", encoding="utf-8") as read_file:
             cat_data = ujson.loads(read_file.read())
     except PermissionError as e:
-        switch_set_value(Switch.error_message, f"Can\t open {clan_cats_json_path}!")
+        switch_set_value(Switch.error_message, f"Can\'t open {clan_cats_json_path}!")
         switch_set_value(Switch.traceback, e)
         raise
     except ujson.JSONDecodeError as e:

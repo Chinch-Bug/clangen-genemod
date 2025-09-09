@@ -343,7 +343,7 @@ class Pregnancy_Events:
                                         and len(i.mate) == 0 and not i.birth_cooldown
                                         and i.ID not in game.clan.pregnancy_data
                                         and i.status.group_ID != cat.status.group_ID]
-                outsider_affair_partners = [i for i in possible_affair_partners if not i.status.group.is_any_clan_group()]
+                outsider_affair_partners = [i for i in possible_affair_partners if not i.status.group.is_any_clan_group() and i.status.is_near()]
                 other_clan_affair_partners = [i for i in possible_affair_partners if i.status.group.is_any_clan_group()]
 
                 if surrogate:
@@ -705,7 +705,7 @@ class Pregnancy_Events:
                                     and (get_clan_setting('same sex birth') or xor('Y' in i.phenotype.sexgene, 'Y' in cat.phenotype.sexgene)) 
                                     and len(i.mate) == 0
                                     and i.status.group_ID != cat.status.group_ID]
-            outsider_affair_partners = [i for i in possible_affair_partners if not i.status.group.is_any_clan_group()]
+            outsider_affair_partners = [i for i in possible_affair_partners if not i.status.group.is_any_clan_group() and i.status.is_near()]
             other_clan_affair_partners = [i for i in possible_affair_partners if i.status.group.is_any_clan_group()]
 
             if (random() < constants.CONFIG["pregnancy"]["half-clan_chance"] or get_clan_setting("halfclan single")) and not get_clan_setting("outsiders single") and (game.clan.clancount == "singleclan" or len(other_clan_affair_partners)):
