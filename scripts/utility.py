@@ -38,6 +38,7 @@ from scripts.game_structure.localization import (
 logger = logging.getLogger(__name__)
 from scripts.special_dates import SpecialDate, is_today
 from scripts.game_structure import image_cache, localization, constants
+from scripts.cat.status import Status
 from scripts.cat.enums import CatAge, CatRank, CatSocial, CatGroup, CatStanding
 from scripts.cat.names import names
 from scripts.cat.sprites import sprites
@@ -858,8 +859,8 @@ def create_new_cat_block(
 
             if n_c.phenotype.manx[1] == "Ab" or n_c.phenotype.manx[1] == "M" or n_c.phenotype.munch[1] == "Mk" or ('NoDBE' not in n_c.phenotype.pax3 and 'DBEalt' not in n_c.phenotype.pax3):
                 n_c.moons = 0
-                n_c.status = {"group_ID": n_c.status.group_ID,
-                              "rank": CatRank.NEWBORN, "age": CatAge.NEWBORN}
+                n_c.status = Status(**{"group_ID": n_c.status.group_ID,
+                              "rank": CatRank.NEWBORN, "age": CatAge.NEWBORN})
                 n_c.dead = True
                 n_c.thoughts(just_died=True)
                 n_c.history.add_death(str(n_c.name) + " was stillborn.")

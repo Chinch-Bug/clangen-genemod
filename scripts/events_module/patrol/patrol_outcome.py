@@ -932,7 +932,7 @@ class PatrolOutcome:
         # If so, see if recovering from birth condition is needed
         # and give the condition
         for sub in patrol.new_cats:
-            if sub[0].moons < 3:
+            if sub and sub[0].moons < 3:
                 # Search for parent
                 for sub_sub in patrol.new_cats:
                     if (
