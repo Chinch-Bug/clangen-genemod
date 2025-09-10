@@ -560,7 +560,6 @@ class Status:
         """
         saved_group = None
         # checks that we don't add a duplicate group/rank pairing
-        current_group = self.group
         if self.group_history:
             last_entry = self.group_history[-1]
             # remove 0 moons history to avoid save bloat
