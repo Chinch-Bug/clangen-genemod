@@ -1130,7 +1130,7 @@ class Events:
             else:
                 cat.status.increase_current_moons_as()
             cat.thoughts()
-            self.handle_fading(cat)  # Deal with fading.
+            self.handle_fading(cat, clan)  # Deal with fading.
             return
 
         cat.status.increase_current_moons_as()
