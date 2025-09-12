@@ -1329,7 +1329,6 @@ class ProfileScreen(Screens):
         """
         returns the backstory blurb
         """
-        cat_dict = {"m_c": (str(self.the_cat.name), choice(self.the_cat.pronouns))}
         bs_blurb = None
         # if cat has a backstory prepared
         if self.the_cat.backstory:
@@ -1396,7 +1395,7 @@ class ProfileScreen(Screens):
                 f" {i18n.t('cat.backstories.currently_exiled', name=self.the_cat.name)}"
             )
 
-        text = process_text(text, cat_dict)
+        text = event_text_adjust(Cat, text, main_cat=self.the_cat, clan=self.the_cat.status.fetch_clan_object(game.clan))
         return text
 
     def get_scar_text(self):
@@ -1598,39 +1597,6 @@ class ProfileScreen(Screens):
             text = process_text(text, cat_dict)
 
         return text
-
-    def get_text_for_murder_event(self, event, death):
-        """Returns the adjusted murder history text for the victim"""
-
-        if switch_get_value(Switch.show_history_moons):
-            moons = True
-        else:
-            moons = False
-
-        if event["text"] == death["text"] and event["moon"] == death["moon"]:
-            if event["revealed"] is True:
-                final_text = event_text_adjust(
-                    Cat,
-                    event["text"],
-                    main_cat=self.the_cat,
-                    random_cat=Cat.fetch_cat(death["involved"]),
-                )
-
-                if event.get("revelation_text"):
-                    final_text = f"{final_text} {event['revelation_text']}"
-                if moons:
-                    if event.get("revelation_moon"):
-                        final_text = f"{final_text} (Moon {event['revelation_moon']})."
-                return final_text
-            else:
-                return event_text_adjust(
-                    Cat,
-                    event["text"],
-                    main_cat=self.the_cat,
-                    random_cat=Cat.fetch_cat(death["involved"]),
-                )
-
-        return None
 
     def get_death_text(self):
         """

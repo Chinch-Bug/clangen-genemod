@@ -15,7 +15,7 @@ from random import choice, randint
 import pygame
 import ujson
 
-from scripts.cat.cats import Cat, cat_class
+from scripts.cat.cats import Cat, cat_class, BACKSTORIES
 from scripts.cat.enums import CatRank, CatGroup
 from scripts.cat.names import names
 from scripts.cat.save_load import (
@@ -190,6 +190,9 @@ class Clan:
 
         self.instructor = Cat(
             status_dict={"rank": instructor_rank, "group_ID": CatGroup.STARCLAN_ID},
+            backstory=choice(
+                BACKSTORIES["backstory_categories"]["clan_guide_backstories"]
+            ),
         )
 
         self.clancount = clancount
@@ -246,14 +249,16 @@ class Clan:
         for cat_id in Cat.all_cats:
             if cat_id not in self.clan_cats:
                 self.clan_cats.append(cat_id)
+            the_cat = Cat.all_cats.get(cat_id)
 
         # give thoughts,actions and relationships to cats
-            Cat.all_cats.get(cat_id).init_all_relationships()
-            Cat.all_cats.get(cat_id).backstory = "clan_founder"
-            if Cat.all_cats.get(cat_id).status.rank == CatRank.APPRENTICE:
-                Cat.all_cats.get(cat_id).rank_change(CatRank.APPRENTICE)
-            Cat.all_cats.get(cat_id).thoughts()
-            Cat.all_cats.get(cat_id).pelt.rebuild_sprite = True 
+            the_cat.init_all_relationships()
+            if not the_cat.dead:
+                the_cat.backstory = "clan_founder"
+            if the_cat.status.rank == CatRank.APPRENTICE:
+                the_cat.rank_change(CatRank.APPRENTICE)
+            the_cat.thoughts()
+            the_cat.pelt.rebuild_sprite = True 
         save_cats(game.clan.name, Cat, game)
 
         # create leader's ceremony
@@ -597,7 +602,10 @@ class Clan:
                 status_dict={
                     "rank": choice((CatRank.WARRIOR, CatRank.WARRIOR, CatRank.ELDER)),
                     "group_ID": CatGroup.STARCLAN_ID,
-                }
+                },
+                backstory=choice(
+                    BACKSTORIES["backstory_categories"]["clan_guide_backstories"]
+                ),
             )
             game.clan.instructor.status.group_history.insert(0, {"rank": game.clan.instructor.status.rank, "group": CatGroup.PLAYER_CLAN_ID, "moons_as": self.instructor.moons})
             # update_sprite(game.clan.instructor)
@@ -1265,7 +1273,10 @@ class OtherClan:
                 status_dict={
                     "rank": instructor_rank,
                     "group_ID": CatGroup.STARCLAN_ID,
-                }
+                },
+                backstory=choice(
+                    BACKSTORIES["backstory_categories"]["clan_guide_backstories"]
+                ),
             )
             self.instructor.dead_for = randint(20, 200)
             self.instructor.status.group_history.insert(0, {"rank": instructor_rank, "group": self.group_ID, "moons_as": self.instructor.moons})
@@ -1288,7 +1299,12 @@ class OtherClan:
                     CatRank.ELDER,
                 )
             )
-            self.instructor = Cat(status_dict={"rank": instructor_rank, "group_ID": CatGroup.STARCLAN_ID})
+            self.instructor = Cat(
+                status_dict={"rank": instructor_rank, "group_ID": CatGroup.STARCLAN_ID},
+                backstory=choice(
+                BACKSTORIES["backstory_categories"]["clan_guide_backstories"]
+                ),
+            )
             self.instructor.dead_for = randint(20, 200)
             self.instructor.status.group_history.insert(0, {"rank": instructor_rank, "group": self.group_ID, "moons_as": self.instructor.moons})
 
