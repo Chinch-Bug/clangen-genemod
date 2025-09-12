@@ -947,8 +947,11 @@ class Cat:
                 if tier.is_extreme_pos:
                     very_high_types.extend(rel_type)
                 elif tier.is_mid_pos:
-                    list_to_extend = choice([high_types, very_high_types])
-                    list_to_extend.extend(rel_type)
+                    # 50/50 if this will cause major grief
+                    if randint(1, 2) == 1:
+                        very_high_types.extend(rel_type)
+                    else:
+                        high_types.extend(rel_type)
                 elif tier.is_low_pos:
                     high_types.extend(rel_type)
                 elif tier.is_extreme_neg or tier.is_mid_neg:

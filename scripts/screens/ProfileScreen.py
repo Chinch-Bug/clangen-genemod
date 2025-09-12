@@ -780,16 +780,16 @@ class ProfileScreen(Screens):
         
         # BODY TYPE
         output += "body type: " + the_cat.phenotype.body_label
-        # NEWLINE ----------
-        output += "\n"
         
-        # HEIGHT
-        output += "size: " + the_cat.phenotype.height_label
-        if get_clan_setting("showheight"):
-            if get_clan_setting("metric_toggle"):
-                output += f" ({the_cat.phenotype.shoulder_height * 2.54:.2f} cm)"
-            else:
-                output += " ("+ str(the_cat.phenotype.shoulder_height) +"\")"
+        if the_cat.age != CatAge.NEWBORN:
+            output += "\n"
+            # HEIGHT
+            output += "size: " + the_cat.phenotype.height_label
+            if get_clan_setting("showheight"):
+                if get_clan_setting("metric_toggle"):
+                    output += f" ({the_cat.phenotype.shoulder_height * 2.54:.2f} cm)"
+                else:
+                    output += " ("+ str(the_cat.phenotype.shoulder_height) +"\")"
 
         # ACCESSORY
         if the_cat.pelt.accessory:
