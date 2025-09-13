@@ -698,6 +698,8 @@ class Cat:
                 return
             
             instructor = self.status.fetch_clan_object(game.clan).instructor
+            if not instructor:
+                instructor = game.clan.instructor
 
             if self.status.get_last_living_group():
             # kits are auto-accepted
