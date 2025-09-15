@@ -255,9 +255,14 @@ class Namer():
         extra_prefixes = []
         extra_prefixes += self.all_prefixes['general']['any']
         if self.moons < 3:
-            extra_prefixes += self.all_prefixes['general']['big']
-            extra_prefixes += self.all_prefixes['general']['small']
-            extra_prefixes += self.all_prefixes['general']['small']
+            if self.phenotype.growth_pattern == "big-kitten":
+                extra_prefixes += self.all_prefixes['general']['big']
+            elif self.phenotype.growth_pattern == "small-kitten":
+                extra_prefixes += self.all_prefixes['general']['small']
+            elif self.phenotype.growth_pattern == "runt":
+                extra_prefixes += self.all_prefixes['general']['small']
+                extra_prefixes += self.all_prefixes['general']['small']
+                extra_prefixes += self.all_prefixes['general']['small']
         else:
             if self.phenotype.shoulder_height > 11:
                 extra_prefixes += self.all_prefixes['general']['big']

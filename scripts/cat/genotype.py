@@ -1,4 +1,4 @@
-from random import choice, randint, random
+from random import choice, choices, randint, random
 import json
 from scripts.cat.breed_functions import breed_functions
 from scripts.special_dates import SpecialDate, is_today
@@ -126,6 +126,7 @@ class Genotype:
         self.shoulder_height = 0
         self.body_label = ""
         self.height_label = ""
+        self.growth_pattern = ""
 
         self.refraction = False
         self.pigmentation = False
@@ -242,6 +243,7 @@ class Genotype:
         self.height_value = jsonstring.get("height", 0)
         self.shoulder_height = jsonstring.get("shoulder_height", '')
         self.body_label = jsonstring.get("body_type_label", '')
+        self.growth_pattern = jsonstring.get("growth_pattern", "average")
 
         self.GeneSort()
         self.PolyEval()
@@ -335,6 +337,7 @@ class Genotype:
             "body_type_label" : self.body_label,
             "height" : self.height_value,
             "shoulder_height" : self.shoulder_height,
+            "growth_pattern": self.growth_pattern,
 
             "breeds" : self.breeds,
             "somatic" : self.somatic,
@@ -1363,6 +1366,8 @@ class Genotype:
     
     def VerifyHeight(self):
         height = self.shoulder_height
+        if self.growth_pattern == "runt":
+            height /= 0.85
         if self.munch[0] == 'Mk':
             height *= 1.5
         if 'Y' in self.sexgene[0]:
@@ -1586,6 +1591,14 @@ class Genotype:
             self.shoulder_height *= 0.9
         if self.munch[0] == 'Mk':
             self.shoulder_height /= 1.5
+
+        weights = [1, 5, 12, 5, 3] if height_types.index(self.height_label) > 5 else [1, 1, 12, 4, 4]
+        self.growth_pattern = choices(["runt", "slow", "average", "big-kitten", "small-kitten"], weights)[0]
+        index = next((n for n in range(10) if self.height_value <= self.height_indexes[n]))
+        self.height_label = height_types[index]
+
+        if self.growth_pattern == "runt":
+            self.shoulder_height *= 0.85
         self.shoulder_height = round(self.shoulder_height, 2)
     
     def GeneSort(self):

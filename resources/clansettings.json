@@ -51,6 +51,12 @@
         false,
         ["showheight", true]
       ],
+      "adult_height_toggle": [
+        "Always show adult height",
+        "Young cats will always show their adult size and height",
+        false,
+        [ "showheight", true ]
+      ],
       "showxp": [
         "Show exact XP and nutrition status",
         "Will turn 'experience: proficient' into 'experience: proficient (151)'; and 'nutrition: full' into 'nutrition: full (70)'.",

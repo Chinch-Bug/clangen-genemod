@@ -781,9 +781,32 @@ class ProfileScreen(Screens):
         # BODY TYPE
         output += "body type: " + the_cat.phenotype.body_label
         
-        if the_cat.age != CatAge.NEWBORN:
-            output += "\n"
-            # HEIGHT
+        output += "\n"
+        # HEIGHT
+        if the_cat.age in [CatAge.NEWBORN, CatAge.KITTEN] and not get_clan_setting("adult_height_toggle"):
+            size = "average"
+            if the_cat.phenotype.growth_pattern == "big-kitten":
+                size = "big"
+            elif the_cat.phenotype.growth_pattern == "small-kitten":
+                size = "small"
+            elif the_cat.phenotype.growth_pattern == "runt":
+                size = "runt"
+            output += "size: " + size
+        elif (the_cat.age == CatAge.ADOLESCENT or (the_cat.moons < 24 and the_cat.phenotype.growth_pattern == "slow")) and not get_clan_setting("adult_height_toggle"):
+            output += "size: " + the_cat.phenotype.height_label
+            if get_clan_setting("showheight"):
+                start_point = the_cat.shoulder_height * 0.66 if the_cat.phenotype.growth_pattern == "slow" else the_cat.phenotype.shoulder_height * 0.75
+                period = 18 if the_cat.phenotype.growth_pattern == "slow" else 6
+                difference = 24-the_cat.moons if the_cat.phenotype.growth_pattern == "slow" else 12-the_cat.moons
+                difference = max(0, difference)
+                step = (the_cat.phenotype.shoulder_height - start_point) / period
+
+                height = round(the_cat.phenotype.shoulder_height - (difference * step), 2)
+                if get_clan_setting("metric_toggle"):
+                    output += f" ({height * 2.54:.2f} cm)"
+                else:
+                    output += " ("+ str(height) +"\")"
+        else:
             output += "size: " + the_cat.phenotype.height_label
             if get_clan_setting("showheight"):
                 if get_clan_setting("metric_toggle"):

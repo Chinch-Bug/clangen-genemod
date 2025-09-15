@@ -48,6 +48,8 @@
       "showheight_tooltip": "Adds exact shoulder height in inches to cats.",
       "metric_toggle": "Convert inches to cm",
       "metric_toggle_tooltip": "Converts heights from inches to centimetres.",
+      "adult_height_toggle": "Always show adult height",
+      "adult_height_toggle_tooltip": "Young cats will always show their adult size and height.",
       "showxp": "Show exact XP and nutrition status",
       "showxp_tooltip": "Will turn 'experience: proficient' into 'experience: proficient (151)'; and 'nutrition: full' into 'nutrition: full (70)'.",
       "random med cat": "Allow healers to be randomly selected on patrol",

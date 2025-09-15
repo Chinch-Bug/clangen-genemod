@@ -1075,8 +1075,10 @@ class Events:
         for kit in cats:
             if kit.dead or kit.status.social == CatSocial.KITTYPET:
                 continue
+            
+            multiplier = 1.25 if kit.phenotype.growth_pattern == "runt" else 1
             if kit.moons < 2 and (kit.status.is_outsider or kit.status.group_ID == clan.group_ID):
-                if random.random() < death_chances[str(kit.moons)]:
+                if random.random() < death_chances[str(kit.moons)] * multiplier:
                     if not kit.status.is_outsider:
                         fading_kits.append(kit.ID)
                         fading_kit_names.append(str(kit.name))
@@ -1086,7 +1088,7 @@ class Events:
                     kit.history.add_death(str(kit.name) + " failed to thrive.")
                     kit.moons -= 1
             elif kit.moons < 6 and kit.status.group_ID == clan.group_ID:
-                if random.random() < death_chances[str(kit.moons)]:
+                if random.random() < death_chances[str(kit.moons)] * multiplier:
                     handle_short_events.handle_event(
                                             event_type="birth_death",
                                             main_cat=kit,
