@@ -232,6 +232,7 @@ class Breed_generator:
         genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
 
         genoclass.rufousing = ''
+        genoclass.unders_ruf = ''
         genoclass.tickgenes = ''
         genoclass.bengal = ''
         genoclass.sokoke = ''

@@ -795,7 +795,7 @@ class ProfileScreen(Screens):
         elif (the_cat.age == CatAge.ADOLESCENT or (the_cat.moons < 24 and the_cat.phenotype.growth_pattern == "slow")) and not get_clan_setting("adult_height_toggle"):
             output += "size: " + the_cat.phenotype.height_label
             if get_clan_setting("showheight"):
-                start_point = the_cat.shoulder_height * 0.66 if the_cat.phenotype.growth_pattern == "slow" else the_cat.phenotype.shoulder_height * 0.75
+                start_point = the_cat.phenotype.shoulder_height * 0.66 if the_cat.phenotype.growth_pattern == "slow" else the_cat.phenotype.shoulder_height * 0.75
                 period = 18 if the_cat.phenotype.growth_pattern == "slow" else 6
                 difference = 24-the_cat.moons if the_cat.phenotype.growth_pattern == "slow" else 12-the_cat.moons
                 difference = max(0, difference)

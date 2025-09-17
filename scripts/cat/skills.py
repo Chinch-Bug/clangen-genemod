@@ -509,8 +509,8 @@ class CatSkills:
                 if type(the_cat) == type(the_cat.fetch_cat(i))
             ]
             parental_paths = [
-                i.skills.primary.path for i in parents if i.skills.primary
-            ] + [i.skills.secondary.path for i in parents if i.skills.secondary]
+                i.skills.primary.path for i in parents if i and i.skills.primary
+            ] + [i.skills.secondary.path for i in parents if i and i.skills.secondary]
 
             # If there are parental paths, flip a coin to determine if they will get a parents path
             if parental_paths and random.randint(0, 1):
