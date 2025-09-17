@@ -146,75 +146,21 @@ class Pelt:
         "BLACK CICADA",
         "ROAD RUNNER FEATHER",
     ]
-    collars = [
-        "CRIMSON",
-        "BLUE",
-        "YELLOW",
-        "CYAN",
-        "RED",
-        "LIME",
-        "GREEN",
-        "RAINBOW",
-        "BLACK",
-        "SPIKES",
-        "WHITE",
-        "PINK",
-        "PURPLE",
-        "MULTI",
-        "INDIGO",
-        "CRIMSONBELL",
-        "BLUEBELL",
-        "YELLOWBELL",
-        "CYANBELL",
-        "REDBELL",
-        "LIMEBELL",
-        "GREENBELL",
-        "RAINBOWBELL",
-        "BLACKBELL",
-        "SPIKESBELL",
-        "WHITEBELL",
-        "PINKBELL",
-        "PURPLEBELL",
-        "MULTIBELL",
-        "INDIGOBELL",
-        "CRIMSONBOW",
-        "BLUEBOW",
-        "YELLOWBOW",
-        "CYANBOW",
-        "REDBOW",
-        "LIMEBOW",
-        "GREENBOW",
-        "RAINBOWBOW",
-        "BLACKBOW",
-        "SPIKESBOW",
-        "WHITEBOW",
-        "PINKBOW",
-        "PURPLEBOW",
-        "MULTIBOW",
-        "INDIGOBOW",
-        "CRIMSONNYLON",
-        "BLUENYLON",
-        "YELLOWNYLON",
-        "CYANNYLON",
-        "REDNYLON",
-        "LIMENYLON",
-        "GREENNYLON",
-        "RAINBOWNYLON",
-        "BLACKNYLON",
-        "SPIKESNYLON",
-        "WHITENYLON",
-        "PINKNYLON",
-        "PURPLENYLON",
-        "MULTINYLON",
-        "INDIGONYLON",
-    ]
+
+    collar_accessories = []
+    collar_styles = []
+    for style_type in sprites.COLLAR_DATA["style_data"]:
+        for style, color_list in style_type.items():
+            collar_styles.append(style)
+            for color in color_list:
+                collar_accessories.append(f"{style}_{color}")
 
     # this is used for acc-giving events, only change if you're adding a new category tag to the event filter
     # adding a category here will automatically update the event editor's options
     acc_categories = {
         "PLANT": plant_accessories,
         "WILD": wild_accessories,
-        "COLLAR": collars,
+        "COLLAR": collar_accessories,
     }
 
     tail_accessories = [
@@ -675,7 +621,7 @@ class Pelt:
             return "No"
         return clean_white(white_pattern)
 
-    def check_and_convert(self):
+    def check_and_convert(self, convert_dict):
         """Checks for old-type properties for the appearance-related properties
         that are stored in Pelt, and converts them. To be run when loading a cat in."""
 
@@ -704,6 +650,14 @@ class Pelt:
             self.accessory = []
         elif isinstance(self.accessory, str):
             self.accessory = [self.accessory]
+
+        new_acc_list = []
+        for acc in self.accessory:
+            if acc in convert_dict["collar_map"]:
+                new_acc_list.append(convert_dict["collar_map"][acc])
+            else:
+                new_acc_list.append(acc)
+        self.accessory = new_acc_list
 
 
     def init_sprite(self):

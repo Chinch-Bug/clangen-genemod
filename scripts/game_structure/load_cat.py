@@ -159,7 +159,7 @@ def json_load():
             )
 
             # Runs a bunch of appearance-related conversion of old stuff.
-            new_cat.pelt.check_and_convert()
+            new_cat.pelt.check_and_convert(convert)
 
             # converting old specialty saves into new scar parameter
             if "specialty" in cat or "specialty2" in cat:
