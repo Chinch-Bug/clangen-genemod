@@ -426,7 +426,7 @@ class GenerateEvents:
                 camp_cats = [
                     c
                     for c in Cat_class.all_cats_list
-                    if c.status.group_id == clan.group_id
+                    if c.status.group_ID == clan.group_ID
                     and (
                         (c.skills.primary and c.skills.primary.path == SkillPath.CAMP)
                         or (
