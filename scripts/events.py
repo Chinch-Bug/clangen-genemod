@@ -2326,6 +2326,7 @@ class Events:
                 Cat.fetch_cat(i)
                 for i in Cat.all_cats
                 if Cat.fetch_cat(i).status.group.is_any_clan_group()
+                and i != cat.ID
             ]
             if not targets:
                 return
