@@ -3686,6 +3686,7 @@ class Cat:
                 or (game.clan.clancount == "multiclan" and check_cat.status.is_outsider == self.status.is_outsider
                 and (self.status.is_outsider or check_cat.status.group_ID == self.status.group_ID)))
             and not check_cat.faded
+            and check_cat.status.is_near() == self.status.is_near()
         ]
 
         # we're doing this separately so that we don't fuck up other clan cats and cats with no group

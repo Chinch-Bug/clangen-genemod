@@ -224,7 +224,7 @@ class Pelt:
         if self.length != "long" and self.cat_sprites["adult"] not in self.adult_short_poses:
             self.cat_sprites["adult"] = choice(self.adult_short_poses)
             self.cat_sprites["para_adult"] = "para_adult_short0"
-        elif self.adult_long_poses and self.cat_sprites["adult"] not in self.adult_long_poses:
+        elif self.length == "long" and self.adult_long_poses and self.cat_sprites["adult"] not in self.adult_long_poses:
             self.cat_sprites["adult"] = choice(
                 self.adult_long_poses
                 if self.adult_long_poses
