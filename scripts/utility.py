@@ -1222,7 +1222,6 @@ def create_new_cat(
         backstory
         in (
             BACKSTORIES["backstory_categories"]["former_clancat_backstories"]
-            + BACKSTORIES["backstory_categories"]["otherclan_backstories"]
             + BACKSTORIES["backstory_categories"]["baby_clancat_backstories"]
         ) 
         and original_social == CatSocial.CLANCAT
