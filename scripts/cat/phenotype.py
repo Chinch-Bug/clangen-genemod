@@ -672,7 +672,7 @@ class Phenotype(Genotype):
         self.patchcolour = ""
 
         if(self.silver[0] == 'I' and self.pseudomerle):
-            if self.merlepattern is None:
+            if self.merlepattern is None:  # pylint: disable=attribute-defined-outside-init
                 self.merlepattern = self.ChooseTortiePattern(spec = 'merle')
 
         if self.white[0] == "W" or self.pointgene[0] == "c" or ('DBEalt' not in self.pax3 and 'NoDBE' not in self.pax3) or (self.brindledbi and self.specialred not in ["blue-tipped", "blue-red", "cinnamon"] and (('o' not in self.sexgene) or (self.ext[0] == 'ea' and ((moons > 11 and self.agouti[0] != 'a') or (moons > 23))) or (self.ext[0] == 'er' and moons > 23) or (self.ext[0] == 'ec' and (self.agouti[0] != 'a' or moons > 5)))):

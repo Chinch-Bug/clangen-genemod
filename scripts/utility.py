@@ -682,20 +682,25 @@ def create_new_cat_block(
 
         if (
             chosen_backstory
-            in BACKSTORIES["backstory_categories"]["baby_clancat_backstories"]
+            in BACKSTORIES["backstory_categories"]["baby_clancat_backstories"] + 
+            BACKSTORIES["backstory_categories"]["former_clancat_backstories"]
             or (game.clan.clancount == "multiclan" and "clancat" in attribute_list)
         ):
             cat_social = CatSocial.CLANCAT
-        elif (
-            chosen_backstory
-            in BACKSTORIES["backstory_categories"]["baby_loner_backstories"]
+        elif chosen_backstory in (
+            BACKSTORIES["backstory_categories"]["baby_loner_backstories"]
+            + BACKSTORIES["backstory_categories"]["loner_backstories"]
         ):
             cat_social = CatSocial.LONER
-        elif (
-            chosen_backstory
-            in BACKSTORIES["backstory_categories"]["baby_kittypet_backstories"]
+        elif chosen_backstory in (
+            BACKSTORIES["backstory_categories"]["baby_kittypet_backstories"]
+            + BACKSTORIES["backstory_categories"]["kittypet_backstories"]
         ):
             cat_social = CatSocial.KITTYPET
+        elif (
+            chosen_backstory in BACKSTORIES["backstory_categories"]["rogue_backstories"]
+        ):
+            cat_social = CatSocial.ROGUE
 
     # KITTEN THOUGHT
     if rank in (CatRank.KITTEN, CatRank.NEWBORN):
@@ -1163,7 +1168,7 @@ def create_new_cat(
     kit: bool = False,
     litter: bool = False,
     backstory: bool = None,
-    rank: CatRank = None,
+    rank: Optional[CatRank] = None,
     original_social: CatSocial = CatSocial.CLANCAT,
     original_group: CatGroup = None,
     moons: int = None,
@@ -1217,7 +1222,8 @@ def create_new_cat(
         backstory
         in (
             BACKSTORIES["backstory_categories"]["former_clancat_backstories"]
-            or BACKSTORIES["backstory_categories"]["otherclan_backstories"]
+            + BACKSTORIES["backstory_categories"]["otherclan_backstories"]
+            + BACKSTORIES["backstory_categories"]["baby_clancat_backstories"]
         ) 
         and original_social == CatSocial.CLANCAT
         and not original_group
@@ -3113,14 +3119,15 @@ def generate_sprite(
     :param disable_sick_sprite: If true, never use the not_working lineart.
                     If false, use the cat.not_working() to determine the no_working art.
     """
+    sprite_poses = sprites.POSE_DATA["poses"]
 
     if life_state is not None:
         age = life_state
     else:
-        if game_setting_get("ageup dead") and cat.dead and cat.age in ["newborn", "kitten", "adolescent"]:
-            age = "adult"
+        if game_setting_get("ageup dead") and cat.dead and cat.age in [CatAge.NEWBORN, CatAge.KITTEN, CatAge.ADOLESCENT]:
+            age = CatAge.ADULT
         else:
-            age = cat.age.value
+            age = cat.age
 
 
     if always_living:
@@ -3134,36 +3141,33 @@ def generate_sprite(
     if (
         not disable_sick_sprite
         and cat.not_working()
-        and age != "newborn"
+        and age != CatAge.NEWBORN
         and constants.CONFIG["cat_sprites"]["sick_sprites"]
     ):
-        if age in ["kitten", "adolescent"]:
-            cat_sprite = str(19)
+        if age in (CatAge.KITTEN, CatAge.ADOLESCENT):
+            cat_sprite = sprite_poses["sick_young0"]
         else:
-            cat_sprite = str(18)
+            cat_sprite = sprite_poses["sick_adult0"]
 
     # paralyzed sprites
-    elif cat.pelt.paralyzed and age != "newborn":
-        if age in ["kitten", "adolescent"]:
-            cat_sprite = str(17)
+    elif cat.pelt.paralyzed and age != CatAge.NEWBORN:
+        if age in (CatAge.KITTEN, CatAge.ADOLESCENT):
+            cat_sprite = sprite_poses[cat.pelt.cat_sprites["para_young"]]
         else:
             if cat.pelt.length == 'long' or (cat.pelt.length == 'medium' and get_current_season() == 'Leaf-bare'):
-                cat_sprite = str(16)
+                cat_sprite = sprite_poses["para_adult_long0"]
             else:
-                cat_sprite = str(15)
+                cat_sprite = sprite_poses["para_adult_short0"]
 
     # default sprites
     else:
-        if age == "elder" and not constants.CONFIG["fun"]["all_cats_are_newborn"]:
-            age = "senior"
-
         if constants.CONFIG["fun"]["all_cats_are_newborn"]:
-            cat_sprite = str(cat.pelt.cat_sprites["newborn"])
+            cat_sprite = sprite_poses[cat.pelt.cat_sprites["newborn"]]
         else:
-            if cat.pelt.cat_sprites[age] < 9 and cat.pelt.cat_sprites[age] > 5 and (cat.pelt.length == 'medium' and get_current_season() == 'Leaf-bare'):
-                cat_sprite = str(cat.pelt.cat_sprites[age]+3)
+            if "long" in cat.pelt.cat_sprites[age] and (cat.pelt.length == 'medium' and get_current_season() == 'Leaf-bare'):
+                cat_sprite = sprite_poses[cat.pelt.cat_sprites[age].replace("short", "long")]
             else:
-                cat_sprite = str(cat.pelt.cat_sprites[age])
+                cat_sprite = sprite_poses[cat.pelt.cat_sprites[age]]
 
     new_sprite = pygame.Surface(
         (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA
@@ -4238,10 +4242,11 @@ def generate_sprite(
 
         if not scars_hidden:
             for scar in cat.pelt.scars:
-                if scar in cat.pelt.scars1:
-                    gensprite.blit(sprites.sprites['scars' + scar + cat_sprite], (0, 0))
-                if scar in cat.pelt.scars3:
-                    gensprite.blit(sprites.sprites['scars' + scar + cat_sprite], (0, 0))
+                if scar in cat.pelt.general_scars:
+                    sprite_name = (
+                        f"{sprites.SCAR_DATA['spritesheet']}{scar}{cat_sprite}"
+                    )
+                    gensprite.blit(sprites.sprites[sprite_name], (0, 0))
 
         # setting the lineart color to override on accessories & missing bits
         lineart_color = (
@@ -4255,7 +4260,7 @@ def generate_sprite(
         )
 
         gradient_surface = (
-            sprites.sprites["gradient_ur" + cat_sprite]
+            sprites.sprites["line_ur_gradient" + cat_sprite]
             if dead and cat.status.group == CatGroup.UNKNOWN_RESIDENCE
             else None
         )
@@ -4295,8 +4300,9 @@ def generate_sprite(
 
         # draw line art
         if game_setting_get('shaders') and not dead:
-            gensprite.blit(sprites.sprites['shaders' + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGB_MULT)
-            gensprite.blit(sprites.sprites['lighting' + cat_sprite], (0, 0))
+            gensprite.blit(sprites.sprites['shader_mask' + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+            gensprite.blit(
+                sprites.sprites['shader_lighting' + cat_sprite], (0, 0))
 
         # make sure colours are in the lines
         if('rexed' in cat.phenotype.furtype or 'wiry' in cat.phenotype.furtype):
@@ -4323,44 +4329,14 @@ def generate_sprite(
             if(cat.phenotype.curl[0] == 'Cu'):
                 earlines.blit(sprites.sprites['curllines' + cat_sprite], (0, 0))
             else:
-                earlines.blit(sprites.sprites['lines' + cat_sprite], (0, 0))
+                earlines.blit(sprites.sprites['lineart' + cat_sprite], (0, 0))
             if phenotype.fourear[0] == "dup":
                 earlines.blit(sprites.sprites['fourears' + cat_sprite], (0, 0))
         elif(cat.phenotype.curl[0] == 'Cu'):
             earlines.blit(sprites.sprites['fold_curllines' + cat_sprite], (0, 0))
         else:
             earlines.blit(sprites.sprites['foldlines' + cat_sprite], (0, 0))
-        # elif cat.status.group == CatGroup.UNKNOWN_RESIDENCE:
-        #     if(cat.phenotype.fold[0] != 'Fd'):
-        #         if(cat.phenotype.curl[0] == 'Cu'):
-        #             earlines.blit(sprites.sprites['curllineartur' + cat_sprite], (0, 0))
-        #         else:
-        #             earlines.blit(sprites.sprites['lineartur' + cat_sprite], (0, 0))
-        #     elif(cat.phenotype.curl[0] == 'Cu'):
-        #         earlines.blit(sprites.sprites['fold_curllineartur' + cat_sprite], (0, 0))
-        #     else:
-        #         earlines.blit(sprites.sprites['foldlineartur' + cat_sprite], (0, 0))
-        # elif cat.status.group == CatGroup.DARK_FOREST:
-        #     if(cat.phenotype.fold[0] != 'Fd'):
-        #         if(cat.phenotype.curl[0] == 'Cu'):
-        #             earlines.blit(sprites.sprites['curllineartdf' + cat_sprite], (0, 0))
-        #         else:
-        #             earlines.blit(sprites.sprites['lineartdf' + cat_sprite], (0, 0))
-        #     elif(cat.phenotype.curl[0] == 'Cu'):
-        #         earlines.blit(sprites.sprites['fold_curllineartdf' + cat_sprite], (0, 0))
-        #     else:
-        #         earlines.blit(sprites.sprites['foldlineartdf' + cat_sprite], (0, 0))
-        # elif dead:
-        #     if(cat.phenotype.fold[0] != 'Fd'):
-        #         if(cat.phenotype.curl[0] == 'Cu'):
-        #             earlines.blit(sprites.sprites['curllineartdead' + cat_sprite], (0, 0))
-        #         else:
-        #             earlines.blit(sprites.sprites['lineartdead' + cat_sprite], (0, 0))
-        #     elif(cat.phenotype.curl[0] == 'Cu'):
-        #         earlines.blit(sprites.sprites['fold_curllineartdead' + cat_sprite], (0, 0))
-        #     else:
-        #         earlines.blit(sprites.sprites['foldlineartdead' + cat_sprite], (0, 0))
-
+        
         earlines.blit(sprites.sprites['isolateears' + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
 
         if cat_sprite != '20':
@@ -4374,13 +4350,13 @@ def generate_sprite(
                 bodylines.blit(sprites.sprites['rexlineartdead' + cat_sprite], (0, 0))
         else:
             if not dead:
-                bodylines.blit(sprites.sprites['lines' + cat_sprite], (0, 0))
+                bodylines.blit(sprites.sprites['lineart' + cat_sprite], (0, 0))
             elif cat.status.group == CatGroup.UNKNOWN_RESIDENCE:
-                bodylines.blit(sprites.sprites['lineartur' + cat_sprite], (0, 0))
+                bodylines.blit(sprites.sprites['lineart_ur' + cat_sprite], (0, 0))
             elif cat.status.group == CatGroup.DARK_FOREST:
-                bodylines.blit(sprites.sprites['lineartdf' + cat_sprite], (0, 0))
+                bodylines.blit(sprites.sprites['lineart_df' + cat_sprite], (0, 0))
             else:
-                bodylines.blit(sprites.sprites['lineartdead' + cat_sprite], (0, 0))
+                bodylines.blit(sprites.sprites['lineart_sc' + cat_sprite], (0, 0))
             
         bodylines.blit(sprites.sprites['noears' + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
         lineart.blit(bodylines, (0, 0))
@@ -4407,10 +4383,11 @@ def generate_sprite(
 
         if not scars_hidden:
             for scar in cat.pelt.scars:
-                if scar in cat.pelt.scars2:
+                if scar in cat.pelt.missing_part_scars:
+                    sprite_name = f"{sprites.SCAR_MISSING_PART_DATA['spritesheet']}{scar}{cat_sprite}"
                     new_sprite.blit(
                         _recolor_lineart(
-                            sprites.sprites["scars" + scar + cat_sprite],
+                            sprites.sprites[sprite_name],
                             lineart_color,
                             gradient_surface,
                         ),
@@ -4457,31 +4434,30 @@ def generate_sprite(
                 for accessory in cat_accessories:
                     if accessory in getattr(Pelt, category):
                         if accessory in cat.pelt.plant_accessories:
+                            sprite_name = f"{sprites.PLANT_DATA['spritesheet']}{accessory}{cat_sprite}"
                             new_sprite.blit(
                                 _recolor_lineart(
-                                    sprites.sprites[
-                                        "acc_herbs" + accessory + cat_sprite
-                                    ],
+                                    sprites.sprites[sprite_name],
                                     lineart_color,
                                     gradient_surface,
                                 ),
                                 (0, 0),
                             )
                         elif accessory in cat.pelt.wild_accessories:
+                            sprite_name = f"{sprites.WILD_DATA['spritesheet']}{accessory}{cat_sprite}"
                             new_sprite.blit(
                                 _recolor_lineart(
-                                    sprites.sprites[
-                                        "acc_wild" + accessory + cat_sprite
-                                    ],
+                                    sprites.sprites[sprite_name],
                                     lineart_color,
                                     gradient_surface,
                                 ),
                                 (0, 0),
                             )
                         elif accessory in cat.pelt.collar_accessories:
+                            sprite_name = f"{sprites.COLLAR_DATA['spritesheet']}{accessory}{cat_sprite}"
                             new_sprite.blit(
                                 _recolor_lineart(
-                                    sprites.sprites["collars" + accessory + cat_sprite],
+                                    sprites.sprites[sprite_name],
                                     lineart_color,
                                     gradient_surface,
                                 ),
@@ -4536,13 +4512,13 @@ def generate_sprite(
 
                 # overlay
                 temp_sprite.blit(
-                    sprites.sprites["sc_overlay" + cat_sprite],
+                    sprites.sprites["line_sc_overlay" + cat_sprite],
                     (0, 0),
                 )
             elif cat.status.group == CatGroup.UNKNOWN_RESIDENCE:
                 # underlay
                 temp_sprite.blit(
-                    sprites.sprites["ur_underlay" + cat_sprite],
+                    sprites.sprites["line_ur_overlay" + cat_sprite],
                     (0, 0),
                 )
 
@@ -4551,7 +4527,7 @@ def generate_sprite(
 
                 # overlay
                 temp_sprite.blit(
-                    sprites.sprites["ur_overlay" + cat_sprite],
+                    sprites.sprites["line_ur_overlay" + cat_sprite],
                     (0, 0),
                 )
             elif cat.status.group == CatGroup.DARK_FOREST:

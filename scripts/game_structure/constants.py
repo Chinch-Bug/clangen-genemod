@@ -5,13 +5,15 @@ import os
 from scripts.game_structure.game.switches import Switch, switch_get_value
 from scripts.housekeeping.datadir import get_save_dir
 
+from scripts.screens.enums import GameScreen
+
 # this is just to make referencing main menu screens as a whole easier,
 # note that the clan creation screen is included and the clan settings screen is excluded. this is intended.
 MENU_SCREENS = [
-    "settings screen",
-    "start screen",
-    "switch clan screen",
-    "make clan screen",
+    GameScreen.SETTINGS,
+    GameScreen.START,
+    GameScreen.SWITCH_CLAN,
+    GameScreen.MAKE_CLAN,
 ]
 
 BIOME_TYPES = ["Forest", "Plains", "Mountainous", "Beach", "Wetlands", "Desert"]

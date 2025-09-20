@@ -3,16 +3,16 @@
 Currently, we utilize palette maps for our collars. Maps allow us to create many color variations of a sprite without having to create a separate sprite set for each color.
 
 ## Navigating the Files
-Within the `sprites` folder, you'll find the `collars.png` spritesheet and the `palettes` folder.
+Within the `sprites` folder, you'll find the `acc_collars.png` spritesheet and the `palettes` folder.
 
-`collar.png` holds all the collar sprite mapping while `palettes` holds the files for each `style`'s palette map. 
+`acc_collars.png` holds all the collar sprite mapping while `palettes` holds the files for each `style`'s palette map. 
 
 !!! tip
-    Throughout this doc we'll refer to `style` and `style_type`. Collars are broken down into `style_type` such as `BOW`, `LEATHER`, and `NYLON`. Each row of the `collar.png` file is a new `style_type`. Each sprite within a row is a `style` within that `style_type`.
+    Throughout this doc we'll refer to `style` and `style_type`. Collars are broken down into `style_type` such as `BOW`, `LEATHER`, and `NYLON`. Each row of the `acc_collars.png` file is a new `style_type`. Each sprite within a row is a `style` within that `style_type`.
 
-`palette` files are named as such: `collars{STYLE_TYPE}_palette`. Some `style_type` will include multiple descriptors separated by `_`, such as: `LEATHER_BELL_GRADIENT`. Every `style_type` should begin with it's `style` (i.e. `LEATHER` is the style of `LEATHER_BELL_GRADIENT`.)
+`palette` files are named as such: `acc_collars{STYLE_TYPE}_palette`. Some `style_type` will include multiple descriptors separated by `_`, such as: `LEATHER_BELL_GRADIENT`. Every `style_type` should begin with it's `style` (i.e. `LEATHER` is the style of `LEATHER_BELL_GRADIENT`.)
 
-We also utilize the `collar_sprite_data.json` file in `resources/dict/sprites`. This holds our `style_data`, essentially an array of our `style`, `style_type` and color palettes. This is where all sprite name information is pulled from.
+We also utilize the `collar_sprite_data.json` file in `sprites/dicts`. This holds our `style_data`, essentially an array of our `style`, `style_type` and color palettes. This is where all sprite name information is pulled from.
 
 ## Utilizing the Spritesheets and Palettes
 Upon viewing the spritesheet, you'll notice that the sprites are mostly greyscale, with some pops of color. The colors used here will not be seen in-game, rather they are a "map" used to tell the code where our palette colors should go. 
@@ -25,6 +25,8 @@ These sprites should generally be a clearly defined grayscale with important fea
     An exception here is our standard black outline for parts of the accessory that go outside the cat sprite lines. This outline should still be pure black on the spritesheet.
 
 Each palette `png` can be viewed as rows. The top row is our "base" color palette, aka the color palette already utilized in our spritesheet. Each following row is a new color palette with the color in each column being associated with the top "base" color. This is how we tell the code which color goes where.
+
+![color_palette_example1.png](../img/color_palette_example1.png)
 
 ## Adding a New Color
 If you would like to add a new color palette to a `style_type`, it's as simple as opening the associated palette `png` and adding a new row at the bottom of the `png.` 
@@ -42,7 +44,7 @@ Once you're finished with the spritesheet, you'll have to make a new palette fil
 
 The top row of this `png` will be the colors you used on the spritesheet. The black outline doesn't need to be included here, but all the other colors you used do! Try to arrange them in an intuitive fashion so that it will be easier for future editors to understand how the palette translates to the sprite. Following color palettes are added exactly as already discussed.
 
-To add the new `style` to the `collar_sprite_data.json`, you'll add a new list to the end of the associated `style_type` dict. Note that the order of these lists has to match the row order of the sprites in the spritesheet.
+To add the new `style` to the `acc_collars_sprite_data.json`, you'll add a new list to the end of the associated `style_type` dict. Note that the order of these lists has to match the row order of the sprites in the spritesheet.
 
 You'll also need to do some additional work to ensure the `style` name displays correctly on cat profiles! Head to the `resources/lang/en/cat/accessories.en.json` file. At the end of this file you'll add a new dict for your `style` formatted like this example:
 

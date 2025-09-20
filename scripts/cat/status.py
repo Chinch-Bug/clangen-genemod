@@ -655,7 +655,7 @@ class Status:
         # if no group given
         if not group_ID:
             for entry in self.standing_history[::-1]:
-                if CatStanding.EXILED in entry["standing"]:
+                if entry["standing"][-1] == CatStanding.EXILED:
                     return True
             return False
 

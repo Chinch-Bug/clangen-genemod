@@ -27,6 +27,7 @@ from scripts.game_structure.ui_elements import (
 )
 from scripts.game_structure.windows import GameOver
 from scripts.screens.Screens import Screens
+from scripts.screens.enums import GameScreen
 from scripts.ui.generate_box import BoxStyles, get_box
 from scripts.ui.generate_button import get_button_dict, ButtonStyles
 from scripts.ui.icon import Icon
@@ -150,7 +151,7 @@ class EventsScreen(Screens):
             elif element in self.cat_profile_buttons:
                 self.save_scroll_position()
                 switch_set_value(Switch.cat, element.cat_id)
-                self.change_screen("profile screen")
+                self.change_screen(GameScreen.PROFILE)
             elif element in self.choose_group_buttons.values():
                 self.choose_living_dropdown.close()
                 self.current_clan = next(filter(lambda c: c.displayname == element.text.replace("Clan", ""), game.clan.all_other_clans), game.clan).group_ID
@@ -167,10 +168,10 @@ class EventsScreen(Screens):
             if event.type == pygame.KEYDOWN:
                 # LEFT ARROW
                 if event.key == pygame.K_LEFT:
-                    self.change_screen("patrol screen")
+                    self.change_screen(GameScreen.PATROL)
                 # RIGHT ARROW
                 elif event.key == pygame.K_RIGHT:
-                    self.change_screen("camp screen")
+                    self.change_screen(GameScreen.CAMP)
                 # DOWN AND UP ARROW
                 elif event.key == pygame.K_DOWN or event.key == pygame.K_UP:
                     self.handle_tab_select(event.key)
@@ -831,7 +832,7 @@ class EventsScreen(Screens):
 
         if not clanswitch:
             if get_living_clan_cat_count(Cat) == 0:
-                GameOver("events screen")
+                GameOver(GameScreen.EVENTS)
             self.current_clan = game.clan.group_ID
             self.change_clan()
 
