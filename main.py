@@ -240,7 +240,7 @@ def load_data():
             scripts.screens.screens_core.screens_core.rebuild_core()
         except Exception as e:
             logging.exception("File failed to load")
-            if switch_get_value(Switch.error_message) is None:
+            if not switch_get_value(Switch.error_message):
                 switch_set_value(
                     Switch.error_message, "There was an error loading the cats file!"
                 )
@@ -315,6 +315,9 @@ def load_game():
     game.patrolled.clear()
     game.clan = None
     switch_set_value(Switch.switch_clan, False)
+    switch_set_value(
+        Switch.error_message, ""
+    )
 
     finished_loading = False
     loading_thread = threading.Thread(target=load_data)

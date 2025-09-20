@@ -50,7 +50,7 @@ class AllegiancesScreen(Screens):
         if event.type == pygame_gui.UI_BUTTON_PRESSED:
             if event.ui_element in self.names_buttons:
                 switch_set_value(Switch.cat, event.ui_element.return_cat_id())
-                self.change_screen('profile screen')
+                self.change_screen('profile_screen')
             elif event.ui_element in self.choose_group_buttons.values():
                 self.choose_living_dropdown.close()
                 self.current_clan = event.ui_element.text.replace("Clan", "")

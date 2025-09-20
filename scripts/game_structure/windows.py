@@ -2335,8 +2335,8 @@ class ChangeCatClan(UIWindow):
     def process_event(self, event):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
             if event.ui_element == self.back_button:
-                game.all_screens["profile screen"].exit_screen()
-                game.all_screens["profile screen"].screen_switches()
+                game.all_screens["profile_screen"].exit_screen()
+                game.all_screens["profile_screen"].screen_switches()
                 self.kill()
             if event.ui_element == self.save_button:
                 if self.the_cat.status.group:
@@ -2369,8 +2369,8 @@ class ChangeCatClan(UIWindow):
                             self.the_cat.status._change_rank(CatRank.MEDICINE_CAT)
                 self.the_cat.update_mentor()
                 self.the_cat.thoughts()
-                game.all_screens["profile screen"].exit_screen()
-                game.all_screens["profile screen"].screen_switches()
+                game.all_screens["profile_screen"].exit_screen()
+                game.all_screens["profile_screen"].screen_switches()
                 self.kill()
             if event.ui_element in self.checkboxes.values():
                 for clan_name, value in self.checkboxes.items():

@@ -84,7 +84,7 @@ class AllScreens:
     family_tree_screen = FamilyTreeScreen(GameScreen.FAMILY_TREE)
     mediation_screen = MediationScreen(GameScreen.MEDIATION)
     change_gender_screen = ChangeGenderScreen(GameScreen.CHANGE_GENDER)
-    predict_offspring_screen = PredictOffspringScreen(GameScreen.OFFSPRING_PREDICT)
+    offspring_predict_screen = PredictOffspringScreen(GameScreen.OFFSPRING_PREDICT)
 
     @classmethod
     def rebuild_all_screens(cls):
@@ -122,4 +122,4 @@ class AllScreens:
         cls.family_tree_screen = FamilyTreeScreen(GameScreen.FAMILY_TREE)
         cls.mediation_screen = MediationScreen(GameScreen.MEDIATION)
         cls.change_gender_screen = ChangeGenderScreen(GameScreen.CHANGE_GENDER)
-        cls.predict_offspring_screen = PredictOffspringScreen(GameScreen.OFFSPRING_PREDICT)
+        cls.offspring_predict_screen = PredictOffspringScreen(GameScreen.OFFSPRING_PREDICT)

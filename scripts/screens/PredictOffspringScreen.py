@@ -109,7 +109,7 @@ class PredictOffspringScreen(Screens):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
             
             if event.ui_element == self.back_button:
-                self.change_screen("profile screen")
+                self.change_screen("profile_screen")
                 
             elif event.ui_element == self.predict_button:
                 self.predicted_offspring = {}
