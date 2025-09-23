@@ -1282,6 +1282,14 @@ class Cat:
         the allegiances. If short is true, it will generate a very short one, with the minimal amount of information. """
         return Pelt.describe_appearance(self, short)
 
+    def create_genelist(self):
+        genelist = str(self.phenotype.PhenotypeOutput(self.phenotype.white_pattern, chimera=self.chimerapheno)) + \
+            "\n" + str(self.phenotype.ShowGenes(True)) + "\n" + self.phenotype.FormatSomatic()
+        if (self.chimerapheno):
+            genelist += "\n\n" + str(self.chimerapheno.PhenotypeOutput(self.chimerapheno.white_pattern, chimera=self.chimerapheno))
+
+        return genelist
+
     def describe_eyes(self):
         if(self.phenotype.lefteye == self.phenotype.righteye):
             colour = self.phenotype.lefteye.lower()

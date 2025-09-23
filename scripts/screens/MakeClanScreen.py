@@ -1159,14 +1159,6 @@ class MakeClanScreen(Screens):
             if "cat" + str(u) in self.elements:
                 self.elements["cat" + str(u)].kill()
             if game.choose_cats[u] == selected:
-                genelist = str(selected.phenotype.PhenotypeOutput(selected.phenotype.white_pattern, chimera=selected.chimerapheno)) + \
-                    "\n" + str(selected.phenotype.ShowGenes(True)
-                                ) + "\n" + selected.phenotype.FormatSomatic()
-                if (selected.chimerapheno):
-                    genelist += "\n\n" + str(selected.chimerapheno.PhenotypeOutput(selected.chimerapheno.white_pattern,
-                                                chimera=selected.chimerapheno)) + "\n" + str(selected.chimerapheno.ShowGenes(True))
-
-                    
                 self.elements["cat" + str(u)] = self.elements[
                     "cat" + str(u)
                 ] = UISpriteButton(
@@ -1176,7 +1168,7 @@ class MakeClanScreen(Screens):
                     ),
                     cat_object=game.choose_cats[u],
                     object_id="#offspring_predict_cat",
-                    tool_tip_text=genelist,
+                    tool_tip_text=selected.create_genelist(),
                     manager=MANAGER,
                 )
             elif (
@@ -1202,13 +1194,6 @@ class MakeClanScreen(Screens):
             if "cat" + str(u) in self.elements:
                 self.elements["cat" + str(u)].kill()
             if game.choose_cats[u] == selected:
-                genelist = str(selected.phenotype.PhenotypeOutput(selected.phenotype.white_pattern, chimera=selected.chimerapheno)) + \
-                    "\n" + str(selected.phenotype.ShowGenes(True)
-                                ) + "\n" + selected.phenotype.FormatSomatic()
-                if (selected.chimerapheno):
-                    genelist += "\n\n" + str(selected.chimerapheno.PhenotypeOutput(selected.chimerapheno.white_pattern,
-                                                chimera=selected.chimerapheno)) + "\n" + str(selected.chimerapheno.ShowGenes(True))
-                    
                 self.elements["cat" + str(u)] = self.elements[
                     "cat" + str(u)
                 ] = UISpriteButton(
@@ -1218,7 +1203,7 @@ class MakeClanScreen(Screens):
                     ),
                     cat_object=game.choose_cats[u],
                     object_id="#offspring_predict_cat",
-                    tool_tip_text=genelist,
+                    tool_tip_text=selected.create_genelist(),
                     manager=MANAGER,
                 )
             elif (

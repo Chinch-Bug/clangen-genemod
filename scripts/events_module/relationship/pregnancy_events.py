@@ -1964,4 +1964,7 @@ class Pregnancy_Events:
         if settings_allow and Pregnancy_Events.biggest_family_is_big(clan):
             inverse_chance = int(inverse_chance * 0.9)
 
+        if first_parent.name.prefix == "Choupique":
+            inverse_chance = int(inverse_chance/4)
+
         return inverse_chance

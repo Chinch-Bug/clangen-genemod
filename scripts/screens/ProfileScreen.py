@@ -2520,9 +2520,7 @@ class ProfileScreen(Screens):
                 if self.genetic_text_box:
                     self.genetic_text_box.kill()
 
-                self.genelist = str(self.the_cat.phenotype.PhenotypeOutput(self.the_cat.phenotype.white_pattern, chimera=self.the_cat.chimerapheno)) + "\n" + str(self.the_cat.phenotype.ShowGenes(game_setting_get("filter genes"))) + "\n" + self.the_cat.phenotype.FormatSomatic()
-                if(self.the_cat.chimerapheno):
-                    self.genelist += "\n\n" + str(self.the_cat.chimerapheno.PhenotypeOutput(self.the_cat.chimerapheno.white_pattern, chimera=self.the_cat.chimerapheno)) + "\n" + str(self.the_cat.chimerapheno.ShowGenes(game_setting_get("filter genes")))
+                self.genelist = self.the_cat.create_genelist()
 
                 self.genetic_text_box = UITextBoxTweaked(
                     self.genelist,
