@@ -538,6 +538,7 @@ dev_tools = false
   use_special_roller = true
 
   # how many neighbouring clans are generated on clan creation. Must be at least 1
+  # the game is also not built to handle more than 5 so issues may potentially arise with more
   other_clans_range = [2, 5]
 
 [genetics_config]

@@ -138,7 +138,7 @@ class Pelt:
                 "senior adult": adult_sprite if adult_sprite is not None else 6,
                 "senior": senior_sprite if senior_sprite is not None else 12,
                 "para_adult": para_adult_sprite,
-                "newborn": 20,
+                "newborn": "newborn0",
             }
             for age, pose in self.cat_sprites.items():
                 # we only need to convert if it's using the old sprite pose numbers
