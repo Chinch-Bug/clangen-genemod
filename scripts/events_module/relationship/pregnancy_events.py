@@ -1240,7 +1240,7 @@ class Pregnancy_Events:
             and (get_clan_setting('same sex birth') or xor('Y' in cand_cat.phenotype.sexgene, 'Y' in cat.phenotype.sexgene))):
                 all_candidates.append(cand_cat)
 
-        if (only_clanmate or randint(1, constants.CONFIG['pregnancy']['clanmate_surrogate_chance']) != 1) and not only_outside:
+        if (only_clanmate or randint(1, constants.CONFIG['pregnancy']['clanmate_surrogate_chance']) == 1) and not only_outside:
             candidates = []
             for cand in all_candidates:
                 if cand.status.group_ID != cat.status.group_ID:
