@@ -265,39 +265,39 @@ dev_tools = false
     "young adult" = 128
     adult = 8
     "senior adult" = 16
-    senior = 128
+    senior = 2
   [pregnancy.two_kit_modded]
     "young adult" = 256
     adult = 16
     "senior adult" = 32
-    senior = 256
+    senior = 8
   [pregnancy.three_kit_modded]
     "young adult" = 256
     adult = 32
     "senior adult" = 64
-    senior = 256
+    senior = 8
   [pregnancy.four_kit_modded]
     "young adult" = 256
     adult = 32
     "senior adult" = 64
-    senior = 128
+    senior = 4
   [pregnancy.five_kit_modded]
     "young adult" = 128
     adult = 32
     "senior adult" = 64
-    senior = 64
+    senior = 2
   # 6-8 random litter size
   [pregnancy.six_kit_modded]
     "young adult" = 64
     adult = 16
     "senior adult" = 32
-    senior = 32
+    senior = 1
   # 9-12 random litter size
   [pregnancy.nine_kit_modded]
     "young adult" = 16
     adult = 4
     "senior adult" = 6
-    senior = 3
+    senior = 0
   # 13-19 random litter size
   [pregnancy.max_kit_modded]
     "young adult" = 1

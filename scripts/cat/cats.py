@@ -650,7 +650,7 @@ class Cat:
             or len(self.phenotype.sexgene) == 1
             or (self.gender == 'intersex' and random() < 0.2) 
             or (self.gender == 'molly' and 'Y' in self.phenotype.sexgene) 
-            or (self.gender == 'tom' and 'Y' not in self.phenotype.sexgene and random() > 0.001)):
+            or (self.gender == 'tom' and 'Y' not in self.phenotype.sexgene)):
             self.get_permanent_condition('sterile', born_with=True, genetic=True)
         
         if self.phenotype.fold[0] == 'Fd' or ('manx syndrome' in self.permanent_condition and self.phenotype.bobtailnr < 4 and self.phenotype.bobtailnr > 1 and random() < 0.05):

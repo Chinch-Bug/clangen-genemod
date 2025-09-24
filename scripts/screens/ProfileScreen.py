@@ -151,7 +151,16 @@ class ProfileScreen(Screens):
         self.profile_elements = {}
 
     def handle_event(self, event):
-        if event.type == pygame_gui.UI_BUTTON_START_PRESS:
+        if event.type == pygame.MOUSEBUTTONDOWN and pygame.mouse.get_pressed()[2]:
+            if self.profile_elements["favourite_button"].rect.collidepoint(event.pos):
+                self.the_cat.favourite = 0
+                self.profile_elements["favourite_button"].change_object_id(
+                    "#not_fav_star"
+                )
+                self.profile_elements["favourite_button"].set_tooltip(
+                    f"Mark as favorite {self.the_cat.favourite+1}"
+                )
+        elif event.type == pygame_gui.UI_BUTTON_START_PRESS:
             if event.ui_element == self.back_button:
                 self.close_current_tab()
                 self.change_screen(game.last_screen_forProfile)
@@ -206,7 +215,7 @@ class ProfileScreen(Screens):
                 self.change_screen(GameScreen.MEDIATION)
             elif event.ui_element == self.profile_elements["favourite_button"]:
                 self.the_cat.favourite += 1
-                if self.the_cat.favourite > 6:
+                if self.the_cat.favourite > 6 or event.mouse_button == pygame.BUTTON_RIGHT:
                     self.the_cat.favourite = 0
                 self.profile_elements["favourite_button"].change_object_id(
                     f"#fav_star{self.the_cat.favourite}" if self.the_cat.favourite else "#not_fav_star"
