@@ -212,20 +212,23 @@ class PredictOffspringScreen(Screens):
 
         if self.selected_cat.mate:
             selected_option = str(Cat.fetch_cat(self.selected_cat.mate[0]).name).lower()
-            mate_index = self.possible_mates_names.index(selected_option)
-            self.selected_mate = self.possible_mates[mate_index-1]
-            self.selected_mate_elements["image"] = UISpriteButton(
-                ui_scale(pygame.Rect((540, 130), (150, 150))),
-                pygame.transform.scale(
-                    self.selected_mate.sprite, ui_scale_dimensions(
-                        (150, 150))
-                ),
-                object_id="#offspring_predict_cat",
-                tool_tip_text=self.selected_mate.create_genelist(),
-            )
-            self.mate_dropdown.kill()
-            self.mate_dropdown = create_dropdown((555, 295), (155, 40), create_options_list(self.possible_mates_names, "upper"),
-                                                 get_selected_option(selected_option, "upper"))
+            try:
+                mate_index = self.possible_mates_names.index(selected_option)
+                self.selected_mate = self.possible_mates[mate_index-1]
+                self.selected_mate_elements["image"] = UISpriteButton(
+                    ui_scale(pygame.Rect((540, 130), (150, 150))),
+                    pygame.transform.scale(
+                        self.selected_mate.sprite, ui_scale_dimensions(
+                            (150, 150))
+                    ),
+                    object_id="#offspring_predict_cat",
+                    tool_tip_text=self.selected_mate.create_genelist(),
+                )
+                self.mate_dropdown.kill()
+                self.mate_dropdown = create_dropdown((555, 295), (155, 40), create_options_list(self.possible_mates_names, "upper"),
+                                                    get_selected_option(selected_option, "upper"))
+            except:
+                pass
         
         heading_rect = ui_scale(pygame.Rect((0, 20), (400, -1)))
         self.selected_cat_elements["heading"] = pygame_gui.elements.UITextBox(

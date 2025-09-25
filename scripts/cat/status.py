@@ -547,8 +547,8 @@ class Status:
 
         # meanwhile clan cats go wherever their guide points them
         if game.clan:
-            cat_clan = self.fetch_clan_object()
-            self.add_to_group(new_group_ID=cat_clan.instructor.status.group_ID if cat_clan.instructor else game.clan.instructor.status.group_ID)
+            cat_clan = self.fetch_clan_object(game.clan)
+            self.add_to_group(new_group_ID=cat_clan.instructor.status.group_ID)
         else:
             self.add_to_group(new_group_ID=CatGroup.STARCLAN_ID)
 

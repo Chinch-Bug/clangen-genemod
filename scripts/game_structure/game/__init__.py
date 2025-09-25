@@ -220,10 +220,13 @@ def load_events():
         for event_dict in events_list:
             event_obj = Single_Event.from_dict(event_dict, cat_class)
             if event_obj:
-                if event_obj.clan and event_obj.clan == CatGroup.PLAYER_CLAN.value:
+                if event_obj.clan and (event_obj.clan == CatGroup.PLAYER_CLAN.value or event_obj.clan == clan.displayname):
                     event_obj.clan = CatGroup.PLAYER_CLAN_ID
                 elif event_obj.clan and len(event_obj.clan) > 2:
-                    event_obj.clan = str(int(event_obj.clan[-1])+4)
+                    try:
+                        event_obj.clan = str(int(event_obj.clan[-1])+4)
+                    except:
+                        event_obj.clan = next(filter(lambda c: event_obj.clan == c.displayname, game.clan.all_other_clans), None)
                 cur_events_list.append(event_obj)
     except FileNotFoundError:
         pass
