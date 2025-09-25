@@ -226,7 +226,7 @@ def load_events():
                     try:
                         event_obj.clan = str(int(event_obj.clan[-1])+4)
                     except:
-                        event_obj.clan = next(filter(lambda c: event_obj.clan == c.displayname, game.clan.all_other_clans), None)
+                        event_obj.clan = next(filter(lambda c: event_obj.clan == c.displayname, clan.all_other_clans), None)
                 cur_events_list.append(event_obj)
     except FileNotFoundError:
         pass
