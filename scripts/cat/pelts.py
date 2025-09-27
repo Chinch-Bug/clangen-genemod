@@ -137,6 +137,7 @@ class Pelt:
                 "adult": adult_sprite if adult_sprite is not None else 6,
                 "senior adult": adult_sprite if adult_sprite is not None else 6,
                 "senior": senior_sprite if senior_sprite is not None else 12,
+                "para_young": "para_young0",
                 "para_adult": para_adult_sprite,
                 "newborn": "newborn0",
             }

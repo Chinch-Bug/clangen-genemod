@@ -3163,7 +3163,7 @@ def generate_sprite(
         if constants.CONFIG["fun"]["all_cats_are_newborn"]:
             cat_sprite = sprite_poses[cat.pelt.cat_sprites["newborn"]]
         else:
-            if "long" in cat.pelt.cat_sprites[age] and (cat.pelt.length == 'medium' and get_current_season() == 'Leaf-bare'):
+            if "long" in cat.pelt.cat_sprites[age] or (cat.pelt.length == 'medium' and get_current_season() == 'Leaf-bare'):
                 cat_sprite = sprite_poses[cat.pelt.cat_sprites[age].replace("short", "long")]
             else:
                 cat_sprite = sprite_poses[cat.pelt.cat_sprites[age]]

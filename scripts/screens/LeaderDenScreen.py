@@ -995,6 +995,7 @@ class LeaderDenScreen(Screens):
             if not i.dead
             and i.status.is_outsider
             and i.status.is_near(CatGroup.PLAYER_CLAN_ID)
+            and (i.status.is_lost(CatGroup.PLAYER_CLAN_ID) or not i.status.is_lost())
         ]
 
         # separate them into chunks for the pages
