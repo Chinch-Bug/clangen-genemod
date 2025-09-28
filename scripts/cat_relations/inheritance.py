@@ -582,6 +582,8 @@ class Inheritance:
 
     def init_sibling_mates(self, inter_id, inter_cat):
         """Create a sibling's mate relationship."""
+        if not inter_cat:
+            return
         for mate_id in inter_cat.mate:
             mate_rel = RelationType.NOT_BLOOD
             # they might be related, but only if it is not an adoption
