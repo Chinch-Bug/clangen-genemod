@@ -970,7 +970,9 @@ class RomanticEvents:
         if RomanticEvents.relationship_fulfill_condition(relationship_to, condition):
             return 0
 
-        chance_number = 30
+        chance_number = constants.CONFIG["mates"]["base_breakup_chance"]
+        if not chance_number:
+            return 0
         chance_number += int(relationship_from.romance / 20)
         chance_number += int(relationship_to.romance / 20)
         chance_number += int(relationship_from.like / 20)

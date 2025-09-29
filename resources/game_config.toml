@@ -74,6 +74,9 @@ dev_tools = false
   # 1/chance of becoming mates, triggers with friends_to_lover (has to be a high number because many relationships are checked each moon)
   chance_friends_to_lovers = 170
 
+  # base 1/chance for mates to break up. Affected by relationship values and personality compatibility. 0 disables breakups entirely
+  base_breakup_chance = 30
+
   # NOTE FOR RELATIONSHIP CONSTRAINTS
   #  0: no condition
   #  positive number: value has to be higher than number

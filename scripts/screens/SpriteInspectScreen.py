@@ -3,6 +3,8 @@
 import i18n
 import pygame
 import pygame_gui
+import os
+import ujson
 
 from scripts.cat.cats import Cat
 from scripts.game_structure import game
@@ -23,6 +25,9 @@ from ..game_structure.game.switches import switch_set_value, switch_get_value, S
 from scripts.game_structure.game.settings import game_setting_get
 from ..game_structure.screen_settings import MANAGER
 from ..game_structure.windows import SaveAsImage
+from scripts.housekeeping.datadir import (
+    get_save_dir,
+)
 from ..ui.generate_button import get_button_dict, ButtonStyles
 
 
@@ -45,6 +50,7 @@ class SpriteInspectScreen(Screens):
         self.override_dead_lineart_text = None
         self.override_not_working_text = None
         self.save_image_button = None
+        self.export_cat_button = None
 
         # Image Settings:
         self.platform_shown = None
@@ -82,6 +88,8 @@ class SpriteInspectScreen(Screens):
                 self.make_cat_image()
             elif event.ui_element == self.save_image_button:
                 SaveAsImage(self.generate_image_to_save(), str(self.the_cat.name))
+            elif event.ui_element == self.export_cat_button:
+                self.export_cat()
             elif event.ui_element == self.previous_life_stage:
                 self.displayed_life_stage = max(self.displayed_life_stage - 1, 0)
                 self.update_disabled_buttons()
@@ -188,6 +196,13 @@ class SpriteInspectScreen(Screens):
             object_id="@buttonstyles_squoval",
         )
 
+        self.export_cat_button = UISurfaceImageButton(
+            ui_scale(pygame.Rect((25, 130), (135, 30))),
+            "screens.sprite_inspect.export_cat",
+            get_button_dict(ButtonStyles.SQUOVAL, (135, 30)),
+            object_id="@buttonstyles_squoval",
+        )
+
         # Toggle Text:
         self.platform_shown_text = pygame_gui.elements.UITextBox(
             "screens.sprite_inspect.show_platform",
@@ -229,6 +244,7 @@ class SpriteInspectScreen(Screens):
         for ele in self.cat_elements:
             self.cat_elements[ele].kill()
         self.cat_elements = {}
+        self.export_cat_button.enable()
 
         self.the_cat = Cat.fetch_cat(switch_get_value(Switch.cat))
 
@@ -439,6 +455,8 @@ class SpriteInspectScreen(Screens):
         self.next_life_stage = None
         self.save_image_button.kill()
         self.save_image_button = None
+        self.export_cat_button.kill()
+        self.export_cat_button = None
         self.platform_shown_text.kill()
         self.platform_shown_text = None
         self.scars_shown_text.kill()
@@ -486,3 +504,26 @@ class SpriteInspectScreen(Screens):
             return full_image
         else:
             return self.cat_image
+
+    def export_cat(self):
+        code = self.the_cat.get_save_dict()
+        code["parent1"] = None
+        code["parent2"] = None
+        code["parent3"] = None
+        code["mentor"] = None
+        code["former_mentor"] = []
+        code["mate"] = []
+        code["previous_mates"] = []
+        code["adoptive_parents"] = []
+        code["current_apprentice"] = []
+        code["former_apprentices"] = []
+        code["faded_offspring"] = []
+
+        file_path = os.path.join(get_save_dir(), "exported_cats")
+        if not os.path.exists(file_path):
+            os.makedirs(file_path)
+        file_path = os.path.join(file_path, f"{code["ID"]}.json")
+        with open(file_path, "w") as f:
+            ujson.dump(code, f, indent=4)
+        
+        self.export_cat_button.disable()
