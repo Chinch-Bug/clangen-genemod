@@ -1317,12 +1317,12 @@ class ProfileScreen(Screens):
             self.info_list += f"Breed Makeup: {self.the_cat.phenotype.breeds}\n"
         if self.the_cat.chimerapheno:
             passes_map = {
-                0 : "Nr 1",
-                1 : "Nr 2",
-                2 : "Both"
+                1 : "Nr 1",
+                2 : "Nr 2",
+                0 : "Both"
             }
-            self.info_list += f"Chimera Pattern: {self.the_cat.phenotype.chimerapattern}\n"
-            self.info_list += f"Passes Genotype: {passes_map[self.the_cat.phenotype.passes_genotype]}\n"
+            self.info_list += f"Chimera Pattern: {self.the_cat.chimerapheno.chimerapattern}\n"
+            self.info_list += f"Passes Genotype: {passes_map[self.the_cat.passes]}\n"
 
         if self.the_cat.phenotype.white_pattern and self.the_cat.phenotype.white_pattern != "No":
             self.info_list += f"White Markings: {self.the_cat.phenotype.white_pattern}\n"
