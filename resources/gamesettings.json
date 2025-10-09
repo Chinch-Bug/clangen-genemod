@@ -66,6 +66,11 @@
         "Dead cats under 12 moons old will be shown with adult sprites. Note: this will not regenerate thoughts, so those will not match until after a moonskip.",
         false
       ],
+      "youthful dead": [
+        "Dead elders don't use elder sprites",
+        "Dead cats over 120 moons won't use their elder sprite, and retain their regular adult sprite instead.",
+        false
+      ],
       "gore": [
         "Allow mild gore and blood in patrol artwork",
         "Mild gore and blood will be allowed in the artwork displayed alongside patrols.",

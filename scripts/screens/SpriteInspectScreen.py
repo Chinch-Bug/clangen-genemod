@@ -270,7 +270,9 @@ class SpriteInspectScreen(Screens):
         # "young adult", "adult", and "senior adult" all look the same: collapse to adult
         # This is not the best way to do it, so if we make them have difference appearances, this will
         # need to be changed/removed.
-        if self.the_cat.age in ("young adult", "adult", "senior adult") or (game_setting_get("ageup dead") and self.the_cat.dead and self.the_cat.moons < 12):
+        if (self.the_cat.age in ("young adult", "adult", "senior adult") or 
+        (game_setting_get("ageup dead") and self.the_cat.dead and self.the_cat.moons < 12) or
+        (game_setting_get("youthful dead") and self.the_cat.dead and self.the_cat.age == "senior")):
             current_life_stage = "adult"
         else:
             current_life_stage = self.the_cat.age

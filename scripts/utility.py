@@ -3129,6 +3129,8 @@ def generate_sprite(
     else:
         if game_setting_get("ageup dead") and cat.dead and cat.age in [CatAge.NEWBORN, CatAge.KITTEN, CatAge.ADOLESCENT]:
             age = CatAge.ADULT
+        elif game_setting_get("youthful dead") and cat.dead and cat.age == CatAge.SENIOR:
+            age = CatAge.ADULT
         else:
             age = cat.age
 
