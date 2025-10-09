@@ -459,7 +459,7 @@ class Phenotype(Genotype):
             eyes = "one " + self.lefteye + " eye, one " + self.righteye + " eye"
         
         if(self.extraeye):
-            eyes += " and sectoral heterochromia"
+            eyes += f" and {self.extraeye.lower()} sectoral heterochromia"
 
         withword = self.specwhite
         if (self.eartype !="" or self.tailtype!="" or self.pawtype!="" or furtype!="" or self.vitiligo_string != ""):

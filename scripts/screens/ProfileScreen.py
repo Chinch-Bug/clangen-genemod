@@ -122,6 +122,7 @@ class ProfileScreen(Screens):
         self.backstory_background = None
         self.history_text_box = None
         self.genetic_text_box = None
+        self.dev_text_box = None
         self.conditions_tab_button = None
         self.condition_container = None
         self.left_conditions_arrow = None
@@ -398,6 +399,8 @@ class ProfileScreen(Screens):
                     self.help_button.kill()
                 elif self.open_sub_tab == 'genetics':
                     self.genetic_text_box.kill()
+                elif self.open_sub_tab == 'dev':
+                    self.dev_text_box.kill()
                 self.open_sub_tab = 'life events'
                 self.toggle_history_sub_tab()
             elif event.ui_element == self.sub_tab_2:
@@ -405,6 +408,8 @@ class ProfileScreen(Screens):
                     self.history_text_box.kill()
                 elif self.open_sub_tab == 'genetics':
                     self.genetic_text_box.kill()
+                elif self.open_sub_tab == 'dev':
+                    self.dev_text_box.kill()
                 self.open_sub_tab = 'user notes'
                 self.toggle_history_sub_tab()
             elif event.ui_element == self.sub_tab_3:
@@ -418,7 +423,24 @@ class ProfileScreen(Screens):
                     self.help_button.kill()
                 elif self.open_sub_tab == 'life events':
                     self.history_text_box.kill()
+                elif self.open_sub_tab == 'dev':
+                    self.dev_text_box.kill()
                 self.open_sub_tab = 'genetics'
+                self.toggle_history_sub_tab()
+            elif event.ui_element == self.sub_tab_4:
+                if self.open_sub_tab == 'user notes':
+                    self.notes_entry.kill()
+                    self.display_notes.kill()
+                    if self.edit_text:
+                        self.edit_text.kill()
+                    if self.save_text:
+                        self.save_text.kill()
+                    self.help_button.kill()
+                elif self.open_sub_tab == 'life events':
+                    self.history_text_box.kill()
+                elif self.open_sub_tab == 'genetics':
+                    self.genetic_text_box.kill()
+                self.open_sub_tab = 'dev'
                 self.toggle_history_sub_tab()
             elif event.ui_element == self.fav_tab:
                 switch_set_value(Switch.favorite_sub_tab, None)
@@ -1264,6 +1286,63 @@ class ProfileScreen(Screens):
 
         self.update_disabled_buttons_and_text()
 
+    def toggle_dev_tab(self):
+        """Opens the Dev notes portion of the History Tab"""
+        self.info_list = ""
+        
+        self.dev_text_box = UITextBoxTweaked(
+            self.info_list,
+            ui_scale(pygame.Rect((100, 473), (600, 149))),
+            object_id="#text_box_26_horizleft_pad_10_14",
+            line_spacing=1,
+            manager=MANAGER,
+        )
+
+        self.update_disabled_buttons_and_text()
+
+    def build_dev_info_list(self):
+        self.info_list = ""
+
+        ### General
+        self.info_list += f"ID: {self.the_cat.ID}\n"
+        self.info_list += f"Personality Facets: Lawfulness ({self.the_cat.personality.lawfulness}), Sociability ({self.the_cat.personality.sociability}), Aggression ({self.the_cat.personality.aggression}), Stability ({self.the_cat.personality.stability})\n"
+
+        if self.the_cat.pelt.scars:
+            self.info_list += f"Scars: {self.the_cat.pelt.scars}\n"
+
+        ### Genetic
+
+        self.info_list += "\n"
+        if self.the_cat.phenotype.breeds:
+            self.info_list += f"Breed Makeup: {self.the_cat.phenotype.breeds}\n"
+        if self.the_cat.chimerapheno:
+            passes_map = {
+                0 : "Nr 1",
+                1 : "Nr 2",
+                2 : "Both"
+            }
+            self.info_list += f"Chimera Pattern: {self.the_cat.phenotype.chimerapattern}\n"
+            self.info_list += f"Passes Genotype: {passes_map[self.the_cat.phenotype.passes_genotype]}\n"
+
+        if self.the_cat.phenotype.white_pattern and self.the_cat.phenotype.white_pattern != "No":
+            self.info_list += f"White Markings: {self.the_cat.phenotype.white_pattern}\n"
+        if self.the_cat.chimerapheno and self.the_cat.chimerapheno.white_pattern and self.the_cat.chimerapheno.white_pattern != "No":
+            self.info_list += f"Chimera White Markings: {self.the_cat.chimerapheno.white_pattern}\n"
+        
+        if self.the_cat.phenotype.tortiepattern and self.the_cat.phenotype.tortiepattern != ["BLUE-TIPPED"]:
+            self.info_list += f"Tortie Markings: {self.the_cat.phenotype.tortiepattern}\n"
+        if self.the_cat.chimerapheno and self.the_cat.chimerapheno.tortiepattern and self.the_cat.chimerapheno.tortiepattern != ["BLUE-TIPPED"]:
+            self.info_list += f"Chimera Tortie Markings: {self.the_cat.chimerapheno.tortiepattern}\n"
+
+        if self.the_cat.phenotype.merlepattern:
+            self.info_list += f"Pseudo-Merle Markings: {self.the_cat.phenotype.merlepattern}\n"
+        if self.the_cat.chimerapheno and self.the_cat.chimerapheno.merlepattern:
+            self.info_list += f"Chimera Pseudo-Merle Markings: {self.the_cat.chimerapheno.merlepattern}\n"
+
+        self.info_list += f"Body Type Value: {self.the_cat.phenotype.body_value}, Height Value: {self.the_cat.phenotype.height_value}\n"
+        
+        
+
     def save_user_notes(self):
         """Saves user-entered notes."""
         clanname = game.clan.displayname
@@ -1316,6 +1395,9 @@ class ProfileScreen(Screens):
         
         elif self.open_sub_tab == 'genetics':
             self.toggle_genetics_tab()
+        
+        elif self.open_sub_tab == "dev":
+            self.toggle_dev_tab()
 
     def get_all_history_text(self):
         """Generates a string with all important history information."""
@@ -2432,6 +2514,7 @@ class ProfileScreen(Screens):
                 self.sub_tab_1.disable()
                 self.sub_tab_2.enable()
                 self.sub_tab_3.enable()
+                self.sub_tab_4.enable()
                 self.history_text_box.kill()
                 self.history_text_box = UITextBoxTweaked(
                     self.get_all_history_text(),
@@ -2465,6 +2548,7 @@ class ProfileScreen(Screens):
                 self.sub_tab_1.enable()
                 self.sub_tab_2.disable()
                 self.sub_tab_3.enable()
+                self.sub_tab_4.enable()
                 if self.history_text_box:
                     self.history_text_box.kill()
                     self.no_moons.kill()
@@ -2522,12 +2606,15 @@ class ProfileScreen(Screens):
                 self.sub_tab_1.enable()
                 self.sub_tab_2.enable()
                 self.sub_tab_3.disable()
+                self.sub_tab_4.enable()
                 if self.history_text_box:
                     self.history_text_box.kill()
                     self.no_moons.kill()
                     self.show_moons.kill()
                 if self.genetic_text_box:
                     self.genetic_text_box.kill()
+                if self.dev_text_box:
+                    self.dev_text_box.kill()
 
                 self.genelist = self.the_cat.create_genelist()
 
@@ -2538,6 +2625,29 @@ class ProfileScreen(Screens):
                     line_spacing=1,
                     manager=MANAGER,
                 )
+            elif self.open_sub_tab == "dev":
+                self.sub_tab_1.enable()
+                self.sub_tab_2.enable()
+                self.sub_tab_3.enable()
+                self.sub_tab_4.disable()
+                if self.history_text_box:
+                    self.history_text_box.kill()
+                    self.no_moons.kill()
+                    self.show_moons.kill()
+                if self.genetic_text_box:
+                    self.genetic_text_box.kill()
+
+                self.build_dev_info_list()
+                if self.dev_text_box:
+                    self.dev_text_box.set_text(self.info_list)
+                else:
+                    self.dev_text_box = UITextBoxTweaked(
+                        self.info_list,
+                        ui_scale(pygame.Rect((100, 473), (600, 149))),
+                        object_id="#text_box_26_horizleft_pad_10_14",
+                        line_spacing=1,
+                        manager=MANAGER,
+                    )
 
         # Conditions Tab
         elif self.open_tab == "conditions":
@@ -2596,6 +2706,9 @@ class ProfileScreen(Screens):
             elif self.open_sub_tab == 'genetics':
                 if self.genetic_text_box:
                     self.genetic_text_box.kill()
+            elif self.open_sub_tab == "dev":
+                if self.dev_text_box:
+                    self.dev_text_box.kill()
 
         elif self.open_tab == "conditions":
             self.left_conditions_arrow.kill()
