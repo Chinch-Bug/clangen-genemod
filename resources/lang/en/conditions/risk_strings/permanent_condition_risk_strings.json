@@ -289,6 +289,10 @@
         ]
     },
     "narrowed chest": {
+        "running nose": [
+            "r_c checks on m_c more frequently now that {PRONOUN/m_c/subject} {VERB/m_c/have/has} complained over a frequently running nose.",
+            "m_c worries over the possibility of illness when {PRONOUN/m_c/object} nose refuses to clear."
+        ],
         "whitecough": [
             "r_c worst fears are realized as whitecough has infected m_c thanks to {PRONOUN/m_c/poss} narrowed chest.",
             "m_c's narrowed chest has left {PRONOUN/m_c/object} coughing and wheezing this moon, unable to resist potential sickness."
