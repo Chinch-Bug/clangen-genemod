@@ -1230,10 +1230,11 @@ class Pregnancy_Events:
             if random() < 0.2:
                 outside_parent[0].set_mate(cat)
                 cat.set_mate(outside_parent[0])
-        elif get_clan_setting("halfclan single"):
-            print("No possible half-clan single parents found")
-            return [None, None]
         else:
+            if get_clan_setting("halfclan single"):
+                print("No possible half-clan single parents found")
+                if background_category == "2":
+                    return None, None
             nr_of_parents = 1
             if background_category == "1" and get_clan_setting('multisire') and randint(1, constants.CONFIG['pregnancy']["multi-sire_chance"]) == 1:
                 nr_of_parents = randint(2, constants.CONFIG['pregnancy']["multi-sire_max_sires"])
@@ -1471,9 +1472,11 @@ class Pregnancy_Events:
                     chimera_sire = choice(other_cat)
                     if second_blood.ID == chimera_sire.ID:
                         chimera_sire = None
+                else:
+                    print("There should be a second parent but there isn't??")
 
                 if backkit:    
-                    kit = Cat(parent1=cat.ID, parent2=second_blood.ID if second_blood else None, moons=0, backstory=backstory, status_dict={"rank": CatRank.NEWBORN, "group_ID": clan.group_ID}, extrapar = par2geno if not second_blood else chimera_sire)
+                    kit = Cat(parent1=cat.ID, parent2=second_blood.ID if second_blood else None, moons=0, backstory=backstory, status_dict={"rank": CatRank.NEWBORN, "group_ID": clan.group_ID}, extrapar = chimera_sire)
                 else:
                     kit = Cat(parent1=cat.ID, parent2=second_blood.ID, moons=0, status_dict={"rank": CatRank.NEWBORN, "group_ID": clan.group_ID})
                 
