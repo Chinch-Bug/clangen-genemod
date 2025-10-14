@@ -3410,7 +3410,7 @@ def generate_sprite(
                         "medium" : 7,
                         "low" : 7
                     }
-                    opacity = int(25 * (modifiers.get(phenotype.banding, 5)))
+                    opacity = int(12 * (modifiers.get(phenotype.banding, 5)))
                     rednose = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                     rednose.blit(sprites.sprites["rednose" + cat_sprite], (0, 0))
                     nose_colour = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)

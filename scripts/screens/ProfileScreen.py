@@ -1274,7 +1274,7 @@ class ProfileScreen(Screens):
 
     def toggle_genetics_tab(self):
         """Opens the Genotype portion of the History Tab"""
-        self.genelist = ""
+        self.genelist = self.the_cat.create_genelist()
         
         self.genetic_text_box = UITextBoxTweaked(
                         self.genelist,

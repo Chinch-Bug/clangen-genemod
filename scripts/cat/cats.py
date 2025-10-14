@@ -1286,7 +1286,8 @@ class Cat:
         genelist = str(self.phenotype.PhenotypeOutput(self.phenotype.white_pattern, chimera=self.chimerapheno)) + \
             "\n" + str(self.phenotype.ShowGenes(True)) + "\n" + self.phenotype.FormatSomatic()
         if (self.chimerapheno):
-            genelist += "\n\n" + str(self.chimerapheno.PhenotypeOutput(self.chimerapheno.white_pattern, chimera=self.chimerapheno))
+            genelist += "\n\n" + str(self.chimerapheno.PhenotypeOutput(self.chimerapheno.white_pattern, chimera=self.chimerapheno)) + \
+            "\n" + str(self.chimerapheno.ShowGenes(True))
 
         return genelist
 
