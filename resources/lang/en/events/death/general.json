@@ -3054,6 +3054,9 @@
             ],
             "dies": true
         },
+        "multiclan_cat": [
+            ["clancat", "exists", "status:any_healer"]
+        ],
         "history": [
             {
                 "cats": [
@@ -3097,6 +3100,9 @@
             ],
             "dies": true
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:deputy" ]
+        ],
         "history": [
             {
                 "cats": [
@@ -3155,6 +3161,9 @@
             ],
             "dies": true
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:deputy" ]
+        ],
         "history": [
             {
                 "cats": [
@@ -3197,6 +3206,9 @@
             ],
             "dies": true
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:leader" ]
+        ],
         "history": [
             {
                 "cats": [
@@ -3255,6 +3267,9 @@
             ],
             "dies": true
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:leader" ]
+        ],
         "history": [
             {
                 "cats": [
@@ -5922,6 +5937,9 @@
             ],
             "dies": true
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:apprentice" ]
+        ],
         "history": [
             {
                 "cats": [
@@ -5976,6 +5994,9 @@
             ],
             "dies": true
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:apprentice" ]
+        ],
         "history": [
             {
                 "cats": [
@@ -6191,6 +6212,9 @@
             ],
             "dies": true
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:warrior" ]
+        ],
         "history": [
             {
                 "cats": [
@@ -6234,6 +6258,9 @@
             ],
             "dies": true
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:leader" ]
+        ],
         "history": [
             {
                 "cats": [
@@ -6277,6 +6304,9 @@
             ],
             "dies": true
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:deputy" ]
+        ],
         "history": [
             {
                 "cats": [
@@ -8038,6 +8068,9 @@
                 "leader"
             ]
         },
+        "new_cat": [
+            [ "old_name", "clancat", "exists", "status:deputy" ]
+        ],
         "history": [
             {
                 "cats": [

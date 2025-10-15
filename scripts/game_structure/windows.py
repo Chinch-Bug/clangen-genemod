@@ -606,6 +606,7 @@ class DeleteCatCheck(UIWindow):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
             if event.ui_element == self.delete_it_button:
                 rempath = get_save_dir() + "/" + self.clan_name + "/faded_cats/"
+                rempath_h = get_save_dir() + "/" + self.clan_name + "/history/"
                 #get all former mentors (preserve history mentor influence text)
                 mentors = []
                 history_event_cats = []
@@ -635,8 +636,10 @@ class DeleteCatCheck(UIWindow):
                         fileName = x.split('.')
                         if fileName[0] not in safe_ids and os.path.exists(rempath + x):
                             os.remove(rempath + x)
+                            if os.path.exists(rempath_h + x.replace(".json", "_history.json")):
+                                os.remove(rempath_h + x.replace(".json", "_history.json"))
                 self.kill()
-                self.reloadscreen("clan settings screen")
+                self.reloadscreen(GameScreen.CLAN_SETTINGS)
 
             elif event.ui_element == self.go_back_button:
                 self.kill()
@@ -703,7 +706,7 @@ class DeleteCatHistoryCheck(UIWindow):
                         if fileName[0] not in safe_ids and os.path.exists(rempath + x):
                             os.remove(rempath + x)
                 self.kill()
-                self.reloadscreen("clan settings screen")
+                self.reloadscreen(GameScreen.CLAN_SETTINGS)
 
             elif event.ui_element == self.go_back_button:
                 self.kill()

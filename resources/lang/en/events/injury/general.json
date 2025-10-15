@@ -3729,6 +3729,9 @@
                 "vengeful"
             ]
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:warrior" ]
+        ],
         "injury": [
             {
                 "cats": [
@@ -3772,7 +3775,10 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -3
+            "changed": -3,
+            "has_rank": [
+                "warrior"
+            ]
         }
     },
     {
@@ -6335,6 +6341,9 @@
                 "healer apprentice"
             ]
         },
+        "new_cat": [
+            [ "clancat", "exists", "status:warrior" ]
+        ],
         "injury": [
             {
                 "cats": [
@@ -6392,6 +6401,9 @@
                 "healer apprentice"
             ]
         },
+        "multiclan_cat": [
+            [ "old_name", "clancat", "exists", "status:warrior" ]
+        ],
         "injury": [
             {
                 "cats": [
@@ -6912,6 +6924,9 @@
                 "scars": []
             }
         ],
+        "new_cat": [
+            [ "old_name", "clancat", "exists", "status:any_healer" ]
+        ],
         "history": [
             {
                 "cats": [
@@ -6928,7 +6943,8 @@
             ],
             "changed": 1,
             "has_rank": [
-                "warrior_mult"
+                "warrior_mult",
+                "any_healer"
             ]
         }
     },
@@ -7078,6 +7094,9 @@
                 "senior"
             ]
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:warrior" ]
+        ],
         "injury": [
             {
                 "cats": [
@@ -7138,6 +7157,9 @@
                 "confident"
             ]
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:warrior" ]
+        ],
         "injury": [
             {
                 "cats": [
@@ -7247,6 +7269,9 @@
                 "sincere"
             ]
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:warrior" ]
+        ],
         "injury": [
             {
                 "cats": [

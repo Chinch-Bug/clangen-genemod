@@ -4720,6 +4720,9 @@
                 "senior"
             ]
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "age:match" ]
+        ],
         "relationships": [
             {
                 "cats_from": [
@@ -4789,6 +4792,9 @@
                 "senior"
             ]
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "age:match" ]
+        ],
         "other_clan": {
             "current_rep": [
                 "any"
@@ -4819,6 +4825,9 @@
                 "senior"
             ]
         },
+        "multiclan_cat": [
+            [ "clancat", "exists" ]
+        ],
         "other_clan": {
             "current_rep": [
                 "any"
@@ -4848,6 +4857,9 @@
                 "senior"
             ]
         },
+        "multiclan_cat": [
+            [ "clancat", "exists" ]
+        ],
         "other_clan": {
             "current_rep": [
                 "any"
@@ -5817,31 +5829,6 @@
         }
     },
     {
-        "event_id": "gen_misc_any_medicinecatotherclan3",
-        "location": [
-            "any"
-        ],
-        "season": [
-            "any"
-        ],
-        "frequency": 3,
-        "event_text": "m_c visits o_c_n to congratulate them on their new medicine cat.",
-        "m_c": {
-            "status": [
-                "healer"
-            ],
-            "skill": [
-                "MEDIATOR,1"
-            ]
-        },
-        "other_clan": {
-            "current_rep": [
-                "any"
-            ],
-            "changed": 2
-        }
-    },
-    {
         "event_id": "gen_misc_ceremony_any_medicinecatacc1",
         "location": [
             "any"
@@ -6055,17 +6042,23 @@
             "any"
         ],
         "frequency": 3,
-        "event_text": "m_c was seen loudly bickering with the medicine cat of o_c_n.",
+        "event_text": "m_c was seen loudly bickering with a medicine cat of o_c_n.",
         "m_c": {
             "status": [
                 "healer"
             ]
         },
+        "multiclan_cat": [
+            [ "old_name", "clancat", "exists", "status:any_healer" ]
+        ],
         "other_clan": {
             "current_rep": [
                 "any"
             ],
-            "changed": -1
+            "changed": -1,
+            "has_rank": [
+                "any_healer"
+            ]
         }
     },
     {
@@ -6913,7 +6906,7 @@
             "clan_wide"
         ],
         "frequency": 1,
-        "event_text": "The o_c_n medicine cat comes asking if c_n has any herbs to spare. Unfortunately, the c_n herb stocks are far too low and c_n is unable to provide any help.",
+        "event_text": "A medicine cat from o_c_n comes asking if c_n has any herbs to spare. Unfortunately, the c_n herb stocks are far too low and c_n is unable to provide any help.",
         "supplies": [
             {
                 "type": "all_herb",
@@ -6923,12 +6916,18 @@
                 "adjust": ""
             }
         ],
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:any_healer" ]
+        ],
         "other_clan": {
             "current_rep": [
                 "ally",
                 "neutral"
             ],
-            "changed": -1
+            "changed": -1,
+            "has_rank": [
+                "any_healer"
+            ]
         }
     },
     {
@@ -6953,12 +6952,18 @@
                 "adjust": ""
             }
         ],
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:any_healer" ]
+        ],
         "other_clan": {
             "current_rep": [
                 "ally",
                 "neutral"
             ],
-            "changed": -2
+            "changed": -2,
+            "has_rank": [
+                "any_healer"
+            ]
         }
     },
     {
@@ -6983,11 +6988,17 @@
                 "adjust": "reduce_eighth"
             }
         ],
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:any_healer" ]
+        ],
         "other_clan": {
             "current_rep": [
                 "ally"
             ],
-            "changed": 1
+            "changed": 1,
+            "has_rank": [
+                "any_healer"
+            ]
         }
     },
     {
@@ -7002,7 +7013,7 @@
             "clan_wide"
         ],
         "frequency": 2,
-        "event_text": "The medicine cat apprentice from o_c_n comes asking for given_herb. They refuse to say why their Clan needs them but c_n still provides them with what they need.",
+        "event_text": "A medicine cat apprentice from o_c_n comes asking for given_herb. They refuse to say why their Clan needs them but c_n still provides them with what they need.",
         "supplies": [
             {
                 "type": "any_herb",
@@ -7012,12 +7023,18 @@
                 "adjust": "reduce_eighth"
             }
         ],
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:healer_apprentice" ]
+        ],
         "other_clan": {
             "current_rep": [
                 "ally",
                 "neutral"
             ],
-            "changed": 1
+            "changed": 1,
+            "has_rank": [
+                "healer_apprentice"
+            ]
         }
     },
     {
@@ -7032,7 +7049,7 @@
             "clan_wide"
         ],
         "frequency": 1,
-        "event_text": "The o_c_n medicine cat comes asking if c_n have any given_herb to spare. However, c_n only has enough for themselves and they refuse to share.",
+        "event_text": "A medicine cat from o_c_n comes asking if c_n have any given_herb to spare. However, c_n only has enough for themselves and they refuse to share.",
         "supplies": [
             {
                 "type": "any_herb",
@@ -7042,11 +7059,17 @@
                 "adjust": ""
             }
         ],
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:any_healer" ]
+        ],
         "other_clan": {
             "current_rep": [
                 "any"
             ],
-            "changed": -1
+            "changed": -1,
+            "has_rank": [
+                "any_healer"
+            ]
         }
     },
     {
@@ -7061,7 +7084,7 @@
             "clan_wide"
         ],
         "frequency": 2,
-        "event_text": "The medicine cat apprentice from o_c_n comes asking for herbs. They refuse to say why their Clan needs them and c_n decides not to share their precious few given_herb.",
+        "event_text": "A medicine cat apprentice from o_c_n comes asking for herbs. They refuse to say why their Clan needs them and c_n decides not to share their precious few given_herb.",
         "supplies": [
             {
                 "type": "any_herb",
@@ -7071,11 +7094,17 @@
                 "adjust": ""
             }
         ],
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:healer_apprentice" ]
+        ],
         "other_clan": {
             "current_rep": [
                 "any"
             ],
-            "changed": -1
+            "changed": -1,
+            "has_rank": [
+                "healer_apprentice"
+            ]
         }
     },
     {
@@ -7090,7 +7119,7 @@
             "clan_wide"
         ],
         "frequency": 2,
-        "event_text": "The o_c_n medicine cat apprentice comes to c_n's camp, pleading for help with a yellowcough epidemic. c_n provides the cat with some of their extra lungwort.",
+        "event_text": "A medicine cat apprentice from o_c_n comes to c_n's camp, pleading for help with a yellowcough epidemic. c_n provides the cat with some of their extra lungwort.",
         "supplies": [
             {
                 "type": "lungwort",
@@ -7101,11 +7130,17 @@
                 "adjust": "reduce_eighth"
             }
         ],
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:healer_apprentice" ]
+        ],
         "other_clan": {
             "current_rep": [
                 "any"
             ],
-            "changed": 2
+            "changed": 2,
+            "has_rank": [
+                "healer_apprentice"
+            ]
         }
     },
     {
@@ -7131,11 +7166,17 @@
                 "adjust": "reduce_eighth"
             }
         ],
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:any_healer" ]
+        ],
         "other_clan": {
             "current_rep": [
                 "ally"
             ],
-            "changed": 2
+            "changed": 2,
+            "has_rank": [
+                "any_healer"
+            ]
         }
     },
     {
@@ -7150,7 +7191,7 @@
             "clan_wide"
         ],
         "frequency": 2,
-        "event_text": "The o_c_n medicine cat apprentice comes to c_n's camp, pleading for help with a yellowcough epidemic. However, c_n has nothing that they are willing to share.",
+        "event_text": "A medicine cat apprentice from o_c_n comes to c_n's camp, pleading for help with a yellowcough epidemic. However, c_n has nothing that they are willing to share.",
         "supplies": [
             {
                 "type": "lungwort",
@@ -7160,11 +7201,17 @@
                 "adjust": ""
             }
         ],
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:healer_apprentice" ]
+        ],
         "other_clan": {
             "current_rep": [
                 "any"
             ],
-            "changed": -2
+            "changed": -2,
+            "has_rank": [
+                "healer_apprentice"
+            ]
         }
     },
     {
@@ -7190,11 +7237,17 @@
                 "adjust": ""
             }
         ],
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:any_healer" ]
+        ],
         "other_clan": {
             "current_rep": [
                 "any"
             ],
-            "changed": -2
+            "changed": -2,
+            "has_rank": [
+                "any_healer"
+            ]
         }
     },
     {
@@ -7331,11 +7384,17 @@
                 "adjust": "increase_10"
             }
         ],
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:leader" ]
+        ],
         "other_clan": {
             "current_rep": [
                 "ally"
             ],
-            "changed": 1
+            "changed": 1,
+            "has_rank": [
+                "leader"
+            ]
         }
     },
     {
@@ -9219,6 +9278,9 @@
                 "kitten"
             ]
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:warrior" ]
+        ],
         "other_clan": {
             "current_rep": [
                 "hostile"
@@ -9439,6 +9501,9 @@
                 "rebellious"
             ]
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:any_apprentice" ]
+        ],
         "relationships": [{
             "cats_from": [
                 "some_clan"
@@ -9492,6 +9557,9 @@
                 "oblivious"
             ]
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:any_apprentice" ]
+        ],
         "relationships": [{
             "cats_from": [
                 "some_clan"
@@ -9574,6 +9642,9 @@
                 "mediator apprentice"
             ]
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:any_apprentice" ]
+        ],
         "other_clan": {
             "current_rep": ["hostile"],
             "changed": 1,
@@ -9608,6 +9679,9 @@
                 "senior"
             ]
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "status:warrior" ]
+        ],
         "new_accessory": [
             "WILD"
         ],
