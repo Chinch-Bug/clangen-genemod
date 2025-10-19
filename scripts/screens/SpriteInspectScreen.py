@@ -49,6 +49,7 @@ class SpriteInspectScreen(Screens):
         self.acc_shown_text = None
         self.override_dead_lineart_text = None
         self.override_not_working_text = None
+        self.hide_white_text = None
         self.save_image_button = None
         self.export_cat_button = None
 
@@ -59,6 +60,7 @@ class SpriteInspectScreen(Screens):
         self.override_dead_lineart = False
         self.acc_shown = True
         self.override_not_working = False
+        self.hide_white = False
 
         super().__init__(name)
 
@@ -131,6 +133,14 @@ class SpriteInspectScreen(Screens):
                     self.override_not_working = False
                 else:
                     self.override_not_working = True
+
+                self.make_cat_image()
+                self.update_checkboxes()
+            elif event.ui_element == self.checkboxes["hide_white"]:
+                if self.hide_white:
+                    self.hide_white = False
+                else:
+                    self.hide_white = True
 
                 self.make_cat_image()
                 self.update_checkboxes()
@@ -224,13 +234,19 @@ class SpriteInspectScreen(Screens):
         )
         self.override_dead_lineart_text = pygame_gui.elements.UITextBox(
             "screens.sprite_inspect.show_living",
-            ui_scale(pygame.Rect((250, 630), (-1, 50))),
+            ui_scale(pygame.Rect((150, 630), (-1, 50))),
             object_id=get_text_box_theme("#text_box_34_horizcenter"),
             starting_height=2,
         )
         self.override_not_working_text = pygame_gui.elements.UITextBox(
             "screens.sprite_inspect.show_healthy",
-            ui_scale(pygame.Rect((450, 630), (-1, 100))),
+            ui_scale(pygame.Rect((350, 630), (-1, 100))),
+            object_id=get_text_box_theme("#text_box_34_horizcenter"),
+            starting_height=2,
+        )
+        self.hide_white_text = pygame_gui.elements.UITextBox(
+            "screens.sprite_inspect.hide_white",
+            ui_scale(pygame.Rect((545, 630), (-1, 100))),
             object_id=get_text_box_theme("#text_box_34_horizcenter"),
             starting_height=2,
         )
@@ -364,7 +380,7 @@ class SpriteInspectScreen(Screens):
 
         # "Show as living"
         self.make_one_checkbox(
-            ui_scale_offset((200, 625)),
+            ui_scale_offset((100, 625)),
             "override_dead_lineart",
             self.override_dead_lineart,
             self.the_cat.dead,
@@ -373,10 +389,19 @@ class SpriteInspectScreen(Screens):
 
         # "Show as healthy"
         self.make_one_checkbox(
-            ui_scale_offset((400, 625)),
+            ui_scale_offset((300, 625)),
             "override_not_working",
             self.override_not_working,
             self.the_cat.not_working(),
+            disabled_object_id="@checked_checkbox",
+        )
+
+        # "Hide white"
+        self.make_one_checkbox(
+            ui_scale_offset((500, 625)),
+            "hide_white",
+            self.hide_white,
+            self.the_cat.phenotype.white[0] != "w" and (not self.the_cat.chimerapheno or self.the_cat.chimerapheno.white[0] != "w"),
             disabled_object_id="@checked_checkbox",
         )
 
@@ -427,6 +452,7 @@ class SpriteInspectScreen(Screens):
             acc_hidden=not self.acc_shown,
             always_living=self.override_dead_lineart,
             disable_sick_sprite=self.override_not_working,
+            hide_white=self.hide_white
         )
 
         self.cat_elements["cat_image"] = pygame_gui.elements.UIImage(

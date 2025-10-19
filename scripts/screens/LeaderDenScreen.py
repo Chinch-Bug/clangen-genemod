@@ -34,6 +34,7 @@ from scripts.utility import (
     find_alive_cats_with_rank,
     get_living_clan_cat_count,
     ui_scale_dimensions,
+    update_sprite,
 )
 
 
@@ -1042,6 +1043,8 @@ class LeaderDenScreen(Screens):
         i = 0
 
         for cat in display_cats:
+            if not cat.sprite:
+                cat.sprite = update_sprite(cat)
             self.outsider_cat_buttons[f"sprite{str(i)}"] = UISpriteButton(
                 ui_scale(pygame.Rect((5 + pos_x, pos_y), (50, 50))),
                 cat.sprite,

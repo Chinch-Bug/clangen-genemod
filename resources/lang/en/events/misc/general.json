@@ -6978,7 +6978,7 @@
             "clan_wide"
         ],
         "frequency": 2,
-        "event_text": "The o_c_n medicine cat comes asking if c_n have any given_herb to spare. Graciously, your Clan decides to aid their allies and share the herbs.",
+        "event_text": "A medicine cat from o_c_n comes asking if c_n have any given_herb to spare. Graciously, your Clan decides to aid their allies and share the herbs.",
         "supplies": [
             {
                 "type": "any_herb",

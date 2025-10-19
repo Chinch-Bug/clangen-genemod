@@ -3124,6 +3124,7 @@ def generate_sprite(
     acc_hidden=False,
     always_living=False,
     disable_sick_sprite=False,
+    hide_white=False
 ) -> pygame.Surface:
     """
     Generates the sprite for a cat, with optional arguments that will override certain things.
@@ -4247,10 +4248,15 @@ def generate_sprite(
         gensprite.blit(GenSprite(phenotype, age), (0, 0))
 
         if(cat.chimerapheno):
+            geno = deepcopy(cat.chimerapheno)
+            if hide_white:
+                geno.white = ["w", "w"]
+                geno.white_pattern = "No"
+                geno.PhenotypeOutput()
             chimerapatches = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
             for pattern in cat.chimerapheno.chimerapattern:
                 chimerapatches.blit(sprites.sprites[pattern + cat_sprite], (0, 0))
-            chimerapatches.blit(GenSprite(cat.chimerapheno, age), (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+            chimerapatches.blit(GenSprite(geno, age), (0, 0), special_flags=pygame.BLEND_RGB_MULT)
             gensprite.blit(chimerapatches, (0, 0))
 
         if not scars_hidden:
@@ -4557,6 +4563,10 @@ def generate_sprite(
 
     try:
         geno = deepcopy(cat.phenotype)
+        if hide_white:
+            geno.white = ["w", "w"]
+            geno.white_pattern = "No"
+            geno.PhenotypeOutput()
         new_sprite = draw_sprite(geno, cat_sprite)
         if cat.phenotype.somatic.get('base', False):
             som_sprite = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
