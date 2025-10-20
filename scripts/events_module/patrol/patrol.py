@@ -92,7 +92,7 @@ class Patrol:
 
         print("PATROL START ---------------------------------------------------")
 
-        self.clan = game.clan if clan.group_ID == game.clan.group_ID else clan
+        self.clan = game.clan if clan.group_ID == game.clan.group_ID else next(filter(lambda c: clan.group_ID == c.group_ID, game.clan.all_other_clans), game.clan)
         self.add_patrol_cats(patrol_cats, game.clan)
 
         self.debug_patrol = (
@@ -258,7 +258,7 @@ class Patrol:
 
         all_options = (clan.all_other_clans + [clan])
         all_options.remove(self.clan)
-        if clan.all_other_clans and len(clan.all_other_clans) > 0:
+        if clan.all_other_clans and len(all_options) > 0:
             self.other_clan = choice(all_options)
         else:
             self.other_clan = None
