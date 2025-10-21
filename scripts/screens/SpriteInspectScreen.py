@@ -495,6 +495,8 @@ class SpriteInspectScreen(Screens):
         self.override_dead_lineart_text = None
         self.override_not_working_text.kill()
         self.override_not_working_text = None
+        self.hide_white_text.kill()
+        self.hide_white_text = None
 
         for ele in self.cat_elements:
             self.cat_elements[ele].kill()
