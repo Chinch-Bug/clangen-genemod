@@ -1022,7 +1022,7 @@ class Pregnancy_Events:
         # Handle love affair chance.
         affair_partner = Pregnancy_Events.determine_love_affair(cat, mate if mate else None, mate_relation if mate else None, samesex)
         if affair_partner:
-            if mate:
+            if mate and not get_clan_setting('multisire'):
                 mate.append(affair_partner)
             else:
                 mate = [affair_partner]

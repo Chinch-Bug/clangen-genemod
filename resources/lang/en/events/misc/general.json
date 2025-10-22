@@ -4721,7 +4721,7 @@
             ]
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "age:match" ]
+            [ "clancat", "exists", "meeting", "age:match" ]
         ],
         "relationships": [
             {
@@ -4793,7 +4793,7 @@
             ]
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "age:match" ]
+            [ "clancat", "exists", "meeting", "age:match" ]
         ],
         "other_clan": {
             "current_rep": [
@@ -4826,7 +4826,7 @@
             ]
         },
         "multiclan_cat": [
-            [ "clancat", "exists" ]
+            [ "clancat", "exists", "meeting" ]
         ],
         "other_clan": {
             "current_rep": [
@@ -4858,7 +4858,7 @@
             ]
         },
         "multiclan_cat": [
-            [ "clancat", "exists" ]
+            [ "clancat", "exists", "meeting" ]
         ],
         "other_clan": {
             "current_rep": [
@@ -6049,7 +6049,7 @@
             ]
         },
         "multiclan_cat": [
-            [ "old_name", "clancat", "exists", "status:any_healer" ]
+            [ "old_name", "clancat", "exists", "meeting", "status:any_healer" ]
         ],
         "other_clan": {
             "current_rep": [
@@ -6917,7 +6917,7 @@
             }
         ],
         "multiclan_cat": [
-            [ "clancat", "exists", "status:any_healer" ]
+            [ "clancat", "exists", "meeting", "status:any_healer" ]
         ],
         "other_clan": {
             "current_rep": [
@@ -6953,7 +6953,7 @@
             }
         ],
         "multiclan_cat": [
-            [ "clancat", "exists", "status:any_healer" ]
+            [ "clancat", "exists", "meeting", "status:any_healer" ]
         ],
         "other_clan": {
             "current_rep": [
@@ -6989,7 +6989,7 @@
             }
         ],
         "multiclan_cat": [
-            [ "clancat", "exists", "status:any_healer" ]
+            [ "clancat", "exists", "meeting", "status:any_healer" ]
         ],
         "other_clan": {
             "current_rep": [
@@ -7024,7 +7024,7 @@
             }
         ],
         "multiclan_cat": [
-            [ "clancat", "exists", "status:healer_apprentice" ]
+            [ "clancat", "exists", "meeting", "status:healer_apprentice" ]
         ],
         "other_clan": {
             "current_rep": [
@@ -7060,7 +7060,7 @@
             }
         ],
         "multiclan_cat": [
-            [ "clancat", "exists", "status:any_healer" ]
+            [ "clancat", "exists", "meeting", "status:any_healer" ]
         ],
         "other_clan": {
             "current_rep": [
@@ -7095,7 +7095,7 @@
             }
         ],
         "multiclan_cat": [
-            [ "clancat", "exists", "status:healer_apprentice" ]
+            [ "clancat", "exists", "meeting", "status:healer_apprentice" ]
         ],
         "other_clan": {
             "current_rep": [
@@ -7131,7 +7131,7 @@
             }
         ],
         "multiclan_cat": [
-            [ "clancat", "exists", "status:healer_apprentice" ]
+            [ "clancat", "exists", "meeting", "status:healer_apprentice" ]
         ],
         "other_clan": {
             "current_rep": [
@@ -7167,7 +7167,7 @@
             }
         ],
         "multiclan_cat": [
-            [ "clancat", "exists", "status:any_healer" ]
+            [ "clancat", "exists", "meeting", "status:any_healer" ]
         ],
         "other_clan": {
             "current_rep": [
@@ -7202,7 +7202,7 @@
             }
         ],
         "multiclan_cat": [
-            [ "clancat", "exists", "status:healer_apprentice" ]
+            [ "clancat", "exists", "meeting", "status:healer_apprentice" ]
         ],
         "other_clan": {
             "current_rep": [
@@ -7238,7 +7238,7 @@
             }
         ],
         "multiclan_cat": [
-            [ "clancat", "exists", "status:any_healer" ]
+            [ "clancat", "exists", "meeting", "status:any_healer" ]
         ],
         "other_clan": {
             "current_rep": [
@@ -7385,7 +7385,7 @@
             }
         ],
         "multiclan_cat": [
-            [ "clancat", "exists", "status:leader" ]
+            [ "clancat", "exists", "meeting", "status:leader" ]
         ],
         "other_clan": {
             "current_rep": [
@@ -9279,7 +9279,7 @@
             ]
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "status:warrior" ]
+            [ "clancat", "exists", "meeting", "status:warrior" ]
         ],
         "other_clan": {
             "current_rep": [
@@ -9332,7 +9332,7 @@
             ]
         },
         "new_cat": [
-          ["status:warrior", "dead", "clancat", "exists"]
+          ["status:warrior", "dead", "clancat", "exists", "meeting"]
         ],
         "other_clan": {
             "current_rep": ["hostile"],
@@ -9374,7 +9374,7 @@
             ]
         },
         "new_cat": [
-          [ "status:warrior", "dead", "clancat", "exists" ]
+          [ "status:warrior", "dead", "clancat", "exists", "meeting" ]
         ],
         "other_clan": {
             "current_rep": ["hostile"],
@@ -9417,7 +9417,7 @@
             ]
         },
         "new_cat": [
-          [ "status:warrior", "dead", "clancat", "exists" ]
+          [ "status:warrior", "dead", "clancat", "exists", "meeting" ]
         ],
         "other_clan": {
             "current_rep": ["hostile"],
@@ -9456,7 +9456,7 @@
             ]
         },
         "new_cat": [
-          [ "status:warrior", "dead", "clancat", "exists" ]
+          [ "status:warrior", "dead", "clancat", "exists", "meeting" ]
         ],
         "other_clan": {
             "current_rep": ["hostile"],
@@ -9502,7 +9502,7 @@
             ]
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "status:any_apprentice" ]
+            [ "clancat", "exists", "meeting", "status:any_apprentice" ]
         ],
         "relationships": [{
             "cats_from": [
@@ -9558,7 +9558,7 @@
             ]
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "status:any_apprentice" ]
+            [ "clancat", "exists", "meeting", "status:any_apprentice" ]
         ],
         "relationships": [{
             "cats_from": [
@@ -9643,7 +9643,7 @@
             ]
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "status:any_apprentice" ]
+            [ "clancat", "exists", "meeting", "status:any_apprentice" ]
         ],
         "other_clan": {
             "current_rep": ["hostile"],
@@ -9680,7 +9680,7 @@
             ]
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "status:warrior" ]
+            [ "clancat", "exists", "meeting", "status:warrior" ]
         ],
         "new_accessory": [
             "WILD"

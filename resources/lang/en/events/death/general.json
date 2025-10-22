@@ -3055,7 +3055,7 @@
             "dies": true
         },
         "multiclan_cat": [
-            ["clancat", "exists", "status:any_healer"]
+            ["clancat", "exists", "meeting", "status:any_healer"]
         ],
         "history": [
             {
@@ -3101,7 +3101,7 @@
             "dies": true
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "status:deputy" ]
+            [ "clancat", "exists", "meeting", "status:deputy" ]
         ],
         "history": [
             {
@@ -3162,7 +3162,7 @@
             "dies": true
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "status:deputy" ]
+            [ "clancat", "exists", "meeting", "status:deputy" ]
         ],
         "history": [
             {
@@ -3207,7 +3207,7 @@
             "dies": true
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "status:leader" ]
+            [ "clancat", "exists", "meeting", "status:leader" ]
         ],
         "history": [
             {
@@ -3268,7 +3268,7 @@
             "dies": true
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "status:leader" ]
+            [ "clancat", "exists", "meeting", "status:leader" ]
         ],
         "history": [
             {
@@ -5938,7 +5938,7 @@
             "dies": true
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "status:apprentice" ]
+            [ "clancat", "exists", "meeting", "status:apprentice" ]
         ],
         "history": [
             {
@@ -5995,7 +5995,7 @@
             "dies": true
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "status:apprentice" ]
+            [ "clancat", "exists", "meeting", "status:apprentice" ]
         ],
         "history": [
             {
@@ -6213,7 +6213,7 @@
             "dies": true
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "status:warrior" ]
+            [ "clancat", "exists", "meeting", "status:warrior" ]
         ],
         "history": [
             {
@@ -6259,7 +6259,7 @@
             "dies": true
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "status:leader" ]
+            [ "clancat", "exists", "meeting", "status:leader" ]
         ],
         "history": [
             {
@@ -6305,7 +6305,7 @@
             "dies": true
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "status:deputy" ]
+            [ "clancat", "exists", "meeting", "status:deputy" ]
         ],
         "history": [
             {
@@ -8069,7 +8069,7 @@
             ]
         },
         "new_cat": [
-            [ "old_name", "clancat", "exists", "status:deputy" ]
+            [ "old_name", "clancat", "exists", "meeting", "status:deputy" ]
         ],
         "history": [
             {

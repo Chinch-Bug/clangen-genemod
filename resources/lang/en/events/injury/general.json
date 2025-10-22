@@ -3730,7 +3730,7 @@
             ]
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "status:warrior" ]
+            [ "clancat", "exists", "meeting", "status:warrior" ]
         ],
         "injury": [
             {
@@ -6342,7 +6342,7 @@
             ]
         },
         "new_cat": [
-            [ "clancat", "exists", "status:warrior" ]
+            [ "clancat", "exists", "meeting", "status:warrior" ]
         ],
         "injury": [
             {
@@ -6402,7 +6402,7 @@
             ]
         },
         "multiclan_cat": [
-            [ "old_name", "clancat", "exists", "status:warrior" ]
+            [ "old_name", "clancat", "exists", "meeting", "status:warrior" ]
         ],
         "injury": [
             {
@@ -6925,7 +6925,7 @@
             }
         ],
         "new_cat": [
-            [ "old_name", "clancat", "exists", "status:any_healer" ]
+            [ "old_name", "clancat", "exists", "meeting", "status:any_healer" ]
         ],
         "history": [
             {
@@ -7095,7 +7095,7 @@
             ]
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "status:warrior" ]
+            [ "clancat", "exists", "meeting", "status:warrior" ]
         ],
         "injury": [
             {
@@ -7158,7 +7158,7 @@
             ]
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "status:warrior" ]
+            [ "clancat", "exists", "meeting", "status:warrior" ]
         ],
         "injury": [
             {
@@ -7270,7 +7270,7 @@
             ]
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "status:warrior" ]
+            [ "clancat", "exists", "meeting", "status:warrior" ]
         ],
         "injury": [
             {
