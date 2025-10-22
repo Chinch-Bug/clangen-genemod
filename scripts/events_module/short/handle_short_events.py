@@ -475,7 +475,7 @@ class HandleShortEvents:
                     extra_text = event_text_adjust(
                         Cat, i18n.t("defaults.event_dead_outsider"), main_cat=cat
                     )
-                elif cat.status.is_outsider:
+                elif cat.status.is_outsider or cat.status.group_ID != clan.group_ID:
                     n_c_index = self.new_cats.index([cat])
                     if (
                         f"n_c:{n_c_index}" in self.chosen_event.exclude_involved
