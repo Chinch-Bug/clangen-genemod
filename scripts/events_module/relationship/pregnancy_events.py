@@ -675,7 +675,7 @@ class Pregnancy_Events:
                     kit.backstory = "outsider2"
 
                 if pregnant_cat.status.is_outsider and not pregnant_cat.status.is_exiled(
-                    clan.ID
+                    clan.group_ID
                 ):
                     kit.backstory = "outsider3"
                 kit.relationships = {}

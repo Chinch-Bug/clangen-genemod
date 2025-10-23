@@ -1599,6 +1599,8 @@ class Genotype:
 
         if self.growth_pattern == "runt":
             self.shoulder_height *= 0.85
+            if self.shoulder_height <= 5:
+                self.shoulder_height = 5
         self.shoulder_height = round(self.shoulder_height, 2)
     
     def GeneSort(self):
