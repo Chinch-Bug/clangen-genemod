@@ -1616,6 +1616,7 @@ class Pregnancy_Events:
                     kitten.relationships[second_kitten.ID].trust = 10 + y
             
             kitten.create_inheritance_new_cat() # Calculate inheritance. 
+            kitten.create_relationships_new_cat()
 
         # check if the possible adoptive cat is not already in the family tree and
         # add them as adoptive parents if not

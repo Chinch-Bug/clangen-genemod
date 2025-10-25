@@ -3043,6 +3043,7 @@ class Cat:
         rel = []
         for r in self.relationships.values():
             rel.append(r.to_dict())
+        rel.append({"blanks": self.blank_relations})
 
         safe_save(f"{relationship_dir}/{self.ID}_relations.json", rel)
 
@@ -3066,7 +3067,7 @@ class Cat:
 
                     for rel in rel_data:
                         if isinstance(rel.get('blanks', False), list):
-                            self.blank_relations = rel['blanks']
+                            self.blank_relations += rel['blanks']
                             continue
                         cat_to = self.all_cats.get(rel["cat_to_id"])
                         if cat_to is None or rel["cat_to_id"] == self.ID:
