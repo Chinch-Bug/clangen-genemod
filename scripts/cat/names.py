@@ -413,7 +413,7 @@ class Name:
                     appearance += self.mod_suffixes['other']['appearance'].get('curled', [])
                 
                 size = 3
-                if self.cat.moons < 12 or (self.cat.status.rank.is_any_medicine_rank() and self.cat.moons < 15):
+                if self.cat.moons < 11 or (self.cat.status.rank.is_any_medicine_rank() and self.cat.moons < 15):
                     size = 1
                 for i in range(size):
                     options.append(appearance)

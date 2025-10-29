@@ -1431,6 +1431,7 @@ class Cat:
         """Create a leader ceremony and add it to the history"""
 
         load_leader_ceremonies()
+        self.history.prev_names.append(str(self.name))
 
         # determine which dict we're pulling from
         if self.status.fetch_clan_object(game.clan).instructor.status.group == CatGroup.DARK_FOREST:

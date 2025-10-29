@@ -763,7 +763,7 @@ class Namer():
             return self.tabby(params[0], params[1], params[2], params[3])
         
     def red(self, params):
-        if params[4]:
+        if params[4] != 'none':
             #babies don't have points
             if self.moons == 0 and 'C' not in self.phenotype.pointgene:
                 return self.white('white')
@@ -779,7 +779,7 @@ class Namer():
         if self.phenotype.ruftype == 'low' and random() < 0.2:
             self.golden(params)
 
-        if params[4]:
+        if params[4] != 'none':
             #babies don't have points
             if self.moons == 0 and 'C' not in self.phenotype.pointgene:
                 return self.white('white')
@@ -799,7 +799,7 @@ class Namer():
         return self.tabby(params[0], params[1], params[2], params[3])
 
     def golden(self, params):
-        if params[4]:
+        if params[4] != 'none':
             #babies don't have points
             if self.moons == 0 and 'C' not in self.phenotype.pointgene:
                 return self.white('white')
@@ -818,7 +818,7 @@ class Namer():
         if self.phenotype.ruftype != 'rufoused' and random() < 0.1:
             self.pink(params)
 
-        if params[4]:
+        if params[4] != 'none':
             #babies don't have points
             if self.moons == 0 and 'C' not in self.phenotype.pointgene:
                 return self.white('white')
@@ -838,7 +838,7 @@ class Namer():
         return self.tabby(params[0], params[1], params[2], params[3])
 
     def purple(self, params):
-        if params[4]:
+        if params[4] != 'none':
             #babies don't have points
             if self.moons == 0 and 'C' not in self.phenotype.pointgene:
                 return self.white('white')
@@ -849,7 +849,7 @@ class Namer():
         self.solid('purple', False, params[2]['pattern'], params[3])
 
     def pink(self, params):
-        if params[4]:
+        if params[4] != 'none':
             #babies don't have points
             if self.moons == 0 and 'C' not in self.phenotype.pointgene:
                 return self.white('white')
