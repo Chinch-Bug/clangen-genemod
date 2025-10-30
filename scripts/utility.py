@@ -1055,19 +1055,19 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
     else:
         if status == "any_apprentice":
             all_clan_cats = [cat for cat in all_clan_cats if cat.status.rank.is_any_apprentice_rank()]
-        if status == "any_healer":
+        elif status == "any_healer":
             all_clan_cats = [cat for cat in all_clan_cats if cat.status.rank.is_any_medicine_rank()]
         elif status:
             all_clan_cats = [cat for cat in all_clan_cats if cat.status.rank.value == status]
         
         if age == "match":
             all_clan_cats = [cat for cat in all_clan_cats if cat.age == in_event_cats["m_c"].age]
-        if age == "mate":
+        elif age == "mate":
             all_clan_cats = [cat for cat in all_clan_cats if give_mates[0].is_potential_mate(cat, for_love_interest=True, outsider=True)]
             if not all_clan_cats:
                 print("No possible mates found")
                 all_clan_cats = create_new_cat_block(Cat, Relationship, event, in_event_cats, i, attribute_list, other_clan = other_clan)
-        if age == "has_kits":
+        elif age == "has_kits":
             (parents, orphans) = get_alive_clan_queens(all_clan_cats, clan=other_clan.group_ID)
             for par_id in parents.keys():
                 if Cat.fetch_cat(par_id) not in all_clan_cats:
