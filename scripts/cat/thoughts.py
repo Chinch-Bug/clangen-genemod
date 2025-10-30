@@ -346,9 +346,7 @@ class Thoughts:
         # get possible thoughts
         try:
             # checks if the cat is Rick Astley to give the rickroll thought, otherwise proceed as usual
-            if (main_cat.name.prefix + main_cat.name.suffix).replace(
-                " ", ""
-            ).lower() == "rickastley":
+            if (str(main_cat.name)).replace(" ", "").lower() == "rickastley":
                 return i18n.t("defaults.rickroll")
             else:
                 chosen_thought_group = choice(
