@@ -219,14 +219,15 @@ class Sprites:
         # if anyone changes lineart for whatever reason update this
         if isinstance(self.size, int):
             pass
-        elif width / 3 == height / 7:
-            self.size = width / 3
+        elif width / self.sheet_layout[0] == height / self.sheet_layout[1]:
+            self.size = width / self.sheet_layout[0]
         else:
             self.size = 50  # default, what base clangen uses
-            print(f"lineart.png is not 3x7, falling back to {self.size}")
             print(
-                f"if you are a modder, please update scripts/cat/sprites.py and "
-                f"do a search for 'if width / 3 == height / 7:'"
+                f"lineart.png is not {self.sheet_layout}, falling back to {self.size}"
+            )
+            print(
+                f"if you are a modder, please update sheet_layout in sprites/dicts/pose_sprite_data.json"
             )
 
         del width, height  # unneeded
@@ -272,18 +273,18 @@ class Sprites:
             self.make_group('Break/'+x.replace('.png', ""), (0, 0), 'break/'+x.replace('.png', ""))
 
         # ...idk what to call these
-        self.make_group('genemod/fourears', (0, 0), 'fourears')
+        self.make_group('genemod/fourears', (0, 0), 'fourears', sprites_y=7)
 
         self.make_group('genemod/normal border', (0, 0), 'normbord')
-        self.make_group('genemod/foldborder', (0, 0), 'foldbord')
-        self.make_group('genemod/curlborder', (0, 0), 'curlbord')
+        self.make_group('genemod/foldborder', (0, 0), 'foldbord', sprites_y=7)
+        self.make_group('genemod/curlborder', (0, 0), 'curlbord', sprites_y=7)
 
-        self.make_group('genemod/foldlineart', (0, 0), 'foldlines')
-        self.make_group('genemod/fold_curllineart', (0, 0), 'fold_curllines')
-        self.make_group('genemod/curllineart', (0, 0), 'curllines')
+        self.make_group('genemod/foldlineart', (0, 0), 'foldlines', sprites_y=7)
+        self.make_group('genemod/fold_curllineart', (0, 0), 'fold_curllines', sprites_y=7)
+        self.make_group('genemod/curllineart', (0, 0), 'curllines', sprites_y=7)
 
-        self.make_group('genemod/isolateears', (0, 0), 'isolateears')
-        self.make_group('genemod/noears', (0, 0), 'noears')
+        self.make_group('genemod/isolateears', (0, 0), 'isolateears', sprites_y=7)
+        self.make_group('genemod/noears', (0, 0), 'noears', sprites_y=7)
         
         self.make_group('genemod/rexlines', (0, 0), 'rexlineart')
         self.make_group('genemod/rexlinesdead', (0, 0), 'rexlineartdead')
@@ -385,7 +386,7 @@ class Sprites:
             for a, y in enumerate(range(1, 12)):
                 self.make_group('Other/eyes_full', (a, b), f'R{y} ; {x}/', sprites_y=6)
         
-        self.make_group('Other/red_pupils', (0, 0), 'redpupils')
+        self.make_group('Other/red_pupils', (0, 0), 'redpupils', sprites_y=7)
         data_jsons = (
             self.WHITE_DATA,
             self.TORTIE_DATA,

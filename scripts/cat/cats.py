@@ -701,9 +701,35 @@ class Cat:
             if not instructor:
                 instructor = game.clan.instructor
 
-            if self.status.get_last_living_group():
+            cat_default_afterlife_id = self.status.get_default_afterlife_id()
+            if cat_default_afterlife_id == CatGroup.UNKNOWN_RESIDENCE_ID:
+                pass
             # kits are auto-accepted
-                if self.age in (CatAge.KITTEN, CatAge.NEWBORN):
+            elif self.age in (CatAge.KITTEN, CatAge.NEWBORN):
+                self.history.add_afterlife_acceptance(
+                    instructor.status.group,
+                    is_kit=True,
+                )
+            else:
+                if cat_default_afterlife_id == CatGroup.STARCLAN_ID:
+                    affinity = self.starclan_affinity
+                    afterlife_group = CatGroup.STARCLAN
+                    rejected_ID = CatGroup.DARK_FOREST_ID
+                else:
+                    affinity = self.dark_forest_affinity
+                    afterlife_group = CatGroup.DARK_FOREST
+                    rejected_ID = CatGroup.STARCLAN_ID
+
+                # afterlife does not like this cat
+                if affinity < 0:
+                    # might send them to the opposite afterlife instead
+                    if random() < abs(affinity / 100):
+                        self.history.add_afterlife_acceptance(
+                            afterlife_group, rejected=True
+                        )
+                        self.status.send_to_afterlife(rejected_ID)
+                        return
+                    # fine, they can go to afterlife, but some cats don't like it
                     self.history.add_afterlife_acceptance(
                         instructor.status.group,
                         is_kit=True,
@@ -969,7 +995,12 @@ class Cat:
                     major_chance -= 1
 
                 # decrease major grief chance if grave herbs are used
-                if body and not body_treated and ("rosemary" in game.clan.herb_supply.entire_supply or self.status.get_last_living_group() != CatGroup.PLAYER_CLAN_ID):
+                if (
+                    body
+                    and not body_treated
+                    and (game.clan.herb_supply.entire_supply["rosemary"]
+                    or self.status.get_last_living_group() == CatGroup.PLAYER_CLAN_ID)
+                ):
                     body_treated = True
                     if self.status.get_last_living_group() == CatGroup.PLAYER_CLAN_ID:
                         game.clan.herb_supply.remove_herb("rosemary", -1)
@@ -2276,7 +2307,11 @@ class Cat:
                 )
                 != 0
             ):
-                clan_herbs = set(game.clan.herb_supply.entire_supply.keys())
+                clan_herbs = {
+                    herb
+                    for herb, clan_has_herb in game.clan.herb_supply.entire_supply.items()
+                    if clan_has_herb
+                }
                 needed_herbs = {"horsetail", "raspberry", "marigold", "cobwebs"}
                 usable_herbs = list(needed_herbs.intersection(clan_herbs))
 
@@ -3658,6 +3693,7 @@ class Cat:
                 "passes_genotype" : self.passes,
                 "white_pattern" : self.phenotype.white_pattern,
                 "chim_white" : self.chimerapheno.white_pattern if self.chimerapheno else "No",
+                "sprite_newborn": self.pelt.cat_sprites["newborn"],
                 "sprite_kitten": self.pelt.cat_sprites['kitten'],
                 "sprite_adolescent": self.pelt.cat_sprites['adolescent'],
                 "sprite_adult": self.pelt.cat_sprites['adult'],

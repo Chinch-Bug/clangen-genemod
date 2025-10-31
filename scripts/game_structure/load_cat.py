@@ -129,6 +129,7 @@ def json_load():
                 tint=cat.get('tint', 'none'),
                 white_patches_tint=cat.get('white_tint', 'none'),
                 paralyzed=cat["paralyzed"],
+                newborn_sprite=cat.get("sprite_newborn"),
                 kitten_sprite=(
                     cat["sprite_kitten"]
                     if "sprite_kitten" in cat

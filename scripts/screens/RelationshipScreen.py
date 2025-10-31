@@ -419,7 +419,7 @@ class RelationshipScreen(Screens):
         if constants.CONFIG["sorting"]["sort_by_rel_total"]:
             self.all_relations = sorted(
                 self.the_cat.relationships.values(),
-                key=lambda x: x.total_relationship_value,
+                key=lambda x: abs(x.total_relationship_value),
                 reverse=True,
             )
             self.all_relations = self.all_relations + [r for r in blank_relations if r not in self.all_relations]

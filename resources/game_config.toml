@@ -491,6 +491,11 @@ dev_tools = false
   war_death_modifier_leader = 35
   war_death_modifier = 330
 
+  # 2^x chance for mass death event to trigger per cat on moonskip
+  mass_death_chance = 9
+  # Maximum amount to pick for mass death events when triggered (max will be 1/3 of the living clan cats if that is smaller)
+  max_mass_death = 10
+
   # base 1/2^(chance) a completely random murder occurs
   # aggression and instability will make the denominator lower and increase chance of murder
   base_random_murder_chance = 10
@@ -856,8 +861,8 @@ dev_tools = false
   [clan_resources.herbs]
     # Clan size * required_herbs_per_cat / adequate number will determine adequate supply qualifier.
     # Clan size * required_herbs_per_cat * excess number will determine excess supply qualifier
-    required_herbs_per_cat = 2
-    adequate = 2
+    required_herbs_per_cat = 1
+    adequate = 3
     excess = 2
 
     # amount of herbs types found modifier for medcats with skill SENSE

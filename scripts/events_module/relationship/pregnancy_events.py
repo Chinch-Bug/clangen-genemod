@@ -1519,6 +1519,7 @@ class Pregnancy_Events:
                 if kit.chimerapheno:
                     kits_amount -= 1
                     if i > kits_amount:
+                        kit.phenotype.chimera = False
                         kit.chimerapheno = None
                 
                 if constants.CONFIG["genetics_config"]["identical_twins"] and randint(1, constants.CONFIG["genetics_config"]["identical_twins"]) == 1 and kits_amount < 19:

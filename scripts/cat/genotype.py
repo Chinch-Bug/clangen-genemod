@@ -239,9 +239,9 @@ class Genotype:
 
         self.breeds = json.loads(jsonstring.get("breeds", "{}")) if isinstance(jsonstring.get("breeds", "{}"), str) else jsonstring.get("breeds", {})
         self.somatic = json.loads(jsonstring.get("somatic", "{}")) if isinstance(jsonstring.get("somatic", "{}"), str) else jsonstring.get("somatic", {})
-        self.body_value = jsonstring.get("body_type", 0)
-        self.height_value = jsonstring.get("height", 0)
-        self.shoulder_height = jsonstring.get("shoulder_height", '')
+        self.body_value = jsonstring.get("body_type", randint(1, sum(self.body_ranges)))
+        self.height_value = jsonstring.get("height", randint(1, sum(self.height_ranges)))
+        self.shoulder_height = jsonstring.get("shoulder_height", 0)
         self.body_label = jsonstring.get("body_type_label", '')
         self.growth_pattern = jsonstring.get("growth_pattern", "average")
 
@@ -1347,13 +1347,9 @@ class Genotype:
         self.pigmentation = next((n for n in range(len(indexes2)) if num < indexes2[n])) + 1
 
     def GenerateBody(self):
-        x = sum(self.body_ranges)
+        self.body_value = randint(1, sum(self.body_ranges))
 
-        self.body_value = randint(1, x)
-
-        x = sum(self.height_ranges)
-
-        self.height_value = randint(1, x)
+        self.height_value = randint(1, sum(self.height_ranges))
     
     def VerifyBody(self, body_types):
         for i in range(7):
@@ -1375,12 +1371,30 @@ class Genotype:
         height = round(height, 2)
 
         if height <= 5.00:
-            height = 5.00
+            self.shoulder_height = 5.00
+
+            if self.growth_pattern == "runt":
+                self.shoulder_height *= 0.85
+            if self.munch[0] == 'Mk':
+                self.shoulder_height /= 1.5
+            if 'Y' in self.sexgene[0]:
+                self.shoulder_height *= 1.1
+            self.shoulder_height = round(self.shoulder_height, 2)
+
             if self.height_value >= self.height_indexes[0]:
                 self.height_value = randint(0, self.height_indexes[0]-1)
             return
         elif height >= 15.00:
-            height = 15.00
+            self.shoulder_height = 15.00
+
+            if self.growth_pattern == "runt":
+                self.shoulder_height *= 0.85
+            if self.munch[0] == 'Mk':
+                self.shoulder_height /= 1.5
+            if 'Y' in self.sexgene[0]:
+                self.shoulder_height *= 1.1
+            self.shoulder_height = round(self.shoulder_height, 2)
+            
             if self.height_value < self.height_indexes[8]:
                 self.height_value = randint(self.height_indexes[8], self.height_indexes[9]-1)
             return
@@ -1827,7 +1841,7 @@ class Genotype:
         if self.pax3[0] != 'NoDBE':
             if 'NoDBE' not in self.pax3:
                 blueindex = 0
-                if (self.pax3 == ['DBEalt', 'DBEalt'] and random() < 0.33) or self.pax3 != ['DBEalt', 'DBEalt']:
+                if (self.pax3 == ['DBEalt', 'DBEalt'] and random() < 0.5) or self.pax3 != ['DBEalt', 'DBEalt']:
                     self.deaf = True
             elif 'DBEre' not in self.pax3 and random() >= 0.1:
                 if random() < 0.33:
@@ -1835,7 +1849,7 @@ class Genotype:
                 else:
                     hetindex = 0
             elif 'DBEre' in self.pax3:
-                blueindex = 0
+                blueindex = 0 if random() < 0.70 else 1
                 if random() < 0.33:
                     self.deaf = True
 

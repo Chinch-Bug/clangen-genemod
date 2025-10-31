@@ -352,7 +352,10 @@ class Relationship:
         for key, value in dictionary.items():
             if value == "neutral":
                 continue
-            amount = self.get_value_change_amount(value, "low")
+
+            amount = self.get_value_change_amount(
+                is_positive=value == "positive", intensity="low"
+            )
 
             setattr(self, key, getattr(self, key) + amount)
 
