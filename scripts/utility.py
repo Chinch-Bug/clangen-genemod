@@ -1061,7 +1061,9 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
             all_clan_cats = [cat for cat in all_clan_cats if cat.status.rank.value == status]
         
         if age == "match":
-            all_clan_cats = [cat for cat in all_clan_cats if cat.age == in_event_cats["m_c"].age]
+            all_clan_cats_age = [cat for cat in all_clan_cats if cat.age == in_event_cats["m_c"].age]
+            if all_clan_cats_age:
+                all_clan_cats = all_clan_cats_age
         elif age == "mate":
             all_clan_cats = [cat for cat in all_clan_cats if give_mates[0].is_potential_mate(cat, for_love_interest=True, outsider=True)]
             if not all_clan_cats:
