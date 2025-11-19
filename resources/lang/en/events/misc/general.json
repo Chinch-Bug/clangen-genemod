@@ -6049,7 +6049,7 @@
             ]
         },
         "multiclan_cat": [
-            [ "old_name", "clancat", "exists", "meeting", "status:any_healer" ]
+            [ "clancat", "exists", "meeting", "status:any_healer" ]
         ],
         "other_clan": {
             "current_rep": [

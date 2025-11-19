@@ -1121,8 +1121,9 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
             cat.die()
 
     for cat in picked_cats:
-        cat.backstory = chosen_backstory
-        cat.history.add_beginning()
+        if chosen_backstory:
+            cat.backstory = chosen_backstory
+            cat.history.add_beginning()
         
         # SET MATES
         for inter_cat in give_mates:
