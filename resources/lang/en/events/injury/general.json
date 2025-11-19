@@ -6402,7 +6402,7 @@
             ]
         },
         "multiclan_cat": [
-            [ "old_name", "clancat", "exists", "meeting", "status:warrior" ]
+            [ "clancat", "exists", "meeting", "status:warrior" ]
         ],
         "injury": [
             {
