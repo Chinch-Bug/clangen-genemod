@@ -206,6 +206,7 @@ class ShortEvent:
         self.all_involved_cat_ids: list[int] = []
 
         self.leads_current_life_count: int = 0
+        self.leads_current_life_count_r_c: int = 0
         self.other_clan_name: str = ""
         self.chosen_herb: str = ""
         self.herb_notice: str = ""
@@ -224,6 +225,8 @@ class ShortEvent:
 
         if other_clan:
             self.other_clan_name = f"{other_clan.displayname}Clan"
+            if other_clan.leader_lives:
+                self.leads_current_life_count_r_c = other_clan.leader_lives
 
         self.all_involved_cat_ids.append(self.main_cat.ID)
 
@@ -356,7 +359,7 @@ class ShortEvent:
             victim_cat=self.victim_cat,
             new_cats=self.new_cats,
             multi_cats=self.multi_cat_objects,
-            clan=game.clan,
+            clan=clan,
             other_clan=other_clan,
             chosen_herb=self.chosen_herb,
         )
@@ -364,7 +367,7 @@ class ShortEvent:
         if self.chosen_herb:
             game.herb_events_list.append(f"{self} {self.herb_notice}.")
 
-        self.gather_future_event()
+        self.gather_future_event(clan)
 
         game.cur_events_list.append(
             Single_Event(
@@ -384,7 +387,7 @@ class ShortEvent:
                 )
             )
 
-    def gather_future_event(self):
+    def gather_future_event(self, clan):
         """
         Handles gathering information for future event
         """
@@ -404,6 +407,7 @@ class ShortEvent:
             event=self,
             event_id=self.event_id,
             possible_cats=possible_cats,
+            clan
         )
 
     def handle_new_cats(self, clan=game.clan):
@@ -411,7 +415,7 @@ class ShortEvent:
         handles adding new cats to the clan
         """
 
-        if not self.new_cat_attributes:
+        if not self.new_cat:
             return
 
         if "misc" not in self.types:
@@ -423,26 +427,28 @@ class ShortEvent:
 
         if self.random_cat:
             in_event_cats["r_c"] = self.random_cat
-        for i, attribute_list in enumerate(self.new_cat_attributes):
-            self.new_cats.append(
-                create_new_cat_block(
-                    Cat, Relationship, self, in_event_cats, i, attribute_list, clan
+        for i, attribute_list in enumerate(self.new_cat):
+            if (("clancat" not in attribute_list and "change_clan" not in attribute_list) or "exists" not in attribute_list) or game.clan.clancount != 'multiclan':
+                self.new_cats.append(
+                    create_new_cat_block(
+                        Cat, Relationship, self, in_event_cats, i, attribute_list, clan=clan, other_clan=other_clan
+                    )
                 )
-            )
+            else:
+                self.new_cats.append(
+                    find_clan_cats(
+                        Cat, Relationship, self, in_event_cats, i, attribute_list, clan=clan, other_clan=other_clan
+                    )
+                )
 
             # check if we want to add some extra info to the event text and if we need to welcome
-            for _c in self.new_cats:
-                if not isinstance(_c, list):
-                    continue
-                first_cat = _c[0]
-                if first_cat.dead:
+            for cat in self.new_cats[-1]:
+                if cat.dead:
                     extra_text = event_text_adjust(
-                        Cat,
-                        i18n.t("defaults.event_dead_outsider"),
-                        main_cat=first_cat,
+                        Cat, i18n.t("defaults.event_dead_outsider"), main_cat=cat
                     )
-                elif first_cat.status.is_outsider:
-                    n_c_index = self.new_cats.index(_c)
+                elif cat.status.is_outsider or cat.status.group_ID != clan.group_ID:
+                    n_c_index = self.new_cats.index([cat])
                     if (
                         f"n_c:{n_c_index}" in self.exclude_involved
                         or "unknown" in attribute_list
@@ -450,36 +456,30 @@ class ShortEvent:
                         extra_text = ""
                     else:
                         extra_text = event_text_adjust(
-                            Cat,
-                            i18n.t("defaults.event_met_outsider"),
-                            main_cat=first_cat,
+                            Cat, i18n.t("defaults.event_met_outsider"), main_cat=cat
                         )
                 else:
-                    Relation_Events.welcome_new_cats([first_cat])
-                self.all_involved_cat_ids.extend([cat.ID for cat in _c])
+                    Relation_Events.welcome_new_cats([cat])
+                self.involved_cats.append(cat.ID)
+                self.new_cat_objects.append([cat])
 
         # Check to see if any young litters joined with alive parents.
         # If so, see if recovering from birth condition is needed and give the condition
-        for possible_kittens in self.new_cats:
-            first_kit = possible_kittens[0]
-            if first_kit.moons < 3:
-                # search for parent
-                for possible_parent in self.new_cats:
-                    first_cat = possible_parent[0]
-                    if first_cat == first_kit:
-                        continue
-                    if not first_cat.gender == "female" and not get_clan_setting(
-                        "same sex birth"
-                    ):
-                        continue
+        for sub in self.new_cats:
+            if sub[0].moons < 3:
+                # Search for parent
+                for sub_sub in self.new_cats:
                     if (
-                        first_cat in (first_kit.parent1, first_kit.parent2)
-                        and not first_cat.dead
-                        and not "recovering from birth" in first_cat.injuries
+                        sub_sub[0] != sub[0]
+                        and (
+                            'Y' not in sub_sub[0].phenotype.sexgene
+                            or get_clan_setting("same sex birth")
+                        )
+                        and sub_sub[0].ID in (sub[0].parent1, sub[0].parent2)
+                        and sub_sub[0].status.group_ID == clan.group_ID
                     ):
-                        first_cat.get_injured("recovering from birth")
-                        # only one parent gives birth, so we break
-                        break
+                        sub_sub[0].get_injured("recovering from birth")
+                        break  # Break - only one parent ever gives birth
 
         if extra_text and extra_text not in self.text:
             self.text = self.text + " " + extra_text
@@ -545,11 +545,17 @@ class ShortEvent:
 
         if possible_genders:
             new_gender = choice(possible_genders)
-            self.main_cat.genderalign = new_gender
+            self.main_cat.genderalign = "intersex " if (self.main_cat.gender == 'intersex' or 
+            (self.main_cat.gender == "molly" and 'Y' in self.main_cat.phenotype.sexgene) or 
+            (self.main_cat.gender == "tom" and 'Y' not in self.main_cat.phenotype.sexgene) or
+            ('Y' in self.the_cat.phenotype.sexgene and len(self.the_cat.phenotype.sexgene) > 2)) else "" 
+            self.main_cat.genderalign += new_gender.replace("female", "molly").replace("male", "tom").replace("nonbinary", "sam")
 
-            self.main_cat.pronouns = localization.get_new_pronouns(
+            new_pronouns = {}
+            new_pronouns[i18n.config.get("locale")] = localization.get_new_pronouns(
                 self.main_cat.genderalign
             )
+            self.main_cat.pronouns = new_pronouns
 
     def handle_death(self, clan):
         """
@@ -599,16 +605,16 @@ class ShortEvent:
             else:
                 cat.die(body)
 
-    def handle_mass_death(self):
+    def handle_mass_death(self, clan=game.clan):
         """
         finds cats eligible for the death, if not enough cats are eligible then event is tossed.
         cats that will die are added to self.dead_cats
         """
         # gather living clan cats except leader bc leader lives would be frustrating to handle in these
-        alive_cats = [i for i in Cat.all_cats.values() if i.status.alive_in_player_clan]
+        alive_cats = [i for i in Cat.all_cats.values() if i.status.group_ID == self.main_cat.status.group_ID]
 
         # make sure all cats in the pool fit the event requirements
-        requirements = self.m_c
+        requirements = self.chosen_event.m_c
         for kitty in alive_cats:
             if (
                 kitty.status.rank not in requirements["status"]
@@ -625,35 +631,57 @@ class ShortEvent:
 
         # if there's enough eligible cats, then we KILL
         if alive_count > 15:
-            max_deaths = int(alive_count / 3)  # 1/3 of alive cats
-            if max_deaths > constants.CONFIG["death_related"]["max_mass_death"]:
-                max_deaths = constants.CONFIG["death_related"]["max_mass_death"]  # we don't want to have massive events with a wall of names to read
+            max_deaths = int(alive_count / 2)  # 1/2 of alive cats
+            if max_deaths > 10:  # make this into a constants.CONFIG setting?
+                max_deaths = 10  # we don't want to have massive events with a wall of names to read
             weights = []
             population = []
             for n in range(2, max_deaths):
                 population.append(n)
-                weight = 1 / (0.75 * n)  # Lower chance for more dead cats
+                weight = 1 / (0.25 * n)  # Lower chance for more dead cats
                 weights.append(weight)
             dead_count = choices(population, weights=weights)[0]
             if dead_count < 2:
                 dead_count = 2
 
-            self.dead_cat_objects = sample(alive_cats, dead_count)
-            if self.main_cat not in self.dead_cat_objects:
-                self.dead_cat_objects.append(
+            self.dead_cats = sample(alive_cats, dead_count)
+            if self.main_cat not in self.dead_cats:
+                self.dead_cats.append(
                     self.main_cat
                 )  # got to include the cat that rolled for death in the first place
 
+            tnr = False
+            if 'tnr' in self.chosen_event.tags and get_clan_setting("tnr_mode"):
+                if random() < constants.CONFIG['tnr_mode']['Clan_tnr']:
+                    tnr = True
+                    
             taken_cats = []
-            for kitty in self.dead_cat_objects:
-                if "lost" in self.tags:
-                    kitty.become_lost()
-                    taken_cats.append(kitty)
-                self.multi_cat_objects.append(kitty)
-                if kitty.ID not in self.all_involved_cat_ids:
-                    self.all_involved_cat_ids.append(kitty.ID)
+            left_cats = []
+            for kitty in self.dead_cats:
+                if "lost" in self.chosen_event.tags:
+                    if not tnr or 'TNR' not in kitty.pelt.scars:
+                        kitty.become_lost(CatSocial.KITTYPET if tnr else CatSocial.LONER)
+                        taken_cats.append(kitty)
+                    if tnr and 'TNR' not in kitty.pelt.scars:
+                        if kitty.moons > 3:
+                            kitty.pelt.scars.append("TNR")
+                            kitty.pelt.rebuild_sprite = True
+                            kitty.get_permanent_condition("sterile", False)
+                            if 'pregnant' in kitty.injuries:
+                                kitty.permanent_condition['sterile']['moon_start'] += 3
+                        if kitty.moons < 4:
+                            kitty.become_lost(CatSocial.KITTYPET, CatStanding.LEFT)
+                            kitty.get_permanent_condition("sterile", False, event_triggered=True, custom_reveal=randint(4, 6))
+                    elif tnr:
+                        left_cats.append(kitty)
+                        continue
+                self.multi_cat.append(kitty)
+                if kitty.ID not in self.involved_cats:
+                    self.involved_cats.append(kitty.ID)
             for kitty in taken_cats:
-                self.dead_cat_objects.remove(kitty)
+                self.dead_cats.remove(kitty)
+            for kitty in left_cats:
+                self.dead_cats.remove(kitty)
 
         else:
             return
@@ -691,9 +719,9 @@ class ShortEvent:
 
                     if self.main_cat.status.is_leader:
                         self.leads_current_life_count -= 1
-                        if self.leads_current_life_count != clan.leader_lives:
+                        if self.leads_current_life_count != self.main_cat.status.fetch_clan_object().leader_lives:
                             while (
-                                self.leads_current_life_count > clan.leader_lives
+                                self.leads_current_life_count > self.main_cat.status.fetch_clan_object().leader_lives
                             ):
                                 self.main_cat.history.add_death(
                                     "multi_lives",
@@ -724,16 +752,16 @@ class ShortEvent:
                         )
 
                     if self.random_cat.status.is_leader:
-                        self.leads_current_life_count -= 1
-                        if self.leads_current_life_count != game.clan.leader_lives:
+                        self.leads_current_life_count_r_c -= 1
+                        if self.leads_current_life_count_r_c != self.random_cat.status.fetch_clan_object().leader_lives:
                             while (
-                                self.leads_current_life_count > game.clan.leader_lives
+                                self.leads_current_life_count_r_c > self.random_cat.status.fetch_clan_object().leader_lives
                             ):
                                 self.random_cat.history.add_death(
                                     "multi_lives",
                                     other_cat=self.random_cat,
                                 )
-                                self.leads_current_life_count -= 1
+                                self.leads_current_life_count_r_c -= 1
                     self.random_cat.history.add_death(
                         death_history, other_cat=self.random_cat
                     )
@@ -758,9 +786,9 @@ class ShortEvent:
 
                     if cat.status.is_leader:
                         self.leads_current_life_count -= 1
-                        if self.leads_current_life_count != game.clan.leader_lives:
+                        if self.leads_current_life_count != cat.status.fetch_clan_object().leader_lives:
                             while (
-                                self.leads_current_life_count > game.clan.leader_lives
+                                self.leads_current_life_count > cat.status.fetch_clan_object().leader_lives
                             ):
                                 cat.history.add_death("multi_lives")
                                 self.leads_current_life_count -= 1

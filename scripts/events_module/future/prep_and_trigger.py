@@ -6,7 +6,7 @@ from scripts.events_module.future.future_event import FutureEvent
 from scripts.game_structure import game
 
 
-def prep_future_event(event, event_id: str, possible_cats: dict):
+def prep_future_event(event, event_id: str, possible_cats: dict, clan):
     """
     Checks if the given event has a future event attached, then creates the future event
     :param event: the class object for the event
@@ -30,6 +30,7 @@ def prep_future_event(event, event_id: str, possible_cats: dict):
                     event_info["moon_delay"][0], event_info["moon_delay"][1]
                 ),
                 involved_cats=gathered_cat_dict,
+                clan=clan
             )
         )
 
