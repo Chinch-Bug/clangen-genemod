@@ -162,7 +162,7 @@ class Pregnancy_Events:
                         surrogate = True
                 Pregnancy_Events.handle_zero_moon_pregnant(cat, second_parent, surrogate, clan)
 
-        elif second_parent and second_parent[0] != "Surrogate" and not kits_are_adopted and not int(random() * constants.CONFIG["pregnancy"]["phantom_pregnancy_chance"]):
+        elif second_parent and second_parent[0] != "Surrogate" and not kits_are_adopted and not int(random() * constants.CONFIG["pregnancy"]["false_pregnancy_chance"]):
             Pregnancy_Events.rebuild_strings()
             pregnant_cat = cat
             second_parent_copy = copy(second_parent)

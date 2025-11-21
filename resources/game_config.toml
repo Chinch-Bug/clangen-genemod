@@ -222,7 +222,7 @@ dev_tools = false
   half-clan_chance = 0.25
 
   # 1/chance that a phantom pregnancy will happen when cats fail to have a litter
-  phantom_pregnancy_chance = 200
+  false_pregnancy_chance = 200
 
   # 1/chance that a pregnancy will be hidden from the player until a cat gives birth
   hidden_pregnancy_chance = 200
