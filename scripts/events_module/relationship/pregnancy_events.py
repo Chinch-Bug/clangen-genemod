@@ -162,26 +162,22 @@ class Pregnancy_Events:
                         surrogate = True
                 Pregnancy_Events.handle_zero_moon_pregnant(cat, second_parent, surrogate, clan)
 
-        elif second_parent and second_parent[0] != "Surrogate" and not kits_are_adopted and not int(random() * constants.CONFIG["pregnancy"]["false_pregnancy_chance"]):
+        elif second_parent and second_parent[0] != "Surrogate" and not kits_are_adopted and constants.CONFIG["pregnancy"]["false_pregnancy_chance"] and not int(random() * (constants.CONFIG["pregnancy"]["false_pregnancy_chance"]-1)):
             Pregnancy_Events.rebuild_strings()
-            pregnant_cat = cat
-            second_parent_copy = copy(second_parent)
-            for x in second_parent_copy:
-                if 'Y' in pregnant_cat.phenotype.sexgene and 'Y' not in x.phenotype.sexgene:
-                    pregnant_cat = x
-                    break
+            if 'Y' in cat.phenotype.sexgene and not get_clan_setting("same sex birth"):
+                return
 
-            if pregnant_cat.status.group_ID != clan.group_ID:
-                clan = pregnant_cat.status.fetch_clan_object(game.clan)
+            if cat.status.group_ID != clan.group_ID:
+                clan = cat.status.fetch_clan_object(game.clan)
             
             text = choice(Pregnancy_Events.PREGNANT_STRINGS["announcement"])
-            pregnant_cat.get_injured("pregnant", severity="minor")
-            pregnant_cat.injuries["pregnant"]["duration"] = 1
+            cat.get_injured("pregnant", severity="minor")
+            cat.injuries["pregnant"]["duration"] = 1
             text += choice(Pregnancy_Events.PREGNANT_STRINGS[f"minor_severity"])
-            text = event_text_adjust(Cat, text, main_cat=pregnant_cat, clan=clan)
+            text = event_text_adjust(Cat, text, main_cat=cat, clan=clan)
             game.cur_events_list.append(
                 Single_Event(
-                    text, "birth_death", pregnant_cat.ID, clan=clan.group_ID
+                    text, "birth_death", cat.ID, clan=clan.group_ID
                 )
             )
 

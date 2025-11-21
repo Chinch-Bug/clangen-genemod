@@ -279,7 +279,8 @@ class ProfileScreen(Screens):
                 #if the cat is anything besides m/f/transm/transf then turn them back to cis
                 is_intersex = "intersex " if (self.the_cat.gender == 'intersex' or 
                             (self.the_cat.gender == "molly" and 'Y' in self.the_cat.phenotype.sexgene) or 
-                            (self.the_cat.gender == "tom" and 'Y' not in self.the_cat.phenotype.sexgene)) else ""
+                            (self.the_cat.gender == "tom" and 'Y' not in self.the_cat.phenotype.sexgene) or
+                            ('Y' in self.the_cat.phenotype.sexgene and len(self.the_cat.phenotype.sexgene) > 2)) else ""
                 if self.the_cat.genderalign.replace("intersex ", "") not in ["molly", "trans molly", "tom", "trans tom"]:
                     if self.the_cat.gender == 'intersex':
                         if('Y' in self.the_cat.phenotype.sexgene):

@@ -575,8 +575,9 @@ class HandleShortEvents:
         if possible_genders:
             new_gender = choice(possible_genders)
             self.main_cat.genderalign = "intersex " if (self.main_cat.gender == 'intersex' or 
-           (self.main_cat.gender == "molly" and 'Y' in self.main_cat.phenotype.sexgene) or 
-           (self.main_cat.gender == "tom" and 'Y' not in self.main_cat.phenotype.sexgene)) else "" 
+            (self.main_cat.gender == "molly" and 'Y' in self.main_cat.phenotype.sexgene) or 
+            (self.main_cat.gender == "tom" and 'Y' not in self.main_cat.phenotype.sexgene) or
+            ('Y' in self.the_cat.phenotype.sexgene and len(self.the_cat.phenotype.sexgene) > 2)) else "" 
             self.main_cat.genderalign += new_gender.replace("female", "molly").replace("male", "tom").replace("nonbinary", "sam")
 
             new_pronouns = {}
