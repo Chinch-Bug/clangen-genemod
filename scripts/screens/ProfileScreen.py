@@ -1959,7 +1959,7 @@ class ProfileScreen(Screens):
                 or game.clan.age - self.the_cat.permanent_condition[i]["moon_start"] > -1)
         ]
         all_illness_injuries.extend(
-            [[i, self.get_condition_details(i)] for i in self.the_cat.injuries if (i != "pregnant" or not game.clan.pregnancy_data.get(self.the_cat.ID, {}).get("hidden")]
+            [[i, self.get_condition_details(i)] for i in self.the_cat.injuries if (i != "pregnant" or not game.clan.pregnancy_data.get(self.the_cat.ID, {}).get("hidden"))]
         )
         all_illness_injuries.extend(
             [
