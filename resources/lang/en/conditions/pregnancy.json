@@ -61,6 +61,11 @@
       "otherclan_mother": [
         "Many cats have been questioning where m_c's litter could have gone despite {PRONOUN/m_c/object} insisting {PRONOUN/m_c/subject} {VERB/m_c/were/was} never pregnant."
       ],
+      "hidden_pregnancy": [
+        "While on a walk in the territory, m_c unexpectedly had a {insert}.",
+        "m_c is shocked to learn {PRONOUN/m_c/subject} had been expecting kittens at all, moments before giving birth to a {insert}.",
+        "The whole Clan is shocked, m_c most of all, when all of a sudden {PRONOUN/m_c/subject} {VERB/m_c/are/is} ushered to the nursery, and give birth to a {insert}."
+      ],
       "two_parents_surrogate": [
         "m_c and r_c's eyes meet over their {insert} at the belly of {surrogate}, full of love for their growing family.",
         "In the quiet of the nursery, in the nest they've spent so long preparing, m_c and r_c welcome a {insert} with help from {surrogate}.",
