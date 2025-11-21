@@ -383,11 +383,11 @@ class Condition_Events:
         if cat.is_injured():
             for injury in cat.injuries:
                 if injury == "pregnant" and cat.ID not in game.clan.pregnancy_data:
-                    print(
-                        f"INFO: deleted pregnancy condition of {cat.ID} due to no pregnancy data in the clan."
-                    )
-                    del cat.injuries[injury]
-                    return triggered
+                    # print(
+                    #     f"INFO: deleted pregnancy condition of {cat.ID} due to no pregnancy data in the clan."
+                    # )
+                    # del cat.injuries[injury]
+                    return Condition_Events.handle_already_injured(cat, clan)
                 elif injury == "pregnant":
                     return triggered
             triggered = Condition_Events.handle_already_injured(cat, clan)

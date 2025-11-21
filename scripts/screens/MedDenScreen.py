@@ -268,6 +268,8 @@ class MedDenScreen(Screens):
             for cat in self.injured_and_sick_cats:
                 if cat.injuries:
                     for injury in cat.injuries:
+                        if injury == "pregnant" and game.clan.pregnancy_data.get(cat.ID, {"hidden": False})["hidden"]:
+                            continue
                         if cat.injuries[injury][
                             "severity"
                         ] != "minor" and injury not in [
@@ -542,7 +544,7 @@ class MedDenScreen(Screens):
                 condition_list.extend(
                     [
                         event_text_adjust(Cat, i18n.t(f"conditions.injuries.{injury}"), main_cat=cat)
-                        for injury in list(cat.injuries.keys())
+                        for injury in list(cat.injuries.keys()) if (injury != "pregnant" or not game.clan.pregnancy_data.get(cat.ID, {"hidden": False})["hidden"])
                     ]
                 )
             if cat.illnesses:

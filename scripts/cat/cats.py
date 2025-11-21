@@ -1990,6 +1990,8 @@ class Cat:
             return True
 
         mortality = self.injuries[injury]["mortality"]
+        if injury == "pregnant":
+            mortality = 0
 
         # leader should have a higher chance of death
         if self.status.is_leader and mortality != 0:
@@ -2021,6 +2023,7 @@ class Cat:
         # CLAN FOCUS! - if the focus 'rest and recover' is selected
         elif (
             not self.injuries[injury]["complication"]
+            and not injury == "pregnant"
             and get_clan_setting("rest and recover")
             and self.status.group_ID == CatGroup.PLAYER_CLAN_ID
             and self.injuries[injury]["duration"] + moons_prior - moons_with <= 0

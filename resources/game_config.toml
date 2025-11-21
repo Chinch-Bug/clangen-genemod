@@ -221,6 +221,12 @@ dev_tools = false
   # default chance 0-1 for a litter with an outside parent to be a half-clan litter
   half-clan_chance = 0.25
 
+  # 1/chance that a phantom pregnancy will happen when cats fail to have a litter
+  false_pregnancy_chance = 200
+
+  # 1/chance that a pregnancy will be hidden from the player until a cat gives birth
+  hidden_pregnancy_chance = 200
+
   # The kit number is incremental. It is 1-6 as default so if you change these numbers, you should probably keep this in mind.
   # As in, your max kits number should probably be 5 more than the min kits number.
   # But that's not required - just makes more sense that way with how the litters are generated.
