@@ -557,6 +557,7 @@ class Clan:
             self_run_init_functions=False,
         )
         game.clan.post_initialization_functions()
+        names.load_clan_names(clan_data["clanname"])
 
         if clan_data.get("used_group_IDs"):
             game.used_group_IDs = clan_data["used_group_IDs"]

@@ -138,6 +138,16 @@ class Name:
             elif get_clan_setting("no special suffixes") and get_clan_setting("modded names"):
                 self.specsuffix_hidden = True
     
+    def load_clan_names(self, clan):
+        if os.path.exists(get_save_dir() + f"/{clan}" + "/names" + "/alt_prefixes.json"):
+            with open(get_save_dir() + f"/{clan}" + "/names" + "/alt_prefixes.json") as read_file:
+                Name.mod_prefixes = ujson.loads(read_file.read())
+        if os.path.exists(get_save_dir() + f"/{clan}" + "/names" + '/alt_suffixes.json'):
+            with open(get_save_dir() + f"/{clan}" + "/names" + '/alt_suffixes.json') as read_file:
+                Name.mod_suffixes = ujson.loads(read_file.read())
+        if os.path.exists(get_save_dir() + f"/{clan}" + "/names" + '/names.json'):
+            with open(get_save_dir() + f"/{clan}" + "/names" + '/names.json') as read_file:
+                Name.names_dict = ujson.loads(read_file.read())
     def check_name(self, cat, name_fixpref):
         if not self.suffix:
             return
