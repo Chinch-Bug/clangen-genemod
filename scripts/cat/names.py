@@ -132,7 +132,7 @@ class Name:
     def check_name(self, Cat, name_fixpref):
         # Prevent triple letter names from joining prefix and suffix from occurring (ex. Beeeye)
         possible_three_letter = (
-            self.prefix[-2:] + self.suffix[0],
+            (self.prefix[-2:] if len(self.prefix) > 2 else self.prefix) + self.suffix[0],
             self.prefix[-1] + self.suffix[:2],
         )
         triple_letter = all(
