@@ -4011,7 +4011,10 @@ def generate_sprite(
                     sprite.blit(masked2, (0, 0))
 
                 if (phenotype.ext[0] == 'Eg' and phenotype.agouti[0] != 'a') and phenotype.satin[0] != "st" and phenotype.tenn[0] != 'tr' and not ('red' in phenotype.maincolour or 'cream' in phenotype.maincolour or 'honey' in phenotype.maincolour or 'ivory' in phenotype.maincolour or 'apricot' in phenotype.maincolour):    
-                    sprite.blit(sprites.sprites['satin0'], (0, 0))
+                    satin = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                    satin.blit(sprites.sprites['satin0'], (0, 0))
+                    satin.set_alpha(125)
+                    sprite.blit(satin, (0, 0))
                 elif (phenotype.glitter[0] == 'gl' or phenotype.ghosting[0] == 'Gh') and (phenotype.agouti[0] != 'a' or ('red' in phenotype.maincolour or 'cream' in phenotype.maincolour or 'honey' in phenotype.maincolour or 'ivory' in phenotype.maincolour or 'apricot' in phenotype.maincolour)):    
                     if phenotype.satin[0] != "st" and phenotype.tenn[0] != 'tr':    
                         sprite.blit(sprites.sprites['satin0'], (0, 0))
