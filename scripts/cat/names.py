@@ -139,6 +139,8 @@ class Name:
                 self.specsuffix_hidden = True
     
     def load_clan_names(self, clan):
+        if not os.path.exists(get_save_dir() + f"/{clan}" + "/names"):
+            return
         if os.path.exists(get_save_dir() + f"/{clan}" + "/names" + "/alt_prefixes.json"):
             with open(get_save_dir() + f"/{clan}" + "/names" + "/alt_prefixes.json") as read_file:
                 Name.mod_prefixes = ujson.loads(read_file.read())
