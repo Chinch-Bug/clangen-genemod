@@ -180,7 +180,7 @@ class Name:
 
             nono_name = self.prefix + self.suffix
             possible_three_letter = (
-                self.prefix[-2:] + self.suffix[0],
+                (self.prefix[-2:] if len(self.prefix) > 2 else self.prefix) + self.suffix[0],
                 self.prefix[-1] + self.suffix[:2],
             )
             if any(
