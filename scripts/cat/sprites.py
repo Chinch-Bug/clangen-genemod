@@ -246,6 +246,10 @@ class Sprites:
         #     if "lineart" in x and is_today(SpecialDate.APRIL_FOOLS):
         #         self.spritesheet(f"sprites/aprilfools{x}.png", "aprilfools"+x)
         #     self.spritesheet(f"sprites/{x}.png", x)
+    
+        if is_today(SpecialDate.APRIL_FOOLS):
+            for x in ["lineart", "lineart_df", "lineart_sc"]:
+                self.spritesheet(f"sprites/{x}_aprilfools.png", x+"_aprilfools")
 
         for x in os.listdir("sprites/genemod/borders"):
             self.spritesheet("sprites/genemod/borders/"+x, 'genemod/'+x.replace('.png', ""))
@@ -420,13 +424,7 @@ class Sprites:
                 spritesheets.append(data["spritesheet"])
 
         for x in spritesheets:
-            if "lineart" in x and (
-                constants.CONFIG["fun"]["april_fools"]
-                or is_today(SpecialDate.APRIL_FOOLS)
-            ):
-                self.spritesheet(f"sprites/{x}_aprilfools.png", x)
-            else:
-                self.spritesheet(f"sprites/{x}.png", x)
+            self.spritesheet(f"sprites/{x}.png", x)
 
         # Line art
         for sheet in self.POSE_DATA["spritesheet"]:
@@ -434,9 +432,9 @@ class Sprites:
 
 
         if is_today(SpecialDate.APRIL_FOOLS):
-            self.make_group("aprilfoolslineart", (0, 0), "aprilfoolslines")
-            self.make_group("aprilfoolslineartdead", (0, 0), "aprilfoolslineartdead")
-            self.make_group("aprilfoolslineartdf", (0, 0), "aprilfoolslineartdf")
+            self.make_group("lineart_aprilfools", (0, 0), "aprilfoolslines")
+            self.make_group("lineart_sc_aprilfools", (0, 0), "aprilfoolslineartdead")
+            self.make_group("lineart_df_aprilfools", (0, 0), "aprilfoolslineartdf")
 
         # Fading Fog
         for i in range(0, 3):
