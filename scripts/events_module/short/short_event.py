@@ -407,7 +407,7 @@ class ShortEvent:
             event=self,
             event_id=self.event_id,
             possible_cats=possible_cats,
-            clan
+            clan=clan
         )
 
     def handle_new_cats(self, clan=game.clan):

@@ -984,10 +984,8 @@ class Genotype:
                 self.KitGenerator(par1, par3)
                 threepars = True
     
-        if randint(1, 5) == 1:
-            self.whitegrade = par1.whitegrade
-        elif randint(1, 5) == 1:
-            self.whitegrade = par2.whitegrade
+        if randint(1, 3) != 1:
+            self.whitegrade = choice([par1.whitegrade, par2.whitegrade])
 
         if self.odds["vitiligo"] <= 0:
             a = 0

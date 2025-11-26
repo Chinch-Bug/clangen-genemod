@@ -311,7 +311,7 @@ class Pregnancy_Events:
                 for illness in cat.illnesses:
                     if illness in ["greencough", "redcough", "yellowcough", "whitecough", 
                     "an infected wound", "a festering wound", "ear infection",
-                    "carrionplace disease", "heat stroke", "heat exhaustion"] and random() < 0.25:
+                    "carrionplace disease", "heat stroke", "heat exhaustion", "tick fever"] and random() < 0.25:
                         fever = True
 
             game.clan.pregnancy_data[cat.ID] = {
@@ -389,7 +389,7 @@ class Pregnancy_Events:
                         for illness in pregnant_cat.illnesses:
                             if illness in ["greencough", "redcough", "yellowcough", "whitecough", 
                             "an infected wound", "a festering wound", "ear infection",
-                            "carrionplace disease", "heat stroke", "heat exhaustion"] and random() < 0.25:
+                            "carrionplace disease", "heat stroke", "heat exhaustion", "tick fever"] and random() < 0.25:
                                 fever = True
 
                     game.clan.pregnancy_data[pregnant_cat.ID] = {
@@ -487,7 +487,7 @@ class Pregnancy_Events:
                 for illness in pregnant_cat.illnesses:
                     if illness in ["greencough", "redcough", "yellowcough", "whitecough", 
                     "an infected wound", "a festering wound", "ear infection",
-                    "carrionplace disease", "heat stroke", "heat exhaustion"] and random() < 0.25:
+                    "carrionplace disease", "heat stroke", "heat exhaustion", "tick fever"] and random() < 0.25:
                         fever = True
 
             game.clan.pregnancy_data[pregnant_cat.ID] = {

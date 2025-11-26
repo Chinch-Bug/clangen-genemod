@@ -737,7 +737,10 @@ class Phenotype(Genotype):
         if wideband in ["chinchilla", "shaded"]:
             colour = "lightbasecolours0"
         elif unders_ruf == "rufoused":
-            colour = rufousing + colour + "3"
+            if colour != "red":
+                colour = "low" + colour + "3"
+            else:
+                colour = rufousing + colour + "3"
         elif unders_ruf == "low":
             colour = colour + "low" + "shaded" + "0"
         elif rufousing != "rufoused":
