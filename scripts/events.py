@@ -229,7 +229,7 @@ class Events:
                         "hardcoded.event_deaths", count=len(ghost_names[clan.displayname]), insert=insert
                     )
 
-                    if len(ghost_names[clan.displayname])-len(faded_kits[clan.displayname]) > 2:
+                    if len(ghost_names[clan.displayname])-len(faded_kits.get(clan.displayname, [])) > 2:
                         alive_cats = list(
                             filter(
                                 lambda kitty: (
