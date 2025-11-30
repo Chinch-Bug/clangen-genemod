@@ -659,7 +659,8 @@ class Pregnancy_Events:
                 other_cat = []
             for id in affair_partner_id:
                 other_cat.append(Cat.all_cats.get(id))
-                affair_partners.append(Cat.all_cats.get(id))
+                if id not in pregnant_cat.mate:
+                    affair_partners.append(Cat.all_cats.get(id))
             if affair_partners:
                 RandomAffair = choice(affair_partners)
         
