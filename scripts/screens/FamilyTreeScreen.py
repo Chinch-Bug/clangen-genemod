@@ -566,49 +566,50 @@ class FamilyTreeScreen(Screens):
         i = 0
         for kitty in display_cats:
             _kitty = Cat.fetch_cat(kitty)
-            info_text = f"{str(_kitty.name)}"
-            additional_info = self.the_cat.inheritance.get_cat_info(kitty)
-            if len(additional_info["type"]) > 0:  # types is always real
-                try:
-                    rel_types = [
-                        str(rel_type.name) for rel_type in additional_info["type"]
-                    ]
-                except:
-                    rel_types = [
-                        str(RelationType(rel_type).name) for rel_type in additional_info["type"]
-                    ]
-                rel_types = set(rel_types)  # remove duplicates
-                if "NOT_BLOOD" in rel_types and len(rel_types) > 1:
-                    # in the edge case of a cat being not related and also related in some way
-                    # (usually from adoption shenanigans), make blood relation have priority
-                    rel_types.remove("NOT_BLOOD")
-                if "BLOOD" in rel_types:
-                    rel_types.remove("BLOOD")  # removes empty
-                if len(rel_types) > 0:
-                    info_text += "\n"
-                    info_text += adjust_list_text(
-                        [i18n.t(f"general.relation_{rel}") for rel in rel_types]
-                    )
-                if len(additional_info["additional"]) > 0:
-                    add_info = set(additional_info["additional"])  # remove duplicates
-                    info_text += "\n"
-                    info_text += adjust_list_text(list(add_info))
+            if _kitty:
+                info_text = f"{str(_kitty.name)}"
+                additional_info = self.the_cat.inheritance.get_cat_info(kitty)
+                if len(additional_info["type"]) > 0:  # types is always real
+                    try:
+                        rel_types = [
+                            str(rel_type.name) for rel_type in additional_info["type"]
+                        ]
+                    except:
+                        rel_types = [
+                            str(RelationType(rel_type).name) for rel_type in additional_info["type"]
+                        ]
+                    rel_types = set(rel_types)  # remove duplicates
+                    if "NOT_BLOOD" in rel_types and len(rel_types) > 1:
+                        # in the edge case of a cat being not related and also related in some way
+                        # (usually from adoption shenanigans), make blood relation have priority
+                        rel_types.remove("NOT_BLOOD")
+                    if "BLOOD" in rel_types:
+                        rel_types.remove("BLOOD")  # removes empty
+                    if len(rel_types) > 0:
+                        info_text += "\n"
+                        info_text += adjust_list_text(
+                            [i18n.t(f"general.relation_{rel}") for rel in rel_types]
+                        )
+                    if len(additional_info["additional"]) > 0:
+                        add_info = set(additional_info["additional"])  # remove duplicates
+                        info_text += "\n"
+                        info_text += adjust_list_text(list(add_info))
 
-            self.relation_elements["cat" + str(i)] = UISpriteButton(
-                ui_scale(pygame.Rect((324 + pos_x, 485 + pos_y), (50, 50))),
-                _kitty.sprite,
-                cat_id=_kitty.ID,
-                manager=MANAGER,
-                tool_tip_text=info_text,
-                tool_tip_text_kwargs={"r_c": _kitty},
-                starting_height=2,
-            )
+                self.relation_elements["cat" + str(i)] = UISpriteButton(
+                    ui_scale(pygame.Rect((324 + pos_x, 485 + pos_y), (50, 50))),
+                    _kitty.sprite,
+                    cat_id=_kitty.ID,
+                    manager=MANAGER,
+                    tool_tip_text=info_text,
+                    tool_tip_text_kwargs={"r_c": _kitty},
+                    starting_height=2,
+                )
 
-            pos_x += 50
-            if pos_x > 350:
-                pos_y += 50
-                pos_x = 0
-            i += 1
+                pos_x += 50
+                if pos_x > 350:
+                    pos_y += 50
+                    pos_x = 0
+                i += 1
 
         # Enable and disable page buttons.
         if len(_current_group) <= 1:

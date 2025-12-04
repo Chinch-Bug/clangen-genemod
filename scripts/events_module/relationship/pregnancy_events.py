@@ -155,7 +155,7 @@ class Pregnancy_Events:
                         x += 1
                     if cat in second_parent:
                         second_parent.remove(cat)
-                    second_parent[0] = Pregnancy_Events.handle_surrogate(cat, clan)
+                    second_parent[0] = Pregnancy_Events.handle_surrogate(cat, second_parent, clan)
                     if not second_parent[0]:
                         return
                     else:
@@ -954,7 +954,7 @@ class Pregnancy_Events:
             if not xor('Y' in cat.phenotype.sexgene, 'Y' in second_parent[0].phenotype.sexgene) or ("sterile" in cat.permanent_condition or "sterile" in second_parent[0].permanent_condition):
                 if same_sex_birth and not "sterile" in second_parent[0].permanent_condition and not "sterile" in cat.permanent_condition:
                     return True, False, second_parent
-                elif surrogates and not ("sterile" in second_parent[0].permanent_condition and "sterile" in cat.permanent_condition):
+                elif (surrogates and second_parent[0].ID in cat.mate) and not ("sterile" in second_parent[0].permanent_condition and "sterile" in cat.permanent_condition):
                     return True, False, ["Surrogate"] + second_parent
                 elif not same_sex_adoption:
                     return False, False, second_parent
@@ -979,14 +979,14 @@ class Pregnancy_Events:
                     second_parent_copy.append(x)
             
             if len(second_parent_copy) < 1:
-                if surrogates:
+                if surrogates and second_parent_copy[0].ID in cat.mate:
                     return True, False, ["Surrogate"] + second_parent
                 elif same_sex_adoption:
                     return True, True, second_parent
                 else:
                     return False, False, second_parent
             if "sterile" in cat.permanent_condition:
-                if surrogates:
+                if surrogates and second_parent[0].ID in cat.mate:
                     return True, False, ["Surrogate"] + second_parent
                 elif same_sex_adoption:
                     return True, True, second_parent
@@ -1118,7 +1118,7 @@ class Pregnancy_Events:
         return mate, False
 
     @staticmethod
-    def handle_surrogate(cat, clan):
+    def handle_surrogate(cat, other_cats, clan):
         """
         Return the surrogate for a pregnancy
         """
@@ -1134,6 +1134,10 @@ class Pregnancy_Events:
                 mate.append(cat.fetch_cat(x))
 
         all_cats = [cat] + mate
+        if other_cats[1:]:
+            all_cats += other_cats[1:]
+
+        all_cats = list(set(all_cats))
 
         backstories = {
             CatSocial.LONER : 'loner_backstories',
