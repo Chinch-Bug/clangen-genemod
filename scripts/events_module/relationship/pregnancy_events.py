@@ -979,7 +979,7 @@ class Pregnancy_Events:
                     second_parent_copy.append(x)
             
             if len(second_parent_copy) < 1:
-                if surrogates and second_parent_copy[0].ID in cat.mate:
+                if surrogates and second_parent[0].ID in cat.mate:
                     return True, False, ["Surrogate"] + second_parent
                 elif same_sex_adoption:
                     return True, True, second_parent
