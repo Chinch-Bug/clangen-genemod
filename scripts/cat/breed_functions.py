@@ -223,7 +223,7 @@ class Breed_generator:
 
         # MACKEREL
 
-        genoclass.mack = ["Mc", "Mc"]
+        genoclass.mack = ["mc", "mc"]
 
         # TICKED
 
@@ -1125,6 +1125,7 @@ class Breed_generator:
         genoclass.breeds[choice(["Egyptian Mau", "Savannah"])] = 100
 
         if genoclass.breeds.get('Savannah', False):
+            genoclass.blacknose = random() < 0.25
             genoclass.height_value = randint(genoclass.height_indexes[4]+1, genoclass.height_indexes[9])
 
         return genoclass

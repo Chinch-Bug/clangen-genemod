@@ -264,7 +264,9 @@ class Phenotype(Genotype):
             elif (self.wbsum > 11):
                 self.silvergold = 'golden '
             elif(self.corin[0] == 'sh'):
-                self.silvergold = 'sunshine '
+                if self.agouti[1] == "a":
+                    self.silvergold = "dark "
+                self.silvergold += 'sunshine '
             elif(self.corin[0] == 'fg'):
                 self.silvergold = 'flaxen gold '
     def TabbyFinder(self):
@@ -839,7 +841,7 @@ class Phenotype(Genotype):
                 else:
                     rufousing = genes.ruftype
 
-                if genes.corin[0] == "sg" or 'N' not in genes.corin or genes.wbtype == "chinchilla" or (genes.corin[0] != "N" and genes.wbtype == "shaded"):
+                if genes.corin[0] == "sg" or genes.wbtype == "chinchilla" or (genes.corin[0] != "N" and genes.wbtype == "shaded"):
                     banding = "chinchilla"
                 elif genes.wbtype == "shaded" or genes.corin[0] == "sh" or genes.corin[0] == "fg" or genes.ext[0] == 'ec' or (genes.ext[0] == 'ea' and moons > 3):
                     banding = "shaded"

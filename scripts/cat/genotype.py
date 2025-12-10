@@ -36,6 +36,7 @@ class Genotype:
         self.silver = ["", ""]
         self.agouti = ["", ""]
         self.pangere = None
+        self.blacknose = False
         self.rednose = False
         self.mack = ["", ""]
         self.ticked = ["", ""]
@@ -174,6 +175,7 @@ class Genotype:
         self.silver = jsonstring["silver"]
         self.agouti = jsonstring["agouti"]
         self.pangere = jsonstring.get("pangere")
+        self.blacknose = jsonstring.get("blacknose", False)
         self.rednose = jsonstring.get("rednose", False)
         self.mack = jsonstring["mack"]
         self.ticked = jsonstring["ticked"]
@@ -272,6 +274,7 @@ class Genotype:
             "silver" : self.silver,
             "agouti" : self.agouti,
             "pangere" : self.pangere,
+            "blacknose" : self.blacknose,
             "rednose" : self.rednose,
             "mack" : self.mack,
             "ticked" : self.ticked,
@@ -458,6 +461,7 @@ class Genotype:
                                "pangere medium 1", "pangere medium 2"])
 
         self.rednose = random() < 0.25
+        self.blacknose = random() < 0.005
 
         self.unders_ruf = ''
         self.unders_rufsum = 0

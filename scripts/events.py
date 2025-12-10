@@ -225,7 +225,7 @@ class Events:
                     continue
                 insert = adjust_list_text(ghost_names[clan.displayname])
 
-                if len(ghost_names[clan.displayname]) > 1:
+                if len(ghost_names[clan.displayname])-len(faded_kits.get(clan.displayname, [])) > 2:
                     event = i18n.t(
                         "hardcoded.event_deaths", count=len(ghost_names[clan.displayname]), insert=insert
                     )
@@ -340,7 +340,7 @@ class Events:
                 for cat in Cat.all_cats.values()
             )
             if not has_med:
-                string = i18n.t("defaults.warn_no_medcats")
+                string = event_text_adjust(Cat, i18n.t("defaults.warn_no_medcats"), clan=game.clan)
                 game.cur_events_list.insert(0, Single_Event(string, "health", clan=game.clan.group_ID))
         if clancount:
             for oc in game.clan.all_other_clans:
@@ -350,7 +350,7 @@ class Events:
                     for cat in Cat.all_cats.values()
                 )
                 if not has_med:
-                    string = event_text_adjust(Cat, i18n.t("defaults.warn_no_medcats"), clan=oc.group_ID)
+                    string = event_text_adjust(Cat, i18n.t("defaults.warn_no_medcats"), clan=oc)
                     game.cur_events_list.insert(0, Single_Event(string, "health", clan=oc.group_ID))
 
 
@@ -2623,14 +2623,14 @@ class Events:
                 leader_outside = True
 
             if leader_dead or leader_outside:
-                string = event_text_adjust(Cat, i18n.t(
-                    "defaults.warn_no_leader"), clan=clan.group_ID)
+                string = i18n.t("defaults.warn_no_leader")
                 game.cur_events_list.insert(
                     0,
                     Single_Event(
                         event_text_adjust(
-                            Cat, string, clan=clan.group_ID
-                        )
+                            Cat, string, clan=clan
+                        ),
+                        clan=clan.group_ID
                     ),
                 )
 
@@ -2645,7 +2645,7 @@ class Events:
         ):
             if not get_clan_setting("deputy") and clan == game.clan:
                 game.cur_events_list.insert(0, Single_Event(
-                    "defaults.warn_no_deputy", clan=clan.group_ID))
+                    event_text_adjust(Cat, "defaults.warn_no_deputy", clan=clan), clan=clan.group_ID))
                 return
             # This determines all the cats who are eligible to be deputy.
             possible_deputies = list(

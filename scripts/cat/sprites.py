@@ -361,7 +361,6 @@ class Sprites:
         #genemod effects
         self.make_group('Other/bimetal', (0, 0), 'bimetal')
         self.make_group('Other/ghosting', (0, 0), 'ghost')
-        self.make_group('Other/tabbyghost', (0, 0), 'tabbyghost')
         self.make_group('Other/grizzle', (0, 0), 'grizzle')
         self.make_group('Other/bleach', (0, 0), 'bleach')
         self.make_group('Other/lykoi', (0, 0), 'lykoi')

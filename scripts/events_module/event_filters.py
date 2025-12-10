@@ -125,11 +125,13 @@ def event_for_tags(tags: list, cat, clan=CatGroup.PLAYER_CLAN, other_cat=None, m
                 CatRank.LEADER,
                 CatRank.DEPUTY,
                 CatRank.MEDICINE_CAT,
+                CatRank.MEDICINE_APPRENTICE,
             ] and not find_alive_cats_with_rank(cat, [rank], clan=clan):
                 return False
 
             if (
-                rank not in [CatRank.LEADER, CatRank.DEPUTY, CatRank.MEDICINE_CAT]
+                rank not in [CatRank.LEADER, CatRank.DEPUTY,
+                             CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE]
                 and not len(find_alive_cats_with_rank(cat, [rank], clan=clan)) >= 2
             ):
                 return False
