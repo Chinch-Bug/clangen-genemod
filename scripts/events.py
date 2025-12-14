@@ -2635,6 +2635,30 @@ class Events:
                     ),
                 )
 
+    def rel_deputy_filter(self, cat_list, leader):
+        has_rel = []
+        values = {}
+        for c in cat_list:
+            if c.ID in leader.relationships:
+                has_rel.append(c)
+                values[c.ID] = leader.relationships[c.ID].respect * 3 + leader.relationships[c.ID].trust * 2 + leader.relationships[c.ID].like + leader.relationships[c.ID].comfort
+        if not has_rel:
+            return cat_list
+
+        has_rel.sort( reverse=True,
+            key=lambda c: leader.relationships[c.ID].respect * 3 + leader.relationships[c.ID].trust * 2 + leader.relationships[c.ID].like + leader.relationships[c.ID].comfort)
+
+        if leader.relationships[has_rel[0].ID].respect * 3 + leader.relationships[has_rel[0].ID].trust * 2 + leader.relationships[has_rel[0].ID].romance + leader.relationships[has_rel[0].ID].like + leader.relationships[has_rel[0].ID].comfort < 0:
+            return cat_list
+        for i, c in enumerate(has_rel):
+            if i > 5:
+                break
+            if i <= 5 and values[c.ID] < 0:
+                has_rel = has_rel[:i]
+                break
+
+        return has_rel[:min(5, len(has_rel))]
+
     def check_and_promote_deputy(self, clan=None):
         # TODO: can these events be handled as ceremony events?
 
@@ -2664,6 +2688,8 @@ class Events:
                         and x.status.rank == CatRank.WARRIOR
                         and (x.apprentice or x.former_apprentices),
                         Cat.all_cats_list))
+            if get_clan_setting("rel_deputy") and clan.leader:
+                possible_deputies = self.rel_deputy_filter(possible_deputies, clan.leader)
 
             # If there are possible deputies, choose from that list.
             if possible_deputies:
@@ -2729,6 +2755,8 @@ class Events:
                     )
                 )
                 if all_warriors:
+                    if get_clan_setting("rel_deputy") and clan.leader:
+                        all_warriors = self.rel_deputy_filter(all_warriors, clan.leader)
                     random_cat = random.choice(all_warriors)
                     involved_cats = [random_cat.ID]
                     text = i18n.t("hardcoded.ceremony_deputy_unsuitable")
