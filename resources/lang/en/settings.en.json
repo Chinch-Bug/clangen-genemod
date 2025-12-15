@@ -84,6 +84,8 @@
       "no special suffixes_tooltip": "New cats will have special suffix automatically hidden",
       "deputy": "Allow leaders to automatically choose a new deputy",
       "deputy_tooltip": "The Warrior Code rules will be taken into account when choosing a deputy.",
+      "rel_deputy": "Leader relationships influence deputy choice",
+      "rel_deputy_tooltip": "Prioritise choosing a deputy that the leader gets along with.",
       "12_moon_graduation": "Disable experience-based apprentice graduation",
       "12_moon_graduation_tooltip": "All apprentices will graduate at 12 moons.",
       "retirement": "Cats will never retire due to a permanent condition",

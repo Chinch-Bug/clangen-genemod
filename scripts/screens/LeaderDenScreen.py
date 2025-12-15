@@ -75,6 +75,7 @@ class LeaderDenScreen(Screens):
 
         self.outsider_cat_list_container = None
         self.outsider_cat_buttons = {}
+        self.fav = {}
 
     def handle_event(self, event):
         """
@@ -1021,6 +1022,9 @@ class LeaderDenScreen(Screens):
 
         # CREATE DISPLAY
         display_cats = []
+        for marker in self.fav:
+            self.fav[marker].kill()
+        self.fav = {}
         if outsider_chunks:
             display_cats = outsider_chunks[self.current_page - 1]
 
@@ -1045,6 +1049,18 @@ class LeaderDenScreen(Screens):
         for cat in display_cats:
             if not cat.sprite:
                 update_sprite(cat)
+            if get_clan_setting("show fav") and cat.favourite:
+                self.fav[str(i)] = pygame_gui.elements.UIImage(
+                    ui_scale(pygame.Rect((5+ pos_x, pos_y), (50, 50))),
+                    pygame.transform.scale(
+                        pygame.image.load(
+                            f"resources/images/fav_marker{cat.favourite}.png"
+                        ).convert_alpha(),
+                        ui_scale_dimensions((50, 50)),
+                    ),
+                    container=self.outsider_cat_list_container,
+                )
+                self.fav[str(i)].disable()
             self.outsider_cat_buttons[f"sprite{str(i)}"] = UISpriteButton(
                 ui_scale(pygame.Rect((5 + pos_x, pos_y), (50, 50))),
                 cat.sprite,

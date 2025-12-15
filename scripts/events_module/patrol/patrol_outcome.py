@@ -954,6 +954,7 @@ class PatrolOutcome:
         for cat in patrol.patrol_cats:
             if Cat.fetch_cat(cat.mentor) in patrol.patrol_cats:
                 mentor = Cat.fetch_cat(cat.mentor)
+                personality = cat.personality.trait
                 affect_personality = cat.personality.mentor_influence(
                     mentor.personality
                 )
@@ -963,6 +964,8 @@ class PatrolOutcome:
                         mentor.ID, affect_personality[0], affect_personality[1]
                     )
                     print(str(cat.name), affect_personality)
+                    if cat.personality.trait != personality:
+                        cat.history.prev_pers.append(personality)
                 if affect_skills:
                     cat.history.add_skill_mentor_influence(
                         affect_skills[0], affect_skills[1], affect_skills[2]

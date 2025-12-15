@@ -448,6 +448,8 @@ class Status:
                     removed_index = record["standing"].index(new_standing)
                     record["standing"].pop(removed_index)
                 record["standing"].append(new_standing)
+                self.standing_history.remove(record)
+                self.standing_history.append(record)
                 return
 
         self.standing_history.append(

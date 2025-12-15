@@ -415,7 +415,7 @@ class ShortEvent:
         handles adding new cats to the clan
         """
 
-        if not self.new_cat:
+        if not self.new_cats:
             return
 
         if "misc" not in self.types:

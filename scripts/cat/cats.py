@@ -1261,6 +1261,8 @@ class Cat:
     def rank_change_traits_skill(self, mentor):
         """Updates trait and skill upon ceremony"""
 
+        personality = self.personality.trait
+
         if self.status.rank in (
             CatRank.WARRIOR,
             CatRank.MEDICINE_CAT,
@@ -1282,6 +1284,8 @@ class Cat:
                             affect_personality[0],
                             affect_personality[1],
                         )
+                        if self.personality.trait != personality:
+                            self.history.prev_pers.append(personality)
                     if affect_skills:
                         self.history.add_skill_mentor_influence(
                             affect_skills[0], affect_skills[1], affect_skills[2]
@@ -1383,6 +1387,7 @@ class Cat:
 
                 self._history = History(
                     prev_names = history_data["prev_names"] if "prev_names" in history_data else [],
+                    prev_pers = history_data["prev_pers"] if "prev_pers" in history_data else [],
                     beginning=(
                         history_data["beginning"] if "beginning" in history_data else {}
                     ),
@@ -1445,6 +1450,7 @@ class Cat:
         except:
             self.history = History(
                 prev_names=[],
+                prev_pers=[],
                 beginning={},
                 mentor_influence={},
                 app_ceremony={},
@@ -1793,9 +1799,13 @@ class Cat:
             self.status._change_rank(CatRank.KITTEN)
         self.in_camp = 1
 
+        personality = self.personality.trait
+
         if not self.status.is_clancat:
             # this is handled in events.py
             self.personality.set_kit(self.age.is_baby())
+            if self.personality.trait != personality:
+                self.history.prev_pers.append(personality)
             self.thoughts(other_clan_cats=other_clan_cats)
             return
 
@@ -1805,6 +1815,8 @@ class Cat:
 
         # Set personality to correct type
         self.personality.set_kit(self.age.is_baby())
+        if self.personality.trait != personality:
+            self.history.prev_pers.append(personality)
         # Upon age-change
 
         if self.status.rank.is_any_apprentice_rank():

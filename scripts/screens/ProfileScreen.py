@@ -1412,6 +1412,9 @@ class ProfileScreen(Screens):
             if self.the_cat.history and len(self.the_cat.history.prev_names):
                 life_history.append(self.get_previous_names())
 
+            if self.the_cat.history and len(self.the_cat.history.prev_pers):
+                life_history.append(self.get_previous_personalities())
+
             # now get apprenticeship history and add that if any exists
             app_history = self.get_apprenticeship_text()
             if app_history:
@@ -1448,6 +1451,9 @@ class ProfileScreen(Screens):
 
     def get_previous_names(self):
         return "Previous names: " + ', '.join(self.the_cat.history.prev_names)
+
+    def get_previous_personalities(self):
+        return "Previous traits: " + ', '.join(self.the_cat.history.prev_pers)
     
     def get_afterlife_acceptance_text(self):
         """

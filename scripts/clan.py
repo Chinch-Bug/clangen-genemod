@@ -44,6 +44,7 @@ from scripts.utility import (
     get_current_season,
     clan_symbol_sprite,
     get_living_clan_cat_count,
+    create_new_cat,
 )  # pylint: disable=redefined-builtin
 
 
@@ -245,6 +246,15 @@ class Clan:
                 for o_clan in game.clan.all_other_clans[i+1:]:
                     game.clan.relations[clan.group_ID][o_clan.group_ID] = randint(8, 12)
                     game.clan.war[clan.group_ID][o_clan.group_ID] = {"at_war": False, "duration": 0}
+
+        allowed_range = constants.CONFIG["clan_creation"]["starting_outsiders"]
+        number_outsiders = randint(allowed_range[0], allowed_range[1])
+        for i in range(number_outsiders):
+            create_new_cat(
+                Cat,
+                original_social=choice([CatSocial.KITTYPET, CatSocial.LONER, CatSocial.LONER, CatSocial.ROGUE, CatSocial.ROGUE]),
+                outside=True
+            )
 
         for cat_id in Cat.all_cats:
             if cat_id not in self.clan_cats:
