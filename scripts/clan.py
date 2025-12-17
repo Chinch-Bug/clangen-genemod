@@ -768,6 +768,13 @@ class Clan:
         if not game.clan.name:
             return
 
+        keys_to_delete = []
+        for key in clan.pregnancy_data:
+            if key not in Cat.all_cats:
+                keys_to_delete.append(key)
+        for key in keys_to_delete:
+            del clan.pregnancy_data[key]
+
         safe_save(
             f"{get_save_dir()}/{game.clan.name}/pregnancy.json", clan.pregnancy_data
         )
