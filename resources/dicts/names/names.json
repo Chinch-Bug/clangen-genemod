@@ -387,9 +387,9 @@
     "Ziti", "Zoe", "Zoomie", "Zorro", "Zorua", "Zuberi", "Zuko", "Zuma", "Zuna", "Zuva"
   ],
 	"animal_suffixes": [
-		"badger", "bat", "bear", "bee", "beetle", "bird", "bug", "cricket", "deer", "eagle", "elk", "falcon", "fawn", "fish", "fox", "goose", "hare", "hawk", "horse", 
-    "jay", "kestrel", "kite", "lamb", "leopard", "lion", "minnow", "moth", "mouse", "newt", "ram", "raven", "roach", "scorpion", "sheep", "snake", "spider", 
-    "squid", "swan", "thrush", "tiger", "turtle"
+		"adder", "badger", "bat", "bear", "bee", "beetle", "bird", "bug", "cricket", "deer", "eagle", "elk", "falcon", "fawn", "fish", "fox", "goose", "hare", "hawk", "horse", 
+    "jay", "kestrel", "kite", "lamb", "leopard", "lion", "minnow", "mole", "moth", "mouse", "newt", "ram", "raven", "roach", "scorpion", "sheep", "snake", "spider", 
+    "squid", "swan", "thrush", "tiger", "turtle", "wolf", "wolverine"
 	],
 	"animal_prefixes": [
 		"Addax", "Adder", "Albatross", "Alpaca", "Ant", "Antelope", "Aphid", "Avocet", "Axolotl", "Badger", "Barracuda", "Bass", "Bat", "Bear", "Beaver", 

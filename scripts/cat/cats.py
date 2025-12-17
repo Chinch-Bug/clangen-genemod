@@ -669,7 +669,7 @@ class Cat:
             self.get_permanent_condition('ocular albinism', born_with=True, genetic=True)
         
         if self.phenotype.length == 'hairless':
-            self.get_permanent_condition('fully hairless', born_with=True, genetic=True)
+            self.get_permanent_condition('fully hairless', born_with=True, genetic=True, custom_reveal=12 if (self.phenotype.sedesp[0] != "hr" and self.phenotype.ruhr[1] != "Hrbd" and self.moons < 12) else None)
         if self.phenotype.length == 'fur-pointed' or 'patchy ' in self.phenotype.furtype:
             self.get_permanent_condition('partially hairless', born_with=True, genetic=True)
         

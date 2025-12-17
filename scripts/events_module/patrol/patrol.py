@@ -359,6 +359,7 @@ class Patrol:
             "med"
             if [CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE]
             in self.patrol_status_list
+            and get_clan_setting("patrol_lock_meds")
             else patrol_type
         )
         patrol_size = len(self.patrol_cats)
@@ -391,7 +392,7 @@ class Patrol:
         regular_chance = int(random.getrandbits(2))
         hostile_chance = int(random.getrandbits(5))
         welcoming_chance = int(random.getrandbits(1))
-        if 1 <= int(reputation) <= 30:
+        if 0 <= int(reputation) <= 30:
             hostile_rep = True
             if small_clan:
                 chance = welcoming_chance

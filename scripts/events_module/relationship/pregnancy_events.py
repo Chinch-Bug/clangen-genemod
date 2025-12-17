@@ -1221,7 +1221,7 @@ class Pregnancy_Events:
                                             backstory=BACKSTORIES["backstory_categories"][backstories[cat_type]],
                                             alive=True,
                                             moons=mate_age if mate_age > 14 else 15,
-                                            gender='fem' if 'Y' in cat.phenotype.sexgene else 'masc',
+                                            gender=('fem' if 'Y' in cat.phenotype.sexgene else 'masc') if not get_clan_setting('same sex birth') else None,
                                             outside=True,
                                             is_parent=True)[0]
             outside_parent.thought = i18n.t("hardcoded.thought_outside_surrogate")
@@ -1260,7 +1260,7 @@ class Pregnancy_Events:
                                                 backstory=BACKSTORIES["backstory_categories"].get(f"former_clancat_backstories", ["outsider1"]),
                                                 alive=True,
                                                 moons=mate_age if mate_age > 14 else 15,
-                                                gender='fem' if 'Y' in cat.phenotype.sexgene else 'masc',
+                                                gender=('fem' if 'Y' in cat.phenotype.sexgene else 'masc') if not get_clan_setting('same sex birth') else None,
                                                 outside=True,
                                                 is_parent=True)
                 outside_parent[0].thought = event_text_adjust(Cat, i18n.t(
@@ -1297,7 +1297,7 @@ class Pregnancy_Events:
                                                         backstory=BACKSTORIES["backstory_categories"][backstories[cat_type]],
                                                         alive=True,
                                                         moons=mate_age if mate_age > 14 else 15,
-                                                        gender='fem' if 'Y' in cat.phenotype.sexgene else 'masc',
+                                                        gender=('fem' if 'Y' in cat.phenotype.sexgene else 'masc') if not get_clan_setting('same sex birth') else None,
                                                         outside=True,
                                                         is_parent=True)[0]
                     outside_parent.thought = event_text_adjust(Cat, i18n.t(

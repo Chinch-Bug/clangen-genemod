@@ -4182,10 +4182,10 @@ def generate_sprite(
             if cat.phenotype.sedesp == ['hr', 're'] or (cat.phenotype.sedesp[0] == 're' and sprite_age < 12) or (cat.phenotype.laperm[0] == 'Lp' and sprite_age < 4):
                 gensprite.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
                 gensprite.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
-            elif(cat.pelt.length == 'hairless'):
+            elif(cat.pelt.length == 'hairless' and (cat.phenotype.sedesp[0] == "hr" or cat.phenotype.ruhr[1] == "Hrbd" or sprite_age > 11)):
                 gensprite.blit(sprites.sprites['hairless' + cat_sprite], (0, 0))
                 gensprite.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
-            elif('patchy ' in cat.phenotype.furtype):
+            elif ('patchy ' in cat.phenotype.furtype) or (cat.pelt.length == 'hairless' and cat.phenotype.sedesp[0] != "hr" and cat.phenotype.ruhr[1] != "Hrbd" and sprite_age > 5):
                 gensprite.blit(sprites.sprites['donskoy' + cat_sprite], (0, 0))
             
             if('sparse' in cat.phenotype.furtype):

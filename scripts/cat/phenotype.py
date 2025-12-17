@@ -53,7 +53,7 @@ class Phenotype(Genotype):
             if len(furtype)>0:
                 furtype.append(", ")
 
-            if self.ruhr[0] == "Hrbd" and self.ruhrmod == ["hi", "ha"]:
+            if self.ruhr[0] == "Hrbd" and self.ruhrmod != ["hi", "hi"]:
                 furtype.append("patchy ")
             
             if self.ruhr[0] != "Hrbd":
