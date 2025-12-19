@@ -645,15 +645,17 @@ class Clan:
                     if not clan_data["relations"].get(CatGroup.PLAYER_CLAN_ID):
                         game.clan.relations[CatGroup.PLAYER_CLAN_ID][ID] = clan_data["relations"]["player_clan"]["other_clan"+str(len(game.clan.all_other_clans))]
         else:
+            ID = game.get_free_group_ID(CatGroup.OTHER_CLAN)
             if "other_clan_chosen_symbol" not in clan_data:
-                for name, relation, temper, enum in zip(
+                for name, relation, temper in zip(
                     clan_data["other_clans_names"].split(","),
                     clan_data["other_clans_relations"].split(","),
                     clan_data["other_clan_temperament"].split(","),
                 ):
                     OtherClan(name, temperament=temper)
+                    game.clan.relations[CatGroup.PLAYER_CLAN_ID][ID] = int(relation)
             else:
-                for name, relation, temper, symbol, enum in zip(
+                for name, relation, temper, symbol in zip(
                     clan_data["other_clans_names"].split(","),
                     clan_data["other_clans_relations"].split(","),
                     clan_data["other_clan_temperament"].split(","),

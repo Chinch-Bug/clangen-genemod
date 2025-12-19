@@ -36,6 +36,30 @@ class Phenotype(Genotype):
                                 'CHEST', 'GRUMPYFACE', 'SIDEMASK', 'PACMAN', 'BRIE' ,'ORIOLE', 'ROBIN', 'PAIGE', 'HEARTBEAT']
         self.def_tortie_high_patterns = ['THREE', 'FOUR', 'REDTAIL', 'HALF', 'STREAK', 'MASK', 'SWOOP', 'ARMTAIL', 'STREAMSTRIKE', 'DAUB',
                                 'ROSETAIL', 'DAPPLENIGHT', 'BLANKET']
+
+    def reset(self):
+        self.length = ""
+
+        self.highwhite = ""
+        self.fade = ""
+        self.colour = ""
+        self.silvergold = ""
+        self.tabtype = ""
+        self.tabby = ""
+        self.tortie = ""
+        self.point = ""
+        self.lowwhite = ""
+        self.karpati = ""
+        self.specwhite = ""
+
+        self.eartype = ""
+        self.tailtype = ""
+        self.bobtailnr = 0
+        self.pawtype = ""
+        self.furtype = []
+
+        self.vitiligo_string = ""
+        self.mutant_red = ""
         
     def FurtypeFinder(self):
         furtype = []
@@ -413,6 +437,7 @@ class Phenotype(Genotype):
         if(self.tailtype != ''):
             self.tailtype += "tail"
     def PhenotypeOutput(self, pattern=None, gender=None, chimera=False):
+        self.reset()
         self.FurtypeFinder()
         self.MainColourFinder()
         self.PointFinder()

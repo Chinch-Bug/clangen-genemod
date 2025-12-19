@@ -16,6 +16,8 @@
       "shaders_tooltip": "This will add a shading layer onto the cat sprites.",
       "tints": "Enable Tints",
       "tints_tooltip": "This will add a tint layer onto the cat sprites.",
+      "accurate_porting": "Accurate Porting",
+      "accurate_porting_tooltip": "Will prioritise retaining original appearance when newly loading basegame saves, not genetic accuracy.",
       "filter genes": "Filter Genotypes",
       "filter genes_tooltip": "Most wildtype genes will be hidden on the genotype section.",
       "ageup dead": "Show dead kits and apprentices as adults",
