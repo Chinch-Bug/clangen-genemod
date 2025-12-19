@@ -56,6 +56,11 @@
         "This will add a tint layer onto the cat sprites.",
         false
       ],
+      "accurate_porting": [
+        "Accurate Porting",
+        "Will prioritise retaining original appearance when newly loading basegame saves, not genetic accuracy.",
+        false
+      ],
       "filter genes": [
         "Filter Genotypes",
         "Some rare wildtype genes will be hidden on the genotype section.",

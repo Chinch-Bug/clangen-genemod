@@ -2240,9 +2240,9 @@ class Genotype:
             else:
                 self.Mutate()
         else:
-            if(self.ruhr[0] == 'Hr'):
+            if(self.ruhr[0] == 'hrbd'):
                 self.ruhr[0] = 'Hrbd'
-            elif(self.ruhr[1] == 'Hr'):
+            elif (self.ruhr[1] == 'hrbd'):
                 self.ruhr[1] = 'Hrbd'
             else:
                 self.Mutate()

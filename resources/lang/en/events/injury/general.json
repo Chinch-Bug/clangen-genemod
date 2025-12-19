@@ -6924,8 +6924,8 @@
                 "scars": []
             }
         ],
-        "new_cat": [
-            [ "old_name", "clancat", "exists", "meeting", "status:any_healer" ]
+        "multiclan_cat": [
+            [ "clancat", "exists", "meeting", "status:any_healer" ]
         ],
         "history": [
             {
