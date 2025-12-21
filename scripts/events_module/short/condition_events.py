@@ -933,6 +933,10 @@ class Condition_Events:
                 possible_string_list = (
                     Condition_Events.CONGENITAL_CONDITION_GOT_STRINGS[condition]
                 )
+                if condition in ["constant joint pain"] and cat.age != CatAge.KITTEN:
+                    possible_string_list = (
+                        Condition_Events.CONGENITAL_CONDITION_GOT_STRINGS[condition + " alt"]
+                    )
 
                 # choose event string and ensure Clan's med cat number aligns with event text
                 random_index = int(random.random() * len(possible_string_list))
