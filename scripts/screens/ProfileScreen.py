@@ -16,7 +16,7 @@ from scripts.cat.cats import Cat, BACKSTORIES
 from ..cat.enums import CatAge, CatRank, CatGroup
 from scripts.cat.pelts import Pelt
 from scripts.clan_resources.freshkill import FRESHKILL_ACTIVE
-from scripts.events import Events
+from scripts.events import handle_fading
 from scripts.game_structure import image_cache, game
 from scripts.game_structure.ui_elements import (
     UIImageButton,
@@ -318,7 +318,7 @@ class ProfileScreen(Screens):
         elif self.open_tab == "dangerous":
             if event.ui_element == self.kill_cat_button:
                 if self.the_cat.dead:
-                    Events.handle_fading(Events, self.the_cat, self.the_cat.status.fetch_clan_object(game.clan), True)
+                    handle_fading(Events, self.the_cat, self.the_cat.status.fetch_clan_object(game.clan), True)
                     self.close_current_tab()
                     self.change_screen(game.last_screen_forProfile)
                 else:

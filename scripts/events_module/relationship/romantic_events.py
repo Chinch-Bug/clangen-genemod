@@ -7,7 +7,7 @@ import i18n
 
 import scripts.cat_relations.interaction as interactions
 from scripts.cat.cats import Cat
-from scripts.cat.enums import CatRank, CatGroup
+from scripts.cat.enums import CatRank, CatGroup, CatCompatibility
 from scripts.cat_relations.relationship import RelType, Relationship
 from scripts.event_class import Single_Event
 from scripts.game_structure import constants
@@ -1030,9 +1030,9 @@ class RomanticEvents:
 
         # change the change based on the personality
         get_along = get_personality_compatibility(cat_from, cat_to)
-        if get_along is not None and get_along:
+        if get_along == CatCompatibility.POSITIVE:
             chance_number += 5
-        if get_along is not None and not get_along:
+        if get_along == CatCompatibility.NEGATIVE:
             chance_number -= 10
 
         # Then, at least a 1/5 chance

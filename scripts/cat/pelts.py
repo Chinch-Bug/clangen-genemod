@@ -346,7 +346,12 @@ class Pelt:
                     white_pattern.append(choice(Pelt.maingame_white["low"].get(str(KITgrade))))
 
                 elif KITgrade == 1:
-                    grade1list = ['chest tuft', 'belly tuft', 'chest tuft', 'belly tuft', None]
+                    grade1list = ['chest tuft', 'belly tuft', 
+                                'chest tuft', 'belly tuft', 
+                                'chest tuft', 'belly tuft', 
+                                'chest tuft', 'belly tuft', 
+                                'chest tuft', 'belly tuft', 
+                                'chest tuft', 'belly tuft', None]
                     white_pattern.append(choice(grade1list))
                 elif KITgrade == 2:
                     while len(white_pattern) == 0:

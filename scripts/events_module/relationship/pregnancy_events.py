@@ -7,7 +7,7 @@ from typing import Dict, List, Union, Optional
 import i18n
 
 from scripts.cat.cats import Cat
-from scripts.cat.enums import CatAge, CatGroup, CatRank, CatSocial
+from scripts.cat.enums import CatAge, CatGroup, CatRank, CatSocial, CatCompatibility
 from scripts.cat.genotype import Genotype
 from scripts.cat.names import names, Name
 from scripts.cat_relations.relationship import Relationship, RelType
@@ -1880,11 +1880,11 @@ class Pregnancy_Events:
                 if comp == True:
                     break
                 comp = get_personality_compatibility(first_parent, x)
-                if comp is not None:
+                if comp != CatCompatibility.NEUTRAL:
                     buff = 0.85
-                    if not comp:
+                    if comp == CatCompatibility.NEGATIVE:
                         buff += 0.3
-                    inverse_chance = int(inv * buff)
+                    inverse_chance = int(inverse_chance * buff)
 
 
         average_romantic_love = -1000
