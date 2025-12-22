@@ -1369,7 +1369,7 @@ class Genotype:
         if self.munch[0] == 'Mk':
             height *= 1.5
         if 'Y' in self.sexgene[0]:
-            height /= 1.1
+            height /= 1.075
         height = round(height, 2)
 
         if height <= 5.00:
@@ -1567,42 +1567,42 @@ class Genotype:
         if index == 0:
             self.shoulder_height = 5.00
         elif index == 1:
-            value = self.height_value - self.height_indexes[index-1]
+            value = self.height_value - self.height_indexes[index-1]-1
             step = (6-5.01) / self.height_ranges[index]
-            self.shoulder_height = 5.01 + value * (random() * step)
+            self.shoulder_height = 5.01 + value * step + (random() * step)
         elif index == 2:
-            value = self.height_value - self.height_indexes[index-1]
+            value = self.height_value - self.height_indexes[index-1]-1
             step = (7.5-6.01) / self.height_ranges[index]
-            self.shoulder_height = 6.01 + value * (random() * step)
+            self.shoulder_height = 6.01 + value * step + (random() * step)
         elif index == 3:
-            value = self.height_value - self.height_indexes[index-1]
+            value = self.height_value - self.height_indexes[index-1]-1
             step = (8.99-7.51) / self.height_ranges[index]
-            self.shoulder_height = 7.51 + value * (random() * step)
+            self.shoulder_height = 7.51 + value * step + (random() * step)
         elif index == 4:
-            value = self.height_value - self.height_indexes[index-1]
+            value = self.height_value - self.height_indexes[index-1]-1
             step = (11-9) / self.height_ranges[index]
-            self.shoulder_height = 9 + value * (random() * step)
+            self.shoulder_height = 9 + value * step + (random() * step)
         elif index == 5:
-            value = self.height_value - self.height_indexes[index-1]
+            value = self.height_value - self.height_indexes[index-1]-1
             step = (12.49-11.01) / self.height_ranges[index]
-            self.shoulder_height = 11.01 + value * (random() * step)
+            self.shoulder_height = 11.01 + value * step + (random() * step)
         elif index == 6:
-            value = self.height_value - self.height_indexes[index-1]
+            value = self.height_value - self.height_indexes[index-1]-1
             step = (13.49-12.50) / self.height_ranges[index]
-            self.shoulder_height = 12.50 + value * (random() * step)
+            self.shoulder_height = 12.50 + value * step + (random() * step)
         elif index == 7:
-            value = self.height_value - self.height_indexes[index-1]
+            value = self.height_value - self.height_indexes[index-1]-1
             step = (14.49-13.50) / self.height_ranges[index]
-            self.shoulder_height = 13.50 + value * (random() * step)
+            self.shoulder_height = 13.50 + value * step + (random() * step)
         elif index == 8:
-            value = self.height_value - self.height_indexes[index-1]
+            value = self.height_value - self.height_indexes[index-1]-1
             step = (14.99-14.50) / self.height_ranges[index]
-            self.shoulder_height = 14.50 + value * (random() * step)
+            self.shoulder_height = 14.50 + value * step + (random() * step)
         elif index == 9:
             self.shoulder_height = 15.00
         
         if 'Y' in self.sexgene:
-            self.shoulder_height *= 1.1
+            self.shoulder_height *= 1.075
         elif len(self.sexgene) == 1:
             self.shoulder_height *= 0.9
         if self.munch[0] == 'Mk':
