@@ -291,6 +291,8 @@ def get_current_season():
     function to handle the math for finding the Clan's current season
     :return: the Clan's current season
     """
+    if not game.clan:
+        return "Newleaf"
 
     if constants.CONFIG["lock_season"]:
         game.clan.current_season = game.clan.starting_season
@@ -302,17 +304,14 @@ def get_current_season():
         "Leaf-fall": 6,
         "Leaf-bare": 9
     }
-    if(not game.clan):
-        return "Newleaf"
-    else: 
-        index = game.clan.age % 12 + modifiers[game.clan.starting_season]
+    index = game.clan.age % 12 + modifiers[game.clan.starting_season]
 
-        if index > 11:
-            index = index - 12
+    if index > 11:
+        index = index - 12
 
-        game.clan.current_season = constants.SEASON_CALENDAR[index]
+    game.clan.current_season = constants.SEASON_CALENDAR[index]
 
-        return game.clan.current_season
+    return game.clan.current_season
 
 
 def change_clan_reputation(difference, clan):
