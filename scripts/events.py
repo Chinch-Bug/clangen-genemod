@@ -1390,6 +1390,10 @@ class Events:
                     Cat, event, other_clan_name=f"{enemy_clan.displayname}Clan", clan=main_clan
                 )
                 game.cur_events_list.append(Single_Event(event, "other_clans", clan=clan))
+                event = random.choice(war_events)
+                event = ongoing_event_text_adjust(
+                    Cat, event, other_clan_name=f"{main_clan.displayname}Clan", clan=enemy_clan
+                )
                 game.cur_events_list.append(Single_Event(event, "other_clans", clan=enemy))
 
     def perform_ceremonies(self, cat, clan):
