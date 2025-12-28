@@ -856,7 +856,7 @@ class Phenotype(Genotype):
                 colour = "pale_" + colour
 
             rufousing = ""
-            banding = ""
+            banding = "low"
             
             if ('masked' in self.silvergold and genes.wbsum > 15) or (genes.agouti[0] != "a" and genes.ext[0] != "Eg") or (genes.ext[0] not in ['Eg', 'E']):
                 if genes.silver[0] == "I" or genes.brindledbi or (moons < 3 and genes.karp[0] == "K"):
@@ -887,10 +887,10 @@ class Phenotype(Genotype):
                 
                 if (genes.ext[0] == 'ea' and ((moons > 7 and genes.agouti[0] != "a") or moons > 19)):
                     colour = self.FindRed(genes, moons)[1]
-                self.banding = banding
                 
             else:
-                colour = maincolour        
+                colour = maincolour
+            self.banding = banding
 
 
             return [maincolour, colour, unders_colour, unders_opacity]
