@@ -1,4 +1,4 @@
-from random import choice, randrange, choices, sample
+from random import choice, randrange, random, randint, choices, sample
 from typing import List, Optional
 
 import i18n
@@ -13,6 +13,7 @@ from scripts.events_module.relationship.relation_events import Relation_Events
 from scripts.game_structure import localization, game
 from scripts.utility import (
     create_new_cat_block,
+    find_clan_cats,
     event_text_adjust,
     get_leader_life_notice,
     history_text_adjust,
@@ -24,7 +25,7 @@ from scripts.utility import (
     change_clan_relations,
 )
 
-from scripts.cat.enums import CatAge, CatRank
+from scripts.cat.enums import CatAge, CatRank, CatSocial, CatStanding
 from scripts.cat.personality import Personality
 from scripts.cat.skills import SkillPath
 from scripts.game_structure import constants
@@ -245,7 +246,7 @@ class ShortEvent:
                 return
 
         # create new cats (must happen here so that new cats can be included in further changes)
-        self.handle_new_cats(clan)
+        self.handle_new_cats(clan, other_clan)
 
         # remove cats from involved_cats if they're supposed to be
         if self.r_c and "r_c" in self.exclude_involved:
@@ -410,12 +411,12 @@ class ShortEvent:
             clan=clan
         )
 
-    def handle_new_cats(self, clan=game.clan):
+    def handle_new_cats(self, clan=game.clan, other_clan=None):
         """
         handles adding new cats to the clan
         """
 
-        if not self.new_cats:
+        if not self.new_cat_attributes:
             return
 
         if "misc" not in self.types:
@@ -427,7 +428,7 @@ class ShortEvent:
 
         if self.random_cat:
             in_event_cats["r_c"] = self.random_cat
-        for i, attribute_list in enumerate(self.new_cat):
+        for i, attribute_list in enumerate(self.new_cat_attributes):
             if (("clancat" not in attribute_list and "change_clan" not in attribute_list) or "exists" not in attribute_list) or game.clan.clancount != 'multiclan':
                 self.new_cats.append(
                     create_new_cat_block(
@@ -460,25 +461,24 @@ class ShortEvent:
                         )
                 else:
                     Relation_Events.welcome_new_cats([cat])
-                self.involved_cats.append(cat.ID)
-                self.new_cat_objects.append([cat])
+                self.all_involved_cat_ids.append(cat.ID)
 
         # Check to see if any young litters joined with alive parents.
         # If so, see if recovering from birth condition is needed and give the condition
-        for sub in self.new_cats:
-            if sub[0].moons < 3:
+        for possible_kittens in self.new_cats:
+            if possible_kittens[0].moons < 3:
                 # Search for parent
-                for sub_sub in self.new_cats:
+                for possible_parent  in self.new_cats:
                     if (
-                        sub_sub[0] != sub[0]
+                        possible_parent [0] != possible_kittens[0]
                         and (
-                            'Y' not in sub_sub[0].phenotype.sexgene
+                            'Y' not in possible_parent [0].phenotype.sexgene
                             or get_clan_setting("same sex birth")
                         )
-                        and sub_sub[0].ID in (sub[0].parent1, sub[0].parent2)
-                        and sub_sub[0].status.group_ID == clan.group_ID
+                        and possible_parent [0].ID in (possible_kittens[0].parent1, possible_kittens[0].parent2)
+                        and possible_parent[0].status.group_ID == clan.group_ID
                     ):
-                        sub_sub[0].get_injured("recovering from birth")
+                        possible_parent[0].get_injured("recovering from birth")
                         break  # Break - only one parent ever gives birth
 
         if extra_text and extra_text not in self.text:
@@ -614,7 +614,7 @@ class ShortEvent:
         alive_cats = [i for i in Cat.all_cats.values() if i.status.group_ID == self.main_cat.status.group_ID]
 
         # make sure all cats in the pool fit the event requirements
-        requirements = self.chosen_event.m_c
+        requirements = self.m_c
         for kitty in alive_cats:
             if (
                 kitty.status.rank not in requirements["status"]
@@ -651,14 +651,14 @@ class ShortEvent:
                 )  # got to include the cat that rolled for death in the first place
 
             tnr = False
-            if 'tnr' in self.chosen_event.tags and get_clan_setting("tnr_mode"):
+            if 'tnr' in self.tags and get_clan_setting("tnr_mode"):
                 if random() < constants.CONFIG['tnr_mode']['Clan_tnr']:
                     tnr = True
                     
             taken_cats = []
             left_cats = []
             for kitty in self.dead_cats:
-                if "lost" in self.chosen_event.tags:
+                if "lost" in self.tags:
                     if not tnr or 'TNR' not in kitty.pelt.scars:
                         kitty.become_lost(CatSocial.KITTYPET if tnr else CatSocial.LONER)
                         taken_cats.append(kitty)
@@ -675,9 +675,9 @@ class ShortEvent:
                     elif tnr:
                         left_cats.append(kitty)
                         continue
-                self.multi_cat.append(kitty)
-                if kitty.ID not in self.involved_cats:
-                    self.involved_cats.append(kitty.ID)
+                self.multi_cat_objects.append(kitty)
+                if kitty.ID not in self.all_involved_cat_ids:
+                    self.all_involved_cat_ids.append(kitty.ID)
             for kitty in taken_cats:
                 self.dead_cats.remove(kitty)
             for kitty in left_cats:

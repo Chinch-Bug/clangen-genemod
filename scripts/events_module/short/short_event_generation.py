@@ -80,7 +80,7 @@ def create_short_event(
     # if the war didn't go badly, then we decrease the chance of this event being war-focused
     if rel_changed != "rel_down":
         war_chance = 2
-    if chosen_enemy and randint(1, war_chance) != 1:
+    if chosen_enemy and random.randint(1, war_chance) != 1:
         other_clan = [c for c in [
             game.clan]+game.clan.all_other_clans if c.group_ID == chosen_enemy][0]
         sub_types.append("war")
@@ -370,7 +370,7 @@ def filter_events(
         # ensure ID and requirements override
         if constants.CONFIG["event_generation"]["debug_override_requirements"]:
             if game.clan.clancount == 'multiclan' and event.other_clan and not event_for_other_clan(
-                Cat_class, event.other_clan.get("has_rank"), other_clan.group_ID
+                Cat, event.other_clan.get("has_rank"), other_clan.group_ID
             ):
                 continue
             final_events.append(event)

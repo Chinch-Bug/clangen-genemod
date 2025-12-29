@@ -16,7 +16,7 @@ import pygame
 import ujson
 
 from scripts.cat.cats import Cat, cat_class, BACKSTORIES
-from scripts.cat.enums import CatRank, CatGroup
+from scripts.cat.enums import CatRank, CatGroup, CatSocial
 from scripts.cat.names import names
 from scripts.cat.save_load import (
     save_cats,
