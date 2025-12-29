@@ -56,6 +56,7 @@ class Patrol:
         self.patrol_apprentices = []
         self.other_clan = None
         self.intro_text = ""
+        self.clan = game.clan
 
         self.patrol_statuses = {}
         self.patrol_status_list = []
@@ -255,8 +256,8 @@ class Patrol:
                 self.patrol_leader = possible_leader[-1]
             else:
                 self.patrol_leader = choice(self.patrol_cats)
-
-        all_options = (clan.all_other_clans + [clan])
+        
+        all_options = clan.all_other_clans + [clan]
         all_options.remove(self.clan)
         if clan.all_other_clans and len(all_options) > 0:
             self.other_clan = choice(all_options)

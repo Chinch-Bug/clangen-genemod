@@ -542,7 +542,10 @@ class Status:
 
         # meanwhile clan cats go wherever their guide points them
         if game.clan:
-            return self.fetch_clan_object(game.clan).instructor.status.group_ID
+            if instructor := self.fetch_clan_object(game.clan).instructor:
+                return instructor.status.group_ID
+            else:
+                return game.clan.instructor.status.group_ID
         return CatGroup.STARCLAN_ID
 
     def send_to_afterlife(self, target_ID: str = None):

@@ -6,6 +6,7 @@ from scripts.events_module.short.short_event import ShortEvent
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
 
+from scripts.clan import Clan
 from scripts.cat.cats import Cat
 from scripts.cat.pelts import Pelt
 
@@ -15,10 +16,12 @@ class TestHandleEvent(unittest.TestCase):
         self.chosen_event = ShortEvent(event_id="test")
         self.chosen_event.main_cat = Cat()
         self.chosen_event.random_cat = Cat()
+        self.clan = Clan()
+        self.clan.group_ID = "1"
 
     def test_mc_presence(self):
         # event should always use m_c by default
-        self.chosen_event.execute_event()
+        self.chosen_event.execute_event(clan=self.clan)
         self.assertTrue(
             self.chosen_event.main_cat.ID in self.chosen_event.all_involved_cat_ids
         )
@@ -26,21 +29,21 @@ class TestHandleEvent(unittest.TestCase):
     def test_mc_exclusion(self):
         # remove if excluded
         self.chosen_event.exclude_involved = ["m_c"]
-        self.chosen_event.execute_event()
+        self.chosen_event.execute_event(clan=self.clan)
         self.assertFalse(
             self.chosen_event.main_cat.ID in self.chosen_event.all_involved_cat_ids
         )
 
     def test_rc_presence(self):
         # no r_c specified
-        self.chosen_event.execute_event()
+        self.chosen_event.execute_event(clan=self.clan)
         self.assertFalse(
             self.chosen_event.random_cat.ID in self.chosen_event.all_involved_cat_ids
         )
 
         # r_c specified
         self.chosen_event.r_c = {"age": "any"}
-        self.chosen_event.execute_event()
+        self.chosen_event.execute_event(clan=self.clan)
         self.assertTrue(
             self.chosen_event.random_cat.ID in self.chosen_event.all_involved_cat_ids
         )
@@ -49,7 +52,7 @@ class TestHandleEvent(unittest.TestCase):
         # remove if excluded
         self.chosen_event.r_c = {"age": "any"}
         self.chosen_event.exclude_involved = ["r_c"]
-        self.chosen_event.execute_event()
+        self.chosen_event.execute_event(clan=self.clan)
         self.assertFalse(
             self.chosen_event.random_cat.ID in self.chosen_event.all_involved_cat_ids
         )
@@ -64,6 +67,8 @@ class TestHandleAccessories(unittest.TestCase):
         self.chosen_event = ShortEvent(event_id="test", new_accessory=["TEST"])
         self.chosen_event.main_cat = Cat(disable_random=True)
         self.pelts = Pelt
+        self.clan = Clan()
+        self.clan.group_ID = "1"
 
     def assert_intersection(self, a, b):
         """assert that the intersection of iterables a and b is non-empty"""
@@ -73,17 +78,17 @@ class TestHandleAccessories(unittest.TestCase):
     def test_misc_appended_to_types(self):
         self.chosen_event.types = []
 
-        self.chosen_event.execute_event()
+        self.chosen_event.execute_event(clan=self.clan)
         self.assertIn("misc", self.chosen_event.types)
 
     def test_cat_gets_test_accessory(self):
-        self.chosen_event.execute_event()
+        self.chosen_event.execute_event(clan=self.clan)
         self.assertEqual(self.chosen_event.main_cat.pelt.accessory, ["TEST"])
 
     def test_cat_gets_random_wild_accessory(self):
         self.chosen_event.new_accessory = ["WILD"]
 
-        self.chosen_event.execute_event()
+        self.chosen_event.execute_event(clan=self.clan)
         self.assert_intersection(
             self.chosen_event.main_cat.pelt.accessory, self.pelts.wild_accessories
         )
@@ -91,7 +96,7 @@ class TestHandleAccessories(unittest.TestCase):
     def test_cat_gets_random_plant_accessory(self):
         self.chosen_event.new_accessory = ["PLANT"]
 
-        self.chosen_event.execute_event()
+        self.chosen_event.execute_event(clan=self.clan)
         self.assert_intersection(
             self.chosen_event.main_cat.pelt.accessory, self.pelts.plant_accessories
         )
@@ -99,7 +104,7 @@ class TestHandleAccessories(unittest.TestCase):
     def test_cat_gets_random_collar_accessory(self):
         self.chosen_event.new_accessory = ["COLLAR"]
 
-        self.chosen_event.execute_event()
+        self.chosen_event.execute_event(clan=self.clan)
         self.assert_intersection(
             self.chosen_event.main_cat.pelt.accessory, self.pelts.collar_accessories
         )
@@ -108,14 +113,14 @@ class TestHandleAccessories(unittest.TestCase):
         self.chosen_event.new_accessory = self.pelts.tail_accessories
         self.chosen_event.main_cat.pelt.scars = ["NOTAIL"]
 
-        self.chosen_event.execute_event()
+        self.chosen_event.execute_event(clan=self.clan)
         self.assertFalse(self.chosen_event.main_cat.pelt.accessory)
 
     def test_halftail_cats_do_not_get_tail_accessories(self):
         self.chosen_event.new_accessory = self.pelts.tail_accessories
         self.chosen_event.main_cat.pelt.scars = ["HALFTAIL"]
 
-        self.chosen_event.execute_event()
+        self.chosen_event.execute_event(clan=self.clan)
         self.assertFalse(self.chosen_event.main_cat.pelt.accessory)
 
 
@@ -127,9 +132,11 @@ class TestHandleTransition(unittest.TestCase):
             new_gender=["trans male", "nonbinary"],
         )
         self.chosen_event.main_cat = Cat(gender="female", disable_random=True)
+        self.clan = Clan()
+        self.clan.group_ID = "1"
 
     def test_cat_transitions(self):
-        self.chosen_event.execute_event()
+        self.chosen_event.execute_event(clan=self.clan)
 
         self.assertTrue(
             self.chosen_event.main_cat.genderalign != self.chosen_event.main_cat.gender
@@ -157,28 +164,30 @@ class TestHandleInjury(unittest.TestCase):
         )
         self.chosen_event.main_cat = Cat()
         self.chosen_event.random_cat = Cat()
+        self.clan = Clan()
+        self.clan.group_ID = "1"
 
     def test_types(self):
-        self.chosen_event.execute_event()
+        self.chosen_event.execute_event(clan=self.clan)
 
         self.assertTrue("health" in self.chosen_event.types)
 
     def test_mc_injured(self):
-        self.chosen_event.execute_event()
+        self.chosen_event.execute_event(clan=self.clan)
 
         self.assertTrue("scrapes" in self.chosen_event.main_cat.injuries)
         self.assertFalse("scrapes" in self.chosen_event.random_cat.injuries)
 
     def test_rc_injured(self):
         self.chosen_event.injury[0]["cats"] = ["r_c"]
-        self.chosen_event.execute_event()
+        self.chosen_event.execute_event(clan=self.clan)
 
         self.assertTrue("scrapes" in self.chosen_event.random_cat.injuries)
         self.assertFalse("scrapes" in self.chosen_event.main_cat.injuries)
 
     def test_both_injured(self):
         self.chosen_event.injury[0]["cats"].append("r_c")
-        self.chosen_event.execute_event()
+        self.chosen_event.execute_event(clan=self.clan)
 
         self.assertTrue("scrapes" in self.chosen_event.random_cat.injuries)
         self.assertTrue("scrapes" in self.chosen_event.main_cat.injuries)
