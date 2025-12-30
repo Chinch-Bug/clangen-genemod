@@ -2478,6 +2478,8 @@ def handle_murder(cat, clan):
                 main_cat=cat,
                 random_cat=Cat.fetch_cat(chosen_target.cat_to),
                 sub_type=["failed_murder"],
+                clan=clan,
+                second_clan=chosen_cat.status.fetch_clan_object(game.clan) if chosen_cat.status.group_ID != cat.status.group_ID else None
             )
 
 
