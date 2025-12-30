@@ -291,7 +291,7 @@ class PatrolOutcome:
 
         results.append(
             unpack_rel_block(
-                Cat, self.relationship_effects, patrol, stat_cat=self.stat_cat
+                Cat, self.relationship_effects, patrol, stat_cat=self.stat_cat, clan=patrol.clan
             )
         )
         results.append(self._handle_rep_changes(patrol))
@@ -521,7 +521,7 @@ class PatrolOutcome:
         # leader_lives = ("all_lives", "some_lives")
 
         cats_to_kill = gather_cat_objects(
-            Cat, self.dead_cats, patrol, stat_cat=self.stat_cat
+            Cat, self.dead_cats, patrol, stat_cat=self.stat_cat, clan=patrol.clan
         )
 
         if not cats_to_kill:
@@ -590,7 +590,7 @@ class PatrolOutcome:
             return ""
 
         cats_to_lose = gather_cat_objects(
-            Cat, self.lost_cats, patrol, stat_cat=self.stat_cat
+            Cat, self.lost_cats, patrol, stat_cat=self.stat_cat, clan=patrol.clan
         )
 
         if not cats_to_lose:
@@ -626,7 +626,7 @@ class PatrolOutcome:
         condition_lists = constants.INJURY_GROUPS
 
         for block in self.injury:
-            cats = gather_cat_objects(Cat, block.get("cats", ()), patrol, self.stat_cat)
+            cats = gather_cat_objects(Cat, block.get("cats", ()), patrol, self.stat_cat, clan=patrol.clan)
             injury = block.get("injuries", ())
             scars = block.get("scars", ())
 

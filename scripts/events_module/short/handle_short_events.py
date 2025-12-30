@@ -269,7 +269,7 @@ class HandleShortEvents:
                         other_clan=self.other_clan,
                     )
 
-            unpack_rel_block(Cat, self.chosen_event.relationships, self)
+            unpack_rel_block(Cat, self.chosen_event.relationships, self, clan=clan)
 
         # used in some murder events,
         # this kind of sucks tho it would be nice to change how this sort of thing is handled
