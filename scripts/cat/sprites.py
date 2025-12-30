@@ -277,15 +277,15 @@ class Sprites:
             self.make_group('Break/'+x.replace('.png', ""), (0, 0), 'break/'+x.replace('.png', ""))
 
         # ...idk what to call these
-        self.make_group('genemod/fourears', (0, 0), 'fourears', sprites_y=7)
+        self.make_group('genemod/fourears', (0, 0), 'fourears')
 
         self.make_group('genemod/normal border', (0, 0), 'normbord')
-        self.make_group('genemod/foldborder', (0, 0), 'foldbord', sprites_y=7)
-        self.make_group('genemod/curlborder', (0, 0), 'curlbord', sprites_y=7)
+        self.make_group('genemod/foldborder', (0, 0), 'foldbord')
+        self.make_group('genemod/curlborder', (0, 0), 'curlbord')
 
-        self.make_group('genemod/foldlineart', (0, 0), 'foldlines', sprites_y=7)
-        self.make_group('genemod/fold_curllineart', (0, 0), 'fold_curllines', sprites_y=7)
-        self.make_group('genemod/curllineart', (0, 0), 'curllines', sprites_y=7)
+        self.make_group('genemod/foldlineart', (0, 0), 'foldlines')
+        self.make_group('genemod/fold_curllineart', (0, 0), 'fold_curllines')
+        self.make_group('genemod/curllineart', (0, 0), 'curllines')
 
         self.make_group('genemod/isolateears', (0, 0), 'isolateears', sprites_y=7)
         self.make_group('genemod/noears', (0, 0), 'noears', sprites_y=7)

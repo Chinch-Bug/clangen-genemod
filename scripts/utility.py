@@ -251,22 +251,77 @@ def search_cats(search_text, cat_list, search_genotype):
                 "poly": ["Pd", "pd"],
                 "pax3": ["NoDBE", "DBEre", "DBEalt", "DBEcel"],
             }
-            polygenes = ["wideband", "wb", 
-            "rufousing", "ruf", 
-            "underbelly_rufousing", "underbelly_ruf", 
-            "spotted", "spot", 
-            "ticked_mod", "tick_md", 
-            "bengal", "bm", 
-            "sokoke", "sok", 
-            "saturation", "sat", 
-            "refraction", "ref", 
-            "pigmentation", "pig"]
+            polygenes = {
+                "wbsum": ["wideband", "wb"],
+                "rufsum": ["rufousing", "ruf"],
+                "unders_rufsum": ["underbelly_rufousing", "underbelly_ruf"],
+                "bengsum": ["bengal", "bm"],
+                "soksum": ["sokoke", "sok"],
+                "spotsum": ["spotted", "spot"],
+                "ticksum": ["ticked_mod", "tick_md"],
+                "saturation": ["saturation", "sat"],
+                "refraction": ["refraction", "ref"],
+                "pigmentation": ["pigmentation", "pig"],
+                "whitegrade": ["whitegrade", "white_grade", "white"]
+            }
+            
             orgroups = search_text.split("/")
             all_found = []
             for g in orgroups:
                 alleles = g.split("&")
                 found_cats = cat_list.copy()
                 for a in alleles:
+                    find_poly = [
+                        key for key, value in polygenes.items() if a.split(" ")[0].split(">")[0].split("<")[0].split("=")[0] in value]
+                    if ">" in a or "<" in a or "=" in a and find_poly:
+                        poly = find_poly[0]
+                        operator = None
+                        if "<=" in a:
+                            operator = "<="
+                        elif ">=" in a:
+                            operator = ">="
+                        elif "<" in a:
+                            operator = "<"
+                        elif ">" in a:
+                            operator = ">"
+                        elif ">" in a:
+                            operator = ">"
+                        elif "=" in a:
+                            operator = "="
+                        poly_value = a.split(operator, 1)[-1]
+
+                        if poly_value.isdigit():
+                            if operator == "<=":
+                                found_cats = [
+                                    cat
+                                    for cat in found_cats
+                                    if cat.phenotype[poly] <= int(poly_value) or (cat.chimerapheno and cat.chimerapheno[poly] <= int(poly_value))
+                                ]
+                            elif operator == ">=":
+                                found_cats = [
+                                    cat
+                                    for cat in found_cats
+                                    if cat.phenotype[poly] >= int(poly_value) or (cat.chimerapheno and cat.chimerapheno[poly] >= int(poly_value))
+                                ]
+                            elif operator == ">":
+                                found_cats = [
+                                    cat
+                                    for cat in found_cats
+                                    if cat.phenotype[poly] > int(poly_value) or (cat.chimerapheno and cat.chimerapheno[poly] > int(poly_value))
+                                ]
+                            elif operator == "<":
+                                found_cats = [
+                                    cat
+                                    for cat in found_cats
+                                    if cat.phenotype[poly] < int(poly_value) or (cat.chimerapheno and cat.chimerapheno[poly] < int(poly_value))
+                                ]
+                            elif operator == "=":
+                                found_cats = [
+                                    cat
+                                    for cat in found_cats
+                                    if cat.phenotype[poly] == int(poly_value) or (cat.chimerapheno and cat.chimerapheno[poly] == int(poly_value))
+                                ]
+                        
                     allele = a.strip().strip("!")
                     find_gene = [
                         key for key, value in gene_map.items() if allele in value]
@@ -4432,15 +4487,15 @@ def generate_sprite(
         # if not dead:
         if(cat.phenotype.fold[0] != 'Fd'):
             if(cat.phenotype.curl[0] == 'Cu'):
-                earlines.blit(sprites.sprites['curllines' + alt_cat_sprite], (0, 0))
+                earlines.blit(sprites.sprites['curllines' + cat_sprite], (0, 0))
             else:
                 earlines.blit(sprites.sprites['lineart' + cat_sprite], (0, 0))
             if phenotype.fourear[0] == "dup":
-                earlines.blit(sprites.sprites['fourears' + alt_cat_sprite], (0, 0))
+                earlines.blit(sprites.sprites['fourears' + cat_sprite], (0, 0))
         elif(cat.phenotype.curl[0] == 'Cu'):
-            earlines.blit(sprites.sprites['fold_curllines' + alt_cat_sprite], (0, 0))
+            earlines.blit(sprites.sprites['fold_curllines' + cat_sprite], (0, 0))
         else:
-            earlines.blit(sprites.sprites['foldlines' + alt_cat_sprite], (0, 0))
+            earlines.blit(sprites.sprites['foldlines' + cat_sprite], (0, 0))
 
         if('rexed' in phenotype.furtype or 'wiry' in phenotype.furtype):
             if not dead or cat.status.group == CatGroup.UNKNOWN_RESIDENCE:

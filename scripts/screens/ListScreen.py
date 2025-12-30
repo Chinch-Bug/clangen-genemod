@@ -352,6 +352,8 @@ class ListScreen(Screens):
             container=self.cat_list_bar,
             manager=MANAGER,
         )
+        if get_clan_setting("search genotypes"):
+            self.cat_list_bar_elements["search_bar_entry"].tool_tip_text = "screens.list.search_genotypes_tutorial"
 
         # SHOW LIVING/DEAD
         self.cat_list_bar_elements["view_button"] = UISurfaceImageButton(
