@@ -18,7 +18,7 @@ def prep_future_event(event, event_id: str, possible_cats: dict, clan):
         return
     for event_info in event.future_event:
         # create dict of all cats that need to be involved in future event
-        gathered_cat_dict = _collect_involved_cats(possible_cats, event_info)
+        gathered_cat_dict = _collect_involved_cats(possible_cats, event_info, clan)
 
         # create future event and add it to the future event list
         game.clan.future_events.append(
@@ -35,7 +35,7 @@ def prep_future_event(event, event_id: str, possible_cats: dict, clan):
         )
 
 
-def _collect_involved_cats(cat_dict: dict, future_info: dict) -> dict:
+def _collect_involved_cats(cat_dict: dict, future_info: dict, clan = game.clan.group_ID) -> dict:
     """
     collects involved cats and assigns their roles for the future event, then
     returns a dict associating their new role (key) with their cat ID (value)
@@ -54,7 +54,7 @@ def _collect_involved_cats(cat_dict: dict, future_info: dict) -> dict:
 
     # we're just keeping this to living cats within the clan for now, more complexity can come later
     possible_cats = [
-        kitty for kitty in Cat.all_cats.values() if kitty.status.alive_in_player_clan
+        kitty for kitty in Cat.all_cats.values() if kitty.status.group_ID == clan
     ]
 
     for new_role, cat_involved in future_info["involved_cats"].items():
