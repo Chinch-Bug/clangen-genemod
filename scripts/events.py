@@ -390,7 +390,7 @@ def update_afterlife_temper():
                 CatRank.MEDICINE_CAT,
                 CatRank.DEPUTY,
             )
-            and not in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_other_clans]
+            and c not in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_other_clans]
         ):
             continue
 
