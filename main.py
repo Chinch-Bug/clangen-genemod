@@ -183,7 +183,7 @@ for module_name, module in list(sys.modules.items()):
             reload(module)
 
 # Load game
-from scripts.clan import clan_class
+from scripts.clan import clan_class, Afterlife
 from scripts.game_structure.audio import sound_manager, music_manager
 from scripts.game_structure.load_cat import load_cats, version_convert
 from scripts.game_structure.windows import SaveCheck
@@ -235,6 +235,8 @@ def load_data():
         switch_set_value(Switch.clan_name, clan_list[0])
         try:
             constants.load_clan_config()
+            game.starclan = Afterlife()
+            game.dark_forest = Afterlife()
             load_cats()
             game.load_events()
             scripts.screens.screens_core.screens_core.rebuild_core()
@@ -313,7 +315,10 @@ def load_game():
     game.cur_events_list.clear()
     game.patrol_cats.clear()
     game.patrolled.clear()
+    game.updated_afterlife_cats.clear()
     game.clan = None
+    game.starclan = None
+    game.dark_forest = None
     switch_set_value(Switch.switch_clan, False)
     switch_set_value(
         Switch.error_message, ""

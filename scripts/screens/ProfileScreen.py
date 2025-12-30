@@ -335,6 +335,8 @@ class ProfileScreen(Screens):
                 # if the cat is dead, moves them to the opposite afterlife
                 if self.the_cat.dead:
                     self.the_cat.pelt.rebuild_sprite = True
+                    game.updated_afterlife_cats.add(self.the_cat)
+                    
                     if self.the_cat in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_other_clans]:
                         # DF -> SC
                         if self.the_cat.status.group == CatGroup.DARK_FOREST:
@@ -1348,7 +1350,7 @@ class ProfileScreen(Screens):
 
     def save_user_notes(self):
         """Saves user-entered notes."""
-        clanname = game.clan.displayname
+        clanname = game.clan.name
 
         notes = self.user_notes
 
@@ -1367,7 +1369,7 @@ class ProfileScreen(Screens):
 
     def load_user_notes(self):
         """Loads user-entered notes."""
-        clanname = game.clan.displayname
+        clanname = game.clan.name
 
         notes_directory = get_save_dir() + "/" + clanname + "/notes"
         notes_file_path = notes_directory + "/" + self.the_cat.ID + "_notes.json"

@@ -20,8 +20,7 @@ from ...cat.enums import CatGroup
 pygame.init()
 
 if TYPE_CHECKING:
-    from scripts.clan import Clan
-
+    from scripts.clan import Clan, Afterlife
 
 event_editing = False
 max_name_length = 10
@@ -62,6 +61,7 @@ choose_cats = {}
 }"""
 
 patrol_cats = {}
+updated_afterlife_cats = set()
 patrolled = []
 
 used_group_IDs: dict = {
@@ -95,6 +95,9 @@ debug_settings = {
 
 # CLAN
 clan: Optional["Clan"] = None
+starclan: Optional["Afterlife"] = None
+dark_forest: Optional["Afterlife"] = None
+
 cat_class = None
 prey_config = constants.CONFIG["clan_resources"]["freshkill"]
 
