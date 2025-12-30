@@ -1939,7 +1939,7 @@ def filter_relationship_type(
 
 
 def gather_cat_objects(
-    Cat, abbr_list: List[str], event, stat_cat=None, extra_cat=None
+    Cat, abbr_list: List[str], event, stat_cat=None, extra_cat=None, clan=game.clan
 ) -> list:
     """
     gathers cat objects from list of abbreviations used within an event format block
@@ -1953,7 +1953,7 @@ def gather_cat_objects(
     :return: list of cat objects
     """
 
-    clan_cats = [x for x in Cat.all_cats_list if x.status.group_ID == stat_cat.status.group_ID]
+    clan_cats = [x for x in Cat.all_cats_list if x.status.group_ID == clan.group_ID]
     out_set = set()
 
     for abbr in abbr_list:
@@ -2023,7 +2023,7 @@ def gather_cat_objects(
 
 
 def unpack_rel_block(
-    Cat, relationship_effects: List[dict], event=None, stat_cat=None, extra_cat=None
+    Cat, relationship_effects: List[dict], event=None, stat_cat=None, extra_cat=None, clan=game.clan
 ):
     """
     Unpacks the info from the relationship effect block used in patrol and moon events, then adjusts rel values
@@ -2044,8 +2044,8 @@ def unpack_rel_block(
         values = [x for x in block.get("values", ()) if x in possible_values]
 
         # Gather actual cat objects:
-        cats_from_ob = gather_cat_objects(Cat, cats_from, event, stat_cat, extra_cat)
-        cats_to_ob = gather_cat_objects(Cat, cats_to, event, stat_cat, extra_cat)
+        cats_from_ob = gather_cat_objects(Cat, cats_from, event, stat_cat, extra_cat, clan=clan)
+        cats_to_ob = gather_cat_objects(Cat, cats_to, event, stat_cat, extra_cat, clan=clan)
 
         # Remove any "None" that might have snuck in
         if None in cats_from_ob:

@@ -286,7 +286,7 @@ class ShortEvent:
                         new_cats=self.new_cats,
                     )
 
-            unpack_rel_block(Cat, self.relationships, self)
+            unpack_rel_block(Cat, self.relationships, self, clan=clan)
 
         # used in some murder events,
         # this kind of sucks tho it would be nice to change how this sort of thing is handled
