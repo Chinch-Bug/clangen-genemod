@@ -508,12 +508,12 @@ class Phenotype(Genotype):
 
         if gender:
             sexstring = gender
-        elif 'tom' in self.sex or ('molly' in self.sex and 'Y' in self.sexgene):
+        elif 'tom' in self.sex and 'Y' in self.sexgene:
             sexstring = "male"
         elif 'molly' in self.sex and 'Y' not in self.sexgene:
             sexstring = "female"
         else:
-            sexstring = self.sex
+            sexstring = "intersex"
 
         if chimera:
             sexstring = "chimera " + sexstring

@@ -920,7 +920,7 @@ def create_new_cat_block(
 
         for n_c in new_cats:
 
-            if n_c.phenotype.manx[1] == "Ab" or n_c.phenotype.manx[1] == "M" or n_c.phenotype.munch[1] == "Mk" or ('NoDBE' not in n_c.phenotype.pax3 and 'DBEalt' not in n_c.phenotype.pax3):
+            if n_c.phenotype.manx[1] == "Ab" or n_c.phenotype.sexgene[0] == "Y" or n_c.phenotype.manx[1] == "M" or n_c.phenotype.munch[1] == "Mk" or ('NoDBE' not in n_c.phenotype.pax3 and 'DBEalt' not in n_c.phenotype.pax3):
                 n_c.moons = 0
                 n_c.status = Status(**{"group_ID": n_c.status.group_ID,
                               "rank": CatRank.NEWBORN, "age": CatAge.NEWBORN})

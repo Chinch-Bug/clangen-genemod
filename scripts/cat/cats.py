@@ -272,14 +272,16 @@ class Cat:
                 self.phenotype.pax3[0] = 'DBEalt'
         
         if not loading_cat:
-            if(randint(1, constants.CONFIG['genetics_config']['intersex']) == 1) or (self.chimerapheno and xor('Y' in self.phenotype.sexgene, 'Y' in self.chimerapheno.sexgene) and randint(1, round(constants.CONFIG['genetics_config']['intersex']/4)) == 1):
+            if(randint(1, constants.CONFIG['genetics_config']['intersex']) == 1) or (self.chimerapheno and xor('Y' in self.phenotype.sexgene, 'Y' in self.chimerapheno.sexgene)):
                 self.phenotype.sex = "intersex"
-                if(randint(1, 25) == 1 and 'Y' in self.phenotype.sexgene):
+                if (randint(1, 25) == 1 and 'Y' in self.phenotype.sexgene) or (self.chimerapheno and xor('Y' in self.phenotype.sexgene, 'Y' in self.chimerapheno.sexgene) and randint(1, 10) == 1):
                     self.phenotype.sex = 'molly'
-                elif(randint(1, 25) == 1 and 'Y' not in self.phenotype.sexgene):
+                elif (randint(1, 25) == 1 and 'Y' not in self.phenotype.sexgene) or (self.chimerapheno and xor('Y' in self.phenotype.sexgene, 'Y' in self.chimerapheno.sexgene) and randint(1, 10) == 1):
                     self.phenotype.sex = 'tom'
         if self.passes != 1 and (not self.chimerapheno or xor('Y' in self.phenotype.sexgene, 'Y' in self.chimerapheno.sexgene)):
             self.passes = 1
+            if self.phenotype.sex == "tom" and 'Y' not in self.phenotype.sexgene:
+                self.passes = 2
 
         self.phenotype.PhenotypeOutput(self.phenotype.white_pattern)
         self.phenotype.SpriteInfo(moons if moons else 0)
@@ -427,7 +429,7 @@ class Cat:
         if not loading_cat:
             self.init_generate_cat(skill_dict, disable_random)
         
-        if self.phenotype.munch[1] == "Mk" or (self.phenotype.manx[1] == "Ab" or self.phenotype.manx[1] == "M") or ('NoDBE' not in self.phenotype.pax3 and 'DBEalt' not in self.phenotype.pax3):
+        if self.phenotype.munch[1] == "Mk" or self.phenotype.sexgene[0] == "Y" or (self.phenotype.manx[1] == "Ab" or self.phenotype.manx[1] == "M") or ('NoDBE' not in self.phenotype.pax3 and 'DBEalt' not in self.phenotype.pax3):
             if not self.dead:
                 self.dead = True
 
@@ -648,9 +650,10 @@ class Cat:
         
         if ((len(self.phenotype.sexgene) > 2 and 'Y' in self.phenotype.sexgene and random() > 0.001) 
             or len(self.phenotype.sexgene) == 1
-            or (self.gender == 'intersex' and random() < 0.2) 
+            or (len(self.phenotype.sexgene) > 2 and 'Y' not in self.phenotype.sexgene and random() < 0.01)
+            or (self.gender == 'intersex' and random() < 0.4) 
             or (self.gender == 'molly' and 'Y' in self.phenotype.sexgene) 
-            or (self.gender == 'tom' and 'Y' not in self.phenotype.sexgene)):
+            or (self.gender == 'tom' and 'Y' not in self.phenotype.sexgene and random() < 0.99)):
             self.get_permanent_condition('sterile', born_with=True, genetic=True)
         
         if self.phenotype.fold[0] == 'Fd' or ('manx syndrome' in self.permanent_condition and self.phenotype.bobtailnr < 4 and self.phenotype.bobtailnr > 1 and random() < 0.05):
