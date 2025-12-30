@@ -3311,11 +3311,11 @@ class Cat:
             clan = (
                 switch_get_value(Switch.clan_list)[0]
                 if game.clan is None
-                else game.clan.displayname
+                else game.clan.name
             )
 
             with open(
-                get_save_dir() + "/" + game.clan.displayname + "/faded_cats/" + cat + ".json",
+                get_save_dir() + "/" + game.clan.name + "/faded_cats/" + cat + ".json",
                 "r",
                 encoding="utf-8",
             ) as read_file:

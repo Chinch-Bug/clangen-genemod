@@ -419,6 +419,8 @@ class HandleShortEvents:
         self.excluded_events = event.pool.get("excluded_event_id")
 
         self.future_event_failed = True
+        if not Cat.fetch_cat(event.involved_cats.get("mur_c")) or not Cat.fetch_cat(event.involved_cats.get("r_c")) or not Cat.fetch_cat(event.involved_cats.get("m_c")):
+            return True
         self.handle_event(
             event_type=event.event_type,
             main_cat=Cat.fetch_cat(event.involved_cats.get("m_c")),
