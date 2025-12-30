@@ -2520,7 +2520,7 @@ class Cat:
         return len(self.permanent_condition) > 0
 
     def available_to_work(self):
-        return self.group and not self.group.is_afterlife() and not self.not_working()
+        return self.status.group and not self.status.group.is_afterlife() and not self.not_working()
 
     def contact_with_ill_cat(self, cat: Cat):
         """handles if one cat had contact with an ill cat"""
@@ -3366,11 +3366,11 @@ class Cat:
             clan = (
                 switch_get_value(Switch.clan_list)[0]
                 if game.clan is None
-                else game.clan.displayname
+                else game.clan.name
             )
 
             with open(
-                get_save_dir() + "/" + game.clan.displayname + "/faded_cats/" + cat + ".json",
+                get_save_dir() + "/" + game.clan.name + "/faded_cats/" + cat + ".json",
                 "r",
                 encoding="utf-8",
             ) as read_file:

@@ -251,6 +251,16 @@ def search_cats(search_text, cat_list, search_genotype):
                 "poly": ["Pd", "pd"],
                 "pax3": ["NoDBE", "DBEre", "DBEalt", "DBEcel"],
             }
+            polygenes = ["wideband", "wb", 
+            "rufousing", "ruf", 
+            "underbelly_rufousing", "underbelly_ruf", 
+            "spotted", "spot", 
+            "ticked_mod", "tick_md", 
+            "bengal", "bm", 
+            "sokoke", "sok", 
+            "saturation", "sat", 
+            "refraction", "ref", 
+            "pigmentation", "pig"]
             orgroups = search_text.split("/")
             all_found = []
             for g in orgroups:
@@ -3266,7 +3276,8 @@ def generate_sprite(
                 not_red = (
                     'red' not in stripecolour and 'cream' not in stripecolour and 'honey' not in stripecolour and 'ivory' not in stripecolour and 'apricot' not in stripecolour)
                 is_dark_sunshine = (phenotype.wbtype not in [
-                    "shaded", "chinchilla"] and phenotype.corin[0] == "sh" and not_red and phenotype.agouti[1] == "a")
+                    "shaded", "chinchilla"] and phenotype.corin[0] == "sh" and not_red and phenotype.agouti[1] == "a"
+                    and not (('ec' in phenotype.ext or (phenotype.ext[0] == 'ea' and ((sprite_age > 7 and phenotype.ext[0] != "a") or sprite_age > 19))) and 'Eg' not in phenotype.ext))
 
                 if not special and 'solid' not in whichbase:
                     if ('chinchilla' in whichbase):
@@ -4316,7 +4327,7 @@ def generate_sprite(
             age = 4
         elif 5 < int(cat_sprite) < 9 and (11 < cat.moons or cat.moons < 6):
             age = 10
-        elif (int(cat_sprite == 22) or int(cat_sprite) == 20) and (12 < cat.moons or cat.moons < 6):
+        elif cat_sprite in ['20', '22'] and (12 < cat.moons or cat.moons < 6):
             age = 6
         elif int(cat_sprite) > 8 and cat_sprite not in ['20', '22'] and cat.moons < 12:
             age = 60

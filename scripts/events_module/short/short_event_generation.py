@@ -55,7 +55,7 @@ def create_short_event(
     :param future_event: If this is being triggered by a future event, pass the future event object here.
     """
     if future_event and (
-        not main_cat.status.group_ID == clan.group_ID
+        not (main_cat and main_cat.status.group_ID == clan.group_ID)
         or (random_cat and not random_cat.status.group_ID == clan.group_ID)
     ):
         # we set this to true because we want it to be considered triggered and thus removed

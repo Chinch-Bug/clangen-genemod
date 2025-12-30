@@ -458,7 +458,7 @@ class Genotype:
         self.pangere = choice([None, None,
                               "pangere small 1", "pangere small 1", "pangere small 1",
                                "pangere small 2", "pangere small 2", "pangere small 2",
-                               "pangere medium 1", "pangere medium 2"])
+                               "pangere medium 1", "pangere medium 2", "pangere medium 1 + tail"])
 
         self.rednose = random() < 0.25
         self.blacknose = random() < 0.005
