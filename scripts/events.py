@@ -394,9 +394,8 @@ class Events:
             if event.moon_delay <= -12:
                 removals.append(event)
             if event.moon_delay <= 0:
-                success = handle_short_events.trigger_future_event(event, clan)
-                if success:
-                    removals.append(event)
+                handle_short_events.trigger_future_event(event, clan)
+                removals.append(event)
 
         for event in removals:
             if event in game.clan.future_events:
@@ -942,7 +941,7 @@ class Events:
             if additional_cats:
                 text += i18n.t("hardcoded.event_lost_kits", count=len(additional_cats))
 
-            text = event_text_adjust(Cat, text, main_cat=lost_cat, clan=clan.group_ID)
+            text = event_text_adjust(Cat, text, main_cat=lost_cat, clan=clan)
 
             game.cur_events_list.append(Single_Event(text, "misc", cat_IDs, clan=clan.group_ID))
 
