@@ -1,6 +1,7 @@
 from random import choice, choices, randint, random
 import json
 from scripts.cat.breed_functions import breed_functions
+from scripts.clan_package.settings import get_clan_setting
 from scripts.special_dates import SpecialDate, is_today
 from operator import xor
 import math
