@@ -1024,7 +1024,39 @@ class Genotype:
         
         self.eumelanin = [choice(par1.eumelanin), choice(par2.eumelanin)]
 
-        if ('Y' in par1.sexgene or par1.sex == "tom"):
+        mum = ["o", "o"]
+        pap = ["o", "Y"]
+        if (not get_clan_setting('modded_kits') or get_clan_setting('same sex birth')) and not xor('Y' in par1.sexgene, 'Y' in par2.sexgene):
+            if ('Y' in par1.sexgene):
+                if (randint(1, 2) == 1):
+                    mum[0] = par1.sexgene[0]
+                    if len(par1.sexgene) > 2:
+                        mum[1] = par1.sexgene[1]
+                    else:
+                        mum[1] = mum[0]
+                    pap = par2.sexgene
+                else:
+                    mum[0] = par2.sexgene[0]
+                    if len(par2.sexgene) > 2:
+                        mum[1] = par2.sexgene[1]
+                    else:
+                        mum[1] = mum[0]
+                    pap = par1.sexgene
+            else:
+                if ('O' in par1.sexgene and 'o' in par1.sexgene):
+                    mum = par1.sexgene
+                    pap[0] = par2.sexgene[0]
+                elif ('O' in par2.sexgene and 'o' in par2.sexgene):
+                    mum = par2.sexgene
+                    pap[0] = par1.sexgene[0]
+                else:
+                    if (random() < 0.5):
+                        mum = par2.sexgene
+                        pap[0] = par1.sexgene[0]
+                    else:
+                        mum = par1.sexgene
+                        pap[0] = par2.sexgene[0]
+        elif 'Y' in par1.sexgene or (par1.sex == "tom" and 'Y' not in par2.sexgene):
             mum = par2.sexgene
             pap = par1.sexgene
         else:

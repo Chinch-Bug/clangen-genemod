@@ -651,7 +651,7 @@ class Cat:
         if ((len(self.phenotype.sexgene) > 2 and 'Y' in self.phenotype.sexgene and random() > 0.001) 
             or len(self.phenotype.sexgene) == 1
             or (len(self.phenotype.sexgene) > 2 and 'Y' not in self.phenotype.sexgene and random() < 0.01)
-            or (self.gender == 'intersex' and random() < 0.4) 
+            or (self.gender == 'intersex' and random() < 0.2) 
             or (self.gender == 'molly' and 'Y' in self.phenotype.sexgene) 
             or (self.gender == 'tom' and 'Y' not in self.phenotype.sexgene and random() < 0.99)):
             self.get_permanent_condition('sterile', born_with=True, genetic=True)
