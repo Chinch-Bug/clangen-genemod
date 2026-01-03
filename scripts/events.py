@@ -2353,12 +2353,12 @@ def handle_injuries_or_general_death(cat, clan):
 
 def handle_murder(cat, clan):
     """Handles murder"""
-    relationships = cat.relationships.values()
-    targets = []
-    all_clans = [game.clan] + game.clan.all_other_clans
 
     if cat.age.is_baby():
         return
+        
+    relationships = cat.relationships.values()
+    targets = []
 
     # if this cat is unstable and aggressive, we lower the random murder chance
     random_murder_chance = int(constants.CONFIG["death_related"]["base_random_murder_chance"])
@@ -2411,7 +2411,7 @@ def handle_murder(cat, clan):
     negative_relation = [
         i
         for i in relationships
-        if i.has_negative
+        if i.has_mid_negative or i.has_mid_negative
         and Cat.fetch_cat(i.cat_to).status.group.is_any_clan_group()
     ]
     targets.extend(negative_relation)
@@ -2476,7 +2476,7 @@ def handle_murder(cat, clan):
             create_short_event(
                 event_type="misc",
                 main_cat=cat,
-                random_cat=Cat.fetch_cat(chosen_target.cat_to),
+                random_cat=chosen_cat,
                 sub_type=["failed_murder"],
                 clan=clan,
                 second_clan=chosen_cat.status.fetch_clan_object(game.clan) if chosen_cat.status.group_ID != cat.status.group_ID else None

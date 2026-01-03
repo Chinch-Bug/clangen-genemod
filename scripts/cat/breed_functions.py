@@ -2032,8 +2032,9 @@ class Breed_generator:
 
         # ALBINO
 
-        for i in range(2):
-            genoclass.pointgene[i] = "cs"
+        if not random() < 0.2:
+            for i in range(2):
+                genoclass.pointgene[i] = "cs"
 
         for i in range(2):
             if randint(1, 50) == 1:
@@ -4214,8 +4215,11 @@ class Breed_checker:
             return False
         phenotype.longtype = "long"
 
-        if phenotype.pointgene[0] != "cs" or phenotype.white[0] not in ["ws", "w"] or phenotype.white[1] not in ["ws", "w"]:
+        if phenotype.white[0] not in ["ws", "w"] or phenotype.white[1] not in ["ws", "w"]:
             return False
+
+        if phenotype.pointgene[0] != "cs":
+            return "Cherubim"
 
         return "Ragdoll"
 

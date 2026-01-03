@@ -591,7 +591,7 @@ class ShortEvent:
 
             if cat.status.is_leader:
                 if "all_lives" in self.tags:
-                    clan.leader_lives -= 10
+                    clan.leader_lives = 0
                 elif "some_lives" in self.tags:
                     clan.leader_lives -= randrange(
                         2, self.leads_current_life_count - 1
@@ -719,7 +719,7 @@ class ShortEvent:
 
                     if self.main_cat.status.is_leader:
                         self.leads_current_life_count -= 1
-                        if self.leads_current_life_count != self.main_cat.status.fetch_clan_object().leader_lives:
+                        if self.leads_current_life_count > self.main_cat.status.fetch_clan_object().leader_lives:
                             while (
                                 self.leads_current_life_count > self.main_cat.status.fetch_clan_object().leader_lives
                             ):
@@ -753,7 +753,7 @@ class ShortEvent:
 
                     if self.random_cat.status.is_leader:
                         self.leads_current_life_count_r_c -= 1
-                        if self.leads_current_life_count_r_c != self.random_cat.status.fetch_clan_object().leader_lives:
+                        if self.leads_current_life_count_r_c > self.random_cat.status.fetch_clan_object().leader_lives:
                             while (
                                 self.leads_current_life_count_r_c > self.random_cat.status.fetch_clan_object().leader_lives
                             ):
@@ -786,7 +786,7 @@ class ShortEvent:
 
                     if cat.status.is_leader:
                         self.leads_current_life_count -= 1
-                        if self.leads_current_life_count != cat.status.fetch_clan_object().leader_lives:
+                        if self.leads_current_life_count > cat.status.fetch_clan_object().leader_lives:
                             while (
                                 self.leads_current_life_count > cat.status.fetch_clan_object().leader_lives
                             ):

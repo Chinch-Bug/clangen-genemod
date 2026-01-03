@@ -661,7 +661,7 @@ class Phenotype(Genotype):
                     else:
                         if(randint(1, 7) == 1):
                             chosen.append(choice(tortie_low_patterns))
-                        elif(randint(1, 3) == 1):
+                        elif(randint(1, 3) != 1):
                             chosen.append(choice(tortie_mid_patterns))
                         else:
                             chosen.append(choice(tortie_high_patterns))
@@ -669,7 +669,7 @@ class Phenotype(Genotype):
                     if self.whitegrade > 3:
                         if(randint(1, 7) == 1):
                             chosen.append(choice(tortie_high_patterns))
-                        elif(randint(1, 3) == 1):
+                        elif(randint(1, 3) != 1):
                             chosen.append(choice(tortie_mid_patterns))
                         else:
                             chosen.append(choice(tortie_low_patterns))
@@ -859,7 +859,7 @@ class Phenotype(Genotype):
             banding = "low"
             
             if ('masked' in self.silvergold and genes.wbsum > 15) or (genes.agouti[0] != "a" and genes.ext[0] != "Eg") or (genes.ext[0] not in ['Eg', 'E']):
-                if genes.silver[0] == "I" or genes.brindledbi or (moons < 3 and genes.karp[0] == "K"):
+                if genes.silver[0] == "I" or genes.brindledbi or (moons < 2 and genes.karp[0] == "K"):
                     rufousing = "silver"
                 elif genes.pointgene[0] != "C" or genes.agouti[0] == "Apb" or self.length in ["hairless", "fur-pointed"]:
                     rufousing = "low"
@@ -929,7 +929,7 @@ class Phenotype(Genotype):
         
         rufousing = ""
         banding = ""
-        if (genes.silver[0] == "I" and special != 'nosilver') or (moons < 3 and genes.karp[0] == "K") or (self.brindledbi):
+        if (genes.silver[0] == "I" and special != 'nosilver') or (moons < 2 and genes.karp[0] == "K") or (self.brindledbi):
             rufousing = "silver"
         elif genes.pointgene[0] not in ["C", "cm"] or special=='low':
             rufousing = "low"
