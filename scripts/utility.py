@@ -3770,8 +3770,8 @@ def generate_sprite(
                                 pointbase2.blit(sprites.sprites['lightbasecolours0'], (0, 0))
                                 pointbase2.blit(pointbase, (0, 0))
                                 whichmain = AddStripes(whichmain, whichcolour, whichbase, coloursurface=pointbase2)
-                            else:
-                                whichmain = AddStripes(whichmain, 'lightbasecolours0', whichbase)
+                            # else:
+                            #     whichmain = AddStripes(whichmain, 'lightbasecolours0', whichbase)
 
                         #mask base
                         colourbase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)

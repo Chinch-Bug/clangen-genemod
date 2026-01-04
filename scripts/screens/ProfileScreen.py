@@ -1562,7 +1562,7 @@ class ProfileScreen(Screens):
                 )
 
                 if moons:
-                    new_text += f" ({i18n.t('general.moon_date', moon=scar['moon'])})"
+                    new_text += f" ({i18n.t('general.moons_date', moon=scar['moon'])})"
 
                 # checking to see if we can throw out a duplicate
                 if new_text in scar_text:
@@ -1714,7 +1714,7 @@ class ProfileScreen(Screens):
 
             if switch_get_value(Switch.show_history_moons):
                 graduation_history += (
-                    f" ({i18n.t('general.moon_date', moon=app_ceremony['moon'])})"
+                    f" ({i18n.t('general.moons_date', moon=app_ceremony['moon'])})"
                 )
         cat_dict = {"m_c": (str(self.the_cat.name), choice(self.the_cat.pronouns))}
         apprenticeship_history = influence_history + " " + graduation_history
