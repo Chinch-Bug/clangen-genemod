@@ -370,15 +370,16 @@ class ShortEvent:
 
         self.gather_future_event(clan)
 
-        game.cur_events_list.append(
-            Single_Event(
-                self.text + " " + self.additional_event_text,
-                self.types,
-                self.all_involved_cat_ids,
-                clan=clan.group_ID
+        if "m_c" not in self.exclude_involved or not self.random_cat:
+            game.cur_events_list.append(
+                Single_Event(
+                    self.text + " " + self.additional_event_text,
+                    self.types,
+                    self.all_involved_cat_ids,
+                    clan=clan.group_ID
+                )
             )
-        )
-        if second_clan:
+        if second_clan and "r_c" not in self.exclude_involved:
             game.cur_events_list.append(
                 Single_Event(
                     self.text + " " + self.additional_event_text,
