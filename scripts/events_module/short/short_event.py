@@ -596,7 +596,7 @@ class ShortEvent:
                 elif "some_lives" in self.tags:
                     clan.leader_lives -= randrange(
                         2, self.leads_current_life_count - 1
-                    )
+                    ) if self.leads_current_life_count > 3 else 2
                 else:
                     clan.leader_lives -= 1
 
