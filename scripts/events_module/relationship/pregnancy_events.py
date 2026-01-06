@@ -1531,6 +1531,7 @@ class Pregnancy_Events:
                 kit.phenotype.tortiepattern = None
                 kit.phenotype.chimerapattern = None
                 kit.phenotype.merlepattern = None
+                kit.phenotype.somatic = {}
                 kit.phenotype.white_pattern = kit.pelt.generate_white(kit.phenotype.white, kit.phenotype.pointgene, kit.phenotype.whitegrade, kit.phenotype.vitiligo, None, kit.phenotype.pax3)
                 kit.phenotype.PhenotypeOutput(kit.phenotype.white_pattern)
                 kit.phenotype.SpriteInfo(kit.moons)

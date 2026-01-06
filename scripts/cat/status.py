@@ -647,8 +647,8 @@ class Status:
 
         return None
 
-    def fetch_clan_object(self, default=None):
-        living_group_id = self.get_last_living_group()
+    def fetch_clan_object(self, default=None, override_id=None):
+        living_group_id = self.get_last_living_group() if not override_id else override_id
         clan = game.clan if living_group_id == CatGroup.PLAYER_CLAN_ID else next(filter(lambda c: c.group_ID == living_group_id, game.clan.all_other_clans), default)
         return clan
 
@@ -674,7 +674,7 @@ class Status:
         if not group_ID:
             for entry in self.standing_history[::-1]:
                 if entry["standing"][-1] == CatStanding.EXILED:
-                    return True
+                    return entry["group"]
             return False
 
         # if group given
