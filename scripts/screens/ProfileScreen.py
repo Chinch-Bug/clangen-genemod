@@ -957,8 +957,8 @@ class ProfileScreen(Screens):
         else:
             name = game.clan.displayname
 
-        if the_cat.status.is_exiled(the_cat.status.group_ID):
-            name = the_cat.status.fetch_clan_object(game.clan).displayname
+        if exile_clan := the_cat.status.is_exiled():
+            exiled_name = the_cat.status.fetch_clan_object(game.clan, exile_clan).displayname
 
         cat_clan = i18n.t(f"general.clan", name=f"{name}")
 
@@ -967,7 +967,7 @@ class ProfileScreen(Screens):
             # NEWLINE ----------
             output += "\n"
         elif the_cat.status.is_exiled():
-            output += f"<font color='#FF0000'>{i18n.t('general.exiled', count=1)} {cat_clan}</font>"
+            output += f"<font color='#FF0000'>{i18n.t('general.exiled', count=1)} {i18n.t(f"general.clan", name=f"{exiled_name}")}</font>"
             # NEWLINE ----------
             output += "\n"
 
