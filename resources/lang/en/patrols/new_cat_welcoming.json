@@ -2541,7 +2541,8 @@
                 "outsider_rep": 0,
                 "new_cat": [
                     ["status:healer","meeting", "loner", "backstory:wandering_healer2"]
-                ]
+                ],
+                "frequency": 4
             }
         ],
         "antag_fail_outcomes": [

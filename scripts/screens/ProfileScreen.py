@@ -961,6 +961,7 @@ class ProfileScreen(Screens):
         else:
             name = game.clan.displayname
 
+        exiled_name = ""
         if exile_clan := the_cat.status.is_exiled():
             exiled_name = the_cat.status.fetch_clan_object(game.clan, exile_clan).displayname
 

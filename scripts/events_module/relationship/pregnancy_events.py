@@ -268,7 +268,7 @@ class Pregnancy_Events:
         if other_cat:
             other_cat_copy = []
             for x in other_cat:
-                if not (x.dead or x.status.is_lost() or x.status.is_exiled(clan.group_ID) or x.birth_cooldown > 0 or x.no_kits):
+                if not (x.dead or x.status.is_lost() or x.status.is_exiled(clan.group_ID) or x.birth_cooldown > 0 or x.no_kits or "sterile" in x.permanent_condition):
                     other_cat_copy.append(x)
             other_cat = other_cat_copy
         
@@ -1027,13 +1027,13 @@ class Pregnancy_Events:
                 mate.append(cat.fetch_cat(choice(cat.mate)))
 
         # if the sex does matter, choose the best solution to allow kits
-        if not samesex and mate and 'Y' not in cat.phenotype.sexgene:
+        if not samesex and mate and not cat_is_amab(cat):
             opposite_mate = [cat.fetch_cat(mate_id) for mate_id in cat.mate if xor(cat_is_amab(cat.fetch_cat(mate_id)), cat_is_amab(cat))]
             if len(opposite_mate) > 0:
                 mate = opposite_mate
                 if not get_clan_setting('multisire'):
                     mate = [choice(opposite_mate)]
-        elif not samesex and mate and 'Y' in cat.phenotype.sexgene:
+        elif not samesex and mate and cat_is_amab(cat):
             opposite_mate = [cat.fetch_cat(mate_id) for mate_id in cat.mate if xor(cat_is_amab(cat.fetch_cat(mate_id)), cat_is_amab(cat))]
             if len(opposite_mate) > 0:
                 mate = [choice(opposite_mate)]

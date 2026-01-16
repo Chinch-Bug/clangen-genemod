@@ -624,7 +624,7 @@ def handle_lead_den_event():
                         clan=game.clan)
 
         if "relationships" in cat_dict:
-            unpack_rel_block(Cat, cat_dict["relationships"], extra_cat=outsider_cat)
+            unpack_rel_block(Cat, cat_dict["relationships"], extra_cat=outsider_cat, clan=game.clan)
 
         # adjust text and add to event list
         event_text = event_text_adjust(
