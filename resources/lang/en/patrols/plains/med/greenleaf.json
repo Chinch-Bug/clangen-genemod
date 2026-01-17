@@ -3853,10 +3853,7 @@
                 1,
                 6
             ],
-            "all apprentices": [
-                -1,
-                -1
-            ]
+            "all apprentices": [ -1, -1 ]
         },
         "frequency": 4,
         "intro_text": "p_l is on a mission to find lungwort now that greenleaf is here. As the only reliable cure for yellowcough, {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} determined that c_n stock up on it.",
@@ -6657,7 +6654,7 @@
         ]
     },
     {
-        "patrol_id": "pln_med_gatheringraspberrysoloapp__greenleaf1",
+        "patrol_id": "pln_med_gatheringraspberrysoloapp_greenleaf1",
         "biome": [
             "plains"
         ],
@@ -6674,9 +6671,10 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "healer": [1, 6],
-            "healer apprentice": [1, 6],
-            "healer cats": [1, 6]
+            "healer apprentice": [
+                1,
+                1
+            ]
         },
         "frequency": 4,
         "intro_text": "While gathering herbs, app1 stumbles upon a bush of red berries.",

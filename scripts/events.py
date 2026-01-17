@@ -1423,13 +1423,15 @@ def check_war():
             if not war_events or not enemy_clan or main_clan == enemy_clan:
                 continue
 
-            if not main_clan.leader or not main_clan.deputy or not main_clan.medicine_cat:
+            available_med = find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True, clan=main_clan.group_ID)
+
+            if not main_clan.leader or not main_clan.deputy or not available_med:
                 for event in war_events:
                     if not main_clan.leader and "lead_name" in event:
                         war_events.remove(event)
                     if not main_clan.deputy and "dep_name" in event:
                         war_events.remove(event)
-                    if not main_clan.medicine_cat and "med_name" in event:
+                    if not available_med and "med_name" in event:
                         war_events.remove(event)
 
 
@@ -1439,8 +1441,18 @@ def check_war():
                 Cat, event, other_clan_name=f"{enemy_clan.displayname}Clan", clan=main_clan
             )
             game.cur_events_list.append(Single_Event(event, "other_clans", clan=clan))
-            event = random.choice(war_events)
             if game.clan.clancount == "multiclan":
+                available_med = find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True, clan=enemy_clan.group_ID)
+
+                if not enemy_clan.leader or not enemy_clan.deputy or not available_med:
+                    for event in war_events:
+                        if not enemy_clan.leader and "lead_name" in event:
+                            war_events.remove(event)
+                        if not enemy_clan.deputy and "dep_name" in event:
+                            war_events.remove(event)
+                        if not available_med and "med_name" in event:
+                            war_events.remove(event)
+                event = random.choice(war_events)
                 event = ongoing_event_text_adjust(
                     Cat, event, other_clan_name=f"{main_clan.displayname}Clan", clan=enemy_clan
                 )

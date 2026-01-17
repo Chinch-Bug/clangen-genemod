@@ -214,11 +214,10 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [-1, -1],
-            "healer": [1, 6],
-            "healer apprentice": [1, 6],
-            "healer cats": [1, 6],
-            "normal adult": [-1, -1]
+            "healer apprentice": [
+                1,
+                1
+            ]
         },
         "frequency": 4,
         "intro_text": "app1 has been sent out into the desert to try to find some specific herbs alone.",
@@ -3048,17 +3047,16 @@
             "herb_gathering"
         ],
         "tags": [
-            "all_mentored"
+            "app1_mentored"
         ],
         "patrol_art": "med_general_intro",
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "apprentice": [-1, -1],
-            "healer": [1, 6],
-            "healer apprentice": [1, 6],
-            "healer cats": [1, 6],
-            "normal adult": [-1, -1]
+            "healer apprentice": [
+                1,
+                1
+            ]
         },
         "frequency": 4,
         "intro_text": "p_l is out to gather a few herbs at the behest of {PRONOUN/p_l/poss} mentor. The wind is gently rustling the scrubby grass as {PRONOUN/p_l/subject} pad along.",

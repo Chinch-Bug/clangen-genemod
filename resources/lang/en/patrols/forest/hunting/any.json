@@ -2205,10 +2205,10 @@
         "patrol_art": "hunt_general_intro",
         "min_cats": 1,
         "max_cats": 1,
-        "min_max_status": {
+                "min_max_status": {
             "deputy": [
                 1,
-                6
+                1
             ]
         },
         "frequency": 4,
@@ -2302,7 +2302,7 @@
         "min_max_status": {
             "leader": [
                 1,
-                6
+                1
             ]
         },
         "frequency": 4,
@@ -2724,7 +2724,20 @@
             {
                 "text": "A friendly Twoleg makes a 'psspsspss' noise and pours kittypet food on the ground for r_c. {PRONOUN/r_c/subject/CAP}{VERB/r_c/'ve/'s} always wondered what it might taste like... Dry, is the answer. Very odd.",
                 "exp": 20,
-                "frequency": 1
+                "frequency": 1,
+            "relationships": [
+                {
+                    "cats_from": ["high_lawful"],
+                    "cats_to": ["s_c"],
+                    "values": ["like", "respect"],
+                    "mutual": false,
+                    "amount": -5,
+                    "log":
+                    {
+                        "cats_from": "from_cat caught the scent of kittypet food on to_cat's pelt."
+                    }
+                }
+            ]
             },
             {
                 "text": "s_c gets distracted from hunting by strange Twoleg activity around one of their dens. They appear to be hauling all their many, many varieties of nest lining out and into a big monster. s_c takes the opportunity to grab a little soft thing, something that's almost shaped like prey. It'll be good for the nursery.",
@@ -2970,10 +2983,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "all apprentices": [
-                -1,
-                -1
-            ]
+            "all apprentices": [ -1, -1 ]
         },
         "frequency": 2,
         "intro_text": "{PRONOUN/r_c/poss/CAP} eyes daring p_l to say no, r_c suggests hunting by the Twoleg dens.",
@@ -3068,10 +3078,8 @@
                 "stat_trait": [
                     "calm",
                     "careful",
-                    "insecure",
                     "lonesome",
                     "loyal",
-                    "nervous",
                     "sneaky",
                     "strange"
                 ],
@@ -3223,7 +3231,7 @@
                         ],
                         "mutual": false,
                         "values": ["romance", "like"],
-                        "amount": 5,
+                        "amount": 10,
                         "log": {
                             "cats_from": "cat_from convinced to_cat to hunt by the Twoleg dens and found success.",
                             "cats_to": "to_cat followed from_cat in a risky hunt by the Twoleg dens and found success."
@@ -3248,7 +3256,7 @@
                         ],
                         "mutual": false,
                         "values": ["romance", "like"],
-                        "amount": 5,
+                        "amount": 10,
                         "log": {
                             "cats_from": "from_cat and to_cat tasted a little kittypet food together on patrol."
                         }
@@ -3260,12 +3268,7 @@
                 "text": "Tail lashing excitedly, app1 hunts in the strange, forbidden land, ducking around corners and crawling over gardens with {PRONOUN/app1/poss} belly low to the ground. app2 tries to be even sneakier, and so app1 ups {PRONOUN/app1/poss} game, until they're both probably the most obvious pair of cats in the neighborhood.",
                 "exp": 20,
                 "stat_trait": [
-                    "calm",
-                    "careful",
-                    "insecure",
                     "lonesome",
-                    "loyal",
-                    "nervous",
                     "sneaky",
                     "strange",
                     "cunning"
@@ -3349,7 +3352,7 @@
                         "cats_from": ["patrol"],
                         "mutual": false,
                         "values": ["comfort"],
-                        "amount": -5,
+                        "amount": -10,
                         "log": {
                             "cats_from": "from_cat was with to_cat when {PRONOUN/to_cat/subject} {VERB/to_cat/were/was} taken by Twolegs and blamed {PRONOUN/from_cat/self}."
                         }
@@ -3410,11 +3413,15 @@
                     "calm",
                     "careful",
                     "insecure",
-                    "lonesome",
+                    "faithful",
                     "loyal",
                     "nervous",
-                    "sneaky",
-                    "strange"
+                    "responsible",
+                    "righteous",
+                    "strict",
+                    "sincere",
+                    "thoughtful",
+                    "wise"
                 ],
                 "frequency": 4,
                 "relationships": [
@@ -3463,7 +3470,7 @@
         },
         "frequency": 2,
         "intro_text": "The smell of food lures r_c into what looks like a tunnel between some bushes.",
-        "decline_text": "Turning {PRONOUN/r_c/poss} nose up at the temptation, the patrol continues on their way.",
+        "decline_text": "Turning their noses up at the temptation, the patrol continues on their way.",
         "chance_of_success": 40,
         "success_outcomes": [
             {
@@ -3480,7 +3487,8 @@
                 "text": "Something about this situation sets all of s_c's instincts off. {PRONOUN/s_c/subject/CAP} {VERB/s_c/investigate/investigates} carefully. The patrol helps {PRONOUN/s_c/object} strip the cover of the bushes away from a Twoleg trap underneath.",
                 "exp": 20,
                 "stat_skill": [
-                    "CLEVER,1"
+                    "CLEVER,1",
+                    "SENSE,1"
                 ],
                 "frequency": 4,
             "relationships": [
@@ -3505,10 +3513,11 @@
                     "careful",
                     "insecure",
                     "lonesome",
-                    "loyal",
+                    "wise",
                     "nervous",
                     "sneaky",
-                    "strange"
+                    "cunning",
+                    "strict"
                 ],
                 "frequency": 4,
             "relationships": [
@@ -4180,10 +4189,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "all apprentices": [
-                -1,
-                -1
-            ]
+            "all apprentices": [ -1, -1 ]
         },
         "frequency": 3,
         "intro_text": "As r_c tears through the forest with p_l, stretching {PRONOUN/r_c/poss} legs on a run, {PRONOUN/r_c/subject} {VERB/r_c/spot/spots} movement out of the corner of {PRONOUN/r_c/poss} eye.",
@@ -4436,17 +4442,13 @@
                 ],
                 "relationships": [
                     {
-                        "cats_to": [
-                            "patrol"
-                        ],
-                        "cats_from": [
-                            "patrol"
-                        ],
-                        "mutual": false,
+                        "cats_to": ["p_l"],
+                        "cats_from": ["r_c"],
+                        "mutual": true,
                         "values": ["like", "comfort"],
                         "amount": 5,
                         "log": {
-                            "cats_from": "from_cat and to_cat had a satisfying hunt together."
+                            "cats_from": "from_cat and to_cat shared a laugh after catching two ends of a lizard."
                         }
                     }
                 ],
@@ -4602,7 +4604,7 @@
                         "values": ["romance", "like", "comfort"],
                         "amount": 15,
                         "log": {
-                            "cats_from": "After bonking heads on a hunt, from_cat and to_cat end up growing much closer together."
+                            "cats_from": "After bonking heads on a hunt, from_cat and to_cat ended up growing much closer together."
                         }
                     }
                 ],
@@ -5651,7 +5653,7 @@
     {
         "patrol_id": "fst_hunt_redfox_scavenge1",
         "biome": ["forest"],
-        "season": ["greenleaf", "leaf-fall", "newleaf"],
+        "season": ["any"],
         "types": ["hunting"],
         "tags": [],
         "patrol_art": "fst_hunt_redfox_greenleafscavenge1",
@@ -5874,7 +5876,7 @@
     {
         "patrol_id": "fst_hunt_redfox_scavenge2",
         "biome": ["forest"],
-        "season": ["greenleaf", "newleaf", "leaf-fall"],
+        "season": ["any"],
         "types": ["hunting"],
         "tags": [],
         "patrol_art": "hunt_general_intro",
@@ -9058,6 +9060,102 @@
                     "reg_death": "m_c died of shock after {PRONOUN/m_c/poss} encounter with the Dover Demon.",
                     "lead_death": "died of shock from an encounter with the Dover Demon"
                 }
+            }
+        ]
+    },
+    {
+        "patrol_id": "fst_hunt_herb_warriorgreenleaf1",
+        "biome": [
+            "forest"
+        ],
+        "season": [
+            "greenleaf", "newleaf", "leaf-fall"
+        ],
+        "types": [
+            "hunting"
+        ],
+        "tags": [],
+        "patrol_art": "hunt_general_intro",
+        "min_cats": 3,
+        "max_cats": 6,
+        "min_max_status": {},
+        "frequency": 2,
+        "intro_text": "p_l finds a patch of herbs that {PRONOUN/p_l/subject} {VERB/p_l/believe/believes} c_n might need for their stores. {PRONOUN/p_l/subject/CAP} freely {VERB/p_l/admit/admits} to {PRONOUN/p_l/poss} patrol {PRONOUN/p_l/subject} {VERB/p_l/are/is}n't a medicine cat, and {VERB/p_l/ask/asks} {PRONOUN/p_l/poss} companions' advice. What do they know about this part of the forest's herbal properties, especially in the heat of greenleaf?",
+        "decline_text": "They decide to focus on hunting and leave the herb collecting to the medicine cats.",
+        "chance_of_success": 50,
+        "success_outcomes": [
+            {
+                "text": "It's not their normal task, but they're all smart enough to value supporting the Clan's medicine cat den. The patrol brings the herbs back to camp and they are put to good use.",
+                "exp": 10,
+                "herbs": [
+                    "random_herbs"
+                ],
+                "relationships": [
+                    {
+                        "cats_to": [
+                            "p_l"
+                        ],
+                        "cats_from": [
+                            "patrol"
+                        ],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": 5,
+                        "log": {
+                            "cats_from": "from_cat thought it was very considerate of to_cat to bring back some herbs during a hunting patrol."
+                        }
+                    }
+                ],
+                "frequency": 4
+            },
+            {
+                "text": "s_c carefully plucks some of the herbs and takes them back to the camp to be identified before the patrol goes to the trouble of collecting them, smartly deciding to get an informed opinion before committing the patrol.",
+                "exp": 10,
+                "stat_skill": [
+                    "CLEVER,0",
+                    "INSIGHTFUL,0",
+                    "HEALER,0",
+                    "LORE,0"
+                ],
+                "herbs": [
+                    "random_herbs"
+                ],
+                "relationships": [
+                    {
+                        "cats_to": ["s_c"],
+                        "cats_from": ["patrol"],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": 8,
+                        "log": {
+                            "cats_from": "from_cat appreciated that to_cat checked with a medicine cat before gathering herbs on a hunting patrol."
+                        }
+                    }
+                ],
+                "frequency": 4
+            }
+        ],
+        "fail_outcomes": [
+            {
+                "text": "The patrol brings the herbs back to camp, only to find out that while the herbs promote good gut health, they're not a rare resource. Still, c_n will be eating an extra healthy dinner tonight with the herbs sprinkled into their fresh-kill.",
+                "exp": 0,
+                "relationships": [
+                    {
+                        "cats_to": [
+                            "p_l"
+                        ],
+                        "cats_from": [
+                            "patrol"
+                        ],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": 3,
+                        "log": {
+                            "cats_from": "Even though the herbs weren't medicinal, from_cat thought it was considerate of to_cat to gather them while the patrol hunted."
+                        }
+                    }
+                ],
+                "frequency": 4
             }
         ]
     }

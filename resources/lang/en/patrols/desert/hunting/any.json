@@ -461,10 +461,10 @@
         "patrol_art": "hunt_general_intro",
         "min_cats": 1,
         "max_cats": 1,
-        "min_max_status": {
+                "min_max_status": {
             "deputy": [
                 1,
-                6
+                1
             ]
         },
         "frequency": 2,
@@ -558,7 +558,7 @@
         "min_max_status": {
             "leader": [
                 1,
-                6
+                1
             ]
         },
         "frequency": 2,
@@ -2407,10 +2407,7 @@
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
-            "all apprentices": [
-                -1,
-                -1
-            ]
+            "all apprentices": [ -1, -1 ]
         },
         "frequency": 2,
         "intro_text": "r_c is tempted to eat the prey they just caught.",
