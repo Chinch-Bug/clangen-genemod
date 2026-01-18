@@ -3294,7 +3294,7 @@ def generate_sprite(
         if somatic:
             phenotype[phenotype.somatic["gene"]][0] = phenotype.somatic["allele"]
             phenotype.GeneSort()
-            if phenotype.somatic["gene"] == 'sexgene':
+            if phenotype.somatic["gene"] == 'sexgene' and len(phenotype.sexgene) > 1:
                 phenotype.sexgene[1] = 'Y'
             phenotype.PhenotypeOutput(phenotype.white_pattern)
 

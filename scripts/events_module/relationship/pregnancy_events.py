@@ -1237,7 +1237,7 @@ class Pregnancy_Events:
         unknowns = []
         for outcat in Cat.all_cats:
             outcat = Cat.all_cats.get(outcat)
-            if not outcat.dead and not outcat.status.is_lost(clan.group_ID) and not outcat.status.is_exiled(clan.group_ID):
+            if not outcat.dead and not outcat.status.is_lost(clan.group_ID) and not (outcat.status.is_exiled(clan.group_ID) or random() < 0.25):
                 unknowns.append(outcat)
 
         possible_affair_partners = [i for i in unknowns if
