@@ -1429,9 +1429,9 @@ def check_war():
                 for event in war_events:
                     if not main_clan.leader and "lead_name" in event:
                         war_events.remove(event)
-                    if not main_clan.deputy and "dep_name" in event:
+                    elif not main_clan.deputy and "dep_name" in event:
                         war_events.remove(event)
-                    if not available_med and "med_name" in event:
+                    elif not available_med and "med_name" in event:
                         war_events.remove(event)
 
 
@@ -1448,9 +1448,9 @@ def check_war():
                     for event in war_events:
                         if not enemy_clan.leader and "lead_name" in event:
                             war_events.remove(event)
-                        if not enemy_clan.deputy and "dep_name" in event:
+                        elif not enemy_clan.deputy and "dep_name" in event:
                             war_events.remove(event)
-                        if not available_med and "med_name" in event:
+                        elif not available_med and "med_name" in event:
                             war_events.remove(event)
                 event = random.choice(war_events)
                 event = ongoing_event_text_adjust(
