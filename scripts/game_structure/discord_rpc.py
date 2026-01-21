@@ -108,7 +108,7 @@ class _DiscordRPC(threading.Thread):
                     "Don't worry, it will fix itself. Hopefully."
                 )
                 img_str = "discord"  # fallback incase the game isn't loaded yet
-                img_text = "Clangen!!"
+                img_text = "Genemod!!"
 
             # Example: beach_greenleaf_camp1_dark
 
@@ -132,7 +132,7 @@ class _DiscordRPC(threading.Thread):
                     buttons=[
                         {
                             "label": "Join The Server",
-                            "url": "https://discord.gg/clangen",
+                            "url": "https://discord.gg/7CNZzsHC7n",
                         }
                     ],
                 )
