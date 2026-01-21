@@ -847,6 +847,7 @@ def create_new_cat_block(
                 thought=thought,
                 alive=alive,
                 outside=outside,
+                group=clan.group_ID,
                 parent1=parent1.ID if parent1 else None,
                 parent2=parent2.ID if parent2 else None,
                 extrapar=generated_parents[2] if not parent2 and generated_parents else None,
