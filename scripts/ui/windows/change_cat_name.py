@@ -1,7 +1,7 @@
 import pygame
 import pygame_gui
 
-from scripts.cat.names import Name
+from scripts.cat.names import Name, names
 from scripts.game_structure import game
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.game_structure.ui_elements import (
@@ -14,6 +14,7 @@ from scripts.ui.icon import Icon
 from scripts.ui.windows.base_window import GameWindow
 from scripts.utility import ui_scale, shorten_text_to_fit
 from re import sub
+from random import choice, random
 
 
 class ChangeCatName(GameWindow):
@@ -198,7 +199,7 @@ class ChangeCatName(GameWindow):
                 else:
                     use_prefix = self.the_cat.name.prefix
                 self.suffix_entry_box.set_text(
-                    Name(use_prefix, None, cat=self.the_cat).suffix
+                    Name(cat=self.the_cat, use_prefix, None).suffix
                 )
             elif event.ui_element == self.toggle_spec_block_on:
                 self.specsuffic_hidden = True
