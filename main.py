@@ -26,9 +26,6 @@ import time
 from importlib import reload
 from importlib.util import find_spec
 
-from scripts.screens.enums import GameScreen
-from scripts.ui.windows.save_check import SaveCheck
-
 if not getattr(sys, "frozen", False):
     requiredModules = [
         "ujson",
@@ -68,6 +65,8 @@ from scripts.housekeeping.log_cleanup import prune_logs
 from scripts.housekeeping.stream_duplexer import UnbufferedStreamDuplexer
 from scripts.housekeeping.datadir import get_log_dir, setup_data_dir
 from scripts.housekeeping.version import get_version_info, VERSION_NAME
+from scripts.screens.enums import GameScreen
+from scripts.ui.windows.save_check import SaveCheck
 
 try:
     directory = os.path.dirname(__file__)

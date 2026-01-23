@@ -61,7 +61,8 @@ def _collect_involved_cats(cat_dict: dict, future_info: dict, clan = game.clan) 
         # grab any cats that need to be newly gathered
         if isinstance(cat_involved, dict):
             gathered_cat_dict[new_role] = cat_for_event(cat_involved, possible_cats)
-            possible_cats.remove(Cat.fetch_cat(gathered_cat_dict[new_role]))
+            if gathered_cat_dict[new_role] is not None:
+                possible_cats.remove(Cat.fetch_cat(gathered_cat_dict[new_role]))
             continue
 
         # otherwise, assign already involved cats to their new role within the future event
