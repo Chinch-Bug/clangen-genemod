@@ -239,16 +239,16 @@
 			"deputy",
 			"leader",
 			"apprentice",
-			"medicine cat apprentice",
-			"medicine cat"
+			"healer apprentice",
+			"healer"
 		],
 		"random_status_constraint":[
 			"warrior",
 			"deputy",
 			"leader",
 			"apprentice",
-			"medicine cat apprentice",
-			"medicine cat"
+			"healer apprentice",
+			"healer"
 		],
 		"reaction_random_cat": {
 			"romance": "increase",

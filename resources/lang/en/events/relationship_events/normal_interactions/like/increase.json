@@ -833,16 +833,16 @@
 			"warrior",
 			"deputy",
 			"leader",
-			"medicine cat apprentice",
-			"medicine cat"
+			"healer apprentice",
+			"healer"
 		],
 		"random_status_constraint": [
 			"apprentice",
 			"warrior",
 			"deputy",
 			"leader",
-			"medicine cat apprentice",
-			"medicine cat"
+			"healer apprentice",
+			"healer"
 		]
 	}
 ]

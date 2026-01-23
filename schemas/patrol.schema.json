@@ -12,12 +12,12 @@
           "type": "object",
           "propertyNames": {
             "enum": [
-              "medicine cat",
+              "healer",
               "warrior",
               "leader",
               "deputy",
               "apprentice",
-              "medicine cat apprentice",
+              "healer apprentice",
               "healer cats",
               "normal adult",
               "all apprentices"

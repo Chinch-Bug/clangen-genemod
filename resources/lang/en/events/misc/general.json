@@ -10622,7 +10622,7 @@
     },
     "r_c": {
         "age": [],
-        "status": ["apprentice", "mediator apprentice", "medicine cat apprentice", "mediator", "medicine cat", "warrior", "deputy"]
+        "status": ["apprentice", "mediator apprentice", "healer apprentice", "mediator", "healer", "warrior", "deputy"]
     },
     "new_cat": [
         ["age:adult", "rogue", "meeting", "exists"]
@@ -10666,7 +10666,7 @@
     },
     "r_c": {
         "age": [],
-        "status": ["mediator", "medicine cat", "warrior", "deputy"],
+        "status": ["mediator", "healer", "warrior", "deputy"],
         "skill": ["FIGHTER,2"]
     },
     "new_cat": [
