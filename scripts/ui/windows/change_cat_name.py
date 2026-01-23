@@ -199,7 +199,7 @@ class ChangeCatName(GameWindow):
                 else:
                     use_prefix = self.the_cat.name.prefix
                 self.suffix_entry_box.set_text(
-                    Name(cat=self.the_cat, use_prefix, None).suffix
+                    Name(self.the_cat, use_prefix, None).suffix
                 )
             elif event.ui_element == self.toggle_spec_block_on:
                 self.specsuffic_hidden = True
