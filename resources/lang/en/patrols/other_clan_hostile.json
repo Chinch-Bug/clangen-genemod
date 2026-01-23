@@ -73,8 +73,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was scarred by an enemy warrior.",
-                    "reg_death": "m_c was killed by an enemy warrior.",
-                    "lead_death": "{VERB/m_c/were/was} killed by an enemy warrior"
+                    "death": "m_c was killed by an enemy warrior."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -97,8 +96,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was scarred by an enemy warrior.",
-                    "reg_death": "m_c was killed by an enemy warrior.",
-                    "lead_death": "{VERB/m_c/were/was} killed by an enemy warrior"
+                    "death": "m_c was killed by an enemy warrior."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -475,7 +473,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was scarred by {PRONOUN/m_c/poss} mate's Clanmates.",
-                    "reg_death": "m_c died from injuries inflicted by {PRONOUN/m_c/poss} mate's Clanmates."
+                    "death": "m_c died from injuries inflicted by {PRONOUN/m_c/poss} mate's Clanmates."
                 },
                 "relationships": [
                     {
@@ -548,7 +546,7 @@
                     "cats": [
                         "p_l"
                     ],
-                    "reg_death": "m_c was killed by {PRONOUN/m_c/poss} mate's Clanmates."
+                    "death": "m_c was killed by {PRONOUN/m_c/poss} mate's Clanmates."
                 },
                 "relationships": [
                     {
@@ -685,7 +683,7 @@
                     "cats": [
                         "n_c:0"
                     ],
-                    "reg_death": "m_c was killed by {PRONOUN/m_c/poss} mate's Clanmates."
+                    "death": "m_c was killed by {PRONOUN/m_c/poss} mate's Clanmates."
                 },
                 "relationships": [
                     {
@@ -869,11 +867,9 @@
                         "amount": -15
                     }
                 ],
-                "history": [
-                    {
-                        "reg_death": "m_c died in a fight with {PRONOUN/m_c/poss} mate's Clanmates."
-                    }
-                ],
+                "history_text": {
+                        "death": "m_c died in a fight with {PRONOUN/m_c/poss} mate's Clanmates."
+                    },
                 "new_cat": [
                     ["dead", "mate:p_l", "age:mate", "clancat", "exists"]
                 ],
@@ -989,8 +985,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was scarred after being ambushed on patrol.",
-                    "reg_death": "m_c died of injuries sustained in an ambush.",
-                    "lead_death": "died of injuries sustained in an ambush"
+                    "death": "m_c died of injuries sustained in an ambush."
                 },
                 "relationships": [
                     {
@@ -1104,8 +1099,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was scarred after brawling with a Clanmate.",
-                    "reg_death": "m_c died from injuries sustained in a brawl with a Clanmate.",
-                    "lead_death": "died from injuries sustained in a brawl with a Clanmate"
+                    "death": "m_c died from injuries sustained in a brawl with a Clanmate."
                 },
                 "relationships": [
                     {
@@ -1148,8 +1142,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was scarred after being ambushed on patrol.",
-                    "reg_death": "m_c died after {PRONOUN/m_c/poss} Clanmate abandoned {PRONOUN/m_c/object} to a rogue ambush.",
-                    "lead_death": "died after being abandoned and ambushed on patrol"
+                    "death": "m_c died after {PRONOUN/m_c/poss} Clanmate abandoned {PRONOUN/m_c/object} to a rogue ambush."
                 },
                 "frequency": 2
             },
@@ -1162,8 +1155,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was scarred in a o_c_n ambush.",
-                    "reg_death": "m_c died after {PRONOUN/m_c/poss} Clanmate abandoned them to a o_c_n ambush.",
-                    "lead_death": "died after being abandoned and ambushed on patrol"
+                    "death": "m_c died after {PRONOUN/m_c/poss} Clanmate abandoned them to a o_c_n ambush."
                 },
                 "other_clan_rep": -2,
                 "frequency": 2
@@ -1416,8 +1408,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was scarred by an enemy warrior.",
-                    "reg_death": "m_c was killed by an enemy warrior.",
-                    "lead_death": "{VERB/m_c/were/was} killed by an enemy warrior"
+                    "death": "m_c was killed by an enemy warrior."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -1440,8 +1431,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was scarred by an enemy warrior.",
-                    "reg_death": "m_c was killed by an enemy warrior.",
-                    "lead_death": "{VERB/m_c/were/was} killed by an enemy warrior"
+                    "death": "m_c was killed by an enemy warrior."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -1561,8 +1551,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c disrespected the border lines and was scarred by an enemy warrior for it.",
-                    "reg_death": "m_c disrespected the border lines and was killed by an enemy warrior for it.",
-                    "lead_death": "{VERB/m_c/were/was} killed by an enemy warrior"
+                    "death": "m_c disrespected the border lines and was killed by an enemy warrior for it."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -1585,8 +1574,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c disrespected the border lines and was scarred by an enemy warrior for it.",
-                    "reg_death": "m_c disrespected the border lines and was killed by an enemy warrior for it.",
-                    "lead_death": "{VERB/m_c/were/was} killed by an enemy warrior"
+                    "death": "m_c disrespected the border lines and was killed by an enemy warrior for it."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -1782,8 +1770,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c followed the scent of a trespassing cat and was scarred by a dog.",
-                    "reg_death": "m_c followed the scent of a trespassing cat and was killed by a dog.",
-                    "lead_death": "followed the scent of a trespassing cat and {VERB/m_c/were/was} killed by a dog"
+                    "death": "m_c followed the scent of a trespassing cat and was killed by a dog."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -1807,8 +1794,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c followed the scent of a trespassing cat and was scarred by a dog.",
-                    "reg_death": "m_c followed the scent of a trespassing cat and was killed by a dog.",
-                    "lead_death": "followed the scent of a trespassing cat and {VERB/m_c/were/was} killed by a dog"
+                    "death": "m_c followed the scent of a trespassing cat and was killed by a dog."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -1912,8 +1898,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c followed the scent of a trespassing cat and was scarred by a dog.",
-                    "reg_death": "m_c followed the scent of a trespassing cat and was killed by a dog.",
-                    "lead_death": "followed the scent of a trespassing cat and {VERB/m_c/were/was} killed by a dog"
+                    "death": "m_c followed the scent of a trespassing cat and was killed by a dog."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -1937,8 +1922,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c followed the scent of a trespassing cat and was scarred by a dog.",
-                    "reg_death": "m_c followed the scent of a trespassing cat and was killed by a dog.",
-                    "lead_death": "followed the scent of a trespassing cat and {VERB/m_c/were/was} killed by a dog"
+                    "death": "m_c followed the scent of a trespassing cat and was killed by a dog."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -2067,8 +2051,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -2091,8 +2074,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -2125,8 +2107,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -2232,8 +2213,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -2256,8 +2236,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -2280,8 +2259,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -2314,8 +2292,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -2419,8 +2396,7 @@
                 "exp": 0,
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c lost a life against a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c lost a life against a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -2443,8 +2419,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c lost a life against a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c lost a life against a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -2467,8 +2442,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c lost a life against a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c lost a life against a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -2501,8 +2475,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c lost a life against a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c lost a life against a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -2612,8 +2585,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -2636,8 +2608,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -2670,8 +2641,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -2772,8 +2742,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -2797,8 +2766,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -2831,8 +2799,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -2954,8 +2921,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -2978,8 +2944,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -3012,8 +2977,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -3119,8 +3083,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -3143,8 +3106,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -3167,8 +3129,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -3201,8 +3162,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -3310,8 +3270,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c lost a life against a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c lost a life against a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -3334,8 +3293,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c lost a life against a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c lost a life against a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -3358,8 +3316,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c lost a life against a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c lost a life against a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -3392,8 +3349,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c lost a life against a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c lost a life against a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -3503,8 +3459,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -3526,8 +3481,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -3560,8 +3514,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -3662,8 +3615,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -3686,8 +3638,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -3720,8 +3671,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -3843,8 +3793,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -3867,8 +3816,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -3901,8 +3849,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -4008,8 +3955,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -4032,8 +3978,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -4056,8 +4001,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -4090,8 +4034,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -4199,8 +4142,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c lost a life against a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c lost a life against a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -4223,8 +4165,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c lost a life against a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c lost a life against a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -4248,8 +4189,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c lost a life against a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c lost a life against a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -4282,8 +4222,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c lost a life against a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c lost a life against a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -4393,8 +4332,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -4417,8 +4355,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -4451,8 +4388,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -4553,8 +4489,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -4577,8 +4512,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -4611,8 +4545,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -4734,8 +4667,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -4758,8 +4690,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -4792,8 +4723,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -4899,8 +4829,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -4923,8 +4852,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -4947,8 +4875,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -4981,8 +4908,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -5090,8 +5016,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c lost a life against a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c lost a life against a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -5114,8 +5039,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c lost a life against a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c lost a life against a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -5138,8 +5062,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c lost a life against a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c lost a life against a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -5172,8 +5095,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c lost a life against a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c lost a life against a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -5283,8 +5205,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -5307,8 +5228,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -5341,8 +5261,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -5443,8 +5362,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -5467,8 +5385,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -5501,8 +5418,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c got injured patrolling on the border.",
-                    "reg_death": "m_c was killed by a hostile Clan.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a hostile Clan"
+                    "death": "m_c was killed by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -5601,8 +5517,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c carries a scar, and lingering resentment, from when a Clanmate failed to watch {PRONOUN/m_c/poss} back during a border altercation.",
-                    "reg_death": "m_c was killed in a border altercation when a Clanmate failed to watch {PRONOUN/m_c/poss} back.",
-                    "lead_death": "were killed when a Clanmate failed to support {PRONOUN/m_c/object} during a border altercation"
+                    "death": "m_c was killed in a border altercation when a Clanmate failed to watch {PRONOUN/m_c/poss} back."
                 },
                 "relationships": [
                     {
@@ -5643,8 +5558,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c carries a scar, and lingering resentment, from when a Clanmate failed to watch {PRONOUN/m_c/poss} back during a border altercation.",
-                    "reg_death": "m_c was killed in a border altercation when a Clanmate failed to watch {PRONOUN/m_c/poss} back.",
-                    "lead_death": "were killed when a Clanmate failed to support {PRONOUN/m_c/object} during a border altercation"
+                    "death": "m_c was killed in a border altercation when a Clanmate failed to watch {PRONOUN/m_c/poss} back."
                 },
                 "relationships": [
                     {
@@ -5742,8 +5656,7 @@
                     "some_lives"
                 ],
                 "history_text": {
-                    "reg_death": "m_c was killed in a border ambush by a hostile Clan.",
-                    "lead_death": "were killed by o_c_n in a border ambush"
+                    "death": "m_c was killed in a border ambush by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -5768,8 +5681,7 @@
                     "some_lives"
                 ],
                 "history_text": {
-                    "reg_death": "m_c was killed in a border ambush by a hostile Clan.",
-                    "lead_death": "were killed by o_c_n in a border ambush"
+                    "death": "m_c was killed in a border ambush by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -5851,8 +5763,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c carries the scars o_c_n gave them, a permanent reminder of the Clan's hostilities.",
-                    "reg_death": "m_c was killed in a border ambush by a hostile Clan.",
-                    "lead_death": "were killed by o_c_n in a border ambush"
+                    "death": "m_c was killed in a border ambush by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -5880,8 +5791,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c carries the scars o_c_n gave them, a permanent reminder of the Clan's hostilities.",
-                    "reg_death": "m_c was killed in a border ambush by a hostile Clan.",
-                    "lead_death": "were killed by o_c_n in a border ambush"
+                    "death": "m_c was killed in a border ambush by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -5907,8 +5817,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c carries the scars o_c_n gave them, a permanent reminder of the Clan's hostilities.",
-                    "reg_death": "m_c was killed in a border ambush by a hostile Clan.",
-                    "lead_death": "were killed by o_c_n in a border ambush"
+                    "death": "m_c was killed in a border ambush by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -5988,8 +5897,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c carries the scars o_c_n gave them, a permanent reminder of the Clan's hostilities.",
-                    "reg_death": "m_c was killed in a border ambush by a hostile Clan.",
-                    "lead_death": "were killed by o_c_n in a border ambush"
+                    "death": "m_c was killed in a border ambush by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -6017,8 +5925,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c carries the scars o_c_n gave them, a permanent reminder of the Clan's hostilities.",
-                    "reg_death": "m_c was killed in a border ambush by a hostile Clan.",
-                    "lead_death": "were killed by o_c_n in a border ambush"
+                    "death": "m_c was killed in a border ambush by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -6044,8 +5951,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c carries the scars o_c_n gave them, a permanent reminder of the Clan's hostilities.",
-                    "reg_death": "m_c was killed in a border ambush by a hostile Clan.",
-                    "lead_death": "were killed by o_c_n in a border ambush"
+                    "death": "m_c was killed in a border ambush by a hostile Clan."
                 },
                 "other_clan_rep": -1,
                 "frequency": 4
@@ -6235,8 +6141,7 @@
                     "r_c"
                 ],
                 "history_text": {
-                    "reg_death": "m_c was slain by o_c_n warriors",
-                    "lead_death": "lost a life by o_c_n warriors"
+                    "death": "m_c was slain by o_c_n warriors"
                 },
                 "relationships": [
                     {

@@ -2832,8 +2832,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was scarred after {PRONOUN/m_c/subject} tripped over a tree root.",
-                    "reg_death": "m_c died from injuries sustained after tripping over a tree root.",
-                    "lead_death": "died from injuries sustained after tripping over a tree root"
+                    "death": "m_c died from injuries sustained after tripping over a tree root."
                 },
                 "frequency": 1
             }
@@ -3108,7 +3107,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was scarred after {PRONOUN/m_c/subject} tripped over a tree root.",
-                    "reg_death": "m_c died from injuries sustained after tripping over a tree root."
+                    "death": "m_c died from injuries sustained after tripping over a tree root."
                 },
                 "frequency": 1
             }
@@ -3384,8 +3383,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was scarred after {PRONOUN/m_c/subject} tripped over a tree root.",
-                    "reg_death": "m_c died from injuries sustained after tripping over a tree root.",
-                    "lead_death": "died from injuries sustained after tripping over a tree root"
+                    "death": "m_c died from injuries sustained after tripping over a tree root."
                 },
                 "frequency": 1
             }

@@ -33,7 +33,7 @@ from ..cat.enums import CatRank, CatGroup
 from ..game_structure.screen_settings import MANAGER, toggle_fullscreen
 from ..housekeeping.version import get_version_info
 from ..ui.generate_button import get_button_dict, ButtonStyles
-from ..game_structure.windows import DeleteCatCheck, DeleteCatHistoryCheck
+from ..ui.windows.delete_fadeds import DeleteCatCheck, DeleteCatHistoryCheck
 
 logger = logging.getLogger(__name__)
 

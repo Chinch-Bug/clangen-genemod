@@ -612,7 +612,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was scarred when a o_c_n patrol attacked {PRONOUN/m_c/object}.",
-                    "reg_death": "m_c died from {PRONOUN/m_c/poss} wounds after a o_c_n patrol attacked {PRONOUN/m_c/object}."
+                    "death": "m_c died from {PRONOUN/m_c/poss} wounds after a o_c_n patrol attacked {PRONOUN/m_c/object}."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -712,8 +712,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c followed the scent of a trespassing cat and {VERB/m_c/were/was} scarred by a dog.",
-                    "reg_death": "m_c followed the scent of a trespassing cat and {VERB/m_c/were/was} killed by a dog.",
-                    "lead_death": "followed the scent of a trespassing cat and {VERB/m_c/were/was} killed by a dog"
+                    "death": "m_c followed the scent of a trespassing cat and {VERB/m_c/were/was} killed by a dog."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -737,8 +736,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c followed the scent of a trespassing cat and {VERB/m_c/were/was} scarred by a dog.",
-                    "reg_death": "m_c followed the scent of a trespassing cat and {VERB/m_c/were/was} killed by a dog.",
-                    "lead_death": "followed the scent of a trespassing cat and {VERB/m_c/were/was} killed by a dog"
+                    "death": "m_c followed the scent of a trespassing cat and {VERB/m_c/were/was} killed by a dog."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -845,8 +843,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c followed the scent of a trespassing cat and was scarred by a dog.",
-                    "reg_death": "m_c followed the scent of a trespassing cat and was killed by a dog.",
-                    "lead_death": "followed the scent of a trespassing cat and {VERB/m_c/were/was} killed by a dog"
+                    "death": "m_c followed the scent of a trespassing cat and was killed by a dog."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -870,8 +867,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c followed the scent of a trespassing cat and was scarred by a dog.",
-                    "reg_death": "m_c followed the scent of a trespassing cat and was killed by a dog.",
-                    "lead_death": "followed the scent of a trespassing cat and {VERB/m_c/were/was} killed by a dog"
+                    "death": "m_c followed the scent of a trespassing cat and was killed by a dog."
                 },
                 "other_clan_rep": -1,
                 "frequency": 3
@@ -1324,7 +1320,8 @@
                     }
                 ],
                 "history_text": {
-                    "scar": "m_c got injured patrolling on the border."
+                    "scar": "m_c was injured by an enemy patrol while marking the border.",
+                    "death": "m_c lost a life in an ambush on the border."
                 },
                 "other_clan_rep": -1,
                 "frequency": 2,
@@ -2308,7 +2305,8 @@
                     }
                 ],
                 "history_text": {
-                    "scar": "m_c got injured patrolling on the border."
+                    "scar": "m_c got injured patrolling on the border.",
+                    "death": "m_c lost their life in an ambush on the border."
                 },
                 "other_clan_rep": -1,
                 "frequency": 2,
@@ -3446,7 +3444,7 @@
                     }
                 ],
                 "history_text": {
-                    "reg_death": "m_c died from a border skirmish after sneaking across the o_c_n border.",
+                    "death": "m_c died from a border skirmish after sneaking across the o_c_n border.",
                     "scar": "m_c was scarred in a border skirmish after sneaking across the o_c_n border"
                 },
                 "relationships": [
@@ -3883,7 +3881,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was scarred by a o_c_n apprentice after a border scrum.",
-                    "reg_death": "m_c died after picking a fight with a o_c_n apprentice on patrol."
+                    "death": "m_c died after picking a fight with a o_c_n apprentice on patrol."
                 },
                 "relationships": [
                     {
@@ -3951,8 +3949,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was scarred in a border skirmish.",
-                    "reg_death": "m_c died from injuries sustained in a border skirmish.",
-                    "lead_death": "died from injuries sustained in a border skirmish"
+                    "death": "m_c died from injuries sustained in a border skirmish."
                 },
                 "relationships": [
                     {
@@ -3991,8 +3988,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was scarred in a border skirmish.",
-                    "reg_death": "m_c died of injuries sustained in a border skirmish.",
-                    "lead_death": "died of injuries sustained in a border skirmish"
+                    "death": "m_c died of injuries sustained in a border skirmish."
                 },
                 "frequency": 1
             }
@@ -4165,8 +4161,7 @@
                     "r_c"
                 ],
                 "history_text": {
-                    "reg_death": "m_c was slain by o_c_n warriors",
-                    "lead_death": "lost a life by o_c_n warriors"
+                    "death": "m_c was slain by o_c_n warriors"
                 },
                 "relationships": [
                     {
