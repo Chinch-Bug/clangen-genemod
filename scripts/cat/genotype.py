@@ -352,16 +352,21 @@ class Genotype:
         if is_today(SpecialDate.APRIL_FOOLS):
             self.april_fools = {
                 "danish_green" : ["dg", "dg"],
-                "polycaudal" : ["pc", "pc"]
+                "polycaudal" : ["pc", "pc"],
+                "rainbow_eyes" : ["NoDRE", "NoDRE"]
             }
             for i in range(2):
                 if self.odds["green"] > 0 and random() < (1/self.odds["green"]):
                     self.april_fools["danish_green"][i] = "Dg"
                 if self.odds["polycaudal"] > 0 and random() < (1/self.odds["polycaudal"]):
                     self.april_fools["polycaudal"][i] = "Pc"
+                if self.odds["rainbow_eyes"] > 0 and random() < (1/self.odds["rainbow_eyes"]):
+                    self.april_fools["rainbow_eyes"][i] = choice(["DREmin", "DREfull"])
             for key in ["danish_green", "polycaudal"]:
                 if self.april_fools[key][0].islower() and self.april_fools[key][1].islower():
                     del self.april_fools[key]
+            if self.april_fools["rainbow_eyes"][0] == "NoDRE" and self.april_fools["rainbow_eyes"][1] == "NoDRE":
+                del self.april_fools[key]
 
     def CommonGen(self, special=None):
 
@@ -1007,7 +1012,7 @@ class Genotype:
         if self.odds['pseudo_merle'] > 0 and randint(1, self.odds['pseudo_merle'])==1:
             self.pseudomerle = True 
         
-        for gene in ["danish_green", "polycaudal"]:
+        for gene in ["danish_green", "polycaudal", "rainbow_eyes"]:
             self.april_fools[gene] = ["", ""]
             if gene in par1.april_fools.keys():
                 self.april_fools[gene][0] = choice(par1.april_fools[gene])
@@ -1998,7 +2003,7 @@ class Genotype:
                 elif x[0] != x[1] or x[0] not in ['cu', 'fd', 'Dup', 'm', 'ab', 'Kab', 'tb', 'Jb', 'kub', 'Rt', 'mk', 'pd', 'NoDBE']:
                     self.Body_Genes.append(x)
             for x in self.april_fools.values():
-                if x[0] != x[1] or not x[0].islower():
+                if x[0] != x[1] or not (x[0].islower() or x[0] == "NoDRE"):
                     april_fools_output.append(x)
         else:
             self.Fur_Genes = [self.wirehair, self.laperm, self.cornish, self.urals, self.tenn, self.fleece, self.sedesp, self.ruhr, self.ruhrmod, self.lykoi]

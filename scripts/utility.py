@@ -4336,8 +4336,25 @@ def generate_sprite(
 
             def construct_eye_colour(eyetype):
                 split = eyetype.split(" ; ")
-                data = sprites.EYE_DATA[split[1]][split[0]]
+                data = sprites.EYE_DATA[split[1]][split[0]].copy()
                 eyes = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                
+                if is_today(SpecialDate.APRIL_FOOLS):
+                    if phenotype.april_fools.get("rainbow_eyes", ["NoDRE"])[0] == "DREfull":
+                        data["inner"] = [randint(0, 255), randint(0, 255), randint(0, 255)] 
+                        data["outer"] = [randint(127, 255), randint(127, 255), randint(127, 255)] 
+                        data["pupil"] = [randint(0, 127), randint(0, 127), randint(0, 127)] 
+                    elif phenotype.april_fools.get("rainbow_eyes", ["NoDRE"])[0] == "DREmin":
+                        rgb = [randint(0, 255), randint(0, 255), randint(0, 255)]
+                        data["inner"] = rgb 
+                        pupils = [0, 0, 0]
+                        pupils1 = [v*0.5 for v in rgb]
+                        rgb = [round(rgb[0]*0.625), round(rgb[1]*0.7), round(rgb[2]*0.50)]
+                        data["outer"] = rgb
+                        pupils2 = [v*0.5 for v in rgb]
+                        for i in range(3):
+                            pupils[i] = round((pupils1[i] + pupils2[i])/2)
+                        data["pupil"] = pupils
                 
                 colour = pygame.Color(data["inner"])
                 eye_section = sprites.sprites['eyeinner' + alt_cat_sprite].copy()

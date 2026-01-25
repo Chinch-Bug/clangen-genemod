@@ -29,6 +29,7 @@ class SaveCheckWindow(GameWindow):
         game.is_close_menu_open = True
         super().__init__(
             ui_scale(pygame.Rect((250, 200), (300, 200))),
+            click_outside_to_close=False
         )
 
         self.clan_name = "UndefinedClan"
