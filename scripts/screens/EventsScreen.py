@@ -473,7 +473,7 @@ class EventsScreen(Screens):
             return
 
         if not is_page_update:
-            x_pos = -14
+            x_pos = -10
             self.page_control["first"] = UISurfaceImageButton(
                 ui_scale(pygame.Rect((370, x_pos), (34, 34))),
                 Icon.ARROW_DOUBLELEFT,
