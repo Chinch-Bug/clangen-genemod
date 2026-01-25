@@ -556,7 +556,7 @@ class Sprites:
 
             y_pos += 1
 
-    def get_symbol(self, symbol: str, force_light=False):
+    def get_symbol(self, symbol: str, force_light=False, force_dark=False):
         """Change the color of the symbol to match the requested theme, then return it
         :param Surface symbol: The clan symbol to convert
         :param force_light: Use to ignore dark mode and always display the light mode color
@@ -572,7 +572,7 @@ class Sprites:
             (87, 76, 45),
             (
                 pygame.Color(constants.CONFIG["theme"]["dark_mode_clan_symbols"])
-                if not force_light and game_setting_get("dark mode")
+                if not force_light and (game_setting_get("dark mode") or force_dark)
                 else pygame.Color(constants.CONFIG["theme"]["light_mode_clan_symbols"])
             ),
             distance=0,

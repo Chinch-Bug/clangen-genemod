@@ -3178,7 +3178,7 @@ def update_mask(cat):
     cat.sprite_mask = inflated_mask
 
 
-def clan_symbol_sprite(clan, return_string=False, force_light=False):
+def clan_symbol_sprite(clan, return_string=False, force_light=False, force_dark=False):
     """
     returns the clan symbol for the given clan_name, if no symbol exists then random symbol is chosen
     :param clan: the clan object
@@ -3204,7 +3204,7 @@ def clan_symbol_sprite(clan, return_string=False, force_light=False):
     if return_string:
         return clan.chosen_symbol
     else:
-        return sprites.get_symbol(clan.chosen_symbol, force_light=force_light)
+        return sprites.get_symbol(clan.chosen_symbol, force_light=force_light, force_dark=force_dark)
 
 
 def generate_sprite(

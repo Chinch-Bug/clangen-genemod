@@ -25,6 +25,7 @@ from scripts.utility import (
     ui_scale_dimensions,
     ui_scale_blit,
     ui_scale_offset,
+    clan_symbol_sprite
 )
 from scripts.cat_relations.relationship import Relationship
 from scripts.game_structure.screen_settings import MANAGER, screen
@@ -426,7 +427,8 @@ class RelationshipScreen(Screens):
         else:
             self.all_relations = (list(self.the_cat.relationships.values()).copy() + blank_relations).sorted(key=lambda x: x.cat_to)
 
-        self.all_relations = [rel for rel in self.all_relations if rel.cat_to.status.is_outsider or rel.cat_from.status.is_outsider or self.the_cat.status.group_ID in rel.cat_to.status.all_groups]
+        self.all_relations = [rel for rel in self.all_relations if rel.cat_to.status.is_outsider or rel.cat_from.status.is_outsider 
+                              or rel.cat_to.status.get_last_living_group() in self.the_cat.status.all_groups or self.the_cat.status.get_last_living_group() in rel.cat_to.status.all_groups]
 
         self.focus_cat_elements["header"] = pygame_gui.elements.UITextBox(
             "screens.relationship.heading",
@@ -786,6 +788,13 @@ class RelationshipScreen(Screens):
             ui_scale(pygame.Rect((pos_x + 80, pos_y + 5), (18, 18))),
             pygame.transform.scale(gender_icon, ui_scale_dimensions((18, 18))),
         )
+
+        if game.clan.clancount == "multiclan" and the_relationship.cat_to.status.fetch_clan_object():
+            clan_icon = clan_symbol_sprite(the_relationship.cat_to.status.fetch_clan_object(), force_dark=True)
+            self.sprite_buttons["clan_symbol" + str(i)] = UISpriteButton(
+                ui_scale(pygame.Rect((pos_x + 80, pos_y+25), (18, 18))),
+                clan_icon,
+            )
 
         related = False
         # MATE
