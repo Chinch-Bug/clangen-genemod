@@ -56,6 +56,11 @@
         "This will add a tint layer onto the cat sprites.",
         false
       ],
+      "black_pupils": [
+        "Black Pupils",
+        "Turn pupils black.",
+        false
+      ],
       "accurate_porting": [
         "Accurate Porting",
         "Will prioritise retaining original appearance when newly loading basegame saves, not genetic accuracy.",

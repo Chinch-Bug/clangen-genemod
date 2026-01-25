@@ -16,6 +16,8 @@
       "shaders_tooltip": "This will add a shading layer onto the cat sprites.",
       "tints": "Enable Tints",
       "tints_tooltip": "This will add a tint layer onto the cat sprites.",
+      "black_pupils": "Black Pupils",
+      "black_pupils_tooltip": "Turn pupils black.",
       "accurate_porting": "Accurate Porting",
       "accurate_porting_tooltip": "Will prioritise retaining original appearance when newly loading basegame saves, not genetic accuracy.",
       "filter genes": "Filter Genotypes",

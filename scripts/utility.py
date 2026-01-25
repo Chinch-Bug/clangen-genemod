@@ -4333,6 +4333,35 @@ def generate_sprite(
             if(phenotype.fold[0] != 'Fd' or phenotype.curl[0] == 'Cu'):
                 gensprite.blit(sprites.sprites['ears' + cat_sprite], (0, 0))
 
+
+            def construct_eye_colour(eyetype):
+                split = eyetype.split(" ; ")
+                data = sprites.EYE_DATA[split[1]][split[0]]
+                eyes = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                
+                colour = pygame.Color(data["inner"])
+                eye_section = sprites.sprites['eyeinner' + alt_cat_sprite].copy()
+                pixel_array = pygame.PixelArray(eye_section)
+                pixel_array.replace((255, 255, 255, 255), colour, distance=0)
+                del pixel_array
+                eyes.blit(eye_section, (0, 0))
+                
+                colour = pygame.Color(data["outer"])
+                eye_section = sprites.sprites['eyeouter' + alt_cat_sprite].copy()
+                eyes.blit(eye_section, (0, 0))
+                pixel_array = pygame.PixelArray(eye_section)
+                pixel_array.replace((255, 255, 255, 255), colour, distance=0)
+                del pixel_array
+                eyes.blit(eye_section, (0, 0))
+                
+                colour = pygame.Color(data["pupil"] if phenotype.pinkdilute[0] != 'dp' and not game_setting_get('black_pupils') else ([0, 0, 0] if phenotype.pinkdilute[0] != 'dp' else [41, 7, 11]))
+                eye_section = sprites.sprites['eyepupil' + alt_cat_sprite].copy()
+                pixel_array = pygame.PixelArray(eye_section)
+                pixel_array.replace((255, 255, 255, 255), colour, distance=0)
+                del pixel_array
+                eyes.blit(eye_section, (0, 0))
+                return eyes
+
             if(int(cat_sprite) < 21 and int(cat_sprite) > 2):
                 lefteye = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 righteye = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
@@ -4341,18 +4370,17 @@ def generate_sprite(
                 lefteye.blit(sprites.sprites['left' + alt_cat_sprite], (0, 0))
                 righteye.blit(sprites.sprites['right' + alt_cat_sprite], (0, 0))
 
-                lefteye.blit(sprites.sprites[phenotype.lefteyetype + "/" + alt_cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
-                righteye.blit(sprites.sprites[phenotype.righteyetype + "/" + alt_cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                lefteye.blit(construct_eye_colour(phenotype.lefteyetype), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                righteye.blit(construct_eye_colour(phenotype.righteyetype), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
 
                 gensprite.blit(lefteye, (0, 0))
                 gensprite.blit(righteye, (0, 0))
 
-
                 if sprite_age == 1:
                     lefteye.blit(sprites.sprites['left' + alt_cat_sprite], (0, 0))
                     righteye.blit(sprites.sprites['right' + alt_cat_sprite], (0, 0))
-                    lefteye.blit(sprites.sprites[phenotype.lefteyetype.split(' ; ')[0] + ' ; blue' + "/" + alt_cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
-                    righteye.blit(sprites.sprites[phenotype.righteyetype.split(' ; ')[0] + ' ; blue' + "/" + alt_cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    lefteye.blit(construct_eye_colour(phenotype.lefteyetype.split(' ; ')[0] + ' ; blue'), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    righteye.blit(construct_eye_colour(phenotype.righteyetype.split(' ; ')[0] + ' ; blue'), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                     lefteye.set_alpha(200)
                     righteye.set_alpha(200)
                     gensprite.blit(lefteye, (0, 0))
@@ -4361,19 +4389,13 @@ def generate_sprite(
 
                 if(phenotype.extraeye):
                     special.blit(sprites.sprites[phenotype.extraeye + alt_cat_sprite], (0, 0))
-                    special.blit(sprites.sprites[phenotype.extraeyetype + "/" + alt_cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    special.blit(construct_eye_colour(phenotype.extraeyetype), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                     gensprite.blit(special, (0, 0))
                     if sprite_age == 1:
                         special.blit(sprites.sprites[phenotype.extraeye + alt_cat_sprite], (0, 0))
-                        special.blit(sprites.sprites[phenotype.extraeyetype.split(' ; ')[0] + ' ; blue' + "/" + alt_cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                        special.blit(construct_eye_colour(phenotype.extraeyetype.split(' ; ')[0] + ' ; blue'), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                         special.set_alpha(150)
                         gensprite.blit(special, (0, 0))
-
-                if(phenotype.pinkdilute[0] == 'dp'):
-                    pupils = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                    pupils.blit(sprites.sprites['redpupils' + alt_cat_sprite], (0, 0))
-                    pupils.set_alpha(100)
-                    gensprite.blit(pupils, (0, 0))
             
             return gensprite
 

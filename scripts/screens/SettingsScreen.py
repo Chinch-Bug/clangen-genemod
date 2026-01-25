@@ -215,6 +215,14 @@ class SettingsScreen(Screens):
 
                     if (
                         self.sub_menu == "general"
+                        and event.ui_element in (self.checkboxes["shaders"], self.checkboxes["tints"], self.checkboxes["black_pupils"])
+                    ):
+                        from scripts.cat.cats import Cat
+                        for cat in Cat.all_cats.values():
+                            cat.pelt.rebuild_sprite = True
+
+                    if (
+                        self.sub_menu == "general"
                         and event.ui_element is self.checkboxes["dark mode"]
                     ):
                         # has to be done manually since we haven't saved the new mode yet.

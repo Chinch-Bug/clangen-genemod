@@ -61,6 +61,11 @@ class Sprites:
     ) as read_file:
         WHITE_DATA = ujson.loads(read_file.read())
 
+    with open(
+        "sprites/dicts/eye_colour_data.json", "r", encoding="utf-8"
+    ) as read_file:
+        EYE_DATA = ujson.loads(read_file.read())
+
     def __init__(self):
         """Class that handles and hold all spritesheets.
         Size is normally automatically determined by the size
@@ -384,12 +389,9 @@ class Sprites:
 
         for i, x in enumerate(['left', 'right', 'sectoral1', 'sectoral2', 'sectoral3', 'sectoral4', 'sectoral5', 'sectoral6']):
             self.make_group('Other/eyebase', (i, 0), x, sprites_y=6)
+        for i, x in enumerate(['outer', 'inner', 'pupil']):
+            self.make_group('Other/eyesections', (i, 0), f"eye{x}", sprites_y=6)
         
-        for b, x in enumerate(['P11', 'P10', 'P9', 'P8', 'P7', 'P6', 'P5', 'P4', 'P3', 'P2', 'P1', 'blue', 'albino']):
-            for a, y in enumerate(range(1, 12)):
-                self.make_group('Other/eyes_full', (a, b), f'R{y} ; {x}/', sprites_y=6)
-        
-        self.make_group('Other/red_pupils', (0, 0), 'redpupils', sprites_y=7)
         data_jsons = (
             self.WHITE_DATA,
             self.TORTIE_DATA,
