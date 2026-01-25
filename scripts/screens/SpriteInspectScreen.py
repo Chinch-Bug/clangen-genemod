@@ -25,7 +25,7 @@ from ..clan_package.settings import get_clan_setting
 from ..game_structure.game.switches import switch_set_value, switch_get_value, Switch
 from scripts.game_structure.game.settings import game_setting_get
 from ..game_structure.screen_settings import MANAGER
-from ..ui.windows.save_as_image import SaveAsImage
+from ..ui.windows.save_as_image import SaveAsImageWindow
 from scripts.housekeeping.datadir import (
     get_save_dir,
 )
@@ -90,7 +90,7 @@ class SpriteInspectScreen(Screens):
                 self.update_disabled_buttons()
                 self.make_cat_image()
             elif event.ui_element == self.save_image_button:
-                SaveAsImage(self.generate_image_to_save(), str(self.the_cat.name))
+                SaveAsImageWindow(self.generate_image_to_save(), str(self.the_cat.name))
             elif event.ui_element == self.export_cat_button:
                 self.export_cat()
             elif event.ui_element == self.previous_life_stage:

@@ -10,7 +10,7 @@ from scripts.game_structure.ui_elements import (
     UITextBoxTweaked,
 )
 from scripts.screens.enums import GameScreen
-from scripts.ui.windows.base_window import GameWindow
+from scripts.ui.windows.window_base_class import GameWindow
 from scripts.utility import ui_scale
 
 from scripts.cat.cats import Cat
@@ -26,8 +26,6 @@ class DeleteCatCheck(GameWindow):
     def __init__(self, reloadscreen, clan_name):
         super().__init__(
             ui_scale(pygame.Rect((250, 200), (300, 275))),
-            window_display_title="Delete Faded Cats Check",
-            object_id="#delete_check_window",
             resizable=False,
         )
         self.set_blocking(True)
@@ -56,15 +54,6 @@ class DeleteCatCheck(GameWindow):
             object_id="@buttonstyles_squoval",
             container=self,
         )
-
-        self.back_button = UIImageButton(
-            ui_scale(pygame.Rect((270, 5), (22, 22))),
-            "",
-            object_id="#exit_window_button",
-            container=self,
-        )
-
-        self.back_button.enable()
 
         self.go_back_button.enable()
         self.delete_it_button.enable()
@@ -112,9 +101,6 @@ class DeleteCatCheck(GameWindow):
 
             elif event.ui_element == self.go_back_button:
                 self.kill()
-            elif event.ui_element == self.back_button:
-                game.is_close_menu_open = False
-                self.kill()
         return super().process_event(event)
 
 
@@ -122,8 +108,6 @@ class DeleteCatHistoryCheck(GameWindow):
     def __init__(self, reloadscreen, clan_name):
         super().__init__(
             ui_scale(pygame.Rect((250, 200), (300, 180))),
-            window_display_title="Delete Faded Cats Check",
-            object_id="#delete_check_window",
             resizable=False,
         )
         self.set_blocking(True)
@@ -153,15 +137,6 @@ class DeleteCatHistoryCheck(GameWindow):
             container=self,
         )
 
-        self.back_button = UIImageButton(
-            ui_scale(pygame.Rect((270, 5), (22, 22))),
-            "",
-            object_id="#exit_window_button",
-            container=self,
-        )
-
-        self.back_button.enable()
-
         self.go_back_button.enable()
         self.delete_it_button.enable()
 
@@ -179,8 +154,5 @@ class DeleteCatHistoryCheck(GameWindow):
                 self.reloadscreen(GameScreen.CLAN_SETTINGS)
 
             elif event.ui_element == self.go_back_button:
-                self.kill()
-            elif event.ui_element == self.back_button:
-                game.is_close_menu_open = False
                 self.kill()
         return super().process_event(event)

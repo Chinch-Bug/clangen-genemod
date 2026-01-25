@@ -129,19 +129,10 @@
                     "trust",
                     "respect"
                 ],
-                "amount": 15
-            },
-            {
-                "cats_from": [
-                    "r_c"
-                ],
-                "cats_to": [
-                    "m_c"
-                ],
-                "values": [
-                    "like"
-                ],
-                "amount": 15
+                "amount": 30,
+                "log": {
+                    "cats_from": "to_cat drowned trying to save r_c's life."
+                }
             }
         ]
     },
@@ -444,12 +435,15 @@
                 "cats_to": [
                     "r_c"
                 ],
-                "mutual": true,
+                "mutual": false,
                 "values": [
                     "trust",
                     "like"
                 ],
-                "amount": -25
+                "amount": -50,
+                "log": {
+                    "cats_from": "from_cat was shoved off a cliff by to_cat."
+                }
             }
         ],
         "future_event": [
@@ -551,12 +545,15 @@
                 "cats_to": [
                     "r_c"
                 ],
-                "mutual": true,
+                "mutual": false,
                 "values": [
                     "trust",
                     "like"
                 ],
-                "amount": -25
+                "amount": -50,
+                "log": {
+                    "cats_from": "from_cat was shoved off a cliff by to_cat, who made the death look like an accident."
+                }
             }
         ],
         "future_event": [
@@ -646,12 +643,15 @@
                 "cats_to": [
                     "r_c"
                 ],
-                "mutual": true,
+                "mutual": false,
                 "values": [
                     "trust",
                     "like"
                 ],
-                "amount": -25
+                "amount": -50,
+                "log": {
+                    "cats_from": "from_cat drowned in the tides as to_cat stood by and watched."
+                }
             }
         ],
         "future_event": [

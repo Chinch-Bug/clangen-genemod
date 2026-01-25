@@ -7,7 +7,7 @@ from scripts.game_structure.ui_elements import (
     UISurfaceImageButton,
 )
 from scripts.screens.enums import GameScreen
-from scripts.ui.windows.base_window import GameWindow
+from scripts.ui.windows.window_base_class import GameWindow
 from scripts.utility import ui_scale
 
 from scripts.cat.cats import Cat, BACKSTORIES
@@ -16,25 +16,17 @@ from scripts.game_structure import game
 from scripts.ui.generate_button import ButtonStyles, get_button_dict
 
 
-class ChangeCatClan(GameWindow):
+class ChangeCatClanWindow(GameWindow):
     """This window allows the user to select a clan to switch a living clan cat to."""
 
     def __init__(self, focus_cat):
         super().__init__(
             ui_scale(pygame.Rect((250, 120), (300, 225))),
-            window_display_title="Change Cat Clan",
-            object_id="#change_cat_name_window",
             resizable=False,
         )
         self.set_blocking(True)
         self.the_cat = focus_cat
         self.selected = None
-        self.back_button = UIImageButton(
-            ui_scale(pygame.Rect((270, 5), (22, 22))),
-            "",
-            object_id="#exit_window_button",
-            container=self,
-        )
         self.save_button = UISurfaceImageButton(
             ui_scale(pygame.Rect((80, 180), (139, 30))),
             "windows.change_clan",
@@ -88,10 +80,6 @@ class ChangeCatClan(GameWindow):
 
     def process_event(self, event):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
-            if event.ui_element == self.back_button:
-                game.all_screens["profile_screen"].exit_screen()
-                game.all_screens["profile_screen"].screen_switches()
-                self.kill()
             if event.ui_element == self.save_button:
                 if self.the_cat.status.group:
                     self.the_cat.backstory = "otherclan1"
