@@ -3888,7 +3888,7 @@
         },
         "history": [{
             "cats": ["m_c"],
-            "reg_death": "m_c disappeared."
+            "death": "m_c disappeared."
         }]
     },
     {

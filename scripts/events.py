@@ -217,7 +217,7 @@ def one_moon():
                 continue
             insert = adjust_list_text(ghost_names[clan.displayname])
 
-            if len(ghost_names[clan.displayname])-len(faded_kits.get(clan.displayname, [])) > 2:
+            if len(ghost_names[clan.displayname]) > 1:
                 event = i18n.t(
                     "hardcoded.event_deaths", count=len(ghost_names[clan.displayname]), insert=insert
                 )

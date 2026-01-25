@@ -609,7 +609,7 @@ class ShortEvent:
     def handle_mass_death(self, clan=game.clan):
         """
         finds cats eligible for the death, if not enough cats are eligible then event is tossed.
-        cats that will die are added to self.dead_cats
+        cats that will die are added to self.dead_cat_objects
         """
         # gather living clan cats except leader bc leader lives would be frustrating to handle in these
         alive_cats = [i for i in Cat.all_cats.values() if i.status.group_ID == self.main_cat.status.group_ID]
@@ -645,9 +645,9 @@ class ShortEvent:
             if dead_count < 2:
                 dead_count = 2
 
-            self.dead_cats = sample(alive_cats, dead_count)
-            if self.main_cat not in self.dead_cats:
-                self.dead_cats.append(
+            self.dead_cat_objects = sample(alive_cats, dead_count)
+            if self.main_cat not in self.dead_cat_objects:
+                self.dead_cat_objects.append(
                     self.main_cat
                 )  # got to include the cat that rolled for death in the first place
 
@@ -658,7 +658,7 @@ class ShortEvent:
                     
             taken_cats = []
             left_cats = []
-            for kitty in self.dead_cats:
+            for kitty in self.dead_cat_objects:
                 if "lost" in self.tags:
                     if not tnr or 'TNR' not in kitty.pelt.scars:
                         kitty.become_lost(CatSocial.KITTYPET if tnr else CatSocial.LONER)
@@ -680,9 +680,9 @@ class ShortEvent:
                 if kitty.ID not in self.all_involved_cat_ids:
                     self.all_involved_cat_ids.append(kitty.ID)
             for kitty in taken_cats:
-                self.dead_cats.remove(kitty)
+                self.dead_cat_objects.remove(kitty)
             for kitty in left_cats:
-                self.dead_cats.remove(kitty)
+                self.dead_cat_objects.remove(kitty)
 
         else:
             return
