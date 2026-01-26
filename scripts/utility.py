@@ -1383,11 +1383,11 @@ def create_new_cat(
                     )
             else:
                 new_cat.moons = 0
-                new_cat.status = Status(**{"group_ID": n_c.status.group_ID,
+                new_cat.status = Status(**{"group_ID": new_cat.status.group_ID,
                                 "rank": CatRank.NEWBORN, "age": CatAge.NEWBORN})
                 new_cat.dead = True
                 new_cat.thoughts(just_died=True)
-                new_cat.history.add_death(str(n_c.name) + " was stillborn.")
+                new_cat.history.add_death(str(new_cat.name) + " was stillborn.")
         # this simulates a "history" as whomever they used to be
         new_cat.status.change_current_moons_as(moons)
 
