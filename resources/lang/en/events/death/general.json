@@ -8429,7 +8429,7 @@
         "age": ["young adult", "adult", "senior adult"]
     },
     "new_cat": [
-        ["age:adult", "backstory:disgraced1, ostracized_warrior, disgraced3", "exists"]
+        ["age:adult", "backstory:disgraced1, ostracized_warrior, disgraced3", "clancat", "exiled", "change_clan", "exists"]
     ],
     "history:": [
         {

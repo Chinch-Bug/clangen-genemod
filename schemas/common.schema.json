@@ -306,7 +306,8 @@
         "litter",
         "dead",
         "change_clan",
-        "change_clan_rev"
+        "change_clan_rev",
+        "exiled"
       ],
       "title": "NewCatTag",
       "type": "string"

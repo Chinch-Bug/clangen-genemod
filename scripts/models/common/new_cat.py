@@ -21,6 +21,7 @@ class NewCatTag(Enum):
     dead = "dead"
     change_clan = "change_clan"
     change_clan_rev = "change_clan_rev"
+    exiled = "exiled"
 
 
 class NewCat(RootModel):

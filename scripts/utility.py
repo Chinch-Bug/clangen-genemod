@@ -1006,7 +1006,12 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
     picked_cats = []
     chosen_backstory = None
     
-    all_clan_cats = [i for i in Cat.all_cats.values() if i.status.group_ID == other_clan.group_ID]
+    all_clan_cats = []
+    if "exiled" in attribute_list:
+        all_clan_cats = [i for i in Cat.all_cats.values() if i.status.is_exiled() and i.status.is_exiled() != clan.group_ID]
+    if not all_clan_cats:
+        all_clan_cats = [i for i in Cat.all_cats.values() if i.status.group_ID == other_clan.group_ID]
+
     for a in attribute_list:
         match = re.match(r'status:\s?(.+)', a)
         if match:
@@ -1122,6 +1127,8 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
             all_clan_cats_age = [cat for cat in all_clan_cats if cat.age.value == age]
             if all_clan_cats_age:
                 all_clan_cats = all_clan_cats_age
+        if not all_clan_cats:
+            all_clan_cats = [i for i in Cat.all_cats.values() if i.status.group_ID == other_clan.group_ID]
         picked_cats = [choice(all_clan_cats)]
 
     if "change_clan" in attribute_list:
