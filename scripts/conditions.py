@@ -13,7 +13,7 @@ from scripts.cat.skills import SkillPath
 from scripts.game_structure import game
 
 
-def amount_clanmembers_covered(all_cats, amount_per_med, clan=CatGroup.PLAYER_CLAN_ID) -> int:
+def amount_clanmembers_covered(all_cats, amount_per_med, clan=CatGroup.PLAYER_CLAN_ID, exclude=None) -> int:
     """
     number of clan members the meds can treat
     """
@@ -24,6 +24,7 @@ def amount_clanmembers_covered(all_cats, amount_per_med, clan=CatGroup.PLAYER_CL
         if i.status.group_ID == clan
         and not i.not_working()
         and i.status.rank.is_any_medicine_rank()
+        and i != exclude
     ]
     full_med = [i for i in medicine_cats if i.status.rank == CatRank.MEDICINE_CAT]
     apprentices = [
@@ -55,12 +56,12 @@ def amount_clanmembers_covered(all_cats, amount_per_med, clan=CatGroup.PLAYER_CL
     )  # number of cats they can care for
 
 
-def medicine_cats_can_cover_clan(all_cats, amount_per_med, clan=CatGroup.PLAYER_CLAN_ID) -> bool:
+def medicine_cats_can_cover_clan(all_cats, amount_per_med, clan=CatGroup.PLAYER_CLAN_ID, exclude=None) -> bool:
     """
     whether the player has enough meds for the whole clan
     """
     relevant_cats = [c for c in all_cats if c.status.group_ID == clan]
-    return amount_clanmembers_covered(all_cats, amount_per_med, clan) >= len(relevant_cats)
+    return amount_clanmembers_covered(all_cats, amount_per_med, clan, exclude) >= len(relevant_cats)
 
 
 def get_amount_cat_for_one_medic():

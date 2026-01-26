@@ -1535,10 +1535,18 @@ def perform_ceremonies(cat, clan):
         ):
             clan.medicine_cat = cat
 
+        special_can_retire = False
+        if cat.status.rank == CatRank.MEDICINE_CAT:
+            med_can_retire = get_clan_setting("healer_retirement") and medicine_cats_can_cover_clan(
+                Cat.all_cats.values(), get_amount_cat_for_one_medic(), clan=clan.group_ID, exclude=cat
+            ) and random.random() < (1/constants.CONFIG["roles"]["max_healer_retire_chance"])
+        if cat.status.rank == CatRank.MEDIATOR:
+            med_can_retire = get_clan_setting("mediator_retirement") and random.random() < (1/constants.CONFIG["roles"]["max_mediator_retire_chance"])
+
         # retiring to elder den
         if (
             not cat.no_retire
-            and cat.status.rank in (CatRank.WARRIOR, CatRank.DEPUTY)
+            and (cat.status.rank in (CatRank.WARRIOR, CatRank.DEPUTY) or cat.status.rank in (CatRank.MEDICINE_CAT, CatRank.MEDIATOR) and special_can_retire)
             and len(cat.apprentice) < 1
             and cat.moons > 114
         ):
@@ -1548,6 +1556,8 @@ def perform_ceremonies(cat, clan):
             ):
                 if cat.status.rank == CatRank.DEPUTY:
                     clan.deputy = None
+                if cat.status.rank == CatRank.MEDICINE_CAT:
+                    clan.remove_med_cat(cat)
                 ceremony(cat, CatRank.ELDER)
 
         # apprentice a kitten to either med or warrior
