@@ -36,6 +36,7 @@ class Backstory(Enum):
     otherclan2 = "otherclan2"
     otherclan3 = "otherclan3"
     otherclan4 = "otherclan4"
+    otherclan5 = "otherclan5"
     ostracized_warrior = "ostracized_warrior"
     disgraced1 = "disgraced1"
     disgraced2 = "disgraced2"

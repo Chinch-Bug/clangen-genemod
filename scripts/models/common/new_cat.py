@@ -19,6 +19,8 @@ class NewCatTag(Enum):
     unknown = "unknown"
     litter = "litter"
     dead = "dead"
+    change_clan = "change_clan"
+    change_clan_rev = "change_clan_rev"
 
 
 class NewCat(RootModel):

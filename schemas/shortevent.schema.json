@@ -656,10 +656,10 @@
         "low_lives",
         "clan:apps",
         "lost",
-        "tnr",
         "kit_manipulated",
         "romance",
-        "adoption"
+        "adoption",
+        "tnr"
       ],
       "title": "TagEnum",
       "type": "string"
