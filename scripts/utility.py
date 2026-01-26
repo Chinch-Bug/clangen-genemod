@@ -4606,11 +4606,11 @@ def generate_sprite(
                 tail.blit(white, (0, 0), special_flags=pygame.BLEND_RGB_MAX)
                 tail.blit(new_sprite, (0, 0), special_flags=pygame.BLEND_RGBA_MIN)
                 offset = 2
-                if cat_sprite in ["0", "9", "10", "11", "13", "15", "20"]:
+                if cat_sprite in ["2", "12", "13", "14", "16", "18"]:
                     new_sprite.blit(tail, (offset, 1))
-                elif cat_sprite in ["1", "3", "4", "5", "6", "7", "8", "12", "16", "17"]:
+                elif cat_sprite in ["4", "6", "7", "8", "9", "10", "11", "15", "19", "20"]:
                     new_sprite.blit(tail, (-offset, -1))
-                elif cat_sprite in ["2"]:
+                elif cat_sprite in ["1", "5"]:
                     new_sprite.blit(tail, (0, -2))
             
             if constants.CONFIG["fun"]["april_fools_hats"]:
