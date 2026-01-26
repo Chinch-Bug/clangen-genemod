@@ -920,17 +920,6 @@ def create_new_cat_block(
             fevercoat = True
 
         for n_c in new_cats:
-
-            if n_c.phenotype.manx[1] == "Ab" or n_c.phenotype.sexgene[0] == "Y" or n_c.phenotype.manx[1] == "M" or n_c.phenotype.munch[1] == "Mk" or ('NoDBE' not in n_c.phenotype.pax3 and 'DBEalt' not in n_c.phenotype.pax3):
-                n_c.moons = 0
-                n_c.status = Status(**{"group_ID": n_c.status.group_ID,
-                              "rank": CatRank.NEWBORN, "age": CatAge.NEWBORN})
-                n_c.dead = True
-                n_c.thoughts(just_died=True)
-                n_c.history.add_death(str(n_c.name) + " was stillborn.")
-                new_cats.remove(n_c)
-                continue
-
             if fevercoat:
                 n_c.phenotype.fevercoat = True
                 if n_c.chimerapheno:
@@ -1372,6 +1361,33 @@ def create_new_cat(
             extrapar=extrapar,
             adoptive_parents=adoptive_parents if adoptive_parents else [],
         )
+        
+
+        if new_cat.phenotype.manx[1] == "Ab" or new_cat.phenotype.sexgene[0] == "Y" or new_cat.phenotype.manx[1] == "M" or new_cat.phenotype.munch[1] == "Mk" or ('NoDBE' not in new_cat.phenotype.pax3 and 'DBEalt' not in new_cat.phenotype.pax3):
+            if len(created_cats) == 0:
+                while new_cat.phenotype.manx[1] == "Ab" or new_cat.phenotype.sexgene[0] == "Y" or new_cat.phenotype.manx[1] == "M" or new_cat.phenotype.munch[1] == "Mk" or ('NoDBE' not in new_cat.phenotype.pax3 and 'DBEalt' not in new_cat.phenotype.pax3):
+                    del Cat.all_cats[new_cat.ID]
+                    new_cat = Cat(
+                        moons=moons,
+                        status_dict={
+                            "social": original_social,
+                            "age": age,
+                            "group_ID": original_group,
+                        },
+                        gender=_gender,
+                        backstory=backstory,
+                        parent1=parent1,
+                        parent2=parent2,
+                        extrapar=extrapar,
+                        adoptive_parents=adoptive_parents if adoptive_parents else [],
+                    )
+            else:
+                new_cat.moons = 0
+                new_cat.status = Status(**{"group_ID": n_c.status.group_ID,
+                                "rank": CatRank.NEWBORN, "age": CatAge.NEWBORN})
+                new_cat.dead = True
+                new_cat.thoughts(just_died=True)
+                new_cat.history.add_death(str(n_c.name) + " was stillborn.")
         # this simulates a "history" as whomever they used to be
         new_cat.status.change_current_moons_as(moons)
 
