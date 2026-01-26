@@ -1,9 +1,15 @@
+import tomllib
+
 from pygame import Cursor, image, SYSTEM_CURSOR_ARROW
 import ujson
 import tomllib
 import os
 from scripts.game_structure.game.switches import Switch, switch_get_value
 from scripts.housekeeping.datadir import get_save_dir
+
+# these scripts don't import any clangen scripts into themselves, so it's okay for them to be imported here
+from scripts.clan_resources.herb.herb import HERBS
+from scripts.clan_resources.supply import Supply
 
 from scripts.screens.enums import GameScreen
 
@@ -15,6 +21,8 @@ MENU_SCREENS = [
     GameScreen.SWITCH_CLAN,
     GameScreen.MAKE_CLAN,
 ]
+
+EVENTS_PER_PAGE = 10
 
 BIOME_TYPES = ["Forest", "Plains", "Mountainous", "Beach", "Wetlands", "Desert"]
 
@@ -39,6 +47,9 @@ TEMPERAMENT_DICT = {
     "mid_social": ["amiable", "stoic", "wary"],
     "high_social": ["gracious", "mellow", "logical"],
 }
+
+facet_types = ["lawfulness", "sociability", "aggression", "stability"]
+facet_range = [0, 16]
 
 OUTSIDER_REPS = ("welcoming", "neutral", "hostile")
 OTHER_CLAN_REPS = ("ally", "neutral", "hostile")
@@ -119,6 +130,19 @@ EVENT_ALLOWED_CONDITIONS = [
     "heat exhaustion",
     "stomachache",
     "constant nightmares",
+]
+
+SUPPLY_TYPES = ["fresh_kill", "all_herb", "any_herb"]
+SUPPLY_TYPES.extend(HERBS)
+
+SUPPLY_TRIGGERS = ["always", *Supply]
+
+SUPPLY_ADJUSTMENTS = [
+    "reduce_eighth",
+    "reduce_quarter",
+    "reduce_half",
+    "reduce_full",
+    "increase_#",
 ]
 
 with open("resources/game_config.toml", "r", encoding="utf-8") as read_file:

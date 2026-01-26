@@ -77,7 +77,7 @@ class Phenotype(Genotype):
             if len(furtype)>0:
                 furtype.append(", ")
 
-            if self.ruhr[0] == "Hrbd" and self.ruhrmod == ["hi", "ha"]:
+            if self.ruhr[0] == "Hrbd" and self.ruhrmod != ["hi", "hi"]:
                 furtype.append("patchy ")
             
             if self.ruhr[0] != "Hrbd":
@@ -288,7 +288,9 @@ class Phenotype(Genotype):
             elif (self.wbsum > 11):
                 self.silvergold = 'golden '
             elif(self.corin[0] == 'sh'):
-                self.silvergold = 'sunshine '
+                if self.agouti[1] == "a":
+                    self.silvergold = "dark "
+                self.silvergold += 'sunshine '
             elif(self.corin[0] == 'fg'):
                 self.silvergold = 'flaxen gold '
     def TabbyFinder(self):
@@ -506,12 +508,12 @@ class Phenotype(Genotype):
 
         if gender:
             sexstring = gender
-        elif 'tom' in self.sex or ('molly' in self.sex and 'Y' in self.sexgene):
+        elif 'tom' in self.sex and 'Y' in self.sexgene:
             sexstring = "male"
         elif 'molly' in self.sex and 'Y' not in self.sexgene:
             sexstring = "female"
         else:
-            sexstring = self.sex
+            sexstring = "intersex"
 
         if chimera:
             sexstring = "chimera " + sexstring
@@ -659,7 +661,7 @@ class Phenotype(Genotype):
                     else:
                         if(randint(1, 7) == 1):
                             chosen.append(choice(tortie_low_patterns))
-                        elif(randint(1, 3) == 1):
+                        elif(randint(1, 3) != 1):
                             chosen.append(choice(tortie_mid_patterns))
                         else:
                             chosen.append(choice(tortie_high_patterns))
@@ -667,7 +669,7 @@ class Phenotype(Genotype):
                     if self.whitegrade > 3:
                         if(randint(1, 7) == 1):
                             chosen.append(choice(tortie_high_patterns))
-                        elif(randint(1, 3) == 1):
+                        elif(randint(1, 3) != 1):
                             chosen.append(choice(tortie_mid_patterns))
                         else:
                             chosen.append(choice(tortie_low_patterns))
@@ -762,7 +764,10 @@ class Phenotype(Genotype):
         if wideband in ["chinchilla", "shaded"]:
             colour = "lightbasecolours0"
         elif unders_ruf == "rufoused":
-            colour = rufousing + colour + "3"
+            if colour != "red":
+                colour = "low" + colour + "3"
+            else:
+                colour = rufousing + colour + "3"
         elif unders_ruf == "low":
             colour = colour + "low" + "shaded" + "0"
         elif rufousing != "rufoused":
@@ -854,14 +859,14 @@ class Phenotype(Genotype):
             banding = "low"
             
             if ('masked' in self.silvergold and genes.wbsum > 15) or (genes.agouti[0] != "a" and genes.ext[0] != "Eg") or (genes.ext[0] not in ['Eg', 'E']):
-                if genes.silver[0] == "I" or genes.brindledbi or (moons < 3 and genes.karp[0] == "K"):
+                if genes.silver[0] == "I" or genes.brindledbi or (moons < 2 and genes.karp[0] == "K"):
                     rufousing = "silver"
                 elif genes.pointgene[0] != "C" or genes.agouti[0] == "Apb" or self.length in ["hairless", "fur-pointed"]:
                     rufousing = "low"
                 else:
                     rufousing = genes.ruftype
 
-                if genes.corin[0] == "sg" or 'N' not in genes.corin or genes.wbtype == "chinchilla" or (genes.corin[0] != "N" and genes.wbtype == "shaded"):
+                if genes.corin[0] == "sg" or genes.wbtype == "chinchilla" or (genes.corin[0] != "N" and genes.wbtype == "shaded"):
                     banding = "chinchilla"
                 elif genes.wbtype == "shaded" or genes.corin[0] == "sh" or genes.corin[0] == "fg" or genes.ext[0] == 'ec' or (genes.ext[0] == 'ea' and moons > 3):
                     banding = "shaded"
@@ -924,7 +929,7 @@ class Phenotype(Genotype):
         
         rufousing = ""
         banding = ""
-        if (genes.silver[0] == "I" and special != 'nosilver') or (moons < 3 and genes.karp[0] == "K") or (self.brindledbi):
+        if (genes.silver[0] == "I" and special != 'nosilver') or (moons < 2 and genes.karp[0] == "K") or (self.brindledbi):
             rufousing = "silver"
         elif genes.pointgene[0] not in ["C", "cm"] or special=='low':
             rufousing = "low"

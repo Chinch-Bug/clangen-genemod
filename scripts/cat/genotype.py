@@ -1,6 +1,7 @@
 from random import choice, choices, randint, random
 import json
 from scripts.cat.breed_functions import breed_functions
+from scripts.clan_package.settings import get_clan_setting
 from scripts.special_dates import SpecialDate, is_today
 from operator import xor
 import math
@@ -36,6 +37,7 @@ class Genotype:
         self.silver = ["", ""]
         self.agouti = ["", ""]
         self.pangere = None
+        self.blacknose = False
         self.rednose = False
         self.mack = ["", ""]
         self.ticked = ["", ""]
@@ -174,6 +176,7 @@ class Genotype:
         self.silver = jsonstring["silver"]
         self.agouti = jsonstring["agouti"]
         self.pangere = jsonstring.get("pangere")
+        self.blacknose = jsonstring.get("blacknose", False)
         self.rednose = jsonstring.get("rednose", False)
         self.mack = jsonstring["mack"]
         self.ticked = jsonstring["ticked"]
@@ -239,8 +242,8 @@ class Genotype:
 
         self.breeds = json.loads(jsonstring.get("breeds", "{}")) if isinstance(jsonstring.get("breeds", "{}"), str) else jsonstring.get("breeds", {})
         self.somatic = json.loads(jsonstring.get("somatic", "{}")) if isinstance(jsonstring.get("somatic", "{}"), str) else jsonstring.get("somatic", {})
-        self.body_value = jsonstring.get("body_type", 0)
-        self.height_value = jsonstring.get("height", 0)
+        self.body_value = jsonstring.get("body_type", randint(1, sum(self.body_ranges)))
+        self.height_value = jsonstring.get("height", randint(1, sum(self.height_ranges)))
         self.shoulder_height = jsonstring.get("shoulder_height", 0)
         self.body_label = jsonstring.get("body_type_label", '')
         self.growth_pattern = jsonstring.get("growth_pattern", "average")
@@ -272,6 +275,7 @@ class Genotype:
             "silver" : self.silver,
             "agouti" : self.agouti,
             "pangere" : self.pangere,
+            "blacknose" : self.blacknose,
             "rednose" : self.rednose,
             "mack" : self.mack,
             "ticked" : self.ticked,
@@ -348,16 +352,21 @@ class Genotype:
         if is_today(SpecialDate.APRIL_FOOLS):
             self.april_fools = {
                 "danish_green" : ["dg", "dg"],
-                "polycaudal" : ["pc", "pc"]
+                "polycaudal" : ["pc", "pc"],
+                "rainbow_eyes" : ["NoDRE", "NoDRE"]
             }
             for i in range(2):
                 if self.odds["green"] > 0 and random() < (1/self.odds["green"]):
                     self.april_fools["danish_green"][i] = "Dg"
                 if self.odds["polycaudal"] > 0 and random() < (1/self.odds["polycaudal"]):
                     self.april_fools["polycaudal"][i] = "Pc"
+                if self.odds["rainbow_eyes"] > 0 and random() < (1/self.odds["rainbow_eyes"]):
+                    self.april_fools["rainbow_eyes"][i] = choice(["DREmin", "DREfull"])
             for key in ["danish_green", "polycaudal"]:
                 if self.april_fools[key][0].islower() and self.april_fools[key][1].islower():
                     del self.april_fools[key]
+            if self.april_fools["rainbow_eyes"][0] == "NoDRE" and self.april_fools["rainbow_eyes"][1] == "NoDRE":
+                del self.april_fools[key]
 
     def CommonGen(self, special=None):
 
@@ -455,9 +464,10 @@ class Genotype:
         self.pangere = choice([None, None,
                               "pangere small 1", "pangere small 1", "pangere small 1",
                                "pangere small 2", "pangere small 2", "pangere small 2",
-                               "pangere medium 1", "pangere medium 2"])
+                               "pangere medium 1", "pangere medium 2", "pangere medium 1 + tail"])
 
         self.rednose = random() < 0.25
+        self.blacknose = random() < 0.005
 
         self.unders_ruf = ''
         self.unders_rufsum = 0
@@ -984,10 +994,8 @@ class Genotype:
                 self.KitGenerator(par1, par3)
                 threepars = True
     
-        if randint(1, 5) == 1:
-            self.whitegrade = par1.whitegrade
-        elif randint(1, 5) == 1:
-            self.whitegrade = par2.whitegrade
+        if randint(1, 3) != 1:
+            self.whitegrade = choice([par1.whitegrade, par2.whitegrade])
 
         if self.odds["vitiligo"] <= 0:
             a = 0
@@ -1004,7 +1012,7 @@ class Genotype:
         if self.odds['pseudo_merle'] > 0 and randint(1, self.odds['pseudo_merle'])==1:
             self.pseudomerle = True 
         
-        for gene in ["danish_green", "polycaudal"]:
+        for gene in ["danish_green", "polycaudal", "rainbow_eyes"]:
             self.april_fools[gene] = ["", ""]
             if gene in par1.april_fools.keys():
                 self.april_fools[gene][0] = choice(par1.april_fools[gene])
@@ -1022,49 +1030,39 @@ class Genotype:
         
         self.eumelanin = [choice(par1.eumelanin), choice(par2.eumelanin)]
 
-        mum = ["", ""]
-        pap = ["", "Y"]
-        if not xor('Y' in par1.sexgene, 'Y' in par2.sexgene):
-            if('Y' in par1.sexgene):
-                if(randint(1, 2) == 1):
+        mum = ["o", "o"]
+        pap = ["o", "Y"]
+        if (not get_clan_setting('modded_kits') or get_clan_setting('same sex birth')) and not xor('Y' in par1.sexgene, 'Y' in par2.sexgene):
+            if ('Y' in par1.sexgene):
+                if (randint(1, 2) == 1):
                     mum[0] = par1.sexgene[0]
-                    mum[1] = mum[0]
-                    pap[0] = par2.sexgene[0]
-                else:
-                    mum[0] = par2.sexgene[0]
-                    mum[1] = mum[0]
-                    pap[0] = par1.sexgene[0]
-            else:
-                if len(par1.sexgene) > 2:
-                    mum[0] = par1.sexgene[0]
-                    mum[1] = par1.sexgene[1]
-                    mum.append(par1.sexgene[2])
-                    pap[0] = par2.sexgene[0]
-                elif len(par2.sexgene) > 2:
-                    mum[0] = par2.sexgene[0]
-                    mum[1] = par2.sexgene[1]
-                    mum.append(par2.sexgene[2])
-                    pap[0] = par2.sexgene[0]
-                else:
-                    if('O' in par1.sexgene and 'o' in par1.sexgene):
-                        mum[0] = par1.sexgene[0]
+                    if len(par1.sexgene) > 2:
                         mum[1] = par1.sexgene[1]
-                        pap[0] = par2.sexgene[0]
-                    elif ('O' in par2.sexgene and 'o' in par2.sexgene):
-                        mum[0] = par2.sexgene[0]
+                    else:
+                        mum[1] = mum[0]
+                    pap = par2.sexgene
+                else:
+                    mum[0] = par2.sexgene[0]
+                    if len(par2.sexgene) > 2:
                         mum[1] = par2.sexgene[1]
+                    else:
+                        mum[1] = mum[0]
+                    pap = par1.sexgene
+            else:
+                if ('O' in par1.sexgene and 'o' in par1.sexgene):
+                    mum = par1.sexgene
+                    pap[0] = par2.sexgene[0]
+                elif ('O' in par2.sexgene and 'o' in par2.sexgene):
+                    mum = par2.sexgene
+                    pap[0] = par1.sexgene[0]
+                else:
+                    if (random() < 0.5):
+                        mum = par2.sexgene
                         pap[0] = par1.sexgene[0]
                     else:
-                        if(random() < 0.5):
-                            mum[0] = par2.sexgene[0]
-                            mum[1] = par2.sexgene[1]
-                            pap[0] = par1.sexgene[0]
-                        else:
-                            mum[0] = par1.sexgene[0]
-                            mum[1] = par1.sexgene[1]
-                            pap[0] = par2.sexgene[0]
-
-        elif('Y' in par1.sexgene):
+                        mum = par1.sexgene
+                        pap[0] = par2.sexgene[0]
+        elif 'Y' in par1.sexgene or (par1.sex == "tom" and 'Y' not in par2.sexgene):
             mum = par2.sexgene
             pap = par1.sexgene
         else:
@@ -1075,31 +1073,21 @@ class Genotype:
         if self.odds['X monosomy'] > 0 and randint(1, self.odds['X monosomy']) == 1:
             self.sexgene = [choice(mum)]
             self.sex = "molly"
-        elif self.odds['XXX/XXY'] > 0 and randint(1, self.odds['XXX/XXY']) == 1:
+        elif self.odds['XXX/XXY'] > 0 and randint(1, self.odds['XXX/XXY']) == 1 and (len(mum) > 1 or len(pap) > 1):
             self.sexgene = ["", "", ""]
-            if randint(1, 2) == 1:
-                self.sex = 'tom'
-                if random() < 0.5:
-                    self.sexgene[0] = choice(mum)
+            if random() < 0.5 and len(pap) > 1:
+                self.sexgene[0] = choice(mum)
+                if len(pap) < 3:
                     self.sexgene[1] = pap[0]
-                    if len(pap) > 2:
-                        self.sexgene[1] = choice([pap[0], pap[1]])
-                    self.sexgene[2] = 'Y'
+                    self.sexgene[2] = pap[1]
                 else:
-                    self.sexgene[2] = 'Y'
-                    if len(mum) < 3:
-                        self.sexgene[0] = mum[0]
-                        self.sexgene[1] = mum[1]
-                    else:
-                        a = randint(0, 2)
-                        b = randint(0, 2)
-                        while b == a:
-                            b = randint(0, 2)
-                        
-                        self.sexgene[0] = mum[a]
-                        self.sexgene[1] = mum[b]
+                    a = randint(0, len(pap))
+                    b = randint(0, len(pap))
+                    while b == a:
+                        b = randint(0, len(pap))
+                    self.sexgene[1] = pap[a]
+                    self.sexgene[2] = pap[b]
             else:
-                self.sex = 'molly'
                 if len(mum) < 3:
                     self.sexgene[0] = mum[0]
                     self.sexgene[1] = mum[1]
@@ -1111,21 +1099,11 @@ class Genotype:
                     
                     self.sexgene[0] = mum[a]
                     self.sexgene[1] = mum[b]
-                self.sexgene[2] = pap[0]
-                if len(pap) > 2:
-                    self.sexgene[2] = choice([pap[0], pap[1]])
-
+                self.sexgene[2] = choice(pap)
         else:
-            if(randint(1, 2) == 1):
-                self.sexgene[1] = "Y"
-                self.sexgene[0] = choice(mum)
-                self.sex = "tom"
-            else:
-                self.sexgene = [choice(mum), pap[0]]
-                if len(pap) > 2:
-                    self.sexgene[1] = choice([pap[0], pap[1]])
-                self.sex = "molly"
+            self.sexgene = [choice(mum), choice(pap)]
         
+        self.sex = "tom" if "Y" in self.sexgene else "molly"
         
         if self.odds['brindled_bicolour'] > 0 and randint(1, self.odds['brindled_bicolour'])==1:
             self.brindledbi = True 
@@ -1146,7 +1124,6 @@ class Genotype:
         self.mack = [choice(par1.mack), choice(par2.mack)]
         self.ticked = [choice(par1.ticked), choice(par2.ticked)]
 
-        
 
         if self.odds["breakthrough"] <= 0:
             pass
@@ -1347,13 +1324,9 @@ class Genotype:
         self.pigmentation = next((n for n in range(len(indexes2)) if num < indexes2[n])) + 1
 
     def GenerateBody(self):
-        x = sum(self.body_ranges)
+        self.body_value = randint(1, sum(self.body_ranges))
 
-        self.body_value = randint(1, x)
-
-        x = sum(self.height_ranges)
-
-        self.height_value = randint(1, x)
+        self.height_value = randint(1, sum(self.height_ranges))
     
     def VerifyBody(self, body_types):
         for i in range(7):
@@ -1375,12 +1348,30 @@ class Genotype:
         height = round(height, 2)
 
         if height <= 5.00:
-            height = 5.00
+            self.shoulder_height = 5.00
+
+            if self.growth_pattern == "runt":
+                self.shoulder_height *= 0.85
+            if self.munch[0] == 'Mk':
+                self.shoulder_height /= 1.5
+            if 'Y' in self.sexgene:
+                self.shoulder_height *= 1.1
+            self.shoulder_height = round(self.shoulder_height, 2)
+
             if self.height_value >= self.height_indexes[0]:
                 self.height_value = randint(0, self.height_indexes[0]-1)
             return
         elif height >= 15.00:
-            height = 15.00
+            self.shoulder_height = 15.00
+
+            if self.growth_pattern == "runt":
+                self.shoulder_height *= 0.85
+            if self.munch[0] == 'Mk':
+                self.shoulder_height /= 1.5
+            if 'Y' in self.sexgene:
+                self.shoulder_height *= 1.1
+            self.shoulder_height = round(self.shoulder_height, 2)
+            
             if self.height_value < self.height_indexes[8]:
                 self.height_value = randint(self.height_indexes[8], self.height_indexes[9]-1)
             return
@@ -1609,11 +1600,9 @@ class Genotype:
                      'wirehair', 'laperm', 'cornish', 'urals', 'tenn', 'fleece', 'ruhr', 'lykoi',
                      'pinkdilute', 'dilutemd', 'karp', 'bleach', 'ghosting', 'satin', 'glitter',
                      'curl', 'fold', "fourear", 'kab', 'toybob', 'jbob', 'kub', 'ring', 'munch', 'poly']:
-            if self[gene][0] != self[gene][1] and self[gene][0].islower():
-                self[gene][0], self[gene][1] = self[gene][1], self[gene][0]
+            self[gene].sort()
         for gene in self.april_fools.keys():
-            if self.april_fools[gene][0] != self.april_fools[gene][1] and self.april_fools[gene][0].islower():
-                self.april_fools[gene][0], self.april_fools[gene][1] = self.april_fools[gene][1], self.april_fools[gene][0]
+            self.april_fools[gene].sort()
 
         if self.eumelanin[0] == "bl":
             self.eumelanin[0] = self.eumelanin[1]
@@ -1622,17 +1611,7 @@ class Genotype:
             self.eumelanin[0] = "B"
             self.eumelanin[1] = "b"
 
-        if len(self.sexgene) == 1:
-            pass
-        elif len(self.sexgene) > 2 and self.sexgene[2] == "O" and self.sexgene[0] == "o":
-            self.sexgene[2] = self.sexgene[0]
-            self.sexgene[0] = "O"
-        elif len(self.sexgene) > 2 and self.sexgene[2] == "O":
-            self.sexgene[2] = self.sexgene[1]
-            self.sexgene[1] = "O"
-        elif self.sexgene[1] == "O":
-            self.sexgene[1] = self.sexgene[0]
-            self.sexgene[0] = "O"
+        self.sexgene.sort(key=lambda s: (s.lower(), s))
 
         if self.white[0] == "wsal":
             self.white[0] = self.white[1]
@@ -1827,7 +1806,7 @@ class Genotype:
         if self.pax3[0] != 'NoDBE':
             if 'NoDBE' not in self.pax3:
                 blueindex = 0
-                if (self.pax3 == ['DBEalt', 'DBEalt'] and random() < 0.33) or self.pax3 != ['DBEalt', 'DBEalt']:
+                if (self.pax3 == ['DBEalt', 'DBEalt'] and random() < 0.5) or self.pax3 != ['DBEalt', 'DBEalt']:
                     self.deaf = True
             elif 'DBEre' not in self.pax3 and random() >= 0.1:
                 if random() < 0.33:
@@ -1835,7 +1814,7 @@ class Genotype:
                 else:
                     hetindex = 0
             elif 'DBEre' in self.pax3:
-                blueindex = 0
+                blueindex = 0 if random() < 0.70 else 1
                 if random() < 0.33:
                     self.deaf = True
 
@@ -2024,7 +2003,7 @@ class Genotype:
                 elif x[0] != x[1] or x[0] not in ['cu', 'fd', 'Dup', 'm', 'ab', 'Kab', 'tb', 'Jb', 'kub', 'Rt', 'mk', 'pd', 'NoDBE']:
                     self.Body_Genes.append(x)
             for x in self.april_fools.values():
-                if x[0] != x[1] or not x[0].islower():
+                if x[0] != x[1] or not (x[0].islower() or x[0] == "NoDRE"):
                     april_fools_output.append(x)
         else:
             self.Fur_Genes = [self.wirehair, self.laperm, self.cornish, self.urals, self.tenn, self.fleece, self.sedesp, self.ruhr, self.ruhrmod, self.lykoi]
@@ -2224,9 +2203,9 @@ class Genotype:
             else:
                 self.Mutate()
         else:
-            if(self.ruhr[0] == 'Hr'):
+            if(self.ruhr[0] == 'hrbd'):
                 self.ruhr[0] = 'Hrbd'
-            elif(self.ruhr[1] == 'Hr'):
+            elif (self.ruhr[1] == 'hrbd'):
                 self.ruhr[1] = 'Hrbd'
             else:
                 self.Mutate()
@@ -2588,7 +2567,11 @@ class Genotype:
         try:
             return "Mutated " + alleles[self.somatic['gene']].get(self.somatic['allele']) + " on " + body[self.somatic['base']]
         except:
-            return "Mutated " + alleles[self.somatic['gene']] + " on " + body[self.somatic['base']]
+            try:
+                return "Mutated " + alleles[self.somatic['gene']] + " on " + body[self.somatic['base']]
+            except:
+                return self.somatic['gene'] + " mutated on " + body[self.somatic['base']]
+
 
 
 

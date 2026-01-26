@@ -33,7 +33,7 @@ from ..clan_package.settings import get_clan_setting, load_clan_settings, reset_
 from ..game_structure.game.settings import game_setting_set, game_setting_get
 from ..game_structure.game.switches import switch_get_value, switch_set_value, Switch
 from ..game_structure.screen_settings import MANAGER, screen
-from ..game_structure.windows import SymbolFilterWindow
+from ..ui.windows.symbol_filter import SymbolFilterWindow
 from ..ui.generate_box import get_box, BoxStyles
 from ..ui.generate_button import ButtonStyles, get_button_dict
 from ..ui.icon import Icon

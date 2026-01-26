@@ -18,7 +18,7 @@ import ujson  # type: ignore
 
 import scripts.game_structure.localization as pronouns
 from scripts.cat import save_load
-from scripts.cat.enums import CatAge, CatRank, CatSocial, CatGroup, CatStanding
+from scripts.cat.enums import CatAge, CatRank, CatSocial, CatGroup, CatStanding, CatCompatibility
 from scripts.cat.history import History
 from scripts.cat.names import Name
 from scripts.cat.pelts import Pelt
@@ -272,14 +272,16 @@ class Cat:
                 self.phenotype.pax3[0] = 'DBEalt'
         
         if not loading_cat:
-            if(randint(1, constants.CONFIG['genetics_config']['intersex']) == 1) or (self.chimerapheno and xor('Y' in self.phenotype.sexgene, 'Y' in self.chimerapheno.sexgene) and randint(1, round(constants.CONFIG['genetics_config']['intersex']/4)) == 1):
+            if(randint(1, constants.CONFIG['genetics_config']['intersex']) == 1) or (self.chimerapheno and xor('Y' in self.phenotype.sexgene, 'Y' in self.chimerapheno.sexgene)):
                 self.phenotype.sex = "intersex"
-                if(randint(1, 25) == 1 and 'Y' in self.phenotype.sexgene):
+                if (randint(1, 25) == 1 and 'Y' in self.phenotype.sexgene) or (self.chimerapheno and xor('Y' in self.phenotype.sexgene, 'Y' in self.chimerapheno.sexgene) and randint(1, 10) == 1):
                     self.phenotype.sex = 'molly'
-                elif(randint(1, 25) == 1 and 'Y' not in self.phenotype.sexgene):
+                elif (randint(1, 25) == 1 and 'Y' not in self.phenotype.sexgene) or (self.chimerapheno and xor('Y' in self.phenotype.sexgene, 'Y' in self.chimerapheno.sexgene) and randint(1, 10) == 1):
                     self.phenotype.sex = 'tom'
         if self.passes != 1 and (not self.chimerapheno or xor('Y' in self.phenotype.sexgene, 'Y' in self.chimerapheno.sexgene)):
             self.passes = 1
+            if self.phenotype.sex == "tom" and 'Y' not in self.phenotype.sexgene:
+                self.passes = 2
 
         self.phenotype.PhenotypeOutput(self.phenotype.white_pattern)
         self.phenotype.SpriteInfo(moons if moons else 0)
@@ -427,7 +429,7 @@ class Cat:
         if not loading_cat:
             self.init_generate_cat(skill_dict, disable_random)
         
-        if self.phenotype.munch[1] == "Mk" or (self.phenotype.manx[1] == "Ab" or self.phenotype.manx[1] == "M") or ('NoDBE' not in self.phenotype.pax3 and 'DBEalt' not in self.phenotype.pax3):
+        if self.phenotype.munch[1] == "Mk" or self.phenotype.sexgene[0] == "Y" or (self.phenotype.manx[1] == "Ab" or self.phenotype.manx[1] == "M") or ('NoDBE' not in self.phenotype.pax3 and 'DBEalt' not in self.phenotype.pax3):
             if not self.dead:
                 self.dead = True
 
@@ -648,9 +650,10 @@ class Cat:
         
         if ((len(self.phenotype.sexgene) > 2 and 'Y' in self.phenotype.sexgene and random() > 0.001) 
             or len(self.phenotype.sexgene) == 1
+            or (len(self.phenotype.sexgene) > 2 and 'Y' not in self.phenotype.sexgene and random() < 0.01)
             or (self.gender == 'intersex' and random() < 0.2) 
             or (self.gender == 'molly' and 'Y' in self.phenotype.sexgene) 
-            or (self.gender == 'tom' and 'Y' not in self.phenotype.sexgene)):
+            or (self.gender == 'tom' and 'Y' not in self.phenotype.sexgene and random() < 0.99)):
             self.get_permanent_condition('sterile', born_with=True, genetic=True)
         
         if self.phenotype.fold[0] == 'Fd' or ('manx syndrome' in self.permanent_condition and self.phenotype.bobtailnr < 4 and self.phenotype.bobtailnr > 1 and random() < 0.05):
@@ -669,7 +672,7 @@ class Cat:
             self.get_permanent_condition('ocular albinism', born_with=True, genetic=True)
         
         if self.phenotype.length == 'hairless':
-            self.get_permanent_condition('fully hairless', born_with=True, genetic=True)
+            self.get_permanent_condition('fully hairless', born_with=True, genetic=True, custom_reveal=12 if (self.phenotype.sedesp[0] != "hr" and self.phenotype.ruhr[1] != "Hrbd" and self.moons < 12) else None)
         if self.phenotype.length == 'fur-pointed' or 'patchy ' in self.phenotype.furtype:
             self.get_permanent_condition('partially hairless', born_with=True, genetic=True)
         
@@ -701,9 +704,38 @@ class Cat:
             if not instructor:
                 instructor = game.clan.instructor
 
-            if self.status.get_last_living_group():
+            game.updated_afterlife_cats.add(self)
+
+            cat_default_afterlife_id = self.status.get_default_afterlife_id()
+            if cat_default_afterlife_id == CatGroup.UNKNOWN_RESIDENCE_ID:
+                pass
+
             # kits are auto-accepted
-                if self.age in (CatAge.KITTEN, CatAge.NEWBORN):
+            elif self.age in (CatAge.KITTEN, CatAge.NEWBORN):
+                self.history.add_afterlife_acceptance(
+                    instructor.status.group,
+                    is_kit=True,
+                )
+            else:
+                if cat_default_afterlife_id == CatGroup.STARCLAN_ID:
+                    affinity = self.starclan_affinity
+                    afterlife_group = CatGroup.STARCLAN
+                    rejected_ID = CatGroup.DARK_FOREST_ID
+                else:
+                    affinity = self.dark_forest_affinity
+                    afterlife_group = CatGroup.DARK_FOREST
+                    rejected_ID = CatGroup.STARCLAN_ID
+
+                # afterlife does not like this cat
+                if affinity < 0:
+                    # might send them to the opposite afterlife instead
+                    if random() < abs(affinity / 100):
+                        self.history.add_afterlife_acceptance(
+                            afterlife_group, rejected=True
+                        )
+                        self.status.send_to_afterlife(rejected_ID)
+                        return
+                    # fine, they can go to afterlife, but some cats don't like it
                     self.history.add_afterlife_acceptance(
                         instructor.status.group,
                         is_kit=True,
@@ -956,7 +988,9 @@ class Cat:
                         high_types.extend(rel_type)
                 elif tier.is_low_pos:
                     high_types.extend(rel_type)
-                elif tier.is_extreme_neg or tier.is_mid_neg:
+                elif tier.is_extreme_neg:
+                    very_low_types.extend(rel_type)
+                elif tier.is_mid_neg and randint(1, 4) == 1:
                     very_low_types.extend(rel_type)
                 continue
 
@@ -969,7 +1003,12 @@ class Cat:
                     major_chance -= 1
 
                 # decrease major grief chance if grave herbs are used
-                if body and not body_treated and ("rosemary" in game.clan.herb_supply.entire_supply or self.status.get_last_living_group() != CatGroup.PLAYER_CLAN_ID):
+                if (
+                    body
+                    and not body_treated
+                    and (game.clan.herb_supply.entire_supply["rosemary"]
+                    or self.status.get_last_living_group() == CatGroup.PLAYER_CLAN_ID)
+                ):
                     body_treated = True
                     if self.status.get_last_living_group() == CatGroup.PLAYER_CLAN_ID:
                         game.clan.herb_supply.remove_herb("rosemary", -1)
@@ -1230,6 +1269,8 @@ class Cat:
     def rank_change_traits_skill(self, mentor):
         """Updates trait and skill upon ceremony"""
 
+        personality = self.personality.trait
+
         if self.status.rank in (
             CatRank.WARRIOR,
             CatRank.MEDICINE_CAT,
@@ -1251,6 +1292,8 @@ class Cat:
                             affect_personality[0],
                             affect_personality[1],
                         )
+                        if self.personality.trait != personality:
+                            self.history.prev_pers.append(personality)
                     if affect_skills:
                         self.history.add_skill_mentor_influence(
                             affect_skills[0], affect_skills[1], affect_skills[2]
@@ -1352,6 +1395,7 @@ class Cat:
 
                 self._history = History(
                     prev_names = history_data["prev_names"] if "prev_names" in history_data else [],
+                    prev_pers = history_data["prev_pers"] if "prev_pers" in history_data else [],
                     beginning=(
                         history_data["beginning"] if "beginning" in history_data else {}
                     ),
@@ -1414,6 +1458,7 @@ class Cat:
         except:
             self.history = History(
                 prev_names=[],
+                prev_pers=[],
                 beginning={},
                 mentor_influence={},
                 app_ceremony={},
@@ -1762,9 +1807,13 @@ class Cat:
             self.status._change_rank(CatRank.KITTEN)
         self.in_camp = 1
 
+        personality = self.personality.trait
+
         if not self.status.is_clancat:
             # this is handled in events.py
             self.personality.set_kit(self.age.is_baby())
+            if self.personality.trait != personality:
+                self.history.prev_pers.append(personality)
             self.thoughts(other_clan_cats=other_clan_cats)
             return
 
@@ -1774,6 +1823,8 @@ class Cat:
 
         # Set personality to correct type
         self.personality.set_kit(self.age.is_baby())
+        if self.personality.trait != personality:
+            self.history.prev_pers.append(personality)
         # Upon age-change
 
         if self.status.rank.is_any_apprentice_rank():
@@ -2279,7 +2330,11 @@ class Cat:
                 )
                 != 0
             ):
-                clan_herbs = set(game.clan.herb_supply.entire_supply.keys())
+                clan_herbs = {
+                    herb
+                    for herb, clan_has_herb in game.clan.herb_supply.entire_supply.items()
+                    if clan_has_herb
+                }
                 needed_herbs = {"horsetail", "raspberry", "marigold", "cobwebs"}
                 usable_herbs = list(needed_herbs.intersection(clan_herbs))
 
@@ -2471,7 +2526,7 @@ class Cat:
         return len(self.permanent_condition) > 0
 
     def available_to_work(self):
-        return self.status.alive_in_player_clan and not self.not_working()
+        return self.status.group.is_any_clan_group() and not self.not_working()
 
     def contact_with_ill_cat(self, cat: Cat):
         """handles if one cat had contact with an ill cat"""
@@ -3154,16 +3209,22 @@ class Cat:
             chance = 40
 
         compat = get_personality_compatibility(cat1, cat2)
-        if compat is True:
+        if compat == CatCompatibility.POSITIVE:
             chance += 10
-        elif compat is False:
+        elif compat == CatCompatibility.NEGATIVE:
             chance -= 5
 
         # Cat's compatibility with mediator also has an effect on success chance.
         for cat in (cat1, cat2):
-            if get_personality_compatibility(cat, mediator) is True:
+            if (
+                get_personality_compatibility(cat, mediator)
+                == CatCompatibility.POSITIVE
+            ):
                 chance += 5
-            elif get_personality_compatibility(cat, mediator) is False:
+            elif (
+                get_personality_compatibility(cat, mediator)
+                == CatCompatibility.NEGATIVE
+            ):
                 chance -= 5
 
         # Determine chance to fail, turning sabotage into mediate and mediate into sabotage
@@ -3661,6 +3722,7 @@ class Cat:
                 "passes_genotype" : self.passes,
                 "white_pattern" : self.phenotype.white_pattern,
                 "chim_white" : self.chimerapheno.white_pattern if self.chimerapheno else "No",
+                "sprite_newborn": self.pelt.cat_sprites["newborn"],
                 "sprite_kitten": self.pelt.cat_sprites['kitten'],
                 "sprite_adolescent": self.pelt.cat_sprites['adolescent'],
                 "sprite_adult": self.pelt.cat_sprites['adult'],

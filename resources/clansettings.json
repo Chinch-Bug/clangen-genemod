@@ -145,6 +145,16 @@
         "When this setting is off, cats with permanent conditions will choose whether or not they want to retire.",
         false
       ],
+      "healer_retirement": [
+        "Allow healers to retire if there are enough healers",
+        "If remaining healers would be able to care for the Clan, elderly healers may choose to retire",
+        false
+      ],
+      "mediator_retirement": [
+        "Allow mediators to retire",
+        "Elderly mediators may choose to retire",
+        false
+      ],
       "become_mediator": [
         "Allow warriors and elders to choose to become mediators",
         "Warriors and elders will have a chance to become mediators upon timeskip.",

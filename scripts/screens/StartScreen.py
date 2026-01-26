@@ -28,7 +28,8 @@ from scripts.game_structure import image_cache, game, constants
 from scripts.game_structure.audio import music_manager
 from scripts.game_structure.game.settings import game_settings_load, game_setting_get
 from scripts.game_structure.ui_elements import UIImageButton, UISurfaceImageButton
-from scripts.game_structure.windows import UpdateAvailablePopup, ChangelogPopup
+from scripts.ui.windows.update_available import UpdateAvailableWindow
+from scripts.ui.windows.changelog import ChangelogWindow
 from scripts.housekeeping.datadir import open_data_dir, open_url
 from scripts.utility import ui_scale, quit, ui_scale_dimensions
 from .Screens import Screens
@@ -94,11 +95,11 @@ class StartScreen(Screens):
                 self.open_data_directory_button.kill()
                 self.error_open = False
             # elif event.ui_element == self.update_button:
-            #     UpdateAvailablePopup()
+            #     UpdateAvailableWindow()
             elif event.ui_element == self.quit:
                 quit(savesettings=False, clearevents=False)
             elif event.ui_element == self.event_edit:
-                self.change_screen("event edit screen")
+                self.change_screen(GameScreen.EVENT_EDIT)
             elif event.ui_element == self.social_buttons["discord_button"]:
                 open_url("https://discord.gg/clangen")
             elif event.ui_element == self.social_buttons["tumblr_button"]:
@@ -329,7 +330,7 @@ class StartScreen(Screens):
         #                         show_popup = False
 
         #             if show_popup:
-        #                 UpdateAvailablePopup(show_checkbox=True)
+        #                 UpdateAvailableWindow(show_checkbox=True)
 
         #         has_checked_for_update = True
 
@@ -351,7 +352,7 @@ class StartScreen(Screens):
                         show_changelog = False
 
             if show_changelog:
-                ChangelogPopup()
+                ChangelogWindow()
                 with open(
                     f"{get_cache_dir()}/changelog_popup_shown", "w", encoding="utf-8"
                 ) as write_file:

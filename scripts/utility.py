@@ -40,7 +40,7 @@ logger = logging.getLogger(__name__)
 from scripts.special_dates import SpecialDate, is_today
 from scripts.game_structure import image_cache, localization, constants
 from scripts.cat.status import Status
-from scripts.cat.enums import CatAge, CatRank, CatSocial, CatGroup, CatStanding
+from scripts.cat.enums import CatAge, CatRank, CatSocial, CatGroup, CatStanding, CatCompatibility
 from scripts.cat.names import names
 from scripts.cat.sprites import sprites
 from scripts.game_structure import game
@@ -251,12 +251,77 @@ def search_cats(search_text, cat_list, search_genotype):
                 "poly": ["Pd", "pd"],
                 "pax3": ["NoDBE", "DBEre", "DBEalt", "DBEcel"],
             }
+            polygenes = {
+                "wbsum": ["wideband", "wb"],
+                "rufsum": ["rufousing", "ruf"],
+                "unders_rufsum": ["underbelly_rufousing", "underbelly_ruf"],
+                "bengsum": ["bengal", "bm"],
+                "soksum": ["sokoke", "sok"],
+                "spotsum": ["spotted", "spot"],
+                "ticksum": ["ticked_mod", "tick_md"],
+                "saturation": ["saturation", "sat"],
+                "refraction": ["refraction", "ref"],
+                "pigmentation": ["pigmentation", "pig"],
+                "whitegrade": ["whitegrade", "white_grade", "white"]
+            }
+            
             orgroups = search_text.split("/")
             all_found = []
             for g in orgroups:
                 alleles = g.split("&")
                 found_cats = cat_list.copy()
                 for a in alleles:
+                    find_poly = [
+                        key for key, value in polygenes.items() if a.split(" ")[0].split(">")[0].split("<")[0].split("=")[0] in value]
+                    if ">" in a or "<" in a or "=" in a and find_poly:
+                        poly = find_poly[0]
+                        operator = None
+                        if "<=" in a:
+                            operator = "<="
+                        elif ">=" in a:
+                            operator = ">="
+                        elif "<" in a:
+                            operator = "<"
+                        elif ">" in a:
+                            operator = ">"
+                        elif ">" in a:
+                            operator = ">"
+                        elif "=" in a:
+                            operator = "="
+                        poly_value = a.split(operator, 1)[-1]
+
+                        if poly_value.isdigit():
+                            if operator == "<=":
+                                found_cats = [
+                                    cat
+                                    for cat in found_cats
+                                    if cat.phenotype[poly] <= int(poly_value) or (cat.chimerapheno and cat.chimerapheno[poly] <= int(poly_value))
+                                ]
+                            elif operator == ">=":
+                                found_cats = [
+                                    cat
+                                    for cat in found_cats
+                                    if cat.phenotype[poly] >= int(poly_value) or (cat.chimerapheno and cat.chimerapheno[poly] >= int(poly_value))
+                                ]
+                            elif operator == ">":
+                                found_cats = [
+                                    cat
+                                    for cat in found_cats
+                                    if cat.phenotype[poly] > int(poly_value) or (cat.chimerapheno and cat.chimerapheno[poly] > int(poly_value))
+                                ]
+                            elif operator == "<":
+                                found_cats = [
+                                    cat
+                                    for cat in found_cats
+                                    if cat.phenotype[poly] < int(poly_value) or (cat.chimerapheno and cat.chimerapheno[poly] < int(poly_value))
+                                ]
+                            elif operator == "=":
+                                found_cats = [
+                                    cat
+                                    for cat in found_cats
+                                    if cat.phenotype[poly] == int(poly_value) or (cat.chimerapheno and cat.chimerapheno[poly] == int(poly_value))
+                                ]
+                        
                     allele = a.strip().strip("!")
                     find_gene = [
                         key for key, value in gene_map.items() if allele in value]
@@ -503,17 +568,6 @@ def create_new_cat_block(
                     continue
 
                 give_mates.append(in_event_cats[index])
-
-            try:
-                index = int(index)
-            except ValueError:
-                print(f"mate-index not correct: {index}")
-                continue
-
-            if index >= i:
-                continue
-
-            give_mates.extend(event.new_cats[index])
 
     # determine gender
     if "male" in attribute_list:
@@ -866,17 +920,6 @@ def create_new_cat_block(
             fevercoat = True
 
         for n_c in new_cats:
-
-            if n_c.phenotype.manx[1] == "Ab" or n_c.phenotype.manx[1] == "M" or n_c.phenotype.munch[1] == "Mk" or ('NoDBE' not in n_c.phenotype.pax3 and 'DBEalt' not in n_c.phenotype.pax3):
-                n_c.moons = 0
-                n_c.status = Status(**{"group_ID": n_c.status.group_ID,
-                              "rank": CatRank.NEWBORN, "age": CatAge.NEWBORN})
-                n_c.dead = True
-                n_c.thoughts(just_died=True)
-                n_c.history.add_death(str(n_c.name) + " was stillborn.")
-                new_cats.remove(n_c)
-                continue
-
             if fevercoat:
                 n_c.phenotype.fevercoat = True
                 if n_c.chimerapheno:
@@ -1318,6 +1361,33 @@ def create_new_cat(
             extrapar=extrapar,
             adoptive_parents=adoptive_parents if adoptive_parents else [],
         )
+        
+
+        if new_cat.phenotype.manx[1] == "Ab" or new_cat.phenotype.sexgene[0] == "Y" or new_cat.phenotype.manx[1] == "M" or new_cat.phenotype.munch[1] == "Mk" or ('NoDBE' not in new_cat.phenotype.pax3 and 'DBEalt' not in new_cat.phenotype.pax3):
+            if len(created_cats) == 0:
+                while new_cat.phenotype.manx[1] == "Ab" or new_cat.phenotype.sexgene[0] == "Y" or new_cat.phenotype.manx[1] == "M" or new_cat.phenotype.munch[1] == "Mk" or ('NoDBE' not in new_cat.phenotype.pax3 and 'DBEalt' not in new_cat.phenotype.pax3):
+                    del Cat.all_cats[new_cat.ID]
+                    new_cat = Cat(
+                        moons=moons,
+                        status_dict={
+                            "social": original_social,
+                            "age": age,
+                            "group_ID": original_group,
+                        },
+                        gender=_gender,
+                        backstory=backstory,
+                        parent1=parent1,
+                        parent2=parent2,
+                        extrapar=extrapar,
+                        adoptive_parents=adoptive_parents if adoptive_parents else [],
+                    )
+            else:
+                new_cat.moons = 0
+                new_cat.status = Status(**{"group_ID": new_cat.status.group_ID,
+                                "rank": CatRank.NEWBORN, "age": CatAge.NEWBORN})
+                new_cat.dead = True
+                new_cat.thoughts(just_died=True)
+                new_cat.history.add_death(str(new_cat.name) + " was stillborn.")
         # this simulates a "history" as whomever they used to be
         new_cat.status.change_current_moons_as(moons)
 
@@ -1536,18 +1606,18 @@ def check_relationship_value(cat_from, cat_to, rel_value=None):
 
 
 def get_personality_compatibility(cat1, cat2):
-    """Returns:
-    True - if personalities have a positive compatibility
-    False - if personalities have a negative compatibility
-    None - if personalities have a neutral compatibility
+    """
+    Returns matching CatCompatibility enum according to personalitiesof given cat objects.
+    :param cat1: Cat object of first cat
+    :param cat2: Cat object of second cat
     """
     personality1 = cat1.personality.trait
     personality2 = cat2.personality.trait
 
     if personality1 == personality2:
         if personality1 is None:
-            return None
-        return True
+            return CatCompatibility.NEUTRAL
+        return CatCompatibility.POSITIVE
 
     lawfulness_diff = abs(cat1.personality.lawfulness - cat2.personality.lawfulness)
     sociability_diff = abs(cat1.personality.sociability - cat2.personality.sociability)
@@ -1568,11 +1638,11 @@ def get_personality_compatibility(cat1, cat2):
             running_total -= 1
 
     if running_total >= 2:
-        return True
+        return CatCompatibility.POSITIVE
     if running_total <= -2:
-        return False
+        return CatCompatibility.NEGATIVE
 
-    return None
+    return CatCompatibility.NEUTRAL
 
 
 def get_cats_of_romantic_interest(cat):
@@ -1872,7 +1942,7 @@ def filter_relationship_type(
                         allowed_levels = rel_type_tiers[rel_type][index:]
                     # if it's a neg tier, we allow that index and lower
                     elif rel_tier.is_any_neg:
-                        allowed_levels = rel_type_tiers[rel_type][0:index]
+                        allowed_levels = rel_type_tiers[rel_type][0 : index + 1]
 
                     discard = True
                     for l in tier_list:
@@ -2025,8 +2095,16 @@ def unpack_rel_block(
         to_log = None
         from_log = None
         if "log" in block:
-            to_log = block["log"].get("cats_to") + effect if block["log"].get("cats_to") else ""
-            from_log = block["log"].get("cats_from") + effect if block["log"].get("cats_from") else ""
+            to_log = (
+                block["log"].get("cats_to", "") + effect
+                if "cats_to" in block["log"]
+                else None
+            )
+            from_log = (
+                block["log"].get("cats_from", "") + effect
+                if "cats_from" in block["log"]
+                else None
+            )
             if not to_log and not from_log:
                 print(f"something is wrong with relationship log: {block['log']}")
 
@@ -2038,11 +2116,12 @@ def unpack_rel_block(
         )
 
         if block.get("mutual"):
+            # we'll default to the other log if no unique log was written
             change_relationship_values(
                 cats_from_ob,
                 cats_to_ob,
                 **value_changes,
-                log=to_log,
+                log=to_log if to_log else from_log,
             )
 
 
@@ -2114,9 +2193,26 @@ def change_relationship_values(
                   " /Respect: " + str(respect) +
                   " /Comfort: " + str(comfort) +
                   " /Trust: " + str(trust)) if changed else print("No relationship change")"""
-
+            if not log:
+                log = i18n.t("relationships.relationship_log")
             if log and isinstance(log, str):
-                log_text = log + i18n.t(
+                replace_dict = {}
+                if "from_cat" in log:
+                    replace_dict["from_cat"] = (
+                        str(single_cat_from.name),
+                        choice(single_cat_from.pronouns),
+                    )
+                if "to_cat" in log:
+                    replace_dict["to_cat"] = (
+                        str(single_cat_to.name),
+                        choice(single_cat_to.pronouns),
+                    )
+                if replace_dict:
+                    processed_log = process_text(log, replace_dict)
+                else:
+                    processed_log = log
+
+                log_text = processed_log + i18n.t(
                     "relationships.age_postscript",
                     name=str(single_cat_to.name),
                     count=single_cat_to.moons,
@@ -2462,7 +2558,7 @@ def history_text_adjust(text, other_clan_name, clan, other_cat_rc=None):
         text = text.replace("o_c_n", str(other_clan_name))
 
     if "c_n" in text:
-        text = text.replace("c_n", clan.displayname)
+        text = text.replace("c_n", clan.displayname + "Clan")
     if "r_c" in text and other_cat_rc:
         text = selective_replace(text, "r_c", str(other_cat_rc.name))
     return text
@@ -2495,11 +2591,9 @@ def ongoing_event_text_adjust(Cat, text, clan=None, other_clan_name=None):
     """
     cat_dict = {}
     if "lead_name" in text:
-        kitty = Cat.fetch_cat(clan.leader)
-        cat_dict["lead_name"] = (str(kitty.name), choice(kitty.pronouns))
+        cat_dict["lead_name"] = (str(clan.leader.name), choice(clan.leader.pronouns))
     if "dep_name" in text:
-        kitty = Cat.fetch_cat(clan.deputy)
-        cat_dict["dep_name"] = (str(kitty.name), choice(kitty.pronouns))
+        cat_dict["dep_name"] = (str(clan.deputy.name), choice(clan.deputy.pronouns))
     if "med_name" in text:
         meds = find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True, clan=clan.group_ID)
         kitty = choice(
@@ -2530,7 +2624,7 @@ def ongoing_event_text_adjust(Cat, text, clan=None, other_clan_name=None):
 
 def event_text_adjust(
     Cat: Type["Cat"],
-    text,
+    text: str,
     *,
     patrol_leader=None,
     main_cat=None,
@@ -2670,9 +2764,15 @@ def event_text_adjust(
 
     # med_name
     if "med_name" in text:
-        med = choice(
-            find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True, clan=clan.group_ID)
-        )
+        try:
+            med = choice(
+                find_alive_cats_with_rank(
+                    Cat, [CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE], working=True, clan=clan.group_ID)
+            )
+        except:
+            med = choice(
+                find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], clan=clan.group_ID)
+            )
         replace_dict["med_name"] = (str(med.name), choice(med.pronouns))
 
     # assign all names and pronouns
@@ -3092,7 +3192,7 @@ def update_mask(cat):
     cat.sprite_mask = inflated_mask
 
 
-def clan_symbol_sprite(clan, return_string=False, force_light=False):
+def clan_symbol_sprite(clan, return_string=False, force_light=False, force_dark=False):
     """
     returns the clan symbol for the given clan_name, if no symbol exists then random symbol is chosen
     :param clan: the clan object
@@ -3118,7 +3218,7 @@ def clan_symbol_sprite(clan, return_string=False, force_light=False):
     if return_string:
         return clan.chosen_symbol
     else:
-        return sprites.get_symbol(clan.chosen_symbol, force_light=force_light)
+        return sprites.get_symbol(clan.chosen_symbol, force_light=force_light, force_dark=force_dark)
 
 
 def generate_sprite(
@@ -3175,7 +3275,7 @@ def generate_sprite(
     # paralyzed sprites
     elif cat.pelt.paralyzed and age != CatAge.NEWBORN:
         if age in (CatAge.KITTEN, CatAge.ADOLESCENT):
-            cat_sprite = sprite_poses[cat.pelt.cat_sprites["para_young"]]
+            cat_sprite = sprite_poses["para_young0"]
         else:
             if cat.pelt.length == 'long' or (cat.pelt.length == 'medium' and get_current_season() == 'Leaf-bare'):
                 cat_sprite = sprite_poses["para_adult_long0"]
@@ -3191,6 +3291,8 @@ def generate_sprite(
                 cat_sprite = sprite_poses[cat.pelt.cat_sprites[age].replace("short", "long")]
             else:
                 cat_sprite = sprite_poses[cat.pelt.cat_sprites[age]]
+
+    alt_cat_sprite = str(int(cat_sprite)-3)
 
     new_sprite = pygame.Surface(
         (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA
@@ -3237,21 +3339,34 @@ def generate_sprite(
             def CreateStripes(stripecolour, whichbase, coloursurface=None, preset_pattern=None, special=None):
                 stripebase = pygame.Surface(
                     (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                shading = pygame.Surface(
+                    (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
 
-                if not special and 'solid' not in whichbase:
-                    if ('chinchilla' in whichbase):
-                        stripebase.blit(
-                            sprites.sprites['chinchillashading' + cat_sprite], (0, 0))
-                    elif ('shaded' in whichbase):
-                        stripebase.blit(
-                            sprites.sprites['shadedshading' + cat_sprite], (0, 0))
-                    else:
-                        stripebase.blit(
-                            sprites.sprites[phenotype.wbtype + 'shading' + cat_sprite], (0, 0))
+                if whichbase == "solid" and phenotype.ghosting[0] == 'Gh' and not (phenotype.silver[0] == 'I' and cat.pelt.length == 'long'):
+                    return stripebase
 
                 not_red = (
                     'red' not in stripecolour and 'cream' not in stripecolour and 'honey' not in stripecolour and 'ivory' not in stripecolour and 'apricot' not in stripecolour)
+                is_dark_sunshine = (phenotype.wbtype not in [
+                    "shaded", "chinchilla"] and phenotype.corin[0] == "sh" and not_red and phenotype.agouti[1] == "a"
+                    and not (('ec' in phenotype.ext or (phenotype.ext[0] == 'ea' and ((sprite_age > 7 and phenotype.ext[0] != "a") or sprite_age > 19))) and 'Eg' not in phenotype.ext))
 
+                if not special and 'solid' not in whichbase:
+                    if ('chinchilla' in whichbase):
+                        shading.blit(
+                            sprites.sprites['chinchillashading' + cat_sprite], (0, 0))
+                    elif ('shaded' in whichbase) and not is_dark_sunshine:
+                        shading.blit(
+                            sprites.sprites['shadedshading' + cat_sprite], (0, 0))
+                    else:
+                        shading.blit(
+                            sprites.sprites[phenotype.wbtype + 'shading' + cat_sprite], (0, 0))
+                if "silver" in whichbase:
+                    shading.set_alpha(150)
+                
+                stripebase.blit(shading, (0, 0))
+
+                
                 if preset_pattern:
                     for pat in preset_pattern:
                         stripebase.blit(
@@ -3316,7 +3431,7 @@ def generate_sprite(
                         charc.set_alpha(191)
                 stripebase.blit(charc, (0, 0))
 
-                if 'chinchilla' in whichbase or 'shaded' in whichbase:
+                if ('chinchilla' in whichbase or 'shaded' in whichbase) and not is_dark_sunshine:
                     golden_gradient = pygame.Surface(
                         (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                     golden_gradient2 = pygame.Surface(
@@ -3327,8 +3442,10 @@ def generate_sprite(
                     if 'chinchilla' in whichbase:
                         golden_gradient2.set_alpha(150)
                     if 'shaded' in whichbase:
-                        if phenotype.corin[0] != "N":
-                            golden_gradient2.set_alpha(200)
+                        if phenotype.corin[0] == "N":
+                            golden_gradient2.set_alpha(100)
+                            golden_gradient.blit(golden_gradient2, (0, 0))
+                            golden_gradient2.set_alpha(255)
                     golden_gradient.blit(golden_gradient2, (0, 0))
 
                     stripebase.blit(golden_gradient, (0, 0),
@@ -3453,34 +3570,29 @@ def generate_sprite(
                 white = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 white.blit(sprites.sprites['lightbasecolours0'], (0, 0))
                 smokeUnders = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                smokeUnders.blit(sprites.sprites["Tabby_unders" + cat_sprite], (0, 0))
-                smokeUnders.blit(white, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
-                smokeUnders.set_alpha(10)
+                smokeUnders.blit(sprites.sprites["ghost" + cat_sprite], (0, 0))
                 white.set_alpha(10)
                 smokeLayer = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 smokeLayer.blit(white, (0, 0))
                 if(phenotype.ext[0] == 'Eg' and phenotype.agouti[0] != 'a'):
-                    whichmain.blit(sprites.sprites['grizzle' + cat_sprite], (0, 0))
+                    grizzle = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                    grizzle.blit(sprites.sprites['satin0'], (0, 0))
+                    grizzle.blit(sprites.sprites['grizzle' + cat_sprite], (0, 0))
+                    grizzle.set_alpha(175)
+                    whichmain.blit(grizzle, (0, 0))
                 if phenotype.ghosting[0] == 'Gh' and not (phenotype.silver[0] == 'I' and cat.pelt.length == 'long'):
-                    ghostingbase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                    ghostingbase.blit(sprites.sprites['ghost' + cat_sprite], (0, 0))
                     if(sprite_age < 4):
-                        ghostingbase.set_alpha(150)
+                        smokeUnders.set_alpha(150)
                     
-                    whichmain.blit(ghostingbase, (0, 0))
-                if (phenotype.silver[0] == 'I'):
-                    ghostingbase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                    ghostingbase.blit(sprites.sprites['ghost' + cat_sprite], (0, 0))
+                    whichmain.blit(smokeUnders, (0, 0))
+                smokeUnders.set_alpha(255)
+                if (phenotype.silver[0] == 'I' or phenotype.karp[1] == "K"):
                     if cat.pelt.length != 'long':
-                        ghostingbase.set_alpha(100)
+                        smokeUnders.set_alpha(100)
                     elif phenotype.wbtype == 'low':
-                        ghostingbase.set_alpha(150)
+                        smokeUnders.set_alpha(150)
                     
-                    whichmain.blit(ghostingbase, (0, 0))
-                if (phenotype.silver[0] == 'I'):
-                    smokeLayer.set_alpha(255)
-                    if cat.pelt.length != 'long':
-                        smokeLayer.blit(smokeUnders, (0, 0))
+                    whichmain.blit(smokeUnders, (0, 0))
                     if phenotype.wbtype == 'low' and cat.pelt.length == 'long':
                         smokeLayer.set_alpha(75)
                     elif phenotype.wbtype == 'low' or cat.pelt.length == 'long':
@@ -3488,7 +3600,8 @@ def generate_sprite(
                     else:
                         smokeLayer.set_alpha(200)
                     whichmain.blit(smokeLayer, (0, 0))
-                if('smoke' in phenotype.silvergold and 14 > phenotype.wbsum > 9):
+                smokeUnders.set_alpha(20)
+                if ('smoke' in phenotype.silvergold and 14 > phenotype.wbsum > 9):
                     smokeLayer.set_alpha(255)
                     if cat.pelt.length != 'long':
                         smokeLayer.blit(smokeUnders, (0, 0))
@@ -3568,8 +3681,11 @@ def generate_sprite(
                     phenotype.SpriteInfo(10)
                     nose.blit(sprites.sprites['nosecolours' + str(nose_dict.get(phenotype.maincolour[:-1]))], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                     phenotype.SpriteInfo(sprite_age)
-                elif maincolour != spritecolour and "masked" not in phenotype.silvergold and "charcoal" not in phenotype.tabtype:
-                    nose.blit(sprites.sprites['nosecolours2'], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                elif maincolour != spritecolour and "masked" not in phenotype.silvergold and "charcoal" not in phenotype.tabtype and not phenotype.blacknose:
+                    if phenotype.corin[0] != "N" and not (phenotype.corin[0] == "sh" and phenotype.agouti[1] == "a"):
+                        nose.blit(sprites.sprites['nosecolours0'], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    else:
+                        nose.blit(sprites.sprites['nosecolours2'], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                     nose.set_alpha(200)
                 else:
                     nose.blit(sprites.sprites['nosecolours' + str(nose_dict.get(maincolour[:-1]))], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
@@ -3595,9 +3711,9 @@ def generate_sprite(
                         else:
                             colourbase = TabbyBase(whichcolour, whichbase, cat_unders, special)
 
-                            if((phenotype.pointgene == ["cb", "cb"] and 'cinnamon' not in whichcolour and cat_sprite != "20") or (((("cb" in phenotype.pointgene or phenotype.pointgene[0] == "cm") and cat_sprite != "20") or phenotype.pointgene == ["cb", "cb"]) and get_current_season() == 'Leaf-bare')):
+                            if((phenotype.pointgene == ["cb", "cb"] and 'cinnamon' not in whichcolour and sprite_age > 0) or (((("cb" in phenotype.pointgene or phenotype.pointgene[0] == "cm") and sprite_age > 0) or phenotype.pointgene == ["cb", "cb"]) and get_current_season() == 'Leaf-bare')):
                                 colourbase.set_alpha(100)
-                            elif((("cb" in phenotype.pointgene or phenotype.pointgene[0] == "cm") and cat_sprite != "20") or phenotype.pointgene == ["cb", "cb"] or ((cat_sprite != "20" or ("cb" in phenotype.pointgene or phenotype.pointgene[0] == "cm")) and get_current_season() == 'Leaf-bare')):
+                            elif((("cb" in phenotype.pointgene or phenotype.pointgene[0] == "cm") and sprite_age > 0) or phenotype.pointgene == ["cb", "cb"] or ((sprite_age > 0 or ("cb" in phenotype.pointgene or phenotype.pointgene[0] == "cm")) and get_current_season() == 'Leaf-bare')):
                                 colourbase.set_alpha(50)
                             elif(("cb" in phenotype.pointgene or phenotype.pointgene[0] == "cm")):
                                 colourbase.set_alpha(15)
@@ -3613,9 +3729,9 @@ def generate_sprite(
                                 whichmain = AddStripes(whichmain, 'lightbasecolours2', whichbase)
                             else:
                                 if("cb" in phenotype.pointgene or phenotype.pointgene[0] == "cm"):
-                                    if("black" in whichcolour and cat_sprite != "20"):
+                                    if("black" in whichcolour and sprite_age > 0):
                                         whichmain = AddStripes(whichmain, 'lightbasecolours2', whichbase)
-                                    elif((("chocolate" in whichcolour or "cinnamon" in whichcolour) and cat_sprite != "20") or "black" in whichcolour):
+                                    elif((("chocolate" in whichcolour or "cinnamon" in whichcolour) and sprite_age > 0) or "black" in whichcolour):
                                         whichmain = AddStripes(whichmain, 'lightbasecolours1', whichbase)
                                     elif("cinnamon" in whichcolour or "chocolate" in whichcolour):
                                         whichmain = AddStripes(whichmain, 'lightbasecolours0', whichbase)
@@ -3630,7 +3746,7 @@ def generate_sprite(
                                         pointbase2.blit(pointbase, (0, 0))
                                         whichmain = AddStripes(whichmain, whichcolour, whichbase, coloursurface=pointbase2)
                                 else:
-                                    if("black" in whichcolour and cat_sprite != "20"):
+                                    if("black" in whichcolour and sprite_age > 0):
                                         stripecolour = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                                         stripecolour = AddStripes(stripecolour, 'lightbasecolours1', whichbase)
                                         stripecolour.set_alpha(102)
@@ -3639,14 +3755,14 @@ def generate_sprite(
                                         whichmain = AddStripes(whichmain, 'lightbasecolours0', whichbase)
                         
                         else:
-                            if("black" in whichcolour and phenotype.pointgene == ["cb", "cb"] and cat_sprite != "20"):
+                            if("black" in whichcolour and phenotype.pointgene == ["cb", "cb"] and sprite_age > 0):
                                 whichmain = AddStripes(whichmain, 'lightbasecolours3', whichbase)
-                            elif((("chocolate" in whichcolour and phenotype.pointgene == ["cb", "cb"]) or ("black" in whichcolour and "cb" in phenotype.pointgene)) and cat_sprite != "20" or ("black" in whichcolour and phenotype.pointgene == ["cb", "cb"])):
+                            elif((("chocolate" in whichcolour and phenotype.pointgene == ["cb", "cb"]) or ("black" in whichcolour and "cb" in phenotype.pointgene)) and sprite_age > 0 or ("black" in whichcolour and phenotype.pointgene == ["cb", "cb"])):
                                 whichmain = AddStripes(whichmain, 'lightbasecolours2', whichbase)
-                            elif((("cinnamon" in whichcolour and phenotype.pointgene == ["cb", "cb"]) or ("chocolate" in whichcolour and "cb" in phenotype.pointgene) or ("black" in whichcolour and phenotype.pointgene == ["cs", "cs"])) and cat_sprite != "20" or (("chocolate" in whichcolour and phenotype.pointgene == ["cb", "cb"]) or ("black" in whichcolour and "cb" in phenotype.pointgene))):
+                            elif((("cinnamon" in whichcolour and phenotype.pointgene == ["cb", "cb"]) or ("chocolate" in whichcolour and "cb" in phenotype.pointgene) or ("black" in whichcolour and phenotype.pointgene == ["cs", "cs"])) and sprite_age > 0 or (("chocolate" in whichcolour and phenotype.pointgene == ["cb", "cb"]) or ("black" in whichcolour and "cb" in phenotype.pointgene))):
                                 whichmain = AddStripes(whichmain, 'lightbasecolours1', whichbase)
 
-                            elif(phenotype.pointgene == ["cb", "cb"]) and cat_sprite != "20":
+                            elif(phenotype.pointgene == ["cb", "cb"]) and sprite_age > 0:
                                 pointbase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                                 pointbase.blit(sprites.sprites[stripecolourdict.get(whichcolour[:-1], whichcolour[:-1])+whichcolour[-1]], (0, 0))
                                 if phenotype.caramel == 'caramel' and not is_red:    
@@ -3656,7 +3772,7 @@ def generate_sprite(
                                 pointbase2.blit(sprites.sprites['lightbasecolours0'], (0, 0))
                                 pointbase2.blit(pointbase, (0, 0))
                                 whichmain = AddStripes(whichmain, whichcolour, whichbase, coloursurface=pointbase2)
-                            elif("cb" in phenotype.pointgene) and (cat_sprite != "20" or phenotype.pointgene == ["cb", "cb"]):
+                            elif("cb" in phenotype.pointgene) and (sprite_age > 0 or phenotype.pointgene == ["cb", "cb"]):
                                 pointbase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                                 pointbase.blit(sprites.sprites[stripecolourdict.get(whichcolour[:-1], whichcolour[:-1])+whichcolour[-1]], (0, 0))
                                 if phenotype.caramel == 'caramel' and not is_red:    
@@ -3669,8 +3785,8 @@ def generate_sprite(
                                 pointbase2.blit(sprites.sprites['lightbasecolours0'], (0, 0))
                                 pointbase2.blit(pointbase, (0, 0))
                                 whichmain = AddStripes(whichmain, whichcolour, whichbase, coloursurface=pointbase2)
-                            else:
-                                whichmain = AddStripes(whichmain, 'lightbasecolours0', whichbase)
+                            # else:
+                            #     whichmain = AddStripes(whichmain, 'lightbasecolours0', whichbase)
 
                         #mask base
                         colourbase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
@@ -3689,35 +3805,48 @@ def generate_sprite(
                             if("black" in whichcolour and phenotype.pointgene[0] == "cm"):
                                 pointbase.blit(colourbase, (0, 0))
                             else:
-                                if((("cb" in phenotype.pointgene or phenotype.pointgene[0] == "cm") and cat_sprite != "20") or ((cat_sprite != "20" or ("cb" in phenotype.pointgene or phenotype.pointgene[0] == "cm")) and get_current_season() == "Leaf-bare")):
+                                if((("cb" in phenotype.pointgene or phenotype.pointgene[0] == "cm") and sprite_age > 0) or ((sprite_age > 0 or ("cb" in phenotype.pointgene or phenotype.pointgene[0] == "cm")) and get_current_season() == "Leaf-bare")):
                                     colourbase.set_alpha(180)
-                                elif(cat_sprite != "20" or ("cb" in phenotype.pointgene or phenotype.pointgene[0] == "cm")):
+                                elif(sprite_age > 0 or ("cb" in phenotype.pointgene or phenotype.pointgene[0] == "cm")):
                                     colourbase.set_alpha(50)
                                 else:
                                     colourbase.set_alpha(0)
 
                                 pointbase2.blit(colourbase, (0, 0))
-
-                                if(get_current_season() == "Greenleaf"):
-                                    pointbase.blit(sprites.sprites['mochal' + cat_sprite], (0, 0))
-                                    pointbase.blit(pointbase2, (0, 0), 
-                                                special_flags=pygame.BLEND_RGBA_MULT)
-                                elif(get_current_season() == "Leaf-bare"):
-                                    pointbase.blit(sprites.sprites['mochad' + cat_sprite], (0, 0))
-                                    pointbase.blit(pointbase2, (0, 0), 
-                                                special_flags=pygame.BLEND_RGBA_MULT)
-                                else:
-                                    pointbase.blit(sprites.sprites['mocham' + cat_sprite], (0, 0))
-                                    pointbase.blit(pointbase2, (0, 0), 
-                                                special_flags=pygame.BLEND_RGBA_MULT)
-                            
+                                
+                                if phenotype.pointgene[0] == "cm":
+                                    if(get_current_season() == "Greenleaf"):
+                                        pointbase.blit(sprites.sprites['mochal' + cat_sprite], (0, 0))
+                                        pointbase.blit(pointbase2, (0, 0), 
+                                                    special_flags=pygame.BLEND_RGBA_MULT)
+                                    elif(get_current_season() == "Leaf-bare"):
+                                        pointbase.blit(sprites.sprites['mochad' + cat_sprite], (0, 0))
+                                        pointbase.blit(pointbase2, (0, 0), 
+                                                    special_flags=pygame.BLEND_RGBA_MULT)
+                                    else:
+                                        pointbase.blit(sprites.sprites['mocham' + cat_sprite], (0, 0))
+                                        pointbase.blit(pointbase2, (0, 0), 
+                                                    special_flags=pygame.BLEND_RGBA_MULT)
+                                else:                 
+                                    if(get_current_season() == "Greenleaf"):
+                                        pointbase.blit(sprites.sprites['pointsl' + cat_sprite], (0, 0))
+                                        pointbase.blit(pointbase2, (0, 0), 
+                                                    special_flags=pygame.BLEND_RGBA_MULT)
+                                    elif(get_current_season() == "Leaf-bare"):
+                                        pointbase.blit(sprites.sprites['pointsd' + cat_sprite], (0, 0))
+                                        pointbase.blit(pointbase2, (0, 0), 
+                                                    special_flags=pygame.BLEND_RGBA_MULT)
+                                    else:
+                                        pointbase.blit(sprites.sprites['pointsm' + cat_sprite], (0, 0))
+                                        pointbase.blit(pointbase2, (0, 0), 
+                                                    special_flags=pygame.BLEND_RGBA_MULT)   
                                 
                         else:
-                            if((phenotype.pointgene == ["cb", "cb"] and cat_sprite != "20") or ("cb" in phenotype.pointgene and cat_sprite != "20" and get_current_season() == 'Leaf-bare')):
+                            if((phenotype.pointgene == ["cb", "cb"] and sprite_age > 0) or ("cb" in phenotype.pointgene and sprite_age > 0 and get_current_season() == 'Leaf-bare')):
                                 colourbase.set_alpha(180)
-                            elif(("cb" in phenotype.pointgene and cat_sprite != "20") or phenotype.pointgene == ["cb", "cb"] or ((cat_sprite != "20" or "cb" in phenotype.pointgene) and get_current_season() == 'Leaf-bare')):
+                            elif(("cb" in phenotype.pointgene and sprite_age > 0) or phenotype.pointgene == ["cb", "cb"] or ((sprite_age > 0 or "cb" in phenotype.pointgene) and get_current_season() == 'Leaf-bare')):
                                 colourbase.set_alpha(120)
-                            elif(cat_sprite != "20" or "cb" in phenotype.pointgene):
+                            elif(sprite_age > 0 or "cb" in phenotype.pointgene):
                                 colourbase.set_alpha(50)
                             else:
                                 colourbase.set_alpha(15)
@@ -3751,18 +3880,32 @@ def generate_sprite(
                         stripebase.blit(CreateStripes(colour, whichbase), (0, 0))
 
                         
-                        if(get_current_season() == "Greenleaf"):
-                            stripebase2.blit(sprites.sprites['mochal' + cat_sprite], (0, 0))
-                            stripebase2.blit(stripebase, (0, 0), 
-                                        special_flags=pygame.BLEND_RGBA_MULT)
-                        elif(get_current_season() == "Leaf-bare"):
-                            stripebase2.blit(sprites.sprites['mochad' + cat_sprite], (0, 0))
-                            stripebase2.blit(stripebase, (0, 0), 
-                                        special_flags=pygame.BLEND_RGBA_MULT)
+                        if phenotype.pointgene[0] == "cm":
+                            if(get_current_season() == "Greenleaf"):
+                                stripebase2.blit(sprites.sprites['mochal' + cat_sprite], (0, 0))
+                                stripebase2.blit(stripebase, (0, 0), 
+                                            special_flags=pygame.BLEND_RGBA_MULT)
+                            elif(get_current_season() == "Leaf-bare"):
+                                stripebase2.blit(sprites.sprites['mochad' + cat_sprite], (0, 0))
+                                stripebase2.blit(stripebase, (0, 0), 
+                                            special_flags=pygame.BLEND_RGBA_MULT)
+                            else:
+                                stripebase2.blit(sprites.sprites['mocham' + cat_sprite], (0, 0))
+                                stripebase2.blit(stripebase, (0, 0), 
+                                            special_flags=pygame.BLEND_RGBA_MULT)
                         else:
-                            stripebase2.blit(sprites.sprites['mocham' + cat_sprite], (0, 0))
-                            stripebase2.blit(stripebase, (0, 0), 
-                                        special_flags=pygame.BLEND_RGBA_MULT)
+                            if(get_current_season() == "Greenleaf"):
+                                stripebase2.blit(sprites.sprites['pointsl' + cat_sprite], (0, 0))
+                                stripebase2.blit(stripebase, (0, 0), 
+                                            special_flags=pygame.BLEND_RGBA_MULT)
+                            elif(get_current_season() == "Leaf-bare"):
+                                stripebase2.blit(sprites.sprites['pointsd' + cat_sprite], (0, 0))
+                                stripebase2.blit(stripebase, (0, 0), 
+                                            special_flags=pygame.BLEND_RGBA_MULT)
+                            else:
+                                stripebase2.blit(sprites.sprites['pointsm' + cat_sprite], (0, 0))
+                                stripebase2.blit(stripebase, (0, 0), 
+                                            special_flags=pygame.BLEND_RGBA_MULT)
 
                         pointbase.blit(stripebase2, (0, 0))
 
@@ -3776,10 +3919,9 @@ def generate_sprite(
                             
                         whichmain = ApplySmokeEffects(whichmain)
 
-                        if phenotype.length != "longhaired":
-                            stripebase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                            stripebase.blit(CreateStripes(whichcolour, "solid", special="no_shading"), (0, 0))
-                            whichmain.blit(stripebase, (0, 0))
+                        stripebase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                        stripebase.blit(CreateStripes(whichcolour, "solid", special="no_shading"), (0, 0))
+                        whichmain.blit(stripebase, (0, 0))
                     elif("cm" in phenotype.pointgene):
                         colour = None
                         coloursurface = None
@@ -3787,27 +3929,24 @@ def generate_sprite(
                             whichmain.blit(sprites.sprites['lightbasecolours2'], (0, 0)) 
                             overlay = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                             overlay.blit(sprites.sprites['cinnamon3'], (0, 0)) 
-                            overlay.set_alpha(150)
+                            overlay.set_alpha(10)
                             whichmain.blit(overlay, (0, 0))
                             whichmain = ApplySmokeEffects(whichmain)
 
-                            if phenotype.length != "longhaired":
-                                stripebase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                            
-                                stripebase.blit(CreateStripes("cinnamon2", 'solid', special="no_shading", preset_pattern=["fullbaralt"]), (0, 0))
-                                stripebase.set_alpha(150)
+                            stripebase = CreateStripes("cinnamon2", 'solid', special="no_shading")
+                            stripebase.set_alpha(10)
 
-                                whichmain.blit(stripebase, (0, 0))
+                            whichmain.blit(stripebase, (0, 0))
                         else:
                             stripebase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                                 
                             if("cb" in phenotype.pointgene or phenotype.pointgene[0] == "cm"):
-                                if("black" in whichcolour and cat_sprite != "20"):
+                                if("black" in whichcolour and sprite_age > 0):
                                     whichmain.blit(sprites.sprites['lightbasecolours2'], (0, 0))
                                     colour = 'lightbasecolours2'
                                     whichmain = ApplySmokeEffects(whichmain)
 
-                                elif(("chocolate" in whichcolour and cat_sprite != "20") or "black" in whichcolour):
+                                elif(("chocolate" in whichcolour and sprite_age > 0) or "black" in whichcolour):
                                     whichmain.blit(sprites.sprites['lightbasecolours1'], (0, 0))
                                     colour = 'lightbasecolours1'
                                     whichmain = ApplySmokeEffects(whichmain)
@@ -3841,7 +3980,7 @@ def generate_sprite(
                                     
                                     whichmain = ApplySmokeEffects(whichmain)
                             else:
-                                if("black" in whichcolour and cat_sprite != "20"):
+                                if("black" in whichcolour and sprite_age > 0):
                                     whichmain.blit(sprites.sprites['lightbasecolours1'], (0, 0))
                                     colour = 'lightbasecolours1'
                                     whichmain = ApplySmokeEffects(whichmain)
@@ -3850,9 +3989,8 @@ def generate_sprite(
                                     colour = 'lightbasecolours0'
                             
                             
-                            if phenotype.length != "longhaired":
-                                stripebase = CreateStripes(colour, 'solid', special="no_shading", coloursurface=coloursurface)
-                                whichmain.blit(stripebase, (0, 0))
+                            stripebase = CreateStripes(colour, 'solid', special="no_shading", coloursurface=coloursurface)
+                            whichmain.blit(stripebase, (0, 0))
 
                             pointbase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                             pointbase2 = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
@@ -3864,27 +4002,43 @@ def generate_sprite(
                             whichmain = ApplySmokeEffects(whichmain)
 
                             
-                            if phenotype.length != "longhaired":
-                                stripebase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                                stripebase.blit(CreateStripes(whichcolour, 'solid', special="no_shading"), (0, 0))
+                            stripebase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                            stripebase.blit(CreateStripes(whichcolour, 'solid', special="no_shading"), (0, 0))
 
                             pointbase2.blit(stripebase, (0, 0))
 
-                            if(get_current_season() == "Greenleaf"):
-                                pointbase.blit(sprites.sprites['mochal' + cat_sprite], (0, 0))
-                                pointbase.blit(pointbase2, (0, 0), 
-                                            special_flags=pygame.BLEND_RGBA_MULT)
-                            elif(get_current_season() == "Leaf-bare"):
-                                pointbase.blit(sprites.sprites['mochad' + cat_sprite], (0, 0))
-                                pointbase.blit(pointbase2, (0, 0), 
-                                            special_flags=pygame.BLEND_RGBA_MULT)
-                            else:
-                                pointbase.blit(sprites.sprites['mocham' + cat_sprite], (0, 0))
-                                pointbase.blit(pointbase2, (0, 0), 
-                                            special_flags=pygame.BLEND_RGBA_MULT)
+                            if phenotype.pointgene[0] == "cm":
+                                if (get_current_season() == "Greenleaf"):
+                                    pointbase.blit(
+                                        sprites.sprites['mochal' + cat_sprite], (0, 0))
+                                    pointbase.blit(pointbase2, (0, 0),
+                                                special_flags=pygame.BLEND_RGBA_MULT)
+                                elif (get_current_season() == "Leaf-bare"):
+                                    pointbase.blit(
+                                        sprites.sprites['mochad' + cat_sprite], (0, 0))
+                                    pointbase.blit(pointbase2, (0, 0),
+                                                special_flags=pygame.BLEND_RGBA_MULT)
+                                else:
+                                    pointbase.blit(
+                                        sprites.sprites['mocham' + cat_sprite], (0, 0))
+                                    pointbase.blit(pointbase2, (0, 0),
+                                                special_flags=pygame.BLEND_RGBA_MULT)
+                            else:                 
+                                if(get_current_season() == "Greenleaf"):
+                                    pointbase.blit(sprites.sprites['pointsl' + cat_sprite], (0, 0))
+                                    pointbase.blit(pointbase2, (0, 0), 
+                                                special_flags=pygame.BLEND_RGBA_MULT)
+                                elif(get_current_season() == "Leaf-bare"):
+                                    pointbase.blit(sprites.sprites['pointsd' + cat_sprite], (0, 0))
+                                    pointbase.blit(pointbase2, (0, 0), 
+                                                special_flags=pygame.BLEND_RGBA_MULT)
+                                else:
+                                    pointbase.blit(sprites.sprites['pointsm' + cat_sprite], (0, 0))
+                                    pointbase.blit(pointbase2, (0, 0), 
+                                                special_flags=pygame.BLEND_RGBA_MULT)   
                         
-                            if phenotype.pointgene[0] == "cm" and 'blue' in whichcolour:
-                                pointbase.set_alpha(102)
+                            # if phenotype.pointgene[0] == "cm" and 'blue' in whichcolour:
+                            #     pointbase.set_alpha(102)
 
                             whichmain.blit(pointbase, (0, 0))        
                             
@@ -3892,19 +4046,19 @@ def generate_sprite(
                         colour = whichcolour
                         coloursurface = None
                         stripebase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                        if("black" in whichcolour and phenotype.pointgene == ["cb", "cb"] and cat_sprite != "20"):
+                        if("black" in whichcolour and phenotype.pointgene == ["cb", "cb"] and sprite_age > 0):
                             whichmain.blit(sprites.sprites['lightbasecolours3'], (0, 0)) 
                             colour = 'lightbasecolours3'
                             whichmain = ApplySmokeEffects(whichmain)
-                        elif((("chocolate" in whichcolour and phenotype.pointgene == ["cb", "cb"]) or ("black" in whichcolour and "cb" in phenotype.pointgene)) and cat_sprite != "20") or ("black" in whichcolour and phenotype.pointgene == ["cb", "cb"]):
+                        elif((("chocolate" in whichcolour and phenotype.pointgene == ["cb", "cb"]) or ("black" in whichcolour and "cb" in phenotype.pointgene)) and sprite_age > 0) or ("black" in whichcolour and phenotype.pointgene == ["cb", "cb"]):
                             whichmain.blit(sprites.sprites['lightbasecolours2'], (0, 0)) 
                             colour = 'lightbasecolours2'
                             whichmain = ApplySmokeEffects(whichmain)
-                        elif((("cinnamon" in whichcolour and phenotype.pointgene == ["cb", "cb"]) or ("chocolate" in whichcolour and "cb" in phenotype.pointgene) or ("black" in whichcolour and phenotype.pointgene == ["cs", "cs"])) and cat_sprite != "20") or (("chocolate" in whichcolour and phenotype.pointgene == ["cb", "cb"]) or ("black" in whichcolour and "cb" in phenotype.pointgene)):
+                        elif((("cinnamon" in whichcolour and phenotype.pointgene == ["cb", "cb"]) or ("chocolate" in whichcolour and "cb" in phenotype.pointgene) or ("black" in whichcolour and phenotype.pointgene == ["cs", "cs"])) and sprite_age > 0) or (("chocolate" in whichcolour and phenotype.pointgene == ["cb", "cb"]) or ("black" in whichcolour and "cb" in phenotype.pointgene)):
                             whichmain.blit(sprites.sprites['lightbasecolours1'], (0, 0))  
                             colour = 'lightbasecolours1'
                             whichmain = ApplySmokeEffects(whichmain)
-                        elif(phenotype.pointgene == ["cb", "cb"]) and cat_sprite != "20":
+                        elif(phenotype.pointgene == ["cb", "cb"]) and sprite_age > 0:
                             pointbase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                             pointbase.blit(sprites.sprites[whichcolour], (0, 0))
                             if phenotype.caramel == 'caramel' and not is_red:    
@@ -3924,7 +4078,7 @@ def generate_sprite(
                             pointbase.blit(whichmain, (0, 0)) 
                             coloursurface = pointbase
                             whichmain = ApplySmokeEffects(whichmain)
-                        elif("cb" in phenotype.pointgene) and (cat_sprite != "20" or phenotype.pointgene == ["cb", "cb"]):
+                        elif("cb" in phenotype.pointgene) and (sprite_age > 0 or phenotype.pointgene == ["cb", "cb"]):
                             pointbase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                             pointbase.blit(sprites.sprites[whichcolour], (0, 0))
                             if phenotype.caramel == 'caramel' and not is_red:    
@@ -3961,10 +4115,9 @@ def generate_sprite(
                         pointbase2 = ApplySmokeEffects(pointbase2)
 
                         
-                        if phenotype.length != "longhaired":
-                            stripebase = CreateStripes(whichcolour, "solid", special="no_shading")
-                        
-                            pointbase2.blit(stripebase, (0, 0))
+                        stripebase = CreateStripes(whichcolour, "solid", special="no_shading")
+                    
+                        pointbase2.blit(stripebase, (0, 0))
 
                         if(get_current_season() == "Greenleaf"):
                             pointbase.blit(sprites.sprites['pointsl' + cat_sprite], (0, 0))
@@ -4012,17 +4165,18 @@ def generate_sprite(
                     masked2.set_alpha(120)
                     sprite.blit(masked2, (0, 0))
 
-                if (phenotype.ext[0] == 'Eg' and phenotype.agouti[0] != 'a') and phenotype.satin[0] != "st" and phenotype.tenn[0] != 'tr' and not ('red' in phenotype.maincolour or 'cream' in phenotype.maincolour or 'honey' in phenotype.maincolour or 'ivory' in phenotype.maincolour or 'apricot' in phenotype.maincolour):    
-                    sprite.blit(sprites.sprites['satin0'], (0, 0))
-                elif (phenotype.glitter[0] == 'gl' or phenotype.ghosting[0] == 'Gh') and (phenotype.agouti[0] != 'a' or ('red' in phenotype.maincolour or 'cream' in phenotype.maincolour or 'honey' in phenotype.maincolour or 'ivory' in phenotype.maincolour or 'apricot' in phenotype.maincolour)):    
-                    if phenotype.satin[0] != "st" and phenotype.tenn[0] != 'tr':    
+                if (phenotype.glitter[0] == 'gl' or phenotype.ghosting[0] == 'Gh') and (phenotype.agouti[0] != 'a' or ('red' in phenotype.maincolour or 'cream' in phenotype.maincolour or 'honey' in phenotype.maincolour or 'ivory' in phenotype.maincolour or 'apricot' in phenotype.maincolour)):    
+                    if phenotype.glitter[0] == 'gl':
                         sprite.blit(sprites.sprites['satin0'], (0, 0))
-                    if(phenotype.ghosting[0] == 'Gh'):
+                    if (phenotype.ghosting[0] == 'Gh'):
                         fading = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                        fading.blit(sprites.sprites['tabbyghost'+cat_sprite], (0, 0))
+                        fading.blit(sprites.sprites['bleach'+cat_sprite], (0, 0))
+                        fading.blit(sprites.sprites['satin0'], (0, 0))
+                        fading.blit(sprites.sprites['satin0'], (0, 0))
+                        fading.blit(sprites.sprites['satin0'], (0, 0))
+                        fading.blit(sprites.sprites['satin0'], (0, 0))
                         fading.set_alpha(50)
                         sprite.blit(fading, (0, 0))
-                        sprite.blit(sprites.sprites['satin0'], (0, 0))
                 if not phenotype.brindledbi and not ('red' in phenotype.maincolour or 'cream' in phenotype.maincolour or 'honey' in phenotype.maincolour or 'ivory' in phenotype.maincolour or 'apricot' in phenotype.maincolour) and (phenotype.ext[0] != "Eg" and phenotype.agouti[0] !='a' and (phenotype.corin[0] == 'sg' or phenotype.corin[0] == 'sh' or ('ec' in phenotype.ext and phenotype.ext[0] != "Eg") or (phenotype.ext[0] == 'ea' and sprite_age > 6) or (phenotype.silver[0] == 'i' and phenotype.corin[0] == 'fg'))):
                     sunshine = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                     sunshine.blit(sprites.sprites['bimetal' + cat_sprite], (0, 0))
@@ -4176,10 +4330,10 @@ def generate_sprite(
             if cat.phenotype.sedesp == ['hr', 're'] or (cat.phenotype.sedesp[0] == 're' and sprite_age < 12) or (cat.phenotype.laperm[0] == 'Lp' and sprite_age < 4):
                 gensprite.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
                 gensprite.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
-            elif(cat.pelt.length == 'hairless'):
+            elif(cat.pelt.length == 'hairless' and (cat.phenotype.sedesp[0] == "hr" or cat.phenotype.ruhr[1] == "Hrbd" or sprite_age > 11)):
                 gensprite.blit(sprites.sprites['hairless' + cat_sprite], (0, 0))
                 gensprite.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
-            elif('patchy ' in cat.phenotype.furtype):
+            elif ('patchy ' in cat.phenotype.furtype) or (cat.pelt.length == 'hairless' and cat.phenotype.sedesp[0] != "hr" and cat.phenotype.ruhr[1] != "Hrbd" and sprite_age > 5):
                 gensprite.blit(sprites.sprites['donskoy' + cat_sprite], (0, 0))
             
             if('sparse' in cat.phenotype.furtype):
@@ -4193,26 +4347,71 @@ def generate_sprite(
             if(phenotype.fold[0] != 'Fd' or phenotype.curl[0] == 'Cu'):
                 gensprite.blit(sprites.sprites['ears' + cat_sprite], (0, 0))
 
-            if(int(cat_sprite) < 18):
+
+            def construct_eye_colour(eyetype):
+                split = eyetype.split(" ; ")
+                data = sprites.EYE_DATA[split[1]][split[0]].copy()
+                eyes = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                
+                if is_today(SpecialDate.APRIL_FOOLS):
+                    if phenotype.april_fools.get("rainbow_eyes", ["NoDRE"])[0] == "DREfull":
+                        data["inner"] = [randint(0, 255), randint(0, 255), randint(0, 255)] 
+                        data["outer"] = [randint(127, 255), randint(127, 255), randint(127, 255)] 
+                        data["pupil"] = [randint(0, 127), randint(0, 127), randint(0, 127)] 
+                    elif phenotype.april_fools.get("rainbow_eyes", ["NoDRE"])[0] == "DREmin":
+                        rgb = [randint(0, 255), randint(0, 255), randint(0, 255)]
+                        data["inner"] = rgb 
+                        pupils = [0, 0, 0]
+                        pupils1 = [v*0.5 for v in rgb]
+                        rgb = [round(rgb[0]*0.625), round(rgb[1]*0.7), round(rgb[2]*0.50)]
+                        data["outer"] = rgb
+                        pupils2 = [v*0.5 for v in rgb]
+                        for i in range(3):
+                            pupils[i] = round((pupils1[i] + pupils2[i])/2)
+                        data["pupil"] = pupils
+                
+                colour = pygame.Color(data["inner"])
+                eye_section = sprites.sprites['eyeinner' + alt_cat_sprite].copy()
+                pixel_array = pygame.PixelArray(eye_section)
+                pixel_array.replace((255, 255, 255, 255), colour, distance=0)
+                del pixel_array
+                eyes.blit(eye_section, (0, 0))
+                
+                colour = pygame.Color(data["outer"])
+                eye_section = sprites.sprites['eyeouter' + alt_cat_sprite].copy()
+                eyes.blit(eye_section, (0, 0))
+                pixel_array = pygame.PixelArray(eye_section)
+                pixel_array.replace((255, 255, 255, 255), colour, distance=0)
+                del pixel_array
+                eyes.blit(eye_section, (0, 0))
+                
+                colour = pygame.Color(data["pupil"] if phenotype.pinkdilute[0] != 'dp' and not game_setting_get('black_pupils') else ([0, 0, 0] if phenotype.pinkdilute[0] != 'dp' else [41, 7, 11]))
+                eye_section = sprites.sprites['eyepupil' + alt_cat_sprite].copy()
+                pixel_array = pygame.PixelArray(eye_section)
+                pixel_array.replace((255, 255, 255, 255), colour, distance=0)
+                del pixel_array
+                eyes.blit(eye_section, (0, 0))
+                return eyes
+
+            if(int(cat_sprite) < 21 and int(cat_sprite) > 2):
                 lefteye = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 righteye = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 special = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
 
-                lefteye.blit(sprites.sprites['left' + cat_sprite], (0, 0))
-                righteye.blit(sprites.sprites['right' + cat_sprite], (0, 0))
+                lefteye.blit(sprites.sprites['left' + alt_cat_sprite], (0, 0))
+                righteye.blit(sprites.sprites['right' + alt_cat_sprite], (0, 0))
 
-                lefteye.blit(sprites.sprites[phenotype.lefteyetype + "/" + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
-                righteye.blit(sprites.sprites[phenotype.righteyetype + "/" + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                lefteye.blit(construct_eye_colour(phenotype.lefteyetype), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                righteye.blit(construct_eye_colour(phenotype.righteyetype), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
 
                 gensprite.blit(lefteye, (0, 0))
                 gensprite.blit(righteye, (0, 0))
 
-
                 if sprite_age == 1:
-                    lefteye.blit(sprites.sprites['left' + cat_sprite], (0, 0))
-                    righteye.blit(sprites.sprites['right' + cat_sprite], (0, 0))
-                    lefteye.blit(sprites.sprites[phenotype.lefteyetype.split(' ; ')[0] + ' ; blue' + "/" + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
-                    righteye.blit(sprites.sprites[phenotype.righteyetype.split(' ; ')[0] + ' ; blue' + "/" + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    lefteye.blit(sprites.sprites['left' + alt_cat_sprite], (0, 0))
+                    righteye.blit(sprites.sprites['right' + alt_cat_sprite], (0, 0))
+                    lefteye.blit(construct_eye_colour(phenotype.lefteyetype.split(' ; ')[0] + ' ; blue'), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    righteye.blit(construct_eye_colour(phenotype.righteyetype.split(' ; ')[0] + ' ; blue'), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                     lefteye.set_alpha(200)
                     righteye.set_alpha(200)
                     gensprite.blit(lefteye, (0, 0))
@@ -4220,34 +4419,28 @@ def generate_sprite(
 
 
                 if(phenotype.extraeye):
-                    special.blit(sprites.sprites[phenotype.extraeye + cat_sprite], (0, 0))
-                    special.blit(sprites.sprites[phenotype.extraeyetype + "/" + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    special.blit(sprites.sprites[phenotype.extraeye + alt_cat_sprite], (0, 0))
+                    special.blit(construct_eye_colour(phenotype.extraeyetype), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                     gensprite.blit(special, (0, 0))
                     if sprite_age == 1:
-                        special.blit(sprites.sprites[phenotype.extraeye + cat_sprite], (0, 0))
-                        special.blit(sprites.sprites[phenotype.extraeyetype.split(' ; ')[0] + ' ; blue' + "/" + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                        special.blit(sprites.sprites[phenotype.extraeye + alt_cat_sprite], (0, 0))
+                        special.blit(construct_eye_colour(phenotype.extraeyetype.split(' ; ')[0] + ' ; blue'), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                         special.set_alpha(150)
                         gensprite.blit(special, (0, 0))
-
-                if(phenotype.pinkdilute[0] == 'dp'):
-                    pupils = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                    pupils.blit(sprites.sprites['redpupils' + cat_sprite], (0, 0))
-                    pupils.set_alpha(100)
-                    gensprite.blit(pupils, (0, 0))
             
             return gensprite
 
         age = cat.moons
 
-        if int(cat_sprite) == 20:
+        if int(cat_sprite) < 3:
             age = 0
-        elif int(cat_sprite) < 3 and (5 < cat.moons or cat.moons < 1):
+        elif 2 < int(cat_sprite) < 6 and (5 < cat.moons or cat.moons < 1):
             age = 4
-        elif 2 < int(cat_sprite) < 6 and (11 < cat.moons or cat.moons < 6):
+        elif 5 < int(cat_sprite) < 9 and (11 < cat.moons or cat.moons < 6):
             age = 10
-        elif (int(cat_sprite == 19) or int(cat_sprite) == 17) and (12 < cat.moons or cat.moons < 6):
+        elif cat_sprite in ['20', '22'] and (12 < cat.moons or cat.moons < 6):
             age = 6
-        elif int(cat_sprite) > 5 and cat_sprite not in ['17', '19'] and cat.moons < 12:
+        elif int(cat_sprite) > 8 and cat_sprite not in ['20', '22'] and cat.moons < 12:
             age = 60
         gensprite.blit(GenSprite(phenotype, age), (0, 0))
 
@@ -4359,11 +4552,7 @@ def generate_sprite(
             earlines.blit(sprites.sprites['fold_curllines' + cat_sprite], (0, 0))
         else:
             earlines.blit(sprites.sprites['foldlines' + cat_sprite], (0, 0))
-        
-        earlines.blit(sprites.sprites['isolateears' + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
 
-        if cat_sprite != '20':
-            lineart.blit(earlines, (0, 0))
         if('rexed' in phenotype.furtype or 'wiry' in phenotype.furtype):
             if not dead or cat.status.group == CatGroup.UNKNOWN_RESIDENCE:
                 bodylines.blit(sprites.sprites['rexlineart' + cat_sprite], (0, 0))
@@ -4381,7 +4570,11 @@ def generate_sprite(
             else:
                 bodylines.blit(sprites.sprites['lineart_sc' + cat_sprite], (0, 0))
             
-        bodylines.blit(sprites.sprites['noears' + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
+        if int(cat_sprite) > 2:
+            earlines.blit(sprites.sprites['isolateears' + alt_cat_sprite],
+                      (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
+            lineart.blit(earlines, (0, 0))
+            bodylines.blit(sprites.sprites['noears' + alt_cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
         lineart.blit(bodylines, (0, 0))
         new_sprite.blit(_recolor_lineart(
                             lineart,
@@ -4427,11 +4620,11 @@ def generate_sprite(
                 tail.blit(white, (0, 0), special_flags=pygame.BLEND_RGB_MAX)
                 tail.blit(new_sprite, (0, 0), special_flags=pygame.BLEND_RGBA_MIN)
                 offset = 2
-                if cat_sprite in ["0", "9", "10", "11", "13", "15", "20"]:
+                if cat_sprite in ["2", "12", "13", "14", "16", "18"]:
                     new_sprite.blit(tail, (offset, 1))
-                elif cat_sprite in ["1", "3", "4", "5", "6", "7", "8", "12", "16", "17"]:
+                elif cat_sprite in ["4", "6", "7", "8", "9", "10", "11", "15", "19", "20"]:
                     new_sprite.blit(tail, (-offset, -1))
-                elif cat_sprite in ["2"]:
+                elif cat_sprite in ["1", "5"]:
                     new_sprite.blit(tail, (0, -2))
             
             if constants.CONFIG["fun"]["april_fools_hats"]:

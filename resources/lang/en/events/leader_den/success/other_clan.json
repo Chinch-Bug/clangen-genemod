@@ -1591,7 +1591,7 @@
   },
   {
     "interaction_type": "befriend",
-    "event_text": "At the Gathering, o_c_n's leader discusses an omen received by their healers. m_c expresses great interest and insight, and o_c_n's leader is surprised, given how icy and removed m_c usually is.",
+    "event_text": "At the Gathering, o_c_n's leader discusses an omen received by their healers. m_c expresses great interest and INSIGHTFUL, and o_c_n's leader is surprised, given how icy and removed m_c usually is.",
     "rel_change": 5,
     "m_c": {
       "trait": ["cold" ],

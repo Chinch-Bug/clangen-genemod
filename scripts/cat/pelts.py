@@ -125,6 +125,7 @@ class Pelt:
         scars:list=None,
         tint:str="none",
         white_patches_tint: str = "none",
+        newborn_sprite: str = None,
         kitten_sprite: str = None,
         adol_sprite: str = None,
         adult_sprite: str = None,
@@ -152,7 +153,17 @@ class Pelt:
         self.screen_scale = scripts.game_structure.screen_settings.screen_scale
 
         # converting old pose numbers into names
-        if isinstance(adol_sprite, int):
+        if any(
+            isinstance(x, int) or x is None
+            for x in [
+                newborn_sprite,
+                kitten_sprite,
+                adol_sprite,
+                adult_sprite,
+                senior_sprite,
+                para_adult_sprite,
+            ]
+        ):
             self.cat_sprites = {
                 "kitten": kitten_sprite if kitten_sprite is not None else 0,
                 "adolescent": adol_sprite if adol_sprite is not None else 3,
@@ -167,16 +178,20 @@ class Pelt:
             for age, pose in self.cat_sprites.items():
                 # we only need to convert if it's using the old sprite pose numbers
                 if not isinstance(pose, int):
-                    break
+                    continue
 
                 # convert paras
-                if self.length == "long":
-                    self.cat_sprites["para_adult"] = "para_adult_long0"
-                else:
-                    self.cat_sprites["para_adult"] = "para_adult_short0"
+                if age == "para_adult":
+                    if self.length == "long":
+                        self.cat_sprites[age] = "para_adult_long0"
+                    else:
+                        self.cat_sprites[age] = "para_adult_short0"
+                    continue
 
                 if age == CatAge.NEWBORN:
-                    self.cat_sprites[age] = "newborn0"
+                    self.cat_sprites[age] = (
+                        "newborn2" if "newborn2" in self.newborn_poses else "newborn0"
+                    )
                     continue
                 if age == CatAge.KITTEN:
                     # since these were at the top of the sheet, the pose nums were 0, 1, 2. thus they'll naturally match this fstring
@@ -224,6 +239,9 @@ class Pelt:
             )
 
             self.cat_sprites = {
+                "newborn": newborn_sprite
+                if newborn_sprite is not None and newborn_sprite in self.newborn_poses
+                else "newborn0",
                 "kitten": kitten_sprite
                 if kitten_sprite is not None and kitten_sprite in self.kitten_poses
                 else "kitten0",
@@ -239,7 +257,6 @@ class Pelt:
                 "para_adult": para_adult_sprite
                 if para_adult_sprite is not None
                 else "para_adult_short0",
-                "newborn": "newborn0",
                 "para_young": "para_young0",
             }
 
@@ -329,7 +346,12 @@ class Pelt:
                     white_pattern.append(choice(Pelt.maingame_white["low"].get(str(KITgrade))))
 
                 elif KITgrade == 1:
-                    grade1list = ['chest tuft', 'belly tuft', 'chest tuft', 'belly tuft', None]
+                    grade1list = ['chest tuft', 'belly tuft', 
+                                'chest tuft', 'belly tuft', 
+                                'chest tuft', 'belly tuft', 
+                                'chest tuft', 'belly tuft', 
+                                'chest tuft', 'belly tuft', 
+                                'chest tuft', 'belly tuft', None]
                     white_pattern.append(choice(grade1list))
                 elif KITgrade == 2:
                     while len(white_pattern) == 0:

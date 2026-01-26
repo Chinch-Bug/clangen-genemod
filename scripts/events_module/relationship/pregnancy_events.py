@@ -7,7 +7,7 @@ from typing import Dict, List, Union, Optional
 import i18n
 
 from scripts.cat.cats import Cat
-from scripts.cat.enums import CatAge, CatGroup, CatRank, CatSocial
+from scripts.cat.enums import CatAge, CatGroup, CatRank, CatSocial, CatCompatibility
 from scripts.cat.genotype import Genotype
 from scripts.cat.names import names, Name
 from scripts.cat_relations.relationship import Relationship, RelType
@@ -30,6 +30,9 @@ from scripts.utility import (
     get_living_clan_cat_count,
 )
 
+
+def cat_is_amab(cat):
+    return ('Y' in cat.phenotype.sexgene and cat.phenotype.sex != "molly") or cat.phenotype.sex == "tom"
 
 class Pregnancy_Events:
     """All events which are related to pregnancy such as kitting and defining who are the parents."""
@@ -164,7 +167,7 @@ class Pregnancy_Events:
 
         elif second_parent and second_parent[0] != "Surrogate" and not kits_are_adopted and constants.CONFIG["pregnancy"]["false_pregnancy_chance"] and not int(random() * (constants.CONFIG["pregnancy"]["false_pregnancy_chance"]-1)):
             Pregnancy_Events.rebuild_strings()
-            if 'Y' in cat.phenotype.sexgene and not get_clan_setting("same sex birth"):
+            if ('Y' in cat.phenotype.sexgene and not cat.phenotype.sex == "molly") and not get_clan_setting("same sex birth"):
                 return
 
             if cat.status.group_ID != clan.group_ID:
@@ -265,7 +268,7 @@ class Pregnancy_Events:
         if other_cat:
             other_cat_copy = []
             for x in other_cat:
-                if not (x.dead or x.status.is_lost() or x.status.is_exiled(clan.group_ID) or x.birth_cooldown > 0 or x.no_kits):
+                if not (x.dead or x.status.is_lost() or x.status.is_exiled(clan.group_ID) or x.birth_cooldown > 0 or x.no_kits or "sterile" in x.permanent_condition):
                     other_cat_copy.append(x)
             other_cat = other_cat_copy
         
@@ -311,7 +314,7 @@ class Pregnancy_Events:
                 for illness in cat.illnesses:
                     if illness in ["greencough", "redcough", "yellowcough", "whitecough", 
                     "an infected wound", "a festering wound", "ear infection",
-                    "carrionplace disease", "heat stroke", "heat exhaustion"] and random() < 0.25:
+                    "carrionplace disease", "heat stroke", "heat exhaustion", "tick fever"] and random() < 0.25:
                         fever = True
 
             game.clan.pregnancy_data[cat.ID] = {
@@ -336,7 +339,7 @@ class Pregnancy_Events:
             else:
                 cat.get_injured("pregnant", severity="minor")
         else:
-            if (not other_cat or surrogate) and 'Y' in cat.phenotype.sexgene:
+            if (not other_cat or surrogate) and cat_is_amab(cat):
         
                 amount = Pregnancy_Events.get_amount_of_kits(cat, game.clan)
                 stillborn_chance = 0
@@ -389,7 +392,7 @@ class Pregnancy_Events:
                         for illness in pregnant_cat.illnesses:
                             if illness in ["greencough", "redcough", "yellowcough", "whitecough", 
                             "an infected wound", "a festering wound", "ear infection",
-                            "carrionplace disease", "heat stroke", "heat exhaustion"] and random() < 0.25:
+                            "carrionplace disease", "heat stroke", "heat exhaustion", "tick fever"] and random() < 0.25:
                                 fever = True
 
                     game.clan.pregnancy_data[pregnant_cat.ID] = {
@@ -407,8 +410,9 @@ class Pregnancy_Events:
                 kits = Pregnancy_Events.get_kits(amount, cat, outside_parent if not surrogate else [pregnant_cat], clan, backkit=backkit)
 
                 for kit in kits:
-                    if random() < stillborn_chance or kit.phenotype.manx[1] == "Ab" or kit.phenotype.manx[1] == "M" or kit.phenotype.munch[1] == "Mk" or ('NoDBE' not in kit.phenotype.pax3 and 'DBEalt' not in kit.phenotype.pax3):
-                        kit.dead = True
+                    if random() < stillborn_chance or kit.phenotype.sexgene[0] == "Y" or kit.phenotype.manx[1] == "Ab" or kit.phenotype.manx[1] == "M" or kit.phenotype.munch[1] == "Mk" or ('NoDBE' not in kit.phenotype.pax3 and 'DBEalt' not in kit.phenotype.pax3):
+                        if not kit.dead:
+                            kit.dead = True
                         kit.moons = 0
                         kit.history.add_death(i18n.t(
                             "cat.history.stillbirth",
@@ -462,7 +466,7 @@ class Pregnancy_Events:
             second_parent_copy = copy(second_parent)
             if second_parent:
                 for x in second_parent_copy:
-                    if 'Y' in pregnant_cat.phenotype.sexgene and 'Y' not in x.phenotype.sexgene:
+                    if cat_is_amab(pregnant_cat) and not cat_is_amab(x):
                         second_parent.append(pregnant_cat)
                         second_parent.remove(x)
                         pregnant_cat = x
@@ -487,7 +491,7 @@ class Pregnancy_Events:
                 for illness in pregnant_cat.illnesses:
                     if illness in ["greencough", "redcough", "yellowcough", "whitecough", 
                     "an infected wound", "a festering wound", "ear infection",
-                    "carrionplace disease", "heat stroke", "heat exhaustion"] and random() < 0.25:
+                    "carrionplace disease", "heat stroke", "heat exhaustion", "tick fever"] and random() < 0.25:
                         fever = True
 
             game.clan.pregnancy_data[pregnant_cat.ID] = {
@@ -683,9 +687,10 @@ class Pregnancy_Events:
                 kit.phenotype.fevercoat = True
                 if kit.chimerapheno:
                     kit.chimerapheno.fevercoat = True
-            if random() < stillborn_chance or kit.phenotype.manx[1] == "Ab" or kit.phenotype.manx[1] == "M" or kit.phenotype.munch[1] == "Mk" or ('NoDBE' not in kit.phenotype.pax3 and 'DBEalt' not in kit.phenotype.pax3):
+            if random() < stillborn_chance or kit.phenotype.sexgene[0] == "Y" or kit.phenotype.manx[1] == "Ab" or kit.phenotype.manx[1] == "M" or kit.phenotype.munch[1] == "Mk" or ('NoDBE' not in kit.phenotype.pax3 and 'DBEalt' not in kit.phenotype.pax3):
                 kit.moons = 0
-                kit.dead = True
+                if not kit.dead:
+                    kit.dead = True
                 kit.thoughts(just_died=True)
                 kit.history.add_death(str(kit.name) + " was stillborn.")
         Pregnancy_Events.set_biggest_family(clan)
@@ -951,7 +956,7 @@ class Pregnancy_Events:
                 return False, False, second_parent
 
             # Check to see if the pair can have kits.
-            if not xor('Y' in cat.phenotype.sexgene, 'Y' in second_parent[0].phenotype.sexgene) or ("sterile" in cat.permanent_condition or "sterile" in second_parent[0].permanent_condition):
+            if not xor(cat_is_amab(cat), cat_is_amab(second_parent[0])) or ("sterile" in cat.permanent_condition or "sterile" in second_parent[0].permanent_condition):
                 if same_sex_birth and not "sterile" in second_parent[0].permanent_condition and not "sterile" in cat.permanent_condition:
                     return True, False, second_parent
                 elif (surrogates and second_parent[0].ID in cat.mate) and not ("sterile" in second_parent[0].permanent_condition and "sterile" in cat.permanent_condition):
@@ -975,7 +980,7 @@ class Pregnancy_Events:
             second_parent_copy = []
 
             for x in second_parent:
-                if (xor('Y' in cat.phenotype.sexgene, 'Y' in x.phenotype.sexgene) or same_sex_birth) and not "sterile" in x.permanent_condition:
+                if (xor(cat_is_amab(cat), cat_is_amab(x)) or same_sex_birth) and not "sterile" in x.permanent_condition:
                     second_parent_copy.append(x)
             
             if len(second_parent_copy) < 1:
@@ -1022,14 +1027,14 @@ class Pregnancy_Events:
                 mate.append(cat.fetch_cat(choice(cat.mate)))
 
         # if the sex does matter, choose the best solution to allow kits
-        if not samesex and mate and 'Y' not in cat.phenotype.sexgene:
-            opposite_mate = [cat.fetch_cat(mate_id) for mate_id in cat.mate if xor('Y' in cat.fetch_cat(mate_id).phenotype.sexgene, 'Y' in cat.phenotype.sexgene)]
+        if not samesex and mate and not cat_is_amab(cat):
+            opposite_mate = [cat.fetch_cat(mate_id) for mate_id in cat.mate if xor(cat_is_amab(cat.fetch_cat(mate_id)), cat_is_amab(cat))]
             if len(opposite_mate) > 0:
                 mate = opposite_mate
                 if not get_clan_setting('multisire'):
                     mate = [choice(opposite_mate)]
-        elif not samesex and mate and 'Y' in cat.phenotype.sexgene:
-            opposite_mate = [cat.fetch_cat(mate_id) for mate_id in cat.mate if xor('Y' in cat.fetch_cat(mate_id).phenotype.sexgene, 'Y' in cat.phenotype.sexgene)]
+        elif not samesex and mate and cat_is_amab(cat):
+            opposite_mate = [cat.fetch_cat(mate_id) for mate_id in cat.mate if xor(cat_is_amab(cat.fetch_cat(mate_id)), cat_is_amab(cat))]
             if len(opposite_mate) > 0:
                 mate = [choice(opposite_mate)]
         
@@ -1089,7 +1094,7 @@ class Pregnancy_Events:
                 for i in Cat.all_cats_list
                 if i.is_potential_mate(cat, for_love_interest=True)
                 and i.status.group_ID in [cat.status.group_ID, None]
-                and (samesex or xor('Y' in i.phenotype.sexgene, 'Y' in cat.phenotype.sexgene))
+                and (samesex or xor(cat_is_amab(i), cat_is_amab(cat)))
                 and "sterile" not in i.permanent_condition
                 and i.ID not in cat.mate
             ]
@@ -1151,7 +1156,7 @@ class Pregnancy_Events:
             if (not cand_cat.dead and not cand_cat.status.is_lost() and not cand_cat.status.is_exiled(clan.group_ID) and
             not cand_cat in all_cats and "sterile" not in cand_cat.permanent_condition 
             and Pregnancy_Events.check_if_can_have_kits(cand_cat, True, True)
-            and (get_clan_setting('same sex birth') or xor('Y' in cand_cat.phenotype.sexgene, 'Y' in cat.phenotype.sexgene))):
+            and (get_clan_setting('same sex birth') or xor(cat_is_amab(cand_cat), cat_is_amab(cat)))):
                 all_candidates.append(cand_cat)
 
         if (only_clanmate or randint(1, constants.CONFIG['pregnancy']['clanmate_surrogate_chance']) == 1) and not only_outside:
@@ -1221,7 +1226,7 @@ class Pregnancy_Events:
                                             backstory=BACKSTORIES["backstory_categories"][backstories[cat_type]],
                                             alive=True,
                                             moons=mate_age if mate_age > 14 else 15,
-                                            gender='fem' if 'Y' in cat.phenotype.sexgene else 'masc',
+                                            gender=('fem' if cat_is_amab(cat) else 'masc') if not get_clan_setting('same sex birth') else None,
                                             outside=True,
                                             is_parent=True)[0]
             outside_parent.thought = i18n.t("hardcoded.thought_outside_surrogate")
@@ -1232,14 +1237,14 @@ class Pregnancy_Events:
         unknowns = []
         for outcat in Cat.all_cats:
             outcat = Cat.all_cats.get(outcat)
-            if not outcat.dead and not outcat.status.is_lost(clan.group_ID) and not outcat.status.is_exiled(clan.group_ID):
+            if not outcat.dead and not outcat.status.is_lost(clan.group_ID) and not (outcat.status.is_exiled(clan.group_ID) or random() < 0.25):
                 unknowns.append(outcat)
 
         possible_affair_partners = [i for i in unknowns if
                                 i.is_potential_mate(cat, for_love_interest=True, outsider=True)
                                 and Pregnancy_Events.check_if_can_have_kits(i, True, True)
                                 and 'sterile' not in i.permanent_condition
-                                and (get_clan_setting('same sex birth') or xor('Y' in i.phenotype.sexgene, 'Y' in cat.phenotype.sexgene))
+                                and (get_clan_setting('same sex birth') or xor(cat_is_amab(i), cat_is_amab(cat)))
                                     and len(i.mate) == 0 and not i.birth_cooldown
                                     and i.ID not in game.clan.pregnancy_data
                                     and i.status.group_ID != cat.status.group_ID]
@@ -1260,7 +1265,7 @@ class Pregnancy_Events:
                                                 backstory=BACKSTORIES["backstory_categories"].get(f"former_clancat_backstories", ["outsider1"]),
                                                 alive=True,
                                                 moons=mate_age if mate_age > 14 else 15,
-                                                gender='fem' if 'Y' in cat.phenotype.sexgene else 'masc',
+                                                gender=('fem' if cat_is_amab(cat) else 'masc') if not get_clan_setting('same sex birth') else None,
                                                 outside=True,
                                                 is_parent=True)
                 outside_parent[0].thought = event_text_adjust(Cat, i18n.t(
@@ -1297,7 +1302,7 @@ class Pregnancy_Events:
                                                         backstory=BACKSTORIES["backstory_categories"][backstories[cat_type]],
                                                         alive=True,
                                                         moons=mate_age if mate_age > 14 else 15,
-                                                        gender='fem' if 'Y' in cat.phenotype.sexgene else 'masc',
+                                                        gender=('fem' if cat_is_amab(cat) else 'masc') if not get_clan_setting('same sex birth') else None,
                                                         outside=True,
                                                         is_parent=True)[0]
                     outside_parent.thought = event_text_adjust(Cat, i18n.t(
@@ -1335,7 +1340,7 @@ class Pregnancy_Events:
                 mate_relation, highest_romantic_relation
             )
             if not chance_love_affair or not int(random() * chance_love_affair):
-                if samesex or 'Y' in cat.phenotype.sexgene != 'Y' in highest_romantic_relation.cat_to.phenotype.sexgene:
+                if samesex or xor(cat_is_amab(cat), cat_is_amab(highest_romantic_relation.cat_to)):
                     return highest_romantic_relation.cat_to
         elif highest_romantic_relation:
             # Love affair change if the cat doesn't have a mate:
@@ -1343,7 +1348,7 @@ class Pregnancy_Events:
                 highest_romantic_relation
             )
             if not chance_love_affair or not int(random() * chance_love_affair):
-                if samesex or 'Y' in cat.phenotype.sexgene != highest_romantic_relation.cat_to.phenotype.sexgene:
+                if samesex or xor(cat_is_amab(cat), cat_is_amab(highest_romantic_relation.cat_to)):
                     return highest_romantic_relation.cat_to
 
         return None
@@ -1370,11 +1375,6 @@ class Pregnancy_Events:
         blood_parent = None
         blood_parent2 = None
          
-        par2geno = Genotype(constants.CONFIG['genetics_config'], game_setting_get("ban problem genes"))
-        if cat and 'Y' in cat.phenotype.sexgene:
-            par2geno.Generator('fem')
-        elif cat:
-            par2geno.Generator('masc')
         ##### SELECT BACKSTORY #####
         if cat and "pregnant" in cat.injuries and other_cat and other_cat[0].status.get_last_living_group() != cat.status.group_ID:
             backkit = 'halfclan1' if other_cat[0].status.group.is_any_clan_group() else 'outsider_roots1'
@@ -1474,7 +1474,7 @@ class Pregnancy_Events:
                     cat_type = choice([CatSocial.LONER, CatSocial.ROGUE, CatSocial.KITTYPET])
                     blood_parent = create_new_cat(Cat,
                                                 original_social=cat_type,
-                                                gender='fem',
+                                                gender='fem' if not get_clan_setting('same sex birth') else None,
                                                 alive=choice([True, False]),
                                                 moons=parage,
                                                 outside=True,
@@ -1490,7 +1490,7 @@ class Pregnancy_Events:
                             cat_type = choice([CatSocial.LONER, CatSocial.ROGUE, CatSocial.KITTYPET])
                             blood_par2 = create_new_cat(Cat,
                                                         original_social=cat_type,
-                                                        gender='masc',
+                                                        gender='masc' if not get_clan_setting('same sex birth') else None,
                                                         alive=choice([True, False]),
                                                         moons=parage if parage > 14 else 15,
                                                         outside=True,
@@ -1518,9 +1518,7 @@ class Pregnancy_Events:
                 else:
                     kit = Cat(parent1=cat.ID, parent2=second_blood.ID, moons=0, status_dict={"rank": CatRank.NEWBORN, "group_ID": clan.group_ID})
                 
-                if 'Y' not in cat.phenotype.sexgene or not second_blood or second_blood.status.is_outsider:
-                    kit.thought = i18n.t("hardcoded.new_kit_thought", name=str(cat.name))
-                elif 'Y' in cat.phenotype.sexgene and 'Y' in cat.phenotype.sexgene:
+                if "pregnant" in cat.injuries or not second_blood or second_blood.status.is_outsider:
                     kit.thought = i18n.t("hardcoded.new_kit_thought", name=str(cat.name))
                 else:
                     kit.thought = i18n.t("hardcoded.new_kit_thought", name=str(second_blood.name))
@@ -1533,6 +1531,7 @@ class Pregnancy_Events:
                 kit.phenotype.tortiepattern = None
                 kit.phenotype.chimerapattern = None
                 kit.phenotype.merlepattern = None
+                kit.phenotype.somatic = {}
                 kit.phenotype.white_pattern = kit.pelt.generate_white(kit.phenotype.white, kit.phenotype.pointgene, kit.phenotype.whitegrade, kit.phenotype.vitiligo, None, kit.phenotype.pax3)
                 kit.phenotype.PhenotypeOutput(kit.phenotype.white_pattern)
                 kit.phenotype.SpriteInfo(kit.moons)
@@ -1879,11 +1878,11 @@ class Pregnancy_Events:
                 if comp == True:
                     break
                 comp = get_personality_compatibility(first_parent, x)
-                if comp is not None:
+                if comp != CatCompatibility.NEUTRAL:
                     buff = 0.85
-                    if not comp:
+                    if comp == CatCompatibility.NEGATIVE:
                         buff += 0.3
-                    inverse_chance = int(inv * buff)
+                    inverse_chance = int(inverse_chance * buff)
 
 
         average_romantic_love = -1000

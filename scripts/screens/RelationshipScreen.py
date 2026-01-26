@@ -15,7 +15,7 @@ from scripts.game_structure.ui_elements import (
     UISurfaceImageButton,
     UIRelationDisplay,
 )
-from scripts.game_structure.windows import RelationshipLog
+from scripts.ui.windows.relationship_log import RelationshipLogWindow
 from scripts.screens.Screens import Screens
 from scripts.screens.enums import GameScreen
 from scripts.utility import (
@@ -25,6 +25,7 @@ from scripts.utility import (
     ui_scale_dimensions,
     ui_scale_blit,
     ui_scale_offset,
+    clan_symbol_sprite
 )
 from scripts.cat_relations.relationship import Relationship
 from scripts.game_structure.screen_settings import MANAGER, screen
@@ -115,7 +116,7 @@ class RelationshipScreen(Screens):
                 if self.inspect_cat.ID not in self.the_cat.relationships:
                     return
                 if self.next_cat == 0 and self.previous_cat == 0:
-                    RelationshipLog(
+                    RelationshipLogWindow(
                         self.the_cat.relationships[self.inspect_cat.ID],
                         [
                             self.view_profile_button,
@@ -134,7 +135,7 @@ class RelationshipScreen(Screens):
                         ],
                     )
                 elif self.next_cat == 0:
-                    RelationshipLog(
+                    RelationshipLogWindow(
                         self.the_cat.relationships[self.inspect_cat.ID],
                         [
                             self.view_profile_button,
@@ -152,7 +153,7 @@ class RelationshipScreen(Screens):
                         ],
                     )
                 elif self.previous_cat == 0:
-                    RelationshipLog(
+                    RelationshipLogWindow(
                         self.the_cat.relationships[self.inspect_cat.ID],
                         [
                             self.view_profile_button,
@@ -170,7 +171,7 @@ class RelationshipScreen(Screens):
                         ],
                     )
                 else:
-                    RelationshipLog(
+                    RelationshipLogWindow(
                         self.the_cat.relationships[self.inspect_cat.ID],
                         [
                             self.view_profile_button,
@@ -419,14 +420,15 @@ class RelationshipScreen(Screens):
         if constants.CONFIG["sorting"]["sort_by_rel_total"]:
             self.all_relations = sorted(
                 self.the_cat.relationships.values(),
-                key=lambda x: x.total_relationship_value,
+                key=lambda x: abs(x.total_relationship_value),
                 reverse=True,
             )
             self.all_relations = self.all_relations + [r for r in blank_relations if r not in self.all_relations]
         else:
             self.all_relations = (list(self.the_cat.relationships.values()).copy() + blank_relations).sorted(key=lambda x: x.cat_to)
 
-        self.all_relations = [rel for rel in self.all_relations if rel.cat_to.status.is_outsider or rel.cat_from.status.is_outsider or self.the_cat.status.group_ID in rel.cat_to.status.all_groups]
+        self.all_relations = [rel for rel in self.all_relations if rel.cat_to.status.is_outsider or rel.cat_from.status.is_outsider 
+                              or rel.cat_to.status.get_last_living_group() in self.the_cat.status.all_groups or self.the_cat.status.get_last_living_group() in rel.cat_to.status.all_groups]
 
         self.focus_cat_elements["header"] = pygame_gui.elements.UITextBox(
             "screens.relationship.heading",
@@ -786,6 +788,13 @@ class RelationshipScreen(Screens):
             ui_scale(pygame.Rect((pos_x + 80, pos_y + 5), (18, 18))),
             pygame.transform.scale(gender_icon, ui_scale_dimensions((18, 18))),
         )
+
+        if game.clan.clancount == "multiclan" and the_relationship.cat_to.status.fetch_clan_object():
+            clan_icon = clan_symbol_sprite(the_relationship.cat_to.status.fetch_clan_object(), force_dark=True)
+            self.sprite_buttons["clan_symbol" + str(i)] = UISpriteButton(
+                ui_scale(pygame.Rect((pos_x + 80, pos_y+25), (18, 18))),
+                clan_icon,
+            )
 
         related = False
         # MATE

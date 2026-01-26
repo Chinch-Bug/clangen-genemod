@@ -552,6 +552,7 @@ def json_load():
                 tint=cat.get('tint', 'none'),
                 white_patches_tint=cat.get('white_tint', 'none'),
                 paralyzed=cat["paralyzed"],
+                newborn_sprite=cat.get("sprite_newborn"),
                 kitten_sprite=(
                     cat["sprite_kitten"]
                     if "sprite_kitten" in cat
@@ -731,6 +732,12 @@ def json_load():
     # replace cat ids with cat objects and add other needed variables
     other_clan_cats = [c for c in Cat.all_cats_list if c.status.is_other_clancat]
     for cat in all_cats:
+        if cat.status.rank in (CatRank.LEADER, CatRank.DEPUTY, CatRank.MEDICINE_CAT):
+            if cat.status.group == CatGroup.STARCLAN:
+                game.starclan.adjust_facets_by_cat(cat)
+            elif cat.status.group == CatGroup.DARK_FOREST:
+                game.dark_forest.adjust_facets_by_cat(cat)
+
         cat.load_conditions()
 
         # this is here to handle paralyzed cats in old saves
@@ -848,3 +855,18 @@ def version_convert(version_info):
         # freshkill start for older clans
         add_prey = game.clan.freshkill_pile.amount_food_needed() * 2
         game.clan.freshkill_pile.add_freshkill(add_prey)
+
+    if version < 4:
+        for c in Cat.all_cats.values():
+            if not c.status.is_leader:
+                continue
+            for death in c.history.died_by:
+                if death["text"] == "multi_lives":
+                    # skip these as changing them will break stuff
+                    continue
+                death["text"] = (
+                    "m_c lost a life when {PRONOUN/m_c/subject} " + death["text"]
+                )
+                # check if a period is present and append one if not
+                if death["text"][-1] != ".":
+                    death["text"] += "."

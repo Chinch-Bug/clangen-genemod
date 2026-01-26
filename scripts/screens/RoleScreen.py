@@ -347,10 +347,10 @@ class RoleScreen(Screens):
             self.promote_deputy.disable()
 
             # ADULT CAT ROLES
-            self.switch_warrior.disable()
+            self.switch_warrior.enable()
             self.switch_med_cat.disable()
             self.switch_mediator.disable()
-            self.retire.disable()
+            self.retire.enable()
 
             # In-TRAINING ROLES:
             self.switch_med_app.enable()
@@ -456,9 +456,9 @@ class RoleScreen(Screens):
 
             # ADULT CAT ROLES
             self.switch_warrior.disable()
-            self.switch_med_cat.disable()
+            self.switch_med_cat.enable()
             self.switch_mediator.disable()
-            self.retire.disable()
+            self.retire.enable()
 
             # In-TRAINING ROLES:
             self.switch_med_app.disable()
@@ -471,8 +471,8 @@ class RoleScreen(Screens):
             # ADULT CAT ROLES
             self.switch_warrior.disable()
             self.switch_med_cat.disable()
-            self.switch_mediator.disable()
-            self.retire.disable()
+            self.switch_mediator.enable()
+            self.retire.enable()
 
             # In-TRAINING ROLES:
             self.switch_med_app.enable()

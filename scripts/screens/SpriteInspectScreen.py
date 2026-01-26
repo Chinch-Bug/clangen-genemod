@@ -20,11 +20,12 @@ from scripts.utility import ui_scale
 from .Screens import Screens
 from .enums import GameScreen
 from ..cat.sprites import sprites
+from .enums import GameScreen
 from ..clan_package.settings import get_clan_setting
 from ..game_structure.game.switches import switch_set_value, switch_get_value, Switch
 from scripts.game_structure.game.settings import game_setting_get
 from ..game_structure.screen_settings import MANAGER
-from ..game_structure.windows import SaveAsImage
+from ..ui.windows.save_as_image import SaveAsImageWindow
 from scripts.housekeeping.datadir import (
     get_save_dir,
 )
@@ -89,7 +90,7 @@ class SpriteInspectScreen(Screens):
                 self.update_disabled_buttons()
                 self.make_cat_image()
             elif event.ui_element == self.save_image_button:
-                SaveAsImage(self.generate_image_to_save(), str(self.the_cat.name))
+                SaveAsImageWindow(self.generate_image_to_save(), str(self.the_cat.name))
             elif event.ui_element == self.export_cat_button:
                 self.export_cat()
             elif event.ui_element == self.previous_life_stage:
@@ -294,13 +295,16 @@ class SpriteInspectScreen(Screens):
             current_life_stage = self.the_cat.age
 
         self.valid_life_stages = []
+
+        # Store the index of the currently displayed life stage.
+        self.displayed_life_stage = 0
+
         for life_stage in SpriteInspectScreen.cat_life_stages:
             self.valid_life_stages.append(life_stage)
             if life_stage == current_life_stage:
-                break
-
-        # Store the index of the currently displayed life stage.
-        self.displayed_life_stage = len(self.valid_life_stages) - 1
+                self.displayed_life_stage = len(self.valid_life_stages) - 1
+                # if not self.the_cat.dead:
+                #     break
 
         # Reset all the toggles
         self.lifestage = None

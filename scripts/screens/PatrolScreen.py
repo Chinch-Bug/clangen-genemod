@@ -875,7 +875,7 @@ class PatrolScreen(Screens):
         self.clear_cat_buttons()
         self.patrol_stage = "patrol_events"
 
-        if self.event_screen_container:
+        if hasattr(self, "event_screen_container") and self.event_screen_container:
             self.event_screen_container.hide()
 
         if self.display_text is None:

@@ -61,6 +61,11 @@ class Sprites:
     ) as read_file:
         WHITE_DATA = ujson.loads(read_file.read())
 
+    with open(
+        "sprites/dicts/eye_colour_data.json", "r", encoding="utf-8"
+    ) as read_file:
+        EYE_DATA = ujson.loads(read_file.read())
+
     def __init__(self):
         """Class that handles and hold all spritesheets.
         Size is normally automatically determined by the size
@@ -219,14 +224,15 @@ class Sprites:
         # if anyone changes lineart for whatever reason update this
         if isinstance(self.size, int):
             pass
-        elif width / 3 == height / 7:
-            self.size = width / 3
+        elif width / self.sheet_layout[0] == height / self.sheet_layout[1]:
+            self.size = width / self.sheet_layout[0]
         else:
             self.size = 50  # default, what base clangen uses
-            print(f"lineart.png is not 3x7, falling back to {self.size}")
             print(
-                f"if you are a modder, please update scripts/cat/sprites.py and "
-                f"do a search for 'if width / 3 == height / 7:'"
+                f"lineart.png is not {self.sheet_layout}, falling back to {self.size}"
+            )
+            print(
+                f"if you are a modder, please update sheet_layout in sprites/dicts/pose_sprite_data.json"
             )
 
         del width, height  # unneeded
@@ -286,8 +292,8 @@ class Sprites:
         self.make_group('genemod/fold_curllineart', (0, 0), 'fold_curllines')
         self.make_group('genemod/curllineart', (0, 0), 'curllines')
 
-        self.make_group('genemod/isolateears', (0, 0), 'isolateears')
-        self.make_group('genemod/noears', (0, 0), 'noears')
+        self.make_group('genemod/isolateears', (0, 0), 'isolateears', sprites_y=7)
+        self.make_group('genemod/noears', (0, 0), 'noears', sprites_y=7)
         
         self.make_group('genemod/rexlines', (0, 0), 'rexlineart')
         self.make_group('genemod/rexlinesdead', (0, 0), 'rexlineartdead')
@@ -360,7 +366,6 @@ class Sprites:
         #genemod effects
         self.make_group('Other/bimetal', (0, 0), 'bimetal')
         self.make_group('Other/ghosting', (0, 0), 'ghost')
-        self.make_group('Other/tabbyghost', (0, 0), 'tabbyghost')
         self.make_group('Other/grizzle', (0, 0), 'grizzle')
         self.make_group('Other/bleach', (0, 0), 'bleach')
         self.make_group('Other/lykoi', (0, 0), 'lykoi')
@@ -384,12 +389,9 @@ class Sprites:
 
         for i, x in enumerate(['left', 'right', 'sectoral1', 'sectoral2', 'sectoral3', 'sectoral4', 'sectoral5', 'sectoral6']):
             self.make_group('Other/eyebase', (i, 0), x, sprites_y=6)
+        for i, x in enumerate(['outer', 'inner', 'pupil']):
+            self.make_group('Other/eyesections', (i, 0), f"eye{x}", sprites_y=6)
         
-        for b, x in enumerate(['P11', 'P10', 'P9', 'P8', 'P7', 'P6', 'P5', 'P4', 'P3', 'P2', 'P1', 'blue', 'albino']):
-            for a, y in enumerate(range(1, 12)):
-                self.make_group('Other/eyes_full', (a, b), f'R{y} ; {x}/', sprites_y=6)
-        
-        self.make_group('Other/red_pupils', (0, 0), 'redpupils')
         data_jsons = (
             self.WHITE_DATA,
             self.TORTIE_DATA,
@@ -554,7 +556,7 @@ class Sprites:
 
             y_pos += 1
 
-    def get_symbol(self, symbol: str, force_light=False):
+    def get_symbol(self, symbol: str, force_light=False, force_dark=False):
         """Change the color of the symbol to match the requested theme, then return it
         :param Surface symbol: The clan symbol to convert
         :param force_light: Use to ignore dark mode and always display the light mode color
@@ -570,7 +572,7 @@ class Sprites:
             (87, 76, 45),
             (
                 pygame.Color(constants.CONFIG["theme"]["dark_mode_clan_symbols"])
-                if not force_light and game_setting_get("dark mode")
+                if not force_light and (game_setting_get("dark mode") or force_dark)
                 else pygame.Color(constants.CONFIG["theme"]["light_mode_clan_symbols"])
             ),
             distance=0,
