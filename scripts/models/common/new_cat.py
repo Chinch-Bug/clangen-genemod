@@ -31,6 +31,7 @@ class NewCat(RootModel):
             Annotated[str, StringConstraints(pattern=r"^age:(.+)$")],
             Annotated[str, StringConstraints(pattern=r"^backstory:(.+)$")],
             Annotated[str, StringConstraints(pattern=r"^parent:([,0-9]+)$")],
+            Annotated[str, StringConstraints(pattern=r"^sibling:([,0-9]+)$")],
             Annotated[str, StringConstraints(pattern=r"^adoptive:([_,0-9a-zA-Z]+)$")],
             Annotated[str, StringConstraints(pattern=r"^mate:([_,0-9a-zA-Z]+)$")],
         ]
