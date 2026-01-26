@@ -1425,13 +1425,14 @@ def check_war():
 
             available_med = find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True, clan=main_clan.group_ID)
 
+            war_event_copy = war_events.copy()
             if not main_clan.leader or not main_clan.deputy or not available_med:
                 for event in war_events:
                     if not main_clan.leader and "lead_name" in event:
                         war_events.remove(event)
-                    elif not main_clan.deputy and "dep_name" in event:
+                    if not main_clan.deputy and "dep_name" in event:
                         war_events.remove(event)
-                    elif not available_med and "med_name" in event:
+                    if not available_med and "med_name" in event:
                         war_events.remove(event)
 
 
@@ -1445,14 +1446,14 @@ def check_war():
                 available_med = find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True, clan=enemy_clan.group_ID)
 
                 if not enemy_clan.leader or not enemy_clan.deputy or not available_med:
-                    for event in war_events:
+                    for event in war_event_copy:
                         if not enemy_clan.leader and "lead_name" in event:
-                            war_events.remove(event)
+                            war_event_copy.remove(event)
                         elif not enemy_clan.deputy and "dep_name" in event:
-                            war_events.remove(event)
+                            war_event_copy.remove(event)
                         elif not available_med and "med_name" in event:
-                            war_events.remove(event)
-                event = random.choice(war_events)
+                            war_event_copy.remove(event)
+                event = random.choice(war_event_copy)
                 event = ongoing_event_text_adjust(
                     Cat, event, other_clan_name=f"{main_clan.displayname}Clan", clan=enemy_clan
                 )
@@ -2420,13 +2421,12 @@ def handle_murder(cat, clan):
         return
 
     # If random murder is not triggered, targets can only be those they have some mid/extreme neg for
-    negative_relation = [
+    targets = [
         i
         for i in relationships
-        if i.has_mid_negative or i.has_mid_negative
+        if (i.has_mid_negative or i.has_mid_negative)
         and Cat.fetch_cat(i.cat_to).status.group.is_any_clan_group()
     ]
-    targets.extend(negative_relation)
 
     # if we have some, then we need to decide if this cat will kill
     if targets:

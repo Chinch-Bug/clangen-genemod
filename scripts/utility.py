@@ -2575,11 +2575,9 @@ def ongoing_event_text_adjust(Cat, text, clan=None, other_clan_name=None):
     """
     cat_dict = {}
     if "lead_name" in text:
-        kitty = Cat.fetch_cat(clan.leader)
-        cat_dict["lead_name"] = (str(kitty.name), choice(kitty.pronouns))
+        cat_dict["lead_name"] = (str(clan.leader.name), choice(clan.leader.pronouns))
     if "dep_name" in text:
-        kitty = Cat.fetch_cat(clan.deputy)
-        cat_dict["dep_name"] = (str(kitty.name), choice(kitty.pronouns))
+        cat_dict["dep_name"] = (str(clan.deputy.name), choice(clan.deputy.pronouns))
     if "med_name" in text:
         meds = find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True, clan=clan.group_ID)
         kitty = choice(
