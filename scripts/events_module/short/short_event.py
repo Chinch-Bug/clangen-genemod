@@ -2,6 +2,7 @@ from random import choice, randrange, random, randint, choices, sample
 from typing import List, Optional
 
 import i18n
+import re
 
 from scripts.cat.cats import Cat
 from scripts.cat.pelts import Pelt
@@ -710,6 +711,9 @@ class ShortEvent:
                         clan,
                         self.random_cat,
                     )
+                    if "n_c" in death_history:
+                        match = re.search(r'n_c:(\d+)', death_history)
+                        death_history = death_history.replace(match.group(0), str(self.new_cats[int(match.group(1))][0].name))
 
                     if self.main_cat.status.is_leader:
                         self.leads_current_life_count -= 1

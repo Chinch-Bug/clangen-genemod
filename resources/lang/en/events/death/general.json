@@ -8095,7 +8095,7 @@
     "new_cat": [
         ["meeting", "rogue", "age:adult", "exists"]
     ],
-    "history:": [
+    "history": [
         {
             "cats": ["m_c"],
             "death": "m_c was murdered by a rogue named n_c:0, hired by r_c."
@@ -8156,7 +8156,7 @@
     "new_cat": [
         ["meeting", "rogue", "age:adult", "exists"]
     ],
-    "history:": [
+    "history": [
         {
             "cats": ["m_c"],
             "death": "m_c died when a rogue named n_c:0 attacked {PRONOUN/m_c/object} on r_c's orders"
@@ -8211,7 +8211,7 @@
     "new_cat": [
         ["meeting", "rogue", "age:senior adult", "exists"]
     ],
-    "history:": [
+    "history": [
         {
             "cats": ["m_c"],
             "death": "m_c was murdered by a rogue named n_c:0, hired by r_c."
@@ -8272,7 +8272,7 @@
     "new_cat": [
         ["age:adult", "backstory:disgraced1, ostracized_warrior, disgraced3", "clancat", "exiled", "change_clan", "exists"]
     ],
-    "history:": [
+    "history": [
         {
             "cats": ["m_c"],
             "death": "m_c was murdered by a rogue named n_c:0, hired by r_c in exchange for a place in the Clan."
