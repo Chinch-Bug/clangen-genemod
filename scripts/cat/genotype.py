@@ -1285,16 +1285,16 @@ class Genotype:
         return threepars
 
     def KitEyes(self, par1, par2):
-        multipliers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        multipliers2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        multipliers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        multipliers2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     
         def maths(par, m):
             m[par-1] += 10
             for i in range(0, par-1):
-                m[i] += 10 / 5 ** (par-i-1);
+                m[i] += 10 / 5 ** (par-i-1)
             
             for i in range(par, 11):
-                m[i] += 10 / 5 ** (i-par+1);
+                m[i] += 10 / 5 ** (i-par+1)
             return m
     
         multipliers = maths(par1.refraction, multipliers)

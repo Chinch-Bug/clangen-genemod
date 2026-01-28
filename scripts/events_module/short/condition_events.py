@@ -673,7 +673,7 @@ class Condition_Events:
             if injury in switch_get_value(Switch.skip_conditions):
                 continue
 
-            if injury == "pregnant" and cat.ID not in game.clan.pregnancy_data:
+            if injury == "pregnant" and cat.ID in game.clan.pregnancy_data:
                 continue
 
             skipped = cat.moon_skip_injury(injury)
