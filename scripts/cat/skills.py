@@ -506,7 +506,7 @@ class CatSkills:
             parents = [
                 the_cat.fetch_cat(i)
                 for i in [the_cat.parent1, the_cat.parent2, the_cat.parent3] + the_cat.adoptive_parents
-                if the_cat.fetch_cat(i)
+                if the_cat.fetch_cat(i) and not the_cat.fetch_cat(i).faded
             ]
             parental_paths = [
                 i.skills.primary.path for i in parents if i and i.skills.primary
