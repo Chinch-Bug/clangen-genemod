@@ -4392,7 +4392,7 @@ def generate_sprite(
                 del pixel_array
                 eyes.blit(eye_section, (0, 0))
                 
-                colour = pygame.Color(data["pupil"] if phenotype.pinkdilute[0] != 'dp' and not game_setting_get('black_pupils') else ([0, 0, 0] if phenotype.pinkdilute[0] != 'dp' else [41, 7, 11]))
+                colour = pygame.Color(data["pupil"] if phenotype.pinkdilute[0] != 'dp' and not game_setting_get('black_pupils') else ([0, 0, 0] if phenotype.pinkdilute[0] != 'dp' and (phenotype.pointgene[1] != "c" or phenotype.pointgene[0] == "C") else [80, 20, 29]))
                 eye_section = sprites.sprites['eyepupil' + alt_cat_sprite].copy()
                 pixel_array = pygame.PixelArray(eye_section)
                 pixel_array.replace((255, 255, 255, 255), colour, distance=0)
