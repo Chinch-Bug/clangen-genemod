@@ -3824,7 +3824,9 @@
                         "mutual": false,
                         "values": ["like", "comfort"],
                         "amount": 5,
-                        "log": "to_cat and from_cat reminisced on old funny memories while hunting together."
+                        "log": {
+                            "cats_from": "to_cat and from_cat reminisced on old funny memories while hunting together."
+                        }
                     }
                 ]
             },
@@ -4239,7 +4241,9 @@
                         "mutual": false,
                         "values": ["like", "comfort"],
                         "amount": 5,
-                        "log": "to_cat and from_cat reminisced on old funny memories while hunting together."
+                        "log": {
+                            "cats_from": "to_cat and from_cat reminisced on old funny memories while hunting together."
+                        }
                     }
                 ]
             },
