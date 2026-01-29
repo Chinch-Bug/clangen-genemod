@@ -3247,7 +3247,8 @@ def generate_sprite(
     :param disable_sick_sprite: If true, never use the not_working lineart.
                     If false, use the cat.not_working() to determine the no_working art.
     """
-    sprite_poses = sprites.POSE_DATA["poses"]
+    poses: list = sprites.POSE_DATA["poses"]
+    sprite_poses = {x: str(poses.index(x)) for x in poses}
 
     if life_state is not None:
         age = life_state
@@ -4186,7 +4187,7 @@ def generate_sprite(
                         sprite.blit(fading, (0, 0))
                 if not phenotype.brindledbi and not ('red' in phenotype.maincolour or 'cream' in phenotype.maincolour or 'honey' in phenotype.maincolour or 'ivory' in phenotype.maincolour or 'apricot' in phenotype.maincolour) and (phenotype.ext[0] != "Eg" and phenotype.agouti[0] !='a' and (phenotype.corin[0] == 'sg' or phenotype.corin[0] == 'sh' or ('ec' in phenotype.ext and phenotype.ext[0] != "Eg") or (phenotype.ext[0] == 'ea' and sprite_age > 6) or (phenotype.silver[0] == 'i' and phenotype.corin[0] == 'fg'))):
                     sunshine = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                    sunshine.blit(sprites.sprites['bimetal' + cat_sprite], (0, 0))
+                    sunshine.blit(sprites.sprites['Tabby_unders' + cat_sprite], (0, 0))
 
                     colours = phenotype.FindRed(phenotype, sprite_age, special='nosilver')
                     underbelly = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
@@ -4400,13 +4401,13 @@ def generate_sprite(
                 eyes.blit(eye_section, (0, 0))
                 return eyes
 
-            if(int(cat_sprite) < 21 and int(cat_sprite) > 2):
+            if(int(cat_sprite) < 24 and int(cat_sprite) > 2):
                 lefteye = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 righteye = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 special = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
 
-                lefteye.blit(sprites.sprites['left' + alt_cat_sprite], (0, 0))
-                righteye.blit(sprites.sprites['right' + alt_cat_sprite], (0, 0))
+                lefteye.blit(sprites.sprites['left' + cat_sprite], (0, 0))
+                righteye.blit(sprites.sprites['right' + cat_sprite], (0, 0))
 
                 lefteye.blit(construct_eye_colour(phenotype.lefteyetype), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                 righteye.blit(construct_eye_colour(phenotype.righteyetype), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
@@ -4415,8 +4416,8 @@ def generate_sprite(
                 gensprite.blit(righteye, (0, 0))
 
                 if sprite_age == 1:
-                    lefteye.blit(sprites.sprites['left' + alt_cat_sprite], (0, 0))
-                    righteye.blit(sprites.sprites['right' + alt_cat_sprite], (0, 0))
+                    lefteye.blit(sprites.sprites['left' + cat_sprite], (0, 0))
+                    righteye.blit(sprites.sprites['right' + cat_sprite], (0, 0))
                     lefteye.blit(construct_eye_colour(phenotype.lefteyetype.split(' ; ')[0] + ' ; blue'), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                     righteye.blit(construct_eye_colour(phenotype.righteyetype.split(' ; ')[0] + ' ; blue'), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                     lefteye.set_alpha(200)
@@ -4426,11 +4427,11 @@ def generate_sprite(
 
 
                 if(phenotype.extraeye):
-                    special.blit(sprites.sprites[phenotype.extraeye + alt_cat_sprite], (0, 0))
+                    special.blit(sprites.sprites[phenotype.extraeye + cat_sprite], (0, 0))
                     special.blit(construct_eye_colour(phenotype.extraeyetype), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                     gensprite.blit(special, (0, 0))
                     if sprite_age == 1:
-                        special.blit(sprites.sprites[phenotype.extraeye + alt_cat_sprite], (0, 0))
+                        special.blit(sprites.sprites[phenotype.extraeye + cat_sprite], (0, 0))
                         special.blit(construct_eye_colour(phenotype.extraeyetype.split(' ; ')[0] + ' ; blue'), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                         special.set_alpha(150)
                         gensprite.blit(special, (0, 0))
@@ -4443,11 +4444,11 @@ def generate_sprite(
             age = 0
         elif 2 < int(cat_sprite) < 6 and (5 < cat.moons or cat.moons < 1):
             age = 4
-        elif 5 < int(cat_sprite) < 9 and (11 < cat.moons or cat.moons < 6):
+        elif 5 < int(cat_sprite) < 12 and (11 < cat.moons or cat.moons < 6):
             age = 10
-        elif cat_sprite in ['20', '22'] and (12 < cat.moons or cat.moons < 6):
+        elif cat_sprite in ['23', '25'] and (12 < cat.moons or cat.moons < 6):
             age = 6
-        elif int(cat_sprite) > 8 and cat_sprite not in ['20', '22'] and cat.moons < 12:
+        elif int(cat_sprite) > 11 and cat_sprite not in ['23', '25'] and cat.moons < 12:
             age = 60
         gensprite.blit(GenSprite(phenotype, age), (0, 0))
 
@@ -4561,12 +4562,10 @@ def generate_sprite(
             earlines.blit(sprites.sprites['foldlines' + cat_sprite], (0, 0))
 
         if('rexed' in phenotype.furtype or 'wiry' in phenotype.furtype):
-            if not dead or cat.status.group == CatGroup.UNKNOWN_RESIDENCE:
+            if not dead or cat.status.group != CatGroup.DARK_FOREST:
                 bodylines.blit(sprites.sprites['rexlineart' + cat_sprite], (0, 0))
             elif cat.status.group == CatGroup.DARK_FOREST:
                 bodylines.blit(sprites.sprites['rexlineartdf' + cat_sprite], (0, 0))
-            else:
-                bodylines.blit(sprites.sprites['rexlineartdead' + cat_sprite], (0, 0))
         else:
             if not dead:
                 bodylines.blit(sprites.sprites['lineart' + cat_sprite], (0, 0))
@@ -4578,10 +4577,10 @@ def generate_sprite(
                 bodylines.blit(sprites.sprites['lineart_sc' + cat_sprite], (0, 0))
             
         if int(cat_sprite) > 2:
-            earlines.blit(sprites.sprites['isolateears' + alt_cat_sprite],
+            earlines.blit(sprites.sprites['isolateears' + cat_sprite],
                       (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
             lineart.blit(earlines, (0, 0))
-            bodylines.blit(sprites.sprites['noears' + alt_cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
+            bodylines.blit(sprites.sprites['noears' + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
         lineart.blit(bodylines, (0, 0))
         new_sprite.blit(_recolor_lineart(
                             lineart,

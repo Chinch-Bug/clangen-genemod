@@ -4686,6 +4686,8 @@ def find_my_breed(phenotype):
             for part in hybrid_info[breed]:
                 if edited_sorted_breeds.get(part):
                     del edited_sorted_breeds[part]
+                if part in breed_mix:
+                    breed_mix = breed_mix.replace(", " + breed, "")
 
             
 

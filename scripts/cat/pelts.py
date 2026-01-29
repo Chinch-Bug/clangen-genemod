@@ -16,10 +16,13 @@ from scripts.utility import adjust_list_text
 
 class Pelt:
     # POSES
-    all_poses = list(sprites.POSE_DATA["poses"].keys())
+    all_poses = sprites.POSE_DATA["poses"]
     newborn_poses = [x for x in all_poses if "newborn" in x]
     kitten_poses = [x for x in all_poses if "kitten" in x]
-    adolescent_poses = [x for x in all_poses if "adolescent" in x]
+    adolescent_long_poses = [x for x in all_poses if "adolescent_long" in x]
+    adolescent_short_poses = [
+        x for x in all_poses if "adolescent" in x and "long" not in x
+    ]
     adult_short_poses = [x for x in all_poses if "adult_short" in x and "para" not in x]
     adult_long_poses = [x for x in all_poses if "adult_long" in x and "para" not in x]
     senior_poses = [x for x in all_poses if "senior" in x]
@@ -164,6 +167,7 @@ class Pelt:
                 para_adult_sprite,
             ]
         ):
+            # DO NOT CHANGE THIS: this is meant to convert old saves and should not be updated with new pose additions
             self.cat_sprites = {
                 "kitten": kitten_sprite if kitten_sprite is not None else 0,
                 "adolescent": adol_sprite if adol_sprite is not None else 3,
@@ -238,6 +242,12 @@ class Pelt:
                 else "adult_short0"
             )
 
+            if adol_sprite in ("adolescent0", "adolescent1", "adolescent2"):
+                if self.length == "long":
+                    adol_sprite = choice(self.adolescent_long_poses)
+                else:
+                    adol_sprite = f"adolescent_short{adol_sprite[-1]}"
+
             self.cat_sprites = {
                 "newborn": newborn_sprite
                 if newborn_sprite is not None and newborn_sprite in self.newborn_poses
@@ -246,8 +256,12 @@ class Pelt:
                 if kitten_sprite is not None and kitten_sprite in self.kitten_poses
                 else "kitten0",
                 "adolescent": adol_sprite
-                if adol_sprite is not None and adol_sprite in self.adolescent_poses
-                else "adolescent0",
+                if adol_sprite is not None
+                and (
+                    adol_sprite in self.adolescent_short_poses
+                    or adol_sprite in self.adolescent_long_poses
+                )
+                else "adolescent_short0",
                 "young adult": adult_sprite,
                 "adult": adult_sprite,
                 "senior adult": adult_sprite,
@@ -604,16 +618,21 @@ class Pelt:
         self.cat_sprites = {
             "newborn": choice(self.newborn_poses),
             "kitten": choice(self.kitten_poses),
-            "adolescent": choice(self.adolescent_poses),
             "senior": choice(self.senior_poses),
             "para_young": "para_young0",
         }
         self.reverse = choice([True, False])
 
         if self.length != "long":
+            self.cat_sprites["adolescent"] = choice(
+                self.adolescent_long_poses
+                if self.adolescent_long_poses
+                else self.adolescent_short_poses
+            )
             self.cat_sprites["adult"] = choice(self.adult_short_poses)
             self.cat_sprites["para_adult"] = "para_adult_short0"
         else:
+            self.cat_sprites["adolescent"] = choice(self.adolescent_short_poses)
             self.cat_sprites["adult"] = choice(
                 self.adult_long_poses
                 if self.adult_long_poses
