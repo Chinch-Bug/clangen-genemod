@@ -230,6 +230,7 @@ def load_events():
                         event_obj.clan = str(int(event_obj.clan[-1])+4)
                     except:
                         event_obj.clan = next(filter(lambda c: event_obj.clan == c.displayname, clan.all_other_clans), None)
+                        event_obj.clan = event_obj.clan.group_ID if event_obj.clan else None
                 cur_events_list.append(event_obj)
     except FileNotFoundError:
         pass
