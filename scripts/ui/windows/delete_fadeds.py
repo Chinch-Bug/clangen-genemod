@@ -11,7 +11,7 @@ from scripts.game_structure.ui_elements import (
 )
 from scripts.screens.enums import GameScreen
 from scripts.ui.windows.window_base_class import GameWindow
-from scripts.utility import ui_scale
+from scripts.ui.scale import ui_scale
 
 from scripts.cat.cats import Cat
 from scripts.cat_relations.inheritance import Inheritance

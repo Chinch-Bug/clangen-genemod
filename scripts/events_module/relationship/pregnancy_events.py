@@ -6,7 +6,7 @@ from typing import Dict, List, Union, Optional
 
 import i18n
 
-from scripts.cat.cats import Cat
+from scripts.cat.cats import Cat, BACKSTORIES
 from scripts.cat.enums import CatAge, CatGroup, CatRank, CatSocial, CatCompatibility
 from scripts.cat.genotype import Genotype
 from scripts.cat.names import names, Name
@@ -18,17 +18,16 @@ from scripts.game_structure import constants
 from scripts.game_structure import game
 from scripts.game_structure.localization import load_lang_resource
 from scripts.game_structure.game.settings import game_setting_get
-from scripts.utility import (
+from scripts.events_module.text_adjust import event_text_adjust, adjust_list_text
+from scripts.events_module.consequences import (
     create_new_cat,
-    get_highest_romantic_relation,
-    event_text_adjust,
-    get_personality_compatibility,
-    BACKSTORIES,
     change_relationship_values,
-    find_alive_cats_with_rank,
-    adjust_list_text,
-    get_living_clan_cat_count,
 )
+from scripts.events_module.event_filters import (
+    get_highest_romantic_relation,
+    get_personality_compatibility,
+)
+from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank, get_living_clan_cat_count
 
 
 def cat_is_amab(cat):

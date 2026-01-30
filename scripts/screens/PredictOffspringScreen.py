@@ -13,6 +13,7 @@ from scripts.game_structure import image_cache
 from scripts.game_structure import game
 from ..game_structure.game.settings import game_setting_get
 from ..clan_package.settings import get_clan_setting
+from ..clan_package.get_clan_cats import search_cats
 from ..game_structure.game.switches import switch_get_value, Switch
 from scripts.game_structure import constants
 from pygame_gui.elements import UIDropDownMenu, UITextBox
@@ -22,13 +23,9 @@ from scripts.game_structure.ui_elements import (
     UISpriteButton,
     UISurfaceImageButton,
 )
-from scripts.utility import (
-    get_text_box_theme,
-    ui_scale,
-    shorten_text_to_fit,
-    ui_scale_dimensions,
-    search_cats,
-)
+from scripts.events_module.text_adjust import shorten_text_to_fit
+from scripts.ui.theme import get_text_box_theme
+from scripts.ui.scale import ui_scale, ui_scale_dimensions
 from .Screens import Screens
 from ..game_structure.screen_settings import MANAGER
 from ..ui.generate_box import get_box, BoxStyles

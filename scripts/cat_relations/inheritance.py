@@ -16,7 +16,7 @@ import ujson
 from scripts.game_structure import game
 from scripts.housekeeping.datadir import get_save_dir
 from scripts.game_structure.game.save_load import safe_save
-from scripts.utility import adjust_list_text
+from scripts.events_module.text_adjust import adjust_list_text
 from scripts.game_structure.game.switches import (
     switch_set_value,
     switch_get_value,

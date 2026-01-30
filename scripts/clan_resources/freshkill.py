@@ -9,7 +9,7 @@ from scripts.cat.enums import CatRank
 from scripts.cat.skills import SkillPath
 from scripts.game_structure import game
 from scripts.clan_package.settings import get_clan_setting
-from scripts.utility import get_alive_clan_queens
+from scripts.clan_package.get_clan_cats import get_alive_clan_queens
 
 
 class Nutrition:
@@ -702,7 +702,6 @@ FEEDING_ORDER = game.prey_config["feeding_order"]
 HUNTER_BONUS = game.prey_config["hunter_bonus"]
 HUNTER_EXP_BONUS = game.prey_config["hunter_exp_bonus"]
 FRESHKILL_EVENT_TRIGGER_FACTOR = game.prey_config["base_event_trigger_factor"]
-EVENT_WEIGHT_TYPE = game.prey_config["events_weights"]
 MAL_PERCENTAGE = game.prey_config["nutrition_malnourished_percentage"]
 STARV_PERCENTAGE = game.prey_config["nutrition_starving_percentage"]
 

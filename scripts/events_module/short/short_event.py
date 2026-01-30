@@ -4,6 +4,7 @@ from typing import List, Optional
 import i18n
 import re
 
+from scripts.cat import pronouns
 from scripts.cat.cats import Cat
 from scripts.cat.pelts import Pelt
 from scripts.cat_relations.relationship import Relationship
@@ -12,19 +13,20 @@ from scripts.event_class import Single_Event
 from scripts.events_module.future.prep_and_trigger import prep_future_event
 from scripts.events_module.relationship.relation_events import Relation_Events
 from scripts.game_structure import localization, game
-from scripts.utility import (
-    create_new_cat_block,
-    find_clan_cats,
+from scripts.events_module.text_adjust import (
     event_text_adjust,
     get_leader_life_notice,
-    history_text_adjust,
     adjust_list_text,
-    unpack_rel_block,
-    find_alive_cats_with_rank,
-    change_relationship_values,
-    change_clan_reputation,
-    change_clan_relations,
+    history_text_adjust,
 )
+from scripts.events_module.consequences import (
+    create_new_cat_block,
+    unpack_rel_block,
+    change_relationship_values, 
+    find_clan_cats,
+)
+from scripts.clan_package.cotc import change_clan_reputation, change_clan_relations
+from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank
 
 from scripts.cat.enums import CatAge, CatRank, CatSocial, CatStanding
 from scripts.cat.personality import Personality
@@ -554,11 +556,9 @@ class ShortEvent:
             (len(self.main_cat.phenotype.sexgene) != 2)) else "" 
             self.main_cat.genderalign += new_gender.replace("female", "molly").replace("male", "tom").replace("nonbinary", "sam")
 
-            new_pronouns = {}
-            new_pronouns[i18n.config.get("locale")] = localization.get_new_pronouns(
+            self.main_cat.pronouns = pronouns.get_new_pronouns(
                 self.main_cat.genderalign
             )
-            self.main_cat.pronouns = new_pronouns
 
     def handle_death(self, clan):
         """

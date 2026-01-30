@@ -15,18 +15,14 @@ from scripts.game_structure.ui_elements import (
     UISpriteButton,
     UISurfaceImageButton,
 )
-from scripts.utility import (
-    get_personality_compatibility,
-    get_text_box_theme,
-    ui_scale,
-    ui_scale_dimensions,
-    ui_scale_offset,
-    shorten_text_to_fit,
-    search_cats,
-)
+from ..ui.theme import get_text_box_theme
+from ..events_module.text_adjust import shorten_text_to_fit
+from ..events_module.event_filters import get_personality_compatibility
+from ..ui.scale import ui_scale, ui_scale_dimensions, ui_scale_offset
 from .Screens import Screens
 from .enums import GameScreen
 from ..cat.enums import CatCompatibility
+from ..clan_package.get_clan_cats import search_cats
 from ..clan_package.settings import get_clan_setting
 from ..game_structure.game.switches import switch_set_value, switch_get_value, Switch
 from ..game_structure.screen_settings import MANAGER
@@ -1286,6 +1282,3 @@ class ChooseMateScreen(Screens):
         valid_mates = search_cats(search_text, valid_mates, self.search_genotype)
 
         return valid_mates
-
-    def chunks(self, L, n):
-        return [L[x : x + n] for x in range(0, len(L), n)]

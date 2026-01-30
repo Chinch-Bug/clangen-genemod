@@ -9,9 +9,7 @@ from scripts.clan_package.settings import get_clan_setting
 from scripts.event_class import Single_Event
 from scripts.game_structure import constants
 from scripts.game_structure import game
-from scripts.utility import (
-    event_text_adjust,
-)
+from scripts.events_module.text_adjust import event_text_adjust
 
 if TYPE_CHECKING:
     from scripts.cat.cats import Cat
