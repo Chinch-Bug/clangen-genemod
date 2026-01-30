@@ -5,6 +5,7 @@ import i18n
 import re
 
 from scripts.cat.cats import Cat
+from scripts.cat.enums import CatGroup
 from scripts.cat.pelts import Pelt
 from scripts.cat_relations.relationship import Relationship
 from scripts.clan_package.settings import get_clan_setting
@@ -207,8 +208,7 @@ class ShortEvent:
 
         self.all_involved_cat_ids: list[int] = []
 
-        self.leads_current_life_count: int = 0
-        self.leads_current_life_count_r_c: int = 0
+        self.leads_current_life_count: dict[CatGroup, int] = {CatGroup.PLAYER_CLAN_ID: 0}
         self.other_clan_name: str = ""
         self.chosen_herb: str = ""
         self.herb_notice: str = ""
@@ -227,8 +227,6 @@ class ShortEvent:
 
         if other_clan:
             self.other_clan_name = f"{other_clan.displayname}Clan"
-            if other_clan.leader_lives:
-                self.leads_current_life_count_r_c = other_clan.leader_lives
 
         self.all_involved_cat_ids.append(self.main_cat.ID)
 
@@ -569,7 +567,10 @@ class ShortEvent:
             return
 
         dead_list = self.dead_cat_objects if self.dead_cat_objects else []
-        self.leads_current_life_count = int(clan.leader_lives)
+        self.leads_current_life_count[CatGroup.PLAYER_CLAN_ID] = game.clan.leader_lives
+        for n_clan in game.clan.all_other_clans:
+            self.leads_current_life_count[n_clan.group_ID] = n_clan.leader_lives
+
 
         # check if the bodies are retrievable
         if "no_body" in self.tags:
@@ -591,16 +592,17 @@ class ShortEvent:
         for cat in dead_list:
             if "birth_death" not in self.types:
                 self.types.append("birth_death")
-
+            
             if cat.status.is_leader:
+                cat_clan = cat.status.fetch_clan_object()
                 if "all_lives" in self.tags:
-                    clan.leader_lives = 0
+                    cat_clan.leader_lives = 0
                 elif "some_lives" in self.tags:
-                    clan.leader_lives -= randrange(
-                        2, self.leads_current_life_count - 1
-                    ) if self.leads_current_life_count > 3 else 2
+                    cat_clan.leader_lives -= randrange(
+                        2, cat_clan.leader_lives - 1
+                    ) if cat_clan.leader_lives > 3 else 2
                 else:
-                    clan.leader_lives -= 1
+                    cat_clan.leader_lives -= 1
 
                 cat.die(body)
                 self.additional_event_text = get_leader_life_notice(clan)
@@ -716,16 +718,16 @@ class ShortEvent:
                         death_history = death_history.replace(match.group(0), str(self.new_cats[int(match.group(1))][0].name))
 
                     if self.main_cat.status.is_leader:
-                        self.leads_current_life_count -= 1
-                        if self.leads_current_life_count > self.main_cat.status.fetch_clan_object().leader_lives:
+                        self.leads_current_life_count[self.main_cat.status.get_last_living_group()] -= 1
+                        if self.leads_current_life_count[self.main_cat.status.get_last_living_group()] > self.main_cat.status.fetch_clan_object().leader_lives:
                             while (
-                                self.leads_current_life_count > self.main_cat.status.fetch_clan_object().leader_lives
+                                self.leads_current_life_count[self.main_cat.status.get_last_living_group()] > self.main_cat.status.fetch_clan_object().leader_lives
                             ):
                                 self.main_cat.history.add_death(
                                     "multi_lives",
                                     other_cat=self.random_cat,
                                 )
-                                self.leads_current_life_count -= 1
+                                self.leads_current_life_count[self.main_cat.status.get_last_living_group()] -= 1
 
                     self.main_cat.history.add_death(
                         death_history, other_cat=self.random_cat
@@ -743,16 +745,16 @@ class ShortEvent:
                     )
 
                     if self.random_cat.status.is_leader:
-                        self.leads_current_life_count_r_c -= 1
-                        if self.leads_current_life_count_r_c > self.random_cat.status.fetch_clan_object().leader_lives:
+                        self.leads_current_life_count[self.random_cat.status.get_last_living_group()] -= 1
+                        if self.leads_current_life_count[self.random_cat.status.get_last_living_group()] > self.random_cat.status.fetch_clan_object().leader_lives:
                             while (
-                                self.leads_current_life_count_r_c > self.random_cat.status.fetch_clan_object().leader_lives
+                                self.leads_current_life_count[self.random_cat.status.get_last_living_group()] > self.random_cat.status.fetch_clan_object().leader_lives
                             ):
                                 self.random_cat.history.add_death(
                                     "multi_lives",
                                     other_cat=self.random_cat,
                                 )
-                                self.leads_current_life_count_r_c -= 1
+                                self.leads_current_life_count[self.random_cat.status.get_last_living_group()] -= 1
                     self.random_cat.history.add_death(
                         death_history, other_cat=self.random_cat
                     )
@@ -768,13 +770,13 @@ class ShortEvent:
                     )
 
                     if cat.status.is_leader:
-                        self.leads_current_life_count -= 1
-                        if self.leads_current_life_count > cat.status.fetch_clan_object().leader_lives:
+                        self.leads_current_life_count[cat.status.get_last_living_group()] -= 1
+                        if self.leads_current_life_count[cat.status.get_last_living_group()] > cat.status.fetch_clan_object().leader_lives:
                             while (
-                                self.leads_current_life_count > cat.status.fetch_clan_object().leader_lives
+                                self.leads_current_life_count[cat.status.get_last_living_group()] > cat.status.fetch_clan_object().leader_lives
                             ):
                                 cat.history.add_death("multi_lives")
-                                self.leads_current_life_count -= 1
+                                self.leads_current_life_count[cat.status.get_last_living_group()] -= 1
                     cat.history.add_death(death_history)
 
             # new_cat history
