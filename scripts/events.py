@@ -217,6 +217,7 @@ def one_moon():
         for clan in [game.clan] + game.clan.all_other_clans:
             if clan.displayname not in ghost_names:
                 continue
+            extra_event = None
             insert = adjust_list_text(ghost_names[clan.displayname])
 
             if len(ghost_names[clan.displayname]) > 1:

@@ -242,14 +242,12 @@ def generate_sprite(
                     golden_gradient2.blit(
                         sprites.sprites["goldengradient" + cat_sprite], (0, 0))
 
-                    if 'chinchilla' in whichbase:
-                        golden_gradient2.set_alpha(150)
+                    golden_gradient.blit(golden_gradient2, (0, 0))
                     if 'shaded' in whichbase:
+                        golden_gradient.blit(golden_gradient2, (0, 0))
                         if phenotype.corin[0] == "N":
                             golden_gradient2.set_alpha(100)
                             golden_gradient.blit(golden_gradient2, (0, 0))
-                            golden_gradient2.set_alpha(255)
-                    golden_gradient.blit(golden_gradient2, (0, 0))
 
                     stripebase.blit(golden_gradient, (0, 0),
                                     special_flags=pygame.BLEND_RGBA_MIN)
