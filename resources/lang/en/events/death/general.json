@@ -4829,7 +4829,7 @@
                 "amount": -15,
                 "mutual": false,
                 "log": {
-                    "cats_from": "cat_from suspects that cat_to was struck down by a higher power."
+                    "cats_from": "from_cat suspects that to_cat was struck down by a higher power."
                 }
             }
         ]
