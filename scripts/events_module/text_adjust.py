@@ -45,6 +45,8 @@ def pronoun_repl(m, cat_pronouns_dict, raise_exception=False):
     # Add protection about the "insert" sometimes used
     if m.group(0) == "{insert}":
         return m.group(0)
+    if m.group(0) == "{surrogate}":
+        return m.group(0)
 
     inner_details = m.group(1).split("/")
     out = None
@@ -440,7 +442,7 @@ def event_text_adjust(
     if "n_c" in text:
         for i, cat_list in enumerate(new_cats):
             if len(new_cats) > 1:
-                pronoun = localization.get_new_pronouns("default plural")[0]
+                pronoun = get_new_pronouns("default plural")[0]
             else:
                 pronoun = choice(cat_list[0].pronouns)
 

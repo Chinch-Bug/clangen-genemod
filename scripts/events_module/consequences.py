@@ -7,6 +7,7 @@ import i18n
 from scripts.cat.cats import Cat
 from scripts.cat.genotype import Genotype
 from scripts.cat.enums import CatRank, CatAge, CatSocial, CatGroup, CatStanding
+from scripts.cat.status import Status
 from scripts.cat.names import names
 from scripts.cat_relations.enums import RelType
 from scripts.clan_package.settings import get_clan_setting
@@ -14,6 +15,7 @@ from scripts.game_structure import game, constants
 from scripts.cat.constants import BACKSTORIES, PERMANENT
 from scripts.events_module.text_adjust import process_text, event_text_adjust
 from scripts.game_structure.game import game_setting_get
+from scripts.clan_package.get_clan_cats import get_alive_clan_queens
 
 
 def create_bio_parents(Cat, flip=False, second_parent=True, clan=None):

@@ -1427,9 +1427,9 @@ def check_war():
 
             available_med = find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True, clan=main_clan.group_ID)
 
-            war_event_copy = war_events.copy()
+            war_events_copy = war_events.copy()
             if not main_clan.leader or not main_clan.deputy or not available_med:
-                for event in war_event_copy:
+                for event in war_events_copy:
                     if not main_clan.leader and "lead_name" in event:
                         war_events.remove(event)
                         continue
@@ -1451,7 +1451,7 @@ def check_war():
 
                 war_events = war_events_copy.copy()
                 if not enemy_clan.leader or not enemy_clan.deputy or not available_med:
-                    for event in war_event_copy:
+                    for event in war_events_copy:
                         if not enemy_clan.leader and "lead_name" in event:
                             war_events.remove(event)
                             continue

@@ -13,6 +13,7 @@ from scripts.ui.scale import ui_scale_dimensions
 from copy import deepcopy
 from scripts.game_structure import game
 from scripts.special_dates import SpecialDate, is_today
+from random import randint
 
 logger = logging.getLogger(__name__)
 
