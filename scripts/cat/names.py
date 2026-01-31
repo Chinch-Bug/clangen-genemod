@@ -135,8 +135,8 @@ class Name:
             if get_clan_setting("ancient names") and get_clan_setting("modded names"):
                 self.suffix = " " + self.suffix.title()
                 self.specsuffix_hidden = True
-            elif get_clan_setting("no special suffixes") and get_clan_setting("modded names"):
-                self.specsuffix_hidden = True
+        elif not load_existing_name and get_clan_setting("no special suffixes") and get_clan_setting("modded names"):
+            self.specsuffix_hidden = True
     
     def load_clan_names(self, clan):
         if not os.path.exists(get_save_dir() + f"/{clan}" + "/names"):
