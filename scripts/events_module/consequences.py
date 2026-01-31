@@ -1044,7 +1044,7 @@ def create_new_cat(
                 new_cat.status = Status(**{"group_ID": new_cat.status.group_ID,
                                            "rank": CatRank.NEWBORN, "age": CatAge.NEWBORN})
                 new_cat.dead = True
-                new_cat.thoughts(just_died=True)
+                new_cat.get_new_thought(just_died=True)
                 new_cat.history.add_death(
                     str(new_cat.name) + " was stillborn.")
         # this simulates a "history" as whomever they used to be

@@ -125,7 +125,7 @@
         "It doesn't take long for cats to notice - m_c has more trouble breathing than most kittens."
     ],
     "bumpy skin": [
-        "r_c examines m_c with concern when {PRONOUN/m_c/subject} show {PRONOUN/r_c/object} the many bumps on {PRONOUN/m_c/poss} skin.",
+        "r_c examines m_c with concern when {PRONOUN/m_c/subject} show {PRONOUN/m_c/object} the many bumps on {PRONOUN/m_c/poss} skin.",
         "m_c has come to notice a concerning number of bumps on {PRONOUN/m_c/poss} skin while grooming recently."
     ],
     "flat nose": [
