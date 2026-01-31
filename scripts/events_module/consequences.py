@@ -1116,7 +1116,7 @@ def create_new_cat(
                 new_cat.change_name(new_prefix=name, new_suffix="")
                 if overwrite_prefix:
                     new_cat.name.give_prefix(
-                        Cat, clan.biome, no_suffix=True)
+                        Cat, new_cat.status.fetch_clan_object(game.clan).biome, no_suffix=True)
 
         # Remove disabling scars, if they generated.
         # these are removed bc the cat won't have the associated perm condition
