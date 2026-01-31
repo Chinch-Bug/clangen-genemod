@@ -148,6 +148,8 @@ SUPPLY_ADJUSTMENTS = [
 with open("resources/game_config.toml", "r", encoding="utf-8") as read_file:
     CONFIG = tomllib.loads(read_file.read())
 
+PREY_CONFIG = None
+
 def recursive_merge(dict1, dict2):
     for key, value in dict2.items():
         if key in dict1 and isinstance(dict1[key], dict) and isinstance(value, dict):
@@ -172,7 +174,7 @@ def other_config_refreshes():
         CatAge.SENIOR_ADULT: CONFIG["cat_ages"]["senior adult"],
         CatAge.SENIOR: CONFIG["cat_ages"]["senior"],
     }
-    game.prey_config = CONFIG["clan_resources"]["freshkill"]
+    PREY_CONFIG = CONFIG["clan_resources"]["freshkill"]
 
 def load_clan_config():
     global CONFIG

@@ -103,7 +103,7 @@ def event_for_tags(tags: list, cat, clan=CatGroup.PLAYER_CLAN, other_cat=None, m
             leader_lives = cat.status.fetch_clan_object(game.clan).leader_lives
 
             life_lookup = {
-                "some_lives": (3, 9),
+                "some_lives": (4, 9),
                 "lives_remain": (2, 9),
                 "high_lives": (7, 9),
                 "mid_lives": (4, 6),

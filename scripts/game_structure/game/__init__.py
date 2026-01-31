@@ -99,8 +99,6 @@ starclan: Optional["Afterlife"] = None
 dark_forest: Optional["Afterlife"] = None
 
 cat_class = None
-prey_config = constants.CONFIG["clan_resources"]["freshkill"]
-
 rpc = None
 
 is_close_menu_open = False

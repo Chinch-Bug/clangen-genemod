@@ -545,7 +545,9 @@ def handle_lead_den_event():
                 additional_kits = outsider_cat.add_to_clan()
 
                 if additional_kits:
-                    event_text += i18n.t("hardcoded.event_lost_kits", count=len(additional_kits))
+                    event_text += i18n.t(
+                        "hardcoded.event_lost_kits", count=len(additional_kits)
+                    )
 
                     for kit_ID in additional_kits:
                         # add to involved cat list
@@ -697,11 +699,11 @@ def get_moon_freshkill():
 
     prey_amount = 0
     for cat in healthy_hunter:
-        lower_value = game.prey_config["auto_warrior_prey"][0]
-        upper_value = game.prey_config["auto_warrior_prey"][1]
+        lower_value = constants.PREY_CONFIG["auto_warrior_prey"][0]
+        upper_value = constants.PREY_CONFIG["auto_warrior_prey"][1]
         if cat.status.rank == CatRank.APPRENTICE:
-            lower_value = game.prey_config["auto_apprentice_prey"][0]
-            upper_value = game.prey_config["auto_apprentice_prey"][1]
+            lower_value = constants.PREY_CONFIG["auto_apprentice_prey"][0]
+            upper_value = constants.PREY_CONFIG["auto_apprentice_prey"][1]
 
         prey_amount += random.randint(lower_value, upper_value)
     game.freshkill_event_list.append(

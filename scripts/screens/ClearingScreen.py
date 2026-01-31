@@ -6,7 +6,7 @@ import pygame_gui
 import ujson
 
 from scripts.cat.cats import Cat
-from scripts.game_structure import game
+from scripts.game_structure import game, constants
 from scripts.game_structure.ui_elements import (
     UISpriteButton,
     UIImageButton,
@@ -619,7 +619,7 @@ class ClearingScreen(Screens):
 
         current_prey_amount = game.clan.freshkill_pile.total_amount
         needed_amount = game.clan.freshkill_pile.amount_food_needed()
-        warrior_need = game.prey_config["prey_requirement"][CatRank.WARRIOR]
+        warrior_need = constants.PREY_CONFIG["prey_requirement"][CatRank.WARRIOR]
         warrior_amount = int(current_prey_amount / warrior_need)
         general_text = i18n.t(
             "screens.clearing.prey_amount_info", warrior_amount=warrior_amount
@@ -772,8 +772,8 @@ class ClearingScreen(Screens):
             manager=MANAGER,
         )
 
-        prey_requirement = game.prey_config["prey_requirement"]
-        feeding_order = game.prey_config["feeding_order"]
+        prey_requirement = constants.PREY_CONFIG["prey_requirement"]
+        feeding_order = constants.PREY_CONFIG["feeding_order"]
         for rank in feeding_order:
             amount = prey_requirement[rank]
             self.additional_text[
