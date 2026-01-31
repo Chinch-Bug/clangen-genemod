@@ -366,8 +366,10 @@ class Name:
 
     # Generate possible suffix
     def give_suffix(self, skills, personality, biome, honour=None):
+        if game.clan and get_clan_setting('modded names') and get_clan_setting('new suffixes'):
+            return ""
         try:
-            if self.mod_suffixes and (not game.clan or (get_clan_setting('modded names') and get_clan_setting('new suffixes'))) and skills and personality:
+            if self.mod_suffixes and skills and personality:
                 options = []
                 for i in range(4):
                     try:
