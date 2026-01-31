@@ -1178,6 +1178,7 @@ def one_moon_cat(cat, clan):
         return
 
     if cat.dead:
+        cat.get_new_thought()
         if cat.ID in game.just_died:
             cat.moons += 1
         else:
@@ -1244,7 +1245,7 @@ def one_moon_cat(cat, clan):
     # newborns don't do much
     if cat.status.rank == CatRank.NEWBORN:
         cat.relationship_interaction()
-        cat.thoughts()
+        cat.get_new_thought()
         return
 
     handle_apprentice_EX(cat)  # This must be before perform_ceremonies!
@@ -1266,7 +1267,7 @@ def one_moon_cat(cat, clan):
         return
 
     cat.relationship_interaction()
-    cat.thoughts()
+    cat.get_new_thought()
     handle_colour_changes(cat, clan)
 
     # relationships have to be handled separately, because of the ceremony name change

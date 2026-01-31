@@ -275,7 +275,7 @@ class Clan:
                 the_cat.backstory = "clan_founder"
             if the_cat.status.rank == CatRank.APPRENTICE:
                 the_cat.rank_change(CatRank.APPRENTICE)
-            the_cat.thoughts()
+            the_cat.get_new_thought()
             the_cat.pelt.rebuild_sprite = True 
         save_cats(game.clan.name, Cat, game)
 
