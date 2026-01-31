@@ -227,11 +227,12 @@ class Relationship:
         relevant_event_tabs = ["relation", "interaction"]
         if self.chosen_interaction.get_injuries:
             relevant_event_tabs.append("health")
+            relevant_event_tabs.remove("interaction")
         clan = self.cat_from.status.fetch_clan_object(game.clan)
         game.cur_events_list.append(
             Single_Event(
                 interaction_str,
-                ["relation", "interaction"],
+                relevant_event_tabs,
                 cat_dict={"m_c": self.cat_to, "r_c": self.cat_from},
                 clan=clan.group_ID
             )
