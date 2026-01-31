@@ -1183,7 +1183,7 @@ def one_moon_cat(cat, clan):
             cat.moons += 1
         else:
             cat.status.increase_current_moons_as()
-        cat.thoughts()
+        cat.get_new_thought()
         handle_fading(cat, clan)  # Deal with fading.
         return
 

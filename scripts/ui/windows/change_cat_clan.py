@@ -110,7 +110,7 @@ class ChangeCatClanWindow(GameWindow):
                         else:
                             self.the_cat.status._change_rank(CatRank.MEDICINE_CAT)
                 self.the_cat.update_mentor()
-                self.the_cat.thoughts()
+                self.the_cat.get_new_thought()
                 game.all_screens["profile_screen"].exit_screen()
                 game.all_screens["profile_screen"].screen_switches()
                 self.kill()

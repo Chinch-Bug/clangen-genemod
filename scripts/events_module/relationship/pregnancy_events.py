@@ -690,7 +690,7 @@ class Pregnancy_Events:
                 kit.moons = 0
                 if not kit.dead:
                     kit.dead = True
-                kit.thoughts(just_died=True)
+                kit.get_new_thought(just_died=True)
                 kit.history.add_death(str(kit.name) + " was stillborn.")
         Pregnancy_Events.set_biggest_family(clan)
         
