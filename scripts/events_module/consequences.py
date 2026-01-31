@@ -470,17 +470,17 @@ def create_new_cat_block(
                     chosen_cat.name.give_suffix(
                         skills=chosen_cat.skills,
                         personality=chosen_cat.personality,
-                        biome=game.clan.biome
+                        biome=clan.biome
                     )
                 else:  # completely new name
                     chosen_cat.name.give_prefix(
                         Cat,
-                        biome=game.clan.biome
+                        biome=clan.biome
                     )
                     chosen_cat.name.give_suffix(
                         skills=chosen_cat.skills,
                         personality=chosen_cat.personality,
-                        biome=game.clan.biome
+                        biome=clan.biome
                     )
 
             new_cats = [chosen_cat]
@@ -1103,7 +1103,7 @@ def create_new_cat(
                 new_cat.change_name(new_prefix=name, new_suffix="")
                 if overwrite_prefix:
                     new_cat.name.give_prefix(
-                        Cat, game.clan.biome, no_suffix=True)
+                        Cat, clan.biome, no_suffix=True)
 
         # Remove disabling scars, if they generated.
         # these are removed bc the cat won't have the associated perm condition

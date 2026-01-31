@@ -383,7 +383,7 @@ def filter_events(
             if set(event.sub_type) != set(sub_types):
                 continue
 
-        if not event_for_location(event.location):
+        if not event_for_location(event.location, clan):
             continue
 
         if not event_for_season(event.season):

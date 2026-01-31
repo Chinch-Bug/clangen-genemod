@@ -437,7 +437,7 @@ class Cat:
             biome = kwargs["biome"]
         elif game.clan is not None:
             biome = (
-                game.clan.biome
+                self.status.fetch_clan_object(game.clan).biome
                 if not game.clan.override_biome
                 else game.clan.override_biome
             )
@@ -1305,7 +1305,7 @@ class Cat:
             cat=self,
             prefix=new_prefix,
             suffix=new_suffix,
-            biome=game.clan.biome,
+            biome=self.status.fetch_clan_object(game.clan).biome,
             specsuffix_hidden=self.specsuffix_hidden,
         )
 
@@ -1846,7 +1846,7 @@ class Cat:
             all_cats.remove(self)
 
         game_mode = switch_get_value(Switch.game_mode)
-        biome = switch_get_value(Switch.biome)
+        biome = self.status.fetch_clan_object(game.clan).biome if game.clan else switch_get_value(Switch.biome)
         camp = switch_get_value(Switch.camp_bg)
         try:
             season = game.clan.current_season

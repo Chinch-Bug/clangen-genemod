@@ -110,7 +110,7 @@ class Patrol:
         final_patrols, final_romance_patrols = self.get_possible_patrols(
             str(game.clan.current_season).casefold(),
             str(
-                game.clan.biome
+                self.clan.biome
                 if not game.clan.override_biome
                 else game.clan.override_biome
             ).casefold(),
@@ -1028,7 +1028,7 @@ class Patrol:
 
         # get first what kind of prey size which will be chosen
         biome = (
-            game.clan.biome
+            self.clan.biome
             if not game.clan.override_biome
             else game.clan.override_biome
         )
@@ -1131,7 +1131,7 @@ class Patrol:
         text, senses, list_type, cat_tag = find_special_list_types(text)
         if list_type:
             sign_list = get_special_snippet_list(
-                list_type, amount=randint(1, 3), sense_groups=senses
+                list_type, amount=randint(1, 3), sense_groups=senses, clan=self.clan
             )
             text = text.replace(list_type, str(sign_list))
             if cat_tag:

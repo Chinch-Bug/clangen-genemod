@@ -1758,7 +1758,7 @@ def ceremony(cat, promoted_to, preparedness="prepared"):
         elif promoted_to == 'elder':
             cer_type = 'warrior-elder'
         
-        cat.name.change_prefix(cat.moons, game.clan.biome, cer_type)
+        cat.name.change_prefix(cat.moons, clan.biome, cer_type)
         
 
     # Time to gather ceremonies. First, lets gather all the ceremony ID's.
@@ -1949,7 +1949,7 @@ def ceremony(cat, promoted_to, preparedness="prepared"):
             random_honor = i18n.t("defaults.ceremony_honor")
 
         if get_clan_setting('modded names') and get_clan_setting('new suffixes') and not cat.name.specsuffix_hidden:
-            cat.name.give_suffix(cat.skills, cat.personality, game.clan.biome, random_honor)
+            cat.name.give_suffix(cat.skills, cat.personality, clan.biome, random_honor)
 
     if cat.status.rank in (CatRank.WARRIOR, CatRank.MEDICINE_CAT, CatRank.MEDIATOR):
         cat.history.add_app_ceremony(random_honor)

@@ -151,7 +151,7 @@ def adjust_prey_abbr(patrol_text):
 
 
 def get_special_snippet_list(
-    chosen_list, amount, sense_groups=None, return_string=True
+    chosen_list, amount, sense_groups=None, return_string=True, clan=game.clan
 ):
     """
     function to grab items from various lists in snippet_collections.json
@@ -172,7 +172,7 @@ def get_special_snippet_list(
     :return: a list of the chosen items from chosen_list or a formatted string if format is True
     """
     biome = (
-        game.clan.biome if not game.clan.override_biome else game.clan.override_biome
+        clan.biome if not game.clan.override_biome else game.clan.override_biome
     ).casefold()
     global SNIPPETS
     if langs["snippet"] != i18n.config.get("locale"):
@@ -381,7 +381,7 @@ def event_text_adjust(
     text, senses, list_type, cat_tag = find_special_list_types(text)
     if list_type:
         sign_list = get_special_snippet_list(
-            list_type, amount=randint(1, 3), sense_groups=senses
+            list_type, amount=randint(1, 3), sense_groups=senses, clan=clan
         )
         text = text.replace(list_type, str(sign_list))
         if cat_tag:

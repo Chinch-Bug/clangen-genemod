@@ -687,7 +687,7 @@ class ProfileScreen(Screens):
                         biome=(
                             game.clan.override_biome
                             if game.clan.override_biome
-                            else game.clan.biome
+                            else self.the_cat.status.fetch_clan_object(game.clan).biome
                         ),
                         season=game.clan.current_season,
                         show_nest=self.the_cat.age == "newborn"

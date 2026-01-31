@@ -176,7 +176,7 @@ class GroupEvents:
         filtered_interactions = []
         main_cat = Cat.all_cats[abbreviations_cat_id["m_c"]]
         for interact in interactions:
-            if not event_for_location(interact.biome):
+            if not event_for_location(interact.biome, main_cat.status.fetch_clan_object(game.clan)):
                 continue
 
             if not event_for_season(interact.season):

@@ -706,7 +706,7 @@ class Pregnancy_Events:
                     kit.name = Name(prefix=name, suffix="", cat=kit)
 
                     if get_clan_setting("modded names") and get_clan_setting("new prefixes") and random() > 0.25:
-                        kit.name.give_prefix(kit, game.clan.biome, True)
+                        kit.name.give_prefix(kit, clan.biome, True)
 
                 if other_cat and not other_cat[0].status.is_outsider:
                     kit.backstory = "outsider2"

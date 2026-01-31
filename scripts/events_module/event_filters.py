@@ -45,7 +45,7 @@ def find_new_frequency(used_frequencies: set) -> int:
         return 4
 
 
-def event_for_location(locations: list) -> bool:
+def event_for_location(locations: list, clan=game.clan) -> bool:
     """
     checks if the clan is within the given locations
     """
@@ -67,7 +67,7 @@ def event_for_location(locations: list) -> bool:
             if req_biome == game.clan.override_biome:
                 if "any" in req_camps or game.clan.camp_bg in req_camps:
                     return True
-        elif req_biome == game.clan.biome.lower():
+        elif req_biome == clan.biome.lower():
             if "any" in req_camps or game.clan.camp_bg in req_camps:
                 return True
     return False

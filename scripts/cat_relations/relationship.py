@@ -480,7 +480,7 @@ class Relationship:
             )
 
         for interact in possible_interactions:
-            if not event_for_location(interact.biome):
+            if not event_for_location(interact.biome, self.cat_from.status.fetch_clan_object(game.clan)):
                 continue
 
             if not event_for_season(interact.season):

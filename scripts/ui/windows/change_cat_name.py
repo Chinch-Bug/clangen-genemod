@@ -187,7 +187,7 @@ class ChangeCatNameWindow(GameWindow):
                             self.the_cat,
                             None,
                             use_suffix,
-                            biome=game.clan.biome
+                            biome=self.the_cat.status.fetch_clan_object(game.clan).biome
                         ).prefix
                     )
                 else:
