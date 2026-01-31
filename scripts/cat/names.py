@@ -196,7 +196,7 @@ class Name:
             if name_fixpref and not(self.cat and hasattr(self.cat, "pelt") and not self.cat.pelt.scars and self.suffix == "scar"):
                 self.give_prefix(cat, self.biome)
             else:
-                self.suffix = None
+                self.suffix = ""
                 self.give_suffix(self.skills, self.personality, self.biome, self.honour)
 
             nono_name = self.prefix + self.suffix
@@ -366,8 +366,9 @@ class Name:
 
     # Generate possible suffix
     def give_suffix(self, skills, personality, biome, honour=None):
-        if game.clan and get_clan_setting('modded names') and get_clan_setting('new suffixes'):
-            return ""
+        if game.clan and get_clan_setting('modded names') and get_clan_setting('no suffixes'):
+            self.suffix = ""
+            return
         try:
             if self.mod_suffixes and skills and personality:
                 options = []
@@ -431,7 +432,7 @@ class Name:
                     size = 1
                 for i in range(size):
                     options.append(appearance)
-                self.suffix = None
+                self.suffix = ""
 
                 tries = 0
                 while not self.suffix or self.suffix in self.prefix.lower():
