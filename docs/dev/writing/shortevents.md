@@ -183,15 +183,15 @@ lowercase season names + "any"
 ### tags:list[str]
 >Tags are used for some filtering purposes.
 
-| string               | use                                                                                                                                     |
-|----------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| classic              | event only occurs in classic mode                                                                                                       |
-| cruel_season         | event only occurs in cruel_season mode                                                                                                  |
-| no_body              | use for death events only, this indicates that the dead body is not retrievable and cannot be referenced in grief events                |
-| skill_trait_required | normally there is a small chance to bypass skill and trait requirements, this tag will make that chance nonexistent.                    |
-| clan_wide            | if the event text does not mention the main or random cat, but is instead an event occurring towards the Clan as a whole, use this tag. |
-| romance              | marks event as being between two cats who are allowed romantic relations                                                                |
-| adoption             | marks event as being an adoption                                                                                                        |
+| string               | use                                                                                                                      |
+|----------------------|--------------------------------------------------------------------------------------------------------------------------|
+| classic              | event only occurs in classic mode                                                                                        |
+| cruel_season         | event only occurs in cruel_season mode                                                                                   |
+| no_body              | use for death events only, this indicates that the dead body is not retrievable and cannot be referenced in grief events |
+| skill_trait_required | normally there is a small chance to bypass skill and trait requirements, this tag will make that chance nonexistent.     |
+| clan_wide            | if this is a murder reveal, use this tag to denote this event as informing the ENTIRE Clan of the murder.                |
+| romance              | marks event as being between two cats who are allowed romantic relations                                                 |
+| adoption             | marks event as being an adoption                                                                                         |
 
 > **Tags To Indicate Present Statuses** - Sometimes you may want to indicate in event text that other cats of a certain status as present in addition to m_c and r_c (perhaps m_c and r_c are watching kits play, or discussing the progress of apprentices, or complaining about tending to elders.) These tags can be used to ensure that there are cats of the mentioned status currently living within the Clan, this helps prevent situation where cats are watching nonexistent kits or other such impossibilities. Keep in mind that all of these tags check for the presence of *at least* 2 cats of the indicated status.
 

@@ -147,8 +147,7 @@ SUPPLY_ADJUSTMENTS = [
 
 with open("resources/game_config.toml", "r", encoding="utf-8") as read_file:
     CONFIG = tomllib.loads(read_file.read())
-
-PREY_CONFIG = None
+    PREY_CONFIG = CONFIG["clan_resources"]["freshkill"]
 
 def recursive_merge(dict1, dict2):
     for key, value in dict2.items():
