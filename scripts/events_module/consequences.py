@@ -790,8 +790,9 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
 
             if "rogue" in attribute_list:
                 cat.become_lost(CatSocial.ROGUE)
-            cat.status.add_to_group(
-                clan.group_ID, standing_with_past_group=CatStanding.LEFT)
+            else:
+                cat.status.add_to_group(
+                    clan.group_ID, standing_with_past_group=CatStanding.LEFT)
             for app in cat.apprentice.copy():
                 app_ob = Cat.fetch_cat(app)
                 if app_ob:

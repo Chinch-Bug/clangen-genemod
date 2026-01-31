@@ -377,7 +377,7 @@
                     }
                 ],
                 "new_cat": [
-                    ["change_clan_rev", "clancat", "exists", "mate:p_l", "age:mate"]
+                    ["change_clan", "rogue", "clancat", "exists", "meeting", "mate:p_l", "age:mate"]
                 ],
                 "art": "gen_flower_date_warrior_other_clan",
                 "frequency": 4

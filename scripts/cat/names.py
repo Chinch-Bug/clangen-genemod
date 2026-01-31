@@ -135,8 +135,8 @@ class Name:
             if get_clan_setting("ancient names") and get_clan_setting("modded names"):
                 self.suffix = " " + self.suffix.title()
                 self.specsuffix_hidden = True
-            elif get_clan_setting("no special suffixes") and get_clan_setting("modded names"):
-                self.specsuffix_hidden = True
+        elif not load_existing_name and get_clan_setting("no special suffixes") and get_clan_setting("modded names"):
+            self.specsuffix_hidden = True
     
     def load_clan_names(self, clan):
         if not os.path.exists(get_save_dir() + f"/{clan}" + "/names"):
@@ -366,8 +366,10 @@ class Name:
 
     # Generate possible suffix
     def give_suffix(self, skills, personality, biome, honour=None):
+        if game.clan and get_clan_setting('modded names') and get_clan_setting('new suffixes'):
+            return ""
         try:
-            if self.mod_suffixes and (not game.clan or (get_clan_setting('modded names') and get_clan_setting('new suffixes'))) and skills and personality:
+            if self.mod_suffixes and skills and personality:
                 options = []
                 for i in range(4):
                     try:
