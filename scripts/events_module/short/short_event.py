@@ -454,7 +454,7 @@ class ShortEvent:
                     i18n.t("defaults.event_dead_outsider"),
                     main_cat=first_cat,
                 )
-            elif first_cat.status.is_outsider or cat.status.group_ID != clan.group_ID:
+            elif first_cat.status.is_outsider or first_cat.status.group_ID != clan.group_ID:
                 n_c_index = self.new_cats.index(cat_list)
                 if (
                     f"n_c:{n_c_index}" in self.exclude_involved
