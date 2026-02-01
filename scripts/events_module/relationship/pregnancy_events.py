@@ -1602,9 +1602,9 @@ class Pregnancy_Events:
 
             # make lost status match parent
             if cat and cat.status.is_lost():
-                kit.status.make_standing_unknown(CatGroup.PLAYER_CLAN)
+                kit.status.make_standing_unknown(cat.status.get_last_living_group())
                 kit.status.become_lost(
-                    cat.status.social, specific_group=CatGroup.PLAYER_CLAN
+                    cat.status.social, specific_group=cat.status.get_last_living_group()
                 )
                 
             #kit.adoptive_parents = all_adoptive_parents  # Add the adoptive parents. 
@@ -1627,12 +1627,14 @@ class Pregnancy_Events:
             ):
                 kit.congenital_condition(kit)
                 for condition in kit.permanent_condition:
-                    if kit.permanent_condition[condition] == 'born without a leg':
-                        kit.pelt.scars.append('NOPAW')
-                    elif kit.permanent_condition[condition] == 'born without a tail' and kit.phenotype.bobtailnr != 1:
-                        kit.pelt.scars.append('NOTAIL')
+                    if kit.permanent_condition[condition] == "born without a leg":
+                        kit.pelt.scars.append("NOPAW")
+                    elif kit.permanent_condition[condition] == "born without a tail" and kit.phenotype.bobtailnr != 1:
+                        kit.pelt.scars.append("NOTAIL")
                 Condition_Events.handle_already_disabled(kit, clan)
 
+            # create and update relationships
+            relationships_to_update = []
             # if kits are in a clan, the whole clan gets to know
             if cat and cat.status.alive_in_player_clan:
                 relationships_to_update = clan.clan_cats
@@ -1643,6 +1645,7 @@ class Pregnancy_Events:
                 if other_cat and other_cat.status.group == cat.status.group:
                     relationships_to_update.append(other_cat.ID)
 
+            if relationships_to_update:
                 for cat_id in relationships_to_update:
                     if cat_id == kit.ID:
                         continue
@@ -1677,8 +1680,7 @@ class Pregnancy_Events:
 
             #### REMOVE ACCESSORY ######
             kit.pelt.accessory = []
-            if not kit.status.is_outsider:
-                game.clan.add_cat(kit)
+            game.clan.add_cat(kit)
 
             #### GIVE HISTORY ######
             kit.history.add_beginning(clan_born=bool(cat))

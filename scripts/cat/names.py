@@ -509,7 +509,7 @@ class Name:
 
         # Handles suffix assignment with outside cats
         if (
-            self.cat.status.is_lost(CatGroup.PLAYER_CLAN)
+            self.cat.status.is_lost(CatGroup.PLAYER_CLAN_ID)
             and not self.cat.status.is_former_clancat
             and self.suffix
         ):
