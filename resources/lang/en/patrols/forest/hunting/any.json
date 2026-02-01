@@ -3273,7 +3273,7 @@
         "types": [
             "hunting"
         ],
-        "tags": [],
+        "tags": ["tnr"],
         "patrol_art": "fst_hunt_gonetwolegtrap",
         "min_cats": 1,
         "max_cats": 1,
@@ -3350,6 +3350,14 @@
                     "playful"
                 ],
                 "frequency": 4
+            },
+            {
+                "text": "p_l is caught in a trap hidden in the bushes! Nobody is around to hear or help before the Twolegs come to take the trap away.",
+                "exp": 0,
+                "lost_cats": [
+                    "p_l"
+                ],
+                "frequency": 3
             }
         ]
     },
