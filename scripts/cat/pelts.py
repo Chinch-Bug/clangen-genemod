@@ -177,7 +177,7 @@ class Pelt:
                 "senior": senior_sprite if senior_sprite is not None else 12,
                 "para_young": "para_young0",
                 "para_adult": para_adult_sprite,
-                "newborn": "newborn0",
+                "newborn": "newborn2",
             }
             for age, pose in self.cat_sprites.items():
                 # we only need to convert if it's using the old sprite pose numbers
@@ -281,7 +281,10 @@ class Pelt:
             self.cat_sprites["young adult"] = self.cat_sprites["adult"]
             self.cat_sprites["senior adult"] = self.cat_sprites["adult"]
             self.cat_sprites["para_adult"] = "para_adult_short0"
-        elif self.length == "long" and self.adult_long_poses and self.cat_sprites["adult"] not in self.adult_long_poses:
+        if self.length != "long" and self.cat_sprites["adolescent"] not in self.adolescent_short_poses:
+            self.cat_sprites["adolescent"] = choice(self.adolescent_short_poses)
+        
+        if self.length == "long" and self.adult_long_poses and self.cat_sprites["adult"] not in self.adult_long_poses:
             self.cat_sprites["adult"] = choice(
                 self.adult_long_poses
                 if self.adult_long_poses
@@ -290,6 +293,12 @@ class Pelt:
             self.cat_sprites["young adult"] = self.cat_sprites["adult"]
             self.cat_sprites["senior adult"] = self.cat_sprites["adult"]
             self.cat_sprites["para_adult"] = "para_adult_long0"
+        if self.length == "long" and self.adolescent_long_poses and self.cat_sprites["adolescent"] not in self.adolescent_long_poses:
+            self.cat_sprites["adolescent"] = choice(
+                self.adolescent_long_poses
+                if self.adolescent_long_poses
+                else self.adolescent_short_poses
+            )
 
     @property
     def accessory(self):
@@ -442,7 +451,7 @@ class Pelt:
 
                         #face
                         if 'beard' or 'underbelly1' in white_pattern:
-                            white_pattern.append(choice(['chin', 'chin', 'muzzle', 'muzzle', 'blaze', None, None]))
+                            white_pattern.append(choice(['chin', 'chin', 'muzzle', 'muzzle', 'muzzle2', 'blaze', None, None]))
                         white_pattern.append(choice(['break/chin'] + [None] * 5))
 
                         #tail
@@ -471,7 +480,7 @@ class Pelt:
                         for i in range(randint(0, 2)):
                             white_pattern.append(choice(['break/bracelet left', 'break/bracelet right'] + [None] * 5))
                         #face
-                        white_pattern.append(choice(['chin', 'muzzle', 'muzzle', 'muzzle', 'blaze']))
+                        white_pattern.append(choice(['chin', 'muzzle', 'muzzle', 'muzzle', 'muzzle2', 'blaze']))
                         white_pattern.append(choice(['break/chin'] + [None] * 5))
 
                         #tail
@@ -507,7 +516,7 @@ class Pelt:
                         for i in range(randint(0, 2)):
                             white_pattern.append(choice(['break/bracelet left', 'break/bracelet right'] + [None] * 5))
                         #face
-                        white_pattern.append(choice(['chin', 'muzzle', 'muzzle', 'muzzle', 'blaze', 'blaze']))
+                        white_pattern.append(choice(['chin', 'muzzle', 'muzzle', 'muzzle', 'muzzle2', 'blaze', 'blaze']))
                         white_pattern.append(choice(['break/chin'] + [None] * 5))
 
                         #tail
@@ -533,7 +542,7 @@ class Pelt:
                     for i in range(randint(0, 2)):
                         white_pattern.append(choice(['break/bracelet left', 'break/bracelet right'] + [None] * 5))
                     #face
-                    white_pattern.append(choice(['muzzle', 'muzzle', 'blaze', 'blaze']))
+                    white_pattern.append(choice(['muzzle', 'muzzle', 'muzzle2', 'blaze', 'blaze']))
                     white_pattern.append(choice([None, None, None, choice(['break/nose1', 'break/nose2'])]))
                     white_pattern.append(choice(['break/chin'] + [None] * 5))
 
@@ -624,15 +633,15 @@ class Pelt:
         self.reverse = choice([True, False])
 
         if self.length != "long":
+            self.cat_sprites["adolescent"] = choice(self.adolescent_short_poses)
+            self.cat_sprites["adult"] = choice(self.adult_short_poses)
+            self.cat_sprites["para_adult"] = "para_adult_short0"
+        else:
             self.cat_sprites["adolescent"] = choice(
                 self.adolescent_long_poses
                 if self.adolescent_long_poses
                 else self.adolescent_short_poses
             )
-            self.cat_sprites["adult"] = choice(self.adult_short_poses)
-            self.cat_sprites["para_adult"] = "para_adult_short0"
-        else:
-            self.cat_sprites["adolescent"] = choice(self.adolescent_short_poses)
             self.cat_sprites["adult"] = choice(
                 self.adult_long_poses
                 if self.adult_long_poses
