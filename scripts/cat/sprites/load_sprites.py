@@ -386,9 +386,9 @@ class Sprites:
         #genemod eyes
 
         for i, x in enumerate(['left', 'right', 'sectoral1', 'sectoral2', 'sectoral3', 'sectoral4', 'sectoral5', 'sectoral6']):
-            self.make_group('Other/eyebase', (i, 0), x, sprites_y=7)
+            self.make_group('Other/eyebase', (i, 0), x, sprites_y=8)
         for i, x in enumerate(['outer', 'inner', 'pupil']):
-            self.make_group('Other/eyesections', (i, 0), f"eye{x}", sprites_y=6)
+            self.make_group('Other/eyesections', (i, 0), f"eye{x}", sprites_y=7)
         
         data_jsons = (
             self.WHITE_DATA,
