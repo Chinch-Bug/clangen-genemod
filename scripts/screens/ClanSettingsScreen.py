@@ -17,6 +17,7 @@ from scripts.game_structure.ui_elements import (
     UIModifiedScrollingContainer,
     UICheckbox,
 )
+from scripts.game_structure import game
 from scripts.housekeeping.datadir import open_data_dir
 from ..ui.theme import get_text_box_theme
 from ..ui.scale import ui_scale, ui_scale_dimensions, ui_scale_offset

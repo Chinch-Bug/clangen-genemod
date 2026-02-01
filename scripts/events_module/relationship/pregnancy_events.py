@@ -1653,7 +1653,7 @@ class Pregnancy_Events:
                         parent_to_kit = constants.CONFIG["new_cat"]["parent_buff"][
                             "parent_to_kit"
                         ]
-                        y = random.randrange(0, 15)
+                        y = randrange(0, 15)
                         start_relation = Relationship(the_cat, kit, False, True)
                         start_relation.like = parent_to_kit[RelType.LIKE] + y
                         start_relation.comfort = parent_to_kit[RelType.COMFORT] + y
@@ -1664,7 +1664,7 @@ class Pregnancy_Events:
                         kit_to_parent = constants.CONFIG["new_cat"]["parent_buff"][
                             "kit_to_parent"
                         ]
-                        y = random.randrange(0, 15)
+                        y = randrange(0, 15)
                         start_relation = Relationship(kit, the_cat, False, True)
                         start_relation.like += kit_to_parent[RelType.LIKE] + y
                         start_relation.comfort = kit_to_parent[RelType.COMFORT] + y
