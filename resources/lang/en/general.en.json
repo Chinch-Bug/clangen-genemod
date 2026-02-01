@@ -12,7 +12,7 @@
         "one": "1 moon (in life)",
         "many": "%{count} moons (in life)"
       },
-      "moons_date": "moon %{moon}",
+      "moon_date": "moon %{moon}",
       "guide": "guiding ghost",
       "living_group": "%{group} %{rank}",
       "past_no_group": "past %{rank}",

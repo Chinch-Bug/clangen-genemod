@@ -1166,7 +1166,7 @@ class Cat:
         """Makes an "outside cat" a Clan cat. Returns a list of IDs for any additional cats that
         are coming with them."""
 
-        if not self.status.is_exiled(clan) and not self.status.is_lost(clan):
+        if not self.status.is_exiled(clan) and clan not in self.status.all_groups:
             self.history.add_beginning()
 
         self.status.add_to_group(new_group_ID=clan, age=self.age)

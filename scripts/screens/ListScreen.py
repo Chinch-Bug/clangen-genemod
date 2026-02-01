@@ -277,7 +277,7 @@ class ListScreen(Screens):
             group_names += [clan.displayname + "Clan" for clan in game.clan.all_other_clans]
         self.living_group_names = tuple(group_names)
 
-        self.set_disabled_menu_buttons(["catlist_screen"])
+        self.set_disabled_menu_buttons(["cats"])
         self.show_menu_buttons()
 
         # SCREEN CONTAINER - everything should come back to here

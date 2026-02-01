@@ -28,6 +28,7 @@ from ..game_structure.screen_settings import MANAGER
 from ..ui.generate_box import get_box, BoxStyles
 from ..ui.generate_button import get_button_dict, ButtonStyles
 from ..ui.icon import Icon
+from ..ui.windows.no_mediator import NoMediatorsWindow
 
 
 class MediationScreen(Screens):
@@ -53,7 +54,7 @@ class MediationScreen(Screens):
             self.mute_button_pressed(event)
 
             if event.ui_element == self.back_button:
-                self.change_screen(GameScreen.PROFILE)
+                self.change_screen(game.last_screen_forupdate)
             elif event.ui_element == self.last_med:
                 self.selected_mediator -= 1
                 self.update_mediator_info()
@@ -132,14 +133,16 @@ class MediationScreen(Screens):
         for cat in Cat.all_cats_list:
             if (
                 cat.status.rank.is_any_mediator_rank()
-                and cat.status.group_ID == Cat.fetch_cat(switch_get_value(Switch.cat)).status.group_ID
+                and cat.status.group_ID == (Cat.fetch_cat(switch_get_value(Switch.cat)).status.group_ID if switch_get_value(Switch.cat) else game.clan.group_ID)
             ):
                 self.mediators.append(cat)
 
         self.page = 1
 
         if self.mediators:
-            if Cat.fetch_cat(switch_get_value(Switch.cat)) in self.mediators:
+            if not switch_get_value(Switch.cat):
+                self.selected_mediator = 0
+            elif Cat.fetch_cat(switch_get_value(Switch.cat)) in self.mediators:
                 self.selected_mediator = self.mediators.index(
                     Cat.fetch_cat(switch_get_value(Switch.cat))
                 )
@@ -284,7 +287,10 @@ class MediationScreen(Screens):
         )
 
         self.update_buttons()
-        self.update_mediator_info()
+        if self.mediators:
+            self.update_mediator_info()
+        else:
+            NoMediatorsWindow()
 
     def random_cat(self):
         if self.selected_cat_list():

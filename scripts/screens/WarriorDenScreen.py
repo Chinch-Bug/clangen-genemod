@@ -322,7 +322,7 @@ class WarriorDenScreen(Screens):
         next_change = ""
         if game.clan.last_focus_change:
             last_change_text = i18n.t(
-                "general.moons_date", moon=str(game.clan.last_focus_change)
+                "general.moon_date", moon=str(game.clan.last_focus_change)
             )
             moons = (
                 game.clan.last_focus_change

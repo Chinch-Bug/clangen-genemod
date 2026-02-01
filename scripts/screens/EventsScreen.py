@@ -26,6 +26,8 @@ from scripts.game_structure.ui_elements import (
     UISurfaceImageButton,
     CatButton,
 )
+from scripts.screens.screens_core.screens_core import rebuild_moon_n_season_indicator
+from scripts.ui.elements.save_button import UISaveButton
 from scripts.ui.windows.game_over import GameOverWindow
 from scripts.screens.Screens import Screens
 from scripts.screens.enums import GameScreen
@@ -150,6 +152,10 @@ class EventsScreen(Screens):
                     return
                 self.timeskip_button.disable()
                 self.events_thread = self.loading_screen_start_work(events.one_moon)
+                rebuild_moon_n_season_indicator(change_moon=True, visible=True)
+                self.save_button.reset_save()
+            elif event.ui_element == self.save_button.unsaved_state:
+                self.save_button.save_game(current_screen=self)
             elif element in self.page_control.values():
                 if element == self.page_control["first"]:
                     self.current_page = 1
@@ -189,8 +195,12 @@ class EventsScreen(Screens):
                 # DOWN AND UP ARROW
                 elif event.key == pygame.K_DOWN or event.key == pygame.K_UP:
                     self.handle_tab_select(event.key)
+                # RETURN
                 elif event.key == pygame.K_RETURN:
                     self.handle_tab_switch(self.selected_display)
+                # SPACE
+                elif event.key == pygame.K_SPACE:
+                    self.save_button.save_game(current_screen=self)
 
     def change_clan(self):
         curr_clan = next(filter(lambda c: c.group_ID == self.current_clan, game.clan.all_other_clans), game.clan)
@@ -281,6 +291,7 @@ class EventsScreen(Screens):
 
     def screen_switches(self):
         super().screen_switches()
+        
         # On first open, update display events list
         self.show_mute_buttons()
         if not self.first_opened:
@@ -338,7 +349,7 @@ class EventsScreen(Screens):
         )
 
         self.timeskip_button = UISurfaceImageButton(
-            ui_scale(pygame.Rect((310, 218), (180, 30))),
+            ui_scale(pygame.Rect((248, 223) if game.clan.clancount != 'multiclan' else (315, 223), (180, 30))),
             "screens.events.timeskip_button",
             get_button_dict(ButtonStyles.SQUOVAL, (180, 30)),
             object_id="@buttonstyles_squoval",
@@ -347,6 +358,11 @@ class EventsScreen(Screens):
             manager=MANAGER,
             sound_id="timeskip",
         )
+        self.save_button = UISaveButton(
+            position=(438, 223) if game.clan.clancount != 'multiclan' else (195, 223),
+            container=self.event_screen_container,
+        )
+        self.save_button.reset_save()
 
         if game.clan.clancount == 'multiclan':
             if not self.current_clan:
@@ -454,7 +470,7 @@ class EventsScreen(Screens):
         self.update_events_display()
 
         # Draw and disable the correct menu buttons.
-        self.set_disabled_menu_buttons(["events_screen"])
+        self.set_disabled_menu_buttons(["events"])
         self.update_heading_text(f"{curr_clan.displayname}Clan")
         self.show_menu_buttons()
 

@@ -92,6 +92,7 @@
         "one": "To the shock of everyone, m_c has found {PRONOUN/m_c/poss} way home with reports of the Twolegs releasing {PRONOUN/m_c/object} nearby.",
         "many": "To the shock of everyone, %{cats} have found their way home with reports of the Twolegs releasing them nearby."
       },
+      "event_returning_child_of_lost": "m_c approaches the Clan and asks to join, claiming to be %{parent_name}'s kitten.",
       "kittencough_spread": {
         "one": "Kittencough has spread around the nursery. %{kits} is affected.",
         "many": "Kittencough has spread around the nursery. %{kits} are affected."

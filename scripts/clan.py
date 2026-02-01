@@ -44,6 +44,7 @@ from scripts.housekeeping.version import get_version_info, SAVE_VERSION_NUMBER
 from scripts.clan_package.clan_symbols import clan_symbol_sprite
 from scripts.clan_package.get_clan_cats import get_living_clan_cat_count
 from scripts.events_module.consequences import create_new_cat
+from scripts.screens.screens_core.screens_core import rebuild_top_menu_buttons
 
 
 class Clan:
@@ -75,6 +76,10 @@ class Clan:
         self_run_init_functions=True,
         displayname="",
     ):
+        """
+        :param name: The save file name for the Clan, this should not be used for player-facing text beyond the save file screen
+        :param displayname: The display name for the Clan, this is what should appear while the playing the game.
+        """
         if name == "":
             return
 
@@ -145,6 +150,8 @@ class Clan:
 
         if self_run_init_functions:
             self.post_initialization_functions()
+
+        rebuild_top_menu_buttons()
 
     @property
     def current_season(self):

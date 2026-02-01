@@ -322,7 +322,7 @@ class PatrolScreen(Screens):
 
     def screen_switches(self):
         super().screen_switches()
-        self.set_disabled_menu_buttons(["patrol_screen"])
+        self.set_disabled_menu_buttons(["patrols"])
         self.update_heading_text(f"{game.clan.displayname}Clan")
 
         if not self.current_clan or self.current_clan.group_ID == game.clan.group_ID:
