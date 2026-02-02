@@ -102,7 +102,7 @@ class ClanScreen(Screens):
         self.choose_cat_positions()
 
         self.set_disabled_menu_buttons(["camp_screen"])
-        self.update_heading_text(f"{game.clan.displayname}Clan")
+        self.update_heading_text(f"{game.selected_clan.displayname}Clan")
         self.show_menu_buttons()
         Screens.menu_buttons["back_to_camp"].hide()
 
@@ -189,6 +189,9 @@ class ClanScreen(Screens):
             object_id=ObjectID(class_id="@buttonstyles_rounded_rect", object_id=None),
             starting_height=2,
         )
+        if game.selected_clan != game.clan:
+            self.warrior_den_label.disable()
+            self.leader_den_label.disable()
         self.med_den_label = UISurfaceImageButton(
             ui_scale(pygame.Rect(self.layout["healer den"], (105, 28))),
             "screens.core.medicine_cat_den",
@@ -295,17 +298,17 @@ class ClanScreen(Screens):
 
         camp_bg_base_dir = "resources/images/camp_bg/"
         leaves = ["newleaf", "greenleaf", "leafbare", "leaffall"]
-        camp_nr = game.clan.camp_bg
+        camp_nr = game.selected_clan.camp_bg
 
         if camp_nr is None:
             camp_nr = "camp1"
             game.clan.camp_bg = camp_nr
 
         available_biome = ["Forest", "Mountainous", "Plains", "Beach"]
-        biome = game.clan.biome
+        biome = game.selected_clan.biome
         if biome not in available_biome:
             biome = available_biome[0]
-            game.clan.biome = biome
+            game.selected_clan.biome = biome
         biome = biome.lower()
 
         all_backgrounds = []
@@ -400,7 +403,7 @@ class ClanScreen(Screens):
             first_choices[x].extend(first_choices[x])
 
         for x in Cat.all_cats:
-            if not Cat.all_cats[x].status.alive_in_player_clan:
+            if Cat.all_cats[x].status.group_ID != game.selected_clan.group_ID:
                 continue
 
             base_pos = None

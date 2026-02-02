@@ -349,7 +349,7 @@ class EventsScreen(Screens):
         )
 
         self.timeskip_button = UISurfaceImageButton(
-            ui_scale(pygame.Rect((248, 223) if game.clan.clancount != 'multiclan' else (315, 223), (180, 30))),
+            ui_scale(pygame.Rect((248, 223) if game.clan.clancount != 'multiclan' else (195, 223), (180, 30))),
             "screens.events.timeskip_button",
             get_button_dict(ButtonStyles.SQUOVAL, (180, 30)),
             object_id="@buttonstyles_squoval",
@@ -359,7 +359,7 @@ class EventsScreen(Screens):
             sound_id="timeskip",
         )
         self.save_button = UISaveButton(
-            position=(438, 223) if game.clan.clancount != 'multiclan' else (195, 223),
+            position=(438, 223) if game.clan.clancount != 'multiclan' else (380, 223),
             container=self.event_screen_container,
         )
         self.save_button.reset_save()
@@ -368,7 +368,7 @@ class EventsScreen(Screens):
             if not self.current_clan:
                 self.current_clan = game.clan.group_ID
             self.choose_group_button = UISurfaceImageButton(
-                ui_scale(pygame.Rect((500, 218), (190, 34))),
+                ui_scale(pygame.Rect((500, 220), (190, 34))),
                 "screens.list.choose_group",
                 get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
                 container=self.event_screen_container,

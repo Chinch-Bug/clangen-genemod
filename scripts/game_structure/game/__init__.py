@@ -42,6 +42,7 @@ freshkill_event_list = []
 last_screen_forupdate = GameScreen.START
 last_screen_forProfile = GameScreen.LIST
 last_list_forProfile = None
+selected_clan = None
 
 choose_cats = {}
 

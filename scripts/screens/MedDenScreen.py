@@ -153,7 +153,7 @@ class MedDenScreen(Screens):
             manager=MANAGER,
         )
 
-        if game.clan.game_mode != "classic":
+        if game.clan.game_mode != "classic" and game.clan == game.selected_clan:
             self.help_button = UIImageButton(
                 ui_scale(pygame.Rect((725, 25), (34, 34))),
                 "",
@@ -257,7 +257,7 @@ class MedDenScreen(Screens):
             self.minor_cats = []
             self.injured_and_sick_cats = []
             for the_cat in Cat.all_cats_list:
-                if the_cat.status.alive_in_player_clan and (
+                if the_cat.status.group_ID == game.selected_clan.group_ID and (
                     the_cat.injuries or the_cat.illnesses
                 ):
                     self.injured_and_sick_cats.append(the_cat)
@@ -346,7 +346,7 @@ class MedDenScreen(Screens):
             med_messages = []
 
             amount_per_med = get_amount_cat_for_one_medic()
-            number = amount_clanmembers_covered(Cat.all_cats.values(), amount_per_med)
+            number = amount_clanmembers_covered(Cat.all_cats.values(), amount_per_med, clan=game.selected_clan.group_ID)
 
             meds_cover = i18n.t(
                 "screens.med_den.meds_cover", clansize=number, count=len(self.meds)
@@ -366,7 +366,7 @@ class MedDenScreen(Screens):
                 )
             elif len(self.meds) >= 2 and number == 0:
                 meds_cover = event_text_adjust(
-                    Cat=Cat, text=choice(MESSAGES["many_not_working"]), clan=game.clan
+                    Cat=Cat, text=choice(MESSAGES["many_not_working"]), clan=game.selected_clan
                 )
 
             if meds_cover:
@@ -427,7 +427,7 @@ class MedDenScreen(Screens):
 
         # get the med cats
         self.meds = find_alive_cats_with_rank(
-            Cat, [CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE], sort=True
+            Cat, [CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE], sort=True, clan=game.selected_clan.group_ID
         )
 
         if not self.meds:
@@ -595,7 +595,7 @@ class MedDenScreen(Screens):
         if herb_supply.total <= 0:
             herb_list = ["Empty"]
 
-        elif game.clan.game_mode != "classic":
+        elif game.clan.game_mode != "classic" and game.selected_clan == game.clan:
             for herb, count in herb_supply.entire_supply.items():
                 if count <= 0:
                     continue
@@ -608,7 +608,7 @@ class MedDenScreen(Screens):
 
         if len(herb_list) <= 10:
             # classic doesn't display herbs
-            if game.clan.game_mode == "classic":
+            if game.clan.game_mode == "classic" and game.selected_clan == game.clan:
                 herb_display = None
             else:
                 herb_display = "<br>".join(sorted(herb_list))
@@ -641,7 +641,7 @@ class MedDenScreen(Screens):
                 holding_pairs.extend(pair)
 
             # classic doesn't display herbs
-            if game.clan.game_mode == "classic":
+            if game.clan.game_mode == "classic" and game.selected_clan == game.clan:
                 herb_display = None
             else:
                 herb_display = "<br>".join(holding_pairs)
@@ -709,7 +709,7 @@ class MedDenScreen(Screens):
         if self.med_name:
             self.med_name.kill()
         self.back_button.kill()
-        if game.clan.game_mode != "classic":
+        if game.clan.game_mode != "classic" and game.selected_clan == game.clan:
             self.help_button.kill()
             self.cat_bg.kill()
             self.last_page.kill()

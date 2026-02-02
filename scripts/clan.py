@@ -667,6 +667,7 @@ class Clan:
                     reputation=other_clan.get("reputation"),
                     chosen_symbol=other_clan["chosen_symbol"],
                     biome=other_clan.get("biome"),
+                    camp_bg=other_clan.get("camp_bg"),
                     instructor=other_clan.get("instructor"),
                     leader=other_clan.get("leader"),
                     leader_lives=other_clan.get("leader_lives"),
@@ -1248,7 +1249,7 @@ class OtherClan:
     # Neutral to joiners: cunning, logical, stoic, mellow, bloodthirsty
     # Hostile to joiners: wary, proud
 
-    def __init__(self, name="", clancount="singleclan", biome=None, reputation=None, temperament="", chosen_symbol="", instructor=None, leader=None, leader_lives=9, leader_predecessors=0, deputy=None, deputy_predecessors=0, medicine_cat=None, med_cat_predecessors=0, ID: str=0):
+    def __init__(self, name="", clancount="singleclan", biome=None, camp_bg=None, reputation=None, temperament="", chosen_symbol="", instructor=None, leader=None, leader_lives=9, leader_predecessors=0, deputy=None, deputy_predecessors=0, medicine_cat=None, med_cat_predecessors=0, ID: str=0):
         self.group_ID = ID
         if not self.group_ID:
             self.group_ID = game.get_free_group_ID(CatGroup.OTHER_CLAN)
@@ -1263,6 +1264,10 @@ class OtherClan:
             self.biome = game.clan.biome if random() < 0.75 else choice(constants.BIOME_TYPES)
             while self.biome in ["Wetlands", "Desert", None]:
                 self.biome = choice(constants.BIOME_TYPES)
+        if camp_bg:
+            self.camp_bg = camp_bg
+        else:
+            self.camp_bg = f"camp{randint(1, 4) if self.biome in ("Forest", "Mountainous", "Beach") else randint(1, 3)}"
         # self.relations = relations or randint(8, 12)
         self.temperament = temperament or choice(self.temperament_list)
         if self.temperament not in self.temperament_list:
@@ -1365,6 +1370,7 @@ class OtherClan:
             "temperament" : self.temperament,
             "chosen_symbol": self.chosen_symbol,
             "biome": self.biome,
+            "camp_bg": self.camp_bg,
             "instructor": self.instructor.ID if self.instructor else None,
             "leader" : self.leader.ID if self.leader else None,
             "leader_lives" : self.leader_lives,

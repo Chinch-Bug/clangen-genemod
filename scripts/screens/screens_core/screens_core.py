@@ -97,10 +97,14 @@ def rebuild_top_menu_buttons():
     """
     global menu_buttons
 
+    game.selected_clan = game.clan
+
     if game.clan:
         mode = game.clan.game_mode
     else:
         mode = None
+
+    clancount  = game.clan.clancount if game.clan else "singleclan"
 
     button_names = [
         "events",
@@ -145,6 +149,7 @@ def rebuild_top_menu_buttons():
             manager=MANAGER,
             starting_height=6,
             anchors={"left": "left", "left_target": menu_buttons["events"]},
+            open_on_hover=True,
         )
         prev_element = menu_buttons["supplies"]
     else:
@@ -178,6 +183,7 @@ def rebuild_top_menu_buttons():
         starting_height=6,
         anchors={"left": "left", "left_target": menu_buttons["cats"]},
         disable_selection=False,
+        open_on_hover=True,
     )
     # menu_buttons["events"].change_layer(menu_buttons["dens"].get_starting_height() + 5)
 
@@ -238,24 +244,46 @@ def rebuild_top_menu_buttons():
     )
     del scale_rect
 
-    heading_rect = ui_scale(pygame.Rect((0, 0), (220, 35)))
-    heading_rect.bottomleft = ui_scale_offset((0, 0))  # yes, this is intentional.
-    menu_buttons["heading"] = UISurfaceImageButton(
-        heading_rect,
-        "",
-        get_button_dict(ButtonStyles.CLAN_HEADER, (220, 35)),
-        visible=False,
-        manager=MANAGER,
-        object_id="@buttonstyles_clan_header",
-        starting_height=5,
-        anchors={
-            "bottom": "bottom",
-            "bottom_target": menu_buttons["patrols"],
-            "centerx": "centerx",
-        },
-        tool_tip_text="screens.core.header_tooltip",
-    )
-    del heading_rect
+    if clancount == "singleclan":
+        heading_rect = ui_scale(pygame.Rect((0, 0), (220, 35)))
+        heading_rect.bottomleft = ui_scale_offset((0, 0))  # yes, this is intentional.
+        menu_buttons["heading"] = UISurfaceImageButton(
+            heading_rect,
+            "",
+            get_button_dict(ButtonStyles.CLAN_HEADER, (220, 35)),
+            visible=False,
+            manager=MANAGER,
+            object_id="@buttonstyles_clan_header",
+            starting_height=5,
+            anchors={
+                "bottom": "bottom",
+                "bottom_target": menu_buttons["patrols"],
+                "centerx": "centerx",
+            },
+            tool_tip_text="screens.core.header_tooltip",
+        )
+        del heading_rect
+    else:
+        clan_list = []
+        clan_list = [c.displayname + "Clan" for c in [game.clan] + game.clan.all_other_clans]
+        menu_buttons["heading"] = UIDropDown(
+            ui_scale(pygame.Rect((0, 25), (220, 35))),
+            "",
+            item_list=clan_list,
+            child_dimensions=(150, 30),
+            center_children=True,
+            parent_style=ButtonStyles.CLAN_HEADER,
+            visible=False,
+            manager=MANAGER,
+            object_id="@buttonstyles_clan_header",
+            starting_height=5,
+            anchors={
+                "top": "top",
+                "bottom_target": menu_buttons["patrols"],
+                "centerx": "centerx",
+            },
+            open_on_hover=True,
+        )
 
     rebuild_moon_n_season_indicator()
 
