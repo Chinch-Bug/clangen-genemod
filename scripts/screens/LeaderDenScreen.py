@@ -7,7 +7,7 @@ from pygame_gui.core import UIContainer
 
 from scripts.cat.cats import Cat
 from scripts.cat.sprites.display_sprites import update_sprite
-from scripts.cat.enums import CatRank, CatGroup, CatStanding
+from scripts.cat.enums import CatRank, CatGroup, CatStanding, CatAge
 from scripts.clan import OtherClan
 from scripts.game_structure import game
 from scripts.clan_package.settings.clan_settings import (
@@ -993,6 +993,7 @@ class LeaderDenScreen(Screens):
             i
             for i in Cat.all_cats.values()
             if not i.dead
+            and i.age not in [CatAge.KITTEN, CatAge.NEWBORN]
             and i.status.is_outsider
             and i.status.is_near(CatGroup.PLAYER_CLAN_ID)
             and (
