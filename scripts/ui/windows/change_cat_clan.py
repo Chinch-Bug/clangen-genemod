@@ -21,14 +21,14 @@ class ChangeCatClanWindow(GameWindow):
 
     def __init__(self, focus_cat):
         super().__init__(
-            ui_scale(pygame.Rect((250, 120), (300, 225))),
+            ui_scale(pygame.Rect((250, 120), (300, 275))),
             resizable=False,
         )
         self.set_blocking(True)
         self.the_cat = focus_cat
         self.selected = None
         self.save_button = UISurfaceImageButton(
-            ui_scale(pygame.Rect((80, 180), (139, 30))),
+            ui_scale(pygame.Rect((80, 230), (139, 30))),
             "windows.change_clan",
             get_button_dict(ButtonStyles.SQUOVAL, (139, 30)),
             object_id="@buttonstyles_squoval",
@@ -52,8 +52,8 @@ class ChangeCatClanWindow(GameWindow):
             if self.the_cat.status.group_ID == clan.group_ID:
                 continue
             self.texts[clan.displayname] = pygame_gui.elements.UITextBox(
-                clan.displayname + "clan",
-                ui_scale(pygame.Rect(107, n * 27 + 38, -1, 25)),
+                clan.displayname + "Clan",
+                ui_scale(pygame.Rect(107, n * 30 + 35, -1, 30)),
                 object_id="#text_box_30_horizleft_pad_0_8",
                 container=self,
             )
@@ -71,7 +71,7 @@ class ChangeCatClanWindow(GameWindow):
             box_type = "@checked_checkbox" if self.selected == clan else "@unchecked_checkbox"
 
             self.checkboxes[clan.displayname] = UIImageButton(
-                ui_scale(pygame.Rect((75, n * 27 + 35), (34, 34))),
+                ui_scale(pygame.Rect((75, n * 30 + 35), (34, 34))),
                 "",
                 container=self,
                 object_id=box_type,
@@ -81,6 +81,9 @@ class ChangeCatClanWindow(GameWindow):
     def process_event(self, event):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
             if event.ui_element == self.save_button:
+                rank = self.the_cat.status.get_rank_from_age(self.the_cat.age)
+                if self.the_cat.status.rank != rank:
+                    self.the_cat.rank_change(new_rank=CatRank(rank), resort=True)
                 if self.the_cat.status.group:
                     self.the_cat.backstory = "otherclan1"
                     if self.the_cat.status.rank == CatRank.LEADER:
