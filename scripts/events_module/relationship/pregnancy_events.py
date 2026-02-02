@@ -965,7 +965,7 @@ class Pregnancy_Events:
             if not xor('Y' in cat.genotype.sexgene, 'Y' in second_parent[0].genotype.sexgene):
                 if same_sex_birth:
                     return True, False, second_parent
-                elif surrogates:
+                elif surrogates and second_parent[0].ID in cat.mate:
                     return True, False, ["Surrogate"] + second_parent
                 elif not same_sex_adoption:
                     return False, False, second_parent
@@ -990,7 +990,7 @@ class Pregnancy_Events:
                     second_parent_copy.append(x)
             
             if len(second_parent_copy) < 1:
-                if surrogates:
+                if surrogates and second_parent[0].ID in cat.mate:
                     return True, False, ["Surrogate"] + second_parent
                 elif same_sex_adoption:
                     return True, True, second_parent
