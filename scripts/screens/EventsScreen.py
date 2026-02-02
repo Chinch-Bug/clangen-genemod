@@ -771,7 +771,7 @@ class EventsScreen(Screens):
 
         self.all_events = [
             x for x in game.cur_events_list if "interaction" not in x.types 
-            # and (not x.clan or x.clan == self.current_clan) 
+            and (not x.clan or x.clan == self.current_clan) 
         ]
         self.ceremony_events = [
             x for x in game.cur_events_list if "ceremony" in x.types 
