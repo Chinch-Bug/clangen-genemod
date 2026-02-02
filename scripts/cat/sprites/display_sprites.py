@@ -243,6 +243,10 @@ def generate_sprite(
                         sprites.sprites["goldengradient" + cat_sprite], (0, 0))
 
                     golden_gradient.blit(golden_gradient2, (0, 0))
+                    if 'chinchilla' in whichbase and phenotype.wbtype != "chinchilla":
+                        golden_gradient2.set_alpha(100)
+                        golden_gradient.blit(golden_gradient2, (0, 0))
+                        golden_gradient2.set_alpha(255)
                     if 'shaded' in whichbase:
                         golden_gradient.blit(golden_gradient2, (0, 0))
                         golden_gradient.blit(golden_gradient2, (0, 0))

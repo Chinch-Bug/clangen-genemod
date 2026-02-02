@@ -587,13 +587,13 @@ class Screens:
             return {
                 "heading": scripts.screens.screens_core.screens_core.menu_buttons[
                     "heading"
-                ].text
+                ].parent_button.text
             }
         except AttributeError:
             return {
                 "heading": scripts.screens.screens_core.screens_core.menu_buttons[
                     "heading"
-                ].parent_text
+                ].text
             }
 
     def display_change_load(self, variable_dict: Dict):
