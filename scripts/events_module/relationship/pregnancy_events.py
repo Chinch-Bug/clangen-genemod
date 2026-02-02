@@ -1642,8 +1642,10 @@ class Pregnancy_Events:
             elif cat:
                 relationships_to_update = [cat.ID]
                 # other parent only knows if they're in the same group
-                if other_cat and other_cat.status.group == cat.status.group:
-                    relationships_to_update.append(other_cat.ID)
+                if other_cat:
+                    for o_cat in other_cat:
+                        if o_cat.status.group == cat.status.group:
+                            relationships_to_update.append(o_cat.ID)
 
             if relationships_to_update:
                 for cat_id in relationships_to_update:
