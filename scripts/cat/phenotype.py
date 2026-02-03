@@ -909,13 +909,13 @@ class Phenotype(Genotype):
             else:
                 maincolour = 'low'
         if(genes.dilute[0] == "d" or (genes.specialred == 'cameo' and genes.silver[0] == 'I') or self.merlepattern):
-            if(genes.pinkdilute[0] == "dp"):
+            if (genes.pinkdilute[0] == "dp") or (genes.dilute[0] == "d" and genes.specialred == 'cameo' and genes.silver[0] == 'I'):
                 if genes.dilutemd[0] == "Dm":
                     colour = "ivory-apricot"
                 else:
                     colour = "ivory"
             else:
-                if genes.dilutemd[0] == "Dm" and not(genes.specialred == 'cameo' or self.merlepattern):
+                if genes.dilutemd[0] == "Dm" and not(genes.dilute[0] == "D" and (genes.specialred == 'cameo' or self.merlepattern)):
                     colour = "apricot"
                 else:
                     colour = "cream"
