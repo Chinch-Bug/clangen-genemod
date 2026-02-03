@@ -1637,7 +1637,7 @@ class Pregnancy_Events:
             relationships_to_update = []
             # if kits are in a clan, the whole clan gets to know
             if cat and cat.status.group.is_any_clan_group():
-                relationships_to_update = clan.clan_cats
+                relationships_to_update = game.clan.clan_cats
             # if they aren't, then they only know parents, sibling rels will be added later
             elif cat:
                 relationships_to_update = [cat.ID]
