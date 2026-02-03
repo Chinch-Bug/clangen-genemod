@@ -45,7 +45,7 @@ jobs:
             itch_channel: win64_10
             api_artifact_name: win10+
             
-          - os: macos-13
+          - os: macos-15
             artifact_name: Genemod_macOS64.dmg
             python_version: "3.11"
             python_arch: "x64"
@@ -174,7 +174,7 @@ jobs:
       - name: Upload artifact to API
         if: ${{ env.update_api_push_token != '' && (github.ref == 'refs/heads/development' || startsWith(github.ref, 'refs/tags/')) }}
         run: |
-          if [[ "${{ matrix.os }}" == "macos-13" ]]; then
+          if [[ "${{ matrix.os }}" == "macos-15" ]]; then
             zip ${{ matrix.artifact_name }}.zip ./${{ matrix.artifact_name }}
             gpg --output ${{ matrix.artifact_name }}.zip.sig --detach-sig -a ${{ matrix.artifact_name }}.zip
             BUNDLE_NAME="${{ matrix.artifact_name }}.zip"
