@@ -1636,7 +1636,7 @@ class Pregnancy_Events:
             # create and update relationships
             relationships_to_update = []
             # if kits are in a clan, the whole clan gets to know
-            if cat and cat.status.alive_in_player_clan:
+            if cat and cat.status.group.is_any_clan_group():
                 relationships_to_update = clan.clan_cats
             # if they aren't, then they only know parents, sibling rels will be added later
             elif cat:
@@ -1652,7 +1652,7 @@ class Pregnancy_Events:
                     if cat_id == kit.ID:
                         continue
                     the_cat = Cat.all_cats.get(cat_id)
-                    if the_cat.dead:
+                    if not the_cat or the_cat.dead or the_cat.status.group_ID != cat.status.group_ID:
                         continue
                     if the_cat.ID in kit.get_parents():
                         parent_to_kit = constants.CONFIG["new_cat"]["parent_buff"][
