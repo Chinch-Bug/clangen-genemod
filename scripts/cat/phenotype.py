@@ -940,7 +940,7 @@ class Phenotype(Genotype):
             rufousing = genes.ruftype
 
         if special == "nosilver":
-            banding == "medium"
+            banding = "medium"
         elif genes.corin[0] == "sg" or genes.wbtype == "chinchilla" or (genes.corin[0] != "N" and genes.wbtype == "shaded"):
             banding = "chinchilla"
         elif genes.corin[0] == "sh" or genes.corin[0] == "fg" or genes.wbtype == "shaded":

@@ -289,7 +289,7 @@ def generate_sprite(
                             stripecolour, whichbase, coloursurface, special="no_shading", preset_pattern=pattern[:1])
                         middle.set_alpha(204)
                         stripebase.blit(middle, (0, 0))
-                elif preset_pattern:
+                elif preset_pattern and (len(preset_pattern) > 1 or special == "no_shading"):
                     return stripebase
 
                 if not special and 'solid' not in whichbase:
