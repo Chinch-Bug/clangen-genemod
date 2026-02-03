@@ -598,6 +598,9 @@ class Phenotype(Genotype):
                     tail = "macktail"
             all_patterns.append(tail)
 
+            if self.wbtype == "chinchilla" or self.corin[0] == "sg":
+                all_patterns.insert(0, "agouti")
+
         return all_patterns
   
     def ChooseTortiePattern(self, spec = None):
@@ -936,7 +939,9 @@ class Phenotype(Genotype):
         else:
             rufousing = genes.ruftype
 
-        if genes.corin[0] == "sg" or genes.wbtype == "chinchilla" or (genes.corin[0] != "N" and genes.wbtype == "shaded"):
+        if special == "nosilver":
+            banding == "medium"
+        elif genes.corin[0] == "sg" or genes.wbtype == "chinchilla" or (genes.corin[0] != "N" and genes.wbtype == "shaded"):
             banding = "chinchilla"
         elif genes.corin[0] == "sh" or genes.corin[0] == "fg" or genes.wbtype == "shaded":
             banding = "shaded"

@@ -114,7 +114,7 @@ class Patrol:
                 if not game.clan.override_biome
                 else game.clan.override_biome
             ).casefold(),
-            str(game.clan.camp_bg).casefold(),
+            str(self.clan.camp_bg).casefold(),
             patrol_type,
             get_clan_setting("disasters"),
         )

@@ -91,8 +91,8 @@ class ClanScreen(Screens):
         self.show_mute_buttons()
         self.update_camp_bg()
         switch_set_value(Switch.cat, None)
-        if game.clan.biome + game.clan.camp_bg in constants.LAYOUTS:
-            self.layout = constants.LAYOUTS[game.clan.biome + game.clan.camp_bg]
+        if game.selected_clan.biome + game.selected_clan.camp_bg in constants.LAYOUTS:
+            self.layout = constants.LAYOUTS[game.selected_clan.biome + game.selected_clan.camp_bg]
         else:
             self.layout = constants.LAYOUTS["default"]
 

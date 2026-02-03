@@ -1004,7 +1004,7 @@ def handle_lost_cats_return(predetermined_cat_IDs: list = None, clan = game.clan
         if additional_cats:
             text += i18n.t("hardcoded.event_lost_kits", count=len(additional_cats))
 
-        text = event_text_adjust(Cat, text, main_cat=lost_cat, clan=clan.group_ID)
+        text = event_text_adjust(Cat, text, main_cat=lost_cat, clan=clan)
 
         game.cur_events_list.append(Single_Event(text, "misc", cat_IDs, clan=clan.group_ID))
 

@@ -1846,7 +1846,7 @@ class Cat:
         )
 
         biome = self.status.fetch_clan_object(game.clan).biome if game.clan else switch_get_value(Switch.biome)
-        camp = switch_get_value(Switch.camp_bg)
+        camp = self.status.fetch_clan_object(game.clan).camp_bg if game.clan else switch_get_value(Switch.camp_bg)
         try:
             season = game.clan.current_season
         except Exception:
