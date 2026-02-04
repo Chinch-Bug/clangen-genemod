@@ -268,7 +268,7 @@ def rebuild_top_menu_buttons():
         heading_rect = ui_scale(pygame.Rect((0, 0), (220, 35)))
         heading_rect.bottom = menu_buttons["dens"].relative_rect.top
         heading_rect.bottom -= (ui_scale_offset((0, menu_buttons["dens"].relative_rect.top))[1]-menu_buttons["dens"].relative_rect.top)
-        heading_rect.bottom += int((menu_buttons["dens"].rect.top-menu_buttons["dens"].relative_rect.top)/2)
+        heading_rect.bottom += (menu_buttons["dens"].rect.top-menu_buttons["dens"].relative_rect.top)
         menu_buttons["heading"] = UIDropDown(
             heading_rect,
             "",
@@ -281,13 +281,12 @@ def rebuild_top_menu_buttons():
             object_id="@buttonstyles_clan_header",
             starting_height=1,
             anchors={
-                "top": "top",
                 "centerx": "centerx",
             },
             open_on_hover=True
         )
 
-        menu_buttons["heading"].change_layer(10)
+        menu_buttons["heading"].change_layer(9)
         
     rebuild_moon_n_season_indicator()
 
@@ -355,6 +354,8 @@ def rebuild_moon_n_season_indicator(change_moon: bool = False, visible: bool = F
         starting_height=5,
     )
     menu_buttons["season_indicator"].disable()
+
+    menu_buttons["season_indicator"].change_layer(10)
 
 
 def load_moon_phases():
