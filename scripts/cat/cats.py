@@ -261,8 +261,8 @@ class Cat:
                     par1.Generator(kittypet=kittypet)
                     par2.Generator(kittypet=kittypet)
 
-                self.phenotype.KitGenerator(par1, par2)
-                self.chimerapheno.KitGenerator(par1, par2)
+                self.phenotype.KitGenerator(par1, par2, gender=self.gender)
+                self.chimerapheno.KitGenerator(par1, par2, gender=self.gender)
             
             if self.phenotype.munch[1] == 'Mk':
                 self.phenotype.munch[1] = "mk"
