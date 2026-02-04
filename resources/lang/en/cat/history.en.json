@@ -20,6 +20,7 @@
         "one": "%{cardinal} life:",
         "many": "%{cardinal} lives:"
       },
+      "leader_death_many_lives": "%{first_cardinal} through %{last_cardinal} lives:",
       "leader_lost_lives": {
         "one": "lost a life.",
         "many": "lost %{count} lives."
