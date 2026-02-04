@@ -378,7 +378,7 @@
 		"misc": { "text_horiz_alignment": "left", "text_vert_alignment": "bottom" }
 	},
 	"#text_box_24_horizcenter": {
-		"prototype": "#text_box",
+		"prototype": "text_box",
 		"font": { "size": "12", "name": "notosans" },
 		"misc": { "text_horiz_alignment": "center" }
 	},
@@ -2267,6 +2267,30 @@
 		}
 	},
 	"#allegiance": {
+		"prototype": "#text_box_30_horizleft",
+		"colours": {
+			"normal_bg": "#00000000",
+			"hovered_bg": "#00000000",
+			"disabled_bg": "#00000000",
+			"selected_bg": "#00000000",
+			"active_bg": "#00000000",
+			"normal_text": "#EFE5CE",
+			"hovered_text": "#EFE5CE",
+			"selected_text": "#EFE5CE",
+			"disabled_text": "#EFE5CE",
+			"link_text": "#00000000",
+			"link_hover": "#00000000",
+			"link_selected": "#00000000",
+			"text_shadow": "#00000000",
+			"normal_border": "#00000000",
+			"hovered_border": "#00000000",
+			"disabled_border": "#00000000",
+			"active_border": "#00000000",
+			"selected_border": "#00000000",
+			"normal_text_shadow": "#00000000"
+		}
+	},
+	"#allegiance_dark": {
 		"prototype": "#text_box_30_horizleft",
 		"colours": {
 			"normal_bg": "#00000000",

@@ -292,6 +292,7 @@ class ClanScreen(Screens):
         # reset save status
         switch_set_value(Switch.saved_clan, False)
         Screens.menu_buttons["back_to_camp"].show()
+        game.selected_clan = game.clan
 
     def update_camp_bg(self):
         light_dark = "dark" if xor(game_setting_get("dark mode"), game_setting_get("flip camp mode")) else "light"
