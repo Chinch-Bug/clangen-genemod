@@ -1070,7 +1070,7 @@ class Genotype:
             pap = par2.sexgene
         
 
-        while not self.sexgene[0] or (gender == "masc" & self.sex != "tom") or (gender == "fem" & self.sex != "molly"):
+        while not self.sexgene[0] or (gender == "masc" and self.sex != "tom") or (gender == "fem" and self.sex != "molly"):
             if self.odds['X monosomy'] > 0 and randint(1, self.odds['X monosomy']) == 1:
                 self.sexgene = [choice(mum)]
                 self.sex = "molly"
