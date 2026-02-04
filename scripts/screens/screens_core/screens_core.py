@@ -266,9 +266,10 @@ def rebuild_top_menu_buttons():
     else:
         clan_list = [c.displayname +"Clan" for c in [game.clan] + game.clan.all_other_clans]
         heading_rect = ui_scale(pygame.Rect((0, 0), (220, 35)))
-        heading_rect.bottom = menu_buttons["dens"].relative_rect.top
-        heading_rect.bottom -= (ui_scale_offset((0, menu_buttons["dens"].relative_rect.top))[1]-menu_buttons["dens"].relative_rect.top)
-        heading_rect.bottom += (menu_buttons["dens"].rect.top-menu_buttons["dens"].relative_rect.top)
+        heading_rect.top = ui_scale_offset((0, 25))[1]
+        # heading_rect.bottom = menu_buttons["dens"].relative_rect.top
+        heading_rect.top -= (ui_scale_offset((0, menu_buttons["dens"].relative_rect.top))[1]-menu_buttons["dens"].relative_rect.top)//2
+        # heading_rect.top -= (menu_buttons["dens"].rect.top-menu_buttons["dens"].relative_rect.top)
         menu_buttons["heading"] = UIDropDown(
             heading_rect,
             "",

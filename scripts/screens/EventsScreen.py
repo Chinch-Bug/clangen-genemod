@@ -291,6 +291,7 @@ class EventsScreen(Screens):
 
     def screen_switches(self):
         super().screen_switches()
+        game.selected_clan = game.clan
         
         # On first open, update display events list
         self.show_mute_buttons()

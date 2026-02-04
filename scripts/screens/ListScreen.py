@@ -266,6 +266,7 @@ class ListScreen(Screens):
     def screen_switches(self):
         super().screen_switches()
         self.show_mute_buttons()
+        game.selected_clan = game.clan
         self.clan_name = game.clan.displayname + "Clan"
 
         if not game.last_list_forProfile:
