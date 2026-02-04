@@ -935,7 +935,7 @@ class Genotype:
         self.PolyEval()
         self.EyeColourFinder()
 
-    def KitGenerator(self, par1, par2=None, par3=None, chimera=False):
+    def KitGenerator(self, par1, par2=None, par3=None, chimera=False, gender=None):
         try:
             if par1.passes == 1 or not par1.chimerapheno:
                 par1 = par1.phenotype
@@ -1070,40 +1070,41 @@ class Genotype:
             pap = par2.sexgene
         
 
-        if self.odds['X monosomy'] > 0 and randint(1, self.odds['X monosomy']) == 1:
-            self.sexgene = [choice(mum)]
-            self.sex = "molly"
-        elif self.odds['XXX/XXY'] > 0 and randint(1, self.odds['XXX/XXY']) == 1 and (len(mum) > 1 or len(pap) > 1):
-            self.sexgene = ["", "", ""]
-            if random() < 0.5 and len(pap) > 1:
-                self.sexgene[0] = choice(mum)
-                if len(pap) < 3:
-                    self.sexgene[1] = pap[0]
-                    self.sexgene[2] = pap[1]
-                else:
-                    a = randint(0, len(pap))
-                    b = randint(0, len(pap))
-                    while b == a:
+        while not self.sexgene[0] or (gender == "masc" & self.sex != "tom") or (gender == "fem" & self.sex != "molly"):
+            if self.odds['X monosomy'] > 0 and randint(1, self.odds['X monosomy']) == 1:
+                self.sexgene = [choice(mum)]
+                self.sex = "molly"
+            elif self.odds['XXX/XXY'] > 0 and randint(1, self.odds['XXX/XXY']) == 1 and (len(mum) > 1 or len(pap) > 1):
+                self.sexgene = ["", "", ""]
+                if random() < 0.5 and len(pap) > 1:
+                    self.sexgene[0] = choice(mum)
+                    if len(pap) < 3:
+                        self.sexgene[1] = pap[0]
+                        self.sexgene[2] = pap[1]
+                    else:
+                        a = randint(0, len(pap))
                         b = randint(0, len(pap))
-                    self.sexgene[1] = pap[a]
-                    self.sexgene[2] = pap[b]
-            else:
-                if len(mum) < 3:
-                    self.sexgene[0] = mum[0]
-                    self.sexgene[1] = mum[1]
+                        while b == a:
+                            b = randint(0, len(pap))
+                        self.sexgene[1] = pap[a]
+                        self.sexgene[2] = pap[b]
                 else:
-                    a = randint(0, 2)
-                    b = randint(0, 2)
-                    while b == a:
+                    if len(mum) < 3:
+                        self.sexgene[0] = mum[0]
+                        self.sexgene[1] = mum[1]
+                    else:
+                        a = randint(0, 2)
                         b = randint(0, 2)
-                    
-                    self.sexgene[0] = mum[a]
-                    self.sexgene[1] = mum[b]
-                self.sexgene[2] = choice(pap)
-        else:
-            self.sexgene = [choice(mum), choice(pap)]
-        
-        self.sex = "tom" if "Y" in self.sexgene else "molly"
+                        while b == a:
+                            b = randint(0, 2)
+                        
+                        self.sexgene[0] = mum[a]
+                        self.sexgene[1] = mum[b]
+                    self.sexgene[2] = choice(pap)
+            else:
+                self.sexgene = [choice(mum), choice(pap)]
+            
+            self.sex = "tom" if "Y" in self.sexgene else "molly"
         
         if self.odds['brindled_bicolour'] > 0 and randint(1, self.odds['brindled_bicolour'])==1:
             self.brindledbi = True 
