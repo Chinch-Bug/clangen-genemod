@@ -286,6 +286,8 @@ def rebuild_top_menu_buttons():
             },
             open_on_hover=True
         )
+
+        menu_buttons["heading"].change_layer(10)
         
     rebuild_moon_n_season_indicator()
 
