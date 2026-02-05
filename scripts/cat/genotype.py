@@ -366,7 +366,7 @@ class Genotype:
                 if self.april_fools[key][0].islower() and self.april_fools[key][1].islower():
                     del self.april_fools[key]
             if self.april_fools["rainbow_eyes"][0] == "NoDRE" and self.april_fools["rainbow_eyes"][1] == "NoDRE":
-                del self.april_fools[key]
+                del self.april_fools["rainbow_eyes"]
 
     def CommonGen(self, special=None):
 
