@@ -2260,7 +2260,7 @@ class Cat:
             also_got=injury["also_got"],
             cause_permanent=injury["cause_permanent"],
             event_triggered=event_triggered,
-            clan=self.status.group_ID
+            clan=self.status.group_ID,
             potential_scars=potential_scars,
         )
 
