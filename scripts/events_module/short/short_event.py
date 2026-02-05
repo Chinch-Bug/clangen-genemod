@@ -375,7 +375,7 @@ class ShortEvent:
                     self.text + " " + self.additional_event_text,
                     self.types,
                     self.all_involved_cat_ids,
-                    clan=clan.group_ID
+                    clan=self.main_cat.status.group_ID
                 )
             )
         if second_clan and "r_c" not in self.exclude_involved:
@@ -384,7 +384,7 @@ class ShortEvent:
                     self.text + " " + self.additional_event_text,
                     self.types,
                     self.all_involved_cat_ids,
-                    clan=second_clan.group_ID
+                    clan=self.random_cat.status.group_ID
                 )
             )
 
