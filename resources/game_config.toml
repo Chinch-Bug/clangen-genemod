@@ -552,6 +552,9 @@ dev_tools = false
   # base 1/chance a disliked cat will be murdered
   base_murder_kill_chance = 80
 
+  # base 1/chance a disliked cat will be murdered when not in the same Clan
+  base_crossclan_murder_kill_chance = 130
+
   # age cats will start dying of old age based on old_age_death_curve
   old_age_death_start = 150
 
