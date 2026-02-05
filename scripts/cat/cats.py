@@ -1331,7 +1331,7 @@ class Cat:
         return genelist
 
     def describe_eyes(self):
-        if is_today(SpecialDate.APRIL_FOOLS) and phenotype.april_fools.get("rainbow_eyes", ["NoDRE"])[0] != "NoDRE":
+        if is_today(SpecialDate.APRIL_FOOLS) and self.phenotype.april_fools.get("rainbow_eyes", ["NoDRE"])[0] != "NoDRE":
             return "rainbow"
         if(self.phenotype.lefteye == self.phenotype.righteye):
             colour = self.phenotype.lefteye.lower()
