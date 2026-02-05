@@ -188,6 +188,7 @@ class Injury:
         herbs=None,
         event_triggered=False,
         clan: CatGroup = CatGroup.PLAYER_CLAN_ID,
+        potential_scars=None,
     ):
         self.name = name
         self.severity = severity
@@ -201,6 +202,7 @@ class Injury:
         self.herbs = herbs if herbs else []
         self.new = event_triggered
         self.clan = clan
+        self.potential_scars = potential_scars
 
         self.current_duration = duration
         self.current_mortality = mortality

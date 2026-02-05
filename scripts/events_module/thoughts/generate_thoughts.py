@@ -344,7 +344,7 @@ def _constraints_fulfilled(
             revealed_conditions = [
                 value
                 for value in main_cat.permanent_condition.values()
-                if value["moons_until"] == -2
+                if value["moons_until"] < 1
             ]
             if not revealed_conditions:
                 return False
@@ -376,7 +376,7 @@ def _constraints_fulfilled(
             revealed_conditions = [
                 value
                 for value in random_cat.permanent_condition.values()
-                if value["moons_until"] == -2
+                if value["moons_until"] < 1
             ]
             if not revealed_conditions:
                 return False

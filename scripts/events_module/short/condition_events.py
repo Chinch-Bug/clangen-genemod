@@ -1002,7 +1002,7 @@ class Condition_Events:
                 if cat.permanent_condition[condition]["severity"] not in (
                     "major",
                     "severe",
-                ) or cat.permanent_condition[condition]["moons_until"] != -2:
+                ) or (cat.permanent_condition[condition]["born_with"] and cat.permanent_condition[condition]["moons_until"] != -2):
                     continue
 
                 if cat.permanent_condition[condition]["severity"] == "severe":

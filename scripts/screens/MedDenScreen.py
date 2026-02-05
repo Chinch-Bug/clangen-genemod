@@ -552,7 +552,7 @@ class MedDenScreen(Screens):
                 )
             if cat.permanent_condition:
                 for condition in cat.permanent_condition:
-                    if cat.permanent_condition[condition]["moons_until"] == -2:
+                    if cat.permanent_condition[condition]["moons_until"] < 1:
                         condition_list.extend(
                             [
                                 i18n.t(f"conditions.permanent_conditions.{permcond}")
