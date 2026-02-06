@@ -505,6 +505,15 @@ class Status:
             new_rank=CatRank.LONER, standing_with_past_group=CatStanding.EXILED
         )
 
+    def leave_group(self, new_social_status: CatSocial):
+        """
+        Removes cat from previous group and sets standing with that group to Known.
+        :param new_social_status: Indicates what social category the cat now belongs to (i.e. they've been taken by
+        Twolegs and are now a kittypet)
+        """
+        rank = CatRank(new_social_status)
+        self._modify_group(rank, standing_with_past_group=CatStanding.KNOWN)
+
     def add_to_group(
         self,
         new_group_ID: str,
