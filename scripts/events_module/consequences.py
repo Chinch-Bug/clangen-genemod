@@ -646,7 +646,7 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
     all_clan_cats = []
     if "exiled" in attribute_list:
         all_clan_cats = [i for i in Cat.all_cats.values(
-        ) if i.status.is_exiled() and i.status.is_exiled() != clan.group_ID]
+        ) if i.status.is_exiled() and i.status.is_exiled() != clan.group_ID and not i.dead]
     if not all_clan_cats:
         all_clan_cats = [i for i in Cat.all_cats.values(
         ) if i.status.group_ID == other_clan.group_ID]
