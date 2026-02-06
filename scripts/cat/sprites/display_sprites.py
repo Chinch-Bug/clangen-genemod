@@ -1419,6 +1419,14 @@ def generate_sprite(
         blendmode = pygame.BLEND_RGBA_MIN
 
         gensprite = new_sprite
+        if cat.phenotype.bobtailnr > 0:
+            gensprite.blit(_recolor_lineart(
+                sprites.sprites['bobtail' +
+                                str(cat.phenotype.bobtailnr) + cat_sprite],
+                            lineart_color,
+                            gradient_surface,
+                        ), (0, 0))
+        gensprite.set_colorkey((0, 0, 255))
         new_sprite = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
         new_sprite.blit(gensprite, (0, 0))
 
@@ -1460,15 +1468,6 @@ def generate_sprite(
                 else:
                     new_sprite.blit(sprites.sprites['aprilfoolslineartdead' + cat_sprite], (0, 0))
 
-        if cat.phenotype.bobtailnr > 0:
-            new_sprite.blit(_recolor_lineart(
-                sprites.sprites['bobtail' +
-                                str(cat.phenotype.bobtailnr) + cat_sprite],
-                            lineart_color,
-                            gradient_surface,
-                        ), (0, 0))
-        new_sprite.set_colorkey((0, 0, 255))
-        
         # draw accessories
         from scripts.cat.pelts import Pelt
 
