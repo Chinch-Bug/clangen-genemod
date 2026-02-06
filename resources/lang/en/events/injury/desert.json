@@ -2520,10 +2520,10 @@
                 "deputy",
                 "leader"
             ],
-            "not_skill": [
-                "CLEVER,2",
-                "INSIGHTFUL,2",
-                "FIGHTER,2"
+            "skill": [
+                "-CLEVER,2",
+                "-INSIGHTFUL,2",
+                "-FIGHTER,2"
             ]
         },
         "injury": [
@@ -2611,8 +2611,8 @@
                 "deputy",
                 "leader"
             ],
-            "not_skill": [
-                "FIGHTER,3"
+            "skill": [
+                "-FIGHTER,3"
             ],
             "trait": [
                 "compassionate",
@@ -2749,8 +2749,8 @@
                 "deputy",
                 "leader"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "trait": [
                 "adventurous",
@@ -2802,8 +2802,8 @@
                 "deputy",
                 "leader"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "trait": [
                 "compassionate",
@@ -2883,8 +2883,8 @@
                 "apprentice",
                 "warrior"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ]
         },
         "r_c": {
@@ -3925,12 +3925,12 @@
             "status": [
                 "any"
             ],
-            "not_trait": [
-                "careful",
-                "cunning",
-                "flamboyant",
-                "thoughtful",
-                "wise"
+            "trait": [
+                "-careful",
+                "-cunning",
+                "-flamboyant",
+                "-thoughtful",
+                "-wise"
             ]
         },
         "injury": [
@@ -3965,8 +3965,8 @@
             "status": [
                 "any"
             ],
-            "not_skill": [
-                "CAMP,2"
+            "skill": [
+                "-CAMP,2"
             ]
         },
         "injury": [
@@ -4114,8 +4114,8 @@
             "status": [
                 "any"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ]
         },
         "r_c": {
@@ -4211,8 +4211,8 @@
                 "adult",
                 "senior adult"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ]
         },
         "injury": [
@@ -4723,15 +4723,15 @@
             "status": [
                 "any"
             ],
-            "not_trait": [
-                "calm",
-                "careful",
-                "gloomy",
-                "grumpy",
-                "nervous",
-                "strict",
-                "thoughtful",
-                "wise"
+            "trait": [
+                "-calm",
+                "-careful",
+                "-gloomy",
+                "-grumpy",
+                "-nervous",
+                "-strict",
+                "-thoughtful",
+                "-wise"
             ]
         },
         "injury": [
@@ -4833,10 +4833,10 @@
                 "leader",
                 "deputy"
             ],
-            "not_trait": [
-                "careful",
-                "nervous",
-                "cunning"
+            "trait": [
+                "-careful",
+                "-nervous",
+                "-cunning"
             ]
         },
         "injury": [

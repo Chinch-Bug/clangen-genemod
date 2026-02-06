@@ -15,24 +15,13 @@
         "event_text": "m_c was murdered. The culprit is unknown.",
         "m_c": {
             "status": [
-                "kitten",
-                "apprentice",
-                "warrior",
-                "deputy",
-                "healer apprentice",
-                "healer",
-                "mediator apprentice",
-                "mediator",
-                "elder"
+                "-leader"
             ],
             "dies": true
         },
         "r_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
+                "-kitten"
             ],
             "status": [
                 "any"
@@ -92,24 +81,13 @@
                 "any"
             ],
             "status": [
-                "kitten",
-                "apprentice",
-                "warrior",
-                "deputy",
-                "healer apprentice",
-                "healer",
-                "mediator apprentice",
-                "mediator",
-                "elder"
+                "-leader"
             ],
             "dies": true
         },
         "r_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
+                "-kitten"
             ],
             "skill": [
                 "FIGHTER,2"
@@ -166,27 +144,16 @@
                 "any"
             ],
             "status": [
-                "kitten",
-                "apprentice",
-                "warrior",
-                "deputy",
-                "healer apprentice",
-                "healer",
-                "mediator apprentice",
-                "mediator",
-                "elder"
+                "-leader"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "dies": true
         },
         "r_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
+                "-kitten"
             ],
             "skill": [
                 "FIGHTER,2"
@@ -240,27 +207,16 @@
         "event_text": "m_c was murdered by r_c in cold blood. r_c has made the death look accidental.",
         "m_c": {
             "status": [
-                "kitten",
-                "apprentice",
-                "warrior",
-                "deputy",
-                "healer apprentice",
-                "healer",
-                "mediator apprentice",
-                "mediator",
-                "elder"
+                "-leader"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "dies": true
         },
         "r_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
+                "-kitten"
             ],
             "status": [
                 "any"
@@ -318,18 +274,10 @@
         "event_text": "r_c killed m_c by feeding {PRONOUN/m_c/object} deathberries.",
         "m_c": {
             "status": [
-                "kitten",
-                "apprentice",
-                "warrior",
-                "deputy",
-                "healer apprentice",
-                "healer",
-                "mediator apprentice",
-                "mediator",
-                "elder"
+                "-leader"
             ],
-            "not_skill": [
-                "CLEVER,2"
+            "skill": [
+                "-CLEVER,2"
             ],
             "dies": true
         },
@@ -393,18 +341,10 @@
                 "any"
             ],
             "status": [
-                "kitten",
-                "apprentice",
-                "warrior",
-                "deputy",
-                "healer apprentice",
-                "healer",
-                "mediator apprentice",
-                "mediator",
-                "elder"
+                "-leader"
             ],
-            "not_skill": [
-                "CLEVER,2"
+            "skill": [
+                "-CLEVER,2"
             ],
             "dies": true
         },
@@ -468,18 +408,10 @@
                 "any"
             ],
             "status": [
-                "kitten",
-                "apprentice",
-                "warrior",
-                "deputy",
-                "healer apprentice",
-                "healer",
-                "mediator apprentice",
-                "mediator",
-                "elder"
+                "-leader"
             ],
-            "not_skill": [
-                "CLEVER,2"
+            "skill": [
+                "-CLEVER,2"
             ],
             "dies": true
         },
@@ -545,18 +477,10 @@
                 "any"
             ],
             "status": [
-                "kitten",
-                "apprentice",
-                "warrior",
-                "deputy",
-                "healer apprentice",
-                "healer",
-                "mediator apprentice",
-                "mediator",
-                "elder"
+                "-leader"
             ],
-            "not_skill": [
-                "CLEVER,2"
+            "skill": [
+                "-CLEVER,2"
             ],
             "dies": true
         },
@@ -620,18 +544,10 @@
                 "any"
             ],
             "status": [
-                "kitten",
-                "apprentice",
-                "warrior",
-                "deputy",
-                "healer apprentice",
-                "healer",
-                "mediator apprentice",
-                "mediator",
-                "elder"
+                "-leader"
             ],
-            "not_skill": [
-                "CLEVER,2"
+            "skill": [
+                "-CLEVER,2"
             ],
             "dies": true
         },
@@ -689,13 +605,10 @@
         "event_text": "m_c was found dead near a fox den.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
+                "-kitten"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "trait": [
                 "daring",
@@ -730,10 +643,7 @@
         "event_text": "m_c was bitten by a snake and succumbed to the venom.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
+                "-kitten"
             ],
             "dies": true
         },
@@ -758,11 +668,7 @@
         "event_text": "m_c saved r_c from a snake but was bitten in the process. The venom killed {PRONOUN/m_c/object}.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "status": [
                 "any"
@@ -854,8 +760,8 @@
         "frequency": 4,
         "event_text": "m_c was found dead near the o_c_n border.",
         "m_c": {
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "dies": true
         },
@@ -925,11 +831,7 @@
         "event_text": "o_c_n attempted to break into the camp. m_c died defending the nursery, r_c huddled beneath {PRONOUN/m_c/poss} cooling body.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "trait": [
                 "vengeful",
@@ -1001,11 +903,7 @@
         "event_text": "m_c was burned alive while trying to save r_c from a fire.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "status": [
                 "any"
@@ -1167,11 +1065,7 @@
         "event_text": "m_c fell into the river. r_c drowned alongside m_c while trying to rescue {PRONOUN/m_c/object}.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "status": [
                 "any"
@@ -1393,13 +1287,9 @@
                 "young adult"
             ],
             "status": [
-                "apprentice",
-                "mediator apprentice",
-                "healer apprentice",
-                "warrior",
-                "mediator",
-                "healer",
-                "deputy"
+                "-kitten",
+                "-leader",
+                "-elder"
             ],
             "backstory": [
                 "abandoned1",
@@ -1626,10 +1516,8 @@
         },
         "r_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
+                "-kitten",
+                "-senior"
             ],
             "status": [
                 "any"
@@ -1727,8 +1615,8 @@
                 "deputy",
                 "leader"
             ],
-            "not_skill": [
-                "SWIMMER,2"
+            "skill": [
+                "-SWIMMER,2"
             ],
             "dies": true
         },
@@ -1765,10 +1653,8 @@
         "event_text": "m_c fell into a pit trap set by o_c_n's warriors.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
+                "-kitten",
+                "-senior"
             ],
             "dies": true
         },
@@ -2032,10 +1918,7 @@
         "event_text": "m_c met their end to the long claws of a predator. Later, c_n found only {PRONOUN/m_c/poss} blood and a foul smell.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
+                "-kitten"
             ],
             "dies": true
         },
@@ -2066,8 +1949,8 @@
             "status": [
                 "deputy"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "dies": true
         },
@@ -2141,8 +2024,8 @@
             "status": [
                 "deputy"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "dies": true
         },
@@ -2279,17 +2162,10 @@
         "frequency": 4,
         "event_text": "r_c tricked m_c into playing on thin ice. {PRONOUN/r_c/subject/CAP} watched closely as m_c disappeared beneath the surface.",
         "m_c": {
-            "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
-            ],
-            "not_skill": [
-                "PROPHET,3",
-                "OMEN,3",
-                "SWIMMER,3"
+            "skill": [
+                "-PROPHET,3",
+                "-OMEN,3",
+                "-SWIMMER,3"
             ],
             "trait": [
                 "daring",
@@ -2302,10 +2178,7 @@
         },
         "r_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
+                "-kitten"
             ],
             "status": [
                 "any"
@@ -2359,15 +2232,13 @@
         "event_text": "Last c_n heard, m_c and r_c were going out to play. They don't return, and the ice on a nearby pond is cracked.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
+                "-kitten",
+                "-senior"
             ],
-            "not_skill": [
-                "PROPHET,3",
-                "OMEN,3",
-                "SWIMMER,3"
+            "skill": [
+                "-PROPHET,3",
+                "-OMEN,3",
+                "-SWIMMER,3"
             ],
             "trait": [
                 "daring",
@@ -2380,18 +2251,16 @@
         },
         "r_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
+                "-kitten",
+                "-senior"
             ],
             "status": [
                 "any"
             ],
-            "not_skill": [
-                "PROPHET,3",
-                "OMEN,3",
-                "SWIMMER,3"
+            "skill": [
+                "-PROPHET,3",
+                "-OMEN,3",
+                "-SWIMMER,3"
             ],
             "trait": [
                 "daring",
@@ -2428,11 +2297,7 @@
         "event_text": "m_c fell into a sinkhole and was never seen again.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "dies": true
         },
@@ -2597,11 +2462,7 @@
         "event_text": "m_c was walking on the ice, when it cracked and {PRONOUN/m_c/subject} fell in.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "dies": true
         },
@@ -2634,10 +2495,8 @@
         "event_text": "m_c was buried alive in a cramped rabbit burrow by o_c_n warriors.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
+                "-kitten",
+                "-senior"
             ],
             "status": [
                 "any"
@@ -2679,8 +2538,8 @@
                 "deputy",
                 "leader"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "dies": true
         },
@@ -2804,17 +2663,11 @@
         "event_text": "m_c was killed while trying to save the medicine cat of o_c_n.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader",
-                "healer apprentice",
-                "healer",
-                "mediator apprentice",
-                "mediator"
+                "-kitten",
+                "-elder"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "trait": [
                 "bold",
@@ -2881,8 +2734,8 @@
                 "deputy",
                 "leader"
             ],
-            "not_skill": [
-                "FIGHTER,3"
+            "skill": [
+                "-FIGHTER,3"
             ],
             "dies": true
         },
@@ -2921,17 +2774,11 @@
         "event_text": "m_c was killed while trying to save the deputy of o_c_n.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader",
-                "healer apprentice",
-                "healer",
-                "mediator apprentice",
-                "mediator"
+                "-kitten",
+                "-elder"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "trait": [
                 "bold",
@@ -2985,8 +2832,8 @@
                 "deputy",
                 "leader"
             ],
-            "not_skill": [
-                "FIGHTER,3"
+            "skill": [
+                "-FIGHTER,3"
             ],
             "dies": true
         },
@@ -3025,17 +2872,11 @@
         "event_text": "m_c was killed while trying to save the leader of o_c_n.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader",
-                "healer apprentice",
-                "healer",
-                "mediator apprentice",
-                "mediator"
+                "-kitten",
+                "-elder"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "trait": [
                 "bold",
@@ -3090,8 +2931,8 @@
                 "deputy",
                 "leader"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "dies": true
         },
@@ -3102,8 +2943,8 @@
                 "deputy",
                 "leader"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "dies": true
         },
@@ -3145,11 +2986,7 @@
         "event_text": "m_c was buried alive in an avalanche.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "status": [
                 "any"
@@ -3183,11 +3020,7 @@
         "event_text": "m_c was buried alive in a landslide.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "dies": true
         },
@@ -3214,11 +3047,7 @@
         "event_text": "m_c was buried alive in a mudslide.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "status": [
                 "any"
@@ -3249,10 +3078,7 @@
         "event_text": "m_c slipped off a cliff onto the sharp rocks at the bottom.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
+                "-kitten"
             ],
             "status": [
                 "any"
@@ -3320,30 +3146,19 @@
         "event_text": "m_c was pushed off a cliff onto the sharp rocks at the bottom.",
         "m_c": {
             "status": [
-                "apprentice",
-                "mediator apprentice",
-                "healer apprentice",
-                "warrior",
-                "healer",
-                "mediator",
-                "deputy"
+                "-leader",
+                "-kitten"
             ],
-            "not_skill": [
-                "PROPHET,3",
-                "OMEN,3",
-                "FIGHTER,3"
+            "skill": [
+                "-PROPHET,3",
+                "-OMEN,3",
+                "-FIGHTER,3"
             ],
             "dies": true
         },
         "r_c": {
             "status": [
-                "apprentice",
-                "mediator apprentice",
-                "healer apprentice",
-                "warrior",
-                "healer",
-                "mediator",
-                "deputy"
+                "-kitten"
             ],
             "skill": [
                 "CLEVER,2",
@@ -3459,8 +3274,8 @@
                 "warrior",
                 "deputy"
             ],
-            "not_skill": [
-                "RUNNER,2"
+            "skill": [
+                "-RUNNER,2"
             ]
         },
         "relationships": [
@@ -3502,13 +3317,10 @@
         "event_text": "m_c was killed defending r_c from a hawk.",
         "m_c": {
             "age": [
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "trait": [
                 "bold",
@@ -3615,10 +3427,7 @@
         "event_text": "m_c fell into a river and was swept away by the current, never to be seen again.",
         "m_c": {
             "age": [
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "dies": true
         },
@@ -3742,14 +3551,10 @@
         "event_text": "m_c fell into a river and drowned.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
-            "not_skill": [
-                "SWIMMER,2"
+            "skill": [
+                "-SWIMMER,2"
             ],
             "dies": true
         },
@@ -3780,23 +3585,15 @@
         "event_text": "m_c fell into a river and drowned.",
         "r_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ]
         },
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
-            "not_skill": [
-                "SWIMMER,2"
+            "skill": [
+                "-SWIMMER,2"
             ],
             "dies": true
         },
@@ -4055,12 +3852,6 @@
             "dies": true
         },
         "r_c": {
-            "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
-            ],
             "status": [
                 "apprentice",
                 "warrior",
@@ -4124,12 +3915,6 @@
             "dies": true
         },
         "r_c": {
-            "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
-            ],
             "status": [
                 "apprentice",
                 "warrior",
@@ -4199,10 +3984,7 @@
         },
         "r_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
+                "-kitten"
             ],
             "status": [
                 "any"
@@ -4251,19 +4033,13 @@
         "frequency": 4,
         "event_text": "o_c_n warriors broke into the camp and killed m_c after damaging the herb stores.",
         "m_c": {
-            "age": [
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
-            ],
             "status": [
                 "healer"
             ],
-            "not_skill": [
-                "FIGHTER,2",
-                "OMEN,3",
-                "PROPHET,3"
+            "skill": [
+                "-FIGHTER,2",
+                "-OMEN,3",
+                "-PROPHET,3"
             ],
             "dies": true
         },
@@ -4310,15 +4086,12 @@
         "event_text": "o_c_n warriors broke into the camp and killed m_c after damaging the stockpiled prey.",
         "m_c": {
             "age": [
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
-            "not_skill": [
-                "FIGHTER,2",
-                "OMEN,3",
-                "PROPHET,3"
+            "skill": [
+                "-FIGHTER,2",
+                "-OMEN,3",
+                "-PROPHET,3"
             ],
             "dies": true
         },
@@ -4365,8 +4138,8 @@
                 "healer",
                 "apprentice"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "trait": [
                 "compassionate",
@@ -4383,12 +4156,6 @@
             "dies": true
         },
         "r_c": {
-            "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
-            ],
             "status": [
                 "apprentice",
                 "warrior",
@@ -4497,11 +4264,7 @@
         "event_text": "m_c wandered out into the territory and was later found dead.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "status": [],
             "dies": true
@@ -4529,21 +4292,14 @@
         "event_text": "m_c wandered out into the territory and was later found dead.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "status": [],
             "dies": true
         },
         "r_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
+                "-kitten"
             ],
             "status": [
                 "any"
@@ -4572,11 +4328,7 @@
                     "mur_c": "m_c",
                     "r_c": {
                         "age": [
-                            "adolescent",
-                            "young adult",
-                            "adult",
-                            "senior adult",
-                            "senior"
+                            "-kitten"
                         ]
                     }
                 }
@@ -4597,11 +4349,7 @@
         "event_text": "m_c was having a peaceful stroll outside of camp, when {PRONOUN/m_c/subject} {VERB/m_c/were/was} attacked and killed by a fox.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "status": [
                 "any"
@@ -4630,11 +4378,7 @@
         "event_text": "m_c was having a peaceful stroll outside of camp, when {PRONOUN/m_c/subject} {VERB/m_c/were/was} attacked and killed by a badger.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "status": [
                 "any"
@@ -4663,11 +4407,7 @@
         "event_text": "m_c was having a peaceful stroll outside of camp, when {PRONOUN/m_c/subject} {VERB/m_c/were/was} attacked and killed by a dog.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "status": [
                 "any"
@@ -4804,12 +4544,7 @@
         "event_text": "Lightning struck in camp, killing m_c.",
         "m_c": {
             "age": [
-                "kitten",
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "any"
             ],
             "dies": true
         },
@@ -4852,11 +4587,7 @@
         "event_text": "m_c was swept away by a flood.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "dies": true
         },
@@ -4884,11 +4615,7 @@
         "event_text": "m_c fell from the top branches of a tree.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "dies": true
         },
@@ -4919,8 +4646,8 @@
                 "deputy",
                 "leader"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "dies": true
         },
@@ -4951,8 +4678,8 @@
                 "deputy",
                 "leader"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "dies": true
         },
@@ -4983,8 +4710,8 @@
                 "deputy",
                 "leader"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "dies": true
         },
@@ -5058,9 +4785,9 @@
             "status": [
                 "leader"
             ],
-            "not_skill": [
-                "CLEVER,2",
-                "STAR,2"
+            "skill": [
+                "-CLEVER,2",
+                "-STAR,2"
             ],
             "dies": true
         },
@@ -5086,14 +4813,10 @@
         "event_text": "m_c was killed defending r_c from a dog.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "trait": [
                 "bold",
@@ -5159,14 +4882,10 @@
         "event_text": "m_c was killed defending r_c from a badger.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
-            "not_skill": [
-                "FIGHTER,3"
+            "skill": [
+                "-FIGHTER,3"
             ],
             "trait": [
                 "bold",
@@ -5232,14 +4951,10 @@
         "event_text": "m_c was killed defending r_c from a fox.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "trait": [
                 "bold",
@@ -5306,11 +5021,7 @@
         "event_text": "m_c died while saving r_c from drowning.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "trait": [
                 "bold",
@@ -5374,11 +5085,7 @@
         "event_text": "m_c saved r_c from a monster but was run over in the process.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "trait": [
                 "bold",
@@ -5442,11 +5149,7 @@
         "event_text": "m_c saved r_c from a snake and was bitten in the process. The venom killed {PRONOUN/m_c/object}.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "trait": [
                 "bold",
@@ -5514,14 +5217,10 @@
         "event_text": "m_c was killed defending the kits during a o_c_n raid.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
-            "not_skill": [
-                "FIGHTER,3"
+            "skill": [
+                "-FIGHTER,3"
             ],
             "trait": [
                 "bold",
@@ -5582,15 +5281,11 @@
         "event_text": "m_c was killed defending r_c from o_c_n warriors.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "relationship_status": [],
-            "not_skill": [
-                "FIGHTER,3"
+            "skill": [
+                "-FIGHTER,3"
             ],
             "trait": [
                 "bold",
@@ -5609,12 +5304,6 @@
             "dies": true
         },
         "r_c": {
-            "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
-            ],
             "status": [
                 "apprentice",
                 "warrior",
@@ -5674,14 +5363,10 @@
         "event_text": "m_c was killed by an apprentice from o_c_n.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
-            "not_skill": [
-                "FIGHTER,1"
+            "skill": [
+                "-FIGHTER,1"
             ],
             "dies": true
         },
@@ -5720,13 +5405,10 @@
         "event_text": "m_c died trying to save a o_c_n apprentice.",
         "m_c": {
             "age": [
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "trait": [
                 "bold",
@@ -5848,8 +5530,8 @@
             "status": [
                 "leader"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "dies": true
         },
@@ -5879,8 +5561,8 @@
             "status": [
                 "leader"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "dies": true
         },
@@ -5970,8 +5652,8 @@
             "status": [
                 "leader"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "dies": true
         },
@@ -6016,8 +5698,8 @@
             "status": [
                 "leader"
             ],
-            "not_skill": [
-                "FIGHTER,3"
+            "skill": [
+                "-FIGHTER,3"
             ],
             "dies": true
         },
@@ -6062,8 +5744,8 @@
             "status": [
                 "leader"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "dies": true
         },
@@ -6364,27 +6046,13 @@
         "event_text": "m_c was pushed under a monster by r_c.",
         "m_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader",
-                "healer apprentice",
-                "healer",
-                "mediator apprentice",
-                "mediator"
+                "-kitten"
             ],
             "dies": true
         },
         "r_c": {
             "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader",
-                "healer apprentice",
-                "healer",
-                "mediator apprentice",
-                "mediator"
+                "-kitten"
             ]
         },
         "history": [
@@ -6439,8 +6107,8 @@
             "status": [
                 "leader"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "dies": true
         },
@@ -6523,8 +6191,8 @@
             "status": [
                 "deputy"
             ],
-            "not_skill": [
-                "CLEVER,2"
+            "skill": [
+                "-CLEVER,2"
             ],
             "trait": [
                 "vengeful",
@@ -6615,8 +6283,8 @@
             "status": [
                 "leader"
             ],
-            "not_skill": [
-                "FIGHTER,3"
+            "skill": [
+                "-FIGHTER,3"
             ],
             "dies": true
         },
@@ -6685,12 +6353,6 @@
         "frequency": 4,
         "event_text": "m_c lost a life while saving a kit from drowning. The kit seemed wary of r_c afterwards, but no one noticed.",
         "m_c": {
-            "age": [
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
-            ],
             "status": [
                 "leader"
             ],
@@ -6712,10 +6374,7 @@
         },
         "r_c": {
             "age": [
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "skill": [
                 "CLEVER,2",
@@ -6760,7 +6419,7 @@
                     "mur_c": "m_c",
                     "r_c": {
                         "age": [
-                            "any"
+                            "kitten"
                         ]
                     }
                 }
@@ -6817,12 +6476,6 @@
         "frequency": 4,
         "event_text": "o_c_n attempted to break into the camp. m_c died defending the nursery. r_c remained hidden beneath {PRONOUN/m_c/poss} body as StarClan brought m_c back to life.",
         "m_c": {
-            "age": [
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
-            ],
             "status": [
                 "leader"
             ],
@@ -6926,10 +6579,8 @@
         },
         "r_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult"
+                "-kitten",
+                "-senior"
             ],
             "status": [
                 "any"
@@ -7547,10 +7198,8 @@
         "event_text": "multi_cat are taken away by Twolegs.",
         "m_c": {
             "age": [
-                "adolescent",
-                "adult",
-                "young adult",
-                "senior adult"
+                "-kitten",
+                "-senior"
             ]
         }
     },
@@ -7600,20 +7249,13 @@
         "event_text": "m_c found a horde of rats lured by the fresh-kill pile. r_c helped {PRONOUN/m_c/object} fight, but m_c did not survive.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "dies": true
         },
         "r_c": {
             "age": [
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ]
         },
         "injury": [
@@ -7667,8 +7309,8 @@
                 "deputy",
                 "leader"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "dies": true
         },
@@ -7763,8 +7405,8 @@
                 "deputy",
                 "leader"
             ],
-            "not_skill": [
-                "FIGHTER,2"
+            "skill": [
+                "-FIGHTER,2"
             ],
             "dies": true
         },
@@ -7851,21 +7493,13 @@
         "event_text": "r_c watched as m_c struggled in a Twoleg trap, waiting till {PRONOUN/m_c/subject} stopped moving before leaving the area.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "dies": true
         },
         "r_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "trait": [
                 "sneaky",
@@ -7931,21 +7565,13 @@
         "event_text": "r_c hissed {PRONOUN/r_c/poss} grievances into m_c's ear as {PRONOUN/r_c/subject} killed {PRONOUN/m_c/object}.",
         "m_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "dies": true
         },
         "r_c": {
             "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten"
             ],
             "trait": [
                 "vengeful",
@@ -8018,10 +7644,8 @@
         },
         "r_c": {
             "age": [
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+                "-kitten",
+                "-adolescent"
             ],
             "dies": true
         },
@@ -8084,9 +7708,12 @@
     "frequency": 2,
     "event_text": "r_c meets with a rogue named n_c:0 on the border. A quarter-moon later, m_c turns up dead along the border, n_c:0's scent on {PRONOUN/m_c/poss} cold body.",
     "m_c": {
-        "age": [],
-        "status": ["apprentice", "mediator apprentice", "healer apprentice", "mediator", "healer", "warrior", "deputy"],
-        "not_skill": ["FIGHTER,2"],
+        "status": [
+            "-kitten",
+            "-leader",
+            "-elder"
+        ],
+        "skill": ["-FIGHTER,2"],
         "dies": true
     },
     "r_c": {
@@ -8145,9 +7772,8 @@
     "frequency": 2,
     "event_text": "On a solo border patrol, m_c is attacked and killed by a rogue named n_c:0. When m_c is revived, n_c:0 lets it slip that r_c didn't say anything about resurrection as {PRONOUN/n_c:0/subject} {VERB/n_c:0/flee/flees}.",
     "m_c": {
-        "age": [],
         "status": ["leader"],
-        "not_skill": ["FIGHTER,2"],
+        "skill": ["-FIGHTER,2"],
         "dies": true
     },
     "r_c": {
@@ -8199,9 +7825,12 @@
     "frequency": 4,
     "event_text": "r_c meets with a notorious rogue from {PRONOUN/r_c/poss} past, n_c:0, on the border. A quarter-moon later, m_c turns up dead along the border, n_c:0's scent on {PRONOUN/m_c/poss} cold body.",
     "m_c": {
-        "age": [],
-        "status": ["apprentice", "mediator apprentice", "healer apprentice", "mediator", "healer", "warrior", "deputy"],
-        "not_skill": ["FIGHTER,3"],
+        "status": [
+            "-kitten",
+            "-leader",
+            "-elder"
+        ],
+        "skill": ["-FIGHTER,3"],
         "dies": true
     },
     "r_c": {
@@ -8261,9 +7890,12 @@
     "frequency": 4,
     "event_text": "r_c promises n_c:0 a new beginning in c_n... at a price paid in blood. Within the moon, m_c is dead and r_c vouches for n_c:0 to join c_n.",
     "m_c": {
-        "age": [],
-        "status": ["apprentice", "mediator apprentice", "healer apprentice", "mediator", "healer", "warrior", "deputy"],
-        "not_skill": ["FIGHTER,2"],
+        "status": [
+            "-kitten",
+            "-leader",
+            "-elder"
+        ],
+        "skill": ["-FIGHTER,2"],
         "dies": true
     },
     "r_c": {

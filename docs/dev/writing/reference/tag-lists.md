@@ -412,6 +412,7 @@ You can use either the backstory pool name, or an individual backstory name.  Wh
 | Mid Pos     | `enjoys`    | `respects`     | `trusts`      | `understands`  | `adores`       |
 | Extreme Pos | `cherishes` | `admires`      | `confides_in` | `knows_deeply` | `fancies`      |
 
+
 ***
 
 ## Interpersonal Relationships
@@ -433,6 +434,8 @@ You can use either the backstory pool name, or an individual backstory name.  Wh
 | `not_app`         | cat1 is not the apprentice of cat2 | none of the cats are p_l's apprentices |
 | `mentor/app`      | cat1 is the mentor of cat2         | only for use in 2-cat patrols          |
 | `not_mentor`      | cat1 is not the mentor of cat2     | none of the cats are p_l's mentor      |
+
+You can utilize [exclusionary values](index.md#exclusionary-values).
 
 !!! warning
     Within ShortEvents, these should only be used in m_c's relationship constraints.

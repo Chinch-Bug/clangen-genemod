@@ -3078,6 +3078,10 @@ class Cat:
         if os.path.exists(relation_directory):
             if not os.path.exists(relation_cat_directory):
                 self.init_all_relationships()
+                for cat in Cat.all_cats.values():
+                    if cat == self:
+                        continue
+                    cat.create_one_relationship(self)
                 return
             try:
                 with open(relation_cat_directory, "r", encoding="utf-8") as read_file:

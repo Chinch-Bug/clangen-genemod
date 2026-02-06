@@ -1418,6 +1418,36 @@ def generate_sprite(
         # draw skin and scars2
         blendmode = pygame.BLEND_RGBA_MIN
 
+        if is_today(SpecialDate.APRIL_FOOLS):
+            if cat.phenotype.bobtailnr != 1 and "Pc" in phenotype.april_fools.get("polycaudal", []):
+                tail = pygame.Surface(
+                    (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                tail.blit(sprites.sprites['bobtail1' + cat_sprite], (0, 0))
+                white = pygame.Surface(
+                    (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                white.fill((255, 255, 255))
+                tail.blit(white, (0, 0), special_flags=pygame.BLEND_RGB_MAX)
+                tail.blit(new_sprite, (0, 0),
+                          special_flags=pygame.BLEND_RGBA_MIN)
+                offset = 2
+                if cat_sprite in ["2", "12", "13", "14", "16", "18"]:
+                    new_sprite.blit(tail, (offset, 1))
+                elif cat_sprite in ["4", "6", "7", "8", "9", "10", "11", "15", "19", "20"]:
+                    new_sprite.blit(tail, (-offset, -1))
+                elif cat_sprite in ["1", "5"]:
+                    new_sprite.blit(tail, (0, -2))
+
+            if constants.CONFIG["fun"]["april_fools_hats"]:
+                if not dead:
+                    new_sprite.blit(
+                        sprites.sprites['aprilfoolslines' + cat_sprite], (0, 0))
+                elif cat.status.group == CatGroup.DARK_FOREST:
+                    new_sprite.blit(
+                        sprites.sprites['aprilfoolslineartdf' + cat_sprite], (0, 0))
+                else:
+                    new_sprite.blit(
+                        sprites.sprites['aprilfoolslineartdead' + cat_sprite], (0, 0))
+
         gensprite = new_sprite
         if cat.phenotype.bobtailnr > 0:
             gensprite.blit(_recolor_lineart(
@@ -1443,30 +1473,6 @@ def generate_sprite(
                         (0, 0),
                         special_flags=blendmode,
                     )
-
-        if is_today(SpecialDate.APRIL_FOOLS):
-            if cat.phenotype.bobtailnr != 1 and "Pc" in phenotype.april_fools.get("polycaudal", []):
-                tail = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                tail.blit(sprites.sprites['bobtail1' + cat_sprite], (0, 0))
-                white = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                white.fill((255, 255, 255))
-                tail.blit(white, (0, 0), special_flags=pygame.BLEND_RGB_MAX)
-                tail.blit(new_sprite, (0, 0), special_flags=pygame.BLEND_RGBA_MIN)
-                offset = 2
-                if cat_sprite in ["2", "12", "13", "14", "16", "18"]:
-                    new_sprite.blit(tail, (offset, 1))
-                elif cat_sprite in ["4", "6", "7", "8", "9", "10", "11", "15", "19", "20"]:
-                    new_sprite.blit(tail, (-offset, -1))
-                elif cat_sprite in ["1", "5"]:
-                    new_sprite.blit(tail, (0, -2))
-            
-            if constants.CONFIG["fun"]["april_fools_hats"]:
-                if not dead:
-                    new_sprite.blit(sprites.sprites['aprilfoolslines' + cat_sprite], (0, 0))
-                elif cat.status.group == CatGroup.DARK_FOREST:
-                    new_sprite.blit(sprites.sprites['aprilfoolslineartdf' + cat_sprite], (0, 0))
-                else:
-                    new_sprite.blit(sprites.sprites['aprilfoolslineartdead' + cat_sprite], (0, 0))
 
         # draw accessories
         from scripts.cat.pelts import Pelt
