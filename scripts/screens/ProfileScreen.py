@@ -706,21 +706,22 @@ class ProfileScreen(Screens):
             )
             self.profile_elements["backgrounds"].disable()
 
+        scale = 0
+        if get_clan_setting("sprite_scaling"):
+            cat_size = calculate_size(self.the_cat)
+            if isinstance(cat_size, str):
+                mapper = {
+                    "big": 11.5,
+                    "average": 9.5,
+                    "small": 7.5,
+                    "runt": 5.5
+                }
+                cat_size = mapper[cat_size]
+            else:
+                if self.the_cat.phenotype.munch[0] == "Mk":
+                    cat_size *= 1.5
 
-        cat_size = calculate_size(self.the_cat)
-        if isinstance(cat_size, str):
-            mapper = {
-                "big": 11.5,
-                "average": 9.5,
-                "small": 7.5,
-                "runt": 5.5
-            }
-            cat_size = mapper[cat_size]
-        else:
-            if self.the_cat.phenotype.munch[0] == "Mk":
-                cat_size *= 1.5
-
-        scale = int((cat_size-9.5)*5)
+            scale = int((cat_size-9.5)*5)
 
         # Create cat image object
         self.profile_elements["cat_image"] = pygame_gui.elements.UIImage(
