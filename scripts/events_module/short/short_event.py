@@ -275,7 +275,7 @@ class ShortEvent:
                 victim_cat=self.victim_cat,
                 new_cats=self.new_cats,
                 other_clan=other_clan,
-                clan=game.clan
+                clan=clan
             )
             for change in self.relationships:
                 for group in change.get("log", []):
