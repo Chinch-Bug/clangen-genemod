@@ -86,7 +86,7 @@ class SpriteInspectScreen(Screens):
                 self.update_disabled_buttons()
                 self.make_cat_image()
             elif event.ui_element == self.save_image_button:
-                SaveAsImageWindow(self.generate_image_to_save(), str(self.the_cat.name))
+                SaveAsImageWindow(self.generate_image_to_save(), self.the_cat, str(self.the_cat.name))
             elif event.ui_element == self.export_cat_button:
                 self.export_cat()
             elif event.ui_element == self.previous_life_stage:

@@ -301,7 +301,9 @@ def create_new_cat_block(
         else:
             cat_group = choice([x.group_ID for x in game.clan.all_other_clans])
     else:
-        if game.clan.clancount == "multiclan":
+        if parent1:
+            cat_social = parent1.status.social
+        elif game.clan.clancount == "multiclan":
             cat_social = choice([CatSocial.KITTYPET, CatSocial.LONER])
         else:
             cat_social = choice(
@@ -1051,7 +1053,9 @@ def create_new_cat(
         new_cat.status.change_current_moons_as(moons)
 
         if original_social == "former clancat":
-            new_cat.status.become_lost(CatSocial.LONER)
+            new_cat.status.leave_group(
+                choice([CatSocial.KITTYPET, CatSocial.LONER, CatSocial.ROGUE])
+            )
         # now we actually add them to the clan, if they should be joining
         if not outside and alive:
             new_cat.add_to_clan(group)

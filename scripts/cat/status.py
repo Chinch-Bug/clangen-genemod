@@ -682,7 +682,7 @@ class Status:
         clan = game.clan if living_group_id == CatGroup.PLAYER_CLAN_ID else next(filter(lambda c: c.group_ID == living_group_id, game.clan.all_other_clans), default)
         return clan
 
-    def is_lost(self, group_ID: str = None) -> bool:
+    def is_lost(self, group_ID: str = CatGroup.PLAYER_CLAN_ID) -> bool:
         """
         Returns True if the cat is considered "lost" by a group.
         :param group_ID: use this to specify a certain group to check lost status against
