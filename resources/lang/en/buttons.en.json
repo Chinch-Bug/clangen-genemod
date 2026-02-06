@@ -45,6 +45,7 @@
         "cancel": "cancel",
         "save_clan": "save clan",
         "saving": "saving...",
-        "clan_saved": "saved!"
+        "clan_saved": "saved!",
+        "sprite_image_scaled": "scaled"
     }
 }

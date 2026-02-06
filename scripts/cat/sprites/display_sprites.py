@@ -1665,3 +1665,26 @@ def update_mask(cat):
                     except IndexError:
                         continue
     cat.sprite_mask = inflated_mask
+
+
+def calculate_size(cat):
+    if cat.age in [CatAge.NEWBORN, CatAge.KITTEN]:
+        size = "average"
+        if cat.phenotype.growth_pattern == "big-kitten":
+            size = "big"
+        elif cat.phenotype.growth_pattern == "small-kitten":
+            size = "small"
+        elif cat.phenotype.growth_pattern == "runt":
+            size = "runt"
+        return size
+    elif (cat.age == CatAge.ADOLESCENT or (cat.moons < 24 and cat.phenotype.growth_pattern == "slow")):
+        start_point = cat.phenotype.shoulder_height * 0.66 if cat.phenotype.growth_pattern == "slow" else cat.phenotype.shoulder_height * 0.75
+        period = 18 if cat.phenotype.growth_pattern == "slow" else 6
+        difference = 24-cat.moons if cat.phenotype.growth_pattern == "slow" else 12-cat.moons
+        difference = max(0, difference)
+        step = (cat.phenotype.shoulder_height - start_point) / period
+
+        height = round(cat.phenotype.shoulder_height - (difference * step), 2)
+        return height
+
+    return cat.phenotype.shoulder_height

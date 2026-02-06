@@ -14,6 +14,7 @@ import ujson
 from pygame_gui.core import ObjectID
 
 from scripts.cat.cats import Cat, BACKSTORIES
+from scripts.cat.sprites.display_sprites import calculate_size
 from ..cat.enums import CatAge, CatRank, CatGroup
 from scripts.cat.pelts import Pelt
 from scripts.clan_resources.freshkill import FRESHKILL_ACTIVE
@@ -705,11 +706,27 @@ class ProfileScreen(Screens):
             )
             self.profile_elements["backgrounds"].disable()
 
+
+        cat_size = calculate_size(self.the_cat)
+        if isinstance(cat_size, str):
+            mapper = {
+                "big": 11.5,
+                "average": 9.5,
+                "small": 7.5,
+                "runt": 5.5
+            }
+            cat_size = mapper[cat_size]
+        else:
+            if self.the_cat.phenotype.munch[0] == "Mk":
+                cat_size *= 1.5
+
+        scale = int((cat_size-9.5)*5)
+
         # Create cat image object
         self.profile_elements["cat_image"] = pygame_gui.elements.UIImage(
-            ui_scale(pygame.Rect((100, 200), (150, 150))),
+            ui_scale(pygame.Rect((100-scale//2, 200-(scale//4 if scale > 0 and self.the_cat.age not in [CatAge.KITTEN, CatAge.NEWBORN] else scale)), (150+scale, 150+scale))),
             pygame.transform.scale(
-                self.the_cat.sprite, ui_scale_dimensions((150, 150))
+                self.the_cat.sprite, ui_scale_dimensions((150+scale, 150+scale))
             ),
             manager=MANAGER,
         )
@@ -829,26 +846,13 @@ class ProfileScreen(Screens):
         output += "body type: " + the_cat.phenotype.body_label
         
         output += "\n"
-        # HEIGHT
+
         if the_cat.age in [CatAge.NEWBORN, CatAge.KITTEN] and not get_clan_setting("adult_height_toggle"):
-            size = "average"
-            if the_cat.phenotype.growth_pattern == "big-kitten":
-                size = "big"
-            elif the_cat.phenotype.growth_pattern == "small-kitten":
-                size = "small"
-            elif the_cat.phenotype.growth_pattern == "runt":
-                size = "runt"
-            output += "size: " + size
+            output += "size: " + calculate_size(self.the_cat)
         elif (the_cat.age == CatAge.ADOLESCENT or (the_cat.moons < 24 and the_cat.phenotype.growth_pattern == "slow")) and not get_clan_setting("adult_height_toggle"):
             output += "size: " + the_cat.phenotype.height_label
             if get_clan_setting("showheight"):
-                start_point = the_cat.phenotype.shoulder_height * 0.66 if the_cat.phenotype.growth_pattern == "slow" else the_cat.phenotype.shoulder_height * 0.75
-                period = 18 if the_cat.phenotype.growth_pattern == "slow" else 6
-                difference = 24-the_cat.moons if the_cat.phenotype.growth_pattern == "slow" else 12-the_cat.moons
-                difference = max(0, difference)
-                step = (the_cat.phenotype.shoulder_height - start_point) / period
-
-                height = round(the_cat.phenotype.shoulder_height - (difference * step), 2)
+                height = calculate_size(self.the_cat)
                 if get_clan_setting("metric_toggle"):
                     output += f" ({height * 2.54:.2f} cm)"
                 else:

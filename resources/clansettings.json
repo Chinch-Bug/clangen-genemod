@@ -37,8 +37,13 @@
       ],
       "tnr_mode": [
         "Cats can be spayed/neutered by Twolegs",
-        "Kittypets, loners, and Clan cats caught by Twolegs now have a chance of ending up spayed or neutered",
+        "Kittypets, loners, and Clan cats caught by Twolegs now have a chance of ending up spayed or neutered.",
         false
+      ],
+      "sprite_scaling": [
+        "Cat sprites on profile will scale based on size",
+        "On the profile screen, cat sprites will be scaled based on current size.",
+        true
       ],
       "showheight": [
         "Show exact cat shoulder height on profile",
