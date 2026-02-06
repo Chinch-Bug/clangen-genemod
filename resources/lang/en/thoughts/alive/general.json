@@ -398,7 +398,7 @@
             "Purrs as a cool breeze hits {PRONOUN/m_c/object}"
         ],
         "season": [
-            "newleaf"
+            "Newleaf"
         ]
     },
     {
@@ -413,7 +413,7 @@
             "Is debating swimming to cool down"
         ],
         "season": [
-            "greenleaf"
+            "Greenleaf"
         ]
     },
     {
@@ -424,7 +424,7 @@
             "Is glad it's not so hot out anymore"
         ],
         "season": [
-            "leaf-fall"
+            "Leaf-fall"
         ]
     },
     {
@@ -440,7 +440,7 @@
             "Is careful not to stand under branches with snow on them"
         ],
         "season": [
-            "leaf-bare"
+            "Leaf-bare"
         ]
     },
     {
@@ -1472,9 +1472,9 @@
             "self-conscious"
         ],
         "season": [
-            "newleaf",
-            "greenleaf",
-            "leaf-fall"
+            "Newleaf",
+            "Greenleaf",
+            "Leaf-fall"
         ]
     },
     {
@@ -3563,7 +3563,7 @@
             "Is cautious of animals waking from hibernation"
         ],
         "season": [
-            "newleaf"
+            "Newleaf"
         ],
         "main_status_constraint": [
             "apprentice",
@@ -3583,7 +3583,7 @@
             "Admires the colorful trees on patrol"
         ],
         "season": [
-            "leaf-fall"
+            "Leaf-fall"
         ],
         "main_status_constraint": [
             "apprentice",
@@ -5898,7 +5898,7 @@
             "Can't warm up, even in the sun"
         ],
         "season": [
-            "greenleaf"
+            "Greenleaf"
         ],
         "perm_conditions": {
             "m_c": [
@@ -5915,7 +5915,7 @@
             "Wonders if {PRONOUN/m_c/subject}'ll see newleaf"
         ],
         "season": [
-            "leaf-fall"
+            "Leaf-fall"
         ],
         "perm_conditions": {
             "m_c": [
@@ -6255,8 +6255,8 @@
             ]
         },
         "season": [
-            "greenleaf",
-			"newleaf"
+            "Greenleaf",
+			"Newleaf"
         ]
     },
     {
@@ -6272,8 +6272,8 @@
             ]
         },
         "season": [
-            "leaf-bare",
-			"leaf-fall"
+            "Leaf-bare",
+			"Leaf-fall"
         ]
     },
     {
@@ -6287,8 +6287,8 @@
             ]
         },
         "season": [
-            "leaf-bare",
-			"leaf-fall"
+            "Leaf-bare",
+			"Leaf-fall"
         ],
         "random_living_status": [
             "living"

@@ -2397,6 +2397,7 @@ class UIDropDown(UIDropDownContainer):
             )
         else:
             self.parent_button = parent_override
+            self.parent_button.set_container(self)
 
         if center_children:
             x_pos = -int(child_dimensions[0] / 2 - relative_rect.width / 2)
