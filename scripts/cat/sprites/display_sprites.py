@@ -121,10 +121,6 @@ def generate_sprite(
                 'mediumapricot' : 'rufousedcream',
                 'lowapricot' : 'mediumcream',
 
-                'rufousedhoney-apricot' : 'lowred',
-                'mediumhoney-apricot' : 'rufousedhoney',
-                'lowhoney-apricot' : 'mediumhoney',
-
                 'rufousedivory-apricot' : 'lowhoney',
                 'mediumivory-apricot' : 'rufousedivory',
                 'lowivory-apricot' : 'mediumivory'
@@ -1418,6 +1414,19 @@ def generate_sprite(
         # draw skin and scars2
         blendmode = pygame.BLEND_RGBA_MIN
 
+        gensprite = new_sprite
+        if cat.phenotype.bobtailnr > 0:
+            gensprite.blit(_recolor_lineart(
+                sprites.sprites['bobtail' +
+                                str(cat.phenotype.bobtailnr) + cat_sprite],
+                lineart_color,
+                gradient_surface,
+            ), (0, 0))
+        gensprite.set_colorkey((0, 0, 255))
+        new_sprite = pygame.Surface(
+            (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+        new_sprite.blit(gensprite, (0, 0))
+
         if is_today(SpecialDate.APRIL_FOOLS):
             if cat.phenotype.bobtailnr != 1 and "Pc" in phenotype.april_fools.get("polycaudal", []):
                 tail = pygame.Surface(
@@ -1447,18 +1456,6 @@ def generate_sprite(
                 else:
                     new_sprite.blit(
                         sprites.sprites['aprilfoolslineartdead' + cat_sprite], (0, 0))
-
-        gensprite = new_sprite
-        if cat.phenotype.bobtailnr > 0:
-            gensprite.blit(_recolor_lineart(
-                sprites.sprites['bobtail' +
-                                str(cat.phenotype.bobtailnr) + cat_sprite],
-                            lineart_color,
-                            gradient_surface,
-                        ), (0, 0))
-        gensprite.set_colorkey((0, 0, 255))
-        new_sprite = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-        new_sprite.blit(gensprite, (0, 0))
 
         if not scars_hidden:
             for scar in cat.pelt.scars:

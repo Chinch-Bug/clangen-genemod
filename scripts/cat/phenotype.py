@@ -804,13 +804,11 @@ class Phenotype(Genotype):
     def FindBlack(self, genes, moons, special=None):
         unders_colour = ""
         unders_opacity = 0
+        self.caramel = "caramel" if genes.dilute[0] == "d" and genes.dilutemd[0] == 'Dm' else ""
         if special=='er':
             return self.FindRed(genes, moons, special)
         else:
             if genes.eumelanin[0] == "bl":
-                if genes.dilutemd[0] == 'Dm':
-                    self.caramel = 'caramel'
-                
                 if genes.dilute[0] == "d":
                     if(genes.pinkdilute[0] == "dp"):
                         colour = "beige"
@@ -821,11 +819,7 @@ class Phenotype(Genotype):
                         colour = "buff"
                     else:
                         colour = "cinnamon"
-                        self.caramel = ""
             elif genes.eumelanin[0] == "b":
-                if genes.dilutemd[0] == 'Dm':
-                    self.caramel = 'caramel'
-                
                 if genes.dilute[0] == "d":
                     if(genes.pinkdilute[0] == "dp"):
                         colour = "lavender"
@@ -836,12 +830,8 @@ class Phenotype(Genotype):
                         colour = "champagne"
                     else:
                         colour = "chocolate"
-                        self.caramel = ""
             else:
-                if(genes.dilutemd[0] == 'Dm'):
-                    self.caramel = 'caramel'
-                
-                if(genes.dilute[0] == "d"):
+                if (genes.dilute[0] == "d"):
                     if(genes.pinkdilute[0] == "dp"):
                         colour = "platinum"
                     else:
@@ -851,7 +841,6 @@ class Phenotype(Genotype):
                         colour = "dove"
                     else:
                         colour = "black"
-                        self.caramel = ""
             
             maincolour = colour + str(self.saturation)
 
@@ -921,10 +910,7 @@ class Phenotype(Genotype):
                     colour = "cream"
         else:
             if(genes.pinkdilute[0] == "dp"):
-                if genes.dilutemd[0] == "Dm":
-                    colour = "honey-apricot"
-                else:
-                    colour = "honey"
+                colour = "honey"
             else:
                 colour = "red"
         
@@ -956,19 +942,6 @@ class Phenotype(Genotype):
                     rufousing = "medium"
             elif genes.ruftype == "medium":
                 colour = "cream"
-                if rufousing != "silver":
-                    rufousing = "rufoused"
-            else:
-                colour = "red"
-                if rufousing != "silver":
-                    rufousing = "low"
-        elif colour == "honey-apricot":
-            if genes.ruftype == "low":
-                colour = "honey"
-                if rufousing != "silver":
-                    rufousing = "medium"
-            elif genes.ruftype == "medium":
-                colour = "honey"
                 if rufousing != "silver":
                     rufousing = "rufoused"
             else:
