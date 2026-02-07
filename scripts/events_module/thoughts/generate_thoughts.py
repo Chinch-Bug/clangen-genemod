@@ -50,6 +50,7 @@ def get_other_cat_for_thought(
         while cat_list and (
             (other_cat.dead and not thinking_of_dead_cat)
             or other_cat.ID not in main_cat.relationships
+            or other_cat.status.get_last_living_group() != main_cat.status.get_last_living_group()
         ):
             cat_list.remove(other_cat)
 

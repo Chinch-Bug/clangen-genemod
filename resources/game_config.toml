@@ -625,17 +625,17 @@ dev_tools = false
   sectoral_heterochromia = 200
   random_heterochromia = 250
 
-  no-low_white_blue_eyes = 100
-  low_white_blue_eyes = 75
-  mid_white_blue_eyes = 50
-  high_white_blue_eyes = 25
+  no-low_white_blue_eyes = 150
+  low_white_blue_eyes = 100
+  mid_white_blue_eyes = 75
+  high_white_blue_eyes = 50
   het_dom_white_blue_eyes = 15
   homo_dom_white_blue_eyes = 5
   
-  no-low_white_one_blue_eye = 75
-  low_white_one_blue_eye = 50
-  mid_white_one_blue_eye = 25
-  high_white_one_blue_eye = 15
+  no-low_white_one_blue_eye = 125
+  low_white_one_blue_eye = 75
+  mid_white_one_blue_eye = 50
+  high_white_one_blue_eye = 25
   het_dom_white_one_blue_eye = 10
   homo_dom_white_one_blue_eye = 3
 

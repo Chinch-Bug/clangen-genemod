@@ -7822,7 +7822,7 @@
     "season": ["any"],
     "sub_type": ["murder"],
     "tags": [],
-    "frequency": 4,
+    "frequency": 2,
     "event_text": "r_c meets with a notorious rogue from {PRONOUN/r_c/poss} past, n_c:0, on the border. A quarter-moon later, m_c turns up dead along the border, n_c:0's scent on {PRONOUN/m_c/poss} cold body.",
     "m_c": {
         "status": [
@@ -7887,7 +7887,7 @@
     "season": ["any"],
     "sub_type": ["murder"],
     "tags": [],
-    "frequency": 4,
+    "frequency": 2,
     "event_text": "r_c promises n_c:0 a new beginning in c_n... at a price paid in blood. Within the moon, m_c is dead and r_c vouches for n_c:0 to join c_n.",
     "m_c": {
         "status": [
