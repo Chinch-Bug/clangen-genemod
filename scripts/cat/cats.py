@@ -1798,6 +1798,8 @@ class Cat:
         old_age = self.age
 
         if self.dead and not self.faded:
+            if self.moons == 1 and self.status.rank == CatRank.NEWBORN:
+                self.status._change_rank(CatRank.KITTEN)
             self.thoughts()
             return
 
