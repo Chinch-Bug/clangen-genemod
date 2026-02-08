@@ -2347,18 +2347,18 @@ class ProfileScreen(Screens):
                 )
                 self.kill_cat_button = UIImageButton(
                     ui_scale(pygame.Rect((578, 522), (172, 36))),
-                    "screens.profile.kill_cat",
+                    "screens.profile.kill_cat" if not self.the_cat.dead else "screens.profile.fade_cat",
                     object_id="#kill_cat_button",
-                    tool_tip_text="screens.profile.kill_cat_tooltip",
+                    tool_tip_text="screens.profile.kill_cat_tooltip" if not self.the_cat.dead else "screens.profile.fade_cat_tooltip",
                     starting_height=2,
                     manager=MANAGER,
                 )
             else:
                 self.kill_cat_button = UIImageButton(
                     ui_scale(pygame.Rect((578, 486), (172, 36))),
-                    "screens.profile.kill_cat",
+                    "screens.profile.kill_cat" if not self.the_cat.dead else "screens.profile.fade_cat",
                     object_id="#kill_cat_button",
-                    tool_tip_text="screens.profile.kill_cat_tooltip",
+                    tool_tip_text="screens.profile.kill_cat_tooltip" if not self.the_cat.dead else "screens.profile.fade_cat_tooltip",
                     starting_height=2,
                     manager=MANAGER,
                 )
@@ -2494,6 +2494,7 @@ class ProfileScreen(Screens):
                     if self.the_cat.status.group == CatGroup.DARK_FOREST:
                         text = "screens.profile.guide_sc"
                         layer = self.sc
+                    self.kill_cat_button.disable()
                 else:
                     text = "screens.profile.exile_df"
                     layer = self.df
@@ -2503,7 +2504,7 @@ class ProfileScreen(Screens):
                     elif self.the_cat.status.group == CatGroup.UNKNOWN_RESIDENCE:
                         text = "screens.profile.guide_sc"
                         layer = self.sc
-
+                
                 self.exile_layer = UIModifiedImage(
                     ui_scale(pygame.Rect((578, 450), (172, 46))),
                     pygame.transform.scale(
@@ -2521,7 +2522,6 @@ class ProfileScreen(Screens):
 
                 # OTHER BUTTON STATES
                 self.leave_clan_button.hide()
-                self.kill_cat_button.disable()
 
                 # if the cat is dead, then we remove the leave_clan button and change the destroy_acc button's anchor
                 if self.leave_clan_button:
@@ -2541,9 +2541,6 @@ class ProfileScreen(Screens):
                 )
 
             else:
-                # killing allowed if alive
-                self.kill_cat_button.enable()
-
                 if hasattr(self, "change_clan_button"):
                     self.change_clan_button.enable()
                 # no exile allowed if not in a clan
