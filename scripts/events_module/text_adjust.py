@@ -589,7 +589,7 @@ def event_text_adjust(
 
     text = text.replace("medicine cat", "healer").replace("medicine den", "healer den")
 
-    if set(constants.CONFIG["clan_creation"]["leader_lives_nr"]) != (9):
+    if list(set(constants.CONFIG["clan_creation"]["leader_lives_nr"])) != [9]:
         text = text.replace("nine lives", "lives")
 
     return text
@@ -764,7 +764,7 @@ def ceremony_text_adjust(
     adjust_text = adjust_text.replace("medicine cat", "healer").replace("medicine den", "healer den")
 
     if set(constants.CONFIG["clan_creation"]["leader_lives_nr"]) != (9):
-        adjust_text = text.replace("nine lives", "lives")
+        adjust_text = adjust_text.replace("nine lives", "lives")
 
     return adjust_text, random_living_parent, random_dead_parent
 
