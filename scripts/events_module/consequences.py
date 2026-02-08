@@ -779,7 +779,9 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
         if not all_clan_cats:
             all_clan_cats = [i for i in Cat.all_cats.values(
             ) if i.status.group_ID == other_clan.group_ID]
-        picked_cats = [choice(all_clan_cats)]
+
+        all_clan_cats_healthy = [i for i in all_clan_cats if not i.not_working()]
+        picked_cats = [choice(all_clan_cats_healthy if all_clan_cats_healthy else all_clan_cats)]
 
     if "change_clan" in attribute_list:
         for cat in picked_cats:
