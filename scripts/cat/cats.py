@@ -1496,6 +1496,7 @@ class Cat:
         self.history.prev_names.append(str(self.name))
 
         total_lives = max(1, choice(constants.CONFIG["clan_creation"]["leader_lives_nr"]))
+        self.status.fetch_clan_object().leader_lives = total_lives
 
         # determine which dict we're pulling from
         if self.status.fetch_clan_object(game.clan).instructor.status.group == CatGroup.DARK_FOREST:
@@ -1549,7 +1550,7 @@ class Cat:
 
         for rel in relationships:
             kitty = self.fetch_cat(rel.cat_to)
-            if kitty and kitty.dead and kitty.status.rank != CatRank.NEWBORN:
+            if kitty and kitty.dead and not kitty.faded and kitty.status.rank != CatRank.NEWBORN:
                 # check where they reside
                 if starclan:
                     if kitty.status.group != CatGroup.STARCLAN:
@@ -1576,8 +1577,6 @@ class Cat:
         # if we have relations, then make sure we only take the top 8
         if dead_relations:
             for i, rel in enumerate(dead_relations):
-                if rel.cat_to.faded:
-                    continue
                 if i == total_lives-1:
                     break
                 if rel.cat_to.status.is_leader:

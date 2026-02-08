@@ -1490,7 +1490,6 @@ def perform_ceremonies(cat, clan):
             and (leader_dead or leader_outside)
         ):
             clan.new_leader(clan.deputy)
-            clan.leader_lives = 9
             cat = clan.leader
             text = ""
             if clan.deputy.personality.trait == "bloodthirsty":
