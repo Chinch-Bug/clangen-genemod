@@ -452,15 +452,15 @@ dev_tools = false
   # max 1/chance for old mediators to retire if enabled
   max_mediator_retire_chance = 25
 
-[roles.become_mediator_chances]
-  # 1/chance that a cat will switch to mediator. rolls every moon, so keep it high.
-  warrior = 5000
-  elder = 400
+  [roles.become_mediator_chances]
+    # 1/chance that a cat will switch to mediator. rolls every moon, so keep it high.
+    warrior = 5000
+    elder = 400
 
-[roles.become_healer_chances]
-  # 1/chance that a cat will switch to mediator. rolls every moon, so keep it high.
-  warrior = 5000
-  apprentice = 1000
+  [roles.become_healer_chances]
+    # 1/chance that a cat will switch to mediator. rolls every moon, so keep it high.
+    warrior = 5000
+    apprentice = 1000
 
 [lost_cat]
   # 1/chance that a lost cat will return on their own
@@ -605,6 +605,9 @@ dev_tools = false
 
   # range of outsiders to generate upon Clan creation
   starting_outsiders = [0, 0]
+
+  # number of lives leaders receive - will pick from the list, so something like [7, 8, 9] would have an equal random chance of 7, 8, and 9
+  leader_lives_nr = [9]
 
 [genetics_config]
   # 1/chance for newly generated kittypets and other cats to be purebred

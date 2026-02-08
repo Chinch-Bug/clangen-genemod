@@ -362,7 +362,7 @@ class Clan:
             self.leader = leader
             Cat.all_cats[leader.ID].rank_change(CatRank.LEADER)
             self.leader_predecessors += 1
-            self.leader_lives = 9
+            self.leader_lives = max(1, choice(constants.CONFIG["clan_creation"]["leader_lives_nr"]))
 
         # todo: this leads nowhere, can it be deleted?
         switch_set_value(Switch.new_leader, None)
@@ -1394,7 +1394,7 @@ class OtherClan:
             self.leader = leader
             Cat.all_cats[leader.ID].rank_change(CatRank.LEADER)
             self.leader_predecessors += 1
-            self.leader_lives = 9
+            self.leader_lives = max(1, choice(constants.CONFIG["clan_creation"]["leader_lives_nr"]))
         switch_set_value(Switch.new_leader, None)
 
     def new_deputy(self, deputy):
