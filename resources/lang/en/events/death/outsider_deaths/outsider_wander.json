@@ -1,0 +1,29 @@
+{
+    "default": [
+        "Sightings of m_c have stopped as of recent."
+    ],
+    "loner": [
+        "Sightings of the loner, m_c, have stopped as of recent."
+    ],
+    "rogue": [
+        "Sightings of the rogue, m_c, have stopped as of recent."
+    ],
+    "kittypet": [
+        "Sightings of the kittypet, m_c, have stopped as of recent."
+    ],
+    "exiled": [
+        "The Clan hasn't scented the exiled m_c nearby in a while."
+    ],
+    "lost": [
+       "Time away from the Clan has given m_c a lot of room to think. Following a call to adventure, {PRONOUN/m_c/subject} {VERB/m_c/wander/wanders} even farther afield."
+    ],
+    "other_clan": [
+        "The Clan hasn't scented m_c, a former member of o_c_n, nearby in a while."
+    ],
+    "other_clan_exiled": [
+        "The Clan hasn't scented m_c, an exile from o_c_n, nearby in a while."
+    ],
+    "other_clan_lost": [
+        "Nobody has scented m_c, reported missing from o_c_n, nearby in a while."
+    ]
+}

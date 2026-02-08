@@ -140,6 +140,8 @@ def load_game():
     game.clan = None
     game.starclan = None
     game.dark_forest = None
+    if hasattr(all_screens.get_screen(GameScreen.LIST), "full_cats_list"):
+        all_screens.get_screen(GameScreen.LIST).full_cats_list.clear()
     switch_set_value(Switch.switch_clan, False)
     switch_set_value(
         Switch.error_message, ""

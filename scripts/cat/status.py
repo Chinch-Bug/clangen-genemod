@@ -681,6 +681,21 @@ class Status:
         living_group_id = self.get_last_living_group() if not override_id else override_id
         clan = game.clan if living_group_id == CatGroup.PLAYER_CLAN_ID else next(filter(lambda c: c.group_ID == living_group_id, game.clan.all_other_clans), default)
         return clan
+        
+    def get_last_valid_group_id(self) -> Optional[str]:
+        """
+        Returns the last group that this cat was part of. If they have never been affiliated with a group, returns None.
+        :return:
+        """
+        history = self.group_history.copy()
+        history.reverse()
+
+        for entry in history:
+            group_type = game.used_group_IDs.get(entry["group"])
+            if group_type is not None:
+                return entry["group"]
+
+        return None
 
     def is_lost(self, group_ID: str = CatGroup.PLAYER_CLAN_ID) -> bool:
         """

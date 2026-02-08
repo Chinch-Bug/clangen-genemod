@@ -4,12 +4,13 @@ from typing import TYPE_CHECKING
 
 import i18n
 
-from scripts.cat.enums import CatGroup, CatSocial
+from scripts.cat.enums import CatGroup
 from scripts.clan_package.settings import get_clan_setting
 from scripts.event_class import Single_Event
 from scripts.game_structure import constants
 from scripts.game_structure import game
 from scripts.events_module.text_adjust import event_text_adjust
+from scripts.game_structure.localization import load_lang_resource
 
 if TYPE_CHECKING:
     from scripts.cat.cats import Cat
@@ -24,42 +25,60 @@ class OutsiderEvents:
 
     @staticmethod
     def killing_outsiders(cat: "Cat", clan=game.clan):
-        if get_clan_setting("lead_den_outsider_event"):
-            info_dict = get_clan_setting("lead_den_outsider_event")
+        if info_dict := get_clan_setting("lead_den_outsider_event"):
             if cat.ID == info_dict["cat_ID"]:
                 return
 
+        deaths = load_lang_resource("events/death/outsider_deaths/outsider_deaths.json")
+
         # killing outside cats
-        if cat.status.is_outsider:
+        if cat.status.is_outsider or game.clan.clancount == "singleclan" and cat.status.is_other_clancat:
             age_start = constants.CONFIG["death_related"]["old_age_death_start"]
             death_curve_setting = constants.CONFIG["death_related"]["old_age_death_curve"]
             death_curve_value = 0.001 * death_curve_setting
             old_age_death_chance = ((1 + death_curve_value) ** (cat.moons - age_start)) - 1
             if random.getrandbits(int(constants.CONFIG["outsider_events"]["outsider_death"])) == 1 or random.random() <= old_age_death_chance and not cat.dead:
-                death_history = "m_c died outside of the Clan."
-                if cat.status.is_exiled():
-                    text = f"Rumors reach your Clan that the exiled {cat.name} has died recently."
-                elif cat.status.is_lost():
-                    text = (
-                        f"Will they reach StarClan, even so far away? {cat.name} isn't sure, "
-                        f"but as they drift away, they hope to see "
-                        f"familiar starry fur on the other side."
-                    )
-                    death_history = (
-                        "m_c died while being lost and trying to get back to the Clan."
-                    )
+                death_history = i18n.t("events.death.outsider_deaths.history.default")
+                if cat.status.is_exiled(CatGroup.PLAYER_CLAN_ID if game.clan.clancount == "singleclan" else None):
+                    text = random.choice(deaths["exiled"])
+                    death_history = i18n.t("events.death.outsider_deaths.history.exiled")
+                elif cat.status.is_lost(CatGroup.PLAYER_CLAN_ID if game.clan.clancount == "singleclan" else None):
+                    text = random.choice(deaths["lost"])
+                    death_history = i18n.t("events.death.outsider_deaths.history.lost")
+                elif game.clan.clancount == "singleclan" and cat.status.is_other_clancat or cat.status.is_former_clancat:
+                    group_id = cat.status.get_last_valid_group_id()
+                    if cat.status.is_exiled(group_id):
+                        text = random.choice(deaths["other_clan_exiled"])
+                        death_history = i18n.t(
+                            "events.death.outsider_deaths.history.other_clan_exiled"
+                        )
+                    elif cat.status.is_lost(group_id):
+                        text = random.choice(deaths["other_clan_lost"])
+                        death_history = i18n.t(
+                            "events.death.outsider_deaths.history.other_clan_lost"
+                        )
+                    else:
+                        text = random.choice(deaths["other_clan"])
+                        death_history = i18n.t(
+                            "events.death.outsider_deaths.history.other_clan"
+                        )
 
-                else:
-                    social = i18n.t(f"general.{cat.status.social}", count=1)
-                    text = (
-                        f"Rumors reach your Clan that the {social}, "
-                        f"{cat.name}, has died recently."
+                    clanname = [
+                        c for c in [game.clan] + game.clan.all_other_clans if c.group_ID == group_id
+                    ][0].displayname
+                    clanname = i18n.t("general.clan", name=clanname)
+                    text = text.replace("o_c_n", clanname)
+                    death_history = death_history.replace("o_c_n", clanname)
+                elif cat.status.is_outsider:
+                    text = random.choice(deaths[cat.status.social.value])
+                    death_history = i18n.t(
+                        f"events.death.outsider_deaths.history.{cat.status.social.value}"
                     )
-                    death_history = "m_c died while roaming around."
+                
                 cat.history.add_death(death_text=death_history)
                 cat.die()
                 game.cur_events_list.append(
-                    Single_Event(text, "birth_death", cat_dict={"m_c": cat}, clan=clan.group_ID)
+                    Single_Event(text, "birth_death", cat_dict={"m_c": cat}, clan=cat.status.get_last_valid_group_id())
                 )
 
     @staticmethod
@@ -69,45 +88,63 @@ class OutsiderEvents:
             if cat.ID == info_dict["cat_ID"]:
                 return
 
+        wander_events = load_lang_resource("events/death/outsider_deaths/outsider_wander.json")
+        return_events = load_lang_resource("events/death/outsider_deaths/outsider_return.json")
+
         # move outsider cats away from the Clan automatically
         if cat.status.is_outsider:
             if random.getrandbits(int(constants.CONFIG["outsider_events"]["outsider_wander_off"])) == 1 and not cat.dead and not cat.age.is_baby() and cat.status.is_near():
-                if cat.status.is_exiled():
-                    text = f"The Clan hasn't scented the exiled {cat.name} nearby in a while."
-                elif cat.status.is_lost():
-                    text = (
-                        f"Time away from the Clan has given {cat.name} a lot of room to think. "
-                        "Following a call to adventure, {PRONOUN/m_c/subject/CAP} {VERB/m_c/wander/wanders} even farther afield."
-                    )
+                if cat.status.is_exiled(CatGroup.PLAYER_CLAN_ID if game.clan.clancount == "singleclan" else None):
+                    text = random.choice(wander_events["exiled"])
+                elif cat.status.is_lost(CatGroup.PLAYER_CLAN_ID if game.clan.clancount == "singleclan" else None):
+                    text = random.choice(wander_events["lost"])
+                elif game.clan.clancount == "singleclan" and cat.status.is_former_clancat:
+                    group_id = cat.status.get_last_valid_group_id()
+                    if cat.status.is_exiled(group_id):
+                        text = random.choice(wander_events["other_clan_exiled"])
+                    elif cat.status.is_lost(group_id):
+                        text = random.choice(wander_events["other_clan_lost"])
+                    else:
+                        text = random.choice(wander_events["other_clan"])
 
+                    clanname = [
+                        c for c in [game.clan] + game.clan.all_other_clans if c.group_ID == group_id
+                    ][0].displayname
+                    clanname = i18n.t("general.clan", name=clanname)
+                    text = text.replace("o_c_n", clanname)
                 else:
-                    social = i18n.t(f"general.{cat.status.social}", count=1)
-                    text = (
-                        f"Sightings of the {social}, {cat.name}, have stopped as of recent."
-                    )
+                    text = random.choice(wander_events[cat.status.social.value])
                 text = event_text_adjust(cat, text, main_cat=cat)
                 game.cur_events_list.append(
                     Single_Event(text, "misc", cat_dict={
-                                 "m_c": cat}, clan=clan.group_ID)
+                                 "m_c": cat}, clan=cat.status.get_last_valid_group_id())
                 )
                 cat.status.change_group_nearness(clan.group_ID)
             elif random.getrandbits(int(constants.CONFIG["outsider_events"]["outsider_return"])) == 1 and not cat.dead and not cat.status.is_near():
-                if cat.status.is_exiled():
-                    text = f"The exiled {cat.name} has been spotted near the border again recently."
-                elif cat.status.is_lost():
-                    text = (
-                        f"Feeling homesick, {cat.name} has travelled far to return back to familiar territory. "
-                        "The Clan is happy to hear rumours of {PRONOUN/m_c/poss} roaming nearby."
-                    )
+                if cat.status.is_exiled(CatGroup.PLAYER_CLAN_ID if game.clan.clancount == "singleclan" else None):
+                    text = random.choice(return_events["exiled"])
+                elif cat.status.is_lost(CatGroup.PLAYER_CLAN_ID if game.clan.clancount == "singleclan" else None):
+                    text = random.choice(return_events["lost"])
+                elif game.clan.clancount == "singleclan" and cat.status.is_former_clancat:
+                    group_id = cat.status.get_last_valid_group_id()
+                    if cat.status.is_exiled(group_id):
+                        text = random.choice(return_events["other_clan_exiled"])
+                    elif cat.status.is_lost(group_id):
+                        text = random.choice(return_events["other_clan_lost"])
+                    else:
+                        text = random.choice(return_events["other_clan"])
 
+                    clanname = [
+                        c for c in [game.clan] + game.clan.all_other_clans if c.group_ID == group_id
+                    ][0].displayname
+                    clanname = i18n.t("general.clan", name=clanname)
+                    text = text.replace("o_c_n", clanname)
                 else:
-                    social = i18n.t(f"general.{cat.status.social}", count=1)
-                    text = (
-                        f"New sightings of the {social}, {cat.name}, have been reported lately."
-                    )
+                    text = random.choice(
+                        return_events[cat.status.social.value])
                 text = event_text_adjust(cat, text, main_cat=cat)
                 game.cur_events_list.append(
                     Single_Event(text, "misc", cat_dict={
-                                 "m_c": cat}, clan=clan.group_ID)
+                                 "m_c": cat}, clan=cat.status.get_last_valid_group_id())
                 )
                 cat.status.change_group_nearness(clan.group_ID)

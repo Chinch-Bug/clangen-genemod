@@ -1,0 +1,29 @@
+{
+    "default": [
+        "New sightings of m_c, have been reported lately."
+    ],
+    "loner": [
+        "New sightings of the loner, m_c, have been reported lately."
+    ],
+    "rogue": [
+        "New sightings of the rogue, m_c, have been reported lately."
+    ],
+    "kittypet": [
+        "New sightings of the kittypet, m_c, have been reported lately."
+    ],
+    "exiled": [
+        "The exiled m_c has been spotted near the border again recently."
+    ],
+    "lost": [
+       "Feeling homesick, m_c has travelled far to return back to familiar territory. The Clan is happy to hear rumours of {PRONOUN/m_c/poss} roaming nearby."
+    ],
+    "other_clan": [
+        "New sightings of m_c, a former member of o_c_n, have been reported lately."
+    ],
+    "other_clan_exiled": [
+        "New sightings of m_c, an exile from o_c_n, have been reported lately."
+    ],
+    "other_clan_lost": [
+        "New sightings of m_c, reported missing from o_c_n, have been reported lately."
+    ]
+}
