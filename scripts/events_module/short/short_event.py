@@ -448,6 +448,7 @@ class ShortEvent:
             if not isinstance(cat_list, list):
                 continue
             first_cat = cat_list[0]
+            extra_text = None
             if first_cat.dead:
                 extra_text = event_text_adjust(
                     Cat,

@@ -549,7 +549,8 @@ class Cat:
         self.genderalign = ""
         if (self.gender == 'intersex' or 
            (self.gender == "molly" and 'Y' in self.phenotype.sexgene) or 
-           (self.gender == "tom" and 'Y' not in self.phenotype.sexgene)):
+           (self.gender == "tom" and 'Y' not in self.phenotype.sexgene) or
+           (len(self.phenotype.sexgene) != 2)):
             self.genderalign = 'intersex '
         if nb_chance == 1:
             self.genderalign += "sam"

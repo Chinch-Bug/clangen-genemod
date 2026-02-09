@@ -134,6 +134,7 @@ def process_text(text, cat_dict, raise_exception=False):
     adjust_text = re.sub(
         "|".join(name_patterns), lambda x: name_repl(x, cat_dict), adjust_text
     )
+    adjust_text = adjust_text.replace("medicine cat", "healer").replace("medicine den", "healer den")
     return adjust_text
 
 
@@ -653,8 +654,6 @@ def leader_ceremony_text_adjust(
     clan = leader.status.fetch_clan_object()
     text = text.replace("c_n", str(clan.displayname) + "Clan")
 
-    text = text.replace("medicine cat", "healer").replace("medicine den", "healer den")
-
     if list(set(constants.CONFIG["clan_creation"]["leader_lives_nr"])) != [9]:
         text = text.replace("nine lives", "lives")
 
@@ -760,8 +759,6 @@ def ceremony_text_adjust(
         )
 
     adjust_text = process_text(adjust_text, cat_dict)
-
-    adjust_text = adjust_text.replace("medicine cat", "healer").replace("medicine den", "healer den")
 
     if list(set(constants.CONFIG["clan_creation"]["leader_lives_nr"])) != [9]:
         adjust_text = adjust_text.replace("nine lives", "lives")
