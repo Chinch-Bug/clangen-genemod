@@ -130,7 +130,7 @@ class Name:
             self.check_name(Cat, name_fixpref)
 
     def check_name(self, Cat, name_fixpref):
-        if not suffix:
+        if not self.suffix:
             return
         # Prevent triple letter names from joining prefix and suffix from occurring (ex. Beeeye)
         possible_three_letter = (
