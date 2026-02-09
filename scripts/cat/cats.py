@@ -1158,7 +1158,7 @@ class Cat:
         for x in self.apprentice:
             Cat.fetch_cat(x).update_mentor()
 
-    def become_lost(self, status = None, standing = CatStanding.LOST):
+    def become_lost(self, status = None):
         """Makes a Clan cat a lost cat. Makes status changes and removes apprentices."""
 
         if self.status.is_leader:
@@ -1169,9 +1169,7 @@ class Cat:
             self.status.fetch_clan_object().remove_med_cat(self)
 
         self.status.become_lost(
-            new_social_status=choice([CatSocial.KITTYPET, CatSocial.LONER]) if not status else status,
-            override_standing=standing
-        )
+            new_social_status=choice([CatSocial.KITTYPET, CatSocial.LONER]) if not status else status)
 
         for app in self.apprentice.copy():
             app_ob = Cat.fetch_cat(app)

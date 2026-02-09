@@ -478,7 +478,7 @@ class Status:
     def become_lost(
         self,
         new_social_status: CatSocial = CatSocial.KITTYPET,
-        specific_group: str = None, override_standing=CatStanding.LOST,
+        specific_group: str = None,
     ):
         """
         Removes from previous group and sets standing with that group to Lost.
@@ -491,7 +491,7 @@ class Status:
 
         self._modify_group(
             rank,
-            standing_with_past_group=override_standing,
+            standing_with_past_group=CatStanding.LOST,
             forced_old_group_ID=specific_group,
         )
 
@@ -697,7 +697,7 @@ class Status:
 
         return None
 
-    def is_lost(self, group_ID: str = CatGroup.PLAYER_CLAN_ID) -> bool:
+    def is_lost(self, group_ID: str = None) -> bool:
         """
         Returns True if the cat is considered "lost" by a group.
         :param group_ID: use this to specify a certain group to check lost status against
