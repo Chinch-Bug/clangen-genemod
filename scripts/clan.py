@@ -288,7 +288,8 @@ class Clan:
         save_cats(game.clan.name, Cat, game)
 
         # create leader's ceremony
-        self.leader.generate_lead_ceremony()
+        if self.leader:
+            self.leader.generate_lead_ceremony()
         if self.clancount == "multiclan":
             for clan in self.all_other_clans:
                 clan.leader.generate_lead_ceremony()
@@ -1359,7 +1360,7 @@ class OtherClan:
             self.new_leader(Cat(status_dict={"rank": CatRank.LEADER, "group_ID": self.group_ID}, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]))
             self.new_deputy(Cat(status_dict={"rank": CatRank.DEPUTY, "group_ID": self.group_ID}, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]))
             self.new_medicine_cat(Cat(status_dict={"rank": CatRank.MEDICINE_CAT, "group_ID": self.group_ID}, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]))
-            for i in range(randint(5, 7)):
+            for i in range(randint(constants.CONFIG["clan_creation"]["neighbourclan_cats"][0], constants.CONFIG["clan_creation"]["neighbourclan_cats"][1])):
                 Cat(status_dict={"rank": choice(random_rank), "group_ID": self.group_ID}, kittypet = constants.CONFIG["clan_creation"]["use_special_roller"])
 
     def __repr__(self):

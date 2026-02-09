@@ -142,6 +142,12 @@
         "New cats will have special suffix automatically hidden",
         false,
         [ "modded names", true ]
+      ],
+      "outsider names": [
+        "Use outsider name pool",
+        "Prefixes will be picked from outsider name pool",
+        false,
+        [ "modded names", true ]
       ]
     },
     "..": "these are special. they do not have a display name or a tooltip",

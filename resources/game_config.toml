@@ -606,6 +606,12 @@ dev_tools = false
   # range of outsiders to generate upon Clan creation
   starting_outsiders = [0, 0]
 
+  # range of cats to pick on quickstart (not counting the leader, deputy, and healer)
+  quickstart_cats = [4, 7]
+
+  # range of cats to pick on quickstart (not counting the leader, deputy, and healer) for neighbouring Clans in multiclan
+  neighbourclan_cats = [4, 7]
+
   # number of lives leaders receive - will pick from the list, so something like [7, 8, 9] would have an equal random chance of 7, 8, and 9
   leader_lives_nr = [9]
 

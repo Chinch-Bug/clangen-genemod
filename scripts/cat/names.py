@@ -271,6 +271,9 @@ class Name:
 
     # Generate possible prefix
     def give_prefix(self, cat, biome, no_suffix=False):
+        if get_clan_setting("modded names") and get_clan_setting('outsider names'):
+            self.prefix = random.choice(self.names_dict["normal_prefixes"]) if random.random() > 0.75 else random.choice(self.names_dict["loner_names"])
+            return
         if not self.phenotype:
             self.prefix = random.choice(self.names_dict["normal_prefixes"])
             return
