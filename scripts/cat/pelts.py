@@ -140,7 +140,7 @@ class Pelt:
         if phenotype.length == "longhaired" and phenotype.longtype == 'long' and phenotype.cornish[0] == "R" and phenotype.lykoi[0] == 'Ly' and phenotype.sedesp[0] != "re" and 'brush' not in phenotype.furtype:    
             self.length = "long"
         elif phenotype.length != 'hairless':
-            if phenotype.length == "mediumhaired":
+            if phenotype.length == "mediumhaired" or phenotype.length == "longhaired":
                 self.length = 'medium'
             else:
                 self.length = "short"
