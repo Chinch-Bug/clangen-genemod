@@ -28,7 +28,7 @@ dependencies = [
 
 [dependency-groups]
 build = [
-    "pillow~=9.5",
+    "pillow~=10.0",
     "pyinstaller~=6.6",
     "setuptools~=67.7",
     "wheel~=0.40",
