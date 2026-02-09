@@ -634,7 +634,7 @@ class RomanticEvents:
                 cat_to.relationships[cat_from.ID].comfort -= 10
 
         mate_string = RomanticEvents.prepare_relationship_string(
-            mate_string, cat_from, cat_to, clan=cat_from.status.group_ID
+            mate_string, cat_from, cat_to, clan=cat_from.status.fetch_clan_object(game.clan)
         )
         clan = cat_from.status.fetch_clan_object(game.clan)
         game.cur_events_list.append(
