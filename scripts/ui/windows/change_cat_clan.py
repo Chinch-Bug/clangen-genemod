@@ -81,7 +81,7 @@ class ChangeCatClanWindow(GameWindow):
     def process_event(self, event):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
             if event.ui_element == self.save_button:
-                if self.the_cat.status.rank in [CatRank.NEWBORN, CatRank.KITTEN]
+                if self.the_cat.status.rank in [CatRank.NEWBORN, CatRank.KITTEN]:
                     rank = self.the_cat.status.get_rank_from_age(self.the_cat.age)
                     if self.the_cat.status.rank != rank:
                         self.the_cat.rank_change(new_rank=CatRank(rank), resort=True)
