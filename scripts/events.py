@@ -1194,6 +1194,8 @@ def one_moon_cat(cat, clan):
             cat.moons += 1
         else:
             cat.status.increase_current_moons_as()
+        if cat.moons > 0 and cat.status.rank == CatRank.NEWBORN:
+            cat.status._change_rank(CatRank.KITTEN)
         cat.get_new_thought()
         handle_fading(cat, clan)  # Deal with fading.
         return
