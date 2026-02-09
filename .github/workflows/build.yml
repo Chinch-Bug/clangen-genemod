@@ -59,7 +59,6 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v5
         with:
-          version: "latest"
           enable-cache: true
 
       - name: Setup Python
@@ -93,7 +92,7 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: ${{ runner.os }}-cargo-
       - name: install dependencies
-        run: uv sync --prefer-binary --group build --extra discord
+        run: uv sync --group build --extra discord
       - name: Build PyInstaller bootloader
         run: |
           git clone https://github.com/pyinstaller/pyinstaller.git
