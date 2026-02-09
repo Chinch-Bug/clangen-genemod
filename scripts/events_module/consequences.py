@@ -797,7 +797,9 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
                 cat.status._change_rank(CatRank.WARRIOR)
 
             if "rogue" in attribute_list:
-                cat.become_lost(CatSocial.ROGUE)
+                cat.become_lost(CatSocial.ROGUE, CatStanding.LEFT)
+            elif "former clancat" in attribute_list:
+                cat.become_lost(CatSocial.LONER, CatStanding.LEFT)
             else:
                 cat.status.add_to_group(
                     clan.group_ID, standing_with_past_group=CatStanding.LEFT)
