@@ -1,2 +1,2 @@
-poetry install --no-root
-poetry run python main.py
+uv sync
+uv run python main.py
