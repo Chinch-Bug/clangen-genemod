@@ -3857,7 +3857,7 @@ def create_option_preview_cat(scar: str = None, acc: str = None):
     new_cat = Cat(
         loading_cat=True,
         pelt=Pelt(
-            phenotype=pheno.toJSON(),
+            phenotype=pheno,
             reverse=False,
             tint="gray",
             scars=[scar] if scar else [],
