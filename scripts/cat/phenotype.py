@@ -536,7 +536,7 @@ class Phenotype(Genotype):
             all_patterns = ['redbaralt']
         elif (special == 'ghost'):
             all_patterns = ['fullbaralt']
-        elif self.ticked[1] == "Ta" or not self.breakthrough:
+        elif self.ticked[1] == "Ta" or (not self.breakthrough and self.ticked[0] == "Ta"):
             if (self.ticktype == "agouti"):
                 all_patterns = ['agouti']
             elif (self.ticktype == 'reduced barring'):
