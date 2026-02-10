@@ -344,7 +344,7 @@ class Pelt:
         has_vitiligo = []
         if (white_pattern is not None and white_pattern != "No"):
             has_vitiligo = [p for p in white_pattern if p in vitiligo]
-        if (white_pattern is None and KIT[0] not in ['w', 'wsal']) or ((white_pattern is not None and (white_pattern == "No" or (len(white_pattern) == len(has_vitiligo) and len(has_vitiligo) > 0))) and (KIT[0] == 'wg' or 'NoDBE' not in pax3 or KIT[1] in ["ws", "wt"])):
+        if (white_pattern is None and KIT[0] not in ['w', 'wsal']) or ((white_pattern is None or (white_pattern == "No" or (len(white_pattern) == len(has_vitiligo) and len(has_vitiligo) > 0))) and (KIT[0] == 'wg' or 'NoDBE' not in pax3 or KIT[1] in ["ws", "wt"])):
             white_pattern = []
             if 'wt' in KIT:
                 if KIT[1] not in ['ws', 'wt'] and KITgrade < 3:
