@@ -701,6 +701,10 @@ class Phenotype(Genotype):
         self.patchunders = []
         self.patchcolour = ""
 
+        if "o" in self.sexgene and "O" in self.sexgene:
+            if self.tortiepattern is None:
+                self.tortiepattern = self.ChooseTortiePattern()
+
         if(self.silver[0] == 'I' and self.pseudomerle):
             if self.merlepattern is None:  # pylint: disable=access-member-before-definition
                 self.merlepattern = self.ChooseTortiePattern(spec = 'merle')

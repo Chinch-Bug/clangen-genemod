@@ -1820,14 +1820,14 @@ class ProfileScreen(Screens):
                     if multi_life_count != 0:
                         temp_index = index - multi_life_count
                         lives = [
-                            i18n.t(f"utility.{life_names[temp_index]}").capitalize()
+                            i18n.t(f"utility.{life_names[temp_index]}").capitalize() if temp_index < 9 else f"{temp_index+1}th"
                         ]
                         while multi_life_count != 0:
                             multi_life_count -= 1
                             temp_index += 1
-                            lives.append(i18n.t(f"utility.{life_names[temp_index]}"))
+                            lives.append(i18n.t(f"utility.{life_names[temp_index]}") if temp_index < 9 else f"{temp_index+1}th")
                     else:
-                        lives = [i18n.t(f"utility.{life_names[index]}").capitalize()]
+                        lives = [i18n.t(f"utility.{life_names[index]}").capitalize() if index < 9 else f"{index+1}th"]
 
                     if len(lives) > 2:
                         life_text = i18n.t(
