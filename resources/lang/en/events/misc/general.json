@@ -11071,7 +11071,7 @@
             ]
         },
         "multiclan_cat": [
-            [ "clancat", "exists", "meeting", "dead", "status:apprentice" ]
+            [ "clancat", "exists", "meeting", "dead", "status:warrior" ]
         ],
         "relationships": [
             {
@@ -11113,6 +11113,9 @@
                 "apprentice"
             ]
         },
+        "multiclan_cat": [
+            [ "clancat", "exists", "meeting", "dead", "status:apprentice" ]
+        ],
         "relationships": [
             {
                 "cats_from": ["clan", "high_lawful", "high_social"],
