@@ -1307,7 +1307,7 @@
         "relationships": [
             {
                 "cats_from": [
-                    "r_c"
+                    "r_c", "high_lawful"
                 ],
                 "cats_to": [
                     "m_c"
@@ -1325,7 +1325,7 @@
                 }
             },
             {
-                "cats_from": ["clan", "low_lawful"
+                "cats_from": ["r_c", "low_lawful"
                 ],
                 "cats_to": [
                     "m_c"
