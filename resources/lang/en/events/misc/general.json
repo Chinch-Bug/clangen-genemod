@@ -10329,15 +10329,22 @@
                 "self-conscious"
             ]
         },
+        "new_gender": [
+            "trans male",
+            "nonbinary"
+        ],
         "r_c": {
-            "not_trait": [
-                "nervous",
-                "insecure",
-                "gloomy",
-                "shy",
-                "skittish",
-                "quiet",
-                "self-conscious"
+            "trait": [
+                "-nervous",
+                "-insecure",
+                "-gloomy",
+                "-shy",
+                "-skittish",
+                "-quiet",
+                "-self-conscious"
+            ],
+            "status": [
+                "-newborn"
             ]
         },
         "relationships": [{
@@ -10354,13 +10361,9 @@
             ],
             "amount": 5,
             "log": {
-                "cats_from": "m_c Trusted r_c with something important"
+                "cats_from": "m_c trusted r_c with announcing {PRONOUN/m_c/object} transition"
             }
-        }],
-        "new_gender": [
-            "trans male",
-            "nonbinary"
-        ]
+        }]
     },
     {
         "event_id": "gen_misc_nervous_transition_from_male1",
@@ -10389,15 +10392,22 @@
                 "self-conscious"
             ]
         },
+        "new_gender": [
+            "trans female",
+            "nonbinary"
+        ],
         "r_c": {
-            "not_trait": [
-                "nervous",
-                "insecure",
-                "gloomy",
-                "shy",
-                "skittish",
-                "quiet",
-                "self-conscious"
+            "trait": [
+                "-nervous",
+                "-insecure",
+                "-gloomy",
+                "-shy",
+                "-skittish",
+                "-quiet",
+                "-self-conscious"
+            ],
+            "status":[
+                "-newborn"
             ]
         },
         "relationships": [ {
@@ -10414,13 +10424,9 @@
                 ],
                 "amount": 5,
                 "log": {
-                    "cats_from": "m_c Trusted r_c with something important"
+                    "cats_from": "m_c trusted r_c with announcing {PRONOUN/m_c/object} transition"
                 }
-            } ],
-        "new_gender": [
-            "trans female",
-            "nonbinary"
-        ]
+            } ]
     },
     {
         "event_id": "gen_injury_scratches_war_lostkit",
