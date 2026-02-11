@@ -641,6 +641,8 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
     age = None
     adoptive_parents = []
     blood_parent = None
+    sibling = None
+    parent_match = None
     give_mates = []
     picked_cats = []
     chosen_backstory = None
@@ -662,7 +664,11 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
             age = match.group(1)
         match = re.match(r"parent:\s?(.+)", a)
         if match:
-            blood_parent = in_event_cats[match.group(1)]
+            parent_match = "n_c:" + match.group(1)
+            blood_parent = in_event_cats[parent_match]
+        match = re.match(r"sibling:\s?(.+)", a)
+        if match:
+            sibling = in_event_cats["n_c:" + match.group(1)]
         match = re.match(r"adoptive:\s?(.+)", a)
         if match:
             adoptive_indexes = match.group(1).split(",") if match else []
@@ -741,6 +747,10 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
         else:
             picked_cats = [choice(orphans)]
     else:
+        if blood_parent and not sibling:
+            all_clan_cats = [cat for cat in all_clan_cats if cat.parent1]
+        elif sibling:
+            all_clan_cats = [cat for cat in all_clan_cats if sibling.ID in cat.inheritance.siblings]
         if status == "any_apprentice":
             all_clan_cats = [
                 cat for cat in all_clan_cats if cat.status.rank.is_any_apprentice_rank()]
@@ -762,7 +772,7 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
             if not all_clan_cats:
                 print("No possible mates found")
                 all_clan_cats = create_new_cat_block(
-                    Cat, Relationship, event, in_event_cats, i, attribute_list, other_clan=other_clan)
+                    Cat, Relationship, event, in_event_cats, i, attribute_list, clan=clan, other_clan=other_clan)
         elif age == "has_kits":
             (parents, orphans) = get_alive_clan_queens(
                 all_clan_cats, clan=other_clan.group_ID)
@@ -782,6 +792,9 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
 
         all_clan_cats_healthy = [i for i in all_clan_cats if not i.not_working()]
         picked_cats = [choice(all_clan_cats_healthy if all_clan_cats_healthy else all_clan_cats)]
+        if blood_parent and not sibling:
+            picked_parents = [picked_cats[0].parent1, picked_cats[0].parent2]
+            in_event_cats[parent_match] = Cat.fetch_cat(choice([p for p in picked_parents if p])) if [p for p in picked_parents if p] else None
 
     if "change_clan" in attribute_list:
         for cat in picked_cats:

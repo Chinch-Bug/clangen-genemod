@@ -895,13 +895,16 @@ class PatrolOutcome:
             else:
                 patrol.new_cats.append(
                     find_clan_cats(
-                        Cat, Relationship, self, in_event_cats, i, attribute_list, clan=patrol.clan, other_clan=patrol.other_clan
+                        Cat, Relationship, patrol, in_event_cats, i, attribute_list, clan=patrol.clan, other_clan=patrol.other_clan
                     )
                 )
+            in_event_cats[f"n_c:{i}"] = patrol.new_cats[i][0]
             dead = []
             outside = []
             new = []
             for cat in patrol.new_cats[-1]:
+                if "unknown" in attribute_list:
+                    continue
                 if cat.dead:
                     dead.append(str(cat.name))
                 elif cat.status.group_ID != patrol.clan.group_ID:
