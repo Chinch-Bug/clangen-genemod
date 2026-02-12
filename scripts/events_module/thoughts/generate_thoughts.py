@@ -148,7 +148,7 @@ def _load_group(
         thoughts = load_lang_resource(f"{new_path}/parent.json")
 
     # ON NEW CAT ENCOUNTER
-    elif thought_type == CatThought.ON_MEETING:
+    elif thought_type in [CatThought.ON_MEETING, CatThought.OUTSIDE_SIRE, CatThought.OUTSIDE_DAM, CatThought.OUTSIDE_SURROGATE, CatThought.OUTSIDE_KIT_DEATH]:
         if main_cat.status.is_clancat:
             thoughts = load_lang_resource(f"{new_path}/clancat.json")
         else:
