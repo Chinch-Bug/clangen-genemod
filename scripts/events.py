@@ -187,8 +187,7 @@ def one_moon():
 
                 if grief_type == "minor":
                     Cat.fetch_cat(cat_id).get_new_thought(
-                        text, other_cat=Cat.fetch_cat(cats[0]),
-                        clan=Cat.fetch_cat(cat_id).status.fetch_clan_object()
+                        text, other_cat=Cat.fetch_cat(cats[0])
                     )
 
                 else:
