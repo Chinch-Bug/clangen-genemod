@@ -7,7 +7,14 @@ from typing import Dict, List, Union, Optional
 import i18n
 
 from scripts.cat.cats import Cat, BACKSTORIES
-from scripts.cat.enums import CatAge, CatGroup, CatRank, CatSocial, CatCompatibility
+from scripts.cat.enums import (
+    CatAge,
+    CatGroup,
+    CatRank,
+    CatSocial,
+    CatCompatibility,
+    CatThought,
+)
 from scripts.cat.genotype import Genotype
 from scripts.cat.names import names, Name
 from scripts.cat.status import StatusDict
@@ -248,11 +255,13 @@ class Pregnancy_Events:
         )
         
         cats_involved = [cat.ID]
+        cat.get_new_thought(CatThought.ON_BIRTH)
         if other_cat:
             for x in other_cat:
                 cats_involved.append(x.ID)
+                other_cat.get_new_thought(CatThought.ON_BIRTH)
         for kit in kits:
-            kit.thought = i18n.t("hardcoded.new_kit_thought", name=str(cat.name))
+            kit.get_new_thought()
             cats_involved.append(kit.ID)
             kit.add_to_clan(clan.group_ID)
 
@@ -1260,7 +1269,7 @@ class Pregnancy_Events:
                                             gender=('fem' if cat_is_amab(cat) else 'masc') if not get_clan_setting('same sex birth') else None,
                                             outside=True,
                                             is_parent=True)[0]
-            outside_parent.thought = i18n.t("hardcoded.thought_outside_surrogate")
+            outside_parent.get_new_thought(CatThought.OUTSIDE_SURROGATE)
         return outside_parent
         
     @staticmethod
@@ -1291,16 +1300,15 @@ class Pregnancy_Events:
                 outside_parent = [choice(other_clan_affair_partners)]
             else:
                 mate_age = cat.moons + randint(0, 24)-12
-                outside_parent = create_new_cat(Cat,
+                outside_parent = [create_new_cat(Cat,
                                                 original_social=CatSocial.CLANCAT,
                                                 backstory=BACKSTORIES["backstory_categories"].get(f"former_clancat_backstories", ["outsider1"]),
                                                 alive=True,
                                                 moons=mate_age if mate_age > 14 else 15,
                                                 gender=('fem' if cat_is_amab(cat) else 'masc') if not get_clan_setting('same sex birth') else None,
                                                 outside=True,
-                                                is_parent=True)
-                outside_parent[0].thought = event_text_adjust(Cat, i18n.t(
-                    "hardcoded.thought_outside_dam" if background_category == "2" else "hardcoded.thought_outside_sire", count=amount, name=str(cat.name)), main_cat=outside_parent[0])
+                                                is_parent=True)]
+            outside_parent[0].get_new_thought(CatThought.OUTSIDE_DAM if background_category == "2" else CatThought.OUTSIDE_SIRE)
             if random() < 0.2:
                 outside_parent[0].set_mate(cat)
                 cat.set_mate(outside_parent[0])
@@ -1336,8 +1344,7 @@ class Pregnancy_Events:
                                                         gender=('fem' if cat_is_amab(cat) else 'masc') if not get_clan_setting('same sex birth') else None,
                                                         outside=True,
                                                         is_parent=True)[0]
-                    outside_parent.thought = event_text_adjust(Cat, i18n.t(
-                        "hardcoded.thought_outside_dam" if background_category == "2" else "hardcoded.thought_outside_sire", count=amount, name=str(cat.name)), main_cat=outside_parent)
+                    outside_parent.get_new_thought(CatThought.OUTSIDE_DAM if background_category == "2" else CatThought.OUTSIDE_SIRE)
                     outside_parent.birth_cooldown = constants.CONFIG["pregnancy"]["birth_cooldown"]
                     if random() < 0.1:
                         outside_parent.set_mate(cat)
@@ -1561,11 +1568,6 @@ class Pregnancy_Events:
                     kit = Cat(parent1=cat.ID, parent2=second_blood.ID if second_blood else None, moons=0, backstory=backstory, status_dict=kit_status, extrapar = chimera_sire)
                 else:
                     kit = Cat(parent1=cat.ID, parent2=second_blood.ID, moons=0, status_dict=kit_status)
-                
-                if "pregnant" in cat.injuries or not second_blood or second_blood.status.is_outsider:
-                    kit.thought = i18n.t("hardcoded.new_kit_thought", name=str(cat.name))
-                else:
-                    kit.thought = i18n.t("hardcoded.new_kit_thought", name=str(second_blood.name))
 
             if identical:
                 identical = False
@@ -1606,6 +1608,8 @@ class Pregnancy_Events:
                 if constants.CONFIG["genetics_config"]["identical_twins"] and randint(1, constants.CONFIG["genetics_config"]["identical_twins"]) == 1 and kits_amount < 19:
                     kits_amount += 1
                     identical = True
+            
+            kit.get_new_thought()
 
             # make lost status match parent
             if cat and cat.status.is_lost():
@@ -1723,9 +1727,15 @@ class Pregnancy_Events:
         # add them as adoptive parents if not
         final_adoptive_parents = []
         for adoptive_p in all_adoptive_parents:
+            Cat.fetch_cat(adoptive_p).get_new_thought(CatThought.ON_BIRTH)
             if adoptive_p not in all_kitten[0].inheritance.all_involved:
                 final_adoptive_parents.append(adoptive_p)
-        
+        if not adoptive_parents:
+            cat.get_new_thought(CatThought.ON_BIRTH)
+            if other_cat:
+                for x in other_cat:
+                    x.get_new_thought(CatThought.ON_BIRTH)
+
         # Add the adoptive parents.
         for kit in all_kitten:
             kit.adoptive_parents = final_adoptive_parents.copy()

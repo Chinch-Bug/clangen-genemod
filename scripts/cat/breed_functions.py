@@ -1640,7 +1640,7 @@ class Breed_generator:
         elif random() < 0.0625:
             genoclass.poly[0] = "Pd"
 
-        genoclass.height_value = randint(genoclass.height_indexes[3]+1, genoclass.height_indexes[9])
+        genoclass.height_value = randint(genoclass.height_indexes[4]+1, genoclass.height_indexes[9])
         
         genoclass.breeds["Maine Coon"] = 100
         genoclass.longtype = 'long'

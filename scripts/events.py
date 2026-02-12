@@ -14,7 +14,14 @@ import traceback
 import i18n
 
 from scripts.cat.cats import Cat, cat_class, BACKSTORIES
-from scripts.cat.enums import CatAge, CatRank, CatGroup, CatStanding, CatSocial
+from scripts.cat.enums import (
+    CatAge,
+    CatRank,
+    CatGroup,
+    CatStanding,
+    CatSocial,
+    CatThought,
+)
 from scripts.cat.names import Name
 from scripts.cat.save_load import save_cats, add_cat_to_fade_id
 from scripts.clan_package.settings import get_clan_setting, set_clan_setting
@@ -172,22 +179,21 @@ def one_moon():
 
         # Generate events
 
-        for cat_id, values in Cat.grief_strings.items():
-            for _val in values:
-                if _val[2] == "minor":
-                    # Apply the grief message as a thought to the cat
-                    text = event_text_adjust(
-                        Cat,
-                        _val[0],
-                        main_cat=Cat.fetch_cat(cat_id),
-                        random_cat=Cat.fetch_cat(_val[1][0]),
+        for cat_id, details in Cat.grief_strings.items():
+            for _info in details:
+                text = _info[0]
+                cats = _info[1]
+                grief_type = _info[2]
+
+                if grief_type == "minor":
+                    Cat.fetch_cat(cat_id).get_new_thought(
+                        text, other_cat=Cat.fetch_cat(cats[0]),
                         clan=Cat.fetch_cat(cat_id).status.fetch_clan_object()
                     )
 
-                    Cat.fetch_cat(cat_id).thought = text
                 else:
                     game.cur_events_list.append(
-                        Single_Event(_val[0], ["birth_death", "relation"], _val[1], clan=Cat.fetch_cat(cat_id).status.group_ID)
+                        Single_Event(text, ["birth_death", "relation"], cats, clan=Cat.fetch_cat(cat_id).status.group_ID)
                     )
 
         Cat.grief_strings.clear()
@@ -1189,7 +1195,7 @@ def one_moon_cat(cat, clan):
         return
 
     if cat.dead:
-        cat.get_new_thought()
+        cat.get_new_thought(CatThought.WHILE_DEAD)
         if cat.ID in game.just_died:
             cat.moons += 1
         else:
@@ -1258,7 +1264,6 @@ def one_moon_cat(cat, clan):
     # newborns don't do much
     if cat.status.rank == CatRank.NEWBORN:
         cat.relationship_interaction()
-        cat.get_new_thought()
         return
 
     handle_apprentice_EX(cat)  # This must be before perform_ceremonies!
@@ -1280,7 +1285,6 @@ def one_moon_cat(cat, clan):
         return
 
     cat.relationship_interaction()
-    cat.get_new_thought()
     handle_colour_changes(cat, clan)
 
     # relationships have to be handled separately, because of the ceremony name change

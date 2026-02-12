@@ -37,7 +37,7 @@ from ..ui.scale import ui_scale, ui_scale_dimensions, ui_scale_offset
 from scripts.cat.pelts import Pelt
 from .Screens import Screens
 from .enums import GameScreen
-from ..cat.enums import CatAge, CatRank, CatGroup
+from ..cat.enums import CatAge, CatRank, CatGroup, CatThought
 from ..cat.sprites.load_sprites import sprites
 from ..clan_package.settings import get_clan_setting
 from ..game_structure.game.save_load import safe_save
@@ -348,20 +348,13 @@ class ProfileScreen(Screens):
                             self.the_cat.status.add_to_group(
                                 new_group_ID=CatGroup.STARCLAN_ID
                             )
-                            self.the_cat.thought = i18n.t(
-                                "screens.profile.guide_thought_sc",
-                                clan=game.clan.displayname,
-                            )
                         # SC -> DF
                         else:
                             self.the_cat.status.add_to_group(
                                 new_group_ID=CatGroup.DARK_FOREST_ID
                             )
 
-                            self.the_cat.thought = i18n.t(
-                                "screens.profile.guide_thought_df",
-                                clan=game.clan.displayname,
-                            )
+                        self.the_cat.get_new_thought(CatThought.IS_GUIDE)
                         self.the_cat.pelt.rebuild_sprite = True
                     else:
                         # DF -> UR
@@ -369,21 +362,17 @@ class ProfileScreen(Screens):
                             self.the_cat.status.add_to_group(
                                 new_group_ID=CatGroup.UNKNOWN_RESIDENCE_ID
                             )
-                            self.the_cat.thought = "Is surprised to find themself walking among a foreign land"
                         # UR -> SC
                         elif self.the_cat.status.group == CatGroup.UNKNOWN_RESIDENCE:
                             self.the_cat.status.add_to_group(
                                 new_group_ID=CatGroup.STARCLAN_ID
-                            )
-                            self.the_cat.thought = (
-                                "Is relieved to once again hunt in StarClan"
                             )
                         # SC -> DF
                         else:
                             self.the_cat.status.add_to_group(
                                 new_group_ID=CatGroup.DARK_FOREST_ID
                             )
-                            self.the_cat.thought = "Is distraught after being sent to the Place of No Stars"
+                        self.the_cat.get_new_thought(CatThought.ON_AFTERLIFE_CHANGE)
                         self.the_cat.pelt.rebuild_sprite = True
 
                 self.clear_profile()
@@ -640,14 +629,7 @@ class ProfileScreen(Screens):
 
         # Instructor thoughts
         if self.the_cat.dead and self.the_cat in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_other_clans if clan.instructor]:
-            if self.the_cat.status.group == CatGroup.STARCLAN:  # StarClan
-                self.the_cat.thought = i18n.t(
-                    "screens.profile.guide_thought_sc", clan=self.the_cat.status.fetch_clan_object().displayname
-                )
-            elif self.the_cat.status.group == CatGroup.DARK_FOREST:  # Dark Forest
-                self.the_cat.thought = i18n.t(
-                    "screens.profile.guide_thought_df", clan=self.the_cat.status.fetch_clan_object().displayname
-                )
+            self.the_cat.get_new_thought(CatThought.IS_GUIDE)
 
         self.profile_elements["cat_name"] = pygame_gui.elements.UITextBox(
             cat_name,
