@@ -250,7 +250,7 @@ class Name:
             colour_changed = True
         elif self.phenotype.ext[0] == 'er' and (self.moons > 23 and change == "apprentice-warrior"):
             colour_changed = True
-        elif self.phenotype.ext[0] == 'ea' and ((change == "apprentice-warrior" and self.phenotype.agouti[0] != 'a') or (self.moons > 23 and change == "apprentice-warrior")):
+        elif self.phenotype.ext[0] == 'ea' and ((change == "apprentice-warrior" and self.phenotype.agouti[0] != 'a') or (self.moons > 35 and change == "apprentice-warrior")):
             colour_changed = True
         elif change in ["apprentice-warrior", "warrior-elder"] and self.phenotype.vitiligo:
             colour_changed = True

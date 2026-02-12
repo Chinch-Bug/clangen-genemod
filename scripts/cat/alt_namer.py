@@ -166,7 +166,7 @@ class Namer():
         elif ('silver' in phenotype.silvergold and ('shaded' in phenotype.tabby or 'chinchilla' in phenotype.tabby)):
             base = 'silver shaded'
             return [base, tortie, tabby, white, point]
-        elif (('o' not in phenotype.sexgene or phenotype.tortiepattern == ['revCRYPTIC']) or (phenotype.ext[0] == 'ea' and ((self.moons > 11 and phenotype.agouti[0] != 'a') or (self.moons > 23))) or (phenotype.ext[0] == 'er' and self.moons > 23) or (phenotype.ext[0] == 'ec' and self.moons > 0 and (phenotype.agouti[0] != 'a' or self.moons > 5))) and not phenotype.specialred in ['cinnamon'] and not (phenotype.silver[0] == 'I' and phenotype.specialred in ['blue-red']):
+        elif (('o' not in phenotype.sexgene or phenotype.tortiepattern == ['revCRYPTIC']) or (phenotype.ext[0] == 'ea' and ((self.moons > 11 and phenotype.agouti[0] != 'a') or (self.moons > 35))) or (phenotype.ext[0] == 'er' and self.moons > 23) or (phenotype.ext[0] == 'ec' and self.moons > 0 and (phenotype.agouti[0] != 'a' or self.moons > 5))) and not phenotype.specialred in ['cinnamon'] and not (phenotype.silver[0] == 'I' and phenotype.specialred in ['blue-red']):
             if phenotype.dilute[0] == 'd' or phenotype.pinkdilute[0] == 'dp' or (phenotype.silver[0] == 'I' and phenotype.specialred in ['cameo', 'merle']):
                 base = 'cream'
             else:
