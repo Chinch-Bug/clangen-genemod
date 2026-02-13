@@ -825,9 +825,6 @@
                 ],
                 "injuries": [
                     "claw-wound"
-                ],
-                "scars": [
-                    "TWO"
                 ]
             }
         ],
@@ -934,9 +931,6 @@
                 ],
                 "injuries": [
                     "bite-wound"
-                ],
-                "scars": [
-                    "LEGBITE"
                 ]
             }
         ],
@@ -1036,7 +1030,7 @@
                     "claw-wound"
                 ],
                 "scars": [
-                    "SIDE"
+                    "FACE", "LEFTBLIND", "RIGHTBLIND", "SIDE", "THREE", "THROAT"
                 ]
             }
         ],
@@ -1087,9 +1081,6 @@
                 ],
                 "injuries": [
                     "cat bite"
-                ],
-                "scars": [
-                    "SIDE"
                 ]
             }
         ],
@@ -1306,7 +1297,7 @@
                     "frostbite"
                 ],
                 "scars": [
-                    "FROSTMITT"
+                    "FROSTMITT", "FROSTSOCK", "NOPAW"
                 ]
             }
         ],
@@ -1351,7 +1342,7 @@
                     "claw-wound"
                 ],
                 "scars": [
-                    "TWO"
+                    "BACK", "TWO"
                 ]
             }
         ],
@@ -1360,8 +1351,8 @@
                 "cats": [
                     "m_c"
                 ],
-                "scar": "m_c was scarred as a kit, when an eagle tried to carry {PRONOUN/m_c/object} off.",
-                "death": "m_c died from {PRONOUN/m_c/poss} wounds after an eagle tried to carry {PRONOUN/m_c/object} off."
+                "scar": "m_c was scarred as a kit, when a hawk tried to carry {PRONOUN/m_c/object} off.",
+                "death": "m_c died from {PRONOUN/m_c/poss} wounds after a hawk tried to carry {PRONOUN/m_c/object} off."
             }
         ],
         "relationships": [
@@ -1379,7 +1370,7 @@
                 ],
                 "amount": 30,
                 "log": {
-                    "cats_from": "to_cat saved from_cat's life when an eagle tried to carry {PRONOUN/from_cat/object} off."
+                    "cats_from": "to_cat saved from_cat's life when a hawk tried to carry {PRONOUN/from_cat/object} off."
                 }
             }
         ]
@@ -1453,9 +1444,6 @@
                 ],
                 "injuries": [
                     "frostbite"
-                ],
-                "scars": [
-                    "FROSTTAIL"
                 ]
             }
         ],
@@ -1705,9 +1693,6 @@
                 ],
                 "injuries": [
                     "broken bone"
-                ],
-                "scars": [
-                    "MANLEG"
                 ]
             }
         ],
@@ -1746,7 +1731,7 @@
                     "claw-wound"
                 ],
                 "scars": [
-                    "ONE"
+                    "BACK", "HINDLEG", "ONE", "TWO"
                 ]
             }
         ],
@@ -2061,8 +2046,7 @@
                 ],
                 "injuries": [
                     "bruises"
-                ],
-                "scars": []
+                ]
             }
         ],
         "relationships": [
@@ -2478,9 +2462,6 @@
                 ],
                 "injuries": [
                     "bite-wound"
-                ],
-                "scars": [
-                    "NECKBITE"
                 ]
             }
         ],
@@ -2547,9 +2528,6 @@
                 ],
                 "injuries": [
                     "bite-wound"
-                ],
-                "scars": [
-                    "LEGBITE"
                 ]
             }
         ],
@@ -2627,9 +2605,6 @@
                 ],
                 "injuries": [
                     "bite-wound"
-                ],
-                "scars": [
-                    "NECKBITE"
                 ]
             }
         ],
@@ -2720,9 +2695,6 @@
                 ],
                 "injuries": [
                     "claw-wound"
-                ],
-                "scars": [
-                    "SNOUT"
                 ]
             }
         ],
@@ -2826,9 +2798,6 @@
                 ],
                 "injuries": [
                     "cat bite"
-                ],
-                "scars": [
-                    "CATBITE"
                 ]
             }
         ],
@@ -2904,9 +2873,6 @@
                 ],
                 "injuries": [
                     "broken bone"
-                ],
-                "scars": [
-                    "MANLEG"
                 ]
             }
         ],
@@ -2975,9 +2941,6 @@
                 ],
                 "injuries": [
                     "broken bone"
-                ],
-                "scars": [
-                    "MANTAIL"
                 ]
             }
         ],
@@ -3049,7 +3012,7 @@
                     "claw-wound"
                 ],
                 "scars": [
-                    "ONE"
+                    "BACK", "BEAKLOWER", "BEAKSIDE", "HINDLEG", "ONE", "TWO"
                 ]
             }
         ],
@@ -3114,7 +3077,7 @@
                     "claw-wound"
                 ],
                 "scars": [
-                    "TWO"
+                    "BACK", "BEAKLOWER", "BEAKSIDE", "HINDLEG", "ONE", "TWO"
                 ]
             }
         ],
@@ -3186,10 +3149,6 @@
                 "injuries": [
                     "claw-wound",
                     "cat bite"
-                ],
-                "scars": [
-                    "BELLY",
-                    "CATBITE"
                 ]
             }
         ],
@@ -3266,10 +3225,6 @@
                 "injuries": [
                     "claw-wound",
                     "cat bite"
-                ],
-                "scars": [
-                    "CHEEK",
-                    "CATBITE"
                 ]
             }
         ],
@@ -3364,10 +3319,6 @@
                 "injuries": [
                     "claw-wound",
                     "cat bite"
-                ],
-                "scars": [
-                    "ONE",
-                    "CATBITE"
                 ]
             }
         ],
@@ -3452,7 +3403,7 @@
                     "mangled tail"
                 ],
                 "scars": [
-                    "MANTAIL"
+                    "HALFTAIL", "MANTAIL", "NOTAIL", "TAILSCAR"
                 ]
             }
         ],
@@ -3533,9 +3484,6 @@
                 ],
                 "injuries": [
                     "mangled leg"
-                ],
-                "scars": [
-                    "MANLEG"
                 ]
             }
         ],
@@ -3592,7 +3540,7 @@
                     "damaged eyes"
                 ],
                 "scars": [
-                    "FACE"
+                    "LEFTBLIND", "FACE", "RIGHTBLIND"
                 ]
             }
         ],
@@ -3701,8 +3649,7 @@
                 ],
                 "injuries": [
                     "battle_injury"
-                ],
-                "scars": []
+                ]
             }
         ],
         "history": [
@@ -3774,9 +3721,6 @@
                 ],
                 "injuries": [
                     "cat bite"
-                ],
-                "scars": [
-                    "CATBITE"
                 ]
             }
         ],
@@ -3885,9 +3829,6 @@
                 ],
                 "injuries": [
                     "cat bite"
-                ],
-                "scars": [
-                    "CATBITE"
                 ]
             }
         ],
@@ -3978,9 +3919,6 @@
                 ],
                 "injuries": [
                     "bite-wound"
-                ],
-                "scars": [
-                    "LEGBITE"
                 ]
             }
         ],
@@ -4062,9 +4000,6 @@
                 ],
                 "injuries": [
                     "bite-wound"
-                ],
-                "scars": [
-                    "LEGBITE"
                 ]
             }
         ],
@@ -4153,9 +4088,6 @@
                 ],
                 "injuries": [
                     "cat bite"
-                ],
-                "scars": [
-                    "CATBITE"
                 ]
             }
         ],
@@ -4691,10 +4623,6 @@
                 "injuries": [
                     "claw-wound",
                     "cat bite"
-                ],
-                "scars": [
-                    "BRIDGE",
-                    "CATBITE"
                 ]
             }
         ],
@@ -4770,10 +4698,6 @@
                 "injuries": [
                     "claw-wound",
                     "cat bite"
-                ],
-                "scars": [
-                    "TOETRAP",
-                    "CATBITE"
                 ]
             }
         ],
@@ -4861,10 +4785,6 @@
                 "injuries": [
                     "claw-wound",
                     "cat bite"
-                ],
-                "scars": [
-                    "TAILSCAR",
-                    "CATBITE"
                 ]
             }
         ],
@@ -4942,9 +4862,6 @@
                 ],
                 "injuries": [
                     "claw-wound"
-                ],
-                "scars": [
-                    "RIGHTEAR"
                 ]
             }
         ],
@@ -5024,10 +4941,6 @@
                 "injuries": [
                     "claw-wound",
                     "cat bite"
-                ],
-                "scars": [
-                    "LEFTEAR",
-                    "CATBITE"
                 ]
             }
         ],
@@ -5105,10 +5018,6 @@
                 "injuries": [
                     "claw-wound",
                     "cat bite"
-                ],
-                "scars": [
-                    "CHEEK",
-                    "CATBITE"
                 ]
             }
         ],
@@ -5195,9 +5104,6 @@
                 ],
                 "injuries": [
                     "claw-wound"
-                ],
-                "scars": [
-                    "BELLY"
                 ]
             }
         ],
@@ -5270,9 +5176,6 @@
                 ],
                 "injuries": [
                     "mangled leg"
-                ],
-                "scars": [
-                    "MANLEG"
                 ]
             }
         ],
@@ -5358,9 +5261,6 @@
                 ],
                 "injuries": [
                     "snake bite"
-                ],
-                "scars": [
-                    "SNAKE"
                 ]
             }
         ],
@@ -5871,7 +5771,7 @@
                     "claw-wound"
                 ],
                 "scars": [
-                    "SIDE"
+                    "FACE", "LEFTBLIND", "RIGHTBLIND", "SIDE", "THREE", "THROAT"
                 ]
             }
         ],
@@ -5910,9 +5810,6 @@
                 ],
                 "injuries": [
                     "mangled leg"
-                ],
-                "scars": [
-                    "MANLEG"
                 ]
             }
         ],
@@ -6038,7 +5935,7 @@
                     "mangled tail"
                 ],
                 "scars": [
-                    "MANTAIL"
+                    "HALFTAIL", "MANTAIL", "NOTAIL", "TAILSCAR"
                 ]
             }
         ],
@@ -6083,7 +5980,7 @@
                     "mangled tail"
                 ],
                 "scars": [
-                    "MANTAIL"
+                    "HALFTAIL", "MANTAIL", "NOTAIL", "TAILSCAR"
                 ]
             }
         ],
@@ -6297,10 +6194,6 @@
                 "injuries": [
                     "cat bite",
                     "claw-wound"
-                ],
-                "scars": [
-                    "CATBITE",
-                    "ONE"
                 ]
             }
         ],
@@ -6417,9 +6310,6 @@
                 ],
                 "injuries": [
                     "bee sting"
-                ],
-                "scars": [
-                    "BRIDGE"
                 ]
             }
         ],
@@ -6461,9 +6351,6 @@
                 ],
                 "injuries": [
                     "torn ear"
-                ],
-                "scars": [
-                    "LEFTEAR"
                 ]
             }
         ],
@@ -6516,9 +6403,6 @@
                 ],
                 "injuries": [
                     "torn ear"
-                ],
-                "scars": [
-                    "RIGHTEAR"
                 ]
             }
         ],
@@ -6565,9 +6449,6 @@
                 ],
                 "injuries": [
                     "rat bite"
-                ],
-                "scars": [
-                    "RATBITE"
                 ]
             }
         ],
@@ -6604,9 +6485,6 @@
                 ],
                 "injuries": [
                     "bee sting"
-                ],
-                "scars": [
-                    "QUILLCHUNK"
                 ]
             }
         ],
@@ -6646,9 +6524,6 @@
                 ],
                 "injuries": [
                     "bee sting"
-                ],
-                "scars": [
-                    "BRIDGE"
                 ]
             }
         ],
@@ -6826,8 +6701,7 @@
                 ],
                 "injuries": [
                     "battle_injury"
-                ],
-                "scars": []
+                ]
             }
         ],
         "history": [
@@ -7037,8 +6911,7 @@
                 ],
                 "injuries": [
                     "battle_injury"
-                ],
-                "scars": []
+                ]
             },
             {
                 "cats": [
@@ -7046,8 +6919,7 @@
                 ],
                 "injuries": [
                     "battle_injury"
-                ],
-                "scars": []
+                ]
             }
         ],
         "multiclan_cat": [
@@ -7100,10 +6972,10 @@
                     "claw-wound"
                 ],
                 "scars": [
-                    "SNOUT",
-                    "FACE",
                     "BRIDGE",
-                    "CHEEK"
+                    "CHEEK",
+                    "FACE",
+                    "SNOUT"
                 ]
             }
         ],
@@ -7181,10 +7053,10 @@
                     "claw-wound"
                 ],
                 "scars": [
-                    "SNOUT",
-                    "FACE",
                     "BRIDGE",
-                    "CHEEK"
+                    "CHEEK",
+                    "FACE",
+                    "SNOUT"
                 ]
             }
         ],
@@ -7329,8 +7201,7 @@
                 ],
                 "injuries": [
                     "small_bite_injury"
-                ],
-                "scars": []
+                ]
             }
         ],
         "history": [
@@ -7386,8 +7257,7 @@
                 ],
                 "injuries": [
                     "sprain"
-                ],
-                "scars": []
+                ]
             }
         ]
     },
@@ -7440,8 +7310,7 @@
                 ],
                 "injuries": [
                     "battle_injury"
-                ],
-                "scars": []
+                ]
             }
         ],
         "history": [

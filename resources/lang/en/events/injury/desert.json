@@ -872,6 +872,9 @@
                 ],
                 "injuries": [
                     "burn"
+                ],
+                "scars":[
+                    "BURNBELLY", "BURNPAWS", "BURNRUMP"
                 ]
             },
             {
@@ -1399,7 +1402,7 @@
                     "cat bite"
                 ],
                 "scars": [
-                    "SIDE"
+                    "CATBITETWO"
                 ]
             }
         ],
@@ -1471,9 +1474,6 @@
                 ],
                 "injuries": [
                     "cat bite"
-                ],
-                "scars": [
-                    "LEGBITE"
                 ]
             },
             {
@@ -1482,9 +1482,6 @@
                 ],
                 "injuries": [
                     "torn ear"
-                ],
-                "scars": [
-                    "RIGHTEAR"
                 ]
             },
             {
@@ -1554,9 +1551,6 @@
                 ],
                 "injuries": [
                     "claw-wound"
-                ],
-                "scars": [
-                    "HINDLEG"
                 ]
             },
             {
@@ -1589,9 +1583,6 @@
                 ],
                 "injuries": [
                     "mangled tail"
-                ],
-                "scars": [
-                    "TAILSCAR"
                 ]
             }
         ],
@@ -1801,9 +1792,6 @@
                 ],
                 "injuries": [
                     "beak bite"
-                ],
-                "scars": [
-                    "BEAKSIDE"
                 ]
             }
         ],
@@ -1843,9 +1831,6 @@
                 ],
                 "injuries": [
                     "blunt_force_injury"
-                ],
-                "scars": [
-                    "SNOUT"
                 ]
             }
         ],
@@ -1881,9 +1866,6 @@
                 ],
                 "injuries": [
                     "blunt_force_injury"
-                ],
-                "scars": [
-                    "SNOUT"
                 ]
             },
             {
@@ -2041,9 +2023,6 @@
                 ],
                 "injuries": [
                     "blunt_force_injury"
-                ],
-                "scars": [
-                    "MANLEG"
                 ]
             },
             {
@@ -2094,9 +2073,6 @@
                 ],
                 "injuries": [
                     "broken bone"
-                ],
-                "scars": [
-                    "MANLEG"
                 ]
             }
         ],
@@ -2369,6 +2345,9 @@
                 "injuries": [
                     "small cut",
                     "torn pelt"
+                ],
+                "scars": [
+                    "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE", "TOE"
                 ]
             }
         ]
@@ -2450,9 +2429,6 @@
                 ],
                 "injuries": [
                     "big_bite_injury"
-                ],
-                "scars": [
-                    "LEGBITE"
                 ]
             },
             {
@@ -2533,9 +2509,6 @@
                 ],
                 "injuries": [
                     "torn ear"
-                ],
-                "scars": [
-                    "RIGHTEAR"
                 ]
             },
             {
@@ -2546,7 +2519,7 @@
                     "torn pelt"
                 ],
                 "scars": [
-                    "SNOUT"
+                    "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE"
                 ]
             },
             {
@@ -2557,7 +2530,7 @@
                     "small cut"
                 ],
                 "scars": [
-                    "SNOUT"
+                    "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE", "TOE"
                 ]
             },
             {
@@ -2648,9 +2621,6 @@
                 ],
                 "injuries": [
                     "big_bite_injury"
-                ],
-                "scars": [
-                    "MANTAIL"
                 ]
             },
             {
@@ -2675,9 +2645,6 @@
                 ],
                 "injuries": [
                     "big_bite_injury"
-                ],
-                "scars": [
-                    "MANTAIL"
                 ]
             },
             {
@@ -2769,9 +2736,6 @@
                 ],
                 "injuries": [
                     "beak bite"
-                ],
-                "scars": [
-                    "BEAKLOWER"
                 ]
             }
         ],
@@ -2837,7 +2801,7 @@
                     "claw-wound"
                 ],
                 "scars": [
-                    "TWO"
+                    "BACK", "HINDLEG", "TAILBASE"
                 ]
             }
         ],
@@ -2907,10 +2871,6 @@
                 "injuries": [
                     "claw-wound",
                     "big_bite_injury"
-                ],
-                "scars": [
-                    "BELLY",
-                    "CATBITE"
                 ]
             }
         ],
@@ -2966,8 +2926,7 @@
                 ],
                 "injuries": [
                     "dehydrated"
-                ],
-                "scars": []
+                ]
             }
         ],
         "history": [
@@ -3004,8 +2963,7 @@
                 ],
                 "injuries": [
                     "sore"
-                ],
-                "scars": []
+                ]
             }
         ]
     },
@@ -3046,9 +3004,6 @@
                 ],
                 "injuries": [
                     "mangled leg"
-                ],
-                "scars": [
-                    "MANLEG"
                 ]
             }
         ],
@@ -3145,6 +3100,9 @@
                 ],
                 "injuries": [
                     "small cut"
+                ],
+                "scars": [
+                    "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE", "TOE"
                 ]
             },
             {
@@ -3153,6 +3111,9 @@
                 ],
                 "injuries": [
                     "small cut"
+                ],
+                "scars": [
+                    "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE", "TOE"
                 ]
             },
             {
@@ -3177,6 +3138,9 @@
                 ],
                 "injuries": [
                     "torn pelt"
+                ],
+                "scars": [
+                    "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE"
                 ]
             },
             {
@@ -3450,9 +3414,6 @@
                 ],
                 "injuries": [
                     "snake bite"
-                ],
-                "scars": [
-                    "SNAKE"
                 ]
             }
         ],
@@ -3601,6 +3562,9 @@
                 ],
                 "injuries": [
                     "small cut"
+                ],
+                "scars": [
+                    "BRIDGE", "FACE", "SNOUT"
                 ]
             },
             {
@@ -3609,6 +3573,9 @@
                 ],
                 "injuries": [
                     "torn pelt"
+                ],
+                "scars": [
+                    "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE"
                 ]
             }
         ],
@@ -3822,6 +3789,9 @@
                 ],
                 "injuries": [
                     "torn pelt"
+                ],
+                "scars": [
+                    "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE", "TOE"
                 ]
             }
         ],
@@ -4017,6 +3987,9 @@
                 ],
                 "injuries": [
                     "torn pelt"
+                ],
+                "scars": [
+                    "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE"
                 ]
             }
         ],
@@ -4141,9 +4114,6 @@
                 ],
                 "injuries": [
                     "big_bite_injury"
-                ],
-                "scars": [
-                    "MANTAIL"
                 ]
             },
             {
@@ -4224,7 +4194,7 @@
                     "mangled tail"
                 ],
                 "scars": [
-                    "MANTAIL"
+                    "HALFTAIL", "MANTAIL", "NOTAIL", "TAILSCAR"
                 ]
             }
         ],
@@ -4399,9 +4369,6 @@
                 ],
                 "injuries": [
                     "bee sting"
-                ],
-                "scars": [
-                    "BRIDGE"
                 ]
             }
         ],
@@ -4494,9 +4461,6 @@
                 ],
                 "injuries": [
                     "torn ear"
-                ],
-                "scars": [
-                    "RIGHTEAR"
                 ]
             }
         ],
@@ -4597,7 +4561,7 @@
                     "bee sting"
                 ],
                 "scars": [
-                    "QUILLCHUNK"
+                    "QUILLCHUNK", "TOE"
                 ]
             }
         ],
@@ -4638,7 +4602,7 @@
                     "small cut"
                 ],
                 "scars": [
-                    "BRIDGE"
+                    "QUILLCHUNK", "TOE"
                 ]
             },
             {
@@ -4848,7 +4812,7 @@
                     "torn pelt"
                 ],
                 "scars": [
-                    "QUILLSIDE"
+                    "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE"
                 ]
             },
             {
@@ -4857,6 +4821,9 @@
                 ],
                 "injuries": [
                     "small cut"
+                ],
+                "scars": [
+                    "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE", "TOE"
                 ]
             },
             {
@@ -4865,6 +4832,9 @@
                 ],
                 "injuries": [
                     "small cut"
+                ],
+                "scars": [
+                    "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE", "TOE"
                 ]
             },
             {
@@ -4873,6 +4843,9 @@
                 ],
                 "injuries": [
                     "small cut"
+                ],
+                "scars": [
+                    "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE", "TOE"
                 ]
             },
             {
@@ -4881,6 +4854,9 @@
                 ],
                 "injuries": [
                     "small cut"
+                ],
+                "scars": [
+                    "QUILLSCRATCH", "QUILLSIDE", "SCRATCHSIDE", "TOE"
                 ]
             },
             {
