@@ -218,9 +218,10 @@ def search_cats(search_text, cat_list, search_genotype):
                 alleles = g.split("&")
                 found_cats = cat_list.copy()
                 for a in alleles:
+                    a = a.strip()
                     find_poly = [
                         key for key, value in polygenes.items() if a.split(" ")[0].split(">")[0].split("<")[0].split("=")[0] in value]
-                    if ">" in a or "<" in a or "=" in a and find_poly:
+                    if (">" in a or "<" in a or "=" in a) and find_poly:
                         poly = find_poly[0]
                         operator = None
                         if "<=" in a:
@@ -235,7 +236,7 @@ def search_cats(search_text, cat_list, search_genotype):
                             operator = ">"
                         elif "=" in a:
                             operator = "="
-                        poly_value = a.split(operator, 1)[-1]
+                        poly_value = a.split(operator, 1)[-1].strip()
 
                         if poly_value.isdigit():
                             if operator == "<=":
