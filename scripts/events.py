@@ -1194,7 +1194,6 @@ def one_moon_cat(cat, clan):
         return
 
     if cat.dead:
-        cat.get_new_thought(CatThought.WHILE_DEAD)
         if cat.ID in game.just_died:
             cat.moons += 1
         else:
