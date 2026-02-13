@@ -1746,11 +1746,11 @@ class Pregnancy_Events:
         # add them as adoptive parents if not
         final_adoptive_parents = []
         for adoptive_p in all_adoptive_parents:
-            if adoptive_p.status.group_ID != all_kitten[0].status.group_ID:
-                continue
-            Cat.fetch_cat(adoptive_p).get_new_thought(CatThought.ON_BIRTH)
             if adoptive_p not in all_kitten[0].inheritance.all_involved:
                 final_adoptive_parents.append(adoptive_p)
+            if Cat.fetch_cat(adoptive_p).status.group_ID != all_kitten[0].status.group_ID:
+                continue
+            Cat.fetch_cat(adoptive_p).get_new_thought(CatThought.ON_BIRTH)
         if not adoptive_parents:
             cat.get_new_thought(CatThought.ON_BIRTH)
             if other_cat:
