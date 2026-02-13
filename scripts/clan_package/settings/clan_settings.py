@@ -6,7 +6,7 @@ import ujson
 from scripts.game_structure.game.save_load import safe_save
 from scripts.game_structure.game.switches import Switch, switch_get_value
 from scripts.housekeeping.datadir import get_save_dir
-from scripts.game_structure.game.settings import game_setting_get
+from ...game_structure.constants import DISPLAY_SETTINGS
 
 
 def load_clan_settings():
@@ -53,7 +53,7 @@ def get_clan_setting(name: str, *, default=None):
 
 
 def set_clan_setting(name: str, value):
-    if name in _settings["__other"].keys() and name != "favourite sub tab":
+    if name in _clan_settings["other"].keys():
         raise ValueError(f"Use switch_clan_setting() to change setting '{name}'.")
     clan_settings[name] = value
 
@@ -72,36 +72,36 @@ def reset_loaded_clan_settings():
     clan_settings = {}
 
     for _setting in all_settings:  # Add all the settings to the settings dictionary
-        for setting_name, inf in _setting.items():
-            if game_setting_get(setting_name) is not None:
-                clan_settings[setting_name] = game_setting_get(setting_name)
+        for setting_name, value in _setting.items():
+            if setting_name in DISPLAY_SETTINGS["game"]["general"]:
+                clan_settings[setting_name] = DISPLAY_SETTINGS["game"]["general"][setting_name]
             else:
-                clan_settings[setting_name] = inf[2]
+                clan_settings[setting_name] = value
 
-    for setting, values in _settings["__other"].items():
+    for setting, values in _clan_settings["other"].items():
         clan_settings[setting] = values[0]
         setting_lists[setting] = values
 
 
 # Init Settings
 clan_settings = {}
-with open("resources/clansettings.json", "r", encoding="utf-8") as read_file:
-    _settings = ujson.loads(read_file.read())
-
-with open("resources/clansettings_conversion.json", "r", encoding="utf-8") as read_file:
-    _old_save_conversion = ujson.loads(read_file.read())
+_clan_settings = DISPLAY_SETTINGS["clan"]
+with open(
+    "resources/clansettings_conversion.json", "r", encoding="utf-8"
+) as conversion_file:
+    _old_save_conversion = ujson.loads(conversion_file.read())
 
 all_settings = [
-    _settings["general"],
-    _settings["role"],
-    _settings["relation"],
-    _settings["freshkill_tactics"],
-    _settings["clan_focus"],
+    _clan_settings["general"],
+    _clan_settings["role"],
+    _clan_settings["relation"],
+    _clan_settings["freshkill_tactics"],
+    _clan_settings["clan_focus"],
 ]
 
 setting_lists = {
-    key: [inf[2], not inf[2]]
+    key: ([val, not val] if isinstance(val, bool) else [val[2], not val[2]])
     for category in all_settings
-    for key, inf in category.items()
+    for key, val in category.items()
 }
 reset_loaded_clan_settings()

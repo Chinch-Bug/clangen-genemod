@@ -4,7 +4,6 @@ from pygame import Cursor, image, SYSTEM_CURSOR_ARROW
 import ujson
 import tomllib
 import os
-from scripts.game_structure.game.switches import Switch, switch_get_value
 from scripts.housekeeping.datadir import get_save_dir
 
 # these scripts don't import any clangen scripts into themselves, so it's okay for them to be imported here
@@ -177,6 +176,7 @@ def other_config_refreshes():
 
 def load_clan_config():
     global CONFIG
+    from scripts.game_structure.game.switches import Switch, switch_get_value
     reset_config()
     if os.path.exists(
         get_save_dir() +
@@ -197,6 +197,9 @@ def reset_config():
     with open("resources/game_config.toml", "r", encoding="utf-8") as read_file:
         CONFIG = tomllib.loads(read_file.read())
         other_config_refreshes()
+
+with open("resources/display_settings.toml", "r", encoding="utf-8") as read_file:
+    DISPLAY_SETTINGS = tomllib.loads(read_file.read())
 
 with open("resources/placements.json", "r", encoding="utf-8") as read_file:
     LAYOUTS = ujson.loads(read_file.read())
