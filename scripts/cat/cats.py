@@ -511,6 +511,8 @@ class Cat:
         self.parent2 = None
         self.parent3 = None
         self.adoptive_parents = []
+        self.surrogate_parents = []
+        self.affair_parents = []
         self.mate = []
         self.status = Status(**status) if status else Status()
         self._pronouns = {}  # Needs to be set as a dict
@@ -3371,6 +3373,12 @@ class Cat:
         cat_ob.faded_offspring = cat_info["faded_offspring"]
         cat_ob.adoptive_parents = (
             cat_info["adoptive_parents"] if "adoptive_parents" in cat_info else []
+        )
+        cat_ob.surrogate_parents = (
+            cat_info["surrogate_parents"] if "surrogate_parents" in cat_info else []
+        )
+        cat_ob.affair_parents = (
+            cat_info["affair_parents"] if "affair_parents" in cat_info else []
         )
         cat_ob.faded = True
 
