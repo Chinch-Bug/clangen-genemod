@@ -248,6 +248,9 @@ dev_tools = false
   # for this check, only other unmated cats can be the affair partner
   unmated_random_affair_chance = 10
 
+  # proportion of situations where surrogacy will be selected when applicable (0 - never, 1 - always)
+  surrogate_rate = 1
+
   # 1/chance for cats to select a clanmate as a surrogate when possible
   clanmate_surrogate_chance = 5
 

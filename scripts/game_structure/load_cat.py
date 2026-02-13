@@ -596,6 +596,14 @@ def json_load():
                 cat["adoptive_parents"] if "adoptive_parents" in cat else []
             )
 
+            new_cat.surrogate_parents = (
+                cat["surrogate_parents"] if "surrogate_parents" in cat else []
+            )
+
+            new_cat.affair_parents = (
+                cat["affair_parents"] if "affair_parents" in cat else []
+            )
+
             new_cat.genderalign = cat["gender_align"]
             new_cat.pronouns = (
                 cat["pronouns"]

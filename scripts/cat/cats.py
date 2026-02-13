@@ -142,6 +142,8 @@ class Cat:
         extrapar=None,
         kittypet=False,
         adoptive_parents=None,
+        surrogate_parents=None,
+        affair_parents=None,
         suffix=None,
         specsuffix_hidden=False,
         ID=None,
@@ -221,6 +223,8 @@ class Cat:
         self.passes = passes
 
         self.adoptive_parents = adoptive_parents.copy() if adoptive_parents else []
+        self.surrogate_parents = surrogate_parents.copy() if surrogate_parents else []
+        self.affair_parents = affair_parents.copy() if affair_parents else []
         gene_config = constants.CONFIG['genetics_config']
         gene_config.update(constants.CONFIG['april_fools_genes'])
         self.phenotype = Phenotype(gene_config, game_setting_get("ban problem genes"))
@@ -3629,6 +3633,8 @@ class Cat:
                 "parent2": self.parent2,
                 "parent3": self.parent3 if self.parent3 else None,
                 "adoptive_parents": self.adoptive_parents,
+                "surrogate_parents": self.surrogate_parents,
+                "affair_parents": self.affair_parents,
                 "faded_offspring": self.faded_offspring,
             }
         else:
@@ -3657,6 +3663,8 @@ class Cat:
                 "parent2": self.parent2,
                 "parent3": self.parent3 if self.parent3 else None,
                 "adoptive_parents": self.adoptive_parents,
+                "surrogate_parents": self.surrogate_parents,
+                "affair_parents": self.affair_parents,
                 "mentor": self.mentor or None,
                 "former_mentor": (
                     list(self.former_mentor) if self.former_mentor else []

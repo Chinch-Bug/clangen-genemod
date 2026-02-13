@@ -2,6 +2,7 @@
     "en": {
         "current_mate": "current mate",
         "prev_mate": "previous mate",
+        "affair": "from an affair",
         "parent_of_inter": "parent of %{name}",
         "second_parent": "second parent: %{name}",
         "blood_parent": {

@@ -131,6 +131,7 @@
       "leaf-fall": "Leaf-fall",
       "leaf-bare": "Leaf-bare",
       "relation_BLOOD": "",
+      "relation_SURROGATE": "surrogate litter",
       "relation_ADOPTIVE": "adoptive",
       "relation_HALF_BLOOD": "half sibling",
       "relation_NOT_BLOOD": "not blood related",

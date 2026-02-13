@@ -28,6 +28,7 @@ class RelationType(StrEnum):
     """An enum representing the possible relationships of a cat"""
 
     BLOOD = ""  # direct blood related - do not need a special print
+    SURROGATE = "surrogate"  # parent was a surrogate
     ADOPTIVE = "adoptive"  # not blood related but close (parents, kits, siblings)
     HALF_BLOOD = "half sibling"  # only one blood parent is the same (siblings only)
     NOT_BLOOD = "not blood related"  # not blood related for parent siblings
@@ -36,6 +37,7 @@ class RelationType(StrEnum):
 
 BLOOD_RELATIVE_TYPES = [
     RelationType.BLOOD,
+    RelationType.SURROGATE,
     RelationType.HALF_BLOOD,
     RelationType.RELATED,
 ]
@@ -491,6 +493,14 @@ class Inheritance:
             }
             self.all_involved.append(relevant_id)
             self.all_but_cousins.append(relevant_id)
+        
+        if surrogates := self.get_surrogate_parents():
+            for x in surrogates:
+                self.parents[x]["type"] = RelationType.SURROGATE
+
+        if affair := self.get_affair_parents():
+            for x in affair:
+                self.parents[x]["additional"].append(i18n.t("inheritance.affair"))
 
     def init_mates(self):
         """Create a mate relationship"""
@@ -559,7 +569,11 @@ class Inheritance:
         # kits - blood
         inter_blood_parents = self.get_blood_parents(inter_cat)
         if self.cat.ID in inter_blood_parents:
-            self.kits[inter_id] = {"type": RelationType.BLOOD, "additional": []}
+            surrogates = self.get_surrogate_parents(inter_cat)
+            affair = self.get_affair_parents(inter_cat)
+            self.kits[inter_id] = {"type": RelationType.SURROGATE if self.cat.ID in surrogates else RelationType.BLOOD, "additional": []}
+            if self.cat.ID in affair:
+                self.kits[inter_id]["additional"].append(i18n.t("inheritance.affair"))
             self.all_involved.append(inter_id)
             self.all_but_cousins.append(inter_id)
             if len(inter_blood_parents) > 1:
@@ -648,12 +662,15 @@ class Inheritance:
         inter_parent_ids = self.get_blood_parents(inter_cat)
         blood_parent_overlap = set(current_parent_ids) & set(inter_parent_ids)
 
+        # surrogate siblings
+        surrogate_parent_ids = self.get_surrogate_parents()
+        inter_surrogate_parent_ids = self.get_surrogate_parents(inter_cat)
+        surrogate_parent_overlap = set(surrogate_parent_ids) & set(inter_surrogate_parent_ids)
+
         # adopt
         adoptive_overlap1 = set(current_parent_ids) & set(inter_cat.adoptive_parents)
         adoptive_overlap2 = set(self.cat.adoptive_parents) & set(inter_parent_ids)
-        adoptive_overlap3 = set(self.cat.adoptive_parents) & set(
-            inter_cat.adoptive_parents
-        )
+        adoptive_overlap3 = set(self.cat.adoptive_parents) & set(inter_cat.adoptive_parents)
 
         siblings = False
         rel_type = RelationType.BLOOD
@@ -676,6 +693,9 @@ class Inheritance:
                 == self.cat.moons + self.cat.dead_for
             ):
                 additional_info.append(i18n.t("inheritance.littermates"))
+        elif blood_parent_overlap == surrogate_parent_overlap and blood_parent_overlap:
+            siblings = True
+            rel_type = RelationType.SURROGATE
         elif len(blood_parent_overlap) == 1 and (
             len(inter_parent_ids) > 1 or len(current_parent_ids) > 1
         ):
@@ -867,6 +887,16 @@ class Inheritance:
         """Returns a list of IDs which are adoptive parents of the current cat."""
         relevant_cat = cat if cat else self.cat
         return relevant_cat.adoptive_parents
+
+    def get_surrogate_parents(self, cat=None) -> list:
+        """Returns a list of IDs which are surrogate parents of the current cat."""
+        relevant_cat = cat if cat else self.cat
+        return relevant_cat.surrogate_parents
+
+    def get_affair_parents(self, cat=None) -> list:
+        """Returns a list of IDs which are affair parents of the current cat."""
+        relevant_cat = cat if cat else self.cat
+        return relevant_cat.affair_parents
 
     # TODO - refactor these to just use one
     def get_parents(self, cat=None) -> list:

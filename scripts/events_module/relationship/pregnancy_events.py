@@ -426,6 +426,15 @@ class Pregnancy_Events:
                 kits = Pregnancy_Events.get_kits(amount, cat, outside_parent if not surrogate else [pregnant_cat], clan, backkit=backkit)
 
                 for kit in kits:
+                    if surrogate:
+                        kit.surrogate_parents.append(pregnant_cat.ID)
+                    if cat.mate and other_cat:
+                        for x in other_cat:
+                            if x.ID not in cat.mate and x.ID not in kit.surrogate_parents:
+                                kit.affair_parents.append(x.ID)
+                    if kit.surrogate_parents or kit.affair_parents:
+                        kit.inheritance.update_inheritance()
+                        kit.inheritance.update_all_related_inheritance()
                     if random() < stillborn_chance or kit.phenotype.sexgene[0] == "Y" or kit.phenotype.manx[1] == "Ab" or kit.phenotype.manx[1] == "M" or kit.phenotype.munch[1] == "Mk" or ('NoDBE' not in kit.phenotype.pax3 and 'DBEalt' not in kit.phenotype.pax3):
                         if not kit.dead:
                             kit.dead = True
@@ -636,7 +645,6 @@ class Pregnancy_Events:
             stillborn_chance = 0
 
         other_cat_id = game.clan.pregnancy_data[cat.ID]["second_parent"]
-        affair_partner_id = []
         affair_partners = []
         surrogate = []
         RandomAffair = None
@@ -703,11 +711,20 @@ class Pregnancy_Events:
                 kit.phenotype.fevercoat = True
                 if kit.chimerapheno:
                     kit.chimerapheno.fevercoat = True
+            if affair_partners:
+                for x in affair_partners:
+                    kit.affair_parents.append(x.ID)
+            if surrogate:
+                for x in surrogate:
+                    kit.surrogate_parents.append(x.ID)
+            if kit.surrogate_parents or kit.affair_parents:
+                kit.inheritance.update_inheritance()
+                kit.inheritance.update_all_related_inheritance()
             if random() < stillborn_chance or kit.phenotype.sexgene[0] == "Y" or kit.phenotype.manx[1] == "Ab" or kit.phenotype.manx[1] == "M" or kit.phenotype.munch[1] == "Mk" or ('NoDBE' not in kit.phenotype.pax3 and 'DBEalt' not in kit.phenotype.pax3):
                 kit.moons = 0
                 if not kit.dead:
                     kit.dead = True
-                kit.get_new_thought(just_died=True)
+                kit.get_new_thought(CatThought.ON_DEATH)
                 kit.history.add_death(str(kit.name) + " was stillborn.")
         Pregnancy_Events.set_biggest_family(clan)
         extra_naming_text = None
@@ -756,7 +773,7 @@ class Pregnancy_Events:
         insert = i18n.t("conditions.pregnancy.kit_amount", count=kits_amount)
 
         # Since cat has given birth, apply the birth cooldown.
-        cat.birth_cooldown = constants.CONFIG["pregnancy"]["birth_cooldown"]
+        pregnant_cat.birth_cooldown = constants.CONFIG["pregnancy"]["birth_cooldown"]
         if other_cat:
             for c in other_cat:
                 c.birth_cooldown = constants.CONFIG["pregnancy"]["birth_cooldown"]
@@ -999,7 +1016,7 @@ class Pregnancy_Events:
             if not xor(cat_is_amab(cat), cat_is_amab(second_parent[0])) or ("sterile" in cat.permanent_condition or "sterile" in second_parent[0].permanent_condition):
                 if same_sex_birth and not "sterile" in second_parent[0].permanent_condition and not "sterile" in cat.permanent_condition:
                     return True, False, second_parent
-                elif (surrogates and second_parent[0].ID in cat.mate) and not ("sterile" in second_parent[0].permanent_condition and "sterile" in cat.permanent_condition):
+                elif (surrogates and second_parent[0].ID in cat.mate and random() < constants.CONFIG["pregnancy"]["surrogate_rate"]) and not ("sterile" in second_parent[0].permanent_condition and "sterile" in cat.permanent_condition):
                     return True, False, ["Surrogate"] + second_parent
                 elif not same_sex_adoption:
                     return False, False, second_parent
@@ -1024,14 +1041,14 @@ class Pregnancy_Events:
                     second_parent_copy.append(x)
             
             if len(second_parent_copy) < 1:
-                if surrogates and second_parent[0].ID in cat.mate:
+                if surrogates and second_parent[0].ID in cat.mate and random() < constants.CONFIG["pregnancy"]["surrogate_rate"]:
                     return True, False, ["Surrogate"] + second_parent
                 elif same_sex_adoption:
                     return True, True, second_parent
                 else:
                     return False, False, second_parent
             if "sterile" in cat.permanent_condition:
-                if surrogates and second_parent[0].ID in cat.mate:
+                if surrogates and second_parent[0].ID in cat.mate and random() < constants.CONFIG["pregnancy"]["surrogate_rate"]:
                     return True, False, ["Surrogate"] + second_parent
                 elif same_sex_adoption:
                     return True, True, second_parent
@@ -1068,13 +1085,13 @@ class Pregnancy_Events:
 
         # if the sex does matter, choose the best solution to allow kits
         if not samesex and mate and not cat_is_amab(cat):
-            opposite_mate = [cat.fetch_cat(mate_id) for mate_id in cat.mate if xor(cat_is_amab(cat.fetch_cat(mate_id)), cat_is_amab(cat))]
+            opposite_mate = [cat.fetch_cat(mate_id) for mate_id in cat.mate if xor(cat_is_amab(cat.fetch_cat(mate_id)), cat_is_amab(cat)) and "sterile" not in cat.fetch_cat(mate_id).permanent_condition]
             if len(opposite_mate) > 0:
                 mate = opposite_mate
                 if not get_clan_setting('multisire'):
                     mate = [choice(opposite_mate)]
         elif not samesex and mate and cat_is_amab(cat):
-            opposite_mate = [cat.fetch_cat(mate_id) for mate_id in cat.mate if xor(cat_is_amab(cat.fetch_cat(mate_id)), cat_is_amab(cat))]
+            opposite_mate = [cat.fetch_cat(mate_id) for mate_id in cat.mate if xor(cat_is_amab(cat.fetch_cat(mate_id)), cat_is_amab(cat)) and "sterile" not in cat.fetch_cat(mate_id).permanent_condition]
             if len(opposite_mate) > 0:
                 mate = [choice(opposite_mate)]
         
