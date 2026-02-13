@@ -136,6 +136,7 @@ def generate_sprite(
                 phenotype.silver = old_silver
 
             def create_coloursurface(basecolour, is_tabby=False):
+                is_red = ('red' in basecolour or 'cream' in basecolour or 'honey' in basecolour or 'ivory' in basecolour or 'apricot' in basecolour)
                 coloursurface = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 pointbase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 if is_tabby:
