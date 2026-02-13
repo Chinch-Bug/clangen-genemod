@@ -152,6 +152,7 @@ class CatThought(StrEnum):
     ON_EXILE = "on_exile"
     ON_LOST = "on_lost"
     ON_AFTERLIFE_CHANGE = "on_afterlife_change"
+    ON_RANK_CHANGE = "on_rank_change"
     OUTSIDE_DAM = "outside_dam"
     OUTSIDE_SIRE = "outside_sire"
     OUTSIDE_SURROGATE = "outside_surrogate"
