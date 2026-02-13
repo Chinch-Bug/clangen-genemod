@@ -258,6 +258,8 @@ class Pregnancy_Events:
         cat.get_new_thought(CatThought.ON_BIRTH)
         if other_cat:
             for x in other_cat:
+                if x.status.group_ID != kits[0].status.group_ID:
+                    continue
                 cats_involved.append(x.ID)
                 x.get_new_thought(CatThought.ON_BIRTH)
         for kit in kits:
@@ -1744,6 +1746,8 @@ class Pregnancy_Events:
         # add them as adoptive parents if not
         final_adoptive_parents = []
         for adoptive_p in all_adoptive_parents:
+            if adoptive_p.status.group_ID != all_kitten[0].status.group_ID:
+                continue
             Cat.fetch_cat(adoptive_p).get_new_thought(CatThought.ON_BIRTH)
             if adoptive_p not in all_kitten[0].inheritance.all_involved:
                 final_adoptive_parents.append(adoptive_p)
@@ -1751,6 +1755,8 @@ class Pregnancy_Events:
             cat.get_new_thought(CatThought.ON_BIRTH)
             if other_cat:
                 for x in other_cat:
+                    if x.status.group_ID != all_kitten[0].status.group_ID:
+                        continue
                     x.get_new_thought(CatThought.ON_BIRTH)
 
         # Add the adoptive parents.

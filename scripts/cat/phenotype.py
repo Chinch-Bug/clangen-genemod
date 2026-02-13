@@ -709,10 +709,10 @@ class Phenotype(Genotype):
             if self.merlepattern is None:  # pylint: disable=access-member-before-definition
                 self.merlepattern = self.ChooseTortiePattern(spec = 'merle')
 
-        if self.white[0] == "W" or self.pointgene[0] == "c" or ('DBEalt' not in self.pax3 and 'NoDBE' not in self.pax3) or (self.brindledbi and self.specialred not in ["blue-tipped", "blue-red", "cinnamon"] and (('o' not in self.sexgene) or (self.ext[0] == 'ea' and ((moons > 11 and self.agouti[0] != 'a') or (moons > 23))) or (self.ext[0] == 'er' and moons > 23) or (self.ext[0] == 'ec' and (self.agouti[0] != 'a' or moons > 5)))):
+        if self.white[0] == "W" or self.pointgene[0] == "c" or ('DBEalt' not in self.pax3 and 'NoDBE' not in self.pax3) or (self.brindledbi and self.specialred not in ["blue-tipped", "blue-red", "cinnamon"] and (('o' not in self.sexgene) or (self.ext[0] == 'ea' and ((moons > 11 and self.agouti[0] != 'a') or (moons > 35))) or (self.ext[0] == 'er' and moons > 23) or (self.ext[0] == 'ec' and (self.agouti[0] != 'a' or moons > 5)))):
             self.spritecolour = "white"
             self.maincolour = self.spritecolour
-        elif ('o' not in self.sexgene) or (self.ext[0] == 'ea' and ((moons > 11 and self.agouti[0] != 'a') or (moons > 23))) or (self.ext[0] == 'er' and moons > 23) or (self.ext[0] == 'ec' and moons > 0 and (self.agouti[0] != 'a' or moons > 5)):
+        elif ('o' not in self.sexgene) or (self.ext[0] == 'er' and moons > 23) or (self.ext[0] == 'ec' and moons > 0 and (self.agouti[0] != 'a' or moons > 5)):
             if self.specialred == 'blue-tipped':
                 self.tortiepattern = ['BLUE-TIPPED']
                 main = self.FindRed(self, moons)
@@ -805,6 +805,7 @@ class Phenotype(Genotype):
             return 50
         else:
             return 60
+
     def FindBlack(self, genes, moons, special=None):
         unders_colour = ""
         unders_opacity = 0
@@ -847,6 +848,9 @@ class Phenotype(Genotype):
                         colour = "black"
             
             maincolour = colour + str(self.saturation)
+            
+            if (self.ext[0] == 'ea' and ((moons > 11 and self.agouti[0] != 'a') or (moons > 35))):
+                return [maincolour] + self.FindRed(genes, moons)[1:]
 
             if self.saturation < 3 and colour in ['blue', 'lilac', 'fawn', 'dove']:
                 colour = "pale_" + colour
@@ -864,7 +868,7 @@ class Phenotype(Genotype):
 
                 if genes.corin[0] == "sg" or genes.wbtype == "chinchilla" or (genes.corin[0] != "N" and genes.wbtype == "shaded"):
                     banding = "chinchilla"
-                elif genes.wbtype == "shaded" or genes.corin[0] == "sh" or genes.corin[0] == "fg" or genes.ext[0] == 'ec' or (genes.ext[0] == 'ea' and moons > 3):
+                elif genes.wbtype == "shaded" or genes.corin[0] == "sh" or genes.corin[0] == "fg" or genes.ext[0] == 'ec' or (genes.ext[0] == 'ea' and (self.agouti[0] != "a" and moons > 3 or moons > 9)):
                     banding = "shaded"
                 else:
                     banding = genes.wbtype
@@ -890,6 +894,7 @@ class Phenotype(Genotype):
 
 
             return [maincolour, colour, unders_colour, unders_opacity]
+            
     def FindRed(self, genes, moons, special = None):
         unders_colour = 'lightbasecolours0'
         unders_opacity = 0
