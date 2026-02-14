@@ -70,11 +70,12 @@ def switch_clan_setting(setting_name):
 def reset_loaded_clan_settings():
     global clan_settings
     clan_settings = {}
+    from scripts.game_structure.game.settings import game_setting_get
 
     for _setting in all_settings:  # Add all the settings to the settings dictionary
         for setting_name, value in _setting.items():
-            if setting_name in DISPLAY_SETTINGS["game"]["general"]:
-                clan_settings[setting_name] = DISPLAY_SETTINGS["game"]["general"][setting_name]
+            if game_setting_get(setting_name) is not None:
+                clan_settings[setting_name] = game_setting_get(setting_name)
             else:
                 clan_settings[setting_name] = value
 
