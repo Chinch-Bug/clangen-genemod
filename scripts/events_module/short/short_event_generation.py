@@ -397,12 +397,12 @@ def filter_events(
         if not event_for_tags(event.tags, main_cat, random_cat):
             continue
 
-        if not game.clan.leader and "lead_name" in event.text:
+        if not clan.leader and "lead_name" in event.text:
             continue
-        if not game.clan.deputy and "dep_name" in event.text:
+        if not clan.deputy and "dep_name" in event.text:
             continue
         if (
-            not find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True)
+            not find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], working=True, clan=clan.group_ID)
             and "med_name" in event.text
         ):
             continue
