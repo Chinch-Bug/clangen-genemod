@@ -3788,8 +3788,10 @@ class Cat:
 
 
 # Creates a random cat
-def create_cat(rank, moons=None, biome=None, kittypet=False):
+def create_cat(rank, moons=None, biome=None, kittypet=False, clan=None):
     status_dict = {"rank": rank}
+    if clan:
+        status_dict["group_ID"] = clan
 
     new_cat = Cat(status_dict=status_dict, biome=biome, kittypet=kittypet)
 

@@ -16,7 +16,7 @@ from typing import Optional
 import pygame
 import ujson
 
-from scripts.cat.cats import Cat, cat_class, BACKSTORIES
+from scripts.cat.cats import Cat, new_cat, cat_class, BACKSTORIES
 from scripts.cat.enums import CatRank, CatGroup, CatSocial
 from scripts.cat.names import names
 from scripts.cat.save_load import (
@@ -1359,11 +1359,11 @@ class OtherClan:
             self.instructor.dead_for = randint(20, 200)
             self.instructor.status.group_history.insert(0, {"rank": instructor_rank, "group": self.group_ID, "moons_as": self.instructor.moons})
 
-            self.new_leader(Cat(status_dict={"rank": CatRank.LEADER, "group_ID": self.group_ID}, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]))
-            self.new_deputy(Cat(status_dict={"rank": CatRank.DEPUTY, "group_ID": self.group_ID}, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]))
-            self.new_medicine_cat(Cat(status_dict={"rank": CatRank.MEDICINE_CAT, "group_ID": self.group_ID}, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]))
+            self.new_leader(new_cat(CatRank.LEADER, biome=self.biome, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]), clan=self.group_ID)
+            self.new_deputy(new_cat(CatRank.DEPUTY, biome=self.biome, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]), clan=self.group_ID)
+            self.new_medicine_cat(new_cat(CatRank.MEDICINE_CAT, biome=self.biome, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]), clan=self.group_ID)
             for i in range(randint(constants.CONFIG["clan_creation"]["neighbourclan_cats"][0], constants.CONFIG["clan_creation"]["neighbourclan_cats"][1])):
-                Cat(status_dict={"rank": choice(random_rank), "group_ID": self.group_ID}, kittypet = constants.CONFIG["clan_creation"]["use_special_roller"])
+                new_cat(choice(random_rank), biome=self.biome, kittypet = constants.CONFIG["clan_creation"]["use_special_roller"], clan=self.group_ID)
 
     def __repr__(self):
         return f"{self.displayname}Clan"
