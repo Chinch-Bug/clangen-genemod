@@ -117,11 +117,12 @@ def _load_group(
         thoughts = load_lang_resource(f"{new_path}/{rank}.json")
 
         # make sure lost thoughts are included
-        if main_cat.status.is_lost(CatGroup.PLAYER_CLAN):
-            thoughts.extend(load_lang_resource(f"{start_path}/while_lost/{rank}.json"))
+        if main_cat.status.is_lost():
+            thoughts.extend(load_lang_resource(f"{start_path}/while_lost/{main_cat.status.find_prior_clan_rank()}.json"))
 
         thoughts.extend(_load_exiled_and_former(main_cat, new_path))
-        thoughts.extend(_load_general(main_cat, new_path))
+        if not main_cat.status.is_outsider:
+            thoughts.extend(_load_general(main_cat, new_path))
 
     # CATS WHO JUST CHANGED RANK
     elif thought_type == CatThought.ON_RANK_CHANGE:
