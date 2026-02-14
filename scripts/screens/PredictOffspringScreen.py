@@ -322,8 +322,10 @@ class PredictOffspringScreen(Screens):
             else:
                 index = 0
                 indey = 115
-            Cat.all_cats_list.remove(offspring)
-            del Cat.all_cats[offspring.ID]
+            if offspring in Cat.all_cats_list:
+                Cat.all_cats_list.remove(offspring)
+            if offspring.ID in Cat.all_cats:
+                del Cat.all_cats[offspring.ID]
     
     def exit_screen(self):
         self.back_button.kill()

@@ -1952,7 +1952,8 @@
                         "age:newborn",
                         "loner",
                         "meeting",
-                        "parent:0"
+                        "parent:0",
+                        "sibling:1"
                     ]
                 ],
                 "relationships": [

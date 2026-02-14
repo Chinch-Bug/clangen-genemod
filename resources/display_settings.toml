@@ -17,7 +17,7 @@
         keybinds = false
         shaders = false
         tints = false
-        "black pupils" = false
+        black_pupils = false
         accurate_porting = false
         "filter genes" = true
         "ageup dead" = false

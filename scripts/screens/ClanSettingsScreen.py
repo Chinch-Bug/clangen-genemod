@@ -138,6 +138,13 @@ class ClanSettingsScreen(Screens):
                         scroll_pos = self.checkboxes_text[
                             "container_relation"
                         ].vert_scroll_bar.start_percentage
+                    if (
+                        "container_role" in self.checkboxes_text
+                        and self.checkboxes_text["container_role"].vert_scroll_bar
+                    ):
+                        scroll_pos = self.checkboxes_text[
+                            "container_role"
+                        ].vert_scroll_bar.start_percentage
 
                     if self.sub_menu in self.opens:
                         self.opens[self.sub_menu]()
@@ -146,6 +153,10 @@ class ClanSettingsScreen(Screens):
                         if self.sub_menu == "relation":
                             self.checkboxes_text[
                                 "container_relation"
+                            ].vert_scroll_bar.set_scroll_from_start_percentage(scroll_pos)
+                        elif self.sub_menu == "role":
+                            self.checkboxes_text[
+                                "container_role"
                             ].vert_scroll_bar.set_scroll_from_start_percentage(scroll_pos)
                         else:
                             self.checkboxes_text[
