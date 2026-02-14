@@ -16,7 +16,7 @@ from typing import Optional
 import pygame
 import ujson
 
-from scripts.cat.cats import Cat, new_cat, cat_class, BACKSTORIES
+from scripts.cat.cats import Cat, create_cat, cat_class, BACKSTORIES
 from scripts.cat.enums import CatRank, CatGroup, CatSocial
 from scripts.cat.names import names
 from scripts.cat.save_load import (
@@ -43,7 +43,7 @@ from scripts.housekeeping.datadir import get_save_dir
 from scripts.housekeeping.version import get_version_info, SAVE_VERSION_NUMBER
 from scripts.clan_package.clan_symbols import clan_symbol_sprite
 from scripts.clan_package.get_clan_cats import get_living_clan_cat_count
-from scripts.events_module.consequences import create_new_cat
+from scripts.events_module.consequences import create_create_cat
 from scripts.screens.screens_core.screens_core import rebuild_top_menu_buttons
 
 
@@ -268,7 +268,7 @@ class Clan:
         allowed_range = constants.CONFIG["clan_creation"]["starting_outsiders"]
         number_outsiders = randint(allowed_range[0], allowed_range[1])
         for i in range(number_outsiders):
-            create_new_cat(
+            create_create_cat(
                 Cat,
                 original_social=choice([CatSocial.KITTYPET, CatSocial.LONER, CatSocial.LONER, CatSocial.ROGUE, CatSocial.ROGUE]),
                 outside=True
@@ -1359,11 +1359,11 @@ class OtherClan:
             self.instructor.dead_for = randint(20, 200)
             self.instructor.status.group_history.insert(0, {"rank": instructor_rank, "group": self.group_ID, "moons_as": self.instructor.moons})
 
-            self.new_leader(new_cat(CatRank.LEADER, biome=self.biome, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]), clan=self.group_ID)
-            self.new_deputy(new_cat(CatRank.DEPUTY, biome=self.biome, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]), clan=self.group_ID)
-            self.new_medicine_cat(new_cat(CatRank.MEDICINE_CAT, biome=self.biome, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]), clan=self.group_ID)
+            self.new_leader(create_cat(CatRank.LEADER, biome=self.biome, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]), clan=self.group_ID)
+            self.new_deputy(create_cat(CatRank.DEPUTY, biome=self.biome, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]), clan=self.group_ID)
+            self.new_medicine_cat(create_cat(CatRank.MEDICINE_CAT, biome=self.biome, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]), clan=self.group_ID)
             for i in range(randint(constants.CONFIG["clan_creation"]["neighbourclan_cats"][0], constants.CONFIG["clan_creation"]["neighbourclan_cats"][1])):
-                new_cat(choice(random_rank), biome=self.biome, kittypet = constants.CONFIG["clan_creation"]["use_special_roller"], clan=self.group_ID)
+                create_cat(choice(random_rank), biome=self.biome, kittypet = constants.CONFIG["clan_creation"]["use_special_roller"], clan=self.group_ID)
 
     def __repr__(self):
         return f"{self.displayname}Clan"
