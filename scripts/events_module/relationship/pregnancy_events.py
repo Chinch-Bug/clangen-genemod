@@ -1319,14 +1319,14 @@ class Pregnancy_Events:
                 outside_parent = [choice(other_clan_affair_partners)]
             else:
                 mate_age = cat.moons + randint(0, 24)-12
-                outside_parent = [create_new_cat(Cat,
+                outside_parent = create_new_cat(Cat,
                                                 original_social=CatSocial.CLANCAT,
                                                 backstory=BACKSTORIES["backstory_categories"].get(f"former_clancat_backstories", ["outsider1"]),
                                                 alive=True,
                                                 moons=mate_age if mate_age > 14 else 15,
                                                 gender=('fem' if cat_is_amab(cat) else 'masc') if not get_clan_setting('same sex birth') else None,
                                                 outside=True,
-                                                is_parent=True)]
+                                                is_parent=True)
             outside_parent[0].get_new_thought(CatThought.OUTSIDE_DAM if background_category == "2" else CatThought.OUTSIDE_SIRE, other_cat=cat)
             if random() < 0.2:
                 outside_parent[0].set_mate(cat)
