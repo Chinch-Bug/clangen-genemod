@@ -125,6 +125,7 @@ class ClanSettingsScreen(Screens):
 
                     # if self.sub_menu in self.opens:
                     #     self.opens[self.sub_menu]()
+                    self.refresh_checkboxes()
 
                     break
 
@@ -390,6 +391,9 @@ class ClanSettingsScreen(Screens):
         """
         TODO: DOCS
         """
+
+        for c in self.checkboxes_text:
+            self.checkboxes_text[c].kill()
 
         container_name = f"container_{self.sub_menu}"
         self.checkboxes_text[container_name] = UIModifiedScrollingContainer(

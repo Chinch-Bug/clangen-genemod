@@ -2,18 +2,18 @@
   "comment": "use lead_name, med_name, and dep_name to insert the name of a cat with that rank",
   "event": "War",
   "trigger_events": [
-    "The war with o_c_n has begun.",
-    "Rising tensions have finally come to a breaking point. A war against o_c_n has been declared.",
+    "The war between c_n and o_c_n has begun.",
+    "Rising tensions have finally come to a breaking point. c_n has declared war against o_c_n.",
     "c_n declares war against o_c_n.",
     "After many moons of tensions between o_c_n and c_n, a formal war is declared.",
-    "A tension-thick air hangs low over the o_c_n border, until lead_name finally declares a war with o_c_n.",
-    "A formal war with o_c_n was been declared, marking a major turning point in the two Clans' relationship.",
+    "A tension-thick air hangs low over the c_n-o_c_n border, until lead_name finally declares a war with o_c_n.",
+    "A formal war between c_n and o_c_n was been declared, marking a major turning point in the two Clans' relationship.",
     "c_n launches a retaliatory strike against o_c_n, seeking justice for a past act of aggression, resulting in a back and forth war between the two Clans.",
     "Fuelled by a simmering resentment, o_c_n initiates a war with c_n, determined to reclaim their disputed territory.",
     "Amidst growing tensions, c_n launches a preemptive strike against o_c_n, fearing an imminent threat to their Clan's existence.",
     "War breaks out between o_c_n and c_n.",
     "o_c_n's slights cannot go unpunished any longer. c_n declares war.",
-    "After a tense discussion, lead_name and dep_name agree to formally declare war on o_c_n.",
+    "After a tense discussion, lead_name and dep_name agree to formally declare c_n's war on o_c_n.",
     "lead_name calls a Clan meeting to inform c_n that o_c_n has declared war.",
     "All hope for peace has been lost. The only path that lead_name can see is war between c_n and o_c_n."
   ],
@@ -23,21 +23,21 @@
       "but there are plenty of more complex/in-depth moon events that also affect the war."
     ],
     "rel_up": [
-      "Rumors are circulating that o_c_n wishes the war would end.",
+      "Rumors are circulating that o_c_n wishes the war with c_n would end.",
       "Both c_n and o_c_n tire of the war, wishing for it to end.",
       "Mutual exhaustion pushes both c_n and o_c_n to consider ending the war.",
       "Neither c_n nor o_c_n wishes to lose cats to the war; they seem to be considering peace.",
       "Murmurings of peace between c_n and o_c_n permeated the last Gathering.",
       "The other Clan leaders pushed c_n and o_c_n to make peace at the last Gathering.",
       "Seeking peace, c_n and o_c_n ponder an end to their war.",
-      "Despite the two Clans' decisions of war, the cats long to have a shared peace.",
+      "Despite the c_n and o_c_n's decisions of war, the cats long to have a shared peace.",
       "In the midst of conflict, a spark of understanding flickers between c_n and o_c_n cats, hinting at a potential path to peace.",
       "Amidst turmoil, empathy blooms between the c_n and o_c_n leaders, kindling hope for reconciliation beyond the battlefield.",
       "Among the Clans, a yearning for peace emerges, bridging divides and nurturing a shared hope for harmony.",
       "Hope finally begins to unite the Clanmates of c_n and o_c_n, fostering a shared vision of peace.",
-      "dep_name seems to doubt lead_name's conviction in the war with o_c_n.",
-      "med_name pressures lead_name to end the war with o_c_n.",
-      "dep_name and med_name confront lead_name together to urge an end to the war with o_c_n.",
+      "dep_name seems to doubt lead_name's conviction in c_n's war with o_c_n.",
+      "med_name pressures lead_name to end c_n's war with o_c_n.",
+      "dep_name and med_name confront lead_name together to urge an end to c_n's war with o_c_n.",
       "The hearts of both o_c_n and c_n no longer seem to be in this war.",
       "o_c_n and c_n patrols met at a border and parted without unsheathing claws.",
       "med_name escorts lead_name to o_c_n's camp to parley with o_c_n's leader.",
@@ -45,7 +45,7 @@
     ],
     "neutral": [
       "War continues to rage between c_n and o_c_n.",
-      "The war against o_c_n continues.",
+      "The war between c_n and o_c_n continues.",
       "c_n warriors plan new battle strategies for the war against o_c_n.",
       "c_n wishes the war with o_c_n would end.",
       "c_n cats reinforce the camp walls in anticipation of o_c_n attacks.",
@@ -67,7 +67,7 @@
     "rel_down": [
       "o_c_n has taken some of c_n's territory.",
       "c_n has taken some of o_c_n's territory.",
-      "War negotiations with o_c_n went badly at the last Gathering.",
+      "c_n's war negotiations with o_c_n went badly at the last Gathering.",
       "The tension between c_n and o_c_n is palpable, with even the smallest actions potentially leading to violence.",
       "The hostile environment between c_n and o_c_n has been continuing to grow.",
       "Any attempts at peace only seemed to make the whole war situation between c_n and o_c_n worse.",
@@ -85,7 +85,7 @@
     ]
   },
   "conclusion_events": [
-    "The war with o_c_n has finally ended.",
+    "The war between c_n and o_c_n has finally ended.",
     "The cats of o_c_n and c_n finally agree to peace terms.",
     "A truce is called and the war between o_c_n and c_n is ended.",
     "With the many injuries both sides have suffered, o_c_n and c_n found common ground and ended the war.",
@@ -99,7 +99,7 @@
     "The piercing war cries of o_c_n and c_n have turned into tired, lifeless mewls... And the cats are glad as the war finally comes to a close.",
     "The leaders of o_c_n and c_n have come to terms about the war, deciding that it would best for all the cats if it was formally settled here.",
     "Remembering all the blood that was shed in the war, o_c_n and c_n have decided to finally settle it, once and for all.",
-    "After a tense parley at a Gathering, lead_name agrees to end the war with o_c_n.",
-    "med_name and o_c_n's medicine cat urge their leaders to find peace, and, grudgingly, they agree. The war has ended."
+    "After a tense parley at a Gathering, lead_name agrees to end c_n's war with o_c_n.",
+    "c_n and o_c_n's medicine cats urge their leaders to find peace, and, grudgingly, they agree. The war has ended."
   ]
 }
