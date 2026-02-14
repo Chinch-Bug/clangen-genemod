@@ -1359,9 +1359,9 @@ class OtherClan:
             self.instructor.dead_for = randint(20, 200)
             self.instructor.status.group_history.insert(0, {"rank": instructor_rank, "group": self.group_ID, "moons_as": self.instructor.moons})
 
-            self.new_leader(create_cat(CatRank.LEADER, biome=self.biome, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]), clan=self.group_ID)
-            self.new_deputy(create_cat(CatRank.DEPUTY, biome=self.biome, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]), clan=self.group_ID)
-            self.new_medicine_cat(create_cat(CatRank.MEDICINE_CAT, biome=self.biome, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]), clan=self.group_ID)
+            self.new_leader(create_cat(CatRank.LEADER, biome=self.biome, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"], clan=self.group_ID))
+            self.new_deputy(create_cat(CatRank.DEPUTY, biome=self.biome, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"], clan=self.group_ID))
+            self.new_medicine_cat(create_cat(CatRank.MEDICINE_CAT, biome=self.biome, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"], clan=self.group_ID))
             for i in range(randint(constants.CONFIG["clan_creation"]["neighbourclan_cats"][0], constants.CONFIG["clan_creation"]["neighbourclan_cats"][1])):
                 create_cat(choice(random_rank), biome=self.biome, kittypet = constants.CONFIG["clan_creation"]["use_special_roller"], clan=self.group_ID)
 
