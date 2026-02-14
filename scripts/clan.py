@@ -43,7 +43,7 @@ from scripts.housekeeping.datadir import get_save_dir
 from scripts.housekeeping.version import get_version_info, SAVE_VERSION_NUMBER
 from scripts.clan_package.clan_symbols import clan_symbol_sprite
 from scripts.clan_package.get_clan_cats import get_living_clan_cat_count
-from scripts.events_module.consequences import create_create_cat
+from scripts.events_module.consequences import create_new_cat
 from scripts.screens.screens_core.screens_core import rebuild_top_menu_buttons
 
 
@@ -268,7 +268,7 @@ class Clan:
         allowed_range = constants.CONFIG["clan_creation"]["starting_outsiders"]
         number_outsiders = randint(allowed_range[0], allowed_range[1])
         for i in range(number_outsiders):
-            create_create_cat(
+            create_new_cat(
                 Cat,
                 original_social=choice([CatSocial.KITTYPET, CatSocial.LONER, CatSocial.LONER, CatSocial.ROGUE, CatSocial.ROGUE]),
                 outside=True
