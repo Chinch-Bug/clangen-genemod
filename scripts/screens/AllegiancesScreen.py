@@ -73,7 +73,7 @@ class AllegiancesScreen(Screens):
         self.set_disabled_menu_buttons(["allegiances"])
         self.update_heading_text(f"{game.clan.displayname}Clan")
 
-        if not self.current_clan:
+        if not self.current_clan or self.current_clan not in [game.clan, "cotc"] + game.clan.all_other_clans:
             self.current_clan = game.clan
 
         self.event_screen_container = pygame_gui.core.UIContainer(

@@ -1802,12 +1802,12 @@ class Cat:
         if self.dead and not self.faded:
             self.get_new_thought(CatThought.WHILE_DEAD)
             return
-        self.get_new_thought(CatThought.WHILE_ALIVE)
 
         self.moons += 1
         if self.moons > 0 and self.status.rank == CatRank.NEWBORN:
             self.status._change_rank(CatRank.KITTEN)
         self.in_camp = 1
+        self.get_new_thought(CatThought.WHILE_ALIVE)
 
         personality = self.personality.trait
 

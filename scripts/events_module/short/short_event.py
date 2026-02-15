@@ -516,6 +516,7 @@ class ShortEvent:
             if (
                 "NOTAIL" in self.main_cat.pelt.scars
                 or "HALFTAIL" in self.main_cat.pelt.scars
+                or (self.main_cat.phenotype.bobtailnr > 0 and self.main_cat.phenotype.bobtailnr < 5)
             ):
                 for acc in Pelt.tail_accessories:
                     if acc in acc_list:
