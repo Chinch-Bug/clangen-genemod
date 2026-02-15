@@ -197,7 +197,10 @@
         "show dead relation" = [
             false, true
         ]
-        "show_empty relation" = [
+        "show empty relation" = [
+            false, true
+        ]
+        "show outside relation" = [
             false, true
         ]
         "den labels" = [

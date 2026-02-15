@@ -1,0 +1,82 @@
+[
+    {
+        "event_id": "gen_group_patrol_clash1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [],
+        "frequency": 4,
+        "event_text": [
+            "m_c, r_c1, and r_c2 got into a heated dispute with r_c3, r_c4, and r_c5 during a routine border patrol.",
+            "m_c, r_c1, and r_c2 got into an argument with r_c3, r_c4, and r_c5 during a routine border patrol."
+        ],
+        "m_c": {
+            "status": [
+                "warrior",
+                "deputy",
+                "leader"
+            ]
+        },
+        "r_c": [
+            {
+                "clan": 1,
+                "status": [
+                    "warrior",
+                    "deputy",
+                    "leader",
+                    "apprentice"
+                ]
+            },
+            {
+                "clan": 1,
+                "status": [
+                    "warrior",
+                    "deputy",
+                    "leader",
+                    "apprentice"
+                ]
+            },
+            {
+                "clan": 2,
+                "status": [
+                    "warrior",
+                    "deputy",
+                    "leader"
+                ]
+            },
+            {
+                "clan": 2,
+                "status": [
+                    "warrior",
+                    "deputy",
+                    "leader",
+                    "apprentice"
+                ]
+            },
+            {
+                "clan": 2,
+                "status": [
+                    "warrior",
+                    "deputy",
+                    "leader",
+                    "apprentice"
+                ]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "m_c", "r_c1", "r_c2" ],
+                "cats_to": [ "r_c3", "r_c4", "r_c5" ],
+                "values": [ "like" ],
+                "amount": -5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat got into a heated dispute with to_cat's patrol."
+                }
+            }
+        ]
+    }
+]

@@ -37,6 +37,7 @@ from scripts.events_module.outsider_events import OutsiderEvents
 from scripts.events_module.patrol.patrol import Patrol
 from scripts.events_module.relationship.pregnancy_events import Pregnancy_Events
 from scripts.events_module.relationship.relation_events import Relation_Events
+from scripts.events_module.relationship.crossclan_event_generation import handle_crossclan_relationships
 from scripts.events_module.short.condition_events import Condition_Events
 from scripts.events_module.short.short_event_generation import create_short_event
 from scripts.game_structure import constants
@@ -363,6 +364,9 @@ def one_moon():
         check_and_promote_deputy(clan)
         if not clancount:
             break
+
+    # if clancount:
+    #     handle_crossclan_relationships()
 
     # Resort
     if switch_get_value(Switch.sort_type) != "id":
