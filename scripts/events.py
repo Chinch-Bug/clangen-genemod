@@ -317,7 +317,7 @@ def one_moon():
     # handle the herb supply for the moon
     game.clan.herb_supply.handle_moon(
         clan_size=get_living_clan_cat_count(Cat),
-        clan_cats=Cat.all_cats_list,
+        clan_cats=[c for c in Cat.all_cats_list if c.status.alive_in_player_clan],
         med_cats=find_alive_cats_with_rank(
             Cat,
             ranks=[CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE],
@@ -2449,6 +2449,10 @@ def handle_murder(cat, clan):
         if (i.has_mid_negative or i.has_mid_negative)
         and Cat.fetch_cat(i.cat_to).status.group.is_any_clan_group()
     ]
+    # sort by total relationship, this way we know who has the worst relationship
+    targets.sort(key=lambda x: x.total_relationship_value)
+    if len(targets) > 5:
+        targets = targets[:5]
 
     # if we have some, then we need to decide if this cat will kill
     if targets:
@@ -2464,9 +2468,8 @@ def handle_murder(cat, clan):
             [l for l in chosen_target.get_reltype_tiers() if l.is_extreme_neg]
         )
         mid_neg = len([t for t in chosen_target.get_reltype_tiers() if t.is_mid_neg])
-        neg = len([t for t in chosen_target.get_reltype_tiers() if t.is_low_neg])
 
-        relation_modifier = (extreme_neg * 8) + (mid_neg * 6) + (neg * 4)
+        relation_modifier = (extreme_neg * 8) + (mid_neg * 6)
 
         kill_chance -= relation_modifier
 
@@ -2483,11 +2486,13 @@ def handle_murder(cat, clan):
             kill_chance -= 5
 
         # little easter egg just for fun
-        if (
-            cat.personality.trait == "ambitious"
-            and Cat.fetch_cat(chosen_target.cat_to).status.is_leader
+        if cat.personality.trait in ("ambitious", "arrogant", "rebellious") and (
+            Cat.fetch_cat(chosen_target.cat_to).status.is_leader
+            or Cat.fetch_cat(chosen_target.cat_to).status.rank == CatRank.DEPUTY
         ):
             kill_chance -= 10
+            if cat.status.rank == CatRank.DEPUTY:
+                kill_chance -= 15
 
         kill_chance -= cat.personality.aggression
         kill_chance -= 16 - cat.personality.stability
@@ -2509,7 +2514,7 @@ def handle_murder(cat, clan):
                 second_clan=chosen_cat.status.fetch_clan_object(game.clan) if chosen_cat.status.group_ID != cat.status.group_ID else None
             )
 
-        elif kill_chance <= 20:
+        elif kill_chance <= 15:
             create_short_event(
                 event_type="misc",
                 main_cat=cat,

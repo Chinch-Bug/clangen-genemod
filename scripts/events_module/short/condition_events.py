@@ -622,10 +622,10 @@ class Condition_Events:
                 # gather potential event strings for healed illness
                 possible_string_list = Condition_Events.ILLNESS_HEALED_STRINGS[illness]
 
-                # choose event string
-                random_index = int(random.random() * len(possible_string_list))
-                event = possible_string_list[random_index]
-                event = event_text_adjust(Cat, event, main_cat=cat)
+                event = Condition_Events.get_valid_string_from_list(
+                    possible_string_list, cat, clan
+                )
+
                 event_list.append(event)
                 game.herb_events_list.append(event)
 
@@ -654,6 +654,27 @@ class Condition_Events:
         if len(event_list) > 0:
             event_string = " ".join(event_list)
         return event_string
+
+    @staticmethod
+    def get_valid_string_from_list(event_list: list[str], cat: Cat, clan=game.clan) -> str:
+        med_cats = find_alive_cats_with_rank(
+            Cat, [CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE], working=True, clan=clan.group_ID
+        )
+
+        allowed_events = []
+        for event in event_list:
+            if "r_c" in event:
+                if med_cats:
+                    allowed_events.append(event)
+            else:
+                allowed_events.append(event)
+
+        return event_text_adjust(
+            Cat,
+            random.choice(allowed_events),
+            main_cat=cat,
+            random_cat=random.choice(med_cats) if med_cats else None,
+        )
 
     @staticmethod
     def handle_already_injured(cat, clan=game.clan):
@@ -726,8 +747,8 @@ class Condition_Events:
                 # If a scar was not given, we need to grab a separate healed event
                 if not scar_given:
                     try:
-                        event = random.choice(
-                            Condition_Events.INJURY_HEALED_STRINGS[injury]
+                        event = Condition_Events.get_valid_string_from_list(
+                            Condition_Events.INJURY_HEALED_STRINGS[injury], cat, clan
                         )
                     except KeyError:
                         logger.warning(
