@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: ascii -*-
 import os
+from copy import deepcopy
 from random import choice
 from re import sub
 
@@ -381,7 +382,7 @@ class ProfileScreen(Screens):
             elif event.ui_element == self.leave_clan_button:
                 LeaveClanWindow(self.the_cat)
             elif event.ui_element == self.destroy_accessory_button:
-                self.the_cat.pelt.accessory = []
+                self.the_cat.pelt.accessory = tuple()
                 self.clear_profile()
                 self.build_profile()
                 self.update_disabled_buttons_and_text()
@@ -864,7 +865,7 @@ class ProfileScreen(Screens):
 
         # ACCESSORY
         if the_cat.pelt.accessory:
-            cats_accs = the_cat.pelt.accessory.copy()
+            cats_accs = list(deepcopy(the_cat.pelt.accessory))
             acc_list = []
             if sprites.COLLAR_DATA["palette_map"]:
                 for acc in the_cat.pelt.accessory:

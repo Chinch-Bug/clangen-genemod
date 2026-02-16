@@ -101,7 +101,7 @@ def create_rel_event(
         
         # setting event info
         chosen_event.main_cat = main_cat
-        chosen_event.random_cat = random_cats
+        chosen_event.random_cats = random_cats
 
         # execute the event
         chosen_event.execute_event()
@@ -322,68 +322,6 @@ def filter_events(
                 cat_group=[random_cat, main_cat],
                 event_id=event.event_id,
             ):
-                continue
-
-        # other Clan related checks
-        if event.other_clan:
-            if not other_clan:
-                continue
-
-            if "current_rep" in event.other_clan and not event_for_clan_relations(
-                event.other_clan["current_rep"], clan, other_clan
-            ):
-                continue
-
-        elif event.supplies:
-            clan_size = get_living_clan_cat_count(Cat)
-            # finding cats with the CAMP skill
-            camp_cats = [
-                c
-                for c in Cat.all_cats_list
-                if c.status.alive_in_player_clan
-                and (
-                    (c.skills.primary and c.skills.primary.path == SkillPath.CAMP)
-                    or (
-                        c.skills.secondary and c.skills.secondary.path == SkillPath.CAMP
-                    )
-                )
-            ]
-
-            discard = False
-            for supply in event.supplies:
-                trigger = supply["trigger"]
-                supply_type = supply["type"]
-
-                if (
-                    supply["adjust"] in ["reduce_half", "reduce_full"]
-                    and randint(1, reduction_avoidance_chance) != 1
-                ):
-                    discard = True
-                    break
-
-                if supply_type == "freshkill":
-                    if not FRESHKILL_EVENT_ACTIVE:
-                        continue
-
-                    if not event_for_freshkill_supply(
-                        game.clan.freshkill_pile,
-                        trigger,
-                        FRESHKILL_EVENT_TRIGGER_FACTOR,
-                        clan_size,
-                    ):
-                        discard = True
-                        break
-                    else:
-                        discard = False
-
-                else:  # if supply type wasn't freshkill, then it must be an herb type
-                    if not event_for_herb_supply(trigger, supply_type, clan_size):
-                        discard = True
-                        break
-                    else:
-                        discard = False
-
-            if discard:
                 continue
 
         final_events.append(event)

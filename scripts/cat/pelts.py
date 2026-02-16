@@ -150,7 +150,13 @@ class Pelt:
         self._accessory = accessory
         self._paralyzed = paralyzed
         self.opacity = opacity
-        self.scars = scars if isinstance(scars, list) else []
+        self._scars = (
+            tuple(scars)
+            if isinstance(scars, list)
+            else scars
+            if isinstance(scars, tuple)
+            else tuple()
+        )
         self.tint = tint
         self.white_patches_tint = white_patches_tint
         self.screen_scale = scripts.game_structure.screen_settings.screen_scale
@@ -308,6 +314,15 @@ class Pelt:
     def accessory(self, val):
         self.rebuild_sprite = True
         self._accessory = val
+
+    @property
+    def scars(self):
+        return self._scars
+
+    @scars.setter
+    def scars(self, val):
+        self.rebuild_sprite = True
+        self._scars = val
 
     @property
     def paralyzed(self):
@@ -611,9 +626,9 @@ class Pelt:
             self.cat_sprites["senior"] = choice(self.senior_poses)
 
         if self.accessory is None:
-            self.accessory = []
+            self.accessory = tuple()
         elif isinstance(self.accessory, str):
-            self.accessory = [self.accessory]
+            self.accessory = tuple(self.accessory)
 
         new_acc_list = []
         for acc in self.accessory:
@@ -621,7 +636,7 @@ class Pelt:
                 new_acc_list.append(convert_dict["collar_map"][acc])
             else:
                 new_acc_list.append(acc)
-        self.accessory = new_acc_list
+        self.accessory = tuple(new_acc_list)
 
     def init_sprite(self):
         self.cat_sprites = {
@@ -663,14 +678,14 @@ class Pelt:
             scar_choice = randint(0, 15)  # 6.67%
 
         if scar_choice == 1:
-            self.scars.append(choice(Pelt.general_scars))
+            self.scars = (*self.scars, choice(Pelt.general_scars))
 
         if "NOTAIL" in self.scars and "HALFTAIL" in self.scars:
-            self.scars.remove("HALFTAIL")
+            self.scars = tuple(scar for scar in self.scars if scar != "HALFTAIL")
 
     def init_accessories(self, age):
         if age == "newborn":
-            self.accessory = []
+            self.accessory = tuple()
             return
 
         acc_display_choice = randint(0, 80)
@@ -680,11 +695,11 @@ class Pelt:
             acc_display_choice = randint(0, 100)
 
         if acc_display_choice == 1:
-            self.accessory = [
+            self.accessory = tuple(
                 choice([choice(Pelt.plant_accessories), choice(Pelt.wild_accessories)])
-            ]
+            )
         else:
-            self.accessory = []
+            self.accessory = tuple()
 
         if self.phenotype.bobtailnr > 0 and self.phenotype.bobtailnr < 5 and self.accessory in ['RED FEATHERS', 'BLUE FEATHERS', 'JAY FEATHERS']:
             self.accessory = None

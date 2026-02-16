@@ -106,15 +106,15 @@ class CrossClanEvent(ShortEvent):
 
         # check if another cat is present
         if self.r_c:
-            for c in self.random_cat:
+            for c in self.random_cats:
                 self.all_involved_cat_ids.append(c.ID)
 
         # remove cats from involved_cats if they're supposed to be
         if self.r_c and "r_c" in self.exclude_involved:
-            self.all_involved_cat_ids.remove(self.random_cat[0].ID)
+            self.all_involved_cat_ids.remove(self.random_cats[0].ID)
         for i in range(len(self.r_c)):
             if f"r_c{i+1}" in self.exclude_involved:
-                self.all_involved_cat_ids.remove(self.random_cat[i].ID)
+                self.all_involved_cat_ids.remove(self.random_cats[i].ID)
         if "m_c" in self.exclude_involved:
             self.all_involved_cat_ids.remove(self.main_cat.ID)
 
@@ -130,8 +130,8 @@ class CrossClanEvent(ShortEvent):
         custom_mapping = {}
         for i in range(len(self.r_c)):
             custom_mapping[f"r_c{i+1}"] = (
-                str(self.random_cat[i].name),
-                choice(self.random_cat[i].pronouns),
+                str(self.random_cats[i].name),
+                choice(self.random_cats[i].pronouns),
             )
         clan = next(filter(lambda c: c.group_ID == self.involved_clans[0], game.clan.all_other_clans), game.clan)
         custom_mapping["c_n"] = (i18n.t("general.clan", name=clan.displayname), {})
@@ -229,8 +229,8 @@ class CrossClanEvent(ShortEvent):
                 # RANDOM CAT
                 elif abbr == "r_c":
                     injury = choice(possible_injuries)
-                    self.random_cat.get_injured(injury, potential_scars=potential_scars)
-                    self.handle_injury_history(self.random_cat, "r_c", injury)
+                    self.random_cats.get_injured(injury, potential_scars=potential_scars)
+                    self.handle_injury_history(self.random_cats, "r_c", injury)
 
                 # NEW CATS
                 elif "n_c" in abbr:
@@ -259,7 +259,7 @@ class CrossClanEvent(ShortEvent):
                     return
                 elif cat_abbr in block["cats"]:
                     history_text = history_text_adjust(
-                        block["scar"], self.other_clan_name, game.clan, self.random_cat
+                        block["scar"], self.other_clan_name, game.clan, self.random_cats
                     )
                     cat.history.add_scar(history_text)
                     break
@@ -269,18 +269,18 @@ class CrossClanEvent(ShortEvent):
                     return
                 elif cat_abbr in block["cats"]:
                     possible_scar = history_text_adjust(
-                        block["scar"], self.other_clan_name, game.clan, self.random_cat
+                        block["scar"], self.other_clan_name, game.clan, self.random_cats
                     )
                     possible_death = history_text_adjust(
                         block["death"],
                         self.other_clan_name,
                         game.clan,
-                        self.random_cat,
+                        self.random_cats,
                     )
                     if possible_scar or possible_death:
                         cat.history.add_possible_history(
                             injury,
                             scar_text=possible_scar,
                             death_text=possible_death,
-                            other_cat=self.random_cat,
+                            other_cat=self.random_cats,
                         )

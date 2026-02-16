@@ -83,7 +83,7 @@ class TestHandleAccessories(unittest.TestCase):
 
     def test_cat_gets_test_accessory(self):
         self.chosen_event.execute_event(clan=self.clan)
-        self.assertEqual(self.chosen_event.main_cat.pelt.accessory, ["TEST"])
+        self.assertEqual(self.chosen_event.main_cat.pelt.accessory, ("TEST",))
 
     def test_cat_gets_random_wild_accessory(self):
         self.chosen_event.new_accessory = ["WILD"]
@@ -111,14 +111,14 @@ class TestHandleAccessories(unittest.TestCase):
 
     def test_notail_cats_do_not_get_tail_accessories(self):
         self.chosen_event.new_accessory = self.pelts.tail_accessories
-        self.chosen_event.main_cat.pelt.scars = ["NOTAIL"]
+        self.chosen_event.main_cat.pelt.scars = ("NOTAIL",)
 
         self.chosen_event.execute_event(clan=self.clan)
         self.assertFalse(self.chosen_event.main_cat.pelt.accessory)
 
     def test_halftail_cats_do_not_get_tail_accessories(self):
         self.chosen_event.new_accessory = self.pelts.tail_accessories
-        self.chosen_event.main_cat.pelt.scars = ["HALFTAIL"]
+        self.chosen_event.main_cat.pelt.scars = ("HALFTAIL",)
 
         self.chosen_event.execute_event(clan=self.clan)
         self.assertFalse(self.chosen_event.main_cat.pelt.accessory)
