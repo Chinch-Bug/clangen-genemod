@@ -90,6 +90,7 @@ class CrossClanEvent(ShortEvent):
         self.r_c = r_c
         self.nr_involved_clans = nr_involved_clans
         self.involved_clans = []
+        self.random_cats: Optional[Cat] = []
 
     def execute_event(self):
         """

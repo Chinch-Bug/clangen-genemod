@@ -310,8 +310,8 @@
             "Feels bad for hoping r_c might get hurt so {PRONOUN/m_c/subject} could see {PRONOUN/r_c/object}"
         ],
         "random_status_constraint": [
-            "-medicine cat apprentice",
-            "-medicine cat"
+            "-healer apprentice",
+            "-healer"
         ],
         "random_living_status": [
             "living"
