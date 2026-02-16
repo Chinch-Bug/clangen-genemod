@@ -679,7 +679,7 @@ class ShortEvent:
                     if tnr and 'TNR' not in kitty.pelt.scars:
                         taken_cats.append(kitty)
                         if kitty.moons > 3:
-                            kitty.pelt.scars.append("TNR")
+                            kitty.pelt.scars = (*kitty.pelt.scars, "TNR")
                             kitty.pelt.rebuild_sprite = True
                             kitty.get_permanent_condition("sterile", False)
                             if 'pregnant' in kitty.injuries:
