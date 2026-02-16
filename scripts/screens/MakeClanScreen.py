@@ -722,8 +722,7 @@ class MakeClanScreen(Screens):
                         ui_scale_dimensions((800, 700)),
                     )
                 )
-                self.elements["next_step"].enable()
-                # self.elements["next_step"].disable()
+                self.elements["next_step"].disable()
             elif len(self.members) == 1:
                 self.elements["background"].set_image(
                     pygame.transform.scale(

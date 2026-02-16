@@ -77,6 +77,7 @@
         "other_perspective": "<u><b>OTHER PERSPECTIVE</b></u>",
         "save_failed_title": "Saving Failed!\n\n%{error}",
         "confirm_saved_image": "Saved as %{file_name} in the saved_images folder",
+        "confirm_saved_allegiances": "Saved as %{file_name} in the saved_allegiances folder",
         "prevent_fading": "Prevent fading",
         "prevent_fading_tooltip": "Prevents cat from fading away after being dead for 202 moons.",
         "prevent_fading_tooltip_guide": "The afterlife guide can never fade.",

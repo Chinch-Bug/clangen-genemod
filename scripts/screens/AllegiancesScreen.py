@@ -8,6 +8,7 @@ from scripts.game_structure import game
 from scripts.ui.generate_button import get_button_dict, ButtonStyles
 from scripts.game_structure.screen_settings import MANAGER
 from ..ui.theme import get_text_box_theme
+from ..ui.windows.export_allegiances import ExportAllegiancesWindow
 from ..events_module.text_adjust import event_text_adjust, adjust_list_text
 from ..ui.scale import ui_scale, ui_scale_offset
 from ..clan_package.get_clan_cats import get_alive_clan_queens
@@ -34,6 +35,7 @@ class AllegiancesScreen(Screens):
         self.ranks_boxes = None
         self.scroll_container = None
         self.heading = None
+        self.export_button = None
 
         self.event_screen_container = None
         self.current_clan = None
@@ -47,6 +49,9 @@ class AllegiancesScreen(Screens):
             if event.ui_element in self.names_buttons:
                 switch_set_value(Switch.cat, event.ui_element.return_cat_id())
                 self.change_screen('profile_screen')
+            elif event.ui_element == self.export_button:
+                ExportAllegiancesWindow(self.get_outside_allegiances() if self.current_clan == "cotc" else self.get_allegiances_text(), 
+                (f"{self.current_clan.displayname}Clan Allegiances" if self.current_clan != "cotc" else "Cats Outside the Clan")+f"_moon_{game.clan.age}")
             elif event.ui_element in self.choose_group_buttons.values():
                 self.choose_living_dropdown.close()
                 self.current_clan = event.ui_element.text if event.ui_element.text == "general.cotc" else event.ui_element.text.replace("Clan", "")
@@ -76,13 +81,22 @@ class AllegiancesScreen(Screens):
         if not self.current_clan or self.current_clan not in [game.clan, "cotc"] + game.clan.all_other_clans:
             self.current_clan = game.clan
 
+        self.export_button = UISurfaceImageButton(
+            ui_scale(pygame.Rect((25, 100), (150, 30))),
+            "screens.allegiances.export_allegiances",
+            get_button_dict(ButtonStyles.SQUOVAL, (150, 30)),
+            object_id="@buttonstyles_squoval",
+            manager=MANAGER,
+            starting_height=1,
+        )
+
         self.event_screen_container = pygame_gui.core.UIContainer(
-            ui_scale(pygame.Rect((0, 100), (800, 300))),
+            ui_scale(pygame.Rect((600, 100), (200, 300))),
             starting_height=1,
             manager=MANAGER,
         )
         self.choose_group_button = UISurfaceImageButton(
-            ui_scale(pygame.Rect((510, 0), (190, 34))),
+            ui_scale(pygame.Rect((0, 0), (190, 34))),
             "screens.list.choose_group",
             get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
             object_id="@buttonstyles_dropdown",
@@ -92,7 +106,7 @@ class AllegiancesScreen(Screens):
         )
 
         self.living_groups_container = pygame_gui.elements.UIAutoResizingContainer(
-            ui_scale(pygame.Rect((510, 32), (0, 0))),
+            ui_scale(pygame.Rect((0, 32), (0, 0))),
             object_id="#choose_group_container",
             manager=MANAGER,
             starting_height=1,
@@ -163,6 +177,8 @@ class AllegiancesScreen(Screens):
         del self.scroll_container
         self.heading.kill()
         del self.heading
+        self.export_button.kill()
+        del self.export_button
 
         self.event_screen_container.kill()
         self.choose_group_button.kill()
