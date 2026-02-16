@@ -7422,8 +7422,8 @@
             "Imagines dramatically saving r_c's life and earning {PRONOUN/r_c/poss} gratitude"
         ],
         "main_status_constraint": [
-            "medicine cat",
-            "medicine cat apprentice"
+            "healer",
+            "healer apprentice"
         ],
         "random_living_status": [
             "living"
@@ -7438,8 +7438,8 @@
             "Hopes r_c might get assigned to a herb patrol with {PRONOUN/m_c/object}"
         ],
         "main_status_constraint": [
-            "medicine cat",
-            "medicine cat apprentice"
+            "healer",
+            "healer apprentice"
         ],
         "random_status_constraint": [
             "apprentice",
