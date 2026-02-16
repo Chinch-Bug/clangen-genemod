@@ -868,7 +868,7 @@ class ShortEvent:
                     return
                 elif cat_abbr in block["cats"]:
                     history_text = history_text_adjust(
-                        block["scar"], self.other_clan_name, game.clan, self.random_cat
+                        block["scar"], self.other_clan_name, cat.status.fetch_clan_object(game.clan), self.random_cat
                     )
                     cat.history.add_scar(history_text)
                     break
@@ -878,12 +878,12 @@ class ShortEvent:
                     return
                 elif cat_abbr in block["cats"]:
                     possible_scar = history_text_adjust(
-                        block["scar"], self.other_clan_name, game.clan, self.random_cat
+                        block["scar"], self.other_clan_name, cat.status.fetch_clan_object(game.clan), self.random_cat
                     )
                     possible_death = history_text_adjust(
                         block["death"],
-                        self.other_clan_name,
-                        game.clan,
+                        self.other_clan_name, 
+                        cat.status.fetch_clan_object(game.clan),
                         self.random_cat,
                     )
                     if possible_scar or possible_death:
