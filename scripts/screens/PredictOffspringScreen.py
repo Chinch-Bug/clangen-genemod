@@ -18,11 +18,9 @@ from ..game_structure.game.switches import switch_get_value, Switch
 from scripts.game_structure import constants
 from pygame_gui.elements import UIDropDownMenu, UITextBox
 from pygame import Rect
-from scripts.game_structure.ui_elements import (
-    UIImageButton,
-    UISpriteButton,
-    UISurfaceImageButton,
-)
+from ..ui.elements.sprite_button import UISpriteButton
+from ..ui.elements.image_button import UIImageButton
+from ..ui.elements.surface_image_button import UISurfaceImageButton
 from scripts.events_module.text_adjust import shorten_text_to_fit
 from scripts.ui.theme import get_text_box_theme
 from scripts.ui.scale import ui_scale, ui_scale_dimensions

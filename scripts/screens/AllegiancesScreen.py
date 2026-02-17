@@ -18,10 +18,10 @@ from scripts.game_structure.game.switches import (
 )
 from .Screens import Screens
 from ..cat.enums import CatRank, CatSocial
+from scripts.ui.elements.allegiances_cat_button import AllegiancesCat
+from scripts.ui.elements.surface_image_button import UISurfaceImageButton
 from scripts.game_structure.ui_elements import (
-    AllegiancesCat,
     UIDropDownContainer,
-    UISurfaceImageButton,
     UIModifiedScrollingContainer
 )
 
