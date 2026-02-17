@@ -91,6 +91,7 @@ class CrossClanEvent(ShortEvent):
         self.nr_involved_clans = nr_involved_clans
         self.involved_clans = []
         self.random_cats: Optional[Cat] = []
+        self.custom_mapping = {}
 
     def execute_event(self):
         """
@@ -134,11 +135,13 @@ class CrossClanEvent(ShortEvent):
                 str(self.random_cats[i].name),
                 choice(self.random_cats[i].pronouns),
             )
-        clan = next(filter(lambda c: c.group_ID == self.involved_clans[0], game.clan.all_other_clans), game.clan)
-        custom_mapping["c_n"] = (i18n.t("general.clan", name=clan.displayname), {})
+        clan = game.clan.group_ID_to_clan(self.involved_clans[0])
+        self.custom_mapping["c_n"] = (i18n.t("general.clan", name=clan.displayname), {})
         for i, o_clan in enumerate(self.involved_clans[1:], start=1):
-            o_clan = next(filter(lambda c: c.group_ID == o_clan, game.clan.all_other_clans), game.clan)
+            o_clan = game.clan.group_ID_to_clan(o_clan)
             custom_mapping[f"o_c_n{i}"] = (i18n.t("general.clan", name=o_clan.displayname), {})
+            if i == 1:
+                custom_mapping[f"o_c_n"] = (i18n.t("general.clan", name=o_clan.displayname), {})
 
         self.text = process_text(self.text, custom_mapping)
 
@@ -149,7 +152,8 @@ class CrossClanEvent(ShortEvent):
                 Cat,
                 self.text,
                 main_cat=self.main_cat,
-                clan=clan
+                clan=clan,
+                random_cat=self.random_cats[0]
             )
             for change in self.relationships:
                 for group in change.get("log", []):
@@ -158,13 +162,12 @@ class CrossClanEvent(ShortEvent):
             unpack_rel_block(Cat, self.relationships, self, clan=clan)
 
         # handle injuries and injury history
-        # self.handle_injury()
+        self.handle_injury()
 
-        # # change other_clan rep
-        # if self.other_clan:
-        #     change_clan_relations(clan, other_clan, self.other_clan["changed"])
-        #     if "other_clans" not in self.types:
-        #         self.types.append("other_clans")
+        # change other_clan rep
+        if self.other_clan:
+            for other_clan in self.involved_clans[1:]:
+                change_clan_relations(clan, game.clan.group_ID_to_clan(other_clan), self.other_clan["changed"])
 
         # change supplies
         # if self.supplies:
@@ -182,6 +185,7 @@ class CrossClanEvent(ShortEvent):
             self.text,
             main_cat=self.main_cat,
             clan=clan,
+            random_cat=self.random_cats[0],
         )
 
         for clan_id in self.involved_clans:
@@ -205,6 +209,7 @@ class CrossClanEvent(ShortEvent):
 
         if "health" not in self.types:
             self.types.append("health")
+            self.types.remove("interaction")
 
         # now go through each injury block
         for block in self.injury:
@@ -230,17 +235,18 @@ class CrossClanEvent(ShortEvent):
                 # RANDOM CAT
                 elif abbr == "r_c":
                     injury = choice(possible_injuries)
-                    self.random_cats.get_injured(injury, potential_scars=potential_scars)
-                    self.handle_injury_history(self.random_cats, "r_c", injury)
+                    for random_cat in self.random_cats:
+                        random_cat.get_injured(injury, potential_scars=potential_scars)
+                        self.handle_injury_history(random_cat, "r_c", injury)
 
                 # NEW CATS
-                elif "n_c" in abbr:
-                    for i, new_cat_objects in enumerate(self.new_cats):
-                        injury = choice(possible_injuries)
-                        new_cat_objects[i].get_injured(
-                            injury, potential_scars=potential_scars
-                        )
-                        self.handle_injury_history(new_cat_objects[i], abbr, injury)
+                elif "r_c" in abbr:
+                    injury = choice(possible_injuries)
+                    random_cat = self.random_cats[int(abbr.strip("r_c"))-1]
+                    random_cat.get_injured(
+                        injury, potential_scars=potential_scars
+                    )
+                    self.handle_injury_history(random_cat, abbr, injury)
 
     def handle_injury_history(self, cat, cat_abbr, injury=None):
         """
@@ -254,34 +260,26 @@ class CrossClanEvent(ShortEvent):
 
         # if injury is false then this is classic, and they just need scar history
 
-        if not injury:
-            for block in self.history:
-                if "scar" not in block:
-                    return
-                elif cat_abbr in block["cats"]:
-                    history_text = history_text_adjust(
-                        block["scar"], self.other_clan_name, game.clan, self.random_cats
+        for block in self.history:
+            if "scar" not in block:
+                return
+            elif cat_abbr in block["cats"]:
+                possible_scar = history_text_adjust(
+                    block["scar"], 
+                    self.custom_mapping["o_c_n"][0], 
+                    cat.status.fetch_clan_object(game.clan), 
+                    self.random_cats[0] if cat_abbr == "m_c" else self.main_cat
+                )
+                possible_death = history_text_adjust(
+                    block["death"],
+                    self.custom_mapping["o_c_n"][0],
+                    cat.status.fetch_clan_object(game.clan),
+                    self.random_cats[0] if cat_abbr == "m_c" else self.main_cat,
+                )
+                if possible_scar or possible_death:
+                    cat.history.add_possible_history(
+                        injury,
+                        scar_text=possible_scar,
+                        death_text=possible_death,
+                        other_cat=self.random_cats[0] if cat_abbr == "m_c" else self.main_cat,
                     )
-                    cat.history.add_scar(history_text)
-                    break
-        else:
-            for block in self.history:
-                if "scar" not in block:
-                    return
-                elif cat_abbr in block["cats"]:
-                    possible_scar = history_text_adjust(
-                        block["scar"], self.other_clan_name, game.clan, self.random_cats
-                    )
-                    possible_death = history_text_adjust(
-                        block["death"],
-                        self.other_clan_name,
-                        game.clan,
-                        self.random_cats,
-                    )
-                    if possible_scar or possible_death:
-                        cat.history.add_possible_history(
-                            injury,
-                            scar_text=possible_scar,
-                            death_text=possible_death,
-                            other_cat=self.random_cats,
-                        )

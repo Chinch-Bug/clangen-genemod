@@ -1188,6 +1188,9 @@ class Clan:
     def temperament(self, val):
         return
 
+    def group_ID_to_clan(self, group_ID):
+        return next(filter(lambda c: c.group_ID == group_ID, game.clan.all_other_clans), game.clan)
+
     def get_relations(self, clan, other_clan):
         main_enum = clan.group_ID
         other_enum = other_clan.group_ID

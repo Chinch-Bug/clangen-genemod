@@ -1,1 +1,159 @@
-[]
+[
+    {
+        "event_id": "gen_single_intruder1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 3,
+        "event_text": [
+            "m_c found evidence of an interloper near the border. The scent trail lead to r_c, who merely mocked m_c for accusing {PRONOUN/r_c/object} of tresspassing."
+        ],
+        "m_c": {
+            "status": [
+                "warrior",
+                "deputy",
+                "apprentice"
+            ]
+        },
+        "r_c": {
+            "trait": [
+                "childish",
+                "troublesome",
+                "shameless"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "like", "respect" ],
+                "amount": -5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat mocked from_cat for accusing {PRONOUN/to_cat/object} of tresspassing."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_gathering_elder1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 3,
+        "event_text": [
+            "It's not always easy to catch up with friends over the border as an elder, but the Gathering allows m_c and r_c some time to chat and catch up."
+        ],
+        "m_c": {
+            "status": [
+                "elder"
+            ],
+            "relationship_status": [
+                "likes"
+            ]
+        },
+        "r_c": {
+            "status": [
+                "elder"
+            ],
+            "relationship_status": [
+                "likes"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "like", "trust", "comfort" ],
+                "amount": 5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat and to_cat had a pleasant time catching up during the Gathering."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_gathering_romance1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": ["romance"],
+        "frequency": 2,
+        "event_text": [
+            "m_c approached r_c during the Gathering with some casual flirting-turned-pleasant-chat."
+        ],
+        "m_c": {
+            "status": [
+                "-apprentice",
+                "-mediator apprentice",
+                "-healer apprentice"
+            ],
+            "trait": [
+                "-grumpy",
+                "-insecure",
+                "-nervous"
+            ]
+        },
+        "r_c": {
+            "status": [
+                "-apprentice",
+                "-mediator apprentice",
+                "-healer apprentice"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "romance", "like" ],
+                "amount": 5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat flirted and chatted with to_cat during the Gathering."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_gathering_war1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ "war" ],
+        "frequency": 4,
+        "event_text": [
+            "War sometimes brings out the worst in cats. Even during the Gathering, m_c cannot help but glare at r_c for sitting near."
+        ],
+        "m_c": {
+        },
+        "r_c": {
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "like", "comfort" ],
+                "amount": -5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat spend the Gathering glaring at from_cat."
+                }
+            }
+        ]
+    }
+]

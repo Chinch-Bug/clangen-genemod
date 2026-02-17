@@ -6,7 +6,6 @@ import ujson
 
 from scripts.cat.cats import Cat
 from scripts.cat.enums import CatRank
-from scripts.cat.skills import SkillPath
 from scripts.events_module.event_filters import (
     event_for_location,
     event_for_tags,
@@ -19,12 +18,6 @@ from scripts.events_module.event_filters import (
 )
 from scripts.events_module.relationship.crossclan_event import CrossClanEvent
 from scripts.game_structure import constants, game
-from scripts.game_structure.game.switches import switch_get_value, Switch
-from scripts.clan_package.cotc import get_warring_clan
-from scripts.clan_package.get_clan_cats import (
-    get_living_clan_cat_count,
-    find_alive_cats_with_rank,
-)
 
 loaded_events = {}
 used_events = set()
@@ -200,7 +193,7 @@ def generate_event_objects(is_group, biome, frequency) -> list:
                     event_id=event["event_id"] if "event_id" in event else "",
                     location=event["location"] if "location" in event else ["any"],
                     season=event["season"] if "season" in event else ["any"],
-                    tags=event["tags"] if "tags" in event else [],
+                    tags=event["sub_type"] if "sub_type" in event else [],
                     text=event_text,
                     new_accessory=(
                         event["new_accessory"] if "new_accessory" in event else []
@@ -324,7 +317,7 @@ def filter_events(
             ):
                 continue
 
-        final_events.append(event)
+        final_events.extend([event] * event.weight)
 
     if not final_events:
         return None, random_cat
@@ -361,12 +354,39 @@ def filter_events(
         #     chosen_cat = choice(cat_list)
         #     continue
 
+        possible_clans = list(viable_cats.keys())
+
         involved_clans = [main_cat.status.group_ID]
+        possible_clans.remove(main_cat.status.group_ID)
+
+        clan = game.clan.group_ID_to_clan(main_cat.status.group_ID)
+
+        if event.other_clan:
+            for other_clan in possible_clans.copy():
+                if "current_rep" in event.other_clan and not event_for_clan_relations(
+                    event.other_clan["current_rep"], clan, game.clan.group_ID_to_clan(other_clan)
+                ):
+                    possible_clans.remove(other_clan)
+        
+        if "war" in event.sub_type:
+            enemies = game.clan.get_wars(clan)
+            for other_clan in possible_clans.copy():
+                if other_clan not in enemies:
+                    possible_clans.remove(other_clan)
+
+        if len(possible_clans) < chosen_event.nr_involved_clans-1:
+            final_events.remove(chosen_event)
+            chosen_event = None
+            continue
+
         for i in range(chosen_event.nr_involved_clans-1):
             new_clan = None
             while not new_clan or new_clan in involved_clans:
-                new_clan = choice(list(viable_cats.keys()))
+                new_clan = choice(possible_clans)
             involved_clans.append(new_clan)
+
+        if not isinstance(chosen_event.r_c, list):
+            chosen_event.r_c = [chosen_event.r_c]
 
         for i in range(len(chosen_event.r_c)):
             # gotta gather injuries so we can check if the cat can get them
@@ -375,14 +395,18 @@ def filter_events(
                 r_c_injuries.extend(block["injuries"] if "r_c" in block["cats"] or f"r_c{i+1}" in block["cats"] else [])
 
             allowable_cats = []
-            if chosen_event.r_c[i]["clan"] == "any":
+            if chosen_event.r_c[i].get("clan") == "any":
                 for key in viable_cats:
                     allowable_cats += viable_cats[key]
                     if key not in involved_clans:
                         involved_clans.append(key)
             else:
-                allowable_cats = viable_cats[involved_clans[chosen_event.r_c[i]["clan"]-1]] if chosen_event.r_c[i]["clan"] else viable_cats[involved_clans[-1]]
+                allowable_cats = viable_cats[involved_clans[chosen_event.r_c[i]["clan"]-1]] if chosen_event.r_c[i].get("clan") else viable_cats[involved_clans[-1]]
                 allowable_cats = [c for c in allowable_cats if c not in chosen_cats and c.ID != main_cat.ID]
+
+            if "romance" in chosen_event.sub_type:
+                allowable_cats = [c for c in allowable_cats if c.is_potential_mate(main_cat, for_love_interest=True)]
+
             chosen_cat = cat_for_event(
                 constraint_dict=chosen_event.r_c[i].copy(),
                 possible_cats=allowable_cats,
@@ -403,7 +427,7 @@ def filter_events(
             else:
                 chosen_cats.append(chosen_cat)
 
-        if chosen_event and len(chosen_cats) == len(chosen_event.r_c):
+        if chosen_event and (isinstance(chosen_event.r_c, list) and len(chosen_cats) == len(chosen_event.r_c) or chosen_cats):
            break 
         
 

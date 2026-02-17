@@ -1271,7 +1271,7 @@ def gather_cat_objects(
             else:
                 out_set.add(event.main_cat)
         elif abbr == "r_c":
-            out_set.add(event.random_cat[0] if isinstance(event.random_cat, list) else event.random_cat)
+            out_set.add(event.random_cats[0] if hasattr(event, "random_cats") else event.random_cat)
         elif re.match(r"n_c:[0-9]+", abbr):
             index = re.match(r"n_c:([0-9]+)", abbr).group(1)
             index = int(index)
@@ -1280,8 +1280,8 @@ def gather_cat_objects(
         elif re.match(r"r_c[0-9]+", abbr):
             index = re.match(r"r_c([0-9]+)", abbr).group(1)
             index = int(index)-1
-            if index < len(event.random_cat):
-                out_set.add(event.random_cat[index])
+            if index < len(event.random_cats):
+                out_set.add(event.random_cats[index])
         # PATROL SPECIFIC
         elif abbr == "p_l":
             out_set.add(event.patrol_leader)

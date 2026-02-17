@@ -132,42 +132,44 @@ class ShortEvent:
 
         self.r_c = r_c if r_c else {}
         if self.r_c:
-            if "age" in self.r_c and "any" not in self.r_c["age"]:
-                self.weight += self.NUM_OF_AGES - len(self.r_c["age"])
-            else:
-                self.r_c["age"] = ["any"]
-            if "status" in self.r_c and "any" not in self.r_c["status"]:
-                self.weight += self.NUM_OF_RANKS - len(self.r_c["status"])
-            else:
-                self.r_c["status"] = ["any"]
-            if "relationship_status" in self.r_c:
-                self.weight += len(self.r_c["relationship_status"])
-            else:
-                self.r_c["relationship_status"] = []
-            if "skill" in self.r_c:
-                self.weight += self.NUM_OF_SKILLS - len(self.r_c["skill"])
-            else:
-                self.r_c["skill"] = []
-            if "not_skill" in self.r_c:
-                self.weight += len(self.r_c["not_skill"])
-            else:
-                self.r_c["not_skill"] = []
-            if "trait" in self.r_c:
-                self.weight += self.NUM_OF_TRAITS - len(self.r_c["trait"])
-            else:
-                self.r_c["trait"] = []
-            if "not_trait" in self.r_c:
-                self.weight += len(self.r_c["not_trait"])
-            else:
-                self.r_c["not_trait"] = []
-            if "backstory" in self.r_c:
-                self.weight += 1
-            else:
-                self.r_c["backstory"] = []
-            if "dies" not in self.r_c:
-                self.r_c["dies"] = False
-            if "gender" not in self.r_c:
-                self.r_c["gender"] = []
+            r_c_list = self.r_c if isinstance(self.r_c, list) else [self.r_c]
+            for r_c_info in r_c_list:
+                if "age" in r_c_info and "any" not in r_c_info["age"]:
+                    self.weight += self.NUM_OF_AGES - len(r_c_info["age"])
+                else:
+                    r_c_info["age"] = ["any"]
+                if "status" in r_c_info and "any" not in r_c_info["status"]:
+                    self.weight += self.NUM_OF_RANKS - len(r_c_info["status"])
+                else:
+                    r_c_info["status"] = ["any"]
+                if "relationship_status" in r_c_info:
+                    self.weight += len(r_c_info["relationship_status"])
+                else:
+                    r_c_info["relationship_status"] = []
+                if "skill" in r_c_info:
+                    self.weight += self.NUM_OF_SKILLS - len(r_c_info["skill"])
+                else:
+                    r_c_info["skill"] = []
+                if "not_skill" in r_c_info:
+                    self.weight += len(r_c_info["not_skill"])
+                else:
+                    r_c_info["not_skill"] = []
+                if "trait" in r_c_info:
+                    self.weight += self.NUM_OF_TRAITS - len(r_c_info["trait"])
+                else:
+                    r_c_info["trait"] = []
+                if "not_trait" in r_c_info:
+                    self.weight += len(r_c_info["not_trait"])
+                else:
+                    r_c_info["not_trait"] = []
+                if "backstory" in r_c_info:
+                    self.weight += 1
+                else:
+                    r_c_info["backstory"] = []
+                if "dies" not in r_c_info:
+                    r_c_info["dies"] = False
+                if "gender" not in r_c_info:
+                    r_c_info["gender"] = []
 
         self.new_cat_attributes = new_cat if new_cat else []
         self.exclude_involved = exclude_involved if exclude_involved else []
