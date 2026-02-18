@@ -507,8 +507,8 @@
         "sub_type": [ ],
         "frequency": 3,
         "event_text": [
-            "m_c spends the Gathering telling r_c about Clan history from c_n's perspective.",
-            "r_c spends the Gathering asking m_c questions about Clan history from c_n's perspective."
+            "m_c spent the Gathering telling r_c about Clan history from c_n's perspective.",
+            "r_c spent the Gathering asking m_c questions about Clan history from c_n's perspective."
         ],
         "m_c": {
             "status": [
@@ -766,7 +766,7 @@
         "sub_type": [ "war" ],
         "frequency": 4,
         "event_text": [
-            "War sometimes brings out the worst in cats. Even during the Gathering, m_c cannot help but glare at r_c for sitting near."
+            "War sometimes brings out the worst in cats. Even during the Gathering, m_c could not help but glare at r_c for sitting near."
         ],
         "m_c": {
         },
@@ -796,9 +796,9 @@
         "sub_type": [],
         "frequency": 2,
         "event_text": [
-            "During the Gathering, m_c makes a point of ignoring r_c.",
-            "During the Gathering, m_c makes a point of talking over r_c.",
-            "m_c makes a pointed comment about r_c's Clan being last to arrive to the Gathering this moon."
+            "During the Gathering, m_c made a point of ignoring r_c.",
+            "During the Gathering, m_c made a point of talking over r_c.",
+            "m_c made a pointed comment about r_c's Clan being last to arrive to the Gathering this moon."
         ],
         "m_c": {
             "status": ["leader"],
@@ -822,7 +822,7 @@
                 "amount": -15,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat spend the Gathering disrespecting from_cat."
+                    "cats_from": "to_cat spent the Gathering disrespecting from_cat."
                 }
             }
         ],
@@ -841,8 +841,8 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "During the Gathering, m_c makes a point of ignoring r_c.",
-            "During the Gathering, m_c makes a point of talking over r_c."
+            "During the Gathering, m_c made a point of ignoring r_c.",
+            "During the Gathering, m_c made a point of talking over r_c."
         ],
         "m_c": {
             "status": [ "deputy" ],
@@ -866,7 +866,7 @@
                 "amount": -15,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat spend the Gathering disrespecting from_cat."
+                    "cats_from": "to_cat spent the Gathering disrespecting from_cat."
                 }
             }
         ],
@@ -885,8 +885,8 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "During the Gathering, m_c makes a point of ignoring r_c.",
-            "During the Gathering, m_c makes a point of talking over r_c.",
+            "During the Gathering, m_c made a point of ignoring r_c.",
+            "During the Gathering, m_c made a point of talking over r_c.",
             "During the Gathering, m_c refused to speak to r_c."
         ],
         "m_c": {
@@ -911,7 +911,7 @@
                 "amount": -15,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat spend the Gathering disrespecting from_cat."
+                    "cats_from": "to_cat spent the Gathering disrespecting from_cat."
                 }
             }
         ],
@@ -930,8 +930,8 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "During the Half-moon meeting, m_c makes a point of ignoring r_c.",
-            "During the Half-moon meeting, m_c makes a point of talking over r_c.",
+            "During the Half-moon meeting, m_c made a point of ignoring r_c.",
+            "During the Half-moon meeting, m_c made a point of talking over r_c.",
             "During the Half-moon meeting, m_c refused to speak to r_c."
         ],
         "m_c": {
@@ -956,7 +956,7 @@
                 "amount": -15,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat spend the Half-moon meeting disrespecting from_cat."
+                    "cats_from": "to_cat spent the Half-moon meeting disrespecting from_cat."
                 }
             }
         ],

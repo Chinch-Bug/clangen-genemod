@@ -93,8 +93,8 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "While on patrol, m_c, r_c1, and r_c2 found r_c3, r_c4, and r_c5 clearing up pathways, and pitch in to help.",
-            "While on patrol, m_c, r_c1, and r_c2 found r_c3, r_c4, and r_c5 trying to get rid of a thornbush, and pitch in to help."
+            "While on patrol, m_c, r_c1, and r_c2 found r_c3, r_c4, and r_c5 clearing up pathways, and pitched in to help.",
+            "While on patrol, m_c, r_c1, and r_c2 found r_c3, r_c4, and r_c5 trying to get rid of a thornbush, and pitched in to help."
         ],
         "m_c": {
             "status": [
@@ -176,8 +176,8 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "While on a walk, m_c found r_c1, r_c2, and r_c3 clearing up pathways, and pitches in to help.",
-            "While on a walk, m_c found r_c1, r_c2, and r_c3 trying to get rid of a thornbush, and pitches in to help."
+            "While on a walk, m_c found r_c1, r_c2, and r_c3 clearing up pathways, and pitched in to help.",
+            "While on a walk, m_c found r_c1, r_c2, and r_c3 trying to get rid of a thornbush, and pitched in to help."
         ],
         "m_c": {
             "status": [
@@ -397,7 +397,7 @@
         "sub_type": [ ],
         "frequency": 3,
         "event_text": [
-            "m_c brought along r_c1 to meet with r_c2 and teach r_c1 about o_c_n1."
+            "During the Gathering, m_c brought along r_c1 to meet with r_c2 and teach r_c1 about o_c_n1."
         ],
         "m_c": {
             "relationship_status": [ "mentor/app" ]
@@ -477,7 +477,7 @@
         "frequency": 3,
         "nr_involved_clans": 3,
         "event_text": [
-            "m_c brought up a recent omen {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} unsure about to r_c1 and r_c2 to discuss together."
+            "m_c brought up a recent omen {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} unsure about to r_c1 and r_c2 in order to discuss together."
         ],
         "m_c": {
             "status": ["healer", "healer apprentice"]
@@ -501,46 +501,6 @@
                 "mutual": false,
                 "log": {
                     "cats_from": "to_cat helped from_cat decipher an omen."
-                }
-            }
-        ]
-    },
-    {
-        "event_id": "gen_group_gathering_chat1",
-        "location": [
-            "any"
-        ],
-        "season": [
-            "any"
-        ],
-        "sub_type": [ ],
-        "frequency": 4,
-        "event_text": [
-            "m_c, r_c1, r_c2, and r_c3 formed a huddle at the Gathering, sharing news and gossip.",
-            "m_c, r_c1, r_c2, and r_c3 formed a huddle at the Gathering, sharing news and personal anecdotes."
-        ],
-        "m_c": {
-        },
-        "r_c": [
-            {
-                "clan": 2
-            },
-            {
-                "clan": "any"
-            },
-            {
-                "clan": "any"
-            }
-        ],
-        "relationships": [
-            {
-                "cats_from": [ "m_c" ],
-                "cats_to": [ "r_c1", "r_c2", "r_c3" ],
-                "values": [ "like" ],
-                "amount": 5,
-                "mutual": true,
-                "log": {
-                    "cats_from": "from_cat chatted with to_cat at the Gathering."
                 }
             }
         ]
