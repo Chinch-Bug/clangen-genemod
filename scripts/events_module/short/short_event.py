@@ -190,7 +190,7 @@ class ShortEvent:
             ):
                 self.weight += (3 - len(self.other_clan["current_rep"])) * 5
             else:
-                self.other_clan["current_rep"] = []
+                self.other_clan["current_rep"] = ["any"]
             if "changed" not in self.other_clan:
                 self.other_clan["changed"] = 0
         self.supplies = supplies if supplies else []
