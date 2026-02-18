@@ -39,7 +39,7 @@ from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank, get_li
 
 
 def cat_is_amab(cat):
-    return ('Y' in cat.phenotype.sexgene and cat.phenotype.sex != "molly") or cat.phenotype.sex == "tom"
+    return (('Y' in cat.phenotype.sexgene and cat.phenotype.sex != "molly") or cat.phenotype.sex == "tom")
 
 class Pregnancy_Events:
     """All events which are related to pregnancy such as kitting and defining who are the parents."""
@@ -1296,14 +1296,14 @@ class Pregnancy_Events:
         unknowns = []
         for outcat in Cat.all_cats:
             outcat = Cat.all_cats.get(outcat)
-            if not outcat.dead and not outcat.status.is_lost(clan.group_ID) and not (outcat.status.is_exiled(clan.group_ID) or random() < 0.25):
+            if not outcat.dead and not outcat.status.is_lost(clan.group_ID) and (not outcat.status.is_exiled(clan.group_ID) or random() < 0.25):
                 unknowns.append(outcat)
 
         possible_affair_partners = [i for i in unknowns if
                                 i.is_potential_mate(cat, for_love_interest=True, outsider=True)
                                 and Pregnancy_Events.check_if_can_have_kits(i, True, True)
                                 and 'sterile' not in i.permanent_condition
-                                and (get_clan_setting('same sex birth') or xor(cat_is_amab(i), cat_is_amab(cat)))
+                                and (get_clan_setting('same sex birth') or cat_is_amab(i) != cat_is_amab(cat))
                                     and len(i.mate) == 0 and not i.birth_cooldown
                                     and i.ID not in game.clan.pregnancy_data
                                     and i.status.group_ID != cat.status.group_ID]
