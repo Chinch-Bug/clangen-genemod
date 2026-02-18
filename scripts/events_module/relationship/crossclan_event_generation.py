@@ -193,7 +193,7 @@ def generate_event_objects(is_group, biome, frequency) -> list:
                     event_id=event["event_id"] if "event_id" in event else "",
                     location=event["location"] if "location" in event else ["any"],
                     season=event["season"] if "season" in event else ["any"],
-                    tags=event["sub_type"] if "sub_type" in event else [],
+                    sub_type=event["sub_type"] if "sub_type" in event else [],
                     text=event_text,
                     new_accessory=(
                         event["new_accessory"] if "new_accessory" in event else []
