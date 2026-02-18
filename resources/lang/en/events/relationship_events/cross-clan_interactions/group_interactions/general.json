@@ -78,5 +78,640 @@
                 }
             }
         ]
+    },
+    {
+        "event_id": "gen_group_patrol_clean1",
+        "location": [
+            "plains",
+            "desert",
+            "mountainous",
+            "forest"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "While on patrol, m_c, r_c1, and r_c2 found r_c3, r_c4, and r_c5 clearing up pathways, and pitch in to help.",
+            "While on patrol, m_c, r_c1, and r_c2 found r_c3, r_c4, and r_c5 trying to get rid of a thornbush, and pitch in to help."
+        ],
+        "m_c": {
+            "status": [
+                "warrior",
+                "deputy",
+                "leader"
+            ]
+        },
+        "r_c": [
+            {
+                "clan": 1,
+                "status": [
+                    "warrior",
+                    "deputy",
+                    "leader",
+                    "apprentice"
+                ]
+            },
+            {
+                "clan": 1,
+                "status": [
+                    "warrior",
+                    "deputy",
+                    "leader",
+                    "apprentice"
+                ]
+            },
+            {
+                "clan": 2,
+                "status": [
+                    "warrior",
+                    "deputy",
+                    "leader"
+                ]
+            },
+            {
+                "clan": 2,
+                "status": [
+                    "warrior",
+                    "deputy",
+                    "leader",
+                    "apprentice"
+                ]
+            },
+            {
+                "clan": 2,
+                "status": [
+                    "warrior",
+                    "deputy",
+                    "leader",
+                    "apprentice"
+                ]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "m_c", "r_c1", "r_c2" ],
+                "cats_to": [ "r_c3", "r_c4", "r_c5" ],
+                "values": [ "like", "respect" ],
+                "amount": 5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat helped to_cat's patrol with clearing pathways."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_group_patrol_clean2",
+        "location": [
+            "plains",
+            "desert",
+            "mountainous",
+            "forest"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "While on a walk, m_c found r_c1, r_c2, and r_c3 clearing up pathways, and pitches in to help.",
+            "While on a walk, m_c found r_c1, r_c2, and r_c3 trying to get rid of a thornbush, and pitches in to help."
+        ],
+        "m_c": {
+            "status": [
+                "warrior",
+                "deputy",
+                "leader"
+            ],
+            "skill": ["CAMP,1"]
+        },
+        "r_c": [
+            {
+                "clan": 2,
+                "status": [
+                    "warrior",
+                    "deputy",
+                    "leader"
+                ]
+            },
+            {
+                "clan": 2,
+                "status": [
+                    "warrior",
+                    "deputy",
+                    "leader",
+                    "apprentice"
+                ]
+            },
+            {
+                "clan": 2,
+                "status": [
+                    "warrior",
+                    "deputy",
+                    "leader",
+                    "apprentice"
+                ]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c1", "r_c2", "r_c3" ],
+                "values": [ "like", "respect" ],
+                "amount": 5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat helped to_cat's patrol with clearing pathways."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_group_patrol_hostile1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "m_c, r_c1, and r_c2 caught r_c3, r_c4, and r_c5 setting up traps during a routine border patrol.",
+            "r_c3, r_c4, and r_c5 tried to taunt m_c, r_c1, and r_c2 into attacking during a routine border patrol."
+        ],
+        "m_c": {
+            "status": [
+                "warrior",
+                "deputy",
+                "leader"
+            ]
+        },
+        "r_c": [
+            {
+                "clan": 1,
+                "status": [
+                    "warrior",
+                    "deputy",
+                    "leader",
+                    "apprentice"
+                ]
+            },
+            {
+                "clan": 1,
+                "status": [
+                    "warrior",
+                    "deputy",
+                    "leader",
+                    "apprentice"
+                ]
+            },
+            {
+                "clan": 2,
+                "status": [
+                    "warrior",
+                    "deputy",
+                    "leader"
+                ],
+                "trait": [
+                    "-nervous",
+                    "-insecure",
+                    "-compassionate",
+                    "-thoughtful",
+                    "-careful",
+                    "-loving"
+                ]
+            },
+            {
+                "clan": 2,
+                "status": [
+                    "warrior",
+                    "deputy",
+                    "leader",
+                    "apprentice"
+                ],
+                "trait": [
+                    "-nervous",
+                    "-insecure",
+                    "-compassionate",
+                    "-thoughtful",
+                    "-careful",
+                    "-loving"
+                ]
+            },
+            {
+                "clan": 2,
+                "status": [
+                    "warrior",
+                    "deputy",
+                    "leader",
+                    "apprentice"
+                ],
+                "trait": [
+                    "-nervous",
+                    "-insecure",
+                    "-compassionate",
+                    "-thoughtful",
+                    "-careful",
+                    "-loving"
+                ]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "m_c", "r_c1", "r_c2" ],
+                "cats_to": [ "r_c3", "r_c4", "r_c5" ],
+                "values": [ "like", "trust", "comfort", "romance" ],
+                "amount": -10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat was part of a patrol pushing for violence at the border."
+                }
+            }
+        ],
+        "other_clan": {
+            "current_rep": [ "hostile" ],
+            "changed": -2
+        }
+    },
+    {
+        "event_id": "gen_group_romance1",
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "sub_type": [ "romance" ],
+        "frequency": 2,
+        "event_text": [
+            "r_c1 secretly met up with m_c at the border, only to get interrupted by r_c2 and have to play it off as incidental."
+        ],
+        "m_c": {
+            "age": [ "-adolescent" ],
+            "trait": [
+                "-insecure",
+                "-nervous"
+            ]
+        },
+        "r_c": [
+            {
+                "clan": 2,
+                "relationship_status": [
+                    "fancies"
+                ]
+            },
+            {
+                "clan": 2
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c1" ],
+                "values": [ "like", "romance" ],
+                "amount": 5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat met up with to_cat at the border for a date."
+                }
+            },
+            {
+                "cats_from": [ "r_c1" ],
+                "cats_to": [ "r_c2" ],
+                "values": [ "like", "trust" ],
+                "amount": -5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "to_cat caught from_cat having a secret date."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_group_gathering_misc1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 3,
+        "event_text": [
+            "m_c brought along r_c1 to meet with r_c2 and teach r_c1 about o_c_n1."
+        ],
+        "m_c": {
+            "relationship_status": [ "mentor/app" ]
+        },
+        "r_c": [
+            {
+                "clan": 1,
+                "relationship_status": ["app/mentor"]
+            },
+            {
+                "clan": 2,
+                "relationship_status": [ "trusts" ]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "r_c1" ],
+                "cats_to": [ "r_c2" ],
+                "values": [ "like" ],
+                "amount": 5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat taught from_cat about {PRONOUN/to_cat/poss} Clan at the Gathering."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_group_gathering_chat1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "m_c, r_c1, r_c2, and r_c3 formed a huddle at the Gathering, sharing news and gossip.",
+            "m_c, r_c1, r_c2, and r_c3 formed a huddle at the Gathering, sharing news and personal anecdotes."
+        ],
+        "m_c": {
+        },
+        "r_c": [
+            {
+                "clan": 2
+            },
+            {
+                "clan": "any"
+            },
+            {
+                "clan": "any"
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c1", "r_c2", "r_c3" ],
+                "values": [ "like" ],
+                "amount": 5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat chatted with to_cat at the Gathering."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_group_gathering_healer1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 3,
+        "nr_involved_clans": 3,
+        "event_text": [
+            "m_c brought up a recent omen {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} unsure about to r_c1 and r_c2 to discuss together."
+        ],
+        "m_c": {
+            "status": ["healer", "healer apprentice"]
+        },
+        "r_c": [
+            {
+                "clan": 2,
+                "status": [ "healer" ]
+            },
+            {
+                "clan": 3,
+                "status": [ "healer" ]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c1", "r_c2" ],
+                "values": [ "trust" ],
+                "amount": 10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat helped from_cat decipher an omen."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_group_gathering_chat1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "m_c, r_c1, r_c2, and r_c3 formed a huddle at the Gathering, sharing news and gossip.",
+            "m_c, r_c1, r_c2, and r_c3 formed a huddle at the Gathering, sharing news and personal anecdotes."
+        ],
+        "m_c": {
+        },
+        "r_c": [
+            {
+                "clan": 2
+            },
+            {
+                "clan": "any"
+            },
+            {
+                "clan": "any"
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c1", "r_c2", "r_c3" ],
+                "values": [ "like" ],
+                "amount": 5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat chatted with to_cat at the Gathering."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_group_gathering_gossip1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "m_c overheard r_c1 and r_c2 gossiping about {PRONOUN/m_c/object} at the Gathering."
+        ],
+        "m_c": {
+        },
+        "r_c": [
+            {
+                "clan": 2
+            },
+            {
+                "clan": "any"
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c1", "r_c2" ],
+                "values": [ "like", "trust", "comfort" ],
+                "amount": -5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "from_cat overheard to_cat gossiping about {PRONOUN/from_cat/object} at the Gathering."
+                }
+            },
+            {
+                "cats_from": [ "r_c1" ],
+                "cats_to": [ "r_c2" ],
+                "values": [ "like" ],
+                "amount": 5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat gossiped with to_cat at the Gathering."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_group_gathering_gossip_dark1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 1,
+        "event_text": [
+            "m_c overheard r_c1 sharing suspicions to r_c2 about m_c speaking to the Dark Forest."
+        ],
+        "m_c": {
+            "skill": ["DARK,1"]
+        },
+        "r_c": [
+            {
+                "clan": 2,
+                "skill": [ "DARK,1" ]
+            },
+            {
+                "clan": 1,
+                "skill": [ "-DARK,1" ],
+                "status": ["leader", "deputy", "healer"]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c1" ],
+                "values": [ "like", "trust", "comfort", "romance" ],
+                "amount": -10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "from_cat overheard to_cat snitching on {PRONOUN/from_cat/object} at the Gathering."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_group_gathering_leader_dispute1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "nr_involved_clans": 3,
+        "frequency": 2,
+        "event_text": [
+            "m_c accused r_c1 and {PRONOUN/r_c1/poss} Clan of violating the Warrior Code, sparking an argument r_c2 had to break up.",
+            "m_c accused r_c1 and {PRONOUN/r_c1/poss} Clan of tresspassing, sparking an argument r_c2 had to break up.",
+            "m_c accused r_c1 and {PRONOUN/r_c1/poss} Clan of picking fights at the border, sparking an argument r_c2 had to break up."
+        ],
+        "m_c": {
+            "status": [
+                "leader"
+            ],
+            "trait": [
+                "troublesome",
+                "fierce",
+                "bloodthirsty",
+                "childish",
+                "bold",
+                "daring",
+                "righteous",
+                "strict",
+                "ambitious",
+                "shameless",
+                "strange",
+                "vengeful",
+                "arrogant",
+                "competitive",
+                "grumpy"
+            ]
+        },
+        "r_c": [
+            {
+                "clan": 2,
+                "status": [
+                    "leader"
+                ],
+                "trait": [
+                    "-nervous",
+                    "-calm",
+                    "-thoughtful",
+                    "-careful"
+                ]
+            },
+            {
+                "clan": 3,
+                "status": [
+                    "leader"
+                ],
+                "trait": [
+                    "charismatic",
+                    "righteous",
+                    "strict",
+                    "compassionate",
+                    "thoughtful",
+                    "confident",
+                    "calm",
+                    "loving",
+                    "responsible",
+                    "wise"
+                ]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "r_c1", "r_c2" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "respect", "trust" ],
+                "amount": -10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat sparked an argument at the Gathering."
+                }
+            }
+        ]
     }
 ]

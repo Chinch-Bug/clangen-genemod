@@ -84,6 +84,7 @@
         rel_deputy = true
         12_moon_graduation = false
         retirement = false
+        leader_retirement = false
         healer_retirement = false
         mediator_retirement = false
         become_mediator = false

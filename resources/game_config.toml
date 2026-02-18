@@ -14,7 +14,7 @@ dev_tools = false
   max_interaction_special = 6
 
   # maximum number of cross-clan relationship events that can happen each moon (multiclan only)
-  max_crossclan_interaction = 20
+  max_crossclan_interaction = 15
 
   # sets the positive or negative effect that interactions will have on other cats based on personality compatibility
   compatibility_effect = 5
@@ -448,6 +448,9 @@ dev_tools = false
 
   # base 1/chance that a cat will be chosen as a med cat apprentice
   base_medicine_app_chance = 41
+
+  # max 1/chance for old leaders to retire if enabled
+  max_leader_retire_chance = 50
 
   # max 1/chance for old healers to retire if enabled
   max_healer_retire_chance = 10

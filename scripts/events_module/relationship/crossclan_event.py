@@ -84,6 +84,7 @@ class CrossClanEvent(ShortEvent):
             exclude_involved=exclude_involved, 
             history=history, 
             relationships=relationships, 
+            other_clan=other_clan,
             supplies=supplies,
             new_gender=new_gender, 
             future_event=future_event)

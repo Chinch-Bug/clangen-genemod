@@ -96,6 +96,8 @@
       "12_moon_graduation_tooltip": "All apprentices will graduate at 12 moons.",
       "retirement": "Cats will never retire due to a permanent condition",
       "retirement_tooltip": "When this setting is off, cats with permanent conditions will choose whether or not they want to retire",
+      "leader_retirement": "Allow leaders to retire",
+      "leader_retirement_tooltip": "Elderly leaders may choose to retire",
       "healer_retirement": "Allow healers to retire if there are enough healers",
       "healer_retirement_tooltip": "If remaining healers would be able to care for the Clan, elderly healers may choose to retire",
       "mediator_retirement": "Allow mediators to retire",

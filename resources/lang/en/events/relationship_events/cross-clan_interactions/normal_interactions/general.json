@@ -1,5 +1,106 @@
 [
     {
+        "event_id": "gen_single_ambush1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 1,
+        "event_text": [
+            "m_c was enjoying a walk in the territory when r_c ambushed {PRONOUN/m_c/object}."
+        ],
+        "m_c": {
+            "status": [
+                "-elder"
+            ],
+            "skill": [ "-SENSE,1", "-FIGHTER,1" ]
+        },
+        "r_c": {
+            "trait": [
+                "bloodthirsty"
+            ],
+            "skill": ["STEALTH,1", "FIGHTER,1"]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "battle_injury"
+                ]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "like", "respect", "romance", "trust", "comfort" ],
+                "amount": -15,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat ambushed from_cat."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_trespass1",
+        "location": [
+            "forest",
+            "beach",
+            "plains",
+            "wetlands"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "m_c accidentally crossed the border into o_c_n. The mistake was brief, but r_c refused to accept an apology after catching {PRONOUN/m_c/object}."
+        ],
+        "m_c": {
+        },
+        "r_c": {
+            "trait": [
+                "troublesome",
+                "fierce",
+                "bloodthirsty",
+                "childish",
+                "righteous",
+                "strict",
+                "vengeful",
+                "grumpy"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "like", "respect" ],
+                "amount": -5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat caught from_cat crossing the border accidentally and refused to accept an apology."
+                }
+            },
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "respect" ],
+                "amount": -5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "from_cat caught to_cat crossing the border accidentally."
+                }
+            }
+        ]
+    },
+    {
         "event_id": "gen_single_intruder1",
         "location": [
             "any"
@@ -8,7 +109,7 @@
             "any"
         ],
         "sub_type": [ ],
-        "frequency": 3,
+        "frequency": 2,
         "event_text": [
             "m_c found evidence of an interloper near the border. The scent trail lead to r_c, who merely mocked m_c for accusing {PRONOUN/r_c/object} of tresspassing."
         ],
@@ -40,7 +141,321 @@
         ]
     },
     {
-        "event_id": "gen_single_gathering_elder1",
+        "event_id": "gen_single_intruder2",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "m_c found fresh evidence of r_c on c_n's territory, yet o_c_n denies any wrongdoing."
+        ],
+        "m_c": {
+        },
+        "r_c": {
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "respect" ],
+                "amount": -5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "from_cat found evidence of r_c trespassing."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_espionage1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "A o_c_n scent has been discovered in camp. m_c thinks it seems like r_c.",
+            "m_c found a o_c_n scent hidden in camp, suspiciously similar to r_c."
+        ],
+        "m_c": {
+            "skill": ["SENSE,1"]
+        },
+        "r_c": {
+            "skill": ["STEALTH,2"]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "trust" ],
+                "amount": -15,
+                "mutual": false,
+                "log": {
+                    "cats_from": "from_cat found evidence of to_cat sneaking into camp."
+                }
+            }
+        ],
+        "other_clan": {
+            "current_rep": [ "hostile" ]
+        }
+    },
+    {
+        "event_id": "gen_single_romance1",
+        "location": ["any"],
+        "season": ["any"],
+        "sub_type": ["romance"],
+        "frequency": 2,
+        "event_text": [
+            "m_c had a secret meetup with r_c at the border.",
+            "m_c waited deliberately near the border to flirt with r_c.",
+            "m_c waited deliberately near the border to strike up a conversation with r_c."
+        ],
+        "m_c": {
+            "age": ["-adolescent"],
+            "trait": [
+                "-insecure",
+                "-nervous"
+            ]
+        },
+        "r_c": {
+            "relationship_status": [
+                "fancies"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "like", "romance" ],
+                "amount": 10,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat met up with to_cat at the border."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_argue1",
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "sub_type": [],
+        "frequency": 3,
+        "event_text": [
+            "m_c got into an intense argument with r_c at the Gathering.",
+            "m_c got into an intense argument with r_c at the Gathering.",
+            "m_c got into an intense argument with r_c at the Gathering.",
+            "m_c got into an intense argument with r_c at the border."
+        ],
+        "m_c": {
+            "trait": [
+                "troublesome",
+                "fierce",
+                "bloodthirsty",
+                "childish",
+                "shameless",
+                "strange",
+                "vengeful",
+                "arrogant",
+                "competitive",
+                "grumpy",
+                "rebellious"
+            ]
+        },
+        "r_c": {
+            "trait": [
+                "troublesome",
+                "fierce",
+                "bloodthirsty",
+                "childish",
+                "shameless",
+                "strange",
+                "vengeful",
+                "arrogant",
+                "competitive",
+                "grumpy",
+                "rebellious"
+            ],
+            "relationship_status": ["dislikes"]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "like", "romance" ],
+                "amount": -5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat got into an argument with to_cat."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_chat1",
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "sub_type": [ ],
+        "frequency": 3,
+        "event_text": [
+            "m_c had a calm conversation with r_c at the Gathering.",
+            "m_c had a calm conversation with r_c at the Gathering.",
+            "m_c had a calm conversation with r_c at the Gathering.",
+            "m_c had a calm conversation with r_c at the border."
+        ],
+        "m_c": {
+        },
+        "r_c": {
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "like" ],
+                "amount": 5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat had a pleasant conversation with to_cat."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_apprentices1",
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "sub_type": [ ],
+        "frequency": 3,
+        "event_text": [
+            "m_c and r_c shared some tips and tricks with each other at the Gathering.",
+            "m_c and r_c shared some tips and tricks with each other at the Gathering.",
+            "m_c and r_c shared some tips and tricks with each other at the Gathering.",
+            "m_c and r_c shared some tips and tricks with each other at the border."
+        ],
+        "m_c": {
+            "status": ["apprentice"]
+        },
+        "r_c": {
+            "status": ["apprentice"]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "like", "trust", "respect" ],
+                "amount": 5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat shared some tips with to_cat."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_apprentices2",
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "sub_type": [ ],
+        "frequency": 3,
+        "event_text": [
+            "Mimicking the older cats, m_c and r_c get into a performative argument at the Gathering."
+        ],
+        "m_c": {
+            "age": [ "adolescent" ]
+        },
+        "r_c": {
+            "age": [ "adolescent" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "like" ],
+                "amount": 10,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat and to_cat pretended to fight like the older cats do."
+                }
+            }
+        ],
+        "other_clan": {
+            "current_rep": [ "hostile" ]
+        }
+    },
+    {
+        "event_id": "gen_single_apprentices3",
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "sub_type": [ ],
+        "frequency": 3,
+        "event_text": [
+            "Mimicking the older cats, m_c and r_c get into a performative argument at the Gathering."
+        ],
+        "m_c": {
+            "age": [ "adolescent" ]
+        },
+        "r_c": {
+            "age": [ "adolescent" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "like" ],
+                "amount": -10,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat and to_cat got into an argument like the older cats do."
+                }
+            }
+        ],
+        "other_clan": {
+            "current_rep": [ "hostile" ]
+        }
+    },
+    {
+        "event_id": "gen_single_chat3",
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "sub_type": [ ],
+        "frequency": 3,
+        "event_text": [
+            "m_c and r_c shared some tips and tricks with each other at the Gathering.",
+            "m_c and r_c shared some tips and tricks with each other at the Gathering.",
+            "m_c and r_c shared some tips and tricks with each other at the Gathering.",
+            "m_c and r_c shared some tips and tricks with each other at the border."
+        ],
+        "m_c": {
+            "status": [ "warrior" ]
+        },
+        "r_c": {
+            "status": [ "warrior" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "like", "trust", "respect" ],
+                "amount": 5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat shared some tips with to_cat."
+                }
+            }
+        ],
+        "other_clan": {
+            "current_rep": [ "ally" ]
+        }
+    },
+    {
+        "event_id": "gen_single_gathering_elders1",
         "location": [
             "any"
         ],
@@ -82,6 +497,145 @@
         ]
     },
     {
+        "event_id": "gen_single_gathering_elder1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 3,
+        "event_text": [
+            "m_c spends the Gathering telling r_c about Clan history from c_n's perspective.",
+            "r_c spends the Gathering asking m_c questions about Clan history from c_n's perspective."
+        ],
+        "m_c": {
+            "status": [
+                "elder"
+            ],
+            "age": [
+                "senior"
+            ]
+        },
+        "r_c": {
+            "age": ["-senior"],
+            "skill": [
+                "LORE,0"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "like" ],
+                "amount": 5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat taught to_cat about some Clan history."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_gathering_mediator1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "m_c took the opportunity to ask r_c for advice at the Gathering."
+        ],
+        "m_c": {
+            "status": ["mediator apprentice"]
+        },
+        "r_c": {
+            "status": ["mediator"]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "trust" ],
+                "amount": 5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "from_cat got advice from to_cat."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_gathering_healer1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "m_c took the opportunity to ask r_c for advice at the Gathering.",
+            "m_c took the opportunity to ask r_c for advice at the Half-moon meeting."
+        ],
+        "m_c": {
+            "status": [ "healer apprentice" ]
+        },
+        "r_c": {
+            "status": [ "healer" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "trust" ],
+                "amount": 5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "from_cat got advice from to_cat."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_gathering_healer2",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 3,
+        "event_text": [
+            "m_c brought up a recent omen {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} unsure about to r_c discuss together."
+        ],
+        "m_c": {
+            "status": [ "healer", "healer apprentice" ]
+        },
+        "r_c": {
+            "status": [ "healer" ],
+            "skill": ["OMEN,1"]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "trust" ],
+                "amount": 10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat helped from_cat decipher an omen."
+                }
+            }
+        ]
+    },
+    {
         "event_id": "gen_single_gathering_romance1",
         "location": [
             "any"
@@ -90,16 +644,12 @@
             "any"
         ],
         "sub_type": ["romance"],
-        "frequency": 2,
+        "frequency": 1,
         "event_text": [
             "m_c approached r_c during the Gathering with some casual flirting-turned-pleasant-chat."
         ],
         "m_c": {
-            "status": [
-                "-apprentice",
-                "-mediator apprentice",
-                "-healer apprentice"
-            ],
+            "age": ["-adolescent"],
             "trait": [
                 "-grumpy",
                 "-insecure",
@@ -107,11 +657,7 @@
             ]
         },
         "r_c": {
-            "status": [
-                "-apprentice",
-                "-mediator apprentice",
-                "-healer apprentice"
-            ]
+            "age": [ "-adolescent" ]
         },
         "relationships": [
             {
@@ -122,6 +668,89 @@
                 "mutual": true,
                 "log": {
                     "cats_from": "from_cat flirted and chatted with to_cat during the Gathering."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_gathering_half-clan1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 3,
+        "event_text": [
+            "During the Gathering, m_c snuck away to meet with r_c.",
+            "During the Gathering, m_c sought out r_c to ask about o_c_n.",
+            "During the Gathering, r_c sought out m_c to ask about {PRONOUN/m_c/poss} training."
+        ],
+        "m_c": {
+            "age": [
+                "adolescent"
+            ],
+            "relationship_status": [
+                "child/parent"
+            ]
+        },
+        "r_c": {
+            "relationship_status":[
+                "parent/child"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "comfort", "trust" ],
+                "amount": 10,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat and to_cat bonded during the Gathering."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_gathering_half-clan2",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "During the Gathering, m_c snuck away to meet with r_c.",
+            "During the Gathering, r_c snuck away to meet with m_c.",
+            "During the Gathering, m_c sought out r_c to catch up.",
+            "During the Gathering, r_c sought out m_c to catch up."
+        ],
+        "m_c": {
+            "age": [
+                "-adolescent"
+            ],
+            "relationship_status": [
+                "child/parent"
+            ]
+        },
+        "r_c": {
+            "relationship_status": [
+                "parent/child"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "comfort", "trust" ],
+                "amount": 5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat and to_cat bonded during the Gathering."
                 }
             }
         ]
@@ -155,5 +784,184 @@
                 }
             }
         ]
+    },
+    {
+        "event_id": "gen_single_gathering_hostile_leader1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [],
+        "frequency": 2,
+        "event_text": [
+            "During the Gathering, m_c makes a point of ignoring r_c.",
+            "During the Gathering, m_c makes a point of talking over r_c.",
+            "m_c makes a pointed comment about r_c's Clan being last to arrive to the Gathering this moon."
+        ],
+        "m_c": {
+            "status": ["leader"],
+            "trait": [
+                "-nervous",
+                "-insecure",
+                "-compassionate",
+                "-thoughtful",
+                "-careful",
+                "-loving"
+            ]
+        },
+        "r_c": {
+            "status": ["leader"]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "respect", "trust" ],
+                "amount": -15,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat spend the Gathering disrespecting from_cat."
+                }
+            }
+        ],
+        "other_clan": {
+            "current_rep": ["hostile"]
+        }
+    },
+    {
+        "event_id": "gen_single_gathering_hostile_deputy1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "During the Gathering, m_c makes a point of ignoring r_c.",
+            "During the Gathering, m_c makes a point of talking over r_c."
+        ],
+        "m_c": {
+            "status": [ "deputy" ],
+            "trait": [
+                "-nervous",
+                "-insecure",
+                "-compassionate",
+                "-thoughtful",
+                "-careful",
+                "-loving"
+            ]
+        },
+        "r_c": {
+            "status": [ "deputy" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "respect", "trust" ],
+                "amount": -15,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat spend the Gathering disrespecting from_cat."
+                }
+            }
+        ],
+        "other_clan": {
+            "current_rep": [ "hostile" ]
+        }
+    },
+    {
+        "event_id": "gen_single_gathering_hostile_healer1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "During the Gathering, m_c makes a point of ignoring r_c.",
+            "During the Gathering, m_c makes a point of talking over r_c.",
+            "During the Gathering, m_c refused to speak to r_c."
+        ],
+        "m_c": {
+            "status": [ "healer" ],
+            "trait": [
+                "-nervous",
+                "-insecure",
+                "-compassionate",
+                "-thoughtful",
+                "-careful",
+                "-loving"
+            ]
+        },
+        "r_c": {
+            "status": [ "healer" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "respect", "trust" ],
+                "amount": -15,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat spend the Gathering disrespecting from_cat."
+                }
+            }
+        ],
+        "other_clan": {
+            "current_rep": [ "hostile" ]
+        }
+    },
+    {
+        "event_id": "gen_single_half-moon_hostile_healer1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "During the Half-moon meeting, m_c makes a point of ignoring r_c.",
+            "During the Half-moon meeting, m_c makes a point of talking over r_c.",
+            "During the Half-moon meeting, m_c refused to speak to r_c."
+        ],
+        "m_c": {
+            "status": [ "healer" ],
+            "trait": [
+                "-nervous",
+                "-insecure",
+                "-compassionate",
+                "-thoughtful",
+                "-careful",
+                "-loving"
+            ]
+        },
+        "r_c": {
+            "status": [ "healer" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "respect", "trust" ],
+                "amount": -15,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat spend the Half-moon meeting disrespecting from_cat."
+                }
+            }
+        ],
+        "other_clan": {
+            "current_rep": [ "hostile" ]
+        }
     }
 ]

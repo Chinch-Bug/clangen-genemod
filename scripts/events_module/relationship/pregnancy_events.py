@@ -713,7 +713,7 @@ class Pregnancy_Events:
                 kit.phenotype.fevercoat = True
                 if kit.chimerapheno:
                     kit.chimerapheno.fevercoat = True
-            if affair_partners:
+            if affair_partners and pregnant_cat.mate:
                 for x in affair_partners:
                     kit.affair_parents.append(x.ID)
             if surrogate:

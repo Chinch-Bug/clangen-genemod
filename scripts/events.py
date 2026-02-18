@@ -1544,17 +1544,19 @@ def perform_ceremonies(cat, clan):
             clan.medicine_cat = cat
 
         special_can_retire = False
+        if cat.status.rank == CatRank.LEADER:
+            special_can_retire = get_clan_setting("leader_retirement") and random.random() < (1/constants.CONFIG["roles"]["max_leader_retire_chance"])
         if cat.status.rank == CatRank.MEDICINE_CAT:
-            med_can_retire = get_clan_setting("healer_retirement") and medicine_cats_can_cover_clan(
+            special_can_retire = get_clan_setting("healer_retirement") and medicine_cats_can_cover_clan(
                 Cat.all_cats.values(), get_amount_cat_for_one_medic(), clan=clan.group_ID, exclude=cat
             ) and random.random() < (1/constants.CONFIG["roles"]["max_healer_retire_chance"])
         if cat.status.rank == CatRank.MEDIATOR:
-            med_can_retire = get_clan_setting("mediator_retirement") and random.random() < (1/constants.CONFIG["roles"]["max_mediator_retire_chance"])
-
+            special_can_retire = get_clan_setting("mediator_retirement") and random.random() < (1/constants.CONFIG["roles"]["max_mediator_retire_chance"])
+        
         # retiring to elder den
         if (
             not cat.no_retire
-            and (cat.status.rank in (CatRank.WARRIOR, CatRank.DEPUTY) or cat.status.rank in (CatRank.MEDICINE_CAT, CatRank.MEDIATOR) and special_can_retire)
+            and (cat.status.rank in (CatRank.WARRIOR, CatRank.DEPUTY) or cat.status.rank in (CatRank.MEDICINE_CAT, CatRank.MEDIATOR, CatRank.LEADER) and special_can_retire)
             and len(cat.apprentice) < 1
             and cat.moons > 114
         ):
@@ -1564,6 +1566,8 @@ def perform_ceremonies(cat, clan):
             ):
                 if cat.status.rank == CatRank.DEPUTY:
                     clan.deputy = None
+                if cat.status.rank == CatRank.LEADER:
+                    clan.leader = None
                 if cat.status.rank == CatRank.MEDICINE_CAT:
                     clan.remove_med_cat(cat)
                 ceremony(cat, CatRank.ELDER)
@@ -1761,6 +1765,7 @@ def ceremony(cat, promoted_to, preparedness="prepared"):
     """
     # ceremony = []
     clan = cat.status.fetch_clan_object(game.clan)
+    was_leader = cat.status.rank == CatRank.LEADER
 
     _ment = (
         Cat.fetch_cat(cat.mentor) if cat.mentor else None
@@ -1806,7 +1811,7 @@ def ceremony(cat, promoted_to, preparedness="prepared"):
 
     try:
         # Get all the ceremonies for the role ----------------------------------------
-        possible_ceremonies.update(ceremony_id_by_tag[promoted_to])
+        possible_ceremonies.update(ceremony_id_by_tag["leader_retire"] if was_leader else ceremony_id_by_tag[promoted_to])
 
         # Get ones for prepared status ----------------------------------------------
         if promoted_to in (CatRank.WARRIOR, CatRank.MEDICINE_CAT, CatRank.MEDIATOR):

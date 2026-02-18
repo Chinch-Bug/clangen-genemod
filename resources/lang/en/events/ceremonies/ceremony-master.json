@@ -3387,5 +3387,16 @@
       "sincere"
     ],
     "m_c sits with a puffed out pelt of pride, hearing c_n celebrate {PRONOUN/m_c/poss} achievements. Retiring means trusting younger, fresher cats to take up the fight to keep c_n safe, but {PRONOUN/m_c/subject} {VERB/m_c/think/thinks} {PRONOUN/m_c/subject}{VERB/m_c/'ve/'s} done the best {PRONOUN/m_c/subject} could've to pass on {PRONOUN/m_c/poss} lessons."
+  ],
+  "lead_retire_1": [
+    [
+      "leader_retire",
+      "general_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "(old_name) called a meeting to announce that {PRONOUN/m_c/subject} {VERB/m_c/have/has} made the hard decision to relinquish leadership and join the elders. Later that night, {PRONOUN/m_c/subject} {VERB/m_c/travel/travels} to make it final and {VERB/m_c/are welcomed/is welcomed} back as m_c."
   ]
 }
