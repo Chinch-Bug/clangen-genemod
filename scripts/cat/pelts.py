@@ -696,13 +696,14 @@ class Pelt:
 
         if acc_display_choice == 1:
             self.accessory = tuple(
-                choice([choice(Pelt.plant_accessories), choice(Pelt.wild_accessories)]),
+                [choice([choice(Pelt.plant_accessories), choice(Pelt.wild_accessories)])]
             )
         else:
             self.accessory = tuple()
+            return
 
-        if self.phenotype.bobtailnr > 0 and self.phenotype.bobtailnr < 5 and self.accessory in ['RED FEATHERS', 'BLUE FEATHERS', 'JAY FEATHERS']:
-            self.accessory = None
+        if self.phenotype.bobtailnr > 0 and self.phenotype.bobtailnr < 5 and self.accessory[0] in ['RED FEATHERS', 'BLUE FEATHERS', 'JAY FEATHERS']:
+            self.accessory = tuple()
         
 
     def init_tint(self):

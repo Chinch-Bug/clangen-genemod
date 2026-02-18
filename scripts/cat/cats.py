@@ -2363,7 +2363,7 @@ class Cat:
         # remove accessories if need be
         if "NOTAIL" in self.pelt.scars or "HALFTAIL" in self.pelt.scars or (self.phenotype.bobtailnr > 0 and self.phenotype.bobtailnr < 5):
             self.pelt.accessory = tuple(
-                acc
+                [acc
                 for acc in self.pelt.accessory
                 if acc
                 not in (
@@ -2376,7 +2376,7 @@ class Cat:
                     "DAISY",
                     "WISTERIA",
                     "GOLDEN CREEPING JENNY",
-                )
+                )]
             )
 
         condition = PERMANENT[name]
