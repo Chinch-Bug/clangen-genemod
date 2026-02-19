@@ -938,7 +938,7 @@ class Cat:
 
         for app in self.apprentice.copy():
             fetched_cat = Cat.fetch_cat(app)
-            if fetched_cat:
+            if fetched_cat and (fetched_cat.experience < Cat.experience_levels_range["prepared"][0] and not get_clan_setting("12_moon_graduation")):
                 fetched_cat.update_mentor()
         self.update_mentor()
 

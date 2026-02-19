@@ -1164,6 +1164,8 @@ class Breed_generator:
             genoclass.karp = ["K", "K"]
         elif random() < 0.80:
             genoclass.karp = ["K", 'k']
+
+        genoclass.longtype = "long"
         
         genoclass.breeds["German Longhair"] = 100
         return genoclass
@@ -1517,7 +1519,8 @@ class Breed_generator:
         for i in range(0, 4):
             genoclass.sokoke += '0'
             genoclass.soksum += int(genoclass.sokoke[i])
-        
+
+        genoclass.longtype = "long"
         genoclass.breeds["Lin-Qing Lion cat"] = 100
         return genoclass
     
@@ -1762,7 +1765,8 @@ class Breed_generator:
                 genoclass.ext[i] = "ea"
 
         genoclass.height_value = randint(genoclass.height_indexes[3]+1, genoclass.height_indexes[6])
-        
+
+        genoclass.longtype = "long"
         genoclass.breeds["Norwegian Forest cat"] = 100
         return genoclass
     
