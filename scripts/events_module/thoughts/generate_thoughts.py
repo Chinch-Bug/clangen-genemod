@@ -119,7 +119,7 @@ def _load_group(
         # make sure lost thoughts are included
         if main_cat.status.is_lost():
             prior_rank = main_cat.status.find_prior_clan_rank()
-            prior_rank = rank.replace("healer", "medicine cat").replace(" ", "_")
+            prior_rank = prior_rank.replace("healer", "medicine cat").replace(" ", "_")
             thoughts.extend(load_lang_resource(f"{start_path}/while_lost/{prior_rank}.json"))
 
         thoughts.extend(_load_exiled_and_former(main_cat, new_path))
