@@ -895,12 +895,11 @@ class Cat:
         """
         return not self.dead
 
-    def die(self, body: bool = True):
+    def die(self, body: bool = True, grief_allowed: bool = True):
         """Kills cat.
-
-        body - defaults to True, use this to mark if the body was recovered so
+        :param body: defaults to True, use this to mark if the body was recovered so
         that grief messages will align with body status
-        - if it is None, a lost cat died and therefore not trigger grief, since the clan does not know
+        :param grief_allowed: defaults to True, set to False if death should not trigger grief
         """
         clan = self.status.fetch_clan_object() if self.status.is_leader else None
         if (
@@ -943,7 +942,7 @@ class Cat:
         self.update_mentor()
 
         if group := self.status.get_last_living_group():
-            if self.moons > 1 and not self.status.is_lost(group) and not self.status.is_exiled(group):
+            if self.moons > 1 and grief_allowed and not self.status.is_lost(group) and not self.status.is_exiled(group):
                 self.grief(body)
             Cat.dead_cats.append(self)
 
@@ -1934,7 +1933,7 @@ class Cat:
         moons_with = game.clan.age - self.illnesses[illness]["moon_start"]
 
         # focus buff
-        moons_prior = constants.CONFIG["focus"]["rest and recover"][
+        moons_prior = constants.CONFIG["focus"]["rest_and_recover"][
             "moons_earlier_healed"
         ]
 
@@ -1942,9 +1941,9 @@ class Cat:
             self.healed_condition = True
             return False
 
-        # CLAN FOCUS! - if the focus 'rest and recover' is selected
+        # CLAN FOCUS! - if the focus 'rest_and_recover' is selected
         elif (
-            get_clan_setting("rest and recover") and self.status.group_ID == CatGroup.PLAYER_CLAN_ID
+            get_clan_setting("rest_and_recover") and self.status.group_ID == CatGroup.PLAYER_CLAN_ID
             and self.illnesses[illness]["duration"] + moons_prior - moons_with <= 0
         ):
             self.healed_condition = True
@@ -1978,7 +1977,7 @@ class Cat:
         moons_with = game.clan.age - self.injuries[injury]["moon_start"]
 
         # focus buff
-        moons_prior = constants.CONFIG["focus"]["rest and recover"][
+        moons_prior = constants.CONFIG["focus"]["rest_and_recover"][
             "moons_earlier_healed"
         ]
 
@@ -1990,11 +1989,11 @@ class Cat:
             self.healed_condition = True
             return False
 
-        # CLAN FOCUS! - if the focus 'rest and recover' is selected
+        # CLAN FOCUS! - if the focus 'rest_and_recover' is selected
         elif (
             not self.injuries[injury]["complication"]
-            and not injury == "pregnant"
-            and get_clan_setting("rest and recover")
+            and injury != "pregnant"
+            and get_clan_setting("rest_and_recover")
             and self.status.group_ID == CatGroup.PLAYER_CLAN_ID
             and self.injuries[injury]["duration"] + moons_prior - moons_with <= 0
         ):

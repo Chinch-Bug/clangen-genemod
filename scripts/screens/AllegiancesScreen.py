@@ -21,9 +21,9 @@ from ..cat.enums import CatRank, CatSocial
 from scripts.ui.elements.allegiances_cat_button import AllegiancesCat
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton
 from scripts.game_structure.ui_elements import (
-    UIDropDownContainer,
-    UIModifiedScrollingContainer
+    UIDropDownContainer
 )
+from ..ui.elements.modified_scrolling_container import UIModifiedScrollingContainer
 
 
 class AllegiancesScreen(Screens):
