@@ -673,5 +673,51 @@
                 }
             }
         ]
+    },
+    {
+        "event_id": "gen_group_predator1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 3,
+        "event_text": [
+            "m_c, r_c1, and r_c2 found r_c3 cowering from a coyote and worked together to drive it away."
+        ],
+        "m_c": {
+            "skill": [ "FIGHTER,1", "CLEVER,1" ],
+            "status": [ "warrior" ]
+        },
+        "r_c": [
+            {
+                "clan": 1,
+                "status": [ "warrior" ]
+            },
+            {
+                "clan": 1,
+                "status": [ "warrior" ]
+            },
+            {
+                "clan": 2
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "r_c3" ],
+                "cats_to": [ "m_c", "r_c1", "r_c2" ],
+                "values": [ "trust", "comfort" ],
+                "amount": 10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat saved from_cat from a coyote."
+                }
+            }
+        ],
+        "other_clan": {
+            "changed": 1
+        }
     }
 ]

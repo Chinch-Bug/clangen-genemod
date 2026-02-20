@@ -1,1 +1,107 @@
-[]
+[
+    {
+        "event_id": "forest_single_boar1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [],
+        "frequency": 4,
+        "event_text": [
+            "m_c found r_c cowering in a tree with a boar rooting around below. With some quick thinking and clever tactics, {PRONOUN/m_c/subject} lured the boar away enough for r_c to be able to escape."
+        ],
+        "m_c": {
+            "skill": ["CLEVER,1"],
+            "status": [ "warrior" ]
+        },
+        "r_c": {
+            "skill": ["-FIGHTER,3", "-CLEVER,1"]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust", "comfort" ],
+                "amount": 10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat saved from_cat from a boar."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "forest_single_boar2",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "m_c found r_c cowering in a tree with a boar rooting around below. {PRONOUN/m_c/subject/CAP} dash in, harassing the boar into following {PRONOUN/m_c/object} away enough to allow r_c to escape."
+        ],
+        "m_c": {
+            "skill": [ "FIGHTER,3" ],
+            "trait": [ "bold", "daring", "bloodthirsty", "fierce", "arrogant" ],
+            "status": [ "warrior" ]
+        },
+        "r_c": {
+            "skill": [ "-FIGHTER,3", "-CLEVER,1" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust", "comfort" ],
+                "amount": 10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat saved from_cat from a boar."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "forest_single_predator1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "m_c found r_c cowering from a fox on c_n's side of the border and drove it away.",
+            "m_c found r_c cowering from a badger on c_n's side of the border and drove it away."
+        ],
+        "m_c": {
+            "skill": [ "FIGHTER,1" ],
+            "status": [ "warrior" ]
+        },
+        "r_c": {
+            "skill": [ "-FIGHTER,1" ],
+            "age": [ "adolescent" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust", "comfort" ],
+                "amount": 10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat saved from_cat from a predator."
+                }
+            }
+        ],
+        "other_clan": {
+            "changed": 1
+        }
+    }
+]

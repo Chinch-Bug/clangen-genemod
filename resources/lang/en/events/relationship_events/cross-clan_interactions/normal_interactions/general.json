@@ -48,6 +48,177 @@
         ]
     },
     {
+        "event_id": "gen_single_ambush2",
+        "location": [
+            "beach", "wetlands"
+        ],
+        "season": [
+            "newleaf", "greenleaf", "leaf-fall"
+        ],
+        "sub_type": [ ],
+        "frequency": 1,
+        "event_text": [
+            "m_c was enjoying a walk by the shore when suddenly {PRONOUN/m_c/subject} {VERB/m_c/were/was} pulled under the water by r_c. It was meant to be a prank, but m_c did not find the humour in it."
+        ],
+        "m_c": {
+            "status": [
+                "-elder"
+            ],
+            "skill": [ "-SENSE,1", "-SWIMMER,1" ]
+        },
+        "r_c": {
+            "status": [ "-elder" ],
+            "trait": [
+                "troublesome",
+                "bloodthirsty",
+                "childish",
+                "playful",
+                "shameless",
+                "sneaky",
+                "strange",
+                "cunning",
+                "oblivious"
+            ],
+            "skill": [ "STEALTH,1", "SWIMMER,1" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "like", "respect", "romance", "trust", "comfort" ],
+                "amount": -5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat pulled from_cat underwater as a prank."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_ambush3",
+        "location": [
+            "beach", "wetlands"
+        ],
+        "season": [
+            "newleaf", "greenleaf", "leaf-fall"
+        ],
+        "sub_type": [ ],
+        "frequency": 1,
+        "event_text": [
+            "m_c was enjoying a walk by the shore when suddenly {PRONOUN/m_c/subject} {VERB/m_c/were/was} pulled under the water by r_c. m_c laughed the prank off as soon as {PRONOUN/m_c/subject} got out."
+        ],
+        "m_c": {
+            "status": [
+                "-elder"
+            ],
+            "trait": [
+                "troublesome",
+                "childish",
+                "playful",
+                "charismatic",
+                "adventurous",
+                "calm",
+                "shameless",
+                "strange",
+                "oblivious",
+                "sincere",
+                "flamboyant"
+            ],
+            "skill": [ "-SENSE,1", "-SWIMMER,1" ]
+        },
+        "r_c": {
+            "status": [ "-elder" ],
+            "trait": [
+                "troublesome",
+                "bloodthirsty",
+                "childish",
+                "playful",
+                "shameless",
+                "sneaky",
+                "strange",
+                "cunning",
+                "oblivious"
+            ],
+            "skill": [ "STEALTH,1", "SWIMMER,1" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "like", "comfort" ],
+                "amount": 5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "to_cat pulled from_cat underwater as a prank, both laughed it off."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_apprentices1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [],
+        "frequency": 2,
+        "event_text": [
+            "m_c snuck out of camp at night to see o_c_n's territory for {PRONOUN/m_c/self}. {PRONOUN/m_c/subject/CAP} encountered r_c doing the same from the other side, only for the two apprentices to end up spending the night playing together."
+        ],
+        "m_c": {
+            "age": [ "adolescent" ]
+        },
+        "r_c": {
+            "age": [ "adolescent" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "like", "comfort" ],
+                "amount": 10,
+                "mutual": true,
+                "log": {
+                    "cats_from": "to_cat and from_cat encountered each other after sneaking out and spent the night playing."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_apprentices2",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": ["romance"],
+        "frequency": 1,
+        "event_text": [
+            "m_c snuck out of camp at night to see o_c_n's territory for {PRONOUN/m_c/self}. {PRONOUN/m_c/subject/CAP} encountered r_c doing the same from the other side, only for the two apprentices to end up spending the night playing together."
+        ],
+        "m_c": {
+            "age": [ "adolescent" ]
+        },
+        "r_c": {
+            "age": [ "adolescent" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "like", "comfort", "romance" ],
+                "amount": 10,
+                "mutual": true,
+                "log": {
+                    "cats_from": "to_cat and from_cat encountered each other after sneaking out and spent the night playing."
+                }
+            }
+        ]
+    },
+    {
         "event_id": "gen_single_trespass1",
         "location": [
             "forest",
