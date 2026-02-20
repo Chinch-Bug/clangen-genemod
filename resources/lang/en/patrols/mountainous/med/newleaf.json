@@ -2630,7 +2630,7 @@
                 "frequency": 4
             },
             {
-                "text": "p_l manages to gather more than {PRONOUN/p_l/subject} were expecting - the tree they chose is in a good spot, and has begun its newleaf growth early and vigorously. The patrol chats and jokes to one another as they get to work plucking leaves to bring an impressive haul home.",
+                "text": "p_l manages to gather more than {PRONOUN/p_l/subject} {VERB/p_l/were/was} expecting - the tree they chose is in a good spot, and has begun its newleaf growth early and vigorously. The patrol chats and jokes to one another as they get to work plucking leaves to bring an impressive haul home.",
                 "exp": 10,
                 "herbs": [
                     "many_herbs",

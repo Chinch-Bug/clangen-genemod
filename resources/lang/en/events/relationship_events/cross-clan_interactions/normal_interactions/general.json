@@ -827,7 +827,8 @@
             }
         ],
         "other_clan": {
-            "current_rep": ["hostile"]
+            "current_rep": ["hostile"],
+            "changed": -2
         }
     },
     {
@@ -871,7 +872,8 @@
             }
         ],
         "other_clan": {
-            "current_rep": [ "hostile" ]
+            "current_rep": [ "hostile" ],
+            "changed": -1
         }
     },
     {
@@ -887,7 +889,10 @@
         "event_text": [
             "During the Gathering, m_c made a point of ignoring r_c.",
             "During the Gathering, m_c made a point of talking over r_c.",
-            "During the Gathering, m_c refused to speak to r_c."
+            "During the Gathering, m_c refused to speak to r_c.",
+            "During the Half-moon meeting, m_c made a point of ignoring r_c.",
+            "During the Half-moon meeting, m_c made a point of talking over r_c.",
+            "During the Half-moon meeting, m_c refused to speak to r_c."
         ],
         "m_c": {
             "status": [ "healer" ],
@@ -916,52 +921,8 @@
             }
         ],
         "other_clan": {
-            "current_rep": [ "hostile" ]
-        }
-    },
-    {
-        "event_id": "gen_single_half-moon_hostile_healer1",
-        "location": [
-            "any"
-        ],
-        "season": [
-            "any"
-        ],
-        "sub_type": [ ],
-        "frequency": 2,
-        "event_text": [
-            "During the Half-moon meeting, m_c made a point of ignoring r_c.",
-            "During the Half-moon meeting, m_c made a point of talking over r_c.",
-            "During the Half-moon meeting, m_c refused to speak to r_c."
-        ],
-        "m_c": {
-            "status": [ "healer" ],
-            "trait": [
-                "-nervous",
-                "-insecure",
-                "-compassionate",
-                "-thoughtful",
-                "-careful",
-                "-loving"
-            ]
-        },
-        "r_c": {
-            "status": [ "healer" ]
-        },
-        "relationships": [
-            {
-                "cats_from": [ "r_c" ],
-                "cats_to": [ "m_c" ],
-                "values": [ "respect", "trust" ],
-                "amount": -15,
-                "mutual": false,
-                "log": {
-                    "cats_from": "to_cat spent the Half-moon meeting disrespecting from_cat."
-                }
-            }
-        ],
-        "other_clan": {
-            "current_rep": [ "hostile" ]
+            "current_rep": [ "hostile" ],
+            "changed": -1
         }
     }
 ]

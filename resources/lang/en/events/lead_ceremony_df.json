@@ -653,7 +653,7 @@
       "rank": ["warrior", "elder", "healer", "mediator", "apprentice", "deputy", "healer apprentice", "mediator apprentice"],
       "life_giving": [
         {
-          "text": "r_c approaches in a howl of cold wind, a shower of blood-red sparkles, and a flurry of shrieking bats. r_c whispers that {PRONOUN/r_c/subject} would've given m_c a life for making great entrances if {PRONOUN/r_c/subject} were allowed to, but as it stands, m_c will have to make do with a life for [virtue].",
+          "text": "r_c approaches in a howl of cold wind, a shower of blood-red sparkles, and a flurry of shrieking bats. r_c whispers that {PRONOUN/r_c/subject} would've given m_c a life for making great entrances if {PRONOUN/r_c/subject} {VERB/r_c/were/was} allowed to, but as it stands, m_c will have to make do with a life for [virtue].",
           "virtue": ["ambition", "bravery", "certainty", "clear judgement", "confidence", "courage",
       "determination", "endurance", "farsightedness", "instincts", "strength", "ferocity", "cunning", "shamelessness", "zealotry", "bloodlust", "restless energy",
       "stubbornness", "authority"]

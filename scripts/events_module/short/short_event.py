@@ -695,6 +695,7 @@ class ShortEvent:
                 self.multi_cat_objects.append(kitty)
                 if kitty.ID not in self.all_involved_cat_ids:
                     self.all_involved_cat_ids.append(kitty.ID)
+            taken_cats = set(taken_cats)
             for kitty in taken_cats:
                 self.dead_cat_objects.remove(kitty)
 

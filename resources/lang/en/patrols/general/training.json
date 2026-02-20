@@ -15470,7 +15470,7 @@
                 "frequency": 4
             },
             {
-                "text": "p_l suggests that {PRONOUN/p_l/subject} and r_c team up against s_c. As soon as they attack, s_c turns tail and sprints off. When p_l calls {PRONOUN/s_c/object} back, confused, {PRONOUn/s_c/subject} {VERB/s_c/explain/explains} that's what {PRONOUN/s_c/subject}'d do if {PRONOUN/s_c/subject} were outnumbered in a fight. p_l sighs.",
+                "text": "p_l suggests that {PRONOUN/p_l/subject} and r_c team up against s_c. As soon as they attack, s_c turns tail and sprints off. When p_l calls {PRONOUN/s_c/object} back, confused, {PRONOUn/s_c/subject} {VERB/s_c/explain/explains} that's what {PRONOUN/s_c/subject}'d do if {PRONOUN/s_c/subject} {VERB/s_c/were/was} outnumbered in a fight. p_l sighs.",
                 "exp": 0,
                 "stat_trait": [
                     "troublesome",

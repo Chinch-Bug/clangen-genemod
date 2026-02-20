@@ -1735,7 +1735,7 @@
   },
   {
     "interaction_type": "antagonize",
-    "event_text": "o_c_n's leader reports at the Gathering that some of their warriors led an uprising and had to be put down. m_c scoffs, unsheathes {PRONOUN/m_c/poss} claws, and announces {PRONOUN/m_c/subject}'d rebel against o_c_n's leader too, if {PRONOUN/m_c/subject} were one of o_c_n's warriors.",
+    "event_text": "o_c_n's leader reports at the Gathering that some of their warriors led an uprising and had to be put down. m_c scoffs, unsheathes {PRONOUN/m_c/poss} claws, and announces {PRONOUN/m_c/subject}'d rebel against o_c_n's leader too, if {PRONOUN/m_c/subject} {VERB/m_c/were/was} one of o_c_n's warriors.",
     "rel_change": -8,
     "m_c": {
       "skill": ["FIGHTER,1"],

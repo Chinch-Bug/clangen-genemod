@@ -645,7 +645,7 @@ def reformat(path):
                     info["cats_to"] = ["m_c"]
                 if "to_both" in event["tags"]:
                     event["tags"].remove("to_both")
-                    info["mututal"] = True
+                    info["mutual"] = True
 
                 info["values"] = []
                 if "romantic" in event["tags"]:
