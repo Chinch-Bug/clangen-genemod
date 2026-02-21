@@ -1,1 +1,37 @@
-[]
+[
+    {
+        "event_id": "plains_single_hawk1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "m_c saw a hawk overhead of r_c and warned {PRONOUN/r_c/object} just in time before it could swoop."
+        ],
+        "m_c": {
+            "skill": [ "SENSE,1" ]
+        },
+        "r_c": {
+            "skill": [ "-SENSE,1" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust", "comfort" ],
+                "amount": 10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat saved from_cat from a hawk."
+                }
+            }
+        ],
+        "other_clan": {
+            "changed": 1
+        }
+    }
+]
