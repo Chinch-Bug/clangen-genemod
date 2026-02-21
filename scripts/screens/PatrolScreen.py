@@ -1387,7 +1387,7 @@ class PatrolScreen(Screens):
 
                 if (
                     self.selected_cat.status.rank
-                    in [CatRank.MEDICINE_APPRENTICE, CatRank.APPRENTICE]
+                    in [CatRank.MEDICINE_APPRENTICE, CatRank.APPRENTICE, CatRank.MEDIATOR_APPRENTICE]
                     and self.selected_cat.mentor is not None
                 ):
                     self.app_mentor = Cat.fetch_cat(self.selected_cat.mentor)

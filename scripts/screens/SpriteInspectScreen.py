@@ -402,7 +402,7 @@ class SpriteInspectScreen(Screens):
             ui_scale_offset((500, 625)),
             "hide_white",
             self.hide_white,
-            self.the_cat.phenotype.white[0] != "w" and (not self.the_cat.chimerapheno or self.the_cat.chimerapheno.white[0] != "w"),
+            (self.the_cat.phenotype.white_pattern != "No" or self.the_cat.phenotype.white[0] != "w") and (not self.the_cat.chimerapheno or self.the_cat.chimerapheno.white_pattern != "No" or self.the_cat.chimerapheno.white[0] != "w"),
             disabled_object_id="@checked_checkbox",
         )
 

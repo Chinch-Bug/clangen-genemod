@@ -326,7 +326,6 @@ class Cat:
         self.illnesses = {}
         self.injuries = {}
         self.healed_condition = None
-        self.leader_death_heal = None
         self.also_got = False
         self.permanent_condition = {}
         self.experience_level = None
@@ -1924,9 +1923,7 @@ class Cat:
 
         if mortality and not int(random() * mortality):
             if self.status.is_leader:
-                self.leader_death_heal = True
                 self.status.fetch_clan_object().leader_lives -= 1
-
             self.die()
             return False
 
