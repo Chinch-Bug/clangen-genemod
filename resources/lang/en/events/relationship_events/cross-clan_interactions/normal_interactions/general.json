@@ -219,6 +219,38 @@
         ]
     },
     {
+        "event_id": "gen_single_apprentices3",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "m_c got in trouble for telling r_c something that was supposed to be c_n's secret."
+        ],
+        "m_c": {
+            "age": [ "adolescent" ]
+        },
+        "r_c": {
+            "age": [ "adolescent" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "high_lawful", "high_aggress" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "respect", "trust" ],
+                "amount": -5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "from_cat heard to_cat shared Clan secrets with r_c from o_c_n."
+                }
+            }
+        ]
+    },
+    {
         "event_id": "gen_single_trespass1",
         "location": [
             "forest",
@@ -624,6 +656,156 @@
         "other_clan": {
             "current_rep": [ "ally" ]
         }
+    },
+    {
+        "event_id": "gen_single_lies1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "m_c confidently told r_c about 'adult things' that were blatantly untrue, but r_c fully believed {PRONOUN/m_c/object}."
+        ],
+        "m_c": {
+            "age": [ "-adolescent" ],
+            "trait": [
+                "troublesome",
+                "childish",
+                "playful",
+                "confident",
+                "shameless",
+                "sneaky",
+                "strange",
+                "cunning",
+                "flamboyant"
+            ]
+        },
+        "r_c": {
+            "age": [ "adolescent" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust" ],
+                "amount": 5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "from_cat believed to_cat's lies about what being an adult is like."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_lies2",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "m_c confidently told r_c about 'adult things' that were blatantly untrue, but r_c caught on."
+        ],
+        "m_c": {
+            "age": [ "-adolescent" ],
+            "trait": [
+                "troublesome",
+                "childish",
+                "playful",
+                "confident",
+                "shameless",
+                "sneaky",
+                "strange",
+                "cunning",
+                "flamboyant"
+            ]
+        },
+        "r_c": {
+            "age": [ "adolescent" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust" ],
+                "amount": -10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "from_cat caught to_cat lying to {PRONOUN/from_cat/object} about what being an adult is like."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_lies3",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "m_c confidently told r_c things about c_n that were blatantly untrue, but r_c fully believed {PRONOUN/m_c/object}."
+        ],
+        "m_c": {
+            "age": [ "adolescent" ]
+        },
+        "r_c": {
+            "age": [ "adolescent" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust", "respect" ],
+                "amount": 5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "from_cat believed to_cat's boasting about c_n."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_lies4",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "m_c confidently told r_c things about c_n that were blatantly untrue, but r_c caught on."
+        ],
+        "m_c": {
+            "age": [ "adolescent" ]
+        },
+        "r_c": {
+            "age": [ "adolescent" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust" ],
+                "amount": -10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "from_cat caught to_cat lying to {PRONOUN/from_cat/object} about life in c_n."
+                }
+            }
+        ]
     },
     {
         "event_id": "gen_single_gathering_elders1",

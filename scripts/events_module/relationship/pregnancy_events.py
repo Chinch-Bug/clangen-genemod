@@ -1363,7 +1363,7 @@ class Pregnancy_Events:
                                                         gender=('fem' if cat_is_amab(cat) else 'masc') if not get_clan_setting('same sex birth') else None,
                                                         outside=True,
                                                         is_parent=True)[0]
-                    outside_parent.get_new_thought(CatThought.OUTSIDE_DAM if background_category == "2" else CatThought.OUTSIDE_SIRE)
+                    outside_parent.get_new_thought(CatThought.OUTSIDE_DAM if background_category == "2" else CatThought.OUTSIDE_SIRE, other_cat=cat)
                     outside_parent.birth_cooldown = constants.CONFIG["pregnancy"]["birth_cooldown"]
                     if random() < 0.1:
                         outside_parent.set_mate(cat)

@@ -2710,7 +2710,7 @@ def check_and_promote_leader(clan):
 
     if leader_invalid:
         perform_ceremonies(
-            clan.leader, clan
+            None, clan
         )  # This is where the deputy will be make leader
 
         if clan.leader:
