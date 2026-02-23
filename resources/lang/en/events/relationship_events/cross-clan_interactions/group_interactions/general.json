@@ -466,6 +466,140 @@
         ]
     },
     {
+        "event_id": "gen_group_gathering_gaggle1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "r_c1, r_c2, and r_c3 collectively decided m_c is the coolest cat they've ever met at the Gathering.",
+            "m_c impressed r_c1, r_c2, and r_c3 during the Gathering.",
+            "r_c1, r_c2, and r_c3 spent the last Gathering following m_c around after m_c impressed them with some boasting."
+        ],
+        "m_c": {
+            "age": ["-adolescent"]
+        },
+        "r_c": [
+            {
+                "clan": 2,
+                "age": ["adolescent"]
+            },
+            {
+                "clan": "any",
+                "age": [ "adolescent" ]
+            },
+            {
+                "clan": "any",
+                "age": [ "adolescent" ]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "r_c1", "r_c2", "r_c3" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "respect" ],
+                "amount": 15,
+                "mutual": false,
+                "log": {
+                    "cats_from": "from_cat impressed to_cat at the Gathering."
+                }
+            },
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c1", "r_c2", "r_c3" ],
+                "values": [ "like" ],
+                "amount": 5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "from_cat had fun impressing the apprentices, including to_cat, at the Gathering."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_group_gathering_tease1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "r_c1, r_c2, and r_c3 decided to group up to tease m_c at the Gathering for not having graduated yet.",
+            "r_c1, r_c2, and r_c3 decided to group up to bully m_c at the Gathering for not having graduated yet."
+        ],
+        "m_c": {
+            "age": [ "-adolescent" ],
+            "status": ["apprentice", "mediator apprentice", "healer apprentice"]
+        },
+        "r_c": [
+            {
+                "clan": 2,
+                "age": [ "adolescent" ],
+                "trait": [
+                    "-nervous",
+                    "-insecure",
+                    "-compassionate",
+                    "-thoughtful",
+                    "-careful",
+                    "-loving"
+                ]
+            },
+            {
+                "clan": "any",
+                "age": [ "adolescent" ],
+                "trait": [
+                    "-nervous",
+                    "-insecure",
+                    "-compassionate",
+                    "-thoughtful",
+                    "-careful",
+                    "-loving"
+                ]
+            },
+            {
+                "clan": "any",
+                "age": [ "adolescent" ],
+                "trait": [
+                    "-nervous",
+                    "-insecure",
+                    "-compassionate",
+                    "-thoughtful",
+                    "-careful",
+                    "-loving"
+                ]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "r_c1", "r_c2", "r_c3" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "respect" ],
+                "amount": -5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat bullied from_cat for not having graduated yet."
+                }
+            },
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c1", "r_c2", "r_c3" ],
+                "values": [ "like", "comfort" ],
+                "amount": -10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat bullied from_cat for not having graduated yet."
+                }
+            }
+        ]
+    },
+    {
         "event_id": "gen_group_gathering_healer1",
         "location": [
             "any"
@@ -570,7 +704,7 @@
         "r_c": [
             {
                 "clan": 2,
-                "skill": [ "DARK,1" ]
+                "skill": [ "DARK,1", "GHOST,1" ]
             },
             {
                 "clan": 1,
@@ -718,6 +852,50 @@
         ],
         "other_clan": {
             "changed": 1
+        }
+    },
+    {
+        "event_id": "gen_group_teacher1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "r_c2 found r_c1 struggling to explain something to m_c on patrol and decides to help."
+        ],
+        "m_c": {
+            "status": [ "apprentice" ],
+            "relationship_status": [ "app/mentor" ]
+        },
+        "r_c": [
+            {
+                "clan": 1,
+                "relationship_status": ["mentor/app"],
+                "skill": [ "-TEACHER,1" ]
+            },
+            {
+                "clan": 2,
+                "skill": ["TEACHER,1"]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "m_c", "r_c1" ],
+                "cats_to": [ "r_c2" ],
+                "values": [ "trust", "like" ],
+                "amount": 5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat helped teach m_c when {PRONOUN/m_c/poss} mentor was struggling."
+                }
+            }
+        ],
+        "other_clan":{
+            "current_rep": ["ally"]
         }
     }
 ]

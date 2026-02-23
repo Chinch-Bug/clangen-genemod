@@ -1026,6 +1026,172 @@
         ]
     },
     {
+        "event_id": "gen_single_gathering_teacher1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "m_c taught r_c some new tricks during the Gathering."
+        ],
+        "m_c": {
+            "skill": [ "TEACHER,1" ]
+        },
+        "r_c": {
+            "status": ["apprentice", "healer apprentice", "mediator apprentice"]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust", "like" ],
+                "amount": 5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "from_cat taught to_cat some new tricks at the Gathering."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_gathering_tease1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "m_c teased r_c for sitting alone the whole time at the Gathering."
+        ],
+        "m_c": {
+            "trait": [
+                "-nervous",
+                "-insecure",
+                "-compassionate",
+                "-thoughtful",
+                "-careful",
+                "-loving"
+            ]
+        },
+        "r_c": {
+            "trait": [ "gloomy", "lonesome", "grumpy", "cold", "insecure" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "comfort", "like", "respect" ],
+                "amount": -5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "to_cat teased from_cat for sitting alone at the Gathering."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_gathering_ghost1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "m_c caught r_c by surprise by informing {PRONOUN/r_c/object} about an angry spirit following {PRONOUN/r_c/object} in front of other cats at the Gathering."
+        ],
+        "m_c": {
+            "skill": [ "GHOST,1" ]
+        },
+        "r_c": {
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "comfort" ],
+                "amount": -5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "from_cat told to_cat about an angry spirit following {PRONOUN/to_cat/object} in front of other cats."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_gathering_ghost2",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 3,
+        "event_text": [
+            "m_c caught r_c by surprise by informing {PRONOUN/r_c/object} about a Dark Forest ghost following {PRONOUN/r_c/object} in front of other cats at the Gathering."
+        ],
+        "m_c": {
+            "skill": [ "GHOST,1" ]
+        },
+        "r_c": {
+            "skill": ["DARK,1"]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "comfort", "trust" ],
+                "amount": -10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "from_cat told to_cat about a Dark Forest ghost following {PRONOUN/to_cat/object} in front of other cats."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_gathering_ghost3",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "m_c told r_c about a StarClan spirit following {PRONOUN/r_c/object}."
+        ],
+        "m_c": {
+            "skill": [ "GHOST,1" ]
+        },
+        "r_c": {
+            "skill": [ "-DARK,1" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "comfort" ],
+                "amount": 5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "from_cat told to_cat about a StarClan spirit following {PRONOUN/to_cat/object}."
+                }
+            }
+        ]
+    },
+    {
         "event_id": "gen_single_gathering_half-clan1",
         "location": [
             "any"

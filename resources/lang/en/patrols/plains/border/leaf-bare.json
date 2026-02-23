@@ -4749,7 +4749,7 @@
                 "frequency": 2
             },
             {
-                "text": "Come on, let's check it out! s_c bounds forward to the entrance, tail lashing excitedly. There's a shriek, and something pulls {PRONOUN/s_c/subject} in.",
+                "text": "Come on, let's check it out! s_c bounds forward to the entrance, tail lashing excitedly. There's a shriek, and something pulls {PRONOUN/s_c/object} in.",
                 "exp": 0,
                 "art": "gen_train_patrolapprenticesessionsuccess",
                 "can_have_stat": [
