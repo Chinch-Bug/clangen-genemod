@@ -11095,6 +11095,9 @@
             "current_rep": [
                 "hostile"
             ],
+            "has_rank": [
+                "warrior"
+            ],
             "changed": -1
         }
     },

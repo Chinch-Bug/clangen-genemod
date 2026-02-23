@@ -1402,7 +1402,7 @@ def unpack_rel_block(
                 print(
                     f"something is wrong with relationship log: {block['log']}")
 
-        change_relationship_values(
+        from_log = change_relationship_values(
             cats_to_ob,
             cats_from_ob,
             **value_changes,
@@ -1415,7 +1415,7 @@ def unpack_rel_block(
                 cats_from_ob,
                 cats_to_ob,
                 **value_changes,
-                log=to_log if to_log else from_log,
+                log=to_log if to_log else from_log.replace("to_cat", "[placeholder]").replace("from_cat", "to_cat").replace("[placeholder]", "from_cat"),
             )
 
 
