@@ -479,7 +479,7 @@
             "m_c had r_c1 and r_c2 so enraptured in a tale they all almost missed the Gathering announcements."
         ],
         "m_c": {
-            "skill": "STORY,1"
+            "skill": ["STORY,1"]
         },
         "r_c": [
             {
