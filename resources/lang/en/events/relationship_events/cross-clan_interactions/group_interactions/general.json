@@ -497,7 +497,7 @@
                 "amount": 5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "to_cat had from_cat enthralled in a story {PRONOUN/to_cat/subject} {VERB/were/was} telling."
+                    "cats_from": "to_cat had from_cat enthralled in a story {PRONOUN/to_cat/subject} {VERB/to_cat/were/was} telling."
                 }
             }
         ]

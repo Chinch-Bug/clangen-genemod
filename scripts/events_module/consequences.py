@@ -1415,7 +1415,7 @@ def unpack_rel_block(
                 cats_from_ob,
                 cats_to_ob,
                 **value_changes,
-                log=to_log if to_log else from_log.replace("to_cat", "[placeholder]").replace("from_cat", "to_cat").replace("[placeholder]", "from_cat"),
+                log=to_log if to_log else (from_log.replace("to_cat", "[placeholder]").replace("from_cat", "to_cat").replace("[placeholder]", "from_cat") if from_log else None),
             )
 
 
