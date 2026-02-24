@@ -193,6 +193,11 @@ class ShortEvent:
                 self.other_clan["current_rep"] = ["any"]
             if "changed" not in self.other_clan:
                 self.other_clan["changed"] = 0
+            
+            if self.other_clan["changed"] > 0 and constants.CONFIG["event_generation"]["clan_rel_change_multiplier"] < 0:
+                self.weight -= int(self.weight * abs(constants.CONFIG["event_generation"]["clan_rel_change_multiplier"]))
+            if self.other_clan["changed"] < 0 and constants.CONFIG["event_generation"]["clan_rel_change_multiplier"] > 0:
+                self.weight -= int(self.weight * abs(constants.CONFIG["event_generation"]["clan_rel_change_multiplier"]))
         self.supplies = supplies if supplies else []
         self.new_gender = new_gender
         self.future_event = future_event if future_event else {}

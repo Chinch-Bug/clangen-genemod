@@ -22,6 +22,10 @@ dev_tools = false
   # Adds a passive buff to relationship events. We divide the value change by passive_influence_div and apply it to all other relationship values.
   passive_influence_div = 3
 
+  # Used for patrol and moon event relationship changes. 0.5 - half the usual change, 0 - no change, 1 - the usual change, etc.
+  pos_rel_change_multiplier = 1
+  neg_rel_change_multiplier = 1
+
   # 1/chance that a group event will be a "special group event"
   # special groups are defined in group_types.json
   chance_of_special_group = 9
@@ -51,15 +55,15 @@ dev_tools = false
       mid_pos = 69
       extreme_pos = 100
 
-[relationship.colours]
-  # colours are RGB values, each number is a value from 0 to 255
-  neutral = [130, 117, 82]
-  low_pos = [182, 174, 51]
-  mid_pos = [150, 195, 49]
-  extreme_pos = [154, 241, 32]
-  low_neg = [186, 128, 60]
-  mid_neg = [214, 90, 53]
-  extreme_neg = [233, 38, 30]
+  [relationship.colours]
+    # colours are RGB values, each number is a value from 0 to 255
+    neutral = [130, 117, 82]
+    low_pos = [182, 174, 51]
+    mid_pos = [150, 195, 49]
+    extreme_pos = [154, 241, 32]
+    low_neg = [186, 128, 60]
+    mid_neg = [214, 90, 53]
+    extreme_neg = [233, 38, 30]
 
 [mates]
   # maximum age difference allowed for cats to be romantic with each other
@@ -533,6 +537,11 @@ dev_tools = false
 
   # forces specified event to occur regardless of if requirements are met
   debug_override_requirements = false
+
+  # modifies the likelihood of moonskip events that effect relationships between Clans. 
+  # 0 is default, -1 would try to ensure only negative events happen, 1 would try to ensure only positive events happen, 
+  # -0.5 would make positive events about half as likely as normal ; 0.5 would make negative events about half as likely as normal
+  clan_rel_change_multiplier = 0
 
 [death_related]
   # base 1/chance that leader will die
