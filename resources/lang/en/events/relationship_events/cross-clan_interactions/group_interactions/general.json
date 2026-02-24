@@ -1176,13 +1176,16 @@
         },
         "r_c": [
             {
-                "clan": 2
+                "clan": 2,
+                "status": [ "-elder" ]
             },
             {
-                "clan": 2
+                "clan": 2,
+                "status": [ "-elder" ]
             },
             {
-                "clan": 2
+                "clan": 2,
+                "status": [ "-elder" ]
             }
         ],
         "relationships": [
@@ -1199,6 +1202,176 @@
         ],
         "other_clan": {
             "current_rep": [ "hostile" ]
+        }
+    },
+    {
+        "event_id": "gen_group_ice1",
+        "location": [
+            "beach", "forest", "mountainous", "plains", "wetland"
+        ],
+        "season": [
+            "leaf-bare"
+        ],
+        "sub_type": [ ],
+        "frequency": 3,
+        "event_text": [
+            "As a bonding exercise between ally Clans, a friendly competitive game was organised on the ice. m_c, r_c1, r_c2, and r_c3 form c_n's team, while r_c4, r_c5, r_c6, and r_c7 form o_c_n's team."
+        ],
+        "m_c": {
+            "status": ["-elder"]
+        },
+        "r_c": [
+            {
+                "clan": 1,
+                "status": [ "-elder" ]
+            },
+            {
+                "clan": 1,
+                "status": [ "-elder" ]
+            },
+            {
+                "clan": 1,
+                "status": [ "-elder" ]
+            },
+            {
+                "clan": 2,
+                "status": [ "-elder" ]
+            },
+            {
+                "clan": 2,
+                "status": [ "-elder" ]
+            },
+            {
+                "clan": 2,
+                "status": [ "-elder" ]
+            },
+            {
+                "clan": 2,
+                "status": [ "-elder" ]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "m_c", "r_c1", "r_c2", "r_c3" ],
+                "cats_to": [ "r_c4", "r_c5", "r_c6", "r_c7" ],
+                "values": [ "like", "respect" ],
+                "amount": 10,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat and to_cat both participated in a game on the ice."
+                }
+            }
+        ],
+        "other_clan": {
+            "current_rep": [ "ally" ],
+            "changed": 1
+        }
+    },
+    {
+        "event_id": "gen_group_ice2",
+        "location": [
+            "beach", "forest", "mountainous", "plains", "wetland"
+        ],
+        "season": [
+            "leaf-bare"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "m_c mocked r_c1, r_c2, and r_c3 after encountering the patrol struggling on the ice."
+        ],
+        "m_c": {
+            "trait": [
+                "-nervous",
+                "-insecure",
+                "-compassionate",
+                "-thoughtful",
+                "-careful",
+                "-loving"
+            ]
+        },
+        "r_c": [
+            {
+                "clan": 2,
+                "status": [ "-elder" ]
+            },
+            {
+                "clan": 2,
+                "status": [ "-elder" ]
+            },
+            {
+                "clan": 2,
+                "status": [ "-elder" ]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "r_c1", "r_c2", "r_c3" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "like", "respect" ],
+                "amount": -5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "to_cat mocked from_cat for struggling on the ice."
+                }
+            }
+        ],
+        "other_clan": {
+            "current_rep": [ "hostile", "neutral" ]
+        }
+    },
+    {
+        "event_id": "gen_group_heat1",
+        "location": [
+            "beach", "forest", "desert", "plains", "wetland"
+        ],
+        "season": [
+            "greenleaf"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "m_c, r_c1, and r_c2 met r_c3, r_c4, and r_c5 resting on patrol and join them, commiserating about the recent heat."
+        ],
+        "m_c": {
+            "status": [ "-elder" ]
+        },
+        "r_c": [
+            {
+                "clan": 1,
+                "status": [ "-elder" ]
+            },
+            {
+                "clan": 1,
+                "status": [ "-elder" ]
+            },
+            {
+                "clan": 2,
+                "status": [ "-elder" ]
+            },
+            {
+                "clan": 2,
+                "status": [ "-elder" ]
+            },
+            {
+                "clan": 2,
+                "status": [ "-elder" ]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "m_c", "r_c1", "r_c2" ],
+                "cats_to": [ "r_c3", "r_c4", "r_c5" ],
+                "values": [ "like", "comfort" ],
+                "amount": 5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat and to_cat bonded by complaining about the heat."
+                }
+            }
+        ],
+        "other_clan": {
+            "current_rep": [ "ally", "neutral" ]
         }
     }
 ]

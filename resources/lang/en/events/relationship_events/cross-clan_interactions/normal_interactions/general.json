@@ -1923,5 +1923,80 @@
         "other_clan": {
             "current_rep": [ "hostile" ]
         }
+    },
+    {
+        "event_id": "gen_single_ice1",
+        "location": [
+            "beach", "forest", "mountainous", "plains", "wetland"
+        ],
+        "season": [
+            "leaf-bare"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "m_c mocked r_c for struggling on the ice."
+        ],
+        "m_c": {
+            "trait": [
+                "-nervous",
+                "-insecure",
+                "-compassionate",
+                "-thoughtful",
+                "-careful",
+                "-loving"
+            ]
+        },
+        "r_c": {
+            "status": [ "-elder" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "like", "respect" ],
+                "amount": -5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "to_cat mocked from_cat for struggling on the ice."
+                }
+            }
+        ],
+        "other_clan": {
+            "current_rep": [ "hostile", "neutral" ]
+        }
+    },
+    {
+        "event_id": "gen_group_heat1",
+        "location": [
+            "beach", "forest", "desert", "plains", "wetland"
+        ],
+        "season": [
+            "greenleaf"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "m_c met r_c resting in the shade and join {PRONOUN/r_c/object}, commiserating about the recent heat."
+        ],
+        "m_c": {
+        },
+        "r_c": [
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "like", "comfort" ],
+                "amount": 5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat and to_cat bonded by complaining about the heat."
+                }
+            }
+        ],
+        "other_clan": {
+            "current_rep": [ "ally", "neutral" ]
+        }
     }
 ]
