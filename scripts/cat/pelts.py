@@ -208,12 +208,16 @@ class Pelt:
                     self.cat_sprites[age] = f"kitten{pose}"
                     continue
                 if age == CatAge.ADOLESCENT:
+                    if self.length == "long":
+                        fur = "long"
+                    else:
+                        fur = "short"
                     if pose == 3:
-                        self.cat_sprites[age] = "adolescent0"
+                        self.cat_sprites[age] = f"adolescent_{fur}0"
                     elif pose == 4:
-                        self.cat_sprites[age] = "adolescent1"
+                        self.cat_sprites[age] = f"adolescent_{fur}1"
                     elif pose == 5:
-                        self.cat_sprites[age] = "adolescent2"
+                        self.cat_sprites[age] = f"adolescent_{fur}2"
                     continue
                 if age in (CatAge.YOUNG_ADULT, CatAge.ADULT, CatAge.SENIOR_ADULT):
                     if pose in (0, 9):
