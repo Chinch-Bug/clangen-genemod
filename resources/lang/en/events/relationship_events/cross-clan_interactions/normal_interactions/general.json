@@ -1539,9 +1539,6 @@
         "m_c": {
             "age": [
                 "adolescent"
-            ],
-            "relationship_status": [
-                "child/parent"
             ]
         },
         "r_c": {
@@ -1581,9 +1578,6 @@
         "m_c": {
             "age": [
                 "-adolescent"
-            ],
-            "relationship_status": [
-                "child/parent"
             ]
         },
         "r_c": {
@@ -1600,6 +1594,42 @@
                 "mutual": true,
                 "log": {
                     "cats_from": "from_cat and to_cat bonded during the Gathering."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_gathering_half-clan3",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 3,
+        "event_text": [
+            "m_c and r_c talked about what it would be like to be in the same Clan together."
+        ],
+        "m_c": {
+            "relationship_status": [
+                "relates_to"
+            ]
+        },
+        "r_c": {
+            "relationship_status": [
+                "siblings", "relates_to"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "comfort" ],
+                "amount": 10,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat and to_cat talked about hypothetically being in the same Clan together."
                 }
             }
         ]
