@@ -868,7 +868,7 @@ class Phenotype(Genotype):
 
                 if genes.corin[0] == "sg" or genes.wbtype == "chinchilla" or (genes.corin[0] != "N" and genes.wbtype == "shaded"):
                     banding = "chinchilla"
-                elif genes.wbtype == "shaded" or genes.corin[0] == "sh" or genes.corin[0] == "fg" or genes.ext[0] == 'ec' or (genes.ext[0] == 'ea' and (self.agouti[0] != "a" and moons > 3 or moons > 9)):
+                elif genes.wbtype == "shaded" or genes.corin[0] == "sh" or genes.corin[0] == "fg" or genes.ext[0] == 'ec' or (genes.ext[0] == 'ea' and (self.agouti[0] != "a" and moons > 3 or moons > 6)):
                     banding = "shaded"
                 else:
                     banding = genes.wbtype

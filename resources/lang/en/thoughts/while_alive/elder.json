@@ -249,7 +249,7 @@
     {
         "id": "charismatic_elder",
         "thoughts": [
-            "Has everycat engaged in an extravagant story",
+            "Has everyone engaged in an extravagant story",
             "Hasn't lost any of {PRONOUN/m_c/poss} charm"
         ],
         "main_age_constraint": [
@@ -664,7 +664,7 @@
     {
         "id": "playful_elder",
         "thoughts": [
-            "Cheers everycat up with a funny story",
+            "Cheers everyone up with a funny story",
             "Is always a cheerful presence around camp"
         ],
         "main_age_constraint": [

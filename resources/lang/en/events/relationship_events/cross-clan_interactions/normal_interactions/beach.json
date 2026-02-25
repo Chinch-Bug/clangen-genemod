@@ -1,1 +1,98 @@
-[]
+[
+    {
+        "event_id": "beach_single_gulls1",
+        "location": [
+            "beach"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 4,
+        "event_text": [
+            "m_c boasted about stealing fish from gulls, but r_c wasn't quite so enthused about stealing food from other animals."
+        ],
+        "m_c": {
+            "skill": [ "HUNTER,0", "CLEVER,0", "STEALTH,0", "FIGHTER,0" ]
+        },
+        "r_c": {
+            "trail": [ "compassionate", "loving" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "respect", "comfort" ],
+                "amount": -5,
+                "mutual": true,
+                "log": {
+                    "cats_from": "from_cat didn't like to_cat stealing from gulls."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "beach_single_gulls2",
+        "location": [
+            "beach"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 1,
+        "event_text": [
+            "m_c boasted about {PRONOUN/m_c/poss} ability to steal fish from gulls. Yet when prompted {PRONOUN/m_c/object} for a demonstration, m_c only ended up forced to retreat, much to r_c's amusement."
+        ],
+        "m_c": {
+            "skill": [ "-HUNTER,0", "-CLEVER,0", "-STEALTH,0", "-FIGHTER,0" ],
+            "trait": [
+                "troublesome",
+                "bold",
+                "daring",
+                "ambitious",
+                "confident",
+                "adventurous",
+                "shameless",
+                "arrogant",
+                "competitive",
+                "flamboyant"
+            ]
+        },
+        "r_c": {
+            "trail": [ "compassionate", "loving", "thoughtful", "nervous" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "respect" ],
+                "amount": -5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "from_cat found to_cat failing to steal from gulls amusing."
+                }
+            },
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "comfort" ],
+                "amount": -5,
+                "mutual": false,
+                "log": {
+                    "cats_from": "from_cat embarrassed {PRONOUN/from_cat/self} in front of to_cat by failing to steal from gulls."
+                }
+            }
+        ],
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "beak bite"
+                ]
+            }
+        ]
+    }
+]

@@ -213,11 +213,11 @@ def generate_sprite(
                     'red' not in stripecolour and 'cream' not in stripecolour and 'honey' not in stripecolour and 'ivory' not in stripecolour and 'apricot' not in stripecolour)
                 is_dark_sunshine = (phenotype.wbtype not in [
                     "shaded", "chinchilla"] and phenotype.corin[0] == "sh" and not_red and phenotype.agouti[1] == "a"
-                    and not (('ec' in phenotype.ext or (phenotype.ext[0] == 'ea' and ((sprite_age > 3 and phenotype.agouti[0] != "a") or sprite_age > 9))) and 'Eg' not in phenotype.ext))
+                    and not (('ec' in phenotype.ext or (phenotype.ext[0] == 'ea' and ((sprite_age > 3 and phenotype.agouti[0] != "a") or sprite_age > 6))) and 'Eg' not in phenotype.ext))
                 
                 is_amber = not_red and phenotype.ext[0] == 'ea' and ((sprite_age > 11 and phenotype.agouti[0] != 'a') or (sprite_age > 35))
                 is_older_amber = is_amber and ((sprite_age > 35 and phenotype.agouti[0] != 'a') or (sprite_age > 59))
-                is_baby_amber = not_red and not is_amber and phenotype.ext[0] == 'ea' and ((sprite_age > 3 and phenotype.agouti[0] != "a") or sprite_age > 9)
+                is_baby_amber = not_red and not is_amber and phenotype.ext[0] == 'ea' and ((sprite_age > 3 and phenotype.agouti[0] != "a") or sprite_age > 6)
                 
                 pattern = []
                 if preset_pattern:
