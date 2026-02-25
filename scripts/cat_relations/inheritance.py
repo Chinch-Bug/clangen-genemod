@@ -500,7 +500,8 @@ class Inheritance:
 
         if affair := self.get_affair_parents():
             for x in affair:
-                self.parents[x]["additional"].append(i18n.t("inheritance.affair"))
+                if x in self.parents:
+                    self.parents[x]["additional"].append(i18n.t("inheritance.affair"))
 
     def init_mates(self):
         """Create a mate relationship"""

@@ -937,7 +937,7 @@ def handle_tnr_return(clan=game.clan):
     eligible_cats = []
     cat_IDs = []
     for cat in Cat.all_cats.values():
-        if not cat.status.is_lost(clan.group_ID):
+        if not cat.status.is_lost(clan.group_ID) or not cat.status.is_outsider:
             continue
         TNRed = True if ('sterile' in cat.permanent_condition and 'TNR' in cat.pelt.scars and 
         game.clan.age - cat.permanent_condition['sterile']['moon_start'] == 1) else False
@@ -979,13 +979,11 @@ def handle_lost_cats_return(predetermined_cat_IDs: list = None, clan = game.clan
     if not predetermined_cat_IDs:
         eligible_cats = []
         for cat in Cat.all_cats.values():
-            if cat.dead or not cat.status.is_lost(clan.group_ID):
+            if cat.dead or not cat.status.is_lost(clan.group_ID) or not cat.status.is_outsider:
                 continue
 
             if "sterile" not in cat.permanent_condition or game.clan.age - cat.permanent_condition["sterile"]["moon_start"] > -1:
                 eligible_cats.append(cat)
-            elif cat.status.is_lost(clan.group_ID):
-                pass
 
         if not eligible_cats:
             return
@@ -996,7 +994,7 @@ def handle_lost_cats_return(predetermined_cat_IDs: list = None, clan = game.clan
 
         cat_IDs.append(lost_cat.ID)
 
-        if lost_cat.status.is_former_clancat:
+        if lost_cat.status.is_former_clancat or lost_cat.status.is_outsider:
             text = i18n.t(f"hardcoded.event_lost{random.choice(range(1,5))}")
         else:
             # this would be the child of a lost cat, who inherited the lost status from the parent and was never a clancat
