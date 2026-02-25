@@ -458,6 +458,11 @@ def create_new_cat_block(
                     chosen_cat.rank_change(
                         new_rank=CatRank(rank), resort=True, new_thought=False
                     )
+                
+                if chosen_cat.status.rank in [CatRank.NEWBORN, CatRank.KITTEN]:
+                    rank = chosen_cat.status.get_rank_from_age(chosen_cat.age)
+                    if chosen_cat.status.rank != rank:
+                        chosen_cat.rank_change(new_rank=CatRank(rank), resort=True)
             elif outside:
                 # updates so that the clan is marked as knowing of this cat
                 current_standing = chosen_cat.status.get_standing_with_group(
