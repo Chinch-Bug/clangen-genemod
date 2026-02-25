@@ -3398,7 +3398,6 @@ class Cat:
         elif isinstance(cat_info["status"], str):
             cat_ob.status.send_to_afterlife(target_ID=CatGroup.STARCLAN_ID)
 
-        cat_ob.dead_for = cat_info["dead_for"] if "dead_for" in cat_info else 1
         return cat_ob
 
     # ---------------------------------------------------------------------------- #
@@ -3714,7 +3713,6 @@ class Cat:
                 "scars": self.pelt.scars or [],
                 "accessory": self.pelt.accessory,
                 "experience": self.experience,
-                "dead_moons": self.dead_for,
                 "current_apprentice": list(self.apprentice),
                 "former_apprentices": list(self.former_apprentices),
                 "faded_offspring": self.faded_offspring,
