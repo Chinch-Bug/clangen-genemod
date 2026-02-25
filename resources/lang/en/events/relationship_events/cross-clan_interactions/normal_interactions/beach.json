@@ -16,7 +16,7 @@
             "skill": [ "HUNTER,0", "CLEVER,0", "STEALTH,0", "FIGHTER,0" ]
         },
         "r_c": {
-            "trail": [ "compassionate", "loving" ]
+            "trait": [ "compassionate", "loving" ]
         },
         "relationships": [
             {
@@ -60,7 +60,7 @@
             ]
         },
         "r_c": {
-            "trail": [ "compassionate", "loving", "thoughtful", "nervous" ]
+            "trait": [ "-compassionate", "-loving", "-thoughtful", "-nervous" ]
         },
         "relationships": [
             {
@@ -70,7 +70,7 @@
                 "amount": -5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "from_cat found to_cat failing to steal from gulls amusing."
+                    "cats_from": "from_cat watched to_cat embarrass {PRONOUN/to_cat/self} trying to steal from gulls."
                 }
             },
             {
