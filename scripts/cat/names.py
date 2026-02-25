@@ -448,7 +448,7 @@ class Name:
                         while [] in options:
                             options.remove([])
                         continue
-
+                self.check_name(self.cat, False)
                 return
         except:
             pass

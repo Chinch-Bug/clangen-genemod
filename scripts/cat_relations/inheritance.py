@@ -266,59 +266,46 @@ class Inheritance:
                 if cat_id in self.kits:
                     self.all_inheritances[cat_id].init_parents()
                 if cat_id in self.grand_kits:
-                    try:
+                    if self.cat.ID in self.all_inheritances[cat_id].grandparents:
                         del self.all_inheritances[cat_id].grandparents[self.cat.ID]
-                    except:
-                        pass
                     self.all_inheritances[cat_id].init_grandparents()
                 if cat_id in self.mates:
-                    try:
+                    if self.cat.ID in self.all_inheritances[cat_id].mates:
                         del self.all_inheritances[cat_id].mates[self.cat.ID]
-                    except:
-                        pass
                     self.all_inheritances[cat_id].init_mates()
                 if cat_id in self.parents:
-                    try:
+                    if self.cat.ID in self.all_inheritances[cat_id].kits:
                         del self.all_inheritances[cat_id].kits[self.cat.ID]
-                    except:
-                        pass
                     self.all_inheritances[cat_id].init_kits(self.cat.ID, self.cat)
                 if cat_id in self.siblings:
-                    try:
+                    if self.cat.ID in self.all_inheritances[cat_id].siblings:
                         del self.all_inheritances[cat_id].siblings[self.cat.ID]
-                    except:
-                        pass
                     self.all_inheritances[cat_id].init_siblings(self.cat.ID, self.cat)
                 if cat_id in self.parents_siblings:
-                    try:
+                    if self.cat.ID in self.all_inheritances[cat_id].siblings_kits:
                         del self.all_inheritances[cat_id].siblings_kits[self.cat.ID]
-                    except:
-                        pass
                     for par in self.parents:
                         if par in self.all_inheritances[cat_id].siblings:
-                            self.all_inheritances[cat_id].init_siblings(par, self.cat.fetch_cat(par))
+                            self.all_inheritances[cat_id].init_siblings(
+                                par, self.cat.fetch_cat(par)
+                            )
                 if cat_id in self.siblings_kits:
-                    try:
+                    if self.cat.ID in self.all_inheritances[cat_id].parents_siblings:
                         del self.all_inheritances[cat_id].parents_siblings[self.cat.ID]
-                    except:
-                        pass
-                    self.all_inheritances[cat_id].init_parents_siblings(self.cat.ID, self.cat)
+                    self.all_inheritances[cat_id].init_parents_siblings(
+                        self.cat.ID, self.cat
+                    )
                 if cat_id in self.cousins:
-                    try:
+                    if self.cat.ID in self.all_inheritances[cat_id].cousins:
                         del self.all_inheritances[cat_id].cousins[self.cat.ID]
-                    except:
-                        pass
                     self.all_inheritances[cat_id].init_cousins(self.cat.ID, self.cat)
                 if cat_id in self.grand_parents:
-                    try:
+                    if self.cat.ID in self.all_inheritances[cat_id].grand_kits:
                         del self.all_inheritances[cat_id].grand_kits[self.cat.ID]
-                    except:
-                        pass
                     self.all_inheritances[cat_id].init_grand_kits(self.cat.ID, self.cat)
 
                 self.all_inheritances[cat_id].all_involved = list(set(self.all_inheritances[cat_id].all_involved))
                 self.all_inheritances[cat_id].all_but_cousins = list(set(self.all_inheritances[cat_id].all_but_cousins))
-
 
     def update_all_mates(self):
         """
