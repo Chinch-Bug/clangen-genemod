@@ -437,7 +437,7 @@ def filter_events(
                 if chosen_cat.status.group_ID not in involved_clans:
                     involved_clans.append(chosen_cat.status.group_ID)
 
-        if chosen_event and (isinstance(chosen_event.r_c, list) and len(chosen_cats) == len(chosen_event.r_c) or chosen_cats):
+        if chosen_event and chosen_cats and len(chosen_cats) == len(chosen_event.r_c):
            break 
         
 
