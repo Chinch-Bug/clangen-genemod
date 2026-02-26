@@ -288,7 +288,7 @@ class PatrolOutcome:
 
         rel_results.update(
             unpack_rel_block(
-                Cat, self.relationship_effects, patrol, stat_cat=self.stat_cat, patrol.clan
+                Cat, self.relationship_effects, patrol, stat_cat=self.stat_cat, clan=patrol.clan
             )
         )
         if self.relationship_effects:
