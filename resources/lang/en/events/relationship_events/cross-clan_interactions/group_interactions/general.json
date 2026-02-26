@@ -97,56 +97,28 @@
             "While on patrol, m_c, r_c1, and r_c2 found r_c3, r_c4, and r_c5 trying to get rid of a thornbush, and pitched in to help."
         ],
         "m_c": {
-            "status": [
-                "warrior",
-                "deputy",
-                "leader"
-            ]
+            "status": ["-elder", "-mediator", "-mediator apprentice"]
         },
         "r_c": [
             {
                 "clan": 1,
-                "status": [
-                    "warrior",
-                    "deputy",
-                    "leader",
-                    "apprentice"
-                ]
+                "status": [ "-elder", "-mediator", "-mediator apprentice"]
             },
             {
                 "clan": 1,
-                "status": [
-                    "warrior",
-                    "deputy",
-                    "leader",
-                    "apprentice"
-                ]
+                "status": [ "-elder", "-mediator", "-mediator apprentice"]
             },
             {
                 "clan": 2,
-                "status": [
-                    "warrior",
-                    "deputy",
-                    "leader"
-                ]
+                "status": [ "-elder", "-mediator", "-mediator apprentice"]
             },
             {
                 "clan": 2,
-                "status": [
-                    "warrior",
-                    "deputy",
-                    "leader",
-                    "apprentice"
-                ]
+                "status": [ "-elder", "-mediator", "-mediator apprentice"]
             },
             {
                 "clan": 2,
-                "status": [
-                    "warrior",
-                    "deputy",
-                    "leader",
-                    "apprentice"
-                ]
+                "status": [ "-elder", "-mediator", "-mediator apprentice"]
             }
         ],
         "relationships": [
@@ -180,39 +152,21 @@
             "While on a walk, m_c found r_c1, r_c2, and r_c3 trying to get rid of a thornbush, and pitched in to help."
         ],
         "m_c": {
-            "status": [
-                "warrior",
-                "deputy",
-                "leader"
-            ],
+            "status": [ "-elder", "-mediator", "-mediator apprentice" ],
             "skill": ["CAMP,1"]
         },
         "r_c": [
             {
                 "clan": 2,
-                "status": [
-                    "warrior",
-                    "deputy",
-                    "leader"
-                ]
+                "status": [ "-elder", "-mediator", "-mediator apprentice"]
             },
             {
                 "clan": 2,
-                "status": [
-                    "warrior",
-                    "deputy",
-                    "leader",
-                    "apprentice"
-                ]
+                "status": [ "-elder", "-mediator", "-mediator apprentice"]
             },
             {
                 "clan": 2,
-                "status": [
-                    "warrior",
-                    "deputy",
-                    "leader",
-                    "apprentice"
-                ]
+                "status": [ "-elder", "-mediator", "-mediator apprentice"]
             }
         ],
         "relationships": [
@@ -1177,15 +1131,15 @@
         "r_c": [
             {
                 "clan": 2,
-                "status": [ "-elder" ]
+                "status": [ "-elder", "-mediator", "-mediator apprentice" ]
             },
             {
                 "clan": 2,
-                "status": [ "-elder" ]
+                "status": [ "-elder", "-mediator", "-mediator apprentice" ]
             },
             {
                 "clan": 2,
-                "status": [ "-elder" ]
+                "status": [ "-elder", "-mediator", "-mediator apprentice" ]
             }
         ],
         "relationships": [
@@ -1331,31 +1285,31 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c, r_c1, and r_c2 met r_c3, r_c4, and r_c5 resting on patrol and join them, commiserating about the recent heat."
+            "m_c, r_c1, and r_c2 met r_c3, r_c4, and r_c5 resting on patrol and join them, commiserating about the recent hot weather."
         ],
         "m_c": {
-            "status": [ "-elder" ]
+            "status": [ "-elder", "-mediator", "-mediator apprentice" ]
         },
         "r_c": [
             {
                 "clan": 1,
-                "status": [ "-elder" ]
+                "status": [ "-elder", "-mediator", "-mediator apprentice" ]
             },
             {
                 "clan": 1,
-                "status": [ "-elder" ]
+                "status": [ "-elder", "-mediator", "-mediator apprentice" ]
             },
             {
                 "clan": 2,
-                "status": [ "-elder" ]
+                "status": [ "-elder", "-mediator", "-mediator apprentice" ]
             },
             {
                 "clan": 2,
-                "status": [ "-elder" ]
+                "status": [ "-elder", "-mediator", "-mediator apprentice" ]
             },
             {
                 "clan": 2,
-                "status": [ "-elder" ]
+                "status": [ "-elder", "-mediator", "-mediator apprentice" ]
             }
         ],
         "relationships": [

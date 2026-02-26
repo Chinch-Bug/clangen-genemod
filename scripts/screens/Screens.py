@@ -49,6 +49,21 @@ class Screens:
         It will handle keeping track of the last screen and cur screen.
         Last screen must be tracked to ensure a clear transition between screens."""
 
+        if new_screen != GameScreen.CAMP and game.clan and game.clan.clancount == "multiclan":
+            game.selected_clan = game.clan
+            if Screens.menu_buttons.get("supplies"):
+                for b in Screens.menu_buttons["supplies"].child_buttons:
+                    b.enable()
+            for b in ["screens.core.warriors_den", "screens.core.leader_den"]:
+                Screens.menu_buttons["dens"].child_button_dicts[b].enable()
+            Screens.menu_buttons["heading"].selected_list = [game.clan.displayname + "Clan"]
+            for b in Screens.menu_buttons["heading"].child_buttons:
+                if b.text in Screens.menu_buttons["heading"].selected_list:
+                    b.disable()
+                else:
+                    b.enable()
+                
+
         music_manager.check_music(new_screen)
         # self.exit_screen()
         game.last_screen_forupdate = self.name

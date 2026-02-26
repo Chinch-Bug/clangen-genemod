@@ -333,7 +333,7 @@ def filter_events(
     chosen_event = None
 
     failed_ids = []
-    while final_events and not chosen_cats and not chosen_event:
+    while final_events and not chosen_event:
         chosen_event = choice(final_events)
         if chosen_event.event_id in failed_ids:
             final_events.remove(chosen_event)
