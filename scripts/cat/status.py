@@ -1,6 +1,6 @@
 from collections import defaultdict
 from itertools import groupby
-from random import choice
+from random import choice, choices
 from typing import TypedDict, Optional, List, Dict
 from copy import deepcopy
 
@@ -380,19 +380,23 @@ class Status:
             return (
                 CatRank.APPRENTICE
                 if disable_random
-                else choice(
+                else choices(
                     [
                         CatRank.APPRENTICE,
                         CatRank.MEDIATOR_APPRENTICE,
                         CatRank.MEDICINE_APPRENTICE,
-                    ]
-                )
+                    ],
+                    weights=[6, 1, 2],
+                )[0]
             )
         elif age in (CatAge.YOUNG_ADULT, CatAge.ADULT, CatAge.SENIOR_ADULT):
             return (
                 CatRank.WARRIOR
                 if disable_random
-                else choice([CatRank.WARRIOR, CatRank.WARRIOR, CatRank.WARRIOR, CatRank.WARRIOR, CatRank.MEDICINE_CAT, CatRank.MEDIATOR])
+                else choices(
+                    [CatRank.WARRIOR, CatRank.MEDICINE_CAT, CatRank.MEDIATOR],
+                    weights=[6, 2, 1],
+                )[0]
             )
         else:
             return CatRank.ELDER

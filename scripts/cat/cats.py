@@ -1174,7 +1174,7 @@ class Cat:
                 and child.moons < 12
             ):
                 if add_kits:
-                    # child.status.add_to_group(new_group=clan, age=self.age)
+                    # child.status.add_to_group(new_group=clan, age=child.age)
                     child.add_to_clan(clan)
                 else:
                     game.clan.add_to_clan(self)
