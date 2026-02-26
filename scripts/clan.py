@@ -1535,9 +1535,6 @@ class Afterlife:
         :param cat: The cat object adjust facets by
         :param do_removal: Set True if the cat's facets are being removed from the afterlife's
         """
-        if cat.ID in self.influencing_cats:
-            return
-
         if do_removal:
             self.influencing_cats.remove(cat.ID)
         else:
@@ -1587,6 +1584,8 @@ class Afterlife:
         :param num_of_influencers: The number of cats influencing the average
         :return: The adjusted average
         """
+        if not num_of_influencers:
+            return 0
         return total // num_of_influencers
 
 

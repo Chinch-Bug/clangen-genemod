@@ -435,7 +435,6 @@ class GroupEvents:
             fulfilled = filter_relationship_type(
                 group=[cat_from, cat_to],
                 filter_types=rel_constraint,
-                event_id=interaction.id,
             )
             fulfilled_list.append(fulfilled)
 
