@@ -324,6 +324,7 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
 
         # then
         patrol = Patrol()
+        patrol.clan = test_clan
         patrol.add_patrol_cats([parent, cat1], test_clan)
         patrol.patrol_leader = parent
         patrol.random_cat = cat1
@@ -349,6 +350,7 @@ class TestRelationshipConstraintPatrols(unittest.TestCase):
             )
         )
         patrol = Patrol()
+        patrol.clan = test_clan
         patrol.add_patrol_cats([parent, cat2], test_clan)
         patrol.patrol_leader = parent
         patrol.random_cat = cat2

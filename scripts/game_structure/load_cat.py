@@ -464,7 +464,6 @@ def accurate_porting(cat, info):
 def json_load():
     Cat.all_cats.clear()
     Cat.all_cats_list.clear()
-    Cat.dead_cats.clear()
     Inheritance.all_inheritances = {}
     all_cats = []
     clanname = switch_get_value(Switch.clan_list)[0]

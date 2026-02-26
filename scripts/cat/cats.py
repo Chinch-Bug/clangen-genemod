@@ -79,7 +79,6 @@ if TYPE_CHECKING:
 class Cat:
     """The cat class."""
 
-    dead_cats = []
     used_screen = screen
     current_pronoun_lang = None
 
@@ -128,8 +127,6 @@ class Cat:
 
     all_cats_list: List[Cat] = []
     ordered_cat_list: List[Cat] = []
-
-    grief_strings = {}
 
     def __init__(
         self,
@@ -943,7 +940,7 @@ class Cat:
         if group := self.status.get_last_living_group():
             if self.moons > 1 and grief_allowed and not self.status.is_lost(group) and not self.status.is_exiled(group):
                 self.grief(body)
-            Cat.dead_cats.append(self)
+            game.dead_cats_to_grieve.append(self)
 
         # mark the sprite as outdated
         self.pelt.rebuild_sprite = True
@@ -1062,10 +1059,12 @@ class Cat:
 
             if grief_type:
                 # Generate the event:
-                if cat.ID not in Cat.grief_strings:
-                    Cat.grief_strings[cat.ID] = []
+                if cat.ID not in game.clan.grief_strings:
+                    game.clan.grief_strings[cat.ID] = []
 
-                Cat.grief_strings[cat.ID].append((text, (self.ID, cat.ID), grief_type))
+                game.clan.grief_strings[cat.ID].append(
+                    (text, (self.ID, cat.ID), grief_type)
+                )
                 continue
 
             # Negative "grief" messages are just for flavor.
@@ -1083,10 +1082,12 @@ class Cat:
                 text = event_text_adjust(
                     Cat, choice(possible_strings), main_cat=self, random_cat=cat, clan=self.status.fetch_clan_object(game.clan)
                 )
-                if cat.ID not in Cat.grief_strings:
-                    Cat.grief_strings[cat.ID] = []
+                if cat.ID not in game.clan.grief_strings:
+                    game.clan.grief_strings[cat.ID] = []
 
-                Cat.grief_strings[cat.ID].append((text, (self.ID, cat.ID), "negative"))
+                game.clan.grief_strings[cat.ID].append(
+                    (text, (self.ID, cat.ID), "negative")
+                )
 
     def familial_grief(self, living_cat: Cat):
         """

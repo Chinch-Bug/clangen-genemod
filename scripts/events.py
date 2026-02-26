@@ -170,17 +170,17 @@ def one_moon():
     # disaster_events.handle_disasters()
 
     # Handle grief events.
-    if Cat.grief_strings:
+    if game.clan.grief_strings:
         # Grab all the dead or outside cats, who should not have grief text
-        for ID in Cat.grief_strings.copy():
+        for ID in game.clan.grief_strings.copy():
             check_cat = Cat.all_cats.get(ID)
             if isinstance(check_cat, Cat):
                 if check_cat.dead or check_cat.status.is_outsider:
-                    Cat.grief_strings.pop(ID)
+                    game.clan.grief_strings.pop(ID)
 
         # Generate events
 
-        for cat_id, details in Cat.grief_strings.items():
+        for cat_id, details in game.clan.grief_strings.items():
             for _info in details:
                 text = _info[0]
                 cats = _info[1]
@@ -196,14 +196,14 @@ def one_moon():
                         Single_Event(text, ["birth_death", "relation"], cats, clan=Cat.fetch_cat(cat_id).status.group_ID)
                     )
 
-        Cat.grief_strings.clear()
+        game.clan.grief_strings.clear()
 
-    if Cat.dead_cats:
+    if game.dead_cats_to_grieve:
         ghost_names = {}
         sorted_dead_cats = {}
         shaken_cats = {}
         extra_event = None
-        for ghost in Cat.dead_cats:
+        for ghost in game.dead_cats_to_grieve:
             last_living = ghost.status.get_last_living_group()
             if ghost.status.is_exiled(last_living):
                 pass
@@ -297,7 +297,7 @@ def one_moon():
             
             if not clancount:
                 break
-        Cat.dead_cats.clear()
+        game.dead_cats_to_grieve.clear()
 
     if (
         game.clan.game_mode in ("expanded", "cruel season")
