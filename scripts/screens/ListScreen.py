@@ -22,10 +22,8 @@ from scripts.game_structure.game.switches import (
 from scripts.cat.enums import CatGroup
 from scripts.game_structure import game
 from scripts.game_structure.screen_settings import game_screen_size, MANAGER
-from scripts.game_structure.ui_elements import (
-    UICatListDisplay,
-    UIDropDown,
-)
+from scripts.ui.elements.dropdown import UIDropDown
+from scripts.ui.elements.cat_list_display import UICatListDisplay
 from scripts.ui.elements.image_button import UIImageButton
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton
 from scripts.screens.Screens import Screens
@@ -760,21 +758,21 @@ class ListScreen(Screens):
 
     def get_group_temper_message(self):
         # UR and COTC has no alignment and no message
-        if self.current_group in ("unknown_residence", "cotc"):
+        if self.current_group in ("general.unknown_residence", "general.cotc", "general.cbtc"):
             self.temper_message.hide()
             return ""
 
         self.temper_message.show()
 
-        if self.current_group == "your_clan":
+        if self.current_group == "general.your_clan":
             group = self.clan_name
             temper = i18n.t(f"screens.leader_den.{game.clan.temperament}")
         else:
-            if self.current_group == "dark_forest":
+            if self.current_group == "general.dark_forest":
                 group = i18n.t(f"general.the_dark_forest")
             else:
-                group = i18n.t(f"general.{self.current_group}")
-            if self.current_group == "starclan":
+                group = i18n.t(f"{self.current_group}")
+            if self.current_group == "general.starclan":
                 if not game.starclan.influencing_cats:
                     self.temper_message.hide()
 

@@ -310,7 +310,7 @@ class Cat:
         self.patrol_with_mentor = 0
         self.apprentice = []
         self.former_apprentices = []
-        self.relationships = {}
+        self.relationships: Dict[str, Relationship] = {}
         self.blank_relations = []
         self.mate = []
         self.previous_mates = []

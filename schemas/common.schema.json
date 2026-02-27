@@ -447,6 +447,7 @@
     },
     "RelationshipStatus": {
       "enum": [
+        "strangers",
         "siblings",
         "-siblings",
         "littermates",
@@ -637,8 +638,11 @@
         "darkforest",
         "unknownresidence",
         "kittypet",
+        "-kittypet",
         "loner",
+        "-loner",
         "rogue",
+        "-rogue",
         "former Clancat",
         "exiled",
         "lost",

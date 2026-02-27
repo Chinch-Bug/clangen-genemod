@@ -9,9 +9,7 @@ from scripts.cat.enums import CatStanding
 from scripts.cat_relations.relationship import Relationship
 from scripts.game_structure import image_cache, constants
 from scripts.game_structure import game
-from scripts.game_structure.ui_elements import (
-    UIRelationDisplay,
-)
+from scripts.ui.elements.relation_display import UIRelationDisplay
 from scripts.ui.elements.sprite_button import UISpriteButton
 from scripts.ui.elements.image_button import UIImageButton
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton

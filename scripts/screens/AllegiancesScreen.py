@@ -20,9 +20,7 @@ from .Screens import Screens
 from ..cat.enums import CatRank, CatSocial
 from scripts.ui.elements.allegiances_cat_button import AllegiancesCat
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton
-from scripts.game_structure.ui_elements import (
-    UIDropDownContainer
-)
+from scripts.ui.elements.dropdown_container import UIDropDownContainer
 from ..ui.elements.modified_scrolling_container import UIModifiedScrollingContainer
 
 
