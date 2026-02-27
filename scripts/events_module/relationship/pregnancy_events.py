@@ -454,7 +454,7 @@ class Pregnancy_Events:
                         cats_involved.append(pregnant_cat.ID)
                         
                         pregnant_cat.get_injured("recovering from birth", event_triggered=True)
-                        pregnant_cat.injuries["recovering from birth"].risks = []
+                        pregnant_cat.injuries["recovering from birth"]["risks"] = []
                         print_event = i18n.t(
                             "conditions.pregnancy.outside_surrogate_dam",
                             name=cat.name,
@@ -475,7 +475,7 @@ class Pregnancy_Events:
                                     cats_involved.append(par.ID)
                                     par.birth_cooldown = constants.CONFIG["pregnancy"]["birth_cooldown"]
                                     par.get_injured("recovering from birth", event_triggered=True)
-                                    par.injuries["recovering from birth"].risks = []
+                                    par.injuries["recovering from birth"]["risks"] = []
                                     if par.status.group_ID != cat.status.group_ID and not par.status.is_outsider:
                                         Pregnancy_Events.rebuild_strings()
                                         events = Pregnancy_Events.PREGNANT_STRINGS
