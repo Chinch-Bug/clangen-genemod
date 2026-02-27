@@ -767,7 +767,7 @@ class ListScreen(Screens):
         if self.current_group == "general.your_clan":
             group = self.clan_name
             temper = i18n.t(f"screens.leader_den.{game.clan.temperament}")
-        else:
+        elif self.current_group in self.dead_group_names:
             if self.current_group == "general.dark_forest":
                 group = i18n.t(f"general.the_dark_forest")
             else:
@@ -785,6 +785,9 @@ class ListScreen(Screens):
                     # this means there's probably no cats in df, so no temper
                     return ""
                 temper = i18n.t(f"screens.leader_den.{game.dark_forest.temperament}")
+        else:
+            group = self.current_group
+            temper = i18n.t(f"screens.leader_den.{next(filter(lambda c: c.displayname == self.selected_clan, game.clan.all_other_clans), game.clan).temperament}")
 
         return i18n.t("screens.list.temper", group=group, temper=temper)
 
