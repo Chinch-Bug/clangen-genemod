@@ -1,4 +1,5 @@
 import pygame
+from typing import Optional, Dict
 from pygame_gui.core import UIContainer
 from pygame_gui.core.gui_type_hints import RectLike
 from pygame_gui.core.interfaces import IUIManagerInterface
@@ -154,6 +155,9 @@ class UIDropDown(UIDropDownContainer):
             if parent_reflect_selection:
                 self.parent_button.set_text(starting_selection[0])
         self.close()
+
+    def set_text(self, text: str, *, text_kwargs: Optional[Dict[str, str]] = None):
+        self.parent_button.set_text(text, text_kwargs=text_kwargs)
 
     def new_item_list(self, item_list):
         """
