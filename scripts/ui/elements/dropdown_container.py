@@ -16,6 +16,8 @@ class UIDropDownContainer(UIAutoResizingContainer):
         anchors: dict = None,
         child_trigger_close: bool = False,
         starting_selection: list = None,
+        child_button_container=None,
+        parent_button=None,
         open_on_hover: bool = False,
     ):
         """
@@ -45,8 +47,8 @@ class UIDropDownContainer(UIAutoResizingContainer):
             anchors=anchors,
         )
 
-        self.parent_button = None
-        self.child_button_container = None
+        self.parent_button = parent_button
+        self.child_button_container = child_button_container
         self.child_buttons = []
         self.child_button_dicts = []
 
