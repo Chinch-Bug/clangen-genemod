@@ -1997,7 +1997,7 @@
         }
     },
     {
-        "event_id": "gen_group_heat1",
+        "event_id": "gen_single_heat1",
         "location": [
             "beach", "forest", "desert", "plains", "wetland"
         ],
@@ -2011,8 +2011,9 @@
         ],
         "m_c": {
         },
-        "r_c": [
-        ],
+        "r_c": {
+            
+        },
         "relationships": [
             {
                 "cats_from": [ "m_c" ],

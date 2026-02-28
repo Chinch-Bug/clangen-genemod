@@ -195,7 +195,7 @@ def generate_event_objects(is_group, biome, frequency) -> list:
                 if frequency != event_frequency:
                     continue
 
-                event = CrossClanEvent(
+                event_obj = CrossClanEvent(
                     event_id=event["event_id"] if "event_id" in event else "",
                     location=event["location"] if "location" in event else ["any"],
                     season=event["season"] if "season" in event else ["any"],
@@ -222,7 +222,10 @@ def generate_event_objects(is_group, biome, frequency) -> list:
                     else {},
                     nr_involved_clans=event.get("nr_involved_clans", 2)
                 )
-                event_list.append(event)
+
+                if not isinstance(event_obj.r_c, list):
+                    event_obj.r_c = [event_obj.r_c]
+                event_list.append(event_obj)
 
             # Add to loaded events.
             loaded_events[load_name] = event_list
@@ -390,9 +393,6 @@ def filter_events(
             while not new_clan or new_clan in involved_clans:
                 new_clan = choice(possible_clans)
             involved_clans.append(new_clan)
-
-        if not isinstance(chosen_event.r_c, list):
-            chosen_event.r_c = [chosen_event.r_c]
 
         for i in range(len(chosen_event.r_c)):
             # gotta gather injuries so we can check if the cat can get them
