@@ -595,6 +595,7 @@ class MakeClanScreen(Screens):
         self.fullscreen_bgs = {}
         self.game_bgs = {}
         self.set_mute_button_position("bottomright")
+        constants.load_clan_config()
         return super().exit_screen()
 
     def on_use(self):
