@@ -239,7 +239,7 @@
         },
         "relationships": [
             {
-                "cats_from": [ "high_lawful", "high_aggress" ],
+                "cats_from": [ "clan", "high_lawful", "high_aggress" ],
                 "cats_to": [ "m_c" ],
                 "values": [ "respect", "trust" ],
                 "amount": -5,
@@ -1851,7 +1851,7 @@
                 }
             },
             {
-                "cats_from": [ "low_aggress", "high_lawful", "high_social" ],
+                "cats_from": [ "clan", "low_aggress", "high_lawful", "high_social" ],
                 "cats_to": [ "m_c" ],
                 "values": [ "like", "respect", "comfort" ],
                 "amount": -5,

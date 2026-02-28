@@ -1094,7 +1094,7 @@
                 }
             },
             {
-                "cats_from": [ "r_c2", "low_aggress", "high_lawful", "high_social" ],
+                "cats_from": [ "r_c2", "clan", "low_aggress", "high_lawful", "high_social" ],
                 "cats_to": [ "m_c" ],
                 "values": [ "like", "respect", "comfort" ],
                 "amount": -5,

@@ -1259,6 +1259,8 @@ def generate_sprite(
             age = 6
         elif 12 < int(cat_sprite) < 18 or cat_sprite in ['21', '22', '24'] and cat.moons > 120:
             age = 30
+        elif 17 < int(cat_sprite) < 21 and cat.moons < 120:
+            age = 120
         elif int(cat_sprite) > 11 and cat_sprite not in ['23', '25'] and cat.moons < 12:
             age = 60
         gensprite.blit(gen_sprite(phenotype, age), (0, 0))

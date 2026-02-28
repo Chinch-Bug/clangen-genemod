@@ -18,7 +18,6 @@ from scripts.ui.elements.sprite_button import UISpriteButton
 from scripts.ui.generate_box import get_box, BoxStyles
 from scripts.ui.scale import ui_scale_dimensions, ui_scale, ui_scale_value
 
-
 class UICatListDisplay(UIContainer):
     def __init__(
         self,
@@ -47,6 +46,7 @@ class UICatListDisplay(UIContainer):
         text_theme="#cat_list_text",
         y_px_between: int = None,
         allow_selection: bool = False,
+        hover_input_only: bool = False,
     ):
         """
         Creates and displays a list of click-able cat sprites.
@@ -88,7 +88,8 @@ class UICatListDisplay(UIContainer):
         self.x_px_between = x_px_between
         self.y_px_between = y_px_between if y_px_between is not None else x_px_between
         self.columns = columns
-        self.rows = rows if rows is not None else ceil(cats_displayed / columns)
+        self.rows = rows if rows is not None else ceil(
+            cats_displayed / columns)
         self.current_page = current_page
         self.next_button = next_button
         self.prev_button = prev_button
@@ -112,12 +113,15 @@ class UICatListDisplay(UIContainer):
 
         self.show_names = show_names
 
-        self._favor_circle = pygame.transform.scale(
-            pygame.image.load(f"resources/images/fav_marker.png").convert_alpha(),
-            ui_scale_dimensions((50, 50)),
-        )
-        if game_setting_get("dark mode"):
-            self._favor_circle.set_alpha(150)
+        self._favor_circle = []
+        for i in range(6):
+            self._favor_circle.append(pygame.transform.scale(
+                pygame.image.load(
+                    f"resources/images/fav_marker{i+1}.png").convert_alpha(),
+                ui_scale_dimensions((50, 50)),
+            ))
+            if game_setting_get("dark mode"):
+                self._favor_circle[i].set_alpha(150)
 
         self.generate_grid()
 
@@ -206,7 +210,7 @@ class UICatListDisplay(UIContainer):
         separates the cat list into smaller chunks to display on each page
         """
         self.cat_chunks = [
-            self.cat_list[x : x + self.cats_displayed]
+            self.cat_list[x: x + self.cats_displayed]
             for x in range(0, len(self.cat_list), self.cats_displayed)
         ]
 
@@ -214,7 +218,8 @@ class UICatListDisplay(UIContainer):
         """
         creates the cat display
         """
-        self.current_page = max(1, min(self.current_page, len(self.cat_chunks)))
+        self.current_page = max(
+            1, min(self.current_page, len(self.cat_chunks)))
 
         self._update_arrow_buttons()
 
@@ -231,10 +236,12 @@ class UICatListDisplay(UIContainer):
 
         # FAVOURITE ICON
         if show_fav:
-            fav_indexes = [
-                display_cats.index(cat) for cat in display_cats if cat.favourite
-            ]
-            [self.create_favor_indicator(i, self.boxes[i]) for i in fav_indexes]
+            for mark in range(6):
+                fav_indexes = [
+                    display_cats.index(cat) for cat in display_cats if cat.favourite == mark+1
+                ]
+                [self.create_favor_indicator(i, self.boxes[i], mark+1)
+                 for i in fav_indexes]
 
         # CAT SPRITE
         [
@@ -254,9 +261,11 @@ class UICatListDisplay(UIContainer):
             condition_list = []
             if kitty.illnesses:
                 if "starving" in kitty.illnesses.keys():
-                    condition_list.append(i18n.t("conditions.illnesses.starving"))
+                    condition_list.append(
+                        i18n.t("conditions.illnesses.starving"))
                 elif "malnourished" in kitty.illnesses.keys():
-                    condition_list.append(i18n.t("conditions.illnesses.malnourished"))
+                    condition_list.append(
+                        i18n.t("conditions.illnesses.malnourished"))
             nutrition_info = game.clan.freshkill_pile.nutrition_info
             if kitty.ID in nutrition_info:
                 full_text = i18n.t(
@@ -267,7 +276,8 @@ class UICatListDisplay(UIContainer):
                     full_text += f" ({str(int(nutrition_info[kitty.ID].percentage))})"
                 condition_list.append(full_text)
             tooltip_text = (
-                "<br>".join(condition_list) if len(condition_list) > 0 else None
+                "<br>".join(condition_list) if len(
+                    condition_list) > 0 else None
             )
         elif self.tool_tip_name:
             tooltip_text = str(kitty.name)
@@ -313,10 +323,10 @@ class UICatListDisplay(UIContainer):
             },
         )
 
-    def create_favor_indicator(self, i, container):
+    def create_favor_indicator(self, i, container, marker=1):
         self.favor_indicator[f"favor{i}"] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((0, 15), (50, 50))),
-            self._favor_circle,
+            self._favor_circle[marker-1],
             object_id=f"favor_circle{i}",
             container=container,
             starting_height=1,
@@ -386,8 +396,8 @@ class UICatListDisplay(UIContainer):
             box.hide()
         self.selected.clear()
 
-    def show(self, show_contents: bool = True):
-        super().show(show_contents)
+    def show(self):
+        super().show()
 
         if self.allow_selection:
             for sprite, button in self.cat_sprites.items():

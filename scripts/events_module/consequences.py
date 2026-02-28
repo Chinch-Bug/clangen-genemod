@@ -1279,7 +1279,7 @@ def gather_cat_objects(
         if abbr == "m_c":
             found_cat = extra_cat if extra_cat else event.main_cat
         elif abbr == "r_c":
-            found_cat = event.random_cat
+            found_cat = event.random_cats[0] if hasattr(event, "random_cats") else event.random_cat
         elif re.match(r"r_c[0-9]+", abbr):
             index = re.match(r"r_c([0-9]+)", abbr).group(1)
             index = int(index)-1

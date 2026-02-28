@@ -218,7 +218,7 @@ def _load_clancat(main_cat: "Cat", path) -> list:
     Returns clancat thoughts if the cat is a clancat
     """
     # newborns don't receive general thoughts
-    if main_cat.status.is_clancat:
+    if main_cat.status.is_clancat and main_cat.age != CatAge.NEWBORN:
         return load_lang_resource(f"{path}/clancat.json")
 
     return []
