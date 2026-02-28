@@ -203,6 +203,7 @@ class CrossClanEvent(ShortEvent):
         self.involved_clans.clear()
         self.random_cats.clear()
         self.custom_mapping = {}
+        self.main_cat = None
 
     def handle_injury(self):
         """
