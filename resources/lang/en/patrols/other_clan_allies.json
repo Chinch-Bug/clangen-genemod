@@ -3396,8 +3396,8 @@
                 ],
                 "other_clan_rep": -8,
                 "new_cat": [
-                    ["age: kitten", "backstory: otherclan5", "clancat", "exists", "change_clan"],
-                    ["age: kitten", "backstory: otherclan5", "clancat", "exists", "change_clan"]
+                    ["age: kitten", "backstory: stolenkit2", "clancat", "exists", "change_clan"],
+                    ["age: kitten", "backstory: stolenkit2", "clancat", "exists", "change_clan"]
                 ],
                 "frequency": 3
             },
@@ -3412,8 +3412,8 @@
                 ],
                 "other_clan_rep": -8,
                 "new_cat": [
-                    ["age: kitten", "backstory: otherclan5", "clancat", "exists", "change_clan"],
-                    ["age: kitten", "backstory: otherclan5", "clancat", "exists", "change_clan"]
+                    ["age: kitten", "backstory: stolenkit2", "clancat", "exists", "change_clan"],
+                    ["age: kitten", "backstory: stolenkit2", "clancat", "exists", "change_clan"]
                 ],
                 "frequency": 3,
                 "relationships": [
