@@ -11,7 +11,6 @@ import ujson
 from scripts.cat.enums import CatGroup
 from scripts.game_structure import constants, image_cache
 from scripts.game_structure.game.settings import game_setting_get
-from scripts.special_dates import SpecialDate, is_today
 
 logger = logging.getLogger(__name__)
 
@@ -253,12 +252,11 @@ class Sprites:
         #         self.spritesheet(f"sprites/aprilfools{x}.png", "aprilfools"+x)
         #     self.spritesheet(f"sprites/{x}.png", x)
     
-        if is_today(SpecialDate.APRIL_FOOLS):
-            for x in ["lineart", "lineart_df", "lineart_sc"]:
-                self.spritesheet(f"sprites/{x}_aprilfools.png", x+"_aprilfools")
-            self.make_group("lineart_aprilfools", (0, 0), "aprilfoolslines")
-            self.make_group("lineart_sc_aprilfools", (0, 0), "aprilfoolslineartdead")
-            self.make_group("lineart_df_aprilfools", (0, 0), "aprilfoolslineartdf")
+        for x in ["lineart", "lineart_df", "lineart_sc"]:
+            self.spritesheet(f"sprites/{x}_aprilfools.png", x+"_aprilfools")
+        self.make_group("lineart_aprilfools", (0, 0), "aprilfoolslines")
+        self.make_group("lineart_sc_aprilfools", (0, 0), "aprilfoolslineartdead")
+        self.make_group("lineart_df_aprilfools", (0, 0), "aprilfoolslineartdf")
 
         for x in os.listdir("sprites/genemod/borders"):
             self.spritesheet("sprites/genemod/borders/"+x, 'genemod/'+x.replace('.png', ""))
