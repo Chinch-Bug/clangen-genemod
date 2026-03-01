@@ -582,7 +582,7 @@ class FreshkillPile:
         # removing unnecessary cats
         remove = []
         for cat_id in self.nutrition_info:
-            if not Cat.fetch_cat(cat_id) or Cat.fetch_cat(cat_id).status.alive_in_player_clan:
+            if not Cat.fetch_cat(cat_id) or not Cat.fetch_cat(cat_id).status.alive_in_player_clan:
                 remove.append(cat_id)
 
         for cat_id in remove:
