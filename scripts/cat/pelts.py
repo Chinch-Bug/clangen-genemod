@@ -470,7 +470,7 @@ class Pelt:
 
                         #face
                         if 'beard' or 'underbelly1' in white_pattern:
-                            white_pattern.append(choice(['chin', 'chin', 'muzzle', 'muzzle', 'muzzle2', 'blaze', None, None]))
+                            white_pattern.append(choice(['chin', 'chin', 'muzzle1', 'muzzle1', 'muzzle2', 'blaze', None, None]))
                         white_pattern.append(choice(['break/chin'] + [None] * 5))
 
                         #tail
@@ -499,7 +499,7 @@ class Pelt:
                         for i in range(randint(0, 2)):
                             white_pattern.append(choice(['break/bracelet left', 'break/bracelet right'] + [None] * 5))
                         #face
-                        white_pattern.append(choice(['chin', 'muzzle', 'muzzle', 'muzzle', 'muzzle2', 'blaze']))
+                        white_pattern.append(choice(['chin', 'muzzle1', 'muzzle1', 'muzzle1', 'muzzle2', 'blaze']))
                         white_pattern.append(choice(['break/chin'] + [None] * 5))
 
                         #tail
@@ -535,7 +535,7 @@ class Pelt:
                         for i in range(randint(0, 2)):
                             white_pattern.append(choice(['break/bracelet left', 'break/bracelet right'] + [None] * 5))
                         #face
-                        white_pattern.append(choice(['chin', 'muzzle', 'muzzle', 'muzzle', 'muzzle2', 'blaze', 'blaze']))
+                        white_pattern.append(choice(['chin', 'muzzle1', 'muzzle1', 'muzzle1', 'muzzle2', 'blaze', 'blaze']))
                         white_pattern.append(choice(['break/chin'] + [None] * 5))
 
                         #tail
@@ -561,7 +561,7 @@ class Pelt:
                     for i in range(randint(0, 2)):
                         white_pattern.append(choice(['break/bracelet left', 'break/bracelet right'] + [None] * 5))
                     #face
-                    white_pattern.append(choice(['muzzle', 'muzzle', 'muzzle2', 'blaze', 'blaze']))
+                    white_pattern.append(choice(['muzzle1', 'muzzle1', 'muzzle2', 'blaze', 'blaze']))
                     white_pattern.append(choice([None, None, None, choice(['break/nose1', 'break/nose2'])]))
                     white_pattern.append(choice(['break/chin'] + [None] * 5))
 

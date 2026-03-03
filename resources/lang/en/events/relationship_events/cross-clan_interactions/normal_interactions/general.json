@@ -2029,5 +2029,43 @@
         "other_clan": {
             "current_rep": [ "ally", "neutral" ]
         }
+    },
+    {
+        "event_id": "gen_single_prey1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "During a chat about prey preferences, r_c couldn't help but grimace in disgust about what m_c's favourite was."
+        ],
+        "m_c": {
+        },
+        "r_c": {
+            "trait": [
+                "-nervous",
+                "-insecure",
+                "-compassionate",
+                "-thoughtful",
+                "-careful",
+                "-loving"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "like", "comfort" ],
+                "amount": -10,
+                "mutual": true,
+                "log": {
+                    "cats_from": "to_cat couldn't help but grimace in disgust over what m_c's favourite prey was."
+                }
+            }
+        ]
     }
 ]
