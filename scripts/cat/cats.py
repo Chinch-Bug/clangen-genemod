@@ -330,7 +330,7 @@ class Cat:
         self.starclan_affinity = 0
 
         white_pattern = white_patterns
-        if "muzzle" in white_pattern:
+        if white_pattern and "muzzle" in white_pattern:
             white_pattern.remove("muzzle")
             white_pattern.append("muzzle1")
 
@@ -339,7 +339,7 @@ class Cat:
             self.phenotype.white_pattern = "No"
 
         white_pattern = chim_white
-        if "muzzle" in white_pattern:
+        if white_pattern and "muzzle" in white_pattern:
             white_pattern.remove("muzzle")
             white_pattern.append("muzzle1")
         if self.chimerapheno:    
