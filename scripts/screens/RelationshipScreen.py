@@ -67,6 +67,7 @@ class RelationshipScreen(Screens):
         self.previous_page_button = None
         self.show_empty_text = None
         self.show_dead_text = None
+        self.show_outside_text = None
         self.back_button = None
         self.next_cat_button = None
         self.previous_cat_button = None
@@ -128,8 +129,10 @@ class RelationshipScreen(Screens):
                             self.log_icon,
                             self.checkboxes["show_dead"],
                             self.checkboxes["show_empty"],
+                            self.checkboxes["show_outside"],
                             self.show_dead_text,
                             self.show_empty_text,
+                            self.show_outside_text,
                         ],
                     )
                 elif self.next_cat == 0:
@@ -146,8 +149,10 @@ class RelationshipScreen(Screens):
                             self.log_icon,
                             self.checkboxes["show_dead"],
                             self.checkboxes["show_empty"],
+                            self.checkboxes["show_outside"],
                             self.show_dead_text,
                             self.show_empty_text,
+                            self.show_outside_text,
                         ],
                     )
                 elif self.previous_cat == 0:
@@ -164,8 +169,10 @@ class RelationshipScreen(Screens):
                             self.log_icon,
                             self.checkboxes["show_dead"],
                             self.checkboxes["show_empty"],
+                            self.checkboxes["show_outside"],
                             self.show_dead_text,
                             self.show_empty_text,
+                            self.show_outside_text,
                         ],
                     )
                 else:
@@ -184,7 +191,9 @@ class RelationshipScreen(Screens):
                             self.log_icon,
                             self.checkboxes["show_dead"],
                             self.checkboxes["show_empty"],
+                            self.checkboxes["show_outside"],
                             self.show_dead_text,
+                            self.show_outside_text,
                             self.show_empty_text,
                         ],
                     )
@@ -198,6 +207,12 @@ class RelationshipScreen(Screens):
                 self.update_checkboxes()
                 self.apply_cat_filter()
                 self.update_cat_page()
+            elif event.ui_element == self.checkboxes["show_outside"]:
+                switch_clan_setting("show outside relation")
+                self.update_checkboxes()
+                self.apply_cat_filter()
+                self.update_cat_page()
+
 
     def screen_switches(self):
         super().screen_switches()
@@ -248,7 +263,7 @@ class RelationshipScreen(Screens):
             ui_scale(pygame.Rect((53, 143), (220, 320))), MANAGER
         )
         self.toggle_frame_image = get_box(
-            BoxStyles.ROUNDED_BOX, (220, 120), sides=(True, False, True, True)
+            BoxStyles.ROUNDED_BOX, (220, 160), sides=(True, True, True, True)
         )
 
         self.list_frame_image = pygame.transform.scale(
@@ -266,6 +281,11 @@ class RelationshipScreen(Screens):
         self.show_empty_text = pygame_gui.elements.UITextBox(
             "screens.relationship.show_empty_checkbox",
             ui_scale(pygame.Rect((110, 550), (100, 30))),
+            object_id="#text_box_30_horizleft",
+        )
+        self.show_outside_text = pygame_gui.elements.UITextBox(
+            "screens.relationship.show_outside_checkbox",
+            ui_scale(pygame.Rect((110, 595), (150, 30))),
             object_id="#text_box_30_horizleft",
         )
 
@@ -362,6 +382,8 @@ class RelationshipScreen(Screens):
         del self.show_dead_text
         self.show_empty_text.kill()
         del self.show_empty_text
+        self.show_outside_text.kill()
+        del self.show_outside_text
         self.previous_page_button.kill()
         del self.previous_page_button
         self.next_page_button.kill()
@@ -400,6 +422,16 @@ class RelationshipScreen(Screens):
             ),
         )
 
+        self.checkboxes["show_outside"] = UIImageButton(
+            ui_scale(pygame.Rect((78, 595), (34, 34))),
+            "",
+            object_id=(
+                "@checked_checkbox"
+                if get_clan_setting("show outside relation")
+                else "@unchecked_checkbox"
+            ),
+        )
+
     def update_focus_cat(self):
         for ele in self.focus_cat_elements:
             self.focus_cat_elements[ele].kill()
@@ -425,8 +457,8 @@ class RelationshipScreen(Screens):
         else:
             self.all_relations = (list(self.the_cat.relationships.values()).copy() + blank_relations).sorted(key=lambda x: x.cat_to)
 
-        self.all_relations = [rel for rel in self.all_relations if rel.cat_to.status.is_outsider or rel.cat_from.status.is_outsider 
-                              or rel.cat_to.status.get_last_living_group() in self.the_cat.status.all_groups or self.the_cat.status.get_last_living_group() in rel.cat_to.status.all_groups]
+        # self.all_relations = [rel for rel in self.all_relations if rel.cat_to.status.is_outsider or rel.cat_from.status.is_outsider 
+        #                       or rel.cat_to.status.get_last_living_group() in self.the_cat.status.all_groups or self.the_cat.status.get_last_living_group() in rel.cat_to.status.all_groups]
 
         self.focus_cat_elements["header"] = pygame_gui.elements.UITextBox(
             "screens.relationship.heading",
@@ -691,6 +723,13 @@ class RelationshipScreen(Screens):
                     self.filtered_cats,
                 )
             )
+
+        if not get_clan_setting("show outside relation"):
+            self.filtered_cats = list(
+                filter(lambda rel: rel.cat_to.status.is_outsider or rel.cat_from.status.is_outsider
+                       or rel.cat_to.status.get_last_living_group() in self.the_cat.status.all_groups or self.the_cat.status.get_last_living_group() in rel.cat_to.status.all_groups, self.filtered_cats)
+            )
+            
 
         # Filter for search
         search_cats = []

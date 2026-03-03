@@ -365,8 +365,8 @@ def one_moon():
         if not clancount:
             break
 
-    # if clancount:
-    #     handle_crossclan_relationships()
+    if clancount:
+        handle_crossclan_relationships()
 
     # Resort
     if switch_get_value(Switch.sort_type) != "id":
