@@ -1266,7 +1266,7 @@ def gather_cat_objects(
     :return: list of cat objects
     """
 
-    clan_cats = [x for x in Cat.all_cats_list if x.status.group_ID == clan.group_ID]
+    clan_cats = [x for x in Cat.all_cats_list if x.status.group_ID == clan.group_ID and x.age != CatAge.NEWBORN]
     out_set = set()
 
     for abbr in abbr_list:

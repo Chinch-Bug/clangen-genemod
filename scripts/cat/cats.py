@@ -330,18 +330,12 @@ class Cat:
         self.starclan_affinity = 0
 
         white_pattern = white_patterns
-        if white_pattern and "muzzle" in white_pattern:
-            white_pattern.remove("muzzle")
-            white_pattern.append("muzzle1")
 
         self.phenotype.white_pattern = Pelt.generate_white(self.phenotype.white, self.phenotype.pointgene, self.phenotype.whitegrade, self.phenotype.vitiligo, white_pattern, self.phenotype.pax3)
         if self.phenotype.maincolour == 'white' and not self.phenotype.patchmain:
             self.phenotype.white_pattern = "No"
 
         white_pattern = chim_white
-        if white_pattern and "muzzle" in white_pattern:
-            white_pattern.remove("muzzle")
-            white_pattern.append("muzzle1")
         if self.chimerapheno:    
             self.chimerapheno.white_pattern = Pelt.generate_white(self.chimerapheno.white, self.chimerapheno.pointgene, self.chimerapheno.whitegrade, self.chimerapheno.vitiligo, white_pattern, self.chimerapheno.pax3)
             if self.chimerapheno.maincolour == 'white' and not self.chimerapheno.patchmain:
