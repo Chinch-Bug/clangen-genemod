@@ -41,7 +41,7 @@ class OutsiderEvents:
                 death_history = i18n.t("events.death.outsider_deaths.history.default")
                 if cat.status.is_exiled(CatGroup.PLAYER_CLAN_ID if game.clan.clancount == "singleclan" else None):
                     text = random.choice(deaths["exiled"])
-                    death_history = i18n.t("events.death.outsider_deaths.history.exiled")
+                    death_history = i18n.t("events.death.outsider_deaths.history.exile")
                 elif cat.status.is_lost(CatGroup.PLAYER_CLAN_ID if game.clan.clancount == "singleclan" else None):
                     text = random.choice(deaths["lost"])
                     death_history = i18n.t("events.death.outsider_deaths.history.lost")
