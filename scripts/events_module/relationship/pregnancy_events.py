@@ -1810,6 +1810,8 @@ class Pregnancy_Events:
 
         for kit in all_kitten:
             for c in all_relatives:
+                if c.faded:
+                    continue
                 rel_reflection = constants.CONFIG["new_cat"]["ext_relative_modifier"]
                 y = randrange(-10, 10)
 
