@@ -8019,7 +8019,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "medicine cat": [1, 1]
+            "healer": [1, 1]
         },
         "frequency": 2,
         "intro_text": "While gathering fresh water, p_l sees strange ripples on the water's surface.",
@@ -8106,7 +8106,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "medicine cat apprentice": [1, 1]
+            "healer apprentice": [1, 1]
         },
         "frequency": 4,
         "intro_text": "app1 pads out of camp to gather some herbs at the behest of {PRONOUN/app1/poss} mentor. The wind rustles through {PRONOUN/app1/poss} pelt as {PRONOUN/app1/subject} {VERB/app1/pad/pads} along.",
