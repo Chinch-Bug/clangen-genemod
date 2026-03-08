@@ -1398,7 +1398,7 @@ def check_war():
                 else:  # try to influence the relation with warring clan
                     game.clan.war[clan][enemy]["duration"] += 1
                     choice = random.choice(
-                        ["rel_up", "neutral", "rel_down", "rel_down"])
+                        ["rel_up", "neutral", "rel_down", "rel_down", "rel_down"])
                     current_rels = switch_get_value(Switch.war_rel_change_type)
                     if not current_rels.get(clan):
                         current_rels[clan] = {}
