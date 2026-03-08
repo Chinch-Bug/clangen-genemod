@@ -984,7 +984,10 @@ class Clan:
                         if not event_obj.clan or event_obj.clan in [game.clan.displayname, CatGroup.PLAYER_CLAN.value]:
                             event_obj.clan = CatGroup.PLAYER_CLAN_ID
                         elif len(event_obj.clan) > 2:
-                            event_obj.clan = game.clan.all_other_clans[int(event_obj.clan[-1])-1].group_ID
+                            if match := [c for c in game.clan.all_other_clans if c.displayname == event_obj.clan]:
+                                event_obj.clan = c[0].group_ID
+                            else:
+                                event_obj.clan = game.clan.all_other_clans[int(event_obj.clan[-1])-1].group_ID
 
                         game.clan.future_events.append(event_obj)
                     except KeyError:
