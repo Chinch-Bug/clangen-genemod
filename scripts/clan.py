@@ -985,7 +985,7 @@ class Clan:
                             event_obj.clan = CatGroup.PLAYER_CLAN_ID
                         elif len(event_obj.clan) > 2:
                             if match := [c for c in game.clan.all_other_clans if c.displayname == event_obj.clan]:
-                                event_obj.clan = c[0].group_ID
+                                event_obj.clan = match[0].group_ID
                             else:
                                 event_obj.clan = game.clan.all_other_clans[int(event_obj.clan[-1])-1].group_ID
 
