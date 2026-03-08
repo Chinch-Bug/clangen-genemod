@@ -8996,7 +8996,7 @@
         "min_max_status": {
             "healer cats": [1, 6],
             "all apprentices": [1, 5],
-            "medicine cat": [1, 5]
+            "healer": [1, 5]
         },
         "frequency": 4,
         "intro_text": "app1 shovels tansy into {PRONOUN/app1/poss} mouth without a care in the world. p_l stops {PRONOUN/app1/object}, and tells {PRONOUN/app1/object} that {PRONOUN/app1/subject} really <i>should</i> have a care.",
@@ -9159,8 +9159,8 @@
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
-            "medicine cat": [1, 5],
-            "medicine cat apprentice": [1, 5],
+            "healer": [1, 5],
+            "healer apprentice": [1, 5],
             "normal adult": [-1, -1],
             "apprentice": [-1, -1]
         },
