@@ -351,7 +351,7 @@
             {
                 "clan": 2,
                 "relationship_status": [
-                    "fancies"
+                    "likes"
                 ]
             },
             {
@@ -372,7 +372,7 @@
             {
                 "cats_from": [ "r_c1", "m_c" ],
                 "cats_to": [ "r_c2" ],
-                "values": [ "like", "trust" ],
+                "values": [ "like", "trust", "romance" ],
                 "amount": -10,
                 "mutual": false,
                 "log": {
@@ -382,7 +382,7 @@
             {
                 "cats_from": [ "r_c2" ],
                 "cats_to": [ "r_c1", "m_c" ],
-                "values": [ "like", "trust", "respect" ],
+                "values": [ "like", "trust", "respect", "romance" ],
                 "amount": -10,
                 "mutual": false,
                 "log": {
@@ -406,7 +406,7 @@
             {
                 "clan": 2,
                 "relationship_status": [
-                    "fancies"
+                    "likes"
                 ]
             },
             {
@@ -427,7 +427,7 @@
             {
                 "cats_from": [ "r_c1", "m_c" ],
                 "cats_to": [ "r_c2" ],
-                "values": [ "like", "comfort", "trust" ],
+                "values": [ "like", "comfort", "trust", "romance" ],
                 "amount": -15,
                 "mutual": false,
                 "log": {
@@ -437,7 +437,7 @@
             {
                 "cats_from": [ "r_c2" ],
                 "cats_to": [ "r_c1", "m_c" ],
-                "values": [ "like", "trust", "respect" ],
+                "values": [ "like", "trust", "respect", "romance" ],
                 "amount": -10,
                 "mutual": false,
                 "log": {
