@@ -715,13 +715,16 @@ class Cat:
                 )
                 return
             
-            instructor = self.status.fetch_clan_object(game.clan).instructor
-            if not instructor:
-                instructor = game.clan.instructor
+            if game.clan:
+                instructor = self.status.fetch_clan_object(game.clan).instructor
+                if not instructor:
+                    instructor = game.clan.instructor
 
-            game.updated_afterlife_cats.add(self)
+                game.updated_afterlife_cats.add(self)
 
-            cat_default_afterlife_id = self.status.get_default_afterlife_id()
+                cat_default_afterlife_id = self.status.get_default_afterlife_id()
+            else:
+                cat_default_afterlife_id = CatGroup.UNKNOWN_RESIDENCE_ID
             if cat_default_afterlife_id == CatGroup.UNKNOWN_RESIDENCE_ID:
                 pass
 
