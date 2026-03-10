@@ -385,6 +385,7 @@ dev_tools = false
   kittypet = [30, 50, 10, 10]
   loner = [5, 15, 50, 30]
   rogue = [3, 7, 35, 55]
+  clancat = [10, 10, 20, 40]
 
   # if changing prefixes is enabled, this is the chance of the prefix changing during ceremonies 
   # (eg. kit-apprentice is during apprentice ceremony)
