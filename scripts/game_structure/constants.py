@@ -178,7 +178,7 @@ def load_clan_config():
     global CONFIG
     from scripts.game_structure.game.switches import Switch, switch_get_value
     reset_config()
-    if os.path.exists(
+    if switch_get_value(Switch.clan_list) and os.path.exists(
         get_save_dir() +
         f"/{switch_get_value(Switch.clan_list)[0]}/game_config.toml"
     ):
