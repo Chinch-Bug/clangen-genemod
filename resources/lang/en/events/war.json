@@ -101,5 +101,10 @@
     "Remembering all the blood that was shed in the war, o_c_n and c_n have decided to finally settle it, once and for all.",
     "After a tense parley at a Gathering, lead_name agrees to end c_n's war with o_c_n.",
     "c_n and o_c_n's medicine cats urge their leaders to find peace, and, grudgingly, they agree. The war has ended."
+  ],
+  "loss_events": [
+    "With their numbers dwindling, o_c_n can no longer afford to continue the war. c_n leaves them to rebuild within a smaller territory than before.",
+    "o_c_n surrenders, not that it surprises c_n when there's no one who can fight anymore.",
+    "c_n offers o_c_n mercy, since they have no choice but to accept defeat."
   ]
 }

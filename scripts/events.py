@@ -31,6 +31,7 @@ from scripts.conditions import (
     get_amount_cat_for_one_medic,
 )
 from scripts.event_class import Single_Event
+from scripts.events_module.event_filters import event_for_other_clan
 
 from scripts.events_module.generate_events import GenerateEvents, generate_events
 from scripts.events_module.outsider_events import OutsiderEvents
@@ -1380,48 +1381,58 @@ def check_war():
         started_war = False
         main_clan = game.clan if clan == game.clan.group_ID else [c for c in game.clan.all_other_clans if c.group_ID == clan][0]
         enemy_clan = None
+        victor = None
         for enemy in game.clan.war[clan]:
             war_events: list = []
             enemy_clan = [c for c in game.clan.all_other_clans if c.group_ID == enemy][0]
+            enemy_can_fight = game.clan.clancount == "singleclan" or event_for_other_clan(Cat, ["any_warrior_mult"], enemy)
             if game.clan.war[clan][enemy]["at_war"]:
-                threshold = 10
-                if enemy_clan.temperament == "bloodthirsty":
-                    threshold = 12
-                if enemy_clan.temperament in ["mellow", "amiable", "gracious"]:
-                    threshold = 7
-
-                threshold -= int(game.clan.war[clan][enemy]["duration"])
-                rel_value = game.clan.get_relations(main_clan, enemy_clan)
-                if rel_value < 0:
-                    rel_value = 0
-
-                # check if war should conclude, if not, continue
-                if rel_value >= threshold and game.clan.war[clan][enemy]["duration"] > 1:
+                if not event_for_other_clan(Cat, ["any_warrior_mult"], clan) or not enemy_can_fight:
                     game.clan.war[clan][enemy]["at_war"] = False
                     game.clan.war[clan][enemy]["duration"] = 0
-                    rel_value += 2
-                    war_events = WAR_TXT["conclusion_events"]
-                else:  # try to influence the relation with warring clan
-                    game.clan.war[clan][enemy]["duration"] += 1
-                    choice = random.choice(
-                        ["rel_up", "neutral", "rel_down", "rel_down", "rel_down"])
-                    current_rels = switch_get_value(Switch.war_rel_change_type)
-                    if not current_rels.get(clan):
-                        current_rels[clan] = {}
-                    current_rels[clan][enemy] = choice
-                    switch_set_value(Switch.war_rel_change_type, current_rels)
-                    war_events = WAR_TXT["progress_events"][choice]
+                    war_events = WAR_TXT["loss_events"]
+                    victor = clan if not enemy_can_fight else enemy
+                else:
+                    threshold = 10
+                    if enemy_clan.temperament == "bloodthirsty":
+                        threshold = 12
+                    if enemy_clan.temperament in ["mellow", "amiable", "gracious"]:
+                        threshold = 7
+
+                    threshold -= int(game.clan.war[clan][enemy]["duration"])
+                    rel_value = game.clan.get_relations(main_clan, enemy_clan)
                     if rel_value < 0:
                         rel_value = 0
-                    if choice == "rel_up":
-                        rel_value += 2
-                    elif choice == "rel_down" and rel_value > 1:
-                        rel_value -= 1
 
-                game.clan.set_relations(main_clan, enemy_clan, rel_value)
+                    # check if war should conclude, if not, continue
+                    if rel_value >= threshold and game.clan.war[clan][enemy]["duration"] > 1:
+                        game.clan.war[clan][enemy]["at_war"] = False
+                        game.clan.war[clan][enemy]["duration"] = 0
+                        rel_value += 2
+                        war_events = WAR_TXT["conclusion_events"]
+                    else:  # try to influence the relation with warring clan
+                        game.clan.war[clan][enemy]["duration"] += 1
+                        choice = random.choice(
+                            ["rel_up", "neutral", "rel_down", "rel_down", "rel_down"])
+                        current_rels = switch_get_value(Switch.war_rel_change_type)
+                        if not current_rels.get(clan):
+                            current_rels[clan] = {}
+                        current_rels[clan][enemy] = choice
+                        switch_set_value(Switch.war_rel_change_type, current_rels)
+                        war_events = WAR_TXT["progress_events"][choice]
+                        if rel_value < 0:
+                            rel_value = 0
+                        if choice == "rel_up":
+                            rel_value += 2
+                        elif choice == "rel_down" and rel_value > 1:
+                            rel_value -= 1
+
+                    game.clan.set_relations(main_clan, enemy_clan, rel_value)
 
             else:  # try to start a war if no war in progress
                 if started_war:
+                    continue
+                if not event_for_other_clan(Cat, ["any_warrior_mult"], clan) or not enemy_can_fight:
                     continue
                 active_wars = max(len(game.clan.get_wars(clan)), len(game.clan.get_wars(enemy)))
                 if active_wars and random.random() > 0.125:
@@ -1467,9 +1478,14 @@ def check_war():
 
             # grab our war "notice" for this moon
             event = random.choice(war_events)
-            event = ongoing_event_text_adjust(
-                Cat, event, other_clan_name=f"{enemy_clan.displayname}Clan", clan=main_clan
-            )
+            if not victor or victor == clan:
+                event = ongoing_event_text_adjust(
+                    Cat, event, other_clan_name=f"{enemy_clan.displayname}Clan", clan=main_clan
+                )
+            else:
+                event = ongoing_event_text_adjust(
+                    Cat, event, other_clan_name=f"{main_clan.displayname}Clan", clan=enemy_clan
+                )
             game.cur_events_list.append(Single_Event(event, "other_clans", clan=clan))
             if game.clan.clancount == "multiclan":
                 game.cur_events_list.append(Single_Event(event, "other_clans", clan=enemy))

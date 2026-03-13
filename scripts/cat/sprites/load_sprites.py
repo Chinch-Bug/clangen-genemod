@@ -413,7 +413,6 @@ class Sprites:
             "fadedarkforest",
             "fadeunknownresidence",
             "symbols",
-            "heterochromiamask",
         ]
 
         # separate from data_json list bc we need to handle it differently later
