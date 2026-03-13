@@ -446,7 +446,7 @@ class Clan:
             "temperament": self.temperament,
             "relations": self.relations,
             "just_died": game.just_died,
-            "dead_cats_to_grieve": [x.ID for x in game.dead_cats_to_grieve],
+            "dead_cats_to_grieve": [x.ID for x in game.dead_cats_to_grieve if x],
             "grief_to_assign": game.clan.grief_strings,
             "version_name": SAVE_VERSION_NUMBER,
             "version_commit": get_version_info().version_number,
@@ -1003,7 +1003,8 @@ class Clan:
         save_list = []
 
         for event in game.clan.future_events:
-            save_list.append(event.to_dict())
+            if e := event.to_dict():
+                save_list.append(e)
 
         safe_save(f"{get_save_dir()}/{game.clan.name}/future_events.json", save_list)
 

@@ -311,6 +311,7 @@ def rebuild_moon_n_season_indicator(change_moon: bool = False, visible: bool = F
 
     if "season_indicator" in menu_buttons:
         menu_buttons["season_indicator"].kill()
+        menu_buttons["secret_season_indicator"].kill()
 
     if "moon_indicator" not in menu_buttons:
         global chosen_moon_phase
@@ -350,11 +351,24 @@ def rebuild_moon_n_season_indicator(change_moon: bool = False, visible: bool = F
         ),
         visible=visible,
         manager=MANAGER,
-        starting_height=5,
+        starting_height=5
+    )
+    menu_buttons["secret_season_indicator"] = UIModifiedImage(
+        ui_scale(pygame.Rect((404, 3), (144, 67))),
+        pygame.transform.scale(
+            pygame.image.load(f"resources/images/season_{season}.png").convert_alpha(),
+            (144, 67),
+        ),
+        visible=visible,
+        manager=MANAGER,
+        starting_height=5
     )
     menu_buttons["season_indicator"].disable()
+    menu_buttons["secret_season_indicator"].set_tooltip(i18n.t(f"general.{game.clan.current_season.lower() if game.clan else ""}"))
+    menu_buttons["secret_season_indicator"].tool_tip_delay = 0
 
     menu_buttons["season_indicator"].change_layer(10)
+    menu_buttons["secret_season_indicator"].change_layer(0)
 
 
 def load_moon_phases():

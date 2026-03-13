@@ -15,9 +15,9 @@ class Breed_generator:
 
         # EUMELANIN
 
-            if genoclass.odds["cinnamon"] > 0 and (randint(1, round(genoclass.odds["cinnamon"]/2)) == 1 or genoclass.odds["cinnamon"] == 1):
+            if genoclass.odds["cinnamon"] > 1 and randint(1, round(genoclass.odds["cinnamon"]/2)) == 1 or genoclass.odds["cinnamon"] == 1:
                 genoclass.eumelanin[i] = "bl"
-            elif genoclass.odds["chocolate"] > 0 and (randint(1, round(genoclass.odds["chocolate"]/2)) == 1 or genoclass.odds["chocolate"] == 1):
+            elif genoclass.odds["chocolate"] > 1 and randint(1, round(genoclass.odds["chocolate"]/2)) == 1 or genoclass.odds["chocolate"] == 1:
                 genoclass.eumelanin[i] = "b"
             else:
                 genoclass.eumelanin[i] = "B"
@@ -62,9 +62,9 @@ class Breed_generator:
 
         # ALBINO
 
-            if genoclass.odds["sepia"] > 0 and (randint(1, round(genoclass.odds["sepia"]/2)) == 1 or genoclass.odds["sepia"] == 1):
+            if genoclass.odds["sepia"] > 1 and randint(1, round(genoclass.odds["sepia"]/2)) == 1 or genoclass.odds["sepia"] == 1:
                 genoclass.pointgene[i] = "cb"
-            elif genoclass.odds["colourpoint"] > 0 and (randint(1, round(genoclass.odds["colourpoint"]/2)) == 1 or genoclass.odds["colourpoint"] == 1):
+            elif genoclass.odds["colourpoint"] > 1 and randint(1, round(genoclass.odds["colourpoint"]/2)) == 1 or genoclass.odds["colourpoint"] == 1:
                 genoclass.pointgene[i] = "cs"
             else:
                 genoclass.pointgene[i] = "C"

@@ -177,7 +177,8 @@ def save_events():
     """
     events_list = []
     for event in cur_events_list:
-        events_list.append(event.to_dict())
+        if e := event.to_dict():
+            events_list.append(e)
     safe_save(f"{get_save_dir()}/{clan.name}/events.json", events_list)
 
 

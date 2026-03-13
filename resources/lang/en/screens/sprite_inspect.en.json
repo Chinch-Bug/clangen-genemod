@@ -2,6 +2,7 @@
     "en": {
         "save_image": "Save as Image",
         "export_cat": "Export Cat JSON",
+        "cycle_seasons": "Switch Season",
         "show_platform": "Show Platform",
         "show_scars": "Show Scar(s)",
         "show_accessory": "Show Accessory",

@@ -51,6 +51,8 @@ class Single_Event:
         cat_dict = self.cat_dict.copy() if self.cat_dict else {}
         if self.cat_dict:
             for abbr, kitty in self.cat_dict.items():
+                if not kitty:
+                    return {}
                 cat_dict[abbr] = kitty.ID
 
         if self.clan:

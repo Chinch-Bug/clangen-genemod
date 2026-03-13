@@ -413,6 +413,7 @@ class Sprites:
             "fadedarkforest",
             "fadeunknownresidence",
             "symbols",
+            "heterochromiamask",
         ]
 
         # separate from data_json list bc we need to handle it differently later
@@ -430,7 +431,6 @@ class Sprites:
         # Line art
         for sheet in self.POSE_DATA["spritesheet"]:
             self.make_group(sheet, (0, 0), sheet)
-
 
 
         # Fading Fog
