@@ -320,7 +320,7 @@ class Pregnancy_Events:
                 if surrogate:
                     surrogates.append(other_cat[0].ID)
                 for x in other_cat:
-                    if x.ID not in cat.mate:
+                    if cat.mate and x.ID not in cat.mate:
                         affair_partner.append(x.ID) 
                     else:
                         ids.append(x.ID)
@@ -505,7 +505,7 @@ class Pregnancy_Events:
                 if surrogate:
                     surrogates.append(second_parent[0].ID)
                 for x in second_parent:
-                    if x.ID not in pregnant_cat.mate:
+                    if pregnant_cat.mate and x.ID not in pregnant_cat.mate:
                         affair_partner.append(x.ID) 
                     else:
                         ids.append(x.ID)
