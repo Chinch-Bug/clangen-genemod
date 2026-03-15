@@ -1037,7 +1037,7 @@ class Pregnancy_Events:
         else:
             second_parent_copy = []
             for x in second_parent:
-                if Pregnancy_Events.check_if_can_have_kits(x, single_parentage, allow_affair) or x == None:
+                if Pregnancy_Events.check_if_can_have_kits(x, single_parentage, allow_unmated, allow_affair) or x == None:
                     second_parent_copy.append(x)
             
             second_parent = second_parent_copy
@@ -1223,7 +1223,7 @@ class Pregnancy_Events:
             cand_cat = Cat.all_cats.get(cand_cat)
             if (not cand_cat.dead and not cand_cat.status.is_lost() and not cand_cat.status.is_exiled(clan.group_ID) and
             not cand_cat in all_cats and "sterile" not in cand_cat.permanent_condition 
-            and Pregnancy_Events.check_if_can_have_kits(cand_cat, True, True)
+            and Pregnancy_Events.check_if_can_have_kits(cand_cat, True, True, True)
             and (get_clan_setting('same sex birth') or xor(cat_is_amab(cand_cat), cat_is_amab(cat)))):
                 all_candidates.append(cand_cat)
 
@@ -1310,7 +1310,7 @@ class Pregnancy_Events:
 
         possible_affair_partners = [i for i in unknowns if
                                 i.is_potential_mate(cat, for_love_interest=True, outsider=True)
-                                and Pregnancy_Events.check_if_can_have_kits(i, True, True)
+                                and Pregnancy_Events.check_if_can_have_kits(i, True, True, True)
                                 and 'sterile' not in i.permanent_condition
                                 and (get_clan_setting('same sex birth') or cat_is_amab(i) != cat_is_amab(cat))
                                     and len(i.mate) == 0 and not i.birth_cooldown
@@ -1389,6 +1389,7 @@ class Pregnancy_Events:
 
         return [outside_parent, backkit]
 
+    @staticmethod
     def determine_highest_romantic_relation(cat, mate, mate_relation, samesex):
         """
         Function to handle everything around love affairs.
