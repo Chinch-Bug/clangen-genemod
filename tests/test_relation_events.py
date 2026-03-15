@@ -127,7 +127,7 @@ class Pregnancy(unittest.TestCase):
 
         # then
         self.assertIn(cat1.ID, clan.pregnancy_data.keys())
-        self.assertEqual(clan.pregnancy_data[cat1.ID]["second_parent"]+clan.pregnancy_data[cat1.ID]["affair_partner"], [cat2[0].ID])
+        self.assertEqual(clan.pregnancy_data[cat1.ID]["second_parent"]+(clan.pregnancy_data[cat1.ID]["affair_partner"] or []), [cat2[0].ID])
 
 
 class Mates(unittest.TestCase):
