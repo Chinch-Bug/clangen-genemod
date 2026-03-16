@@ -701,7 +701,7 @@ class Clan:
                     clan_data["other_clans_relations"].split(","),
                     clan_data["other_clan_temperament"].split(","),
                 ):
-                    OtherClan(name, temperament=temper)
+                    OtherClan(name, temperament=temper, ID=ID)
                     game.clan.relations[CatGroup.PLAYER_CLAN_ID][ID] = int(relation)
             else:
                 for name, relation, temper, symbol in zip(
@@ -710,7 +710,7 @@ class Clan:
                     clan_data["other_clan_temperament"].split(","),
                     clan_data["other_clan_chosen_symbol"].split(","),
                 ):
-                    OtherClan(name, temperament=temper, chosen_symbol=symbol)
+                    OtherClan(name, temperament=temper, chosen_symbol=symbol, ID=ID)
                     game.clan.relations[CatGroup.PLAYER_CLAN_ID][ID] = int(relation)
         if game.clan.clancount == "multiclan":
             if "relations" not in clan_data or not clan_data["relations"].get(game.clan.group_ID) or len(clan_data["relations"]) < len(game.clan.all_other_clans):
