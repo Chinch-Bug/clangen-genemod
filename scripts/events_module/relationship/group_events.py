@@ -140,6 +140,7 @@ class GroupEvents:
         relevant_event_tabs = ["relation", "interaction"]
         if chosen_interaction.get_injuries:
             relevant_event_tabs.append("health")
+            relevant_event_tabs.remove("interaction")
 
         clan = cat.status.fetch_clan_object(game.clan)
         game.cur_events_list.append(

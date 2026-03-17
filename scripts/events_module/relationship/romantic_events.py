@@ -277,6 +277,7 @@ class RomanticEvents:
         relevant_event_tabs = ["relation", "interaction"]
         if len(chosen_interaction.get_injuries) > 0:
             relevant_event_tabs.append("health")
+            relevant_event_tabs.remove("interaction")
         clan = cat_from.status.fetch_clan_object(game.clan) if cat_from.status.get_last_living_group() else cat_to.status.fetch_clan_object(game.clan)
         game.cur_events_list.append(
             Single_Event(
