@@ -9685,7 +9685,7 @@
                 -1,
                 -1
             ],
-            "medicine cat": [
+            "healer": [
                 1,
                 6
             ],
@@ -9905,8 +9905,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -10047,7 +10047,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "medicine cat": [1, 5],
+            "healer": [1, 5],
             "healer cats": [1, 5],
             "normal adult": [1, 5]
         },
@@ -10260,8 +10260,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -10384,7 +10384,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "medicine cat": [1, 4],
+            "healer": [1, 4],
             "healer cats": [1, 4],
             "normal adult": [2, 5]
         },
@@ -10569,8 +10569,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -10712,7 +10712,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "medicine cat": [1, 5],
+            "healer": [1, 5],
             "healer cats": [1, 5],
             "normal adult": [1, 5]
         },
@@ -10958,8 +10958,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -11099,7 +11099,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "medicine cat": [1, 4],
+            "healer": [1, 4],
             "healer cats": [1, 4],
             "normal adult": [2, 5]
         },
@@ -11316,8 +11316,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -11665,8 +11665,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -11808,7 +11808,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "medicine cat": [1, 4],
+            "healer": [1, 4],
             "healer cats": [1, 4],
             "normal adult": [2, 5]
         },
@@ -12047,8 +12047,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -12425,8 +12425,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -12772,8 +12772,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -13157,8 +13157,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -13619,8 +13619,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -13966,8 +13966,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -14275,8 +14275,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -14623,8 +14623,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -14910,8 +14910,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -15219,8 +15219,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
 },
         "frequency": 4,
         "intro_text": "The ragwort plants start to dramatically give up on life as leaf-fall progresses, and p_l takes the opportunity to go harvest from them, bringing along app1 for an herb-craft lesson.",
@@ -15587,7 +15587,7 @@
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
-            "medicine cat apprentice": [
+            "healer apprentice": [
                 1, 1
             ]
         },
@@ -15728,8 +15728,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
 },
         "frequency": 4,
         "intro_text": "As the tansy plants fight on though leaf-fall to fit in as much life as possible before leaf-bare, p_l goes out to harvest them with app1, bringing the apprentice for an important herb-craft lesson.",
@@ -16054,8 +16054,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
 },
         "frequency": 4,
         "intro_text": "The thyme plants are running out of growing time - p_l better take app1 to harvest them before leaf-fall is over.",
@@ -16402,8 +16402,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
 },
         "frequency": 4,
         "intro_text": "In the crisp cool air of a leaf-fall morning, it should be easy to find wild garlic by scent. p_l brings along app1, to see if {PRONOUN/app1/subject} can do it.",
