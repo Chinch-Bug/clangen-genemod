@@ -2457,7 +2457,7 @@ def handle_murder(cat, clan):
         return
 
     # will this cat actually murder? this takes into account stability and lawfulness
-    murder_capable = 7
+    murder_capable = 8
     if cat.personality.stability < 6:
         murder_capable -= 3
     if cat.personality.lawfulness < 6:
@@ -2476,7 +2476,7 @@ def handle_murder(cat, clan):
     targets = [
         i
         for i in relationships
-        if (i.has_mid_negative or i.has_mid_negative)
+        if (i.has_mid_negative or i.has_extreme_negative)
         and Cat.fetch_cat(i.cat_to).status.group.is_any_clan_group()
     ]
     # sort by total relationship, this way we know who has the worst relationship

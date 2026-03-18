@@ -245,19 +245,19 @@ class Cat:
             self.phenotype.fromJSON(genotype)
         elif parent1 or parent2:
             if not parent1:
-                self.phenotype.KitGenerator(Cat.all_cats[parent2], extrapar)
+                self.phenotype.KitGenerator(Cat.all_cats[parent2], extrapar, gender=self.gender)
                 if chimera:
-                    self.chimerapheno.KitGenerator(Cat.all_cats[parent2], extrapar, chimera=True)
+                    self.chimerapheno.KitGenerator(Cat.all_cats[parent2], extrapar, chimera=True, gender=self.gender)
             else:
                 try:    
-                    self.phenotype.KitGenerator(Cat.all_cats[parent1], Cat.all_cats.get(parent2, extrapar), extrapar)
+                    self.phenotype.KitGenerator(Cat.all_cats[parent1], Cat.all_cats.get(parent2, extrapar), extrapar, gender=self.gender)
                     if chimera:
-                        threepars = self.chimerapheno.KitGenerator(Cat.all_cats[parent1], Cat.all_cats.get(parent2, extrapar), extrapar, chimera=True)
+                        threepars = self.chimerapheno.KitGenerator(Cat.all_cats[parent1], Cat.all_cats.get(parent2, extrapar), extrapar, chimera=True, gender=self.gender)
                         if threepars and isinstance(extrapar, Cat):
                             self.parent3 = extrapar.ID
                 except Exception as e:
                     print(traceback.format_exception(e))
-                    self.phenotype.Generator(kittypet=kittypet)
+                    self.phenotype.Generator(kittypet=kittypet, special=self.gender)
         else:
             if not chimera:
                 if (kittypet or self.status.social == CatSocial.KITTYPET) and constants.CONFIG["cat_generation"]["kittypet_gene_boost"]:

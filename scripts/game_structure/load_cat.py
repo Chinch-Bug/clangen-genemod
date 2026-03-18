@@ -59,7 +59,7 @@ def accurate_porting(cat, info):
             "2": [],
             "3": [],
             "4": [],
-            "5": ["BLACKSTAR", "LOVEBUG"]
+            "5": ["BLACKSTAR", "LOVEBUG", "FULLWHITE"]
         }
     }
     cat.phenotype.lykoi = ["Ly", "Ly"]
