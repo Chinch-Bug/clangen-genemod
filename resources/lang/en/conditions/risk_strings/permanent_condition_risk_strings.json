@@ -243,6 +243,10 @@
         ]
     },
     "fully hairless": {
+        "heat exhaustion": [
+            "m_c spent too long out in the sun, {PRONOUN/m_c/subject}{VERB/m_c/'ve/'s} gotten heat exhaustion.",
+            "m_c spent too long out in the sun, {PRONOUN/m_c/subject}{VERB/m_c/'ve/'s} gotten heat exhaustion."
+        ],
         "body sunburn": [
             "m_c's skin is warm and red, aching from the new sunburn.",
             "m_c's skin is warm and red, aching from the new sunburn."
@@ -265,6 +269,10 @@
         ]
     },
     "partially hairless": {
+        "heat exhaustion": [
+            "m_c spent too long out in the sun, {PRONOUN/m_c/subject}{VERB/m_c/'ve/'s} gotten heat exhaustion.",
+            "m_c spent too long out in the sun, {PRONOUN/m_c/subject}{VERB/m_c/'ve/'s} gotten heat exhaustion."
+        ],
         "body sunburn": [
             "m_c's skin is warm and red, aching from the new sunburn.",
             "m_c's skin is warm and red, aching from the new sunburn."
@@ -316,6 +324,10 @@
         "fatigue": [
             "It doesn't take much exercise to have m_c craving a break, struggling to catch {PRONOUN/m_c/poss} breath. {PRONOUN/m_c/subject/CAP} {VERB/m_c/ask/asks} r_c for a second opinion.",
             "All it takes is a little strain or stress to leave m_c feeling as heavy as stone."
+        ],
+        "heat exhaustion": [
+            "m_c spent too long out in the heat, {PRONOUN/m_c/subject}{VERB/m_c/'ve/'s} gotten heat exhaustion.",
+            "m_c spent too long out in the heat, {PRONOUN/m_c/subject}{VERB/m_c/'ve/'s} gotten heat exhaustion."
         ],
         "exhaustion": [
             "m_c has been hard at work, and it's done {PRONOUN/m_c/object} no favours. r_c steps in with an order to rest for a while instead, lest the exhaustion get dangerous.",

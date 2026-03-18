@@ -1,0 +1,15 @@
+{
+    "Newleaf": {
+        "allergies": ["running nose"]
+    },
+    "Greenleaf": {
+        "flat nose": [ "heat exhaustion" ],
+        "fully hairless": [ "body sunburn", "heat exhaustion" ],
+        "partially hairless": [ "body sunburn", "heat exhaustion" ]
+    },
+    "Leaf-fall": {},
+    "Leaf-bare": {
+        "fully hairless": [ "frostbite", "shivering" ],
+        "partially hairless": [ "frostbite", "shivering" ]
+    }
+}

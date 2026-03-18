@@ -6956,7 +6956,7 @@
         "sub_type": [
             "war"
         ],
-        "frequency": 4,
+        "frequency": 3,
         "event_text": "Having heard that o_c_n was running low on vital emergency herbs, m_c gathers up some excess stock and makes the trek. However, with a mouth full of leaves, m_c takes a claw to the face before {PRONOUN/m_c/subject} can explain {PRONOUN/m_c/poss} intentions.",
         "m_c": {
             "status": [
@@ -7037,7 +7037,7 @@
         "sub_type": [
             "war"
         ],
-        "frequency": 4,
+        "frequency": 1,
         "event_text": "Despite the Clan's alarmingly low stock of herbs, m_c brings what scant amount they have to o_c_n, having heard of their crisis. However, with a full mouth, m_c takes a claw to the face before {PRONOUN/m_c/subject} can explain {PRONOUN/m_c/poss} intentions.",
         "m_c": {
             "status": [
