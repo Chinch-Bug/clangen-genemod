@@ -57,7 +57,7 @@ class Status:
         for entry in self.group_history:
             self._convert_old_group_saves(entry)
             # converting strs to enums
-            entry["rank"] = CatRank(entry["rank"])
+            entry["rank"] = CatRank(entry["rank"].replace("medicine cat", "healer"))
 
         for entry in self.standing_history:
             self._convert_old_group_saves(entry)

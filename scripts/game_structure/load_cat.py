@@ -100,6 +100,7 @@ def accurate_porting(cat, info):
         cat.phenotype.longtype = info["pelt_length"]
     
     cat.pelt.length = info["pelt_length"]
+    cat.phenotype.pointgene[0] = "C"
     cat.phenotype.white = ["w", "w"]
     cat.phenotype.white_pattern = []
 
@@ -241,19 +242,20 @@ def accurate_porting(cat, info):
             cat.phenotype.extraeye = "sectoral1"
         cat.phenotype.extraeyetype = f"R{choice(range(1, 4))} ; P{choice(range(1, 3))}"
 
-    red_bases = ["CREAM", "DARKGINGER", "GINGER", "PALEGINGER"]
+    red_bases = ["CREAM", "DARKGINGER", "GINGER", "PALEGINGER", "GOLDEN"]
     tabby_bases = ["CREAM", "DARKGINGER", "GINGER", "PALEGINGER", "GOLDEN", "WHITE"]
     cat.chimerapheno = None
     main_colour = {"pattern": info["pelt_name"].lower(), "colour": info["pelt_color"]}
     patch_colour = {"pattern": "", "colour": ""}
+    is_tortie = False
 
-    if info["pelt_name"] in ["Tortie", "Calico"]:
-        if xor(info["pelt_color"] in red_bases, info["tortie_color"] in red_bases) or (info["tortie_pattern"] != info["tortie_base"] and (info["pelt_color"] not in tabby_bases and info["tortie_base"] not in ["single", "smoke"]) and (info["tortie_color"] not in tabby_bases and info["tortie_pattern"] not in ["single", "smoke"])):
+    if info["pelt_name"].lower() in ["tortie", "calico"]:
+        if not xor(info["pelt_color"] in red_bases, info["tortie_color"] in red_bases) or (info["tortie_pattern"] != info["tortie_base"] and 
+        (info["pelt_color"] not in tabby_bases and info["tortie_base"] not in ["single", "smoke"]) and (info["tortie_color"] not in tabby_bases and info["tortie_pattern"] not in ["single", "smoke"])):
             cat.chimerapheno = deepcopy(cat.phenotype)
-            cat.chimerapheno.chimerapattern = [info["pattern"]]
+            cat.chimerapheno.chimerapattern = [info["tortie_marking"]]
             main_colour = {"pattern": info["tortie_base"], "colour": info["pelt_color"]}
-            patch_colour = {
-                "pattern": info["tortie_pattern"], "colour": info["tortie_color"]}
+            patch_colour = {"pattern": info["tortie_pattern"], "colour": info["tortie_color"]}
         else:
             if info["tortie_color"] in red_bases:
                 main_colour = {
@@ -265,10 +267,7 @@ def accurate_porting(cat, info):
                     "pattern": info["tortie_base"], "colour": info["pelt_color"]}
                 main_colour = {
                     "pattern": info["tortie_pattern"], "colour": info["tortie_color"]}
-            cat.phenotype.sexgene = ["O", "o"]
-            if cat.phenotype.sex == "tom":
-                cat.phenotype.sexgene.append("Y")
-                cat.get_permanent_condition('sterile', born_with=True, genetic=True)
+            is_tortie = True
     
     cat.phenotype.agouti[0] = "A"
 
@@ -276,7 +275,7 @@ def accurate_porting(cat, info):
         cat.phenotype.bengal = "2222"
     if main_colour["pattern"] in ["bengal", "masked", "marbled"] or (not cat.chimerapheno and patch_colour["pattern"] in ["bengal", "masked", "marbled"]):
         cat.phenotype.agouti = ["Apb", "a"]
-    if (main_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"] and main_colour["colour"] not in tabby_bases) or (main_colour["colour"] == "GHOST"):
+    elif (main_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"] and main_colour["colour"] not in tabby_bases) or (main_colour["colour"] == "GHOST"):
         cat.phenotype.agouti = ["a", "a"]
 
     if main_colour["pattern"] in ["ticked", "agouti", "singlestripe"] or (not cat.chimerapheno and patch_colour["pattern"] in ["ticked", "agouti", "singlestripe"]):
@@ -340,22 +339,28 @@ def accurate_porting(cat, info):
         else:
             cat.chimerapheno.dilute[0] = "D"
 
-    if main_colour["colour"] in ["LIGHTBROWN", "SIENNA", "GOLDEN-BROWN"]:
+    if main_colour["colour"] in ["LIGHTBROWN", "GOLDEN-BROWN"]:
         cat.phenotype.eumelanin = ["bl", "bl"]
-    elif main_colour["colour"] in ["WHITE", "PALEGREY", "LILAC", "BROWN", "CHOCOLATE"]:
+    elif main_colour["colour"] in ["WHITE", "PALEGREY", "LILAC", "BROWN", "CHOCOLATE", "SIENNA"]:
         cat.phenotype.eumelanin = ["b", "b"]
     else:
         cat.phenotype.eumelanin[0] = "B"
 
     if cat.chimerapheno:
-        if patch_colour["colour"] in ["LIGHTBROWN", "SIENNA", "GOLDEN-BROWN"]:
+        if patch_colour["colour"] in ["LIGHTBROWN", "GOLDEN-BROWN"]:
             cat.chimerapheno.eumelanin = ["bl", "bl"]
-        elif patch_colour["colour"] in ["WHITE", "PALEGREY", "LILAC", "BROWN", "CHOCOLATE"]:
+        elif patch_colour["colour"] in ["WHITE", "PALEGREY", "LILAC", "BROWN", "CHOCOLATE", "SIENNA"]:
             cat.chimerapheno.eumelanin = ["b", "b"]
         else:
             cat.chimerapheno.eumelanin[0] = "B"
     
-    if main_colour["colour"] in red_bases:
+    if is_tortie:
+        cat.phenotype.sexgene = ["O", "o"]
+        if cat.phenotype.sex == "tom":
+            cat.phenotype.sexgene.append("Y")
+            cat.get_permanent_condition('sterile', born_with=True, genetic=True)
+        cat.phenotype.tortiepattern = [info["tortie_marking"]]
+    elif main_colour["colour"] in red_bases:
         cat.phenotype.sexgene[0] = "O"
         if cat.phenotype.sexgene[1] == "o":
             cat.phenotype.sexgene[1] = "O"
@@ -370,11 +375,11 @@ def accurate_porting(cat, info):
             if cat.chimerapheno.sexgene[1] == "o":
                 cat.chimerapheno.sexgene[1] = "O"
         elif main_colour["colour"] not in red_bases:
-            cat.phenotype.sexgene[0] = "o"
-            if cat.phenotype.sexgene[1] == "O":
-                cat.phenotype.sexgene[1] = "o"
+            cat.chimerapheno.sexgene[0] = "o"
+            if cat.chimerapheno.sexgene[1] == "O":
+                cat.chimerapheno.sexgene[1] = "o"
     
-    if main_colour["colour"] in ["WHITE", "SILVER", "GHOST"]:
+    if main_colour["colour"] in ["WHITE", "SILVER", "GHOST"] and cat.phenotype.agouti != ["Apb", "a"]:
         cat.phenotype.silver[0] = "I"
     else:
         cat.phenotype.silver = ["i", "i"]
@@ -431,8 +436,8 @@ def accurate_porting(cat, info):
         cat.phenotype.wideband = "00000000"
     if main_colour["colour"] in ["LILAC", "GREY"] or (main_colour["colour"] in ["SIENNA"] and main_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"]):
         cat.phenotype.saturation = choice(range(0, 5))
-    elif main_colour["colour"] in ["DARKGREY", "PALEGREY", "DARKBROWN"]:
-        cat.phenotype.saturation = choice(range(4, 7))
+    elif main_colour["colour"] in ["DARKGREY", "PALEGREY", "DARKBROWN", "GHOST"]:
+        cat.phenotype.saturation = choice(range(5, 7))
     else:
         cat.phenotype.saturation = choice(range(2, 5))
 
@@ -444,7 +449,7 @@ def accurate_porting(cat, info):
             cat.chimerapheno.wideband = "00000000"
         if patch_colour["colour"] in ["LILAC", "GREY"] or (main_colour["colour"] in ["SIENNA"] and main_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"]):
             cat.chimerapheno.saturation = choice(range(0, 5))
-        if patch_colour["colour"] in ["DARKGREY", "PALEGREY", "DARKBROWN"]:
+        if patch_colour["colour"] in ["DARKGREY", "PALEGREY", "DARKBROWN", "GHOST"]:
             cat.chimerapheno.saturation = choice(range(4, 7))
         else:
             cat.chimerapheno.saturation = choice(range(2, 5))
