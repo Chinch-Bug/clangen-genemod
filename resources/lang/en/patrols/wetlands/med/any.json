@@ -257,10 +257,13 @@
                         ],
                         "mutual": false,
                         "values": [
-                            "like",
+                            "trust",
                             "respect"
                         ],
-                        "amount": 5
+                        "amount": 5,
+                        "log": {
+                            "cats_from": "from_cat and to_cat felt more confident in each other after gathering herbs together."
+                        }
                     }
                 ],
                 "frequency": 4
@@ -284,7 +287,10 @@
                             "like",
                             "respect"
                         ],
-                        "amount": 5
+                        "amount": 5,
+                        "log": {
+                            "cats_from": "from_cat and to_cat enjoyed a friendly competition while gathering herbs."
+                        }
                     }
                 ],
                 "frequency": 1
@@ -307,7 +313,10 @@
                             "like",
                             "respect"
                         ],
-                        "amount": -5
+                        "amount": -5,
+                        "log": {
+                            "cats_from": "from_cat and to_cat were short with each other after failing to gathering any herbs."
+                        }
                     }
                 ],
                 "frequency": 4
@@ -328,7 +337,10 @@
                             "like",
                             "respect"
                         ],
-                        "amount": -5
+                        "amount": -10,
+                        "log": {
+                            "cats_from": "p_l blamed r_c for a failed herb-gathering patrol and the two got into a huge argument."
+                        }
                     }
                 ],
                 "frequency": 4
