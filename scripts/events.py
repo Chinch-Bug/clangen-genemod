@@ -1728,7 +1728,8 @@ def _is_suitable_medcat_app(cat, clan) -> bool:
     # check if the Clan has sufficient med cats
     enough_working_meds = medicine_cats_can_cover_clan(
         Cat.all_cats.values(),
-        amount_per_med=get_amount_cat_for_one_medic(clan),
+        amount_per_med=get_amount_cat_for_one_medic(), 
+        clan=clan.group_ID
     )
 
     if (
