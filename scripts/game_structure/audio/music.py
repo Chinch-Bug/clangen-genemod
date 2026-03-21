@@ -209,7 +209,7 @@ class Music:
             delay = randint(30, 300)
         if self.channel and self.channel.get_busy():
             self.channel.fadeout(fadeout)
-            self._start_silence_timer(max(fadeout, delay))
+            self._start_silence_timer(max(fadeout / 100, delay))
             self.music_timer.cancel()
 
     def change_volume(self, new_volume: int):

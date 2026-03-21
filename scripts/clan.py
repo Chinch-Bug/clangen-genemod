@@ -786,6 +786,7 @@ class Clan:
         if "just_died" in clan_data:
             game.just_died = clan_data["just_died"]
 
+        game.dead_cats_to_grieve.clear()
         # Cats who need to be grieved
         if "dead_cats_to_grieve" in clan_data:
             game.dead_cats_to_grieve = [

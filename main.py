@@ -49,12 +49,13 @@ def load_data():
 
     # load audio
     try:
-        game.audio = AudioManager()
-        pygame.mixer.pre_init(buffer=44100)
-        pygame.mixer.init()
+        if not getattr(game, "audio", None):
+            game.audio = AudioManager()
+            pygame.mixer.pre_init(buffer=44100)
+            pygame.mixer.init()
 
-        # loading sounds here bc they depend on mixer being initialized
-        game.audio.sound.load_sounds()
+            # loading sounds here bc they depend on mixer being initialized
+            game.audio.sound.load_sounds()
     except pygame.error:
         print("Failed to initialize audio. Audio will be disabled.")
         game.audio.disabled = True

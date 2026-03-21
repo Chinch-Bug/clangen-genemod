@@ -50,7 +50,6 @@ Within the game, all cats take a new thought each timeskip. However, there are a
     "id": "",
     "biome": [],
     "season": [],
-    "camp": [],
     "thoughts": [],
     "has_injuries": {
         "m_c": [],
@@ -106,12 +105,6 @@ Constrains the thought to only occur if a player chooses a specific biome.
 ### season: list[str]
 Constrains the thought to only occur once the Clan is in a specific season.
 > "Newleaf", "Greenleaf", "Leaf-fall", "Leaf-bare",
-
-***
-
-### camp: list[str]
-Constrains the thought to only occur if a specific camp type is chosen (IE “camp4”, which is the lake camp in the forest). Furthermore, you can check the image file names of the camps to find the which number they are.
-> "camp1", "camp2", "camp3","camp4",
 
 ***
 

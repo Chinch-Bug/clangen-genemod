@@ -421,6 +421,7 @@ class ShortEvent:
     def handle_new_cats(self, clan=game.clan, other_clan=None):
         """
         handles adding new cats to the clan
+        :param other_clan: the object for the other clan involved in event
         """
 
         if not self.new_cat_attributes:

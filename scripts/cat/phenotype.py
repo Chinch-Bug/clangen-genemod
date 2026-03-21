@@ -2,6 +2,7 @@ from .genotype import Genotype
 from random import choice, randint, random
 from scripts.cat.breed_functions import find_my_breed
 from scripts.special_dates import SpecialDate, is_today
+import i18n
 
 class Phenotype(Genotype):
 
@@ -507,7 +508,7 @@ class Phenotype(Genotype):
         withword = " with " + withword + eyes.lower()
 
         if gender:
-            sexstring = gender
+            sexstring = i18n.t("general." + gender)
         elif 'tom' in self.sex and 'Y' in self.sexgene:
             sexstring = "male"
         elif 'molly' in self.sex and 'Y' not in self.sexgene:

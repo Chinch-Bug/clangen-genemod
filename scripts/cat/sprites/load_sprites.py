@@ -56,9 +56,25 @@ class Sprites:
         TORTIE_DATA = ujson.loads(read_file.read())
 
     with open(
-        "sprites/dicts/white_patches_sprite_data.json", "r", encoding="utf-8"
+        "sprites/dicts/white_patches_mostly_sprite_data.json", "r", encoding="utf-8"
     ) as read_file:
-        WHITE_DATA = ujson.loads(read_file.read())
+        WHITE_MOSTLY_DATA = ujson.loads(read_file.read())
+    with open(
+        "sprites/dicts/white_patches_high_sprite_data.json", "r", encoding="utf-8"
+    ) as read_file:
+        WHITE_HIGH_DATA = ujson.loads(read_file.read())
+    with open(
+        "sprites/dicts/white_patches_mid_sprite_data.json", "r", encoding="utf-8"
+    ) as read_file:
+        WHITE_MID_DATA = ujson.loads(read_file.read())
+    with open(
+        "sprites/dicts/white_patches_little_sprite_data.json", "r", encoding="utf-8"
+    ) as read_file:
+        WHITE_LITTLE_DATA = ujson.loads(read_file.read())
+    with open(
+        "sprites/dicts/white_patches_vitiligo_sprite_data.json", "r", encoding="utf-8"
+    ) as read_file:
+        WHITE_VITILIGO_DATA = ujson.loads(read_file.read())
 
     with open(
         "sprites/dicts/eye_colour_data.json", "r", encoding="utf-8"
@@ -392,7 +408,11 @@ class Sprites:
             self.make_group('Other/eyesections', (i, 0), f"eye{x}", sprites_y=7)
         
         data_jsons = (
-            self.WHITE_DATA,
+            self.WHITE_MOSTLY_DATA,
+            self.WHITE_HIGH_DATA,
+            self.WHITE_MID_DATA,
+            self.WHITE_LITTLE_DATA,
+            self.WHITE_VITILIGO_DATA,
             self.TORTIE_DATA,
             self.SCAR_DATA,
             self.SCAR_MISSING_PART_DATA,

@@ -1861,15 +1861,8 @@ class Cat:
                 main_cat=self,
             )
 
-        biome = self.status.fetch_clan_object(game.clan).biome if game.clan else switch_get_value(Switch.biome)
-        camp = self.status.fetch_clan_object(game.clan).camp_bg if game.clan else switch_get_value(Switch.camp_bg)
-        try:
-            season = game.clan.current_season
-        except Exception:
-            season = None
-
         # get chosen thought
-        chosen_thought = new_thought(thought_type, self, other_cat, biome, season, camp, game_setting_get("ageup dead"))
+        chosen_thought = new_thought(thought_type, self, other_cat, game_setting_get("ageup dead"))
 
         chosen_thought = event_text_adjust(
             self.__class__,
