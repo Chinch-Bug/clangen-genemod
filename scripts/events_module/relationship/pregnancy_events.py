@@ -267,7 +267,7 @@ class Pregnancy_Events:
                 cats_involved.append(x.ID)
                 x.get_new_thought(CatThought.ON_BIRTH)
         for kit in kits:
-            kit.get_new_thought()
+            kit.get_new_thought(CatThought.ON_JOIN)
             cats_involved.append(kit.ID)
             kit.add_to_clan(clan.group_ID)
 
@@ -1572,7 +1572,7 @@ class Pregnancy_Events:
                 kit_status = {
                     "social": blood_parent.status.social,
                     "age": CatRank.NEWBORN if litter_age == 0 else CatRank.KITTEN,
-                    "group_ID": blood_parent.status.group_ID
+                    "group_ID": blood_parent.status.get_last_living_group()
                 }
                 
                 kit = Cat(parent1=blood_parent.ID, parent2=sire.ID, extrapar=chimera_sire if sire.ID != chimera_sire.ID else None, status_dict=kit_status, moons=litter_age, backstory=backstory)
