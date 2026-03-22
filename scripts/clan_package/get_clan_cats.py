@@ -2,7 +2,7 @@ from typing import Union, Type, TYPE_CHECKING, Tuple, List
 
 if TYPE_CHECKING:
     from scripts.cat.cats import Cat
-from scripts.cat.enums import CatGroup
+from scripts.cat.enums import CatGroup, CatAge
 import i18n
 
 
@@ -77,7 +77,7 @@ def find_alive_cats_with_rank(
     return alive_cats
 
 
-def get_living_clan_cat_count(Cat, clan=CatGroup.PLAYER_CLAN_ID):
+def get_living_clan_cat_count(Cat, clan=CatGroup.PLAYER_CLAN_ID, include_newborns=True):
     """
     Returns the int of all living cats within the Clan
     :param Cat: Cat class
@@ -85,6 +85,8 @@ def get_living_clan_cat_count(Cat, clan=CatGroup.PLAYER_CLAN_ID):
     count = 0
     for the_cat in Cat.all_cats.values():
         if the_cat.status.group_ID != clan:
+            continue
+        if not include_newborns and the_cat.age == CatAge.NEWBORN:
             continue
         count += 1
     return count

@@ -262,7 +262,7 @@ def event_for_other_clan(Cat, ranks: list, other_clan) -> bool:
         return True
 
     if not ranks:
-        oc_cats = get_living_clan_cat_count(Cat, other_clan)
+        oc_cats = get_living_clan_cat_count(Cat, other_clan, include_newborns=False)
         return oc_cats > 0
 
     for rank in ranks:
