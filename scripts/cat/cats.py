@@ -128,6 +128,9 @@ class Cat:
     all_cats_list: List[Cat] = []
     ordered_cat_list: List[Cat] = []
 
+    # DEBUG SETTINGS
+    disable_random = False
+
     def __init__(
         self,
         prefix=None,
@@ -156,7 +159,8 @@ class Cat:
         chim_white=None,
         chim_pattern=None,
         loading_cat=False,  # Set to true if you are loading a cat at start-up.
-        disable_random=False,
+        *,
+        disable_random=None,
         **kwargs,
     ):
         """Initialise the cat.
@@ -186,6 +190,9 @@ class Cat:
         """
 
         self._history = None
+
+        if disable_random is not None:
+            Cat.disable_random = disable_random
 
         if (
             faded
@@ -377,8 +384,10 @@ class Cat:
 
         # age and status
         if status_dict is None and moons is None:
-            self.age = CatAge.NEWBORN if disable_random else choice([*CatAge])
-            self.status.generate_new_status(age=self.age, disable_random=disable_random)
+            self.age = CatAge.NEWBORN if self.disable_random else choice([*CatAge])
+            self.status.generate_new_status(
+                age=self.age, disable_random=self.disable_random
+            )
         elif moons is not None:
             self.moons = moons
             if moons > 300:
@@ -395,10 +404,10 @@ class Cat:
                         self.age = key_age
             if status_dict is None:
                 self.status.generate_new_status(
-                    age=self.age, disable_random=disable_random
+                    age=self.age, disable_random=self.disable_random
                 )
         else:
-            if disable_random or self.status.rank == CatRank.NEWBORN:
+            if self.disable_random or self.status.rank == CatRank.NEWBORN:
                 self.age = CatAge.NEWBORN
             elif self.status.rank == CatRank.KITTEN:
                 self.age = CatAge.KITTEN
@@ -416,7 +425,7 @@ class Cat:
                     ]
                 )
         if moons is None:
-            if disable_random:
+            if self.disable_random:
                 self.moons = 0
             else:
                 self.moons = randint(
@@ -432,14 +441,16 @@ class Cat:
 
         # sex!?!??!?!?!??!?!?!?!??
         # if self.gender is None:
-        #     self.gender = choice(["female", "male"])
+        #     self.gender = (
+        #         "female" if self.disable_random else choice(["female", "male"])
+        #     )
 
         """if self.genderalign == "":
             self.genderalign = self.gender"""
 
         # These things should only run when generating a new cat, rather than loading one in.
         if not loading_cat:
-            self.init_generate_cat(skill_dict, disable_random)
+            self.init_generate_cat(skill_dict)
         
         if self.phenotype.munch[1] == "Mk" or self.phenotype.sexgene[0] == "Y" or (self.phenotype.manx[1] == "Ab" or self.phenotype.manx[1] == "M") or ('NoDBE' not in self.phenotype.pax3 and 'DBEalt' not in self.phenotype.pax3):
             if not self.dead:
@@ -540,11 +551,10 @@ class Cat:
                 ):
                     self.age = key_age
 
-    def init_generate_cat(self, skill_dict, disable_random):
+    def init_generate_cat(self, skill_dict):
         """
         Used to roll a new cat
         :param skill_dict: TODO what is a skill dict exactly
-        :param disable_random: If true, disable randomisation code
         :return: None
         """
         # trans cat chances
@@ -553,7 +563,7 @@ class Cat:
         nb_chance = randint(0, 75)
 
         # GENDER IDENTITY
-        if self.age.is_baby() or disable_random:
+        if self.age.is_baby() or self.disable_random:
             # newborns can't be trans, sorry babies
             nb_chance = 0
             trans_chance = 0
@@ -592,12 +602,17 @@ class Cat:
 
         # APPEARANCE
         self.pelt = Pelt.generate_new_pelt(self.phenotype, self.age)
-    
-        #Personality
-        self.personality = Personality(kit_trait=self.age.is_baby())
+
+        # Personality
+        if self.disable_random:
+            self.personality = Personality(
+                lawful=8, social=8, aggress=8, stable=8, kit_trait=self.age.is_baby()
+            )
+        else:
+            self.personality = Personality(kit_trait=self.age.is_baby())
 
         # experience and current patrol status
-        if self.age.is_baby() or disable_random:
+        if self.age.is_baby() or self.disable_random:
             self.experience = 0
         elif self.age == CatAge.ADOLESCENT:
             m = self.moons
@@ -1160,7 +1175,8 @@ class Cat:
 
         self.status.add_to_group(new_group_ID=clan, age=self.age)
 
-        game.clan.add_to_clan(self)
+        if game.clan:
+            game.clan.add_to_clan(self)
 
         # check if there are kits under 12 moons with this cat and also add them to the clan
         children = self.get_children()
@@ -1206,7 +1222,7 @@ class Cat:
                 fetched_cat.update_mentor()
 
         # If they have any apprentices, make sure they are still valid:
-        if old_rank == CatRank.MEDICINE_CAT:
+        if old_rank == CatRank.MEDICINE_CAT and clan:
             clan.remove_med_cat(self)
 
         # updates mentors
@@ -1218,32 +1234,21 @@ class Cat:
         ]:
             pass
 
-        elif self.status.rank == CatRank.WARRIOR:
-            if old_rank == CatRank.LEADER and (
+        elif self.status.rank == [CatRank.WARRIOR, CatRank.ELDER]:
+            if not clan:
+                pass
+            elif old_rank == CatRank.LEADER and (
                 clan.leader and clan.leader.ID == self.ID
             ):
                 clan.leader = None
                 clan.leader_predecessors += 1
-            if clan and clan.deputy and clan.deputy.ID == self.ID:
+            elif clan.deputy and clan.deputy.ID == self.ID:
                 clan.deputy = None
                 clan.deputy_predecessors += 1
 
         elif self.status.rank == CatRank.MEDICINE_CAT:
             if clan is not None:
                 clan.new_medicine_cat(self)
-
-        elif self.status.rank == CatRank.ELDER:
-            if (
-                old_rank == CatRank.LEADER
-                and clan.leader
-                and clan.leader.ID == self.ID
-            ):
-                clan.leader = None
-                clan.leader_predecessors += 1
-
-            if clan.deputy and clan.deputy.ID == self.ID:
-                clan.deputy = None
-                clan.deputy_predecessors += 1
 
         # update thought
         if new_thought and new_rank not in (
@@ -1368,7 +1373,18 @@ class Cat:
             else:
                 clanname = switch_get_value(Switch.clan_list)[0]
         except IndexError:
-            print("WARNING: History failed to load, no Clan in switches?")
+            print("History failed to load, no Clan in switches?")
+            self._history = History(
+                beginning={},
+                mentor_influence={},
+                app_ceremony={},
+                lead_ceremony=None,
+                possible_history={},
+                died_by=[],
+                scar_events=[],
+                murder={},
+                cat=self,
+            )
             return
 
         history_directory = f"{get_save_dir()}/{clanname}/history/"

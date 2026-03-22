@@ -316,8 +316,6 @@
     },
     "KitTrait": {
       "enum": [
-        "bouncy",
-        "-bouncy",
         "unruly",
         "-unruly",
         "shy",

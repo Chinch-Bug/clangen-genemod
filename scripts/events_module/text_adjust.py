@@ -534,7 +534,10 @@ def event_text_adjust(
             clan_name = clan.displayname
         except AttributeError:
             # todo can this be Switch.clan_name ?
-            clan_name = switch_get_value(Switch.clan_list)[0]
+            try:
+                clan_name = switch_get_value(Switch.clan_list)[0]
+            except IndexError:
+                clan_name = "Test"
 
         pos = 0
         for x in range(text.count("c_n")):

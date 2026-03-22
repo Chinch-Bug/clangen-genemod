@@ -368,7 +368,7 @@
 		"random_status_constraint": [
 			"apprentice",
 			"mediator apprentice",
-			"medicine cat apprentice"
+			"healer apprentice"
 		],
 		"reaction_random_cat": {
 			"like": "increase"
@@ -499,7 +499,7 @@
 			"apprentice"
 		],
 		"random_status_constraint": [
-			"medicine cat apprentice"
+			"healer apprentice"
 		]
 	},
 	{
@@ -517,7 +517,7 @@
 			"apprentice"
 		],
 		"random_status_constraint": [
-			"medicine cat apprentice"
+			"healer apprentice"
 		]
 	},
 	{
@@ -847,8 +847,8 @@
 			"warrior",
 			"deputy",
 			"leader",
-			"medicine cat apprentice",
-			"medicine cat"
+			"healer apprentice",
+			"healer"
 		],
 		"relationship_constraint": [
 			"dislikes_only"

@@ -194,6 +194,8 @@ class Clan:
         game.reset_group_IDs()
         game.starclan = Afterlife()
         game.dark_forest = Afterlife()
+        game.just_died.clear()
+        game.dead_cats_to_grieve.clear()
         instructor_rank = choice(
             (
                 CatRank.APPRENTICE,
@@ -782,6 +784,7 @@ class Clan:
             else:
                 game.mediated = clan_data["mediated"]
 
+        game.just_died.clear()
         # Cat who had just died
         if "just_died" in clan_data:
             game.just_died = clan_data["just_died"]
