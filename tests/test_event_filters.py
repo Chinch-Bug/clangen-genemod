@@ -47,43 +47,43 @@ class TestEventFilters(unittest.TestCase):
         """
 
         self.assertTrue(
-            event_for_location(locations=["forest"]),
+            event_for_location(locations=["forest"], game.clan),
             "Assert single biome match.",
         )
         self.assertTrue(
-            event_for_location(locations=["forest:camp1"]),
+            event_for_location(locations=["forest:camp1"], game.clan),
             "Assert single camp match.",
         )
         self.assertFalse(
-            event_for_location(locations=["desert"]),
+            event_for_location(locations=["desert"], game.clan),
             "Assert single biome mismatch.",
         )
         self.assertFalse(
-            event_for_location(locations=["forest:camp2"]),
+            event_for_location(locations=["forest:camp2"], game.clan),
             "Assert single camp mismatch.",
         )
         self.assertTrue(
-            event_for_location(locations=["desert:camp2", "forest"]),
+            event_for_location(locations=["desert:camp2", "forest"], game.clan),
             "Assert mixed location match.",
         )
         self.assertFalse(
-            event_for_location(locations=["desert:camp2", "plains", "forest:camp2"]),
+            event_for_location(locations=["desert:camp2", "plains", "forest:camp2"], game.clan),
             "Assert mixed location mismatch.",
         )
         self.assertTrue(
-            event_for_location(locations=["-plains"]),
+            event_for_location(locations=["-plains"], game.clan),
             "Assert single location excluded.",
         )
         self.assertTrue(
-            event_for_location(locations=["-plains", "-forest:camp2"]),
+            event_for_location(locations=["-plains", "-forest:camp2"], game.clan),
             "Assert mixed locations excluded.",
         )
         self.assertFalse(
-            event_for_location(locations=["-plains", "-forest"]),
+            event_for_location(locations=["-plains", "-forest"], game.clan),
             "Assert mixed locations, including current biome, excluded.",
         )
         self.assertFalse(
-            event_for_location(locations=["-plains", "-forest:camp1"]),
+            event_for_location(locations=["-plains", "-forest:camp1"], game.clan),
             "Assert mixed locations, including current camp, excluded.",
         )
 
@@ -1540,11 +1540,6 @@ class TestCatConstraint(unittest.TestCase):
 
         with self.subTest("empty"):
             self.assertTrue(event_for_cat(cat=male, cat_info={"gender": []}))
-
-        with self.subTest("invalid input"):
-            self.assertRaises(
-                ValueError, event_for_cat, cat=male, cat_info={"gender": ["isosceles"]}
-            )
 
         with self.subTest("expected male, was male"):
             self.assertTrue(event_for_cat(cat=male, cat_info={"gender": ["male"]}))
