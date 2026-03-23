@@ -102,7 +102,7 @@ def rebuild_top_menu_buttons():
     else:
         mode = None
 
-    clancount  = game.clan.clancount if game.clan else "singleclan"
+    clancount  = game.clan.clancount if hasattr(game.clan, "clancount") else "singleclan"
 
     button_names = [
         "events",
