@@ -65,7 +65,7 @@ class TestEvents(unittest.TestCase):
             starting_season="Newleaf",
         )
         save_load.cat_to_fade.clear()
-        game.clan.create_clan()
+        game.clan.create_clan("singleclan")
         game.cur_events_list.clear()
         game.herb_events_list.clear()
         game.clan.herb_supply.start_storage(15)
