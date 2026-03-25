@@ -652,12 +652,12 @@ class TestRelationshipTiers(unittest.TestCase):
             )
 
         with self.subTest("only one cat"):
-            self.assertRaises(
-                ValueError,
-                event_for_cat,
-                cat=self.cat1,
-                cat_group=[self.cat1],
-                cat_info={"relationship_status": ["loathes"]},
+            self.assertFalse(
+                event_for_cat(
+                    cat=self.cat1,
+                    cat_group=[self.cat1],
+                    cat_info={"relationship_status": ["loathes"]},
+                ),
             )
 
     def test_full_only_tiers(self):
