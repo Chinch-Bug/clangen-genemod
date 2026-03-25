@@ -50,6 +50,7 @@ class SpriteInspectScreen(Screens):
         self.hide_white_text = None
         self.save_image_button = None
         self.export_cat_button = None
+        self.cycle_seasons_button = None
 
         # Image Settings:
         self.platform_shown = None
@@ -59,6 +60,7 @@ class SpriteInspectScreen(Screens):
         self.acc_shown = True
         self.override_not_working = False
         self.hide_white = False
+        self.season_override = game.clan.current_season if game.clan else None
 
         super().__init__(name)
 
@@ -71,12 +73,14 @@ class SpriteInspectScreen(Screens):
             elif event.ui_element == self.next_cat_button:
                 if isinstance(Cat.fetch_cat(self.next_cat), Cat):
                     switch_set_value(Switch.cat, self.next_cat)
+                    self.season_override = game.clan.current_season
                     self.cat_setup()
                 else:
                     print("invalid next cat", self.next_cat)
             elif event.ui_element == self.previous_cat_button:
                 if isinstance(Cat.fetch_cat(self.previous_cat), Cat):
                     switch_set_value(Switch.cat, self.previous_cat)
+                    self.season_override = game.clan.current_season
                     self.cat_setup()
                 else:
                     print("invalid previous cat", self.previous_cat)
@@ -90,6 +94,13 @@ class SpriteInspectScreen(Screens):
                 SaveAsImageWindow(self.generate_image_to_save(), self.the_cat, str(self.the_cat.name))
             elif event.ui_element == self.export_cat_button:
                 self.export_cat()
+            elif event.ui_element == self.cycle_seasons_button:
+                seasons = ["Newleaf", "Greenleaf", "Leaf-fall", "Leaf-bare"]
+                if self.season_override in seasons and self.season_override != seasons[-1]:
+                    self.season_override = seasons[seasons.index(self.season_override)+1]
+                else:
+                    self.season_override = seasons[0]
+                self.cat_setup()
             elif event.ui_element == self.previous_life_stage:
                 self.displayed_life_stage = max(self.displayed_life_stage - 1, 0)
                 self.update_disabled_buttons()
@@ -211,6 +222,14 @@ class SpriteInspectScreen(Screens):
             object_id="@buttonstyles_squoval",
         )
 
+        self.cycle_seasons_button = UISurfaceImageButton(
+            ui_scale(pygame.Rect((0, 550), (135, 30))),
+            "screens.sprite_inspect.cycle_seasons",
+            get_button_dict(ButtonStyles.SQUOVAL, (135, 30)),
+            object_id="@buttonstyles_squoval",
+            anchors={"centerx": "centerx"}
+        )
+
         # Toggle Text:
         self.platform_shown_text = pygame_gui.elements.UITextBox(
             "screens.sprite_inspect.show_platform",
@@ -269,7 +288,7 @@ class SpriteInspectScreen(Screens):
                     biome=game.clan.override_biome
                     if game.clan.override_biome
                     else self.the_cat.status.fetch_clan_object(game.clan).biome,
-                    season=game.clan.current_season,
+                    season=self.season_override if self.season_override else game.clan.current_season,
                     show_nest=self.the_cat.age == "newborn"
                     or self.the_cat.not_working(),
                     group=self.the_cat.status.group,
@@ -453,7 +472,8 @@ class SpriteInspectScreen(Screens):
             acc_hidden=not self.acc_shown,
             always_living=self.override_dead_lineart,
             disable_sick_sprite=self.override_not_working,
-            hide_white=self.hide_white
+            hide_white=self.hide_white,
+            season_override=self.season_override
         )
 
         self.cat_elements["cat_image"] = pygame_gui.elements.UIImage(
@@ -486,6 +506,8 @@ class SpriteInspectScreen(Screens):
         self.save_image_button = None
         self.export_cat_button.kill()
         self.export_cat_button = None
+        self.cycle_seasons_button.kill()
+        self.cycle_seasons_button = None
         self.platform_shown_text.kill()
         self.platform_shown_text = None
         self.scars_shown_text.kill()
@@ -505,6 +527,8 @@ class SpriteInspectScreen(Screens):
         for ele in self.checkboxes:
             self.checkboxes[ele].kill()
         self.checkboxes = {}
+
+        self.season_override = game.clan.current_season if game.clan else None
         return super().exit_screen()
 
     def update_disabled_buttons(self):

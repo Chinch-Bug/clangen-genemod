@@ -71,6 +71,8 @@ class Pregnancy_Events:
             if cat.status.group_ID != clan.group_ID:
                 continue
             ancestors = cat.get_relatives()
+            if not ancestors:
+                continue
             if not biggest_family:
                 biggest_family = ancestors
                 biggest_family.append(cat.ID)
