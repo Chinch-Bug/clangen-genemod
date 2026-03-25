@@ -287,7 +287,7 @@ class Condition_Events:
 
             season_dict = Condition_Events.SPECIAL_SEASON_LIST[season]
             for key in season_dict:
-                if key in list(cat.permanent_condition.keys()) or key == "fully hairless" and cat.pelt.length == "hairless" and (cat.phenotype.sedesp[0] == "hr" or cat.phenotype.ruhr[1] == "Hrbd" or sprite_age > 11):
+                if key in list(cat.permanent_condition.keys()) or key == "fully hairless" and cat.pelt.length == "hairless" and (cat.phenotype.sedesp[0] == "hr" or cat.phenotype.ruhr[1] == "Hrbd" or cat.moons > 11):
                     modifier = game.get_config_value(
                         clan.group_ID, "condition_related", f"{game.clan.game_mode}_perm_condition_modifier"
                     )
@@ -367,7 +367,7 @@ class Condition_Events:
                     event_string = random.choice(
                         Condition_Events.PERM_CONDITION_RISK_STRINGS[chosen_key][chosen_illness])
                 if not event_string:
-                    print(f"{chosen_condition} not in {chosen_key} risk dict")
+                    print(f"{chosen_illness} not in {chosen_key} risk dict")
                     # try to translate the illness
                     if chosen_illness in Condition_Events.INJURIES:
                         chosen_illness = i18n.t(f"conditions.injuries.{chosen_illness}")
