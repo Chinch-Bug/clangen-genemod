@@ -730,10 +730,7 @@ class ShortEvent:
                         clan,
                         self.random_cat,
                     )
-                    if "n_c" in death_history:
-                        match = re.search(r'n_c:(\d+)', death_history)
-                        death_history = death_history.replace(match.group(0), str(self.new_cats[int(match.group(1))][0].name))
-
+                    
                     if self.main_cat.status.is_leader:
                         self.leads_current_life_count[self.main_cat.status.get_last_living_group()] -= 1
                         if self.leads_current_life_count[self.main_cat.status.get_last_living_group()] > self.main_cat.status.fetch_clan_object().leader_lives:
