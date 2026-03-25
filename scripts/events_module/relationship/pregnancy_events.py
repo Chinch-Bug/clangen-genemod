@@ -66,7 +66,7 @@ class Pregnancy_Events:
     @staticmethod
     def set_biggest_family(clan):
         """Gets the biggest family of the clan."""
-        biggest_family = None
+        biggest_family = []
         for cat in Cat.all_cats.values():
             if cat.status.group_ID != clan.group_ID:
                 continue
