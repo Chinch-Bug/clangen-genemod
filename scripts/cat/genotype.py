@@ -2171,7 +2171,7 @@ class Genotype:
             if 'N' not in self.corin:
                 return self.Mutate()
                 
-            i = self.ext.index("N")
+            i = self.corin.index("N")
             self.corin[i] = choice(['sh', 'sg', 'fg'])
 
         print(name_map[which])
@@ -2241,19 +2241,19 @@ class Genotype:
         elif which == 'pointgene':
             if 'C' not in self.pointgene:
                 return self.Mutate()
-            i = self.white.index("C")
+            i = self.pointgene.index("C")
             self.pointgene[i] = choice([choice(['c', 'cm']), choice(['cs', 'cb']), choice(['cs', 'cb']), choice(['cs', 'cb']), choice(['cs', 'cb'])])
             if self.ban_genes:
                 self.pointgene[i] = choice(['cm', choice(['cs', 'cb']), choice(['cs', 'cb']), choice(['cs', 'cb']), choice(['cs', 'cb'])])
         elif which == 'agouti':
             if "A" not in self.agouti:
                 return self.Mutate()
-            i = self.white.index("A")
+            i = self.agouti.index("A")
             self.agouti[i] = "a"
         else:
             if "NoDBE" not in self.pax3:
                 return self.Mutate()
-            i = self.white.index("NoDBE")
+            i = self.pax3.index("NoDBE")
             self.pax3[i] = choice(['DBEcel', 'DBEre', 'DBEalt'])
 
         print(name_map[which])
