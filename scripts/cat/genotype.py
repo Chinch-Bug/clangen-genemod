@@ -1283,9 +1283,9 @@ class Genotype:
         self.GeneSort()
 
         if self.odds['random_mutation'] > 0 and randint(1, self.odds['random_mutation']) == 1:
+            print("MUTATION!")
             self.Mutate()
-
-        self.GeneSort()
+            self.GeneSort()
 
         if self.odds['somatic_mutation'] > 0 and randint(1, self.odds['somatic_mutation']) == 1:
             self.GenerateSomatic()
@@ -1361,8 +1361,6 @@ class Genotype:
         if height <= 5.00:
             self.shoulder_height = 5.00
 
-            if self.growth_pattern == "runt":
-                self.shoulder_height *= 0.85
             if self.munch[0] == 'Mk':
                 self.shoulder_height /= 1.5
             if 'Y' in self.sexgene:
@@ -2028,7 +2026,6 @@ class Genotype:
         return self.Cat_Genes, "Other Fur Genes: ", self.Fur_Genes, "Other Colour Genes: ", self.Other_Colour, "Body Mutations: ", self.Body_Genes, "Polygenes: ", self.Polygenes
     
     def Mutate(self):
-        print("MUTATION!")
         wheremutation = ["body", "furtype", "furtype", "othercoat", "othercoat", "othercoat", "maincoat", "maincoat", "maincoat", "maincoat", "maincoat", "maincoat"]
         where = choice(wheremutation)
 

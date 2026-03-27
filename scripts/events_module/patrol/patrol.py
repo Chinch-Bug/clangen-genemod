@@ -24,6 +24,8 @@ from scripts.events_module.event_filters import (
     filter_relationship_type,
     check_relationship_value,
     get_personality_compatibility,
+    event_for_location,
+    event_for_season,
 )
 from scripts.events_module.patrol.patrol_event import PatrolEvent
 from scripts.events_module.patrol.patrol_outcome import PatrolOutcome
@@ -716,7 +718,7 @@ class Patrol:
                             "DEBUG: requested patrol does not meet constraints (neighbour clan constraits)")
                     continue
 
-                if biome not in patrol.biome and "any" not in patrol.biome:
+                if not event_for_location(patrol.biome, patrol.clan):
                     if self.debug_patrol and self.debug_patrol == patrol.patrol_id:
                         print(
                             "DEBUG: requested patrol does not meet constraints (biome)"
@@ -728,7 +730,7 @@ class Patrol:
                             "DEBUG: requested patrol does not meet constraints (camp)"
                         )
                     continue
-                if current_season not in patrol.season and "any" not in patrol.season:
+                if not event_for_season(patrol.season):
                     if self.debug_patrol and self.debug_patrol == patrol.patrol_id:
                         print(
                             "DEBUG: requested patrol does not meet constraints (season)"
