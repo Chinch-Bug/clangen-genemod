@@ -607,7 +607,7 @@
 			"m_c claims {PRONOUN/m_c/subject} spoke with StarClan and heard bad things about r_c."
 		],
 		"main_status_constraint": [
-			"medicine cat",
+			"healer",
 			"leader"
 		],
 		"reaction_random_cat": {

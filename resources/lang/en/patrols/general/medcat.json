@@ -9527,8 +9527,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "frequency": 4,
         "intro_text": "p_l and app1 are going out to gather dandelions. app1 asks {PRONOUN/app1/poss} mentor what they'll do if the rabbits have eaten all of it, and p_l responds that they'll cross that river when they get to it.",
@@ -9733,8 +9733,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -10065,7 +10065,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat apprentice": [1, 1],
+            "healer apprentice": [1, 1],
             "healer cats": [1, 1]
         },
         "frequency": 4,
@@ -10358,8 +10358,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "frequency": 4,
         "intro_text": "p_l notices that the moss in the medicine cat den is getting old. {PRONOUN/p_l/subject/CAP} {VERB/p_l/need/needs} to go and gather some more.",
@@ -10535,8 +10535,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "frequency": 3,
         "intro_text": "p_l has to attend to one of {PRONOUN/p_l/poss} grimmer jobs as a medicine cat - the grounds where c_n goes to mourn their dead need to be tended to. {PRONOUN/p_l/subject/CAP}{VERB/p_l/'re/'s} bringing along app1 as {PRONOUN/p_l/poss} assistant for this trip, and the two cats head out in relative silence.",
@@ -10922,7 +10922,7 @@
         "min_max_status": {
             "all apprentices": [4, 6],
             "normal adult": [-1, -1],
-            "medicine cat": [-1, -1]
+            "healer": [-1, -1]
         },
         "frequency": 3,
         "intro_text": "As the apprentices head out to collect cobwebs, app2 screws up {PRONOUN/app2/poss} face into a stupid expression around the stick {PRONOUN/app2/subject} {VERB/app2/hold/holds} in {PRONOUN/app2/poss} mouth.",
@@ -11046,9 +11046,9 @@
         "max_cats": 6,
         "min_max_status": {
             "apprentice": [2, 5],
-            "medicine cat apprentice": [1, 1],
+            "healer apprentice": [1, 1],
             "normal adult": [-1, -1],
-            "medicine cat": [-1, -1]
+            "healer": [-1, -1]
         },
         "frequency": 4,
         "intro_text": "The apprentices head out into the territory, following p_l a little dubiously. Gathering things can't possibly be as hard as hunting them - plants don't run away!",
@@ -11158,7 +11158,7 @@
         "max_cats": 2,
         "min_max_status": {
             "apprentice": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer apprentice": [1, 1]
         },
         "frequency": 3,
         "intro_text": "app1 comes up to meet app2, quietly apologizing about app2 being sent to help app1 collect moss.",
@@ -11272,9 +11272,9 @@
         "max_cats": 6,
         "min_max_status": {
             "apprentice": [3, 5],
-            "medicine cat apprentice": [1, 1],
+            "healer apprentice": [1, 1],
             "normal adult": [-1, -1],
-            "medicine cat": [-1, -1]
+            "healer": [-1, -1]
         },
         "frequency": 3,
         "intro_text": "As the apprentices head out to collect moss, app3 screws up {PRONOUN/app3/poss} face into a stupid expression at the menial nature of the task.",
@@ -11400,8 +11400,8 @@
         "max_cats": 6,
         "min_max_status": {
             "apprentice": [2, 5],
-            "medicine cat apprentice": [1, 1],
-            "medicine cat": [-1, -1],
+            "healer apprentice": [1, 1],
+            "healer": [-1, -1],
             "normal adult": [-1, -1]
         },
         "frequency": 4,
@@ -11556,7 +11556,7 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
+            "healer": [1, 1],
             "normal adult": [1, 1]
         },
         "frequency": 1,
@@ -19576,7 +19576,7 @@
                 -1,
                 -1
             ],
-            "medicine cat": [
+            "healer": [
                 1,
                 6
             ],
@@ -19840,11 +19840,11 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [
+            "healer": [
                 1,
                 6
             ],
-            "medicine cat apprentice": [
+            "healer apprentice": [
                 1,
                 6
             ],
@@ -20658,11 +20658,11 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [
+            "healer": [
                 1,
                 1
             ],
-            "medicine cat apprentice": [
+            "healer apprentice": [
                 1,
                 1
             ]
@@ -21326,11 +21326,11 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [
+            "healer": [
                 1,
                 6
             ],
-            "medicine cat apprentice": [
+            "healer apprentice": [
                 1,
                 6
             ],
@@ -21631,7 +21631,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "medicine cat": [
+            "healer": [
                 1,
                 6
             ],
@@ -21949,11 +21949,11 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [
+            "healer": [
                 1,
                 6
             ],
-            "medicine cat apprentice": [
+            "healer apprentice": [
                 1,
                 6
             ],
@@ -22277,7 +22277,7 @@
                 -1,
                 -1
             ],
-            "medicine cat": [
+            "healer": [
                 1,
                 6
             ],
@@ -22623,11 +22623,11 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [
+            "healer": [
                 1,
                 6
             ],
-            "medicine cat apprentice": [
+            "healer apprentice": [
                 1,
                 6
             ],
@@ -23289,7 +23289,7 @@
         "max_cats": 6,
         "min_max_status": {
             "apprentice": [-1, -1],
-            "medicine cat": [1, 6],
+            "healer": [1, 6],
             "healer cats": [1, 6],
             "normal adult": [-1, -1]
         },
@@ -23500,8 +23500,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -23854,8 +23854,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -24162,8 +24162,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -24542,8 +24542,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "frequency": 4,
         "intro_text": "With the snows of leaf-bare nearly vanished, newleaf winning its place in the seasonal cycle, p_l heads out to gather daisy leaves, bringing app1 along for a lesson.",
@@ -24886,8 +24886,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -25257,8 +25257,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -25638,8 +25638,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -26017,8 +26017,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -26364,8 +26364,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -26732,8 +26732,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -27188,8 +27188,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -27536,8 +27536,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -27864,8 +27864,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "frequency": 4,
         "intro_text": "With newleaf comes the opportunity to scout out c_n's territory and find where mullein might be growing this year with app1.",
@@ -28213,8 +28213,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "frequency": 4,
         "intro_text": "As the branches of the oak trees start to green, p_l brings app1 to collect its leaves.",
@@ -28502,8 +28502,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "frequency": 4,
         "intro_text": "The plantain plants have reawoken, and p_l plans to go gather some of their leaves. app1 asks to come along!",
@@ -28826,8 +28826,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "relationship_constraint": ["mentor/app"],
         "frequency": 4,
@@ -29111,8 +29111,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "frequency": 4,
         "intro_text": "With newleaf bringing ragwort back on the medicinal menu, p_l heads out to find where the silly plants have decided to sprout this year. {PRONOUN/p_l/subject/CAP} {VERB/p_l/explain/explains} to app1 the annoyances of the type of plant that dies completely in leaf-bare, leaving them having to search for all-new spots every newleaf.",
@@ -29283,7 +29283,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "medicine cat": [1, 6],
+            "healer": [1, 6],
             "healer cats": [1, 6],
             "normal adult": [1, 6]
         },
@@ -29488,8 +29488,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "frequency": 4,
         "intro_text": "As newleaf brings green to c_n's lands, p_l goes out in a search for tansy. {PRONOUN/p_l/subject/CAP} {VERB/p_l/bring/brings} app1 with {PRONOUN/p_l/object} for an important lesson on its use.",
@@ -29629,7 +29629,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "medicine cat": [1, 6],
+            "healer": [1, 6],
             "healer cats": [1, 6],
             "normal adult": [1, 6]
         },
@@ -29836,8 +29836,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "frequency": 4,
         "intro_text": "With the newleaf sun hidden behind cloudy drizzle, it's a damp day to find thyme. p_l lets app1 take the lead, testing {PRONOUN/app1/poss} knowledge.",
@@ -30183,8 +30183,8 @@
         "min_cats": 2,
         "max_cats": 2,
         "min_max_status": {
-            "medicine cat": [1, 1],
-            "medicine cat apprentice": [1, 1]
+            "healer": [1, 1],
+            "healer apprentice": [1, 1]
         },
         "frequency": 4,
         "intro_text": "p_l uses the blustery newleaf morning to try catch the scent of wild garlic on the breeze, encouraging app1 to try the technique.",
@@ -30323,7 +30323,7 @@
         "min_cats": 3,
         "max_cats": 6,
         "min_max_status": {
-            "medicine cat": [1, 4],
+            "healer": [1, 4],
             "normal adult": [2, 5]
         },
         "frequency": 4,
