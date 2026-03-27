@@ -50,8 +50,6 @@ class RoleScreen(Screens):
                     print("invalid previous cat", self.previous_cat)
             elif event.ui_element == self.promote_leader:
                 clan = self.the_cat.status.fetch_clan_object(game.clan)
-                if self.the_cat == clan.deputy:
-                    clan.deputy = None
                 clan.new_leader(self.the_cat)
                 if switch_get_value(Switch.sort_type) == "rank":
                     Cat.sort_cats()

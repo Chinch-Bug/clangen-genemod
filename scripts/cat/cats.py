@@ -1234,12 +1234,10 @@ class Cat:
         ]:
             pass
 
-        elif self.status.rank == [CatRank.WARRIOR, CatRank.ELDER]:
+        elif self.status.rank in [CatRank.WARRIOR, CatRank.ELDER]:
             if not clan:
                 pass
-            elif old_rank == CatRank.LEADER and (
-                clan.leader and clan.leader.ID == self.ID
-            ):
+            elif clan.leader and clan.leader.ID == self.ID:
                 clan.leader = None
                 clan.leader_predecessors += 1
             elif clan.deputy and clan.deputy.ID == self.ID:
