@@ -718,7 +718,7 @@ class Patrol:
                             "DEBUG: requested patrol does not meet constraints (neighbour clan constraits)")
                     continue
 
-                if not event_for_location(patrol.biome, patrol.clan):
+                if not event_for_location(patrol.biome, self.clan):
                     if self.debug_patrol and self.debug_patrol == patrol.patrol_id:
                         print(
                             "DEBUG: requested patrol does not meet constraints (biome)"
