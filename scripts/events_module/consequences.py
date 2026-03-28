@@ -769,7 +769,7 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
         if status == "any_apprentice":
             all_clan_cats = [
                 cat for cat in all_clan_cats if cat.status.rank.is_any_apprentice_rank()]
-        ELif status == "any_fighter":
+        elif status == "any_fighter":
             all_clan_cats = [
                 cat for cat in all_clan_cats if cat.status.rank in [CatRank.LEADER, CatRank.DEPUTY, CatRank.WARRIOR, CatRank.APPRENTICE]]
         elif status == "any_healer":
