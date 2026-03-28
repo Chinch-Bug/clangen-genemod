@@ -5,7 +5,7 @@ import i18n
 import re
 
 from scripts.cat import pronouns
-from scripts.cat.cats import Cat
+from scripts.cat.cats import Cat, ILLNESSES, INJURIES, PERMANENT
 from scripts.cat.enums import CatGroup
 from scripts.cat.pelts import Pelt
 from scripts.cat_relations.relationship import Relationship
