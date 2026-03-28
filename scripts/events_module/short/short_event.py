@@ -882,7 +882,7 @@ class ShortEvent:
             give_injury = choice(possible_injuries)
 
         if give_injury in INJURIES:
-            cat.get_injured(give_injury, potential_scars=scars)
+            cat.get_injured(give_injury, potential_scars=potential_scars)
         elif give_injury in ILLNESSES:
             cat.get_ill(give_injury)
         elif give_injury in PERMANENT:
