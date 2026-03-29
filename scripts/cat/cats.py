@@ -191,8 +191,7 @@ class Cat:
 
         self._history = None
 
-        if disable_random is not None:
-            Cat.disable_random = disable_random
+        Cat.disable_random = bool(disable_random)
 
         if (
             faded
