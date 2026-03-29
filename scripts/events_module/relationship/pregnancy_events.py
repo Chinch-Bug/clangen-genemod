@@ -1135,7 +1135,7 @@ class Pregnancy_Events:
         # Handle love affair chance.
         affair_partner = Pregnancy_Events.determine_highest_romantic_relation(cat, mate if mate else None, mate_relation if mate else None, samesex)
         if affair_partner:
-            if mate and get_clan_setting('multisire'):
+            if mate and get_clan_setting('multisire') and not cat_is_amab(cat):
                 mate.append(affair_partner)
             else:
                 mate = [affair_partner]

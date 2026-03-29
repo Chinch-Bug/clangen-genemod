@@ -558,6 +558,10 @@
                         "no_results": true
                     }
                 ],
+                "history_text": {
+                    "scar": "m_c was scarred after being hit by a monster on the Thunderpath.",
+                    "death": "m_c died of {PRONOUN/m_c/poss} injuries after being hit by a monster."
+                },
                 "frequency": 4
             }
         ],
@@ -665,6 +669,10 @@
                         "no_results": true
                     }
                 ],
+                "history_text": {
+                    "scar": "m_c was scarred after being hit by a monster on the Thunderpath.",
+                    "death": "m_c died of {PRONOUN/m_c/poss} injuries after being hit by a monster."
+                },
                 "frequency": 4
             }
         ],
@@ -1820,15 +1828,12 @@
                         ],
                         "injuries": [
                             "claw-wound"
-                        ],
-                        "scars": [
-                            "RIGHTEAR"
                         ]
                     }
                 ],
                 "history_text": {
                     "scar": "m_c was scarred when a loner attacked {PRONOUN/m_c/object}.",
-                    "death": "m_c died after a loner attacked {PRONOUN/m_c/object}."
+                    "death": "m_c died of injuries inflicted by a loner."
                 },
                 "outsider_rep": -1,
                 "new_cat": [
@@ -2457,8 +2462,7 @@
                         ],
                         "injuries": [
                             "shock"
-                        ],
-                        "scars": []
+                        ]
                     }
                 ],
                 "outsider_rep": 0,
@@ -2584,8 +2588,7 @@
                         ],
                         "injuries": [
                             "shock"
-                        ],
-                        "scars": []
+                        ]
                     }
                 ],
                 "outsider_rep": 0,
@@ -3205,10 +3208,13 @@
                             "p_l"
                         ],
                         "injuries": [
-                            "battle_injury"
+                            "claw-wound"
                         ],
                         "scars": [
-                            "BRIDGE"
+                            "BRIDGE",
+                            "FACE",
+                            "SNOUT",
+                            "CHEEK"
                         ]
                     }
                 ],
@@ -3976,13 +3982,13 @@
                         ],
                         "injuries": [
                             "torn ear"
-                        ],
-                        "scars": [
-                            "RIGHTEAR",
-                            "LEFTEAR"
                         ]
                     }
                 ],
+                "history_text": {
+                    "scar": "m_c was scarred after a dog nipped {PRONOUN/m_c/poss} ear.",
+                    "death": "m_c died of an injury inflicted by a dog."
+                },
                 "frequency": 4
             },
             {
@@ -4139,13 +4145,6 @@
                         ],
                         "injuries": [
                             "claw-wound"
-                        ],
-                        "scars": [
-                            "THREE",
-                            "BRIDGE",
-                            "SNOUT",
-                            "FACE",
-                            "CHEEK"
                         ]
                     }
                 ],
@@ -4255,6 +4254,10 @@
                         "no_results": true
                     }
                 ],
+                "history_text": {
+                    "scar": "m_c was scarred by frostbite after wandering in a snowstorm with {PRONOUN/m_c/poss} love.",
+                    "death": "m_c died of frostbite even after making it to the safety of the Clan with {PRONOUN/m_c/poss} love."
+                },
                 "frequency": 4
             }
         ],
@@ -4411,12 +4414,6 @@
                         ],
                         "injuries": [
                             "cold_injury"
-                        ],
-                        "scars": [
-                            "FROSTFACE",
-                            "FROSTTAIL",
-                            "FROSTMITT",
-                            "FROSTSOCK"
                         ]
                     }
                 ],
@@ -5613,14 +5610,12 @@
                         ],
                         "injuries": [
                             "battle_injury"
-                        ],
-                        "scars": [
-                            "CATBITE"
                         ]
                     }
                 ],
                 "history_text": {
-                    "scar": "This cat gained a scar from a fight with an angry kittypet."
+                    "scar": "m_c gained a scar from a fight with an angry kittypet.",
+                    "death": "m_c died from injuries inflicted by a kittypet."
                 },
                 "outsider_rep": -1,
                 "new_cat": [
@@ -5703,6 +5698,10 @@
                         "no_results": true
                     }
                 ],
+                "history_text": {
+                    "scar": "m_c was scarred from a fight in {PRONOUN/m_c/poss} past as a loner.",
+                    "death": "m_c died of {PRONOUN/m_c/poss} injuries from a fight in {PRONOUN/m_c/poss} past as a loner."
+                },
                 "frequency": 4
             },
             {
@@ -5736,6 +5735,10 @@
                         "no_results": true
                     }
                 ],
+                "history_text": {
+                    "scar": "m_c was scarred from a fight in {PRONOUN/m_c/poss} past as a loner.",
+                    "death": "m_c died of {PRONOUN/m_c/poss} injuries from a fight in {PRONOUN/m_c/poss} past as a loner."
+                },
                 "frequency": 1
             },
             {
@@ -5772,6 +5775,10 @@
                         "no_results": true
                     }
                 ],
+                "history_text": {
+                    "scar": "m_c was scarred from a fight in {PRONOUN/m_c/poss} past as a loner.",
+                    "death": "m_c died of {PRONOUN/m_c/poss} injuries from a fight in {PRONOUN/m_c/poss} past as a loner."
+                },
                 "frequency": 4
             }
         ],
@@ -5868,6 +5875,10 @@
                         "no_results": true
                     }
                 ],
+                "history_text": {
+                    "scar": "m_c was scarred from a fight in {PRONOUN/m_c/poss} past as a loner.",
+                    "death": "m_c died of {PRONOUN/m_c/poss} injuries from a fight in {PRONOUN/m_c/poss} past as a loner."
+                },
                 "frequency": 4
             },
             {
@@ -5901,6 +5912,10 @@
                         "no_results": true
                     }
                 ],
+                "history_text": {
+                    "scar": "m_c was scarred from a fight in {PRONOUN/m_c/poss} past as a loner.",
+                    "death": "m_c died of {PRONOUN/m_c/poss} injuries from a fight in {PRONOUN/m_c/poss} past as a loner."
+                },
                 "frequency": 1
             },
             {
@@ -5937,6 +5952,10 @@
                         "no_results": true
                     }
                 ],
+                "history_text": {
+                    "scar": "m_c was scarred from a fight in {PRONOUN/m_c/poss} past as a loner.",
+                    "death": "m_c died of {PRONOUN/m_c/poss} injuries from a fight in {PRONOUN/m_c/poss} past as a loner."
+                },
                 "frequency": 4
             }
         ],
@@ -6038,6 +6057,10 @@
                         "no_results": true
                     }
                 ],
+                "history_text": {
+                    "scar": "m_c was scarred by frostbite when {PRONOUN/m_c/poss} Twolegs abandoned {PRONOUN/m_c/object}.",
+                    "death": "m_c died of frostbite after {PRONOUN/m_c/poss} Twolegs abandoned {PRONOUN/m_c/object}."
+                },
                 "frequency": 4
             },
             {
@@ -6071,6 +6094,10 @@
                         "no_results": true
                     }
                 ],
+                "history_text": {
+                    "scar": "m_c was scarred by frostbite when {PRONOUN/m_c/poss} Twolegs abandoned {PRONOUN/m_c/object}.",
+                    "death": "m_c died of frostbite after {PRONOUN/m_c/poss} Twolegs abandoned {PRONOUN/m_c/object}."
+                },
                 "frequency": 1
             },
             {
@@ -6111,6 +6138,10 @@
                         "no_results": true
                     }
                 ],
+                "history_text": {
+                    "scar": "m_c was scarred by frostbite when {PRONOUN/m_c/poss} Twolegs abandoned {PRONOUN/m_c/object}.",
+                    "death": "m_c died of frostbite after {PRONOUN/m_c/poss} Twolegs abandoned {PRONOUN/m_c/object}."
+                },
                 "frequency": 4
             }
         ],
@@ -6199,6 +6230,10 @@
                         "no_results": true
                     }
                 ],
+                "history_text": {
+                    "scar": "m_c was scarred by a Twoleg trying to drown {PRONOUN/m_c/object}.",
+                    "death": "m_c died of injuries inflicted by a Twoleg trying to drown {PRONOUN/m_c/object}."
+                },
                 "frequency": 4
             },
             {
@@ -6241,6 +6276,10 @@
                         "no_results": true
                     }
                 ],
+                "history_text": {
+                    "scar": "m_c was scarred by a Twoleg trying to drown {PRONOUN/m_c/object}.",
+                    "death": "m_c died of injuries inflicted by a Twoleg trying to drown {PRONOUN/m_c/object}."
+                },
                 "frequency": 4
             }
         ],
@@ -6259,6 +6298,10 @@
                         "scars": []
                     }
                 ],
+                "history_text": {
+                    "scar": "m_c was scarred by a Twoleg kicking {PRONOUN/m_c/object} into a tree.",
+                    "death": "m_c died of injuries inflicted by a Twoleg."
+                },
                 "outsider_rep": -1,
                 "frequency": 4
             },
@@ -6283,6 +6326,10 @@
                         "scars": []
                     }
                 ],
+                "history_text": {
+                    "scar": "m_c was scarred by a Twoleg throwing {PRONOUN/m_c/object} to the earth.",
+                    "death": "m_c died of injuries inflicted by a Twoleg."
+                },
                 "outsider_rep": -1,
                 "frequency": 4
             }
@@ -6741,10 +6788,6 @@
                             "torn pelt",
                             "torn ear",
                             "minor_injury"
-                        ],
-                        "scars": [
-                            "RIGHTEAR",
-                            "LEFTEAR"
                         ]
                     }
                 ],
@@ -6774,10 +6817,6 @@
                             "torn pelt",
                             "torn ear",
                             "minor_injury"
-                        ],
-                        "scars": [
-                            "RIGHTEAR",
-                            "LEFTEAR"
                         ]
                     }
                 ],
@@ -6918,32 +6957,6 @@
                             "minor_injury",
                             "torn ear"
                         ],
-                        "scars": [
-                            "ONE",
-                            "TWO",
-                            "THREE",
-                            "FOUR",
-                            "RIGHTEAR",
-                            "LEFTEAR",
-                            "RIGHTBLIND",
-                            "LEFTBLIND",
-                            "BOTHBLIND",
-                            "MANLEG",
-                            "MANTAIL",
-                            "CATBITE",
-                            "CATBITETWO",
-                            "BRIDGE",
-                            "FACE",
-                            "SNOUT",
-                            "CHEEK",
-                            "THROAT",
-                            "TAILBASE",
-                            "TAILSCAR",
-                            "BACK",
-                            "SCRATCHSIDE",
-                            "SIDE",
-                            "BELLY"
-                        ],
                         "no_results": true
                     },
                     {
@@ -6956,10 +6969,6 @@
                             "scrapes",
                             "torn ear",
                             "torn pelt"
-                        ],
-                        "scars": [
-                            "RIGHTEAR",
-                            "LEFTEAR"
                         ]
                     }
                 ],
@@ -7006,32 +7015,6 @@
                             "torn pelt",
                             "torn ear",
                             "minor_injury"
-                        ],
-                        "scars": [
-                            "ONE",
-                            "TWO",
-                            "THREE",
-                            "FOUR",
-                            "RIGHTEAR",
-                            "LEFTEAR",
-                            "RIGHTBLIND",
-                            "LEFTBLIND",
-                            "BOTHBLIND",
-                            "MANLEG",
-                            "MANTAIL",
-                            "CATBITE",
-                            "CATBITETWO",
-                            "BRIDGE",
-                            "FACE",
-                            "SNOUT",
-                            "CHEEK",
-                            "THROAT",
-                            "TAILBASE",
-                            "TAILSCAR",
-                            "BACK",
-                            "SCRATCHSIDE",
-                            "SIDE",
-                            "BELLY"
                         ],
                         "no_results": true
                     }
@@ -7153,32 +7136,6 @@
                             "torn pelt",
                             "torn ear",
                             "minor_injury"
-                        ],
-                        "scars": [
-                            "ONE",
-                            "TWO",
-                            "THREE",
-                            "FOUR",
-                            "RIGHTEAR",
-                            "LEFTEAR",
-                            "RIGHTBLIND",
-                            "LEFTBLIND",
-                            "BOTHBLIND",
-                            "MANLEG",
-                            "MANTAIL",
-                            "CATBITE",
-                            "CATBITETWO",
-                            "BRIDGE",
-                            "FACE",
-                            "SNOUT",
-                            "CHEEK",
-                            "THROAT",
-                            "TAILBASE",
-                            "TAILSCAR",
-                            "BACK",
-                            "SCRATCHSIDE",
-                            "SIDE",
-                            "BELLY"
                         ]
                     }
                 ],
@@ -7253,32 +7210,6 @@
                             "torn pelt",
                             "torn ear",
                             "minor_injury"
-                        ],
-                        "scars": [
-                            "ONE",
-                            "TWO",
-                            "THREE",
-                            "FOUR",
-                            "RIGHTEAR",
-                            "LEFTEAR",
-                            "RIGHTBLIND",
-                            "LEFTBLIND",
-                            "BOTHBLIND",
-                            "MANLEG",
-                            "MANTAIL",
-                            "CATBITE",
-                            "CATBITETWO",
-                            "BRIDGE",
-                            "FACE",
-                            "SNOUT",
-                            "CHEEK",
-                            "THROAT",
-                            "TAILBASE",
-                            "TAILSCAR",
-                            "BACK",
-                            "SCRATCHSIDE",
-                            "SIDE",
-                            "BELLY"
                         ]
                     }
                 ],
