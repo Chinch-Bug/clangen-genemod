@@ -854,8 +854,8 @@ class ShortEvent:
                             self.handle_injury_history(new_cat_objects[0], abbr, injury)
                 # NEW CATS
                 elif "n_c" in abbr:
-                    if self.give_injury_to_cat(self.new_cats[int(abbr.split(":")[-1])], possible_injuries, potential_scars):
-                        self.handle_injury_history(self.new_cats[int(abbr.split(":")[-1])], abbr, injury)
+                    if self.give_injury_to_cat(self.new_cats[int(abbr.split(":")[-1])][0], possible_injuries, potential_scars):
+                        self.handle_injury_history(self.new_cats[int(abbr.split(":")[-1])][0], abbr, injury)
 
     def give_injury_to_cat(self, cat, possible_injuries, potential_scars):
         old_injuries = list(cat.injuries.keys())
