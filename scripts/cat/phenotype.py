@@ -466,7 +466,7 @@ class Phenotype(Genotype):
             
         if is_today(SpecialDate.APRIL_FOOLS):
             if "Dg" in self.april_fools.get("danish_green", []):
-                self.colour = "Danish green" + self.colour
+                self.colour = "Danish green " + self.colour
         self.SolidWhite(pattern=pattern)
 
         if(self.tortiepattern == ["CRYPTIC"] and self.tortie != "brindled bicolour "):
