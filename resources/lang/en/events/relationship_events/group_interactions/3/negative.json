@@ -13,16 +13,16 @@
 				"comfort": "increase"
 			},
 			"m_c_to_r_c2": {
-				"like": "decrease"
+				"respect": "decrease"
 			},
 			"r_c1_to_r_c2": {
-				"like": "decrease"
+				"respect": "decrease"
 			},
 			"r_c2_to_m_c":{
-				"like": "decrease"
+				"comfort": "decrease"
 			},
 			"r_c2_to_r_c1":{
-				"like": "decrease"
+				"comfort": "decrease"
 			}
 		}
 	},	
@@ -84,7 +84,6 @@
 		},
 		"specific_reaction": {
 			"m_c_to_r_c1": {
-				"like": "increase",
 				"comfort": "increase",
 				"trust": "increase"
 			},
@@ -94,7 +93,6 @@
 				"trust": "increase"
 			},
 			"r_c1_to_r_c2": {
-				"like": "decrease",
 				"comfort": "decrease",
 				"trust": "decrease"
 			},
@@ -131,29 +129,24 @@
 		},
 		"specific_reaction": {
 			"m_c_to_r_c1": {
-				"like": "decrease",
-				"comfort": "increase",
-				"trust": "increase"
+				"comfort": "increase"
 			},
 			"r_c1_to_m_c": {
-				"like": "increase",
-				"comfort": "decrease",
-				"trust": "increase"
+				"comfort": "increase"
 			},
 			"r_c1_to_r_c2": {
 				"like": "decrease",
-				"comfort": "decrease",
-				"trust": "decrease"
+				"respect": "decrease"
 			},
 			"r_c2_to_r_c1": {
 				"like": "decrease",
 				"comfort": "decrease",
-				"trust": "decrease"
+				"respect": "decrease"
 			},
 			"r_c2_to_m_c": {
 				"like": "decrease",
 				"comfort": "decrease",
-				"trust": "decrease"
+				"respect": "decrease"
 			}
 		}
 	}
