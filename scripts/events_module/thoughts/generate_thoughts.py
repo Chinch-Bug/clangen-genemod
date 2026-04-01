@@ -103,6 +103,7 @@ def _load_group(thought_type: CatThought, main_cat: "Cat", other_cat: "Cat", age
                 rank = "warrior"
         elif 'kitten' in rank or 'newborn' in rank:
             rank = "warrior"
+        main_cat.age = CatAge.YOUNG_ADULT
 
     start_path = f"thoughts/{thought_type}"
     new_path = start_path
