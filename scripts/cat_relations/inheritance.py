@@ -165,7 +165,7 @@ class Inheritance:
             self.all_but_cousins.remove(key)
         self.init_parents()
         
-        if self.parents != rel_data.get("parents", {}):
+        if self.parents.keys() != rel_data.get("parents", {}).keys():
             self.update_inheritance()
             self.update_all_related_inheritance()
     

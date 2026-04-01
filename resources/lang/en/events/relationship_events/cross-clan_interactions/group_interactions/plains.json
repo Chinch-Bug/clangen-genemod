@@ -37,7 +37,7 @@
                 "amount": 10,
                 "mutual": false,
                 "log": {
-                    "cats_from": "from_cat was saved from a cave-in by to_cat."
+                    "cats_from": "cat_from was saved from a cave-in by to_cat."
                 }
             }
         ]

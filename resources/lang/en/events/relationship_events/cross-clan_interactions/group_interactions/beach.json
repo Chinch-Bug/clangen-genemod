@@ -37,7 +37,7 @@
                 "amount": 5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat helped from_cat's Clan prepare protections against a flood."
+                    "cats_from": "cat_to helped cat_from's Clan prepare protections against a flood."
                 }
             }
         ],

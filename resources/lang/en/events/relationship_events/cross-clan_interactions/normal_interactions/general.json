@@ -42,7 +42,7 @@
                 "amount": -15,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat ambushed from_cat."
+                    "cats_from": "cat_to ambushed cat_from."
                 }
             }
         ]
@@ -89,7 +89,7 @@
                 "amount": -5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat pulled from_cat underwater as a prank."
+                    "cats_from": "cat_to pulled cat_from underwater as a prank."
                 }
             }
         ]
@@ -149,7 +149,7 @@
                 "amount": 5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "to_cat pulled from_cat underwater as a prank, both laughed it off."
+                    "cats_from": "cat_to pulled cat_from underwater as a prank, both laughed it off."
                 }
             }
         ]
@@ -181,7 +181,7 @@
                 "amount": 10,
                 "mutual": true,
                 "log": {
-                    "cats_from": "to_cat and from_cat encountered each other after sneaking out and spent the night playing."
+                    "cats_from": "cat_to and cat_from encountered each other after sneaking out and spent the night playing."
                 }
             }
         ]
@@ -213,7 +213,7 @@
                 "amount": 10,
                 "mutual": true,
                 "log": {
-                    "cats_from": "to_cat and from_cat encountered each other after sneaking out and spent the night playing."
+                    "cats_from": "cat_to and cat_from encountered each other after sneaking out and spent the night playing."
                 }
             }
         ]
@@ -245,7 +245,7 @@
                 "amount": -5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "from_cat heard to_cat shared Clan secrets with r_c from o_c_n."
+                    "cats_from": "cat_from heard cat_to shared Clan secrets with r_c from o_c_n."
                 }
             }
         ]
@@ -288,7 +288,7 @@
                 "amount": -5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat caught from_cat crossing the border accidentally and refused to accept an apology."
+                    "cats_from": "cat_to caught cat_from crossing the border accidentally and refused to accept an apology."
                 }
             },
             {
@@ -298,7 +298,7 @@
                 "amount": -5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "from_cat caught to_cat crossing the border accidentally."
+                    "cats_from": "cat_from caught cat_to crossing the border accidentally."
                 }
             }
         ]
@@ -338,7 +338,7 @@
                 "amount": -5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat mocked from_cat for accusing {PRONOUN/to_cat/object} of tresspassing."
+                    "cats_from": "cat_to mocked cat_from for accusing {PRONOUN/to_cat/object} of tresspassing."
                 }
             }
         ]
@@ -368,7 +368,7 @@
                 "amount": -5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "from_cat found evidence of r_c trespassing."
+                    "cats_from": "cat_from found evidence of r_c trespassing."
                 }
             }
         ]
@@ -401,7 +401,7 @@
                 "amount": -15,
                 "mutual": false,
                 "log": {
-                    "cats_from": "from_cat found evidence of to_cat sneaking into camp."
+                    "cats_from": "cat_from found evidence of cat_to sneaking into camp."
                 }
             }
         ],
@@ -440,7 +440,7 @@
                 "amount": 10,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat met up with to_cat at the border."
+                    "cats_from": "cat_from met up with cat_to at the border."
                 }
             }
         ]
@@ -496,7 +496,7 @@
                 "amount": -5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat got into an argument with to_cat."
+                    "cats_from": "cat_from got into an argument with to_cat."
                 }
             }
         ]
@@ -525,7 +525,7 @@
                 "amount": 5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat had a pleasant conversation with to_cat."
+                    "cats_from": "cat_from had a pleasant conversation with to_cat."
                 }
             }
         ]
@@ -553,7 +553,7 @@
                 "amount": 5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat had a pleasant discussion with to_cat."
+                    "cats_from": "cat_from had a pleasant discussion with to_cat."
                 }
             }
         ]
@@ -581,7 +581,7 @@
                 "amount": 5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat gave from_cat a toy at the Gathering, which to_cat secretly appreciated."
+                    "cats_from": "cat_to gave cat_from a toy at the Gathering, which cat_to secretly appreciated."
                 }
             }
         ]
@@ -609,7 +609,7 @@
                 "amount": -5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat gave from_cat a toy at the Gathering, which to_cat took offense to."
+                    "cats_from": "cat_to gave cat_from a toy at the Gathering, which cat_to took offense to."
                 }
             }
         ]
@@ -640,7 +640,7 @@
                 "amount": 5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat shared some tips with to_cat."
+                    "cats_from": "cat_from shared some tips with to_cat."
                 }
             }
         ]
@@ -668,7 +668,7 @@
                 "amount": 10,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat and to_cat pretended to fight like the older cats do."
+                    "cats_from": "cat_from and cat_to pretended to fight like the older cats do."
                 }
             }
         ],
@@ -699,7 +699,7 @@
                 "amount": -10,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat and to_cat got into an argument like the older cats do."
+                    "cats_from": "cat_from and cat_to got into an argument like the older cats do."
                 }
             }
         ],
@@ -732,7 +732,7 @@
                 "amount": -5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat and to_cat got into an argument over a digging competition."
+                    "cats_from": "cat_from and cat_to got into an argument over a digging competition."
                 }
             }
         ]
@@ -762,7 +762,7 @@
                 "amount": -5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat and to_cat got into an argument over a race."
+                    "cats_from": "cat_from and cat_to got into an argument over a race."
                 }
             }
         ]
@@ -792,7 +792,7 @@
                 "amount": 5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat and to_cat got into a digging competition that from_cat won."
+                    "cats_from": "cat_from and cat_to got into a digging competition that cat_from won."
                 }
             }
         ]
@@ -822,7 +822,7 @@
                 "amount": 5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat and to_cat got into a race that from_cat won."
+                    "cats_from": "cat_from and cat_to got into a race that cat_from won."
                 }
             }
         ]
@@ -853,7 +853,7 @@
                 "amount": 5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat shared some tips with to_cat."
+                    "cats_from": "cat_from shared some tips with to_cat."
                 }
             }
         ],
@@ -882,7 +882,7 @@
                 "amount": 5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat shared some prey with to_cat."
+                    "cats_from": "cat_from shared some prey with to_cat."
                 }
             }
         ],
@@ -928,7 +928,7 @@
                 "amount": 5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "from_cat believed to_cat's lies about what being an adult is like."
+                    "cats_from": "cat_from believed to_cat's lies about what being an adult is like."
                 }
             }
         ]
@@ -971,7 +971,7 @@
                 "amount": -10,
                 "mutual": false,
                 "log": {
-                    "cats_from": "from_cat caught to_cat lying to {PRONOUN/from_cat/object} about what being an adult is like."
+                    "cats_from": "cat_from caught cat_to lying to {PRONOUN/cat_from/object} about what being an adult is like."
                 }
             }
         ]
@@ -1003,7 +1003,7 @@
                 "amount": 5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "from_cat believed to_cat's boasting about c_n."
+                    "cats_from": "cat_from believed to_cat's boasting about c_n."
                 }
             }
         ]
@@ -1035,7 +1035,7 @@
                 "amount": 5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat and to_cat took turns boasting for fun."
+                    "cats_from": "cat_from and cat_to took turns boasting for fun."
                 }
             }
         ],
@@ -1100,7 +1100,7 @@
                 "amount": 5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat and to_cat took turns trading insults for fun."
+                    "cats_from": "cat_from and cat_to took turns trading insults for fun."
                 }
             }
         ]
@@ -1132,7 +1132,7 @@
                 "amount": -10,
                 "mutual": false,
                 "log": {
-                    "cats_from": "from_cat caught to_cat lying to {PRONOUN/from_cat/object} about life in c_n."
+                    "cats_from": "cat_from caught cat_to lying to {PRONOUN/cat_from/object} about life in c_n."
                 }
             }
         ]
@@ -1174,7 +1174,7 @@
                 "amount": 5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat and to_cat had a pleasant time catching up during the Gathering."
+                    "cats_from": "cat_from and cat_to had a pleasant time catching up during the Gathering."
                 }
             }
         ]
@@ -1215,7 +1215,7 @@
                 "amount": 5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat taught to_cat about some Clan history."
+                    "cats_from": "cat_from taught cat_to about some Clan history."
                 }
             }
         ]
@@ -1247,7 +1247,7 @@
                 "amount": 5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "from_cat got advice from to_cat."
+                    "cats_from": "cat_from got advice from to_cat."
                 }
             }
         ]
@@ -1280,7 +1280,7 @@
                 "amount": 5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "from_cat got advice from to_cat."
+                    "cats_from": "cat_from got advice from to_cat."
                 }
             }
         ]
@@ -1313,7 +1313,7 @@
                 "amount": 10,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat helped from_cat decipher an omen."
+                    "cats_from": "cat_to helped cat_from decipher an omen."
                 }
             }
         ]
@@ -1350,7 +1350,7 @@
                 "amount": 5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat flirted and chatted with to_cat during the Gathering."
+                    "cats_from": "cat_from flirted and chatted with cat_to during the Gathering."
                 }
             }
         ]
@@ -1382,7 +1382,7 @@
                 "amount": 5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "from_cat taught to_cat some new tricks at the Gathering."
+                    "cats_from": "cat_from taught cat_to some new tricks at the Gathering."
                 }
             }
         ]
@@ -1421,7 +1421,7 @@
                 "amount": -5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat teased from_cat for sitting alone at the Gathering."
+                    "cats_from": "cat_to teased cat_from for sitting alone at the Gathering."
                 }
             }
         ]
@@ -1452,7 +1452,7 @@
                 "amount": -5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "from_cat told to_cat about an angry spirit following {PRONOUN/to_cat/object} in front of other cats."
+                    "cats_from": "cat_from told cat_to about an angry spirit following {PRONOUN/to_cat/object} in front of other cats."
                 }
             }
         ]
@@ -1484,7 +1484,7 @@
                 "amount": -10,
                 "mutual": false,
                 "log": {
-                    "cats_from": "from_cat told to_cat about a Dark Forest ghost following {PRONOUN/to_cat/object} in front of other cats."
+                    "cats_from": "cat_from told cat_to about a Dark Forest ghost following {PRONOUN/to_cat/object} in front of other cats."
                 }
             }
         ]
@@ -1516,7 +1516,7 @@
                 "amount": 5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "from_cat told to_cat about a StarClan spirit following {PRONOUN/to_cat/object}."
+                    "cats_from": "cat_from told cat_to about a StarClan spirit following {PRONOUN/to_cat/object}."
                 }
             }
         ]
@@ -1554,7 +1554,7 @@
                 "amount": 10,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat and to_cat bonded during the Gathering."
+                    "cats_from": "cat_from and cat_to bonded during the Gathering."
                 }
             }
         ]
@@ -1593,7 +1593,7 @@
                 "amount": 5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat and to_cat bonded during the Gathering."
+                    "cats_from": "cat_from and cat_to bonded during the Gathering."
                 }
             }
         ]
@@ -1629,7 +1629,7 @@
                 "amount": 10,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat and to_cat talked about hypothetically being in the same Clan together."
+                    "cats_from": "cat_from and cat_to talked about hypothetically being in the same Clan together."
                 }
             }
         ]
@@ -1659,7 +1659,7 @@
                 "amount": -5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat spend the Gathering glaring at from_cat."
+                    "cats_from": "cat_to spend the Gathering glaring at cat_from."
                 }
             }
         ]
@@ -1701,7 +1701,7 @@
                 "amount": -15,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat spent the Gathering disrespecting from_cat."
+                    "cats_from": "cat_to spent the Gathering disrespecting cat_from."
                 }
             }
         ],
@@ -1746,7 +1746,7 @@
                 "amount": -15,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat spent the Gathering disrespecting from_cat."
+                    "cats_from": "cat_to spent the Gathering disrespecting cat_from."
                 }
             }
         ],
@@ -1795,7 +1795,7 @@
                 "amount": -15,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat spent the Gathering disrespecting from_cat."
+                    "cats_from": "cat_to spent the Gathering disrespecting cat_from."
                 }
             }
         ],
@@ -1847,7 +1847,7 @@
                 "amount": -10,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat lost {PRONOUN/from_cat/poss} temper at to_cat at the Gathering."
+                    "cats_from": "cat_from lost {PRONOUN/cat_from/poss} temper at cat_to at the Gathering."
                 }
             },
             {
@@ -1857,7 +1857,7 @@
                 "amount": -5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "from_cat heard to_cat caused a scene by losing {PRONOUN/from_cat/poss} temper at the Gathering."
+                    "cats_from": "cat_from heard cat_to caused a scene by losing {PRONOUN/cat_from/poss} temper at the Gathering."
                 }
             }
         ]
@@ -1905,7 +1905,7 @@
                 "amount": -10,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat and to_cat got into a spat."
+                    "cats_from": "cat_from and cat_to got into a spat."
                 }
             }
         ],
@@ -1946,7 +1946,7 @@
                 "amount": -5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "to_cat insulted o_c_n to from_cat's face."
+                    "cats_from": "cat_to insulted o_c_n to cat_from's face."
                 }
             }
         ],
@@ -1988,7 +1988,7 @@
                 "amount": -5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "to_cat mocked from_cat for struggling on the ice."
+                    "cats_from": "cat_to mocked cat_from for struggling on the ice."
                 }
             }
         ],
@@ -2022,7 +2022,7 @@
                 "amount": 5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat and to_cat bonded by complaining about the heat."
+                    "cats_from": "cat_from and cat_to bonded by complaining about the heat."
                 }
             }
         ],
@@ -2063,7 +2063,7 @@
                 "amount": -10,
                 "mutual": true,
                 "log": {
-                    "cats_from": "to_cat couldn't help but grimace in disgust over what m_c's favourite prey was."
+                    "cats_from": "cat_to couldn't help but grimace in disgust over what m_c's favourite prey was."
                 }
             }
         ]

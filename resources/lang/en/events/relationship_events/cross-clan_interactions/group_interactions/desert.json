@@ -37,7 +37,7 @@
                 "amount": 10,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat saved from_cat from a jackal."
+                    "cats_from": "cat_to saved cat_from from a jackal."
                 }
             }
         ],

@@ -26,7 +26,7 @@
                 "amount": -5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "from_cat didn't like to_cat stealing from gulls."
+                    "cats_from": "cat_from didn't like cat_to stealing from gulls."
                 }
             }
         ]
@@ -70,7 +70,7 @@
                 "amount": -5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "from_cat watched to_cat embarrass {PRONOUN/to_cat/self} trying to steal from gulls."
+                    "cats_from": "cat_from watched cat_to embarrass {PRONOUN/to_cat/self} trying to steal from gulls."
                 }
             },
             {
@@ -80,7 +80,7 @@
                 "amount": -5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "from_cat embarrassed {PRONOUN/from_cat/self} in front of to_cat by failing to steal from gulls."
+                    "cats_from": "cat_from embarrassed {PRONOUN/cat_from/self} in front of cat_to by failing to steal from gulls."
                 }
             }
         ],

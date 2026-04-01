@@ -27,7 +27,7 @@
                 "amount": 10,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat saved from_cat from a boar."
+                    "cats_from": "cat_to saved cat_from from a boar."
                 }
             }
         ]
@@ -61,7 +61,7 @@
                 "amount": 10,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat saved from_cat from a boar."
+                    "cats_from": "cat_to saved cat_from from a boar."
                 }
             }
         ]
@@ -96,7 +96,7 @@
                 "amount": 10,
                 "mutual": false,
                 "log": {
-                    "cats_from": "to_cat saved from_cat from a predator."
+                    "cats_from": "cat_to saved cat_from from a predator."
                 }
             }
         ],
