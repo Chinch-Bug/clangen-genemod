@@ -268,10 +268,11 @@ class Sprites:
         #         self.spritesheet(f"sprites/aprilfools{x}.png", "aprilfools"+x)
         #     self.spritesheet(f"sprites/{x}.png", x)
     
-        for x in ["lineart", "lineart_df", "lineart_sc"]:
+        for x in ["lineart", "lineart_df", "lineart_sc", "lineart_ur"]:
             self.spritesheet(f"sprites/{x}_aprilfools.png", x+"_aprilfools")
         self.make_group("lineart_aprilfools", (0, 0), "aprilfoolslines")
         self.make_group("lineart_sc_aprilfools", (0, 0), "aprilfoolslineartdead")
+        self.make_group("lineart_ur_aprilfools", (0, 0), "aprilfoolslineartur")
         self.make_group("lineart_df_aprilfools", (0, 0), "aprilfoolslineartdf")
 
         for x in os.listdir("sprites/genemod/borders"):
