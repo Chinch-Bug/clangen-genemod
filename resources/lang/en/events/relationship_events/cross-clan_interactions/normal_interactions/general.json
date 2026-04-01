@@ -338,7 +338,7 @@
                 "amount": -5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "cat_to mocked cat_from for accusing {PRONOUN/to_cat/object} of tresspassing."
+                    "cats_from": "cat_to mocked cat_from for accusing {PRONOUN/cat_to/object} of tresspassing."
                 }
             }
         ]
@@ -1452,7 +1452,7 @@
                 "amount": -5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "cat_from told cat_to about an angry spirit following {PRONOUN/to_cat/object} in front of other cats."
+                    "cats_from": "cat_from told cat_to about an angry spirit following {PRONOUN/cat_to/object} in front of other cats."
                 }
             }
         ]
@@ -1484,7 +1484,7 @@
                 "amount": -10,
                 "mutual": false,
                 "log": {
-                    "cats_from": "cat_from told cat_to about a Dark Forest ghost following {PRONOUN/to_cat/object} in front of other cats."
+                    "cats_from": "cat_from told cat_to about a Dark Forest ghost following {PRONOUN/cat_to/object} in front of other cats."
                 }
             }
         ]
@@ -1516,7 +1516,7 @@
                 "amount": 5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "cat_from told cat_to about a StarClan spirit following {PRONOUN/to_cat/object}."
+                    "cats_from": "cat_from told cat_to about a StarClan spirit following {PRONOUN/cat_to/object}."
                 }
             }
         ]

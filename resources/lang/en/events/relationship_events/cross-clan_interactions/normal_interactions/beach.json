@@ -70,7 +70,7 @@
                 "amount": -5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "cat_from watched cat_to embarrass {PRONOUN/to_cat/self} trying to steal from gulls."
+                    "cats_from": "cat_from watched cat_to embarrass {PRONOUN/cat_to/self} trying to steal from gulls."
                 }
             },
             {

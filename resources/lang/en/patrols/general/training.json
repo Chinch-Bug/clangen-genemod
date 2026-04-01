@@ -185,7 +185,8 @@
         "max_cats": 6,
         "min_max_status": {
             "deputy": [1, 1],
-            "leader": [-1, -1]
+            "leader": [-1, -1],
+            "healer cats": [ -1, -1 ]
         },
         "frequency": 2,
         "intro_text": "While training, p_l admits that {PRONOUN/p_l/subject} {VERB/p_l/don't/doesn't} think that {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} a good deputy.",

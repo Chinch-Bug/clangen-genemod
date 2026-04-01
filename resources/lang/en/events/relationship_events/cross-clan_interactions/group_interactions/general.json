@@ -386,7 +386,7 @@
                 "amount": -10,
                 "mutual": false,
                 "log": {
-                    "cats_from": "cat_from caught cat_to having a secret meeting and confronted {PRONOUN/to_cat/object}."
+                    "cats_from": "cat_from caught cat_to having a secret meeting and confronted {PRONOUN/cat_to/object}."
                 }
             }
         ]
@@ -431,7 +431,7 @@
                 "amount": -15,
                 "mutual": false,
                 "log": {
-                    "cats_from": "cat_to caught cat_from having a secret meeting and told {PRONOUN/to_cat/poss} Clan."
+                    "cats_from": "cat_to caught cat_from having a secret meeting and told {PRONOUN/cat_to/poss} Clan."
                 }
             },
             {
@@ -441,7 +441,7 @@
                 "amount": -10,
                 "mutual": false,
                 "log": {
-                    "cats_from": "cat_from caught cat_to having a secret meeting and told {PRONOUN/to_cat/poss} Clan."
+                    "cats_from": "cat_from caught cat_to having a secret meeting and told {PRONOUN/cat_to/poss} Clan."
                 }
             },
             {
@@ -493,7 +493,7 @@
                 "amount": 5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "cat_to taught cat_from about {PRONOUN/to_cat/poss} Clan at the Gathering."
+                    "cats_from": "cat_to taught cat_from about {PRONOUN/cat_to/poss} Clan at the Gathering."
                 }
             }
         ]
@@ -570,7 +570,7 @@
                 "amount": 5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "cat_to had cat_from enthralled in a story {PRONOUN/to_cat/subject} {VERB/to_cat/were/was} telling."
+                    "cats_from": "cat_to had cat_from enthralled in a story {PRONOUN/cat_to/subject} {VERB/cat_to/were/was} telling."
                 }
             }
         ]
