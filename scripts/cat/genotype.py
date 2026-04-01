@@ -1028,9 +1028,9 @@ class Genotype:
             if self.april_fools[gene] == ["", ""]:
                 del self.april_fools[gene]
             elif not self.april_fools[gene][0]:
-                self.april_fools[gene][0] = self.april_fools[gene][1].lower()
+                self.april_fools[gene][0] = self.april_fools[gene][1].lower() if gene != "rainbow_eyes" else "NoDRE"
             elif not self.april_fools[gene][1]:
-                self.april_fools[gene][1] = self.april_fools[gene][0].lower()
+                self.april_fools[gene][1] = self.april_fools[gene][0].lower() if gene != "rainbow_eyes" else "NoDRE"
 
         self.furLength = [choice(par1.furLength), choice(par2.furLength)]
         
