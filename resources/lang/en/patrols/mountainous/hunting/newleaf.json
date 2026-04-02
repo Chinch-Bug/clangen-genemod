@@ -151,14 +151,12 @@
                         ],
                         "injuries": [
                             "cold_injury"
-                        ],
-                        "scars": [
-                            "FROSTFACE"
                         ]
                     }
                 ],
                 "history_text": {
-                    "scar": "m_c caught a chill while hunting in newleaf."
+                    "scar": "m_c caught a chill while hunting in newleaf.",
+                    "death": "m_c died to a chill {PRONOUN/m_c/subject} caught while hunting in newleaf."
                 },
                 "relationships": [
                     {
@@ -257,14 +255,12 @@
                         ],
                         "injuries": [
                             "cold_injury"
-                        ],
-                        "scars": [
-                            "FROSTTAIL"
                         ]
                     }
                 ],
                 "history_text": {
-                    "scar": "m_c caught a chill while hunting in newleaf."
+                    "scar": "m_c caught a chill while hunting in newleaf.",
+                    "death": "m_c died to a chill {PRONOUN/m_c/subject} caught while hunting in newleaf."
                 },
                 "frequency": 3
             }
@@ -386,14 +382,12 @@
                         ],
                         "injuries": [
                             "cold_injury"
-                        ],
-                        "scars": [
-                            "FROSTTAIL"
                         ]
                     }
                 ],
                 "history_text": {
-                    "scar": "m_c caught a chill while hunting in newleaf."
+                    "scar": "m_c caught a chill while hunting in newleaf.",
+                    "death": "m_c died to a chill {PRONOUN/m_c/subject} caught while hunting in newleaf."
                 },
                 "frequency": 4
             }
@@ -850,8 +844,8 @@
                     }
                 ],
                 "history_text": {
-                    "death": "m_c succumbed to a broken bone after falling out of a tree.",
-                    "scar": "m_c carries a scar after falling out of a tree and breaking a bone."
+                    "scar": "m_c was scarred after falling out of a tree on a hunt.",
+                    "death": "m_c succumbed to a broken bone after falling out of a tree."
                     },
                 "relationships": [
                     {
@@ -1009,10 +1003,13 @@
                         ],
                         "injuries": [
                             "shivering"
-                        ],
-                        "scars": []
+                        ]
                     }
                 ],
+                "history_text": {
+                    "scar": "m_c caught a chill while hunting in leaf-bare.",
+                    "death": "m_c died to a chill {PRONOUN/m_c/subject} caught while hunting in newleaf."
+                },
                 "relationships": [
                     {
                         "cats_to": [

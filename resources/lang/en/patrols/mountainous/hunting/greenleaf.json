@@ -545,10 +545,13 @@
                         ],
                         "injuries": [
                             "broken bone"
-                        ],
-                        "scars": []
+                        ]
                     }
                 ],
+                "history_text": {
+                    "scar": "m_c was scarred by a fox.",
+                    "death": "m_c died of injuries inflicted by a fox."
+                },
                 "relationships": [
                     {
                         "cats_to": [

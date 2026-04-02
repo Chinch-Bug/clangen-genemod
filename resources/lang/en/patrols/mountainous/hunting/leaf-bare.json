@@ -158,8 +158,7 @@
                     "r_c"
                 ],
                 "history_text": {
-                    "scar": "m_c carries a scar from an eagle's beak.",
-                    "death": "m_c was killed by an eagle, scrapping over food."
+                    "death": "m_c was killed by an eagle while scrapping over food."
                 },
                 "relationships": [
                     {
@@ -191,15 +190,12 @@
                         ],
                         "injuries": [
                             "beak_bite"
-                        ],
-                        "scars": [
-                            "BEAKCHEEK"
                         ]
                     }
                 ],
                 "history_text": {
                     "scar": "m_c carries a scar from an eagle's beak.",
-                    "death": "m_c was killed by an eagle, scrapping over food."
+                    "death": "m_c died of injuries that were inflicted by an eagle while scrapping over food."
                 },
                 "relationships": [
                     {
@@ -409,15 +405,12 @@
                         ],
                         "injuries": [
                             "beak_bite"
-                        ],
-                        "scars": [
-                            "BEAKLOWER"
                         ]
                     }
                 ],
                 "history_text": {
                     "scar": "m_c carries a scar from an eagle's beak.",
-                    "death": "m_c was killed by an eagle, scrapping over food."
+                    "death": "m_c died of injuries that were inflicted by an eagle while scrapping over food."
                 },
                 "relationships": [
                     {
@@ -593,14 +586,12 @@
                         ],
                         "injuries": [
                             "cold_injury"
-                        ],
-                        "scars": [
-                            "FROSTFACE"
                         ]
                     }
                 ],
                 "history_text": {
-                    "scar": "m_c caught a chill while hunting in leaf-bare."
+                    "scar": "m_c caught a chill while hunting in leaf-bare.",
+                    "death": "m_c died to a chill {PRONOUN/m_c/subject} caught while hunting in leaf-bare."
                 },
                 "relationships": [
                     {
@@ -691,7 +682,6 @@
                     "r_c"
                 ],
                 "history_text": {
-                    "scar": "m_c caught a chill while hunting in leaf-bare.",
                     "death": "m_c died trying to provide for c_n during leaf-bare."
                 },
                 "frequency": 4
@@ -706,15 +696,12 @@
                         ],
                         "injuries": [
                             "cold_injury"
-                        ],
-                        "scars": [
-                            "FROSTFACE"
                         ]
                     }
                 ],
                 "history_text": {
                     "scar": "m_c caught a chill while hunting in leaf-bare.",
-                    "death": "m_c died trying to provide for c_n during leaf-bare."
+                    "death": "m_c died to a chill {PRONOUN/m_c/subject} caught while hunting in leaf-bare."
                 },
                 "frequency": 4
             }
@@ -827,7 +814,6 @@
                     "r_c"
                 ],
                 "history_text": {
-                    "scar": "m_c caught a chill while hunting in leaf-bare.",
                     "death": "m_c froze to death while hunting in a storm."
                 },
                 "relationships": [
@@ -854,15 +840,12 @@
                         ],
                         "injuries": [
                             "cold_injury"
-                        ],
-                        "scars": [
-                            "FROSTTAIL"
                         ]
                     }
                 ],
                 "history_text": {
                     "scar": "m_c caught a chill while hunting in leaf-bare.",
-                    "death": "m_c froze to death while hunting in a storm."
+                    "death": "m_c died to a chill {PRONOUN/m_c/subject} caught while hunting in leaf-bare."
                 },
                 "frequency": 4
             }
@@ -1320,8 +1303,8 @@
                     }
                 ],
                 "history_text": {
-                    "death": "m_c died after falling out of a tree on a hunt.",
-                    "scar": "m_c was scarred after falling out of a tree on a hunt."
+                    "scar": "m_c was scarred after falling out of a tree on a hunt.",
+                    "death": "m_c succumbed to a broken bone after falling out of a tree."
                 },
                 "relationships": [
                     {
@@ -1455,10 +1438,13 @@
                         ],
                         "injuries": [
                             "shivering"
-                        ],
-                        "scars": []
+                        ]
                     }
                 ],
+                "history_text": {
+                    "scar": "m_c caught a chill while hunting in leaf-bare.",
+                    "death": "m_c died to a chill {PRONOUN/m_c/subject} caught while hunting in leaf-bare."
+                },
                 "relationships": [
                     {
                         "cats_to": [
@@ -1731,14 +1717,12 @@
                         ],
                         "injuries": [
                             "beak_bite"
-                        ],
-                        "scars": [
-                            "BEAKCHEEK"
                         ]
                     }
                 ],
                 "history_text": {
-                    "scar": "m_c got a scar underestimating a blue jay."
+                    "scar": "m_c got a scar underestimating a blue jay.",
+                    "death": "m_c died to injuries {PRONOUN/m_c/subject} got after underestimating a blue jay."
                 },
                 "relationships": [
                     {
@@ -1784,14 +1768,12 @@
                         ],
                         "injuries": [
                             "beak_bite"
-                        ],
-                        "scars": [
-                            "BEAKCHEEK"
                         ]
                     }
                 ],
                 "history_text": {
-                    "scar": "m_c got a scar underestimating a blue jay."
+                    "scar": "m_c got a scar underestimating a blue jay.",
+                    "death": "m_c died to injuries {PRONOUN/m_c/subject} got after underestimating a blue jay."
                 },
                 "relationships": [
                     {
@@ -2062,7 +2044,6 @@
                     "all_lives"
                 ],
                 "history_text": {
-                    "scar": "m_c mistook a buzzard for a vulture and got pecked",
                     "death": "m_c was scared off a cliff by a large bird."
                 },
                 "frequency": 3
@@ -2077,15 +2058,12 @@
                         ],
                         "injuries": [
                             "beak_bite"
-                        ],
-                        "scars": [
-                            "BEAKLOWER"
                         ]
                     }
                 ],
                 "history_text": {
                     "scar": "m_c mistook a buzzard for a vulture and got pecked",
-                    "death": "m_c was scared off a cliff by a large bird."
+                    "death": "m_c died of injuries sustained after mistaking a buzzard for a vulture."
                 },
                 "frequency": 3
             },
@@ -2107,8 +2085,7 @@
                     "all_lives"
                 ],
                 "history_text": {
-                    "scar": "m_c mistook a buzzard for a vulture and got pecked",
-                    "death": "m_c was scared off a cliff by a large bird."
+                    "death": "m_c slipped off a cliff while trying to catch a buzzard."
                 },
                 "frequency": 3
             },
@@ -2132,15 +2109,12 @@
                         ],
                         "injuries": [
                             "beak_bite"
-                        ],
-                        "scars": [
-                            "BEAKLOWER"
                         ]
                     }
                 ],
                 "history_text": {
                     "scar": "m_c mistook a buzzard for a vulture and got pecked",
-                    "death": "m_c was scared off a cliff by a large bird."
+                    "death": "m_c died of injuries sustained after mistaking a buzzard for a vulture."
                 },
                 "frequency": 3
             }
@@ -2389,12 +2363,11 @@
                             "sore",
                             "scrapes",
                             "torn ear"
-                        ],
-                        "scars": []
+                        ]
                     }
                 ],
                 "history_text": {
-                    "scar": "r_c tore {PRONOUN/r_c/poss} ear while learning a harsh lesson about overestimating prey as an apprentice."
+                    "scar": "m_c was scarred while learning a harsh lesson about underestimating prey as an apprentice."
                 },
                 "relationships": [
                     {

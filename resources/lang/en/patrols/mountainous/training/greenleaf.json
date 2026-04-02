@@ -835,8 +835,7 @@
                         ],
                         "injuries": [
                             "stomachache"
-                        ],
-                        "scars": []
+                        ]
                     }
                 ],
                 "relationships": [
@@ -1162,9 +1161,7 @@
                         "injuries": [
                             "scrapes",
                             "bruises"
-                        ],
-                        "scars": [],
-                        "no_results": false
+                        ]
                     }
                 ],
                 "frequency": 4

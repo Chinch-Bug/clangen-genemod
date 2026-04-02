@@ -185,8 +185,7 @@
                     "multi"
                 ],
                 "history_text": {
-                    "scar": "m_c was badly scarred when rogues ambushed {PRONOUN/m_c/poss} patrol.",
-                    "death": "This cat was killed when rogues ambushed {PRONOUN/m_c/poss} patrol."
+                    "death": "m_c was killed when rogues ambushed {PRONOUN/m_c/poss} patrol."
                 },
                 "art": "gen_bord_otherclan_hostile",
                 "frequency": 4
@@ -201,15 +200,12 @@
                         ],
                         "injuries": [
                             "battle_injury"
-                        ],
-                        "scars": [
-                            "FACE"
                         ]
                     }
                 ],
                 "history_text": {
                     "scar": "m_c was badly scarred when rogues ambushed {PRONOUN/m_c/poss} patrol.",
-                    "death": "m_c was killed when rogues ambushed {PRONOUN/m_c/poss} patrol."
+                    "death": "m_c died of {PRONOUN/m_c/poss} injuries after {PRONOUN/m_c/poss} patrol was ambushed by rogues."
                 },
                 "frequency": 4
             }
@@ -268,7 +264,7 @@
                     "r_c"
                 ],
                 "history_text": {
-                    "death": "This cat was killed when rogues ambushed {PRONOUN/m_c/object} while on a solo patrol."
+                    "death": "m_c was killed when rogues ambushed {PRONOUN/m_c/object} while on a solo patrol."
                 },
                 "frequency": 3
             }
@@ -396,8 +392,7 @@
                     "multi"
                 ],
                 "history_text": {
-                    "scar": "m_c was badly scarred when rogues attacked {PRONOUN/m_c/poss} patrol.",
-                    "death": "This cat was killed when rogues attacked {PRONOUN/m_c/poss} patrol."
+                    "death": "m_c was killed when rogues attacked {PRONOUN/m_c/poss} patrol."
                 },
                 "art": "gen_bord_otherclan_hostile",
                 "frequency": 4
@@ -412,15 +407,12 @@
                         ],
                         "injuries": [
                             "battle_injury"
-                        ],
-                        "scars": [
-                            "THROAT"
                         ]
                     }
                 ],
                 "history_text": {
                     "scar": "m_c was badly scarred when rogues attacked {PRONOUN/m_c/poss} patrol.",
-                    "death": "This cat was killed when rogues attacked {PRONOUN/m_c/poss} patrol."
+                    "death": "m_c died of {PRONOUN/m_c/poss} injuries after {PRONOUN/m_c/poss} patrol was attacked by rogues."
                 },
                 "relationships": [
                     {
@@ -526,7 +518,7 @@
                     "r_c"
                 ],
                 "history_text": {
-                    "death": "This cat was killed when rogues ambushed {PRONOUN/m_c/object} while on a solo patrol."
+                    "death": "m_c was killed when rogues ambushed {PRONOUN/m_c/object} while on a solo patrol."
                 },
                 "art": "gen_bord_otherclan_hostile",
                 "frequency": 3
@@ -797,7 +789,7 @@
                     "patrol"
                 ],
                 "history_text": {
-                    "death": "This cat died trying to cross a dangerous river."
+                    "death": "m_c died trying to cross a dangerous river."
                 },
                 "frequency": 2
             },
@@ -808,7 +800,7 @@
                     "multi"
                 ],
                 "history_text": {
-                    "death": "This cat died trying to cross a dangerous river."
+                    "death": "m_c died trying to cross a dangerous river."
                 },
                 "frequency": 2
             },
@@ -839,7 +831,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was scarred from the injuries obtained by trying to cross a dangerous river.",
-                    "death": "This cat died from injuries obtained by trying to cross a dangerous river."
+                    "death": "m_c died from injuries obtained by trying to cross a dangerous river."
                 },
                 "frequency": 4
             },
@@ -854,7 +846,7 @@
                     "multi"
                 ],
                 "history_text": {
-                    "death": "This cat died trying to cross a dangerous river."
+                    "death": "m_c died trying to cross a dangerous river."
                 },
                 "frequency": 2
             },
@@ -893,7 +885,7 @@
                 ],
                 "history_text": {
                     "scar": "m_c was scarred from the injuries obtained by trying to cross a dangerous river.",
-                    "death": "This cat died from injuries obtained by trying to cross a dangerous river."
+                    "death": "m_c died from injuries obtained by trying to cross a dangerous river."
                 },
                 "frequency": 4
             }
@@ -1301,7 +1293,7 @@
                     "r_c"
                 ],
                 "history_text": {
-                    "death": "This cat died to keep c_n safe from a wolf."
+                    "death": "m_c died to keep c_n safe from a wolf."
                 },
                 "relationships": [
                     {
@@ -1334,15 +1326,12 @@
                         ],
                         "injuries": [
                             "big_bite_injury"
-                        ],
-                        "scars": [
-                            "BRIGHTHEART"
                         ]
                     }
                 ],
                 "history_text": {
-                    "scar": "This cat is scarred from bravely defending c_n against a wolf.",
-                    "death": "This cat died to keep c_n safe from a large wolf."
+                    "scar": "m_c was scarred defending c_n against a wolf.",
+                    "death": "m_c died of injuries inflicted by a large wolf."
                 },
                 "relationships": [
                     {
@@ -1379,15 +1368,12 @@
                         ],
                         "injuries": [
                             "mangled leg"
-                        ],
-                        "scars": [
-                            "MANLEG"
                         ]
                     }
                 ],
                 "history_text": {
-                    "scar": "This cat bears a mangled leg from a confrontation with a large wolf.",
-                    "death": "This cat died from a confrontation with a large wolf."
+                    "scar": "m_c bears a mangled leg after thinking {PRONOUN/m_c/subject} could take on a wolf by {PRONOUN/m_c/self}",
+                    "death": "m_c died from {PRONOUN/m_c/poss} injuries after trying to take on a wolf alone."
                 },
                 "relationships": [
                     {
@@ -1418,7 +1404,7 @@
                     "s_c"
                 ],
                 "history_text": {
-                    "death": "This cat died from a confrontation with a large wolf."
+                    "death": "m_c died after trying to take on a wolf alone."
                 },
                 "frequency": 3
             },
@@ -1433,7 +1419,7 @@
                     "s_c"
                 ],
                 "history_text": {
-                    "death": "This cat died from a confrontation with a large wolf."
+                    "death": "m_c died to a wolf after freezing up."
                 },
                 "frequency": 3
             },
@@ -1449,13 +1435,13 @@
                             "mangled tail"
                         ],
                         "scars": [
-                            "HALFTAIL"
+                            "HALFTAIL","NOTAIL"
                         ]
                     }
                 ],
                 "history_text": {
-                    "scar": "This cat's tail was mangled by a wolf.",
-                    "death": "This cat died from the wounds suffered in a confrontation with a large wolf."
+                    "scar": "m_c lost {PRONOUN/m_c/poss} tail to a wolf.",
+                    "death": "m_c died of an injury inflicted by a wolf."
                 },
                 "frequency": 4
             },
@@ -1473,7 +1459,7 @@
                     "oblivious"
                 ],
                 "history_text": {
-                    "death": "This cat died due to a large wolf."
+                    "death": "m_c died due to not paying attention to {PRONOUN/m_c/poss} surroundings."
                 },
                 "frequency": 4
             }

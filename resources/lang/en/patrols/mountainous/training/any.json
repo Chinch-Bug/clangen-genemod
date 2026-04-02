@@ -145,16 +145,18 @@
                             "app1"
                         ],
                         "injuries": [
-                            "minor_injury"
+                            "sprain"
+                        ]
+                    },
+                    {
+                        "cats": [
+                            "app1"
                         ],
-                        "scars": [
-                            "RIGHTEAR"
+                        "injuries": [
+                            "bruises"
                         ]
                     }
                 ],
-                "history_text": {
-                    "scar": "m_c got scarred tumbling off a cliff during apprentice training."
-                },
                 "frequency": 3
             }
         ]
@@ -339,16 +341,13 @@
                             "r_c"
                         ],
                         "injuries": [
-                            "big_bite_injury"
-                        ],
-                        "scars": [
-                            "ONE"
+                            "claw-wound"
                         ]
                     }
                 ],
                 "history_text": {
                     "scar": "m_c was scarred by a badger.",
-                    "death": "m_c lost their life to a badger."
+                    "death": "m_c died from wounds inflicted by a badger."
                 },
                 "frequency": 3
             }
@@ -524,15 +523,12 @@
                         ],
                         "injuries": [
                             "big_bite_injury"
-                        ],
-                        "scars": [
-                            "SIDE"
                         ]
                     }
                 ],
                 "history_text": {
-                    "scar": "This cat was scarred by a badger.",
-                    "death": "This cat died from wounds inflicted by a badger."
+                    "scar": "m_c was scarred by a badger.",
+                    "death": "m_c died from wounds inflicted by a badger."
                 },
                 "relationships": [
                     {
@@ -739,8 +735,7 @@
                     "r_c"
                 ],
                 "history_text": {
-                    "scar": "m_c carries a scar from being trapped on patrol",
-                    "death": "m_c tragically died after being trapped on patrol."
+                    "death": "m_c tragically died after a scree slope collapsed beneath {PRONOUN/m_c/object}."
                 },
                 "frequency": 3
             },
@@ -757,15 +752,12 @@
                         ],
                         "injuries": [
                             "blunt_force_injury"
-                        ],
-                        "scars": [
-                            "LEFTEAR"
                         ]
                     }
                 ],
                 "history_text": {
-                    "scar": "m_c carries a scar from being trapped on patrol",
-                    "death": "m_c tragically died after being trapped on patrol."
+                    "scar": "m_c carries a scar from when a scree slope collapsed beneath {PRONOUN/m_c/object}.",
+                    "death": "m_c died from {PRONOUN/m_c/poss} injuries after a scree slope collapsed beneath {PRONOUN/m_c/object}."
                 },
                 "frequency": 3
             },
@@ -776,8 +768,7 @@
                     "r_c"
                 ],
                 "history_text": {
-                    "scar": "m_c carries a scar from being trapped on patrol",
-                    "death": "m_c tragically died after being trapped on patrol."
+                    "death": "m_c tragically died after a scree slope collapsed beneath {PRONOUN/m_c/object}."
                 },
                 "frequency": 3
             },
@@ -791,15 +782,12 @@
                         ],
                         "injuries": [
                             "blunt_force_injury"
-                        ],
-                        "scars": [
-                            "LEFTEAR"
                         ]
                     }
                 ],
                 "history_text": {
-                    "scar": "m_c carries a scar from being trapped on patrol",
-                    "death": "m_c tragically died after being trapped on patrol."
+                    "scar": "m_c carries a scar from when a scree slope collapsed beneath {PRONOUN/m_c/object}.",
+                    "death": "m_c died from {PRONOUN/m_c/poss} injuries after a scree slope collapsed beneath {PRONOUN/m_c/object}."
                 },
                 "frequency": 3
             }
@@ -973,8 +961,7 @@
                     "r_c"
                 ],
                 "history_text": {
-                    "scar": "m_c carries a scar from being trapped on patrol",
-                    "death": "m_c tragically died after being trapped on patrol."
+                    "death": "m_c tragically died after a scree slope collapsed beneath {PRONOUN/m_c/object}."
                 },
                 "frequency": 3
             },
@@ -988,15 +975,12 @@
                         ],
                         "injuries": [
                             "blunt_force_injury"
-                        ],
-                        "scars": [
-                            "LEFTEAR"
                         ]
                     }
                 ],
                 "history_text": {
-                    "scar": "m_c carries a scar from being trapped on patrol",
-                    "death": "m_c tragically died after being trapped on patrol."
+                    "scar": "m_c carries a scar from when a scree slope collapsed beneath {PRONOUN/m_c/object}.",
+                    "death": "m_c died from {PRONOUN/m_c/poss} injuries after a scree slope collapsed beneath {PRONOUN/m_c/object}."
                 },
                 "frequency": 3
             }
@@ -1050,8 +1034,7 @@
                     "r_c"
                 ],
                 "history_text": {
-                    "scar": "m_c carries a scar from being trapped on patrol.",
-                    "death": "m_c tragically died after being trapped on patrol."
+                    "death": "m_c tragically died after a scree slope collapsed beneath {PRONOUN/m_c/object}."
                 },
                 "frequency": 3
             },
@@ -1065,15 +1048,12 @@
                         ],
                         "injuries": [
                             "blunt_force_injury"
-                        ],
-                        "scars": [
-                            "TOETRAP"
                         ]
                     }
                 ],
                 "history_text": {
-                    "scar": "m_c carries a scar from being trapped on patrol.",
-                    "death": "m_c tragically died after being trapped on patrol."
+                    "scar": "m_c carries a scar from when a scree slope collapsed beneath {PRONOUN/m_c/object}.",
+                    "death": "m_c died from {PRONOUN/m_c/poss} injuries after a scree slope collapsed beneath {PRONOUN/m_c/object}."
                 },
                 "frequency": 3
             }
@@ -1161,15 +1141,9 @@
                         ],
                         "injuries": [
                             "minor_injury"
-                        ],
-                        "scars": [
-                            "LEFTEAR"
                         ]
                     }
                 ],
-                "history_text": {
-                    "scar": "m_c got injured as an apprentice, exploring alone."
-                },
                 "frequency": 3
             }
         ]
@@ -1585,9 +1559,7 @@
                         ],
                         "injuries": [
                             "constant nightmares"
-                        ],
-                        "scars": [],
-                        "no_results": false
+                        ]
                     }
                 ],
                 "relationships": [
@@ -2523,7 +2495,7 @@
                             "cat bite"
                         ],
                         "scars": [
-                            "TAILBASE"
+                            "BACK", "TAILBASE"
                         ]
                     }
                 ],
@@ -2722,14 +2694,9 @@
                         "cats": ["r_c"],
                         "injuries": [
                             "constant nightmares"
-                        ],
-                        "scars": [],
-                        "no_results": false
+                        ]
                     }
                 ],
-                "history_text": {
-                    "death": "m_c died from lack of sleep, {PRONOUN/m_c/poss} vision haunted by dark shadows."
-                },
                 "frequency": 4
             },
             {
@@ -2971,9 +2938,8 @@
                     {
                         "cats": ["app1"],
                         "injuries": [
-                            "shivering"
-                        ],
-                        "scars": []
+                            "running nose"
+                        ]
                     }
                 ],
                 "relationships": [
@@ -3206,8 +3172,7 @@
                         ],
                         "injuries": [
                             "poisoned"
-                        ],
-                        "scars": []
+                        ]
                     }
                 ],
                 "history_text": {
@@ -3308,8 +3273,7 @@
                         ],
                         "injuries": [
                             "poisoned"
-                        ],
-                        "scars": []
+                        ]
                     }
                 ],
                 "history_text": {
