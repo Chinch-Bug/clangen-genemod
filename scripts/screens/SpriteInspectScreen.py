@@ -14,7 +14,6 @@ from ..ui.theme import get_text_box_theme
 from ..events_module.text_adjust import shorten_text_to_fit
 from ..ui.scale import ui_scale, ui_scale_dimensions, ui_scale_offset
 from .Screens import Screens
-from .enums import GameScreen
 from ..cat.sprites.load_sprites import sprites
 from scripts.cat.sprites.display_sprites import generate_sprite
 from .enums import GameScreen
@@ -100,7 +99,8 @@ class SpriteInspectScreen(Screens):
                     self.season_override = seasons[seasons.index(self.season_override)+1]
                 else:
                     self.season_override = seasons[0]
-                self.cat_setup()
+                self.reset_platform()
+                self.make_cat_image()
             elif event.ui_element == self.previous_life_stage:
                 self.displayed_life_stage = max(self.displayed_life_stage - 1, 0)
                 self.update_disabled_buttons()
@@ -223,11 +223,10 @@ class SpriteInspectScreen(Screens):
         )
 
         self.cycle_seasons_button = UISurfaceImageButton(
-            ui_scale(pygame.Rect((0, 550), (135, 30))),
+            ui_scale(pygame.Rect((622, 95), (135, 30))),
             "screens.sprite_inspect.cycle_seasons",
             get_button_dict(ButtonStyles.SQUOVAL, (135, 30)),
-            object_id="@buttonstyles_squoval",
-            anchors={"centerx": "centerx"}
+            object_id="@buttonstyles_squoval"
         )
 
         # Toggle Text:
@@ -272,15 +271,9 @@ class SpriteInspectScreen(Screens):
 
         self.cat_setup()
 
-    def cat_setup(self):
-        """Sets up all the elements related to the cat"""
-        for ele in self.cat_elements:
-            self.cat_elements[ele].kill()
-        self.cat_elements = {}
-        self.export_cat_button.enable()
-
-        self.the_cat = Cat.fetch_cat(switch_get_value(Switch.cat))
-
+    def reset_platform(self):
+        if "platform" in self.cat_elements:
+            self.cat_elements["platform"].kill()
         self.cat_elements["platform"] = pygame_gui.elements.UIImage(
             ui_scale(pygame.Rect((120, 100), (560, 490))),
             pygame.transform.scale(
@@ -298,6 +291,17 @@ class SpriteInspectScreen(Screens):
             manager=MANAGER,
         )
         self.set_background_visibility()
+
+    def cat_setup(self):
+        """Sets up all the elements related to the cat"""
+        for ele in self.cat_elements:
+            self.cat_elements[ele].kill()
+        self.cat_elements = {}
+        self.export_cat_button.enable()
+
+        self.the_cat = Cat.fetch_cat(switch_get_value(Switch.cat))
+
+        self.reset_platform()
 
         # Gather list of current and previous life states
         # "young adult", "adult", and "senior adult" all look the same: collapse to adult
