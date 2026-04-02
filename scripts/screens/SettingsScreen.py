@@ -21,6 +21,7 @@ from scripts.game_structure.game.settings import (
 # please don't do this. we have to.
 import scripts.game_structure.game.settings.settings as all_settings
 from scripts.game_structure import game
+from ..cat.cats import Cat
 from ..ui.elements.checkbox import UICheckbox
 from ..ui.elements.image_horizontal_slider import UIImageHorizontalSlider
 from ..ui.elements.modified_scrolling_container import UIModifiedScrollingContainer
@@ -218,14 +219,7 @@ class SettingsScreen(Screens):
                     self.settings_changed = True
                     self.update_save_button()
 
-                    if (
-                        self.sub_menu == "general"
-                        and event.ui_element in (self.checkboxes["shaders"], self.checkboxes["tints"], self.checkboxes["black_pupils"])
-                    ):
-                        from scripts.cat.cats import Cat
-                        for cat in Cat.all_cats.values():
-                            cat.pelt.rebuild_sprite = True
-
+                    
                     if (
                         self.sub_menu == "general"
                         and event.ui_element is self.checkboxes["dark mode"]
@@ -394,6 +388,10 @@ class SettingsScreen(Screens):
             if game_setting_get("custom cursor")
             else constants.DEFAULT_CURSOR
         )
+        # rebuild sprites in case shader setting was changed
+        if game.clan:
+            for cat in Cat.all_cats_list:
+                cat.pelt.rebuild_sprite = True
 
     def open_general_settings(self):
         """Opens and draws general_settings"""

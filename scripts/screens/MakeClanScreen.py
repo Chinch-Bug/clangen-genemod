@@ -16,6 +16,7 @@ from scripts.clan import Clan
 from scripts.events_module.patrol.patrol import Patrol
 from scripts.game_structure import image_cache, constants
 from scripts.game_structure import game
+from .screens_core.screens_core import rebuild_top_menu_buttons
 from ..ui.elements.sprite_button import UISpriteButton
 from ..ui.elements.image_button import UIImageButton
 from ..ui.elements.surface_image_button import UISurfaceImageButton
@@ -2306,6 +2307,7 @@ class MakeClanScreen(Screens):
         game.clan.save_herb_supply(game.clan)
         game.clan.grief_strings.clear()
         Cat.sort_cats()
+        rebuild_top_menu_buttons()
 
     def get_camp_art_path(self, campnum) -> Optional[str]:
         if not campnum:
