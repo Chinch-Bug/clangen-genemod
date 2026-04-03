@@ -452,7 +452,7 @@
                 "pool": {
                     "sub_type": ["murder_reveal"]
                 },
-                "moon_delay": [1,24],
+                "moon_delay": [1,12],
                 "involved_cats": {
                     "m_c": "r_c",
                     "mur_c": "m_c",
@@ -562,7 +562,7 @@
                 "pool": {
                     "sub_type": ["murder_reveal"]
                 },
-                "moon_delay": [1,24],
+                "moon_delay": [1,12],
                 "involved_cats": {
                     "m_c": "r_c",
                     "mur_c": "m_c",
@@ -660,7 +660,7 @@
                 "pool": {
                     "sub_type": ["murder_reveal"]
                 },
-                "moon_delay": [1,24],
+                "moon_delay": [1,12],
                 "involved_cats": {
                     "m_c": "r_c",
                     "mur_c": "m_c",

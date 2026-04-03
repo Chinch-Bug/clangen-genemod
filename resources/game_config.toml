@@ -80,6 +80,9 @@ dev_tools = false
 
   # base 1/chance for mates to break up. Affected by relationship values and personality compatibility. 0 disables breakups entirely
   base_breakup_chance = 30
+  
+  # chance to move on from a dead or absent mate, fraction represents a percentage. default is 30% chance.
+  chance_to_move_on = 0.3
 
   # NOTE FOR RELATIONSHIP CONSTRAINTS
   #  0: no condition
