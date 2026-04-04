@@ -1356,6 +1356,47 @@
         ]
     },
     {
+        "event_id": "gen_single_gathering_romance2",
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "sub_type": [ "romance" ],
+        "frequency": 1,
+        "event_text": [
+            "m_c and r_c have been acting remarkably close at the Gathering.",
+            "m_c and r_c were seen getting much too comfortable together at the Gathering.",
+            "m_c and r_c couldn't help but gravitate towards each other during the Gathering."
+        ],
+        "m_c": {
+        },
+        "r_c": {
+            "relationship_status": [
+                "likes"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "romance", "comfort", "like" ],
+                "amount": 15,
+                "mutual": true,
+                "log": {
+                    "cats_from": "cat_from and cat_to were inseparable at the Gathering."
+                }
+            },
+            {
+                "cats_from": [ "clan", "high_lawful" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "respect", "trust" ],
+                "amount": -10,
+                "mutual": true,
+                "log": {
+                    "cats_from": "cat_from is suspicious that cat_to is getting too close to rival Clans' cats."
+                }
+            }
+        ]
+    },
+    {
         "event_id": "gen_single_gathering_teacher1",
         "location": [
             "any"
