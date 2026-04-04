@@ -213,6 +213,7 @@ class Cat:
         elif self.gender == 'male':
             self.gender = 'masc'
         self.status: Status = Status(**status_dict) if status_dict else Status()
+        kittypet = (kittypet or self.status.social == CatSocial.KITTYPET)
         self.backstory = backstory
         self.age: Optional[CatAge] = None
         self.skills = CatSkills(skill_dict=skill_dict)
@@ -266,14 +267,14 @@ class Cat:
                     self.phenotype.Generator(kittypet=kittypet, special=self.gender)
         else:
             if not chimera:
-                if (kittypet or self.status.social == CatSocial.KITTYPET) and constants.CONFIG["cat_generation"]["kittypet_gene_boost"]:
+                if kittypet and constants.CONFIG["cat_generation"]["kittypet_gene_boost"]:
                     self.phenotype.AltGenerator(special=self.gender)
                 else:
                     self.phenotype.Generator(special=self.gender, kittypet=kittypet)
             else:
                 par1 = Phenotype(gene_config, game_setting_get("ban problem genes"))
                 par2 = Phenotype(gene_config, game_setting_get("ban problem genes"))
-                if (kittypet or self.status.social == CatSocial.KITTYPET) and constants.CONFIG["cat_generation"]["kittypet_gene_boost"]:
+                if kittypet and constants.CONFIG["cat_generation"]["kittypet_gene_boost"]:
                     par1.AltGenerator()
                     par2.AltGenerator()
                 else:
