@@ -291,7 +291,7 @@ class Cat:
             if 'NoDBE' not in self.phenotype.pax3 and 'DBEalt' not in self.phenotype.pax3:
                 self.phenotype.pax3[0] = 'DBEalt'
         
-        if not loading_cat:
+        if not loading_cat and not self.disable_random:
             if(randint(1, constants.CONFIG['genetics_config']['intersex']) == 1) or (self.chimerapheno and xor('Y' in self.phenotype.sexgene, 'Y' in self.chimerapheno.sexgene)):
                 self.phenotype.sex = "intersex"
                 if (randint(1, 25) == 1 and 'Y' in self.phenotype.sexgene) or (self.chimerapheno and xor('Y' in self.phenotype.sexgene, 'Y' in self.chimerapheno.sexgene) and randint(1, 10) == 1):
