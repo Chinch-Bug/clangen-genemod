@@ -1302,7 +1302,7 @@ class OtherClan:
         if camp_bg:
             self.camp_bg = camp_bg
         else:
-            self.camp_bg = f"camp{randint(1, 4) if self.biome in ("Forest", "Mountainous", "Beach") else randint(1, 3)}"
+            self.camp_bg = f"camp{randint(1, 4)}"
         # self.relations = relations or randint(8, 12)
         self.temperament = temperament or choice(self.temperament_list)
         if self.temperament not in self.temperament_list:

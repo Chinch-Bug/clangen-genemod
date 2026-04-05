@@ -28,7 +28,7 @@ BIOME_TYPES = ["Forest", "Plains", "Mountainous", "Beach", "Wetlands", "Desert"]
 CAMPS: dict = {
     "Forest": ["Classic", "Gully", "Grotto", "Lakeside"],
     "Mountainous": ["Cliff", "Cavern", "Crystal River", "Ruins"],
-    "Plains": ["Grasslands", "Tunnels", "Wastelands"],
+    "Plains": ["Grasslands", "Tunnels", "Wastelands", "Bridge"],
     "Beach": ["Tidepools", "Tidal Cave", "Shipwreck", "Fjord"],
 }
 
