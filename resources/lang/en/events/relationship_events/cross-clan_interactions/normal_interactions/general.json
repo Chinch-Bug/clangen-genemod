@@ -2108,5 +2108,44 @@
                 }
             }
         ]
+    },
+    {
+        "event_id": "gen_single_prey2",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "leaf-bare"
+        ],
+        "sub_type": [ ],
+        "frequency": 1,
+        "event_text": [
+            "While out hunting, m_c encountered r_c struggling to do the same. {PRONOUN/m_c/subject/CAP} share some prey, since o_c_n seemed to need it more."
+        ],
+        "m_c": {
+            "status": ["apprentice", "warrior", "deputy", "leader"],
+            "trait": [
+                "righteous",
+                "compassionate",
+                "sneaky",
+                "thoughtful",
+                "sincere"
+            ]
+        },
+        "r_c": {
+            "status": [ "apprentice", "warrior", "deputy", "leader" ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "like", "trust", "respect" ],
+                "amount": 10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_to shared prey with cat_from to help o_c_n."
+                }
+            }
+        ]
     }
 ]

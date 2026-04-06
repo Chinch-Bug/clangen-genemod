@@ -106,7 +106,7 @@ def event_for_season(seasons: list) -> bool:
 
     is_exclusionary = _check_for_exclusionary_value(seasons)
     if is_exclusionary:
-        seasons = [x.replace("-", "") for x in seasons]
+        seasons = [x.replace("-", "", 1) for x in seasons]
 
     if game.clan.current_season.lower() in seasons:
         return not is_exclusionary
