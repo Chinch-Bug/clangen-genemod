@@ -1807,6 +1807,8 @@ class Genotype:
             hetindex = randint(0, self.odds["het_dom_white_one_blue_eye"]-1) if self.odds["het_dom_white_one_blue_eye"] > 1 else 0
             if randint(1, 10) == 1 and hetindex == 0:
                 self.deaf = True
+            elif randint(1, 20) == 1:
+                self.deaf = True
         if self.white == ["W","W"]:
             hetindex = randint(0, self.odds["homo_dom_white_one_blue_eye"]-1) if self.odds["homo_dom_white_one_blue_eye"] > 1 else 0
             if randint(1, 8) == 1 and hetindex == 0:

@@ -503,6 +503,10 @@ def json_load():
                 status_dict = {"rank": cat["status"], "age": age}
             else:
                 status_dict = cat["status"]
+
+            if "pattern" in cat:
+                cat["tortie_marking"] = cat["pattern"]
+                del cat["pattern"]
             try:
                 new_cat = Cat(ID=cat["ID"],
                         prefix=cat["name_prefix"],
@@ -546,10 +550,6 @@ def json_load():
             if "white_patches_tint" in cat:
                 if cat["white_patches_tint"] == "none":
                     cat["white_patches_tint"] = None
-
-            if "pattern" in cat:
-                cat["tortie_marking"] = cat["pattern"]
-                del cat["pattern"]
 
             new_cat.pelt = Pelt(
                 new_cat.phenotype,
