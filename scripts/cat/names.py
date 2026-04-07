@@ -377,30 +377,32 @@ class Name:
         try:
             if self.mod_suffixes and skills and personality:
                 options = []
-                for i in range(4):
+                suffix_settings = constants.CONFIG["cat_name_controls"]["alt_suffixes"]
+                for i in range(suffix_settings["primary_skill"]):
                     try:
                         options.append(self.mod_suffixes['skill'][skills.primary.path.name])
                     except:
                         break
 
                 if skills.secondary:
-                    for i in range(2):
+                    for i in range(suffix_settings["secondary_skill"]):
                         options.append(self.mod_suffixes['skill'].get(skills.secondary.path.name, []))
                 
-                
-                for i in range(2):
+                for i in range(suffix_settings["trait"]):
                     try:
                         options.append(self.mod_suffixes['trait'][personality.trait]['general'])
                     except:
                         options.append(self.mod_suffixes['trait'].get(personality.trait, []))
-                    if honour:
+                if honour:
+                    for i in range(suffix_settings["trait_honour"]):
                         try:
                             options.append(self.mod_suffixes['trait'][personality.trait].get(honour, []))
                         except:
-                            pass
+                            options.append(self.mod_suffixes['honour'].get(honour, []))
+                    for i in range(suffix_settings["general_honour"]):
                         options.append(self.mod_suffixes['honour'].get(honour, []))
 
-                for i in range(1):
+                for i in range(suffix_settings["special"]):
                     options.append(self.mod_suffixes['other']['special'])
 
                 appearance = self.mod_suffixes['other']['common']
@@ -432,9 +434,9 @@ class Name:
                 if 'curl' in self.phenotype.eartype or 'curl' in self.phenotype.tailtype or 'rexed' in self.phenotype.furtype:
                     appearance += self.mod_suffixes['other']['appearance'].get('curled', [])
                 
-                size = 3
+                size = suffix_settings["common"]
                 if self.cat.moons < 11 or (self.cat.status.rank.is_any_medicine_rank() and self.cat.moons < 15):
-                    size = 1
+                    size = suffix_settings["common_early"]
                 for i in range(size):
                     options.append(appearance)
                 self.suffix = ""

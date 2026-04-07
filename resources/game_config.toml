@@ -379,6 +379,19 @@ dev_tools = false
   kittypet_gene_boost = false
 
 [cat_name_controls]
+  [cat_name_controls.alt_suffixes] # only with alt suffixes on
+    # how likely should a suffix list be (relative to each other)
+    primary_skill = 4
+    secondary_skill = 2
+
+    trait = 2
+    general_honour = 1
+    trait_honour = 1 # trait-specific honours lists ; if trait-specific honours removed entirely, uses general_honour instead
+
+    special = 1
+    common = 3 # for cats not graduating early
+    common_early = 1 # for healers graduating before 15 and other cats graduating before 12 moons old
+
   # if changing prefixes is enabled, 1/chance for a cat to change their prefix when coming out as trans
   trans_prefix_change_chance = 25
 
