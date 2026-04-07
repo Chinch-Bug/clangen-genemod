@@ -8271,7 +8271,7 @@
         ],
         "tags": [],
         "frequency": 2,
-        "event_text": "m_c mixed up the herb dosages for r_c, and despite {PRONOUN/m_c/poss} desperate efforts, r_c perished from the overdose.",
+        "event_text": "m_c mixed up the herb dosages for r_c, and despite {PRONOUN/m_c/poss} desperate efforts, the poisoning is fatal.",
         "m_c": {
             "status": [
                 "healer",

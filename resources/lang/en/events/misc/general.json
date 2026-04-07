@@ -4636,7 +4636,8 @@
             ],
             "status": [
                 "apprentice"
-            ]
+            ],
+            "relationship_status": ["fancies"]
         },
         "relationships": [
             {
