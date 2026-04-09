@@ -970,6 +970,13 @@ def generate_sprite(
                     blue.blit(whichmain, (0, 0), special_flags=pygame.BLEND_RGB_ADD)
                     whichmain.blit(blue, (0, 0))
 
+                if is_red and phenotype.specialred == "blue-tipped" and special != "blue-tipped":
+                    mask = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                    mask.blit(sprites.sprites['BLUE-TIPPED' + cat_sprite], (0, 0))
+                    colours = phenotype.FindRed(phenotype, sprite_age, 'blue-tipped')
+                    mask.blit(make_cat(pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA), colours[0], colours[1], [colours[2], colours[3]], "blue-tipped"), (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    whichmain.blit(mask, (0, 0))
+                    
                 seasondict = {
                     'Greenleaf': 'summer',
                     'Leaf-bare': 'winter'
@@ -1179,7 +1186,6 @@ def generate_sprite(
                 hairless.blit(sprites.sprites['donskoy' + cat_sprite], (0, 0))
             
             if('sparse' in cat.phenotype.furtype):
-                hairless.blit(sprites.sprites['satin0'], (0, 0))
                 hairless.blit(sprites.sprites['satin0'], (0, 0))
                 hairless.blit(sprites.sprites['lykoi' + cat_sprite], (0, 0))
             
