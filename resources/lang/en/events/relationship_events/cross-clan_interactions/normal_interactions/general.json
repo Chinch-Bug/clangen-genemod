@@ -2048,7 +2048,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c met r_c resting in the shade and join {PRONOUN/r_c/object}, commiserating about the recent heat."
+            "m_c met r_c resting in the shade and joined {PRONOUN/r_c/object}, commiserating about the recent heat."
         ],
         "m_c": {
         },
