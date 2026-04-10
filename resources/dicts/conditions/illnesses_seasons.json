@@ -2,23 +2,22 @@
     "Newleaf":{
         "running nose": 2,
         "stomachache": 1,
-        "ear infection" : 1
+        "tick fever": 1,
+        "ear infection": 1
     },
     "Greenleaf":{
         "fleas": 2,
-        "stomachache": 1,
-        "heat exhaustion": 3,
-        "heat stroke": 1,
-        "ear infection" : 1,
-        "tick fever": 2
+        "stomachache":1,
+        "heat exhaustion":3,
+        "heat stroke":1,
+        "tick fever":1
     },
     "Leaf-fall":{
         "stomachache": 1,
         "greencough": 1,
         "kittencough": 4,
         "running nose": 3,
-        "ear infection" : 1,
-        "tick fever": 1
+        "ear infection": 1
     },
     "Leaf-bare":{
         "stomachache": 1,

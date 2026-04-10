@@ -556,6 +556,8 @@ class Condition_Events:
             "bad back",
             "crooked jaw",
             "selective mutism",
+            "absent",
+            "crooked jaw",
         )
 
         got_condition = False
