@@ -1539,8 +1539,8 @@ class TestCatConstraint(unittest.TestCase):
             )
 
     def test_gender(self):
-        male = Cat(gender="male")
-        female = Cat(gender="female")
+        male = Cat(gender="male", disable_random=True)
+        female = Cat(gender="female", disable_random=True)
 
         with self.subTest("empty"):
             self.assertTrue(event_for_cat(cat=male, cat_info={"gender": []}))

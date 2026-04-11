@@ -116,7 +116,7 @@
         "same sex birth_tooltip": "Allow all cats to get pregnant despite their gender and all couples to birth kittens despite same-sex status.",
         "same sex adoption": "Increase same-sex adoption",
         "same sex adoption_tooltip": "If same-sex birth is disabled, this option greatly increases the chances of same-sex couples adopting.",
-        "single parentage": "Allow cats without a mate to have kits with cats outside the Clan",
+        "single parentage": "Allow cats with no mate to have kits with cats outside the Clan",
         "single parentage_tooltip": "Allow cats to have kittens with a biological parent outside your Clan.",
         "halfclan single": "Only half-Clan",
         "halfclan single_tooltip": "Litters with an outside second parent will always be half-Clan.",

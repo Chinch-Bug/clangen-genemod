@@ -681,6 +681,9 @@ dev_tools = false
   kittypet_breed = 75
   other_breed = 1000
 
+  # when gene boost is applicable, chance will be divided by this value and rounded up. Eg. for chocolate it would be 20/1.5 = 14
+  boost_value = 1.5
+
   chimera = 1000
   identical_twins = 333
   intersex = 100

@@ -698,23 +698,25 @@ class Genotype:
 
         self.CommonGen(special)
 
+        modifier = self.odds["boost_value"]
+
         # EUMELANIN
 
         for i in range(2):
-            if self.odds["cinnamon"] > 1 and randint(1, round(self.odds["cinnamon"]/1.5)) == 1 or self.odds["cinnamon"] == 1:
+            if self.odds["cinnamon"] > 1 and randint(1, math.ceil(self.odds["cinnamon"]/modifier)) == 1:
                 self.eumelanin[i] = "bl"
-            elif self.odds["chocolate"] > 1 and randint(1, round(self.odds["chocolate"]/1.5)) == 1 or self.odds["chocolate"] == 1:
+            elif self.odds["chocolate"] > 1 and randint(1, math.ceil(self.odds["chocolate"]/modifier)) == 1:
                 self.eumelanin[i] = "b"
             else:
                 self.eumelanin[i] = "B"
 
         # WHITE
         
-            if self.odds["birman gloving"] > 1 and randint(1, round(self.odds["birman gloving"]/1.5)) == 1 or self.odds["birman gloving"] == 1:
+            if self.odds["birman gloving"] > 1 and randint(1, math.ceil(self.odds["birman gloving"]/modifier)) == 1:
                 self.white[i] = "wg"
-            elif self.odds["thai white"] > 1 and randint(1, round(self.odds["thai white"]/1.5)) == 1 or self.odds["thai white"] == 1:
+            elif self.odds["thai white"] > 1 and randint(1, math.ceil(self.odds["thai white"]/modifier)) == 1:
                 self.white[i] = "wt"
-            elif self.odds["salmiak"] > 1 and randint(1, round(self.odds["salmiak"]/1.5)) == 1 or self.odds["salmiak"] == 1:
+            elif self.odds["salmiak"] > 1 and randint(1, math.ceil(self.odds["salmiak"]/modifier)) == 1:
                 self.white[i] = "wsal"
             elif self.odds["dominant white"] > 0 and randint(1, self.odds["dominant white"]) == 1:
                 self.white[i] = "W"
@@ -725,20 +727,20 @@ class Genotype:
 
         # ALBINO
 
-            if (self.odds["albino"] > 1 and randint(1, round(self.odds["albino"]/1.5)) == 1 or self.odds["albino"] == 1) and not self.ban_genes:
+            if self.odds["albino"] > 1 and randint(1, math.ceil(self.odds["albino"]/modifier)) == 1 and not self.ban_genes:
                 self.pointgene[i] = "c"
-            elif self.odds["mocha"] > 1 and randint(1, round(self.odds["mocha"]/1.5)) == 1 or self.odds["mocha"] == 1:
+            elif self.odds["mocha"] > 1 and randint(1, math.ceil(self.odds["mocha"]/modifier)) == 1:
                 self.pointgene[i] = "cm"
-            elif self.odds["sepia"] > 1 and randint(1, round(self.odds["sepia"]/1.5)) == 1 or self.odds["sepia"] == 1:
+            elif self.odds["sepia"] > 1 and randint(1, math.ceil(self.odds["sepia"]/modifier)) == 1:
                 self.pointgene[i] = "cb"
-            elif self.odds["colourpoint"] > 1 and randint(1, round(self.odds["colourpoint"]/1.5)) == 1 or self.odds["colourpoint"] == 1:
+            elif self.odds["colourpoint"] > 1 and randint(1, math.ceil(self.odds["colourpoint"]/modifier)) == 1:
                 self.pointgene[i] = "cs"
             else:
                 self.pointgene[i] = "C"
 
         # AGOUTI
 
-            if self.odds["charcoal"] > 1 and randint(1, round(self.odds["charcoal"]/1.5)) == 1 or self.odds["charcoal"] == 1:
+            if self.odds["charcoal"] > 1 and randint(1, math.ceil(self.odds["charcoal"]/modifier)) == 1:
                 self.agouti[i] = "Apb"
             elif self.odds["solid"] > 0 and randint(1, self.odds["solid"]) == 1:
                 self.agouti[i] = "a"
@@ -748,118 +750,118 @@ class Genotype:
         # YORK, WIREHAIR, LAPERM, CORNISH, URAL, TENN, FLEECE
 
         for i in range(2):
-            if self.odds["wirehair"] > 1 and randint(1, round(self.odds["wirehair"]/1.5)) == 1 or self.odds["wirehair"] == 1:
+            if self.odds["wirehair"] > 1 and randint(1, math.ceil(self.odds["wirehair"]/modifier)) == 1:
                 self.wirehair[i] = "Wh"
-            if self.odds["laperm"] > 1 and randint(1, round(self.odds["laperm"]/1.5)) == 1 or self.odds["laperm"] == 1:
+            if self.odds["laperm"] > 1 and randint(1, math.ceil(self.odds["laperm"]/modifier)) == 1:
                 self.laperm[i] = "Lp"
-            if self.odds["cornish"] > 1 and randint(1, round(self.odds["cornish"]/1.5)) == 1 or self.odds["cornish"] == 1:
+            if self.odds["cornish"] > 1 and randint(1, math.ceil(self.odds["cornish"]/modifier)) == 1:
                 self.cornish[i] = "r"
-            if self.odds["urals"] > 1 and randint(1, round(self.odds["urals"]/1.5)) == 1 or self.odds["urals"] == 1:
+            if self.odds["urals"] > 1 and randint(1, math.ceil(self.odds["urals"]/modifier)) == 1:
                 self.urals[i] = "ru"
-            if self.odds["tenn"] > 1 and randint(1, round(self.odds["tenn"]/1.5)) == 1 or self.odds["tenn"] == 1:
+            if self.odds["tenn"] > 1 and randint(1, math.ceil(self.odds["tenn"]/modifier)) == 1:
                 self.tenn[i] = "tr"
-            if self.odds["fleece"] > 1 and randint(1, round(self.odds["fleece"]/1.5)) == 1 or self.odds["fleece"] == 1:
+            if self.odds["fleece"] > 1 and randint(1, math.ceil(self.odds["fleece"]/modifier)) == 1:
                 self.fleece[i] = "fc"
             
         
         #SELKIRK/DEVON/HAIRLESS
     
-            if (self.odds["canadian hairless"] > 1 and randint(1, round(self.odds["canadian hairless"]/1.5)) == 1 or self.odds["canadian hairless"] == 1) and not self.ban_genes:
+            if self.odds["canadian hairless"] > 1 and randint(1, math.ceil(self.odds["canadian hairless"]/modifier)) == 1 and not self.ban_genes:
                 self.sedesp[i] = "hr"
-            elif self.odds["devon"] > 1 and randint(1, round(self.odds["devon"]/1.5)) == 1 or self.odds["devon"] == 1:
+            elif self.odds["devon"] > 1 and randint(1, math.ceil(self.odds["devon"]/modifier)) == 1:
                 self.sedesp[i] = "re"
-            elif self.odds["selkirk"] > 1 and randint(1, round(self.odds["selkirk"]/1.5)) == 1 or self.odds["selkirk"] == 1:
+            elif self.odds["selkirk"] > 1 and randint(1, math.ceil(self.odds["selkirk"]/modifier)) == 1:
                 self.sedesp[i] = "Se"
 
 
         #ruhr + ruhrmod + lykoi
-            if (self.odds["russian hairless"] > 1 and randint(1, round(self.odds["russian hairless"]/1.5)) == 1 or self.odds["russian hairless"] == 1) and not self.ban_genes:
+            if self.odds["russian hairless"] > 1 and randint(1, math.ceil(self.odds["russian hairless"]/modifier)) == 1 and not self.ban_genes:
                 self.ruhr[i] = "Hrbd"
-            if (self.odds["lykoi"] > 1 and randint(1, round(self.odds["lykoi"]/1.5)) == 1 or self.odds["lykoi"] == 1) and not self.ban_genes:
+            if self.odds["lykoi"] > 1 and randint(1, math.ceil(self.odds["lykoi"]/modifier)) == 1 and not self.ban_genes:
                 self.lykoi[i] = "ly"
 
         # pinkdilute + dilutemd
 
         for i in range(2):
-            if (self.odds["pink-eyed dilute"] > 1 and randint(1, round(self.odds["pink-eyed dilute"]/1.5)) == 1 or self.odds["pink-eyed dilute"] == 1) and not self.ban_genes:
+            if self.odds["pink-eyed dilute"] > 1 and randint(1, math.ceil(self.odds["pink-eyed dilute"]/modifier)) == 1 and not self.ban_genes:
                 self.pinkdilute[i] = "dp"
-            if self.odds["dilute modifier"] > 1 and randint(1, round(self.odds["dilute modifier"]/1.5)) == 1 or self.odds["dilute modifier"] == 1:
+            if self.odds["dilute modifier"] > 1 and randint(1, math.ceil(self.odds["dilute modifier"]/modifier)) == 1:
                 self.dilutemd[i] = "Dm"
 
         # ext
 
-            if self.odds["grizzle"] > 1 and randint(1, round(self.odds["grizzle"]/1.5)) == 1 or self.odds["grizzle"] == 1:
+            if self.odds["grizzle"] > 1 and randint(1, math.ceil(self.odds["grizzle"]/modifier)) == 1:
                 self.ext[i] = "Eg"
-            elif self.odds["carnelian"] > 1 and randint(1, round(self.odds["carnelian"]/1.5)) == 1 or self.odds["carnelian"] == 1:
+            elif self.odds["carnelian"] > 1 and randint(1, math.ceil(self.odds["carnelian"]/modifier)) == 1:
                 self.ext[i] = "ec"
-            elif self.odds["russet"] > 1 and randint(1, round(self.odds["russet"]/1.5)) == 1 or self.odds["russet"] == 1:
+            elif self.odds["russet"] > 1 and randint(1, math.ceil(self.odds["russet"]/modifier)) == 1:
                 self.ext[i] = "er"
-            elif self.odds["amber"] > 1 and randint(1, round(self.odds["amber"]/1.5)) == 1 or self.odds["amber"] == 1:
+            elif self.odds["amber"] > 1 and randint(1, math.ceil(self.odds["amber"]/modifier)) == 1:
                 self.ext[i] = "ea"
 
         #sunshine
 
-            if self.odds["sunshine"] > 1 and randint(1, round(self.odds["sunshine"]/1.5)) == 1 or self.odds["sunshine"] == 1:
+            if self.odds["sunshine"] > 1 and randint(1, math.ceil(self.odds["sunshine"]/modifier)) == 1:
                 self.corin[i] = "sh" #sunSHine
-            elif self.odds["extreme sunshine"] > 1 and randint(1, round(self.odds["extreme sunshine"]/1.5)) == 1 or self.odds["extreme sunshine"] == 1:
+            elif self.odds["extreme sunshine"] > 1 and randint(1, math.ceil(self.odds["extreme sunshine"]/modifier)) == 1:
                 self.corin[i] = "sg" #Siberian Gold / extreme sunshine
-            elif self.odds["copper"] > 1 and randint(1, round(self.odds["copper"]/1.5)) == 1 or self.odds["copper"] == 1:
+            elif self.odds["copper"] > 1 and randint(1, math.ceil(self.odds["copper"]/modifier)) == 1:
                 self.corin[i] = "fg" #Flaxen Gold
             else:
                 self.corin[i] = "N" #No
 
         # karp + bleach + ghosting + satin + glitter
 
-            if self.odds["karpati"] > 1 and randint(1, round(self.odds["karpati"]/1.5)) == 1 or self.odds["karpati"] == 1:
+            if self.odds["karpati"] > 1 and randint(1, math.ceil(self.odds["karpati"]/modifier)) == 1:
                 self.karp[i] = "K"
-            if self.odds["bleaching"] > 1 and randint(1, round(self.odds["bleaching"]/1.5)) == 1 or self.odds["bleaching"] == 1:
+            if self.odds["bleaching"] > 1 and randint(1, math.ceil(self.odds["bleaching"]/modifier)) == 1:
                 self.bleach[i] = "lb"
-            if self.odds["ghosting"] > 1 and randint(1, round(self.odds["ghosting"]/1.5)) == 1 or self.odds["ghosting"] == 1:
+            if self.odds["ghosting"] > 1 and randint(1, math.ceil(self.odds["ghosting"]/modifier)) == 1:
                 self.ghosting[i] = "Gh"
-            if self.odds["satin"] > 1 and randint(1, round(self.odds["satin"]/1.5)) == 1 or self.odds["satin"] == 1:
+            if self.odds["satin"] > 1 and randint(1, math.ceil(self.odds["satin"]/modifier)) == 1:
                 self.satin[i] = "st"
-            if self.odds["glitter"] > 1 and randint(1, round(self.odds["glitter"]/1.5)) == 1 or self.odds["glitter"] == 1:
+            if self.odds["glitter"] > 1 and randint(1, math.ceil(self.odds["glitter"]/modifier)) == 1:
                 self.glitter[i] = "gl"
 
         # curl + fold
 
-            if self.odds["curl"] > 1 and randint(1, round(self.odds["curl"]/1.5)) == 1 or self.odds["curl"] == 1:
+            if self.odds["curl"] > 1 and randint(1, math.ceil(self.odds["curl"]/modifier)) == 1:
                 self.curl[i] = "Cu"
 
-        if (self.odds["fold"] > 1 and randint(1, round(self.odds["fold"]/1.5)) == 1 or self.odds["fold"] == 1) and not self.ban_genes:
+        if self.odds["fold"] > 1 and randint(1, math.ceil(self.odds["fold"]/modifier)) == 1 and not self.ban_genes:
             self.fold[0] = "Fd"
 
         #  manx + kab + toybob + jbob + kub + ring
 
-        if self.odds["american bobtail"] > 1 and randint(1, round(self.odds["american bobtail"]/1.5)) == 1 or self.odds["american bobtail"] == 1:
+        if self.odds["american bobtail"] > 1 and randint(1, math.ceil(self.odds["american bobtail"]/modifier)) == 1:
             self.manx = ["Ab", "ab"]
-        elif (self.odds["manx"] > 1 and randint(1, round(self.odds["manx"]/1.5)) == 1 or self.odds["manx"] == 1) and not self.ban_genes:
+        elif self.odds["manx"] > 1 and randint(1, math.ceil(self.odds["manx"]/modifier)) == 1 and not self.ban_genes:
             self.manx = ["M", "m"]
         
         for i in range(2):
-            if self.odds["karelian bobtail"] > 1 and randint(1, round(self.odds["karelian bobtail"]/1.5)) == 1 or self.odds["karelian bobtail"] == 1:
+            if self.odds["karelian bobtail"] > 1 and randint(1, math.ceil(self.odds["karelian bobtail"]/modifier)) == 1:
                 self.kab[i] = "kab"
-            if self.odds["toybob"] > 1 and randint(1, round(self.odds["toybob"]/1.5)) == 1 or self.odds["toybob"] == 1:
+            if self.odds["toybob"] > 1 and randint(1, math.ceil(self.odds["toybob"]/modifier)) == 1:
                 self.toybob[i] = "Tb"
-            if self.odds["kurilian bobtail"] > 1 and randint(1, round(self.odds["kurilian bobtail"]/1.5)) == 1 or self.odds["kurilian bobtail"] == 1:
+            if self.odds["kurilian bobtail"] > 1 and randint(1, math.ceil(self.odds["kurilian bobtail"]/modifier)) == 1:
                 self.kub[i] = "Kub"
-            if self.odds["japanese bobtail"] > 1 and randint(1, round(self.odds["japanese bobtail"]/1.5)) == 1 or self.odds["japanese bobtail"] == 1:
+            if self.odds["japanese bobtail"] > 1 and randint(1, math.ceil(self.odds["japanese bobtail"]/modifier)) == 1:
                 self.jbob[i] = "jb"
-            if self.odds["ringtail"] > 1 and randint(1, round(self.odds["ringtail"]/1.5)) == 1 or self.odds["ringtail"] == 1:
+            if self.odds["ringtail"] > 1 and randint(1, math.ceil(self.odds["ringtail"]/modifier)) == 1:
                 self.ring[i] = "rt"
         
         # munch + poly + altai
 
-        if (self.odds["munchkin"] > 1 and randint(1, round(self.odds["munchkin"]/1.5)) == 1 or self.odds["munchkin"] == 1) and not self.ban_genes:
+        if self.odds["munchkin"] > 1 and randint(1, math.ceil(self.odds["munchkin"]/modifier)) == 1 and not self.ban_genes:
             self.munch[0] = "Mk"
 
         for i in range(2):
-            if self.odds["polydactyl"] > 1 and randint(1, round(self.odds["polydactyl"]/1.5)) == 1 or self.odds["polydactyl"] == 1:
+            if self.odds["polydactyl"] > 1 and randint(1, math.ceil(self.odds["polydactyl"]/modifier)) == 1:
                 self.poly[i] = "Pd"
         
-        if (self.odds["DBE"] > 1 and randint(1, round((self.odds["DBE"] ** 2)/1.5)) == 1 or self.odds["DBE"] == 1) and not self.ban_genes:
+        if self.odds["DBE"] > 1 and randint(1, math.ceil((self.odds["DBE"] ** 2)/modifier)) == 1 and not self.ban_genes:
             self.pax3 = ['DBEalt', choice(['DBEcel', 'DBEcel', 'DBEre', 'DBEalt', 'DBEalt'])]
-        elif (self.odds["DBE"] > 1 and randint(1, round(self.odds["DBE"]/1.5)) == 1 or self.odds["DBE"] == 1) and not self.ban_genes:
+        elif self.odds["DBE"] > 1 and randint(1, math.ceil(self.odds["DBE"]/modifier)) == 1  and not self.ban_genes:
             self.pax3[0] = choice(['DBEcel', 'DBEcel', 'DBEre', 'DBEalt', 'DBEalt'])
 
         self.wideband = ''
@@ -1006,9 +1008,9 @@ class Genotype:
         if self.odds["vitiligo"] <= 0:
             a = 0
         elif (par1.vitiligo and par2.vitiligo):
-            a = randint(1, round((self.odds["vitiligo"]/4)))
+            a = randint(1, math.ceil((self.odds["vitiligo"]/4)))
         elif(par1.vitiligo or par2.vitiligo):
-            a = randint(1, round((self.odds['vitiligo']/2)))
+            a = randint(1, math.ceil((self.odds['vitiligo']/2)))
         else:
             a = randint(1, self.odds['vitiligo'])
 
@@ -1138,18 +1140,18 @@ class Genotype:
         if self.odds["breakthrough"] <= 0:
             pass
         elif (par1.breakthrough and par2.breakthrough):
-            self.breakthrough = randint(1, round((self.odds["breakthrough"]/4))) == 1
+            self.breakthrough = randint(1, math.ceil((self.odds["breakthrough"]/4))) == 1
         elif(par1.breakthrough or par2.breakthrough):
-            self.breakthrough = randint(1, round((self.odds['breakthrough']/2))) == 1
+            self.breakthrough = randint(1, math.ceil((self.odds['breakthrough']/2))) == 1
         else:
             self.breakthrough = randint(1, self.odds['breakthrough']) == 1
 
         if self.odds["dense_blotched"] <= 0:
             pass
         elif (par1.sheeted and par2.sheeted):
-            self.sheeted = randint(1, round((self.odds["dense_blotched"]/4))) == 1
+            self.sheeted = randint(1, math.ceil((self.odds["dense_blotched"]/4))) == 1
         elif (par1.sheeted or par2.sheeted):
-            self.sheeted = randint(1, round((self.odds['dense_blotched']/2))) == 1
+            self.sheeted = randint(1, math.ceil((self.odds['dense_blotched']/2))) == 1
         else:
             self.sheeted = randint(1, self.odds['dense_blotched']) == 1
 
