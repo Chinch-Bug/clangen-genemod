@@ -74,7 +74,7 @@
                 "amount": -5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "cat_from got into a heated dispute with to_cat's patrol."
+                    "cats_from": "cat_from got into a heated dispute with cat_to's patrol."
                 }
             }
         ]
@@ -129,7 +129,7 @@
                 "amount": 5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "cat_from helped to_cat's patrol with clearing pathways."
+                    "cats_from": "cat_from helped cat_to's patrol with clearing pathways."
                 }
             }
         ]
@@ -177,7 +177,7 @@
                 "amount": 5,
                 "mutual": true,
                 "log": {
-                    "cats_from": "cat_from helped to_cat's patrol with clearing pathways."
+                    "cats_from": "cat_from helped cat_to's patrol with clearing pathways."
                 }
             }
         ]

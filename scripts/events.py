@@ -218,7 +218,7 @@ def one_moon():
         extra_event = None
         for ghost in game.dead_cats_to_grieve:
             last_living = ghost.status.get_last_living_group()
-            if ghost.status.is_exiled(last_living):
+            if ghost.status.is_exiled(last_living) or ghost.status.has_left(last_living):
                 pass
             elif last_living == CatGroup.PLAYER_CLAN_ID:
                 if game.clan.displayname not in ghost_names:

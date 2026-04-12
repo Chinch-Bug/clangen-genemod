@@ -928,7 +928,7 @@
                 "amount": 5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "cat_from believed to_cat's lies about what being an adult is like."
+                    "cats_from": "cat_from believed cat_to's lies about what being an adult is like."
                 }
             }
         ]
@@ -1003,7 +1003,7 @@
                 "amount": 5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "cat_from believed to_cat's boasting about c_n."
+                    "cats_from": "cat_from believed cat_to's boasting about c_n."
                 }
             }
         ]

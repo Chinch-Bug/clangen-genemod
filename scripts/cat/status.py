@@ -731,6 +731,23 @@ class Status:
 
         return standing and standing[-1] == CatStanding.EXILED
 
+    def has_left(self, group_ID: str = None) -> bool:
+        """
+        Returns True if cat is exiled from a group.
+        :param group_ID: Use to specify the group to check exiled status against. If no group is given, this will return True if the cat is exiled from any group.
+        """
+        # if no group given
+        if not group_ID:
+            for entry in self.standing_history[::-1]:
+                if entry["standing"][-1] in [CatStanding.LEFT, CatStanding.KNOWN]:
+                    return entry["group"]
+            return False
+
+        # if group given
+        standing = self.get_standing_with_group(group_ID)
+
+        return standing and standing[-1] in [CatStanding.LEFT, CatStanding.KNOWN]
+
     def is_near(self, group_ID: str = None) -> bool:
         """
         Returns True if the cat is near the specified group
