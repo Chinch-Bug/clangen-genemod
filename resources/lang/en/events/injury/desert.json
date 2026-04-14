@@ -2050,7 +2050,7 @@
         "season": [
             "any"
         ],
-        "frequency": 2,
+        "frequency": 1,
         "event_text": "m_c fell from a cliff and somehow survived, though not without breaking {PRONOUN/m_c/poss} leg.",
         "m_c": {
             "age": [

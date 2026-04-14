@@ -419,7 +419,6 @@ class GroupEvents:
         interaction: GroupInteraction, abbreviations_cat_id: dict
     ):
         """Check if the interaction is allowed with the current chosen cats."""
-        fulfilled_list = []
 
         for name, rel_constraint in interaction.relationship_constraint.items():
             abbre_from = name.split("_to_")[0]
@@ -431,15 +430,17 @@ class GroupEvents:
             cat_to = Cat.all_cats[cat_to_id]
 
             if cat_to_id not in cat_from.relationships:
-                continue
+                cat_from.create_one_relationship(cat_to)
+                if cat_from.ID not in cat_to.relationships:
+                    cat_to.create_one_relationship(cat_from)
 
-            fulfilled = filter_relationship_type(
+            if not filter_relationship_type(
                 group=[cat_from, cat_to],
                 filter_types=rel_constraint,
-            )
-            fulfilled_list.append(fulfilled)
+            ):
+                return False
 
-        return all(fulfilled_list)
+        return True
 
     @staticmethod
     def cat_allow_interaction(

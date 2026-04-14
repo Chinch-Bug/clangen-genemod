@@ -122,13 +122,17 @@ def _load_group(thought_type: CatThought, main_cat: "Cat", other_cat: "Cat", age
 
     # LIVING CATS
     elif thought_type == CatThought.WHILE_ALIVE:
-        thoughts = load_lang_resource(f"{new_path}/{rank}.json")
+        if main_cat.age == CatAge.NEWBORN:  # accounting for non-clan newborns
+            thoughts = load_lang_resource(f"{new_path}/newborn.json")
+        else:
+            thoughts = load_lang_resource(f"{new_path}/{rank}.json")
 
         # make sure lost thoughts are included
         if main_cat.status.is_lost():
             prior_rank = main_cat.status.find_prior_clan_rank()
-            prior_rank = prior_rank.replace("healer", "medicine cat").replace(" ", "_")
-            thoughts.extend(load_lang_resource(f"{start_path}/while_lost/{prior_rank}.json"))
+            if prior_rank:
+                prior_rank = prior_rank.replace("healer", "medicine cat").replace(" ", "_")
+                thoughts.extend(load_lang_resource(f"{start_path}/while_lost/{prior_rank}.json"))
         else:
             thoughts.extend(_load_general(main_cat, new_path))
             thoughts.extend(_load_exiled_and_former(main_cat, new_path))

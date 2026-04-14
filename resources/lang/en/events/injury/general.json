@@ -565,7 +565,7 @@
         "season": [
             "any"
         ],
-        "frequency": 3,
+        "frequency": 1,
         "event_text": "m_c had a bad fall while taking a walk through the territory and, once found, has to be carried back home.",
         "m_c": {
             "age": [
@@ -1538,7 +1538,7 @@
         "season": [
             "leaf-bare"
         ],
-        "frequency": 2,
+        "frequency": 1,
         "event_text": "m_c went out for a walk, but slipped on the ice and broke a bone.",
         "m_c": {
             "age": [
@@ -1577,7 +1577,7 @@
         "season": [
             "any"
         ],
-        "frequency": 2,
+        "frequency": 1,
         "event_text": "m_c was grabbed and dropped by an eagle, but {PRONOUN/m_c/subject} somehow survived.",
         "m_c": {
             "status": [
@@ -1669,7 +1669,7 @@
         "season": [
             "any"
         ],
-        "frequency": 4,
+        "frequency": 1,
         "event_text": "m_c couldn't help but try to show off by climbing the tallest tree {PRONOUN/m_c/subject} could find. {PRONOUN/m_c/poss/CAP} plan backfired when {PRONOUN/m_c/subject} fell out of the tree.",
         "m_c": {
             "age": [
@@ -2915,7 +2915,7 @@
         "season": [
             "any"
         ],
-        "frequency": 4,
+        "frequency": 2,
         "event_text": "m_c fought a big dog and was badly injured.",
         "m_c": {
             "status": [
@@ -2965,7 +2965,7 @@
         "season": [
             "any"
         ],
-        "frequency": 4,
+        "frequency": 2,
         "event_text": "m_c saved r_c from a big dog, but was badly injured.",
         "m_c": {
             "status": [

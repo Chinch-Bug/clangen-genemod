@@ -14,12 +14,12 @@
 		"r_c2": ["warrior", "elder", "mediator"]
 	},
 	"relationship_constraint": {
-		"m_c_to_r_c3": ["enjoys"],
-        "m_c_to_r_c4": ["enjoys"],
-        "r_c1_to_r_c3": ["enjoys"],
-        "r_c1_to_r_c4": ["enjoys"],
-        "r_c2_to_r_c3": ["enjoys"],
-        "r_c2_to_r_c4": ["enjoys"],
+		"m_c_to_r_c3": ["likes"],
+        "m_c_to_r_c4": ["likes"],
+        "r_c1_to_r_c3": ["likes"],
+        "r_c1_to_r_c4": ["likes"],
+        "r_c2_to_r_c3": ["likes"],
+        "r_c2_to_r_c4": ["likes"],
 		"r_c3_to_r_c4": ["-mates", "fancies"]
 	},
 	"specific_reaction": {
