@@ -2145,7 +2145,7 @@
 		}
 	},
 	"event_panel": {
-		"colours": { "dark_bg": "rgb(206, 194, 168)" },
+		"colours": { "dark_bg": "#CEC2A8" },
 		"misc": { "border_width": "0", "shadow_width": "0" }
 	},
 	"horizontal_slider": {
