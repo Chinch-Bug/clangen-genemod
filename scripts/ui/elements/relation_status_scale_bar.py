@@ -3,6 +3,7 @@ import math
 import pygame
 import pygame_gui
 
+from scripts.game_structure import constants
 from scripts.cat_relations.enums import RelTier
 from scripts.game_structure import image_cache
 from scripts.ui.elements.modified_image import UIModifiedImage
@@ -47,19 +48,19 @@ class UIRelationStatusScaleBar(pygame_gui.elements.UIImage):
 
         bar.fill((130, 117, 82))
 
-        bar_colour = (130, 117, 82)
+        bar_colour = tuple(constants.CONFIG["relationship"]["colours"]["neutral"])
         if tier.is_low_pos:
-            bar_colour = (182, 174, 51)
+            bar_colour = tuple(constants.CONFIG["relationship"]["colours"]["low_pos"])
         elif tier.is_mid_pos:
-            bar_colour = (150, 195, 49)
+            bar_colour = tuple(constants.CONFIG["relationship"]["colours"]["mid_pos"])
         elif tier.is_extreme_pos:
-            bar_colour = (154, 241, 32)
+            bar_colour = tuple(constants.CONFIG["relationship"]["colours"]["extreme_pos"])
         elif tier.is_low_neg:
-            bar_colour = (186, 128, 60)
+            bar_colour = tuple(constants.CONFIG["relationship"]["colours"]["low_neg"])
         elif tier.is_mid_neg:
-            bar_colour = (214, 90, 53)
+            bar_colour = tuple(constants.CONFIG["relationship"]["colours"]["mid_neg"])
         elif tier.is_extreme_neg:
-            bar_colour = (233, 38, 30)
+            bar_colour = tuple(constants.CONFIG["relationship"]["colours"]["extreme_neg"])
 
         surf.fill(bar_colour)
         bar.blit(surf, (short_bar.left, short_bar.top))
