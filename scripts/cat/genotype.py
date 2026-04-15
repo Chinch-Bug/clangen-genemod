@@ -1843,7 +1843,7 @@ class Genotype:
         if ("c" in self.pointgene and self.pointgene[0] != "C"):
             piggrade = 13
             temppig = 13
-            tempvals = 13
+            tempvals[1] = 13
         
         self.righteye = RefTypeFind(refgrade, piggrade)
         self.lefteye = RefTypeFind(refgrade, piggrade)
