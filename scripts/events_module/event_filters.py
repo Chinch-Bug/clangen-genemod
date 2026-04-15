@@ -789,6 +789,8 @@ def _get_cats_with_status(cat_list: list, statuses: tuple) -> list:
     if not statuses or "any" in statuses:
         return cat_list
 
+    statuses = [s.replace("medicine cat", "healer") for s in statuses]
+
     is_exclusionary = _check_for_exclusionary_value(statuses)
 
     if is_exclusionary:
