@@ -359,7 +359,7 @@ def rebuild_moon_n_season_indicator(change_moon: bool = False, visible: bool = F
         starting_height=5
     )
     menu_buttons["season_indicator"].disable()
-    menu_buttons["secret_season_indicator"].set_tooltip(i18n.t(f"general.{game.clan.current_season.lower() if game.clan else ""}"))
+    menu_buttons["secret_season_indicator"].set_tooltip(i18n.t(f"general.{game.clan.current_season.lower() if game.clan else ''}"))
     menu_buttons["secret_season_indicator"].tool_tip_delay = 0
 
     menu_buttons["season_indicator"].change_layer(10)
