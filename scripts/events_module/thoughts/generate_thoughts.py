@@ -95,6 +95,7 @@ def _load_group(thought_type: CatThought, main_cat: "Cat", other_cat: "Cat", age
     rank = main_cat.status.rank
     rank = rank.replace("healer", "medicine cat").replace(" ", "_")
     
+    og_age = main_cat.age
     if ageup and main_cat.dead:
         if 'apprentice' in rank:
             if '_apprentice' in rank:
@@ -190,6 +191,7 @@ def _load_group(thought_type: CatThought, main_cat: "Cat", other_cat: "Cat", age
         pass
 
     final_thoughts = _filter_list(thoughts, main_cat, other_cat)
+    main_cat.age = og_age
 
     return final_thoughts
 
