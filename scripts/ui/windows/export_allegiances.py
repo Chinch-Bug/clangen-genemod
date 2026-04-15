@@ -67,7 +67,7 @@ class ExportAllegiancesWindow(GameWindow):
             rank_box = row[0].replace("<u>", "").replace("<b>", "").replace("</b>", "").replace("</u>", "")
             if len(rank_box) < 8:
                 rank_box += "\t"
-            full_text += f"{rank_box}\t{row[-1].replace("<i>", "").replace("</i>", "").replace("\n", "\n\t")}\n"
+            full_text += f"{rank_box}"+"\t"+f"{row[-1].replace('<i>', '').replace('</i>', '').replace('\n', '\n\t')}"+"\n"
 
         with open(f"{get_saved_allegiances_dir()}/{file_name + file_number}.txt", "w") as f:
             f.write(full_text)
