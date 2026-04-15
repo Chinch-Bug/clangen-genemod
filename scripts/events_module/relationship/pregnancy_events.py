@@ -597,16 +597,24 @@ class Pregnancy_Events:
 
         if thinking_amount[0] == "correct":
             if correct_guess == "small":
-                text = Pregnancy_Events.PREGNANT_STRINGS["litter_guess"][0]
+                text = choice(
+                    Pregnancy_Events.PREGNANT_STRINGS["litter_guess"]["small"]
+                )
             else:
-                text = Pregnancy_Events.PREGNANT_STRINGS["litter_guess"][1]
+                text = choice(
+                    Pregnancy_Events.PREGNANT_STRINGS["litter_guess"]["large"]
+                )
         elif thinking_amount[0] == "incorrect":
             if correct_guess == "small":
-                text = Pregnancy_Events.PREGNANT_STRINGS["litter_guess"][1]
+                text = choice(
+                    Pregnancy_Events.PREGNANT_STRINGS["litter_guess"]["large"]
+                )
             else:
-                text = Pregnancy_Events.PREGNANT_STRINGS["litter_guess"][0]
+                text = choice(
+                    Pregnancy_Events.PREGNANT_STRINGS["litter_guess"]["small"]
+                )
         else:
-            text = Pregnancy_Events.PREGNANT_STRINGS["litter_guess"][2]
+            text = choice(Pregnancy_Events.PREGNANT_STRINGS["litter_guess"]["unsure"])
 
         try:
             if cat.injuries["pregnant"]["severity"] == "minor":
@@ -911,7 +919,7 @@ class Pregnancy_Events:
                     )
                 else:
                     death_event = i18n.t(
-                        "conditions.pregnancy.kitting_death_harsh", name=cat.name
+                        "conditions.pregnancy.kitting_death_severe", name=cat.name
                     )
                 cat.history.add_possible_history("blood loss", death_text=death_event)
                 possible_events = events["birth"]["difficult_birth"]
