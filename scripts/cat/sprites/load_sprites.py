@@ -496,7 +496,7 @@ class Sprites:
                 self.make_group(
                     spritesheet=spritesheet,
                     pos=(col, row),
-                    name=f"{spritesheet if "patches" not in spritesheet else ""}{sprite}",
+                    name=f"{spritesheet if 'patches' not in spritesheet else ''}{sprite}",
                 )
 
     def load_symbols(self):
