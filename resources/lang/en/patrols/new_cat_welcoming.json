@@ -4883,6 +4883,42 @@
         "chance_of_success": 85,
         "success_outcomes": [
             {
+                "text": "The patrol races towards the sound. They are puzzled when they only see a lone Twoleg, but grim realization soon dawns on them after they hear more screams coming from a bag the Twoleg is holding. Jumping into action, the c_n cats startle the Twoleg into letting go of the bag. While the rest of the patrol claws the ankles of the now furious Twoleg, p_l and r_c quickly and quietly get the shivering kittens out of sight, promising them safety and welcome in c_n.",
+                "exp": 10,
+                "new_cat": [
+                    [ "kittypet", "can_birth", "age:has_kits", "dead" ],
+                    [ "litter", "status:kitten", "backstory:abandoned4", "kittypet", "parent:0" ]
+                ],
+                "relationships": [
+                    {
+                        "cats_from": [ "n_c:1" ],
+                        "cats_to": [ "patrol" ],
+                        "values": [ "like", "trust", "comfort" ],
+                        "amount": 10,
+                        "log": {
+                            "cats_from": "cat_to was part of the patrol that rescued cat_from from a cruel Twoleg and brought {PRONOUN/cat_from/object} to c_n."
+                        }
+                    }
+                ],
+                "outsider_rep": 1,
+                "injury": [
+                    {
+                        "cats": [
+                            "n_c:1"
+                        ],
+                        "injuries": [
+                            "blunt_force_injury"
+                        ],
+                        "no_results": true
+                    }
+                ],
+                "history_text": {
+                    "scar": "m_c was scarred after a Twoleg attempted to drown {PRONOUN/m_c/object}.",
+                    "death": "m_c died of injuries inflicted by a Twoleg attempting to drown {PRONOUN/m_c/object}."
+                },
+                "frequency": 1
+            },
+            {
                 "text": "The patrol races towards the sound. They are puzzled when they only see a lone Twoleg, but grim realization soon dawns on them after they hear more screams coming from a bag the Twoleg is holding. Jumping into action, the c_n cats startle the Twoleg into letting go of the bag. While the rest of the patrol claws the ankles of the now furious Twoleg, p_l and r_c quickly and quietly get the old shivering cat out of sight, promising {PRONOUN/n_c:0/object} safety and welcome in c_n for as long as {PRONOUN/n_c:0/subject}'d like.",
                 "exp": 10,
                 "new_cat": [
