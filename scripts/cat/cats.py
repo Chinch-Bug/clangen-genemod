@@ -1241,15 +1241,16 @@ class Cat:
         ]:
             pass
 
-        elif self.status.rank in [CatRank.WARRIOR, CatRank.ELDER]:
-            if not clan:
-                pass
-            elif clan.leader and clan.leader.ID == self.ID:
-                clan.leader = None
-                clan.leader_predecessors += 1
-            elif clan.deputy and clan.deputy.ID == self.ID:
-                clan.deputy = None
-                clan.deputy_predecessors += 1
+        if not clan:
+            pass
+        elif clan.leader and clan.leader.ID == self.ID:
+            clan.leader = None
+            clan.leader_predecessors += 1
+        elif clan.deputy and clan.deputy.ID == self.ID:
+            clan.deputy = None
+            clan.deputy_predecessors += 1
+        elif old_rank in [CatRank.MEDICINE_CAT, CatRank.MEDICINE_CAT_APPRENTICE]:
+            clan.remove_med_cat(self)
 
         elif self.status.rank == CatRank.MEDICINE_CAT:
             if clan is not None:
