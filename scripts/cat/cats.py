@@ -1249,7 +1249,7 @@ class Cat:
         elif clan.deputy and clan.deputy.ID == self.ID:
             clan.deputy = None
             clan.deputy_predecessors += 1
-        elif old_rank in [CatRank.MEDICINE_CAT, CatRank.MEDICINE_CAT_APPRENTICE]:
+        elif old_rank in [CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE]:
             clan.remove_med_cat(self)
 
         elif self.status.rank == CatRank.MEDICINE_CAT:
