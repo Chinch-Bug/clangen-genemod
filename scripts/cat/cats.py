@@ -1241,7 +1241,7 @@ class Cat:
         ]:
             pass
 
-        if not clan:
+        if not clan or not hasattr(clan, "deputy"):
             pass
         elif new_rank != CatRank.LEADER and clan.leader and clan.leader.ID == self.ID:
             clan.leader = None
