@@ -34,7 +34,7 @@
                 "cats_from": [ "m_c" ],
                 "cats_to": [ "r_c1", "r_c2", "r_c3" ],
                 "values": [ "trust", "respect" ],
-                "amount": 5,
+                "amount": 10,
                 "mutual": false,
                 "log": {
                     "cats_from": "cat_to helped cat_from's Clan prepare protections against a flood."

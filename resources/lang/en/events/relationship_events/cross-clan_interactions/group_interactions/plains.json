@@ -34,7 +34,7 @@
                 "cats_from": [ "r_c1" ],
                 "cats_to": [ "m_c", "r_c2", "r_c3" ],
                 "values": [ "trust", "respect" ],
-                "amount": 10,
+                "amount": 15,
                 "mutual": false,
                 "log": {
                     "cats_from": "cat_from was saved from a cave-in by to_cat."

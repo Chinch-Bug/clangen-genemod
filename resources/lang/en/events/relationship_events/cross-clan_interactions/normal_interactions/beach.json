@@ -23,7 +23,7 @@
                 "cats_from": [ "r_c" ],
                 "cats_to": [ "m_c" ],
                 "values": [ "respect", "comfort" ],
-                "amount": -5,
+                "amount": -10,
                 "mutual": true,
                 "log": {
                     "cats_from": "cat_from didn't like cat_to stealing from gulls."
@@ -67,7 +67,7 @@
                 "cats_from": [ "r_c" ],
                 "cats_to": [ "m_c" ],
                 "values": [ "respect" ],
-                "amount": -5,
+                "amount": -10,
                 "mutual": false,
                 "log": {
                     "cats_from": "cat_from watched cat_to embarrass {PRONOUN/cat_to/self} trying to steal from gulls."
@@ -77,7 +77,7 @@
                 "cats_from": [ "m_c" ],
                 "cats_to": [ "r_c" ],
                 "values": [ "comfort" ],
-                "amount": -5,
+                "amount": -10,
                 "mutual": false,
                 "log": {
                     "cats_from": "cat_from embarrassed {PRONOUN/cat_from/self} in front of cat_to by failing to steal from gulls."

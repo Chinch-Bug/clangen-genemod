@@ -34,7 +34,7 @@
                 "cats_from": [ "r_c3" ],
                 "cats_to": [ "m_c", "r_c1", "r_c2" ],
                 "values": [ "trust", "comfort" ],
-                "amount": 10,
+                "amount": 15,
                 "mutual": false,
                 "log": {
                     "cats_from": "cat_to saved cat_from from a jackal."
