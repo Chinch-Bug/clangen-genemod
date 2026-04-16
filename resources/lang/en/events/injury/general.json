@@ -7496,5 +7496,37 @@
                 }
             }
         ]
+    },
+    {
+  "event_id": "gen_injury_fireflies",
+  "location": [
+    "forest:camp2,camp4",
+    "mountainous:camp4",
+    "plains:camp1"
+  ],
+  "season": [
+    "greenleaf"
+  ],
+  "sub_type": [],
+  "tags": [],
+  "frequency": 2,
+  "event_text": "m_c got hurt while chasing fireflies through camp.",
+  "new_accessory": [],
+  "m_c": {
+    "age": [
+      "kitten",
+      "adolescent"
+    ]
+  },
+  "injury": [
+    {
+      "cats": [
+        "m_c"
+      ],
+      "injuries": [
+        "minor_injury"
+      ]
     }
+  ]
+}
 ]
