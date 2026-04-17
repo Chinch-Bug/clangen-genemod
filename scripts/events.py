@@ -1535,7 +1535,7 @@ def perform_ceremonies(cat, clan):
                     "hardcoded.ceremony_leader_bloodthirsty",
                     oldname=clan.deputy.name,
                     newname=cat.name,
-                    )
+                )
             else:
                 c = random.randint(1, 3)
                 text = i18n.t(
