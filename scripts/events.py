@@ -1527,20 +1527,21 @@ def perform_ceremonies(cat, clan):
             and not clan.deputy.status.group_ID != clan.group_ID
             and (leader_dead or leader_outside)
         ):
+            old_name = clan.deputy.name
             clan.new_leader(clan.deputy)
             cat = clan.leader
             text = ""
-            if clan.deputy.personality.trait == "bloodthirsty":
+            if cat.personality.trait == "bloodthirsty":
                 text = i18n.t(
                     "hardcoded.ceremony_leader_bloodthirsty",
-                    oldname=clan.deputy.name,
+                    oldname=old_name,
                     newname=cat.name,
                 )
             else:
                 c = random.randint(1, 3)
                 text = i18n.t(
                     f"hardcoded.ceremony_leader_{c}",
-                    oldname=clan.deputy.name,
+                    oldname=old_name,
                     newname=cat.name,
                 )
 
@@ -1550,7 +1551,7 @@ def perform_ceremonies(cat, clan):
             text = event_text_adjust(Cat, text, main_cat=cat, clan=clan)
 
             game.cur_events_list.append(
-                Single_Event(text, "ceremony", clan.deputy.ID, clan=clan.group_ID)
+                Single_Event(text, "ceremony", cat.ID, clan=clan.group_ID)
             )
             ceremony_accessory = True
             gain_accessories(cat, clan)
