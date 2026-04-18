@@ -1622,12 +1622,12 @@ class Cat:
         leaders = [x for x in cats_in_afterlife if x.status.is_leader and (x.status.get_last_living_group() == self.status.group_ID or x.dead_for > 300)]
         if not life_giving_leader and leaders:
             # choosing if the life giving leader will be the oldest leader or previous leader
-            coin_flip = randint(1, 2)
-            if coin_flip == 1:
-                # pick the oldest leader
+            coin_flip = randint(1, 5)
+            if coin_flip == 1 and len(leaders) > 5:
+                # pick one of the oldest leaders
                 leaders.sort(key=lambda x: -1 * int(x.dead_for))
                 ancient_leader = True
-                life_giving_leader = leaders[0] if leaders else None
+                life_giving_leader = choice(leaders[:int(len(leaders)/3)])
             else:
                 # pick previous leader
                 leaders.sort(key=lambda x: int(Cat.fetch_cat(x).dead_for))
