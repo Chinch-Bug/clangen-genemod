@@ -516,7 +516,7 @@ class Status:
         Twolegs and are now a kittypet)
         """
         rank = CatRank(new_social_status)
-        self._modify_group(rank, standing_with_past_group=CatStanding.KNOWN)
+        self._modify_group(rank, standing_with_past_group=CatStanding.LEFT)
 
     def add_to_group(
         self,
@@ -741,14 +741,14 @@ class Status:
         # if no group given
         if not group_ID:
             for entry in self.standing_history[::-1]:
-                if entry["standing"][-1] in [CatStanding.LEFT, CatStanding.KNOWN]:
+                if entry["standing"][-1] in [CatStanding.LEFT]:
                     return entry["group"]
             return False
 
         # if group given
         standing = self.get_standing_with_group(group_ID)
 
-        return standing and standing[-1] in [CatStanding.LEFT, CatStanding.KNOWN]
+        return standing and standing[-1] in [CatStanding.LEFT]
 
     def is_near(self, group_ID: str = None) -> bool:
         """
