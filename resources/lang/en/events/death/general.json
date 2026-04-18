@@ -126,6 +126,74 @@
         ]
     },
     {
+        "event_id": "gen_death_murder_any2trait",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "murder"
+        ],
+        "tags": [],
+        "frequency": 4,
+        "event_text": "m_c was murdered. r_c stands over {PRONOUN/m_c/object}, blood dripping from {PRONOUN/r_c/poss} pelt.",
+        "m_c": {
+            "age": [
+                "any"
+            ],
+            "status": [
+                "-leader"
+            ],
+            "skill": [
+                "-FIGHTER,2"
+            ],
+            "dies": true
+        },
+        "r_c": {
+            "age": [
+                "-kitten"
+            ],
+            "trait": [
+                "bloodthirsty",
+                "fierce",
+                "arrogant"
+            ]
+        },
+        "history": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "death": "m_c was murdered by r_c."
+            }
+        ],
+        "future_event": [
+            {
+                "event_type": "misc",
+                "pool": {
+                    "sub_type": [
+                        "murder_reveal"
+                    ]
+                },
+                "moon_delay": [
+                    1,
+                    12
+                ],
+                "involved_cats": {
+                    "m_c": "r_c",
+                    "mur_c": "m_c",
+                    "r_c": {
+                        "age": [
+                            "any"
+                        ]
+                    }
+                }
+            }
+        ]
+    },
+    {
         "event_id": "gen_death_murder_any3",
         "location": [
             "any"
@@ -461,7 +529,9 @@
         "location": [
             "forest",
             "plains",
-            "beach"
+            "beach",
+            "wetlands",
+            "mountainous"
         ],
         "season": [
             "any"
@@ -636,7 +706,7 @@
             "any"
         ],
         "season": [
-            "any"
+            "-leaf-bare"
         ],
         "tags": [],
         "frequency": 3,
@@ -659,7 +729,7 @@
     {
         "event_id": "gen_death_snake_any2",
         "location": [
-            "any"
+            "-leaf-bare"
         ],
         "season": [
             "any"
@@ -876,7 +946,7 @@
                 ],
                 "amount": 40,
                 "log": {
-                    "cats_from": "cat_to died protecting cat_from from enemy warriors in the nursery."
+                    "cats_from": "cat_to died protecting cat_from from enemy warriors invading the nursery."
                 }
             }
         ],
@@ -1145,7 +1215,11 @@
                 ],
                 "death": "m_c was killed by a gang of rogues."
             }
-        ]
+        ],
+            "outsider": {
+        "current_rep": ["any"],
+        "changed": -3
+    }
     },
     {
         "event_id": "gen_death_greencough_any1",
@@ -1280,7 +1354,7 @@
         ],
         "tags": [],
         "frequency": 2,
-        "event_text": "m_c sneaked out of camp, intending to discover more about {PRONOUN/m_c/poss} origins. After a long morning search, c_n found {PRONOUN/m_c/poss} cooling body.",
+        "event_text": "m_c snuck out of camp, intending to discover more about {PRONOUN/m_c/poss} origins. After a long morning search, c_n found {PRONOUN/m_c/poss} cooling body.",
         "m_c": {
             "age": [
                 "adolescent",
@@ -1328,6 +1402,7 @@
                 "deputy",
                 "leader"
             ],
+            "relationship_status": ["knows_of_only", "likes"],
             "dies": true
         },
         "r_c": {
@@ -1390,6 +1465,7 @@
                 "deputy",
                 "leader"
             ],
+            "relationship_status": ["knows_of_only", "likes"],
             "dies": true
         },
         "r_c": {
@@ -1451,6 +1527,7 @@
                 "deputy",
                 "leader"
             ],
+            "relationship_status": ["knows_of_only", "likes"],
             "dies": true
         },
         "r_c": {
@@ -1512,7 +1589,8 @@
                 "deputy",
                 "leader"
             ],
-            "dies": true
+            "dies": true,
+            "relationship_status": ["knows_of_only", "likes"]
         },
         "r_c": {
             "age": [
@@ -2315,7 +2393,8 @@
         "location": [
             "beach",
             "plains",
-            "forest"
+            "forest",
+            "desert"
         ],
         "season": [
             "any"
@@ -2342,7 +2421,8 @@
         "location": [
             "plains",
             "forest",
-            "beach"
+            "beach",
+            "desert"
         ],
         "season": [
             "any"
@@ -2923,7 +3003,7 @@
         ],
         "tags": [],
         "frequency": 4,
-        "event_text": "m_c and r_c are killed in a border skirmish against o_c_n.",
+        "event_text": "m_c and r_c are killed in a border skirmish with o_c_n.",
         "m_c": {
             "status": [
                 "apprentice",
@@ -3075,7 +3155,7 @@
         ],
         "tags": [],
         "frequency": 3,
-        "event_text": "m_c slipped off a cliff onto the sharp rocks at the bottom.",
+        "event_text": "m_c slipped off a cliff onto the sharp rocks below.",
         "m_c": {
             "age": [
                 "-kitten"
@@ -3112,7 +3192,7 @@
             "all_lives"
         ],
         "frequency": 3,
-        "event_text": "m_c slipped off a cliff onto the sharp rocks at the bottom and couldn't recover.",
+        "event_text": "m_c slipped off a cliff onto the sharp rocks below and couldn't recover.",
         "m_c": {
             "status": [
                 "leader"
@@ -3143,7 +3223,7 @@
         ],
         "tags": [],
         "frequency": 4,
-        "event_text": "m_c was pushed off a cliff onto the sharp rocks at the bottom.",
+        "event_text": "m_c was pushed off a cliff onto the sharp rocks below.",
         "m_c": {
             "status": [
                 "-leader",
@@ -3242,8 +3322,8 @@
     {
         "event_id": "gen_death_hawk_any1",
         "location": [
-            "forest:camp1_camp4",
-            "plains:camp1_camp3",
+            "forest:camp1_camp2_camp4",
+            "plains:camp1_camp3_camp4",
             "mountainous:camp1_camp4",
             "beach:camp1_camp3"
         ],
@@ -3304,8 +3384,8 @@
     {
         "event_id": "gen_death_hawk_any2",
         "location": [
-            "forest:camp1_camp4",
-            "plains:camp1_camp3",
+            "forest:camp1_camp2_camp4",
+            "plains:camp1_camp3_camp4",
             "mountainous:camp1_camp4",
             "beach:camp1_camp3"
         ],
@@ -3377,8 +3457,8 @@
     {
         "event_id": "gen_death_eagle_anylead3",
         "location": [
-            "forest:camp1_camp4",
-            "plains:camp1_camp3",
+            "forest:camp1_camp2_camp4",
+            "plains:camp1_camp3_camp4",
             "mountainous:camp1_camp4",
             "beach:camp1_camp3"
         ],
@@ -3539,7 +3619,8 @@
         "location": [
             "plains",
             "forest",
-            "mountainous"
+            "mountainous",
+            "wetlands"
         ],
         "season": [
             "leaf-fall",
@@ -3572,7 +3653,8 @@
         "location": [
             "plains",
             "forest",
-            "mountainous"
+            "mountainous",
+            "wetlands"
         ],
         "season": [
             "leaf-fall",
@@ -3710,10 +3792,9 @@
         "event_text": "m_c was killed in {PRONOUN/m_c/poss} sleep by a snake that had snuck into camp.",
         "m_c": {
             "age": [
-                "kitten"
-            ],
-            "status": [
-                "kitten"
+                "kitten",
+                "adolescent",
+                "senior"
             ],
             "dies": true
         },
@@ -3969,7 +4050,7 @@
         ],
         "tags": [],
         "frequency": 4,
-        "event_text": "m_c sneaked out of camp and misjudged the jump across a stream. r_c watched without concern as {PRONOUN/m_c/subject} disappeared under the water.",
+        "event_text": "m_c snuck out of camp and misjudged the jump across a stream. r_c watched without concern as {PRONOUN/m_c/subject} disappeared under the water.",
         "m_c": {
             "age": [
                 "kitten"
@@ -4605,7 +4686,8 @@
         "location": [
             "beach",
             "forest",
-            "mountainous"
+            "mountainous",
+            "wetlands"
         ],
         "season": [
             "any"
@@ -4638,7 +4720,7 @@
         ],
         "tags": [],
         "frequency": 4,
-        "event_text": "m_c died in a fight with a dog.",
+        "event_text": "m_c died fighting a dog.",
         "m_c": {
             "status": [
                 "apprentice",
@@ -4670,7 +4752,7 @@
         ],
         "tags": [],
         "frequency": 4,
-        "event_text": "m_c died in a fight with a badger.",
+        "event_text": "m_c died fighting a badger.",
         "m_c": {
             "status": [
                 "apprentice",
@@ -4702,7 +4784,7 @@
         ],
         "tags": [],
         "frequency": 4,
-        "event_text": "m_c died in a fight with a rogue.",
+        "event_text": "m_c died fighting a rogue.",
         "m_c": {
             "status": [
                 "apprentice",
@@ -4783,11 +4865,15 @@
         "event_text": "m_c failed to interpret a warning sign from StarClan and couldn't foresee the circumstances of {PRONOUN/m_c/poss} death.",
         "m_c": {
             "status": [
-                "leader"
+                "leader",
+                "medicine cat"
             ],
             "skill": [
                 "-CLEVER,2",
-                "-STAR,2"
+                "-STAR,2",
+                "-OMEN,2",
+                "-CLAIRVOYANT,2",
+                "-PROPHET,2"
             ],
             "dies": true
         },
@@ -6281,7 +6367,9 @@
         "event_text": "m_c and r_c were ambushed by a pack of dogs, but r_c was nowhere to be found when m_c looked for help.",
         "m_c": {
             "status": [
-                "leader"
+                "leader",
+                "deputy",
+                "warrior"
             ],
             "skill": [
                 "-FIGHTER,3"
@@ -6771,7 +6859,7 @@
         ],
         "tags": [],
         "frequency": 4,
-        "event_text": "m_c disappeared from the nursery and was later found dead, not far from camp.",
+        "event_text": "m_c disappeared from the nursery and was later found frozen not far from camp.",
         "m_c": {
             "status": [
                 "kitten"
@@ -6929,7 +7017,7 @@
             "no_body"
         ],
         "frequency": 4,
-        "event_text": "m_c boasted about how ready {PRONOUN/m_c/subject} {VERB/m_c/were/was} for apprenticeship. {PRONOUN/m_c/subject/CAP} snuck away to prove it and the Clan finds only blood and raccoon-scent in the morning.",
+        "event_text": "m_c boasted about how ready {PRONOUN/m_c/subject} {VERB/m_c/were/was} for apprenticeship. {PRONOUN/m_c/subject/CAP} snuck away to prove it. The Clan finds only blood and raccoon-scent in the morning.",
         "m_c": {
             "status": [
                 "kitten"
@@ -6950,7 +7038,8 @@
         "location": [
             "forest",
             "beach",
-            "plains"
+            "plains",
+            "wetlands"
         ],
         "season": [
             "newleaf"
@@ -6974,7 +7063,7 @@
         "event_id": "multi_death_massdeath_fire1",
         "location": [
             "forest:camp1_camp2",
-            "plains:camp1_camp3",
+            "plains:camp1_camp3_camp4",
             "beach:camp1_camp3",
             "mountainous:camp4"
         ],
@@ -7641,7 +7730,7 @@
         ],
         "tags": [],
         "frequency": 4,
-        "event_text": "r_c claimed the haze of battle and blood lust were the reason {PRONOUN/r_c/subject} killed m_c.",
+        "event_text": "r_c claimed the haze of battle and bloodlust were the reason {PRONOUN/r_c/subject} killed m_c.",
         "m_c": {
             "status": [
                 "warrior",
@@ -7970,13 +8059,14 @@
         "event_text": "A warning from StarClan gave m_c enough knowledge to survive r_c's attack. r_c could not say the same.",
         "m_c": {
             "status": [
-                "leader"
+                "leader",
+                "deputy",
+                "warrior"
             ],
             "skill": [
                 "OMEN,1",
-                "DREAM,1",
+                "CLAIRVOYANT,1",
                 "PROPHET,1",
-                "GHOST,2",
                 "STAR,1"
             ],
             "dies": true
@@ -7999,7 +8089,7 @@
                 "cats": [
                     "r_c"
                 ],
-                "death": "r_c died after launching a failed assassination attempt on the Clan's leader."
+                "death": "r_c died after launching a failed assassination attempt."
             }
         ],
         "future_event": [
@@ -8033,7 +8123,7 @@
                 "amount": -30,
                 "mutual": false,
                 "log": {
-                    "cats_from": "cat_to attempted to take all of cat_from's lives, but cat_from had forewarning."
+                    "cats_from": "cat_to attempted to take cat_from's life, but cat_from had forewarning."
                 }
             }
         ]
