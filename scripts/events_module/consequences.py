@@ -225,6 +225,10 @@ def create_new_cat_block(
         if not match:
             continue
 
+        if match.group(1) == "any_apprentice":
+            min_age, max_age = Cat.age_moons[CatAge.ADOLESCENT]
+            age = randint(min_age, max_age)
+
         elif match.group(1) in (
             CatRank.DEPUTY,
             CatRank.LEADER

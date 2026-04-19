@@ -97,7 +97,6 @@
         allow_mediator_patrols = false
     
     [clan.relation]
-        no_litters = false
         affair = false
         "unmated parentage" = false
         "same sex birth" = false
@@ -112,6 +111,7 @@
         multisire = false
         "romantic with former mentor" = true
         "first cousin mates" = false
+        no_litters = false
     
     [clan.freshkill_tactics]
         low_rank = true

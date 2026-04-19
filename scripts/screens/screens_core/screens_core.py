@@ -363,7 +363,7 @@ def rebuild_moon_n_season_indicator(change_moon: bool = False, visible: bool = F
     menu_buttons["secret_season_indicator"].tool_tip_delay = 0
 
     menu_buttons["season_indicator"].change_layer(10)
-    menu_buttons["secret_season_indicator"].change_layer(0)
+    menu_buttons["secret_season_indicator"].change_layer(2)
 
 
 def load_moon_phases():
