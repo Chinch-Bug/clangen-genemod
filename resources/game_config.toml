@@ -795,7 +795,7 @@ dev_tools = false
 
 [april_fools_genes]
   green = 25
-  polycaudal = 15
+  polycaudal = 25
   rainbow_eyes = 10
   black_spotting = 15 # both this and peacock blue courtesy of mars from Create a Clan
   peacock_blue = 10

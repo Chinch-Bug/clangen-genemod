@@ -625,7 +625,7 @@
                 "amount": 5,
                 "mutual": false,
                 "log": {
-                    "cats_from": "cat_from had fun impressing the apprentices, including to_cat, at the Gathering."
+                    "cats_from": "cat_from had fun impressing the apprentices, including cat_to, at the Gathering."
                 }
             }
         ]

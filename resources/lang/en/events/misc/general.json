@@ -11348,6 +11348,58 @@
         }
     },
     {
+        "event_id": "gen_misc_war_kill_kit",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "war"
+        ],
+        "frequency": 1,
+        "event_text": "During a raid on o_c_n camp, m_c killed a kit.",
+        "m_c": {
+            "status": [
+                "warrior",
+                "leader",
+                "deputy"
+            ],
+            "trait": [
+                "fierce",
+                "bloodthirsty",
+                "daring",
+                "shameless",
+                "vengeful"
+            ]
+        },
+        "multiclan_cat": [
+            [ "clancat", "exists", "meeting", "dead", "status:kitten" ]
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "clan", "-low_lawful", "-low_social", "-high_aggress" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "comfort", "trust" ],
+                "amount": -25,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from heard about how cat_to killed a o_c_n kitten during a raid."
+                }
+            }
+        ],
+        "other_clan": {
+            "current_rep": [
+                "hostile"
+            ],
+            "has_rank": [
+                "warrior"
+            ],
+            "changed": -1
+        }
+    },
+    {
         "event_id": "gen_misc_failedmurder1",
         "location": [
             "any"
@@ -12405,5 +12457,43 @@
                 "vengeful"
             ]
         }
-    }
+    },
+      {
+    "event_id": "gen_misc_guardasleep",
+    "location": [
+      "any"
+    ],
+    "season": [
+      "any"
+    ],
+    "frequency": 4,
+    "event_text": "m_c fell asleep when {PRONOUN/m_c/subject} {VERB/m_c/were/was} supposed to be guarding camp.",
+    "m_c": {
+        "status": [
+          "warrior",
+          "deputy"
+        ],
+        "relationship_status": [],
+        "skill": [],
+        "trait": ["-strict", "-responsible"],
+        "backstory": [],
+        "dies": false
+    },
+    "relationships": [
+        {
+            "cats_from": [
+              "clan", "high_lawful"
+            ],
+            "cats_to": [
+              "m_c"
+            ],
+            "mutual": false,
+            "values": ["trust"],
+            "amount": -5,
+            "log": {
+              "cats_from": "cat_from heard cat_to fell asleep guarding camp."
+                }
+        }
+    ]
+}
 ]

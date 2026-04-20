@@ -497,7 +497,7 @@
                 "amount": -10,
                 "mutual": true,
                 "log": {
-                    "cats_from": "cat_from got into an argument with to_cat."
+                    "cats_from": "cat_from got into an argument with cat_to."
                 }
             }
         ]
@@ -526,7 +526,7 @@
                 "amount": 10,
                 "mutual": true,
                 "log": {
-                    "cats_from": "cat_from had a pleasant conversation with to_cat."
+                    "cats_from": "cat_from had a pleasant conversation with cat_to."
                 }
             }
         ]
@@ -554,7 +554,7 @@
                 "amount": 10,
                 "mutual": true,
                 "log": {
-                    "cats_from": "cat_from had a pleasant discussion with to_cat."
+                    "cats_from": "cat_from had a pleasant discussion with cat_to."
                 }
             }
         ]
@@ -641,7 +641,7 @@
                 "amount": 10,
                 "mutual": true,
                 "log": {
-                    "cats_from": "cat_from shared some tips with to_cat."
+                    "cats_from": "cat_from shared some tips with cat_to."
                 }
             }
         ]
@@ -854,7 +854,7 @@
                 "amount": 10,
                 "mutual": true,
                 "log": {
-                    "cats_from": "cat_from shared some tips with to_cat."
+                    "cats_from": "cat_from shared some tips with cat_to."
                 }
             }
         ],
@@ -883,7 +883,7 @@
                 "amount": 10,
                 "mutual": true,
                 "log": {
-                    "cats_from": "cat_from shared some prey with to_cat."
+                    "cats_from": "cat_from shared some prey with cat_to."
                 }
             }
         ],
@@ -1248,7 +1248,7 @@
                 "amount": 10,
                 "mutual": false,
                 "log": {
-                    "cats_from": "cat_from got advice from to_cat."
+                    "cats_from": "cat_from got advice from cat_to."
                 }
             }
         ]
@@ -1281,7 +1281,7 @@
                 "amount": 10,
                 "mutual": false,
                 "log": {
-                    "cats_from": "cat_from got advice from to_cat."
+                    "cats_from": "cat_from got advice from cat_to."
                 }
             }
         ]
