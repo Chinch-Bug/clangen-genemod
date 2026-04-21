@@ -717,6 +717,9 @@ class Cat:
         if self.phenotype.lykoi[0] == 'ly':
             self.get_permanent_condition('bumpy skin', born_with=True, genetic=True, custom_reveal=randint(36, 60))
 
+        if self.phenotype.pointgene[0] == 'cs' and random() < 0.05:
+            self.get_permanent_condition('cross-eyed', born_with=True, genetic=True)
+
     @property
     def dead(self) -> bool:
         return bool(self.status.group.is_afterlife())

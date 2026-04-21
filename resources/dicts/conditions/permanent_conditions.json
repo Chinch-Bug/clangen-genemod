@@ -1342,5 +1342,39 @@
             "2": [ ],
             "3": [ ]
         }
+    },
+    "cross-eyed": {
+        "severity": "minor",
+        "congenital": "sometimes",
+        "moons_until": 1,
+        "mortality": {
+            "newborn": 0,
+            "kitten": 0,
+            "adolescent": 0,
+            "young adult": 0,
+            "adult": 0,
+            "senior adult": 0,
+            "senior": 0
+        },
+        "illness_infectiousness": [ ],
+        "risks": [
+            {
+                "name": "bruises",
+                "chance": 100
+            },
+            {
+                "name": "scrapes",
+                "chance": 100
+            },
+            {
+                "name": "sprain",
+                "chance": 100
+            }
+        ],
+        "herbs": {
+            "1": [ ],
+            "2": [ ],
+            "3": [ ]
+        }
     }
 }

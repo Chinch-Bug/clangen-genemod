@@ -351,5 +351,19 @@
             "Not much could be done with the frequent itching and jabbing m_c felt to {PRONOUN/m_c/poss} eyes from a stray hair or debri, but r_c still feels guilty seeing how m_c's eyes have started to get cloudier.",
             "The itching or jabbing from a pesky hair or occasional debri was annoying, sure, but m_c feels far more alarmed now that {PRONOUN/m_c/subject}{VERB/m_c/'ve/'s} noticed a cloudiness to {PRONOUN/m_c/poss} vision."
         ]
+    },
+    "cross-eyed": {
+        "bruises": [
+            "m_c misjudged the distance of a jump and came out bruised from the fall.",
+            "m_c misjudged the distance of a jump and came out bruised from the fall."
+        ],
+        "scrapes": [
+            "m_c misjudged the distance of a jump and got scraped up for it.",
+            "m_c misjudged the distance of a jump and got scraped up for it."
+        ],
+        "sprain": [
+            "m_c misjudged the distance of a jump and landed wrong.",
+            "m_c misjudged the distance of a jump and landed wrong."
+        ]
     }
 }

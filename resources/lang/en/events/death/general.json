@@ -4008,7 +4008,7 @@
                 "cats": [
                     "m_c"
                 ],
-                "death": "m_c ate deathberries and succumbed to the poison."
+                "death": "m_c ate deathberries given by r_c and succumbed to the poison."
             }
         ],
         "future_event": [
