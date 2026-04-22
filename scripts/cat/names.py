@@ -129,14 +129,6 @@ class Name:
                 if name_fixpref and self.prefix is None:
                     # needed for random dice when we're changing the Prefix
                     name_fixpref = False
-
-        if self.suffix and not load_existing_name:
-            self.check_name(cat, name_fixpref)
-            if get_clan_setting("ancient names") and get_clan_setting("modded names"):
-                self.suffix = " " + self.suffix.title()
-                self.specsuffix_hidden = True
-        elif not load_existing_name and get_clan_setting("no special suffixes") and get_clan_setting("modded names"):
-            self.specsuffix_hidden = True
     
     def load_clan_names(self, clan):
         if not os.path.exists(get_save_dir() + f"/{clan}" + "/names"):
@@ -216,6 +208,13 @@ class Name:
             ):
                 double_animal = False
             i += 1
+
+        if self.suffix:
+            if get_clan_setting("ancient names") and get_clan_setting("modded names"):
+                self.suffix = " " + self.suffix.title()
+                self.specsuffix_hidden = True
+        elif get_clan_setting("no special suffixes") and get_clan_setting("modded names"):
+            self.specsuffix_hidden = True
 
     def __str__(self):
         return self.__repr__()
