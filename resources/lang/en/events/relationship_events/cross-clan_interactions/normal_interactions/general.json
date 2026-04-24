@@ -22,7 +22,8 @@
             "trait": [
                 "bloodthirsty"
             ],
-            "skill": ["STEALTH,1", "FIGHTER,1"]
+            "skill": ["STEALTH,1", "FIGHTER,1"],
+            "relationship_status": [ "dislikes" ]
         },
         "injury": [
             {
@@ -45,7 +46,66 @@
                     "cats_from": "cat_to ambushed cat_from."
                 }
             }
-        ]
+        ],
+        "other_clan": {
+            "changed": -2
+        }
+    },
+    {
+        "event_id": "gen_single_gathering_truce1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 1,
+        "event_text": [
+            "m_c lost {PRONOUN/m_c/poss} temper at r_c during the Gathering and violated the truce.",
+            "During the Gathering, m_c acted without thinking and turned an argument with r_c into a brawl."
+        ],
+        "m_c": {
+            "trait": ["bloodthirsty", "troublesome", "vengeful", "fierce"]
+        },
+        "r_c": {
+            "relationship_status": ["dislikes"]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "r_c"
+                ],
+                "injuries": [
+                    "battle_injury"
+                ]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "like", "respect", "romance", "trust", "comfort" ],
+                "amount": -25,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_to attacked cat_from during the Gathering."
+                }
+            },
+            {
+                "cats_from": [ "clan", "low_aggress" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "respect", "trust", "comfort" ],
+                "amount": -15,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from heard about cat_to attacking someone during the Gathering."
+                }
+            }
+        ],
+        "other_clan": {
+            "changed": -5
+        }
     },
     {
         "event_id": "gen_single_ambush2",

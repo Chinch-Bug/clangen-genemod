@@ -1072,109 +1072,6 @@
         ]
     },
     {
-        "event_id": "gen_injury_war_clawwound_anymultitraitmultistatus2",
-        "location": [
-            "any"
-        ],
-        "season": [
-            "any"
-        ],
-        "sub_type": [
-            "war"
-        ],
-        "frequency": 4,
-        "event_text": "A brutal battle against o_c_n leaves m_c injured.",
-        "m_c": {
-            "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
-            ]
-        },
-        "injury": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "injuries": [
-                    "claw-wound"
-                ],
-                "scars": [
-                    "FACE", "LEFTBLIND", "RIGHTBLIND", "SIDE", "THREE", "THROAT"
-                ]
-            }
-        ],
-        "history": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "scar": "m_c was scarred in a fight against o_c_n.",
-                "death": "m_c died from {PRONOUN/m_c/poss} wounds after a battle with o_c_n."
-            }
-        ],
-        "other_clan": {
-            "current_rep": [
-                "hostile"
-            ],
-            "changed": -3,
-            "has_rank": [
-                "any_warrior_mult"
-            ]
-        }
-    },
-    {
-        "event_id": "gen_injury_war_catbite_anymultitraitmultistatus1",
-        "location": [
-            "any"
-        ],
-        "season": [
-            "any"
-        ],
-        "sub_type": [
-            "war"
-        ],
-        "frequency": 4,
-        "event_text": "m_c came out worse for wear after a border skirmish with o_c_n.",
-        "m_c": {
-            "status": [
-                "apprentice",
-                "warrior",
-                "deputy",
-                "leader"
-            ]
-        },
-        "injury": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "injuries": [
-                    "cat bite"
-                ]
-            }
-        ],
-        "history": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "scar": "m_c was scarred in a fight against o_c_n.",
-                "death": "m_c died from {PRONOUN/m_c/poss} wounds after a battle with o_c_n."
-            }
-        ],
-        "other_clan": {
-            "current_rep": [
-                "hostile"
-            ],
-            "changed": -3,
-            "has_rank": [
-                "any_fighter_mult"
-            ]
-        }
-    },
-    {
         "event_id": "gen_injury_catbite_anyotherclanhostileany1",
         "location": [
             "any"
@@ -1246,70 +1143,6 @@
                 "amount": -5,
                 "log": {
                     "cats_from": "cat_from was unimpressed to hear that cat_to impulsively attacked a o_c_n patrol."
-                }
-            }
-        ]
-    },
-    {
-        "event_id": "gen_injury_clawwound_anyclankitsmultistatus1",
-        "location": [
-            "any"
-        ],
-        "season": [
-            "any"
-        ],
-        "sub_type": [
-            "war"
-        ],
-        "tags": [
-            "clan:kitten"
-        ],
-        "frequency": 4,
-        "event_text": "While o_c_n attempted a surprise attack on the c_n camp, m_c fiercely guarded the nursery, no matter how injured {PRONOUN/m_c/subject} became.",
-        "m_c": {
-            "age": [
-                "-kitten"
-            ],
-            "status": [
-                "any"
-            ]
-        },
-        "injury": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "injuries": [
-                    "claw-wound"
-                ]
-            }
-        ],
-        "history": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "scar": "m_c was scarred in a fight against o_c_n.",
-                "death": "m_c died from {PRONOUN/m_c/poss} wounds after a battle with o_c_n."
-            }
-        ],
-        "other_clan": {
-            "current_rep": [
-                "hostile"
-            ],
-            "changed": -3,
-            "has_rank": [
-                "any_warrior_mult"
-            ]
-        },
-        "relationships": [
-            {
-                "cats_from": [ "clan", "high_social" ],
-                "cats_to": [ "m_c" ],
-                "values": [ "respect", "trust" ],
-                "amount": 10,
-                "log": {
-                    "cats_from": "cat_from saw how fiercely cat_to defended the nursery in a battle with o_c_n."
                 }
             }
         ]
@@ -3634,124 +3467,6 @@
                 "death": "m_c died from {PRONOUN/m_c/poss} wounds after a hare scratched {PRONOUN/m_c/poss} eyes."
             }
         ]
-    },
-    {
-        "event_id": "gen_injury_sore_war_anyapprentice2",
-        "location": [
-            "any"
-        ],
-        "season": [
-            "any"
-        ],
-        "sub_type": [
-            "war"
-        ],
-        "frequency": 4,
-        "event_text": "Heightened battle training has left m_c sore and tired.",
-        "m_c": {
-            "status": [
-                "apprentice"
-            ]
-        },
-        "injury": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "injuries": [
-                    "sore"
-                ]
-            }
-        ]
-    },
-    {
-        "event_id": "gen_injury_bruises_war_anyapprentice1",
-        "location": [
-            "any"
-        ],
-        "season": [
-            "any"
-        ],
-        "sub_type": [
-            "war"
-        ],
-        "frequency": 4,
-        "event_text": "A harsh sparring session has left m_c bruised. {PRONOUN/m_c/subject/CAP} {VERB/m_c/worry/worries} that {PRONOUN/m_c/subject} will do badly in a real fight against o_c_n.",
-        "m_c": {
-            "status": [
-                "apprentice"
-            ]
-        },
-        "injury": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "injuries": [
-                    "bruises"
-                ]
-            }
-        ]
-    },
-    {
-        "event_id": "gen_injury_mangledtail_war_anyapprenticehostile1",
-        "location": [
-            "any"
-        ],
-        "season": [
-            "any"
-        ],
-        "sub_type": [
-            "war"
-        ],
-        "frequency": 4,
-        "event_text": "A horrible battle occurred between c_n and o_c_n patrols after the two patrols traded insults at the border. m_c and r_c were left badly injured.",
-        "m_c": {
-            "status": [
-                "apprentice",
-                "warrior",
-                "leader",
-                "deputy"
-            ]
-        },
-        "r_c": {
-            "status": [
-                "leader",
-                "deputy",
-                "warrior",
-                "apprentice"
-            ]
-        },
-        "injury": [
-            {
-                "cats": [
-                    "m_c",
-                    "r_c"
-                ],
-                "injuries": [
-                    "battle_injury"
-                ]
-            }
-        ],
-        "history": [
-            {
-                "cats": [
-                    "m_c",
-                    "r_c"
-                ],
-                "scar": "m_c was scarred after a fight with o_c_n cats.",
-                "death": "m_c died from {PRONOUN/m_c/poss} wounds after fighting with o_c_n cats."
-            }
-        ],
-        "other_clan": {
-            "current_rep": [
-                "hostile"
-            ],
-            "changed": -1,
-            "has_rank": [
-                "any_fighter_mult"
-            ]
-        }
     },
     {
         "event_id": "gen_injury_catbite_anyapprenticemultitraitappmentor4",
@@ -6729,6 +6444,486 @@
         ]
     },
     {
+        "event_id": "gen_injury_freshkill_anyrat1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "frequency": 4,
+        "event_text": "m_c was taking some prey from the fresh-kill pile only to find a horde of rats! {PRONOUN/m_c/subject/CAP} called to r_c for help and together they fought off the rats, but not before being injured.",
+        "m_c": {
+            "age": [
+                "adolescent",
+                "young adult",
+                "adult",
+                "senior adult",
+                "senior"
+            ]
+        },
+        "r_c": {
+            "age": [
+                "young adult",
+                "adult",
+                "senior adult",
+                "senior"
+            ]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "m_c",
+                    "r_c"
+                ],
+                "injuries": [
+                    "rat_bite"
+                ]
+            }
+        ],
+        "history": [
+            {
+                "cats": [
+                    "m_c",
+                    "r_c"
+                ],
+                "scar": "m_c {VERB/m_c/were/was} hurt while defending the fresh-kill pile from rats.",
+                "death": "m_c died from {PRONOUN/m_c/poss} wounds after defending the fresh-kill pile from rats."
+            }
+        ],
+        "supplies": [
+            {
+                "type": "freshkill",
+                "trigger": [
+                    "excess"
+                ],
+                "adjust": "reduce_eighth"
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "trust", "like" ],
+                "amount": 10,
+                "log": {
+                    "cats_from": "m_c called for help from r_c when {PRONOUN/r_c/subject} found rats in camp, and the cats fought the rats off together."
+                }
+            },
+            {
+                "cats_from": [ "clan", "high_aggress" ],
+                "cats_to": [ "m_c", "r_c" ],
+                "values": [ "respect" ],
+                "amount": 8,
+                "log": {
+                    "cats_from": "cat_from saw cat_to defend the fresh-kill pile from a horde of rats."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_injury_freshkill_anyrat2",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "frequency": 4,
+        "event_text": "m_c was taking some prey from the fresh-kill pile only to find a horde of rats! While m_c managed to fight off every last rat, {PRONOUN/m_c/subject} got injured in the process.",
+        "m_c": {
+            "age": [
+                "adolescent",
+                "young adult",
+                "adult",
+                "senior adult",
+                "senior"
+            ]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "rat_bite"
+                ]
+            }
+        ],
+        "history": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "scar": "m_c {VERB/m_c/were/was} hurt while defending the fresh-kill pile from rats.",
+                "death": "m_c died from {PRONOUN/m_c/poss} wounds after defending the fresh-kill pile from rats."
+            }
+        ],
+        "supplies": [
+            {
+                "type": "freshkill",
+                "trigger": [
+                    "excess"
+                ],
+                "adjust": "reduce_eighth"
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "clan", "high_aggress" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "respect" ],
+                "amount": 8,
+                "log": {
+                    "cats_from": "cat_from saw cat_to defend the fresh-kill pile from a horde of rats."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_injury_war_onwatch",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "war"
+        ],
+        "frequency": 3,
+        "event_text": "m_c and r_c spend the night by the o_c_n border and catch a o_c_n patrol sneaking into c_n territory. While r_c gets reinforcements, m_c keeps them occupied.",
+        "m_c": {
+            "status": [
+                "warrior",
+                "deputy",
+                "leader"
+            ]
+        },
+        "r_c": {
+            "status": [
+                "warrior",
+                "deputy",
+                "leader"
+            ]
+        },
+        "multiclan_cat": [
+            [ "status:warrior", "clancat", "meeting" ],
+            [ "status:warrior", "clancat", "meeting" ]
+        ],
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "battle_injury"
+                ]
+            }
+        ],
+        "history": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "scar": "m_c gained a scar from holding off an ambush.",
+                "death": "m_c died of {PRONOUN/m_c/poss} injuries after holding off o_c_n's ambush."
+            }
+        ],
+        "other_clan": {
+            "current_rep": [
+                "hostile"
+            ],
+            "changed": -2,
+            "has_rank": [ "warrior_mult" ]
+        }
+    },
+    {
+        "event_id": "gen_injury_war_clawwound_anymultitraitmultistatus2",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "war"
+        ],
+        "frequency": 4,
+        "event_text": "A brutal battle against o_c_n leaves m_c injured.",
+        "m_c": {
+            "status": [
+                "apprentice",
+                "warrior",
+                "deputy",
+                "leader"
+            ]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "claw-wound"
+                ],
+                "scars": [
+                    "FACE", "LEFTBLIND", "RIGHTBLIND", "SIDE", "THREE", "THROAT"
+                ]
+            }
+        ],
+        "history": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "scar": "m_c was scarred in a fight against o_c_n.",
+                "death": "m_c died from {PRONOUN/m_c/poss} wounds after a battle with o_c_n."
+            }
+        ],
+        "other_clan": {
+            "current_rep": [
+                "hostile"
+            ],
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
+        }
+    },
+    {
+        "event_id": "gen_injury_war_catbite_anymultitraitmultistatus1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "war"
+        ],
+        "frequency": 4,
+        "event_text": "m_c came out worse for wear after a border skirmish with o_c_n.",
+        "m_c": {
+            "status": [
+                "apprentice",
+                "warrior",
+                "deputy",
+                "leader"
+            ]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "cat bite"
+                ]
+            }
+        ],
+        "history": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "scar": "m_c was scarred in a fight against o_c_n.",
+                "death": "m_c died from {PRONOUN/m_c/poss} wounds after a battle with o_c_n."
+            }
+        ],
+        "other_clan": {
+            "current_rep": [
+                "hostile"
+            ],
+            "changed": -3,
+            "has_rank": [
+                "any_fighter_mult"
+            ]
+        }
+    },
+    {
+        "event_id": "gen_injury_clawwound_anyclankitsmultistatus1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "war"
+        ],
+        "tags": [
+            "clan:kitten"
+        ],
+        "frequency": 4,
+        "event_text": "While o_c_n attempted a surprise attack on the c_n camp, m_c fiercely guarded the nursery, no matter how injured {PRONOUN/m_c/subject} became.",
+        "m_c": {
+            "age": [
+                "-kitten"
+            ],
+            "status": [
+                "any"
+            ]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "claw-wound"
+                ]
+            }
+        ],
+        "history": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "scar": "m_c was scarred in a fight against o_c_n.",
+                "death": "m_c died from {PRONOUN/m_c/poss} wounds after a battle with o_c_n."
+            }
+        ],
+        "other_clan": {
+            "current_rep": [
+                "hostile"
+            ],
+            "changed": -3,
+            "has_rank": [
+                "any_warrior_mult"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "clan", "high_social" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "respect", "trust" ],
+                "amount": 10,
+                "log": {
+                    "cats_from": "cat_from saw how fiercely cat_to defended the nursery in a battle with o_c_n."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_injury_sore_war_anyapprentice2",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "war"
+        ],
+        "frequency": 4,
+        "event_text": "Heightened battle training has left m_c sore and tired.",
+        "m_c": {
+            "status": [
+                "apprentice"
+            ]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "sore"
+                ]
+            }
+        ]
+    },
+    {
+        "event_id": "gen_injury_bruises_war_anyapprentice1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "war"
+        ],
+        "frequency": 4,
+        "event_text": "A harsh sparring session has left m_c bruised. {PRONOUN/m_c/subject/CAP} {VERB/m_c/worry/worries} that {PRONOUN/m_c/subject} will do badly in a real fight against o_c_n.",
+        "m_c": {
+            "status": [
+                "apprentice"
+            ]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "bruises"
+                ]
+            }
+        ]
+    },
+    {
+        "event_id": "gen_injury_mangledtail_war_anyapprenticehostile1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "war"
+        ],
+        "frequency": 4,
+        "event_text": "A horrible battle occurred between c_n and o_c_n patrols after the two patrols traded insults at the border. m_c and r_c were left badly injured.",
+        "m_c": {
+            "status": [
+                "apprentice",
+                "warrior",
+                "leader",
+                "deputy"
+            ]
+        },
+        "r_c": {
+            "status": [
+                "leader",
+                "deputy",
+                "warrior",
+                "apprentice"
+            ]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "m_c",
+                    "r_c"
+                ],
+                "injuries": [
+                    "battle_injury"
+                ]
+            }
+        ],
+        "history": [
+            {
+                "cats": [
+                    "m_c",
+                    "r_c"
+                ],
+                "scar": "m_c was scarred after a fight with o_c_n cats.",
+                "death": "m_c died from {PRONOUN/m_c/poss} wounds after fighting with o_c_n cats."
+            }
+        ],
+        "other_clan": {
+            "current_rep": [
+                "hostile"
+            ],
+            "changed": -1,
+            "has_rank": [
+                "any_fighter_mult"
+            ]
+        }
+    },
+    {
         "event_id": "gen_injury_mangledleg_anymultistatusnotcareful1",
         "location": [
             "any"
@@ -6875,143 +7070,6 @@
                 "any_warrior"
             ]
         }
-    },
-    {
-        "event_id": "gen_injury_freshkill_anyrat1",
-        "location": [
-            "any"
-        ],
-        "season": [
-            "any"
-        ],
-        "frequency": 4,
-        "event_text": "m_c was taking some prey from the fresh-kill pile only to find a horde of rats! {PRONOUN/m_c/subject/CAP} called to r_c for help and together they fought off the rats, but not before being injured.",
-        "m_c": {
-            "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
-            ]
-        },
-        "r_c": {
-            "age": [
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
-            ]
-        },
-        "injury": [
-            {
-                "cats": [
-                    "m_c",
-                    "r_c"
-                ],
-                "injuries": [
-                    "rat_bite"
-                ]
-            }
-        ],
-        "history": [
-            {
-                "cats": [
-                    "m_c",
-                    "r_c"
-                ],
-                "scar": "m_c {VERB/m_c/were/was} hurt while defending the fresh-kill pile from rats.",
-                "death": "m_c died from {PRONOUN/m_c/poss} wounds after defending the fresh-kill pile from rats."
-            }
-        ],
-        "supplies": [
-            {
-                "type": "freshkill",
-                "trigger": [
-                    "excess"
-                ],
-                "adjust": "reduce_eighth"
-            }
-        ],
-        "relationships": [
-            {
-                "cats_from": [ "m_c" ],
-                "cats_to": [ "r_c" ],
-                "values": [ "trust", "like" ],
-                "amount": 10,
-                "log": {
-                    "cats_from": "m_c called for help from r_c when {PRONOUN/r_c/subject} found rats in camp, and the cats fought the rats off together."
-                }
-            },
-            {
-                "cats_from": [ "clan", "high_aggress" ],
-                "cats_to": [ "m_c", "r_c" ],
-                "values": [ "respect" ],
-                "amount": 8,
-                "log": {
-                    "cats_from": "cat_from saw cat_to defend the fresh-kill pile from a horde of rats."
-                }
-            }
-        ]
-    },
-    {
-        "event_id": "gen_injury_freshkill_anyrat2",
-        "location": [
-            "any"
-        ],
-        "season": [
-            "any"
-        ],
-        "frequency": 4,
-        "event_text": "m_c was taking some prey from the fresh-kill pile only to find a horde of rats! While m_c managed to fight off every last rat, {PRONOUN/m_c/subject} got injured in the process.",
-        "m_c": {
-            "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
-            ]
-        },
-        "injury": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "injuries": [
-                    "rat_bite"
-                ]
-            }
-        ],
-        "history": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "scar": "m_c {VERB/m_c/were/was} hurt while defending the fresh-kill pile from rats.",
-                "death": "m_c died from {PRONOUN/m_c/poss} wounds after defending the fresh-kill pile from rats."
-            }
-        ],
-        "supplies": [
-            {
-                "type": "freshkill",
-                "trigger": [
-                    "excess"
-                ],
-                "adjust": "reduce_eighth"
-            }
-        ],
-        "relationships": [
-            {
-                "cats_from": [ "clan", "high_aggress" ],
-                "cats_to": [ "m_c" ],
-                "values": [ "respect" ],
-                "amount": 8,
-                "log": {
-                    "cats_from": "cat_from saw cat_to defend the fresh-kill pile from a horde of rats."
-                }
-            }
-        ]
     },
     {
         "event_id": "gen_misc_war_medcat_assist1",
@@ -7353,48 +7411,6 @@
         }
     },
     {
-        "event_id": "gen_injury_sprain_anyapprentice1",
-        "location": [
-            "forest",
-            "plains",
-            "mountainous",
-            "desert"
-        ],
-        "season": [
-            "any"
-        ],
-        "frequency": 4,
-        "event_text": "m_c was running around on patrol when {PRONOUN/m_c/poss} paw landed right in a rabbit hole. {PRONOUN/m_c/subject/CAP} limped the whole way home.",
-        "m_c": {
-            "status": [
-                "apprentice",
-                "healer apprentice",
-                "mediator apprentice"
-            ],
-            "trait": [
-                "adventurous",
-                "bold",
-                "daring",
-                "playful",
-                "childish",
-                "ambitious",
-                "confident",
-                "competitive",
-                "oblivious"
-            ]
-        },
-        "injury": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "injuries": [
-                    "sprain"
-                ]
-            }
-        ]
-    },
-    {
         "event_id": "gen_injury_war_cliffsaved",
         "location": [
             "mountainous",
@@ -7477,96 +7493,6 @@
                 }
             }
         ]
-    },
-    {
-        "event_id": "gen_injury_fireflies",
-        "location": [
-            "forest:camp2,camp4",
-            "mountainous:camp4",
-            "plains:camp1"
-        ],
-        "season": [
-            "greenleaf"
-        ],
-        "sub_type": [ ],
-        "tags": [ ],
-        "frequency": 2,
-        "event_text": "m_c got hurt while chasing fireflies through camp.",
-        "new_accessory": [ ],
-        "m_c": {
-            "age": [
-                "kitten",
-                "adolescent"
-            ]
-        },
-        "injury": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "injuries": [
-                    "minor_injury"
-                ]
-            }
-        ]
-    },
-    {
-        "event_id": "gen_injury_war_onwatch",
-        "location": [
-            "any"
-        ],
-        "season": [
-            "any"
-        ],
-        "sub_type": [
-            "war"
-        ],
-        "frequency": 3,
-        "event_text": "m_c and r_c spend the night by the o_c_n border and catch a o_c_n patrol sneaking into c_n territory. While r_c gets reinforcements, m_c keeps them occupied.",
-        "m_c": {
-            "status": [
-                "warrior",
-                "deputy",
-                "leader"
-            ]
-        },
-        "r_c": {
-            "status": [
-                "warrior",
-                "deputy",
-                "leader"
-            ]
-        },
-        "multiclan_cat": [
-            [ "status:warrior", "clancat", "meeting" ],
-            [ "status:warrior", "clancat", "meeting" ]
-        ],
-        "injury": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "injuries": [
-                    "battle_injury"
-                ]
-            }
-        ],
-        "history": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "scar": "m_c gained a scar from holding off an ambush.",
-                "death": "m_c died of {PRONOUN/m_c/poss} injuries after holding off o_c_n's ambush."
-            }
-        ],
-        "other_clan": {
-            "current_rep": [
-                "hostile"
-            ],
-            "changed": -2,
-            "has_rank": [ "warrior_mult" ]
-        }
     },
     {
         "event_id": "gen_injury_bruises_kittensnout",
@@ -7765,6 +7691,80 @@
                 ],
                 "injuries": [
                     "bruises"
+                ]
+            }
+        ]
+    },
+    {
+        "event_id": "gen_injury_sprain_anyapprentice1",
+        "location": [
+            "forest",
+            "plains",
+            "mountainous",
+            "desert"
+        ],
+        "season": [
+            "any"
+        ],
+        "frequency": 4,
+        "event_text": "m_c was running around on patrol when {PRONOUN/m_c/poss} paw landed right in a rabbit hole. {PRONOUN/m_c/subject/CAP} limped the whole way home.",
+        "m_c": {
+            "status": [
+                "apprentice",
+                "medicine cat apprentice",
+                "mediator apprentice"
+            ],
+            "trait": [
+                "adventurous",
+                "bold",
+                "daring",
+                "playful",
+                "childish",
+                "ambitious",
+                "confident",
+                "competitive",
+                "oblivious"
+            ]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "sprain"
+                ]
+            }
+        ]
+    },
+    {
+        "event_id": "gen_injury_fireflies",
+        "location": [
+            "forest:camp2_camp4",
+            "mountainous:camp4",
+            "plains:camp1"
+        ],
+        "season": [
+            "greenleaf"
+        ],
+        "sub_type": [],
+        "tags": [],
+        "frequency": 2,
+        "event_text": "m_c got hurt while chasing fireflies through camp.",
+        "new_accessory": [],
+        "m_c": {
+            "age": [
+                "kitten",
+                "adolescent"
+            ]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "minor_injury"
                 ]
             }
         ]

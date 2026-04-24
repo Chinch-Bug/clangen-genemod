@@ -39,5 +39,44 @@
                 }
             }
         ]
+    },
+    {
+        "event_id": "mountain_group_avalanche1",
+        "location": [ "mountainous" ],
+        "season": [ "leaf-bare" ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "While on patrol with r_c1 and r_c2, m_c witnessed a o_c_n cat get caught under a falling snow drift. Together they were thankfully able to get r_c3 out unharmed."
+        ],
+        "m_c": {
+            "skill": ["SENSE,1"],
+            "age": [ "-senior" ]
+        },
+        "r_c": [
+            {
+                "clan": 1,
+                "age": [ "-senior" ]
+            },
+            {
+                "clan": 1,
+                "age": [ "-senior" ]
+            },
+            {
+                "clan": 2
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "r_c3" ],
+                "cats_to": [ "m_c", "r_c1", "r_c2" ],
+                "values": [ "trust", "respect", "like", "comfort" ],
+                "amount": 15,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from was saved from a deep snowdrift by cat_to."
+                }
+            }
+        ]
     }
 ]

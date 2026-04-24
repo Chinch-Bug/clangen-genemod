@@ -33,5 +33,44 @@
         "other_clan": {
             "changed": 1
         }
+    },
+    {
+        "event_id": "mountain_single_avalanche1",
+        "location": [ "mountainous" ],
+        "season": [ "leaf-bare" ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "While on a solo patrol, m_c witnessed a o_c_n cat get caught under a falling snow drift. {PRONOUN/m_c/subject/CAP} {VERB/m_c/were/was} able to get r_c out, but not before the cold got to {PRONOUN/r_c/object}."
+        ],
+        "m_c": {
+            "skill": [ "SENSE,1" ],
+            "age": [ "-senior" ]
+        },
+        "r_c": {
+            "age": [ "-senior" ]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "r_c"
+                ],
+                "injuries": [
+                    "cold_injury"
+                ]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust", "respect", "like", "comfort" ],
+                "amount": 15,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from was saved from a deep snowdrift by cat_to."
+                }
+            }
+        ]
     }
 ]
