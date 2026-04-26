@@ -444,8 +444,7 @@ class GroupEvents:
         """Check if the interaction is allowed with the current chosen cats."""
 
         for name, rel_constraint in interaction.relationship_constraint.items():
-            abbre_from = name.split("_to_")[0]
-            abbre_to = name.split("_to_")[1]
+            abbre_from, abbre_to = name.split("_to_")
 
             cat_from_id = abbreviations_cat_id[abbre_from]
             cat_to_id = abbreviations_cat_id[abbre_to]

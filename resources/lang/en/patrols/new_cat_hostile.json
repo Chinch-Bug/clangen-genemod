@@ -1145,7 +1145,10 @@
                             "trust",
                             "comfort"
                         ],
-                        "amount": 30
+                        "amount": 30,
+                        "log": {
+                            "cats_from": "cat_from and cat_to fell in love over the course of many stolen moments at the border."
+                        }
                     },
                     {
                         "cats_from": [
@@ -1194,7 +1197,10 @@
                             "trust",
                             "comfort"
                         ],
-                        "amount": 30
+                        "amount": 30,
+                        "log": {
+                            "cats_from": "cat_from and cat_to fell in love over the course of many stolen moments at the border."
+                        }
                     },
                     {
                         "cats_from": [
@@ -1242,7 +1248,10 @@
                             "trust",
                             "comfort"
                         ],
-                        "amount": 30
+                        "amount": 30,
+                        "log": {
+                            "cats_from": "cat_from and cat_to fell in love over the course of many stolen moments at the border."
+                        }
                     },
                     {
                         "cats_from": [
@@ -1312,7 +1321,10 @@
                             "trust",
                             "comfort"
                         ],
-                        "amount": 30
+                        "amount": 30,
+                        "log": {
+                            "cats_from": "cat_from and cat_to fell in love over the course of many stolen moments at the border."
+                        }
                     },
                     {
                         "cats_from": [
@@ -2659,7 +2671,7 @@
         "chance_of_success": 45,
         "success_outcomes": [
             {
-                "text": "The sounds die away and then start up again in strange, unpredictable intervals. Investigating, p_l suddenly finds {PRONOUN/p_l/self} nose to nose with a panting, bleeding queen, one desperately trying to keep {PRONOUN/n_c:0/poss} newborn litter quiet. p_l brings the queen back to camp where the Clan, suspicious but obedient to the code, takes them in.",
+                "text": "The sounds die away and then start up again in strange, unpredictable intervals. Investigating, p_l finds a panting, bleeding queen, one desperately trying to keep {PRONOUN/n_c:0/poss} newborn litter quiet. p_l brings the queen back to camp where the Clan, suspicious but obedient to the code, takes them in.",
                 "exp": 10,
                 "new_cat": [
                     [
@@ -2687,7 +2699,10 @@
                             "trust",
                             "comfort"
                         ],
-                        "amount": 10
+                        "amount": 10,
+                        "log": {
+                            "cats_from": "cat_to saved cat_from when {PRONOUN/cat_from/subject} {VERB/cat_from/were/was} struggling after the birth of {PRONOUN/cat_from/poss} kits."
+                        }
                     }
                 ],
                 "outsider_rep": 1,
@@ -2721,7 +2736,10 @@
                             "trust",
                             "comfort"
                         ],
-                        "amount": 10
+                        "amount": 10,
+                        "log": {
+                            "cats_from": "cat_to saved cat_from when {PRONOUN/cat_from/subject} {VERB/cat_from/were/was} struggling after the birth of {PRONOUN/cat_from/poss} kits."
+                        }
                     }
                 ],
                 "outsider_rep": 1,
@@ -2934,7 +2952,10 @@
                             "trust",
                             "comfort"
                         ],
-                        "amount": 10
+                        "amount": 10,
+                        "log": {
+                            "cats_from": "cat_to saved cat_from when {PRONOUN/cat_from/subject} {VERB/cat_from/were/was} struggling after the birth of {PRONOUN/cat_from/poss} kits."
+                        }
                     }
                 ],
                 "outsider_rep": 1,
@@ -2968,7 +2989,10 @@
                             "trust",
                             "comfort"
                         ],
-                        "amount": 10
+                        "amount": 10,
+                        "log": {
+                            "cats_from": "cat_to saved cat_from when {PRONOUN/cat_from/subject} {VERB/cat_from/were/was} struggling after the birth of {PRONOUN/cat_from/poss} kits."
+                        }
                     }
                 ],
                 "outsider_rep": 1,
@@ -3173,7 +3197,10 @@
                             "trust",
                             "comfort"
                         ],
-                        "amount": 10
+                        "amount": 10,
+                        "log": {
+                            "cats_from": "cat_to saved cat_from when {PRONOUN/cat_from/subject} {VERB/cat_from/were/was} struggling after the birth of {PRONOUN/cat_from/poss} kits."
+                        }
                     }
                 ],
                 "outsider_rep": 1,
@@ -3207,7 +3234,10 @@
                             "trust",
                             "comfort"
                         ],
-                        "amount": 10
+                        "amount": 10,
+                        "log": {
+                            "cats_from": "cat_to saved cat_from when {PRONOUN/cat_from/subject} {VERB/cat_from/were/was} struggling after the birth of {PRONOUN/cat_from/poss} kits."
+                        }
                     }
                 ],
                 "outsider_rep": 1,
