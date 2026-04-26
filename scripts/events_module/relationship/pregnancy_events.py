@@ -1838,7 +1838,7 @@ class Pregnancy_Events:
                 ]
                 rel_reflection = ext_relative_modifier * len(parents)
                 variation_range = math.ceil(20 / len(parents))
-                y = random.randrange(-variation_range, variation_range)
+                y = randrange(-variation_range, variation_range)
 
                 # this finds what the relative's relationship is toward each parent and applies a reflection of that
                 # relationship to the kit. reflection values will be divided by 4 by default and then modified

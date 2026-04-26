@@ -2122,7 +2122,7 @@
         "relationships": [
             {
                 "cats_from": [ "clan" ],
-                "cats_to": [ "n_c:0, n_c:1, n_c:2" ],
+                "cats_to": [ "n_c:0", "n_c:1", "n_c:2" ],
                 "mutual": false,
                 "values": [ "trust", "like" ],
                 "amount": -10,
