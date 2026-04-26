@@ -36,7 +36,6 @@
             "otherclan2",
             "otherclan3",
             "otherclan4",
-            "stolenkit2",
             "ostracized_warrior",
             "disgraced1",
             "disgraced2",
@@ -47,7 +46,9 @@
             "medicine_cat",
             "guided4",
             "refugee5",
-            "stolenkit1"
+            "stolenkit0",
+            "stolenkit1",
+            "stolenkit2"
         ],
         "healer_backstories": [
             "medicine_cat", "wandering_healer1", "wandering_healer2"
