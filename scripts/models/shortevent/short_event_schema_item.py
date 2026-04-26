@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Annotated, List, Literal, Union
 
-from pydantic import BaseModel, Field, StringConstraints
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints
 from pydantic_core import MISSING
 
 from scripts.models.common.biome import Biome
@@ -25,6 +25,7 @@ from scripts.models.common.future_event import FutureEvent
 
 
 class ShortEventSchemaItem(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     event_id: str = Field(..., description="Unique string used to identify the event.")
     location: Location = Field(
         ..., description="Controls the biome and camp the event appears in."
@@ -60,6 +61,9 @@ class ShortEventSchemaItem(BaseModel):
         description="Specifies the requirements for the random cat (r_c) of the event.",
     )
     new_cat: Union[List[NewCat], MISSING] = Field(
+        MISSING, description="Adds a new cat."
+    )
+    multiclan_cat: Union[List[NewCat], MISSING] = Field(
         MISSING, description="Adds a new cat."
     )
     injury: Union[List[InjuryItem], MISSING] = Field(

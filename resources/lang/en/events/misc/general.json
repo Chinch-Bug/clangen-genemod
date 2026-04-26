@@ -1998,7 +1998,6 @@
         ],
         "frequency": 1,
         "event_text": "m_c tries to convince r_c to run away with {PRONOUN/m_c/object}.",
-        "relationship_status": [ "trusts", "understands" ],
         "m_c": {
             "age": [
                 "young adult",
@@ -4735,7 +4734,7 @@
         },
         "new_cat": [
             [
-	     "exists",
+                "exists",
                 "meeting",
                 "loner",
                 "rogue"
@@ -4768,7 +4767,7 @@
         },
         "new_cat": [
             [
-	     "exists",
+                "exists",
                 "meeting",
                 "loner",
                 "rogue",
@@ -4827,7 +4826,7 @@
         },
         "new_cat": [
             [
-	     "exists",
+                "exists",
                 "meeting",
                 "loner",
                 "rogue"
@@ -4903,7 +4902,7 @@
         },
         "new_cat": [
             [
-	     "exists",
+                "exists",
                 "meeting",
                 "kittypet"
             ]
@@ -4982,11 +4981,12 @@
                 }
             }
         ],
-        "outsider": { },
-        "current_rep": [
-            "any"
-        ],
-        "changed": -5
+        "outsider": {
+            "current_rep": [
+                "any"
+            ],
+            "changed": -5
+        }
     },
     {
         "event_id": "multi_misc_any_scandalous_kittypet2",
@@ -5050,11 +5050,12 @@
                 }
             }
         ],
-        "outsider": { },
-        "current_rep": [
-            "any"
-        ],
-        "changed": 5
+        "outsider": {
+            "current_rep": [
+                "any"
+            ],
+            "changed": 5
+        }
     },
     {
         "event_id": "multi_misc_any_scandalous_kittypet3",
@@ -5119,11 +5120,12 @@
                 }
             }
         ],
-        "outsider": { },
-        "current_rep": [
-            "any"
-        ],
-        "changed": 7
+        "outsider": {
+            "current_rep": [
+                "any"
+            ],
+            "changed": 7
+        }
     },
     {
         "event_id": "multi_misc_any_scandalous_kittypet4",
@@ -5577,11 +5579,12 @@
                 }
             }
         ],
-        "other_clan": { },
-        "current_rep": [
-            "any"
-        ],
-        "changed": 1
+        "other_clan": {
+            "current_rep": [
+                "any"
+            ],
+            "changed": 1
+        }
     },
     {
         "event_id": "multi_misc_any_scandalous_other_clan2",
@@ -5973,11 +5976,12 @@
                 }
             }
         ],
-        "outsider": { },
-        "current_rep": [
-            "any"
-        ],
-        "changed": 5
+        "outsider": {
+            "current_rep": [
+                "any"
+            ],
+            "changed": 5
+        }
     },
     {
         "event_id": "multi_misc_any_scandalous_loner3",
@@ -6154,11 +6158,12 @@
                 }
             }
         ],
-        "outsider": { },
-        "current_rep": [
-            "any"
-        ],
-        "changed": 5
+        "outsider": {
+            "current_rep": [
+                "any"
+            ],
+            "changed": 5
+        }
     },
     {
         "event_id": "gen_misc_any_scandalous_rogue2",
@@ -6221,11 +6226,12 @@
                 }
             }
         ],
-        "outsider": { },
-        "current_rep": [
-            "any"
-        ],
-        "changed": 5
+        "outsider": {
+            "current_rep": [
+                "any"
+            ],
+            "changed": 5
+        }
     },
     {
         "event_id": "multi_misc_any_scandalous_rogue3",
@@ -12549,7 +12555,7 @@
                 "any"
             ],
             "changed": -1,
-            "has_rank": ["any_warrior_mult"]
+            "has_rank": [ "any_warrior_mult" ]
         },
         "exclude_involved": [ "m_c" ]
     },

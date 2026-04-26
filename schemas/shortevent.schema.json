@@ -1373,6 +1373,7 @@
       "type": "string"
     },
     "ShortEventSchemaItem": {
+      "additionalProperties": false,
       "properties": {
         "event_id": {
           "description": "Unique string used to identify the event.",
@@ -1441,6 +1442,14 @@
             "$ref": "#/$defs/NewCat"
           },
           "title": "New Cat",
+          "type": "array"
+        },
+        "multiclan_cat": {
+          "description": "Adds a new cat.",
+          "items": {
+            "$ref": "#/$defs/NewCat"
+          },
+          "title": "Multiclan Cat",
           "type": "array"
         },
         "injury": {

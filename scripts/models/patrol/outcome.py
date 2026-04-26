@@ -75,6 +75,10 @@ class Outcome(BaseModel):
         MISSING,
         description="Dictates what relationships m_c must have towards r_c. Do not use this section if there is no r_c in the event.",
     )
+    multiclan_cat: Union[List[NewCat], MISSING] = Field(
+        MISSING,
+        description="Adds new cat(s), either joining the clan or as outside cats. The {index} value corresponds to their index value on this list (e.g. n_c:0 refers to the first cat in this list).",
+    )
     new_cat: Union[List[NewCat], MISSING] = Field(
         MISSING,
         description="Adds new cat(s), either joining the clan or as outside cats. The {index} value corresponds to their index value on this list (e.g. n_c:0 refers to the first cat in this list).",

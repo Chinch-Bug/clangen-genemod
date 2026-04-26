@@ -21,8 +21,9 @@ class RelationshipConstraints(unittest.TestCase):
     def test_siblings(self):
         # given
         parent = Cat()
-        cat_from = Cat(parent1=parent.ID)
-        cat_to = Cat(parent1=parent.ID)
+        parent2 = Cat()
+        cat_from = Cat(parent1=parent.ID, parent2=parent2.ID)
+        cat_to = Cat(parent1=parent.ID, parent2=parent2.ID)
         rel = Relationship(cat_from, cat_to, False, True)
 
         # then

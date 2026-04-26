@@ -64,7 +64,7 @@ class TestHandleNewCats(unittest.TestCase):
 
 class TestHandleAccessories(unittest.TestCase):
     def setUp(self):
-        self.chosen_event = ShortEvent(event_id="test", new_accessory=["TEST"])
+        self.chosen_event = ShortEvent(event_id="test", new_accessory=("TEST",))
         self.chosen_event.main_cat = Cat(disable_random=True)
         self.pelts = Pelt
         self.clan = Clan()

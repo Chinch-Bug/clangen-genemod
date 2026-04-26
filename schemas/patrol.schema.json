@@ -836,6 +836,14 @@
           "title": "Relationship Constraint",
           "type": "array"
         },
+        "multiclan_cat": {
+          "description": "Adds new cat(s), either joining the clan or as outside cats. The {index} value corresponds to their index value on this list (e.g. n_c:0 refers to the first cat in this list).",
+          "items": {
+            "$ref": "#/$defs/NewCat"
+          },
+          "title": "Multiclan Cat",
+          "type": "array"
+        },
         "new_cat": {
           "description": "Adds new cat(s), either joining the clan or as outside cats. The {index} value corresponds to their index value on this list (e.g. n_c:0 refers to the first cat in this list).",
           "items": {
