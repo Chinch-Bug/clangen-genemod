@@ -766,29 +766,23 @@ class ListScreen(Screens):
 
         if self.current_group == "general.your_clan":
             group = self.clan_name
-            temper = i18n.t(f"screens.leader_den.{game.clan.temperament}")
+            first_temper, second_temper = game.clan.temperament
         elif self.current_group in self.dead_group_names:
             if self.current_group == "general.dark_forest":
                 group = i18n.t(f"general.the_dark_forest")
             else:
                 group = i18n.t(f"{self.current_group}")
             if self.current_group == "general.starclan":
-                if not game.starclan or not game.starclan.influencing_cats:
-                    self.temper_message.hide()
-
-                    # this means there's probably no cats in starclan, so no temper
-                    return ""
-                temper = i18n.t(f"screens.leader_den.{game.starclan.temperament}")
+                first_temper, second_temper = game.starclan.temperament
             else:
-                if not game.dark_forest or not game.dark_forest.influencing_cats:
-                    self.temper_message.hide()
-                    # this means there's probably no cats in df, so no temper
-                    return ""
-                temper = i18n.t(f"screens.leader_den.{game.dark_forest.temperament}")
+                first_temper, second_temper = game.dark_forest.temperament
         else:
             group = self.current_group
-            temper = i18n.t(f"screens.leader_den.{next(filter(lambda c: c.displayname == self.selected_clan, game.clan.all_other_clans), game.clan).temperament}")
+            first_temper, second_temper = next(filter(lambda c: c.displayname == self.selected_clan, game.clan.all_other_clans), game.clan).temperament
 
+        first = i18n.t(f"screens.leader_den.{first_temper}")
+        second = i18n.t(f"screens.leader_den.{second_temper}")
+        temper = f"{first} & {second}"
         return i18n.t("screens.list.temper", group=group, temper=temper)
 
     def get_cat_list(self):

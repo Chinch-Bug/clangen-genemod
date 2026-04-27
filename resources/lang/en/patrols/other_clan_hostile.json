@@ -252,6 +252,11 @@
                 6
             ]
         },
+        "other_clan_filter": {
+            "has_rank": [
+                "exiled"
+            ]
+        },
         "frequency": 2,
         "intro_text": "A o_c_n scent is found clearly crossing the border. The patrol tracks it to its source, expecting a foolhardy young provocateur, and are instead surprised by their rival's most recent exile.",
         "decline_text": "The patrol decides not to confront the cat.",
