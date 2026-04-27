@@ -1745,7 +1745,7 @@ class Genotype:
         if self.pinkdilute[0] == 'dp' or self.pointgene == ["cb", "cs"] or self.pointgene[0] == "cm":
             piggrade = math.ceil(piggrade / 2)
         
-        if piggrade == 0 or ((self.pointgene == ["cb", "cm"] or self.pointgene == ["cm", "cm"] or self.pointgene == ["cm", "c"]) and randint(1, 5) == 1):
+        if piggrade == 0 or ((self.pointgene == ["cb", "cs"] or self.pointgene == ["cb", "cm"] or self.pointgene == ["cm", "cm"] or self.pointgene == ["cm", "c"]) and randint(1, 5) == 1):
             piggrade = 1
 
         def RefTypeFind(x, piggrade):
@@ -1793,7 +1793,7 @@ class Genotype:
             if randint(1, 4) < 4 and blueindex == 0:
                 self.deaf = True
         
-        if self.pointgene[0] == "cs" or ((self.pointgene == ["cb","cm"] or self.pointgene == ["cm","cm"] or self.pointgene == ["cm","c"]) and randint(0, 4)==0):
+        if self.pointgene[0] == "cs" or ((self.pointgene == ["cb","cs"] or self.pointgene == ["cb","cm"] or self.pointgene == ["cm","cm"] or self.pointgene == ["cm","c"]) and randint(0, 4)==0):
             blueindex = 0
         
 

@@ -1,5 +1,3 @@
-import tomllib
-
 from pygame import Cursor, image, SYSTEM_CURSOR_ARROW
 import ujson
 import tomllib

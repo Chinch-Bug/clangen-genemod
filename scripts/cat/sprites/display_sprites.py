@@ -1182,6 +1182,7 @@ def generate_sprite(
             elif cat.phenotype.laperm[0] == 'Lp' and sprite_age < 4:
                 hairless.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
                 hairless.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
+                hairless.set_alpha(120)
             elif ('patchy ' in cat.phenotype.furtype) or (cat.pelt.length == 'hairless' and cat.phenotype.sedesp[0] != "hr" and cat.phenotype.ruhr[1] != "Hrbd" and sprite_age > 5):
                 hairless.blit(sprites.sprites['donskoy' + cat_sprite], (0, 0))
             

@@ -434,7 +434,7 @@ class Pelt:
                                 white_pattern.append(order[i] + pawtype)
                             else:
                                 white_pattern.append(order[i] + choice([' toes', ' mitten', ' mitten', ' low sock']))
-                        white_pattern.append(choice(['belt', 'belt', 'pants'] + [None] * 12))
+                        white_pattern.append(choice(['belt'] + [None] * 4))
 
                         #face
                         if 'beard' in white_pattern:

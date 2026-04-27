@@ -1308,13 +1308,13 @@ class OtherClan:
 
     def __init__(
         self, 
-        name="", 
+        name: str = "",
         clancount="singleclan", 
         biome=None, 
         camp_bg=None, 
         reputation=None, 
-        temperament=None, 
-        chosen_symbol="", 
+        temperament: tuple[str, str] = None,
+        chosen_symbol: str = "", 
         instructor=None, 
         leader=None, 
         leader_lives=9, 
