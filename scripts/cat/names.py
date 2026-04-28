@@ -124,6 +124,7 @@ class Name:
         if self.suffix is None:
             if no_suffixes and not load_existing_name:
                 self.suffix = ""
+                self.specsuffix_hidden = True
             else:
                 self.give_suffix(self.skills, self.personality, biome, honour)
                 if name_fixpref and self.prefix is None:

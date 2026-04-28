@@ -274,7 +274,7 @@ def create_new_cat_block(
     if not rank and not age and "meeting" not in attribute_list:
         rank = choice([CatRank.WARRIOR, CatRank.WARRIOR,
                       CatRank.WARRIOR, CatRank.APPRENTICE])
-    if rank and not age:
+    if rank and age is None:
         if rank in [
             CatRank.APPRENTICE,
             CatRank.MEDIATOR_APPRENTICE,
@@ -323,7 +323,7 @@ def create_new_cat_block(
         litter = True
         if rank not in (CatRank.KITTEN, CatRank.NEWBORN):
             rank = CatRank.KITTEN
-        if rank == CatRank.NEWBORN:
+        if rank == CatRank.NEWBORN or age == 0:
             age = 0
         else:
             age = randint(

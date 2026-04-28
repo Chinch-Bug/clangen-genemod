@@ -489,6 +489,8 @@ def _check_cat_status(cat, statuses: list) -> bool:
     if not statuses or "any" in statuses:
         return True
 
+    statuses = [s.replace("medicine cat", "healer") for s in statuses]
+
     if (cat.status.rank in statuses) or ("lost" in statuses and cat.status.is_lost()):
         return True
 
