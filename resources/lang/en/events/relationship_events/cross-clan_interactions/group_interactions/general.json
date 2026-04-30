@@ -10,8 +10,8 @@
         "sub_type": [],
         "frequency": 4,
         "event_text": [
-            "m_c, r_c1, and r_c2 got into a heated dispute with r_c3, r_c4, and r_c5 during a routine border patrol.",
-            "m_c, r_c1, and r_c2 got into an argument with r_c3, r_c4, and r_c5 during a routine border patrol."
+            "m_c, r_c1, and r_c2 get into a heated dispute with r_c3, r_c4, and r_c5 during a routine border patrol.",
+            "m_c, r_c1, and r_c2 get into an argument with r_c3, r_c4, and r_c5 during a routine border patrol."
         ],
         "m_c": {
             "status": [
@@ -93,8 +93,8 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "While on patrol, m_c, r_c1, and r_c2 found r_c3, r_c4, and r_c5 clearing up pathways, and pitched in to help.",
-            "While on patrol, m_c, r_c1, and r_c2 found r_c3, r_c4, and r_c5 trying to get rid of a thornbush, and pitched in to help."
+            "While on patrol, m_c, r_c1, and r_c2 find r_c3, r_c4, and r_c5 clearing up pathways, and pitch in to help.",
+            "While on patrol, m_c, r_c1, and r_c2 find r_c3, r_c4, and r_c5 trying to get rid of a thornbush, and pitch in to help."
         ],
         "m_c": {
             "status": ["-elder", "-mediator", "-mediator apprentice"]
@@ -148,8 +148,8 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "While on a walk, m_c found r_c1, r_c2, and r_c3 clearing up pathways, and pitched in to help.",
-            "While on a walk, m_c found r_c1, r_c2, and r_c3 trying to get rid of a thornbush, and pitched in to help."
+            "While on a walk, m_c finds r_c1, r_c2, and r_c3 clearing up pathways, and pitches in to help.",
+            "While on a walk, m_c finds r_c1, r_c2, and r_c3 trying to get rid of a thornbush, and pitches in to help."
         ],
         "m_c": {
             "status": [ "-elder", "-mediator", "-mediator apprentice" ],
@@ -193,8 +193,8 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "m_c, r_c1, and r_c2 caught r_c3, r_c4, and r_c5 setting up traps during a routine border patrol.",
-            "r_c3, r_c4, and r_c5 tried to taunt m_c, r_c1, and r_c2 into attacking during a routine border patrol."
+            "m_c, r_c1, and r_c2 catch r_c3, r_c4, and r_c5 setting up traps during a routine border patrol.",
+            "r_c3, r_c4, and r_c5 tries to taunt m_c, r_c1, and r_c2 into attacking during a routine border patrol."
         ],
         "m_c": {
             "status": [
@@ -297,7 +297,7 @@
         "sub_type": [ "romance" ],
         "frequency": 2,
         "event_text": [
-            "r_c1 secretly met up with m_c at the border, only to get interrupted by r_c2 and have to play it off as incidental."
+            "r_c1 secretly meets up with m_c at the border, only to get interrupted by r_c2 and have to play it off as incidental."
         ],
         "m_c": {
             "age": [ "-adolescent" ]
@@ -343,7 +343,7 @@
         "sub_type": [ "romance" ],
         "frequency": 2,
         "event_text": [
-            "r_c1 secretly met up with m_c at the border, not realising that r_c2 had followed until {PRONOUN/r_c2/subject} confronted them both."
+            "r_c1 secretly meets up with m_c at the border, not realising that r_c2 had followed until {PRONOUN/r_c2/subject} {VERB/r_c2/confront/confronts} them both."
         ],
         "m_c": {
         },
@@ -398,7 +398,7 @@
         "sub_type": [ "romance" ],
         "frequency": 1,
         "event_text": [
-            "m_c secretly met up with r_c1 at the border, not realising that r_c2 had followed until {PRONOUN/r_c2/subject} reported it to o_c_n1."
+            "m_c secretly meets up with r_c1 at the border, not realising that r_c2 had followed until after {PRONOUN/r_c2/subject} {VERB/r_c2/report/reports} it to o_c_n1."
         ],
         "m_c": {
         },
@@ -470,7 +470,7 @@
         "sub_type": [ ],
         "frequency": 3,
         "event_text": [
-            "During the Gathering, m_c brought along r_c1 to meet with r_c2 and teach r_c1 about o_c_n1."
+            "During the Gathering, m_c brings r_c1 along to meet with r_c2 and teach r_c1 about o_c_n1."
         ],
         "m_c": {
             "relationship_status": [ "mentor/app" ]
@@ -509,8 +509,9 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c, r_c1, r_c2, and r_c3 formed a huddle at the Gathering, sharing news and gossip.",
-            "m_c, r_c1, r_c2, and r_c3 formed a huddle at the Gathering, sharing news and personal anecdotes."
+            "m_c, r_c1, r_c2, and r_c3 form a huddle at the Gathering, sharing news and gossip.",
+            "m_c, r_c1, r_c2, and r_c3 form a huddle at the Gathering, sharing news and personal anecdotes.",
+            "m_c, r_c1, r_c2, and r_c3 form a huddle at the Gathering, trading recent amusing happenings."
         ],
         "m_c": {
         },
@@ -549,7 +550,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c had r_c1 and r_c2 so enraptured in a tale they all almost missed the Gathering announcements."
+            "m_c has r_c1 and r_c2 so enraptured in a tale they all almost miss the Gathering announcements."
         ],
         "m_c": {
             "skill": ["STORY,1"]
@@ -586,9 +587,9 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "r_c1, r_c2, and r_c3 collectively decided m_c is the coolest cat they've ever met at the Gathering.",
-            "m_c impressed r_c1, r_c2, and r_c3 during the Gathering.",
-            "r_c1, r_c2, and r_c3 spent the last Gathering following m_c around after m_c impressed them with some boasting."
+            "r_c1, r_c2, and r_c3 collectively decide m_c is the coolest cat they've ever met at the Gathering.",
+            "m_c impresses r_c1, r_c2, and r_c3 during the Gathering.",
+            "r_c1, r_c2, and r_c3 spend the Gathering following m_c around after m_c impresses them with some boasting."
         ],
         "m_c": {
             "age": ["-adolescent"]
@@ -641,8 +642,8 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "r_c1, r_c2, and r_c3 decided to group up to tease m_c at the Gathering for not having graduated yet.",
-            "r_c1, r_c2, and r_c3 decided to group up to bully m_c at the Gathering for not having graduated yet."
+            "r_c1, r_c2, and r_c3 decide to group up to tease m_c at the Gathering for not having graduated yet.",
+            "r_c1, r_c2, and r_c3 decide to group up to bully m_c at the Gathering for not having graduated yet."
         ],
         "m_c": {
             "age": [ "-adolescent" ],
@@ -721,7 +722,7 @@
         "frequency": 3,
         "nr_involved_clans": 3,
         "event_text": [
-            "m_c brought up a recent omen {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} unsure about to r_c1 and r_c2 in order to discuss together."
+            "m_c brings up a recent omen {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} unsure about to r_c1 and r_c2 in order to discuss together."
         ],
         "m_c": {
             "status": ["healer", "healer apprentice"]
@@ -760,7 +761,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c overheard r_c1 and r_c2 gossiping about {PRONOUN/m_c/object} at the Gathering."
+            "m_c overhears r_c1 and r_c2 gossiping about {PRONOUN/m_c/object} at the Gathering."
         ],
         "m_c": {
         },
@@ -806,7 +807,7 @@
         "sub_type": [ ],
         "frequency": 1,
         "event_text": [
-            "m_c overheard r_c1 sharing suspicions to r_c2 about m_c speaking to the Dark Forest."
+            "m_c overhears r_c1 sharing suspicions to r_c2 about m_c speaking to the Dark Forest."
         ],
         "m_c": {
             "skill": ["DARK,1"]
@@ -847,9 +848,9 @@
         "nr_involved_clans": 3,
         "frequency": 2,
         "event_text": [
-            "m_c accused r_c1 and {PRONOUN/r_c1/poss} Clan of violating the Warrior Code, sparking an argument r_c2 had to break up.",
-            "m_c accused r_c1 and {PRONOUN/r_c1/poss} Clan of tresspassing, sparking an argument r_c2 had to break up.",
-            "m_c accused r_c1 and {PRONOUN/r_c1/poss} Clan of picking fights at the border, sparking an argument r_c2 had to break up."
+            "m_c accuses r_c1 and {PRONOUN/r_c1/poss} Clan of violating the Warrior Code, sparking an argument r_c2 has to break up.",
+            "m_c accuses r_c1 and {PRONOUN/r_c1/poss} Clan of tresspassing, sparking an argument r_c2 has to break up.",
+            "m_c accuses r_c1 and {PRONOUN/r_c1/poss} Clan of picking fights at the border, sparking an argument r_c2 has to break up."
         ],
         "m_c": {
             "status": [
@@ -929,7 +930,7 @@
         "sub_type": [ ],
         "frequency": 3,
         "event_text": [
-            "m_c, r_c1, and r_c2 found r_c3 cowering from a coyote and worked together to drive it away."
+            "m_c, r_c1, and r_c2 finds r_c3 cowering from a coyote and work together to drive it away."
         ],
         "m_c": {
             "skill": [ "FIGHTER,1", "CLEVER,1" ],
@@ -975,7 +976,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "r_c2 found r_c1 struggling to explain something to m_c on patrol and decides to help."
+            "r_c2 finds r_c1 struggling to explain something to m_c on patrol and decides to help."
         ],
         "m_c": {
             "status": [ "apprentice" ],
@@ -1019,7 +1020,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c and r_c1 got into a competition on who can dig a hole the fastest, ended only when r_c2 told them off and made them cover them back up."
+            "m_c and r_c1 get into a competition on who can dig a hole the fastest, ended swiftly when r_c2 tells them off and makes them cover them back up."
         ],
         "m_c": {
             "age": [ "adolescent" ],
@@ -1070,7 +1071,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c and r_c1 got into a competition on who can run the fastest, ended only when r_c2 told them off for getting underpaw."
+            "m_c and r_c1 get into a competition on who can run the fastest, ended swiftly when r_c2 tells them off for getting underpaw."
         ],
         "m_c": {
             "age": [ "adolescent" ],
@@ -1121,7 +1122,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c and r_c1 made a game of batting r_c2 on the back and running away before they get caught."
+            "m_c and r_c1 make a game of batting r_c2 on the back and running away before they get caught."
         ],
         "m_c": {
             "age": [ "adolescent" ],
@@ -1171,7 +1172,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c caused a scene at the Gathering after losing {PRONOUN/m_c/poss} temper at r_c1. r_c2 apologised profusely to save face."
+            "m_c causes a scene at the Gathering after losing {PRONOUN/m_c/poss} temper at r_c1. r_c2 apologises profusely to save face."
         ],
         "m_c": {
             "status": ["-leader"],
@@ -1235,7 +1236,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c had never liked or respected o_c_n, and made sure to tell it to r_c1, r_c2, and r_c3's faces on a recent meeting between patrols."
+            "m_c has never liked or respected o_c_n1, and makes sure to tell it to r_c1, r_c2, and r_c3's faces on a recent meeting between patrols."
         ],
         "m_c": {
             "trait": [
@@ -1288,7 +1289,7 @@
         "sub_type": [ ],
         "frequency": 3,
         "event_text": [
-            "As a bonding exercise between ally Clans, a friendly competitive game was organised on the ice. m_c, r_c1, r_c2, and r_c3 form c_n's team, while r_c4, r_c5, r_c6, and r_c7 form o_c_n's team."
+            "As a bonding exercise between ally Clans, a friendly competitive game is organised on the ice. m_c, r_c1, r_c2, and r_c3 form c_n's team, while r_c4, r_c5, r_c6, and r_c7 form o_c_n's team."
         ],
         "m_c": {
             "status": ["-elder"]
@@ -1351,7 +1352,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c mocked r_c1, r_c2, and r_c3 after encountering the patrol struggling on the ice."
+            "m_c mock r_c1, r_c2, and r_c3 after encountering the patrol struggling on the ice."
         ],
         "m_c": {
             "trait": [
@@ -1404,7 +1405,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c, r_c1, and r_c2 met r_c3, r_c4, and r_c5 resting on patrol and join them, commiserating about the recent hot weather."
+            "m_c, r_c1, and r_c2 meet r_c3, r_c4, and r_c5 resting on patrol and join them, commiserating about the recent hot weather."
         ],
         "m_c": {
             "status": [ "-elder", "-mediator", "-mediator apprentice" ]
@@ -1446,5 +1447,188 @@
         "other_clan": {
             "current_rep": [ "ally", "neutral" ]
         }
+    },
+    {
+        "event_id": "gen_group_stalking1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "m_c has gotten into a habit of lingering near the o_c_n1 border lately. r_c1 takes notice and uses the next opportunity to report it to r_c2 while passing {PRONOUN/r_c2/object} on patrol."
+        ],
+        "m_c": {
+        },
+        "r_c": [
+            {
+                "clan": 2,
+                "age": [ "-adolescent" ],
+                "trait": [
+                    "-troublesome",
+                    "-lonesome",
+                    "-fierce",
+                    "-bloodthirsty",
+                    "-childish",
+                    "-nervous",
+                    "-insecure",
+                    "-vengeful",
+                    "-oblivious"
+                ]
+            },
+            {
+                "clan": 1,
+                "status": [ "leader", "deputy" ]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "r_c1", "r_c2" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust" ],
+                "amount": -10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from was suspicious about cat_to's frequent stops to the o_c_n1 border."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_group_crossclan_parent1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "m_c has gotten into a habit of lingering near the o_c_n1 border lately in hopes of seeing r_c1. r_c2 takes notice and uses the next opportunity to report it to r_c3 while passing {PRONOUN/r_c3/object} on patrol."
+        ],
+        "m_c": {
+        },
+        "r_c": [
+            {
+                "clan": 2,
+                "relationship_status": ["parent/child"]
+            },
+            {
+                "clan": 2,
+                "age": [ "-adolescent" ],
+                "trait": [
+                    "-troublesome",
+                    "-lonesome",
+                    "-fierce",
+                    "-bloodthirsty",
+                    "-childish",
+                    "-nervous",
+                    "-insecure",
+                    "-vengeful",
+                    "-oblivious"
+                ]
+            },
+            {
+                "clan": 1,
+                "status": [ "leader", "deputy" ]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "r_c2", "r_c3" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust" ],
+                "amount": -10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from was suspicious about cat_to's frequent stops to the o_c_n1 border."
+                }
+            },
+            {
+                "cats_from": [ "some_clan", "high_lawful" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust" ],
+                "amount": -10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from heard about cat_to's frequent stops to the o_c_n1 border."
+                }
+            },
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c2", "r_c3" ],
+                "values": [ "comfort", "like" ],
+                "amount": -10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from was upset over being told off for {PRONOUN/cat_from/poss} stops to the o_c_n1 border to meet with r_c1."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_group_crossclan_parent2",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "m_c has gotten into a habit of lingering near the o_c_n1 border lately in hopes of seeing r_c1. r_c2 takes notice and confronts {PRONOUN/m_c/object} about it with a threat to stop."
+        ],
+        "m_c": {
+        },
+        "r_c": [
+            {
+                "clan": 2,
+                "relationship_status": [ "parent/child" ]
+            },
+            {
+                "clan": 2,
+                "age": [ "-adolescent" ],
+                "trait": [
+                    "troublesome",
+                    "fierce",
+                    "bloodthirsty",
+                    "bold",
+                    "strict",
+                    "confident",
+                    "loyal",
+                    "responsible",
+                    "shameless",
+                    "vengeful",
+                    "grumpy"
+                ]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "r_c2" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust" ],
+                "amount": -10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from was suspicious about cat_to's frequent stops to the o_c_n1 border."
+                }
+            },
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c2" ],
+                "values": [ "comfort", "like" ],
+                "amount": -10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from was threatened by cat_to for {PRONOUN/cat_from/poss} stops to the o_c_n1 border to meet with r_c1."
+                }
+            }
+        ]
     }
 ]

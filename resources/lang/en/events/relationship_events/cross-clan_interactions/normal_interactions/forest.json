@@ -10,7 +10,7 @@
         "sub_type": [],
         "frequency": 4,
         "event_text": [
-            "m_c found r_c cowering in a tree with a boar rooting around below. With some quick thinking and clever tactics, {PRONOUN/m_c/subject} lured the boar away enough for r_c to be able to escape."
+            "m_c finds r_c cowering in a tree with a boar rooting around below. With some quick thinking and clever tactics, {PRONOUN/m_c/subject} lure the boar away enough for r_c to be able to escape."
         ],
         "m_c": {
             "skill": ["CLEVER,1"],
@@ -43,7 +43,7 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "m_c found r_c cowering in a tree with a boar rooting around below. {PRONOUN/m_c/subject/CAP} dash in, harassing the boar into following {PRONOUN/m_c/object} away enough to allow r_c to escape."
+            "m_c finds r_c cowering in a tree with a boar rooting around below. {PRONOUN/m_c/subject/CAP} {VERB/m_c/dash/dashes} in, harassing the boar into following {PRONOUN/m_c/object} away enough to allow r_c to escape."
         ],
         "m_c": {
             "skill": [ "FIGHTER,3" ],
@@ -77,8 +77,8 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "m_c found r_c cowering from a fox on c_n's side of the border and drove it away.",
-            "m_c found r_c cowering from a badger on c_n's side of the border and drove it away."
+            "m_c finds r_c cowering from a fox on c_n's side of the border and drives it away.",
+            "m_c finds r_c cowering from a badger on c_n's side of the border and drives it away."
         ],
         "m_c": {
             "skill": [ "FIGHTER,1" ],

@@ -10,7 +10,7 @@
         "sub_type": [ ],
         "frequency": 3,
         "event_text": [
-            "m_c, r_c1, and r_c2 found r_c3 cowering from a jackal and worked together to drive it away."
+            "m_c, r_c1, and r_c2 find r_c3 cowering from a jackal and work together to drive it away."
         ],
         "m_c": {
             "skill": [ "FIGHTER,1", "CLEVER,1" ],

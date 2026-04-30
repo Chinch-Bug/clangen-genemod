@@ -412,7 +412,6 @@ class Patrol:
         patrol_size = len(self.patrol_cats)
         reputation = self.clan.reputation  # reputation with outsiders
         other_clan = self.other_clan
-        clan_relations = game.clan.get_relations(self.clan, other_clan) if other_clan else 0
         hostile_rep = False
         neutral_rep = False
         welcoming_rep = False
@@ -422,11 +421,12 @@ class Patrol:
         clan_size = int(get_living_clan_cat_count(Cat, self.clan.group_ID))
         chance = 0
         # assigning other_clan relations
-        if clan_relations > 17:
+        other_clan_standing = game.clan.get_relations(self.clan, other_clan, get_label=True) if other_clan else "neutral"
+        if other_clan_standing == "ally":
             clan_allies = True
-        elif clan_relations < 7:
+        elif other_clan_standing == "hostile":
             clan_hostile = True
-        elif 7 <= clan_relations <= 17:
+        elif other_clan_standing == "neutral":
             clan_neutral = True
         # chance for each kind of loner event to occur
         small_clan = False

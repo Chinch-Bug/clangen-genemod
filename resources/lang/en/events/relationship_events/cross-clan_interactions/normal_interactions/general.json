@@ -10,7 +10,7 @@
         "sub_type": [ ],
         "frequency": 1,
         "event_text": [
-            "m_c was enjoying a walk in the territory when r_c ambushed {PRONOUN/m_c/object}."
+            "m_c is enjoying a walk in the territory when r_c ambushes {PRONOUN/m_c/object}."
         ],
         "m_c": {
             "status": [
@@ -62,8 +62,8 @@
         "sub_type": [ ],
         "frequency": 1,
         "event_text": [
-            "m_c lost {PRONOUN/m_c/poss} temper at r_c during the Gathering and violated the truce.",
-            "During the Gathering, m_c acted without thinking and turned an argument with r_c into a brawl."
+            "m_c loses {PRONOUN/m_c/poss} temper at r_c during the Gathering and violates the truce.",
+            "During the Gathering, m_c acts without thinking and turns an argument with r_c into a brawl."
         ],
         "m_c": {
             "trait": ["bloodthirsty", "troublesome", "vengeful", "fierce"]
@@ -118,7 +118,7 @@
         "sub_type": [ ],
         "frequency": 1,
         "event_text": [
-            "m_c was enjoying a walk by the shore when suddenly {PRONOUN/m_c/subject} {VERB/m_c/were/was} pulled under the water by r_c. It was meant to be a prank, but m_c did not find the humour in it."
+            "m_c is enjoying a walk by the shore when suddenly {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} pulled under the water by r_c. It was meant to be a prank, but m_c did not find the humour in it."
         ],
         "m_c": {
             "status": [
@@ -165,7 +165,7 @@
         "sub_type": [ ],
         "frequency": 1,
         "event_text": [
-            "m_c was enjoying a walk by the shore when suddenly {PRONOUN/m_c/subject} {VERB/m_c/were/was} pulled under the water by r_c. m_c laughed the prank off as soon as {PRONOUN/m_c/subject} got out."
+            "m_c is enjoying a walk by the shore when suddenly {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} pulled under the water by r_c. m_c laughs the prank off as soon as {PRONOUN/m_c/subject} {VERB/m_c/get/gets} out."
         ],
         "m_c": {
             "status": [
@@ -225,7 +225,7 @@
         "sub_type": [],
         "frequency": 2,
         "event_text": [
-            "m_c snuck out of camp at night to see o_c_n's territory for {PRONOUN/m_c/self}. {PRONOUN/m_c/subject/CAP} encountered r_c doing the same from the other side, only for the two apprentices to end up spending the night playing together."
+            "m_c sneaks out of camp at night to see o_c_n's territory for {PRONOUN/m_c/self}. {PRONOUN/m_c/subject/CAP} {VERB/m_c/encounter/encounters} r_c doing the same from the other side, only for the two apprentices to end up spending the night playing together."
         ],
         "m_c": {
             "age": [ "adolescent" ]
@@ -257,7 +257,7 @@
         "sub_type": ["romance"],
         "frequency": 1,
         "event_text": [
-            "m_c snuck out of camp at night to see o_c_n's territory for {PRONOUN/m_c/self}. {PRONOUN/m_c/subject/CAP} encountered r_c doing the same from the other side, only for the two apprentices to end up spending the night playing together."
+            "m_c sneaks out of camp at night to see o_c_n's territory for {PRONOUN/m_c/self}. {PRONOUN/m_c/subject/CAP} {VERB/m_c/encounter/encounters} r_c doing the same from the other side, only for the two apprentices to end up spending the night playing together."
         ],
         "m_c": {
             "age": [ "adolescent" ]
@@ -289,7 +289,7 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "m_c got in trouble for telling r_c something that was supposed to be c_n's secret."
+            "m_c gets in trouble for telling r_c something that was supposed to be c_n's secret."
         ],
         "m_c": {
             "age": [ "adolescent" ]
@@ -324,7 +324,7 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "m_c accidentally crossed the border into o_c_n. The mistake was brief, but r_c refused to accept an apology after catching {PRONOUN/m_c/object}."
+            "m_c accidentally crosses the border into o_c_n. The mistake was brief, but r_c refuses to accept an apology after catching {PRONOUN/m_c/object}."
         ],
         "m_c": {
         },
@@ -374,7 +374,7 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "m_c found evidence of an interloper near the border. The scent trail lead to r_c, who merely mocked m_c for accusing {PRONOUN/r_c/object} of tresspassing."
+            "m_c finds evidence of an interloper near the border. The scent trail leads to r_c, who merely mocks m_c for accusing {PRONOUN/r_c/object} of tresspassing."
         ],
         "m_c": {
             "status": [
@@ -414,7 +414,7 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "m_c found fresh evidence of r_c on c_n's territory, yet o_c_n denies any wrongdoing."
+            "m_c finds fresh evidence of r_c on c_n's territory, yet o_c_n denies any wrongdoing."
         ],
         "m_c": {
         },
@@ -445,7 +445,7 @@
         "frequency": 2,
         "event_text": [
             "A o_c_n scent has been discovered in camp. m_c thinks it seems like r_c.",
-            "m_c found a o_c_n scent hidden in camp, suspiciously similar to r_c."
+            "m_c finds a o_c_n scent hidden in camp, suspiciously similar to r_c."
         ],
         "m_c": {
             "skill": ["SENSE,1"]
@@ -476,10 +476,10 @@
         "sub_type": ["romance"],
         "frequency": 2,
         "event_text": [
-            "m_c had a secret meetup with r_c at the border.",
-            "m_c snuck out of camp for a secret meetup with r_c at the border.",
-            "m_c waited deliberately near the border to flirt with r_c.",
-            "m_c waited deliberately near the border to strike up a conversation with r_c."
+            "m_c has a secret meetup with r_c at the border.",
+            "m_c sneaks out of camp for a secret meetup with r_c at the border.",
+            "m_c waits deliberately near the border to flirt with r_c.",
+            "m_c waits deliberately near the border to strike up a conversation with r_c."
         ],
         "m_c": {
             "age": ["-adolescent"],
@@ -507,16 +507,57 @@
         ]
     },
     {
+        "event_id": "gen_single_healer_romance1",
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "sub_type": [ "romance" ],
+        "frequency": 2,
+        "event_text": [
+            "m_c visits o_c_n's camp at r_c's request. Even if the request secretly was just to spend time together."
+        ],
+        "m_c": {
+            "status": [ "healer" ],
+            "trait": [
+                "-insecure",
+                "-nervous"
+            ],
+            "relationship_status": [
+                "fancies"
+            ]
+        },
+        "r_c": {
+            "status": [ "healer" ],
+            "relationship_status": [
+                "fancies"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "like", "romance" ],
+                "amount": 10,
+                "mutual": true,
+                "log": {
+                    "cats_from": "cat_from visited o_c_n to spend time with cat_to."
+                }
+            }
+        ],
+        "other_clan":{
+            "current_rep": ["neutral", "ally"]
+        }
+    },
+    {
         "event_id": "gen_single_argue1",
         "location": [ "any" ],
         "season": [ "any" ],
         "sub_type": [],
         "frequency": 3,
         "event_text": [
-            "m_c got into an intense argument with r_c at the Gathering.",
-            "m_c got into an intense argument with r_c at the Gathering.",
-            "m_c got into an intense argument with r_c at the Gathering.",
-            "m_c got into an intense argument with r_c at the border."
+            "m_c gets into an intense argument with r_c at the Gathering.",
+            "m_c gets into an intense argument with r_c at the Gathering.",
+            "m_c gets into an intense argument with r_c at the Gathering.",
+            "m_c gets into an intense argument with r_c at the border."
         ],
         "m_c": {
             "trait": [
@@ -569,10 +610,10 @@
         "sub_type": [ ],
         "frequency": 3,
         "event_text": [
-            "m_c had a calm conversation with r_c at the Gathering.",
-            "m_c had a calm conversation with r_c at the Gathering.",
-            "m_c had a calm conversation with r_c at the Gathering.",
-            "m_c had a calm conversation with r_c at the border."
+            "m_c has a calm conversation with r_c at the Gathering.",
+            "m_c has a calm conversation with r_c at the Gathering.",
+            "m_c has a calm conversation with r_c at the Gathering.",
+            "m_c has a calm conversation with r_c at the border."
         ],
         "m_c": {
         },
@@ -598,7 +639,7 @@
         "sub_type": [ ],
         "frequency": 3,
         "event_text": [
-            "m_c and r_c had a discussion on the best ways to deal with difficult kits."
+            "m_c and r_c have a discussion on the best ways to deal with difficult kits."
         ],
         "m_c": {
             "skill": ["KIT,1"]
@@ -626,7 +667,7 @@
         "sub_type": [ ],
         "frequency": 1,
         "event_text": [
-            "m_c offered r_c a toy during introductions at the Gathering. While r_c declared it an offense and meant for kits, {PRONOUN/r_c/subject} secretly still kept it happily."
+            "m_c offeres r_c a toy during introductions at the Gathering. While r_c declared it offensive and meant for kits, {PRONOUN/r_c/subject} secretly still keep it happily."
         ],
         "m_c": {
             "skill": [ "KIT,1" ]
@@ -654,7 +695,7 @@
         "sub_type": [ ],
         "frequency": 1,
         "event_text": [
-            "m_c offered r_c a toy during introductions at the Gathering despite r_c being too old for such things."
+            "m_c offeres r_c a toy during introductions at the Gathering despite r_c being too old for such things."
         ],
         "m_c": {
             "skill": [ "KIT,1" ]
@@ -682,10 +723,10 @@
         "sub_type": [ ],
         "frequency": 3,
         "event_text": [
-            "m_c and r_c shared some tips and tricks with each other at the Gathering.",
-            "m_c and r_c shared some tips and tricks with each other at the Gathering.",
-            "m_c and r_c shared some tips and tricks with each other at the Gathering.",
-            "m_c and r_c shared some tips and tricks with each other at the border."
+            "m_c and r_c share some tips and tricks with each other at the Gathering.",
+            "m_c and r_c share some tips and tricks with each other at the Gathering.",
+            "m_c and r_c share some tips and tricks with each other at the Gathering.",
+            "m_c and r_c share some tips and tricks with each other at the border."
         ],
         "m_c": {
             "status": ["apprentice"]
@@ -775,7 +816,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c and r_c got into a competition on who can dig a hole the fastest, but only ended up arguing over who really won."
+            "m_c and r_c get into a competition on who can dig a hole the fastest, but only end up arguing over who really won."
         ],
         "m_c": {
             "age": [ "adolescent" ],
@@ -805,7 +846,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c and r_c got into a competition on who can run the fastest, but only ended up arguing over who really won."
+            "m_c and r_c get into a competition on who can run the fastest, but only end up arguing over who really won."
         ],
         "m_c": {
             "age": [ "adolescent" ],
@@ -835,7 +876,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c and r_c got into a competition on who can dig a hole the fastest. r_c ended up having to concede that m_c won."
+            "m_c and r_c get into a competition on who can dig a hole the fastest. r_c ends up having to concede that m_c won."
         ],
         "m_c": {
             "age": [ "adolescent" ],
@@ -865,7 +906,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c and r_c got into a competition on who can run the fastest. r_c ended up having to concede that m_c won."
+            "m_c and r_c get into a competition on who can run the fastest. r_c ends up having to concede that m_c won."
         ],
         "m_c": {
             "age": [ "adolescent" ],
@@ -895,10 +936,10 @@
         "sub_type": [ ],
         "frequency": 3,
         "event_text": [
-            "m_c and r_c shared some tips and tricks with each other at the Gathering.",
-            "m_c and r_c shared some tips and tricks with each other at the Gathering.",
-            "m_c and r_c shared some tips and tricks with each other at the Gathering.",
-            "m_c and r_c shared some tips and tricks with each other at the border."
+            "m_c and r_c share some tips and tricks with each other at the Gathering.",
+            "m_c and r_c share some tips and tricks with each other at the Gathering.",
+            "m_c and r_c share some tips and tricks with each other at the Gathering.",
+            "m_c and r_c share some tips and tricks with each other at the border."
         ],
         "m_c": {
             "status": [ "warrior" ]
@@ -929,7 +970,7 @@
         "sub_type": [ ],
         "frequency": 1,
         "event_text": [
-            "m_c offered r_c some prey to try at the Gathering, since it's only found in c_n's territory."
+            "m_c offers r_c some interesting prey to try at the Gathering, since it's only found in c_n's territory."
         ],
         "m_c": {
         },
@@ -962,7 +1003,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c confidently told r_c things about what being an adult is like which were blatantly untrue, but r_c fully believed {PRONOUN/m_c/object}."
+            "m_c confidently tells r_c things about what being an adult is like which are blatantly untrue, but r_c fully believes {PRONOUN/m_c/object}."
         ],
         "m_c": {
             "age": [ "-adolescent" ],
@@ -1005,7 +1046,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c confidently told r_c things about what being an adult is like which were blatantly untrue, but r_c caught on."
+            "m_c confidently tells r_c things about what being an adult is like which are blatantly untrue, but r_c catches on."
         ],
         "m_c": {
             "age": [ "-adolescent" ],
@@ -1048,7 +1089,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c confidently told r_c things about c_n that were blatantly untrue, but r_c fully believed {PRONOUN/m_c/object}."
+            "m_c confidently tells r_c things about c_n that are blatantly untrue, but r_c fully believes {PRONOUN/m_c/object}."
         ],
         "m_c": {
             "age": [ "adolescent" ]
@@ -1080,7 +1121,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c and r_c got into a cycle of telling taller and taller tales to each other, until it turned from boasting into pure fun."
+            "m_c and r_c get into a cycle of telling taller and taller tales to each other, until it turns from boasting into pure fun."
         ],
         "m_c": {
             "skill": [ "STORY,1" ]
@@ -1115,7 +1156,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c and r_c traded a lot of insults in their last encounter, but honestly neither could say there's any real teeth behind them."
+            "m_c and r_c trade a lot of insults, but honestly neither could say there's any real teeth behind them."
         ],
         "m_c": {
             "trait": [
@@ -1177,7 +1218,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c confidently told r_c things about c_n that were blatantly untrue, but r_c caught on."
+            "m_c confidently tells r_c things about c_n that are blatantly untrue, but r_c catches on."
         ],
         "m_c": {
             "age": [ "adolescent" ]
@@ -1209,7 +1250,7 @@
         "sub_type": [ ],
         "frequency": 3,
         "event_text": [
-            "It's not always easy to catch up with friends over the border as an elder, but the Gathering allows m_c and r_c some time to chat and catch up."
+            "It's not always easy to catch up with friends from over the border as an elder, but the Gathering allows m_c and r_c some time to chat and catch up."
         ],
         "m_c": {
             "status": [
@@ -1251,8 +1292,8 @@
         "sub_type": [ ],
         "frequency": 3,
         "event_text": [
-            "m_c spent the Gathering telling r_c about Clan history from c_n's perspective.",
-            "r_c spent the Gathering asking m_c questions about Clan history from c_n's perspective."
+            "m_c spends the Gathering telling r_c about Clan history from c_n's perspective.",
+            "r_c spends the Gathering asking m_c questions about Clan history from c_n's perspective."
         ],
         "m_c": {
             "status": [
@@ -1292,7 +1333,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c took the opportunity to ask r_c for advice at the Gathering."
+            "m_c takes the opportunity to ask r_c for advice at the Gathering."
         ],
         "m_c": {
             "status": ["mediator apprentice"]
@@ -1324,8 +1365,8 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c took the opportunity to ask r_c for advice at the Gathering.",
-            "m_c took the opportunity to ask r_c for advice at the Half-moon meeting."
+            "m_c takes the opportunity to ask r_c for advice at the Gathering.",
+            "m_c takes the opportunity to ask r_c for advice at the Half-moon meeting."
         ],
         "m_c": {
             "status": [ "healer apprentice" ]
@@ -1357,7 +1398,7 @@
         "sub_type": [ ],
         "frequency": 3,
         "event_text": [
-            "m_c brought up a recent omen {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} unsure about to r_c discuss together."
+            "m_c brings up a recent omen {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} unsure about to discuss with r_c."
         ],
         "m_c": {
             "status": [ "healer", "healer apprentice" ]
@@ -1390,7 +1431,7 @@
         "sub_type": ["romance"],
         "frequency": 1,
         "event_text": [
-            "m_c approached r_c during the Gathering with some casual flirting-turned-pleasant-chat."
+            "m_c approaches r_c during the Gathering with some casual flirting-turned-pleasant-chat."
         ],
         "m_c": {
             "age": ["-adolescent"],
@@ -1423,9 +1464,9 @@
         "sub_type": [ "romance" ],
         "frequency": 1,
         "event_text": [
-            "m_c and r_c have been acting remarkably close at the Gathering.",
-            "m_c and r_c were seen getting much too comfortable together at the Gathering.",
-            "m_c and r_c couldn't help but gravitate towards each other during the Gathering."
+            "m_c and r_c are acting remarkably close at the Gathering.",
+            "m_c and r_c are seen getting much too comfortable together at the Gathering.",
+            "m_c and r_c cant't help but gravitate towards each other during the Gathering."
         ],
         "m_c": {
         },
@@ -1468,7 +1509,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c taught r_c some new tricks during the Gathering."
+            "m_c teaches r_c some new tricks during the Gathering."
         ],
         "m_c": {
             "skill": [ "TEACHER,1" ]
@@ -1500,7 +1541,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c teased r_c for sitting alone the whole time at the Gathering."
+            "m_c teases r_c for sitting alone the whole time at the Gathering."
         ],
         "m_c": {
             "trait": [
@@ -1539,7 +1580,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c caught r_c by surprise by informing {PRONOUN/r_c/object} about an angry spirit following {PRONOUN/r_c/object} in front of other cats at the Gathering."
+            "m_c catches r_c by surprise by informing {PRONOUN/r_c/object} about an angry spirit following {PRONOUN/r_c/object} in front of other cats at the Gathering."
         ],
         "m_c": {
             "skill": [ "GHOST,1" ]
@@ -1570,7 +1611,7 @@
         "sub_type": [ ],
         "frequency": 3,
         "event_text": [
-            "m_c caught r_c by surprise by informing {PRONOUN/r_c/object} about a Dark Forest ghost following {PRONOUN/r_c/object} in front of other cats at the Gathering."
+            "m_c catches r_c by surprise by informing {PRONOUN/r_c/object} about a Dark Forest ghost following {PRONOUN/r_c/object} in front of other cats at the Gathering."
         ],
         "m_c": {
             "skill": [ "GHOST,1" ]
@@ -1602,7 +1643,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c told r_c about a StarClan spirit following {PRONOUN/r_c/object}."
+            "m_c tells r_c about a StarClan spirit following {PRONOUN/r_c/object}."
         ],
         "m_c": {
             "skill": [ "GHOST,1" ]
@@ -1634,9 +1675,9 @@
         "sub_type": [ ],
         "frequency": 3,
         "event_text": [
-            "During the Gathering, m_c snuck away to meet with r_c.",
-            "During the Gathering, m_c sought out r_c to ask about o_c_n.",
-            "During the Gathering, r_c sought out m_c to ask about {PRONOUN/m_c/poss} training."
+            "During the Gathering, m_c sneaks away to meet with r_c.",
+            "During the Gathering, m_c seeks out r_c to ask about o_c_n.",
+            "During the Gathering, r_c seeks out m_c to ask about {PRONOUN/m_c/poss} training."
         ],
         "m_c": {
             "age": [
@@ -1672,10 +1713,10 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "During the Gathering, m_c snuck away to meet with r_c.",
-            "During the Gathering, r_c snuck away to meet with m_c.",
-            "During the Gathering, m_c sought out r_c to catch up.",
-            "During the Gathering, r_c sought out m_c to catch up."
+            "During the Gathering, m_c sneaks away to meet with r_c.",
+            "During the Gathering, r_c sneaks away to meet with m_c.",
+            "During the Gathering, m_c seeks out r_c to catch up.",
+            "During the Gathering, r_c seeks out m_c to catch up."
         ],
         "m_c": {
             "age": [
@@ -1701,6 +1742,44 @@
         ]
     },
     {
+        "event_id": "gen_single_gathering_half-clan1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 3,
+        "event_text": [
+            "During the Gathering, m_c sneaks away to meet with r_c.",
+            "During the Gathering, m_c seeks out r_c to ask about o_c_n.",
+            "During the Gathering, r_c seeks out m_c to ask about {PRONOUN/m_c/poss} training."
+        ],
+        "m_c": {
+            "age": [
+                "adolescent"
+            ]
+        },
+        "r_c": {
+            "relationship_status":[
+                "parent/child"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "comfort", "trust" ],
+                "amount": 15,
+                "mutual": true,
+                "log": {
+                    "cats_from": "cat_from and cat_to bonded during the Gathering."
+                }
+            }
+        ]
+    },
+    {
         "event_id": "gen_single_gathering_half-clan3",
         "location": [
             "any"
@@ -1711,7 +1790,7 @@
         "sub_type": [ ],
         "frequency": 3,
         "event_text": [
-            "m_c and r_c talked about what it would be like to be in the same Clan together."
+            "m_c and r_c talk about what it would be like to be in the same Clan together."
         ],
         "m_c": {
             "relationship_status": [
@@ -1737,6 +1816,43 @@
         ]
     },
     {
+        "event_id": "gen_single_gathering_half-clan4",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "During the Gathering, m_c approaches r_c to learn more about {PRONOUN/m_c/poss} own heritage, only to come away more happy than ever about living in c_n."
+        ],
+        "m_c": {
+            "age": [
+                "adolescent", "young adult"
+            ],
+            "backstory": ["-halfclan1", "-halfclan2"]
+        },
+        "r_c": {
+            "relationship_status": [
+                "parent/child", "knows_of"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "like", "comfort", "trust" ],
+                "amount": -20,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from and cat_to bonded during the Gathering."
+                }
+            }
+        ]
+    },
+    {
         "event_id": "gen_single_gathering_war1",
         "location": [
             "any"
@@ -1747,7 +1863,7 @@
         "sub_type": [ "war" ],
         "frequency": 4,
         "event_text": [
-            "War sometimes brings out the worst in cats. Even during the Gathering, m_c could not help but glare at r_c for sitting near."
+            "War sometimes brings out the worst in cats. Even during the Gathering, m_c cannot help but glare at r_c for sitting near."
         ],
         "m_c": {
         },
@@ -1777,9 +1893,9 @@
         "sub_type": [],
         "frequency": 2,
         "event_text": [
-            "During the Gathering, m_c made a point of ignoring r_c.",
-            "During the Gathering, m_c made a point of talking over r_c.",
-            "m_c made a pointed comment about r_c's Clan being last to arrive to the Gathering this moon."
+            "During the Gathering, m_c makes a point of ignoring r_c.",
+            "During the Gathering, m_c makes a point of talking over r_c.",
+            "m_c makes a pointed comment about r_c's Clan being last to arrive to the Gathering this moon."
         ],
         "m_c": {
             "status": ["leader"],
@@ -1823,8 +1939,8 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "During the Gathering, m_c made a point of ignoring r_c.",
-            "During the Gathering, m_c made a point of talking over r_c."
+            "During the Gathering, m_c makes a point of ignoring r_c.",
+            "During the Gathering, m_c makes a point of talking over r_c."
         ],
         "m_c": {
             "status": [ "deputy" ],
@@ -1868,12 +1984,12 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "During the Gathering, m_c made a point of ignoring r_c.",
-            "During the Gathering, m_c made a point of talking over r_c.",
-            "During the Gathering, m_c refused to speak to r_c.",
-            "During the Half-moon meeting, m_c made a point of ignoring r_c.",
-            "During the Half-moon meeting, m_c made a point of talking over r_c.",
-            "During the Half-moon meeting, m_c refused to speak to r_c."
+            "During the Gathering, m_c makes a point of ignoring r_c.",
+            "During the Gathering, m_c makes a point of talking over r_c.",
+            "During the Gathering, m_c refuses to speak to r_c.",
+            "During the Half-moon meeting, m_c makes a point of ignoring r_c.",
+            "During the Half-moon meeting, m_c makes a point of talking over r_c.",
+            "During the Half-moon meeting, m_c refuses to speak to r_c."
         ],
         "m_c": {
             "status": [ "healer" ],
@@ -1917,7 +2033,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c caused a scene at the Gathering after losing {PRONOUN/m_c/poss} temper at r_c."
+            "m_c causes a scene at the Gathering after losing {PRONOUN/m_c/poss} temper at r_c."
         ],
         "m_c": {
             "status": [ "-leader" ],
@@ -1975,7 +2091,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c and r_c got into a spat, driven by the stress of the recent hostility between Clans."
+            "m_c and r_c get into a spat, driven by the stress of the recent hostility between Clans."
         ],
         "m_c": {
             "status": [ "-leader" ],
@@ -2026,7 +2142,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c had never liked or respected o_c_n, and made sure to tell it to r_c's face."
+            "m_c has never liked or respected o_c_n, and makes sure to tell it to r_c's face."
         ],
         "m_c": {
             "trait": [
@@ -2067,8 +2183,8 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c mocked r_c for struggling on the ice.",
-            "Seeing r_c struggling on the ice, m_c couldn't hold back {PRONOUN/m_c/poss} laughter."
+            "m_c mocks r_c for struggling on the ice.",
+            "Seeing r_c struggling on the ice, m_c can't hold back {PRONOUN/m_c/poss} laughter."
         ],
         "m_c": {
             "trait": [
@@ -2110,7 +2226,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c met r_c resting in the shade and joined {PRONOUN/r_c/object}, commiserating about the recent heat."
+            "m_c meets r_c resting in the shade and joins {PRONOUN/r_c/object}, commiserating about the recent heat."
         ],
         "m_c": {
         },
@@ -2144,7 +2260,7 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "During a chat about prey preferences, r_c couldn't help but grimace in disgust about what m_c's favourite was."
+            "During a chat about prey preferences, r_c can't help but grimace in disgust about what m_c's favourite is."
         ],
         "m_c": {
         },
@@ -2182,7 +2298,7 @@
         "sub_type": [ ],
         "frequency": 1,
         "event_text": [
-            "While out hunting, m_c encountered r_c struggling to do the same. {PRONOUN/m_c/subject/CAP} share some prey, since o_c_n seemed to need it more."
+            "While out hunting, m_c encounters r_c struggling to do the same. {PRONOUN/m_c/subject/CAP} share some prey, since o_c_n seemed to need it more."
         ],
         "m_c": {
             "status": ["apprentice", "warrior", "deputy", "leader"],
@@ -2206,6 +2322,60 @@
                 "mutual": false,
                 "log": {
                     "cats_from": "cat_to shared prey with cat_from to help o_c_n."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_single_stalking1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [ ],
+        "frequency": 2,
+        "event_text": [
+            "m_c has gotten into a habit of lingering near the o_c_n border lately. r_c takes notice and confronts {PRONOUN/m_c/object} about it with a threat to stop."
+        ],
+        "m_c": {
+        },
+        "r_c": {
+            "age": [ "-adolescent" ],
+            "trait": [
+                "troublesome",
+                "fierce",
+                "bloodthirsty",
+                "bold",
+                "strict",
+                "confident",
+                "loyal",
+                "responsible",
+                "shameless",
+                "vengeful",
+                "grumpy"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust" ],
+                "amount": -10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from was suspicious about cat_to's frequent stops to the o_c_n border."
+                }
+            },
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "comfort", "like" ],
+                "amount": -10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from was threatened by cat_to for {PRONOUN/cat_from/poss} stops to the o_c_n border."
                 }
             }
         ]

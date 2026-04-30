@@ -1676,7 +1676,9 @@
         "kit_manipulated",
         "romance",
         "adoption",
-        "tnr"
+        "tnr",
+        "not_singleclan",
+        "not_multiclan"
       ],
       "title": "TagEnum",
       "type": "string"

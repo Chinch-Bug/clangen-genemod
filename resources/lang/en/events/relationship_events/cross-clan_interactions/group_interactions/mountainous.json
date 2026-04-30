@@ -6,7 +6,7 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "m_c was checking some tunnels, only to find r_c1 trapped. {PRONOUN/m_c/object/CAP} gathered r_c2 and r_c3 up to help dig {PRONOUN/r_c1/object} out."
+            "m_c was checking some tunnels, only to find r_c1 trapped. {PRONOUN/m_c/object/CAP} gathers r_c2 and r_c3 up to help dig {PRONOUN/r_c1/object} out."
         ],
         "m_c": {
             "skill": [ "DIGGER,2" ]
@@ -47,7 +47,7 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "While on patrol with r_c1 and r_c2, m_c witnessed a o_c_n cat get caught under a falling snow drift. Together they were thankfully able to get r_c3 out unharmed."
+            "While on patrol with r_c1 and r_c2, m_c witnesses a o_c_n1 cat get caught under a falling snow drift. Together they are, thankfully, able to get r_c3 out unharmed."
         ],
         "m_c": {
             "skill": ["SENSE,1"],

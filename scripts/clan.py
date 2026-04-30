@@ -1243,13 +1243,20 @@ class Clan:
     def group_ID_to_clan(self, group_ID):
         return next(filter(lambda c: c.group_ID == group_ID, game.clan.all_other_clans), game.clan)
 
-    def get_relations(self, clan, other_clan):
+    def get_relations(self, clan, other_clan, get_label=False):
         main_enum = clan.group_ID
         other_enum = other_clan.group_ID
 
         if game.clan.relations.get(other_enum, {}).get(main_enum):
             main_enum = other_clan.group_ID
             other_enum = clan.group_ID
+
+        if get_label:
+            if game.clan.relations[main_enum][other_enum] > 17:
+                return "ally"
+            elif 7 <= game.clan.relations[main_enum][other_enum] <= 17:
+                return "neutral"
+            return "hostile"
         
         return game.clan.relations[main_enum][other_enum]
 

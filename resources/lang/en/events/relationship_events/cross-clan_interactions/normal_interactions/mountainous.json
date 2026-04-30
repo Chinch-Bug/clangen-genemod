@@ -10,7 +10,7 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "m_c saw an eagle overhead of r_c and warned {PRONOUN/r_c/object} just in time before it could swoop."
+            "m_c sees an eagle overhead of r_c and warns {PRONOUN/r_c/object} just in time before it could swoop."
         ],
         "m_c": {
             "skill": [ "SENSE,1" ]
@@ -41,7 +41,7 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "While on a solo patrol, m_c witnessed a o_c_n cat get caught under a falling snow drift. {PRONOUN/m_c/subject/CAP} {VERB/m_c/were/was} able to get r_c out, but not before the cold got to {PRONOUN/r_c/object}."
+            "While on a solo patrol, m_c witnesss a o_c_n cat get caught under a falling snow drift. {PRONOUN/m_c/subject/CAP} {VERB/m_c/are/is} able to get r_c out, but not before the cold got to {PRONOUN/r_c/object}."
         ],
         "m_c": {
             "skill": [ "SENSE,1" ],

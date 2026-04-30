@@ -10,7 +10,7 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "m_c saw a hawk overhead of r_c and warned {PRONOUN/r_c/object} just in time before it could swoop."
+            "m_c sees a hawk overhead of r_c and warns {PRONOUN/r_c/object} just in time before it could swoop."
         ],
         "m_c": {
             "skill": [ "SENSE,1" ]

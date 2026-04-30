@@ -8,7 +8,7 @@
         "sub_type": [ ],
         "frequency": 2,
         "event_text": [
-            "m_c was checking some tunnels after a recent heavy downpour, only to find r_c1 trapped. {PRONOUN/m_c/object/CAP} gathered r_c2 and r_c3 up to help dig {PRONOUN/r_c1/object} out."
+            "m_c was checking some tunnels after a recent heavy downpour, only to find r_c1 trapped. {PRONOUN/m_c/object/CAP} gather r_c2 and r_c3 up to help dig {PRONOUN/r_c1/object} out."
         ],
         "m_c": {
             "skill": ["DIGGER,2"]

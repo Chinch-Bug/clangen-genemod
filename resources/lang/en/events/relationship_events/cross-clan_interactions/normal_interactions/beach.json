@@ -10,7 +10,7 @@
         "sub_type": [ ],
         "frequency": 4,
         "event_text": [
-            "m_c boasted about stealing fish from gulls, but r_c wasn't quite so enthused about stealing food from other animals."
+            "m_c boasts about stealing fish from gulls, but r_c isn't quite so enthused about stealing food from other animals."
         ],
         "m_c": {
             "skill": [ "HUNTER,0", "CLEVER,0", "STEALTH,0", "FIGHTER,0" ]
@@ -42,7 +42,7 @@
         "sub_type": [ ],
         "frequency": 1,
         "event_text": [
-            "m_c boasted about {PRONOUN/m_c/poss} ability to steal fish from gulls. Yet when prompted {PRONOUN/m_c/object} for a demonstration, m_c only ended up forced to retreat, much to r_c's amusement."
+            "m_c boasts about {PRONOUN/m_c/poss} ability to steal fish from gulls. Yet when prompted {PRONOUN/m_c/object} for a demonstration, m_c only ends up forced to retreat by an angry flock, much to r_c's amusement."
         ],
         "m_c": {
             "skill": [ "-HUNTER,0", "-CLEVER,0", "-STEALTH,0", "-FIGHTER,0" ],

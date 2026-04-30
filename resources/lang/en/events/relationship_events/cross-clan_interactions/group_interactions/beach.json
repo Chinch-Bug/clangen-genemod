@@ -10,7 +10,7 @@
         "sub_type": [ ],
         "frequency": 3,
         "event_text": [
-            "Having heard c_n was facing a risk of flooding, o_c_n1 sent r_c1, r_c2, and r_c3 to help the preparations m_c was organising."
+            "Having heard c_n was facing a risk of flooding, o_c_n1 sends r_c1, r_c2, and r_c3 to help the preparations m_c was organising."
         ],
         "m_c": {
             "skill": [ "CAMP,2" ]

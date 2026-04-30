@@ -1305,7 +1305,6 @@ def one_moon_cat(cat, clan):
 
     # newborns don't do much
     if cat.status.rank == CatRank.NEWBORN:
-        cat.relationship_interaction()
         return
 
     handle_apprentice_EX(cat)  # This must be before perform_ceremonies!
@@ -1326,11 +1325,11 @@ def one_moon_cat(cat, clan):
     if cat.dead:
         return
 
-    cat.relationship_interaction()
     handle_colour_changes(cat, clan)
 
     # relationships have to be handled separately, because of the ceremony name change
     if cat.status.group.is_any_clan_group():
+        cat.relationship_interaction()
         Relation_Events.handle_relationships(cat)
 
     # now we make sure ill and injured cats don't get interactions they shouldn't

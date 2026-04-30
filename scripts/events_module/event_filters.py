@@ -89,6 +89,18 @@ def event_for_location(locations: list, clan=game.clan) -> bool:
     return is_exclusionary
 
 
+def event_for_clancount(tags: list, clan=game.clan) -> bool:
+    """
+    Checks if the clan is within the allowed locations.
+    """
+    if not game.clan:
+        return True
+
+    if f"not_{game.clan.clancount}" in tags:
+        return False
+    
+    return True
+
 def event_for_season(seasons: list) -> bool:
     """
     Checks if the clan is within the given seasons.
@@ -247,16 +259,9 @@ def event_for_clan_relations(required_rel: list, clan, other_clan) -> bool:
     if not required_rel or "any" in required_rel:
         return True
 
-    current_rel = game.clan.get_relations(clan, other_clan)
+    current_standing = game.clan.get_relations(clan, other_clan, get_label=True)
 
-    if "hostile" in required_rel and current_rel <= 6:
-        return True
-    elif "neutral" in required_rel and 7 <= current_rel <= 17:
-        return True
-    elif "ally" in required_rel and 18 <= current_rel:
-        return True
-
-    return False
+    return current_standing in required_rel
 
 
 def event_for_other_clan(Cat, ranks: list, other_clan) -> bool:

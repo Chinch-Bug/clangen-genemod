@@ -13,6 +13,7 @@ from scripts.clan_resources.freshkill import (
 )
 from scripts.events_module.event_filters import (
     event_for_location,
+    event_for_clancount,
     event_for_tags,
     event_for_cat,
     event_for_reputation,
@@ -392,6 +393,9 @@ def filter_events(
         if not ignore_subtyping:
             if set(event.sub_type) != set(sub_types):
                 continue
+
+        if not event_for_clancount(event.tags, game.clan):
+            continue
 
         if not event_for_location(event.location, clan):
             continue
