@@ -37,8 +37,6 @@ def _test():
     replacement_dict = {
         "m_c": _r,
         "r_c": _r,
-        "r_c1": _r,
-        "r_c2": _r,
         "n_c": _r,
         "app1": _r,
         "app2": _r,
@@ -69,6 +67,7 @@ def _test():
 
     for x in range(0, 11):
         replacement_dict[f"n_c:{x}"] = _r
+        replacement_dict[f"r_c{x}"] = _r
 
     for root, _, files in os.walk("resources"):
         for file in files:
@@ -126,7 +125,7 @@ def _test_replacement_failure(path: str, repl_dict: dict) -> bool:
             # brackets
             if re.search(r"\{PRONOUN|\(PRONOUN|\{VERB|\(VERB|\{ADJ|\(ADJ", processed):
                 print(
-                    f'::error file={path}: "{_str}" contains pronoun tag fragments after replacment'
+                    f'::error file={path}: "{processed}" contains pronoun tag fragments after replacment'
                 )
                 success = False
             elif re.search(r'For allele search:', processed):
