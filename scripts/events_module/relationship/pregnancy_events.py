@@ -826,7 +826,7 @@ class Pregnancy_Events:
         events = Pregnancy_Events.PREGNANT_STRINGS
         event_list = []
 
-        if surrogate and cat in other_cat:
+        if surrogate and pregnant_cat in surrogate:
             if pregnant_cat.ID not in involved_cats:
                 involved_cats.append(pregnant_cat.ID)
             involved_cats.append(RandomChoice.ID)
