@@ -1130,7 +1130,7 @@
             [
                 "old_name",
                 "clancat",
-                "backstory:ostracized_warrior,disgraced1,disgraced2,otherclan",
+                "backstory:ostracized_warrior,disgraced1,disgraced2,otherclan1",
                 "status:warrior",
                 "change_clan"
             ]
@@ -1181,7 +1181,7 @@
             [
                 "old_name",
                 "clancat",
-                "backstory:ostracized_warrior,disgraced1,disgraced2,disgraced3,otherclan",
+                "backstory:ostracized_warrior,disgraced1,disgraced2,disgraced3,otherclan1",
                 "status:deputy",
                 "change_clan"
             ]
@@ -3248,7 +3248,7 @@
         "new_cat": [
             [
                 "former clancat",
-                "status:medicine cat",
+                "status:healer",
                 "meeting",
                 "unknown",
                 "backstory:disgraced2, disgraced3",

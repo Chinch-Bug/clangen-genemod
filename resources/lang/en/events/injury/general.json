@@ -1142,7 +1142,7 @@
                 "values": [ "respect" ],
                 "amount": -5,
                 "log": {
-                    "cats_from": "cat_from was unimpressed to hear that cat_to impulsively attacked a o_c_n patrol."
+                    "cats_from": "cat_from was unimpressed to hear that cat_to impulsively attacked another Clan's patrol."
                 }
             }
         ]
@@ -3166,7 +3166,7 @@
                 "amount": -20,
                 "mutual": false,
                 "log": {
-                    "cats_from": "cat_from was injured by a o_c_n warrior when r_c ordered {PRONOUN/cat_from/object} to cross the border."
+                    "cats_from": "cat_from was injured by a warrior from another Clan when r_c ordered {PRONOUN/cat_from/object} to cross the border."
                 }
             }
         ],
@@ -6800,7 +6800,7 @@
                 "values": [ "respect", "trust" ],
                 "amount": 10,
                 "log": {
-                    "cats_from": "cat_from saw cat_to defend the nursery in a battle with o_c_n."
+                    "cats_from": "cat_from saw cat_to defend the nursery in a battle with an enemy Clan."
                 }
             }
         ]
@@ -7056,7 +7056,7 @@
                 ],
                 "amount": 15,
                 "log": {
-                    "cats_from": "cat_to took a blow meant for cat_from in a fight with o_c_n."
+                    "cats_from": "cat_to took a blow meant for cat_from in a fight with an enemy Clan."
                 }
             }
         ],
@@ -7121,8 +7121,8 @@
                 "cats": [
                     "m_c"
                 ],
-                "scar": "m_c was scarred after a skirmish with a warring Clan.",
-                "death": "m_c died from {PRONOUN/m_c/poss} wounds after a skirmish with a warring Clan."
+                "scar": "m_c was scarred after a skirmish with o_c_n.",
+                "death": "m_c died from {PRONOUN/m_c/poss} wounds after a skirmish with o_c_n."
             }
         ],
         "other_clan": {
