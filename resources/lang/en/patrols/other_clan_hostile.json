@@ -6238,8 +6238,8 @@
                 "other_clan_rep": -8,
                 "frequency": 4,
                 "new_cat": [
-                    ["age: kitten", "backstory: otherclan5", "clancat", "exists", "change_clan"],
-                    ["age: kitten", "backstory: otherclan5", "clancat", "exists", "change_clan"]
+                    ["age: kitten", "backstory: stolenkit3", "clancat", "exists", "change_clan"],
+                    ["age: kitten", "backstory: stolenkit3", "clancat", "exists", "change_clan"]
                 ]
             }
         ]

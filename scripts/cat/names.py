@@ -272,13 +272,6 @@ class Name:
                 double_animal = False
             i += 1
 
-        if self.suffix:
-            if get_clan_setting("ancient names") and get_clan_setting("modded names"):
-                self.suffix = " " + self.suffix.title()
-                self.specsuffix_hidden = True
-        elif get_clan_setting("no special suffixes") and get_clan_setting("modded names"):
-            self.specsuffix_hidden = True
-
     def __str__(self):
         return self.__repr__()
     def filter(self, all, used):
@@ -436,6 +429,7 @@ class Name:
         if game.clan and get_clan_setting('modded names') and get_clan_setting('no suffixes'):
             self.suffix = ""
             return
+        had_suffix = True if self.suffix else False
         try:
             if self.mod_suffixes and skills and personality:
                 options = []
@@ -571,6 +565,13 @@ class Name:
                 self.suffix = random.choice(self.names_dict["normal_suffixes"])
 
         self.check_name(self.cat, False)
+        
+        if not had_suffix:
+            if get_clan_setting("ancient names") and get_clan_setting("modded names"):
+                self.suffix = " " + self.suffix.title().strip()
+                self.specsuffix_hidden = True
+            elif get_clan_setting("no special suffixes") and get_clan_setting("modded names"):
+                self.specsuffix_hidden = True
         
     def get_specsuffix_name(self, rank: CatRank = CatRank.LEADER):
         """
