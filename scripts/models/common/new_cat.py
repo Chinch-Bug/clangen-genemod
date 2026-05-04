@@ -27,7 +27,7 @@ def validate_nc_status(value: str) -> str:
     ]
     _, status_str = value.split(":")
 
-    if status_str not in statuses:
+    if status_str.strip() not in statuses:
         raise ValueError(f"Status {status_str} in {value} is invalid!")
     return value
 
@@ -46,7 +46,7 @@ def validate_nc_age(value: str) -> str:
     ]
     _, age_str = value.split(":")
 
-    if age_str not in ages:
+    if age_str.strip() not in ages:
         raise ValueError(f"Age {age_str} in {value} is invalid!")
     return value
 

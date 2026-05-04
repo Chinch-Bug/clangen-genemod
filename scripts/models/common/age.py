@@ -16,3 +16,4 @@ class Age(Enum):
     not_senior_adult = "-senior adult"
     senior = "senior"
     not_senior = "-senior"
+    match = "match"

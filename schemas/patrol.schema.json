@@ -15,7 +15,8 @@
         "senior adult",
         "-senior adult",
         "senior",
-        "-senior"
+        "-senior",
+        "match"
       ],
       "title": "Age",
       "type": "string"
@@ -1404,12 +1405,14 @@
         "-healer apprentice",
         "medicine cat apprentice",
         "-medicine cat apprentice",
+        "any_apprentice",
         "warrior",
         "-warrior",
         "mediator",
         "-mediator",
         "healer",
         "-healer",
+        "any_healer",
         "medicine cat",
         "-medicine cat",
         "deputy",
