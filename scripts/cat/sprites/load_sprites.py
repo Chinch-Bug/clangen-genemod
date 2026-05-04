@@ -400,6 +400,7 @@ class Sprites:
         self.make_group('Other/noses', (0, 0), 'nose')
         self.make_group('Other/nose_colours', (0, 0), 'nosecolours', sprites_y=5)
         self.make_group('Other/paw_pads', (0, 0), 'pads')
+        self.make_group('Other/pad_colours', (0, 0), 'padcolours', sprites_y=5)
 
         #genemod eyes
 

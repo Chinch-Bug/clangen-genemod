@@ -531,7 +531,6 @@ def generate_sprite(
                 pad_dict = {
                     'red' : 0,
                     'whit' : 1,
-                    'tabby' : 2,
                     'black' : 3,
                     'chocolate' : 4,
                     'cinnamon' : 5,
@@ -547,16 +546,16 @@ def generate_sprite(
                 }
 
                 if(phenotype.white[0] == 'W' or phenotype.pointgene[0] == 'c' or phenotype.white_pattern == ['full white'] or whichcolour == "white"):
-                    pads.blit(sprites.sprites['nosecolours1'], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    pads.blit(sprites.sprites['padcolours1'], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                 elif ('amber' not in phenotype.colour or phenotype.agouti[0] != 'a') and ('russet' in phenotype.colour or 'carnelian' in phenotype.colour or is_red):
-                    pads.blit(sprites.sprites['nosecolours0'], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    pads.blit(sprites.sprites['padcolours0'], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                 elif 'amber' in phenotype.colour:
                     phenotype.SpriteInfo(10)
                     whichcolour = phenotype.maincolour
-                    pads.blit(sprites.sprites['nosecolours' + str(pad_dict.get(whichcolour[:-1], 0))], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    pads.blit(sprites.sprites['padcolours' + str(pad_dict.get(whichcolour[:-1], 0))], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                     phenotype.SpriteInfo(sprite_age)
                 else:
-                    pads.blit(sprites.sprites['nosecolours' + str(pad_dict.get(whichcolour[:-1]))], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    pads.blit(sprites.sprites['padcolours' + str(pad_dict.get(whichcolour[:-1]))], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
 
                 sprite.blit(pads, (0, 0))
 
