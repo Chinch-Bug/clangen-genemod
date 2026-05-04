@@ -1376,7 +1376,7 @@ def generate_sprite(
                 sprites.sprites['shader_lighting' + cat_sprite], (0, 0))
 
         # make sure colours are in the lines
-        if('rexed' in cat.phenotype.furtype or 'wiry' in cat.phenotype.furtype):
+        if('rexed' in phenotype.furtype or 'wiry' in phenotype.furtype):
             gensprite.blit(sprites.sprites['rexbord'+ cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
             gensprite.blit(sprites.sprites['rexbord'+ cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
         else:
