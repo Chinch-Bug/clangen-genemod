@@ -15,8 +15,7 @@
         "senior adult",
         "-senior adult",
         "senior",
-        "-senior",
-        "match"
+        "-senior"
       ],
       "title": "Age",
       "type": "string"

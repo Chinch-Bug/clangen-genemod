@@ -43,6 +43,7 @@ def validate_nc_age(value: str) -> str:
         "senior",
         "mate",
         "has_kits",
+        "match"
     ]
     _, age_str = value.split(":")
 
