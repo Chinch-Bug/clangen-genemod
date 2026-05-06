@@ -52,7 +52,7 @@ class Screens:
         It will handle keeping track of the last screen and cur screen.
         Last screen must be tracked to ensure a clear transition between screens."""
 
-        if new_screen not in [GameScreen.CAMP, GameScreen.MEDIATION] and game.clan and game.clan.clancount == "multiclan":
+        if new_screen not in [GameScreen.CAMP, GameScreen.MEDIATION, GameScreen.PROFILE] and game.clan and game.clan.clancount == "multiclan":
             game.selected_clan = game.clan
             if Screens.menu_buttons.get("supplies"):
                 for b in Screens.menu_buttons["supplies"].child_buttons:

@@ -1269,6 +1269,7 @@ def queen_influence(cat):
         affect_personality = cat.personality.mentor_influence(
             has_rel[0].personality, negative=negative_influence
         )
+        affect_skills = None
         if not negative_influence:
             affect_skills = cat.skills.mentor_influence(has_rel[0])
         if affect_personality:
