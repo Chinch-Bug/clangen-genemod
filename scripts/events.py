@@ -694,7 +694,7 @@ def mediator_events(cat, clan):
             cat.rank_change(CatRank.MEDIATOR)
 
 def become_healer_events(cat, clan):
-    """Check for mediator events"""
+    """Check for queen events"""
     if get_clan_setting("become_healer"):
         # Note: These chances are large since it triggers every moon.
         # Checking every moon has the effect giving older cats more chances to become a mediator
@@ -711,6 +711,26 @@ def become_healer_events(cat, clan):
                 )
             )
             cat.rank_change(CatRank.MEDICINE_APPRENTICE if cat.status.rank.is_any_apprentice_rank() else CatRank.MEDICINE_CAT)
+            cat.experience = int(cat.experience * 0.75)
+
+def become_queen_events(cat, clan):
+    """Check for queen events"""
+    if get_clan_setting("become_queen"):
+        # Note: These chances are large since it triggers every moon.
+        # Checking every moon has the effect giving older cats more chances to become a mediator
+        _ = constants.CONFIG["roles"]["become_queen_chances"]
+        if cat.status.rank in _ and not int(random.random() * _[cat.status.rank]):
+            game.cur_events_list.append(
+                Single_Event(
+                    event_text_adjust(
+                        Cat, i18n.t("hardcoded.event_queen_app"), main_cat=cat
+                    ),
+                    "ceremony",
+                    cat.ID,
+                    clan=clan.group_ID
+                )
+            )
+            cat.rank_change(CatRank.QUEEN)
             cat.experience = int(cat.experience * 0.75)
 
 def get_moon_freshkill():
@@ -1182,14 +1202,19 @@ def kit_deaths(cats, clan=None):
     fading_kits = []
     fading_kit_names = []
 
+    clan_queens = len(find_alive_cats_with_rank(Cat, [CatRank.QUEEN], working=True, clan=clan.group_ID))*3 + len(find_alive_cats_with_rank(Cat, [CatRank.QUEEN_APPRENTICE], working=True, clan=clan.group_ID))
+    clan_queens = min(clan_queens/len(find_alive_cats_with_rank(Cat, [CatRank.KITTEN], clan=clan.group_ID)), 1)
+    clan_queens *= constants.CONFIG['death_related']['max_queen_influence']
+
     death_chances = constants.CONFIG['death_related']['kit_death_chances']
     
     for kit in cats:
         if kit.dead or kit.status.social == CatSocial.KITTYPET:
             continue
         
-        multiplier = 1.25 if kit.phenotype.growth_pattern == "runt" else 1
-        if kit.moons < 2 and (kit.status.is_outsider or kit.status.group_ID == clan.group_ID):
+        multiplier = 1-(clan_queens) if kit.status.group_ID == clan.group_ID and kit.status.rank == CatRank.KITTEN else 1
+        multiplier *= 1.25 if kit.phenotype.growth_pattern == "runt" else 1
+        if kit.moons < 2 and ((kit.status.is_outsider and clan.group_ID == game.clan.group_ID) or kit.status.group_ID == clan.group_ID):
             if random.random() < death_chances[str(kit.moons)] * multiplier:
                 if not kit.status.is_outsider:
                     fading_kits.append(kit.ID)
@@ -1268,6 +1293,7 @@ def one_moon_cat(cat, clan):
     # Handle Mediator Events
     mediator_events(cat, clan)
     become_healer_events(cat, clan)
+    become_queen_events(cat, clan)
 
     # handle nutrition amount
     # (CARE: the cats have to be fed before this happens - should be handled in "one_moon" function)
@@ -1607,11 +1633,13 @@ def perform_ceremonies(cat, clan):
             ) and random.random() < (1/constants.CONFIG["roles"]["max_healer_retire_chance"])
         if cat.status.rank == CatRank.MEDIATOR:
             special_can_retire = get_clan_setting("mediator_retirement") and random.random() < (1/constants.CONFIG["roles"]["max_mediator_retire_chance"])
+        if cat.status.rank == CatRank.QUEEN:
+            special_can_retire = random.random() < (1/constants.CONFIG["roles"]["max_queen_retire_chance"])
         
         # retiring to elder den
         if (
             not cat.no_retire
-            and (cat.status.rank in (CatRank.WARRIOR, CatRank.DEPUTY) or cat.status.rank in (CatRank.MEDICINE_CAT, CatRank.MEDIATOR, CatRank.LEADER) and special_can_retire)
+            and (cat.status.rank in (CatRank.WARRIOR, CatRank.DEPUTY) or cat.status.rank in (CatRank.MEDICINE_CAT, CatRank.MEDIATOR, CatRank.LEADER, CatRank.QUEEN) and special_can_retire)
             and len(cat.apprentice) < 1
             and cat.moons > 114
         ):
@@ -1660,11 +1688,47 @@ def perform_ceremonies(cat, clan):
                         "thoughtful",
                     ]:
                         chance = int(chance / 1.5)
+                    if cat.skills.primary.path == SkillPath.MEDIATOR or cat.skills.secondary and cat.skills.secondary.path == SkillPath.MEDIATOR:
+                        chance = int(chance / 2)
                     if cat.is_disabled():
                         chance = int(chance / 2)
 
                     if chance == 0:
                         chance = 1
+
+                    # Chance for queen apprentice
+                    queen_list = list(
+                        filter(
+                            lambda x: x.status.rank == CatRank.QUEEN
+                            and x.status.group_ID == clan.group_ID,
+                            Cat.all_cats_list,
+                        )
+                    )
+
+                    # This checks if at least one mediator already has an apprentice.
+                    has_queen_apprentice = False
+                    for c in queen_list:
+                        if c.apprentice:
+                            has_queen_apprentice = True
+                            break
+
+                    q_chance = constants.CONFIG["roles"]["queen_app_chance"]
+                    if cat.personality.trait in [
+                        "childish",
+                        "playful",
+                        "compassionate",
+                        "thoughtful",
+                        "calm",
+                        "responsible",
+                    ]:
+                        q_chance = int(chance / 1.5)
+                    if cat.skills.primary.path == SkillPath.KIT or cat.skills.secondary and cat.skills.secondary.path == SkillPath.KIT:
+                        q_chance = int(chance / 2)
+                    if cat.is_disabled():
+                        q_chance = int(chance / 2)
+
+                    if q_chance == 0:
+                        q_chance = 1
 
                     # Only become a mediator if there is already one in the clan.
                     if (
@@ -1673,6 +1737,28 @@ def perform_ceremonies(cat, clan):
                         and not int(random.random() * chance)
                     ):
                         ceremony(cat, CatRank.MEDIATOR_APPRENTICE)
+                        ceremony_accessory = True
+                        gain_accessories(cat, clan)
+                    elif (
+                        not mediator_list
+                        and not int(random.random() * chance * 3)
+                    ):
+                        ceremony(cat, CatRank.MEDIATOR_APPRENTICE)
+                        ceremony_accessory = True
+                        gain_accessories(cat, clan)
+                    if (
+                        queen_list
+                        and not has_queen_apprentice
+                        and not int(random.random() * q_chance)
+                    ):
+                        ceremony(cat, CatRank.QUEEN_APPRENTICE)
+                        ceremony_accessory = True
+                        gain_accessories(cat, clan)
+                    elif (
+                        not queen_list
+                        and not int(random.random() * q_chance * 3)
+                    ):
+                        ceremony(cat, CatRank.QUEEN_APPRENTICE)
                         ceremony_accessory = True
                         gain_accessories(cat, clan)
                     else:
@@ -1925,13 +2011,14 @@ def ceremony(cat, promoted_to, preparedness="prepared"):
     # ceremony = []
     clan = cat.status.fetch_clan_object(game.clan)
     was_leader = cat.status.rank == CatRank.LEADER
+    old_rank = cat.status.rank
 
     _ment = (
         Cat.fetch_cat(cat.mentor) if cat.mentor else None
     )  # Grab current mentor, if they have one, before it's removed.
     old_name = str(cat.name)
     cat.rank_change(promoted_to)
-    cat.rank_change_traits_skill(_ment)
+    cat.rank_change_traits_skill(_ment, was_kit=old_rank == CatRank.KITTEN)
 
     involved_cats = [cat.ID]  # Clearly, the cat the ceremony is about is involved.
 

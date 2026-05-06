@@ -36,9 +36,11 @@ class CatRank(StrEnum):
     APPRENTICE = "apprentice"
     MEDICINE_APPRENTICE = "healer apprentice"
     MEDIATOR_APPRENTICE = "mediator apprentice"
+    QUEEN_APPRENTICE = "queen apprentice"
     WARRIOR = "warrior"
     MEDICINE_CAT = "healer"
     MEDIATOR = "mediator"
+    QUEEN = "queen"
     DEPUTY = "deputy"
     LEADER = "leader"
     ELDER = "elder"
@@ -57,10 +59,14 @@ class CatRank(StrEnum):
     def is_any_mediator_rank(self) -> bool:
         return self in (self.MEDIATOR, self.MEDIATOR_APPRENTICE)
 
+    def is_any_queen_rank(self) -> bool:
+        return self in (self.QUEEN, self.QUEEN_APPRENTICE)
+
     def is_any_apprentice_rank(self) -> bool:
         return self in (
             self.APPRENTICE,
             self.MEDIATOR_APPRENTICE,
+            self.QUEEN_APPRENTICE,
             self.MEDICINE_APPRENTICE,
         )
 

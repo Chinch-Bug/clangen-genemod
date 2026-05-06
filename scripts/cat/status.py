@@ -17,9 +17,11 @@ class Status:
         CatRank.APPRENTICE: CatSocial.CLANCAT,
         CatRank.MEDICINE_APPRENTICE: CatSocial.CLANCAT,
         CatRank.MEDIATOR_APPRENTICE: CatSocial.CLANCAT,
+        CatRank.QUEEN_APPRENTICE: CatSocial.CLANCAT,
         CatRank.WARRIOR: CatSocial.CLANCAT,
         CatRank.MEDICINE_CAT: CatSocial.CLANCAT,
         CatRank.MEDIATOR: CatSocial.CLANCAT,
+        CatRank.QUEEN: CatSocial.CLANCAT,
         CatRank.DEPUTY: CatSocial.CLANCAT,
         CatRank.LEADER: CatSocial.CLANCAT,
         CatRank.ELDER: CatSocial.CLANCAT,
@@ -384,9 +386,10 @@ class Status:
                     [
                         CatRank.APPRENTICE,
                         CatRank.MEDIATOR_APPRENTICE,
+                        CatRank.QUEEN_APPRENTICE,
                         CatRank.MEDICINE_APPRENTICE,
                     ],
-                    weights=[6, 1, 2],
+                    weights=[6, 1, 1, 2],
                 )[0]
             )
         elif age in (CatAge.YOUNG_ADULT, CatAge.ADULT, CatAge.SENIOR_ADULT):
@@ -394,8 +397,8 @@ class Status:
                 CatRank.WARRIOR
                 if disable_random
                 else choices(
-                    [CatRank.WARRIOR, CatRank.MEDICINE_CAT, CatRank.MEDIATOR],
-                    weights=[6, 2, 1],
+                    [CatRank.WARRIOR, CatRank.MEDICINE_CAT, CatRank.QUEEN, CatRank.MEDIATOR],
+                    weights=[6, 2, 1, 1],
                 )[0]
             )
         else:

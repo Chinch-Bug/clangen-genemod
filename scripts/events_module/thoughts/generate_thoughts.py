@@ -76,13 +76,13 @@ def get_other_cat_for_thought(
     return other_cat
 
 
-def _filter_list(inter_list: list, main_cat: "Cat", other_cat: "Cat") -> list:
+def _filter_list(inter_list: list, main_cat: "Cat", other_cat: "Cat", ageup=False) -> list:
     """
     Filters thoughts in the inter_list per their constraints and returns a list of allowed thoughts.
     """
     created_list = []
     for inter in inter_list:
-        if _constraints_fulfilled(main_cat, other_cat, inter):
+        if _constraints_fulfilled(main_cat, other_cat, inter, ageup=ageup):
             created_list.append(inter)
     return created_list
 
@@ -190,7 +190,7 @@ def _load_group(thought_type: CatThought, main_cat: "Cat", other_cat: "Cat", age
         thoughts = load_lang_resource(f"{new_path}/{main_cat.status.group}.json")
         pass
 
-    final_thoughts = _filter_list(thoughts, main_cat, other_cat)
+    final_thoughts = _filter_list(thoughts, main_cat, other_cat, ageup=ageup)
     main_cat.age = og_age
 
     return final_thoughts
@@ -290,7 +290,7 @@ def new_death_thought(
         return i18n.t("defaults.thought")
 
 
-def _constraints_fulfilled(main_cat: "Cat", random_cat: "Cat", thought) -> bool:
+def _constraints_fulfilled(main_cat: "Cat", random_cat: "Cat", thought, ageup=False) -> bool:
     """Check if thought constraints are fulfilled"""
 
     if "biome" in thought:
@@ -328,7 +328,12 @@ def _constraints_fulfilled(main_cat: "Cat", random_cat: "Cat", thought) -> bool:
 
     if "random_status_constraint" in thought and random_cat:
         random_info_dict["status"] = thought["random_status_constraint"]
-
+        if ageup and "living" not in thought.get("random_living_status", []) and main_cat.dead:
+            for s in random_info_dict["status"]:
+                if "apprentice" in s and "-" not in s or s in ["kitten", "newborn"]:
+                    random_info_dict["status"].remove(s)
+            random_info_dict["status"] += ["-newborn", "-kitten", "-apprentice", "-healer apprentice", "-mediator apprentice", "-queen apprentice"]
+            
     if "main_status_history" in thought:
         main_info_dict["status_history"] = thought["main_status_history"]
 

@@ -24,6 +24,7 @@ class History:
         self,
         beginning=None,
         mentor_influence=None,
+        queen_influence=None,
         app_ceremony=None,
         lead_ceremony=None,
         possible_history=None,
@@ -40,6 +41,9 @@ class History:
         self.beginning = beginning if beginning else {}
         self.mentor_influence = (
             mentor_influence if mentor_influence else {"trait": {}, "skill": {}}
+        )
+        self.queen_influence = (
+            queen_influence if queen_influence else {"trait": {}, "skill": {}}
         )
         self.app_ceremony = app_ceremony if app_ceremony else {}
         self.lead_ceremony = lead_ceremony if lead_ceremony else None
@@ -165,6 +169,7 @@ class History:
             "prev_pers": self.prev_pers,
             "beginning": self.beginning,
             "mentor_influence": self.mentor_influence,
+            "queen_influence": self.queen_influence,
             "app_ceremony": self.app_ceremony,
             "lead_ceremony": self.lead_ceremony,
             "afterlife_acceptance": self.afterlife_acceptance,
@@ -327,6 +332,142 @@ class History:
                 except KeyError:
                     print("issue", _path)
 
+    def add_queen_facet_influence_strings(self):
+        """
+        adds queen influence to the cat's history save
+        """
+
+        if not self.queen_influence["trait"]:
+            return
+
+        if (
+            "Benevolent" or "Abrasive" or "Reserved" or "Outgoing"
+        ) in self.queen_influence["trait"]:
+            self.queen_influence["trait"] = None
+            return
+
+        # working under the impression that these blurbs will be preceded by "more likely to"
+        facet_influence_text = {
+            "lawfulness_raise": [
+                "follow rules",
+                "follow the status quo",
+                "heed {PRONOUN/m_c/poss} inner compass",
+                "have strong inner morals",
+            ],
+            "lawfulness_lower": [
+                "bend the rules",
+                "break away from the status quo",
+                "break rules that don't suit {PRONOUN/m_c/object}",
+                "make {PRONOUN/m_c/poss} own rules",
+            ],
+            "sociability_raise": [
+                "be friendly towards others",
+                "step out of {PRONOUN/m_c/poss} comfort zone",
+                "interact with others",
+                "put others at ease",
+            ],
+            "sociability_lower": [
+                "be cold towards others",
+                "refrain from socializing",
+                "bicker with others",
+            ],
+            "aggression_raise": [
+                "be ready for a fight",
+                "start a fight",
+                "defend {PRONOUN/m_c/poss} beliefs",
+                "use teeth and claws over words",
+                "resort to violence",
+            ],
+            "aggression_lower": [
+                "be slow to anger",
+                "avoid a fight",
+                "use words over teeth and claws",
+                "try to avoid violence",
+            ],
+            "stability_raise": [
+                "stay collected",
+                "think things through",
+                "be resilient",
+                "have a positive outlook",
+                "be consistent",
+                "adapt easily",
+            ],
+            "stability_lower": [
+                "behave erratically",
+                "make impulsive decisions",
+                "have trouble adapting",
+                "dwell on things",
+            ],
+        }
+
+        for _ment in self.queen_influence["trait"]:
+            self.queen_influence["trait"][_ment]["strings"] = []
+            for _fac in self.queen_influence["trait"][_ment]:
+                # Check to make sure nothing weird got in there.
+                if _fac in self.cat.personality.facet_types:
+                    if self.queen_influence["trait"][_ment][_fac] > 0:
+                        self.queen_influence["trait"][_ment]["strings"].append(
+                            random.choice(
+                                facet_influence_text[_fac + "_raise"])
+                        )
+                    elif self.queen_influence["trait"][_ment][_fac] < 0:
+                        self.queen_influence["trait"][_ment]["strings"].append(
+                            random.choice(
+                                facet_influence_text[_fac + "_lower"])
+                        )
+
+    def add_queen_skill_influence_strings(self):
+        """
+        adds queen influence to the cat's history save
+        """
+
+        if not self.queen_influence["skill"]:
+            return
+
+        # working under the impression that these blurbs will be preceded by "become better at"
+        skill_influence_text = {
+            SkillPath.TEACHER: ["teaching"],
+            SkillPath.HUNTER: ["hunting"],
+            SkillPath.FIGHTER: ["fighting"],
+            SkillPath.RUNNER: ["running"],
+            SkillPath.CLIMBER: ["climbing"],
+            SkillPath.SWIMMER: ["swimming"],
+            SkillPath.DIGGER: ["tunneling", "digging"],
+            SkillPath.STEALTH: ["stealth", "deception"],
+            SkillPath.SPEAKER: ["arguing"],
+            SkillPath.MEDIATOR: ["resolving arguments"],
+            SkillPath.CLEVER: ["solving problems"],
+            SkillPath.INSIGHTFUL: ["providing insight"],
+            SkillPath.SENSE: ["noticing small details"],
+            SkillPath.KIT: ["caring for kittens"],
+            SkillPath.STORY: ["storytelling"],
+            SkillPath.LORE: ["remembering lore"],
+            SkillPath.CAMP: ["caring for camp"],
+            SkillPath.HEALER: ["healing"],
+            SkillPath.STAR: ["connecting to StarClan"],
+            SkillPath.OMEN: ["finding omens"],
+            SkillPath.DREAM: ["understanding dreams"],
+            SkillPath.CLAIRVOYANT: ["predicting the future"],
+            SkillPath.PROPHET: ["understanding prophecies"],
+            SkillPath.GHOST: ["connecting to the afterlife"],
+        }
+
+        for _ment in self.queen_influence["skill"]:
+            self.queen_influence["skill"][_ment]["strings"] = []
+            for _path in self.queen_influence["skill"][_ment]:
+                # Check to make sure nothing weird got in there.
+                if _path == "strings":
+                    continue
+
+                try:
+                    if self.queen_influence["skill"][_ment][_path] > 0:
+                        self.queen_influence["skill"][_ment]["strings"].append(
+                            random.choice(
+                                skill_influence_text[SkillPath[_path]])
+                        )
+                except KeyError:
+                    print("issue", _path)
+
     def add_facet_mentor_influence(self, mentor_id, facet, amount):
         """Adds the history information for a single mentor facet change, that occurs after a patrol."""
 
@@ -347,6 +488,27 @@ class History:
         if path.name not in self.mentor_influence["skill"][mentor_id]:
             self.mentor_influence["skill"][mentor_id][path.name] = 0
         self.mentor_influence["skill"][mentor_id][path.name] += amount
+
+    def add_facet_queen_influence(self, queen_id, facet, amount):
+        """Adds the history information for a single queen facet change, that occurs upon apprenticeship."""
+
+        if queen_id not in self.queen_influence["trait"]:
+            self.queen_influence["trait"][queen_id] = {}
+        if facet not in self.queen_influence["trait"][queen_id]:
+            self.queen_influence["trait"][queen_id][facet] = 0
+        self.queen_influence["trait"][queen_id][facet] += amount
+
+    def add_skill_queen_influence(self, queen_id, path, amount):
+        """Adds queen influence on skills."""
+
+        if not isinstance(path, SkillPath):
+            path = SkillPath[path]
+
+        if queen_id not in self.queen_influence["skill"]:
+            self.queen_influence["skill"][queen_id] = {}
+        if path.name not in self.queen_influence["skill"][queen_id]:
+            self.queen_influence["skill"][queen_id][path.name] = 0
+        self.queen_influence["skill"][queen_id][path.name] += amount
 
     def add_app_ceremony(self, honor):
         """

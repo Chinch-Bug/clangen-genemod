@@ -9,6 +9,8 @@
       },
       "training_mentor_trait_influence": "%{mentor} influenced {PRONOUN/m_c/object} to be more likely to %{influence}.",
       "training_mentor_skill_influence": "%{mentor} helped {PRONOUN/m_c/object} become better at %{influence}.",
+      "queen_trait_influence": "%{queen} influenced {PRONOUN/m_c/object} to be more likely to %{influence}.",
+      "queen_skill_influence": "%{queen} helped {PRONOUN/m_c/object} become better at %{influence}.",
       "graduation_honor": "When {PRONOUN/m_c/subject} graduated, {PRONOUN/m_c/subject} {VERB/m_c/were/was} honored for {PRONOUN/m_c/poss} %{honor}.",
       "graduation_early": "{PRONOUN/m_c/poss/CAP} training went so well that {PRONOUN/m_c/subject} graduated early at %{age} moons old.",
       "graduation_normal": "{PRONOUN/m_c/subject/CAP} graduated at %{age} moons old.",

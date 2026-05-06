@@ -309,6 +309,7 @@ class AllegiancesScreen(Screens):
         ]
         living_meds = []
         living_mediators = []
+        living_queens = []
         living_warriors = []
         living_apprentices = []
         living_kits = []
@@ -320,6 +321,8 @@ class AllegiancesScreen(Screens):
                 living_warriors.append(cat)
             elif cat.status.rank == CatRank.MEDIATOR:
                 living_mediators.append(cat)
+            elif cat.status.rank == CatRank.QUEEN:
+                living_queens.append(cat)
             elif cat.status.rank.is_any_apprentice_rank():
                 living_apprentices.append(cat)
             elif cat.status.rank.is_baby():
@@ -355,6 +358,8 @@ class AllegiancesScreen(Screens):
                 continue
             if queen in living_warriors:
                 living_warriors.remove(queen)
+            elif queen in living_queens:
+                living_queens.remove(queen)
             elif queen in living_elders:
                 living_elders.remove(queen)
 
@@ -447,6 +452,14 @@ class AllegiancesScreen(Screens):
         if queen_dict or living_kits:
             # This one is a bit different.  First all the queens, and the kits they are caring for. 
             all_entries = []
+            # permaqueens first
+            for q in living_queens:
+                all_entries.append([str(q.name).upper(), q.ID, event_text_adjust(
+                    Cat,
+                    f"{str(q.name).upper()} - {q.describe_cat(short=True)}",
+                    main_cat=q,
+                )])
+        
             for q in queen_dict:
                 queen = Cat.fetch_cat(q)
                 if not queen:

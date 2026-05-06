@@ -259,7 +259,7 @@ class Personality:
         self.aggression += randint(-facet_max, facet_max)
         self.sociability += randint(-facet_max, facet_max)
 
-    def mentor_influence(self, mentor_personality: Personality):
+    def mentor_influence(self, mentor_personality: Personality, negative=False):
         """applies mentor influence after the pair go on a patrol together
         returns history information in the form (facet_affected, amount_affected)
         """
@@ -284,6 +284,8 @@ class Personality:
                 / abs(possible_facets[facet_affected])
                 * randint(1, 2)
             )
+            if negative:
+                amount_affected *= -1
             self[facet_affected] += amount_affected
             return facet_affected, amount_affected
         else:

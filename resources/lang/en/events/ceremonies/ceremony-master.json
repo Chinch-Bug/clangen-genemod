@@ -1347,6 +1347,206 @@
     ],
     "(old_name) always dreamed of becoming a mediator: Now that {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} m_c, an apprentice being mentored by (mentor), it feels like a wish come true."
   ],
+  "queen_app_0": [
+    [
+      "queen apprentice",
+      "general_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "m_c decides to serve {PRONOUN/m_c/poss} Clan as a queen. {PRONOUN/m_c/subject/CAP} {VERB/m_c/are/is} delighted to begin training. "
+  ],
+  "queen_app_1": [
+    [
+      "queen apprentice",
+      "yes_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "m_c feels sick at the mere thought of fighting. {PRONOUN/m_c/subject/CAP} {VERB/m_c/decide/decides} to train as a queen. (mentor) is named as {PRONOUN/m_c/poss} mentor. "
+  ],
+  "queen_app_2": [
+    [
+      "queen apprentice",
+      "yes_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "m_c is fascinated by (mentor)'s ability to handle rowdy kits with ease. (mentor) takes {PRONOUN/m_c/object} under {PRONOUN/(mentor)/poss} wing — {PRONOUN/m_c/subject/CAP} {VERB/m_c/are/is} clearly eager to learn."
+  ],
+  "queen_app_3": [
+    [
+      "queen apprentice",
+      "no_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "m_c proposes the Clan is in need of a permanent queen within the nursery. {PRONOUN/m_c/subject/CAP} {VERB/m_c/decide/decides} to step up to the task."
+  ],
+  "queen_app_4": [
+    [
+      "queen apprentice",
+      "yes_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "thoughtful",
+      "compassionate"
+    ],
+    "Impressed by {PRONOUN/m_c/poss} eagerness, (mentor) chooses m_c as the Clan's new queen apprentice."
+  ],
+  "queen_app_5": [
+    [
+      "queen apprentice",
+      "yes_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "thoughtful",
+      "compassionate"
+    ],
+    "m_c has taken to following (mentor) around during {PRONOUN/(mentor)/poss} daily duties, fascinated by the life of a permanent queen. (mentor) is happy to train {PRONOUN/m_c/object}."
+  ],
+  "queen_app_6": [
+    [
+      "queen apprentice",
+      "yes_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "m_c has always been interested in helping {PRONOUN/m_c/poss} Clan but was never that interested in life beyond the camp: {PRONOUN/m_c/subject} found {PRONOUN/m_c/poss} calling as a queen apprentice under (mentor), where m_c can aid within the nursery."
+  ],
+  "queen_app_7": [
+    [
+      "queen apprentice",
+      "yes_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "Despite the odd choice, m_c is firm that {PRONOUN/m_c/subject}'ll be (mentor)'s apprentice: {PRONOUN/m_c/subject} {VERB/m_c/want/wants} to help the Clan by tending to their youngest."
+  ],
+  "queen_app_8": [
+    [
+      "queen apprentice",
+      "yes_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "Being a queen apprentice was all that m_c could be good at: with (mentor)'s guidance, m_c hopes {PRONOUN/m_c/subject} can change the Clan."
+  ],
+  "queen_app_9": [
+    [
+      "queen apprentice",
+      "yes_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "m_c had been waiting for this moment: {PRONOUN/m_c/subject}'ll finally be a queen apprentice and be guided by (mentor) on to teach and care for the Clan's future — {PRONOUN/m_c/poss} one goal in life."
+  ],
+  "queen_app_10": [
+    [
+      "queen apprentice",
+      "yes_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "m_c always wanted to help {PRONOUN/m_c/poss} Clanmates, but didn't find much interest in work beyond camp: {PRONOUN/m_c/subject} {VERB/m_c/chose/chooses} to become a queen apprentice, hoping that (mentor) can teach {PRONOUN/m_c/object} how to care for the Clan's kits."
+  ],
+  "queen_app_11": [
+    [
+      "queen apprentice",
+      "yes_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "(old_name) can't contain the energy flowing through {PRONOUN/m_c/object}: {PRONOUN/m_c/subject} {VERB/m_c/are/is} officially going to begin training to be a permanent queen! {PRONOUN/m_c/subject/CAP} {VERB/m_c/earn/earns} {PRONOUN/m_c/poss} apprentice name, m_c, and will be guided by (mentor) on {PRONOUN/m_c/poss} journey."
+  ],
+  "queen_app_12": [
+    [
+      "queen apprentice",
+      "yes_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "(old_name) stands alert when called: {PRONOUN/m_c/subject} {VERB/m_c/know/knows} what {PRONOUN/m_c/subject} {VERB/m_c/want/wants} in life — to be a queen. {PRONOUN/m_c/subject/CAP} {VERB/m_c/are/is} named m_c and given to (mentor) to start {PRONOUN/m_c/poss} training."
+  ],
+  "queen_app_13": [
+    [
+      "queen apprentice",
+      "yes_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "Knowing that the Clan needed someone to help care for the kits, (old_name) decided to become a queen apprentice. {PRONOUN/m_c/subject/CAP} {VERB/m_c/earn/earns} {PRONOUN/m_c/poss} apprentice name, m_c, and is given (mentor) to mentor {PRONOUN/m_c/object}."
+  ],
+  "queen_app_14": [
+    [
+      "queen apprentice",
+      "yes_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "(old_name) had taken to following (mentor) around while {PRONOUN/(mentor)/subject} did {PRONOUN/(mentor)/poss} tasks, asking questions and listening. It wasn't a surprise {PRONOUN/m_c/subject} chose to become a queen apprentice under (mentor) after earning {PRONOUN/m_c/poss} apprentice name: m_c."
+  ],
+  "queen_app_15": [
+    [
+      "queen apprentice",
+      "yes_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "(old_name) always dreamed of becoming a queen: Now that {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} m_c, an apprentice being mentored by (mentor), it feels like a wish come true."
+  ],
+  "queen_app_16": [
+    [
+      "queen apprentice",
+      "yes_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "childish"
+    ],
+    "(old_name) didn't want to leave the nursery, even knowing it was time to become an apprentice. {PRONOUN/m_c/subject/CAP} compromise, begging (mentor) to train {PRONOUN/m_c/subject} as a queen instead."
+  ],
+  "queen_app_17": [
+    [
+      "queen apprentice",
+      "yes_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "Even at {PRONOUN/m_c/poss} age, (old_name) couldn't imagine life as a warrior, healer, or mediator, being more fun than the games played with the younger kits. (mentor) cautioned that being a queen was not all fun and games, but m_c is welcomed under (PRONOUN/(mentor)/poss) wing anyway."
+  ],
   "med_0": [
     [
       "healer",
@@ -3240,6 +3440,89 @@
       "all_traits"
     ],
     "(previous_mentor) tells l_n that (old_name) has completed {PRONOUN/m_c/poss} mediator training. l_n gives {PRONOUN/m_c/object} the name m_c after {PRONOUN/m_c/poss} r_h, welcoming {PRONOUN/m_c/object} as the Clan's new mediator."
+  ],
+  "queen_0": [
+    [
+      "queen",
+      "prepared",
+      "general_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "(old_name) has proven {PRONOUN/m_c/self} skilled at handling the Clan's kits. {PRONOUN/m_c/subject/CAP} {VERB/m_c/are/is} given the name m_c, and the Clan honors {PRONOUN/m_c/poss} new queen."
+  ],
+  "queen_0_a": [
+    [
+      "queen",
+      "unprepared",
+      "general_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "Although (old_name) is still not ready to become a full queen, {PRONOUN/m_c/subject} {VERB/m_c/are/is} too old to remain in the apprentices' den. A meeting is called, and {PRONOUN/m_c/subject} {VERB/m_c/are/is} given the name m_c. The mood is tense and pitying."
+  ],
+  "queen_0_b": [
+    [
+      "queen",
+      "early",
+      "general_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "(old_name) has taken to {PRONOUN/m_c/poss} queen training like a fish to water. Although young, {PRONOUN/m_c/subject} {VERB/m_c/are/is} ready to take on the duties of a full queen. {PRONOUN/m_c/subject/CAP} {VERB/m_c/are/is} given the name m_c, and the Clan celebrates."
+  ],
+  "queen_1": [
+    [
+      "queen",
+      "prepared",
+      "general_mentor",
+      "general_parents",
+      "general_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "m_c is welcomed as a fully trained queen of the Clan."
+  ],
+  "queen_2": [
+    [
+      "queen",
+      "prepared",
+      "general_mentor",
+      "general_parents",
+      "yes_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "Although some Clan members have doubts of (old_name)'s abilities, l_n gives {PRONOUN/m_c/object} the name m_c and welcomes {PRONOUN/m_c/object} as the Clan's new queen."
+  ],
+  "queen_3": [
+    [
+      "queen",
+      "prepared",
+      "general_mentor",
+      "general_parents",
+      "yes_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "As (old_name) has finished {PRONOUN/m_c/poss} queen training, l_n gives {PRONOUN/m_c/object} the name m_c after {PRONOUN/m_c/poss} r_h, welcoming {PRONOUN/m_c/object} as the Clan's new queen."
+  ],
+  "queen_4": [
+    [
+      "queen",
+      "alive_mentor",
+      "general_parents",
+      "yes_leader",
+      "general_backstory",
+      "all_traits"
+    ],
+    "(previous_mentor) tells l_n that (old_name) has completed {PRONOUN/m_c/poss} queen training. l_n gives {PRONOUN/m_c/object} the name m_c after {PRONOUN/m_c/poss} r_h, welcoming {PRONOUN/m_c/object} as the Clan's new queen."
   ],
   "elder_0": [
     [

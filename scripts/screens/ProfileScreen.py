@@ -1619,7 +1619,69 @@ class ProfileScreen(Screens):
         if self.the_cat.status.rank.is_baby():
             influence_history = i18n.t("cat.history.training_kit")
         elif self.the_cat.status.rank.is_any_apprentice_rank():
-            influence_history = i18n.t("cat.history.training_app")
+            queen_influence = self.the_cat.history.queen_influence
+
+            # Second, do the facet/personality effect
+            trait_influence = []
+            if "trait" in queen_influence and isinstance(
+                queen_influence["trait"], dict
+            ):
+                for _queen in queen_influence["trait"]:
+                    # If the strings are not set (empty list), continue.
+                    if not queen_influence["trait"][_queen].get("strings"):
+                        continue
+
+                    queen_obj = Cat.fetch_cat(_queen)
+                    # Continue of the queen is invalid too.
+                    if not isinstance(queen_obj, Cat):
+                        continue
+
+                    string_snippet = adjust_list_text(
+                        queen_influence["trait"][_queen].get("strings")
+                    )
+
+                    trait_influence.append(
+                        event_text_adjust(Cat, i18n.t(
+                            "cat.history.queen_trait_influence",
+                            queen=queen_obj.name,
+                            influence=string_snippet,
+                        ), main_cat=self.the_cat, random_cat=queen_obj)
+                    )
+
+            influence_history += " ".join(trait_influence) + " "
+
+            skill_influence = []
+            if "skill" in queen_influence and isinstance(
+                queen_influence["skill"], dict
+            ):
+                for _queen in queen_influence["skill"]:
+                    # If the strings are not set (empty list), continue.
+                    if not queen_influence["skill"][_queen].get("strings"):
+                        continue
+
+                    queen_obj = Cat.fetch_cat(_queen)
+                    # Continue of the queen is invalid too.
+                    if not isinstance(queen_obj, Cat):
+                        continue
+
+                    string_snippet = adjust_list_text(
+                        queen_influence["skill"][_queen].get("strings")
+                    )
+
+                    skill_influence.append(
+                        event_text_adjust(Cat, i18n.t(
+                            "cat.history.queen_skill_influence",
+                            queen=queen_obj.name,
+                            influence=string_snippet,
+                        ), main_cat=self.the_cat, random_cat=queen_obj)
+                    )
+
+            if skill_influence and trait_influence:
+                influence_history += " "
+            influence_history += " ".join(skill_influence)
+            if influence_history.strip():
+                influence_history += "\n\n"
+            influence_history += i18n.t("cat.history.training_app")
         else:
             valid_former_mentors = [
                 str(Cat.fetch_cat(i).name)

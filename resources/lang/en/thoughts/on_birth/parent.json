@@ -29,13 +29,21 @@
             "Has never been so exhausted in all {PRONOUN/m_c/poss} life"
         ]
     },
-        {
+    {
         "id": "gen_new_parent_to_friend",
         "thoughts": [
             "Asks r_c to watch over the kits"
         ],
             "random_age_constraint": ["young adult", "adult", "senior adult", "senior"],
             "relationship_constraint": ["trusts"]
+    },
+    {
+        "id": "gen_new_parent_to_queen",
+        "thoughts": [
+            "Asks r_c to watch over the kits",
+            "Asks r_c for advice"
+        ],
+        "random_status_constraint": [ "queen" ]
     },
     {
         "id": "gen_parent_to_newborn",
