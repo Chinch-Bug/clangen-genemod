@@ -1545,7 +1545,7 @@
       "general_backstory",
       "all_traits"
     ],
-    "Even at {PRONOUN/m_c/poss} age, (old_name) couldn't imagine life as a warrior, healer, or mediator, being more fun than the games played with the younger kits. (mentor) cautioned that being a queen was not all fun and games, but m_c is welcomed under (PRONOUN/(mentor)/poss) wing anyway."
+    "Even at {PRONOUN/m_c/poss} age, (old_name) couldn't imagine life as a warrior, healer, or mediator, being more fun than the games played with the younger kits. (mentor) cautioned that being a queen was not all fun and games, but m_c is welcomed under {PRONOUN/(mentor)/poss} wing anyway."
   ],
   "med_0": [
     [
