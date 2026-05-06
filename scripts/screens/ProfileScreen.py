@@ -1679,7 +1679,8 @@ class ProfileScreen(Screens):
             if skill_influence and trait_influence:
                 influence_history += " "
             influence_history += " ".join(skill_influence)
-            if influence_history.strip():
+            influence_history = influence_history.strip()
+            if influence_history:
                 influence_history += "\n\n"
             influence_history += i18n.t("cat.history.training_app")
         else:

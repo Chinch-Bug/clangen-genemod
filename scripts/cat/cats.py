@@ -1280,7 +1280,7 @@ class Cat:
         if switch_get_value(Switch.sort_type) == "rank" and resort:
             Cat.sort_cats()
 
-    def rank_change_traits_skill(self, mentor, was_kit=False):
+    def rank_change_traits_skill(self, mentor):
         """Updates trait and skill upon ceremony"""
 
         personality = self.personality.trait
@@ -1315,50 +1315,10 @@ class Cat:
 
             self.history.add_mentor_skill_influence_strings()
             self.history.add_mentor_facet_influence_strings()
-
-        if self.status.rank.is_any_apprentice_rank() and was_kit:
-            # queen influence
-            queens = find_alive_cats_with_rank(Cat, [CatRank.QUEEN, CatRank.QUEEN_APPRENTICE], clan=self.status.group_ID)
-            has_rel = []
-            values = {}
-            for c in queens:
-                if c.ID in self.relationships:
-                    has_rel.append(c)
-                    values[c.ID] = self.relationships[c.ID].respect + self.relationships[c.ID].trust + self.relationships[c.ID].like + self.relationships[c.ID].comfort
-            if not has_rel:
-                return
-
-            negative_influence = False
-            has_rel.sort(reverse=True,
-                key=lambda c: abs(self.relationships[c.ID].respect) + abs(self.relationships[c.ID].trust) + abs(self.relationships[c.ID].like) + abs(self.relationships[c.ID].comfort))
-            if values[has_rel[0].ID] < 0:
-                negative_influence = True
-            
-            max_influence = randint(0, 2)
-            i = 0
-            while max_influence > i:
-                i += 1
-                affect_personality = self.personality.mentor_influence(
-                    has_rel[0].personality, negative=negative_influence
-                )
-                if not negative_influence:
-                    affect_skills = self.skills.mentor_influence(has_rel[0])
-                if affect_personality:
-                    self.history.add_facet_queen_influence(
-                        has_rel[0].ID,
-                        affect_personality[0],
-                        affect_personality[1],
-                    )
-                    if self.personality.trait != personality:
-                        self.history.prev_pers.append(personality)
-                if affect_skills:
-                    self.history.add_skill_queen_influence(
-                        affect_skills[0], affect_skills[1], affect_skills[2]
-                    )
-
+        
+        if self.status.rank.is_any_apprentice_rank():
             self.history.add_queen_skill_influence_strings()
             self.history.add_queen_facet_influence_strings()
-        return
 
     def change_name(self, new_prefix=None, new_suffix=None):
         self.name = Name(

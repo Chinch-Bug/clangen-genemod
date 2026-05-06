@@ -47,6 +47,7 @@
       },
       "event_mediator_app": "m_c has chosen to use {PRONOUN/m_c/poss} skills and experience to help solve the Clan's disagreements. A meeting is called, and {PRONOUN/m_c/subject} {VERB/m_c/become/becomes} the Clan's newest mediator.",
       "event_healer_app": "m_c confessed to feeling a calling towards medicine. After careful consideration, {PRONOUN/m_c/subject} {VERB/m_c/are/is} offered a spot as a healer for the Clan.",
+      "event_queen_app": "m_c has chosen to use {PRONOUN/m_c/poss} skills and experience to help care for the Clan's youngest. A meeting is called, and {PRONOUN/m_c/subject} {VERB/m_c/become/becomes} the Clan's newest queen.",
       "herbs_found": {
         "zero": "med_name could not find any herbs this moon.",
         "many": "med_name gathered %{insert} this moon."

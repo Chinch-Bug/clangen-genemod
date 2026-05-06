@@ -1196,9 +1196,10 @@ def kit_deaths(cats, clan=None):
     fading_kits = []
     fading_kit_names = []
 
-    clan_queens = len(find_alive_cats_with_rank(Cat, [CatRank.QUEEN], working=True, clan=clan.group_ID))*3 + len(find_alive_cats_with_rank(Cat, [CatRank.QUEEN_APPRENTICE], working=True, clan=clan.group_ID))
-    clan_queens = min(clan_queens/len(find_alive_cats_with_rank(Cat, [CatRank.KITTEN], clan=clan.group_ID)), 1)
-    clan_queens *= constants.CONFIG['death_related']['max_queen_influence']
+    if len(find_alive_cats_with_rank(Cat, [CatRank.KITTEN], clan=clan.group_ID)):
+        clan_queens = len(find_alive_cats_with_rank(Cat, [CatRank.QUEEN], working=True, clan=clan.group_ID))*3 + len(find_alive_cats_with_rank(Cat, [CatRank.QUEEN_APPRENTICE], working=True, clan=clan.group_ID))
+        clan_queens = min(clan_queens/len(find_alive_cats_with_rank(Cat, [CatRank.KITTEN], clan=clan.group_ID)), 1)
+        clan_queens *= constants.CONFIG['death_related']['max_queen_influence']
 
     death_chances = constants.CONFIG['death_related']['kit_death_chances']
     
@@ -1239,6 +1240,50 @@ def kit_deaths(cats, clan=None):
     
     return fading_kits
 
+
+
+def queen_influence(cat):
+    """Queens and queen apprentices can influence kits every moon"""
+
+    personality = cat.personality.trait
+    queens = find_alive_cats_with_rank(Cat, [CatRank.QUEEN, CatRank.QUEEN_APPRENTICE], clan=cat.status.group_ID)
+    has_rel = []
+    values = {}
+    for c in queens:
+        if c.ID in cat.relationships:
+            has_rel.append(c)
+            values[c.ID] = cat.relationships[c.ID].respect + cat.relationships[c.ID].trust + cat.relationships[c.ID].like + cat.relationships[c.ID].comfort
+    if not has_rel:
+        return
+
+    negative_influence = False
+    has_rel.sort(reverse=True,
+        key=lambda c: abs(cat.relationships[c.ID].respect) + abs(cat.relationships[c.ID].trust) + abs(cat.relationships[c.ID].like) + abs(cat.relationships[c.ID].comfort))
+    if values[has_rel[0].ID] < 0:
+        negative_influence = True
+    
+    max_influence = random.randint(0, 1)
+    i = 0
+    while max_influence > i:
+        i += 1
+        affect_personality = cat.personality.mentor_influence(
+            has_rel[0].personality, negative=negative_influence
+        )
+        if not negative_influence:
+            affect_skills = cat.skills.mentor_influence(has_rel[0])
+        if affect_personality:
+            cat.history.add_facet_queen_influence(
+                has_rel[0].ID,
+                affect_personality[0],
+                affect_personality[1],
+            )
+            if cat.personality.trait != personality:
+                cat.history.prev_pers.append(personality)
+        if affect_skills:
+            cat.history.add_skill_queen_influence(
+                affect_skills[0], affect_skills[1], affect_skills[2]
+            )
+
 def one_moon_cat(cat, clan):
     """
     Triggers various moon events for a cat.
@@ -1266,6 +1311,9 @@ def one_moon_cat(cat, clan):
         cat.get_new_thought()
         handle_fading(cat, clan)  # Deal with fading.
         return
+
+    if cat.status.rank == CatRank.KITTEN:
+        queen_influence(cat)
 
     cat.status.increase_current_moons_as()
 
@@ -2005,14 +2053,13 @@ def ceremony(cat, promoted_to, preparedness="prepared"):
     # ceremony = []
     clan = cat.status.fetch_clan_object(game.clan)
     was_leader = cat.status.rank == CatRank.LEADER
-    old_rank = cat.status.rank
 
     _ment = (
         Cat.fetch_cat(cat.mentor) if cat.mentor else None
     )  # Grab current mentor, if they have one, before it's removed.
     old_name = str(cat.name)
     cat.rank_change(promoted_to)
-    cat.rank_change_traits_skill(_ment, was_kit=old_rank == CatRank.KITTEN)
+    cat.rank_change_traits_skill(_ment)
 
     involved_cats = [cat.ID]  # Clearly, the cat the ceremony is about is involved.
 

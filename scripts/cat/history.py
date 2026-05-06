@@ -400,18 +400,18 @@ class History:
             ],
         }
 
-        for _ment in self.queen_influence["trait"]:
-            self.queen_influence["trait"][_ment]["strings"] = []
-            for _fac in self.queen_influence["trait"][_ment]:
+        for _queen in self.queen_influence["trait"]:
+            self.queen_influence["trait"][_queen]["strings"] = []
+            for _fac in self.queen_influence["trait"][_queen]:
                 # Check to make sure nothing weird got in there.
                 if _fac in self.cat.personality.facet_types:
-                    if self.queen_influence["trait"][_ment][_fac] > 0:
-                        self.queen_influence["trait"][_ment]["strings"].append(
+                    if self.queen_influence["trait"][_queen][_fac] > 0:
+                        self.queen_influence["trait"][_queen]["strings"].append(
                             random.choice(
                                 facet_influence_text[_fac + "_raise"])
                         )
-                    elif self.queen_influence["trait"][_ment][_fac] < 0:
-                        self.queen_influence["trait"][_ment]["strings"].append(
+                    elif self.queen_influence["trait"][_queen][_fac] < 0:
+                        self.queen_influence["trait"][_queen]["strings"].append(
                             random.choice(
                                 facet_influence_text[_fac + "_lower"])
                         )
@@ -452,16 +452,16 @@ class History:
             SkillPath.GHOST: ["connecting to the afterlife"],
         }
 
-        for _ment in self.queen_influence["skill"]:
-            self.queen_influence["skill"][_ment]["strings"] = []
-            for _path in self.queen_influence["skill"][_ment]:
+        for _queen in self.queen_influence["skill"]:
+            self.queen_influence["skill"][_queen]["strings"] = []
+            for _path in self.queen_influence["skill"][_queen]:
                 # Check to make sure nothing weird got in there.
                 if _path == "strings":
                     continue
 
                 try:
-                    if self.queen_influence["skill"][_ment][_path] > 0:
-                        self.queen_influence["skill"][_ment]["strings"].append(
+                    if self.queen_influence["skill"][_queen][_path] > 0:
+                        self.queen_influence["skill"][_queen]["strings"].append(
                             random.choice(
                                 skill_influence_text[SkillPath[_path]])
                         )
