@@ -1178,6 +1178,8 @@ def generate_sprite(
                 hairless.blit(sprites.sprites['hairless' + cat_sprite], (0, 0))
                 hairless.blit(sprites.sprites['break/nose1' + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
                 hairless.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
+                if get_current_season(season_override) == "Leaf-bare":
+                    hairless.set_alpha(200)
             elif cat.phenotype.laperm[0] == 'Lp' and sprite_age < 4:
                 hairless.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
                 hairless.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))

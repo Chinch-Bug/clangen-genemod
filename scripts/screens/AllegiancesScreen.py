@@ -449,7 +449,7 @@ class AllegiancesScreen(Screens):
                 outputs.append(_box)
         
          # Queens and Kits Box:
-        if queen_dict or living_kits:
+        if living_queens or queen_dict or living_kits:
             # This one is a bit different.  First all the queens, and the kits they are caring for. 
             all_entries = []
             # permaqueens first
