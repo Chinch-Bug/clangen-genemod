@@ -1789,7 +1789,7 @@ def perform_ceremonies(cat, clan):
                         ceremony(cat, CatRank.MEDIATOR_APPRENTICE)
                         ceremony_accessory = True
                         gain_accessories(cat, clan)
-                    if (
+                    elif (
                         queen_list
                         and not has_queen_apprentice
                         and not int(random.random() * q_chance)
