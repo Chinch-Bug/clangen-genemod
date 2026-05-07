@@ -14111,5 +14111,307 @@
             ],
             "changed": -15
         }
+    },
+	{
+        "event_id": "gen_misc_otherclanvoidally1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "tags": [ "not_multiclan" ],
+        "exclude_involved": [
+            "m_c"
+        ],
+        "frequency": 1,
+        "event_text": "Without explanation, o_c_n's leader announces at the gathering that they are no longer allies with c_n, and their Clan leaves before anyone can question them. lead_name takes note of the strange glint in the deputy's eyes...",
+        "m_c": {
+            "age": [
+                "adolescent",
+                "young adult",
+                "adult",
+                "senior adult",
+                "senior"
+            ]
+        },
+        "other_clan": {
+            "current_rep": [
+                "ally"
+            ],
+            "changed": -15
+        }
+    },
+    {
+        "event_id": "gen_misc_otherclanvoidally2",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "tags": [ "not_multiclan" ],
+        "exclude_involved": [
+            "m_c"
+        ],
+        "frequency": 1,
+        "event_text": "Without explanation, o_c_n's leader announces at the gathering that they are no longer allies with c_n, and their Clan leaves before anyone can question them. lead_name takes note of the strange glint in the healer's eyes...",
+        "m_c": {
+            "age": [
+                "adolescent",
+                "young adult",
+                "adult",
+                "senior adult",
+                "senior"
+            ]
+        },
+        "other_clan": {
+            "current_rep": [
+                "ally"
+            ],
+            "changed": -15
+        }
+    },
+    {
+        "event_id": "gen_misc_otherclanvoidally3",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "tags": [ "not_multiclan" ],
+        "exclude_involved": [
+            "m_c"
+        ],
+        "frequency": 1,
+        "event_text": "Without explanation, o_c_n's leader announces at the gathering that they are no longer allies with c_n, and their Clan leaves before anyone can question them. lead_name notices a strange cat is with o_c_n's leader.",
+        "m_c": {
+            "age": [
+                "adolescent",
+                "young adult",
+                "adult",
+                "senior adult",
+                "senior"
+            ]
+        },
+        "other_clan": {
+            "current_rep": [
+                "ally"
+            ],
+            "changed": -15
+        }
+    },
+	{
+        "event_id": "gen_misc_otherclanvoidally4",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "tags": [ "not_multiclan" ],
+        "exclude_involved": [
+            "m_c"
+        ],
+        "frequency": 1,
+        "event_text": "Without explanation, o_c_n's leader announces at the gathering that they are no longer allies with c_n, and their Clan leaves before anyone can question them.",
+        "m_c": {
+            "age": [
+                "adolescent",
+                "young adult",
+                "adult",
+                "senior adult",
+                "senior"
+            ]
+        },
+        "other_clan": {
+            "current_rep": [
+                "ally"
+            ],
+            "changed": -15
+        }
+    },
+	{
+        "event_id": "gen_misc_otherclanvoidally5",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "tags": [ "not_multiclan" ],
+        "exclude_involved": [],
+        "frequency": 1,
+        "event_text": "During the half moon meeting, o_c_n's healer tells m_c that their leader has been acting strange lately. When m_c returns, lead_name explains that they are no longer allies with o_c_n, per the leaders wishes.",
+        "m_c": {
+            "status": [
+                "healer",
+                "healer apprentice"
+            ]
+        },
+        "other_clan": {
+            "current_rep": [
+                "ally"
+            ],
+            "changed": -15
+        }
+    },
+	{
+        "event_id": "gen_misc_otherclanvoidally6",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "tags": [ "not_multiclan" ],
+        "exclude_involved": [ "m_c" ],
+        "frequency": 1,
+        "event_text": "At the gathering, o_c_n's leader announces that they no longer wish to be allies with c_n. They refuse to explain why.",
+        "m_c": {
+            "status": [
+                "healer",
+                "healer apprentice"
+            ]
+        },
+        "other_clan": {
+            "current_rep": [
+                "ally"
+            ],
+            "changed": -15
+        }
+    },
+	{
+        "event_id": "gen_misc_otherclanallytohostile1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "tags": [ "not_multiclan" ],
+        "exclude_involved": [
+            "m_c"
+        ],
+        "frequency": 1,
+        "event_text": "Out of nowhere, o_c_n's leader accuses c_n of a vile act. lead_name defends {PRONOUN/lead_name/poss} Clan, but it's no use. The other leader voids their allyship with c_n, and threatens battle.",
+        "m_c": {
+            "age": [
+                "adolescent",
+                "young adult",
+                "adult",
+                "senior adult",
+                "senior"
+            ]
+        },
+        "other_clan": {
+            "current_rep": [
+                "ally"
+            ],
+            "changed": -25
+        }
+    },
+	{
+        "event_id": "gen_misc_otherclanallytohostile2",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "tags": [ "not_multiclan" ],
+        "exclude_involved": [],
+        "frequency": 1,
+        "event_text": "The deputy of o_c_n meets with m_c's patrol at the border, letting {PRONOUN/m_c/object} know that they are no longer c_n's ally. In fact, their leader is considering battle.",
+        "m_c": {
+            "status": [
+                "warrior",
+                "deputy",
+                "leader"
+            ]
+        },
+        "other_clan": {
+            "current_rep": [
+                "ally"
+            ],
+            "changed": -25
+        }
+    },
+	{
+        "event_id": "gen_misc_otherclanallytohostile3",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "tags": [ "not_multiclan" ],
+        "exclude_involved": [ "m_c" ],
+        "frequency": 1,
+        "event_text": "An angry looking apprentice barges into camp, yowling that o_c_n is no longer c_n's ally, and that the Clan is lucky their leader hasn't yet attacked c_n for their heinous actions.",
+        "m_c": {
+            "status": [
+                "warrior",
+                "deputy",
+                "leader"
+            ]
+        },
+        "other_clan": {
+            "current_rep": [
+                "ally"
+            ],
+            "changed": -25
+        }
+    },
+	{
+        "event_id": "gen_misc_otherclanallytohostile4",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "tags": [ "not_multiclan" ],
+        "exclude_involved": [],
+        "frequency": 1,
+        "event_text": "The healer from o_c_n visits m_c in secret. They claim that o_c_n's leader no longer wishes to be allies, and there's been talks of battle.",
+        "m_c": {
+            "status": [
+                "healer",
+                "healer apprentice"
+            ]
+        },
+        "other_clan": {
+            "current_rep": [
+                "ally"
+            ],
+            "changed": -25
+        }
+    },
+	{
+        "event_id": "gen_misc_otherclanallytohostile5",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "tags": [ "not_multiclan" ],
+        "exclude_involved": [],
+        "frequency": 1,
+        "event_text": "During the half moon meeting, o_c_n's healer asks m_c if c_n actually did what their Clan was claiming. m_c denies any wrongdoings, but it doesn't matter, o_c_n is no longer c_n's ally. The Clan worries about potential war.",
+        "m_c": {
+            "status": [
+                "healer",
+                "healer apprentice"
+            ]
+        },
+        "other_clan": {
+            "current_rep": [
+                "ally"
+            ],
+            "changed": -25
+        }
     }
 ]
