@@ -556,8 +556,8 @@ class PatrolOutcome:
                             Cat, i18n.t("cat.history.n_leader_death_all"), main_cat=_cat, clan=patrol.clan
                         )
                     )
-                elif "some_lives" in used_extra_tags:
-                    lives_lost = random.randint(2, max(1, patrol.clan.leader_lives - 1))
+                elif "some_lives" in used_extra_tags and patrol.clan.leader_lives > 1:
+                    lives_lost = random.randint(2, max(2, patrol.clan.leader_lives - 1))
                     patrol.clan.leader_lives -= lives_lost
                     for i in range(lives_lost - 1):
                         _cat.history.add_death("multi_lives")
