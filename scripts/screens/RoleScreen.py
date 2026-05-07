@@ -447,7 +447,7 @@ class RoleScreen(Screens):
             self.switch_warrior.enable()
             self.switch_med_cat.enable()
             self.switch_mediator.disable()
-            self.switch_queen.disable()
+            self.switch_queen.enable()
             self.retire.enable()
 
             # In-TRAINING ROLES:

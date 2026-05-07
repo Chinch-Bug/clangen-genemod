@@ -1201,6 +1201,7 @@ class Cat:
                 and child.status.is_outsider
                 and not child.status.is_exiled(clan)
                 and child.moons < 12
+                and not child.status.alive_in_player_clan
             ):
                 if add_kits:
                     # child.status.add_to_group(new_group=clan, age=child.age)

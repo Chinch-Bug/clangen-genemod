@@ -69,7 +69,10 @@
     ],
     "birth": {
       "otherclan_mother": [
-        "Many cats have been questioning where m_c's litter could have gone despite {PRONOUN/m_c/object} insisting {PRONOUN/m_c/subject} {VERB/m_c/were/was} never pregnant."
+        "Many cats have been questioning where m_c's litter could have gone despite {PRONOUN/m_c/object} insisting {PRONOUN/m_c/subject} {VERB/m_c/were/was} never pregnant.",
+        "m_c returns to camp, explaining how {PRONOUN/m_c/subject} gave birth by surprise and the single kit was snatched away by a predator. The Clan doesn't think to question the story.",
+        "m_c explains to the Clan how {PRONOUN/m_c/subject} gave birth by surprise and the single kit didn't make it. The Clan don't think to question the tale.",
+        "m_c continues to deny the weight gain had been pregnancy, even after {PRONOUN/m_c/subject} suddenly lost most of it."
       ],
       "hidden_pregnancy": [
         "While on a walk in the territory, m_c unexpectedly had a {insert}.",
