@@ -220,6 +220,7 @@ def create_new_cat_block(
 
     # RANK - must be handled before backstories
     rank = None
+    age = None
     for _tag in attribute_list:
         match = re.match(r"status:\s?(.+)", _tag)
         if not match:
@@ -250,7 +251,6 @@ def create_new_cat_block(
             break
 
     # SET AGE
-    age = None
     for _tag in attribute_list:
         match = re.match(r"age:\s?(.+)", _tag)
         if not match:

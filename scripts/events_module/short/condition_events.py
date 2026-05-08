@@ -364,8 +364,7 @@ class Condition_Events:
                 chosen_illness = possible_illnesses[int(random.random() * len(possible_illnesses))]
                 random.shuffle(relevant_conditions)
                 if chosen_key in Condition_Events.PERM_CONDITION_RISK_STRINGS and chosen_illness in Condition_Events.PERM_CONDITION_RISK_STRINGS[chosen_key]:
-                    event_string = random.choice(
-                        Condition_Events.PERM_CONDITION_RISK_STRINGS[chosen_key][chosen_illness])
+                    event_string = Condition_Events.get_valid_string_from_list(Condition_Events.PERM_CONDITION_RISK_STRINGS[chosen_key][chosen_illness], cat, clan)
                 if not event_string:
                     print(f"{chosen_illness} not in {chosen_key} risk dict")
                     # try to translate the illness
@@ -389,13 +388,6 @@ class Condition_Events:
                         cat.get_injured(chosen_illness)
                     else:
                         cat.get_ill(chosen_illness)
-
-                    event_string = event_text_adjust(
-                        Cat,
-                        text=event_string,
-                        main_cat=cat,
-                        clan=clan
-                    )
 
         # if an event happened, then add event to cur_event_list and save death if it happened.
         if event_string:
