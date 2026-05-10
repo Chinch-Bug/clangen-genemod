@@ -449,7 +449,7 @@ class ClanScreen(Screens):
                 ] = self.choose_nonoverlapping_positions(
                     first_choices, all_dens, [1, 1, 2000, 1, 1, 1, 1]
                 )
-            elif Cat.all_cats[x].status.rank == CatRank.KITTEN:
+            elif Cat.all_cats[x].status.rank in [CatRank.KITTEN, CatRank.QUEEN, CatRank.QUEEN_APPRENTICE]:
                 [
                     Cat.all_cats[x].placement,
                     base_pos,
