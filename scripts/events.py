@@ -1854,6 +1854,11 @@ def perform_ceremonies(cat, clan):
                     ceremony_accessory = True
                     gain_accessories(cat, clan)
 
+                elif cat.status.rank == CatRank.QUEEN_APPRENTICE:
+                    ceremony(cat, CatRank.QUEEN, preparedness)
+                    ceremony_accessory = True
+                    gain_accessories(cat, clan)
+
 def _is_suitable_medcat_app(cat, clan) -> bool:
     """
     Determines whether this cat will become a medicine cat
