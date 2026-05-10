@@ -1,1 +1,11 @@
-[]
+[
+    {
+        "id": "becoming_queen_to_kit",
+        "thoughts": [
+            "Heard r_c cheer during {PRONOUN/m_c/poss} ceremony"
+        ],
+        "main_status_constraint": [ "queen" ],
+        "random_status_constraint": [ "kitten" ],
+        "relationship_constraint": ["-littermates"]
+    }
+]

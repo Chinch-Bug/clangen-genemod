@@ -1539,12 +1539,12 @@ class Genotype:
         if self.body_label != '':
             self.VerifyBody(body_types)
         else:
-            index = next((n for n in range(7) if self.body_value <= self.body_indexes[n]))
+            index = next((n for n in range(7) if self.body_value < self.body_indexes[n]))
             self.body_label = body_types[index]
 
         if self.shoulder_height > 0:
             self.VerifyHeight()
-        index = next((n for n in range(10) if self.height_value <= self.height_indexes[n]))
+        index = next((n for n in range(10) if self.height_value < self.height_indexes[n]))
         self.height_label = height_types[index]
 
         if self.shoulder_height > 0:

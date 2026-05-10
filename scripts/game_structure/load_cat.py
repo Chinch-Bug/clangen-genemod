@@ -142,7 +142,7 @@ def accurate_porting(cat, info):
         else:
             cat.phenotype.pointgene = ["cs", "cs"]
             if info["points"] == "RAGDOLL":
-                cat.phenotype.white_pattern.insert("TRIXIE")
+                cat.phenotype.white_pattern.insert(0, "TRIXIE")
                 cat.phenotype.white = ["ws", "ws"]
                 cat.phenotype.whitegrade = 3
         
