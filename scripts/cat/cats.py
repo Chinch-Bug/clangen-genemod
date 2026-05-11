@@ -2656,6 +2656,11 @@ class Cat:
             and potential_mentor.status.rank != CatRank.MEDIATOR
         ):
             return False
+        if (
+            self.status.rank == CatRank.QUEEN_APPRENTICE
+            and potential_mentor.status.rank != CatRank.QUEEN
+        ):
+            return False
 
         return True
 

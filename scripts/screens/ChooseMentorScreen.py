@@ -650,6 +650,12 @@ class ChooseMentorScreen(Screens):
             if cat.status.group_ID == self.the_cat.status.group_ID and cat.status.rank == CatRank.MEDIATOR
         ]
         valid_mediator_mentors = []
+        potential_queen_mentors = [
+            cat
+            for cat in Cat.all_cats_list
+            if cat.status.group_ID == self.the_cat.status.group_ID and cat.status.rank == CatRank.QUEEN
+        ]
+        valid_queen_mentors = []
 
         if self.the_cat.status.rank == CatRank.APPRENTICE:
             for cat in potential_warrior_mentors:
@@ -709,6 +715,25 @@ class ChooseMentorScreen(Screens):
                     valid_mediator_mentors.append(cat)
 
             return potential_mediator_mentors
+
+        elif self.the_cat.status.rank == CatRank.QUEEN_APPRENTICE:
+            for cat in potential_queen_mentors:
+                # Assume cat is valid initially
+                is_valid = True
+
+                # Check for no former apprentices filter
+                if self.show_only_no_former_app_mentors and cat.former_apprentices:
+                    is_valid = False
+
+                # Check for no current apprentices filter
+                if self.show_only_no_current_app_mentors and cat.apprentice:
+                    is_valid = False
+
+                # Add to valid or invalid list based on checks
+                if is_valid:
+                    valid_queen_mentors.append(cat)
+
+            return potential_queen_mentors
         return []
 
     def on_use(self):
