@@ -6137,7 +6137,7 @@
             ],
             "changed": -1,
             "has_rank": [
-                "any_warrior"
+                "warrior"
             ]
         }
     },
@@ -6189,7 +6189,7 @@
             ],
             "changed": -1,
             "has_rank": [
-                "any_warrior"
+                "warrior"
             ]
         }
     },

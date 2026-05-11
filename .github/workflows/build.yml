@@ -55,14 +55,14 @@ jobs:
       run:
         shell: bash -l {0}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Install uv
         uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python_version }}
           architecture: ${{ matrix.python_arch }}
@@ -80,7 +80,7 @@ jobs:
         uses: microsoft/setup-msbuild@v1.1
       - name: Set up cargo cache (Windows)
         if: startsWith(matrix.os, 'windows')
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         continue-on-error: false
         with:
           path: |
@@ -157,6 +157,10 @@ jobs:
         with:
           name: ${{ matrix.artifact_name }}
           path: ${{ matrix.artifact_name }}
+      - uses: softprops/action-gh-release@v3
+        if: github.ref_type == 'tag'
+        with:
+          files: ${{ matrix.artifact_name }}
       # - name: Import GPG key
       #   id: import_gpg
       #   uses: crazy-max/ghaction-import-gpg@v6
