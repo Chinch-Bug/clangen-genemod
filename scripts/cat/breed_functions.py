@@ -3246,7 +3246,7 @@ class Breed_checker:
 
         if phenotype.pointgene[0] != "C" or (phenotype.eumelanin[0] != "B" and 'o' in phenotype.sexgene) or phenotype.silver[0] != "i":
             return False
-        if phenotype.white[0] in ["W", "wg"]:
+        if phenotype.white[0] in ["wg", "wt", "wsal"]:
             return False
         if phenotype.agouti[0] == "A" and (phenotype.ticked[0] != "ta" or phenotype.mack[0] == "mc" or phenotype.wbsum > 11 or\
                                             phenotype.ticksum > 3 or phenotype.bengsum > 3 or phenotype.soksum > 3):
