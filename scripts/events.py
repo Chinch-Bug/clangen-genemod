@@ -89,7 +89,7 @@ def one_moon():
     global new_cat_invited
     game.cur_events_list = []
     game.herb_events_list = []
-    game.freshkill_events_list = []
+    game.freshkill_event_list = []
     game.mediated = []
     switch_set_value(Switch.saved_clan, False)
     new_cat_invited = False
