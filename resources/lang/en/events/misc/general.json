@@ -14138,7 +14138,8 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": 5
+            "changed": 5,
+            "has_rank": ["deputy"]
         }
     },
     {
@@ -14161,7 +14162,8 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": 5
+            "changed": 5,
+            "has_rank": ["mediator"]
         }
     },
     {
@@ -14184,7 +14186,8 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": 10
+            "changed": 10,
+            "has_rank": ["healer"]
         }
     },
     {
@@ -14195,7 +14198,7 @@
         "season": [
             "any"
         ],
-        "tags": [],
+        "tags": [ "not_multiclan" ],
         "exclude_involved": [
             "m_c"
         ],
@@ -14225,7 +14228,7 @@
         "season": [
             "any"
         ],
-        "tags": [],
+        "tags": [ "not_multiclan" ],
         "exclude_involved": [
             "m_c"
         ],
