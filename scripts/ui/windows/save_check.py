@@ -28,9 +28,6 @@ class SaveCheckWindow(GameWindow):
             click_outside_to_close=False
         )
 
-        self.clan_name = "UndefinedClan"
-        if game.clan:
-            self.clan_name = f"{game.clan.name}Clan"
         self.last_screen = last_screen
         self.isMainMenu = is_main_menu
         self.mm_btn = mm_btn

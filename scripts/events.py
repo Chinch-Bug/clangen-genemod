@@ -1585,11 +1585,11 @@ def check_war():
             event = random.choice(war_events)
             if not victor or victor == clan:
                 event = ongoing_event_text_adjust(
-                    Cat, event, other_clan_name=f"{enemy_clan.displayname}Clan", clan=main_clan
+                    Cat, event, other_clan_name=i18n.t("general.clan", name=enemy_clan.displayname), clan=main_clan
                 )
             else:
                 event = ongoing_event_text_adjust(
-                    Cat, event, other_clan_name=f"{main_clan.displayname}Clan", clan=enemy_clan
+                    Cat, event, other_clan_name=i18n.t("general.clan", name=main_clan.displayname), clan=enemy_clan
                 )
             game.cur_events_list.append(Single_Event(event, "other_clans", clan=clan))
             if game.clan.clancount == "multiclan":
@@ -2224,14 +2224,14 @@ def ceremony(cat, promoted_to, preparedness="prepared"):
 
         # Gather for backstories.json ----------------------------------------------------
         tags = []
-        if cat.backstory == ["abandoned1", "abandoned2", "abandoned3"]:
+        if (
+            cat.backstory
+            in BACKSTORIES["backstory_categories"]["abandoned_backstories"]
+        ):
             tags.append("abandoned")
         elif cat.backstory == "clanborn":
             tags.append("clanborn")
-
-        temp = possible_ceremonies.intersection(
-            ceremony_id_by_tag["general_backstory"]
-        )
+        temp = possible_ceremonies.intersection(ceremony_id_by_tag["general_backstory"])
 
         for t in tags:
             temp.update(

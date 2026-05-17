@@ -4,6 +4,7 @@ from typing import Dict, Optional, Union
 import pygame
 import pygame_gui
 import ujson
+import i18n
 
 import scripts.game_structure.screen_settings
 import scripts.screens.screens_core.screens_core
@@ -59,7 +60,7 @@ class Screens:
                     b.enable()
             for b in ["screens.core.warriors_den", "screens.core.leader_den"]:
                 Screens.menu_buttons["dens"].child_button_dicts[b].enable()
-            Screens.menu_buttons["heading"].selected_list = [game.clan.displayname + "Clan"]
+            Screens.menu_buttons["heading"].selected_list = [i18n.t("general.clan", name=game.clan.displayname)]
             if hasattr(Screens.menu_buttons["heading"], "child_buttons"):
                 for b in Screens.menu_buttons["heading"].child_buttons:
                     if b.text in Screens.menu_buttons["heading"].selected_list:
@@ -219,7 +220,9 @@ class Screens:
         Screens.menu_buttons = scripts.screens.screens_core.screens_core.menu_buttons
         Screens.game_frame = scripts.screens.screens_core.screens_core.game_frame
         try:
-            Screens.update_heading_text(game.selected_clan.displayname + "Clan")
+            Screens.update_heading_text(
+                "general.clan", text_kwargs={"name": game.selected_clan.displayname}
+            )
         except AttributeError:
             Screens.update_heading_text("DebugClan")
         if self.active_bg is None or "default" in self.active_bg:

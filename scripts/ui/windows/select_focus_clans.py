@@ -40,8 +40,9 @@ class SelectFocusClansWindow(GameWindow):
         n = 0
         for clan in game.clan.all_other_clans:
             self.texts[clan.displayname] = pygame_gui.elements.UITextBox(
-                clan.displayname + "Clan",
+                "general.clan",
                 ui_scale(pygame.Rect(107, n * 27 + 38, -1, 25)),
+                text_kwargs={"name": clan.displayname},
                 object_id="#text_box_30_horizleft_pad_0_8",
                 container=self,
             )

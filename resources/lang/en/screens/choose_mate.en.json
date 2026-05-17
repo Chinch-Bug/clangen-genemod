@@ -12,6 +12,7 @@
         "no_kits_single": "m_c has no offspring.",
         "no_kit_warning": "This pair can't have biological kittens.",
         "set_mate": "It's Official!",
-        "unset_mate": "Break It Up"
+        "unset_mate": "Break It Up",
+        "show_all": "Show All"
     }
 }

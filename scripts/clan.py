@@ -1466,7 +1466,8 @@ class OtherClan:
                 create_cat(choice(random_rank), biome=self.biome, kittypet = constants.CONFIG["clan_creation"]["use_special_roller"], clan=self.group_ID)
 
     def __repr__(self):
-        return f"{self.displayname}Clan"
+        # has indicators that this is unlocalized, just in case
+        return f"!!{self.name}Clan!!"
     
     def get_save_data(self):
         return {

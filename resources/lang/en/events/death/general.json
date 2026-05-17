@@ -5362,7 +5362,7 @@
             "leaf-fall"
         ],
         "tags": [ ],
-        "frequency": 4,
+        "frequency": 1,
         "event_text": "Lightning struck in camp, killing m_c.",
         "m_c": {
             "age": [

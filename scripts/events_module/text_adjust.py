@@ -330,7 +330,7 @@ def ongoing_event_text_adjust(Cat, text, clan=None, other_clan_name=None):
         else:
             clan_name = str(game.clan.displayname)
 
-    text = text.replace("c_n", clan_name + "Clan")
+    text = text.replace("c_n", i18n.t("general.clan", name=clan_name))
 
     text = text.replace("medicine cat", "healer").replace("medicine den", "healer den")
 
@@ -507,26 +507,13 @@ def event_text_adjust(
 
     # other_clan_name
     if "o_c_n" in text and other_clan:
-        other_clan_name = other_clan.displayname
-        pos = 0
-        for x in range(text.count("o_c_n")):
-            if "o_c_n" in text:
-                for y in vowels:
-                    if str(other_clan_name).startswith(y):
-                        modify = text.split()
-                        if "o_c_n" in modify:
-                            pos = modify.index("o_c_n")
-                        if "o_c_n's" in modify:
-                            pos = modify.index("o_c_n's")
-                        if "o_c_n." in modify:
-                            pos = modify.index("o_c_n.")
-                        if modify[pos - 1] == "a":
-                            modify.remove("a")
-                            modify.insert(pos - 1, "an")
-                        text = " ".join(modify)
-                        break
-
-        text = text.replace("o_c_n", str(other_clan_name) + "Clan")
+        text = _replace_clan_name(
+            text,
+            "o_c_n",
+            other_clan
+            if isinstance(other_clan, str)
+            else i18n.t("general.clan", name=str(other_clan.displayname)),
+        )
 
     # clan_name
     if "c_n" in text:
@@ -539,25 +526,9 @@ def event_text_adjust(
             except IndexError:
                 clan_name = "Test"
 
-        pos = 0
-        for x in range(text.count("c_n")):
-            if "c_n" in text:
-                for y in vowels:
-                    if str(clan_name).startswith(y):
-                        modify = text.split()
-                        if "c_n" in modify:
-                            pos = modify.index("c_n")
-                        if "c_n's" in modify:
-                            pos = modify.index("c_n's")
-                        if "c_n." in modify:
-                            pos = modify.index("c_n.")
-                        if modify[pos - 1] == "a":
-                            modify.remove("a")
-                            modify.insert(pos - 1, "an")
-                        text = " ".join(modify)
-                        break
-
-        text = text.replace("c_n", str(clan_name) + "Clan")
+        text = _replace_clan_name(
+            text, "c_n", i18n.t("general.clan", name=str(clan_name))
+        )
 
     # prey lists
     text = adjust_prey_abbr(text)
@@ -656,7 +627,7 @@ def leader_ceremony_text_adjust(
         text = text.replace("[life_num]", str(extra_lives))
 
     clan = leader.status.fetch_clan_object()
-    text = text.replace("c_n", str(clan.displayname) + "Clan")
+    text = text.replace("c_n", i18n.t("general.clan", name=str(game.clan.displayname)))
 
     if list(set(constants.CONFIG["clan_creation"]["leader_lives_nr"])) != [9]:
         text = text.replace("nine lives", "lives")
@@ -677,7 +648,7 @@ def ceremony_text_adjust(
     dead_parents=(),
     clan=game.clan
 ):
-    clanname = str(clan.displayname + "Clan")
+    clanname = i18n.t("general.clan", name=clan.displayname)
 
     random_honor = random_honor
     random_living_parent = None
@@ -838,7 +809,7 @@ def history_text_adjust(text, other_clan_name, clan, other_cat_rc=None):
         text = text.replace("o_c_n", str(other_clan_name))
 
     if "c_n" in text:
-        text = text.replace("c_n", clan.displayname + "Clan")
+        text = text.replace("c_n", i18n.t("general.clan", name=clan.displayname))
     if "r_c" in text and other_cat_rc:
         text = selective_replace(text, "r_c", str(other_cat_rc.name))
 

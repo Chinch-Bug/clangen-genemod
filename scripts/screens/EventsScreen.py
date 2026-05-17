@@ -334,7 +334,7 @@ class EventsScreen(Screens):
             starting_height=1,
             container=self.event_screen_container,
             manager=MANAGER,
-            text_kwargs={"season": i18n.t(game.clan.current_season)},
+            text_kwargs={"season": i18n.t(f"general.{game.clan.current_season}")},
         )
         self.clan_info["age"] = pygame_gui.elements.UITextBox(
             "screens.events.age",
@@ -385,7 +385,7 @@ class EventsScreen(Screens):
             self.living_groups_container.change_layer(10)
             self.choose_group_buttons[game.clan.group_ID] = UISurfaceImageButton(
                 ui_scale(pygame.Rect((0, 0), (190, 34))),
-                game.clan.displayname + "Clan",
+                i18n.t("general.clan", name=game.clan.displayname),
                 get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
                 container=self.living_groups_container,
                 object_id=ObjectID(class_id="@buttonstyles_dropdown", object_id=None),
@@ -396,7 +396,7 @@ class EventsScreen(Screens):
             for clan in game.clan.all_other_clans:
                 self.choose_group_buttons[clan.group_ID] = UISurfaceImageButton(
                     ui_scale(pygame.Rect((0, y_pos), (190, 34))),
-                    clan.displayname + "Clan",
+                    i18n.t("general.clan", name=clan.displayname),
                     get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
                     container=self.living_groups_container,
                     object_id=ObjectID(class_id="@buttonstyles_dropdown", object_id=None),
@@ -469,7 +469,9 @@ class EventsScreen(Screens):
 
         # Draw and disable the correct menu buttons.
         self.set_disabled_menu_buttons(["events"])
-        self.update_heading_text(f"{curr_clan.displayname}Clan")
+        self.update_heading_text(
+            "general.clan", text_kwargs={"name": curr_clan.displayname}
+        )
         self.show_menu_buttons()
 
     def reset_page_buttons(self, is_page_update=False):
@@ -806,7 +808,7 @@ class EventsScreen(Screens):
         # UPDATE CLAN INFO
         self.clan_info["season"].set_text(
             "screens.events.season",
-            text_kwargs={"season": i18n.t(game.clan.current_season)},
+            text_kwargs={"season": i18n.t(f"general.{game.clan.current_season}")},
         )
         self.clan_info["age"].set_text(
             "screens.events.age", text_kwargs={"count": game.clan.age}

@@ -235,7 +235,7 @@ class ShortEvent:
         self.dead_cat_objects.clear()
 
         if other_clan:
-            self.other_clan_name = f"{other_clan.displayname}Clan"
+            self.other_clan_name = i18n.t("general.clan", name=other_clan.displayname)
 
         self.all_involved_cat_ids.append(self.main_cat.ID)
 

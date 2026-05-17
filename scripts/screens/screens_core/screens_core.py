@@ -260,7 +260,7 @@ def rebuild_top_menu_buttons():
         )
         del heading_rect
     else:
-        clan_list = [c.displayname +"Clan" for c in [game.clan] + game.clan.all_other_clans]
+        clan_list = [i18n.t("general.clan", name=c.displayname) for c in [game.clan] + game.clan.all_other_clans]
         menu_buttons["heading"] = UIDropDown(
             pygame.Rect((0, 25), (220, 35)),
             "",

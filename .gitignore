@@ -101,7 +101,7 @@ saves - Copy/**
 /resources/theme/generated/screen_scale.json
 
 #anything used for testing localization
-resources/lang/po/
+resources/lang/debug/
 
 # Logs
 logs/
