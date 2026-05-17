@@ -12334,7 +12334,7 @@
         "m_c": { "status": [ "leader", "deputy", "warrior", "apprentice" ]
         },
         "new_cat": [
-            ["exists","meeting","kittypet"]
+            ["exists", "meeting", "kittypet"]
         ],
         "other_clan": {
             "current_rep": [ "any" ],
