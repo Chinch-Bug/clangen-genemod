@@ -67,11 +67,9 @@ def medicine_cats_can_cover_clan(all_cats, amount_per_med, clan=CatGroup.PLAYER_
 def get_amount_cat_for_one_medic():
     """Returns the amount of cats one healer can treat"""
     amount = 10
-    if game.clan.game_mode == "classic":
+    if clan and clan.game_mode == "classic":
         # just hope nobody has clans with more than 1,000,000 cats in classic
         amount = 1000000
-    elif game.clan.game_mode == 'cruel season':
-        amount = 7
     return amount
 
 

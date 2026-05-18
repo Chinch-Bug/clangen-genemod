@@ -72,6 +72,7 @@ class Clan:
         camp_bg=None,
         symbol=None,
         game_mode="classic",
+        cruel_cards: list[str] = [],
         starting_members=None,
         starting_season="Newleaf",
         relations={CatGroup.PLAYER_CLAN_ID: {}},
@@ -120,6 +121,7 @@ class Clan:
         self.camp_bg = camp_bg
         self.chosen_symbol = symbol
         self.game_mode = game_mode
+        self.cruel_cards: list[str] = cruel_cards
         self.pregnancy_data = {}
         self.inheritance = {}
         self.custom_pronouns = {}
@@ -441,6 +443,7 @@ class Clan:
             "camp_bg": self.camp_bg,
             "clan_symbol": self.chosen_symbol,
             "gamemode": self.game_mode,
+            "cruel_cards": self.cruel_cards,
             "used_group_IDs": game.used_group_IDs,
             "last_focus_change": self.last_focus_change,
             "clans_in_focus": self.clans_in_focus,
@@ -608,6 +611,7 @@ class Clan:
             camp_bg=clan_data["camp_bg"],
             game_mode=clan_data["gamemode"],
             relations=clan_data.get("relations", {CatGroup.PLAYER_CLAN_ID:{}}),
+            cruel_cards=clan_data.get("cruel_cards", []),
             self_run_init_functions=False,
         )
         game.clan.post_initialization_functions()

@@ -146,33 +146,42 @@ def accurate_porting(cat, info):
                 cat.phenotype.white = ["ws", "ws"]
                 cat.phenotype.whitegrade = 3
         
-    if info["eye_colour"] in ["BLUE", "COBALT", "CYAN", "DARKBLUE", "HEATHERBLUE", "PALEBLUE", "SUNLITICE"]:
+    if info["eye_colour"] in ["DUSK"]:
+        pigmentation = "albino"
+        refraction = choice(range(3, 7))
+        cat.phenotype.lefteyetype = f"R{refraction} ; {pigmentation}"
+        cat.phenotype.righteyetype = f"R{refraction} ; {pigmentation}"
+    elif info["eye_colour"] in ["BLUE", "COBALT", "CYAN", "DARKBLUE", "HEATHERBLUE", "PALEBLUE", "SUNLITICE", "SEA", "BLUEBELL"]:
         pigmentation = "blue"
         refraction = choice(range(5, 9))
-        if info["eye_colour"] in ["COBALT", "DARKBLUE", "HEATHERBLUE"]:
+        if info["eye_colour"] in ["COBALT", "DARKBLUE", "HEATHERBLUE", "SEA", "BLUEBELL"]:
             refraction = choice(range(9, 12))
         elif info["eye_colour"] in ["PALEBLUE", "CYAN"]:
             refraction = choice(range(1, 5))
         cat.phenotype.lefteyetype = f"R{refraction} ; {pigmentation}"
         cat.phenotype.righteyetype = f"R{refraction} ; {pigmentation}"
-    elif info["eye_colour"] in ["GOLD", "YELLOW", "PALEYELLOW", "GREENYELLOW"]:
+    elif info["eye_colour"] in ["GOLD", "YELLOW", "PALEYELLOW", "GREENYELLOW", "MUSTARD"]:
         pigmentation = choice(range(1, 6))
         refraction = choice(range(1, 4))
         if info["eye_colour"] == "PALEYELLOW":
             pigmentation = 1
         if info["eye_colour"] == "GREENYELLOW":
             refraction = choice(range(3, 6))
+        if info["eye_colour"] == "MUSTARD":
+            pigmentation = choice(range(4, 7))
         cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
         cat.phenotype.righteyetype = f"R{refraction} ; P{pigmentation}"
-    elif info["eye_colour"] in ["AMBER", "COPPER", "BRONZE"]:
+    elif info["eye_colour"] in ["AMBER", "COPPER", "BRONZE", "DAWN", "EARTHY"]:
         pigmentation = choice(range(6, 12))
         refraction = choice(range(1, 4))
         if info["eye_colour"] == "AMBER":
             pigmentation = choice(range(5, 8))
-        if info["eye_colour"] == "COPPER":
+        if info["eye_colour"] in ["COPPER", "EARTHY"]:
             pigmentation = choice(range(7, 10))
         if info["eye_colour"] == "BRONZE":
             pigmentation = choice(range(9, 12))
+        if info["eye_colour"] == "DAWN":
+            pigmentation = choice(range(8, 11))
         cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
         cat.phenotype.righteyetype = f"R{refraction} ; P{pigmentation}"
     elif info["eye_colour"] in ["EMERALD", "GREEN", "PALEGREEN", "SAGE"]:
@@ -191,39 +200,57 @@ def accurate_porting(cat, info):
         refraction = choice(range(5, 8))
         cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
         cat.phenotype.righteyetype = f"R{refraction} ; P{pigmentation}"
+    elif info["eye_colour"] in ["AURORA"]:
+        pigmentation = 1
+        refraction = choice(range(11, 13))
+        cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
+        cat.phenotype.righteyetype = f"R{refraction} ; P{pigmentation}"
+    elif info["eye_colour"] in ["FOREST"]:
+        pigmentation = 1
+        refraction = choice(range(5, 9))
+        cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
+        cat.phenotype.righteyetype = f"R{refraction} ; P{pigmentation}"
 
-    if info["eye_colour2"] in ["BLUE", "COBALT", "CYAN", "DARKBLUE", "HEATHERBLUE", "PALEBLUE", "SUNLITICE"]:
+    if info["eye_colour2"] in ["DUSK"]:
+        pigmentation = "albino"
+        refraction = choice(range(3, 7))
+        cat.phenotype.lefteyetype = f"R{refraction} ; {pigmentation}"
+    elif info["eye_colour2"] in ["BLUE", "COBALT", "CYAN", "DARKBLUE", "HEATHERBLUE", "PALEBLUE", "SUNLITICE", "SEA", "BLUEBELL"]:
         pigmentation = "blue"
         refraction = choice(range(5, 9))
-        if info["eye_colour"] in ["COBALT", "DARKBLUE", "HEATHERBLUE"]:
+        if info["eye_colour2"] in ["COBALT", "DARKBLUE", "HEATHERBLUE", "SEA", "BLUEBELL"]:
             refraction = choice(range(9, 12))
-        elif info["eye_colour"] in ["PALEBLUE", "CYAN"]:
+        elif info["eye_colour2"] in ["PALEBLUE", "CYAN"]:
             refraction = choice(range(1, 5))
         cat.phenotype.lefteyetype = f"R{refraction} ; {pigmentation}"
-    elif info["eye_colour2"] in ["GOLD", "YELLOW", "PALEYELLOW", "GREENYELLOW"]:
+    elif info["eye_colour2"] in ["GOLD", "YELLOW", "PALEYELLOW", "GREENYELLOW", "MUSTARD"]:
         pigmentation = choice(range(1, 6))
         refraction = choice(range(1, 4))
-        if info["eye_colour"] == "PALEYELLOW":
+        if info["eye_colour2"] == "PALEYELLOW":
             pigmentation = 1
-        if info["eye_colour"] == "GREENYELLOW":
+        if info["eye_colour2"] == "GREENYELLOW":
             refraction = choice(range(3, 6))
+        if info["eye_colour2"] == "MUSTARD":
+            pigmentation = choice(range(4, 7))
         cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
-    elif info["eye_colour2"] in ["AMBER", "COPPER", "BRONZE"]:
+    elif info["eye_colour2"] in ["AMBER", "COPPER", "BRONZE", "DAWN", "EARTHY"]:
         pigmentation = choice(range(6, 12))
         refraction = choice(range(1, 4))
-        if info["eye_colour"] == "AMBER":
+        if info["eye_colour2"] == "AMBER":
             pigmentation = choice(range(5, 8))
-        if info["eye_colour"] == "COPPER":
+        if info["eye_colour2"] in ["COPPER", "EARTHY"]:
             pigmentation = choice(range(7, 10))
-        if info["eye_colour"] == "BRONZE":
+        if info["eye_colour2"] == "BRONZE":
             pigmentation = choice(range(9, 12))
+        if info["eye_colour2"] == "DAWN":
+            pigmentation = choice(range(8, 11))
         cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
     elif info["eye_colour2"] in ["EMERALD", "GREEN", "PALEGREEN", "SAGE"]:
         pigmentation = choice(range(2, 12))
         refraction = choice(range(9, 12))
-        if info["eye_colour"] == "PALEGREEN":
+        if info["eye_colour2"] == "PALEGREEN":
             pigmentation = choice(range(2, 4))
-        elif info["eye_colour"] == "SAGE":
+        elif info["eye_colour2"] == "SAGE":
             pigmentation = choice(range(7, 10))
         else:
             pigmentation = choice(range(3, 7))
@@ -232,7 +259,15 @@ def accurate_porting(cat, info):
         pigmentation = choice(range(5, 8))
         refraction = choice(range(5, 8))
         cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
-    
+    elif info["eye_colour2"] in ["AURORA"]:
+        pigmentation = 1
+        refraction = choice(range(11, 13))
+        cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
+    elif info["eye_colour2"] in ["FOREST"]:
+        pigmentation = 1
+        refraction = choice(range(5, 9))
+        cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
+
     if "SUNLITICE" in [info["eye_colour"], info["eye_colour2"]]:
         if not info["eye_colour2"]:
             cat.phenotype.extraeye = "sectoral3"
