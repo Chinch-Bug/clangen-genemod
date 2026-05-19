@@ -340,12 +340,6 @@ class History:
         if not self.queen_influence["trait"]:
             return
 
-        if (
-            "Benevolent" or "Abrasive" or "Reserved" or "Outgoing"
-        ) in self.queen_influence["trait"]:
-            self.queen_influence["trait"] = None
-            return
-
         # working under the impression that these blurbs will be preceded by "more likely to"
         facet_influence_text = {
             "lawfulness_raise": [
