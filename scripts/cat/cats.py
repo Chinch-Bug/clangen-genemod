@@ -1434,6 +1434,11 @@ class Cat:
                         if "mentor_influence" in history_data
                         else {}
                     ),
+                    queen_influence=(
+                        history_data["queen_influence"]
+                        if "queen_influence" in history_data
+                        else {}
+                    ),
                     app_ceremony=(
                         history_data["app_ceremony"]
                         if "app_ceremony" in history_data

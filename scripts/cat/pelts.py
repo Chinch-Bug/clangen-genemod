@@ -762,10 +762,10 @@ class Pelt:
         else:
             color_tints = []
 
-            if base_tints or color_tints:
-                self.white_patches_tint = choice(base_tints + color_tints)
-            else:
-                self.white_patches_tint = None
+        if base_tints or color_tints:
+            self.white_patches_tint = choice(base_tints + color_tints)
+        else:
+            self.white_patches_tint = None
 
     @staticmethod
     def describe_appearance(cat, short=False):
