@@ -15,8 +15,8 @@
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
-            "normal adult": [ 1, 5 ],
-            "medicine cat": [ 1, 5 ]
+            "normal adult": [1, 5],
+            "medicine cat": [1, 5]
         },
         "frequency": 2,
         "chance_of_success": 60,
@@ -27,7 +27,7 @@
                 "text": "p_l continues the patrol without acknowledging r_c sneezing. Despite the circumstances, the fresh newleaf plants are bountiful for the group, and the patrol returns with an average collection of herbs.",
                 "exp": 10,
                 "frequency": 4,
-                "prey": [ ],
+                "prey": [],
                 "herbs": [
                     "random_herbs"
                 ],
@@ -39,18 +39,18 @@
                         "injuries": [
                             "running nose"
                         ],
-                        "scars": [ ],
+                        "scars": [],
                         "no_results": true
                     }
                 ],
-                "new_cat": [ ],
+                "new_cat": [],
                 "art": "fst_canopy"
             },
             {
                 "text": "p_l doesn't see r_c's running nose as a burden. To p_l, it's an opportunity. While it prevents r_c from finding herbs, it makes r_c the perfect collector of herbs with less pleasant smells. When the patrol comes across a patch of some particularly pungent-scented herbs at the root of a tree, r_c is sent to collect them.",
                 "exp": 15,
                 "frequency": 2,
-                "prey": [ ],
+                "prey": [],
                 "herbs": [
                     "random_herbs"
                 ],
@@ -62,11 +62,11 @@
                         "injuries": [
                             "running nose"
                         ],
-                        "scars": [ ],
+                        "scars": [],
                         "no_results": true
                     }
                 ],
-                "new_cat": [ ],
+                "new_cat": [],
                 "art": "gen_embarrassed1"
             }
         ],
@@ -75,8 +75,8 @@
                 "text": "The patrol continues their search for herbs, despite r_c's plight. Unfortunately, the group doesn’t get very far. r_c stumbles mid-sneeze, tripping over a particularly large tree root and tumbling forward, knocking over other cats in {PRONOUN/r_c/poss} wake.",
                 "exp": 0,
                 "frequency": 4,
-                "prey": [ ],
-                "herbs": [ ],
+                "prey": [],
+                "herbs": [],
                 "injury": [
                     {
                         "cats": [
@@ -85,7 +85,7 @@
                         "injuries": [
                             "running nose"
                         ],
-                        "scars": [ ],
+                        "scars": [],
                         "no_results": true
                     }
                 ],
@@ -101,13 +101,13 @@
                         "values": [
                             "respect"
                         ],
-                        "amount": 5,
+                        "amount": -5,
                         "log": {
-                            "cats_from": "cats_from lost respect for cats_to after a sidetracked patrol."
+                            "cats_from": "cat_from lost respect for cat_to after a sidetracked patrol."
                         }
                     }
                 ],
-                "new_cat": [ ],
+                "new_cat": [],
                 "art": "fst_med_stumble1"
             }
         ]

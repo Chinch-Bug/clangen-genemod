@@ -251,7 +251,7 @@ class AllegiancesScreen(Screens):
                 pygame.Rect(
                     (offset, -
                      self.ranks_boxes[-1].get_relative_rect()[3]+offset),
-                    ui_scale_offset((565, -1))),
+                    ui_scale_offset((525, -1))),
                 x[1],
                 object_id=get_text_box_theme("#allegiance"),
                 container=self.scroll_container, manager=MANAGER,
@@ -267,7 +267,7 @@ class AllegiancesScreen(Screens):
                     x[3],
                     pygame.Rect(
                         (0, -self.ranks_boxes[-1].get_relative_rect()[3]),
-                        ui_scale_offset((565, -1)),
+                        ui_scale_offset((525, -1)),
                     ),
                     object_id=get_text_box_theme("#text_box_30_horizleft"),
                     container=self.scroll_container,
@@ -490,7 +490,7 @@ class AllegiancesScreen(Screens):
             for k in living_kits:
                 all_entries.append([str(k.name).upper(), k.ID, event_text_adjust(
                         Cat,
-                        f"{str(k.name).upper()} - {k.describe_cat(short=True)}",
+                        f"{str(k.name).upper()} - {k.describe_cat()}",
                         main_cat=k,
                     )])
             

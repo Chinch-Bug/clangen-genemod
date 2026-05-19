@@ -239,7 +239,7 @@ class Patrol:
                     self.patrol_statuses["all apprentices"] = 1
 
             if (
-                cat.status.rank.is_any_adult_warrior_like_rank()
+                cat.status.rank.is_any_adult_patrol_rank()
                 and cat.age != CatAge.ADOLESCENT
             ):
                 if "normal adult" in self.patrol_statuses:
