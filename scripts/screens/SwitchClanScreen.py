@@ -230,6 +230,7 @@ class SwitchClanScreen(Screens):
             if i % 8 == 0 and i != 0:
                 self.clan_buttons.append([])
                 self.clan_name.append([])
+                self.clan_display_names.append([])
                 self.delete_buttons.append([])
 
         self.next_page_button = UISurfaceImageButton(
