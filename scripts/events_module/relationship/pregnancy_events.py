@@ -442,9 +442,9 @@ class Pregnancy_Events:
                         for x in other_cat:
                             if x.ID not in cat.mate and x.ID not in kit.surrogate_parents:
                                 kit.affair_parents.append(x.ID)
-                    if kit.surrogate_parents or kit.affair_parents:
-                        kit.inheritance.update_inheritance()
-                        kit.inheritance.update_all_related_inheritance()
+                    # if kit.surrogate_parents or kit.affair_parents:
+                    #     kit.inheritance.update_inheritance()
+                    #     kit.inheritance.update_all_related_inheritance()
                     if random() < stillborn_chance or kit.phenotype.sexgene[0] == "Y" or kit.phenotype.manx[1] == "Ab" or kit.phenotype.manx[1] == "M" or kit.phenotype.munch[1] == "Mk" or ('NoDBE' not in kit.phenotype.pax3 and 'DBEalt' not in kit.phenotype.pax3):
                         if not kit.dead:
                             kit.dead = True
