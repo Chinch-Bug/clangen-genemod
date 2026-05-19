@@ -73,6 +73,9 @@ class CatRank(StrEnum):
     def is_any_adult_warrior_like_rank(self) -> bool:
         return self in (self.WARRIOR, self.DEPUTY, self.LEADER)
 
+    def is_any_adult_patrol_rank(self) -> bool:
+        return self in (self.WARRIOR, self.DEPUTY, self.LEADER, self.QUEEN, self.MEDIATOR)
+
     def is_allowed_to_patrol(self, allow_mediators=False) -> bool:
         # newborn is not included in this because the constants.CONFIG["fun"] needs extra checks
         if self.is_any_clancat_rank() and self not in (

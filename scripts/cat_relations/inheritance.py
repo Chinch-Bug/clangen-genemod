@@ -65,12 +65,12 @@ class Inheritance:
         self.all_but_cousins = []
 
         self.cat = cat
-        if not born:
-            try:
-                self.load_inheritance()
-                return
-            except:
-                pass
+        # if not born:
+        #     try:
+        #         self.load_inheritance()
+        #         return
+        #     except:
+        #         pass
         self.update_inheritance()
 
         # if the cat is newly born, update all the related cats

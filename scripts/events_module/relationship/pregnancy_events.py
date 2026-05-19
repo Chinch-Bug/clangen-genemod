@@ -20,6 +20,7 @@ from scripts.cat.genotype import Genotype
 from scripts.cat.names import names, Name
 from scripts.cat.status import StatusDict
 from scripts.cat_relations.relationship import Relationship, RelType
+from scripts.cat_relations.inheritance2 import inheritance_db
 from scripts.clan_package.settings import get_clan_setting
 from scripts.event_class import Single_Event
 from scripts.events_module.short.condition_events import Condition_Events
@@ -71,7 +72,7 @@ class Pregnancy_Events:
         for cat in Cat.all_cats.values():
             if cat.status.group_ID != clan.group_ID:
                 continue
-            ancestors = cat.get_relatives()
+            ancestors = list(cat.get_relatives())
             if not ancestors:
                 continue
             if not biggest_family:
@@ -1760,15 +1761,13 @@ class Pregnancy_Events:
                 start_relation.comfort += 10 + y
                 start_relation.trust += 10 + y
                 kitten.relationships[second_kitten.ID] = start_relation
-            
-            kitten.create_inheritance_new_cat() # Calculate inheritance. 
-            kitten.create_relationships_new_cat()
 
         # check if the possible adoptive cat is not already in the family tree and
         # add them as adoptive parents if not
         final_adoptive_parents = []
         for adoptive_p in all_adoptive_parents:
-            if adoptive_p not in all_kitten[0].inheritance.all_involved:
+            Cat.fetch_cat(adoptive_p).get_new_thought(CatThought.ON_BIRTH)
+            if adoptive_p not in inheritance_db.get_relatives(all_kitten[0].ID, True):
                 final_adoptive_parents.append(adoptive_p)
             if Cat.fetch_cat(adoptive_p).status.group_ID != all_kitten[0].status.group_ID:
                 continue
@@ -1794,11 +1793,9 @@ class Pregnancy_Events:
                         kit.adoptive_parents.append(birth_p.ID)
             if not kit.adoptive_parents:
                 continue
-            kit.inheritance.update_inheritance()
-            kit.inheritance.update_all_related_inheritance()
 
             # update relationship for adoptive parents
-            for parent_id in kit.adoptive_parents:
+            for parent_id in final_adoptive_parents:
                 parent = Cat.fetch_cat(parent_id)
                 if parent:
                     kit_to_parent = constants.CONFIG["new_cat"]["parent_buff"][
@@ -1817,6 +1814,7 @@ class Pregnancy_Events:
                         cats_to=[kit],
                         **parent_to_kit,
                     )
+        inheritance_db.load_inheritances(Cat)
 
         # check for more extended family members to create relationships with
         all_relatives: list = all_kitten[0].get_relatives()  # we only need this for one kit, since they all share relatives

@@ -20,7 +20,6 @@ from scripts.cat.names import names
 from scripts.cat.save_load import (
     save_cats,
     get_faded_ids,
-    load_faded_cat_ids,
 )
 from scripts.clan_package.settings import save_clan_settings, load_clan_settings
 from scripts.clan_package.settings.clan_settings import reset_loaded_clan_settings
@@ -522,6 +521,7 @@ class Clan:
         """
 
         version_info = None
+        game.reset_used_group_IDs()
         if os.path.exists(
             get_save_dir() + "/" + switch_get_value(Switch.clan_list)[0] + "clan.json"
         ):
@@ -774,8 +774,6 @@ class Clan:
                                 other_clan_id = game.clan.all_other_clans[int(other_key[-1])-1].group_ID
                             game.clan.war[clan_id][other_clan_id] = clan_data["war"][key][other_key]
                 
-
-        load_faded_cat_ids(clan_data["clanname"])
 
         game.clan.last_focus_change = clan_data.get("last_focus_change")
         game.clan.clans_in_focus = clan_data.get("clans_in_focus", [])
