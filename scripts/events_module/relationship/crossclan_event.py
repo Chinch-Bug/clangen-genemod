@@ -1,5 +1,5 @@
 from random import choice, randrange, random, randint, choices, sample
-from typing import List, Optional
+from typing import List, Optional, Dict
 
 import i18n
 import re
