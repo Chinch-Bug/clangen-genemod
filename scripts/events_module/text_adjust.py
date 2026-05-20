@@ -140,8 +140,8 @@ def poi_repl(inner_details, clan=None):
     elif inner_details[1].upper() == "NAME":
         names = set(inner_details[2].split(","))
         base_string += (
-            choice(list(names.intersection(get_poi_names_set())))
-            if names.intersection(get_poi_names_set())
+            choice(list(names.intersection(get_poi_names_set(clan))))
+            if names.intersection(get_poi_names_set(clan))
             else "MISSING_POI"
         )
 

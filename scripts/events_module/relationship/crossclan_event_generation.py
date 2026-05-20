@@ -12,6 +12,7 @@ from scripts.events_module.event_filters import (
     event_for_cat,
     event_for_clan_relations,
     event_for_season,
+    event_for_poi,
     cat_for_event,
     get_frequency,
     find_new_frequency,
@@ -199,6 +200,7 @@ def generate_event_objects(is_group, biome, frequency) -> list:
                     event_id=event["event_id"] if "event_id" in event else "",
                     location=event["location"] if "location" in event else ["any"],
                     season=event["season"] if "season" in event else ["any"],
+                    poi=event["poi"] if "poi" in event else {},
                     sub_type=event["sub_type"] if "sub_type" in event else [],
                     text=event_text,
                     new_accessory=(
@@ -284,6 +286,9 @@ def filter_events(
             continue
 
         if not event_for_season(event.season):
+            continue
+
+        if not event_for_poi(event.poi, clan.group_ID):
             continue
 
         # check tags

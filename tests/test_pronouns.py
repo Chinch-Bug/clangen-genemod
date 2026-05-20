@@ -63,6 +63,7 @@ def _test():
         "cat_tag": _r,
         "cat_to": _r,
         "cat_from": _r,
+        "point_of_interest": "1"
     }
 
     for x in range(0, 11):
