@@ -221,7 +221,7 @@ class TestPointsOfInterest(unittest.TestCase):
             }
         }
 
-        add_poi("test_name", poi_to_add["test_name"], clan=None)
+        add_poi("test_name", poi_to_add["test_name"])
 
         # confirm it exists
         self.assertIn("test_name", get_poi_names_set())
@@ -241,7 +241,7 @@ class TestPointsOfInterest(unittest.TestCase):
             }
         }
 
-        add_poi("test_name", poi_to_add["test_name"], clan=None)
+        add_poi("test_name", poi_to_add["test_name"])
 
         # clear POI
         clear_pois()
@@ -309,14 +309,13 @@ class TestPointsOfInterest(unittest.TestCase):
             }
         }
 
-        add_poi("test_name", poi_to_add["test_name"], clan=None)
+        add_poi("test_name", poi_to_add["test_name"])
         self.assertRaises(
             Exception,
             generate_and_add_new_poi,
             biome="Forest",
             category="gathering",
             possible_pois=poi_to_add,
-            clan=None
         )
 
     def test_error_no_possible_poi(self):
@@ -346,7 +345,7 @@ class TestPointsOfInterest(unittest.TestCase):
             }
         }
 
-        add_poi("test_name", poi_to_add["test_name"], clan=None)
+        add_poi("test_name", poi_to_add["test_name"])
 
         # expected True combinations
         combinations = {

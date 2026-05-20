@@ -42,7 +42,7 @@ def get_random_poi_by_tag(tag, clan=None):
     return choice(_poi_by_tags.get("shared", {}).get(tag, ["MISSING_POI"])+_poi_by_tags.get(clan, {}).get(tag, ["MISSING_POI"]))
 
 
-def add_poi(name, elements, clan):
+def add_poi(name, elements, clan=None):
     """
     Add a new POI to the Clan
     :param name:
@@ -83,8 +83,9 @@ def load_pois(save_data: Dict[str, List[str]]):
     clear_pois()
     for category, data in save_data.items():
         if isinstance(data, dict):
-            for clan, poi in save_data.items():
-                add_poi(poi, _poi_data[poi], clan)
+            for clan, pois in data.items():
+                for poi in pois:
+                    add_poi(poi, _poi_data[poi], clan)
         else:
             for poi in data:
                 add_poi(poi, _poi_data[poi])
