@@ -945,7 +945,7 @@ class Pregnancy_Events:
                     "Is this an old save? Your cat didn't have the pregnant condition!"
                 )
         if SurrogateBirth:
-            cat = other_cat[0]
+            cat = other_cat[0] if other_cat[0] != RandomChoice else other_cat[1]
             event_list[0] = event_list[0].replace("{surrogate}", f"{pregnant_cat.name}")
             if len(event_list) > 1:
                 event_list[0] = event_text_adjust(Cat, event_list[0], main_cat=cat, random_cat=RandomChoice, clan=clan)

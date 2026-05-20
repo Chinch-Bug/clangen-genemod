@@ -6755,7 +6755,7 @@
                 "text": "The patrol races towards the sound. They are puzzled when they only see a lone Twoleg, but grim realization soon dawns on them after they hear more screams coming from a bag the Twoleg is holding. Jumping into action, the c_n cats startle the Twoleg into letting go of the bag. While the rest of the patrol claws the ankles of the now furious Twoleg, p_l and r_c quickly and quietly get the shivering kittens out of sight, promising them safety and welcome in c_n.",
                 "exp": 10,
                 "new_cat": [
-                    [ "kittypet", "can_birth", "age:has_kits" ],
+                    [ "kittypet", "can_birth", "age:has_kits", "meeting", "unknown" ],
                     [ "litter", "status:kitten", "backstory:abandoned4", "kittypet", "parent:0" ]
                 ],
                 "relationships": [

@@ -27,6 +27,7 @@ from scripts.events_module.event_filters import (
     event_for_location,
     event_for_season,
     cat_for_event,
+    event_for_poi,
 )
 from scripts.events_module.patrol.patrol_event import PatrolEvent
 from scripts.events_module.patrol.patrol_outcome import PatrolOutcome
@@ -751,6 +752,11 @@ class Patrol:
                         print(
                             "DEBUG: requested patrol does not meet constraints (season)"
                         )
+                    continue
+
+                if not event_for_poi(patrol.poi, patrol.clan.group_ID):
+                    if self.debug_patrol and self.debug_patrol == patrol.patrol_id:
+                        print("DEBUG: requested patrol does not meet constraints (PoI)")
                     continue
 
                 if "hunting" not in patrol.types and patrol_type == "hunting":
