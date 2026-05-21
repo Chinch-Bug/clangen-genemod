@@ -254,7 +254,7 @@
         "season": [
             "any"
         ],
-        "sub_type": ["romance"],
+        "tags": ["romance"],
         "frequency": 1,
         "event_text": [
             "m_c sneaks out of camp at night to see o_c_n's territory for {PRONOUN/m_c/self}. {PRONOUN/m_c/subject/CAP} {VERB/m_c/encounter/encounters} r_c doing the same from the other side, only for the two apprentices to end up spending the night playing together."
@@ -473,7 +473,7 @@
         "event_id": "gen_single_romance1",
         "location": ["any"],
         "season": ["any"],
-        "sub_type": ["romance"],
+        "tags": ["romance"],
         "frequency": 2,
         "event_text": [
             "m_c has a secret meetup with r_c at the border.",
@@ -510,7 +510,7 @@
         "event_id": "gen_single_healer_romance1",
         "location": [ "any" ],
         "season": [ "any" ],
-        "sub_type": [ "romance" ],
+        "tags": [ "romance" ],
         "frequency": 2,
         "event_text": [
             "m_c visits o_c_n's camp at r_c's request. Even if the request secretly was just to spend time together."
@@ -1428,7 +1428,7 @@
         "season": [
             "any"
         ],
-        "sub_type": ["romance"],
+        "tags": ["romance"],
         "frequency": 1,
         "event_text": [
             "m_c approaches r_c during the Gathering with some casual flirting-turned-pleasant-chat."
@@ -1461,7 +1461,7 @@
         "event_id": "gen_single_gathering_romance2",
         "location": [ "any" ],
         "season": [ "any" ],
-        "sub_type": [ "romance" ],
+        "tags": [ "romance" ],
         "frequency": 1,
         "event_text": [
             "m_c and r_c are acting remarkably close at the Gathering.",

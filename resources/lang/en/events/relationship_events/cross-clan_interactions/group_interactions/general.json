@@ -294,7 +294,7 @@
         "event_id": "gen_group_romance1",
         "location": [ "any" ],
         "season": [ "any" ],
-        "sub_type": [ "romance" ],
+        "tags": [ "romance" ],
         "frequency": 2,
         "event_text": [
             "r_c1 secretly meets up with m_c at the border, only to get interrupted by r_c2 and have to play it off as incidental."
@@ -340,7 +340,7 @@
         "event_id": "gen_group_romance2",
         "location": [ "any" ],
         "season": [ "any" ],
-        "sub_type": [ "romance" ],
+        "tags": [ "romance" ],
         "frequency": 2,
         "event_text": [
             "r_c1 secretly meets up with m_c at the border, not realising that r_c2 had followed until {PRONOUN/r_c2/subject} {VERB/r_c2/confront/confronts} them both."
@@ -395,7 +395,7 @@
         "event_id": "gen_group_romance3",
         "location": [ "any" ],
         "season": [ "any" ],
-        "sub_type": [ "romance" ],
+        "tags": [ "romance" ],
         "frequency": 1,
         "event_text": [
             "m_c secretly meets up with r_c1 at the border, not realising that r_c2 had followed until after {PRONOUN/r_c2/subject} {VERB/r_c2/report/reports} it to o_c_n1."

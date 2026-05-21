@@ -202,6 +202,7 @@ def generate_event_objects(is_group, biome, frequency) -> list:
                     season=event["season"] if "season" in event else ["any"],
                     poi=event["poi"] if "poi" in event else {},
                     sub_type=event["sub_type"] if "sub_type" in event else [],
+                    tags=event["tags"] if "tags" in event else [],
                     text=event_text,
                     new_accessory=(
                         event["new_accessory"] if "new_accessory" in event else []
@@ -413,9 +414,6 @@ def filter_events(
                 allowable_cats = viable_cats[involved_clans[chosen_event.r_c[i]["clan"]-1]] if chosen_event.r_c[i].get("clan") else viable_cats[involved_clans[-1]]
                 allowable_cats = [c for c in allowable_cats if c not in chosen_cats and c.ID != main_cat.ID]
 
-            if "romance" in chosen_event.sub_type:
-                allowable_cats = [c for c in allowable_cats if c.is_potential_mate(main_cat, for_love_interest=True)]
-            
             for c in chosen_cats + [main_cat]:
                 if c in allowable_cats:
                     allowable_cats.remove(c)
@@ -429,6 +427,7 @@ def filter_events(
                 ).copy(),
                 injuries=r_c_injuries,
                 return_id=False,
+                tags=chosen_event.tags,
             )
 
             if not chosen_cat:
