@@ -875,7 +875,7 @@ class Phenotype(Genotype):
                     unders_opacity = self.GetSilverUnders(banding)
                 else:
                     unders_colour = self.FindEumUnders(genes, banding, rufousing, self.unders_ruftype)
-                    if self.unders_ruftype == "rufoused" and banding not in ["chinchilla", "shaded"]:
+                    if self.unders_ruftype == "rufoused" or banding not in ["chinchilla", "shaded"]:
                         unders_opacity = 30
                     else:
                         unders_opacity = 20

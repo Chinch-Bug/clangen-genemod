@@ -411,6 +411,9 @@ def generate_sprite(
 
                 unders = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 unders.blit(sprites.sprites["Tabby_unders" + cat_sprite], (0, 0))
+                if phenotype.corin[0] != "N":
+                    for p in ["left front", "right front", "left back", "right back"]:
+                        unders.blit(sprites.sprites[p + " toes" + cat_sprite], (0, 0))
                 unders.blit(sprites.sprites[cat_unders[0]], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                 unders.set_alpha(int(cat_unders[1] * 2.55))
                 whichmain.blit(unders, (0, 0))

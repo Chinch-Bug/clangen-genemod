@@ -143,57 +143,6 @@ class Name:
             with open('resources/dicts/names/names.json') as read_file:
                 Name.names_dict = ujson.loads(read_file.read())
 
-            if os.path.exists(get_save_dir() + "/prefixlist.txt"):
-                with open(
-                    str(get_save_dir() + "/prefixlist.txt"), "r", encoding="utf-8"
-                ) as read_file:
-                    name_list = read_file.read()
-                    if_names = len(name_list)
-                if if_names > 0:
-                    new_names = name_list.split("\n")
-                    for new_name in new_names:
-                        if new_name != "":
-                            if new_name.startswith("-"):
-                                while new_name[1:] in names_dict["normal_prefixes"]:
-                                    Name.names_dict["normal_prefixes"].remove(
-                                        new_name[1:])
-                            else:
-                                Name.names_dict["normal_prefixes"].append(new_name)
-
-            if os.path.exists(get_save_dir() + "/suffixlist.txt"):
-                with open(
-                    str(get_save_dir() + "/suffixlist.txt"), "r", encoding="utf-8"
-                ) as read_file:
-                    name_list = read_file.read()
-                    if_names = len(name_list)
-                if if_names > 0:
-                    new_names = name_list.split("\n")
-                    for new_name in new_names:
-                        if new_name != "":
-                            if new_name.startswith("-"):
-                                while new_name[1:] in names_dict["normal_suffixes"]:
-                                    Name.names_dict["normal_suffixes"].remove(
-                                        new_name[1:])
-                            else:
-                                Name.names_dict["normal_suffixes"].append(new_name)
-
-            if os.path.exists(get_save_dir() + "/specialsuffixes.txt"):
-                with open(
-                    str(get_save_dir() + "/specialsuffixes.txt", "r"), encoding="utf-8"
-                ) as read_file:
-                    name_list = read_file.read()
-                    if_names = len(name_list)
-                if if_names > 0:
-                    new_names = name_list.split("\n")
-                    for new_name in new_names:
-                        if new_name != "":
-                            if new_name.startswith("-"):
-                                del Name.names_dict["special_suffixes"][new_name[1:]]
-                            elif ":" in new_name:
-                                _tmp = new_name.split(":")
-                                Name.names_dict["special_suffixes"][_tmp[0]] = _tmp[1]
-
-
         if not os.path.exists(get_save_dir() + f"/{clan}" + "/names"):
             return
         if os.path.exists(get_save_dir() + f"/{clan}" + "/names" + "/alt_prefixes.json"):
