@@ -754,7 +754,7 @@ class Patrol:
                         )
                     continue
 
-                if not event_for_poi(patrol.poi, patrol.clan.group_ID):
+                if not event_for_poi(patrol.poi, self.clan.group_ID):
                     if self.debug_patrol and self.debug_patrol == patrol.patrol_id:
                         print("DEBUG: requested patrol does not meet constraints (PoI)")
                     continue
