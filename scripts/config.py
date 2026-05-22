@@ -1,66 +1,76 @@
 import tomllib
+import os
 
 from scripts.game_structure.game.switches import switch_get_value, Switch
+from scripts.housekeeping.datadir import get_save_dir
 
 with open("resources/game_config.toml", "r", encoding="utf-8") as read_file:
     CONFIG = tomllib.loads(read_file.read())
+    PREY_CONFIG = CONFIG["clan_resources"]["freshkill"]
+
+def recursive_merge(dict1, dict2):
+    for key, value in dict2.items():
+        if key in dict1 and isinstance(dict1[key], dict) and isinstance(value, dict):
+            # Recursively merge nested dictionaries
+            dict1[key] = recursive_merge(dict1[key], value)
+        else:
+            # Merge non-dictionary values
+            dict1[key] = value
+    return dict1
+
+def other_config_refreshes():
+    global CONFIG
+    from scripts.cat.cats import Cat
+    from scripts.cat.enums import CatAge
+    Cat.age_moons = {
+        CatAge.NEWBORN: CONFIG["cat_ages"]["newborn"],
+        CatAge.KITTEN: CONFIG["cat_ages"]["kitten"],
+        CatAge.ADOLESCENT: CONFIG["cat_ages"]["adolescent"],
+        CatAge.YOUNG_ADULT: CONFIG["cat_ages"]["young adult"],
+        CatAge.ADULT: CONFIG["cat_ages"]["adult"],
+        CatAge.SENIOR_ADULT: CONFIG["cat_ages"]["senior adult"],
+        CatAge.SENIOR: CONFIG["cat_ages"]["senior"],
+    }
+    PREY_CONFIG = CONFIG["clan_resources"]["freshkill"]
+
+def load_clan_config():
+    global CONFIG
+    reset_config()
+    if switch_get_value(Switch.clan_list) and os.path.exists(
+        get_save_dir() +
+        f"/{switch_get_value(Switch.clan_list)[0]}/game_config.toml"
+    ):
+        with open(
+            get_save_dir()
+            + f"/{switch_get_value(Switch.clan_list)[0]}/game_config.toml",
+            "r",
+            encoding="utf-8",
+        ) as read_file:
+            config_override = tomllib.loads(read_file.read())
+            CONFIG = recursive_merge(CONFIG, config_override)
+            other_config_refreshes()
+
+def reset_config():
+    global CONFIG
+    with open("resources/game_config.toml", "r", encoding="utf-8") as read_file:
+        CONFIG = tomllib.loads(read_file.read())
+        other_config_refreshes()
 
 
 # config_path passed as a string using dot notation - ex "graduation.min_graduating_age"
 def get_config(clan, config_path):
-    war_effected = {
-        ("death_related", "leader_death_chance"): (
-            "death_related",
-            "war_death_modifier_leader",
-        ),
-        ("death_related", "classic_death_chance"): (
-            "death_related",
-            "war_death_modifier",
-        ),
-        ("death_related", "expanded_death_chance"): (
-            "death_related",
-            "war_death_modifier",
-        ),
-        ("death_related", "cruel season_death_chance"): (
-            "death_related",
-            "war_death_modifier",
-        ),
-        ("condition_related", "classic_injury_chance"): (
-            "condition_related",
-            "war_injury_modifier",
-        ),
-        ("condition_related", "expanded_injury_chance"): (
-            "condition_related",
-            "war_injury_modifier",
-        ),
-        ("condition_related", "cruel season_injury_chance"): (
-            "condition_related",
-            "war_injury_modifier",
-        ),
-    }
     config_value = CONFIG
     config_keys = tuple(config_path.split("."))
 
     # checking cards first
-    for card in clan.cruel_cards:
-        if config_path in card["modifiers"]:
-            config_value = card["modifiers"][config_path]
+    if clan:
+        for card in clan.cruel_cards:
+            if config_path in card["modifiers"]:
+                config_value = card["modifiers"][config_path]
 
     # then checking game_config
     if config_value == CONFIG:
         for key in config_keys:
             config_value = config_value[key]
 
-    # Apply war if needed
-    if clan and clan.war.get("at_war", False) and config_keys in war_effected:
-        rel_change_type = switch_get_value(Switch.war_rel_change_type)
-        # if the war was positively affected this moon, we don't apply war modifier
-        # this way we only see increased death/injury when the war is going badly or is neutral
-        if rel_change_type != "rel_up":
-            # Grabs the modifier
-            mod = CONFIG
-            for key in war_effected[config_keys]:
-                mod = mod[key]
-
-            config_value -= mod
     return config_value

@@ -8,14 +8,15 @@ import pygame
 import pygame_gui
 from pygame_gui.core import ObjectID
 
+from scripts.config import reset_config, load_clan_config
 import scripts.screens.screens_core.screens_core
 from scripts.screens.EventsScreen import EventsScreen
 from scripts.cat.cats import create_example_cats, create_cat, Cat
 from scripts.cat.names import names
 from scripts.clan import Clan
 from scripts.events_module.patrol.patrol import Patrol
-from scripts.game_structure import image_cache, constants
-from scripts.game_structure import game
+from scripts.game_structure import image_cache
+from scripts.game_structure import game, constants
 from .screens_core.screens_core import rebuild_top_menu_buttons
 from ..ui.elements.sprite_button import UISpriteButton
 from ..ui.elements.image_button import UIImageButton
@@ -142,7 +143,7 @@ class MakeClanScreen(Screens):
             ui_scale_dimensions((800, 700)),
         )
         
-        constants.reset_config()
+        reset_config()
 
         # Reset variables
         self.game_mode: str = "classic"
@@ -586,7 +587,7 @@ class MakeClanScreen(Screens):
         self.fullscreen_bgs = {}
         self.game_bgs = {}
         self.set_mute_button_position("bottomright")
-        constants.load_clan_config()
+        load_clan_config()
         return super().exit_screen()
 
     def on_use(self):
