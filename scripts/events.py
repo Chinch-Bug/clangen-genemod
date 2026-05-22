@@ -7,6 +7,7 @@ TODO: Docs
 """
 import logging
 import random
+from scripts.config import get_config
 
 # pylint: enable=line-too-long
 import traceback
@@ -787,9 +788,8 @@ def handle_focus():
             and cat.available_to_work()
         ]
 
-        warrior_amount = (
-            len(healthy_warriors)
-            * constants.CONFIG["focus"]["hunting"][CatRank.WARRIOR]
+        warrior_amount = len(healthy_warriors) * get_config(
+            game.clan, f"focus.hunting.{CatRank.WARRIOR}"
         )
 
         # handle apprentices
@@ -800,9 +800,8 @@ def handle_focus():
             and cat.status.alive_in_player_clan
         ]
 
-        app_amount = (
-            len(healthy_apprentices)
-            * constants.CONFIG["focus"]["hunting"][CatRank.APPRENTICE]
+        app_amount = len(healthy_apprentices) * get_config(
+            game.clan, f"focus.hunting.{CatRank.APPRENTICE}"
         )
 
         if warrior_amount + app_amount == 0:
@@ -2436,7 +2435,8 @@ def handle_outside_EX(cat):
             + list(range(ran[1][0], ran[1][1] + 1))
         )
 
-        cat.experience += max(exp * role_modifier, 1)
+        if exp > 0:
+            cat.experience += max(exp * role_modifier, 1)
 
 def handle_adult_EX(cat):
     if cat.not_working() and int(random.random() * 3):
@@ -2463,7 +2463,8 @@ def handle_adult_EX(cat):
         + list(range(ran[1][0], ran[1][1] + 1))
     )
 
-    cat.experience += max(exp * role_modifier, 1)
+    if exp > 0:
+        cat.experience += max(exp * role_modifier, 1)
 
 def handle_apprentice_EX(cat):
     """
@@ -2613,8 +2614,7 @@ def handle_injuries_or_general_death(cat, clan):
     # chance to kill leader: 1/50 by default
     if (
         not int(
-            random.random()
-            * game.get_config_value(clan.group_ID, "death_related", "leader_death_chance")
+            random.random() * get_config(clan.group_ID, "death_related.leader_death_chance")
         )
         and cat.status.is_leader
         and not cat.not_working()
@@ -2666,9 +2666,7 @@ def handle_injuries_or_general_death(cat, clan):
     if (
         not int(
             random.random()
-            * game.get_config_value(
-                clan.group_ID, "death_related", f"{game.clan.game_mode}_death_chance"
-            )
+            * get_config(clan.group_ID, f"death_related.{game.clan.game_mode}_death_chance")
         )
         and not cat.not_working()
     ):  # 1/400
