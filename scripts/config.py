@@ -63,7 +63,7 @@ def get_config(clan, config_path):
     config_keys = tuple(config_path.split("."))
 
     # checking cards first
-    if clan:
+    if hasattr(clan, "cruel_cards"):
         for card in clan.cruel_cards:
             if config_path in card["modifiers"]:
                 config_value = card["modifiers"][config_path]
