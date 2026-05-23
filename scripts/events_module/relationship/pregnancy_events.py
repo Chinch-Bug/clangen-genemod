@@ -1914,7 +1914,7 @@ class Pregnancy_Events:
     def get_stillborn_chance(kits_amount):
         """Fetch chance of stillborn kittens."""
 
-        stillborn_info = get_config(game.clan, "pregnancy.birth_cooldown")
+        stillborn_info = get_config(game.clan, "pregnancy.stillborn_chances")
         stillborn_chance = 0
         if kits_amount < 3:
             stillborn_chance = stillborn_info['small']
