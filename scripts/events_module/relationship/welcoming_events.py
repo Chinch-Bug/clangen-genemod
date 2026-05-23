@@ -4,7 +4,7 @@ from random import choice
 
 import i18n
 
-from scripts.game_structure import constants
+from scripts.config import get_config
 from scripts.cat.cats import Cat
 from scripts.cat.enums import CatRank, CatGroup
 from scripts.cat_relations.enums import RelType
@@ -69,8 +69,8 @@ class Welcoming_Events:
         )
 
         # influence the relationship
-        new_to_clan_cat = constants.CONFIG["new_cat"]["rel_buff"]["new_to_clan_cat"]
-        clan_cat_to_new = constants.CONFIG["new_cat"]["rel_buff"]["clan_cat_to_new"]
+        new_to_clan_cat = get_config(game.clan, "new_cat.rel_buff.new_to_clan_cat")
+        clan_cat_to_new = get_config(game.clan, "new_cat.rel_buff.clan_cat_to_new")
 
         # the effect is set through the settings, therefore a rough assumption has to be made
         if any(val > 0 for val in clan_cat_to_new.values()):

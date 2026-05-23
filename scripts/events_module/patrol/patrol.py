@@ -29,8 +29,10 @@ from scripts.events_module.event_filters import (
     cat_for_event,
     event_for_poi,
 )
+from scripts.config import PREY_CONFIG
 from scripts.events_module.patrol.patrol_event import PatrolEvent
 from scripts.events_module.patrol.patrol_outcome import PatrolOutcome
+from scripts.config import get_config
 from scripts.game_structure import localization, constants
 from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure import game
@@ -107,8 +109,8 @@ class Patrol:
         self.add_patrol_cats(patrol_cats, game.clan)
 
         self.debug_patrol = (
-            constants.CONFIG["patrol_generation"]["debug_ensure_patrol_id"]
-            if constants.CONFIG["patrol_generation"]["debug_ensure_patrol_id"]
+            get_config(game.clan, "patrol_generation.debug_ensure_patrol_id")
+            if get_config(game.clan, "patrol_generation.debug_ensure_patrol_id")
             else False
         )
 
@@ -349,9 +351,7 @@ class Patrol:
 
         possible_patrols = []
         # This is for debugging purposes, load-in *ALL* the possible patrols when debug_override_patrol_stat_requirements is true. (May require longer loading time)
-        if constants.CONFIG["patrol_generation"][
-            "debug_override_patrol_stat_requirements"
-        ]:
+        if get_config(game.clan, "patrol_generation.debug_override_patrol_stat_requirements"):
             leaves = ["greenleaf", "leaf-bare", "leaf-fall", "newleaf", "any"]
             for biome in constants.BIOME_TYPES:
                 for leaf in leaves:
@@ -507,9 +507,7 @@ class Patrol:
         )
 
         # This is a debug option, this allows you to remove any constraints of a patrol regarding location, session, biomes, etc.
-        if constants.CONFIG["patrol_generation"][
-            "debug_override_patrol_stat_requirements"
-        ]:
+        if get_config(game.clan, "patrol_generation.debug_override_patrol_stat_requirements"):
             final_patrols = final_romance_patrols = possible_patrols
             # Logging
             print(
@@ -530,7 +528,7 @@ class Patrol:
                         rom = "romance"
                     print(
                         f"debug_ensure_patrol_id: "
-                        f'"{constants.CONFIG["patrol_generation"]["debug_ensure_patrol_id"]}" '
+                        f'"{get_config(game.clan, "patrol_generation.debug_ensure_patrol_id")}" '
                         f"is a possible {patrol_type} patrol, and was set as the only "
                         f"{patrol_type} {rom} patrol option"
                     )
@@ -538,7 +536,7 @@ class Patrol:
             else:
                 print(
                     f"debug_ensure_patrol_id: "
-                    f'"{constants.CONFIG["patrol_generation"]["debug_ensure_patrol_id"]}" '
+                    f'"{get_config(game.clan, "patrol_generation.debug_ensure_patrol_id")}" '
                     f"is not found. Check output for reason."
                 )
         return final_patrols, final_romance_patrols
@@ -603,9 +601,7 @@ class Patrol:
             return False
 
         print("attempted romance between:", love1.name, love2.name)
-        chance_of_romance_patrol = constants.CONFIG["patrol_generation"][
-            "chance_of_romance_patrol"
-        ]
+        chance_of_romance_patrol = get_config(game.clan, "patrol_generation.chance_of_romance_patrol")
 
         if (
             get_personality_compatibility(love1, love2) == CatCompatibility.POSITIVE
@@ -625,7 +621,7 @@ class Patrol:
 
         if (
             romantic_event.patrol_id
-            == game.constants.CONFIG["patrol_generation"]["debug_ensure_patrol_id"]
+            == get_config(game.clan, "patrol_generation.debug_ensure_patrol_id")
         ):
             chance_of_romance_patrol = 1
 
@@ -683,7 +679,7 @@ class Patrol:
                 if (
                     patrol.frequency != chosen_frequency
                     and patrol.patrol_id
-                    != constants.CONFIG["patrol_generation"]["debug_ensure_patrol_id"]
+                    != get_config(game.clan, "patrol_generation.debug_ensure_patrol_id")
                 ):
                     continue
                 if not self._check_constraints(patrol):
@@ -691,8 +687,7 @@ class Patrol:
 
                 # Don't check for repeat patrols if ensure_patrol_id is being used.
                 if (
-                    constants.CONFIG["patrol_generation"]["debug_ensure_patrol_id"]
-                    == ""
+                    get_config(game.clan, "patrol_generation.debug_ensure_patrol_id") == ""
                     and patrol.patrol_id in self.used_patrols
                 ):
                     continue
@@ -978,9 +973,7 @@ class Patrol:
 
         patrol_size = len(self.patrol_cats)
         total_exp = sum([x.experience for x in self.patrol_cats])
-        gm_modifier = constants.CONFIG["patrol_generation"][
-            f"{game.clan.game_mode}_difficulty_modifier"
-        ]
+        gm_modifier = get_config(game.clan, f"patrol_generation.{game.clan.game_mode}_difficulty_modifier")
 
         exp_adustment = (
             (1 + 0.10 * patrol_size) * total_exp / (patrol_size * gm_modifier * 2)
@@ -1016,13 +1009,12 @@ class Patrol:
             if is_exclusionary and not hits:
                 # if they don't have a disallowed skill, we increase the chance
                 success_chance += (
-                    1 * constants.CONFIG["patrol_generation"]["win_stat_cat_modifier"]
+                    1 * get_config(game.clan, "patrol_generation.win_stat_cat_modifier")
                 )
             else:
                 # if they had a required skill, we increase
                 success_chance += (
-                    hits
-                    * constants.CONFIG["patrol_generation"]["win_stat_cat_modifier"]
+                    hits * get_config(game.clan, "patrol_generation.win_stat_cat_modifier")
                 )
 
             # FAIL OUTCOME
@@ -1038,13 +1030,12 @@ class Patrol:
             if is_exclusionary and not hits:
                 # if they don't have a disallowed skill, we decrease chance (fail mod is a negative)
                 success_chance += (
-                    1 * constants.CONFIG["patrol_generation"]["fail_stat_cat_modifier"]
+                    1 * get_config(game.clan, "patrol_generation.fail_stat_cat_modifier")
                 )
             else:
                 # if they had the required skill, we decrease chance (fail mod is a negative)
                 success_chance += (
-                    hits
-                    * constants.CONFIG["patrol_generation"]["fail_stat_cat_modifier"]
+                    hits * get_config(game.clan, "patrol_generation.fail_stat_cat_modifier")
                 )
 
             # SUCCESS OUTCOME
@@ -1061,9 +1052,7 @@ class Patrol:
             if (is_exclusionary and kitty.personality.trait not in trait_to_check) or (
                 kitty.personality.trait in trait_to_check
             ):
-                success_chance += constants.CONFIG["patrol_generation"][
-                    "win_stat_cat_modifier"
-                ]
+                success_chance += get_config(game.clan, "patrol_generation.win_stat_cat_modifier")
 
             # FAIL OUTCOME
             is_exclusionary = any(
@@ -1077,9 +1066,7 @@ class Patrol:
             if (is_exclusionary and kitty.personality.trait not in trait_to_check) or (
                 kitty.personality.trait in trait_to_check
             ):
-                success_chance += constants.CONFIG["patrol_generation"][
-                    "fail_stat_cat_modifier"
-                ]
+                success_chance += get_config(game.clan, "patrol_generation.fail_stat_cat_modifier")
 
             skill_updates += f"{kitty.name} updated chance to {success_chance} | "
 
@@ -1093,11 +1080,9 @@ class Patrol:
 
         # This is a debug option, this will forcefully change the outcome of a patrol
         if isinstance(
-            constants.CONFIG["patrol_generation"]["debug_ensure_patrol_outcome"], bool
+            get_config(game.clan, "patrol_generation.debug_ensure_patrol_outcome"), bool
         ):
-            success = constants.CONFIG["patrol_generation"][
-                "debug_ensure_patrol_outcome"
-            ]
+            success = get_config(game.clan, "patrol_generation.debug_ensure_patrol_outcome")
             # Logging
             print(
                 f"The outcome of {self.patrol_event.patrol_id} was altered to {success}"
@@ -1243,5 +1228,5 @@ class Patrol:
 #                               PATROL CLASS END                               #
 # ---------------------------------------------------------------------------- #
 
-PATROL_WEIGHT_ADAPTION = constants.PREY_CONFIG["patrol_weight_adaption"]
-PATROL_BALANCE = constants.PREY_CONFIG["patrol_balance"]
+PATROL_WEIGHT_ADAPTION = PREY_CONFIG["patrol_weight_adaption"]
+PATROL_BALANCE = PREY_CONFIG["patrol_balance"]

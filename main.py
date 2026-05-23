@@ -14,7 +14,8 @@ from scripts.clan import Afterlife, clan_class
 
 from scripts.debug_console import debug_mode
 from scripts.game_input import INPUT_ACTION_PRESSED
-from scripts.game_structure import constants, game
+from scripts.game_structure import game, constants
+from scripts.config import load_clan_config, get_config
 from scripts.game_structure.audio.audio_manager import AudioManager
 from scripts.game_structure.discord_rpc import _DiscordRPC
 from scripts.game_structure.game.save_load import read_clans
@@ -73,7 +74,7 @@ def load_data():
         switch_set_value(Switch.clan_list, clan_list)
         switch_set_value(Switch.clan_name, clan_list[0])
         try:
-            constants.load_clan_config()
+            load_clan_config()
             game.starclan = Afterlife()
             game.dark_forest = Afterlife()
             load_cats()
@@ -97,9 +98,9 @@ def loading_animation(scale: float = 1):
     # Load images, adjust color
     color = pygame.Surface((200 * scale, 210 * scale))
     if game_setting_get("dark mode"):
-        color.fill(constants.CONFIG["theme"]["light_mode_background"])
+        color.fill(get_config(game.clan, "theme.light_mode_background"))
     else:
-        color.fill(constants.CONFIG["theme"]["dark_mode_background"])
+        color.fill(get_config(game.clan, "theme.dark_mode_background"))
 
     if len(images) == 0:
         for i in range(1, 11):
@@ -123,9 +124,9 @@ def loading_animation(scale: float = 1):
         clock.tick(8)  # Loading screen is 8FPS
 
         if game_setting_get("dark mode"):
-            screen.fill(constants.CONFIG["theme"]["dark_mode_background"])
+            screen.fill(get_config(game.clan, "theme.dark_mode_background"))
         else:
-            screen.fill(constants.CONFIG["theme"]["light_mode_background"])
+            screen.fill(get_config(game.clan, "theme.light_mode_background"))
 
         screen.blit(
             images[i], (x - images[i].get_width() / 2, y - images[i].get_height() / 2)

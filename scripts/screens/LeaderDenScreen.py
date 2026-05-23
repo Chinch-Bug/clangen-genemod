@@ -262,7 +262,7 @@ class LeaderDenScreen(Screens):
         self.clan_temper = game.clan.temperament
 
         self.screen_elements["clan_notice_text"] = pygame_gui.elements.UITextBox(
-            relative_rect=ui_scale(pygame.Rect((68, 375), (445, -1))),
+            relative_rect=ui_scale(pygame.Rect((68, 365), (445, -1))),
             html_text="screens.leader_den.clan_notice_text",
             object_id=get_text_box_theme("#text_box_30_horizcenter_spacing_95"),
             visible=False,
@@ -273,7 +273,7 @@ class LeaderDenScreen(Screens):
             },
         )
         self.screen_elements["outsider_notice_text"] = pygame_gui.elements.UITextBox(
-            relative_rect=ui_scale(pygame.Rect((68, 375), (445, -1))),
+            relative_rect=ui_scale(pygame.Rect((68, 365), (445, -1))),
             html_text=f"screens.leader_den.outsider_notice_text",
             object_id=get_text_box_theme("#text_box_30_horizcenter_spacing_95"),
             visible=False,
@@ -336,7 +336,7 @@ class LeaderDenScreen(Screens):
         self.screen_elements["clan_notice_text"].show()
 
         self.screen_elements["temper_text"] = pygame_gui.elements.UITextBox(
-            relative_rect=ui_scale(pygame.Rect((68, 400), (445, -1))),
+            relative_rect=ui_scale(pygame.Rect((68, 405), (445, -1))),
             html_text="screens.leader_den.temper_text",
             object_id=get_text_box_theme("#text_box_30_horizcenter"),
             manager=MANAGER,

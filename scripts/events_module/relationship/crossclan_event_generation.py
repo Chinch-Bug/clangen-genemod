@@ -18,6 +18,7 @@ from scripts.events_module.event_filters import (
     find_new_frequency,
 )
 from scripts.events_module.relationship.crossclan_event import CrossClanEvent
+from scripts.config import get_config
 from scripts.game_structure import constants, game
 
 loaded_events = {}
@@ -41,7 +42,8 @@ def handle_crossclan_relationships():
         if living:
             viable_cats[c.group_ID] = living
 
-    event_count = min(constants.CONFIG["relationship"]["max_crossclan_interaction"], int(sum([len(c) for c in viable_cats.values()])/len(viable_cats.keys())/2))
+    event_count = min(get_config(game.clan, "relationship.max_crossclan_interaction"), int(
+        sum([len(c) for c in viable_cats.values()])/len(viable_cats.keys())/2))
 
     for i in range(event_count):
         main_cat = choice(viable_cats[choice(list(viable_cats.keys()))])
@@ -279,7 +281,7 @@ def filter_events(
             continue
 
         # ensure ID and requirements override
-        if constants.CONFIG["event_generation"]["debug_override_requirements"]:
+        if get_config(game.clan, "event_generation.debug_override_requirements"):
             final_events.append(event)
             continue
 
@@ -355,8 +357,8 @@ def filter_events(
             continue
 
         if (
-            constants.CONFIG["event_generation"]["debug_ensure_event_id"]
-            and constants.CONFIG["event_generation"]["debug_ensure_event_id"]
+            get_config(game.clan, "event_generation.debug_ensure_event_id")
+            and get_config(game.clan, "event_generation.debug_ensure_event_id")
             != chosen_event.event_id
         ):
             final_events.remove(chosen_event)
@@ -365,7 +367,7 @@ def filter_events(
             continue
 
         # if we're overriding requirements, don't bother looking for an appropriate cat
-        # if constants.CONFIG["event_generation"]["debug_override_requirements"]:
+        # if get_config(game.clan, "event_generation.debug_override_requirements"):
         #     chosen_cat = choice(cat_list)
         #     continue
 

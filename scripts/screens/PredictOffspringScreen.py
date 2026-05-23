@@ -15,7 +15,7 @@ from ..game_structure.game.settings import game_setting_get
 from ..clan_package.settings import get_clan_setting
 from ..clan_package.get_clan_cats import search_cats
 from ..game_structure.game.switches import switch_get_value, Switch
-from scripts.game_structure import constants
+from scripts.config import get_config
 from pygame_gui.elements import UIDropDownMenu, UITextBox
 from pygame import Rect
 from ..ui.elements.sprite_button import UISpriteButton
@@ -284,7 +284,7 @@ class PredictOffspringScreen(Screens):
         )
         
     def one_offspring(self):
-        par2geno = Genotype(constants.CONFIG['genetics_config'], game_setting_get("ban problem genes"))
+        par2geno = Genotype(get_config(game.clan, "genetics_config"), game_setting_get("ban problem genes"))
         if 'Y' in self.selected_cat.phenotype.sexgene:
             par2geno.Generator('fem')
         else:

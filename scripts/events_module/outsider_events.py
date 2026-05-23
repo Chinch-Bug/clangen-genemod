@@ -7,7 +7,7 @@ import i18n
 from scripts.cat.enums import CatGroup
 from scripts.clan_package.settings import get_clan_setting
 from scripts.event_class import Single_Event
-from scripts.game_structure import constants
+from scripts.config import get_config
 from scripts.game_structure import game
 from scripts.events_module.text_adjust import event_text_adjust
 from scripts.game_structure.localization import load_lang_resource
@@ -33,11 +33,11 @@ class OutsiderEvents:
 
         # killing outside cats
         if cat.status.is_outsider or game.clan.clancount == "singleclan" and cat.status.is_other_clancat:
-            age_start = constants.CONFIG["death_related"]["old_age_death_start"]
-            death_curve_setting = constants.CONFIG["death_related"]["old_age_death_curve"]
+            age_start = get_config(game.clan, "death_related.old_age_death_start")
+            death_curve_setting = get_config(game.clan, "death_related.old_age_death_curve")
             death_curve_value = 0.001 * death_curve_setting
             old_age_death_chance = ((1 + death_curve_value) ** (cat.moons - age_start)) - 1
-            if random.getrandbits(int(constants.CONFIG["outsider_events"]["outsider_death"])) == 1 or random.random() <= old_age_death_chance and not cat.dead:
+            if random.getrandbits(int(get_config(game.clan, "outsider_events.outsider_death"))) == 1 or random.random() <= old_age_death_chance and not cat.dead:
                 death_history = i18n.t("events.death.outsider_deaths.history.default")
                 if cat.status.is_exiled(CatGroup.PLAYER_CLAN_ID if game.clan.clancount == "singleclan" else None):
                     text = random.choice(deaths["exiled"])
@@ -98,7 +98,7 @@ class OutsiderEvents:
 
         # move outsider cats away from the Clan automatically
         if cat.status.is_outsider:
-            if random.getrandbits(int(constants.CONFIG["outsider_events"]["outsider_wander_off"])) == 1 and not cat.dead and not cat.age.is_baby() and cat.status.is_near():
+            if random.getrandbits(int(get_config(game.clan, "outsider_events.outsider_wander_off"))) == 1 and not cat.dead and not cat.age.is_baby() and cat.status.is_near():
                 if cat.status.is_exiled(CatGroup.PLAYER_CLAN_ID if game.clan.clancount == "singleclan" else None):
                     text = random.choice(wander_events["exiled"])
                 elif cat.status.is_lost(CatGroup.PLAYER_CLAN_ID if game.clan.clancount == "singleclan" else None):
@@ -125,7 +125,7 @@ class OutsiderEvents:
                                  "m_c": cat}, clan=cat.status.get_last_valid_group_id())
                 )
                 cat.status.change_group_nearness(clan.group_ID)
-            elif random.getrandbits(int(constants.CONFIG["outsider_events"]["outsider_return"])) == 1 and not cat.dead and not cat.status.is_near():
+            elif random.getrandbits(int(get_config(game.clan, "outsider_events.outsider_return"))) == 1 and not cat.dead and not cat.status.is_near():
                 if cat.status.is_exiled(CatGroup.PLAYER_CLAN_ID if game.clan.clancount == "singleclan" else None):
                     text = random.choice(return_events["exiled"])
                 elif cat.status.is_lost(CatGroup.PLAYER_CLAN_ID if game.clan.clancount == "singleclan" else None):

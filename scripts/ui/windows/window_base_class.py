@@ -2,7 +2,7 @@ import pygame
 import pygame_gui
 from pygame_gui.elements import UIWindow
 
-from scripts.game_structure import constants
+from scripts.config import get_config
 from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.ui.elements.image_button import UIImageButton
@@ -40,16 +40,14 @@ class GameWindow(UIWindow):
         fade_surface = pygame.Surface(MANAGER.window_resolution)
 
         fade_surface.fill(
-            constants.CONFIG["theme"][
-                f"{'dark' if game_setting_get('dark mode') else 'light'}_mode_background"
-            ]
+            get_config(None, f"theme.{'dark' if game_setting_get('dark mode') else 'light'}_mode_background")
         )
 
         MANAGER.draw_ui(fade_surface)
 
         temp_surface = pygame.Surface(MANAGER.window_resolution, pygame.SRCALPHA)
 
-        temp_surface.fill(constants.CONFIG["theme"]["fade"])
+        temp_surface.fill(get_config(None, "theme.fade"))
 
         self.fade = pygame_gui.elements.UIImage(
             pygame.Rect((0, 0), MANAGER.window_resolution),

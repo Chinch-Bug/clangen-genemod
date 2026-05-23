@@ -25,7 +25,7 @@ from scripts.game_structure.game.switches import (
 from scripts.game_structure.game.settings import game_setting_get
 from ..cat.pronouns import get_new_pronouns
 from scripts.housekeeping.version import SAVE_VERSION_NUMBER
-from scripts.game_structure import constants
+from scripts.config import get_config
 from scripts.game_structure import game
 from ..cat.personality import Personality
 from ..cat.skills import CatSkills
@@ -811,7 +811,7 @@ def json_load():
             )
             switch_set_value(Switch.traceback, e)
             raise
-        if constants.CONFIG["save_load"]["load_integrity_checks"]:
+        if get_config(None, "save_load.load_integrity_checks"):
             save_check()
 
     inheritance_db.clear_stored_data()

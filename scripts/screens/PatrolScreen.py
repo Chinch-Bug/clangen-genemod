@@ -19,7 +19,8 @@ from ..ui.scale import ui_scale, ui_scale_dimensions
 from .Screens import Screens
 from .enums import GameScreen
 from ..clan_package.settings import get_clan_setting
-from ..game_structure import image_cache, constants
+from scripts.config import get_config
+from ..game_structure import image_cache
 from ..game_structure.game.switches import switch_set_value, Switch
 from ..game_structure.game.settings import game_setting_get
 from ..cat.enums import CatRank
@@ -1117,9 +1118,9 @@ class PatrolScreen(Screens):
             ):
                 if (
                     the_cat.status.rank == CatRank.NEWBORN
-                    or constants.CONFIG["fun"]["all_cats_are_newborn"]
+                    or get_config(game.clan, "fun.all_cats_are_newborn")
                 ):
-                    if constants.CONFIG["fun"]["newborns_can_patrol"]:
+                    if get_config(game.clan, "fun.newborns_can_patrol"):
                         self.able_cats.append(the_cat)
                 else:
                     self.able_cats.append(the_cat)

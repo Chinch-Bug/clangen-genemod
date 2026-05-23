@@ -608,8 +608,10 @@ dev_tools = false
   war_death_modifier_leader = 35
   war_death_modifier = 330
 
-  # 2^x chance for mass death event to trigger per cat on moonskip
+  # 1/2^x chance for mass death event to trigger per cat on moonskip
   mass_death_chance = 9
+  # maximum number of cats that can die from a single mass death event
+  max_mass_deaths = 10
   # Maximum amount to pick for mass death events when triggered (max will be 1/3 of the living clan cats if that is smaller)
   max_mass_death = 10
 
@@ -818,9 +820,9 @@ dev_tools = false
   # chance for kittypets and other outsiders to generate as already spayed/neutered
   kittypet_neuter = 0.8
   loner_tnr = 0.05
-  # chance for cats lost to Twolegs to be spayed/neutered. Clan_tnr2 is for events not explicitly reminiscent of TNR programs
-  Clan_tnr = 0.99
-  Clan_tnr2 = 0.5
+  # chance for cats lost to Twolegs to be spayed/neutered. clan_tnr2 is for events not explicitly reminiscent of TNR programs
+  clan_tnr = 0.99
+  clan_tnr2 = 0.5
 
 [graduation]
   # minimum age required for a cat to graduate

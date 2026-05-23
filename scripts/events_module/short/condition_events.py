@@ -23,7 +23,7 @@ from scripts.config import get_config
 from scripts.event_class import Single_Event
 from scripts.events_module.short.scar_events import Scar_Events
 from scripts.events_module.short.short_event_generation import create_short_event
-from scripts.game_structure import constants
+from scripts.config import get_config
 from scripts.game_structure.game.switches import (
     Switch,
     switch_get_value,
@@ -276,10 +276,12 @@ class Condition_Events:
             # ---------------------------------------------------------------------------- #
             #                              make cats sick                                  #
             # ---------------------------------------------------------------------------- #
+            
             random_number = int(
                 random.random()
-                * game.get_config_value(
-                    clan.group_ID, "condition_related", f"{game.clan.game_mode}_illness_chance"
+                * get_config(
+                    game.clan,
+                    f"condition_related.{'classic' if game.clan.game_mode == 'classic' else 'expanded'}_illness_chance"
                 )
             )
             modifier = 1
@@ -289,9 +291,7 @@ class Condition_Events:
             season_dict = Condition_Events.SPECIAL_SEASON_LIST[season]
             for key in season_dict:
                 if key in list(cat.permanent_condition.keys()) or key == "fully hairless" and cat.pelt.length == "hairless" and (cat.phenotype.sedesp[0] == "hr" or cat.phenotype.ruhr[1] == "Hrbd" or cat.moons > 11):
-                    modifier = game.get_config_value(
-                        clan.group_ID, "condition_related", f"{game.clan.game_mode}_perm_condition_modifier"
-                    )
+                    modifier = get_config(game.clan, f"condition_related.{game.clan.game_mode}_perm_condition_modifier")
                     relevant_conditions.append(key)
 
             if (
@@ -302,9 +302,7 @@ class Condition_Events:
             ):
                 # CLAN FOCUS!
                 if clan == game.clan and get_clan_setting("rest_and_recover"):
-                    stopping_chance = constants.CONFIG["focus"]["rest_and_recover"][
-                        "illness_prevent"
-                    ]
+                    stopping_chance = get_config(game.clan, "focus.rest_and_recover.illness_prevent")
                     if not int(random.random() * stopping_chance):
                         return triggered
 
@@ -422,9 +420,9 @@ class Condition_Events:
                 game.clan,
                 f"condition_related.{'classic' if game.clan.game_mode == 'classic' else 'expanded'}_injury_chance"
             )
-            - get_config(game.clan, "condition_related.war_injury_modifier")
+            - (get_config(game.clan, "condition_related.war_injury_modifier")
             if modify_for_war
-            else 0
+            else 0)
         )
 
         random_number = int(random.random() * injury_chance)
@@ -434,7 +432,7 @@ class Condition_Events:
             return triggered
 
         if (
-            constants.CONFIG["event_generation"]["debug_type_override"] == "injury"
+            get_config(game.clan, "event_generation.debug_type_override") == "injury"
         ):
             create_short_event(
                 event_type="health",
@@ -482,9 +480,7 @@ class Condition_Events:
             if triggered:
                 # CLAN FOCUS!
                 if get_clan_setting("rest_and_recover") and clan == game.clan:
-                    stopping_chance = constants.CONFIG["focus"]["rest_and_recover"][
-                        "injury_prevent"
-                    ]
+                    stopping_chance = get_config(game.clan, "focus.rest_and_recover.injury_prevent")
                     if not int(random.random() * stopping_chance):
                         return False
 
@@ -580,9 +576,7 @@ class Condition_Events:
                                 possible_conditions.append(x)
                         if len(possible_conditions) > 0 and not int(
                             random.random()
-                            * constants.CONFIG["condition_related"][
-                                "permanent_condition_chance"
-                            ]
+                            * get_config(game.clan, "condition_related.permanent_condition_chance")
                         ):
                             perm_condition = random.choice(possible_conditions)
                         else:

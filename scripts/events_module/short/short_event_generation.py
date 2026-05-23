@@ -28,6 +28,7 @@ from scripts.events_module.event_filters import (
     event_for_poi,
 )
 from scripts.events_module.short.short_event import ShortEvent
+from scripts.config import get_config
 from scripts.game_structure import constants, game
 from scripts.game_structure.game.switches import switch_get_value, Switch
 from scripts.clan_package.cotc import get_warring_clan
@@ -208,9 +209,7 @@ def find_needed_events(frequency, event_type=None) -> list:
         )
         raise Exception(f"Unrecognized biome {game.clan.biome}.")
 
-    if (
-        debug_id := constants.CONFIG["event_generation"]["debug_ensure_event_id"]
-    ) and "debug" in debug_id:
+    if (debug_id := get_config(game.clan, "event_generation.debug_ensure_event_id")) and "debug" in debug_id:
         try:
             event_list.extend(generate_event_objects(event_type, "_debug", 0))
             frequency = 0
@@ -260,7 +259,7 @@ def generate_event_objects(event_triggered, biome, frequency) -> list:
     :param biome: The biome to pull events for
     :param frequency: The frequency to pull events for
     """
-    debug_freq = constants.CONFIG["event_generation"]["debug_override_frequency"]
+    debug_freq = get_config(game.clan, "event_generation.debug_override_frequency")
     if debug_freq:
         frequency = debug_freq
 
@@ -383,7 +382,7 @@ def filter_events(
             continue
 
         # ensure ID and requirements override
-        if constants.CONFIG["event_generation"]["debug_override_requirements"]:
+        if get_config(game.clan, "event_generation.debug_override_requirements"):
             if game.clan.clancount == 'multiclan' and event.other_clan and not event_for_other_clan(
                 Cat, event.other_clan.get("has_rank"), other_clan.group_ID
             ):
@@ -432,20 +431,20 @@ def filter_events(
         if "old_age" in event.sub_type:
             if (
                 main_cat.moons
-                < constants.CONFIG["death_related"]["old_age_death_start"]
+                < get_config(game.clan, "death_related.old_age_death_start")
             ):
                 continue
             if (
                 random_cat
                 and random_cat.moons
-                < constants.CONFIG["death_related"]["old_age_death_start"]
+                < get_config(game.clan, "death_related.old_age_death_start")
             ):
                 continue
         # remove some non-old age events to encourage elders to die of old age more often
         if (
             "old_age" not in event.sub_type
             and main_cat.moons
-            > constants.CONFIG["death_related"]["old_age_death_start"]
+            > get_config(game.clan, "death_related.old_age_death_start")
             and int(random.random() * 3)
         ):
             continue
@@ -593,11 +592,11 @@ def filter_events(
     if random_cat:
         chosen_cat = random_cat
         # if we've got our random cat already, then check if we have to find an ensured event
-        if constants.CONFIG["event_generation"]["debug_ensure_event_id"]:
+        if get_config(game.clan, "event_generation.debug_ensure_event_id"):
             for possible_event in final_events:
                 if (
                     possible_event.event_id
-                    == constants.CONFIG["event_generation"]["debug_ensure_event_id"]
+                    == get_config(game.clan, "event_generation.debug_ensure_event_id")
                 ):
                     chosen_event = possible_event
                     break
@@ -614,8 +613,8 @@ def filter_events(
             continue
 
         if (
-            constants.CONFIG["event_generation"]["debug_ensure_event_id"]
-            and constants.CONFIG["event_generation"]["debug_ensure_event_id"]
+            get_config(game.clan, "event_generation.debug_ensure_event_id")
+            and get_config(game.clan, "event_generation.debug_ensure_event_id")
             != chosen_event.event_id
         ):
             final_events.remove(chosen_event)
@@ -628,7 +627,7 @@ def filter_events(
             break
 
         # if we're overriding requirements, don't bother looking for an appropriate cat
-        if constants.CONFIG["event_generation"]["debug_override_requirements"]:
+        if get_config(game.clan, "event_generation.debug_override_requirements"):
             chosen_cat = random.choice(cat_list)
             continue
 
@@ -656,7 +655,7 @@ def filter_events(
         elif (
             "old_age" in chosen_event.sub_type
             and chosen_cat.moons
-            < constants.CONFIG["death_related"]["old_age_death_start"]
+            < get_config(game.clan, "death_related.old_age_death_start")
         ):
             failed_ids.append(chosen_event.event_id)
             final_events.remove(chosen_event)

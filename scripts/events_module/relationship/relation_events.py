@@ -4,7 +4,7 @@ from random import choice, randint
 
 import ujson
 
-from scripts.game_structure import constants
+from scripts.config import get_config
 from scripts.cat.cats import Cat
 from scripts.cat.enums import CatRank, CatGroup, CatAge
 from scripts.events_module.relationship.group_events import GroupEvents
@@ -112,7 +112,7 @@ class Relation_Events:
         # that the cat interacts romantic with ANOTHER cat than their mate
         use_mate = False
         if cat.mate:
-            chance_number = constants.CONFIG["relationship"]["chance_romance_not_mate"]
+            chance_number = get_config(None, "relationship.chance_romance_not_mate")
 
             # the more mates the cat has, the less likely it will be that they interact with another cat romantically
             for mate_id in cat.mate:
@@ -150,7 +150,7 @@ class Relation_Events:
 
         # gets cats who are within an age range. range is either 40% their current moon age OR 40 moons, whichever is smaller
         same_age_cats = get_cats_same_age(
-            Cat, cat, min(constants.CONFIG["mates"]["age_range"], int(cat.moons * 0.4))
+            Cat, cat, min(get_config(None, "mates.age_range"), int(cat.moons * 0.4))
         )
         if [c for c in same_age_cats if c.age == CatAge.NEWBORN]:
             pass
@@ -176,7 +176,7 @@ class Relation_Events:
 
         chosen_type = "all"
         if len(Relation_Events.GROUP_TYPES) > 0 and randint(
-            0, constants.CONFIG["relationship"]["chance_of_special_group"]
+            0, get_config(None, "relationship.chance_of_special_group")
         ):
             types_to_choose = []
             for group, value in Relation_Events.GROUP_TYPES.items():
@@ -233,12 +233,12 @@ class Relation_Events:
             same_age_cats = get_cats_same_age(
                 Cat,
                 new_cat,
-                min(constants.CONFIG["mates"]["age_range"], int(new_cat.moons * 0.4)),
+                min(get_config(None, "mates.age_range"), int(new_cat.moons * 0.4)),
             )
             alive_cats = [
                 i for i in new_cat.all_cats.values() if i.status.group_ID == new_cat.status.group_ID
             ]
-            number = constants.CONFIG["new_cat"]["cat_amount_welcoming"]
+            number = get_config(None, "new_cat.cat_amount_welcoming")
 
             if len(alive_cats) == 0:
                 return
@@ -326,9 +326,9 @@ class Relation_Events:
         ]
 
         # set the threshold correctly
-        threshold = constants.CONFIG["relationship"]["max_interaction"]
+        threshold = get_config(None, "relationship.max_interaction")
         if cat.status.rank in special_ranks:
-            threshold = constants.CONFIG["relationship"]["max_interaction_special"]
+            threshold = get_config(None, "relationship.max_interaction_special")
 
         if cat.ID not in Relation_Events.cats_triggered_events:
             return True

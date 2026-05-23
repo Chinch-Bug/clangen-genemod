@@ -5,7 +5,7 @@ from typing import Optional
 import i18n
 
 from scripts.cat.enums import CatCompatibility
-from scripts.game_structure import constants
+from scripts.config import get_config
 from scripts.cat_relations.interaction import (
     cats_fulfill_single_interaction_constraints,
     rebuild_relationship_dicts,
@@ -273,8 +273,9 @@ class Relationship:
         amount : int
             the amount (negative or positive) for the given parameter
         """
+        relationship_info = get_config(game.clan, "relationship")
         # get the normal amount
-        amount = constants.CONFIG["relationship"]["value_change_amount"][intensity]
+        amount = relationship_info["value_change_amount"][intensity]
         if not is_positive:
             amount = amount * -1
 
@@ -283,10 +284,10 @@ class Relationship:
         if compatibility == CatCompatibility.NEUTRAL:
             amount = amount
         elif compatibility == CatCompatibility.POSITIVE:
-            amount += constants.CONFIG["relationship"]["compatibility_effect"]
+            amount += relationship_info["compatibility_effect"]
         else:
             # negative compatibility
-            amount -= constants.CONFIG["relationship"]["compatibility_effect"]
+            amount -= relationship_info["compatibility_effect"]
         return amount
 
     def interaction_affect_relationships(
@@ -311,7 +312,7 @@ class Relationship:
         # only high intensity gives passive buffs
         if intensity == "high":
             passive_buff = int(
-                amount / constants.CONFIG["relationship"][f"passive_influence_div"]
+                amount / get_config(game.clan, "relationship.passive_influence_div")
             )
             # just adding a teeny bit of variety
             buffs = [passive_buff - 1, passive_buff, passive_buff + 1]
@@ -788,7 +789,7 @@ class Relationship:
         """
         Returns the tier group for the given value.
         """
-        for group, interval in constants.CONFIG["relationship"]["value_intervals"].items():
+        for group, interval in get_config(game.clan, "relationship.value_intervals").items():
             if rel_type <= interval:
                 return group
 
@@ -796,7 +797,7 @@ class Relationship:
 
     @staticmethod
     def _get_neutral_adjusted_value(value: int):
-        value_intervals = constants.CONFIG["relationship"]["value_intervals"]
+        value_intervals = get_config(game.clan, "relationship.value_intervals")
         neutral_start = value_intervals["low_neg"]
         neutral_end = value_intervals["neutral"]
 

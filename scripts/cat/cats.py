@@ -54,9 +54,10 @@ from scripts.conditions import (
     get_amount_cat_for_one_medic,
     medicine_cats_can_cover_clan,
 )
+from scripts.config import get_config
 from scripts.event_class import Single_Event
 from scripts.events_module.generate_events import GenerateEvents
-from scripts.game_structure import image_cache, constants, game
+from scripts.game_structure import image_cache, game
 from scripts.game_structure.game.save_load import safe_save
 from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure.game.switches import switch_get_value, Switch
@@ -83,14 +84,15 @@ class Cat:
     used_screen = screen
     current_pronoun_lang = None
 
+    ages_info = get_config(game.clan, "cat_ages")
     age_moons = {
-        CatAge.NEWBORN: constants.CONFIG["cat_ages"]["newborn"],
-        CatAge.KITTEN: constants.CONFIG["cat_ages"]["kitten"],
-        CatAge.ADOLESCENT: constants.CONFIG["cat_ages"]["adolescent"],
-        CatAge.YOUNG_ADULT: constants.CONFIG["cat_ages"]["young adult"],
-        CatAge.ADULT: constants.CONFIG["cat_ages"]["adult"],
-        CatAge.SENIOR_ADULT: constants.CONFIG["cat_ages"]["senior adult"],
-        CatAge.SENIOR: constants.CONFIG["cat_ages"]["senior"],
+        CatAge.NEWBORN: ages_info["newborn"],
+        CatAge.KITTEN: ages_info["kitten"],
+        CatAge.ADOLESCENT: ages_info["adolescent"],
+        CatAge.YOUNG_ADULT: ages_info["young adult"],
+        CatAge.ADULT: ages_info["adult"],
+        CatAge.SENIOR_ADULT: ages_info["senior adult"],
+        CatAge.SENIOR: ages_info["senior"],
     }
 
     # This in is in reverse order: top of the list at the bottom
@@ -232,8 +234,8 @@ class Cat:
         self.adoptive_parents = adoptive_parents.copy() if adoptive_parents else []
         self.surrogate_parents = surrogate_parents.copy() if surrogate_parents else []
         self.affair_parents = affair_parents.copy() if affair_parents else []
-        gene_config = constants.CONFIG['genetics_config']
-        gene_config.update(constants.CONFIG['april_fools_genes'])
+        gene_config = get_config(game.clan, "genetics_config")
+        gene_config.update(get_config(game.clan, "april_fools_genes"))
         self.phenotype = Phenotype(gene_config, game_setting_get("ban problem genes"))
         self.chimerapheno = None
         chimera = False
@@ -242,7 +244,7 @@ class Cat:
             self.chimerapheno.fromJSON(chimerageno)
             self.chimerapheno.chimerapattern = chim_pattern if chim_pattern else self.chimerapheno.ChooseTortiePattern("chimera")
             chimera = True
-        elif not loading_cat and randint(1, constants.CONFIG['genetics_config']["chimera"]) == 1:
+        elif not loading_cat and randint(1, gene_config["chimera"]) == 1:
             self.chimerapheno = Phenotype(gene_config, game_setting_get("ban problem genes"))
             self.chimerapheno.chimerapattern = chim_pattern if chim_pattern else self.chimerapheno.ChooseTortiePattern("chimera")
             chimera = True
@@ -269,15 +271,16 @@ class Cat:
                     print(traceback.format_exception(e))
                     self.phenotype.Generator(kittypet=kittypet, special=self.gender)
         else:
+            kittypet_boost = get_config(game.clan, "cat_generation.kittypet_gene_boost")
             if not chimera:
-                if kittypet and constants.CONFIG["cat_generation"]["kittypet_gene_boost"]:
+                if kittypet and kittypet_boost:
                     self.phenotype.AltGenerator(special=self.gender)
                 else:
                     self.phenotype.Generator(special=self.gender, kittypet=kittypet)
             else:
                 par1 = Phenotype(gene_config, game_setting_get("ban problem genes"))
                 par2 = Phenotype(gene_config, game_setting_get("ban problem genes"))
-                if kittypet and constants.CONFIG["cat_generation"]["kittypet_gene_boost"]:
+                if kittypet and kittypet_boost:
                     par1.AltGenerator()
                     par2.AltGenerator()
                 else:
@@ -295,7 +298,7 @@ class Cat:
                 self.phenotype.pax3[0] = 'DBEalt'
         
         if not loading_cat and not self.disable_random:
-            if(randint(1, constants.CONFIG['genetics_config']['intersex']) == 1) or (self.chimerapheno and xor('Y' in self.phenotype.sexgene, 'Y' in self.chimerapheno.sexgene)):
+            if (randint(1, gene_config["intersex"]) == 1) or (self.chimerapheno and xor('Y' in self.phenotype.sexgene, 'Y' in self.chimerapheno.sexgene)):
                 self.phenotype.sex = "intersex"
                 if (randint(1, 25) == 1 and 'Y' in self.phenotype.sexgene) or (self.chimerapheno and xor('Y' in self.phenotype.sexgene, 'Y' in self.chimerapheno.sexgene) and randint(1, 10) == 1):
                     self.phenotype.sex = 'molly'
@@ -621,7 +624,7 @@ class Cat:
             m = self.moons
             self.experience = 0
             while m > Cat.age_moons[CatAge.ADOLESCENT][0]:
-                ran = constants.CONFIG["clancat_ex"]["base_app_timeskip_ex"]
+                ran = get_config(game.clan, "clancat_ex.base_app_timeskip_ex")
                 exp = choice(
                     list(range(ran[0][0], ran[0][1] + 1)) + list(range(ran[1][0], ran[1][1] + 1)))
                 self.experience += exp + 3
@@ -1520,7 +1523,7 @@ class Cat:
         load_leader_ceremonies()
         self.history.prev_names.append(str(self.name))
 
-        total_lives = max(1, choice(constants.CONFIG["clan_creation"]["leader_lives_nr"]))
+        total_lives = max(1, choice(get_config(game.clan, "clan_creation.leader_lives_nr")))
         self.status.fetch_clan_object().leader_lives = total_lives
 
         # determine which dict we're pulling from
@@ -1969,9 +1972,7 @@ class Cat:
         moons_with = game.clan.age - self.illnesses[illness]["moon_start"]
 
         # focus buff
-        recovery_buff = constants.CONFIG["focus"]["rest_and_recover"][
-            "moons_earlier_healed"
-        ]
+        recovery_buff = get_config(game.clan, "focus.rest_and_recover.moons_earlier_healed")
 
         if self.illnesses[illness]["duration"] - moons_with <= 0:
             self.healed_condition = True
@@ -2013,9 +2014,7 @@ class Cat:
         moons_with = game.clan.age - self.injuries[injury]["moon_start"]
 
         # focus buff
-        recovery_buff = constants.CONFIG["focus"]["rest_and_recover"][
-            "moons_earlier_healed"
-        ]
+        recovery_buff = get_config(game.clan, "focus.rest_and_recover.moons_earlier_healed")
 
         # if the cat has an infected wound, the wound shouldn't heal till the illness is cured
         if (
@@ -2751,13 +2750,12 @@ class Cat:
 
             # the +1 is necessary because both might not already be aged up
             # if only one is aged up at this point, later they are more moons apart than the setting defined
-            # constants.CONFIG boolean "override_same_age_group" disables the same-age group check.
+            # game config boolean "override_same_age_group" disables the same-age group check.
+            mates_info = get_config(game.clan, "mates")
             if (
-                constants.CONFIG["mates"].get("override_same_age_group", False)
-                or self.age != other_cat.age
+                mates_info.get("override_same_age_group", False) or self.age != other_cat.age
             ) and (
-                abs(self.moons - other_cat.moons)
-                > constants.CONFIG["mates"]["age_range"] + 1
+                abs(self.moons - other_cat.moons) > mates_info["age_range"] + 1
             ):
                 return False
 
@@ -3510,16 +3508,17 @@ class Cat:
         """Returns the moons + dead_for moons rather than the moons at death for dead cats, so dead cats are sorted by
         total age, rather than age at death"""
         if cat.dead:
-            if constants.CONFIG["sorting"]["sort_rank_by_death"]:
+            sorting_info = get_config(game.clan, "sorting")
+            if sorting_info["sort_rank_by_death"]:
                 if switch_get_value(Switch.sort_type) == "rank":
                     return cat.dead_for
                 else:
-                    if constants.CONFIG["sorting"]["sort_dead_by_total_age"]:
+                    if sorting_info["sort_dead_by_total_age"]:
                         return cat.dead_for + cat.moons
                     else:
                         return cat.moons
             else:
-                if constants.CONFIG["sorting"]["sort_dead_by_total_age"]:
+                if sorting_info["sort_dead_by_total_age"]:
                     return cat.dead_for + cat.moons
                 else:
                     return cat.moons
@@ -3844,10 +3843,11 @@ def create_cat(rank, moons=None, biome=None, kittypet=False, clan=None):
 # Twelve example cats
 def create_example_cats():
     warrior_indices = sample(range(12), 3)
+    use_special = get_config(None, "clan_creation.use_special_roller")
 
     for cat_index in range(12):
         if cat_index in warrior_indices:
-            game.choose_cats[cat_index] = create_cat(rank=CatRank.WARRIOR, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"])
+            game.choose_cats[cat_index] = create_cat(rank=CatRank.WARRIOR, kittypet=use_special)
         else:
             random_rank = choice(
                 [
@@ -3858,15 +3858,15 @@ def create_example_cats():
                     CatRank.ELDER,
                 ]
             )
-            game.choose_cats[cat_index] = create_cat(rank=random_rank, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"])
+            game.choose_cats[cat_index] = create_cat(rank=random_rank, kittypet=use_special)
 
 
 def create_option_preview_cat(scar: str = None, acc: str = None):
     """
     Creates a cat with the specified scar
     """
-    gene_config = constants.CONFIG['genetics_config']
-    gene_config.update(constants.CONFIG['april_fools_genes'])
+    gene_config = get_config(game.clan, "genetics_config")
+    gene_config.update(get_config(game.clan, "april_fools_genes"))
     pheno = Phenotype(gene_config, game_setting_get("ban problem genes"))
     pheno.Generator()
     new_cat = Cat(

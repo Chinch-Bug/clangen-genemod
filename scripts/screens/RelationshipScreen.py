@@ -7,7 +7,8 @@ import pygame_gui.elements
 from scripts.cat.cats import Cat
 from scripts.cat.enums import CatStanding
 from scripts.cat_relations.relationship import Relationship
-from scripts.game_structure import image_cache, constants
+from scripts.config import get_config
+from scripts.game_structure import image_cache
 from scripts.game_structure import game
 from scripts.ui.elements.relation_display import UIRelationDisplay
 from scripts.ui.elements.sprite_button import UISpriteButton
@@ -447,7 +448,7 @@ class RelationshipScreen(Screens):
         blank_relations = [Relationship(self.the_cat, Cat.fetch_cat(x)) for x in self.the_cat.blank_relations if Cat.fetch_cat(x)]
         
         # Keep a list of all the relations
-        if constants.CONFIG["sorting"]["sort_by_rel_total"]:
+        if get_config(game.clan, "sorting.sort_by_rel_total"):
             self.all_relations = sorted(
                 self.the_cat.relationships.values(),
                 key=lambda x: x.total_abs_relationship_value,

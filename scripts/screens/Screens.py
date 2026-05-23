@@ -8,6 +8,7 @@ import i18n
 
 import scripts.game_structure.screen_settings
 import scripts.screens.screens_core.screens_core
+from scripts.config import get_config
 from scripts.game_structure import constants
 from scripts.cat.enums import CatGroup
 from scripts.game_structure.game.settings import (
@@ -124,11 +125,11 @@ class Screens:
         self.work_done = {}
 
         bg = pygame.Surface(scripts.game_structure.screen_settings.game_screen_size)
-        bg.fill(constants.CONFIG["theme"]["light_mode_background"])
+        bg.fill(get_config(game.clan, "theme.light_mode_background"))
         bg_dark = pygame.Surface(
             scripts.game_structure.screen_settings.game_screen_size
         )
-        bg_dark.fill(constants.CONFIG["theme"]["dark_mode_background"])
+        bg_dark.fill(get_config(game.clan, "theme.dark_mode_background"))
 
         self.game_bgs = {}
         self.fullscreen_bgs = {}
@@ -436,7 +437,7 @@ class Screens:
         # intialise the vignette strength
         vignette = scripts.screens.screens_core.screens_core.vignette
         if vignette_alpha is None:
-            vignette_alpha = constants.CONFIG["theme"]["fullscreen_background"][
+            vignette_alpha = get_config(game.clan, "theme.fullscreen_background")[
                 "dark" if game_setting_get("dark mode") else "light"
             ]["vignette_alpha"]
         if not (0 <= vignette_alpha <= 255):

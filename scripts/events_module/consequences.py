@@ -19,7 +19,8 @@ from scripts.cat.names import names
 from scripts.cat_relations.enums import RelType
 from scripts.cat_relations.inheritance2 import inheritance_db
 from scripts.clan_package.settings import get_clan_setting
-from scripts.game_structure import game, constants
+from scripts.config import get_config
+from scripts.game_structure import game
 from scripts.cat.constants import BACKSTORIES, PERMANENT
 from scripts.events_module.text_adjust import process_text, event_text_adjust, adjust_list_text
 from scripts.game_structure.game import game_setting_get
@@ -86,8 +87,7 @@ def create_bio_parents(Cat, flip=False, second_parent=True, clan=None):
                                            outside=True,
                                            is_parent=True)[0]
     else:
-        par2geno = Genotype(
-            constants.CONFIG['genetics_config'], game_setting_get("ban problem genes"))
+        par2geno = Genotype(get_config(game.clan, "genetics_config"), game_setting_get("ban problem genes"))
         par2geno.Generator('masc' if flip else 'fem')
 
     if thought:
@@ -1134,8 +1134,9 @@ def create_new_cat(
             weights = [1, 1, 1, 1]
             # give kittypets a kittypet name
             overwrite_prefix = False
+            name_controls_info = get_config(game.clan, "cat_name_controls")
             if original_social == CatSocial.KITTYPET:
-                weights = constants.CONFIG["cat_name_controls"]["kittypet"]
+                weights = name_controls_info["kittypet"]
                 # check if the kittypets come with a pretty acc
                 if bool(getrandbits(1)):
                     new_cat.pelt.accessory = (
@@ -1143,10 +1144,10 @@ def create_new_cat(
                         choice(new_cat.pelt.collar_accessories),
                     )
             if original_social == CatSocial.LONER:
-                weights = constants.CONFIG["cat_name_controls"]["loner"]
+                weights = name_controls_info["loner"]
 
             if original_social == CatSocial.ROGUE:
-                weights = constants.CONFIG["cat_name_controls"]["rogue"]
+                weights = name_controls_info["rogue"]
 
             selected_category = choices(name_categories, weights, k=1)[0]
             name = choice(names.names_dict[selected_category])
@@ -1198,15 +1199,13 @@ def create_new_cat(
 
         # chance to give the new cat a permanent condition, higher chance for found kits and litters
         if kit or litter:
-            chance = int(
-                constants.CONFIG["cat_generation"]["base_permanent_condition"] / 11.25
-            )
+            chance = int(get_config(game.clan, "cat_generation.base_permanent_condition") / 11.25)
         else:
-            chance = constants.CONFIG["cat_generation"]["base_permanent_condition"]
+            chance = get_config(game.clan, "cat_generation.base_permanent_condition")
 
         if not is_parent and get_clan_setting('tnr_mode') and moons > 5:
-            kittypet_n = constants.CONFIG['tnr_mode']['kittypet_neuter']
-            loner_n = constants.CONFIG['tnr_mode']['loner_tnr']
+            kittypet_n = get_config(game.clan, "tnr_mode.kittypet_neuter")
+            loner_n = get_config(game.clan, "tnr_mode.loner_tnr")
             if original_social == CatSocial.KITTYPET and random() < kittypet_n:
                 new_cat.get_permanent_condition("sterile", False)
             if original_social in (CatSocial.LONER, CatSocial.ROGUE) and random() < loner_n:
@@ -1459,12 +1458,14 @@ def unpack_rel_block(
         if None in cats_to_ob:
             cats_to_ob.remove(None)
 
+        relationship_info = get_config(game.clan, "relationship")
+
         positive = False
         if amount > 0:
-            amount = int(amount * constants.CONFIG["relationship"]["pos_rel_change_multiplier"])
+            amount = int(amount * relationship_info["pos_rel_change_multiplier"])
             positive = True
         else:
-            amount = int(amount * constants.CONFIG["relationship"]["neg_rel_change_multiplier"])
+            amount = int(amount * relationship_info["neg_rel_change_multiplier"])
 
         # grabbing values
         value_changes = {}

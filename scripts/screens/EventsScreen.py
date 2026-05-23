@@ -9,6 +9,7 @@ from pygame_gui.core import ObjectID
 from scripts.cat.cats import Cat
 from scripts import events
 from scripts.events import Single_Event
+from scripts.config import get_config
 from scripts.game_structure import image_cache, constants
 from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure.game.switches import (
@@ -882,10 +883,8 @@ class EventsScreen(Screens):
         anchor = {"top": "top"}
 
         default_color = pygame.Color(
-            constants.CONFIG["theme"][
-                ("dark" if game_setting_get("dark mode") else "light")
-                + "_mode_background"
-            ]
+            get_config(game.clan, f"theme.{'dark' if game_setting_get('dark mode') else 'light'}_mode_background"
+            )
         )
 
         alternate_color = (

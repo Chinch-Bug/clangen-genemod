@@ -7,7 +7,7 @@ import random
 
 import ujson
 
-from scripts.game_structure import constants
+from scripts.config import get_config
 from scripts.cat.enums import CatRank, CatGroup, CatAge
 from scripts.housekeeping.datadir import get_save_dir
 from .alt_namer import Namer
@@ -263,9 +263,10 @@ class Name:
         elif self.prefix in self.mod_prefixes['general']['big'] and self.phenotype.height_label in ['teacup', 'tiny', 'small', 'below average', 'average']:
             colour_changed = True
             
-        chance = constants.CONFIG["cat_name_controls"]["prefix_change_chance"][change]
+        name_control_info = get_config(game.clan, "cat_name_controls.prefix_change_chance")
+        chance = name_control_info[change]
         if colour_changed:
-            chance /= constants.CONFIG["cat_name_controls"]["prefix_change_chance"]["pelt_change_modifier"]
+            chance /= name_control_info["pelt_change_modifier"]
 
         if random.random() < (1/chance):
             self.give_prefix(self.cat, biome)
@@ -275,9 +276,9 @@ class Name:
 
     # Generate possible prefix
     def give_prefix(self, cat, biome, no_suffix=False):
+        name_control_info = get_config(game.clan, "cat_name_controls")
         if get_clan_setting("modded names") and get_clan_setting('outsider names') and random.random() < 0.5:
-            selected_category = random.choices(["silly_names", "human_names", "loner_names",
-                                              "normal_prefixes"], constants.CONFIG["cat_name_controls"]["clancat"], k=1)[0]
+            selected_category = random.choices(["silly_names", "human_names", "loner_names", "normal_prefixes"], name_control_info["clancat"], k=1)[0]
             self.prefix = random.choice(self.names_dict[selected_category])
             return
         if not self.phenotype:
@@ -382,7 +383,7 @@ class Name:
         try:
             if self.mod_suffixes and skills and personality:
                 options = []
-                suffix_settings = constants.CONFIG["cat_name_controls"]["alt_suffixes"]
+                suffix_settings = get_config(game.clan, "cat_name_controls.alt_suffixes")
                 for i in range(suffix_settings["primary_skill"]):
                     try:
                         options.append(self.mod_suffixes['skill'][skills.primary.path.name])

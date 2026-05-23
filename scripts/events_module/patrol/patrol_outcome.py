@@ -13,6 +13,7 @@ import pygame
 from scripts.cat.personality import Personality
 from scripts.events_module.future.prep_and_trigger import prep_future_event
 from scripts.clan_package.settings import get_clan_setting
+from scripts.config import get_config
 from scripts.game_structure import constants
 from scripts.game_structure.game.settings import game_setting_get
 
@@ -250,10 +251,10 @@ class PatrolOutcome:
         tnr = False
         tnr2 = False
         if 'tnr' in patrol.patrol_event.tags and get_clan_setting('tnr_mode'):
-            if random.random() < constants.CONFIG['tnr_mode']['Clan_tnr']:
+            if random.random() < get_config(game.clan, "tnr_mode.clan_tnr"):
                 tnr = True
         if 'tnr2' in patrol.patrol_event.tags and get_clan_setting('tnr_mode'):
-            if random.random() < constants.CONFIG['tnr_mode']['Clan_tnr2']:
+            if random.random() < get_config(game.clan, "tnr_mode.clan_tnr2"):
                 tnr = True
                 tnr2 = True
 

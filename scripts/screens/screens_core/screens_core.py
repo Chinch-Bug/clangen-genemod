@@ -9,7 +9,8 @@ import pygame
 import pygame_gui
 
 import scripts.game_structure.screen_settings
-from scripts.game_structure import image_cache, constants
+from scripts.config import get_config
+from scripts.game_structure import image_cache
 from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure import game
 from scripts.game_structure.screen_settings import MANAGER
@@ -507,9 +508,9 @@ def rebuild_bgs():
         del game_box
 
     bg = pygame.Surface(scripts.game_structure.screen_settings.game_screen_size)
-    bg.fill(constants.CONFIG["theme"]["light_mode_background"])
+    bg.fill(get_config(game.clan, "theme.light_mode_background"))
     bg_dark = pygame.Surface(scripts.game_structure.screen_settings.game_screen_size)
-    bg_dark.fill(constants.CONFIG["theme"]["dark_mode_background"])
+    bg_dark.fill(get_config(game.clan, "theme.dark_mode_background"))
 
     default_game_bgs = {
         "light": {"default": bg},
@@ -667,13 +668,11 @@ def process_blur_bg(
     if theme is None:
         theme = "dark" if game_setting_get("dark mode") else "light"
 
-    fade.fill(constants.CONFIG["theme"]["fullscreen_background"][theme]["fade_color"])
-    vignette.set_alpha(
-        constants.CONFIG["theme"]["fullscreen_background"][theme]["vignette_alpha"]
-    )
-    dropshadow.set_alpha(
-        constants.CONFIG["theme"]["fullscreen_background"][theme]["dropshadow_alpha"]
-    )
+    fullscreen_theme_info = get_config(game.clan, "theme.fullscreen_background")
+
+    fade.fill(fullscreen_theme_info[theme]["fade_color"])
+    vignette.set_alpha(fullscreen_theme_info[theme]["vignette_alpha"])
+    dropshadow.set_alpha(fullscreen_theme_info[theme]["dropshadow_alpha"])
 
     if vignette_strength is not None:
         vignette.set_alpha(vignette_strength)

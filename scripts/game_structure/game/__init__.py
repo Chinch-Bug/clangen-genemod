@@ -118,10 +118,7 @@ To give us the deprecation warnings/errors
 def __getattr__(attr):
     import warnings
 
-    if attr == "config":
-        warnings.warn("Use constants.CONFIG instead", DeprecationWarning, 2)
-        return constants.CONFIG
-    elif attr == "switches":
+    if attr == "switches":
         # unfortunately there's no way to let this one fix itself, so we have to CTD.
         warnings.warn(
             "Use get_switch(), set_switch(), or helpers instead", DeprecationWarning, 2
@@ -141,11 +138,6 @@ def __getattr__(attr):
     else:
         raise AttributeError(f"module '{__name__}' object has no attribute '{attr}'")
 
-
-"""
-DEPRECATED: use constants.CONFIG instead
-"""
-config: Any
 
 """
 DEPRECATED: use get_switch(), set_switch(), or helpers instead - WILL CRASH if you try and use this anyway
@@ -234,72 +226,6 @@ def load_events():
                 cur_events_list.append(event_obj)
     except FileNotFoundError:
         pass
-
-
-def get_config_value(active_clan: "CatGroup", *args):
-    """Fetches a value from the config dictionary. Pass each key as a
-    separate argument, in the same order you would access the dictionary.
-    This function will apply war modifiers if the clan is currently at war."""
-
-    global clan
-
-    war_effected = {
-        ("death_related", "leader_death_chance"): (
-            "death_related",
-            "war_death_modifier_leader",
-        ),
-        ("death_related", "classic_death_chance"): (
-            "death_related",
-            "war_death_modifier",
-        ),
-        ("death_related", "expanded_death_chance"): (
-            "death_related",
-            "war_death_modifier",
-        ),
-        ("death_related", "cruel season_death_chance"): (
-            "death_related",
-            "war_death_modifier",
-        ),
-        ("condition_related", "classic_injury_chance"): (
-            "condition_related",
-            "war_injury_modifier",
-        ),
-        ("condition_related", "expanded_injury_chance"): (
-            "condition_related",
-            "war_injury_modifier",
-        ),
-        ("condition_related", "cruel season_injury_chance"): (
-            "condition_related",
-            "war_injury_modifier",
-        ),
-    }
-
-    # Get Value
-    config_value = constants.CONFIG
-    for key in args:
-        config_value = config_value[key]
-
-    # Apply war if needed
-    if clan and clan.get_wars(active_clan) and args in war_effected:
-        rel_change_types = switch_get_value(Switch.war_rel_change_type)
-        all_pos = True
-        for key in rel_change_types:
-            for other_key in rel_change_types[key]:
-                if rel_change_types[key][other_key] != "rel_up" and active_clan in [key, other_key]:
-                    all_pos = False
-
-        # if the war was positively affected this moon, we don't apply war modifier
-        # this way we only see increased death/injury when the war is going badly or is neutral
-        if not all_pos:
-            # Grabs the modifier
-            mod = constants.CONFIG
-            for key in war_effected[args]:
-                mod = mod[key]
-
-            config_value -= mod
-
-    return config_value
-
 
 def get_free_group_ID(group_type: CatGroup) -> str:
     """

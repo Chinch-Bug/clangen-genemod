@@ -4,7 +4,7 @@ from random import choice, shuffle
 
 import i18n.config
 
-from scripts.game_structure import constants
+from scripts.config import get_config
 from scripts.cat.cats import Cat
 from scripts.cat.history import History
 from scripts.cat_relations.interaction import create_group_interaction, GroupInteraction
@@ -114,7 +114,7 @@ class GroupEvents:
 
         # TRIGGER ALL NEEDED FUNCTIONS TO REFLECT THE INTERACTION
         GroupEvents.injuring_cats(chosen_interaction, abbreviations_cat_id)
-        amount = constants.CONFIG["relationship"]["value_change_amount"][
+        amount = get_config(game.clan, "relationship.value_change_amount")[
             chosen_interaction.intensity
         ]
 

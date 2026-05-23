@@ -7,7 +7,8 @@ from scripts.cat.enums import CatAge, CatGroup
 from scripts.cat.phenotype import Phenotype
 from scripts.cat.sprites.load_sprites import sprites
 from scripts.clan_package.settings import get_clan_setting
-from scripts.game_structure import constants, image_cache
+from scripts.config import get_config
+from scripts.game_structure import image_cache
 from scripts.game_structure.game import game_setting_get
 from scripts.ui.scale import ui_scale_dimensions
 from copy import deepcopy
@@ -72,7 +73,7 @@ def generate_sprite(
         not disable_sick_sprite
         and cat.not_working()
         and age != CatAge.NEWBORN
-        and constants.CONFIG["cat_sprites"]["sick_sprites"]
+        and get_config(game.clan, "cat_sprites.sick_sprites")
     ):
         if age in (CatAge.KITTEN, CatAge.ADOLESCENT):
             cat_sprite = sprite_poses["sick_young0"]
@@ -91,7 +92,7 @@ def generate_sprite(
 
     # default sprites
     else:
-        if constants.CONFIG["fun"]["all_cats_are_newborn"]:
+        if get_config(game.clan, "fun.all_cats_are_newborn"):
             cat_sprite = sprite_poses[cat.pelt.cat_sprites["newborn"]]
         else:
             if cat.pelt.length == 'medium' and get_current_season(season_override) == 'Leaf-bare':
@@ -1327,9 +1328,9 @@ def generate_sprite(
         # setting the lineart color to override on accessories & missing bits
         lineart_color = (
             pygame.Color(
-                constants.CONFIG["cat_sprites"]["lineart_color_sc"]
+                get_config(game.clan, "cat_sprites")["lineart_color_sc"]
                 if cat.status.group == CatGroup.STARCLAN
-                else constants.CONFIG["cat_sprites"]["lineart_color_df"]
+                else get_config(game.clan, "cat_sprites")["lineart_color_df"]
             )
             if cat.status.group != CatGroup.UNKNOWN_RESIDENCE
             else None
@@ -1475,7 +1476,7 @@ def generate_sprite(
                 elif cat_sprite in ["1", "5"]:
                     new_sprite.blit(tail, (0, -2))
 
-            if constants.CONFIG["fun"]["april_fools_hats"]:
+            if get_config(game.clan, "fun.april_fools_hats"):
                 if not dead:
                     new_sprite.blit(
                         sprites.sprites['aprilfoolslines' + cat_sprite], (0, 0))

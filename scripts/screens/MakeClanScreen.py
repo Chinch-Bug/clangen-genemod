@@ -8,7 +8,7 @@ import pygame
 import pygame_gui
 from pygame_gui.core import ObjectID
 
-from scripts.config import reset_config, load_clan_config
+from scripts.config import reset_config, load_clan_config, get_config
 import scripts.screens.screens_core.screens_core
 from scripts.screens.EventsScreen import EventsScreen
 from scripts.cat.cats import create_example_cats, create_cat, Cat
@@ -16,7 +16,7 @@ from scripts.cat.names import names
 from scripts.clan import Clan
 from scripts.events_module.patrol.patrol import Patrol
 from scripts.game_structure import image_cache
-from scripts.game_structure import game, constants
+from scripts.game_structure import game
 from .screens_core.screens_core import rebuild_top_menu_buttons
 from ..ui.elements.sprite_button import UISpriteButton
 from ..ui.elements.image_button import UIImageButton
@@ -108,7 +108,7 @@ class MakeClanScreen(Screens):
         # current page for symbol choosing
         self.current_page = 1
 
-        self.rolls_left = constants.CONFIG["clan_creation"]["rerolls"]
+        self.rolls_left = get_config(None, "clan_creation.rerolls")
         self.menu_warning = None
 
     def screen_switches(self):
@@ -349,7 +349,7 @@ class MakeClanScreen(Screens):
                 self.elements[Switch.error_message].hide()
             self.refresh_cat_images_and_info()  # Refresh all the images.
             self.rolls_left -= 1
-            if constants.CONFIG["clan_creation"]["rerolls"] == 3:
+            if get_config(None, "clan_creation.rerolls") == 3:
                 event.ui_element.disable()
             else:
                 self.elements["reroll_count"].set_text(str(self.rolls_left))
@@ -583,7 +583,7 @@ class MakeClanScreen(Screens):
         self.main_menu.kill()
         self.menu_warning.kill()
         self.clear_all_page()
-        self.rolls_left = constants.CONFIG["clan_creation"]["rerolls"]
+        self.rolls_left = get_config(None, "clan_creation.rerolls")
         self.fullscreen_bgs = {}
         self.game_bgs = {}
         self.set_mute_button_position("bottomright")
@@ -1331,10 +1331,12 @@ class MakeClanScreen(Screens):
             self.symbol_selected = f"symbol{self.clan_name.upper()}0"
         else:
             self.symbol_selected = choice(sprites.clan_symbols)
-        self.leader = create_cat(rank=CatRank.WARRIOR, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"])
-        self.deputy = create_cat(rank=CatRank.WARRIOR, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"])
-        self.med_cat = create_cat(rank=CatRank.WARRIOR, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"])
-        for _ in range(randrange(constants.CONFIG["clan_creation"]["quickstart_cats"][0], constants.CONFIG["clan_creation"]["quickstart_cats"][1]+1)):
+        use_special = get_config(None, "clan_creation.use_special_roller")
+        cat_range = get_config(None, "clan_creation.quickstart_cats")
+        self.leader = create_cat(rank=CatRank.WARRIOR, kittypet=use_special)
+        self.deputy = create_cat(rank=CatRank.WARRIOR, kittypet=use_special)
+        self.med_cat = create_cat(rank=CatRank.WARRIOR, kittypet=use_special)
+        for _ in range(randrange(cat_range[0], cat_range[1]+1)):
             random_rank = choice(
                 [
                     CatRank.KITTEN,
@@ -1344,7 +1346,7 @@ class MakeClanScreen(Screens):
                     CatRank.ELDER,
                 ]
             )
-            self.members.append(create_cat(rank=random_rank, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"]))
+            self.members.append(create_cat(rank=random_rank, kittypet=use_special))
 
     def random_clan_name(self):
         clan_names = (
@@ -1697,7 +1699,7 @@ class MakeClanScreen(Screens):
             manager=MANAGER,
         )
 
-        if constants.CONFIG["clan_creation"]["rerolls"] == 3:
+        if get_config(None, "clan_creation.rerolls") == 3:
             if self.rolls_left <= 2:
                 self.elements["roll1"].disable()
             if self.rolls_left <= 1:

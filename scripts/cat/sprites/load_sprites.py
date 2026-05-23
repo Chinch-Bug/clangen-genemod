@@ -9,7 +9,8 @@ import os
 import ujson
 
 from scripts.cat.enums import CatGroup
-from scripts.game_structure import constants, image_cache
+from scripts.config import get_config
+from scripts.game_structure import image_cache
 from scripts.game_structure.game.settings import game_setting_get
 
 logger = logging.getLogger(__name__)
@@ -587,9 +588,9 @@ class Sprites:
         var.replace(
             (87, 76, 45),
             (
-                pygame.Color(constants.CONFIG["theme"]["dark_mode_clan_symbols"])
+                pygame.Color(get_config(None, "theme.dark_mode_clan_symbols"))
                 if not force_light and (game_setting_get("dark mode") or force_dark)
-                else pygame.Color(constants.CONFIG["theme"]["light_mode_clan_symbols"])
+                else pygame.Color(get_config(None, "theme.light_mode_clan_symbols"))
             ),
             distance=0,
         )

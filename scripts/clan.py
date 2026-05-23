@@ -33,6 +33,7 @@ from scripts.clan_resources.point_of_interest import (
     get_poi_names_set,
     clear_pois,
 )
+from scripts.config import get_config
 from scripts.events_module.future.future_event import FutureEvent
 from scripts.events_module.generate_events import OngoingEvent
 from scripts.game_structure import constants
@@ -169,7 +170,7 @@ class Clan:
         modifiers = {"Newleaf": 0, "Greenleaf": 3, "Leaf-fall": 6, "Leaf-bare": 9}
         return (
             self.starting_season
-            if constants.CONFIG["lock_season"]
+            if get_config(game.clan, "lock_season")
             else constants.SEASON_CALENDAR[
                 (self.age + modifiers[self.starting_season]) % 12
             ]
@@ -254,7 +255,7 @@ class Clan:
                 Cat.all_cats[i].example = True
                 self.remove_cat(Cat.all_cats[i].ID)
 
-        allowed_range = constants.CONFIG["clan_creation"]["other_clans_range"]
+        allowed_range = get_config(None, "clan_creation.other_clans_range")
         number_other_clans = randint(allowed_range[0], allowed_range[1])
         for _ in range(number_other_clans):
             other_clan = OtherClan(clancount=self.clancount)
@@ -269,7 +270,7 @@ class Clan:
                     game.clan.relations[clan.group_ID][o_clan.group_ID] = randint(8, 12)
                     game.clan.war[clan.group_ID][o_clan.group_ID] = {"at_war": False, "duration": 0}
 
-        allowed_range = constants.CONFIG["clan_creation"]["starting_outsiders"]
+        allowed_range = get_config(None, "clan_creation.starting_outsiders")
         number_outsiders = randint(allowed_range[0], allowed_range[1])
         for i in range(number_outsiders):
             create_new_cat(
@@ -377,7 +378,6 @@ class Clan:
             self.leader = leader
             Cat.all_cats[leader.ID].rank_change(CatRank.LEADER)
             self.leader_predecessors += 1
-            # self.leader_lives = max(1, choice(constants.CONFIG["clan_creation"]["leader_lives_nr"]))
 
         # todo: this leads nowhere, can it be deleted?
         switch_set_value(Switch.new_leader, None)
@@ -1495,11 +1495,13 @@ class OtherClan:
             self.instructor.dead_for = randint(20, 200)
             self.instructor.status.group_history.insert(0, {"rank": instructor_rank, "group": self.group_ID, "moons_as": self.instructor.moons})
 
-            self.new_leader(create_cat(CatRank.LEADER, biome=self.biome, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"], clan=self.group_ID))
-            self.new_deputy(create_cat(CatRank.DEPUTY, biome=self.biome, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"], clan=self.group_ID))
-            self.new_medicine_cat(create_cat(CatRank.MEDICINE_CAT, biome=self.biome, kittypet=constants.CONFIG["clan_creation"]["use_special_roller"], clan=self.group_ID))
-            for i in range(randint(constants.CONFIG["clan_creation"]["neighbourclan_cats"][0], constants.CONFIG["clan_creation"]["neighbourclan_cats"][1])):
-                create_cat(choice(random_rank), biome=self.biome, kittypet = constants.CONFIG["clan_creation"]["use_special_roller"], clan=self.group_ID)
+            use_special = get_config(None, "clan_creation.use_special_roller")
+            cat_range = get_config(None, "clan_creation.neighbourclan_cats")
+            self.new_leader(create_cat(CatRank.LEADER, biome=self.biome, kittypet=use_special, clan=self.group_ID))
+            self.new_deputy(create_cat(CatRank.DEPUTY, biome=self.biome, kittypet=use_special, clan=self.group_ID))
+            self.new_medicine_cat(create_cat(CatRank.MEDICINE_CAT, biome=self.biome, kittypet=use_special, clan=self.group_ID))
+            for i in range(randint(cat_range[0], cat_range[1])):
+                create_cat(choice(random_rank), biome=self.biome, kittypet = use_special, clan=self.group_ID)
 
     def __repr__(self):
         # has indicators that this is unlocalized, just in case
@@ -1534,7 +1536,6 @@ class OtherClan:
             self.leader = leader
             Cat.all_cats[leader.ID].rank_change(CatRank.LEADER)
             self.leader_predecessors += 1
-            # self.leader_lives = max(1, choice(constants.CONFIG["clan_creation"]["leader_lives_nr"]))
         switch_set_value(Switch.new_leader, None)
 
     def new_deputy(self, deputy):

@@ -19,7 +19,7 @@ def recursive_merge(dict1, dict2):
     return dict1
 
 def other_config_refreshes():
-    global CONFIG
+    global CONFIG, PREY_CONFIG
     from scripts.cat.cats import Cat
     from scripts.cat.enums import CatAge
     Cat.age_moons = {

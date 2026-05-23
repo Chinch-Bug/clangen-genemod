@@ -10,14 +10,14 @@ from scripts.clan_package.settings.clan_settings import (
     get_clan_setting,
     switch_clan_setting,
 )
-from scripts.game_structure import constants
 from scripts.game_structure.game.settings import game_setting_get
 from scripts.cat.enums import CatRank
+from scripts.config import get_config
 from scripts.game_structure import game
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.ui.elements.image_button import UIImageButton
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton
-from scripts.game_structure.constants import DISPLAY_SETTINGS, CONFIG
+from scripts.game_structure.constants import DISPLAY_SETTINGS
 from scripts.ui.windows.select_focus_clans import SelectFocusClansWindow
 from scripts.screens.Screens import Screens
 from scripts.ui.generate_button import ButtonStyles, get_button_dict
@@ -74,7 +74,7 @@ class WarriorDenScreen(Screens):
                         if (
                             game.clan.last_focus_change is None
                             or game.clan.last_focus_change
-                            + constants.CONFIG["focus"]["duration"]
+                            + get_config(game.clan, "focus.duration")
                             <= game.clan.age
                         ):
                             self.save_button.enable()
@@ -231,14 +231,14 @@ class WarriorDenScreen(Screens):
             # check mediator-related buttons
             if (
                 not self.has_mediators
-                and name in constants.CONFIG["focus"]["requires_mediator"]
+                and name in get_config(game.clan, "focus.requires_mediator")
             ):
                 self.focus_buttons[name].disable()
                 self.focus_buttons[name].set_text(f"settings.requires_mediator")
             # check meddie related buttons
             elif (
                 not self.has_meddies
-                and name in constants.CONFIG["focus"]["requires_medicine_cat"]
+                and name in get_config(game.clan, "focus.requires_medicine_cat")
             ):
                 self.focus_buttons[name].disable()
                 self.focus_buttons[name].set_text(f"settings.requires_medicine_cat")
@@ -262,7 +262,7 @@ class WarriorDenScreen(Screens):
         for name, value in settings_dict["clan_focus"].items():
             if (
                 game.clan.game_mode == "classic"
-                and name in constants.CONFIG["focus"]["classic_disallows"]
+                and name in get_config(game.clan, "focus.classic_disallows")
             ):
                 continue
 
@@ -320,7 +320,7 @@ class WarriorDenScreen(Screens):
             )
             moons = (
                 game.clan.last_focus_change
-                + constants.CONFIG["focus"]["duration"]
+                + get_config(game.clan, "focus.duration")
                 - game.clan.age
             )
             moons = moons if moons > 0 else 0

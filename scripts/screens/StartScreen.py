@@ -24,7 +24,8 @@ from pygame_gui.core import ObjectID
 from requests.exceptions import RequestException, Timeout
 
 from scripts.cat.cats import Cat
-from scripts.game_structure import image_cache, game, constants
+from scripts.config import get_config
+from scripts.game_structure import image_cache, game
 from scripts.game_structure.game.settings import game_settings_load, game_setting_get
 from ..ui.elements.image_button import UIImageButton
 from ..ui.elements.surface_image_button import UISurfaceImageButton
@@ -200,9 +201,7 @@ class StartScreen(Screens):
         bg = pygame.image.load("resources/images/menu.png").convert()
         if game_setting_get("dark mode"):
             bg.fill(
-                constants.CONFIG["theme"]["fullscreen_background"]["dark"][
-                    "mainmenu_tint"
-                ],
+                get_config(game.clan, "theme.fullscreen_background.dark.mainmenu_tint"),
                 bg.get_rect(),
                 pygame.BLEND_MULT,
             )
@@ -256,7 +255,7 @@ class StartScreen(Screens):
             manager=MANAGER,
             anchors={"top_target": self.settings_button},
         )
-        if constants.CONFIG["dev_tools"]:
+        if get_config(game.clan, "dev_tools"):
             self.event_edit = UISurfaceImageButton(
                 ui_scale(pygame.Rect((70, 15), (200, 30))),
                 "buttons.event_edit",
