@@ -347,6 +347,7 @@ class LeaderDenScreen(Screens):
                     second_temper=i18n.t(f"screens.leader_den.{self.clan_temper[1]}"),
                 ),
             },
+            # anchors={"top_target": self.screen_elements["clan_notice_text"]},
         )
 
         # INITIAL DISPLAY - display currently chosen interaction OR first clan in list
