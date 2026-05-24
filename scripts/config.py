@@ -6,7 +6,6 @@ from scripts.housekeeping.datadir import get_save_dir
 
 with open("resources/game_config.toml", "r", encoding="utf-8") as read_file:
     CONFIG = tomllib.loads(read_file.read())
-    PREY_CONFIG = CONFIG["clan_resources"]["freshkill"]
 
 def recursive_merge(dict1, dict2):
     for key, value in dict2.items():
@@ -19,7 +18,6 @@ def recursive_merge(dict1, dict2):
     return dict1
 
 def other_config_refreshes():
-    global CONFIG, PREY_CONFIG
     from scripts.cat.cats import Cat
     from scripts.cat.enums import CatAge
     Cat.age_moons = {
@@ -31,7 +29,6 @@ def other_config_refreshes():
         CatAge.SENIOR_ADULT: CONFIG["cat_ages"]["senior adult"],
         CatAge.SENIOR: CONFIG["cat_ages"]["senior"],
     }
-    PREY_CONFIG = CONFIG["clan_resources"]["freshkill"]
 
 def load_clan_config():
     global CONFIG

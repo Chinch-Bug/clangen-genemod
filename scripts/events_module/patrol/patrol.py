@@ -29,7 +29,6 @@ from scripts.events_module.event_filters import (
     cat_for_event,
     event_for_poi,
 )
-from scripts.config import PREY_CONFIG
 from scripts.events_module.patrol.patrol_event import PatrolEvent
 from scripts.events_module.patrol.patrol_outcome import PatrolOutcome
 from scripts.config import get_config
@@ -1228,5 +1227,5 @@ class Patrol:
 #                               PATROL CLASS END                               #
 # ---------------------------------------------------------------------------- #
 
-PATROL_WEIGHT_ADAPTION = PREY_CONFIG["patrol_weight_adaption"]
-PATROL_BALANCE = PREY_CONFIG["patrol_balance"]
+PATROL_WEIGHT_ADAPTION = get_config(game.clan, "prey.patrol_weight_adaption")
+PATROL_BALANCE = get_config(game.clan, "prey.patrol_balance")

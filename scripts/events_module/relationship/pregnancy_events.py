@@ -1592,6 +1592,7 @@ class Pregnancy_Events:
                 kit.pelt.length = ref_cat.pelt.length
                 kit.pelt.tint = ref_cat.pelt.tint
                 kit.pelt.white_patches_tint = ref_cat.pelt.white_patches_tint
+                kit.pelt.scars = ref_cat.pelt.scars
                 
                 if ref_cat.chimerapheno:
                     kit.chimerapheno = deepcopy(ref_cat.chimerapheno)   

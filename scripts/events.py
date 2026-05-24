@@ -7,7 +7,7 @@ TODO: Docs
 """
 import logging
 import random
-from scripts.config import get_config, PREY_CONFIG
+from scripts.config import get_config
 
 # pylint: enable=line-too-long
 import traceback
@@ -741,11 +741,9 @@ def get_moon_freshkill():
 
     prey_amount = 0
     for cat in healthy_hunter:
-        lower_value = PREY_CONFIG["auto_warrior_prey"][0]
-        upper_value = PREY_CONFIG["auto_warrior_prey"][1]
+        lower_value, upper_value = get_config(game.clan, "prey.auto_warrior_prey")
         if cat.status.rank == CatRank.APPRENTICE:
-            lower_value = PREY_CONFIG["auto_apprentice_prey"][0]
-            upper_value = PREY_CONFIG["auto_apprentice_prey"][1]
+            lower_value, upper_value = get_config(game.clan, "prey.auto_apprentice_prey")
 
         prey_amount += random.randint(lower_value, upper_value)
     game.freshkill_event_list.append(
