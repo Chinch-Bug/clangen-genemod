@@ -59,7 +59,7 @@ class CheckDeletionWindow(GameWindow):
                 shutil.rmtree(rempath)
                 if os.path.exists(rempath + "/clan.json"):
                     os.remove(rempath + "/clan.json")
-                if os.path.exists(rempath + "clan.json"):
+                elif os.path.exists(rempath + "clan.json"):
                     os.remove(rempath + "clan.json")
                 elif os.path.exists(rempath + "clan.txt"):
                     os.remove(rempath + "clan.txt")

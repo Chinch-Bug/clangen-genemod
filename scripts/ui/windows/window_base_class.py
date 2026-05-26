@@ -3,6 +3,7 @@ import pygame_gui
 from pygame_gui.elements import UIWindow
 
 from scripts.config import get_config
+from scripts.game_input import INPUT_ACTION_PRESSED
 from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.ui.elements.image_button import UIImageButton
@@ -95,6 +96,13 @@ class GameWindow(UIWindow):
             and not self.are_contents_hovered()
         ):
             self.kill()
+
+        if (
+            event.type == INPUT_ACTION_PRESSED
+            or INPUT_ACTION_PRESSED
+            and self.is_blocking
+        ):
+            return True  # consuming event
 
         return super().process_event(event)
 

@@ -14,7 +14,6 @@
         "fullscreen scaling" = false
         "no sprite antialiasing" = false
         "custom cursor" = false
-        keybinds = false
         shaders = false
         tints = false
         black_pupils = false

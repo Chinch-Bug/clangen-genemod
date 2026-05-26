@@ -71,7 +71,7 @@ class SwitchClanScreen(Screens):
                         # rebuild to update menu scheme differences between game modes
                         rebuild_core()
 
-        elif event.type == pygame.KEYDOWN and game_setting_get("keybinds"):
+        elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 self.change_screen(GameScreen.START)
 
@@ -170,7 +170,7 @@ class SwitchClanScreen(Screens):
         for clan in self.clan_list[1:]:
             self.clan_name[-1].append(clan)
             try:
-                with open(f"{get_save_dir()}/{clan}clan.json") as f:
+                with open(f"{get_save_dir()}/{clan}/clan.json") as f:
                     clan_button_name = ujson.load(f).get("displayname", clan)
             except (FileNotFoundError, ujson.JSONDecodeError):
                 clan_button_name = clan

@@ -181,24 +181,23 @@ class EventsScreen(Screens):
 
           
         # KEYBIND CONTROLS
-        elif game_setting_get("keybinds"):
-            # ON PRESSING A KEY
-            if event.type == pygame.KEYDOWN:
-                # LEFT ARROW
-                if event.key == pygame.K_LEFT:
-                    self.change_screen(GameScreen.PATROL)
-                # RIGHT ARROW
-                elif event.key == pygame.K_RIGHT:
-                    self.change_screen(GameScreen.CAMP)
-                # DOWN AND UP ARROW
-                elif event.key == pygame.K_DOWN or event.key == pygame.K_UP:
-                    self.handle_tab_select(event.key)
-                # RETURN
-                elif event.key == pygame.K_RETURN:
-                    self.handle_tab_switch(self.selected_display)
-                # SPACE
-                elif event.key == pygame.K_SPACE:
-                    self.save_button.save_game(current_screen=self)
+        # ON PRESSING A KEY
+        if event.type == pygame.KEYDOWN:
+            # LEFT ARROW
+            if event.key == pygame.K_LEFT:
+                self.change_screen(GameScreen.PATROL)
+            # RIGHT ARROW
+            elif event.key == pygame.K_RIGHT:
+                self.change_screen(GameScreen.CAMP)
+            # DOWN AND UP ARROW
+            elif event.key == pygame.K_DOWN or event.key == pygame.K_UP:
+                self.handle_tab_select(event.key)
+            # RETURN
+            elif event.key == pygame.K_RETURN:
+                self.handle_tab_switch(self.selected_display)
+            # SPACE
+            elif event.key == pygame.K_SPACE:
+                self.save_button.save_game(current_screen=self)
 
     def change_clan(self):
         curr_clan = next(filter(lambda c: c.group_ID == self.current_clan, game.clan.all_other_clans), game.clan)

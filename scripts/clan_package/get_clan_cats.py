@@ -208,7 +208,7 @@ def search_cats(search_text, cat_list, search_genotype):
                 "bengsum": ["bengal", "bm"],
                 "soksum": ["sokoke", "sok"],
                 "spotsum": ["spotted", "spot"],
-                "ticksum": ["ticked_mod", "tick_md"],
+                "ticksum": ["ticked_mod", "tickedmod", "tick_md", "tickmd"],
                 "saturation": ["saturation", "sat"],
                 "refraction": ["refraction", "ref"],
                 "pigmentation": ["pigmentation", "pig"],
