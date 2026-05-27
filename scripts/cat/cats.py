@@ -9,9 +9,9 @@ import itertools
 import os.path
 import sys
 import traceback
-from random import choice, randint, sample, random, getrandbits, randrange
+from random import choice, randint, sample, random, randrange
 from operator import xor
-from typing import Dict, List, Any, Optional, Union, Callable, TYPE_CHECKING
+from typing import Dict, List, Any, Union, Callable, Optional, TYPE_CHECKING, Literal
 
 import i18n
 import ujson  # type: ignore
@@ -321,17 +321,19 @@ class Cat:
 
         self.former_mentor = []
         self.patrol_with_mentor = 0
-        self.apprentice = []
-        self.former_apprentices = []
+        self.apprentice: List[str] = []
+        self.former_apprentices: List[str] = []
         self.relationships: Dict[str, Relationship] = {}
         self.blank_relations = []
-        self.mate = []
-        self.previous_mates = []
+        self.mate: List[str] = []
+        self.previous_mates: List[str] = []
         self._pronouns: Dict[str, List[Dict[str, Union[str, int]]]] = {}
         self.placement = None
         self.example = example
         self.thought = ""
-        self.genderalign = None
+        self.genderalign: Union[
+            Literal["trans male", "trans female", "male", "female", "nonbinary"], str
+        ] = None
         self.birth_cooldown = 0
         self.illnesses = {}
         self.injuries = {}
@@ -361,9 +363,9 @@ class Cat:
 
         self.prevent_fading = False  # Prevents a cat from fading
 
-        self.faded_offspring = (
-            []
-        )  # Stores of a list of faded offspring, for relation tracking purposes
+        self.faded_offspring: List[
+            str
+        ] = []  # Stores of a list of faded offspring, for relation tracking purposes
 
         self.faded = faded  # This is only used to flag cats that are faded, but won't be added to the faded list until
         # the next save.
@@ -371,7 +373,7 @@ class Cat:
         self.favourite = 0
 
         self.specsuffix_hidden = specsuffix_hidden
-        self.inheritance = None
+        self.inheritance: Inheritance = None
 
         # setting ID
         if ID is None:
@@ -1188,7 +1190,7 @@ class Cat:
         for x in self.apprentice:
             Cat.fetch_cat(x).update_mentor()
 
-    def add_to_clan(self, clan: CatGroup = CatGroup.PLAYER_CLAN_ID, add_kits=True) -> list:
+    def add_to_clan(self, clan: CatGroup = CatGroup.PLAYER_CLAN_ID, add_kits=True) -> List[str]:
         """Makes an "outside cat" a Clan cat. Returns a list of IDs for any additional cats that
         are coming with them."""
 
@@ -3841,13 +3843,14 @@ def create_cat(rank, moons=None, biome=None, kittypet=False, clan=None):
 
 
 # Twelve example cats
-def create_example_cats():
+def create_example_cats() -> list[Cat]:
     warrior_indices = sample(range(12), 3)
     use_special = get_config(None, "clan_creation.use_special_roller")
 
+    chosen_cats = []
     for cat_index in range(12):
         if cat_index in warrior_indices:
-            game.choose_cats[cat_index] = create_cat(rank=CatRank.WARRIOR, kittypet=use_special)
+            chosen_cats.append(create_cat(rank=CatRank.WARRIOR, kittypet=use_special))
         else:
             random_rank = choice(
                 [
@@ -3858,7 +3861,9 @@ def create_example_cats():
                     CatRank.ELDER,
                 ]
             )
-            game.choose_cats[cat_index] = create_cat(rank=random_rank, kittypet=use_special)
+            chosen_cats.append(create_cat(rank=random_rank, kittypet=use_special))
+
+    return chosen_cats
 
 
 def create_option_preview_cat(scar: str = None, acc: str = None):

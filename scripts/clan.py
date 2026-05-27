@@ -86,6 +86,7 @@ class Clan:
         relations={CatGroup.PLAYER_CLAN_ID: {}},
         self_run_init_functions=True,
         displayname="",
+        clan_count_mode=""
     ):
         """
         :param name: The save file name for the Clan, this should not be used for player-facing text beyond the save file screen
@@ -106,7 +107,7 @@ class Clan:
             self.displayname = name
         else:
             self.displayname = displayname
-        self.clancount = "singleclan"
+        self.clancount = clan_count_mode
         self.leader = leader
         self.leader_lives = 9
         self.leader_predecessors = 0

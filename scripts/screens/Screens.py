@@ -104,7 +104,7 @@ class Screens:
         if new_screen in [
             GameScreen.SWITCH_CLAN,
             GameScreen.START,
-            GameScreen.MAKE_CLAN
+            GameScreen.MAKE_CLAN_CHOOSE_CLANCOUNT
         ]:
             game.last_list_forProfile = None
 
@@ -261,7 +261,7 @@ class Screens:
         # keybind handling
         if switch_get_value(Switch.keybinds_live):
             # if we weren't focused at all, then we just start with whatever the old current was
-            if not self.current_focus.is_focused:
+            if self.current_focus and not self.current_focus.is_focused:
                 self.set_focus(self.current_focus)
 
             # handling changing the focus via keyboard and controller
