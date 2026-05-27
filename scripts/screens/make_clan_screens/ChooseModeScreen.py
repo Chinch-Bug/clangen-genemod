@@ -6,6 +6,7 @@ import pygame_gui
 from scripts.cat.cats import create_cat, create_example_cats
 from scripts.cat.enums import CatRank
 from scripts.cat.sprites.load_sprites import sprites
+from scripts.config import get_config
 from scripts.game_structure import image_cache
 from scripts.game_structure.game import Switch
 from scripts.game_structure.game.settings import game_setting_set
