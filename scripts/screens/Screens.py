@@ -252,7 +252,8 @@ class Screens:
         # and are turned off when the mouse is clicked
         if event.type in (pygame.MOUSEBUTTONDOWN, pygame_gui.UI_BUTTON_ON_HOVERED):
             switch_set_value(Switch.keybinds_live, False)
-            self.current_focus.unfocus()
+            if self.current_focus:
+                self.current_focus.unfocus()
 
         elif event.type == INPUT_ACTION_PRESSED:
             switch_set_value(Switch.keybinds_live, True)
