@@ -16,6 +16,7 @@ from scripts.cat.enums import CatAge, CatRank, CatCompatibility
 from scripts.clan import Clan
 from scripts.clan_package.settings import get_clan_setting
 from scripts.clan_package.get_clan_cats import get_living_clan_cat_count
+from scripts.config import get_config
 from scripts.events_module.event_filters import (
     event_for_tags,
     event_for_other_clan,
@@ -972,7 +973,13 @@ class Patrol:
 
         patrol_size = len(self.patrol_cats)
         total_exp = sum([x.experience for x in self.patrol_cats])
-        gm_modifier = get_config(game.clan, f"patrol_generation.{"classic" if game.clan.game_mode == "classic" else "expanded"}_difficulty_modifier")
+        path = (
+            "patrol_generation.classic_difficulty_modifier"
+            if game.clan.game_mode == "classic"
+            else "patrol_generation.difficulty_modifier"
+        )
+
+        gm_modifier = get_config(game.clan, path)
 
         exp_adustment = (
             (1 + 0.10 * patrol_size) * total_exp / (patrol_size * gm_modifier * 2)

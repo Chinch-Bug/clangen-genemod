@@ -555,10 +555,8 @@ dev_tools = false
 
 [patrol_generation]
   # modifies success rate based on game mode. higher = more difficult.
-  # the Cruel Season difficulty modifier needs to have a space rather than an underscore 
-  # due to how it's written in the save files. So don't try to 'fix' it.
+  difficulty_modifier = 2.5
   classic_difficulty_modifier = 1
-  expanded_difficulty_modifier = 2.5
 
   # amount to modify patrol success based on patrol stats
   # increasing this value increases the NUMERATOR for success (denominator is fixed at 120)
@@ -605,7 +603,7 @@ dev_tools = false
 
   # base 1/chance a cat will die
   classic_death_chance = 500
-  expanded_death_chance = 350
+  death_chance = 350
 
   # modifiers for death chance based on if a war is going badly
   # SUBTRACTS from the denominator so higher = more likely to die
@@ -653,18 +651,17 @@ dev_tools = false
 
 [condition_related]
   # 10/chance an illness will occur
-  expanded_illness_chance = 250
+  illness_chance = 250
   classic_illness_chance = 500
 
   # if a cat has a permanent condition with defined seasonal risks, the above illness chance is divided by the modifier to determine if they get a seasonal risk
   # eg. default expanded_illness chance is 250 and default condition_modifier is 5, so 1/5 chance of permanent condition risk appearing 
   classic_perm_condition_modifier = 5
-  expanded_perm_condition_modifier = 5
-  "cruel season_perm_condition_modifier" = 10
+  perm_condition_modifier = 5
 
   # 5/chance (for most personalities) or 15/chance (for some personalities) an injury will occur 
   classic_injury_chance = 450
-  expanded_injury_chance = 250
+  injury_chance = 250
 
   # 1/chance a cat will get a permanent condition from an event with that possibility 
   permanent_condition_chance = 15

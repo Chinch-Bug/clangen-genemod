@@ -135,7 +135,7 @@ class Condition_Events:
     def handle_nutrient(cat: Cat, nutrition_info: dict) -> None:
         """
         Handles gaining conditions or death for cats with low nutrient.
-        This function should only be called if the game is in 'expanded' or 'cruel season' mode.
+        This function should only be called if the game is in 'expanded' or 'cruel_season' mode.
 
         Starvation and malnutrtion must be handled separately from other illnesses due to their distinct death triggers.
 
@@ -277,21 +277,25 @@ class Condition_Events:
             #                              make cats sick                                  #
             # ---------------------------------------------------------------------------- #
             
-            random_number = int(
-                random.random()
-                * get_config(
-                    game.clan,
-                    f"condition_related.{'classic' if game.clan.game_mode == 'classic' else 'expanded'}_illness_chance"
-                )
+            path = (
+                "condition_related.classic_illness_chance"
+                if game.clan.game_mode == "classic"
+                else "condition_related.illness_chance"
             )
+            random_number = int(random.random() * get_config(game.clan, path))
             modifier = 1
 
             relevant_conditions = []
 
+            path = (
+                "condition_related.classic_perm_condition_modifier"
+                if game.clan.game_mode == "classic"
+                else "condition_related.perm_condition_modifier"
+            )
             season_dict = Condition_Events.SPECIAL_SEASON_LIST[season]
             for key in season_dict:
                 if key in list(cat.permanent_condition.keys()) or key == "fully hairless" and cat.pelt.length == "hairless" and (cat.phenotype.sedesp[0] == "hr" or cat.phenotype.ruhr[1] == "Hrbd" or cat.moons > 11):
-                    modifier = get_config(game.clan, f"condition_related.{game.clan.game_mode}_perm_condition_modifier")
+                    modifier = get_config(game.clan, path)
                     relevant_conditions.append(key)
 
             if (
@@ -414,12 +418,13 @@ class Condition_Events:
         triggered = False
 
         modify_for_war = switch_get_value(Switch.war_rel_change_type) != "rel_up" and game.clan.get_wars(clan)
-        mode = (
-            "expanded" if game.clan.game_mode == "cruel season" else game.clan.game_mode
+        path = (
+            "condition_related.classic_injury_chance"
+            if game.clan.game_mode == "classic"
+            else "condition_related.injury_chance"
         )
-        injury_chance = get_config(
-            game.clan, f"condition_related.{mode}_injury_chance"
-        ) - (
+
+        injury_chance = get_config(game.clan, path) - (
             get_config(game.clan, "condition_related.war_injury_modifier")
             if modify_for_war
             else 0
