@@ -1659,27 +1659,28 @@ def perform_ceremonies(cat, clan):
 
         special_can_retire = False
         role_info = get_config(game.clan, "roles")
+        retirement_info = get_config(game.clan, "retirement")
         if cat.status.rank == CatRank.LEADER:
-            special_can_retire = get_clan_setting("leader_retirement") and random.random() < (1/role_info["max_leader_retire_chance"])
+            special_can_retire = get_clan_setting("leader_retirement") and random.random() < (1/retirement_info["max_leader_retire_chance"])
         if cat.status.rank == CatRank.MEDICINE_CAT:
             special_can_retire = get_clan_setting("healer_retirement") and medicine_cats_can_cover_clan(
                 Cat.all_cats.values(), get_amount_cat_for_one_medic(), clan=clan.group_ID, exclude=cat
-            ) and random.random() < (1/role_info["max_healer_retire_chance"])
+            ) and random.random() < (1/retirement_info["max_healer_retire_chance"])
         if cat.status.rank == CatRank.MEDIATOR:
-            special_can_retire = get_clan_setting("mediator_retirement") and random.random() < (1/role_info["max_mediator_retire_chance"])
+            special_can_retire = get_clan_setting("mediator_retirement") and random.random() < (1/retirement_info["max_mediator_retire_chance"])
         if cat.status.rank == CatRank.QUEEN:
-            special_can_retire = random.random() < (1/role_info["max_queen_retire_chance"])
+            special_can_retire = random.random() < (1/retirement_info["max_queen_retire_chance"])
         
         # retiring to elder den
         if (
             not cat.no_retire
             and (cat.status.rank in (CatRank.WARRIOR, CatRank.DEPUTY) or cat.status.rank in (CatRank.MEDICINE_CAT, CatRank.MEDIATOR, CatRank.LEADER, CatRank.QUEEN) and special_can_retire)
             and len(cat.apprentice) < 1
-            and cat.moons > 114
+            and cat.moons >= retirement_info["min_retirement_age"]
         ):
             # There is some variation in the age.
-            if cat.moons > 140 or not int(
-                random.random() * (-0.7 * cat.moons + 100)
+            if cat.moons > retirement_info["min_retirement_age"]+25 or not int(
+                random.random() * (-0.7 * (cat.moons-retirement_info["min_retirement_age"]+115) + 100)
             ):
                 if cat.status.rank == CatRank.DEPUTY:
                     clan.deputy = None
