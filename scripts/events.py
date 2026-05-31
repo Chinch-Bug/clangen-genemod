@@ -2078,6 +2078,7 @@ def ceremony(cat, promoted_to, preparedness="prepared"):
             CatRank.ELDER,
         ],
         CatRank.MEDIATOR: [CatRank.MEDIATOR],
+        CatRank.QUEEN: [CatRank.QUEEN],
     }
 
     try:
@@ -2085,7 +2086,7 @@ def ceremony(cat, promoted_to, preparedness="prepared"):
         possible_ceremonies.update(ceremony_id_by_tag["leader_retire"] if was_leader else ceremony_id_by_tag[promoted_to])
 
         # Get ones for prepared status ----------------------------------------------
-        if promoted_to in (CatRank.WARRIOR, CatRank.MEDICINE_CAT, CatRank.MEDIATOR):
+        if promoted_to in (CatRank.WARRIOR, CatRank.MEDICINE_CAT, CatRank.MEDIATOR, CatRank.QUEEN):
             possible_ceremonies = possible_ceremonies.intersection(
                 ceremony_id_by_tag[preparedness]
             )
@@ -2237,7 +2238,7 @@ def ceremony(cat, promoted_to, preparedness="prepared"):
 
     # getting the random honor if it's needed
     random_honor = None
-    if promoted_to in (CatRank.WARRIOR, CatRank.MEDIATOR, CatRank.MEDICINE_CAT):
+    if promoted_to in (CatRank.WARRIOR, CatRank.MEDIATOR, CatRank.MEDICINE_CAT, CatRank.QUEEN):
         traits = load_lang_resource("events/ceremonies/ceremony_traits.json")
 
         try:
@@ -2248,7 +2249,7 @@ def ceremony(cat, promoted_to, preparedness="prepared"):
         if get_clan_setting('modded names') and get_clan_setting('new suffixes') and not cat.name.specsuffix_hidden:
             cat.name.give_suffix(cat.skills, cat.personality, clan.biome, random_honor)
 
-    if cat.status.rank in (CatRank.WARRIOR, CatRank.MEDICINE_CAT, CatRank.MEDIATOR):
+    if cat.status.rank in (CatRank.WARRIOR, CatRank.MEDICINE_CAT, CatRank.MEDIATOR, CatRank.QUEEN):
         cat.history.add_app_ceremony(random_honor)
 
     ceremony_tags, ceremony_text = CEREMONY_TXT[
