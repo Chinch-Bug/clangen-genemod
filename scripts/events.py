@@ -919,16 +919,16 @@ def handle_focus():
                     chosen_injury = random.choice(possible_injuries)
                     cat.get_injured(chosen_injury)
                     involved_cats["injured"].append(cat.ID)
-                else:
-                    chance = info_dict["illness_chance"]
-                    if not int(random.random() * chance):  # 1/chance
-                        possible_illnesses = []
-                        injury_dict = info_dict["illnesses"]
-                        for illness, amount in injury_dict.items():
-                            possible_illnesses.extend([illness] * amount)
-                        chosen_illness = random.choice(possible_illnesses)
-                        cat.get_ill(chosen_illness)
-                        involved_cats["sick"].append(cat.ID)
+            else:
+                chance = info_dict["illness_chance"]
+                if not int(random.random() * chance):  # 1/chance
+                    possible_illnesses = []
+                    injury_dict = info_dict["illnesses"]
+                    for illness, amount in injury_dict.items():
+                        possible_illnesses.extend([illness] * amount)
+                    chosen_illness = random.choice(possible_illnesses)
+                    cat.get_ill(chosen_illness)
+                    involved_cats["sick"].append(cat.ID)
 
         # if it is raiding, lower the relation to other clans
         if get_clan_setting("raid_other_clans"):
