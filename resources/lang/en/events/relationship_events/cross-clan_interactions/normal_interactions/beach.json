@@ -42,7 +42,7 @@
         "sub_type": [ ],
         "frequency": 1,
         "event_text": [
-            "m_c boasts about {PRONOUN/m_c/poss} ability to steal fish from gulls. Yet when prompted {PRONOUN/m_c/object} for a demonstration, m_c only ends up forced to retreat by an angry flock, much to r_c's amusement."
+            "m_c boasts about {PRONOUN/m_c/poss} ability to steal fish from gulls. Yet when prompted for a demonstration, m_c only ends up forced to retreat by an angry flock, much to r_c's amusement."
         ],
         "m_c": {
             "skill": [ "-HUNTER,0", "-CLEVER,0", "-STEALTH,0", "-FIGHTER,0" ],

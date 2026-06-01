@@ -202,16 +202,8 @@ class ChooseModeScreen(MakeClanScreenBase):
         self.clan_info.deputy = create_cat(CatRank.WARRIOR, kittypet=use_special)
         self.clan_info.medicine_cat = create_cat(CatRank.WARRIOR, kittypet=use_special)
         members = []
+        random_rank = get_config(None, "clan_creation.random_ranks")
         for _ in range(randrange(cat_range[0], cat_range[1]+1)):
-            random_rank = choice(
-                [
-                    CatRank.KITTEN,
-                    CatRank.APPRENTICE,
-                    CatRank.WARRIOR,
-                    CatRank.WARRIOR,
-                    CatRank.ELDER,
-                ]
-            )
-            members.append(create_cat(rank=random_rank, kittypet=use_special))
+            members.append(create_cat(rank=choice(random_rank), kittypet=use_special))
 
         self.clan_info.starting_members = members

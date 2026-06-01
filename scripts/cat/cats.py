@@ -3818,7 +3818,7 @@ def create_cat(rank, moons=None, biome=None, kittypet=False, clan=None):
         new_cat.moons = moons
     elif new_cat.moons >= 160:
         new_cat.moons = randint(120, 155)
-    elif new_cat.moons == 0:
+    elif new_cat.moons == 0 and rank != CatRank.NEWBORN:
         new_cat.moons = randint(1, 5)
 
     not_allowed_scars = [
@@ -3846,22 +3846,14 @@ def create_cat(rank, moons=None, biome=None, kittypet=False, clan=None):
 def create_example_cats() -> list[Cat]:
     warrior_indices = sample(range(12), 3)
     use_special = get_config(None, "clan_creation.use_special_roller")
+    random_ranks = get_config(None, "clan_creation.random_ranks")
 
     chosen_cats = []
     for cat_index in range(12):
         if cat_index in warrior_indices:
             chosen_cats.append(create_cat(rank=CatRank.WARRIOR, kittypet=use_special))
         else:
-            random_rank = choice(
-                [
-                    CatRank.KITTEN,
-                    CatRank.APPRENTICE,
-                    CatRank.WARRIOR,
-                    CatRank.WARRIOR,
-                    CatRank.ELDER,
-                ]
-            )
-            chosen_cats.append(create_cat(rank=random_rank, kittypet=use_special))
+            chosen_cats.append(create_cat(rank=choice(random_ranks), kittypet=use_special))
 
     return chosen_cats
 

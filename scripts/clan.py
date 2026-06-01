@@ -1469,7 +1469,7 @@ class OtherClan:
 
         game.clan.all_other_clans.append(self)
 
-        random_rank = [CatRank.WARRIOR, CatRank.WARRIOR, CatRank.ELDER, CatRank.APPRENTICE, CatRank.KITTEN]
+        random_rank = get_config(None, "clan_creation.random_ranks")
         if clancount == "multiclan":
             for i in range(3):
                 generate_and_add_new_poi(game.clan.biome, PoiType.TERRAIN, clan=self.group_ID)
