@@ -238,6 +238,7 @@ def _load_file(path) -> list[TextPoolEvent]:
     """
     Loads and returns the thoughts file
     """
+    global loaded_thoughts
     # check if we've already loaded these thoughts and then load them if need be
     if path not in loaded_thoughts.keys():
         loaded_thoughts[path] = []
