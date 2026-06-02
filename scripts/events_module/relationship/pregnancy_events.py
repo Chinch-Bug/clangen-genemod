@@ -1721,7 +1721,7 @@ class Pregnancy_Events:
                     continue
                 start_value_info = get_config(game.clan, "new_cat.sib_buff.cat1_to_cat2")
                 start_relation = Relationship(kitten, second_kitten, False, True)
-                start_relation.romance += start_value_info["romance"]+ y
+                start_relation.romance += start_value_info["romance"]
                 start_relation.like += start_value_info["like"] + y
                 start_relation.respect += start_value_info["respect"] + y
                 start_relation.comfort += start_value_info["comfort"] + y

@@ -434,7 +434,9 @@ def create_new_cat_block(
             i for i in Cat.all_cats.values() 
             if i.status.is_outsider and 
             not i.dead and i.status.is_near() and 
-            not i.status.is_lost() and not i.status.is_exiled(clan.group_ID) and i not in in_event_cats.values()
+            not i.status.is_lost() and 
+            not i.status.is_exiled(clan.group_ID) and 
+            i not in in_event_cats.values()
         ]
         possible_outsiders = []
         for cat in existing_outsiders:
