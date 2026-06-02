@@ -167,6 +167,7 @@ def one_moon():
     # Calling of "one_moon" functions.
     other_clan_cats = [c for c in Cat.all_cats_list if c.status.is_other_clancat]
     for cat in Cat.all_cats_list.copy():
+        cat.thought = None
         if not cat.status.group_ID or (cat.status.is_other_clancat and game.clan.clancount == "singleclan"):
             one_moon_outside_cat(cat, other_clan_cats)
         elif cat.status.group.is_any_clan_group() or cat.status.group.is_afterlife():
@@ -1303,7 +1304,6 @@ def one_moon_cat(cat, clan):
             cat.status.increase_current_moons_as()
         if cat.moons > 0 and cat.status.rank == CatRank.NEWBORN:
             cat.status._change_rank(CatRank.KITTEN)
-        cat.get_new_thought()
         handle_fading(cat, clan)  # Deal with fading.
         return
 
