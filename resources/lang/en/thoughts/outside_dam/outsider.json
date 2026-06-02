@@ -1,7 +1,7 @@
 [
     {
         "id": "general_outside_dam",
-        "thoughts": [
+        "strings": [
             "Is wondering what {PRONOUN/m_c/poss} kits are doing"
         ]
     }

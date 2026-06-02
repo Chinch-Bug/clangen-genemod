@@ -291,7 +291,6 @@ class Clan:
                 the_cat.backstory = "clan_founder"
             if the_cat.status.rank == CatRank.APPRENTICE:
                 the_cat.rank_change(CatRank.APPRENTICE)
-            the_cat.get_new_thought()
             the_cat.pelt.rebuild_sprite = True 
         save_cats(game.clan.name, Cat, game)
 
@@ -623,6 +622,9 @@ class Clan:
             displayname = clan_data["displayname"]
         else:
             displayname = clan_data["clanname"]
+
+        # remove any already loaded points of interest
+        clear_pois()
 
         load_pois(clan_data.get("poi", {"empty": []}))
 

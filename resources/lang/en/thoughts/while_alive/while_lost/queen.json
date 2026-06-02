@@ -1,7 +1,7 @@
 [
     {
         "id": "lost_queen_thoughts",
-        "thoughts": [
+        "strings": [
             "Hopes that {PRONOUN/m_c/poss} Clan is doing okay without {PRONOUN/m_c/poss} help",
             "Wonders if any new litters were born in {PRONOUN/m_c/poss} Clan recently",
             "Wonders if the kits are safe without {PRONOUN/m_c/object} keeping watch"

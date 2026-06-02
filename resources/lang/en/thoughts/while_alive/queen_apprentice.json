@@ -1,7 +1,7 @@
 [
     {
         "id": "queen_app_gen",
-        "thoughts": [
+        "strings": [
             "Is checking the nursery for any gaps",
             "Asks the older cats about what raising kits is like",
             "Is keeping watch of camp",
@@ -10,75 +10,126 @@
     },
     {
         "id": "queen_app_to_mentor",
-        "thoughts": [
+        "strings": [
             "Is being quizzed by r_c on dealing with new parents",
             "Asks r_c questions about newborn kits",
             "Felt awkward hearing r_c explain something about pregnancy"
         ],
-        "relationship_constraint": ["app/mentor"]
+        "relationship_constraint": [
+            {
+                "cats_from": [
+                    "m_c"
+                ],
+                "cats_to": [
+                    "r_c"
+                ],
+                "mutual": false,
+                "constraints": [
+                    "app/mentor"
+                ]
+            }
+        ]
     },
     {
         "id": "queen_app_to_kit",
-        "thoughts": [
+        "strings": [
             "Is keeping a close eye on r_c",
             "Is helping r_c clean up a mess {PRONOUN/r_c/subject} made",
             "Got roped into a game by r_c",
             "Got too invested in a game with r_c",
             "Caught r_c trying to sneak out of camp"
         ],
-        "random_status_constraint": [
-            "kitten"
-        ],
-        "random_living_status": [
-            "living"
-        ]
+        "involved_cats": {
+            "r_c": {
+                "status": [
+                    "kitten"
+                ],
+                "group": [
+                    "-afterlife"
+                ]
+            }
+        }
     },
     {
         "id": "queen_app_to_newborn",
-        "thoughts": [
+        "strings": [
             "Carefully helps tend to r_c"
         ],
-        "random_status_constraint": [
-            "newborn"
-        ],
-        "random_living_status": [
-            "living"
-        ]
+        "involved_cats": {
+            "r_c": {
+                "status": [
+                    "newborn"
+                ],
+                "group": [
+                    "-afterlife"
+                ]
+            }
+        }
     },
     {
         "id": "nervous_queen_app_gen",
-        "thoughts": [
+        "strings": [
             "Is nervous about having to advise older cats",
             "Is nervous about being asked questions by older cats"
         ],
-        "main_trait_constraint": [ "nervous", "insecure" ]
+        "involved_cats": {
+            "m_c": {
+                "stat": {
+                    "trait": [
+                        "nervous",
+                        "insecure"
+                    ]
+                }
+            }
+        }
     },
     {
         "id": "nervous_queen_app_to_kit",
-        "thoughts": [
+        "strings": [
             "Had trouble telling off r_c",
             "Backed down when r_c got stubborn and snappy at {PRONOUN/m_c/object}"
         ],
-        "main_trait_constraint": [ "nervous", "insecure" ],
-        "random_status_constraint": [
-            "kitten"
-        ],
-        "random_living_status": [
-            "living"
-        ]
+        "involved_cats": {
+            "m_c": {
+                "stat": {
+                    "trait": [
+                        "nervous",
+                        "insecure"
+                    ]
+                }
+            },
+            "r_c": {
+                "status": [
+                    "kitten"
+                ],
+                "group": [
+                    "-afterlife"
+                ]
+            }
+        }
     },
     {
         "id": "childish_queen_app_to_kit",
-        "thoughts": [
+        "strings": [
             "Got told off for playing too rough with r_c",
             "Seems to act more like a kit than r_c does sometimes"
         ],
-        "main_trait_constraint": [ "childish" ],
-        "random_status_constraint": [
-            "kitten"
-        ],
-        "random_living_status": [
-            "living"
-        ]
+        "involved_cats": {
+            "m_c": {
+                "stat": {
+                    "trait": [
+                        "childish"
+                    ]
+                }
+            },
+            "r_c": {
+                "status": [
+                    "kitten"
+                ],
+                "group": [
+                    "-afterlife"
+                ]
+            }
+        }
     }
 ]

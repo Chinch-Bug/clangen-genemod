@@ -1,11 +1,34 @@
 [
     {
         "id": "becoming_queen_to_kit",
-        "thoughts": [
+        "strings": [
             "Heard r_c cheer during {PRONOUN/m_c/poss} ceremony"
         ],
-        "main_status_constraint": [ "queen" ],
-        "random_status_constraint": [ "kitten" ],
-        "relationship_constraint": ["-littermates"]
+        "involved_cats": {
+            "m_c": {
+                "status": [
+                    "queen"
+                ]
+            },
+            "r_c": {
+                "status": [
+                    "kitten"
+                ]
+            }
+        },
+        "relationship_constraint": [
+            {
+                "cats_from": [
+                    "m_c"
+                ],
+                "cats_to": [
+                    "r_c"
+                ],
+                "mutual": false,
+                "constraints": [
+                    "-littermates"
+                ]
+            }
+        ]
     }
 ]

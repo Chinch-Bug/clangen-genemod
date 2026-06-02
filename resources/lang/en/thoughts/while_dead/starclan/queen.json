@@ -1,16 +1,20 @@
 [
     {
         "id": "dead_queen_to_dead_kit",
-        "thoughts": [
+        "strings": [
             "Watches over r_c",
             "Got roped into a game by r_c",
             "Tells r_c about what growing up is like"
         ],
-        "random_status_constraint": [
-            "kitten"
-        ],
-        "random_living_status": [
-            "starclan"
-        ]
+        "involved_cats": {
+            "r_c": {
+                "status": [
+                    "kitten"
+                ],
+                "group": [
+                    "starclan"
+                ]
+            }
+        }
     }
 ]

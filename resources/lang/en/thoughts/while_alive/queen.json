@@ -1,7 +1,7 @@
 [
     {
         "id": "queen_gen",
-        "thoughts": [
+        "strings": [
             "Is checking the nursery for any gaps",
             "Gives advice to cats planning a litter",
             "Is keeping watch of camp"
@@ -9,36 +9,52 @@
     },
     {
         "id": "queen_camp_gen",
-        "thoughts": [
+        "strings": [
             "Is patching up a gap in the nursery"
         ],
-        "main_skill_constraint": ["CAMP,1"]
+        "involved_cats": {
+            "m_c": {
+                "stat": {
+                    "skill": [
+                        "CAMP,1"
+                    ]
+                }
+            }
+        }
     },
     {
         "id": "queen_to_kit",
-        "thoughts": [
+        "strings": [
             "Is keeping a close eye on r_c",
             "Is helping r_c clean up a mess {PRONOUN/r_c/subject} made",
             "Got roped into a game by r_c",
             "Caught r_c trying to sneak out of camp"
         ],
-        "random_status_constraint": [
-            "kitten"
-        ],
-        "random_living_status": [
-            "living"
-        ]
+        "involved_cats": {
+            "r_c": {
+                "status": [
+                    "kitten"
+                ],
+                "group": [
+                    "-afterlife"
+                ]
+            }
+        }
     },
     {
         "id": "queen_to_newborn",
-        "thoughts": [
+        "strings": [
             "Helps tend to r_c"
         ],
-        "random_status_constraint": [
-            "newborn"
-        ],
-        "random_living_status": [
-            "living"
-        ]
+        "involved_cats": {
+            "r_c": {
+                "status": [
+                    "newborn"
+                ],
+                "group": [
+                    "-afterlife"
+                ]
+            }
+        }
     }
 ]

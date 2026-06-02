@@ -1,7 +1,7 @@
 [
     {
         "id": "general_outside_surrogate",
-        "thoughts": [
+        "strings": [
             "Wonders about those oddly named cats",
             "Is wondering about those new cats",
             "Wonders if {PRONOUN/m_c/subject}'ll meet {PRONOUN/m_c/poss} kits someday"
