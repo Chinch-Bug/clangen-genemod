@@ -90,11 +90,11 @@
             "Is having a nice conversation with the cats guarding camp",
             "Saw a kittypet with the fluffiest fur imaginable today",
             "Thought {PRONOUN/m_c/subject} saw a cat, but it was just a Twoleg object that looks like one",
-            "Saw a pair of Twolegs near camp today!",
+            "Saw a pair of Twolegs near camp today",
             "Saw a Twoleg petting a loner",
-            "Saw a kittypet with no fur at all!",
+            "Saw a kittypet with no fur at all",
             "Saw some kittypets playing with colorful moss balls",
-            "Saw a kittypet sitting calmly next to a dog!",
+            "Saw a kittypet sitting calmly next to a dog",
             "Almost got lost near some Twoleg nests",
             "Saw some wandering Twolegs today",
             "Saw a Twoleg kit playing with a dog",
@@ -192,7 +192,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ]
             },
@@ -244,7 +244,7 @@
         "involved_cats": {
             "r_c": {
                 "status": [
-                    "healer apprentice"
+                    "medicine cat apprentice"
                 ],
                 "group": [
                     "-afterlife"
@@ -263,13 +263,13 @@
         "involved_cats": {
             "m_c": {
                 "status": [
-                    "-healer",
-                    "-healer apprentice"
+                    "-medicine cat",
+                    "-medicine cat apprentice"
                 ]
             },
             "r_c": {
                 "status": [
-                    "healer"
+                    "medicine cat"
                 ],
                 "group": [
                     "-afterlife"
@@ -722,8 +722,8 @@
             },
             "r_c": {
                 "status": [
-                    "healer",
-                    "healer apprentice"
+                    "medicine cat",
+                    "medicine cat apprentice"
                 ],
                 "group": [
                     "-afterlife"
@@ -804,7 +804,7 @@
         "involved_cats": {
             "m_c": {
                 "status": [
-                    "-healer"
+                    "-medicine cat"
                 ],
                 "stat": {
                     "trait": [
@@ -814,8 +814,8 @@
             },
             "r_c": {
                 "status": [
-                    "healer",
-                    "healer apprentice"
+                    "medicine cat",
+                    "medicine cat apprentice"
                 ],
                 "group": [
                     "-afterlife"
@@ -990,7 +990,7 @@
             "m_c": {
                 "status": [
                     "-apprentice",
-                    "-healer apprentice",
+                    "-medicine cat apprentice",
                     "-mediator apprentice"
                 ],
                 "stat": {
@@ -1002,7 +1002,7 @@
             "r_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "group": [
@@ -1097,7 +1097,7 @@
                 "status": [
                     "-apprentice",
                     "-mediator apprentice",
-                    "-healer apprentice"
+                    "-medicine cat apprentice"
                 ],
                 "stat": {
                     "trait": [
@@ -1109,7 +1109,7 @@
                 "status": [
                     "apprentice",
                     "mediator apprentice",
-                    "healer apprentice"
+                    "medicine cat apprentice"
                 ],
                 "group": [
                     "-afterlife"
@@ -1126,7 +1126,7 @@
         "involved_cats": {
             "m_c": {
                 "status": [
-                    "-healer"
+                    "-medicine cat"
                 ],
                 "stat": {
                     "trait": [
@@ -1136,7 +1136,7 @@
             },
             "r_c": {
                 "status": [
-                    "healer"
+                    "medicine cat"
                 ],
                 "group": [
                     "-afterlife"
@@ -1530,7 +1530,7 @@
             "m_c": {
                 "status": [
                     "-apprentice",
-                    "-healer apprentice",
+                    "-medicine cat apprentice",
                     "-mediator apprentice"
                 ],
                 "stat": {
@@ -1542,7 +1542,7 @@
             "r_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "group": [
@@ -1559,7 +1559,7 @@
         "involved_cats": {
             "m_c": {
                 "status": [
-                    "-healer"
+                    "-medicine cat"
                 ],
                 "stat": {
                     "trait": [
@@ -1569,8 +1569,8 @@
             },
             "r_c": {
                 "status": [
-                    "healer apprentice",
-                    "healer"
+                    "medicine cat apprentice",
+                    "medicine cat"
                 ],
                 "group": [
                     "-afterlife"
@@ -1888,7 +1888,7 @@
                 "status": [
                     "-kitten",
                     "-apprentice",
-                    "-healer apprentice",
+                    "-medicine cat apprentice",
                     "-mediator apprentice"
                 ],
                 "stat": {
@@ -2143,7 +2143,7 @@
             "m_c": {
                 "status": [
                     "-apprentice",
-                    "-healer apprentice",
+                    "-medicine cat apprentice",
                     "-mediator apprentice"
                 ],
                 "stat": {
@@ -2155,7 +2155,7 @@
             "r_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "group": [
@@ -2269,7 +2269,7 @@
             },
             "r_c": {
                 "status": [
-                    "healer"
+                    "medicine cat"
                 ],
                 "group": [
                     "-afterlife"
@@ -2314,7 +2314,7 @@
         "involved_cats": {
             "m_c": {
                 "status": [
-                    "-healer"
+                    "-medicine cat"
                 ],
                 "stat": {
                     "trait": [
@@ -2324,8 +2324,8 @@
             },
             "r_c": {
                 "status": [
-                    "healer",
-                    "healer apprentice"
+                    "medicine cat",
+                    "medicine cat apprentice"
                 ],
                 "group": [
                     "-afterlife"
@@ -2342,7 +2342,7 @@
             "m_c": {
                 "status": [
                     "-apprentice",
-                    "-healer apprentice",
+                    "-medicine cat apprentice",
                     "-mediator apprentice"
                 ],
                 "stat": {
@@ -2354,7 +2354,7 @@
             "r_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "group": [
@@ -2465,7 +2465,7 @@
             "r_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "group": [
@@ -3135,8 +3135,8 @@
         "involved_cats": {
             "m_c": {
                 "status": [
-                    "-healer",
-                    "-healer apprentice"
+                    "-medicine cat",
+                    "-medicine cat apprentice"
                 ],
                 "stat": {
                     "skill": [
@@ -3146,8 +3146,8 @@
             },
             "r_c": {
                 "status": [
-                    "healer",
-                    "healer apprentice"
+                    "medicine cat",
+                    "medicine cat apprentice"
                 ],
                 "group": [
                     "-afterlife"
@@ -3506,7 +3506,7 @@
         "involved_cats": {
             "r_c": {
                 "status": [
-                    "healer"
+                    "medicine cat"
                 ],
                 "group": [
                     "-afterlife"
@@ -3883,7 +3883,7 @@
                 "status": [
                     "apprentice",
                     "mediator apprentice",
-                    "healer apprentice"
+                    "medicine cat apprentice"
                 ],
                 "backstory": [
                     "kittypet_backstories"
@@ -3914,7 +3914,7 @@
                 "status": [
                     "apprentice",
                     "mediator apprentice",
-                    "healer apprentice"
+                    "medicine cat apprentice"
                 ],
                 "backstory": [
                     "kittypet_backstories"
@@ -3924,7 +3924,7 @@
                 "status": [
                     "apprentice",
                     "mediator apprentice",
-                    "healer apprentice"
+                    "medicine cat apprentice"
                 ],
                 "group": [
                     "-afterlife"
@@ -3952,8 +3952,8 @@
         "involved_cats": {
             "m_c": {
                 "status": [
-                    "healer",
-                    "healer apprentice"
+                    "medicine cat",
+                    "medicine cat apprentice"
                 ]
             },
             "r_c": {
@@ -3977,8 +3977,8 @@
         "involved_cats": {
             "m_c": {
                 "status": [
-                    "healer",
-                    "healer apprentice"
+                    "medicine cat",
+                    "medicine cat apprentice"
                 ]
             },
             "r_c": {
@@ -4123,14 +4123,14 @@
         "involved_cats": {
             "m_c": {
                 "status": [
-                    "-healer",
+                    "-medicine cat",
                     "-kitten",
-                    "-healer apprentice"
+                    "-medicine cat apprentice"
                 ]
             },
             "r_c": {
                 "status": [
-                    "healer"
+                    "medicine cat"
                 ],
                 "group": [
                     "-afterlife"
@@ -4316,7 +4316,7 @@
                 "status": [
                     "apprentice",
                     "mediator apprentice",
-                    "healer apprentice"
+                    "medicine cat apprentice"
                 ]
             }
         }
@@ -4332,7 +4332,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ]
             },
@@ -4363,7 +4363,7 @@
                 "status": [
                     "apprentice",
                     "mediator apprentice",
-                    "healer apprentice"
+                    "medicine cat apprentice"
                 ]
             },
             "r_c": {
@@ -4398,7 +4398,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ]
             },
@@ -4449,7 +4449,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ]
             },
@@ -4480,7 +4480,7 @@
             },
             "r_c": {
                 "status": [
-                    "healer"
+                    "medicine cat"
                 ],
                 "group": [
                     "-afterlife"
@@ -4503,7 +4503,7 @@
             },
             "r_c": {
                 "status": [
-                    "healer apprentice"
+                    "medicine cat apprentice"
                 ],
                 "group": [
                     "-afterlife"
@@ -4531,7 +4531,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ]
             },
@@ -4558,7 +4558,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -4585,7 +4585,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -4605,7 +4605,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -4640,7 +4640,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -4662,7 +4662,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -4699,7 +4699,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -4720,7 +4720,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -4757,7 +4757,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -4788,7 +4788,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -4800,7 +4800,7 @@
             "r_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "group": [
@@ -4820,7 +4820,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -4840,7 +4840,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -4879,7 +4879,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -4891,7 +4891,7 @@
             "r_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "group": [
@@ -4913,7 +4913,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -4925,7 +4925,7 @@
             "r_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "group": [
@@ -4951,7 +4951,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -4977,7 +4977,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -4998,7 +4998,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5036,7 +5036,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5048,7 +5048,7 @@
             "r_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "group": [
@@ -5071,7 +5071,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5091,7 +5091,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5131,7 +5131,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5158,7 +5158,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5194,7 +5194,7 @@
             "m_c": {
                 "status": [
                     "mediator apprentice",
-                    "healer apprentice"
+                    "medicine cat apprentice"
                 ],
                 "stat": {
                     "trait": [
@@ -5219,7 +5219,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5239,7 +5239,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5279,7 +5279,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5291,7 +5291,7 @@
             "r_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "group": [
@@ -5311,7 +5311,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5338,7 +5338,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5383,7 +5383,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5403,7 +5403,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5441,7 +5441,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5467,7 +5467,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5507,7 +5507,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5529,7 +5529,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5564,7 +5564,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5584,7 +5584,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5619,7 +5619,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5643,7 +5643,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5683,7 +5683,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5703,7 +5703,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5741,7 +5741,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5764,7 +5764,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5800,7 +5800,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5820,7 +5820,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5858,7 +5858,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5894,7 +5894,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5906,7 +5906,7 @@
             "r_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "group": [
@@ -5928,7 +5928,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5940,7 +5940,7 @@
             "r_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "group": [
@@ -5962,7 +5962,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -5974,7 +5974,7 @@
             "r_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "group": [
@@ -5995,7 +5995,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "stat": {
@@ -6018,7 +6018,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ]
             },
@@ -6043,7 +6043,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ]
             },
@@ -6076,8 +6076,8 @@
             },
             "r_c": {
                 "status": [
-                    "healer",
-                    "healer apprentice"
+                    "medicine cat",
+                    "medicine cat apprentice"
                 ],
                 "group": [
                     "starclan"
@@ -6097,13 +6097,13 @@
                 "status": [
                     "apprentice",
                     "mediator apprentice",
-                    "healer apprentice"
+                    "medicine cat apprentice"
                 ]
             },
             "r_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "group": [
@@ -6133,7 +6133,7 @@
                 "status": [
                     "apprentice",
                     "mediator apprentice",
-                    "healer apprentice"
+                    "medicine cat apprentice"
                 ]
             },
             "r_c": {
@@ -6161,7 +6161,7 @@
                 "status": [
                     "apprentice",
                     "mediator apprentice",
-                    "healer apprentice"
+                    "medicine cat apprentice"
                 ],
                 "backstory": [
                     "rogue_backstories"
@@ -6184,7 +6184,7 @@
                 "status": [
                     "apprentice",
                     "mediator apprentice",
-                    "healer apprentice"
+                    "medicine cat apprentice"
                 ],
                 "backstory": [
                     "-clanborn",
@@ -6229,7 +6229,7 @@
                 "status": [
                     "apprentice",
                     "mediator apprentice",
-                    "healer apprentice"
+                    "medicine cat apprentice"
                 ],
                 "backstory": [
                     "rogue_backstories"
@@ -6239,7 +6239,7 @@
                 "status": [
                     "apprentice",
                     "mediator apprentice",
-                    "healer apprentice"
+                    "medicine cat apprentice"
                 ],
                 "group": [
                     "-afterlife"
@@ -6308,7 +6308,7 @@
             "m_c": {
                 "status": [
                     "warrior",
-                    "healer",
+                    "medicine cat",
                     "mediator",
                     "deputy",
                     "leader",
@@ -6397,7 +6397,7 @@
             "r_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "group": [
@@ -6438,7 +6438,7 @@
         "involved_cats": {
             "r_c": {
                 "status": [
-                    "healer"
+                    "medicine cat"
                 ],
                 "group": [
                     "starclan"
@@ -6708,7 +6708,7 @@
             "r_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "group": [
@@ -6798,7 +6798,7 @@
             "r_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "group": [
@@ -6895,7 +6895,7 @@
             "m_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "health": {
@@ -6930,7 +6930,7 @@
             "r_c": {
                 "status": [
                     "apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "mediator apprentice"
                 ],
                 "group": [
@@ -7059,8 +7059,8 @@
             },
             "r_c": {
                 "status": [
-                    "healer apprentice",
-                    "healer"
+                    "medicine cat apprentice",
+                    "medicine cat"
                 ],
                 "group": [
                     "-afterlife"
@@ -7137,8 +7137,8 @@
             },
             "r_c": {
                 "status": [
-                    "healer apprentice",
-                    "healer"
+                    "medicine cat apprentice",
+                    "medicine cat"
                 ],
                 "group": [
                     "-afterlife"
@@ -7320,8 +7320,8 @@
             },
             "r_c": {
                 "status": [
-                    "healer apprentice",
-                    "healer"
+                    "medicine cat apprentice",
+                    "medicine cat"
                 ],
                 "group": [
                     "-afterlife"
@@ -7348,8 +7348,8 @@
             },
             "r_c": {
                 "status": [
-                    "healer apprentice",
-                    "healer"
+                    "medicine cat apprentice",
+                    "medicine cat"
                 ],
                 "group": [
                     "-afterlife"
@@ -7903,8 +7903,8 @@
             },
             "r_c": {
                 "status": [
-                    "healer",
-                    "healer apprentice"
+                    "medicine cat",
+                    "medicine cat apprentice"
                 ],
                 "group": [
                     "-afterlife"
@@ -9276,7 +9276,7 @@
                 "status": [
                     "apprentice",
                     "mediator apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "warrior",
                     "medicine cat",
                     "mediator"
@@ -9299,7 +9299,7 @@
                     "kitten",
                     "apprentice",
                     "mediator apprentice",
-                    "healer apprentice",
+                    "medicine cat apprentice",
                     "warrior",
                     "mediator"
                 ]
@@ -9308,7 +9308,7 @@
                 "status": [
                     "leader",
                     "deputy",
-                    "healer"
+                    "medicine cat"
                 ],
                 "group": [
                     "-afterlife"
@@ -9453,8 +9453,8 @@
         "involved_cats": {
             "m_c": {
                 "status": [
-                    "healer",
-                    "healer apprentice"
+                    "medicine cat",
+                    "medicine cat apprentice"
                 ]
             },
             "r_c": {
@@ -9486,8 +9486,8 @@
         "involved_cats": {
             "m_c": {
                 "status": [
-                    "healer",
-                    "healer apprentice"
+                    "medicine cat",
+                    "medicine cat apprentice"
                 ]
             },
             "r_c": {

@@ -3206,7 +3206,7 @@
             ]
         },
         "r_c": {
-            "relationship_status": ["dislikes", "avoids"],
+            "relationship_status": [ "dislikes", "avoids" ],
             "age": [
                 "any"
             ],
@@ -5604,7 +5604,7 @@
             "age": [
                 "-kitten"
             ],
-"relationship_status": ["doubts"],
+            "relationship_status": [ "doubts" ],
             "status": [
                 "any"
             ],
@@ -5772,7 +5772,7 @@
         "frequency": 1,
         "event_text": "m_c was hurt by r_c for disobeying orders.",
         "m_c": {
-            "relationship_status": ["doubts"],
+            "relationship_status": [ "doubts" ],
             "status": [
                 "-kitten",
                 "-leader"
@@ -5860,7 +5860,7 @@
             "trait": [
                 "-loyal"
             ],
-            "relationship_status": ["doubts"]
+            "relationship_status": [ "doubts" ]
         },
         "r_c": {
             "age": [
@@ -5931,7 +5931,7 @@
         "frequency": 1,
         "event_text": "m_c was hurt by r_c to make an example out of {PRONOUN/m_c/object}.",
         "m_c": {
-            "relationship_status": ["doubts"],
+            "relationship_status": [ "doubts" ],
             "age": [
                 "any"
             ],
@@ -6417,12 +6417,15 @@
     },
     {
         "event_id": "gen_injury_drownedbyaduck",
-        "location": ["beach", "forest", "wetlands"],
-        "season": ["-leaf-bare"],
-        "sub_type": [],
-        "tags": [],
+        "location": [ "any" ],
+        "season": [ "-leaf-bare" ],
+        "sub_type": [ ],
+        "tags": [ ],
+        "poi": {
+            "name": [ "POI/name/terrain_lake" ]
+        },
         "frequency": 1,
-        "event_text": "m_c fought with a duck in the water, trying to kill it for the fresh-kill pile, but was knocked below the surface of the water and inhaled a lot of water.",
+        "event_text": "m_c fought with a duck in the water, trying to kill it for the fresh-kill pile, but was knocked below the surface of {POI/name/terrain_lake} and inhaled a lot of water.",
         "m_c": {
             "status": [
                 "apprentice",
@@ -6580,6 +6583,262 @@
                 "log": {
                     "cats_from": "cat_from saw cat_to defend the fresh-kill pile from a horde of rats."
                 }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_injury_waterinlungs_gatheringisland",
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "tags": [ ],
+        "poi": {
+            "name": [ "gather_island" ]
+        },
+        "frequency": 1,
+        "event_text": "m_c is so excited to be at the Gathering that {PRONOUN/m_c/subject} {VERB/m_c/forget/forgets} to watch {PRONOUN/m_c/poss} paws on the tree bridge. r_c has to jump in the water to rescue {PRONOUN/m_c/object}.",
+        "m_c": {
+            "age": [ "adolescent" ],
+            "trait": [ "-careful", "-calm", "-wise" ],
+            "skill": [ "-SWIMMER,0" ]
+        },
+        "r_c": {
+            "age": [ "young adult", "adult", "senior adult" ],
+            "status": [ "-elder" ],
+            "skill": [ "SWIMMER,1" ]
+        },
+        "injury": [
+            {
+                "cats": [ "m_c" ],
+                "injuries": [ "water in their lungs" ]
+            }
+
+        ],
+        "history": [
+            {
+                "cats": [ "m_c" ],
+                "death": "m_c died of the water in {PRONOUN/m_c/poss} lungs after falling off the tree bridge at the Gathering."
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "respect", "like" ],
+                "amount": -10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from was humiliated when cat_to needed to rescue {PRONOUN/cat_from/object} from the water at the Gathering."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_injury_bluntforce_fourtrees",
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "tags": [ ],
+        "poi": {
+            "name": [ "gather_fourtrees" ]
+        },
+        "frequency": 1,
+        "event_text": "When r_c takes m_c to {POI/name/gather_fourtrees}, m_c declares {PRONOUN/m_c/poss} intention to be the first cat to climb all four trees. m_c is leaping from the first tree to the second when {PRONOUN/m_c/subject} {VERB/m_c/fall/falls}. {PRONOUN/m_c/poss/CAP} leg snaps under {PRONOUN/m_c/object}.",
+        "m_c": {
+            "age": [ "adolescent" ],
+            "trait": [ "arrogant", "ambitious", "confident", "rebellious" ],
+            "skill": [ "CLIMBER,0" ],
+            "relationship_status": [ "app/mentor" ]
+        },
+        "r_c": { },
+        "injury": [
+            {
+                "cats": [ "m_c" ],
+                "injuries": [ "broken bone" ]
+            }
+        ],
+        "history": [
+            {
+                "cats": [ "m_c" ],
+                "scar": "m_c was scarred after trying to climb a tree at the Gathering place as an apprentice.",
+                "death": "m_c died of {PRONOUN/m_c/poss} injuries after falling out of a tree at the Gathering place."
+            }
+
+        ]
+    },
+    {
+        "event_id": "gen_injury_poison_carrion",
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "sub_type": [ ],
+        "tags": [ ],
+        "poi": {
+            "name": [ "terrain_carrionplace", "terrain_carrionbeach" ]
+        },
+        "frequency": 2,
+        "event_text": "m_c and r_c become poisoned after hunting near {POI/name/terrain_carrionplace,terrain_carrionbeach}.",
+        "new_accessory": [ ],
+        "m_c": {
+            "status": [ "leader", "deputy", "warrior", "apprentice" ],
+            "relationship_status": [ "considers", "relates_to" ]
+        },
+        "r_c": {
+            "status": [ "leader", "deputy", "warrior", "apprentice" ]
+        },
+        "injury": [
+            {
+                "cats": [ "r_c", "m_c" ],
+                "injuries": [ "poisoned" ]
+            }
+        ],
+        "history": [
+            {
+                "cats": [ "m_c", "r_c" ],
+                "death": "m_c died after eating tainted prey."
+            }
+        ]
+    },
+    {
+        "event_id": "gen_injury_battleinjury_twolegplace",
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "sub_type": [ ],
+        "tags": [ ],
+        "poi": {
+            "name": [ "terrain_twolegplace" ]
+        },
+        "frequency": 2,
+        "event_text": "m_c and r_c sneak out and go on an adventure in the Twolegplace, but they barely escape with their lives after encountering a gang of rogues.",
+        "new_accessory": [ ],
+        "m_c": {
+            "status": [ "apprentice" ],
+            "relationship_status": [ "considers", "relates_to" ]
+        },
+        "r_c": {
+            "status": [ "apprentice" ]
+        },
+        "injury": [
+            {
+                "cats": [ "r_c", "m_c" ],
+                "injuries": [ "battle_injury" ]
+            }
+        ],
+        "history": [
+            {
+                "cats": [ "m_c", "r_c" ],
+                "scar": "m_c was scarred in a fight with a gang of rogues.",
+                "death": "m_c died of {PRONOUN/m_c/poss} injuries after getting into a fight with a gang of rogues."
+            }
+        ],
+        "new_cat": [
+            [
+                "rogue",
+                "meeting",
+                "unknown"
+            ],
+            [
+                "rogue",
+                "meeting",
+                "unknown"
+            ],
+            [
+                "rogue",
+                "meeting",
+                "unknown"
+            ]
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "m_c", "r_c" ],
+                "cats_to": [ "n_c:0", "n_c:1", "n_c:2" ],
+                "mutual": false,
+                "values": [ "comfort" ],
+                "amount": -15,
+                "log": {
+                    "cats_from": "cat_from was chased out of the Twolegplace by cat_to."
+                }
+            },
+            {
+                "cats_from": [ "m_c", "r_c" ],
+                "cats_to": [ "n_c:0", "n_c:1", "n_c:2" ],
+                "mutual": true,
+                "values": [ "like" ],
+                "amount": -15,
+                "log": {
+                    "cats_from": "cat_from and cat_to got into a vicious fight."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_injury_bluntforce_horseplace",
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "sub_type": [ ],
+        "tags": [ ],
+        "poi": {
+            "name": [ "terrain_horseplace" ]
+        },
+        "frequency": 2,
+        "event_text": "m_c is caught under a horse's hooves while hunting in {POI/name/terrain_horseplace}. r_c helps {PRONOUN/m_c/object} back to camp.",
+        "new_accessory": [ ],
+        "m_c": {
+            "status": [ "leader", "deputy", "warrior", "apprentice" ],
+            "relationship_status": [ "considers", "relates_to" ]
+        },
+        "r_c": {
+            "status": [ "leader", "deputy", "warrior", "apprentice" ]
+        },
+        "injury": [
+            {
+                "cats": [ "m_c" ],
+                "injuries": [ "blunt_force_injury" ]
+            }
+        ],
+        "history": [
+            {
+                "cats": [ "m_c" ],
+                "scar": "m_c was scarred after being caught under a horse's hooves.",
+                "death": "m_c died after being injured by a horse's hooves."
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "respect", "trust" ],
+                "amount": 10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from was grateful that cat_to helped {PRONOUN/cat_from/object} back to camp after {PRONOUN/cat_from/subject} was struck by a horse's hooves."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_injury_bluntforce_trees",
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "sub_type": [ ],
+        "tags": [ ],
+        "poi": {
+            "tags": [ "trees" ]
+        },
+        "frequency": 2,
+        "event_text": "m_c is hunting near {POI/tag/trees} when a branch falls on {PRONOUN/m_c/object}, injuring {PRONOUN/m_c/object}.",
+        "new_accessory": [ ],
+        "m_c": {
+            "status": [ "leader", "deputy", "warrior", "apprentice" ]
+        },
+        "injury": [
+            {
+                "cats": [ "m_c" ],
+                "injuries": [ "blunt_force_injury", "bruises" ]
+            }
+        ],
+        "history": [
+            {
+                "cats": [ "m_c" ],
+                "scar": "m_c was scarred after a branch fell on {PRONOUN/m_c/object}.",
+                "death": "m_c died of {PRONOUN/m_c/poss} injuries after a branch fell on {PRONOUN/m_c/object}."
             }
         ]
     },
@@ -7388,7 +7647,7 @@
         ],
         "other_clan": {
             "changed": 2,
-            "has_rank": ["any_warrior_mult"]
+            "has_rank": [ "any_warrior_mult" ]
         }
     },
     {
@@ -8116,7 +8375,7 @@
         "other_clan": {
             "current_rep": [ "hostile" ],
             "changed": -1,
-            "has_rank": ["leader"]
+            "has_rank": [ "leader" ]
         }
     },
     {
@@ -8159,7 +8418,7 @@
         "other_clan": {
             "current_rep": [ "hostile" ],
             "changed": -1,
-            "has_rank": ["leader"]
+            "has_rank": [ "leader" ]
         }
     },
     {
@@ -8203,45 +8462,45 @@
         "other_clan": {
             "current_rep": [ "hostile" ],
             "changed": -1,
-            "has_rank": ["leader"]
+            "has_rank": [ "leader" ]
         }
     },
     {
         "event_id": "gen_injury_war_minorinjury_doubt",
-        "location": ["any"],
-        "season": ["any"],
-        "sub_type": ["war"],
-        "tags": [],
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "sub_type": [ "war" ],
+        "tags": [ ],
         "frequency": 1,
         "event_text": "m_c sees r_c holding back in a fight with a o_c_n warrior. The rest of the c_n patrol is injured, but r_c barely has a scratch on {PRONOUN/r_c/object}.",
         "m_c": {
-            "status": ["leader", "deputy", "warrior", "apprentice"]
+            "status": [ "leader", "deputy", "warrior", "apprentice" ]
         },
         "r_c": {
-            "status": ["leader", "deputy", "warrior", "apprentice"]
+            "status": [ "leader", "deputy", "warrior", "apprentice" ]
         },
         "injury": [
             {
-                "cats": ["m_c"],
-                "injuries": ["battle_injury"]
+                "cats": [ "m_c" ],
+                "injuries": [ "battle_injury" ]
             },
             {
-                "cats": ["r_c"],
-                "injuries": ["minor_injury"]
+                "cats": [ "r_c" ],
+                "injuries": [ "minor_injury" ]
             }
         ],
         "history": [
             {
-                "cats": ["m_c"],
+                "cats": [ "m_c" ],
                 "scar": "m_c was scarred in a fight with o_c_n.",
                 "death": "m_c died of {PRONOUN/m_c/poss} injuries after a fight with o_c_n."
             }
         ],
         "relationships": [
             {
-                "cats_from": ["m_c"],
-                "cats_to": ["r_c"],
-                "values": ["trust"],
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "trust" ],
                 "amount": -15,
                 "mutual": false,
                 "log": {
@@ -8250,61 +8509,61 @@
             }
         ],
         "other_clan": {
-            "current_rep": ["hostile"],
+            "current_rep": [ "hostile" ],
             "changed": -1,
             "has_rank": [ "any_fighter_mult" ]
         }
     },
     {
         "event_id": "gen_injury_war_minorinjury_retreat",
-        "location": ["any"],
-        "season": ["any"],
-        "sub_type": ["war"],
-        "tags": [],
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "sub_type": [ "war" ],
+        "tags": [ ],
         "frequency": 3,
         "event_text": "During a battle at the border, o_c_n calls a retreat before any cat can be hurt too badly.",
         "m_c": {
-            "status": ["leader", "deputy", "warrior"]
+            "status": [ "leader", "deputy", "warrior" ]
         },
         "r_c": {
-            "status": ["leader", "deputy", "warrior"]
+            "status": [ "leader", "deputy", "warrior" ]
         },
         "injury": [
             {
-                "cats": ["m_c", "r_c"],
-                "injuries": ["minor_injury"]
+                "cats": [ "m_c", "r_c" ],
+                "injuries": [ "minor_injury" ]
             }
         ],
         "other_clan": {
-            "current_rep": ["hostile"],
+            "current_rep": [ "hostile" ],
             "changed": 3,
             "has_rank": [ "any_fighter_mult" ]
         }
     },
     {
         "event_id": "gen_injury_war_minorinjury_cowardice",
-        "location": ["any"],
-        "season": ["any"],
-        "sub_type": ["war"],
-        "tags": [],
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "sub_type": [ "war" ],
+        "tags": [ ],
         "frequency": 1,
         "event_text": "m_c always leaves battles first, purportedly to fetch reinforcements or warn the camp. {PRONOUN/m_c/poss/CAP} Clanmates have begun to notice that {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} never as badly injured as the other warriors.",
         "m_c": {
-            "status": ["leader", "deputy", "warrior"],
-            "skill": ["-FIGHTER,1"],
-            "trait": ["nervous", "shameless", "insecure", "cunning", "sneaky", "childish"]
+            "status": [ "leader", "deputy", "warrior" ],
+            "skill": [ "-FIGHTER,1" ],
+            "trait": [ "nervous", "shameless", "insecure", "cunning", "sneaky", "childish" ]
         },
         "injury": [
             {
-                "cats": ["m_c"],
-                "injuries": ["minor_injury"]
+                "cats": [ "m_c" ],
+                "injuries": [ "minor_injury" ]
             }
         ],
         "relationships": [
             {
-                "cats_from": ["clan", "high_aggress", "low_stable"],
-                "cats_to": ["m_c"],
-                "values": ["trust", "respect"],
+                "cats_from": [ "clan", "high_aggress", "low_stable" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust", "respect" ],
                 "amount": -8,
                 "mutual": false,
                 "log": {
@@ -8315,31 +8574,31 @@
     },
     {
         "event_id": "gen_injury_war_minorinjury_romance",
-        "location": ["any"],
-        "season": ["any"],
-        "sub_type": ["war"],
-        "tags": ["romance"],
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "sub_type": [ "war" ],
+        "tags": [ "romance" ],
         "frequency": 2,
         "event_text": "m_c saves r_c in a battle with o_c_n. r_c can't stop thinking about the act of heroism in the following days.",
         "m_c": {
-            "status": ["leader", "deputy", "warrior"],
-            "skill": ["FIGHTER,1"]
+            "status": [ "leader", "deputy", "warrior" ],
+            "skill": [ "FIGHTER,1" ]
         },
         "r_c": {
-            "status": ["leader", "deputy", "warrior"],
-            "skill": ["-FIGHTER,1"]
+            "status": [ "leader", "deputy", "warrior" ],
+            "skill": [ "-FIGHTER,1" ]
         },
         "injury": [
             {
-                "cats": ["m_c"],
-                "injuries": ["minor_injury"]
+                "cats": [ "m_c" ],
+                "injuries": [ "minor_injury" ]
             }
         ],
         "relationships": [
             {
-                "cats_from": ["r_c"],
-                "cats_to": ["m_c"],
-                "values": ["trust", "romance"],
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust", "romance" ],
                 "amount": 15,
                 "mutual": false,
                 "log": {
@@ -8348,38 +8607,38 @@
             }
         ],
         "other_clan": {
-            "current_rep": ["any"],
+            "current_rep": [ "any" ],
             "changed": -1,
             "has_rank": [ "any_fighter_mult" ]
         }
     },
     {
         "event_id": "gen_injury_war_battleinjury_romance",
-        "location": ["any"],
-        "season": ["any"],
-        "sub_type": ["war"],
-        "tags": ["romance"],
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "sub_type": [ "war" ],
+        "tags": [ "romance" ],
         "frequency": 2,
         "event_text": "m_c saves r_c in a battle with o_c_n and takes a beating. r_c hovers at {PRONOUN/m_c/poss} nestside, fearing for the cat who saved {PRONOUN/r_c/poss} life.",
         "m_c": {
-            "status": ["leader", "deputy", "warrior"],
-            "skill": ["-FIGHTER,1"]
+            "status": [ "leader", "deputy", "warrior" ],
+            "skill": [ "-FIGHTER,1" ]
         },
         "r_c": {
-            "status": ["leader", "deputy", "warrior"],
-            "skill": ["-FIGHTER,1"]
+            "status": [ "leader", "deputy", "warrior" ],
+            "skill": [ "-FIGHTER,1" ]
         },
         "injury": [
             {
-                "cats": ["m_c"],
-                "injuries": ["battle_injury"]
+                "cats": [ "m_c" ],
+                "injuries": [ "battle_injury" ]
             }
         ],
         "relationships": [
             {
-                "cats_from": ["r_c"],
-                "cats_to": ["m_c"],
-                "values": ["trust", "romance"],
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust", "romance" ],
                 "amount": 15,
                 "mutual": false,
                 "log": {
@@ -8388,26 +8647,26 @@
             }
         ],
         "other_clan": {
-            "current_rep": ["any"],
+            "current_rep": [ "any" ],
             "changed": -1,
             "has_rank": [ "any_fighter_mult" ]
         }
     },
     {
         "event_id": "gen_injury_war_battleinjury_ocnfriend",
-        "location": ["any"],
-        "season": ["any"],
-        "sub_type": ["war"],
-        "tags": [],
+        "location": [ "any" ],
+        "season": [ "any" ],
+        "sub_type": [ "war" ],
+        "tags": [ ],
         "frequency": 1,
         "event_text": "r_c catches m_c meeting with an enemy warrior at the o_c_n border. When r_c attacks the o_c_n warrior, m_c leaps to {PRONOUN/n_c:0/poss} defense and fights {PRONOUN/m_c/poss} own Clanmate.",
         "m_c": {
-            "status": ["warrior"],
-            "age": ["young adult"],
-            "trait": ["-faithful", "-loyal", "-responsible", "-calm", "-wise", "-careful", "-strict", "-righteous", "-thoughtful"]
+            "status": [ "warrior" ],
+            "age": [ "young adult" ],
+            "trait": [ "-faithful", "-loyal", "-responsible", "-calm", "-wise", "-careful", "-strict", "-righteous", "-thoughtful" ]
         },
         "r_c": {
-            "status": ["leader", "deputy", "warrior"]
+            "status": [ "leader", "deputy", "warrior" ]
         },
         "new_cat": [
             [
@@ -8419,32 +8678,32 @@
         ],
         "injury": [
             {
-                "cats": ["m_c", "r_c", "n_c:0"],
-                "injuries": ["battle_injury"]
+                "cats": [ "m_c", "r_c", "n_c:0" ],
+                "injuries": [ "battle_injury" ]
             }
         ],
         "history": [
-        {
-            "cats": ["m_c"],
-            "scar": "m_c was scarred after fighting {PRONOUN/m_c/poss} own Clanmate to protect a cat from an enemy Clan.",
-            "death": "m_c died of {PRONOUN/m_c/poss} injuries after fighting {PRONOUN/m_c/poss} own Clanmate to protect a cat from an enemy Clan."
-        },
-        {
-            "cats": ["r_c"],
-            "scar": "m_c was scarred after driving off a cat from an enemy Clan and being attacked by {PRONOUN/r_c/poss} own Clanmate.",
-            "death": "m_c died of {PRONOUN/m_c/poss} injuries after driving off a cat from an enemy Clan and being attacked by {PRONOUN/r_c/poss} own Clanmate."
-        },
-        {
-            "cats": ["n_c:0"],
-            "scar": "m_c was scarred after being attacked by an enemy Clan's warrior.",
-            "death": "m_c died of {PRONOUN/m_c/poss} injuries after being attacked by an enemy Clan's warrior."
-        }
+            {
+                "cats": [ "m_c" ],
+                "scar": "m_c was scarred after fighting {PRONOUN/m_c/poss} own Clanmate to protect a cat from an enemy Clan.",
+                "death": "m_c died of {PRONOUN/m_c/poss} injuries after fighting {PRONOUN/m_c/poss} own Clanmate to protect a cat from an enemy Clan."
+            },
+            {
+                "cats": [ "r_c" ],
+                "scar": "m_c was scarred after driving off a cat from an enemy Clan and being attacked by {PRONOUN/r_c/poss} own Clanmate.",
+                "death": "m_c died of {PRONOUN/m_c/poss} injuries after driving off a cat from an enemy Clan and being attacked by {PRONOUN/r_c/poss} own Clanmate."
+            },
+            {
+                "cats": [ "n_c:0" ],
+                "scar": "m_c was scarred after being attacked by an enemy Clan's warrior.",
+                "death": "m_c died of {PRONOUN/m_c/poss} injuries after being attacked by an enemy Clan's warrior."
+            }
         ],
         "relationships": [
             {
-                "cats_from": ["r_c"],
-                "cats_to": ["m_c"],
-                "values": ["trust", "respect"],
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust", "respect" ],
                 "amount": -15,
                 "mutual": true,
                 "log": {
@@ -8453,9 +8712,9 @@
                 }
             },
             {
-                "cats_from": ["clan", "high_social", "high_aggress", "high_lawful"],
-                "cats_to": ["m_c"],
-                "values": ["trust"],
+                "cats_from": [ "clan", "high_social", "high_aggress", "high_lawful" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "trust" ],
                 "amount": -10,
                 "mutual": false,
                 "log": {
@@ -8463,9 +8722,9 @@
                 }
             },
             {
-                "cats_from": ["m_c"],
-                "cats_to": ["n_c:0"],
-                "values": ["comfort", "like"],
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "n_c:0" ],
+                "values": [ "comfort", "like" ],
                 "amount": 15,
                 "mutual": true,
                 "log": {
@@ -8474,7 +8733,7 @@
             }
         ],
         "other_clan": {
-            "current_rep": ["any"],
+            "current_rep": [ "any" ],
             "changed": -2,
             "has_rank": [ "warrior" ]
         }
@@ -8496,11 +8755,11 @@
             "status": [
                 "warrior", "deputy", "leader"
             ],
-            "relationship_status": ["mentor/app"],
+            "relationship_status": [ "mentor/app" ],
             "dies": false
         },
         "r_c": {
-            "status": ["apprentice"],
+            "status": [ "apprentice" ],
             "dies": false
         },
         "injury": [
@@ -8508,27 +8767,27 @@
                 "cats": [
                     "m_c"
                 ],
-                "injuries": ["battle_injury"]
+                "injuries": [ "battle_injury" ]
             },
             {
                 "cats": [
                     "r_c"
                 ],
-                "injuries": ["minor_injury"]
+                "injuries": [ "minor_injury" ]
             }
         ],
         "history": [
             {
-                "cats": ["m_c"],
+                "cats": [ "m_c" ],
                 "scar": "m_c was scarred after defending {PRONOUN/m_c/poss} apprentice in a battle with an enemy Clan.",
                 "death": "m_c died of {PRONOUN/m_c/poss} injuries after defending {PRONOUN/m_c/poss} apprentice in a battle with an enemy Clan."
             }
         ],
         "relationships": [
             {
-                "cats_from": ["r_c"],
-                "cats_to": ["m_c"],
-                "values": ["respect", "trust"],
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "respect", "trust" ],
                 "amount": 15,
                 "mutual": false,
                 "log": {
@@ -8560,17 +8819,17 @@
             "status": [
                 "warrior", "apprentice", "deputy", "leader"
             ],
-            "relationship_status": ["littermates"],
+            "relationship_status": [ "littermates" ],
             "dies": false
         },
         "r_c": {
-            "status": ["warrior", "apprentice", "deputy", "leader"],
+            "status": [ "warrior", "apprentice", "deputy", "leader" ],
             "dies": false
         },
         "injury": [
             {
-                "cats": ["r_c", "m_c"],
-                "injuries": ["battle_injury", "minor_injury"]
+                "cats": [ "r_c", "m_c" ],
+                "injuries": [ "battle_injury", "minor_injury" ]
             }
         ],
         "history": [
@@ -8584,10 +8843,10 @@
         ],
         "relationships": [
             {
-                "cats_from": ["m_c"],
-                "cats_to": ["r_c"],
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
                 "mutual": true,
-                "values": ["trust"],
+                "values": [ "trust" ],
                 "amount": 15,
                 "log": {
                     "cats_from": "cat_from and cat_to fought side by side in a battle against a warring Clan."
@@ -8618,23 +8877,23 @@
             "status": [
                 "warrior", "deputy", "leader"
             ],
-            "age": ["young adult", "adult", "senior adult"],
-            "relationship_status": ["siblings"],
+            "age": [ "young adult", "adult", "senior adult" ],
+            "relationship_status": [ "siblings" ],
             "dies": false
         },
         "r_c": {
-            "status": ["apprentice"],
-            "age": ["adolescent"],
+            "status": [ "apprentice" ],
+            "age": [ "adolescent" ],
             "dies": false
         },
         "injury": [
             {
-                "cats": ["m_c"],
-                "injuries": ["battle_injury"]
+                "cats": [ "m_c" ],
+                "injuries": [ "battle_injury" ]
             },
             {
-                "cats": ["r_c"],
-                "injuries": ["minor_injury"]
+                "cats": [ "r_c" ],
+                "injuries": [ "minor_injury" ]
             }
         ],
         "history": [
@@ -8648,10 +8907,10 @@
         ],
         "relationships": [
             {
-                "cats_from": ["r_c"],
-                "cats_to": ["m_c"],
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
                 "mutual": false,
-                "values": ["trust", "respect"],
+                "values": [ "trust", "respect" ],
                 "amount": 15,
                 "log": {
                     "cats_from": "cat_to protected cat_from in a fight with an enemy Clan."
@@ -8682,11 +8941,11 @@
             "status": [
                 "warrior", "apprentice", "deputy", "leader"
             ],
-            "relationship_status": ["child/parent", "cherishes"],
+            "relationship_status": [ "child/parent", "cherishes" ],
             "dies": false
         },
         "r_c": {
-            "status": ["warrior", "deputy", "leader"],
+            "status": [ "warrior", "deputy", "leader" ],
             "dies": false
         },
         "injury": [
@@ -8694,14 +8953,14 @@
                 "cats": [
                     "m_c"
                 ],
-                "injuries": ["minor_injury"]
+                "injuries": [ "minor_injury" ]
             }
         ],
         "relationships": [
             {
-                "cats_from": ["m_c"],
-                "cats_to": ["r_c"],
-                "values": ["respect", "trust"],
+                "cats_from": [ "m_c" ],
+                "cats_to": [ "r_c" ],
+                "values": [ "respect", "trust" ],
                 "amount": 15,
                 "mutual": false,
                 "log": {
@@ -8733,11 +8992,11 @@
             "status": [
                 "apprentice", "warrior", "deputy", "leader"
             ],
-            "relationship_status": ["child/parent", "cherishes"],
+            "relationship_status": [ "child/parent", "cherishes" ],
             "dies": false
         },
         "r_c": {
-            "status": ["warrior", "deputy", "leader"],
+            "status": [ "warrior", "deputy", "leader" ],
             "dies": false
         },
         "injury": [
@@ -8745,14 +9004,14 @@
                 "cats": [
                     "r_c", "m_c"
                 ],
-                "injuries": ["battle_injury", "minor_injury"]
+                "injuries": [ "battle_injury", "minor_injury" ]
             }
         ],
         "relationships": [
             {
-                "cats_from": ["r_c"],
-                "cats_to": ["m_c"],
-                "values": ["respect", "trust"],
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
+                "values": [ "respect", "trust" ],
                 "amount": 15,
                 "mutual": false,
                 "log": {
@@ -8784,12 +9043,12 @@
             "status": [
                 "warrior", "deputy", "leader"
             ],
-            "skill": ["FIGHTER,1"],
-            "relationship_status": ["mates"],
+            "skill": [ "FIGHTER,1" ],
+            "relationship_status": [ "mates" ],
             "dies": false
         },
         "r_c": {
-            "status": ["warrior", "deputy", "leader"],
+            "status": [ "warrior", "deputy", "leader" ],
             "dies": false
         },
         "injury": [
@@ -8797,15 +9056,15 @@
                 "cats": [
                     "m_c"
                 ],
-                "injuries": ["minor_injury"]
+                "injuries": [ "minor_injury" ]
             }
         ],
         "relationships": [
             {
-                "cats_from": ["r_c"],
-                "cats_to": ["m_c"],
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
                 "mutual": false,
-                "values": ["trust", "romance"],
+                "values": [ "trust", "romance" ],
                 "amount": 15,
                 "log": {
                     "cats_from": "cat_to's skill in battle saved {PRONOUN/cat_to/poss} mate, cat_from, from injury."
@@ -8836,11 +9095,11 @@
             "status": [
                 "warrior", "deputy", "leader"
             ],
-            "relationship_status": ["adores"],
+            "relationship_status": [ "adores" ],
             "dies": false
         },
         "r_c": {
-            "status": ["warrior", "deputy", "leader"],
+            "status": [ "warrior", "deputy", "leader" ],
             "dies": false
         },
         "injury": [
@@ -8848,22 +9107,22 @@
                 "cats": [
                     "m_c"
                 ],
-                "injuries": ["battle_injury"]
+                "injuries": [ "battle_injury" ]
             }
         ],
         "history": [
             {
-                "cats": ["m_c"],
+                "cats": [ "m_c" ],
                 "scar": "m_c was scarred in a battle with an enemy Clan while defending {PRONOUN/m_c/poss} mate.",
                 "death": "m_c died of injuries sustained protecting {PRONOUN/m_c/poss} mate from an enemy Clan."
             }
         ],
         "relationships": [
             {
-                "cats_from": ["r_c"],
-                "cats_to": ["m_c"],
+                "cats_from": [ "r_c" ],
+                "cats_to": [ "m_c" ],
                 "mutual": false,
-                "values": ["trust", "romance"],
+                "values": [ "trust", "romance" ],
                 "amount": 15,
                 "log": {
                     "cats_from": "cat_to defended cat_from in a battle with an enemy Clan."
@@ -9174,7 +9433,7 @@
         "other_clan": {
             "current_rep": [ "any" ],
             "changed": -1,
-            "has_rank": ["any_fighter_mult"]
+            "has_rank": [ "any_fighter_mult" ]
         },
 
         "injury": [
@@ -9219,7 +9478,7 @@
         "tags": [ ],
         "frequency": 1,
         "event_text": "After a victorious battle against a o_c_n cat, m_c returns to camp with pride… only to trip over at the entrance, spraining {PRONOUN/m_c/poss} paw.",
-        "new_accessory": [],
+        "new_accessory": [ ],
         "m_c": {
             "status": [
                 "warrior"
@@ -9240,7 +9499,7 @@
                 ]
             }
         ],
-        "other_clan": {"has_rank": ["any_warrior"]}
+        "other_clan": { "has_rank": [ "any_warrior" ] }
     },
     {
         "event_id": "gen_injury_war_ambushnoshow",
@@ -9272,169 +9531,169 @@
         ]
     },
     {
-    "event_id": "gen_injury_war_holdbackpunish",
-    "location": [
-        "any"
-    ],
-    "season": [
-        "any"
-    ],
-    "sub_type": [
-        "war"
-    ],
-    "tags": [],
-    "frequency": 1,
-    "event_text": "m_c is punished by r_c for holding back against a o_c_n cat.",
-    "m_c": {
-        "status": [
-            "apprentice",
-            "warrior"
-        ]
-    },
-    "r_c": {
-        "status": [
-            "deputy",
-            "leader"
+        "event_id": "gen_injury_war_holdbackpunish",
+        "location": [
+            "any"
         ],
-        "trait": [
-            "-compassionate",
-            "-thoughtful",
-            "-loving",
-            "-wise",
-            "-calm",
-            "-responsible",
-            "-playful",
-            "-nervous",
-            "-careful",
-            "-sincere"
-        ]
-    },
-    "injury": [
-        {
-            "cats": [
-                "m_c"
-            ],
-            "injuries": [
-                "battle_injury"
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "war"
+        ],
+        "tags": [ ],
+        "frequency": 1,
+        "event_text": "m_c is punished by r_c for holding back against a o_c_n cat.",
+        "m_c": {
+            "status": [
+                "apprentice",
+                "warrior"
             ]
-        }
-    ],
-    "history": [
-        {
-            "cats": [
-                "m_c"
-            ],
-            "scar": "m_c was scarred when r_c punished {PRONOUN/m_c/object} for holding back against the enemy Clan.",
-            "death": "m_c died from the injuries r_c inflicted as punishment for holding back against the enemy Clan."
-        }
-    ],
-    "relationships": [
-        {
-            "cats_from": [
-                "m_c"
-            ],
-            "cats_to": [
-                "r_c"
-            ],
-            "mutual": false,
-            "values": [
-                "respect",
-                "comfort"
-            ],
-            "amount": -15,
-            "log": {
-        "cats_from": "cat_from lost respect for cat_to when cat_to punished {PRONOUN/cat_from/object} for holding back in a battle."
-            }
         },
-        {
-            "cats_from": [
-                "r_c"
+        "r_c": {
+            "status": [
+                "deputy",
+                "leader"
             ],
-            "cats_to": [
-                "m_c"
-            ],
-            "mutual": false,
-            "values": [
-                "like",
-                "trust"
-            ],
-            "amount": -15,
-            "log": {
-        "cats_from": "cat_from punished cat_to for holding back during a battle."
+            "trait": [
+                "-compassionate",
+                "-thoughtful",
+                "-loving",
+                "-wise",
+                "-calm",
+                "-responsible",
+                "-playful",
+                "-nervous",
+                "-careful",
+                "-sincere"
+            ]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "battle_injury"
+                ]
             }
-        }
-    ],
-    "future_event": []
-},
-    {
-    "event_id": "gen_injury_war_argument",
-    "location": [
-        "any"
-    ],
-    "season": [
-        "any"
-    ],
-    "sub_type": [
-        "war"
-    ],
-    "tags": [],
-    "frequency": 3,
-    "event_text": "m_c and r_c get into a scuffle during an argument regarding o_c_n.",
-    "m_c": {
-        "status": [
-            "apprentice",
-            "warrior",
-            "leader",
-            "deputy"
-        ]
+        ],
+        "history": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "scar": "m_c was scarred when r_c punished {PRONOUN/m_c/object} for holding back against the enemy Clan.",
+                "death": "m_c died from the injuries r_c inflicted as punishment for holding back against the enemy Clan."
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [
+                    "m_c"
+                ],
+                "cats_to": [
+                    "r_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "respect",
+                    "comfort"
+                ],
+                "amount": -15,
+                "log": {
+                    "cats_from": "cat_from lost respect for cat_to when cat_to punished {PRONOUN/cat_from/object} for holding back in a battle."
+                }
             },
-    "r_c": {
-        "status": [
-            "apprentice",
-            "warrior",
-            "leader",
-            "deputy"
-        ]
-    },
-    "injury": [
-        {
-            "cats": [
-                "m_c"
-            ],
-            "injuries": [
-                "minor_injury"
-            ],
-            "scars": []
-        },
-        {
-            "cats": [
-                "r_c"
-            ],
-            "injuries": [
-                "minor_injury"
-            ],
-            "scars": []
-        }
-    ],
-    "relationships": [
-        {
-            "cats_from": [
-                "m_c"
-            ],
-            "cats_to": [
-                "r_c"
-            ],
-            "mutual": true,
-            "values": [
-                "respect"
-            ],
-            "amount": -10,
-            "log": {
-        "cats_from": "cat_from lost respect for cat_to due to an argument regarding another Clan."
+            {
+                "cats_from": [
+                    "r_c"
+                ],
+                "cats_to": [
+                    "m_c"
+                ],
+                "mutual": false,
+                "values": [
+                    "like",
+                    "trust"
+                ],
+                "amount": -15,
+                "log": {
+                    "cats_from": "cat_from punished cat_to for holding back during a battle."
+                }
             }
-        }
-    ],
-    "future_event": []
-}
+        ],
+        "future_event": [ ]
+    },
+    {
+        "event_id": "gen_injury_war_argument",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "war"
+        ],
+        "tags": [ ],
+        "frequency": 3,
+        "event_text": "m_c and r_c get into a scuffle during an argument regarding o_c_n.",
+        "m_c": {
+            "status": [
+                "apprentice",
+                "warrior",
+                "leader",
+                "deputy"
+            ]
+        },
+        "r_c": {
+            "status": [
+                "apprentice",
+                "warrior",
+                "leader",
+                "deputy"
+            ]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "minor_injury"
+                ],
+                "scars": [ ]
+            },
+            {
+                "cats": [
+                    "r_c"
+                ],
+                "injuries": [
+                    "minor_injury"
+                ],
+                "scars": [ ]
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": [
+                    "m_c"
+                ],
+                "cats_to": [
+                    "r_c"
+                ],
+                "mutual": true,
+                "values": [
+                    "respect"
+                ],
+                "amount": -10,
+                "log": {
+                    "cats_from": "cat_from lost respect for cat_to due to an argument regarding another Clan."
+                }
+            }
+        ],
+        "future_event": [ ]
+    }
 ]
 
