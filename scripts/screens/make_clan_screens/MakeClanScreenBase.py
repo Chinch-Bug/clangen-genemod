@@ -207,6 +207,9 @@ class MakeClanScreenBase(Screens):
         game.just_died.clear()
         game.dead_cats_to_grieve.clear()
         save_load.faded_ids.clear()
+        game.cur_events_list.clear()
+        game.herb_events_list.clear()
+        game.clan.grief_strings.clear()
         Cat.outside_cats.clear()
         Patrol.used_patrols.clear()
         save_id = self.clan_info.name
@@ -222,11 +225,8 @@ class MakeClanScreenBase(Screens):
         )
         game.clan.create_clan(self.clan_info.clan_count_mode)
         EventsScreen.current_clan = None
-        game.cur_events_list.clear()
-        game.herb_events_list.clear()
         game.clan.herb_supply.start_storage(len(self.clan_info.starting_members))
         game.clan.save_herb_supply(game.clan)
-        game.clan.grief_strings.clear()
         Cat.sort_cats()
         rebuild_top_menu_buttons()
 

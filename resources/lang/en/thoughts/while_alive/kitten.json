@@ -129,7 +129,7 @@
             "Is asking the medicine cat why all the herbs have to be stinky and gross",
             "Wants to follow the medicine cat everywhere",
             "Is asking r_c what every herb does but isn't retaining a word of it",
-            "Wants to follow the healer everywhere",
+            "Wants to follow the medicine cat everywhere",
             "Won't stay still while r_c tries to treat {PRONOUN/m_c/object}"
         ],
         "involved_cats": {
@@ -170,7 +170,7 @@
     {
         "id": "gen_greenleaf_kit",
         "season": [
-            "Greenleaf"
+            "greenleaf"
         ],
         "strings": [
             "Is whining about the heat",
@@ -187,7 +187,7 @@
     {
         "id": "gen_leafbare_kit",
         "season": [
-            "Leaf-bare"
+            "leaf-bare"
         ],
         "strings": [
             "Is whining about the cold",
@@ -381,7 +381,7 @@
             "Is rolling around cutely while warriors look upon {PRONOUN/m_c/object}",
             "Is rubbing up against the warriors' legs",
             "Is hoping the patrol will come back with a special gift for {PRONOUN/m_c/object} like usual",
-            "Is trying to purr {PRONOUN/m_c/poss} way out of trouble with the healer",
+            "Is trying to purr {PRONOUN/m_c/poss} way out of trouble with the medicine cat",
             "Is absolutely adorable",
             "Is purring softly",
             "Is waiting patiently for {PRONOUN/m_c/poss} turn",
@@ -414,7 +414,7 @@
             "Thinks {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} the leader of {PRONOUN/m_c/poss} own Clan",
             "Bosses around imaginary cats as deputy",
             "Wonders what it would be like to be leader",
-            "Sorts blades of grass like a healer would",
+            "Sorts blades of grass like a medicine cat would",
             "Stares into nothing in particular",
             "Makes up a tale on the spot for the other kits",
             "Is annoying the elders for more tales",
@@ -566,7 +566,7 @@
             "Is zooming around",
             "Pounced on r_c",
             "Is practicing {PRONOUN/m_c/poss} pounce on r_c's tail",
-            "Is complaining of a tummyache after sneaking into the healer's herb storage and eating some burdock",
+            "Is complaining of a tummyache after sneaking into the medicine cat's herb storage and eating some burdock",
             "Picked up something nobody else got a good look at and is now running from several cats",
             "Is pretending to be a mouse and trying to get others to chase {PRONOUN/m_c/object}",
             "Nips at r_c and runs away giggling",
@@ -911,13 +911,13 @@
             "Is planning to be naughty",
             "Is thinking about being in trouble",
             "Is trying to get out of trouble",
-            "Is scrambling the healer's herbs",
+            "Is scrambling the medicine cat's herbs",
             "Is thinking of how to cause trouble",
             "Plans to annoy an elder",
             "Is trying very hard to look innocent",
             "Is thinking about play-fighting with {PRONOUN/m_c/poss} littermates",
             "Is putting thorns in r_c's bedding",
-            "Is thinking about stealing herbs from the healer den",
+            "Is thinking about stealing herbs from the medicine cat den",
             "Is sneaking out of camp",
             "Is saying bad words",
             "Is tripping other cats",
@@ -955,7 +955,7 @@
             "Is pretending to be r_c",
             "Is watching r_c work",
             "Is teaching the other kits about herbs",
-            "Wonders if {PRONOUN/m_c/subject} should be a healer like r_c"
+            "Wonders if {PRONOUN/m_c/subject} should be a medicine cat like r_c"
         ],
         "involved_cats": {
             "r_c": {

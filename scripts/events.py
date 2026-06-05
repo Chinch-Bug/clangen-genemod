@@ -185,6 +185,8 @@ def one_moon():
             if isinstance(check_cat, Cat):
                 if check_cat.dead or check_cat.status.is_outsider:
                     game.clan.grief_strings.pop(ID)
+            else:
+                game.clan.grief_strings.pop(ID)
 
         # Generate events
 
