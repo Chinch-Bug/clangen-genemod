@@ -47,7 +47,7 @@ class ClanInfo:
 
     # we do this as a dataclass to make it a bit more future-proofed for any eventual additions to this info
     # this way it's much easier to change names of attributes or add new ones OR know if you've fucked smth up
-    name: str = ""
+    display_name: str = ""
     leader: Optional[Cat] = None
     deputy: Optional[Cat] = None
     medicine_cat: Optional[Cat] = None
@@ -63,7 +63,7 @@ class ClanInfo:
         """
         Return all the attributes back to their default values
         """
-        self.name = ""
+        self.display_name = ""
         self.leader = None
         self.deputy = None
         self.medicine_cat = None
@@ -76,7 +76,7 @@ class ClanInfo:
         self.clan_count_mode = "singleclan"
 
     def update(self, saved_info: dict):
-        self.name = saved_info["name"]
+        self.display_name = saved_info["display_name"]
         self.leader = saved_info["leader"]
         self.deputy = saved_info["deputy"]
         self.medicine_cat = saved_info["medicine_cat"]
@@ -93,7 +93,7 @@ class ClanInfo:
         Returns all the attributes as a dict. We gotta use this instead of the dataclasses.as_dict() because Cat objects aren't pickable
         """
         return {
-            "name": self.name,
+            "display_name": self.display_name,
             "leader": self.leader,
             "deputy": self.deputy,
             "medicine_cat": self.medicine_cat,
@@ -207,26 +207,26 @@ class MakeClanScreenBase(Screens):
         game.just_died.clear()
         game.dead_cats_to_grieve.clear()
         save_load.faded_ids.clear()
-        game.cur_events_list.clear()
-        game.herb_events_list.clear()
-        game.clan.grief_strings.clear()
         Cat.outside_cats.clear()
         Patrol.used_patrols.clear()
-        save_id = self.clan_info.name
 
         # extra sanitization for filenames
-        clan_name = sub(r"[/\\?%*:|\"<>\x7F\x00-\x1F]", "-", save_id)
-        if _clan_name_exists(clan_name):
-            self.clan_info.name = _generate_unique_clan_name(clan_name)
+        save_id = sub(r"[/\\?%*:|\"<>\x7F\x00-\x1F]", "-", self.clan_info.display_name)
+        # if the name is in use, we create a unique save id
+        if _clan_name_exists(save_id):
+            save_id = _generate_unique_clan_name(save_id)
 
         game.clan = Clan(
-            displayname=clan_name,
+            save_id=save_id,
             **self.clan_info.get_dict(),
         )
         game.clan.create_clan(self.clan_info.clan_count_mode)
         EventsScreen.current_clan = None
+        game.cur_events_list.clear()
+        game.herb_events_list.clear()
         game.clan.herb_supply.start_storage(len(self.clan_info.starting_members))
         game.clan.save_herb_supply(game.clan)
+        game.clan.grief_strings.clear()
         Cat.sort_cats()
         rebuild_top_menu_buttons()
 
@@ -243,8 +243,8 @@ class MakeClanScreenBase(Screens):
         clan_names = (
             names.names_dict["normal_prefixes"] + names.names_dict["clan_prefixes"]
         )
-        if self.clan_info.name:
-            clan_names.remove(self.clan_info.name)
+        if self.clan_info.display_name:
+            clan_names.remove(self.clan_info.display_name)
 
         return choice(clan_names)
 

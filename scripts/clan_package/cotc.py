@@ -19,7 +19,7 @@ def get_other_clan(clan_name):
     returns the clan object of given clan name
     """
     for clan in game.clan.all_other_clans:
-        if clan.displayname == clan_name:
+        if clan.name == clan_name:
             return clan
 
 

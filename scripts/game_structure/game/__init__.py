@@ -152,7 +152,7 @@ def save_events():
     for event in cur_events_list:
         if e := event.to_dict():
             events_list.append(e)
-    safe_save(f"{get_save_dir()}/{clan.name}/events.json", events_list)
+    safe_save(f"{get_save_dir()}/{clan.save_id}/events.json", events_list)
 
 
 def add_faded_offspring_to_faded_cat(parent, offspring):
@@ -162,7 +162,7 @@ def add_faded_offspring_to_faded_cat(parent, offspring):
 
     global clan
 
-    path = f"{get_save_dir()}/{clan.name}/faded_cats/{parent}.json"
+    path = f"{get_save_dir()}/{clan.save_id}/faded_cats/{parent}.json"
 
     try:
         with open(
@@ -189,7 +189,7 @@ def load_events():
 
     global clan
 
-    clanname = clan.name
+    clanname = clan.save_id
     events_path = f"{get_save_dir()}/{clanname}/events.json"
     events_list = []
     try:
@@ -198,13 +198,13 @@ def load_events():
         for event_dict in events_list:
             event_obj = Single_Event.from_dict(event_dict, cat_class)
             if event_obj:
-                if event_obj.clan and (event_obj.clan == CatGroup.PLAYER_CLAN.value or event_obj.clan == clan.displayname):
+                if event_obj.clan and (event_obj.clan == CatGroup.PLAYER_CLAN.value or event_obj.clan == clan.name):
                     event_obj.clan = CatGroup.PLAYER_CLAN_ID
                 elif event_obj.clan and len(event_obj.clan) > 2:
                     try:
                         event_obj.clan = str(int(event_obj.clan[-1])+4)
                     except:
-                        event_obj.clan = next(filter(lambda c: event_obj.clan == c.displayname, clan.all_other_clans), None)
+                        event_obj.clan = next(filter(lambda c: event_obj.clan == c.name, clan.all_other_clans), None)
                         event_obj.clan = event_obj.clan.group_ID if event_obj.clan else None
                 cur_events_list.append(event_obj)
     except FileNotFoundError:

@@ -65,7 +65,7 @@ class Screens:
                     b.enable()
             for b in ["screens.core.warriors_den", "screens.core.leader_den"]:
                 Screens.menu_buttons["dens"].child_button_dicts[b].enable()
-            Screens.menu_buttons["heading"].selected_list = [i18n.t("general.clan", name=game.clan.displayname)]
+            Screens.menu_buttons["heading"].selected_list = [i18n.t("general.clan", name=game.clan.name)]
             if hasattr(Screens.menu_buttons["heading"], "child_buttons"):
                 for b in Screens.menu_buttons["heading"].child_buttons:
                     if b.text in Screens.menu_buttons["heading"].selected_list:
@@ -231,7 +231,7 @@ class Screens:
         Screens.game_frame = scripts.screens.screens_core.screens_core.game_frame
         try:
             Screens.update_heading_text(
-                "general.clan", text_kwargs={"name": game.selected_clan.displayname}
+                "general.clan", text_kwargs={"name": game.selected_clan.name}
             )
         except AttributeError:
             Screens.update_heading_text("DebugClan")
@@ -457,7 +457,7 @@ class Screens:
         ) or (hasattr(Screens.menu_buttons["heading"], "parent_button") and event.ui_element == Screens.menu_buttons["heading"].parent_button):
             self.change_screen(GameScreen.CAMP)
         elif (hasattr(Screens.menu_buttons["heading"], "child_buttons") and event.ui_element in Screens.menu_buttons["heading"].child_buttons):
-            game.selected_clan = next(filter(lambda c: c.displayname == event.ui_element.text.replace("Clan", ""), game.clan.all_other_clans), game.clan)
+            game.selected_clan = next(filter(lambda c: c.name == event.ui_element.text.replace("Clan", ""), game.clan.all_other_clans), game.clan)
             if game.selected_clan != game.clan:
                 if Screens.menu_buttons.get("supplies"):
                     for b in Screens.menu_buttons["supplies"].child_buttons:

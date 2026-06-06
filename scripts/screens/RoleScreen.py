@@ -615,7 +615,7 @@ class RoleScreen(Screens):
         else:
             output = "screens.role.blurb_unknown"
 
-        return i18n.t(output, name=self.the_cat.name, clan=self.the_cat.status.fetch_clan_object().displayname)
+        return i18n.t(output, name=self.the_cat.name, clan=self.the_cat.status.fetch_clan_object().name)
 
     def exit_screen(self):
         self.back_button.kill()

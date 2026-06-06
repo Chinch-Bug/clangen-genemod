@@ -264,7 +264,7 @@ class ListScreen(Screens):
         super().screen_switches()
         self.show_mute_buttons()
         game.selected_clan = game.clan
-        self.clan_name = i18n.t("general.clan", name=game.clan.displayname)
+        self.clan_name = i18n.t("general.clan", name=game.clan.name)
 
         if not game.last_list_forProfile:
             self.death_status = "living"
@@ -272,7 +272,7 @@ class ListScreen(Screens):
         
         group_names = ["general.your_clan", "general.cotc", "general.cbtc"]
         if game.clan and game.clan.clancount == "multiclan":
-            group_names += [i18n.t("general.clan", name=clan.displayname) for clan in game.clan.all_other_clans]
+            group_names += [i18n.t("general.clan", name=clan.name) for clan in game.clan.all_other_clans]
         self.living_group_names = tuple(group_names)
 
         self.set_disabled_menu_buttons(["cats"])
@@ -778,7 +778,7 @@ class ListScreen(Screens):
                 first_temper, second_temper = game.dark_forest.temperament
         else:
             group = self.current_group
-            first_temper, second_temper = next(filter(lambda c: c.displayname == self.selected_clan, game.clan.all_other_clans), game.clan).temperament
+            first_temper, second_temper = next(filter(lambda c: c.name == self.selected_clan, game.clan.all_other_clans), game.clan).temperament
 
         first = i18n.t(f"screens.leader_den.{first_temper}")
         second = i18n.t(f"screens.leader_den.{second_temper}")
@@ -826,7 +826,7 @@ class ListScreen(Screens):
         self.death_status = "living"
         self.full_cat_list = [
             cat for cat in Cat.all_cats_list 
-            if cat.status.group.is_any_clan_group() and cat.status.fetch_clan_object().displayname == self.selected_clan
+            if cat.status.group.is_any_clan_group() and cat.status.fetch_clan_object().name == self.selected_clan
         ]
 
     def get_cotc_cats(self):

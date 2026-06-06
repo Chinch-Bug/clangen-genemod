@@ -83,10 +83,10 @@ class ClanSettingsScreen(Screens):
                 open_data_dir()
                 return
             elif event.ui_element == self.deleted_faded_button:
-                DeleteCatCheck(self.change_screen, game.clan.displayname)
+                DeleteCatCheck(self.change_screen, game.clan.name)
                 return
             elif event.ui_element == self.deleted_faded_history_button:
-                DeleteCatHistoryCheck(self.change_screen, game.clan.displayname)
+                DeleteCatHistoryCheck(self.change_screen, game.clan.name)
                 return
             elif event.ui_element == self.game_settings_button:
                 self.change_screen(GameScreen.SETTINGS)

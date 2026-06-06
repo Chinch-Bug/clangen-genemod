@@ -14,14 +14,14 @@ def clan_symbol_sprite(clan, return_string=False, force_light=False, force_dark=
         possible_sprites = []
         for sprite in sprites.clan_symbols:
             name = sprite.strip("1234567890")
-            if f"symbol{clan.displayname.upper()}" == name:
+            if f"symbol{clan.name.upper()}" == name:
                 possible_sprites.append(sprite)
         if possible_sprites:
             clan.chosen_symbol = choice(possible_sprites)
         else:
             # give random symbol if no matching symbol exists
             print(
-                f"WARNING: attempted to return symbol, but there's no clan symbol for {clan.displayname.upper()}. "
+                f"WARNING: attempted to return symbol, but there's no clan symbol for {clan.name.upper()}. "
                 f"Random chosen."
             )
             clan.chosen_symbol = choice(sprites.clan_symbols)

@@ -102,7 +102,7 @@ class ClanScreen(Screens):
 
         self.set_disabled_menu_buttons(["camp_screen"])
         self.update_heading_text(
-            "general.clan", text_kwargs={"name": game.selected_clan.displayname}
+            "general.clan", text_kwargs={"name": game.selected_clan.name}
         )
         self.show_menu_buttons()
         Screens.menu_buttons["back_to_camp"].hide()

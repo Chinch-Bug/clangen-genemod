@@ -441,7 +441,7 @@ class LeaderDenScreen(Screens):
             manager=MANAGER,
         )
         for i, other_clan in enumerate(game.clan.all_other_clans):
-            if other_clan.displayname == game.clan.displayname:
+            if other_clan.name == game.clan.name:
                 continue
             x_pos = 128
             self.other_clan_selection_elements[f"container{i}"] = UIContainer(
@@ -480,7 +480,7 @@ class LeaderDenScreen(Screens):
                 object_id=get_text_box_theme("#text_box_30_horizcenter"),
                 container=self.other_clan_selection_elements[f"container{i}"],
                 manager=MANAGER,
-                text_kwargs={"name": other_clan.displayname},
+                text_kwargs={"name": other_clan.name},
                 anchors={
                     "centerx": "centerx",
                     "top_target": self.other_clan_selection_elements[f"clan_symbol{i}"],
@@ -639,7 +639,7 @@ class LeaderDenScreen(Screens):
             object_id="#text_box_30_horizcenter",
             container=self.focus_clan_container,
             manager=MANAGER,
-            text_kwargs={"name": self.focus_clan.displayname},
+            text_kwargs={"name": self.focus_clan.name},
             anchors={
                 "centerx": "centerx",
                 "top_target": self.focus_clan_elements["clan_symbol"],
@@ -764,7 +764,7 @@ class LeaderDenScreen(Screens):
             "lead_den_clan_event",
             {
                 "cat_ID": gathering_cat.ID,
-                "other_clan": self.focus_clan.displayname,
+                "other_clan": self.focus_clan.name,
                 "player_clan_temper": self.clan_temper,
                 "interaction_type": interaction_type,
                 "success": success,

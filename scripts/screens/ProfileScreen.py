@@ -974,22 +974,22 @@ class ProfileScreen(Screens):
         if the_cat.dead:
             old_clan = the_cat.status.get_last_living_group()
             if old_clan:
-                name = the_cat.status.fetch_clan_object(game.clan).displayname
+                name = the_cat.status.fetch_clan_object(game.clan).name
             # otherwise they had no clan
             else:
                 name = None
 
         # if cat is alive and in another clan, find that clan's name
         elif the_cat.status.is_other_clancat:
-            name = the_cat.status.fetch_clan_object(game.clan).displayname
+            name = the_cat.status.fetch_clan_object(game.clan).name
         # otherwise, assume the cat takes the player clan's name
         # it's okay if this is an outsider, if they don't actually have a group to refer to then they won't use this variable
         else:
-            name = game.clan.displayname
+            name = game.clan.name
 
         exiled_name = ""
         if exile_clan := the_cat.status.is_exiled():
-            exiled_name = the_cat.status.fetch_clan_object(game.clan, exile_clan).displayname
+            exiled_name = the_cat.status.fetch_clan_object(game.clan, exile_clan).name
 
         cat_clan = i18n.t(f"general.clan", name=f"{name}")
 
@@ -1377,11 +1377,11 @@ class ProfileScreen(Screens):
 
     def save_user_notes(self):
         """Saves user-entered notes."""
-        clanname = game.clan.name
+        save_id = game.clan.save_id
 
         notes = self.user_notes
 
-        notes_directory = get_save_dir() + "/" + clanname + "/notes"
+        notes_directory = get_save_dir() + "/" + save_id + "/notes"
         notes_file_path = notes_directory + "/" + self.the_cat.ID + "_notes.json"
 
         if not os.path.exists(notes_directory):
@@ -1396,9 +1396,9 @@ class ProfileScreen(Screens):
 
     def load_user_notes(self):
         """Loads user-entered notes."""
-        clanname = game.clan.name
+        save_id = game.clan.save_id
 
-        notes_directory = get_save_dir() + "/" + clanname + "/notes"
+        notes_directory = get_save_dir() + "/" + save_id + "/notes"
         notes_file_path = notes_directory + "/" + self.the_cat.ID + "_notes.json"
 
         if not os.path.exists(notes_file_path):

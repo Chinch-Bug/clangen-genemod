@@ -49,10 +49,10 @@ class ChangeCatClanWindow(GameWindow):
         for clan in [game.clan] + game.clan.all_other_clans:
             if self.the_cat.status.group_ID == clan.group_ID:
                 continue
-            self.texts[clan.displayname] = pygame_gui.elements.UITextBox(
+            self.texts[clan.name] = pygame_gui.elements.UITextBox(
                 "general.clan",
                 ui_scale(pygame.Rect(107, n * 30 + 35, -1, 30)),
-                text_kwargs={"name": clan.displayname},
+                text_kwargs={"name": clan.name},
                 object_id="#text_box_30_horizleft_pad_0_8",
                 container=self,
             )
@@ -69,7 +69,7 @@ class ChangeCatClanWindow(GameWindow):
                 continue
             box_type = "@checked_checkbox" if self.selected == clan else "@unchecked_checkbox"
 
-            self.checkboxes[clan.displayname] = UIImageButton(
+            self.checkboxes[clan.name] = UIImageButton(
                 ui_scale(pygame.Rect((75, n * 30 + 35), (34, 34))),
                 "",
                 container=self,
@@ -124,7 +124,7 @@ class ChangeCatClanWindow(GameWindow):
                     if value == event.ui_element:
                         if value.object_ids[1] == "@unchecked_checkbox":
                             self.save_button.enable()
-                            self.selected = next(filter(lambda c: c.displayname == clan_name, game.clan.all_other_clans), game.clan)
+                            self.selected = next(filter(lambda c: c.name == clan_name, game.clan.all_other_clans), game.clan)
                         if value.object_ids[1] == "@checked_checkbox":
                             self.save_button.disable()
                             self.selected = None

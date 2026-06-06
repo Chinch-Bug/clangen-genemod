@@ -578,7 +578,7 @@ class SpriteInspectScreen(Screens):
         code["former_apprentices"] = []
         code["faded_offspring"] = []
 
-        file_path = os.path.join(get_save_dir(), game.clan.name, "exported_cats")
+        file_path = os.path.join(get_save_dir(), game.clan.save_id, "exported_cats")
         if not os.path.exists(file_path):
             os.makedirs(file_path)
         file_path = os.path.join(file_path, f"{code["ID"]}.json")

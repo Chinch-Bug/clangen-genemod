@@ -143,12 +143,12 @@ class CrossClanEvent(ShortEvent):
                 choice(self.random_cats[i].pronouns),
             )
         clan = game.clan.group_ID_to_clan(self.involved_clans[0])
-        self.custom_mapping["c_n"] = (i18n.t("general.clan", name=clan.displayname), {})
+        self.custom_mapping["c_n"] = (i18n.t("general.clan", name=clan.name), {})
         for i, o_clan in enumerate(self.involved_clans[1:], start=1):
             o_clan = game.clan.group_ID_to_clan(o_clan)
-            custom_mapping[f"o_c_n{i}"] = (i18n.t("general.clan", name=o_clan.displayname), {})
+            custom_mapping[f"o_c_n{i}"] = (i18n.t("general.clan", name=o_clan.name), {})
             if i == 1:
-                custom_mapping[f"o_c_n"] = (i18n.t("general.clan", name=o_clan.displayname), {})
+                custom_mapping[f"o_c_n"] = (i18n.t("general.clan", name=o_clan.name), {})
 
         self.text = process_text(self.text, custom_mapping)
 

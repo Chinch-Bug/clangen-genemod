@@ -1395,10 +1395,10 @@ class Cat:
             return
 
         try:
-            if switch_get_value(Switch.clan_name) != "":
-                clanname = switch_get_value(Switch.clan_name)
+            if switch_get_value(Switch.clan_save_id) != "":
+                save_id = switch_get_value(Switch.clan_save_id)
             else:
-                clanname = switch_get_value(Switch.clan_list)[0]
+                save_id = switch_get_value(Switch.clan_list)[0]
         except IndexError:
             print("History failed to load, no Clan in switches?")
             self._history = History(
@@ -1414,7 +1414,7 @@ class Cat:
             )
             return
 
-        history_directory = f"{get_save_dir()}/{clanname}/history/"
+        history_directory = f"{get_save_dir()}/{save_id}/history/"
         cat_history_directory = history_directory + self.ID + "_history.json"
 
         if not os.path.exists(cat_history_directory):
@@ -2547,15 +2547,15 @@ class Cat:
 
     def save_condition(self):
         # save conditions for each cat
-        clanname = None
-        if switch_get_value(Switch.clan_name) != "":
-            clanname = switch_get_value(Switch.clan_name)
+        save_id = None
+        if switch_get_value(Switch.clan_save_id) != "":
+            save_id = switch_get_value(Switch.clan_save_id)
         elif len(switch_get_value(Switch.clan_list)) > 0:
-            clanname = switch_get_value(Switch.clan_list)[0]
+            save_id = switch_get_value(Switch.clan_list)[0]
         elif game.clan is not None:
-            clanname = game.clan.displayname
+            save_id = game.clan.name
 
-        condition_directory = get_save_dir() + "/" + clanname + "/conditions"
+        condition_directory = get_save_dir() + "/" + save_id + "/conditions"
         condition_file_path = condition_directory + "/" + self.ID + "_conditions.json"
 
         if (
@@ -2580,12 +2580,12 @@ class Cat:
         safe_save(condition_file_path, conditions)
 
     def load_conditions(self):
-        if switch_get_value(Switch.clan_name) != "":
-            clanname = switch_get_value(Switch.clan_name)
+        if switch_get_value(Switch.clan_save_id) != "":
+            save_id = switch_get_value(Switch.clan_save_id)
         else:
-            clanname = switch_get_value(Switch.clan_list)[0]
+            save_id = switch_get_value(Switch.clan_list)[0]
 
-        condition_directory = get_save_dir() + "/" + clanname + "/conditions/"
+        condition_directory = get_save_dir() + "/" + save_id + "/conditions/"
         condition_cat_directory = condition_directory + self.ID + "_conditions.json"
         if not os.path.exists(condition_cat_directory):
             return
@@ -3077,12 +3077,12 @@ class Cat:
         safe_save(f"{relationship_dir}/{self.ID}_relations.json", rel)
 
     def load_relationship_of_cat(self):
-        if switch_get_value(Switch.clan_name) != "":
-            clanname = switch_get_value(Switch.clan_name)
+        if switch_get_value(Switch.clan_save_id) != "":
+            save_id = switch_get_value(Switch.clan_save_id)
         else:
-            clanname = switch_get_value(Switch.clan_list)[0]
+            save_id = switch_get_value(Switch.clan_list)[0]
 
-        relation_directory = get_save_dir() + "/" + clanname + "/relationships/"
+        relation_directory = get_save_dir() + "/" + save_id + "/relationships/"
         relation_cat_directory = relation_directory + self.ID + "_relations.json"
 
         self.relationships = {}
@@ -3367,15 +3367,15 @@ class Cat:
             return
 
         try:
-            # todo: why can't this be `get_switch(Switch.clan_name)`?
+            # todo: why can't this be `get_switch(Switch.clan_save_id)`?
             clan = (
                 switch_get_value(Switch.clan_list)[0]
                 if game.clan is None
-                else game.clan.name
+                else game.clan.save_id
             )
 
             with open(
-                get_save_dir() + "/" + game.clan.name + "/faded_cats/" + cat + ".json",
+                get_save_dir() + "/" + game.clan.save_id + "/faded_cats/" + cat + ".json",
                 "r",
                 encoding="utf-8",
             ) as read_file:
