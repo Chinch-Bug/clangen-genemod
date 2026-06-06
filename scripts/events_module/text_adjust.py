@@ -660,7 +660,7 @@ def leader_ceremony_text_adjust(
         text = text.replace("[life_num]", str(extra_lives))
 
     clan = leader.status.fetch_clan_object()
-    text = text.replace("c_n", i18n.t("general.clan", name=str(self.status.fetch_clan_object().name)))
+    text = text.replace("c_n", i18n.t("general.clan", name=str(leader.status.fetch_clan_object().name)))
 
     if list(set(get_config(game.clan, "clan_creation.leader_lives_nr"))) != [9]:
         text = text.replace("nine lives", "lives")
