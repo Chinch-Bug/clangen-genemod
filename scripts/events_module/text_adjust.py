@@ -355,7 +355,7 @@ def ongoing_event_text_adjust(Cat, text, clan=None, other_clan_name=None):
         clan_name = str(clan.name)
     else:
         if game.clan is None:
-            # todo can this be Switch.clan_name ?
+            # todo can this be Switch.clan_save_id ?
             clan_name = switch_get_value(Switch.clan_list)[0]
         else:
             clan_name = str(game.clan.name)
@@ -553,7 +553,7 @@ def event_text_adjust(
         try:
             clan_name = clan.name
         except AttributeError:
-            # todo can this be Switch.clan_name ?
+            # todo can this be Switch.clan_save_id ?
             try:
                 clan_name = switch_get_value(Switch.clan_list)[0]
             except IndexError:

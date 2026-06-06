@@ -86,8 +86,8 @@ class Inheritance:
     def save_inheritance(self, fade=False):
         # save inheritance
         clanname = None
-        if switch_get_value(Switch.clan_name) != "":
-            clanname = switch_get_value(Switch.clan_name)
+        if switch_get_value(Switch.clan_save_id) != "":
+            clanname = switch_get_value(Switch.clan_save_id)
         elif len(switch_get_value(Switch.clan_list)) > 0:
             clanname = switch_get_value(Switch.clan_list)[0]
         elif game.clan is not None:
@@ -143,8 +143,8 @@ class Inheritance:
         safe_save(family_file_path, family)
 
     def load_inheritance(self):
-        if switch_get_value(Switch.clan_name) != "":
-            clanname = switch_get_value(Switch.clan_name)
+        if switch_get_value(Switch.clan_save_id) != "":
+            clanname = switch_get_value(Switch.clan_save_id)
         else:
             clanname = switch_get_value(Switch.clan_list)[0]
 
