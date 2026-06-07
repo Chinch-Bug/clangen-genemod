@@ -11,7 +11,10 @@ dev_tools = false
   max_interaction = 4
 
   # sets the max amount of interactions a cat with a special role (leader, deputy, medicine cat, or mediator) can have each moon
-  max_interaction_special = 6
+  max_interaction_special = 6 
+  
+  # 1/x chance for the cat to try and trigger a group event
+  chance_of_group_event = 5
 
   # maximum number of cross-clan relationship events that can happen each moon (multiclan only)
   max_crossclan_interaction = 15
@@ -32,10 +35,6 @@ dev_tools = false
 
   # base 1/chance of a romance interaction with another cat, when a cat has a mate
   chance_romance_not_mate = 15
-
-  # how much an event with a condition can influence the relationship
-  # NOTE: doesn't currently do anything
-  influence_condition_events = 20
 
   [relationship.value_change_amount]
     # amount a relationship changes for "high", "medium", and "low" effects for interactions
