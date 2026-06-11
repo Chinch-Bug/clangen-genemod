@@ -1870,7 +1870,7 @@ class Genotype:
         if(sectoralindex == 0):
             self.extraeye = 'sectoral' + str(randint(1, 6))
                 
-        elif hetindex == 0:
+        elif hetindex == 0 and piggrade != 13:
             if random() < 0.5:
                 self.lefteye = RefTypeFind(refgrade, 12)
                 self.lefteyetype = SecondaryRefTypeFind(refgrade, 12)
