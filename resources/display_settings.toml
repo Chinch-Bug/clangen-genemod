@@ -94,6 +94,13 @@
         "random med cat" = true
         patrol_lock_meds = false
         allow_mediator_patrols = false
+        block_litters_by_rank = false
+        block_litters_leader = false
+        block_litters_deputy = false
+        block_litters_healer = false
+        block_litters_mediator = false
+        block_litters_queen = false
+        block_litters_warrior = false
     
     [clan.relation]
         affair = false
@@ -193,3 +200,15 @@
             surrogates = true
         [clan.nests.relation."only outside surrogates"]
             surrogates = true
+        [clan.nests.role."block_litters_leader"]
+            block_litters_by_rank = true
+        [clan.nests.role."block_litters_deputy"]
+            block_litters_by_rank = true
+        [clan.nests.role."block_litters_healer"]
+            block_litters_by_rank = true
+        [clan.nests.role."block_litters_mediator"]
+            block_litters_by_rank = true
+        [clan.nests.role."block_litters_queen"]
+            block_litters_by_rank = true
+        [clan.nests.role."block_litters_warrior"]
+            block_litters_by_rank = true

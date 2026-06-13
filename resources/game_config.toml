@@ -248,6 +248,9 @@ dev_tools = false
   primary_chance_unmated = 130
   modded_primary_chance_unmated = 100
 
+  # healer-specific litter chance modifier, added to the applicable base litter chance
+  healer_modifier = 0
+
   # 1/chance that a mated cat has an affair
   random_affair_chance = 50
 
