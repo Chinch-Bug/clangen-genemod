@@ -131,7 +131,7 @@ class Pregnancy_Events:
                 # events.ceremony_accessory = True
                 return
 
-        if not cat.status.is_outsider or get_clan_setting("no_litters") or (game.clan.clancount == "singleclan" and cat.status.is_other_clancat) or cat.not_working():
+        if cat.status.is_outsider or get_clan_setting("no_litters") or (game.clan.clancount == "singleclan" and cat.status.is_other_clancat) or cat.not_working():
             return
 
         # Handle birth cooldown outside the check_if_can_have_kits function, so it only happens once
