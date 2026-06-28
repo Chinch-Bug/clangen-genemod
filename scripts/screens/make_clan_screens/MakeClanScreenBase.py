@@ -1,4 +1,3 @@
-import dataclasses
 from dataclasses import dataclass, field
 from random import choice
 from re import sub
@@ -15,6 +14,7 @@ from scripts.clan import Clan
 from scripts.clan_package.settings import load_clan_settings
 from scripts.events_module.patrol.patrol import Patrol
 from scripts.game_structure import game
+from scripts.config import get_config
 from scripts.game_structure.game import switch_get_value, Switch, game_setting_get
 from scripts.game_structure.game.switches import switch_set_value
 from scripts.game_structure.screen_settings import MANAGER
@@ -75,6 +75,12 @@ class ClanInfo:
         self.game_mode = "classic"
         self.clan_count_mode = "singleclan"
 
+    def clear_cats(self):
+        self.leader = None
+        self.deputy = None
+        self.medicine_cat = None
+        self.starting_members = []
+
     def update(self, saved_info: dict):
         self.display_name = saved_info["display_name"]
         self.leader = saved_info["leader"]
@@ -130,6 +136,8 @@ class ClanInfo:
 
 
 class MakeClanScreenBase(Screens):
+    rolls_left = get_config("clan_creation.rerolls")
+
     def __init__(self, name="make_clan_screen"):
         super().__init__(name)
 
@@ -186,6 +194,8 @@ class MakeClanScreenBase(Screens):
                 self.set_mute_button_position("bottomright")
                 if switch_get_value(Switch.clan_list):
                     load_clan_settings()
+                MakeClanScreenBase.rolls_left = get_config("clan_creation.rerolls")
+                switch_set_value(Switch.possible_cats, [])
                 self.clan_info.clear()
                 self.change_screen(GameScreen.START)
 

@@ -448,7 +448,7 @@ class RelationshipScreen(Screens):
         blank_relations = [Relationship(self.the_cat, Cat.fetch_cat(x)) for x in self.the_cat.blank_relations if Cat.fetch_cat(x)]
         
         # Keep a list of all the relations
-        if get_config(game.clan, "sorting.sort_by_rel_total"):
+        if get_config("sorting.sort_by_rel_total"):
             self.all_relations = sorted(
                 self.the_cat.relationships.values(),
                 key=lambda x: x.total_abs_relationship_value,

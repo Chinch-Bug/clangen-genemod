@@ -1524,7 +1524,9 @@
         "loner",
         "-loner",
         "rogue",
-        "-rogue"
+        "-rogue",
+        "clancat",
+        "-clancat"
       ],
       "title": "Status",
       "type": "string"

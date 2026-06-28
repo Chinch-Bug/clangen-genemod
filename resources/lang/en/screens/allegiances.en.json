@@ -1,6 +1,6 @@
 {
     "en": {
-        "heading": "<b>%{clan_name}Clan Allegiances</b>",
+        "heading": "<b>%{clan_name} Allegiances</b>",
         "alt_heading": "<b>Cats Outside the Clan</b>",
         "save_as_txt": "Save as text file",
         "export_allegiances": "Export Allegiances",

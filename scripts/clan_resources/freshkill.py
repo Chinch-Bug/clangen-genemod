@@ -46,7 +46,7 @@ class Nutrition:
             value = 0
         self._current_score = value
         self.percentage = self._current_score / self.max_score * 100
-        text_config = get_config(None, "prey.text_nutrition")
+        text_config = get_config("prey.text_nutrition")
         self.nutrition_text = text_config["text"][0]
         for index in range(len(text_config["lower_range"])):
             if self.percentage >= text_config["lower_range"][index]:
@@ -76,12 +76,12 @@ class FreshkillPile:
             self.total_amount = total
         else:
             self.pile = {
-                "expires_in_4": get_config(None, "prey.start_amount"),
+                "expires_in_4": get_config("prey.start_amount"),
                 "expires_in_3": 0,
                 "expires_in_2": 0,
                 "expires_in_1": 0,
             }
-            self.total_amount = get_config(None, "prey.start_amount")
+            self.total_amount = get_config("prey.start_amount")
         self.timeskip_feed = False
         self.nutrition_info = {}
         self.living_cats = []
@@ -636,15 +636,15 @@ class FreshkillPile:
 # ---------------------------------------------------------------------------- #
 
 
-ADDITIONAL_PREY = get_config(None, "prey.additional_prey")
-PREY_REQUIREMENT = get_config(None, "prey.prey_requirement")
-CONDITION_INCREASE = get_config(None, "prey.condition_increase")
-FEEDING_ORDER = get_config(None, "prey.feeding_order")
-HUNTER_BONUS = get_config(None, "prey.hunter_bonus")
-HUNTER_EXP_BONUS = get_config(None, "prey.hunter_exp_bonus")
-FRESHKILL_EVENT_TRIGGER_FACTOR = get_config(None, "prey.base_event_trigger_factor")
-MAL_PERCENTAGE = get_config(None, "prey.nutrition_malnourished_percentage")
-STARV_PERCENTAGE = get_config(None, "prey.nutrition_starving_percentage")
+ADDITIONAL_PREY = get_config("prey.additional_prey")
+PREY_REQUIREMENT = get_config("prey.prey_requirement")
+CONDITION_INCREASE = get_config("prey.condition_increase")
+FEEDING_ORDER = get_config("prey.feeding_order")
+HUNTER_BONUS = get_config("prey.hunter_bonus")
+HUNTER_EXP_BONUS = get_config("prey.hunter_exp_bonus")
+FRESHKILL_EVENT_TRIGGER_FACTOR = get_config("prey.base_event_trigger_factor")
+MAL_PERCENTAGE = get_config("prey.nutrition_malnourished_percentage")
+STARV_PERCENTAGE = get_config("prey.nutrition_starving_percentage")
 
-FRESHKILL_ACTIVE = get_config(None, "prey.activate_death")
-FRESHKILL_EVENT_ACTIVE = get_config(None, "prey.activate_events")
+FRESHKILL_ACTIVE = get_config("prey.activate_death")
+FRESHKILL_EVENT_ACTIVE = get_config("prey.activate_events")

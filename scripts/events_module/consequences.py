@@ -87,7 +87,7 @@ def create_bio_parents(Cat, flip=False, second_parent=True, clan=None):
                                            outside=True,
                                            is_parent=True)[0]
     else:
-        par2geno = Genotype(get_config(game.clan, "genetics_config"), game_setting_get("ban problem genes"))
+        par2geno = Genotype(get_config("genetics_config"), game_setting_get("ban problem genes"))
         par2geno.Generator('masc' if flip else 'fem')
 
     if thought:
@@ -1136,7 +1136,7 @@ def create_new_cat(
             weights = [1, 1, 1, 1]
             # give kittypets a kittypet name
             overwrite_prefix = False
-            name_controls_info = get_config(game.clan, "cat_name_controls")
+            name_controls_info = get_config("cat_name_controls")
             if original_social == CatSocial.KITTYPET:
                 weights = name_controls_info["kittypet"]
                 # check if the kittypets come with a pretty acc
@@ -1201,13 +1201,13 @@ def create_new_cat(
 
         # chance to give the new cat a permanent condition, higher chance for found kits and litters
         if kit or litter:
-            chance = int(get_config(game.clan, "cat_generation.base_permanent_condition") / 11.25)
+            chance = int(get_config("cat_generation.base_permanent_condition") / 11.25)
         else:
-            chance = get_config(game.clan, "cat_generation.base_permanent_condition")
+            chance = get_config("cat_generation.base_permanent_condition")
 
         if not is_parent and get_clan_setting('tnr_mode') and moons > 5:
-            kittypet_n = get_config(game.clan, "tnr_mode.kittypet_neuter")
-            loner_n = get_config(game.clan, "tnr_mode.loner_tnr")
+            kittypet_n = get_config("tnr_mode.kittypet_neuter")
+            loner_n = get_config("tnr_mode.loner_tnr")
             if original_social == CatSocial.KITTYPET and random() < kittypet_n:
                 new_cat.get_permanent_condition("sterile", False)
             if original_social in (CatSocial.LONER, CatSocial.ROGUE) and random() < loner_n:
@@ -1460,7 +1460,7 @@ def unpack_rel_block(
         if None in cats_to_ob:
             cats_to_ob.remove(None)
 
-        relationship_info = get_config(game.clan, "relationship")
+        relationship_info = get_config("relationship")
 
         positive = False
         if amount > 0:

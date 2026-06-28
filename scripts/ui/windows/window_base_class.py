@@ -41,14 +41,14 @@ class GameWindow(UIWindow):
         fade_surface = pygame.Surface(MANAGER.window_resolution)
 
         fade_surface.fill(
-            get_config(None, f"theme.{'dark' if game_setting_get('dark mode') else 'light'}_mode_background")
+            get_config(f"theme.{'dark' if game_setting_get('dark mode') else 'light'}_mode_background")
         )
 
         MANAGER.draw_ui(fade_surface)
 
         temp_surface = pygame.Surface(MANAGER.window_resolution, pygame.SRCALPHA)
 
-        temp_surface.fill(get_config(None, "theme.fade"))
+        temp_surface.fill(get_config("theme.fade"))
 
         self.fade = pygame_gui.elements.UIImage(
             pygame.Rect((0, 0), MANAGER.window_resolution),

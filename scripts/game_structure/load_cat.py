@@ -815,7 +815,7 @@ def json_load():
             )
             switch_set_value(Switch.traceback, e)
             raise
-        if get_config(None, "save_load.load_integrity_checks"):
+        if get_config("save_load.load_integrity_checks"):
             save_check()
 
     inheritance_db.clear_stored_data()

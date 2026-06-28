@@ -391,7 +391,7 @@ class RomanticEvents:
                 if (
                     not cat_mate.no_mates
                     and random.random()
-                    <= get_config(game.clan, "mates.chance_to_move_on")
+                    <= get_config("mates.chance_to_move_on")
                 ):
                     text = i18n.t(
                         "hardcoded.move_on_dead_mate", mate=str(cat_mate.name)
@@ -454,7 +454,7 @@ class RomanticEvents:
         else:
             relationship_to: Relationship = cat_to.create_one_relationship(cat_from)
 
-        possible_breakups = get_config(game.clan, "mates.breakup.default_weights")
+        possible_breakups = get_config("mates.breakup.default_weights")
 
         if relationship_from.romance < 40 or relationship_to.romance < 40:
             possible_breakups["chill_breakup"] += 2
@@ -484,12 +484,12 @@ class RomanticEvents:
         clan = cat_from.status.fetch_clan_object(game.clan)
         other_clan = cat_to.status.fetch_clan_object(game.clan)
 
-        breakup_changes = get_config(game.clan, "mates.breakup.reactions")[breakup_type]
+        breakup_changes = get_config("mates.breakup.reactions")[breakup_type]
 
         # reaction of cat_from
         cat_from_change = breakup_changes.copy()
         for change in cat_from_change:
-            adjust_by = get_config(game.clan, "mates.breakup.variability")
+            adjust_by = get_config("mates.breakup.variability")
             cat_from_change[change] += random.randint(adjust_by[0], adjust_by[1])
         cat_from_change["cats_from"] = [cat_from]
         cat_from_change["cats_to"] = [cat_to]
@@ -498,7 +498,7 @@ class RomanticEvents:
         # reaction of cat_to
         cat_to_change = breakup_changes.copy()
         for change in cat_to_change:
-            adjust_by = get_config(game.clan, "mates.breakup.variability")
+            adjust_by = get_config("mates.breakup.variability")
             cat_to_change[change] += random.randint(adjust_by[0], adjust_by[1])
 
         cat_to_change["cats_from"] = [cat_to]
@@ -550,7 +550,7 @@ class RomanticEvents:
         if not highest_romantic_relation:
             return False
 
-        condition = get_config(game.clan, "mates.confession.make_confession")
+        condition = get_config("mates.confession.make_confession")
         if not RomanticEvents.relationship_fulfill_condition(
             highest_romantic_relation, condition
         ):
@@ -581,7 +581,7 @@ class RomanticEvents:
             return False
 
         become_mates = False
-        condition = get_config(game.clan, "mates.confession.accept_confession")
+        condition = get_config("mates.confession.accept_confession")
         rel_to_check = highest_romantic_relation.opposite_relationship
         if not rel_to_check:
             highest_romantic_relation.link_relationship()
@@ -707,11 +707,11 @@ class RomanticEvents:
             relationship_to = Relationship(cat_to, cat_from)
 
         mate_string = None
-        mate_chance = get_config(game.clan, "mates.chance_fulfilled_condition")
+        mate_chance = get_config("mates.chance_fulfilled_condition")
         hit = int(random.random() * mate_chance)
 
         # has to be high because every moon this will be checked for each relationship in the game
-        friends_to_lovers = get_config(game.clan, "mates.chance_friends_to_lovers")
+        friends_to_lovers = get_config("mates.chance_friends_to_lovers")
         random_hit = int(random.random() * friends_to_lovers)
 
         # already return if there is 'no' hit (everything above 0), other checks are not necessary
@@ -736,10 +736,10 @@ class RomanticEvents:
         if (
             not hit
             and RomanticEvents.relationship_fulfill_condition(
-                relationship_from, get_config(game.clan, "mates.mate_condition")
+                relationship_from, get_config("mates.mate_condition")
             )
             and RomanticEvents.relationship_fulfill_condition(
-                relationship_to, get_config(game.clan, "mates.mate_condition")
+                relationship_to, get_config("mates.mate_condition")
             )
         ):
             become_mates = True
@@ -757,10 +757,10 @@ class RomanticEvents:
         if (
             not random_hit
             and RomanticEvents.relationship_fulfill_condition(
-                relationship_from, get_config(game.clan, "mates.like_to_romance")
+                relationship_from, get_config("mates.like_to_romance")
             )
             and RomanticEvents.relationship_fulfill_condition(
-                relationship_to, get_config(game.clan, "mates.like_to_romance")
+                relationship_to, get_config("mates.like_to_romance")
             )
         ):
             become_mates = True
@@ -817,8 +817,8 @@ class RomanticEvents:
     @staticmethod
     def current_mates_allow_new_mate(cat_from, cat_to) -> bool:
         """Check if all current mates are fulfill the given conditions."""
-        current_mate_condition = get_config(game.clan, "mates.poly.current_mate_condition")
-        current_to_new_condition = get_config(game.clan, "mates.poly.mates_to_each_other")
+        current_mate_condition = get_config("mates.poly.current_mate_condition")
+        current_to_new_condition = get_config("mates.poly.mates_to_each_other")
 
         # check relationship from current mates from cat_from
         all_mates_fulfill_current_mate_condition = True
@@ -1006,14 +1006,14 @@ class RomanticEvents:
             relationship_to: Relationship = cat_to.create_one_relationship(cat_from)
 
         # No breakup chance if the cat is above the breakup threshold.
-        threshold = get_config(game.clan, "mates.breakup.threshold")
+        threshold = get_config("mates.breakup.threshold")
         if (
             relationship_from.total_relationship_value > threshold
             or relationship_to.total_relationship_value > threshold
         ):
             return 0
 
-        chance_number = get_config(game.clan, "mates.base_breakup_chance")
+        chance_number = get_config("mates.base_breakup_chance")
         if not chance_number:
             return 0
         chance_number += int(relationship_from.romance / 10)

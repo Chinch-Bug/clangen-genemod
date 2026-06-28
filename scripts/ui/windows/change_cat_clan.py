@@ -50,9 +50,8 @@ class ChangeCatClanWindow(GameWindow):
             if self.the_cat.status.group_ID == clan.group_ID:
                 continue
             self.texts[clan.name] = pygame_gui.elements.UITextBox(
-                "general.clan",
+                clan.name,
                 ui_scale(pygame.Rect(107, n * 30 + 35, -1, 30)),
-                text_kwargs={"name": clan.name},
                 object_id="#text_box_30_horizleft_pad_0_8",
                 container=self,
             )

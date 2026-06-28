@@ -284,7 +284,7 @@ class PredictOffspringScreen(Screens):
         )
         
     def one_offspring(self):
-        par2geno = Genotype(get_config(game.clan, "genetics_config"), game_setting_get("ban problem genes"))
+        par2geno = Genotype(get_config("genetics_config"), game_setting_get("ban problem genes"))
         if 'Y' in self.selected_cat.phenotype.sexgene:
             par2geno.Generator('fem')
         else:

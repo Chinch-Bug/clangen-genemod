@@ -991,7 +991,7 @@ class ProfileScreen(Screens):
         if exile_clan := the_cat.status.is_exiled():
             exiled_name = the_cat.status.fetch_clan_object(game.clan, exile_clan).name
 
-        cat_clan = i18n.t(f"general.clan", name=f"{name}")
+        cat_clan = name
 
         if the_cat.status.is_lost():
             output += f"<font color='#FF0000'>{i18n.t('general.lost', count=1)}</font>"
@@ -1523,7 +1523,7 @@ class ProfileScreen(Screens):
             self.the_cat.status.is_other_clancat and game.clan.clancount == "singleclan"
         ):
             clan = [
-                clan
+                clan.name
                 for clan in game.clan.all_other_clans
                 if clan.group_ID == self.the_cat.status.get_last_living_group()
             ]

@@ -264,7 +264,7 @@ class ListScreen(Screens):
         super().screen_switches()
         self.show_mute_buttons()
         game.selected_clan = game.clan
-        self.clan_name = i18n.t("general.clan", name=game.clan.name)
+        self.clan_name = game.clan.name
 
         if not game.last_list_forProfile:
             self.death_status = "living"
@@ -272,7 +272,7 @@ class ListScreen(Screens):
         
         group_names = ["general.your_clan", "general.cotc", "general.cbtc"]
         if game.clan and game.clan.clancount == "multiclan":
-            group_names += [i18n.t("general.clan", name=clan.name) for clan in game.clan.all_other_clans]
+            group_names += [clan.name for clan in game.clan.all_other_clans]
         self.living_group_names = tuple(group_names)
 
         self.set_disabled_menu_buttons(["cats"])
@@ -822,7 +822,7 @@ class ListScreen(Screens):
         grabs clan cats
         """
         self.current_group = clan
-        self.selected_clan = clan.replace("Clan", "")
+        self.selected_clan = clan
         self.death_status = "living"
         self.full_cat_list = [
             cat for cat in Cat.all_cats_list 

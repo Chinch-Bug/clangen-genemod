@@ -42,7 +42,7 @@ def handle_crossclan_relationships():
         if living:
             viable_cats[c.group_ID] = living
 
-    event_count = min(get_config(game.clan, "relationship.max_crossclan_interaction"), int(
+    event_count = min(get_config("relationship.max_crossclan_interaction"), int(
         sum([len(c) for c in viable_cats.values()])/len(viable_cats.keys())/2))
 
     for i in range(event_count):
@@ -281,7 +281,7 @@ def filter_events(
             continue
 
         # ensure ID and requirements override
-        if get_config(game.clan, "event_generation.debug_override_requirements"):
+        if get_config("event_generation.debug_override_requirements"):
             final_events.append(event)
             continue
 
@@ -357,8 +357,8 @@ def filter_events(
             continue
 
         if (
-            get_config(game.clan, "event_generation.debug_ensure_event_id")
-            and get_config(game.clan, "event_generation.debug_ensure_event_id")
+            get_config("event_generation.debug_ensure_event_id")
+            and get_config("event_generation.debug_ensure_event_id")
             != chosen_event.event_id
         ):
             final_events.remove(chosen_event)
@@ -367,7 +367,7 @@ def filter_events(
             continue
 
         # if we're overriding requirements, don't bother looking for an appropriate cat
-        # if get_config(game.clan, "event_generation.debug_override_requirements"):
+        # if get_config("event_generation.debug_override_requirements"):
         #     chosen_cat = choice(cat_list)
         #     continue
 

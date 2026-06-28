@@ -48,7 +48,7 @@ class UIRelationStatusScaleBar(pygame_gui.elements.UIImage):
 
         bar.fill((130, 117, 82))
 
-        rel_bar_info = get_config(None, "relationship.colours")
+        rel_bar_info = get_config("relationship.colours")
         bar_colour = tuple(rel_bar_info["neutral"])
         if tier.is_low_pos:
             bar_colour = tuple(rel_bar_info["low_pos"])

@@ -172,7 +172,7 @@ class Condition_Events:
             if cat.status.is_leader:
                 game.clan.leader_lives -= 1
                 # kill and retrieve leader life text
-                text = get_leader_life_notice(game.clan)
+                text = get_leader_life_notice(cat.name, game.clan)
 
             possible_string_list = Condition_Events.ILLNESS_DEATH_STRINGS["starving"]
             event = random.choice(possible_string_list) + " " + text
@@ -282,7 +282,7 @@ class Condition_Events:
                 if game.clan.game_mode == "classic"
                 else "condition_related.illness_chance"
             )
-            random_number = int(random.random() * get_config(game.clan, path))
+            random_number = int(random.random() * get_config(path))
             modifier = 1
 
             relevant_conditions = []
@@ -295,7 +295,7 @@ class Condition_Events:
             season_dict = Condition_Events.SPECIAL_SEASON_LIST[season]
             for key in season_dict:
                 if key in list(cat.permanent_condition.keys()) or key == "fully hairless" and cat.pelt.length == "hairless" and (cat.phenotype.sedesp[0] == "hr" or cat.phenotype.ruhr[1] == "Hrbd" or cat.moons > 11):
-                    modifier = get_config(game.clan, path)
+                    modifier = get_config(path)
                     relevant_conditions.append(key)
 
             if (
@@ -306,7 +306,7 @@ class Condition_Events:
             ):
                 # CLAN FOCUS!
                 if clan == game.clan and get_clan_setting("rest_and_recover"):
-                    stopping_chance = get_config(game.clan, "focus.rest_and_recover.illness_prevent")
+                    stopping_chance = get_config("focus.rest_and_recover.illness_prevent")
                     if not int(random.random() * stopping_chance):
                         return triggered
 
@@ -424,10 +424,8 @@ class Condition_Events:
             else "condition_related.injury_chance"
         )
 
-        injury_chance = get_config(game.clan, path) - (
-            get_config(game.clan, "condition_related.war_injury_modifier")
-            if modify_for_war
-            else 0
+        injury_chance = get_config(path) - (
+            get_config("condition_related.war_injury_modifier") if modify_for_war else 0
         )
 
         random_number = int(random.random() * injury_chance)
@@ -439,7 +437,7 @@ class Condition_Events:
             return triggered
 
         if (
-            get_config(game.clan, "event_generation.debug_type_override") == "injury"
+            get_config("event_generation.debug_type_override") == "injury"
         ):
             create_short_event(
                 event_type="health",
@@ -487,7 +485,7 @@ class Condition_Events:
             if triggered:
                 # CLAN FOCUS!
                 if get_clan_setting("rest_and_recover") and clan == game.clan:
-                    stopping_chance = get_config(game.clan, "focus.rest_and_recover.injury_prevent")
+                    stopping_chance = get_config("focus.rest_and_recover.injury_prevent")
                     if not int(random.random() * stopping_chance):
                         return False
 
@@ -583,7 +581,7 @@ class Condition_Events:
                                 possible_conditions.append(x)
                         if len(possible_conditions) > 0 and not int(
                             random.random()
-                            * get_config(game.clan, "condition_related.permanent_condition_chance")
+                            * get_config("condition_related.permanent_condition_chance")
                         ):
                             perm_condition = random.choice(possible_conditions)
                         else:
@@ -671,7 +669,7 @@ class Condition_Events:
                 event = event_text_adjust(Cat, event, main_cat=cat, clan=clan)
                 # add life loss message
                 if cat.status.is_leader:
-                    event = event + " " + get_leader_life_notice(clan)
+                    event = event + " " + get_leader_life_notice(cat.name, clan)
 
                 # add death to history
                 cat.history.add_death(
@@ -809,7 +807,7 @@ class Condition_Events:
                 event = event_text_adjust(Cat, event, main_cat=cat, clan=clan)
                 # add life loss message
                 if cat.status.is_leader:
-                    event = event + " " + get_leader_life_notice(clan)
+                    event = event + " " + get_leader_life_notice(cat.name, clan)
 
                 # add death to history
                 cat.history.add_death(condition=injury, death_text=history_text.strip())

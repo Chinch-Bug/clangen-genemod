@@ -185,14 +185,14 @@ def rebuild_top_menu_buttons():
     # menu_buttons["events"].change_layer(menu_buttons["dens"].get_starting_height() + 5)
 
     menu_buttons["patrols"] = UISurfaceImageButton(
-        ui_scale(pygame.Rect((-46, 60), (86, 30))),
+        ui_scale(pygame.Rect((0, 60), (86, 30))),
         "screens.core.patrol",
         get_button_dict(ButtonStyles.MENU_RIGHT, (86, 30)),
         visible=False,
         manager=MANAGER,
         object_id="#patrol_button",
         starting_height=6,
-        anchors={"left": "left", "left_target": menu_buttons["dens"]},
+        anchors={"left": "left", "left_target": menu_buttons["dens"].parent_button},
     )
     menu_buttons["main_menu"] = UISurfaceImageButton(
         ui_scale(pygame.Rect((25, 25), (153, 30))),
@@ -261,7 +261,7 @@ def rebuild_top_menu_buttons():
         )
         del heading_rect
     else:
-        clan_list = [i18n.t("general.clan", name=c.name) for c in [game.clan] + game.clan.all_other_clans]
+        clan_list = [c.name for c in [game.clan] + game.clan.all_other_clans]
         menu_buttons["heading"] = UIDropDown(
             pygame.Rect((0, 25), (220, 35)),
             "",
@@ -508,9 +508,9 @@ def rebuild_bgs():
         del game_box
 
     bg = pygame.Surface(scripts.game_structure.screen_settings.game_screen_size)
-    bg.fill(get_config(game.clan, "theme.light_mode_background"))
+    bg.fill(get_config("theme.light_mode_background"))
     bg_dark = pygame.Surface(scripts.game_structure.screen_settings.game_screen_size)
-    bg_dark.fill(get_config(game.clan, "theme.dark_mode_background"))
+    bg_dark.fill(get_config("theme.dark_mode_background"))
 
     default_game_bgs = {
         "light": {"default": bg},
@@ -668,7 +668,7 @@ def process_blur_bg(
     if theme is None:
         theme = "dark" if game_setting_get("dark mode") else "light"
 
-    fullscreen_theme_info = get_config(game.clan, "theme.fullscreen_background")
+    fullscreen_theme_info = get_config("theme.fullscreen_background")
 
     fade.fill(fullscreen_theme_info[theme]["fade_color"])
     vignette.set_alpha(fullscreen_theme_info[theme]["vignette_alpha"])

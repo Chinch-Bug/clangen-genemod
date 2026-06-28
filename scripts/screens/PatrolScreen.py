@@ -89,7 +89,7 @@ class PatrolScreen(Screens):
         elif event.type == pygame_gui.UI_BUTTON_PRESSED:
             if event.ui_element in self.choose_group_buttons.values():
                 self.choose_living_dropdown.close()
-                self.current_clan = event.ui_element.text.replace("Clan", "")
+                self.current_clan = event.ui_element.text
                 self.current_clan = [c for c in game.clan.all_other_clans if c.name == self.current_clan]
                 if self.current_clan:
                     self.current_clan = self.current_clan[0]
@@ -123,7 +123,7 @@ class PatrolScreen(Screens):
             # self.change_screen('list screen')
 
     def handle_switch_clan_events(self):
-        self.update_heading_text(f"{self.current_clan.name}Clan")
+        self.update_heading_text(self.current_clan.name)
         self.current_patrol = []
         self.open_choose_cats_screen()
         self.update_cat_images_buttons()
@@ -341,7 +341,7 @@ class PatrolScreen(Screens):
 
         if not self.current_clan or self.current_clan.group_ID == game.clan.group_ID:
             self.current_clan = game.clan
-        self.update_heading_text("general.clan", text_kwargs={"name": self.current_clan.name})
+        self.update_heading_text(self.current_clan.name)
         if game.clan.clancount == 'multiclan':
             self.event_screen_container = pygame_gui.core.UIContainer(
                 ui_scale(pygame.Rect((0, 100), (800, 300))),
@@ -368,7 +368,7 @@ class PatrolScreen(Screens):
             self.living_groups_container.change_layer(10)
             self.choose_group_buttons[game.clan.name] = UISurfaceImageButton(
                 ui_scale(pygame.Rect((0, 0), (190, 34))),
-                i18n.t("general.clan", name=game.clan.name),
+                game.clan.name,
                 get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
                 container=self.living_groups_container,
                 object_id=ObjectID(
@@ -380,7 +380,7 @@ class PatrolScreen(Screens):
             for clan in game.clan.all_other_clans:
                 self.choose_group_buttons[clan.name] = UISurfaceImageButton(
                     ui_scale(pygame.Rect((0, y_pos), (190, 34))),
-                    i18n.t("general.clan", name=clan.name),
+                    clan.name,
                     get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
                     container=self.living_groups_container,
                     object_id=ObjectID(
@@ -408,12 +408,17 @@ class PatrolScreen(Screens):
         if (
             self.in_progress_data is not None
             and self.in_progress_data["current_moon"] == game.clan.age
-            and self.in_progress_data["clan_name"] == i18n.t("general.clan", clan=self.current_clan.name)
+            and self.in_progress_data["clan_name"] == self.current_clan.name
         ):
             self.display_change_load(self.in_progress_data)
         else:
             self.in_progress_data = None
             self.open_choose_cats_screen()
+
+        self.set_disabled_menu_buttons(["patrols"])
+        self.update_heading_text(game.clan.name)
+        self.show_mute_buttons()
+        self.show_menu_buttons()
 
     def display_change_save(self) -> Dict:
         if self.start_patrol_thread is not None and self.start_patrol_thread.is_alive():
@@ -1118,9 +1123,9 @@ class PatrolScreen(Screens):
             ):
                 if (
                     the_cat.status.rank == CatRank.NEWBORN
-                    or get_config(game.clan, "fun.all_cats_are_newborn")
+                    or get_config("fun.all_cats_are_newborn")
                 ):
-                    if get_config(game.clan, "fun.newborns_can_patrol"):
+                    if get_config("fun.newborns_can_patrol"):
                         self.able_cats.append(the_cat)
                 else:
                     self.able_cats.append(the_cat)

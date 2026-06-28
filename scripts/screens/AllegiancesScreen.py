@@ -49,11 +49,11 @@ class AllegiancesScreen(Screens):
                 self.change_screen('profile_screen')
             elif event.ui_element == self.export_button:
                 ExportAllegiancesWindow(self.get_outside_allegiances() if self.current_clan == "cotc" else self.get_allegiances_text(), 
-                (f"{self.current_clan.name}Clan Allegiances" if self.current_clan != "cotc" else "Cats Outside the Clan")+f"_moon_{game.clan.age}")
+                (f"{self.current_clan.name} Allegiances" if self.current_clan != "cotc" else "Cats Outside the Clan")+f"_moon_{game.clan.age}")
             elif event.ui_element in self.choose_group_buttons.values():
                 self.choose_living_dropdown.close()
                 self.current_clan = event.ui_element.text if event.ui_element.text == "general.cotc" else event.ui_element.text.replace("Clan", "")
-                self.current_clan = [c for c in [game.clan] + game.clan.all_other_clans if c.name == self.current_clan]
+                self.current_clan = [c for c in [game.clan] + game.clan.all_other_clans if c.prefix == self.current_clan]
                 if self.current_clan:
                     self.current_clan = self.current_clan[0]
                 else:
@@ -74,7 +74,7 @@ class AllegiancesScreen(Screens):
         self.show_menu_buttons()
         self.show_mute_buttons()
         self.set_disabled_menu_buttons(["allegiances"])
-        self.update_heading_text("general.clan", text_kwargs={"name": game.clan.name})
+        self.update_heading_text(game.clan.name)
 
         if not self.current_clan or self.current_clan not in [game.clan, "cotc"] + game.clan.all_other_clans:
             self.current_clan = game.clan
@@ -113,7 +113,7 @@ class AllegiancesScreen(Screens):
         self.living_groups_container.change_layer(10)
         self.choose_group_buttons[game.clan.name] = UISurfaceImageButton(
             ui_scale(pygame.Rect((0, 0), (190, 34))),
-            i18n.t("general.clan", name=game.clan.name),
+            game.clan.name,
             get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
             container=self.living_groups_container,
             object_id=ObjectID(
@@ -126,7 +126,7 @@ class AllegiancesScreen(Screens):
             for clan in game.clan.all_other_clans:
                 self.choose_group_buttons[clan.name] = UISurfaceImageButton(
                     ui_scale(pygame.Rect((0, y_pos), (190, 34))),
-                    i18n.t("general.clan", name=clan.name),
+                    clan.name,
                     get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
                     container=self.living_groups_container,
                     object_id=ObjectID(

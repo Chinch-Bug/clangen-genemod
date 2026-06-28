@@ -263,7 +263,7 @@ class Name:
         elif self.prefix in self.mod_prefixes['general']['big'] and self.phenotype.height_label in ['teacup', 'tiny', 'small', 'below average', 'average']:
             colour_changed = True
             
-        name_control_info = get_config(game.clan, "cat_name_controls.prefix_change_chance")
+        name_control_info = get_config("cat_name_controls.prefix_change_chance")
         chance = name_control_info[change]
         if colour_changed:
             chance /= name_control_info["pelt_change_modifier"]
@@ -276,7 +276,7 @@ class Name:
 
     # Generate possible prefix
     def give_prefix(self, cat, biome, no_suffix=False):
-        name_control_info = get_config(game.clan, "cat_name_controls")
+        name_control_info = get_config("cat_name_controls")
         if get_clan_setting("modded names") and get_clan_setting('outsider names') and random.random() < 0.5:
             selected_category = random.choices(["silly_names", "human_names", "loner_names", "normal_prefixes"], name_control_info["clancat"], k=1)[0]
             self.prefix = random.choice(self.names_dict[selected_category])
@@ -383,7 +383,7 @@ class Name:
         try:
             if self.mod_suffixes and skills and personality:
                 options = []
-                suffix_settings = get_config(game.clan, "cat_name_controls.alt_suffixes")
+                suffix_settings = get_config("cat_name_controls.alt_suffixes")
                 for i in range(suffix_settings["primary_skill"]):
                     try:
                         options.append(self.mod_suffixes['skill'][skills.primary.path.name])

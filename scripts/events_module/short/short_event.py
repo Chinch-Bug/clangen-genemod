@@ -197,10 +197,10 @@ class ShortEvent:
             if "changed" not in self.other_clan:
                 self.other_clan["changed"] = 0
             
-            if self.other_clan["changed"] > 0 and get_config(game.clan, "event_generation.clan_rel_change_multiplier") < 0:
-                self.weight -= int(self.weight * abs(get_config(game.clan, "event_generation.clan_rel_change_multiplier")))
-            if self.other_clan["changed"] < 0 and get_config(game.clan, "event_generation.clan_rel_change_multiplier") > 0:
-                self.weight -= int(self.weight * abs(get_config(game.clan, "event_generation.clan_rel_change_multiplier")))
+            if self.other_clan["changed"] > 0 and get_config("event_generation.clan_rel_change_multiplier") < 0:
+                self.weight -= int(self.weight * abs(get_config("event_generation.clan_rel_change_multiplier")))
+            if self.other_clan["changed"] < 0 and get_config("event_generation.clan_rel_change_multiplier") > 0:
+                self.weight -= int(self.weight * abs(get_config("event_generation.clan_rel_change_multiplier")))
         self.supplies = supplies if supplies else []
         self.new_gender = new_gender
         self.future_event = future_event if future_event else {}
@@ -238,7 +238,7 @@ class ShortEvent:
         self.dead_cat_objects.clear()
 
         if other_clan:
-            self.other_clan_name = i18n.t("general.clan", name=other_clan.name)
+            self.other_clan_name = other_clan.name
 
         self.all_involved_cat_ids.append(self.main_cat.ID)
 
@@ -627,7 +627,7 @@ class ShortEvent:
                     cat_clan.leader_lives -= 1
 
                 cat.die(body)
-                self.additional_event_text = get_leader_life_notice(cat_clan)
+                self.additional_event_text = get_leader_life_notice(cat.name, cat_clan)
 
             else:
                 cat.die(body)
@@ -659,8 +659,8 @@ class ShortEvent:
         # if there's enough eligible cats, then we KILL
         if alive_count > 15:
             max_deaths = int(alive_count / 2)  # 1/2 of alive cats
-            if max_deaths > get_config(game.clan, "death_related.max_mass_deaths"):
-                max_deaths = get_config(game.clan, "death_related.max_mass_deaths")  # we don't want to have massive events with a wall of names to read
+            if max_deaths > get_config("death_related.max_mass_deaths"):
+                max_deaths = get_config("death_related.max_mass_deaths")  # we don't want to have massive events with a wall of names to read
             weights = []
             population = []
             for n in range(2, max_deaths):
@@ -679,7 +679,7 @@ class ShortEvent:
 
             tnr = False
             if 'tnr' in self.tags and get_clan_setting("tnr_mode"):
-                if random() < get_config(game.clan, "tnr_mode.clan_tnr"):
+                if random() < get_config("tnr_mode.clan_tnr"):
                     tnr = True
                     
             taken_cats = []
@@ -800,15 +800,16 @@ class ShortEvent:
             # new_cat history
             for abbr in block["cats"]:
                 if "n_c" in abbr:
-                    for i, new_cat_objects in enumerate(self.new_cats):
-                        if new_cat_objects[i].dead:
+                    index = int(abbr.replace("n_c:", ""))
+                    for new_cat in self.new_cats[index]:
+                        if new_cat.dead:
                             death_history = history_text_adjust(
                                 block.get("death"),
                                 self.other_clan_name,
                                 clan,
                                 self.random_cat,
                             )
-                            new_cat_objects[i].history.add_death(
+                            new_cat.history.add_death(
                                 death_history, other_cat=self.random_cat
                             )
 
@@ -842,24 +843,20 @@ class ShortEvent:
                 # MAIN CAT
                 if abbr == "m_c":
                     if self.give_injury_to_cat(self.main_cat, possible_injuries, potential_scars):
-                        self.handle_injury_history(
-                            self.main_cat, "m_c", injury)
+                        self.handle_injury_history(self.main_cat, "m_c", injury)
 
                 # RANDOM CAT
                 elif abbr == "r_c":
                     if self.give_injury_to_cat(self.random_cat, possible_injuries, potential_scars):
-                        self.handle_injury_history(
-                            self.random_cat, "r_c", injury)
+                        self.handle_injury_history(self.random_cat, "r_c", injury)
 
                 # NEW CATS
-                elif abbr == "n_c":
-                    for i, new_cat_objects in enumerate(self.new_cats):
-                        if self.give_injury_to_cat(new_cat_objects[0], possible_injuries, potential_scars):
-                            self.handle_injury_history(new_cat_objects[0], abbr, injury)
                 # NEW CATS
                 elif "n_c" in abbr:
-                    if self.give_injury_to_cat(self.new_cats[int(abbr.split(":")[-1])][0], possible_injuries, potential_scars):
-                        self.handle_injury_history(self.new_cats[int(abbr.split(":")[-1])][0], abbr, injury)
+                    index = int(abbr.replace("n_c:", ""))
+                    for new_cat in self.new_cats[index]:
+                        if self.give_injury_to_cat(new_cat, possible_injuries, potential_scars):
+                            self.handle_injury_history(new_cat, abbr, injury)
 
     def give_injury_to_cat(self, cat, possible_injuries, potential_scars):
         old_injuries = list(cat.injuries.keys())

@@ -41,8 +41,8 @@ class FreshkillManagementWindow(GameWindow):
         self.open_view = None
         self.log = None
         self.low_nutrition_cats = None
-        self.prey_requirement = get_config(game.clan, "prey.prey_requirement")
-        self.feeding_order = get_config(game.clan, "prey.feeding_order")
+        self.prey_requirement = get_config("prey.prey_requirement")
+        self.feeding_order = get_config("prey.feeding_order")
         self.possible_priorities = ["hunter_first", "sick_injured_first"]
         self.possible_orders = [
             "low_rank",

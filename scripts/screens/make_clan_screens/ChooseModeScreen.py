@@ -8,7 +8,7 @@ from scripts.cat.enums import CatRank
 from scripts.cat.sprites.load_sprites import sprites
 from scripts.config import get_config
 from scripts.game_structure import image_cache
-from scripts.game_structure.game import Switch
+from scripts.game_structure.game import Switch, switch_get_value
 from scripts.game_structure.game.settings import game_setting_set
 from scripts.game_structure.game.switches import switch_set_value
 from scripts.game_structure.screen_settings import MANAGER
@@ -31,7 +31,8 @@ class ChooseModeScreen(MakeClanScreenBase):
 
     def screen_switches(self):
         # Reset variables
-        switch_set_value(Switch.possible_cats, create_example_cats())
+        if not switch_get_value(Switch.possible_cats):
+            switch_set_value(Switch.possible_cats, create_example_cats())
 
         super().screen_switches()
         self.elements["previous_step"].enable()
@@ -196,13 +197,13 @@ class ChooseModeScreen(MakeClanScreenBase):
         self.clan_info.symbol = symbol
 
         # MEMBERS
-        use_special = get_config(None, "clan_creation.use_special_roller")
-        cat_range = get_config(None, "clan_creation.quickstart_cats")
+        use_special = get_config("clan_creation.use_special_roller")
+        cat_range = get_config("clan_creation.quickstart_cats")
         self.clan_info.leader = create_cat(CatRank.WARRIOR, kittypet=use_special)
         self.clan_info.deputy = create_cat(CatRank.WARRIOR, kittypet=use_special)
         self.clan_info.medicine_cat = create_cat(CatRank.WARRIOR, kittypet=use_special)
         members = []
-        random_rank = get_config(None, "clan_creation.random_ranks")
+        random_rank = get_config("clan_creation.random_ranks")
         for _ in range(randrange(cat_range[0], cat_range[1]+1)):
             members.append(create_cat(rank=choice(random_rank), kittypet=use_special))
 

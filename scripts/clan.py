@@ -12,6 +12,7 @@ import os
 import statistics
 from random import choice, randint, random
 
+import i18n
 import ujson
 
 from scripts.cat.cats import Cat, create_cat, cat_class, BACKSTORIES
@@ -166,11 +167,19 @@ class Clan:
         modifiers = {"Newleaf": 0, "Greenleaf": 3, "Leaf-fall": 6, "Leaf-bare": 9}
         return (
             self.starting_season
-            if get_config(game.clan, "lock_season")
+            if get_config("lock_season")
             else constants.SEASON_CALENDAR[
                 (self.age + modifiers[self.starting_season]) % 12
             ]
         )
+
+    @property
+    def name(self):
+        return i18n.t("general.clan", name=self.prefix)
+
+    @name.setter
+    def name(self, value):
+        self.prefix = value
 
     # The clan couldn't save itself in time due to issues arising, for example, from this function: "if deputy is not
     # None: self.deputy.status_change('deputy') -> game.clan.remove_med_cat(self)"
@@ -251,7 +260,7 @@ class Clan:
                 Cat.all_cats[i].example = True
                 self.remove_cat(Cat.all_cats[i].ID)
 
-        allowed_range = get_config(None, "clan_creation.other_clans_range")
+        allowed_range = get_config("clan_creation.other_clans_range")
         number_other_clans = randint(allowed_range[0], allowed_range[1])
         for _ in range(number_other_clans):
             other_clan = OtherClan(clancount=self.clancount)
@@ -266,7 +275,7 @@ class Clan:
                     game.clan.relations[clan.group_ID][o_clan.group_ID] = randint(8, 12)
                     game.clan.war[clan.group_ID][o_clan.group_ID] = {"at_war": False, "duration": 0}
 
-        allowed_range = get_config(None, "clan_creation.starting_outsiders")
+        allowed_range = get_config("clan_creation.starting_outsiders")
         number_outsiders = randint(allowed_range[0], allowed_range[1])
         for i in range(number_outsiders):
             create_new_cat(
@@ -436,7 +445,7 @@ class Clan:
         clan_data = {
             "clancount_mode": self.clancount,
             "save_id": self.save_id,
-            "displayname": self.name,
+            "displayname": self.prefix,
             "clanage": self.age,
             "biome": self.biome,
             "camp_bg": self.camp_bg,
@@ -707,7 +716,7 @@ class Clan:
                 else:
                     ID = other_clan["group_ID"]
                 OtherClan(
-                    other_clan["name"],
+                    other_clan.get("prefix", other_clan.get("name")),
                     temperament=other_clan["temperament"],
                     reputation=other_clan.get("reputation"),
                     chosen_symbol=other_clan["chosen_symbol"],
@@ -762,11 +771,11 @@ class Clan:
             if cat in Cat.all_cats:
                 game.clan.add_cat(Cat.all_cats[cat])
                 if hasattr(Cat.all_cats[cat], "group"):
-                    if Cat.all_cats[cat].group == game.clan.name:
+                    if Cat.all_cats[cat].group == game.clan.prefix:
                         pass
                     else:
                         is_neighbour = next(
-                            filter(lambda c: c.name == Cat.all_cats[cat].group, game.clan.all_other_clans), None)
+                            filter(lambda c: c.prefix == Cat.all_cats[cat].group, game.clan.all_other_clans), None)
                         if is_neighbour:
                             Cat.all_cats[cat].status.group_history[0]["group"] = is_neighbour.group_ID
                             Cat.all_cats[cat].status.standing_history[0]["group"] = is_neighbour.group_ID
@@ -776,7 +785,7 @@ class Clan:
         if "war" in clan_data:
             if clan_data["war"].get("at_war") is not None:
                 for c in game.clan.all_other_clans:
-                    if c.name == clan_data["war"]["enemy"]:
+                    if c.prefix == clan_data["war"]["enemy"]:
                         game.clan.war[CatGroup.PLAYER_CLAN_ID][c.group_ID] = {"at_war": True, "duration": clan_data["war"]["duration"]}
                     else:
                         game.clan.war[CatGroup.PLAYER_CLAN_ID][c.group_ID] = {"at_war": False, "duration": 0}
@@ -1016,10 +1025,10 @@ class Clan:
                                 involved_cats=event["involved_cats"],
                                 clan=event["clan"],
                             )
-                        if not event_obj.clan or event_obj.clan in [clan.name, CatGroup.PLAYER_CLAN.value]:
+                        if not event_obj.clan or event_obj.clan in [clan.prefix, CatGroup.PLAYER_CLAN.value]:
                             event_obj.clan = CatGroup.PLAYER_CLAN_ID
                         elif len(event_obj.clan) > 2:
-                            if match := [c for c in clan.all_other_clans if c.name == event_obj.clan]:
+                            if match := [c for c in clan.all_other_clans if c.prefix == event_obj.clan]:
                                 event_obj.clan = match[0].group_ID
                             else:
                                 event_obj.clan = clan.all_other_clans[int(event_obj.clan[-1])-1].group_ID
@@ -1367,7 +1376,7 @@ class OtherClan:
         game.clan.other_clan_IDs.append(self.group_ID)
 
         self.name = name
-        if not self.name:  # find name if clan has no name yet
+        if not self.prefix:  # find name if clan has no name yet
             used_names = [str(i.name) for i in game.clan.all_other_clans] + [
                 game.clan.name
             ]
@@ -1470,7 +1479,7 @@ class OtherClan:
 
         game.clan.all_other_clans.append(self)
 
-        random_rank = get_config(None, "clan_creation.random_ranks")
+        random_rank = get_config("clan_creation.random_ranks")
         if clancount == "multiclan":
             for i in range(3):
                 generate_and_add_new_poi(game.clan.biome, PoiType.TERRAIN, clan=self.group_ID)
@@ -1497,13 +1506,20 @@ class OtherClan:
             self.instructor.dead_for = randint(20, 200)
             self.instructor.status.group_history.insert(0, {"rank": instructor_rank, "group": self.group_ID, "moons_as": self.instructor.moons})
 
-            use_special = get_config(None, "clan_creation.use_special_roller")
-            cat_range = get_config(None, "clan_creation.neighbourclan_cats")
+            use_special = get_config("clan_creation.use_special_roller")
+            cat_range = get_config("clan_creation.neighbourclan_cats")
             self.new_leader(create_cat(CatRank.LEADER, biome=self.biome, kittypet=use_special, clan=self.group_ID))
             self.new_deputy(create_cat(CatRank.DEPUTY, biome=self.biome, kittypet=use_special, clan=self.group_ID))
             self.new_medicine_cat(create_cat(CatRank.MEDICINE_CAT, biome=self.biome, kittypet=use_special, clan=self.group_ID))
             for i in range(randint(cat_range[0], cat_range[1])):
                 create_cat(choice(random_rank), biome=self.biome, kittypet = use_special, clan=self.group_ID)
+    @property
+    def name(self):
+        return i18n.t("general.clan", name=self.prefix)
+
+    @name.setter
+    def name(self, value):
+        self.prefix = value
 
     def __repr__(self):
         # has indicators that this is unlocalized, just in case

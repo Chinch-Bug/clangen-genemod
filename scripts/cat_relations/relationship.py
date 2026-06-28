@@ -273,7 +273,7 @@ class Relationship:
         amount : int
             the amount (negative or positive) for the given parameter
         """
-        relationship_info = get_config(game.clan, "relationship")
+        relationship_info = get_config("relationship")
         # get the normal amount
         amount = relationship_info["value_change_amount"][intensity]
         if not is_positive:
@@ -312,7 +312,7 @@ class Relationship:
         # only high intensity gives passive buffs
         if intensity == "high":
             passive_buff = int(
-                amount / get_config(game.clan, "relationship.passive_influence_div")
+                amount / get_config("relationship.passive_influence_div")
             )
             # just adding a teeny bit of variety
             buffs = [passive_buff - 1, passive_buff, passive_buff + 1]
@@ -791,7 +791,7 @@ class Relationship:
         """
         Returns the tier group for the given value.
         """
-        for group, interval in get_config(game.clan, "relationship.value_intervals").items():
+        for group, interval in get_config("relationship.value_intervals").items():
             if rel_type <= interval:
                 return group
 
@@ -799,7 +799,7 @@ class Relationship:
 
     @staticmethod
     def _get_neutral_adjusted_value(value: int):
-        value_intervals = get_config(game.clan, "relationship.value_intervals")
+        value_intervals = get_config("relationship.value_intervals")
         neutral_start = value_intervals["low_neg"]
         neutral_end = value_intervals["neutral"]
 

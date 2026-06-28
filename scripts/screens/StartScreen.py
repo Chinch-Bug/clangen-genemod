@@ -184,7 +184,7 @@ class StartScreen(Screens):
         bg = pygame.image.load("resources/images/menu.png").convert()
         if game_setting_get("dark mode"):
             bg.fill(
-                get_config(game.clan, "theme.fullscreen_background.dark.mainmenu_tint"),
+                get_config("theme.fullscreen_background.dark.mainmenu_tint"),
                 bg.get_rect(),
                 pygame.BLEND_MULT,
             )
@@ -238,7 +238,7 @@ class StartScreen(Screens):
             anchors={"top_target": self.elements["settings"]},
         )
 
-        if get_config(game.clan, "dev_tools"):
+        if get_config("dev_tools"):
             self.elements["event_edit"] = UISurfaceImageButton(
                 ui_scale(pygame.Rect((70, 15), (200, 30))),
                 "buttons.event_edit",

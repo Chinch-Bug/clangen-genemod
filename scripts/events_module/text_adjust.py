@@ -355,16 +355,17 @@ def ongoing_event_text_adjust(Cat, text, clan=None, other_clan_name=None):
         clan_name = str(clan.name)
     else:
         if game.clan is None:
-            # todo can this be Switch.clan_save_id ?
+            # todo can this be Switch.clan_name ?
+            # when can this even be called before game.clan is initialized?
             clan_name = switch_get_value(Switch.clan_list)[0]
         else:
             clan_name = str(game.clan.name)
 
-    text = text.replace("c_n", i18n.t("general.clan", name=clan_name))
+    text = text.replace("c_n", clan_name)
 
     text = text.replace("medicine cat", "healer").replace("medicine den", "healer den")
 
-    if set(get_config(game.clan, "clan_creation.leader_lives_nr")) != (9):
+    if set(get_config("clan_creation.leader_lives_nr")) != (9):
         text = text.replace("nine lives", "lives")
 
     return text
@@ -543,9 +544,7 @@ def event_text_adjust(
         text = _replace_clan_name(
             text,
             "o_c_n",
-            other_clan
-            if isinstance(other_clan, str)
-            else i18n.t("general.clan", name=str(other_clan.name)),
+            other_clan if isinstance(other_clan, str) else other_clan.name,
         )
 
     # clan_name
@@ -555,13 +554,13 @@ def event_text_adjust(
         except AttributeError:
             # todo can this be Switch.clan_save_id ?
             try:
-                clan_name = switch_get_value(Switch.clan_list)[0]
+                clan_name = i18n.t(
+                    "general.clan", name=str(switch_get_value(Switch.clan_list)[0])
+                )
             except IndexError:
-                clan_name = "Test"
+                clan_name = i18n.t("general.clan", name="Test")
 
-        text = _replace_clan_name(
-            text, "c_n", i18n.t("general.clan", name=str(clan_name))
-        )
+        text = _replace_clan_name(text, "c_n", clan_name)
 
     # prey lists
     text = adjust_prey_abbr(text)
@@ -597,7 +596,7 @@ def event_text_adjust(
 
     text = text.replace("medicine cat", "healer").replace("medicine den", "healer den")
 
-    if list(set(get_config(game.clan, "clan_creation.leader_lives_nr"))) != [9]:
+    if list(set(get_config("clan_creation.leader_lives_nr"))) != [9]:
         text = text.replace("nine lives", "lives")
 
     return text
@@ -660,9 +659,9 @@ def leader_ceremony_text_adjust(
         text = text.replace("[life_num]", str(extra_lives))
 
     clan = leader.status.fetch_clan_object()
-    text = text.replace("c_n", i18n.t("general.clan", name=str(leader.status.fetch_clan_object().name)))
+    text = text.replace("c_n", leader.status.fetch_clan_object().name)
 
-    if list(set(get_config(game.clan, "clan_creation.leader_lives_nr"))) != [9]:
+    if list(set(get_config("clan_creation.leader_lives_nr"))) != [9]:
         text = text.replace("nine lives", "lives")
 
     return text
@@ -681,7 +680,7 @@ def ceremony_text_adjust(
     dead_parents=(),
     clan=game.clan
 ):
-    clanname = i18n.t("general.clan", name=clan.name)
+    clanname = clan.name
 
     random_honor = random_honor
     random_living_parent = None
@@ -768,19 +767,21 @@ def ceremony_text_adjust(
 
     adjust_text = process_text(adjust_text, cat_dict)
 
-    if list(set(get_config(game.clan, "clan_creation.leader_lives_nr"))) != [9]:
+    if list(set(get_config("clan_creation.leader_lives_nr"))) != [9]:
         adjust_text = adjust_text.replace("nine lives", "lives")
 
     return adjust_text, random_living_parent, random_dead_parent
 
 
-def get_leader_life_notice(clan) -> str:
+
+
+def get_leader_life_notice(leader_name: str, clan) -> str:
     """
     Returns a string specifying how many lives the leader has left or notifying of the leader's full death
     """
     if clan.instructor.status.group_ID == CatGroup.DARK_FOREST_ID:
-        return i18n.t("cat.history.leader_lives_left_df", count=clan.leader_lives)
-    return i18n.t("cat.history.leader_lives_left_sc", count=clan.leader_lives)
+        return i18n.t("cat.history.leader_lives_left_df", name=leader_name, count=clan.leader_lives)
+    return i18n.t("cat.history.leader_lives_left_sc", name=leader_name, count=clan.leader_lives)
 
 
 def adjust_list_text(list_of_items: List) -> str:
@@ -842,13 +843,13 @@ def history_text_adjust(text, other_clan_name, clan, other_cat_rc=None):
         text = text.replace("o_c_n", str(other_clan_name))
 
     if "c_n" in text:
-        text = text.replace("c_n", i18n.t("general.clan", name=clan.name))
+        text = text.replace("c_n", clan.name)
     if "r_c" in text and other_cat_rc:
         text = selective_replace(text, "r_c", str(other_cat_rc.name))
 
     text = text.replace("medicine cat", "healer").replace("medicine den", "healer den")
 
-    if list(set(get_config(game.clan, "clan_creation.leader_lives_nr"))) != [9]:
+    if list(set(get_config("clan_creation.leader_lives_nr"))) != [9]:
         text = text.replace("nine lives", "lives")
     return text
 

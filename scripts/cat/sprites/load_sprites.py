@@ -588,9 +588,9 @@ class Sprites:
         var.replace(
             (87, 76, 45),
             (
-                pygame.Color(get_config(None, "theme.dark_mode_clan_symbols"))
+                pygame.Color(get_config("theme.dark_mode_clan_symbols"))
                 if not force_light and (game_setting_get("dark mode") or force_dark)
-                else pygame.Color(get_config(None, "theme.light_mode_clan_symbols"))
+                else pygame.Color(get_config("theme.light_mode_clan_symbols"))
             ),
             distance=0,
         )

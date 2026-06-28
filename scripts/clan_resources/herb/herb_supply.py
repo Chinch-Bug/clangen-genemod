@@ -122,7 +122,7 @@ class HerbSupply:
         """
         return round(
             self.required_herb_count
-            / get_config(game.clan, "clan_resources.herbs.adequate")
+            / get_config("clan_resources.herbs.adequate")
         )
 
     @property
@@ -139,7 +139,7 @@ class HerbSupply:
         """
         return (
             self.required_herb_count
-            * get_config(game.clan, "clan_resources.herbs.excess")
+            * get_config("clan_resources.herbs.excess")
         )
 
     def convert_old_save(self, herb_list):
@@ -156,7 +156,7 @@ class HerbSupply:
         """
         self.required_herb_count = int(
             clan_size
-            * get_config(game.clan, "clan_resources.herbs.required_herbs_per_cat")
+            * get_config("clan_resources.herbs.required_herbs_per_cat")
         )
 
     def start_storage(self, clan_size):
@@ -443,14 +443,14 @@ class HerbSupply:
         quantity_modifier = 1
 
         if primary == SkillPath.SENSE:
-            amount_modifier = get_config(game.clan, "clan_resources.herbs.primary_sense")
+            amount_modifier = get_config("clan_resources.herbs.primary_sense")
         elif primary == SkillPath.CLEVER:
-            quantity_modifier = get_config(game.clan, "clan_resources.herbs.primary_clever")
+            quantity_modifier = get_config("clan_resources.herbs.primary_clever")
 
         if secondary == SkillPath.SENSE:
-            amount_modifier = get_config(game.clan, "clan_resources.herbs.secondary_sense")
+            amount_modifier = get_config("clan_resources.herbs.secondary_sense")
         elif secondary == SkillPath.CLEVER:
-            quantity_modifier = get_config(game.clan, "clan_resources.herbs.secondary_clever")
+            quantity_modifier = get_config("clan_resources.herbs.secondary_clever")
 
         # list of the herbs, sorted by most need
         herb_list = self.sorted_by_need
@@ -459,14 +459,14 @@ class HerbSupply:
         found_herbs = {}
 
         # adjust weighting according to season
-        weight = get_config(game.clan, f"clan_resources.herbs.{(game.clan.biome if not game.clan.override_biome else game.clan.override_biome).casefold()}.{game.clan.current_season.casefold()}")
+        weight = get_config(f"clan_resources.herbs.{(game.clan.biome if not game.clan.override_biome else game.clan.override_biome).casefold()}.{game.clan.current_season.casefold()}")
 
         # the amount of herb types the med has found
         amount_of_herbs = (
             choices(population=[1, 2, 3], weights=weight, k=1)[0] + amount_modifier
         )
         if general_amount_bonus:
-            amount_of_herbs *= get_config(game.clan, "clan_resources.herbs.general_amount_bonus")
+            amount_of_herbs *= get_config("clan_resources.herbs.general_amount_bonus")
 
         # adding herb quantity bonus
         if specific_quantity_bonus:
@@ -775,7 +775,7 @@ class HerbSupply:
         # apply mortality effect
         if effect == HerbEffect.MORTALITY:
             con_info[effect] += (
-                get_config(game.clan, "clan_resources.herbs.base_mortality_effect")
+                get_config("clan_resources.herbs.base_mortality_effect")
                 * strength
                 + amt_modifier
             )
@@ -785,7 +785,7 @@ class HerbSupply:
         elif effect == HerbEffect.DURATION:
             # duration doesn't get amt_modifier, as that would be far too strong an affect
             con_info[effect] -= (
-                get_config(game.clan, "clan_resources.herbs.base_duration_effect")
+                get_config("clan_resources.herbs.base_duration_effect")
                 * strength
             )
             if con_info["duration"] < 0:
@@ -796,7 +796,7 @@ class HerbSupply:
         elif effect == HerbEffect.RISK:
             for risk in con_info[effect]:
                 risk["chance"] += (
-                    get_config(game.clan, "clan_resources.herbs.base_risk_effect")
+                    get_config("clan_resources.herbs.base_risk_effect")
                     * strength
                     + amt_modifier
                 )

@@ -74,7 +74,7 @@ class WarriorDenScreen(Screens):
                         if (
                             game.clan.last_focus_change is None
                             or game.clan.last_focus_change
-                            + get_config(game.clan, "focus.duration")
+                            + get_config("focus.duration")
                             <= game.clan.age
                         ):
                             self.save_button.enable()
@@ -231,14 +231,14 @@ class WarriorDenScreen(Screens):
             # check mediator-related buttons
             if (
                 not self.has_mediators
-                and name in get_config(game.clan, "focus.requires_mediator")
+                and name in get_config("focus.requires_mediator")
             ):
                 self.focus_buttons[name].disable()
                 self.focus_buttons[name].set_text(f"settings.requires_mediator")
             # check meddie related buttons
             elif (
                 not self.has_meddies
-                and name in get_config(game.clan, "focus.requires_medicine_cat")
+                and name in get_config("focus.requires_medicine_cat")
             ):
                 self.focus_buttons[name].disable()
                 self.focus_buttons[name].set_text(f"settings.requires_medicine_cat")
@@ -262,7 +262,7 @@ class WarriorDenScreen(Screens):
         for name, value in settings_dict["clan_focus"].items():
             if (
                 game.clan.game_mode == "classic"
-                and name in get_config(game.clan, "focus.classic_disallows")
+                and name in get_config("focus.classic_disallows")
             ):
                 continue
 
@@ -308,9 +308,7 @@ class WarriorDenScreen(Screens):
         if self.original_focus_code in self.other_clan_settings:
             desc = i18n.t(
                 "screens.warrior_den.involved_clans",
-                clans=adjust_list_text(
-                    [f"{clan}clan" for clan in game.clan.clans_in_focus]
-                ),
+                clans=adjust_list_text(game.clan.clans_in_focus),
             )
         last_change_text = ""
         next_change = ""
@@ -320,7 +318,7 @@ class WarriorDenScreen(Screens):
             )
             moons = (
                 game.clan.last_focus_change
-                + get_config(game.clan, "focus.duration")
+                + get_config("focus.duration")
                 - game.clan.age
             )
             moons = moons if moons > 0 else 0

@@ -172,7 +172,7 @@ class EventsScreen(Screens):
                 self.change_screen(GameScreen.PROFILE)
             elif element in self.choose_group_buttons.values():
                 self.choose_living_dropdown.close()
-                self.current_clan = next(filter(lambda c: c.name == element.text.replace("Clan", ""), game.clan.all_other_clans), game.clan).group_ID
+                self.current_clan = next(filter(lambda c: c.name == element.text, game.clan.all_other_clans), game.clan).group_ID
                 self.change_clan()
                 self.timeskip_done(True)
             else:
@@ -205,7 +205,7 @@ class EventsScreen(Screens):
         self.clan_info["symbol"].set_image(pygame.transform.scale(
                     clan_symbol_sprite(curr_clan), ui_scale_dimensions((100, 100))
                 ))
-        self.update_heading_text(f"{curr_clan.name}Clan")
+        self.update_heading_text(curr_clan.name)
 
     def save_scroll_and_page_position(self):
         """
@@ -385,7 +385,7 @@ class EventsScreen(Screens):
             self.living_groups_container.change_layer(10)
             self.choose_group_buttons[game.clan.group_ID] = UISurfaceImageButton(
                 ui_scale(pygame.Rect((0, 0), (190, 34))),
-                i18n.t("general.clan", name=game.clan.name),
+                game.clan.name,
                 get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
                 container=self.living_groups_container,
                 object_id=ObjectID(class_id="@buttonstyles_dropdown", object_id=None),
@@ -396,7 +396,7 @@ class EventsScreen(Screens):
             for clan in game.clan.all_other_clans:
                 self.choose_group_buttons[clan.group_ID] = UISurfaceImageButton(
                     ui_scale(pygame.Rect((0, y_pos), (190, 34))),
-                    i18n.t("general.clan", name=clan.name),
+                    clan.name,
                     get_button_dict(ButtonStyles.DROPDOWN, (190, 34)),
                     container=self.living_groups_container,
                     object_id=ObjectID(class_id="@buttonstyles_dropdown", object_id=None),
@@ -469,9 +469,7 @@ class EventsScreen(Screens):
 
         # Draw and disable the correct menu buttons.
         self.set_disabled_menu_buttons(["events"])
-        self.update_heading_text(
-            "general.clan", text_kwargs={"name": curr_clan.name}
-        )
+        self.update_heading_text(curr_clan.name)
         self.show_menu_buttons()
 
     def reset_page_buttons(self, is_page_update=False):
@@ -882,7 +880,7 @@ class EventsScreen(Screens):
         anchor = {"top": "top"}
 
         default_color = pygame.Color(
-            get_config(game.clan, f"theme.{'dark' if game_setting_get('dark mode') else 'light'}_mode_background"
+            get_config(f"theme.{'dark' if game_setting_get('dark mode') else 'light'}_mode_background"
             )
         )
 

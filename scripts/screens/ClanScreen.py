@@ -101,9 +101,7 @@ class ClanScreen(Screens):
         self.choose_cat_positions()
 
         self.set_disabled_menu_buttons(["camp_screen"])
-        self.update_heading_text(
-            "general.clan", text_kwargs={"name": game.selected_clan.name}
-        )
+        self.update_heading_text(game.clan.name)
         self.show_menu_buttons()
         Screens.menu_buttons["back_to_camp"].hide()
 
@@ -411,11 +409,11 @@ class ClanScreen(Screens):
             # Newborns are not meant to be placed. They are hiding.
             if (
                 Cat.all_cats[x].status.rank == CatRank.NEWBORN
-                or get_config(game.clan, "fun.all_cats_are_newborn")
+                or get_config("fun.all_cats_are_newborn")
             ):
                 if (
-                    get_config(game.clan, "fun.all_cats_are_newborn")
-                    or get_config(game.clan, "fun.newborns_can_roam")
+                    get_config("fun.all_cats_are_newborn")
+                    or get_config("fun.newborns_can_roam")
                 ):
                     # Free them
                     [
