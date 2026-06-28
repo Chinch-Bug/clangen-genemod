@@ -1519,7 +1519,7 @@ class OtherClan:
 
     @name.setter
     def name(self, value):
-        self.prefix = value
+        self.prefix = value.replace("Clan", "")
 
     def __repr__(self):
         # has indicators that this is unlocalized, just in case
@@ -1528,7 +1528,7 @@ class OtherClan:
     def get_save_data(self):
         return {
             "group_ID": self.group_ID,
-            "name": self.name,
+            "name": self.prefix,
             "reputation" : self.reputation,
             "temperament" : self.temperament,
             "chosen_symbol": self.chosen_symbol,
