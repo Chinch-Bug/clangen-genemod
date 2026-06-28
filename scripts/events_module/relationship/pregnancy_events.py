@@ -1073,7 +1073,7 @@ class Pregnancy_Events:
     # ---------------------------------------------------------------------------- #
 
     @staticmethod
-    def get_second_parent(cat):
+    def get_second_parent(cat, clan):
         """
         Return the second parent of a cat, which will have kits.
         Also returns a bool that is true if an affair was triggered.

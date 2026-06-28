@@ -15,6 +15,7 @@ from typing import Dict, List, Any, Union, Callable, Optional, TYPE_CHECKING, Li
 import i18n
 import ujson  # type: ignore
 
+from operator import xor
 from scripts.special_dates import SpecialDate, is_today
 import scripts.game_structure.localization as pronouns
 from scripts.cat import save_load, pronouns

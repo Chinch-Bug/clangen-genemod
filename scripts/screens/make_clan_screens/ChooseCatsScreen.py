@@ -378,7 +378,7 @@ class ChooseCatsScreen(MakeClanScreenBase):
         if not self.selected_cat:
             self.elements["error_message"].hide()
             self.elements["roll_container"].show()
-            if constants.CONFIG["clan_creation"]["rerolls"] == 3:
+            if get_config("clan_creation.rerolls") == 3:
                 self.elements["reroll_count"].hide()
             else:
                 self.elements["roll1"].hide()

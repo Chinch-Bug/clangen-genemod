@@ -129,7 +129,7 @@ class InheritanceDb:
 
     def get_children(self, cat_id: str, only_living: bool=False) -> Set[str]:
         from scripts.cat.cats import Cat
-        return {k["cat_id"] for k in self._cat_to_rels[cat_id].children if not only_living or cat.fetch_cat(k["cat_id"]) and not cat.fetch_cat(k["cat_id"]).dead}
+        return {k["cat_id"] for k in self._cat_to_rels[cat_id].children if not only_living or Cat.fetch_cat(k["cat_id"]) and not Cat.fetch_cat(k["cat_id"]).dead}
 
     def get_siblings(self, cat_id: str) -> Set[str]:
         siblings = set()
