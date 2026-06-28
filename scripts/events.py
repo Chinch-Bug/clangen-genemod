@@ -265,7 +265,7 @@ def one_moon():
 
                     shaken_cat_names = []
                     for cat in shaken_cats[clan.prefix]:
-                        shaken_cat_names.append(str(cat.prefix))
+                        shaken_cat_names.append(str(cat.name))
                         cat.get_injured(
                             "shock",
                             event_triggered=False,
