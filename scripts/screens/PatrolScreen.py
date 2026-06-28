@@ -323,7 +323,7 @@ class PatrolScreen(Screens):
 
     def handle_patrol_complete_events(self, event):
         if event.ui_element == self.elements["patrol_again"]:
-            if self.event_screen_container:
+            if hasattr(self, "event_screen_container") and self.event_screen_container:
                 self.event_screen_container.show()
                 self.choose_living_dropdown.close()
             self.in_progress_data = None
@@ -1417,8 +1417,7 @@ class PatrolScreen(Screens):
             # Draw mentor or apprentice
             relation = "should not display"
             if (
-                self.selected_cat.status.rank
-                in [CatRank.MEDICINE_APPRENTICE, CatRank.APPRENTICE]
+                self.selected_cat.status.rank.is_any_apprentice_rank()
                 or self.selected_cat.apprentice != []
             ):
                 self.elements["app_mentor_frame"] = pygame_gui.elements.UIImage(
@@ -1428,8 +1427,7 @@ class PatrolScreen(Screens):
                 )
 
                 if (
-                    self.selected_cat.status.rank
-                    in [CatRank.MEDICINE_APPRENTICE, CatRank.APPRENTICE, CatRank.MEDIATOR_APPRENTICE]
+                    self.selected_cat.status.rank.is_any_apprentice_rank()
                     and self.selected_cat.mentor is not None
                 ):
                     self.app_mentor = Cat.fetch_cat(self.selected_cat.mentor)

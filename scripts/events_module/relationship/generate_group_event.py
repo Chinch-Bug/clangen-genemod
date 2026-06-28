@@ -100,13 +100,12 @@ def _resolve_event(
 
     # collect cat IDs for the involved cat buttons
     cat_ids = []
-    clan = None
+    clan = involved_cats["m_c"].status.group_ID
     if "multi_cat" in involved_cats:
         cat_ids = [c.ID for c in involved_cats["multi_cat"]]
-        clan = involved_cats[0].status.group_ID
     cat_ids += [c.ID for abbr, c in involved_cats.items() if abbr != "multi_cat"]
     if not clan:
-        clan = list(involved_cats.values())[0].status.group_ID
+        clan = involved_cats["multi_cat"][0].status.group_ID
 
     # append the event to the events list!
     game.cur_events_list.append(

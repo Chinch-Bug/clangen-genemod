@@ -65,12 +65,6 @@ class Inheritance:
         self.all_but_cousins = []
 
         self.cat = cat
-        # if not born:
-        #     try:
-        #         self.load_inheritance()
-        #         return
-        #     except:
-        #         pass
         self.update_inheritance()
 
         # if the cat is newly born, update all the related cats
@@ -83,92 +77,6 @@ class Inheritance:
     def __setitem__(self, key, value):
         setattr(self, key, value)
 
-    def save_inheritance(self, fade=False):
-        # save inheritance
-        clanname = None
-        if switch_get_value(Switch.clan_save_id) != "":
-            clanname = switch_get_value(Switch.clan_save_id)
-        elif len(switch_get_value(Switch.clan_list)) > 0:
-            clanname = switch_get_value(Switch.clan_list)[0]
-        elif game.clan is not None:
-            clanname = game.clan.name
-
-        family_directory = get_save_dir() + "/" + clanname + "/inheritance"
-        family_file_path = family_directory + "/" + self.cat.ID + "_inheritance.json"
-
-        if fade:
-            if os.path.exists(family_file_path):
-                os.remove(family_file_path)
-            return
-
-        family = {}
-
-        if self.mates:
-            family["mates"] = self.mates
-        if self.other_mates:
-            family["other_mates"] = self.other_mates
-
-        if self.kits:
-            family["kits"] = self.kits
-        if self.kits_mates:
-            family["kits_mates"] = self.kits_mates
-
-        if self.siblings:
-            family["siblings"] = self.siblings
-        if self.siblings_mates:
-            family["siblings_mates"] = self.siblings_mates
-        if self.siblings_kits:
-            family["siblings_kits"] = self.siblings_kits
-
-        if self.parents:
-            family["parents"] = self.parents
-        if self.parents_siblings:
-            family["parents_siblings"] = self.parents_siblings
-
-        if self.cousins:
-            family["cousins"] = self.cousins
-
-        if self.grand_parents:
-            family["grand_parents"] = self.grand_parents
-        if self.grand_kits:
-            family["grand_kits"] = self.grand_kits
-
-        if self.others_in_tree:
-            family["others_in_tree"] = list(set([c for c in self.others_in_tree if c not in self.all_involved]))
-        if self.all_involved:
-            family["all_involved"] = list(set(self.all_involved))
-        if self.all_but_cousins:
-            family["all_but_cousins"] = list(set(self.all_but_cousins))
-
-        safe_save(family_file_path, family)
-
-    def load_inheritance(self):
-        if switch_get_value(Switch.clan_save_id) != "":
-            clanname = switch_get_value(Switch.clan_save_id)
-        else:
-            clanname = switch_get_value(Switch.clan_list)[0]
-
-        family_directory = get_save_dir() + "/" + clanname + "/inheritance/"
-        family_cat_directory = family_directory + self.cat.ID + "_inheritance.json"
-
-        with open(family_cat_directory, "r", encoding="utf-8") as read_file:
-            rel_data = ujson.loads(read_file.read())
-            for key in rel_data.keys():
-                if key == "all_in_tree":
-                    self["others_in_tree"] = rel_data[key]
-                self[key] = rel_data[key]
-
-        self.all_inheritances[self.cat.ID] = self
-        # parents
-        for key in self.parents:
-            self.all_involved.remove(key)
-            self.all_but_cousins.remove(key)
-        self.init_parents()
-        
-        if self.parents.keys() != rel_data.get("parents", {}).keys():
-            self.update_inheritance()
-            self.update_all_related_inheritance()
-    
     def update_inheritance(self):
         """Update inheritance of the given cat."""
         self.parents = {}

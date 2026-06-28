@@ -3040,7 +3040,7 @@ def rel_deputy_filter(cat_list, leader):
     has_rel.sort( reverse=True,
         key=lambda c: leader.relationships[c.ID].respect * 3 + leader.relationships[c.ID].trust * 2 + leader.relationships[c.ID].like + leader.relationships[c.ID].comfort)
 
-    if leader.relationships[has_rel[0].ID].respect * 3 + leader.relationships[has_rel[0].ID].trust * 2 + leader.relationships[has_rel[0].ID].romance + leader.relationships[has_rel[0].ID].like + leader.relationships[has_rel[0].ID].comfort < 0:
+    if values[has_rel[0].ID] < 0:
         return cat_list
     for i, c in enumerate(has_rel):
         if i > 5:

@@ -7,7 +7,6 @@ from scripts.clan_package.settings import (
     load_clan_settings,
     set_clan_setting,
 )
-from scripts.game_structure import game
 
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
@@ -143,7 +142,7 @@ class TestPregnancySettings(unittest.TestCase):
         # turn affairs off
         set_clan_setting("affair", False)
         # now an affair isn't allowed
-        self.assertEqual(Pregnancy_Events.get_second_parent(parent1), (parent2, False))
+        self.assertEqual(Pregnancy_Events.get_second_parent(parent1, game.clan), ([parent2], False))
 
 
 class CanHaveKits(unittest.TestCase):
