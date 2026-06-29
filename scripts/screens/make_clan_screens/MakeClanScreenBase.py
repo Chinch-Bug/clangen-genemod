@@ -14,6 +14,7 @@ from scripts.clan import Clan
 from scripts.clan_package.settings import load_clan_settings
 from scripts.events_module.patrol.patrol import Patrol
 from scripts.game_structure import game
+from scripts.game_structure import constants
 from scripts.config import get_config
 from scripts.game_structure.game import switch_get_value, Switch, game_setting_get
 from scripts.game_structure.game.switches import switch_set_value
