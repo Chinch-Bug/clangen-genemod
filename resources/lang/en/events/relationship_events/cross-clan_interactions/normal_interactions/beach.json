@@ -93,6 +93,15 @@
                     "beak bite"
                 ]
             }
+        ],
+        "history": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "scar": "m_c was scarred by a gull when trying to impress r_c.",
+                "death": "m_c died from injuries caused by a gull when trying to impress r_c."
+            }
         ]
     }
 ]

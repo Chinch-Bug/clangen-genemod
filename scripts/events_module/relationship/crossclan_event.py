@@ -136,9 +136,9 @@ class CrossClanEvent(ShortEvent):
         if self.new_gender:
             self.handle_transition()
 
-        custom_mapping = {}
+        self.custom_mapping = {}
         for i in range(len(self.r_c)):
-            custom_mapping[f"r_c{i+1}"] = (
+            self.custom_mapping[f"r_c{i+1}"] = (
                 str(self.random_cats[i].name),
                 choice(self.random_cats[i].pronouns),
             )
@@ -146,11 +146,11 @@ class CrossClanEvent(ShortEvent):
         self.custom_mapping["c_n"] = (clan.name, {})
         for i, o_clan in enumerate(self.involved_clans[1:], start=1):
             o_clan = game.clan.group_ID_to_clan(o_clan)
-            custom_mapping[f"o_c_n{i}"] = (o_clan.name, {})
+            self.custom_mapping[f"o_c_n{i}"] = (o_clan.name, {})
             if i == 1:
-                custom_mapping[f"o_c_n"] = (o_clan.name, {})
+                self.custom_mapping[f"o_c_n"] = (o_clan.name, {})
 
-        self.text = process_text(self.text, custom_mapping)
+        self.text = process_text(self.text, self.custom_mapping)
 
         # change relationships before killing anyone
         if self.relationships:
@@ -164,7 +164,7 @@ class CrossClanEvent(ShortEvent):
             )
             for change in self.relationships:
                 for group in change.get("log", []):
-                    change["log"][group] = process_text(change["log"][group], custom_mapping)
+                    change["log"][group] = process_text(change["log"][group], self.custom_mapping)
 
             unpack_rel_block(Cat, self.relationships, self, clan=clan)
 

@@ -60,6 +60,15 @@
                 ]
             }
         ],
+        "history": [
+            {
+                "cats": [
+                    "r_c"
+                ],
+                "scar": "m_c was scarred after getting trapped in a snowdrift.",
+                "death": "m_c died from complications caused by being trapped in a snowdrift."
+            }
+        ],
         "relationships": [
             {
                 "cats_from": [ "r_c" ],

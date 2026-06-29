@@ -1572,11 +1572,11 @@ def check_war():
             event = random.choice(war_events)
             if not victor or victor == clan:
                 event = ongoing_event_text_adjust(
-                    Cat, event, other_clan_name=i18n.t("general.clan", name=enemy_clan.prefix), clan=main_clan
+                    Cat, event, other_clan_name=enemy_clan.name, clan=main_clan
                 )
             else:
                 event = ongoing_event_text_adjust(
-                    Cat, event, other_clan_name=i18n.t("general.clan", name=main_clan.prefix), clan=enemy_clan
+                    Cat, event, other_clan_name=main_clan.name, clan=enemy_clan
                 )
             game.cur_events_list.append(Single_Event(event, "other_clans", clan=clan))
             if game.clan.clancount == "multiclan":
