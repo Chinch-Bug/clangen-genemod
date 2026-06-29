@@ -2989,7 +2989,7 @@ class Cat:
                     comfort=comfort,
                     trust=trust,
                 )
-                if not (not mates and not related and romance == 0 and like == 0 and respect == 0 and comfort == 0 and trust == 0):
+                if not (not related and romance == 0 and like == 0 and respect == 0 and comfort == 0 and trust == 0):
                     self.relationships[the_cat.ID] = rel
                 else:
                     blanks.append(the_cat.ID)
