@@ -47,6 +47,8 @@
         "save_clan": "save clan",
         "saving": "saving...",
         "clan_saved": "saved!",
-        "sprite_image_scaled": "scaled"
+        "sprite_image_scaled": "scaled",
+        "keep_cards": "keep",
+        "replace_cards": "replace"
     }
 }

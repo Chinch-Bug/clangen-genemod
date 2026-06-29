@@ -1386,7 +1386,6 @@ def one_moon_cat(cat, clan):
 
     # relationships have to be handled separately, because of the ceremony name change
     if cat.status.group.is_any_clan_group():
-        cat.relationship_interaction()
         Relation_Events.handle_relationships(cat)
 
     # now we make sure ill and injured cats don't get interactions they shouldn't

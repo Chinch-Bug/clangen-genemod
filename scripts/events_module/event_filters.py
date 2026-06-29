@@ -66,7 +66,7 @@ def event_for_location(locations: list, clan=game.clan) -> bool:
     """
     Checks if the clan is within the allowed locations.
     """
-    if "any" in locations:
+    if "any" in locations or not locations:
         return True
 
     if not game.clan:
@@ -115,7 +115,7 @@ def event_for_season(seasons: list) -> bool:
     """
     Checks if the clan is within the given seasons.
     """
-    if not seasons:
+    if not seasons or not seasons:
         return True
 
     if "any" in seasons:
@@ -1031,7 +1031,7 @@ def cat_for_event(
     for param in func_dict:
         if param not in constraint_dict:
             continue
-        allowed_cats = func_dict[param](allowed_cats, tuple(constraint_dict.get(param)))
+        allowed_cats = func_dict[param](allowed_cats, constraint_dict.get(param))
 
         # if the list is emptied, return
         if not allowed_cats:
@@ -1150,7 +1150,7 @@ def _get_cats_with_rel_status(
     return cat_list, rel_status_list
 
 
-def _get_cats_with_age(cat_list: list, ages: tuple) -> list:
+def _get_cats_with_age(cat_list: list, ages: list[str]) -> list:
     """
     Checks cat_list against required ages and returns qualifying cats.
     """
@@ -1166,7 +1166,7 @@ def _get_cats_with_age(cat_list: list, ages: tuple) -> list:
         return [kitty for kitty in cat_list if kitty.age in ages]
 
 
-def _get_cats_with_status(cat_list: list, statuses: tuple) -> list:
+def _get_cats_with_status(cat_list: list, statuses: list[str]) -> list:
     """
     Checks cat_list against required statuses and returns qualifying cats.
     """
@@ -1205,7 +1205,7 @@ def _get_cats_with_stat(cat_list: list, stat: dict) -> list:
         return skill_cats + trait_cats
 
 
-def _get_cats_with_skill(cat_list: list, skills: tuple) -> list:
+def _get_cats_with_skill(cat_list: list, skills: list[str]) -> list:
     """
     Checks cat_list against required skills and returns qualifying cats.
     """
@@ -1239,7 +1239,7 @@ def _get_cats_with_skill(cat_list: list, skills: tuple) -> list:
     return cat_list
 
 
-def _get_cats_with_trait(cat_list: list, traits: tuple) -> list:
+def _get_cats_with_trait(cat_list: list, traits: list[str]) -> list:
     """
     Checks cat_list against required traits and returns qualifying cats.
     """
@@ -1312,7 +1312,7 @@ def _get_cats_from_group(
     return cat_list
 
 
-def _get_cats_with_backstory(cat_list: list, backstories: tuple) -> list:
+def _get_cats_with_backstory(cat_list: list, backstories: list[str]) -> list:
     """
     Checks cat_list against required backstories and returns qualifying cats.
     """

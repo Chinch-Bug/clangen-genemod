@@ -59,6 +59,8 @@ class ClanInfo:
     game_mode: str = "classic"
     clan_count_mode: str = "singleclan"
     
+    cruel_cards: list[str] = field(default_factory=list)
+
     def clear(self):
         """
         Return all the attributes back to their default values
@@ -74,6 +76,7 @@ class ClanInfo:
         self.starting_season = "Newleaf"
         self.game_mode = "classic"
         self.clan_count_mode = "singleclan"
+        self.cruel_cards = []
 
     def clear_cats(self):
         self.leader = None
@@ -93,6 +96,7 @@ class ClanInfo:
         self.starting_season = saved_info["starting_season"]
         self.game_mode = saved_info["game_mode"]
         self.clan_count_mode = saved_info["clan_count_mode"]
+        self.cruel_cards = saved_info["cruel_cards"]
 
     def get_dict(self) -> dict:
         """
@@ -110,6 +114,7 @@ class ClanInfo:
             "starting_season": self.starting_season,
             "game_mode": self.game_mode,
             "clan_count_mode": self.clan_count_mode,
+            "cruel_cards": self.cruel_cards,
         }
 
     def no_cats_chosen(self) -> bool:
@@ -155,20 +160,23 @@ class MakeClanScreenBase(Screens):
             self.clan_info.update(switch_get_value(Switch.clan_creation_info))
 
         # Buttons that appear on every screen.
-        self.elements["menu_warning"] = pygame_gui.elements.UITextBox(
-            "screens.make_clan.menu_warning",
-            ui_scale(pygame.Rect((25, 25), (600, -1))),
-            object_id=get_text_box_theme("#text_box_22_horizleft"),
-            manager=MANAGER,
-        )
         self.elements["main_menu"] = UISurfaceImageButton(
-            ui_scale(pygame.Rect((25, 50), (153, 30))),
+            ui_scale(pygame.Rect((25, 25), (153, 30))),
             "buttons.main_menu",
             get_button_dict(ButtonStyles.SQUOVAL, (153, 30)),
             manager=MANAGER,
             object_id="@buttonstyles_squoval",
             starting_height=1,
         )
+
+        self.elements["menu_warning"] = pygame_gui.elements.UITextBox(
+            "screens.make_clan.menu_warning",
+            ui_scale(pygame.Rect((25, 0), (200, -1))),
+            object_id=get_text_box_theme("#text_box_22_horizleft_spacing_95"),
+            anchors={"top_target": self.elements["main_menu"]},
+            manager=MANAGER,
+        )
+
         self.elements["previous_step"] = UISurfaceImageButton(
             ui_scale(pygame.Rect((253, 620), (147, 30))),
             "buttons.previous_step",
@@ -257,6 +265,38 @@ class MakeClanScreenBase(Screens):
             clan_names.remove(self.clan_info.display_name)
 
         return choice(clan_names)
+
+    def random_card(self) -> str:
+        """
+        Returns a random cruel card ID
+        """
+        card = None
+
+        # check conflicts
+        i = 0
+        while (not card or self.card_has_conflicts(card)) and i < 20:
+            card = choice(
+                [
+                    c
+                    for c in list(constants.CRUEL_CARDS_ALL.keys())
+                    if c not in self.clan_info.cruel_cards
+                ]
+            )
+            i += 1
+
+        # `i` is just some extra protection so that we don't infinite while loop
+        # though we really SHOULDN'T end up with cards conflicting that much
+
+        return card
+
+    def card_has_conflicts(self, card_name):
+        for conflict_list in constants.CRUEL_CARDS_CONFLICTS.values():
+            if card_name in conflict_list and set(
+                self.clan_info.cruel_cards
+            ).intersection(set(conflict_list)):
+                return True
+
+        return False
 
     def get_camp_art_path(self, campnum) -> Optional[str]:
         if not campnum:

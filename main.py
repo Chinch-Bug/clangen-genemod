@@ -225,6 +225,7 @@ while 1:
                     GameScreen.SETTINGS,
                     GameScreen.MAKE_CLAN_CHOOSE_CLANCOUNT,
                     GameScreen.MAKE_CLAN_CHOOSE_MODE,
+                    GameScreen.MAKE_CLAN_CHOOSE_CARDS,
                     GameScreen.MAKE_CLAN_CHOOSE_NAME,
                     GameScreen.MAKE_CLAN_CHOOSE_CATS,
                     GameScreen.MAKE_CLAN_CHOOSE_SYMBOL,

@@ -1913,31 +1913,6 @@ class Cat:
         # insert thought
         self.thought = str(chosen_thought)
 
-    def relationship_interaction(self):
-        """Randomly choose a cat of the Clan and have an interaction with them."""
-        cats_to_choose = [
-            iter_cat
-            for iter_cat in Cat.all_cats.values()
-            if iter_cat.ID != self.ID and
-            iter_cat.status.group_ID == self.status.group_ID and
-            iter_cat.age != CatAge.NEWBORN
-        ]
-        # if there are no cats to interact, stop
-        if not cats_to_choose:
-            return
-
-        chosen_cat = choice(cats_to_choose)
-        if chosen_cat.ID not in self.relationships:
-            self.create_one_relationship(chosen_cat)
-        relevant_relationship = self.relationships[chosen_cat.ID]
-        relevant_relationship.start_interaction()
-
-        # handle contact with ill cat if
-        if self.is_ill():
-            relevant_relationship.cat_to.contact_with_ill_cat(self)
-        if relevant_relationship.cat_to.is_ill():
-            self.contact_with_ill_cat(relevant_relationship.cat_to)
-
     def moon_skip_illness(self, illness):
         """handles the moon skip for illness"""
         if not self.is_ill():
@@ -2786,12 +2761,10 @@ class Cat:
             if not self.dead:
                 if other_cat.ID not in self.relationships:
                     self.create_one_relationship(other_cat)
-                    self.relationships[other_cat.ID].mates = True
                 self_relationship = self.relationships[other_cat.ID]
                 self_relationship.romance -= randint(20, 60)
                 self_relationship.comfort -= randint(10, 30)
                 self_relationship.trust -= randint(5, 15)
-                self_relationship.mates = False
                 if fight:
                     self_relationship.romance -= randint(10, 30)
                     self_relationship.like -= randint(15, 45)
@@ -2799,12 +2772,10 @@ class Cat:
             if not other_cat.dead:
                 if self.ID not in other_cat.relationships:
                     other_cat.create_one_relationship(self)
-                    other_cat.relationships[self.ID].mates = True
                 other_relationship = other_cat.relationships[self.ID]
                 other_relationship.romance -= 40
                 other_relationship.comfort -= 20
                 other_relationship.trust -= 10
-                other_relationship.mates = False
                 if fight:
                     self_relationship.romance -= 20
                     other_relationship.like -= 30
@@ -2839,22 +2810,18 @@ class Cat:
         if not self.dead:
             if other_cat.ID not in self.relationships:
                 self.create_one_relationship(other_cat)
-                self.relationships[other_cat.ID].mates = True
             self_relationship = self.relationships[other_cat.ID]
             self_relationship.romance += 20
             self_relationship.comfort += 20
             self_relationship.trust += 10
-            self_relationship.mates = True
 
         if not other_cat.dead:
             if self.ID not in other_cat.relationships:
                 other_cat.create_one_relationship(self)
-                other_cat.relationships[self.ID].mates = True
             other_relationship = other_cat.relationships[self.ID]
             other_relationship.romance += 20
             other_relationship.comfort += 20
             other_relationship.trust += 10
-            other_relationship.mates = True
 
     def unset_adoptive_parent(self, other_cat: Cat):
         """Unset the adoptive parent from self"""
@@ -2946,7 +2913,6 @@ class Cat:
         for ID in self.all_cats:
             the_cat = self.all_cats.get(ID)
             if the_cat.ID is not self.ID:
-                mates = the_cat.ID in self.mate
                 are_parents = False
                 parents = False
                 siblings = False
@@ -3016,7 +2982,6 @@ class Cat:
                 rel = Relationship(
                     cat_from=self,
                     cat_to=the_cat,
-                    mates=mates,
                     family=related,
                     romance=romance,
                     like=like,
@@ -3077,7 +3042,6 @@ class Cat:
                             old_rel = rel.copy()
                             rel = {}
                             rel["log"] = old_rel["log"]
-                            rel["mates"] = old_rel["mates"]
                             rel["family"] = old_rel["family"]
                             rel["cat_to_id"] = old_rel["cat_to_id"]
 
@@ -3120,7 +3084,6 @@ class Cat:
                         new_rel = Relationship(
                             cat_from=self,
                             cat_to=cat_to,
-                            mates=rel["mates"] or False,
                             family=rel["family"] or False,
                             romance=(rel["romance"] or 0),
                             like=(rel["like"] or 0),
@@ -3129,7 +3092,7 @@ class Cat:
                             trust=rel["trust"] or 0,
                             log=rel["log"],
                         )
-                        if not (not new_rel.mates and not new_rel.family and new_rel.romance == 0 and new_rel.like == 0
+                        if not (not new_rel.family and new_rel.romance == 0 and new_rel.like == 0
                                 and new_rel.respect == 0 and new_rel.comfort == 0 and new_rel.trust == 0 and len(new_rel.log) == 0):
                             self.relationships[rel["cat_to_id"]] = new_rel
                         else:

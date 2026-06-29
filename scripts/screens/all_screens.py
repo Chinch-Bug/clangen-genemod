@@ -28,6 +28,7 @@ from .WarriorDenScreen import WarriorDenScreen
 from .PredictOffspringScreen import PredictOffspringScreen
 from .enums import GameScreen
 from .make_clan_screens.ChooseCampScreen import ChooseCampScreen
+from .make_clan_screens.ChooseCardsScreen import ChooseCardsScreen
 from .make_clan_screens.ChooseCatsScreen import ChooseCatsScreen
 from .make_clan_screens.ChooseModeScreen import ChooseModeScreen
 from .make_clan_screens.ChooseClancountScreen import ChooseClancountScreen
@@ -70,6 +71,7 @@ def rebuild_all_screens():
         GameScreen.SPRITE_INSPECT: SpriteInspectScreen,
         GameScreen.MAKE_CLAN_CHOOSE_CLANCOUNT: ChooseClancountScreen,
         GameScreen.MAKE_CLAN_CHOOSE_MODE: ChooseModeScreen,
+        GameScreen.MAKE_CLAN_CHOOSE_CARDS: ChooseCardsScreen,
         GameScreen.MAKE_CLAN_CHOOSE_NAME: ChooseNameScreen,
         GameScreen.MAKE_CLAN_CHOOSE_CATS: ChooseCatsScreen,
         GameScreen.MAKE_CLAN_CHOOSE_CAMP: ChooseCampScreen,
