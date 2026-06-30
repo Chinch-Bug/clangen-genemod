@@ -41,8 +41,7 @@ def trigger_interaction(
     """
     # only interact between two player clan cats
     if (
-        not main_cat.status.alive_in_player_clan
-        or not other_cat.status.alive_in_player_clan
+        main_cat.status.group_ID != other_cat.status.group_ID
     ):
         return False
     # no interacting with self
@@ -324,7 +323,7 @@ def _resolve_event(
     cat_ids = [c.ID for c in involved_cats.values()]
     # append the event to the events list!
     game.cur_events_list.append(
-        Single_Event(event_string, ["relation", "interaction"], cat_ids)
+        Single_Event(event_string, ["relation", "interaction"], cat_ids, clan=involved_cats["m_c"].status.group_ID)
     )
 
     # APPLY INFLUENCE ON RELATIONSHIPS

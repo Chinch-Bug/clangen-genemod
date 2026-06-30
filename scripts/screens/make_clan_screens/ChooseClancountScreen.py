@@ -102,7 +102,6 @@ class ChooseClancountScreen(MakeClanScreenBase):
                 self.clan_count_mode = 'multiclan'
                 self.refresh_text_and_buttons()
 
-            # Logic for when to quick-start clan
             elif event.ui_element == self.elements["next_step"]:
                 self.clan_info.clan_count_mode = self.clan_count_mode
                 self.change_screen(GameScreen.MAKE_CLAN_CHOOSE_MODE)

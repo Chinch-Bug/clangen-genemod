@@ -187,11 +187,11 @@ class ChooseModeScreen(MakeClanScreenBase):
 
     def random_quick_start(self):
         # reset in case players went forward, made choices, then came back and quick started
-        game_mode = (
-            self.clan_info.game_mode
-        )  # save game mode, that's the only choice we want to preserve
+        game_mode = self.clan_info.game_mode  # save game mode, that's the only choice we want to preserve
+        clancount = self.clan_info.clan_count_mode
         self.clan_info.clear()
         self.clan_info.game_mode = game_mode
+        self.clan_info.clan_count_mode = clancount
 
         if self.clan_info.game_mode == "cruel_season":
             for i in range(randint(3, 8)):

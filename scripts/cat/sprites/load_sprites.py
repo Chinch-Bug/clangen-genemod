@@ -19,6 +19,7 @@ logger = logging.getLogger(__name__)
 class Sprites:
     cat_tints = {}
     white_patches_tints = {}
+    rusting_sprites = []
     clan_symbols = []
 
     with open(
@@ -293,6 +294,10 @@ class Sprites:
             self.make_group('Somatic/'+x.replace('.png', ""), (0, 0), "Somatic/"+x.replace('.png', ""))
         
         
+        for x in os.listdir("sprites/genemod/rusting"):
+            self.spritesheet("sprites/genemod/rusting/"+x, 'Rust/'+x.replace('.png', ""))
+            self.make_group('Rust/'+x.replace('.png', ""), (0, 0), "rusting_"+x.replace('.png', ""))
+            self.rusting_sprites.append("rusting_"+x.replace('.png', ""))
         for x in os.listdir("sprites/genemod/white"):
             self.spritesheet("sprites/genemod/white/"+x, 'White/'+x.replace('.png', ""))
             self.make_group('White/'+x.replace('.png', ""), (0, 0), x.replace('.png', ""))
