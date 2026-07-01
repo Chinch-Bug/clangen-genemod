@@ -2078,7 +2078,7 @@ class Breed_generator:
             genoclass.dilute = ["D", "D"]
         else:
             genoclass.dilute = ["d", "d"]
-            genoclass.saturation = randint(0, 2)
+            genoclass.fur_shade = randint(0, 2)
 
         # WHITE
 
@@ -2121,7 +2121,7 @@ class Breed_generator:
             genoclass.sokoke += '0'
 
         genoclass.body_value = randint(genoclass.body_indexes[2]+1, genoclass.body_indexes[4])
-        genoclass.saturation = randint(0, 2)
+        genoclass.fur_shade = randint(0, 2)
         genoclass.breeds["Russian"] = 100
         return genoclass
     
@@ -2890,7 +2890,7 @@ class Breed_generator:
         return genoclass
     
     @staticmethod
-    def Napoleon(genoclass, special):
+    def Minuet(genoclass, special):
 
         genoclass = Breed_generator.AllColours(genoclass, special)
         
@@ -4592,7 +4592,7 @@ def find_my_breed(phenotype):
         "Gaelic Fold" : phenotype.breeds.get("Munchkin", 0) + phenotype.breeds.get("Persian/Exotic", 0) + phenotype.breeds.get("British", 0), 
         "Kinkalow" : phenotype.breeds.get("American Curl", 0) + phenotype.breeds.get("Munchkin", 0), 
         "Lambkin" : phenotype.breeds.get("Selkirk Rex", 0) + phenotype.breeds.get("Munchkin", 0), 
-        "Napoleon" : phenotype.breeds.get("Munchkin", 0) + phenotype.breeds.get("Persian/Exotic", 0),
+        "Minuet" : phenotype.breeds.get("Munchkin", 0) + phenotype.breeds.get("Persian/Exotic", 0),
         "Peterbald" : phenotype.breeds.get("Oriental/Siamese", 0) + phenotype.breeds.get("Donskoy", 0), 
         "Serengeti" : phenotype.breeds.get("Oriental/Siamese", 0) + phenotype.breeds.get("Bengal", 0), 
         "Skookum" : phenotype.breeds.get("LaPerm", 0) + phenotype.breeds.get("Munchkin", 0)
@@ -4605,7 +4605,7 @@ def find_my_breed(phenotype):
         "Gaelic Fold" : ["Munchkin", "Persian/Exotic", "British"], 
         "Kinkalow" : ["American Curl", "Munchkin"], 
         "Lambkin" : ["Selkirk Rex", "Munchkin"], 
-        "Napoleon" : ["Munchkin", "Persian/Exotic"],
+        "Minuet" : ["Munchkin", "Persian/Exotic"],
         "Peterbald" : ["Oriental/Siamese", "Donskoy"], 
         "Serengeti" : ["Oriental/Siamese", "Bengal"], 
         "Skookum" : ["LaPerm", "Munchkin"]
@@ -4626,7 +4626,7 @@ def find_my_breed(phenotype):
     if not phenotype.breeds.get("Selkirk Rex", False) or not phenotype.breeds.get("Munchkin", False):
         hybrids["Lambkin"] = 0
     if not phenotype.breeds.get("Persian/Exotic", False) or not phenotype.breeds.get("Munchkin", False) or phenotype.breeds.get("British", False):
-        hybrids["Napoleon"] = 0
+        hybrids["Minuet"] = 0
     if not phenotype.breeds.get("Oriental/Siamese", False) or not phenotype.breeds.get("Donskoy", False):
         hybrids["Peterbald"] = 0
     if not phenotype.breeds.get("Oriental/Siamese", False) or not phenotype.breeds.get("Bengal", False):
@@ -4654,8 +4654,8 @@ def find_my_breed(phenotype):
             return "Kinkalow"
         elif breed == "Lambkin" and phenotype.length != "hairless" and phenotype.lykoi[0] == "Ly" and phenotype.sedesp[0] == "Se" and phenotype.breeds.get("Selkirk Rex", 0) and phenotype.breeds.get("Munchkin", 0):
             return "Lambkin"
-        elif breed == "Napoleon" and phenotype.length != "hairless" and phenotype.lykoi[0] == "Ly" and phenotype.breeds.get("Persian/Exotic", 0) and phenotype.breeds.get("Munchkin", 0):
-            return "Napoleon"
+        elif breed == "Minuet" and phenotype.length != "hairless" and phenotype.lykoi[0] == "Ly" and phenotype.breeds.get("Persian/Exotic", 0) and phenotype.breeds.get("Munchkin", 0):
+            return "Minuet"
         elif breed == "Peterbald" and phenotype.breeds.get("Oriental/Siamese", 0) and phenotype.breeds.get("Donskoy", 0):
             return "Peterbald"
         elif breed == "Serengeti" and Breed_checker.Serengeti(phenotype) and phenotype.breeds.get("Oriental/Siamese", 0) and phenotype.breeds.get("Bengal", 0):
@@ -4769,7 +4769,7 @@ breed_functions = {
         "Gaelic Fold" : Breed_generator.Gaelic,
         "Kinkalow" : Breed_generator.Kinkalow,
         "Lambkin" : Breed_generator.Lambkin,
-        "Napoleon" : Breed_generator.Napoleon,
+        "Minuet" : Breed_generator.Minuet,
         "Peterbald" : Breed_generator.Peterbald,
         "Serengeti" : Breed_generator.Serengeti,
         "Skookum" : Breed_generator.Skookum

@@ -365,7 +365,7 @@ def accurate_porting(cat, info):
             cat.chimerapheno.ticked[0] = "Ta"
     
     if not patch_colour["pattern"] and main_colour["pattern"] in ["singlecolour", "twocolour"] and main_colour["colour"] == "WHITE":
-        cat.phenotype.white[0] = ["W"]
+        cat.phenotype.white[0] = "W"
     
     if main_colour["colour"] in ["WHITE", "PALEGREY", "SILVER", "GREY", "DARKGREY", "CREAM", "PALEGINGER", "LIGHTBROWN", "LILAC"]:
         cat.phenotype.dilute = ["d", "d"]
@@ -476,11 +476,11 @@ def accurate_porting(cat, info):
         cat.phenotype.rufousing = "0000"
         cat.phenotype.wideband = "00000000"
     if main_colour["colour"] in ["LILAC", "GREY"] or (main_colour["colour"] in ["SIENNA"] and main_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"]):
-        cat.phenotype.saturation = choice(range(0, 5))
+        cat.phenotype.fur_shade = choice(range(0, 5))
     elif main_colour["colour"] in ["DARKGREY", "PALEGREY", "DARKBROWN", "GHOST"]:
-        cat.phenotype.saturation = choice(range(5, 7))
+        cat.phenotype.fur_shade = choice(range(5, 7))
     else:
-        cat.phenotype.saturation = choice(range(2, 5))
+        cat.phenotype.fur_shade = choice(range(2, 5))
 
     if cat.chimerapheno:
         if patch_colour["colour"] in ["DARKGINGER", "CHOCOLATE"]:
@@ -489,11 +489,11 @@ def accurate_porting(cat, info):
             cat.chimerapheno.rufousing = "0000"
             cat.chimerapheno.wideband = "00000000"
         if patch_colour["colour"] in ["LILAC", "GREY"] or (main_colour["colour"] in ["SIENNA"] and main_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"]):
-            cat.chimerapheno.saturation = choice(range(0, 5))
+            cat.chimerapheno.fur_shade = choice(range(0, 5))
         if patch_colour["colour"] in ["DARKGREY", "PALEGREY", "DARKBROWN", "GHOST"]:
-            cat.chimerapheno.saturation = choice(range(4, 7))
+            cat.chimerapheno.fur_shade = choice(range(4, 7))
         else:
-            cat.chimerapheno.saturation = choice(range(2, 5))
+            cat.chimerapheno.fur_shade = choice(range(2, 5))
             
     cat.phenotype.GeneSort()
     cat.phenotype.PolyEval()
@@ -594,6 +594,7 @@ def json_load():
 
             new_cat.pelt = Pelt(
                 new_cat.phenotype,
+                rusting=cat.get("rusting"),
                 tint=cat.get('tint', 'none'),
                 white_patches_tint=cat.get('white_tint', 'none'),
                 paralyzed=cat["paralyzed"],

@@ -844,12 +844,12 @@ class Phenotype(Genotype):
             if is_today(SpecialDate.APRIL_FOOLS) and "Pb" in self.april_fools.get("peacock_blue", []) and genes.dilute[0] == "d":
                 self.peacock = True
 
-            maincolour = colour + str(self.saturation)
+            maincolour = colour + str(self.fur_shade)
             
             if (self.ext[0] == 'ea' and ((moons > 11 and self.agouti[0] != 'a') or (moons > 35))):
                 return [maincolour] + self.FindRed(genes, moons)[1:]
 
-            if self.saturation < 3 and colour in ['blue', 'lilac', 'fawn', 'dove']:
+            if self.fur_shade < 3 and colour in ['blue', 'lilac', 'fawn', 'dove']:
                 colour = "pale_" + colour
 
             rufousing = ""
@@ -920,7 +920,7 @@ class Phenotype(Genotype):
             else:
                 colour = "red"
         
-        maincolour += colour + str(self.saturation)
+        maincolour += colour + str(self.fur_shade)
         
         rufousing = ""
         banding = ""

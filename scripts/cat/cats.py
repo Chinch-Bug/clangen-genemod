@@ -2500,7 +2500,7 @@ class Cat:
         condition_file_path = condition_directory + "/" + self.ID + "_conditions.json"
 
         if (not self.is_ill() and not self.is_injured() and not self.is_disabled()) or (
-            (self.dead or self.status.is_outsider) and not self.is_disabled()
+            self.dead and not self.is_disabled()
         ):
             if os.path.exists(condition_file_path):
                 os.remove(condition_file_path)
@@ -3611,8 +3611,6 @@ class Cat:
 
     def get_save_dict(self, faded=False):
         if faded:
-            # if self.inheritance:
-            #     self.inheritance.save_inheritance(True)
             return {
                 "ID": self.ID,
                 "name_prefix": self.name.prefix,
@@ -3629,8 +3627,6 @@ class Cat:
                 "faded_offspring": self.faded_offspring,
             }
         else:
-            # if self.inheritance:
-            #     self.inheritance.save_inheritance()
             return {
                 "ID": self.ID,
                 "name_prefix": self.name.prefix,
@@ -3680,6 +3676,7 @@ class Cat:
                 "sprite_senior": self.pelt.cat_sprites['senior'],
                 "sprite_para_adult": self.pelt.cat_sprites['para_adult'],
                 "reverse": self.pelt.reverse,
+                "rusting": self.pelt.rusting,
                 "tint": self.pelt.tint,
                 "white_tint": self.pelt.white_patches_tint,
                 "skill_dict": self.skills.get_skill_dict(),

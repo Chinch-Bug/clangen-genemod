@@ -238,8 +238,8 @@ class Name:
             (self.phenotype.white[1] in ['ws', 'wt'] and self.phenotype.whitegrade == 5) or
             (self.phenotype.tortiepattern == ['revCRYPTIC'] and self.phenotype.brindledbi) or 
             (self.phenotype.dilute[0] == 'd' and self.phenotype.pinkdilute[0] == 'dp' and 
-                (('dove' in self.phenotype.colour and self.phenotype.saturation < 2) or 
-                ('platinum' in self.phenotype.colour and self.phenotype.saturation < 3) or
+                (('dove' in self.phenotype.colour and self.phenotype.fur_shade < 2) or 
+                ('platinum' in self.phenotype.colour and self.phenotype.fur_shade < 3) or
                 ('dove' not in self.phenotype.colour and 'platinum' not in self.phenotype.colour))) or
             ('silver' in self.phenotype.silvergold and ('shaded' in self.phenotype.tabby or 'chinchilla' in self.phenotype.tabby))
             ):
@@ -380,146 +380,141 @@ class Name:
             self.suffix = ""
             return
         had_suffix = True if self.suffix else False
-        try:
-            if self.mod_suffixes and skills and personality:
-                options = []
-                suffix_settings = get_config("cat_name_controls.alt_suffixes")
-                for i in range(suffix_settings["primary_skill"]):
-                    try:
-                        options.append(self.mod_suffixes['skill'][skills.primary.path.name])
-                    except:
-                        break
+        if self.mod_suffixes and skills and personality:
+            options = []
+            suffix_settings = get_config("cat_name_controls.alt_suffixes")
+            for i in range(suffix_settings["primary_skill"]):
+                try:
+                    options.append(self.mod_suffixes['skill'][skills.primary.path.name])
+                except:
+                    break
 
-                if skills.secondary:
-                    for i in range(suffix_settings["secondary_skill"]):
-                        options.append(self.mod_suffixes['skill'].get(skills.secondary.path.name, []))
-                
-                for i in range(suffix_settings["trait"]):
+            if skills.secondary:
+                for i in range(suffix_settings["secondary_skill"]):
+                    options.append(self.mod_suffixes['skill'].get(skills.secondary.path.name, []))
+            
+            for i in range(suffix_settings["trait"]):
+                try:
+                    options.append(self.mod_suffixes['trait'][personality.trait]['general'])
+                except:
+                    options.append(self.mod_suffixes['trait'].get(personality.trait, []))
+            if honour:
+                for i in range(suffix_settings["trait_honour"]):
                     try:
-                        options.append(self.mod_suffixes['trait'][personality.trait]['general'])
+                        options.append(self.mod_suffixes['trait'][personality.trait].get(honour, []))
                     except:
-                        options.append(self.mod_suffixes['trait'].get(personality.trait, []))
-                if honour:
-                    for i in range(suffix_settings["trait_honour"]):
-                        try:
-                            options.append(self.mod_suffixes['trait'][personality.trait].get(honour, []))
-                        except:
-                            options.append(self.mod_suffixes['honour'].get(honour, []))
-                    for i in range(suffix_settings["general_honour"]):
                         options.append(self.mod_suffixes['honour'].get(honour, []))
+                for i in range(suffix_settings["general_honour"]):
+                    options.append(self.mod_suffixes['honour'].get(honour, []))
 
-                for i in range(suffix_settings["special"]):
-                    options.append(self.mod_suffixes['other']['special'])
+            for i in range(suffix_settings["special"]):
+                options.append(self.mod_suffixes['other']['special'])
 
-                appearance = self.mod_suffixes['other']['common']
+            appearance = self.mod_suffixes['other']['common']
 
-                if self.phenotype.length == 'longhaired':
-                    appearance += self.mod_suffixes['other']['appearance'].get('longhair', [])
-                if self.phenotype.tabby != "" and (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4):
-                    if self.phenotype.ticked[0] == 'Ta' and (not self.phenotype.breakthrough or self.phenotype.mack[0] != 'mc'):
-                        appearance += self.mod_suffixes['other']['appearance'].get('ticked', [])
-                    if 'spotted' in self.phenotype.tabby or 'servaline' in self.phenotype.tabby:
-                        appearance += self.mod_suffixes['other']['appearance'].get('spotted', [])
-                    if ('blotched' in self.phenotype.tabby or 'marbled' in self.phenotype.tabby) and "sheeted" not in self.phenotype.tabby:
-                        appearance += self.mod_suffixes['other']['appearance'].get('swirled', [])
-                    if 'mackerel' in self.phenotype.tabby or 'braided' in self.phenotype.tabby or 'pinstripe' in self.phenotype.tabby:
-                        appearance += self.mod_suffixes['other']['appearance'].get('striped', [])
-                    if 'rosette' in self.phenotype.tabby:
-                        appearance += self.mod_suffixes['other']['appearance'].get('patchy', [])
-                if (self.phenotype.tortie and (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4)) or\
-                    (self.phenotype.white[1] in ['ws', 'wt'] and self.phenotype.whitegrade < 4) or\
-                    (self.phenotype.white[0] in ['ws', 'wt'] and self.phenotype.white[1] not in ['ws', 'wt'] and self.phenotype.whitegrade > 2):
+            if self.phenotype.length == 'longhaired':
+                appearance += self.mod_suffixes['other']['appearance'].get('longhair', [])
+            if self.phenotype.tabby != "" and (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4):
+                if self.phenotype.ticked[0] == 'Ta' and (not self.phenotype.breakthrough or self.phenotype.mack[0] != 'mc'):
+                    appearance += self.mod_suffixes['other']['appearance'].get('ticked', [])
+                if 'spotted' in self.phenotype.tabby or 'servaline' in self.phenotype.tabby:
+                    appearance += self.mod_suffixes['other']['appearance'].get('spotted', [])
+                if ('blotched' in self.phenotype.tabby or 'marbled' in self.phenotype.tabby) and "sheeted" not in self.phenotype.tabby:
+                    appearance += self.mod_suffixes['other']['appearance'].get('swirled', [])
+                if 'mackerel' in self.phenotype.tabby or 'braided' in self.phenotype.tabby or 'pinstripe' in self.phenotype.tabby:
+                    appearance += self.mod_suffixes['other']['appearance'].get('striped', [])
+                if 'rosette' in self.phenotype.tabby:
                     appearance += self.mod_suffixes['other']['appearance'].get('patchy', [])
-                    if (self.phenotype.tortiepattern and self.phenotype.tortiepattern[0].replace('rev', '') in self.phenotype.def_tortie_low_patterns):
-                        appearance += self.mod_suffixes['other']['appearance'].get('spotted', [])
-                    if ((self.phenotype.white[1] in ['ws', 'wt'] and self.phenotype.whitegrade < 4) or\
-                    (self.phenotype.white[0] in ['ws', 'wt'] and self.phenotype.white[1] not in ['ws', 'wt'] and self.phenotype.whitegrade > 2)):
-                        appearance += self.mod_suffixes['other']['appearance'].get('white_patchy', [])
-                if (self.phenotype.point and (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4)):
-                    appearance += self.mod_suffixes['other']['appearance'].get('pointed', [])
-                if 'curl' in self.phenotype.eartype or 'curl' in self.phenotype.tailtype or 'rexed' in self.phenotype.furtype:
-                    appearance += self.mod_suffixes['other']['appearance'].get('curled', [])
-                
-                size = suffix_settings["common"]
-                if self.cat.moons < 11 or (self.cat.status.rank.is_any_medicine_rank() and self.cat.moons < 15):
-                    size = suffix_settings["common_early"]
-                for i in range(size):
-                    options.append(appearance)
-                self.suffix = ""
-
-                tries = 0
-                while not self.suffix or self.suffix in self.prefix.lower():
-                    tries += 1
-                    if tries > 20:
-                        break
-                    try:
-                        self.suffix = random.choice(random.choice(options))
-                    except:
-                        while [] in options:
-                            options.remove([])
-                        continue
-                self.check_name(self.cat, False)
-                return
-        except:
-            pass
-
-        """Generate possible suffix."""
-        pelt = []
-        if self.phenotype:
-            if (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4):
-                if self.phenotype.tabby != "":
-                    if self.phenotype.ticked[0] == 'Ta' and (not self.phenotype.breakthrough or self.phenotype.mack[0] != 'mc'):
-                        if self.phenotype.ticktype == "agouti":
-                            pelt.append("Agouti")
-                        else:
-                            pelt.append("Ticked")
-                    if 'spotted' in self.phenotype.tabby or 'servaline' in self.phenotype.tabby:
-                        pelt.append("Spotted")
-                    if ('blotched' in self.phenotype.tabby or 'marbled' in self.phenotype.tabby) and "sheeted" not in self.phenotype.tabby:
-                        pelt.append("Classic")
-                    if 'mackerel' in self.phenotype.tabby or 'braided' in self.phenotype.tabby or 'pinstripe' in self.phenotype.tabby:
-                        pelt.append("Mackerel")
-                    if 'rosette' in self.phenotype.tabby:
-                        pelt.append("Rosetted")
-                    if 'charcoal' in self.phenotype.tabtype:
-                        pelt.append("Masked")
-                if self.phenotype.tortie:
-                    if self.phenotype.white[1] in ['ws', 'wt'] or self.phenotype.whitegrade > 4:
-                        pelt.append("Calico")
-                    else:
-                        pelt.append("Tortie")
-                if 'smoke' in self.phenotype.silvergold:
-                    pelt.append("Smoke")
-            if (self.phenotype.white[1] in ['ws', 'wt'] and self.phenotype.whitegrade < 4) or\
+            if (self.phenotype.tortie and (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4)) or\
+                (self.phenotype.white[1] in ['ws', 'wt'] and self.phenotype.whitegrade < 4) or\
                 (self.phenotype.white[0] in ['ws', 'wt'] and self.phenotype.white[1] not in ['ws', 'wt'] and self.phenotype.whitegrade > 2):
-                pelt.append("TwoColour")
+                appearance += self.mod_suffixes['other']['appearance'].get('patchy', [])
+                if (self.phenotype.tortiepattern and self.phenotype.tortiepattern[0].replace('rev', '') in self.phenotype.def_tortie_low_patterns):
+                    appearance += self.mod_suffixes['other']['appearance'].get('spotted', [])
+                if ((self.phenotype.white[1] in ['ws', 'wt'] and self.phenotype.whitegrade < 4) or\
+                (self.phenotype.white[0] in ['ws', 'wt'] and self.phenotype.white[1] not in ['ws', 'wt'] and self.phenotype.whitegrade > 2)):
+                    appearance += self.mod_suffixes['other']['appearance'].get('white_patchy', [])
+            if (self.phenotype.point and (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4)):
+                appearance += self.mod_suffixes['other']['appearance'].get('pointed', [])
+            if 'curl' in self.phenotype.eartype or 'curl' in self.phenotype.tailtype or 'rexed' in self.phenotype.furtype:
+                appearance += self.mod_suffixes['other']['appearance'].get('curled', [])
+            
+            size = suffix_settings["common"]
+            if self.cat.moons < 11 or (self.cat.status.rank.is_any_medicine_rank() and self.cat.moons < 15):
+                size = suffix_settings["common_early"]
+            for i in range(size):
+                options.append(appearance)
+            self.suffix = ""
 
-        tries = 0
-        while not self.suffix or self.suffix in self.prefix.lower():
-            tries += 1
-            if tries > 20:
-                break
-            named_after_pelt = not random.getrandbits(2)  # Chance for True is '1/8'.
-            named_after_biome = not random.getrandbits(3)  # 1/8
-            # Pelt name only gets used if there's an associated suffix.
-            if named_after_pelt and len(pelt) > 0:
-                self.suffix = random.choice(self.names_dict["pelt_suffixes"][random.choice(pelt)])
-            elif named_after_biome:
-                if biome in self.names_dict["biome_suffixes"]:
-                    self.suffix = random.choice(
-                        self.names_dict["biome_suffixes"][biome]
-                    )
+            tries = 0
+            while not self.suffix or self.suffix in self.prefix.lower():
+                tries += 1
+                if tries > 20:
+                    break
+                try:
+                    self.suffix = random.choice(random.choice(options))
+                except:
+                    while [] in options:
+                        options.remove([])
+                    continue
+
+        else:
+            """Generate possible suffix."""
+            pelt = []
+            if self.phenotype:
+                if (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4):
+                    if self.phenotype.tabby != "":
+                        if self.phenotype.ticked[0] == 'Ta' and (not self.phenotype.breakthrough or self.phenotype.mack[0] != 'mc'):
+                            if self.phenotype.ticktype == "agouti":
+                                pelt.append("Agouti")
+                            else:
+                                pelt.append("Ticked")
+                        if 'spotted' in self.phenotype.tabby or 'servaline' in self.phenotype.tabby:
+                            pelt.append("Spotted")
+                        if ('blotched' in self.phenotype.tabby or 'marbled' in self.phenotype.tabby) and "sheeted" not in self.phenotype.tabby:
+                            pelt.append("Classic")
+                        if 'mackerel' in self.phenotype.tabby or 'braided' in self.phenotype.tabby or 'pinstripe' in self.phenotype.tabby:
+                            pelt.append("Mackerel")
+                        if 'rosette' in self.phenotype.tabby:
+                            pelt.append("Rosetted")
+                        if 'charcoal' in self.phenotype.tabtype:
+                            pelt.append("Masked")
+                    if self.phenotype.tortie:
+                        if self.phenotype.white[1] in ['ws', 'wt'] or self.phenotype.whitegrade > 4:
+                            pelt.append("Calico")
+                        else:
+                            pelt.append("Tortie")
+                    if 'smoke' in self.phenotype.silvergold:
+                        pelt.append("Smoke")
+                if (self.phenotype.white[1] in ['ws', 'wt'] and self.phenotype.whitegrade < 4) or\
+                    (self.phenotype.white[0] in ['ws', 'wt'] and self.phenotype.white[1] not in ['ws', 'wt'] and self.phenotype.whitegrade > 2):
+                    pelt.append("TwoColour")
+
+            tries = 0
+            while not self.suffix or self.suffix in self.prefix.lower():
+                tries += 1
+                if tries > 20:
+                    break
+                named_after_pelt = not random.getrandbits(2)  # Chance for True is '1/8'.
+                named_after_biome = not random.getrandbits(3)  # 1/8
+                # Pelt name only gets used if there's an associated suffix.
+                if named_after_pelt and len(pelt) > 0:
+                    self.suffix = random.choice(self.names_dict["pelt_suffixes"][random.choice(pelt)])
+                elif named_after_biome:
+                    if biome in self.names_dict["biome_suffixes"]:
+                        self.suffix = random.choice(
+                            self.names_dict["biome_suffixes"][biome]
+                        )
+                    else:
+                        self.suffix = random.choice(self.names_dict["normal_suffixes"])
                 else:
                     self.suffix = random.choice(self.names_dict["normal_suffixes"])
-            else:
-                self.suffix = random.choice(self.names_dict["normal_suffixes"])
 
         self.check_name(self.cat, False)
         
         if not had_suffix:
             if get_clan_setting("ancient names") and get_clan_setting("modded names"):
                 self.suffix = " " + self.suffix.title().strip()
-                self.specsuffix_hidden = True
             elif get_clan_setting("no special suffixes") and get_clan_setting("modded names"):
                 self.specsuffix_hidden = True
         

@@ -1365,6 +1365,12 @@ class ProfileScreen(Screens):
             self.info_list += f"Tortie Markings: {self.the_cat.phenotype.tortiepattern}\n"
         if self.the_cat.chimerapheno and self.the_cat.chimerapheno.tortiepattern and self.the_cat.chimerapheno.tortiepattern != ["BLUE-TIPPED"]:
             self.info_list += f"Chimera Tortie Markings: {self.the_cat.chimerapheno.tortiepattern}\n"
+        
+        if self.the_cat.pelt.rusting:
+            rust_string = ""
+            for rust, opacity in self.the_cat.pelt.rusting.items():
+                rust_string += f", {rust.removeprefix("rusting_")} {opacity}%"
+            self.info_list += f"Rusting: {rust_string.strip(" ,")}\n"
 
         if self.the_cat.phenotype.merlepattern:
             self.info_list += f"Pseudo-Merle Markings: {self.the_cat.phenotype.merlepattern}\n"

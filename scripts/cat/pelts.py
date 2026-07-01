@@ -4,6 +4,7 @@ from re import sub
 
 import i18n
 
+from scripts.config import get_config
 import scripts.game_structure.screen_settings
 from scripts.cat.enums import CatAge
 from scripts.cat.sprites.load_sprites import sprites
@@ -100,7 +101,7 @@ class Pelt:
             '2': ['LITTLE', 'LIGHTTUXEDO', 'BUZZARDFANG', 'TIP', 'PAWS', 'BROKENBLAZE', 'BEARD', 'BIB', 'VEE', 'HONEY', 'TOESTAIL',
                   'RAVENPAW', 'DAPPLEPAW', 'LILTWO', 'MUSTACHE', 'REVERSEHEART', 'SPARKLE', 'REVERSEEYE'],
             '3': ['TUXEDO', 'SAVANNAH', 'FANCY', 'DIVA', 'BEARD', 'DAMIEN', 'BELLY', 'SQUEAKS', 'STAR', 'MISS', 'BOWTIE',
-                  'FCTWO', 'FCONE', 'MIA', 'PRINCESS', 'DOUGIE'],
+                  'FCTWO', 'FCONE', 'MIA', 'PRINCESS', 'DOUGIE', 'STREAMSTRIKE'],
             '4': ['TUXEDO', 'SAVANNAH', 'OWL', 'RINGTAIL', 'UNDERS', 'FAROFA', 'VEST', 'FRONT', 'BLOSSOMSTEP', 'DIGIT',
                   'HAWKBLAZE'],
             '5': ['ANY', 'SHIBAINU', 'FAROFA', 'MISTER', 'PANTS', 'TRIXIE']
@@ -122,6 +123,7 @@ class Pelt:
     def __init__(
         self,
         phenotype:Phenotype,
+        rusting:str = None,
         accessory:list=None,
         paralyzed:bool=False,
         opacity:int=100,
@@ -159,6 +161,7 @@ class Pelt:
         )
         self.tint = tint
         self.white_patches_tint = white_patches_tint
+        self.rusting = rusting
         self.screen_scale = scripts.game_structure.screen_settings.screen_scale
 
         # converting old pose numbers into names
@@ -361,6 +364,9 @@ class Pelt:
     @staticmethod
     def generate_new_pelt(phenotype, age:str="adult"):
         new_pelt = Pelt(phenotype)
+
+        if random() < get_config("genetics_config.rusting") and sprites.rusting_sprites:
+            new_pelt.rusting = {choice(sprites.rusting_sprites): randint(1, 5)*5}
         
         new_pelt.init_sprite()
         new_pelt.init_scars(age)
