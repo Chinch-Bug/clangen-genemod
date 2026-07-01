@@ -31,6 +31,8 @@ def get_other_cat_for_thought(
     if main_cat in cat_list:
         cat_list.remove(main_cat)
 
+    cat_list = [c for c in cat_list if not c.faded]
+
     if not cat_list:
         return None
 
