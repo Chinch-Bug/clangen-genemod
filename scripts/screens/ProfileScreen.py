@@ -996,7 +996,7 @@ class ProfileScreen(Screens):
             # NEWLINE ----------
             output += "\n"
         elif the_cat.status.is_exiled():
-            output += f"<font color='#FF0000'>{i18n.t('general.exiled', count=1)} {i18n.t(f"general.clan", name=f"{exiled_name}")}</font>"
+            output += f"<font color='#FF0000'>{i18n.t('general.exiled', count=1)} {exiled_name}</font>"
             # NEWLINE ----------
             output += "\n"
 
@@ -1040,8 +1040,9 @@ class ProfileScreen(Screens):
         bs_text = ""
         # if cat has never been part of the player clan, then they get no backstory yet
         if (
-            not the_cat.status.alive_in_player_clan
-            and CatGroup.PLAYER_CLAN_ID not in the_cat.status.all_groups
+            not the_cat.status.get_last_living_group() or
+            (CatGroup.PLAYER_CLAN_ID not in the_cat.status.all_groups
+            and game.clan.clancount == "singleclan")
         ):
             # outsider backstory will match their status
             if not the_cat.status.is_outsider:

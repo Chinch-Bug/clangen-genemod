@@ -512,10 +512,10 @@ class Name:
 
         self.check_name(self.cat, False)
         
-        if not had_suffix:
-            if get_clan_setting("ancient names") and get_clan_setting("modded names"):
+        if not had_suffix and get_clan_setting("modded names"):
+            if get_clan_setting("ancient names"):
                 self.suffix = " " + self.suffix.title().strip()
-            elif get_clan_setting("no special suffixes") and get_clan_setting("modded names"):
+            if get_clan_setting("no special suffixes"):
                 self.specsuffix_hidden = True
         
     def get_specsuffix_name(self, rank: CatRank = CatRank.LEADER):
