@@ -111,6 +111,10 @@
         "dock": {
             "one": "dock bundle",
             "many": "dock bundles"
+        },
+        "honey": {
+            "one": "dose of honey",
+            "many": "doses of honey"
         }
     }
 }
