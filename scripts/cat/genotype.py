@@ -921,14 +921,14 @@ class Genotype:
         rare_breeds = [
             "Aphrodite", "Arabian Mau", "Brazilian Shorthair", "Cheetoh", "Ceylon", "Foldex", "Gaelic Fold", 
             "German Longhair", "Kanaani", "Karelian Bobtail", "Kinkalow", "Lambkin", "Lin-Qing Lion cat", "Mekong Bobtail", 
-            "Napoleon", "New Zealand", "Serengeti", "Skookum", "Tennessee Rex", "Ural Rex"
+            "Minuet", "New Zealand", "Serengeti", "Skookum", "Tennessee Rex", "Ural Rex"
         ]
 
         selected_breed = choice(choice([rare_breeds, medium_breeds, medium_breeds, medium_breeds, medium_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds]))
 
         if self.ban_genes:
             while selected_breed in ["Lykoi", "Manx", "Sphynx", "Bambino", "Donskoy", "Munchkin", "Peterbald", "Foldex", "Gaelic Fold",
-            "Kinkalow", "Lambkin", "Napoleon", "Skookum"]:
+            "Kinkalow", "Lambkin", "Minuet", "Skookum"]:
                 selected_breed = choice(choice([rare_breeds, medium_breeds, medium_breeds, medium_breeds, medium_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds]))
         
         gen = breed_functions["generator"][selected_breed]

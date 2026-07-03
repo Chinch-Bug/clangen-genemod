@@ -39,7 +39,7 @@ def get_random_poi_by_tag(tag, clan=None):
     :param tag:
     :return: string name of POI that fits.
     """
-    return choice(_poi_by_tags.get("shared", {}).get(tag, ["MISSING_POI"])+_poi_by_tags.get(clan, {}).get(tag, ["MISSING_POI"]))
+    return choice(_poi_by_tags.get("shared", {}).get(tag, [])+_poi_by_tags.get(clan, {}).get(tag, []))
 
 
 def add_poi(name, elements, clan=None):
