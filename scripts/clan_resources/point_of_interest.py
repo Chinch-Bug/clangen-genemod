@@ -31,6 +31,7 @@ def get_poi_tags_set(clan=None):
     :return:
     """
     tagged = _poi_tags.get("shared", set()).union(_poi_tags.get(clan if clan else "shared", set()))
+    print(tagged)
     return tagged if tagged else ["MISSING_POI"]
 
 
@@ -40,7 +41,8 @@ def get_random_poi_by_tag(tag, clan=None):
     :param tag:
     :return: string name of POI that fits.
     """
-    return choice(_poi_by_tags.get("shared", {}).get(tag, [])+_poi_by_tags.get(clan, {}).get(tag, []))
+    tagged = _poi_by_tags.get("shared", {}).get(tag, [])+_poi_by_tags.get(clan if clan else "shared", {}).get(tag, [])
+    return choice(tagged if tagged else ["MISSING_POI"])
 
 
 def add_poi(name, elements, clan=None):

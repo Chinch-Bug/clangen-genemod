@@ -1519,7 +1519,7 @@ class OtherClan:
 
     @name.setter
     def name(self, value):
-        self.prefix = value.replace("Clan", "")
+        self.prefix = value
 
     def __repr__(self):
         # has indicators that this is unlocalized, just in case
