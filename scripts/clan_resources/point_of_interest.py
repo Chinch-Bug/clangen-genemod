@@ -30,7 +30,8 @@ def get_poi_tags_set(clan=None):
     Return a set containing all POI tags
     :return:
     """
-    return _poi_tags.get("shared", set()).union(_poi_tags.get(clan if clan else "shared", set()))
+    tagged = _poi_tags.get("shared", set()).union(_poi_tags.get(clan if clan else "shared", set()))
+    return tagged if tagged else ["MISSING_POI"]
 
 
 def get_random_poi_by_tag(tag, clan=None):
