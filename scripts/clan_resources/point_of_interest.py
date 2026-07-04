@@ -31,7 +31,6 @@ def get_poi_tags_set(clan=None):
     :return:
     """
     tagged = _poi_tags.get("shared", set()).union(_poi_tags.get(clan if clan else "shared", set()))
-    print(tagged)
     return tagged if tagged else ["MISSING_POI"]
 
 

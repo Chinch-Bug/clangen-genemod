@@ -733,7 +733,7 @@ class MediationScreen(Screens):
 
         # if we have another cat, then we create the relationship display
         if other_cat:
-            the_relationship = cat.relationships[other_cat.ID]
+            the_relationship = cat.relationships[other_cat.ID] if other_cat.ID in cat.relationships else cat.create_one_relationship(other_cat)
 
             same_age = the_relationship.cat_to.age == cat.age
             adult_ages = ["young adult", "adult", "senior adult", "senior"]
