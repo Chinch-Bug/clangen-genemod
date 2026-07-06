@@ -79,8 +79,11 @@ class OutsiderEvents:
                 
                 cat.history.add_death(death_text=death_history)
                 cat.die(grief_allowed=False)
+                tags = ["birth_death"]
+                if cat.status.is_other_clancat:
+                    tags.append("other_clans")
                 game.cur_events_list.append(
-                    Single_Event(text, "birth_death", cat_dict={"m_c": cat}, clan=cat.status.get_last_living_group())
+                    Single_Event(text, tags, cat_dict={"m_c": cat}, clan=cat.status.get_last_living_group())
                 )
 
     @staticmethod
@@ -115,8 +118,7 @@ class OutsiderEvents:
                     text = random.choice(wander_events[cat.status.social.value])
                 text = event_text_adjust(cat, text, main_cat=cat)
                 game.cur_events_list.append(
-                    Single_Event(text, "misc", cat_dict={
-                                 "m_c": cat}, clan=cat.status.get_last_valid_group_id())
+                    Single_Event(text, "misc", cat_dict={"m_c": cat}, clan=cat.status.get_last_valid_group_id())
                 )
                 cat.status.change_group_nearness(clan.group_ID)
             elif random.getrandbits(int(get_config("outsider_events.outsider_return"))) == 1 and not cat.dead and not cat.status.is_near():
