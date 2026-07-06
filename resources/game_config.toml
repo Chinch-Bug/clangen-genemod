@@ -409,6 +409,9 @@ dev_tools = false
   rogue = [3, 7, 35, 55]
   clancat = [10, 10, 20, 40]
 
+  # set to True to always use English names instead of the localized version
+  always_use_english = false
+
   # if changing prefixes is enabled, this is the chance of the prefix changing during ceremonies 
   # (eg. kit-apprentice is during apprentice ceremony)
   

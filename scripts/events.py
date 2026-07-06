@@ -1587,57 +1587,6 @@ def perform_ceremonies(cat, clan):
     ceremonies
     """    
     global ceremony_accessory
-    # TODO: hardcoded events, not good, consider how to convert to ShortEvent
-    #  we *do* have a ceremony dict and format, not sure why it isn't being used here
-    # PROMOTE DEPUTY TO LEADER, IF NEEDED -----------------------
-    if clan.leader:
-        leader_dead = clan.leader.dead
-        leader_outside = clan.leader.status.group_ID != clan.group_ID
-    else:
-        leader_dead = True
-        # If leader is None, treat them as dead (since they are dead - and faded away.)
-        leader_outside = True
-
-    # If a Clan deputy exists, and the leader is dead,
-    #  outside, or doesn't exist, make the deputy leader.
-    if clan.deputy:
-        if (
-            clan.deputy is not None
-            and not clan.deputy.dead
-            and not clan.deputy.status.group_ID != clan.group_ID
-            and (leader_dead or leader_outside)
-        ):
-            old_name = clan.deputy.name
-            clan.new_leader(clan.deputy)
-            cat = clan.leader
-            text = ""
-            if cat.personality.trait == "bloodthirsty":
-                text = i18n.t(
-                    "hardcoded.ceremony_leader_bloodthirsty",
-                    oldname=old_name,
-                    newname=cat.name,
-                )
-            else:
-                c = random.randint(1, 3)
-                text = i18n.t(
-                    f"hardcoded.ceremony_leader_{c}",
-                    oldname=old_name,
-                    newname=cat.name,
-                )
-
-            # game.ceremony_events_list.append(text)
-            text += " " + i18n.t("hardcoded.ceremony_closer")
-
-            text = event_text_adjust(Cat, text, main_cat=cat, clan=clan)
-
-            game.cur_events_list.append(
-                Single_Event(text, "ceremony", cat.ID, clan=clan.group_ID)
-            )
-            ceremony_accessory = True
-            gain_accessories(cat, clan)
-            clan.deputy = None
-
-    # OTHER CEREMONIES ---------------------------------------
 
     # Protection check, to ensure "None" cats won't cause a crash.
     if cat:
@@ -1668,6 +1617,27 @@ def perform_ceremonies(cat, clan):
         if cat.status.rank == CatRank.QUEEN:
             special_can_retire = random.random() < (1/retirement_info["max_queen_retire_chance"])
         
+        # PROMOTE DEPUTY TO LEADER, IF NEEDED -----------------------
+        if clan.leader:
+            leader_dead = clan.leader.dead
+            leader_outside = clan.leader.status.group_ID != clan.group_ID
+        else:
+            leader_dead = True
+            # If leader is None, treat them as dead (since they are dead - and faded away.)
+            leader_outside = True
+        # If a Clan deputy exists, and the leader is dead,
+        #  outside, or doesn't exist, make the deputy leader.
+        if (
+            clan.deputy is not None
+            and not clan.deputy.status.group_ID != clan.group_ID
+            and (leader_dead or leader_outside)
+            and cat.status.rank == CatRank.DEPUTY
+        ):
+            ceremony(cat, CatRank.LEADER)
+            clan.deputy = None
+
+        # OTHER CEREMONIES ---------------------------------------
+
         # retiring to elder den
         if (
             not cat.no_retire

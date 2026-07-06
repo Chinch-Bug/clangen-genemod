@@ -5,11 +5,14 @@ import contextlib
 import os
 import random
 
+import i18n
 import ujson
 
 from scripts.config import get_config
 from scripts.cat.enums import CatRank, CatGroup, CatAge
+from scripts.game_structure.localization import load_lang_resource
 from scripts.housekeeping.datadir import get_save_dir
+from scripts.game_structure.game.switches import switch_get_value, Switch
 from .alt_namer import Namer
 from scripts.game_structure import game
 from scripts.clan_package.settings.clan_settings import get_clan_setting
@@ -20,64 +23,12 @@ class Name:
     Stores & handles name generation.
     """
 
-    if os.path.exists('resources/dicts/names/alt_prefixes.json'):
-        with open('resources/dicts/names/alt_prefixes.json') as read_file:
-            mod_prefixes = ujson.loads(read_file.read())
-    mod_suffixes = None
-    if os.path.exists('resources/dicts/names/alt_suffixes.json'):
-        with open('resources/dicts/names/alt_suffixes.json') as read_file:
-            mod_suffixes = ujson.loads(read_file.read())
-    if os.path.exists('resources/dicts/names/names.json'):
-        with open('resources/dicts/names/names.json') as read_file:
-            names_dict = ujson.loads(read_file.read())
-
-        if os.path.exists(get_save_dir() + "/prefixlist.txt"):
-            with open(
-                str(get_save_dir() + "/prefixlist.txt"), "r", encoding="utf-8"
-            ) as read_file:
-                name_list = read_file.read()
-                if_names = len(name_list)
-            if if_names > 0:
-                new_names = name_list.split("\n")
-                for new_name in new_names:
-                    if new_name != "":
-                        if new_name.startswith("-"):
-                            while new_name[1:] in names_dict["normal_prefixes"]:
-                                names_dict["normal_prefixes"].remove(new_name[1:])
-                        else:
-                            names_dict["normal_prefixes"].append(new_name)
-
-        if os.path.exists(get_save_dir() + "/suffixlist.txt"):
-            with open(
-                str(get_save_dir() + "/suffixlist.txt"), "r", encoding="utf-8"
-            ) as read_file:
-                name_list = read_file.read()
-                if_names = len(name_list)
-            if if_names > 0:
-                new_names = name_list.split("\n")
-                for new_name in new_names:
-                    if new_name != "":
-                        if new_name.startswith("-"):
-                            while new_name[1:] in names_dict["normal_suffixes"]:
-                                names_dict["normal_suffixes"].remove(new_name[1:])
-                        else:
-                            names_dict["normal_suffixes"].append(new_name)
-
-        if os.path.exists(get_save_dir() + "/specialsuffixes.txt"):
-            with open(
-                str(get_save_dir() + "/specialsuffixes.txt", "r"), encoding="utf-8"
-            ) as read_file:
-                name_list = read_file.read()
-                if_names = len(name_list)
-            if if_names > 0:
-                new_names = name_list.split("\n")
-                for new_name in new_names:
-                    if new_name != "":
-                        if new_name.startswith("-"):
-                            del names_dict["special_suffixes"][new_name[1:]]
-                        elif ":" in new_name:
-                            _tmp = new_name.split(":")
-                            names_dict["special_suffixes"][_tmp[0]] = _tmp[1]
+    current_save_dir = None
+    currently_loaded_clan = None
+    currently_loaded_lang = None
+    names_dict = {}
+    mod_prefixes = {}
+    mod_suffixes = {}
 
     def __init__(self,
                  cat=None,
@@ -132,17 +83,6 @@ class Name:
                     name_fixpref = False
     
     def load_clan_names(self, clan):
-        if os.path.exists('resources/dicts/names/alt_prefixes.json'):
-            with open('resources/dicts/names/alt_prefixes.json') as read_file:
-                Name.mod_prefixes = ujson.loads(read_file.read())
-        mod_suffixes = None
-        if os.path.exists('resources/dicts/names/alt_suffixes.json'):
-            with open('resources/dicts/names/alt_suffixes.json') as read_file:
-                Name.mod_suffixes = ujson.loads(read_file.read())
-        if os.path.exists('resources/dicts/names/names.json'):
-            with open('resources/dicts/names/names.json') as read_file:
-                Name.names_dict = ujson.loads(read_file.read())
-
         if not os.path.exists(get_save_dir() + f"/{clan}" + "/names"):
             return
         if os.path.exists(get_save_dir() + f"/{clan}" + "/names" + "/alt_prefixes.json"):
@@ -154,6 +94,7 @@ class Name:
         if os.path.exists(get_save_dir() + f"/{clan}" + "/names" + '/names.json'):
             with open(get_save_dir() + f"/{clan}" + "/names" + '/names.json') as read_file:
                 Name.names_dict = ujson.loads(read_file.read())
+
     def check_name(self, cat, name_fixpref):
         if not self.suffix:
             return
@@ -221,6 +162,109 @@ class Name:
                 double_animal = False
             i += 1
 
+    def load_localized_names(self):
+        """
+        Loads the correct names for the given language. Includes override for always using English names, in case localization wants to be ignored
+        :return: None
+        """
+
+        # allowing the user to override the localized language names if desired
+        if always_english := get_config("cat_name_controls.always_use_english"):
+            lang = "en"
+        else:
+            lang = i18n.config.get("locale")
+
+        current_clan = None
+        try:
+            if switch_get_value(Switch.clan_save_id) != "":
+                clanname = switch_get_value(Switch.clan_save_id)
+            else:
+                clanname = switch_get_value(Switch.clan_list)[0]
+        except:
+            current_clan = None
+
+        if (
+            self.current_save_dir != get_save_dir()
+            or self.currently_loaded_lang != lang
+        ):
+            if always_english:
+                with open("resources/lang/en/names.json", encoding="utf-8") as read_file:
+                    names_dict = ujson.loads(read_file.read())
+
+                if os.path.exists('resources/lang/en/alt_prefixes.json'):
+                    with open('resources/lang/en/alt_prefixes.json') as read_file:
+                        Name.mod_prefixes = ujson.loads(read_file.read())
+                if os.path.exists('resources/lang/en/alt_suffixes.json'):
+                    with open('resources/lang/en/alt_suffixes.json') as read_file:
+                        Name.mod_suffixes = ujson.loads(read_file.read())
+            else:
+                names_dict = load_lang_resource("names.json")
+                try:
+                    Name.mod_prefixes = load_lang_resource("alt_prefixes.json")
+                    Name.mod_suffixes = load_lang_resource("alt_suffixes.json")
+                except:
+                    pass
+
+            save_dir = get_save_dir()
+
+            # here onwards is copied wholesale from the original Name class
+
+            if os.path.exists(save_dir + "/prefixlist.txt"):
+                with open(
+                    str(save_dir + "/prefixlist.txt"), "r", encoding="utf-8"
+                ) as read_file:
+                    name_list = read_file.read()
+                    if_names = len(name_list)
+                if if_names > 0:
+                    new_names = name_list.split("\n")
+                    for new_name in new_names:
+                        if new_name != "":
+                            if new_name.startswith("-"):
+                                while new_name[1:] in names_dict["normal_prefixes"]:
+                                    names_dict["normal_prefixes"].remove(new_name[1:])
+                            else:
+                                names_dict["normal_prefixes"].append(new_name)
+
+            if os.path.exists(save_dir + "/suffixlist.txt"):
+                with open(
+                    str(save_dir + "/suffixlist.txt"), "r", encoding="utf-8"
+                ) as read_file:
+                    name_list = read_file.read()
+                    if_names = len(name_list)
+                if if_names > 0:
+                    new_names = name_list.split("\n")
+                    for new_name in new_names:
+                        if new_name != "":
+                            if new_name.startswith("-"):
+                                while new_name[1:] in names_dict["normal_suffixes"]:
+                                    names_dict["normal_suffixes"].remove(new_name[1:])
+                            else:
+                                names_dict["normal_suffixes"].append(new_name)
+
+            if os.path.exists(save_dir + "/specialsuffixes.txt"):
+                with open(
+                    str(save_dir + "/specialsuffixes.txt", "r"), encoding="utf-8"
+                ) as read_file:
+                    name_list = read_file.read()
+                    if_names = len(name_list)
+                if len(name_list) > 0:
+                    new_names = name_list.split("\n")
+                    for new_name in new_names:
+                        if new_name != "":
+                            if new_name.startswith("-"):
+                                del names_dict["special_suffixes"][new_name[1:]]
+                            elif ":" in new_name:
+                                _tmp = new_name.split(":")
+                                names_dict["special_suffixes"][_tmp[0]] = _tmp[1]
+
+            self.names_dict = names_dict
+            self.current_save_dir = save_dir
+            self.currently_loaded_lang = lang
+
+        if self.currently_loaded_clan != current_clan:
+            self.load_clan_names(self.currently_loaded_clan)
+            self.currently_loaded_clan = current_clan
+
     def __str__(self):
         return self.__repr__()
     def filter(self, all, used):
@@ -273,9 +317,9 @@ class Name:
 
         self.check_name(self.cat, True)
 
-
     # Generate possible prefix
     def give_prefix(self, cat, biome, no_suffix=False):
+        self.load_localized_names()
         name_control_info = get_config("cat_name_controls")
         if get_clan_setting("modded names") and get_clan_setting('outsider names') and random.random() < 0.5:
             selected_category = random.choices(["silly_names", "human_names", "loner_names", "normal_prefixes"], name_control_info["clancat"], k=1)[0]
@@ -376,28 +420,29 @@ class Name:
 
     # Generate possible suffix
     def give_suffix(self, skills, personality, biome, honour=None):
+        self.load_localized_names()
         if game.clan and get_clan_setting('modded names') and get_clan_setting('no suffixes'):
             self.suffix = ""
             return
         had_suffix = True if self.suffix else False
-        if self.mod_suffixes and skills and personality:
+        if self.mod_suffixes and get_clan_setting('modded names') and get_clan_setting('new suffixes'):
             options = []
             suffix_settings = get_config("cat_name_controls.alt_suffixes")
-            for i in range(suffix_settings["primary_skill"]):
-                try:
-                    options.append(self.mod_suffixes['skill'][skills.primary.path.name])
-                except:
-                    break
+            if skills:
+                if skills.primary:
+                    for i in range(suffix_settings["primary_skill"]):
+                        options.append(self.mod_suffixes['skill'].get(skills.primary.path.name, []))
 
-            if skills.secondary:
-                for i in range(suffix_settings["secondary_skill"]):
-                    options.append(self.mod_suffixes['skill'].get(skills.secondary.path.name, []))
+                if skills.secondary:
+                    for i in range(suffix_settings["secondary_skill"]):
+                        options.append(self.mod_suffixes['skill'].get(skills.secondary.path.name, []))
             
-            for i in range(suffix_settings["trait"]):
-                try:
-                    options.append(self.mod_suffixes['trait'][personality.trait]['general'])
-                except:
-                    options.append(self.mod_suffixes['trait'].get(personality.trait, []))
+            if personality:
+                for i in range(suffix_settings["trait"]):
+                    try:
+                        options.append(self.mod_suffixes['trait'][personality.trait]['general'])
+                    except:
+                        options.append(self.mod_suffixes['trait'].get(personality.trait, []))
             if honour:
                 for i in range(suffix_settings["trait_honour"]):
                     try:
@@ -412,38 +457,39 @@ class Name:
 
             appearance = self.mod_suffixes['other']['common']
 
-            if self.phenotype.length == 'longhaired':
-                appearance += self.mod_suffixes['other']['appearance'].get('longhair', [])
-            if self.phenotype.tabby != "" and (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4):
-                if self.phenotype.ticked[0] == 'Ta' and (not self.phenotype.breakthrough or self.phenotype.mack[0] != 'mc'):
-                    appearance += self.mod_suffixes['other']['appearance'].get('ticked', [])
-                if 'spotted' in self.phenotype.tabby or 'servaline' in self.phenotype.tabby:
-                    appearance += self.mod_suffixes['other']['appearance'].get('spotted', [])
-                if ('blotched' in self.phenotype.tabby or 'marbled' in self.phenotype.tabby) and "sheeted" not in self.phenotype.tabby:
-                    appearance += self.mod_suffixes['other']['appearance'].get('swirled', [])
-                if 'mackerel' in self.phenotype.tabby or 'braided' in self.phenotype.tabby or 'pinstripe' in self.phenotype.tabby:
-                    appearance += self.mod_suffixes['other']['appearance'].get('striped', [])
-                if 'rosette' in self.phenotype.tabby:
+            if self.phenotype:
+                if self.phenotype.length == 'longhaired':
+                    appearance += self.mod_suffixes['other']['appearance'].get('longhair', [])
+                if self.phenotype.tabby != "" and (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4):
+                    if self.phenotype.ticked[0] == 'Ta' and (not self.phenotype.breakthrough or self.phenotype.mack[0] != 'mc'):
+                        appearance += self.mod_suffixes['other']['appearance'].get('ticked', [])
+                    if 'spotted' in self.phenotype.tabby or 'servaline' in self.phenotype.tabby:
+                        appearance += self.mod_suffixes['other']['appearance'].get('spotted', [])
+                    if ('blotched' in self.phenotype.tabby or 'marbled' in self.phenotype.tabby) and "sheeted" not in self.phenotype.tabby:
+                        appearance += self.mod_suffixes['other']['appearance'].get('swirled', [])
+                    if 'mackerel' in self.phenotype.tabby or 'braided' in self.phenotype.tabby or 'pinstripe' in self.phenotype.tabby:
+                        appearance += self.mod_suffixes['other']['appearance'].get('striped', [])
+                    if 'rosette' in self.phenotype.tabby:
+                        appearance += self.mod_suffixes['other']['appearance'].get('patchy', [])
+                if (self.phenotype.tortie and (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4)) or\
+                    (self.phenotype.white[1] in ['ws', 'wt'] and self.phenotype.whitegrade < 4) or\
+                    (self.phenotype.white[0] in ['ws', 'wt'] and self.phenotype.white[1] not in ['ws', 'wt'] and self.phenotype.whitegrade > 2):
                     appearance += self.mod_suffixes['other']['appearance'].get('patchy', [])
-            if (self.phenotype.tortie and (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4)) or\
-                (self.phenotype.white[1] in ['ws', 'wt'] and self.phenotype.whitegrade < 4) or\
-                (self.phenotype.white[0] in ['ws', 'wt'] and self.phenotype.white[1] not in ['ws', 'wt'] and self.phenotype.whitegrade > 2):
-                appearance += self.mod_suffixes['other']['appearance'].get('patchy', [])
-                if (self.phenotype.tortiepattern and self.phenotype.tortiepattern[0].replace('rev', '') in self.phenotype.def_tortie_low_patterns):
-                    appearance += self.mod_suffixes['other']['appearance'].get('spotted', [])
-                if ((self.phenotype.white[1] in ['ws', 'wt'] and self.phenotype.whitegrade < 4) or\
-                (self.phenotype.white[0] in ['ws', 'wt'] and self.phenotype.white[1] not in ['ws', 'wt'] and self.phenotype.whitegrade > 2)):
-                    appearance += self.mod_suffixes['other']['appearance'].get('white_patchy', [])
-            if (self.phenotype.point and (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4)):
-                appearance += self.mod_suffixes['other']['appearance'].get('pointed', [])
-            if 'curl' in self.phenotype.eartype or 'curl' in self.phenotype.tailtype or 'rexed' in self.phenotype.furtype:
-                appearance += self.mod_suffixes['other']['appearance'].get('curled', [])
+                    if (self.phenotype.tortiepattern and self.phenotype.tortiepattern[0].replace('rev', '') in self.phenotype.def_tortie_low_patterns):
+                        appearance += self.mod_suffixes['other']['appearance'].get('spotted', [])
+                    if ((self.phenotype.white[1] in ['ws', 'wt'] and self.phenotype.whitegrade < 4) or\
+                    (self.phenotype.white[0] in ['ws', 'wt'] and self.phenotype.white[1] not in ['ws', 'wt'] and self.phenotype.whitegrade > 2)):
+                        appearance += self.mod_suffixes['other']['appearance'].get('white_patchy', [])
+                if (self.phenotype.point and (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4)):
+                    appearance += self.mod_suffixes['other']['appearance'].get('pointed', [])
+                if 'curl' in self.phenotype.eartype or 'curl' in self.phenotype.tailtype or 'rexed' in self.phenotype.furtype:
+                    appearance += self.mod_suffixes['other']['appearance'].get('curled', [])
             
-            size = suffix_settings["common"]
-            if self.cat.moons < 11 or (self.cat.status.rank.is_any_medicine_rank() and self.cat.moons < 15):
-                size = suffix_settings["common_early"]
-            for i in range(size):
-                options.append(appearance)
+                size = suffix_settings["common"]
+                if self.cat.moons < 11 or (self.cat.status.rank.is_any_medicine_rank() and self.cat.moons < 15):
+                    size = suffix_settings["common_early"]
+                for i in range(size):
+                    options.append(appearance)
             self.suffix = ""
 
             tries = 0
@@ -525,6 +571,8 @@ class Name:
         :param rank: CatRank matching
         :return: Cat's name string
         """
+        self.load_localized_names()
+
         if rank in self.names_dict["special_suffixes"] and not self.specsuffix_hidden:
             return self.prefix + self.names_dict["special_suffixes"][rank]
 
@@ -533,6 +581,7 @@ class Name:
     def __repr__(self):
         # Handles predefined suffixes (such as newborns being kit),
         # then suffixes based on ages (fixes #2004, just trust me)
+        self.load_localized_names()
 
         # Handles suffix assignment with outside cats
         if (
