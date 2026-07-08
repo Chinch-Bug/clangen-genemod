@@ -854,7 +854,7 @@ def handle_focus():
         if get_clan_setting("sabotage_other_clans"):
             amount = amount * -1
         for name in game.clan.clans_in_focus:
-            clan = [clan for clan in game.clan.all_other_clans if clan.prefix == name][0]
+            clan = [clan for clan in game.clan.all_other_clans if clan.name == name][0]
             change_clan_relations(game.clan, clan, amount)
         focus_text = None
 
@@ -932,7 +932,7 @@ def handle_focus():
         # if it is raiding, lower the relation to other clans
         if get_clan_setting("raid_other_clans"):
             for name in game.clan.clans_in_focus:
-                clan = [clan for clan in game.clan.all_other_clans if clan.prefix == name][0]
+                clan = [clan for clan in game.clan.all_other_clans if clan.name == name][0]
                 amount = -info_dict["relation"]
                 change_clan_relations(game.clan, clan, amount)
 
