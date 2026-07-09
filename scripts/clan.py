@@ -381,7 +381,8 @@ class Clan:
         if leader:
             leader.generate_lead_ceremony()
             self.leader = leader
-            Cat.all_cats[leader.ID].rank_change(CatRank.LEADER)
+            if leader.status.rank != CatRank.LEADER:
+                Cat.all_cats[leader.ID].rank_change(CatRank.LEADER)
             self.leader_predecessors += 1
 
         # todo: this leads nowhere, can it be deleted?

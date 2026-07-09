@@ -27,8 +27,8 @@ from scripts.game_structure.game import game_setting_get
 from scripts.clan_package.get_clan_cats import get_alive_clan_queens
 
 
-def create_bio_parents(Cat, flip=False, second_parent=True, clan=None):
-    ages = [randint(15, 120), 0]
+def create_bio_parents(Cat, flip=False, second_parent=True, age=None, clan=None):
+    ages = [age + randint(0, 24) - 12 if age else randint(15, 120), 0]
     ages[1] = ages[0] + randint(0, 24) - 12
     original_social = choice(
         [CatSocial.KITTYPET, CatSocial.LONER, CatSocial.ROGUE])
@@ -524,7 +524,7 @@ def create_new_cat_block(
         generated_parents = []
         if rank in (CatRank.KITTEN, CatRank.NEWBORN) or age in range(Cat.age_moons[CatAge.KITTEN][0], Cat.age_moons[CatAge.KITTEN][1]+1) or parent1:
             generated_parents = create_bio_parents(
-                Cat, flip=True if parent1 and 'Y' in parent1.phenotype.sexgene else False, second_parent=not parent1, clan=cat_group if cat_social == CatSocial.CLANCAT else None)
+                Cat, flip=True if parent1 and 'Y' in parent1.phenotype.sexgene else False, second_parent=not parent1, age=parent1.moons if parent1 else None, clan=cat_group if cat_social == CatSocial.CLANCAT else None)
             if not parent1:
                 parent1 = generated_parents[1]
             if not parent2:

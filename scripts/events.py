@@ -1629,7 +1629,7 @@ def perform_ceremonies(cat, clan):
         #  outside, or doesn't exist, make the deputy leader.
         if (
             clan.deputy is not None
-            and not clan.deputy.status.group_ID != clan.group_ID
+            and clan.deputy.status.group_ID == clan.group_ID
             and (leader_dead or leader_outside)
             and cat.status.rank == CatRank.DEPUTY
         ):
@@ -2292,6 +2292,9 @@ def ceremony(cat, promoted_to, preparedness="prepared"):
         Single_Event(ceremony_text, "ceremony", involved_cats, clan=clan.group_ID)
     )
     # game.ceremony_events_list.append(f'{cat.name}{ceremony_text}')
+
+    if promoted_to == CatRank.LEADER:
+        clan.new_leader(cat)
 
 def gain_accessories(cat, clan):
     """
