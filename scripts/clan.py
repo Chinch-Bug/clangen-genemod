@@ -394,14 +394,11 @@ class Clan:
         """
 
         if leader:
-            leader.generate_lead_ceremony()
+            leader.history.add_lead_ceremony()
             self.leader = leader
             if leader.status.rank != CatRank.LEADER:
                 Cat.all_cats[leader.ID].rank_change(CatRank.LEADER)
             self.leader_predecessors += 1
-
-        # todo: this leads nowhere, can it be deleted?
-        switch_set_value(Switch.new_leader, None)
 
     def new_deputy(self, deputy):
         """
@@ -1570,9 +1567,9 @@ class OtherClan:
         if leader:
             leader.history.add_lead_ceremony()
             self.leader = leader
-            Cat.all_cats[leader.ID].rank_change(CatRank.LEADER)
+            if leader.status.rank != CatRank.LEADER:
+                Cat.all_cats[leader.ID].rank_change(CatRank.LEADER)
             self.leader_predecessors += 1
-        switch_set_value(Switch.new_leader, None)
 
     def new_deputy(self, deputy):
         """

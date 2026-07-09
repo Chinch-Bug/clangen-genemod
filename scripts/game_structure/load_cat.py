@@ -208,7 +208,7 @@ def accurate_porting(cat, info):
         cat.phenotype.righteyetype = f"R{refraction} ; P{pigmentation}"
     elif info["eye_colour"] in ["AURORA"]:
         pigmentation = 1
-        refraction = choice(range(11, 13))
+        refraction = choice(range(11, 12))
         cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
         cat.phenotype.righteyetype = f"R{refraction} ; P{pigmentation}"
     elif info["eye_colour"] in ["FOREST"]:
@@ -267,7 +267,7 @@ def accurate_porting(cat, info):
         cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
     elif info["eye_colour2"] in ["AURORA"]:
         pigmentation = 1
-        refraction = choice(range(11, 13))
+        refraction = choice(range(11, 12))
         cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
     elif info["eye_colour2"] in ["FOREST"]:
         pigmentation = 1
