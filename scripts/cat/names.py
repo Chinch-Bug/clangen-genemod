@@ -30,15 +30,16 @@ class Name:
     mod_prefixes = {}
     mod_suffixes = {}
 
-    def __init__(self,
-                 cat=None,
-                 prefix=None,
-                 suffix=None,
-                 honour=None,
-                 biome=None,
-                 specsuffix_hidden=False,
-                 load_existing_name=False
-                 ):
+    def __init__(
+        self,
+        cat=None,
+        prefix=None,
+        suffix=None,
+        honour=None,
+        biome=None,
+        specsuffix_hidden=False,
+        load_existing_name=False,
+    ):
         self.load_localized_names()
         self.prefix = prefix
         self.suffix = suffix

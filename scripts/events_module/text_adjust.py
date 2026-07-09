@@ -365,9 +365,6 @@ def ongoing_event_text_adjust(Cat, text, clan=None, other_clan_name=None):
 
     text = text.replace("medicine cat", "healer").replace("medicine den", "healer den")
 
-    if set(get_config("clan_creation.leader_lives_nr")) != (9):
-        text = text.replace("nine lives", "lives")
-
     return text
 
 
@@ -596,9 +593,6 @@ def event_text_adjust(
 
     text = text.replace("medicine cat", "healer").replace("medicine den", "healer den")
 
-    if list(set(get_config("clan_creation.leader_lives_nr"))) != [9]:
-        text = text.replace("nine lives", "lives")
-
     return text
 
 
@@ -633,7 +627,7 @@ def leader_ceremony_text_adjust(
     leader,
     life_giver=None,
     virtue=None,
-    extra_lives=None,
+    extra_lives: int = None,
 ):
     """
     used to adjust the text for leader ceremonies
@@ -656,13 +650,13 @@ def leader_ceremony_text_adjust(
         text = text.replace("[virtue]", virtue)
 
     if extra_lives:
-        text = text.replace("[life_num]", str(extra_lives))
+        text = text.replace(
+            "[life_num]",
+            i18n.t("general.lives", count=extra_lives),
+        )
 
     clan = leader.status.fetch_clan_object()
     text = text.replace("c_n", leader.status.fetch_clan_object().name)
-
-    if list(set(get_config("clan_creation.leader_lives_nr"))) != [9]:
-        text = text.replace("nine lives", "lives")
 
     return text
 
@@ -767,9 +761,6 @@ def ceremony_text_adjust(
 
     adjust_text = process_text(adjust_text, cat_dict)
 
-    if list(set(get_config("clan_creation.leader_lives_nr"))) != [9]:
-        adjust_text = adjust_text.replace("nine lives", "lives")
-
     return adjust_text, random_living_parent, random_dead_parent
 
 
@@ -848,9 +839,6 @@ def history_text_adjust(text, other_clan_name, clan, other_cat_rc=None):
         text = selective_replace(text, "r_c", str(other_cat_rc.name))
 
     text = text.replace("medicine cat", "healer").replace("medicine den", "healer den")
-
-    if list(set(get_config("clan_creation.leader_lives_nr"))) != [9]:
-        text = text.replace("nine lives", "lives")
     return text
 
 

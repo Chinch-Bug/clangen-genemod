@@ -1,4 +1,4 @@
-from random import randrange, choice, randint
+from random import randrange, choice, randint, choices
 
 import pygame
 import pygame_gui
@@ -32,7 +32,13 @@ class ChooseModeScreen(MakeClanScreenBase):
     def screen_switches(self):
         # Reset variables
         if not switch_get_value(Switch.possible_cats):
-            switch_set_value(Switch.possible_cats, create_example_cats())
+            switch_set_value(
+                Switch.possible_cats,
+                create_example_cats(
+                    majority_rank=self.get_config_during_creation("clan_creation.majority_rank"),
+                    rank_weights=self.get_config_during_creation("clan_creation.rank_weights"),
+                ),
+            )
 
         super().screen_switches()
         self.elements["previous_step"].enable()
@@ -117,9 +123,11 @@ class ChooseModeScreen(MakeClanScreenBase):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
             if event.ui_element == self.elements["classic_mode_button"]:
                 self.game_mode = "classic"
+                self.clan_info.cruel_cards.clear()
                 self.refresh_text_and_buttons()
             elif event.ui_element == self.elements["expanded_mode_button"]:
                 self.game_mode = "expanded"
+                self.clan_info.cruel_cards.clear()
                 self.refresh_text_and_buttons()
             elif event.ui_element == self.elements["cruel_season_mode_button"]:
                 self.game_mode = "cruel_season"
@@ -219,9 +227,9 @@ class ChooseModeScreen(MakeClanScreenBase):
         self.clan_info.deputy = create_cat(CatRank.WARRIOR, kittypet=use_special)
         self.clan_info.medicine_cat = create_cat(CatRank.WARRIOR, kittypet=use_special)
         members = []
-        random_rank = get_config("clan_creation.random_ranks")
+        rank_weights = self.get_config_during_creation("clan_creation.rank_weights")
         for _ in range(randrange(cat_range[0], cat_range[1]+1)):
-            members.append(create_cat(rank=choice(random_rank), kittypet=use_special))
+            members.append(create_cat(rank=choices(list(rank_weights.keys()), list(rank_weights.values()))[0], kittypet=use_special))
 
         switch_set_value(
             Switch.possible_cats,

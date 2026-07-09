@@ -32,6 +32,11 @@ dev_tools = false
   # base 1/chance of a romance interaction with another cat, when a cat has a mate
   chance_romance_not_mate = 15
 
+  # set to True if deputies should be more likely to have negative rel events with the leader
+  deputy_to_leader_neg_buff = false
+  # the higher the number, the more likely the deputy will have a negative respect event with the leader
+  deputy_envy_leader_influence = 0
+
   [relationship.value_change_amount]
     # amount a relationship changes for "high", "medium", and "low" effects for interactions
     low = 8
@@ -80,6 +85,9 @@ dev_tools = false
     extreme_neg = [233, 38, 30]
 
 [mates]
+  # permit player to change cat mates
+  allow_manual = true
+
   # maximum age difference allowed for cats to be romantic with each other
   age_range = 40
 
@@ -619,6 +627,12 @@ dev_tools = false
   clan_rel_change_multiplier = 0
 
 [death_related]
+  # the maximum lives a leader can have
+  max_leader_lives = 9
+
+  # number of lives leaders receive - will pick from the list, so something like [7, 8, 9] would have an equal random chance of 7, 8, and 9
+  leader_lives_nr = [9]
+
   # base 1/chance that leader will die
   leader_death_chance = 50
 
@@ -637,16 +651,6 @@ dev_tools = false
   max_mass_deaths = 10
   # Maximum amount to pick for mass death events when triggered (max will be 1/3 of the living clan cats if that is smaller)
   max_mass_death = 10
-
-  # base 1/2^(chance) a completely random murder occurs
-  # aggression and instability will make the denominator lower and increase chance of murder
-  base_random_murder_chance = 11
-
-  # base 1/chance a disliked cat will be murdered
-  base_murder_kill_chance = 80
-
-  # base 1/chance a disliked cat will be murdered when not in the same Clan
-  base_crossclan_murder_kill_chance = 130
 
   # age cats will start dying of old age based on old_age_death_curve
   old_age_death_start = 150
@@ -670,6 +674,25 @@ dev_tools = false
     "4" = 0.05
     "5" = 0.05
 
+  [death_related.murder]
+    # base 1/2^(chance) a completely random murder occurs
+    # aggression and instability will make the denominator lower and increase chance of murder
+    base_random_murder_chance = 11
+
+    # base 1/chance a disliked cat will be murdered when not in the same Clan
+    base_crossclan_murder_kill_chance = 130
+
+    # base 1/chance a disliked cat will be murdered
+    base_murder_kill_chance = 80
+
+    # The higher this number, the more likely a deputy will murder their leader.
+    # note that this doesn't make the deputy more likely to murder in general
+    # so they still need to be "capable" of it and have negative relationship with their leader.
+    deputy_murder_modifier = 0
+
+    # set to true to have the deputy prefer to murder the leader over other negative relationships
+    deputy_prefer_leader = false
+
 [condition_related]
   # 10/chance an illness will occur
   illness_chance = 250
@@ -691,16 +714,17 @@ dev_tools = false
   # SUBTRACTS from the denominator so higher = more likely to get injured
   war_injury_modifier = 225
 
+[ranks]
+  # permit player to change cat ranks
+  allow_manual = true
+
 [clan_creation]
   # Set this to -1 for it to be infinite
-  rerolls = 3
+  rerolls = 3 # other clans will start with a random relation between the two numbers
+  starting_clan_relation = [8, 12]
 
   # If true, boosts the chance of rarer genes and breeds for founding cats
   use_special_roller = true
-
-  # some amount of warriors is always guaranteed, but remaining cats in the cat select screen will choose ranks based on this list
-  # adding ranks not normally found here may lead to unpredictable results
-  random_ranks = ["kitten", "apprentice", "warrior", "warrior", "elder"]
 
   # how many neighbouring clans are generated on clan creation. Must be at least 1
   # the game is also not built to handle more than 5 so issues may potentially arise with more
@@ -715,8 +739,22 @@ dev_tools = false
   # range of cats to pick on quickstart (not counting the leader, deputy, and healer) for neighbouring Clans in multiclan
   neighbourclan_cats = [4, 7]
 
-  # number of lives leaders receive - will pick from the list, so something like [7, 8, 9] would have an equal random chance of 7, 8, and 9
-  leader_lives_nr = [9]
+  # the "default" rank, the majority of cats will take this and random high ranks will originate from this rank
+  majority_rank = "warrior"
+
+  minimum_membership = 1
+  maximum_membership = 10
+
+  [clan_creation.ranks_needed]
+    leader = true
+    deputy = true
+    medicine_cat = true
+
+  [clan_creation.rank_weights]
+    kitten = 1
+    apprentice = 1
+    warrior = 2
+    elder = 1
 
 [genetics_config]
   # 1/chance for newly generated kittypets and other cats to be purebred
@@ -1237,3 +1275,8 @@ dev_tools = false
       2_prey_class_increase = 3
       3_prey_class_increase = 2
       4_prey_class_increase = 1
+
+[settings]
+  # force a game setting to be true, stopping players from changing it
+  [settings.force_enable]
+    "deputy" = false

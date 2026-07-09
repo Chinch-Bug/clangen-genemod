@@ -94,7 +94,9 @@ class ChooseSymbolScreen(MakeClanScreenBase):
                 )
             },
             anchors={
-                "top_target": self.text["leader"] if self.clan_info.leader else self.text["biome"],
+                "top_target": self.text.get("leader")
+                if self.text.get("leader")
+                else self.text.get("biome"),
             },
         )
         self.text["selected"] = pygame_gui.elements.UILabel(

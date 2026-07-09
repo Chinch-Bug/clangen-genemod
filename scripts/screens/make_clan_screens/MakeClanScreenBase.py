@@ -15,6 +15,8 @@ from scripts.cat.status import Status
 from scripts.clan import Clan
 from scripts.clan_package.settings import load_clan_settings
 from scripts.clan_package.clan_names import get_possible_clan_names
+from scripts.clan_package.settings import set_clan_setting, save_clan_settings
+from scripts.config import get_config
 from scripts.events_module.patrol.patrol import Patrol
 from scripts.game_structure import game
 from scripts.game_structure import constants
@@ -64,6 +66,9 @@ class ClanInfo:
     clan_count_mode: str = "singleclan"
     
     cruel_cards: list[str] = field(default_factory=list)
+
+    def __getitem__(self, name):
+        return getattr(self, name)
 
     def clear(self):
         """
@@ -130,18 +135,32 @@ class ClanInfo:
         )
 
     def has_minimum_cats(self) -> bool:
-        return len(self.starting_members) > 0
+        return len(self.get_all_cats()) >= get_config(
+            "clan_creation.minimum_membership",
+            creating_clan=True,
+            card_list_override=self.cruel_cards,
+        )
 
     def has_maximum_cats(self) -> bool:
-        return (
-            self.leader
-            and self.deputy
-            and self.medicine_cat
-            and len(self.starting_members) >= 7
+        return len(self.get_all_cats()) >= get_config(
+            "clan_creation.maximum_membership",
+            creating_clan=True,
+            card_list_override=self.cruel_cards,
         )
 
     def has_high_ranks_filled(self) -> bool:
         return all([self.leader, self.deputy, self.medicine_cat])
+
+    def get_all_cats(self) -> list:
+        cat_list = self.starting_members.copy()
+        if self.leader:
+            cat_list.append(self.leader)
+        if self.deputy:
+            cat_list.append(self.deputy)
+        if self.medicine_cat:
+            cat_list.append(self.medicine_cat)
+
+        return cat_list
 
 
 class MakeClanScreenBase(Screens):
@@ -244,6 +263,12 @@ class MakeClanScreenBase(Screens):
         )
         game.clan.create_clan(self.clan_info.clan_count_mode)
         EventsScreen.current_clan = None
+
+        # i kind of think this should go somewhere else
+        if get_config("settings.force_enable.deputy"):
+            set_clan_setting("deputy", True)
+            save_clan_settings()
+
         game.cur_events_list.clear()
         game.herb_events_list.clear()
         game.clan.herb_supply.start_storage(len(self.clan_info.starting_members))
@@ -302,8 +327,11 @@ class MakeClanScreenBase(Screens):
                 # add back to all_cats, cus they get removed during `create_clan()`
                 Cat.all_cats[c.ID] = c
                 Cat.all_cats_list.append(c)
+
         Cat.sort_cats()
         rebuild_top_menu_buttons()
+
+        switch_set_value(Switch.possible_cats, [])
 
     def random_biome_selection(self):
         # Select a random biome and background
@@ -386,3 +414,10 @@ class MakeClanScreenBase(Screens):
             self.fullscreen_bgs[name] = screens_core.process_blur_bg(src)
 
         self.set_bg(name)
+
+    def get_config_during_creation(self, config_path):
+        return get_config(
+            config_path,
+            card_list_override=self.clan_info.cruel_cards,
+            creating_clan=True,
+        )
