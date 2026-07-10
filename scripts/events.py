@@ -2808,10 +2808,10 @@ def handle_illnesses_or_illness_deaths(cat, clan):
     #                           decide if cat dies                                 #
     # ---------------------------------------------------------------------------- #
     # if triggered_death is True then the cat will die
-    triggered_death = False
-    triggered_death = Condition_Events.handle_illnesses(
-        cat, game.clan.current_season, clan=clan
-    )
+    triggered_death = Condition_Events.handle_illnesses(cat, game.clan.current_season, clan=clan)
+    if not triggered_death:
+        handle_outbreaks(cat)
+
     return triggered_death
 
 def handle_outbreaks(cat, clan):
@@ -2831,7 +2831,7 @@ def handle_outbreaks(cat, clan):
     already_sick_count = len(already_sick)
 
     # round up the living kitties
-    alive_cats = list(
+    healthy_cats = list(
         filter(
             lambda kitty: (
                 kitty.status.group_ID == clan.group_ID and not kitty.is_ill()
@@ -2839,10 +2839,12 @@ def handle_outbreaks(cat, clan):
             Cat.all_cats.values(),
         )
     )
-    alive_count = len(alive_cats)
+    healthy_count = len(healthy_cats)
 
     # if large amount of the population is already sick, stop spreading
-    if already_sick_count >= alive_count * 0.25:
+    if already_sick_count >= healthy_count * get_config(
+        "condition_related.illness_percentage_max"
+    ):
         return
 
     meds = find_alive_cats_with_rank(
@@ -2858,11 +2860,12 @@ def handle_outbreaks(cat, clan):
         if cat.illnesses[illness]["infectiousness"] == 0:
             continue
         chance = cat.illnesses[illness]["infectiousness"]
-        chance += len(meds) * 7
+        chance += len(meds) * get_config("condition_related.med_infection_reduction")
         if not int(random.random() * chance):  # 1/chance to infect
             # fleas are the only condition allowed to spread outside of cold seasons
             if (
-                game.clan.current_season not in ["Leaf-bare", "Leaf-fall"]
+                game.clan.current_season
+                not in get_config("condition_related.illness_outbreak_season")
                 and illness != "fleas"
             ):
                 continue
@@ -2874,22 +2877,23 @@ def handle_outbreaks(cat, clan):
 
             if illness == "kittencough":
                 # adjust alive cats list to only include kittens
-                alive_cats = list(
+                healthy_cats = list(
                     filter(
                         lambda kitty: (
                             kitty.status.rank.is_baby()
                             and kitty.status.group_ID == clan.group_ID
+                            and not kitty.is_ill()
                         ),
                         Cat.all_cats.values(),
                     )
                 )
-                alive_count = len(alive_cats)
+                healthy_count = len(healthy_cats)
 
-            max_infected = int(alive_count / 2)  # 1/2 of alive cats
+            max_infected = int(healthy_count / 2)  # 1/2 of alive cats
             # If there are less than two cat to infect,
             # you are allowed to infect all the cats
             if max_infected < 2:
-                max_infected = alive_count
+                max_infected = healthy_count
             # If, event with all the cats, there is less
             # than two cats to infect, cancel outbreak.
             if max_infected < 2:
@@ -2907,7 +2911,7 @@ def handle_outbreaks(cat, clan):
 
             infected_names = []
             involved_cats = []
-            infected_cats = random.sample(alive_cats, infected_count)
+            infected_cats = random.sample(healthy_cats, infected_count)
             for sick_meowmeow in infected_cats:
                 infected_names.append(str(sick_meowmeow.name))
                 involved_cats.append(sick_meowmeow.ID)

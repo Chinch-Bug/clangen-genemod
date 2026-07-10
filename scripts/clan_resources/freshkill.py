@@ -75,13 +75,14 @@ class FreshkillPile:
                 total += v
             self.total_amount = total
         else:
+            amount = get_config("prey.start_amount")
             self.pile = {
-                "expires_in_4": get_config("prey.start_amount"),
+                "expires_in_4": amount,
                 "expires_in_3": 0,
                 "expires_in_2": 0,
                 "expires_in_1": 0,
             }
-            self.total_amount = get_config("prey.start_amount")
+            self.total_amount = amount
         self.timeskip_feed = False
         self.nutrition_info = {}
         self.living_cats = []
@@ -150,21 +151,22 @@ class FreshkillPile:
         ]
 
         # all normal status cats calculation
+        prey_requirement = get_config("prey.prey_requirement")
         needed_prey = sum(
             [
-                PREY_REQUIREMENT[cat.status.rank]
+                prey_requirement[cat.status.rank]
                 for cat in living_cats
                 if not cat.status.rank.is_baby() and cat.status.alive_in_player_clan
             ]
         )
         # increase the number of prey which are missing for relevant queens and pregnant cats
         needed_prey += (len(relevant_queens) + len(pregnant_cats)) * (
-            PREY_REQUIREMENT["queen/pregnant"] - PREY_REQUIREMENT[CatRank.WARRIOR]
+            prey_requirement["queen/pregnant"] - prey_requirement[CatRank.WARRIOR]
         )
         # increase the number of prey for kits, which are not taken care by a queen
         needed_prey += sum(
             [
-                PREY_REQUIREMENT[cat.status.rank]
+                prey_requirement[cat.status.rank]
                 for cat in living_kits
                 if cat.status.alive_in_player_clan
             ]
@@ -293,7 +295,7 @@ class FreshkillPile:
         :param list cats_to_feed: Cats to feed
         :param feed_high_rank_first: If True, feeds from high rank to low. If False, the reverse.
         """
-        feed_order = FEEDING_ORDER.copy()
+        feed_order = get_config("prey.feeding.order")
         if feed_high_rank_first:
             feed_order.reverse()
 
@@ -438,7 +440,7 @@ class FreshkillPile:
             if cat in self.queens:
                 rank = "queen/pregnant"
 
-            prey_required = PREY_REQUIREMENT[rank]
+            prey_required = get_config("prey.prey_requirement")[rank]
             amount_allowed = prey_required
 
             total_required_food_for_clan = self.amount_food_needed()
@@ -580,9 +582,10 @@ class FreshkillPile:
         for cat_id in remove:
             self.nutrition_info.pop(cat_id)
 
+        prey_requirement = get_config("prey.prey_requirement")
         # update remaining cat's max scores
         for cat in cats_to_feed:
-            if str(cat.status.rank) not in PREY_REQUIREMENT:
+            if str(cat.status.rank) not in prey_requirement:
                 continue
             # update the nutrition_info
             if cat.ID in self.nutrition_info:
@@ -596,7 +599,7 @@ class FreshkillPile:
                     status_ = "queen/pregnant"
 
                 # check if the max_score is correct, otherwise update
-                required_max = PREY_REQUIREMENT[status_] * factor
+                required_max = prey_requirement[status_] * factor
                 current_score = self.nutrition_info[cat.ID].current_score
                 if self.nutrition_info[cat.ID].max_score != required_max:
                     previous_max = self.nutrition_info[cat.ID].max_score
@@ -623,7 +626,7 @@ class FreshkillPile:
         prey_status = cat.status.rank
         if cat.ID in queen_dict.keys() or "pregnant" in cat.injuries:
             prey_status = "queen/pregnant"
-        max_score = PREY_REQUIREMENT[prey_status] * factor
+        max_score = get_config("prey.prey_requirement")[prey_status] * factor
         nutrition.max_score = max_score
         nutrition.current_score = max_score
         nutrition.percentage = 100
@@ -637,9 +640,7 @@ class FreshkillPile:
 
 
 ADDITIONAL_PREY = get_config("prey.additional_prey")
-PREY_REQUIREMENT = get_config("prey.prey_requirement")
 CONDITION_INCREASE = get_config("prey.condition_increase")
-FEEDING_ORDER = get_config("prey.feeding_order")
 HUNTER_BONUS = get_config("prey.hunter_bonus")
 HUNTER_EXP_BONUS = get_config("prey.hunter_exp_bonus")
 FRESHKILL_EVENT_TRIGGER_FACTOR = get_config("prey.base_event_trigger_factor")

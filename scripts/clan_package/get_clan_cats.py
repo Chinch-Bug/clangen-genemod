@@ -1,4 +1,5 @@
-from typing import Union, Type, TYPE_CHECKING, Tuple, List
+from random import choice
+from typing import Union, Type, TYPE_CHECKING, Tuple, List, Optional
 
 if TYPE_CHECKING:
     from scripts.cat.cats import Cat
@@ -295,3 +296,14 @@ def search_cats(search_text, cat_list, search_genotype):
                 if search_text.lower() in str(cat.name).lower()
             ]
     return all_found
+
+def get_random_player_clan_cat(cat, not_allowed: list["Cat"] = None) -> Optional["Cat"]:
+    cat_list = [
+        c
+        for c in cat.all_cats.values()
+        if c.status.group_ID == cat.status.group_ID and c not in not_allowed
+    ]
+    if not cat_list:
+        return None
+
+    return choice(cat_list)

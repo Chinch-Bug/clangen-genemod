@@ -366,6 +366,10 @@ def accurate_porting(cat, info):
     
     if not patch_colour["pattern"] and main_colour["pattern"] in ["singlecolour", "twocolour"] and main_colour["colour"] == "WHITE":
         cat.phenotype.white[0] = "W"
+        cat.phenotype.white_pattern = "No"
+    if "FULLWHITE" in cat.phenotype.white_pattern:
+        cat.phenotype.white[0] = "W"
+        cat.phenotype.white_pattern = "No"
     
     if main_colour["colour"] in ["WHITE", "PALEGREY", "SILVER", "GREY", "DARKGREY", "CREAM", "PALEGINGER", "LIGHTBROWN", "LILAC"]:
         cat.phenotype.dilute = ["d", "d"]

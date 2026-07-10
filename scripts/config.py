@@ -1,3 +1,4 @@
+import copy
 import tomllib
 import os
 
@@ -82,4 +83,4 @@ def get_config(
         for key in config_keys:
             config_value = config_value[key]
 
-    return config_value
+    return copy.deepcopy(config_value)

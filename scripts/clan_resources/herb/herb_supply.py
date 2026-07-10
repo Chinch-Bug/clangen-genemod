@@ -165,6 +165,10 @@ class HerbSupply:
         """
         self.set_required_herb_count(clan_size)
 
+        if get_config("clan_resources.herbs.empty_starting_storage"):
+            # return before we can add any herbs
+            return
+
         for herb in self.base_herb_list:
             if randint(1, 4) == 1:
                 self.add_herb(

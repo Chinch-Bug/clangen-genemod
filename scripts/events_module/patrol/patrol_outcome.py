@@ -11,6 +11,7 @@ import i18n
 import pygame
 
 from scripts.cat.personality import Personality
+from scripts.config import get_config
 from scripts.events_module.future.prep_and_trigger import prep_future_event
 from scripts.clan_package.settings import get_clan_setting
 from scripts.config import get_config
@@ -26,6 +27,7 @@ from scripts.events_module.consequences import (
     find_clan_cats,
     gather_cat_objects,
     unpack_rel_block,
+    check_stolen_vitality,
 )
 from scripts.events_module.event_filters import filter_relationship_type, event_for_cat
 from scripts.clan_package.cotc import change_clan_reputation, change_clan_relations
@@ -37,7 +39,6 @@ from scripts.cat.pelts import Pelt
 from scripts.cat_relations.relationship import Relationship
 from scripts.clan_resources.freshkill import (
     ADDITIONAL_PREY,
-    PREY_REQUIREMENT,
     HUNTER_EXP_BONUS,
     HUNTER_BONUS,
     FRESHKILL_ACTIVE,
@@ -555,7 +556,9 @@ class PatrolOutcome:
         catnames = []
         for _cat in cats_to_kill:
             if _cat.status.is_leader:
+                lives_lost = 0
                 if "all_lives" in used_extra_tags:
+                    lives_lost = patrol.clan.leader_lives
                     patrol.clan.leader_lives = 0
                     results.append(
                         event_text_adjust(
@@ -576,6 +579,7 @@ class PatrolOutcome:
                         )
                     )
                 else:
+                    lives_lost = 1
                     patrol.clan.leader_lives -= 1
                     results.append(
                         event_text_adjust(
@@ -585,6 +589,9 @@ class PatrolOutcome:
                             clan=patrol.clan
                         )
                     )
+                if extra_result := check_stolen_vitality(_cat, lives_lost):
+                    results.append(extra_result)
+
             else:
                 catnames.append(self._profile_link(_cat))
             # Kill Cat
@@ -833,7 +840,9 @@ class PatrolOutcome:
         if not self.prey or game.clan.game_mode == "classic" or patrol.clan != game.clan:
             return ""
 
-        basic_amount = PREY_REQUIREMENT[CatRank.WARRIOR] + ADDITIONAL_PREY
+        basic_amount = (
+            get_config("prey.prey_requirement")[CatRank.WARRIOR] + ADDITIONAL_PREY
+        )
 
         prey_types = {
             "very_small": basic_amount / 2,
