@@ -2810,7 +2810,7 @@ def handle_illnesses_or_illness_deaths(cat, clan):
     # if triggered_death is True then the cat will die
     triggered_death = Condition_Events.handle_illnesses(cat, game.clan.current_season, clan=clan)
     if not triggered_death:
-        handle_outbreaks(cat)
+        handle_outbreaks(cat, clan)
 
     return triggered_death
 
