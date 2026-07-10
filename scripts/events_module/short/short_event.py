@@ -622,13 +622,13 @@ class ShortEvent:
                 lives_lost = 0
                 if "all_lives" in self.tags:
                     lives_lost = cat_clan.leader_lives
-                    cat_clan.clan.leader_lives -= lives_lost
+                    cat_clan.leader_lives -= lives_lost
                 elif "some_lives" in self.tags:
                     lives_lost = randrange(2, self.leads_current_life_count - 1)
-                    cat_clan.clan.leader_lives -= lives_lost
+                    cat_clan.leader_lives -= lives_lost
                 else:
                     lives_lost = 1
-                    cat_clan.clan.leader_lives -= 1
+                    cat_clan.leader_lives -= 1
 
                 cat.die(body)
                 self.additional_event_text = get_leader_life_notice(cat.name, cat_clan)
