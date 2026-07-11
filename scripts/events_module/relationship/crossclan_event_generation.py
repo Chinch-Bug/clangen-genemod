@@ -41,6 +41,8 @@ def handle_crossclan_relationships():
         living = [cat for cat in Cat.all_cats.values() if cat.status.group_ID == c.group_ID and not cat.not_working() and cat.status.rank not in (CatRank.NEWBORN, CatRank.KITTEN)]
         if living:
             viable_cats[c.group_ID] = living
+    if not viable_cats:
+        return
 
     event_count = min(get_config("relationship.max_crossclan_interaction"), int(
         sum([len(c) for c in viable_cats.values()])/len(viable_cats.keys())/2))
