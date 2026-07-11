@@ -224,6 +224,9 @@ def generate_sprite(
                 is_older_amber = is_amber and ((sprite_age > 35 and phenotype.agouti[0] != 'a') or (sprite_age > 59))
                 is_baby_amber = not_red and not is_amber and phenotype.ext[0] == 'ea' and ((sprite_age > 3 and phenotype.agouti[0] != "a") or sprite_age > 6)
                 
+                is_chinchilla = whichbase.rsplit("_", 1)[-1].isdigit() and int(whichbase.rsplit("_", 1)[-1]) > 14
+                is_shaded = whichbase.rsplit("_", 1)[-1].isdigit() and not is_chinchilla and int(whichbase.rsplit("_", 1)[-1]) > 11
+
                 pattern = []
                 if preset_pattern:
                     for pat in preset_pattern:
@@ -231,7 +234,7 @@ def generate_sprite(
                             (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                         pattern_sprite.blit(
                             sprites.sprites[pat + cat_sprite], (0, 0))
-                        if pat != "agouti" and 'chinchilla' in whichbase or is_amber:
+                        if pat != "agouti" and is_chinchilla or is_amber:
                             if phenotype.wbtype == "chinchilla" or is_older_amber:
                                 pattern_sprite.set_alpha(15)
                             else:
@@ -262,7 +265,7 @@ def generate_sprite(
                                 sprites.sprites[pat + cat_sprite], (0, 0))
                             stripebase2.set_alpha(127)
                             pattern_sprite.blit(stripebase2, (0, 0))
-                        if pat != "agouti" and 'chinchilla' in whichbase or is_amber:
+                        if pat != "agouti" and is_chinchilla or is_amber:
                             if phenotype.wbtype == "chinchilla" or is_older_amber:
                                 pattern_sprite.set_alpha(15)
                             else:
@@ -273,7 +276,7 @@ def generate_sprite(
                         (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                     pattern_sprite.blit(
                         sprites.sprites["sheeted" + cat_sprite], (0, 0))
-                    if 'chinchilla' in whichbase or is_amber:
+                    if is_chinchilla or is_amber:
                         if phenotype.wbtype == "chinchilla" or is_older_amber:
                             pattern_sprite.set_alpha(15)
                         else:
@@ -284,10 +287,8 @@ def generate_sprite(
                     stripebase.blit(
                         sprites.sprites["tabbypads" + cat_sprite], (0, 0))
 
-                charc = pygame.Surface(
-                    (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                charc_shading = pygame.Surface(
-                    (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                charc = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                charc_shading = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 if (phenotype.agouti[0] == "Apb" and not_red and not is_amber):
                     if special != "no_shading":
                         charc_shading.blit(
@@ -303,8 +304,7 @@ def generate_sprite(
                             25 * (modifiers.get(phenotype.banding, 5) / (1 * (int("silver" in whichbase) + 1))))
                         charc_shading.set_alpha(opacity)
                         charc.blit(charc_shading, (0, 0))
-                    charc.blit(
-                        sprites.sprites['charcoal' + cat_sprite], (0, 0))
+                    charc.blit(sprites.sprites['charcoal' + cat_sprite], (0, 0))
                     if not preset_pattern and "fullbar" not in pattern[0] and "redbar" not in pattern[0]:
                         charc.blit(
                             sprites.sprites[pattern[0] + cat_sprite], (0, 0))
@@ -313,7 +313,7 @@ def generate_sprite(
                         charc.set_alpha(191)
                 stripebase.blit(charc, (0, 0))
 
-                if ('chinchilla' in whichbase or 'shaded' in whichbase or is_amber or is_baby_amber):
+                if (is_chinchilla or is_shaded or is_amber or is_baby_amber):
                     golden_gradient = pygame.Surface(
                         (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                     golden_gradient2 = pygame.Surface(
@@ -322,11 +322,11 @@ def generate_sprite(
                         sprites.sprites["goldengradient" + cat_sprite], (0, 0))
 
                     golden_gradient.blit(golden_gradient2, (0, 0))
-                    if 'chinchilla' in whichbase and phenotype.wbtype != "chinchilla" and not is_dark_sunshine and not is_amber and not is_baby_amber:
+                    if is_chinchilla and phenotype.wbtype != "chinchilla" and not is_dark_sunshine and not is_amber and not is_baby_amber:
                         golden_gradient2.set_alpha(100)
                         golden_gradient.blit(golden_gradient2, (0, 0))
                         golden_gradient2.set_alpha(255)
-                    if 'shaded' in whichbase and not is_amber or is_baby_amber:
+                    if is_shaded and not is_amber or is_baby_amber:
                         golden_gradient.blit(golden_gradient2, (0, 0))
                         if phenotype.corin[0] == "N":
                             golden_gradient2.set_alpha(100)
@@ -364,10 +364,10 @@ def generate_sprite(
                     return stripebase
 
                 if not special and 'solid' not in whichbase:
-                    if ('chinchilla' in whichbase or is_amber):
+                    if is_chinchilla or is_amber:
                         shading.blit(
                             sprites.sprites['chinchillashading' + cat_sprite], (0, 0))
-                    elif ('shaded' in whichbase) and not is_dark_sunshine or is_baby_amber:
+                    elif is_shaded and not is_dark_sunshine or is_baby_amber:
                         shading.blit(
                             sprites.sprites['shadedshading' + cat_sprite], (0, 0))
                     else:
@@ -397,10 +397,45 @@ def generate_sprite(
 
                 return stripebase
 
+            def get_tabby_base(base_string):
+                basecolour, rufousing, wideband = base_string.rsplit("_", 2)
+                rufousing = int(rufousing) if rufousing != "silver" else rufousing
+                wideband = int(wideband)
+                wb_blocks = ["low", "medium", "high", "shaded", "chinchilla"]
+                wb_steps = [0, 5, 10, 13, 16]
+                main_wb_block = next((n for n in range(4, -1, -1) if wideband >= wb_steps[n]))
+                next_wb_block = next((n for n in range(5) if wideband <= wb_steps[n]))
+
+                main_ruf_block = 3
+                next_ruf_block = 3
+                ruf_blocks = ["low", "medium", "rufoused", "silver"]
+                ruf_steps = [0, 4, 8]
+                if rufousing == "silver":
+                    pass
+                else:
+                    main_ruf_block = next((n for n in range(2, -1, -1) if rufousing >= ruf_steps[n]))
+                    next_ruf_block = next((n for n in range(3) if rufousing <= ruf_steps[n]))
+                
+                main_colour = sprites.sprites[basecolour + ruf_blocks[main_ruf_block] + wb_blocks[main_wb_block]+"0"].get_at((0, 0))
+                final_colour = main_colour
+
+                if main_ruf_block != next_ruf_block:
+                    comparison_colour = sprites.sprites[basecolour + ruf_blocks[next_ruf_block] + wb_blocks[main_wb_block]+"0"].get_at((0, 0))
+                    for i in range(3):
+                        final_colour[i] += int((comparison_colour[i]-main_colour[i])/(ruf_steps[next_ruf_block]-ruf_steps[main_ruf_block])*(rufousing-ruf_steps[main_ruf_block]))
+
+                if main_wb_block != next_wb_block:
+                    comparison_colour = sprites.sprites[basecolour + ruf_blocks[main_ruf_block] + wb_blocks[next_wb_block]+"0"].get_at((0, 0))
+                    for i in range(3):
+                        final_colour[i] += int((comparison_colour[i]-main_colour[i])/(wb_steps[next_wb_block]-wb_steps[main_wb_block])*(wideband-wb_steps[main_wb_block]))
+                
+                layer = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                layer.fill(final_colour)
+                return layer
+
             def tabby_base(whichcolour, whichbase, cat_unders, special=None):
                 is_red = ('red' in whichcolour or 'cream' in whichcolour or 'honey' in whichcolour or 'ivory' in whichcolour or 'apricot' in whichcolour)
-                whichmain = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                whichmain.blit(sprites.sprites[whichbase], (0, 0))
+                whichmain = get_tabby_base(whichbase)
                 if special !='copper' and sprite_age > 12 and (phenotype.silver[0] == 'I' and phenotype.corin[0] == 'fg' and (get_current_season(season_override) in ['Leaf-fall', 'Leaf-bare'] or 'sterile' in cat.permanent_condition)):
                     sunshine = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                     
@@ -516,7 +551,7 @@ def generate_sprite(
                         smokeLayer.set_alpha(200)
                     whichmain.blit(smokeLayer, (0, 0))
                 smokeUnders.set_alpha(20)
-                if ('smoke' in phenotype.silvergold and 14 > phenotype.wbsum > 9):
+                if ('smoke' in phenotype.silvergold and 14 > phenotype.wideband > 9):
                     smokeLayer.set_alpha(255)
                     if cat.pelt.length != 'long':
                         smokeLayer.blit(smokeUnders, (0, 0))
@@ -1101,7 +1136,7 @@ def generate_sprite(
                 
                 elif (phenotype.bleach[0] == "lb" and sprite_age > 3) or (phenotype.wbtype == "shaded" and 'smoke' in phenotype.silvergold):
                     gensprite.blit(sprites.sprites['bleach' + cat_sprite], (0, 0))
-                elif ('masked' in phenotype.silvergold and phenotype.wbsum < 16):
+                elif ('masked' in phenotype.silvergold and phenotype.wideband < 16):
                     gensprite.blit(sprites.sprites['bleach' + cat_sprite], (0, 0))
                     gensprite.blit(sprites.sprites['bleach' + cat_sprite], (0, 0))
 

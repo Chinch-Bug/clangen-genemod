@@ -2,7 +2,7 @@ import logging
 import os
 import traceback
 from math import floor
-from random import choice
+from random import choice, randint
 from copy import deepcopy
 from operator import xor
 
@@ -436,43 +436,19 @@ def accurate_porting(cat, info):
             cat.chimerapheno.silver = ["i", "i"]
 
     if main_colour["colour"] in ["WHITE", "GOLDEN", "LIGHTBROWN"]:
-        wbsum = 0
-        while 12 > wbsum < 14:
-            cat.phenotype.wideband = ""
-            wbsum = 0
-            for i in range(0, 8):
-                cat.phenotype.wideband += choice(["1", "1", "2"])
-                wbsum += int(cat.phenotype.wideband[i])
+        cat.phenotype.wideband = 13
         if main_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"] and main_colour["colour"] == "GOLDEN":
-            cat.phenotype.wideband = "22222222"
+            cat.phenotype.wideband = 16
     else:
-        wbsum = 0
-        while wbsum > 11:
-            cat.phenotype.wideband = ""
-            wbsum = 0
-            for i in range(0, 8):
-                cat.phenotype.wideband += choice(["1", "0", "0", "2"])
-                wbsum += int(cat.phenotype.wideband[i])
+        cat.phenotype.wideband = randint(0, 11)
 
     if cat.chimerapheno:
         if patch_colour["colour"] in ["WHITE", "GOLDEN", "LIGHTBROWN"]:
-            wbsum = 0
-            while 12 > wbsum < 14:
-                cat.chimerapheno.wideband = ""
-                wbsum = 0
-                for i in range(0, 8):
-                    cat.chimerapheno.wideband += choice(["1", "1", "2"])
-                    wbsum += int(cat.chimerapheno.wideband[i])
+            cat.chimerapheno.wideband = 13
             if patch_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"] and patch_colour["colour"] == "GOLDEN":
-                cat.chimerapheno.wideband = "22222222"
+                cat.chimerapheno.wideband = 16
         else:
-            wbsum = 0
-            while wbsum > 11:
-                cat.chimerapheno.wideband = ""
-                wbsum = 0
-                for i in range(0, 8):
-                    cat.chimerapheno.wideband += choice(["1", "0", "0", "2"])
-                    wbsum += int(cat.chimerapheno.wideband[i])
+            cat.chimerapheno.wideband = randint(0, 11)
 
     if main_colour["colour"] in ["DARKGINGER"]:
         cat.phenotype.rufousing = "2222"

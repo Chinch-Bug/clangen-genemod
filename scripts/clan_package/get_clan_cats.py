@@ -203,8 +203,8 @@ def search_cats(search_text, cat_list, search_genotype):
                 "pax3": ["NoDBE", "DBEre", "DBEalt", "DBEcel"],
             }
             polygenes = {
-                "wbsum": ["wideband", "wb"],
-                "rufsum": ["rufousing", "ruf"],
+                "wideband": ["wideband", "wb"],
+                "rufousing": ["rufousing", "ruf"],
                 "unders_rufsum": ["underbelly_rufousing", "underbelly_ruf"],
                 "bengsum": ["bengal", "bm"],
                 "soksum": ["sokoke", "sok"],

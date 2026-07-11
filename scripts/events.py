@@ -854,7 +854,7 @@ def handle_focus():
         if get_clan_setting("sabotage_other_clans"):
             amount = amount * -1
         for name in game.clan.clans_in_focus:
-            clan = [clan for clan in game.clan.all_other_clans if clan.name == name][0]
+            clan = [clan for clan in game.clan.all_other_clans if clan.name == name or clan.prefix == name][0]
             change_clan_relations(game.clan, clan, amount)
         focus_text = None
 
@@ -2363,7 +2363,7 @@ def handle_outside_EX(cat):
         if cat.age == CatAge.KITTEN:
             return
 
-        exp_info = get_config("outside_ex")
+        exp_info = get_config("outsiders.outside_ex")
 
         if cat.age == CatAge.ADOLESCENT:
             ran = exp_info["base_adolescent_timeskip_ex"]

@@ -79,15 +79,13 @@ class Genotype:
         self.poly = ["pd", "pd"]
         self.pax3 = ["NoDBE", "NoDBE"]
 
-        self.wideband = ""
-        self.wbtype = ""
-        self.wbsum = 0
-
         self.fur_shade = choice(odds['fur_shade'])
 
-        self.rufousing = ""
+        self.wideband = -1
+        self.wbtype = ""
+
+        self.rufousing = -1
         self.ruftype = ""
-        self.rufsum = 0
 
         self.unders_ruf = ""
         self.unders_ruftype = ""
@@ -218,9 +216,9 @@ class Genotype:
         self.poly = jsonstring["poly"]
         self.pax3 = jsonstring.get("pax3", ['NoDBE', 'NoDBE'])
 
-        self.wideband = jsonstring["wideband"]
         self.fur_shade = jsonstring.get("fur_shade", jsonstring.get("saturation", 3))
-        self.rufousing = jsonstring["rufousing"]
+        self.wideband = jsonstring["wideband"] if isinstance(jsonstring["wideband"], int) else sum([int(x) for x in jsonstring["wideband"]])
+        self.rufousing = jsonstring["rufousing"] if isinstance(jsonstring["rufousing"], int) else sum([int(x) for x in jsonstring["rufousing"]])
         self.unders_ruf = jsonstring.get("unders_ruf", "")
         self.bengal = jsonstring["bengal"]
         self.sokoke = jsonstring["sokoke"]
@@ -317,8 +315,8 @@ class Genotype:
             "poly" : self.poly,
             "pax3" : self.pax3,
 
-            "wideband" : self.wideband,
             "fur_shade" : self.fur_shade,
+            "wideband" : self.wideband,
             "rufousing" : self.rufousing,
             "unders_ruf": self.unders_ruf,
             "bengal" : self.bengal,
@@ -477,9 +475,8 @@ class Genotype:
 
         self.unders_ruf = ''
         self.unders_rufsum = 0
-
         for i in range(0, 4):
-            self.unders_ruf += choice(self.odds["rufousing"])
+            self.unders_ruf += choice(self.odds["underside_rufousing"])
             self.unders_rufsum += int(self.unders_ruf[i])
 
     def Generator(self, special=None, kittypet=False):
@@ -653,20 +650,12 @@ class Genotype:
         elif self.odds["DBE"] > 0 and randint(1, self.odds["DBE"]) == 1 and not self.ban_genes:
             self.pax3[0] = choice(['DBEcel', 'DBEcel', 'DBEre', 'DBEalt', 'DBEalt'])
 
-        self.wideband = ''
-        self.rufousing = ''
+        self.wideband = choice(self.odds["wideband"])
+        self.rufousing = choice(self.odds["rufousing"])
         self.spotted = ''
         self.tickgenes = ''
         self.bengal = ''
         self.sokoke = ''
-        
-        for i in range(0, 8):
-            self.wideband += choice(self.odds["wideband"])
-            self.wbsum += int(self.wideband[i])
-
-        for i in range(0, 4):
-            self.rufousing += choice(self.odds["rufousing"])
-            self.rufsum += int(self.rufousing[i])
 
         for i in range(0, 4):
             self.spotted += choice(self.odds["spotted"])
@@ -864,20 +853,12 @@ class Genotype:
         elif self.odds["DBE"] > 1 and randint(1, math.ceil(self.odds["DBE"]/modifier)) == 1  and not self.ban_genes:
             self.pax3[0] = choice(['DBEcel', 'DBEcel', 'DBEre', 'DBEalt', 'DBEalt'])
 
-        self.wideband = ''
-        self.rufousing = ''
+        self.wideband = choice(self.odds["wideband_kittypet"])
+        self.rufousing = choice(self.odds["rufousing_kittypet"])
         self.spotted = ''
         self.tickgenes = ''
         self.bengal = ''
         self.sokoke = ''
-
-        for i in range(0, 8):
-            self.wideband += choice(self.odds["wideband_kittypet"])
-            self.wbsum += int(self.wideband[i])
-
-        for i in range(0, 4):
-            self.rufousing += choice(self.odds["rufousing_kittypet"])
-            self.rufsum += int(self.rufousing[i])
 
         for i in range(0, 4):
             self.spotted += choice(self.odds["spotted_kittypet"])
@@ -995,7 +976,8 @@ class Genotype:
                 else:
                     self.breeds[breed] = par2.breeds[breed] / 2 
         
-        self.KitEyes(par1, par2)
+        self.refraction = self.kit_gradient_traits(par1.refraction, par2.refraction, 11)
+        self.pigmentation = self.kit_gradient_traits(par1.refraction, par2.refraction, 11)
 
         if chimera:
             if isinstance(par3, Genotype) and random() < 0.33:
@@ -1201,25 +1183,9 @@ class Genotype:
             self.fur_shade = par1.fur_shade
         elif random() < 0.25:
             self.fur_shade = par2.fur_shade
-        
 
-        self.wideband = ""
-        for i in range(8):
-            tempwb = 0
-            if par1.wideband[i] == "2" or (par1.wideband[i] == "1" and randint(1, 2) == 1):
-                tempwb = tempwb+1
-            if par2.wideband[i] == "2" or (par2.wideband[i] == "1" and randint(1, 2) == 1):
-                tempwb = tempwb+1
-            self.wideband += str(tempwb)
-        
-        self.rufousing = ""
-        for i in range(4):
-            tempruf = 0
-            if par1.rufousing[i] == "2" or (par1.rufousing[i] == "1" and randint(1, 2) == 1):
-                tempruf = tempruf+1
-            if par2.rufousing[i] == "2" or (par2.rufousing[i] == "1" and randint(1, 2) == 1):
-                tempruf = tempruf+1
-            self.rufousing += str(tempruf)
+        self.wideband = self.kit_gradient_traits(par1.wideband+1, par2.wideband+1, 17)-1
+        self.rufousing = self.kit_gradient_traits(par1.rufousing+1, par2.rufousing+1, 9)-1
         
         self.unders_ruf = ""
         for i in range(4):
@@ -1297,44 +1263,36 @@ class Genotype:
 
         return threepars
 
-    def KitEyes(self, par1, par2):
-        multipliers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        multipliers2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    def kit_gradient_traits(self, value1, value2, size):
+        multipliers = [0] * size
     
         def maths(par, m):
             m[par-1] += 10
             for i in range(0, par-1):
                 m[i] += 10 / 5 ** (par-i-1)
             
-            for i in range(par, 11):
+            for i in range(par, size):
                 m[i] += 10 / 5 ** (i-par+1)
             return m
     
-        multipliers = maths(par1.refraction, multipliers)
-        multipliers = maths(par2.refraction, multipliers)
-        multipliers = maths(math.floor((int(par1.refraction) + int(par2.refraction))/2), multipliers)
-        multipliers2 = maths(par1.pigmentation, multipliers2)
-        multipliers2 = maths(par2.pigmentation, multipliers2)
-        multipliers2 = maths(math.floor((int(par1.pigmentation) + int(par2.pigmentation))/2), multipliers2)
+        multipliers = maths(value1, multipliers)
+        multipliers = maths(value2, multipliers)
+        multipliers = maths(math.floor((int(value1) + int(value2))/2), multipliers)
 
         x = sum(multipliers)
-        x2 = sum(multipliers2)
 
         def getindexes(m):
-            inds = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            inds = [0] * size;
             
-            for i in range(0, 11):
+            for i in range(0, size):
                 for j in range(0, i+1):
                     inds[i] += m[j]
             
             return inds
         indexes = getindexes(multipliers)
-        indexes2 = getindexes(multipliers2)
 
         num = random() * x
-        self.refraction = next((n for n in range(len(indexes)) if num < indexes[n])) + 1
-        num = random() * x2
-        self.pigmentation = next((n for n in range(len(indexes2)) if num < indexes2[n])) + 1
+        return next((n for n in range(len(indexes)) if num < indexes[n])) + 1
 
     def GenerateBody(self):
         self.body_value = randint(1, sum(self.body_ranges))
@@ -1423,20 +1381,12 @@ class Genotype:
         wbtypes = ["low", "medium", "high", "shaded", "chinchilla"]
         ruftypes = ["low", "medium", "rufoused"]
 
-        self.wbsum = 0
-        self.rufsum = 0
         self.unders_rufsum = 0
         self.bengsum = 0
         self.soksum = 0
         self.spotsum = 0
         self.ticksum = 0
         
-        if len(self.wideband) < 8:
-            while len(self.wideband) < 8:
-                self.wideband += '1'
-        if len(self.rufousing) < 4:
-            while len(self.rufousing) < 4:
-                self.rufousing += '1'
         if len(self.unders_ruf) < 4:
             while len(self.unders_ruf) < 4:
                 self.unders_ruf += '1'
@@ -1453,10 +1403,6 @@ class Genotype:
             while len(self.tickgenes) < 4:
                 self.tickgenes += '1'
 
-        for i in self.wideband:
-            self.wbsum += int(i)
-        for i in self.rufousing:
-            self.rufsum += int(i)
         for i in self.unders_ruf:
             self.unders_rufsum += int(i)
         for i in self.bengal:
@@ -1468,20 +1414,20 @@ class Genotype:
         for i in self.tickgenes:
             self.ticksum += int(i)
         
-        if self.wbsum < 6:
+        if self.wideband < 4:
             self.wbtype = wbtypes[0]
-        elif self.wbsum < 10:
+        elif self.wideband < 8:
             self.wbtype = wbtypes[1]
-        elif self.wbsum < 12: 
+        elif self.wideband < 12: 
             self.wbtype = wbtypes[2]
-        elif self.wbsum < 14: 
+        elif self.wideband < 15: 
             self.wbtype = wbtypes[3]
         else: 
             self.wbtype = wbtypes[4]
 
-        if self.rufsum < 3: 
+        if self.rufousing < 3: 
             self.ruftype = ruftypes[0]
-        elif self.rufsum < 6: 
+        elif self.rufousing < 6: 
             self.ruftype = ruftypes[1]
         else:
             self.ruftype = ruftypes[2]

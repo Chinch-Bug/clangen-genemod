@@ -885,14 +885,29 @@ dev_tools = false
   height_ranges = [1, 4, 12, 60, 180, 60, 12, 2, 2, 1]
   fur_shade = [0, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 6]
   rusting = 0.1
-  wideband = ["2", "1", "1", "1", "0"]
-  rufousing = ["2", "1", "1", "1", "0"]
+  # sorry this one is a lot
+  wideband = [0, 0, 0, 
+              1, 1, 1, 
+              2, 2, 2, 
+              3, 3, 3, 
+              4, 4, 4, 4, 
+              5, 5, 5, 5, 
+              6, 6, 6, 6, 
+              7, 7, 7, 7, 
+              8, 8, 8, 
+              9, 9, 9, 
+              10, 10, 10, 
+              11, 11, 11, 
+              12, 13, 14, 15, 16]
+  rufousing = [0, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 7, 8]
+  wideband_kittypet = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 9, 9, 10, 10, 11, 12, 13, 14, 15, 16]
+  rufousing_kittypet = [0, 1, 2, 3, 3, 4, 4, 5, 5, 6, 7, 8]
+
+  underside_rufousing = ["2", "1", "1", "1", "0"]
   spotted = ["2", "1", "0"]
   tickmod = ["2", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0"]
   bengal = ["2", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0"]
   sokoke = ["2", "2", "1", "1", "1", "1", "0", "0", "0"]
-  wideband_kittypet = ["2", "1", "1", "0"]
-  rufousing_kittypet = ["2", "1", "1", "0"]
   spotted_kittypet = ["2", "1", "0"]
   tickmod_kittypet = ["2", "1", "1", "1", "0", "0", "0", "0", "0"]
   bengal_kittypet = ["2", "1", "1", "1", "0", "0", "0", "0", "0"]
@@ -935,13 +950,18 @@ dev_tools = false
   base_adult_timeskip_ex = [[4, 12], [6, 7]]
   base_senior_timeskip_ex = [[3, 9], [3, 4]]
 
-[outside_ex]
-  # base possible experience gain for cats outside the clan
-  # [[lowest_exp_gain, highest_exp_gain], [lowest_exp_gain2, highest_exp_gain2]]
-  # use the second range to slightly increase the probability that those values are used
-  base_adolescent_timeskip_ex = [[2, 10], [4, 5]]
-  base_adult_timeskip_ex = [[4, 12], [6, 7]]
-  base_senior_timeskip_ex = [[3, 9], [3, 4]]
+[outsiders]
+  max_reputation = 100
+  min_reputation = 0
+  starting_reputation = 80
+
+  [outsiders.outside_ex]
+    # base possible experience gain for cats outside the clan
+    # [[lowest_exp_gain, highest_exp_gain], [lowest_exp_gain2, highest_exp_gain2]]
+    # use the second range to slightly increase the probability that those values are used
+    base_adolescent_timeskip_ex = [[2, 10], [4, 5]]
+    base_adult_timeskip_ex = [[4, 12], [6, 7]]
+    base_senior_timeskip_ex = [[3, 9], [3, 4]]
 
 [outsider_events]
   # chances for random outsider deaths or leaving the territory are 2^x

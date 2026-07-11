@@ -268,7 +268,7 @@ class Phenotype(Genotype):
 
         if((self.agouti[0] == 'a' or self.ext[0] == 'Eg') and 'o' in self.sexgene):
             if(self.silver[0] == 'I'):
-                if(self.wbsum > 13):
+                if(self.wideband > 13):
                     self.silvergold = 'masked silver '
                 else:
                     self.silvergold += 'smoke '
@@ -286,7 +286,7 @@ class Phenotype(Genotype):
                     self.silvergold += "pseudo-merle "
             elif (self.corin[0] == 'sg'): 
                 self.silvergold = 'extreme sunshine '
-            elif (self.wbsum > 11):
+            elif (self.wideband > 11):
                 self.silvergold = 'golden '
             elif(self.corin[0] == 'sh'):
                 if self.agouti[1] == "a":
@@ -309,11 +309,11 @@ class Phenotype(Genotype):
             self.tabtype = ''
 
         def FindPattern():
-            if(self.ticked[0] != 'ta' or self.wbsum > 13):
-                if(self.wbsum > 13):
+            if(self.ticked[0] != 'ta' or self.wideband > 13):
+                if(self.wideband > 13):
                     self.tabby = 'chinchilla'
                 elif(self.ticked[1] == 'Ta' or not self.breakthrough):
-                    if (self.wbsum > 11):
+                    if (self.wideband > 11):
                         self.tabby = 'shaded'
                     elif(self.ticksum > 7):
                         self.tabby = 'agouti'
@@ -854,20 +854,28 @@ class Phenotype(Genotype):
 
             rufousing = ""
             banding = "low"
+            alt_ruf = ""
+            alt_band = ""
             
-            if ('masked' in self.silvergold and genes.wbsum > 15) or (genes.agouti[0] != "a" and genes.ext[0] != "Eg") or (genes.ext[0] not in ['Eg', 'E']):
+            if ('masked' in self.silvergold and genes.wideband > 15) or (genes.agouti[0] != "a" and genes.ext[0] != "Eg") or (genes.ext[0] not in ['Eg', 'E']):
                 if genes.silver[0] == "I" or genes.brindledbi or (moons < 2 and genes.karp[0] == "K"):
+                    alt_ruf = "_silver"
                     rufousing = "silver"
                 elif genes.pointgene[0] != "C" or genes.agouti[0] == "Apb" or self.length in ["hairless", "fur-pointed"]:
+                    alt_ruf = f"_{int(genes.rufousing/3)}"
                     rufousing = "low"
                 else:
+                    alt_ruf = f"_{genes.rufousing}"
                     rufousing = genes.ruftype
 
-                if genes.corin[0] == "sg" or genes.wbtype == "chinchilla" or (genes.corin[0] != "N" and genes.wbtype == "shaded"):
+                if genes.wbtype != "chinchilla" and (genes.corin[0] == "sg" or (genes.corin[0] != "N" and genes.wbtype == "shaded")):
+                    alt_band = f"_{int(genes.wideband/7)+15}"
                     banding = "chinchilla"
-                elif genes.wbtype == "shaded" or genes.corin[0] == "sh" or genes.corin[0] == "fg" or genes.ext[0] == 'ec' or (genes.ext[0] == 'ea' and (self.agouti[0] != "a" and moons > 3 or moons > 6)):
+                elif genes.wbtype not in ["chinchilla", "shaded"] and (genes.corin[0] == "sh" or genes.corin[0] == "fg" or genes.ext[0] == 'ec' or (genes.ext[0] == 'ea' and (self.agouti[0] != "a" and moons > 3 or moons > 6))):
+                    alt_band = f"_{int(genes.wideband/4)+12}"
                     banding = "shaded"
                 else:
+                    alt_band = f"_{genes.wideband}"
                     banding = genes.wbtype
 
                 if rufousing == "silver":
@@ -880,8 +888,8 @@ class Phenotype(Genotype):
                     else:
                         unders_opacity = 20
                 
-                colour = colour + rufousing + banding + "0"
-                
+                colour = colour + alt_ruf + alt_band
+
                 if (genes.ext[0] == 'ea' and ((moons > 7 and genes.agouti[0] != "a") or moons > 19)):
                     colour = self.FindRed(genes, moons)[1]
                 
@@ -924,49 +932,51 @@ class Phenotype(Genotype):
         
         rufousing = ""
         banding = ""
+        alt_ruf = ""
+        alt_band = ""
+
         if (genes.silver[0] == "I" and special != 'nosilver') or (moons < 2 and genes.karp[0] == "K") or (self.brindledbi):
+            alt_ruf = "_silver"
             rufousing = "silver"
         elif genes.pointgene[0] not in ["C", "cm"] or special=='low':
+            alt_ruf = f"_{int(genes.rufousing/3)}"
             rufousing = "low"
         else:
+            alt_ruf = f"_{genes.rufousing}"
             rufousing = genes.ruftype
 
         if special == "nosilver":
+            alt_band = f"_{int(genes.wideband/5)+4}"
             banding = "medium"
-        elif genes.corin[0] == "sg" or genes.wbtype == "chinchilla" or (genes.corin[0] != "N" and genes.wbtype == "shaded"):
+        elif genes.wbtype != "chinchilla" and (genes.corin[0] == "sg" or (genes.corin[0] != "N" and genes.wbtype == "shaded")):
+            alt_band = f"_{int(genes.wideband/7)+15}"
             banding = "chinchilla"
-        elif genes.corin[0] == "sh" or genes.corin[0] == "fg" or genes.wbtype == "shaded":
+        elif genes.wbtype not in ["chinchilla", "shaded"] and (genes.corin[0] == "sh" or genes.corin[0] == "fg" or genes.wbtype == "shaded"):
+            alt_band = f"_{int(genes.wideband/4)+12}"
             banding = "shaded"
         else:
+            alt_band = f"_{genes.wideband}"
             banding = genes.wbtype
         self.banding = banding
 
         if colour == "apricot":
-            if genes.ruftype == "low":
+            if genes.ruftype != "rufoused":
                 colour = "cream"
                 if rufousing != "silver":
-                    rufousing = "medium"
-            elif genes.ruftype == "medium":
-                colour = "cream"
-                if rufousing != "silver":
-                    rufousing = "rufoused"
+                    rufousing = f"_{genes.rufousing+3}"
             else:
                 colour = "red"
                 if rufousing != "silver":
-                    rufousing = "low"
+                    rufousing = f"_{genes.rufousing-6}"
         elif colour == "ivory-apricot":
-            if genes.ruftype == "low":
+            if genes.ruftype != "rufoused":
                 colour = "ivory"
                 if rufousing != "silver":
-                    rufousing = "medium"
-            elif genes.ruftype == "medium":
-                colour = "ivory"
-                if rufousing != "silver":
-                    rufousing = "rufoused"
+                    rufousing = f"_{genes.rufousing+3}"
             else:
                 colour = "honey"
                 if rufousing != "silver":
-                    rufousing = "low"
+                    rufousing = f"_{genes.rufousing-6}"
 
         if (genes.ext[0] == "ec" and genes.agouti[0] == "a" and 'o' in genes.sexgene):
             unders_opacity = 0
@@ -974,7 +984,7 @@ class Phenotype(Genotype):
             unders_opacity = self.GetSilverUnders(banding)
         else:
             unders_opacity = self.GetRedUnders(banding)
-        colour = colour + rufousing + banding + "0"
+        colour = colour + alt_ruf + alt_band
         
         if(genes.specialred in ['blue-red', 'cinnamon']) or special == 'blue-tipped':
             colour = colour.replace('red', 'blue')

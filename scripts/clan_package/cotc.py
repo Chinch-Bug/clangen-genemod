@@ -45,7 +45,3 @@ def change_clan_reputation(difference, clan):
     will change the Clan's reputation with outsider cats according to the difference parameter.
     """
     clan.reputation += difference
-    if clan.reputation < 0:
-        clan.reputation = 0  # clamp to 0
-    elif clan.reputation > 100:
-        clan.reputation = 100  # clamp to 100
