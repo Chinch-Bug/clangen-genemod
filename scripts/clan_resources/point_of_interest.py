@@ -98,7 +98,8 @@ def get_poi_save_dict():
     }
     for c in get_poi_categories_set():
         for key in _poi_names.keys():
-            pois[c][key] = _poi_by_category[c][key]
+            if key in _poi_by_category[c]:
+                pois[c][key] = list(_poi_by_category[c][key])
 
     return pois
 
