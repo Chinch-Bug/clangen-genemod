@@ -1690,7 +1690,7 @@ class Pregnancy_Events:
                     if the_cat.ID in kit.get_parents():
                         parent_to_kit = get_config("new_cat.parent_buff.parent_to_kit")
                         y = randrange(0, 15)
-                        start_relation = Relationship(the_cat, kit, False, True)
+                        start_relation = Relationship(the_cat, kit, True)
                         start_relation.like = parent_to_kit[RelType.LIKE] + y
                         start_relation.comfort = parent_to_kit[RelType.COMFORT] + y
                         start_relation.respect = parent_to_kit[RelType.RESPECT] + y
@@ -1699,7 +1699,7 @@ class Pregnancy_Events:
 
                         kit_to_parent = get_config("new_cat.parent_buff.kit_to_parent")
                         y = randrange(0, 15)
-                        start_relation = Relationship(kit, the_cat, False, True)
+                        start_relation = Relationship(kit, the_cat, True)
                         start_relation.like += kit_to_parent[RelType.LIKE] + y
                         start_relation.comfort = kit_to_parent[RelType.COMFORT] + y
                         start_relation.respect = kit_to_parent[RelType.RESPECT] + y
@@ -1733,7 +1733,7 @@ class Pregnancy_Events:
                 if second_kitten.ID == kitten.ID:
                     continue
                 start_value_info = get_config("new_cat.sib_buff.cat1_to_cat2")
-                start_relation = Relationship(kitten, second_kitten, False, True)
+                start_relation = Relationship(kitten, second_kitten, True)
                 start_relation.romance += start_value_info["romance"]
                 start_relation.like += start_value_info["like"] + y
                 start_relation.respect += start_value_info["respect"] + y
