@@ -62,7 +62,9 @@
       "pregnancy.max_kit_possibility.young adult": 12,
       "pregnancy.max_kit_possibility.adult": 3,
       "pregnancy.max_kit_possibility.senior adult": 2,
-      "pregnancy.max_kit_possibility.senior": 0
+      "pregnancy.max_kit_possibility.senior": 0,
+
+      "settings.force_disable.modded_kits": true
     }
   }
 }

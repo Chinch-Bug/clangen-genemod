@@ -365,6 +365,11 @@ class Clan:
             set_clan_setting("deputy", True)
             save_clan_settings()
 
+        # modded_kits
+        if get_config("settings.force_disable.modded_kits"):
+            set_clan_setting("modded_kits", False)
+            save_clan_settings()
+
         # feeding order
         starting_order = get_config("prey.feeding.starting_order")
         for setting in [

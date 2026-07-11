@@ -57,14 +57,10 @@ class CheckDeletionWindow(GameWindow):
             if event.ui_element == self.delete_it_button:
                 rempath = get_save_dir() + "/" + self.clan_name
                 shutil.rmtree(rempath)
-                if os.path.exists(rempath + "/clan.json"):
-                    os.remove(rempath + "/clan.json")
-                elif os.path.exists(rempath + "clan.json"):
+                if os.path.exists(rempath + "clan.json"):
                     os.remove(rempath + "clan.json")
                 elif os.path.exists(rempath + "clan.txt"):
                     os.remove(rempath + "clan.txt")
-                else:
-                    print("No clan.json/txt???? Clan prolly wasnt initalized kekw")
                 self.kill()
                 self.reloadscreen(GameScreen.SWITCH_CLAN)
 

@@ -1323,3 +1323,6 @@ dev_tools = false
   # force a game setting to be true, stopping players from changing it
   [settings.force_enable]
     "deputy" = false
+
+  [settings.force_disable]
+    "modded_kits" = false
