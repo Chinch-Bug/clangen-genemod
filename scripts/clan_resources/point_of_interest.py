@@ -92,9 +92,9 @@ def add_poi(name, elements, clan=None):
 
 def get_poi_save_dict():
     pois = {
-        "gathering": [],
-        "moonplace": [],
-        "terrain": [],
+        "gathering": {},
+        "moonplace": {},
+        "terrain": {},
     }
     for c in get_poi_categories_set():
         for key in _poi_names.keys():
