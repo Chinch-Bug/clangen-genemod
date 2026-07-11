@@ -226,16 +226,15 @@ class Breed_generator:
 
         genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
 
-        genoclass.rufousing = ''
         genoclass.unders_ruf = ''
         genoclass.tickgenes = ''
         genoclass.bengal = ''
         genoclass.sokoke = ''
         
         genoclass.wideband = randint(4, 11)
+        genoclass.rufousing = 8
 
         for i in range(0, 4):
-            genoclass.rufousing += '2'
             genoclass.unders_ruf += '2'
             genoclass.tickgenes += '2'
 
@@ -2480,7 +2479,6 @@ class Breed_generator:
 
         genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
 
-        genoclass.rufousing = ''
         genoclass.spotted = ''
         genoclass.tickgenes = ''
         genoclass.bengal = ''
@@ -2489,8 +2487,7 @@ class Breed_generator:
         while genoclass.wideband > 11 or genoclass.wideband < 4:
             genoclass.wideband = choice(genoclass.odds["wideband_kittypet"])
 
-        for i in range(0, 4):
-            genoclass.rufousing += '2'
+        genoclass.rufousing = 8
 
         genesspot = ["1", "1", "1", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0"]
 

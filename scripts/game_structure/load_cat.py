@@ -373,14 +373,14 @@ def accurate_porting(cat, info):
     
     if main_colour["colour"] in ["WHITE", "PALEGREY", "SILVER", "GREY", "DARKGREY", "CREAM", "PALEGINGER", "LIGHTBROWN", "LILAC"]:
         cat.phenotype.dilute = ["d", "d"]
-        cat.phenotype.rufousing = "0000"
+        cat.phenotype.rufousing = 0
     else:
         cat.phenotype.dilute[0] = "D"
     
     if cat.chimerapheno:
         if patch_colour["colour"] in ["WHITE", "PALEGREY", "SILVER", "GREY", "DARKGREY", "CREAM", "PALEGINGER", "LIGHTBROWN", "LILAC"]:
             cat.chimerapheno.dilute = ["d", "d"]
-            cat.chimerapheno.rufousing = "0000"
+            cat.chimerapheno.rufousing = 0
         else:
             cat.chimerapheno.dilute[0] = "D"
 
@@ -451,10 +451,10 @@ def accurate_porting(cat, info):
             cat.chimerapheno.wideband = randint(0, 11)
 
     if main_colour["colour"] in ["DARKGINGER"]:
-        cat.phenotype.rufousing = "2222"
+        cat.phenotype.rufousing = 8
     if main_colour["colour"] in ["BLACK"]:
-        cat.phenotype.rufousing = "0000"
-        cat.phenotype.wideband = "00000000"
+        cat.phenotype.rufousing = 0
+        cat.phenotype.wideband = 0
     if main_colour["colour"] in ["LILAC", "GREY"] or (main_colour["colour"] in ["SIENNA"] and main_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"]):
         cat.phenotype.fur_shade = choice(range(0, 5))
     elif main_colour["colour"] in ["DARKGREY", "PALEGREY", "DARKBROWN", "GHOST"]:
@@ -464,10 +464,10 @@ def accurate_porting(cat, info):
 
     if cat.chimerapheno:
         if patch_colour["colour"] in ["DARKGINGER", "CHOCOLATE"]:
-            cat.chimerapheno.rufousing = "2222"
+            cat.chimerapheno.rufousing = 8
         if patch_colour["colour"] in ["BLACK"]:
-            cat.chimerapheno.rufousing = "0000"
-            cat.chimerapheno.wideband = "00000000"
+            cat.chimerapheno.rufousing = 0
+            cat.chimerapheno.wideband = 0
         if patch_colour["colour"] in ["LILAC", "GREY"] or (main_colour["colour"] in ["SIENNA"] and main_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"]):
             cat.chimerapheno.fur_shade = choice(range(0, 5))
         if patch_colour["colour"] in ["DARKGREY", "PALEGREY", "DARKBROWN", "GHOST"]:
