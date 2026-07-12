@@ -1339,7 +1339,7 @@ class Pregnancy_Events:
                                                 outside=True,
                                                 is_parent=True)
             outside_parent[0].get_new_thought(CatThought.OUTSIDE_DAM if background_category == "2" else CatThought.OUTSIDE_SIRE, other_cat=cat)
-            if random() < 0.2:
+            if random() < get_config("mates.crossclan_litter_mates_chance") and get_config("mates.allow_mating"):
                 outside_parent[0].set_mate(cat)
                 cat.set_mate(outside_parent[0])
         else:
@@ -1376,7 +1376,7 @@ class Pregnancy_Events:
                                                         is_parent=True)[0]
                     outside_parent.get_new_thought(CatThought.OUTSIDE_DAM if background_category == "2" else CatThought.OUTSIDE_SIRE, other_cat=cat)
                     outside_parent.birth_cooldown = get_config("pregnancy.birth_cooldown")
-                    if random() < 0.1:
+                    if random() < get_config("mates.outsider_litter_mates_chance") and get_config("mates.allow_mating"):
                         outside_parent.set_mate(cat)
                         cat.set_mate(outside_parent)
 

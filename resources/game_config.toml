@@ -101,6 +101,13 @@ dev_tools = false
 [mates]
   # permit player to change cat mates
   allow_manual = true
+  
+  # allow mates to happen
+  allow_mating = true
+
+  # chance that second parent will be set as mate when single cats have litters with them
+  crossclan_litter_mates_chance = 0.2
+  outsider_litter_mates_chance = 0.1
 
   # maximum age difference allowed for cats to be romantic with each other
   age_range = 40
@@ -954,6 +961,8 @@ dev_tools = false
   max_reputation = 100
   min_reputation = 0
   starting_reputation = 80
+
+  change_clan_button = true
 
   [outsiders.outside_ex]
     # base possible experience gain for cats outside the clan

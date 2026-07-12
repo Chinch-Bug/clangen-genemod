@@ -365,6 +365,8 @@ def _assign_health(created_cat, option_dict):
                 "sometimes",
             ]:
                 continue
+            if condition in ['manx syndrome', "flat nose", 'ocular albinism', 'albinism', 'rabbit gait', 'fully hairless', 'partially hairless', "bad back", "narrowed chest", "bumpy skin"]:
+                continue
             # next part ensures that a kit won't get a condition that takes too long to reveal
             moons = created_cat.moons
             leeway = 5 - (PERMANENT[condition]["moons_until"] + 1)

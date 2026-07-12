@@ -624,7 +624,7 @@ class ShortEvent:
                     lives_lost = cat_clan.leader_lives
                     cat_clan.leader_lives -= lives_lost
                 elif "some_lives" in self.tags:
-                    lives_lost = randrange(2, self.leads_current_life_count - 1)
+                    lives_lost = randrange(2, self.leads_current_life_count[cat_clan.group_ID] - 1)
                     cat_clan.leader_lives -= lives_lost
                 else:
                     lives_lost = 1

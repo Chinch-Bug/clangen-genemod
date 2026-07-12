@@ -14,6 +14,7 @@ import pygame_gui
 import ujson
 from pygame_gui.core import ObjectID
 
+from scripts.config import get_config
 from scripts.game_input import INPUT_ACTION_PRESSED, Action
 from scripts.cat.cats import Cat, BACKSTORIES
 from scripts.cat.sprites.display_sprites import calculate_size
@@ -22,6 +23,7 @@ from scripts.cat.pelts import Pelt
 from scripts.clan_resources.freshkill import FRESHKILL_ACTIVE
 from scripts.events import handle_fading
 from scripts.game_structure import image_cache, game
+from scripts.ui.windows.cruel_locked_action import CruelLockedAction
 from ..ui.elements.modified_image import UIModifiedImage
 from ..ui.elements.text_box_tweaked import UITextBoxTweaked
 from ..ui.elements.image_button import UIImageButton
@@ -261,7 +263,10 @@ class ProfileScreen(Screens):
             elif event.ui_element == self.see_relationships_button:
                 self.change_screen(GameScreen.RELATIONSHIP)
             elif event.ui_element == self.choose_mate_button:
-                self.change_screen(GameScreen.CHOOSE_MATE)
+                if not get_config("mates.allow_mating"):
+                    CruelLockedAction()
+                else:
+                    self.change_screen(GameScreen.CHOOSE_MATE)
             elif event.ui_element == self.change_adoptive_parent_button:
                 self.change_screen(GameScreen.CHOOSE_ADOPTIVE_PARENT)
 
@@ -2415,7 +2420,7 @@ class ProfileScreen(Screens):
                     ui_scale_dimensions((172, 36)),
                 ),
             )
-            if game.clan.clancount == "multiclan":
+            if game.clan.clancount == "multiclan" and get_config("outsiders.change_clan_button"):
                 self.change_clan_button = UISurfaceImageButton(
                     ui_scale(pygame.Rect((578, 0), (172, 36))),
                     "screens.profile.change_clan",

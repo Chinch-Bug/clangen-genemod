@@ -2692,6 +2692,10 @@ class Cat:
         # check exiled, outside, and dead cats
         if (self.status.is_outsider and not outsider) or (other_cat.status.is_outsider and not outsider):
             return False
+            
+        # Config check
+        if not get_config("mates.allow_mating"):
+            return False
 
         # No Mates Check
         if not ignore_no_mates and (self.no_mates or other_cat.no_mates):

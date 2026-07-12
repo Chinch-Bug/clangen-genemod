@@ -10,6 +10,7 @@
     "modifiers": {
       "ranks.allow_manual": false,
       "mates.allow_manual": false,
+      "outsiders.change_clan_button": false,
       "settings.force_enable.deputy": true
     }
   },
@@ -65,6 +66,13 @@
       "pregnancy.max_kit_possibility.senior": 0,
 
       "settings.force_disable.modded_kits": true
+    }
+  },
+  "heartless": {
+    "card_art": "behavior/sorrow.png",
+    "modifiers": {
+      "mates.allow_manual": false,
+      "mates.allow_mating": false
     }
   },
   "malicious_aura": {
