@@ -3,18 +3,18 @@ from random import choice, randint, getrandbits, choices, random
 
 from scripts.cat.cats import Cat
 from scripts.cat.constants import INJURIES, ILLNESSES, PERMANENT, BACKSTORIES
-from scripts.cat.enums import CatRank, CatAge, CatGroup, CatStanding, CatSocial
+from scripts.cat.enums import CatRank, CatAge, CatGroup, CatStanding, CatSocial, CatThought
 from scripts.cat.names import names
 from scripts.cat.personality import Personality
 from scripts.cat.skills import SkillPath, Skill
-from scripts.cat.status import StatusDict
+from scripts.cat.status import StatusDict, Status
 from scripts.cat_relations.inheritance2 import inheritance_db
 from scripts.cat_relations.relationship import Relationship
 from scripts.clan import OtherClan
 from scripts.clan_package.settings import get_clan_setting
 from scripts.config import get_config
 from scripts.events_module.parameter_dicts import InvolvedCatDict
-from scripts.game_structure import game, constants
+from scripts.game_structure import game
 
 
 # called the "updated" create_new_cat so that it's not conflicting with the existing create_new_cat
@@ -242,7 +242,7 @@ def _assign_name(created_cat: Cat):
         weights = [1, 1, 1, 1]
         # give kittypets a kittypet name
         if created_cat.status.social == CatSocial.KITTYPET:
-            weights = constants.CONFIG["cat_name_controls"]["kittypet"]
+            weights = get_config("cat_name_controls.kittypet")
             # check if the kittypets come with a pretty acc
             if bool(getrandbits(1)):
                 created_cat.pelt.accessory = (
@@ -250,10 +250,10 @@ def _assign_name(created_cat: Cat):
                     choice(created_cat.pelt.collar_accessories),
                 )
         if created_cat.status.social == CatSocial.LONER:
-            weights = constants.CONFIG["cat_name_controls"]["loner"]
+            weights = get_config("cat_name_controls.loner")
 
         if created_cat.status.social == CatSocial.ROGUE:
-            weights = constants.CONFIG["cat_name_controls"]["rogue"]
+            weights = get_config("cat_name_controls.rogue")
 
         selected_category = choices(name_categories, weights, k=1)[0]
 
@@ -353,10 +353,10 @@ def _assign_health(created_cat, option_dict):
     # chance to give the new cat a permanent condition, higher chance for found kits and litters
     if created_cat.age.is_baby():
         chance = int(
-            constants.CONFIG["cat_generation"]["base_permanent_condition"] / 11.25
+            get_config("cat_generation.base_permanent_condition") / 11.25
         )
     else:
-        chance = constants.CONFIG["cat_generation"]["base_permanent_condition"] + 10
+        chance = get_config("cat_generation.base_permanent_condition") + 10
     if not int(random() * chance):
         possible_conditions = []
         for condition in PERMANENT:
