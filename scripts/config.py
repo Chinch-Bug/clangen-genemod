@@ -9,6 +9,12 @@ from scripts.game_structure import constants, game
 with open("resources/game_config.toml", "r", encoding="utf-8") as read_file:
     CONFIG = tomllib.loads(read_file.read())
 
+    calendar = CONFIG["seasons"]["calendar"]
+    season_length = CONFIG["seasons"]["length"]
+    constants.SEASON_CALENDAR = []
+    for season in calendar:
+        constants.SEASON_CALENDAR += [season] * season_length
+
 def recursive_merge(dict1, dict2):
     for key, value in dict2.items():
         if key in dict1 and isinstance(dict1[key], dict) and isinstance(value, dict):
@@ -31,6 +37,12 @@ def other_config_refreshes():
         CatAge.SENIOR_ADULT: CONFIG["cat_ages"]["senior adult"],
         CatAge.SENIOR: CONFIG["cat_ages"]["senior"],
     }
+
+    calendar = CONFIG["seasons"]["calendar"]
+    season_length = CONFIG["seasons"]["length"]
+    constants.SEASON_CALENDAR = []
+    for season in calendar:
+        constants.SEASON_CALENDAR += [season] * season_length
 
 def load_clan_config():
     global CONFIG

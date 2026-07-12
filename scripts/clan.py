@@ -174,15 +174,16 @@ class Clan:
     @property
     def current_season(self):
         season_length = get_config("seasons.length")
+        calendar = get_config("seasons.calendar")
         modifiers = {
             season: i * season_length
-            for i, season in enumerate(get_config("seasons.calendar"))
+            for i, season in enumerate(calendar)
         }
         return (
             self.starting_season
             if get_config("seasons.lock_season")
             else constants.SEASON_CALENDAR[
-                (self.age + modifiers[self.starting_season]) % 12
+                (self.age + modifiers[self.starting_season]) % (season_length * len(calendar))
             ]
         )
 

@@ -309,8 +309,8 @@ class Phenotype(Genotype):
             self.tabtype = ''
 
         def FindPattern():
-            if(self.ticked[0] != 'ta' or self.wideband > 13):
-                if(self.wideband > 13):
+            if(self.ticked[0] != 'ta' or self.wideband > 14):
+                if(self.wideband > 14):
                     self.tabby = 'chinchilla'
                 elif(self.ticked[1] == 'Ta' or not self.breakthrough):
                     if (self.wideband > 11):
