@@ -219,7 +219,7 @@ class TestNewCatCreation(unittest.TestCase):
 
             self.assertEqual(
                 test_cat.gender,
-                "male",
+                "tom",
                 msg=f"male was not assigned correctly as the current gender.",
             )
             # test female works
@@ -235,7 +235,7 @@ class TestNewCatCreation(unittest.TestCase):
 
             self.assertEqual(
                 test_cat.gender,
-                "female",
+                "molly",
                 msg=f"female was not assigned correctly as the current gender.",
             )
             # test that can_birth works with the toggle
@@ -252,7 +252,7 @@ class TestNewCatCreation(unittest.TestCase):
 
             self.assertEqual(
                 test_cat.gender,
-                "female",
+                "molly",
                 msg=f"female was not assigned correctly as the current gender when birthing cat is requested and same sex birth toggle is off.",
             )
 

@@ -2975,7 +2975,7 @@ def coming_out(cat, clan):
 def check_leader(clan):
     """Checks if leader is missing."""
     # check for leader
-    if game.clan.leader:
+    if clan.leader:
         leader_invalid = clan.leader.status.group_ID != clan.group_ID
     else:
         leader_invalid = True
