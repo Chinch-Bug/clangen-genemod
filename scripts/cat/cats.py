@@ -1226,16 +1226,7 @@ class Cat:
         if old_rank == CatRank.MEDICINE_CAT and clan:
             clan.remove_med_cat(self)
 
-        # updates mentors
-        if self.status.rank in [
-            CatRank.APPRENTICE,
-            CatRank.MEDICINE_APPRENTICE,
-            CatRank.MEDIATOR_APPRENTICE,
-            CatRank.MEDIATOR,
-        ]:
-            pass
-
-        elif self.status.rank in [CatRank.WARRIOR, CatRank.ELDER, CatRank.LEADER, CatRank.DEPUTY]:
+        if old_rank in [CatRank.LEADER, CatRank.DEPUTY]:
             if not clan or not hasattr(clan, "deputy"):
                 pass
             elif new_rank != CatRank.LEADER and clan.leader and clan.leader.ID == self.ID:
@@ -2692,7 +2683,7 @@ class Cat:
         # check exiled, outside, and dead cats
         if (self.status.is_outsider and not outsider) or (other_cat.status.is_outsider and not outsider):
             return False
-            
+
         # Config check
         if not get_config("mates.allow_mating"):
             return False
