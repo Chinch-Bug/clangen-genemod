@@ -869,10 +869,10 @@ class Phenotype(Genotype):
                     rufousing = genes.ruftype
 
                 if genes.wbtype != "chinchilla" and (genes.corin[0] == "sg" or (genes.corin[0] != "N" and genes.wbtype == "shaded")):
-                    alt_band = f"_{int(genes.wideband/7)+15}"
+                    alt_band = f"_{int(genes.wideband/8)+15}"
                     banding = "chinchilla"
                 elif genes.wbtype not in ["chinchilla", "shaded"] and (genes.corin[0] == "sh" or genes.corin[0] == "fg" or genes.ext[0] == 'ec' or (genes.ext[0] == 'ea' and (self.agouti[0] != "a" and moons > 3 or moons > 6))):
-                    alt_band = f"_{int(genes.wideband/4)+12}"
+                    alt_band = f"_{int(genes.wideband/5)+12}"
                     banding = "shaded"
                 else:
                     alt_band = f"_{genes.wideband}"
@@ -949,10 +949,10 @@ class Phenotype(Genotype):
             alt_band = f"_{int(genes.wideband/5)+4}"
             banding = "medium"
         elif genes.wbtype != "chinchilla" and (genes.corin[0] == "sg" or (genes.corin[0] != "N" and genes.wbtype == "shaded")):
-            alt_band = f"_{int(genes.wideband/7)+15}"
+            alt_band = f"_{int(genes.wideband/8)+15}"
             banding = "chinchilla"
         elif genes.wbtype not in ["chinchilla", "shaded"] and (genes.corin[0] == "sh" or genes.corin[0] == "fg" or genes.wbtype == "shaded"):
-            alt_band = f"_{int(genes.wideband/4)+12}"
+            alt_band = f"_{int(genes.wideband/5)+12}"
             banding = "shaded"
         else:
             alt_band = f"_{genes.wideband}"

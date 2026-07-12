@@ -712,7 +712,7 @@ def generate_sprite(
                         if("black" in whichcolour and phenotype.pointgene[0] == "cm"):
                             colourbase2 = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                             colourbase.blit(sprites.sprites['lightbasecolours0'], (0, 0))
-                            colourbase2.blit(sprites.sprites[whichbase.replace("black", "cinnamon")], (0, 0))
+                            colourbase2.blit(get_tabby_base(whichbase.replace("black", "cinnamon")), (0, 0))
                             colourbase2.set_alpha(150)
                             colourbase.blit(colourbase2, (0, 0))
                         else:
