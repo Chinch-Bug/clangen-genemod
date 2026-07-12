@@ -142,9 +142,9 @@ class Cat:
         prefix=None,
         gender=None,
         status_dict: StatusDict = None,
-        backstory="clanborn",
-        parent1=None,
-        parent2=None,
+        backstory: str="clanborn",
+        parent1: str=None,
+        parent2: str=None,
         extrapar=None,
         kittypet=False,
         adoptive_parents=None,
@@ -2793,8 +2793,12 @@ class Cat:
 
         inheritance_db.load_inheritances(Cat)
 
-    def set_mate(self, other_cat: Cat):
-        """Sets up a mate relationship between self and other_cat."""
+    def set_mate(self, other_cat: Cat, recalculate_inheritance: bool = True):
+        """
+        Sets up a mate relationship between self and other_cat.
+        :param other_cat: The other cat
+        :param recalculate_inheritance: Set to False if this func should SKIP recalculating inheritance. Take care when using this.
+        """
         if other_cat.ID not in self.mate:
             self.mate.append(other_cat.ID)
         if self.ID not in other_cat.mate:
@@ -2806,7 +2810,8 @@ class Cat:
         if self.ID in other_cat.previous_mates:
             other_cat.previous_mates.remove(self.ID)
 
-        inheritance_db.load_inheritances(Cat)
+        if recalculate_inheritance:
+            inheritance_db.load_inheritances(Cat)
 
         # Set starting relationship values
         if not self.dead:

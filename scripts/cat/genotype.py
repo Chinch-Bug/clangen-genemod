@@ -976,8 +976,8 @@ class Genotype:
                 else:
                     self.breeds[breed] = par2.breeds[breed] / 2 
         
-        self.refraction = self.kit_gradient_traits(par1.refraction, par2.refraction, 11)
-        self.pigmentation = self.kit_gradient_traits(par1.refraction, par2.refraction, 11)
+        self.refraction = self.kit_gradient_traits(par1.refraction-1, par2.refraction-1, 11, True)+1
+        self.pigmentation = self.kit_gradient_traits(par1.refraction-1, par2.refraction-1, 11, True)+1
 
         if chimera:
             if isinstance(par3, Genotype) and random() < 0.33:
@@ -1184,8 +1184,8 @@ class Genotype:
         elif random() < 0.25:
             self.fur_shade = par2.fur_shade
 
-        self.wideband = self.kit_gradient_traits(par1.wideband+1, par2.wideband+1, 17)-1
-        self.rufousing = self.kit_gradient_traits(par1.rufousing+1, par2.rufousing+1, 9)-1
+        self.wideband = self.kit_gradient_traits(par1.wideband, par2.wideband, 17)
+        self.rufousing = self.kit_gradient_traits(par1.rufousing, par2.rufousing, 9)
         
         self.unders_ruf = ""
         for i in range(4):
@@ -1263,20 +1263,22 @@ class Genotype:
 
         return threepars
 
-    def kit_gradient_traits(self, value1, value2, size):
+    def kit_gradient_traits(self, value1, value2, size, boost_par=False):
         multipliers = [0] * size
     
         def maths(par, m):
-            m[par-1] += 10
-            for i in range(0, par-1):
-                m[i] += 10 / 5 ** (par-i-1)
+            m[par] += 10
+            for i in range(0, par):
+                m[i] += 10 / 2 ** (par-i)
             
-            for i in range(par, size):
-                m[i] += 10 / 5 ** (i-par+1)
+            for i in range(par+1, size):
+                m[i] += 10 / 2 ** (i-par)
             return m
-    
-        multipliers = maths(value1, multipliers)
-        multipliers = maths(value2, multipliers)
+        
+        if boost_par:
+            multipliers = maths(value1, multipliers)
+            multipliers = maths(value2, multipliers)
+        multipliers = maths(math.floor((int(value1) + int(value2))/2), multipliers)
         multipliers = maths(math.floor((int(value1) + int(value2))/2), multipliers)
 
         x = sum(multipliers)
@@ -1292,7 +1294,7 @@ class Genotype:
         indexes = getindexes(multipliers)
 
         num = random() * x
-        return next((n for n in range(len(indexes)) if num < indexes[n])) + 1
+        return next((n for n in range(len(indexes)) if num < indexes[n]))
 
     def GenerateBody(self):
         self.body_value = randint(1, sum(self.body_ranges))
