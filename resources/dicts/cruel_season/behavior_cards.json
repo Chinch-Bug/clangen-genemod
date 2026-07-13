@@ -14,6 +14,13 @@
       "settings.force_enable.deputy": true
     }
   },
+  "enmity": {
+    "card_art": "behavior/resolute.png",
+    "modifiers": {
+      "reputation.other_clans.relation_cap": 7,
+      "clan_creation.starting_clan_relation": [1, 7]
+    }
+  },
   "survival_of_fittest": {
     "card_art": "behavior/survival_of_fittest.png",
     "modifiers": {
@@ -66,6 +73,68 @@
       "pregnancy.max_kit_possibility.senior": 0,
 
       "settings.force_disable.modded_kits": true
+    }
+  },
+  "underpopulated": {
+    "card_art": "behavior/underpopulated.png",
+    "modifiers": {
+      "pregnancy.one_kit_possibility.young adult": 12,
+      "pregnancy.one_kit_possibility.adult": 10,
+      "pregnancy.one_kit_possibility.senior adult": 11,
+      "pregnancy.one_kit_possibility.senior": 5,
+
+      "pregnancy.two_kit_possibility.young adult": 11,
+      "pregnancy.two_kit_possibility.adult": 14,
+      "pregnancy.two_kit_possibility.senior adult": 16,
+      "pregnancy.two_kit_possibility.senior": 4,
+
+      "pregnancy.three_kit_possibility.young adult": 17,
+      "pregnancy.three_kit_possibility.adult": 15,
+      "pregnancy.three_kit_possibility.senior adult": 5,
+      "pregnancy.three_kit_possibility.senior": 1,
+
+      "pregnancy.four_kit_possibility.young adult": 7,
+      "pregnancy.four_kit_possibility.adult": 4,
+      "pregnancy.four_kit_possibility.senior adult": 2,
+      "pregnancy.four_kit_possibility.senior": 0,
+
+      "pregnancy.five_kit_possibility.young adult": 1,
+      "pregnancy.five_kit_possibility.adult": 2,
+      "pregnancy.five_kit_possibility.senior adult": 0,
+      "pregnancy.five_kit_possibility.senior": 0,
+
+      "pregnancy.max_kit_possibility.young adult": 1,
+      "pregnancy.max_kit_possibility.adult": 0,
+      "pregnancy.max_kit_possibility.senior adult": 0,
+      "pregnancy.max_kit_possibility.senior": 0,
+
+      "pregnancy.three_kit_modded.young adult": 192,
+      "pregnancy.three_kit_modded.adult": 24,
+      "pregnancy.three_kit_modded.senior adult": 48,
+      "pregnancy.three_kit_modded.senior": 6,
+
+      "pregnancy.four_kit_modded.young adult": 192,
+      "pregnancy.four_kit_modded.adult": 24,
+      "pregnancy.four_kit_modded.senior adult": 48,
+      "pregnancy.four_kit_modded.senior": 3,
+
+      "pregnancy.five_kit_modded.young adult": 96,
+      "pregnancy.five_kit_modded.adult": 24,
+      "pregnancy.five_kit_modded.senior adult": 48,
+      "pregnancy.five_kit_modded.senior": 1,
+
+      "pregnancy.six_kit_modded.young adult": 32,
+      "pregnancy.six_kit_modded.adult": 8,
+      "pregnancy.six_kit_modded.senior adult": 16,
+      "pregnancy.six_kit_modded.senior": 0,
+
+      "pregnancy.nine_kit_modded.young adult": 8,
+      "pregnancy.nine_kit_modded.adult": 2,
+      "pregnancy.nine_kit_modded.senior adult": 3,
+
+      "pregnancy.max_kit_modded.young adult": 0,
+      "pregnancy.max_kit_modded.adult": 0,
+      "pregnancy.max_kit_modded.senior adult": 0
     }
   },
   "heartless": {

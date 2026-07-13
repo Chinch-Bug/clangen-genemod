@@ -828,7 +828,10 @@ class Clan:
                             if rel := clan_data["relations"].get("other_clan" + (str(i+1)), {}).get("other_clan" + (str(j+1))):
                                 game.clan.relations[clan.group_ID][o_clan.group_ID] = rel
                                 continue
-                        game.clan.relations[clan.group_ID][o_clan.group_ID] = randint(8, 12)
+                        game.clan.relations[clan.group_ID][o_clan.group_ID] = randint(
+                            get_config("clan_creation.starting_clan_relation")[0],
+                            get_config("clan_creation.starting_clan_relation")[1],
+                        )
 
         for cat in clan_data["clan_cats"].split(","):
             if cat in Cat.all_cats:
@@ -1350,11 +1353,11 @@ class Clan:
             other_enum = clan.group_ID
 
         if get_label:
-            if game.clan.relations[main_enum][other_enum] > 17:
+            if game.clan.relations[main_enum][other_enum] > get_config("reputation.other_clans.neutral"):
                 return "ally"
-            elif 7 <= game.clan.relations[main_enum][other_enum] <= 17:
-                return "neutral"
-            return "hostile"
+            elif game.clan.relations[main_enum][other_enum] <= get_config("reputation.other_clans.hostile"):
+                return "hostile"
+            return "neutral"
         
         return game.clan.relations[main_enum][other_enum]
 
@@ -1368,7 +1371,7 @@ class Clan:
 
         value = value or game.clan.relations[main_enum][other_enum]
         
-        game.clan.relations[main_enum][other_enum] = int(value + offset)
+        game.clan.relations[main_enum][other_enum] = max(0, min(int(value + offset), get_config("reputation.other_clans.relation_cap")))
 
     def get_wars(self, clan):
         enemies = []
@@ -1733,7 +1736,7 @@ class Afterlife:
     @stability.setter
     def stability(self, value):
         raise Exception(
-            "ERROR: Afterlife aggresstabilitysion cannot be set manually as it is meant to be calculated from the currently dead cats."
+            "ERROR: Afterlife stability cannot be set manually as it is meant to be calculated from the currently dead cats."
         )
 
     @property

@@ -1355,3 +1355,12 @@ dev_tools = false
 
   [settings.force_disable]
     "modded_kits" = false
+    
+[reputation]
+  # manages reputation quotas
+  [reputation.other_clans]
+  # caps for other clan reputation levels
+    relation_cap = 30
+    ally = 30
+    neutral = 17
+    hostile = 7
