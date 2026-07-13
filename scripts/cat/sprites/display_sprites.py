@@ -295,19 +295,20 @@ def generate_sprite(
                             sprites.sprites['lightbasecolours0'], (0, 0))
                         modifiers = {
                             "chinchilla": 2,
-                            "shaded": 3,
-                            "high": 5,
-                            "medium": 6,
-                            "low": 7
+                            "shaded": 4,
+                            "high": 8,
+                            "medium": 8,
+                            "low": 9
                         }
-                        opacity = int(
-                            25 * (modifiers.get(phenotype.banding, 5) / (1 * (int("silver" in whichbase) + 1))))
+                        unders = sprites.sprites["Tabby_unders" + cat_sprite].copy()
+                        unders.fill((255, 255, 255, 180), special_flags=pygame.BLEND_RGBA_MULT)
+                        charc_shading.blit(unders, (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
+                        opacity = int(25 * modifiers.get(phenotype.banding, 5))
                         charc_shading.set_alpha(opacity)
                         charc.blit(charc_shading, (0, 0))
                     charc.blit(sprites.sprites['charcoal' + cat_sprite], (0, 0))
                     if not preset_pattern and "fullbar" not in pattern[0] and "redbar" not in pattern[0]:
-                        charc.blit(
-                            sprites.sprites[pattern[0] + cat_sprite], (0, 0))
+                        charc.blit(sprites.sprites[pattern[0] + cat_sprite], (0, 0))
 
                     if (phenotype.agouti == ["Apb", "Apb"]):
                         charc.set_alpha(191)
@@ -379,21 +380,19 @@ def generate_sprite(
                     stripebase.blit(shading, (0, 0))
 
                 if coloursurface:
-                    stripebase.blit(coloursurface, (0, 0),
-                                    special_flags=pygame.BLEND_RGBA_MULT)
+                    stripebase.blit(coloursurface, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    stripebase.blit(coloursurface, (0, 0), special_flags=pygame.BLEND_RGB_MAX)
                 elif 'basecolours' in stripecolour:
-                    stripebase.blit(
-                        sprites.sprites[stripecolour], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    stripebase.blit(sprites.sprites[stripecolour], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    stripebase.blit(sprites.sprites[stripecolour], (0, 0), special_flags=pygame.BLEND_RGB_MAX)
                 else:
-                    surf = pygame.Surface(
-                        (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                    surf.blit(sprites.sprites[stripecolourdict.get(
-                        stripecolour[:-1], stripecolour[:-1])+stripecolour[-1]], (0, 0))
+                    surf = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                    surf.blit(sprites.sprites[stripecolourdict.get(stripecolour[:-1], stripecolour[:-1])+stripecolour[-1]], (0, 0))
                     if phenotype.caramel == 'caramel' and not_red:
                         surf.blit(sprites.sprites['caramel0'], (0, 0))
 
-                    stripebase.blit(
-                        surf, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    stripebase.blit(surf, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    stripebase.blit(surf, (0, 0), special_flags=pygame.BLEND_RGB_MAX)
 
                 return stripebase
 
