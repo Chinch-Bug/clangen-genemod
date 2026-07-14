@@ -11,7 +11,7 @@
             "border"
         ],
         "tags": [],
-        "patrol_art": "gen_bord_otherclan_allies",
+        "patrol_art": "cat_sprites/gen_bord_otherclan_OwOw",
         "min_cats": 1,
         "max_cats": 6,
         "min_max_status": {},
@@ -440,7 +440,7 @@
                 "warrior"
             ]
         },
-        "patrol_art": "gen_med_borderherb",
+        "patrol_art": "cat_sprites/gen_med_borderherb_Mc",
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {
@@ -511,7 +511,7 @@
                 "leader"
             ]
         },
-        "patrol_art": "gen_bord_scent_allies",
+        "patrol_art": "cat_sprites/gen_bord_scentallies_Wr",
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {},
@@ -721,7 +721,7 @@
                 "leader"
             ]
         },
-        "patrol_art": "gen_bord_scent_allies",
+        "patrol_art": "cat_sprites/gen_bord_scentallies_Wr",
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {},
@@ -1078,7 +1078,7 @@
                 "any_warrior"
             ]
         },
-        "patrol_art": "gen_bord_otherclan_allies",
+        "patrol_art": "cat_sprites/gen_bord_otherclan_OwOw",
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
