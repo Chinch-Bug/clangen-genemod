@@ -148,7 +148,8 @@
     "card_art": "behavior/resolute.png",
     "modifiers": {
       "outsiders.max_reputation": 29,
-      "outsiders.starting_reputation": 15
+      "outsiders.starting_reputation": 15,
+      "outsiders.change_clan_button": false
     }
   }
 }

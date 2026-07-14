@@ -91,6 +91,7 @@
         mediator_retirement = false
         become_mediator = false
         become_healer = false
+        become_queen = true
         "random med cat" = true
         patrol_lock_meds = false
         allow_mediator_patrols = false

@@ -104,6 +104,8 @@
         "become_mediator_tooltip": "Warriors and elders will have a chance to become mediators upon moonskip.",
         "become_healer": "Allow warriors and apprentices to choose to become healers",
         "become_healer_tooltip": "Warriors and apprentices will have a chance to become healers upon moonskip.",
+        "become_queen": "Allow cats to choose to become permanent queens",
+        "become_queen_tooltip": "Warriors, elders, and mediators may choose to become queens upon moonskip.",
         "no_litters": "Prevent new litters",
         "no_litters_tooltip": "While this setting is toggled on, no new litters or pregnancies should occur in the Clan.",
         "block_litters_by_rank": "Block ranks from having kits",
