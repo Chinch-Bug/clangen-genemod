@@ -650,7 +650,7 @@ class Genotype:
         elif self.odds["DBE"] > 0 and randint(1, self.odds["DBE"]) == 1 and not self.ban_genes:
             self.pax3[0] = choice(['DBEcel', 'DBEcel', 'DBEre', 'DBEalt', 'DBEalt'])
 
-        self.wideband = choice(self.odds["wideband"])
+        self.wideband = choices([choice([0, 1, 2, 3]), choice([4, 5, 6, 7]), choice([8, 9, 10, 11]), choice([12, 13, 14]), choice([15, 16])], weights=self.odds["wideband"])[0]
         self.rufousing = choice(self.odds["rufousing"])
         self.spotted = ''
         self.tickgenes = ''
@@ -853,7 +853,7 @@ class Genotype:
         elif self.odds["DBE"] > 1 and randint(1, math.ceil(self.odds["DBE"]/modifier)) == 1  and not self.ban_genes:
             self.pax3[0] = choice(['DBEcel', 'DBEcel', 'DBEre', 'DBEalt', 'DBEalt'])
 
-        self.wideband = choice(self.odds["wideband_kittypet"])
+        self.wideband = choices([choice([0, 1, 2, 3]), choice([4, 5, 6, 7]), choice([8, 9, 10, 11]), choice([12, 13, 14]), choice([15, 16])], weights=self.odds["wideband_kittypet"])[0]
         self.rufousing = choice(self.odds["rufousing_kittypet"])
         self.spotted = ''
         self.tickgenes = ''
