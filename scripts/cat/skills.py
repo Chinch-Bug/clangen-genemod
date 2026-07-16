@@ -40,12 +40,7 @@ class SkillPath(Enum):
         "talented tunneler",
         "subterranean master"
     )
-    STEALTH = (
-        "likes to hide",
-        "good at sneaking",
-        "very stealthy",
-        "quiet as a phantom"
-    )
+    STEALTH = ("hide and seek champ", "sneaky", "very stealthy", "one with shadows")
     SPEAKER = (
         "confident with words",
         "good speaker",

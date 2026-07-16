@@ -67,7 +67,7 @@ def generate_sprite(
         dead = cat.dead
 
     # setting the cat_sprite (bc this makes things much easier)
-
+    cat_sprite = ""
     # sick sprites
     if (
         not disable_sick_sprite
@@ -76,7 +76,12 @@ def generate_sprite(
         and get_config("cat_sprites.sick_sprites")
     ):
         if age in (CatAge.KITTEN, CatAge.ADOLESCENT):
-            cat_sprite = sprite_poses["sick_young0"]
+            if age == CatAge.KITTEN:
+                cat_sprite = sprite_poses["sick_kitten0"]
+            elif age == CatAge.ADOLESCENT:
+                cat_sprite = sprite_poses["sick_adolescent0"]
+        elif age == CatAge.SENIOR:
+            cat_sprite = sprite_poses["sick_senior0"]
         else:
             cat_sprite = sprite_poses["sick_adult0"]
 
@@ -99,8 +104,6 @@ def generate_sprite(
                 cat_sprite = sprite_poses[cat.pelt.cat_sprites[age].replace("short", "long")]
             else:
                 cat_sprite = sprite_poses[cat.pelt.cat_sprites[age]]
-
-    alt_cat_sprite = str(int(cat_sprite)-3)
 
     new_sprite = pygame.Surface(
         (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA
@@ -1269,29 +1272,28 @@ def generate_sprite(
                         data["pupil"] = pupils
                 
                 colour = pygame.Color(data["inner"])
-                eye_section = sprites.sprites['eyeinner' + alt_cat_sprite].copy()
+                eye_section = sprites.sprites['eyeinner' + cat_sprite].copy()
                 pixel_array = pygame.PixelArray(eye_section)
                 pixel_array.replace((255, 255, 255, 255), colour, distance=0)
                 del pixel_array
                 eyes.blit(eye_section, (0, 0))
                 
                 colour = pygame.Color(data["outer"])
-                eye_section = sprites.sprites['eyeouter' + alt_cat_sprite].copy()
-                eyes.blit(eye_section, (0, 0))
+                eye_section = sprites.sprites['eyeouter' + cat_sprite].copy()
                 pixel_array = pygame.PixelArray(eye_section)
                 pixel_array.replace((255, 255, 255, 255), colour, distance=0)
                 del pixel_array
                 eyes.blit(eye_section, (0, 0))
                 
                 colour = pygame.Color(data["pupil"] if phenotype.pinkdilute[0] != 'dp' and not game_setting_get('black_pupils') else ([0, 0, 0] if phenotype.pinkdilute[0] != 'dp' and (phenotype.pointgene[1] != "c" or phenotype.pointgene[0] == "C") else [80, 20, 29]))
-                eye_section = sprites.sprites['eyepupil' + alt_cat_sprite].copy()
+                eye_section = sprites.sprites['eyepupil' + cat_sprite].copy()
                 pixel_array = pygame.PixelArray(eye_section)
                 pixel_array.replace((255, 255, 255, 255), colour, distance=0)
                 del pixel_array
                 eyes.blit(eye_section, (0, 0))
                 return eyes
 
-            if(int(cat_sprite) < 24 and int(cat_sprite) > 2):
+            if(int(cat_sprite) % 4 != 3 and int(cat_sprite) > 3):
                 lefteye = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 righteye = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 special = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
@@ -1330,19 +1332,19 @@ def generate_sprite(
 
         age = cat.moons
 
-        if int(cat_sprite) < 3:
+        if int(cat_sprite) < 4:
             age = 0
-        elif 2 < int(cat_sprite) < 6 and (5 < cat.moons or cat.moons < 1):
+        elif 3 < int(cat_sprite) < 8 and (5 < cat.moons or cat.moons < 1):
             age = 4
-        elif 5 < int(cat_sprite) < 12 and (11 < cat.moons or cat.moons < 6):
+        elif 7 < int(cat_sprite) < 16 and (11 < cat.moons or cat.moons < 6):
             age = 10
-        elif cat_sprite in ['23', '25'] and (12 < cat.moons or cat.moons < 1):
+        elif cat_sprite in ['30'] and (12 < cat.moons or cat.moons < 1):
             age = 6
-        elif 12 < int(cat_sprite) < 18 or cat_sprite in ['21', '22', '24'] and cat.moons > 120:
+        elif 15 < int(cat_sprite) < 24 and cat.moons > 120:
             age = 30
-        elif 17 < int(cat_sprite) < 21 and cat.moons < 120:
+        elif 23 < int(cat_sprite) < 28 and cat.moons < 120:
             age = 120
-        elif int(cat_sprite) > 11 and cat_sprite not in ['23', '25'] and cat.moons < 12:
+        elif int(cat_sprite) > 15 and cat_sprite not in ['28', '29'] and cat.moons < 12:
             age = 60
         gensprite.blit(gen_sprite(phenotype, age), (0, 0))
 
@@ -1510,11 +1512,11 @@ def generate_sprite(
                 tail.blit(new_sprite, (0, 0),
                           special_flags=pygame.BLEND_RGBA_MIN)
                 offset = 2
-                if cat_sprite in ["2", "12", "13", "14", "16", "18"]:
+                if cat_sprite in ["2", "11", "16", "17", "18", "19", "21", "24"]:
                     new_sprite.blit(tail, (offset, 1))
-                elif cat_sprite in ["4", "6", "7", "8", "9", "10", "11", "15", "19", "20"]:
+                elif cat_sprite in ["5", "8", "9", "10", "12", "13", "14", "20", "25", "26", "27"]:
                     new_sprite.blit(tail, (-offset, -1))
-                elif cat_sprite in ["1", "5"]:
+                elif cat_sprite in ["1", "6", "7"]:
                     new_sprite.blit(tail, (0, -2))
 
             if get_config("fun.april_fools_hats"):

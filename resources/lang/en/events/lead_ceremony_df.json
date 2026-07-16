@@ -118,8 +118,8 @@
     "reserved_adult": {
       "tags": [],
       "lead_trait": [],
-      "star_trait": ["calm", "careful", "insecure", "lonesome", "loyal", "nervous", "sneaky", "strange"],
-      "rank": ["warrior", "elder", "healer", "mediator", "apprentice", "deputy", "healer apprentice", "mediator apprentice"],
+      "star_trait": ["calm", "careful", "insecure", "lonesome", "loyal", "nervous", "strange"],
+      "rank": ["warrior", "elder", "medicine cat", "mediator", "apprentice", "deputy", "medicine cat apprentice", "mediator apprentice"],
       "life_giving": [
         {
           "text": "r_c seemed to appear to m_c out of nowhere in the shadowy gloom of the Dark Forest, and quietly gives {PRONOUN/m_c/object} a life for [virtue]. As quickly as {PRONOUN/r_c/subject} appeared, r_c vanished when the life was given.",
@@ -508,11 +508,11 @@
       ]
     },
 
-    "sneaky_adult": {
+    "cunning_adult": {
       "tags": [],
       "lead_trait": [],
-      "star_trait": ["sneaky"],
-      "rank": ["warrior", "elder", "healer", "mediator", "apprentice", "deputy", "healer apprentice", "mediator apprentice"],
+      "star_trait": ["cunning"],
+      "rank": ["warrior", "elder", "medicine cat", "mediator", "apprentice", "deputy", "medicine cat apprentice", "mediator apprentice"],
       "life_giving": [
         {
           "text": "A pair of piercing eyes gleam from the darkness, hinting at the wickedness that lies within. With calculated stealth, r_c approaches m_c as if stalking prey, each paw touching the ground with an unsettling grace. {PRONOUN/r_c/subject/CAP} {VERB/r_c/give/gives} a life for [virtue], {PRONOUN/r_c/poss} malevolent presence disappearing as quickly as it approached.",
@@ -1158,9 +1158,9 @@
       ]
     },
   
-    "sneaky_warrior": {
+    "cunning_warrior": {
       "tags": [],
-      "lead_trait": ["sneaky"],
+      "lead_trait": ["cunning"],
       "star_trait": [],
       "rank": ["warrior", "elder", "healer", "mediator", "apprentice", "deputy", "healer apprentice", "mediator apprentice"],
       "life_giving": [

@@ -4692,7 +4692,7 @@
         "new_accessory": ["JAY FEATHERS", "BLUE FEATHERS"],
         "m_c": {
             "status": ["-kitten"],
-            "trait": ["adventurous", "ambitious", "confident", "bold", "daring", "troublesome", "rebellious", "fierce", "competitive", "cunning", "shameless", "flamboyant", "sneaky", "arrogant"]
+            "trait": ["adventurous", "ambitious", "confident", "bold", "daring", "troublesome", "rebellious", "fierce", "competitive", "cunning", "shameless", "flamboyant", "arrogant"]
         },
         "injury": [
             {
@@ -4725,7 +4725,7 @@
         },
         "r_c": {
             "status": ["-kitten"],
-            "trait": ["adventurous", "ambitious", "confident", "bold", "daring", "troublesome", "rebellious", "fierce", "competitive", "cunning", "shameless", "flamboyant", "sneaky", "arrogant"]
+            "trait": ["adventurous", "ambitious", "confident", "bold", "daring", "troublesome", "rebellious", "fierce", "competitive", "cunning", "shameless", "flamboyant", "arrogant"]
         },
         "injury": [
             {
@@ -4802,7 +4802,7 @@
         "new_accessory": ["SPARROW FEATHERS"],
         "r_c": {
             "status": ["apprentice"],
-            "trait": ["adventurous", "ambitious", "confident", "bold", "daring", "troublesome", "rebellious", "fierce", "competitive", "cunning", "shameless", "flamboyant", "sneaky", "arrogant"]
+            "trait": ["adventurous", "ambitious", "confident", "bold", "daring", "troublesome", "rebellious", "fierce", "competitive", "cunning", "shameless", "flamboyant", "arrogant"]
         },
         "m_c": {
             "status": ["apprentice"],
@@ -7289,7 +7289,6 @@
                 "strict",
                 "troublesome",
                 "vengeful",
-                "sneaky",
                 "strange"
             ]
         },
@@ -7408,7 +7407,6 @@
                 "strict",
                 "troublesome",
                 "vengeful",
-                "sneaky",
                 "strange"
             ]
         },
@@ -7640,7 +7638,6 @@
                 "strict",
                 "troublesome",
                 "vengeful",
-                "sneaky",
                 "strange"
             ]
         },
@@ -9735,6 +9732,7 @@
             "current_rep": [
                 "hostile"
             ],
+            "has_rank": ["any_warrior_mult"],
             "changed": -2
         }
     },
@@ -9770,6 +9768,7 @@
             "current_rep": [
                 "hostile"
             ],
+            "has_rank": ["any_warrior_mult"],
             "changed": -2
         }
     },
@@ -9806,7 +9805,6 @@
                 "righteous",
                 "daring",
                 "shameless",
-                "sneaky",
                 "cunning",
                 "rebellious"
             ]
@@ -10706,7 +10704,6 @@
                 "oblivious",
                 "daring",
                 "shameless",
-                "sneaky",
                 "strange",
                 "flamboyant"
             ]
@@ -11827,7 +11824,6 @@
                 "ambitious",
                 "confident",
                 "shameless",
-                "sneaky",
                 "vengeful",
                 "cunning",
                 "rebellious"
@@ -11910,7 +11906,6 @@
                 "cold",
                 "ambitious",
                 "shameless",
-                "sneaky",
                 "vengeful",
                 "cunning"
             ]
@@ -11955,7 +11950,6 @@
                 "confident",
                 "adventurous",
                 "shameless",
-                "sneaky",
                 "strange",
                 "cunning",
                 "rebellious"
@@ -12582,7 +12576,6 @@
                 "strict",
                 "troublesome",
                 "vengeful",
-                "sneaky",
                 "strange"
             ]
         },
@@ -12703,7 +12696,6 @@
                 "strict",
                 "troublesome",
                 "vengeful",
-                "sneaky",
                 "strange"
             ]
         },
@@ -14543,10 +14535,7 @@
                 "elder"
             ],
             "relationship_status": [ ],
-            "skill": [ ],
-            "trait": [
-                "-sneaky"
-            ],
+            "skill": ["-STEALTH,0"],
             "backstory": [ ],
             "dies": false
         },

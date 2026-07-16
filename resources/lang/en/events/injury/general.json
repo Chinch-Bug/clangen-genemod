@@ -4205,8 +4205,7 @@
                 "troublesome",
                 "insecure",
                 "lonesome",
-                "nervous",
-                "sneaky"
+                "nervous"
             ]
         },
         "injury": [
@@ -5426,7 +5425,6 @@
                 "insecure",
                 "careful",
                 "calm",
-                "sneaky",
                 "strange"
             ]
         },
@@ -5469,7 +5467,6 @@
                 "insecure",
                 "careful",
                 "calm",
-                "sneaky",
                 "strange"
             ]
         },
@@ -8549,9 +8546,9 @@
         "frequency": 1,
         "event_text": "m_c always leaves battles first, purportedly to fetch reinforcements or warn the camp. {PRONOUN/m_c/poss/CAP} Clanmates have begun to notice that {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} never as badly injured as the other warriors.",
         "m_c": {
-            "status": [ "leader", "deputy", "warrior" ],
-            "skill": [ "-FIGHTER,1" ],
-            "trait": [ "nervous", "shameless", "insecure", "cunning", "sneaky", "childish" ]
+            "status": ["leader", "deputy", "warrior"],
+            "skill": ["-FIGHTER,1"],
+            "trait": ["nervous", "shameless", "insecure", "cunning", "childish"]
         },
         "injury": [
             {
@@ -9253,8 +9250,7 @@
                 "fierce",
                 "insecure",
                 "grumpy",
-                "shameless",
-                "sneaky"
+                "shameless"
             ]
         },
         "injury": [

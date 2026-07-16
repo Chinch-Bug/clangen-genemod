@@ -3374,7 +3374,6 @@
                 "righteous",
                 "loyal",
                 "vengeful",
-                "sneaky",
                 "bloodthirsty"
             ]
         },
@@ -3448,8 +3447,7 @@
                 "cold",
                 "righteous",
                 "loyal",
-                "vengeful",
-                "sneaky"
+                "vengeful"
             ]
         },
         "history": [
@@ -7172,8 +7170,7 @@
                 "bloodthirsty",
                 "righteous",
                 "fierce",
-                "cold",
-                "sneaky"
+                "cold"
             ]
         },
         "history": [
@@ -7247,8 +7244,7 @@
                 "bloodthirsty",
                 "righteous",
                 "fierce",
-                "cold",
-                "sneaky"
+                "cold"
             ],
             "dies": true
         },
@@ -7437,7 +7433,6 @@
                 "confident",
                 "daring",
                 "shameless",
-                "sneaky",
                 "strange",
                 "vengeful",
                 "wise"
@@ -7716,8 +7711,7 @@
                 "shameless",
                 "troublesome",
                 "vengeful",
-                "strange",
-                "sneaky"
+                "strange"
             ],
             "dies": true
         },
@@ -8944,7 +8938,6 @@
                 "-kitten"
             ],
             "trait": [
-                "sneaky",
                 "lonesome",
                 "cold",
                 "strict",
@@ -9555,7 +9548,6 @@
                 "confident",
                 "adventurous",
                 "shameless",
-                "sneaky",
                 "arrogant",
                 "competitive",
                 "cunning",
@@ -9617,7 +9609,6 @@
                 "troublesome",
                 "adventurous",
                 "shameless",
-                "sneaky",
                 "strange",
                 "competitive",
                 "cunning",
@@ -9673,7 +9664,6 @@
             "trait": [
                 "bold",
                 "daring",
-                "sneaky",
                 "loyal",
                 "confident",
                 "thoughtful",

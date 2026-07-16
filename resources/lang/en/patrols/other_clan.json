@@ -401,7 +401,6 @@
                     "careful",
                     "calm",
                     "wise",
-                    "sneaky",
                     "responsible"
                 ],
                 "prey": [
@@ -3808,8 +3807,7 @@
                 "stat_trait": [
                     "bloodthirsty",
                     "vengeful",
-                    "cunning",
-                    "sneaky"
+                    "cunning"
                 ],
                 "injury": [
                     {
@@ -4154,7 +4152,6 @@
                     "confident",
                     "daring",
                     "flamboyant",
-                    "sneaky",
                     "daring",
                     "cunning",
                     "rebellious",
@@ -4234,7 +4231,6 @@
                     "confident",
                     "daring",
                     "flamboyant",
-                    "sneaky",
                     "daring",
                     "cunning",
                     "rebellious",
@@ -4286,7 +4282,6 @@
                     "confident",
                     "daring",
                     "flamboyant",
-                    "sneaky",
                     "daring",
                     "cunning",
                     "rebellious",

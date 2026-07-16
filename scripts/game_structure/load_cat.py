@@ -319,10 +319,14 @@ def accurate_porting(cat, info):
     elif (main_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"] and main_colour["colour"] not in tabby_bases) or (main_colour["colour"] == "GHOST"):
         cat.phenotype.agouti = ["a", "a"]
 
-    if main_colour["pattern"] in ["ticked", "agouti", "singlestripe"] or (not cat.chimerapheno and patch_colour["pattern"] in ["ticked", "agouti", "singlestripe"]):
+    if main_colour["pattern"] in ["ticked", "agouti", "singlestripe", "freckled"] or (not cat.chimerapheno and patch_colour["pattern"] in ["ticked", "agouti", "singlestripe", "freckled"]):
         cat.phenotype.ticked[0] = "Ta"
         if main_colour["pattern"] != "ticked" or (not cat.chimerapheno and patch_colour["pattern"] != "ticked"):
             cat.phenotype.tickgenes = "2222"
+        if main_colour["pattern"] == "freckled" or (not cat.chimerapheno and patch_colour["pattern"] == "freckled"):
+            cat.phenotype.ticked = ["Ta", "ta"]
+            cat.phenotype.breakthrough = True
+            cat.phenotype.mack[0] = "Mc"
     elif main_colour["pattern"] in ["classic", "sokoke", "marbled"] or (not cat.chimerapheno and patch_colour["pattern"] in ["classic", "sokoke", "marbled"]):
         cat.phenotype.ticked = ["ta", "ta"]
         cat.phenotype.mack = ["mc", "mc"]
@@ -332,8 +336,8 @@ def accurate_porting(cat, info):
         cat.phenotype.ticked = ["ta", "ta"]
         cat.phenotype.mack[0] = "Mc"
         cat.phenotype.spotted = "0000"
-        if main_colour["pattern"] in ["speckled", "rosette", "bengal"] or (not cat.chimerapheno and patch_colour["pattern"] in ["speckled", "rosette", "bengal"]):
-            cat.phenotype.spotted = "2222"
+    if main_colour["pattern"] in ["speckled", "rosette", "bengal", "freckled"] or (not cat.chimerapheno and patch_colour["pattern"] in ["speckled", "rosette", "bengal", "freckled"]):
+        cat.phenotype.spotted = "2222"
     if (main_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"] and main_colour["colour"] in tabby_bases):
         cat.phenotype.ticked[0] = "Ta"
     
@@ -344,10 +348,14 @@ def accurate_porting(cat, info):
             if patch_colour["pattern"] != "rosette":
                 cat.chimerapheno.agouti = ["Apb", "a"]
 
-        if patch_colour["pattern"] in ["ticked", "agouti", "singlestripe"]:
+        if patch_colour["pattern"] in ["ticked", "agouti", "singlestripe", "freckled"]:
             cat.chimerapheno.ticked[0] = "Ta"
             if patch_colour["pattern"] != "ticked":
                 cat.chimerapheno.tickgenes = "2222"
+            if patch_colour["pattern"] == "freckled":
+                cat.chimerapheno.ticked = ["Ta", "ta"]
+                cat.chimerapheno.breakthrough = True
+                cat.chimerapheno.mack[0] = "Mc"
         elif patch_colour["pattern"] in ["classic", "sokoke", "marbled"]:
             cat.chimerapheno.ticked = ["ta", "ta"]
             cat.chimerapheno.mack = ["mc", "mc"]
@@ -357,12 +365,12 @@ def accurate_porting(cat, info):
             cat.chimerapheno.ticked = ["ta", "ta"]
             cat.chimerapheno.mack[0] = "Mc"
             cat.chimerapheno.spotted = "0000"
-            if patch_colour["pattern"] in ["speckled", "rosette", "bengal"]:
-                cat.chimerapheno.spotted = "2222"
         elif (patch_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"] and patch_colour["colour"] not in tabby_bases) or (patch_colour["colour"] == "GHOST"):
             cat.chimerapheno.agouti = ["a", "a"]
         elif (patch_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"] and patch_colour["colour"] in tabby_bases):
             cat.chimerapheno.ticked[0] = "Ta"
+        if patch_colour["pattern"] in ["speckled", "rosette", "bengal", "freckled"]:
+            cat.chimerapheno.spotted = "2222"
     
     if not patch_colour["pattern"] and main_colour["pattern"] in ["singlecolour", "twocolour"] and main_colour["colour"] == "WHITE":
         cat.phenotype.white[0] = "W"
