@@ -2669,7 +2669,7 @@ def handle_murder(cat, clan):
             get_config("death_related.murder.deputy_prefer_leader")
             and cat.status.rank == CatRank.DEPUTY
         ):
-            possible_targets = [c for c in targets if c.cat_to.status.is_leader and c.status.group_ID == cat.status.group_ID]
+            possible_targets = [c for c in targets if c.status.is_leader and c.status.group_ID == cat.status.group_ID]
             if possible_targets:
                 targets = possible_targets
 
@@ -2756,14 +2756,14 @@ def handle_murder(cat, clan):
 
         # little easter egg just for fun
         if cat.personality.trait in ("ambitious", "arrogant", "rebellious") and (
-            Cat.fetch_cat(chosen_target.cat_to).status.is_leader
-            or Cat.fetch_cat(chosen_target.cat_to).status.rank == CatRank.DEPUTY
+            chosen_cat.status.is_leader
+            or chosen_cat.status.rank == CatRank.DEPUTY
         ):
             kill_chance -= 10
             if cat.status.rank == CatRank.DEPUTY:
                 kill_chance -= 15
 
-        if cat.status.rank == CatRank.DEPUTY and chosen_target.cat_to.status.is_leader:
+        if cat.status.rank == CatRank.DEPUTY and chosen_cat.status.is_leader:
             kill_chance -= get_config("death_related.murder.deputy_murder_modifier")
 
         kill_chance -= cat.personality.aggression
