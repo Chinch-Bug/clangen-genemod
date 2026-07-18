@@ -1245,7 +1245,9 @@ def generate_sprite(
             gensprite.blit(white_leathers, (0, 0))
             
 
-            if(phenotype.fold[0] != 'Fd' or phenotype.curl[0] == 'Cu'):
+            if(phenotype.fold[0] == 'Fd' and phenotype.curl[0] == 'Cu'):
+                gensprite.blit(sprites.sprites['fold_curl_ears' + cat_sprite], (0, 0))
+            elif(phenotype.fold[0] != 'Fd' or phenotype.curl[0] == 'Cu'):
                 gensprite.blit(sprites.sprites['ears' + cat_sprite], (0, 0))
 
 

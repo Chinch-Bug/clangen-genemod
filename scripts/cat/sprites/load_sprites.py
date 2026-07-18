@@ -414,6 +414,7 @@ class Sprites:
 
         #genemod extra
         self.make_group('Other/ears', (0, 0), 'ears')
+        self.make_group('Other/fold_curl_ears', (0, 0), 'fold_curl_ears')
         self.make_group('Other/noses', (0, 0), 'nose')
         self.make_group('Other/nose_colours', (0, 0), 'nosecolours', sprites_x=3, sprites_y=5)
         self.make_group('Other/paw_pads', (0, 0), 'pads')
