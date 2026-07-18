@@ -301,7 +301,7 @@ def get_random_player_clan_cat(cat, not_allowed: list["Cat"] = None) -> Optional
     cat_list = [
         c
         for c in cat.all_cats.values()
-        if c.status.group_ID == cat.status.group_ID and c not in not_allowed
+        if c.status.get_last_living_group() == cat.status.group_ID and c not in not_allowed
     ]
     if not cat_list:
         return None
