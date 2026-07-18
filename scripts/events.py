@@ -1606,7 +1606,9 @@ def perform_ceremonies(cat, clan):
         if not clan.leader or clan.leader.status.group_ID != clan.group_ID:
             if clan.deputy.status.group_ID == clan.group_ID:
                 ceremony(cat, CatRank.LEADER)
+                cat.generate_lead_ceremony()
                 clan.deputy = None
+                clan.leader = cat
 
     # OTHER CEREMONIES ---------------------------------------
 

@@ -1167,11 +1167,11 @@
     },
     {
         "event_id": "gen_new_cat_war_anydefect1",
-        "location": [ "any" ],
-        "season": [ "any" ],
-        "sub_type": [ "war" ],
+        "location": ["any"],
+        "season": ["any"],
+        "sub_type": ["war"],
         "frequency": 1,
-        "event_text": "n_c:0, the deputy of o_c_n, has defected to c_n in the war, m_c finds {PRONOUN/n_c:0/object} at the border.",
+        "event_text": "The deputy of o_c_n, n_c:0, meets m_c at the border. {PRONOUN/n_c:0/subject/CAP}{VERB/n_c:0/'ve/'s} defected to c_n in the war.",
         "m_c": {
             "status": [
                 "leader", "deputy", "warrior", "healer", "apprentice", "healer apprentice", "mediator", "mediator apprentice"
@@ -1222,7 +1222,7 @@
         "season": [ "any" ],
         "sub_type": [ "war" ],
         "frequency": 3,
-        "event_text": "n_c:0, the medicine cat of o_c_n, has defected to c_n in the war, {PRONOUN/n_c:0/subject} {VERB/n_c:0/meet/meets} m_c at the border.",
+        "event_text": "The medicine cat of o_c_n, n_c:0, meets m_c at the border. {PRONOUN/n_c:0/subject/CAP}{VERB/n_c:0/'ve/'s} defected to c_n in the war.",
         "m_c": {
             "status": [
                 "leader", "deputy", "warrior", "healer", "apprentice", "healer apprentice", "mediator", "mediator apprentice"

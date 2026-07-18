@@ -166,7 +166,9 @@ class PatrolScreen(Screens):
                     able_no_med = [
                         cat
                         for cat in self.able_cats
-                        if not cat.status.rank.is_any_medicine_rank()
+                        if not cat.status.rank.is_any_medicine_rank() and
+                        not cat.status.rank.is_any_mediator_rank() and
+                        not cat.status.rank.is_any_queen_rank()
                     ]
                     if len(able_no_med) == 0:
                         able_no_med = self.able_cats
@@ -188,7 +190,9 @@ class PatrolScreen(Screens):
                     able_no_med = [
                         cat
                         for cat in self.able_cats
-                        if not cat.status.rank.is_any_medicine_rank()
+                        if not cat.status.rank.is_any_medicine_rank() and
+                        not cat.status.rank.is_any_mediator_rank() and
+                        not cat.status.rank.is_any_queen_rank()
                     ]
                     if len(able_no_med) < 3:
                         able_no_med = self.able_cats
@@ -203,7 +207,9 @@ class PatrolScreen(Screens):
                     able_no_med = [
                         cat
                         for cat in self.able_cats
-                        if not cat.status.rank.is_any_medicine_rank()
+                        if not cat.status.rank.is_any_medicine_rank() and
+                        not cat.status.rank.is_any_mediator_rank() and
+                        not cat.status.rank.is_any_queen_rank()
                     ]
                     if len(able_no_med) < 6:
                         able_no_med = self.able_cats
@@ -569,7 +575,9 @@ class PatrolScreen(Screens):
             able_no_med = [
                 cat
                 for cat in self.able_cats
-                if not cat.status.rank.is_any_medicine_rank()
+                if not cat.status.rank.is_any_medicine_rank() and
+                not cat.status.rank.is_any_mediator_rank() and
+                not cat.status.rank.is_any_queen_rank()
             ]
             if get_clan_setting("random med cat"):
                 able_no_med = self.able_cats
@@ -1116,7 +1124,7 @@ class PatrolScreen(Screens):
             if (
                 the_cat.in_camp
                 and the_cat.ID not in game.patrolled
-                and the_cat.status.rank.is_allowed_to_patrol(get_clan_setting("allow_mediator_patrols"))
+                and the_cat.status.rank.is_allowed_to_patrol(get_clan_setting("allow_mediator_patrols"), get_clan_setting("allow_queen_patrols"))
                 and the_cat.status.group_ID == self.current_clan.group_ID
                 and the_cat not in self.current_patrol
                 and not the_cat.not_working()

@@ -95,6 +95,7 @@
         "random med cat" = true
         patrol_lock_meds = false
         allow_mediator_patrols = false
+        allow_queen_patrols = true
         block_litters_by_rank = false
         block_litters_leader = false
         block_litters_deputy = false
