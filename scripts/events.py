@@ -2721,7 +2721,7 @@ def handle_murder(cat, clan):
             get_config("death_related.murder.deputy_prefer_leader")
             and cat.status.rank == CatRank.DEPUTY
         ):
-            possible_targets = [c for c in targets if c.cat_to.status.is_leader and c.status.group_ID == cat.status.group_ID]
+            possible_targets = [c for c in targets if c.cat_to.status.is_leader and c.cat_to.status.group_ID == cat.status.group_ID]
             if possible_targets:
                 targets = possible_targets
 
