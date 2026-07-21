@@ -1,4 +1,30 @@
 {
+  "easy_pickings": {
+    "card_art": "environment/lean_meat.png",
+    "modifiers": {
+      "death_related.size_modifiers": {
+        "teacup": -75,
+        "tiny" : -50,
+        "small" : -25,
+        "below average" : 0,
+        "average" : 0,
+        "above average" : 0,
+        "large" : 5,
+        "massive" : 10,
+        "giant" : 15,
+        "goliath" : 25
+      },
+      "death_related.kit_death_chances": {
+        "0": 0.35,
+        "1": 0.25,
+        "2": 0.2,
+        "3": 0.2,
+        "4": 0.1,
+        "5": 0.1
+      },
+      "settings.force_enable.modded_kits": true
+    }
+  },
   "lean_meat": {
     "card_art": "environment/lean_meat.png",
     "modifiers": {

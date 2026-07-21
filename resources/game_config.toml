@@ -703,6 +703,19 @@ dev_tools = false
     "4" = 0.05
     "5" = 0.05
 
+  # directly added to base death chance, depending on the adult size of the cat, starting at adolescence
+  [death_related.size_modifiers]
+    "teacup" = 0
+    "tiny" = 0
+    "small" = 0
+    "below average" = 0
+    "average" = 0
+    "above average" = 0
+    "large" = 0
+    "massive" = 0
+    "giant" = 0
+    "goliath" = 0
+
   [death_related.murder]
     # base 1/2^(chance) a completely random murder occurs
     # aggression and instability will make the denominator lower and increase chance of murder
@@ -1351,6 +1364,7 @@ dev_tools = false
   # force a game setting to be true, stopping players from changing it
   [settings.force_enable]
     "deputy" = false
+    "modded_kits" = false
 
   [settings.force_disable]
     "modded_kits" = false

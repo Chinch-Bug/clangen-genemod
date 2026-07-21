@@ -2630,6 +2630,8 @@ def handle_injuries_or_general_death(cat, clan):
     death_chance = get_config(path) - (
         get_config("death_related.war_death_modifier") if use_war_modifier else 0
     )
+    if not cat.age.is_baby():
+        death_chance += get_config("death_related.size_modifiers")[cat.phenotype.height_label]
     if not int(random.random() * death_chance) and not cat.not_working():  # 1/400
         create_short_event(
             event_type="birth_death",

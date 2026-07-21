@@ -264,7 +264,7 @@ class Relation_Events:
             return
 
         for new_cat in new_cats:
-            interaction_limit = constants.CONFIG["new_cat"]["cat_amount_welcoming"]
+            interaction_limit = get_config("new_cat.cat_amount_welcoming")
             already_interacted_cats: list[Cat] = []
 
             for i in range(interaction_limit + 1):

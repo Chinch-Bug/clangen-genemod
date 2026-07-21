@@ -126,6 +126,14 @@ class ClanSettingsScreen(Screens):
                 return
 
             if event.ui_element == self.checkboxes.get("modded_kits") and get_config(
+                "settings.force_enable.modded_kits"
+            ):
+                set_clan_setting("modded_kits", True)
+                self.checkboxes["modded_kits"].check()
+                CruelLockedAction()
+                return
+
+            if event.ui_element == self.checkboxes.get("modded_kits") and get_config(
                 "settings.force_disable.modded_kits"
             ):
                 set_clan_setting("modded_kits", False)

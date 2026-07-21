@@ -1,4 +1,4 @@
-from random import choice
+from random import choice, randint
 from typing import Optional
 
 import i18n
@@ -370,8 +370,13 @@ class ChooseCatsScreen(MakeClanScreenBase):
                 ]
             )
         self.clan_info.starting_members = []
-        cat_range = get_config("clan_creation.quickstart_cats")
-        for i in range(1, choice(range(cat_range[0], cat_range[1]+1))):
+        minimum_needed = self.get_config_during_creation(
+            "clan_creation.minimum_membership"
+        ) - len(self.clan_info.get_all_cats())
+        maximum_needed = self.get_config_during_creation(
+            "clan_creation.maximum_membership"
+        ) - len(self.clan_info.get_all_cats())
+        for _ in range(randint(minimum_needed, maximum_needed)):
             self.clan_info.starting_members.append(
                 choice(
                     [

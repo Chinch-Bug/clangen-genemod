@@ -371,6 +371,9 @@ class Clan:
             save_clan_settings()
 
         # modded_kits
+        if get_config("settings.force_enable.modded_kits"):
+            set_clan_setting("modded_kits", True)
+            save_clan_settings()
         if get_config("settings.force_disable.modded_kits"):
             set_clan_setting("modded_kits", False)
             save_clan_settings()
