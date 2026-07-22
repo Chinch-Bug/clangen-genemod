@@ -977,7 +977,7 @@ class Genotype:
                     self.breeds[breed] = par2.breeds[breed] / 2 
         
         self.refraction = self.kit_gradient_traits(par1.refraction-1, par2.refraction-1, 11, True)+1
-        self.pigmentation = self.kit_gradient_traits(par1.refraction-1, par2.refraction-1, 11, True)+1
+        self.pigmentation = self.kit_gradient_traits(par1.pigmentation-1, par2.pigmentation-1, 11, True)+1
 
         if chimera:
             if isinstance(par3, Genotype) and random() < 0.33:
