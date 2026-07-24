@@ -127,7 +127,6 @@ class Cat:
     }
 
     all_cats: Dict[str, Cat] = {}  # ID: object
-    outside_cats: Dict[str, Cat] = {}  # cats outside the clan
     id_iter = itertools.count()
 
     all_cats_list: List[Cat] = []
@@ -1176,7 +1175,7 @@ class Cat:
         self.status.add_to_group(new_group_ID=clan, age=self.age)
 
         if game.clan:
-            game.clan.add_to_clan(self)
+            game.clan.add_cat(self)
 
         # check if there are kits under 12 moons with this cat and also add them to the clan
         children = self.get_children()
@@ -1191,10 +1190,13 @@ class Cat:
                 and child.moons < 12
             ):
                 if add_kits:
-                    # child.status.add_to_group(new_group=clan, age=child.age)
-                    child.add_to_clan(clan)
-                else:
-                    game.clan.add_to_clan(self)
+                    child.history.add_beginning()
+                    child.status.add_to_group(
+                        new_group_ID=CatGroup.PLAYER_CLAN_ID, age=child.age
+                    )
+                
+                if game.clan:
+                    game.clan.add_cat(child)
                 ids.append(child_id)
 
         return ids

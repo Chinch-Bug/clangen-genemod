@@ -337,6 +337,17 @@ class Sprites:
         for a, x in enumerate(range(1, 6)):
             self.make_group('genemod/bobtails', (a, 0), f'bobtail{x}')
 
+        for a, i in enumerate(['mackerel', 'brokenmack', 'spotted', 'blotched', 'fullbar', 'fullbaralt']):
+            self.make_group('Other/tabbypatterns', (a, 0), f'{i}')
+        for a, i in enumerate(['braided', 'brokenbraid', 'rosetted', 'marbled', 'redbar', 'redbaralt']):
+            self.make_group('Other/tabbypatterns', (a, 1), f'{i}')
+        for a, i in enumerate(['pinstripe', 'brokenpins', 'servaline', 'blotchtail', 'agouti']):
+            self.make_group('Other/tabbypatterns', (a, 2), f'{i}')
+        for a, i in enumerate(['pinsbraided', 'brokenpinsbraid', 'leopard', 'blotchbar', 'pinsbar', 'charcoal']):
+            self.make_group('Other/tabbypatterns', (a, 3), f'{i}')
+        for a, i in enumerate(['macktail', 'bengtail', 'partialrosetted', 'sheeted', 'goldengradient', 'tabbypads']):
+            self.make_group('Other/tabbypatterns', (a, 4), f'{i}')
+
         # genemod base colours
 
         for i, x in enumerate(["black", "chocolate", "cinnamon", 
@@ -369,18 +380,9 @@ class Sprites:
             self.make_group('Tabby/shading', (a, 0), f'{x}shading')
         self.make_group('Tabby/unders', (0, 0), f'Tabby_unders')
 
-        # genemod tabby patterns
-
-        for a, i in enumerate(['mackerel', 'brokenmack', 'spotted', 'blotched', 'fullbar', 'fullbaralt']):
-            self.make_group('Other/tabbypatterns', (a, 0), f'{i}')
-        for a, i in enumerate(['braided', 'brokenbraid', 'rosetted', 'marbled', 'redbar', 'redbaralt']):
-            self.make_group('Other/tabbypatterns', (a, 1), f'{i}')
-        for a, i in enumerate(['pinstripe', 'brokenpins', 'servaline', 'blotchtail', 'agouti']):
-            self.make_group('Other/tabbypatterns', (a, 2), f'{i}')
-        for a, i in enumerate(['pinsbraided', 'brokenpinsbraid', 'leopard', 'blotchbar', 'pinsbar', 'charcoal']):
-            self.make_group('Other/tabbypatterns', (a, 3), f'{i}')
-        for a, i in enumerate(['macktail', 'bengtail', 'partialrosetted', 'sheeted', 'goldengradient', 'tabbypads']):
-            self.make_group('Other/tabbypatterns', (a, 4), f'{i}')
+        for x in os.listdir("sprites/genemod/tabby patterns"):
+            self.spritesheet("sprites/genemod/tabby patterns/"+x, 'Tabbypatterns/'+x.replace('.png', ""))
+            self.make_group('Tabbypatterns/'+x.replace('.png', ""), (0, 0), x.replace('.png', ""))
 
         #genemod point markings
 

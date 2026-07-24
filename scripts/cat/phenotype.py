@@ -594,12 +594,12 @@ class Phenotype(Genotype):
 
         if all_patterns[0] != "agouti":
             if self.bengtype != "normal markings":
-                tail = "bengtail"
+                tail = "bengal tail"
             else:
                 if self.mack[0] == "mc":
-                    tail = "blotchtail"
+                    tail = "blotched tail"
                 else:
-                    tail = "macktail"
+                    tail = "mackerel tail"
             all_patterns.append(tail)
 
             if self.wbtype == "chinchilla" or self.corin[0] == "sg":
