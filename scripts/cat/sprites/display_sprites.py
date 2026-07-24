@@ -310,7 +310,7 @@ def generate_sprite(
                         charc_shading.set_alpha(opacity)
                         charc.blit(charc_shading, (0, 0))
                     charc.blit(sprites.sprites['charcoal' + cat_sprite], (0, 0))
-                    if not preset_pattern and "fullbar" not in pattern[0] and "redbar" not in pattern[0]:
+                    if not preset_pattern and pattern[0] not in ["normal barring", "ticked", "reduced barring", "reduced ticked"]:
                         charc.blit(sprites.sprites[pattern[0] + cat_sprite], (0, 0))
 
                     if (phenotype.agouti == ["Apb", "Apb"]):

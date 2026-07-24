@@ -537,60 +537,60 @@ class Phenotype(Genotype):
         all_patterns = []
 
         if (special == 'redbar'):
-            all_patterns = ['redbaralt']
+            all_patterns = ['reduced barring']
         elif (special == 'ghost'):
-            all_patterns = ['fullbaralt']
+            all_patterns = ['normal barring']
         elif self.ticked[1] == "Ta" or (not self.breakthrough and self.ticked[0] == "Ta"):
             if (self.ticktype == "agouti"):
                 all_patterns = ['agouti']
             elif (self.ticktype == 'reduced barring'):
-                all_patterns = ['redbar']
+                all_patterns = ['reduced ticked']
             else:
-                all_patterns = ['fullbar']
+                all_patterns = ['ticked']
         elif (self.ticked[0] == "Ta"):
             if (self.bengtype == "normal markings"):
                 if (self.spotsum == 4):
-                    all_patterns = ['brokenpins', 'pinsbar']
+                    all_patterns = ['brokenpins', 'breakthrough barring']
                 elif (self.spotsum < 6):
-                    all_patterns = ['pinstripe', 'pinsbar']
+                    all_patterns = ['pinstripe', 'breakthrough barring']
                 else:
-                    all_patterns = ['servaline', 'pinsbar']
+                    all_patterns = ['servaline', 'breakthrough barring']
             else:
                 if (self.spotsum == 4):
-                    all_patterns = ['brokenpinsbraid', 'pinsbar']
+                    all_patterns = ['brokenpinsbraid', 'breakthrough barring']
                 elif (self.spotsum < 6):
-                    all_patterns = ['pinsbraided', 'pinsbar']
+                    all_patterns = ['pinsbraided', 'breakthrough barring']
                 else:
-                    all_patterns = ['leopard', 'pinsbar']
+                    all_patterns = ['leopard', 'breakthrough barring']
         elif (self.mack[0] == "mc"):
             if (self.bengtype == "normal markings"):
-                all_patterns = ['blotched', 'blotchbar']
+                all_patterns = ['blotched', 'blotched barring']
             elif self.bengtype == "mild bengal":
-                all_patterns = ["marbled", "marbled", 'blotchbar']
+                all_patterns = ["marbled", "marbled", 'blotched barring']
             else:
-                all_patterns = ['marbled', 'blotchbar']
+                all_patterns = ['marbled', 'blotched barring']
         else:
             if (self.bengtype == "normal markings"):
                 if (self.spotsum < 3):
-                    all_patterns = ['mackerel', 'fullbaralt']
+                    all_patterns = ['mackerel', 'normal barring']
                 elif (self.spotsum < 6):
-                    all_patterns = ['brokenmack', 'fullbaralt']
+                    all_patterns = ['brokenmack', 'normal barring']
                 else:
-                    all_patterns = ['spotted', 'fullbaralt']
+                    all_patterns = ['spotted', 'normal barring']
             elif (self.bengtype == "mild bengal"):
                 if (self.spotsum < 3):
-                    all_patterns = ['braided', 'fullbaralt']
+                    all_patterns = ['braided', 'normal barring']
                 elif (self.spotsum < 6):
-                    all_patterns = ['brokenbraid', 'fullbaralt']
+                    all_patterns = ['brokenbraid', 'normal barring']
                 else:
-                    all_patterns = ['partialrosetted', 'fullbaralt']
+                    all_patterns = ['partialrosetted', 'normal barring']
             else:
                 if (self.spotsum < 3):
-                    all_patterns = ['braided', 'fullbaralt']
+                    all_patterns = ['braided', 'normal barring']
                 elif (self.spotsum < 6):
-                    all_patterns = ['brokenbraid', 'fullbaralt']
+                    all_patterns = ['brokenbraid', 'normal barring']
                 else:
-                    all_patterns = ['rosetted', 'fullbaralt']
+                    all_patterns = ['rosetted', 'normal barring']
 
         if all_patterns[0] != "agouti":
             if self.bengtype != "normal markings":

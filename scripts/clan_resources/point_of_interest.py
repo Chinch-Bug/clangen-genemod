@@ -75,8 +75,8 @@ def add_poi(name, elements, clan=None):
         _poi_names[clan if clan else "shared"] = set()
         _poi_tags[clan if clan else "shared"] = set()
         _poi_by_tags[clan if clan else "shared"] = {}
-    if clan and clan not in _poi_by_category[elements["category"]]:
-        _poi_by_category[elements["category"]][clan] = set()
+    if clan and clan not in _poi_by_category[elements["category"]] or "shared" not in _poi_by_category[elements["category"]]:
+        _poi_by_category[elements["category"]][clan if clan else "shared"] = set()
     _poi_names[clan if clan else "shared"].update([name])
     _poi_tags[clan if clan else "shared"].update(elements["tags"])
     _poi_tags[clan if clan else "shared"].update(tag.split(":", 1)[0] for tag in elements["tags"] if ":" in tag)
@@ -124,8 +124,9 @@ def clear_pois():
     global _undiscovered_poi_remaining, _poi_by_tags, _poi_names, _poi_tags
     _poi_tags.clear()
     _poi_names.clear()
-
     _poi_by_tags.clear()
+    for names in _poi_by_category.values():
+        names.clear()
 
     _undiscovered_poi_remaining = 3
 
