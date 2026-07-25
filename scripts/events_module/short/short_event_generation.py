@@ -95,11 +95,8 @@ def create_short_event(
             game.clan]+game.clan.all_other_clans if c.group_ID == chosen_enemy][0]
         sub_types.append("war")
     else:
-        other_clan = random.choice(
-            game.clan.all_other_clans +
-            [game.clan] if game.clan.all_other_clans else None
-        )
-        while other_clan == clan:
+        other_clan = random.choice(game.clan.all_other_clans + [game.clan]) if game.clan.all_other_clans else None
+        while other_clan.group_ID == clan.group_ID:
             other_clan = random.choice(
                 game.clan.all_other_clans + [game.clan])
 
