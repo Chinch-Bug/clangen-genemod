@@ -963,20 +963,20 @@ class Phenotype(Genotype):
             if genes.ruftype != "rufoused":
                 colour = "cream"
                 if rufousing != "silver":
-                    rufousing = f"_{genes.rufousing+3}"
+                    alt_ruf = f"_{genes.rufousing+3}"
             else:
                 colour = "red"
                 if rufousing != "silver":
-                    rufousing = f"_{genes.rufousing-6}"
+                    alt_ruf = f"_{genes.rufousing-6}"
         elif colour == "ivory-apricot":
             if genes.ruftype != "rufoused":
                 colour = "ivory"
                 if rufousing != "silver":
-                    rufousing = f"_{genes.rufousing+3}"
+                    alt_ruf = f"_{genes.rufousing+3}"
             else:
                 colour = "honey"
                 if rufousing != "silver":
-                    rufousing = f"_{genes.rufousing-6}"
+                    alt_ruf = f"_{genes.rufousing-6}"
 
         if (genes.ext[0] == "ec" and genes.agouti[0] == "a" and 'o' in genes.sexgene):
             unders_opacity = 0
