@@ -1297,7 +1297,7 @@ dev_tools = false
       newborn = 0.25
 
   # multiplier for how much prey a cat needs based on adult size category, doesn't apply to kits
-  [prey.prey_requirement.size_modifiers]
+  [prey.size_modifiers]
     "teacup" = 0.5
     "tiny" = 0.75
     "small" = 0.75

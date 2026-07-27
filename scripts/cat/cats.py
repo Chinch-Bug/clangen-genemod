@@ -463,6 +463,8 @@ class Cat:
             if not self.dead:
                 self.dead = True
 
+        self.genetic_conditions(loading_cat)
+
         # In camp status
         self.in_camp = 1
         if "biome" in kwargs:
@@ -651,8 +653,6 @@ class Cat:
         if not skill_dict:
             self.skills = CatSkills.generate_new_catskills(self.status.rank, self.age)
 
-        self.genetic_conditions()
-
     def __repr__(self):
         return "CAT OBJECT:" + self.ID
 
@@ -662,7 +662,35 @@ class Cat:
     def __hash__(self):
         return hash(self.ID)
 
-    def genetic_conditions(self):
+    def genetic_conditions(self, loading):
+        if self.phenotype.body_label == "snub-nosed cobby":
+            self.get_permanent_condition('flat nose', born_with=True, genetic=True)
+
+        if self.phenotype.manx[0] == 'M' and (self.phenotype.manxtype in ['rumpy', 'riser']):
+            self.get_permanent_condition('born without a tail', born_with=True, genetic=True)
+
+        if (self.phenotype.pointgene[0] == 'c'):
+            self.get_permanent_condition('albinism', born_with=True, genetic=True)
+        elif ('albino' in self.phenotype.lefteyetype):
+            self.get_permanent_condition('ocular albinism', born_with=True, genetic=True)
+
+        if self.phenotype.length == 'hairless':
+            self.get_permanent_condition('fully hairless', born_with=True, genetic=True, custom_reveal=12 if (self.phenotype.sedesp[0] != "hr" and self.phenotype.ruhr[1] != "Hrbd" and self.moons < 12) else None)
+        if self.phenotype.length == 'fur-pointed' or 'patchy ' in self.phenotype.furtype:
+            self.get_permanent_condition('partially hairless', born_with=True, genetic=True)
+
+        if self.phenotype.lykoi[0] == 'ly':
+            self.get_permanent_condition('bumpy skin', born_with=True, genetic=True, custom_reveal=randint(36, 60))
+
+        if self.phenotype.fold[0] == 'Fd':
+            if not self.phenotype.fold[1] == 'Fd':
+                self.get_permanent_condition('constant joint pain', born_with=True, genetic=True, custom_reveal=randint(3, 60))
+            else:
+                self.get_permanent_condition('constant joint pain', born_with=True, genetic=True)
+        
+        if loading:
+            return
+
         if self.phenotype.deaf:
             if 'blue' in self.phenotype.lefteyetype and 'blue' in self.phenotype.righteyetype:
                 if 'DBEre' in self.phenotype.pax3:
@@ -679,12 +707,6 @@ class Cat:
                 manx_c = 0.98
             if (random() > manx_c):
                 self.get_permanent_condition('manx syndrome', born_with=True, genetic=True)
-        if self.phenotype.body_label == "snub-nosed cobby":
-            self.get_permanent_condition('flat nose', born_with=True, genetic=True)
-
-        if self.phenotype.manx[0] == 'M' and (self.phenotype.manxtype in ['rumpy', 'riser']):
-            self.get_permanent_condition('born without a tail', born_with=True, genetic=True)
-
         if ((len(self.phenotype.sexgene) > 2 and 'Y' in self.phenotype.sexgene and random() > 0.001)
             or len(self.phenotype.sexgene) == 1
             or (len(self.phenotype.sexgene) > 2 and 'Y' not in self.phenotype.sexgene and random() < 0.01)
@@ -693,36 +715,20 @@ class Cat:
                 or (self.gender == 'tom' and 'Y' not in self.phenotype.sexgene and random() < 0.99)):
             self.get_permanent_condition('sterile', born_with=True, genetic=True)
 
-        if self.phenotype.fold[0] == 'Fd' or ('manx syndrome' in self.permanent_condition and self.phenotype.bobtailnr < 4 and self.phenotype.bobtailnr > 1 and random() < 0.05):
-            if not self.phenotype.fold[1] == 'Fd':
-                self.get_permanent_condition('constant joint pain', born_with=True, genetic=True, custom_reveal=randint(3, 60))
-            else:
-                self.get_permanent_condition('constant joint pain', born_with=True, genetic=True)
+        if ('manx syndrome' in self.permanent_condition and self.phenotype.bobtailnr < 4 and self.phenotype.bobtailnr > 1 and random() < 0.05):
+            self.get_permanent_condition('constant joint pain', born_with=True, genetic=True, custom_reveal=randint(3, 60))
         if 'manx syndrome' in self.permanent_condition and ((self.phenotype.bobtailnr < 2 and random() > 0.5) or (self.phenotype.bobtailnr > 1 and random() > ((self.phenotype.bobtailnr) * 0.24))):
             self.get_permanent_condition('incontinence', born_with=True, genetic=True)
         if 'manx syndrome' in self.permanent_condition and ((self.phenotype.bobtailnr < 2 and random() > 0.2) or (self.phenotype.bobtailnr > 1 and random() > ((self.phenotype.bobtailnr) * 0.3))):
             self.get_permanent_condition('rabbit gait', born_with=True, genetic=True)
 
-        if (self.phenotype.pointgene[0] == 'c'):
-            self.get_permanent_condition('albinism', born_with=True, genetic=True)
-        elif ('albino' in self.phenotype.lefteyetype):
-            self.get_permanent_condition('ocular albinism', born_with=True, genetic=True)
-
-        if self.phenotype.length == 'hairless':
-            self.get_permanent_condition('fully hairless', born_with=True, genetic=True, custom_reveal=12 if (self.phenotype.sedesp[0] != "hr" and self.phenotype.ruhr[1] != "Hrbd" and self.moons < 12) else None)
-        if self.phenotype.length == 'fur-pointed' or 'patchy ' in self.phenotype.furtype:
-            self.get_permanent_condition('partially hairless', born_with=True, genetic=True)
-
         if self.phenotype.munch[0] == 'Mk':
-            if random() < 0.33:
-                self.get_permanent_condition('constant joint pain', born_with=True, genetic=True, custom_reveal=randint(24, 120))
             if random() < 0.2:
+                self.get_permanent_condition('constant joint pain', born_with=True, genetic=True, custom_reveal=randint(24, 120))
+            if random() < 0.1:
                 self.get_permanent_condition('bad back', born_with=True, genetic=True)
-            if random() < 0.05:
+            if random() < 0.2:
                 self.get_permanent_condition('narrowed chest', born_with=True, genetic=True)
-
-        if self.phenotype.lykoi[0] == 'ly':
-            self.get_permanent_condition('bumpy skin', born_with=True, genetic=True, custom_reveal=randint(36, 60))
 
         if self.phenotype.pointgene[0] == 'cs' and random() < 0.05:
             self.get_permanent_condition('cross-eyed', born_with=True, genetic=True)

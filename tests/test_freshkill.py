@@ -44,6 +44,8 @@ class FreshkillPileTest(unittest.TestCase):
             self.game_config = tomllib.loads(read_file.read())
         self.amount = self.game_config["prey"]["start_amount"]
         self.prey_requirement = self.game_config["prey"]["prey_requirement"]
+        for k in self.game_config["prey"]["size_modifiers"]:
+            self.game_config["prey"]["size_modifiers"][k] = 1
         self.condition_increase = self.game_config["prey"]["condition_increase"]
 
         # load in the spritesheets

@@ -323,7 +323,7 @@ def generate_sprite(
                     golden_gradient2 = pygame.Surface(
                         (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                     golden_gradient2.blit(
-                        sprites.sprites["goldengradient" + cat_sprite], (0, 0))
+                        sprites.sprites["golden gradient" + cat_sprite], (0, 0))
 
                     golden_gradient.blit(golden_gradient2, (0, 0))
                     if is_chinchilla and phenotype.wbtype != "chinchilla" and not is_dark_sunshine and not is_amber and not is_baby_amber:

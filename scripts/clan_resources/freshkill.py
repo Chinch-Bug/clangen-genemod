@@ -151,9 +151,10 @@ class FreshkillPile:
 
         # all normal status cats calculation
         prey_requirement = get_config("prey.prey_requirement")
+        size_modifiers = get_config("prey.size_modifiers")
         needed_prey = sum(
             [
-                round(prey_requirement[cat.status.rank]*prey_requirement[cat.phenotype.height_label], 2)
+                round(prey_requirement[cat.status.rank]*size_modifiers[cat.phenotype.height_label], 2)
                 for cat in living_cats
                 if not cat.status.rank.is_baby() and cat.status.alive_in_player_clan
             ]
@@ -439,14 +440,15 @@ class FreshkillPile:
             if cat in self.queens:
                 rank = "queen/pregnant"
 
-            prey_required = get_config("prey.prey_requirement")[rank]
+            size_modifiers = get_config("prey.size_modifiers")
+            prey_required = round(get_config("prey.prey_requirement")[rank]*size_modifiers[cat.phenotype.height_label], 2)
             amount_allowed = prey_required
 
             total_required_food_for_clan = self.amount_food_needed()
 
             # if rationing, halve the amount we give them
             if ration_prey and rank != CatRank.NEWBORN:
-                amount_allowed = amount_allowed / 2
+                amount_allowed = round(amount_allowed / 2, 2)
             # otherwise, they can receive bonus amounts if the current total prey the Clan possesses is more than what they need
             elif (
                 self.total_amount > total_required_food_for_clan * 2
@@ -581,6 +583,7 @@ class FreshkillPile:
             self.nutrition_info.pop(cat_id)
 
         prey_requirement = get_config("prey.prey_requirement")
+        size_modifiers = get_config("prey.size_modifiers")
         # update remaining cat's max scores
         for cat in cats_to_feed:
             if str(cat.status.rank) not in prey_requirement:
@@ -597,7 +600,7 @@ class FreshkillPile:
                     status_ = "queen/pregnant"
 
                 # check if the max_score is correct, otherwise update
-                required_max = prey_requirement[status_] * factor
+                required_max = round(prey_requirement[status_]*size_modifiers[cat.phenotype.height_label], 2) * factor
                 current_score = self.nutrition_info[cat.ID].current_score
                 if self.nutrition_info[cat.ID].max_score != required_max:
                     previous_max = self.nutrition_info[cat.ID].max_score
@@ -624,7 +627,8 @@ class FreshkillPile:
         prey_status = cat.status.rank
         if cat.ID in queen_dict.keys() or "pregnant" in cat.injuries:
             prey_status = "queen/pregnant"
-        max_score = get_config("prey.prey_requirement")[prey_status] * factor
+        size_modifiers = get_config("prey.size_modifiers")
+        max_score = round(get_config("prey.prey_requirement")[prey_status]*size_modifiers[cat.phenotype.height_label], 2) * factor
         nutrition.max_score = max_score
         nutrition.current_score = max_score
         nutrition.percentage = 100

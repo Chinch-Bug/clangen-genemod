@@ -1828,8 +1828,8 @@ class Genotype:
         eyecolours = {
         "R1" : ["Canary", "Peach", "Dandelion", "Yellow", "Mango", "Golden", "Amber", "Carrot", "Orance", "Copper", "Chocolate", "Ice Blue", "Pink"],
         "R2" : ["Citrine", "Sand", "Wheat", "Sunflower", "Goldenrod", "Copal", "Honey", "Topaz", "Cinnabar", "Auburn", "Chestnut", "Arctic", "Rose"],
-        "R3" : ["Lemonade Yellow", "Straw Yellow", "Dandelion Yellow", "Banana Yellow", "Sunglow Yellow", "Copal", "Dull Orange", "Rust Orange", "Topaz", "Chocolate", "Burgundy", "Sky Blue", "Magenta"],
-        "R4" : ["Light Celadon", "Pale Chartreuse", "Pear Green", "Brass Yellow", "Golden Green", "Butterscotch", "Dusty Orange", "Tawny", "Jasper", "Light Brown", "Earth", "Cyan", "Periwinkle"],
+        "R3":  ["Chartreuse", "Avocado", "Dry Bracken", "Lemon", "Banana", "Butterscotch", "Jasper", "Saffron", "Tawny", "Cinnamon", "Brown", "Aquamarine", "Periwinkle"],
+        "R4":  ["Green Tourmaline", "Lichen", "Serpentinite", "Gooseberry", "Brass", "Golden Beryl", "Toffee", "Flame", "Caramel", "Sienna", "Sepia", "Sky Blue", "Quartz"],
         "R5" : ["Light Jade", "Pale Lime", "Spring Bud", "Chartreuse", "Pale Hazel", "Yellow Hazel", "Golden Fluorite", "Beaver Brown", "Sienna", "Chestnut", "Umber", "Baby Blue", "Violet"],
         "R6" : ["Light Fluorite", "Mantis Green", "Spring Green", "Lime", "Green Tea", "Hazel", "Green Hazel", "Dark Copal", "Cinnamon", "Raw Umber", "Sepia", "Aqua", "Glass"],
         "R7" : ["Pale Emerald", "Apple Green", "Shamrock", "Lemon-Lime", "Peridot", "Antique Brass", "Dark Hazel", "Muddy Hazel", "Hazel Brown", "Bronze", "Bistre Brown", "Cerulean", "Moonstone"],
