@@ -1348,7 +1348,7 @@ class Clan:
         main_enum = clan.group_ID
         other_enum = other_clan.group_ID
 
-        if game.clan.relations.get(other_enum, {}).get(main_enum):
+        if game.clan.relations.get(other_enum, {}).get(main_enum) is not None:
             main_enum = other_clan.group_ID
             other_enum = clan.group_ID
 
@@ -1365,7 +1365,7 @@ class Clan:
         main_enum = clan.group_ID
         other_enum = other_clan.group_ID
 
-        if game.clan.relations.get(other_enum, {}).get(main_enum):
+        if game.clan.relations.get(other_enum, {}).get(main_enum) is not None:
             main_enum = other_clan.group_ID
             other_enum = clan.group_ID
 
