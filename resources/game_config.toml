@@ -676,10 +676,8 @@ dev_tools = false
 
   # 1/2^x chance for mass death event to trigger per cat on moonskip
   mass_death_chance = 9
-  # maximum number of cats that can die from a single mass death event
+  # Maximum amount to pick for mass death events when triggered (max will be 1/2 of the living clan cats if that is smaller)
   max_mass_deaths = 10
-  # Maximum amount to pick for mass death events when triggered (max will be 1/3 of the living clan cats if that is smaller)
-  max_mass_death = 10
 
   # age cats will start dying of old age based on old_age_death_curve
   old_age_death_start = 150
@@ -1298,6 +1296,19 @@ dev_tools = false
       kitten = 0.5
       newborn = 0.25
 
+  # multiplier for how much prey a cat needs based on adult size category, doesn't apply to kits
+  [prey.prey_requirement.size_modifiers]
+    "teacup" = 0.5
+    "tiny" = 0.75
+    "small" = 0.75
+    "below average" = 1
+    "average" = 1
+    "above average" = 1
+    "large" = 1.25
+    "massive" = 1.5
+    "giant" = 1.75
+    "goliath" = 2
+
   # the bonus prey a hunter skill cat will catch according to exp rank
   [prey.hunter_exp_bonus]
       untrained = 0.1
@@ -1365,6 +1376,7 @@ dev_tools = false
   [settings.force_enable]
     "deputy" = false
     "modded_kits" = false
+    "disasters" = false
 
   [settings.force_disable]
     "modded_kits" = false

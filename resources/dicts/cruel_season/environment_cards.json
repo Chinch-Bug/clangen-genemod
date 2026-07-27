@@ -25,6 +25,14 @@
       "settings.force_enable.modded_kits": true
     }
   },
+  "hostile_lands": {
+    "card_art": "environment/lean_meat.png",
+    "modifiers": {
+      "death_related.mass_death_chance": 8,
+      "death_related.max_mass_deaths": 1000,
+      "settings.force_enable.disaster": true
+    }
+  },
   "lean_meat": {
     "card_art": "environment/lean_meat.png",
     "modifiers": {

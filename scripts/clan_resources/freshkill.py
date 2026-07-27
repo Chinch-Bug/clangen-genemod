@@ -153,7 +153,7 @@ class FreshkillPile:
         prey_requirement = get_config("prey.prey_requirement")
         needed_prey = sum(
             [
-                prey_requirement[cat.status.rank]
+                round(prey_requirement[cat.status.rank]*prey_requirement[cat.phenotype.height_label], 2)
                 for cat in living_cats
                 if not cat.status.rank.is_baby() and cat.status.alive_in_player_clan
             ]

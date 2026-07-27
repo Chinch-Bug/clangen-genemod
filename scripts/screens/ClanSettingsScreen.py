@@ -125,6 +125,14 @@ class ClanSettingsScreen(Screens):
                 CruelLockedAction()
                 return
 
+            if event.ui_element == self.checkboxes.get("disasters") and get_config(
+                "settings.force_enable.disasters"
+            ):
+                set_clan_setting("disasters", True)
+                self.checkboxes["disasters"].check()
+                CruelLockedAction()
+                return
+
             if event.ui_element == self.checkboxes.get("modded_kits") and get_config(
                 "settings.force_enable.modded_kits"
             ):

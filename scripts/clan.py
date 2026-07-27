@@ -423,6 +423,11 @@ class Clan:
             set_clan_setting("deputy", True)
             save_clan_settings()
 
+        # disasters
+        if get_config("settings.force_enable.disasters"):
+            set_clan_setting("disasters", True)
+            save_clan_settings()
+
         # modded_kits
         if get_config("settings.force_enable.modded_kits"):
             set_clan_setting("modded_kits", True)

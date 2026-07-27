@@ -43,7 +43,7 @@
         "autosave": "Automatically save every five moons",
         "autosave_tooltip": "Automatically save every five moons",
         "disasters": "Allow mass extinction events",
-        "disasters_tooltip": "This may result in up to 1/3rd of your Clan dying in one moon.",
+        "disasters_tooltip": "This may, rarely, result in several cats dying in an event.",
         "modded_kits": "Use modded litters",
         "modded_kits_tooltip": "Gives larger litters, and higher kit death chances.",
         "tnr_mode": "Cats can be spayed/neutered by Twolegs",

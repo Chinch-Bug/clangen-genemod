@@ -1826,8 +1826,8 @@ class Genotype:
     def EyeColourName(self):
     
         eyecolours = {
-        "R1" : ["Citrine", "Golden Beryl", "Yellow", "Pale Golden", "Golden", "Amber", "Light Orange", "Orange", "Cinnabar", "Auburn", "Copper", "Ice Blue", "Pink"],
-        "R2" : ["Pale Citrine", "Pale Yellow", "Lemon", "Deep Yellow", "Dull Golden", "Honey", "Pale Orange", "Burnt Orange", "Dark Orange", "Russet", "Dark Topaz", "Aquamarine", "Rose"],
+        "R1" : ["Canary", "Peach", "Dandelion", "Yellow", "Mango", "Golden", "Amber", "Carrot", "Orance", "Copper", "Chocolate", "Ice Blue", "Pink"],
+        "R2" : ["Citrine", "Sand", "Wheat", "Sunflower", "Goldenrod", "Copal", "Honey", "Topaz", "Cinnabar", "Auburn", "Chestnut", "Arctic", "Rose"],
         "R3" : ["Lemonade Yellow", "Straw Yellow", "Dandelion Yellow", "Banana Yellow", "Sunglow Yellow", "Copal", "Dull Orange", "Rust Orange", "Topaz", "Chocolate", "Burgundy", "Sky Blue", "Magenta"],
         "R4" : ["Light Celadon", "Pale Chartreuse", "Pear Green", "Brass Yellow", "Golden Green", "Butterscotch", "Dusty Orange", "Tawny", "Jasper", "Light Brown", "Earth", "Cyan", "Periwinkle"],
         "R5" : ["Light Jade", "Pale Lime", "Spring Bud", "Chartreuse", "Pale Hazel", "Yellow Hazel", "Golden Fluorite", "Beaver Brown", "Sienna", "Chestnut", "Umber", "Baby Blue", "Violet"],
