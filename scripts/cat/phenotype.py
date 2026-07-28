@@ -574,7 +574,7 @@ class Phenotype(Genotype):
                 if (self.spotsum < 3):
                     all_patterns = ['mackerel', 'normal barring']
                 elif (self.spotsum < 6):
-                    all_patterns = ['brokenmack', 'normal barring']
+                    all_patterns = ['broken mackerel', 'normal barring']
                 else:
                     all_patterns = ['spotted', 'normal barring']
             elif (self.bengtype == "mild bengal"):

@@ -1826,12 +1826,12 @@ class Genotype:
     def EyeColourName(self):
     
         eyecolours = {
-        "R1" : ["Canary", "Peach", "Dandelion", "Yellow", "Mango", "Golden", "Amber", "Carrot", "Orance", "Copper", "Chocolate", "Ice Blue", "Pink"],
-        "R2" : ["Citrine", "Sand", "Wheat", "Sunflower", "Goldenrod", "Copal", "Honey", "Topaz", "Cinnabar", "Auburn", "Chestnut", "Arctic", "Rose"],
-        "R3":  ["Chartreuse", "Avocado", "Dry Bracken", "Lemon", "Banana", "Butterscotch", "Jasper", "Saffron", "Tawny", "Cinnamon", "Brown", "Aquamarine", "Periwinkle"],
-        "R4":  ["Green Tourmaline", "Lichen", "Serpentinite", "Gooseberry", "Brass", "Golden Beryl", "Toffee", "Flame", "Caramel", "Sienna", "Sepia", "Sky Blue", "Quartz"],
-        "R5" : ["Light Jade", "Pale Lime", "Spring Bud", "Chartreuse", "Pale Hazel", "Yellow Hazel", "Golden Fluorite", "Beaver Brown", "Sienna", "Chestnut", "Umber", "Baby Blue", "Violet"],
-        "R6" : ["Light Fluorite", "Mantis Green", "Spring Green", "Lime", "Green Tea", "Hazel", "Green Hazel", "Dark Copal", "Cinnamon", "Raw Umber", "Sepia", "Aqua", "Glass"],
+        "R1": ["Canary", "Peach", "Dandelion", "Yellow", "Mango", "Golden", "Amber", "Carrot", "Orance", "Copper", "Chocolate", "Ice Blue", "Pink"],
+        "R2": ["Citrine", "Sand", "Wheat", "Sunflower", "Goldenrod", "Copal", "Honey", "Topaz", "Cinnabar", "Auburn", "Chestnut", "Arctic", "Rose"],
+        "R3": ["Chartreuse", "Avocado", "Dry Bracken", "Lemon", "Banana", "Butterscotch", "Jasper", "Saffron", "Tawny", "Cinnamon", "Brown", "Aquamarine", "Periwinkle"],
+        "R4": ["Green Tourmaline", "Lichen", "Serpentinite", "Gooseberry", "Brass", "Golden Beryl", "Toffee", "Flame", "Caramel", "Sienna", "Sepia", "Sky Blue", "Quartz"],
+        "R5": ["Celadon", "Sage", "Grape", "Pear", "Durian", "Mustard", "Tangerine", "Golden Fluorite", "Rust", "Russet", "Umber", "Robin Egg", "Moonstone"],
+        "R6": ["Katydid", "Sea Glass", "Green Tea", "Lime", "Palm", "Hazel", "Cantalope", "Maple", "Acorn", "Ochre", "Muddy Brown", "Cerulean", "Opal"],
         "R7" : ["Pale Emerald", "Apple Green", "Shamrock", "Lemon-Lime", "Peridot", "Antique Brass", "Dark Hazel", "Muddy Hazel", "Hazel Brown", "Bronze", "Bistre Brown", "Cerulean", "Moonstone"],
         "R8" : ["Malachite", "Olivine", "Pastel Green", "Bright Green", "Pistachio", "Dull Olive", "Murky Green", "Jungle Green", "Hemlock Green", "Thatch Green", "Muddy", "Ocean Blue", "Albino Ice Blue"],
         "R9" : ["Pale Turquoise", "Mint", "Snake Green", "Dark Lime", "Fern Green", "Dull Green", "Dark Fern Green", "Olive", "Tumbleweed Green", "Bronze Olive", "Deep Bronze", "Teal", "Albino Aquamarine"],

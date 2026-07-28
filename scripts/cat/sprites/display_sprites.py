@@ -238,8 +238,10 @@ def generate_sprite(
                         pattern_sprite.blit(
                             sprites.sprites[pat + cat_sprite], (0, 0))
                         if pat != "agouti" and is_chinchilla or is_amber:
-                            if phenotype.wbtype == "chinchilla" or is_older_amber:
+                            if phenotype.wbtype == "chinchilla":
                                 pattern_sprite.set_alpha(15)
+                            elif is_older_amber:
+                                pattern_sprite.set_alpha(60)
                             else:
                                 pattern_sprite.set_alpha(125)
                         stripebase.blit(pattern_sprite, (0, 0))
@@ -269,8 +271,10 @@ def generate_sprite(
                             stripebase2.set_alpha(127)
                             pattern_sprite.blit(stripebase2, (0, 0))
                         if pat != "agouti" and is_chinchilla or is_amber:
-                            if phenotype.wbtype == "chinchilla" or is_older_amber:
+                            if phenotype.wbtype == "chinchilla":
                                 pattern_sprite.set_alpha(15)
+                            elif is_older_amber:
+                                pattern_sprite.set_alpha(60)
                             else:
                                 pattern_sprite.set_alpha(125)
                         stripebase.blit(pattern_sprite, (0, 0))
@@ -280,8 +284,10 @@ def generate_sprite(
                     pattern_sprite.blit(
                         sprites.sprites["sheeted" + cat_sprite], (0, 0))
                     if is_chinchilla or is_amber:
-                        if phenotype.wbtype == "chinchilla" or is_older_amber:
+                        if phenotype.wbtype == "chinchilla":
                             pattern_sprite.set_alpha(15)
+                        elif is_older_amber:
+                            pattern_sprite.set_alpha(60)
                         else:
                             pattern_sprite.set_alpha(125)
                     stripebase.blit(pattern_sprite, (0, 0))
@@ -318,12 +324,9 @@ def generate_sprite(
                 stripebase.blit(charc, (0, 0))
 
                 if (is_chinchilla or is_shaded or is_amber or is_baby_amber):
-                    golden_gradient = pygame.Surface(
-                        (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                    golden_gradient2 = pygame.Surface(
-                        (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                    golden_gradient2.blit(
-                        sprites.sprites["golden gradient" + cat_sprite], (0, 0))
+                    golden_gradient = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                    golden_gradient2 = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                    golden_gradient2.blit(sprites.sprites["golden gradient" + cat_sprite], (0, 0))
 
                     golden_gradient.blit(golden_gradient2, (0, 0))
                     if is_chinchilla and phenotype.wbtype != "chinchilla" and not is_dark_sunshine and not is_amber and not is_baby_amber:
@@ -341,13 +344,8 @@ def generate_sprite(
                             golden_gradient.blit(golden_gradient2, (0, 0))
                             golden_gradient.blit(golden_gradient2, (0, 0))
 
-                    stripebase.blit(golden_gradient, (0, 0),
-                                    special_flags=pygame.BLEND_RGBA_MIN)
-                    golden_gradient = pygame.Surface(
-                        (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                    golden_gradient.fill((255, 255, 255))
-                    stripebase.blit(golden_gradient, (0, 0),
-                                    special_flags=pygame.BLEND_RGB_MAX)
+                    stripebase.blit(golden_gradient, (0, 0), special_flags=pygame.BLEND_RGBA_MIN)
+                    stripebase.fill((255, 255, 255), special_flags=pygame.BLEND_RGB_MAX)
 
                 if not preset_pattern and len(pattern) > 2:
                     if phenotype.soktype == "full sokoke":
