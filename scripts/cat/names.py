@@ -89,13 +89,13 @@ class Name:
             return
         if os.path.exists(get_save_dir() + f"/{clan}" + "/names" + "/alt_prefixes.json"):
             with open(get_save_dir() + f"/{clan}" + "/names" + "/alt_prefixes.json") as read_file:
-                Name.mod_prefixes = ujson.loads(read_file.read())
+                self.mod_prefixes = ujson.loads(read_file.read())
         if os.path.exists(get_save_dir() + f"/{clan}" + "/names" + '/alt_suffixes.json'):
             with open(get_save_dir() + f"/{clan}" + "/names" + '/alt_suffixes.json') as read_file:
-                Name.mod_suffixes = ujson.loads(read_file.read())
+                self.mod_suffixes = ujson.loads(read_file.read())
         if os.path.exists(get_save_dir() + f"/{clan}" + "/names" + '/names.json'):
             with open(get_save_dir() + f"/{clan}" + "/names" + '/names.json') as read_file:
-                Name.names_dict = ujson.loads(read_file.read())
+                self.names_dict = ujson.loads(read_file.read())
 
     def check_name(self, cat, name_fixpref):
         if not self.suffix:
@@ -179,15 +179,16 @@ class Name:
         current_clan = None
         try:
             if switch_get_value(Switch.clan_save_id) != "":
-                clanname = switch_get_value(Switch.clan_save_id)
+                current_clan = switch_get_value(Switch.clan_save_id)
             else:
-                clanname = switch_get_value(Switch.clan_list)[0]
+                current_clan = switch_get_value(Switch.clan_list)[0]
         except:
             current_clan = None
 
         if (
             self.current_save_dir != get_save_dir()
             or self.currently_loaded_lang != lang
+            or self.currently_loaded_clan != current_clan
         ):
             if always_english:
                 with open("resources/lang/en/names.json", encoding="utf-8") as read_file:
@@ -195,15 +196,15 @@ class Name:
 
                 if os.path.exists('resources/lang/en/alt_prefixes.json'):
                     with open('resources/lang/en/alt_prefixes.json') as read_file:
-                        Name.mod_prefixes = ujson.loads(read_file.read())
+                        self.mod_prefixes = ujson.loads(read_file.read())
                 if os.path.exists('resources/lang/en/alt_suffixes.json'):
                     with open('resources/lang/en/alt_suffixes.json') as read_file:
-                        Name.mod_suffixes = ujson.loads(read_file.read())
+                        self.mod_suffixes = ujson.loads(read_file.read())
             else:
                 names_dict = load_lang_resource("names.json")
                 try:
-                    Name.mod_prefixes = load_lang_resource("alt_prefixes.json")
-                    Name.mod_suffixes = load_lang_resource("alt_suffixes.json")
+                    self.mod_prefixes = load_lang_resource("alt_prefixes.json")
+                    self.mod_suffixes = load_lang_resource("alt_suffixes.json")
                 except:
                     pass
 
@@ -263,8 +264,7 @@ class Name:
             self.current_save_dir = save_dir
             self.currently_loaded_lang = lang
 
-        if self.currently_loaded_clan != current_clan:
-            self.load_clan_names(self.currently_loaded_clan)
+            self.load_clan_names(current_clan)
             self.currently_loaded_clan = current_clan
 
     def __str__(self):
