@@ -337,15 +337,6 @@ class Sprites:
         for a, x in enumerate(range(1, 6)):
             self.make_group('genemod/bobtails', (a, 0), f'bobtail{x}')
 
-        for a, i in enumerate(['braided', 'brokenbraid', 'rosetted']):
-            self.make_group('Other/tabbypatterns', (a, 1), f'{i}')
-        for a, i in enumerate(['pinstripe', 'brokenpins', 'servaline']):
-            self.make_group('Other/tabbypatterns', (a, 2), f'{i}')
-        for a, i in enumerate(['pinsbraided', 'brokenpinsbraid', 'leopard']):
-            self.make_group('Other/tabbypatterns', (a, 3), f'{i}')
-        for a, i in enumerate(['macktail', 'bengtail', 'partialrosetted']):
-            self.make_group('Other/tabbypatterns', (a, 4), f'{i}')
-
         # genemod base colours
 
         for i, x in enumerate(["black", "chocolate", "cinnamon", 

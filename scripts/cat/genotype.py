@@ -1832,11 +1832,11 @@ class Genotype:
         "R4": ["Green Tourmaline", "Lichen", "Serpentinite", "Gooseberry", "Brass", "Golden Beryl", "Toffee", "Flame", "Caramel", "Sienna", "Sepia", "Sky Blue", "Quartz"],
         "R5": ["Celadon", "Sage", "Grape", "Pear", "Durian", "Mustard", "Tangerine", "Golden Fluorite", "Rust", "Russet", "Umber", "Robin Egg", "Moonstone"],
         "R6": ["Katydid", "Sea Glass", "Green Tea", "Lime", "Palm", "Hazel", "Cantalope", "Maple", "Acorn", "Ochre", "Muddy Brown", "Cerulean", "Opal"],
-        "R7" : ["Pale Emerald", "Apple Green", "Shamrock", "Lemon-Lime", "Peridot", "Antique Brass", "Dark Hazel", "Muddy Hazel", "Hazel Brown", "Bronze", "Bistre Brown", "Cerulean", "Moonstone"],
-        "R8" : ["Malachite", "Olivine", "Pastel Green", "Bright Green", "Pistachio", "Dull Olive", "Murky Green", "Jungle Green", "Hemlock Green", "Thatch Green", "Muddy", "Ocean Blue", "Albino Ice Blue"],
-        "R9" : ["Pale Turquoise", "Mint", "Snake Green", "Dark Lime", "Fern Green", "Dull Green", "Dark Fern Green", "Olive", "Tumbleweed Green", "Bronze Olive", "Deep Bronze", "Teal", "Albino Aquamarine"],
-        "R10" : ["Turquoise", "Viridian", "Green Onion", "Leaf Green", "Green", "Sap Green", "Dark Leaf Green", "Forest Green", "Dark Peridot", "Seaweed Green", "Dark Olive", "Sapphire", "Albino Sky Blue"],
-        "R11" : ["Deep Turquoise", "Amazonite", "Pine Green", "Deep Leaf Green", "Jade", "Emerald", "Deep Green", "Deep Forest Green", "Dark Green", "Dark Moss Green", "Black Olive", "Azure", "Albino Azure"]
+        "R7": ["Laurel", "Jade", "Honeydew", "Green Apple", "Pistachio", "Prairie", "Toad", "Marsh", "Papaya", "Bronze", "Earth", "Cornflower", "Aqua"],
+        "R8": ["Sea Green", "Fluorite", "Iguana", "Bud", "Moss", "Willow", "Hemlock", "Parakeet", "Sedge", "Cattail", "Spruce", "Ocean", "Bluebell"],
+        "R9": ["Malachite", "Mint", "Mantis", "Olivine", "Shamrock", "Peridot", "Juniper", "Algae", "Cactus", "Cedar", "Swamp Green", "Azure", "Cloudy Blue"],
+        "R10": ["Teal", "Viridian", "Scallion", "Basil", "Grass Green", "Fern", "Kiwi", "Sap Green", "Seaweed", "Jungle", "Holly", "Sapphire", "Storm"],
+        "R11": ["Turquoise", "Amazonite", "Spring Green", "Ivy", "Leaf Green", "Green", "Emerald", "Forest Green", "Pine", "Myrtle", "Olive", "Indigo", "Lapis"]
         }
 
         def setup(eyestring):

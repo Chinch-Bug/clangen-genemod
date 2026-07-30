@@ -550,16 +550,16 @@ class Phenotype(Genotype):
         elif (self.ticked[0] == "Ta"):
             if (self.bengtype == "normal markings"):
                 if (self.spotsum == 4):
-                    all_patterns = ['brokenpins', 'breakthrough barring']
+                    all_patterns = ['broken pinstripe', 'breakthrough barring']
                 elif (self.spotsum < 6):
                     all_patterns = ['pinstripe', 'breakthrough barring']
                 else:
                     all_patterns = ['servaline', 'breakthrough barring']
             else:
                 if (self.spotsum == 4):
-                    all_patterns = ['brokenpinsbraid', 'breakthrough barring']
+                    all_patterns = ['broken pinstripe braided', 'breakthrough barring']
                 elif (self.spotsum < 6):
-                    all_patterns = ['pinsbraided', 'breakthrough barring']
+                    all_patterns = ['pinstripe braided', 'breakthrough barring']
                 else:
                     all_patterns = ['leopard', 'breakthrough barring']
         elif (self.mack[0] == "mc"):
@@ -581,14 +581,14 @@ class Phenotype(Genotype):
                 if (self.spotsum < 3):
                     all_patterns = ['braided', 'normal barring']
                 elif (self.spotsum < 6):
-                    all_patterns = ['brokenbraid', 'normal barring']
+                    all_patterns = ['broken braided', 'normal barring']
                 else:
-                    all_patterns = ['partialrosetted', 'normal barring']
+                    all_patterns = ['partial rosetted', 'normal barring']
             else:
                 if (self.spotsum < 3):
                     all_patterns = ['braided', 'normal barring']
                 elif (self.spotsum < 6):
-                    all_patterns = ['brokenbraid', 'normal barring']
+                    all_patterns = ['broken braided', 'normal barring']
                 else:
                     all_patterns = ['rosetted', 'normal barring']
 

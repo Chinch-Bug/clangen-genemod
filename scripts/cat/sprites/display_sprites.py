@@ -263,7 +263,7 @@ def generate_sprite(
                             (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                         pattern_sprite.blit(
                             sprites.sprites[pat + cat_sprite], (0, 0))
-                        if (phenotype.bengtype == "mild bengal") and pat in ["braided", "brokenbraid"]:
+                        if (phenotype.bengtype == "mild bengal") and pat in ["braided", "broken braided"]:
                             stripebase2 = pygame.Surface(
                                 (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                             stripebase2.blit(
@@ -460,11 +460,11 @@ def generate_sprite(
 
                 if phenotype.pangere:
                     modifiers = {
-                        "chinchilla" : 9,
-                        "shaded" : 8,
-                        "high" : 7,
-                        "medium" : 6,
-                        "low" : 5
+                        "chinchilla" : 10,
+                        "shaded" : 9,
+                        "high" : 8,
+                        "medium" : 7,
+                        "low" : 6
                     }
                     opacity = int(25 * (modifiers.get(phenotype.banding, 5)))
                     pangere = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
@@ -1174,6 +1174,8 @@ def generate_sprite(
                 for x in phenotype.white_pattern:
                     if('break/' in x):
                         whitesprite.blit(sprites.sprites[x + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
+            
+            whitesprite.blit(sprites.sprites["lightbasecolours0"], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
             tintedwhitesprite.blit(whitesprite, (0, 0))
 
             leathers = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
