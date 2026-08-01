@@ -2328,7 +2328,7 @@ class Cat:
             return
 
         # remove accessories if need be
-        if "NOTAIL" in self.pelt.scars or "HALFTAIL" in self.pelt.scars or (self.phenotype.bobtailnr > 0 and self.phenotype.bobtailnr < 5):
+        if self.pelt.accessory and ("NOTAIL" in self.pelt.scars or "HALFTAIL" in self.pelt.scars or (self.phenotype.bobtailnr > 0 and self.phenotype.bobtailnr < 5)):
             self.pelt.accessory = tuple(
                 acc for acc in self.pelt.accessory if acc not in Pelt.tail_accessories
             )
@@ -3718,7 +3718,7 @@ class Cat:
                  or (game.clan.clancount == "multiclan" and check_cat.status.is_outsider == self.status.is_outsider
                      and (self.status.is_outsider or check_cat.status.group_ID == self.status.group_ID)))
             and not check_cat.faded
-            and check_cat.status.is_near() == self.status.is_near()
+            and (check_cat.status.is_near() == self.status.is_near() or check_cat.dead)
         ]
 
         # we're doing this separately so that we don't fuck up other clan cats and cats with no group

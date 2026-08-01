@@ -196,7 +196,7 @@ class MediationScreen(Screens):
                 cat.status.rank.is_any_mediator_rank()
                 and cat.status.group_ID == (Cat.fetch_cat(switch_get_value(Switch.cat)).status.group_ID if switch_get_value(Switch.cat) and not Cat.fetch_cat(switch_get_value(Switch.cat)).dead else game.selected_clan.group_ID)
             ):
-                if cat == switch_get_value(Switch.cat):
+                if cat.ID == switch_get_value(Switch.cat):
                     self.mediators.appendleft(cat)
                 else:
                     self.mediators.append(cat)

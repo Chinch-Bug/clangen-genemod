@@ -1301,6 +1301,8 @@ class Condition_Events:
                         sort=True,
                         clan=clan.group_ID
                     )
+                    if cat in med_list:
+                        med_list.remove(cat)
                     if len(med_list) == 0:
                         if random_index == 0:
                             random_index = 1
@@ -1308,9 +1310,7 @@ class Condition_Events:
                             med_cat = None
                     else:
                         med_cat = random.choice(med_list)
-                        if med_cat == cat:
-                            random_index = 1
-                        elif random_index == 0:
+                        if random_index == 0:
                             cat_dict["r_c"] = med_cat
                     event = possible_string_list[random_index]
                 except KeyError:

@@ -1168,12 +1168,15 @@ def generate_sprite(
 
             if(phenotype.white_pattern != 'No' and phenotype.white_pattern):
                 for x in phenotype.white_pattern:
-                    if('dorsal' not in x and 'break/' not in x and x not in vitiligo):
+                    if 'dorsal' not in x and not x.startswith("break/") and x not in vitiligo:
                         whitesprite.blit(sprites.sprites[x + cat_sprite], (0, 0))
             if(phenotype.white_pattern != 'No' and phenotype.white_pattern):
                 for x in phenotype.white_pattern:
-                    if('break/' in x):
-                        whitesprite.blit(sprites.sprites[x + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
+                    if x.startswith("break/"):
+                        try:
+                            whitesprite.blit(sprites.sprites[x + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
+                        except:
+                            whitesprite.blit(sprites.sprites[x.removeprefix("break/") + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
             
             whitesprite.blit(sprites.sprites["lightbasecolours0"], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
             tintedwhitesprite.blit(whitesprite, (0, 0))

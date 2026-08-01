@@ -390,9 +390,9 @@ class Pelt:
     @staticmethod
     def generate_white(KIT, albino, KITgrade, vit, white_pattern, pax3):
 
-        if white_pattern and "muzzle" in white_pattern:
-            white_pattern.remove("muzzle")
-            white_pattern.append("muzzle1")
+        if white_pattern and "break/inverse thai" in white_pattern:
+            white_pattern.remove("break/inverse thai")
+            white_pattern.append("break/dorsal stripe")
 
         vitiligo = ['MOON', 'PHANTOM', 'POWDER', 'BLEACHED', 'VITILIGO', 'VITILIGOTWO', 'SMOKEY']
 
@@ -639,7 +639,7 @@ class Pelt:
                     white_pattern.append(choice([None, choice(['break/left ear', 'break/right ear', 'break/tail tip', 'break/tail band', 'break/left face', 'break/right face', 'break/bowl cut', 'break/chin'])]))
 
                     if random() < 0.02:
-                        white_pattern = ["full white", "break/inverse thai"]
+                        white_pattern = ["full white", "break/dorsal stripe"]
         
         if vit:
             if white_pattern is None or white_pattern == "No":
