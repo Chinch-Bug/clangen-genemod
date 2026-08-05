@@ -985,6 +985,10 @@ dev_tools = false
   outsider_wander_off = 7
   # outsider_return is a 2^x chance for outsiders chased away or having left the territory to return by themselves
   outsider_return = 6
+  
+[progress]
+  # default = 0. higher = more difficult skill and experience progression.
+  difficulty_modifier = 0
 
 [focus]
   # NOTE: 'raid other clans' should be more dangerous than 'hoarding'!!!

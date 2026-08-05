@@ -613,7 +613,7 @@ class Pelt:
                     white_pattern.append(choice(['van1', 'van2', 'van3', 'van1', 'van2', 'van3', 'full white']))
                     for i in range(randint(0, 2)):
                         white_pattern.append(choice(['break/bracelet left', 'break/bracelet right'] + [None] * 9))
-                    white_pattern.append(choice(['break/piebald1', 'break/piebald2']))
+                    white_pattern.append(choice(['break/piebald1', 'break/piebald2', 'break/piebald3']))
                     white_pattern.append(choice(['break/pants'] + [None] * 9))
                     white_pattern.append(choice(['break/right no', 'break/left no'] + [None] * 14))
                     white_pattern.append(choice([None, 'break/left ear', 'break/right ear', 'break/tail tip', 'break/tail band', 'break/tail rings', 'break/left face', 'break/right face', 'break/bowl cut']))

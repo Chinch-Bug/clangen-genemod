@@ -502,12 +502,6 @@ def generate_sprite(
                     elif "lightbasecolours" not in stripe_colour:
                         stripebase = create_stripes(phenotype.FindRed(phenotype, sprite_age)[0], whichbase)
                     stripebase.blit(create_stripes(stripe_colour, whichbase, coloursurface=coloursurface), (0, 0))
-                elif 'ec' in phenotype.ext and 'Eg' not in phenotype.ext and not is_red:
-                    stripebase = create_stripes(stripe_colour, whichbase, coloursurface=coloursurface)
-                    stripebase.set_alpha(200)
-                    main_layer.blit(stripebase, (0, 0))
-                    stripebase = create_stripes(
-                        stripe_colour, whichbase, coloursurface=coloursurface, preset_pattern=['agouti'])
                 else:
                     stripebase.blit(create_stripes(
                         stripe_colour, whichbase, coloursurface=coloursurface), (0, 0))
@@ -1043,7 +1037,8 @@ def generate_sprite(
             gensprite = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
 
             def apply_patch_effects(sprite):
-                if('masked' in phenotype.silvergold):
+                is_red = ('red' in phenotype.maincolour or 'cream' in phenotype.maincolour or 'honey' in phenotype.maincolour or 'ivory' in phenotype.maincolour or 'apricot' in phenotype.maincolour)
+                if ('masked' in phenotype.silvergold):
                     masked = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                     masked = make_cat(masked, phenotype.maincolour, phenotype.spritecolour, phenotype.mainunders, special="masked silver")
                     masked2 = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
@@ -1064,11 +1059,13 @@ def generate_sprite(
                         fading.blit(sprites.sprites['satin0'], (0, 0))
                         fading.set_alpha(50)
                         sprite.blit(fading, (0, 0))
-                if not phenotype.brindledbi and not ('red' in phenotype.maincolour or 'cream' in phenotype.maincolour or 'honey' in phenotype.maincolour or 'ivory' in phenotype.maincolour or 'apricot' in phenotype.maincolour) and phenotype.ext[0] != "Eg" and (phenotype.agouti[0] != 'a' and (phenotype.corin[0] == 'sg' or phenotype.corin[0] == 'sh' or (phenotype.silver[0] == 'i' and phenotype.corin[0] == 'fg') or (phenotype.ext[0] == 'ea' and sprite_age > 6) or 'ec' in phenotype.ext) or (phenotype.ext[0] == 'ea' and sprite_age > 12)):
+                if (not phenotype.brindledbi and not is_red and phenotype.ext[0] != "Eg" and 
+                (phenotype.agouti[0] != 'a' and (phenotype.corin[0] == 'sg' or phenotype.corin[0] == 'sh' or (phenotype.silver[0] == 'i' and phenotype.corin[0] == 'fg') or (phenotype.ext[0] == 'ea' and sprite_age > 6) or 'ec' in phenotype.ext) or (phenotype.ext[0] == 'ea' and sprite_age > 6))):
                     sunshine = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                     sunshine.blit(sprites.sprites['Tabby_unders' + cat_sprite], (0, 0))
 
-                    colours = phenotype.FindRed(phenotype, sprite_age, special='nosilver')
+                    is_bimetal = (phenotype.agouti[0] != 'a' and (phenotype.corin[0] == 'sg' or phenotype.corin[0] == 'sh' or (phenotype.silver[0] == 'i' and phenotype.corin[0] == 'fg') or 'ec' in phenotype.ext and phenotype.ext != ["ec", "ec"]))
+                    colours = phenotype.FindRed(phenotype, sprite_age, special='nosilver' if is_bimetal else None)
                     underbelly = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                     underbelly = make_cat(underbelly, colours[0], colours[1], [colours[2], colours[3]], special='nounders')
                     sunshine.blit(underbelly, (0, 0), special_flags=pygame.BLEND_RGBA_MIN)

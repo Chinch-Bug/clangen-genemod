@@ -35,7 +35,7 @@ from scripts.cat.pelts import Pelt
 from scripts.cat.phenotype import Genotype
 from scripts.cat.phenotype import Phenotype
 from scripts.cat.personality import Personality
-from scripts.cat.skills import CatSkills
+from scripts.cat.skills import CatSkills, scale_progress
 from scripts.cat.status import Status, StatusDict
 from scripts.config import get_config
 from scripts.events_module.thoughts.generate_thoughts import (
@@ -140,7 +140,7 @@ class Cat:
         prefix=None,
         gender=None,
         status_dict: StatusDict = None,
-        backstory: str="clanborn",
+        backstory: str=None,
         parent1: str=None,
         parent2: str=None,
         extrapar=None,
@@ -442,9 +442,7 @@ class Cat:
 
         # backstory
         if self.backstory is None:
-            self.backstory = "clanborn"
-        else:
-            self.backstory = self.backstory  # fixme why does this exist
+            self.assign_backstory()
 
         # sex!?!??!?!?!??!?!?!?!??
         # if self.gender is None:
@@ -507,6 +505,26 @@ class Cat:
 
         if self.ID is not None and self.ID != "0":
             Cat.insert_cat(self)
+
+    def assign_backstory(self):
+        """Assign a backstory based on social status."""
+        if self.status.social == CatSocial.CLANCAT:
+            self.backstory = "clanborn"
+        else:
+            baby = self.age in (CatAge.NEWBORN, CatAge.KITTEN)
+            social_category = {
+                CatSocial.LONER: "loner_backstories",
+                CatSocial.ROGUE: "rogue_backstories",
+                CatSocial.KITTYPET: "kittypet_backstories",
+            }[self.status.social]
+            if baby:
+                social_category = f"baby_{social_category}"
+            possible_backstories = BACKSTORIES["backstory_categories"][social_category]
+            self.backstory = (
+                possible_backstories[0]
+                if self.disable_random
+                else choice(possible_backstories)
+            )
 
     def init_faded(self, ID, status, prefix, suffix, moons, **kwargs):
         """Perform faded-specific initialization
@@ -3193,10 +3211,10 @@ class Cat:
                     lvl_modifier = 2
                 else:
                     lvl_modifier = 1
-                mediator.experience += exp_gain / lvl_modifier / gm_modifier
+                mediator.add_experience(exp_gain / lvl_modifier / gm_modifier)
 
         if mediator.status.rank == CatRank.MEDIATOR_APPRENTICE:
-            mediator.experience += max(randint(1, 6), 1)
+            mediator.add_experience(max(randint(1, 6), 1))
 
         # determine the traits to effect
         # Are they mates?
@@ -3505,6 +3523,17 @@ class Cat:
             ):
                 self.experience_level = x
                 break
+
+    def add_experience(self, amount):
+        """adds experience, scaled by progress.difficulty_modifier"""
+
+        ceiling = Cat.experience_levels_range["masterful"][1]
+        scaled = scale_progress(self.experience, ceiling, amount)
+        # stochastic rounding so experience still increases on average
+        gain = int(scaled)
+        if random() < scaled - gain:
+            gain += 1
+        self.experience = self.experience + gain
 
     @property
     def experience_level_string(self):

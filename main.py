@@ -79,7 +79,6 @@ def load_data():
             game.dark_forest = Afterlife()
             load_cats()
             game.load_events()
-            scripts.screens.screens_core.screens_core.rebuild_core()
         except Exception as e:
             logging.exception("File failed to load")
             if not switch_get_value(Switch.error_message):
@@ -87,6 +86,8 @@ def load_data():
                     Switch.error_message, "There was an error loading the cats file!"
                 )
                 switch_set_value(Switch.traceback, e)
+
+        scripts.screens.screens_core.screens_core.rebuild_core()
 
     finished_loading = True
 

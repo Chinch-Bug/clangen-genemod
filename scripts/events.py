@@ -2420,8 +2420,7 @@ def handle_timeskip_EX(cat):
         if cat.status.group_ID != CatGroup.PLAYER_CLAN_ID and cat.ID not in game.patrolled:
             exp += random.randint(0, 3)
 
-        if exp > 0:
-            cat.experience += max(exp * mentor_modifier, 1)
+        cat.add_experience(max(exp * mentor_modifier, 1))
 
     else:
         if cat.not_working() and int(random.random() * 3):
@@ -2448,8 +2447,7 @@ def handle_timeskip_EX(cat):
             + list(range(ran[1][0], ran[1][1] + 1))
         )
 
-        if exp > 0:
-            cat.experience += max(exp * role_modifier, 1)
+        cat.add_experience(max(exp * role_modifier, 1))
 
 def invite_new_cats(cat, clan=game.clan):
     """

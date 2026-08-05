@@ -984,6 +984,10 @@ class Phenotype(Genotype):
             unders_opacity = self.GetSilverUnders(banding)
         else:
             unders_opacity = self.GetRedUnders(banding)
+            if genes.unders_ruftype == "rufoused":
+                unders_opacity -= 20
+            elif genes.unders_ruftype == "medium":
+                unders_opacity -= 10
         colour = colour + alt_ruf + alt_band
         
         if(genes.specialred in ['blue-red', 'cinnamon']) or special == 'blue-tipped':
