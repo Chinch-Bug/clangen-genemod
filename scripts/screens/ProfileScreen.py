@@ -629,7 +629,9 @@ class ProfileScreen(Screens):
 
         # initialize thoughts if they have none
         if not self.the_cat.thought:
-            if self.the_cat.status.is_other_clancat and game.clan.clancount == "singleclan":
+            if self.the_cat in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_other_clans if clan.instructor]:
+                self.the_cat.get_new_thought(CatThought.IS_GUIDE)
+            elif self.the_cat.status.is_other_clancat and game.clan.clancount == "singleclan":
                 # this isn't great, but it's only being run if someone checks an
                 # other clan cat when booting the game before doing a timeskip
                 other_clan_cats = [
@@ -646,10 +648,6 @@ class ProfileScreen(Screens):
         cat_name = shorten_text_to_fit(cat_name, 500, 20)
         if self.the_cat.dead:
             cat_name = i18n.t("general.dead_label", name=cat_name)
-
-        # Instructor thoughts
-        if self.the_cat.dead and self.the_cat in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_other_clans if clan.instructor]:
-            self.the_cat.get_new_thought(CatThought.IS_GUIDE)
 
         self.profile_elements["cat_name"] = pygame_gui.elements.UITextBox(
             cat_name,
@@ -1110,7 +1108,9 @@ class ProfileScreen(Screens):
         output += "\n"
 
         # CAT SKILLS
-        output += the_cat.skills.skill_string()
+        output += the_cat.skills.skill_string(
+            is_adolescent=(the_cat.age == CatAge.ADOLESCENT)
+        )
         # NEWLINE ----------
         output += "\n"
 

@@ -16,9 +16,10 @@ from scripts.cat.enums import (
     CatCompatibility,
     CatThought,
 )
-from scripts.cat.genotype import Genotype
+from scripts.cat.factories.enums import CatType
+from scripts.cat.factories.new_cat_factory import NewCatFactory
 from scripts.cat.names import names, Name
-from scripts.cat.status import StatusDict
+from scripts.cat.factories.typed_dicts import StatusDict
 from scripts.cat_relations.relationship import Relationship, RelType
 from scripts.cat_relations.inheritance2 import inheritance_db
 from scripts.clan_package.settings import get_clan_setting
@@ -1566,7 +1567,7 @@ class Pregnancy_Events:
                     "group_ID": blood_parent.status.get_last_living_group()
                 }
                 
-                kit = Cat(parent1=blood_parent.ID, parent2=sire.ID, extrapar=chimera_sire if sire.ID != chimera_sire.ID else None, status_dict=kit_status, moons=litter_age, backstory=backstory)
+                kit = NewCatFactory.create_cat(parent1=blood_parent.ID, parent2=sire.ID, extrapar=chimera_sire if sire.ID != chimera_sire.ID else None, status_dict=kit_status, moons=litter_age, backstory=backstory)
             else:
                 # Two parents provided
                 second_blood = None
@@ -1586,9 +1587,9 @@ class Pregnancy_Events:
                 }
 
                 if backkit:    
-                    kit = Cat(parent1=cat.ID, parent2=second_blood.ID if second_blood else None, moons=0, backstory=backstory, status_dict=kit_status, extrapar = chimera_sire)
+                    kit = NewCatFactory.create_cat(parent1=cat.ID, parent2=second_blood.ID if second_blood else None, moons=0, backstory=backstory, status_dict=kit_status, extrapar = chimera_sire)
                 else:
-                    kit = Cat(parent1=cat.ID, parent2=second_blood.ID, moons=0, status_dict=kit_status)
+                    kit = NewCatFactory.create_cat(parent1=cat.ID, parent2=second_blood.ID, moons=0, status_dict=kit_status)
 
             if identical:
                 identical = False

@@ -7,6 +7,7 @@ import pygame_gui.elements
 from operator import xor
 
 from scripts.cat.genotype import Genotype
+from scripts.cat.factories.new_cat_factory import NewCatFactory
 from scripts.cat.cats import Cat
 from ..cat.enums import CatAge, CatRank, CatGroup
 from scripts.game_structure import image_cache
@@ -292,9 +293,9 @@ class PredictOffspringScreen(Screens):
         else:
             par2geno.Generator('masc')
         if self.selected_mate:
-            new_cat = Cat(parent1 = self.selected_cat.ID, parent2 = self.selected_mate.ID, status_dict = {"rank": CatRank.WARRIOR}, moons = 40, example = True)
+            new_cat = NewCatFactory.create_cat(parent1=self.selected_cat.ID, parent2=self.selected_mate.ID, status_dict={"rank": CatRank.WARRIOR}, moons=40)
         else:
-            new_cat = Cat(parent1 = self.selected_cat.ID, extrapar=par2geno, status = {"rank": CatRank.WARRIOR}, moons = 40, example = True)
+            new_cat = NewCatFactory.create_cat(parent1 = self.selected_cat.ID, extrapar=par2geno, status = {"rank": CatRank.WARRIOR}, moons = 40)
         return new_cat
         
     def generate_offspring(self):

@@ -1,23 +1,26 @@
 import os
 import unittest
+from random import Random
 
+from scripts.cat.factories.test_cat_factory import TestCatFactory
 from scripts.events_module.short.short_event import ShortEvent
 
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
 
 from scripts.clan import Clan
-from scripts.cat.cats import Cat
 from scripts.cat.pelts import Pelt
+
+cat_factory = TestCatFactory()
 
 
 class TestHandleEvent(unittest.TestCase):
     def setUp(self):
-        self.chosen_event = ShortEvent(event_id="test")
-        self.chosen_event.main_cat = Cat()
-        self.chosen_event.random_cat = Cat()
         self.clan = Clan()
         self.clan.group_ID = "1"
+        self.chosen_event = ShortEvent(event_id="test")
+        self.chosen_event.main_cat = cat_factory.create_cat()
+        self.chosen_event.random_cat = cat_factory.create_cat()
 
     def test_mc_presence(self):
         # event should always use m_c by default
@@ -64,8 +67,8 @@ class TestHandleNewCats(unittest.TestCase):
 
 class TestHandleAccessories(unittest.TestCase):
     def setUp(self):
-        self.chosen_event = ShortEvent(event_id="test", new_accessory=("TEST",))
-        self.chosen_event.main_cat = Cat(disable_random=True)
+        self.chosen_event = ShortEvent(event_id="test", new_accessory=["TEST"])
+        self.chosen_event.main_cat = cat_factory.create_cat(disable_random=True)
         self.pelts = Pelt
         self.clan = Clan()
         self.clan.group_ID = "1"
@@ -126,14 +129,16 @@ class TestHandleAccessories(unittest.TestCase):
 
 class TestHandleTransition(unittest.TestCase):
     def setUp(self):
+        self.clan = Clan()
+        self.clan.group_ID = "1"
         self.chosen_event = ShortEvent(
             event_id="test",
             sub_type=["transition"],
             new_gender=["trans male", "nonbinary"],
         )
-        self.chosen_event.main_cat = Cat(gender="female", disable_random=True)
-        self.clan = Clan()
-        self.clan.group_ID = "1"
+        self.chosen_event.main_cat = cat_factory.create_cat(
+            gender="female", disable_random=True
+        )
 
     def test_cat_transitions(self):
         self.chosen_event.execute_event(clan=self.clan)
@@ -157,15 +162,15 @@ class TestHandleDeathHistory(unittest.TestCase):
 
 class TestHandleInjury(unittest.TestCase):
     def setUp(self):
+        self.clan = Clan()
+        self.clan.group_ID = "1"
         self.chosen_event = ShortEvent(
             event_id="test",
             r_c={"age": "any"},
             injury=[{"cats": ["m_c"], "injuries": ["scrapes"]}],
         )
-        self.chosen_event.main_cat = Cat()
-        self.chosen_event.random_cat = Cat()
-        self.clan = Clan()
-        self.clan.group_ID = "1"
+        self.chosen_event.main_cat = cat_factory.create_cat()
+        self.chosen_event.random_cat = cat_factory.create_cat()
 
     def test_types(self):
         self.chosen_event.execute_event(clan=self.clan)

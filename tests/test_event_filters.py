@@ -21,11 +21,14 @@ except ImportError:
 
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
+from random import Random
 
-from scripts.cat.cats import Cat, create_cat
+from scripts.cat.cats import Cat
+from scripts.cat.enums import CatRank
+from scripts.cat.factories.test_cat_factory import TestCatFactory
 from scripts.cat_relations.inheritance2 import inheritance_db
 from scripts.cat.enums import CatRank, CatAge, CatSocial, CatGroup, CatStanding
-from scripts.cat.status import StatusDict
+from scripts.cat.factories.typed_dicts import StatusDict
 from scripts.cat_relations.enums import RelType, rel_type_tiers, RelTier
 from scripts.cat_relations.relationship import Relationship
 from scripts.clan import Clan
@@ -39,6 +42,8 @@ from scripts.events_module.event_filters import (
 )
 from scripts.game_structure import game
 
+cat_factory = TestCatFactory()
+
 
 class TestEventFilters(unittest.TestCase):
     def setUp(self):
@@ -49,7 +54,7 @@ class TestEventFilters(unittest.TestCase):
         game.clan.starting_season = "Newleaf"
         game.clan.game_mode = "classic"
 
-        self.test_cat = create_cat(CatRank.LEADER, moons=50)
+        self.test_cat = cat_factory.create_cat(rank=CatRank.LEADER, moons=50)
         game.clan.leader = self.test_cat
 
     def test_location(self):
@@ -211,7 +216,7 @@ class TestPointsOfInterest(unittest.TestCase):
         game.clan.starting_season = "Newleaf"
         game.clan.game_mode = "classic"
 
-        self.test_cat = create_cat(CatRank.LEADER, moons=50)
+        self.test_cat = cat_factory.create_cat(rank=CatRank.LEADER, moons=50)
         game.clan.leader = self.test_cat
 
         clear_pois()
@@ -389,16 +394,12 @@ class TestPointsOfInterest(unittest.TestCase):
 
 class TestInterpersonalRelationshipConstraints(unittest.TestCase):
     @classmethod
-    def setUpClass(cls):
-        Cat.disable_random = True
-
-    @classmethod
     def build_cat_constraint(cls, rel_filter):
         return {"relationship_status": [rel_filter]}
 
     def test_strangers(self):
-        cat1 = Cat()
-        cat2 = Cat()
+        cat1 = cat_factory.create_cat()
+        cat2 = cat_factory.create_cat()
 
         cat1.relationships = {}
         cat2.relationships = {}
@@ -452,9 +453,9 @@ class TestInterpersonalRelationshipConstraints(unittest.TestCase):
             )
 
     def test_siblings(self):
-        parent = Cat()
-        cat1 = Cat(parent1=parent.ID)
-        cat2 = Cat(parent1=parent.ID)
+        parent = cat_factory.create_cat()
+        cat1 = cat_factory.create_cat(parent1=parent.ID)
+        cat2 = cat_factory.create_cat(parent1=parent.ID)
         inheritance_db.load_inheritances(Cat)
 
         with self.subTest("are siblings, expected siblings"):
@@ -491,9 +492,9 @@ class TestInterpersonalRelationshipConstraints(unittest.TestCase):
             )
 
     def test_littermates(self):
-        parent = Cat()
-        cat1 = Cat(parent1=parent.ID, moons=1)
-        cat2 = Cat(parent1=parent.ID, moons=1)
+        parent = cat_factory.create_cat()
+        cat1 = cat_factory.create_cat(parent1=parent.ID, moons=1)
+        cat2 = cat_factory.create_cat(parent1=parent.ID, moons=1)
 
         inheritance_db.load_inheritances(Cat)
 
@@ -531,10 +532,10 @@ class TestInterpersonalRelationshipConstraints(unittest.TestCase):
             )
 
     def test_mates(self):
-        mate1 = Cat()
-        mate2 = Cat()
+        mate1 = cat_factory.create_cat()
+        mate2 = cat_factory.create_cat()
 
-        other = Cat()
+        other = cat_factory.create_cat()
 
         mate1.mate.append(mate2.ID)
         mate2.mate.append(mate1.ID)
@@ -573,8 +574,8 @@ class TestInterpersonalRelationshipConstraints(unittest.TestCase):
             )
 
     def test_parent_child(self):
-        parent = Cat()
-        cat1 = Cat(parent1=parent.ID)
+        parent = cat_factory.create_cat()
+        cat1 = cat_factory.create_cat(parent1=parent.ID)
 
         inheritance_db.load_inheritances(Cat)
 
@@ -612,8 +613,8 @@ class TestInterpersonalRelationshipConstraints(unittest.TestCase):
             )
 
     def test_child_parent(self):
-        parent = Cat()
-        cat1 = Cat(parent1=parent.ID)
+        parent = cat_factory.create_cat()
+        cat1 = cat_factory.create_cat(parent1=parent.ID)
 
         inheritance_db.load_inheritances(Cat)
 
@@ -651,8 +652,12 @@ class TestInterpersonalRelationshipConstraints(unittest.TestCase):
             )
 
     def test_app_mentor(self):
-        app = Cat(moons=8, status_dict=StatusDict(rank=CatRank.APPRENTICE))
-        mentor = Cat(moons=26, status_dict=StatusDict(rank=CatRank.WARRIOR))
+        app = cat_factory.create_cat(
+            moons=8, status_dict=StatusDict(rank=CatRank.APPRENTICE)
+        )
+        mentor = cat_factory.create_cat(
+            moons=26, status_dict=StatusDict(rank=CatRank.WARRIOR)
+        )
 
         app.update_mentor(new_mentor=mentor.ID)
 
@@ -690,9 +695,12 @@ class TestInterpersonalRelationshipConstraints(unittest.TestCase):
             )
 
     def test_mentor_app(self):
-        app = Cat(moons=8, disable_random=True)
-        mentor = Cat(
-            moons=26, status_dict=StatusDict(rank=CatRank.WARRIOR), disable_random=True
+        app = cat_factory.create_cat(
+            moons=8,
+        )
+        mentor = cat_factory.create_cat(
+            moons=26,
+            status_dict=StatusDict(rank=CatRank.WARRIOR),
         )
 
         app.update_mentor(new_mentor=mentor.ID)
@@ -731,9 +739,12 @@ class TestInterpersonalRelationshipConstraints(unittest.TestCase):
             )
 
     def test_multiple(self):
-        app = Cat(moons=8, disable_random=True)
-        mentor = Cat(
-            moons=26, status_dict=StatusDict(rank=CatRank.WARRIOR), disable_random=True
+        app = cat_factory.create_cat(
+            moons=8,
+        )
+        mentor = cat_factory.create_cat(
+            moons=26,
+            status_dict=StatusDict(rank=CatRank.WARRIOR),
         )
 
         app.update_mentor(new_mentor=mentor.ID)
@@ -756,9 +767,9 @@ class TestInterpersonalRelationshipConstraints2(unittest.TestCase):
     """
 
     def test_strangers(self):
-        cat1 = Cat(disable_random=True)
-        cat2 = Cat(disable_random=True)
-        cat3 = Cat(disable_random=True)
+        cat1 = cat_factory.create_cat()
+        cat2 = cat_factory.create_cat()
+        cat3 = cat_factory.create_cat()
 
         cat1.relationships[cat2.ID] = Relationship(
             **{
@@ -831,9 +842,9 @@ class TestInterpersonalRelationshipConstraints2(unittest.TestCase):
             )
 
     def test_siblings(self):
-        parent = Cat(disable_random=True)
-        cat1 = Cat(disable_random=True, parent1=parent.ID)
-        cat2 = Cat(disable_random=True, parent1=parent.ID)
+        parent = cat_factory.create_cat()
+        cat1 = cat_factory.create_cat(parent1=parent.ID)
+        cat2 = cat_factory.create_cat(parent1=parent.ID)
         inheritance_db.load_inheritances(Cat)
 
         involved_cats = {
@@ -916,10 +927,19 @@ class TestInterpersonalRelationshipConstraints2(unittest.TestCase):
             )
 
     def test_littermates(self):
-        parent = Cat(disable_random=True)
-        cat1 = Cat(parent1=parent.ID, moons=1, disable_random=True)
-        cat2 = Cat(parent1=parent.ID, moons=1, disable_random=True)
-        sib = Cat(parent1=parent.ID, moons=10, disable_random=True)
+        parent = cat_factory.create_cat()
+        cat1 = cat_factory.create_cat(
+            parent1=parent.ID,
+            moons=1,
+        )
+        cat2 = cat_factory.create_cat(
+            parent1=parent.ID,
+            moons=1,
+        )
+        sib = cat_factory.create_cat(
+            parent1=parent.ID,
+            moons=10,
+        )
 
         inheritance_db.load_inheritances(Cat)
 
@@ -1001,9 +1021,9 @@ class TestInterpersonalRelationshipConstraints2(unittest.TestCase):
             )
 
     def test_mates(self):
-        mate1 = Cat(disable_random=True)
-        mate2 = Cat(disable_random=True)
-        other = Cat(disable_random=True)
+        mate1 = cat_factory.create_cat()
+        mate2 = cat_factory.create_cat()
+        other = cat_factory.create_cat()
 
         involved_cats = {"mate1": mate1, "mate2": mate2, "other": other}
 
@@ -1112,9 +1132,11 @@ class TestInterpersonalRelationshipConstraints2(unittest.TestCase):
             )
 
     def test_parent_child(self):
-        parent = Cat(disable_random=True)
-        cat1 = Cat(parent1=parent.ID, disable_random=True)
-        cat2 = Cat(disable_random=True)
+        parent = cat_factory.create_cat()
+        cat1 = cat_factory.create_cat(
+            parent1=parent.ID,
+        )
+        cat2 = cat_factory.create_cat()
 
         inheritance_db.load_inheritances(Cat)
         involved_cats = {"parent": parent, "c1": cat1, "c2": cat2}
@@ -1169,9 +1191,11 @@ class TestInterpersonalRelationshipConstraints2(unittest.TestCase):
             )
 
     def test_child_parent(self):
-        parent = Cat(disable_random=True)
-        cat1 = Cat(parent1=parent.ID, disable_random=True)
-        cat2 = Cat(disable_random=True)
+        parent = cat_factory.create_cat()
+        cat1 = cat_factory.create_cat(
+            parent1=parent.ID,
+        )
+        cat2 = cat_factory.create_cat()
 
         inheritance_db.load_inheritances(Cat)
         involved_cats = {"parent": parent, "c1": cat1, "c2": cat2}
@@ -1226,10 +1250,16 @@ class TestInterpersonalRelationshipConstraints2(unittest.TestCase):
             )
 
     def test_app_mentor(self):
-        app = Cat(moons=8, status_dict=StatusDict(rank=CatRank.APPRENTICE))
-        mentor = Cat(moons=26, status_dict=StatusDict(rank=CatRank.WARRIOR))
+        app = cat_factory.create_cat(
+            moons=8, status_dict=StatusDict(rank=CatRank.APPRENTICE)
+        )
+        mentor = cat_factory.create_cat(
+            moons=26, status_dict=StatusDict(rank=CatRank.WARRIOR)
+        )
 
-        app2 = Cat(moons=8, status_dict=StatusDict(rank=CatRank.APPRENTICE))
+        app2 = cat_factory.create_cat(
+            moons=8, status_dict=StatusDict(rank=CatRank.APPRENTICE)
+        )
 
         app.update_mentor(new_mentor=mentor.ID)
 
@@ -1322,10 +1352,16 @@ class TestInterpersonalRelationshipConstraints2(unittest.TestCase):
             )
 
     def test_mentor_app(self):
-        app = Cat(moons=8, status_dict=StatusDict(rank=CatRank.APPRENTICE))
-        mentor = Cat(moons=26, status_dict=StatusDict(rank=CatRank.WARRIOR))
+        app = cat_factory.create_cat(
+            moons=8, status_dict=StatusDict(rank=CatRank.APPRENTICE)
+        )
+        mentor = cat_factory.create_cat(
+            moons=26, status_dict=StatusDict(rank=CatRank.WARRIOR)
+        )
 
-        app2 = Cat(moons=8, status_dict=StatusDict(rank=CatRank.APPRENTICE))
+        app2 = cat_factory.create_cat(
+            moons=8, status_dict=StatusDict(rank=CatRank.APPRENTICE)
+        )
 
         app.update_mentor(new_mentor=mentor.ID)
 
@@ -1405,9 +1441,12 @@ class TestInterpersonalRelationshipConstraints2(unittest.TestCase):
             )
 
     def test_multiple(self):
-        app = Cat(moons=8, disable_random=True)
-        mentor = Cat(
-            moons=26, status_dict=StatusDict(rank=CatRank.WARRIOR), disable_random=True
+        app = cat_factory.create_cat(
+            moons=8,
+        )
+        mentor = cat_factory.create_cat(
+            moons=26,
+            status_dict=StatusDict(rank=CatRank.WARRIOR),
         )
         involved_cats = {"mentor": mentor, "app": app}
 
@@ -1436,9 +1475,8 @@ class TestRelationshipTiers(unittest.TestCase):
 
         cls.thresholds = list(config["relationship"]["value_intervals"].values())
 
-        Cat.disable_random = True
-        cls.cat1 = Cat()
-        cls.cat2 = Cat()
+        cls.cat1 = cat_factory.create_cat()
+        cls.cat2 = cat_factory.create_cat()
 
     def tearDown(self):
         self.cat1.relationships = {}
@@ -1752,10 +1790,9 @@ class TestRelationshipTiersMultiCat(unittest.TestCase):
 
         cls.thresholds = list(config["relationship"]["value_intervals"].values())
 
-        Cat.disable_random = True
-        cls.cat1 = Cat()
-        cls.cat2 = Cat()
-        cls.cat3 = Cat()
+        cls.cat1 = cat_factory.create_cat()
+        cls.cat2 = cat_factory.create_cat()
+        cls.cat3 = cat_factory.create_cat()
 
     def tearDown(self):
         self.cat1.relationships = {}
@@ -2045,20 +2082,14 @@ class TestRelationshipTiersMultiCat(unittest.TestCase):
 
 
 class TestCatConstraint(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        Cat.disable_random = True
-
     def test_ages(self):
-        cat = Cat(disable_random=True)
+        cat = cat_factory.create_cat(moons=0)
 
         # ages used
         newborn = CatAge.NEWBORN
         age = CatAge.ADULT
         unmatched_age = CatAge.SENIOR
 
-        # newborn-specific
-        cat.age = CatAge.NEWBORN
         with self.subTest("empty newborn"):
             self.assertFalse(event_for_cat(cat=cat, cat_info={"age": []}))
         with self.subTest('"any" newborn'):
@@ -2069,7 +2100,7 @@ class TestCatConstraint(unittest.TestCase):
             self.assertTrue(event_for_cat(cat=cat, cat_info={"age": [newborn]}))
 
         # set cat age to the general testing age
-        cat.age = age
+        cat.moons = 60
 
         # general
         with self.subTest("empty"):
@@ -2098,7 +2129,7 @@ class TestCatConstraint(unittest.TestCase):
             )
 
     def test_group(self):
-        cat = Cat()
+        cat = cat_factory.create_cat()
         test_dict = {
             CatGroup.STARCLAN: CatGroup.STARCLAN_ID,
             CatGroup.DARK_FOREST: CatGroup.DARK_FOREST_ID,
@@ -2129,7 +2160,7 @@ class TestCatConstraint(unittest.TestCase):
             self.assertTrue(event_for_cat(cat=cat, cat_info={"group": ["-no_group"]}))
 
         # doesn't match another cat
-        other_cat = Cat()
+        other_cat = cat_factory.create_cat()
         other_cat.status.add_to_group(CatGroup.STARCLAN_ID)
         with self.subTest(f"doesn't match other cat's group"):
             self.assertTrue(
@@ -2184,8 +2215,8 @@ class TestCatConstraint(unittest.TestCase):
             "match:r_c": CatGroup.PLAYER_CLAN_ID,
         }
         game.used_group_IDs["5"] = CatGroup.OTHER_CLAN
-        cat = Cat()
-        other_cat = Cat()
+        cat = cat_factory.create_cat()
+        other_cat = cat_factory.create_cat()
 
         # checking current standing
         for group, ID in test_dict.items():
@@ -2302,7 +2333,7 @@ class TestCatConstraint(unittest.TestCase):
 
     def test_statuses(self):
         statuses = [s for s in [*CatRank] if s.is_any_clancat_rank()]
-        cat = Cat(disable_random=True)
+        cat = cat_factory.create_cat()
 
         with self.subTest("empty"):
             self.assertTrue(event_for_cat(cat=cat, cat_info={"status": []}))
@@ -2326,7 +2357,7 @@ class TestCatConstraint(unittest.TestCase):
         return  # temp patch until the test can be fixed proper
         ranks = [*CatRank]
 
-        cat = Cat()
+        cat = cat_factory.create_cat()
         for old_rank, new_rank in permutations(ranks, 2):
             cat.status.generate_new_status(rank=old_rank)
 
@@ -2402,7 +2433,7 @@ class TestCatConstraint(unittest.TestCase):
         """
         Checks if the `must_have_both` works.
         """
-        cat = Cat()
+        cat = cat_factory.create_cat()
 
         # has both
         with self.subTest("has both"):
@@ -2522,7 +2553,7 @@ class TestCatConstraint(unittest.TestCase):
         Runs adult & kit traits.
         :return:
         """
-        cat = Cat()
+        cat = cat_factory.create_cat()
 
         # general
         with self.subTest('"any"'):
@@ -2556,7 +2587,7 @@ class TestCatConstraint(unittest.TestCase):
                 self.assertTrue(event_for_cat(cat=cat, cat_info={"trait": ["-bold"]}))
 
     def test_skill(self):
-        cat = Cat()
+        cat = cat_factory.create_cat()
         cat.personality = Personality(trait="adventurous")
         cat.skills.primary = Skill(SkillPath.HUNTER, points=9)
         cat.skills.secondary = None
@@ -2675,7 +2706,7 @@ class TestCatConstraint(unittest.TestCase):
                     )
 
     def test_backstory(self):
-        cat = Cat(backstory="clan_founder")
+        cat = cat_factory.create_cat(backstory="clan_founder")
 
         # general
         with self.subTest('"any"'):
@@ -2731,8 +2762,8 @@ class TestCatConstraint(unittest.TestCase):
             )
 
     def test_gender(self):
-        male = Cat(gender="male", disable_random=True)
-        female = Cat(gender="female", disable_random=True)
+        male = cat_factory.create_cat(genderalign="tom")
+        female = cat_factory.create_cat(genderalign="molly")
 
         with self.subTest("empty"):
             self.assertTrue(event_for_cat(cat=male, cat_info={"gender": []}))
@@ -2750,15 +2781,15 @@ class TestCatConstraint(unittest.TestCase):
             self.assertFalse(event_for_cat(cat=female, cat_info={"gender": ["male"]}))
 
     def test_health(self):
-        working_cat = Cat()
-        broken_cat = Cat()
-        Cat.disable_random = True
+        working_cat = cat_factory.create_cat()
+        broken_cat = cat_factory.create_cat()
+
         broken_cat.get_injured(name="broken bone")
-        ill_cat = Cat()
+        ill_cat = cat_factory.create_cat()
         ill_cat.get_ill(name="greencough")
-        born_para_cat = Cat()
+        born_para_cat = cat_factory.create_cat()
         born_para_cat.get_permanent_condition(name="paralyzed", born_with=True)
-        acquired_para_cat = Cat()
+        acquired_para_cat = cat_factory.create_cat()
         acquired_para_cat.get_permanent_condition(name="paralyzed", born_with=False)
 
         # cat must be working and is

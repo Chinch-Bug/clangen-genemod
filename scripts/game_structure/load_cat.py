@@ -23,13 +23,16 @@ from scripts.game_structure.game.switches import (
     Switch,
 )
 from scripts.game_structure.game.settings import game_setting_get
+from ..cat.factories.enums import CatType
+from ..cat.factories.load_cat_factory import LoadCatFactory
+from ..cat.factories.typed_dicts import MentorshipDict, StatusDict
+from ..cat.names import Name
 from ..cat.pronouns import get_new_pronouns
 from scripts.housekeeping.version import SAVE_VERSION_NUMBER
 from scripts.config import get_config
 from scripts.game_structure import game
 from ..cat.personality import Personality
 from ..cat.skills import CatSkills
-from ..cat.status import StatusDict
 from ..clan_resources.point_of_interest import (
     clear_pois,
     generate_and_add_new_poi,
@@ -157,10 +160,15 @@ def accurate_porting(cat, info):
         refraction = choice(range(3, 7))
         cat.phenotype.lefteyetype = f"R{refraction} ; {pigmentation}"
         cat.phenotype.righteyetype = f"R{refraction} ; {pigmentation}"
-    elif info["eye_colour"] in ["BLUE", "COBALT", "CYAN", "DARKBLUE", "HEATHERBLUE", "PALEBLUE", "SUNLITICE", "SEA", "BLUEBELL", "PERIWINKLE"]:
+    elif info["eye_colour"] in ["WALNUT"]:
+        pigmentation = 11
+        refraction = choice(range(1, 10))
+        cat.phenotype.lefteyetype = f"R{refraction} ; {pigmentation}"
+        cat.phenotype.righteyetype = f"R{refraction} ; {pigmentation}"
+    elif info["eye_colour"] in ["BLUE", "COBALT", "CYAN", "DARKBLUE", "HEATHERBLUE", "PALEBLUE", "SUNLITICE", "SEA", "BLUEBELL", "PERIWINKLE", "STORM"]:
         pigmentation = "blue"
         refraction = choice(range(5, 9))
-        if info["eye_colour"] in ["COBALT", "DARKBLUE", "HEATHERBLUE", "SEA", "BLUEBELL"]:
+        if info["eye_colour"] in ["COBALT", "DARKBLUE", "HEATHERBLUE", "SEA", "BLUEBELL", "STORM"]:
             refraction = choice(range(9, 12))
         elif info["eye_colour"] in ["PALEBLUE", "CYAN"]:
             refraction = choice(range(1, 5))
@@ -199,7 +207,7 @@ def accurate_porting(cat, info):
             pigmentation = choice(range(8, 11))
         cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
         cat.phenotype.righteyetype = f"R{refraction} ; P{pigmentation}"
-    elif info["eye_colour"] in ["EMERALD", "GREEN", "PALEGREEN", "SAGE", "OLIVE", "FERN", "MOSSY", "LEAF", "LIME"]:
+    elif info["eye_colour"] in ["EMERALD", "GREEN", "PALEGREEN", "SAGE", "OLIVE", "FERN", "MOSSY", "LEAF", "LIME", "SWAMP"]:
         pigmentation = choice(range(3, 7))
         refraction = choice(range(9, 12))
         if info["eye_colour"] == "PALEGREEN":
@@ -208,6 +216,8 @@ def accurate_porting(cat, info):
             pigmentation = choice(range(7, 10))
         elif info["eye_colour"] in ["OLIVE", "MOSSY"]:
             pigmentation = choice(range(9, 11))
+        elif info["eye_colour"] in ["SWAMP"]:
+            pigmentation = choice(range(9, 12))
         cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
         cat.phenotype.righteyetype = f"R{refraction} ; P{pigmentation}"
     elif info["eye_colour"] in ["HAZEL", "GRASSYGREEN", "CATTAIL", "CACTUS"]:
@@ -222,7 +232,7 @@ def accurate_porting(cat, info):
         refraction = choice(range(10, 12))
         cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
         cat.phenotype.righteyetype = f"R{refraction} ; P{pigmentation}"
-    elif info["eye_colour"] in ["FOREST", "LICHEN"]:
+    elif info["eye_colour"] in ["FOREST", "LICHEN", "ALGAE", "PERIDOT"]:
         pigmentation = 1
         refraction = choice(range(5, 9))
         if info["eye_colour"] == "LICHEN":
@@ -234,13 +244,19 @@ def accurate_porting(cat, info):
         pigmentation = "albino"
         refraction = choice(range(3, 7))
         cat.phenotype.lefteyetype = f"R{refraction} ; {pigmentation}"
-    elif info["eye_colour2"] in ["BLUE", "COBALT", "CYAN", "DARKBLUE", "HEATHERBLUE", "PALEBLUE", "SUNLITICE", "SEA", "BLUEBELL"]:
+    elif info["eye_colour2"] in ["WALNUT"]:
+        pigmentation = 11
+        refraction = choice(range(1, 10))
+        cat.phenotype.lefteyetype = f"R{refraction} ; {pigmentation}"
+    elif info["eye_colour2"] in ["BLUE", "COBALT", "CYAN", "DARKBLUE", "HEATHERBLUE", "PALEBLUE", "SUNLITICE", "SEA", "BLUEBELL", "PERIWINKLE", "STORM"]:
         pigmentation = "blue"
         refraction = choice(range(5, 9))
-        if info["eye_colour2"] in ["COBALT", "DARKBLUE", "HEATHERBLUE", "SEA", "BLUEBELL"]:
+        if info["eye_colour2"] in ["COBALT", "DARKBLUE", "HEATHERBLUE", "SEA", "BLUEBELL", "STORM"]:
             refraction = choice(range(9, 12))
         elif info["eye_colour2"] in ["PALEBLUE", "CYAN"]:
             refraction = choice(range(1, 5))
+        elif info["eye_colour2"] in ["PERIWINKLE"]:
+            refraction = choice(range(4, 8))
         cat.phenotype.lefteyetype = f"R{refraction} ; {pigmentation}"
     elif info["eye_colour2"] in ["GOLD", "YELLOW", "PALEYELLOW", "GREENYELLOW", "MUSTARD"]:
         pigmentation = choice(range(1, 6))
@@ -264,30 +280,32 @@ def accurate_porting(cat, info):
         if info["eye_colour2"] == "DAWN":
             pigmentation = choice(range(8, 11))
         cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
-    elif info["eye_colour"] in ["EMERALD", "GREEN", "PALEGREEN", "SAGE", "OLIVE", "FERN", "MOSSY", "LEAF"]:
+    elif info["eye_colour2"] in ["EMERALD", "GREEN", "PALEGREEN", "SAGE", "OLIVE", "FERN", "MOSSY", "LEAF", "LIME", "SWAMP"]:
         pigmentation = choice(range(3, 7))
         refraction = choice(range(9, 12))
-        if info["eye_colour"] == "PALEGREEN":
+        if info["eye_colour2"] == "PALEGREEN":
             pigmentation = choice(range(2, 4))
-        elif info["eye_colour"] in ["SAGE", "FERN"]:
+        elif info["eye_colour2"] in ["SAGE", "FERN", "LIME"]:
             pigmentation = choice(range(7, 10))
-        elif info["eye_colour"] in ["OLIVE", "MOSSY"]:
+        elif info["eye_colour2"] in ["OLIVE", "MOSSY"]:
             pigmentation = choice(range(9, 11))
+        elif info["eye_colour2"] in ["SWAMP"]:
+            pigmentation = choice(range(9, 12))
         cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
-    elif info["eye_colour"] in ["HAZEL", "GRASSYGREEN", "CATTAIL", "CACTUS"]:
+    elif info["eye_colour2"] in ["HAZEL", "GRASSYGREEN", "CATTAIL", "CACTUS"]:
         pigmentation = choice(range(5, 8))
         refraction = choice(range(5, 8))
-        if info["eye_colour"] == "CATTAIL":
+        if info["eye_colour2"] == "CATTAIL":
             pigmentation = choice(range(10, 12))
         cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
-    elif info["eye_colour"] in ["AURORA", "AQUAMARINE"]:
+    elif info["eye_colour2"] in ["AURORA", "AQUAMARINE"]:
         pigmentation = choice(range(1, 3))
         refraction = choice(range(10, 12))
         cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
-    elif info["eye_colour"] in ["FOREST", "LICHEN"]:
+    elif info["eye_colour2"] in ["FOREST", "LICHEN", "ALGAE", "PERIDOT"]:
         pigmentation = 1
         refraction = choice(range(5, 9))
-        if info["eye_colour"] == "LICHEN":
+        if info["eye_colour2"] == "LICHEN":
             pigmentation = choice(range(1, 4))
         cat.phenotype.lefteyetype = f"R{refraction} ; P{pigmentation}"
 
@@ -536,248 +554,23 @@ def json_load():
         raise
 
     # create new cat objects
-    for i, cat in enumerate(cat_data):
+    for i, cat_dict in enumerate(cat_data):
         try:
-            if isinstance(cat["status"], str):
-                # this sucks, but we need to get the actual str age to make sure nothing goes wonky
-                age = None
-                for key_age in Cat.age_moons.keys():
-                    if cat["moons"] in range(
-                        Cat.age_moons[key_age][0], Cat.age_moons[key_age][1] + 1
-                    ):
-                        age = key_age
-                status_dict = {"rank": cat["status"], "age": age}
-            else:
-                status_dict = cat["status"]
-
-            if "pattern" in cat:
-                cat["tortie_marking"] = cat["pattern"]
-                del cat["pattern"]
-            try:
-                new_cat = Cat(ID=cat["ID"],
-                        prefix=cat["name_prefix"],
-                        suffix=cat["name_suffix"],
-                        specsuffix_hidden=(cat["specsuffix_hidden"] if 'specsuffix_hidden' in cat else False),
-                        status_dict=status_dict,
-                        backstory=cat["backstory"],
-                        parent1=cat["parent1"],
-                        parent2=cat["parent2"],
-                        parent3=cat.get("parent3"),
-                        moons=cat["moons"],
-                        genotype=cat["genotype"],
-                        chimerageno=cat["chimerageno"] if "chimerageno" in cat else cat["genotype"]["chimerageno"],
-                        passes=cat["passes_genotype"] if "passes_genotype" in cat else 1,
-                        white_patterns=cat["white_pattern"],
-                        chim_white=cat["chim_white"] if 'chim_white' in cat else None,
-                        chim_pattern=cat["chimera_pattern"] if "chimera_pattern" in cat else cat["genotype"]["chimerapattern"],
-                        loading_cat=True)
-                if cat.get("group"):
-                    new_cat.group = cat.get("group")
-            except Exception as e:
-                if cat.get("genotype", False):
-                    raise e
-                new_cat = Cat(ID=cat["ID"],
-                        prefix=cat["name_prefix"],
-                        suffix=cat["name_suffix"],
-                        specsuffix_hidden=(cat["specsuffix_hidden"] if 'specsuffix_hidden' in cat else False),
-                        gender=cat['gender'],
-                        status_dict=status_dict,
-                        parent1=cat["parent1"],
-                        parent2=cat["parent2"],
-                        parent3=cat.get("parent3"),
-                        moons=cat["moons"],
-                        loading_cat=True)
-                if not cat.get("genotype", False) and (game_setting_get("accurate_porting") or (not new_cat.parent1 and not new_cat.parent2)):
-                    accurate_porting(new_cat, cat)
-
-            if "tint" in cat:
-                if cat["tint"] == "none":
-                    cat["tint"] = None
-            if "white_patches_tint" in cat:
-                if cat["white_patches_tint"] == "none":
-                    cat["white_patches_tint"] = None
-
-            new_cat.pelt = Pelt(
-                new_cat.phenotype,
-                rusting=cat.get("rusting"),
-                tint=cat.get('tint', 'none'),
-                white_patches_tint=cat.get('white_tint', 'none'),
-                paralyzed=cat["paralyzed"],
-                newborn_sprite=cat.get("sprite_newborn"),
-                kitten_sprite=(
-                    cat["sprite_kitten"]
-                    if "sprite_kitten" in cat
-                    else cat["spirit_kitten"]
-                ),
-                adol_sprite=(
-                    cat["sprite_adolescent"]
-                    if "sprite_adolescent" in cat
-                    else cat["spirit_adolescent"]
-                ),
-                adult_sprite=(
-                    cat["sprite_adult"]
-                    if "sprite_adult" in cat
-                    else cat["spirit_adult"]
-                ),
-                senior_sprite=(
-                    cat["sprite_senior"]
-                    if "sprite_senior" in cat
-                    else cat["spirit_elder"]
-                ),
-                para_adult_sprite=(
-                    cat["sprite_para_adult"] if "sprite_para_adult" in cat else None
-                ),
-                reverse=cat["reverse"],
-                scars=cat["scars"] if "scars" in cat else [],
-                accessory=cat["accessory"],
-                opacity=cat["opacity"] if "opacity" in cat else 100,
-            )
-
-            # Runs a bunch of appearance-related conversion of old stuff.
-            new_cat.pelt.check_and_convert(convert)
-
-            # converting old specialty saves into new scar parameter
-            if "specialty" in cat or "specialty2" in cat:
-                if cat["specialty"] is not None:
-                    new_cat.pelt.scars = (*new_cat.pelt.scars, cat["specialty"])
-                if cat["specialty2"] is not None:
-                    new_cat.pelt.scars = (*new_cat.pelt.scars, cat["specialty2"])
-
-            new_cat.adoptive_parents = (
-                cat["adoptive_parents"] if "adoptive_parents" in cat else []
-            )
-
-            new_cat.surrogate_parents = (
-                cat["surrogate_parents"] if "surrogate_parents" in cat else []
-            )
-
-            new_cat.affair_parents = (
-                cat["affair_parents"] if "affair_parents" in cat else []
-            )
-
-            new_cat.genderalign = cat["gender_align"]
-            new_cat.pronouns = (
-                cat["pronouns"]
-                if "pronouns" in cat
-                else {i18n.config.get("locale"): get_new_pronouns(new_cat.genderalign)}
-            )
-            new_cat.backstory = cat["backstory"] if "backstory" in cat else None
-            if new_cat.backstory in BACKSTORIES["conversion"]:
-                new_cat.backstory = BACKSTORIES["conversion"][new_cat.backstory]
-            new_cat.birth_cooldown = (
-                cat["birth_cooldown"] if "birth_cooldown" in cat else 0
-            )
-            new_cat.moons = cat["moons"]
-
-            if "facets" in cat and cat["facets"] is not None:
-                facets = [int(i) for i in cat["facets"].split(",")]
-                new_cat.personality = Personality(
-                    trait=cat["trait"],
-                    kit_trait=new_cat.age in ["newborn", "kitten"],
-                    lawful=facets[0],
-                    social=facets[1],
-                    aggress=facets[2],
-                    stable=facets[3],
-                )
-            else:
-                new_cat.personality = Personality(
-                    trait=cat["trait"], kit_trait=new_cat.age in ["newborn", "kitten"]
-                )
-
-            new_cat.mentor = cat["mentor"]
-            new_cat.former_mentor = (
-                cat["former_mentor"] if "former_mentor" in cat else []
-            )
-            new_cat.patrol_with_mentor = (
-                cat["patrol_with_mentor"] if "patrol_with_mentor" in cat else 0
-            )
-            new_cat.no_kits = cat["no_kits"]
-            new_cat.no_mates = cat["no_mates"] if "no_mates" in cat else False
-            new_cat.no_retire = cat["no_retire"] if "no_retire" in cat else False
-
-            if "skill_dict" in cat:
-                new_cat.skills = CatSkills(cat["skill_dict"])
-            elif "skill" in cat:
-                if new_cat.backstory is None:
-                    if "skill" == "formerly a loner":
-                        backstory = choice(["loner1", "loner2", "rogue1", "rogue2"])
-                        new_cat.backstory = backstory
-                    elif "skill" == "formerly a kittypet":
-                        backstory = choice(["kittypet1", "kittypet2"])
-                        new_cat.backstory = backstory
-                    else:
-                        new_cat.backstory = "clanborn"
-                new_cat.skills = CatSkills.get_skills_from_old(
-                    cat["skill"], new_cat.status.rank, new_cat.age
-                )
-
-            new_cat.mate = cat["mate"] if type(cat["mate"]) is list else [cat["mate"]]
-            if None in new_cat.mate:
-                new_cat.mate = [i for i in new_cat.mate if i is not None]
-            new_cat.previous_mates = (
-                cat["previous_mates"] if "previous_mates" in cat else []
-            )
-
-            # checking for old dead
-            if (
-                cat.get("dead")
-                or cat.get("df")
-                or cat.get("driven_out")
-                or cat.get("exiled")
-                or cat.get("outside")
-            ):
-                if cat.get("dead") and not new_cat.status.group.is_afterlife():
-                    if cat.get("df"):
-                        new_cat.status.send_to_afterlife(
-                            target_ID=CatGroup.DARK_FOREST_ID
-                        )
-                    elif cat.get("outside"):
-                        new_cat.status.send_to_afterlife(
-                            target_ID=CatGroup.UNKNOWN_RESIDENCE_ID
-                        )
-                    else:
-                        new_cat.status.send_to_afterlife(target_ID=CatGroup.STARCLAN_ID)
-
-                else:
-                    # these should properly change the cat's status to align with old bool info
-                    if cat.get("exiled"):
-                        new_cat.status.exile_from_group()
-                    elif cat.get("outside") and not new_cat.status.is_outsider:
-                        new_cat.status.become_lost()
-
-                    if cat.get("driven_out"):
-                        new_cat.status.change_group_nearness(CatGroup.PLAYER_CLAN_ID)
-
-            if cat.get("dead_moons"):
-                new_cat.dead_for = cat["dead_moons"]
-            new_cat.experience = cat["experience"]
-            new_cat.apprentice = cat["current_apprentice"]
-            new_cat.former_apprentices = cat["former_apprentices"]
-
-            new_cat.faded_offspring = (
-                cat["faded_offspring"] if "faded_offspring" in cat else []
-            )
-            new_cat.prevent_fading = (
-                cat["prevent_fading"] if "prevent_fading" in cat else False
-            )
-            new_cat.favourite = cat["favourite"] if "favourite" in cat else 0
-            if new_cat.favourite == True:
-                new_cat.favourite = 1
-
-            if "died_by" in cat or "scar_event" in cat or "mentor_influence" in cat:
-                new_cat.convert_history(
-                    cat["died_by"] if "died_by" in cat else [],
-                    cat["scar_event"] if "scar_event" in cat else [],
-                )
-
-            new_cat.starclan_affinity = cat.get("starclan_affinity", 0)
-            new_cat.dark_forest_affinity = cat.get("dark_forest_affinity", 0)
-
-            all_cats.append(new_cat)
+            if "pattern" in cat_dict:
+                cat_dict["tortie_marking"] = cat_dict["pattern"]
+                del cat_dict["pattern"]
+            cat = LoadCatFactory.create_cat(**cat_dict)
+            if not cat_dict.get("genotype", False) and (game_setting_get("accurate_porting") or (not cat.parent1 and not cat.parent2)):
+                accurate_porting(cat, cat_dict)
+                cat.pelt.init_sprite()
+            if cat.favourite == True:
+                cat.favourite = 1
+            Cat.all_cats[cat.ID] = cat
+            all_cats.append(cat)
 
         except KeyError as e:
-            if "ID" in cat:
-                key = f" ID #{cat['ID']} "
+            if "ID" in cat_dict:
+                key = f" ID #{cat_dict['ID']} "
             else:
                 key = f" at index {i} "
             switch_set_value(

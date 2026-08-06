@@ -15,6 +15,8 @@ from scripts.cat.enums import (
     CatStanding,
     CatThought,
 )
+from scripts.cat.factories.new_cat_factory import NewCatFactory
+from scripts.cat.factories.enums import CatType
 from scripts.cat.names import names
 from scripts.cat_relations.enums import RelType
 from scripts.cat_relations.inheritance2 import inheritance_db
@@ -1058,7 +1060,7 @@ def create_new_cat(
             _gender = gender
 
         # first we generate the cat as though they are not part of the clan yet
-        new_cat = Cat(
+        new_cat = NewCatFactory.create_cat(
             moons=moons,
             status_dict={
                 "social": original_social,
@@ -1077,20 +1079,20 @@ def create_new_cat(
             if len(created_cats) == 0:
                 while new_cat.phenotype.manx[1] in ["Ab", "M"] or new_cat.phenotype.sexgene[0] == "Y" or new_cat.phenotype.munch[1] == "Mk" or ('NoDBE' not in new_cat.phenotype.pax3 and 'DBEalt' not in new_cat.phenotype.pax3):
                     del Cat.all_cats[new_cat.ID]
-                    new_cat = Cat(
-                        moons=moons,
-                        status_dict={
-                            "social": original_social,
-                            "age": age,
-                            "group_ID": original_group,
-                        },
-                        gender=_gender,
-                        backstory=backstory,
-                        parent1=parent1,
-                        parent2=parent2,
-                        extrapar=extrapar,
-                        adoptive_parents=adoptive_parents if adoptive_parents else [],
-                    )
+                    new_cat = NewCatFactory.create_cat(
+                    moons=moons,
+                    status_dict={
+                        "social": original_social,
+                        "age": age,
+                        "group_ID": original_group,
+                    },
+                    gender=_gender,
+                    backstory=backstory,
+                    parent1=parent1,
+                    parent2=parent2,
+                    extrapar=extrapar,
+                    adoptive_parents=adoptive_parents if adoptive_parents else [],
+                )
             else:
                 new_cat.moons = 0
                 new_cat.status = Status(**{"group_ID": new_cat.status.group_ID,

@@ -6,6 +6,7 @@ from strenum import StrEnum
 from enum import Enum, auto
 
 
+
 class CatAge(StrEnum):
     NEWBORN = "newborn"
     KITTEN = "kitten"
@@ -20,6 +21,31 @@ class CatAge(StrEnum):
 
     def can_have_mate(self):
         return self not in (CatAge.KITTEN, CatAge.NEWBORN, CatAge.ADOLESCENT)
+
+    @staticmethod
+    def get_from_moons(moons):
+        from scripts.config import get_config
+        ages_info = get_config("cat_ages")
+        lookup = {
+            CatAge.NEWBORN: ages_info["newborn"],
+            CatAge.KITTEN: ages_info["kitten"],
+            CatAge.ADOLESCENT: ages_info["adolescent"],
+            CatAge.YOUNG_ADULT: ages_info["young adult"],
+            CatAge.ADULT: ages_info["adult"],
+            CatAge.SENIOR_ADULT: ages_info["senior adult"],
+            CatAge.SENIOR: ages_info["senior"],
+        }
+        if moons > lookup[CatAge.SENIOR][1]:
+            return CatAge.SENIOR
+
+        return next(
+            (
+                key
+                for key, (min_age, max_age) in lookup.items()
+                if min_age <= moons <= max_age
+            ),
+            None,
+        )
 
 
 class CatSocial(StrEnum):
