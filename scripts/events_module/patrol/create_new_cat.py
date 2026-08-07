@@ -126,7 +126,7 @@ def updated_create_new_cat(
                     )
             else:
                 created_cat.moons = 0
-                created_cat.status = Status(**{"group_ID": created_cat.status.group_ID,
+                created_cat.status = StatusDict({"group_ID": created_cat.status.group_ID,
                                            "rank": CatRank.NEWBORN, "age": CatAge.NEWBORN})
                 created_cat.dead = True
                 created_cat.get_new_thought(CatThought.ON_DEATH)

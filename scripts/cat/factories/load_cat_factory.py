@@ -229,14 +229,10 @@ class LoadCatFactory(BaseCatFactory):
                 if chimera:
                     chimerapheno.KitGenerator(Cat.all_cats[kwargs["parent2"]], chimera=True, gender=kwargs.get("gender"))
             else:
-                try:
-                    phenotype.KitGenerator(Cat.all_cats[kwargs["parent1"]], Cat.all_cats.get(kwargs["parent2"]), gender=kwargs.get("gender"))
-                    if chimera:
-                        threepars = chimerapheno.KitGenerator(Cat.all_cats[kwargs["parent1"]], Cat.all_cats.get(
-                            kwargs["parent2"]), chimera=True, gender=kwargs.get("gender"))
-                except Exception as e:
-                    print(traceback.format_exception(e))
-                    phenotype.Generator(kittypet=use_special, special=kwargs.get("gender"))
+                phenotype.KitGenerator(Cat.all_cats[kwargs["parent1"]], Cat.all_cats.get(kwargs["parent2"]), gender=kwargs.get("gender"))
+                if chimera:
+                    threepars = chimerapheno.KitGenerator(Cat.all_cats[kwargs["parent1"]], Cat.all_cats.get(
+                        kwargs["parent2"]), chimera=True, gender=kwargs.get("gender"))
         else:
             kittypet_boost = get_config("cat_generation.kittypet_gene_boost")
             if not chimera:

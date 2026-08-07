@@ -58,6 +58,10 @@ class NewCatFactory(BaseCatFactory, ABC):
         elif gender_dict["sex"] == 'male':
             gender_dict["sex"] = 'masc'
 
+        chimera_pheno = None
+        phenotype = None
+        passes = 1
+        parent3 = None
         if pelt := overrides.get("pelt"):
             pelt = Pelt(pelt)
             phenotype = pelt.phenotype
@@ -329,16 +333,12 @@ class NewCatFactory(BaseCatFactory, ABC):
                 if chimera:
                     chimerapheno.KitGenerator(Cat.all_cats[parents[1]], parents[2], chimera=True, gender=gender)
             else:
-                try:
-                    phenotype.KitGenerator(Cat.all_cats[parents[0]], Cat.all_cats.get(parents[1], parents[2]), parents[2], gender=gender)
-                    if chimera:
-                        threepars = chimerapheno.KitGenerator(Cat.all_cats[parents[0]], Cat.all_cats.get(
-                            parents[1], parents[2]), parents[2], chimera=True, gender=gender)
-                        if threepars and isinstance(parents[2], Cat):
-                            parent3 = parents[2].ID
-                except Exception as e:
-                    print(traceback.format_exception(e))
-                    phenotype.Generator(kittypet=use_special, special=gender)
+                phenotype.KitGenerator(Cat.all_cats[parents[0]], Cat.all_cats.get(parents[1], parents[2]), parents[2], gender=gender)
+                if chimera:
+                    threepars = chimerapheno.KitGenerator(Cat.all_cats[parents[0]], Cat.all_cats.get(
+                        parents[1], parents[2]), parents[2], chimera=True, gender=gender)
+                    if threepars and isinstance(parents[2], Cat):
+                        parent3 = parents[2].ID
         else:
             kittypet_boost = get_config("cat_generation.kittypet_gene_boost")
             if not chimera:
@@ -377,6 +377,15 @@ class NewCatFactory(BaseCatFactory, ABC):
             if phenotype.sex == "tom" and 'Y' not in phenotype.sexgene:
                 passes = 2
 
+        phenotype.white_pattern = Pelt.generate_white(phenotype.white, phenotype.pointgene, phenotype.whitegrade, phenotype.vitiligo, None, phenotype.pax3)
+        if phenotype.maincolour == 'white' and not phenotype.patchmain:
+            phenotype.white_pattern = "No"
+
+        if chimerapheno:
+            chimerapheno.white_pattern = Pelt.generate_white(chimerapheno.white, chimerapheno.pointgene, chimerapheno.whitegrade, chimerapheno.vitiligo, None, chimerapheno.pax3)
+            if chimerapheno.maincolour == 'white' and not chimerapheno.patchmain:
+                chimerapheno.white_pattern = "No"
+
         phenotype.PhenotypeOutput(phenotype.white_pattern)
         phenotype.SpriteInfo(moons if moons else 0)
         if chimera:
@@ -408,15 +417,7 @@ class NewCatFactory(BaseCatFactory, ABC):
             pelt.scars = tuple(
                 scar for scar in pelt.scars if scar not in not_allowed_scars
             )
-
-        phenotype.white_pattern = Pelt.generate_white(phenotype.white, phenotype.pointgene, phenotype.whitegrade, phenotype.vitiligo, [], phenotype.pax3)
-        if phenotype.maincolour == 'white' and not phenotype.patchmain:
-            phenotype.white_pattern = "No"
-
-        if chimerapheno:
-            chimerapheno.white_pattern = Pelt.generate_white(chimerapheno.white, chimerapheno.pointgene, chimerapheno.whitegrade, chimerapheno.vitiligo, [], chimerapheno.pax3)
-            if chimerapheno.maincolour == 'white' and not chimerapheno.patchmain:
-                chimerapheno.white_pattern = "No"
+        
         return [pelt, phenotype, chimerapheno, passes, parent3]
 
     @classmethod

@@ -4,12 +4,13 @@ from random import sample, choices
 from typing import TYPE_CHECKING
 
 from scripts.cat.phenotype import Phenotype
-from scripts.cat.enums import CatRank
+from scripts.cat.enums import CatRank, CatAge
 from scripts.cat.factories.new_cat_factory import NewCatFactory
 from scripts.cat.factories.test_cat_factory import TestCatFactory
 from scripts.cat.pelts import Pelt
 from scripts.config import get_config
 from scripts.clan_package.settings import get_clan_setting
+from scripts.game_structure.game.settings import game_setting_get
 
 if TYPE_CHECKING:
     from scripts.cat.cats import Cat

@@ -1578,7 +1578,7 @@ class OtherClan:
                 CatRank.DEPUTY,
                 CatRank.ELDER,
             ))
-            self.instructor = Cat(
+            self.instructor = NewCatFactory.create_cat(
                 status_dict={
                     "rank": instructor_rank,
                     "group_ID": CatGroup.STARCLAN_ID,
@@ -1611,7 +1611,7 @@ class OtherClan:
                     CatRank.ELDER,
                 )
             )
-            self.instructor = Cat(
+            self.instructor = NewCatFactory.create_cat(
                 status_dict={"rank": instructor_rank, "group_ID": CatGroup.STARCLAN_ID},
                 backstory=choice(
                 BACKSTORIES["backstory_categories"]["clan_guide_backstories"]
@@ -1622,11 +1622,11 @@ class OtherClan:
 
             use_special = get_config("clan_creation.use_special_roller")
             cat_range = get_config("clan_creation.neighbourclan_cats")
-            self.new_leader(NewCatFactory.create_cat(CatRank.LEADER, biome=self.biome, use_special=use_special, clan=self.group_ID))
-            self.new_deputy(NewCatFactory.create_cat(CatRank.DEPUTY, biome=self.biome, use_special=use_special, clan=self.group_ID))
-            self.new_medicine_cat(NewCatFactory.create_cat(CatRank.MEDICINE_CAT, biome=self.biome, use_special=use_special, clan=self.group_ID))
+            self.new_leader(NewCatFactory.create_cat(CatRank.LEADER, use_special=use_special, status_dict={"group": self.group_ID}))
+            self.new_deputy(NewCatFactory.create_cat(CatRank.DEPUTY, use_special=use_special, status_dict={"group": self.group_ID}))
+            self.new_medicine_cat(NewCatFactory.create_cat(CatRank.MEDICINE_CAT, use_special=use_special, status_dict={"group": self.group_ID}))
             for i in range(randint(cat_range[0], cat_range[1])):
-                NewCatFactory.create_cat(choices(list(rank_weights.keys()), list(rank_weights.values()))[0], biome=self.biome, use_special=use_special, clan=self.group_ID)
+                NewCatFactory.create_cat(choices(list(rank_weights.keys()), list(rank_weights.values()))[0], use_special=use_special, status_dict={"group": self.group_ID})
     @property
     def name(self):
         return i18n.t("general.clan", name=self.prefix)
