@@ -381,10 +381,11 @@ class Sprites:
         self.make_group('mocha_spring', (0, 0), 'mocham')
         self.make_group('mocha_summer', (0, 0), 'mochal')
         self.make_group('mocha_winter', (0, 0), 'mochad')
+        self.make_group('heterokarpati_spring', (0, 0), 'hetkarpatispring')
+        self.make_group('heterokarpati_summer', (0, 0), 'hetkarpatisummer')
+        self.make_group('heterokarpati_winter', (0, 0), 'hetkarpatiwinter')
 
         #genemod karpati
-        for a, x in enumerate(['hetkarpatiwinter', 'hetkarpatispring', 'hetkarpatisummer']):
-            self.make_group('Other/karpati', (a, 0), x)
         for a, x in enumerate(['homokarpatiwinter', 'homokarpatispring', 'homokarpatisummer']):
             self.make_group('Other/karpati', (a, 1), x)
 
