@@ -58,7 +58,7 @@ class NewCatFactory(BaseCatFactory, ABC):
         elif gender_dict["sex"] == 'male':
             gender_dict["sex"] = 'masc'
 
-        chimera_pheno = None
+        chimerapheno = None
         phenotype = None
         passes = 1
         parent3 = None

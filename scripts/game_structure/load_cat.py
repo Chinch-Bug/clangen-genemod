@@ -47,9 +47,10 @@ def load_cats():
     load_faded_cat_ids(switch_get_value(Switch.clan_save_id))
     try:
         json_load()
-    except FileNotFoundError as e:
-        switch_set_value(Switch.error_message, "Can't find clan_cats.json!")
-        switch_set_value(Switch.traceback, e)
+    except Exception:
+        Cat.all_cats.clear()
+        Cat.all_cats_list.clear()
+        raise
 
 def accurate_porting(cat, info):
 

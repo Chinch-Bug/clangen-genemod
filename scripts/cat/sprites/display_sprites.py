@@ -143,12 +143,60 @@ def generate_sprite(
                 phenotype.SpriteInfo(sprite_age)
                 phenotype.silver = old_silver
 
+            def calculate_red_stripes(base, rufousing):
+                is_apricot = "apricot" in base
+                basecolour = stripecolourdict.get(base[:-1], base[:-1]).removeprefix("low").removeprefix("medium").removeprefix("rufoused")+base[-1]
+                next_base = basecolour
+                main_ruf_block = 0
+                next_ruf_block = 0
+                ruf_blocks = ["low", "medium", "rufoused"]
+                ruf_steps = [0, 4, 8]
+                main_ruf_block = next((n for n in range(2, -1, -1) if rufousing >= ruf_steps[n]))
+                next_ruf_block = next((n for n in range(3) if rufousing <= ruf_steps[n]))
+
+                main_colour = sprites.sprites[ruf_blocks[main_ruf_block] + basecolour].get_at((0, 0))
+                final_colour = main_colour
+
+                if is_apricot and basecolour[:-1] in ["red", "honey"]:
+                    basecolour = (
+                        "cream" if basecolour[:-1] == "red" else "ivory") + basecolour[-1]
+                    main_ruf_block = 2
+                    next_ruf_block = 0
+                elif is_apricot and main_ruf_block == 1:
+                    next_base = ("red" if basecolour[:-1] == "cream" else "honey") + basecolour[-1]
+                    next_ruf_block = 0
+                elif is_apricot:
+                    rufousing += 3
+                    main_ruf_block += 1
+                    next_ruf_block += 1
+                
+                main_colour = sprites.sprites[ruf_blocks[main_ruf_block] + basecolour].get_at((0, 0))
+                final_colour = main_colour
+
+                if is_apricot and next_ruf_block < main_ruf_block:
+                    comparison_colour = sprites.sprites[ruf_blocks[next_ruf_block] + next_base].get_at((0, 0))
+                    steps = rufousing-4
+                    for i in range(3):
+                        final_colour[i] += int((comparison_colour[i]-main_colour[i])/4*steps)
+
+                elif main_ruf_block != next_ruf_block:
+                    comparison_colour = sprites.sprites[ruf_blocks[next_ruf_block] + basecolour].get_at((0, 0))
+                    for i in range(3):
+                        final_colour[i] += int((comparison_colour[i]-main_colour[i])/(ruf_steps[next_ruf_block]-ruf_steps[main_ruf_block])*(rufousing-ruf_steps[main_ruf_block]))
+
+                layer = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                layer.fill(final_colour)
+                return layer
+
             def create_coloursurface(basecolour, is_tabby=False):
                 is_red = ('red' in basecolour or 'cream' in basecolour or 'honey' in basecolour or 'ivory' in basecolour or 'apricot' in basecolour)
                 coloursurface = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 pointbase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 if is_tabby:
-                    pointbase.blit(sprites.sprites[stripecolourdict.get(basecolour[:-1], basecolour[:-1])+basecolour[-1]], (0, 0))
+                    if not is_red:
+                        pointbase.blit(sprites.sprites[stripecolourdict.get(basecolour[:-1], basecolour[:-1])+basecolour[-1]], (0, 0))
+                    else:
+                        pointbase.blit(calculate_red_stripes(basecolour, phenotype.rufousing), (0, 0))
                     if phenotype.caramel == 'caramel' and not is_red:    
                         pointbase.blit(sprites.sprites['caramel0'], (0, 0))
                     
@@ -397,8 +445,9 @@ def generate_sprite(
 
                 return stripebase
 
-            def get_tabby_base(base_string):
+            def get_tabby_base(base_string, is_apricot = False):
                 basecolour, rufousing, wideband = base_string.rsplit("_", 2)
+                next_base = basecolour
                 rufousing = int(rufousing) if rufousing != "silver" else rufousing
                 wideband = int(wideband)
                 wb_blocks = ["low", "medium", "high", "shaded", "chinchilla"]
@@ -414,12 +463,28 @@ def generate_sprite(
                     pass
                 else:
                     main_ruf_block = next((n for n in range(2, -1, -1) if rufousing >= ruf_steps[n]))
-                    next_ruf_block = next((n for n in range(3) if rufousing <= ruf_steps[n]))
+                    next_ruf_block = next(
+                        (n for n in range(3) if rufousing <= ruf_steps[n]))
+                if is_apricot and basecolour in ["red", "honey"]:
+                    basecolour = "cream" if basecolour == "red" else "ivory"
+                    if not rufousing == "silver":
+                        main_ruf_block = 2
+                        next_ruf_block = 0
+                elif is_apricot and main_ruf_block == 2:
+                    next_base = "red" if basecolour == "cream" else "honey"
+                    if not rufousing == "silver":
+                        next_ruf_block = 0
                 
                 main_colour = sprites.sprites[basecolour + ruf_blocks[main_ruf_block] + wb_blocks[main_wb_block]+"0"].get_at((0, 0))
                 final_colour = main_colour
 
-                if main_ruf_block != next_ruf_block:
+                if is_apricot and (next_ruf_block < main_ruf_block or main_ruf_block == "silver"):
+                    comparison_colour = sprites.sprites[next_base + ruf_blocks[next_ruf_block] + wb_blocks[main_wb_block]+"0"].get_at((0, 0))
+                    steps = rufousing % 4 if rufousing != "silver" else phenotype.rufousing-4
+                    for i in range(3):
+                        final_colour[i] += int((comparison_colour[i]-main_colour[i])/4*steps)
+
+                elif main_ruf_block != next_ruf_block:
                     comparison_colour = sprites.sprites[basecolour + ruf_blocks[next_ruf_block] + wb_blocks[main_wb_block]+"0"].get_at((0, 0))
                     for i in range(3):
                         final_colour[i] += int((comparison_colour[i]-main_colour[i])/(ruf_steps[next_ruf_block]-ruf_steps[main_ruf_block])*(rufousing-ruf_steps[main_ruf_block]))
@@ -435,7 +500,7 @@ def generate_sprite(
 
             def tabby_base(whichcolour, whichbase, cat_unders, special=None):
                 is_red = ('red' in whichcolour or 'cream' in whichcolour or 'honey' in whichcolour or 'ivory' in whichcolour or 'apricot' in whichcolour)
-                whichmain = get_tabby_base(whichbase)
+                whichmain = get_tabby_base(whichbase, 'apricot' in whichcolour)
                 if special !='copper' and sprite_age > 12 and (phenotype.silver[0] == 'I' and phenotype.corin[0] == 'fg' and (get_current_season(season_override) in ['Leaf-fall', 'Leaf-bare'] or 'sterile' in cat.permanent_condition)):
                     sunshine = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                     
@@ -495,6 +560,8 @@ def generate_sprite(
             def add_stripes(main_layer, stripe_colour, whichbase, coloursurface=None):
                 stripebase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 is_red = ('red' in stripe_colour or 'cream' in stripe_colour or 'honey' in stripe_colour or 'ivory' in stripe_colour or 'apricot' in stripe_colour)
+                if not coloursurface and is_red:
+                    coloursurface = calculate_red_stripes(stripe_colour, phenotype.rufousing)
                 if not is_red and (phenotype.ext[0] == 'ea' and ((sprite_age > 11 and phenotype.agouti[0] != "a") or (sprite_age > 35 and phenotype.agouti[0] == "a"))):
                     if phenotype.pointgene[0] != "C" and phenotype.pointgene[0] in ["cm", "cb"] and (phenotype.pointgene[1] != "cs" or sprite_age > 0):
                         base_c = phenotype.FindRed(phenotype, sprite_age)[0]

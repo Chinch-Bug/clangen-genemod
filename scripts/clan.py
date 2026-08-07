@@ -886,6 +886,7 @@ class Clan:
                             get_config("clan_creation.starting_clan_relation")[1],
                         )
 
+        missing_cats = []
         for cat in clan_data["clan_cats"].split(","):
             if cat in Cat.all_cats:
                 game.clan.add_cat(Cat.all_cats[cat])
@@ -900,7 +901,18 @@ class Clan:
                             Cat.all_cats[cat].status.standing_history[0]["group"] = is_neighbour.group_ID
 
             else:
-                print("WARNING: Cat not found:", cat)
+                missing_cats.append(cat)
+        if missing_cats:
+            error = ValueError(
+                f"clan.json references {len(missing_cats)} cat(s) missing from "
+                f"clan_cats.json: {', '.join(missing_cats)}"
+            )
+            switch_set_value(
+                Switch.error_message,
+                "Some cats in this save could not be loaded! Please check the cat file for missing cats.",
+            )
+            switch_set_value(Switch.traceback, error)
+            raise error
         if "war" in clan_data:
             if clan_data["war"].get("at_war") is not None:
                 for c in game.clan.all_other_clans:
@@ -952,7 +964,9 @@ class Clan:
         # Cats who need to be grieved
         if "dead_cats_to_grieve" in clan_data:
             game.dead_cats_to_grieve = [
-                Cat.fetch_cat(x) for x in clan_data["dead_cats_to_grieve"] if Cat.fetch_cat(x)
+                Cat.fetch_cat(x)
+                for x in clan_data["dead_cats_to_grieve"]
+                if Cat.fetch_cat(x)
             ]
 
         # Cats who are gonna grieve
