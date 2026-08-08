@@ -148,9 +148,10 @@ class LoadCatFactory(BaseCatFactory):
         # Unfortunately, these two have to be handled *after* the creation of the cat
         # because of the horrible nested cat. fixme.
 
-        cat.history = cls._convert_history(
-            kwargs.get("died_by", []), kwargs.get("scar_event", []), cat=cat
-        )
+        if "died by" in kwargs or "scar_event" in kwargs:
+            cat.history = cls._convert_history(
+                kwargs.get("died_by", []), kwargs.get("scar_event", []), cat=cat
+            )
         cat.name = Name(
             prefix=kwargs["name_prefix"],
             suffix=kwargs["name_suffix"],
@@ -399,8 +400,6 @@ class LoadCatFactory(BaseCatFactory):
         :param cat: The cat in question
         :return: A new History object that describes the cat
         """
-        if not died_by and not scar_events:
-            return None
         deaths = []
         if died_by:
             deaths.extend(
