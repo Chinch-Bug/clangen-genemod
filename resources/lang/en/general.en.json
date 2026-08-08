@@ -113,7 +113,8 @@
             "many": "mates"
         },
         "are_mates": "mates",
-		"she-cat": "molly",
+		"ex_mate": "ex-mate",
+        "she-cat": "molly",
 		"cat": "sam",
 		"molly": "molly",
 		"tom": "tom",

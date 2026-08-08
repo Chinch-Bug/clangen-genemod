@@ -33,6 +33,22 @@
       "settings.force_enable.disaster": true
     }
   },
+  "radioactive": {
+    "card_art": "environment/tainted.png",
+    "modifiers": {
+      "genetics_config.chimera": 750,
+      "genetics_config.identical_twins": 250,
+      "genetics_config.XXX/XXY": 750,
+      "genetics_config.X monosomy": 3000,
+      "genetics_config.vitiligo": 100,
+      "genetics_config.random_mutation": 75,
+      "genetics_config.somatic_mutation": 150,
+      "genetics_config.sectoral_heterochromia": 150,
+      "genetics_config.random_heterochromia": 200,
+      "condition_related.illness_chance": 150,
+      "cat_generation.base_permanent_condition": 75
+    }
+  },
   "lean_meat": {
     "card_art": "environment/lean_meat.png",
     "modifiers": {

@@ -424,23 +424,15 @@ class Clan:
         """
         Make sure settings are at their starting positions as dictated in the game_config
         """
-        # deputy
-        if get_config("settings.force_enable.deputy"):
-            set_clan_setting("deputy", True)
-            save_clan_settings()
+        # forced settings
+        for setting in get_config("settings.force_enable"):
+            if get_config(f"settings.force_enable.{setting}"):
+                set_clan_setting(setting, True)
 
-        # disasters
-        if get_config("settings.force_enable.disasters"):
-            set_clan_setting("disasters", True)
-            save_clan_settings()
-
-        # modded_kits
-        if get_config("settings.force_enable.modded_kits"):
-            set_clan_setting("modded_kits", True)
-            save_clan_settings()
-        if get_config("settings.force_disable.modded_kits"):
-            set_clan_setting("modded_kits", False)
-            save_clan_settings()
+        for setting in get_config("settings.force_disable"):
+            if get_config(f"settings.force_disable.{setting}"):
+                set_clan_setting(setting, False)
+        save_clan_settings()
 
         # feeding order
         starting_order = get_config("prey.feeding.starting_order")

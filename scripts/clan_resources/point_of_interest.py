@@ -71,11 +71,11 @@ def add_poi(name, elements, clan=None):
     :return:
     """
     global _poi_by_tags, _poi_names, _poi_tags
-    if clan and clan not in _poi_names or "shared" not in _poi_names:
+    if clan and clan not in _poi_names or "shared" not in _poi_names and not clan:
         _poi_names[clan if clan else "shared"] = set()
         _poi_tags[clan if clan else "shared"] = set()
         _poi_by_tags[clan if clan else "shared"] = {}
-    if clan and clan not in _poi_by_category[elements["category"]] or "shared" not in _poi_by_category[elements["category"]]:
+    if clan and clan not in _poi_by_category[elements["category"]] or "shared" not in _poi_by_category[elements["category"]] and not clan:
         _poi_by_category[elements["category"]][clan if clan else "shared"] = set()
     _poi_names[clan if clan else "shared"].update([name])
     _poi_tags[clan if clan else "shared"].update(elements["tags"])

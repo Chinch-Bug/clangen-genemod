@@ -787,9 +787,9 @@ class PatrolOutcome:
             quantity_allowed = 0
             for cat in patrol.patrol_cats:
                 quantity_allowed += get_config("clan_resources.herbs.general_patrol_quantity_per_cat")
+                cat_skills = cat.skills.get_all()
+                quantity_allowed += cat_skills.get(SkillPath.SENSE, 0)
 
-                skills = cat.skills.get_all()
-                quantity_allowed += skills.get(SkillPath.CLEVER, 0)
             # get random herbs, add to storage, and get patrol outcome msg
             list_of_herb_strs, found_herbs = game.clan.herb_supply.get_found_herbs(
                 med_cat=patrol.patrol_leader,

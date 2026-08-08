@@ -117,39 +117,27 @@ class ClanSettingsScreen(Screens):
         TODO: DOCS
         """
         if event.ui_element in self.checkboxes.values():
-            if event.ui_element == self.checkboxes.get("deputy") and get_config(
-                "settings.force_enable.deputy"
-            ):
-                set_clan_setting("deputy", True)
-                self.checkboxes["deputy"].check()
-                CruelLockedAction()
-                return
+            forced_enabled = get_config("settings.force_enable")
+            for setting in forced_enabled:
+                if event.ui_element == self.checkboxes.get(setting) and get_config(
+                    f"settings.force_enable.{setting}"
+                ):
+                    set_clan_setting(setting, True)
+                    self.checkboxes[setting].check()
+                    CruelLockedAction()
+                    return
 
-            if event.ui_element == self.checkboxes.get("disasters") and get_config(
-                "settings.force_enable.disasters"
-            ):
-                set_clan_setting("disasters", True)
-                self.checkboxes["disasters"].check()
-                CruelLockedAction()
-                return
+            forced_disabled = get_config("settings.force_disable")
+            for setting in forced_disabled:
+                if event.ui_element == self.checkboxes.get(setting) and get_config(
+                    f"settings.force_disable.{setting}"
+                ):
+                    set_clan_setting(setting, False)
+                    self.checkboxes[setting].uncheck()
+                    CruelLockedAction()
+                    return
 
-            if event.ui_element == self.checkboxes.get("modded_kits") and get_config(
-                "settings.force_enable.modded_kits"
-            ):
-                set_clan_setting("modded_kits", True)
-                self.checkboxes["modded_kits"].check()
-                CruelLockedAction()
-                return
-
-            if event.ui_element == self.checkboxes.get("modded_kits") and get_config(
-                "settings.force_disable.modded_kits"
-            ):
-                set_clan_setting("modded_kits", False)
-                self.checkboxes["modded_kits"].uncheck()
-                CruelLockedAction()
-                return
-
-            elif event.ui_element == self.checkboxes.get("affair") and not get_config(
+            if event.ui_element == self.checkboxes.get("affair") and not get_config(
                 "mates.allow_mating"
             ):
                 set_clan_setting("affair", False)
