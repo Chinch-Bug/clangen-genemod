@@ -399,6 +399,8 @@ class LoadCatFactory(BaseCatFactory):
         :param cat: The cat in question
         :return: A new History object that describes the cat
         """
+        if not died_by and not scar_events:
+            return None
         deaths = []
         if died_by:
             deaths.extend(
