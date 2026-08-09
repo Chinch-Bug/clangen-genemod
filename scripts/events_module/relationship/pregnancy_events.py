@@ -992,7 +992,7 @@ class Pregnancy_Events:
         else:
             # if the cat has no mate, and we don't allow single parents, unmated parents, or affairs
             # then they can't have kits
-            if not allow_single_parent or not allow_unmated or not allow_affair:
+            if not allow_single_parent and not allow_unmated:
                 return False
 
         # if function reaches this point, having kits is possible
