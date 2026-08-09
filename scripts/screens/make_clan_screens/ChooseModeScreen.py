@@ -225,13 +225,19 @@ class ChooseModeScreen(MakeClanScreenBase):
         # MEMBERS
         use_special = get_config("clan_creation.use_special_roller")
         cat_range = get_config("clan_creation.quickstart_cats")
-        self.clan_info.leader = NewCatFactory.create_cat(rank=CatRank.WARRIOR, use_special=use_special)
-        self.clan_info.deputy = NewCatFactory.create_cat(rank=CatRank.WARRIOR, use_special=use_special)
-        self.clan_info.medicine_cat = NewCatFactory.create_cat(rank=CatRank.WARRIOR, use_special=use_special)
+        cat_range[0] = max(min(self.get_config_during_creation(
+            "clan_creation.minimum_membership"
+        ) - len(self.clan_info.get_all_cats())-3, cat_range[0]), 0)
+        cat_range[1] = max(min(self.get_config_during_creation(
+            "clan_creation.maximum_membership"
+        ) - len(self.clan_info.get_all_cats())-3, cat_range[1]), 0)
+        self.clan_info.leader = NewCatFactory.create_cat(rank=self.get_config_during_creation("clan_creation.majority_rank"), use_special=use_special)
+        self.clan_info.deputy = NewCatFactory.create_cat(rank=self.get_config_during_creation("clan_creation.majority_rank"), use_special=use_special)
+        self.clan_info.medicine_cat = NewCatFactory.create_cat(rank=self.get_config_during_creation("clan_creation.majority_rank"), use_special=use_special)
         members = []
         rank_weights = self.get_config_during_creation("clan_creation.rank_weights")
         for _ in range(randrange(cat_range[0], cat_range[1]+1)):
-            members.append(NewCatFactory.create_cat(rank=choices(list(rank_weights.keys()), list(rank_weights.values()))[0]), use_special=use_special)
+            members.append(NewCatFactory.create_cat(rank=choices(list(rank_weights.keys()), list(rank_weights.values()))[0], use_special=use_special))
 
         switch_set_value(
             Switch.possible_cats,

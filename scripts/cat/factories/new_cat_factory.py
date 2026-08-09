@@ -436,7 +436,7 @@ class NewCatFactory(BaseCatFactory, ABC):
         if age == CatAge.ADOLESCENT:
             experience = 0
             ran = get_config("clancat_ex.base_app_timeskip_ex")
-            for i in range(Cat.age_moons[CatAge.ADOLESCENT][0], moons, -1):
+            for i in range(Cat.age_moons[CatAge.ADOLESCENT][0], moons):
                 exp = cls.rng.choice(
                     list(range(ran[0][0], ran[0][1] + 1))
                     + list(range(ran[1][0], ran[1][1] + 1))

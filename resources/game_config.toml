@@ -363,7 +363,7 @@ dev_tools = false
 
   # 1/chance of kits, relationship and other factors will influence this chance. modded_ is used with modded litters
   primary_chance_mated = 80
-  modded_primary_chance_mated = 50
+  modded_primary_chance_mated = 60
 
   # 1/chance of kits, relationship and other factors will influence this chance. modded_ is used with modded litters
   primary_chance_unmated = 130

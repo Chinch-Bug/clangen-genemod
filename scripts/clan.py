@@ -1628,11 +1628,11 @@ class OtherClan:
 
             use_special = get_config("clan_creation.use_special_roller")
             cat_range = get_config("clan_creation.neighbourclan_cats")
-            self.new_leader(NewCatFactory.create_cat(use_special=use_special, status_dict={"rank": CatRank.LEADER, "group": self.group_ID}))
-            self.new_deputy(NewCatFactory.create_cat(use_special=use_special, status_dict={"rank": CatRank.DEPUTY, "group": self.group_ID}))
-            self.new_medicine_cat(NewCatFactory.create_cat(use_special=use_special, status_dict={"rank": CatRank.MEDICINE_CAT, "group": self.group_ID}))
+            self.new_leader(NewCatFactory.create_cat(use_special=use_special, status_dict={"rank": CatRank.LEADER, "group_ID": self.group_ID}))
+            self.new_deputy(NewCatFactory.create_cat(use_special=use_special, status_dict={"rank": CatRank.DEPUTY, "group_ID": self.group_ID}))
+            self.new_medicine_cat(NewCatFactory.create_cat(use_special=use_special, status_dict={"rank": CatRank.MEDICINE_CAT, "group_ID": self.group_ID}))
             for i in range(randint(cat_range[0], cat_range[1])):
-                NewCatFactory.create_cat(use_special=use_special, status_dict={"rank": choices(list(rank_weights.keys()), list(rank_weights.values()))[0], "group": self.group_ID})
+                NewCatFactory.create_cat(use_special=use_special, status_dict={"rank": choices(list(rank_weights.keys()), list(rank_weights.values()))[0], "group_ID": self.group_ID})
     @property
     def name(self):
         return i18n.t("general.clan", name=self.prefix)
