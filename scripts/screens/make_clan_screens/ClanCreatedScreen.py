@@ -3,6 +3,7 @@ import pygame_gui
 
 from scripts.cat.sprites.load_sprites import sprites
 from scripts.game_structure import game
+from scripts.config import get_config
 from scripts.game_structure.game import Switch
 from scripts.game_structure.game.switches import switch_set_value
 from scripts.game_structure.screen_settings import MANAGER
@@ -80,3 +81,4 @@ class ClanCreatedScreen(MakeClanScreenBase):
 
         self.clan_info.clear()
         switch_set_value(Switch.clan_creation_info, self.clan_info.get_dict())
+        MakeClanScreenBase.rolls_left = get_config("clan_creation.rerolls")
