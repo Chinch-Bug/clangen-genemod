@@ -102,7 +102,14 @@ class History:
             "graduation_age": age,
             "moon": moon
             },
-        "lead_ceremony": full ceremony text,
+        "lead_ceremony": [
+            {
+                "involved": ID or None,
+                "text": text,
+                "virtue": virtue or None,
+                "extra_lives": count or None
+            },
+            ],
         "possible_history": {
             "condition name": {
                 "involved": ID
@@ -732,7 +739,7 @@ class History:
         generates and adds lead ceremony to history
         """
 
-        self.lead_ceremony = self.cat.generate_lead_ceremony()
+        self.cat.generate_lead_ceremony()
 
     # ---------------------------------------------------------------------------- #
     #                                 retrieving                                   #
@@ -745,7 +752,7 @@ class History:
 
         if not self.lead_ceremony:
             self.cat.generate_lead_ceremony()
-        return str(self.lead_ceremony)
+        return self.cat.render_lead_ceremony()
 
     def get_possible_history(self, condition=None):
         """

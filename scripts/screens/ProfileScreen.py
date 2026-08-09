@@ -318,6 +318,7 @@ class ProfileScreen(Screens):
                     self.the_cat.genderalign
                 )
                 self.the_cat.pronouns = new_pronouns
+                self.the_cat.get_new_thought()
 
                 self.clear_profile()
                 self.build_profile()
