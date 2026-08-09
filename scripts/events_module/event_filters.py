@@ -567,6 +567,7 @@ def _check_cat_status(cat, statuses: list) -> bool:
         (cat.status.rank in statuses)
         or ("clancat" in statuses and cat.status.is_clancat)
         or ("lost" in statuses and cat.status.is_lost())
+        or ("guide" in statuses and cat in [game.clan.instructor]+[clan.instructor for clan in game.clan.all_other_clans])
     ):
         return True
 
@@ -579,6 +580,7 @@ def _check_cat_status(cat, statuses: list) -> bool:
         (cat.status.rank in statuses)
         or ("clancat" in statuses and cat.status.is_clancat)
         or ("lost" in statuses and cat.status.is_lost())
+        or ("guide" in statuses and cat in [game.clan.instructor]+[clan.instructor for clan in game.clan.all_other_clans])
     ):
         return False
 
@@ -1194,9 +1196,19 @@ def _get_cats_with_status(cat_list: list, statuses: list[str]) -> list:
 
     if is_exclusionary:
         statuses = [x.replace("-", "") for x in statuses]
-        return [kitty for kitty in cat_list if kitty.status.rank not in statuses]
+        return [
+            kitty
+            for kitty in cat_list
+            if kitty.status.rank not in statuses
+            and not ("guide" in statuses and kitty in [game.clan.instructor]+[clan.instructor for clan in game.clan.all_other_clans])
+        ]
     else:
-        return [kitty for kitty in cat_list if kitty.status.rank in statuses]
+        return [
+            kitty
+            for kitty in cat_list
+            if kitty.status.rank in statuses
+            or ("guide" in statuses and kitty in [game.clan.instructor]+[clan.instructor for clan in game.clan.all_other_clans])
+        ]
 
 
 def _get_cats_with_stat(cat_list: list, stat: dict) -> list:
@@ -1271,7 +1283,7 @@ def _get_cats_with_trait(cat_list: list, traits: list[str]) -> list:
 
 
 def _get_cats_from_group(
-    cat_list: list, groups: List[str], already_involved_cats: dict
+    cat_list: list, groups: List[str], already_involved_cats: dict, main_clan = None
 ) -> list:
     """
     Returns list of cats who match given group constraints
@@ -1281,7 +1293,7 @@ def _get_cats_from_group(
 
     is_exclusionary = _check_for_exclusionary_value(groups)
 
-    groups = [x.replace("-", "") for x in groups if "-" in x]
+    groups = [x.replace("-", "") for x in groups]
     remaining_tags = groups.copy()
 
     for tag in groups:
@@ -1315,6 +1327,22 @@ def _get_cats_from_group(
                 cat_list = [c for c in cat_list if c.status.group]
             else:
                 cat_list = [c for c in cat_list if not c.status.group]
+            remaining_tags.remove(tag)
+
+        elif tag == "player_clan":  # checks if the cat is in the main_cat's clan
+            if is_exclusionary:
+                cat_list = [c for c in cat_list if c.status.group_ID != main_clan.group_ID]
+            else:
+                cat_list = [c for c in cat_list if c.status.group_ID == main_clan.group_ID]
+            remaining_tags.remove(tag)
+
+        elif tag == "other_clan":  # checks if the cat isn't in the main_cat's clan
+            if is_exclusionary:
+                cat_list = [
+                    c for c in cat_list if c.status.group_ID == main_clan.group_ID or c.status.group not in [CatGroup.PLAYER_CLAN, CatGroup.OTHER_CLAN]]
+            else:
+                cat_list = [
+                    c for c in cat_list if c.status.group_ID != main_clan.group_ID and c.status.group in [CatGroup.PLAYER_CLAN, CatGroup.OTHER_CLAN]]
             remaining_tags.remove(tag)
 
     # checks all the plain group tags that will match the CatGroup enums
@@ -1951,7 +1979,7 @@ def check_relationship_value(cat_from, cat_to, rel_value=None):
 
 def get_personality_compatibility(cat1, cat2):
     """
-    Returns matching CatCompatibility enum according to personalitiesof given cat objects.
+    Returns matching CatCompatibility enum according to personalities of given cat objects.
     :param cat1: Cat object of first cat
     :param cat2: Cat object of second cat
     """

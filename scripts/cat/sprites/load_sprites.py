@@ -61,6 +61,15 @@ class Sprites:
     ) as read_file:
         TORTIE_DATA = ujson.loads(read_file.read())
 
+    try:
+        with open(
+            "sprites/dicts/tortie_patches_combos.json", "r", encoding="utf-8"
+        ) as read_file:
+            TORTIE_PATCH_COMBOS = ujson.loads(read_file.read())
+    except FileNotFoundError:
+        # this is probably a mod that ain't adding patch combos
+        TORTIE_PATCH_COMBOS = {}
+
     with open(
         "sprites/dicts/white_patches_mostly_sprite_data.json", "r", encoding="utf-8"
     ) as read_file:
@@ -77,6 +86,16 @@ class Sprites:
         "sprites/dicts/white_patches_little_sprite_data.json", "r", encoding="utf-8"
     ) as read_file:
         WHITE_LITTLE_DATA = ujson.loads(read_file.read())
+
+    try:
+        with open(
+            "sprites/dicts/white_patches_combos.json", "r", encoding="utf-8"
+        ) as read_file:
+            WHITE_PATCH_COMBOS = ujson.loads(read_file.read())
+    except FileNotFoundError:
+        # this is probably a mod that ain't adding patch combos
+        WHITE_PATCH_COMBOS = {}
+
     with open(
         "sprites/dicts/white_patches_vitiligo_sprite_data.json", "r", encoding="utf-8"
     ) as read_file:
@@ -384,10 +403,9 @@ class Sprites:
         self.make_group('heterokarpati_spring', (0, 0), 'hetkarpatispring')
         self.make_group('heterokarpati_summer', (0, 0), 'hetkarpatisummer')
         self.make_group('heterokarpati_winter', (0, 0), 'hetkarpatiwinter')
-
-        #genemod karpati
-        for a, x in enumerate(['homokarpatiwinter', 'homokarpatispring', 'homokarpatisummer']):
-            self.make_group('Other/karpati', (a, 1), x)
+        self.make_group('homokarpati_spring', (0, 0), 'homokarpatispring')
+        self.make_group('homokarpati_summer', (0, 0), 'homokarpatisummer')
+        self.make_group('homokarpati_winter', (0, 0), 'homokarpatiwinter')
 
         #genemod effects
         self.make_group('Other/ghosting', (0, 0), 'ghost')
@@ -494,7 +512,46 @@ class Sprites:
             else:
                 self.load_sheet(data["spritesheet"], data["sprite_list"])
 
+        # patch combos
+        for category, combos in self.WHITE_PATCH_COMBOS.items():
+            self.create_patch_combo(
+                combos=combos, sheet_name="patches_white_", white_category=category
+            )
+
+        self.create_patch_combo(
+            combos=self.TORTIE_PATCH_COMBOS, sheet_name="patches_tortie"
+        )
+
         self.load_symbols()
+
+    def create_patch_combo(
+        self, combos: dict, sheet_name: str, white_category: str = ""
+    ):
+        # pulls the defaults from the pose_sprite_data.json file
+        sprites_x = self.sheet_layout[0]
+        sprites_y = self.sheet_layout[1]
+        for name, patches in combos.items():
+            i = 0
+            for y in range(sprites_y):
+                for x in range(sprites_x):
+                    if i in self.empty_indexes:
+                        i += 1
+                        continue
+
+                    new_patch = pygame.Surface(
+                        (sprites.size, sprites.size),
+                        pygame.HWSURFACE | pygame.SRCALPHA,
+                    )
+
+                    for patch in patches:
+                        addition = self.sprites[f"{patch}{i}"]
+                        new_patch.blit(
+                            addition,
+                            (0, 0),
+                        )
+
+                    self.sprites[f"{white_category}{name}{i}"] = new_patch
+                    i += 1
 
     def load_sheet(self, spritesheet: str, sprite_names: list[list[str]]):
         """

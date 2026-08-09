@@ -371,9 +371,9 @@ class ChooseCatsScreen(MakeClanScreenBase):
                 ]
             )
         self.clan_info.starting_members = []
-        minimum_needed = self.get_config_during_creation(
+        minimum_needed = max(self.get_config_during_creation(
             "clan_creation.minimum_membership"
-        ) - len(self.clan_info.get_all_cats())
+        ) - len(self.clan_info.get_all_cats()), 0)
         maximum_needed = self.get_config_during_creation(
             "clan_creation.maximum_membership"
         ) - len(self.clan_info.get_all_cats())

@@ -22,6 +22,21 @@ dev_tools = false
     # set to true to also kill a random cat when the leader dies
     stolen_vitality = false
 
+# settings regarding afterlife affinity
+[affinity]
+  # controls how much an affinity change is affected by the cat's compatibility with the afterlife
+  base_compatibility_multiplier = 0.5
+
+  # how affinities are affected by a cat murdering another
+  [affinity.murder]
+    starclan_change = -40
+    dark_forest_change = 20
+
+  # how much an afterlife connection skill affects affinity
+  [affinity.skill_favor]
+    match = 10
+    conflict = -10
+
 # settings regarding relationship events, also called "interactions"
 [relationship]
   # sets the max amount of interactions a cat can have each moon
@@ -871,7 +886,7 @@ dev_tools = false
   [clan_creation.valid_rank_to_age_assignment]
     leader = ["young adult", "adult", "senior adult", "senior"]
     deputy = ["young adult", "adult", "senior adult", "senior"]
-    "medicine cat" = ["young adult", "adult", "senior adult", "senior"]
+    healer = ["young adult", "adult", "senior adult", "senior"]
     member = ["newborn", "kitten", "adolescent", "young adult", "adult", "senior adult", "senior"]
 
 [genetics_config]
@@ -1311,8 +1326,8 @@ dev_tools = false
     deputy = [2, 3, 3, 4]
     warrior = [2, 3, 3, 4]
     apprentice = [1, 2, 2, 3]
-    "medicine cat" = [0, 1, 1, 2]
-    "medicine cat apprentice" = [0, 1]
+    healer = [0, 1, 1, 2]
+    "healer apprentice" = [0, 1]
     mediator = [0, 1, 2, 2]
     "mediator apprentice" = [0, 1, 1]
     queen = [0, 1, 2, 2]
