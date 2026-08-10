@@ -45,8 +45,8 @@ class TestPregnancySettings(unittest.TestCase):
             Pregnancy_Events.check_if_can_have_kits(
                 parent1,
                 allow_single_parent=False,
-                allow_unmated=True,
-                allow_affair=True,
+                allow_unmated=False,
+                allow_affair=False,
             )
         )
 
@@ -89,9 +89,9 @@ class TestPregnancySettings(unittest.TestCase):
         self.assertFalse(
             Pregnancy_Events.check_if_can_have_kits(
                 parent1,
-                allow_single_parent=True,
+                allow_single_parent=False,
                 allow_unmated=False,
-                allow_affair=True,
+                allow_affair=False,
             )
         )
 

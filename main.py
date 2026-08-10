@@ -10,7 +10,7 @@ import pygame
 
 import scripts.game_structure.screen_settings
 from scripts.cat.sprites.load_sprites import sprites
-from scripts.clan import Afterlife, clan_class
+from scripts.clan import Afterlife
 
 from scripts.debug_console import debug_mode
 from scripts.game_input import INPUT_ACTION_PRESSED
@@ -25,7 +25,7 @@ from scripts.game_structure.game.switches import (
     switch_get_value,
     switch_set_value,
 )
-from scripts.game_structure.load_cat import load_cats, version_convert
+from scripts.game_structure.load_cat import load_cats
 from scripts.game_structure.screen_settings import MANAGER, screen, screen_scale
 from scripts.game_input import controller_manager, keyboard_manager
 

@@ -2373,6 +2373,9 @@ def handle_timeskip_EX(cat):
     """
     TODO: DOCS
     """
+
+    if cat.ID in game.patrolled:
+        return
     
     exp_info = get_config("clancat_ex")
 
@@ -2407,9 +2410,6 @@ def handle_timeskip_EX(cat):
 
     else:
         if cat.not_working() and int(random.random() * 3):
-            return
-
-        if cat.ID in game.patrolled:
             return
 
         if cat.age in [CatAge.NEWBORN, CatAge.KITTEN]:

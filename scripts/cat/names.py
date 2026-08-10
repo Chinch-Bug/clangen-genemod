@@ -332,7 +332,7 @@ class Name:
             return
 
         try:
-            used_prefixes = [c.name.prefix for c in cat.all_cats.values() if c.status.group_ID == cat.status.group_ID]
+            used_prefixes = [c.name.prefix for c in cat.all_cats.values() if c.status.group_ID == cat.status.group_ID and c.name]
         except:
             used_prefixes = []
 
