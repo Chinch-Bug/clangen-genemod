@@ -1,7 +1,7 @@
 import abc
 import random
-from typing import Tuple
 from operator import xor
+from typing import Tuple, Literal
 
 from abc import ABC, abstractmethod
 from scripts.cat.phenotype import Phenotype
