@@ -992,7 +992,7 @@ class Pregnancy_Events:
         else:
             # if the cat has no mate, and we don't allow single parents, unmated parents, or affairs
             # then they can't have kits
-            if not allow_single_parent and not allow_unmated:
+            if not allow_single_parent and not allow_unmated and not allow_affair:
                 return False
 
         # if function reaches this point, having kits is possible
@@ -1131,6 +1131,9 @@ class Pregnancy_Events:
 
         if len(cat.mate) <= 0:
             coparenting = True
+
+        if coparenting and not get_clan_setting('unmated parentage'):
+            return mate, False
 
         # LOVE AFFAIR & COPARENTING
         # Handle love affair chance.

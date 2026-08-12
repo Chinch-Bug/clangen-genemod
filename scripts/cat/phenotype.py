@@ -609,16 +609,20 @@ class Phenotype(Genotype):
   
     def ChooseTortiePattern(self, spec = None):
         self.def_tortie_low_patterns = ['DELILAH', 'MOTTLED', 'EYEDOT', 'BANDANA', 'SMUDGED', 'EMBER', 'BRINDLE', 'SAFI', 'BELOVED', 'revBODY', 
-                                        'MINIMALONE', 'MINIMALTWO', 'SHILOH', 'FRECKLED',
-                                        "FRECKLED_SMOKE", "SMOKING_EMBER", "MINIMAL_ONETWO"]
+                                        'MINIMALONE', 'MINIMALTWO', 'SHILOH', 'FRECKLED']
         self.def_tortie_mid_patterns = ['ONE', 'TWO', 'SMOKE', 'MINIMALTHREE', 'MINIMALFOUR', 'revOREO', "CHIMERA",
-                                'CHEST', 'GRUMPYFACE', 'SIDEMASK', 'PACMAN', 'BRIE' ,'ORIOLE', 'ROBIN', 'PAIGE', 'HEARTBEAT',
-                                "MASKED_ROBIN", "MASKED_ONE", "RED_SIDE", "RED_ROBIN", "BIRD_TIME", "FRECKLED_BELOVED", 
-                                        "MINIMAL_TWOTHREE", "MINIMAL_THREEFOUR", "MINIMAL_ALL"]
+                                'CHEST', 'GRUMPYFACE', 'SIDEMASK', 'PACMAN', 'BRIE' ,'ORIOLE', 'ROBIN', 'PAIGE', 'HEARTBEAT']
         self.def_tortie_high_patterns = ['THREE', 'FOUR', 'REDTAIL', 'STREAK', 'MASK', 'SWOOP', 'ARMTAIL', 'STREAMSTRIKE', 'DAUB',
-                                'ROSETAIL', 'DAPPLENIGHT', 'BLANKET',
-                                "MASKED_TAIL", "revFRECKLED_OREO"]
-        if random() < 0.25:
+                                'ROSETAIL', 'DAPPLENIGHT', 'BLANKET']
+        if random() < 0.2:
+            self.def_tortie_low_patterns += ["FRECKLED_SMOKE", "SMOKING_EMBER", "MINIMAL_ONETWO", "MASKED_SHILOH", "FRECKLED_SAFI",
+                                             "SMUDGED_SMOKE", "SMUDGED_SAFI", "BRIE_ONE"]
+            self.def_tortie_mid_patterns += ["MASKED_ROBIN", "MASKED_ONE", "RED_SIDE", "RED_ROBIN", "BIRD_TIME", "FRECKLED_BELOVED",
+                                             "MINIMAL_TWOTHREE", "MINIMAL_THREEFOUR", "MINIMAL_ALL", "ROBIN_SAFI", "FRECKLED_BIRD",
+                                             "FRECKLED_STREAM", "FRECKLED_GRUMP", "FRECKLED_BLANKET", "ARMTAIL_SMOKE", "GRUMPY_SMOKE",
+                                             "DAUB_SAFI", "EYEDOT_ONE", "SHILOH_FOUR"]
+            self.def_tortie_high_patterns += ["MASKED_TAIL", "revFRECKLED_OREO", "PIECEMEAL", "ROBIN_TAIL", "ARMTAIL_ONE", "CHIMERA_THREE",
+                                              "MOTTLED_THREE"]
             self.def_tortie_high_patterns += ["HALF"]
         tortie_low_patterns = self.def_tortie_low_patterns
         tortie_mid_patterns = self.def_tortie_mid_patterns

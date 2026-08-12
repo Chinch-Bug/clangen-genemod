@@ -5,6 +5,7 @@ from scripts.clan_package.settings import get_clan_setting
 from scripts.special_dates import SpecialDate, is_today
 from operator import xor
 import math
+from scripts.game_structure.localization import load_lang_resource
 
 
 class Genotype:
@@ -1797,20 +1798,7 @@ class Genotype:
         self.EyeColourName()
 
     def EyeColourName(self):
-    
-        eyecolours = {
-        "R1": ["Canary", "Peach", "Dandelion", "Yellow", "Mango", "Golden", "Amber", "Carrot", "Orance", "Copper", "Chocolate", "Ice Blue", "Pink"],
-        "R2": ["Citrine", "Sand", "Wheat", "Sunflower", "Goldenrod", "Copal", "Honey", "Topaz", "Cinnabar", "Auburn", "Chestnut", "Arctic", "Rose"],
-        "R3": ["Chartreuse", "Avocado", "Dry Bracken", "Lemon", "Banana", "Butterscotch", "Jasper", "Saffron", "Tawny", "Cinnamon", "Brown", "Aquamarine", "Periwinkle"],
-        "R4": ["Green Tourmaline", "Lichen", "Serpentinite", "Gooseberry", "Brass", "Golden Beryl", "Toffee", "Flame", "Caramel", "Sienna", "Sepia", "Sky Blue", "Quartz"],
-        "R5": ["Celadon", "Sage", "Grape", "Pear", "Durian", "Mustard", "Tangerine", "Golden Fluorite", "Rust", "Russet", "Umber", "Robin Egg", "Moonstone"],
-        "R6": ["Katydid", "Sea Glass", "Green Tea", "Lime", "Palm", "Hazel", "Cantalope", "Maple", "Acorn", "Ochre", "Muddy Brown", "Cerulean", "Opal"],
-        "R7": ["Laurel", "Jade", "Honeydew", "Green Apple", "Pistachio", "Prairie", "Toad", "Marsh", "Papaya", "Bronze", "Earth", "Cornflower", "Aqua"],
-        "R8": ["Sea Green", "Fluorite", "Iguana", "Bud", "Moss", "Willow", "Hemlock", "Parakeet", "Sedge", "Cattail", "Spruce", "Ocean", "Bluebell"],
-        "R9": ["Malachite", "Mint", "Mantis", "Olivine", "Shamrock", "Peridot", "Juniper", "Algae", "Cactus", "Cedar", "Swamp Green", "Azure", "Cloudy Blue"],
-        "R10": ["Teal", "Viridian", "Scallion", "Basil", "Grass Green", "Fern", "Kiwi", "Sap Green", "Seaweed", "Jungle", "Holly", "Sapphire", "Storm"],
-        "R11": ["Turquoise", "Amazonite", "Spring Green", "Ivy", "Leaf Green", "Green", "Emerald", "Forest Green", "Pine", "Myrtle", "Olive", "Indigo", "Lapis"]
-        }
+        eyecolours = load_lang_resource("cat/genemod_eyes.json")
 
         def setup(eyestring):
             eye = eyestring.split(' ; ')

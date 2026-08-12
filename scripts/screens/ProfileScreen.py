@@ -458,7 +458,7 @@ class ProfileScreen(Screens):
                 self.not_fav_tab.hide()
             elif event.ui_element == self.save_text:
                 self.user_notes = sub(
-                    r"[^A-Za-z0-9<->/.()*'&#!?,| _+=@~:;[]{}%$^`]+",
+                    r"[^A-Za-z0-9<->/.()*'&#!?,| _+=@~:;\[\]{}%$^`]+",
                     "",
                     self.notes_entry.get_text(),
                 )

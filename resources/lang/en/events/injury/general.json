@@ -9659,7 +9659,7 @@
                 "injuries": [
                     "minor_injury"
                 ],
-                "scars": [ ]
+                "scars": []
             },
             {
                 "cats": [
@@ -9668,7 +9668,7 @@
                 "injuries": [
                     "minor_injury"
                 ],
-                "scars": [ ]
+                "scars": []
             }
         ],
         "relationships": [
@@ -9689,7 +9689,7 @@
                 }
             }
         ],
-        "future_event": [ ]
+        "future_event": []
     },
     {
         "event_id": "gen_injury_leaderpunish",
@@ -9699,11 +9699,11 @@
         "season": [
             "any"
         ],
-        "sub_type": [ ],
-        "tags": [ ],
+        "sub_type": [],
+        "tags": [],
         "frequency": 2,
         "event_text": "After a Clanmate challenges {PRONOUN/m_c/object}, m_c commands r_c to help {PRONOUN/m_c/object} punish the protesting cat. r_c ends up hurt, but m_c feels {PRONOUN/m_c/subject} can trust r_c more.",
-        "new_accessory": [ ],
+        "new_accessory": [],
         "m_c": {
             "status": [
                 "leader"
