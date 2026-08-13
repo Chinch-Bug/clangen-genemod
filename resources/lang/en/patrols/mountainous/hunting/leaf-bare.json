@@ -1619,7 +1619,6 @@
                 "exp": 20,
                 "stat_trait": [
                     "wise",
-                    "sneaky",
                     "cunning",
                     "thoughtful",
                     "strange"
@@ -2223,7 +2222,7 @@
                 "frequency": 4
             },
             {
-                "text": "p_l looks around the rocks, only to spy something flying above {PRONOUN/p_l/object}, hearing the cat from up there. Oh. It's a StarClan-forsaken raven. The raven swoops and sinks its talons into p_l, who shrieks and thrashes as {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} carried into the air. {PRONOUN/p_l/subject/CAP} {VERB/p_l/struggle/struggles} to free {PRONOUN/p_l/self} as the raven drops {PRONOUN/p_l/object} into the jaws of wolves.",
+                "text": "p_l looks around the rocks, only to spy something flying above {PRONOUN/p_l/object}, hearing the cat from up there. Oh. It's a StarClan-forsaken raven. The raven swoops and sinks its talons into p_l, who shrieks and thrashes as {PRONOUN/p_l/subject}{VERB/p_l/'re/'s} in an attempt to knock the bird away. The noise attracts the attention of other predators and p_l meets {PRONOUN/p_l/poss} end at the jaws of a young wolf.",
                 "exp": 0,
                 "dead_cats": [
                     "r_c"

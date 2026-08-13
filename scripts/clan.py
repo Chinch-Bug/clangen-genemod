@@ -10,13 +10,16 @@ TODO: Docs
 
 import os
 import statistics
-from random import choice, randint, random, choices
+from random import choice, choices, randint, random, getrandbits
+from typing import Literal
 
 import i18n
 import ujson
 
-from scripts.cat.cats import Cat, create_cat, cat_class, BACKSTORIES
-from scripts.cat.enums import CatRank, CatGroup, CatSocial
+from scripts.cat.cats import Cat, BACKSTORIES
+from scripts.cat.enums import CatRank, CatGroup, CatSocial, CatCompatibility
+from scripts.cat.factories.new_cat_factory import NewCatFactory
+from scripts.cat.factories.enums import CatType
 from scripts.cat.names import names
 from scripts.cat.save_load import (
     save_cats,
@@ -109,6 +112,7 @@ class Clan:
 
         # needs to happen immediately so that any config retrievals will be accurate
         self.cruel_cards: list[str] = cruel_cards if cruel_cards else []
+        game.clan = self
 
         self.leader = leader
         self._leader_lives = 9
@@ -250,7 +254,7 @@ class Clan:
             )
         )
 
-        self.instructor = Cat(
+        self.instructor = NewCatFactory.create_cat(
             status_dict={"rank": instructor_rank, "group_ID": CatGroup.STARCLAN_ID},
             backstory=choice(
                 BACKSTORIES["backstory_categories"]["clan_guide_backstories"]
@@ -322,8 +326,63 @@ class Clan:
             if not the_cat.dead:
                 the_cat.backstory = "clan_founder"
             if the_cat.status.rank == CatRank.APPRENTICE:
-                the_cat.rank_change(CatRank.APPRENTICE)
+                the_cat.rank_change(CatRank.APPRENTICE, new_thought=False)
             the_cat.pelt.rebuild_sprite = True 
+
+        # find non-selected cats from the 12 generated starters
+        for c in switch_get_value(Switch.possible_cats):
+            if c.ID not in Cat.all_cats:
+                # change non-selected cats to outsiders
+                random_social = choice(
+                    [
+                        CatSocial.ROGUE,
+                        CatSocial.LONER,
+                        CatSocial.KITTYPET,
+                    ]
+                )
+                c.status.generate_new_status(self, social=random_social)
+                # re-assign backstory once cat has new status
+                c.backstory = NewCatFactory._get_random_backstory_from_status(
+                    c.status, c.age
+                )
+                # random chance for cat to generate as dead
+                if randint(1, 3) == 1:
+                    c.die()
+                    c.status.change_current_moons_as(new_moons_as=randint(1, 10))
+
+                # renaming to fit outsider status
+                name_categories = [
+                    "silly_names",
+                    "human_names",
+                    "loner_names",
+                    "normal_prefixes",
+                ]
+                # defaults in case of error
+                weights = [1, 1, 1, 1]
+                # give kittypets a kittypet name
+                if random_social == CatSocial.KITTYPET:
+                    weights = get_config("cat_name_controls.kittypet")
+                    # check if the kittypets come with a pretty acc
+                    if bool(getrandbits(1)):
+                        c.pelt.accessory = (
+                            *c.pelt.accessory,
+                            choice(c.pelt.collar_accessories),
+                        )
+                if random_social == CatSocial.LONER:
+                    weights = get_config("cat_name_controls.loner")
+
+                if random_social == CatSocial.ROGUE:
+                    weights = get_config("cat_name_controls.rogue")
+
+                selected_category = choices(name_categories, weights, k=1)[0]
+                name = choice(names.names_dict[selected_category])
+                c.change_name(new_prefix=name, new_suffix="")
+
+                # add back to all_cats, cus they get removed during `create_clan()`
+                Cat.all_cats[c.ID] = c
+                Cat.all_cats_list.append(c)
+                self.clan_cats.append(c.ID)
+
         save_cats(game.clan.save_id, Cat, game)
 
         # remove any already loaded points of interest
@@ -365,15 +424,15 @@ class Clan:
         """
         Make sure settings are at their starting positions as dictated in the game_config
         """
-        # deputy
-        if get_config("settings.force_enable.deputy"):
-            set_clan_setting("deputy", True)
-            save_clan_settings()
+        # forced settings
+        for setting in get_config("settings.force_enable"):
+            if get_config(f"settings.force_enable.{setting}"):
+                set_clan_setting(setting, True)
 
-        # modded_kits
-        if get_config("settings.force_disable.modded_kits"):
-            set_clan_setting("modded_kits", False)
-            save_clan_settings()
+        for setting in get_config("settings.force_disable"):
+            if get_config(f"settings.force_disable.{setting}"):
+                set_clan_setting(setting, False)
+        save_clan_settings()
 
         # feeding order
         starting_order = get_config("prey.feeding.starting_order")
@@ -396,17 +455,6 @@ class Clan:
         """Adds cat into the list of clan cats"""
         if cat.ID in Cat.all_cats and cat.ID not in self.clan_cats:
             self.clan_cats.append(cat.ID)
-
-    def add_to_clan(self, cat):
-        """
-        TODO: DOCS
-        """
-        if (
-            cat.ID in Cat.all_cats
-            and cat.status.group.is_any_clan_group()
-            and cat.ID in Cat.outside_cats
-        ):
-            Cat.outside_cats.pop(cat.ID)
 
     def remove_cat(self, ID):  # ID is cat.ID
         """
@@ -753,14 +801,11 @@ class Clan:
                 game.clan.instructor.status.group_history[0]["group"] = CatGroup.PLAYER_CLAN_ID
             game.clan.add_cat(game.clan.instructor)
         else:
-            game.clan.instructor = Cat(
+            game.clan.instructor = NewCatFactory.create_cat(
                 status_dict={
                     "rank": choice((CatRank.WARRIOR, CatRank.WARRIOR, CatRank.ELDER)),
-                    "group_ID": CatGroup.STARCLAN_ID,
+                    "group": CatGroup.STARCLAN,
                 },
-                backstory=choice(
-                    BACKSTORIES["backstory_categories"]["clan_guide_backstories"]
-                ),
             )
             game.clan.instructor.status.group_history.insert(0, {"rank": game.clan.instructor.status.rank, "group": CatGroup.PLAYER_CLAN_ID, "moons_as": self.instructor.moons})
             # update_sprite(game.clan.instructor)
@@ -833,6 +878,7 @@ class Clan:
                             get_config("clan_creation.starting_clan_relation")[1],
                         )
 
+        missing_cats = []
         for cat in clan_data["clan_cats"].split(","):
             if cat in Cat.all_cats:
                 game.clan.add_cat(Cat.all_cats[cat])
@@ -847,7 +893,18 @@ class Clan:
                             Cat.all_cats[cat].status.standing_history[0]["group"] = is_neighbour.group_ID
 
             else:
-                print("WARNING: Cat not found:", cat)
+                missing_cats.append(cat)
+        if missing_cats:
+            error = ValueError(
+                f"clan.json references {len(missing_cats)} cat(s) missing from "
+                f"clan_cats.json: {', '.join(missing_cats)}"
+            )
+            switch_set_value(
+                Switch.error_message,
+                "Some cats in this save could not be loaded! Please check the cat file for missing cats.",
+            )
+            switch_set_value(Switch.traceback, error)
+            raise error
         if "war" in clan_data:
             if clan_data["war"].get("at_war") is not None:
                 for c in game.clan.all_other_clans:
@@ -899,7 +956,9 @@ class Clan:
         # Cats who need to be grieved
         if "dead_cats_to_grieve" in clan_data:
             game.dead_cats_to_grieve = [
-                Cat.fetch_cat(x) for x in clan_data["dead_cats_to_grieve"] if Cat.fetch_cat(x)
+                Cat.fetch_cat(x)
+                for x in clan_data["dead_cats_to_grieve"]
+                if Cat.fetch_cat(x)
             ]
 
         # Cats who are gonna grieve
@@ -1323,15 +1382,15 @@ class Clan:
                 statistics.median([i.personality.stability for i in all_other_cats])
             )
 
+        if not leader and not deputy and not medicine_cats and not all_other_cats:
+            print("returned default temper: stoic, observant")
+            return "stoic", "observant"
+
         # mean of [leader, leader, leader, deputy, deputy, medicine_cats, all_other_cats]
         clan_sociability = round(statistics.mean(sociability_list))
         clan_aggression = round(statistics.mean(aggression_list))
         clan_lawfulness = round(statistics.mean(lawfulness_list))
         clan_stability = round(statistics.mean(stability_list))
-
-        if not leader and not deputy and not all_other_cats:
-            print("returned default temper: stoic, observant")
-            return "stoic", "observant"
 
         return get_temper_alignment(
             clan_sociability, clan_aggression, clan_lawfulness, clan_stability
@@ -1525,7 +1584,7 @@ class OtherClan:
                 CatRank.DEPUTY,
                 CatRank.ELDER,
             ))
-            self.instructor = Cat(
+            self.instructor = NewCatFactory.create_cat(
                 status_dict={
                     "rank": instructor_rank,
                     "group_ID": CatGroup.STARCLAN_ID,
@@ -1558,7 +1617,7 @@ class OtherClan:
                     CatRank.ELDER,
                 )
             )
-            self.instructor = Cat(
+            self.instructor = NewCatFactory.create_cat(
                 status_dict={"rank": instructor_rank, "group_ID": CatGroup.STARCLAN_ID},
                 backstory=choice(
                 BACKSTORIES["backstory_categories"]["clan_guide_backstories"]
@@ -1569,11 +1628,11 @@ class OtherClan:
 
             use_special = get_config("clan_creation.use_special_roller")
             cat_range = get_config("clan_creation.neighbourclan_cats")
-            self.new_leader(create_cat(CatRank.LEADER, biome=self.biome, kittypet=use_special, clan=self.group_ID))
-            self.new_deputy(create_cat(CatRank.DEPUTY, biome=self.biome, kittypet=use_special, clan=self.group_ID))
-            self.new_medicine_cat(create_cat(CatRank.MEDICINE_CAT, biome=self.biome, kittypet=use_special, clan=self.group_ID))
+            self.new_leader(NewCatFactory.create_cat(use_special=use_special, status_dict={"rank": CatRank.LEADER, "group_ID": self.group_ID}))
+            self.new_deputy(NewCatFactory.create_cat(use_special=use_special, status_dict={"rank": CatRank.DEPUTY, "group_ID": self.group_ID}))
+            self.new_medicine_cat(NewCatFactory.create_cat(use_special=use_special, status_dict={"rank": CatRank.MEDICINE_CAT, "group_ID": self.group_ID}))
             for i in range(randint(cat_range[0], cat_range[1])):
-                create_cat(choices(list(rank_weights.keys()), list(rank_weights.values()))[0], biome=self.biome, kittypet = use_special, clan=self.group_ID)
+                NewCatFactory.create_cat(use_special=use_special, status_dict={"rank": choices(list(rank_weights.keys()), list(rank_weights.values()))[0], "group_ID": self.group_ID})
     @property
     def name(self):
         return i18n.t("general.clan", name=self.prefix)
@@ -1804,6 +1863,31 @@ class Afterlife:
             return 0
         return total // num_of_influencers
 
+    def get_compatibility(self, cat: Cat) -> CatCompatibility:
+        """
+        Returns the afterlife's personality compatibility with the given cat.
+        """
+        differences = [
+            abs(self.lawfulness - cat.personality.lawfulness),
+            abs(self.sociability - cat.personality.sociability),
+            abs(self.aggression - cat.personality.aggression),
+            abs(self.stability - cat.personality.stability),
+        ]
+
+        running_total = 0
+        for x in differences:
+            if x <= 4:
+                running_total += 1
+            elif x >= 6:
+                running_total -= 1
+
+        if running_total >= 2:
+            return CatCompatibility.POSITIVE
+        elif running_total <= -2:
+            return CatCompatibility.NEGATIVE
+        else:
+            return CatCompatibility.NEUTRAL
+
 
 def get_temper_alignment(
     sociability: int, aggression: int, lawfulness: int, stability: int
@@ -1846,4 +1930,4 @@ def _find_alignment(temper_dict: dict, first_value: int, second_value: int) -> s
 
 
 clan_class = Clan()
-clan_class.remove_cat(cat_class.ID)
+# clan_class.remove_cat(cat_class.ID)

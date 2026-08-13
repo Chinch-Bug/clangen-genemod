@@ -16,9 +16,10 @@ from scripts.cat.enums import (
     CatCompatibility,
     CatThought,
 )
-from scripts.cat.genotype import Genotype
+from scripts.cat.factories.enums import CatType
+from scripts.cat.factories.new_cat_factory import NewCatFactory
 from scripts.cat.names import names, Name
-from scripts.cat.status import StatusDict
+from scripts.cat.factories.typed_dicts import StatusDict
 from scripts.cat_relations.relationship import Relationship, RelType
 from scripts.cat_relations.inheritance2 import inheritance_db
 from scripts.clan_package.settings import get_clan_setting
@@ -435,7 +436,7 @@ class Pregnancy_Events:
                     pregnant_cat.get_injured("pregnant", severity=severity[0])
                     return
 
-                kits = Pregnancy_Events.get_kits(amount, cat, outside_parent if not surrogate else [pregnant_cat], clan, backkit=backkit)
+                kits = Pregnancy_Events.get_kits(amount, cat, outside_parent if not surrogate else [pregnant_cat], clan, backkit=backkit, surrogate=[pregnant_cat] if surrogate else None)
 
                 for kit in kits:
                     if surrogate:
@@ -714,7 +715,7 @@ class Pregnancy_Events:
         if not other_cat:
             other_cat, backkit = Pregnancy_Events.handle_outside_parent(cat, clan, "1")
                 
-        kits = Pregnancy_Events.get_kits(kits_amount, pregnant_cat, other_cat if not surrogate or pregnant_cat in surrogate else surrogate, clan, backkit=backkit)
+        kits = Pregnancy_Events.get_kits(kits_amount, pregnant_cat, other_cat if not surrogate or pregnant_cat in surrogate else surrogate, clan, backkit=backkit, surrogate=surrogate)
         kits_amount = len(kits)
         for kit in kits:
             if FeverCoat:
@@ -991,7 +992,7 @@ class Pregnancy_Events:
         else:
             # if the cat has no mate, and we don't allow single parents, unmated parents, or affairs
             # then they can't have kits
-            if not allow_single_parent and not allow_unmated and not allow_affair:
+            if not allow_single_parent and not allow_unmated:
                 return False
 
         # if function reaches this point, having kits is possible
@@ -1130,6 +1131,9 @@ class Pregnancy_Events:
 
         if len(cat.mate) <= 0:
             coparenting = True
+
+        if coparenting and not get_clan_setting('unmated parentage'):
+            return mate, False
 
         # LOVE AFFAIR & COPARENTING
         # Handle love affair chance.
@@ -1422,7 +1426,7 @@ class Pregnancy_Events:
         return None
 
     @staticmethod
-    def get_kits(kits_amount, cat=None, other_cat=None, clan=game.clan, adoptive_parents=None, backkit=None):
+    def get_kits(kits_amount, cat=None, other_cat=None, clan=game.clan, adoptive_parents=None, backkit=None, surrogate=None):
         """Create some amount of kits
         No parents are specified, it will create a blood parents for all the
         kits to be related to. They may be dead or alive, but will always be outside
@@ -1465,7 +1469,7 @@ class Pregnancy_Events:
         all_pars = [cat]
         if other_cat:
             all_pars += other_cat
-        birth_parents = [i.ID for i in all_pars if i]
+        birth_parents = [i.ID for i in all_pars if i and (not surrogate or i not in surrogate)]
         for _par in all_pars:
             if not _par:
                 continue
@@ -1566,7 +1570,7 @@ class Pregnancy_Events:
                     "group_ID": blood_parent.status.get_last_living_group()
                 }
                 
-                kit = Cat(parent1=blood_parent.ID, parent2=sire.ID, extrapar=chimera_sire if sire.ID != chimera_sire.ID else None, status_dict=kit_status, moons=litter_age, backstory=backstory)
+                kit = NewCatFactory.create_cat(parent1=blood_parent.ID, parent2=sire.ID, extrapar=chimera_sire if sire.ID != chimera_sire.ID else None, status_dict=kit_status, moons=litter_age, backstory=backstory)
             else:
                 # Two parents provided
                 second_blood = None
@@ -1586,9 +1590,9 @@ class Pregnancy_Events:
                 }
 
                 if backkit:    
-                    kit = Cat(parent1=cat.ID, parent2=second_blood.ID if second_blood else None, moons=0, backstory=backstory, status_dict=kit_status, extrapar = chimera_sire)
+                    kit = NewCatFactory.create_cat(parent1=cat.ID, parent2=second_blood.ID if second_blood else None, moons=0, backstory=backstory, status_dict=kit_status, extrapar = chimera_sire)
                 else:
-                    kit = Cat(parent1=cat.ID, parent2=second_blood.ID, moons=0, status_dict=kit_status)
+                    kit = NewCatFactory.create_cat(parent1=cat.ID, parent2=second_blood.ID, moons=0, status_dict=kit_status)
 
             if identical:
                 identical = False
@@ -1745,7 +1749,8 @@ class Pregnancy_Events:
         # add them as adoptive parents if not
         final_adoptive_parents = []
         for adoptive_p in all_adoptive_parents:
-            Cat.fetch_cat(adoptive_p).get_new_thought(CatThought.ON_BIRTH)
+            if not Cat.fetch_cat(adoptive_p):
+                continue
             if adoptive_p not in inheritance_db.get_relatives(all_kitten[0].ID, True):
                 final_adoptive_parents.append(adoptive_p)
             if Cat.fetch_cat(adoptive_p).status.group_ID != all_kitten[0].status.group_ID:

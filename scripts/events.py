@@ -22,7 +22,6 @@ from scripts.cat.enums import (
     CatGroup,
     CatStanding,
     CatSocial,
-    CatThought,
 )
 from scripts.cat.names import Name
 from scripts.cat.save_load import save_cats, add_cat_to_fade_id
@@ -39,8 +38,8 @@ from scripts.events_module.event_filters import event_for_other_clan
 from scripts.events_module.generate_events import GenerateEvents, generate_events
 from scripts.events_module.outsider_events import OutsiderEvents
 from scripts.events_module.patrol.patrol import Patrol
+from scripts.events_module.relationship import relation_events
 from scripts.events_module.relationship.pregnancy_events import Pregnancy_Events
-from scripts.events_module.relationship.relation_events import Relation_Events
 from scripts.events_module.relationship.crossclan_event_generation import handle_crossclan_relationships
 from scripts.events_module.short.condition_events import Condition_Events
 from scripts.events_module.short.short_event_generation import create_short_event
@@ -93,7 +92,7 @@ def one_moon():
     game.mediated = []
     switch_set_value(Switch.saved_clan, False)
     new_cat_invited = False
-    Relation_Events.clear_trigger_dict()
+    relation_events.clear_trigger_dict()
     Patrol.used_patrols.clear()
     game.patrolled.clear()
     game.just_died.clear()
@@ -732,23 +731,8 @@ def become_queen_events(cat, clan):
 
 def get_moon_freshkill():
     """Adding auto freshkill for the current moon."""
-    healthy_hunter = list(
-        filter(
-            lambda c: c.status.rank
-            in (CatRank.WARRIOR, CatRank.APPRENTICE, CatRank.LEADER, CatRank.DEPUTY)
-            and c.status.alive_in_player_clan
-            and not c.not_working(),
-            Cat.all_cats.values(),
-        )
-    )
 
-    prey_amount = 0
-    for cat in healthy_hunter:
-        lower_value, upper_value = get_config("prey.auto_warrior_prey")
-        if cat.status.rank == CatRank.APPRENTICE:
-            lower_value, upper_value = get_config("prey.auto_apprentice_prey")
-
-        prey_amount += random.randint(lower_value, upper_value)
+    prey_amount = game.clan.freshkill_pile.get_moonskip_catch_amount()
     game.freshkill_event_list.append(
         i18n.t("hardcoded.prey_catch_count", count=prey_amount)
     )
@@ -972,7 +956,6 @@ def handle_tnr_return(clan=game.clan):
         and TNRed):
             rejoin_upperbound = get_config("lost_cat.rejoin_tnr_chance")
             if random.randint(1, rejoin_upperbound) == 1 or "recovering from birth" in cat.injuries:
-                Cat.outside_cats.update({cat.ID: cat})
                 eligible_cats.append(cat)
                 cat_IDs.append(cat.ID)
     
@@ -1386,7 +1369,7 @@ def one_moon_cat(cat, clan):
 
     # relationships have to be handled separately, because of the ceremony name change
     if cat.status.group.is_any_clan_group():
-        Relation_Events.handle_relationships(cat)
+        relation_events.handle_relationships(cat)
 
     # now we make sure ill and injured cats don't get interactions they shouldn't
     if cat.is_ill() or cat.is_injured():
@@ -1606,7 +1589,9 @@ def perform_ceremonies(cat, clan):
         if not clan.leader or clan.leader.status.group_ID != clan.group_ID:
             if clan.deputy.status.group_ID == clan.group_ID:
                 ceremony(cat, CatRank.LEADER)
+                cat.generate_lead_ceremony()
                 clan.deputy = None
+                clan.leader = cat
 
     # OTHER CEREMONIES ---------------------------------------
 
@@ -1914,7 +1899,6 @@ def _is_suitable_medcat_app(cat, clan) -> bool:
         "fierce",
         "rebellious",
         "troublesome",
-        "sneaky",
         "vengeful",
     ]:
         chance = chance * 2
@@ -2231,7 +2215,6 @@ def ceremony(cat, promoted_to, preparedness="prepared"):
         involved_living_parent,
         involved_dead_parent,
     ) = ceremony_text_adjust(
-        Cat,
         ceremony_text,
         cat,
         dead_mentor=dead_mentor,
@@ -2390,6 +2373,9 @@ def handle_timeskip_EX(cat):
     """
     TODO: DOCS
     """
+
+    if cat.ID in game.patrolled:
+        return
     
     exp_info = get_config("clancat_ex")
 
@@ -2420,14 +2406,10 @@ def handle_timeskip_EX(cat):
         if cat.status.group_ID != CatGroup.PLAYER_CLAN_ID and cat.ID not in game.patrolled:
             exp += random.randint(0, 3)
 
-        if exp > 0:
-            cat.experience += max(exp * mentor_modifier, 1)
+        cat.add_experience(max(exp * mentor_modifier, 1))
 
     else:
         if cat.not_working() and int(random.random() * 3):
-            return
-
-        if cat.ID in game.patrolled:
             return
 
         if cat.age in [CatAge.NEWBORN, CatAge.KITTEN]:
@@ -2448,8 +2430,7 @@ def handle_timeskip_EX(cat):
             + list(range(ran[1][0], ran[1][1] + 1))
         )
 
-        if exp > 0:
-            cat.experience += max(exp * role_modifier, 1)
+        cat.add_experience(max(exp * role_modifier, 1))
 
 def invite_new_cats(cat, clan=game.clan):
     """
@@ -2629,6 +2610,8 @@ def handle_injuries_or_general_death(cat, clan):
     death_chance = get_config(path) - (
         get_config("death_related.war_death_modifier") if use_war_modifier else 0
     )
+    if not cat.age.is_baby():
+        death_chance += get_config("death_related.size_modifiers")[cat.phenotype.height_label]
     if not int(random.random() * death_chance) and not cat.not_working():  # 1/400
         create_short_event(
             event_type="birth_death",

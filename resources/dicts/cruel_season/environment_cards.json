@@ -1,4 +1,54 @@
 {
+  "easy_pickings": {
+    "card_art": "environment/lean_meat.png",
+    "modifiers": {
+      "death_related.size_modifiers": {
+        "teacup": -75,
+        "tiny" : -50,
+        "small" : -25,
+        "below average" : 0,
+        "average" : 0,
+        "above average" : 0,
+        "large" : 5,
+        "massive" : 10,
+        "giant" : 15,
+        "goliath" : 25
+      },
+      "death_related.kit_death_chances": {
+        "0": 0.35,
+        "1": 0.25,
+        "2": 0.2,
+        "3": 0.2,
+        "4": 0.1,
+        "5": 0.1
+      },
+      "settings.force_enable.modded_kits": true
+    }
+  },
+  "hostile_lands": {
+    "card_art": "environment/lean_meat.png",
+    "modifiers": {
+      "death_related.mass_death_chance": 8,
+      "death_related.max_mass_deaths": 1000,
+      "settings.force_enable.disaster": true
+    }
+  },
+  "radioactive": {
+    "card_art": "environment/tainted.png",
+    "modifiers": {
+      "genetics_config.chimera": 750,
+      "genetics_config.identical_twins": 250,
+      "genetics_config.XXX/XXY": 750,
+      "genetics_config.X monosomy": 3000,
+      "genetics_config.vitiligo": 100,
+      "genetics_config.random_mutation": 75,
+      "genetics_config.somatic_mutation": 150,
+      "genetics_config.sectoral_heterochromia": 150,
+      "genetics_config.random_heterochromia": 200,
+      "condition_related.illness_chance": 150,
+      "cat_generation.base_permanent_condition": 75
+    }
+  },
   "lean_meat": {
     "card_art": "environment/lean_meat.png",
     "modifiers": {

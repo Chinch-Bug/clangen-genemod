@@ -332,7 +332,7 @@ class Name:
             return
 
         try:
-            used_prefixes = [c.name.prefix for c in cat.all_cats.values() if c.status.group_ID == cat.status.group_ID]
+            used_prefixes = [c.name.prefix for c in cat.all_cats.values() if c.status.group_ID == cat.status.group_ID and c.name]
         except:
             used_prefixes = []
 
@@ -566,6 +566,10 @@ class Name:
             if get_clan_setting("no special suffixes"):
                 self.specsuffix_hidden = True
         
+    def change_name(self, prefix, suffix):
+        self.prefix = prefix
+        self.suffix = suffix
+
     def get_specsuffix_name(self, rank: CatRank = CatRank.LEADER):
         """
         Return the cat's name with the appropriate special suffix. If no specsuffix is given for that rank, returns

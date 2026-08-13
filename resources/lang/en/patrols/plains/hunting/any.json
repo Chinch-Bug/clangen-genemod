@@ -190,7 +190,6 @@
                     "any"
                 ],
                 "stat_trait": [
-                    "sneaky",
                     "cunning"
                 ],
                 "relationships": [
@@ -467,7 +466,6 @@
                     "app"
                 ],
                 "stat_trait": [
-                    "sneaky",
                     "cunning"
                 ],
                 "relationships": [
@@ -837,8 +835,7 @@
                 ],
                 "stat_trait": [
                     "careful",
-                    "cunning",
-                    "sneaky"
+                    "cunning"
                 ],
                 "prey": [
                     "medium"
@@ -1429,7 +1426,6 @@
                     "lonesome",
                     "loyal",
                     "nervous",
-                    "sneaky",
                     "strange",
                     "thoughtful",
                     "wise"
@@ -1520,7 +1516,6 @@
                     "lonesome",
                     "loyal",
                     "nervous",
-                    "sneaky",
                     "strange",
                     "thoughtful",
                     "wise"
@@ -1611,7 +1606,6 @@
                     "lonesome",
                     "loyal",
                     "nervous",
-                    "sneaky",
                     "strange",
                     "thoughtful",
                     "wise"
@@ -1953,7 +1947,6 @@
                     "lonesome",
                     "loyal",
                     "nervous",
-                    "sneaky",
                     "strange"
                 ],
                 "prey": [
@@ -2086,7 +2079,6 @@
                     "lonesome",
                     "loyal",
                     "nervous",
-                    "sneaky",
                     "strange"
                 ],
                 "can_have_stat": [
@@ -2256,7 +2248,6 @@
                     "lonesome",
                     "loyal",
                     "nervous",
-                    "sneaky",
                     "strange"
                 ],
                 "relationships": [
@@ -2414,7 +2405,6 @@
                     "lonesome",
                     "loyal",
                     "nervous",
-                    "sneaky",
                     "strange"
                 ],
                 "frequency": 4,
@@ -2513,7 +2503,6 @@
                     "lonesome",
                     "loyal",
                     "nervous",
-                    "sneaky",
                     "strange"
                 ],
                 "frequency": 4,
@@ -3982,8 +3971,7 @@
                     "calm",
                     "careful",
                     "insecure",
-                    "nervous",
-                    "sneaky"
+                    "nervous"
                 ],
                 "prey": ["large"],
                 "relationships": [

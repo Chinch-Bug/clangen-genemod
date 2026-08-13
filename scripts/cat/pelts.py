@@ -19,14 +19,26 @@ class Pelt:
     # POSES
     all_poses = sprites.POSE_DATA["poses"]
     newborn_poses = [x for x in all_poses if "newborn" in x]
-    kitten_poses = [x for x in all_poses if "kitten" in x]
-    adolescent_long_poses = [x for x in all_poses if "adolescent_long" in x]
-    adolescent_short_poses = [
-        x for x in all_poses if "adolescent" in x and "long" not in x
+    kitten_poses = [x for x in all_poses if "kitten" in x and "sick" not in x]
+    adolescent_long_poses = [
+        x for x in all_poses if "adolescent_long" in x and "sick" not in x
     ]
-    adult_short_poses = [x for x in all_poses if "adult_short" in x and "para" not in x]
-    adult_long_poses = [x for x in all_poses if "adult_long" in x and "para" not in x]
-    senior_poses = [x for x in all_poses if "senior" in x]
+    adolescent_short_poses = [
+        x
+        for x in all_poses
+        if "adolescent" in x and "long" not in x and "sick" not in x
+    ]
+    adult_short_poses = [
+        x
+        for x in all_poses
+        if "adult_short" in x and "para" not in x and "sick" not in x
+    ]
+    adult_long_poses = [
+        x
+        for x in all_poses
+        if "adult_long" in x and "para" not in x and "sick" not in x
+    ]
+    senior_poses = [x for x in all_poses if "senior" in x and "sick" not in x]
 
     # PELT LENGTH
     pelt_length = ["short", "medium", "long"]
@@ -378,9 +390,9 @@ class Pelt:
     @staticmethod
     def generate_white(KIT, albino, KITgrade, vit, white_pattern, pax3):
 
-        if white_pattern and "muzzle" in white_pattern:
-            white_pattern.remove("muzzle")
-            white_pattern.append("muzzle1")
+        if white_pattern and "break/inverse thai" in white_pattern:
+            white_pattern.remove("break/inverse thai")
+            white_pattern.append("break/dorsal stripe")
 
         vitiligo = ['MOON', 'PHANTOM', 'POWDER', 'BLEACHED', 'VITILIGO', 'VITILIGOTWO', 'SMOKEY']
 
@@ -601,7 +613,7 @@ class Pelt:
                     white_pattern.append(choice(['van1', 'van2', 'van3', 'van1', 'van2', 'van3', 'full white']))
                     for i in range(randint(0, 2)):
                         white_pattern.append(choice(['break/bracelet left', 'break/bracelet right'] + [None] * 9))
-                    white_pattern.append(choice(['break/piebald1', 'break/piebald2']))
+                    white_pattern.append(choice(['break/piebald1', 'break/piebald2', 'break/piebald3']))
                     white_pattern.append(choice(['break/pants'] + [None] * 9))
                     white_pattern.append(choice(['break/right no', 'break/left no'] + [None] * 14))
                     white_pattern.append(choice([None, 'break/left ear', 'break/right ear', 'break/tail tip', 'break/tail band', 'break/tail rings', 'break/left face', 'break/right face', 'break/bowl cut']))
@@ -627,7 +639,7 @@ class Pelt:
                     white_pattern.append(choice([None, choice(['break/left ear', 'break/right ear', 'break/tail tip', 'break/tail band', 'break/left face', 'break/right face', 'break/bowl cut', 'break/chin'])]))
 
                     if random() < 0.02:
-                        white_pattern = ["full white", "break/inverse thai"]
+                        white_pattern = ["full white", "break/dorsal stripe"]
         
         if vit:
             if white_pattern is None or white_pattern == "No":

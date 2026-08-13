@@ -1,5 +1,8 @@
 {
   "en": {
+    "easy_pickings": "Easy Pickings",
+    "hostile_lands": "A Hostile Land",
+    "radioactive": "Radioactive",
     "lean_meat": "Lean Meat",
     "forsaken": "Forsaken",
     "for_the_throne": "Anything For The Throne",
@@ -16,6 +19,7 @@
     "mouths_to_feed": "Mouths To Feed",
     "plague_ridden": "Plague-ridden",
     "one_cat": "Lone Steps",
+    "young_old": "Young and Old",
     "barren_stocks": "Barren Stockpiles",
     "always_newleaf": "Neverending Pollen",
     "always_greenleaf": "Neverending Heat",
@@ -23,6 +27,7 @@
     "always_leaf-bare": "Neverending Frost",
     "underpopulated": "Underpopulated",
     "heartless": "Heartless",
+    "clumsy_paws": "Clumsy Paws",
     "malicious_aura": "Malicious Aura"
   }
 }

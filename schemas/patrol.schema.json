@@ -403,7 +403,8 @@
         "poppy",
         "plantain",
         "catmint",
-        "honey"
+        "honey",
+        "yew_berries"
       ],
       "title": "Herb",
       "type": "string"
@@ -1555,7 +1556,9 @@
         "rogue",
         "-rogue",
         "clancat",
-        "-clancat"
+        "-clancat",
+        "guide",
+        "-guide"
       ],
       "title": "Status",
       "type": "string"
@@ -1588,7 +1591,6 @@
         "loyal",
         "responsible",
         "shameless",
-        "sneaky",
         "strange",
         "vengeful",
         "wise",
@@ -1627,7 +1629,6 @@
         "-loyal",
         "-responsible",
         "-shameless",
-        "-sneaky",
         "-strange",
         "-vengeful",
         "-wise",

@@ -36,7 +36,9 @@
     "modifiers": {
       "pregnancy.birth_cooldown": 2,
       "pregnancy.primary_chance_mated": 20,
-      "pregnancy.primary_chance_unmated": 40
+      "pregnancy.primary_chance_unmated": 40,
+      "pregnancy.modded_primary_chance_mated": 15,
+      "pregnancy.modded_primary_chance_unmated": 30
     }
   },
   "mouths_to_feed": {
@@ -142,6 +144,12 @@
     "modifiers": {
       "mates.allow_manual": false,
       "mates.allow_mating": false
+    }
+  },
+  "clumsy_paws": {
+    "card_art": "behavior/sorrow.png",
+    "modifiers": {
+      "progress.difficulty_modifier": 0.5
     }
   },
   "malicious_aura": {

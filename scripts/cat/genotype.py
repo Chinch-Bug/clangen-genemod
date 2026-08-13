@@ -5,6 +5,7 @@ from scripts.clan_package.settings import get_clan_setting
 from scripts.special_dates import SpecialDate, is_today
 from operator import xor
 import math
+from scripts.game_structure.localization import load_lang_resource
 
 
 class Genotype:
@@ -1179,10 +1180,7 @@ class Genotype:
         self.poly = [choice(par1.poly), choice(par2.poly)]
         self.pax3 = [choice(par1.pax3), choice(par2.pax3)]
 
-        if random() < 0.25:
-            self.fur_shade = par1.fur_shade
-        elif random() < 0.25:
-            self.fur_shade = par2.fur_shade
+        self.fur_shade = self.kit_gradient_traits(par1.fur_shade, par2.fur_shade, 7, True)
 
         self.wideband = self.kit_gradient_traits(par1.wideband, par2.wideband, 17)
         self.rufousing = self.kit_gradient_traits(par1.rufousing, par2.rufousing, 9)
@@ -1659,19 +1657,6 @@ class Genotype:
         return rand
 
     def EyeColourFinder(self):
-        eyecolours = {
-        "R1" : ["Citrine", "Golden Beryl", "Yellow", "Pale Golden", "Golden", "Amber", "Light Orange", "Orange", "Cinnabar", "Auburn", "Copper", "Ice Blue", "Pink"],
-        "R2" : ["Pale Citrine", "Pale Yellow", "Lemon", "Deep Yellow", "Dull Golden", "Honey", "Pale Orange", "Burnt Orange", "Dark Orange", "Russet", "Dark Topaz", "Aquamarine", "Rose"],
-        "R3" : ["Lemonade Yellow", "Straw Yellow", "Dandelion Yellow", "Banana Yellow", "Sunglow Yellow", "Copal", "Dull Orange", "Rust Orange", "Topaz", "Chocolate", "Burgundy", "Sky Blue", "Magenta"],
-        "R4" : ["Light Celadon", "Pale Chartreuse", "Pear Green", "Brass Yellow", "Golden Green", "Butterscotch", "Dusty Orange", "Tawny", "Jasper", "Light Brown", "Earth", "Cyan", "Periwinkle"],
-        "R5" : ["Light Jade", "Pale Lime", "Spring Bud", "Chartreuse", "Pale Hazel", "Yellow Hazel", "Golden Fluorite", "Beaver Brown", "Sienna", "Chestnut", "Umber", "Baby Blue", "Violet"],
-        "R6" : ["Light Fluorite", "Mantis Green", "Spring Green", "Lime", "Green Tea", "Hazel", "Green Hazel", "Dark Copal", "Cinnamon", "Raw Umber", "Sepia", "Aqua", "Glass"],
-        "R7" : ["Pale Emerald", "Apple Green", "Shamrock", "Lemon-Lime", "Peridot", "Antique Brass", "Dark Hazel", "Brown-Green", "Hazel Brown", "Bronze", "Bistre Brown", "Cerulean", "Moonstone"],
-        "R8" : ["Malachite", "Olivine", "Pastel Green", "Bright Green", "Pistachio", "Dull Olive", "Murky Green", "Jungle Green", "Hemlock Green", "Thatch Green", "Muddy", "Ocean Blue", "Albino Ice Blue"],
-        "R9" : ["Pale Turquoise", "Mint", "Snake Green", "Dark Lime", "Fern Green", "Dull Green", "Dark Fern Green", "Olive", "Tumbleweed Green", "Bronze Olive", "Deep Bronze", "Teal", "Albino Aquamarine"],
-        "R10" : ["Turquoise", "Viridian", "Green Onion", "Leaf Green", "Green", "Sap Green", "Dark Leaf Green", "Forest Green", "Dark Peridot", "Seaweed Green", "Dark Olive", "Sapphire", "Albino Sky Blue"],
-        "R11" : ["Deep Turquoise", "Amazonite", "Pine Green", "Deep Leaf Green", "Jade", "Emerald", "Deep Green", "Deep Forest Green", "Dark Green", "Dark Moss Green", "Black Olive", "Azure", "Albino Azure"]
-        }
         sectoralindex = randint(0, self.odds["sectoral_heterochromia"]-1) if self.odds["sectoral_heterochromia"] > 1 else 0
         het2index = randint(0, self.odds["random_heterochromia"]-1) if self.odds["random_heterochromia"] > 1 else 0
         blueindex = 1
@@ -1696,11 +1681,6 @@ class Genotype:
         if piggrade == 0 or ((self.pointgene == ["cb", "cs"] or self.pointgene == ["cb", "cm"] or self.pointgene == ["cm", "cm"] or self.pointgene == ["cm", "c"]) and randint(1, 5) == 1):
             piggrade = 1
 
-        def RefTypeFind(x, piggrade):
-            y = eyecolours['R' + str(x)][piggrade-1]
-
-            return y
-        
         def SecondaryRefTypeFind(x, piggrade):
             y = ""
 
@@ -1712,9 +1692,6 @@ class Genotype:
                     
             y += "R" + str(x) + " ; " + str(piggrade) + ""
             return y
-        
-        
-
 
         if self.pointgene == ["cb","cs"]:
             blueindex = randint(0, 10)
@@ -1797,22 +1774,16 @@ class Genotype:
             piggrade = 13
             temppig = 13
             tempvals[1] = 13
-        
-        self.righteye = RefTypeFind(refgrade, piggrade)
-        self.lefteye = RefTypeFind(refgrade, piggrade)
 
         self.lefteyetype = SecondaryRefTypeFind(refgrade, piggrade)
         self.righteyetype = SecondaryRefTypeFind(refgrade, piggrade)
         
-        self.extraeyecolour = RefTypeFind(tempvals[0], tempvals[1])
         self.extraeyetype = SecondaryRefTypeFind(tempvals[0], tempvals[1])
 
         if het2index == 0:
             if randint(1, 2)==1:
-                self.lefteye = RefTypeFind(tempref, temppig)
                 self.lefteyetype = SecondaryRefTypeFind(tempref, temppig)
             else:
-                self.righteye = RefTypeFind(tempref, temppig)
                 self.righteyetype = SecondaryRefTypeFind(tempref, temppig)
 
         if(sectoralindex == 0):
@@ -1820,27 +1791,14 @@ class Genotype:
                 
         elif hetindex == 0 and piggrade != 13:
             if random() < 0.5:
-                self.lefteye = RefTypeFind(refgrade, 12)
                 self.lefteyetype = SecondaryRefTypeFind(refgrade, 12)
             else:
-                self.righteye = RefTypeFind(refgrade, 12)
                 self.righteyetype = SecondaryRefTypeFind(refgrade, 12)
+    
+        self.EyeColourName()
 
     def EyeColourName(self):
-    
-        eyecolours = {
-        "R1" : ["Citrine", "Golden Beryl", "Yellow", "Pale Golden", "Golden", "Amber", "Light Orange", "Orange", "Cinnabar", "Auburn", "Copper", "Ice Blue", "Pink"],
-        "R2" : ["Pale Citrine", "Pale Yellow", "Lemon", "Deep Yellow", "Dull Golden", "Honey", "Pale Orange", "Burnt Orange", "Dark Orange", "Russet", "Dark Topaz", "Aquamarine", "Rose"],
-        "R3" : ["Lemonade Yellow", "Straw Yellow", "Dandelion Yellow", "Banana Yellow", "Sunglow Yellow", "Copal", "Dull Orange", "Rust Orange", "Topaz", "Chocolate", "Burgundy", "Sky Blue", "Magenta"],
-        "R4" : ["Light Celadon", "Pale Chartreuse", "Pear Green", "Brass Yellow", "Golden Green", "Butterscotch", "Dusty Orange", "Tawny", "Jasper", "Light Brown", "Earth", "Cyan", "Periwinkle"],
-        "R5" : ["Light Jade", "Pale Lime", "Spring Bud", "Chartreuse", "Pale Hazel", "Yellow Hazel", "Golden Fluorite", "Beaver Brown", "Sienna", "Chestnut", "Umber", "Baby Blue", "Violet"],
-        "R6" : ["Light Fluorite", "Mantis Green", "Spring Green", "Lime", "Green Tea", "Hazel", "Green Hazel", "Dark Copal", "Cinnamon", "Raw Umber", "Sepia", "Aqua", "Glass"],
-        "R7" : ["Pale Emerald", "Apple Green", "Shamrock", "Lemon-Lime", "Peridot", "Antique Brass", "Dark Hazel", "Brown-Green", "Hazel Brown", "Bronze", "Bistre Brown", "Cerulean", "Moonstone"],
-        "R8" : ["Malachite", "Olivine", "Pastel Green", "Bright Green", "Pistachio", "Dull Olive", "Murky Green", "Jungle Green", "Hemlock Green", "Thatch Green", "Muddy", "Ocean Blue", "Albino Ice Blue"],
-        "R9" : ["Pale Turquoise", "Mint", "Snake Green", "Dark Lime", "Fern Green", "Dull Green", "Dark Fern Green", "Olive", "Tumbleweed Green", "Bronze Olive", "Deep Bronze", "Teal", "Albino Aquamarine"],
-        "R10" : ["Turquoise", "Viridian", "Green Onion", "Leaf Green", "Green", "Sap Green", "Dark Leaf Green", "Forest Green", "Dark Peridot", "Seaweed Green", "Dark Olive", "Sapphire", "Albino Sky Blue"],
-        "R11" : ["Deep Turquoise", "Amazonite", "Pine Green", "Deep Leaf Green", "Jade", "Emerald", "Deep Green", "Deep Forest Green", "Dark Green", "Dark Moss Green", "Black Olive", "Azure", "Albino Azure"]
-        }
+        eyecolours = load_lang_resource("cat/genemod_eyes.json")
 
         def setup(eyestring):
             eye = eyestring.split(' ; ')

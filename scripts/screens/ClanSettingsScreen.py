@@ -117,22 +117,34 @@ class ClanSettingsScreen(Screens):
         TODO: DOCS
         """
         if event.ui_element in self.checkboxes.values():
-            if event.ui_element == self.checkboxes.get("deputy") and get_config(
-                "settings.force_enable.deputy"
+            forced_enabled = get_config("settings.force_enable")
+            for setting in forced_enabled:
+                if event.ui_element == self.checkboxes.get(setting) and get_config(
+                    f"settings.force_enable.{setting}"
+                ):
+                    set_clan_setting(setting, True)
+                    self.checkboxes[setting].check()
+                    CruelLockedAction()
+                    return
+
+            forced_disabled = get_config("settings.force_disable")
+            for setting in forced_disabled:
+                if event.ui_element == self.checkboxes.get(setting) and get_config(
+                    f"settings.force_disable.{setting}"
+                ):
+                    set_clan_setting(setting, False)
+                    self.checkboxes[setting].uncheck()
+                    CruelLockedAction()
+                    return
+
+            if event.ui_element == self.checkboxes.get("affair") and not get_config(
+                "mates.allow_mating"
             ):
-                set_clan_setting("deputy", True)
-                self.checkboxes["deputy"].check()
+                set_clan_setting("affair", False)
+                self.checkboxes["affair"].uncheck()
                 CruelLockedAction()
                 return
-
-            if event.ui_element == self.checkboxes.get("modded_kits") and get_config(
-                "settings.force_disable.modded_kits"
-            ):
-                set_clan_setting("modded_kits", False)
-                self.checkboxes["modded_kits"].uncheck()
-                CruelLockedAction()
-                return
-
+                
             for key, value in self.checkboxes.items():
                 if value == event.ui_element:
                     switch_clan_setting(key)

@@ -1,32 +1,31 @@
 {
     "en": {
-      "training_kit": "This cat has not begun training.",
-      "training_app": "This cat has not finished training.",
-      "training_mentors": {
-        "zero": "This cat either did not have a mentor, or {PRONOUN/m_c/poss} mentor is unknown.",
-        "one": "{PRONOUN/m_c/subject/CAP} {VERB/m_c/were/was} mentored by %{mentors}.",
-        "many": "{PRONOUN/m_c/subject/CAP} {VERB/m_c/were/was} mentored by %{mentors}."
-      },
-      "training_mentor_trait_influence": "%{mentor} influenced {PRONOUN/m_c/object} to be more likely to %{influence}.",
-      "training_mentor_skill_influence": "%{mentor} helped {PRONOUN/m_c/object} become better at %{influence}.",
-      "queen_trait_influence": "%{queen} influenced {PRONOUN/m_c/object} to be more likely to %{influence}.",
-      "queen_skill_influence": "%{queen} helped {PRONOUN/m_c/object} become better at %{influence}.",
-      "graduation_honor": "When {PRONOUN/m_c/subject} graduated, {PRONOUN/m_c/subject} {VERB/m_c/were/was} honored for {PRONOUN/m_c/poss} %{honor}.",
-      "graduation_early": "{PRONOUN/m_c/poss/CAP} training went so well that {PRONOUN/m_c/subject} graduated early at %{age} moons old.",
-      "graduation_normal": "{PRONOUN/m_c/subject/CAP} graduated at %{age} moons old.",
-      "graduation_late": "{PRONOUN/m_c/subject/CAP} graduated late at %{age} moons old.",
-      "mentored": "{PRONOUN/m_c/subject/CAP} mentored %{apprentices}.",
-      "comment": "Leader live strings for history text or text where m_c is included in the area its being called to",
-      "leader_death_all": "lost all of {PRONOUN/m_c/poss} lives",
-      "leader_death_cardinal": {
-        "one": "%{cardinal} life:",
-        "many": "%{cardinal} lives:"
-      },
-      "leader_death_many_lives": "%{first_cardinal} through %{last_cardinal} lives:",
-      "leader_lost_lives": {
-        "one": "lost a life.",
-        "many": "lost %{count} lives."
-      },
+        "training_kit": "This cat has not begun training.",
+        "training_app": "This cat has not finished training.",
+        "training_mentors": {
+            "zero": "This cat either did not have a mentor, or {PRONOUN/m_c/poss} mentor is unknown.",
+            "one": "{PRONOUN/m_c/subject/CAP} {VERB/m_c/were/was} mentored by %{mentors}.",
+            "many": "{PRONOUN/m_c/subject/CAP} {VERB/m_c/were/was} mentored by %{mentors}."
+        },
+        "training_mentor_trait_influence": "%{mentor} influenced {PRONOUN/m_c/object} to be more likely to %{influence}.",
+        "training_mentor_skill_influence": "%{mentor} helped {PRONOUN/m_c/object} become better at %{influence}.",
+        "queen_trait_influence": "%{queen} influenced {PRONOUN/m_c/object} to be more likely to %{influence}.",
+        "queen_skill_influence": "%{queen} helped {PRONOUN/m_c/object} become better at %{influence}.",
+        "graduation_honor": "When {PRONOUN/m_c/subject} graduated, {PRONOUN/m_c/subject} {VERB/m_c/were/was} honored for {PRONOUN/m_c/poss} %{honor}.",
+        "graduation_early": "{PRONOUN/m_c/poss/CAP} training went so well that {PRONOUN/m_c/subject} graduated early at %{age} moons old.",
+        "graduation_normal": "{PRONOUN/m_c/subject/CAP} graduated at %{age} moons old.",
+        "graduation_late": "{PRONOUN/m_c/subject/CAP} graduated late at %{age} moons old.",
+         "comment": "Leader live strings for history text or text where m_c is included in the area its being called to",
+        "leader_death_all": "lost all of {PRONOUN/m_c/poss} lives",
+        "leader_death_cardinal": {
+            "one": "%{cardinal} life:",
+            "many": "%{cardinal} lives:"
+        },
+        "leader_death_many_lives": "%{first_cardinal} through %{last_cardinal} lives:",
+        "leader_lost_lives": {
+            "one": "lost a life.",
+            "many": "lost %{count} lives."
+        },
 
         "comment_two": "Leader live strings for text where m_c is not included where its being called to, ie patrol outcome text",
         "n_leader_death_all": "m_c lost all of {PRONOUN/m_c/poss} lives",

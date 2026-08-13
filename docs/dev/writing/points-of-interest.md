@@ -58,7 +58,7 @@ Points of Interest are distributed into three categories. Each Territory has ran
 | Category  |                                                                                            Description                                                                                           |
 |:---------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | gathering | This is the Clan's Gathering place, where they interface with other Clans. One exists per territory.                                                                                             |
-| moonplace | This is the Clan's moon place, where medicine cats meet once a moon. One exists per territory. It typically features some connection to the moon, stars, or night sky. One exists per territory. |
+| moonplace | This is the Clan's moon place, where medicine cats meet once a moon. It typically features some connection to the moon, stars, or night sky. One exists per territory. |
 |  terrain  | This is a feature within the Clan's territory that is notable due to either its appearance or opportunities around it. Three can be discovered per territory.                                    |
 
 ### Tags 
@@ -70,6 +70,7 @@ Points of Interests can use many different tags that denote circumstances around
 |      covered      |                                       any location that offers shelter from the elements.                                       |
 |     fall_risk     |                                                 risk of heights-related injury.                                                 |
 |       hole        |                                                     a cavity in the earth.                                                      |
+|       nests       |                                                      where birds lay eggs.                                                      |
 |       prey        |                     anything the Clan hunts. Has multiple more specific tags. Should not be used together.                      |
 |    prey:flying    |                                                 any prey that primarily flies.                                                  |
 |    prey:water     |                                  prey found in or around water. assume your cats will get wet.                                  |

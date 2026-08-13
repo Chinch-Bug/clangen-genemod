@@ -3,8 +3,9 @@ from random import randrange, choice, randint, choices
 import pygame
 import pygame_gui
 
-from scripts.cat.cats import create_cat, create_example_cats
 from scripts.cat.enums import CatRank
+from scripts.cat.factories.create_example_cat import create_example_cats
+from scripts.cat.factories.new_cat_factory import NewCatFactory
 from scripts.cat.sprites.load_sprites import sprites
 from scripts.config import get_config
 from scripts.game_structure import image_cache
@@ -30,6 +31,8 @@ class ChooseModeScreen(MakeClanScreenBase):
         self.game_mode = "classic"
 
     def screen_switches(self):
+        super().screen_switches()
+
         # Reset variables
         if not switch_get_value(Switch.possible_cats):
             switch_set_value(
@@ -40,7 +43,6 @@ class ChooseModeScreen(MakeClanScreenBase):
                 ),
             )
 
-        super().screen_switches()
         self.elements["previous_step"].enable()
         self.elements["next_step"].enable()
 
@@ -223,13 +225,19 @@ class ChooseModeScreen(MakeClanScreenBase):
         # MEMBERS
         use_special = get_config("clan_creation.use_special_roller")
         cat_range = get_config("clan_creation.quickstart_cats")
-        self.clan_info.leader = create_cat(CatRank.WARRIOR, kittypet=use_special)
-        self.clan_info.deputy = create_cat(CatRank.WARRIOR, kittypet=use_special)
-        self.clan_info.medicine_cat = create_cat(CatRank.WARRIOR, kittypet=use_special)
+        cat_range[0] = max(min(self.get_config_during_creation(
+            "clan_creation.minimum_membership"
+        ) - len(self.clan_info.get_all_cats())-3, cat_range[0]), 0)
+        cat_range[1] = max(min(self.get_config_during_creation(
+            "clan_creation.maximum_membership"
+        ) - len(self.clan_info.get_all_cats())-3, cat_range[1]), 0)
+        self.clan_info.leader = NewCatFactory.create_cat(rank=self.get_config_during_creation("clan_creation.majority_rank"), use_special=use_special)
+        self.clan_info.deputy = NewCatFactory.create_cat(rank=self.get_config_during_creation("clan_creation.majority_rank"), use_special=use_special)
+        self.clan_info.medicine_cat = NewCatFactory.create_cat(rank=self.get_config_during_creation("clan_creation.majority_rank"), use_special=use_special)
         members = []
         rank_weights = self.get_config_during_creation("clan_creation.rank_weights")
         for _ in range(randrange(cat_range[0], cat_range[1]+1)):
-            members.append(create_cat(rank=choices(list(rank_weights.keys()), list(rank_weights.values()))[0], kittypet=use_special))
+            members.append(NewCatFactory.create_cat(rank=choices(list(rank_weights.keys()), list(rank_weights.values()))[0], use_special=use_special))
 
         switch_set_value(
             Switch.possible_cats,

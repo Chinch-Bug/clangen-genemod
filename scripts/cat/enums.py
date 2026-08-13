@@ -6,6 +6,7 @@ from strenum import StrEnum
 from enum import Enum, auto
 
 
+
 class CatAge(StrEnum):
     NEWBORN = "newborn"
     KITTEN = "kitten"
@@ -20,6 +21,31 @@ class CatAge(StrEnum):
 
     def can_have_mate(self):
         return self not in (CatAge.KITTEN, CatAge.NEWBORN, CatAge.ADOLESCENT)
+
+    @staticmethod
+    def get_from_moons(moons):
+        from scripts.config import get_config
+        ages_info = get_config("cat_ages")
+        lookup = {
+            CatAge.NEWBORN: ages_info["newborn"],
+            CatAge.KITTEN: ages_info["kitten"],
+            CatAge.ADOLESCENT: ages_info["adolescent"],
+            CatAge.YOUNG_ADULT: ages_info["young adult"],
+            CatAge.ADULT: ages_info["adult"],
+            CatAge.SENIOR_ADULT: ages_info["senior adult"],
+            CatAge.SENIOR: ages_info["senior"],
+        }
+        if moons > lookup[CatAge.SENIOR][1]:
+            return CatAge.SENIOR
+
+        return next(
+            (
+                key
+                for key, (min_age, max_age) in lookup.items()
+                if min_age <= moons <= max_age
+            ),
+            None,
+        )
 
 
 class CatSocial(StrEnum):
@@ -76,7 +102,7 @@ class CatRank(StrEnum):
     def is_any_adult_patrol_rank(self) -> bool:
         return self in (self.WARRIOR, self.DEPUTY, self.LEADER, self.QUEEN, self.MEDIATOR)
 
-    def is_allowed_to_patrol(self, allow_mediators=False) -> bool:
+    def is_allowed_to_patrol(self, allow_mediators=False, allow_queens=False) -> bool:
         # newborn is not included in this because the "fun" config needs extra checks
         if self.is_any_clancat_rank() and self not in (
             self.ELDER,
@@ -86,6 +112,11 @@ class CatRank(StrEnum):
             if not allow_mediators and self in (
                 self.MEDIATOR,
                 self.MEDIATOR_APPRENTICE
+            ):
+                return False
+            if not allow_queens and self in (
+                self.QUEEN,
+                self.QUEEN_APPRENTICE
             ):
                 return False
             return True

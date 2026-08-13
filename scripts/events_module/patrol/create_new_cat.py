@@ -4,10 +4,11 @@ from random import choice, randint, getrandbits, choices, random
 from scripts.cat.cats import Cat
 from scripts.cat.constants import INJURIES, ILLNESSES, PERMANENT, BACKSTORIES
 from scripts.cat.enums import CatRank, CatAge, CatGroup, CatStanding, CatSocial, CatThought
+from scripts.cat.factories.new_cat_factory import NewCatFactory
 from scripts.cat.names import names
 from scripts.cat.personality import Personality
 from scripts.cat.skills import SkillPath, Skill
-from scripts.cat.status import StatusDict, Status
+from scripts.cat.factories.typed_dicts import StatusDict
 from scripts.cat_relations.inheritance2 import inheritance_db
 from scripts.cat_relations.relationship import Relationship
 from scripts.clan import OtherClan
@@ -97,7 +98,7 @@ def updated_create_new_cat(
     num_of_cats = randint(2, 6) if is_litter else 1
 
     for i in range(num_of_cats):
-        created_cat = Cat(
+        created_cat = NewCatFactory.create_cat(
             status_dict=status,
             moons=moons,
             gender=gender,
@@ -112,19 +113,20 @@ def updated_create_new_cat(
             if len(new_cats) == 0:
                 while created_cat.phenotype.manx[1] in ["Ab", "M"] or created_cat.phenotype.sexgene[0] == "Y" or created_cat.phenotype.munch[1] == "Mk" or ('NoDBE' not in created_cat.phenotype.pax3 and 'DBEalt' not in created_cat.phenotype.pax3):
                     del Cat.all_cats[created_cat.ID]
-                    created_cat = Cat(
+                    created_cat = NewCatFactory.create_cat(
                         status_dict=status,
                         moons=moons,
                         gender=gender,
                         parent1=blood_parents[0].ID if blood_parents else None,
-                        parent2=blood_parents[1].ID if len(blood_parents) > 1 else None,
+                        parent2=blood_parents[1].ID if len(
+                            blood_parents) > 1 else None,
                         adoptive_parents=[p.ID for p in adoptive_parents]
                         if adoptive_parents
                         else None,
                     )
             else:
                 created_cat.moons = 0
-                created_cat.status = Status(**{"group_ID": created_cat.status.group_ID,
+                created_cat.status = StatusDict({"group_ID": created_cat.status.group_ID,
                                            "rank": CatRank.NEWBORN, "age": CatAge.NEWBORN})
                 created_cat.dead = True
                 created_cat.get_new_thought(CatThought.ON_DEATH)

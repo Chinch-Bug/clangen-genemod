@@ -72,7 +72,7 @@ def get_config(
     config_path, creating_clan: bool = False, card_list_override: list[str] = None
 ):
     """
-    Returns a give game config value. If the clan has cruel cards that can replace those values, then it will return the card modifier instead.
+    Returns a given game config value. If the clan has cruel cards that can replace those values, then it will return the card modifier instead.
     :param config_path: Path to config value in dot notation - ex "graduation.min_graduating_age"
     :param creating_clan: Set to True if currently loaded game.clan.cruel_cards should be ignored.
     :param card_list_override: If you want to specify a list of cruel card IDs to search INSTEAD of using the saved clan cards, then list them here. Best used during clan creation.

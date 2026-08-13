@@ -17,6 +17,7 @@ from ..ui.elements.cat_list_display import UICatListDisplay
 from ..ui.elements.checkbox import UICheckbox
 from ..ui.elements.modified_image import UIModifiedImage
 from ..ui.elements.relation_display import UIRelationDisplay
+from ..ui.elements.search_bar import UISearchBar
 from ..ui.elements.surface_image_button import UISurfaceImageButton
 from ..ui.theme import get_text_box_theme
 from ..events_module.text_adjust import shorten_text_to_fit
@@ -49,7 +50,19 @@ class MediationScreen(Screens):
         self.tab_view = "all"
 
     def handle_event(self, event):
-        if event.type == pygame_gui.UI_BUTTON_START_PRESS:
+        if event.type == pygame_gui.UI_TEXT_ENTRY_CHANGED:
+            if (
+                self.elements["search_bar"].text_entry.get_text()
+                != self.previous_search_text
+            ):
+                self.update_search_cats(
+                    self.elements["search_bar"].text_entry.get_text()
+                )
+                self.previous_search_text = self.elements[
+                    "search_bar"
+                ].text_entry.get_text()
+
+        elif event.type == pygame_gui.UI_BUTTON_START_PRESS:
             self.mute_button_pressed(event)
 
             if event.ui_element == self.back_button:
@@ -183,7 +196,7 @@ class MediationScreen(Screens):
                 cat.status.rank.is_any_mediator_rank()
                 and cat.status.group_ID == (Cat.fetch_cat(switch_get_value(Switch.cat)).status.group_ID if switch_get_value(Switch.cat) and not Cat.fetch_cat(switch_get_value(Switch.cat)).dead else game.selected_clan.group_ID)
             ):
-                if cat == switch_get_value(Switch.cat):
+                if cat.ID == switch_get_value(Switch.cat):
                     self.mediators.appendleft(cat)
                 else:
                     self.mediators.append(cat)
@@ -215,32 +228,18 @@ class MediationScreen(Screens):
         )
 
         # SEARCH BAR
-        self.elements["search_bar_back"] = pygame_gui.elements.UIImage(
-            ui_scale(pygame.Rect((410, 0), (228, 39))),
-            pygame.transform.scale(
-                image_cache.load_image(
-                    "resources/images/relationship_search.png"
-                ).convert_alpha(),
-                ui_scale_dimensions((228, 39)),
-            ),
+        self.elements["search_bar"] = UISearchBar(
+            (410, 0),
             container=self.elements["cat_list_container"],
-            manager=MANAGER,
         )
-        self.elements["search_bar"] = pygame_gui.elements.UITextEntryLine(
-            ui_scale(pygame.Rect((485, 8), (145, 23))),
-            object_id="#search_entry_box",
-            placeholder_text="general.name_search",
-            container=self.elements["cat_list_container"],
-            manager=MANAGER,
-        )
-        interactable_elements.append(self.elements["search_bar"])
+        interactable_elements.append(self.elements["search_bar"].text_entry)
 
         # CAT LIST
         self.elements["cat_list_bg"] = UIModifiedImage(
-            ui_scale(pygame.Rect((24, -5), (625, 150))),
+            ui_scale(pygame.Rect((24, 0), (625, 150))),
             get_box(BoxStyles.ROUNDED_BOX, (600, 150)),
             anchors={
-                "top_target": self.elements["search_bar_back"],
+                "top_target": self.elements["search_bar"],
             },
             container=self.elements["cat_list_container"],
             manager=MANAGER,
@@ -603,7 +602,7 @@ class MediationScreen(Screens):
             )
             self.add_to_map(self.elements["cat_list"].cat_sprites.values())
 
-        self.update_search_cats(self.elements["search_bar"].get_text())
+        self.update_search_cats(self.elements["search_bar"].text_entry.get_text())
 
     def _set_cat_list(self):
         """
@@ -974,15 +973,3 @@ class MediationScreen(Screens):
 
         self.back_button.kill()
         del self.back_button
-
-    def on_use(self):
-        super().on_use()
-        # Only update the positions if the search text changes
-        if (
-            self.elements["search_bar"].is_focused
-            and self.elements["search_bar"].get_text() == "name search"
-        ):
-            self.elements["search_bar"].set_text("")
-        if self.elements["search_bar"].get_text() != self.previous_search_text:
-            self.update_search_cats(self.elements["search_bar"].get_text())
-        self.previous_search_text = self.elements["search_bar"].get_text()

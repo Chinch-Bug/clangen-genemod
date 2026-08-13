@@ -22,6 +22,21 @@ dev_tools = false
     # set to true to also kill a random cat when the leader dies
     stolen_vitality = false
 
+# settings regarding afterlife affinity
+[affinity]
+  # controls how much an affinity change is affected by the cat's compatibility with the afterlife
+  base_compatibility_multiplier = 0.5
+
+  # how affinities are affected by a cat murdering another
+  [affinity.murder]
+    starclan_change = -40
+    dark_forest_change = 20
+
+  # how much an afterlife connection skill affects affinity
+  [affinity.skill_favor]
+    match = 10
+    conflict = -10
+
 # settings regarding relationship events, also called "interactions"
 [relationship]
   # sets the max amount of interactions a cat can have each moon
@@ -119,14 +134,27 @@ dev_tools = false
   chance_fulfilled_condition = 5
 
   # 1/chance of becoming mates, triggers with friends_to_lover (has to be a high number because many relationships are checked each moon)
-  chance_friends_to_lovers = 170
+  chance_friends_to_lovers = 130
+
+  # chance to approach grieving cat
+  [mates.approach_grief]
+    # base chance percentage (20%)
+    chance = 0.2
+    # amount removed from base chance for each facet threshold reached: aggression > 8, lawfulness < 8, sociability < 8
+    facet_influence = 0.1
+    # loving and oblivious get a little bonus cus they feel especially fitting
+    specific_trait_influence = 0.1
+
 
   # base 1/chance for mates to break up. Affected by relationship values and personality compatibility. 0 disables breakups entirely
   base_breakup_chance = 30
 
   # chance to move on from a dead or absent mate, fraction represents a percentage. default is 30% chance.
-  chance_to_move_on = 0.3
-
+  [mates.moving_on]
+    # base chance percentage (40%)
+    chance = 0.4
+    # amount removed from base chance for each facet threshold reached: stability > 8, sociability < 8, aggression < 8
+    facet_influence = -0.1
 
   # NOTE FOR RELATIONSHIP CONSTRAINTS
   #  0: no condition
@@ -150,6 +178,45 @@ dev_tools = false
     comfort = 10
     trust = 0
 
+    # confession reactions
+    [mates.confession.reactions]
+      variability = [-5, 5]
+
+      [mates.confession.reactions.makeup_fail.cat_from]
+        romance = -20
+        comfort = -20
+        like = -10
+        trust = -5
+      [mates.confession.reactions.makeup_fail.cat_to]
+        romance = -10
+        comfort = -5
+        trust = -5
+        respect = -5
+      [mates.confession.reactions.rejected.cat_from]
+        romance = -20
+        like = -5
+        comfort = -20
+        respect = -10
+      [mates.confession.reactions.rejected.cat_to]
+        romance = -25
+        comfort = -10
+
+      [mates.confession.reactions.makeup.cat_from]
+        romance = 10
+        trust = 5
+      [mates.confession.reactions.makeup.cat_to]
+        romance = 10
+        comfort = 5
+        trust = 5
+        respect = 5
+      [mates.confession.reactions.accepted.cat_from]
+        romance = 10
+        comfort = 5
+      [mates.confession.reactions.accepted.cat_to]
+        romance = 10
+        comfort = 5
+        trust = 5
+
   # both relationships have to fulfill this condition to become mates
   [mates.mate_condition]
     romance = 20
@@ -161,7 +228,7 @@ dev_tools = false
   # requirements for a like relationship to become romance
   [mates.like_to_romance]
     romance = 0
-    like = 30
+    like = 50
     respect = 0
     comfort = 20
     trust = 0
@@ -183,10 +250,16 @@ dev_tools = false
       comfort = 15
       trust = 20
 
-  # these denote how relationships change upon a breakup
   [mates.breakup]
-    threshold = 120
-    variability = [-10, 10]
+
+    # intial chance of breakup
+    [mates.breakup.initial_chance]
+      threshold = 120
+      default_chance = 30
+      positive_compatibility = 5
+      negative_compatibility = -10
+
+    # default weighting for type of breakup
     [mates.breakup.default_weights]
       had_fight = 3
       decided_to_be_friends = 3
@@ -194,30 +267,33 @@ dev_tools = false
       bad_breakup = 5
       chill_breakup = 5
 
-    [mates.breakup.reactions.had_fight]
-      romance = -20
-      like = -10
-      trust = -15
-    [mates.breakup.reactions.decided_to_be_friends]
-      romance = -50
-      like = 30
-      trust = 20
-      comfort = 10
-      respect = 10
-    [mates.breakup.reactions.lost_feelings]
-      romance = -30
-      like = -10
-      comfort = -10
-    [mates.breakup.reactions.bad_breakup]
-      romance = -20
-      like = -10
-      trust = -30
-      comfort = -20
-      respect = -10
-    [mates.breakup.reactions.chill_breakup]
-      romance = -20
-      comfort = -10
-      respect = 10
+    # these denote how relationships change upon a breakup
+    [mates.breakup.reactions]
+      variability = [-10, 10]
+      [mates.breakup.reactions.had_fight]
+        romance = -20
+        like = -10
+        trust = -15
+      [mates.breakup.reactions.decided_to_be_friends]
+        romance = -50
+        like = 30
+        trust = 20
+        comfort = 10
+        respect = 10
+      [mates.breakup.reactions.lost_feelings]
+        romance = -30
+        like = -10
+        comfort = -10
+      [mates.breakup.reactions.bad_breakup]
+        romance = -20
+        like = -10
+        trust = -30
+        comfort = -20
+        respect = -10
+      [mates.breakup.reactions.chill_breakup]
+        romance = -20
+        comfort = -10
+        respect = 10
 
 
 [new_cat]
@@ -285,11 +361,11 @@ dev_tools = false
   # cooldown for cats getting pregnant that applies after giving birth
   birth_cooldown = 6
 
-  # 1/chance that kits, relationship and other factors will influence this chance. modded_ is used with modded litters
+  # 1/chance of kits, relationship and other factors will influence this chance. modded_ is used with modded litters
   primary_chance_mated = 80
-  modded_primary_chance_mated = 50
+  modded_primary_chance_mated = 60
 
-  # 1/chance that kits, relationship and other factors will influence this chance. modded_ is used with modded litters
+  # 1/chance of kits, relationship and other factors will influence this chance. modded_ is used with modded litters
   primary_chance_unmated = 130
   modded_primary_chance_unmated = 100
 
@@ -603,6 +679,14 @@ dev_tools = false
   lineart_color_sc = [47, 51, 64]
   lineart_color_df = [30, 8, 11]
 
+[thought_generation]
+  # the ID of the thoughts to ensure
+  debug_ensure_thought_id = ""
+  # if you want to ensure a specific string from the thought's options, include its index here.
+  # by default the first string will be used (index 0)
+  debug_ensure_thought_index = 0
+
+
 [patrol_generation]
   # modifies success rate based on game mode. higher = more difficult.
   difficulty_modifier = 2.5
@@ -668,10 +752,8 @@ dev_tools = false
 
   # 1/2^x chance for mass death event to trigger per cat on moonskip
   mass_death_chance = 9
-  # maximum number of cats that can die from a single mass death event
+  # Maximum amount to pick for mass death events when triggered (max will be 1/2 of the living clan cats if that is smaller)
   max_mass_deaths = 10
-  # Maximum amount to pick for mass death events when triggered (max will be 1/3 of the living clan cats if that is smaller)
-  max_mass_death = 10
 
   # age cats will start dying of old age based on old_age_death_curve
   old_age_death_start = 150
@@ -694,6 +776,19 @@ dev_tools = false
     "3" = 0.1
     "4" = 0.05
     "5" = 0.05
+
+  # directly added to base death chance, depending on the adult size of the cat, starting at adolescence
+  [death_related.size_modifiers]
+    "teacup" = 0
+    "tiny" = 0
+    "small" = 0
+    "below average" = 0
+    "average" = 0
+    "above average" = 0
+    "large" = 0
+    "massive" = 0
+    "giant" = 0
+    "goliath" = 0
 
   [death_related.murder]
     # base 1/2^(chance) a completely random murder occurs
@@ -782,10 +877,17 @@ dev_tools = false
     medicine_cat = true
 
   [clan_creation.rank_weights]
+    newborn = 0
     kitten = 1
     apprentice = 1
     warrior = 2
     elder = 1
+
+  [clan_creation.valid_rank_to_age_assignment]
+    leader = ["young adult", "adult", "senior adult", "senior"]
+    deputy = ["young adult", "adult", "senior adult", "senior"]
+    healer = ["young adult", "adult", "senior adult", "senior"]
+    member = ["newborn", "kitten", "adolescent", "young adult", "adult", "senior adult", "senior"]
 
 [genetics_config]
   # 1/chance for newly generated kittypets and other cats to be purebred
@@ -922,6 +1024,7 @@ dev_tools = false
   # chance for cats lost to Twolegs to be spayed/neutered. clan_tnr2 is for events not explicitly reminiscent of TNR programs
   clan_tnr = 0.99
   clan_tnr2 = 0.5
+  # sets what age is allowed to take each rank
 
 [graduation]
   # minimum age required for a cat to graduate
@@ -966,6 +1069,10 @@ dev_tools = false
   outsider_wander_off = 7
   # outsider_return is a 2^x chance for outsiders chased away or having left the territory to return by themselves
   outsider_return = 6
+
+[progress]
+  # default = 0. higher = more difficult skill and experience progression.
+  difficulty_modifier = 0
 
 [focus]
   # NOTE: 'raid other clans' should be more dangerous than 'hoarding'!!!
@@ -1133,14 +1240,6 @@ dev_tools = false
     adequate = 3
     excess = 2
 
-    # amount of herbs types found modifier for medcats with skill SENSE
-    primary_sense = 3
-    secondary_sense = 2
-
-    # quantity of herbs modifier for medcats with skill CLEVER
-    primary_clever = 3
-    secondary_clever = 2
-
     # base effects for herbs that have specified effects
     base_mortality_effect = 3
     base_duration_effect = 1
@@ -1148,6 +1247,9 @@ dev_tools = false
 
     # herb bonus applied when cats should gather a boosted number of herbs
     general_amount_bonus = 2
+
+    # the amount of herbs a single cat can carry in a patrol - CLEVER quantity mod will apply
+    general_patrol_quantity_per_cat = 6
 
     # adjust weights for finding [1 herb type, 2 herb types, 3 herb types] for each season
     [clan_resources.herbs.forest]
@@ -1205,6 +1307,7 @@ dev_tools = false
   # the same, but for healthy apprentices
   auto_apprentice_prey = [1,3]
 
+
   # the baseline of prey amount caught on patrol will be a warrior's prey_requirement plus this value
   additional_prey = 1
 
@@ -1215,6 +1318,25 @@ dev_tools = false
 
   # the amount that a cat's prey requirement increases if the cat is sick/injured/pregnant
   condition_increase = 1
+
+  # cats of each rank will choose a random num of prey from the given list to catch each moon
+  # ranks that are not leader, deputy, or warrior will only catch prey if no leader/deputy/warriors are available to do so
+  [prey.auto_catch]
+    leader = [2, 3, 3, 4]
+    deputy = [2, 3, 3, 4]
+    warrior = [2, 3, 3, 4]
+    apprentice = [1, 2, 2, 3]
+    healer = [0, 1, 1, 2]
+    "healer apprentice" = [0, 1]
+    mediator = [0, 1, 2, 2]
+    "mediator apprentice" = [0, 1, 1]
+    queen = [0, 1, 2, 2]
+    "queen apprentice" = [0, 1, 1]
+    elder = [0, 1, 1]
+    kitten = [0, 0, 1]
+    newborn = [0]
+
+    not_working = [0, 0, 1]
 
   [prey.feeding]
     # the rank order in which cats will be fed
@@ -1273,6 +1395,19 @@ dev_tools = false
       "queen/pregnant" = 4
       kitten = 0.5
       newborn = 0.25
+
+  # multiplier for how much prey a cat needs based on adult size category, doesn't apply to kits
+  [prey.size_modifiers]
+    "teacup" = 0.5
+    "tiny" = 0.75
+    "small" = 0.75
+    "below average" = 1
+    "average" = 1
+    "above average" = 1
+    "large" = 1.25
+    "massive" = 1.5
+    "giant" = 1.75
+    "goliath" = 2
 
   # the bonus prey a hunter skill cat will catch according to exp rank
   [prey.hunter_exp_bonus]
@@ -1340,6 +1475,8 @@ dev_tools = false
   # force a game setting to be true, stopping players from changing it
   [settings.force_enable]
     "deputy" = false
+    "modded_kits" = false
+    "disasters" = false
 
   [settings.force_disable]
     "modded_kits" = false
