@@ -1921,9 +1921,9 @@ class Cat:
             print(f"WARNING: {name} is not in the injuries collection.")
             return
 
-        if name == "mangled tail" and "NOTAIL" in self.pelt.scars:
+        if name == "mangled tail" and ("NOTAIL" in self.pelt.scars or self.phenotype.bobtailnr > 0 and self.phenotype.bobtailnr < 4):
             return
-        if name == "torn ear" and "NOEAR" in self.pelt.scars:
+        if name == "torn ear" and ("NOEAR" in self.pelt.scars or self.phenotype.fold[0] == "Fd"):
             return
 
         injury = INJURIES[name]
@@ -2060,6 +2060,11 @@ class Cat:
         if self.pelt.accessory and ("NOTAIL" in self.pelt.scars or "HALFTAIL" in self.pelt.scars or (self.phenotype.bobtailnr > 0 and self.phenotype.bobtailnr < 5)):
             self.pelt.accessory = tuple(
                 acc for acc in self.pelt.accessory if acc not in Pelt.tail_accessories
+            )
+
+        if "NOPAW" in self.pelt.scars:
+            self.pelt.accessory = tuple(
+                acc for acc in self.pelt.accessory if acc not in Pelt.paw_accessories
             )
 
         condition = PERMANENT[name]
