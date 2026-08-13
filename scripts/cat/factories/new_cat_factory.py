@@ -269,11 +269,12 @@ class NewCatFactory(BaseCatFactory, ABC):
         gender = {"sex": phenotype.sex}
         gender["genderalign"] = gender["sex"]
 
-        if age.is_baby():
-            return gender
-
         trans_chance = cls.rng.randint(0, 50)
         nb_chance = cls.rng.randint(0, 75)
+
+        if age.is_baby():
+            trans_chance = 0
+            nb_chance = 0
 
         # GENDER IDENTITY
         gender["genderalign"] = ""
