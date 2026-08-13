@@ -425,6 +425,7 @@ class Name:
         self.load_localized_names()
         if game.clan and get_clan_setting('modded names') and get_clan_setting('no suffixes'):
             self.suffix = ""
+            self.specsuffix_hidden = True
             return
         had_suffix = True if self.suffix else False
         if self.mod_suffixes and get_clan_setting('modded names') and get_clan_setting('new suffixes'):
