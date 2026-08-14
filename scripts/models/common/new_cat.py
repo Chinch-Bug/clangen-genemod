@@ -65,6 +65,7 @@ class NewCatTag(Enum):
     former_clancat = "former clancat"
     meeting = "meeting"
     exists = "exists"
+    not_exists = "-exists"
     unknown = "unknown"
     litter = "litter"
     dead = "dead"

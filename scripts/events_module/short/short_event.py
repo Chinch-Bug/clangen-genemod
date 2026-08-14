@@ -449,7 +449,7 @@ class ShortEvent:
             in_event_cats["r_c"] = self.random_cat
 
         for i, attribute_list in enumerate(self.new_cat_attributes):
-            if ("clancat" not in attribute_list and "former clancat" not in attribute_list and "change_clan" not in attribute_list) or game.clan.clancount != 'multiclan':
+            if ("clancat" not in attribute_list and "former clancat" not in attribute_list and "change_clan" not in attribute_list or "-exists" in attribute_list) or game.clan.clancount != 'multiclan':
                 self.new_cats.append(
                     create_new_cat_block(
                         Cat, Relationship, self, in_event_cats, i, attribute_list, clan=clan, other_clan=other_clan

@@ -25,7 +25,6 @@ from scripts.events_module.consequences import (
     create_new_cat_block,
     unpack_rel_block,
     change_relationship_values, 
-    find_clan_cats,
 )
 from scripts.clan_package.cotc import change_clan_reputation, change_clan_relations
 from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank

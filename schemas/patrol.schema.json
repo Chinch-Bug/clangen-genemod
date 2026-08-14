@@ -691,6 +691,7 @@
         "former clancat",
         "meeting",
         "exists",
+        "-exists",
         "unknown",
         "litter",
         "dead",
