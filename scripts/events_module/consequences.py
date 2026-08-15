@@ -90,7 +90,9 @@ def create_bio_parents(Cat, flip=False, second_parent=True, age=None, clan=None)
                                            outside=True,
                                            is_parent=True)[0]
     else:
-        par2geno = Genotype(get_config("genetics_config"), game_setting_get("ban problem genes"))
+        gene_config = get_config("genetics_config")
+        gene_config.update(get_config("april_fools_genes"))
+        par2geno = Genotype(gene_config, game_setting_get("ban problem genes"))
         par2geno.Generator('masc' if flip else 'fem')
 
     if thought:

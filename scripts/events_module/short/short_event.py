@@ -406,6 +406,17 @@ class ShortEvent:
                     clan=self.random_cat.status.get_last_living_group()
                 )
             )
+        for attribute_list in self.new_cat_attributes:
+            if "change_clan" in attribute_list or "change_clan_rev" in attribute_list:
+                game.cur_events_list.append(
+                    Single_Event(
+                        self.text + " " + self.additional_event_text,
+                        self.types,
+                        self.all_involved_cat_ids,
+                        clan=other_clan.group_ID
+                    )
+                )
+
 
     def gather_future_event(self, clan):
         """

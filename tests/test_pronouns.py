@@ -68,7 +68,9 @@ def _test():
         "cat_tag": _r,
         "cat_to": _r,
         "cat_from": _r,
-        "point_of_interest": "1"
+        "point_of_interest": "1",
+        "mc_mate": _r,
+        "rc_mate": _r,
     }
 
     for x in range(0, 11):

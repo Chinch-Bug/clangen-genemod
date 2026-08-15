@@ -37,6 +37,8 @@ class CatAge(StrEnum):
         }
         if moons > lookup[CatAge.SENIOR][1]:
             return CatAge.SENIOR
+        if moons < lookup[CatAge.NEWBORN][0]:
+            return CatAge.NEWBORN
 
         return next(
             (
