@@ -276,7 +276,7 @@ class ShortEvent:
             if self.handle_accessories() is False:
                 return
 
-        # update gender
+        # update gender before relationships
         if self.new_gender:
             self.handle_transition()
 

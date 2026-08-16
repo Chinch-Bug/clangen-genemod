@@ -108,7 +108,8 @@ def one_moon():
     game.clan.age += 1
 
     update_afterlife_temper()
-    Pregnancy_Events.handle_pregnancy_age(game.clan)
+    Pregnancy_Events.handle_pregnancy_age()
+    check_war()
 
     if (
         game.clan.game_mode in ("expanded", "cruel_season")
@@ -131,8 +132,6 @@ def one_moon():
 
     clancount = game.clan.clancount == "multiclan"
     clannames = [game.clan.prefix] + [c.prefix for c in game.clan.all_other_clans]
-
-    check_war()
 
     # checking if a lost cat returns on their own
     rejoin_upperbound = get_config("lost_cat.rejoin_chance")

@@ -879,6 +879,9 @@ dev_tools = false
   # permit player to change cat ranks
   allow_manual = true
 
+  # will prioritise automatically assigning mentors that are at least of this age
+  min_mentorship_age = 24
+
 [clan_creation]
   # Set this to -1 for it to be infinite
   rerolls = 3 
@@ -928,7 +931,7 @@ dev_tools = false
 
 [genetics_config]
   # 1/chance for newly generated kittypets and other cats to be purebred
-  kittypet_breed = 75
+  kittypet_breed = 150
   other_breed = 1000
 
   # when gene boost is applicable, chance will be divided by this value and rounded up. Eg. for chocolate it would be 20/1.5 = 14

@@ -1041,7 +1041,7 @@
       "age": ["young adult"],
       "gender": ["female"]
     },
-    "new_gender": ["trans male", "nonbinary"]
+    "new_gender": ["trans male", "nonbinary", "agender"]
   },
   {
     "event_id": "dst_misc_transition_from_male1",
@@ -1053,7 +1053,7 @@
     "m_c": {
       "gender": ["male"]
     },
-    "new_gender": ["trans female", "nonbinary"]
+    "new_gender": ["trans female", "nonbinary", "agender"]
   },
   {
     "event_id": "dst_misc_any_angrylizard",

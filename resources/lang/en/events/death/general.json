@@ -1134,7 +1134,7 @@
         ],
         "tags": [ ],
         "frequency": 2,
-        "event_text": "m_c was burned alive while trying to save r_c from a fire.",
+        "event_text": "m_c was burned alive while saving r_c from a fire.",
         "m_c": {
             "age": [
                 "-kitten"
@@ -1169,7 +1169,7 @@
                 "cats": [
                     "m_c"
                 ],
-                "death": "m_c was killed in a fire while trying to save r_c."
+                "death": "m_c was killed in a fire while saving r_c."
             }
         ],
         "relationships": [

@@ -960,7 +960,8 @@
       "enum": [
         "nonbinary",
         "trans male",
-        "trans female"
+        "trans female",
+        "agender"
       ],
       "title": "NewGenderEnum",
       "type": "string"

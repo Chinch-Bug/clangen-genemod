@@ -585,6 +585,7 @@ class Cat:
             "trans molly",
             "trans tom",
             "sam",
+            "agender",
         ):
             return i18n.t(f"general.{self.genderalign}")
         # otherwise, it's custom - just return it directly
@@ -2384,7 +2385,7 @@ class Cat:
             for cat in self.all_cats.values():
                 if self.is_valid_mentor(cat):
                     potential_mentors.append(cat)
-                    if not cat.apprentice and not cat.not_working() and not cat.moons < 24:
+                    if not cat.apprentice and not cat.not_working() and cat.moons >= get_config("ranks.min_mentorship_age"):
                         priority_mentors.append(cat)
             # First try for a cat who currently has no apprentices and is working
             if priority_mentors:  # length of list > 0
