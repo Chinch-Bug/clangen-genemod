@@ -43,7 +43,7 @@ def handle_zero_moon_pregnant(cat: Cat, other_cat=None, surrogate=False, clan=ga
     if get_clan_setting("same sex birth") and not (not other_cat and randint(0, 1)):
         # same sex birth enables all cats to get pregnant,
         # therefore the main cat will be used, regarding of gender
-        _handle_pregnancy_notice(cat, other_cat, surrogate, hidden)
+        _handle_pregnancy_notice(cat, other_cat, surrogate, hidden, clan)
     else:
         if (not other_cat or surrogate) and cat_is_amab(cat):
             _retrieve_secret_kittens(cat, other_cat, surrogate, clan)
@@ -52,10 +52,10 @@ def handle_zero_moon_pregnant(cat: Cat, other_cat=None, surrogate=False, clan=ga
         # if the other cat is afab and the current cat is amab, make the afab cat pregnant
         pregnant_cat = cat
         second_parent = other_cat
-        _handle_pregnancy_notice(pregnant_cat, second_parent, surrogate, hidden)
+        _handle_pregnancy_notice(pregnant_cat, second_parent, surrogate, hidden, clan)
 
 
-def _handle_pregnancy_notice(cat, other_cat, surrogate, hidden):
+def _handle_pregnancy_notice(cat, other_cat, surrogate, hidden, clan):
     allow_affair = get_clan_setting("affair")
     allow_coparenting = get_clan_setting("unmated parentage")
 
