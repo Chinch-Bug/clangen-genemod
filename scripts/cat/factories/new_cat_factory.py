@@ -44,6 +44,8 @@ class NewCatFactory(BaseCatFactory, ABC):
         status_dict = overrides.get("status_dict", {})
         if "rank" in overrides:
             status_dict["rank"] = overrides.get("rank")
+        if "group_ID" in overrides:
+            status_dict["group_ID"] = overrides.get("group_ID")
 
         # the worst combined dependency ever
         age, moons, status = cls._determine_age_moons_and_status(

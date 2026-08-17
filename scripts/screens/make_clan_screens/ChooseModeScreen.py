@@ -208,6 +208,14 @@ class ChooseModeScreen(MakeClanScreenBase):
                 if random_card:
                     self.clan_info.cruel_cards.append(random_card)
 
+        member_amount = [
+            self.get_config_during_creation("clan_creation.minimum_membership"),
+            self.get_config_during_creation("clan_creation.maximum_membership"),
+        ]
+        cat_range = get_config("clan_creation.quickstart_cats")
+        cat_range[0] = max(min(member_amount[0] - len(self.clan_info.get_all_cats())-3, cat_range[0]), 0)
+        cat_range[1] = max(member_amount[1] - len(self.clan_info.get_all_cats())-3, cat_range[1])
+
         # create new cats because the cats might no longer fit the card constraints
         switch_set_value(
             Switch.possible_cats,
@@ -218,6 +226,7 @@ class ChooseModeScreen(MakeClanScreenBase):
                 rank_weights=self.get_config_during_creation(
                     "clan_creation.rank_weights"
                 ),
+                max_cats=cat_range[1]+6
             ),
         )
 
@@ -258,13 +267,6 @@ class ChooseModeScreen(MakeClanScreenBase):
             self.clan_info.medicine_cat = choice(grown_cats)
             grown_cats.remove(self.clan_info.medicine_cat)
 
-        member_amount = [
-            self.get_config_during_creation("clan_creation.minimum_membership"),
-            self.get_config_during_creation("clan_creation.maximum_membership"),
-        ]
-        cat_range = get_config("clan_creation.quickstart_cats")
-        cat_range[0] = max(min(member_amount[0] - len(self.clan_info.get_all_cats())-3, cat_range[0]), 0)
-        cat_range[1] = max(min(member_amount[1] - len(self.clan_info.get_all_cats())-3, cat_range[1]), 0)
         member_amount = randint(cat_range[0], cat_range[1])
 
         self.clan_info.starting_members = choices(

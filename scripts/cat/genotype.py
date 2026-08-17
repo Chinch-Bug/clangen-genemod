@@ -2140,6 +2140,7 @@ class Genotype:
     
     def GenerateSomatic(self):
         self.somatic["base"] = choice(['Somatic/leftface', 'Somatic/rightface', "EYELINER_MAX_L", "EYELINER_MAX_R", "EYESPOT_L", "EYESPOT_R", 
+                                    "HELMET",
                                     "BEARD_FULL", "BEARD_HIGH", 
                                     'Somatic/tail', 
                                     'underbelly1', "BEARD", "BELLY", "BELLY_HIGH", "BELLY_MID", "BELLY_SMALL", "BIB",
@@ -2215,9 +2216,9 @@ class Genotype:
             self.somatic = {}
             return
 
-        
-        if self.white[1] in ['ws', 'wt'] and self.somatic["base"] not in ['Somatic/leftface', 'Somatic/rightface', 'Somatic/tail', "LEFTEAR", "RIGHTEAR", "BACKSPOT"]:
-            self.somatic["base"] = choice(['Somatic/leftface', 'Somatic/rightface', 'Somatic/tail', "LEFTEAR", "RIGHTEAR", "BACKSPOT"])
+        top_patches = ['Somatic/leftface', 'Somatic/rightface', 'Somatic/tail', "LEFTEAR", "RIGHTEAR", "BACKSPOT", "HELMET", "EYESPOT_L", "EYESPOT_R"]
+        if self.white[1] in ['ws', 'wt'] and self.somatic["base"] not in top_patches:
+            self.somatic["base"] = choice(top_patches)
         
         if self.somatic["gene"] in possible_mutes["furtype"]:
             self.somatic["base"] = "Somatic/tail"
@@ -2260,6 +2261,7 @@ class Genotype:
             "EYELINER_MAX_R": "face",
             "EYESPOT_L": "face",
             "EYESPOT_R": "face",
+            "HELMET": "head",
             "Somatic/tail" : 'tail',
             "underbelly1" : 'underbelly',
             'right front bicolour2' : 'front leg', 

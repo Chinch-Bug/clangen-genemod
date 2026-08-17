@@ -16,19 +16,19 @@ if TYPE_CHECKING:
     from scripts.cat.cats import Cat
 
 
-def create_example_cats(majority_rank: CatRank, rank_weights: dict) -> list[Cat]:
-    majority_rank_cats = sample(range(12), 3)
+def create_example_cats(majority_rank: CatRank, rank_weights: dict, max_cats=12, clan=None) -> list[Cat]:
+    majority_rank_cats = sample(range(max_cats), 3)
     use_special = get_config("clan_creation.use_special_roller")
 
     chosen_cats = []
-    for cat_index in range(12):
+    for cat_index in range(max_cats):
         if cat_index in majority_rank_cats:
-            chosen_cats.append(NewCatFactory.create_cat(rank=majority_rank, use_special=use_special))
+            chosen_cats.append(NewCatFactory.create_cat(rank=majority_rank, group_ID=clan if clan else None, use_special=use_special))
         else:
             random_rank = choices(
                 list(rank_weights.keys()), list(rank_weights.values())
             )[0]
-            chosen_cats.append(NewCatFactory.create_cat(rank=random_rank, use_special=use_special))
+            chosen_cats.append(NewCatFactory.create_cat(rank=random_rank, group_ID=clan if clan else None, use_special=use_special))
 
     return chosen_cats
 
