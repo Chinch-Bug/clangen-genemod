@@ -4413,7 +4413,7 @@ class Breed_checker:
         
         if phenotype.furLength[0] == "L":
             return "Anatoli"
-        if phenotype.white_pattern == ["full white"]:
+        if phenotype.white_pattern == ["FULLWHITE"]:
             return "Turkish Vankedisi"
         if phenotype.white == ["ws", "ws"] and phenotype.whitegrade == 4:
             return "Turkish Van"

@@ -121,11 +121,13 @@
 		"trans molly": "trans molly",
 		"trans tom": "trans tom",
 		"sam": "sam",
+        "agender": "cat",
 		"intersex molly": "intersex molly",
 		"intersex tom": "intersex tom",
 		"intersex trans molly": "intersex trans molly",
 		"intersex trans tom": "intersex trans tom",
 		"intersex sam": "intersex sam",
+        "intersex agender": "intersex cat",
         "is": "is",
         "are": "are",
         "can_work": "This cat can work",
@@ -236,6 +238,7 @@
         "grieving": "grieving",
         "fleas": "flea-ridden",
         "is_infected": "is infected",
-        "is_festering": "is festering"
+        "is_festering": "is festering",
+        "got_condition": "%{cat} got: %{conditions}."
     }
 }

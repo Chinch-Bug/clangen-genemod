@@ -1156,7 +1156,7 @@ class ChooseMateScreen(Screens):
         )
 
         if (
-            ((get_clan_setting("same sex birth")
+            not ((get_clan_setting("same sex birth")
             or xor('Y' in self.the_cat.phenotype.sexgene, 'Y' in self.selected_cat.phenotype.sexgene) )
             and 'sterile' not in self.the_cat.permanent_condition 
             and 'sterile' not in self.selected_cat.permanent_condition)

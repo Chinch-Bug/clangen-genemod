@@ -16,6 +16,7 @@ from scripts.cat_relations.inheritance2 import inheritance_db
 from scripts.cat.save_load import get_faded_ids
 from ..cat.enums import CatGroup, CatRank
 from scripts.cat.pelts import Pelt
+from scripts.cat.sprites.load_sprites import sprites
 from scripts.cat_relations.inheritance import Inheritance
 from scripts.game_structure.game.switches import (
     switch_get_value,
@@ -134,6 +135,21 @@ def accurate_porting(cat, info):
                     cat.phenotype.whitegrade = i
                     white_found = True
                     break
+        if not white_found:
+            if cat.phenotype.white_pattern[0] in list(sprites.WHITE_PATCH_COMBOS["little"].keys())+list(chain(*sprites.WHITE_LITTLE_DATA["sprite_list"])):
+                cat.phenotype.white = ["ws", "w"]
+                cat.phenotype.whitegrade = randint(1, 4)
+            if cat.phenotype.white_pattern[0] in list(sprites.WHITE_PATCH_COMBOS["mid"].keys())+list(chain(*sprites.WHITE_MID_DATA["sprite_list"])):
+                cat.phenotype.white = ["ws", "w"]
+                cat.phenotype.whitegrade = randint(3, 6)
+            if cat.phenotype.white_pattern[0] in list(sprites.WHITE_PATCH_COMBOS["high"].keys())+list(chain(*sprites.WHITE_HIGH_DATA["sprite_list"])):
+                cat.phenotype.white = ["ws", "ws"]
+                cat.phenotype.whitegrade = randint(1, 4)
+            if cat.phenotype.white_pattern[0] in list(sprites.WHITE_PATCH_COMBOS["mostly"].keys())+list(chain(*sprites.WHITE_MOSTLY_DATA["sprite_list"])):
+                cat.phenotype.white = ["ws", "ws"]
+                cat.phenotype.whitegrade = randint(3, 6)
+            if cat.phenotype.white_pattern[0] in []:
+                cat.phenotype.white[0] = "wt"
 
     if info["vitiligo"]:
         if info["vitiligo"] == "KARPATI":

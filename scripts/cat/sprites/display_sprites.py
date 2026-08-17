@@ -645,7 +645,7 @@ def generate_sprite(
                     'beige' : 14
                 }
 
-                if(phenotype.white[0] == 'W' or phenotype.pointgene[0] == 'c' or phenotype.white_pattern == ['full white'] or whichcolour == "white"):
+                if(phenotype.white[0] == 'W' or phenotype.pointgene[0] == 'c' or phenotype.white_pattern == ['FULLWHITE'] or whichcolour == "white"):
                     pads.blit(sprites.sprites['padcolours1'], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
                 elif ('amber' not in phenotype.colour or phenotype.agouti[0] != 'a') and ('russet' in phenotype.colour or 'carnelian' in phenotype.colour or is_red):
                     pads.blit(sprites.sprites['padcolours0'], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
@@ -705,7 +705,7 @@ def generate_sprite(
 
             def make_cat(whichmain, whichcolour, whichbase, cat_unders, special=None):
                 is_red = ('red' in whichcolour or 'cream' in whichcolour or 'honey' in whichcolour or 'ivory' in whichcolour or 'apricot' in whichcolour)
-                is_white = (phenotype.white[0] == 'W' or phenotype.pointgene[0] == 'c' or whichbase == 'white' or phenotype.white_pattern == ['full white'])
+                is_white = (phenotype.white[0] == 'W' or phenotype.pointgene[0] == 'c' or whichbase == 'white' or phenotype.white_pattern == ['FULLWHITE'])
 
                 if is_white:
                     if phenotype.white[0] == "W" and phenotype.colour == "black":
@@ -1140,7 +1140,7 @@ def generate_sprite(
                     sprite.blit(sunshine, (0, 0))
                 return sprite
 
-            is_white = 'W' in phenotype.white or phenotype.pointgene[0] == 'c' or phenotype.white_pattern == ['full white']
+            is_white = 'W' in phenotype.white or phenotype.pointgene[0] == 'c' or phenotype.white_pattern == ['FULLWHITE']
             
             if(phenotype.patchmain != "" and 'rev' in phenotype.tortiepattern[0]):
                 gensprite = make_cat(gensprite, phenotype.patchmain, phenotype.patchcolour, phenotype.patchunders)
@@ -1240,7 +1240,7 @@ def generate_sprite(
                         try:
                             whitesprite.blit(sprites.sprites[x + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
                         except:
-                            whitesprite.blit(sprites.sprites[x.removeprefix("break/") + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
+                            whitesprite.blit(sprites.sprites[x.removeprefix("break/") + cat_sprite].premul_alpha(), (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
             
             whitesprite.blit(sprites.sprites["lightbasecolours0"], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
             tintedwhitesprite.blit(whitesprite, (0, 0))

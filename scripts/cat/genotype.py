@@ -469,7 +469,8 @@ class Genotype:
         self.pangere = choice([None, None,
                               "pangere small 1", "pangere small 1", "pangere small 1",
                                "pangere small 2", "pangere small 2", "pangere small 2",
-                               "pangere medium 1", "pangere medium 2", "pangere medium 1 + tail"])
+                               "pangere medium 1", "pangere medium 2", "pangere medium 1 + tail",
+                               "BEARD", "BEARD_SMALL", "CHIN"])
 
         self.rednose = random() < 0.25
         self.blacknose = random() < 0.005
@@ -2138,8 +2139,10 @@ class Genotype:
         print(name_map[which])
     
     def GenerateSomatic(self):
-        self.somatic["base"] = choice(['Somatic/leftface', 'Somatic/rightface', 'Somatic/tail', 
-                                    'underbelly1', "BEARD", "BELLY", "BIB",
+        self.somatic["base"] = choice(['Somatic/leftface', 'Somatic/rightface', "EYELINER_MAX_L", "EYELINER_MAX_R", "EYESPOT_L", "EYESPOT_R", 
+                                    "BEARD_FULL", "BEARD_HIGH", 
+                                    'Somatic/tail', 
+                                    'underbelly1', "BEARD", "BELLY", "BELLY_HIGH", "BELLY_MID", "BELLY_SMALL", "BIB",
                                     'right front bicolour2', 'left front bicolour2', 
                                     'right back bicolour2', 'left back bicolour2', 
                                     'right front bicolour1', 'left front bicolour1', 
@@ -2253,6 +2256,10 @@ class Genotype:
         body = {
             "Somatic/leftface" : "face",
             "Somatic/rightface" : "face",
+            "EYELINER_MAX_L": "face",
+            "EYELINER_MAX_R": "face",
+            "EYESPOT_L": "face",
+            "EYESPOT_R": "face",
             "Somatic/tail" : 'tail',
             "underbelly1" : 'underbelly',
             'right front bicolour2' : 'front leg', 
@@ -2269,7 +2276,12 @@ class Genotype:
             "TAILTIP": "tail tip",
             "BEARD": "chin",
             "BELLY": "belly",
-            "BIB": "chest"
+            "BELLY_HIGH": "belly",
+            "BELLY_MID": "belly",
+            "BELLY_SMALL": "belly",
+            "BIB": "chest",
+            "BEARD_FULL": "chest",
+            "BEARD_HIGH": "chest"
         }
         if not self.somatic.get('gene', False):
             return ""
@@ -2309,12 +2321,12 @@ class Genotype:
             "agouti" : "Solid"
         }
         try:
-            return "Mutated " + alleles[self.somatic['gene']].get(self.somatic['allele']) + " on " + body[self.somatic['base']]
+            return "Mutated " + alleles[self.somatic['gene']].get(self.somatic['allele']) + " on " + body.get(self.somatic['base'], "body")
         except:
             try:
-                return "Mutated " + alleles[self.somatic['gene']] + " on " + body[self.somatic['base']]
+                return "Mutated " + alleles[self.somatic['gene']] + " on " + body.get(self.somatic['base'], "body")
             except:
-                return self.somatic['gene'] + " mutated on " + body[self.somatic['base']]
+                return self.somatic['gene'] + " mutated on " + body.get(self.somatic['base'], "body")
 
 
 

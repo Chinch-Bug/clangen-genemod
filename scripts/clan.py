@@ -11,7 +11,7 @@ TODO: Docs
 import os
 import statistics
 from random import choice, choices, randint, random, getrandbits
-from typing import Literal
+from typing import Literal, Optional
 
 import i18n
 import ujson
@@ -20,7 +20,7 @@ from scripts.cat.cats import Cat, BACKSTORIES
 from scripts.cat.enums import CatRank, CatGroup, CatSocial, CatCompatibility, CatAge
 from scripts.cat.factories.new_cat_factory import NewCatFactory
 from scripts.cat.factories.create_example_cat import create_example_cats
-from scripts.cat.factories.enums import CatType
+from scripts.cat.factories.typed_dicts import StatusDict
 from scripts.cat.names import names
 from scripts.cat.save_load import (
     save_cats,
@@ -39,7 +39,6 @@ from scripts.clan_resources.point_of_interest import (
     get_poi_save_dict,
     generate_and_add_new_poi,
     PoiType,
-    get_poi_names_set,
     clear_pois,
 )
 from scripts.config import get_config
@@ -133,7 +132,7 @@ class Clan:
         # This is the first cat in starclan, to "guide" the other dead cats there.
         self.clan_cats = []
         self.biome = biome
-        self.override_biome = None
+        self.override_biome: Optional[str] = None
         self.camp_bg = camp_bg
         self.chosen_symbol = symbol
         self.game_mode = game_mode
@@ -177,7 +176,7 @@ class Clan:
         rebuild_top_menu_buttons()
 
     @property
-    def current_season(self):
+    def current_season(self) -> str:
         season_length = get_config("seasons.length")
         calendar = get_config("seasons.calendar")
         modifiers = {
@@ -256,7 +255,7 @@ class Clan:
         )
 
         self.instructor = NewCatFactory.create_cat(
-            status_dict={"rank": instructor_rank, "group_ID": CatGroup.STARCLAN_ID},
+            status_dict=StatusDict(rank=instructor_rank, group_ID=CatGroup.STARCLAN_ID),
             backstory=choice(
                 BACKSTORIES["backstory_categories"]["clan_guide_backstories"]
             ),
@@ -806,10 +805,10 @@ class Clan:
             game.clan.add_cat(game.clan.instructor)
         else:
             game.clan.instructor = NewCatFactory.create_cat(
-                status_dict={
-                    "rank": choice((CatRank.WARRIOR, CatRank.WARRIOR, CatRank.ELDER)),
-                    "group": CatGroup.STARCLAN,
-                },
+                status_dict=StatusDict(
+                    rank=choice([CatRank.WARRIOR, CatRank.WARRIOR, CatRank.ELDER]),
+                    group_ID=CatGroup.STARCLAN_ID,
+                )
             )
             game.clan.instructor.status.group_history.insert(0, {"rank": game.clan.instructor.status.rank, "group": CatGroup.PLAYER_CLAN_ID, "moons_as": self.instructor.moons})
             # update_sprite(game.clan.instructor)

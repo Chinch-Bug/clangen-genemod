@@ -12,7 +12,7 @@ from scripts.events_module.event_filters import (
     event_for_tags,
     check_rel_constraint_groups,
 )
-from scripts.events_module.text_pool_event import TextPoolEvent
+from scripts.events_module.text_pool_event.text_pool_event import TextPoolEvent
 from scripts.config import get_config
 from scripts.game_structure import game
 from scripts.game_structure.localization import load_lang_resource
@@ -52,7 +52,7 @@ def new_thought(
                     other_clan_id=other_clan_id, 
                     ageup=ageup,
                 ):
-                    if ensured_id and ensured_id != thought.id:
+                    if ensured_id and ensured_id != thought.event_id:
                         continue
 
                     thought_options.append(thought)
@@ -121,7 +121,7 @@ def _constraints_fulfilled(
             thought.involved_cats.get("m_c", {}),
             cat=main_cat,
             involved_cat_dict=involved_cats,
-            event_id=thought.id,
+            event_id=thought.event_id,
             other_involved_clan_id=other_clan_id,
         ):
             return False
@@ -138,7 +138,7 @@ def _constraints_fulfilled(
             random_info_dict,
             cat=random_cat,
             involved_cat_dict=involved_cats,
-            event_id=thought.id,
+            event_id=thought.event_id,
             other_involved_clan_id=other_clan_id,
         ):
             return False
@@ -357,7 +357,7 @@ def _load_file(path) -> list[TextPoolEvent]:
         for t in load_lang_resource(path):
             loaded_thoughts[path].append(
                 TextPoolEvent(
-                    id=t.get("id"),
+                    event_id=t.get("id"),
                     location=t.get("location", []),
                     season=t.get("season", []),
                     tags=t.get("tags", []),

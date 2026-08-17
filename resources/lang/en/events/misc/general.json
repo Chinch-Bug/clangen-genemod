@@ -11587,7 +11587,7 @@
         },
         "new_gender": [
             "trans male",
-            "nonbinary"
+            "nonbinary", "agender"
         ]
     },
     {
@@ -11610,7 +11610,7 @@
         },
         "new_gender": [
             "trans female",
-            "nonbinary"
+            "nonbinary", "agender"
         ]
     },
     {
@@ -11642,7 +11642,7 @@
         },
         "new_gender": [
             "trans male",
-            "nonbinary"
+            "nonbinary", "agender"
         ],
         "r_c": {
             "trait": [
@@ -11705,7 +11705,7 @@
         },
         "new_gender": [
             "trans female",
-            "nonbinary"
+            "nonbinary", "agender"
         ],
         "r_c": {
             "trait": [
@@ -17891,7 +17891,7 @@
             ]
         },
         "new_gender": [
-            "nonbinary"
+            "nonbinary", "agender"
         ]
     },
     {
@@ -17970,7 +17970,7 @@
             ]
         },
         "new_gender": [
-            "nonbinary"
+            "nonbinary", "agender"
         ]
     },
   {
@@ -17994,7 +17994,7 @@
         },
         "new_gender": [
             "trans female",
-            "nonbinary"
+            "nonbinary", "agender"
         ],
       "relationships": [
           {
@@ -18031,7 +18031,7 @@
         },
         "new_gender": [
             "trans male",
-            "nonbinary"
+            "nonbinary", "agender"
         ],
       "relationships": [
           {
@@ -18068,7 +18068,7 @@
         },
         "new_gender": [
             "trans female",
-            "nonbinary"
+            "nonbinary", "agender"
         ],
       "relationships": [
           {
