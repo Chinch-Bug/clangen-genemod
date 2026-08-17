@@ -2,7 +2,6 @@ from scripts.cat.cats import Cat
 
 biggest_family = {}
 
-
 def set_biggest_family(clan):
     """Gets the biggest family of the clan."""
     global biggest_family
@@ -24,7 +23,7 @@ def set_biggest_family(clan):
 
 def get_biggest_family(clan) -> dict:
     if clan.group_ID not in biggest_family:
-        set_biggest_family()
+        set_biggest_family(clan)
 
     return biggest_family[clan.group_ID]
 

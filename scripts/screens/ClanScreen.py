@@ -190,8 +190,8 @@ class ClanScreen(Screens):
             starting_height=2,
         )
         if game.selected_clan != game.clan:
-            self.warrior_den_label.disable()
-            self.leader_den_label.disable()
+            self.camp_labels["warrior_den_label"].disable()
+            self.camp_labels["leader_den_label"].disable()
         self.camp_labels["med_den_label"] = UISurfaceImageButton(
             ui_scale(pygame.Rect(self.layout["medicine den"], (151, 28))),
             "screens.core.medicine_cat_den",

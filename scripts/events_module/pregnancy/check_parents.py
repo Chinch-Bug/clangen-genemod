@@ -1,13 +1,17 @@
-from random import choice, random
+from random import choice, random, randint
 from typing import Optional
 from operator import xor
 
-from scripts.cat.cats import Cat
+from scripts.cat.cats import Cat, BACKSTORIES
 from scripts.cat.enums import (
     CatAge,
+    CatRank,
+    CatSocial,
+    CatThought,
 )
 from scripts.cat_relations.relationship import Relationship
 from scripts.clan_package.settings import get_clan_setting
+from scripts.game_structure import game
 from scripts.events_module.consequences import (
     create_new_cat,
 )
@@ -297,7 +301,7 @@ def handle_surrogate(cat, other_cats, clan):
         cand_cat = Cat.all_cats.get(cand_cat)
         if (not cand_cat.dead and not cand_cat.status.is_lost() and not cand_cat.status.is_exiled(clan.group_ID) and
         not cand_cat in all_cats and "sterile" not in cand_cat.permanent_condition 
-        and Pregnancy_Events.check_if_can_have_kits(cand_cat, True)
+        and check_if_can_have_kits(cand_cat, True)
         and (get_clan_setting('same sex birth') or xor(cat_is_amab(cand_cat), cat_is_amab(cat)))):
             all_candidates.append(cand_cat)
 
@@ -383,7 +387,7 @@ def handle_outside_parent(cat, clan, amount=0, background_category= "1"):
 
     possible_affair_partners = [i for i in unknowns if
                             i.is_potential_mate(cat, for_love_interest=True, outsider=True)
-                            and Pregnancy_Events.check_if_can_have_kits(i)
+                            and check_if_can_have_kits(i)
                             and 'sterile' not in i.permanent_condition
                             and (get_clan_setting('same sex birth') or cat_is_amab(i) != cat_is_amab(cat))
                                 and len(i.mate) == 0 and not i.birth_cooldown

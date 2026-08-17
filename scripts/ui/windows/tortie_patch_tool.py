@@ -250,24 +250,6 @@ class TortiePatchToolWindow(GameWindow):
     def create_cat(self, patch: str):
         new_cat = TestCatFactory.create_cat(
             moons=60,
-            loading_cat=True,
-            pelt=Pelt(
-                name="Tortie",
-                colour="BLACK",
-                length="medium",
-                eye_color="SAGE",
-                reverse=False,
-                white_patches=None,
-                vitiligo=None,
-                points=None,
-                tortie_marking=patch,
-                tortie_base="mackerel",
-                tortie_pattern="mackerel",
-                tortie_colour="GINGER",
-                tint="pink",
-                skin="DARK",
-                adult_sprite="adult_short2",
-            ),
         )
 
         return new_cat

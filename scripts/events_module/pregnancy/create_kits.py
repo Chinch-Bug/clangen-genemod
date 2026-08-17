@@ -1,6 +1,7 @@
 import math
 from random import choice, randint, random, randrange
 from typing import Optional
+from copy import deepcopy, copy
 
 import i18n
 
@@ -25,6 +26,7 @@ from scripts.events_module.pregnancy.check_family_size import (
     biggest_family_is_big,
     get_biggest_family,
 )
+from scripts.events_module.pregnancy.check_parents import no_kits_allowed
 from scripts.events_module.short.condition_events import Condition_Events
 from scripts.events_module.text_adjust import event_text_adjust, adjust_list_text
 from scripts.game_structure import game
@@ -100,7 +102,7 @@ def get_kits(
         initial_amount = kits_amount
         kits_amount = 0
 
-        stillborn_chance = Pregnancy_Events.get_stillborn_chance(
+        stillborn_chance = get_stillborn_chance(
             initial_amount)
 
         death_chances = get_config("death_related.kit_death_chances")

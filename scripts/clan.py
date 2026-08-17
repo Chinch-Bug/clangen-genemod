@@ -17,7 +17,7 @@ import i18n
 import ujson
 
 from scripts.cat.cats import Cat, BACKSTORIES
-from scripts.cat.enums import CatRank, CatGroup, CatSocial, CatCompatibility
+from scripts.cat.enums import CatRank, CatGroup, CatSocial, CatCompatibility, CatAge
 from scripts.cat.factories.new_cat_factory import NewCatFactory
 from scripts.cat.factories.create_example_cat import create_example_cats
 from scripts.cat.factories.enums import CatType
@@ -1652,7 +1652,7 @@ class OtherClan:
 
             member_amount = get_config("clan_creation.neighbourclan_cats")
 
-            self.clan_info.starting_members = choices(
+            members = choices(
                 [
                     c
                     for c in possible_cats
@@ -1665,7 +1665,20 @@ class OtherClan:
                 ],
                 k=member_amount,
             )
-            
+
+            for cat_id in [cat.ID for cat in members + [self.leader, self.deputy, self.medicine_cat]]:
+                if cat_id not in self.clan_cats:
+                    self.clan_cats.append(cat_id)
+                    the_cat = Cat.all_cats.get(cat_id)
+
+                # give thoughts,actions and relationships to cats
+                    the_cat.init_all_relationships()
+                    if not the_cat.dead:
+                        the_cat.backstory = "clan_founder"
+                    if the_cat.status.rank == CatRank.APPRENTICE:
+                        the_cat.rank_change(CatRank.APPRENTICE, new_thought=False)
+                    the_cat.pelt.rebuild_sprite = True
+
     @property
     def name(self):
         return i18n.t("general.clan", name=self.prefix)

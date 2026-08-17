@@ -4,7 +4,7 @@ from typing import Optional, Dict, List
 import i18n
 
 from scripts.cat.cats import Cat
-from scripts.cat.enums import CatGroup, CatRank
+from scripts.cat.enums import CatGroup, CatRank, CatThought
 from scripts.cat.names import names, Name
 from scripts.cat_relations.relationship import Relationship
 from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank
@@ -129,7 +129,7 @@ def handle_two_moon_pregnant(cat: Cat, clan):
     secret_affair_birth = False
     affair_known = _get_affair_visibility_from_pregnancy(cat)
     if affair_partner_id and cat.mate:
-        cheated_mates = Pregnancy_Events.get_cheated_mate(cat)
+        cheated_mates = _get_cheated_mate(cat)
         for cheated_mate in cheated_mates:
             # if the mate at first didn't know they were cheated on,
             # there's a chance they will find out
@@ -206,7 +206,7 @@ def handle_two_moon_pregnant(cat: Cat, clan):
                 kit.dead = True
             kit.get_new_thought(CatThought.ON_DEATH)
             kit.history.add_death(str(kit.name) + " was stillborn.")
-    set_biggest_family()
+    set_biggest_family(clan)
 
     # delete the cat out of the pregnancy dictionary
     del game.clan.pregnancy_data[cat.ID]
@@ -238,7 +238,7 @@ def handle_two_moon_pregnant(cat: Cat, clan):
         who_cheater,
         event_list,
     ) = _handle_main_birth_event(
-        cat, other_cat, surrogate, affair_partners, backkit is not None, events, secret_affair_birth, hidden
+        cat, other_cat, surrogate, affair_partners, random_affair, backkit is not None, events, secret_affair_birth, hidden
     )
 
     # the birthing cat's mate can choose to either help their cheating mate raise the new litter or
@@ -491,7 +491,7 @@ def _check_should_claim_affair_kits(mate: Cat, pregnant_cat: Cat) -> bool:
 
 
 def _handle_main_birth_event(
-    cat, other_cat, surrogate, affair_partners, single_parent, events, secret_affair_birth, hidden
+    cat, other_cat, surrogate, affair_partners, random_affair, single_parent, events, secret_affair_birth, hidden
 ) -> tuple[str, bool, bool, list, dict, Cat, Cat, list]:
     other_cat_affair_known = False
     coparenting_outcome = None
@@ -527,9 +527,9 @@ def _handle_main_birth_event(
                     who_cheater = x
                 both_unmated = False
 
-    if surrogate and pregnant_cat in surrogate:
-        if pregnant_cat.ID not in involved_cats:
-            involved_cats.append(pregnant_cat.ID)
+    if surrogate and cat in surrogate:
+        if cat.ID not in involved_cats:
+            involved_cats.append(cat.ID)
         involved_cats.append(random_choice.ID)
         if random() < 0.5 or len(other_cat) < 2:
             event_list.append(choice(events["birth"]["surrogate_birth"]))
@@ -577,11 +577,10 @@ def _handle_main_birth_event(
     # affair birth strings (the main cat cheated on their mate)
     elif len(cat.mate) > 0 and affair_partners and not random_affair.dead:
         random_choice = random_affair
-        living_mate = Pregnancy_Events.get_cheated_mate(cat)
+        living_mate = _get_cheated_mate(cat)
         if living_mate:
             living_mate = choice(living_mate)
-        dead_mate = Pregnancy_Events.get_cheated_mate(
-            cat, include_dead=True)
+        dead_mate = _get_cheated_mate(cat, include_dead=True)
         if dead_mate:
             dead_mate = choice(dead_mate)
         involved_cats.append(random_affair.ID)
@@ -606,7 +605,7 @@ def _handle_main_birth_event(
     # affair birth strings (the other_cat cheated on their mate)
     elif who_cheater:
         random_choice = who_cheater
-        other_mate = Pregnancy_Events.get_cheated_mate(who_cheater)
+        other_mate = _get_cheated_mate(who_cheater)
         if other_mate:
             # determine if the other_cat's mate is aware of their mate cheating on them
             other_cat_affair_known = bool(randint(0, 1))

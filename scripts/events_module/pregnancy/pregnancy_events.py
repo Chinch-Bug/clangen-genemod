@@ -1,11 +1,14 @@
-from random import random
+from random import random, choice
 
+from scripts.config import get_config
 from scripts.cat.cats import Cat
 from scripts.clan_package.settings import get_clan_setting
+from scripts.event_class import Single_Event
 from scripts.events_module.pregnancy.check_parents import (
     check_if_can_have_kits,
     get_second_parent,
     check_second_parent,
+    handle_surrogate,
 )
 from scripts.events_module.pregnancy.create_kits import (
     handle_adoption,
