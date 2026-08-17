@@ -238,7 +238,7 @@ def handle_two_moon_pregnant(cat: Cat, clan):
         who_cheater,
         event_list,
     ) = _handle_main_birth_event(
-        cat, other_cat, surrogate, affair_partners, random_affair, backkit is not None, events, secret_affair_birth, hidden
+        cat, other_cat, surrogate, affair_partners, random_affair, backkit is not None, events, secret_affair_birth, hidden, clan
     )
 
     # the birthing cat's mate can choose to either help their cheating mate raise the new litter or
@@ -491,7 +491,7 @@ def _check_should_claim_affair_kits(mate: Cat, pregnant_cat: Cat) -> bool:
 
 
 def _handle_main_birth_event(
-    cat, other_cat, surrogate, affair_partners, random_affair, single_parent, events, secret_affair_birth, hidden
+    cat, other_cat, surrogate, affair_partners, random_affair, single_parent, events, secret_affair_birth, hidden, clan=game.clan
 ) -> tuple[str, bool, bool, list, dict, Cat, Cat, list]:
     other_cat_affair_known = False
     coparenting_outcome = None

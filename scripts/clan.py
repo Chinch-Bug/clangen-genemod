@@ -1667,7 +1667,7 @@ class OtherClan:
             )
 
             for cat_id in [cat.ID for cat in members + [self.leader, self.deputy, self.medicine_cat]]:
-                if cat_id not in self.clan_cats:
+                if cat_id not in game.clan.clan_cats:
                     self.clan_cats.append(cat_id)
                     the_cat = Cat.all_cats.get(cat_id)
 
