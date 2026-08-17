@@ -1,6 +1,6 @@
 [
     {
-        "id": "general_outside_surrogate",
+        "event_id": "general_outside_surrogate",
         "strings": [
             "Wonders if {PRONOUN/m_c/subject}'ll meet {PRONOUN/m_c/poss} kits someday"
         ]

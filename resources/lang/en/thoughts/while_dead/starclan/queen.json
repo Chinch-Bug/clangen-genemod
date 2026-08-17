@@ -1,6 +1,6 @@
 [
     {
-        "id": "dead_queen_to_dead_kit",
+        "event_id": "dead_queen_to_dead_kit",
         "strings": [
             "Watches over r_c",
             "Got roped into a game by r_c",

@@ -43,6 +43,7 @@ class TestEvents(unittest.TestCase):
         game.clan = Clan(
             save_id=cls.test_clan_name,
             display_name="Test",
+            clan_count_mode="multiclan",
             leader=cat_factory.create_cat(rank=CatRank.LEADER),
             deputy=cat_factory.create_cat(rank=CatRank.DEPUTY),
             medicine_cat=cat_factory.create_cat(rank=CatRank.MEDICINE_CAT),
@@ -167,7 +168,6 @@ class TestEvents(unittest.TestCase):
                             patrol_type = "general"
 
                         new_patrol = Patrol()
-                        new_patrol.setup_patrol(to_patrol, patrol_type, game.clan)
                         new_patrol.begin_patrol(to_patrol, patrol_type, game.clan)
                         new_patrol.proceed_patrol("proceed")
 

@@ -134,8 +134,8 @@ def updated_create_new_cat(
     for bp in blood_parents:
         if "sterile" in bp.permanent_condition:
             del bp.permanent_condition["sterile"]
-        if "TNR" in bp.scars:
-            bp.scars.remove("TNR")
+        if "TNR" in bp.pelt.scars:
+            bp.pelt.scars.remove("TNR")
 
     for i in range(num_of_cats):
         created_cat = NewCatFactory.create_cat(

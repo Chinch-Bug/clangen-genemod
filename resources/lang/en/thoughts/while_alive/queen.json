@@ -1,6 +1,6 @@
 [
     {
-        "id": "queen_gen",
+        "event_id": "queen_gen",
         "strings": [
             "Is checking the nursery for any gaps",
             "Gives advice to cats planning a litter",
@@ -8,7 +8,7 @@
         ]
     },
     {
-        "id": "queen_camp_gen",
+        "event_id": "queen_camp_gen",
         "strings": [
             "Is patching up a gap in the nursery"
         ],
@@ -23,7 +23,7 @@
         }
     },
     {
-        "id": "queen_to_kit",
+        "event_id": "queen_to_kit",
         "strings": [
             "Is keeping a close eye on r_c",
             "Is helping r_c clean up a mess {PRONOUN/r_c/subject} made",
@@ -42,7 +42,7 @@
         }
     },
     {
-        "id": "queen_to_newborn",
+        "event_id": "queen_to_newborn",
         "strings": [
             "Helps tend to r_c"
         ],

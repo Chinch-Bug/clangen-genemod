@@ -1,6 +1,6 @@
 [
     {
-        "id": "queen_app_gen",
+        "event_id": "queen_app_gen",
         "strings": [
             "Is checking the nursery for any gaps",
             "Asks the older cats about what raising kits is like",
@@ -9,7 +9,7 @@
         ]
     },
     {
-        "id": "queen_app_to_mentor",
+        "event_id": "queen_app_to_mentor",
         "strings": [
             "Is being quizzed by r_c on dealing with new parents",
             "Asks r_c questions about newborn kits",
@@ -31,7 +31,7 @@
         ]
     },
     {
-        "id": "queen_app_to_kit",
+        "event_id": "queen_app_to_kit",
         "strings": [
             "Is keeping a close eye on r_c",
             "Is helping r_c clean up a mess {PRONOUN/r_c/subject} made",
@@ -51,7 +51,7 @@
         }
     },
     {
-        "id": "queen_app_to_newborn",
+        "event_id": "queen_app_to_newborn",
         "strings": [
             "Carefully helps tend to r_c"
         ],
@@ -67,7 +67,7 @@
         }
     },
     {
-        "id": "nervous_queen_app_gen",
+        "event_id": "nervous_queen_app_gen",
         "strings": [
             "Is nervous about having to advise older cats",
             "Is nervous about being asked questions by older cats"
@@ -84,7 +84,7 @@
         }
     },
     {
-        "id": "nervous_queen_app_to_kit",
+        "event_id": "nervous_queen_app_to_kit",
         "strings": [
             "Had trouble telling off r_c",
             "Backed down when r_c got stubborn and snappy at {PRONOUN/m_c/object}"
@@ -109,7 +109,7 @@
         }
     },
     {
-        "id": "childish_queen_app_to_kit",
+        "event_id": "childish_queen_app_to_kit",
         "strings": [
             "Got told off for playing too rough with r_c",
             "Seems to act more like a kit than r_c does sometimes"

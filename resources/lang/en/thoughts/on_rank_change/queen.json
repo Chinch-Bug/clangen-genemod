@@ -1,6 +1,6 @@
 [
     {
-        "id": "becoming_queen_to_kit",
+        "event_id": "becoming_queen_to_kit",
         "strings": [
             "Heard r_c cheer during {PRONOUN/m_c/poss} ceremony"
         ],

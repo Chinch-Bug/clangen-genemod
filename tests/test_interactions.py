@@ -11,6 +11,7 @@ from scripts.events_module.relationship import generate_pair_event
 from scripts.cat.factories.test_cat_factory import TestCatFactory
 from scripts.cat_relations.enums import rel_type_tiers
 from scripts.events_module.text_pool_event.text_pool_event import TextPoolEvent
+from scripts.cat_relations.inheritance2 import inheritance_db
 
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
@@ -27,9 +28,10 @@ class RelationshipConstraints(unittest.TestCase):
         parent = cat_factory.create_cat()
         cat_from = cat_factory.create_cat(parent1=parent.ID)
         cat_to = cat_factory.create_cat(parent1=parent.ID)
+        inheritance_db.load_inheritances(parent)
 
         # then
-        self.assertTrue(filter_relationship_type([cat_from, cat_to], ["sibling"]))
+        self.assertTrue(filter_relationship_type([cat_from, cat_to], ["siblings"]))
         self.assertTrue(filter_relationship_type([cat_from, cat_to], ["-mates"]))
 
     def test_mates(self):
@@ -47,6 +49,7 @@ class RelationshipConstraints(unittest.TestCase):
         # given
         parent = cat_factory.create_cat()
         child = cat_factory.create_cat(parent1=parent.ID)
+        inheritance_db.load_inheritances(parent)
 
         # then
         self.assertTrue(filter_relationship_type([child, parent], ["child/parent"]))
@@ -308,7 +311,7 @@ class RelationshipConstraints(unittest.TestCase):
         # neg test
         for level_list in rel_type_tiers.values():
             for level in level_list:
-                # first index of the list should be the highest positive
+                # first index of the list should be the highest neg
                 if level == level_list[0]:
                     self.assertTrue(
                         filter_relationship_type(
@@ -316,7 +319,7 @@ class RelationshipConstraints(unittest.TestCase):
                             [f"{level}"],
                         )
                     )
-                # next is middle pos
+                # next is middle neg
                 elif level == level_list[1]:
                     self.assertTrue(
                         filter_relationship_type(
@@ -324,7 +327,7 @@ class RelationshipConstraints(unittest.TestCase):
                             [f"{level}"],
                         )
                     )
-                # next is the lowest pos
+                # next is the lowest neg
                 elif level == level_list[2]:
                     self.assertTrue(
                         filter_relationship_type(

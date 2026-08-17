@@ -469,7 +469,8 @@ class TestOutcomeExecution(unittest.TestCase):
             fail_outcomes=[{"strings": ["test"]}],
         )
         other_clan = OtherClan()
-        starting_clan_rep = other_clan.relations
+        starting_clan_rep = 15
+        game.clan.relations[game.clan.group_ID][other_clan.group_ID] = 15
         starting_outsider_rep = game.clan.reputation
 
         self.patrol_class._add_patrol_cats([war1, app1])
@@ -480,11 +481,12 @@ class TestOutcomeExecution(unittest.TestCase):
         handle_consequences.execute_outcome(
             patrol.success_outcomes[0],
             self.patrol_class.involved_cats,
+            clan=game.clan,
             other_clan=other_clan,
         )
 
         self.assertTrue(
-            starting_clan_rep + 2 == other_clan.relations
+            starting_clan_rep + 2 == game.clan.get_relations(other_clan, game.clan)
             and starting_outsider_rep + 2 == game.clan.reputation,
             msg=f"Clan and outsider reputation should be increased.",
         )

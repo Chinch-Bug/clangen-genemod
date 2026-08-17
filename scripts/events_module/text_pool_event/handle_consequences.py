@@ -7,7 +7,7 @@ import i18n
 
 from scripts.cat.cats import Cat
 from scripts.cat.constants import PERMANENT, ILLNESSES, INJURIES
-from scripts.cat.enums import CatRank
+from scripts.cat.enums import CatRank, CatSocial
 from scripts.cat.skills import SkillPath
 from scripts.clan import OtherClan
 from scripts.clan_package.cotc import change_clan_reputation, change_clan_relations
@@ -123,6 +123,7 @@ def _handle_joining(
                 cat.change_name()
 
             if block.get("new_status"):
+                block["new_status"] = [b.replace("medicine cat", "healer") for b in block["new_status"]]
                 if cat.status.rank not in block["new_status"]:
                     cat.rank_change(new_rank=choice(block["new_status"]), resort=True)
             if cat.status.rank.is_any_apprentice_rank():
@@ -269,13 +270,15 @@ def _handle_lost(
 
     results = []
 
-    if 'tnr' in tags and get_clan_setting('tnr_mode'):
-        if random.random() < get_config("tnr_mode.clan_tnr"):
-            tnr = True
-    if 'tnr2' in tags and get_clan_setting('tnr_mode'):
-        if random.random() < get_config("tnr_mode.clan_tnr2"):
-            tnr = True
-            tnr2 = True
+    tnr = tnr2 = False
+    if tags:
+        if 'tnr' in tags and get_clan_setting('tnr_mode'):
+            if random.random() < get_config("tnr_mode.clan_tnr"):
+                tnr = True
+        if 'tnr2' in tags and get_clan_setting('tnr_mode'):
+            if random.random() < get_config("tnr_mode.clan_tnr2"):
+                tnr = True
+                tnr2 = True
 
     for block in event.lost:
         # gather up the kitties
@@ -464,7 +467,7 @@ def _handle_reputation_changes(event: TextPoolEvent, clan, other_clan: OtherClan
     other_clan_change = event.reputation_changes.get("other_clan")
 
     if outside_change:
-        change_clan_reputation(outside_change)
+        change_clan_reputation(outside_change, clan)
         if outside_change > 0:
             results.append(i18n.t("screens.patrol.outsider_rep_improved"))
         elif outside_change == 0:

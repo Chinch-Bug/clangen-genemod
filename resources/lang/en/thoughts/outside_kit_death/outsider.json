@@ -1,6 +1,6 @@
 [
     {
-        "id": "general_outside_kit_death",
+        "event_id": "general_outside_kit_death",
         "strings": [
             "Can't believe what happened to {PRONOUN/m_c/poss} kit"
         ]
