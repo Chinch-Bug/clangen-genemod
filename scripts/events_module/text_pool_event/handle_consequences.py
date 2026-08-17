@@ -7,7 +7,7 @@ import i18n
 
 from scripts.cat.cats import Cat
 from scripts.cat.constants import PERMANENT, ILLNESSES, INJURIES
-from scripts.cat.enums import CatRank, CatSocial
+from scripts.cat.enums import CatRank, CatSocial, CatThought
 from scripts.cat.skills import SkillPath
 from scripts.clan import OtherClan
 from scripts.clan_package.cotc import change_clan_reputation, change_clan_relations
@@ -136,6 +136,7 @@ def _handle_joining(
         joined.extend(cat_list)
         for c in joined:
             cat_names.append(_profile_link(c))
+            c.get_new_thought(CatThought.ON_JOIN)
 
         relation_events.trigger_joining_relationship_events(joined)
 
