@@ -333,7 +333,7 @@ class Name:
         # defaults in case of error
         weights = [1, 1, 1, 1]
         # give kittypets a kittypet name
-        weights = constants.CONFIG["cat_name_controls"][str(social)]
+        weights = get_config("cat_name_controls")[str(social)]
 
         selected_category = random.choices(name_categories, weights, k=1)[0]
         name = random.choice(names.names_dict[selected_category])

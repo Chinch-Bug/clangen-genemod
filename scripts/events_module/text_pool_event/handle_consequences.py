@@ -1,6 +1,6 @@
 import logging
 from html import escape
-from random import choice, randint
+from random import choice, randint, random
 from typing import Union, Literal
 
 import i18n
@@ -65,7 +65,7 @@ def execute_outcome(
 
     _handle_exp(event, event_involved_cats)
     _handle_mentor_app(event_involved_cats)
-    _handle_future_event(event, event_involved_cats)
+    _handle_future_event(event, event_involved_cats, clan)
 
     # just gonna make this a copy so that we don't accidentally change the base info
     rel_changes = event.relationship_changes.copy()
@@ -273,10 +273,10 @@ def _handle_lost(
     tnr = tnr2 = False
     if tags:
         if 'tnr' in tags and get_clan_setting('tnr_mode'):
-            if random.random() < get_config("tnr_mode.clan_tnr"):
+            if random() < get_config("tnr_mode.clan_tnr"):
                 tnr = True
         if 'tnr2' in tags and get_clan_setting('tnr_mode'):
-            if random.random() < get_config("tnr_mode.clan_tnr2"):
+            if random() < get_config("tnr_mode.clan_tnr2"):
                 tnr = True
                 tnr2 = True
 
@@ -742,7 +742,7 @@ def _handle_mentor_app(event_involved_cats: dict[str, Union[Cat, list[Cat]]]):
 
 
 def _handle_future_event(
-    event: TextPoolEvent, event_involved_cats: dict[str, Union[Cat, list[Cat]]]
+    event: TextPoolEvent, event_involved_cats: dict[str, Union[Cat, list[Cat]]], clan
 ):
     """
     collects required info for the future event and sends it to be prepped
@@ -754,4 +754,5 @@ def _handle_future_event(
         event=event,
         event_id=event.event_id,
         possible_cats=event_involved_cats,
+        clan=clan
     )

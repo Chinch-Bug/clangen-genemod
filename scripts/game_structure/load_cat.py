@@ -4,6 +4,7 @@ import traceback
 from math import floor
 from random import choice, randint
 from copy import deepcopy
+from itertools import chain
 from operator import xor
 
 import i18n

@@ -1,5 +1,5 @@
 from itertools import combinations
-from random import choice, randint, getrandbits, choices, random
+from random import choice, randint, getrandbits, choices, random, randrange
 
 from scripts.cat.cats import Cat
 from scripts.cat.constants import INJURIES, ILLNESSES, PERMANENT, BACKSTORIES
@@ -13,6 +13,9 @@ from scripts.cat_relations.inheritance2 import inheritance_db
 from scripts.cat_relations.relationship import Relationship
 from scripts.clan import OtherClan
 from scripts.clan_package.settings import get_clan_setting
+from scripts.clan_package.get_clan_cats import (
+    get_alive_clan_queens,
+)
 from scripts.config import get_config
 from scripts.events_module.consequences import change_relationship_values
 from scripts.events_module.parameter_dicts import InvolvedCatDict
@@ -181,11 +184,11 @@ def updated_create_new_cat(
         if get_clan_setting('tnr_mode') and created_cat.moons > 5:
             kittypet_n = get_config("tnr_mode.kittypet_neuter")
             loner_n = get_config("tnr_mode.loner_tnr")
-            if original_social == CatSocial.KITTYPET and random() < kittypet_n:
+            if status["rank"] == CatSocial.KITTYPET and random() < kittypet_n:
                 created_cat.get_permanent_condition("sterile", False)
-            if original_social in (CatSocial.LONER, CatSocial.ROGUE) and random() < loner_n:
+            if status["rank"] in (CatSocial.LONER, CatSocial.ROGUE) and random() < loner_n:
                 created_cat.get_permanent_condition("sterile", False)
-                created_cat.pelt.scars = (*new_cat.pelt.scars, "TNR")
+                created_cat.pelt.scars = (*created_cat.pelt.scars, "TNR")
                 created_cat.pelt.rebuild_sprite = True
         
         # MATES
@@ -599,7 +602,6 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
     if option_dict.get("status"):
         # check for "clancat" first since it's not really a rank
         if "clancat" in option_dict["status"]:
-            status["social"] = CatSocial.CLANCAT
             status = [r for r in option_dict["status"] if r != "clancat"]
         else:
             status = [option_dict["status"]]
@@ -608,16 +610,16 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
 
     if par := option_dict.get("can_create_new_cat", {}).get("assign_blood_parent", []):
         blood_parent = involved_cats[par]
-        if is_instance(blood_parent, list):
+        if isinstance(blood_parent, list):
             blood_parent = blood_parent[0]
     if sib := option_dict.get("can_create_new_cat", {}).get("assign_sibling", []):
         sibling = involved_cats[sib]
-        if is_instance(sibling, list):
+        if isinstance(sibling, list):
             sibling = sibling[0]
     if par := option_dict.get("can_create_new_cat", {}).get("assign_adoptive_parent", []):
         for i in par:
-            adoptive_parents.append(involved_cats[index].ID)
-            adoptive_parents.extend(involved_cats[index].mate)
+            adoptive_parents.append(involved_cats[i].ID)
+            adoptive_parents.extend(involved_cats[i].mate)
 
     # OPTION TO OVERRIDE DEFAULT BACKSTORY
     bs_override = False
@@ -682,7 +684,7 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
             status_filtered = all_clan_cats
 
         if age[0] == "match":
-            all_clan_cats = [cat for cat in all_clan_cats if cat.age == in_event_cats["m_c"].age]
+            all_clan_cats = [cat for cat in all_clan_cats if cat.age == involved_cats["m_c"].age]
         elif age[0] == "mate":
             all_clan_cats = [cat for cat in all_clan_cats if give_mates[0].is_potential_mate(
                 cat, for_love_interest=True, outsider=True)]
@@ -712,7 +714,7 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
         picked_cats = [choice(all_clan_cats_healthy if all_clan_cats_healthy else all_clan_cats)]
         if blood_parent and not sibling:
             picked_parents = [picked_cats[0].parent1, picked_cats[0].parent2]
-            in_event_cats[parent_match] = Cat.fetch_cat(choice([p for p in picked_parents if p])) if [
+            involved_cats[option_dict.get("can_create_new_cat", {}).get("assign_blood_parent")[0]] = Cat.fetch_cat(choice([p for p in picked_parents if p])) if [
                 p for p in picked_parents if p] else None
 
     if "change_clan" in multiclan_attributes:
