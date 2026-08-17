@@ -5,7 +5,7 @@
             "blend_strength": 200
         },
         "leader den": [344, 100],
-        "healer den": [105, 200],
+        "medicine den": [105, 200],
         "nursery": [620, 200],
         "clearing": [317, 285],
         "apprentice den": [70, 410],
@@ -78,7 +78,7 @@
             "blend_strength": 200
         },
         "leader den": [355, 179],
-        "healer den": [145, 302],
+        "medicine den": [145, 302],
         "nursery": [696, 283],
         "clearing": [375, 391],
         "apprentice den": [34, 417],
@@ -149,7 +149,7 @@
 
     "Forestcamp2": {
         "leader den": [344, 94],
-        "healer den": [80, 200],
+        "medicine den": [80, 200],
         "nursery": [620, 200],
         "clearing": [360, 294],
         "apprentice den": [82, 430],
@@ -226,7 +226,7 @@
     },
     "Forestcamp3": {
         "leader den": [344, 94],
-        "healer den": [80, 200],
+        "medicine den": [80, 200],
         "nursery": [620, 200],
         "clearing": [360, 294],
         "apprentice den": [82, 430],
@@ -304,7 +304,7 @@
     },
     "Forestcamp4": {
         "leader den": [325, 212],
-        "healer den": [32, 250],
+        "medicine den": [32, 250],
         "nursery": [570, 475],
         "clearing": [350, 394],
         "apprentice den": [75, 480],
@@ -368,7 +368,7 @@
     },
     "Mountainouscamp1": {
         "leader den": [399, 94],
-        "healer den": [61, 169],
+        "medicine den": [61, 169],
         "nursery": [635, 184],
         "clearing": [360, 294],
         "apprentice den": [82, 401],
@@ -458,7 +458,7 @@
     },
     "Mountainouscamp2": {
         "leader den": [399, 93],
-        "healer den": [34, 186],
+        "medicine den": [34, 186],
         "nursery": [589, 163],
         "clearing": [360, 294],
         "apprentice den": [82, 430],
@@ -546,7 +546,7 @@
     },
     "Mountainouscamp3": {
         "leader den": [478, 95],
-        "healer den": [35, 150],
+        "medicine den": [35, 150],
         "nursery": [689, 175],
         "clearing": [399, 250],
         "apprentice den": [38, 412],
@@ -617,7 +617,7 @@
     },
     "Mountainouscamp4": {
         "leader den": [416, 139],
-        "healer den": [90, 140],
+        "medicine den": [90, 140],
         "nursery": [622, 107],
         "clearing": [347, 312],
         "apprentice den": [73, 442],
@@ -690,7 +690,7 @@
     },
     "Beachcamp1": {
         "leader den": [399, 94],
-        "healer den": [61, 169],
+        "medicine den": [61, 169],
         "nursery": [617, 167],
         "clearing": [360, 294],
         "apprentice den": [82, 401],
@@ -760,7 +760,7 @@
     },
     "Beachcamp2": {
         "leader den": [320, 100],
-        "healer den": [61, 169],
+        "medicine den": [61, 169],
         "nursery": [617, 167],
         "clearing": [350, 310],
         "apprentice den": [82, 440],
@@ -829,7 +829,7 @@
     },
     "Beachcamp3": {
         "leader den": [344, 94],
-        "healer den": [80, 200],
+        "medicine den": [80, 200],
         "nursery": [620, 200],
         "clearing": [360, 294],
         "apprentice den": [82, 430],
@@ -894,7 +894,7 @@
     },
     "Beachcamp4": {
         "leader den": [349, 125],
-        "healer den": [100, 201],
+        "medicine den": [100, 201],
         "nursery": [500, 183],
         "clearing": [313, 275],
         "apprentice den": [51, 393],
@@ -955,7 +955,7 @@
     },
     "Plainscamp2": {
         "leader den": [415, 94],
-        "healer den": [11, 174],
+        "medicine den": [11, 174],
         "nursery": [620, 200],
         "clearing": [371, 264],
         "apprentice den": [106, 410],
@@ -1042,7 +1042,7 @@
             "blend_strength": 180
         },
         "leader den": [375, 102],
-        "healer den": [95, 155],
+        "medicine den": [95, 155],
         "nursery": [620, 200],
         "clearing": [365, 255],
         "apprentice den": [100, 392],
@@ -1114,7 +1114,7 @@
             "blend_strength": 200
         },
         "leader den": [296, 106],
-        "healer den": [51, 219],
+        "medicine den": [51, 219],
         "nursery": [585, 120],
         "clearing": [374, 414],
         "apprentice den": [73, 475],

@@ -25,6 +25,7 @@ from scripts.game_structure.screen_settings import game_screen_size, MANAGER
 from scripts.ui.elements.dropdown import UIDropDown
 from scripts.ui.elements.cat_list_display import UICatListDisplay
 from scripts.ui.elements.image_button import UIImageButton
+from scripts.ui.elements.checkbox import UICheckbox
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton
 from scripts.screens.Screens import Screens
 from scripts.screens.enums import GameScreen
@@ -202,17 +203,15 @@ class ListScreen(Screens):
 
             # TOGGLE GENOTYPE SEARCH
             if element == self.cat_list_bar_elements["search_genotype_checkbox"]:
-                if "@checked_checkbox" in event.ui_element.get_object_ids():
-                    element.change_object_id("@unchecked_checkbox")
+                if event.ui_element.checked:
                     element.set_tooltip("screens.list.search_genotypes_tooltip")
                     self.cat_list_bar_elements["search_bar_entry"].tool_tip_text = None
-                    switch_clan_setting("search genotypes")
                 else:
-                    element.change_object_id("@checked_checkbox")
                     element.set_tooltip("screens.list.search_names_tooltip")
                     self.cat_list_bar_elements["search_bar_entry"].tool_tip_text = "screens.list.search_genotypes_tutorial"
                     self.cat_list_bar_elements["search_bar_entry"].tool_tip_delay = 0
-                    switch_clan_setting("search genotypes")
+                event.ui_element.toggle()
+                switch_clan_setting("search genotypes")
                 self.cat_list_bar_elements["search_bar_entry"].placeholder_text = "general.genotype_search" if get_clan_setting("search genotypes") else "general.name_search"
                 self.cat_list_bar_elements["search_bar_entry"].set_text("")
                 self.update_cat_list(
@@ -327,12 +326,9 @@ class ListScreen(Screens):
         )
 
         # SEARCH GENOTYPE TOGGLE
-        self.cat_list_bar_elements["search_genotype_checkbox"] = UIImageButton(
-            ui_scale(pygame.Rect((36, 0), (38, 34))),
-            "",
-            object_id="@checked_checkbox"
-            if get_clan_setting("search genotypes")
-            else "@unchecked_checkbox",
+        self.cat_list_bar_elements["search_genotype_checkbox"] = UICheckbox(
+            (36, 0),
+            check=get_clan_setting("search genotypes"),
             container=self.cat_list_bar,
             tool_tip_text="screens.list.search_names_tooltip"
             if get_clan_setting("search genotypes")

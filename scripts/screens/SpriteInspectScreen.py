@@ -436,41 +436,6 @@ class SpriteInspectScreen(Screens):
         if (self.the_cat.phenotype.white_pattern != "No" or self.the_cat.phenotype.white[0] != "w") and (not self.the_cat.chimerapheno or self.the_cat.chimerapheno.white_pattern != "No" or self.the_cat.chimerapheno.white[0] != "w"):
             self.checkboxes["hide_white"].disable()
 
-    def make_one_checkbox(
-        self,
-        location: tuple,
-        name: str,
-        stored_bool: bool,
-        cat_value_to_allow=True,
-        disabled_object_id="@unchecked_checkbox",
-    ):
-        """Makes a single checkbox. So I don't have to copy and paste this 5 times.
-        if cat_value_to_allow evaluates to False, then the unchecked checkbox is always used the the checkbox
-        is disabled"""
-
-        if not cat_value_to_allow:
-            self.checkboxes[name] = UIImageButton(
-                pygame.Rect(location, ui_scale_dimensions((50, 50))),
-                "",
-                object_id=disabled_object_id,
-                starting_height=2,
-            )
-            self.checkboxes[name].disable()
-        elif stored_bool:
-            self.checkboxes[name] = UIImageButton(
-                pygame.Rect(location, ui_scale_dimensions((50, 50))),
-                "",
-                object_id="@checked_checkbox",
-                starting_height=2,
-            )
-        else:
-            self.checkboxes[name] = UIImageButton(
-                pygame.Rect(location, ui_scale_dimensions((50, 50))),
-                "",
-                object_id="@unchecked_checkbox",
-                starting_height=2,
-            )
-
     def make_cat_image(self):
         """Makes the cat image"""
         if "cat_image" in self.cat_elements:

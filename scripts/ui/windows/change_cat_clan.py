@@ -3,6 +3,7 @@ import pygame_gui
 
 from scripts.game_structure import game
 from scripts.ui.elements.image_button import UIImageButton
+from scripts.ui.elements.checkbox import UICheckbox
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton
 from scripts.screens.enums import GameScreen
 from scripts.ui.windows.window_base_class import GameWindow
@@ -68,11 +69,10 @@ class ChangeCatClanWindow(GameWindow):
                 continue
             box_type = "@checked_checkbox" if self.selected == clan else "@unchecked_checkbox"
 
-            self.checkboxes[clan.name] = UIImageButton(
-                ui_scale(pygame.Rect((75, n * 30 + 35), (34, 34))),
-                "",
+            self.checkboxes[clan.name] = UICheckbox(
+                (75, n * 30 + 35),
+                check=self.selected == clan,
                 container=self,
-                object_id=box_type,
             )
             n += 1
 
@@ -121,12 +121,12 @@ class ChangeCatClanWindow(GameWindow):
             if event.ui_element in self.checkboxes.values():
                 for clan_name, value in self.checkboxes.items():
                     if value == event.ui_element:
-                        if value.object_ids[1] == "@unchecked_checkbox":
-                            self.save_button.enable()
-                            self.selected = next(filter(lambda c: c.name == clan_name, game.clan.all_other_clans), game.clan)
-                        if value.object_ids[1] == "@checked_checkbox":
+                        if value.checked:
                             self.save_button.disable()
                             self.selected = None
+                        else:
+                            self.save_button.enable()
+                            self.selected = next(filter(lambda c: c.name == clan_name, game.clan.all_other_clans), game.clan)
                         self.refresh_checkboxes()
 
         return super().process_event(event)

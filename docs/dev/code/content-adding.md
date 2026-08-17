@@ -102,7 +102,7 @@ Navigate to "resources/placements.json", where each camp has their cat and den l
 ```json
     "default": {
         "leader den": [688, 200],
-        "healer den": [210, 400],
+        "medicine den": [210, 400],
         "nursery": [1240, 400],
         "clearing": [635, 570],
         "apprentice den": [140, 820],

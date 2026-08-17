@@ -10,6 +10,7 @@ from scripts.game_structure import image_cache
 from ..config import get_config
 from ..ui.elements.sprite_button import UISpriteButton
 from ..ui.elements.image_button import UIImageButton
+from ..ui.elements.checkbox import UICheckbox
 from ..ui.elements.surface_image_button import UISurfaceImageButton
 from ..ui.theme import get_text_box_theme
 from ..events_module.text_adjust import shorten_text_to_fit
@@ -160,26 +161,21 @@ class ChooseMateScreen(Screens):
                 self.update_offspring_container()
 
             if event.ui_element == self.search_toggle_checkbox:
-                if "@checked_checkbox" in event.ui_element.get_object_ids():
-                    event.ui_element.change_object_id("@unchecked_checkbox")
+                if event.ui_element.checked:
                     event.ui_element.set_tooltip(
                         "screens.list.search_genotypes_tooltip")
                     self.search_genotype = False
                 else:
-                    event.ui_element.change_object_id("@checked_checkbox")
                     event.ui_element.set_tooltip("screens.list.search_names_tooltip")
                     self.search_genotype = True
+                event.ui_element.toggle()
                 self.search_bar.placeholder_text = "general.genotype_search" if self.search_genotype else "general.name_search"
                 self.search_bar.set_text("")
                 self.update_potential_mates_container()
 
             elif event.ui_element == self.show_all_checkbox:
-                if "@checked_checkbox" in event.ui_element.get_object_ids():
-                    event.ui_element.change_object_id("@unchecked_checkbox")
-                    self.show_all = False
-                else:
-                    event.ui_element.change_object_id("@checked_checkbox")
-                    self.show_all = True
+                event.ui_element.toggle()
+                self.show_all = event.ui_element.checked
                 self.update_potential_mates_container()
 
             # Next and last page buttons
@@ -306,27 +302,21 @@ class ChooseMateScreen(Screens):
             manager=MANAGER,
         )
 
-        self.search_toggle_checkbox = UIImageButton(
-            ui_scale(pygame.Rect((60, 629), (38, 34))),
-            "",
-            object_id="@checked_checkbox"
-            if self.search_genotype
-            else "@unchecked_checkbox",
+        self.search_toggle_checkbox = UICheckbox(
+            position=(60, 629),
+            manager=MANAGER,
+            starting_height=3,
+            check=self.search_genotype,
             tool_tip_text="screens.list.search_names_tooltip"
             if self.search_genotype
-            else "screens.list.search_genotypes_tooltip",
-            starting_height=1,
-            manager=MANAGER,
+            else "screens.list.search_genotypes_tooltip"
         )
 
-        self.show_all_checkbox = UIImageButton(
-            ui_scale(pygame.Rect((220, 629), (38, 34))),
-            "",
-            object_id="@checked_checkbox"
-            if self.show_all
-            else "@unchecked_checkbox",
-            starting_height=1,
+        self.show_all_checkbox = UICheckbox(
+            position=(220, 629),
             manager=MANAGER,
+            starting_height=1,
+            check=self.show_all
         )
 
         # Tab containers:
@@ -1166,8 +1156,8 @@ class ChooseMateScreen(Screens):
         )
 
         if (
-            not get_clan_setting("same sex birth")
-            and not (xor('Y' in self.the_cat.phenotype.sexgene, 'Y' in self.selected_cat.phenotype.sexgene) 
+            ((get_clan_setting("same sex birth")
+            or xor('Y' in self.the_cat.phenotype.sexgene, 'Y' in self.selected_cat.phenotype.sexgene) )
             and 'sterile' not in self.the_cat.permanent_condition 
             and 'sterile' not in self.selected_cat.permanent_condition)
         ):

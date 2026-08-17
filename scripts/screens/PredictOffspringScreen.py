@@ -21,6 +21,7 @@ from pygame_gui.elements import UIDropDownMenu, UITextBox
 from pygame import Rect
 from ..ui.elements.sprite_button import UISpriteButton
 from ..ui.elements.image_button import UIImageButton
+from ..ui.elements.checkbox import UICheckbox
 from ..ui.elements.surface_image_button import UISurfaceImageButton
 from scripts.events_module.text_adjust import shorten_text_to_fit
 from scripts.ui.theme import get_text_box_theme
@@ -115,27 +116,20 @@ class PredictOffspringScreen(Screens):
                 self.generate_offspring()
 
             if event.ui_element == self.search_toggle_checkbox:
-                if "@checked_checkbox" in event.ui_element.get_object_ids():
-                    event.ui_element.change_object_id("@unchecked_checkbox")
-                    event.ui_element.set_tooltip(
-                        "screens.list.search_genotypes_tooltip")
+                if event.ui_element.checked:
+                    event.ui_element.set_tooltip("screens.list.search_genotypes_tooltip")
                     self.search_genotype = False
                 else:
-                    event.ui_element.change_object_id("@checked_checkbox")
-                    event.ui_element.set_tooltip(
-                        "screens.list.search_names_tooltip")
+                    event.ui_element.set_tooltip("screens.list.search_names_tooltip")
                     self.search_genotype = True
+                event.ui_element.toggle()
                 self.search_bar.placeholder_text = "general.genotype_search" if self.search_genotype else "general.name_search"
                 self.search_bar.set_text("")
                 self.update_potential_mates_container()
 
             if event.ui_element == self.outsider_toggle_checkbox:
-                if "@checked_checkbox" in event.ui_element.get_object_ids():
-                    event.ui_element.change_object_id("@unchecked_checkbox")
-                    self.include_outsiders = False
-                else:
-                    event.ui_element.change_object_id("@checked_checkbox")
-                    self.include_outsiders = True
+                event.ui_element.toggle()
+                self.include_outsiders = event.ui_element.checked
                 self.update_potential_mates_container()
             
         elif event.type == pygame_gui.UI_DROP_DOWN_MENU_CHANGED:
@@ -261,12 +255,9 @@ class PredictOffspringScreen(Screens):
             manager=MANAGER,
         )
 
-        self.search_toggle_checkbox = UIImageButton(
-            ui_scale(pygame.Rect((310, 129), (38, 34))),
-            "",
-            object_id="@checked_checkbox"
-            if self.search_genotype
-            else "@unchecked_checkbox",
+        self.search_toggle_checkbox = UICheckbox(
+            (310, 129),
+            check=self.search_genotype,
             tool_tip_text="screens.list.search_names_tooltip"
             if self.search_genotype
             else "screens.list.search_genotypes_tooltip",
@@ -274,12 +265,9 @@ class PredictOffspringScreen(Screens):
             manager=MANAGER,
         )
 
-        self.outsider_toggle_checkbox = UIImageButton(
-            ui_scale(pygame.Rect((310, 160), (38, 34))),
-            "",
-            object_id="@checked_checkbox"
-            if self.include_outsiders
-            else "@unchecked_checkbox",
+        self.outsider_toggle_checkbox = UICheckbox(
+            (310, 160),
+            check=self.include_outsiders,
             starting_height=1,
             manager=MANAGER,
         )

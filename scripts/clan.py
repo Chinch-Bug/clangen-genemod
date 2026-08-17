@@ -19,6 +19,7 @@ import ujson
 from scripts.cat.cats import Cat, BACKSTORIES
 from scripts.cat.enums import CatRank, CatGroup, CatSocial, CatCompatibility
 from scripts.cat.factories.new_cat_factory import NewCatFactory
+from scripts.cat.factories.create_example_cat import create_example_cats
 from scripts.cat.factories.enums import CatType
 from scripts.cat.names import names
 from scripts.cat.save_load import (
@@ -631,10 +632,6 @@ class Clan:
 
         if os.path.exists(f"{get_save_dir()}/{self.save_id}clan.json"):
             os.remove(f"{get_save_dir()}/{self.save_id}clan.json")
-        elif os.path.exists(get_save_dir() + f"/{self.save_id}clan.txt") & (
-            self.save_id != "current"
-        ):
-            os.remove(get_save_dir() + f"/{self.save_id}clan.txt")
 
     def load_clan(self):
         """
@@ -649,6 +646,13 @@ class Clan:
             get_save_dir() + "/" + switch_get_value(Switch.clan_list)[0] + "/clan.json"
         ):
             version_info = self.load_clan_json()
+        elif os.path.exists(
+            get_save_dir() + "/" + switch_get_value(Switch.clan_list)[0] + "clan.txt"
+        ):
+            switch_set_value(
+                Switch.error_message,
+                "TXT Clans are no longer supported. Please use an external tool to update your Clan to the modern format.",
+            )
         else:
             switch_set_value(
                 Switch.error_message, "There was an error loading the clan.json"
@@ -1626,13 +1630,42 @@ class OtherClan:
             self.instructor.dead_for = randint(20, 200)
             self.instructor.status.group_history.insert(0, {"rank": instructor_rank, "group": self.group_ID, "moons_as": self.instructor.moons})
 
-            use_special = get_config("clan_creation.use_special_roller")
-            cat_range = get_config("clan_creation.neighbourclan_cats")
-            self.new_leader(NewCatFactory.create_cat(use_special=use_special, status_dict={"rank": CatRank.LEADER, "group_ID": self.group_ID}))
-            self.new_deputy(NewCatFactory.create_cat(use_special=use_special, status_dict={"rank": CatRank.DEPUTY, "group_ID": self.group_ID}))
-            self.new_medicine_cat(NewCatFactory.create_cat(use_special=use_special, status_dict={"rank": CatRank.MEDICINE_CAT, "group_ID": self.group_ID}))
-            for i in range(randint(cat_range[0], cat_range[1])):
-                NewCatFactory.create_cat(use_special=use_special, status_dict={"rank": choices(list(rank_weights.keys()), list(rank_weights.values()))[0], "group_ID": self.group_ID})
+            possible_cats = create_example_cats(
+                majority_rank=get_config("clan_creation.majority_rank"),
+                rank_weights=get_config("clan_creation.rank_weights"),
+            )
+            grown_cats = [
+                c
+                for c in possible_cats
+                if c.age not in (CatAge.NEWBORN, CatAge.KITTEN, CatAge.ADOLESCENT)
+            ]
+
+            if grown_cats and get_config("clan_creation.ranks_needed.leader"):
+                self.new_leader(choice(grown_cats))
+                grown_cats.remove(self.leader)
+            if grown_cats and get_config("clan_creation.ranks_needed.deputy"):
+                self.new_deputy(choice(grown_cats))
+                grown_cats.remove(self.deputy)
+            if grown_cats and get_config("clan_creation.ranks_needed.medicine_cat"):
+                self.new_medicine_cat(choice(grown_cats))
+                grown_cats.remove(self.medicine_cat)
+
+            member_amount = get_config("clan_creation.neighbourclan_cats")
+
+            self.clan_info.starting_members = choices(
+                [
+                    c
+                    for c in possible_cats
+                    if c
+                    not in (
+                        self.leader,
+                        self.deputy,
+                        self.medicine_cat,
+                    )
+                ],
+                k=member_amount,
+            )
+            
     @property
     def name(self):
         return i18n.t("general.clan", name=self.prefix)

@@ -72,7 +72,7 @@ class RelationshipScreen(Screens):
         self.next_cat = None
         self.filtered_cats: list[Relationship] = []
         self.all_relations: list[Relationship] = []
-        self.current_page: int = 0
+        self.current_page: int = 1
         self.main_cat: Optional[Cat] = None
 
         self.elements: dict = {}
