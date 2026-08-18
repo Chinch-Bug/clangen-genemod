@@ -584,12 +584,9 @@ def _get_id_for_group(
 def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str, Cat], clan, other_clan: OtherClan):
     status = []
     age = []
-    adoptive_parents = []
     blood_parent = None
     sibling = None
-    give_mates = []
     picked_cats = []
-    chosen_backstory = None
     multiclan_attributes = option_dict.get("can_create_new_cat", {}).get("multiclan_cat", [])
 
     all_clan_cats = []
@@ -597,6 +594,12 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
         all_clan_cats = [i for i in Cat.all_cats.values() if i.status.is_exiled() and i.status.is_exiled() != clan.group_ID and not i.dead]
     if not all_clan_cats:
         all_clan_cats = [i for i in Cat.all_cats.values() if i.status.group_ID == other_clan.group_ID]
+
+    for cat in involved_cats.values():
+        if cat in all_clan_cats:
+            all_clan_cats.remove(cat)
+        if isinstance(cat, list):
+            all_clan_cats = [i for i in all_clan_cats if i not in cat]
 
     option_dict = option_dict.copy()
     if option_dict.get("status"):
@@ -606,7 +609,7 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
         else:
             status = [option_dict["status"]]
     if option_dict.get("age"):
-        status["age"] = option_dict["age"]
+        age = option_dict["age"]
 
     if par := option_dict.get("can_create_new_cat", {}).get("assign_blood_parent", []):
         blood_parent = involved_cats[par]
@@ -616,40 +619,6 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
         sibling = involved_cats[sib]
         if isinstance(sibling, list):
             sibling = sibling[0]
-    if par := option_dict.get("can_create_new_cat", {}).get("assign_adoptive_parent", []):
-        for i in par:
-            adoptive_parents.append(involved_cats[i].ID)
-            adoptive_parents.extend(involved_cats[i].mate)
-
-    # OPTION TO OVERRIDE DEFAULT BACKSTORY
-    bs_override = False
-    stor = []
-    if option_dict.get("backstory"):
-        bs_list = option_dict.get("backstory")
-        stor = []
-        for story in bs_list:
-            if story in set(
-                [
-                    backstory
-                    for backstory_block in BACKSTORIES[
-                        "backstory_categories"
-                    ].values()
-                    for backstory in backstory_block
-                ]
-            ):
-                stor.append(story)
-            elif story in BACKSTORIES["backstory_categories"]:
-                stor.extend(BACKSTORIES["backstory_categories"][story])
-        bs_override = True
-    if bs_override and stor:
-        chosen_backstory = choice(stor)
-
-    if m := option_dict.get("can_create_new_cat", {}).get("assign_mate", []):
-        for index in m:
-            if isinstance(involved_cats[index], list):
-                give_mates.extend(involved_cats[index])
-            else:
-                give_mates.append(involved_cats[index])
 
     if par := option_dict.get("can_create_new_cat", {}).get("become_litter"):
         (parents, orphans) = get_alive_clan_queens(all_clan_cats, clan=other_clan.group_ID)
@@ -659,6 +628,11 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
             litter = parents[choice(list(parents.keys()))]
             picked_cats = litter
         else:
+            for cat in involved_cats.values():
+                if cat in orphans:
+                    orphans.remove(cat)
+                if isinstance(cat, list):
+                    orphans = [i for i in orphans if i not in cat]
             picked_cats = [choice(orphans)]
     else:
         if blood_parent and not sibling:
@@ -697,12 +671,12 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
             for par_id in parents.keys():
                 if Cat.fetch_cat(par_id) not in all_clan_cats:
                     del parents[par_id]
-            all_clan_cats = [Cat.fetch_cat(par_id)
-                             for par_id in parents.keys()]
+            all_clan_cats = [Cat.fetch_cat(par_id) for par_id in parents.keys()]
         elif age:
+            age_filtered = []
             for a in age:
-                all_clan_cats = [
-                    cat for cat in all_clan_cats if cat.age.value == age]
+                age_filtered += [cat for cat in all_clan_cats if cat.age.value == a]
+            all_clan_cats = age_filtered
         else:
             all_clan_cats = [i for i in all_clan_cats if i.age != CatAge.NEWBORN]
         
@@ -716,86 +690,5 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
             picked_parents = [picked_cats[0].parent1, picked_cats[0].parent2]
             involved_cats[option_dict.get("can_create_new_cat", {}).get("assign_blood_parent")[0]] = Cat.fetch_cat(choice([p for p in picked_parents if p])) if [
                 p for p in picked_parents if p] else None
-
-    if "change_clan" in multiclan_attributes:
-        for cat in picked_cats:
-            other = cat.status.fetch_clan_object()
-            if cat.status.rank == CatRank.LEADER:
-                other.leader = None
-                other.leader_lives = 0
-            if cat.status.rank == CatRank.DEPUTY:
-                other.deputy = None
-            if cat.status.rank == CatRank.MEDICINE_CAT:
-                other.remove_med_cat(cat)
-            if cat.status.rank in [CatRank.LEADER, CatRank.DEPUTY]:
-                cat.status._change_rank(CatRank.WARRIOR)
-
-            if "rogue" in status:
-                cat.leave_clan(CatSocial.ROGUE)
-            elif "former clancat" in status:
-                cat.leave_clan(CatSocial.LONER)
-            else:
-                cat.status.add_to_group(clan.group_ID, standing_with_past_group=CatStanding.LEFT)
-            for app in cat.apprentice.copy():
-                app_ob = Cat.fetch_cat(app)
-                if app_ob:
-                    app_ob.update_mentor()
-
-            cat.update_mentor()
-    elif "change_clan_rev" in multiclan_attributes:
-        other = give_mates[0].status.fetch_clan_object()
-        give_mates[0].status.add_to_group(
-            other_clan.group_ID, standing_with_past_group=CatStanding.LEFT)
-        if give_mates[0].status.rank == CatRank.LEADER:
-            other.leader = None
-            other.leader_lives = 0
-        if give_mates[0].status.rank == CatRank.DEPUTY:
-            other.deputy = None
-        if give_mates[0].rank == CatRank.MEDICINE_CAT:
-            other.remove_med_cat(cat)
-        if give_mates[0].status.rank in [CatRank.LEADER, CatRank.DEPUTY]:
-            give_mates[0].status._change_rank(CatRank.WARRIOR)
-
-    if "dead" in multiclan_attributes:
-        for cat in picked_cats:
-            cat.die()
-
-    for cat in picked_cats:
-        if chosen_backstory:
-            cat.backstory = chosen_backstory
-            cat.history.add_beginning()
-
-        # SET MATES
-        for inter_cat in give_mates:
-            if cat == inter_cat or cat.ID in inter_cat.mate:
-                continue
-            cat.set_mate(inter_cat)
-
-        # ADOPTIVE PARENTS
-        for par in adoptive_parents:
-            if not par:
-                continue
-
-            cat.adoptive_parents.append(par)
-            par = Cat.fetch_cat(par)
-
-            y = randrange(0, 20)
-            start_relation = Relationship(par, cat, False, True)
-            start_relation.like += 30 + y
-            start_relation.comfortable = 10 + y
-            start_relation.respect = 15 + y
-            start_relation.trust = 10 + y
-            par.relationships[cat.ID] = start_relation
-
-            y = randrange(0, 20)
-            start_relation = Relationship(cat, par, False, True)
-            start_relation.like += 30 + y
-            start_relation.comfortable = 10 + y
-            start_relation.respect = 15 + y
-            start_relation.trust = 10 + y
-            cat.relationships[par.ID] = start_relation
-
-        if adoptive_parents:
-            cat.create_inheritance_new_cat()
 
     return picked_cats

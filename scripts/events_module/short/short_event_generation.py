@@ -9,7 +9,6 @@ from scripts.cat.enums import CatRank
 from scripts.cat.skills import SkillPath
 from scripts.clan_resources.freshkill import (
     FRESHKILL_EVENT_ACTIVE,
-    FRESHKILL_EVENT_TRIGGER_FACTOR,
 )
 from scripts.events_module.event_filters import (
     event_for_location,
@@ -477,7 +476,7 @@ def filter_events(
 
         # check if outsider event is allowed
         if event.outsider:
-            if not event_for_reputation(event.outsider["current_rep"]):
+            if not event_for_reputation(event.outsider["current_rep"], clan):
                 continue
 
         # other Clan related checks
@@ -541,10 +540,7 @@ def filter_events(
                         continue
 
                     if not event_for_freshkill_supply(
-                        game.clan.freshkill_pile,
-                        trigger,
-                        FRESHKILL_EVENT_TRIGGER_FACTOR,
-                        clan_size,
+                        game.clan.freshkill_pile, trigger, clan_size
                     ):
                         discard = True
                         break
@@ -552,7 +548,7 @@ def filter_events(
                         discard = False
 
                 else:  # if supply type wasn't freshkill, then it must be an herb type
-                    if not event_for_herb_supply(trigger, supply_type, clan_size):
+                    if not event_for_herb_supply(trigger, supply_type):
                         discard = True
                         break
                     else:

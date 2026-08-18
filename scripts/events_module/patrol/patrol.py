@@ -13,27 +13,16 @@ from scripts.cat_relations.enums import RelType
 from scripts.cat.enums import CatAge, CatRank, CatCompatibility
 from scripts.clan_package.settings import get_clan_setting
 from scripts.clan_package.get_clan_cats import get_living_clan_cat_count
-from scripts.clan_resources.freshkill import FRESHKILL_EVENT_TRIGGER_FACTOR
 from scripts.config import get_config
 from scripts.events_module.consequences import gather_cat_objects
 from scripts.events_module.event_filters import (
-    event_for_tags,
-    event_for_other_clan,
     get_frequency,
     find_new_frequency,
     check_relationship_value,
     get_personality_compatibility,
-    event_for_location,
-    event_for_season,
     event_for_poi,
-    event_for_required_cat_types,
-    event_for_cat,
     check_rel_constraint_groups,
-    event_for_reputation,
-    event_for_clan_relations,
-    event_for_freshkill_supply,
-    event_for_herb_supply,
-    cat_for_event,
+    event_for_other_clan,
 )
 from scripts.events_module.patrol.create_new_cat import updated_create_new_cat, updated_find_clan_cats
 from scripts.events_module.patrol.generate_patrol_list import (
@@ -42,6 +31,9 @@ from scripts.events_module.patrol.generate_patrol_list import (
 )
 from scripts.events_module.patrol.patrol_event import PatrolEvent
 from scripts.events_module.text_pool_event import handle_consequences
+from scripts.events_module.text_pool_event.check_general_constraints import (
+    passes_general_constraints,
+)
 from scripts.events_module.text_pool_event.find_involved_cats import find_cats
 from scripts.events_module.text_pool_event.text_pool_event import TextPoolEvent
 from scripts.config import get_config
@@ -72,7 +64,6 @@ class Patrol:
         self.outcome_cats: TypedDict(
             "outcome_cats", {"success": dict[str, Cat], "failure": dict[str, Cat]}
         ) = {"success": {}, "failure": {}}
-        self.new_cats: list[Cat] = []
 
     def begin_patrol(self, patrol_cats: List[Cat], patrol_type: str, clan) -> str:
         """
@@ -249,7 +240,10 @@ class Patrol:
                 patrol_type = random.choice(["hunting", "border", "training"])
         
         if patrol_type != "med" and "healer adult" in self.involved_cats:
-            self.involved_cats["normal adult"].extend(self.involved_cats["healer adult"])
+            if "normal adult" not in self.involved_cats:
+                self.involved_cats["normal adult"] = self.involved_cats["healer adult"]
+            else:
+                self.involved_cats["normal adult"].extend(self.involved_cats["healer adult"])
         elif patrol_type == "med":
             patrol_type = "herb_gathering"
 
@@ -430,7 +424,7 @@ class Patrol:
         outside_cats = [
             c
             for c in Cat.all_cats_list
-            if (c.status.is_other_clancat or c.status.is_outsider) and not c.dead
+            if (c.status.group_ID != self.clan.group_ID or c.status.is_outsider) and not c.dead and c.status.is_near()
         ]
         while not chosen_patrol:
             # make sure we still have possible patrols
@@ -506,30 +500,15 @@ class Patrol:
                 print("DEBUG: requested patrol does not meet constraints (patrol type)")
             return False
 
-        # CHECK CAT TYPES
-        if not event_for_required_cat_types(
-            patrol.required_cat_types, self.involved_cats
+        # CHECK GENERAL
+        if not passes_general_constraints(
+            patrol,
+            self.involved_cats["p_l"],
+            self.involved_cats,
+            self.clan,
+            self.other_clan,
+            is_debug_patrol,
         ):
-            if is_debug_patrol:
-                print("DEBUG: requested patrol does not meet cat type requirements.")
-            return False
-
-        # CHECK TAGS
-        if not event_for_tags(patrol.tags, self.involved_cats["p_l"]):
-            if is_debug_patrol:
-                print("DEBUG: requested patrol does not meet constraints (tags)")
-            return False
-
-        # CHECK LOCATION
-        if not event_for_location(patrol.location, self.clan):
-            if is_debug_patrol:
-                print("DEBUG: requested patrol does not meet constraints (biome)")
-            return False
-
-        # CHECK SEASON
-        if not event_for_season(patrol.season):
-            if is_debug_patrol:
-                print("DEBUG: requested patrol does not meet constraints (season)")
             return False
 
         # CHECK POI
@@ -659,56 +638,16 @@ class Patrol:
         :param outcome_type: the outcome_cats dict that the valid cats should be added to
         """
         # BASICS
-        if not event_for_location(outcome.location, self.clan):
+        if not passes_general_constraints(
+            outcome, self.involved_cats["p_l"], self.involved_cats, self.clan, self.other_clan
+        ):
             return False
-
-        if not event_for_season(outcome.season):
-            return False
-
-        if not event_for_tags(outcome.tags, self.involved_cats["p_l"]):
-            return False
-
-        if outcome.required_reputation:
-            if not event_for_reputation(outcome.required_reputation.get("outsider")):
-                return False
-
-            if not event_for_clan_relations(
-                outcome.required_reputation.get("other_clan"), self.clan, self.other_clan
-            ):
-                return False
-
-        if outcome.required_cat_types:
-            if not event_for_required_cat_types(
-                outcome.required_cat_types, self.involved_cats
-            ):
-                return False
-
-        if outcome.supply:
-            clan_size = get_living_clan_cat_count(Cat, self.clan.group_ID)
-            for block in outcome.supply:
-                if not block.get("trigger"):
-                    continue
-                if "freshkill" in block["type"]:
-                    if not event_for_freshkill_supply(
-                        game.clan.freshkill_pile,
-                        trigger=block["trigger"],
-                        factor=FRESHKILL_EVENT_TRIGGER_FACTOR,
-                        clan_size=clan_size,
-                    ):
-                        return False
-                else:
-                    if not event_for_herb_supply(
-                        trigger=block["trigger"],
-                        supply_type=block["type"],
-                        clan_size=clan_size,
-                    ):
-                        return False
 
         # CATS
         outside_cats = [
             c
             for c in Cat.all_cats_list
-            if (c.status.is_other_clancat or c.status.is_outsider) and not c.dead
+            if (c.status.group_ID != self.clan.group_ID or c.status.is_outsider) and not c.dead and c.status.is_near()
         ]
         temp_involved_cats = self.involved_cats.copy()
 
@@ -727,68 +666,6 @@ class Patrol:
         self.outcome_cats[outcome_type] = temp_involved_cats
 
         return True
-
-    def _find_involved_cats(
-        self,
-        abbr: str,
-        possible_cats: list[Cat],
-        relationship_constraint,
-        cat_constraints,
-        temp_involved_cats: dict,
-    ) -> tuple[bool, dict]:
-        # if relationships aren't required, just grab some cats and go!
-        if possible_cats and not relationship_constraint:
-            # take first cat
-            temp_involved_cats[abbr] = possible_cats[0]
-            return True, temp_involved_cats
-
-        # otherwise, let's make sure we fulfill the rel constraints with this cat
-        elif possible_cats:
-            while not temp_involved_cats.get(abbr):
-                # need a temp cat dict that includes our possible kitty
-                _temp_cats = temp_involved_cats.copy()
-                _temp_cats[abbr] = possible_cats[0]
-                # now we check each rel constraint to make sure our new cat is valid
-                for block in relationship_constraint:
-                    if not check_rel_constraint_groups(block, _temp_cats):
-                        # they aren't! so we remove them from the possibilities
-                        possible_cats.remove(_temp_cats[abbr])
-                        if not possible_cats:
-                            # oops! no more cats available! this patrol isn't possible
-                            return False, temp_involved_cats
-                        else:
-                            # still some possibilities, let's try the next!
-                            continue
-
-                    # if we got here, then this cat works!
-                    temp_involved_cats[abbr] = _temp_cats[abbr]
-
-        # there weren't any possible cats, so we'll create a new one if we're allowed
-        else:
-            # we don't need to check relationship constraints if we're making a new cat
-            if "n_c" in abbr and "can_create_new_cat" in cat_constraints:
-                if (game.clan.clancount == "multiclan" and 
-                    "clancat" in cat_constraints.get("status", [])+cat_constraints.get("past_status", []) and
-                    "-exists" not in cat_constraints.get("can_create_new_cat", {}).get("multiclan_cat", [])):
-                    temp_involved_cats[abbr] = updated_find_clan_cats(
-                        option_dict=cat_constraints,
-                        involved_cats=temp_involved_cats,
-                        clan=self.clan,
-                        other_clan=self.other_clan,
-                    )
-                else:
-                    temp_involved_cats[abbr] = updated_create_new_cat(
-                        option_dict=cat_constraints,
-                        involved_cats=temp_involved_cats,
-                        clan=self.clan,
-                        other_clan=self.other_clan,
-                    )
-                self.new_cats.extend(temp_involved_cats[abbr])
-            else:
-                # if we aren't allowed to make a new one, then we can't do this patrol
-                return False, temp_involved_cats
-
-        return True, temp_involved_cats
 
     def determine_outcome(
         self, antagonize=False

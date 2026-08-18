@@ -5,7 +5,7 @@ from typing import Union, Literal
 
 import i18n
 
-from scripts.cat.cats import Cat
+from scripts.cat.cats import Cat, BACKSTORIES
 from scripts.cat.constants import PERMANENT, ILLNESSES, INJURIES
 from scripts.cat.enums import CatRank, CatSocial, CatThought
 from scripts.cat.skills import SkillPath
@@ -55,6 +55,7 @@ def execute_outcome(
     )
 
     results = [
+        _handle_multiclan(event, event_involved_cats),
         _handle_joining(event, event_involved_cats),
         _handle_death(event, event_involved_cats, other_clan),
         _handle_lost(event, event_involved_cats, tags),
@@ -95,6 +96,141 @@ def execute_outcome(
     # return all the bullshit
     return processed_text, "\n".join(final_results), rel_results
 
+def _handle_multiclan(
+    event: TextPoolEvent, event_involved_cats: dict[str, Union[Cat, list[Cat]]]
+) -> str:
+    """
+    Handles multiclan specific tags
+    """
+    if game.clan.clancount == "singleclan":
+        return ""
+
+    for abbr in event.involved_cats:
+        if "n_c" in abbr:
+            option_dict = event.involved_cats[abbr]
+            multiclan_attributes = option_dict.get("can_create_new_cat", {}).get("multiclan_cat", [])
+            picked_cats = event_involved_cats[abbr]
+            if not isinstance(picked_cats, list):
+                picked_cats = [picked_cats]
+    
+            adoptive_parents = []
+            if par := option_dict.get("can_create_new_cat", {}).get("assign_adoptive_parent", []):
+                for i in par:
+                    adoptive_parents.append(event_involved_cats[i].ID)
+                    adoptive_parents.extend(event_involved_cats[i].mate)
+            chosen_backstory = None
+
+            # OPTION TO OVERRIDE DEFAULT BACKSTORY
+            bs_override = False
+            stor = []
+            if option_dict.get("backstory"):
+                bs_list = option_dict.get("backstory")
+                stor = []
+                for story in bs_list:
+                    if story in set(
+                        [
+                            backstory
+                            for backstory_block in BACKSTORIES[
+                                "backstory_categories"
+                            ].values()
+                            for backstory in backstory_block
+                        ]
+                    ):
+                        stor.append(story)
+                    elif story in BACKSTORIES["backstory_categories"]:
+                        stor.extend(BACKSTORIES["backstory_categories"][story])
+                bs_override = True
+            if bs_override and stor:
+                chosen_backstory = choice(stor)
+                
+            give_mates = []
+            if m := option_dict.get("can_create_new_cat", {}).get("assign_mate", []):
+                for index in m:
+                    if isinstance(event_involved_cats[index], list):
+                        give_mates.extend(event_involved_cats[index])
+                    else:
+                        give_mates.append(event_involved_cats[index])
+
+            if "change_clan" in multiclan_attributes:
+                for cat in picked_cats:
+                    other = cat.status.fetch_clan_object()
+                    if cat.status.rank == CatRank.LEADER:
+                        other.leader = None
+                        other.leader_lives = 0
+                    if cat.status.rank == CatRank.DEPUTY:
+                        other.deputy = None
+                    if cat.status.rank == CatRank.MEDICINE_CAT:
+                        other.remove_med_cat(cat)
+                    if cat.status.rank in [CatRank.LEADER, CatRank.DEPUTY]:
+                        cat.status._change_rank(CatRank.WARRIOR)
+
+                    if "rogue" in status:
+                        cat.leave_clan(CatSocial.ROGUE)
+                    elif "loner" in status:
+                        cat.leave_clan(CatSocial.LONER)
+                    else:
+                        cat.status.add_to_group(clan.group_ID, standing_with_past_group=CatStanding.LEFT)
+                    for app in cat.apprentice.copy():
+                        app_ob = Cat.fetch_cat(app)
+                        if app_ob:
+                            app_ob.update_mentor()
+
+                    cat.update_mentor()
+            elif "change_clan_rev" in multiclan_attributes:
+                other = give_mates[0].status.fetch_clan_object()
+                give_mates[0].status.add_to_group(
+                    other_clan.group_ID, standing_with_past_group=CatStanding.LEFT)
+                if give_mates[0].status.rank == CatRank.LEADER:
+                    other.leader = None
+                    other.leader_lives = 0
+                if give_mates[0].status.rank == CatRank.DEPUTY:
+                    other.deputy = None
+                if give_mates[0].rank == CatRank.MEDICINE_CAT:
+                    other.remove_med_cat(cat)
+                if give_mates[0].status.rank in [CatRank.LEADER, CatRank.DEPUTY]:
+                    give_mates[0].status._change_rank(CatRank.WARRIOR)
+
+            if "dead" in multiclan_attributes:
+                for cat in picked_cats:
+                    cat.die()
+
+            for cat in picked_cats:
+                if chosen_backstory:
+                    cat.backstory = chosen_backstory
+                    cat.history.add_beginning()
+
+                # SET MATES
+                for inter_cat in give_mates:
+                    if cat == inter_cat or cat.ID in inter_cat.mate:
+                        continue
+                    cat.set_mate(inter_cat)
+
+                # ADOPTIVE PARENTS
+                for par in adoptive_parents:
+                    if not par:
+                        continue
+
+                    cat.adoptive_parents.append(par)
+                    par = Cat.fetch_cat(par)
+
+                    y = randrange(0, 20)
+                    start_relation = Relationship(par, cat, False, True)
+                    start_relation.like += 30 + y
+                    start_relation.comfortable = 10 + y
+                    start_relation.respect = 15 + y
+                    start_relation.trust = 10 + y
+                    par.relationships[cat.ID] = start_relation
+
+                    y = randrange(0, 20)
+                    start_relation = Relationship(cat, par, False, True)
+                    start_relation.like += 30 + y
+                    start_relation.comfortable = 10 + y
+                    start_relation.respect = 15 + y
+                    start_relation.trust = 10 + y
+                    cat.relationships[par.ID] = start_relation
+
+                if adoptive_parents:
+                    cat.create_inheritance_new_cat()
 
 def _handle_joining(
     event: TextPoolEvent, event_involved_cats: dict[str, Union[Cat, list[Cat]]]
