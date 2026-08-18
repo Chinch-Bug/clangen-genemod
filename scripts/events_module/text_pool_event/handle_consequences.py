@@ -1,13 +1,14 @@
 import logging
 from html import escape
-from random import choice, randint, random
+from random import choice, randint, random, randrange
 from typing import Union, Literal
 
 import i18n
 
+from scripts.cat_relations.relationship import Relationship
 from scripts.cat.cats import Cat, BACKSTORIES
 from scripts.cat.constants import PERMANENT, ILLNESSES, INJURIES
-from scripts.cat.enums import CatRank, CatSocial, CatThought
+from scripts.cat.enums import CatRank, CatSocial, CatThought, CatStanding
 from scripts.cat.skills import SkillPath
 from scripts.clan import OtherClan
 from scripts.clan_package.cotc import change_clan_reputation, change_clan_relations
@@ -55,7 +56,7 @@ def execute_outcome(
     )
 
     results = [
-        _handle_multiclan(event, event_involved_cats),
+        _handle_multiclan(event, event_involved_cats, clan, other_clan),
         _handle_joining(event, event_involved_cats),
         _handle_death(event, event_involved_cats, other_clan),
         _handle_lost(event, event_involved_cats, tags),
@@ -97,7 +98,7 @@ def execute_outcome(
     return processed_text, "\n".join(final_results), rel_results
 
 def _handle_multiclan(
-    event: TextPoolEvent, event_involved_cats: dict[str, Union[Cat, list[Cat]]]
+    event: TextPoolEvent, event_involved_cats: dict[str, Union[Cat, list[Cat]]], clan, other_clan
 ) -> str:
     """
     Handles multiclan specific tags
@@ -112,6 +113,14 @@ def _handle_multiclan(
             picked_cats = event_involved_cats[abbr]
             if not isinstance(picked_cats, list):
                 picked_cats = [picked_cats]
+
+            status = []
+            if option_dict.get("status"):
+                # check for "clancat" first since it's not really a rank
+                if "clancat" in option_dict["status"]:
+                    status = [r for r in option_dict["status"] if r != "clancat"]
+                else:
+                    status = [option_dict["status"]]
     
             adoptive_parents = []
             if par := option_dict.get("can_create_new_cat", {}).get("assign_adoptive_parent", []):

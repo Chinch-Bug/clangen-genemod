@@ -202,7 +202,7 @@ class GenerateEvents:
                     continue
 
             elif "reputation" in event:
-                if not event_for_reputation(event["reputation"]):
+                if not event_for_reputation(event["reputation"], game.clan):
                     continue
 
             cat_info = event["m_c"]
