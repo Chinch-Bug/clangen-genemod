@@ -604,10 +604,10 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
     give_mates = []
     if m := option_dict.get("can_create_new_cat", {}).get("assign_mate", []):
         for index in m:
-            if isinstance(event_involved_cats[index], list):
-                give_mates.extend(event_involved_cats[index])
+            if isinstance(involved_cats[index], list):
+                give_mates.extend(involved_cats[index])
             else:
-                give_mates.append(event_involved_cats[index])
+                give_mates.append(involved_cats[index])
 
     option_dict = option_dict.copy()
     if option_dict.get("status"):

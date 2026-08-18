@@ -433,7 +433,7 @@ class SpriteInspectScreen(Screens):
             manager=MANAGER,
             check=self.hide_white,
         )
-        if (self.the_cat.phenotype.white_pattern != "No" or self.the_cat.phenotype.white[0] != "w") and (not self.the_cat.chimerapheno or self.the_cat.chimerapheno.white_pattern != "No" or self.the_cat.chimerapheno.white[0] != "w"):
+        if (self.the_cat.phenotype.white_pattern == "No" and self.the_cat.phenotype.white[0] == "w") and (not self.the_cat.chimerapheno or self.the_cat.chimerapheno.white_pattern == "No" and self.the_cat.chimerapheno.white[0] == "w"):
             self.checkboxes["hide_white"].disable()
 
     def make_cat_image(self):
