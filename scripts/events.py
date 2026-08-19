@@ -164,11 +164,10 @@ def one_moon():
             trigger_future_events(clan=clan)
 
     # Calling of "one_moon" functions.
-    other_clan_cats = [c for c in Cat.all_cats_list if c.status.is_other_clancat]
     for cat in Cat.all_cats_list.copy():
         cat.thought = None
         if not cat.status.group_ID or (cat.status.is_other_clancat and game.clan.clancount == "singleclan"):
-            one_moon_outside_cat(cat, other_clan_cats)
+            one_moon_outside_cat(cat)
         elif cat.status.group.is_any_clan_group() or cat.status.group.is_afterlife():
             one_moon_cat(cat, cat.status.fetch_clan_object(game.clan))
         cat.pelt.rebuild_sprite = True
@@ -1104,7 +1103,7 @@ def handle_fading(cat, clan, forced=False):
             add_cat_to_fade_id(cat.ID)
             cat.set_faded()
 
-def one_moon_outside_cat(cat, other_clan_cats: list = None):
+def one_moon_outside_cat(cat):
     """
     exiled cat events
     """
@@ -1113,7 +1112,7 @@ def one_moon_outside_cat(cat, other_clan_cats: list = None):
     # this will also handle increasing dead_for!
     cat.status.increase_current_moons_as()
 
-    cat.one_moon(other_clan_cats)
+    cat.one_moon()
     if cat.dead:
         return
 

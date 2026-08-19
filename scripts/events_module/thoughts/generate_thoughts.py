@@ -39,7 +39,7 @@ def get_new_thought(
         )
 
     if main_cat.status.is_other_clancat and not main_cat.dead and game.clan.clancount == "singleclan":
-        cat_list = other_clan_cats.copy() if other_clan_cats else []
+        cat_list = [c for c in Cat.all_cats_list if c.status.is_other_clancat]
         other_clan_id = main_cat.status.group_ID
     else:
         cat_list = main_cat.all_cats_list.copy()

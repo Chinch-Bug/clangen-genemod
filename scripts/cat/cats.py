@@ -1549,7 +1549,7 @@ class Cat:
     #                              moon skip functions                             #
     # ---------------------------------------------------------------------------- #
 
-    def one_moon(self, other_clan_cats: list = None):
+    def one_moon(self):
         """Handles a moon skip for an alive cat."""
         old_age = self.age
 
