@@ -433,8 +433,6 @@ class ProfileScreen(Screens):
                     self.display_notes.kill()
                     if self.edit_text:
                         self.edit_text.kill()
-                    if self.save_text:
-                        self.save_text.kill()
                     self.help_button.kill()
                 elif self.open_sub_tab == 'life events':
                     self.history_text_box.kill()
@@ -448,8 +446,6 @@ class ProfileScreen(Screens):
                     self.display_notes.kill()
                     if self.edit_text:
                         self.edit_text.kill()
-                    if self.save_text:
-                        self.save_text.kill()
                     self.help_button.kill()
                 elif self.open_sub_tab == 'life events':
                     self.history_text_box.kill()
@@ -2691,8 +2687,7 @@ class ProfileScreen(Screens):
                 self.sub_tab_4.enable()
                 if self.history_text_box:
                     self.history_text_box.kill()
-                    self.no_moons.kill()
-                    self.show_moons.kill()
+                    self.history_tab_checkbox.kill()
                 if self.genetic_text_box:
                     self.genetic_text_box.kill()
                 if self.dev_text_box:
@@ -2714,8 +2709,7 @@ class ProfileScreen(Screens):
                 self.sub_tab_4.disable()
                 if self.history_text_box:
                     self.history_text_box.kill()
-                    self.no_moons.kill()
-                    self.show_moons.kill()
+                    self.history_tab_checkbox.kill()
                 if self.genetic_text_box:
                     self.genetic_text_box.kill()
 
