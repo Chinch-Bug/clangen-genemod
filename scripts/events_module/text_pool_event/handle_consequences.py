@@ -323,7 +323,7 @@ def _handle_death(
             # LEADER
             if c.status.is_leader:
                 if "all_lives" in death_tags:
-                    lives_lost = gclan.leader_lives
+                    lives_lost = clan.leader_lives
                     clan.leader_lives = 0
                     results.append(
                         event_text_adjust(
