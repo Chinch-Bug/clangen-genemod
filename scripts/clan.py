@@ -17,7 +17,7 @@ import i18n
 import ujson
 
 from scripts.cat.cats import Cat, BACKSTORIES
-from scripts.cat.enums import CatRank, CatGroup, CatSocial, CatCompatibility, CatAge
+from scripts.cat.enums import CatRank, CatGroup, CatSocial, CatCompatibility, CatAge, CatThought
 from scripts.cat.factories.new_cat_factory import NewCatFactory
 from scripts.cat.factories.create_example_cat import create_example_cats
 from scripts.cat.factories.typed_dicts import StatusDict
@@ -814,6 +814,8 @@ class Clan:
             game.clan.instructor.status.group_history.insert(0, {"rank": game.clan.instructor.status.rank, "group": CatGroup.PLAYER_CLAN_ID, "moons_as": self.instructor.moons})
             # update_sprite(game.clan.instructor)
             game.clan.add_cat(game.clan.instructor)
+
+        game.clan.instructor.assign_thought(CatThought.IS_GUIDE)
 
         # check for symbol
         if "clan_symbol" in clan_data:

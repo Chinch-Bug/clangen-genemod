@@ -204,7 +204,7 @@ def handle_two_moon_pregnant(cat: Cat, clan):
             kit.moons = 0
             if not kit.dead:
                 kit.dead = True
-            kit.get_new_thought(CatThought.ON_DEATH)
+            kit.assign_thought(CatThought.ON_DEATH)
             kit.history.add_death(str(kit.name) + " was stillborn.")
     set_biggest_family(clan)
 

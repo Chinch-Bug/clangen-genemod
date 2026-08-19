@@ -275,7 +275,7 @@ def _find_involved_cat(
                 involved_cats=temp_involved_cats,
                 clan=clan,
                 other_clan=other_clan,
-                )
+            )
             if len(temp_involved_cats[abbr]) == 1:
                 # if this is a list of a single cat, then we take them out of the list
                 temp_involved_cats[abbr] = temp_involved_cats[abbr][0]

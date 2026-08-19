@@ -1,14 +1,17 @@
 import traceback
 from random import choice, getrandbits, choices
-from typing import TYPE_CHECKING, Optional
+from typing import Optional
 
 import i18n
 
+from scripts.cat.cats import Cat
 from scripts.cat.enums import CatGroup, CatThought, CatAge
+from scripts.game_structure.game.settings import game_setting_get
 from scripts.events_module.event_filters import (
     event_for_cat,
     check_rel_constraint_groups,
 )
+from scripts.events_module.text_adjust import event_text_adjust
 from scripts.events_module.text_pool_event.check_general_constraints import (
     passes_general_constraints,
 )
@@ -17,14 +20,71 @@ from scripts.config import get_config
 from scripts.game_structure import game
 from scripts.game_structure.localization import load_lang_resource
 
-if TYPE_CHECKING:
-    from scripts.cat.cats import Cat
-
 loaded_thoughts = {}
 
 
-def new_thought(
-    thought_type: CatThought, main_cat: "Cat", other_cat: "Cat", other_clan_id: str, ageup=False
+def get_new_thought(
+    main_cat: Cat, thought_type: CatThought = None, other_cat: Cat = None
+):
+    """
+    Generates a thought for the cat, which displays on their profile.
+    :param main_cat: The cat object receiving the thought.
+    :param thought_type: Indicate what type of thought should be generated
+    :param other_cat: If a specific other cat should be included, include their object here.
+    """
+    # default thought type
+    if not thought_type:
+        thought_type = (
+            CatThought.WHILE_DEAD if main_cat.dead else CatThought.WHILE_ALIVE
+        )
+
+    if main_cat.status.is_other_clancat and not main_cat.dead and game.clan.clancount == "singleclan":
+        cat_list = other_clan_cats.copy() if other_clan_cats else []
+        other_clan_id = main_cat.status.group_ID
+    else:
+        cat_list = main_cat.all_cats_list.copy()
+        if main_cat.status.is_other_clancat:
+            other_clan_id = (
+                choice([i for i in game.clan.other_clan_IDs if i != main_cat.status.group_ID]+[game.clan.group_ID])
+                if game.clan and game.clan.other_clan_IDs
+                else None
+            )
+        else:
+            other_clan_id = (
+                choice(game.clan.other_clan_IDs)
+                if game.clan
+                and hasattr(game.clan, "other_clan_ids")
+                and game.clan.other_clan_IDs
+                else None
+            )  # this is so stupid convoluted because of tests and game.clan initialization
+
+    clan = main_cat.status.fetch_clan_object(game.clan)
+
+    if not other_cat:
+        other_cat = _get_other_cat_for_thought(
+            cat_list=cat_list,
+            main_cat=main_cat,
+        )
+
+    # get chosen thought
+    chosen_thought = _new_thought(
+        thought_type, main_cat, other_cat, other_clan_id=other_clan_id, ageup=game_setting_get("ageup dead")
+    )
+
+    chosen_thought = event_text_adjust(
+        Cat,
+        chosen_thought,
+        main_cat=main_cat,
+        random_cat=other_cat,
+        clan=clan,
+    )
+
+    # insert thought
+    main_cat.thought = str(chosen_thought)
+
+
+def _new_thought(
+    thought_type: CatThought, main_cat: Cat, other_cat: Cat, other_clan_id: str, ageup=False
 ):
     """
     Finds a thought appropriate for the given args.
@@ -77,8 +137,8 @@ def new_thought(
 
 
 def _get_valid_event(
-    main_cat: "Cat",
-    random_cat: "Cat",
+    main_cat: Cat,
+    random_cat: Cat,
     possible_thoughts: list[TextPoolEvent],
     other_clan_id: str,
     ageup=False
@@ -178,9 +238,7 @@ def _get_valid_event(
     return chosen_event
 
 
-def get_other_cat_for_thought(
-    cat_list: list["Cat"], main_cat: "Cat"
-) -> Optional["Cat"]:
+def _get_other_cat_for_thought(cat_list: list[Cat], main_cat: Cat) -> Optional[Cat]:
     """
     Returns a cat object selected from the given cat_list. This will be a cat acceptable as the subject of main_cat's thought.
     """
@@ -228,7 +286,7 @@ def get_other_cat_for_thought(
     return other_cat
 
 
-def _load_allowed_thoughts(thought_type: CatThought, main_cat: "Cat", ageup=False):
+def _load_allowed_thoughts(thought_type: CatThought, main_cat: Cat, ageup=False):
     """
     Loads and returns thoughts appropriate for the given cat.
     """
@@ -335,7 +393,7 @@ def _load_allowed_thoughts(thought_type: CatThought, main_cat: "Cat", ageup=Fals
     return thoughts
 
 
-def _get_exiled_and_former(main_cat: "Cat", path) -> list:
+def _get_exiled_and_former(main_cat: Cat, path) -> list:
     """
     Checks if cat needs exiled or former clancat thoughts and returns loaded resources
     """
@@ -351,7 +409,7 @@ def _get_exiled_and_former(main_cat: "Cat", path) -> list:
     return thoughts
 
 
-def _get_general(main_cat: "Cat", path) -> list:
+def _get_general(main_cat: Cat, path) -> list:
     """
     Returns general thoughts if the cat is not a newborn
     """
@@ -362,7 +420,7 @@ def _get_general(main_cat: "Cat", path) -> list:
     return []
 
 
-def _get_clancat(main_cat: "Cat", path) -> list:
+def _get_clancat(main_cat: Cat, path) -> list:
     """
     Returns clancat thoughts if the cat is a clancat
     """

@@ -18,11 +18,12 @@
             "-&-default_comment-&-": "Default is the fallback/'what-happens-if-nothing-matches' pronoun set. Also the 'they them default' value."
         },
         "conju_count": 2,
-        "gender_count": 3,
+        "gender_count": 4,
         "plural_rules": {
             "order": {
                 "1": "plural male",
                 "2": "plural female",
+                "3": "plural agender",
                 "0": "plural nonbinary"
             }
         },

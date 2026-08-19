@@ -3,6 +3,7 @@ import pygame_gui
 
 from scripts.game_structure import game
 from scripts.ui.elements.image_button import UIImageButton
+from scripts.ui.elements.checkbox import UICheckbox
 from scripts.screens.enums import GameScreen
 from scripts.ui.windows.window_base_class import GameWindow
 from scripts.ui.scale import ui_scale
@@ -11,6 +12,13 @@ from scripts.ui.scale import ui_scale
 class CatToggleWindow(GameWindow):
     """This window allows the user to edit various cat behavior toggles"""
 
+    cat_toggles = [
+        "prevent_fading",
+        "prevent_kits",
+        "prevent_retirement",
+        "prevent_romance",
+    ]
+
     def __init__(self, cat):
         super().__init__(
             ui_scale(pygame.Rect((300, 215), (400, 185))),
@@ -18,101 +26,66 @@ class CatToggleWindow(GameWindow):
         self.the_cat = cat
 
         self.checkboxes = {}
+        self.textbox = {}
         self.refresh_checkboxes()
 
-        # Text
-        self.text_1 = pygame_gui.elements.UITextBox(
-            "windows.prevent_fading",
-            ui_scale(pygame.Rect(55, 25, -1, 32)),
-            object_id="#text_box_30_horizleft_pad_0_8",
-            container=self,
-        )
-
-        self.text_2 = pygame_gui.elements.UITextBox(
-            "windows.prevent_kits",
-            ui_scale(pygame.Rect(55, 50, -1, 32)),
-            object_id="#text_box_30_horizleft_pad_0_8",
-            container=self,
-        )
-
-        self.text_3 = pygame_gui.elements.UITextBox(
-            "windows.prevent_retirement",
-            ui_scale(pygame.Rect(55, 75, -1, 32)),
-            object_id="#text_box_30_horizleft_pad_0_8",
-            container=self,
-        )
-
-        self.text_4 = pygame_gui.elements.UITextBox(
-            "windows.prevent_romance",
-            ui_scale(pygame.Rect(55, 100, -1, 32)),
-            object_id="#text_box_30_horizleft_pad_0_8",
-            container=self,
-        )
+        prev_element = None
+        for text in self.cat_toggles:
+            self.textbox[text] = pygame_gui.elements.UITextBox(
+                f"windows.{text}",
+                ui_scale(pygame.Rect(55, 0 if prev_element else 26, -1, 34)),
+                object_id="#text_box_30_horizleft_pad_0_8",
+                container=self,
+                anchors={"top_target": prev_element} if prev_element else None,
+            )
+            prev_element = self.textbox[text]
 
     def refresh_checkboxes(self):
-        for x in self.checkboxes.values():
-            x.kill()
+        for ele in self.checkboxes:
+            self.checkboxes[ele].kill()
         self.checkboxes = {}
 
-        # Prevent Fading
+        self.checkboxes["prevent_fading"] = UICheckbox(
+            (22, 25),
+            container=self,
+            tool_tip_text=f"windows.prevent_fading_tooltip",
+            check=self.the_cat.prevent_fading,
+        )
+        self.checkboxes["prevent_kits"] = UICheckbox(
+            (22, 0),
+            container=self,
+            anchors={
+                "top_target": self.checkboxes["prevent_fading"],
+            },
+            tool_tip_text=f"windows.prevent_kits_tooltip",
+            check=self.the_cat.no_kits,
+        )
+
+        self.checkboxes["prevent_retirement"] = UICheckbox(
+            (22, 0),
+            container=self,
+            anchors={
+                "top_target": self.checkboxes["prevent_kits"],
+            },
+            tool_tip_text=f"windows.prevent_retirement_tooltip",
+            check=self.the_cat.no_retire,
+        )
+
+        self.checkboxes["prevent_romance"] = UICheckbox(
+            (22, 0),
+            container=self,
+            anchors={
+                "top_target": self.checkboxes["prevent_retirement"],
+            },
+            tool_tip_text=f"windows.prevent_romance_tooltip",
+            check=self.the_cat.no_mates,
+        )
+
         if self.the_cat in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_other_clans if clan.instructor]:
-            box_type = "@checked_checkbox"
-            tool_tip = "windows.prevent_fading_tooltip_guide"
-        elif self.the_cat.prevent_fading:
-            box_type = "@checked_checkbox"
-            tool_tip = "windows.prevent_fading_tooltip"
-        else:
-            box_type = "@unchecked_checkbox"
-            tool_tip = "windows.prevent_fading_tooltip"
-
-        # Fading
-        self.checkboxes["prevent_fading"] = UIImageButton(
-            ui_scale(pygame.Rect((22, 25), (34, 34))),
-            "",
-            container=self,
-            object_id=box_type,
-            tool_tip_text=tool_tip,
-        )
-
-        if self.the_cat == game.clan.instructor:
+            self.checkboxes["prevent_fading"].set_tooltip(
+                "windows.prevent_fading_tooltip_guide"
+            )
             self.checkboxes["prevent_fading"].disable()
-
-        # No Kits
-        self.checkboxes["prevent_kits"] = UIImageButton(
-            ui_scale(pygame.Rect((22, 50), (34, 34))),
-            "",
-            container=self,
-            object_id=(
-                "@checked_checkbox" if self.the_cat.no_kits else "@unchecked_checkbox"
-            ),
-            tool_tip_text="windows.prevent_kits_tooltip",
-        )
-
-        # No Retire
-        self.checkboxes["prevent_retire"] = UIImageButton(
-            ui_scale(pygame.Rect((22, 75), (34, 34))),
-            "",
-            container=self,
-            object_id=(
-                "@checked_checkbox" if self.the_cat.no_retire else "@unchecked_checkbox"
-            ),
-            tool_tip_text=(
-                "windows.prevent_retirement_tooltip_yes"
-                if self.the_cat.no_retire
-                else "windows.prevent_retirement_tooltip_no"
-            ),
-        )
-
-        # No mates
-        self.checkboxes["prevent_mates"] = UIImageButton(
-            ui_scale(pygame.Rect((22, 100), (34, 34))),
-            "",
-            container=self,
-            object_id=(
-                "@checked_checkbox" if self.the_cat.no_mates else "@unchecked_checkbox"
-            ),
-            tool_tip_text="windows.prevent_romance_tooltip",
-        )
 
     def process_event(self, event):
         if event.type == pygame_gui.UI_BUTTON_START_PRESS:
@@ -120,17 +93,16 @@ class CatToggleWindow(GameWindow):
                 game.all_screens[GameScreen.PROFILE].exit_screen()
                 game.all_screens[GameScreen.PROFILE].screen_switches()
             elif event.ui_element == self.checkboxes["prevent_fading"]:
-                self.the_cat.prevent_fading = not self.the_cat.prevent_fading
-                self.refresh_checkboxes()
-                self.the_cat.pelt.rebuild_sprite = True
+                self.checkboxes["prevent_fading"].toggle()
+                self.the_cat.prevent_fading = self.checkboxes["prevent_fading"].checked
             elif event.ui_element == self.checkboxes["prevent_kits"]:
-                self.the_cat.no_kits = not self.the_cat.no_kits
-                self.refresh_checkboxes()
-            elif event.ui_element == self.checkboxes["prevent_retire"]:
-                self.the_cat.no_retire = not self.the_cat.no_retire
-                self.refresh_checkboxes()
-            elif event.ui_element == self.checkboxes["prevent_mates"]:
-                self.the_cat.no_mates = not self.the_cat.no_mates
-                self.refresh_checkboxes()
+                self.checkboxes["prevent_kits"].toggle()
+                self.the_cat.prevent_fading = self.checkboxes["prevent_kits"].checked
+            elif event.ui_element == self.checkboxes["prevent_retirement"]:
+                self.checkboxes["prevent_retirement"].toggle()
+                self.the_cat.prevent_fading = self.checkboxes["prevent_retirement"].checked
+            elif event.ui_element == self.checkboxes["prevent_romance"]:
+                self.checkboxes["prevent_romance"].toggle()
+                self.the_cat.prevent_fading = self.checkboxes["prevent_romance"].checked
 
         return super().process_event(event)

@@ -112,7 +112,7 @@ class ChangeCatClanWindow(GameWindow):
                         else:
                             self.the_cat.status._change_rank(CatRank.MEDICINE_CAT)
                 self.the_cat.update_mentor()
-                self.the_cat.get_new_thought()
+                self.the_cat.assign_thought()
                 if not self.the_cat.status.is_near():
                     self.the_cat.status.standing_history[-1]["near"] = True
                 game.all_screens["profile_screen"].exit_screen()

@@ -98,7 +98,7 @@ def create_bio_parents(Cat, flip=False, second_parent=True, age=None, clan=None)
 
     if thought:
         if blood_parent:
-            blood_parent.get_new_thought(thought)
+            blood_parent.assign_thought(thought)
 
             if blood_parent.status.rank == CatRank.MEDICINE_CAT:
                 blood_parent.backstory = choice(["medicine_cat", "disgraced1"])
@@ -108,7 +108,7 @@ def create_bio_parents(Cat, flip=False, second_parent=True, age=None, clan=None)
                         f"former_clancat_backstories", ["outsider1"])
                 )
         if blood_parent2:
-            blood_parent2.get_new_thought(thought)
+            blood_parent2.assign_thought(thought)
             if blood_parent2.status.rank == CatRank.MEDICINE_CAT:
                 blood_parent2.backstory = choice(
                     ["medicine_cat", "disgraced1"])
@@ -1101,7 +1101,7 @@ def create_new_cat(
                 new_cat.status = Status(**{"group_ID": new_cat.status.group_ID,
                                            "rank": CatRank.NEWBORN, "age": CatAge.NEWBORN})
                 new_cat.dead = True
-                new_cat.get_new_thought(CatThought.ON_DEATH)
+                new_cat.assign_thought(CatThought.ON_DEATH)
                 new_cat.history.add_death(
                     str(new_cat.name) + " was stillborn.")
         # this simulates a "history" as whomever they used to be
@@ -1266,7 +1266,7 @@ def create_new_cat(
             new_cat.die()
 
         # newbie thought
-        new_cat.get_new_thought(thought)
+        new_cat.assign_thought(thought)
 
         # and they exist now
         created_cats.append(new_cat)

@@ -261,7 +261,7 @@ def get_kits(
                 kits_amount += 1
                 identical = True
 
-        kit.get_new_thought()
+        kit.assign_thought()
 
         # make lost status match parent
         if cat and cat.status.is_lost():
@@ -381,14 +381,14 @@ def get_kits(
             final_adoptive_parents.append(adoptive_p)
         if Cat.fetch_cat(adoptive_p).status.group_ID != all_kitten[0].status.group_ID:
             continue
-        Cat.fetch_cat(adoptive_p).get_new_thought(CatThought.ON_BIRTH)
+        Cat.fetch_cat(adoptive_p).assign_thought(CatThought.ON_BIRTH)
     if not adoptive_parents:
-        cat.get_new_thought(CatThought.ON_BIRTH)
+        cat.assign_thought(CatThought.ON_BIRTH)
         if other_cat:
             for x in other_cat:
                 if x.status.group_ID != all_kitten[0].status.group_ID:
                     continue
-                x.get_new_thought(CatThought.ON_BIRTH)
+                x.assign_thought(CatThought.ON_BIRTH)
 
     # Add the adoptive parents.
     for kit in all_kitten:
@@ -576,15 +576,15 @@ def handle_adoption(cat: Cat, other_cat: Optional[Cat] = None, clan=game.clan):
     )
     
     cats_involved = [cat.ID]
-    cat.get_new_thought(CatThought.ON_BIRTH)
+    cat.assign_thought(CatThought.ON_BIRTH)
     if other_cat:
         for x in other_cat:
             if x.status.group_ID != kits[0].status.group_ID:
                 continue
             cats_involved.append(x.ID)
-            x.get_new_thought(CatThought.ON_BIRTH)
+            x.assign_thought(CatThought.ON_BIRTH)
     for kit in kits:
-        kit.get_new_thought(CatThought.ON_JOIN)
+        kit.assign_thought(CatThought.ON_JOIN)
         cats_involved.append(kit.ID)
         kit.add_to_clan(clan.group_ID)
 

@@ -42,7 +42,14 @@ def updated_create_new_cat(
         if "clancat" in option_dict["status"]:
             status["social"] = CatSocial.CLANCAT
             possible_ranks = [r for r in option_dict["status"] if r != "clancat"]
-            possible_ranks.extend([r for r in [*CatRank] if r.is_any_clancat_rank()])
+            possible_ranks.extend(
+                [
+                    r
+                    for r in [*CatRank]
+                    if r.is_any_clancat_rank()
+                    and r not in (CatRank.LEADER, CatRank.DEPUTY)
+                ]
+            )
         else:
             possible_ranks = option_dict["status"]
 
@@ -178,7 +185,7 @@ def updated_create_new_cat(
                 created_cat.status = StatusDict({"group_ID": created_cat.status.group_ID,
                                            "rank": CatRank.NEWBORN, "age": CatAge.NEWBORN})
                 created_cat.dead = True
-                created_cat.get_new_thought(CatThought.ON_DEATH)
+                created_cat.assign_thought(CatThought.ON_DEATH)
                 created_cat.history.add_death(str(created_cat.name) + " was stillborn.")
 
         if get_clan_setting('tnr_mode') and created_cat.moons > 5:
@@ -215,6 +222,7 @@ def updated_create_new_cat(
         _assign_name(created_cat)
 
         created_cat.create_relationships_new_cat()
+        game.clan.add_cat(created_cat)
         new_cats.append(created_cat)
 
     # ESTABLISH FAMILY RELATIONSHIPS
