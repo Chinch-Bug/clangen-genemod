@@ -1,7 +1,7 @@
 import pygame
 import pygame_gui
 
-from scripts.cat.names import Name, names
+from scripts.cat.names import Name
 from scripts.game_structure import game
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.ui.elements.image_button import UIImageButton
@@ -192,7 +192,7 @@ class ChangeCatNameWindow(GameWindow):
                         ).prefix
                     )
                 else:
-                    self.prefix_entry_box.set_text(choice(names.names_dict["loner_names"]))
+                    self.prefix_entry_box.set_text(choice(Name.names_dict["loner_names"]))
             elif event.ui_element == self.random_suffix:
                 if self.prefix_entry_box.text:
                     use_prefix = self.prefix_entry_box.text

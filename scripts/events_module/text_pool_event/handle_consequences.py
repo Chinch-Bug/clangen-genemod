@@ -58,7 +58,7 @@ def execute_outcome(
     results = [
         _handle_multiclan(event, event_involved_cats, clan, other_clan),
         _handle_joining(event, event_involved_cats),
-        _handle_death(event, event_involved_cats, other_clan),
+        _handle_death(event, event_involved_cats, clan, other_clan),
         _handle_lost(event, event_involved_cats, tags),
         _handle_conditions(event, event_involved_cats, other_clan),
         _handle_reputation_changes(event, clan, other_clan),
@@ -291,6 +291,7 @@ def _handle_joining(
 def _handle_death(
     event: TextPoolEvent,
     event_involved_cats: dict[str, Union[Cat, list[Cat]]],
+    clan,
     other_clan: OtherClan,
 ) -> str:
     """
@@ -322,8 +323,8 @@ def _handle_death(
             # LEADER
             if c.status.is_leader:
                 if "all_lives" in death_tags:
-                    lives_lost = game.clan.leader_lives
-                    game.clan.leader_lives = 0
+                    lives_lost = gclan.leader_lives
+                    clan.leader_lives = 0
                     results.append(
                         event_text_adjust(
                             Cat,
@@ -332,8 +333,8 @@ def _handle_death(
                         )
                     )
                 elif "some_lives" in death_tags:
-                    lives_lost = randint(2, max(1, game.clan.leader_lives - 1))
-                    game.clan.leader_lives -= lives_lost
+                    lives_lost = randint(2, max(1, clan.leader_lives - 1))
+                    clan.leader_lives -= lives_lost
                     for i in range(lives_lost - 1):
                         c.history.add_death("multi_lives")
                     results.append(
@@ -345,7 +346,7 @@ def _handle_death(
                     )
                 else:
                     lives_lost = 1
-                    game.clan.leader_lives -= 1
+                    clan.leader_lives -= 1
                     results.append(
                         event_text_adjust(
                             Cat,

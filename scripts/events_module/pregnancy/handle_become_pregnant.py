@@ -1,5 +1,6 @@
 from random import randint, choice, choices, random
 from typing import Optional, List
+from copy import copy
 
 import i18n
 
@@ -52,6 +53,15 @@ def handle_zero_moon_pregnant(cat: Cat, other_cat=None, surrogate=False, clan=ga
         # if the other cat is afab and the current cat is amab, make the afab cat pregnant
         pregnant_cat = cat
         second_parent = other_cat
+        second_parent_copy = copy(second_parent)
+        if second_parent:
+            for x in second_parent_copy:
+                if cat_is_amab(pregnant_cat) and not cat_is_amab(x):
+                    second_parent.append(pregnant_cat)
+                    second_parent.remove(x)
+                    pregnant_cat = x
+                    break
+
         _handle_pregnancy_notice(pregnant_cat, second_parent, surrogate, hidden, clan)
 
 

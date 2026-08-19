@@ -628,7 +628,7 @@ class Phenotype(Genotype):
         tortie_low_patterns = self.def_tortie_low_patterns
         tortie_mid_patterns = self.def_tortie_mid_patterns
         tortie_high_patterns = self.def_tortie_high_patterns
-        tiny_patches = ["BACKSPOT", "BEARD", "BELLY", "BIB", "revBLACKSTAR", "BLAZE", "BLAZEMASK", "revBOOTS", "CHESTSPECK", "ESTRELLA",
+        tiny_patches = ["BACKSPOT", "BEARD", "BELLY", "BIB", "revBLACKSTAR", "BLAZE", "BLAZE_MIN", "BLAZEMASK", "revBOOTS", "CHESTSPECK", "ESTRELLA",
                         "EYEBAGS", "revEYESPOT", "revHEART", "HONEY", "LEFTEAR_MID", "LEFTEAR_MOSTLY", "LEFTEAR_RING", "LEFTEAR_TIP", "LEFTEAR", "LITTLE", "PAWS", "REVERSEEYE", "REVERSEHEART", 
                         "RIGHTEAR_MID", "RIGHTEAR_MOSTLY", "RIGHTEAR_RING", "RIGHTEAR_TIP", "RIGHTEAR", "SCOURGE", "SPARKLE", "revTAIL", 'revTAILTWO', "TAILTIP", "TEARS", "TIP",
                         "TOES", "TOESTAIL", "VEE", "HELMET"]

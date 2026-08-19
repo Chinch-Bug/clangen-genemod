@@ -29,6 +29,7 @@ class Name:
     names_dict = {}
     mod_prefixes = {}
     mod_suffixes = {}
+    prefix_history = []
 
     def __init__(
         self,
@@ -84,87 +85,65 @@ class Name:
                     # needed for random dice when we're changing the Prefix
                     name_fixpref = False
     
-    def load_clan_names(self, clan):
+    @classmethod
+    def load_clan_names(cls, clan):
         if not os.path.exists(get_save_dir() + f"/{clan}" + "/names"):
             return
         if os.path.exists(get_save_dir() + f"/{clan}" + "/names" + "/alt_prefixes.json"):
             with open(get_save_dir() + f"/{clan}" + "/names" + "/alt_prefixes.json") as read_file:
-                self.mod_prefixes = ujson.loads(read_file.read())
+                cls.mod_prefixes = ujson.loads(read_file.read())
         if os.path.exists(get_save_dir() + f"/{clan}" + "/names" + '/alt_suffixes.json'):
             with open(get_save_dir() + f"/{clan}" + "/names" + '/alt_suffixes.json') as read_file:
-                self.mod_suffixes = ujson.loads(read_file.read())
+                cls.mod_suffixes = ujson.loads(read_file.read())
         if os.path.exists(get_save_dir() + f"/{clan}" + "/names" + '/names.json'):
             with open(get_save_dir() + f"/{clan}" + "/names" + '/names.json') as read_file:
-                self.names_dict = ujson.loads(read_file.read())
+                cls.names_dict = ujson.loads(read_file.read())
 
-    def check_name(self, cat, name_fixpref):
-        if not self.suffix:
-            return
+    @classmethod
+    def _usable_name(cls, prefix, suffix, cat):
+        if prefix is None or suffix is None:
+            return True
+
+        name = prefix + suffix
+
         # Prevent triple letter names from joining prefix and suffix from occurring (ex. Beeeye)
-        possible_three_letter = (
-            (self.prefix[-2:] if len(self.prefix) > 2 else self.prefix) + self.suffix[0],
-            self.prefix[-1] + self.suffix[:2],
-        )
-        triple_letter = all(
-            i == possible_three_letter[0][0] for i in possible_three_letter[0]
-        ) or all(
-            i == possible_three_letter[1][0]
-            for i in possible_three_letter[1]
-            # Prevent double animal names (ex. Spiderfalcon)
-        )
+        # Prevent crash on empty prefix or suffix (e.g. empty-suffix loner names)
+        if not prefix or not suffix:
+            triple_letter = False
+        else:
+            possible_three_letter = (
+                (prefix[-2:] if len(prefix) > 2 else prefix) + suffix[0],
+                prefix[-1] + suffix[:2],
+            )
+            triple_letter = all(
+                i == possible_three_letter[0][0] for i in possible_three_letter[0]
+            ) or all(i == possible_three_letter[1][0] for i in possible_three_letter[1])
+
+        # Prevent double animal names (ex. Spiderfalcon)
         double_animal = (
-            self.prefix in self.names_dict["animal_prefixes"]
-            and self.suffix in self.names_dict["animal_suffixes"]
+            prefix in cls.names_dict["animal_prefixes"]
+            and suffix in cls.names_dict["animal_suffixes"]
         )
-        # Prevent the inappropriate names
-        nono_name = self.prefix + self.suffix
+
         # Prevent double names (ex. Iceice)
         # Prevent suffixes containing the prefix (ex. Butterflyfly)
+        double_name = (prefix.lower() in suffix.lower() and str(prefix) != "") or (
+            suffix.lower() in prefix.lower() and str(suffix) != ""
+        )
 
-        i = 0
-        while (
-            nono_name.lower() in self.names_dict["inappropriate_names"]
+        scarlessscar = (cat and hasattr(cat, "pelt") and not cat.pelt.scars and suffix == "scar")
+
+        return not (
+            # Prevent the inappropriate names
+            name.lower() in cls.names_dict["inappropriate_names"]
             or triple_letter
             or double_animal
-            or (
-                self.prefix.lower() in self.suffix.lower()
-                and str(self.prefix) != ""
-            )
-            or (
-                self.suffix.lower() in self.prefix.lower()
-                and str(self.suffix) != ""
-            )
-            or (
-                self.cat and hasattr(self.cat, "pelt") and not self.cat.pelt.scars 
-                and self.suffix == "scar"
-            )
-        ):
-            # check if random die was for prefix
-            if name_fixpref and not(self.cat and hasattr(self.cat, "pelt") and not self.cat.pelt.scars and self.suffix == "scar"):
-                self.give_prefix(cat, self.biome)
-            else:
-                self.suffix = ""
-                self.give_suffix(self.skills, self.personality, self.biome, self.honour)
+            or double_name
+            or scarlessscar
+        )
 
-            nono_name = self.prefix + self.suffix
-            possible_three_letter = (
-                (self.prefix[-2:] if len(self.prefix) > 2 else self.prefix) + self.suffix[0],
-                self.prefix[-1] + self.suffix[:2],
-            )
-            if any(
-                i != possible_three_letter[0][0] for i in possible_three_letter[0]
-            ) and any(
-                i != possible_three_letter[1][0] for i in possible_three_letter[1]
-            ):
-                triple_letter = False
-            if (
-                self.prefix not in self.names_dict["animal_prefixes"]
-                or self.suffix not in self.names_dict["animal_suffixes"]
-            ):
-                double_animal = False
-            i += 1
-
-    def load_localized_names(self):
+    @classmethod
+    def load_localized_names(cls):
         """
         Loads the correct names for the given language. Includes override for always using English names, in case localization wants to be ignored
         :return: None
@@ -185,87 +164,75 @@ class Name:
         except:
             current_clan = None
 
-        if (
-            self.current_save_dir != get_save_dir()
-            or self.currently_loaded_lang != lang
-            or self.currently_loaded_clan != current_clan
-        ):
-            if always_english:
-                with open("resources/lang/en/names.json", encoding="utf-8") as read_file:
-                    names_dict = ujson.loads(read_file.read())
+        if cls.current_save_dir == get_save_dir() and cls.currently_loaded_lang == lang and cls.currently_loaded_clan == current_clan:
+            # nothing to do here, all good
+            return
 
-                if os.path.exists('resources/lang/en/alt_prefixes.json'):
-                    with open('resources/lang/en/alt_prefixes.json') as read_file:
-                        self.mod_prefixes = ujson.loads(read_file.read())
-                if os.path.exists('resources/lang/en/alt_suffixes.json'):
-                    with open('resources/lang/en/alt_suffixes.json') as read_file:
-                        self.mod_suffixes = ujson.loads(read_file.read())
-            else:
-                names_dict = load_lang_resource("names.json")
-                try:
-                    self.mod_prefixes = load_lang_resource("alt_prefixes.json")
-                    self.mod_suffixes = load_lang_resource("alt_suffixes.json")
-                except:
-                    pass
+        names_dict = load_lang_resource("names.json")
+        try:
+            cls.mod_prefixes = load_lang_resource("alt_prefixes.json")
+            cls.mod_suffixes = load_lang_resource("alt_suffixes.json")
+        except:
+            pass
 
-            save_dir = get_save_dir()
+        save_dir = get_save_dir()
 
-            # here onwards is copied wholesale from the original Name class
+        # here onwards is copied wholesale from the original Name class
 
-            if os.path.exists(save_dir + "/prefixlist.txt"):
-                with open(
-                    str(save_dir + "/prefixlist.txt"), "r", encoding="utf-8"
-                ) as read_file:
-                    name_list = read_file.read()
-                    if_names = len(name_list)
-                if if_names > 0:
-                    new_names = name_list.split("\n")
-                    for new_name in new_names:
-                        if new_name != "":
-                            if new_name.startswith("-"):
-                                while new_name[1:] in names_dict["normal_prefixes"]:
-                                    names_dict["normal_prefixes"].remove(new_name[1:])
-                            else:
-                                names_dict["normal_prefixes"].append(new_name)
+        if os.path.exists(save_dir + "/prefixlist.txt"):
+            with open(
+                str(save_dir + "/prefixlist.txt"), "r", encoding="utf-8"
+            ) as read_file:
+                name_list = read_file.read()
+                if_names = len(name_list)
+            if if_names > 0:
+                new_names = name_list.split("\n")
+                for new_name in new_names:
+                    if new_name != "":
+                        if new_name.startswith("-"):
+                            while new_name[1:] in names_dict["normal_prefixes"]:
+                                names_dict["normal_prefixes"].remove(new_name[1:])
+                        else:
+                            names_dict["normal_prefixes"].append(new_name)
 
-            if os.path.exists(save_dir + "/suffixlist.txt"):
-                with open(
-                    str(save_dir + "/suffixlist.txt"), "r", encoding="utf-8"
-                ) as read_file:
-                    name_list = read_file.read()
-                    if_names = len(name_list)
-                if if_names > 0:
-                    new_names = name_list.split("\n")
-                    for new_name in new_names:
-                        if new_name != "":
-                            if new_name.startswith("-"):
-                                while new_name[1:] in names_dict["normal_suffixes"]:
-                                    names_dict["normal_suffixes"].remove(new_name[1:])
-                            else:
-                                names_dict["normal_suffixes"].append(new_name)
+        if os.path.exists(save_dir + "/suffixlist.txt"):
+            with open(
+                str(save_dir + "/suffixlist.txt"), "r", encoding="utf-8"
+            ) as read_file:
+                name_list = read_file.read()
+                if_names = len(name_list)
+            if if_names > 0:
+                new_names = name_list.split("\n")
+                for new_name in new_names:
+                    if new_name != "":
+                        if new_name.startswith("-"):
+                            while new_name[1:] in names_dict["normal_suffixes"]:
+                                names_dict["normal_suffixes"].remove(new_name[1:])
+                        else:
+                            names_dict["normal_suffixes"].append(new_name)
 
-            if os.path.exists(save_dir + "/specialsuffixes.txt"):
-                with open(
-                    str(save_dir + "/specialsuffixes.txt", "r"), encoding="utf-8"
-                ) as read_file:
-                    name_list = read_file.read()
-                    if_names = len(name_list)
-                if len(name_list) > 0:
-                    new_names = name_list.split("\n")
-                    for new_name in new_names:
-                        if new_name != "":
-                            if new_name.startswith("-"):
-                                del names_dict["special_suffixes"][new_name[1:]]
-                            elif ":" in new_name:
-                                _tmp = new_name.split(":")
-                                names_dict["special_suffixes"][_tmp[0]] = _tmp[1]
+        if os.path.exists(save_dir + "/specialsuffixes.txt"):
+            with open(
+                str(save_dir + "/specialsuffixes.txt", "r"), encoding="utf-8"
+            ) as read_file:
+                name_list = read_file.read()
+                if_names = len(name_list)
+            if len(name_list) > 0:
+                new_names = name_list.split("\n")
+                for new_name in new_names:
+                    if new_name != "":
+                        if new_name.startswith("-"):
+                            del names_dict["special_suffixes"][new_name[1:]]
+                        elif ":" in new_name:
+                            _tmp = new_name.split(":")
+                            names_dict["special_suffixes"][_tmp[0]] = _tmp[1]
 
-            self.names_dict = names_dict
-            self.current_save_dir = save_dir
-            self.currently_loaded_lang = lang
+        cls.names_dict = names_dict
+        cls.current_save_dir = save_dir
+        cls.currently_loaded_lang = lang
 
-            self.load_clan_names(current_clan)
-            self.currently_loaded_clan = current_clan
+        cls.load_clan_names(current_clan)
+        cls.currently_loaded_clan = current_clan
 
     def __str__(self):
         return self.__repr__()
@@ -317,8 +284,6 @@ class Name:
         if random.random() < (1/chance):
             self.give_prefix(self.cat, biome)
 
-        self.check_name(self.cat, True)
-
     def find_outsider_name(self, social: CatSocial):
         if social == CatSocial.CLANCAT:
             return
@@ -336,7 +301,7 @@ class Name:
         weights = get_config("cat_name_controls")[str(social)]
 
         selected_category = random.choices(name_categories, weights, k=1)[0]
-        name = random.choice(names.names_dict[selected_category])
+        name = random.choice(self.names_dict[selected_category])
         self.cat.change_name(new_prefix=name, new_suffix="")
 
     # Generate possible prefix
@@ -358,14 +323,15 @@ class Name:
 
         namer = Namer(used_prefixes, self.mod_prefixes, self.moons, self.phenotype, self.chimpheno)
         if get_clan_setting("modded names") and get_clan_setting('new prefixes'):
-            self.prefix = namer.start()
-            if no_suffix:
-                if self.prefix == "Striped":
-                    self.prefix = "Stripe"
-                elif self.prefix == "Spotted":
-                    self.prefix = "Spot"
-            if self.prefix:
-                return
+            while True:
+                self.prefix = namer.start()
+                if no_suffix:
+                    if self.prefix == "Striped":
+                        self.prefix = "Stripe"
+                    elif self.prefix == "Spotted":
+                        self.prefix = "Spot"
+                if self.prefix and self._usable_name(self.prefix, self.suffix, self.cat):
+                    return
             
 
         named_after_appearance = not random.getrandbits(
@@ -426,19 +392,37 @@ class Name:
 
         # This thing prevents any prefix duplications from happening.
         # Try statement stops this form running when initializing.
-        with contextlib.suppress(NameError):
-            if self.prefix in names.prefix_history:
-                # do this recurively until a name that isn't on the history list is chosses.
-                self.give_prefix(cat, biome, no_suffix)
-                # prevent infinite recursion
-                if len(names.prefix_history) > 0:
-                    names.prefix_history.pop(0)
+        while True:
+            named_after_appearance = not random.getrandbits(
+                2
+            )  # Chance for True is '1/4'
+
+            named_after_biome = not random.getrandbits(3)  # chance for True is 1/8
+            # Choose appearance-based prefix if possible and named_after_appearance because True.
+            if (
+                named_after_appearance
+                and possible_prefix_categories
+                and not named_after_biome
+                or named_after_biome
+                and possible_prefix_categories
+            ):
+                prefix_category = random.choice(possible_prefix_categories)
+                self.prefix = random.choice(prefix_category)
             else:
-                names.prefix_history.append(self.prefix)
-            # Set the maximin length to 8 just to be sure
-            if len(names.prefix_history) > 8:
-                # removing at zero so the oldest gets removed
-                names.prefix_history.pop(0)
+                self.prefix = random.choice(self.names_dict["normal_prefixes"])
+
+            # prevent prefix duplications from happening
+            if self.prefix in self.prefix_history or not self._usable_name(
+                self.prefix, self.suffix, self.cat
+            ):
+                continue
+            else:
+                self.prefix_history.append(self.prefix)
+                # Set the maximin length to 8 just to be sure
+                if len(self.prefix_history) > 8:
+                    # removing at zero so the oldest gets removed
+                    self.prefix_history.pop(0)
+                return
 
     # Generate possible suffix
     def give_suffix(self, skills, personality, biome, honour=None):
@@ -516,7 +500,7 @@ class Name:
             self.suffix = ""
 
             tries = 0
-            while not self.suffix or self.suffix in self.prefix.lower():
+            while True:
                 tries += 1
                 if tries > 20:
                     break
@@ -526,6 +510,9 @@ class Name:
                     while [] in options:
                         options.remove([])
                     continue
+                
+                if self._usable_name(self.prefix, self.suffix, self.cat):
+                    break
 
         else:
             """Generate possible suffix."""
@@ -560,7 +547,7 @@ class Name:
                     pelt.append("TwoColour")
 
             tries = 0
-            while not self.suffix or self.suffix in self.prefix.lower():
+            while True:
                 tries += 1
                 if tries > 20:
                     break
@@ -578,18 +565,15 @@ class Name:
                         self.suffix = random.choice(self.names_dict["normal_suffixes"])
                 else:
                     self.suffix = random.choice(self.names_dict["normal_suffixes"])
-
-        self.check_name(self.cat, False)
+                
+                if self._usable_name(self.prefix, self.suffix, self.cat):
+                    break
         
         if not had_suffix and get_clan_setting("modded names"):
             if get_clan_setting("ancient names"):
                 self.suffix = " " + self.suffix.title().strip()
             if get_clan_setting("no special suffixes"):
                 self.specsuffix_hidden = True
-        
-    def change_name(self, prefix, suffix):
-        self.prefix = prefix
-        self.suffix = suffix
 
     def get_specsuffix_name(self, rank: CatRank = CatRank.LEADER):
         """
@@ -647,5 +631,4 @@ class Name:
         return self.prefix + self.suffix
 
 
-names = Name()
-names.prefix_history = []
+Name.load_localized_names()

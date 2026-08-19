@@ -5,7 +5,7 @@ from scripts.cat.cats import Cat
 from scripts.cat.constants import INJURIES, ILLNESSES, PERMANENT, BACKSTORIES
 from scripts.cat.enums import CatRank, CatAge, CatGroup, CatStanding, CatSocial, CatThought
 from scripts.cat.factories.new_cat_factory import NewCatFactory
-from scripts.cat.names import names
+from scripts.cat.names import Name
 from scripts.cat.personality import Personality
 from scripts.cat.skills import SkillPath, Skill
 from scripts.cat.factories.typed_dicts import StatusDict
@@ -184,9 +184,9 @@ def updated_create_new_cat(
         if get_clan_setting('tnr_mode') and created_cat.moons > 5:
             kittypet_n = get_config("tnr_mode.kittypet_neuter")
             loner_n = get_config("tnr_mode.loner_tnr")
-            if status["rank"] == CatSocial.KITTYPET and random() < kittypet_n:
+            if created_cat.status.social == CatSocial.KITTYPET and random() < kittypet_n:
                 created_cat.get_permanent_condition("sterile", False)
-            if status["rank"] in (CatSocial.LONER, CatSocial.ROGUE) and random() < loner_n:
+            if created_cat.status.social in (CatSocial.LONER, CatSocial.ROGUE) and random() < loner_n:
                 created_cat.get_permanent_condition("sterile", False)
                 created_cat.pelt.scars = (*created_cat.pelt.scars, "TNR")
                 created_cat.pelt.rebuild_sprite = True
@@ -312,7 +312,7 @@ def _assign_name(created_cat: Cat):
 
         selected_category = choices(name_categories, weights, k=1)[0]
 
-        name = choice(names.names_dict[selected_category])
+        name = choice(Name.names_dict[selected_category])
         created_cat.change_name(new_prefix=name, new_suffix="")
         if selected_category == "normal prefixes" and get_clan_setting("modded names") and get_clan_setting('new prefixes') and random() < 0.9:
             created_cat.name.give_prefix(Cat, created_cat.status.fetch_clan_object(game.clan).biome, no_suffix=True)

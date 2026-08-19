@@ -52,7 +52,7 @@ def passes_general_constraints(
             print("DEBUG: requested event does not meet constraints (tags)")
         return False
 
-    if hasattr(event, "required_reputation"):
+    if hasattr(event, "required_reputation") and event.required_reputation:
         if not event_for_reputation(event.required_reputation.get("outsider"), clan):
             if is_debug_event:
                 print(
@@ -69,7 +69,7 @@ def passes_general_constraints(
                 )
                 return False
 
-    if hasattr(event, "supply") and clan.group_ID == game.clan.group_ID:
+    if hasattr(event, "supply") and event.supply and clan.group_ID == game.clan.group_ID:
         clan_size = get_living_clan_cat_count(primary_cat, clan.group_ID)
         for block in event.supply:
             if not block.get("trigger"):
