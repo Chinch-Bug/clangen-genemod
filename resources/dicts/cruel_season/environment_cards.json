@@ -45,7 +45,7 @@
       "genetics_config.somatic_mutation": 150,
       "genetics_config.sectoral_heterochromia": 150,
       "genetics_config.random_heterochromia": 200,
-      "condition_related.illness_chance": 150,
+      "condition_related.illness_chance": 175,
       "cat_generation.base_permanent_condition": 75
     }
   },

@@ -62,7 +62,7 @@ def execute_outcome(
         _handle_lost(event, event_involved_cats, tags),
         _handle_conditions(event, event_involved_cats, other_clan),
         _handle_reputation_changes(event, clan, other_clan),
-        _handle_supply_changes(event, event_involved_cats),
+        _handle_supply_changes(event, event_involved_cats, clan),
     ]
 
     _handle_exp(event, event_involved_cats)
@@ -642,12 +642,12 @@ def _handle_reputation_changes(event: TextPoolEvent, clan, other_clan: OtherClan
 
 
 def _handle_supply_changes(
-    event: TextPoolEvent, event_involved_cats: dict[str, Union[Cat, list[Cat]]]
+    event: TextPoolEvent, event_involved_cats: dict[str, Union[Cat, list[Cat]]], clan
 ) -> str:
     """
     Handles applying supply increases
     """
-    if not event.supply:
+    if not event.supply or clan.group_ID != game.clan.group_ID:
         return ""
 
     results = []
