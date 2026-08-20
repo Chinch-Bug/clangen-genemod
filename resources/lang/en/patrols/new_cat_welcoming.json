@@ -8538,7 +8538,18 @@
                 "involved_cats": {
                     "n_c0": {
                         "can_create_new_cat": {
-                            "become_litter": true
+                        },
+                        "age": [
+                            "adult", "senior adult"
+                        ],
+                        "status": [
+                            "kittypet"
+                        ]
+                    },
+                    "n_c1": {
+                        "can_create_new_cat": {
+                            "become_litter": true,
+                            "assign_blood_parent": ["n_c0"]
                         },
                         "age": [
                             "kitten"
@@ -8556,7 +8567,7 @@
                 "relationship_changes": [
                     {
                         "cats_from": [
-                            "n_c0"
+                            "n_c1"
                         ],
                         "cats_to": [
                             "patrol_cats"
@@ -8575,7 +8586,7 @@
                 "condition": [
                     {
                         "cats": [
-                            "n_c0"
+                            "n_c1"
                         ],
                         "condition": [
                             "blunt_force_injury"
@@ -8588,7 +8599,7 @@
                 "join": [
                     {
                         "cats": [
-                            "n_c0"
+                            "n_c1"
                         ],
                         "new_status": [
                             "kitten"

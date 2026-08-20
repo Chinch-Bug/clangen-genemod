@@ -52,6 +52,7 @@ def updated_create_new_cat(
             )
         else:
             possible_ranks = option_dict["status"]
+            possible_ranks = [r.replace("any_", "").replace("fighter", "warrior") for r in possible_ranks]
 
         status["rank"] = CatRank(choice(possible_ranks))
         # if no group given and the rank/social is a clancat, then assign to other clan
