@@ -65,9 +65,6 @@ def handle_having_kits(cat: Cat, clan):
     # check if there is a cat in the clan for the second parent
     second_parent, is_affair = get_second_parent(cat, clan)
 
-    if not second_parent and not get_clan_setting("single parentage"):
-        return
-
     # check if the second_parent is not none and if they also can have kits
     can_have_kits, kits_are_adopted, second_parent = check_second_parent(cat, second_parent)
     if not can_have_kits:

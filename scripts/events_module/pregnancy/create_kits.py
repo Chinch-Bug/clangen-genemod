@@ -680,7 +680,7 @@ def get_balanced_kit_chance(first_parent: Cat, second_parent: Cat, is_affair, cl
 
     # SETTINGS
     # - decrease inverse chance if only mated pairs can have kits
-    if not get_clan_setting("single parentage") or not get_clan_setting(
+    if not get_clan_setting("single parentage") and not get_clan_setting(
         "unmated parentage"
     ):
         inverse_chance = int(inverse_chance * 0.7)

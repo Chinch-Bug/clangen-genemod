@@ -96,7 +96,7 @@ def check_second_parent(cat: Cat, second_parent: Cat) -> tuple[bool, bool]:
     same_sex_adoption = get_clan_setting("same sex adoption")
 
     if not second_parent:
-        if get_clan_setting("single_parentage"):
+        if get_clan_setting("single parentage"):
             return True, False, second_parent
         else:
             return False, False, second_parent

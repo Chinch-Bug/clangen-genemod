@@ -10460,7 +10460,8 @@
                     },
                     "n_c1": {
                         "can_create_new_cat": {
-                            "become_litter": true
+                            "become_litter": true,
+                            "assign_blood_parent": ["n_c0"]
                         },
                         "age": [
                             "kitten"
