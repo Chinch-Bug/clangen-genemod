@@ -22,6 +22,7 @@ from scripts.events_module.pregnancy.check_family_size import (
 from scripts.events_module.event_filters import (
     get_highest_romantic_relation,
 )
+from scripts.events_module.thoughts.generate_thoughts import get_new_thought
 from scripts.config import get_config
 
 def cat_is_amab(cat):
@@ -413,7 +414,7 @@ def handle_outside_parent(cat, clan, amount=0, background_category= "1"):
                                             gender=('fem' if cat_is_amab(cat) else 'masc') if not get_clan_setting('same sex birth') else None,
                                             outside=True,
                                             is_parent=True)
-        outside_parent[0].assign_thought(CatThought.OUTSIDE_DAM if background_category == "2" else CatThought.OUTSIDE_SIRE, other_cat=cat)
+        get_new_thought(outside_parent[0], CatThought.OUTSIDE_DAM if background_category == "2" else CatThought.OUTSIDE_SIRE, other_cat=cat)
         if random() < get_config("mates.crossclan_litter_mates_chance") and get_config("mates.allow_mating"):
             outside_parent[0].set_mate(cat)
             cat.set_mate(outside_parent[0])
@@ -449,7 +450,7 @@ def handle_outside_parent(cat, clan, amount=0, background_category= "1"):
                                                     gender=('fem' if cat_is_amab(cat) else 'masc') if not get_clan_setting('same sex birth') else None,
                                                     outside=True,
                                                     is_parent=True)[0]
-                outside_parent.assign_thought(CatThought.OUTSIDE_DAM if background_category == "2" else CatThought.OUTSIDE_SIRE, other_cat=cat)
+                get_new_thought(outside_parent, CatThought.OUTSIDE_DAM if background_category == "2" else CatThought.OUTSIDE_SIRE, other_cat=cat)
                 outside_parent.birth_cooldown = get_config("pregnancy.birth_cooldown")
                 if random() < get_config("mates.outsider_litter_mates_chance") and get_config("mates.allow_mating"):
                     outside_parent.set_mate(cat)

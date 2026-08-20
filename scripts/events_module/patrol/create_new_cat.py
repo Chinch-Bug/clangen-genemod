@@ -158,12 +158,6 @@ def updated_create_new_cat(
             if adoptive_parents
             else None,
         )
-        # check if kittypets get collar
-        if created_cat.status.social == CatSocial.KITTYPET and bool(getrandbits(1)):
-            created_cat.pelt.accessory = (
-                *created_cat.pelt.accessory,
-                choice(created_cat.pelt.collar_accessories),
-            )
 
         if created_cat.phenotype.manx[1] in ["Ab", "M"] or created_cat.phenotype.sexgene[0] == "Y" or created_cat.phenotype.munch[1] == "Mk" or ('NoDBE' not in created_cat.phenotype.pax3 and 'DBEalt' not in created_cat.phenotype.pax3):
             if len(new_cats) == 0:

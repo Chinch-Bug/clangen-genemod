@@ -5,6 +5,7 @@
             "many": "litter of %{count} kits"
         },
         "pregnant_secret": "%{name} brought a %{insert} back to camp, but refused to talk about their origin.",
+        "outside_surrogate_dam": "%{name} brought a %{insert} back to camp, telling the Clan of having found a surrogate.",
         "leader_kitting_death": "died shortly after kitting",
         "leader_kitting_death_severe": "died after a harsh kitting",
         "kitting_death": "%{name} died while kitting.",
