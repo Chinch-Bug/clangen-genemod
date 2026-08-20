@@ -97,12 +97,12 @@ class CatToggleWindow(GameWindow):
                 self.the_cat.prevent_fading = self.checkboxes["prevent_fading"].checked
             elif event.ui_element == self.checkboxes["prevent_kits"]:
                 self.checkboxes["prevent_kits"].toggle()
-                self.the_cat.prevent_fading = self.checkboxes["prevent_kits"].checked
+                self.the_cat.no_kits = self.checkboxes["prevent_kits"].checked
             elif event.ui_element == self.checkboxes["prevent_retirement"]:
                 self.checkboxes["prevent_retirement"].toggle()
-                self.the_cat.prevent_fading = self.checkboxes["prevent_retirement"].checked
+                self.the_cat.no_retire = self.checkboxes["prevent_retirement"].checked
             elif event.ui_element == self.checkboxes["prevent_romance"]:
                 self.checkboxes["prevent_romance"].toggle()
-                self.the_cat.prevent_fading = self.checkboxes["prevent_romance"].checked
+                self.the_cat.no_mates = self.checkboxes["prevent_romance"].checked
 
         return super().process_event(event)

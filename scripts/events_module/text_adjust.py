@@ -168,7 +168,7 @@ def process_text(text, cat_dict, raise_exception=False):
     adjust_text = re.sub(
         "|".join(name_patterns), lambda x: name_repl(x, cat_dict), adjust_text
     )
-    adjust_text = adjust_text.replace("medicine cat", "healer").replace("medicine den", "healer den")
+    adjust_text = adjust_text.replace("medicine cat", "healer").replace("medicine den", "healer den").replace("she-cat", i18n.t("general.molly"))
     return adjust_text
 
 
@@ -367,7 +367,7 @@ def ongoing_event_text_adjust(Cat, text, clan=None, other_clan_name=None):
 
     text = text.replace("c_n", clan_name)
 
-    text = text.replace("medicine cat", "healer").replace("medicine den", "healer den")
+    text = text.replace("medicine cat", "healer").replace("medicine den", "healer den").replace("she-cat", i18n.t("general.molly"))
 
     return text
 
@@ -557,7 +557,7 @@ def event_text_adjust(
                 "given_herb", i18n.t(f"conditions.herbs.{chosen_herb}", count=2)
             )
 
-    text = text.replace("medicine cat", "healer").replace("medicine den", "healer den")
+    text = text.replace("medicine cat", "healer").replace("medicine den", "healer den").replace("she-cat", i18n.t("general.molly"))
 
     return text
 
@@ -802,7 +802,7 @@ def history_text_adjust(text, other_clan_name, clan, other_cat_rc=None):
     if "r_c" in text and other_cat_rc:
         text = selective_replace(text, "r_c", str(other_cat_rc.name))
 
-    text = text.replace("medicine cat", "healer").replace("medicine den", "healer den")
+    text = text.replace("medicine cat", "healer").replace("medicine den", "healer den").replace("she-cat", i18n.t("general.molly"))
     return text
 
 

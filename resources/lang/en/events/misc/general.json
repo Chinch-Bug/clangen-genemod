@@ -18104,7 +18104,7 @@
             ]
         },
         "new_gender": [
-            "nonbinary"
+            "nonbinary", "agender"
         ],
       "relationships": [
           {
@@ -18140,7 +18140,7 @@
             ]
         },
         "new_gender": [
-            "nonbinary"
+            "nonbinary", "agender"
         ],
       "relationships": [
           {
@@ -18316,7 +18316,7 @@
             ]
         },
         "new_gender": [
-            "nonbinary"
+            "nonbinary", "agender"
         ],
       "relationships": [
           {
@@ -18353,7 +18353,7 @@
             ]
         },
         "new_gender": [
-            "nonbinary"
+            "nonbinary", "agender"
         ],
       "relationships": [
           {
@@ -18461,7 +18461,7 @@
             ]
         },
         "new_gender": [
-            "nonbinary"
+            "nonbinary", "agender"
         ],
       "relationships": [
           {
@@ -18637,7 +18637,7 @@
             ]
         },
         "new_gender": [
-            "nonbinary"
+            "nonbinary", "agender"
         ],
       "relationships": [
           {
@@ -18675,7 +18675,7 @@
             "backstory": ["-orphaned_backstories", "-abandoned_backstories"]
         },
         "new_gender": [
-            "nonbinary"
+            "nonbinary", "agender"
         ],
         "r_c": {
             "group": ["starclan"]
@@ -18795,7 +18795,7 @@
         },
         "new_gender": [
             "trans female",
-            "nonbinary"
+            "nonbinary", "agender"
         ],
         "r_c": {
             "age": ["kitten"]
@@ -18835,7 +18835,7 @@
         },
         "new_gender": [
             "trans male",
-            "nonbinary"
+            "nonbinary", "agender"
         ],
         "r_c": {
             "age": ["kitten"]
@@ -18875,7 +18875,7 @@
         },
         "new_gender": [
             "trans male",
-            "nonbinary"
+            "nonbinary", "agender"
         ],
         "r_c": {
             "status": ["warrior", "medicine cat", "mediator"]
@@ -18935,7 +18935,7 @@
         },
         "new_gender": [
             "trans female",
-            "nonbinary"
+            "nonbinary", "agender"
         ],
         "r_c": {
             "status": ["warrior", "medicine cat", "mediator"]
@@ -19073,7 +19073,7 @@
             ]
         },
         "new_gender": [
-            "nonbinary"
+            "nonbinary", "agender"
         ],
         "r_c": {
             "age": ["-kitten"]
@@ -19113,7 +19113,7 @@
             ]
         },
         "new_gender": [
-            "nonbinary"
+            "nonbinary", "agender"
         ],
         "r_c": {
             "age": ["kitten", "newborn"]
@@ -19232,7 +19232,7 @@
         },
         "new_gender": [
             "trans male",
-            "nonbinary"
+            "nonbinary", "agender"
         ],
         "r_c": {
             "age": ["any"]
@@ -19294,7 +19294,7 @@
         },
         "new_gender": [
             "trans female",
-            "nonbinary"
+            "nonbinary", "agender"
         ],
         "r_c": {
             "age": ["any"]
@@ -19354,7 +19354,7 @@
         },
         "new_gender": [
             "trans female",
-            "nonbinary"
+            "nonbinary", "agender"
         ],
         "r_c": {
             "age": ["any"]
@@ -19414,7 +19414,7 @@
         },
         "new_gender": [
             "trans male",
-            "nonbinary"
+            "nonbinary", "agender"
         ],
         "r_c": {
             "age": ["any"]
@@ -19474,7 +19474,7 @@
         },
         "new_gender": [
             "trans female",
-            "nonbinary"
+            "nonbinary", "agender"
         ],
       "relationships": [
           {
@@ -19511,7 +19511,7 @@
         },
         "new_gender": [
             "trans male",
-            "nonbinary"
+            "nonbinary", "agender"
         ],
       "relationships": [
           {
@@ -19620,7 +19620,7 @@
             ]
         },
         "new_gender": [
-            "nonbinary"
+            "nonbinary", "agender"
         ],
       "relationships": [
           {
@@ -19656,7 +19656,7 @@
             ]
         },
         "new_gender": [
-            "nonbinary"
+            "nonbinary", "agender"
         ],
       "relationships": [
           {
