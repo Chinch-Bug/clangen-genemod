@@ -12,8 +12,9 @@ from scripts.cat.factories.typed_dicts import StatusDict
 from scripts.cat.names import Name
 from scripts.cat_relations.enums import RelType
 from scripts.cat_relations.inheritance2 import inheritance_db
-from scripts.cat_relations.relationship import Relationship
+from scripts.cat_relations.relationship import Relationship, create_one_relationship
 from scripts.clan_package.settings import get_clan_setting
+from scripts.cat.microservices.conditions import add_congenital_condition
 from scripts.config import get_config
 from scripts.event_class import Single_Event
 from scripts.events_module.consequences import (
@@ -288,7 +289,7 @@ def get_kits(
         if game.clan and not int(
             random() * get_config("cat_generation.base_permanent_condition")
         ):
-            kit.congenital_condition(kit)
+            add_congenital_condition(kit)
             for condition in kit.permanent_condition:
                 if kit.permanent_condition[condition] == "born without a leg":
                     kit.pelt.scars = (*cat.pelt.scars, "NOPAW")
@@ -586,7 +587,7 @@ def handle_adoption(cat: Cat, other_cat: Optional[Cat] = None, clan=game.clan):
     for kit in kits:
         kit.assign_thought(CatThought.ON_JOIN)
         cats_involved.append(kit.ID)
-        kit.add_to_clan(clan.group_ID)
+        add_to_clan(kit, clan.group_ID)
 
     # Normally, birth cooldown is only applied to cat who gave birth. However, if we don't apply birth cooldown to
     # adoption, we get too much adoption, since adoptive couples are using the increased two-parent kits chance.

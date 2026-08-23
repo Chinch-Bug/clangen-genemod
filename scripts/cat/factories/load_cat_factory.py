@@ -5,7 +5,8 @@ from operator import xor
 import ujson
 
 from scripts.cat.phenotype import Phenotype
-from scripts.cat.cats import Cat, BACKSTORIES
+from scripts.cat.cats import Cat
+from scripts.cat.constants import BACKSTORIES
 from scripts.cat.enums import CatAge, CatGroup, CatSocial
 from scripts.cat.factories.base_factory import BaseCatFactory
 from scripts.cat.factories.typed_dicts import (

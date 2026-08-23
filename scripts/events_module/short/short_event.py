@@ -5,11 +5,13 @@ import i18n
 import re
 
 from scripts.cat import pronouns
-from scripts.cat.cats import Cat, ILLNESSES, INJURIES, PERMANENT
+from scripts.cat.cats import Cat
+from scripts.cat.constants import ILLNESSES, INJURIES, PERMANENT
 from scripts.cat.enums import CatGroup
 from scripts.cat.pelts import Pelt
 from scripts.cat_relations.relationship import Relationship
 from scripts.clan_package.settings import get_clan_setting
+from scripts.cat.microservices.conditions import get_injured
 from scripts.config import get_config
 from scripts.event_class import Single_Event
 from scripts.events_module.future.prep_and_trigger import prep_future_event
@@ -203,6 +205,8 @@ class ShortEvent:
                 self.weight -= int(self.weight * abs(get_config("event_generation.clan_rel_change_multiplier")))
             if self.other_clan["changed"] < 0 and get_config("event_generation.clan_rel_change_multiplier") > 0:
                 self.weight -= int(self.weight * abs(get_config("event_generation.clan_rel_change_multiplier")))
+            if "temperament" not in self.other_clan:
+                self.other_clan["temperament"] = []
         self.supplies = supplies if supplies else []
         self.new_gender = new_gender
         self.future_event = future_event if future_event else {}
@@ -522,7 +526,7 @@ class ShortEvent:
                         and possible_parent [0].ID in (possible_kittens[0].parent1, possible_kittens[0].parent2)
                         and possible_parent[0].status.group_ID == clan.group_ID
                     ):
-                        possible_parent[0].get_injured("recovering from birth")
+                        get_injured(possible_parent[0], "recovering from birth")
                         break  # Break - only one parent ever gives birth
 
     def handle_accessories(self):
@@ -722,12 +726,12 @@ class ShortEvent:
                         if kitty.moons > 3:
                             kitty.pelt.scars = (*kitty.pelt.scars, "TNR")
                             kitty.pelt.rebuild_sprite = True
-                            kitty.get_permanent_condition("sterile", False)
+                            get_permanent_condition(kitty, "sterile", False)
                             if 'pregnant' in kitty.injuries:
                                 kitty.permanent_condition['sterile']['moon_start'] += 3
                         else:
                             kitty.leave_clan(CatSocial.KITTYPET)
-                            kitty.get_permanent_condition("sterile", False, event_triggered=True, custom_reveal=randint(4, 6))
+                            get_permanent_condition(kitty, "sterile", False, event_triggered=True, custom_reveal=randint(4, 6))
                     elif tnr:
                         taken_cats.append(kitty)
                         continue
@@ -910,11 +914,11 @@ class ShortEvent:
             give_injury = choice(possible_injuries)
 
         if give_injury in INJURIES:
-            cat.get_injured(give_injury, potential_scars=potential_scars)
+            get_injured(cat, give_injury, potential_scars=potential_scars)
         elif give_injury in ILLNESSES:
-            cat.get_ill(give_injury)
+            get_ill(cat, give_injury)
         elif give_injury in PERMANENT:
-            cat.get_permanent_condition(give_injury)
+            get_permanent_condition(cat, give_injury)
         else:
             print("WARNING: No Conditions to Give")
             return False

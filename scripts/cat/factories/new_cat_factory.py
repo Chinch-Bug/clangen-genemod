@@ -6,7 +6,8 @@ from typing import Tuple, Literal
 from abc import ABC, abstractmethod
 from scripts.cat.phenotype import Phenotype
 from scripts.cat import save_load
-from scripts.cat.cats import Cat, BACKSTORIES
+from scripts.cat.cats import Cat
+from scripts.cat.constants import BACKSTORIES
 from scripts.cat.enums import CatAge, CatRank, CatSocial
 from scripts.cat.factories.base_factory import BaseCatFactory
 from scripts.cat.factories.typed_dicts import (

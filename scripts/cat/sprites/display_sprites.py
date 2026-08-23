@@ -2,6 +2,7 @@ import logging
 import traceback
 
 import pygame
+from copy import deepcopy
 
 from scripts.cat.enums import CatAge, CatGroup
 from scripts.cat.phenotype import Phenotype

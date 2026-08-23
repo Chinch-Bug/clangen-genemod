@@ -2,6 +2,7 @@
 # -*- coding: ascii -*-
 import logging
 import random
+import statistics
 from os.path import exists as path_exists
 from random import choice, randint, choices
 from typing import List, Tuple, Optional, Union, Literal, TypedDict
@@ -13,6 +14,7 @@ from scripts.cat_relations.enums import RelType
 from scripts.cat.enums import CatAge, CatRank, CatCompatibility
 from scripts.clan_package.settings import get_clan_setting
 from scripts.clan_package.get_clan_cats import get_living_clan_cat_count
+from scripts.clan import get_temper_alignment
 from scripts.config import get_config
 from scripts.events_module.consequences import gather_cat_objects
 from scripts.events_module.event_filters import (
@@ -48,6 +50,39 @@ from scripts.special_dates import SpecialDate, is_today
 logger = logging.getLogger(__name__)
 
 
+def get_patrol_temperament(patrol_cats: list, patrol_leader=None) -> tuple[str, str]:
+    """
+    Determines the temperament of a patrol based on clan rank and patrol_leader
+    """
+    sociability, aggression, lawfulness, stability = [], [], [], []
+
+    for cat in patrol_cats:
+        rank = cat.status.rank
+        if rank == CatRank.LEADER:
+            weight = 3
+        elif rank == CatRank.DEPUTY:
+            weight = 2
+        else:  # medicine cat and all others
+            weight = 1
+        if patrol_leader is not None and cat == patrol_leader:
+            weight += 1
+
+        sociability += [cat.personality.sociability] * weight
+        aggression += [cat.personality.aggression] * weight
+        lawfulness += [cat.personality.lawfulness] * weight
+        stability += [cat.personality.stability] * weight
+
+    if not sociability:  # empty patrol guard
+        return "", ""
+
+    return get_temper_alignment(
+        round(statistics.mean(sociability)),
+        round(statistics.mean(aggression)),
+        round(statistics.mean(lawfulness)),
+        round(statistics.mean(stability)),
+    )
+
+
 class Patrol:
     used_patrols = []
 
@@ -56,6 +91,8 @@ class Patrol:
         self.debug_patrol_id: str = ""
         self.other_clan = None
         self.clan = game.clan
+        self.temperament: tuple[str, str] = ()
+        """Set once the patrol cats are known, in begin_patrol"""
 
         self.patrol_cats: list[Cat] = []
         """Holds all the cats that are on the patrol"""
@@ -78,6 +115,11 @@ class Patrol:
         self.clan = game.clan if clan.group_ID == game.clan.group_ID else next(filter(lambda c: clan.group_ID == c.group_ID, game.clan.all_other_clans), game.clan)
         # Add cats
         self._add_patrol_cats(patrol_cats)
+
+        # The patrol group can't change once it's set out, so this is fixed for the rest of the patrol
+        self.temperament = get_patrol_temperament(
+            self.patrol_cats, self.involved_cats.get("p_l")
+        )
 
         # Choose other clan
         all_options = game.clan.all_other_clans + [game.clan]

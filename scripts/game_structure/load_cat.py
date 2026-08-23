@@ -10,7 +10,8 @@ from operator import xor
 import i18n
 import ujson
 
-from scripts.cat.cats import Cat, BACKSTORIES
+from scripts.cat.cats import Cat
+from scripts.cat.constants import BACKSTORIES
 from scripts.clan import clan_class
 from scripts.cat.save_load import load_faded_cat_ids
 from scripts.cat_relations.inheritance2 import inheritance_db
@@ -35,11 +36,16 @@ from scripts.config import get_config
 from scripts.game_structure import game
 from ..cat.personality import Personality
 from ..cat.skills import CatSkills
+from ..cat_relations.cat_handle_funcs import (
+    init_all_relationships,
+    load_relationship_of_cat,
+)
 from ..clan_resources.point_of_interest import (
     clear_pois,
     generate_and_add_new_poi,
     PoiType,
 )
+from ..cat.microservices.conditions import get_permanent_condition
 from ..housekeeping.datadir import get_save_dir
 
 logger = logging.getLogger(__name__)
@@ -464,7 +470,7 @@ def accurate_porting(cat, info):
         cat.phenotype.sexgene = ["O", "o"]
         if cat.phenotype.sex == "tom":
             cat.phenotype.sexgene.append("Y")
-            cat.get_permanent_condition('sterile', born_with=True, genetic=True)
+            get_permanent_condition(cat, 'sterile', born_with=True, genetic=True)
         cat.phenotype.tortiepattern = [info["tortie_marking"]]
     elif main_colour["colour"] in red_bases:
         cat.phenotype.sexgene[0] = "O"
@@ -612,14 +618,14 @@ def json_load():
 
         # this is here to handle paralyzed cats in old saves
         if cat.pelt.paralyzed and "paralyzed" not in cat.permanent_condition:
-            cat.get_permanent_condition("paralyzed")
+            get_permanent_condition(cat, "paralyzed")
         elif "paralyzed" in cat.permanent_condition and not cat.pelt.paralyzed:
             cat.pelt.paralyzed = True
 
         # load the relationships
         try:
             if not cat.dead:
-                cat.load_relationship_of_cat()
+                load_relationship_of_cat(cat)
             else:
                 cat.relationships = {}
         except Exception as e:

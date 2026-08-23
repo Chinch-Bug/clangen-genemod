@@ -8,8 +8,10 @@ from scripts.ui.elements.surface_image_button import UISurfaceImageButton
 from scripts.screens.enums import GameScreen
 from scripts.ui.windows.window_base_class import GameWindow
 from scripts.ui.scale import ui_scale
+from scripts.cat.microservices.add_to_clan import add_to_clan
 
-from scripts.cat.cats import Cat, BACKSTORIES
+from scripts.cat.cats import Cat
+from scripts.cat.constants import BACKSTORIES
 from scripts.cat.enums import CatStanding, CatRank, CatAge
 from scripts.game_structure import game
 from scripts.ui.generate_button import ButtonStyles, get_button_dict
@@ -100,7 +102,7 @@ class ChangeCatClanWindow(GameWindow):
                         if app_ob:
                             app_ob.update_mentor()
                 else:
-                    self.the_cat.add_to_clan(self.selected.group_ID)
+                    add_to_clan(self.the_cat, self.selected.group_ID)
                     if (
                         self.the_cat.backstory
                         in BACKSTORIES["backstory_categories"][

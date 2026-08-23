@@ -995,6 +995,14 @@
           "items": {},
           "title": "Has Rank",
           "type": "array"
+        },
+        "temperament": {
+          "description": "The temperament the Clan must have in order for this event to be possible.",
+          "items": {
+            "$ref": "#/$defs/Temperament"
+          },
+          "title": "Temperament",
+          "type": "array"
         }
       },
       "title": "OtherClan",
@@ -1868,6 +1876,50 @@
         "not_multiclan"
       ],
       "title": "TagEnum",
+      "type": "string"
+    },
+    "Temperament": {
+      "description": "Temperaments a Clan or patrol can hold. A \"-\" prefix excludes it.",
+      "enum": [
+        "cunning",
+        "-cunning",
+        "proud",
+        "-proud",
+        "bloodthirsty",
+        "-bloodthirsty",
+        "amiable",
+        "-amiable",
+        "stoic",
+        "-stoic",
+        "wary",
+        "-wary",
+        "gracious",
+        "-gracious",
+        "mellow",
+        "-mellow",
+        "logical",
+        "-logical",
+        "chaotic",
+        "-chaotic",
+        "mercurial",
+        "-mercurial",
+        "calculating",
+        "-calculating",
+        "eager",
+        "-eager",
+        "observant",
+        "-observant",
+        "adaptable",
+        "-adaptable",
+        "decisive",
+        "-decisive",
+        "methodical",
+        "-methodical",
+        "steadfast",
+        "-steadfast",
+        "any"
+      ],
+      "title": "Temperament",
       "type": "string"
     },
     "Trait": {

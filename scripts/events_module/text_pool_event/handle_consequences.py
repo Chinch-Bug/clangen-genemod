@@ -6,9 +6,10 @@ from typing import Union, Literal
 import i18n
 
 from scripts.cat_relations.relationship import Relationship
-from scripts.cat.cats import Cat, BACKSTORIES
-from scripts.cat.constants import PERMANENT, ILLNESSES, INJURIES
+from scripts.cat.cats import Cat
+from scripts.cat.constants import PERMANENT, ILLNESSES, INJURIES, BACKSTORIES
 from scripts.cat.enums import CatRank, CatSocial, CatThought, CatStanding
+from scripts.cat.microservices.add_to_clan import add_to_clan, add_dependents_to_clan
 from scripts.cat.skills import SkillPath
 from scripts.clan import OtherClan
 from scripts.clan_package.cotc import change_clan_reputation, change_clan_relations
@@ -17,6 +18,11 @@ from scripts.clan_resources.freshkill import (
     ADDITIONAL_PREY,
     HUNTER_BONUS,
     HUNTER_EXP_BONUS,
+)
+from scripts.cat.microservices.conditions import (
+    get_ill,
+    get_injured,
+    get_permanent_condition,
 )
 from scripts.config import get_config
 from scripts.events_module.consequences import unpack_rel_block, check_stolen_vitality
@@ -57,7 +63,7 @@ def execute_outcome(
 
     results = [
         _handle_multiclan(event, event_involved_cats, clan, other_clan),
-        _handle_joining(event, event_involved_cats),
+        _handle_joining(event, event_involved_cats, clan),
         _handle_death(event, event_involved_cats, clan, other_clan),
         _handle_lost(event, event_involved_cats, tags),
         _handle_conditions(event, event_involved_cats, other_clan),
@@ -242,7 +248,7 @@ def _handle_multiclan(
                     cat.create_inheritance_new_cat()
 
 def _handle_joining(
-    event: TextPoolEvent, event_involved_cats: dict[str, Union[Cat, list[Cat]]]
+    event: TextPoolEvent, event_involved_cats: dict[str, Union[Cat, list[Cat]]], clan
 ) -> str:
     """
     Handles cats joining the Clan
@@ -263,7 +269,8 @@ def _handle_joining(
                     cat_list.append(event_involved_cats[abbr])
 
         for cat in cat_list:
-            cat.add_to_clan()
+            add_to_clan(cat, clan.group_ID)
+            add_dependents_to_clan(cat, clan.group_ID)
             if block.get("change_name"):
                 cat.change_name()
 
@@ -444,7 +451,7 @@ def _handle_lost(
             elif tnr and 'TNR' not in c.pelt.scars:
                 if not tnr2:
                     c.pelt.scars = (*c.pelt.scars, "TNR")
-                c.get_permanent_condition("sterile", False)
+                get_permanent_condition(c, "sterile", False)
                 if 'pregnant' in c.injuries:
                     c.permanent_condition['sterile']['moon_start'] += 3
             elif tnr and "TNR" in c.pelt.scars and not tnr2:
@@ -523,11 +530,11 @@ def _handle_conditions(
             chosen_condition = choice(list(conditions_for_cat))
 
             if chosen_condition in INJURIES:
-                c.get_injured(chosen_condition, lethal=lethal, potential_scars=scars)
+                get_injured(c, chosen_condition, lethal=lethal, potential_scars=scars)
             elif chosen_condition in ILLNESSES:
-                c.get_ill(chosen_condition, lethal=lethal)
+                get_ill(c, chosen_condition, lethal=lethal)
             else:
-                c.get_permanent_condition(chosen_condition)
+                get_permanent_condition(c, chosen_condition)
 
             no_results = block.get("no_results", False)
 

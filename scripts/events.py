@@ -7,6 +7,9 @@ TODO: Docs
 """
 import logging
 import random
+
+from scripts.cat.microservices.add_to_clan import add_dependents_to_clan, add_to_clan
+from scripts.cat_relations.cat_handle_funcs import create_relationships_new_cat
 from scripts.config import get_config
 
 # pylint: enable=line-too-long
@@ -15,7 +18,8 @@ from math import floor
 
 import i18n
 
-from scripts.cat.cats import Cat, cat_class, BACKSTORIES
+from scripts.cat.cats import Cat, cat_class
+from scripts.cat.constants import BACKSTORIES
 from scripts.cat.enums import (
     CatAge,
     CatRank,
@@ -32,6 +36,7 @@ from scripts.conditions import (
     medicine_cats_can_cover_clan,
     get_amount_cat_for_one_medic,
 )
+from scripts.cat.microservices.conditions import get_ill, get_injured
 from scripts.event_class import Single_Event
 from scripts.events_module.event_filters import event_for_other_clan
 
@@ -267,7 +272,8 @@ def one_moon():
                     shaken_cat_names = []
                     for cat in shaken_cats[clan.prefix]:
                         shaken_cat_names.append(str(cat.name))
-                        cat.get_injured(
+                        get_injured(
+                            cat,
                             "shock",
                             event_triggered=False,
                             lethal=False,
@@ -562,7 +568,8 @@ def handle_lead_den_event():
 
             elif info_dict["interaction_type"] in ("invite", "search"):
                 # ADD TO CLAN AND CHECK FOR KITS
-                additional_kits = outsider_cat.add_to_clan()
+                add_to_clan(outsider_cat, game.clan.group_ID)
+                additional_kits = add_dependents_to_clan(outsider_cat, game.clan.group_ID)
 
                 if additional_kits:
                     event_text += i18n.t(
@@ -626,7 +633,7 @@ def handle_lead_den_event():
                         ):
                             invited_cat.status._change_rank(CatRank.WARRIOR)
 
-                    invited_cat.create_relationships_new_cat()
+                    create_relationships_new_cat(invited_cat)
 
             # this handles ceremonies for cats coming into the clan
             if invited_cats:
@@ -902,7 +909,7 @@ def handle_focus():
                     for injury, amount in injury_dict.items():
                         possible_injuries.extend([injury] * amount)
                     chosen_injury = random.choice(possible_injuries)
-                    cat.get_injured(chosen_injury)
+                    get_injured(cat, chosen_injury)
                     involved_cats["injured"].append(cat.ID)
             else:
                 chance = info_dict["illness_chance"]
@@ -912,7 +919,7 @@ def handle_focus():
                     for illness, amount in injury_dict.items():
                         possible_illnesses.extend([illness] * amount)
                     chosen_illness = random.choice(possible_illnesses)
-                    cat.get_ill(chosen_illness)
+                    get_ill(cat, chosen_illness)
                     involved_cats["sick"].append(cat.ID)
 
         # if it is raiding, lower the relation to other clans
@@ -968,12 +975,13 @@ def handle_tnr_return(clan=game.clan):
 
     text = i18n.t('hardcoded.event_tnr_return', cats=names, count=len(eligible_cats))   
     for cat in eligible_cats:
-        additional = cat.add_to_clan(clan.group_ID, False)
+        add_to_clan(cat, clan.group_ID, False)
+        additional = add_dependents_to_clan(cat, clan.group_ID, False)
         for x in additional:
             if x in Cat.all_cats:
                 Cat.all_cats[x].backstory = 'kittypet' + str(random.randint(1, 4))
                 Cat.all_cats[x].name.suffix = ''
-                Cat.all_cats[x].get_permanent_condition("sterile", False, custom_reveal=4)
+                get_permanent_condition(Cat.all_cats[x], "sterile", False, custom_reveal=4)
     text = event_text_adjust(Cat, text, main_cat=eligible_cats[0], clan=clan)
     game.cur_events_list.append(Single_Event(text, "misc", cat_IDs, clan=clan.group_ID))
     
@@ -1014,7 +1022,8 @@ def handle_lost_cats_return(predetermined_cat_IDs: list = None, clan = game.clan
                 parent_name=Cat.fetch_cat(lost_cat.parent1).name,
             )
 
-        additional_cats = lost_cat.add_to_clan(clan.group_ID)
+        add_to_clan(lost_cat, clan.group_ID)
+        additional_cats = add_dependents_to_clan(lost_cat, clan.group_ID)
         cat_IDs.extend(additional_cats)
 
         if additional_cats:
@@ -2900,8 +2909,8 @@ def handle_outbreaks(cat, clan):
             for sick_meowmeow in infected_cats:
                 infected_names.append(str(sick_meowmeow.name))
                 involved_cats.append(sick_meowmeow.ID)
-                sick_meowmeow.get_ill(
-                    illness, event_triggered=True
+                get_ill(
+                    sick_meowmeow, illness, event_triggered=True
                 )  # SPREAD THE GERMS >:)
 
             # TODO: hardcoded text events, not good, need to consider how to convert

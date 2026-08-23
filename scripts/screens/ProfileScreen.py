@@ -16,7 +16,8 @@ from pygame_gui.core import ObjectID
 
 from scripts.config import get_config
 from scripts.game_input import INPUT_ACTION_PRESSED, Action
-from scripts.cat.cats import Cat, BACKSTORIES
+from scripts.cat.cats import Cat
+from scripts.cat.constants import BACKSTORIES
 from scripts.cat.sprites.display_sprites import calculate_size
 from ..cat.enums import CatAge, CatRank, CatGroup
 from scripts.cat.pelts import Pelt

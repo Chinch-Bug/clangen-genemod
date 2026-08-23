@@ -17,9 +17,13 @@ from scripts.cat.enums import (
 )
 from scripts.cat.factories.new_cat_factory import NewCatFactory
 from scripts.cat.factories.enums import CatType
+from scripts.cat.microservices.add_to_clan import add_to_clan, add_dependents_to_clan
+from scripts.cat.microservices.conditions import get_permanent_condition
 from scripts.cat.names import Name
+from scripts.cat_relations.cat_handle_funcs import create_relationships_new_cat
 from scripts.cat_relations.enums import RelType
 from scripts.cat_relations.inheritance2 import inheritance_db
+from scripts.cat_relations.relationship import create_one_relationship
 from scripts.clan_package.get_clan_cats import get_random_player_clan_cat
 from scripts.clan_package.settings import get_clan_setting
 from scripts.config import get_config
@@ -472,7 +476,9 @@ def create_new_cat_block(
             elif not outside:
                 if not rank:
                     rank = chosen_cat.status.get_rank_from_age(chosen_cat.age)
-                chosen_cat.add_to_clan(clan.group_ID)
+                add_to_clan(chosen_cat, clan.group_ID)
+                add_dependents_to_clan(chosen_cat, clan.group_ID)
+                # todo why doesn't this do anything with the returned kits
                 if chosen_cat.status.rank != rank:
                     chosen_cat.rank_change(
                         new_rank=CatRank(rank), resort=True, new_thought=False
@@ -1113,7 +1119,10 @@ def create_new_cat(
             )
         # now we actually add them to the clan, if they should be joining
         if not outside and alive:
-            new_cat.add_to_clan(group)
+            add_to_clan(new_cat, group)
+            add_dependents_to_clan(new_cat, group)
+            # todo why doesn't use the return value
+
             # check if cat is the correct rank
             if new_cat.status.rank != rank:
                 new_cat.status._change_rank(CatRank(rank))
@@ -1215,9 +1224,9 @@ def create_new_cat(
             kittypet_n = get_config("tnr_mode.kittypet_neuter")
             loner_n = get_config("tnr_mode.loner_tnr")
             if original_social == CatSocial.KITTYPET and random() < kittypet_n:
-                new_cat.get_permanent_condition("sterile", False)
+                get_permanent_condition(new_cat, "sterile", False)
             if original_social in (CatSocial.LONER, CatSocial.ROGUE) and random() < loner_n:
-                new_cat.get_permanent_condition("sterile", False)
+                get_permanent_condition(new_cat, "sterile", False)
                 new_cat.pelt.scars = (*new_cat.pelt.scars, "TNR")
                 new_cat.pelt.rebuild_sprite = True
         if not int(random() * chance):
@@ -1243,7 +1252,7 @@ def create_new_cat(
                     "always",
                     "sometimes",
                 ]:
-                    new_cat.get_permanent_condition(chosen_condition, True)
+                    get_permanent_condition(new_cat, chosen_condition, True)
                     if (
                         new_cat.permanent_condition[chosen_condition]["moons_until"]
                         == 0
@@ -1274,7 +1283,7 @@ def create_new_cat(
         new_cat.history.add_beginning()
 
         # create relationships
-        new_cat.create_relationships_new_cat()
+        create_relationships_new_cat(new_cat)
         # Note - we always update inheritance after the cats are generated, to
         # allow us to add parents.
         # new_cat.create_inheritance_new_cat()
@@ -1602,7 +1611,7 @@ def change_relationship_values(
 
             # if the cats don't know each other, start a new relationship
             if single_cat_to.ID not in single_cat_from.relationships:
-                single_cat_from.create_one_relationship(single_cat_to)
+                create_one_relationship(single_cat_from, single_cat_to)
 
             rel = single_cat_from.relationships[single_cat_to.ID]
 

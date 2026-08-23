@@ -17,6 +17,7 @@ from scripts.events_module.event_filters import (
     event_for_cat,
     event_for_reputation,
     event_for_clan_relations,
+    event_for_temperament,
     event_for_freshkill_supply,
     event_for_herb_supply,
     event_for_season,
@@ -491,6 +492,11 @@ def filter_events(
 
             if game.clan.clancount == 'multiclan' and not event_for_other_clan(
                 Cat, event.other_clan.get("has_rank"), other_clan.group_ID
+            ):
+                continue
+
+            if not event_for_temperament(
+                event.other_clan["temperament"], other_clan.temperament
             ):
                 continue
 

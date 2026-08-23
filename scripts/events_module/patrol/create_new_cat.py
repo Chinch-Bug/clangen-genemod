@@ -9,12 +9,18 @@ from scripts.cat.names import Name
 from scripts.cat.personality import Personality
 from scripts.cat.skills import SkillPath, Skill
 from scripts.cat.factories.typed_dicts import StatusDict
+from scripts.cat_relations.cat_handle_funcs import create_relationships_new_cat
 from scripts.cat_relations.inheritance2 import inheritance_db
 from scripts.cat_relations.relationship import Relationship
 from scripts.clan import OtherClan
 from scripts.clan_package.settings import get_clan_setting
 from scripts.clan_package.get_clan_cats import (
     get_alive_clan_queens,
+)
+from scripts.cat.microservices.conditions import (
+    get_ill,
+    get_injured,
+    get_permanent_condition,
 )
 from scripts.config import get_config
 from scripts.events_module.consequences import change_relationship_values
@@ -187,9 +193,9 @@ def updated_create_new_cat(
             kittypet_n = get_config("tnr_mode.kittypet_neuter")
             loner_n = get_config("tnr_mode.loner_tnr")
             if created_cat.status.social == CatSocial.KITTYPET and random() < kittypet_n:
-                created_cat.get_permanent_condition("sterile", False)
+                get_permanent_condition(created_cat, "sterile", False)
             if created_cat.status.social in (CatSocial.LONER, CatSocial.ROGUE) and random() < loner_n:
-                created_cat.get_permanent_condition("sterile", False)
+                get_permanent_condition(created_cat, "sterile", False)
                 created_cat.pelt.scars = (*created_cat.pelt.scars, "TNR")
                 created_cat.pelt.rebuild_sprite = True
         
@@ -216,7 +222,7 @@ def updated_create_new_cat(
         # NAME
         _assign_name(created_cat)
 
-        created_cat.create_relationships_new_cat()
+        create_relationships_new_cat(created_cat)
         game.clan.add_cat(created_cat)
         new_cats.append(created_cat)
 
@@ -394,11 +400,12 @@ def _assign_health(created_cat, option_dict):
     if option_dict.get("health", {}).get("condition"):
         condition = choice(option_dict["health"]["condition"])
         if condition in INJURIES:
-            created_cat.get_injured(name=condition)
+            get_injured(created_cat, name=condition)
         elif condition in ILLNESSES:
-            created_cat.get_ill(name=condition)
+            get_ill(created_cat, illness_name=condition)
         elif condition in PERMANENT:
-            created_cat.get_permanent_condition(
+            get_permanent_condition(
+                created_cat,
                 name=condition,
                 born_with=option_dict["health"].get("must_be_congenital", False),
             )
@@ -438,7 +445,7 @@ def _assign_health(created_cat, option_dict):
                 "always",
                 "sometimes",
             ]:
-                created_cat.get_permanent_condition(chosen_condition, True)
+                get_permanent_condition(created_cat, chosen_condition, True)
                 if (
                     created_cat.permanent_condition[chosen_condition]["moons_until"]
                     == 0

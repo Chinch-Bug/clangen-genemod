@@ -325,8 +325,6 @@ class RelationshipScreen(Screens):
             )
 
         self.current_page = 1
-        self.main_cat.blank_relations = list(set([x for x in self.main_cat.all_cats if x not in self.main_cat.relationships]))
-        blank_relations = [Relationship(self.main_cat, Cat.fetch_cat(x)) for x in self.main_cat.blank_relations if Cat.fetch_cat(x)]
         
         # Keep a list of all the relations
         if get_config("sorting.sort_by_rel_total"):
@@ -335,9 +333,9 @@ class RelationshipScreen(Screens):
                 key=lambda x: x.total_abs_relationship_value,
                 reverse=True,
             )
-            self.all_relations = self.all_relations + [r for r in blank_relations if r not in self.all_relations]
+            self.all_relations = self.all_relations
         else:
-            self.all_relations = (list(self.main_cat.relationships.values()).copy() + blank_relations).sorted(key=lambda x: x.cat_to)
+            self.all_relations = (list(self.main_cat.relationships.values()).copy()).sorted(key=lambda x: x.cat_to)
 
         # self.all_relations = [rel for rel in self.all_relations if rel.cat_to.status.is_outsider or rel.cat_from.status.is_outsider 
         #                       or rel.cat_to.status.get_last_living_group() in self.main_cat.status.all_groups or self.main_cat.status.get_last_living_group() in rel.cat_to.status.all_groups]

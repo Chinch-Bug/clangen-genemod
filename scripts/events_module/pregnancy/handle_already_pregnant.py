@@ -9,6 +9,7 @@ from scripts.cat.names import Name
 from scripts.cat_relations.relationship import Relationship
 from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank
 from scripts.clan_package.settings import get_clan_setting
+from scripts.cat.microservices.conditions import get_injured
 from scripts.config import get_config
 from scripts.event_class import Single_Event
 from scripts.events_module.consequences import (
@@ -343,7 +344,7 @@ def handle_two_moon_pregnant(cat: Cat, clan):
             death_event = i18n.t("conditions.pregnancy.kitting_death", name=cat.name)
         cat.history.add_death(death_text=death_event)
     else:  # if cat doesn't die, give recovering from birth
-        cat.get_injured("recovering from birth", event_triggered=True)
+        get_injured(cat, "recovering from birth", event_triggered=True)
         if "blood loss" in cat.injuries:
             if cat.status.is_leader:
                 death_event = i18n.t("conditions.pregnancy.leader_kitting_death_severe")
@@ -456,7 +457,7 @@ def _get_cheated_mate(subject_cat: Cat, include_dead: bool = False):
     mates = []
     for mate_id in choices(subject_cat.mate):
         mate = Cat.fetch_cat(mate_id)
-        if not mate:
+        if not mate or mate.status.is_outsider:
             continue
         if include_dead and mate.dead:
             mates.append(mate)

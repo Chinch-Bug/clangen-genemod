@@ -2,14 +2,15 @@ from random import choice, random, randint
 from typing import Optional
 from operator import xor
 
-from scripts.cat.cats import Cat, BACKSTORIES
+from scripts.cat.cats import Cat
+from scripts.cat.constants import BACKSTORIES
 from scripts.cat.enums import (
     CatAge,
     CatRank,
     CatSocial,
     CatThought,
 )
-from scripts.cat_relations.relationship import Relationship
+from scripts.cat_relations.relationship import Relationship, create_one_relationship
 from scripts.clan_package.settings import get_clan_setting
 from scripts.game_structure import game
 from scripts.events_module.consequences import (

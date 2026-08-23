@@ -16,7 +16,8 @@ from typing import Literal, Optional
 import i18n
 import ujson
 
-from scripts.cat.cats import Cat, BACKSTORIES
+from scripts.cat.cats import Cat
+from scripts.cat.constants import BACKSTORIES
 from scripts.cat.enums import CatRank, CatGroup, CatSocial, CatCompatibility, CatAge, CatThought
 from scripts.cat.factories.new_cat_factory import NewCatFactory
 from scripts.cat.factories.create_example_cat import create_example_cats
@@ -26,6 +27,7 @@ from scripts.cat.save_load import (
     save_cats,
     get_faded_ids,
 )
+from scripts.cat_relations.cat_handle_funcs import init_all_relationships
 from scripts.clan_package.clan_names import get_possible_clan_names
 from scripts.clan_package.settings import save_clan_settings, load_clan_settings
 from scripts.clan_package.settings.clan_settings import (
@@ -320,10 +322,8 @@ class Clan:
             if cat_id not in self.clan_cats:
                 self.clan_cats.append(cat_id)
             the_cat = Cat.all_cats.get(cat_id)
-
-        # give thoughts,actions and relationships to cats
-            the_cat.init_all_relationships()
-            if not the_cat.dead:
+            init_all_relationships(the_cat)
+            if the_cat not in [self.instructor] + [clan.instructor for clan in self.all_other_clans if clan.instructor]:
                 the_cat.backstory = "clan_founder"
             if the_cat.status.rank == CatRank.APPRENTICE:
                 the_cat.rank_change(CatRank.APPRENTICE, new_thought=False)

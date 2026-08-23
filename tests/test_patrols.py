@@ -336,6 +336,7 @@ class TestOutcomeExecution(unittest.TestCase):
         handle_consequences.execute_outcome(
             patrol.success_outcomes[0],
             self.patrol_class.involved_cats,
+            clan=game.clan,
             other_clan=OtherClan(),
         )
 
@@ -375,6 +376,7 @@ class TestOutcomeExecution(unittest.TestCase):
         handle_consequences.execute_outcome(
             patrol.success_outcomes[0],
             self.patrol_class.involved_cats,
+            clan=game.clan,
             other_clan=OtherClan(),
         )
 
@@ -419,6 +421,7 @@ class TestOutcomeExecution(unittest.TestCase):
         handle_consequences.execute_outcome(
             patrol.success_outcomes[0],
             self.patrol_class.involved_cats,
+            clan=game.clan,
             other_clan=OtherClan(),
         )
 
@@ -458,6 +461,7 @@ class TestOutcomeExecution(unittest.TestCase):
         handle_consequences.execute_outcome(
             patrol.success_outcomes[0],
             self.patrol_class.involved_cats,
+            clan=game.clan,
             other_clan=OtherClan(),
         )
 
@@ -547,6 +551,7 @@ class TestOutcomeExecution(unittest.TestCase):
         handle_consequences.execute_outcome(
             patrol.success_outcomes[0],
             self.patrol_class.involved_cats,
+            clan=game.clan,
             other_clan=OtherClan(),
         )
 
