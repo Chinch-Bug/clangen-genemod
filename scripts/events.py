@@ -36,7 +36,7 @@ from scripts.conditions import (
     medicine_cats_can_cover_clan,
     get_amount_cat_for_one_medic,
 )
-from scripts.cat.microservices.conditions import get_ill, get_injured
+from scripts.cat.microservices.conditions import get_ill, get_injured, get_permanent_condition
 from scripts.event_class import Single_Event
 from scripts.events_module.event_filters import event_for_other_clan
 
@@ -975,7 +975,7 @@ def handle_tnr_return(clan=game.clan):
 
     text = i18n.t('hardcoded.event_tnr_return', cats=names, count=len(eligible_cats))   
     for cat in eligible_cats:
-        add_to_clan(cat, clan.group_ID, False)
+        add_to_clan(cat, clan.group_ID)
         additional = add_dependents_to_clan(cat, clan.group_ID, False)
         for x in additional:
             if x in Cat.all_cats:

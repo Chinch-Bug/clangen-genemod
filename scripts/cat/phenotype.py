@@ -609,11 +609,13 @@ class Phenotype(Genotype):
   
     def ChooseTortiePattern(self, spec = None):
         self.def_tortie_low_patterns = ['DELILAH', 'MOTTLED', 'EYEDOT', 'BANDANA', 'SMUDGED', 'EMBER', 'BRINDLE', 'SAFI', 'BELOVED', 'revBODY', 
-                                        'MINIMALONE', 'MINIMALTWO', 'SHILOH', 'FRECKLED']
-        self.def_tortie_mid_patterns = ['ONE', 'TWO', 'SMOKE', 'MINIMALTHREE', 'MINIMALFOUR', 'revOREO', "CHIMERA",
-                                'CHEST', 'GRUMPYFACE', 'SIDEMASK', 'PACMAN', 'BRIE' ,'ORIOLE', 'ROBIN', 'PAIGE', 'HEARTBEAT']
+                                'MINIMALONE', 'MINIMALTWO', 'SHILOH', 'FRECKLED']
+        self.def_tortie_mid_patterns = ['ONE', 'TWO', 'SMOKE', 'MINIMALTHREE', 'MINIMALFOUR', 'revOREO', "CHIMERA", 'CHEST', 'GRUMPYFACE', 
+                                'SIDEMASK', 'PACMAN', 'BRIE' ,'ORIOLE', 'ROBIN', 'PAIGE', 'HEARTBEAT', "TURTLECRAWL", "LARKPETAL",
+                                "MILQUE"]
         self.def_tortie_high_patterns = ['THREE', 'FOUR', 'REDTAIL', 'STREAK', 'MASK', 'SWOOP', 'ARMTAIL', 'STREAMSTRIKE', 'DAUB',
-                                'ROSETAIL', 'DAPPLENIGHT', 'BLANKET']
+                                'ROSETAIL', 'DAPPLENIGHT', 'BLANKET', "CHERRYTAIL", "POWDERSNOW", "BIBFULL_T", "TAILTIPREVERSE_T",
+                                "UNDERTAIL_T"]
         if random() < 0.2:
             self.def_tortie_low_patterns += ["FRECKLED_SMOKE", "SMOKING_EMBER", "MINIMAL_ONETWO", "MASKED_SHILOH", "FRECKLED_SAFI",
                                              "SMUDGED_SMOKE", "SMUDGED_SAFI", "BRIE_ONE", "DENSE_BRINDLE", "MINIMAL_ORIOLE"]
@@ -631,7 +633,8 @@ class Phenotype(Genotype):
         tiny_patches = ["BACKSPOT", "BEARD", "BELLY", "BIB", "revBLACKSTAR", "BLAZE", "BLAZE_MIN", "BLAZEMASK", "revBOOTS", "CHESTSPECK", "ESTRELLA",
                         "EYEBAGS", "revEYESPOT", "revHEART", "HONEY", "LEFTEAR_MID", "LEFTEAR_MOSTLY", "LEFTEAR_RING", "LEFTEAR_TIP", "LEFTEAR", "LITTLE", "PAWS", "REVERSEEYE", "REVERSEHEART", 
                         "RIGHTEAR_MID", "RIGHTEAR_MOSTLY", "RIGHTEAR_RING", "RIGHTEAR_TIP", "RIGHTEAR", "SCOURGE", "SPARKLE", "revTAIL", 'revTAILTWO', "TAILTIP", "TEARS", "TIP",
-                        "TOES", "TOESTAIL", "VEE", "HELMET"]
+                        "TOES", "TOESTAIL", "VEE", "HELMET", "TAILTIP_T", "PAW_FR_T", "PAW_FL_CLOVERTAIL", "PAW_BR_WING", "PAW_BL_SPLOTCH", "UNDERPAWS_T", "BELLY_T", "BOTHEARS_T", 
+                        "EYELINER_T"]
         
                 
         chosen = []

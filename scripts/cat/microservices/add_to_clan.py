@@ -17,7 +17,7 @@ def add_to_clan(cat, clan):
     if game.clan:
         game.clan.add_cat(cat)
 
-def add_dependents_to_clan(cat: "Cat", clan) -> List[str]:
+def add_dependents_to_clan(cat: "Cat", clan, add_kits=True) -> List[str]:
     """
     :param cat: the cat whose dependents are being added to the clan
     :return ids: list of IDs of additional dependents that are coming with this one

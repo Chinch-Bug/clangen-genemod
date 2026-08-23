@@ -140,11 +140,11 @@ def _handle_pregnancy_notice(cat, other_cat, surrogate, hidden, clan):
         # sometimes they won't...
         elif (
             affair_partner
-            and amab_mate
+            and (amab_mate or mate)
         ):
             announcement_key = choice(["announcement_affair", "announcement"])
             _set_affair_visibility(cat, announcement_key == "announcement_affair")
-            random_cat = choice(amab_mate) if amab_mate else None
+            random_cat = choice(amab_mate) if amab_mate else choice(mate)
             text, involved_cats = _create_pregnancy_announcement(cat, announcement_key, clan, random_cat=random_cat)
         # if all else fails, just a regular announcement happens
         else:

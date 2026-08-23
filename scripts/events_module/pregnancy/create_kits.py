@@ -9,6 +9,7 @@ from scripts.cat.cats import Cat
 from scripts.cat.enums import CatAge, CatRank, CatSocial, CatGroup, CatThought, CatCompatibility
 from scripts.cat.factories.new_cat_factory import NewCatFactory
 from scripts.cat.factories.typed_dicts import StatusDict
+from scripts.cat.microservices.add_to_clan import add_to_clan
 from scripts.cat.names import Name
 from scripts.cat_relations.enums import RelType
 from scripts.cat_relations.inheritance2 import inheritance_db
@@ -85,11 +86,14 @@ def get_kits(
         all_pars += other_cat
     birth_parents = [i.ID for i in all_pars if i and (
         not surrogate or i not in surrogate)]
+    birth_pars_mates = []
+    for p in birth_parents:
+        birth_pars_mates += Cat.fetch_cat(p).mate
     for _par in all_pars:
-        if not _par or _par.ID not in cat.mate:
+        if not _par or _par.ID not in birth_pars_mates:
             continue
         for _m in _par.mate:
-            if _m not in birth_parents and _m not in all_adoptive_parents:
+            if _m not in birth_parents and _m not in all_adoptive_parents and not Cat.fetch_cat(_m).dead:
                 all_adoptive_parents.append(_m)
 
     # Then, add any additional adoptive parents that were provided passed directly into the

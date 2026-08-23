@@ -11,6 +11,7 @@ from scripts.cat.pelts import Pelt
 from scripts.cat_relations.relationship import Relationship
 from scripts.clan_package.settings import get_clan_setting
 from scripts.event_class import Single_Event
+from scripts.cat.microservices.conditions import get_injured
 from scripts.events_module.future.prep_and_trigger import prep_future_event
 from scripts.events_module.short.short_event import ShortEvent
 from scripts.game_structure import localization, game
