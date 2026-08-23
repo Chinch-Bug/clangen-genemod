@@ -120,7 +120,7 @@ class Relationship:
         """
         Returns the total int of all relationship types.
         """
-        return self.romance + abs(self.like) + abs(self.respect) + abs(self.comfort) + abs(self.trust)
+        return self.romance + self.like + self.respect + self.comfort + self.trust
 
     @property
     def has_negative(self) -> bool:

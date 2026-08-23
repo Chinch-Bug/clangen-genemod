@@ -151,7 +151,7 @@ def find_cats(
     for abbr in cats_to_create:
         # this will first try to find an existing cat, but if it can't then it'll make a new one
         constraints = event.involved_cats[abbr]
-        cat_list = [c for c in outside_cats if c not in temp_involved_cats.values()]
+        cat_list = [c for c in outside_cats if c not in temp_involved_cats.values() and ("status" in constraints or cat.status.is_outsider)]
         possible_injuries = get_potential_conditions(abbr, can_give_condition, event)
 
         # initial filter of the entire list of cats for the more general constraints
