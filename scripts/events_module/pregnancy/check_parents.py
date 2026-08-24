@@ -260,7 +260,7 @@ def get_second_parent(cat, clan):
                     if not p_rel.opposite_relationship:
                         p_rel.link_relationship()
                     p_rel_opp = p_rel.opposite_relationship
-                    if p_rel_opp.like > -20 and p_rel.like > -20:
+                    if p_rel_opp.like > -15 and p_rel.like > -15:
                         p_affairs.append(p_affair)
         possible_partners = p_affairs
 

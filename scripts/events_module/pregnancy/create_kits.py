@@ -41,6 +41,7 @@ def get_kits(
     other_cat=None, 
     clan=game.clan, 
     adoptive_parents=None, 
+    affair_parents=None,
     backkit=None, 
     surrogate=None):
     """Create some amount of kits
@@ -84,16 +85,14 @@ def get_kits(
     all_pars = [cat]
     if other_cat:
         all_pars += other_cat
-    birth_parents = [i.ID for i in all_pars if i and (
+    birth_parents = [i for i in all_pars if i and (
         not surrogate or i not in surrogate)]
-    birth_pars_mates = []
-    for p in birth_parents:
-        birth_pars_mates += Cat.fetch_cat(p).mate
-    for _par in all_pars:
-        if not _par or _par.ID not in birth_pars_mates:
+    for _par in birth_parents:
+        if affair_parents and _par in affair_parents:
             continue
         for _m in _par.mate:
-            if _m not in birth_parents and _m not in all_adoptive_parents and not Cat.fetch_cat(_m).dead:
+            _mcat = Cat.fetch_cat(_m)
+            if _mcat not in birth_parents and _m not in all_adoptive_parents and not _mcat.dead:
                 all_adoptive_parents.append(_m)
 
     # Then, add any additional adoptive parents that were provided passed directly into the

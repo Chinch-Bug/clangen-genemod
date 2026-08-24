@@ -73,16 +73,17 @@ def _handle_pregnancy_notice(cat, other_cat, surrogate, hidden, clan):
     ids = []
     affair_partner = []
     surrogates = []
+    other_cat_has_mate = []
     if other_cat:
         if surrogate:
             surrogates.append(other_cat[0].ID)
         for x in other_cat:
-            if cat.mate and x.ID not in cat.mate:
+            if cat.mate and x.ID not in cat.mate and x.ID not in surrogates:
                 affair_partner.append(x.ID)
+            if x.mate and x.ID not in surrogates:
+                other_cat_has_mate.append(x)
             else:
                 ids.append(x.ID)
-    if surrogate:
-        affair_partner = []
 
     mate = []
     afab_mate = []
@@ -106,7 +107,7 @@ def _handle_pregnancy_notice(cat, other_cat, surrogate, hidden, clan):
     if cat.status.group_ID != clan.group_ID:
         clan = cat.status.fetch_clan_object(game.clan)
 
-    _create_pregnancy_data(cat, ids, affair_partner, surrogates, hidden)
+    _create_pregnancy_data(cat, ids, affair_partner, surrogates, hidden, other_cat_has_mate)
 
     if not hidden:
         # if both cats are faithful to each other and aren't cheaters,
@@ -158,7 +159,7 @@ def _handle_pregnancy_notice(cat, other_cat, surrogate, hidden, clan):
         get_injured(cat, "pregnant", severity="minor")
 
 
-def _create_pregnancy_data(pregnant_cat: Cat, second_parent: Optional[Cat], affair_partner: Optional[list[Cat]], surrogate: Optional[list[Cat]], hidden=False):
+def _create_pregnancy_data(pregnant_cat: Cat, second_parent: Optional[Cat], affair_partner: Optional[list[Cat]], surrogate: Optional[list[Cat]], hidden=False, other_cat_has_mate=None):
     """Creates the pregnancy data entry for a new pregnancy."""
     fever = False
     if len(pregnant_cat.illnesses) > 0:
@@ -171,6 +172,7 @@ def _create_pregnancy_data(pregnant_cat: Cat, second_parent: Optional[Cat], affa
     game.clan.pregnancy_data[pregnant_cat.ID] = {
         "second_parent": second_parent if second_parent else None,
         "affair_partner": affair_partner if affair_partner else None,
+        "other_cat_affair": other_cat_has_mate if other_cat_has_mate else None,
         "surrogate": surrogate if surrogate else None,
         "moons": 0,
         "amount": 0,
