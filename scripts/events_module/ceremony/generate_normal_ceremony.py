@@ -49,7 +49,7 @@ def create_ceremony(
 
     # we won't actually use results or rel results for ceremonies
     processed_string, results, rel_results = execute_outcome(
-        chosen_ceremony, involved_cats
+        chosen_ceremony, involved_cats, clan=clan
     )
 
     # cats to be displayed as buttons under the event
