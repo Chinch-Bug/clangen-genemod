@@ -48,7 +48,7 @@ def passes_general_constraints(
         return False
 
     # CHECK TAGS
-    if not event_for_tags(event.tags, primary_cat):
+    if not event_for_tags(event.tags, primary_cat, clan):
         if is_debug_event:
             print("DEBUG: requested event does not meet constraints (tags)")
         return False
