@@ -8,8 +8,8 @@ import i18n
 
 from scripts.cat.enums import CatGroup
 from scripts.clan_package.settings import get_clan_setting
-from scripts.event_class import Single_Event
 from scripts.config import get_config
+from scripts.events_module.event_information import EventInformation
 from scripts.game_structure import game
 from scripts.events_module.text_adjust import event_text_adjust
 from scripts.game_structure.localization import load_lang_resource
@@ -81,7 +81,7 @@ def killing_outsiders(cat: "Cat", clan=game.clan):
             if cat.status.is_other_clancat:
                 tags.append("other_clans")
             game.cur_events_list.append(
-                Single_Event(text, tags, cat_dict={"m_c": cat}, clan=cat.status.get_last_living_group())
+                EventInformation(text, tags, cat_dict={"m_c": cat}, clan=cat.status.get_last_living_group())
             )
 
 def outsider_wander(cat: "Cat", clan=game.clan):
@@ -115,7 +115,9 @@ def outsider_wander(cat: "Cat", clan=game.clan):
                 text = random.choice(wander_events[cat.status.social.value])
             text = event_text_adjust(cat, text, main_cat=cat)
             game.cur_events_list.append(
-                Single_Event(text, "misc", cat_dict={"m_c": cat}, clan=cat.status.get_last_valid_group_id())
+                EventInformation(
+                    text, ["misc"], cat_dict={"m_c": cat}, clan=cat.status.get_last_valid_group_id()
+                )
             )
             cat.status.change_group_nearness(clan.group_ID)
         elif random.getrandbits(int(get_config("outsider_events.outsider_return"))) == 1 and not cat.dead and not cat.status.is_near():
@@ -139,7 +141,6 @@ def outsider_wander(cat: "Cat", clan=game.clan):
                     return_events[cat.status.social.value])
             text = event_text_adjust(cat, text, main_cat=cat)
             game.cur_events_list.append(
-                Single_Event(text, "misc", cat_dict={
-                                "m_c": cat}, clan=cat.status.get_last_valid_group_id())
+                EventInformation(text, ["misc"], cat_dict={"m_c": cat}, clan=cat.status.get_last_valid_group_id())
             )
             cat.status.change_group_nearness(clan.group_ID)

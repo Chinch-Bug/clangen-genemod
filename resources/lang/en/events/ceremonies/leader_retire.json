@@ -1,0 +1,24 @@
+[
+    {
+        "event_id": "lead_retire_default0",
+        "involved_cats": {
+            "m_c": {}
+        },
+        "strings": [
+            "(old_name) called a meeting to announce that {PRONOUN/m_c/subject} {VERB/m_c/have/has} made the hard decision to relinquish leadership and join the elders. Later that night, {PRONOUN/m_c/subject} {VERB/m_c/travel/travels} to make it final and {VERB/m_c/are welcomed/is welcomed} back as m_c."
+        ]
+    },
+    {
+        "event_id": "lead_retire_childish",
+        "involved_cats": {
+            "m_c": {
+                "stat": {
+                    "trait": [ "childish" ]
+                }
+            }
+        },
+        "strings": [
+            "In what seemed like an impulse decision, (old_name) declared that {PRONOUN/m_c/subject}{VERB/m_c/'ve had/'s had} enough of the politics and the disrespect. That same night, {PRONOUN/m_c/subject} declare {PRONOUN/m_c/self} m_c and join the elders."
+        ]
+    }
+]

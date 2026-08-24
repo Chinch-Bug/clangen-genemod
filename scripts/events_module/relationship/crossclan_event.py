@@ -10,7 +10,7 @@ from scripts.cat.enums import CatGroup
 from scripts.cat.pelts import Pelt
 from scripts.cat_relations.relationship import Relationship
 from scripts.clan_package.settings import get_clan_setting
-from scripts.event_class import Single_Event
+from scripts.events_module.event_information import EventInformation
 from scripts.cat.microservices.conditions import get_injured
 from scripts.events_module.future.prep_and_trigger import prep_future_event
 from scripts.events_module.short.short_event import ShortEvent
@@ -196,7 +196,7 @@ class CrossClanEvent(ShortEvent):
 
         for clan_id in self.involved_clans:
             game.cur_events_list.append(
-                Single_Event(
+                EventInformation(
                     self.text + " " + self.additional_event_text,
                     self.types,
                     self.all_involved_cat_ids,

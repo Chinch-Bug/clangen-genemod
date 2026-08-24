@@ -11,7 +11,7 @@ from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank
 from scripts.clan_package.settings import get_clan_setting
 from scripts.cat.microservices.conditions import get_injured
 from scripts.config import get_config
-from scripts.event_class import Single_Event
+from scripts.events_module.event_information import EventInformation
 from scripts.events_module.consequences import (
     check_stolen_vitality,
     change_relationship_values,
@@ -85,7 +85,7 @@ def handle_one_moon_pregnant(cat: Cat, clan):
 
     text = event_text_adjust(Cat, text, main_cat=cat, clan=clan)
     game.cur_events_list.append(
-        Single_Event(text, "birth_death", cat_dict={"m_c": cat}, clan=clan.group_ID)
+        EventInformation(text, ["birth_death"], cat_dict={"m_c": cat}, clan=clan.group_ID)
     )
 
 def handle_two_moon_pregnant(cat: Cat, clan):
@@ -428,7 +428,7 @@ def handle_two_moon_pregnant(cat: Cat, clan):
 
     # display event
     game.cur_events_list.append(
-        Single_Event(
+        EventInformation(
             print_event, ["health", "birth_death"], involved_cats, cat_dict=cat_dict, clan=clan.group_ID
         )
     )
@@ -805,7 +805,7 @@ def _handle_affair_discovery_breakup(cheating_cat: Cat, mate_cat: Cat):
             clan=mate_cat.status.fetch_clan_object(game.clan),
         )
         game.cur_events_list.append(
-            Single_Event(
+            EventInformation(
                 breakup_text,
                 ["relation", "misc"],
                 [mate_cat.ID, cheating_cat.ID],

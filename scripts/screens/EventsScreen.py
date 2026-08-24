@@ -8,8 +8,8 @@ from pygame_gui.core import ObjectID
 
 from scripts.cat.cats import Cat
 from scripts import events
-from scripts.events import Single_Event
 from scripts.config import get_config
+from scripts.events import EventInformation
 from scripts.game_structure import image_cache, constants
 from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure.game.switches import (
@@ -1059,7 +1059,7 @@ class EventsScreen(Screens):
                 self.event_buttons[tab].enable()
 
         if not self.all_events:
-            self.all_events.append(Single_Event(i18n.t("screens.events.no_events")))
+            self.all_events.append(EventInformation(i18n.t("screens.events.no_events")))
 
         self.display_events = self.all_events
 

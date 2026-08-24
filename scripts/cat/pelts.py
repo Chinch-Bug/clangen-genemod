@@ -793,7 +793,7 @@ class Pelt:
                         valid_legs.append(w)
                 if valid_legs:
                     count = choice(range(len(valid_legs)))
-                    valid_legs = shuffle(valid_legs)
+                    shuffle(valid_legs)
                     for i in range(count):
                         leg = valid_legs[i]
                         white_pattern.remove(leg)

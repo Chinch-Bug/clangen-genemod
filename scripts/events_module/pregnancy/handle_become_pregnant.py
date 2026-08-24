@@ -8,7 +8,7 @@ from scripts.config import get_config
 from scripts.cat.cats import Cat
 from scripts.clan_package.settings import get_clan_setting
 from scripts.cat.microservices.conditions import get_injured
-from scripts.event_class import Single_Event
+from scripts.events_module.event_information import EventInformation
 from scripts.events_module.pregnancy.build_strings import (
     get_pregnancy_strings,
 )
@@ -151,8 +151,8 @@ def _handle_pregnancy_notice(cat, other_cat, surrogate, hidden, clan):
         else:
             text, involved_cats = _create_pregnancy_announcement(cat, "announcement", clan, random_cat=choice(other_cat))
         game.cur_events_list.append(
-            Single_Event(
-                text, "birth_death", involved_cats, clan=clan.group_ID
+            EventInformation(
+                text, ["birth_death"], involved_cats, clan=clan.group_ID
             )
         )
     else:
@@ -201,7 +201,7 @@ def _retrieve_secret_kittens(cat, other_cat, surrogate, clan):
         text, involved_cats = _create_pregnancy_announcement(
             pregnant_cat, "announcement_surrogate", clan, random_cat=cat
         )
-        game.cur_events_list.append(Single_Event(text, "birth_death", cats_involved=involved_cats, clan=clan.group_ID))
+        game.cur_events_list.append(EventInformation(text, ["birth_death"], cats_involved=involved_cats, clan=clan.group_ID))
         
         ids = [cat.ID]
         if get_clan_setting('multisire'):
@@ -264,10 +264,10 @@ def _retrieve_secret_kittens(cat, other_cat, surrogate, clan):
                             events = get_pregnancy_strings()
                             secondary_event = choice(events["birth"]["otherclan_mother"])
                             secondary_event = event_text_adjust(Cat, secondary_event, main_cat=par)
-                            game.cur_events_list.append(Single_Event(secondary_event, "birth_death", cats_involved=cats_involved, clan=par.status.group_ID))
+                            game.cur_events_list.append(EventInformation(secondary_event, ["birth_death"], cats_involved=cats_involved, clan=par.status.group_ID))
         for kit in kits:
             cats_involved.append(kit.ID)
-        game.cur_events_list.append(Single_Event(print_event, "birth_death", cats_involved=cats_involved, clan=clan.group_ID))
+        game.cur_events_list.append(EventInformation(print_event, ["birth_death"], cats_involved=cats_involved, clan=clan.group_ID))
 
 
 def _create_pregnancy_announcement(

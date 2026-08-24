@@ -765,6 +765,9 @@ dev_tools = false
   # 0 is default, -1 would try to ensure only negative events happen, 1 would try to ensure only positive events happen, 
   # -0.5 would make positive events about half as likely as normal ; 0.5 would make negative events about half as likely as normal
   clan_rel_change_multiplier = 0
+  
+  # forces ceremony with this id to occur
+  debug_ensure_ceremony_id = ""
 
 [death_related]
   # the maximum lives a leader can have
@@ -1507,15 +1510,6 @@ dev_tools = false
           Greenleaf = [3,6,4,2,0]
           Leaf-fall = [2,5,5,2,1]
           Leaf-bare = [1,3,6,4,2]
-
-  # used in conjunction with patrol_balance to modify the chosen prey size by the patrol frequency
-  # the less frequent the patrol, the larger the prey it can find
-  [prey.patrol_weight_adaption]
-    # prey size increase = associated frequency
-    1_prey_class_increase = 4
-    2_prey_class_increase = 3
-    3_prey_class_increase = 2
-    4_prey_class_increase = 1
 
   [prey.event_increase_modifiers]
     increase_tiny = 0.5

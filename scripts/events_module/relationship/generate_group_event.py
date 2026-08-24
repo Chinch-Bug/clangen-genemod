@@ -1,11 +1,11 @@
 from random import choice, choices
-from typing import Union, Optional
+from typing import Union
 
 import i18n
 
 from scripts.cat.cats import Cat
 from scripts.config import get_config
-from scripts.event_class import Single_Event
+from scripts.events_module.event_information import EventInformation
 from scripts.events_module.consequences import change_relationship_values
 from scripts.events_module.text_adjust import process_text, adjust_list_text
 from scripts.events_module.text_pool_event.event_retrieval import (
@@ -61,7 +61,7 @@ def _get_event(
         possible_events=events,
         clan=main_cat.status.fetch_clan_object(game.clan),
         other_clan=(
-            choice(game.clan.all_other_clans) if game.clan.all_other_clans else None
+            choice([c for c in game.clan.all_other_clans+[game.clan] if c.group_ID != main_cat.status.group_ID]) if game.clan.all_other_clans else None
         ),
         frequency_active=False,
     )
@@ -106,7 +106,7 @@ def _resolve_event(
 
     # append the event to the events list!
     game.cur_events_list.append(
-        Single_Event(event_string, ["relation", "interaction"], cat_ids, clan=clan)
+        EventInformation(event_string, ["relation", "interaction"], cat_ids, clan=clan)
     )
 
     # influence relationships

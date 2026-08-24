@@ -3,7 +3,7 @@ from random import random, choice
 from scripts.config import get_config
 from scripts.cat.cats import Cat
 from scripts.clan_package.settings import get_clan_setting
-from scripts.event_class import Single_Event
+from scripts.events_module.event_information import EventInformation
 from scripts.events_module.pregnancy.check_parents import (
     check_if_can_have_kits,
     get_second_parent,
@@ -113,7 +113,7 @@ def handle_having_kits(cat: Cat, clan):
         
         cat.injuries["pregnant"]["duration"] = 1
         game.cur_events_list.append(
-            Single_Event(
-                text, "birth_death", involved_cats, clan=clan.group_ID
+            EventInformation(
+                text, ["birth_death"], involved_cats, clan=clan.group_ID
             )
         )

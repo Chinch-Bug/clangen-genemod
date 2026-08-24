@@ -53,6 +53,10 @@ def find_cats(
 
         # CHECK ALREADY ASSIGNED CAT
         if abbr in involved_cats:
+            if involved_cats[abbr] is None and abbr in event.involved_cats:
+                # sometimes a specific abbr may be "preset" as None
+                # which indicates that events requiring that abbr should be avoided
+                return {}
             possible_cats = (
                 involved_cats[abbr] if isinstance(abbr, list) else [involved_cats[abbr]]
             )
@@ -97,6 +101,7 @@ def find_cats(
                 event,
                 constraints,
                 possible_injuries,
+                clan=clan
             )
             # if we found no one, then this event isn't possible, and we should try a different one
             if not temp_involved_cats["multi_cat"]:
@@ -126,7 +131,7 @@ def find_cats(
             injuries=possible_injuries,
             other_involved_clan_id=other_clan.group_ID if other_clan else None,
             return_list=True,
-            return_id=False,
+            return_id=False, clan=clan,
         )
         if not possible_cats:
             return {}
@@ -162,7 +167,7 @@ def find_cats(
             injuries=possible_injuries,
             other_involved_clan_id=other_clan.group_ID if other_clan else None,
             return_list=True,
-            return_id=False,
+            return_id=False, clan=clan,
         )
 
         new_cats = _find_involved_cat(
@@ -291,7 +296,8 @@ def _get_multi_cats(
     interactable_cats: list[Cat],
     event: TextPoolEvent,
     cat_constraints: InvolvedCatDict,
-    possible_injuries: list,
+    possible_injuries: list, 
+    clan=None,
 ) -> list[Cat]:
     """
     Finds and returns multiple available cats for use as a group in the event.
@@ -308,7 +314,8 @@ def _get_multi_cats(
         involved_cat_dict=involved_cats,
         injuries=possible_injuries,
         return_list=True,
-        return_id=False,
+        return_id=False, 
+        clan=clan,
     )
     # if not enough possible cats, return empty list
     if not possible_cats or len(possible_cats) <= 1:

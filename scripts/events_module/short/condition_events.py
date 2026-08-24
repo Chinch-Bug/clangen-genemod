@@ -8,7 +8,6 @@ import logging
 
 from scripts.cat.cats import Cat
 from scripts.cat.enums import CatAge, CatRank
-from scripts.cat.history import History
 from scripts.clan_package.settings import get_clan_setting
 from scripts.clan_resources.freshkill import (
     FRESHKILL_ACTIVE,
@@ -25,7 +24,7 @@ from scripts.cat.microservices.conditions import (
     get_permanent_condition,
 )
 from scripts.config import get_config
-from scripts.event_class import Single_Event
+from scripts.events_module.event_information import EventInformation
 from scripts.events_module.consequences import check_stolen_vitality
 from scripts.events_module.short.scar_events import Scar_Events
 from scripts.events_module.short.short_event_generation import create_short_event
@@ -206,7 +205,7 @@ class Condition_Events:
 
             types = ["birth_death"]
             game.cur_events_list.append(
-                Single_Event(event, types, cat_dict={"m_c": cat}, clan=game.clan.group_ID)
+                EventInformation(event, types, cat_dict={"m_c": cat}, clan=game.clan.group_ID)
             )
             return
 
@@ -259,7 +258,7 @@ class Condition_Events:
             event_text = event_text_adjust(Cat, event, main_cat=cat)
             types = ["health"]
             game.cur_events_list.append(
-                Single_Event(event_text, types, cat_dict={"m_c": cat}, clan=game.clan.group_ID)
+                EventInformation(event_text, types, cat_dict={"m_c": cat}, clan=game.clan.group_ID)
             )
 
     @staticmethod
@@ -406,7 +405,7 @@ class Condition_Events:
             if cat.dead:
                 types.append("birth_death")
             game.cur_events_list.append(
-                Single_Event(event_string, types, cat_dict=cat_dict, clan=clan.group_ID)
+                EventInformation(event_string, types, cat_dict=cat_dict, clan=clan.group_ID)
             )
 
         # just double-checking that trigger is only returned True if the cat is dead
@@ -968,7 +967,7 @@ class Condition_Events:
             if cat.dead:
                 types.append("birth_death")
             game.cur_events_list.append(
-                Single_Event(event_string, types, cat_dict=cat_dict, clan=clan.group_ID)
+                EventInformation(event_string, types, cat_dict=cat_dict, clan=clan.group_ID)
             )
 
         return triggered
@@ -1125,7 +1124,7 @@ class Condition_Events:
         if len(event_list) > 0:
             event_string = " ".join(event_list)
             game.cur_events_list.append(
-                Single_Event(event_string, event_types, cat_dict=cat_dict, clan=clan.group_ID)
+                EventInformation(event_string, event_types, cat_dict=cat_dict, clan=clan.group_ID)
             )
         return
 
@@ -1201,9 +1200,9 @@ class Condition_Events:
                     cat.retire_cat()
                     # Don't add this to the condition event list: instead make it its own event, a ceremony.
                     game.cur_events_list.append(
-                        Single_Event(
+                        EventInformation(
                             event_text_adjust(Cat, event, main_cat=cat, clan=clan),
-                            "ceremony",
+                            ["ceremony"],
                             retire_involved,
                             cat_dict=cat_dict,
                             clan=clan.group_ID

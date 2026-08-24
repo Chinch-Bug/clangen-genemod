@@ -13,10 +13,10 @@ from scripts.cat_relations.relationship import Relationship
 from scripts.clan_package.settings import get_clan_setting
 from scripts.cat.microservices.conditions import get_injured, get_ill, get_permanent_condition
 from scripts.config import get_config
-from scripts.event_class import Single_Event
+from scripts.events_module.event_information import EventInformation
 from scripts.events_module.future.prep_and_trigger import prep_future_event
 from scripts.events_module.relationship import relation_events
-from scripts.game_structure import localization, game
+from scripts.game_structure import game
 from scripts.events_module.text_adjust import (
     event_text_adjust,
     get_leader_life_notice,
@@ -394,7 +394,7 @@ class ShortEvent:
 
         if "m_c" not in self.exclude_involved or not second_clan:
             game.cur_events_list.append(
-                Single_Event(
+                EventInformation(
                     self.text + " " + self.additional_event_text,
                     self.types,
                     self.all_involved_cat_ids,
@@ -403,7 +403,7 @@ class ShortEvent:
             )
         if second_clan and "r_c" not in self.exclude_involved:
             game.cur_events_list.append(
-                Single_Event(
+                EventInformation(
                     self.text + " " + self.additional_event_text,
                     self.types,
                     self.all_involved_cat_ids,
@@ -413,7 +413,7 @@ class ShortEvent:
         for attribute_list in self.new_cat_attributes:
             if "change_clan" in attribute_list or "change_clan_rev" in attribute_list:
                 game.cur_events_list.append(
-                    Single_Event(
+                    EventInformation(
                         self.text + " " + self.additional_event_text,
                         self.types,
                         self.all_involved_cat_ids,

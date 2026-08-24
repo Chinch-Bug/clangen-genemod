@@ -1,0 +1,122 @@
+[
+    {
+        "event_id": "queen_app_default0",
+        "involved_cats": {
+            "m_c": {}
+        },
+        "strings": [
+            "m_c decides to serve {PRONOUN/m_c/poss} Clan as a queen. {PRONOUN/m_c/subject/CAP} {VERB/m_c/are/is} delighted to begin training. "
+        ]
+    },
+    {
+        "event_id": "queen_app_default1",
+        "involved_cats": {
+            "m_c": {},
+            "r_c0": {}
+        },
+        "strings": [
+            "m_c feels sick at the mere thought of fighting. {PRONOUN/m_c/subject/CAP} {VERB/m_c/decide/decides} to train as a queen. r_c0 is named as {PRONOUN/m_c/poss} mentor. ",
+            "m_c is fascinated by r_c0's ability to handle rowdy kits with ease. r_c0 takes {PRONOUN/m_c/object} under {PRONOUN/r_c0/poss} wing — {PRONOUN/m_c/subject/CAP} {VERB/m_c/are/is} clearly eager to learn.",
+            "m_c has always been interested in helping {PRONOUN/m_c/poss} Clan but was never that interested in life beyond the camp: {PRONOUN/m_c/subject} found {PRONOUN/m_c/poss} calling as a queen apprentice under r_c0, where m_c can aid within the nursery.",
+            "Despite the odd choice, m_c is firm that {PRONOUN/m_c/subject}'ll be r_c0's apprentice: {PRONOUN/m_c/subject} {VERB/m_c/want/wants} to help the Clan by tending to their youngest.",
+            "Being a queen apprentice was all that m_c could be good at: with r_c0's guidance, m_c hopes {PRONOUN/m_c/subject} can change the Clan.",
+            "m_c had been waiting for this moment: {PRONOUN/m_c/subject}'ll finally be a queen apprentice and be guided by r_c0 on to teach and care for the Clan's future — {PRONOUN/m_c/poss} one goal in life.",
+            "m_c always wanted to help {PRONOUN/m_c/poss} Clanmates, but didn't find much interest in work beyond camp: {PRONOUN/m_c/subject} {VERB/m_c/chose/chooses} to become a queen apprentice, hoping that r_c0 can teach {PRONOUN/m_c/object} how to care for the Clan's kits.",
+            "(old_name) can't contain the energy flowing through {PRONOUN/m_c/object}: {PRONOUN/m_c/subject} {VERB/m_c/are/is} officially going to begin training to be a permanent queen! {PRONOUN/m_c/subject/CAP} {VERB/m_c/earn/earns} {PRONOUN/m_c/poss} apprentice name, m_c, and will be guided by r_c0 on {PRONOUN/m_c/poss} journey.",
+            "(old_name) stands alert when called: {PRONOUN/m_c/subject} {VERB/m_c/know/knows} what {PRONOUN/m_c/subject} {VERB/m_c/want/wants} in life — to be a queen. {PRONOUN/m_c/subject/CAP} {VERB/m_c/are/is} named m_c and given to r_c0 to start {PRONOUN/m_c/poss} training.",
+            "Knowing that the Clan needed someone to help care for the kits, (old_name) decided to become a queen apprentice. {PRONOUN/m_c/subject/CAP} {VERB/m_c/earn/earns} {PRONOUN/m_c/poss} apprentice name, m_c, and is given r_c0 to mentor {PRONOUN/m_c/object}.",
+            "(old_name) had taken to following r_c0 around while {PRONOUN/r_c0/subject} did {PRONOUN/r_c0/poss} tasks, asking questions and listening. It wasn't a surprise {PRONOUN/m_c/subject} chose to become a queen apprentice under r_c0 after earning {PRONOUN/m_c/poss} apprentice name: m_c.",
+            "(old_name) always dreamed of becoming a queen: Now that {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} m_c, an apprentice being mentored by r_c0, it feels like a wish come true.",
+            "Even at {PRONOUN/m_c/poss} age, (old_name) couldn't imagine life as a warrior, healer, or mediator, being more fun than the games played with the younger kits. r_c0 cautioned that being a queen was not all fun and games, but m_c is welcomed under {PRONOUN/r_c0/poss} wing anyway."
+        ],
+        "relationship_constraint": [
+            {
+                "cats_from": [
+                    "m_c"
+                ],
+                "cats_to": [
+                    "r_c0"
+                ],
+                "mutual": false,
+                "constraints": [
+                    "app/mentor"
+                ]
+            }
+        ]
+    },
+    {
+        "event_id": "queen_app_no_mentor0",
+        "involved_cats": {
+            "m_c": {
+                "has_mentor": {
+                    "current": false
+                }
+            }
+        },
+        "strings": [
+            "m_c proposes the Clan is in need of a permanent queen within the nursery. {PRONOUN/m_c/subject/CAP} {VERB/m_c/decide/decides} to step up to the task."
+        ]
+    },
+    {
+        "event_id": "queen_app_well_suited0",
+        "involved_cats": {
+            "m_c": {
+                "stat": {
+                    "trait": [
+                        "thoughtful",
+                        "compassionate"
+                    ]
+                }
+            },
+            "r_c0": {}
+        },
+        "strings": [
+            "Impressed by {PRONOUN/m_c/poss} eagerness, r_c0 chooses m_c as the Clan's new queen apprentice.",
+            "m_c has taken to following r_c0 around during {PRONOUN/r_c0/poss} daily duties, fascinated by the life of a permanent queen. r_c0 is happy to train {PRONOUN/m_c/object}."
+        ],
+        "relationship_constraint": [
+            {
+                "cats_from": [
+                    "m_c"
+                ],
+                "cats_to": [
+                    "r_c0"
+                ],
+                "mutual": false,
+                "constraints": [
+                    "app/mentor"
+                ]
+            }
+        ]
+    },
+    {
+        "event_id": "queen_app_well_childish0",
+        "involved_cats": {
+            "m_c": {
+                "stat": {
+                    "trait": [
+                        "childish"
+                    ]
+                }
+            },
+            "r_c0": { }
+        },
+        "strings": [
+            "(old_name) didn't want to leave the nursery, even knowing it was time to become an apprentice. {PRONOUN/m_c/subject/CAP} compromise, begging r_c0 to train {PRONOUN/m_c/subject} as a queen instead."
+        ],
+        "relationship_constraint": [
+            {
+                "cats_from": [
+                    "m_c"
+                ],
+                "cats_to": [
+                    "r_c0"
+                ],
+                "mutual": false,
+                "constraints": [
+                    "app/mentor"
+                ]
+            }
+        ]
+    }
+]
