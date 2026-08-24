@@ -1111,6 +1111,22 @@
           "$ref": "#/$defs/CatDict",
           "title": "R C5"
         },
+        "r_c6": {
+          "$ref": "#/$defs/CatDict",
+          "title": "R C6"
+        },
+        "r_c7": {
+          "$ref": "#/$defs/CatDict",
+          "title": "R C7"
+        },
+        "r_c8": {
+          "$ref": "#/$defs/CatDict",
+          "title": "R C8"
+        },
+        "r_c9": {
+          "$ref": "#/$defs/CatDict",
+          "title": "R C9"
+        },
         "s_c0": {
           "$ref": "#/$defs/CatDict",
           "title": "S C0"

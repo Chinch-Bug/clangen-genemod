@@ -16,4 +16,7 @@ class InvolvedCatsGroupEvent(BaseModel):
     r_c4: Union[CatDict, MISSING] = MISSING
     r_c5: Union[CatDict, MISSING] = MISSING
     r_c6: Union[CatDict, MISSING] = MISSING
+    r_c7: Union[CatDict, MISSING] = MISSING
+    r_c8: Union[CatDict, MISSING] = MISSING
+    r_c9: Union[CatDict, MISSING] = MISSING
     multi_cat: Union[CatDict, MISSING] = MISSING

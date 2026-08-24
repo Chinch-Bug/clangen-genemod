@@ -574,6 +574,10 @@
         "r_c3",
         "r_c4",
         "r_c5",
+        "r_c6",
+        "r_c7",
+        "r_c8",
+        "r_c9",
         "multi_cat"
       ],
       "title": "GroupEventCatEnum",
@@ -858,6 +862,18 @@
         "r_c6": {
           "$ref": "#/$defs/CatDict",
           "title": "R C6"
+        },
+        "r_c7": {
+          "$ref": "#/$defs/CatDict",
+          "title": "R C7"
+        },
+        "r_c8": {
+          "$ref": "#/$defs/CatDict",
+          "title": "R C8"
+        },
+        "r_c9": {
+          "$ref": "#/$defs/CatDict",
+          "title": "R C9"
         },
         "multi_cat": {
           "$ref": "#/$defs/CatDict",

@@ -114,7 +114,9 @@ class Pelt:
 
     maingame_white = {
         'low': {
-            '1': [None, 'SCOURGE', 'BLAZE', "BLAZE_MID", "BLAZE_SMALL", "BLAZE_MIN", 'TAILTIP', 'TOES', 'LUNA', 'LOCKET', "CHEST_MIN"],
+            '1': [None, 'SCOURGE', 'BLAZE', "BLAZE_MID", "BLAZE_SMALL", "BLAZE_MIN", 'TAILTIP', 'TOES', 'LUNA', 'LOCKET', "CHEST_MIN",
+            "LEG_BACK_LEFT_SMALL", "LEG_BACK_LEFT_MIN", "LEG_FRONT_LEFT_SMALL", "LEG_FRONT_LEFT_MIN",
+            "LEG_BACK_RIGHT_SMALL", "LEG_BACK_RIGHT_MIN", "LEG_FRONT_RIGHT_SMALL", "LEG_FRONT_RIGHT_MIN"],
             '2': ['LITTLE', 'LIGHTTUXEDO', 'BUZZARDFANG', 'TIP', 'PAWS', 'BROKENBLAZE', 'BEARD', 'BIB', 'VEE', 'HONEY', 'TOESTAIL',
                   'RAVENPAW', 'DAPPLEPAW', 'LILTWO', 'MUSTACHE', 'REVERSEHEART', 'SPARKLE', 'REVERSEEYE', "CHEST_MID", "CHEST_SMALL"],
             '3': ['TUXEDO', 'SAVANNAH', 'FANCY', 'DIVA', 'BEARD', "DAMIEN_REDUCED", 'DAMIEN', 'BELLY', 'SQUEAKS', 'STAR', 'MISS', 'BOWTIE',
@@ -445,13 +447,13 @@ class Pelt:
 
                 elif KITgrade == 1:
                     if random () < 0.95:
-                        white_pattern.append(choice(['chest tuft', 'belly tuft', "CHEST_MIN"]))
+                        white_pattern.append(choice(['chest tuft', 'belly tuft', 'belly tuft', 'belly tuft', "CHEST_MIN", "LOCKET"]))
                     
                 elif KITgrade == 2:
                     while len(white_pattern) == 0:
                         #chest
                         if random () < 0.5:
-                            white_pattern.append(choice(['chest tuft', 'locket', 'chest tuft', 'locket', 'bib', "BIB_SMALL", "CHEST_MIN", "CHEST_SMALL"]))
+                            white_pattern.append(choice(['chest tuft', 'locket', 'chest tuft', 'locket', 'bib', "BIB_SMALL", "CHEST_MIN", "CHEST_SMALL", "LOCKET"]))
                         #belly
                         elif random () < 0.5:
                             white_pattern.append(choice(['belly tuft', 'belly spot', 'belly tuft', 'belly spot', 'belly', "BELLY_SMALL"]))
@@ -779,11 +781,24 @@ class Pelt:
                     if random() < 0.01:
                         white_pattern = ["FULLWHITE", "break/dorsal stripe"]
 
-            if random () < 0.25:
+            if random() < 0.25:
                 if "blaze" in white_pattern:
                     white_pattern.append("BLAZE")
                 if "muzzle1" in white_pattern:
                     white_pattern.append(choice(["BLAZE_MID", "ESTRELLA"]))
+            if random() < 0.2:
+                valid_legs = []
+                for w in white_pattern:
+                    if w and ("bicolour2" in w or "low sock" in w or "toes" in w or "mitten" in w):
+                        valid_legs.append(w)
+                if valid_legs:
+                    count = choice(range(len(valid_legs)))
+                    valid_legs = shuffle(valid_legs)
+                    for i in range(count):
+                        leg = valid_legs[i]
+                        white_pattern.remove(leg)
+                        split = leg.split(" ", 2)
+                        white_pattern.append(f"LEG_{split[1].upper()}_{split[0].upper()}_{split[2].replace("bicolour2", "HIGH").replace("low sock", "MID").replace("mitten", "SMALL").replace("toes", "MIN")}")
         
         if vit:
             if white_pattern is None or white_pattern == "No":

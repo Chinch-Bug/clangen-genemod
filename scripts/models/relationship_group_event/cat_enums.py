@@ -9,4 +9,8 @@ class GroupEventCatEnum(Enum):
     r_c3 = "r_c3"
     r_c4 = "r_c4"
     r_c5 = "r_c5"
+    r_c6 = "r_c6"
+    r_c7 = "r_c7"
+    r_c8 = "r_c8"
+    r_c9 = "r_c9"
     multi_cat = "multi_cat"

@@ -15,6 +15,10 @@ class InvolvedCatsPatrolEvent(BaseModel):
     r_c3: Union[CatDict, MISSING] = MISSING
     r_c4: Union[CatDict, MISSING] = MISSING
     r_c5: Union[CatDict, MISSING] = MISSING
+    r_c6: Union[CatDict, MISSING] = MISSING
+    r_c7: Union[CatDict, MISSING] = MISSING
+    r_c8: Union[CatDict, MISSING] = MISSING
+    r_c9: Union[CatDict, MISSING] = MISSING
     s_c0: Union[CatDict, MISSING] = MISSING
     s_c1: Union[CatDict, MISSING] = MISSING
     s_c2: Union[CatDict, MISSING] = MISSING
