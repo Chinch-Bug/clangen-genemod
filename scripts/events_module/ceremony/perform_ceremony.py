@@ -250,7 +250,7 @@ def check_and_promote_deputy(clan):
                 and (x.apprentice or x.former_apprentices),
                 Cat.all_cats_list))
     if get_clan_setting("rel_deputy") and clan.leader:
-        possible_deputies = rel_deputy_filter(possible_deputies, clan.leader)
+        possible_deputies = _rel_deputy_filter(possible_deputies, clan.leader)
 
     if possible_deputies:
         # from here we must have appropriate deputy choices
@@ -266,7 +266,7 @@ def check_and_promote_deputy(clan):
         )
         if all_warriors:
             if get_clan_setting("rel_deputy") and clan.leader:
-                all_warriors = rel_deputy_filter(all_warriors, clan.leader)
+                all_warriors = _rel_deputy_filter(all_warriors, clan.leader)
             main_cat = random.choice(all_warriors)
         else:
             # If there are no warriors at all, no one is named deputy.
