@@ -797,8 +797,8 @@ class Pelt:
                     for i in range(count):
                         leg = valid_legs[i]
                         white_pattern.remove(leg)
-                        split = leg.split(" ", 2)
-                        white_pattern.append(f"LEG_{split[1].upper()}_{split[0].upper()}_{split[2].replace("bicolour2", "HIGH").replace("low sock", "MID").replace("mitten", "SMALL").replace("toes", "MIN")}")
+                        split = leg.removeprefix("break/").split(" ", 2)
+                        white_pattern.append(f"{"break/" if "break/" in leg else ""}LEG_{split[1].upper()}_{split[0].upper()}_{split[2].replace("bicolour2", "HIGH").replace("low sock", "MID").replace("mitten", "SMALL").replace("toes", "MIN")}")
         
         if vit:
             if white_pattern is None or white_pattern == "No":

@@ -380,6 +380,11 @@
           "$ref": "#/$defs/NameCheckDict",
           "description": "Constrain per specific name states",
           "title": "Name"
+        },
+        "clan": {
+          "description": "Used to specify a Clan in Cross-Clan Rel Events",
+          "title": "Clan",
+          "type": "integer"
         }
       },
       "title": "CatDict",

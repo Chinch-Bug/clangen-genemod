@@ -144,6 +144,31 @@ def generate_sprite(
                 phenotype.SpriteInfo(sprite_age)
                 phenotype.silver = old_silver
 
+            def create_hairless_layer():
+                hairless = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                if cat.phenotype.sedesp == ['hr', 're'] or (cat.phenotype.sedesp[0] == 're' and sprite_age < 12):
+                    hairless.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
+                    hairless.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
+                elif(cat.pelt.length == 'hairless' and (cat.phenotype.sedesp[0] == "hr" or cat.phenotype.ruhr[1] == "Hrbd" or sprite_age > 11)):
+                    hairless.blit(sprites.sprites['hairless' + cat_sprite], (0, 0))
+                    hairless.blit(sprites.sprites['break/nose1' + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
+                    hairless.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
+                    if get_current_season(season_override) == "Leaf-bare":
+                        hairless.set_alpha(200)
+                elif cat.phenotype.laperm[0] == 'Lp' and sprite_age < 4:
+                    hairless.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
+                    hairless.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
+                    hairless.set_alpha(120)
+                elif ('patchy ' in cat.phenotype.furtype) or (cat.pelt.length == 'hairless' and cat.phenotype.sedesp[0] != "hr" and cat.phenotype.ruhr[1] != "Hrbd" and sprite_age > 5):
+                    hairless.blit(sprites.sprites['donskoy' + cat_sprite], (0, 0))
+                
+                if('sparse' in cat.phenotype.furtype):
+                    hairless.blit(sprites.sprites['satin0'], (0, 0))
+                    hairless.blit(sprites.sprites['lykoi' + cat_sprite], (0, 0))
+                
+                hairless.blit(sprites.sprites['nose' + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
+                return hairless
+
             def calculate_red_stripes(base, rufousing):
                 is_apricot = "apricot" in base
                 basecolour = stripecolourdict.get(base[:-1], base[:-1]).removeprefix("low").removeprefix("medium").removeprefix("rufoused")+base[-1]
@@ -1081,6 +1106,7 @@ def generate_sprite(
                 if not is_red and not is_white and cat.pelt.rusting:
                     for rust, opacity in cat.pelt.rusting.items():
                         rusting = sprites.sprites[rust + cat_sprite].copy()
+                        rusting.blit(create_hairless_layer(), (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
                         rusting.fill((255, 255, 255, int((255/100)*opacity)), special_flags=pygame.BLEND_RGBA_MULT)
                         whichmain.blit(rusting.premul_alpha(), (0, 0), special_flags=pygame.BLEND_RGB_ADD)
                     
@@ -1286,28 +1312,7 @@ def generate_sprite(
                 tintedwhitesprite.blit(tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
             gensprite.blit(tintedwhitesprite, (0, 0))
 
-            hairless = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-            if cat.phenotype.sedesp == ['hr', 're'] or (cat.phenotype.sedesp[0] == 're' and sprite_age < 12):
-                hairless.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
-                hairless.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
-            elif(cat.pelt.length == 'hairless' and (cat.phenotype.sedesp[0] == "hr" or cat.phenotype.ruhr[1] == "Hrbd" or sprite_age > 11)):
-                hairless.blit(sprites.sprites['hairless' + cat_sprite], (0, 0))
-                hairless.blit(sprites.sprites['break/nose1' + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
-                hairless.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
-                if get_current_season(season_override) == "Leaf-bare":
-                    hairless.set_alpha(200)
-            elif cat.phenotype.laperm[0] == 'Lp' and sprite_age < 4:
-                hairless.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
-                hairless.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
-                hairless.set_alpha(120)
-            elif ('patchy ' in cat.phenotype.furtype) or (cat.pelt.length == 'hairless' and cat.phenotype.sedesp[0] != "hr" and cat.phenotype.ruhr[1] != "Hrbd" and sprite_age > 5):
-                hairless.blit(sprites.sprites['donskoy' + cat_sprite], (0, 0))
-            
-            if('sparse' in cat.phenotype.furtype):
-                hairless.blit(sprites.sprites['satin0'], (0, 0))
-                hairless.blit(sprites.sprites['lykoi' + cat_sprite], (0, 0))
-            
-            hairless.blit(sprites.sprites['nose' + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
+            hairless = create_hairless_layer()
             gensprite.blit(hairless, (0, 0))
 
             gensprite.blit(white_leathers, (0, 0))

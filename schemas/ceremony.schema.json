@@ -380,6 +380,11 @@
           "$ref": "#/$defs/NameCheckDict",
           "description": "Constrain per specific name states",
           "title": "Name"
+        },
+        "clan": {
+          "description": "Used to specify a Clan in Cross-Clan Rel Events",
+          "title": "Clan",
+          "type": "integer"
         }
       },
       "title": "CatDict",
@@ -1295,6 +1300,22 @@
         "r_c5": {
           "$ref": "#/$defs/CatDict",
           "title": "R C5"
+        },
+        "r_c6": {
+          "$ref": "#/$defs/CatDict",
+          "title": "R C6"
+        },
+        "r_c7": {
+          "$ref": "#/$defs/CatDict",
+          "title": "R C7"
+        },
+        "r_c8": {
+          "$ref": "#/$defs/CatDict",
+          "title": "R C8"
+        },
+        "r_c9": {
+          "$ref": "#/$defs/CatDict",
+          "title": "R C9"
         },
         "n_c0": {
           "$ref": "#/$defs/CatDict",

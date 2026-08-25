@@ -4,6 +4,7 @@ from typing import List, Union
 
 from pydantic import BaseModel
 
+from scripts.models.crossclan_rel.crossclan_rel_schema import CrossClanRelSchema
 from scripts.models.ceremony.ceremony_schema import CeremonySchema
 from scripts.models.common.common_schema import CommonSchema
 from scripts.models.patrol.patrol_schema import PatrolSchema
@@ -90,6 +91,7 @@ def main():
     dump_model_schema(PointsOfInterestSchema, "schemas/poi.schema.json")
     dump_model_schema(PeltRecipe, "schemas/pelt_recipe.schema.json")
     dump_model_schema(CeremonySchema, "schemas/ceremony.schema.json")
+    dump_model_schema(CrossClanRelSchema, "schemas/crossclan_rel.schema.json")
 
 
 if __name__ == "__main__":

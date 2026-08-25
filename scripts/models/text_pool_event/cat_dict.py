@@ -79,3 +79,7 @@ class CatDict(BaseModel):
         MISSING,
         description="Constrain per specific name states",
     )
+    clan: Union[int, MISSING] = Field(
+        MISSING,
+        description="Used to specify a Clan in Cross-Clan Rel Events",
+    )
