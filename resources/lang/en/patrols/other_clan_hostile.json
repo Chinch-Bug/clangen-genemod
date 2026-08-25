@@ -2685,7 +2685,7 @@
                 "frequency": 4,
                 "outcome_art": "cat_sprites/gen_ambush_WrWr",
                 "strings": [
-                    "s_c0, increasingly irritated by r_c's presence, succumbs to unsettling whispers urging violence. In a moment of fury, s_c0 snaps, succumbing to the dark whispers and ending r_c's existence."
+                    "s_c0, increasingly irritated by r_c0's presence, succumbs to unsettling whispers urging violence. In a moment of fury, s_c0 snaps, succumbing to the dark whispers and ending r_c0's existence."
                 ],
                 "involved_cats": {
                     "s_c0": {
@@ -7791,7 +7791,7 @@
             {
                 "frequency": 4,
                 "strings": [
-                    "p_l has felt the glares r_c0 has sent {PRONOUN/p_l/poss} way all morning, and given them back just as vehemently when r_c's own back is turned. But when {PRONOUN/p_l/subject} {VERB/p_l/spot/spots} the shadow of a o_c_n warrior falling on r_c0, {PRONOUN/p_l/subject} {VERB/p_l/react/reacts} without thought, leaping forward, claws ripping into the enemy's back and flipping them off r_c0 with a ferocious snarl."
+                    "p_l has felt the glares r_c0 has sent {PRONOUN/p_l/poss} way all morning, and given them back just as vehemently when r_c0's own back is turned. But when {PRONOUN/p_l/subject} {VERB/p_l/spot/spots} the shadow of a o_c_n warrior falling on r_c0, {PRONOUN/p_l/subject} {VERB/p_l/react/reacts} without thought, leaping forward, claws ripping into the enemy's back and flipping them off r_c0 with a ferocious snarl."
                 ],
                 "involved_cats": {
                     "r_c0": {}

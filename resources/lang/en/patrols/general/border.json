@@ -748,7 +748,7 @@
             {
                 "frequency": 4,
                 "strings": [
-                    "r_c0 cautiously approaches the Twoleg kits, intrigued by their colorful pelts. To r_c's surprise, one of the tiny Twolegs offers {PRONOUN/r_c0/object} a strange, shiny object. It doesn't smell exactly like prey, but r_c0 decides to take it back to the camp for further investigation."
+                    "r_c0 cautiously approaches the Twoleg kits, intrigued by their colorful pelts. To r_c0's surprise, one of the tiny Twolegs offers {PRONOUN/r_c0/object} a strange, shiny object. It doesn't smell exactly like prey, but r_c0 decides to take it back to the camp for further investigation."
                 ],
                 "involved_cats": {
                     "r_c0": {}

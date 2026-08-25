@@ -2516,7 +2516,7 @@
             {
                 "frequency": 1,
                 "strings": [
-                    "The scent of a familiar pelt reaches r_c's nose — {PRONOUN/r_c0/subject} {VERB/r_c0/know/knows} this cat! With a friendly purr, {PRONOUN/r_c0/subject} {VERB/r_c0/turn/turns} to greet {PRONOUN/r_c0/poss} friend from beyond the grave. The rest of the patrol gives them some space."
+                    "The scent of a familiar pelt reaches r_c0's nose — {PRONOUN/r_c0/subject} {VERB/r_c0/know/knows} this cat! With a friendly purr, {PRONOUN/r_c0/subject} {VERB/r_c0/turn/turns} to greet {PRONOUN/r_c0/poss} friend from beyond the grave. The rest of the patrol gives them some space."
                 ],
                 "involved_cats": {
                     "r_c0": {}
@@ -28840,7 +28840,7 @@
             {
                 "frequency": 2,
                 "strings": [
-                    "The patrol digs and digs and digs, but eventually has to admit failure and give up the search for burdock root. The cold has leached all the heat from r_c's pelt, and even with the other cats' help, {PRONOUN/r_c0/subject} just {VERB/r_c0/don't/doesn't} have the energy to make it back to camp."
+                    "The patrol digs and digs and digs, but eventually has to admit failure and give up the search for burdock root. The cold has leached all the heat from r_c0's pelt, and even with the other cats' help, {PRONOUN/r_c0/subject} just {VERB/r_c0/don't/doesn't} have the energy to make it back to camp."
                 ],
                 "involved_cats": {
                     "r_c0": {}
@@ -29618,7 +29618,7 @@
             {
                 "frequency": 2,
                 "strings": [
-                    "Not only does the patrol end up soaked to the skin, but they also don't end up finding any daisies under the snow either! The cold has leached all the heat from r_c's pelt, and even with the other cats' help, {PRONOUN/r_c0/subject} just {VERB/r_c0/don't/doesn't} have the energy to make it back to camp."
+                    "Not only does the patrol end up soaked to the skin, but they also don't end up finding any daisies under the snow either! The cold has leached all the heat from r_c0's pelt, and even with the other cats' help, {PRONOUN/r_c0/subject} just {VERB/r_c0/don't/doesn't} have the energy to make it back to camp."
                 ],
                 "involved_cats": {
                     "r_c0": {}
@@ -30485,7 +30485,7 @@
             {
                 "frequency": 2,
                 "strings": [
-                    "Not only does the patrol end up soaked to the skin, but they also don't end up finding any dandelions under the snow either! The cold has leached all the heat from r_c's pelt, and even with the other cats' help, {PRONOUN/r_c0/subject} just {VERB/r_c0/don't/doesn't} have the energy to make it back to camp."
+                    "Not only does the patrol end up soaked to the skin, but they also don't end up finding any dandelions under the snow either! The cold has leached all the heat from r_c0's pelt, and even with the other cats' help, {PRONOUN/r_c0/subject} just {VERB/r_c0/don't/doesn't} have the energy to make it back to camp."
                 ],
                 "involved_cats": {
                     "r_c0": {}

@@ -1480,7 +1480,7 @@
                 "frequency": 4,
                 "outcome_art": "cat_sprites/gen_train_sunny2_WrWr",
                 "strings": [
-                    "No one means to, but... well... the group drifts off into a nap. Untethered by normal limitations, s_c0's spirit wanders from mindscape to mindscape, picking up dream_list/s_c0 from r_c's dreams like burrs on a pelt."
+                    "No one means to, but... well... the group drifts off into a nap. Untethered by normal limitations, s_c0's spirit wanders from mindscape to mindscape, picking up dream_list/s_c0 from r_c0's dreams like burrs on a pelt."
                 ],
                 "involved_cats": {
                     "r_c0": {},
@@ -2823,7 +2823,7 @@
                 "frequency": 4,
                 "outcome_art": "cat_sprites/gen_chatting_WrWr",
                 "strings": [
-                    "As the group splits up to practice hiding their tracks from each other, r_c0 pairs up with p_l. {PRONOUN/r_c0/subject/CAP} {VERB/r_c0/confess/confesses} some gossip that {PRONOUN/r_c0/subject} heard about another of {PRONOUN/r_c0/poss} Clanmates with twitching whiskers. p_l stares at {PRONOUN/r_c0/object}, unimpressed with r_c's rumor spreading. You should build your Clanmates up, not tear them down."
+                    "As the group splits up to practice hiding their tracks from each other, r_c0 pairs up with p_l. {PRONOUN/r_c0/subject/CAP} {VERB/r_c0/confess/confesses} some gossip that {PRONOUN/r_c0/subject} heard about another of {PRONOUN/r_c0/poss} Clanmates with twitching whiskers. p_l stares at {PRONOUN/r_c0/object}, unimpressed with r_c0's rumor spreading. You should build your Clanmates up, not tear them down."
                 ],
                 "involved_cats": {
                     "r_c0": {}
@@ -2972,7 +2972,7 @@
                 "frequency": 4,
                 "outcome_art": "cat_sprites/gen_embarrassed_WrWr",
                 "strings": [
-                    "s_c0 hovers, torn between {PRONOUN/s_c0/poss} vague to-do list and r_c's insistence on doing some tracking training. In the end, the patrol accomplishes neither."
+                    "s_c0 hovers, torn between {PRONOUN/s_c0/poss} vague to-do list and 0 insistence on doing some tracking training. In the end, the patrol accomplishes neither."
                 ],
                 "involved_cats": {
                     "r_c0": {},
@@ -3458,7 +3458,7 @@
                 "frequency": 4,
                 "outcome_art": "cat_sprites/gen_speakingcat_Wr",
                 "strings": [
-                    "A patrol of full warriors doesn't ensure that everything will go smoothly. When p_l gets in r_c's way at the end of a hard set of exercises, tripping {PRONOUN/r_c0/object} into faceplanting into the dirt, the entire afternoon nearly goes to fox-dung. It's only s_c0's levelheaded serenity that saves it. {PRONOUN/s_c0/subject/CAP} {VERB/s_c0/calm/calms} everyone down and {VERB/s_c0/prevent/prevents} anything from escalating."
+                    "A patrol of full warriors doesn't ensure that everything will go smoothly. When p_l gets in r_c0's way at the end of a hard set of exercises, tripping {PRONOUN/r_c0/object} into faceplanting into the dirt, the entire afternoon nearly goes to fox-dung. It's only s_c0's levelheaded serenity that saves it. {PRONOUN/s_c0/subject/CAP} {VERB/s_c0/calm/calms} everyone down and {VERB/s_c0/prevent/prevents} anything from escalating."
                 ],
                 "involved_cats": {
                     "r_c0": {},
@@ -3788,7 +3788,7 @@
                 "frequency": 4,
                 "outcome_art": "cat_sprites/gen_train_argue_WrWrWr",
                 "strings": [
-                    "A patrol full of warriors doesn't ensure everything will go smoothly. When p_l gets in r_c's way at the end of a hard set of exercises, tripping {PRONOUN/r_c0/object} into faceplanting into the dirt, the entire afternoon goes to fox-dung. It's absolutely not helped by s_c0 muttering about how it <i>nearly</i> worked and whose fault it is."
+                    "A patrol full of warriors doesn't ensure everything will go smoothly. When p_l gets in r_c0's way at the end of a hard set of exercises, tripping {PRONOUN/r_c0/object} into faceplanting into the dirt, the entire afternoon goes to fox-dung. It's absolutely not helped by s_c0 muttering about how it <i>nearly</i> worked and whose fault it is."
                 ],
                 "involved_cats": {
                     "r_c0": {},
@@ -4571,7 +4571,7 @@
                 "frequency": 1,
                 "outcome_art": "cat_sprites/gen_speakingcat_Wr",
                 "strings": [
-                    "p_l listens to both sides, then makes a careful judgment. It keeps no one happy: the mark of an excellent compromise."
+                    "p_l listens to both sides, then makes a careful judgement. It keeps no one happy: the mark of an excellent compromise."
                 ],
                 "exp_gained": 20,
                 "relationship_changes": [
@@ -4889,7 +4889,7 @@
                 "frequency": 4,
                 "outcome_art": "cat_sprites/gen_speakingcat_Wr",
                 "strings": [
-                    "Making a cold, factual judgment, s_c0 lays out which side {PRONOUN/s_c0/subject}{VERB/s_c0/'re/'s} on, and why, convincing the rest of the patrol with {PRONOUN/s_c0/poss} sound logic."
+                    "Making a cold, factual judgement, s_c0 lays out which side {PRONOUN/s_c0/subject}{VERB/s_c0/'re/'s} on, and why, convincing the rest of the patrol with {PRONOUN/s_c0/poss} sound logic."
                 ],
                 "involved_cats": {
                     "s_c0": {
@@ -11263,7 +11263,7 @@
             {
                 "frequency": 4,
                 "strings": [
-                    "s_c0 is the sort of cat that is driven by the need to be better, to keep moving forward, and they train hard together. After, s_c0 helps groom all the dust off r_c's coat, thanking {PRONOUN/s_c0/poss} mate for indulging {PRONOUN/s_c0/object} with a productive afternoon of tough exercises."
+                    "s_c0 is the sort of cat that is driven by the need to be better, to keep moving forward, and they train hard together. After, s_c0 helps groom all the dust off r_c0's coat, thanking {PRONOUN/s_c0/poss} mate for indulging {PRONOUN/s_c0/object} with a productive afternoon of tough exercises."
                 ],
                 "involved_cats": {
                     "r_c0": {},
@@ -11392,7 +11392,7 @@
             {
                 "frequency": 4,
                 "strings": [
-                    "In the midst of training, p_l brings up a bad habit of r_c's, and r_c0 scowls. Is this really the time?"
+                    "In the midst of training, p_l brings up a bad habit of r_c0's, and r_c0 scowls. Is this really the time?"
                 ],
                 "involved_cats": {
                     "r_c0": {}
@@ -15499,7 +15499,7 @@
             {
                 "frequency": 1,
                 "strings": [
-                    "The cats have a wonderful training session. Everyone agrees that r_c1 using a side pounce to hook r_c's feet out from under {PRONOUN/r_c0/object} was definitely a highlight, though r_c0 maintains it'd be a bit different if {PRONOUN/r_c0/subject} {VERB/r_c0/weren't/wasn't} standing waiting to be pounced on as a static target."
+                    "The cats have a wonderful training session. Everyone agrees that r_c1 using a side pounce to hook r_c-'s feet out from under {PRONOUN/r_c0/object} was definitely a highlight, though r_c0 maintains it'd be a bit different if {PRONOUN/r_c0/subject} {VERB/r_c0/weren't/wasn't} standing waiting to be pounced on as a static target."
                 ],
                 "involved_cats": {
                     "r_c0": {},
@@ -31647,7 +31647,7 @@
                 "frequency": 4,
                 "outcome_art": "cat_sprites/gen_chatting_WrWr",
                 "strings": [
-                    "As they train, r_c0 gives p_l a useful tip on something {PRONOUN/p_l/subject}{VERB/p_l/'ve/'s} been working on. p_l takes r_c's advice."
+                    "As they train, r_c0 gives p_l a useful tip on something {PRONOUN/p_l/subject}{VERB/p_l/'ve/'s} been working on. p_l takes r_c0's advice."
                 ],
                 "exp_gained": 10,
                 "relationship_changes": [

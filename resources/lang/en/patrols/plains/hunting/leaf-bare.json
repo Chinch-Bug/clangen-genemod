@@ -2015,7 +2015,7 @@
             {
                 "frequency": 4,
                 "strings": [
-                    "Ah. r_c's suggested hunting grounds don't work out, not that anyone blames {PRONOUN/r_c0/object} for it."
+                    "Ah. r_c0's suggested hunting grounds don't work out, not that anyone blames {PRONOUN/r_c0/object} for it."
                 ],
                 "exp_gained": 0,
                 "relationship_changes": [

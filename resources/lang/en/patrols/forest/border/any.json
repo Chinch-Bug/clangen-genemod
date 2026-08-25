@@ -4199,7 +4199,7 @@
             {
                 "frequency": 4,
                 "strings": [
-                    "All r_c's attempts to drive the small dog off only send it into greater and greater fits of excitement, until the only thing to do is wait exasperatedly in a safe spot until the beast calms down."
+                    "All r_c0's attempts to drive the small dog off only send it into greater and greater fits of excitement, until the only thing to do is wait exasperatedly in a safe spot until the beast calms down."
                 ],
                 "involved_cats": {
                     "r_c0": {}
@@ -5493,7 +5493,7 @@
                 "frequency": 4,
                 "outcome_art": "cat_sprites/gen_crouching_Wr",
                 "strings": [
-                    "r_c's pupils dilate as a ray of sunlight illuminates the bear's russet pelt. r_c0 realizes with alarm that it's a brown bear. The patrol slinks away without incident and c_n's leader warns patrols to stay away from the area."
+                    "r_c0's pupils dilate as a ray of sunlight illuminates the bear's russet pelt. r_c0 realizes with alarm that it's a brown bear. The patrol slinks away without incident and c_n's leader warns patrols to stay away from the area."
                 ],
                 "involved_cats": {
                     "r_c0": {}

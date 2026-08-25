@@ -643,7 +643,7 @@
             {
                 "frequency": 4,
                 "strings": [
-                    "s_c0 makes a careful judgment, and the patrol keeps going. They stick to the clifftops, avoiding the low beaches as the rain begins to pour around them."
+                    "s_c0 makes a careful judgement, and the patrol keeps going. They stick to the clifftops, avoiding the low beaches as the rain begins to pour around them."
                 ],
                 "involved_cats": {
                     "s_c0": {
@@ -792,7 +792,7 @@
             {
                 "frequency": 4,
                 "strings": [
-                    "s_c0 makes a careful judgment and keeps going. {PRONOUN/s_c0/subject/CAP} {VERB/s_c0/stick/sticks} to the clifftops, avoiding the low beaches as the rain begins to pour around {PRONOUN/s_c0/object}."
+                    "s_c0 makes a careful judgement and keeps going. {PRONOUN/s_c0/subject/CAP} {VERB/s_c0/stick/sticks} to the clifftops, avoiding the low beaches as the rain begins to pour around {PRONOUN/s_c0/object}."
                 ],
                 "involved_cats": {
                     "s_c0": {
@@ -1521,7 +1521,7 @@
             {
                 "frequency": 4,
                 "strings": [
-                    "It turns out they were r_c's own pawprints... r_c0 huffs with embarrassment, suddenly grateful that {PRONOUN/r_c0/poss} patrol is so small. Fewer eyes watching that embarrassing moment."
+                    "It turns out they were r_c0's own pawprints... r_c0 huffs with embarrassment, suddenly grateful that {PRONOUN/r_c0/poss} patrol is so small. Fewer eyes watching that embarrassing moment."
                 ],
                 "exp_gained": 0,
                 "relationship_changes": [
@@ -1988,7 +1988,7 @@
             {
                 "frequency": 4,
                 "strings": [
-                    "It turns out they were r_c's own pawprints... r_c0 huffs with embarrassment and can't meet the eyes of the rest of the patrol."
+                    "It turns out they were r_c0's own pawprints... r_c0 huffs with embarrassment and can't meet the eyes of the rest of the patrol."
                 ],
                 "exp_gained": 0,
                 "relationship_changes": [

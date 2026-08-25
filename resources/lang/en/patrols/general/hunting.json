@@ -1313,7 +1313,7 @@
             {
                 "frequency": 2,
                 "strings": [
-                    "r_c0 easily catches the distracted rat. p_l meows triumphantly. This is a great catch during leaf-bare. Unfortunately, while carrying the fresh-kill home, r_c's mouth begins to sour. {PRONOUN/r_c0/subject/CAP} {VERB/r_c0/bury/buries} the sickly rat away from camp, but it's too late. Over the next few days r_c0 falls violently ill and never recovers."
+                    "r_c0 easily catches the distracted rat. p_l meows triumphantly. This is a great catch during leaf-bare. Unfortunately, while carrying the fresh-kill home, r_c0's mouth begins to sour. {PRONOUN/r_c0/subject/CAP} {VERB/r_c0/bury/buries} the sickly rat away from camp, but it's too late. Over the next few days r_c0 falls violently ill and never recovers."
                 ],
                 "involved_cats": {
                     "r_c0": {}
@@ -1331,7 +1331,7 @@
             {
                 "frequency": 4,
                 "strings": [
-                    "r_c0 easily catches the distracted rat. p_l meows triumphantly. This is a great catch during leaf-bare. Unfortunately, while carrying the fresh-kill home, r_c's mouth begins to sour. {PRONOUN/r_c0/subject/CAP} {VERB/r_c0/bury/buries} the sickly rat away from camp, but it's too late. Over the next few days r_c0 falls violently ill."
+                    "r_c0 easily catches the distracted rat. p_l meows triumphantly. This is a great catch during leaf-bare. Unfortunately, while carrying the fresh-kill home, r_c0's mouth begins to sour. {PRONOUN/r_c0/subject/CAP} {VERB/r_c0/bury/buries} the sickly rat away from camp, but it's too late. Over the next few days r_c0 falls violently ill."
                 ],
                 "involved_cats": {
                     "r_c0": {}

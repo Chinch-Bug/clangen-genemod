@@ -1527,7 +1527,7 @@
             {
                 "frequency": 3,
                 "strings": [
-                    "With a massive yowl, r_c0 charges the fox. It bares its teeth, unwilling to give up its hard-won prey without a fight, and one wrong step puts r_c's pelt in range of those little jaws, as the small kit fox tries to live up to the reputation of its bigger and stronger relatives."
+                    "With a massive yowl, r_c0 charges the fox. It bares its teeth, unwilling to give up its hard-won prey without a fight, and one wrong step puts r_c0's pelt in range of those little jaws, as the small kit fox tries to live up to the reputation of its bigger and stronger relatives."
                 ],
                 "exp_gained": 0,
                 "relationship_changes": [
@@ -4991,7 +4991,7 @@
             {
                 "frequency": 1,
                 "strings": [
-                    "r_c0 always feels like {PRONOUN/r_c0/subject}{VERB/r_c0/'re/'s} padding in p_l's footsteps, especially today, watching {PRONOUN/p_l/object} haul back such a good catch of prey for the Clan, a contribution that more than makes up for r_c's meager offerings."
+                    "r_c0 always feels like {PRONOUN/r_c0/subject}{VERB/r_c0/'re/'s} padding in p_l's footsteps, especially today, watching {PRONOUN/p_l/object} haul back such a good catch of prey for the Clan, a contribution that more than makes up for r_c0's meager offerings."
                 ],
                 "involved_cats": {
                     "r_c0": {}
