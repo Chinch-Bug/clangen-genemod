@@ -645,7 +645,7 @@
             {
                 "frequency": 4,
                 "strings": [
-                    "s_c0 makes a careful judgment, and the patrol keeps going. They stick to solid ground, sometimes routing themselves through the trees as the rain begins to pour around them."
+                    "s_c0 makes a careful judgement, and the patrol keeps going. They stick to solid ground, sometimes routing themselves through the trees as the rain begins to pour around them."
                 ],
                 "involved_cats": {
                     "s_c0": {
@@ -831,7 +831,7 @@
             {
                 "frequency": 4,
                 "strings": [
-                    "s_c0 makes a careful judgment and keeps going. {PRONOUN/s_c0/subject/CAP} {VERB/s_c0/stick/sticks} to solid ground, sometimes routing {PRONOUN/s_c0/self} through the trees as the rain begins to pour around {PRONOUN/s_c0/object}."
+                    "s_c0 makes a careful judgement and keeps going. {PRONOUN/s_c0/subject/CAP} {VERB/s_c0/stick/sticks} to solid ground, sometimes routing {PRONOUN/s_c0/self} through the trees as the rain begins to pour around {PRONOUN/s_c0/object}."
                 ],
                 "involved_cats": {
                     "s_c0": {

@@ -129,7 +129,7 @@ def check_for_ceremony(main_cat: Cat, clan):
     # OLD CAT RETIRE
     if (
         not main_cat.no_retire
-        and main_cat.status.rank in (CatRank.WARRIOR, CatRank.DEPUTY) or special_can_retire
+        and (main_cat.status.rank in (CatRank.WARRIOR, CatRank.DEPUTY) or special_can_retire)
         and not main_cat.apprentice
         and main_cat.moons >= retirement_info["min_retirement_age"]
     ):

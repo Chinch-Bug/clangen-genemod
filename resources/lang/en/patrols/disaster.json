@@ -80,7 +80,7 @@
             {
                 "frequency": 4,
                 "strings": [
-                    "s_c0 makes a careful judgment, and the patrol keeps going, but they make sure to stay on the high ground as the rain pours down around them."
+                    "s_c0 makes a careful judgement, and the patrol keeps going, but they make sure to stay on the high ground as the rain pours down around them."
                 ],
                 "involved_cats": {
                     "s_c0": {
@@ -240,7 +240,7 @@
             {
                 "frequency": 4,
                 "strings": [
-                    "s_c0 makes a careful judgment and keeps going, but {PRONOUN/s_c0/subject} {VERB/s_c0/make/makes} sure to stay on the high ground as the rain pours down around {PRONOUN/s_c0/object}."
+                    "s_c0 makes a careful judgement and keeps going, but {PRONOUN/s_c0/subject} {VERB/s_c0/make/makes} sure to stay on the high ground as the rain pours down around {PRONOUN/s_c0/object}."
                 ],
                 "involved_cats": {
                     "s_c0": {

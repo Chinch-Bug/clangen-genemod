@@ -4571,7 +4571,7 @@
                 "frequency": 1,
                 "outcome_art": "cat_sprites/gen_speakingcat_Wr",
                 "strings": [
-                    "p_l listens to both sides, then makes a careful judgment. It keeps no one happy: the mark of an excellent compromise."
+                    "p_l listens to both sides, then makes a careful judgement. It keeps no one happy: the mark of an excellent compromise."
                 ],
                 "exp_gained": 20,
                 "relationship_changes": [
@@ -4889,7 +4889,7 @@
                 "frequency": 4,
                 "outcome_art": "cat_sprites/gen_speakingcat_Wr",
                 "strings": [
-                    "Making a cold, factual judgment, s_c0 lays out which side {PRONOUN/s_c0/subject}{VERB/s_c0/'re/'s} on, and why, convincing the rest of the patrol with {PRONOUN/s_c0/poss} sound logic."
+                    "Making a cold, factual judgement, s_c0 lays out which side {PRONOUN/s_c0/subject}{VERB/s_c0/'re/'s} on, and why, convincing the rest of the patrol with {PRONOUN/s_c0/poss} sound logic."
                 ],
                 "involved_cats": {
                     "s_c0": {

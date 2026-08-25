@@ -1058,7 +1058,7 @@
             {
                 "frequency": 4,
                 "strings": [
-                    "The scent leads to a trespassing rogue. s_c0 throws {PRONOUN/s_c0/self} at the rogue before p_l gives the signal, hissing furiously, but this is one battle-hardened trespasser, and s_c0 isn't as good of a fighter as {PRONOUN/s_c0/subject} would like to think. The rogue escapes {PRONOUN/s_c0/poss} grasp and runs off further into c_n territory. s_c0 scrambles to {PRONOUN/s_c0/poss} paws, the judgmental stares of the patrol clinging to {PRONOUN/s_c0/poss} pelt."
+                    "The scent leads to a trespassing rogue. s_c0 throws {PRONOUN/s_c0/self} at the rogue before p_l gives the signal, hissing furiously, but this is one battle-hardened trespasser, and s_c0 isn't as good of a fighter as {PRONOUN/s_c0/subject} would like to think. The rogue escapes {PRONOUN/s_c0/poss} grasp and runs off further into c_n territory. s_c0 scrambles to {PRONOUN/s_c0/poss} paws, the judgemental stares of the patrol clinging to {PRONOUN/s_c0/poss} pelt."
                 ],
                 "involved_cats": {
                     "s_c0": {

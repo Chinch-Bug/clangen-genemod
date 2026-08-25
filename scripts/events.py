@@ -1630,12 +1630,16 @@ def handle_timeskip_EX(cat):
 
     if cat.ID in game.patrolled:
         return
+
+    if cat.status.rank in [CatRank.NEWBORN, CatRank.KITTEN]:
+        return
+        
+    if cat.not_working() and int(random.random() * 3):
+        return
     
     exp_info = get_config("clancat_ex")
 
     if cat.status.rank.is_any_apprentice_rank():
-        if cat.not_working() and int(random.random() * 3):
-            return
 
         if cat.experience > cat.experience_levels_range["learning"][1]:
             return
@@ -1657,18 +1661,12 @@ def handle_timeskip_EX(cat):
             + list(range(ran[1][0], ran[1][1] + 1))
         )
 
-        if cat.status.group_ID != CatGroup.PLAYER_CLAN_ID and cat.ID not in game.patrolled:
+        if cat.status.group_ID != CatGroup.PLAYER_CLAN_ID:
             exp += random.randint(0, 3)
 
         cat.add_experience(max(exp * mentor_modifier, 1))
 
     else:
-        if cat.not_working() and int(random.random() * 3):
-            return
-
-        if cat.age in [CatAge.NEWBORN, CatAge.KITTEN]:
-            return
-
         if cat.age == CatAge.SENIOR:
             ran = exp_info["base_senior_timeskip_ex"]
         else:
