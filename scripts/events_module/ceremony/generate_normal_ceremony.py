@@ -64,5 +64,5 @@ def create_ceremony(
         main_cat.history.prev_names.append(old_name)
 
     game.cur_events_list.append(
-        EventInformation(processed_string, "ceremony", [c.ID for c in button_cats], clan=clan.group_ID)
+        EventInformation(processed_string, ["ceremony"], [c.ID for c in button_cats], clan=clan.group_ID)
     )

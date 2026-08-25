@@ -94,6 +94,8 @@
         "rel_deputy_tooltip": "Prioritise choosing a deputy that the leader gets along with.",
         "12_moon_graduation": "Disable experience-based apprentice graduation",
         "12_moon_graduation_tooltip": "All apprentices will graduate at 12 moons.",
+        "assign_mentors": "Assign mentors to apprentices automatically.",
+        "assign_mentors_tooltip": "If disabled, all mentors will need to be set manually.",
         "retirement": "Cats will never retire due to a permanent condition",
         "retirement_tooltip": "When this setting is off, cats with permanent conditions will choose whether or not they want to retire",
         "leader_retirement": "Allow leaders to retire",
