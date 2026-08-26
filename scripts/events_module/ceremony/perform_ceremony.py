@@ -47,11 +47,11 @@ def trigger_ceremony(
 
     # Changing prefix if needed
     if get_clan_setting('modded names') and get_clan_setting('dynamic prefixes'):
-        cer_type = 'apprentice-warrior'
+        cer_type = 'warrior-elder'
         if new_rank.is_any_apprentice_rank():
             cer_type = 'kit-apprentice'
-        elif new_rank == CatRank.ELDER:
-            cer_type = 'warrior-elder'
+        elif main_cat.status.rank.is_any_apprentice_rank():
+            cer_type = 'apprentice-warrior'
         
         main_cat.name.change_prefix(main_cat.moons, clan.biome, cer_type)
 
@@ -338,7 +338,6 @@ def _handle_leader_ceremony(main_cat, clan):
     """
     Handles everything pertaining to a leader ceremony.
     """
-    clan.leader_lives = 9
     trigger_ceremony(main_cat, CatRank.LEADER)
     main_cat.generate_lead_ceremony()
     clan.deputy = None

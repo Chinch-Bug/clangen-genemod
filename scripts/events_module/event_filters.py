@@ -1207,14 +1207,13 @@ def cat_for_event(
             return None
 
     # checking groups
-    if constraint_dict.get("group"):
-        allowed_cats = _get_cats_from_group(
-            allowed_cats, constraint_dict["group"], involved_cat_dict, main_clan=clan
-        )
+    allowed_cats = _get_cats_from_group(
+        allowed_cats, constraint_dict.get("group", ["player_clan"]), involved_cat_dict, main_clan=clan
+    )
 
-        # if the list is emptied, return
-        if not allowed_cats:
-            return None
+    # if the list is emptied, return
+    if not allowed_cats:
+        return None
     if constraint_dict.get("standing"):
         allowed_cats = _get_cats_with_standing(
             allowed_cats,

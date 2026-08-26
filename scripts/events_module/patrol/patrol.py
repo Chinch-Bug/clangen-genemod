@@ -264,7 +264,7 @@ class Patrol:
             if {CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE}.intersection(
                 set(self.involved_cats.keys())
             )
-            and get_clan_setting("patrol_lock_meds")
+            and get_clan_setting("patrol_lock_meds") and patrol_type == "general"
             else patrol_type
         )
         # This make sure general only gets hunting, border, or training patrols
