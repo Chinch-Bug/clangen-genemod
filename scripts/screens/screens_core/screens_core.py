@@ -353,10 +353,10 @@ def rebuild_moon_n_season_indicator(change_moon: bool = False, visible: bool = F
     if change_moon:
         start_moon_animation()
 
-    menu_buttons["moon_indicator"].set_tooltip(
+    menu_buttons["moon_indicator_frame"].set_tooltip(
         i18n.t("general.moon_date", moon=clan_age)
     )
-    menu_buttons["moon_indicator"].tool_tip_delay = 0
+    menu_buttons["moon_indicator_frame"].tool_tip_delay = 0
     menu_buttons["moon_indicator"].disable()
 
     menu_buttons["season_indicator"] = UIModifiedImage(
