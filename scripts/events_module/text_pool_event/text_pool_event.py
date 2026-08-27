@@ -39,6 +39,7 @@ class TextPoolEvent:
     location: list[str] = field(default_factory=list)
     season: list[str] = field(default_factory=list)
     tags: list[str] = field(default_factory=list)
+    poi: Optional[dict[str, list]] = field(default_factory=dict)
     required_reputation: RequiredReputationDict = field(default_factory=dict)
     required_cat_types: dict[str, list[int]] = field(default_factory=dict)
     involved_cats: dict[str, Union[InvolvedCatDict, dict]] = field(default_factory=dict)
@@ -61,7 +62,7 @@ class TextPoolEvent:
     join: list[JoinDict] = field(default_factory=list[dict])
     future_event: list[FutureEventDict] = field(default_factory=list[dict])
 
-    nr_involved_clans: int = 1
+    nr_involved_clans: int = 2
     involved_clans: list[str] = field(default_factory=list)
 
     def __post_init__(self):

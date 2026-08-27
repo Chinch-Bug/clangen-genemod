@@ -331,7 +331,7 @@ def event_for_clan_relations(required_rel: list, clan, other_clan) -> bool:
     """
     if not required_rel or "any" in required_rel:
         return True
-
+    
     current_standing = game.clan.get_relations(clan, other_clan, get_label=True)
 
     return current_standing in required_rel

@@ -370,9 +370,16 @@
           "title": "Name"
         },
         "clan": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            }
+          ],
           "description": "Used to specify a Clan in Cross-Clan Rel Events",
-          "title": "Clan",
-          "type": "integer"
+          "title": "Clan"
         }
       },
       "title": "CatDict",

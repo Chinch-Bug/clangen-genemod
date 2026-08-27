@@ -70,7 +70,7 @@ def passes_general_constraints(
                 )
                 return False
 
-        if not event_for_clan_relations(
+        if other_clan and not event_for_clan_relations(
             event.required_reputation.get("other_clan"), clan, other_clan
         ):
             if is_debug_event:

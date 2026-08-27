@@ -30,7 +30,7 @@ from scripts.events_module.future.prep_and_trigger import prep_future_event
 from scripts.events_module.parameter_dicts import SupplyDict
 from scripts.events_module.relationship import relation_events
 from scripts.clan_package.settings import get_clan_setting
-from scripts.events_module.text_adjust import event_text_adjust, adjust_list_text
+from scripts.events_module.text_adjust import event_text_adjust, adjust_list_text, process_text
 from scripts.events_module.text_pool_event.text_pool_event import TextPoolEvent
 from scripts.game_structure import game, constants
 
@@ -53,13 +53,30 @@ def execute_outcome(
     rel_results = {}
     chosen_string = choice(event.strings)
     # process text
-    processed_text = event_text_adjust(
-        Cat,
-        chosen_string,
-        involved_cat_dict=event_involved_cats,
-        clan=clan,
-        other_clan=other_clan,
-    )
+
+    if isinstance(other_clan, list):
+        custom_mapping = {}
+
+        custom_mapping["c_n"] = (clan.name, {})
+        for i, o_clan in enumerate(other_clan, start=1):
+            custom_mapping[f"o_c_n{i}"] = (o_clan.name, {})
+            if i == 1:
+                custom_mapping[f"o_c_n"] = (o_clan.name, {})
+        processed_text = process_text(chosen_string, custom_mapping)
+        processed_text = event_text_adjust(
+            Cat,
+            processed_text,
+            involved_cat_dict=event_involved_cats,
+            clan=clan,
+        )
+    else:
+        processed_text = event_text_adjust(
+            Cat,
+            chosen_string,
+            involved_cat_dict=event_involved_cats,
+            clan=clan,
+            other_clan=other_clan,
+        )
 
     results = [
         _handle_multiclan(event, event_involved_cats, clan, other_clan),
@@ -85,7 +102,7 @@ def execute_outcome(
                     block["log"][group],
                     involved_cat_dict=event_involved_cats,
                     clan=game.clan,
-                    other_clan=other_clan,
+                    other_clan=other_clan[0] if isinstance(other_clan, list) else other_clan,
                 )
 
     # apply rel effects (append result text)
@@ -185,6 +202,8 @@ def _handle_multiclan(
                         cat.leave_clan(CatSocial.LONER)
                     else:
                         cat.status.add_to_group(clan.group_ID, standing_with_past_group=CatStanding.LEFT)
+                        if random() < 0.5:
+                            add_dependents_to_clan(cat, clan.group_ID)
                     for app in cat.apprentice.copy():
                         app_ob = Cat.fetch_cat(app)
                         if app_ob:
@@ -547,7 +566,7 @@ def _handle_conditions(
                 condition=chosen_condition,
                 scar_string=block.get("scar_history"),
                 death_string=block.get("death_history"),
-                other_clan=other_clan,
+                other_clan=other_clan[0] if isinstance(other_clan, list) else other_clan,
                 default_override=no_results,
             )
 
@@ -634,19 +653,22 @@ def _handle_reputation_changes(event: TextPoolEvent, clan, other_clan: OtherClan
             results.append(i18n.t("screens.patrol.outsider_rep_worsened"))
 
     if other_clan_change and other_clan:
-        change_clan_relations(clan, other_clan, other_clan_change)
-        if other_clan_change > 0:
-            results.append(
-                i18n.t("screens.patrol.clan_rep_improved", clan=other_clan.name)
-            )
-        elif other_clan_change == 0:
-            results.append(
-                i18n.t("screens.patrol.clan_rep_neutral", clan=other_clan.name)
-            )
-        else:
-            results.append(
-                i18n.t("screens.patrol.clan_rep_worsened", clan=other_clan.name)
-            )
+        if not isinstance(other_clan, list):
+            other_clan = [other_clan]
+        for c in other_clan:
+            change_clan_relations(clan, c, other_clan_change)
+            if other_clan_change > 0:
+                results.append(
+                    i18n.t("screens.patrol.clan_rep_improved", clan=c.name)
+                )
+            elif other_clan_change == 0:
+                results.append(
+                    i18n.t("screens.patrol.clan_rep_neutral", clan=c.name)
+                )
+            else:
+                results.append(
+                    i18n.t("screens.patrol.clan_rep_worsened", clan=c.name)
+                )
 
     return "\n".join(results)
 
