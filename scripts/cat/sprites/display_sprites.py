@@ -3,6 +3,7 @@ import traceback
 
 import pygame
 from copy import deepcopy
+from random import randint
 
 from scripts.cat.enums import CatAge, CatGroup
 from scripts.cat.phenotype import Phenotype
@@ -12,10 +13,8 @@ from scripts.config import get_config
 from scripts.game_structure import image_cache
 from scripts.game_structure.game import game_setting_get
 from scripts.ui.scale import ui_scale_dimensions
-from copy import deepcopy
 from scripts.game_structure import game
 from scripts.special_dates import SpecialDate, is_today
-from random import randint
 
 logger = logging.getLogger(__name__)
 

@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 
 import ujson
 
-from scripts.cat_relations.relationship import Relationship
+from scripts.cat_relations.relationship import Relationship, create_one_relationship
 from scripts.game_structure import game
 from scripts.game_structure.game import game_setting_get, switch_get_value, Switch
 from scripts.housekeeping.datadir import get_save_dir
@@ -136,10 +136,10 @@ def load_relationship_of_cat(cat):
     if os.path.exists(relation_directory):
         if not os.path.exists(relation_cat_directory):
             init_all_relationships(cat)
-            for cat in cat.all_cats.values():
-                if cat == cat:
+            for c in cat.all_cats.values():
+                if c == cat:
                     continue
-                cat.create_one_relationship(cat)
+                create_one_relationship(cat, c)
             return
         try:
             with open(relation_cat_directory, "r", encoding="utf-8") as read_file:

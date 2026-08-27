@@ -80,7 +80,7 @@ def _handle_pregnancy_notice(cat, other_cat, surrogate, hidden, clan):
         for x in other_cat:
             if cat.mate and x.ID not in cat.mate and x.ID not in surrogates:
                 affair_partner.append(x.ID)
-            if x.mate and x.ID not in surrogates:
+            if x.mate and x.ID not in surrogates and cat.ID not in x.mate:
                 other_cat_has_mate.append(x.ID)
             else:
                 ids.append(x.ID)

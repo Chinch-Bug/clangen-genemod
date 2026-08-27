@@ -746,7 +746,7 @@ def get_balanced_kit_chance(first_parent: Cat, second_parent: Cat, is_affair, cl
             if x.ID in first_parent.relationships:
                 second_parent_relation = first_parent.relationships[x.ID]
             else:
-                second_parent_relation = first_parent.create_one_relationship(x)
+                second_parent_relation = create_one_relationship(first_parent, x)
             if not second_parent_relation.opposite_relationship:
                 second_parent_relation.link_relationship()
 

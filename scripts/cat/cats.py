@@ -74,8 +74,6 @@ import scripts.game_structure.screen_settings
 if TYPE_CHECKING:
     import pygame
 
-import scripts.game_structure.screen_settings
-
 
 class Cat:
     """The cat class."""

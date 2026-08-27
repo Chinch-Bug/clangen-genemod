@@ -9,7 +9,7 @@ from pygame_gui.core import UIContainer
 
 from scripts.cat.cats import Cat
 from scripts.cat_relations.relationship import (
-    Relationship
+    Relationship, create_one_relationship
 )
 from scripts.game_structure import image_cache, game
 from ..cat.sprites.load_sprites import sprites
@@ -732,7 +732,7 @@ class MediationScreen(Screens):
 
         # if we have another cat, then we create the relationship display
         if other_cat:
-            the_relationship = cat.relationships[other_cat.ID] if other_cat.ID in cat.relationships else cat.create_one_relationship(other_cat)
+            the_relationship = cat.relationships[other_cat.ID] if other_cat.ID in cat.relationships else create_one_relationship(cat, other_cat)
 
             same_age = the_relationship.cat_to.age == cat.age
             adult_ages = ["young adult", "adult", "senior adult", "senior"]
