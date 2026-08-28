@@ -599,7 +599,7 @@ def handle_adoption(cat: Cat, other_cat: Optional[Cat] = None, clan=game.clan):
     cat.birth_cooldown = get_config("pregnancy.birth_cooldown")
 
     game.cur_events_list.append(
-        EventInformation(print_event, ["birth_death"], involved_cats=cats_involved, clan=clan.group_ID)
+        EventInformation(print_event, ["birth_death"], cats_involved=cats_involved, clan=clan.group_ID)
     )
 
 
