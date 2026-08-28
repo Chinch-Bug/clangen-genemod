@@ -20,6 +20,7 @@ class TagEnum(Enum):
     halloween = "halloween"
     april_fools = "april_fools"
     new_years = "new_years"
+    war = "war"
     tnr = "tnr"
     tnr2 = "tnr2"
     disaster = "disaster"

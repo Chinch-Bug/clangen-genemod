@@ -9,7 +9,6 @@ from scripts.cat.factories.new_cat_factory import NewCatFactory
 from scripts.cat.factories.test_cat_factory import TestCatFactory
 from scripts.cat.pelts import Pelt
 from scripts.config import get_config
-from scripts.clan_package.settings import get_clan_setting
 from scripts.game_structure.game.settings import game_setting_get
 
 if TYPE_CHECKING:

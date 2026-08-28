@@ -5,4 +5,4 @@ from scripts.game_structure.game.settings.settings import (
     game_settings_load,
     game_setting_toggle,
     game_settings_generator,
-)
+)  # noqa: F401

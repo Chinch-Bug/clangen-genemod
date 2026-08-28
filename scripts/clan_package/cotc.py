@@ -1,4 +1,3 @@
-from scripts.clan import OtherClan
 from scripts.game_structure import game
 
 

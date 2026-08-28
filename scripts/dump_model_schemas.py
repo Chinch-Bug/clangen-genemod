@@ -6,7 +6,6 @@ from pydantic import BaseModel
 
 from scripts.models.crossclan_rel.crossclan_rel_schema import CrossClanRelSchema
 from scripts.models.ceremony.ceremony_schema import CeremonySchema
-from scripts.models.common.common_schema import CommonSchema
 from scripts.models.patrol.patrol_schema import PatrolSchema
 from scripts.models.relationship_group_event.relationship_group_schema import (
     RelationshipGroupEvent,

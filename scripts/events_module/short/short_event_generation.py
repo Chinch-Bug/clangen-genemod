@@ -32,7 +32,6 @@ from scripts.events_module.short.short_event import ShortEvent
 from scripts.config import get_config
 from scripts.game_structure import constants, game
 from scripts.game_structure.game.switches import switch_get_value, Switch
-from scripts.clan_package.cotc import get_warring_clan
 from scripts.clan_package.get_clan_cats import (
     get_living_clan_cat_count,
     find_alive_cats_with_rank,

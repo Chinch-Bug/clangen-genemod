@@ -9,7 +9,7 @@ from pygame_gui.core import UIContainer
 
 from scripts.cat.cats import Cat
 from scripts.cat_relations.relationship import (
-    Relationship, create_one_relationship
+    create_one_relationship
 )
 from scripts.game_structure import image_cache, game
 from ..cat.sprites.load_sprites import sprites

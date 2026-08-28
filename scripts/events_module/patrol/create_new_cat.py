@@ -1,5 +1,5 @@
 from itertools import combinations
-from random import choice, randint, getrandbits, choices, random, randrange
+from random import choice, randint, getrandbits, choices, random
 
 from scripts.cat.cats import Cat
 from scripts.cat.constants import INJURIES, ILLNESSES, PERMANENT, BACKSTORIES
@@ -269,7 +269,6 @@ def updated_create_new_cat(
             **get_config("new_cat.sib_buff.cat1_to_cat2"),
         )
 
-        pass
 
     # UPDATE INHERITANCE if we had any assignments that would change them
     if (

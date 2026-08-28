@@ -18,9 +18,8 @@ from ..ui.theme import get_text_box_theme
 from ..ui.scale import ui_scale, ui_scale_dimensions, ui_scale_offset, ui_scale_value
 from .Screens import Screens
 from .enums import GameScreen
-from .screens_core.screens_core import rebuild_top_menu_buttons, rebuild_core
+from .screens_core.screens_core import rebuild_core
 from ..game_structure.game.save_load import read_clans
-from ..game_structure.game.settings import game_setting_get
 from ..game_structure.screen_settings import MANAGER
 from ..ui.generate_button import get_button_dict, ButtonStyles
 from ..ui.icon import Icon

@@ -8,11 +8,9 @@ from re import sub
 import i18n
 import pygame
 
-from ..cat.phenotype import Phenotype
 
 import pygame_gui
 import ujson
-from pygame_gui.core import ObjectID
 
 from scripts.config import get_config
 from scripts.game_input import INPUT_ACTION_PRESSED, Action
@@ -2129,7 +2127,6 @@ class ProfileScreen(Screens):
     def get_condition_details(self, name):
         """returns the relevant condition details as one string with line breaks"""
         text_list = []
-        cat_name = self.the_cat.name
 
         # collect details for perm conditions
         if name in self.the_cat.permanent_condition:

@@ -1,6 +1,5 @@
 
 from random import choice, randint, random, choices
-import math
 
 class Breed_generator:
     @staticmethod
@@ -224,7 +223,6 @@ class Breed_generator:
 
         genoclass.ticked = ["Ta", "Ta"]
 
-        genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
 
         genoclass.unders_ruf = ''
         genoclass.tickgenes = ''
@@ -349,7 +347,6 @@ class Breed_generator:
 
         genoclass.ticked = ["Ta", "Ta"]
 
-        genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
 
         genoclass.tickgenes = ''
         genoclass.bengal = ''
@@ -415,7 +412,6 @@ class Breed_generator:
 
         #ruhr + ruhrmod + lykoi
 
-        genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
         
         genoclass.wideband = choices([choice([0, 1, 2, 3]), choice([4, 5, 6, 7]), choice([8, 9, 10, 11])], weights=genoclass.odds["wideband_kittypet"][:-2])[0]
         genoclass.tickgenes = ''
@@ -461,7 +457,6 @@ class Breed_generator:
 
         genoclass.ticked = ["Ta", "Ta"]
 
-        genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
         
         if random() < 0.25:
             genoclass.wideband = randint(15, 16)
@@ -525,7 +520,6 @@ class Breed_generator:
             if randint(1, 50) == 1:
                 genoclass.dilutemd[i] = "Dm"
 
-        genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
         
         genoclass.wideband = choices([choice([0, 1, 2, 3]), choice([4, 5, 6, 7]), choice([8, 9, 10, 11])], weights=genoclass.odds["wideband_kittypet"][:-2])[0]
         genoclass.spotted = ''
@@ -628,7 +622,6 @@ class Breed_generator:
         elif random() < 0.25:
             genoclass.glitter[1] = "gl"
 
-        genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
 
         genoclass.spotted = ''
         genoclass.spotsum = 0
@@ -757,7 +750,6 @@ class Breed_generator:
         for i in range(2):
             genoclass.agouti[i] = "A"
 
-        genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
 
         genoclass.wideband = choices([choice([0, 1, 2, 3]), choice([4, 5, 6, 7]), choice([8, 9, 10, 11])], weights=genoclass.odds["wideband_kittypet"][:-2])[0]
         genoclass.bengal = ''
@@ -896,7 +888,6 @@ class Breed_generator:
             if a == 1:
                 genoclass.ext[i] = "Eg"
 
-        genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
 
         genoclass.bengal = ''
         genoclass.sokoke = ''
@@ -1037,7 +1028,6 @@ class Breed_generator:
         genoclass.mack = ["Mc", "Mc"]
         genoclass.ticked = ["ta", "ta"]
 
-        genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
 
         genoclass.spotted = ''
         genoclass.tickgenes = ''
@@ -1267,7 +1257,6 @@ class Breed_generator:
 
         genoclass.ticked = ["ta", "ta"]
 
-        genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
         
         genoclass.spotted = ''
         genoclass.spotsum = 0
@@ -1741,7 +1730,6 @@ class Breed_generator:
 
         genoclass.ticked = ["ta", "ta"]
 
-        genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
 
         genoclass.spotted = ''
         genoclass.spotsum = 0
@@ -1887,7 +1875,6 @@ class Breed_generator:
         elif random() < 0.25:
             genoclass.poly[0] = "Pd"
 
-        genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
 
         genoclass.spotted = ''
         genoclass.tickgenes = ''
@@ -2106,7 +2093,6 @@ class Breed_generator:
             elif random() < 0.0625:
                 genoclass.corin[i] = "sg" #Siberian Gold / extreme sunshine
 
-        genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
         
         genoclass.wideband = choices([choice([0, 1, 2, 3]), choice([4, 5, 6, 7]), choice([8, 9, 10, 11])], weights=genoclass.odds["wideband_kittypet"][:-2])[0]
         genoclass.height_value = randint(genoclass.height_indexes[4]+1, genoclass.height_indexes[6])
@@ -2160,7 +2146,6 @@ class Breed_generator:
 
         genoclass.ticked = ["Ta", "Ta"]
 
-        genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
 
         genoclass.tickgenes = ''
         genoclass.bengal = ''
@@ -2257,7 +2242,6 @@ class Breed_generator:
 
         genoclass.ticked = ["ta", "ta"]
 
-        genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
 
         genoclass.tickgenes = ''
         genoclass.bengal = ''
@@ -2384,7 +2368,6 @@ class Breed_generator:
             if randint(1, 50) == 1:
                 genoclass.dilutemd[i] = "Dm"
 
-        genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
 
         genoclass.tickgenes = ''
         
@@ -2454,7 +2437,6 @@ class Breed_generator:
 
         genoclass.ticked = ["ta", "ta"]
 
-        genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
 
         genoclass.spotted = ''
         genoclass.tickgenes = ''
@@ -2642,7 +2624,6 @@ class Breed_generator:
             genoclass.glitter[1] = "gl"
 
 
-        genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
 
         genoclass.spotted = ''
         genoclass.tickgenes = ''
@@ -2860,7 +2841,6 @@ class Breed_generator:
         genoclass.mack = ["Mc", "Mc"]
         genoclass.ticked = ["ta", "ta"]
 
-        genes = ["2", "2", "1", "1", "1", "1", "1", "1", "0", "0"]
 
         genoclass.spotted = ''
         genoclass.tickgenes = ''

@@ -2,7 +2,6 @@ import random
 
 import i18n
 
-from scripts.cat.history import History
 from scripts.conditions import (
     get_amount_cat_for_one_medic,
     medicine_cats_can_cover_clan,

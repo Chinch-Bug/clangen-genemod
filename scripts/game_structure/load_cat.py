@@ -1,17 +1,12 @@
 import logging
-import os
-import traceback
-from math import floor
 from random import choice, randint
 from copy import deepcopy
 from itertools import chain
 from operator import xor
 
-import i18n
 import ujson
 
 from scripts.cat.cats import Cat
-from scripts.cat.constants import BACKSTORIES
 from scripts.clan import clan_class
 from scripts.cat.save_load import load_faded_cat_ids
 from scripts.cat_relations.inheritance2 import inheritance_db
@@ -26,18 +21,11 @@ from scripts.game_structure.game.switches import (
     Switch,
 )
 from scripts.game_structure.game.settings import game_setting_get
-from ..cat.factories.enums import CatType
 from ..cat.factories.load_cat_factory import LoadCatFactory
-from ..cat.factories.typed_dicts import MentorshipDict, StatusDict
-from ..cat.names import Name
-from ..cat.pronouns import get_new_pronouns
 from scripts.housekeeping.version import SAVE_VERSION_NUMBER
 from scripts.config import get_config
 from scripts.game_structure import game
-from ..cat.personality import Personality
-from ..cat.skills import CatSkills
 from ..cat_relations.cat_handle_funcs import (
-    init_all_relationships,
     load_relationship_of_cat,
 )
 from ..clan_resources.point_of_interest import (
@@ -561,10 +549,6 @@ def json_load():
     all_cats = []
     clanname = switch_get_value(Switch.clan_list)[0]
     clan_cats_json_path = f"{get_save_dir()}/{clanname}/clan_cats.json"
-    with open(
-        f"resources/dicts/conversion_dict.json", "r", encoding="utf-8"
-    ) as read_file:
-        convert = ujson.loads(read_file.read())
     try:
         with open(clan_cats_json_path, "r", encoding="utf-8") as read_file:
             cat_data = ujson.loads(read_file.read())
@@ -649,20 +633,6 @@ def save_check():
     """Checks through loaded cats, checks and attempts to fix issues
     NOT currently working."""
     return
-
-    for cat in Cat.all_cats:
-        cat_ob = Cat.all_cats[cat]
-
-        # Not-mutural mate relations
-        # if cat_ob.mate:
-        #    _temp_ob = Cat.all_cats.get(cat_ob.mate)
-        #    if _temp_ob:
-        #        # Check if the mate's mate feild is set to none
-        #        if not _temp_ob.mate:
-        #            _temp_ob.mate = cat_ob.ID
-        #    else:
-        #        # Invalid mate
-        #        cat_ob.mate = None
 
 
 def version_convert(version_info):

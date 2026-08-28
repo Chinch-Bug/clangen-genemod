@@ -1,7 +1,7 @@
 import re
 from math import floor
 from random import choice, sample, randint
-from typing import Type, List, TYPE_CHECKING, Union
+from typing import Type, List, TYPE_CHECKING
 import logging
 
 import i18n
@@ -21,7 +21,6 @@ from scripts.clan_resources.point_of_interest import (
     get_random_poi_by_category,
     get_poi_names_set,
 )
-from scripts.config import get_config
 from scripts.game_structure import localization, game
 from scripts.game_structure.game import switch_get_value, Switch
 from scripts.game_structure.localization import load_lang_resource, get_lang_config
@@ -121,7 +120,7 @@ def pronoun_repl(m, cat_pronouns_dict, raise_exception=False, clan=None):
 
         print("Failed to find pronoun:", m.group(1))
         return "error1"
-    except (KeyError, IndexError) as e:
+    except (KeyError, IndexError):
         if raise_exception:
             raise
 
@@ -147,7 +146,6 @@ def poi_repl(inner_details, clan=None):
             else "MISSING_POI"
         )
     elif inner_details[1].upper() == "CATEGORY":
-        category = inner_details[2].upper()
         base_string += get_random_poi_by_category(inner_details[2].lower(), clan)
 
     return i18n.t(base_string)
@@ -620,7 +618,6 @@ def leader_ceremony_text_adjust(
             i18n.t("general.lives", count=extra_lives),
         )
 
-    clan = leader.status.fetch_clan_object()
     text = text.replace("c_n", leader.status.fetch_clan_object().name)
 
     return text

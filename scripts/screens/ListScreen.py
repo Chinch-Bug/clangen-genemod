@@ -13,7 +13,6 @@ from scripts.clan_package.settings.clan_settings import (
     get_clan_setting,
 )
 from scripts.clan_package.get_clan_cats import search_cats
-from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure.game.switches import (
     switch_set_value,
     switch_get_value,

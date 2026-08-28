@@ -3,12 +3,11 @@ import pygame_gui
 from pygame_gui.core import ObjectID
 from pygame_gui.core.interfaces import IUIManagerInterface
 
-from scripts.game_input import INPUT_ACTION_PRESSED, INPUT_ACTION_RELEASED, Action
 from scripts.game_structure.game import game_setting_get
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.ui.elements.cat_button import CatButton
 from scripts.ui.generate_box import get_box, BoxStyles
-from scripts.ui.scale import ui_scale_value, ui_scale
+from scripts.ui.scale import ui_scale_value
 
 
 class UISpriteButton(CatButton):

@@ -4,7 +4,6 @@ import pygame_gui
 from scripts.cat.names import Name
 from scripts.game_structure import game
 from scripts.game_structure.screen_settings import MANAGER
-from scripts.ui.elements.image_button import UIImageButton
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton
 from scripts.ui.elements.checkbox import UICheckbox
 from scripts.screens.enums import GameScreen

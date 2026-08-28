@@ -7,29 +7,30 @@
         "season": [
             "any"
         ],
-        "sub_type": [ ],
         "frequency": 3,
-        "event_text": [
-            "m_c, r_c1, and r_c2 find r_c3 cowering from a jackal and work together to drive it away."
+        "strings": [
+            "m_c, r_c0, and r_c1 found r_c2 cowering from a jackal and worked together to drive it away."
         ],
-        "m_c": {
-            "skill": [ "FIGHTER,1", "CLEVER,1" ],
-            "status": [ "warrior" ]
-        },
-        "r_c": [
-            {
-                "clan": 1,
-                "status": ["warrior"]
+        "involved_cats": {
+            "m_c": {
+                "stat": {
+                    "skill": [ "FIGHTER,1", "CLEVER,1" ]
+                },
+                "status": [ "warrior" ]
             },
-            {
+            "r_c0": {
                 "clan": 1,
                 "status": [ "warrior" ]
             },
-            {
+            "r_c1": {
+                "clan": 1,
+                "status": [ "warrior" ]
+            },
+            "r_c2": {
                 "clan": 2
             }
-        ],
-        "relationships": [
+        },
+        "relationship_changes": [
             {
                 "cats_from": [ "r_c3" ],
                 "cats_to": [ "m_c", "r_c1", "r_c2" ],
@@ -41,8 +42,8 @@
                 }
             }
         ],
-        "other_clan": {
-            "changed": 1
+        "reputation_changes": {
+            "other_clan": 1
         }
     }
 ]

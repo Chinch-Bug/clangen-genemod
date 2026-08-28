@@ -2,7 +2,6 @@ import pygame
 import pygame_gui
 
 from scripts.cat.sprites.load_sprites import sprites
-from scripts.game_structure import game
 from scripts.config import get_config
 from scripts.game_structure.game import Switch
 from scripts.game_structure.game.switches import switch_set_value

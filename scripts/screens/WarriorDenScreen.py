@@ -1,7 +1,6 @@
 import i18n
 import pygame
 import pygame_gui
-import ujson
 from pygame_gui.core import ObjectID
 
 from scripts.cat.cats import Cat

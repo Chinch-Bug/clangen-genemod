@@ -7,20 +7,25 @@
         "season": [
             "any"
         ],
-        "sub_type": [ ],
         "frequency": 4,
-        "event_text": [
-            "m_c boasts about stealing fish from gulls, but r_c isn't quite so enthused about stealing food from other animals."
+        "strings": [
+            "m_c boasted about stealing fish from gulls, but r_c0 wasn't quite so enthused about stealing food from other animals."
         ],
-        "m_c": {
-            "skill": [ "HUNTER,0", "CLEVER,0", "STEALTH,0", "FIGHTER,0" ]
+        "involved_cats": {
+            "m_c": {
+                "stat": {
+                    "skill": [ "HUNTER,0", "CLEVER,0", "STEALTH,0", "FIGHTER,0" ]
+                }
+            },
+            "r_c0": {
+                "stat": {
+                    "trait": [ "compassionate", "loving" ]
+                }
+            }
         },
-        "r_c": {
-            "trait": [ "compassionate", "loving" ]
-        },
-        "relationships": [
+        "relationship_changes": [
             {
-                "cats_from": [ "r_c" ],
+                "cats_from": [ "r_c0" ],
                 "cats_to": [ "m_c" ],
                 "values": [ "respect", "comfort" ],
                 "amount": -10,
@@ -39,32 +44,38 @@
         "season": [
             "any"
         ],
-        "sub_type": [ ],
         "frequency": 1,
-        "event_text": [
-            "m_c boasts about {PRONOUN/m_c/poss} ability to steal fish from gulls. Yet when prompted for a demonstration, m_c only ends up forced to retreat by an angry flock, much to r_c's amusement."
+        "strings": [
+            "m_c boasted about {PRONOUN/m_c/poss} ability to steal fish from gulls. Yet when prompted for a demonstration, m_c only ended up forced to retreat by an angry flock, much to r_c0's amusement."
         ],
-        "m_c": {
-            "skill": [ "-HUNTER,0", "-CLEVER,0", "-STEALTH,0", "-FIGHTER,0" ],
-            "trait": [
-                "troublesome",
-                "bold",
-                "daring",
-                "ambitious",
-                "confident",
-                "adventurous",
-                "shameless",
-                "arrogant",
-                "competitive",
-                "flamboyant"
-            ]
+        "involved_cats": {
+            "m_c": {
+                "stat": {
+                    "must_have_both": true,
+                    "skill": [ "-HUNTER,0", "-CLEVER,0", "-STEALTH,0", "-FIGHTER,0" ],
+                    "trait": [
+                        "troublesome",
+                        "bold",
+                        "daring",
+                        "ambitious",
+                        "confident",
+                        "adventurous",
+                        "shameless",
+                        "arrogant",
+                        "competitive",
+                        "flamboyant"
+                    ]
+                }
+            },
+            "r_c0": {
+                "stat": {
+                    "trait": [ "-compassionate", "-loving", "-thoughtful", "-nervous" ]
+                }
+            }
         },
-        "r_c": {
-            "trait": [ "-compassionate", "-loving", "-thoughtful", "-nervous" ]
-        },
-        "relationships": [
+        "relationship_changes": [
             {
-                "cats_from": [ "r_c" ],
+                "cats_from": [ "r_c0" ],
                 "cats_to": [ "m_c" ],
                 "values": [ "respect" ],
                 "amount": -10,
@@ -75,7 +86,7 @@
             },
             {
                 "cats_from": [ "m_c" ],
-                "cats_to": [ "r_c" ],
+                "cats_to": [ "r_c0" ],
                 "values": [ "comfort" ],
                 "amount": -10,
                 "mutual": false,
@@ -84,23 +95,12 @@
                 }
             }
         ],
-        "injury": [
+        "condition": [
             {
-                "cats": [
-                    "m_c"
-                ],
-                "injuries": [
-                    "beak bite"
-                ]
-            }
-        ],
-        "history": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "scar": "m_c was scarred by a gull when trying to impress r_c.",
-                "death": "m_c died from injuries caused by a gull when trying to impress r_c."
+                "cats": ["m_c"],
+                "condition": ["beak bite"],
+                "scar_history": "m_c was scarred by a gull when trying to impress r_c0.",
+                "non_lethal": true
             }
         ]
     }

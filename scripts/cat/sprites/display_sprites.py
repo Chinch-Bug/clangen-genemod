@@ -6,7 +6,6 @@ from copy import deepcopy
 from random import randint
 
 from scripts.cat.enums import CatAge, CatGroup
-from scripts.cat.phenotype import Phenotype
 from scripts.cat.sprites.load_sprites import sprites
 from scripts.clan_package.settings import get_clan_setting
 from scripts.config import get_config

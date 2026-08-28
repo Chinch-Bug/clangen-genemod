@@ -7,20 +7,25 @@
         "season": [
             "any"
         ],
-        "sub_type": [ ],
         "frequency": 2,
-        "event_text": [
-            "m_c sees an eagle overhead of r_c and warns {PRONOUN/r_c/object} just in time before it could swoop."
+        "strings": [
+            "m_c saw an eagle overhead of r_c0 and warned {PRONOUN/r_c0/object} just in time before it could swoop."
         ],
-        "m_c": {
-            "skill": [ "SENSE,1" ]
+        "involved_cats": {
+            "m_c": {
+                "stat": {
+                    "skill": ["SENSE,1"]
+                }
+            },
+            "r_c0": {
+                "stat": {
+                    "skill": [ "-SENSE,1" ]
+                }
+            }
         },
-        "r_c": {
-            "skill": [ "-SENSE,1" ]
-        },
-        "relationships": [
+        "relationship_changes": [
             {
-                "cats_from": [ "r_c" ],
+                "cats_from": [ "r_c0" ],
                 "cats_to": [ "m_c" ],
                 "values": [ "trust", "comfort" ],
                 "amount": 15,
@@ -30,48 +35,40 @@
                 }
             }
         ],
-        "other_clan": {
-            "changed": 1
+        "reputation_changes": {
+            "other_clan": 1
         }
     },
     {
         "event_id": "mountain_single_avalanche1",
         "location": [ "mountainous" ],
         "season": [ "leaf-bare" ],
-        "sub_type": [ ],
         "frequency": 2,
-        "event_text": [
-            "While on a solo patrol, m_c witnesss a o_c_n cat get caught under a falling snow drift. {PRONOUN/m_c/subject/CAP} {VERB/m_c/are/is} able to get r_c out, but not before the cold got to {PRONOUN/r_c/object}."
+        "strings": [
+            "While on a solo patrol, m_c witnessed a o_c_n cat get caught under a falling snow drift. {PRONOUN/m_c/subject/CAP} {VERB/m_c/were/was} able to get r_c0 out, but not before the cold got to {PRONOUN/r_c0/object}."
         ],
-        "m_c": {
-            "skill": [ "SENSE,1" ],
-            "age": [ "-senior" ]
+        "involved_cats": {
+            "m_c": {
+                "stat": {
+                    "skill": [ "SENSE,1" ]
+                },
+                "age": [ "-senior" ]
+            },
+            "r_c0": {
+                "age": [ "-senior" ]
+            }
         },
-        "r_c": {
-            "age": [ "-senior" ]
-        },
-        "injury": [
+        "condition": [
             {
-                "cats": [
-                    "r_c"
-                ],
-                "injuries": [
-                    "cold_injury"
-                ]
+                "cats": ["r_c0"],
+                "condition": ["cold_injury"],
+                "scar_history": "m_c was scarred after getting trapped in a snowdrift.",
+                "death_history": "m_c died from complications caused by being trapped in a snowdrift."
             }
         ],
-        "history": [
+        "relationship_changes": [
             {
-                "cats": [
-                    "r_c"
-                ],
-                "scar": "m_c was scarred after getting trapped in a snowdrift.",
-                "death": "m_c died from complications caused by being trapped in a snowdrift."
-            }
-        ],
-        "relationships": [
-            {
-                "cats_from": [ "r_c" ],
+                "cats_from": [ "r_c0" ],
                 "cats_to": [ "m_c" ],
                 "values": [ "trust", "respect", "like", "comfort" ],
                 "amount": 15,

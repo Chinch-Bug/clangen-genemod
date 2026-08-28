@@ -7,32 +7,39 @@
         "season": [
             "newleaf"
         ],
-        "sub_type": [ ],
-        "frequency": 3,
-        "event_text": [
-            "Having heard c_n was facing a risk of flooding, o_c_n1 sends r_c1, r_c2, and r_c3 to help the preparations m_c was organising."
+        "strings": [
+            "Having heard c_n was facing a risk of flooding, o_c_n1 sent r_c0, r_c1, and r_c2 to help the preparations m_c was organising."
         ],
-        "m_c": {
-            "skill": [ "CAMP,2" ]
-        },
-        "r_c": [
-            {
-                "clan": 2,
-                "skill": [ "CAMP,1" ]
+        "involved_cats": {
+            "m_c": {
+                "stat": {
+                    "skill": [ "CAMP,2" ]
+                }
             },
-            {
+            "r_c0": {
                 "clan": 2,
-                "skill": [ "CAMP,1" ]
+                "stat": {
+                    "skill": [ "CAMP,1" ]
+                }
             },
-            {
+            "r_c1": {
                 "clan": 2,
-                "skill": [ "CAMP,1" ]
+                "stat": {
+                    "skill": [ "CAMP,1" ]
+                }
+            },
+            "r_c2": {
+                "clan": 2,
+                "stat": {
+                    "skill": [ "CAMP,1" ]
+                }
             }
-        ],
-        "relationships": [
+        },
+        "frequency": 3,
+        "relationship_changes": [
             {
                 "cats_from": [ "m_c" ],
-                "cats_to": [ "r_c1", "r_c2", "r_c3" ],
+                "cats_to": [ "r_c0", "r_c0", "r_c0" ],
                 "values": [ "trust", "respect" ],
                 "amount": 10,
                 "mutual": false,
@@ -41,8 +48,8 @@
                 }
             }
         ],
-        "other_clan": {
-            "current_rep": ["ally"]
+        "required_reputation": {
+            "other_clan": ["ally"]
         }
     }
 ]

@@ -1,9 +1,7 @@
-from typing import List, Optional
+from typing import List
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import Field
 
-from scripts.models.common.cat import Cat
-from scripts.models.common.relationship_status import RelationshipStatus
 from scripts.models.relationship_group_event.cat_enums import GroupEventCatEnum
 from scripts.models.text_pool_event.relationship_constraint_dict import (
     RelationshipConstraint,

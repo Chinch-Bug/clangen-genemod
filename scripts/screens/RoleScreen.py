@@ -17,7 +17,6 @@ from ..events_module.text_adjust import adjust_list_text, shorten_text_to_fit
 from ..ui.scale import ui_scale, ui_scale_dimensions
 from .Screens import Screens
 from .enums import GameScreen
-from ..game_structure.game.settings import game_setting_get
 from ..game_structure.game.switches import switch_set_value, switch_get_value, Switch
 from ..cat.enums import CatRank
 from ..game_structure.screen_settings import MANAGER
@@ -56,7 +55,6 @@ class RoleScreen(Screens):
                     print("invalid previous cat", self.previous_cat)
             elif not get_config("ranks.allow_manual"):
                 CruelLockedAction()
-                pass
             #
             #
             #   ANYTHING BELOW HERE WILL NOT TRIGGER IF CRUEL SEASON DISABLES ROLE SWITCHING

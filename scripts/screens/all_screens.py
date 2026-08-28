@@ -1,4 +1,3 @@
-import warnings
 
 from .AllegiancesScreen import AllegiancesScreen
 from .CeremonyScreen import CeremonyScreen

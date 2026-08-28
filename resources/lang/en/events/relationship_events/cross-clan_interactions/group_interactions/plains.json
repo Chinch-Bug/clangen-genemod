@@ -3,36 +3,43 @@
         "event_id": "plains_group_cavein1",
         "location": ["plains"],
         "season": [
-            "newleaf", "leaffall"
+            "newleaf", "leaf-fall"
         ],
-        "sub_type": [ ],
         "frequency": 2,
-        "event_text": [
-            "m_c was checking some tunnels after a recent heavy downpour, only to find r_c1 trapped. {PRONOUN/m_c/object/CAP} gather r_c2 and r_c3 up to help dig {PRONOUN/r_c1/object} out."
+        "strings": [
+            "m_c was checking some tunnels after a recent heavy downpour, only to find r_c1 trapped. {PRONOUN/m_c/object/CAP} gathered r_c2 and r_c3 up to help dig {PRONOUN/r_c1/object} out."
         ],
-        "m_c": {
-            "skill": ["DIGGER,2"]
-        },
-        "r_c": [
-            {
+        "involved_cats": {
+            "m_c": {
+                "stat": {
+                    "skill": [ "DIGGER,2" ]
+                }
+            },
+            "r_c0": {
                 "clan": 2,
-                "skill": [ "-DIGGER,2" ]
+                "stat": {
+                    "skill": [ "-DIGGER,1" ]
+                }
             },
-            {
+            "r_c1": {
                 "clan": 1,
                 "age": ["-senior"],
-                "skill": ["DIGGER,1"]
+                "stat": {
+                    "skill": ["DIGGER,1"]
+                }
             },
-            {
+            "r_c2": {
                 "clan": 1,
-                "age": ["-senior"],
-                "skill": ["DIGGER,1"]
+                "age": [ "-senior" ],
+                "stat": {
+                    "skill": [ "DIGGER,1" ]
+                }
             }
-        ],
-        "relationships": [
+        },
+        "relationship_changes": [
             {
-                "cats_from": [ "r_c1" ],
-                "cats_to": [ "m_c", "r_c2", "r_c3" ],
+                "cats_from": [ "r_c0" ],
+                "cats_to": [ "m_c", "r_c1", "r_c2" ],
                 "values": [ "trust", "respect" ],
                 "amount": 15,
                 "mutual": false,

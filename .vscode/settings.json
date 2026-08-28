@@ -45,6 +45,12 @@
             ]
         },
         {
+            "url": "./schemas/crossclan_rel.schema.json",
+            "fileMatch": [
+                "events/relationship_events/cross-clan_interactions/*/*.json"
+            ]
+        },
+        {
             "url": "./schemas/poi.schema.json",
             "fileMatch": [
                 "points_of_interest.json"

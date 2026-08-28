@@ -11,7 +11,6 @@ import asyncio
 import threading
 from time import time
 
-import i18n
 
 from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure.game.switches import switch_get_value, Switch

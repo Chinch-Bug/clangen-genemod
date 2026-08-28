@@ -1,6 +1,6 @@
 from typing import Optional
 
-import scripts.game_structure.screen_settings
+import scripts.game_structure.screen_settings  # noqa: F401
 from pygame import display
 from pygame_gui.core import UIElement
 from scripts.game_input import Action

@@ -2,10 +2,8 @@ import pygame
 import pygame_gui
 
 from scripts.game_structure import game
-from scripts.ui.elements.image_button import UIImageButton
 from scripts.ui.elements.checkbox import UICheckbox
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton
-from scripts.screens.enums import GameScreen
 from scripts.ui.windows.window_base_class import GameWindow
 from scripts.ui.scale import ui_scale
 from scripts.cat.microservices.add_to_clan import add_to_clan

@@ -1,7 +1,6 @@
-import abc
 import random
 from operator import xor
-from typing import Tuple, Literal
+from typing import Tuple
 
 from abc import ABC, abstractmethod
 from scripts.cat.phenotype import Phenotype
@@ -23,7 +22,6 @@ from scripts.cat.skills import CatSkills
 from scripts.cat.status import Status
 from scripts.game_structure import game
 from scripts.config import get_config
-from scripts.clan_package.settings import get_clan_setting
 from scripts.game_structure.game.settings import game_setting_get
 
 BASE_RNG = random.Random

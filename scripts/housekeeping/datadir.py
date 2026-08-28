@@ -15,7 +15,6 @@ def setup_data_dir():
         os.makedirs(get_temp_dir(), exist_ok=True)
     except FileExistsError:
         print("Macos ignored exist_ok=true for save or temp dict, continuing.")
-        pass
     os.makedirs(get_log_dir(), exist_ok=True)
     os.makedirs(get_cache_dir(), exist_ok=True)
     os.makedirs(get_saved_images_dir(), exist_ok=True)

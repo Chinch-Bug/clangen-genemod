@@ -2,7 +2,6 @@ from random import choice, randrange, random, randint, choices, sample
 from typing import List, Optional, Dict
 
 import i18n
-import re
 
 from scripts.cat import pronouns
 from scripts.cat.cats import Cat
@@ -33,7 +32,7 @@ from scripts.events_module.consequences import (
 from scripts.clan_package.cotc import change_clan_reputation, change_clan_relations
 from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank
 
-from scripts.cat.enums import CatAge, CatRank, CatSocial, CatStanding
+from scripts.cat.enums import CatAge, CatRank, CatSocial
 from scripts.cat.personality import Personality
 from scripts.cat.skills import SkillPath
 from scripts.config import get_config
@@ -628,7 +627,6 @@ class ShortEvent:
             body = False
         else:
             body = True
-        pass
 
         if self.m_c.get("dies") and self.main_cat not in dead_list:
             dead_list.append(self.main_cat)

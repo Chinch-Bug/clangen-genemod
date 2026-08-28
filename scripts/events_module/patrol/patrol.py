@@ -21,10 +21,8 @@ from scripts.events_module.event_filters import (
     check_relationship_value,
     get_personality_compatibility,
     event_for_poi,
-    check_rel_constraint_groups,
     event_for_other_clan,
 )
-from scripts.events_module.patrol.create_new_cat import updated_create_new_cat, updated_find_clan_cats
 from scripts.events_module.patrol.enums import PatrolChoice
 from scripts.events_module.patrol.generate_patrol_list import (
     get_patrol_list,

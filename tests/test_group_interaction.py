@@ -17,7 +17,7 @@ from scripts.game_structure import game
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 os.environ["SDL_AUDIODRIVER"] = "dummy"
 
-from scripts.cat.cats import Relationship
+from scripts.cat_relations.relationship import Relationship
 
 cat_factory = TestCatFactory()
 

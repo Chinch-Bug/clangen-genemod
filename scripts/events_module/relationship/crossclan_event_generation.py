@@ -1,25 +1,30 @@
-from random import random, choice, randint
+from random import random, choice, shuffle
 from typing import Optional
 
 import i18n
-import ujson
 
 from scripts.cat.cats import Cat
 from scripts.cat.enums import CatRank
 from scripts.events_module.event_filters import (
-    event_for_location,
-    event_for_tags,
+    check_rel_constraint_groups,
     event_for_cat,
     event_for_clan_relations,
-    event_for_season,
     event_for_poi,
     cat_for_event,
     get_frequency,
     find_new_frequency,
 )
-from scripts.events_module.relationship.crossclan_event import CrossClanEvent
+from scripts.events_module.text_pool_event.text_pool_event import TextPoolEvent
+from scripts.events_module.event_information import EventInformation
 from scripts.config import get_config
-from scripts.game_structure import constants, game
+from scripts.game_structure import game
+from scripts.events_module.text_pool_event.event_retrieval import (
+    load_text_pool_events,
+)
+from scripts.events_module.text_pool_event.check_general_constraints import (
+    passes_general_constraints,
+)
+from scripts.events_module.text_pool_event.handle_consequences import execute_outcome
 
 loaded_events = {}
 used_events = set()
@@ -67,13 +72,15 @@ def create_rel_event(
 
     chosen_event = None
     already_reset = False
+    clan = main_cat.status.fetch_clan_object(game.clan)
     while not chosen_event:
         events = find_needed_events(
             is_group,
-            frequency,
+            clan.biome,
+            frequency
         )
 
-        chosen_event, random_cats = filter_events(
+        chosen_event, random_cats, involved_cats, other_clans = filter_events(
             possible_events=events,
             main_cat=main_cat,
         )
@@ -94,10 +101,6 @@ def create_rel_event(
 
     if chosen_event:
         used_events.add(chosen_event.event_id)
-        
-        # setting event info
-        chosen_event.main_cat = main_cat
-        chosen_event.random_cats = random_cats
 
         viable_cats[main_cat.status.group_ID].remove(main_cat)
         for c in random_cats:
@@ -108,10 +111,22 @@ def create_rel_event(
                 del viable_cats[key]
 
         # execute the event
-        chosen_event.execute_event()
+        text, results, rel_results = execute_outcome(chosen_event, involved_cats, clan, other_clans)
+        types = ["other_clans", "interaction"]
+        if chosen_event.condition:
+            types = ["other_clans", "health"]
+        for clan in [clan]+other_clans:
+            game.cur_events_list.append(
+                EventInformation(
+                    text,
+                    types,
+                    cat_dict=involved_cats,
+                    clan=clan.group_ID
+                )
+            )
 
 
-def find_needed_events(is_group, frequency) -> list:
+def find_needed_events(is_group, biome, frequency) -> list:
     """
     Handles detecting the biome and collecting all events possible for biome and type
     :param frequency: The event frequency to look for
@@ -119,135 +134,18 @@ def find_needed_events(is_group, frequency) -> list:
     """
     event_list = []
 
-    # skip the rest of the loading if there is an unrecognised biome
-    temp_biome = (
-        game.clan.biome if not game.clan.override_biome else game.clan.override_biome
-    )
-    if temp_biome not in constants.BIOME_TYPES:
-        print(
-            f"WARNING: unrecognised biome {game.clan.biome} in generate_events. Have you added it to BIOME_TYPES "
-            f"in clan.py?"
-        )
+    event_list += load_text_pool_events(f"events/relationship_events/cross-clan_interactions/{"group" if is_group else "normal"}_interactions/{biome}.json")
+    event_list += load_text_pool_events(f"events/relationship_events/cross-clan_interactions/{"group" if is_group else "normal"}_interactions/general.json")
 
-    biome = temp_biome.lower()
-
-    # biome specific events
-    event_list.extend(generate_event_objects(is_group, biome, frequency))
-
-    # any biome events
-    event_list.extend(generate_event_objects(is_group, "general", frequency))
+    event_list = [e for e in event_list if e.frequency == frequency]
 
     return event_list
-
-
-def get_event_dicts(file_path) -> list:
-    """
-    Opens and loads .json for the given file path.
-    :param file_path: The file path to open
-    """
-    try:
-        with open(
-            get_resource_directory() + file_path, "r", encoding="utf-8"
-        ) as read_file:
-            events = ujson.loads(read_file.read())
-    except ValueError:
-        try:
-            with open(
-                get_resource_directory(fallback=True) + file_path,
-                "r",
-                encoding="utf-8",
-            ) as read_file:
-                events = ujson.loads(read_file.read())
-        except ValueError:
-            print(f"ERROR: Unable to load {file_path}.")
-            return []
-
-    return events
-
-
-def generate_event_objects(is_group, biome, frequency) -> list:
-    """
-    Gets the event dicts for the given args and creates the short event objects for each entry in the dict.
-    :param event_triggered: The type of event triggered
-    :param biome: The biome to pull events for
-    :param frequency: The frequency to pull events for
-    """
-    file_path = f"{"group_interactions" if is_group else "normal_interactions"}/{biome}.json"
-    load_name = f"{file_path}_{frequency}"
-
-    try:
-        if file_path in loaded_events:
-            return loaded_events[file_path]
-        if load_name in loaded_events:
-            return loaded_events[load_name]
-        else:
-            events_dict = get_event_dicts(file_path)
-
-            event_list = []
-            if not events_dict:
-                return event_list
-            for event in events_dict:
-                event_text = event["event_text"] if "event_text" in event else None
-                event_frequency = event["frequency"] if "frequency" in event else 4
-
-                if not event_text:
-                    event_text = event["death_text"] if "death_text" in event else None
-
-                if not event_text:
-                    print(
-                        f"WARNING: some events resources which are used in generate_events have no 'event_text'."
-                    )
-                if frequency != event_frequency:
-                    continue
-
-                event_obj = CrossClanEvent(
-                    event_id=event["event_id"] if "event_id" in event else "",
-                    location=event["location"] if "location" in event else ["any"],
-                    season=event["season"] if "season" in event else ["any"],
-                    poi=event["poi"] if "poi" in event else {},
-                    sub_type=event["sub_type"] if "sub_type" in event else [],
-                    tags=event["tags"] if "tags" in event else [],
-                    text=event_text,
-                    new_accessory=(
-                        event["new_accessory"] if "new_accessory" in event else []
-                    ),
-                    m_c=event["m_c"] if "m_c" in event else {},
-                    r_c=event["r_c"] if "r_c" in event else [],
-                    injury=event["injury"] if "injury" in event else [],
-                    exclude_involved=(
-                        event["exclude_involved"] if "exclude_involved" in event else []
-                    ),
-                    history=event["history"] if "history" in event else [],
-                    relationships=(
-                        event["relationships"] if "relationships" in event else []
-                    ),
-                    other_clan=event["other_clan"] if "other_clan" in event else {},
-                    supplies=event["supplies"] if "supplies" in event else [],
-                    new_gender=event["new_gender"] if "new_gender" in event else [],
-                    future_event=event["future_event"]
-                    if "future_event" in event
-                    else {},
-                    nr_involved_clans=event.get("nr_involved_clans", 2)
-                )
-
-                if not isinstance(event_obj.r_c, list):
-                    event_obj.r_c = [event_obj.r_c]
-                event_list.append(event_obj)
-
-            # Add to loaded events.
-            loaded_events[load_name] = event_list
-            return event_list
-
-    except ValueError:
-        print(f"WARNING: {file_path} was not found, check crossclan event generation")
-        return []
 
 
 def filter_events(
     possible_events,
     main_cat,
-    random_cat=None,
-) -> (Optional[CrossClanEvent], Optional[Cat]):
+) -> (Optional[TextPoolEvent], Optional[Cat]):
     """
     Filters possible events to find an event that fits the given requirements
     :param possible_events: list of possible events
@@ -255,29 +153,12 @@ def filter_events(
     :param random_cat: random cat for this event
     """
     final_events = []
-    incorrect_format = []
     clan = main_cat.status.fetch_clan_object()
+    involved_cats = {
+        "m_c": main_cat
+    }
 
     for event in possible_events:
-        if event.history:
-            if not isinstance(event.history, list) or "cats" not in event.history[0]:
-                if (
-                    f"{event.event_id} history formatted incorrectly"
-                    not in incorrect_format
-                ):
-                    incorrect_format.append(
-                        f"{event.event_id} history formatted incorrectly"
-                    )
-        if event.injury:
-            if not isinstance(event.injury, list) or "cats" not in event.injury[0]:
-                if (
-                    f"{event.event_id} injury formatted incorrectly"
-                    not in incorrect_format
-                ):
-                    incorrect_format.append(
-                        f"{event.event_id} injury formatted incorrectly"
-                    )
-
         # check if event has already been used
         if event.event_id in used_events:
             continue
@@ -287,59 +168,30 @@ def filter_events(
             final_events.append(event)
             continue
 
-        if not event_for_location(event.location, clan):
+        if not passes_general_constraints(
+            event,
+            involved_cats["m_c"],
+            involved_cats,
+            clan,
+            is_debug_event=event.event_id == get_config("event_generation.debug_ensure_event_id")
+        ):
             continue
 
-        if not event_for_season(event.season):
+        if not event_for_poi(event.poi, clan):
             continue
-
-        if not event_for_poi(event.poi, clan.group_ID):
-            continue
-
-        # check tags
-        if not event_for_tags(event.tags, main_cat, random_cat):
-            continue
-
-        # check if already trans
-        if "transition" in event.sub_type and main_cat.gender != main_cat.genderalign:
-            continue
-
-        m_c_injuries = []
-        r_c_injuries = []
-        discard = False
-        for block in event.injury:
-            for injury in block["injuries"]:
-                if "m_c" in block["cats"]:
-                    m_c_injuries.append(injury)
-                if "r_c" in block["cats"]:
-                    r_c_injuries.append(injury)
-            if discard:
-                continue
 
         # check if m_c is allowed this event
-        if event.m_c:
-            if not event_for_cat(
-                cat_info=event.m_c,
-                cat=main_cat,
-                cat_group=[main_cat, random_cat] if random_cat else None,
-                event_id=event.event_id,
-            ):
-                continue
-
-        # if a random cat was pre-chosen, then we check if the event will be suitable for them
-        if random_cat:
-            if not event_for_cat(
-                cat_info=event.r_c,
-                cat=random_cat,
-                cat_group=[random_cat, main_cat],
-                event_id=event.event_id,
-            ):
-                continue
+        if not event_for_cat(
+            cat_info=event.involved_cats["m_c"],
+            cat=main_cat,
+            event_id=event.event_id,
+        ):
+            continue
 
         final_events.extend([event] * event.weight)
 
     if not final_events:
-        return None, random_cat
+        return None, None, None, None
 
     chosen_cats = []
     involved_clans = []
@@ -355,6 +207,7 @@ def filter_events(
     
         if chosen_event.nr_involved_clans > len(viable_cats.keys()):
             final_events.remove(chosen_event)
+            failed_ids.append(chosen_event.event_id)
             chosen_event = None
             continue
 
@@ -368,26 +221,22 @@ def filter_events(
             chosen_event = None
             continue
 
-        # if we're overriding requirements, don't bother looking for an appropriate cat
-        # if get_config("event_generation.debug_override_requirements"):
-        #     chosen_cat = choice(cat_list)
-        #     continue
-
         possible_clans = list(viable_cats.keys())
 
-        involved_clans = [main_cat.status.group_ID]
+        involved_clans = [main_cat.status.fetch_clan_object()]
         possible_clans.remove(main_cat.status.group_ID)
 
         clan = game.clan.group_ID_to_clan(main_cat.status.group_ID)
 
-        if chosen_event.other_clan:
+        if chosen_event.required_reputation:
             for other_clan in possible_clans.copy():
-                if "current_rep" in chosen_event.other_clan and not event_for_clan_relations(
-                    chosen_event.other_clan["current_rep"], clan, game.clan.group_ID_to_clan(other_clan)
+                if "other_clan" in chosen_event.required_reputation and not event_for_clan_relations(
+                    chosen_event.required_reputation["other_clan"], clan, game.clan.group_ID_to_clan(
+                        other_clan)
                 ):
                     possible_clans.remove(other_clan)
         
-        if "war" in chosen_event.sub_type:
+        if "war" in chosen_event.tags:
             enemies = game.clan.get_wars(clan)
             for other_clan in possible_clans.copy():
                 if other_clan not in enemies:
@@ -395,6 +244,7 @@ def filter_events(
 
         if len(possible_clans) < chosen_event.nr_involved_clans-1:
             final_events.remove(chosen_event)
+            failed_ids.append(chosen_event.event_id)
             chosen_event = None
             continue
 
@@ -402,37 +252,63 @@ def filter_events(
             new_clan = None
             while not new_clan or new_clan in involved_clans:
                 new_clan = choice(possible_clans)
-            involved_clans.append(new_clan)
+            involved_clans.append(game.clan.group_ID_to_clan(new_clan))
 
-        for i in range(len(chosen_event.r_c)):
+        for abbr, cat in chosen_event.involved_cats.items():
+            if abbr == "m_c":
+                continue
             # gotta gather injuries so we can check if the cat can get them
-            r_c_injuries = []
-            for block in chosen_event.injury:
-                r_c_injuries.extend(block["injuries"] if "r_c" in block["cats"] or f"r_c{i+1}" in block["cats"] else [])
+            possible_injuries = []
+            for block in chosen_event.condition:
+                possible_injuries.extend(block["condition"] if abbr in block["cats"] else [])
 
             allowable_cats = []
-            if chosen_event.r_c[i].get("clan") == "any":
+            if cat.get("clan") == "any":
                 for key in viable_cats:
                     allowable_cats += viable_cats[key]
             else:
-                allowable_cats = viable_cats[involved_clans[chosen_event.r_c[i]["clan"]-1]] if chosen_event.r_c[i].get("clan") else viable_cats[involved_clans[-1]]
+                allowable_cats = viable_cats[involved_clans[cat["clan"]-1].group_ID] if cat.get("clan") else viable_cats[involved_clans[-1].group_ID]
                 allowable_cats = [c for c in allowable_cats if c not in chosen_cats and c.ID != main_cat.ID]
 
             for c in chosen_cats + [main_cat]:
                 if c in allowable_cats:
                     allowable_cats.remove(c)
 
-            chosen_cat = cat_for_event(
-                constraint_dict=chosen_event.r_c[i].copy(),
+            chosen_cat = None
+            allowable_cats = cat_for_event(
+                constraint_dict=cat,
                 possible_cats=allowable_cats,
                 comparison_cat=main_cat,
-                comparison_cat_rel_status=chosen_event.m_c.get(
-                    "relationship_status", []
-                ).copy(),
-                injuries=r_c_injuries,
+                tags=chosen_event.tags,
+                injuries=possible_injuries,
+                return_list=True,
                 return_id=False,
-                tags=chosen_event.tags, clan=clan,
             )
+            if allowable_cats:
+                shuffle(allowable_cats)
+                if chosen_event.relationship_constraint:
+                    while not involved_cats.get(abbr):
+                        # need a temp cat dict that includes our possible kitty
+                        _temp_cats = involved_cats.copy()
+                        _temp_cats[abbr] = allowable_cats[0]
+                        # now we check each rel constraint to make sure our new cat is valid
+                        if not all(
+                            check_rel_constraint_groups(block, _temp_cats)
+                            for block in chosen_event.relationship_constraint
+                        ):
+                            # they aren't! so we remove them from the possibilities
+                            allowable_cats.remove(_temp_cats[abbr])
+                            if not allowable_cats:
+                                break
+                            else:
+                                # still some possibilities, let's try the next!
+                                continue
+                        # if we got here, then this cat works!
+                        involved_cats[abbr] = _temp_cats[abbr]
+                        chosen_cat = _temp_cats[abbr]
+                else:
+                    involved_cats[abbr] = allowable_cats[0]
+                    chosen_cat = allowable_cats[0]
 
             if not chosen_cat:
                 failed_ids.append(chosen_event.event_id)
@@ -442,19 +318,13 @@ def filter_events(
                 break
             else:
                 chosen_cats.append(chosen_cat)
-                if chosen_cat.status.group_ID not in involved_clans:
-                    involved_clans.append(chosen_cat.status.group_ID)
+                if chosen_cat.status.fetch_clan_object() not in involved_clans:
+                    involved_clans.append(chosen_cat.status.fetch_clan_object())
 
-        if chosen_event and chosen_cats and len(chosen_cats) == len(chosen_event.r_c):
-           break 
-        
-
-    for notice in incorrect_format:
-        print(notice)
+        if chosen_event and chosen_cats and involved_cats.keys() == chosen_event.involved_cats.keys():
+           break
 
     if not final_events:
-        return None, None
+        return None, None, None, None
 
-    chosen_event.involved_clans = involved_clans
-
-    return chosen_event, chosen_cats
+    return chosen_event, chosen_cats, involved_cats, involved_clans[1:]

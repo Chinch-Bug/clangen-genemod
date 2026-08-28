@@ -11,17 +11,7 @@ while mating and for the display of the family tree screen.
 import i18n
 from strenum import StrEnum  # pylint: disable=no-name-in-module
 
-import os
-import ujson
-from scripts.game_structure import game
-from scripts.housekeeping.datadir import get_save_dir
-from scripts.game_structure.game.save_load import safe_save
 from scripts.events_module.text_adjust import adjust_list_text
-from scripts.game_structure.game.switches import (
-    switch_set_value,
-    switch_get_value,
-    Switch,
-)
 
 
 class RelationType(StrEnum):

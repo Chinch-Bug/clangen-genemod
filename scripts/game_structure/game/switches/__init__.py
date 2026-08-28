@@ -6,4 +6,4 @@ from scripts.game_structure.game.switches.game_switches import (
     switch_remove_list_value,
     switch_set_dict_value,
     switch_generator,
-)
+)  # noqa: F401

@@ -1273,6 +1273,7 @@
         "quilled by a porcupine",
         "broken back",
         "poisoned",
+        "venom sickness",
         "bee sting",
         "headache",
         "severe headache",
@@ -2130,6 +2131,7 @@
         "halloween",
         "april_fools",
         "new_years",
+        "war",
         "tnr",
         "tnr2",
         "disaster"

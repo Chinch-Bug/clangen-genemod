@@ -293,7 +293,6 @@ class Screens:
         """Runs when screen exits"""
         # reset matrix map so that it can be recreated cleanly later
         self.matrix_map.clear()
-        pass
 
     def add_to_map(self, element_list: list[UIElement]):
         """

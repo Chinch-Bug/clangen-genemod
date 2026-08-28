@@ -1,7 +1,4 @@
-from math import ceil
-from random import choice
 
-import i18n
 import pygame.transform
 import pygame_gui.elements
 from operator import xor
@@ -9,28 +6,23 @@ from operator import xor
 from scripts.cat.genotype import Genotype
 from scripts.cat.factories.new_cat_factory import NewCatFactory
 from scripts.cat.cats import Cat
-from ..cat.enums import CatAge, CatRank, CatGroup
-from scripts.game_structure import image_cache
-from scripts.game_structure import game
+from ..cat.enums import CatRank
 from ..game_structure.game.settings import game_setting_get
 from ..clan_package.settings import get_clan_setting
 from ..clan_package.get_clan_cats import search_cats
 from ..game_structure.game.switches import switch_get_value, Switch
 from scripts.config import get_config
-from pygame_gui.elements import UIDropDownMenu, UITextBox
+from pygame_gui.elements import UIDropDownMenu
 from pygame import Rect
 from ..ui.elements.sprite_button import UISpriteButton
-from ..ui.elements.image_button import UIImageButton
 from ..ui.elements.checkbox import UICheckbox
 from ..ui.elements.surface_image_button import UISurfaceImageButton
-from scripts.events_module.text_adjust import shorten_text_to_fit
 from scripts.ui.theme import get_text_box_theme
 from scripts.ui.scale import ui_scale, ui_scale_dimensions
 from .Screens import Screens
 from ..game_structure.screen_settings import MANAGER
 from ..ui.generate_box import get_box, BoxStyles
 from ..ui.generate_button import get_button_dict, ButtonStyles
-from ..ui.icon import Icon
 
 
 def create_dropdown(pos, size, options, selected_option, style=None):

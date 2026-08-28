@@ -1,8 +1,7 @@
-from typing import List, Optional
+from typing import List
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from scripts.models.common.cat import Cat
 from scripts.models.common.gather_cat import GatherCat
 from scripts.models.common.relationship_status import RelationshipStatus
 

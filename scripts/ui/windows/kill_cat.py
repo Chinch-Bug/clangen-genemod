@@ -5,7 +5,6 @@ import i18n
 import pygame
 import pygame_gui
 
-from scripts.config import get_config
 from scripts.events_module.consequences import check_stolen_vitality
 from scripts.game_structure import game
 from scripts.game_structure.screen_settings import MANAGER

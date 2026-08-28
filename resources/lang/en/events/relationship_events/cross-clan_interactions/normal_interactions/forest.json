@@ -7,21 +7,26 @@
         "season": [
             "any"
         ],
-        "sub_type": [],
         "frequency": 4,
-        "event_text": [
-            "m_c finds r_c cowering in a tree with a boar rooting around below. With some quick thinking and clever tactics, {PRONOUN/m_c/subject} lure the boar away enough for r_c to be able to escape."
+        "strings": [
+            "m_c found r_c0 cowering in a tree with a boar rooting around below. With some quick thinking and clever tactics, {PRONOUN/m_c/subject} lured the boar away enough for r_c0 to be able to escape."
         ],
-        "m_c": {
-            "skill": ["CLEVER,1"],
-            "status": [ "warrior" ]
+        "involved_cats": {
+            "m_c": {
+                "status": ["warrior", "deputy", "leader"],
+                "stat": {
+                    "skill": ["CLEVER,1"]
+                }
+            },
+            "r_c0": {
+                "stat": {
+                    "skill": [ "-FIGHTER,3", "-CLEVER,1" ]
+                }
+            }
         },
-        "r_c": {
-            "skill": ["-FIGHTER,3", "-CLEVER,1"]
-        },
-        "relationships": [
+        "relationship_changes": [
             {
-                "cats_from": [ "r_c" ],
+                "cats_from": [ "r_c0" ],
                 "cats_to": [ "m_c" ],
                 "values": [ "trust", "comfort" ],
                 "amount": 15,
@@ -40,22 +45,28 @@
         "season": [
             "any"
         ],
-        "sub_type": [ ],
         "frequency": 2,
-        "event_text": [
-            "m_c finds r_c cowering in a tree with a boar rooting around below. {PRONOUN/m_c/subject/CAP} {VERB/m_c/dash/dashes} in, harassing the boar into following {PRONOUN/m_c/object} away enough to allow r_c to escape."
+        "strings": [
+            "m_c found r_c0 cowering in a tree with a boar rooting around below. {PRONOUN/m_c/subject/CAP} dashed in, harassing the boar into following {PRONOUN/m_c/object} away enough to allow r_c0 to escape."
         ],
-        "m_c": {
-            "skill": [ "FIGHTER,3" ],
-            "trait": [ "bold", "daring", "bloodthirsty", "fierce", "arrogant" ],
-            "status": [ "warrior" ]
+        "involved_cats": {
+            "m_c": {
+                "status": [ "warrior", "deputy", "leader" ],
+                "stat": {
+                    "must_have_both": true,
+                    "skill": [ "FIGHTER,3" ],
+                    "trait": [ "bold", "daring", "bloodthirsty", "fierce", "arrogant" ]
+                }
+            },
+            "r_c0": {
+                "stat": {
+                    "skill": [ "-FIGHTER,3", "-CLEVER,1" ]
+                }
+            }
         },
-        "r_c": {
-            "skill": [ "-FIGHTER,3", "-CLEVER,1" ]
-        },
-        "relationships": [
+        "relationship_changes": [
             {
-                "cats_from": [ "r_c" ],
+                "cats_from": [ "r_c0" ],
                 "cats_to": [ "m_c" ],
                 "values": [ "trust", "comfort" ],
                 "amount": 15,
@@ -74,23 +85,28 @@
         "season": [
             "any"
         ],
-        "sub_type": [ ],
         "frequency": 2,
-        "event_text": [
-            "m_c finds r_c cowering from a fox on c_n's side of the border and drives it away.",
-            "m_c finds r_c cowering from a badger on c_n's side of the border and drives it away."
+        "strings": [
+            "m_c found r_c0 cowering from a fox on c_n's side of the border and drove it away.",
+            "m_c found r_c0 cowering from a badger on c_n's side of the border and drove it away."
         ],
-        "m_c": {
-            "skill": [ "FIGHTER,1" ],
-            "status": [ "warrior" ]
+        "involved_cats": {
+            "m_c": {
+                "status": ["warrior", "deputy", "leader"],
+                "stat": {
+                    "skill": ["FIGHTER,1"]
+                }
+            },
+            "r_c0": {
+                "age": [ "adolescent" ],
+                "stat": {
+                    "skill": [ "-FIGHTER,1" ]
+                }
+            }
         },
-        "r_c": {
-            "skill": [ "-FIGHTER,1" ],
-            "age": [ "adolescent" ]
-        },
-        "relationships": [
+        "relationship_changes": [
             {
-                "cats_from": [ "r_c" ],
+                "cats_from": [ "r_c0" ],
                 "cats_to": [ "m_c" ],
                 "values": [ "trust", "comfort" ],
                 "amount": 15,
@@ -100,8 +116,8 @@
                 }
             }
         ],
-        "other_clan": {
-            "changed": 1
+        "reputation_changes": {
+            "other_clan": 1
         }
     }
 ]

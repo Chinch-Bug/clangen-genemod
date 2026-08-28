@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from typing import Union
 
 from pydantic import Field, ConfigDict
 from pydantic_core import MISSING

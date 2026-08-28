@@ -1,7 +1,6 @@
 """
 Module that handles the name generation for all cats.
 """
-import contextlib
 import os
 import random
 
@@ -9,7 +8,7 @@ import i18n
 import ujson
 
 from scripts.config import get_config
-from scripts.cat.enums import CatRank, CatGroup, CatAge, CatSocial
+from scripts.cat.enums import CatRank, CatAge, CatSocial
 from scripts.game_structure.localization import load_lang_resource
 from scripts.housekeeping.datadir import get_save_dir
 from scripts.game_structure.game.switches import switch_get_value, Switch

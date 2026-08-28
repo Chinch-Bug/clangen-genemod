@@ -16,7 +16,6 @@ from scripts.cat.enums import (
     CatThought,
 )
 from scripts.cat.factories.new_cat_factory import NewCatFactory
-from scripts.cat.factories.enums import CatType
 from scripts.cat.microservices.add_to_clan import add_to_clan, add_dependents_to_clan
 from scripts.cat.microservices.conditions import get_permanent_condition
 from scripts.cat.names import Name
@@ -1343,12 +1342,7 @@ def gather_cat_objects(
         if abbr == "m_c":
             found_cat = extra_cat if extra_cat else event.main_cat
         elif abbr == "r_c":
-            found_cat = event.random_cats[0] if hasattr(event, "random_cats") else event.random_cat
-        elif re.match(r"r_c[0-9]+", abbr) and hasattr(event, "random_cats"):
-            index = re.match(r"r_c([0-9]+)", abbr).group(1)
-            index = int(index)-1
-            if index < len(event.random_cats):
-                found_cat = event.random_cats[index]
+            found_cat = event.random_cat
 
         # add/remove cat if found and then continue for loop
         if is_exclusionary and found_cat:

@@ -10,7 +10,7 @@ from scripts.cat.enums import (
     CatSocial,
     CatThought,
 )
-from scripts.cat_relations.relationship import Relationship, create_one_relationship
+from scripts.cat_relations.relationship import Relationship
 from scripts.clan_package.settings import get_clan_setting
 from scripts.game_structure import game
 from scripts.events_module.consequences import (

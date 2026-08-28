@@ -7,20 +7,25 @@
         "season": [
             "any"
         ],
-        "sub_type": [ ],
         "frequency": 2,
-        "event_text": [
-            "m_c sees a hawk overhead of r_c and warns {PRONOUN/r_c/object} just in time before it could swoop."
+        "strings": [
+            "m_c saw a hawk overhead of r_c0 and warned {PRONOUN/r_c0/object} just in time before it could swoop."
         ],
-        "m_c": {
-            "skill": [ "SENSE,1" ]
+        "involved_cats": {
+            "m_c": {
+                "stat": {
+                    "skill": [ "SENSE,1" ]
+                }
+            },
+            "r_c0": {
+                "stat": {
+                    "skill": [ "-SENSE,1" ]
+                }
+            }
         },
-        "r_c": {
-            "skill": [ "-SENSE,1" ]
-        },
-        "relationships": [
+        "relationship_changes": [
             {
-                "cats_from": [ "r_c" ],
+                "cats_from": [ "r_c0" ],
                 "cats_to": [ "m_c" ],
                 "values": [ "trust", "comfort" ],
                 "amount": 15,
@@ -30,8 +35,8 @@
                 }
             }
         ],
-        "other_clan": {
-            "changed": 1
+        "reputation_changes": {
+            "other_clan": 1
         }
     }
 ]

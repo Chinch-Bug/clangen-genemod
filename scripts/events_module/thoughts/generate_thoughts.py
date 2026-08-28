@@ -315,7 +315,6 @@ def _load_allowed_thoughts(thought_type: CatThought, main_cat: Cat, ageup=False)
     # ON CHANGING AFTERLIFE
     elif thought_type == CatThought.ON_AFTERLIFE_CHANGE:
         thoughts = load_text_pool_events(f"{new_path}/{main_cat.status.group}.json")
-        pass
     main_cat.age = og_age
 
     return thoughts

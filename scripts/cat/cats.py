@@ -8,14 +8,12 @@ import bisect
 import itertools
 import os.path
 import sys
-import traceback
-from random import choice, randint, sample, random, randrange, choices
-from typing import Dict, List, Any, Union, Callable, Optional, TYPE_CHECKING, Literal
+from random import choice, randint, sample, random
+from typing import Dict, List, Any, Union, Callable, Optional, TYPE_CHECKING
 
 import i18n
 import ujson  # type: ignore
 
-from operator import xor
 from scripts.special_dates import SpecialDate, is_today
 import scripts.game_structure.localization as pronouns
 from scripts.cat import pronouns
@@ -23,7 +21,6 @@ from scripts.cat.enums import (
     CatGroup,
     CatAge,
     CatRank,
-    CatStanding,
     CatSocial,
     CatGroup,
     CatCompatibility,
@@ -41,33 +38,28 @@ from scripts.cat.microservices.grief import grief
 from scripts.cat.microservices.conditions import get_permanent_condition
 from scripts.cat.names import Name
 from scripts.cat.pelts import Pelt
-from scripts.cat.phenotype import Genotype
 from scripts.cat.phenotype import Phenotype
 from scripts.cat.personality import Personality
 from scripts.cat.skills import CatSkills, SkillPath, scale_progress
 from scripts.cat.status import Status
-from scripts.cat_relations.cat_handle_funcs import init_all_relationships
 from scripts.config import get_config
 from scripts.cat_relations.inheritance import Inheritance
 from scripts.cat_relations.inheritance2 import inheritance_db
-from scripts.cat_relations.relationship import Relationship, create_one_relationship
-from scripts.cat_relations.enums import RelType, RelTier, rel_type_tiers
+from scripts.cat_relations.relationship import create_one_relationship
+from scripts.cat_relations.enums import RelType
 from scripts.clan_package.settings import get_clan_setting
 from scripts.events_module.generate_events import GenerateEvents
 from scripts.game_structure import image_cache, game
 from scripts.game_structure.game.save_load import safe_save
-from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure.game.switches import switch_get_value, Switch
 from scripts.game_structure.localization import load_lang_resource
 from scripts.game_structure.screen_settings import screen
 from scripts.housekeeping.datadir import get_save_dir
 from scripts.cat.sprites.display_sprites import update_sprite, update_mask
 from scripts.events_module.text_adjust import (
-    event_text_adjust,
     leader_ceremony_text_adjust,
 )
 from scripts.events_module.event_filters import get_personality_compatibility
-from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank
 
 import scripts.game_structure.screen_settings
 

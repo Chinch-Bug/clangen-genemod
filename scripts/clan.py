@@ -11,7 +11,7 @@ TODO: Docs
 import os
 import statistics
 from random import choice, choices, randint, random, getrandbits
-from typing import Literal, Optional
+from typing import Optional
 
 import i18n
 import ujson
@@ -1097,7 +1097,6 @@ class Clan:
         """
         if not clan.save_id:
             return
-        file_path = get_save_dir() + f"/{clan.save_id}/disasters/primary.json"
         if not os.path.isdir(f"{get_save_dir()}/{clan.save_id}/disasters"):
             os.mkdir(f"{get_save_dir()}/{clan.save_id}/disasters")
         if clan.primary_disaster:
@@ -1605,7 +1604,6 @@ class OtherClan:
 
         game.clan.all_other_clans.append(self)
 
-        rank_weights = get_config("clan_creation.rank_weights")
         if clancount == "multiclan":
             for i in range(3):
                 generate_and_add_new_poi(game.clan.biome, PoiType.TERRAIN, clan=self.group_ID)

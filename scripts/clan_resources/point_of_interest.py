@@ -1,6 +1,6 @@
 from enum import StrEnum
 from random import choice
-from typing import Dict, Union, List, Literal
+from typing import Dict, List, Literal
 
 import ujson
 

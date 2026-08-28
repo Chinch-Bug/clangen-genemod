@@ -10,7 +10,7 @@ from pygame_gui.core import ObjectID
 
 from scripts.cat.cats import Cat
 from scripts.config import get_config
-from scripts.game_structure import image_cache, constants
+from scripts.game_structure import constants
 from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure import game
 
@@ -111,7 +111,6 @@ class ClanScreen(Screens):
 
         # We have to convert the positions to something pygame_gui buttons will understand
         # This should be a temp solution. We should change the code that determines positions.
-        i = 0
         all_positions = list(self.taken_spaces.values())
         used_positions = all_positions.copy()
         layers = []
@@ -353,7 +352,6 @@ class ClanScreen(Screens):
         dens = dens.copy()
 
         chosen_index = random.choices(range(0, len(dens)), weights=weights, k=1)[0]
-        first_chosen_den = dens[chosen_index]
         while True:
             chosen_den = dens[chosen_index]
             if first_choices[chosen_den]:

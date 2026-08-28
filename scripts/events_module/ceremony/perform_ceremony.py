@@ -15,7 +15,7 @@ from scripts.conditions import (
 from scripts.config import get_config
 from scripts.events_module.ceremony.generate_normal_ceremony import create_ceremony
 from scripts.events_module.event_information import EventInformation
-from scripts.game_structure import game, constants
+from scripts.game_structure import game
 from scripts.game_structure.game import Switch
 from scripts.game_structure.game.switches import switch_set_value
 from scripts.game_structure.localization import load_lang_resource
@@ -113,7 +113,6 @@ def check_for_ceremony(main_cat: Cat, clan):
         return
 
     special_can_retire = False
-    role_info = get_config("roles")
     retirement_info = get_config("retirement")
     if main_cat.status.rank == CatRank.LEADER:
         special_can_retire = get_clan_setting("leader_retirement") and random.random() < (1/retirement_info["max_leader_retire_chance"])

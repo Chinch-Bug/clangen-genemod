@@ -3,7 +3,6 @@ import pygame
 import pygame_gui
 
 from scripts.config import get_config
-from scripts.game_structure import game
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.ui.elements.text_box_tweaked import UITextBoxTweaked
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton

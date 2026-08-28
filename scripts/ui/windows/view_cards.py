@@ -6,10 +6,8 @@ from pygame_gui.elements import UIAutoResizingContainer, UIImage
 from scripts.game_structure import constants, game, image_cache
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.ui.elements.cruel_card_icon import UICruelCardIcon
-from scripts.ui.elements.cruel_card_large import UICruelCardLarge
 from scripts.ui.elements.text_box_tweaked import UITextBoxTweaked
 from scripts.ui.scale import ui_scale, ui_scale_dimensions
-from scripts.ui.theme import get_text_box_theme
 from scripts.ui.windows.window_base_class import GameWindow
 
 

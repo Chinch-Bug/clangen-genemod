@@ -1,8 +1,6 @@
 from pygame import Cursor, image, SYSTEM_CURSOR_ARROW
 import ujson
 import tomllib
-import os
-from scripts.housekeeping.datadir import get_save_dir
 
 # these scripts don't import any clangen scripts into themselves, so it's okay for them to be imported here
 from scripts.clan_resources.herb.herb import HERBS

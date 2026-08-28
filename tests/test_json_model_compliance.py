@@ -6,6 +6,7 @@ from pathlib import Path
 
 import pytest
 
+from scripts.models.crossclan_rel.crossclan_rel_schema import CrossClanRelSchema
 from scripts.models.ceremony.ceremony_schema import CeremonySchema
 from scripts.models.relationship_group_event.relationship_group_schema import (
     RelationshipGroupEvent,
@@ -101,6 +102,15 @@ def group_relationship_files():
     )
 
 
+def crossclan_rel_files():
+    """
+    Iterator for Paths for all relationship files
+    """
+    yield from RESOURCES_DIR.glob(
+        "lang/*/events/relationship_events/cross-clan_interactions/*/*.json"
+    )
+
+
 def ceremony_files():
     """
     Iterator for Paths for all ceremony files
@@ -154,6 +164,16 @@ def test_shortevents(shortevent_file: Path):
 def test_group_relationship_events(group_relationship_file: Path):
     """Test that all group_relationship_file JSONs are correct according to the Pydantic models"""
     RelationshipGroupEvent.model_validate_json(group_relationship_file.read_text())
+
+
+@pytest.mark.parametrize(
+    "crossclan_rel_file",
+    crossclan_rel_files(),
+    ids=format_file_context_string,
+)
+def test_rossclan_rel_events(crossclan_rel_file: Path):
+    """Test that all crossclan_rel_file JSONs are correct according to the Pydantic models"""
+    CrossClanRelSchema.model_validate_json(crossclan_rel_file.read_text())
 
 
 @pytest.mark.parametrize(

@@ -1,12 +1,6 @@
-import i18n
 import pygame
 import pygame_gui
-from pygame_gui.core import UIContainer
 
-from scripts.events_module.text_adjust import adjust_list_text
-from scripts.game_structure import constants
-from scripts.game_structure.game import Switch
-from scripts.game_structure.game.switches import switch_set_value
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton
 from scripts.ui.elements.text_box_tweaked import UITextBoxTweaked

@@ -1,5 +1,3 @@
-from .phenotype import *
-from .phenotype import *
 from random import choice, random
 from operator import xor
 from copy import deepcopy

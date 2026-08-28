@@ -3,14 +3,14 @@ import pygame
 import pygame_gui
 
 from scripts.config import get_config
-from scripts.game_structure import constants, game, image_cache
+from scripts.game_structure import constants
 from scripts.game_structure.game import Switch
 from scripts.game_structure.game.switches import switch_set_value
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton
 from scripts.ui.elements.text_box_tweaked import UITextBoxTweaked
 from scripts.ui.generate_button import get_button_dict, ButtonStyles
-from scripts.ui.scale import ui_scale, ui_scale_dimensions
+from scripts.ui.scale import ui_scale
 from scripts.ui.windows.window_base_class import GameWindow
 
 

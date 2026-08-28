@@ -6,10 +6,9 @@ import ujson
 from scripts.events_module.event_information import EventInformation
 from scripts.housekeeping.datadir import get_save_dir
 
-from scripts.game_structure import constants
 from scripts.game_structure.screen_settings import toggle_fullscreen
 
-from . import save_load, settings, switches
+from . import save_load, settings, switches  # noqa: F401
 
 from .save_load import safe_save
 from .settings import game_setting_get

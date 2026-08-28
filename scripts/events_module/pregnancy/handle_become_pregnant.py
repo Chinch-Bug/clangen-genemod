@@ -13,7 +13,7 @@ from scripts.events_module.pregnancy.build_strings import (
     get_pregnancy_strings,
 )
 from scripts.events_module.pregnancy.create_kits import get_amount_of_kits, get_stillborn_chance, get_kits
-from scripts.events_module.pregnancy.check_parents import cat_is_amab, handle_surrogate, handle_outside_parent, no_kits_allowed
+from scripts.events_module.pregnancy.check_parents import cat_is_amab, handle_outside_parent, no_kits_allowed
 from scripts.events_module.text_adjust import event_text_adjust
 from scripts.game_structure import game
 
@@ -40,8 +40,7 @@ def handle_zero_moon_pregnant(cat: Cat, other_cat=None, surrogate=False, clan=ga
                 return
 
     hidden = get_config("pregnancy.hidden_pregnancy_chance") and not (random() * (get_config("pregnancy.hidden_pregnancy_chance")-1))
-    birth_cooldown = get_config("pregnancy.birth_cooldown")
-
+    
     if get_clan_setting("same sex birth") and not (not other_cat and randint(0, 1)):
         # same sex birth enables all cats to get pregnant,
         # therefore the main cat will be used, regarding of gender
@@ -67,9 +66,6 @@ def handle_zero_moon_pregnant(cat: Cat, other_cat=None, surrogate=False, clan=ga
 
 
 def _handle_pregnancy_notice(cat, other_cat, surrogate, hidden, clan):
-    allow_affair = get_clan_setting("affair")
-    allow_coparenting = get_clan_setting("unmated parentage")
-
     ids = []
     affair_partner = []
     surrogates = []

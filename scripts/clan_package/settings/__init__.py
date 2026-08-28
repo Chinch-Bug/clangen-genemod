@@ -5,4 +5,4 @@ from scripts.clan_package.settings.clan_settings import (
     set_clan_setting,
     switch_clan_setting,
     reset_loaded_clan_settings,
-)
+) # noqa: F401

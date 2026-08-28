@@ -11,7 +11,7 @@ from pygame_gui.core.interfaces import IUIManagerInterface
 from pygame_gui.elements import UIImage
 
 from scripts.game_input import INPUT_ACTION_PRESSED, Action, INPUT_ACTION_RELEASED
-from scripts.game_structure import image_cache, game
+from scripts.game_structure import image_cache
 from scripts.ui.scale import ui_scale, ui_scale_dimensions, ui_scale_value
 
 
