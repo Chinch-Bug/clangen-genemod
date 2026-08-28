@@ -52,6 +52,9 @@ from scripts.events_module.pregnancy import pregnancy_events
 from scripts.events_module.short.condition_events import Condition_Events
 from scripts.events_module.short.short_event_generation import create_short_event
 from scripts.events_module.thoughts.generate_thoughts import get_new_thought
+from scripts.events_module.transition.generate_transition_event import (
+    attempt_coming_out,
+)
 from scripts.game_structure.game.switches import (
     Switch,
     switch_get_value,
@@ -1308,7 +1311,7 @@ def one_moon_cat(cat, clan):
         if cat.dead:
             return
 
-    coming_out(cat, clan)
+    attempt_coming_out(cat, clan)
     pregnancy_events.handle_having_kits(cat, clan=clan)
     # Stop the timeskip if the cat died in childbirth
     if cat.dead:
@@ -2179,30 +2182,6 @@ def handle_outbreaks(cat, clan):
             )
             # game.health_events_list.append(event)
             break
-
-def coming_out(cat, clan):
-    """turnin' the kitties trans..."""
-
-    if cat.moons < 3 or cat.gender != cat.genderalign:
-        return
-
-    transing_chance = get_config("transition_related")
-    chance = transing_chance["base_trans_chance"]
-    if cat.age in [CatAge.ADOLESCENT, CatAge.KITTEN]:
-        chance += transing_chance["adolescent_modifier"]
-    elif cat.age in [CatAge.ADULT, CatAge.SENIOR_ADULT, CatAge.SENIOR]:
-        chance += transing_chance["older_modifier"]
-
-    if not int(random.random() * chance):
-        sub_type = ["transition"]
-        create_short_event(
-            event_type="misc",
-            main_cat=cat,
-            sub_type=sub_type,
-            clan=clan
-        )
-
-    return
 
 
 def check_leader(clan):

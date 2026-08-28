@@ -551,6 +551,13 @@
                             "cats_to": "cat_from cursed cat_to for not letting {PRONOUN/cat_from/object} into c_n."
                         }
                     }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
+                    }
                 ]
             },
             {
@@ -588,6 +595,13 @@
                         "log": {
                             "cats_from": "cat_to chased cat_from from the territory after {PRONOUN/n_c0/subject} asked to join c_n."
                         }
+                    }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
                     }
                 ]
             },
@@ -655,6 +669,13 @@
                         ],
                         "new_status": [
                             "kitten"
+                        ]
+                    }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
                         ]
                     }
                 ]
@@ -768,7 +789,14 @@
                         ]
                     }
                 },
-                "exp_gained": 0
+                "exp_gained": 0,
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
+                    }
+                ]
             },
             {
                 "frequency": 3,
@@ -832,6 +860,13 @@
                         ],
                         "condition": [
                             "battle_injury"
+                        ]
+                    }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
                         ]
                     }
                 ]
@@ -1190,6 +1225,13 @@
                             "cats_from": "cat_from begged cat_to to join c_n, but cat_to refused and left Clan-life altogether."
                         }
                     }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
+                    }
                 ]
             },
             {
@@ -1351,6 +1393,13 @@
                             "cats_from": "cat_from begged cat_to to join c_n, but cat_to refused and left Clan-life altogether."
                         }
                     }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
+                    }
                 ]
             }
         ],
@@ -1442,6 +1491,13 @@
                             "p_l"
                         ]
                     }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
+                    }
                 ]
             },
             {
@@ -1529,6 +1585,13 @@
                         ],
                         "condition": [
                             "grief stricken"
+                        ]
+                    }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
                         ]
                     }
                 ]
@@ -1630,6 +1693,13 @@
                         "scar_history": "m_c was scarred by {PRONOUN/m_c/poss} mate's Clanmates.",
                         "death_history": "m_c died from injuries inflicted by {PRONOUN/m_c/poss} mate's Clanmates."
                     }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
+                    }
                 ]
             },
             {
@@ -1709,6 +1779,13 @@
                             "lasting grief"
                         ],
                         "death_history": "m_c was killed by {PRONOUN/m_c/poss} mate's Clanmates."
+                    }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
                     }
                 ]
             },
@@ -1831,6 +1908,14 @@
                         ],
                         "condition": [
                             "grief stricken"
+                        ]
+                    }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c2",
+                            "n_c0"
                         ]
                     }
                 ]

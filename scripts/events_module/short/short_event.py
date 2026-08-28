@@ -3,25 +3,19 @@ from typing import List, Optional, Dict
 
 import i18n
 
-from scripts.cat import pronouns
 from scripts.cat.cats import Cat
 from scripts.cat.constants import ILLNESSES, INJURIES, PERMANENT
-from scripts.cat.enums import CatGroup
-from scripts.cat.pelts import Pelt
-from scripts.cat_relations.relationship import Relationship
-from scripts.clan_package.settings import get_clan_setting
 from scripts.cat.microservices.conditions import get_injured, get_ill, get_permanent_condition
+from scripts.cat.enums import CatAge, CatRank, CatGroup, CatSocial
+from scripts.cat.pelts import Pelt
+from scripts.cat.personality import Personality
+from scripts.cat.skills import SkillPath
+from scripts.cat_relations.relationship import Relationship
+from scripts.clan_package.cotc import change_clan_reputation, change_clan_relations
+from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank
+from scripts.clan_package.settings import get_clan_setting
 from scripts.config import get_config
 from scripts.events_module.event_information import EventInformation
-from scripts.events_module.future.prep_and_trigger import prep_future_event
-from scripts.events_module.relationship import relation_events
-from scripts.game_structure import game
-from scripts.events_module.text_adjust import (
-    event_text_adjust,
-    get_leader_life_notice,
-    adjust_list_text,
-    history_text_adjust,
-)
 from scripts.events_module.consequences import (
     create_new_cat_block,
     unpack_rel_block,
@@ -29,14 +23,17 @@ from scripts.events_module.consequences import (
     find_clan_cats,
     check_stolen_vitality,
 )
-from scripts.clan_package.cotc import change_clan_reputation, change_clan_relations
-from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank
 
-from scripts.cat.enums import CatAge, CatRank, CatSocial
-from scripts.cat.personality import Personality
-from scripts.cat.skills import SkillPath
-from scripts.config import get_config
+from scripts.events_module.future.prep_and_trigger import prep_future_event
+from scripts.events_module.relationship import relation_events
+from scripts.events_module.text_adjust import (
+    event_text_adjust,
+    get_leader_life_notice,
+    adjust_list_text,
+    history_text_adjust,
+)
 from scripts.game_structure import constants
+from scripts.game_structure import game
 
 
 class ShortEvent:
@@ -278,10 +275,6 @@ class ShortEvent:
         if self.new_accessory:
             if self.handle_accessories() is False:
                 return
-
-        # update gender before relationships
-        if self.new_gender:
-            self.handle_transition()
 
         # change relationships before killing anyone
         if self.relationships:
@@ -589,24 +582,6 @@ class ShortEvent:
         else:
             self.main_cat.pelt.accessory = ([choice(acc_list)])
             return None
-
-    def handle_transition(self):
-        """
-        handles updating gender_align and pronouns
-        """
-        possible_genders = getattr(self, "new_gender", [])
-
-        if possible_genders:
-            new_gender = choice(possible_genders)
-            self.main_cat.genderalign = "intersex " if (self.main_cat.gender == 'intersex' or 
-            (self.main_cat.gender == "molly" and 'Y' in self.main_cat.phenotype.sexgene) or 
-            (self.main_cat.gender == "tom" and 'Y' not in self.main_cat.phenotype.sexgene) or
-            (len(self.main_cat.phenotype.sexgene) != 2)) else "" 
-            self.main_cat.genderalign += new_gender.replace("female", "molly").replace("male", "tom").replace("nonbinary", "sam")
-
-            self.main_cat.pronouns = pronouns.get_new_pronouns(
-                self.main_cat.genderalign
-            )
 
     def handle_death(self, clan):
         """

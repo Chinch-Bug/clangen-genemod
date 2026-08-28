@@ -175,6 +175,13 @@
                             "cats_from": "cat_from had second thoughts on joining c_n after feeling anxious while encountering cat_to's patrol."
                         }
                     }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
+                    }
                 ]
             }
         ],
@@ -413,7 +420,14 @@
                 "exp_gained": 0,
                 "reputation_changes": {
                     "outsider": -1
-                }
+                },
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
+                    }
+                ]
             }
         ],
         "antag_success_outcomes": [
@@ -651,7 +665,14 @@
                 "exp_gained": 0,
                 "reputation_changes": {
                     "outsider": -1
-                }
+                },
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
+                    }
+                ]
             }
         ],
         "antag_success_outcomes": [
@@ -834,7 +855,14 @@
                 "exp_gained": 0,
                 "reputation_changes": {
                     "outsider": -1
-                }
+                },
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
+                    }
+                ]
             }
         ],
         "antag_success_outcomes": [
@@ -1196,7 +1224,7 @@
                         "age": [
                             "senior"
                         ],
-                        "gender": "male",
+                        "gender": ["male"],
                         "backstory": [
                             "refugee6"
                         ]
@@ -1266,7 +1294,7 @@
                         "age": [
                             "senior"
                         ],
-                        "gender": "male",
+                        "gender": ["male"],
                         "backstory": [
                             "refugee6"
                         ]
@@ -1322,7 +1350,7 @@
                 "involved_cats": {
                     "n_c0": {
                         "can_create_new_cat": {},
-                        "gender": "female",
+                        "gender": ["female"],
                         "status": [
                             "loner"
                         ],
@@ -1408,6 +1436,14 @@
                             "newborn"
                         ]
                     }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c2",
+                            "n_c0"
+                        ]
+                    }
                 ]
             }
         ],
@@ -1461,7 +1497,7 @@
                         "age": [
                             "senior"
                         ],
-                        "gender": "male",
+                        "gender": ["male"],
                         "backstory": [
                             "refugee6"
                         ]
@@ -1494,7 +1530,7 @@
                         "age": [
                             "senior"
                         ],
-                        "gender": "male",
+                        "gender": ["male"],
                         "backstory": [
                             "refugee6"
                         ]
@@ -1579,6 +1615,13 @@
                             "cats_to": "cat_to met {PRONOUN/cat_to/poss} loner friend, n_c0, over the border."
                         }
                     }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
+                    }
                 ]
             },
             {
@@ -1639,6 +1682,13 @@
                             "cats_to": "cat_to met {PRONOUN/cat_to/poss} loner mate, n_c0, over the border."
                         }
                     }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
+                    }
                 ]
             },
             {
@@ -1698,6 +1748,13 @@
                             "cats_from": "n_c0 met {PRONOUN/n_c0/poss} Clancat mate, cat_to, over the border.",
                             "cats_to": "cat_to met {PRONOUN/cat_to/poss} loner mate, n_c0, over the border."
                         }
+                    }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
                     }
                 ]
             },
@@ -1847,6 +1904,13 @@
                             "p_l"
                         ]
                     }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
+                    }
                 ]
             },
             {
@@ -1916,6 +1980,13 @@
                         "log": {
                             "cats_from": "cat_to and n_c0 were mates hiding their relationship from cat_to's Clan."
                         }
+                    }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
                     }
                 ]
             }
@@ -2459,7 +2530,14 @@
                         ]
                     }
                 },
-                "exp_gained": 0
+                "exp_gained": 0,
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
+                    }
+                ]
             }
         ],
         "antag_success_outcomes": [
@@ -2705,7 +2783,14 @@
                         ]
                     }
                 },
-                "exp_gained": 0
+                "exp_gained": 0,
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
+                    }
+                ]
             }
         ],
         "antag_success_outcomes": [
@@ -2944,7 +3029,14 @@
                         ]
                     }
                 },
-                "exp_gained": 0
+                "exp_gained": 0,
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
+                    }
+                ]
             }
         ],
         "antag_success_outcomes": [
@@ -3100,6 +3192,13 @@
                             "cats_from": "cat_from was driven out of c_n territory by cat_to's patrol after {PRONOUN/cat_from/subject} barely attacked p_l."
                         }
                     }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
+                    }
                 ]
             }
         ],
@@ -3182,6 +3281,13 @@
                         "scar_history": "m_c gained a scar after tussling with a rogue.",
                         "death_history": "m_c died from injuries sustained in a fight with a rogue."
                     }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c0"
+                        ]
+                    }
                 ]
             },
             {
@@ -3241,6 +3347,15 @@
                         ],
                         "scar_history": "m_c gained a scar after tussling with a rogue.",
                         "death_history": "m_c was died from injuries sustained in a fight with a rogue."
+                    }
+                ],
+                "meet": [
+                    {
+                        "cats": [
+                            "n_c2",
+                            "n_c1",
+                            "n_c0"
+                        ]
                     }
                 ]
             }
@@ -3352,7 +3467,7 @@
                         "status": [
                             "kittypet"
                         ],
-                        "gender": "female",
+                        "gender": ["female"],
                         "age": [
                             "adult",
                             "senior adult"
@@ -3434,7 +3549,7 @@
                         "status": [
                             "kittypet"
                         ],
-                        "gender": "female",
+                        "gender": ["female"],
                         "age": [
                             "adult",
                             "senior adult"
@@ -3526,7 +3641,7 @@
                         "status": [
                             "kittypet"
                         ],
-                        "gender": "female",
+                        "gender": ["female"],
                         "age": [
                             "adult",
                             "senior adult"
@@ -3676,7 +3791,7 @@
                             "adult",
                             "senior adult"
                         ],
-                        "gender": "can_birth"
+                        "gender": ["can_birth"]
                     },
                     "n_c1": {
                         "can_create_new_cat": {
@@ -3748,7 +3863,7 @@
                             "adult",
                             "senior adult"
                         ],
-                        "gender": "can_birth"
+                        "gender": ["can_birth"]
                     },
                     "n_c1": {
                         "can_create_new_cat": {
@@ -3882,7 +3997,7 @@
                             "adult",
                             "senior adult"
                         ],
-                        "gender": "can_birth"
+                        "gender": ["can_birth"]
                     },
                     "n_c1": {
                         "can_create_new_cat": {
@@ -3955,7 +4070,7 @@
                             "adult",
                             "senior adult"
                         ],
-                        "gender": "can_birth"
+                        "gender": ["can_birth"]
                     },
                     "n_c1": {
                         "can_create_new_cat": {
@@ -4101,7 +4216,7 @@
                             "adult",
                             "senior adult"
                         ],
-                        "gender": "can_birth"
+                        "gender": ["can_birth"]
                     },
                     "n_c1": {
                         "can_create_new_cat": {
@@ -4169,7 +4284,7 @@
                             "adult",
                             "senior adult"
                         ],
-                        "gender": "can_birth"
+                        "gender": ["can_birth"]
                     },
                     "n_c1": {
                         "can_create_new_cat": {
@@ -4310,7 +4425,7 @@
                             "adult",
                             "senior adult"
                         ],
-                        "gender": "can_birth"
+                        "gender": ["can_birth"]
                     },
                     "n_c1": {
                         "can_create_new_cat": {
@@ -4383,7 +4498,7 @@
                             "adult",
                             "senior adult"
                         ],
-                        "gender": "can_birth"
+                        "gender": ["can_birth"]
                     },
                     "n_c1": {
                         "can_create_new_cat": {
@@ -4525,7 +4640,7 @@
                             "adult",
                             "senior adult"
                         ],
-                        "gender": "can_birth"
+                        "gender": ["can_birth"]
                     },
                     "n_c1": {
                         "can_create_new_cat": {
@@ -4593,7 +4708,7 @@
                             "adult",
                             "senior adult"
                         ],
-                        "gender": "can_birth"
+                        "gender": ["can_birth"]
                     },
                     "n_c1": {
                         "can_create_new_cat": {
@@ -4730,7 +4845,7 @@
                             "adult",
                             "senior adult"
                         ],
-                        "gender": "can_birth"
+                        "gender": ["can_birth"]
                     },
                     "n_c1": {
                         "can_create_new_cat": {
@@ -4803,7 +4918,7 @@
                             "adult",
                             "senior adult"
                         ],
-                        "gender": "can_birth"
+                        "gender": ["can_birth"]
                     },
                     "n_c1": {
                         "can_create_new_cat": {

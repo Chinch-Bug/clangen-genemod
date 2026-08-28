@@ -28,6 +28,67 @@ from scripts.events_module.parameter_dicts import InvolvedCatDict
 from scripts.game_structure import game
 
 
+def create_bio_parents(Cat, flip=False, second_parent=True, age=None, clan=None):
+    ages = [max(age + randint(0, 24) - 12 if age else randint(15, 120), 15), 0]
+    ages[1] = max(ages[0] + randint(0, 24) - 12, 15)
+    social = choice([CatRank.KITTYPET, CatRank.LONER, CatRank.ROGUE])
+    thought = None
+    if clan:
+        social = "clancat"
+        thought = CatThought.OUTSIDE_KIT_DEATH
+
+    blood_parent2 = None
+    blood_parent = updated_create_new_cat({
+        "status": [social],
+        "group_ID": clan,
+        "moons": ages[0],
+        "gender": ["female" if flip else 'male'],
+        "can_create_new_cat": {}
+    }, {}, None, None)[0]
+    while 'sterile' in blood_parent.permanent_condition:
+        if (blood_parent):
+            del Cat.all_cats[blood_parent.ID]
+        blood_parent = updated_create_new_cat({
+            "status": [social],
+            "group_ID": clan,
+            "moons": ages[0],
+            "gender": ["female" if flip else 'male'],
+            "can_create_new_cat": {}
+        }, {}, None, None)[0]
+    if random() < 0.25 and clan or random() < 0.5:
+        blood_parent.die(False)
+    if second_parent:
+        social = choice([CatRank.KITTYPET, CatRank.LONER, CatRank.ROGUE])
+        if clan:
+            social = "clancat"
+        blood_parent2 = updated_create_new_cat({
+            "status": [social],
+            "group_ID": clan,
+            "moons": ages[1],
+            "gender": ["male" if flip else 'female'],
+            "can_create_new_cat": {}
+        }, {}, None, None)[0]
+        while 'sterile' in blood_parent2.permanent_condition:
+            if blood_parent2 and Cat.all_cats[blood_parent2.ID]:
+                del Cat.all_cats[blood_parent2.ID]
+            blood_parent2 = updated_create_new_cat({
+                "status": [social],
+                "group_ID": clan,
+                "moons": ages[1],
+                "gender": ["male" if flip else 'female'],
+                "can_create_new_cat": {}
+            }, {}, None, None)[0]
+        if random() < 0.25 and clan or random() < 0.5:
+            blood_parent2.die(False)
+
+    if thought:
+        if blood_parent:
+            blood_parent.assign_thought(thought)
+        if blood_parent2:
+            blood_parent2.assign_thought(thought)
+
+    return [blood_parent, blood_parent2]
+
 # called the "updated" create_new_cat so that it's not conflicting with the existing create_new_cat
 # eventually it should fully replace the old func and get renamed
 def updated_create_new_cat(
@@ -84,6 +145,8 @@ def updated_create_new_cat(
         status["group_ID"] = _get_id_for_group(
             option_dict["group"], involved_cats, other_clan
         )
+    elif option_dict.get("group_ID"):
+        status["group_ID"] = option_dict["group_ID"]
 
     if not status.get("rank") and not status.get("age"):
         # if no group was given either, then we just pick either no group or other clan
@@ -108,7 +171,9 @@ def updated_create_new_cat(
 
     # MOONS OLD
     moons = None
-    if status.get("age"):
+    if option_dict.get("moons") is not None:
+        moons = option_dict["moons"]
+    elif status.get("age"):
         moons = randint(
             Cat.age_moons[status["age"]][0], Cat.age_moons[status["age"]][1]
         )
@@ -137,8 +202,8 @@ def updated_create_new_cat(
                 adoptive_parents.append(involved_cats[p])
 
     # GENDER
-    gender = option_dict.get("gender", None)
-    if gender == "can_birth":
+    gender = choice(option_dict.get("gender")) if option_dict.get("gender") else None
+    if gender and "can_birth" in gender:
         if not get_clan_setting("same sex birth"):
             gender = "female"
         else:
@@ -155,6 +220,13 @@ def updated_create_new_cat(
             bp.pelt.scars.remove("TNR")
 
     for i in range(num_of_cats):
+        if status.get("rank") and status["rank"] in [CatRank.NEWBORN, CatRank.KITTEN] or status.get("age") and status["age"].is_baby():
+            generated_parents = create_bio_parents(
+                Cat, flip=True if blood_parents and 'Y' in blood_parents[0].phenotype.sexgene else False, second_parent=not blood_parents, age=blood_parents[0].moons if blood_parents else None, clan=status["group_ID"] if status.get("social") == CatSocial.CLANCAT else None)
+            if not blood_parents:
+                blood_parents = [generated_parents[1]]
+            if len(blood_parents) == 1:
+                blood_parents.append(generated_parents[0])
         created_cat = NewCatFactory.create_cat(
             status_dict=status,
             moons=moons,

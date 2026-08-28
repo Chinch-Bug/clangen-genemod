@@ -4,7 +4,7 @@ from typing import Optional, Literal
 from scripts.clan_package.settings import get_clan_setting
 from scripts.config import get_config
 from scripts.events_module.patrol.patrol_event import PatrolEvent
-from scripts.game_structure import game
+from scripts.game_structure import game, constants
 from scripts.game_structure.localization import load_lang_resource
 
 loaded_events: dict[str, list[PatrolEvent]] = {}
@@ -77,8 +77,8 @@ def _generate_all_patrols(path) -> list[PatrolEvent]:
     patrols = []
     # loops through all types, biomes, and seasons to compile all the available patrols
     for _type in ["med", "hunting", "border", "training"]:
-        for biome in game.constants.BIOME_TYPES:
-            for season in game.constants.SEASONS:
+        for biome in constants.BIOME_TYPES:
+            for season in constants.SEASONS:
                 patrols.extend(
                     _get_all_patrols_of_type(_type, biome.lower(), path, season.lower())
                 )

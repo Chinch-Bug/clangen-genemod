@@ -1031,31 +1031,6 @@
     ]
   },
   {
-    "event_id": "dst_misc_transition_from_female1",
-    "location": ["desert"],
-    "season": ["any"],
-    "sub_type": ["transition"],
-    "frequency": 2,
-    "event_text": "Under the full heat of the sun, m_c declares {PRONOUN/m_c/subject} {VERB/m_c/are/is} no molly.",
-    "m_c": {
-      "age": ["young adult"],
-      "gender": ["female"]
-    },
-    "new_gender": ["trans male", "nonbinary", "agender"]
-  },
-  {
-    "event_id": "dst_misc_transition_from_male1",
-    "location": ["desert"],
-    "season": ["any"],
-    "sub_type": ["transition"],
-    "frequency": 2,
-    "event_text": "The nature of things is ever changing, like sand blown on the wind. \"Tom\" is no longer accurate for m_c.",
-    "m_c": {
-      "gender": ["male"]
-    },
-    "new_gender": ["trans female", "nonbinary", "agender"]
-  },
-  {
     "event_id": "dst_misc_any_angrylizard",
     "location": ["desert"],
     "season": ["newleaf", "greenleaf", "leaf-fall"],
