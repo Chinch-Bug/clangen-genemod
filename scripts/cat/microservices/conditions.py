@@ -315,6 +315,8 @@ def get_permanent_condition(cat, name, born_with=False, event_triggered=False, g
         moons_until = 11 - cat.moons
     if custom_reveal:
         moons_until = custom_reveal - cat.moons
+    if moons_until < 0:
+        moons_until = -2
 
     if name == "paralyzed":
         cat.pelt.paralyzed = True

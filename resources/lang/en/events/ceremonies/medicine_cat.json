@@ -660,7 +660,7 @@
         "event_id": "med_adult_role_switch0",
         "involved_cats": {
             "m_c": {
-                "past_status": [ "-medicine cat apprentice" ]
+                "past_status": [ "-healer apprentice" ]
             }
         },
         "strings": [
