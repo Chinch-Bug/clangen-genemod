@@ -737,7 +737,7 @@ def _check_cat_status_history(cat, statuses: list) -> bool:
     if not statuses or "any" in statuses:
         return True
 
-    statuses = [s.replace("medicine cat", "healer") for s in status]
+    statuses = [s.replace("medicine cat", "healer") for s in statuses]
 
     is_exclusionary = _check_for_exclusionary_value(statuses)
 
