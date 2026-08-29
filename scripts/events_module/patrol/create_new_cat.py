@@ -104,6 +104,9 @@ def updated_create_new_cat(
     option_dict = option_dict.copy()
     # STATUS
     status = StatusDict()
+    if option_dict.get("group_ID"):
+        status["group_ID"] = option_dict["group_ID"]
+
     if option_dict.get("status"):
         # check for "clancat" first since it's not really a rank
         if "clancat" in option_dict["status"]:
@@ -125,7 +128,7 @@ def updated_create_new_cat(
         # if no group given and the rank/social is a clancat, then assign to other clan
         if not option_dict.get("group") and (
             status["rank"].is_any_clancat_rank()
-            or status.get("social") == CatSocial.CLANCAT
+            or status.get("social") == CatSocial.CLANCAT and not status.get("group_ID")
         ):
             status["group_ID"] = _get_id_for_group(
                 [CatGroup.OTHER_CLAN], involved_cats, other_clan
@@ -145,12 +148,10 @@ def updated_create_new_cat(
         status["group_ID"] = _get_id_for_group(
             option_dict["group"], involved_cats, other_clan
         )
-    elif option_dict.get("group_ID"):
-        status["group_ID"] = option_dict["group_ID"]
 
     if not status.get("rank") and not status.get("age"):
         # if no group was given either, then we just pick either no group or other clan
-        if not option_dict.get("group"):
+        if not option_dict.get("group") and not status.get("group_ID"):
             status["group_ID"] = _get_id_for_group(
                 ["no_group", CatGroup.OTHER_CLAN], involved_cats, other_clan
             )

@@ -54,7 +54,7 @@ def _generate_transition_event(main_cat: Cat, clan):
         frequency_active=False,
     )
 
-    processed_text = _handle_event(chosen_event, involved_cats, main_cat, other_clan)
+    processed_text = _handle_event(chosen_event, involved_cats, main_cat, clan, other_clan)
 
     game.cur_events_list.append(
         EventInformation(
@@ -67,7 +67,7 @@ def _generate_transition_event(main_cat: Cat, clan):
 
 
 def _handle_event(
-    chosen_event: TextPoolEvent, involved_cats: dict, main_cat: Cat, other_clan
+    chosen_event: TextPoolEvent, involved_cats: dict, main_cat: Cat, clan, other_clan
 ):
     """
     Changes the cat's genderalign and handles any other changes made by the event. Needs to be its own function for testing purposes.
@@ -87,6 +87,7 @@ def _handle_event(
     processed_text, results, rel_results = execute_outcome(
         event=chosen_event,
         event_involved_cats=involved_cats,
+        clan=clan,
         other_clan=other_clan,
     )
     return processed_text

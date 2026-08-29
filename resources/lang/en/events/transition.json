@@ -111,7 +111,7 @@
         ],
         "frequency": 2,
         "strings": [
-            "r_c helped m_c announce to the Clan that she-cat doesn't feel accurate for {PRONOUN/m_c/object} anymore."
+            "r_c0 helped m_c announce to the Clan that she-cat doesn't feel accurate for {PRONOUN/m_c/object} anymore."
         ],
         "involved_cats": {
             "m_c": {
@@ -152,7 +152,7 @@
                     "m_c"
                 ],
                 "cats_to": [
-                    "r_c"
+                    "r_c0"
                 ],
                 "mutual": false,
                 "values": [
@@ -161,7 +161,7 @@
                 ],
                 "amount": 5,
                 "log": {
-                    "cats_from": "m_c trusted r_c with announcing {PRONOUN/m_c/object} transition"
+                    "cats_from": "m_c trusted r_c0 with announcing {PRONOUN/m_c/object} transition"
                 }
             } ]
     },
@@ -175,7 +175,7 @@
         ],
         "frequency": 2,
         "strings": [
-            "r_c helped m_c announce to the Clan that tom doesn't feel accurate for {PRONOUN/m_c/object} anymore."
+            "r_c0 helped m_c announce to the Clan that tom doesn't feel accurate for {PRONOUN/m_c/object} anymore."
         ],
         "involved_cats": {
             "m_c": {
@@ -216,7 +216,7 @@
                     "m_c"
                 ],
                 "cats_to": [
-                    "r_c"
+                    "r_c0"
                 ],
                 "mutual": false,
                 "values": [
@@ -225,7 +225,7 @@
                 ],
                 "amount": 5,
                 "log": {
-                    "cats_from": "m_c trusted r_c with announcing {PRONOUN/m_c/object} transition"
+                    "cats_from": "m_c trusted r_c0 with announcing {PRONOUN/m_c/object} transition"
                 }
             } ]
     },

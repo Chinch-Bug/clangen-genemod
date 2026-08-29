@@ -792,7 +792,7 @@ def _check_cat_trait(cat, traits: list) -> bool:
     is_exclusionary = _check_for_exclusionary_value(traits)
 
     if is_exclusionary:
-        traits = [x.replace("-", "") for x in traits]
+        traits = [x.removeprefix("-") for x in traits]
 
     for trait in traits:
         if trait not in ALL_TRAITS_LIST:

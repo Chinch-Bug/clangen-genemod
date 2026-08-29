@@ -372,6 +372,7 @@
     },
     {
         "event_id": "warrior_dead_both_parents0",
+        "tags": ["clan:leader"],
         "involved_cats": {
             "m_c": {
                 "backstory": [
