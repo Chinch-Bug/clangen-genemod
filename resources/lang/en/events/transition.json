@@ -140,7 +140,8 @@
                         "-quiet",
                         "-self-conscious"
                     ]
-                }
+                },
+                "group": ["player_clan"]
             }
         },
         "new_gender": [
@@ -204,7 +205,8 @@
                         "-quiet",
                         "-self-conscious"
                     ]
-                }
+                },
+                "group": [ "player_clan" ]
             }
         },
         "new_gender": [

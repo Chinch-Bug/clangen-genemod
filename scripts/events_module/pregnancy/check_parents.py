@@ -394,7 +394,8 @@ def handle_outside_parent(cat, clan, amount=0, background_category= "1"):
                             and (get_clan_setting('same sex birth') or cat_is_amab(i) != cat_is_amab(cat))
                                 and len(i.mate) == 0 and not i.birth_cooldown
                                 and i.ID not in game.clan.pregnancy_data
-                                and i.status.group_ID != cat.status.group_ID]
+                                and i.status.group_ID != cat.status.group_ID
+                                and (not cat.relationships.get(i.ID) or cat.relationships.get(i.ID).total_relationship_value > -15)]
     outsider_affair_partners = [
         i for i in possible_affair_partners if not i.status.group.is_any_clan_group() and i.status.is_near()]
     other_clan_affair_partners = [

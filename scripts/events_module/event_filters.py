@@ -798,7 +798,7 @@ def _check_cat_trait(cat, traits: list) -> bool:
         if trait not in ALL_TRAITS_LIST:
             raise ValueError(f"Unrecognized trait: {trait}")
 
-    if cat.personality.trait in traits:
+    if hasattr(cat, "personality") and cat.personality.trait in traits:
         return not is_exclusionary
 
     return is_exclusionary
@@ -1533,9 +1533,9 @@ def _get_cats_with_trait(cat_list: list, traits: list[str]) -> list:
 
     if is_exclusionary:
         traits = [x.replace("-", "") for x in traits]
-        return [kitty for kitty in cat_list if kitty.personality and kitty.personality.trait not in traits]
+        return [kitty for kitty in cat_list if hasattr(kitty, "personality") and kitty.personality.trait not in traits]
     else:
-        return [kitty for kitty in cat_list if kitty.personality and kitty.personality.trait in traits]
+        return [kitty for kitty in cat_list if hasattr(kitty, "personality") and kitty.personality.trait in traits]
 
 
 def _get_cats_from_group(

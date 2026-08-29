@@ -356,6 +356,9 @@
             "status": [
                 "healer apprentice",
                 "healer"
+            ],
+            "group": [
+                "player_clan"
             ]
         },
         "history": [
@@ -423,6 +426,9 @@
             "status": [
                 "healer apprentice",
                 "healer"
+            ],
+            "group": [
+                "player_clan"
             ]
         },
         "history": [
@@ -490,6 +496,9 @@
             "status": [
                 "healer apprentice",
                 "healer"
+            ],
+            "group": [
+                "player_clan"
             ]
         },
         "history": [
@@ -561,6 +570,9 @@
             "status": [
                 "healer apprentice",
                 "healer"
+            ],
+            "group": [
+                "player_clan"
             ]
         },
         "history": [
