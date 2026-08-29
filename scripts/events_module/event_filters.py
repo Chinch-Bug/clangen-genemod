@@ -1192,6 +1192,7 @@ def cat_for_event(
         "stat": _get_cats_with_stat,
         "skill": _get_cats_with_skill,
         "trait": _get_cats_with_trait,
+        "gender": _check_cat_gender,
         "backstory": _get_cats_with_backstory,
         "has_mentor": _get_cats_with_mentor,
         "has_apprentice": _get_cats_with_apprentice,
