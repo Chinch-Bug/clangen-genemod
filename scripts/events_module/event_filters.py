@@ -1078,7 +1078,8 @@ def _check_cat_gender(cat, genders: list) -> bool:
     equivalents = {
         "male" : ["tom", "intersex tom", "intersex trans tom", "trans tom"],
         "female" : ["molly", "intersex molly", "intersex trans molly", "trans molly"],
-        "nonbinary" : ["sam", "intersex sam"]
+        "nonbinary": ["sam", "intersex sam"],
+        "agender": ["agender", "intersex agender"]
     }
 
     for g in genders:
@@ -1192,7 +1193,7 @@ def cat_for_event(
         "stat": _get_cats_with_stat,
         "skill": _get_cats_with_skill,
         "trait": _get_cats_with_trait,
-        "gender": _check_cat_gender,
+        "gender": _get_cats_with_gender,
         "backstory": _get_cats_with_backstory,
         "has_mentor": _get_cats_with_mentor,
         "has_apprentice": _get_cats_with_apprentice,
@@ -1423,6 +1424,23 @@ def _get_cats_with_age(cat_list: list, ages: list[str]) -> list:
         return [kitty for kitty in cat_list if kitty.age not in ages]
     else:
         return [kitty for kitty in cat_list if kitty.age in ages]
+
+
+def _get_cats_with_gender(cat_list: list, genders: list[str]) -> list:
+    """
+    Checks cat_list against required ages and returns qualifying cats.
+    """
+    if not genders or "any" in genders:
+        return cat_list
+
+    is_exclusionary = _check_for_exclusionary_value(genders)
+
+    if is_exclusionary:
+        genders = [x.replace("-", "") for x in genders]
+        return [kitty for kitty in cat_list if not _check_cat_gender(kitty, genders)]
+    else:
+        check_genders = []
+        return [kitty for kitty in cat_list if _check_cat_gender(kitty, genders)]
 
 
 def _get_cats_with_status(cat_list: list, statuses: list[str]) -> list:
