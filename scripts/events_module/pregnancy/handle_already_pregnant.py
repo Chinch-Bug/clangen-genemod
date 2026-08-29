@@ -4,7 +4,7 @@ from typing import Optional, Dict, List
 import i18n
 
 from scripts.cat.cats import Cat
-from scripts.cat.enums import CatRank, CatThought
+from scripts.cat.enums import CatGroup, CatRank, CatThought
 from scripts.cat.names import Name
 from scripts.cat_relations.relationship import Relationship
 from scripts.clan_package.get_clan_cats import find_alive_cats_with_rank
@@ -527,6 +527,8 @@ def _handle_main_birth_event(
         random_choice = choice(other_cat)
         while random_choice.ID == cat.ID:
             random_choice = choice(other_cat)
+        if random_choice in surrogate:
+            random_choice = Cat.fetch_cat(choice(cat.mate))
         for x in other_cat:
             if x.dead:
                 dead_mate = True

@@ -18,6 +18,22 @@
         ]
     },
     {
+        "event_id": "deputy_defaul1",
+        "tags": [ "clan:leader" ],
+        "involved_cats": {
+            "m_c": {
+                "has_apprentice": {
+                    "former": true
+                }
+            }
+        },
+        "strings": [
+            "m_c has been chosen as the new deputy. {PRONOUN/m_c/subject/CAP} {VERB/m_c/hold/holds} {PRONOUN/m_c/poss} head up high and {VERB/m_c/promise/promises} to do {PRONOUN/m_c/poss} best for the Clan.",
+            "m_c has been chosen as the new deputy. {PRONOUN/m_c/subject/CAP} {VERB/m_c/pray/prays} to StarClan that {PRONOUN/m_c/subject} {VERB/m_c/are/is} the right choice for the Clan.",
+            "m_c has been chosen as the new deputy. Although {PRONOUN/m_c/subject} {VERB/m_c/are/is} nervous, {PRONOUN/m_c/subject} {VERB/m_c/put/puts} on a brave face and {VERB/m_c/look/looks} forward to serving the Clan."
+        ]
+    },
+    {
         "event_id": "deputy_past_deputy0",
         "involved_cats": {
             "m_c": {

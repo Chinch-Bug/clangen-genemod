@@ -546,5 +546,5 @@ class TestOutcomeExecution(unittest.TestCase):
         # check random herb change
         self.assertTrue(
             total_herb_count + 10 == game.clan.herb_supply.total,
-            msg=f"{total_herb_count} + 9 should equal {game.clan.herb_supply.total}",
+            msg=f"{total_herb_count} + 8 should equal {game.clan.herb_supply.total}",
         )

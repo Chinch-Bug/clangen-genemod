@@ -169,6 +169,8 @@ def get_faded_ids():
 
 def load_faded_cat_ids(clanname):
     global faded_ids
+    global cat_to_fade
+    cat_to_fade = []
     fade_cat_dir = Path(get_save_dir()) / clanname / "faded_cats"
     if not fade_cat_dir.exists():
         faded_ids = []

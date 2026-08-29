@@ -1533,9 +1533,9 @@ def _get_cats_with_trait(cat_list: list, traits: list[str]) -> list:
 
     if is_exclusionary:
         traits = [x.replace("-", "") for x in traits]
-        return [kitty for kitty in cat_list if hasattr(kitty, "personality") and kitty.personality.trait not in traits]
+        return [kitty for kitty in cat_list if kitty.personality.trait not in traits]
     else:
-        return [kitty for kitty in cat_list if hasattr(kitty, "personality") and kitty.personality.trait in traits]
+        return [kitty for kitty in cat_list if kitty.personality.trait in traits]
 
 
 def _get_cats_from_group(

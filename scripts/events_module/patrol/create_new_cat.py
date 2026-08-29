@@ -728,8 +728,7 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
         if blood_parent and not sibling:
             all_clan_cats = [cat for cat in all_clan_cats if cat.parent1]
         elif sibling:
-            all_clan_cats = [
-                cat for cat in all_clan_cats if sibling.ID in cat.inheritance.siblings]
+            all_clan_cats = [cat for cat in all_clan_cats if sibling.ID in cat.inheritance.siblings]
         status_filtered = []
         for s in status:
             if s == "any_apprentice":

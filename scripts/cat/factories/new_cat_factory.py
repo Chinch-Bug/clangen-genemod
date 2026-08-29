@@ -256,6 +256,8 @@ class NewCatFactory(BaseCatFactory, ABC):
                 age = cls._get_random_age()
             status = Status(**status_dict)
             moons = cls._get_random_moons(age)
+            if moons > 200:
+                moons = 200
         else:
             status = None
 
