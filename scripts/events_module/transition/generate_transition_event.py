@@ -33,7 +33,7 @@ def attempt_coming_out(main_cat: Cat, clan):
     return
 
 
-def _generate_transition_event(main_cat: Cat):
+def _generate_transition_event(main_cat: Cat, clan):
     """
     Actually generate and execute transition event
     """
