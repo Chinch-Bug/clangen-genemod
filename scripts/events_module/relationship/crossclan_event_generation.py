@@ -134,7 +134,7 @@ def find_needed_events(is_group, biome, frequency) -> list:
     """
     event_list = []
 
-    event_list += load_text_pool_events(f"events/relationship_events/cross-clan_interactions/{"group" if is_group else "normal"}_interactions/{biome}.json")
+    event_list += load_text_pool_events(f"events/relationship_events/cross-clan_interactions/{"group" if is_group else "normal"}_interactions/{biome.lower()}.json")
     event_list += load_text_pool_events(f"events/relationship_events/cross-clan_interactions/{"group" if is_group else "normal"}_interactions/general.json")
 
     event_list = [e for e in event_list if e.frequency == frequency]

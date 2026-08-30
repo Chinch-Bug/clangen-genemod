@@ -5,15 +5,15 @@ import random
 import statistics
 from os.path import exists as path_exists
 from random import choice, randint, choices
-from typing import List, Tuple, Optional, Union, Literal, TypedDict
+from typing import List, Tuple, Optional, Union
 
 import pygame
 
 from scripts.cat.cats import Cat
-from scripts.cat_relations.enums import RelType
 from scripts.cat.enums import CatAge, CatRank, CatCompatibility
 from scripts.clan_package.settings import get_clan_setting
 from scripts.clan_package.get_clan_cats import get_living_clan_cat_count
+from scripts.cat_relations.enums import RelType
 from scripts.clan import get_temper_alignment
 from scripts.config import get_config
 from scripts.events_module.consequences import gather_cat_objects
@@ -23,27 +23,26 @@ from scripts.events_module.event_filters import (
     event_for_poi,
     event_for_other_clan,
 )
-from scripts.events_module.patrol.enums import PatrolChoice
+from scripts.events_module.patrol.enums import PatrolChoice, PatrolOutcome
 from scripts.events_module.patrol.generate_patrol_list import (
     get_patrol_list,
     will_allow_outsider_patrols,
 )
 from scripts.events_module.patrol.patrol_event import PatrolEvent
+from scripts.events_module.text_adjust import (
+    event_text_adjust,
+)
 from scripts.events_module.text_pool_event import handle_consequences
 from scripts.events_module.text_pool_event.check_general_constraints import (
     passes_general_constraints,
 )
 from scripts.events_module.text_pool_event.event_retrieval import get_valid_event
-from scripts.events_module.text_pool_event.find_involved_cats import find_cats
+from scripts.events_module.text_pool_event.find_involved_cats import find_or_create_cats
 from scripts.events_module.text_pool_event.text_pool_event import TextPoolEvent
 from scripts.config import get_config
-from scripts.game_structure.game.settings import game_setting_get
 from scripts.game_structure import game
-from scripts.events_module.text_adjust import (
-    event_text_adjust,
-)
+from scripts.game_structure.game.settings import game_setting_get
 from scripts.special_dates import SpecialDate, is_today
-
 
 logger = logging.getLogger(__name__)
 
@@ -96,9 +95,10 @@ class Patrol:
         """Holds all the cats that are on the patrol"""
         self.involved_cats: dict[str, Union[list[Cat], Cat]] = {}
         """Cats directly involved and referenced in the event. Keys are their text abbreviation, values are the associated cat objects"""
-        self.outcome_cats: TypedDict(
-            "outcome_cats", {"success": dict[str, Cat], "failure": dict[str, Cat]}
-        ) = {"success": {}, "failure": {}}
+        self.outcome_cats: dict[PatrolOutcome, dict] = {
+            PatrolOutcome.SUCCESS: {},
+            PatrolOutcome.FAILURE: {},
+        }
 
     def begin_patrol(self, patrol_cats: List[Cat], patrol_type: str, clan) -> str:
         """
@@ -566,7 +566,7 @@ class Patrol:
 
         # we'll get an outcome for both success and failure
         # FIND SUCCESS
-        chosen_success, self.outcome_cats["success"] = get_valid_event(
+        chosen_success, self.outcome_cats[PatrolOutcome.SUCCESS] = get_valid_event(
             primary_cat=self.involved_cats["p_l"],
             involved_cats=self.involved_cats,
             interactable_cats=[
@@ -578,6 +578,7 @@ class Patrol:
             clan=self.clan,
             other_clan=self.other_clan,
             ensured_id=debug_outcome,
+            allow_new_cat_creation=False,  # this is so we don't create cats for an outcome we end up not using
         )
 
         if not chosen_success:
@@ -586,7 +587,7 @@ class Patrol:
             )
 
         # FIND FAILURE
-        chosen_failure, self.outcome_cats["failure"] = get_valid_event(
+        chosen_failure, self.outcome_cats[PatrolOutcome.FAILURE] = get_valid_event(
             primary_cat=self.involved_cats["p_l"],
             involved_cats=self.involved_cats,
             interactable_cats=[
@@ -598,6 +599,7 @@ class Patrol:
             clan=self.clan,
             other_clan=self.other_clan,
             ensured_id=debug_outcome,
+            allow_new_cat_creation=False,  # this is so we don't create cats for an outcome we end up not using
         )
         if not chosen_failure:
             raise Exception(
@@ -605,45 +607,6 @@ class Patrol:
             )
 
         return chosen_success, chosen_failure
-
-    def _check_outcome_constraints(
-        self, outcome: TextPoolEvent, outcome_type: Literal["success", "failure"]
-    ) -> bool:
-        """
-        Checks the outcome constraints and attempts to find appropriate cats. If the outcome is valid and cats are
-        found, the cats will be added to the matching `self.outcome_cats` dict
-        :param outcome: outcome to check
-        :param outcome_type: the outcome_cats dict that the valid cats should be added to
-        """
-        # BASICS
-        if not passes_general_constraints(
-            outcome, self.involved_cats["p_l"], self.involved_cats, self.clan, self.other_clan
-        ):
-            return False
-
-        # CATS
-        outside_cats = [
-            c
-            for c in Cat.all_cats_list
-            if (c.status.group_ID != self.clan.group_ID or c.status.is_outsider) and not c.dead and c.status.is_near()
-        ]
-        temp_involved_cats = self.involved_cats.copy()
-
-        temp_involved_cats = find_cats(
-            interactable_cats=temp_involved_cats["patrol_cats"],
-            involved_cats=temp_involved_cats,
-            outside_cats=outside_cats,
-            event=outcome,
-            other_clan=self.other_clan,
-            clan=self.clan
-        )
-        if not temp_involved_cats:
-            return False
-
-        # if we're here, then we must have found all our cats!
-        self.outcome_cats[outcome_type] = temp_involved_cats
-
-        return True
 
     def determine_outcome(
         self, antagonize=False
@@ -654,6 +617,25 @@ class Patrol:
         success_outcome, fail_outcome = self._find_allowed_outcomes(antagonize)
 
         chosen_outcome, success = self.calculate_success(success_outcome, fail_outcome)
+
+        # now we retrieve any lingering cats! these will just be cats who need to be created for the outcome
+        outside_cats = [
+            c
+            for c in Cat.all_cats_list
+            if (c.status.is_other_clancat or c.status.is_outsider) and not c.dead
+        ]
+        involved_cats = self.outcome_cats[
+            PatrolOutcome.SUCCESS if success else PatrolOutcome.FAILURE
+        ]
+        involved_cats = find_or_create_cats(
+            interactable_cats=involved_cats["patrol_cats"],
+            involved_cats=involved_cats,
+            outside_cats=outside_cats,
+            event=chosen_outcome,
+            clan=self.clan,
+            other_clan=self.other_clan,
+            check_already_assigned_cats=False,  # these cats are already correct, we don't need to check them again
+        )
 
         print(f"PATROL ID: {self.patrol_event.event_id} | SUCCESS: {success}")
         print(
@@ -666,7 +648,7 @@ class Patrol:
         # Run the chosen outcome
         return handle_consequences.execute_outcome(
             chosen_outcome,
-            self.outcome_cats["success" if success else "failure"],
+            involved_cats,
             self.clan,
             self.other_clan,
             self.patrol_event.tags,
@@ -706,7 +688,7 @@ class Patrol:
         for abbr, constraints in success_outcome.involved_cats.items():
             # if this is present, then we know a cat must fulfill it
             if stat_block := constraints.get("stat"):
-                cat = self.outcome_cats["success"][abbr]
+                cat = self.outcome_cats[PatrolOutcome.SUCCESS][abbr]
                 if "skill" in stat_block:
                     success_chance += get_config(
                         "patrol_generation.skill_cat_modifier"
