@@ -2643,7 +2643,7 @@ class Cat:
                 "reverse": self.pelt.reverse,
                 "rusting": self.pelt.rusting,
                 "tint": self.pelt.tint,
-                "white_tint": self.pelt.white_patches_tint,
+                "white_patches_tint": self.pelt.white_patches_tint,
                 "skill_dict": self.skills.get_skill_dict(),
                 "scars": self.pelt.scars or [],
                 "accessory": self.pelt.accessory,

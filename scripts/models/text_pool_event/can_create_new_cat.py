@@ -28,5 +28,5 @@ class CanCreateNewCat(BaseModel):
     )
     multiclan_cat: Union[list[str], MISSING] = Field(
         MISSING,
-        description="List of special tags for multiclan - change_clan, change_clan_rev, exiled, -exists",
+        description="List of special tags for multiclan - change_clan, change_clan_rev, exiled, -exists, multiclan_only",
     )

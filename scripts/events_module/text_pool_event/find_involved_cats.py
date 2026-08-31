@@ -41,6 +41,7 @@ def find_or_create_cats(
     interactable_cats = interactable_cats.copy()
 
     cats_to_create = []
+    cats_to_skip = []
 
     can_give_condition = hasattr(event, "condition")
     can_give_accessory = hasattr(event, "gain_accessory")
@@ -91,6 +92,9 @@ def find_or_create_cats(
                     temp_involved_cats[abbr] = temp_involved_cats[abbr][0]
                 continue
                 # CATS THAT CAN BE MADE
+            elif game.clan.clancount == "singleclan" and "multiclan_only" in constraints.get("can_create_new_cat", {}).get("multiclan_cat", []):
+                cats_to_skip.append(abbr)
+                continue
             elif "can_create_new_cat" in constraints:
                 # these cats can be created if need be, so we'll do them after we've found all the cats that must exist
                 cats_to_create.append(abbr)
@@ -166,6 +170,8 @@ def find_or_create_cats(
     for abbr in cats_to_create:
         if not allow_new_cat_creation:
             break
+        if abbr in cats_to_skip:
+            continue
 
         # this will first try to find an existing cat, but if it can't then it'll make a new one
         constraints = event.involved_cats[abbr]

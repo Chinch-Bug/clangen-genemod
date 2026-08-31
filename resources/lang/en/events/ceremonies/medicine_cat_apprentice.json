@@ -339,7 +339,7 @@
         "event_id": "med_app_role_switch0",
         "involved_cats": {
             "m_c": {
-                "past_status": [ "apprentice", "mediator apprentice", "queen apprentice", "-healer apprentice" ]
+                "past_status": [ "apprentice", "mediator apprentice", "queen apprentice" ]
             }
         },
         "strings": [
