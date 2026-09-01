@@ -364,7 +364,7 @@ class TestNewCatCreation(unittest.TestCase):
             )
 
             cat_list = updated_create_new_cat(
-                option_dict, involved_cats={"m_c": mate1}, other_clan=self.other_clan
+                option_dict, involved_cats={"m_c": mate1}, clan=game.clan, other_clan=self.other_clan
             )
             test_cat = cat_list[0]
 
@@ -383,7 +383,7 @@ class TestNewCatCreation(unittest.TestCase):
             )
 
             cat_list = updated_create_new_cat(
-                option_dict, involved_cats={"m_c": mate1}, other_clan=self.other_clan
+                option_dict, involved_cats={"m_c": mate1}, clan=game.clan, other_clan=self.other_clan
             )
             test_cat = cat_list[0]
 

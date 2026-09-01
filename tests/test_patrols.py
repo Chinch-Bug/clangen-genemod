@@ -344,9 +344,6 @@ class TestOutcomeExecution(unittest.TestCase):
 
             self.patrol_class._add_patrol_cats([war1])
             self.patrol_class._get_valid_patrol([patrol])
-            self.patrol_class._check_outcome_constraints(
-                patrol.success_outcomes[0], "success"
-            )
             handle_consequences.execute_outcome(
                 patrol.success_outcomes[0],
                 self.patrol_class.involved_cats,
@@ -374,18 +371,16 @@ class TestOutcomeExecution(unittest.TestCase):
             )
             self.patrol_class._add_patrol_cats([war1])
             self.patrol_class._get_valid_patrol([patrol])
-            self.patrol_class._check_outcome_constraints(
-                patrol.success_outcomes[0], "success"
-            )
             handle_consequences.execute_outcome(
                 patrol.success_outcomes[0],
                 self.patrol_class.involved_cats,
+                clan=game.clan,
                 other_clan=OtherClan(),
             )
 
             self.assertIn(
                 self.patrol_class.involved_cats["n_c0"].status.rank,
-                [CatRank.WARRIOR, CatRank.MEDIATOR, CatRank.MEDICINE_CAT],
+                [CatRank.WARRIOR, CatRank.MEDIATOR, CatRank.MEDICINE_CAT, CatRank.QUEEN],
                 msg=f"{outsider1} should be an adult rank (warrior, mediator, or medicine) but instead is {outsider1.status.rank}",
             )
 

@@ -1211,7 +1211,7 @@ def queen_influence(cat):
                 affect_personality[0],
                 affect_personality[1],
             )
-            if cat.personality.trait != personality:
+            if cat.personality.trait != personality and cat.personality.trait != cat.history.prev_pers[-1]:
                 cat.history.prev_pers.append(personality)
         if affect_skills:
             cat.history.add_skill_queen_influence(

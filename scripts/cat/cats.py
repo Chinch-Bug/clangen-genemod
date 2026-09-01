@@ -781,7 +781,7 @@ class Cat:
                             affect_personality[0],
                             affect_personality[1],
                         )
-                        if self.personality.trait != personality:
+                        if self.personality.trait != personality and cat.personality.trait != cat.history.prev_pers[-1]:
                             self.history.prev_pers.append(personality)
                     if affect_skills:
                         self.history.add_skill_mentor_influence(
@@ -1360,7 +1360,7 @@ class Cat:
         if not self.status.is_clancat:
             # this is handled in events.py
             self.personality.set_kit(self.age.is_baby())
-            if self.personality.trait != personality:
+            if self.personality.trait != personality and cat.personality.trait != cat.history.prev_pers[-1]:
                 self.history.prev_pers.append(personality)
             return
 
@@ -1374,7 +1374,7 @@ class Cat:
 
         # Set personality to correct type
         self.personality.set_kit(self.age.is_baby())
-        if self.personality.trait != personality:
+        if self.personality.trait != personality and cat.personality.trait != cat.history.prev_pers[-1]:
             self.history.prev_pers.append(personality)
         # Upon age-change
 
