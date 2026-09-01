@@ -1,7 +1,7 @@
 import unittest
 
 from scripts.cat.cats import Cat
-from scripts.cat.enums import CatRank, CatGroup
+from scripts.cat.enums import CatRank, CatGroup, CatAge
 from scripts.cat.factories.test_cat_factory import TestCatFactory
 from scripts.cat.factories.typed_dicts import StatusDict
 from scripts.cat.sprites.load_sprites import sprites
@@ -28,7 +28,7 @@ class TestPatrolCats(unittest.TestCase):
     def setUp(self):
         game.clan = Clan("test")
         game.clan.biome = "Forest"
-        game.clan.override_biome = False
+        game.clan.override_biome = None
         game.clan.camp_bg = "camp1"
         game.clan.starting_season = "Newleaf"
         game.clan.game_mode = "classic"
@@ -132,7 +132,7 @@ class TestInvolvedCats(unittest.TestCase):
 
         game.clan = Clan("test")
         game.clan.biome = "Forest"
-        game.clan.override_biome = False
+        game.clan.override_biome = None
         game.clan.camp_bg = "camp1"
         game.clan.starting_season = "Newleaf"
         game.clan.game_mode = "classic"
@@ -318,44 +318,76 @@ class TestOutcomeExecution(unittest.TestCase):
         )
         game.clan.instructor.dead = True
         game.clan.biome = "Forest"
-        game.clan.override_biome = False
+        game.clan.override_biome = None
         game.clan.camp_bg = "camp1"
         game.clan.starting_season = "Newleaf"
         switch_set_value(Switch.clan_save_id, "test")
         self.patrol_class = Patrol()
 
     def test_joining_clan(self):
-        war1 = TestCatFactory.create_cat(rank=CatRank.WARRIOR)
-        outsider1 = TestCatFactory.create_cat(rank=CatRank.LONER)
+        with self.subTest("Test that outsider joins the clan"):
+            war1 = TestCatFactory.create_cat(rank=CatRank.WARRIOR)
+            outsider1 = TestCatFactory.create_cat(rank=CatRank.LONER)
 
-        patrol = PatrolEvent(
-            event_id="test",
-            types=["hunting"],
-            intro_strings=["test"],
-            decline_strings=["test"],
-            involved_cats={
-                "n_c:0": InvolvedCatDict(),
-            },
-            success_outcomes=[{"strings": [""], "join": [JoinDict(cats=["n_c:0"])]}],
-            fail_outcomes=[{"strings": ["test"]}],
-        )
+            patrol = PatrolEvent(
+                event_id="test",
+                types=["hunting"],
+                intro_strings=["test"],
+                decline_strings=["test"],
+                involved_cats={
+                    "n_c0": InvolvedCatDict(),
+                },
+                success_outcomes=[{"strings": [""], "join": [JoinDict(cats=["n_c0"])]}],
+                fail_outcomes=[{"strings": ["test"]}],
+            )
+            self.patrol_class.clan = game.clan
 
-        self.patrol_class.patrol_event = patrol
-        self.patrol_class._add_patrol_cats([war1])
-        self.patrol_class._get_valid_patrol([patrol])
-        self.patrol_class._find_allowed_outcomes()
+            self.patrol_class._add_patrol_cats([war1])
+            self.patrol_class._get_valid_patrol([patrol])
+            self.patrol_class._check_outcome_constraints(
+                patrol.success_outcomes[0], "success"
+            )
+            handle_consequences.execute_outcome(
+                patrol.success_outcomes[0],
+                self.patrol_class.involved_cats,
+                clan=game.clan,
+                other_clan=OtherClan(),
+            )
 
-        handle_consequences.execute_outcome(
-            patrol.success_outcomes[0],
-            self.patrol_class.involved_cats,
-            clan=game.clan,
-            other_clan=OtherClan(),
-        )
+            self.assertTrue(
+                outsider1.status.alive_in_player_clan,
+                msg=f"{outsider1} should be part of the player_clan, instead {outsider1} is rank: {outsider1.status.rank} with group: {outsider1.status.group}. The patrol's n_c0 is {self.patrol_class.involved_cats['n_c0']}",
+            )
 
-        self.assertTrue(
-            outsider1.status.alive_in_player_clan,
-            msg=f"{outsider1} should be part of the player_clan, instead {outsider1} is rank: {outsider1.status.rank} with group: {outsider1.status.group}. The patrol's n_c:0 is {self.patrol_class.involved_cats['n_c:0']}",
-        )
+        with self.subTest("Test that outsider takes on an appropriate rank."):
+            war1 = TestCatFactory.create_cat(rank=CatRank.WARRIOR)
+            patrol = PatrolEvent(
+                event_id="test",
+                types=["hunting"],
+                intro_strings=["test"],
+                decline_strings=["test"],
+                involved_cats={
+                    "n_c0": InvolvedCatDict(can_create_new_cat={}, age=[CatAge.ADULT]),
+                },
+                success_outcomes=[{"strings": [""], "join": [JoinDict(cats=["n_c0"])]}],
+                fail_outcomes=[{"strings": ["test"]}],
+            )
+            self.patrol_class._add_patrol_cats([war1])
+            self.patrol_class._get_valid_patrol([patrol])
+            self.patrol_class._check_outcome_constraints(
+                patrol.success_outcomes[0], "success"
+            )
+            handle_consequences.execute_outcome(
+                patrol.success_outcomes[0],
+                self.patrol_class.involved_cats,
+                other_clan=OtherClan(),
+            )
+
+            self.assertIn(
+                self.patrol_class.involved_cats["n_c0"].status.rank,
+                [CatRank.WARRIOR, CatRank.MEDIATOR, CatRank.MEDICINE_CAT],
+                msg=f"{outsider1} should be an adult rank (warrior, mediator, or medicine) but instead is {outsider1.status.rank}",
+            )
 
     def test_dying(self):
         war1 = TestCatFactory.create_cat(rank=CatRank.WARRIOR, moons=20, experience=50)
