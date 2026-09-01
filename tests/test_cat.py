@@ -1,4 +1,3 @@
-import os
 import unittest
 from copy import deepcopy
 from random import Random
@@ -8,11 +7,9 @@ from scripts.cat.factories.test_cat_factory import TestCatFactory
 
 import i18n
 
-os.environ["SDL_VIDEODRIVER"] = "dummy"
-os.environ["SDL_AUDIODRIVER"] = "dummy"
 
-from scripts.game_structure import game
 from scripts.config import CONFIG
+from scripts.game_structure import game
 
 from scripts.cat.cats import Cat
 from scripts.cat_relations.inheritance2 import inheritance_db
@@ -458,8 +455,6 @@ class TestUpdateMentor(unittest.TestCase):
 class TestNameRepr(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        os.environ["SDL_VIDEODRIVER"] = "dummy"
-        os.environ["SDL_AUDIODRIVER"] = "dummy"
         CONFIG["cat_name_controls"]["always_use_english"] = True
 
     def test_clancats(self):

@@ -91,8 +91,8 @@
             {
                 "cats": ["r_c0"],
                 "condition": ["battle_injury"],
-                "scar_history": "r_c0 was scarred after being attacked by m_c at the Gathering.",
-                "death_history": "r_c0 died from {PRONOUN/r_c0/poss} injuries after m_c attacked {PRONOUN/r_c0/object} at the Gathering."
+                "scar_history": "m_c was scarred after being attacked by r_c at the Gathering.",
+                "death_history": "m_c died from {PRONOUN/m_c/poss} injuries after r_c attacked {PRONOUN/m_c/object} at the Gathering."
             }
         ],
         "relationship_changes": [
@@ -150,8 +150,8 @@
             {
                 "cats": [ "r_c0" ],
                 "condition": [ "battle_injury" ],
-                "scar_history": "r_c0 was scarred after being attacked by m_c at the Gathering.",
-                "death_history": "r_c0 died from {PRONOUN/r_c0/poss} injuries after m_c attacked {PRONOUN/r_c0/object} at the Gathering."
+                "scar_history": "m_c was scarred after being attacked by r_c at the Gathering.",
+                "death_history": "m_c died from {PRONOUN/m_c/poss} injuries after r_c attacked {PRONOUN/m_c/object} at the Gathering."
             }
         ],
         "relationship_changes": [
