@@ -746,7 +746,9 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
         if not status:
             status_filtered = all_clan_cats
 
-        if age[0] == "match":
+        if not age:
+            all_clan_cats = [i for i in all_clan_cats if i.age != CatAge.NEWBORN]
+        elif age[0] == "match":
             all_clan_cats = [cat for cat in all_clan_cats if cat.age == involved_cats["m_c"].age]
         elif age[0] == "mate":
             all_clan_cats = [cat for cat in all_clan_cats if give_mates[0].is_potential_mate(
@@ -761,13 +763,11 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
                 if Cat.fetch_cat(par_id) not in all_clan_cats:
                     del parents[par_id]
             all_clan_cats = [Cat.fetch_cat(par_id) for par_id in parents.keys()]
-        elif age:
+        else:
             age_filtered = []
             for a in age:
                 age_filtered += [cat for cat in all_clan_cats if cat.age.value == a]
             all_clan_cats = age_filtered
-        else:
-            all_clan_cats = [i for i in all_clan_cats if i.age != CatAge.NEWBORN]
         
         all_clan_cats_status = [i for i in all_clan_cats if i in status_filtered]
         if all_clan_cats_status:
