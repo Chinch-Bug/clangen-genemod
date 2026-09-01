@@ -655,7 +655,7 @@ def _get_id_for_group(
     for ID, group in game.used_group_IDs.items():
         if group in group_list:
             # only allow this event's chosen other clan
-            if group == CatGroup.OTHER_CLAN and ID != other_clan.group_ID:
+            if group == CatGroup.OTHER_CLAN and other_clan and ID != other_clan.group_ID:
                 continue
             possible_groups.append(ID)
 
