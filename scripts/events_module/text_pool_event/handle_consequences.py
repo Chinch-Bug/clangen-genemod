@@ -28,6 +28,7 @@ from scripts.cat.microservices.conditions import (
 from scripts.config import get_config
 from scripts.events_module.consequences import unpack_rel_block, check_stolen_vitality
 from scripts.events_module.future.prep_and_trigger import prep_future_event
+from scripts.events_module.patrol.create_new_cat import updated_create_new_cat
 from scripts.events_module.parameter_dicts import SupplyDict
 from scripts.events_module.relationship import relation_events
 from scripts.clan_package.settings import get_clan_setting
@@ -51,11 +52,15 @@ def execute_outcome(
     clan = game.clan,
     other_clan: OtherClan = None,
     tags=None,
-):
+) -> tuple[str, str]:
     """
     Executes the outcome, applying any specified consequences.
+    If new cats are created, event_involved_cats *will* be modified to add the newly created cats.
     :returns: Outcome text, results text, list of created rel logs (might be empty)
     """
+
+    # Must start with cat creation.
+    create_needed_cats(event, event_involved_cats, clan, other_clan)
 
     rel_results = {}
     chosen_string = choice(event.strings)
@@ -279,6 +284,33 @@ def _handle_multiclan(
                 if adoptive_parents:
                     cat.create_inheritance_new_cat()
 
+def create_needed_cats(
+    event: TextPoolEvent,
+    event_involved_cats: dict[str, Union[Cat, list[Cat]]],
+    clan,
+    other_clan: OtherClan = None,
+):
+    """
+    Creates needed cats for the event, who are not already in event_involved_cats.
+    Modifies event_involved_cats with the new cats.
+    """
+    for abbr, constraints in event.involved_cats.items():
+        # Only create cats who haven't already been assigned in event_involved_cats.
+        if abbr in event_involved_cats or (game.clan.clancount == "singleclan" and "multiclan_only" in constraints["can_create_new_cat"].get("multiclan_cat", [])):
+            continue
+
+        event_involved_cats[abbr] = updated_create_new_cat(
+            option_dict=constraints,
+            involved_cats=event_involved_cats,
+            clan=clan,
+            other_clan=other_clan,
+        )
+
+        if len(event_involved_cats[abbr]) == 1:
+            # if this is a list of a single cat, then we take them out of the list
+            event_involved_cats[abbr] = event_involved_cats[abbr][0]
+
+
 def _handle_accessories(
     event: TextPoolEvent,
     event_involved_cats: dict[str, Union[Cat, list[Cat]]],
@@ -411,7 +443,8 @@ def _handle_meeting(
 
     for c in met:
         c.status.change_standing(CatStanding.KNOWN, CatGroup.PLAYER_CLAN_ID)
-        get_new_thought(c, CatThought.ON_MEETING)
+        if c.status.is_outsider:
+            get_new_thought(c, CatThought.ON_MEETING)
 
     return i18n.t(
         "screens.patrol.met_outsider",

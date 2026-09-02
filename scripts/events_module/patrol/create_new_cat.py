@@ -174,7 +174,7 @@ def updated_create_new_cat(
             status["rank"] = choice([r for r in [*CatRank] if r.is_any_clancat_rank()])
 
     # handle applying an age for litters if one wasn't specified
-    is_litter = option_dict["can_create_new_cat"].get("become_litter")
+    is_litter = option_dict.get("can_create_new_cat", {}).get("become_litter")
     if is_litter:
         if not status.get("age") or not status["age"].is_baby():
             status["age"] = choice((CatAge.NEWBORN, CatAge.KITTEN))
@@ -192,19 +192,19 @@ def updated_create_new_cat(
     blood_parents: list[Cat] = []
     adoptive_parents: list[Cat] = []
 
-    for p in option_dict["can_create_new_cat"].get("assign_blood_parent", []):
+    for p in option_dict.get("can_create_new_cat", {}).get("assign_blood_parent", []):
         if p in involved_cats:
             if isinstance(involved_cats[p], list):
                 blood_parents.extend(involved_cats[p])
             else:
                 blood_parents.append(involved_cats[p])
-    for p in option_dict["can_create_new_cat"].get("assign_sibling", []):
+    for p in option_dict.get("can_create_new_cat", {}).get("assign_sibling", []):
         if p in involved_cats:
             if isinstance(involved_cats[p], list):
                 blood_parents.append(Cat.fetch_cat(involved_cats[p][0].parent2))
             else:
                 blood_parents.append(Cat.fetch_cat(involved_cats[p].parent2))
-    for p in option_dict["can_create_new_cat"].get("assign_adoptive_parent", []):
+    for p in option_dict.get("can_create_new_cat", {}).get("assign_adoptive_parent", []):
         if p in involved_cats:
             if isinstance(involved_cats[p], list):
                 adoptive_parents.extend(involved_cats[p])
@@ -230,7 +230,7 @@ def updated_create_new_cat(
             bp.pelt.scars.remove("TNR")
 
     for i in range(num_of_cats):
-        if status.get("rank") and status["rank"] in [CatRank.NEWBORN, CatRank.KITTEN] or status.get("age") and status["age"].is_baby():
+        if status.get("rank") and status["rank"] in [CatRank.NEWBORN, CatRank.KITTEN] or status.get("age") and status["age"].is_baby() or blood_parents:
             generated_parents = create_bio_parents(
                 Cat, flip=True if blood_parents and 'Y' in blood_parents[0].phenotype.sexgene else False, second_parent=not blood_parents, age=blood_parents[0].moons if blood_parents else None, clan=status["group_ID"] if status.get("social") == CatSocial.CLANCAT else None)
             if not blood_parents:

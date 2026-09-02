@@ -9,7 +9,7 @@ from scripts.events_module.patrol.patrol_event import PatrolEvent
 from scripts.events_module.text_pool_event.check_general_constraints import (
     passes_general_constraints,
 )
-from scripts.events_module.text_pool_event.find_involved_cats import find_or_create_cats
+from scripts.events_module.text_pool_event.find_involved_cats import find_cats
 from scripts.events_module.text_pool_event.text_pool_event import TextPoolEvent
 from scripts.game_structure.localization import load_lang_resource
 
@@ -30,7 +30,8 @@ def get_valid_event(
     frequency_active: bool = True,
 ) -> tuple[Optional[PatrolEvent | TextPoolEvent], dict]:
     """
-    Check given possible_events against current game state and involved cats. Returns a valid event and involved cats.
+    Check given possible_events against current game state and involved cats. Returns a valid event,
+        involved cats, and cats that need to be created.
     :param primary_cat: The "main" cat of the event. For patrols this is the patrol leader.
     :param involved_cats: The dict of involved cats. Key is cat abbreviation, value is cat object.
     :param interactable_cats: List of cat objects who can participate in this event
@@ -102,7 +103,7 @@ def get_valid_event(
                     continue
 
                 # otherwise we've failed to find anything so we send back and origin handles it
-                return None, {}
+                return (None, {})
 
             test_event = choices(events, [x.weight for x in events])[0]
 
@@ -126,23 +127,22 @@ def get_valid_event(
 
         # CHECK CAT CONSTRAINTS
         if cat_constraints_active:
-            temp_involved_cats = find_or_create_cats(
+            temp_involved_cats, will_create_how_many = find_cats(
                 interactable_cats=interactable_cats,
                 involved_cats=temp_involved_cats,
                 outside_cats=outside_cats,
                 event=test_event,
                 other_clan=other_clan,
                 clan=clan,
-                allow_new_cat_creation=allow_new_cat_creation,
             )
-            if not temp_involved_cats:
+            if not (temp_involved_cats or will_create_how_many):
                 tested_events.add(test_event.event_id)
                 continue
 
         chosen_event = test_event
         involved_cats = temp_involved_cats
 
-    return chosen_event, temp_involved_cats
+    return (chosen_event, involved_cats)
 
 
 def load_text_pool_events(path: str) -> list[TextPoolEvent]:

@@ -37,7 +37,7 @@ from scripts.events_module.text_pool_event.check_general_constraints import (
     passes_general_constraints,
 )
 from scripts.events_module.text_pool_event.event_retrieval import get_valid_event
-from scripts.events_module.text_pool_event.find_involved_cats import find_or_create_cats
+from scripts.events_module.text_pool_event.find_involved_cats import find_cats
 from scripts.events_module.text_pool_event.text_pool_event import TextPoolEvent
 from scripts.config import get_config
 from scripts.game_structure import game
@@ -129,6 +129,7 @@ class Patrol:
 
         # Find valid patrol
         self.patrol_event = self._get_possible_patrol(patrol_type)
+        self._create_needed_cats()
 
         # Return text adjusted patrol intro
         return event_text_adjust(
@@ -165,6 +166,14 @@ class Patrol:
                 return "Error - no event chosen", "", [], None
 
         return self.determine_outcome(antagonize=(path == PatrolChoice.ANTAGONIZE))
+
+    def _create_needed_cats(self):
+        """
+        Creates needed cats for the patrol start.  In its own function for unit testing purposes.
+        """
+        handle_consequences.create_needed_cats(
+            self.patrol_event, self.involved_cats, self.clan, self.other_clan
+        )
 
     def _add_patrol_cats(self, patrol_cats: List[Cat]) -> None:
         """
@@ -635,17 +644,17 @@ class Patrol:
         involved_cats = self.outcome_cats[
             PatrolOutcome.SUCCESS if success else PatrolOutcome.FAILURE
         ]
-        involved_cats = find_or_create_cats(
+        involved_cats, will_create_how_many = find_cats(
             interactable_cats=involved_cats["patrol_cats"],
             involved_cats=involved_cats,
             outside_cats=outside_cats,
             event=chosen_outcome,
             clan=self.clan,
-            other_clan=self.other_clan,
-            check_already_assigned_cats=False,  # these cats are already correct, we don't need to check them again
+            other_clan=self.other_clan
         )
 
         print(f"PATROL ID: {self.patrol_event.event_id} | SUCCESS: {success}")
+        print(f"Success Outcome: {success_outcome} | Failure Outcome: {fail_outcome}")
         print(
             f"Patrol Frequency: {self.patrol_event.frequency} | Patrol Weight: {self.patrol_event.weight}"
         )

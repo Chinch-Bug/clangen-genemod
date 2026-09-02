@@ -195,7 +195,8 @@ class TestInvolvedCats(unittest.TestCase):
         )
 
         self.patrol_class._add_patrol_cats([war1])
-        self.patrol_class._get_valid_patrol([patrol])
+        self.patrol_class.patrol_event = self.patrol_class._get_valid_patrol([patrol])
+        self.patrol_class._create_needed_cats()
 
         self.assertEqual(
             outsider1,
@@ -363,10 +364,8 @@ class TestOutcomeExecution(unittest.TestCase):
                 types=["hunting"],
                 intro_strings=["test"],
                 decline_strings=["test"],
-                involved_cats={
-                    "n_c0": InvolvedCatDict(can_create_new_cat={}, age=[CatAge.ADULT]),
-                },
-                success_outcomes=[{"strings": [""], "join": [JoinDict(cats=["n_c0"])]}],
+                success_outcomes=[{"strings": [""], "involved_cats" : {"n_c0": InvolvedCatDict(can_create_new_cat={}, age=[CatAge.ADULT]),
+                }, "join": [JoinDict(cats=["n_c0"])]}],
                 fail_outcomes=[{"strings": ["test"]}],
             )
             self.patrol_class._add_patrol_cats([war1])
