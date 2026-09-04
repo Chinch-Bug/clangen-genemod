@@ -352,6 +352,7 @@ class Name:
             "silver shaded" : ["WHITE"]
         }
         
+        namer = Namer([], [], self.moons, self.phenotype, self.chimpheno)
         params = namer.parse_chimera() if self.chimpheno else namer.get_categories(self.phenotype)
 
         colours = colour_mappings[params[0]]
