@@ -54,8 +54,9 @@ def get_patrol_list(
             possible_patrols.extend(_load_file(f"{path}new_cat_{outsider_rep}.json"))
 
     # DISASTERS
-    if get_clan_setting("disasters"):
-        possible_patrols.extend(_load_file(f"{path}disaster.json"))
+    if not int(getrandbits(2)):
+        if get_clan_setting("disasters"):
+            possible_patrols.extend(_load_file(f"{path}disaster.json"))
 
     return possible_patrols
 

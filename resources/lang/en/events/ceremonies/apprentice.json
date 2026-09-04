@@ -1034,7 +1034,8 @@
                     ]
                 }
             },
-            "r_c0": {}
+            "r_c0": {},
+            "r_c1": {}
         },
         "strings": [
             "Newly apprenticed m_c can't help but squeak when {PRONOUN/m_c/poss} mentor's name is announced. {PRONOUN/m_c/subject/CAP} {VERB/m_c/run/runs} with {PRONOUN/m_c/poss} ears lowered in embarrassment to touch noses with r_c0.",
@@ -1052,6 +1053,18 @@
                 "mutual": false,
                 "constraints": [
                     "app/mentor"
+                ]
+            },
+            {
+                "cats_from": [
+                    "m_c"
+                ],
+                "cats_to": [
+                    "r_c1"
+                ],
+                "mutual": false,
+                "constraints": [
+                    "child/parent"
                 ]
             }
         ]
@@ -1071,7 +1084,9 @@
                     ]
                 }
             },
-            "r_c0": {}
+            "r_c0": {
+                "status": ["-leader"]
+            }
         },
         "strings": [
             "On (old_name)'s way to the leader, {PRONOUN/m_c/subject} {VERB/m_c/make/makes} a big scene in front of {PRONOUN/m_c/poss} assembled Clanmates. The leader assigns {PRONOUN/m_c/object} to r_c0, who looks wary of mentoring a pawful like m_c."

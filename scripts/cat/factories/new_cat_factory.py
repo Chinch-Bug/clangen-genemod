@@ -371,7 +371,7 @@ class NewCatFactory(BaseCatFactory, ABC):
                 phenotype.munch[1] = "mk"
             if phenotype.manx[1] not in ['m', 'ab']:
                 phenotype.manx[1] = phenotype.manx[1].lower()
-            if 'NoDBE' not in phenotype.pax3 and 'DBEalt' not in phenotype.pax3:
+            if 'NoDBE' not in phenotype.pax3 and 'DBEalt' not in phenotype.pax3 and phenotype.pax3 != ["DBEcel", "DBEcel"]:
                 phenotype.pax3[0] = 'DBEalt'
 
         if (cls.rng.randint(1, gene_config["intersex"]) == 1) or (chimerapheno and xor('Y' in phenotype.sexgene, 'Y' in chimerapheno.sexgene)):

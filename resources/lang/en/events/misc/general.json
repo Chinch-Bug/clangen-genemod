@@ -14881,6 +14881,9 @@
                 "senior"
             ]
         },
+        "multiclan_cat": [
+            ["status:leader"]
+        ],
         "other_clan": {
             "current_rep": [
                 "ally"

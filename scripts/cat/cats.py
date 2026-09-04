@@ -261,7 +261,7 @@ class Cat:
         self.faded = faded  # This is only used to flag cats that are faded, but won't be added to the faded list until
         # the next save.
 
-        if self.phenotype.munch[1] == "Mk" or self.phenotype.sexgene[0] == "Y" or (self.phenotype.manx[1] == "Ab" or self.phenotype.manx[1] == "M") or ('NoDBE' not in self.phenotype.pax3 and 'DBEalt' not in self.phenotype.pax3):
+        if self.phenotype.munch[1] == "Mk" or self.phenotype.sexgene[0] == "Y" or (self.phenotype.manx[1] == "Ab" or self.phenotype.manx[1] == "M") or ('NoDBE' not in self.phenotype.pax3 and 'DBEalt' not in self.phenotype.pax3 and self.phenotype.pax3 != ["DBEcel", "DBEcel"]):
             if not self.dead:
                 self.dead = True
 

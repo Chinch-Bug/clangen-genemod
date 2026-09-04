@@ -30,6 +30,7 @@ from scripts.events_module.consequences import unpack_rel_block, check_stolen_vi
 from scripts.events_module.future.prep_and_trigger import prep_future_event
 from scripts.events_module.patrol.create_new_cat import updated_create_new_cat
 from scripts.events_module.parameter_dicts import SupplyDict
+from scripts.events_module.patrol.patrol_event import PatrolEvent
 from scripts.events_module.relationship import relation_events
 from scripts.clan_package.settings import get_clan_setting
 from scripts.events_module.text_adjust import (
@@ -285,7 +286,7 @@ def _handle_multiclan(
                     cat.create_inheritance_new_cat()
 
 def create_needed_cats(
-    event: TextPoolEvent,
+    event: TextPoolEvent | PatrolEvent,
     event_involved_cats: dict[str, Union[Cat, list[Cat]]],
     clan,
     other_clan: OtherClan = None,

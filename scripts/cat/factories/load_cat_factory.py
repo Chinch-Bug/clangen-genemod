@@ -258,7 +258,7 @@ class LoadCatFactory(BaseCatFactory):
                 phenotype.munch[1] = "mk"
             if phenotype.manx[1] not in ['m', 'ab']:
                 phenotype.manx[1] = phenotype.manx[1].lower()
-            if 'NoDBE' not in phenotype.pax3 and 'DBEalt' not in phenotype.pax3:
+            if 'NoDBE' not in phenotype.pax3 and 'DBEalt' not in phenotype.pax3 and phenotype.pax3 != ["DBEcel", "DBEcel"]:
                 phenotype.pax3[0] = 'DBEalt'
 
         phenotype.PhenotypeOutput(phenotype.white_pattern)

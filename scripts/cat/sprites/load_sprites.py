@@ -23,6 +23,27 @@ class Sprites:
     clan_symbols = []
     empty_indexes = []
 
+    @classmethod
+    def load_pelt_recipes(cls):
+        cls.PELT_RECIPES = {}
+        for file in os.listdir("sprites/dicts/pelt_recipes"):
+            with open(
+                os.path.join("sprites/dicts/pelt_recipes", file), "r", encoding="utf-8"
+            ) as read_file:
+                temp_read = ujson.loads(read_file.read())
+
+            cls.PELT_RECIPES[temp_read["name"]] = temp_read
+
+        with open(
+            "sprites/dicts/pelt_to_recipe.json", "r", encoding="utf-8"
+        ) as read_file:
+            cls.PELT_TO_RECIPE = ujson.loads(read_file.read())
+
+        with open(
+            "sprites/dicts/pelt_color_palettes.json", "r", encoding="utf-8"
+        ) as read_file:
+            cls.PELT_COLOR_PALETTES = ujson.loads(read_file.read())
+
     with open(
         "sprites/dicts/pose_sprite_data.json", "r", encoding="utf-8"
     ) as read_file:
@@ -724,6 +745,8 @@ class Sprites:
             )
         )
 
+
+Sprites.load_pelt_recipes()
 
 # CREATE INSTANCE
 sprites = Sprites()

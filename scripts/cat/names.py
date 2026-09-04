@@ -516,6 +516,37 @@ class Name:
         else:
             """Generate possible suffix."""
             pelt = []
+
+            colour_mappings = {
+                "black": ["BLACK"],
+                "blue": ["GREY", "DARKGREY"],
+                "chocolate": ["BROWN", "GOLDEN-BROWN", "DARKBROWN", "CHOCOLATE"],
+                "lilac": ["PALEGREY", "SILVER", "LILAC"],
+                "cinnamon": ["SIENNA", "DARKGINGER", "GOLDEN-BROWN"],
+                "fawn": ["LIGHTBROWN"],
+                "ginger": ["GINGER", "DARKGINGER"],
+                "cream": ["CREAM", "PALEGINGER"],
+                "white": ["WHITE"],
+                "silver shaded": ["WHITE"]
+            }
+
+            params = namer.parse_chimera() if self.chimpheno else namer.get_categories(self.phenotype)
+
+            colours = colour_mappings[params[0]]
+            if params[2]['type'] == 'silver' and params[0] not in ['ginger', 'cream']:
+                colours.append('PALEGREY')
+                colours.append('SILVER')
+            if params[2]['type'] == 'dark' and params[0] == "black":
+                colours.append('GHOST')
+            if params[2]['type'] == 'golden' and params[0] not in ['ginger', 'cream']:
+                colours.append('GOLDEN')
+            if self.phenotype.ruftype == 'rufoused' and params[0] == 'ginger':
+                colours.append('DARKGINGER')
+            if self.phenotype.ruftype == 'low' and params[0] == 'ginger':
+                colours.append('PALEGINGER')
+            if params[2]['pattern'] != '' and params[2]['type'] == 'regular' and params[0] == "black":
+                colours.append('BROWN')
+                colours.append('DARKBROWN')
             if self.phenotype:
                 if (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4):
                     if self.phenotype.tabby != "":
@@ -550,11 +581,14 @@ class Name:
                 tries += 1
                 if tries > 20:
                     break
-                named_after_pelt = not random.getrandbits(2)  # Chance for True is '1/8'.
+                named_after_pelt = not random.getrandbits(3)  # Chance for True is '1/8'.
+                named_after_colour = not random.getrandbits(3)
                 named_after_biome = not random.getrandbits(3)  # 1/8
                 # Pelt name only gets used if there's an associated suffix.
                 if named_after_pelt and len(pelt) > 0:
                     self.suffix = random.choice(self.names_dict["pelt_suffixes"][random.choice(pelt)])
+                if named_after_colour and len(colours) > 0:
+                    self.suffix = random.choice(self.names_dict["colour_suffixes"][random.choice(colours)])
                 elif named_after_biome:
                     if biome in self.names_dict["biome_suffixes"]:
                         self.suffix = random.choice(

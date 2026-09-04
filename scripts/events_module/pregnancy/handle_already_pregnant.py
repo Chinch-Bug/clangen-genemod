@@ -216,7 +216,7 @@ def handle_two_moon_pregnant(cat: Cat, clan):
         if surrogate:
             for x in surrogate:
                 kit.surrogate_parents.append(x.ID)
-        if random() < stillborn_chance or kit.phenotype.sexgene[0] == "Y" or kit.phenotype.manx[1] == "Ab" or kit.phenotype.manx[1] == "M" or kit.phenotype.munch[1] == "Mk" or ('NoDBE' not in kit.phenotype.pax3 and 'DBEalt' not in kit.phenotype.pax3):
+        if random() < stillborn_chance or kit.phenotype.sexgene[0] == "Y" or kit.phenotype.manx[1] == "Ab" or kit.phenotype.manx[1] == "M" or kit.phenotype.munch[1] == "Mk" or ('NoDBE' not in kit.phenotype.pax3 and 'DBEalt' not in kit.phenotype.pax3 and kit.phenotype.pax3 != ["DBEcel", "DBEcel"]):
             kit.moons = 0
             if not kit.dead:
                 kit.dead = True

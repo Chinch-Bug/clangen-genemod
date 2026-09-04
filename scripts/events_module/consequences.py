@@ -1088,9 +1088,9 @@ def create_new_cat(
             adoptive_parents=adoptive_parents if adoptive_parents else [],
         )
 
-        if new_cat.phenotype.manx[1] in ["Ab", "M"] or new_cat.phenotype.sexgene[0] == "Y" or new_cat.phenotype.munch[1] == "Mk" or ('NoDBE' not in new_cat.phenotype.pax3 and 'DBEalt' not in new_cat.phenotype.pax3):
+        if new_cat.phenotype.manx[1] in ["Ab", "M"] or new_cat.phenotype.sexgene[0] == "Y" or new_cat.phenotype.munch[1] == "Mk" or ('NoDBE' not in new_cat.phenotype.pax3 and 'DBEalt' not in new_cat.phenotype.pax3 and new_cat.phenotype.pax3 != ["DBEcel", "DBEcel"]):
             if len(created_cats) == 0:
-                while new_cat.phenotype.manx[1] in ["Ab", "M"] or new_cat.phenotype.sexgene[0] == "Y" or new_cat.phenotype.munch[1] == "Mk" or ('NoDBE' not in new_cat.phenotype.pax3 and 'DBEalt' not in new_cat.phenotype.pax3):
+                while new_cat.phenotype.manx[1] in ["Ab", "M"] or new_cat.phenotype.sexgene[0] == "Y" or new_cat.phenotype.munch[1] == "Mk" or ('NoDBE' not in new_cat.phenotype.pax3 and 'DBEalt' not in new_cat.phenotype.pax3 and new_cat.phenotype.pax3 != ["DBEcel", "DBEcel"]):
                     del Cat.all_cats[new_cat.ID]
                     new_cat = NewCatFactory.create_cat(
                     moons=moons,

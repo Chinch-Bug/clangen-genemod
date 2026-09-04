@@ -350,6 +350,9 @@ class Patrol:
             print("No romantic event")
             return False
 
+        if romantic_event == self.debug_patrol_id:
+            return True
+
         chance_of_romance_patrol = get_config(
             "patrol_generation.chance_of_romance_patrol"
         )
@@ -432,7 +435,7 @@ class Patrol:
         chosen_patrol: Optional[PatrolEvent] = None
 
         # first we see if we can get a romantic patrol
-        if romantic_patrols and not self.debug_patrol_id:
+        if romantic_patrols:
             chosen_patrol = self._get_valid_patrol(
                 romantic_patrols.copy(), find_romance=True
             )
@@ -473,11 +476,7 @@ class Patrol:
             chosen_patrol, involved_cats = get_valid_event(
                 primary_cat=self.involved_cats["p_l"],
                 involved_cats=self.involved_cats,
-                interactable_cats=[
-                    c
-                    for c in self.involved_cats["patrol_cats"]
-                    if c != self.involved_cats["p_l"]
-                ],
+                interactable_cats=self.involved_cats["patrol_cats"],
                 possible_events=patrols_to_test,
                 other_clan=self.other_clan,
                 clan=self.clan,
@@ -586,11 +585,7 @@ class Patrol:
         chosen_success, self.outcome_cats[PatrolOutcome.SUCCESS] = get_valid_event(
             primary_cat=self.involved_cats["p_l"],
             involved_cats=self.involved_cats,
-            interactable_cats=[
-                c
-                for c in self.involved_cats["patrol_cats"]
-                if c != self.involved_cats["p_l"]
-            ],
+            interactable_cats=[c for c in self.involved_cats["patrol_cats"]],
             possible_events=success_outcomes,
             clan=self.clan,
             other_clan=self.other_clan,
