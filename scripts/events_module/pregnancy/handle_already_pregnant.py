@@ -610,8 +610,8 @@ def _handle_main_birth_event(
         # including the dead mate version
         # because of a bug where the game can't find any birthing events
         # if the cheated mate is dead
-        else:
-            cat_dict["mc_mate"] = dead_mate
+        elif dead_mate:
+            cat_dict["mc_mate"] = choice(dead_mate)
             involved_cats.append(dead_mate.ID)
             event_list.append(
                 choice(events["birth"]["affair_mated_dead_mate"]))

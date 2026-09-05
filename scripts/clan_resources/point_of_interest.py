@@ -1,6 +1,6 @@
 from enum import StrEnum
 from random import choice
-from typing import Dict, List, Literal
+from typing import Dict, Union, List, Literal, Optional
 
 import ujson
 
@@ -26,11 +26,50 @@ class PoiType(StrEnum):
     TERRAIN = "terrain"
 
 
+def get_poi_from_constraints(
+    name: list[str] = None,
+    tags: list[str] = None,
+    category: Literal["gathering", "moonplace", "terrain"] = None,
+    clan = None
+) -> Optional[str]:
+    """
+    Returns the name of a poi that the Clan has access too and that matches the given constraints.
+    """
+    possible_poi = set()
+
+    if name:
+        possible_poi = set(name).intersection(get_poi_names_set(clan))
+    if tags:
+        tagged_poi = []
+        for tag in tags:
+            tagged_poi.extend(_poi_by_tags.get("shared", {}).get(tag, [])+_poi_by_tags.get(clan if clan else "shared", {}).get(tag, []))
+
+        if not tagged_poi:
+            return None
+
+        if possible_poi:
+            possible_poi.intersection(set(tagged_poi))
+        else:
+            possible_poi.update(set(tagged_poi))
+    if category:
+        possible_by_category = get_pois_by_category(category, clan)
+
+        if not possible_by_category:
+            return None
+
+        if possible_poi:
+            possible_poi.intersection(possible_by_category)
+        else:
+            possible_poi.update(possible_by_category)
+
+    return choice(list(possible_poi)) if possible_poi else None
+
+
 def get_poi_names_set(clan=None):
     return _poi_names.get("shared", set()).union(_poi_names.get(clan if clan else "shared", set()))
 
 def get_pois_by_category(category: Literal["gathering", "moonplace", "terrain"], clan=None):
-    return list(_poi_by_category[category].get("shared", set()).union(_poi_by_category[category].get(clan if clan else "shared", set())))
+    return list(_poi_by_category.get(category, {}).get("shared", set()).union(_poi_by_category.get(category, {}).get(clan if clan else "shared", set())))
 
 def get_poi_tags_set(clan=None):
     """
@@ -82,6 +121,13 @@ def add_poi(name, elements, clan=None):
     _poi_tags[clan if clan else "shared"].update(tag.split(":", 1)[0] for tag in elements["tags"] if ":" in tag)
 
     for tag in elements["tags"]:
+        if ":" in tag:
+            split_tag = tag.split(":", 1)[0]
+            if split_tag in _poi_by_tags:
+                _poi_by_tags[clan if clan else "shared"][split_tag].append(name)
+            else:
+                _poi_by_tags[clan if clan else "shared"][split_tag] = [name]
+
         if tag in _poi_by_tags:
             _poi_by_tags[clan if clan else "shared"][tag].append(name)
         else:

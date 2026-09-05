@@ -78,8 +78,6 @@ def pronoun_repl(m, cat_pronouns_dict, raise_exception=False, clan=None):
                         raise e
                     continue
             d = determine_plural_pronouns(catlist)
-        elif inner_details[0].upper() == "POI":
-            return poi_repl(inner_details, clan=cat_pronouns_dict["point_of_interest"])
         else:
             try:
                 d = cat_pronouns_dict[inner_details[1]][1]
@@ -127,28 +125,6 @@ def pronoun_repl(m, cat_pronouns_dict, raise_exception=False, clan=None):
         logger.exception("Failed to find pronoun: " + m.group(1))
         print("Failed to find pronoun:", m.group(1))
         return "error2"
-
-
-def poi_repl(inner_details, clan=None):
-    """
-    Replaces a point of interest tag with the appropriate POI
-    :param inner_details:
-    :return:
-    """
-    base_string = "points_of_interest."
-    if inner_details[1].upper() == "TAG":
-        base_string += get_random_poi_by_tag(inner_details[2], clan=clan)
-    elif inner_details[1].upper() == "NAME":
-        names = set(inner_details[2].split(","))
-        base_string += (
-            choice(list(names.intersection(get_poi_names_set(clan))))
-            if names.intersection(get_poi_names_set(clan))
-            else "MISSING_POI"
-        )
-    elif inner_details[1].upper() == "CATEGORY":
-        base_string += get_random_poi_by_category(inner_details[2].lower(), clan)
-
-    return i18n.t(base_string)
 
 
 def name_repl(m, cat_dict):
@@ -383,6 +359,7 @@ def event_text_adjust(
     clan=None,
     other_clan = None,
     chosen_herb: str = None,
+    chosen_poi: str = None,
 ):
     """
     handles finding abbreviations in the text and replacing them appropriately, returns the adjusted text
@@ -485,12 +462,12 @@ def event_text_adjust(
             )
         replace_dict["med_name"] = (str(med.name), choice(med.pronouns))
 
-    if "POI" in text:
-        replace_dict["point_of_interest"] = clan.group_ID
-
     # assign all names and pronouns
     if replace_dict:
         text = process_text(text, replace_dict)
+
+    if "POI" in text:
+        text = text.replace("POI", i18n.t(f"points_of_interest.{chosen_poi}"))
 
     # multi_cat
     if "multi_cat" in text:

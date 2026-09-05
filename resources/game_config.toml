@@ -808,7 +808,7 @@ dev_tools = false
   # if you have modded kits on, this is the highest modifier permaqueens can have for lowering kitten death chances
   # 1 = completely negate kit death boosts, 0 = no influence at all, 0.5 - half the chance of death, etc.
   # will be less effective if there's not enough permaqueens in your Clan, however
-  max_queen_influence = 0.2
+  max_queen_influence = 0.4
 
   # 0-1 chance for a kit of a certain age to die on moonskip if modded litters is on 
   [death_related.kit_death_chances]

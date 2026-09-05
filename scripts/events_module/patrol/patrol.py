@@ -15,6 +15,7 @@ from scripts.clan_package.settings import get_clan_setting
 from scripts.clan_package.get_clan_cats import get_living_clan_cat_count
 from scripts.cat_relations.enums import RelType
 from scripts.clan import get_temper_alignment
+from scripts.clan_resources.point_of_interest import get_poi_from_constraints
 from scripts.config import get_config
 from scripts.events_module.consequences import gather_cat_objects
 from scripts.events_module.event_filters import (
@@ -39,7 +40,6 @@ from scripts.events_module.text_pool_event.check_general_constraints import (
 from scripts.events_module.text_pool_event.event_retrieval import get_valid_event
 from scripts.events_module.text_pool_event.find_involved_cats import find_cats
 from scripts.events_module.text_pool_event.text_pool_event import TextPoolEvent
-from scripts.config import get_config
 from scripts.game_structure import game
 from scripts.game_structure.game.settings import game_setting_get
 from scripts.special_dates import SpecialDate, is_today
@@ -95,10 +95,10 @@ class Patrol:
         """Holds all the cats that are on the patrol"""
         self.involved_cats: dict[str, Union[list[Cat], Cat]] = {}
         """Cats directly involved and referenced in the event. Keys are their text abbreviation, values are the associated cat objects"""
-        self.outcome_cats: dict[PatrolOutcome, dict] = {
-            PatrolOutcome.SUCCESS: {},
-            PatrolOutcome.FAILURE: {},
-        }
+        self.outcome_cats: TypedDict(
+            "outcome_cats", {"success": dict[str, Cat], "failure": dict[str, Cat]}
+        ) = {"success": {}, "failure": {}}
+        self.chosen_poi = None
 
     def begin_patrol(self, patrol_cats: List[Cat], patrol_type: str, clan) -> str:
         """
@@ -131,6 +131,13 @@ class Patrol:
         self.patrol_event = self._get_possible_patrol(patrol_type)
         self._create_needed_cats()
 
+        if self.patrol_event.poi:
+            self.chosen_poi = get_poi_from_constraints(
+                self.patrol_event.poi.get("name"),
+                self.patrol_event.poi.get("tags"),
+                self.patrol_event.poi.get("category"),
+            )
+
         # Return text adjusted patrol intro
         return event_text_adjust(
             Cat,
@@ -138,6 +145,7 @@ class Patrol:
             involved_cat_dict=self.involved_cats,
             clan=self.clan,
             other_clan=self.other_clan,
+            chosen_poi=self.chosen_poi,
         )
 
     def proceed_patrol(
@@ -157,6 +165,7 @@ class Patrol:
                         involved_cat_dict=self.involved_cats,
                         clan=self.clan,
                         other_clan=self.other_clan,
+                        chosen_poi=self.chosen_poi,
                     ),
                     "",
                     [],
@@ -663,6 +672,7 @@ class Patrol:
             involved_cats,
             self.clan,
             self.other_clan,
+            self.chosen_poi,
             self.patrol_event.tags,
         ) + (self.get_patrol_art(chosen_outcome),)
 
