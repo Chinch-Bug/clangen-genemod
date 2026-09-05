@@ -13,7 +13,8 @@ from scripts.game_structure.game.switches import (
     Switch,
 )
 from scripts.game_structure.game.switches import switch_generator
-from scripts.game_structure import game, constants
+from scripts.game_structure import game
+from scripts.config import CONFIG
 from scripts.screens import all_screens
 from scripts.screens.enums import GameScreen
 from scripts.ui.windows.dev_tool_windows.white_patch_tool import WhitePatchToolWindow
@@ -131,7 +132,7 @@ class DevToolsCommand(Command):
 
         try:
             if args[0] == "enable":
-                constants.CONFIG["dev_tools"] = True
+                CONFIG["dev_tools"] = True
                 add_output_line_to_log(
                     "Enabled developer tools for the current session"
                 )

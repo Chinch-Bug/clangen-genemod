@@ -5,7 +5,7 @@ import random
 import statistics
 from os.path import exists as path_exists
 from random import choice, randint, choices
-from typing import List, Tuple, Optional, Union
+from typing import List, Tuple, Optional, Union, TypedDict
 
 import pygame
 
