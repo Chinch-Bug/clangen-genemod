@@ -1285,7 +1285,7 @@ def generate_sprite(
 
             if phenotype.white_pattern:
                 for p in phenotype.white_pattern:
-                    if ('dorsal' in p or p.startswith("STRIPE_")) and "break/" not in p:
+                    if p and('dorsal' in p or p.startswith("STRIPE_")) and "break/" not in p:
                         tintedwhitesprite.blit(sprites.sprites[p + cat_sprite], (0, 0))
 
             

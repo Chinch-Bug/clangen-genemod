@@ -422,7 +422,7 @@ class Pelt:
             white_pattern = []
             if 'wt' in KIT:
                 if KIT[1] not in ['ws', 'wt'] and KITgrade < 3:
-                    white_pattern.append("dorsal1", "STRIPE_SMALL")
+                    white_pattern.append(choice(["dorsal1", "STRIPE_SMALL"]))
                 elif KIT[1] not in ['ws', 'wt'] and KITgrade < 5:
                     white_pattern.append(choice(["dorsal1", "STRIPE_SMALL", "dorsal2"]))
                 else:
