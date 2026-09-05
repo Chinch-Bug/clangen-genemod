@@ -23,10 +23,4 @@ for sheet in spritesheet_list:
                 for x in range(200):
                     if lineart.get_at((x, y))[3] > 200 and has_adjacent_pixels(current_sheet, int(spritex*200)+x, int(spritey*400)+y):
                         current_sheet.set_at((int(spritex*200)+x, int(spritey*400)+y), (255, 255, 255, has_adjacent_pixels(current_sheet, int(spritex*200)+x, int(spritey*400)+y)))
-    for spritey in range(sheet_y):
-        for spritex in range(sheet_x):
-            for y in range(400):
-                for x in range(200):
-                    if rexlines.get_at((x, y))[3] > 200 and has_adjacent_pixels(current_sheet, int(spritex*200)+x, int(spritey*400)+y):
-                        current_sheet.set_at((int(spritex*200)+x, int(spritey*400)+y), (255, 255, 255, has_adjacent_pixels(current_sheet, int(spritex*200)+x, int(spritey*400)+y)))
     pygame.image.save(current_sheet, sheet.replace(".png", "_gm.png"))

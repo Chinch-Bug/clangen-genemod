@@ -2277,7 +2277,7 @@ def get_highest_romantic_relation(
     max_love_value = 0
     current_max_relationship = None
     for rel in relationships:
-        if rel.romance < 0:
+        if rel.romance < 0 or not rel.cat_to:
             continue
         if exclude_mate and rel.cat_from.ID in rel.cat_to.mate:
             continue

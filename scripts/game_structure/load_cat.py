@@ -54,7 +54,7 @@ def accurate_porting(cat, info):
 
     additional_white = {
         "low": {
-            "1": ["RIGHTEAR", "LEFTEAR", "ESTRELLA", "BACKSPOT", "EYEBAGS"],
+            "1": ["RIGHTEAR", "LEFTEAR", "ESTRELLA", "BACKSPOT", "EYEBAGS", "MASK_MIN"],
             "2": ["EXTRA", "BLAZEMASK", "TEARS"],
             "3": ["TOPCOVER", "WINGS", "WOODPECKER", "FADEBELLY", "ROSINA"],
             "4": ["FADESPOTS", "MITAINE", "SKUNK", "BULLSEYE"],

@@ -630,7 +630,7 @@ class Phenotype(Genotype):
         tortie_low_patterns = self.def_tortie_low_patterns
         tortie_mid_patterns = self.def_tortie_mid_patterns
         tortie_high_patterns = self.def_tortie_high_patterns
-        tiny_patches = ["BACKSPOT", "BEARD", "BELLY", "BIB", "revBLACKSTAR", "BLAZE", "BLAZE_MIN", "BLAZEMASK", "revBOOTS", "CHESTSPECK", "ESTRELLA",
+        tiny_patches = ["BACKSPOT", "SADDLE_SMALL", "BEARD", "BELLY", "BIB", "revBLACKSTAR", "BLAZE", "BLAZE_MIN", "BLAZEMASK", "revBOOTS", "CHESTSPECK", "ESTRELLA",
                         "EYEBAGS", "revEYESPOT", "revHEART", "HONEY", "LEFTEAR_MID", "LEFTEAR_MOSTLY", "LEFTEAR_RING", "LEFTEAR_TIP", "LEFTEAR", "LITTLE", "PAWS", "REVERSEEYE", "REVERSEHEART", 
                         "RIGHTEAR_MID", "RIGHTEAR_MOSTLY", "RIGHTEAR_RING", "RIGHTEAR_TIP", "RIGHTEAR", "SCOURGE", "SPARKLE", "revTAIL", 'revTAILTWO', "TAILTIP", "TEARS", "TIP",
                         "TOES", "TOESTAIL", "VEE", "HELMET", "TAILTIP_T", "PAW_FR_T", "PAW_FL_CLOVERTAIL", "PAW_BR_WING", "PAW_BL_SPLOTCH", "UNDERPAWS_T", "BELLY_T", "BOTHEARS_T", 
@@ -664,7 +664,8 @@ class Phenotype(Genotype):
                     tortie_high_patterns = ["revANY", "revANYTWO", "BLOSSOMSTEP", "revBUB", "revBUDDY", "revBUSTER", "revCAKE", 
                                         "revCOW", "revCURVED", "DAPPLEPAW", "FCTWO", "FAROFA", "revGOATEE", "revHALFFACE", 
                                         "HAWKBLAZE", "LILTWO", "MISS", "MISTER", "revMOORISH", "OWL", "PANTS", "revPRINCE", 
-                                        "REVERSEPANTS", "RINGTAIL", "SAMMY", "SKUNK", "SPARROW", "TOPCOVER", "VEST", "WINGS"]*2 + tiny_patches
+                                        "REVERSEPANTS", "RINGTAIL", "SAMMY", "SKUNK", "SPARROW", "TOPCOVER", "VEST", "WINGS",
+                                        "ROSINA_REDUCED"]*2 + tiny_patches
                 elif i > 0 and randint(1, 3) == 1:
                     tortie_low_patterns = tiny_patches
                     tortie_mid_patterns = tiny_patches

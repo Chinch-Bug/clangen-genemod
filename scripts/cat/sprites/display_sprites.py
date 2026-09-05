@@ -1257,7 +1257,7 @@ def generate_sprite(
 
             if(phenotype.white_pattern != 'No' and phenotype.white_pattern):
                 for x in phenotype.white_pattern:
-                    if 'dorsal' not in x and not x.startswith("break/") and x not in vitiligo:
+                    if 'dorsal' not in x and not x.startswith("STRIPE_") and not x.startswith("break/") and x not in vitiligo:
                         whitesprite.blit(sprites.sprites[x + cat_sprite], (0, 0))
             if(phenotype.white_pattern != 'No' and phenotype.white_pattern):
                 for x in phenotype.white_pattern:
@@ -1284,10 +1284,9 @@ def generate_sprite(
             white_leathers.blit(leathers, (0, 0), special_flags=pygame.BLEND_RGBA_MIN)
 
             if phenotype.white_pattern:
-                if 'dorsal1' in phenotype.white_pattern:
-                    tintedwhitesprite.blit(sprites.sprites['dorsal1' + cat_sprite], (0, 0))
-                elif 'dorsal2' in phenotype.white_pattern:
-                    tintedwhitesprite.blit(sprites.sprites['dorsal2' + cat_sprite], (0, 0))
+                for p in phenotype.white_pattern:
+                    if ('dorsal' in p or p.startswith("STRIPE_")) and "break/" not in p:
+                        tintedwhitesprite.blit(sprites.sprites[p + cat_sprite], (0, 0))
 
             
             if is_today(SpecialDate.APRIL_FOOLS) and "Bs" in phenotype.april_fools.get("black_spotting", []):
