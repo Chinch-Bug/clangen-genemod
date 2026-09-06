@@ -79,7 +79,11 @@
             "Is eavesdropping on r_c",
             "Wonders how r_c is doing",
             "Wonders what r_c is up to"
-        ]
+        ],
+        "involved_cats": {
+            "m_c": {},
+            "r_c": {}
+        }
     },
     {
         "event_id": "gen_not_kit",

@@ -1756,10 +1756,11 @@ class Cat:
         if self.ID in mentor_cat.apprentice:
             mentor_cat.apprentice.remove(self.ID)
 
-        if self.ID not in mentor_cat.former_apprentices:
-            mentor_cat.former_apprentices.append(self.ID)
-        if mentor_cat.ID not in self.former_mentor:
-            self.former_mentor.append(mentor_cat.ID)
+        if self.moons > self.age_moons[CatAge.ADOLESCENT][0]:
+            if self.ID not in mentor_cat.former_apprentices:
+                mentor_cat.former_apprentices.append(self.ID)
+            if mentor_cat.ID not in self.former_mentor:
+                self.former_mentor.append(mentor_cat.ID)
         self.mentor = None
 
     def __add_mentor(self, new_mentor_id: str):

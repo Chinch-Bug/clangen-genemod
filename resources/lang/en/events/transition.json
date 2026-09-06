@@ -24,6 +24,8 @@
         "new_gender": [
             "trans male",
             "nonbinary",
+            "trans male",
+            "nonbinary",
             "agender"
         ]
     },
@@ -47,6 +49,8 @@
             }
         },
         "new_gender": [
+            "trans female",
+            "nonbinary",
             "trans female",
             "nonbinary",
             "agender"
@@ -74,6 +78,8 @@
         "new_gender": [
             "trans male",
             "nonbinary",
+            "trans male",
+            "nonbinary",
             "agender"
         ]
     },
@@ -97,6 +103,8 @@
             }
         },
         "new_gender": [
+            "trans female",
+            "nonbinary",
             "trans female",
             "nonbinary",
             "agender"
@@ -145,6 +153,8 @@
             }
         },
         "new_gender": [
+            "trans male",
+            "nonbinary",
             "trans male",
             "nonbinary", "agender"
         ],
@@ -210,6 +220,8 @@
             }
         },
         "new_gender": [
+            "trans female",
+            "nonbinary",
             "trans female",
             "nonbinary", "agender"
         ],
@@ -285,7 +297,7 @@
     },
     {
         "event_id": "gen_misc_transition_kittentononbinary",
-        "frequency": 4,
+        "frequency": 3,
         "location": [
             "any"
         ],
@@ -307,7 +319,7 @@
             }
         },
         "new_gender": [
-            "nonbinary", "agender"
+            "nonbinary", "nonbinary", "agender"
         ]
     },
     {
@@ -366,7 +378,7 @@
     },
     {
         "event_id": "gen_misc_transition_eldertomale",
-        "frequency": 4,
+        "frequency": 3,
         "location": [
             "any"
         ],
@@ -389,7 +401,7 @@
             }
         },
         "new_gender": [
-            "nonbinary", "agender"
+            "nonbinary", "nonbinary", "agender"
         ]
     },
     {
@@ -447,6 +459,8 @@
             }
         ],
         "new_gender": [
+            "trans female",
+            "nonbinary",
             "trans female",
             "nonbinary",
             "agender"
@@ -509,6 +523,8 @@
         "new_gender": [
             "trans male",
             "nonbinary",
+            "trans male",
+            "nonbinary",
             "agender"
         ]
     },
@@ -556,12 +572,14 @@
         "new_gender": [
             "trans female",
             "nonbinary",
+            "trans female",
+            "nonbinary",
             "agender"
         ]
     },
     {
         "event_id": "gen_misc_transition_nonbinaryacceptance",
-        "frequency": 4,
+        "frequency": 3,
         "location": [
             "any"
         ],
@@ -603,12 +621,13 @@
         ],
         "new_gender": [
             "nonbinary",
+            "nonbinary",
             "agender"
         ]
     },
     {
         "event_id": "gen_misc_transition_apprentice_to_nonbinary",
-        "frequency": 4,
+        "frequency": 3,
         "location": [
             "any"
         ],
@@ -651,6 +670,7 @@
             }
         ],
         "new_gender": [
+            "nonbinary",
             "nonbinary",
             "agender"
         ]
@@ -859,7 +879,7 @@
     },
     {
         "event_id": "gen_misc_transition_nobigdeal_to_nonbinary",
-        "frequency": 4,
+        "frequency": 3,
         "location": [
             "any"
         ],
@@ -909,6 +929,7 @@
             }
         ],
         "new_gender": [
+            "nonbinary",
             "nonbinary",
             "agender"
         ]
@@ -963,6 +984,7 @@
             }
         ],
         "new_gender": [
+            "nonbinary",
             "nonbinary",
             "agender"
         ],
@@ -1103,7 +1125,7 @@
     },
     {
         "event_id": "gen_misc_transition_calm_to_nonbinary",
-        "frequency": 4,
+        "frequency": 3,
         "location": [
             "any"
         ],
@@ -1151,6 +1173,7 @@
             }
         ],
         "new_gender": [
+            "nonbinary",
             "nonbinary",
             "agender"
         ]
@@ -1351,7 +1374,7 @@
     },
     {
         "event_id": "gen_misc_transition_growth_to_nonbinary",
-        "frequency": 4,
+        "frequency": 3,
         "location": [
             "any"
         ],
@@ -1393,12 +1416,13 @@
         ],
         "new_gender": [
             "nonbinary",
+            "nonbinary",
             "agender"
         ]
     },
     {
         "event_id": "gen_misc_transition_deadparent_to_nonbinary",
-        "frequency": 4,
+        "frequency": 3,
         "location": [
             "any"
         ],
@@ -1462,6 +1486,7 @@
             }
         ],
         "new_gender": [
+            "nonbinary",
             "nonbinary",
             "agender"
         ]
@@ -1667,6 +1692,8 @@
         "new_gender": [
             "trans female",
             "nonbinary",
+            "trans female",
+            "nonbinary",
             "agender"
         ]
     },
@@ -1733,6 +1760,8 @@
             }
         ],
         "new_gender": [
+            "trans male",
+            "nonbinary",
             "trans male",
             "nonbinary",
             "agender"
@@ -1842,6 +1871,8 @@
         "new_gender": [
             "trans male",
             "nonbinary",
+            "trans male",
+            "nonbinary",
             "agender"
         ]
     },
@@ -1947,6 +1978,8 @@
             }
         ],
         "new_gender": [
+            "trans female",
+            "nonbinary",
             "trans female",
             "nonbinary",
             "agender"
@@ -2084,7 +2117,7 @@
     },
     {
         "event_id": "gen_misc_transition_relatable_to_nonbinary",
-        "frequency": 4,
+        "frequency": 3,
         "location": [
             "any"
         ],
@@ -2146,12 +2179,13 @@
         ],
         "new_gender": [
             "nonbinary",
+            "nonbinary",
             "agender"
         ]
     },
     {
         "event_id": "gen_misc_transition_parent_to_nonbinary",
-        "frequency": 4,
+        "frequency": 3,
         "location": [
             "any"
         ],
@@ -2212,6 +2246,7 @@
             }
         ],
         "new_gender": [
+            "nonbinary",
             "nonbinary",
             "agender"
         ]
@@ -2441,6 +2476,8 @@
         "new_gender": [
             "trans male",
             "nonbinary",
+            "trans male",
+            "nonbinary",
             "agender"
         ],
         "gain_accessory": [
@@ -2556,6 +2593,8 @@
         "new_gender": [
             "trans female",
             "nonbinary",
+            "trans female",
+            "nonbinary",
             "agender"
         ],
         "gain_accessory": [
@@ -2664,6 +2703,8 @@
         "new_gender": [
             "trans female",
             "nonbinary",
+            "trans female",
+            "nonbinary",
             "agender"
         ]
     },
@@ -2760,6 +2801,8 @@
             }
         ],
         "new_gender": [
+            "trans male",
+            "nonbinary",
             "trans male",
             "nonbinary",
             "agender"
@@ -2865,6 +2908,8 @@
             }
         ],
         "new_gender": [
+            "trans male",
+            "nonbinary",
             "trans male",
             "nonbinary",
             "agender"
@@ -3046,7 +3091,7 @@
     },
     {
         "event_id": "gen_misc_transition_flower_to_nonbinary",
-        "frequency": 4,
+        "frequency": 3,
         "location": [
             "any"
         ],
@@ -3087,6 +3132,7 @@
             }
         ],
         "new_gender": [
+            "nonbinary",
             "nonbinary",
             "agender"
         ],
@@ -3129,7 +3175,7 @@
     },
     {
         "event_id": "gen_misc_transition_whatisgender_to_nonbinary",
-        "frequency": 4,
+        "frequency": 3,
         "location": [
             "any"
         ],
@@ -3170,6 +3216,7 @@
             }
         ],
         "new_gender": [
+            "nonbinary",
             "nonbinary",
             "agender"
         ]
