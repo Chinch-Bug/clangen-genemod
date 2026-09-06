@@ -724,7 +724,7 @@
                 "involved_cats": {
                     "n_c0": {
                         "can_create_new_cat": {"multiclan_cat": ["multiclan_only"]},
-                        "status": ["any_apprentice"]
+                        "status": ["any_healer"]
                     }
                 },
                 "meet": [
@@ -745,7 +745,7 @@
                 "involved_cats": {
                     "n_c0": {
                         "can_create_new_cat": { "multiclan_cat": [ "multiclan_only" ] },
-                        "status": [ "healer" ]
+                        "status": [ "any_healer" ]
                     }
                 },
                 "meet": [

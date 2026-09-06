@@ -643,7 +643,7 @@ class Patrol:
         outside_cats = [
             c
             for c in Cat.all_cats_list
-            if (c.status.is_other_clancat or c.status.is_outsider) and not c.dead
+            if (c.status.group_ID != self.clan.group_ID or c.status.is_outsider) and not c.dead
         ]
         involved_cats = self.outcome_cats[
             PatrolOutcome.SUCCESS if success else PatrolOutcome.FAILURE

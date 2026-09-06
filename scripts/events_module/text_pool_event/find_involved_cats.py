@@ -80,7 +80,7 @@ def find_cats(
         # CHECK NEW CATS
         elif "n_c" in abbr:
             if (game.clan.clancount == "multiclan" and 
-            "clancat" in constraints.get("status", [])+constraints.get("past_status", []) and
+                ("clancat" in constraints.get("status", [])+constraints.get("past_status", []) or "multiclan_cat" in constraints.get("can_create_new_cat", {})) and
             "-exists" not in constraints.get("can_create_new_cat", {}).get("multiclan_cat", [])):
                 temp_involved_cats[abbr] = updated_find_clan_cats(
                     option_dict=constraints,

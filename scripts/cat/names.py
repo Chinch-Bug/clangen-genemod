@@ -461,7 +461,7 @@ class Name:
             for i in range(suffix_settings["special"]):
                 options.append(self.mod_suffixes['other']['special'])
 
-            appearance = self.mod_suffixes['other']['common']
+            appearance = self.mod_suffixes['other']['common'].copy()
 
             if self.phenotype:
                 if self.phenotype.length == 'longhaired':
