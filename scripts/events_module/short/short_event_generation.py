@@ -397,7 +397,7 @@ def filter_events(
         if not event_for_tags(event.tags, main_cat, random_cat):
             continue
 
-        if not event_for_poi(event.poi, clan.group_ID):
+        if not event_for_poi(event.poi, clan):
             continue
 
         if not clan.leader and "lead_name" in event.text:

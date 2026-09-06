@@ -781,7 +781,7 @@ class Cat:
                             affect_personality[0],
                             affect_personality[1],
                         )
-                        if self.personality.trait != personality and (not self.history.prev_pers or self.personality.trait != self.history.prev_pers[-1]):
+                        if self.personality.trait != personality and (not self.history.prev_pers or personality != self.history.prev_pers[-1]):
                             self.history.prev_pers.append(personality)
                     if affect_skills:
                         self.history.add_skill_mentor_influence(
@@ -801,7 +801,7 @@ class Cat:
             prefix=new_prefix,
             suffix=new_suffix,
             biome=self.status.fetch_clan_object(game.clan).biome,
-            specsuffix_hidden=self.specsuffix_hidden,
+            specsuffix_hidden=self.name.specsuffix_hidden if self.name else self.specsuffix_hidden,
         )
 
     def change_affinity(self, starclan_change: int = 0, dark_forest_change: int = 0):
@@ -1360,7 +1360,7 @@ class Cat:
         if not self.status.is_clancat:
             # this is handled in events.py
             self.personality.set_kit(self.age.is_baby())
-            if self.personality.trait != personality and (not self.history.prev_pers or self.personality.trait != self.history.prev_pers[-1]):
+            if self.personality.trait != personality and (not self.history.prev_pers or personality != self.history.prev_pers[-1]):
                 self.history.prev_pers.append(personality)
             return
 
@@ -1374,7 +1374,7 @@ class Cat:
 
         # Set personality to correct type
         self.personality.set_kit(self.age.is_baby())
-        if self.personality.trait != personality and (not self.history.prev_pers or self.personality.trait != self.history.prev_pers[-1]):
+        if self.personality.trait != personality and (not self.history.prev_pers or personality != self.history.prev_pers[-1]):
             self.history.prev_pers.append(personality)
         # Upon age-change
 

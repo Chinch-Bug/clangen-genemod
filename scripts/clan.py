@@ -10,7 +10,7 @@ TODO: Docs
 
 import os
 import statistics
-from random import choice, choices, randint, random, getrandbits
+from random import choice, choices, randint, random, getrandbits, sample
 from typing import Optional
 
 import i18n
@@ -1654,7 +1654,7 @@ class OtherClan:
                 grown_cats.remove(self.medicine_cat)
             member_amount = randint(member_amount[0], member_amount[1])
 
-            members = choices(
+            members = sample(
                 [
                     c
                     for c in possible_cats

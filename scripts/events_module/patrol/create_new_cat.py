@@ -163,7 +163,7 @@ def updated_create_new_cat(
         # if no group was given either, then we just pick either no group or other clan
         if not option_dict.get("group") and not status.get("group_ID"):
             status["group_ID"] = _get_id_for_group(
-                ["no_group", CatGroup.OTHER_CLAN], involved_cats, other_clan, clan
+                ["no_group", CatGroup.OTHER_CLAN] if game.clan.clancount == "singleclan" else ["no_group"], involved_cats, other_clan, clan
             )
 
         # then we find an appropriate rank for that group
@@ -666,7 +666,7 @@ def _get_id_for_group(
     for ID, group in game.used_group_IDs.items():
         if group in group_list:
             # only allow this event's chosen other clan
-            if group == CatGroup.OTHER_CLAN and (other_clan and ID != other_clan.group_ID or ID == clan.group_ID):
+            if group == CatGroup.OTHER_CLAN and (other_clan and ID != other_clan.group_ID or clan and ID == clan.group_ID):
                 continue
             possible_groups.append(ID)
 

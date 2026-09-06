@@ -1,4 +1,4 @@
-from random import choices, choice, randint, random
+from random import choices, choice, randint, random, sample
 from typing import Optional, Dict, List
 
 import i18n
@@ -469,7 +469,7 @@ def _get_affair_visibility_from_pregnancy(
 def _get_cheated_mate(subject_cat: Cat, include_dead: bool = False):
     """Gets cheating cat's mate for the events"""
     mates = []
-    for mate_id in choices(subject_cat.mate):
+    for mate_id in subject_cat.mate:
         mate = Cat.fetch_cat(mate_id)
         if not mate or mate.status.is_outsider:
             continue

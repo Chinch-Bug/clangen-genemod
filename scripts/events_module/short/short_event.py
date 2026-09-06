@@ -281,7 +281,7 @@ class ShortEvent:
         chosen_poi = None
         if self.poi:
             chosen_poi = get_poi_from_constraints(
-                self.poi.get("name"), self.poi.get("tags"), self.poi.get("category")
+                self.poi.get("name"), self.poi.get("tags"), self.poi.get("category"), clan.group_ID
             )
 
         # change relationships before killing anyone

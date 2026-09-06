@@ -295,7 +295,7 @@ def event_for_poi(pois: dict[str, list], clan=None) -> bool:
 
     return bool(
         get_poi_from_constraints(
-            pois.get("name"), pois.get("tags"), pois.get("category"), clan
+            pois.get("name"), pois.get("tags"), pois.get("category"), clan.group_ID
         )
     )
 

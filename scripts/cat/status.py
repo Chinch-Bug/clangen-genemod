@@ -600,6 +600,8 @@ class Status:
         if game.clan:
             if instructor := self.fetch_clan_object(game.clan).instructor:
                 return instructor.status.group_ID
+            elif not game.clan.instructor:
+                return CatGroup.STARCLAN_ID
             else:
                 return game.clan.instructor.status.group_ID
         return CatGroup.STARCLAN_ID

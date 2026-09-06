@@ -1,4 +1,4 @@
-from random import randrange, choice, randint, choices
+from random import randrange, choice, randint, sample
 
 import pygame
 import pygame_gui
@@ -268,7 +268,7 @@ class ChooseModeScreen(MakeClanScreenBase):
 
         member_amount = randint(member_amount[0], member_amount[1])
 
-        self.clan_info.starting_members = choices(
+        self.clan_info.starting_members = sample(
             [
                 c
                 for c in possible_cats

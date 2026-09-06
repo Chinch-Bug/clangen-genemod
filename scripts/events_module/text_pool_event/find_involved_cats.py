@@ -101,7 +101,7 @@ def find_cats(
 
             # CATS THAT MUST EXIST
             possible_cats = [
-                c for c in outside_cats if c not in temp_involved_cats.values()
+                c for c in outside_cats if c not in temp_involved_cats.values() and ("clancat" in constraints.get("status", [])+constraints.get("past_status", []) or c.status.is_outsider)
             ]
 
             # CHECK MULTI_CAT

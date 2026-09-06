@@ -135,7 +135,7 @@ class NewCatFactory(BaseCatFactory, ABC):
             ),
             "birth_cooldown": overrides.get("birth_cooldown", 0),
             "faded": False,
-            "specsuffix_hidden": False,
+            "specsuffix_hidden": overrides.get("specsuffix_hidden", False),
         }
 
         cat = Cat(**cat_params)
@@ -146,7 +146,7 @@ class NewCatFactory(BaseCatFactory, ABC):
             prefix=overrides.get("prefix"),
             suffix=overrides.get("suffix"),
             specsuffix_hidden=overrides.get("specsuffix_hidden", False),
-            load_existing_name=True,
+            load_existing_name="suffix" in overrides,
             cat=cat,
         )
 
