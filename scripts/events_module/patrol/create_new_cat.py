@@ -287,11 +287,11 @@ def updated_create_new_cat(
 
         # PAST STATUS
         _assign_past_status_and_standing(
-            created_cat, option_dict, involved_cats, other_clan
+            created_cat, option_dict, involved_cats, other_clan, clan
         )
 
         # CURRENT STANDING
-        _assign_current_standing(created_cat, option_dict, involved_cats, other_clan)
+        _assign_current_standing(created_cat, option_dict, involved_cats, other_clan, clan)
 
         # TRAIT AND SKILL
         _assign_stats(created_cat, option_dict)
@@ -574,7 +574,7 @@ def _assign_stats(created_cat, option_dict):
 
 
 def _assign_current_standing(
-    created_cat, option_dict, involved_cats, other_clan: OtherClan
+    created_cat, option_dict, involved_cats, other_clan: OtherClan, clan
 ):
     if option_dict.get("standing", {}).get("currently"):
         group = _get_id_for_group(
@@ -588,7 +588,7 @@ def _assign_current_standing(
 
 
 def _assign_past_status_and_standing(
-    created_cat, option_dict, involved_cats, other_clan: OtherClan
+    created_cat, option_dict, involved_cats, other_clan: OtherClan, clan
 ):
     status = StatusDict()
     if option_dict.get("past_status"):
