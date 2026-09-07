@@ -336,8 +336,9 @@
             "status": [
                 "leader", "deputy", "warrior", "healer", "apprentice", "healer apprentice", "mediator", "mediator apprentice"
             ]
-        }, "new_cat": [
-            [ "age:has_kits", "meeting", "rogue", "can_birth" ],
+        },
+        "new_cat": [
+            ["age:has_kits", "meeting", "rogue", "can_birth"],
             [
                 "new_name",
                 "parent:0",
@@ -380,13 +381,13 @@
         "frequency": 1,
         "event_text": "m_c and r_c, in the early hours of the day, informed whoever else was awake that they had to handle something and ventured out of camp. Hours later, m_c, r_c, and another cat confidently strode into camp, tails entwined with each other. m_c introduced n_c:0 to the Clan, stating that {PRONOUN/n_c:0/subject} {VERB/n_c:0/are/is} staying.",
         "m_c": {
-            "age": [ "young adult", "adult", "senior adult", "senior" ],
-            "status": [ "any" ],
-            "relationship_status": [ "mates" ]
+            "age": ["young adult", "adult", "senior adult", "senior"],
+            "status": ["any"],
+            "relationship_status": ["mates"]
         },
         "r_c": {
-            "age": [ "young adult", "adult", "senior adult", "senior" ],
-            "status": [ "any" ]
+            "age": ["young adult", "adult", "senior adult", "senior"],
+            "status": ["any"]
         },
         "new_cat": [
             [
@@ -399,10 +400,10 @@
         ],
         "relationships": [
             {
-                "cats_from": [ "m_c", "r_c" ],
-                "cats_to": [ "n_c:0" ],
+                "cats_from": ["m_c", "r_c"],
+                "cats_to": ["n_c:0"],
                 "mutual": true,
-                "values": [ "romance", "trust", "comfort", "like" ],
+                "values": ["romance", "trust", "comfort", "like"],
                 "amount": 50,
                 "log": {
                     "cats_from": "m_c and r_c brought n_c:0 into the Clan to join their relationship."
@@ -463,7 +464,7 @@
             ]
         ],
         "outsider": {
-            "current_rep": [ "neutral", "welcoming" ],
+            "current_rep": ["neutral", "welcoming"],
             "changed": 1
         },
         "relationships": [
@@ -489,7 +490,8 @@
             "status": [
                 "leader", "deputy", "warrior", "healer"
             ]
-        }, "new_cat": [
+        },
+        "new_cat": [
             [
                 "old_name",
                 "loner",
@@ -498,7 +500,7 @@
             ]
         ],
         "outsider": {
-            "current_rep": [ "neutral", "welcoming" ],
+            "current_rep": ["neutral", "welcoming"],
             "changed": 1
         },
         "relationships": [
@@ -533,7 +535,7 @@
             ]
         ],
         "outsider": {
-            "current_rep": [ "neutral", "welcoming" ],
+            "current_rep": ["neutral", "welcoming"],
             "changed": 1
         },
         "relationships": [
@@ -585,25 +587,27 @@
     },
     {
         "event_id": "gen_new_cat_lonerapp1",
-        "location": [ "any" ],
-        "season": [ "any" ],
+        "location": ["any"],
+        "season": ["any"],
         "frequency": 4,
         "event_text": "m_c finds a young cat who asks to join the Clan. The loner is welcomed into the Clan and renamed n_c:0.",
         "m_c": {
-            "age": [ "adolescent", "young adult", "adult", "senior adult", "senior" ],
-            "status": [ "any" ]
+            "age": ["adolescent", "young adult", "adult", "senior adult", "senior"],
+            "status": ["any"]
         },
         "new_cat": [
-            [ "new_name",
+            [
+                "new_name",
                 "loner",
-                "status:apprentice" ]
+                "status:apprentice"
+            ]
         ],
         "relationships": [
             {
-                "cats_from": [ "m_c" ],
-                "cats_to": [ "n_c:0" ],
+                "cats_from": ["m_c"],
+                "cats_to": ["n_c:0"],
                 "mutual": false,
-                "values": [ "trust", "respect" ],
+                "values": ["trust", "respect"],
                 "amount": 20,
                 "log": {
                     "cats_from": "m_c found n_c:0 and brought {PRONOUN/n_c:0/object} into the Clan."
@@ -613,25 +617,27 @@
     },
     {
         "event_id": "gen_new_cat_lonerapp2",
-        "location": [ "any" ],
-        "season": [ "any" ],
+        "location": ["any"],
+        "season": ["any"],
         "frequency": 3,
         "event_text": "m_c couldn't keep {PRONOUN/m_c/poss} new loner friend a secret forever. The two quietly came back to camp one day, m_c cheering the loudest when n_c:0 is welcomed as an apprentice of c_n.",
         "m_c": {
-            "age": [ "adolescent" ],
-            "status": [ "any" ]
+            "age": ["adolescent"],
+            "status": ["any"]
         },
         "new_cat": [
-            [ "new_name",
+            [
+                "new_name",
                 "loner",
-                "status:apprentice" ]
+                "status:apprentice"
+            ]
         ],
         "relationships": [
             {
-                "cats_from": [ "m_c" ],
-                "cats_to": [ "n_c:0" ],
+                "cats_from": ["m_c"],
+                "cats_to": ["n_c:0"],
                 "mutual": true,
-                "values": [ "trust", "respect" ],
+                "values": ["trust", "respect"],
                 "amount": 30,
                 "log": {
                     "cats_from": "m_c and n_c:0 became friends along the border before the latter joined the Clan."
@@ -693,7 +699,7 @@
             ]
         ],
         "outsider": {
-            "current_rep": [ "neutral", "welcoming" ],
+            "current_rep": ["neutral", "welcoming"],
             "changed": 1
         },
         "relationships": [
@@ -781,25 +787,27 @@
     },
     {
         "event_id": "gen_new_cat_kittypetapp1",
-        "location": [ "any" ],
-        "season": [ "any" ],
+        "location": ["any"],
+        "season": ["any"],
         "frequency": 4,
         "event_text": "m_c finds a young cat who asks to join the Clan. The kittypet is welcomed into the Clan and renamed n_c:0.",
         "m_c": {
-            "age": [ "adolescent", "young adult", "adult", "senior adult", "senior" ],
-            "status": [ "any" ]
+            "age": ["adolescent", "young adult", "adult", "senior adult", "senior"],
+            "status": ["any"]
         },
         "new_cat": [
-            [ "new_name",
+            [
+                "new_name",
                 "kittypet",
-                "status:apprentice" ]
+                "status:apprentice"
+            ]
         ],
         "relationships": [
             {
-                "cats_from": [ "m_c" ],
-                "cats_to": [ "n_c:0" ],
+                "cats_from": ["m_c"],
+                "cats_to": ["n_c:0"],
                 "mutual": false,
-                "values": [ "trust", "respect" ],
+                "values": ["trust", "respect"],
                 "amount": 20,
                 "log": {
                     "cats_from": "m_c found n_c:0 and brought {PRONOUN/n_c:0/object} into the Clan."
@@ -809,25 +817,27 @@
     },
     {
         "event_id": "gen_new_cat_kittypetapp2",
-        "location": [ "any" ],
-        "season": [ "any" ],
+        "location": ["any"],
+        "season": ["any"],
         "frequency": 3,
         "event_text": "m_c couldn't keep {PRONOUN/m_c/poss} new kittypet friend a secret forever. The two quietly came back to camp one day, m_c cheering the loudest when n_c:0 is welcomed as an apprentice of c_n.",
         "m_c": {
-            "age": [ "adolescent" ],
-            "status": [ "any" ]
+            "age": ["adolescent"],
+            "status": ["any"]
         },
         "new_cat": [
-            [ "new_name",
+            [
+                "new_name",
                 "kittypet",
-                "status:apprentice" ]
+                "status:apprentice"
+            ]
         ],
         "relationships": [
             {
-                "cats_from": [ "m_c" ],
-                "cats_to": [ "n_c:0" ],
+                "cats_from": ["m_c"],
+                "cats_to": ["n_c:0"],
                 "mutual": true,
-                "values": [ "trust", "respect" ],
+                "values": ["trust", "respect"],
                 "amount": 30,
                 "log": {
                     "cats_from": "m_c and n_c:0 became friends along the border before the latter joined the Clan."
@@ -854,7 +864,7 @@
             ]
         ],
         "outsider": {
-            "current_rep": [ "neutral", "welcoming" ],
+            "current_rep": ["neutral", "welcoming"],
             "changed": 1
         },
         "relationships": [
@@ -889,7 +899,7 @@
             ]
         ],
         "outsider": {
-            "current_rep": [ "neutral", "welcoming" ],
+            "current_rep": ["neutral", "welcoming"],
             "changed": 1
         },
         "relationships": [
@@ -975,25 +985,27 @@
     },
     {
         "event_id": "gen_new_cat_rogueapp1",
-        "location": [ "any" ],
-        "season": [ "any" ],
+        "location": ["any"],
+        "season": ["any"],
         "frequency": 4,
         "event_text": "m_c finds a young cat who asks to join the Clan. The rogue is welcomed into the Clan and renamed n_c:0.",
         "m_c": {
-            "age": [ "adolescent", "young adult", "adult", "senior adult", "senior" ],
-            "status": [ "any" ]
+            "age": ["adolescent", "young adult", "adult", "senior adult", "senior"],
+            "status": ["any"]
         },
         "new_cat": [
-            [ "new_name",
+            [
+                "new_name",
                 "rogue",
-                "status:apprentice" ]
+                "status:apprentice"
+            ]
         ],
         "relationships": [
             {
-                "cats_from": [ "m_c" ],
-                "cats_to": [ "n_c:0" ],
+                "cats_from": ["m_c"],
+                "cats_to": ["n_c:0"],
                 "mutual": false,
-                "values": [ "trust", "respect" ],
+                "values": ["trust", "respect"],
                 "amount": 20,
                 "log": {
                     "cats_from": "m_c found n_c:0 and brought {PRONOUN/n_c:0/object} into the Clan."
@@ -1003,25 +1015,27 @@
     },
     {
         "event_id": "gen_new_cat_rogueapp2",
-        "location": [ "any" ],
-        "season": [ "any" ],
+        "location": ["any"],
+        "season": ["any"],
         "frequency": 3,
         "event_text": "m_c couldn't keep {PRONOUN/m_c/poss} new rogue friend a secret forever. The two quietly came back to camp one day, m_c cheering the loudest when n_c:0 is welcomed as an apprentice of c_n.",
         "m_c": {
-            "age": [ "adolescent" ],
-            "status": [ "any" ]
+            "age": ["adolescent"],
+            "status": ["any"]
         },
         "new_cat": [
-            [ "new_name",
+            [
+                "new_name",
                 "rogue",
-                "status:apprentice" ]
+                "status:apprentice"
+            ]
         ],
         "relationships": [
             {
-                "cats_from": [ "m_c" ],
-                "cats_to": [ "n_c:0" ],
+                "cats_from": ["m_c"],
+                "cats_to": ["n_c:0"],
                 "mutual": true,
-                "values": [ "trust", "respect" ],
+                "values": ["trust", "respect"],
                 "amount": 30,
                 "log": {
                     "cats_from": "m_c and n_c:0 became friends along the border before the latter joined the Clan."
@@ -1090,8 +1104,8 @@
         ],
         "injury": [
             {
-                "cats": [ "n_c:0" ],
-                "injuries": [ "battle_injury", "big_bite_injury" ]
+                "cats": ["n_c:0"],
+                "injuries": ["battle_injury", "big_bite_injury"]
             }
         ],
         "other_clan": {
@@ -3412,20 +3426,20 @@
     },
     {
         "event_id": "gen_newcat_senior_kittypetdeadowner",
-        "location": [ "any" ],
-        "season": [ "any" ],
-        "sub_type": [ ],
-        "tags": [ ],
+        "location": ["any"],
+        "season": ["any"],
+        "sub_type": [],
+        "tags": [],
         "frequency": 3,
         "event_text": "m_c finds a lost, elderly kittypet whose owner is dead. {PRONOUN/n_c:0/subject/CAP} {VERB/n_c:0/are/is} looking for a new home and m_c meows that c_n would be willing to care for {PRONOUN/n_c:0/object}.",
         "m_c": {
-            "status": [ "leader", "deputy", "medicine cat" ]
+            "status": ["leader", "deputy", "medicine cat"]
         },
         "new_cat": [
-            [ "kittypet", "age:senior", "old_name" ]
+            ["kittypet", "age:senior", "old_name"]
         ],
         "outsider": {
-            "current_rep": [ "welcoming" ],
+            "current_rep": ["welcoming"],
             "changed": 1
         }
     },
@@ -3494,37 +3508,37 @@
     },
     {
         "event_id": "gen_newcat_senior_securityloner",
-        "location": [ "any" ],
-        "season": [ "any" ],
-        "sub_type": [ ],
-        "tags": [ ],
+        "location": ["any"],
+        "season": ["any"],
+        "sub_type": [],
+        "tags": [],
         "frequency": 3,
         "event_text": "An old loner asks to join c_n, seeking community and security in {PRONOUN/n_c:0/poss} golden years. When welcomed in, the loner decides to adopt a Clan-like name: n_c:0.",
         "new_cat": [
-            [ "loner", "age:senior", "new_name" ]
+            ["loner", "age:senior", "new_name"]
         ],
         "outsider": {
-            "current_rep": [ "neutral", "welcoming" ],
+            "current_rep": ["neutral", "welcoming"],
             "changed": 1
         },
-        "exclude_involved": [ "m_c" ]
+        "exclude_involved": ["m_c"]
     },
     {
         "event_id": "gen_newcat_senior_securityrogue",
-        "location": [ "any" ],
-        "season": [ "any" ],
-        "sub_type": [ ],
-        "tags": [ ],
+        "location": ["any"],
+        "season": ["any"],
+        "sub_type": [],
+        "tags": [],
         "frequency": 3,
         "event_text": "An old rogue asks to join c_n, seeking community and security in {PRONOUN/n_c:0/poss} golden years. When welcomed in, the rogue decides to adopt a Clan-like name: n_c:0.",
         "new_cat": [
-            [ "rogue", "age:senior", "new_name" ]
+            ["rogue", "age:senior", "new_name"]
         ],
         "outsider": {
-            "current_rep": [ "neutral", "welcoming" ],
+            "current_rep": ["neutral", "welcoming"],
             "changed": 1
         },
-        "exclude_involved": [ "m_c" ]
+        "exclude_involved": ["m_c"]
     },
     {
         "event_id": "gen_new_cat_rogueredemption_success1",
@@ -3534,8 +3548,8 @@
         "season": [
             "any"
         ],
-        "sub_type": [ ],
-        "tags": [ ],
+        "sub_type": [],
+        "tags": [],
         "frequency": 1,
         "event_text": "m_c is called to the camp's entrance where n_c:0 waits, head ducked in respect. n_c:0 apologizes for any misdeeds, mischief, or hardship {PRONOUN/n_c:0/subject}{VERB/n_c:0/'ve/'s} caused c_n in the past and asks to join the Clan. m_c accepts.",
         "m_c": {
@@ -3609,8 +3623,8 @@
         "season": [
             "any"
         ],
-        "sub_type": [ ],
-        "tags": [ ],
+        "sub_type": [],
+        "tags": [],
         "frequency": 1,
         "event_text": "m_c is called to the camp's entrance where n_c:0 waits, head ducked in respect. n_c:0 apologizes for any misdeeds, mischief, or hardship {PRONOUN/n_c:0/subject}{VERB/n_c:0/'ve/'s} caused c_n in the past and asks to join the Clan. m_c accepts.",
         "m_c": {
@@ -3684,8 +3698,8 @@
         "season": [
             "any"
         ],
-        "sub_type": [ ],
-        "tags": [ ],
+        "sub_type": [],
+        "tags": [],
         "frequency": 1,
         "event_text": "m_c is called to the camp's entrance where n_c:0 waits, head ducked in respect. n_c:0 apologizes for any misdeeds, mischief, or hardship {PRONOUN/n_c:0/subject}{VERB/n_c:0/'ve/'s} caused c_n in the past and asks to join the Clan. m_c turns {PRONOUN/n_c:0/object} away.",
         "m_c": {
@@ -3777,8 +3791,8 @@
         "season": [
             "any"
         ],
-        "sub_type": [ ],
-        "tags": [ ],
+        "sub_type": [],
+        "tags": [],
         "frequency": 1,
         "event_text": "m_c is called to the camp's entrance where n_c:0 waits, head ducked in respect. n_c:0 apologizes for any misdeeds, mischief, or hardship {PRONOUN/n_c:0/subject}{VERB/n_c:0/'ve/'s} caused c_n in the past and asks to join the Clan. m_c turns {PRONOUN/n_c:0/object} away.",
         "m_c": {
@@ -3870,8 +3884,8 @@
         "season": [
             "any"
         ],
-        "sub_type": [ ],
-        "tags": [ ],
+        "sub_type": [],
+        "tags": [],
         "frequency": 1,
         "event_text": "m_c is called to the camp's entrance where n_c:0 waits, head ducked in respect. n_c:0 apologizes for any misdeeds, mischief, or hardship {PRONOUN/n_c:0/subject}{VERB/n_c:0/'ve/'s} caused c_n in the past and asks to join the Clan. m_c ruthlessly uses the opportunity to slay the nuisance where {PRONOUN/n_c:0/subject} {VERB/n_c:0/stand/stands}.",
         "m_c": {
@@ -3949,8 +3963,8 @@
         "season": [
             "any"
         ],
-        "sub_type": [ ],
-        "tags": [ ],
+        "sub_type": [],
+        "tags": [],
         "frequency": 1,
         "event_text": "m_c is called to the camp's entrance where n_c:0 waits, head ducked in respect. n_c:0 apologizes for any misdeeds, mischief, or hardship {PRONOUN/n_c:0/subject}{VERB/n_c:0/'ve/'s} caused c_n in the past and asks to join the Clan. m_c ruthlessly uses the opportunity to slay the nuisance where {PRONOUN/n_c:0/subject} {VERB/n_c:0/stand/stands}.",
         "m_c": {
@@ -4019,5 +4033,157 @@
                 }
             }
         ]
+    },
+    {
+        "event_id": "gen_newcat_poi_cave1",
+        "location": ["any"],
+        "season": ["any"],
+        "poi": {
+            "tags": ["cave"],
+            "category": "terrain"
+        },
+        "frequency": 3,
+        "event_text": "m_c followed a strange sound into POI and found a loner, disoriented in the darkness. m_c guided {PRONOUN/n_c:0/object} out of POI and back to the light. n_c:0 decided to join c_n.",
+        "m_c": {
+            "status": ["-kitten", "-newborn", "-elder"],
+            "dies": false
+        },
+        "new_cat": [
+            [
+                "loner",
+                "exists"
+            ]
+        ],
+        "relationships": [
+            {
+                "cats_from": ["n_c:0"],
+                "cats_to": ["m_c"],
+                "mutual": false,
+                "values": ["like", "comfort"],
+                "amount": 8,
+                "log": {
+                    "cats_from": "cat_from was grateful cat_to found {PRONOUN/cat_from/object} in the darkness."
+                }
+            }
+        ],
+        "outsider": {
+            "changed": 2
+        }
+    },
+    {
+        "event_id": "gen_newcat_poi_covered1",
+        "location": ["any"],
+        "season": ["any"],
+        "poi": {
+            "tags": ["covered"],
+            "category": "terrain"
+        },
+        "frequency": 3,
+        "event_text": "m_c found a strange cat sheltering by POI during a downpour and invites them to wait out the rain with c_n. After staying the night, the stranger decides to stay for good. n_c:0 joins the Clan.",
+        "m_c": {
+            "status": ["-kitten", "-newborn", "-elder"],
+            "dies": false
+        },
+        "new_cat": [
+            []
+        ],
+        "relationships": [
+            {
+                "cats_from": ["n_c:0"],
+                "cats_to": ["m_c"],
+                "mutual": false,
+                "values": ["like", "comfort"],
+                "amount": 8,
+                "log": {
+                    "cats_from": "cat_from was grateful cat_to introduced {PRONOUN/cat_from/object} to c_n."
+                }
+            }
+        ],
+        "outsider": {
+            "changed": 2
+        }
+    },
+    {
+        "event_id": "gen_newcat_poi_fallrisk1",
+        "location": ["any"],
+        "season": ["any"],
+        "poi": {
+            "tags": ["fall_risk"],
+            "category": "terrain"
+        },
+        "frequency": 2,
+        "event_text": "m_c discovered an outsider stuck at the bottom of POI. {PRONOUN/m_c/subject/CAP} brought {PRONOUN/m_c/poss} clanmates to help rescue {PRONOUN/n_c:0/object} and took {PRONOUN/n_c:0/object} back to camp for healing. Grateful, n_c:0 joins the Clan.",
+        "m_c": {
+            "status": ["-kitten", "-newborn", "-elder"],
+            "dies": false
+        },
+        "new_cat": [
+            [
+                "exists"
+            ]
+        ],
+        "injury": [
+            {
+                "cats": ["n_c:0"],
+                "injuries": ["broken bone"]
+            }
+        ],
+        "history": [
+            {
+                "cats": ["n_c:0"],
+                "scar": "n_c:0 was scarred after breaking a bone.",
+                "death": "n_c:0 died from complications of a broken bone."
+            }
+        ],
+        "relationships": [
+            {
+                "cats_from": ["n_c:0"],
+                "cats_to": ["m_c", "some_clan"],
+                "mutual": false,
+                "values": ["like", "trust"],
+                "amount": 8,
+                "log": {
+                    "cats_from": "cat_from was grateful cat_to rescued {PRONOUN/m_c/object} after {PRONOUN/m_c/poss} fall."
+                }
+            }
+        ],
+        "outsider": {
+            "changed": 2
+        }
+    },
+    {
+        "event_id": "gen_newcat_poi_prey_encounterpoach",
+        "location": ["any"],
+        "season": ["any"],
+        "poi": {
+            "tags": ["prey"],
+            "category": "terrain"
+        },
+        "frequency": 4,
+        "event_text": "m_c caught a strange cat poaching prey by POI!",
+        "m_c": {
+            "status": ["-newborn", "-kitten", "-elder"]
+        },
+        "new_cat": [
+            [
+                "exists",
+                "meeting"
+            ]
+        ],
+        "relationships": [
+            {
+                "cats_from": ["m_c"],
+                "cats_to": ["n_c:0"],
+                "mutual": false,
+                "values": ["like", "respect"],
+                "amount": -4,
+                "log": {
+                    "cats_from": "cat_from caught cat_to poaching prey in c_n territory."
+                }
+            }
+        ],
+        "outsider": {
+            "changed": -2
+        }
     }
 ]

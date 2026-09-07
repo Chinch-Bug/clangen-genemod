@@ -381,7 +381,7 @@ class TestPointsOfInterest(unittest.TestCase):
 
         for title, event_poi in combinations.items():
             with self.subTest(title=title):
-                self.assertTrue(event_for_poi(event_poi))
+                self.assertTrue(event_for_poi(event_poi, game.clan))
 
         # expected False combinations
         bad_combinations = {
@@ -401,7 +401,7 @@ class TestPointsOfInterest(unittest.TestCase):
 
         for title, event_poi in bad_combinations.items():
             with self.subTest(title=title):
-                self.assertFalse(event_for_poi(event_poi))
+                self.assertFalse(event_for_poi(event_poi, game.clan))
 
 
 class TestInterpersonalRelationshipConstraints(unittest.TestCase):

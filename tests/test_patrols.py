@@ -25,6 +25,18 @@ from scripts.game_structure.game import Switch
 from scripts.game_structure.game.switches import switch_set_value
 
 
+def set_up_patrol_class_w_event(
+    patrol_class: Patrol, patrol_cats: list[Cat], patrol_events: list[PatrolEvent]
+):
+    """
+    Sets up the patrol_class with the patrol cats, and patrol event.
+    """
+    patrol_class._add_patrol_cats(patrol_cats)
+    patrol_class._set_valid_patrol(patrol_events)
+    patrol_class._find_allowed_outcomes()
+    patrol_class._create_needed_cats()
+
+
 class TestPatrolCats(unittest.TestCase):
     def setUp(self):
         game.clan = Clan("test")
@@ -171,7 +183,7 @@ class TestInvolvedCats(unittest.TestCase):
         )
 
         self.patrol_class._add_patrol_cats([war1, app1, app2])
-        self.patrol_class._get_valid_patrol([patrol])
+        self.patrol_class._set_valid_patrol([patrol])
 
         self.assertEqual(
             war1,
@@ -202,8 +214,7 @@ class TestInvolvedCats(unittest.TestCase):
             fail_outcomes=[{"strings": ["test"]}],
         )
 
-        self.patrol_class._add_patrol_cats([war1])
-        self.patrol_class.patrol_event = self.patrol_class._get_valid_patrol([patrol])
+        set_up_patrol_class_w_event(self.patrol_class, [war1], [patrol])
         self.patrol_class._create_needed_cats()
 
         self.assertEqual(
@@ -241,11 +252,8 @@ class TestInvolvedCats(unittest.TestCase):
             ],
             fail_outcomes=[{"strings": ["test"]}],
         )
-        self.patrol_class.patrol_event = patrol
-        self.patrol_class._add_patrol_cats([war1, app1, app2])
-        self.patrol_class._get_valid_patrol([patrol])
-        self.patrol_class._find_allowed_outcomes()
 
+        set_up_patrol_class_w_event(self.patrol_class, [war1, app1, app2], [patrol])
         self.assertEqual(
             self.patrol_class.involved_cats["p_l"],
             self.patrol_class.outcome_cats[PatrolOutcome.SUCCESS]["p_l"],
@@ -271,10 +279,8 @@ class TestInvolvedCats(unittest.TestCase):
             ],
             fail_outcomes=[{"strings": ["test"]}],
         )
-        self.patrol_class.patrol_event = patrol
-        self.patrol_class._add_patrol_cats([war1, app1, app2])
-        self.patrol_class._get_valid_patrol([patrol])
-        self.patrol_class._find_allowed_outcomes()
+
+        set_up_patrol_class_w_event(self.patrol_class, [war1, app1, app2], [patrol])
 
         self.assertEqual(
             self.patrol_class.involved_cats["p_l"],
@@ -301,10 +307,8 @@ class TestInvolvedCats(unittest.TestCase):
             ],
             fail_outcomes=[{"strings": ["test"]}],
         )
-        self.patrol_class.patrol_event = patrol
-        self.patrol_class._add_patrol_cats([war1, app1, app2])
-        self.patrol_class._get_valid_patrol([patrol])
-        self.patrol_class._find_allowed_outcomes()
+
+        set_up_patrol_class_w_event(self.patrol_class, [war1, app1, app2], [patrol])
 
         self.assertNotEqual(
             self.patrol_class.involved_cats["p_l"],
@@ -330,9 +334,8 @@ class TestInvolvedCats(unittest.TestCase):
                 success_outcomes=[{"strings": ["test"]}],
                 fail_outcomes=[{"strings": ["test"]}],
             )
-            self.patrol_class.patrol_event = patrol
-            self.patrol_class._add_patrol_cats([war1])
-            self.patrol_class._get_valid_patrol([patrol])
+
+            set_up_patrol_class_w_event(self.patrol_class, [war1], [patrol])
 
             self.assertEqual(
                 self.patrol_class.involved_cats["p_l"],
@@ -355,9 +358,8 @@ class TestInvolvedCats(unittest.TestCase):
                 success_outcomes=[{"strings": ["test"]}],
                 fail_outcomes=[{"strings": ["test"]}],
             )
-            self.patrol_class.patrol_event = patrol
-            self.patrol_class._add_patrol_cats([war1, war2])
-            self.patrol_class._get_valid_patrol([patrol])
+
+            set_up_patrol_class_w_event(self.patrol_class, [war1, war2], [patrol])
 
             self.assertNotEqual(
                 self.patrol_class.involved_cats["s_c0"],
@@ -404,11 +406,8 @@ class TestOutcomeExecution(unittest.TestCase):
             )
             self.patrol_class.clan = game.clan
 
-            self.patrol_class._add_patrol_cats([war1])
-            self.patrol_class.patrol_event = self.patrol_class._get_valid_patrol(
-                [patrol]
-            )
-            self.patrol_class._create_needed_cats()
+            set_up_patrol_class_w_event(self.patrol_class, [war1], [patrol])
+
             handle_consequences.execute_outcome(
                 patrol.success_outcomes[0],
                 self.patrol_class.involved_cats,
@@ -432,11 +431,9 @@ class TestOutcomeExecution(unittest.TestCase):
                 }, "join": [JoinDict(cats=["n_c0"])]}],
                 fail_outcomes=[{"strings": ["test"]}],
             )
-            self.patrol_class._add_patrol_cats([war1])
-            self.patrol_class.patrol_event = self.patrol_class._get_valid_patrol(
-                [patrol]
-            )
-            self.patrol_class._create_needed_cats()
+
+            set_up_patrol_class_w_event(self.patrol_class, [war1], [patrol])
+
             handle_consequences.execute_outcome(
                 patrol.success_outcomes[0],
                 self.patrol_class.involved_cats,
@@ -471,10 +468,7 @@ class TestOutcomeExecution(unittest.TestCase):
             fail_outcomes=[{"strings": ["test"]}],
         )
 
-        self.patrol_class.patrol_event = patrol
-        self.patrol_class._add_patrol_cats([war1, app1])
-        self.patrol_class._get_valid_patrol([patrol])
-        self.patrol_class._find_allowed_outcomes()
+        set_up_patrol_class_w_event(self.patrol_class, [war1, app1], [patrol])
 
         handle_consequences.execute_outcome(
             patrol.success_outcomes[0],
@@ -514,10 +508,7 @@ class TestOutcomeExecution(unittest.TestCase):
             fail_outcomes=[{"strings": ["test"]}],
         )
 
-        self.patrol_class.patrol_event = patrol
-        self.patrol_class._add_patrol_cats([war1, app1])
-        self.patrol_class._get_valid_patrol([patrol])
-        self.patrol_class._find_allowed_outcomes()
+        set_up_patrol_class_w_event(self.patrol_class, [war1, app1], [patrol])
 
         handle_consequences.execute_outcome(
             patrol.success_outcomes[0],
@@ -552,10 +543,7 @@ class TestOutcomeExecution(unittest.TestCase):
             fail_outcomes=[{"strings": ["test"]}],
         )
 
-        self.patrol_class.patrol_event = patrol
-        self.patrol_class._add_patrol_cats([war1, app1])
-        self.patrol_class._get_valid_patrol([patrol])
-        self.patrol_class._find_allowed_outcomes()
+        set_up_patrol_class_w_event(self.patrol_class, [war1, app1], [patrol])
 
         handle_consequences.execute_outcome(
             patrol.success_outcomes[0],
@@ -594,10 +582,7 @@ class TestOutcomeExecution(unittest.TestCase):
         game.clan.relations[game.clan.group_ID][other_clan.group_ID] = 15
         starting_outsider_rep = game.clan.reputation
 
-        self.patrol_class.patrol_event = patrol
-        self.patrol_class._add_patrol_cats([war1, app1])
-        self.patrol_class._get_valid_patrol([patrol])
-        self.patrol_class._find_allowed_outcomes()
+        set_up_patrol_class_w_event(self.patrol_class, [war1, app1], [patrol])
 
         handle_consequences.execute_outcome(
             patrol.success_outcomes[0],
@@ -635,11 +620,7 @@ class TestOutcomeExecution(unittest.TestCase):
         freshkill_count = game.clan.freshkill_pile.total_amount
         honey_count = game.clan.herb_supply.get_single_herb_total("honey")
 
-        self.patrol_class.patrol_event = patrol
-        self.patrol_class._add_patrol_cats([war1])
-        self.patrol_class._get_valid_patrol([])
-        self.patrol_class._find_allowed_outcomes()
-
+        set_up_patrol_class_w_event(self.patrol_class, [war1], [patrol])
         handle_consequences.disable_random = True
         handle_consequences.execute_outcome(
             patrol.success_outcomes[0],
@@ -685,8 +666,7 @@ class TestOutcomeExecution(unittest.TestCase):
         )
         total_herb_count = game.clan.herb_supply.total
 
-        self.patrol_class._add_patrol_cats([war1])
-        self.patrol_class._get_valid_patrol([])
+        set_up_patrol_class_w_event(self.patrol_class, [war1], [patrol])
 
         handle_consequences.disable_random = True
         handle_consequences.execute_outcome(
