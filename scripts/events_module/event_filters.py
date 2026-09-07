@@ -1444,6 +1444,12 @@ def _get_cats_with_status(cat_list: list, statuses: list[str]) -> list:
         return cat_list
 
     statuses = [s.replace("medicine cat", "healer") for s in statuses]
+    if "any_healer" in statuses:
+        statuses += [CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE]
+    if "any_fighter" in statuses:
+        statuses += [CatRank.WARRIOR, CatRank.DEPUTY, CatRank.LEADER, CatRank.APPRENTICE]
+    if "any_apprentice" in statuses:
+        statuses += [CatRank.QUEEN_APPRENTICE, CatRank.MEDIATOR_APPRENTICE, CatRank.MEDICINE_APPRENTICE, CatRank.APPRENTICE]
 
     is_exclusionary = _check_for_exclusionary_value(statuses)
 

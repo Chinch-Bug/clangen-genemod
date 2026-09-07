@@ -342,7 +342,7 @@ class Name:
         colour_mappings = {
             "black" : ["BLACK"],
             "blue" : ["GREY", "DARKGREY"],
-            "chocolate" : ["BROWN", "GOLDEN-BROWN", "DARKBROWN", "CHOCOLATE"],
+            "chocolate" : ["BROWN", "GOLDEN-BROWN", "DARKBROWN", "CHOCOLATE", "RUST"],
             "lilac" : ["PALEGREY", "SILVER", "LILAC"],
             "cinnamon" : ["SIENNA", "DARKGINGER", "GOLDEN-BROWN"],
             "fawn" : ["LIGHTBROWN"],
@@ -369,6 +369,7 @@ class Name:
         if params[2]['pattern'] != '' and params[2]['type'] == 'regular' and params[0] == "black":
             colours.append('BROWN')
             colours.append('DARKBROWN')
+            colours.append('RUST')
 
         # Add possible prefix categories to list.
         possible_prefix_categories = []
@@ -520,7 +521,7 @@ class Name:
             colour_mappings = {
                 "black": ["BLACK"],
                 "blue": ["GREY", "DARKGREY"],
-                "chocolate": ["BROWN", "GOLDEN-BROWN", "DARKBROWN", "CHOCOLATE"],
+                "chocolate": ["BROWN", "GOLDEN-BROWN", "DARKBROWN", "CHOCOLATE", "RUST"],
                 "lilac": ["PALEGREY", "SILVER", "LILAC"],
                 "cinnamon": ["SIENNA", "DARKGINGER", "GOLDEN-BROWN"],
                 "fawn": ["LIGHTBROWN"],
@@ -548,6 +549,7 @@ class Name:
             if params[2]['pattern'] != '' and params[2]['type'] == 'regular' and params[0] == "black":
                 colours.append('BROWN')
                 colours.append('DARKBROWN')
+                colours.append('RUST')
             if self.phenotype:
                 if (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4):
                     if self.phenotype.tabby != "":

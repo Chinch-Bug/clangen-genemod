@@ -955,6 +955,10 @@ class Pelt:
                     colour = "CHOCOLATE"
                 else:
                     colour = "BLACK"
+                    if "smoke" in self.phenotype.silvergold:
+                        colour = "GHOST"
+                    elif self.phenotype.tabby:
+                        colour = "BLACKTABBY"
         color_group = sprites.cat_tints["colour_groups"].get(colour, "warm")
         color_tints = sprites.cat_tints["possible_tints"][color_group]
 

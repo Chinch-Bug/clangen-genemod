@@ -148,7 +148,8 @@ def find_cats(
             new_accessories=possible_accessories,
             other_involved_clan_id=other_clan.group_ID if other_clan else None,
             return_list=True,
-            return_id=False, clan=clan,
+            return_id=False, 
+            clan=clan,
         )
         if not possible_cats:
             if can_create_new_cat:
@@ -168,7 +169,7 @@ def find_cats(
             clan=clan
         )
 
-        if not new_involved_cat:
+        if not new_involved_cat or (can_create_new_cat and random.random() < 0.5):
             if can_create_new_cat:
                 will_create_how_many += 1
                 continue

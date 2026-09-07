@@ -441,7 +441,7 @@ def accurate_porting(cat, info):
 
     if main_colour["colour"] in ["LIGHTBROWN", "GOLDEN-BROWN"]:
         cat.phenotype.eumelanin = ["bl", "bl"]
-    elif main_colour["colour"] in ["WHITE", "PALEGREY", "LILAC", "BROWN", "CHOCOLATE", "SIENNA"]:
+    elif main_colour["colour"] in ["WHITE", "PALEGREY", "LILAC", "BROWN", "CHOCOLATE", "RUST", "SIENNA"]:
         cat.phenotype.eumelanin = ["b", "b"]
     else:
         cat.phenotype.eumelanin[0] = "B"
@@ -449,7 +449,7 @@ def accurate_porting(cat, info):
     if cat.chimerapheno:
         if patch_colour["colour"] in ["LIGHTBROWN", "GOLDEN-BROWN"]:
             cat.chimerapheno.eumelanin = ["bl", "bl"]
-        elif patch_colour["colour"] in ["WHITE", "PALEGREY", "LILAC", "BROWN", "CHOCOLATE", "SIENNA"]:
+        elif patch_colour["colour"] in ["WHITE", "PALEGREY", "LILAC", "BROWN", "CHOCOLATE", "RUST", "SIENNA"]:
             cat.chimerapheno.eumelanin = ["b", "b"]
         else:
             cat.chimerapheno.eumelanin[0] = "B"
