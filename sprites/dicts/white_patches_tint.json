@@ -3,6 +3,7 @@
   {
     "WHITE": "white",
     "PALE": "white",
+    "GHOST": "black",
     "BLACK": "black",
     "BLUE": "gray",
     "CHOCOLATE": "brown",
@@ -11,7 +12,8 @@
     "CINNAMON": "brown",
     "RED": "ginger",
     "CREAM": "ginger",
-    "GOLDEN": "ginger"
+    "GOLDEN": "ginger",
+    "BLACKTABBY": "brown"
   },
   "possible_tints": {
     "basic": ["offwhite", "offwhite"],

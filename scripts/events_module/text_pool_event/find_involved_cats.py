@@ -128,6 +128,11 @@ def find_cats(
         else:
             possible_cats = interactable_cats
 
+            for cat in involved_cats.values():
+                # this will only remove non-list values
+                if cat in interactable_cats:
+                    possible_cats.remove(cat)
+
         if not possible_cats:
             # uh oh, we're out of options!
             if can_create_new_cat:
