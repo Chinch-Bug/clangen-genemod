@@ -67,6 +67,8 @@ def find_cats(
                 # sometimes a specific abbr may be "preset" as None
                 # which indicates that events requiring that abbr should be avoided
                 return empty
+            if involved_cats[abbr] and "n_c" in abbr:
+                continue
             possible_cats = (
                 involved_cats[abbr] if isinstance(abbr, list) else [involved_cats[abbr]]
             )

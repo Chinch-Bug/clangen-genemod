@@ -1480,10 +1480,10 @@ class Genotype:
         else:
             self.soktype = soktypes[2]
 
-        body_types = ['snub-nosed cobby', 'cobby', 'semi-cobby', 'intermediate', 'semi-oriental', 'oriental', 'wedge-faced oriental']
+        body_types = ['snub-nosed cobby', 'cobby', 'semi-cobby', 'intermediate', 'semi-lanky', 'lanky', 'wedge-faced lanky']
         height_types = ['teacup', 'tiny', 'small', 'below average', 'average', 'above average', 'large', 'massive', 'giant', 'goliath']
 
-        if self.body_label != '':
+        if self.body_label in body_types:
             self.VerifyBody(body_types)
         else:
             index = next((n for n in range(7) if self.body_value <= self.body_indexes[n]))
