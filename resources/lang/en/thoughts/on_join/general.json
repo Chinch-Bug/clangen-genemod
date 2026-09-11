@@ -4,7 +4,14 @@
         "strings": [
             "Is looking around the camp with wonder",
             "Is settling into {PRONOUN/m_c/poss} new home"
-        ]
+        ],
+        "involved_cats": {
+            "m_c": {
+                "age": [
+                    "-newborn"
+                ]
+            }
+        }
     },
     {
         "event_id": "newly_joined_notkitten",
@@ -169,10 +176,26 @@
         ],
         "involved_cats": {
             "m_c": {
-                "age": ["kitten", "newborn"]
+                "age": ["kitten"]
             }
         }
     
+    },
+    {
+        "event_id": "newly_joined_newborn",
+        "strings": [
+            "Is snuggled safe in the nursery",
+            "Is overwhelmed by the new scents around {PRONOUN/m_c/object}",
+            "Wonders where {PRONOUN/m_c/subject} {VERB/m_c/are/is}",
+            "Wonders where home went",
+            "Is still fussy after being carried"
+        ],
+        "involved_cats": {
+            "m_c": {
+                "age": [ "newborn" ]
+            }
+        }
+
     },
     {
         "event_id": "stolen_kit",

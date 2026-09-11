@@ -49,7 +49,7 @@ def create_bio_parents(Cat, flip=False, second_parent=True, age=None, clan=None)
     }, {}, None, None)[0]
     while 'sterile' in blood_parent.permanent_condition:
         if (blood_parent):
-            del Cat.all_cats[blood_parent.ID]
+            game.clan.remove_cat(blood_parent.ID)
         blood_parent = updated_create_new_cat({
             "status": [social],
             "group_ID": clan,
@@ -72,7 +72,7 @@ def create_bio_parents(Cat, flip=False, second_parent=True, age=None, clan=None)
         }, {}, None, None)[0]
         while 'sterile' in blood_parent2.permanent_condition:
             if blood_parent2 and Cat.all_cats[blood_parent2.ID]:
-                del Cat.all_cats[blood_parent2.ID]
+                game.clan.remove_cat(blood_parent2.ID)
             blood_parent2 = updated_create_new_cat({
                 "status": [social],
                 "group_ID": clan,
