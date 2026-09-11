@@ -32,7 +32,7 @@ def passes_general_constraints(
     is_debug_event: bool = False,
 ) -> bool:
 
-    if event.other_clan_filter and game.clan.clancount == 'multiclan' and not event_for_other_clan(Cat, event.other_clan_filter.get("has_rank"), other_clan.group_ID):
+    if event.other_clan_filter and game.clan.clancount == 'multiclan' and not event_for_other_clan(primary_cat, event.other_clan_filter.get("has_rank"), other_clan.group_ID):
         if is_debug_event:
             print("DEBUG: requested patrol does not meet constraints (other clan cats)")
         return False
@@ -62,7 +62,7 @@ def passes_general_constraints(
         return False
 
     # CHECK POI
-    if not event_for_poi(event.poi):
+    if not event_for_poi(event.poi, clan):
         if is_debug_event:
             print("DEBUG: requested event does not meet constraints (PoI)")
         return False

@@ -66,6 +66,7 @@ class TextPoolEvent:
     meet: list[MeetDict] = field(default_factory=list[dict])
     future_event: list[FutureEventDict] = field(default_factory=list[dict])
 
+    other_clan_filter: dict[str, list[str]] = field(default_factory=dict)
     nr_involved_clans: int = 2
     involved_clans: list[str] = field(default_factory=list)
     # only for use in transition events

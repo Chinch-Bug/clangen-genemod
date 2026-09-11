@@ -537,6 +537,9 @@ dev_tools = false
   # kittypets will have a higher chance of having many rarer genes, even if not purebred
   kittypet_gene_boost = false
 
+  # max age a new cat can generate as
+  max_age = 200
+
 [cat_name_controls]
   # if changing prefixes is enabled, 1/chance for a cat to change their prefix when coming out as trans
   trans_prefix_change_chance = 25

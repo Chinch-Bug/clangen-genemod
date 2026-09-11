@@ -628,7 +628,7 @@ class Patrol:
         # Run the chosen outcome
         return handle_consequences.execute_outcome(
             chosen_outcome,
-            involved_cats,
+            self.outcome_cats[PatrolOutcome.SUCCESS if success else PatrolOutcome.FAILURE],
             self.clan,
             self.other_clan,
             self.chosen_poi,

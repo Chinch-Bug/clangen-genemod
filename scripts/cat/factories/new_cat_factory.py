@@ -219,7 +219,7 @@ class NewCatFactory(BaseCatFactory, ABC):
         :param age: CatAge
         :return: Appropriate moons
         """
-        return cls.rng.randint(Cat.age_moons[age][0], Cat.age_moons[age][1])
+        return cls.rng.randint(Cat.age_moons[age][0], min(Cat.age_moons[age][1], get_config("cat_generation.max_age")))
 
     @classmethod
     def _determine_age_moons_and_status(
@@ -256,8 +256,6 @@ class NewCatFactory(BaseCatFactory, ABC):
                 age = cls._get_random_age()
             status = Status(**status_dict)
             moons = cls._get_random_moons(age)
-            if moons > 200:
-                moons = 200
         else:
             status = None
 
