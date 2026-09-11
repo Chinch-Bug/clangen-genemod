@@ -6,6 +6,7 @@
     "BLUE": "darkgrey",
     "GHOST": "ghost",
     "BLACK": "black",
+    "BLOSSOM": "cream",
     "CREAM": "cream",
     "GOLDEN": "lightginger",
     "RED": "darkginger",
@@ -56,7 +57,7 @@
     "cooldilute": [7, 15, 25],
     "pinkdilute": [80, 50, 45],
     "earthydilute": [44, 33, 11],
-    "lilacdilute": [44, 33, 11],
+    "lilacdilute": [31, 25, 36],
     "none": null
   }
 }

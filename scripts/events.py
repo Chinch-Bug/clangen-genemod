@@ -1323,6 +1323,9 @@ def one_moon_cat(cat, clan):
     if cat.status.group.is_any_clan_group():
         relation_events.handle_relationships(cat)
 
+    if old_age_death(cat, clan):
+        return
+
     # now we make sure ill and injured cats don't get interactions they shouldn't
     if cat.is_ill() or cat.is_injured():
         return
@@ -1333,15 +1336,13 @@ def one_moon_cat(cat, clan):
 
     # switches between the two death handles
     if random.getrandbits(1):
-        triggered_death = handle_injuries_or_general_death(cat, clan)
-        if not triggered_death:
+        if not handle_injuries_or_general_death(cat, clan):
             handle_illnesses_or_illness_deaths(cat, clan)
         else:
             switch_set_value(Switch.skip_conditions, [])
             return
     else:
-        triggered_death = handle_illnesses_or_illness_deaths(cat, clan)
-        if not triggered_death:
+        if not handle_illnesses_or_illness_deaths(cat, clan):
             handle_injuries_or_general_death(cat, clan)
         else:
             switch_set_value(Switch.skip_conditions, [])
@@ -1818,30 +1819,6 @@ def handle_injuries_or_general_death(cat, clan):
         )
 
         return True
-
-    # chance to die of old age
-    age_start = get_config("death_related.old_age_death_start")
-    death_curve_setting = get_config("death_related.old_age_death_curve")
-    death_curve_value = 0.001 * death_curve_setting
-    # made old_age_death_chance into a separate value to make testing with print statements easier
-    old_age_death_chance = ((1 + death_curve_value) ** (cat.moons - age_start)) - 1
-    if random.random() <= old_age_death_chance:
-        create_short_event(
-            event_type="birth_death",
-            main_cat=cat,
-            sub_type=["old_age"],
-            clan=clan
-        )
-        return True
-    # max age has been indicated to be 300, so if a cat reaches that age, they die of old age
-    elif cat.moons >= 300:
-        create_short_event(
-            event_type="birth_death",
-            main_cat=cat,
-            sub_type=["old_age"],
-            clan=clan
-        )
-        return True
     
     # disaster death chance
     if get_clan_setting("disasters"):
@@ -1876,6 +1853,32 @@ def handle_injuries_or_general_death(cat, clan):
         triggered_death = Condition_Events.handle_injuries(cat, clan)
 
         return triggered_death
+
+
+def old_age_death(cat, clan):
+    # chance to die of old age
+    age_start = get_config("death_related.old_age_death_start")
+    death_curve_setting = get_config("death_related.old_age_death_curve")
+    death_curve_value = 0.001 * death_curve_setting
+    # made old_age_death_chance into a separate value to make testing with print statements easier
+    old_age_death_chance = ((1 + death_curve_value) ** (cat.moons - age_start)) - 1
+    if random.random() <= old_age_death_chance:
+        create_short_event(
+            event_type="birth_death",
+            main_cat=cat,
+            sub_type=["old_age"],
+            clan=clan
+        )
+        return True
+    # max age has been indicated to be 300, so if a cat reaches that age, they die of old age
+    elif cat.moons >= 300:
+        create_short_event(
+            event_type="birth_death",
+            main_cat=cat,
+            sub_type=["old_age"],
+            clan=clan
+        )
+        return True
 
 def handle_murder(cat, clan):
     """Handles murder"""

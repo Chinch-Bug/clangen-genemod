@@ -437,7 +437,11 @@
                     "male"
                 ]
             },
-            "r_c0": {}
+            "r_c0": {
+                "group": [
+                    "player_clan"
+                ]
+            }
         },
         "relationship_changes": [
             {
@@ -499,7 +503,11 @@
                     "female"
                 ]
             },
-            "r_c0": {}
+            "r_c0": {
+                "group": [
+                    "player_clan"
+                ]
+            }
         },
         "relationship_changes": [
             {
@@ -2416,7 +2424,11 @@
                     "female"
                 ]
             },
-            "r_c0": {}
+            "r_c0": {
+                "group": [
+                    "player_clan"
+                ]
+            }
         },
         "relationship_changes": [
             {
@@ -2533,7 +2545,11 @@
                     "male"
                 ]
             },
-            "r_c0": {}
+            "r_c0": {
+                "group": [
+                    "player_clan"
+                ]
+            }
         },
         "relationship_changes": [
             {
@@ -2643,7 +2659,11 @@
                     "male"
                 ]
             },
-            "r_c0": {}
+            "r_c0": {
+             "group": [
+                    "player_clan"
+                ]
+            }
         },
         "relationship_changes": [
             {
@@ -2743,7 +2763,11 @@
                     "female"
                 ]
             },
-            "r_c0": {}
+            "r_c0": {
+                "group": [
+                    "player_clan"
+                ]
+            }
         },
         "relationship_changes": [
             {

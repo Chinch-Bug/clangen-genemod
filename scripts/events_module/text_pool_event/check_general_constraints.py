@@ -11,6 +11,8 @@ from scripts.events_module.event_filters import (
     event_for_freshkill_supply,
     event_for_herb_supply,
     event_for_temperament,
+    event_for_poi,
+    event_for_other_clan,
 )
 from scripts.events_module.patrol.patrol_event import PatrolEvent
 from scripts.events_module.text_pool_event.text_pool_event import TextPoolEvent
@@ -29,6 +31,12 @@ def passes_general_constraints(
     other_clan: Optional["OtherClan"] = None,
     is_debug_event: bool = False,
 ) -> bool:
+
+    if event.other_clan_filter and game.clan.clancount == 'multiclan' and not event_for_other_clan(Cat, event.other_clan_filter.get("has_rank"), other_clan.group_ID):
+        if is_debug_event:
+            print("DEBUG: requested patrol does not meet constraints (other clan cats)")
+        return False
+
     # CHECK LOCATION
     if not event_for_location(event.location, clan):
         if is_debug_event:
@@ -51,6 +59,12 @@ def passes_general_constraints(
     if not event_for_tags(event.tags, primary_cat, clan.group_ID):
         if is_debug_event:
             print("DEBUG: requested event does not meet constraints (tags)")
+        return False
+
+    # CHECK POI
+    if not event_for_poi(event.poi):
+        if is_debug_event:
+            print("DEBUG: requested event does not meet constraints (PoI)")
         return False
 
     # CHECK TEMPERAMENT
