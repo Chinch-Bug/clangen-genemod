@@ -4055,6 +4055,9 @@
                         "age": [
                             "adult"
                         ],
+                        "status": [
+                            "loner"
+                        ],
                         "backstory": [
                             "loner3"
                         ]
@@ -4106,6 +4109,9 @@
                                 "p_l"
                             ]
                         },
+                        "status": [
+                            "loner"
+                        ],
                         "backstory": [
                             "loner3"
                         ]
@@ -4173,6 +4179,9 @@
                                 "p_l"
                             ]
                         },
+                        "status": [
+                            "loner"
+                        ],
                         "backstory": [
                             "loner3"
                         ]
@@ -4326,6 +4335,9 @@
                                 "p_l"
                             ]
                         },
+                        "status": [
+                            "loner"
+                        ],
                         "backstory": [
                             "loner3"
                         ]
@@ -4395,6 +4407,9 @@
                                 "p_l"
                             ]
                         },
+                        "status": [
+                            "loner"
+                        ],
                         "backstory": [
                             "loner3"
                         ]
@@ -4459,6 +4474,9 @@
                                 "p_l"
                             ]
                         },
+                        "status": [
+                            "loner"
+                        ],
                         "backstory": [
                             "loner3"
                         ]
@@ -4534,6 +4552,9 @@
                                 "p_l"
                             ]
                         },
+                        "status": [
+                            "loner"
+                        ],
                         "backstory": [
                             "loner3"
                         ]

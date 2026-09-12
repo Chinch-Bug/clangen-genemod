@@ -7,6 +7,7 @@ from scripts.cat.genotype import Genotype
 from scripts.cat.factories.new_cat_factory import NewCatFactory
 from scripts.cat.cats import Cat
 from ..cat.enums import CatRank
+from scripts.game_structure import game
 from ..game_structure.game.settings import game_setting_get
 from ..clan_package.settings import get_clan_setting
 from ..clan_package.get_clan_cats import search_cats
