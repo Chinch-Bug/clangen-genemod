@@ -713,11 +713,11 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
         age = option_dict["age"]
 
     if par := option_dict.get("can_create_new_cat", {}).get("assign_blood_parent", []):
-        blood_parent = involved_cats[par]
+        blood_parent = involved_cats[par[0]]
         if isinstance(blood_parent, list):
             blood_parent = blood_parent[0]
     if sib := option_dict.get("can_create_new_cat", {}).get("assign_sibling", []):
-        sibling = involved_cats[sib]
+        sibling = involved_cats[sib[0]]
         if isinstance(sibling, list):
             sibling = sibling[0]
 
