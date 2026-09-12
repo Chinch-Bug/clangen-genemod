@@ -12675,6 +12675,9 @@
                 "rebellious"
             ]
         },
+        "multiclan_cat": [
+            ["status:kitten", "clancat", "meeting", "exists", "dead"]
+        ],
         "supplies": [
             {
                 "type": "all_herb",
@@ -12689,7 +12692,8 @@
             "current_rep": [
                 "hostile"
             ],
-            "changed": -2
+            "changed": -2,
+            "has_rank": ["kitten"]
         },
         "relationships": [
             {
