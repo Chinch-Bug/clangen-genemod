@@ -368,7 +368,7 @@ def handle_surrogate(cat, other_cats, clan):
     outside_parent = None
     while not outside_parent or 'sterile' in outside_parent.permanent_condition:
         if outside_parent and Cat.all_cats[outside_parent.ID]:
-            del Cat.all_cats[outside_parent.ID]
+            game.clan.remove_cat(outside_parent.ID)
         outside_parent = create_new_cat(Cat,
                                         original_social=cat_type,
                                         backstory=BACKSTORIES["backstory_categories"][backstories[cat_type]],
@@ -443,7 +443,7 @@ def handle_outside_parent(cat, clan, amount=0, background_category= "1"):
                 
                 while not outside_parent or 'sterile' in outside_parent.permanent_condition:
                     if outside_parent and Cat.all_cats[outside_parent.ID]:
-                        del Cat.all_cats[outside_parent.ID]
+                        game.clan.remove_cat(outside_parent.ID)
                     outside_parent = create_new_cat(Cat,
                                                     original_social=cat_type,
                                                     backstory=BACKSTORIES["backstory_categories"][backstories[cat_type]],

@@ -57,7 +57,7 @@ def create_bio_parents(Cat, flip=False, second_parent=True, age=None, clan=None)
                                   is_parent=True)[0]
     while 'sterile' in blood_parent.permanent_condition:
         if (blood_parent):
-            del Cat.all_cats[blood_parent.ID]
+            game.clan.remove_cat(blood_parent.ID)
         blood_parent = create_new_cat(Cat,
                                       original_social=original_social,
                                       original_group=clan,
@@ -83,7 +83,7 @@ def create_bio_parents(Cat, flip=False, second_parent=True, age=None, clan=None)
                                        is_parent=True)[0]
         while 'sterile' in blood_parent2.permanent_condition:
             if blood_parent2 and Cat.all_cats[blood_parent2.ID]:
-                del Cat.all_cats[blood_parent2.ID]
+                game.clan.remove_cat(blood_parent2.ID)
             blood_parent2 = create_new_cat(Cat,
                                            original_social=original_social,
                                            original_group=clan,
@@ -569,7 +569,7 @@ def create_new_cat_block(
             adoptive_parents=adoptive_parents if adoptive_parents else None
         )
         while "age:has_kits" in attribute_list and "sterile" in new_cats[0].permanent_condition:
-            del Cat.all_cats[new_cats[0].ID]
+            game.clan.remove_cat(new_cats[0].ID)
             new_cats[0] = create_new_cat(
                 Cat,
                 new_name=new_name,
@@ -1091,7 +1091,7 @@ def create_new_cat(
         if new_cat.phenotype.manx[1] in ["Ab", "M"] or new_cat.phenotype.sexgene[0] == "Y" or new_cat.phenotype.munch[1] == "Mk" or ('NoDBE' not in new_cat.phenotype.pax3 and 'DBEalt' not in new_cat.phenotype.pax3 and new_cat.phenotype.pax3 != ["DBEcel", "DBEcel"]):
             if len(created_cats) == 0:
                 while new_cat.phenotype.manx[1] in ["Ab", "M"] or new_cat.phenotype.sexgene[0] == "Y" or new_cat.phenotype.munch[1] == "Mk" or ('NoDBE' not in new_cat.phenotype.pax3 and 'DBEalt' not in new_cat.phenotype.pax3 and new_cat.phenotype.pax3 != ["DBEcel", "DBEcel"]):
-                    del Cat.all_cats[new_cat.ID]
+                    game.clan.remove_cat(new_cat.ID)
                     new_cat = NewCatFactory.create_cat(
                     moons=moons,
                     status_dict={

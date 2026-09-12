@@ -171,7 +171,7 @@ def get_kits(
                     parage = parage + randint(0, 24) - 12
                     while not blood_par2 or 'sterile' in blood_par2.permanent_condition:
                         if blood_par2 and Cat.all_cats[blood_par2.ID]:
-                            del Cat.all_cats[blood_par2.ID]
+                            game.clan.remove_cat(blood_par2.ID)
                         cat_type = choice(
                             [CatSocial.LONER, CatSocial.ROGUE, CatSocial.KITTYPET])
                         blood_par2 = create_new_cat(Cat,

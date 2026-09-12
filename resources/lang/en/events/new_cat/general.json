@@ -3098,7 +3098,7 @@
                 "clancat",
                 "unknown",
                 "exists",
-                "age:has_kits"
+                "age:adult"
             ],
             [
                 "parent:0,1",

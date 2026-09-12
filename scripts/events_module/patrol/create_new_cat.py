@@ -252,7 +252,7 @@ def updated_create_new_cat(
         if created_cat.phenotype.manx[1] in ["Ab", "M"] or created_cat.phenotype.sexgene[0] == "Y" or created_cat.phenotype.munch[1] == "Mk" or ('NoDBE' not in created_cat.phenotype.pax3 and 'DBEalt' not in created_cat.phenotype.pax3 and created_cat.phenotype.pax3 != ["DBEcel", "DBEcel"]):
             if len(new_cats) == 0:
                 while created_cat.phenotype.manx[1] in ["Ab", "M"] or created_cat.phenotype.sexgene[0] == "Y" or created_cat.phenotype.munch[1] == "Mk" or ('NoDBE' not in created_cat.phenotype.pax3 and 'DBEalt' not in created_cat.phenotype.pax3 and created_cat.phenotype.pax3 != ["DBEcel", "DBEcel"]):
-                    del Cat.all_cats[created_cat.ID]
+                    game.clan.remove_cat(created_cat.ID)
                     created_cat = NewCatFactory.create_cat(
                         status_dict=status,
                         moons=moons,
