@@ -331,7 +331,7 @@ def accurate_porting(cat, info):
         cat.phenotype.extraeyetype = f"R{choice(range(1, 4))} ; P{choice(range(1, 3))}"
 
     red_bases = ["CREAM", "DARKGINGER", "GINGER", "PALEGINGER", "GOLDEN"]
-    tabby_bases = ["CREAM", "DARKGINGER", "GINGER", "PALEGINGER", "GOLDEN", "WHITE"]
+    tabby_bases = ["CREAM", "DARKGINGER", "GINGER", "PALEGINGER", "GOLDEN", "WHITE", "DAWN"]
     cat.chimerapheno = None
     main_colour = {"pattern": info["pelt_name"].lower(), "colour": info["pelt_color"]}
     patch_colour = {"pattern": "", "colour": ""}
@@ -426,14 +426,14 @@ def accurate_porting(cat, info):
         cat.phenotype.white[0] = "W"
         cat.phenotype.white_pattern = "No"
     
-    if main_colour["colour"] in ["WHITE", "PALEGREY", "SILVER", "GREY", "DARKGREY", "CREAM", "PALEGINGER", "LIGHTBROWN", "LILAC", "BLOSSOM"]:
+    if main_colour["colour"] in ["WHITE", "PALEGREY", "SILVER", "GREY", "DARKGREY", "CREAM", "PALEGINGER", "LIGHTBROWN", "LILAC", "BLOSSOM", "DAWN"]:
         cat.phenotype.dilute = ["d", "d"]
         cat.phenotype.rufousing = 0
     else:
         cat.phenotype.dilute[0] = "D"
     
     if cat.chimerapheno:
-        if patch_colour["colour"] in ["WHITE", "PALEGREY", "SILVER", "GREY", "DARKGREY", "CREAM", "PALEGINGER", "LIGHTBROWN", "LILAC", "BLOSSOM"]:
+        if patch_colour["colour"] in ["WHITE", "PALEGREY", "SILVER", "GREY", "DARKGREY", "CREAM", "PALEGINGER", "LIGHTBROWN", "LILAC", "BLOSSOM", "DAWN"]:
             cat.chimerapheno.dilute = ["d", "d"]
             cat.chimerapheno.rufousing = 0
         else:
@@ -479,16 +479,27 @@ def accurate_porting(cat, info):
             if cat.chimerapheno.sexgene[1] == "O":
                 cat.chimerapheno.sexgene[1] = "o"
     
-    if main_colour["colour"] in ["WHITE", "SILVER", "GHOST", "BLOSSOM"] and cat.phenotype.agouti != ["Apb", "a"]:
+    if main_colour["colour"] in ["WHITE", "SILVER", "GHOST", "BLOSSOM", "DAWN"] and cat.phenotype.agouti != ["Apb", "a"]:
         cat.phenotype.silver[0] = "I"
     else:
         cat.phenotype.silver = ["i", "i"]
 
     if cat.chimerapheno:
-        if patch_colour["colour"] in ["WHITE", "SILVER", "GHOST", "BLOSSOM"]:
+        if patch_colour["colour"] in ["WHITE", "SILVER", "GHOST", "BLOSSOM", "DAWN"]:
             cat.chimerapheno.silver[0] = "I"
         else:
             cat.chimerapheno.silver = ["i", "i"]
+    
+    if main_colour["colour"] in ["DAWN"]:
+        cat.phenotype.corin = ["sh", "sh"]
+    else:
+        cat.phenotype.corin[0] = "N"
+
+    if cat.chimerapheno:
+        if patch_colour["colour"] in ["DAWN"]:
+            cat.chimerapheno.corin = ["sh", "sh"]
+        else:
+            cat.chimerapheno.corin[0] = "N"
 
     if main_colour["colour"] in ["WHITE", "GOLDEN", "LIGHTBROWN"]:
         cat.phenotype.wideband = 13

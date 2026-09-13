@@ -341,7 +341,7 @@ class Name:
 
         colour_mappings = {
             "black" : ["BLACK"],
-            "blue" : ["GREY", "DARKGREY"],
+            "blue" : ["GREY", "DARKGREY", "DAWN"],
             "chocolate" : ["BROWN", "GOLDEN-BROWN", "DARKBROWN", "CHOCOLATE", "RUST"],
             "lilac" : ["PALEGREY", "SILVER", "LILAC"],
             "cinnamon" : ["SIENNA", "DARKGINGER", "GOLDEN-BROWN"],
@@ -520,7 +520,7 @@ class Name:
 
             colour_mappings = {
                 "black": ["BLACK"],
-                "blue": ["GREY", "DARKGREY"],
+                "blue": ["GREY", "DARKGREY", "DAWN"],
                 "chocolate": ["BROWN", "GOLDEN-BROWN", "DARKBROWN", "CHOCOLATE", "RUST"],
                 "lilac": ["PALEGREY", "SILVER", "LILAC"],
                 "cinnamon": ["SIENNA", "DARKGINGER", "GOLDEN-BROWN"],

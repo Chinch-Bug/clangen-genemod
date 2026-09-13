@@ -537,7 +537,7 @@ dev_tools = false
   # kittypets will have a higher chance of having many rarer genes, even if not purebred
   kittypet_gene_boost = false
 
-  # max age a new cat can generate as
+  # max age a new cat can generate as. Cannot be below starting value of senior age
   max_age = 200
 
 [cat_name_controls]

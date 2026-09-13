@@ -12,6 +12,7 @@
         "conju1": "plural",
         "gender0": "gender-neutral",
         "gender1": "masculine",
-        "gender2": "feminine"
+        "gender2": "feminine",
+        "gender3": "agender"
     }
 }
