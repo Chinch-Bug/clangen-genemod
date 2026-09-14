@@ -1060,7 +1060,7 @@ def create_new_cat(
     # need to get actual age enum
     age = CatAge.SENIOR
     for key_age in Cat.age_moons.keys():
-        if moons in range(Cat.age_moons[key_age][0], Cat.age_moons[key_age][1] + 1):
+        if moons in range(Cat.age_moons[key_age][0], min(Cat.age_moons[key_age][1], get_config("cat_generation.max_age")) + 1):
             age: CatAge = key_age
             break
 

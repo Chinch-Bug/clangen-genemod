@@ -192,7 +192,8 @@ class Namer():
                     base = 'black'
             
         sprite = phenotype.GetTabbySprite()[0]
-        if 'bar' in sprite or 'ghost' in phenotype.tabby or 'chinchilla' in phenotype.tabby or ("full" in phenotype.soktype and random() < 0.5):
+
+        if 'bar' in sprite or sprite == "agouti" or 'ghost' in phenotype.tabby or 'chinchilla' in phenotype.tabby or ("full" in phenotype.soktype and random() < 0.5):
             tabby['tortie_red'] = 'ticked'
         elif sprite in ['marbled', 'blotched']:
             tabby['tortie_red'] = 'blotched'

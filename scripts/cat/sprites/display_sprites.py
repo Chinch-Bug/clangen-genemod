@@ -157,7 +157,7 @@ def generate_sprite(
                     hairless.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
                     hairless.blit(sprites.sprites['furpoint' + cat_sprite], (0, 0))
                     hairless.set_alpha(120)
-                elif ('patchy ' in cat.phenotype.furtype) or (cat.pelt.length == 'hairless' and cat.phenotype.sedesp[0] != "hr" and cat.phenotype.ruhr[1] != "Hrbd" and sprite_age > 5):
+                elif ('patchy ' in cat.phenotype.furtype and sprite_age > 11) or (cat.pelt.length == 'hairless' and cat.phenotype.sedesp[0] != "hr" and cat.phenotype.ruhr[1] != "Hrbd" and sprite_age > 5):
                     hairless.blit(sprites.sprites['donskoy' + cat_sprite], (0, 0))
                 
                 if('sparse' in cat.phenotype.furtype):
@@ -422,16 +422,16 @@ def generate_sprite(
                 if not preset_pattern and len(pattern) > 2:
                     if phenotype.soktype == "full sokoke":
                         stripebase = create_stripes(
-                            stripecolour, whichbase, coloursurface, preset_pattern=pattern[1:])
+                            stripecolour, whichbase, coloursurface, preset_pattern=pattern[1:] if pattern[0] != pattern[1] and pattern[0] != "agouti" else pattern[2:])
                         middle = create_stripes(
-                            stripecolour, whichbase, coloursurface, special="no_shading", preset_pattern=pattern[:1])
+                            stripecolour, whichbase, coloursurface, special="no_shading", preset_pattern=pattern[:1] if pattern[0] != pattern[1] and pattern[0] != "agouti" else pattern[:2])
                         middle.set_alpha(150)
                         stripebase.blit(middle, (0, 0))
                     elif phenotype.soktype == "mild fading":
                         stripebase = create_stripes(
-                            stripecolour, whichbase, coloursurface, preset_pattern=pattern[1:])
+                            stripecolour, whichbase, coloursurface, preset_pattern=pattern[1:] if pattern[0] != pattern[1] and pattern[0] != "agouti" else pattern[2:])
                         middle = create_stripes(
-                            stripecolour, whichbase, coloursurface, special="no_shading", preset_pattern=pattern[:1])
+                            stripecolour, whichbase, coloursurface, special="no_shading", preset_pattern=pattern[:1] if pattern[0] != pattern[1] and pattern[0] != "agouti" else pattern[:2])
                         middle.set_alpha(204)
                         stripebase.blit(middle, (0, 0))
                 elif preset_pattern and (len(preset_pattern) > 1 or special == "no_shading"):
