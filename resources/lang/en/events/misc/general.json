@@ -15243,6 +15243,7 @@
             "any"
         ],
         "tags": [
+            "not_multiclan"
         ],
         "exclude_involved": [
         ],
