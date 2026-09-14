@@ -2,7 +2,9 @@
     {
         "event_id": "med_app_default0",
         "involved_cats": {
-            "m_c": {}
+            "m_c": {
+                "past_status": [ "-apprentice", "-mediator apprentice", "-queen apprentice" ]
+            }
         },
         "strings": [
             "(old_name), like every young kit, had dreams of becoming a warrior from a young age. However, as {PRONOUN/m_c/subject} grew older, {PRONOUN/m_c/subject} knew that {PRONOUN/m_c/poss} destiny lay in the medicine cat den. {PRONOUN/m_c/subject/CAP} happily {VERB/m_c/take/takes} up {PRONOUN/m_c/poss} new place as a medicine cat apprentice, looking forward to healing {PRONOUN/m_c/poss} Clanmates for many moons to come."
@@ -11,7 +13,9 @@
     {
         "event_id": "med_app_default1",
         "involved_cats": {
-            "m_c": {},
+            "m_c": {
+                "past_status": [ "-apprentice", "-mediator apprentice", "-queen apprentice" ] 
+            },
             "r_c0": {}
         },
         "strings": [
@@ -44,7 +48,8 @@
             "m_c": {
                 "has_mentor": {
                     "current": false
-                }
+                },
+                "past_status": [ "-apprentice", "-mediator apprentice", "-queen apprentice" ]
             }
         },
         "strings": [
@@ -63,7 +68,8 @@
             "m_c": {
                 "backstory": [
                     "-orphaned_backstories"
-                ]
+                ],
+                "past_status": [ "-apprentice", "-mediator apprentice", "-queen apprentice" ]
             },
             "r_c1": {
                 "group": [
@@ -96,7 +102,8 @@
             "m_c": {
                 "backstory": [
                     "-orphaned_backstories"
-                ]
+                ],
+                "past_status": [ "-apprentice", "-mediator apprentice", "-queen apprentice" ]
             },
             "r_c1": {
                 "group": [
@@ -138,7 +145,8 @@
                         "arrogant",
                         "ambitious"
                     ]
-                }
+                },
+                "past_status": [ "-apprentice", "-mediator apprentice", "-queen apprentice" ]
             },
             "r_c0": {}
         },
@@ -170,7 +178,8 @@
                         "vengeful",
                         "cunning"
                     ]
-                }
+                },
+                "past_status": [ "-apprentice", "-mediator apprentice", "-queen apprentice" ]
             },
             "r_c0": {}
         },
@@ -202,7 +211,8 @@
                         "gloomy",
                         "insecure"
                     ]
-                }
+                },
+                "past_status": [ "-apprentice", "-mediator apprentice", "-queen apprentice" ]
             },
             "r_c0": {}
         },
@@ -232,7 +242,8 @@
                     "trait": [
                         "faithful"
                     ]
-                }
+                },
+                "past_status": [ "-apprentice", "-mediator apprentice", "-queen apprentice" ]
             }
         },
         "strings": [
@@ -247,7 +258,8 @@
                     "trait": [
                         "wise"
                     ]
-                }
+                },
+                "past_status": [ "-apprentice", "-mediator apprentice", "-queen apprentice" ]
             }
         },
         "strings": [
@@ -262,7 +274,8 @@
                     "trait": [
                         "thoughtful"
                     ]
-                }
+                },
+                "past_status": [ "-apprentice", "-mediator apprentice", "-queen apprentice" ]
             }
         },
         "strings": [
@@ -277,7 +290,8 @@
                     "trait": [
                         "loving"
                     ]
-                }
+                },
+                "past_status": [ "-apprentice", "-mediator apprentice", "-queen apprentice" ]
             }
         },
         "strings": [
@@ -297,7 +311,8 @@
                         "confident",
                         "bold"
                     ]
-                }
+                },
+                "past_status": [ "-apprentice", "-mediator apprentice", "-queen apprentice" ]
             }
         },
         "strings": [
@@ -313,7 +328,8 @@
                     "trait": [
                         "vengeful"
                     ]
-                }
+                },
+                "past_status": [ "-apprentice", "-mediator apprentice", "-queen apprentice" ]
             }
         },
         "strings": [
@@ -328,7 +344,8 @@
                     "trait": [
                         "adventurous"
                     ]
-                }
+                },
+                "past_status": ["-apprentice", "-mediator apprentice", "-queen apprentice"]
             }
         },
         "strings": [

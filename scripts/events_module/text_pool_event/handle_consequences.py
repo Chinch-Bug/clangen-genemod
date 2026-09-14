@@ -414,6 +414,17 @@ def _handle_joining(
                 cat.skills.primary.interest_only = True
                 if cat.skills.secondary:
                     cat.skills.secondary.interest_only = True
+            
+            other = cat.status.fetch_clan_object()
+            if cat.status.rank == CatRank.LEADER:
+                other.leader = None
+                other.leader_lives = 0
+            if cat.status.rank == CatRank.DEPUTY:
+                other.deputy = None
+            if cat.status.rank == CatRank.MEDICINE_CAT:
+                other.remove_med_cat(cat)
+            if cat.status.rank in [CatRank.LEADER, CatRank.DEPUTY]:
+                cat.status._change_rank(CatRank.WARRIOR)
 
         joined.extend(cat_list)
 

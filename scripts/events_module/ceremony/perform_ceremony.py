@@ -326,7 +326,7 @@ def _cat_becomes_healer(cat) -> bool:
         if cat.status.rank in change_chance_per_role and not int(
             random.random() * change_chance_per_role[cat.status.rank]
         ):
-            trigger_ceremony(cat, CatRank.MEDICINE_CAT)
+            trigger_ceremony(cat, CatRank.MEDICINE_APPRENTICE if cat.status.rank.is_any_apprentice_rank() else CatRank.MEDICINE_CAT)
             cat.experience = int(cat.experience * 0.75)
             return True
 
