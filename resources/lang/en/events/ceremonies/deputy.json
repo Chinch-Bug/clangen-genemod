@@ -43,7 +43,7 @@
             },
             "r_c0": {
                 "status": ["leader"],
-                "group": [ "player_clan" ]
+                "group": ["player_clan"]
             },
             "past_deputy": {}
         },
