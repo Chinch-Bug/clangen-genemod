@@ -330,8 +330,8 @@ def accurate_porting(cat, info):
             cat.phenotype.extraeye = "sectoral1"
         cat.phenotype.extraeyetype = f"R{choice(range(1, 4))} ; P{choice(range(1, 3))}"
 
-    red_bases = ["CREAM", "DARKGINGER", "GINGER", "PALEGINGER", "GOLDEN"]
-    tabby_bases = ["CREAM", "DARKGINGER", "GINGER", "PALEGINGER", "GOLDEN", "WHITE", "DAWN"]
+    red_bases = ["CREAM", "DARKGINGER", "GINGER", "PALEGINGER", "GOLDEN", "HONEY"]
+    tabby_bases = ["CREAM", "DARKGINGER", "GINGER", "PALEGINGER", "GOLDEN", "WHITE", "DAWN", "MALLOW"]
     cat.chimerapheno = None
     main_colour = {"pattern": info["pelt_name"].lower(), "colour": info["pelt_color"]}
     patch_colour = {"pattern": "", "colour": ""}
@@ -355,6 +355,7 @@ def accurate_porting(cat, info):
                     "pattern": info["tortie_base"], "colour": info["pelt_color"]}
                 main_colour = {
                     "pattern": info["tortie_pattern"], "colour": info["tortie_color"]}
+                info["tortie_marking"] = "rev" + info["tortie_marking"]
             is_tortie = True
     
     cat.phenotype.agouti[0] = "A"
@@ -426,14 +427,14 @@ def accurate_porting(cat, info):
         cat.phenotype.white[0] = "W"
         cat.phenotype.white_pattern = "No"
     
-    if main_colour["colour"] in ["WHITE", "PALEGREY", "SILVER", "GREY", "DARKGREY", "CREAM", "PALEGINGER", "LIGHTBROWN", "LILAC", "BLOSSOM", "DAWN"]:
+    if main_colour["colour"] in ["WHITE", "PALEGREY", "SILVER", "GREY", "DARKGREY", "CREAM", "PALEGINGER", "LIGHTBROWN", "LILAC", "BLOSSOM", "DAWN", "MALLOW", "HONEY"]:
         cat.phenotype.dilute = ["d", "d"]
         cat.phenotype.rufousing = 0
     else:
         cat.phenotype.dilute[0] = "D"
     
     if cat.chimerapheno:
-        if patch_colour["colour"] in ["WHITE", "PALEGREY", "SILVER", "GREY", "DARKGREY", "CREAM", "PALEGINGER", "LIGHTBROWN", "LILAC", "BLOSSOM", "DAWN"]:
+        if patch_colour["colour"] in ["WHITE", "PALEGREY", "SILVER", "GREY", "DARKGREY", "CREAM", "PALEGINGER", "LIGHTBROWN", "LILAC", "BLOSSOM", "DAWN", "MALLOW", "HONEY"]:
             cat.chimerapheno.dilute = ["d", "d"]
             cat.chimerapheno.rufousing = 0
         else:
@@ -441,7 +442,7 @@ def accurate_porting(cat, info):
 
     if main_colour["colour"] in ["LIGHTBROWN", "GOLDEN-BROWN", "BLOSSOM"]:
         cat.phenotype.eumelanin = ["bl", "bl"]
-    elif main_colour["colour"] in ["WHITE", "PALEGREY", "LILAC", "BROWN", "CHOCOLATE", "RUST", "SIENNA"]:
+    elif main_colour["colour"] in ["WHITE", "PALEGREY", "LILAC", "BROWN", "CHOCOLATE", "RUST", "SIENNA", "MALLOW"]:
         cat.phenotype.eumelanin = ["b", "b"]
     else:
         cat.phenotype.eumelanin[0] = "B"
@@ -449,7 +450,7 @@ def accurate_porting(cat, info):
     if cat.chimerapheno:
         if patch_colour["colour"] in ["LIGHTBROWN", "GOLDEN-BROWN", "BLOSSOM"]:
             cat.chimerapheno.eumelanin = ["bl", "bl"]
-        elif patch_colour["colour"] in ["WHITE", "PALEGREY", "LILAC", "BROWN", "CHOCOLATE", "RUST", "SIENNA"]:
+        elif patch_colour["colour"] in ["WHITE", "PALEGREY", "LILAC", "BROWN", "CHOCOLATE", "RUST", "SIENNA", "MALLOW"]:
             cat.chimerapheno.eumelanin = ["b", "b"]
         else:
             cat.chimerapheno.eumelanin[0] = "B"
@@ -501,7 +502,7 @@ def accurate_porting(cat, info):
         else:
             cat.chimerapheno.corin[0] = "N"
 
-    if main_colour["colour"] in ["WHITE", "GOLDEN", "LIGHTBROWN"]:
+    if main_colour["colour"] in ["WHITE", "GOLDEN", "LIGHTBROWN", "MALLOW"]:
         cat.phenotype.wideband = 13
         if main_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"] and main_colour["colour"] == "GOLDEN":
             cat.phenotype.wideband = 16
@@ -509,14 +510,14 @@ def accurate_porting(cat, info):
         cat.phenotype.wideband = randint(0, 11)
 
     if cat.chimerapheno:
-        if patch_colour["colour"] in ["WHITE", "GOLDEN", "LIGHTBROWN"]:
+        if patch_colour["colour"] in ["WHITE", "GOLDEN", "LIGHTBROWN", "MALLOW"]:
             cat.chimerapheno.wideband = 13
             if patch_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"] and patch_colour["colour"] == "GOLDEN":
                 cat.chimerapheno.wideband = 16
         else:
             cat.chimerapheno.wideband = randint(0, 11)
 
-    if main_colour["colour"] in ["DARKGINGER"]:
+    if main_colour["colour"] in ["DARKGINGER", "CHOCOLATE", "HONEY"]:
         cat.phenotype.rufousing = 8
     if main_colour["colour"] in ["BLACK"]:
         cat.phenotype.rufousing = 0
@@ -531,7 +532,7 @@ def accurate_porting(cat, info):
         cat.phenotype.fur_shade = choice(range(2, 5))
 
     if cat.chimerapheno:
-        if patch_colour["colour"] in ["DARKGINGER", "CHOCOLATE"]:
+        if patch_colour["colour"] in ["DARKGINGER", "CHOCOLATE", "HONEY"]:
             cat.chimerapheno.rufousing = 8
         if patch_colour["colour"] in ["BLACK"]:
             cat.chimerapheno.rufousing = 0

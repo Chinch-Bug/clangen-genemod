@@ -623,9 +623,9 @@ class Phenotype(Genotype):
                                              "MINIMAL_TWOTHREE", "MINIMAL_THREEFOUR", "MINIMAL_ALL", "ROBIN_SAFI", "FRECKLED_BIRD",
                                              "FRECKLED_STREAM", "FRECKLED_GRUMP", "FRECKLED_BLANKET", "ARMTAIL_SMOKE", "GRUMPY_SMOKE",
                                              "DAUB_SAFI", "EYEDOT_ONE", "SHILOH_FOUR", "DEARHEART", "EXPANDED_CHIMERA", "BELOVED_BIRD",
-                                             "MOTTLED_SHILOH", "SOL", "OC_TIME"]
+                                             "MOTTLED_SHILOH", "SOL", "OC_TIME", "BLAZING_HEART", "SATURN", "RISING_FIRE"]
             self.def_tortie_high_patterns += ["MASKED_TAIL", "revFRECKLED_OREO", "PIECEMEAL", "ROBIN_TAIL", "ARMTAIL_ONE", "CHIMERA_THREE",
-                                              "MOTTLED_THREE", "PATCHY_OREO", "ONE_DELILAH", "PANTS_FACE"]
+                                              "MOTTLED_THREE", "PATCHY_OREO", "ONE_DELILAH", "PANTS_FACE", "TWO_TURTLE", "POWDER_HEART"]
             self.def_tortie_high_patterns += ["HALF"]
         tortie_low_patterns = self.def_tortie_low_patterns
         tortie_mid_patterns = self.def_tortie_mid_patterns

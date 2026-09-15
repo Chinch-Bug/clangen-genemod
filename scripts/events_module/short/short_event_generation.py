@@ -372,8 +372,8 @@ def filter_events(
 
         # ensure ID and requirements override
         if get_config("event_generation.debug_override_requirements"):
-            if game.clan.clancount == 'multiclan' and event.other_clan and not event_for_other_clan(
-                Cat, event.other_clan.get("has_rank"), other_clan.group_ID
+            if game.clan.clancount == 'multiclan' and not event_for_other_clan(
+                Cat, event.other_clan.get("has_rank") if event.other_clan else [], other_clan.group_ID
             ):
                 continue
             final_events.append(event)
@@ -479,6 +479,11 @@ def filter_events(
             if not event_for_reputation(event.outsider["current_rep"], clan):
                 continue
 
+        if game.clan.clancount == 'multiclan' and not event_for_other_clan(
+            Cat, event.other_clan.get("has_rank") if event.other_clan else [], other_clan.group_ID
+        ):
+            continue
+
         # other Clan related checks
         if event.other_clan:
             if not other_clan:
@@ -486,11 +491,6 @@ def filter_events(
 
             if "current_rep" in event.other_clan and not event_for_clan_relations(
                 event.other_clan["current_rep"], clan, other_clan
-            ):
-                continue
-
-            if game.clan.clancount == 'multiclan' and not event_for_other_clan(
-                Cat, event.other_clan.get("has_rank"), other_clan.group_ID
             ):
                 continue
 

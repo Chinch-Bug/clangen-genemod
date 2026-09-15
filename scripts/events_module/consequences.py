@@ -397,6 +397,13 @@ def create_new_cat_block(
             chosen_backstory
             in BACKSTORIES["backstory_categories"]["baby_clancat_backstories"] +
             BACKSTORIES["backstory_categories"]["former_clancat_backstories"]
+            and game.clan.clancount == "multiclan" and "clancat" not in attribute_list
+        ):
+            return find_clan_cats(Cat, Relationship, event, in_event_cats, i, attribute_list+(["change_clan", f"backstory:{chosen_backstory}"] if "meeting" not in attribute_list else [f"backstory:{chosen_backstory}"]), clan, other_clan)
+        elif (
+            chosen_backstory
+            in BACKSTORIES["backstory_categories"]["baby_clancat_backstories"] +
+            BACKSTORIES["backstory_categories"]["former_clancat_backstories"]
             or (game.clan.clancount == "multiclan" and "clancat" in attribute_list)
         ):
             cat_social = (
@@ -730,7 +737,7 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
     # OPTION TO OVERRIDE DEFAULT BACKSTORY
     bs_override = False
     stor = []
-    for _tag in attribute_list:
+    for _tag in attribute_list[::-1]:
         match = re.match(r"backstory:\s?(.+)", _tag)
         if match:
             bs_list = [x for x in re.split(r", ?", match.group(1))]
@@ -838,6 +845,10 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
         if not all_clan_cats:
             all_clan_cats = [i for i in Cat.all_cats.values(
             ) if i.status.group_ID == other_clan.group_ID and i.age != CatAge.NEWBORN]
+        if not all_clan_cats:
+            print("No possible Clan cats found, generating")
+            all_clan_cats = create_new_cat_block(
+                Cat, Relationship, event, in_event_cats, i, attribute_list+["clancat"], clan=clan, other_clan=other_clan)
 
         all_clan_cats_healthy = [i for i in all_clan_cats if not i.not_working()]
         picked_cats = [choice(all_clan_cats_healthy if all_clan_cats_healthy else all_clan_cats)]
@@ -888,6 +899,11 @@ def find_clan_cats(Cat, Relationship, event, in_event_cats: dict, i: int, attrib
     if "dead" in attribute_list:
         for cat in picked_cats:
             cat.die()
+
+    if "new_name" in attribute_list:
+        for cat in picked_cats:
+            cat.history.prev_names.append(str(cat.name))
+            cat.name = Name(cat, biome=other_clan.biome)
 
     for cat in picked_cats:
         if chosen_backstory:
@@ -1328,7 +1344,7 @@ def gather_cat_objects(
             found_cat = involved_cats[abbr]
             if is_exclusionary:
                 if isinstance(found_cat, list):
-                    out_set -= found_cat
+                    out_set -= set(found_cat)
                 else:
                     out_set.discard(found_cat)
             else:

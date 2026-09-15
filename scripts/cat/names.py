@@ -343,11 +343,11 @@ class Name:
             "black" : ["BLACK"],
             "blue" : ["GREY", "DARKGREY", "DAWN"],
             "chocolate" : ["BROWN", "GOLDEN-BROWN", "DARKBROWN", "CHOCOLATE", "RUST"],
-            "lilac" : ["PALEGREY", "SILVER", "LILAC"],
+            "lilac" : ["PALEGREY", "SILVER", "LILAC", "MALLOW"],
             "cinnamon" : ["SIENNA", "DARKGINGER", "GOLDEN-BROWN"],
             "fawn" : ["LIGHTBROWN", "BLOSSOM"],
             "ginger" : ["GINGER", "DARKGINGER"],
-            "cream" : ["CREAM", "PALEGINGER"],
+            "cream" : ["CREAM", "PALEGINGER", "HONEY"],
             "white" : ["WHITE"],
             "silver shaded" : ["WHITE"]
         }
@@ -522,11 +522,11 @@ class Name:
                 "black": ["BLACK"],
                 "blue": ["GREY", "DARKGREY", "DAWN"],
                 "chocolate": ["BROWN", "GOLDEN-BROWN", "DARKBROWN", "CHOCOLATE", "RUST"],
-                "lilac": ["PALEGREY", "SILVER", "LILAC"],
+                "lilac": ["PALEGREY", "SILVER", "LILAC", "MALLOW"],
                 "cinnamon": ["SIENNA", "DARKGINGER", "GOLDEN-BROWN"],
                 "fawn": ["LIGHTBROWN", "BLOSSOM"],
                 "ginger": ["GINGER", "DARKGINGER"],
-                "cream": ["CREAM", "PALEGINGER"],
+                "cream": ["CREAM", "PALEGINGER", "HONEY"],
                 "white": ["WHITE"],
                 "silver shaded": ["WHITE"]
             }
