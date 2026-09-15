@@ -148,7 +148,8 @@ def load_relationship_of_cat(cat):
                 for rel in rel_data:
                     if isinstance(rel.get('blanks', False), list):
                         for b in rel["blanks"]:
-                            cat.relationships[b] = Relationship(cat, cat.all_cats.get(b))
+                            if c := cat.all_cats.get(b):
+                                cat.relationships[b] = Relationship(cat, c)
                         continue
                     # checking validity
                     cat_to = cat.all_cats.get(rel["cat_to_id"])

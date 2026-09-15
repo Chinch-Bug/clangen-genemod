@@ -53,7 +53,7 @@ class RoleScreen(Screens):
                     self.update_selected_cat()
                 else:
                     print("invalid previous cat", self.previous_cat)
-            elif not get_config("ranks.allow_manual"):
+            elif not get_config("roles.allow_manual"):
                 CruelLockedAction()
             #
             #

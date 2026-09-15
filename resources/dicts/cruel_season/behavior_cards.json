@@ -8,7 +8,7 @@
   "fated_paths": {
     "card_art": "behavior/resolute.png",
     "modifiers": {
-      "ranks.allow_manual": false,
+      "roles.allow_manual": false,
       "mates.allow_manual": false,
       "outsiders.change_clan_button": false,
       "settings.force_enable.deputy": true
@@ -158,6 +158,12 @@
       "outsiders.max_reputation": 29,
       "outsiders.starting_reputation": 15,
       "outsiders.change_clan_button": false
+    }
+  },
+  "burnout": {
+    "card_art": "behavior/burnout.png",
+    "modifiers": {
+      "medcats.medcat_base_capacity": 5
     }
   }
 }
