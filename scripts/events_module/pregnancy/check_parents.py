@@ -30,18 +30,15 @@ def cat_is_amab(cat):
     return (('Y' in cat.phenotype.sexgene and cat.phenotype.sex != "molly") or cat.phenotype.sex == "tom")
 
 def no_kits_allowed(cat):
-    kit_blocked_ranks = set()
-    if get_clan_setting("block_litters_by_rank"):
-        for rank in CatRank:
-            rank_str = rank
-            if rank == CatRank.APPRENTICE:
-                rank_str = CatRank.WARRIOR
-            elif "apprentice" in rank:
-                rank_str = rank.replace(" apprentice", "")
-            if get_clan_setting(f"block_litters_{rank_str}"):
-                kit_blocked_ranks.add(rank)
-    return cat.no_kits or cat.status.rank in kit_blocked_ranks
-
+    if cat.no_kits:
+        return True
+    if cat.status.rank not in get_config("pregnancy.can_have_kits"):
+        if not cat.mate:
+            return True
+        elif cat.mate:
+            if all([cat.fetch_cat(mate_id).status.rank not in get_config("pregnancy.can_have_kits") for mate_id in cat.mate]):
+                return True
+    return False
 
 def check_if_can_have_kits(cat, for_surrogate=False):
     """Check if the given cat can have kits, see for age, birth-cooldown and so on."""
@@ -80,6 +77,10 @@ def check_if_can_have_kits(cat, for_surrogate=False):
             and not for_surrogate
         ):
             return False
+
+    # check for role
+    if cat.status.rank not in get_config("pregnancy.can_have_kits"):
+        return False
 
     # if function reaches this point, having kits is possible
     return True

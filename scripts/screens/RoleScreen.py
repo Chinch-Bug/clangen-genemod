@@ -53,21 +53,34 @@ class RoleScreen(Screens):
                     self.update_selected_cat()
                 else:
                     print("invalid previous cat", self.previous_cat)
-            elif not get_config("roles.allow_manual"):
-                CruelLockedAction()
             #
             #
             #   ANYTHING BELOW HERE WILL NOT TRIGGER IF CRUEL SEASON DISABLES ROLE SWITCHING
             #                               Ye have been warned
             #
             #
+            elif not get_config("roles.can_manually_change.all") or (
+                not get_config("roles.can_manually_change.deputy")
+                and self.the_cat == game.clan.deputy
+            ):
+                CruelLockedAction()
+                pass
+
             elif event.ui_element == self.promote_leader:
                 clan = self.the_cat.status.fetch_clan_object(game.clan)
+                if self.the_cat == clan.deputy and not get_config("roles.can_manually_change.deputy"):
+                    CruelLockedAction()
+                    pass
+                elif self.the_cat == clan.deputy:
+                    game.clan.deputy = None
                 clan.new_leader(self.the_cat)
                 if switch_get_value(Switch.sort_type) == "rank":
                     Cat.sort_cats()
                 self.update_selected_cat()
             elif event.ui_element == self.promote_deputy:
+                if not get_config("roles.can_manually_change.deputy"):
+                    CruelLockedAction()
+                    pass
                 self.the_cat.status.fetch_clan_object(game.clan).deputy = self.the_cat
                 self.the_cat.rank_change(CatRank.DEPUTY, resort=True)
                 self.update_selected_cat()

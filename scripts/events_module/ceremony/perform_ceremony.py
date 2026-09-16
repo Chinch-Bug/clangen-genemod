@@ -12,6 +12,7 @@ from scripts.conditions import (
     medicine_cats_can_cover_clan,
     get_amount_cat_for_one_medic,
 )
+from scripts.cat_relations.inheritance2 import inheritance_db
 from scripts.config import get_config
 from scripts.events_module.ceremony.generate_normal_ceremony import create_ceremony
 from scripts.events_module.event_information import EventInformation
@@ -189,6 +190,9 @@ def check_for_ceremony(main_cat: Cat, clan):
             elif main_cat.status.rank == CatRank.QUEEN_APPRENTICE:
                 trigger_ceremony(main_cat, CatRank.QUEEN)
 
+def get_leaders_kits(clan):
+    leaders_kits = clan.leader.get_children()
+    return leaders_kits
 
 def _rel_deputy_filter(cat_list, leader):
     has_rel = []
@@ -240,6 +244,12 @@ def check_and_promote_deputy(clan):
             Cat.all_cats_list,
         )
     )
+    
+    if (
+        get_config("roles.only_leader_kits_deputy")
+        and clan.leader is not None
+    ):
+        possible_deputies = [c for c in possible_deputies if c.ID in get_leaders_kits(clan)]
 
     if not possible_deputies:
         possible_deputies = list(
@@ -248,6 +258,13 @@ def check_and_promote_deputy(clan):
                 and x.status.rank == CatRank.WARRIOR
                 and (x.apprentice or x.former_apprentices),
                 Cat.all_cats_list))
+    
+        if (
+            get_config("roles.only_leader_kits_deputy")
+            and clan.leader is not None
+        ):
+            possible_deputies = [c for c in possible_deputies if c.ID in get_leaders_kits(clan)]
+
     if get_clan_setting("rel_deputy") and clan.leader:
         possible_deputies = _rel_deputy_filter(possible_deputies, clan.leader)
 
@@ -263,6 +280,13 @@ def check_and_promote_deputy(clan):
                 Cat.all_cats_list,
             )
         )
+
+        if (
+            get_config("roles.only_leader_kits_deputy")
+            and game.clan.leader is not None
+        ):
+            # If none of the leader's kits meet all the requirements for deputy, choose one randomly, with special text.
+            all_warriors = [c for c in all_warriors if c.ID in get_leaders_kits()]
         if all_warriors:
             if get_clan_setting("rel_deputy") and clan.leader:
                 all_warriors = _rel_deputy_filter(all_warriors, clan.leader)

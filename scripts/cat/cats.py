@@ -1017,7 +1017,7 @@ class Cat:
         load_leader_ceremonies()
         self.history.prev_names.append(str(self.name))
 
-        num_of_lives_to_give = min(max(1, choice(get_config("death_related.leader_lives_nr"))), get_config("death_related.max_leader_lives"))
+        num_of_lives_to_give = min(max(get_config("death_related.min_leader_lives"), choice(get_config("death_related.leader_lives_nr"))), get_config("death_related.max_leader_lives"))
         self.status.fetch_clan_object().leader_lives = num_of_lives_to_give
 
         # determine which dict we're pulling from
