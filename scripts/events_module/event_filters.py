@@ -1185,6 +1185,7 @@ def cat_for_event(
     # gather funcs to use
     func_dict = {
         "age": _get_cats_with_age,
+        "gender": _get_cats_with_gender,
         "status": _get_cats_with_status,
         "past_status": _get_cats_with_status_history,
         "stat": _get_cats_with_stat,
@@ -1424,19 +1425,15 @@ def _get_cats_with_age(cat_list: list, ages: list[str]) -> list:
 
 
 def _get_cats_with_gender(cat_list: list, genders: list[str]) -> list:
-    """
-    Checks cat_list against required ages and returns qualifying cats.
-    """
-    if not genders or "any" in genders:
+    if not genders:
         return cat_list
 
     is_exclusionary = _check_for_exclusionary_value(genders)
 
     if is_exclusionary:
-        genders = [x.replace("-", "") for x in genders]
+        ages = [x.replace("-", "") for x in genders]
         return [kitty for kitty in cat_list if not _check_cat_gender(kitty, genders)]
     else:
-        check_genders = []
         return [kitty for kitty in cat_list if _check_cat_gender(kitty, genders)]
 
 
