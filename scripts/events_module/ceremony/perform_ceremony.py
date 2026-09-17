@@ -286,7 +286,7 @@ def check_and_promote_deputy(clan):
             and game.clan.leader is not None
         ):
             # If none of the leader's kits meet all the requirements for deputy, choose one randomly, with special text.
-            all_warriors = [c for c in all_warriors if c.ID in get_leaders_kits()]
+            all_warriors = [c for c in all_warriors if c.ID in get_leaders_kits(clan)]
         if all_warriors:
             if get_clan_setting("rel_deputy") and clan.leader:
                 all_warriors = _rel_deputy_filter(all_warriors, clan.leader)

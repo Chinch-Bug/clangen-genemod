@@ -170,7 +170,8 @@
     "card_art": "behavior/sorrow.png",
     "modifiers": {
       "death_related.max_leader_lives": 5,
-      "death_related.min_leader_lives": 1
+      "death_related.min_leader_lives": 1,
+      "death_related.leader_lives_nr": [1,2,3,4,5]
     }
   },
   "forsaken": {
