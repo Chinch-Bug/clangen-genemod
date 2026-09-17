@@ -623,7 +623,7 @@ class Pelt:
                             else:
                                 white_pattern.append(order[i] + choice([' bicolour1', ' bicolour2', ' bicolour2']))
 
-                        if random() < 0.2:
+                        if random() < 0.15:
                             nropaws = choice([4, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1])
                             order = ['right front', 'left front', 'right back', 'left back']
                             shuffle(order)
@@ -658,7 +658,7 @@ class Pelt:
                     for i in range(nropaws):
                         white_pattern.append(order[i] + ' bicolour2')
 
-                    if random() < 0.15:
+                    if random() < 0.1:
                         nropaws = choice([4, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1])
                         order = ['right front', 'left front', 'right back', 'left back']
                         shuffle(order)
@@ -692,7 +692,7 @@ class Pelt:
                     if random() < 0.25:
                         white_pattern.append(choice(['FOREHEAD_STRIPE']))
                     
-                    if random() < 0.1:
+                    if random() < 0.05:
                         nropaws = choice([4, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1])
                         order = ['right front', 'left front',
                                  'right back', 'left back']
@@ -730,7 +730,7 @@ class Pelt:
                     if random() < 0.25:
                         white_pattern.append(choice(["break/BACKSPOT", "break/SADDLE_SMALL"]))
 
-                    if random() < 0.05:
+                    if random() < 0.01:
                         nropaws = choice([4, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1])
                         order = ['right front', 'left front', 'right back', 'left back']
                         shuffle(order)
@@ -765,7 +765,7 @@ class Pelt:
                             white_pattern.append(choice(['break/bracelet left', 'break/bracelet right']))
                         
 
-                    if random() < 0.01:
+                    if random() < 0.001:
                         nropaws = choice([4, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1])
                         order = ['right front', 'left front', 'right back', 'left back']
                         shuffle(order)

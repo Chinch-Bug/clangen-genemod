@@ -283,7 +283,7 @@ def check_and_promote_deputy(clan):
 
         if (
             get_config("roles.only_leader_kits_deputy")
-            and game.clan.leader is not None
+            and clan.leader is not None
         ):
             # If none of the leader's kits meet all the requirements for deputy, choose one randomly, with special text.
             all_warriors = [c for c in all_warriors if c.ID in get_leaders_kits(clan)]

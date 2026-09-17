@@ -79,7 +79,7 @@
         "dynamic prefixes": "Allow changing prefixes",
         "dynamic prefixes_tooltip": "Cats may change prefixes during ceremonies.",
         "new suffixes": "Use new suffixes (WIP)",
-        "new suffixes_tooltip": "Cats will gain suffixes based on skills, traits, and what they're honoured for.",
+        "new suffixes_tooltip": "Cats will get suffixes based on skills, traits, and what they're honoured for in their ceremony. Leaving special rank suffixes on is recommmended.",
         "ancient names": "Use Ancient names",
         "ancient names_tooltip": "Suffix will be automatically capitalized and separated (eg. Black Claw).",
         "no suffixes": "No suffixes",
