@@ -623,9 +623,11 @@ class Phenotype(Genotype):
                                              "MINIMAL_TWOTHREE", "MINIMAL_THREEFOUR", "MINIMAL_ALL", "ROBIN_SAFI", "FRECKLED_BIRD",
                                              "FRECKLED_STREAM", "FRECKLED_GRUMP", "FRECKLED_BLANKET", "ARMTAIL_SMOKE", "GRUMPY_SMOKE",
                                              "DAUB_SAFI", "EYEDOT_ONE", "SHILOH_FOUR", "DEARHEART", "EXPANDED_CHIMERA", "BELOVED_BIRD",
-                                             "MOTTLED_SHILOH", "SOL", "OC_TIME", "BLAZING_HEART", "SATURN", "RISING_FIRE"]
+                                             "MOTTLED_SHILOH", "SOL", "OC_TIME", "BLAZING_HEART", "SATURN", "RISING_FIRE", "SIDEPETAL",
+                                             "STROKE", "BRISTLE"]
             self.def_tortie_high_patterns += ["MASKED_TAIL", "revFRECKLED_OREO", "PIECEMEAL", "ROBIN_TAIL", "ARMTAIL_ONE", "CHIMERA_THREE",
-                                              "MOTTLED_THREE", "PATCHY_OREO", "ONE_DELILAH", "PANTS_FACE", "TWO_TURTLE", "POWDER_HEART"]
+                                              "MOTTLED_THREE", "PATCHY_OREO", "ONE_DELILAH", "PANTS_FACE", "TWO_TURTLE", "POWDER_HEART",
+                                              "SOCKS", "COZY", "FOURC", "revONESIE"]
             self.def_tortie_high_patterns += ["HALF"]
         tortie_low_patterns = self.def_tortie_low_patterns
         tortie_mid_patterns = self.def_tortie_mid_patterns
@@ -634,7 +636,7 @@ class Phenotype(Genotype):
                         "EYEBAGS", "revEYESPOT", "revHEART", "HONEY", "LEFTEAR_MID", "LEFTEAR_MOSTLY", "LEFTEAR_RING", "LEFTEAR_TIP", "LEFTEAR", "LITTLE", "PAWS", "REVERSEEYE", "REVERSEHEART", 
                         "RIGHTEAR_MID", "RIGHTEAR_MOSTLY", "RIGHTEAR_RING", "RIGHTEAR_TIP", "RIGHTEAR", "SCOURGE", "SPARKLE", "revTAIL", 'revTAILTWO', "TAILTIP", "TEARS", "TIP",
                         "TOES", "TOESTAIL", "VEE", "HELMET", "TAILTIP_T", "PAW_FR_T", "PAW_FL_CLOVERTAIL", "PAW_BR_WING", "PAW_BL_SPLOTCH", "UNDERPAWS_T", "BELLY_T", "BOTHEARS_T", 
-                        "EYELINER_T"]
+                        "EYELINER_T", "LEAKY_EYE"]
         
                 
         chosen = []
