@@ -44,6 +44,7 @@ from scripts.events_module.ceremony.perform_ceremony import (
 )
 
 from scripts.events_module.generate_events import GenerateEvents, generate_events
+from scripts.events_module.focus import handle_focus
 from scripts.events_module.outsider import outsider_events
 from scripts.events_module.patrol.patrol import Patrol
 from scripts.events_module.relationship import relation_events
@@ -1242,6 +1243,7 @@ def one_moon_cat(cat, clan):
             cat.status.increase_current_moons_as()
         if cat.moons > 0 and cat.status.rank == CatRank.NEWBORN:
             cat.status._change_rank(CatRank.KITTEN)
+        cat.assign_thought()
         handle_fading(cat, clan)  # Deal with fading.
         return
 

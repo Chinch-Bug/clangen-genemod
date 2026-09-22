@@ -145,7 +145,9 @@ def _new_thought(
                 if ensured_id
                 else None
             )
-            used_thoughts.add(chosen_thought_group.event_id)
+
+            if not ensured_id:
+                used_thoughts.add(chosen_thought_group.event_id)
 
             # specifically "is not None" so that index 0 isn't picked up as a NoneType
             chosen_thought = (
@@ -255,10 +257,12 @@ def _load_allowed_thoughts(thought_type: CatThought, main_cat: Cat, ageup=False)
         # make sure lost thoughts are included
         if main_cat.status.is_lost():
             prior_rank = main_cat.status.find_prior_clan_rank()
+            new_path = f"{start_path}/while_lost"
+            thoughts.extend(_get_general(main_cat, new_path))
             if prior_rank:
                 prior_rank = prior_rank.replace("healer", "medicine cat").replace(" ", "_")
                 thoughts.extend(
-                    load_text_pool_events(f"{start_path}/while_lost/{prior_rank}.json")
+                    load_text_pool_events(f"{new_path}/{prior_rank}.json")
                 )
 
         else:

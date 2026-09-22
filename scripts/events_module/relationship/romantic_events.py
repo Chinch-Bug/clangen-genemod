@@ -265,6 +265,7 @@ def _handle_new_mate_events(cat: Cat):
         Cat.fetch_cat(x)
         for x in cat.relationships
         if x not in cat.mate
+        and Cat.fetch_cat(x)
         and Cat.fetch_cat(x).status.group_ID == cat.status.group_ID
         and cat.is_potential_mate(Cat.fetch_cat(x))
     ]

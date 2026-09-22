@@ -30,7 +30,7 @@
     "modifiers": {
       "death_related.mass_death_chance": 8,
       "death_related.max_mass_deaths": 1000,
-      "settings.force_enable.disaster": true
+      "settings.force_enable.disasters": true
     }
   },
   "radioactive": {

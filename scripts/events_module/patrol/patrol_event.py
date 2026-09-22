@@ -5,6 +5,7 @@ from typing import Union, Literal, Optional
 
 from scripts.cat.personality import Personality
 from scripts.cat.skills import SkillPath
+from scripts.game_structure.constants import HERBS
 from scripts.events_module.parameter_dicts import (
     InvolvedCatDict,
     RelationshipConstraintDict,

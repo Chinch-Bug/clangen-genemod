@@ -627,7 +627,7 @@ class Phenotype(Genotype):
                                              "STROKE", "BRISTLE"]
             self.def_tortie_high_patterns += ["MASKED_TAIL", "revFRECKLED_OREO", "PIECEMEAL", "ROBIN_TAIL", "ARMTAIL_ONE", "CHIMERA_THREE",
                                               "MOTTLED_THREE", "PATCHY_OREO", "ONE_DELILAH", "PANTS_FACE", "TWO_TURTLE", "POWDER_HEART",
-                                              "SOCKS", "COZY", "FOURC", "revONESIE"]
+                                              "SOCKS", "COZY", "FIVE", "revONESIE"]
             self.def_tortie_high_patterns += ["HALF"]
         tortie_low_patterns = self.def_tortie_low_patterns
         tortie_mid_patterns = self.def_tortie_mid_patterns
