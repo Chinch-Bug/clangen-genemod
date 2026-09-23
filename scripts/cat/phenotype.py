@@ -635,7 +635,7 @@ class Phenotype(Genotype):
         tiny_patches = ["BACKSPOT", "SADDLE_SMALL", "BEARD", "BELLY", "BIB", "revBLACKSTAR", "BLAZE", "BLAZE_MIN", "BLAZEMASK", "revBOOTS", "CHESTSPECK", "ESTRELLA",
                         "EYEBAGS", "revEYESPOT", "revHEART", "HONEY", "LEFTEAR_MID", "LEFTEAR_MOSTLY", "LEFTEAR_RING", "LEFTEAR_TIP", "LEFTEAR", "LITTLE", "PAWS", "REVERSEEYE", "REVERSEHEART", 
                         "RIGHTEAR_MID", "RIGHTEAR_MOSTLY", "RIGHTEAR_RING", "RIGHTEAR_TIP", "RIGHTEAR", "SCOURGE", "SPARKLE", "revTAIL", 'revTAILTWO', "TAILTIP", "TEARS", "TIP",
-                        "TOES", "TOESTAIL", "VEE", "HELMET", "TAILTIP_T", "PAW_FR_T", "PAW_FL_CLOVERTAIL", "PAW_BR_WING", "PAW_BL_SPLOTCH", "UNDERPAWS_T", "BELLY_T", "BOTHEARS_T", 
+                        "TOES", "TOESTAIL", "MIDTOESTAIL", "MINTOESTAIL", "VEE", "HELMET", "TAILTIP_T", "PAW_FR_T", "PAW_FL_CLOVERTAIL", "PAW_BR_WING", "PAW_BL_SPLOTCH", "UNDERPAWS_T", "BELLY_T", "BOTHEARS_T", 
                         "EYELINER_T", "LEAKY_EYE"]
         
                 

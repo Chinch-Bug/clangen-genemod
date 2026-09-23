@@ -9,6 +9,10 @@ def add_to_clan(cat, clan):
     """Makes an "outside cat" a Clan cat. Returns a list of IDs for any additional cats that
     are coming with them.
     """
+    if cat.status.group_ID:
+        # already in clan
+        return
+
     if not cat.status.is_exiled(clan) and clan not in cat.status.all_groups:
         cat.history.add_beginning()
 
