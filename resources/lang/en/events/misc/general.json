@@ -14981,7 +14981,7 @@
             ]
         },
         "multiclan_cat": [
-            ["status:leader"]
+            ["status:leader", "clancat", "meeting"]
         ],
         "other_clan": {
             "current_rep": [
