@@ -2319,7 +2319,8 @@
                 "age": [
                     "kitten",
                     "newborn"
-                ]
+                ],
+                "group": ["player_clan"]
             }
         },
         "relationship_changes": [
@@ -2384,7 +2385,8 @@
                 "age": [
                     "kitten",
                     "newborn"
-                ]
+                ],
+                "group": [ "player_clan" ]
             }
         },
         "relationship_changes": [

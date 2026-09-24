@@ -8,7 +8,7 @@
   "fated_paths": {
     "card_art": "society/resolute.png",
     "modifiers": {
-      "ranks.can_manually_change.all": false,
+      "roles.can_manually_change.all": false,
       "mates.allow_manual": false,
       "outsiders.change_clan_button": false,
       "settings.force_enable.deputy": true
