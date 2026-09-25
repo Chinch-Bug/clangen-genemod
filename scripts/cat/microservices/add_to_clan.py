@@ -9,7 +9,7 @@ def add_to_clan(cat, clan):
     """Makes an "outside cat" a Clan cat. Returns a list of IDs for any additional cats that
     are coming with them.
     """
-    if cat.status.group_ID:
+    if cat.status.group_ID == clan:
         # already in clan
         return
 
