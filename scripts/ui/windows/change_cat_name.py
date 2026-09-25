@@ -142,7 +142,7 @@ class ChangeCatNameWindow(GameWindow):
                     or self.the_cat.name.specsuffix_hidden
                 ):
                     self.the_cat.name.suffix = sub(
-                        r"[^\w'- ]+", "", self.suffix_entry_box.get_text()
+                        r"[^\w'\- ]+", "", self.suffix_entry_box.get_text()
                     )
                     self.name_changed.show()
 
