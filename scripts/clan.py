@@ -500,7 +500,6 @@ class Clan:
             if leader.status.rank != CatRank.LEADER:
                 Cat.all_cats[leader.ID].rank_change(CatRank.LEADER)
             self.leader_predecessors += 1
-            self.reset_leader_lives()
 
         # todo: this leads nowhere, can it be deleted?
         switch_set_value(Switch.new_leader, None)

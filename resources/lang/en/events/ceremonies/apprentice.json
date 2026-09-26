@@ -1035,7 +1035,9 @@
                 }
             },
             "r_c0": {},
-            "r_c1": {}
+            "r_c1": {
+                "group": ["player_clan"]
+            }
         },
         "strings": [
             "Newly apprenticed m_c can't help but squeak when {PRONOUN/m_c/poss} mentor's name is announced. {PRONOUN/m_c/subject/CAP} {VERB/m_c/run/runs} with {PRONOUN/m_c/poss} ears lowered in embarrassment to touch noses with r_c0.",
