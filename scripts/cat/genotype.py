@@ -936,6 +936,8 @@ class Genotype:
                 par1 = par1.chimerapheno
         except:
             par1 = par1
+            if not hasattr(par1, "breeds"):
+                par1 = None
         try:
             if par2.passes == 1 or not par2.chimerapheno:
                 par2 = par2.phenotype
@@ -945,6 +947,8 @@ class Genotype:
                 par2 = par2.chimerapheno
         except:
             par2 = par2
+            if not hasattr(par2, "breeds"):
+                par2 = None
         if not par2:
             print("No second parent genotype given")
             par2 = Genotype(self.odds, self.ban_genes, 'no chimeras')

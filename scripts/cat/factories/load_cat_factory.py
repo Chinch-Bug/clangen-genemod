@@ -224,14 +224,13 @@ class LoadCatFactory(BaseCatFactory):
             phenotype.fromJSON(kwargs["genotype"])
         elif kwargs["parent1"] or kwargs["parent2"]:
             if not kwargs["parent1"]:
-                phenotype.KitGenerator(Cat.all_cats[kwargs["parent2"]], gender=kwargs.get("gender"))
+                phenotype.KitGenerator(Cat.fetch_cat(kwargs["parent2"]), gender=kwargs.get("gender"))
                 if chimera:
-                    chimerapheno.KitGenerator(Cat.all_cats[kwargs["parent2"]], chimera=True, gender=kwargs.get("gender"))
+                    chimerapheno.KitGenerator(Cat.fetch_cat(kwargs["parent2"]), chimera=True, gender=kwargs.get("gender"))
             else:
-                phenotype.KitGenerator(Cat.all_cats[kwargs["parent1"]], Cat.all_cats.get(kwargs["parent2"]), gender=kwargs.get("gender"))
+                phenotype.KitGenerator(Cat.fetch_cat(kwargs["parent1"]), Cat.fetch_cat(kwargs["parent2"]), gender=kwargs.get("gender"))
                 if chimera:
-                    threepars = chimerapheno.KitGenerator(Cat.all_cats[kwargs["parent1"]], Cat.all_cats.get(
-                        kwargs["parent2"]), chimera=True, gender=kwargs.get("gender"))
+                    threepars = chimerapheno.KitGenerator(Cat.fetch_cat(kwargs["parent1"]), Cat.fetch_cat(kwargs["parent2"]), chimera=True, gender=kwargs.get("gender"))
         else:
             kittypet_boost = get_config("cat_generation.kittypet_gene_boost")
             if not chimera:
