@@ -5597,7 +5597,8 @@
                         "can_create_new_cat": {},
                         "age": [
                             "adolescent"
-                        ]
+                        ],
+                        "status": ["loner"]
                     }
                 },
                 "exp_gained": 10,
