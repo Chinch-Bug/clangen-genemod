@@ -615,12 +615,11 @@ def _is_suitable_medcat_app(cat, clan) -> bool:
 
     if num_med_apps == 0:
         # if there are no apprentices at all, make it slightly easier to get one
-        logger.info("No apprentices at all")
         chance = chance / 1.8
         logger.info("No medcat apprentices at all, chance updated to %d", chance)
-    if num_med_apps > 1:
+    else:
         # if there's already at least one medcat app, make it harder to get another
-        chance = chance * (1 + (0.2 * (num_med_apps - 1)))
+        chance = chance * (1 + (0.2 * num_med_apps))
         logger.info("%d medcat apps, chance updated to %d", num_med_apps, chance)
 
     chance = max(1, int(chance))

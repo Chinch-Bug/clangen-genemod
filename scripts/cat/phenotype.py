@@ -609,7 +609,7 @@ class Phenotype(Genotype):
   
     def ChooseTortiePattern(self, spec = None):
         self.def_tortie_low_patterns = ['DELILAH', 'MOTTLED', 'EYEDOT', 'BANDANA', 'SMUDGED', 'EMBER', 'BRINDLE', 'SAFI', 'BELOVED', 'revBODY', 
-                                'MINIMALONE', 'MINIMALTWO', 'SHILOH', 'FRECKLED']
+                                'MINIMALONE', 'MINIMALTWO', 'SHILOH', 'FRECKLED', "revWILDFIRE"]
         self.def_tortie_mid_patterns = ['ONE', 'TWO', 'SMOKE', 'MINIMALTHREE', 'MINIMALFOUR', 'revOREO', "CHIMERA", 'CHEST', 'GRUMPYFACE', 
                                 'SIDEMASK', 'PACMAN', 'BRIE' ,'ORIOLE', 'ROBIN', 'PAIGE', 'HEARTBEAT', "TURTLECRAWL", "LARKPETAL",
                                 "MILQUE"]
@@ -618,16 +618,17 @@ class Phenotype(Genotype):
                                 "UNDERTAIL_T"]
         if random() < 0.2:
             self.def_tortie_low_patterns += ["FRECKLED_SMOKE", "SMOKING_EMBER", "MINIMAL_ONETWO", "MASKED_SHILOH", "FRECKLED_SAFI",
-                                             "SMUDGED_SMOKE", "SMUDGED_SAFI", "BRIE_ONE", "DENSE_BRINDLE", "MINIMAL_ORIOLE"]
+                                             "SMUDGED_SMOKE", "SMUDGED_SAFI", "BRIE_ONE", "DENSE_BRINDLE", "MINIMAL_ORIOLE", "FRECKLE_LINER",
+                                             "SMALL_LINED"]
             self.def_tortie_mid_patterns += ["MASKED_ROBIN", "MASKED_ONE", "RED_SIDE", "RED_ROBIN", "BIRD_TIME", "FRECKLED_BELOVED",
                                              "MINIMAL_TWOTHREE", "MINIMAL_THREEFOUR", "MINIMAL_ALL", "ROBIN_SAFI", "FRECKLED_BIRD",
                                              "FRECKLED_STREAM", "FRECKLED_GRUMP", "FRECKLED_BLANKET", "ARMTAIL_SMOKE", "GRUMPY_SMOKE",
                                              "DAUB_SAFI", "EYEDOT_ONE", "SHILOH_FOUR", "DEARHEART", "EXPANDED_CHIMERA", "BELOVED_BIRD",
                                              "MOTTLED_SHILOH", "SOL", "OC_TIME", "BLAZING_HEART", "SATURN", "RISING_FIRE", "SIDEPETAL",
-                                             "STROKE", "BRISTLE"]
+                                             "STROKE", "BRISTLE", "revBLAZING_FIRE", "PHANTOM_MASK", "STARRYNIGHT", "VALENTINES"]
             self.def_tortie_high_patterns += ["MASKED_TAIL", "revFRECKLED_OREO", "PIECEMEAL", "ROBIN_TAIL", "ARMTAIL_ONE", "CHIMERA_THREE",
                                               "MOTTLED_THREE", "PATCHY_OREO", "ONE_DELILAH", "PANTS_FACE", "TWO_TURTLE", "POWDER_HEART",
-                                              "SOCKS", "COZY", "FIVE", "revONESIE"]
+                                              "SOCKS", "COZY", "FIVE", "revONESIE", "MULLETED", "ROSE-FOUR"]
             self.def_tortie_high_patterns += ["HALF"]
         tortie_low_patterns = self.def_tortie_low_patterns
         tortie_mid_patterns = self.def_tortie_mid_patterns
