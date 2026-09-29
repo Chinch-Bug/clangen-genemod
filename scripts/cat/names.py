@@ -369,7 +369,7 @@ class Name:
         if params[2]['pattern'] != '' and params[2]['type'] == 'regular' and params[0] == "black":
             colours.append('BROWN')
             colours.append('DARKBROWN')
-            colours.append('RUST')
+        colours = [c for c in colours if c in self.names_dict["colour_prefixes"]]
 
         # Add possible prefix categories to list.
         possible_prefix_categories = []
@@ -549,7 +549,7 @@ class Name:
             if params[2]['pattern'] != '' and params[2]['type'] == 'regular' and params[0] == "black":
                 colours.append('BROWN')
                 colours.append('DARKBROWN')
-                colours.append('RUST')
+            colours = [c for c in colours if c in self.names_dict["colour_suffixes"]]
             if self.phenotype:
                 if (self.phenotype.white[1] not in ['ws', 'wt'] or self.phenotype.whitegrade < 4):
                     if self.phenotype.tabby != "":

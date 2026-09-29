@@ -1,7 +1,7 @@
-name: Bug - Audio
-description: Issues related to sound, including playback, sound effects and music
-title: "[AUDIO] "
-labels: [ 'audio', 'bug']
+name: Bug - Code
+description: General bugs related to how the game runs and responds to you.
+title: "[BUG] "
+labels: [ 'bug' ]
 body:
   - type: checkboxes
     id: existing_issue
@@ -12,14 +12,16 @@ body:
           required: true
         - label: This issue was encountered (or replicated) on a non-edited Clan
           required: true
-        - label: I confirm that I am NOT playing on a modded version of the game (e.g. LifeGen)
+        - label: I confirm that I am NOT playing on a modded version of the game (e.g. Realistic Disabilities)
+          required: true
+        - label: I am sure the issue is specific to genemod and does not exist within base Clangen
           required: true
   - type: textarea
     id: description
     attributes:
       label: Description
       description: Describe the bug
-      placeholder: "e.g. When I enter the healer den, the music stalls for a second before it resumes again."
+      placeholder: "e.g. Cats are lost in a moon event but are still in the clan cat list."
     validations:
       required: true
   - type: dropdown
@@ -37,6 +39,24 @@ body:
       default: 2
     validations:
       required: true
+  - type: dropdown
+    id: gamemode
+    attributes:
+      label: Gamemode
+      description: Which gamemode were you playing when you encountered this issue?
+      options:
+        - Classic Mode
+        - Expanded Mode
+        - Cruel Season
+      default: 2
+    validations:
+      required: true
+  - type: textarea
+    id: cards
+    attributes:
+      label: Challenge cards
+      description: If you were playing in Cruel Season mode, list the cards that were in use.
+      placeholder: Neverending Cold, Persistent Twolegs, Lean Meat...
   - type: textarea
     id: reproduce
     attributes:
@@ -62,6 +82,11 @@ body:
     validations:
       required: true
   - type: textarea
+    id: errormsg
+    attributes:
+      label: Error log
+      description: Attach the full error log here. Details on how to find the error log are given [here](https://www.clangen.io/docs/report-a-bug#how-do-i-find-the-error-log
+  - type: textarea
     id: additional_context
     attributes:
       label: Additional context
@@ -69,5 +94,5 @@ body:
   - type: textarea
     id: screenshots
     attributes:
-      label: Screenshots/Video
-      placeholder: If applicable, add screenshots or video to help explain your problem.
+      label: Screenshots
+      placeholder: If applicable, add screenshots to help explain your problem.
