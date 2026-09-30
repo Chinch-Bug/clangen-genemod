@@ -1,0 +1,51 @@
+name: Bug - Text
+description: Issues with game text - typos, wrong name, pronoun issues, etc.
+title: "[TEXT] "
+labels: [ 'bug' ]
+body:
+  - type: checkboxes
+    id: existing_issue
+    attributes:
+      label: Pre-requisites
+      options:
+        - label: I have searched the existing issues
+          required: true
+        - label: This issue was encountered (or replicated) on a non-edited Clan
+          required: true
+        - label: I confirm that I am NOT playing on a modded version of the game (e.g. Realistic Disabilities)
+          required: true
+        - label: I am sure the issue is specific to genemod and does not exist within base Clangen
+          required: true
+        - label: I have checked to make sure my game version is up to date
+          required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the bug
+      placeholder: "e.g. Ceremony event lists r_c1 instead of a cat (Remember to please include the full text of the event, thought, or outcome)"
+    validations:
+      required: true
+  - type: textarea
+    id: patrol
+    attributes:
+      label: Patrol ID + Outcome Print (if applicable)
+      description: See [what's a patrol ID and do I need it?](https://www.clangen.io/docs/report-a-bug#whats-a-patrol-id-do-i-need-it) and [how do I find the patrol ID?](https://www.clangen.io/docs/report-a-bug#how-do-i-find-the-patrol-id)
+  - type: input
+    id: version
+    attributes:
+      description: See [here](https://www.clangen.io/docs/report-a-bug/#how-do-i-find-my-game-version) for help finding your game version.
+      label: "Commit # or Game Version Number"
+      placeholder: e.g. "4ef20d05" (if on development) or "v0.13.0" (if stable)
+    validations:
+      required: true
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional context
+      placeholder: Add any other context about the problem here.
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      placeholder: If applicable, add screenshots to help explain your problem.

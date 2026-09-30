@@ -110,6 +110,18 @@ def updated_create_new_cat(
     if option_dict.get("group_ID"):
         status["group_ID"] = option_dict["group_ID"]
 
+    # MOONS OLD
+    moons = None
+    if option_dict.get("moons") is not None:
+        moons = option_dict["moons"]
+    elif status.get("age"):
+        moons = randint(
+            Cat.age_moons[status["age"]][0], min(Cat.age_moons[status["age"]][1], get_config("cat_generation.max_age"))
+        )
+
+    if moons is not None:
+        status["age"] = CatAge.get_from_moons(moons)
+
     # check if we need to match age to an assigned mate
     if option_dict.get("can_create_new_cat", {}).get("assign_mate"):
         possible_ages = []
@@ -146,15 +158,15 @@ def updated_create_new_cat(
 
         status["rank"] = CatRank(choice(possible_ranks))
         # if no group given and the rank/social is a clancat, then assign to other clan
-        if not option_dict.get("group") and (
+        if not option_dict.get("group") and not status.get("group_ID") and (
             status["rank"].is_any_clancat_rank()
-            or status.get("social") == CatSocial.CLANCAT and not status.get("group_ID")
+            or status.get("social") == CatSocial.CLANCAT
         ):
             status["group_ID"] = _get_id_for_group(
                 [CatGroup.OTHER_CLAN], involved_cats, other_clan, clan
             )
 
-    if option_dict.get("group"):
+    if option_dict.get("group") and not status.get("group_ID"):
         status["group_ID"] = _get_id_for_group(
             option_dict["group"], involved_cats, other_clan, clan
         )
@@ -179,9 +191,9 @@ def updated_create_new_cat(
                     r
                     for r in [*CatRank]
                     if not r.is_any_clancat_rank()
-                    and r not in (CatRank.LEADER, CatRank.DEPUTY)
                 ]
             )
+            status["group_ID"] = None
         else:
             status["rank"] = choice(
                 [
@@ -191,15 +203,6 @@ def updated_create_new_cat(
                     and r not in (CatRank.LEADER, CatRank.DEPUTY)
                 ]
             )
-
-    # MOONS OLD
-    moons = None
-    if option_dict.get("moons") is not None:
-        moons = option_dict["moons"]
-    elif status.get("age"):
-        moons = randint(
-            Cat.age_moons[status["age"]][0], min(Cat.age_moons[status["age"]][1], get_config("cat_generation.max_age"))
-        )
 
     # PARENTS
     blood_parents: list[Cat] = []
@@ -245,7 +248,7 @@ def updated_create_new_cat(
     for i in range(num_of_cats):
         if status.get("rank") and status["rank"] in [CatRank.NEWBORN, CatRank.KITTEN] or status.get("age") and status["age"].is_baby() or blood_parents:
             generated_parents = create_bio_parents(
-                Cat, flip=True if blood_parents and 'Y' in blood_parents[0].phenotype.sexgene else False, second_parent=not blood_parents, age=blood_parents[0].moons if blood_parents else None, clan=status["group_ID"] if status.get("social") == CatSocial.CLANCAT else None)
+                Cat, flip=True if blood_parents and 'Y' in blood_parents[0].phenotype.sexgene else False, second_parent=not blood_parents, age=blood_parents[0].moons if blood_parents else None, clan=status.get("group_ID"))
             if not blood_parents:
                 blood_parents = [generated_parents[1]]
             if len(blood_parents) == 1:
@@ -614,7 +617,7 @@ def _assign_past_status_and_standing(
 
         status["rank"] = CatRank(choice(possible_ranks))
         # if no group given and the rank/social is a clancat, then assign to other clan
-        if not option_dict.get("group") and (
+        if not option_dict.get("group") and not option_dict.get("group_ID") and (
             status["rank"].is_any_clancat_rank()
             or status.get("social") == CatSocial.CLANCAT
         ):
@@ -678,7 +681,7 @@ def _get_id_for_group(
     for ID, group in game.used_group_IDs.items():
         if group in group_list:
             # only allow this event's chosen other clan
-            if group == CatGroup.OTHER_CLAN and (other_clan and ID != other_clan.group_ID or clan and ID == clan.group_ID):
+            if group == CatGroup.OTHER_CLAN and (other_clan and ID != other_clan.group_ID or ID == clan.group_ID):
                 continue
             possible_groups.append(ID)
 

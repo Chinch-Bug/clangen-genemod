@@ -16,6 +16,8 @@ body:
           required: true
         - label: I am sure the issue is specific to genemod and does not exist within base Clangen
           required: true
+        - label: I have checked to make sure my game version is up to date
+          required: true
   - type: textarea
     id: description
     attributes:

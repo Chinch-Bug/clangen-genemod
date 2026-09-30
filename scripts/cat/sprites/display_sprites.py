@@ -1167,31 +1167,31 @@ def generate_sprite(
 
             is_white = 'W' in phenotype.white or phenotype.pointgene[0] == 'c' or phenotype.white_pattern == ['FULLWHITE']
             
-            if(phenotype.patchmain != "" and 'rev' in phenotype.tortiepattern[0]):
-                gensprite = make_cat(gensprite, phenotype.patchmain, phenotype.patchcolour, phenotype.patchunders)
-            else:
-                gensprite = make_cat(gensprite, phenotype.maincolour, phenotype.spritecolour, phenotype.mainunders)
+            gensprite = make_cat(gensprite, phenotype.maincolour, phenotype.spritecolour, phenotype.mainunders)
             
             if not is_white:
                 gensprite = apply_patch_effects(gensprite)
             
                 if(phenotype.patchmain != ""):
+                    tortpatches = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                    isred = ('red' in phenotype.patchmain or 'cream' in phenotype.patchmain or 'honey' in phenotype.patchmain or 'ivory' in phenotype.patchmain or 'apricot' in phenotype.patchmain or 'white' in phenotype.patchmain)
+                    if "rev" in phenotype.tortiepattern[0]:
+                        tortpatches.fill((255, 255, 255))
                     for pattern in phenotype.tortiepattern:
-                        tortpatches = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                         if 'rev' in pattern:
-                            isred = ('red' in phenotype.maincolour or 'cream' in phenotype.maincolour or 'honey' in phenotype.maincolour or 'ivory' in phenotype.maincolour or 'apricot' in phenotype.maincolour or 'white' in phenotype.maincolour)
-                            tortpatches = make_cat(tortpatches, phenotype.maincolour, phenotype.spritecolour, phenotype.mainunders)
+                            tortpatches.blit(sprites.sprites[pattern.replace('rev', "") + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
                         else:
-                            isred = ('red' in phenotype.patchmain or 'cream' in phenotype.patchmain or 'honey' in phenotype.patchmain or 'ivory' in phenotype.patchmain or 'apricot' in phenotype.patchmain or 'white' in phenotype.patchmain)
-                            tortpatches = make_cat(tortpatches, phenotype.patchmain, phenotype.patchcolour, phenotype.patchunders)
-                        if phenotype.caramel == 'caramel' and not isred: 
-                            tortpatches.blit(sprites.sprites['caramel0'], (0, 0))
-                        tortpatches = apply_patch_effects(tortpatches)
-                        
-                        tortpatches2 = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
-                        tortpatches2.blit(sprites.sprites[pattern.replace('rev', "") + cat_sprite], (0, 0))
-                        tortpatches2.blit(tortpatches, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
-                        gensprite.blit(tortpatches2, (0, 0))
+                            tortpatches.blit(sprites.sprites[pattern.replace('rev', "") + cat_sprite], (0, 0))
+                    if phenotype.caramel == 'caramel' and not isred: 
+                        tortpatches.blit(sprites.sprites['caramel0'], (0, 0))
+                    tortpatches.fill((255, 255, 255, 0), special_flags=pygame.BLEND_RGB_ADD)
+                    tortpatches = apply_patch_effects(tortpatches)
+
+                    tortpatches2 = pygame.Surface(
+                        (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+                    tortpatches2 = make_cat(tortpatches2, phenotype.patchmain, phenotype.patchcolour, phenotype.patchunders)
+                    tortpatches.blit(tortpatches2, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+                    gensprite.blit(tortpatches, (0, 0))
 
                 if(phenotype.merlepattern != None and not merle):
                     for pattern in phenotype.merlepattern:
@@ -1447,7 +1447,7 @@ def generate_sprite(
             for scar in cat.pelt.scars:
                 if scar in cat.pelt.general_scars:
                     sprite_name = (
-                        f"{sprites.SCAR_DATA['spritesheet']}{scar}{cat_sprite}"
+                        f"{sprites.SCAR_DATA['spritesheet'][0]}{scar}{cat_sprite}"
                     )
                     gensprite.blit(sprites.sprites[sprite_name], (0, 0))
 
@@ -1618,17 +1618,16 @@ def generate_sprite(
 
         if not scars_hidden:
             for scar in cat.pelt.scars:
-                if scar in cat.pelt.missing_part_scars:
-                    sprite_name = f"{sprites.SCAR_MISSING_PART_DATA['spritesheet']}{scar}{cat_sprite}"
-                    new_sprite.blit(
-                        _recolor_lineart(
-                            sprites.sprites[sprite_name],
-                            lineart_color,
-                            gradient_surface,
-                        ),
-                        (0, 0),
-                        special_flags=blendmode,
-                    )
+                sprite_name = f"{sprites.SCAR_DATA['spritesheet'][1]}{scar}{cat_sprite}"
+                new_sprite.blit(
+                    _recolor_lineart(
+                        sprites.sprites[sprite_name],
+                        lineart_color,
+                        gradient_surface,
+                    ),
+                    (0, 0),
+                    special_flags=blendmode,
+                )
 
         # draw accessories
         from scripts.cat.pelts import Pelt

@@ -889,7 +889,9 @@
                 ],
                 "involved_cats": {
                     "n_c0": {
-                        "can_create_new_cat": {},
+                        "can_create_new_cat": {
+                            "multiclan_cat": ["exiled"]
+                        },
                         "past_status": [
                             "clancat"
                         ]
@@ -929,7 +931,9 @@
                 ],
                 "involved_cats": {
                     "n_c0": {
-                        "can_create_new_cat": {},
+                        "can_create_new_cat": {
+                            "multiclan_cat": [ "exiled" ]
+                        },
                         "past_status": [
                             "clancat"
                         ]

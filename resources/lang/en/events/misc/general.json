@@ -11276,8 +11276,8 @@
                 "sincere"
             ]
         },
-        "new_cat": [
-            [ "status:warrior", "dead", "clancat", "exists", "meeting" ]
+        "multiclan_cat": [
+            [ "status:warrior", "clancat", "exists", "meeting" ]
         ],
         "other_clan": {
             "current_rep": [ "hostile" ],

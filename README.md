@@ -7,7 +7,7 @@
 > Repeat offenders will be blocked from this project until further notice.
 
 ### [Discord Server](https://discord.gg/rnFQqyPZ7K) || [Itch.io Page](https://sablesteel.itch.io/clan-gen-fan-edit)
-### [Genemod Server](https://discord.gg/t6XqgQ46Jx)
+### [Genemod Server](https://discord.gg/jGGyfxVhQp)
 
 A mod of the Clan-gen fan edit featuring cat genetics that get passed down from cat to cat, among a few little bonuses here and there!
 

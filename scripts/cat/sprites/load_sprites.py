@@ -73,11 +73,6 @@ class Sprites:
         SCAR_DATA = ujson.loads(read_file.read())
 
     with open(
-        "sprites/dicts/scar_missing_sprite_data.json", "r", encoding="utf-8"
-    ) as read_file:
-        SCAR_MISSING_PART_DATA = ujson.loads(read_file.read())
-
-    with open(
         "sprites/dicts/tortie_patches_sprite_data.json", "r", encoding="utf-8"
     ) as read_file:
         TORTIE_DATA = ujson.loads(read_file.read())
@@ -329,6 +324,9 @@ class Sprites:
         self.make_group("lineart_ur_aprilfools", (0, 0), "aprilfoolslineartur")
         self.make_group("lineart_df_aprilfools", (0, 0), "aprilfoolslineartdf")
 
+        self.spritesheet("sprites/tnr_scar.png", 'tnr_scar')
+        self.make_group("tnr_scar", (0, 0), "scars_masksTNR")
+
         for x in os.listdir("sprites/genemod/borders"):
             self.spritesheet("sprites/genemod/borders/"+x, 'genemod/'+x.replace('.png', ""))
         for x in os.listdir("sprites/genemod/Base Colours"):
@@ -467,7 +465,6 @@ class Sprites:
             self.WHITE_VITILIGO_DATA,
             self.TORTIE_DATA,
             self.SCAR_DATA,
-            self.SCAR_MISSING_PART_DATA,
             self.PLANT_DATA,
             self.WILD_DATA,
             self.COLLAR_DATA,

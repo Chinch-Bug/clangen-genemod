@@ -110,11 +110,7 @@ class StartScreen(Screens):
             elif element == self.elements.get("bug_report"):
                 open_url("https://github.com/Chinch-Bug/clangen-genemod/issues/new/choose")
             elif element == self.social_buttons["discord_button"]:
-                open_url("https://discord.gg/clangen")
-            elif element == self.social_buttons["tumblr_button"]:
-                open_url("https://officialclangen.tumblr.com/")
-            elif element == self.social_buttons["twitter_button"]:
-                open_url("https://twitter.com/OfficialClangen")
+                open_url("https://discord.gg/jGGyfxVhQp")
 
         super().handle_event(event)
 
@@ -286,29 +282,12 @@ class StartScreen(Screens):
 
         interactive_elements = list(self.elements.values())
 
-        self.social_buttons["twitter_button"] = UIImageButton(
-            ui_scale(pygame.Rect((18, 641), (40, 40))),
-            "",
-            object_id="#twitter_button",
-            manager=MANAGER,
-            tool_tip_text="screens.start.tooltip_twitter",
-        )
-        self.social_buttons["tumblr_button"] = UIImageButton(
-            ui_scale(pygame.Rect((5, 641), (40, 40))),
-            "",
-            object_id="#tumblr_button",
-            manager=MANAGER,
-            tool_tip_text="screens.start.tooltip_tumblr",
-            anchors={"left_target": self.social_buttons["twitter_button"]},
-        )
-
         self.social_buttons["discord_button"] = UIImageButton(
-            ui_scale(pygame.Rect((7, 641), (40, 40))),
+            ui_scale(pygame.Rect((18, 641), (40, 40))),
             "",
             object_id="#discord_button",
             manager=MANAGER,
             tool_tip_text="screens.start.tooltip_discord",
-            anchors={"left_target": self.social_buttons["tumblr_button"]},
         )
         interactive_elements.extend(self.social_buttons.values())
 
