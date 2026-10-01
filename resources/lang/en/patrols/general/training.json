@@ -33175,7 +33175,7 @@
             {
                 "frequency": 3,
                 "poi": {
-                    "tags": ["fall_risk"],
+                    "tags": ["danger:fall_risk"],
                     "category": "terrain"
                 },
                 "strings": [
@@ -33435,7 +33435,7 @@
             {
                 "frequency": 2,
                 "poi": {
-                    "tags": ["fall_risk"]
+                    "tags": ["danger:fall_risk"]
                 },
                 "outcome_art": "POI",
                 "strings": [

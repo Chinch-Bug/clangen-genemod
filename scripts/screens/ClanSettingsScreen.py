@@ -347,6 +347,8 @@ class ClanSettingsScreen(Screens):
         warrior_apprentices = 0
         med_cat_apprentices = 0
         mediator_apprentices = 0
+        queen_apprentices = 0
+        queens = 0
         mediators = 0
         elders = 0
         kits = 0
@@ -388,6 +390,8 @@ class ClanSettingsScreen(Screens):
                 warrior_apprentices += 1
             elif cat.status.rank == CatRank.MEDIATOR_APPRENTICE:
                 mediator_apprentices += 1
+            elif cat.status.rank == CatRank.QUEEN or cat.status.rank == CatRank.QUEEN_APPRENTICE:
+                queens += 1
             elif cat.status.rank == CatRank.MEDIATOR:
                 mediators += 1
             elif cat.status.rank == CatRank.ELDER:
@@ -397,7 +401,7 @@ class ClanSettingsScreen(Screens):
 
         self.checkboxes_text["stat_box"] = pygame_gui.elements.UITextBox(
             "screens.clan_settings.stats_text",
-            ui_scale(pygame.Rect((150, 200), (530, 400))),
+            ui_scale(pygame.Rect((150, 175), (500, 425))),
             object_id=get_text_box_theme("#text_box_30_horizcenter"),
             text_kwargs={
                 "living": str(living_cats),
@@ -411,6 +415,7 @@ class ClanSettingsScreen(Screens):
                 "warriors": str(warriors),
                 "apps": str(warrior_apprentices),
                 "mediators": str(mediators),
+                "queens": str(queens),
                 "mediatorapps": str(mediator_apprentices),
                 "elders": str(elders),
                 "kits": str(kits),
