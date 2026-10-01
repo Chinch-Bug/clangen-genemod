@@ -889,7 +889,7 @@ class Cat:
                 clanname = switch_get_value(Switch.clan_save_id)
             else:
                 clanname = switch_get_value(Switch.clan_list)[0]
-        except IndexError:
+        except (IndexError, KeyError):
             print("History failed to load, no Clan in switches?")
             self._history = History(
                 beginning={},
