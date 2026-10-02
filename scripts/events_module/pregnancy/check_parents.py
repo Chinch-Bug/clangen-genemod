@@ -164,9 +164,13 @@ def get_second_parent(cat, clan):
     if len(cat.mate) > 0:
         mate = []
         if get_clan_setting('multisire'):
-            mate_copy = cat.mate
+            mate_copy = cat.mate.copy()
             for x in mate_copy:
                 mate.append(cat.fetch_cat(x))
+                for y in cat.fetch_cat(x).mate:
+                    if y not in mate:
+                        mate.append(cat.fetch_cat(y))
+
         else:
             mate.append(cat.fetch_cat(choice(cat.mate)))
 
