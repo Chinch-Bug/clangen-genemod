@@ -167,9 +167,6 @@ def get_second_parent(cat, clan):
             mate_copy = cat.mate.copy()
             for x in mate_copy:
                 mate.append(cat.fetch_cat(x))
-                for y in cat.fetch_cat(x).mate:
-                    if y not in mate:
-                        mate.append(cat.fetch_cat(y))
 
         else:
             mate.append(cat.fetch_cat(choice(cat.mate)))
