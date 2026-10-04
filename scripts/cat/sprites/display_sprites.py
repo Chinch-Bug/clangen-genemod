@@ -364,10 +364,6 @@ def generate_sprite(
                             pattern_sprite.set_alpha(125)
                     stripebase.blit(pattern_sprite, (0, 0))
 
-                if not_red and special != "no_shading" and not is_amber:
-                    stripebase.blit(
-                        sprites.sprites["tabbypads" + cat_sprite], (0, 0))
-
                 charc = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 charc_shading = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 if (phenotype.agouti[0] == "Apb" and not_red and not is_amber):
@@ -418,6 +414,9 @@ def generate_sprite(
 
                     stripebase.blit(golden_gradient, (0, 0), special_flags=pygame.BLEND_RGBA_MIN)
                     stripebase.fill((255, 255, 255), special_flags=pygame.BLEND_RGB_MAX)
+
+                if not_red and special != "no_shading" and not is_amber:
+                    stripebase.blit(sprites.sprites["tabbypads" + cat_sprite], (0, 0))
 
                 if not preset_pattern and len(pattern) > 2:
                     if phenotype.soktype == "full sokoke":

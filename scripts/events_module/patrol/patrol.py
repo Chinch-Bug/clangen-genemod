@@ -306,6 +306,9 @@ class Patrol:
                 self.involved_cats["normal adult"] = self.involved_cats["healer adult"]
             else:
                 self.involved_cats["normal adult"].extend(self.involved_cats["healer adult"])
+        if patrol_type != "med" and "all apprentices" in self.involved_cats:
+            self.involved_cats["apprentice"] = self.involved_cats["all apprentices"]
+            
         elif patrol_type == "med":
             patrol_type = "herb_gathering"
 
