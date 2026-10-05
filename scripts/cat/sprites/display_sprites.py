@@ -510,17 +510,17 @@ def generate_sprite(
                     comparison_colour = sprites.sprites[next_base + ruf_blocks[next_ruf_block] + wb_blocks[main_wb_block]+"0"].get_at((0, 0))
                     steps = rufousing % 4 if rufousing != "silver" else phenotype.rufousing-4
                     for i in range(3):
-                        final_colour[i] += int((comparison_colour[i]-main_colour[i])/4*steps)
+                        final_colour[i] += max(min(int((comparison_colour[i]-main_colour[i])/4*steps), 255), 0)
 
                 elif main_ruf_block != next_ruf_block:
                     comparison_colour = sprites.sprites[basecolour + ruf_blocks[next_ruf_block] + wb_blocks[main_wb_block]+"0"].get_at((0, 0))
                     for i in range(3):
-                        final_colour[i] += int((comparison_colour[i]-main_colour[i])/(ruf_steps[next_ruf_block]-ruf_steps[main_ruf_block])*(rufousing-ruf_steps[main_ruf_block]))
+                        final_colour[i] += max(min(int((comparison_colour[i]-main_colour[i])/(ruf_steps[next_ruf_block]-ruf_steps[main_ruf_block])*(rufousing-ruf_steps[main_ruf_block])), 255), 0)
 
                 if main_wb_block != next_wb_block:
                     comparison_colour = sprites.sprites[basecolour + ruf_blocks[main_ruf_block] + wb_blocks[next_wb_block]+"0"].get_at((0, 0))
                     for i in range(3):
-                        final_colour[i] += int((comparison_colour[i]-main_colour[i])/(wb_steps[next_wb_block]-wb_steps[main_wb_block])*(wideband-wb_steps[main_wb_block]))
+                        final_colour[i] += max(min(int((comparison_colour[i]-main_colour[i])/(wb_steps[next_wb_block]-wb_steps[main_wb_block])*(wideband-wb_steps[main_wb_block])), 255), 0)
                 
                 layer = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 layer.fill(final_colour)
