@@ -321,15 +321,17 @@ class Name:
             used_prefixes = []
 
         namer = Namer(used_prefixes, self.mod_prefixes, self.moons, self.phenotype, self.chimpheno)
+        tries = 0
         if get_clan_setting("modded names") and get_clan_setting('new prefixes'):
             while True:
+                tries += 1
                 self.prefix = namer.start()
                 if no_suffix:
                     if self.prefix == "Striped":
                         self.prefix = "Stripe"
                     elif self.prefix == "Spotted":
                         self.prefix = "Spot"
-                if self.prefix and self._usable_name(self.prefix, self.suffix, self.cat):
+                if self.prefix and self._usable_name(self.prefix, self.suffix, self.cat) or tries > 20:
                     return
             
 
