@@ -1358,9 +1358,9 @@ class ProfileScreen(Screens):
         if self.the_cat.chimerapheno and self.the_cat.chimerapheno.white_pattern and self.the_cat.chimerapheno.white_pattern != "No":
             self.info_list += f"Chimera White Markings: {self.the_cat.chimerapheno.white_pattern}\n"
         
-        if self.the_cat.phenotype.tortiepattern and self.the_cat.phenotype.tortiepattern != ["BLUE-TIPPED"]:
+        if self.the_cat.phenotype.tortiepattern:
             self.info_list += f"Tortie Markings: {self.the_cat.phenotype.tortiepattern}\n"
-        if self.the_cat.chimerapheno and self.the_cat.chimerapheno.tortiepattern and self.the_cat.chimerapheno.tortiepattern != ["BLUE-TIPPED"]:
+        if self.the_cat.chimerapheno and self.the_cat.chimerapheno.tortiepattern:
             self.info_list += f"Chimera Tortie Markings: {self.the_cat.chimerapheno.tortiepattern}\n"
         
         if self.the_cat.pelt.rusting:

@@ -23,7 +23,7 @@ class Genotype:
         self.eumelanin = ["", ""]
         self.sexgene = ["", ""]
         self.specialred = None
-        self.tortiepattern = None
+        self.tortiepattern = {}
         self.pseudomerle = False
         self.merlepattern = None
         self.brindledbi = False
@@ -153,9 +153,13 @@ class Genotype:
         self.furLength = jsonstring["furLength"]
         self.eumelanin = jsonstring["eumelanin"]
         self.sexgene = jsonstring["sexgene"]
-        self.tortiepattern = jsonstring.get("tortiepattern", None)
-        if self.tortiepattern and not isinstance(self.tortiepattern, list):
-            self.tortiepattern = [self.tortiepattern]
+        self.tortiepattern = jsonstring.get("tortiepattern", {})
+        if isinstance(self.tortiepattern, list):
+            self.tortiepattern = {0: self.tortiepattern}
+        elif isinstance(self.tortiepattern, str):
+            self.tortiepattern = {0: [self.tortiepattern]}
+        elif self.tortiepattern is None:
+            self.tortiepattern = {}
         self.brindledbi = jsonstring["brindledbi"]
 
         self.specialred = jsonstring['specialred']

@@ -1152,7 +1152,7 @@ def handle_colour_changes(cat, clan):
     involved_cats = [cat.ID]
     event_text = ""
 
-    if cat.phenotype.white[0] == 'W' or (cat.phenotype.white[1] in ['ws', 'wt'] and cat.phenotype.whitegrade > 2) or cat.phenotype.pointgene[0] == 'c' or 'o' not in cat.phenotype.sexgene:
+    if cat.phenotype.white[0] == 'W' or (cat.phenotype.white[1] in ['ws', 'wt'] and cat.phenotype.whitegrade > 2) or cat.phenotype.pointgene[0] == 'c' or 'o' not in cat.phenotype.x_colours:
         return
     
     if cat.phenotype.brindledbi:

@@ -224,7 +224,7 @@ def get_kits(
             ref_cat = copy(all_kitten[-1])
             kit.permanent_condition = ref_cat.permanent_condition
             kit.phenotype = deepcopy(ref_cat.phenotype)
-            kit.phenotype.tortiepattern = None
+            kit.phenotype.tortiepattern = {}
             kit.phenotype.chimerapattern = None
             kit.phenotype.merlepattern = None
             kit.phenotype.somatic = {}
@@ -239,7 +239,7 @@ def get_kits(
 
             if ref_cat.chimerapheno:
                 kit.chimerapheno = deepcopy(ref_cat.chimerapheno)
-                kit.chimerapheno.tortiepattern = None
+                kit.chimerapheno.tortiepattern = {}
                 kit.chimerapheno.chimerapattern = kit.chimerapheno.ChooseTortiePattern(
                     "chimera")
                 kit.chimerapheno.merlepattern = None

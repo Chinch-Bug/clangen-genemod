@@ -386,15 +386,11 @@ class NewCatFactory(BaseCatFactory, ABC):
         phenotype.white_pattern = Pelt.generate_white(phenotype.white, phenotype.pointgene, phenotype.whitegrade, phenotype.vitiligo, None, phenotype.pax3)
         phenotype.PhenotypeOutput(phenotype.white_pattern)
         phenotype.SpriteInfo(moons if moons else 0)
-        if phenotype.maincolour == 'white' and not phenotype.patchmain:
-            phenotype.white_pattern = "No"
 
         if chimerapheno:
             chimerapheno.white_pattern = Pelt.generate_white(chimerapheno.white, chimerapheno.pointgene, chimerapheno.whitegrade, chimerapheno.vitiligo, None, chimerapheno.pax3)
             chimerapheno.PhenotypeOutput(chimerapheno.white_pattern)
             chimerapheno.SpriteInfo(moons if moons else 0)
-            if chimerapheno.maincolour == 'white' and not chimerapheno.patchmain:
-                chimerapheno.white_pattern = "No"
 
 
         pelt = Pelt.generate_new_pelt(

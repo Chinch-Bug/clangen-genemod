@@ -267,13 +267,9 @@ class LoadCatFactory(BaseCatFactory):
             chimerapheno.SpriteInfo(kwargs.get("moons", 0))
 
         phenotype.white_pattern = Pelt.generate_white(phenotype.white, phenotype.pointgene, phenotype.whitegrade, phenotype.vitiligo, kwargs.get("white_pattern"), phenotype.pax3)
-        if phenotype.maincolour == 'white' and not phenotype.patchmain:
-            phenotype.white_pattern = "No"
-
+        
         if chimerapheno:
             chimerapheno.white_pattern = Pelt.generate_white(chimerapheno.white, chimerapheno.pointgene, chimerapheno.whitegrade, chimerapheno.vitiligo, kwargs.get("chim_white"), chimerapheno.pax3)
-            if chimerapheno.maincolour == 'white' and not chimerapheno.patchmain:
-                chimerapheno.white_pattern = "No"
 
         return [phenotype, chimerapheno]
 
