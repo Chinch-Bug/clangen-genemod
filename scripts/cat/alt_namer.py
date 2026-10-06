@@ -244,7 +244,7 @@ class Namer():
         elif random() < 0.25:
             return True
         else:
-            pattern = self.phenotype.tortiepattern[0] if self.phenotype.tortiepattern else self.chimera_pheno.chimerapattern
+            pattern = self.phenotype.tortiepattern["0"] if self.phenotype.tortiepattern else self.chimera_pheno.chimerapattern
             base = self.phenotype.basecolour
             if random() < 0.75 and len(pattern) > 2 and ('rufoused' in base or 'medium' in base or 'low' in base):
                 return True

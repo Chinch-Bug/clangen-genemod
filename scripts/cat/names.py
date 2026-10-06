@@ -484,7 +484,7 @@ class Name:
                     (self.phenotype.white[1] in ['ws', 'wt'] and self.phenotype.whitegrade < 4) or\
                     (self.phenotype.white[0] in ['ws', 'wt'] and self.phenotype.white[1] not in ['ws', 'wt'] and self.phenotype.whitegrade > 2):
                     appearance += self.mod_suffixes['other']['appearance'].get('patchy', [])
-                    if (self.phenotype.tortiepattern and self.phenotype.tortiepattern[0][0].replace('rev', '') in self.phenotype.def_tortie_low_patterns):
+                    if (self.phenotype.tortiepattern and self.phenotype.tortiepattern["0"][0].replace('rev', '') in self.phenotype.def_tortie_low_patterns):
                         appearance += self.mod_suffixes['other']['appearance'].get('spotted', [])
                     if ((self.phenotype.white[1] in ['ws', 'wt'] and self.phenotype.whitegrade < 4) or\
                     (self.phenotype.white[0] in ['ws', 'wt'] and self.phenotype.white[1] not in ['ws', 'wt'] and self.phenotype.whitegrade > 2)):

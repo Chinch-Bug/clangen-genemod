@@ -460,7 +460,7 @@ def accurate_porting(cat, info):
         if cat.phenotype.sex == "tom":
             cat.phenotype.sexgene.append("Y")
             get_permanent_condition(cat, 'sterile', born_with=True, genetic=True)
-        cat.phenotype.tortiepattern[0] = [info["tortie_marking"]]
+        cat.phenotype.tortiepattern["0"] = [info["tortie_marking"]]
     elif main_colour["colour"] in red_bases:
         cat.phenotype.sexgene[0] = "O"
         if cat.phenotype.sexgene[1] == "o":

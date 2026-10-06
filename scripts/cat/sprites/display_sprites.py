@@ -1539,15 +1539,15 @@ def create_cat(cat, phenotype, cat_sprite, sprite_age, season_override, merle=Fa
             comp = [phenotype.basecolour, phenotype.secondarycolour]
             for xi, xc in enumerate(phenotype.x_colours[:-1]):
                 phenotype.SpriteInfo(sprite_age, xc)
-                if xi not in phenotype.tortiepattern:
-                    cat.phenotype.tortiepattern[xi] = phenotype.ChooseTortiePattern()
-                    phenotype.tortiepattern[xi] = cat.phenotype.tortiepattern[xi]
+                if str(xi) not in phenotype.tortiepattern:
+                    cat.phenotype.tortiepattern[str(xi)] = phenotype.ChooseTortiePattern()
+                    phenotype.tortiepattern[str(xi)] = cat.phenotype.tortiepattern[str(xi)]
                 
                 tortpatches = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 isred = ('red' in phenotype.basecolour or 'cream' in phenotype.basecolour or 'honey' in phenotype.basecolour or 'ivory' in phenotype.basecolour or 'apricot' in phenotype.basecolour or 'white' in phenotype.basecolour)
-                if "rev" in phenotype.tortiepattern[xi][0]:
+                if "rev" in phenotype.tortiepattern[str(xi)][0]:
                     tortpatches.fill((255, 255, 255))
-                for pattern in phenotype.tortiepattern[xi]:
+                for pattern in phenotype.tortiepattern[str(xi)]:
                     if 'rev' in pattern:
                         tortpatches.blit(sprites.sprites[pattern.replace('rev', "") + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
                     else:

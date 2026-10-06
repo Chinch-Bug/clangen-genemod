@@ -445,9 +445,9 @@ class Phenotype(Genotype):
         for i, x in enumerate(self.x_colours[:-1]):
             if self.x_colours[0] == self.x_colours[-1]:
                 break
-            if i not in self.tortiepattern:
-                self.tortiepattern[i] = self.ChooseTortiePattern()
-            if "CRYPTIC" not in self.tortiepattern[i][0] and not all_rev or self.tortiepattern[i][0] != "revCRYPTIC" and all_rev:
+            if str(i) not in self.tortiepattern:
+                self.tortiepattern[str(i)] = self.ChooseTortiePattern()
+            if "CRYPTIC" not in self.tortiepattern[str(i)][0] and not all_rev or self.tortiepattern[str(i)][0] != "revCRYPTIC" and all_rev:
                 return False
         if not all_rev or self.tortiepattern:
             return True

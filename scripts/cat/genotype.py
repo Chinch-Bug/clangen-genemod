@@ -155,9 +155,9 @@ class Genotype:
         self.sexgene = jsonstring["sexgene"]
         self.tortiepattern = jsonstring.get("tortiepattern", {})
         if isinstance(self.tortiepattern, list):
-            self.tortiepattern = {0: self.tortiepattern}
+            self.tortiepattern = {"0": self.tortiepattern}
         elif isinstance(self.tortiepattern, str):
-            self.tortiepattern = {0: [self.tortiepattern]}
+            self.tortiepattern = {"0": [self.tortiepattern]}
         elif self.tortiepattern is None:
             self.tortiepattern = {}
         self.brindledbi = jsonstring["brindledbi"]
