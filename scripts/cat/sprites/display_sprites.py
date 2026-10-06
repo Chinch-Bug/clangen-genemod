@@ -552,7 +552,7 @@ def calculate_red_stripes(base, rufousing):
     layer.fill(final_colour)
     return layer
 
-def get_tabby_base(base_string, stripe_colour, is_apricot = False):
+def get_tabby_base(phenotype, base_string, stripe_colour, is_apricot = False):
     basecolour, rufousing, wideband = base_string.rsplit("_", 2)
     next_base = basecolour
     rufousing = int(rufousing) if rufousing != "silver" else rufousing
@@ -610,7 +610,7 @@ def get_tabby_base(base_string, stripe_colour, is_apricot = False):
     layer.fill(final_colour)
     return layer
 
-def create_coloursurface(phenotype, basecolour, is_tabby=False):
+def create_coloursurface(phenotype, basecolour, sprite_age, is_tabby=False):
     is_red = ('red' in basecolour or 'cream' in basecolour or 'honey' in basecolour or 'ivory' in basecolour or 'apricot' in basecolour)
     coloursurface = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
     pointbase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
@@ -888,7 +888,7 @@ def create_cat(cat, phenotype, cat_sprite, sprite_age, season_override, merle=Fa
 
     def tabby_base(whichcolour, whichbase, cat_unders, special=None):
         is_red = ('red' in whichcolour or 'cream' in whichcolour or 'honey' in whichcolour or 'ivory' in whichcolour or 'apricot' in whichcolour)
-        whichmain = get_tabby_base(whichbase, stripecolourdict.get(whichcolour[:-1], whichcolour[:-1])+whichcolour[-1], 'apricot' in whichcolour)
+        whichmain = get_tabby_base(phenotype, whichbase, stripecolourdict.get(whichcolour[:-1], whichcolour[:-1])+whichcolour[-1], 'apricot' in whichcolour)
         if special !='copper' and sprite_age > 12 and (phenotype.silver[0] == 'I' and phenotype.corin[0] == 'fg' and (get_current_season(season_override) in ['Leaf-fall', 'Leaf-bare'] or 'sterile' in cat.permanent_condition)):
             sunshine = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
             
@@ -953,7 +953,7 @@ def create_cat(cat, phenotype, cat_sprite, sprite_age, season_override, merle=Fa
         if not is_red and (phenotype.ext[0] == 'ea' and ((sprite_age > 11 and phenotype.agouti[0] != "a") or (sprite_age > 35 and phenotype.agouti[0] == "a"))):
             if phenotype.pointgene[0] != "C" and phenotype.pointgene[0] in ["cm", "cb"] and (phenotype.pointgene[1] != "cs" or sprite_age > 0):
                 base_c = phenotype.FindRed(phenotype, sprite_age)[0]
-                stripebase = create_stripes(base_c, whichbase, coloursurface=create_coloursurface(phenotype, base_c, True))
+                stripebase = create_stripes(base_c, whichbase, coloursurface=create_coloursurface(phenotype, base_c, sprite_age, True))
             elif "lightbasecolours" not in stripe_colour:
                 stripebase = create_stripes(phenotype.FindRed(phenotype, sprite_age)[0], whichbase)
             stripebase.blit(create_stripes(stripe_colour, whichbase, coloursurface=coloursurface), (0, 0))
@@ -1108,7 +1108,7 @@ def create_cat(cat, phenotype, cat_sprite, sprite_age, season_override, merle=Fa
                 #create base
                 colourbase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 if("black" in whichcolour and phenotype.pointgene[0] == "cm"):
-                    colourbase.blit(get_tabby_base(whichbase.replace("black", "cinnamon"), whichcolour), (0, 0))
+                    colourbase.blit(get_tabby_base(phenotype, whichbase.replace("black", "cinnamon"), whichcolour), (0, 0))
                 else:
                     colourbase = tabby_base(whichcolour, whichbase, cat_unders, special)
 
@@ -1137,7 +1137,7 @@ def create_cat(cat, phenotype, cat_sprite, sprite_age, season_override, merle=Fa
                             elif("cinnamon" in whichcolour or "chocolate" in whichcolour):
                                 whichmain = add_stripes(whichmain, 'lightbasecolours0', whichbase)
                             else:
-                                whichmain = add_stripes(whichmain, whichcolour, whichbase, coloursurface=create_coloursurface(phenotype, whichcolour, True))
+                                whichmain = add_stripes(whichmain, whichcolour, whichbase, coloursurface=create_coloursurface(phenotype, whichcolour, sprite_age, True))
                         elif("black" in whichcolour and sprite_age > 0):
                             stripecolour = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                             stripecolour = add_stripes(stripecolour, 'lightbasecolours1', whichbase)
@@ -1153,14 +1153,14 @@ def create_cat(cat, phenotype, cat_sprite, sprite_age, season_override, merle=Fa
                         whichmain = add_stripes(whichmain, 'lightbasecolours1', whichbase)
 
                     elif phenotype.pointgene == ["cb", "cb"] or ("cb" in phenotype.pointgene and sprite_age > 0):
-                        whichmain = add_stripes(whichmain, whichcolour, whichbase, coloursurface=create_coloursurface(phenotype, whichcolour, True))
+                        whichmain = add_stripes(whichmain, whichcolour, whichbase, coloursurface=create_coloursurface(phenotype, whichcolour, sprite_age, True))
 
                 #mask base
                 colourbase = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                 if("black" in whichcolour and phenotype.pointgene[0] == "cm"):
                     colourbase2 = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
                     colourbase.blit(sprites.sprites['lightbasecolours0'], (0, 0))
-                    colourbase2.blit(get_tabby_base(whichbase.replace("black", "cinnamon"), whichcolour), (0, 0))
+                    colourbase2.blit(get_tabby_base(phenotype, whichbase.replace("black", "cinnamon"), whichcolour), (0, 0))
                     colourbase2.set_alpha(150)
                     colourbase.blit(colourbase2, (0, 0))
                 else:
@@ -1321,7 +1321,7 @@ def create_cat(cat, phenotype, cat_sprite, sprite_age, season_override, merle=Fa
                             whichmain.blit(sprites.sprites['lightbasecolours0'], (0, 0))
                             colour = 'lightbasecolours0'
                         else:
-                            coloursurface = create_coloursurface(phenotype, whichcolour, False)
+                            coloursurface = create_coloursurface(phenotype, whichcolour, sprite_age, False)
                             whichmain.blit(coloursurface, (0, 0))
                             colour = whichcolour
                             
@@ -1406,7 +1406,7 @@ def create_cat(cat, phenotype, cat_sprite, sprite_age, season_override, merle=Fa
                     colour = 'lightbasecolours1'
                     whichmain = apply_smoke_effects(whichmain)
                 elif phenotype.pointgene == ["cb", "cb"] or ("cb" in phenotype.pointgene and sprite_age > 0):
-                    coloursurface = create_coloursurface(phenotype, whichcolour, False)
+                    coloursurface = create_coloursurface(phenotype, whichcolour, sprite_age, False)
                     whichmain.blit(coloursurface, (0, 0))
                     whichmain = apply_smoke_effects(whichmain)
                 else:
