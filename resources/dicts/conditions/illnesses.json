@@ -870,34 +870,34 @@
     "ear infection": {
         "severity": "major",
         "mortality": {
-            "newborn": 5,
-            "kitten": 10,
-            "adolescent": 35,
-            "young adult": 50,
-            "adult": 50,
-            "senior adult": 40,
+            "newborn": 15,
+            "kitten": 30,
+            "adolescent": 75,
+            "young adult": 100,
+            "adult": 100,
+            "senior adult": 50,
             "senior": 25
         },
         "medicine_mortality": {
-            "newborn": 5,
-            "kitten": 20,
-            "adolescent": 65,
-            "young adult": 100,
-            "adult": 100,
+            "newborn": 15,
+            "kitten": 30,
+            "adolescent": 100,
+            "young adult": 150,
+            "adult": 150,
             "senior adult": 75,
             "senior": 50
         },
-        "duration": 3,
+        "duration": 1,
         "medicine_duration": 1,
-        "infectiousness": 40,
+        "infectiousness": 5,
         "risks": [
             {
                 "name": "partial hearing loss",
-                "chance": 50
+                "chance": 100
             },
             {
                 "name": "partial hearing loss in one ear",
-                "chance": 50
+                "chance": 75
             }
         ],
         "herbs": {

@@ -330,7 +330,7 @@ def accurate_porting(cat, info):
             cat.phenotype.extraeye = "sectoral1"
         cat.phenotype.extraeyetype = f"R{choice(range(1, 4))} ; P{choice(range(1, 3))}"
 
-    red_bases = ["CREAM", "DARKGINGER", "GINGER", "PALEGINGER", "GOLDEN", "HONEY"]
+    red_bases = ["CREAM", "DARKGINGER", "GINGER", "PALEGINGER", "HONEY"]
     tabby_bases = ["CREAM", "DARKGINGER", "GINGER", "PALEGINGER", "GOLDEN", "WHITE", "DAWN", "MALLOW"]
     cat.chimerapheno = None
     main_colour = {"pattern": info["pelt_name"].lower(), "colour": info["pelt_color"]}
@@ -440,7 +440,7 @@ def accurate_porting(cat, info):
         else:
             cat.chimerapheno.dilute[0] = "D"
 
-    if main_colour["colour"] in ["LIGHTBROWN", "GOLDEN-BROWN", "BLOSSOM"]:
+    if main_colour["colour"] in ["LIGHTBROWN", "GOLDEN-BROWN", "GOLDEN", "BLOSSOM"]:
         cat.phenotype.eumelanin = ["bl", "bl"]
     elif main_colour["colour"] in ["WHITE", "PALEGREY", "LILAC", "BROWN", "CHOCOLATE", "RUST", "SIENNA", "MALLOW"]:
         cat.phenotype.eumelanin = ["b", "b"]
@@ -448,7 +448,7 @@ def accurate_porting(cat, info):
         cat.phenotype.eumelanin[0] = "B"
 
     if cat.chimerapheno:
-        if patch_colour["colour"] in ["LIGHTBROWN", "GOLDEN-BROWN", "BLOSSOM"]:
+        if patch_colour["colour"] in ["LIGHTBROWN", "GOLDEN-BROWN", "GOLDEN", "BLOSSOM"]:
             cat.chimerapheno.eumelanin = ["bl", "bl"]
         elif patch_colour["colour"] in ["WHITE", "PALEGREY", "LILAC", "BROWN", "CHOCOLATE", "RUST", "SIENNA", "MALLOW"]:
             cat.chimerapheno.eumelanin = ["b", "b"]
@@ -517,34 +517,48 @@ def accurate_porting(cat, info):
         else:
             cat.chimerapheno.wideband = randint(0, 11)
 
-    if main_colour["colour"] in ["DARKGINGER", "CHOCOLATE", "HONEY"]:
+    if main_colour["colour"] in ["DARKGINGER", "CHOCOLATE", "HONEY", "GOLDEN"]:
         cat.phenotype.rufousing = 8
     if main_colour["colour"] in ["BLACK"]:
         cat.phenotype.rufousing = 0
         cat.phenotype.wideband = 0
-    if main_colour["colour"] in ["LILAC", "GREY"] or (main_colour["colour"] in ["SIENNA"] and main_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"]):
+    if main_colour["colour"] in ["LILAC", "GREY"]:
         cat.phenotype.fur_shade = choice(range(0, 5))
-    elif main_colour["colour"] in ["DARKGREY", "PALEGREY", "DARKBROWN", "GHOST"]:
+    elif main_colour["colour"] in ["DARKGREY", "DARKBROWN", "GHOST", "BLOSSOM", "SIENNA", "RUST"]:
         cat.phenotype.fur_shade = choice(range(5, 7))
-    elif main_colour["colour"] in ["LIGHTBROWN", "BLOSSOM"]:
+    elif main_colour["colour"] in ["PALEGREY", "GOLDEN"]:
         cat.phenotype.fur_shade = choice(range(0, 3))
     else:
         cat.phenotype.fur_shade = choice(range(2, 5))
 
+    if main_colour["colour"] in ["BLACK", "GOLDEN", "BROWN"]:
+        cat.phenotype.colour_warmth = 0
+    elif main_colour["colour"] in ["LILAC", "GOLDENBROWN"]:
+        cat.phenotype.colour_warmth = 1
+    elif main_colour["colour"] in ["WHITE", "PALEGREY", "BLOSSOM", "LIGHTBROWN", "DAWN", "MALLOW"]:
+        cat.phenotype.colour_warmth = 2
+
     if cat.chimerapheno:
-        if patch_colour["colour"] in ["DARKGINGER", "CHOCOLATE", "HONEY"]:
+        if patch_colour["colour"] in ["DARKGINGER", "CHOCOLATE", "HONEY", "GOLDEN"]:
             cat.chimerapheno.rufousing = 8
         if patch_colour["colour"] in ["BLACK"]:
             cat.chimerapheno.rufousing = 0
             cat.chimerapheno.wideband = 0
-        if patch_colour["colour"] in ["LILAC", "GREY"] or (main_colour["colour"] in ["SIENNA"] and main_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"]):
+        if patch_colour["colour"] in ["LILAC", "GREY"]:
             cat.chimerapheno.fur_shade = choice(range(0, 5))
-        if patch_colour["colour"] in ["DARKGREY", "PALEGREY", "DARKBROWN", "GHOST"]:
-            cat.chimerapheno.fur_shade = choice(range(4, 7))
-        elif patch_colour["colour"] in ["LIGHTBROWN", "BLOSSOM"]:
+        if patch_colour["colour"] in ["DARKGREY", "DARKBROWN", "GHOST", "BLOSSOM", "SIENNA", "RUST"]:
+            cat.chimerapheno.fur_shade = choice(range(5, 7))
+        elif patch_colour["colour"] in ["PALEGREY", "GOLDEN"]:
             cat.chimerapheno.fur_shade = choice(range(0, 3))
         else:
             cat.chimerapheno.fur_shade = choice(range(2, 5))
+
+        if patch_colour["colour"] in ["BLACK", "GOLDEN", "BROWN"]:
+            cat.chimerapheno.colour_warmth = 0
+        elif patch_colour["colour"] in ["LILAC", "GOLDENBROWN"]:
+            cat.chimerapheno.colour_warmth = 1
+        elif patch_colour["colour"] in ["WHITE", "PALEGREY", "BLOSSOM", "LIGHTBROWN", "DAWN", "MALLOW"]:
+            cat.chimerapheno.colour_warmth = 2
             
     cat.phenotype.GeneSort()
     cat.phenotype.PolyEval()

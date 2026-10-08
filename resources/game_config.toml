@@ -393,9 +393,6 @@ dev_tools = false
   primary_chance_unmated = 130
   modded_primary_chance_unmated = 100
 
-  # healer-specific litter chance modifier, added to the applicable base litter chance
-  healer_modifier = 0
-
   # 1/chance that a mated cat has an affair
   random_affair_chance = 50
 
@@ -433,6 +430,17 @@ dev_tools = false
   # But that's not required - just makes more sense that way with how the litters are generated.
   min_kits = 1
   max_kits = 6
+
+  # rank-specific litter chance modifiers, added to the applicable base litter chance
+  # if multiple parents have ranks with applicable modifiers, it will take only the largest number, irrespective of pos or neg
+  [pregnancy.rank_litter_chance_modifier]
+    leader = 0
+    deputy = 0
+    healer = 0
+    mediator = 0
+    warrior = 0
+    queen = 0
+    elder = 0
 
   # number / total for that age across all kit amounts = chance of having that many kits for that age
   [pregnancy.one_kit_possibility]
@@ -1054,6 +1062,7 @@ dev_tools = false
   body_ranges = [1, 4, 12, 60, 12, 4, 1]
   height_ranges = [1, 4, 12, 60, 180, 60, 12, 2, 2, 1]
   fur_shade = [0, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 6]
+  colour_warmth = [0, 1, 1, 2]
   rusting = 0.1
   # weights for low, medium, high, shaded, chinchilla
   wideband = [75, 100, 75, 5, 1]

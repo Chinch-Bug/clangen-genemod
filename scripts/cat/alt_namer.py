@@ -593,10 +593,10 @@ class Namer():
             return self.tabby(params[0], params[1], params[2], params[3])
         
     def lilac(self, params):
-        if random() < 0.1:
+        if self.phenotype.colour_warmth < 2 and random() < 0.1:
             self.purple(params)
 
-        if self.phenotype.fur_shade > 4 and random() < 0.2 and params[0] not in ['blue', 'fawn']:
+        if self.phenotype.colour_warmth > 1 and random() < 0.2 and params[0] not in ['blue', 'fawn']:
             params[4] = params[4].replace('sepia', 'mink')
             return self.blue(params)
 
@@ -710,10 +710,12 @@ class Namer():
             return self.tabby(params[0], params[1], params[2], params[3])
         
     def fawn(self, params):
-        if self.phenotype.fur_shade > 4 and random() < 0.2 and params[0] not in ['black', 'chocolate', 'cinnamon', 'blue', 'lilac']:
+        if self.phenotype.colour_warmth > 0 and random() < 0.2 and params[0] not in ['black', 'chocolate', 'cinnamon', 'blue', 'lilac']:
             return self.lilac(params)
-        if random() < 0.1:
+        if self.phenotype.colour_warmth > 1 and random() < 0.1:
             return self.pink(params)
+        if self.phenotype.colour_warmth > 1 and random() < 0.2 and params[0] not in ['black', 'chocolate', 'cinnamon', 'blue', 'lilac']:
+            return self.cream(params)
 
         if params[4] != 'none' and params[0] not in ['black', 'chocolate', 'cinnamon', 'blue', 'lilac']:
             #babies don't have points

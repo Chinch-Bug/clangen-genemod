@@ -213,6 +213,7 @@ def search_cats(search_text, cat_list, search_genotype):
                 "spotsum": ["spotted", "spot"],
                 "ticksum": ["ticked_mod", "tickedmod", "tick_md", "tickmd"],
                 "fur_shade": ["saturation", "sat", "fs", "fur_shade"],
+                "colour_warmth": ["colour_warmth", "warmth", "temp"],
                 "refraction": ["refraction", "ref"],
                 "pigmentation": ["pigmentation", "pig"],
                 "whitegrade": ["whitegrade", "white_grade", "white"]

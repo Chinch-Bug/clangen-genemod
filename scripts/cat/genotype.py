@@ -81,6 +81,7 @@ class Genotype:
         self.pax3 = ["NoDBE", "NoDBE"]
 
         self.fur_shade = choice(odds['fur_shade'])
+        self.colour_warmth = choice(odds['colour_warmth'])
 
         self.wideband = -1
         self.wbtype = ""
@@ -222,6 +223,14 @@ class Genotype:
         self.pax3 = jsonstring.get("pax3", ['NoDBE', 'NoDBE'])
 
         self.fur_shade = jsonstring.get("fur_shade", jsonstring.get("saturation", 3))
+        self.colour_warmth = jsonstring.get("colour_warmth")
+        if self.colour_warmth is None:
+            if self.fur_shade < 2:
+                self.colour_warmth = 2
+            elif self.fur_shade > 4:
+                self.colour_warmth = 0
+            else:
+                self.colour_warmth = 1
         self.wideband = jsonstring["wideband"] if isinstance(jsonstring["wideband"], int) else sum([int(x) for x in jsonstring["wideband"]])
         self.rufousing = jsonstring["rufousing"] if isinstance(jsonstring["rufousing"], int) else sum([int(x) for x in jsonstring["rufousing"]])
         self.unders_ruf = jsonstring.get("unders_ruf", "")
@@ -321,6 +330,8 @@ class Genotype:
             "pax3" : self.pax3,
 
             "fur_shade" : self.fur_shade,
+            "colour_warmth" : self.colour_warmth,
+
             "wideband" : self.wideband,
             "rufousing" : self.rufousing,
             "unders_ruf": self.unders_ruf,
@@ -1190,6 +1201,7 @@ class Genotype:
         self.pax3 = [choice(par1.pax3), choice(par2.pax3)]
 
         self.fur_shade = self.kit_gradient_traits(par1.fur_shade, par2.fur_shade, 7, True)
+        self.colour_warmth = self.kit_gradient_traits(par1.colour_warmth, par2.colour_warmth, 3)
 
         self.wideband = self.kit_gradient_traits(par1.wideband, par2.wideband, 17)
         self.rufousing = self.kit_gradient_traits(par1.rufousing, par2.rufousing, 9)
@@ -1910,7 +1922,7 @@ class Genotype:
             self.Other_Colour = [self.pinkdilute, self.dilutemd, self.ext, self.corin, self.karp, self.bleach, self.ghosting, self.satin, self.glitter]
             self.Body_Genes = [self.curl, self.fold, self.fourear, self.manx, self.kab, self.toybob, self.jbob, self.kub, self.ring, self.munch, self.poly, self.pax3]
             april_fools_output = [self.april_fools.values()]
-        self.Polygenes = ["Wideband:", self.wideband, self.wbtype, "Rufousing:", self.rufousing, self.ruftype, "Underbelly rufousing:", self.unders_ruf, self.unders_ruftype, "Fur Shade:", self.fur_shade, "Bengal:", self.bengal, self.bengtype, "Sokoke:", self.sokoke, self.soktype, "Spotted:", self.spotted, self.spottype, "Ticked:", self.tickgenes, self.ticktype, "White Grade:", self.whitegrade, "Refraction:", self.refraction, "Pigmentation:", self.pigmentation]
+        self.Polygenes = ["Wideband:", self.wideband, self.wbtype, "Rufousing:", self.rufousing, self.ruftype, "Underbelly rufousing:", self.unders_ruf, self.unders_ruftype, "Fur Shade:", self.fur_shade, "Colour Warmth:", self.colour_warmth, "Bengal:", self.bengal, self.bengtype, "Sokoke:", self.sokoke, self.soktype, "Spotted:", self.spotted, self.spottype, "Ticked:", self.tickgenes, self.ticktype, "White Grade:", self.whitegrade, "Refraction:", self.refraction, "Pigmentation:", self.pigmentation]
 
         if is_today(SpecialDate.APRIL_FOOLS):
             return self.Cat_Genes, "Other Fur Genes: ", self.Fur_Genes, "Other Colour Genes: ", self.Other_Colour, "Body Mutations: ", self.Body_Genes, "Polygenes: ", self.Polygenes, "April Fools:", april_fools_output

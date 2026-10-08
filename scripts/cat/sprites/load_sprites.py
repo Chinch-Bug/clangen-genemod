@@ -383,6 +383,7 @@ class Sprites:
                                "dove", "champagne", "buff", 
                                "platinum", "lavender", "beige"]):
             self.make_group('base/eumelanin', (0, i), f'{x}', sprites_x=7, sprites_y=1)
+            self.make_group('base/warm_eumelanin', (0, i), f'warm_{x}', sprites_x=7, sprites_y=1)
         for i, x in enumerate(["rufousedred", "mediumred", "lowred", 
                                "rufousedcream", "mediumcream", "lowcream", 
                                "rufousedhoney", "mediumhoney", "lowhoney", 
