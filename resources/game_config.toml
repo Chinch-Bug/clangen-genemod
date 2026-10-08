@@ -888,6 +888,8 @@ dev_tools = false
   classic_perm_condition_modifier = 5
   perm_condition_modifier = 5
   
+  duration_modifier = 1
+
   # how much each medicine cat reduces the chance of infection, higher number is better
   med_infection_reduction = 10
   # the seasons in which illnesses can spread. Fleas will always be able to spread in all seasons.
