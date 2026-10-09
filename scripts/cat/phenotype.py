@@ -167,7 +167,7 @@ class Phenotype(Genotype):
                     else:
                         colour = "cinnamon"
 
-        if len(set(self.x_colours)):
+        if len(set(self.x_colours)) > 1:
             tortie = "tortie "
 
         self.colour = colour
