@@ -481,12 +481,12 @@ class Phenotype(Genotype):
         if is_today(SpecialDate.APRIL_FOOLS):
             if "Dg" in self.april_fools.get("danish_green", []):
                 self.colour = "Danish green " + self.colour
-        self.SolidWhite(pattern=pattern)
 
-        if(self.is_cryptic() and self.tortie != "brindled bicolour "):
+        if(self.is_cryptic(True) and self.tortie != "brindled bicolour "):
             self.tortie = ""
             self.WhiteFinder()
             self.TabbyFinder()
+        self.SolidWhite(pattern=pattern)
 
         if is_today(SpecialDate.APRIL_FOOLS) and "Bs" in self.april_fools.get("black_spotting", []):
                 self.colour = self.colour.replace("white", "black")
