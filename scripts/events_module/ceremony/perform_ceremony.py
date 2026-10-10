@@ -16,6 +16,7 @@ from scripts.cat_relations.inheritance2 import inheritance_db
 from scripts.config import get_config
 from scripts.events_module.ceremony.generate_normal_ceremony import create_ceremony
 from scripts.events_module.event_information import EventInformation
+from scripts.events_module.event_filters import _check_cat_status_history
 from scripts.game_structure import game
 from scripts.game_structure.game import Switch
 from scripts.game_structure.game.switches import switch_set_value
@@ -132,6 +133,7 @@ def check_for_ceremony(main_cat: Cat, clan):
         and (main_cat.status.rank in (CatRank.WARRIOR, CatRank.DEPUTY) or special_can_retire)
         and not main_cat.apprentice
         and main_cat.moons >= retirement_info["min_retirement_age"]
+        and not _check_cat_status_history(main_cat, ["elder"])
     ):
         # There is some variation in the age.
         if main_cat.moons > retirement_info["min_retirement_age"]+25 or not int(

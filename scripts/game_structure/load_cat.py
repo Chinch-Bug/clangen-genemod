@@ -427,14 +427,14 @@ def accurate_porting(cat, info):
         cat.phenotype.white[0] = "W"
         cat.phenotype.white_pattern = "No"
     
-    if main_colour["colour"] in ["WHITE", "PALEGREY", "SILVER", "GREY", "DARKGREY", "CREAM", "PALEGINGER", "LIGHTBROWN", "LILAC", "BLOSSOM", "DAWN", "MALLOW", "HONEY"]:
+    if main_colour["colour"] in ["WHITE", "PALEGREY", "SILVER", "GREY", "DARKGREY", "SOOT", "CREAM", "PALEGINGER", "LIGHTBROWN", "LILAC", "BLOSSOM", "DAWN", "MALLOW", "HONEY"]:
         cat.phenotype.dilute = ["d", "d"]
         cat.phenotype.rufousing = 0
     else:
         cat.phenotype.dilute[0] = "D"
     
     if cat.chimerapheno:
-        if patch_colour["colour"] in ["WHITE", "PALEGREY", "SILVER", "GREY", "DARKGREY", "CREAM", "PALEGINGER", "LIGHTBROWN", "LILAC", "BLOSSOM", "DAWN", "MALLOW", "HONEY"]:
+        if patch_colour["colour"] in ["WHITE", "PALEGREY", "SILVER", "GREY", "DARKGREY", "SOOT", "CREAM", "PALEGINGER", "LIGHTBROWN", "LILAC", "BLOSSOM", "DAWN", "MALLOW", "HONEY"]:
             cat.chimerapheno.dilute = ["d", "d"]
             cat.chimerapheno.rufousing = 0
         else:
@@ -442,7 +442,7 @@ def accurate_porting(cat, info):
 
     if main_colour["colour"] in ["LIGHTBROWN", "GOLDEN-BROWN", "GOLDEN", "BLOSSOM"]:
         cat.phenotype.eumelanin = ["bl", "bl"]
-    elif main_colour["colour"] in ["WHITE", "PALEGREY", "LILAC", "BROWN", "CHOCOLATE", "RUST", "SIENNA", "MALLOW"]:
+    elif main_colour["colour"] in ["WHITE", "PALEGREY", "LILAC", "BROWN", "CHOCOLATE", "RUST", "SIENNA", "MALLOW", "SOOT"]:
         cat.phenotype.eumelanin = ["b", "b"]
     else:
         cat.phenotype.eumelanin[0] = "B"
@@ -450,7 +450,7 @@ def accurate_porting(cat, info):
     if cat.chimerapheno:
         if patch_colour["colour"] in ["LIGHTBROWN", "GOLDEN-BROWN", "GOLDEN", "BLOSSOM"]:
             cat.chimerapheno.eumelanin = ["bl", "bl"]
-        elif patch_colour["colour"] in ["WHITE", "PALEGREY", "LILAC", "BROWN", "CHOCOLATE", "RUST", "SIENNA", "MALLOW"]:
+        elif patch_colour["colour"] in ["WHITE", "PALEGREY", "LILAC", "BROWN", "CHOCOLATE", "RUST", "SIENNA", "MALLOW", "SOOT"]:
             cat.chimerapheno.eumelanin = ["b", "b"]
         else:
             cat.chimerapheno.eumelanin[0] = "B"
@@ -524,14 +524,14 @@ def accurate_porting(cat, info):
         cat.phenotype.wideband = 0
     if main_colour["colour"] in ["LILAC", "GREY"]:
         cat.phenotype.fur_shade = choice(range(0, 5))
-    elif main_colour["colour"] in ["DARKGREY", "DARKBROWN", "GHOST", "BLOSSOM", "SIENNA", "RUST"]:
+    elif main_colour["colour"] in ["DARKGREY", "DARKBROWN", "GHOST", "BLOSSOM", "SIENNA", "RUST", "SOOT"]:
         cat.phenotype.fur_shade = choice(range(5, 7))
     elif main_colour["colour"] in ["PALEGREY", "GOLDEN"]:
         cat.phenotype.fur_shade = choice(range(0, 3))
     else:
         cat.phenotype.fur_shade = choice(range(2, 5))
 
-    if main_colour["colour"] in ["BLACK", "GOLDEN", "BROWN"]:
+    if main_colour["colour"] in ["BLACK", "GOLDEN", "BROWN", "SOOT"]:
         cat.phenotype.colour_warmth = 0
     elif main_colour["colour"] in ["LILAC", "GOLDENBROWN"]:
         cat.phenotype.colour_warmth = 1
@@ -546,14 +546,14 @@ def accurate_porting(cat, info):
             cat.chimerapheno.wideband = 0
         if patch_colour["colour"] in ["LILAC", "GREY"]:
             cat.chimerapheno.fur_shade = choice(range(0, 5))
-        if patch_colour["colour"] in ["DARKGREY", "DARKBROWN", "GHOST", "BLOSSOM", "SIENNA", "RUST"]:
+        if patch_colour["colour"] in ["DARKGREY", "DARKBROWN", "GHOST", "BLOSSOM", "SIENNA", "RUST", "SOOT"]:
             cat.chimerapheno.fur_shade = choice(range(5, 7))
         elif patch_colour["colour"] in ["PALEGREY", "GOLDEN"]:
             cat.chimerapheno.fur_shade = choice(range(0, 3))
         else:
             cat.chimerapheno.fur_shade = choice(range(2, 5))
 
-        if patch_colour["colour"] in ["BLACK", "GOLDEN", "BROWN"]:
+        if patch_colour["colour"] in ["BLACK", "GOLDEN", "BROWN", "SOOT"]:
             cat.chimerapheno.colour_warmth = 0
         elif patch_colour["colour"] in ["LILAC", "GOLDENBROWN"]:
             cat.chimerapheno.colour_warmth = 1

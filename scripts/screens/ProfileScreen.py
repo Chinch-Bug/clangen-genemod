@@ -1369,6 +1369,9 @@ class ProfileScreen(Screens):
                 rust_string += f", {rust.removeprefix("rusting_")} {opacity}%"
             self.info_list += f"Rusting: {rust_string.strip(" ,")}\n"
 
+        if game_setting_get("tints"):
+            self.info_list += f"Tint: {self.the_cat.pelt.tint} ; White Patches Tint: {self.the_cat.pelt.white_patches_tint}\n"
+
         if self.the_cat.phenotype.merlepattern:
             self.info_list += f"Pseudo-Merle Markings: {self.the_cat.phenotype.merlepattern}\n"
         if self.the_cat.chimerapheno and self.the_cat.chimerapheno.merlepattern:

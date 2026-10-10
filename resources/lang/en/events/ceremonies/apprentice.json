@@ -1436,7 +1436,7 @@
         },
         "involved_cats": {
             "m_c": {},
-            "r_c0": {}
+            "r_c0": {"status": ["-leader"]}
         },
         "strings": [
             "When lead_name gives m_c to r_c0 to train, r_c0 leads {PRONOUN/r_c0/poss} new apprentice out of camp to see the sights, starting with POI."
