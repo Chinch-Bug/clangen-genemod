@@ -364,6 +364,8 @@ class Name:
             colours.append('GHOST')
         if params[2]['type'] == 'golden' and params[0] not in ['ginger', 'cream']:
             colours.append('GOLDEN')
+            if params[0] in ["black", "chocolate"]:
+                colour.append("SUNSHINE")
         if self.phenotype.ruftype == 'rufoused' and params[0] == 'ginger':
             colours.append('DARKGINGER')
         if self.phenotype.ruftype == 'low' and params[0] == 'ginger':
@@ -544,6 +546,8 @@ class Name:
                 colours.append('GHOST')
             if params[2]['type'] == 'golden' and params[0] not in ['ginger', 'cream']:
                 colours.append('GOLDEN')
+                if params[0] in ["black", "chocolate"]:
+                    colour.append("SUNSHINE")
             if self.phenotype.ruftype == 'rufoused' and params[0] == 'ginger':
                 colours.append('DARKGINGER')
             if self.phenotype.ruftype == 'low' and params[0] == 'ginger':

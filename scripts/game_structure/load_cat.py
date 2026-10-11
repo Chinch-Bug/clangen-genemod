@@ -331,7 +331,7 @@ def accurate_porting(cat, info):
         cat.phenotype.extraeyetype = f"R{choice(range(1, 4))} ; P{choice(range(1, 3))}"
 
     red_bases = ["CREAM", "DARKGINGER", "GINGER", "PALEGINGER", "HONEY"]
-    tabby_bases = ["CREAM", "DARKGINGER", "GINGER", "PALEGINGER", "GOLDEN", "WHITE", "DAWN", "MALLOW"]
+    tabby_bases = ["CREAM", "DARKGINGER", "GINGER", "PALEGINGER", "GOLDEN", "WHITE", "DAWN", "MALLOW", "SUNSHINE"]
     cat.chimerapheno = None
     main_colour = {"pattern": info["pelt_name"].lower(), "colour": info["pelt_color"]}
     patch_colour = {"pattern": "", "colour": ""}
@@ -491,13 +491,13 @@ def accurate_porting(cat, info):
         else:
             cat.chimerapheno.silver = ["i", "i"]
     
-    if main_colour["colour"] in ["DAWN"]:
+    if main_colour["colour"] in ["DAWN", "SUNSHINE"]:
         cat.phenotype.corin = ["sh", "sh"]
     else:
         cat.phenotype.corin[0] = "N"
 
     if cat.chimerapheno:
-        if patch_colour["colour"] in ["DAWN"]:
+        if patch_colour["colour"] in ["DAWN", "SUNSHINE"]:
             cat.chimerapheno.corin = ["sh", "sh"]
         else:
             cat.chimerapheno.corin[0] = "N"

@@ -655,7 +655,7 @@ class ShortEvent:
         cats that will die are added to self.dead_cat_objects
         """
         # gather living clan cats except leader bc leader lives would be frustrating to handle in these
-        alive_cats = [i for i in Cat.all_cats.values() if i.status.group_ID == self.main_cat.status.group_ID]
+        alive_cats = [i for i in Cat.all_cats.values() if i.status.group_ID == self.main_cat.status.group_ID and i.age != CatAge.NEWBORN]
 
         # make sure all cats in the pool fit the event requirements
         requirements = self.m_c
