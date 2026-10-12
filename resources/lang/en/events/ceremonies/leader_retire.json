@@ -9,16 +9,17 @@
         ]
     },
     {
-        "event_id": "lead_retire_childish",
+        "event_id": "lead_retire_impulsive",
         "involved_cats": {
             "m_c": {
                 "stat": {
-                    "trait": [ "childish" ]
+                    "trait": [ "bloodthirsty", "vengeful", "childish", "impulsive" ]
                 }
             }
         },
         "strings": [
-            "In what seemed like an impulse decision, (old_name) declared that {PRONOUN/m_c/subject}{VERB/m_c/'ve had/'s had} enough of the politics and the disrespect. That same night, {PRONOUN/m_c/subject} declare {PRONOUN/m_c/self} m_c and join the elders."
+            "In what seemed like an impulse decision, (old_name) declared that {PRONOUN/m_c/subject}{VERB/m_c/'ve had/'s had} enough of the politics and the disrespect. That same night, {PRONOUN/m_c/subject} declare {PRONOUN/m_c/self} m_c and join the elders.",
+            "In what seemed like an impulse decision, (old_name) declared that {PRONOUN/m_c/subject}{VERB/m_c/'ve had/'s had} enough of cats questioning {PRONOUN/m_c/poss} judgement. That same night, {PRONOUN/m_c/subject} declare {PRONOUN/m_c/self} m_c and join the elders."
         ]
     }
 ]
