@@ -87,6 +87,7 @@ class Patrol:
         self.other_clan = None
         self.clan = game.clan
         self.temperament: tuple[str, str] = ("", "")
+        self.is_med_patrol = False
         """Set once the patrol cats are known, in begin_patrol"""
 
         self.patrol_cats: list[Cat] = []
@@ -311,6 +312,7 @@ class Patrol:
             
         elif patrol_type == "med":
             patrol_type = "herb_gathering"
+            self.is_med_patrol = True
 
         # GET PATROL LIST
         patrol_list = get_patrol_list(
@@ -491,6 +493,8 @@ class Patrol:
                 other_clan=self.other_clan,
                 clan=self.clan,
                 ensured_id=self.debug_patrol_id,
+                is_patrol=True,
+                is_med_patrol=self.is_med_patrol,
             )
             if not chosen_patrol:
                 if not Patrol.used_patrols["romance" if find_romance else "normal"]:
@@ -561,6 +565,8 @@ class Patrol:
             other_clan=self.other_clan,
             ensured_id=debug_outcome,
             allow_new_cat_creation=False,  # this is so we don't create cats for an outcome we end up not using
+            is_patrol=True,
+            is_med_patrol=self.is_med_patrol,
         )
 
         if not chosen_success:
@@ -578,6 +584,8 @@ class Patrol:
             other_clan=self.other_clan,
             ensured_id=debug_outcome,
             allow_new_cat_creation=False,  # this is so we don't create cats for an outcome we end up not using
+            is_patrol=True,
+            is_med_patrol=self.is_med_patrol,
         )
         if not chosen_failure:
             raise Exception(

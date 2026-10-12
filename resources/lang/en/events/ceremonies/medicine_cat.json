@@ -2,7 +2,9 @@
     {
         "event_id": "med_default0",
         "involved_cats": {
-            "m_c": {}
+            "m_c": {
+                "past_status": [ "healer apprentice" ] 
+            }
         },
         "strings": [
             "(old_name) is given {PRONOUN/m_c/poss} full name of m_c and welcomed as a full medicine cat.",
@@ -12,7 +14,9 @@
     {
         "event_id": "med_default1",
         "involved_cats": {
-            "m_c": {},
+            "m_c": {
+                "past_status": [ "healer apprentice" ] 
+            },
             "r_c0": {
                 "group": [
                     "player_clan"
@@ -49,7 +53,8 @@
         "event_id": "med_unprepared0",
         "involved_cats": {
             "m_c": {
-                "current_exp": ["untrained", "learning"]
+                "current_exp": ["untrained", "learning"],
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -62,7 +67,8 @@
         "involved_cats": {
             "m_c": {
                 "current_exp": ["prepared"],
-                "age": ["adolescent"]
+                "age": ["adolescent"],
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -73,7 +79,8 @@
         "event_id": "med_unprepared_poi",
         "involved_cats": {
             "m_c": {
-                "current_exp": ["untrained", "learning"]
+                "current_exp": ["untrained", "learning"],
+                "past_status": [ "healer apprentice" ]
             }
         },
         "poi": {
@@ -90,7 +97,8 @@
                 "current_exp": ["untrained", "learning"],
                 "health": {
                     "working": false
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -101,7 +109,9 @@
     {
         "event_id": "med_dead_mentor0",
         "involved_cats": {
-            "m_c": {},
+            "m_c": {
+                "past_status": [ "healer apprentice" ] 
+            },
             "r_c0": {
                 "group": [
                     "afterlife"
@@ -130,7 +140,8 @@
         "event_id": "med_dead_mentor1",
         "involved_cats": {
             "m_c": {
-                "current_exp": ["prepared"]
+                "current_exp": ["prepared"],
+                "past_status": [ "healer apprentice" ]
             },
             "r_c0": {
                 "group": [
@@ -160,7 +171,8 @@
         "event_id": "med_prepared0",
         "involved_cats": {
             "m_c": {
-                "current_exp": ["prepared"]
+                "current_exp": ["prepared"],
+                "past_status": [ "healer apprentice" ]
             },
             "r_c0": {
                 "group": [
@@ -194,7 +206,9 @@
         "event_id": "med_no_healers0",
         "tags": ["-clan:medicine cat"],
         "involved_cats": {
-            "m_c": {}
+            "m_c": {
+                "past_status": [ "healer apprentice" ] 
+            }
         },
         "strings": [
             "The time has come for (old_name) to be given {PRONOUN/m_c/poss} full medicine cat name. (old_name) requests that one of the other Clans' medicine cats name {PRONOUN/m_c/object}. The eldest of the medicine cats steps forward and gives (old_name) the name m_c.",
@@ -209,7 +223,8 @@
                     "trait": [
                         "adventurous"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -225,7 +240,8 @@
                     "trait": [
                         "compassionate"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -246,7 +262,8 @@
                         "vengeful",
                         "competitive"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -261,7 +278,8 @@
                     "trait": [
                         "bloodthirsty"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -279,7 +297,8 @@
                         "rebellious",
                         "strict"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -294,7 +313,8 @@
                     "trait": [
                         "calm"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -309,7 +329,8 @@
                     "trait": [
                         "careful"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -325,7 +346,8 @@
                         "flamboyant",
                         "charismatic"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -344,7 +366,8 @@
                         "playful",
                         "oblivious"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -363,7 +386,8 @@
                         "cold",
                         "strict"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -381,7 +405,8 @@
                         "rebellious",
                         "confident"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -399,7 +424,8 @@
                         "strange",
                         "ambitious"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -414,7 +440,8 @@
                     "trait": [
                         "faithful"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -431,7 +458,8 @@
                         "bloodthirsty",
                         "vengeful"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -448,7 +476,8 @@
                         "insecure",
                         "nervous"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -465,7 +494,8 @@
                     "trait": [
                         "insecure"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -480,7 +510,8 @@
                     "trait": [
                         "loyal"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -495,7 +526,8 @@
                     "trait": [
                         "responsible"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -510,7 +542,8 @@
                     "trait": [
                         "righteous"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -529,7 +562,8 @@
                         "oblivious",
                         "strange"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -544,7 +578,8 @@
                     "trait": [
                         "cunning"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -559,7 +594,8 @@
                     "trait": [
                         "strict"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -574,7 +610,8 @@
                     "trait": [
                         "thoughtful"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -590,7 +627,8 @@
                     "trait": [
                         "troublesome"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -605,7 +643,8 @@
                     "trait": [
                         "vengeful"
                     ]
-                }
+                },
+                "past_status": [ "healer apprentice" ]
             }
         },
         "strings": [
@@ -619,7 +658,8 @@
             "m_c": {
                 "backstory": [
                     "-orphaned_backstories"
-                ]
+                ],
+                "past_status": [ "healer apprentice" ]
             },
             "r_c1": {
                 "group": [
@@ -652,7 +692,8 @@
             "m_c": {
                 "backstory": [
                     "-orphaned_backstories"
-                ]
+                ],
+                "past_status": ["healer apprentice"]
             },
             "r_c1": {
                 "group": [

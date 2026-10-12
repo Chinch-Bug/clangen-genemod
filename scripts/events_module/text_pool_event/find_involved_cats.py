@@ -25,6 +25,8 @@ def find_cats(
     event: Union[PatrolEvent, TextPoolEvent],
     other_clan: OtherClan,
     clan,
+    is_patrol: bool = False,
+    is_med_patrol: bool=False,
 ) -> tuple[dict, int]:
     """
     Finds and returns cats for a PatrolEvent or TextPoolEvent. If a cat cannot be found, but is marked as `can_be_created`, then a cat will be created.
@@ -65,6 +67,12 @@ def find_cats(
         possible_accessories = get_potential_accessories(
             abbr, can_give_accessory, event
         )
+
+        if is_patrol and "status" in constraints:
+            if "apprentice" in constraints["status"]:
+                constraints["status"] += ["mediator apprentice", "queen apprentice"]
+                if not is_med_patrol:
+                    constraints["status"].append("healer apprentice")
 
         # CHECK ALREADY ASSIGNED CAT
         if abbr in involved_cats:

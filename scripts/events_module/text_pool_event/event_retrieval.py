@@ -28,6 +28,8 @@ def get_valid_event(
     cat_constraints_active: bool = True,
     allow_new_cat_creation: bool = True,
     frequency_active: bool = True,
+    is_patrol: bool = False,
+    is_med_patrol: bool = False,
 ) -> tuple[Optional[PatrolEvent | TextPoolEvent], dict]:
     """
     Check given possible_events against current game state and involved cats. Returns a valid event,
@@ -134,6 +136,8 @@ def get_valid_event(
                 event=test_event,
                 other_clan=other_clan,
                 clan=clan,
+                is_patrol=is_patrol,
+                is_med_patrol=is_med_patrol
             )
             if not (temp_involved_cats or will_create_how_many):
                 tested_events.add(test_event.event_id)
