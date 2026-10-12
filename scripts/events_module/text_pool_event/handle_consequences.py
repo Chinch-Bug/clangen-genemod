@@ -73,6 +73,7 @@ def execute_outcome(
             event.poi.get("name"),
             event.poi.get("tags"),
             event.poi.get("category"),
+            clan=clan.group_ID
         )
     # process text
 
@@ -90,6 +91,7 @@ def execute_outcome(
             processed_text,
             involved_cat_dict=event_involved_cats,
             clan=clan,
+            chosen_poi=chosen_poi,
         )
     else:
         processed_text = event_text_adjust(
