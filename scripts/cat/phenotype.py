@@ -66,7 +66,7 @@ class Phenotype(Genotype):
 
         self.vitiligo_string = ""
         self.mutant_red = ""
-        get_x_colours()
+        self.get_x_colours()
         
     def FurtypeFinder(self):
         furtype = []
@@ -446,7 +446,7 @@ class Phenotype(Genotype):
     
     def is_cryptic(self, all_rev=False):
         if not hasattr(self, "x_colours"):
-            get_x_colours()
+            self.get_x_colours()
         for i, x in enumerate(self.x_colours[:-1]):
             if self.x_colours[0] == self.x_colours[-1]:
                 break
@@ -749,7 +749,7 @@ class Phenotype(Genotype):
         self.peacock = False
 
         if x_colour is None:
-            get_x_colours()
+            self.get_x_colours()
             x_colour = self.x_colours[-1]
 
         if self.silver[0] == 'I' and self.pseudomerle and self.merlepattern is None: # pylint: disable=access-member-before-definition
