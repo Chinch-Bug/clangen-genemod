@@ -128,8 +128,8 @@ class Pelt:
         'high': {
             '1': ['ANY', 'SHIBAINU', 'PANTSTWO', 'MAO', 'TRIXIE'],
             '2': ['ANY', 'FRECKLES', 'PANTSTWO', 'MASKMANTLE', 'MAO', 'PAINTED', 'BUB', 'SCAR'],
-            '3': ['ANYTWO', 'PEBBLESHINE', 'BROKEN', 'PIEBALD', 'FRECKLES', 'HALFFACE', 'GOATEE', 'PRINCE', 'CAPSADDLE',
-                  'REVERSEPANTS', 'GLASS', 'PAINTED', 'COWTWO', 'SAMMY', 'FINN', 'BUSTER', 'CAKE', "FALLEN_LEAVES"],
+            '3': ['ANYTWO', 'BROKEN', 'PIEBALD', 'FRECKLES', 'HALFFACE', 'GOATEE', 'PRINCE', 'CAPSADDLE',
+                  'REVERSEPANTS', 'GLASS', 'COWTWO', 'SAMMY', 'FINN', 'BUSTER', 'CAKE', "FALLEN_LEAVES"],
             '4': ['VAN', 'PEBBLESHINE', 'LIGHTSONG', 'CURVED', 'GOATEE', 'TAIL', 'APRON', 'HALFWHITE', 'APPALOOSA', 'HEART',
                   'MOORISH', 'COW', 'SHOOTINGSTAR', 'PEBBLE', 'TAILTWO', 'BUDDY', 'KROPKA'],
             '5': ['ONEEAR', 'LIGHTSONG', 'PETAL', 'CHESTSPECK', 'HEARTTWO', 'BOOTS', 'SHOOTINGSTAR', 'EYESPOT',
@@ -693,7 +693,7 @@ class Pelt:
                     if random() < 0.2:
                         white_pattern.append(choice(['tail tip', "TAILTIP"]))
                 elif KITgrade == 3:
-                    white_pattern.append(choice(['van1', 'van2', 'van3']))
+                    white_pattern.append('van2')
 
                     if random() < 0.25:
                         white_pattern.append(choice(['FOREHEAD_STRIPE']))
@@ -712,7 +712,7 @@ class Pelt:
 
                     if random() < 0.25:
                         white_pattern.append(choice(["break/BACKSPOT", "break/SADDLE_SMALL"]))
-                    white_pattern.append(choice(['break/piebald1', 'break/piebald2', 'break/piebald3']))
+                    white_pattern.append(choice(['break/piebald1', 'break/piebald3']))
                     
                     if random() < 0.1:
                         white_pattern.append(choice(['break/pants']))
