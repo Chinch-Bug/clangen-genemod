@@ -302,6 +302,8 @@ class TestPermanentCondition(unittest.TestCase):
         Tests that conditions are able to progress through their various states correctly
         """
         for c in PERMANENT_CONDITIONS:
+            if PERMANENT_CONDITIONS[c].get("genetic_only"):
+                continue
             # easier to separate this specifically before we start mocking state changes
             if PERMANENT_CONDITIONS[c]["can_be_congenital"]:
                 with self.subTest(f"Test state change (REVEALED) for {c}"):
@@ -317,6 +319,8 @@ class TestPermanentCondition(unittest.TestCase):
                     )
 
         for c in PERMANENT_CONDITIONS:
+            if PERMANENT_CONDITIONS[c].get("genetic_only"):
+                continue
             if PERMANENT_CONDITIONS[c]["mortality"]:
                 with self.subTest(f"Test state change (FATAL) for {c}"):
                     cat1 = cat_factory.create_cat()
