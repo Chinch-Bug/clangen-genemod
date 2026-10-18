@@ -19,7 +19,8 @@ class PermanentConditionInfoSchemaItem(BaseConditionInfoSchemaItem):
     can_be_acquired: bool = Field(
         description="If this condition can be acquired later in life."
     )
-    genetic_only: bool = Field(
+    genetic_only: bool | MISSING = Field(
+        MISSING,
         description="If this condition is available only to cats with specific genetics."
     )
     requires_scar: bool | MISSING = Field(
