@@ -718,7 +718,7 @@ class ShortEvent:
                                 kitty.permanent_condition['sterile']['moon_start'] += 3
                         else:
                             kitty.leave_clan(CatSocial.KITTYPET)
-                            gain_permanent_condition(kitty, "sterile", False, event_triggered=True, set_moons_until=randint(4, 6))
+                            gain_permanent_condition(kitty, "sterile", False, omit_moonskip=True, set_moons_until=randint(4, 6))
                     elif tnr:
                         taken_cats.append(kitty)
                         continue

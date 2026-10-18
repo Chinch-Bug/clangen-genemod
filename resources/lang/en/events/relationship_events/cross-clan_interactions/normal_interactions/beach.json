@@ -98,7 +98,7 @@
         "condition": [
             {
                 "cats": ["m_c"],
-                "condition": ["beak bite"],
+                "condition": ["beak_bite"],
                 "scar_history": "m_c was scarred by a gull when trying to impress r_c0.",
                 "non_lethal": true
             }

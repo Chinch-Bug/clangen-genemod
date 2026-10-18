@@ -8,6 +8,8 @@ import os
 import ujson
 
 from scripts.cat.cats import Cat
+from scripts.cat.pelts import Pelt
+from scripts.cat.sprites.load_sprites import sprites
 from scripts.cat.save_load import get_faded_ids
 from scripts.cat.save_load import load_faded_cat_ids
 from scripts.cat_relations.inheritance2 import inheritance_db
