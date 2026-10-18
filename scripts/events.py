@@ -721,7 +721,7 @@ def handle_tnr_return(clan=game.clan):
         and not cat.dead
         and TNRed):
             rejoin_upperbound = get_config("lost_cat.rejoin_tnr_chance")
-            if random.randint(1, rejoin_upperbound) == 1 or "recovering from birth" in cat.injuries:
+            if random.randint(1, rejoin_upperbound) == 1 or "recovering from birth" in cat.temporary_conditions:
                 eligible_cats.append(cat)
                 cat_IDs.append(cat.ID)
     

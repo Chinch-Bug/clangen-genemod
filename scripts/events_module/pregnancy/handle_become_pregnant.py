@@ -275,7 +275,7 @@ def _create_pregnancy_announcement(
     text = choice(get_pregnancy_strings()[announcement_key])
     event_text = text
     severity = choices(["minor", "major"], [3, 1], k=1)[0] if not force_minor else "minor"
-    gain_temporary_condition(pregnant_cat, "pregnant", severity=severity)
+    gain_temporary_condition(pregnant_cat, "pregnant", severity=severity, custom_duration=1 if force_minor else None)
     text += choice(get_pregnancy_strings()[f"{severity}_severity"])
     text = event_text_adjust(
         Cat,

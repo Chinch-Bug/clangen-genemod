@@ -714,8 +714,8 @@ class ShortEvent:
                             kitty.pelt.scars = (*kitty.pelt.scars, "TNR")
                             kitty.pelt.rebuild_sprite = True
                             gain_permanent_condition(kitty, "sterile", False)
-                            if 'pregnant' in kitty.injuries:
-                                kitty.permanent_condition['sterile']['moon_start'] += 3
+                            if 'pregnant' in kitty.temporary_conditions:
+                                kitty.get_condition("sterile")['moons_until_discovery'] = 3
                         else:
                             kitty.leave_clan(CatSocial.KITTYPET)
                             gain_permanent_condition(kitty, "sterile", False, omit_moonskip=True, set_moons_until=randint(4, 6))

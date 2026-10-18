@@ -111,7 +111,6 @@ def handle_having_kits(cat: Cat, clan):
         
         text, involved_cats = _create_pregnancy_announcement(cat, "announcement", clan, choice(second_parent), force_minor=True)
         
-        cat.injuries["pregnant"]["duration"] = 1
         game.cur_events_list.append(
             EventInformation(
                 text, ["birth_death"], involved_cats, clan=clan.group_ID

@@ -639,8 +639,8 @@ def _handle_lost(
                 if not tnr2:
                     c.pelt.scars = (*c.pelt.scars, "TNR")
                 gain_permanent_condition(c, "sterile", False)
-                if 'pregnant' in c.injuries:
-                    c.permanent_condition['sterile']['moons_until_discovery'] = 3
+                if 'pregnant' in c.temporary_conditions:
+                    c.get_condition("sterile")['moons_until_discovery'] = 3
             elif tnr and "TNR" in c.pelt.scars and not tnr2:
                 cat_list.remove(c)
             if not tnr:
