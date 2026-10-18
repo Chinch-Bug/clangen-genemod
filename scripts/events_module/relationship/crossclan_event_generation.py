@@ -43,7 +43,7 @@ def handle_crossclan_relationships():
     viable_cats = {}
 
     for c in [game.clan] + game.clan.all_other_clans:
-        living = [cat for cat in Cat.all_cats.values() if cat.status.group_ID == c.group_ID and not cat.not_working() and cat.status.rank not in (CatRank.NEWBORN, CatRank.KITTEN)]
+        living = [cat for cat in Cat.all_cats.values() if cat.status.group_ID == c.group_ID and cat.can_work() and cat.status.rank not in (CatRank.NEWBORN, CatRank.KITTEN)]
         if living:
             viable_cats[c.group_ID] = living
     if not viable_cats:

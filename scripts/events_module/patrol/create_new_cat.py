@@ -775,7 +775,7 @@ def updated_find_clan_cats(option_dict: InvolvedCatDict, involved_cats: dict[str
         if all_clan_cats_status:
             all_clan_cats = all_clan_cats_status
 
-        all_clan_cats_healthy = [i for i in all_clan_cats if not i.not_working()]
+        all_clan_cats_healthy = [i for i in all_clan_cats if i.can_work()]
         picked_cats = [choice(all_clan_cats_healthy if all_clan_cats_healthy else all_clan_cats)]
         if blood_parent and not sibling:
             picked_parents = [picked_cats[0].parent1, picked_cats[0].parent2]

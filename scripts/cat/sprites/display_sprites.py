@@ -44,7 +44,7 @@ def generate_sprite(
     :param acc_hidden: If True, hide the accessory. If false, show the accessory.
     :param always_living: If True, always show the cat with living lineart
     :param disable_sick_sprite: If true, never use the not_working lineart.
-                    If false, use the cat.not_working() to determine the no_working art.
+                    If false, use the not i.can_work() to determine the no_working art.
     """
     poses: list = sprites.POSE_DATA["poses"]
     sprite_poses = {x: str(poses.index(x)) for x in poses}

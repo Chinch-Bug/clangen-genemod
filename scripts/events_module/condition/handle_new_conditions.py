@@ -99,15 +99,15 @@ def attempt_give_illness(cat, season=None, clan=game.clan):
         and (random_number/modifier) <= 10
     ):
         random.shuffle(relevant_conditions)
-        chosen_key = list(relevant_conditions.keys())[0]
-        possible_risks = season_dict[key].copy()
+        chosen_key = relevant_conditions[0]
+        possible_risks = season_dict[chosen_key].copy()
         chosen_risk = possible_risks[int(random.random() * len(possible_risks))]
         event = generate_condition_event(
             f"conditions/risk_strings/{chosen_key}/{chosen_risk}.json",
             {"m_c": cat},
             clan=clan)
 
-        if chosen_risk not in cat.temporary_condition:
+        if chosen_risk not in cat.temporary_conditions:
             gain_temporary_condition(cat, chosen_risk)
 
     # just double-checking that trigger is only returned True if the cat is dead
@@ -119,7 +119,7 @@ def attempt_give_illness(cat, season=None, clan=game.clan):
     return triggered
 
 
-def attempt_give_injuries(cat, random_cat=None, clan=None):
+def attempt_give_injuries(cat, clan=None):
     """
     This function handles injuries overall by randomly injuring cat (or not).
     Returns: boolean - if an event was triggered
@@ -145,12 +145,10 @@ def attempt_give_injuries(cat, random_cat=None, clan=None):
 
     if (
         get_config("event_generation.debug_type_override") == "injury"
-        and random_cat
     ):
         create_short_event(
             event_type="health",
             main_cat=cat,
-            random_cat=random_cat,
             clan=clan
         )
 
@@ -188,7 +186,6 @@ def attempt_give_injuries(cat, random_cat=None, clan=None):
             create_short_event(
                 event_type="health",
                 main_cat=cat,
-                random_cat=random_cat,
                 clan=clan
             )
 

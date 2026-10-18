@@ -232,9 +232,7 @@ def _retrieve_secret_kittens(cat, other_cat, surrogate, clan):
         if surrogate:
             cats_involved.append(pregnant_cat.ID)
             
-            gain_temporary_condition(pregnant_cat, "recovering_from_birth", omit_timeskip=True)
-            pregnant_cat.temporary_conditions["recovering from birth"]["risks"] = [
-            ]
+            gain_temporary_condition(pregnant_cat, "recovering_from_birth", omit_moonskip=True, allow_risks=False)
             print_event = i18n.t(
                 "conditions.pregnancy.outside_surrogate_dam",
                 name=cat.name,
@@ -254,7 +252,7 @@ def _retrieve_secret_kittens(cat, other_cat, surrogate, clan):
                     if par:
                         cats_involved.append(par.ID)
                         par.birth_cooldown = birth_cooldown
-                        gain_temporary_condition(par, "recovering_from_birth", omit_timeskip=True)
+                        gain_temporary_condition(par, "recovering_from_birth", omit_moonskip=True)
                         par.temporary_conditions["recovering from birth"]["risks"] = []
                         if par.status.group_ID != cat.status.group_ID and not par.status.is_outsider:
                             events = get_pregnancy_strings()

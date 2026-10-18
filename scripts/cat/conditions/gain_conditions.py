@@ -22,7 +22,8 @@ def gain_temporary_condition(
     severity: Optional[Literal["minor", "major", "severe"]] = None,
     scar_pool_override: Optional[list[str]] = None,
     allow_side_effects: bool = True,
-    custom_duration: int = None
+    custom_duration: int = None,
+    allow_risks: bool = True,
 ):
     """
     Add a temporary condition
@@ -60,7 +61,7 @@ def gain_temporary_condition(
         infectiousness=condition_info["infectiousness"],
         immune_system_effect=condition_info["immune_system_effect"],
         progression=condition_info["progression"],
-        risks=condition_info["risks"],
+        risks=condition_info["risks"] if allow_risks else {},
         current_complication=None,
         scar_pool_override=scar_pool_override,
         omit_moonskip=omit_moonskip,

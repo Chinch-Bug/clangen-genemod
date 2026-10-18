@@ -14,7 +14,7 @@ def amount_of_clan_covered_total(all_cats, clan=CatGroup.PLAYER_CLAN_ID, exclude
         i
         for i in all_cats
         if i.status.group_ID == clan
-        and not i.not_working()
+        and i.can_work()
         and i.status.rank.is_any_medicine_rank()
         and i != exclude
     ]

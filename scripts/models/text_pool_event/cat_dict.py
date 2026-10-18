@@ -15,6 +15,7 @@ from scripts.models.text_pool_event.name_check_dict import NameCheckDict
 from scripts.models.text_pool_event.standing_dict import StandingDict
 from scripts.models.text_pool_event.stat_dict import StatDict
 from scripts.models.text_pool_event.status_any import StatusAny
+from scripts.models.common.accessory import Accessory
 
 
 class CatDict(BaseModel):
@@ -82,4 +83,8 @@ class CatDict(BaseModel):
     clan: Union[int, str, MISSING] = Field(
         MISSING,
         description="Used to specify a Clan in Cross-Clan Rel Events",
+    )
+    accessory: List[Accessory] | MISSING = Field(
+        MISSING,
+        description="Constrains the event to only occur if the cat has a listed accessory category",
     )

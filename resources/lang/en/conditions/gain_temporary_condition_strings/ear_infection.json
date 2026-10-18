@@ -1,0 +1,12 @@
+[
+    {
+        "event_id": "gain_temporary_condition_ear_infection0",
+        "strings": [
+            "m_c has gotten an ear infection.",
+            "m_c has been complaining about pain in {PRONOUN/m_c/poss} ears lately."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

@@ -879,8 +879,8 @@ class ShortEvent:
                             self.handle_injury_history(new_cat, abbr, injury)
 
     def give_injury_to_cat(self, cat, possible_injuries, potential_scars):
-        old_temp_cond = cat.temporary_conditions
-        old_perm_cond = cat.permanent_conditions
+        old_temp_cond = [c.name for c in cat.temporary_conditions]
+        old_perm_cond = [c.name for c in cat.permanent_conditions]
 
         if set(possible_injuries).issubset(
             old_temp_cond + old_perm_cond

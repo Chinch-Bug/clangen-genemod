@@ -447,7 +447,7 @@ def _is_suitable_queen_app(main_cat: Cat, clan) -> bool:
         chance = int(chance / 1.5)
     if main_cat.skills.primary.path == SkillPath.KIT or main_cat.skills.secondary and main_cat.skills.secondary.path == SkillPath.KIT:
         chance = int(chance / 2)
-    if main_cat.is_disabled():
+    if main_cat.permanent_conditions:
         chance = int(chance / 1.5)
     if chance == 0:
         chance = 1

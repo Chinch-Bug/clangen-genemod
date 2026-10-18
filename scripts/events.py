@@ -914,24 +914,6 @@ def one_moon_outside_cat(cat):
     cat.skills.progress_skill(cat)
     pregnancy_events.handle_having_kits(cat, clan=clan)
 
-    if cat.is_ill() or cat.is_injured():
-        if cat.is_ill() and cat.is_injured():
-            if random.getrandbits(1):
-                triggered_death = Condition_Events.handle_injuries(cat, clan=clan)
-                if not triggered_death:
-                    Condition_Events.handle_illnesses(cat, clan=clan)
-            else:
-                triggered_death = Condition_Events.handle_illnesses(cat, clan=clan)
-                if not triggered_death:
-                    Condition_Events.handle_injuries(cat, clan=clan)
-        elif cat.is_ill():
-            Condition_Events.handle_illnesses(cat, clan=clan)
-        else:
-            Condition_Events.handle_injuries(cat, clan=clan)
-        switch_get_value(Switch.skip_conditions).clear()
-        if cat.dead:
-            return
-
     # CHECK CONDITIONS
     if cat.temporary_conditions:
         handle_temporary_conditions(cat)
@@ -1978,7 +1960,7 @@ def attempt_outbreak(clan):
         event = generate_condition_event(
             path=f"conditions/outbreak_strings/{condition}.json",
             involved_cats={"multi_cat": cats},
-            clan=clan.group_ID
+            clan=clan
         )
 
         game.cur_events_list.append(event)

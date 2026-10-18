@@ -1,5 +1,17 @@
 {
   "$defs": {
+    "Accessory": {
+      "enum": [
+        "collar",
+        "-collar",
+        "wild",
+        "-wild",
+        "plant",
+        "-plant"
+      ],
+      "title": "Accessory",
+      "type": "string"
+    },
     "Age": {
       "enum": [
         "newborn",
@@ -15,7 +27,9 @@
         "senior adult",
         "-senior adult",
         "senior",
-        "-senior"
+        "-senior",
+        "mate",
+        "match"
       ],
       "title": "Age",
       "type": "string"
@@ -390,6 +404,14 @@
           "title": "Assign Blood Parent",
           "type": "array"
         },
+        "assign_sibling": {
+          "description": "List of designations for cats who will become this cat's full siblings. These cats must have already been specified prior in involved_cats",
+          "items": {
+            "type": "string"
+          },
+          "title": "Assign Sibling",
+          "type": "array"
+        },
         "assign_adoptive_parent": {
           "description": "List of designations for cats who will become this cat's adoptive parents. These cats must have already been specified prior in involved_cats",
           "items": {
@@ -404,6 +426,14 @@
             "type": "string"
           },
           "title": "Assign Mate",
+          "type": "array"
+        },
+        "multiclan_cat": {
+          "description": "List of special tags for multiclan - change_clan, change_clan_rev, exiled, -exists, multiclan_only",
+          "items": {
+            "type": "string"
+          },
+          "title": "Multiclan Cat",
           "type": "array"
         }
       },
@@ -536,6 +566,26 @@
           "$ref": "#/$defs/NameCheckDict",
           "description": "Constrain per specific name states",
           "title": "Name"
+        },
+        "clan": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "description": "Used to specify a Clan in Cross-Clan Rel Events",
+          "title": "Clan"
+        },
+        "accessory": {
+          "description": "Constrains the event to only occur if the cat has a listed accessory category",
+          "items": {
+            "$ref": "#/$defs/Accessory"
+          },
+          "title": "Accessory",
+          "type": "array"
         }
       },
       "title": "CatDict",
@@ -1954,12 +2004,23 @@
         "-apprentice",
         "mediator apprentice",
         "-mediator apprentice",
+        "queen apprentice",
+        "-queen apprentice",
+        "healer apprentice",
+        "-healer apprentice",
         "medicine cat apprentice",
         "-medicine cat apprentice",
+        "any_apprentice",
         "warrior",
         "-warrior",
         "mediator",
         "-mediator",
+        "queen",
+        "-queen",
+        "healer",
+        "-healer",
+        "any_healer",
+        "any_fighter",
         "medicine cat",
         "-medicine cat",
         "deputy",
@@ -2079,6 +2140,9 @@
         "halloween",
         "april_fools",
         "new_years",
+        "war",
+        "tnr",
+        "tnr2",
         "disaster"
       ],
       "title": "TagEnum",

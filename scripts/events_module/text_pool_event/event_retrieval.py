@@ -69,7 +69,7 @@ def get_valid_event(
         outside_cats = [
             c
             for c in Cat.all_cats_list
-            if (c.status.group_ID != clan.group_ID or c.status.is_outsider) and not c.dead and c.status.is_near()
+            if (clan and c.status.group_ID != clan.group_ID or c.status.is_outsider) and not c.dead and c.status.is_near()
         ]
     while not chosen_event:
         temp_involved_cats = involved_cats.copy()

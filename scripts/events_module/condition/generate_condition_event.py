@@ -53,5 +53,5 @@ def generate_condition_event(path: str, involved_cats: dict, clan) -> EventInfor
         processed_text,
         types,
         involved_ids,
-        clan=clan.group_ID
+        clan=clan.group_ID if clan else None
     )

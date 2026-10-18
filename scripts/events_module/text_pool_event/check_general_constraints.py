@@ -56,7 +56,7 @@ def passes_general_constraints(
         return False
 
     # CHECK TAGS
-    if not event_for_tags(event.tags, primary_cat, clan.group_ID):
+    if not event_for_tags(event.tags, primary_cat, clan.group_ID if clan else game.clan.group_ID):
         if is_debug_event:
             print("DEBUG: requested event does not meet constraints (tags)")
         return False
