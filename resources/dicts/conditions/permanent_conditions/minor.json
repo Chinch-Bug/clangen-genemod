@@ -1,0 +1,462 @@
+{
+    "weak_leg": {
+        "severity": "minor",
+        "can_be_congenital": true,
+        "can_be_acquired": true,
+        "requires_scar": false,
+        "moons_until_discovery": [2,10],
+        "mortality": {},
+        "immune_system_effect": 0.0,
+        "progression": {},
+        "risks": {
+            "sore": 0.1,
+            "joint_pain": 0.05
+        },
+        "treatment_strength": {
+            "1": [
+                "marigold",
+                "ragwort"
+            ],
+            "2": [
+                "daisy",
+                "juniper"
+            ],
+            "3": [
+                "thyme"
+            ]
+        },
+        "possible_scars": [
+            "FOUR",
+            "MANLEG",
+            "LEGBITE",
+            "TOETRAP",
+            "HINDLEG"
+        ]
+    },
+    "lost_tail": {
+        "severity": "minor",
+        "can_be_congenital": false,
+        "can_be_acquired": true,
+        "requires_scar": true,
+        "moons_until_discovery": [0,0],
+        "mortality": {},
+        "immune_system_effect": 0.0,
+        "progression": {},
+        "risks": {
+            "infection": 0.05,
+            "phantom_pain": 0.1
+        },
+        "treatment_strength": {
+            "1": [
+                "juniper"
+            ],
+            "2": [
+                "ragwort"
+            ],
+            "3": [
+                "poppy"
+            ]
+        },
+        "possible_scars": [
+            "NOTAIL",
+            "HALFTAIL"
+        ]
+    },
+    "born_without_tail": {
+        "severity": "minor",
+        "can_be_congenital": true,
+        "can_be_acquired": false,
+        "requires_scar": true,
+        "remove_on_death": false,
+        "moons_until_discovery": [0,0],
+        "mortality": {},
+        "immune_system_effect": 0.0,
+        "progression": {},
+        "risks": {},
+        "treatment_strength": {
+            "1": [],
+            "2": [],
+            "3": []
+        },
+        "possible_scars": [
+            "NOTAIL",
+            "HALFTAIL"
+        ]
+    },
+    "raspy_lungs": {
+        "severity": "minor",
+        "can_be_congenital": true,
+        "can_be_acquired": true,
+        "moons_until_discovery": [2,7],
+        "mortality": {},
+        "immune_system_effect": 0.0,
+        "progression": {},
+        "risks": {
+            "whitecough": 0.1,
+            "breathless_fit": 0.4
+        },
+        "treatment_strength": {
+            "1": [
+                "betony"
+            ],
+            "2": [
+                "rosemary",
+                "juniper"
+            ],
+            "3": [
+                "mullein"
+            ]
+        }
+    },
+    "partial_hearing_loss": {
+        "severity": "minor",
+        "can_be_congenital": true,
+        "can_be_acquired": true,
+        "requires_scar": false,
+        "moons_until_discovery": [1,5],
+        "mortality": {},
+        "immune_system_effect": 0.0,
+        "progression": {
+            "deaf": {
+                "chance": 0.01,
+                "when": "CONTINUING"
+            }
+        },
+        "risks": {},
+        "treatment_strength": {
+            "1": [],
+            "2": [],
+            "3": []
+        },
+        "possible_scars": [
+            "NOEAR"
+        ]
+    },
+    "partial_hearing_loss_one_ear": {
+        "severity": "minor",
+        "can_be_congenital": true,
+        "can_be_acquired": true,
+        "requires_scar": false,
+        "moons_until_discovery": [ 1, 5 ],
+        "mortality": { },
+        "immune_system_effect": 0.0,
+        "progression": {
+            "deaf_one_ear": {
+                "chance": 0.01,
+                "when": "CONTINUING"
+            }
+        },
+        "risks": { },
+        "treatment_strength": {
+            "1": [ ],
+            "2": [ ],
+            "3": [ ]
+        },
+        "possible_scars": [
+            "NOLEFTEAR",
+            "NORIGHTEAR"
+        ]
+    },
+    "constant_joint_pain": {
+        "severity": "minor",
+        "can_be_congenital": true,
+        "can_be_acquired": true,
+        "moons_until_discovery": [1,5],
+        "mortality": {},
+        "immune_system_effect": 0.0,
+        "progression": {},
+        "risks": {
+            "joint_pain": 0.4
+        },
+        "treatment_strength": {
+            "1": [
+                "marigold"
+            ],
+            "2": [
+                "daisy",
+                "ragwort",
+                "juniper"
+            ],
+            "3": [
+                "poppy"
+            ]
+        }
+    },
+    "allergies": {
+        "severity": "minor",
+        "can_be_congenital": true,
+        "can_be_acquired": false,
+        "moons_until_discovery": [2,5],
+        "mortality": {},
+        "immune_system_effect": 0.0,
+        "progression": {},
+        "risks": {
+            "running_nose": 0.1
+        },
+        "treatment_strength": {
+            "1": [
+                "juniper"
+            ],
+            "2": [],
+            "3": []
+        }
+    },
+    "lasting_grief": {
+        "severity": "minor",
+        "can_be_congenital": false,
+        "can_be_acquired": true,
+        "moons_until_discovery": [0,0],
+        "mortality": {},
+        "immune_system_effect": 0.0,
+        "progression": {},
+        "risks": {
+            "grief_stricken": 0.2,
+            "absent": 0.02
+        },
+        "treatment_strength": {
+            "1": [
+                "poppy"
+            ],
+            "2": [
+                "juniper",
+                "ragwort"
+            ],
+            "3": [
+                "thyme"
+            ]
+        }
+    },
+    "selective_mutism": {
+        "severity": "minor",
+        "can_be_congenital": true,
+        "can_be_acquired": true,
+        "moons_until_discovery": [2,7],
+        "mortality": {},
+        "immune_system_effect": 0.0,
+        "progression": {},
+        "risks": {},
+        "treatment_strength": {
+            "1": [
+                "poppy",
+                "juniper"
+            ],
+            "2": [],
+            "3": []
+        }
+    },
+    "damaged_throat": {
+        "severity": "minor",
+        "can_be_congenital": false,
+        "can_be_acquired": true,
+        "requires_scar": true,
+        "moons_until_discovery": [2,3],
+        "mortality": {},
+        "immune_system_effect": 0.0,
+        "progression": {},
+        "risks": {
+            "sore_throat": 0.4
+        },
+        "treatment_strength": {
+            "1": [
+                "poppy",
+                "honey"
+            ],
+            "2": [],
+            "3": []
+        },
+        "possible_scars": [
+            "THROAT"
+        ]
+    },
+    "deaf_one_ear": {
+        "severity": "minor",
+        "can_be_congenital": true,
+        "can_be_acquired": true,
+        "requires_scar": false,
+        "remove_on_death": false,
+        "moons_until_discovery": [1,2],
+        "mortality": {},
+        "immune_system_effect": 0.0,
+        "progression": {},
+        "risks": {},
+        "treatment_strength": {
+            "1": [],
+            "2": [],
+            "3": []
+        },
+        "possible_scars": [
+            "NOLEFTEAR",
+            "NORIGHTEAR"
+        ]
+    },
+    "sterile": {
+        "severity": "minor",
+        "can_be_congenital": true,
+        "can_be_acquired": true,
+        "moons_until_discovery": [12,12],
+        "mortality": {},
+        "immune_system_effect": 0.0,
+        "progression": {},
+        "risks": {},
+        "treatment_strength": {
+            "1": [],
+            "2": [],
+            "3": []
+        }
+    },
+    "incontinence": {
+        "severity": "minor",
+        "can_be_congenital": true,
+        "can_be_acquired": false,
+        "moons_until_discovery": [120,240],
+        "mortality": {},
+        "immune_system_effect": 0.0,
+        "progression": {},
+        "risks": {
+            "stomachache": 0.05,
+            "diarrhea": 0.025
+        },
+        "treatment_strength": {
+            "1": ["juniper", "mallow", "ragwort", "poppy"],
+            "2": [],
+            "3": []
+        }
+    },
+    "rabbit_gait": {
+        "severity": "minor",
+        "can_be_congenital": true,
+        "can_be_acquired": false,
+        "genetic_only": true,
+        "moons_until_discovery": [ 3, 3 ],
+        "mortality": {},
+        "immune_system_effect": 0.0,
+        "progression": {},
+        "risks": {},
+        "treatment_strength": {
+            "1": [],
+            "2": [],
+            "3": []
+        }
+    },
+    "manx_syndrome": {
+        "severity": "minor",
+        "can_be_congenital": true,
+        "can_be_acquired": false,
+        "genetic_only": true,
+        "moons_until_discovery": [ 1, 1 ],
+        "mortality": { },
+        "immune_system_effect": 0.0,
+        "progression": { },
+        "risks": { },
+        "treatment_strength": {
+            "1": [ ],
+            "2": [ ],
+            "3": [ ]
+        }
+    },
+    "bad_back": {
+        "severity": "minor",
+        "can_be_congenital": true,
+        "can_be_acquired": true,
+        "moons_until_discovery": [ 2, 5 ],
+        "mortality": { },
+        "immune_system_effect": 0.0,
+        "progression": { },
+        "risks": {
+            "back_pain": 0.1
+        },
+        "treatment_strength": {
+            "1": [
+                "marigold"
+            ],
+            "2": [
+                "daisy",
+                "ragwort",
+                "juniper"
+            ],
+            "3": [
+                "poppy"
+            ]
+        }
+    },
+    "albinism": {
+        "severity": "minor",
+        "can_be_congenital": true,
+        "can_be_acquired": false,
+        "genetic_only": true,
+        "moons_until_discovery": [ 1, 1 ],
+        "mortality": { },
+        "immune_system_effect": 0.0,
+        "progression": { },
+        "risks": {
+            "failing_eyesight": 0.001,
+            "persistent_headaches": 0.005,
+            "severe_headache": 0.01,
+            "headache": 0.025,
+            "sunburn": 0.05
+        },
+        "treatment_strength": {
+            "1": [ "poppy", "juniper" ],
+            "2": [ ],
+            "3": [ ]
+        }
+    },
+    "ocular_albinism": {
+        "severity": "minor",
+        "can_be_congenital": true,
+        "can_be_acquired": false,
+        "genetic_only": true,
+        "moons_until_discovery": [ 1, 2 ],
+        "mortality": { },
+        "immune_system_effect": 0.0,
+        "progression": { },
+        "risks": {
+            "failing_eyesight": 0.001,
+            "persistent_headaches": 0.005,
+            "severe_headache": 0.02,
+            "headache": 0.05
+        },
+        "treatment_strength": {
+            "1": [ "poppy", "juniper" ],
+            "2": [ ],
+            "3": [ ]
+        }
+    },
+    "bumpy_skin": {
+        "severity": "minor",
+        "can_be_congenital": true,
+        "can_be_acquired": false,
+        "genetic_only": true,
+        "moons_until_discovery": [ 36, 36 ],
+        "mortality": { },
+        "immune_system_effect": 0.0,
+        "progression": { },
+        "risks": {
+            "cyst": 0.02
+        },
+        "treatment_strength": {
+            "1": [ "moss" ],
+            "2": [],
+            "3": []
+        }
+    },
+    "cross_eyed": {
+        "severity": "minor",
+        "can_be_congenital": true,
+        "can_be_acquired": true,
+        "moons_until_discovery": [ 1, 2 ],
+        "mortality": { },
+        "immune_system_effect": 0.0,
+        "progression": { },
+        "risks": {
+            "bruises": 0.01,
+            "scrapes": 0.01,
+            "sprain": 0.01
+        },
+        "treatment_strength": {
+            "1": [ ],
+            "2": [ ],
+            "3": [ ]
+        }
+    }
+}

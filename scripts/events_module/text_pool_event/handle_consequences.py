@@ -7,7 +7,16 @@ import i18n
 
 from scripts.cat_relations.relationship import Relationship
 from scripts.cat.cats import Cat
-from scripts.cat.constants import PERMANENT, ILLNESSES, INJURIES, BACKSTORIES
+from scripts.cat.conditions.gain_conditions import (
+    gain_temporary_condition,
+    gain_permanent_condition,
+)
+from scripts.cat.constants import (
+    TEMPORARY_CONDITIONS,
+    PERMANENT_CONDITIONS,
+    CONDITION_GROUPS,
+    BACKSTORIES
+)
 from scripts.cat.enums import CatRank, CatSocial, CatThought, CatStanding, CatGroup
 from scripts.cat.microservices.add_to_clan import add_to_clan, add_dependents_to_clan
 from scripts.cat.pelts import Pelt
@@ -19,11 +28,6 @@ from scripts.clan_resources.freshkill import (
     ADDITIONAL_PREY,
     HUNTER_BONUS,
     HUNTER_EXP_BONUS,
-)
-from scripts.cat.microservices.conditions import (
-    get_ill,
-    get_injured,
-    get_permanent_condition,
 )
 from scripts.clan_resources.point_of_interest import get_poi_from_constraints
 from scripts.config import get_config
@@ -55,7 +59,7 @@ def execute_outcome(
     other_clan: OtherClan = None,
     chosen_poi: str = None,
     tags=None,
-) -> tuple[str, str, dict]:
+) -> tuple[str, dict, dict]:
     """
     Executes the outcome, applying any specified consequences.
     If new cats are created, event_involved_cats *will* be modified to add the newly created cats.
@@ -103,21 +107,21 @@ def execute_outcome(
             chosen_poi=chosen_poi,
         )
 
-    results = [
-        _handle_multiclan(event, event_involved_cats, clan, other_clan),
-        _handle_joining(event, event_involved_cats, clan),
-        _handle_meeting(event, event_involved_cats),
-        _handle_death(event, event_involved_cats, clan, other_clan, chosen_poi),
-        _handle_lost(event, event_involved_cats, tags),
-        _handle_conditions(event, event_involved_cats, other_clan),
-        _handle_reputation_changes(event, clan, other_clan),
-        _handle_supply_changes(event, event_involved_cats, clan),
-    ]
+    results = {
+        "multiclan": _handle_multiclan(event, event_involved_cats, clan, other_clan),
+        "join": _handle_joining(event, event_involved_cats, clan),
+        "death": _handle_death(event, event_involved_cats, clan, other_clan, chosen_poi),
+        "meet": _handle_meeting(event, event_involved_cats),
+        "lost": _handle_lost(event, event_involved_cats, tags),
+        "condition": _handle_conditions(event, event_involved_cats, other_clan),
+        "reputation": _handle_reputation_changes(event, clan, other_clan),
+        "supply": _handle_supply_changes(event, event_involved_cats, clan),
+    }
 
     acc_results, processed_text = _handle_accessories(
         event, event_involved_cats, processed_text
     )
-    results.append(acc_results)
+    results["acc"] = acc_results
 
     _handle_exp(event, event_involved_cats)
     _handle_mentor_app(event_involved_cats)
@@ -142,15 +146,10 @@ def execute_outcome(
         unpack_rel_block(Cat, rel_changes, involved_cats=event_involved_cats, clan=clan)
     )
     if rel_results:
-        results.append(i18n.t(f"screens.patrol.relationship_changed"))
-
-    final_results = []
-    for r in results:
-        if r:
-            final_results.append(r)
+        results["relationship"] = i18n.t(f"screens.patrol.relationship_changed")
 
     # return all the bullshit
-    return processed_text, "\n".join(final_results), rel_results
+    return processed_text, results, rel_results
 
 def _handle_multiclan(
     event: TextPoolEvent, event_involved_cats: dict[str, Union[Cat, list[Cat]]], clan, other_clan
@@ -639,9 +638,9 @@ def _handle_lost(
             elif tnr and 'TNR' not in c.pelt.scars:
                 if not tnr2:
                     c.pelt.scars = (*c.pelt.scars, "TNR")
-                get_permanent_condition(c, "sterile", False)
+                gain_permanent_condition(c, "sterile", False)
                 if 'pregnant' in c.injuries:
-                    c.permanent_condition['sterile']['moon_start'] += 3
+                    c.permanent_condition['sterile']['moons_until_discovery'] = 3
             elif tnr and "TNR" in c.pelt.scars and not tnr2:
                 cat_list.remove(c)
             if not tnr:
@@ -670,7 +669,7 @@ def _handle_conditions(
         return ""
 
     results = []
-    condition_groups = constants.INJURY_GROUPS
+    condition_groups = CONDITION_GROUPS
 
     cats_and_conditions: dict[Cat, list[str]] = {}
 
@@ -688,7 +687,7 @@ def _handle_conditions(
         for tag in block["condition"]:
             if tag in condition_groups:
                 possible_conditions.extend(condition_groups[tag])
-            elif tag in INJURIES or tag in ILLNESSES or tag in PERMANENT:
+            elif tag in TEMPORARY_CONDITIONS or tag in PERMANENT_CONDITIONS:
                 possible_conditions.append(tag)
 
         if not possible_conditions:
@@ -696,15 +695,13 @@ def _handle_conditions(
                 f"Something went wrong with outcome: {event}. None of the given conditions were valid."
             )
 
-        lethal = block.get("non_lethal", False)
+        non_lethal = block.get("non_lethal", False)
         scars = block.get("scar_pool_override", [])
 
         for c in cat_list:
-            current_conditions = (
-                list(c.injuries.keys())
-                + list(c.illnesses.keys())
-                + list(c.permanent_condition.keys())
-            )
+            current_conditions = [
+                con.name for con in c.temporary_conditions + c.permanent_conditions
+            ]
 
             if set(possible_conditions).issubset(current_conditions):
                 print(
@@ -717,12 +714,15 @@ def _handle_conditions(
             )
             chosen_condition = choice(list(conditions_for_cat))
 
-            if chosen_condition in INJURIES:
-                get_injured(c, chosen_condition, lethal=lethal, potential_scars=scars)
-            elif chosen_condition in ILLNESSES:
-                get_ill(c, chosen_condition, lethal=lethal)
+            if chosen_condition in TEMPORARY_CONDITIONS:
+                gain_temporary_condition(
+                    c,
+                    chosen_condition,
+                    prevent_death=non_lethal,
+                    scar_pool_override=scars,
+                )
             else:
-                get_permanent_condition(c, chosen_condition)
+                gain_permanent_condition(c, chosen_condition)
 
             no_results = block.get("no_results", False)
 
@@ -747,7 +747,12 @@ def _handle_conditions(
             i18n.t(
                 "general.got_condition",
                 cat=_profile_link(c),
-                conditions=adjust_list_text(conditions),
+                conditions=adjust_list_text(
+                    [
+                        i18n.t(f"conditions.temporary_conditions.{_con}")
+                        for _con in conditions
+                    ]
+                ),
             )
         )
 

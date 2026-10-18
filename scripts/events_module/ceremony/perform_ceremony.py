@@ -5,14 +5,10 @@ from math import floor
 import i18n
 
 from scripts.cat.cats import cat_class, Cat
+from scripts.cat.conditions.coverage_check import medicine_cats_can_cover_clan
 from scripts.cat.enums import CatRank, CatAge
 from scripts.cat.skills import SkillPath
 from scripts.clan_package.settings import get_clan_setting
-from scripts.conditions import (
-    medicine_cats_can_cover_clan,
-    get_amount_cat_for_one_medic,
-)
-from scripts.cat_relations.inheritance2 import inheritance_db
 from scripts.config import get_config
 from scripts.events_module.ceremony.generate_normal_ceremony import create_ceremony
 from scripts.events_module.event_information import EventInformation
@@ -400,7 +396,7 @@ def _is_suitable_mediator_app(main_cat: Cat, clan) -> bool:
         chance = int(chance / 1.5)
     if main_cat.skills.primary.path == SkillPath.MEDIATOR or main_cat.skills.secondary and main_cat.skills.secondary.path == SkillPath.MEDIATOR:
         chance = int(chance / 2)
-    if main_cat.is_disabled():
+    if main_cat.permanent_conditions:
         chance = int(chance / 1.5)
     if chance == 0:
         chance = 1
@@ -496,11 +492,7 @@ def _is_suitable_medcat_app(cat, clan) -> bool:
     logger.debug("Current number of medcat apps: %d", num_med_apps)
 
     # check if the Clan has sufficient med cats
-    enough_working_meds = medicine_cats_can_cover_clan(
-        Cat.all_cats.values(),
-        amount_per_med=get_amount_cat_for_one_medic(), 
-        clan=clan.group_ID,
-    )
+    enough_working_meds = medicine_cats_can_cover_clan(Cat.all_cats.values(), clan=clan.group_ID)
 
     med_info = get_config("roles.medicine cat apprentice")
     if (
@@ -612,7 +604,7 @@ def _is_suitable_medcat_app(cat, clan) -> bool:
         chance = chance / 2
         logger.info("beneficial secondary skill, chance updated to %d", round(chance))
 
-    if cat.is_disabled():
+    if cat.permanent_conditions:
         chance = chance / 1.5
 
     if num_med_apps == 0:

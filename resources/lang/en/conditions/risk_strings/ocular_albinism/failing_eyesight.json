@@ -1,0 +1,11 @@
+[
+    {
+        "event_id": "albism_failing_eyesight0",
+        "strings": [
+            "m_c had never had the clearest vision, forced to squint most of the time. But even still it seems it's noticeably less clear."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

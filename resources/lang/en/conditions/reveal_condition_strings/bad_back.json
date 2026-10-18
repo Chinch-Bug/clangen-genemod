@@ -1,0 +1,12 @@
+[
+    {
+        "event_id": "reveal_condition_bad_back0",
+        "strings": [
+            "m_c's back looks unusually curved. r_c warns this will likely cause trouble.",
+            "m_c's back looks unusually curved."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

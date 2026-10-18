@@ -1,0 +1,11 @@
+[
+    {
+        "event_id": "hairless_dangerously_cold0",
+        "strings": [
+            "Without fur, m_c has been struggling to keep properly warm at night."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

@@ -1,0 +1,12 @@
+[
+    {
+        "event_id": "hairless_ear_infection0",
+        "strings": [
+            "Without hair to keep things out of {PRONOUN/m_c/poss} ears, m_c has been complaining about pain inside them.",
+            "Without hair to keep things out of {PRONOUN/m_c/poss} ears, m_c has been complaining about muffled hearing."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

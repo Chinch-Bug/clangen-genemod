@@ -1,0 +1,25 @@
+[
+    {
+        "event_id": "flat_nose_runny_eyes0",
+        "strings": [
+            "It's nearly unheard of for water to leak from a cat's eyes like this, but r_c0 assesses that it's not dangerous. It doesn't do much to soothe m_c's annoyance with the frequent tears, though."
+        ],
+        "involved_cats": {
+            "m_c": { },
+            "r_c0": {
+                "status": [
+                    "medicine cat"
+                ]
+            }
+        }
+    },
+    {
+        "event_id": "flat_nose_runny_eyes1",
+        "strings": [
+            "m_c's eyes have left wet streaks down {PRONOUN/m_c/poss} face more than normal recently."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

@@ -1,0 +1,11 @@
+[
+    {
+        "event_id": "reveal_condition_incontinence0",
+        "strings": [
+            "It's normal for young kittens to have trouble getting to the Dirtplace in time, but m_c is not growing out of it."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

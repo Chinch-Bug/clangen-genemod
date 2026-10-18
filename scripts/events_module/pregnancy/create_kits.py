@@ -6,7 +6,8 @@ from copy import deepcopy, copy
 import i18n
 
 from scripts.cat.cats import Cat
-from scripts.cat.enums import CatRank, CatSocial, CatThought, CatCompatibility
+from scripts.cat.conditions.gain_conditions import add_congenital_condition
+from scripts.cat.enums import CatRank, CatAge, CatSocial, CatGroup, CatThought, CatCompatibility
 from scripts.cat.factories.new_cat_factory import NewCatFactory
 from scripts.cat.microservices.add_to_clan import add_to_clan
 from scripts.cat.names import Name
@@ -14,21 +15,19 @@ from scripts.cat_relations.enums import RelType
 from scripts.cat_relations.inheritance2 import inheritance_db
 from scripts.cat_relations.relationship import Relationship, create_one_relationship
 from scripts.clan_package.settings import get_clan_setting
-from scripts.cat.microservices.conditions import add_congenital_condition
 from scripts.config import get_config
-from scripts.events_module.event_information import EventInformation
 from scripts.events_module.consequences import (
     create_new_cat,
     change_relationship_values,
 )
 from scripts.events_module.event_filters import get_personality_compatibility
+from scripts.events_module.event_information import EventInformation
 from scripts.events_module.pregnancy.build_strings import get_newborn_strings
 from scripts.events_module.pregnancy.check_family_size import (
     biggest_family_is_big,
     get_biggest_family,
 )
 from scripts.events_module.pregnancy.check_parents import no_kits_allowed, check_parent_rank
-from scripts.events_module.short.condition_events import Condition_Events
 from scripts.events_module.text_adjust import event_text_adjust, adjust_list_text
 from scripts.game_structure import game
 from scripts.clan_package.get_clan_cats import get_living_clan_cat_count
@@ -64,7 +63,7 @@ def get_kits(
 
     ##### SELECT BACKSTORY #####
     if not backkit:
-        if cat and "pregnant" in cat.injuries and other_cat and other_cat[0].status.get_last_living_group() != cat.status.get_last_living_group():
+        if cat and "pregnant" in cat.temporary_conditions and other_cat and other_cat[0].status.get_last_living_group() != cat.status.get_last_living_group():
             backkit = 'halfclan1' if other_cat[0].status.group.is_any_clan_group() else 'outsider_roots1'
         elif cat and other_cat and other_cat[0].status.get_last_living_group() != cat.status.get_last_living_group():
             backkit = 'halfclan2' if other_cat[0].status.group.is_any_clan_group() else 'outsider_roots2'
@@ -169,7 +168,7 @@ def get_kits(
                 for i in range(0, nr_of_parents):
                     blood_par2 = None
                     parage = parage + randint(0, 24) - 12
-                    while not blood_par2 or 'sterile' in blood_par2.permanent_condition:
+                    while not blood_par2 or 'sterile' in blood_par2.permanent_conditions:
                         if blood_par2 and Cat.all_cats[blood_par2.ID]:
                             game.clan.remove_cat(blood_par2.ID)
                         cat_type = choice(
@@ -222,7 +221,7 @@ def get_kits(
         if identical:
             identical = False
             ref_cat = copy(all_kitten[-1])
-            kit.permanent_condition = ref_cat.permanent_condition
+            kit.permanent_conditions = ref_cat.permanent_conditions
             kit.phenotype = deepcopy(ref_cat.phenotype)
             kit.phenotype.tortiepattern = {}
             kit.phenotype.chimerapattern = None
@@ -292,12 +291,6 @@ def get_kits(
             random() * get_config("cat_generation.base_permanent_condition")
         ):
             add_congenital_condition(kit)
-            for condition in kit.permanent_condition:
-                if kit.permanent_condition[condition] == "born without a leg":
-                    kit.pelt.scars = (*cat.pelt.scars, "NOPAW")
-                elif kit.permanent_condition[condition] == "born without a tail" and kit.phenotype.bobtailnr != 1:
-                    kit.pelt.scars = (*cat.pelt.scars, "NOTAIL")
-            Condition_Events.handle_already_disabled(kit, clan)
 
         # create and update relationships
         relationships_to_update = []

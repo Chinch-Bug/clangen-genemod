@@ -148,10 +148,7 @@ class SpriteInspectScreen(Screens):
                 self.update_checkboxes()
                 self.checkboxes["show_as_healthy"].toggle()
             elif event.ui_element == self.checkboxes["hide_white"]:
-                if self.hide_white:
-                    self.hide_white = False
-                else:
-                    self.hide_white = True
+                self.hide_white = not self.hide_white
 
                 self.make_cat_image()
                 self.update_checkboxes()
@@ -286,7 +283,7 @@ class SpriteInspectScreen(Screens):
                     else self.the_cat.status.fetch_clan_object(game.clan).biome,
                     season=self.season_override if self.season_override else game.clan.current_season,
                     show_nest=self.the_cat.age == "newborn"
-                    or self.the_cat.not_working(),
+                    or not self.the_cat.can_work(),
                     group=self.the_cat.status.group,
                 ),
                 ui_scale_dimensions((560, 350)),
@@ -424,7 +421,7 @@ class SpriteInspectScreen(Screens):
             manager=MANAGER,
             check=self.override_not_working,
         )
-        if not self.the_cat.not_working():
+        if self.the_cat.can_work():
             self.checkboxes["show_as_healthy"].disable()
 
         # "Hide white"
@@ -528,7 +525,7 @@ class SpriteInspectScreen(Screens):
                 if game.clan.override_biome
                 else self.the_cat.status.fetch_clan_object(game.clan).biome,
                 season=game.clan.current_season,
-                show_nest=self.the_cat.age == "newborn" or self.the_cat.not_working(),
+                show_nest=self.the_cat.age == "newborn" or not self.the_cat.can_work(),
                 group=self.the_cat.status.group,
             )
             full_image.blit(self.cat_image, (15, 0))

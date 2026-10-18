@@ -1,0 +1,11 @@
+[
+    {
+        "event_id": "healed_cyst0",
+        "strings": [
+            "The skin seems to have healed over m_c's wound nicely."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

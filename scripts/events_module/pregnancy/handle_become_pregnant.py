@@ -6,8 +6,8 @@ import i18n
 
 from scripts.config import get_config
 from scripts.cat.cats import Cat
+from scripts.cat.conditions.gain_conditions import gain_temporary_condition
 from scripts.clan_package.settings import get_clan_setting
-from scripts.cat.microservices.conditions import get_injured
 from scripts.events_module.event_information import EventInformation
 from scripts.events_module.pregnancy.build_strings import (
     get_pregnancy_strings,
@@ -24,7 +24,7 @@ def handle_zero_moon_pregnant(cat: Cat, other_cat=None, surrogate=False, clan=ga
     if other_cat:
         other_cat_copy = []
         for x in other_cat:
-            if not (x.dead or x.status.is_lost() or x.status.is_exiled(clan.group_ID) or x.birth_cooldown > 0 or no_kits_allowed(x) or "sterile" in x.permanent_condition):
+            if not (x.dead or x.status.is_lost() or x.status.is_exiled(clan.group_ID) or x.birth_cooldown > 0 or no_kits_allowed(x) or "sterile" in x.permanent_conditions):
                 other_cat_copy.append(x)
         other_cat = other_cat_copy
 
@@ -151,14 +151,14 @@ def _handle_pregnancy_notice(cat, other_cat, surrogate, hidden, clan):
             )
         )
     else:
-        get_injured(cat, "pregnant", severity="minor")
+        gain_temporary_condition(cat, "pregnant", severity="minor", custom_duration=1)
 
 
 def _create_pregnancy_data(pregnant_cat: Cat, second_parent: Optional[Cat], affair_partner: Optional[list[Cat]], surrogate: Optional[list[Cat]], hidden=False, other_cat_has_mate=None):
     """Creates the pregnancy data entry for a new pregnancy."""
     fever = False
-    if len(pregnant_cat.illnesses) > 0:
-        for illness in pregnant_cat.illnesses:
+    if len(pregnant_cat.temporary_conditions) > 0:
+        for illness in pregnant_cat.temporary_conditions:
             if illness in ["greencough", "redcough", "yellowcough", "whitecough",
                             "an infected wound", "a festering wound", "ear infection",
                             "carrionplace disease", "heat stroke", "heat exhaustion", "tick fever"] and random() < 0.25:
@@ -232,8 +232,9 @@ def _retrieve_secret_kittens(cat, other_cat, surrogate, clan):
         if surrogate:
             cats_involved.append(pregnant_cat.ID)
             
-            get_injured(pregnant_cat, "recovering from birth", event_triggered=True)
-            pregnant_cat.injuries["recovering from birth"]["risks"] = []
+            gain_temporary_condition(pregnant_cat, "recovering_from_birth", omit_timeskip=True)
+            pregnant_cat.temporary_conditions["recovering from birth"]["risks"] = [
+            ]
             print_event = i18n.t(
                 "conditions.pregnancy.outside_surrogate_dam",
                 name=cat.name,
@@ -253,8 +254,8 @@ def _retrieve_secret_kittens(cat, other_cat, surrogate, clan):
                     if par:
                         cats_involved.append(par.ID)
                         par.birth_cooldown = birth_cooldown
-                        get_injured(par, "recovering from birth", event_triggered=True)
-                        par.injuries["recovering from birth"]["risks"] = []
+                        gain_temporary_condition(par, "recovering_from_birth", omit_timeskip=True)
+                        par.temporary_conditions["recovering from birth"]["risks"] = []
                         if par.status.group_ID != cat.status.group_ID and not par.status.is_outsider:
                             events = get_pregnancy_strings()
                             secondary_event = choice(events["birth"]["otherclan_mother"])
@@ -277,7 +278,7 @@ def _create_pregnancy_announcement(
     text = choice(get_pregnancy_strings()[announcement_key])
     event_text = text
     severity = choices(["minor", "major"], [3, 1], k=1)[0] if not force_minor else "minor"
-    get_injured(pregnant_cat, "pregnant", severity=severity)
+    gain_temporary_condition(pregnant_cat, "pregnant", severity=severity)
     text += choice(get_pregnancy_strings()[f"{severity}_severity"])
     text = event_text_adjust(
         Cat,

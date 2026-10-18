@@ -1,0 +1,25 @@
+[
+    {
+        "event_id": "ear_infection_partial_hearing_loss_one_ear0",
+        "strings": [
+            "Despite the efforts to treat m_c's ear infection, it seems to have progressed. r_c0 gently informs {PRONOUN/m_c/object} that {PRONOUN/m_c/poss} hearing might be muffled in one ear permanently."
+        ],
+        "involved_cats": {
+            "m_c": {},
+            "r_c0": {
+                "status": [
+                    "medicine cat"
+                ]
+            }
+        }
+    },
+    {
+        "event_id": "ear_infection_partial_hearing_loss_one_ear1",
+        "strings": [
+            "m_c's ear infection has progressed, leaving {PRONOUN/m_c/poss} hearing muffled on one side."
+        ],
+        "involved_cats": {
+            "m_c": {}
+        }
+    }
+]

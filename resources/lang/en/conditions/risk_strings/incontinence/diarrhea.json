@@ -1,0 +1,11 @@
+[
+    {
+        "event_id": "incontinence_diarrhea0",
+        "strings": [
+            "m_c excuses {PRONOUN/m_c/self} over and over to visit the Dirtplace."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

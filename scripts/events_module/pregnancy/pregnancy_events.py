@@ -49,7 +49,7 @@ def handle_having_kits(cat: Cat, clan):
             handle_two_moon_pregnant(cat, clan)
             return
 
-    if cat.status.is_outsider or get_clan_setting("no_litters") or (game.clan.clancount == "singleclan" and cat.status.is_other_clancat) or cat.not_working():
+    if cat.status.is_outsider or get_clan_setting("no_litters") or (game.clan.clancount == "singleclan" and cat.status.is_other_clancat) or not cat.can_work():
         return
 
     # Handle birth cooldown outside the check_if_can_have_kits function, so it only happens once
@@ -75,22 +75,22 @@ def handle_having_kits(cat: Cat, clan):
     chance = get_balanced_kit_chance(cat, second_parent, is_affair, clan)
     
     all_infertile = True
-    if 'sterile' not in cat.permanent_condition:
+    if 'sterile' not in cat.permanent_conditions:
         all_infertile = False
     elif second_parent:
         for x in second_parent:
-            if x != "Surrogate" and 'sterile' not in x.permanent_condition:
+            if x != "Surrogate" and 'sterile' not in x.permanent_conditions:
                 all_infertile = False
 
     if not int(random() * chance):
         # If you've reached here - congrats, kits!
-        if kits_are_adopted or ('sterile' in cat.permanent_condition and (not second_parent or second_parent[0] != "Surrogate")) or (second_parent and all_infertile):
+        if kits_are_adopted or ('sterile' in cat.permanent_conditions and (not second_parent or second_parent[0] != "Surrogate")) or (second_parent and all_infertile):
             handle_adoption(cat, second_parent, clan)
         else:
             surrogate = False
             if second_parent and second_parent[0] == "Surrogate":
                 x = 1
-                while 'sterile' in cat.permanent_condition:
+                while 'sterile' in cat.permanent_conditions:
                     cat = second_parent[x]
                     x += 1
                 if cat in second_parent:

@@ -1,0 +1,12 @@
+[
+    {
+        "event_id": "hairless_itchy_skin0",
+        "strings": [
+            "m_c can't stop scratching at {PRONOUN/m_c/poss} itchy skin",
+            "m_c struggles to listen to the warnings not to scratch the itchy spots of skin."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

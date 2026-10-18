@@ -1,0 +1,25 @@
+[
+    {
+        "event_id": "partial_hearing_loss_deaf_one_ear0",
+        "strings": [
+            "r_c0 listens as m_c explains that it doesn't seem like {PRONOUN/m_c/subject} can't hear on one side anymore."
+        ],
+        "involved_cats": {
+            "m_c": {},
+            "r_c0": {
+                "status": [
+                    "medicine cat"
+                ]
+            }
+        }
+    },
+    {
+        "event_id": "partial_hearing_loss_deaf_one_ear1",
+        "strings": [
+            "m_c realizes one day that noises on one side are no longer just muffled, but largely silent."
+        ],
+        "involved_cats": {
+            "m_c": {}
+        }
+    }
+]

@@ -1,0 +1,25 @@
+[
+    {
+        "event_id": "cyst_infection0",
+        "strings": [
+            "Despite both r_c0 and m_c's efforts, the spot where the cyst had popped looks to have become infected."
+        ],
+        "involved_cats": {
+            "m_c": {},
+            "r_c0": {
+                "status": [
+                    "medicine cat"
+                ]
+            }
+        }
+    },
+    {
+        "event_id": "cyst_infection1",
+        "strings": [
+            "Despite m_c's efforts, the spot where the cyst had popped looks to have become infected."
+        ],
+        "involved_cats": {
+            "m_c": {}
+        }
+    }
+]

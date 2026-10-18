@@ -333,7 +333,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "severe headache"
+                    "severe_headache"
                 ]
             }
         ]
@@ -456,7 +456,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "joint pain"
+                    "joint_pain"
                 ]
             }
         ]
@@ -486,7 +486,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "joint pain"
+                    "joint_pain"
                 ]
             }
         ]
@@ -516,7 +516,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "joint pain"
+                    "joint_pain"
                 ]
             }
         ]
@@ -552,7 +552,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "joint pain"
+                    "joint_pain"
                 ]
             }
         ]
@@ -585,8 +585,8 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "broken bone",
-                    "dislocated joint"
+                    "broken_bone",
+                    "dislocated_joint"
                 ]
             }
         ],
@@ -624,7 +624,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "tick bites"
+                    "tick_bites"
                 ]
             }
         ]
@@ -663,7 +663,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "tick bites"
+                    "tick_bites"
                 ]
             }
         ]
@@ -705,7 +705,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "tick bites"
+                    "tick_bites"
                 ]
             }
         ]
@@ -746,7 +746,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "tick bites"
+                    "tick_bites"
                 ]
             }
         ]
@@ -813,7 +813,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound"
+                    "claw_wound"
                 ]
             }
         ],
@@ -895,7 +895,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound"
+                    "claw_wound"
                 ]
             }
         ],
@@ -1001,7 +1001,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "bite-wound"
+                    "bite_wound"
                 ]
             }
         ],
@@ -1113,7 +1113,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "cat bite"
+                    "cat_bite"
                 ]
             }
         ],
@@ -1243,7 +1243,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound"
+                    "claw_wound"
                 ],
                 "scars": [
                     "BACK", "TWO"
@@ -1308,7 +1308,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "water in their lungs"
+                    "water_in_lungs"
                 ]
             }
         ],
@@ -1388,7 +1388,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "broken bone"
+                    "broken_bone"
                 ]
             }
         ],
@@ -1426,7 +1426,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "broken bone"
+                    "broken_bone"
                 ]
             }
         ],
@@ -1464,7 +1464,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "small cut"
+                    "small_cut"
                 ]
             }
         ]
@@ -1535,7 +1535,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "broken bone"
+                    "broken_bone"
                 ]
             }
         ],
@@ -1604,7 +1604,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "broken bone"
+                    "broken_bone"
                 ]
             }
         ],
@@ -1640,7 +1640,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound"
+                    "claw_wound"
                 ],
                 "scars": [
                     "BACK", "HINDLEG", "ONE", "TWO"
@@ -1682,7 +1682,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "small cut"
+                    "small_cut"
                 ]
             }
         ]
@@ -2375,7 +2375,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "bite-wound"
+                    "bite_wound"
                 ]
             }
         ],
@@ -2441,7 +2441,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "bite-wound"
+                    "bite_wound"
                 ]
             }
         ],
@@ -2518,7 +2518,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "bite-wound"
+                    "bite_wound"
                 ]
             }
         ],
@@ -2609,7 +2609,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound"
+                    "claw_wound"
                 ]
             }
         ],
@@ -2713,7 +2713,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "cat bite"
+                    "cat_bite"
                 ]
             }
         ],
@@ -2788,7 +2788,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "broken bone"
+                    "broken_bone"
                 ]
             }
         ],
@@ -2856,7 +2856,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "broken bone"
+                    "broken_bone"
                 ]
             }
         ],
@@ -2925,7 +2925,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound"
+                    "claw_wound"
                 ],
                 "scars": [
                     "BACK", "BEAKLOWER", "BEAKSIDE", "HINDLEG", "ONE", "TWO"
@@ -2990,7 +2990,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound"
+                    "claw_wound"
                 ],
                 "scars": [
                     "BACK", "BEAKLOWER", "BEAKSIDE", "HINDLEG", "ONE", "TWO"
@@ -3063,8 +3063,8 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound",
-                    "cat bite"
+                    "claw_wound",
+                    "cat_bite"
                 ]
             }
         ],
@@ -3139,8 +3139,8 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound",
-                    "cat bite"
+                    "claw_wound",
+                    "cat_bite"
                 ]
             }
         ],
@@ -3233,8 +3233,8 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound",
-                    "cat bite"
+                    "claw_wound",
+                    "cat_bite"
                 ]
             }
         ],
@@ -3316,7 +3316,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "mangled tail"
+                    "mangled_tail"
                 ],
                 "scars": [
                     "HALFTAIL", "MANTAIL", "NOTAIL", "TAILSCAR"
@@ -3399,7 +3399,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "mangled leg"
+                    "mangled_leg"
                 ]
             }
         ],
@@ -3453,7 +3453,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "damaged eyes"
+                    "damaged_eyes"
                 ],
                 "scars": [
                     "LEFTBLIND", "FACE", "RIGHTBLIND"
@@ -3518,7 +3518,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "cat bite"
+                    "cat_bite"
                 ]
             }
         ],
@@ -3626,7 +3626,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "cat bite"
+                    "cat_bite"
                 ]
             }
         ],
@@ -3716,7 +3716,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "bite-wound"
+                    "bite_wound"
                 ]
             }
         ],
@@ -3797,7 +3797,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "bite-wound"
+                    "bite_wound"
                 ]
             }
         ],
@@ -3885,7 +3885,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "cat bite"
+                    "cat_bite"
                 ]
             }
         ],
@@ -4293,7 +4293,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "cracked pads"
+                    "cracked_pads"
                 ]
             }
         ],
@@ -4418,8 +4418,8 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound",
-                    "cat bite"
+                    "claw_wound",
+                    "cat_bite"
                 ]
             }
         ],
@@ -4493,8 +4493,8 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound",
-                    "cat bite"
+                    "claw_wound",
+                    "cat_bite"
                 ]
             }
         ],
@@ -4580,8 +4580,8 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound",
-                    "cat bite"
+                    "claw_wound",
+                    "cat_bite"
                 ]
             }
         ],
@@ -4658,7 +4658,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound"
+                    "claw_wound"
                 ]
             }
         ],
@@ -4736,8 +4736,8 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound",
-                    "cat bite"
+                    "claw_wound",
+                    "cat_bite"
                 ]
             }
         ],
@@ -4813,8 +4813,8 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound",
-                    "cat bite"
+                    "claw_wound",
+                    "cat_bite"
                 ]
             }
         ],
@@ -4900,7 +4900,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound"
+                    "claw_wound"
                 ]
             }
         ],
@@ -4972,7 +4972,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "mangled leg"
+                    "mangled_leg"
                 ]
             }
         ],
@@ -5028,7 +5028,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "snake bite"
+                    "snake_bite"
                 ]
             }
         ],
@@ -5095,7 +5095,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "dislocated joint"
+                    "dislocated_joint"
                 ]
             }
         ]
@@ -5124,7 +5124,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "dislocated joint"
+                    "dislocated_joint"
                 ]
             }
         ]
@@ -5298,7 +5298,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "cracked pads"
+                    "cracked_pads"
                 ]
             }
         ]
@@ -5327,7 +5327,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "cracked pads"
+                    "cracked_pads"
                 ]
             }
         ]
@@ -5367,7 +5367,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "cracked pads"
+                    "cracked_pads"
                 ]
             }
         ]
@@ -5436,9 +5436,9 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "torn pelt",
+                    "torn_pelt",
                     "scrapes",
-                    "small cut"
+                    "small_cut"
                 ]
             }
         ]
@@ -5478,9 +5478,9 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "torn pelt",
+                    "torn_pelt",
                     "scrapes",
-                    "small cut"
+                    "small_cut"
                 ]
             }
         ]
@@ -5534,7 +5534,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound"
+                    "claw_wound"
                 ],
                 "scars": [
                     "FACE", "LEFTBLIND", "RIGHTBLIND", "SIDE", "THREE", "THROAT"
@@ -5575,7 +5575,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "mangled leg"
+                    "mangled_leg"
                 ]
             }
         ],
@@ -5636,7 +5636,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "mangled leg"
+                    "mangled_leg"
                 ],
                 "scars": [
                     "MANLEG"
@@ -5698,7 +5698,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "mangled tail"
+                    "mangled_tail"
                 ],
                 "scars": [
                     "HALFTAIL", "MANTAIL", "NOTAIL", "TAILSCAR"
@@ -5743,7 +5743,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "mangled tail"
+                    "mangled_tail"
                 ],
                 "scars": [
                     "HALFTAIL", "MANTAIL", "NOTAIL", "TAILSCAR"
@@ -5807,8 +5807,8 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "cat bite",
-                    "claw-wound"
+                    "cat_bite",
+                    "claw_wound"
                 ]
             }
         ],
@@ -5885,8 +5885,8 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "cat bite",
-                    "claw-wound"
+                    "cat_bite",
+                    "claw_wound"
                 ]
             }
         ],
@@ -5961,8 +5961,8 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "cat bite",
-                    "claw-wound"
+                    "cat_bite",
+                    "claw_wound"
                 ]
             }
         ],
@@ -6019,7 +6019,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "small cut"
+                    "small_cut"
                 ]
             }
         ]
@@ -6048,7 +6048,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "small cut"
+                    "small_cut"
                 ]
             }
         ]
@@ -6078,7 +6078,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "bee sting"
+                    "bee_sting"
                 ]
             }
         ],
@@ -6119,7 +6119,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "torn ear"
+                    "torn_ear"
                 ]
             }
         ],
@@ -6171,7 +6171,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "torn ear"
+                    "torn_ear"
                 ]
             }
         ],
@@ -6217,7 +6217,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "rat bite"
+                    "rat_bite"
                 ]
             }
         ],
@@ -6253,7 +6253,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "bee sting"
+                    "bee_sting"
                 ]
             }
         ],
@@ -6292,7 +6292,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "bee sting"
+                    "bee_sting"
                 ]
             }
         ],
@@ -6359,7 +6359,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "severe headache"
+                    "severe_headache"
                 ]
             }
         ]
@@ -6397,7 +6397,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "small cut"
+                    "small_cut"
                 ]
             }
         ],
@@ -6435,8 +6435,8 @@
         },
         "injury": [
             {
-                "cats": [ "m_c" ],
-                "injuries": [ "water in their lungs" ]
+                "cats": ["m_c"],
+                "injuries": ["water_in_lungs"]
             }
         ],
         "history": [
@@ -6607,8 +6607,8 @@
         },
         "injury": [
             {
-                "cats": [ "m_c" ],
-                "injuries": [ "water in their lungs" ]
+                "cats": ["m_c"],
+                "injuries": ["water_in_lungs"]
             }
         ],
         "history": [
@@ -6649,8 +6649,8 @@
         "r_c": { },
         "injury": [
             {
-                "cats": [ "m_c" ],
-                "injuries": [ "broken bone" ]
+                "cats": ["m_c"],
+                "injuries": ["broken_bone"]
             }
         ],
         "history": [
@@ -6840,6 +6840,454 @@
         ]
     },
     {
+        "event_id": "gen_misc_war_medcat_assist1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "war"
+        ],
+        "tags": [
+            "clan:healer"
+        ],
+        "frequency": 2,
+        "event_text": "m_c was left badly hurt during a battle with o_c_n. Surprisingly, the o_c_n medicine cat cares for {PRONOUN/m_c/object} until {PRONOUN/m_c/poss} Clanmates get there.",
+        "m_c": {
+            "status": [
+                "warrior",
+                "leader",
+                "deputy",
+                "apprentice"
+            ]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "battle_injury"
+                ]
+            },
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "battle_injury"
+                ]
+            }
+        ],
+        "multiclan_cat": [
+            [ "clancat", "exists", "meeting", "status:any_healer" ]
+        ],
+        "history": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "scar": "m_c was scarred after a skirmish with a warring Clan.",
+                "death": "m_c died from {PRONOUN/m_c/poss} wounds after a skirmish with a warring Clan."
+            }
+        ],
+        "other_clan": {
+            "current_rep": [
+                "hostile"
+            ],
+            "changed": 1,
+            "has_rank": [
+                "warrior_mult",
+                "any_healer"
+            ]
+        }
+    },
+    {
+        "event_id": "gen_misc_war_medcat_assist2_excess",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "war"
+        ],
+        "frequency": 4,
+        "event_text": "Having heard that o_c_n was running low on vital emergency herbs, m_c gathers up some excess stock and makes the trek. However, with a mouth full of leaves, m_c takes a claw to the face before {PRONOUN/m_c/subject} can explain {PRONOUN/m_c/poss} intentions.",
+        "m_c": {
+            "status": [
+                "medicine cat"
+            ]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "claw_wound"
+                ],
+                "scars": [
+                    "BRIDGE",
+                    "CHEEK",
+                    "FACE",
+                    "SNOUT"
+                ]
+            }
+        ],
+        "history": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "scar": "m_c was scarred after bringing herbs to a warring Clan.",
+                "death": "m_c died from {PRONOUN/m_c/poss} wounds after bringing herbs to a warring Clan."
+            }
+        ],
+        "supplies": [
+            {
+                "type": "any_herb",
+                "trigger": [
+                    "excess"
+                ],
+                "adjust": "reduce_eighth"
+            }
+        ],
+        "other_clan": {
+            "current_rep": [
+                "hostile"
+            ],
+            "changed": 2
+        },
+        "relationships": [
+            {
+                "cats_from": ["clan", "high_social"],
+                "cats_to": ["m_c"],
+                "values": ["respect"],
+                "amount": 10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from heard that cat_to tried to bring herbs to an enemy Clan, even during a war."
+                }
+            },
+            {
+                "cats_from": ["clan", "low_social", "high_aggress"],
+                "cats_to": ["m_c"],
+                "values": ["trust", "respect"],
+                "amount": -10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from wasn't happy to hear that cat_to tried to bring herbs to an enemy Clan, even during a war."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_misc_war_medcat_assist2_low",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "war"
+        ],
+        "frequency": 4,
+        "event_text": "Despite the Clan's alarmingly low stock of herbs, m_c brings what scant amount they have to o_c_n, having heard of their crisis. However, with a full mouth, m_c takes a claw to the face before {PRONOUN/m_c/subject} can explain {PRONOUN/m_c/poss} intentions.",
+        "m_c": {
+            "status": [
+                "medicine cat"
+            ]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "claw_wound"
+                ],
+                "scars": [
+                    "BRIDGE",
+                    "CHEEK",
+                    "FACE",
+                    "SNOUT"
+                ]
+            }
+        ],
+        "history": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "scar": "m_c was scarred after bringing herbs to a warring Clan.",
+                "death": "m_c died from {PRONOUN/m_c/poss} wounds after bringing herbs to a warring Clan."
+            }
+        ],
+        "supplies": [
+            {
+                "type": "any_herb",
+                "trigger": [
+                    "low"
+                ],
+                "adjust": "reduce_full"
+            }
+        ],
+        "other_clan": {
+            "current_rep": [
+                "hostile"
+            ],
+            "changed": 4
+        },
+        "relationships": [
+            {
+                "cats_from": ["clan", "high_social"],
+                "cats_to": ["m_c"],
+                "values": ["respect"],
+                "amount": 10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from heard that cat_to tried to bring herbs to an enemy Clan, even during a war."
+                }
+            },
+            {
+                "cats_from": ["clan", "low_social"],
+                "cats_to": ["m_c"],
+                "values": ["respect", "trust"],
+                "amount": -10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from heard that cat_to tried to bring herbs to an enemy Clan, even though c_n's own herb stores were low."
+                }
+            }
+        ]
+    },
+    {
+        "event_id": "gen_injury_war_showmercy1",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "war"
+        ],
+        "frequency": 2,
+        "event_text": "In a brutal battle, a o_c_n warrior spares m_c's life.",
+        "m_c": {
+            "status": [
+                "warrior", "apprentice", "deputy", "leader"
+            ]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "battle_injury"
+                ]
+            }
+        ],
+        "multiclan_cat": [
+            [ "clancat", "exists", "meeting", "status:warrior" ]
+        ],
+        "history": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "scar": "m_c was scarred after a vicious attack from a warring Clan.",
+                "death": "m_c died from {PRONOUN/m_c/poss} wounds after a vicious attack from a warring Clan."
+            }
+        ],
+        "other_clan": {
+            "changed": 2,
+            "has_rank": [
+                "warrior_mult"
+            ]
+        }
+    },
+    {
+        "event_id": "gen_injury_war_showmercy2",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "war"
+        ],
+        "frequency": 1,
+        "event_text": "o_c_n raids the camp, and an enemy warrior breaks into the nursery. At the sight of m_c's terror, the warrior's resolve breaks down, and they leave m_c with hardly a scratch on {PRONOUN/m_c/object}.",
+        "m_c": {
+            "age": [
+                "kitten"
+            ]
+        },
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "scrapes",
+                    "small_cut"
+                ]
+            }
+        ],
+        "other_clan": {
+            "changed": 2,
+            "has_rank": [ "any_warrior_mult" ]
+        }
+    },
+    {
+        "event_id": "gen_injury_war_predatorsaved",
+        "location": [
+            "any"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "war"
+        ],
+        "frequency": 2,
+        "event_text": "m_c acts without thinking, saving the life of a o_c_n warrior by chasing off the predator attempting to make them their lunch.",
+        "m_c": {
+            "status": [
+                "-kitten",
+                "-elder"
+            ],
+            "trait": [
+                "fierce",
+                "righteous",
+                "daring",
+                "compassionate",
+                "responsible",
+                "arrogant",
+                "confident"
+            ]
+        },
+        "multiclan_cat": [
+            [ "clancat", "exists", "meeting", "status:warrior" ]
+        ],
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "small_bite_injury"
+                ]
+            }
+        ],
+        "history": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "scar": "m_c was scarred after protecting an enemy warrior.",
+                "death": "m_c died from {PRONOUN/m_c/poss} wounds after protecting an enemy warrior."
+            }
+        ],
+        "other_clan": {
+            "has_rank": [
+                "warrior_mult"
+            ]
+        }
+    },
+    {
+        "event_id": "gen_injury_war_cliffsaved",
+        "location": [
+            "mountainous",
+            "beach"
+        ],
+        "season": [
+            "any"
+        ],
+        "sub_type": [
+            "war"
+        ],
+        "frequency": 4,
+        "event_text": "A o_c_n warrior nearly fell from a cliff during a border skirmish. m_c pulled {PRONOUN/m_c/poss} enemy back up from certain death, despite {PRONOUN/m_c/poss} battle injuries.",
+        "m_c": {
+            "status": [
+                "warrior",
+                "deputy",
+                "leader",
+                "apprentice"
+            ],
+            "trait": [
+                "bold",
+                "charismatic",
+                "daring",
+                "righteous",
+                "strict",
+                "compassionate",
+                "thoughtful",
+                "confident",
+                "adventurous",
+                "careful",
+                "calm",
+                "loving",
+                "responsible",
+                "wise",
+                "sincere"
+            ]
+        },
+        "multiclan_cat": [
+            [ "clancat", "exists", "meeting", "status:warrior" ]
+        ],
+        "injury": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "injuries": [
+                    "battle_injury"
+                ]
+            }
+        ],
+        "history": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "scar": "m_c gained a scar from a border skirmish.",
+                "death": "m_c died to {PRONOUN/m_c/poss} injuries from a border skirmish."
+            }
+        ],
+        "other_clan": {
+            "changed": 2,
+            "current_rep": [
+                "hostile",
+                "neutral"
+            ],
+            "has_rank": [
+                "warrior"
+            ]
+        },
+        "relationships": [
+            {
+                "cats_from": ["clan", "high_aggress"],
+                "cats_to": ["m_c"],
+                "values": ["trust"],
+                "amount": -10,
+                "mutual": false,
+                "log": {
+                    "cats_from": "cat_from heard that cat_to saved an enemy warrior during a fight."
+                }
+            }
+        ]
+    },
+    {
         "event_id": "gen_injury_war_onwatch",
         "location": [
             "any"
@@ -6925,7 +7373,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound"
+                    "claw_wound"
                 ],
                 "scars": [
                     "FACE", "LEFTBLIND", "RIGHTBLIND", "SIDE", "THREE", "THROAT"
@@ -6978,7 +7426,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "cat bite"
+                    "cat_bite"
                 ]
             }
         ],
@@ -7031,7 +7479,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "claw-wound"
+                    "claw_wound"
                 ]
             }
         ],
@@ -7216,7 +7664,7 @@
                     "m_c"
                 ],
                 "injuries": [
-                    "mangled leg"
+                    "mangled_leg"
                 ]
             }
         ],
@@ -7330,463 +7778,6 @@
                 "any_warrior"
             ]
         }
-    },
-    {
-        "event_id": "gen_misc_war_medcat_assist1",
-        "location": [
-            "any"
-        ],
-        "season": [
-            "any"
-        ],
-        "sub_type": [
-            "war"
-        ],
-        "tags": [
-            "clan:healer"
-        ],
-        "frequency": 2,
-        "event_text": "m_c was left badly hurt during a battle with o_c_n. Surprisingly, the o_c_n medicine cat cares for {PRONOUN/m_c/object} until {PRONOUN/m_c/poss} Clanmates get there.",
-        "m_c": {
-            "status": [
-                "warrior",
-                "leader",
-                "deputy",
-                "apprentice"
-            ]
-        },
-        "injury": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "injuries": [
-                    "battle_injury"
-                ]
-            },
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "injuries": [
-                    "battle_injury"
-                ]
-            }
-        ],
-        "multiclan_cat": [
-            [ "clancat", "exists", "meeting", "status:any_healer" ]
-        ],
-        "history": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "scar": "m_c was scarred after a skirmish with o_c_n.",
-                "death": "m_c died from {PRONOUN/m_c/poss} wounds after a skirmish with o_c_n."
-            }
-        ],
-        "other_clan": {
-            "current_rep": [
-                "hostile"
-            ],
-            "changed": 1,
-            "has_rank": [
-                "warrior_mult",
-                "any_healer"
-            ]
-        }
-    },
-    {
-        "event_id": "gen_misc_war_medcat_assist2_excess",
-        "location": [
-            "any"
-        ],
-        "season": [
-            "any"
-        ],
-        "sub_type": [
-            "war"
-        ],
-        "frequency": 3,
-        "event_text": "Having heard that o_c_n was running low on vital emergency herbs, m_c gathers up some excess stock and makes the trek. However, with a mouth full of leaves, m_c takes a claw to the face before {PRONOUN/m_c/subject} can explain {PRONOUN/m_c/poss} intentions.",
-        "m_c": {
-            "status": [
-                "healer"
-            ]
-        },
-        "injury": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "injuries": [
-                    "claw-wound"
-                ],
-                "scars": [
-                    "BRIDGE",
-                    "CHEEK",
-                    "FACE",
-                    "SNOUT"
-                ]
-            }
-        ],
-        "history": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "scar": "m_c was scarred after bringing herbs to a warring Clan.",
-                "death": "m_c died from {PRONOUN/m_c/poss} wounds after bringing herbs to a warring Clan."
-            }
-        ],
-        "supplies": [
-            {
-                "type": "any_herb",
-                "trigger": [
-                    "excess"
-                ],
-                "adjust": "reduce_eighth"
-            }
-        ],
-        "other_clan": {
-            "current_rep": [
-                "hostile"
-            ],
-            "changed": 2
-        },
-        "relationships": [
-            {
-                "cats_from": [ "clan", "high_social" ],
-                "cats_to": [ "m_c" ],
-                "values": [ "respect" ],
-                "amount": 10,
-                "mutual": false,
-                "log": {
-                    "cats_from": "cat_from heard that cat_to tried to bring herbs to o_c_n, even during a war."
-                }
-            },
-            {
-                "cats_from": [ "clan", "low_social", "high_aggress" ],
-                "cats_to": [ "m_c" ],
-                "values": [ "trust", "respect" ],
-                "amount": -10,
-                "mutual": false,
-                "log": {
-                    "cats_from": "cat_from wasn't happy to hear that cat_to tried to bring herbs to o_c_n, even during a war."
-                }
-            }
-        ]
-    },
-    {
-        "event_id": "gen_misc_war_medcat_assist2_low",
-        "location": [
-            "any"
-        ],
-        "season": [
-            "any"
-        ],
-        "sub_type": [
-            "war"
-        ],
-        "frequency": 1,
-        "event_text": "Despite the Clan's alarmingly low stock of herbs, m_c brings what scant amount they have to o_c_n, having heard of their crisis. However, with a full mouth, m_c takes a claw to the face before {PRONOUN/m_c/subject} can explain {PRONOUN/m_c/poss} intentions.",
-        "m_c": {
-            "status": [
-                "healer"
-            ]
-        },
-        "injury": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "injuries": [
-                    "claw-wound"
-                ],
-                "scars": [
-                    "BRIDGE",
-                    "CHEEK",
-                    "FACE",
-                    "SNOUT"
-                ]
-            }
-        ],
-        "history": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "scar": "m_c was scarred after bringing herbs to a warring Clan.",
-                "death": "m_c died from {PRONOUN/m_c/poss} wounds after bringing herbs to a warring Clan."
-            }
-        ],
-        "supplies": [
-            {
-                "type": "any_herb",
-                "trigger": [
-                    "low"
-                ],
-                "adjust": "reduce_full"
-            }
-        ],
-        "other_clan": {
-            "current_rep": [
-                "hostile"
-            ],
-            "changed": 4
-        },
-        "relationships": [
-            {
-                "cats_from": [ "clan", "high_social" ],
-                "cats_to": [ "m_c" ],
-                "values": [ "respect" ],
-                "amount": 10,
-                "mutual": false,
-                "log": {
-                    "cats_from": "cat_from heard that cat_to tried to bring herbs to o_c_n, even during a war."
-                }
-            },
-            {
-                "cats_from": [ "clan", "low_social" ],
-                "cats_to": [ "m_c" ],
-                "values": [ "respect", "trust" ],
-                "amount": -10,
-                "mutual": false,
-                "log": {
-                    "cats_from": "cat_from heard that cat_to tried to bring herbs to o_c_n, even though c_n's own herb stores were low."
-                }
-            }
-        ]
-    },
-    {
-        "event_id": "gen_injury_war_showmercy1",
-        "location": [
-            "any"
-        ],
-        "season": [
-            "any"
-        ],
-        "sub_type": [
-            "war"
-        ],
-        "frequency": 1,
-        "event_text": "m_c gazes fearfully up at the o_c_n warrior, whose teeth are bared and ready to deliver the killing blow. Something in {PRONOUN/m_c/poss} eyes must have shaken them, however, as they bound away without finishing the job.",
-        "m_c": {
-            "status": [
-                "any"
-            ],
-            "age": [
-                "kitten",
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
-            ]
-        },
-        "multiclan_cat": [
-            [ "clancat", "exists", "meeting", "status:warrior" ]
-        ],
-        "injury": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "injuries": [
-                    "battle_injury"
-                ]
-            }
-        ],
-        "history": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "scar": "m_c was scarred after a vicious attack from a warring Clan.",
-                "death": "m_c died from {PRONOUN/m_c/poss} wounds after a vicious attack from a warring Clan."
-            }
-        ],
-        "other_clan": {
-            "current_rep": [ "hostile" ],
-            "changed": 2,
-            "has_rank": [
-                "warrior_mult"
-            ]
-        }
-    },
-    {
-        "event_id": "gen_injury_war_showmercy2",
-        "location": [
-            "any"
-        ],
-        "season": [
-            "any"
-        ],
-        "sub_type": [
-            "war"
-        ],
-        "frequency": 1,
-        "event_text": "o_c_n raids the camp, and an enemy warrior breaks into the nursery. At the sight of m_c's terror, the warrior's resolve breaks down, and they leave m_c with hardly a scratch on {PRONOUN/m_c/object}.",
-        "m_c": {
-            "age": [
-                "kitten"
-            ]
-        },
-        "injury": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "injuries": [
-                    "scrapes",
-                    "small cut"
-                ]
-            }
-        ],
-        "other_clan": {
-            "changed": 2,
-            "has_rank": [ "any_warrior_mult" ]
-        }
-    },
-    {
-        "event_id": "gen_injury_war_predatorsaved",
-        "location": [
-            "any"
-        ],
-        "season": [
-            "any"
-        ],
-        "sub_type": [
-            "war"
-        ],
-        "frequency": 2,
-        "event_text": "m_c acts without thinking, saving the life of a o_c_n warrior by chasing off the predator attempting to make them their lunch.",
-        "m_c": {
-            "status": [
-                "-kitten",
-                "-elder"
-            ],
-            "trait": [
-                "fierce",
-                "righteous",
-                "daring",
-                "compassionate",
-                "responsible",
-                "arrogant",
-                "confident"
-            ]
-        },
-        "multiclan_cat": [
-            [ "clancat", "exists", "meeting", "status:warrior" ]
-        ],
-        "injury": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "injuries": [
-                    "small_bite_injury"
-                ]
-            }
-        ],
-        "history": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "scar": "m_c was scarred after protecting an enemy warrior.",
-                "death": "m_c died from {PRONOUN/m_c/poss} wounds after protecting an enemy warrior."
-            }
-        ],
-        "other_clan": {
-            "has_rank": [
-                "warrior_mult"
-            ]
-        }
-    },
-    {
-        "event_id": "gen_injury_war_cliffsaved",
-        "location": [
-            "mountainous",
-            "beach"
-        ],
-        "season": [
-            "any"
-        ],
-        "sub_type": [
-            "war"
-        ],
-        "frequency": 4,
-        "event_text": "A o_c_n warrior nearly fell from a cliff during a border skirmish. m_c pulled {PRONOUN/m_c/poss} enemy back up from certain death, despite {PRONOUN/m_c/poss} battle injuries.",
-        "m_c": {
-            "status": [
-                "warrior",
-                "deputy",
-                "leader",
-                "apprentice"
-            ],
-            "trait": [
-                "bold",
-                "charismatic",
-                "daring",
-                "righteous",
-                "strict",
-                "compassionate",
-                "thoughtful",
-                "confident",
-                "adventurous",
-                "careful",
-                "calm",
-                "loving",
-                "responsible",
-                "wise",
-                "sincere"
-            ]
-        },
-        "multiclan_cat": [
-            [ "clancat", "exists", "meeting", "status:warrior" ]
-        ],
-        "injury": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "injuries": [
-                    "battle_injury"
-                ]
-            }
-        ],
-        "history": [
-            {
-                "cats": [
-                    "m_c"
-                ],
-                "scar": "m_c gained a scar from a border skirmish.",
-                "death": "m_c died to {PRONOUN/m_c/poss} injuries from a border skirmish."
-            }
-        ],
-        "other_clan": {
-            "changed": 2,
-            "current_rep": [
-                "hostile",
-                "neutral"
-            ],
-            "has_rank": [
-                "warrior"
-            ]
-        },
-        "relationships": [
-            {
-                "cats_from": [ "clan", "high_aggress" ],
-                "cats_to": [ "m_c" ],
-                "values": [ "trust" ],
-                "amount": -10,
-                "mutual": false,
-                "log": {
-                    "cats_from": "cat_from heard that cat_to saved an enemy warrior during a fight."
-                }
-            }
-        ]
     },
     {
         "event_id": "gen_injury_war_battleinjury_outnumbered1",
@@ -8100,8 +8091,8 @@
         },
         "injury": [
             {
-                "cats": [ "m_c" ],
-                "injuries": [ "torn ear" ]
+                "cats": ["m_c"],
+                "injuries": ["torn_ear"]
             }
         ],
         "history": [
@@ -8136,8 +8127,8 @@
         },
         "injury": [
             {
-                "cats": [ "m_c", "r_c" ],
-                "injuries": [ "minor_injury", "torn ear" ]
+                "cats": ["m_c", "r_c"],
+                "injuries": ["minor_injury", "torn_ear"]
             }
         ],
         "history": [
@@ -8308,8 +8299,8 @@
         },
         "injury": [
             {
-                "cats": [ "m_c" ],
-                "injuries": [ "mangled tail" ]
+                "cats": ["m_c"],
+                "injuries": ["mangled_tail"]
             }
         ],
         "history": [
@@ -8449,8 +8440,8 @@
         },
         "injury": [
             {
-                "cats": [ "m_c" ],
-                "injuries": [ "torn ear" ]
+                "cats": ["m_c"],
+                "injuries": ["torn_ear"]
             }
         ],
         "history": [
@@ -9829,7 +9820,7 @@
         "injury": [
             {
                 "cats": ["m_c"],
-                "injuries": ["head damage", "broken jaw"],
+                "injuries": ["head_damage", "broken_jaw"],
                 "scars": ["THREE", "BEAKCHEEK", "BRIDGE", "FACE", "SNOUT", "CHEEK"]
             }
         ],
@@ -9857,7 +9848,7 @@
         "injury": [
             {
                 "cats": ["m_c"],
-                "injuries": ["mangled tail"]
+                "injuries": ["mangled_tail"]
             }
         ],
         "history": [
@@ -9914,7 +9905,7 @@
         "injury": [
             {
                 "cats": ["m_c"],
-                "injuries": ["torn pelt"]
+                "injuries": ["torn_pelt"]
             }
             ],
         "relationships": [

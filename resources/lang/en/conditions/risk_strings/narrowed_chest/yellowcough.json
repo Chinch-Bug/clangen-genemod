@@ -1,0 +1,25 @@
+[
+    {
+        "event_id": "narrowed_chest_yellowcough0",
+        "strings": [
+            "r_c0 worst fears are realized as yellowcough has infected m_c thanks to {PRONOUN/m_c/poss} narrowed chest."
+        ],
+        "involved_cats": {
+            "m_c": { },
+            "r_c0": {
+                "status": [
+                    "medicine cat"
+                ]
+            }
+        }
+    },
+    {
+        "event_id": "narrowed_chest_yellowcough1",
+        "strings": [
+            "m_c has been weak and fevered, only barely coherent... it seems {PRONOUN/m_c/subject} {VERB/m_c/have/has} yellowcough."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

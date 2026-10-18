@@ -1,0 +1,11 @@
+[
+    {
+        "event_id": "albism_headache0",
+        "strings": [
+            "m_c may have spent a bit too much time squinting in the sun - if the headache is anything to go by."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

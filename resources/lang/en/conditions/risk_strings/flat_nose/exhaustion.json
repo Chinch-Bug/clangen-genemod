@@ -1,0 +1,25 @@
+[
+    {
+        "event_id": "flat_nose_exhaustion0",
+        "strings": [
+            "m_c has been hard at work, and it's done {PRONOUN/m_c/object} no favours. r_c0 steps in with an order to rest for a while instead, lest the exhaustion get dangerous."
+        ],
+        "involved_cats": {
+            "m_c": { },
+            "r_c0": {
+                "status": [
+                    "medicine cat"
+                ]
+            }
+        }
+    },
+    {
+        "event_id": "flat_nose_exhaustion1",
+        "strings": [
+            "m_c has never felt as tired and out of breath as {PRONOUN/m_c/subject} have the recent few days, leaving {PRONOUN/m_c/object} unable to work."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

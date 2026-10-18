@@ -1,0 +1,25 @@
+[
+    {
+        "event_id": "hairless_failing_eyesight0",
+        "strings": [
+            "Lately m_c's eyes have been sore, and vision less clear. After taking a look, r_c0 says something might have gotten stuck in {PRONOUN/m_c/poss} eye."
+        ],
+        "involved_cats": {
+            "m_c": { },
+            "r_c0": {
+                "status": [
+                    "medicine cat"
+                ]
+            }
+        }
+    },
+    {
+        "event_id": "hairless_failing_eyesight1",
+        "strings": [
+            "Lately m_c's eyes have been sore, and vision less clear. It's annoying, but {PRONOUN/m_c/subject} learn to deal with it."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

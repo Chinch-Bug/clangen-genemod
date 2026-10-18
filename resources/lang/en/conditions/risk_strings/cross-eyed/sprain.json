@@ -1,0 +1,11 @@
+[
+    {
+        "event_id": "cross_eyed_sprain0",
+        "strings": [
+            "m_c misjudged the distance of a jump and landed wrong."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

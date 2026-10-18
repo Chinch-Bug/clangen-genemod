@@ -1,0 +1,88 @@
+[
+    {
+        "event_id": "reveal_condition_constant_joint_pain_kit0",
+        "strings": [
+            "r_c1 calls in r_c0 after days of m_c complaining about constant pain. r_c0 can provide pain relief, but it's possible this may be a constant in m_c's life."
+        ],
+        "involved_cats": {
+            "m_c": {
+                "age": ["kitten", "newborn"]
+            },
+            "r_c0": {
+                "status": [
+                    "medicine cat"
+                ]
+            },
+            "r_c1": {}
+        },
+        "relationship_constraint": [
+            {
+                "cats_from": [
+                    "m_c"
+                ],
+                "cats_to": [
+                    "r_c1"
+                ],
+                "mutual": false,
+                "constraints": [
+                    "child/parent"
+                ]
+            }
+        ]
+    },
+    {
+        "event_id": "reveal_condition_constant_joint_pain_kit1",
+        "strings": [
+            "r_c0 was called in after days of m_c complaining about constant pain. r_c0 can provide pain relief, but it's possible this may be a constant in m_c's life."
+        ],
+        "involved_cats": {
+            "m_c": {
+                "age": [ "kitten", "newborn" ]
+            },
+            "r_c0": {
+                "status": [
+                    "medicine cat"
+                ]
+            }
+        }
+    },
+    {
+        "event_id": "reveal_condition_constant_joint_pain_kit2",
+        "strings": [
+            "m_c refuses once again to go out and play, {PRONOUN/m_c/poss} joints swollen and painful. It's becoming clear that it's not an isolated instance, and m_c might need some help."
+        ],
+        "involved_cats": {
+            "m_c": {
+                "age": [ "kitten", "newborn" ]
+            }
+        }
+    },
+    {
+        "event_id": "reveal_condition_constant_joint_pain0",
+        "strings": [
+            "m_c finally talked to r_c0 after days of constant pain. r_c0 can provide pain relief, but it's possible this may be a constant in m_c's life."
+        ],
+        "involved_cats": {
+            "m_c": {
+                "age": [ "-kitten", "-newborn" ]
+            },
+            "r_c0": {
+                "status": [
+                    "medicine cat"
+                ]
+            }
+        }
+    },
+    {
+        "event_id": "reveal_condition_constant_joint_pain1",
+        "strings": [
+            "m_c struggles to get out of {PRONOUN/m_c/poss} nest again, {PRONOUN/m_c/poss} joints swollen and painful. It's becoming clear that it's not an isolated instance, and m_c might need some help.",
+            "m_c feels unable to get out and work again, {PRONOUN/m_c/poss} joints swollen and painful. It's becoming clear that it's not an isolated instance, and m_c might need some help."
+        ],
+        "involved_cats": {
+            "m_c": {
+                "age": [ "-kitten", "-newborn" ]
+            }
+        }
+    }
+]

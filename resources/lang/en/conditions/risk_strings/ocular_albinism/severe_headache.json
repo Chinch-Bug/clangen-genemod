@@ -1,0 +1,11 @@
+[
+    {
+        "event_id": "albism_severe_headache0",
+        "strings": [
+            "m_c wakes up with pounding head pain. {PRONOUN/m_c/subject/CAP} {VERB/m_c/curl/curls} up as tightly in {PRONOUN/m_c/poss} nest as {PRONOUN/m_c/subject} can, screwing {PRONOUN/m_c/poss} eyes shut and flattening {PRONOUN/m_c/poss} ears. There's no way {PRONOUN/m_c/subject}'ll get work done today."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

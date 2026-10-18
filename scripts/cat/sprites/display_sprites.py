@@ -70,7 +70,7 @@ def generate_sprite(
     # sick sprites
     if (
         not disable_sick_sprite
-        and cat.not_working()
+        and not cat.can_work()
         and age != CatAge.NEWBORN
         and get_config("cat_sprites.sick_sprites")
     ):
@@ -954,7 +954,7 @@ def create_cat(cat, phenotype, cat_sprite, sprite_age, season_override, merle=Fa
     def tabby_base(whichcolour, whichbase, cat_unders, special=None):
         is_red = ('red' in whichcolour or 'cream' in whichcolour or 'honey' in whichcolour or 'ivory' in whichcolour or 'apricot' in whichcolour)
         whichmain = get_tabby_base(phenotype, whichbase, stripecolourdict.get(whichcolour[:-1], whichcolour[:-1])+whichcolour[-1], 'apricot' in whichcolour)
-        if special !='copper' and sprite_age > 12 and (phenotype.silver[0] == 'I' and phenotype.corin[0] == 'fg' and (get_current_season(season_override) in ['Leaf-fall', 'Leaf-bare'] or 'sterile' in cat.permanent_condition)):
+        if special !='copper' and sprite_age > 12 and (phenotype.silver[0] == 'I' and phenotype.corin[0] == 'fg' and (get_current_season(season_override) in ['Leaf-fall', 'Leaf-bare'] or 'sterile' in cat.permanent_conditions)):
             sunshine = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
             
             colours = phenotype.FindRed(phenotype, sprite_age, special='low')

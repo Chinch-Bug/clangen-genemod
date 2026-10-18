@@ -2,7 +2,15 @@ from itertools import combinations
 from random import choice, randint, getrandbits, choices, random
 
 from scripts.cat.cats import Cat
-from scripts.cat.constants import INJURIES, ILLNESSES, PERMANENT, BACKSTORIES
+from scripts.cat.conditions.gain_conditions import (
+    gain_temporary_condition,
+    gain_permanent_condition,
+)
+from scripts.cat.constants import (
+    TEMPORARY_CONDITIONS,
+    PERMANENT_CONDITIONS,
+    BACKSTORIES,
+)
 from scripts.cat.enums import CatRank, CatAge, CatGroup, CatStanding, CatSocial, CatThought
 from scripts.cat.factories.new_cat_factory import NewCatFactory
 from scripts.cat.names import Name
@@ -17,11 +25,6 @@ from scripts.clan import OtherClan
 from scripts.clan_package.settings import get_clan_setting
 from scripts.clan_package.get_clan_cats import (
     get_alive_clan_queens,
-)
-from scripts.cat.microservices.conditions import (
-    get_ill,
-    get_injured,
-    get_permanent_condition,
 )
 from scripts.events_module.event_filters import cat_for_event
 from scripts.config import get_config
@@ -47,7 +50,7 @@ def create_bio_parents(Cat, flip=False, second_parent=True, age=None, clan=None)
         "gender": ["female" if flip else 'male'],
         "can_create_new_cat": {}
     }, {}, None, None)[0]
-    while 'sterile' in blood_parent.permanent_condition:
+    while 'sterile' in blood_parent.permanent_conditions:
         if (blood_parent):
             game.clan.remove_cat(blood_parent.ID)
         blood_parent = updated_create_new_cat({
@@ -70,7 +73,7 @@ def create_bio_parents(Cat, flip=False, second_parent=True, age=None, clan=None)
             "gender": ["male" if flip else 'female'],
             "can_create_new_cat": {}
         }, {}, None, None)[0]
-        while 'sterile' in blood_parent2.permanent_condition:
+        while 'sterile' in blood_parent2.permanent_conditions:
             if blood_parent2 and Cat.all_cats[blood_parent2.ID]:
                 game.clan.remove_cat(blood_parent2.ID)
             blood_parent2 = updated_create_new_cat({
@@ -238,7 +241,7 @@ def updated_create_new_cat(
     num_of_cats = randint(2, 6) if is_litter else 1
 
     for bp in blood_parents:
-        if "sterile" in bp.permanent_condition:
+        if "sterile" in bp.permanent_conditions:
             del bp.permanent_condition["sterile"]
         if "TNR" in bp.pelt.scars:
             bp.pelt.scars.remove("TNR")
@@ -289,9 +292,9 @@ def updated_create_new_cat(
             kittypet_n = get_config("tnr_mode.kittypet_neuter")
             loner_n = get_config("tnr_mode.loner_tnr")
             if created_cat.status.social == CatSocial.KITTYPET and random() < kittypet_n:
-                get_permanent_condition(created_cat, "sterile", False)
+                gain_permanent_condition(created_cat, "sterile", False)
             if created_cat.status.social in (CatSocial.LONER, CatSocial.ROGUE) and random() < loner_n:
-                get_permanent_condition(created_cat, "sterile", False)
+                gain_permanent_condition(created_cat, "sterile", False)
                 created_cat.pelt.scars = (*created_cat.pelt.scars, "TNR")
                 created_cat.pelt.rebuild_sprite = True
         
@@ -494,20 +497,14 @@ def _assign_health(created_cat, option_dict):
     # now see if any new conditions should be applied
     if option_dict.get("health", {}).get("condition"):
         condition = choice(option_dict["health"]["condition"])
-        if condition in INJURIES:
-            get_injured(created_cat, name=condition)
-        elif condition in ILLNESSES:
-            get_ill(created_cat, illness_name=condition)
-        elif condition in PERMANENT:
-            get_permanent_condition(
+        if condition in TEMPORARY_CONDITIONS:
+            gain_temporary_condition(created_cat, condition)
+        elif condition in PERMANENT_CONDITIONS:
+            gain_permanent_condition(
                 created_cat,
-                name=condition,
-                born_with=option_dict["health"].get("must_be_congenital", False),
+                condition,
+                is_congenital=option_dict["health"].get("must_be_congenital", False),
             )
-            if condition in ("lost a leg", "born without a leg"):
-                created_cat.pelt.scars = (*created_cat.pelt.scars, "NOPAW")
-            elif condition in ("lost their tail", "born without a tail"):
-                created_cat.pelt.scars = (*created_cat.pelt.scars, "NOTAIL")
 
     # RANDOM PERM CONDITION ASSIGNMENT
     # chance to give the new cat a permanent condition, higher chance for found kits and litters
@@ -519,41 +516,19 @@ def _assign_health(created_cat, option_dict):
         chance = get_config("cat_generation.base_permanent_condition") + 10
     if not int(random() * chance):
         possible_conditions = []
-        for condition in PERMANENT:
-            if created_cat.age.is_baby() and PERMANENT[condition]["congenital"] not in [
-                "always",
-                "sometimes",
-            ]:
-                continue
-            if condition in ['manx syndrome', "flat nose", 'ocular albinism', 'albinism', 'rabbit gait', 'fully hairless', 'partially hairless', "bad back", "narrowed chest", "bumpy skin"]:
-                continue
-            # next part ensures that a kit won't get a condition that takes too long to reveal
-            moons = created_cat.moons
-            leeway = 5 - (PERMANENT[condition]["moons_until"] + 1)
-            if moons > leeway:
+        for condition in PERMANENT_CONDITIONS:
+            if (
+                created_cat.age.is_baby()
+                and (not PERMANENT_CONDITIONS[condition]["can_be_congenital"] 
+                or PERMANENT_CONDITIONS[condition].get("genetic_only"))
+            ):
                 continue
             possible_conditions.append(condition)
 
         if possible_conditions:
             chosen_condition = choice(possible_conditions)
-            if PERMANENT[chosen_condition]["congenital"] in [
-                "always",
-                "sometimes",
-            ]:
-                get_permanent_condition(created_cat, chosen_condition, True)
-                if (
-                    created_cat.permanent_condition[chosen_condition]["moons_until"]
-                    == 0
-                ):
-                    created_cat.permanent_condition[chosen_condition][
-                        "moons_until"
-                    ] = -2
-
-            # assign scars
-            if chosen_condition in ("lost a leg", "born without a leg"):
-                created_cat.pelt.scars = (*created_cat.pelt.scars, "NOPAW")
-            elif chosen_condition in ("lost their tail", "born without a tail"):
-                created_cat.pelt.scars = (*created_cat.pelt.scars, "NOTAIL")
+            if PERMANENT_CONDITIONS[chosen_condition]["can_be_congenital"]:
+                gain_permanent_condition(created_cat, chosen_condition, True)
 
 def _assign_stats(created_cat, option_dict):
     if option_dict.get("stat"):

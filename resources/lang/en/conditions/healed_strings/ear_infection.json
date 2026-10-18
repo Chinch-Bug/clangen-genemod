@@ -1,0 +1,11 @@
+[
+    {
+        "event_id": "healed_ear_infection0",
+        "strings": [
+            "m_c's ears feel much better."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

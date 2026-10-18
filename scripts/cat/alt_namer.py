@@ -532,11 +532,11 @@ class Namer():
             return self.tabby(params[0], params[1], params[2], params[3])
         
     def chocolate(self, params):
-        if self.phenotype.fur_shade > 4 and random() < 0.2 and params[0] not in ['black', 'cinnamon']:
+        if self.phenotype.fur_shade > 4 and random() < 0.2 and params[0] == "chocolate":
             params[4] = params[4].replace('sepia', 'mink')
             return self.black(params)
 
-        if params[4] != 'none' and params[0] != 'black':
+        if params[4] != 'none' and params[0] == "chocolate":
             #babies don't have points
             if self.moons == 0 and 'C' not in self.phenotype.pointgene and params[4] != 'sepia':
                 return self.white('white')
@@ -596,11 +596,11 @@ class Namer():
         if self.phenotype.colour_warmth < 2 and random() < 0.1:
             self.purple(params)
 
-        if self.phenotype.colour_warmth > 1 and random() < 0.2 and params[0] not in ['blue', 'fawn']:
+        if self.phenotype.colour_warmth > 1 and random() < 0.2 and params[0] == "lilac":
             params[4] = params[4].replace('sepia', 'mink')
             return self.blue(params)
 
-        if params[4] != 'none' and params[0] not in ['blue']:
+        if params[4] != 'none' and params[0] == "lilac":
             #babies don't have points
             if self.moons == 0 and 'C' not in self.phenotype.pointgene and params[4] != 'sepia':
                 return self.white('white')
@@ -652,12 +652,12 @@ class Namer():
             return self.tabby(params[0], params[1], params[2], params[3])
         
     def cinnamon(self, params):
-        if self.phenotype.fur_shade > 4 and random() < 0.2 and params[0] not in ['black', 'chocolate']:
+        if self.phenotype.fur_shade > 4 and random() < 0.2 and params[0] == "cinnamon":
             return self.chocolate(params)
         if random() < 0.1:
             return self.red(params)
 
-        if params[4] != 'none' and params[0] not in ['black', 'chocolate']:
+        if params[4] != 'none' and params[0] == "cinnamon":
             #babies don't have points
             if self.moons == 0 and 'C' not in self.phenotype.pointgene:
                 return self.white('white')
@@ -710,14 +710,14 @@ class Namer():
             return self.tabby(params[0], params[1], params[2], params[3])
         
     def fawn(self, params):
-        if self.phenotype.colour_warmth > 0 and random() < 0.2 and params[0] not in ['black', 'chocolate', 'cinnamon', 'blue', 'lilac']:
+        if self.phenotype.colour_warmth > 0 and random() < 0.2 and params[0] == "fawn":
             return self.lilac(params)
         if self.phenotype.colour_warmth > 1 and random() < 0.1:
             return self.pink(params)
-        if self.phenotype.colour_warmth > 1 and random() < 0.2 and params[0] not in ['black', 'chocolate', 'cinnamon', 'blue', 'lilac']:
+        if self.phenotype.colour_warmth > 1 and random() < 0.2 and params[0] == "fawn":
             return self.cream(params)
 
-        if params[4] != 'none' and params[0] not in ['black', 'chocolate', 'cinnamon', 'blue', 'lilac']:
+        if params[4] != 'none' and params[0] == "fawn":
             #babies don't have points
             if self.moons == 0 and 'C' not in self.phenotype.pointgene:
                 return self.white('white')

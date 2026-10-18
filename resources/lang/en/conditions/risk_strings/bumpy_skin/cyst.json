@@ -1,0 +1,25 @@
+[
+    {
+        "event_id": "bumpy_skin_cyst0",
+        "strings": [
+            "r_c0 urges m_c to keep the area extra clean after one of the bumps pops."
+        ],
+        "involved_cats": {
+            "m_c": {},
+            "r_c0": {
+                "status": [
+                    "medicine cat"
+                ]
+            }
+        }
+    },
+    {
+        "event_id": "bumpy_skin_cyst1",
+        "strings": [
+            "One of the bumps on m_c's skin has popped, but {PRONOUN/m_c/subject}{VERB/m_c/'re/'s} working to keep it clean."
+        ],
+        "involved_cats": {
+            "m_c": {}
+        }
+    }
+]

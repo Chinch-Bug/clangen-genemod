@@ -95,7 +95,7 @@ def find_cats(
         # CHECK NEW CATS
         elif "n_c" in abbr:
             possible_cats = [
-                c for c in outside_cats if c not in temp_involved_cats.values() and ("clancat" in constraints.get("status", [])+constraints.get("past_status", []) or c.status.is_outsider)
+                c for c in outside_cats if c not in temp_involved_cats.values() and ("clancat" in constraints.get("status", [])+constraints.get("past_status", []) or c.status.is_outsider and not c.status.is_lost())
             ]
 
             # CATS THAT CAN BE MADE

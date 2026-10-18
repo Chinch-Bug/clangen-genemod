@@ -1,0 +1,11 @@
+[
+    {
+        "event_id": "hairless_sunburn0",
+        "strings": [
+            "m_c's skin is warm and red, aching from the new sunburn."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

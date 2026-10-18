@@ -1,0 +1,11 @@
+[
+    {
+        "event_id": "reveal_condition_rabbit_gait0",
+        "strings": [
+            "m_c often hops with a rabbit-like gait. It seemed like a kitten habit at first, but by now it's clear that it's not going away."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

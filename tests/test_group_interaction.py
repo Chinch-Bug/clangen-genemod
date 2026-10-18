@@ -1,9 +1,9 @@
 import unittest
-from random import Random
 
 from scripts.cat.enums import CatRank
 from scripts.cat.factories.test_cat_factory import TestCatFactory
 from scripts.cat.factories.typed_dicts import StatusDict
+from scripts.cat_relations.relationship import Relationship
 from scripts.clan import Clan
 from scripts.events_module.parameter_dicts import (
     InvolvedCatDict,

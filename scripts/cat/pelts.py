@@ -397,6 +397,9 @@ class Pelt:
     @staticmethod
     def generate_white(KIT, albino, KITgrade, vit, white_pattern, pax3):
 
+        if white_pattern and "muzzle" in white_pattern:
+            white_pattern.remove("muzzle")
+            white_pattern.append("muzzle1")
         if white_pattern and "break/inverse thai" in white_pattern:
             white_pattern.remove("break/inverse thai")
             white_pattern.append("break/dorsal stripe")

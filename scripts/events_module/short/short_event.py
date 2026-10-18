@@ -4,8 +4,11 @@ from typing import List, Optional, Dict
 import i18n
 
 from scripts.cat.cats import Cat
-from scripts.cat.constants import ILLNESSES, INJURIES, PERMANENT
-from scripts.cat.microservices.conditions import get_injured, get_ill, get_permanent_condition
+from scripts.cat.conditions.gain_conditions import (
+    gain_temporary_condition,
+    gain_permanent_condition,
+)
+from scripts.cat.constants import CONDITION_GROUPS, TEMPORARY_CONDITIONS
 from scripts.cat.enums import CatAge, CatRank, CatGroup, CatSocial
 from scripts.cat.pelts import Pelt
 from scripts.cat.personality import Personality
@@ -519,17 +522,17 @@ class ShortEvent:
         for possible_kittens in self.new_cats:
             if possible_kittens[0].moons < 3:
                 # Search for parent
-                for possible_parent  in self.new_cats:
+                for possible_parent in self.new_cats:
                     if (
-                        possible_parent [0] != possible_kittens[0]
+                        possible_parent[0] != possible_kittens[0]
                         and (
                             'Y' not in possible_parent [0].phenotype.sexgene
                             or get_clan_setting("same sex birth")
                         )
-                        and possible_parent [0].ID in (possible_kittens[0].parent1, possible_kittens[0].parent2)
+                        and possible_parent[0].ID in (possible_kittens[0].parent1, possible_kittens[0].parent2)
                         and possible_parent[0].status.group_ID == clan.group_ID
                     ):
-                        get_injured(possible_parent[0], "recovering from birth")
+                        gain_temporary_condition(first_cat, "recovering_from_birth")
                         break  # Break - only one parent ever gives birth
 
     def handle_accessories(self):
@@ -710,12 +713,12 @@ class ShortEvent:
                         if kitty.moons > 3:
                             kitty.pelt.scars = (*kitty.pelt.scars, "TNR")
                             kitty.pelt.rebuild_sprite = True
-                            get_permanent_condition(kitty, "sterile", False)
+                            gain_permanent_condition(kitty, "sterile", False)
                             if 'pregnant' in kitty.injuries:
                                 kitty.permanent_condition['sterile']['moon_start'] += 3
                         else:
                             kitty.leave_clan(CatSocial.KITTYPET)
-                            get_permanent_condition(kitty, "sterile", False, event_triggered=True, custom_reveal=randint(4, 6))
+                            gain_permanent_condition(kitty, "sterile", False, event_triggered=True, set_moons_until=randint(4, 6))
                     elif tnr:
                         taken_cats.append(kitty)
                         continue
@@ -850,8 +853,8 @@ class ShortEvent:
             # find all possible injuries
             possible_injuries = []
             for injury in block["injuries"]:
-                if injury in constants.INJURY_GROUPS:
-                    possible_injuries.extend(constants.INJURY_GROUPS[injury])
+                if injury in CONDITION_GROUPS:
+                    possible_injuries.extend(CONDITION_GROUPS[injury])
                 else:
                     possible_injuries.append(injury)
 
@@ -876,12 +879,11 @@ class ShortEvent:
                             self.handle_injury_history(new_cat, abbr, injury)
 
     def give_injury_to_cat(self, cat, possible_injuries, potential_scars):
-        old_injuries = list(cat.injuries.keys())
-        old_illnesses = list(cat.illnesses.keys())
-        old_perm_cond = list(cat.permanent_condition.keys())
+        old_temp_cond = cat.temporary_conditions
+        old_perm_cond = cat.permanent_conditions
 
         if set(possible_injuries).issubset(
-            old_injuries + old_illnesses + old_perm_cond
+            old_temp_cond + old_perm_cond
         ):
             print(
                 "WARNING: All possible conditions are already on this cat! (poor kitty)"
@@ -891,21 +893,15 @@ class ShortEvent:
         give_injury = choice(possible_injuries)
         # If the cat already has this injury, reroll it to get something new
         while (
-            give_injury in old_injuries
-            or give_injury in old_illnesses
+            give_injury in old_temp_cond
             or give_injury in old_perm_cond
         ):
             give_injury = choice(possible_injuries)
 
-        if give_injury in INJURIES:
-            get_injured(cat, give_injury, potential_scars=potential_scars)
-        elif give_injury in ILLNESSES:
-            get_ill(cat, give_injury)
-        elif give_injury in PERMANENT:
-            get_permanent_condition(cat, give_injury)
+        if give_injury in TEMPORARY_CONDITIONS:
+            gain_temporary_condition(cat, give_injury, scar_pool_override=potential_scars)
         else:
-            print("WARNING: No Conditions to Give")
-            return False
+            gain_permanent_condition(cat, give_injury)
 
         return True
 

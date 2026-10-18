@@ -1,0 +1,11 @@
+[
+    {
+        "event_id": "healed_itchy_skin0",
+        "strings": [
+            "m_c thanks the stars now that the urge to scratch is gone."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

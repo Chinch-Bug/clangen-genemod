@@ -1250,7 +1250,7 @@
                             "r_c0"
                         ],
                         "condition": [
-                            "torn pelt"
+                            "torn_pelt"
                         ]
                     }
                 ]
@@ -3558,7 +3558,7 @@
                             "s_c0"
                         ],
                         "condition": [
-                            "bite-wound"
+                            "bite_wound"
                         ],
                         "scar_history": "m_c carries a scar from a gray fox fight.",
                         "death_history": "m_c died of injuries inflicted by a gray fox."
@@ -5074,7 +5074,7 @@
                             "r_c1"
                         ],
                         "condition": [
-                            "water in their lungs"
+                            "water_in_lungs"
                         ],
                         "death_history": "m_c died from the water {PRONOUN/m_c/subject} inhaled on a hunt as a foolish apprentice."
                     }
@@ -7576,7 +7576,7 @@
                             "r_c0"
                         ],
                         "condition": [
-                            "water in their lungs"
+                            "water_in_lungs"
                         ],
                         "death_history": "m_c died from the water in {PRONOUN/m_c/poss} lungs after slipping off a rock while fishing."
                     }
@@ -7748,7 +7748,7 @@
                             "r_c0"
                         ],
                         "condition": [
-                            "severe headache"
+                            "severe_headache"
                         ]
                     }
                 ]
@@ -8404,7 +8404,7 @@
                             "r_c0"
                         ],
                         "condition": [
-                            "water in their lungs"
+                            "water_in_lungs"
                         ],
                         "death_history": "m_c died of the water in {PRONOUN/m_c/poss} lungs after slipping off a rock while fishing."
                     }

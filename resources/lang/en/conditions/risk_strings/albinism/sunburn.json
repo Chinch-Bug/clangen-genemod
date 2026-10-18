@@ -1,0 +1,12 @@
+[
+    {
+        "event_id": "albism_sunburn0",
+        "strings": [
+            "m_c's ears and nose feel sore to the touch after yesterday.",
+            "m_c's nose has been especially red and sore after spending time in the sun."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

@@ -1,0 +1,21 @@
+[
+    {
+        "event_id": "death_ear_infection0",
+        "strings": [
+            "m_c died from an ear infection.",
+            "m_c's ear infection has killed {PRONOUN/m_c/object}",
+            "m_c's ear infection reached too deep, {PRONOUN/m_c/subject} never woke up from {PRONOUN/m_c/poss} sleep."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        },
+        "death": [
+            {
+                "cats": [
+                    "m_c"
+                ],
+                "history": "m_c died from an ear infection."
+            }
+        ]
+    }
+]

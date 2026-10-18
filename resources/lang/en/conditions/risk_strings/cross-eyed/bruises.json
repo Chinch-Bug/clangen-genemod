@@ -1,0 +1,11 @@
+[
+    {
+        "event_id": "cross_eyed_bruises0",
+        "strings": [
+            "m_c misjudged the distance of a jump and came out bruised from the fall."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

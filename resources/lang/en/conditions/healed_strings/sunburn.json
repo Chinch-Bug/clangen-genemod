@@ -1,0 +1,11 @@
+[
+    {
+        "event_id": "healed_sunburn0",
+        "strings": [
+            "m_c's nose and ears are feeling good as new."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

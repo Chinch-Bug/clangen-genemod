@@ -1,0 +1,27 @@
+[
+    {
+        "event_id": "reveal_condition_partial_hearing_loss0",
+        "strings": [
+            "r_c0 is called in to assess m_c's hearing. While it seems fine, m_c often seems to turn {PRONOUN/m_c/poss} head one way to listen.",
+            "r_c0 is called in to assess m_c's hearing. While it seems fine at first, it quickly becomes clear m_c can't hear as well on one side."
+        ],
+        "involved_cats": {
+            "m_c": {},
+            "r_c0": {
+                "status": [
+                    "medicine cat"
+                ]
+            }
+        }
+    },
+    {
+        "event_id": "reveal_condition_partial_hearing_loss1",
+        "strings": [
+            "m_c often turns {PRONOUN/m_c/poss} head when listening, it's clear that {PRONOUN/m_c/poss} hearing is limited in one ear.",
+            "m_c has come to notice noises are much clearer on one side than the other."
+        ],
+        "involved_cats": {
+            "m_c": {}
+        }
+    }
+]

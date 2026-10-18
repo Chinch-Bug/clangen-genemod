@@ -1,0 +1,25 @@
+[
+    {
+        "event_id": "reveal_condition_flat_nose0",
+        "strings": [
+            "r_c0 sadly confirms that there's not much {PRONOUN/r_c0/subject} can do for m_c, despite how the kitten struggles to breath through {PRONOUN/m_c/poss} flattened nose and tires quickly."
+        ],
+        "involved_cats": {
+            "m_c": {},
+            "r_c0": {
+                "status": [
+                    "medicine cat"
+                ]
+            }
+        }
+    },
+    {
+        "event_id": "reveal_condition_flat_nose1",
+        "strings": [
+            "Some hoped m_c's odd muzzle was just visual quirk, but m_c struggles to keep up and stay active the way other kittens do, tiring easily and struggling to get used to more solid food."
+        ],
+        "involved_cats": {
+            "m_c": {}
+        }
+    }
+]

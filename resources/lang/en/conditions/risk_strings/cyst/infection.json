@@ -1,0 +1,25 @@
+[
+    {
+        "event_id": "itchy_skin_infection0",
+        "strings": [
+            "Despite r_c0's warnings not to, m_c can't help but scratch at {PRONOUN/m_c/poss} itching skin. Now they've got to deal with a fresh infection festering where the skin broke."
+        ],
+        "involved_cats": {
+            "m_c": {},
+            "r_c0": {
+                "status": [
+                    "medicine cat"
+                ]
+            }
+        }
+    },
+    {
+        "event_id": "itchy_skin_infection1",
+        "strings": [
+            "m_c can't help but scratch at the itchy spots of skin. {PRONOUN/r_c/subject/CAP} barely {VERB/m_c/notice/notices} the small wounds until one grows infected."
+        ],
+        "involved_cats": {
+            "m_c": {}
+        }
+    }
+]

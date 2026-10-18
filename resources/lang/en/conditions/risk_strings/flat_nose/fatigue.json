@@ -1,0 +1,12 @@
+[
+    {
+        "event_id": "flat_nose_fatigue0",
+        "strings": [
+            "All it takes is a little strain or stress to leave m_c feeling as heavy as stone.",
+            "It doesn't take much exercise to have m_c craving a break, struggling to catch {PRONOUN/m_c/poss} breath."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

@@ -1,0 +1,11 @@
+[
+    {
+        "event_id": "incontinence_stomachache0",
+        "strings": [
+            "m_c is used to an upset stomach, but that doesn't make it easier to deal with all day."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

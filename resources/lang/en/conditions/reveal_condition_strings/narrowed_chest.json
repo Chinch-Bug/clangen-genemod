@@ -1,0 +1,25 @@
+[
+    {
+        "event_id": "reveal_condition_narrowed_chest0",
+        "strings": [
+            "It doesn't take long for cats to notice - m_c has more trouble breathing than most kittens. r_c0 frets about the risk of coughs."
+        ],
+        "involved_cats": {
+            "m_c": {},
+            "r_c0": {
+                "status": [
+                    "medicine cat"
+                ]
+            }
+        }
+    },
+    {
+        "event_id": "reveal_condition_narrowed_chest1",
+        "strings": [
+            "It doesn't take long for cats to notice - m_c has more trouble breathing than most kittens."
+        ],
+        "involved_cats": {
+            "m_c": {}
+        }
+    }
+]

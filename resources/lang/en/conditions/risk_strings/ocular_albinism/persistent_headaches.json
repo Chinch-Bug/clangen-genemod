@@ -1,0 +1,26 @@
+[
+    {
+        "event_id": "albism_persistent_headaches0",
+        "strings": [
+            "With how often m_c has been getting headaches from being out in the light, r_c0 has felt the need to break the news - they'll need to adapt."
+        ],
+        "involved_cats": {
+            "m_c": { },
+            "r_c0": {
+                "status": [
+                    "medicine cat"
+                ]
+            }
+        }
+    },
+    {
+        "event_id": "albism_persistent_headaches1",
+        "strings": [
+            "With how often m_c has been getting headaches from being out in the light, m_c wonders if this'll be how it is forever.",
+            "m_c's eyes have always been very sensitive to light, but recently the headaches have just been more and more frequent."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

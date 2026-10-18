@@ -1,0 +1,25 @@
+[
+    {
+        "event_id": "reveal_condition_cross_eyed0",
+        "strings": [
+            "m_c's eyes often seem to center on {PRONOUN/m_c/poss} nose rather than forward, but r_c0 is sure {PRONOUN/m_c/subject}'ll adapt."
+        ],
+        "involved_cats": {
+            "m_c": {},
+            "r_c0": {
+                "status": [
+                    "medicine cat"
+                ]
+            }
+        }
+    },
+    {
+        "event_id": "reveal_condition_cross_eyed1",
+        "strings": [
+            "m_c's eyes often seem to center on {PRONOUN/m_c/poss} nose rather than forward."
+        ],
+        "involved_cats": {
+            "m_c": {}
+        }
+    }
+]

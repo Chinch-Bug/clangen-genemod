@@ -1,0 +1,25 @@
+[
+    {
+        "event_id": "fatigue_exhaustion0",
+        "strings": [
+            "m_c has been trying to take it easy, but the fatigue doesn't go away, only growing worse. r_c0 suggests a full break from duties for now."
+        ],
+        "involved_cats": {
+            "m_c": { },
+            "r_c0": {
+                "status": [
+                    "medicine cat"
+                ]
+            }
+        }
+    },
+    {
+        "event_id": "fatigue_exhaustion1",
+        "strings": [
+            "m_c has been trying to take it easy, but the fatigue doesn't go away, only growing worse in the day to day."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

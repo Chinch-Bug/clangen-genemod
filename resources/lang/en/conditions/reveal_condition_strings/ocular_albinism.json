@@ -1,0 +1,12 @@
+[
+    {
+        "event_id": "reveal_condition_ocular_albinism0",
+        "strings": [
+            "m_c's eyes are rather unique. Even in fairly normal light {PRONOUN/m_c/poss} pupils look reddish.",
+            "m_c has always been squinting, complaining about the light. Upon inspection, {PRONOUN/m_c/poss} eyes are rather odd."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

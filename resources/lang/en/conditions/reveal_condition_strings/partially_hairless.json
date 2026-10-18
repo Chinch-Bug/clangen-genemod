@@ -1,0 +1,11 @@
+[
+    {
+        "event_id": "reveal_condition_partially_hairless0",
+        "strings": [
+            "m_c is a rather odd case - fur in some places, no fur in others."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

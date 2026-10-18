@@ -1,0 +1,12 @@
+[
+    {
+        "event_id": "reveal_condition_fully_hairless0",
+        "strings": [
+            "Where most kittens are balls of fuzz, m_c looks to lack almost any trace of fur.",
+            "m_c has almost no kitten fuzz."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

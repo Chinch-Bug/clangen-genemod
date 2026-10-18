@@ -1,0 +1,12 @@
+[
+    {
+        "event_id": "healed_runny_eyes0",
+        "strings": [
+            "m_c is relieved to no longer have runny eyes.",
+            "m_c's eyes and face are finally clear of tears again."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

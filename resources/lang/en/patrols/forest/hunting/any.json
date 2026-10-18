@@ -212,7 +212,7 @@
                             "s_c0"
                         ],
                         "condition": [
-                            "quilled by a porcupine"
+                            "porcupine_quilled"
                         ],
                         "scar_pool_override": [
                             "QUILLSCRATCH"
@@ -411,7 +411,7 @@
                             "p_l"
                         ],
                         "condition": [
-                            "quilled by a porcupine"
+                            "porcupine_quilled"
                         ],
                         "scar_pool_override": [
                             "QUILLSCRATCH"
@@ -3320,7 +3320,7 @@
                             "r_c0"
                         ],
                         "condition": [
-                            "torn pelt"
+                            "torn_pelt"
                         ]
                     }
                 ]
@@ -6952,7 +6952,7 @@
                             "s_c0"
                         ],
                         "condition": [
-                            "bite-wound"
+                            "bite_wound"
                         ],
                         "scar_pool_override": [
                             "NECKBITE"
@@ -9451,7 +9451,7 @@
                             "r_c0"
                         ],
                         "condition": [
-                            "dislocated joint"
+                            "dislocated_joint"
                         ]
                     }
                 ]
@@ -9622,7 +9622,7 @@
                             "r_c0"
                         ],
                         "condition": [
-                            "severe headache"
+                            "severe_headache"
                         ]
                     }
                 ]
@@ -10278,7 +10278,7 @@
                             "r_c0"
                         ],
                         "condition": [
-                            "dislocated joint"
+                            "dislocated_joint"
                         ]
                     }
                 ]

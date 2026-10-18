@@ -1,0 +1,13 @@
+[
+    {
+        "event_id": "healed_fatigue0",
+        "strings": [
+            "m_c feels full of energy again.",
+            "m_c's fatigue has faded.",
+            "m_c is happy to feel fully rested."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

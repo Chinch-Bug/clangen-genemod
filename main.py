@@ -10,7 +10,7 @@ import pygame
 
 import scripts.game_structure.screen_settings
 from scripts.cat.sprites.load_sprites import sprites
-from scripts.clan import Afterlife
+from scripts.clan import Afterlife, clan_class
 
 from scripts.debug_console import debug_mode
 from scripts.game_input import INPUT_ACTION_PRESSED
@@ -25,9 +25,10 @@ from scripts.game_structure.game.switches import (
     switch_get_value,
     switch_set_value,
 )
-from scripts.game_structure.load_cat import load_cats
+from scripts.game_structure.load_cat import load_cats, version_convert
 from scripts.game_structure.screen_settings import MANAGER, screen, screen_scale
 from scripts.game_input import controller_manager, keyboard_manager
+from scripts.housekeeping.save_version_retrieval import get_version
 
 # import all screens for initialization (Note - must be done after pygame_gui manager is created)
 from scripts.screens import all_screens
@@ -77,7 +78,10 @@ def load_data():
             load_clan_config()
             game.starclan = Afterlife()
             game.dark_forest = Afterlife()
-            load_cats()
+            version_info = get_version()
+            load_cats(version_info)
+            clan_class.load_clan()
+            version_convert(version_info)
             game.load_events()
         except Exception as e:
             logging.exception("File failed to load")

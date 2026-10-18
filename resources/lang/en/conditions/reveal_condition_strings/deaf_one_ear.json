@@ -1,0 +1,27 @@
+[
+    {
+        "event_id": "reveal_condition_deaf0",
+        "strings": [
+            "r_c0 is called in to assess m_c's hearing. While it seems okay, m_c always turns {PRONOUN/m_c/poss} head away one way to listen.",
+            "r_c0 is called in to assess m_c's hearing. It quickly becomes clear m_c can only hear on one side."
+        ],
+        "involved_cats": {
+            "m_c": { },
+            "r_c0": {
+                "status": [
+                    "medicine cat"
+                ]
+            }
+        }
+    },
+    {
+        "event_id": "reveal_condition_deaf1",
+        "strings": [
+            "m_c often turns {PRONOUN/m_c/poss} head when listening, it's clear that {PRONOUN/m_c/poss} hearing is limited to one ear.",
+            "m_c hardly ever seems to notice noises coming from one side."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

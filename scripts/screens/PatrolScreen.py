@@ -1116,7 +1116,7 @@ class PatrolScreen(Screens):
                 and the_cat.status.rank.is_allowed_to_patrol(get_clan_setting("allow_mediator_patrols"), get_clan_setting("allow_queen_patrols"))
                 and the_cat.status.group_ID == self.current_clan.group_ID
                 and the_cat not in self.current_patrol
-                and not the_cat.not_working()
+                and the_cat.can_work()
             ):
                 if (
                     the_cat.status.rank == CatRank.NEWBORN
