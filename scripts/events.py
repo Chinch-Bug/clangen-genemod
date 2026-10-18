@@ -716,7 +716,7 @@ def handle_tnr_return(clan=game.clan):
         if not cat.status.is_lost(clan.group_ID) or not cat.status.is_outsider:
             continue
         TNRed = True if ('sterile' in cat.permanent_conditions and 'TNR' in cat.pelt.scars and 
-        game.clan.age - cat.permanent_conditions['sterile']['moon_start'] == 1) else False
+        game.clan.age - cat.get_condition('sterile')['moon_start'] == 1) else False
         if (cat.status.is_outsider
         and not cat.dead
         and TNRed):

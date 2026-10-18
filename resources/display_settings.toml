@@ -71,6 +71,7 @@
         showxp = false
         fading = true
         save_faded_copy = false
+        thought_tooltips = true
         backgrounds = true
         "modded names" = true
         "new prefixes" = true
@@ -80,7 +81,6 @@
         "no suffixes" = false
         "no special suffixes" = false
         "outsider names" = false
-        thought_tooltips = true
     
     [clan.role]
         deputy = false
