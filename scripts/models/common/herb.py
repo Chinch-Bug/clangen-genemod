@@ -29,4 +29,5 @@ class Herb(Enum):
     catmint = "catmint"
     honey = "honey"
     yew_berries = "yew_berries"
+    dock = "dock"
     sweetsedge = "sweet-sedge"
