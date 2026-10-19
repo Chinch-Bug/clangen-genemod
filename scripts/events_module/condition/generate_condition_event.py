@@ -20,7 +20,7 @@ def generate_condition_event(path: str, involved_cats: dict, clan) -> EventInfor
     chosen_event, involved_cats = get_valid_event(
         primary_cat=involved_cats.get("m_c", None),
         involved_cats=involved_cats,
-        interactable_cats=Cat.all_cats_list,
+        interactable_cats=[c for c in Cat.all_cats_list if c.status.group_ID == clan.group_ID],
         possible_events=possible_events,
         frequency_active=False,
         clan=clan

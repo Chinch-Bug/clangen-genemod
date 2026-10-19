@@ -108,7 +108,7 @@ def condition_convert(condition_info: dict) -> dict:
                     "moon_gained": con["moon_start"]
                     if "moon_start" in con
                     else con.get("moons_with"),
-                    "mortality": max(0.05, round(1 / con["mortality"], 2))
+                    "mortality": max(0.01, round(1 / con["mortality"], 2))
                     if con["mortality"]
                     else 0.0,
                     "immune_system_effect": round(
@@ -126,10 +126,11 @@ def condition_convert(condition_info: dict) -> dict:
                     if (
                         risk_name in new_info["progression"]
                         or risk_name not in PERMANENT_CONDITIONS[name]["risks"]
+                        or not risk["chance"]
                     ):
                         continue
                     new_info["risks"].update(
-                        {risk_name: max(0.05, round(1 / max(risk["chance"], 1), 2))}
+                        {risk_name: max(0.05, round(1 / risk["chance"], 2))}
                     )
                 if (
                     new_info.get("mortality")
@@ -149,7 +150,7 @@ def condition_convert(condition_info: dict) -> dict:
                     "moon_gained": con["moon_start"]
                     if "moon_start" in con
                     else con.get("moons_with"),
-                    "mortality": max(0.05, round(1 / con["mortality"], 2))
+                    "mortality": max(0.01, round(1 / con["mortality"], 2))
                     if con.get("mortality")
                     else 0.0,
                     "immune_system_effect": round(
@@ -172,10 +173,11 @@ def condition_convert(condition_info: dict) -> dict:
                     if (
                         risk_name in new_info["progression"]
                         or risk_name not in TEMPORARY_CONDITIONS[name]["risks"]
+                        or not risk["chance"]
                     ):
                         continue
                     new_info["risks"].update(
-                        {risk_name: max(0.05, round(1 / max(risk["chance"], 1), 2))}
+                        {risk_name: max(0.05, round(1 / risk["chance"], 2))}
                     )
                 if (
                     new_info.get("mortality")

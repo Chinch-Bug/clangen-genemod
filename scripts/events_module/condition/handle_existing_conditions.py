@@ -175,7 +175,7 @@ def handle_temporary_conditions(cat: Cat):
                 possible_scars=condition_extra_info.get("possible_scars", []),
             )
 
-            if condition.name != "pregnant":
+            if condition.name != "pregnant" or cat.ID not in game.clan.pregnancy_data:
                 if not event:
                     event = generate_condition_event(
                         path=f"conditions/healed_strings/{condition.name}.json",
@@ -193,8 +193,8 @@ def handle_temporary_conditions(cat: Cat):
                     )
                 event_list.append(event)
 
-            cat.history.remove_possible_history(condition.name)
-            conditions_to_remove.append(condition)
+                cat.history.remove_possible_history(condition.name)
+                conditions_to_remove.append(condition)
 
             if condition.is_complication:
                 # if it's a complication, take it off whatever condition it's linked to

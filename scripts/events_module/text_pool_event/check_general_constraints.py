@@ -32,7 +32,7 @@ def passes_general_constraints(
     is_debug_event: bool = False,
 ) -> bool:
 
-    if event.other_clan_filter and game.clan.clancount == 'multiclan' and not event_for_other_clan(primary_cat, event.other_clan_filter.get("has_rank"), other_clan.group_ID):
+    if other_clan and game.clan.clancount == 'multiclan' and not event_for_other_clan(primary_cat, event.other_clan_filter.get("has_rank") if event.other_clan_filter else None, other_clan.group_ID):
         if is_debug_event:
             print("DEBUG: requested patrol does not meet constraints (other clan cats)")
         return False

@@ -1500,7 +1500,6 @@ def invite_new_cats(cat, clan=game.clan):
         if ratio < 0.75:
             base_chance = int(base_chance * ratio * 1.25)
 
-    reputation = 50
     reputation = clan.reputation
 
     # hostile
