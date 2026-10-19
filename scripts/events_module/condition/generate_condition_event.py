@@ -18,9 +18,9 @@ def generate_condition_event(path: str, involved_cats: dict, clan) -> EventInfor
     possible_events = load_text_pool_events(path)
 
     chosen_event, involved_cats = get_valid_event(
-        primary_cat=involved_cats["m_c"],
+        primary_cat=involved_cats.get("m_c", None),
         involved_cats=involved_cats,
-        interactable_cats=[c for c in Cat.all_cats_list if c.status.group_ID == involved_cats["m_c"].status.group_ID],
+        interactable_cats=[c for c in Cat.all_cats_list if c.status.group_ID == (clan.group_ID if clan else None)],
         possible_events=possible_events,
         frequency_active=False,
         clan=clan
