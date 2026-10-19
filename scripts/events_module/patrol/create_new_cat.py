@@ -242,7 +242,7 @@ def updated_create_new_cat(
 
     for bp in blood_parents:
         if "sterile" in bp.permanent_conditions:
-            del bp.permanent_condition["sterile"]
+            bp.remove_condition("sterile")
         if "TNR" in bp.pelt.scars:
             bp.pelt.scars.remove("TNR")
 
@@ -287,16 +287,6 @@ def updated_create_new_cat(
                 created_cat.dead = True
                 created_cat.assign_thought(CatThought.ON_DEATH)
                 created_cat.history.add_death(str(created_cat.name) + " was stillborn.")
-
-        if get_clan_setting('tnr_mode') and created_cat.moons > 5:
-            kittypet_n = get_config("tnr_mode.kittypet_neuter")
-            loner_n = get_config("tnr_mode.loner_tnr")
-            if created_cat.status.social == CatSocial.KITTYPET and random() < kittypet_n:
-                gain_permanent_condition(created_cat, "sterile", False)
-            if created_cat.status.social in (CatSocial.LONER, CatSocial.ROGUE) and random() < loner_n:
-                gain_permanent_condition(created_cat, "sterile", False)
-                created_cat.pelt.scars = (*created_cat.pelt.scars, "TNR")
-                created_cat.pelt.rebuild_sprite = True
         
         # MATES
         _assign_mates(created_cat, involved_cats, option_dict)

@@ -330,8 +330,6 @@ class Clan:
                 self.clan_cats.append(cat_id)
             the_cat = Cat.all_cats.get(cat_id)
             init_all_relationships(the_cat)
-            if the_cat not in [self.instructor] + [clan.instructor for clan in self.all_other_clans if clan.instructor]:
-                the_cat.backstory = "clan_founder"
             if the_cat.status.rank == CatRank.APPRENTICE:
                 the_cat.rank_change(CatRank.APPRENTICE, new_thought=False)
             the_cat.pelt.rebuild_sprite = True 

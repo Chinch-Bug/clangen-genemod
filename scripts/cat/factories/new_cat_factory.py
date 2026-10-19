@@ -7,6 +7,9 @@ from scripts.cat.phenotype import Phenotype
 from scripts.cat import save_load
 from scripts.cat.cats import Cat
 from scripts.cat.constants import BACKSTORIES
+from scripts.cat.conditions.gain_conditions import (
+    gain_permanent_condition,
+)
 from scripts.cat.enums import CatAge, CatRank, CatSocial
 from scripts.cat.factories.base_factory import BaseCatFactory
 from scripts.cat.factories.typed_dicts import (
@@ -22,6 +25,7 @@ from scripts.cat.skills import CatSkills
 from scripts.cat.status import Status
 from scripts.game_structure import game
 from scripts.config import get_config
+from scripts.clan_package.settings import get_clan_setting
 from scripts.game_structure.game.settings import game_setting_get
 
 BASE_RNG = random.Random
@@ -149,6 +153,16 @@ class NewCatFactory(BaseCatFactory, ABC):
             load_existing_name="suffix" in overrides,
             cat=cat,
         )
+
+        if get_clan_setting('tnr_mode') and cat.moons > 5:
+            kittypet_n = get_config("tnr_mode.kittypet_neuter", overrides.get("creating_clan", False), overrides.get("cards"))
+            loner_n = get_config("tnr_mode.loner_tnr", overrides.get("creating_clan", False), overrides.get("cards"))
+            if cat.status.social == CatSocial.KITTYPET and cls.rng.random() < kittypet_n:
+                gain_permanent_condition(cat, "sterile", False)
+            if cat.status.social != CatSocial.KITTYPET and cls.rng.random() < loner_n:
+                gain_permanent_condition(cat, "sterile", False)
+                cat.pelt.scars = (*cat.pelt.scars, "TNR")
+                cat.pelt.rebuild_sprite = True
 
         Cat.all_cats[cat.ID] = cat
         if cat not in Cat.all_cats_list:

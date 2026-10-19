@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-from random import sample, choices
+from random import sample, choices, choice
 from typing import TYPE_CHECKING
 
 from scripts.cat.phenotype import Phenotype
-from scripts.cat.enums import CatRank, CatAge
+from scripts.cat.enums import CatRank, CatAge, CatStanding, CatGroup
 from scripts.cat.factories.new_cat_factory import NewCatFactory
 from scripts.cat.factories.test_cat_factory import TestCatFactory
 from scripts.cat.pelts import Pelt
@@ -15,20 +15,24 @@ if TYPE_CHECKING:
     from scripts.cat.cats import Cat
 
 
-def create_example_cats(majority_rank: CatRank, rank_weights: dict, max_cats=12, clan=None) -> list[Cat]:
+def create_example_cats(majority_rank: CatRank, rank_weights: dict, max_cats=12, clan=None, cards=None) -> list[Cat]:
     majority_rank_cats = sample(range(max_cats), 3)
     use_special = get_config("clan_creation.use_special_roller")
+    socials = get_config("clan_creation.founder_socials", True, cards)
 
     chosen_cats = []
     for cat_index in range(max_cats):
+        social = choice(socials)
+        rank = None
         if cat_index in majority_rank_cats:
-            chosen_cats.append(NewCatFactory.create_cat(rank=majority_rank, group_ID=clan if clan else None, use_special=use_special))
+            rank = majority_rank
         else:
-            random_rank = choices(
-                list(rank_weights.keys()), list(rank_weights.values())
-            )[0]
-            chosen_cats.append(NewCatFactory.create_cat(rank=random_rank, group_ID=clan if clan else None, use_special=use_special))
-
+            rank = choices(list(rank_weights.keys()), list(rank_weights.values()))[0]
+        cat = NewCatFactory.create_cat(status_dict={"social": social, "rank": rank, "group_ID": clan if clan else None}, 
+                                       use_special=use_special, backstory="clan_founder" if social == "clancat" else None, creating_clan=True, cards=cards)
+        cat.status._modify_group(rank, standing_with_past_group=CatStanding.LEFT, new_group_ID=clan if clan else CatGroup.PLAYER_CLAN_ID)
+        chosen_cats.append(cat)
+                    
     return chosen_cats
 
 

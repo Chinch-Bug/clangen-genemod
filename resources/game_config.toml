@@ -985,6 +985,9 @@ dev_tools = false
   # If true, boosts the chance of rarer genes and breeds for founding cats
   use_special_roller = true
 
+  # can give a prior social group (loner, rogue, kittypet) to founders, which will override the founder backstory
+  founder_socials = ["clancat"]
+
   # how many neighbouring clans are generated on clan creation. Must be at least 1
   # the game is also not built to handle more than 5 so issues may potentially arise with more
   other_clans_range = [2, 5]
@@ -1158,7 +1161,6 @@ dev_tools = false
   # chance for cats lost to Twolegs to be spayed/neutered. clan_tnr2 is for events not explicitly reminiscent of TNR programs
   clan_tnr = 0.99
   clan_tnr2 = 0.5
-  # sets what age is allowed to take each rank
 
 [graduation]
   # minimum age required for a cat to graduate

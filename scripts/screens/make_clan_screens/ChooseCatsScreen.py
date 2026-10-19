@@ -254,6 +254,7 @@ class ChooseCatsScreen(MakeClanScreenBase):
                     create_example_cats(
                         majority_rank=self.get_config_during_creation("clan_creation.majority_rank"),
                         rank_weights=self.get_config_during_creation("clan_creation.rank_weights"),
+                        cards=self.clan_info.cruel_cards,
                     ),
                 )
                 self.selected_cat = None

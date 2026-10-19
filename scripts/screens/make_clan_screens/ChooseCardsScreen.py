@@ -7,6 +7,7 @@ from pygame_gui.core import UIContainer
 
 from scripts.cat.factories.create_example_cat import create_example_cats
 from scripts.config import get_config
+from scripts.clan_package.settings import set_clan_setting
 from scripts.game_structure import constants, image_cache
 from scripts.game_structure.game import switch_get_value, Switch, game_setting_get
 from scripts.game_structure.game.switches import switch_set_value
@@ -420,12 +421,17 @@ class ChooseCardsScreen(MakeClanScreenBase):
 
     def exit_screen(self):
         # create new cats because the cats might no longer fit the card constraints
+        settings = self.get_config_during_creation("settings.force_enable")
+        for setting in settings:
+            set_clan_setting(setting, True)
+
         switch_set_value(
             Switch.possible_cats,
             create_example_cats(
                 majority_rank=self.get_config_during_creation("clan_creation.majority_rank"),
                 rank_weights=self.get_config_during_creation("clan_creation.rank_weights"),
-            ),
+                cards=self.clan_info.cruel_cards,
+            )
         )
         self.clan_info.clear_cats()
 

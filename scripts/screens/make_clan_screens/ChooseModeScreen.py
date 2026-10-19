@@ -6,6 +6,7 @@ import pygame_gui
 from scripts.config import get_config
 from scripts.cat.enums import CatAge
 from scripts.cat.factories.create_example_cat import create_example_cats
+from scripts.clan_package.settings import set_clan_setting
 from scripts.cat.sprites.load_sprites import sprites
 from scripts.game_structure import image_cache
 from scripts.game_structure.game import Switch, switch_get_value
@@ -215,6 +216,10 @@ class ChooseModeScreen(MakeClanScreenBase):
         if member_amount[1] > 4:
             member_amount = get_config("clan_creation.quickstart_cats")
 
+        settings = self.get_config_during_creation("settings.force_enable")
+        for setting in settings:
+            set_clan_setting(setting, True)
+
         # create new cats because the cats might no longer fit the card constraints
         switch_set_value(
             Switch.possible_cats,
@@ -225,7 +230,8 @@ class ChooseModeScreen(MakeClanScreenBase):
                 rank_weights=self.get_config_during_creation(
                     "clan_creation.rank_weights"
                 ),
-                max_cats=member_amount[1]+6
+                max_cats=member_amount[1]+6,
+                cards=self.clan_info.cruel_cards,
             ),
         )
 
