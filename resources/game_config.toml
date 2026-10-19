@@ -1452,6 +1452,8 @@ dev_tools = false
     # how many moons earlier are cats healed
     moons_earlier_healed = 1
 
+    excluded_from_moons_earlier_healed = []
+
     [focus.rest_and_recover.buff]
       [focus.rest_and_recover.buff.HEALER]
         tier = 1

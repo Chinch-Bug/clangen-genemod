@@ -15,9 +15,9 @@ def get_version() -> dict:
     ) or os.path.exists(
         get_save_dir() + "/" + switch_get_value(Switch.clan_list)[0] + "/clan.json"
     ):
-        filename = (
-            get_save_dir() + "/" + switch_get_value(Switch.clan_list)[0] + "/clan.json"
-        )
+        filename = (get_save_dir() + "/" + switch_get_value(Switch.clan_list)[0] + "/clan.json") if os.path.exists(
+                get_save_dir() + "/" + switch_get_value(Switch.clan_list)[0] + "/clan.json") else (
+                get_save_dir() + "/" + switch_get_value(Switch.clan_list)[0] + "clan.json")
         with open(
             filename,
             "r",
