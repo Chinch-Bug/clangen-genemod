@@ -12,7 +12,7 @@ from scripts.cat.cats import Cat
 from scripts.clan import Clan
 from scripts.clan_package.settings import load_clan_settings
 from scripts.clan_package.clan_names import get_possible_clan_names
-from scripts.config import get_config
+from scripts.config import load_clan_config, get_config
 from scripts.events_module.patrol.patrol import Patrol
 from scripts.game_structure import game
 from scripts.game_structure import constants
@@ -228,6 +228,7 @@ class MakeClanScreenBase(Screens):
                 self.set_mute_button_position("bottomright")
                 if switch_get_value(Switch.clan_list):
                     load_clan_settings()
+                    load_clan_config()
                 MakeClanScreenBase.rolls_left = get_config("clan_creation.rerolls")
                 switch_set_value(Switch.possible_cats, [])
                 self.clan_info.clear()

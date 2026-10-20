@@ -249,7 +249,7 @@ class Cat:
         self.placement = None
         self.example = example
         self.thought = ""
-        self.next_thought_type: CatThought = CatThought.WHILE_ALIVE
+        self.next_thought_type: CatThought = None
         self.assign_thought()
 
         # conditions setup
@@ -1410,7 +1410,7 @@ class Cat:
         self.thought = None
         # default thought type
         if not thought_type:
-            if game.clan and self is game.clan.instructor:
+            if game.clan and self in [game.clan.instructor] + [clan.instructor for clan in game.clan.all_other_clans if clan.instructor]:
                 thought_type = CatThought.IS_GUIDE
             elif self.dead:
                 thought_type = CatThought.WHILE_DEAD

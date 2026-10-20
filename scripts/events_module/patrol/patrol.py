@@ -119,8 +119,7 @@ class Patrol:
         )
 
         # Choose other clan
-        all_options = game.clan.all_other_clans + [game.clan]
-        all_options.remove(self.clan)
+        all_options = [c for c in game.clan.all_other_clans + [game.clan] if c != self.clan and get_living_clan_cat_count(Cat, c.group_ID, include_newborns=False)]
         if game.clan.all_other_clans and len(all_options) > 0:
             self.other_clan = choice(all_options)
         else:

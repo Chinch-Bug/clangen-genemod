@@ -1153,6 +1153,7 @@ dev_tools = false
   rainbow_eyes = 10
   black_spotting = 15 # both this and peacock blue courtesy of mars from Create a Clan
   peacock_blue = 10
+  mineral_red = 15 # high rufousing = cinnabar/sulphur ; mid rufousing = jasper/sandstone ; low rufousing = citrine/calcite
 
 [tnr_mode]
   # chance for kittypets and other outsiders to generate as already spayed/neutered

@@ -596,6 +596,32 @@ def calculate_base_colour(base, warmth):
     layer.fill(lukewarm_colour)
     return layer
 
+def apply_mineral_red(phenotype, layer):
+    if is_today(SpecialDate.APRIL_FOOLS) and phenotype.mineral:
+        colouradd = pygame.Surface(
+            (sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
+        if phenotype.rufousing > 5:
+            if phenotype.dilute[0] == "D" and phenotype.pinkdilute[0] == "Dp":
+                colouradd.fill((255, 75, 25))
+            else:
+                colouradd.fill((255, 255, 50))
+            layer.blit(colouradd, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+        elif phenotype.rufousing > 2:
+            if phenotype.dilute[0] == "D" and phenotype.pinkdilute[0] == "Dp":
+                colouradd.fill((255, 175, 0))
+            else:
+                colouradd.fill((255, 225, 200))
+            layer.blit(colouradd, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+        else:
+            if phenotype.dilute[0] == "D" and phenotype.pinkdilute[0] == "Dp":
+                colouradd.fill((255, 255, 75))
+                layer.blit(colouradd, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+            else:
+                colouradd.fill((255, 255, 255))
+                colouradd.set_alpha(100)
+                layer.blit(colouradd, (0, 0))
+    return layer
+
 def calculate_red_stripes(phenotype, base, rufousing):
     is_apricot = "apricot" in base
     basecolour = stripecolourdict.get(base[:-1], base[:-1]).removeprefix("low").removeprefix("medium").removeprefix("rufoused")+base[-1]
@@ -638,6 +664,9 @@ def calculate_red_stripes(phenotype, base, rufousing):
 
     layer = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
     layer.fill(final_colour)
+
+    layer = apply_mineral_red(phenotype, layer)
+
     return layer
 
 def get_tabby_base(phenotype, base_string, stripe_colour, is_apricot = False):
@@ -954,6 +983,8 @@ def create_cat(cat, phenotype, cat_sprite, sprite_age, season_override, merle=Fa
     def tabby_base(whichcolour, whichbase, cat_unders, special=None):
         is_red = ('red' in whichcolour or 'cream' in whichcolour or 'honey' in whichcolour or 'ivory' in whichcolour or 'apricot' in whichcolour)
         whichmain = get_tabby_base(phenotype, whichbase, stripecolourdict.get(whichcolour[:-1], whichcolour[:-1])+whichcolour[-1], 'apricot' in whichcolour)
+        if is_red:
+            whichmain = apply_mineral_red(phenotype, whichmain)
         if special !='copper' and sprite_age > 12 and (phenotype.silver[0] == 'I' and phenotype.corin[0] == 'fg' and (get_current_season(season_override) in ['Leaf-fall', 'Leaf-bare'] or 'sterile' in cat.permanent_conditions)):
             sunshine = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
             

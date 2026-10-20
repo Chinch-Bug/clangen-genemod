@@ -1677,6 +1677,9 @@ class OtherClan:
                     if cat.ID in game.clan.clan_cats:
                         game.clan.clan_cats.remove(cat.ID)
                     continue
+        
+        if self.instructor:
+            self.instructor.assign_thought(CatThought.IS_GUIDE)
 
     @property
     def name(self):

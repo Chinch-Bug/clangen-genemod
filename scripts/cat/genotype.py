@@ -370,6 +370,7 @@ class Genotype:
                 "rainbow_eyes" : ["NoDRE", "NoDRE"],
                 "black_spotting" : ["bs", "bs"],
                 "peacock_blue" : ["pb", "pb"],
+                "mineral_red" : ["mr", "mr"],
             }
             for i in range(2):
                 if self.odds["green"] > 0 and random() < (1/self.odds["green"]):
@@ -382,7 +383,9 @@ class Genotype:
                     self.april_fools["black_spotting"][i] = "Bs"
                 if self.odds["peacock_blue"] > 0 and random() < (1/self.odds["peacock_blue"]):
                     self.april_fools["peacock_blue"][i] = "Pb"
-            for key in ["danish_green", "polycaudal", "black_spotting", "peacock_blue"]:
+                if self.odds["mineral_red"] > 0 and random() < (1/self.odds["mineral_red"]):
+                    self.april_fools["mineral_red"][i] = "Mr"
+            for key in ["danish_green", "polycaudal", "black_spotting", "peacock_blue", "mineral_red"]:
                 if self.april_fools[key][0].islower() and self.april_fools[key][1].islower():
                     del self.april_fools[key]
             if self.april_fools["rainbow_eyes"][0] == "NoDRE" and self.april_fools["rainbow_eyes"][1] == "NoDRE":
@@ -1023,7 +1026,7 @@ class Genotype:
         if self.odds['pseudo_merle'] > 0 and randint(1, self.odds['pseudo_merle'])==1:
             self.pseudomerle = True 
         
-        for gene in ["danish_green", "polycaudal", "rainbow_eyes", "black_spotting", "peacock_blue"]:
+        for gene in ["danish_green", "polycaudal", "rainbow_eyes", "black_spotting", "peacock_blue", "mineral_red"]:
             self.april_fools[gene] = ["", ""]
             if gene in par1.april_fools.keys():
                 self.april_fools[gene][0] = choice(par1.april_fools[gene])
