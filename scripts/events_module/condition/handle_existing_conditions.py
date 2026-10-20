@@ -490,7 +490,7 @@ def _condition_overlaps(current_conditions, new_condition):
     all_conditions.update(PERMANENT_CONDITIONS)
     if "deaf" in current_conditions and new_condition in ["partial_hearing_loss_one_ear", "deaf_one_ear"]:
         return True
-    if "partial_hearing_loss" in current_conditions and new_condition.name in ["partial_hearing_loss_one_ear"]:
+    if "partial_hearing_loss" in current_conditions and new_condition in ["partial_hearing_loss_one_ear"]:
         return True
 
     if new_condition in all_conditions:
