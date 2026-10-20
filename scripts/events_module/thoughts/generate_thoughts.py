@@ -33,25 +33,12 @@ def get_new_thought(
             CatThought.WHILE_DEAD if main_cat.dead else CatThought.WHILE_ALIVE
         )
 
+    other_clan_id = None
     if main_cat.status.is_other_clancat and not main_cat.dead and game.clan.clancount == "singleclan":
         cat_list = [c for c in Cat.all_cats_list if c.status.is_other_clancat]
-        other_clan_id = main_cat.status.group_ID
+        other_clan_id = game.clan.group_ID
     else:
         cat_list = main_cat.all_cats_list.copy()
-        if main_cat.status.is_other_clancat:
-            other_clan_id = (
-                choice([i for i in game.clan.other_clan_IDs if i != main_cat.status.group_ID]+[game.clan.group_ID])
-                if game.clan and game.clan.other_clan_IDs
-                else None
-            )
-        else:
-            other_clan_id = (
-                choice(game.clan.other_clan_IDs)
-                if game.clan
-                and hasattr(game.clan, "other_clan_ids")
-                and game.clan.other_clan_IDs
-                else None
-            )  # this is so stupid convoluted because of tests and game.clan initialization
 
     clan = main_cat.status.fetch_clan_object(game.clan)
 
