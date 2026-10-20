@@ -145,6 +145,10 @@
         "cyst_alert": "hurt!",
         "fatigue_alert": "hurt!",
         "exhaustion_alert": "hurt!",
-        "runny_eyes_alert": "hurt!"
+        "runny_eyes_alert": "hurt!",
+        "amputated_leg": "amputated leg",
+        "amputated_leg_alert": "hurt!",
+        "amputated_tail": "amputated tail",
+        "amputated_tail_alert": "hurt!"
     }
 }

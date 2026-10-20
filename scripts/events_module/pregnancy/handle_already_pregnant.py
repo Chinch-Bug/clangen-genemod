@@ -331,9 +331,9 @@ def handle_two_moon_pregnant(cat: Cat, clan):
     try:
         death_chance = cat.get_condition("pregnant").mortality
     except:
-        death_chance = 40
+        death_chance = 0.2
 
-    if not int(random() * death_chance):  # chance for a cat to die during childbirth
+    if random() < death_chance:  # chance for a cat to die during childbirth
         possible_events = events["birth"]["death"]
         # just makin sure meds aren't mentioned if they aren't around or if they are a parent
         meds = find_alive_cats_with_rank(

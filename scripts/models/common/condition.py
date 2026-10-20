@@ -226,6 +226,10 @@ class ConditionEnum(Enum):
     not_narrowed_chest = "-narrowed_chest"
     bumpy_skin = "bumpy_skin"
     not_bumpy_skin = "-bumpy_skin"
+    amputated_leg = "amputated_leg"
+    not_amputated_leg = "-amputated_leg"
+    amputated_tail = "amputated_tail"
+    not_amputated_tail = "-amputated_tail"
 
     battle_injury = "battle_injury"
     minor_injury = "minor_injury"
