@@ -8,6 +8,7 @@ from scripts.events_module.event_information import EventInformation
 from scripts.events_module.text_pool_event.event_retrieval import (
     load_text_pool_events,
     get_valid_event,
+    select_valid_other_clan,
 )
 from scripts.events_module.text_pool_event.handle_consequences import execute_outcome
 from scripts.events_module.text_pool_event.text_pool_event import TextPoolEvent
@@ -39,17 +40,13 @@ def _generate_transition_event(main_cat: Cat, clan):
     """
     possible_events = load_text_pool_events("events/transition.json")
     involved_cats = {"m_c": main_cat}
-
-    other_clan = (
-        random.choice([c for c in game.clan.all_other_clans+[game.clan] if c.group_ID != main_cat.status.group_ID]) if game.clan.all_other_clans else None
-    )
+    other_clan = select_valid_other_clan(clan)
 
     chosen_event, involved_cats = get_valid_event(
         primary_cat=main_cat,
         involved_cats=involved_cats,
         interactable_cats=Cat.all_cats_list,
         possible_events=possible_events,
-        other_clan=other_clan,
         clan=clan,
         frequency_active=False,
     )

@@ -40,9 +40,6 @@ def create_ceremony(
         interactable_cats=Cat.all_cats_list,
         possible_events=possible_events,
         clan=clan,
-        other_clan=(
-            choice([c for c in game.clan.all_other_clans+[game.clan] if c.group_ID != clan.group_ID]) if game.clan.all_other_clans else None
-        ),
         frequency_active=False,
         ensured_id=get_config("event_generation.debug_ensure_ceremony_id"),
     )

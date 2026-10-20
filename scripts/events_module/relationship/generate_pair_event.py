@@ -230,18 +230,12 @@ def _get_event(
 
     # this is its own function so that we can test
     # attempt to find a valid event where we can fill the other roles
-    other_clan = (
-        (choice([c for c in game.clan.all_other_clans+[game.clan] if c.group_ID != main_cat.status.group_ID and (not other_cat or other_cat.status.group_ID == main_cat.status.group_ID)]) if game.clan.all_other_clans else None)
-        if game.clan
-        else None
-    )
     chosen_event, involved_cats = get_valid_event(
         primary_cat=main_cat,
         involved_cats={"m_c": main_cat, "r_c": other_cat},
         interactable_cats=[other_cat],
         clan=main_cat.status.fetch_clan_object(game.clan),
         possible_events=events,
-        other_clan=other_clan,
         frequency_active=False,
     )
 

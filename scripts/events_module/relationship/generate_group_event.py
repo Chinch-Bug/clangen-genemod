@@ -60,9 +60,6 @@ def _get_event(
         interactable_cats=interactable_cats,
         possible_events=events,
         clan=main_cat.status.fetch_clan_object(game.clan),
-        other_clan=(
-            choice([c for c in game.clan.all_other_clans+[game.clan] if c.group_ID != main_cat.status.group_ID]) if game.clan.all_other_clans else None
-        ),
         frequency_active=False,
     )
     return chosen_event, involved_cats
