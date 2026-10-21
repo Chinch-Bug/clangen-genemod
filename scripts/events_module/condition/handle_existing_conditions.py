@@ -141,7 +141,7 @@ def handle_temporary_conditions(cat: Cat):
     event_list: list[EventInformation] = []
     progression_events = []
 
-    for condition in cat.temporary_conditions.copy():
+    for condition in cat.temporary_conditions:
         if condition.omit_moonskip:
             condition.omit_moonskip = False
             continue
@@ -249,7 +249,7 @@ def handle_permanent_conditions(cat: Cat):
     conditions_to_remove = []
     progression_events = []
 
-    for condition in cat.permanent_conditions.copy():
+    for condition in cat.permanent_conditions:
         if condition.omit_moonskip:
             continue
 

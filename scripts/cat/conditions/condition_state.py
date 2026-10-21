@@ -52,14 +52,11 @@ def update_temporary_condition_state(condition: TemporaryCondition):
     if mortality == ConditionState.FATAL:
         return ConditionState.FATAL
 
-    if get_clan_setting("rest_and_recover"):
+    if get_clan_setting("rest_and_recover") and condition.name not in get_config(
+        "focus.rest_and_recover.excluded_from_moons_earlier_healed"
+    ):
         recovery_buff = get_config("focus.rest_and_recover.moons_earlier_healed")
-        if condition.name in get_config(
-            "focus.rest_and_recover.excluded_from_moons_earlier_healed"
-        ):
-            condition.duration -= 1
-        else:
-            condition.duration -= 1 + recovery_buff
+        condition.duration -= 1 + recovery_buff
     else:
         condition.duration -= 1
 
