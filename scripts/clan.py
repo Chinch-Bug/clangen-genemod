@@ -276,6 +276,14 @@ class Clan:
         self.add_cat(self.instructor)
         self.all_other_clans = []
 
+        # remove any already loaded points of interest
+        clear_pois()
+
+        generate_and_add_new_poi(game.clan.biome, PoiType.GATHERING)
+        generate_and_add_new_poi(game.clan.biome, PoiType.MOONPLACE)
+        for i in range(3):
+            generate_and_add_new_poi(game.clan.biome, PoiType.TERRAIN, clan=self.group_ID)
+
         key_copy = tuple(Cat.all_cats.keys())
         for i in key_copy:  # Going through all currently existing cats
             # cat_class is a Cat-object
@@ -389,14 +397,6 @@ class Clan:
                 self.clan_cats.append(c.ID)
 
         save_cats(game.clan.save_id, Cat, game)
-
-        # remove any already loaded points of interest
-        clear_pois()
-
-        generate_and_add_new_poi(game.clan.biome, PoiType.GATHERING)
-        generate_and_add_new_poi(game.clan.biome, PoiType.MOONPLACE)
-        for i in range(3):
-            generate_and_add_new_poi(game.clan.biome, PoiType.TERRAIN, clan=self.group_ID)
 
         # create leader's ceremony and give lives
         if self.leader:
@@ -1608,7 +1608,7 @@ class OtherClan:
 
         if clancount == "multiclan":
             for i in range(3):
-                generate_and_add_new_poi(game.clan.biome, PoiType.TERRAIN, clan=self.group_ID)
+                generate_and_add_new_poi(self.biome, PoiType.TERRAIN, clan=self.group_ID)
 
             instructor_rank = choice(
                 (
