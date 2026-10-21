@@ -374,9 +374,9 @@ def _check_risks(
 
             event_list.append(event)
             if risk in TEMPORARY_CONDITIONS:
-                gain_temporary_condition(cat, risk)
+                gain_temporary_condition(cat, risk, omit_moonskip=True)
             else:
-                gain_permanent_condition(cat, risk, is_congenital=False)
+                gain_permanent_condition(cat, risk, omit_moonskip=True, is_congenital=False)
 
             return event_list, conditions_to_remove
 
@@ -463,9 +463,9 @@ def _check_progression(
 
         # PROGRESS
         if progression in TEMPORARY_CONDITIONS:
-            gain_temporary_condition(cat, progression)
+            gain_temporary_condition(cat, progression, omit_moonskip=True)
         else:
-            gain_permanent_condition(cat, progression)
+            gain_permanent_condition(cat, progression, omit_moonskip=True)
 
         event = generate_condition_event(
             path=f"conditions/progression_strings/{condition.name}/{progression}.json",
