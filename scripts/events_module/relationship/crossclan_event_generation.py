@@ -418,6 +418,7 @@ def filter_events(
             chosen_cat = cat_for_event(
                 constraint_dict=chosen_event.r_c[i].copy(),
                 possible_cats=allowable_cats,
+                tags=chosen_event.tags,
                 comparison_cat=main_cat,
                 comparison_cat_rel_status=chosen_event.m_c.get(
                     "relationship_status", []
