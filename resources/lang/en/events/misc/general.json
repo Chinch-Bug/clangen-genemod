@@ -7070,12 +7070,15 @@
         ]
     },
     {
-        "event_id": "gen_misc_any_medicinecatdream1",
+        "event_id": "gen_misc_any_mediatorwar1",
         "location": [
             "any"
         ],
         "season": [
             "any"
+        ],
+        "sub_type": [
+            "war"
         ],
         "frequency": 2,
         "event_text": "m_c is conversing with r_c about ways to potentially end this war — though not without bloodshed.",
@@ -13542,8 +13545,106 @@
             "changed": -1,
             "has_rank": [ "any_warrior_mult" ]
         },
-        "exclude_involved": [ "m_c" ]
+        "exclude_involved": ["m_c"]
     },
+      {
+    "event_id": "gen_misc_war_skirmishvictory",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["war"],
+    "frequency": 4,
+    "event_text": "c_n drove off o_c_n in their most recent skirmish with no notable injuries.",
+    "other_clan": {
+        "current_rep": ["any"],
+        "changed": -1
+    },
+     "exclude_involved": ["m_c"]
+},
+      {
+    "event_id": "multi_misc_war_ambush",
+    "location": ["forest", "wetlands"],
+    "season": ["any"],
+    "sub_type": ["war"],
+    "frequency": 3,
+    "event_text": "c_n uses the dense foliage to their favor by ambushing o_c_n from the undergrowth and forcing their scouting patrol to scatter.",
+    "other_clan": {
+        "current_rep": ["any"],
+        "changed": -1
+    },
+     "exclude_involved": ["m_c"]
+},
+      {
+    "event_id": "gen_misc_war_ocnleaddeath",
+    "location": ["any"],
+    "season": ["any"],
+    "sub_type": ["war"],
+    "frequency": 2,
+    "event_text": "m_c is confident that o_c_n's leader lost a life during the last battle.",
+    "m_c": {
+        "status": ["leader", "deputy"]
+    },
+    "other_clan": {
+        "current_rep": ["any"],
+        "changed": -1
+    }
+
+},
+{
+  "event_id": "gen_misc_guardsneakout",
+  "location": [
+    "any"
+  ],
+  "season": [
+    "any"
+  ],
+  "frequency": 3,
+  "event_text": "While on guard duty, m_c caught r_c trying to sneak out of camp.",
+  "m_c": {
+    "status": [
+      "warrior",
+      "deputy"
+    ],
+    "relationship_status": [],
+    "skill": [],
+    "trait": [
+      "-oblivious"
+    ],
+    "backstory": [],
+    "dies": false
+  },
+  "r_c": {
+    "status": [
+      "apprentice",
+      "leader",
+      "warrior",
+      "elder"
+    ],
+    "relationship_status": [],
+    "skill": [],
+    "trait": [
+      "-sneaky"
+    ],
+    "backstory": [],
+    "dies": false
+  },
+  "relationships": [
+    {
+      "cats_from": [
+        "m_c"
+      ],
+      "cats_to": [
+        "r_c"
+      ],
+      "mutual": false,
+      "values": [
+        "trust"
+      ],
+      "amount": -10,
+      "log": {
+        "cats_from": "cat_from became suspicious of cat_to after catching {PRONOUN/cat_to/object} trying to sneak out of camp."
+      }
+    }]
+},
     {
         "event_id": "gen_misc_war_skirmishvictory",
         "location": [ "any" ],
@@ -14097,13 +14198,10 @@
         "frequency": 1,
         "event_text": "A wild-eyed o_c_n apprentice intrudes on the camp one day. They warn c_n that o_c_n is under new management... and all existing alliances are void.",
         "m_c": {
-            "age": [
-                "adolescent",
-                "young adult",
-                "adult",
-                "senior adult",
-                "senior"
+            "status": [
+                "leader"
             ]
+        
         },
         "other_clan": {
             "current_rep": [
@@ -14112,7 +14210,173 @@
             "changed": -15
         }
     },
-    {
+    
+
+        {
+            "event_id": "gen_misc_otherclannewleader6",
+            "location": [
+                "any"
+            ],
+            "season": [
+                "any"
+            ],
+            "tags": [],
+            "exclude_involved": [
+            ],
+            "frequency": 1,
+            "event_text": "During the Gathering, m_c overhears a new o_c_n apprentice gossiping about how their leader might break off the alliance with c_n.",
+            "m_c": {
+                "age": [
+                    "adolescent",
+                    "young adult",
+                    "adult",
+                    "senior adult",
+                    "senior"
+                ]
+            },
+            "other_clan": {
+                "current_rep": [
+                    "ally"
+                ],
+                "changed": -5
+            }
+        },
+        
+            {
+                "event_id": "gen_misc_otherclannewleader7",
+                "location": [
+                    "any"
+                ],
+                "season": [
+                    "any"
+                ],
+                "tags": ["clan:leader"],
+                "exclude_involved": [
+                    "m_c"
+                ],
+                "frequency": 1,
+                "event_text": "m_c just about dies laughing when o_c_n's new leader is announced. Surely they could've picked a more capable cat? m_c has to be silenced by r_c just to continue the Gathering.",
+                "m_c": {
+                    "age": [
+                        "-newborn",
+                        "-kitten"
+                    ],
+                    "status": [
+                        "-leader"
+                    ],
+                    "trait": [
+                        "bold",
+                        "arrogant",
+                        "bullying",
+                        "troublesome",
+                        "playful",
+                        "childish"
+                    ]
+                },
+                "r_c": {
+                    "age": [
+                        "-newborn",
+                        "-kitten",
+                        "-adolescent"
+                    ],
+                    "status": [
+                        "leader"
+                    ]
+                },
+                "relationships": [
+                    {
+                        "cats_from": [
+                            "m_c"
+                        ],
+                        "cats_to": [
+                            "r_c"
+                        ],
+                        "mutual": false,
+                        "values": ["respect"],
+                        "amount": -5,
+                        "log": {
+                            "cats_from": "cat_from was silenced by cat_to at a Gathering."
+                        }
+                      },
+                      {
+                        "cats_from": [
+                            "r_c"
+                        ],
+                        "cats_to": [
+                            "m_c"
+                        ],
+                        "mutual": false,
+                        "values": ["like"],
+                        "amount": -5,
+                        "log": {
+                            "cats_from": "cat_from was embarrassed by cat_to at a Gathering."
+                        }
+                    }
+                ],
+                "other_clan": {
+                    "current_rep": [
+                        "ally"
+                    ],
+                    "changed": -5
+                }
+            },
+            
+                {
+                    "event_id": "gen_misc_otherclannewleader8",
+                    "location": [
+                        "any"
+                    ],
+                    "season": [
+                        "any"
+                    ],
+                    "tags": [],
+                    "exclude_involved": [
+                    ],
+                    "frequency": 1,
+                    "event_text": "m_c purrs when o_c_n announces they have more apprentices.",
+                    "m_c": {
+                        "age": [
+                            "adolescent"
+                        ]
+                    },
+                    "other_clan": {
+                        "current_rep": [
+                            "ally"
+                        ],
+                        "changed": 5
+                    }
+                },
+                
+                    {
+                        "event_id": "gen_misc_otherclannewleader9",
+                        "location": [
+                            "any"
+                        ],
+                        "season": [
+                            "any"
+                        ],
+                        "tags": [],
+                        "exclude_involved": [
+                        ],
+                        "frequency": 1,
+                        "event_text": "During the Gathering, m_c spots a beautiful o_c_n cat. {PRONOUN/m_c/subject/CAP} can't stop staring at them until a Clanmate shoves {PRONOUN/m_c/object}, snapping {PRONOUN/m_c/object} out of it.",
+                        "m_c": {
+                            "age": [
+                                "adolescent",
+                        "young adult",
+                        "adult",
+                        "senior adult",
+                        "senior"
+                            ]
+                        },
+                        "other_clan": {
+                            "current_rep": [
+                                "ally"
+                            ],
+                            "changed": 3
+                        }
+                    },
+                    {
         "event_id": "gen_misc_otherclanhostilerelboost1",
         "location": [
             "any"

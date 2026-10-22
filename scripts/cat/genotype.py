@@ -1770,6 +1770,8 @@ class Genotype:
 
         if self.pointgene == ["cb","cs"]:
             blueindex = randint(0, 10)
+        if self.pointgene == ["cb","cs"] or self.pointgene == ["cb","cm"] or self.pointgene == ["cm","cm"] or self.pointgene == ["cm","c"]:
+            blueindex = randint(0, 4)
         if self.white[0] in ['w', 'wg', 'wsal'] or blueindex == 0:
             pass
         elif self.white[0] in ['ws', 'wt'] and self.white[1] not in ['ws', 'wt']:
@@ -1793,7 +1795,7 @@ class Genotype:
             if randint(1, 4) < 4 and blueindex == 0:
                 self.deaf = True
         
-        if self.pointgene[0] == "cs" or ((self.pointgene == ["cb","cs"] or self.pointgene == ["cb","cm"] or self.pointgene == ["cm","cm"] or self.pointgene == ["cm","c"]) and randint(0, 4)==0):
+        if self.pointgene[0] == "cs":
             blueindex = 0
         
 
@@ -1840,38 +1842,35 @@ class Genotype:
         tempref = self.find_unused_rand_value(refgrade, 11)
         temppig = 12 if not blueindex else self.find_unused_rand_value(piggrade, 12)
         tempvals = [self.find_unused_rand_value(refgrade, 11), 12 if not blueindex else self.find_unused_rand_value(piggrade, 12)]
+        
+        if not blueindex:
+            piggrade = 12
         if ("c" in self.pointgene and self.pointgene[0] != "C"):
             piggrade = 13
             temppig = 13
             tempvals[1] = 13
-        
-        self.righteye = RefTypeFind(refgrade, piggrade)
-        self.lefteye = RefTypeFind(refgrade, piggrade)
 
         self.lefteyetype = SecondaryRefTypeFind(refgrade, piggrade)
         self.righteyetype = SecondaryRefTypeFind(refgrade, piggrade)
         
-        self.extraeyecolour = RefTypeFind(tempvals[0], tempvals[1])
         self.extraeyetype = SecondaryRefTypeFind(tempvals[0], tempvals[1])
 
         if het2index == 0:
             if randint(1, 2)==1:
-                self.lefteye = RefTypeFind(tempref, temppig)
                 self.lefteyetype = SecondaryRefTypeFind(tempref, temppig)
             else:
-                self.righteye = RefTypeFind(tempref, temppig)
                 self.righteyetype = SecondaryRefTypeFind(tempref, temppig)
 
         if(sectoralindex == 0):
             self.extraeye = 'sectoral' + str(randint(1, 6))
                 
-        elif hetindex == 0:
+        elif hetindex == 0 and piggrade != 13:
             if random() < 0.5:
-                self.lefteye = RefTypeFind(refgrade, 12)
                 self.lefteyetype = SecondaryRefTypeFind(refgrade, 12)
             else:
-                self.righteye = RefTypeFind(refgrade, 12)
                 self.righteyetype = SecondaryRefTypeFind(refgrade, 12)
+        
+        self.EyeColourName()
 
     def EyeColourName(self):
     
