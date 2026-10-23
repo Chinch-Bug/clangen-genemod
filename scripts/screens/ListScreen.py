@@ -7,6 +7,7 @@ import pygame_gui
 from pygame_gui.core import ObjectID
 
 from scripts.cat.cats import Cat
+from scripts.config import get_config
 from scripts.clan_package.settings import switch_clan_setting
 from scripts.clan_package.settings.clan_settings import (
     switch_clan_setting,
@@ -334,6 +335,9 @@ class ListScreen(Screens):
             else "screens.list.search_genotypes_tooltip",
             starting_height=1,
         )
+        if not get_config("genetics_config.show_genotype"):
+            self.cat_list_bar_elements["search_genotype_checkbox"].checked = False
+            self.cat_list_bar_elements["search_genotype_checkbox"].disable()
 
         # SEARCH BAR
         self.cat_list_bar_elements["search_bar_image"] = pygame_gui.elements.UIImage(

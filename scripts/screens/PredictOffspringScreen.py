@@ -257,6 +257,9 @@ class PredictOffspringScreen(Screens):
             starting_height=1,
             manager=MANAGER,
         )
+        if not get_config("genetics_config.show_genotype"):
+            self.search_toggle_checkbox.checked = False
+            self.search_toggle_checkbox.disable()
 
         self.outsider_toggle_checkbox = UICheckbox(
             (310, 160),

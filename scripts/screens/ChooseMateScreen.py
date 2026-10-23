@@ -312,6 +312,9 @@ class ChooseMateScreen(Screens):
             if self.search_genotype
             else "screens.list.search_genotypes_tooltip"
         )
+        if not get_config("genetics_config.show_genotype"):
+            self.search_toggle_checkbox.checked = False
+            self.search_toggle_checkbox.disable()
 
         self.show_all_checkbox = UICheckbox(
             position=(220, 629),
