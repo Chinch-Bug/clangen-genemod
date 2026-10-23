@@ -573,6 +573,9 @@ class Status:
                     new_rank = CatRank.WARRIOR
         else:
             new_rank = self.rank
+            
+        if isinstance(new_rank, str):
+            new_rank = CatRank(new_rank)
 
         if new_group_type.is_any_clan_group() and not new_rank.is_any_clancat_rank():
             new_rank = self.get_rank_from_age(age)

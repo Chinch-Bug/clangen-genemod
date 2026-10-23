@@ -1744,7 +1744,6 @@ def create_cat(cat, phenotype, cat_sprite, sprite_age, season_override, merle=Fa
                 except:
                     whitesprite.blit(sprites.sprites[x.removeprefix("break/") + cat_sprite].premul_alpha(), (0, 0), special_flags=pygame.BLEND_RGBA_SUB)
     
-    whitesprite.blit(sprites.sprites["lightbasecolours0"], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
     tintedwhitesprite.blit(whitesprite, (0, 0))
 
     leathers = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
@@ -1768,6 +1767,7 @@ def create_cat(cat, phenotype, cat_sprite, sprite_age, season_override, merle=Fa
     
     if is_today(SpecialDate.APRIL_FOOLS) and "Bs" in phenotype.april_fools.get("black_spotting", []):
         tintedwhitesprite.blit(sprites.sprites[f'black{phenotype.fur_shade}'], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+    tintedwhitesprite.blit(sprites.sprites["lightbasecolours0"], (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
     
     if (
         game_setting_get('tints')
