@@ -850,11 +850,16 @@ class Cat:
         return Pelt.describe_appearance(self, short)
 
     def create_genelist(self, filter=True):
-        genelist = str(self.phenotype.PhenotypeOutput(self.phenotype.white_pattern, chimera=self.chimerapheno)) + \
-            "\n" + str(self.phenotype.ShowGenes(filter)) + "\n" + self.phenotype.FormatSomatic()
-        if (self.chimerapheno):
-            genelist += "\n\n" + str(self.chimerapheno.PhenotypeOutput(self.chimerapheno.white_pattern, chimera=self.chimerapheno)) + \
-            "\n" + str(self.chimerapheno.ShowGenes(filter))
+        if get_config("genetics_config.show_genotype"):
+            genelist = str(self.phenotype.PhenotypeOutput(self.phenotype.white_pattern, chimera=self.chimerapheno)) + \
+                "\n" + str(self.phenotype.ShowGenes(filter)) + "\n" + self.phenotype.FormatSomatic()
+            if (self.chimerapheno):
+                genelist += "\n\n" + str(self.chimerapheno.PhenotypeOutput(self.chimerapheno.white_pattern, chimera=self.chimerapheno)) + \
+                "\n" + str(self.chimerapheno.ShowGenes(filter))
+        else:
+            genelist = str(self.phenotype.PhenotypeOutput(self.phenotype.white_pattern, chimera=self.chimerapheno)) + "\n" + self.phenotype.FormatSomatic()
+            if (self.chimerapheno):
+                genelist += "\n\n" + str(self.chimerapheno.PhenotypeOutput(self.chimerapheno.white_pattern, chimera=self.chimerapheno))
 
         return genelist
 

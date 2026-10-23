@@ -16,7 +16,7 @@ body:
           required: true
         - label: I am sure the issue is specific to genemod and does not exist within base Clangen
           required: true
-        - label: I have checked to make sure my game version is up to date
+        - label: I have checked to make sure my game version is up to date with the modded branch
           required: true
   - type: textarea
     id: description
@@ -79,8 +79,8 @@ body:
     id: version
     attributes:
       description: See [here](https://www.clangen.io/docs/report-a-bug/#how-do-i-find-my-game-version) for help finding your game version.
-      label: "Commit # or Game Version Number"
-      placeholder: e.g. "4ef20d05" (if on development) or "v0.13.0" (if stable)
+      label: "Commit #"
+      placeholder: e.g. "4ef20d05"
     validations:
       required: true
   - type: textarea

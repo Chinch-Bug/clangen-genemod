@@ -15,6 +15,12 @@
       "cat_generation.base_permanent_condition": 75
     }
   },
+  "no_genos": {
+    "card_art": "environment/tainted.png",
+    "modifiers": {
+      "genetics_config.show_genotype": false
+    }
+  },
   "lean_meat": {
     "card_art": "environment/lean_meat.png",
     "modifiers": {

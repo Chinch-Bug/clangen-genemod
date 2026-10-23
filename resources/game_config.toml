@@ -1026,6 +1026,9 @@ dev_tools = false
     member = ["newborn", "kitten", "adolescent", "young adult", "adult", "senior adult", "senior"]
 
 [genetics_config]
+  # setting this to false will hide the genotype information of a cat
+  show_genotype = true
+
   # 1/chance for newly generated kittypets and other cats to be purebred
   kittypet_breed = 150
   other_breed = 1000
