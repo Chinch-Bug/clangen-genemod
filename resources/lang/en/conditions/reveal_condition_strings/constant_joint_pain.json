@@ -69,6 +69,9 @@
             "r_c0": {
                 "status": [
                     "medicine cat"
+                ],
+                "group": [
+                    "match:m_c"
                 ]
             }
         }

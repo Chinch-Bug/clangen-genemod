@@ -1698,6 +1698,10 @@ dev_tools = false
       "queen/pregnant" = 4
       kitten = 0.5
       newborn = 0.25
+  
+  # the percentage of freshkill that is lost per moon, after the decay formula has run
+  [prey.prey_loss]
+    loss = 0
 
   # multiplier for how much prey a cat needs based on adult size category, doesn't apply to kits
   [prey.size_modifiers]

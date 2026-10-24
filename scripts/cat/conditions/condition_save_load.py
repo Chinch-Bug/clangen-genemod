@@ -69,6 +69,9 @@ def load_conditions(cat: Cat, version_info: dict):
                 TemporaryCondition(**info)
                 for info in condition_data.get("temporary_conditions", {})
             ]
+            for c in cat.temporary_conditions:
+                if c == "pregnant":
+                    c.progression = {}
             cat.permanent_conditions = [
                 PermanentCondition(**info)
                 for info in condition_data.get("permanent_conditions", {})
