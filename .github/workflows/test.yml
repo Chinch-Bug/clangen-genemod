@@ -58,7 +58,7 @@ jobs:
         env:
           SDL_VIDEODRIVER: "dummy"
           SDL_AUDIODRIVER: "disk"
-        run: uv run python -m unittest tests/bulk_timeskip.py
+        run: uv run python -m unittest tests/test_bulk_timeskip.py
   json_test:
     runs-on: ubuntu-latest
     steps:
