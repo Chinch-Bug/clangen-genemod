@@ -63,7 +63,7 @@ def passes_general_constraints(
         return False
 
     # CHECK POI
-    if not event_for_poi(event.poi, chosen_poi, clan):
+    if not event_for_poi(event.poi, clan, chosen_poi):
         if is_debug_event:
             print("DEBUG: requested event does not meet constraints (PoI)")
         return False
