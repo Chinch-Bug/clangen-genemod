@@ -29,6 +29,7 @@ def passes_general_constraints(
     involved_cats: dict,
     clan = game.clan,
     other_clan: Optional["OtherClan"] = None,
+    chosen_poi: Optional[str] = None,
     is_debug_event: bool = False,
 ) -> bool:
 
@@ -62,7 +63,7 @@ def passes_general_constraints(
         return False
 
     # CHECK POI
-    if not event_for_poi(event.poi, clan):
+    if not event_for_poi(event.poi, chosen_poi, clan):
         if is_debug_event:
             print("DEBUG: requested event does not meet constraints (PoI)")
         return False

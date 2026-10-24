@@ -558,6 +558,7 @@ class Patrol:
             possible_events=success_outcomes,
             clan=self.clan,
             other_clan=self.other_clan,
+            chosen_poi=self.chosen_poi if self.chosen_poi else None,
             ensured_id=debug_outcome,
             allow_new_cat_creation=False,  # this is so we don't create cats for an outcome we end up not using
             is_patrol=True,
@@ -577,6 +578,7 @@ class Patrol:
             possible_events=fail_outcomes,
             clan=self.clan,
             other_clan=self.other_clan,
+            chosen_poi=self.chosen_poi if self.chosen_poi else None,
             ensured_id=debug_outcome,
             allow_new_cat_creation=False,  # this is so we don't create cats for an outcome we end up not using
             is_patrol=True,

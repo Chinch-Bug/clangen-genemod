@@ -473,7 +473,7 @@
     "fatigue": {
         "tags": [ ],
         "severity": "minor",
-        "duration": 1,
+        "duration": 2,
         "mortality": { },
         "infectiousness": 0.0,
         "immune_system_effect": 0.0,

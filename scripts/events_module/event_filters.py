@@ -309,10 +309,11 @@ def event_for_tags(tags: list, cat, clan=CatGroup.PLAYER_CLAN_ID, other_cat=None
     return True
 
 
-def event_for_poi(pois: dict[str, list], clan=None) -> bool:
+def event_for_poi(pois: dict[str, list], clan=None, chosen_poi: Optional[str] = None) -> bool:
     """
     Checks if the Clan has a POI matching pois
     :param pois: possible points of interest
+    :param chosen_poi: If there's a prechosen POI to check these constraints against, include it here
     :return: True if there's a match, False if not
     """
     if all(not value for value in pois.values()):
@@ -324,7 +325,10 @@ def event_for_poi(pois: dict[str, list], clan=None) -> bool:
 
     return bool(
         get_poi_from_constraints(
-            pois.get("name"), pois.get("tags"), pois.get("category"), clan.group_ID
+            pois.get("name") if not chosen_poi else [chosen_poi],
+            pois.get("tags"),
+            pois.get("category"),
+            clan.group_ID,
         )
     )
 
