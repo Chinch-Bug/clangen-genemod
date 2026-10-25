@@ -14,26 +14,30 @@ class Namer():
         if self.phenotype:
             params = self.parse_chimera() if self.chimera_pheno else self.get_categories(self.phenotype)
 
-            if params[0] in ['white', 'silver shaded'] or (params[3] == 'high' and random() < 0.2):
-                return self.white(params[0])
-            elif params[0] == 'black':
-                return self.black(params)
-            elif params[0] == 'blue':
-                return self.blue(params)
-            elif params[0] == 'ginger':
-                return self.ginger(params)
-            elif params[0] == 'cream':
-                return self.cream(params)
-            elif params[0] == 'chocolate':
-                return self.chocolate(params)
-            elif params[0] == 'lilac':
-                return self.lilac(params)
-            elif params[0] == 'cinnamon':
-                return self.cinnamon(params)
-            elif params[0] == 'fawn':
-                return self.fawn(params)
-            else:
-                print('Unknown base:' + params[0])
+            try:
+                if params[0] in ['white', 'silver shaded'] or (params[3] == 'high' and random() < 0.2):
+                    return self.white(params[0])
+                elif params[0] == 'black':
+                    return self.black(params)
+                elif params[0] == 'blue':
+                    return self.blue(params)
+                elif params[0] == 'ginger':
+                    return self.ginger(params)
+                elif params[0] == 'cream':
+                    return self.cream(params)
+                elif params[0] == 'chocolate':
+                    return self.chocolate(params)
+                elif params[0] == 'lilac':
+                    return self.lilac(params)
+                elif params[0] == 'cinnamon':
+                    return self.cinnamon(params)
+                elif params[0] == 'fawn':
+                    return self.fawn(params)
+                else:
+                    print('Unknown base:' + params[0])
+            except Exception as e:
+                print(f"Prefix generation failed. Params: {params}")
+                raise e
 
     def parse_chimera(self, phenotype=None):
         base = ""
@@ -712,9 +716,10 @@ class Namer():
     def fawn(self, params):
         if self.phenotype.colour_warmth > 0 and random() < 0.2 and params[0] == "fawn":
             return self.lilac(params)
-        if self.phenotype.colour_warmth > 1 and random() < 0.1:
+        if self.phenotype.colour_warmth > 1 and random() < 0.1 and params[0] == "fawn":
             return self.pink(params)
         if self.phenotype.colour_warmth > 1 and random() < 0.2 and params[0] == "fawn":
+            params[2]["pattern"] = params[2]["tortie_red"]
             return self.cream(params)
 
         if params[4] != 'none' and params[0] == "fawn":
@@ -814,10 +819,11 @@ class Namer():
         self.solid('yellow', False, params[2]['pattern'], params[3])
 
     def cream(self, params):
-        if self.phenotype.ruftype == 'rufoused' and random() < 0.2:
-            self.golden(params)
-        if self.phenotype.ruftype != 'rufoused' and random() < 0.1:
-            self.pink(params)
+        if params[0] in ["cream", "ginger"]:
+            if self.phenotype.ruftype == 'rufoused' and random() < 0.2:
+                self.golden(params)
+            if self.phenotype.ruftype != 'rufoused' and random() < 0.1:
+                self.pink(params)
 
         if params[4] != 'none':
             #babies don't have points
@@ -830,13 +836,13 @@ class Namer():
 
             #naming for point colour
             if random() < 0.1:
-                return self.tabby(params[0], params[1], params[2], params[3])
+                return self.tabby("cream", params[1], params[2], params[3])
 
             #overall colourpoint names
             else:
-                return self.point(params[0], params[1], params[4], params[3])
+                return self.point("cream", params[1], params[4], params[3])
             
-        return self.tabby(params[0], params[1], params[2], params[3])
+        return self.tabby("cream", params[1], params[2], params[3])
 
     def purple(self, params):
         if params[4] != 'none':
