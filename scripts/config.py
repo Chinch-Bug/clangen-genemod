@@ -94,5 +94,11 @@ def get_config(
     if config_value == CONFIG:
         for key in config_keys:
             config_value = config_value[key]
+        if isinstance(config_value, dict):
+            for value in config_value:
+                for card in card_list:
+                    card_info = constants.CRUEL_CARDS_ALL[card]
+                    if config_path + "." + value in card_info["modifiers"]:
+                        config_value[value] = card_info["modifiers"][config_path + "." + value]
 
     return copy.deepcopy(config_value)
