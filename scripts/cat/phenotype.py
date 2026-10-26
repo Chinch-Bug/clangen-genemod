@@ -805,11 +805,11 @@ class Phenotype(Genotype):
             else:
                 colour = rufousing + colour + "3"
         elif unders_ruf == "low":
-            colour = colour + "low" + "shaded" + "0"
+            colour = colour + "low" + "shaded"
         elif rufousing != "rufoused":
-            colour = colour + "low" + wideband + "0"
+            colour = colour + "low" + wideband
         else:
-            colour = colour + "medium" + wideband + "0"
+            colour = colour + "medium" + wideband
         
         return colour
     def GetSilverUnders(self, wideband):

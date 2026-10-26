@@ -194,6 +194,9 @@ class Sprites:
         if not sprites_y:
             sprites_y = self.sheet_layout[1]
 
+        if no_index:
+            sprites_x = sprites_y = 1
+
         group_x_ofs = pos[0] * sprites_x * self.size
         group_y_ofs = pos[1] * sprites_y * self.size
         i = 0
@@ -208,7 +211,10 @@ class Sprites:
                         i += 1
                         continue
 
-                    full_name = f"{name}{i}"
+                    if sprites_y > 1:
+                        full_name = f"{name}_{i}"
+                    else:
+                        full_name = f"{name}{i}"
 
                 try:
                     new_sprite = pygame.Surface.subsurface(
@@ -273,7 +279,7 @@ class Sprites:
             # convert back into a surface
             _sprite = recolor_sprite.make_surface()
             # add it to our sprite dict!
-            self.sprites[f"{name}_{color_name}{sprite_index}"] = _sprite
+            self.sprites[f"{name}_{color_name}_{sprite_index}"] = _sprite
             # close the pixel array now that we're done
             recolor_sprite.close()
 
@@ -398,13 +404,13 @@ class Sprites:
                   "cinnamon", "fawn", "buff", "beige",
                   "red", "cream", "honey", "ivory"]:
             for a, i in enumerate(['rufousedlow', 'rufousedmedium', 'rufousedhigh', 'rufousedshaded', 'rufousedchinchilla']):
-                self.make_group('Tabby/'+x, (a, 0), f'{x}{i}', sprites_x=1, sprites_y=1)
+                self.make_group('Tabby/'+x, (a, 0), f'{x}{i}', no_index=True)
             for a, i in enumerate(['mediumlow', 'mediummedium', 'mediumhigh', 'mediumshaded', 'mediumchinchilla']):
-                self.make_group('Tabby/'+x, (a, 1), f'{x}{i}', sprites_x=1, sprites_y=1)
+                self.make_group('Tabby/'+x, (a, 1), f'{x}{i}', no_index=True)
             for a, i in enumerate(['lowlow', 'lowmedium', 'lowhigh', 'lowshaded', 'lowchinchilla']):
-                self.make_group('Tabby/'+x, (a, 2), f'{x}{i}', sprites_x=1, sprites_y=1)
+                self.make_group('Tabby/'+x, (a, 2), f'{x}{i}', no_index=True)
             for a, i in enumerate(['silverlow', 'silvermedium', 'silverhigh', 'silvershaded', 'silverchinchilla']):
-                self.make_group('Tabby/'+x, (a, 3), f'{x}{i}', sprites_x=1, sprites_y=1)
+                self.make_group('Tabby/'+x, (a, 3), f'{x}{i}', no_index=True)
         for a, x in enumerate(['low', 'medium', 'high', 'shaded', 'chinchilla']):
             self.make_group('Tabby/shading', (a, 0), f'{x}shading')
         self.make_group('Tabby/unders', (0, 0), f'Tabby_unders')
@@ -564,13 +570,13 @@ class Sprites:
                     )
 
                     for patch in patches:
-                        addition = self.sprites[f"{patch}{i}".removeprefix("little").removeprefix("mid").removeprefix("high").removeprefix("mostly")]
+                        addition = self.sprites[f"{patch}_{i}".removeprefix("little").removeprefix("mid").removeprefix("high").removeprefix("mostly")]
                         new_patch.blit(
                             addition,
                             (0, 0),
                         )
 
-                    self.sprites[f"{name}{i}"] = new_patch
+                    self.sprites[f"{name}_{i}"] = new_patch
                     i += 1
 
     def load_sheet(self, spritesheet: str, sprite_names: list[list[str]]):
