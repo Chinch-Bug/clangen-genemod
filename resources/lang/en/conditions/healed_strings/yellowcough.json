@@ -20,7 +20,7 @@
         "involved_cats": {
             "m_c": {
                 "stat": {
-                    "skill": [ "STAR1", "DREAM0" ]
+                    "skill": [ "STAR,1", "DREAM,0" ]
                 }
             },
             "r_c0": {
