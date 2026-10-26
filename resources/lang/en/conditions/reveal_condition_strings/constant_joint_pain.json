@@ -11,7 +11,8 @@
             "r_c0": {
                 "status": [
                     "medicine cat"
-                ]
+                ],
+                "group": ["player_clan"]
             },
             "r_c1": {}
         },
@@ -42,7 +43,8 @@
             "r_c0": {
                 "status": [
                     "medicine cat"
-                ]
+                ],
+                "group": ["player_clan"]
             }
         }
     },

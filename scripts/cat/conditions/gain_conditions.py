@@ -53,6 +53,7 @@ def gain_temporary_condition(
     new_condition = TemporaryCondition(
         name=name,
         severity=severity if severity else condition_info["severity"],
+        is_complication=condition_info.get("is_complication", False),
         duration=condition_info["duration"] if custom_duration is None else custom_duration,
         mortality=condition_info["mortality"].get(cat.age, 0.0)
         if not prevent_death

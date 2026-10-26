@@ -2164,14 +2164,15 @@ class Genotype:
     def GenerateSomatic(self):
         self.somatic["base"] = choice(['Somatic/leftface', 'Somatic/rightface', "EYELINER_MAX_L", "EYELINER_MAX_R", "EYESPOT_L", "EYESPOT_R", 
                                     "HELMET",
-                                    "BEARD_FULL", "BEARD_HIGH", 
+                                    'underbelly1', "BEARD", "BEARD_FULL", "BEARD_HIGH", 
                                     'Somatic/tail', 
-                                    'underbelly1', "BEARD", "BELLY", "BELLY_HIGH", "BELLY_MID", "BELLY_SMALL", "BIB",
+                                    "BELLY", "BELLY_HIGH", "BELLY_MID", "BELLY_SMALL", "BIB", "TEARDROP",
                                     'right front bicolour2', 'left front bicolour2', 
                                     'right back bicolour2', 'left back bicolour2', 
                                     'right front bicolour1', 'left front bicolour1', 
                                     'right back bicolour1', 'left back bicolour1', 
-                                    "LEFTEAR", "RIGHTEAR", "BACKSPOT", "SADDLE_SMALL", "TAILTIP"])
+                                    "LEFTEAR", "RIGHTEAR", "BACKSPOT", "SADDLE_SMALL", 
+                                    "TAILTIP", "TAIL_HIGH_RING", "TAIL_MID", "TAIL_REVERSE_HALF", "TAIL_REVERSE_MIN"])
 
         possible_mutes = {
         "furtype" : ["wirehair", "laperm", "cornish", "urals", "tenn", "fleece", "sedesp"],
@@ -2239,7 +2240,7 @@ class Genotype:
             self.somatic = {}
             return
 
-        top_patches = ['Somatic/leftface', 'Somatic/rightface', 'Somatic/tail', "LEFTEAR", "RIGHTEAR", "BACKSPOT", "SADDLE_SMALL", "HELMET", "EYESPOT_L", "EYESPOT_R"]
+        top_patches = ['Somatic/leftface', 'Somatic/rightface', 'Somatic/tail', "LEFTEAR", "RIGHTEAR", "BACKSPOT", "SADDLE_SMALL", "HELMET", "EYESPOT_L", "EYESPOT_R", "TAIL_MID", "TAIL_REVERSE_HALF", "TAIL_REVERSE_MIN"]
         if self.white[1] in ['ws', 'wt'] and self.somatic["base"] not in top_patches:
             self.somatic["base"] = choice(top_patches)
         
@@ -2286,7 +2287,6 @@ class Genotype:
             "EYESPOT_R": "face",
             "HELMET": "head",
             "Somatic/tail" : 'tail',
-            "underbelly1" : 'underbelly',
             'right front bicolour2' : 'front leg', 
             'left front bicolour2' : 'front leg', 
             'right back bicolour2' : 'back leg', 
@@ -2300,12 +2300,18 @@ class Genotype:
             "BACKSPOT": "back",
             "SADDLE_SMALL": "back",
             "TAILTIP": "tail tip",
+            "TAIL_HIGH_RING": "tail",
+            "TAIL_MID": "tail",
+            "TAIL_REVERSE_HALF": "tail",
+            "TAIL_REVERSE_MIN": "tail base",
+            "underbelly1" : 'underbelly',
             "BEARD": "chin",
             "BELLY": "belly",
             "BELLY_HIGH": "belly",
             "BELLY_MID": "belly",
             "BELLY_SMALL": "belly",
             "BIB": "chest",
+            "TEARDROP": 'chest',
             "BEARD_FULL": "chest",
             "BEARD_HIGH": "chest"
         }
