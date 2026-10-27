@@ -1237,7 +1237,7 @@ def create_new_cat(
             chance = int(get_config("cat_generation.base_permanent_condition") / 11.25)
         else:
             chance = get_config("cat_generation.base_permanent_condition")
-            
+
         if not int(random() * chance):
             possible_conditions = []
             for condition in PERMANENT_CONDITIONS:
@@ -1350,7 +1350,7 @@ def gather_cat_objects(
                 if isinstance(involved_cats.get(abbr), list):
                     found_cat_list.update(involved_cats[abbr])
                 else:
-                    found_cat_list.append(involved_cats[abbr])
+                    found_cat_list.add(involved_cats[abbr])
         # OVERALL CLAN CATS
         elif abbr == "clan":
             found_cat_list.update(clan_cats)
