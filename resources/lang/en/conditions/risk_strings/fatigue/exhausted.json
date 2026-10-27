@@ -1,6 +1,6 @@
 [
     {
-        "event_id": "fatigue_exhaustion0",
+        "event_id": "fatigue_exhausted0",
         "strings": [
             "m_c has been trying to take it easy, but the fatigue doesn't go away, only growing worse. r_c0 suggests a full break from duties for now."
         ],
@@ -15,7 +15,7 @@
         }
     },
     {
-        "event_id": "fatigue_exhaustion1",
+        "event_id": "fatigue_exhausted1",
         "strings": [
             "m_c has been trying to take it easy, but the fatigue doesn't go away, only growing worse in the day to day."
         ],
