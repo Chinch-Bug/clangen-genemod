@@ -452,16 +452,16 @@ class Pelt:
 
                 elif KITgrade == 1:
                     if random() < 0.95:
-                        white_pattern.append(choice(['chest tuft', 'belly tuft', 'belly tuft', 'belly tuft', "CHEST_MIN", "LOCKET"]))
+                        white_pattern.append(choice(['chest tuft', 'belly tuft', 'belly tuft', 'belly tuft', "CHEST_MIN", "LOCKET", "UNDER_MIN"]))
                     
                 elif KITgrade == 2:
                     while len(white_pattern) == 0:
                         #chest
                         if random() < 0.5:
-                            white_pattern.append(choice(['chest tuft', 'locket', 'chest tuft', 'locket', 'bib', "BIB_SMALL", "CHEST_MIN", "CHEST_SMALL", "LOCKET", "CHEST_STREAK", "NECKBEARD"]))
+                            white_pattern.append(choice(['chest tuft', 'locket', 'chest tuft', 'locket', 'bib', "BIB_SMALL", "CHEST_MIN", "CHEST_SMALL", "LOCKET", "CHEST_STREAK", "NECKBEARD", "VEE", "VEE_MID"]))
                         #belly
                         elif random() < 0.5:
-                            white_pattern.append(choice(['belly tuft', 'belly spot', 'belly tuft', 'belly spot', 'belly', "BELLY_SMALL", "BELLY_MIN"]))
+                            white_pattern.append(choice(['belly tuft', 'belly spot', 'belly tuft', 'belly spot', 'belly', "BELLY_SMALL", "BELLY_MIN", "UNDER_SMALL"]))
 
                         #toes
                         nropaws = choice([4, 3, 2, 1, 0, 0])
@@ -480,7 +480,7 @@ class Pelt:
                         #chest
                         if random () < 0.8:
                             white_pattern.append(choice(['chest', 'chest', 'beard', 'chest', 'bib', 
-                            "BIB", "CHEST_BROKEN", "CHEST_MID", "DAMIEN_REDUCED", "NECKBEARD", "NECKTIE", "TEARDROP"]))
+                            "BIB", "CHEST_BROKEN", "CHEST_MID", "DAMIEN_REDUCED", "NECKBEARD", "NECKTIE", "TEARDROP", "UNDER_HEART", "UNDER_MID", "VEE_MID"]))
 
                         # belly
                         if random() < 0.8:
@@ -514,14 +514,16 @@ class Pelt:
                     while len(white_pattern) < 6:
                         #chest
                         white_pattern.append(choice(
-                            ['underbelly1', 'underbelly1', 'underbelly1', 
-                            'beard', 'chest', 
-                            "CHEST_BROKEN", "BELLY", "CHEST_MID", "TEARDROP"]))
+                            ['underbelly1', 'underbelly1', 
+                            choice(['beard', 'chest', "CHEST_BROKEN", "BELLY", "CHEST_MID", "TEARDROP", "UNDER_HEART", "UNDER_MID", "VEE_FULL"])
+                            ]))
 
                         #belly
                         if 'underbelly1' not in white_pattern:
                             white_pattern.append('belly')
-                        white_pattern.append(choice(['belt', 'belt', 'pants'] + [None] * 7))
+                        
+                        if random() < 0.25:
+                            white_pattern.append(choice(['belt', 'BELLY_FULL', 'pants']))
 
                         #paws
                         nropaws = choice([4, 4, 4, 4, 3, 3, 2, 2, 1])
@@ -568,7 +570,8 @@ class Pelt:
                     while len(white_pattern) < 6:
                         #chest
                         white_pattern.append('underbelly1')
-                        white_pattern.append(choice(['belt', 'belt', 'pants'] + [None] * 7))
+                        if random() < 0.25:
+                            white_pattern.append(choice(['belt', 'BELLY_FULL', 'pants']))
 
                         #paws
                         nropaws = 4
@@ -626,7 +629,8 @@ class Pelt:
                     while len(white_pattern) < 6:
                         #chest
                         white_pattern.append('underbelly1')
-                        white_pattern.append(choice(['belt', 'belt', 'pants'] + [None] * 7))
+                        if random() < 0.25:
+                            white_pattern.append(choice(['belt', 'BELLY_FULL', 'pants']))
 
                         #paws
                         nropaws = 4
@@ -698,15 +702,16 @@ class Pelt:
                         white_pattern.append(choice(["MASK_FULL", "MASK_HIGH"]))
                     else:
                         white_pattern.append(choice(['muzzle1', 'muzzle1', 'muzzle2', 'blaze', 'blaze']))
-                    
 
+                    if random() < 0.1:
+                        white_pattern.append(choice(["BLAZE_FULL", "FOREHEAD_MID", choice(["TEARS", "TEARS", "TEARS_L", "TEARS_R"]), choice(["UNDEREYE_MAX_L", "UNDEREYE_MAX_R"])]))
                     if random() < 0.25:
                         white_pattern.append(choice(["BEARD_FULL", "BEARD_HIGH", "BEARD_MID"]))
 
                     if random () < 0.2:
                         white_pattern.append(choice(['break/nose1', 'break/nose2']))
                     if random () < 0.1:
-                        white_pattern.append(choice(['break/chin', "BLAZE_FULL", "FOREHEAD_MID", "break/CHIN", choice(["TEARS", "TEARS", "TEARS_L", "TEARS_R"])]))
+                        white_pattern.append(choice(['break/chin', "break/CHIN"]))
 
                     #tail
                     if random() < 0.1:
@@ -759,8 +764,9 @@ class Pelt:
                         weights += [1, 1]
 
                         options += [choice(['FOREHEAD_STRIPE']),
-                                    choice(["TEARS", "TEARS", "TEARS_L", "TEARS_R"])]
-                        weights += [2, 2]
+                                    choice(["TEARS", "TEARS", "TEARS_L", "TEARS_R"]),
+                                    choice(["UNDEREYE_MAX_L", "UNDEREYE_MAX_R"])]
+                        weights += [1, 2, 2]
 
                         options += [choice(["break/BACKSPOT", "break/SADDLE_SMALL"])]
                         weights += [2]
@@ -783,6 +789,9 @@ class Pelt:
                         white_pattern.append(choice(['break/right no', 'break/left no']))
                     if random() < 0.075:
                         white_pattern.append(choice(['break/pants']))
+                        
+                    if random() < 0.1:
+                        white_pattern.append(choice(choice(["UNDEREYE_MAX_L", "UNDEREYE_MAX_R"])))
 
                     if random() < 0.9:
                         options = []
@@ -871,8 +880,10 @@ class Pelt:
 
             if "NoDBE" not in pax3:
                 white_pattern.append(choice(["MASK_HIGH", "MASK_MID", "MASK_FACE", "MASK_REVERSE_BROWS"]))
-            elif pax3[0] != "NoDBE" and random() < 0.5:
-                white_pattern.append(choice(["BLAZE", "BLAZE_MID", "BLAZE_SMALL", "EYESPOT_L", "EYESPOT_R", "MUZZLE"]))
+            elif pax3[0] != "NoDBE" and random() < 0.25:
+                white_pattern.append(choice(["BLAZE", "BLAZE_MID", "BLAZE_SMALL", "EYESPOT_L", "EYESPOT_R", "MUZZLE",
+                "UNDEREYE_MAX_L", "UNDEREYE_MAX_R", "UNDEREYE_MIN_L", "UNDEREYE_MIN_R"]))
+            
             if KIT[0] != "wg" and random() < 0.2:
                 valid_legs = []
                 for w in white_pattern:

@@ -1258,7 +1258,7 @@
             "senior adult": 0.02,
             "senior": 0.04
         },
-        "infectiousness": 0.01,
+        "infectiousness": 0.0,
         "immune_system_effect": 0.0,
         "side_effect": { },
         "progression": {

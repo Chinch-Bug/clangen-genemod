@@ -59,7 +59,7 @@ def accurate_porting(cat, info):
             "1": ["RIGHTEAR", "LEFTEAR", "ESTRELLA", "BACKSPOT", "EYEBAGS", "MASK_MIN"],
             "2": ["EXTRA", "BLAZEMASK", "TEARS"],
             "3": ["TOPCOVER", "WINGS", "WOODPECKER", "FADEBELLY", "ROSINA"],
-            "4": ["FADESPOTS", "MITAINE", "SKUNK", "BULLSEYE"],
+            "4": ["FADESPOTS", "MITAINE", "SKUNK", "BADGERFANG", "BULLSEYE"],
             "5": ["SPARROW"]
         },
         "high": {
@@ -118,7 +118,7 @@ def accurate_porting(cat, info):
         white_found = False
         for i in range(1, 6):
             if cat.phenotype.white_pattern[0] in maingame_white["low"][str(i)]:
-                if cat.phenotype.white_pattern[0] == "SKUNK":
+                if cat.phenotype.white_pattern[0] in ["SKUNK", "BADGERFANG"]:
                     cat.phenotype.white = ["wt", "w"]
                 else:
                     cat.phenotype.white = ["ws", "w"]
