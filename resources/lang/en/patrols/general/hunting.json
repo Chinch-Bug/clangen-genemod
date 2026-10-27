@@ -15301,7 +15301,7 @@
                         "can_create_new_cat": {
                         },
                         "status": ["kittypet", "loner", "rogue"],
-                        "age": ["-newborn", "-kitten"],
+                        "age": ["adolescent", "young adult", "adult", "senior adult"],
                         "stat": {
                             "trait": ["-bloodthirsty", "-vengeful"],
                             "must_have_both": false
@@ -15434,7 +15434,7 @@
                         "can_create_new_cat": {
                         },
                         "status": ["kittypet", "loner", "rogue"],
-                        "age": ["-newborn", "-kitten"]
+                        "age": [ "adolescent", "young adult", "adult", "senior adult" ]
                     }
                 },
                 "strings": [
@@ -15757,7 +15757,7 @@
                         "can_create_new_cat": {
                         },
                         "status": ["kittypet", "loner", "rogue"],
-                        "age": ["-newborn", "-kitten"],
+                        "age": [ "adolescent", "young adult", "adult", "senior adult" ],
                         "stat": {
                             "trait": ["-bloodthirsty", "-vengeful"],
                             "must_have_both": false
@@ -15854,7 +15854,7 @@
                         "can_create_new_cat": {
                         },
                         "status": ["kittypet", "loner", "rogue"],
-                        "age": ["-newborn", "-kitten"]
+                        "age": [ "adolescent", "young adult", "adult", "senior adult" ]
                     }
                 },
                 "strings": [

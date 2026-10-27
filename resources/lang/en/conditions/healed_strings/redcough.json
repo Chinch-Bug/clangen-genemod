@@ -13,7 +13,6 @@
         "strings": [
             "When m_c woke, better than {PRONOUN/m_c/subject} had felt in moons, {PRONOUN/m_c/subject} swore a StarClan cat, r_c0, had healed {PRONOUN/m_c/object} in {PRONOUN/m_c/poss} dreams."
         ],
-        "frequency": 1,
         "involved_cats": {
             "m_c": { 
                 "stat": {

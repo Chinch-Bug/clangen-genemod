@@ -1350,10 +1350,16 @@ def gather_cat_objects(
         # SMALL CAT GROUPS
         found_cat_list = set()
         if re.match(r"n_c:[0-9]+", abbr):  # new_cats
-            index = re.match(r"n_c:([0-9]+)", abbr).group(1)
-            index = int(index)
-            if index < len(event.new_cats):
-                found_cat_list.update(event.new_cats[index])
+            if event:
+                index = re.match(r"n_c:([0-9]+)", abbr).group(1)
+                index = int(index)
+                if index < len(event.new_cats):
+                    found_cat_list.update(event.new_cats[index])
+            else:
+                if isinstance(involved_cats.get(abbr), list):
+                    found_cat_list.update(involved_cats[abbr])
+                else:
+                    found_cat_list.append(involved_cats[abbr])
         # OVERALL CLAN CATS
         elif abbr == "clan":
             found_cat_list.update(clan_cats)
