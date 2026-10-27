@@ -1237,16 +1237,7 @@ def create_new_cat(
             chance = int(get_config("cat_generation.base_permanent_condition") / 11.25)
         else:
             chance = get_config("cat_generation.base_permanent_condition")
-
-        if not is_parent and get_clan_setting('tnr_mode') and moons > 5:
-            kittypet_n = get_config("tnr_mode.kittypet_neuter")
-            loner_n = get_config("tnr_mode.loner_tnr")
-            if original_social == CatSocial.KITTYPET and random() < kittypet_n:
-                gain_permanent_condition(new_cat, "sterile", False)
-            if original_social in (CatSocial.LONER, CatSocial.ROGUE) and random() < loner_n:
-                gain_permanent_condition(new_cat, "sterile", False)
-                new_cat.pelt.scars = (*new_cat.pelt.scars, "TNR")
-                new_cat.pelt.rebuild_sprite = True
+            
         if not int(random() * chance):
             possible_conditions = []
             for condition in PERMANENT_CONDITIONS:

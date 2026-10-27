@@ -581,6 +581,8 @@ stripecolourdict = {
 def calculate_base_colour(base, warmth):
     if ('red' in base or 'cream' in base or 'honey' in base or 'ivory' in base or 'apricot' in base):
         return sprites.sprites[stripecolourdict.get(base[:-1], base[:-1])+base[-1]].copy()
+    if "basecolours" in base:
+        return sprites.sprites[base].copy()
     if warmth == 0:
         return sprites.sprites[base].copy()
     if warmth == 2:
@@ -1114,6 +1116,7 @@ def create_cat(cat, phenotype, cat_sprite, sprite_age, season_override, merle=Fa
         pad_dict = {
             'red' : 0,
             'whit' : 1,
+            'lightbasecolours' : 1,
             'black' : 3,
             'chocolate' : 4,
             'cinnamon' : 5,
@@ -1150,7 +1153,8 @@ def create_cat(cat, phenotype, cat_sprite, sprite_age, season_override, merle=Fa
 
         nose_dict = {
             'red' : 0,
-            'whit' : 1,
+            'whit': 1,
+            'lightbasecolours': 1,
             'tabby' : 2,
             'black' : 3,
             'chocolate' : 4,
