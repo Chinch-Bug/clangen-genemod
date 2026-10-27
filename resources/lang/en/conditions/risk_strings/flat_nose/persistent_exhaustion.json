@@ -1,0 +1,26 @@
+[
+    {
+        "event_id": "flat_nose_persistent_exhaustion0",
+        "strings": [
+            "m_c seeks advice to regain {PRONOUN/m_c/poss} energy, only for r_c0 to inform {PRONOUN/m_c/object} this may be the new baseline."
+        ],
+        "involved_cats": {
+            "m_c": { },
+            "r_c0": {
+                "status": [
+                    "medicine cat"
+                ],
+                "group": ["player_clan"]
+            }
+        }
+    },
+    {
+        "event_id": "flat_nose_persistent_exhaustion1",
+        "strings": [
+            "m_c has always tired easily, yet can't help but feel that it's gotten worse."
+        ],
+        "involved_cats": {
+            "m_c": { }
+        }
+    }
+]

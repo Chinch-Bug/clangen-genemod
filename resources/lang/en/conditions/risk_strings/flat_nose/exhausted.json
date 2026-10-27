@@ -1,6 +1,6 @@
 [
     {
-        "event_id": "flat_nose_exhaustion0",
+        "event_id": "flat_nose_exhausted0",
         "strings": [
             "m_c has been hard at work, and it's done {PRONOUN/m_c/object} no favours. r_c0 steps in with an order to rest for a while instead, lest the exhaustion get dangerous."
         ],
@@ -15,7 +15,7 @@
         }
     },
     {
-        "event_id": "flat_nose_exhaustion1",
+        "event_id": "flat_nose_exhausted1",
         "strings": [
             "m_c has never felt as tired and out of breath as {PRONOUN/m_c/subject} have the recent few days, leaving {PRONOUN/m_c/object} unable to work."
         ],

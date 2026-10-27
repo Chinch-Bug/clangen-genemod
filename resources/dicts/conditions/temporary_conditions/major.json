@@ -152,7 +152,13 @@
         "infectiousness": 0.25,
         "immune_system_effect": 0.0,
         "side_effect": {},
-        "progression": {},
+        "progression": {
+            "temporary_weakness": {
+                "chance": 0.5,
+                "when": "HEALED",
+                "allow_scar": false
+            }
+        },
         "risks": {
             "sore_throat": 0.1
         },
@@ -206,7 +212,9 @@
         "mortality": {},
         "infectiousness": 0.0,
         "immune_system_effect": 0.0,
-        "side_effect": {},
+        "side_effect": {
+            "exhausted": 0.25
+        },
         "progression": {},
         "risks": {},
         "treatment_strength": {
@@ -237,6 +245,11 @@
             "selective_mutism": {
                 "chance": 0.02,
                 "when": "CONTINUING",
+                "allow_scar": false
+            },
+            "persistent_exhaustion": {
+                "chance": 0.05,
+                "when": "HEALED",
                 "allow_scar": false
             }
         },
@@ -271,7 +284,18 @@
         "infectiousness": 0.0,
         "immune_system_effect": 0.1,
         "side_effect": {},
-        "progression": {},
+        "progression": {
+            "temporary_weakness": {
+                "chance": 0.6,
+                "when": "HEALED",
+                "allow_scar": false
+            },
+            "persistent_exhaustion": {
+                "chance": 0.15,
+                "when": "HEALED",
+                "allow_scar": false
+            }
+        },
         "risks": {},
         "treatment_strength": {
             "1": [
@@ -712,6 +736,16 @@
                 "chance": 0.2,
                 "when": "CONTINUING",
                 "allow_scar": true
+            },
+            "temporary_weakness": {
+                "chance": 0.4,
+                "when": "HEALED",
+                "allow_scar": true
+            },
+            "weakened_muscles": {
+                "chance": 0.2,
+                "when": "HEALED",
+                "allow_scar": true
             }
         },
         "risks": {
@@ -754,9 +788,16 @@
         "side_effect": {
             "blood_loss": 0.1
         },
-        "progression": {},
+        "progression": {
+            "temporary_weakness": {
+                "chance": 0.5,
+                "when": "HEALED",
+                "allow_scar": false
+            }
+        },
         "risks": {
-            "infection": 0.1
+            "infection": 0.1,
+            "exhausted": 0.15
         },
         "treatment_strength": {
             "1": [
@@ -791,6 +832,11 @@
         "progression": {
             "raspy_lungs": {
                 "chance": 0.2,
+                "when": "HEALED",
+                "allow_scar": false
+            },
+            "temporary_weakness": {
+                "chance": 0.5,
                 "when": "HEALED",
                 "allow_scar": false
             }
@@ -830,7 +876,13 @@
         "infectiousness": 0.0,
         "immune_system_effect": 0.0,
         "side_effect": {},
-        "progression": {},
+        "progression": {
+            "temporary_weakness": {
+                "chance": 0.75,
+                "when": "HEALED",
+                "allow_scar": false
+            }
+        },
         "risks": {
             "infection": 0.3
         },
@@ -872,6 +924,11 @@
         "progression": {
             "lingering_shock": {
                 "chance": 0.05,
+                "when": "HEALED",
+                "allow_scar": false
+            },
+            "persistent_exhaustion": {
+                "chance": 0.02,
                 "when": "HEALED",
                 "allow_scar": false
             }
@@ -1006,8 +1063,23 @@
                 "when": "HEALED",
                 "allow_scar": false
             },
+            "persistent_exhaustion": {
+                "chance": 0.1,
+                "when": "HEALED",
+                "allow_scar": false
+            },
             "absent": {
                 "chance": 0.05,
+                "when": "HEALED",
+                "allow_scar": false
+            },
+            "temporary_weakness": {
+                "chance": 0.4,
+                "when": "HEALED",
+                "allow_scar": false
+            },
+            "weakened_muscles": {
+                "chance": 0.15,
                 "when": "HEALED",
                 "allow_scar": false
             }
@@ -1051,6 +1123,16 @@
             "redcough": {
                 "chance": 0.1,
                 "when": "CONTINUING",
+                "allow_scar": false
+            },
+            "temporary_weakness": {
+                "chance": 0.5,
+                "when": "HEALED",
+                "allow_scar": false
+            },
+            "persistent_exhaustion": {
+                "chance": 0.15,
+                "when": "HEALED",
                 "allow_scar": false
             }
         },
@@ -1097,7 +1179,9 @@
         "immune_system_effect": 0.0,
         "side_effect": {},
         "progression": {},
-        "risks": {},
+        "risks": {
+            "exhausted": 0.05
+        },
         "treatment_strength": {
             "1": [],
             "2": [],
@@ -1210,6 +1294,16 @@
                 "chance": 0.2,
                 "when": "HEALED",
                 "allow_scar": false
+            },
+            "persistent_exhaustion": {
+                "chance": 0.2,
+                "when": "HEALED",
+                "allow_scar": false
+            },
+            "temporary_weakness": {
+                "chance": 0.5,
+                "when": "HEALED",
+                "allow_scar": false
             }
         },
         "risks": {
@@ -1229,24 +1323,8 @@
             ]
         }
     },
-    "exhaustion": {
-        "tags": [ ],
-        "severity": "major",
-        "duration": 5,
-        "mortality": { },
-        "infectiousness": 0.0,
-        "immune_system_effect": 0.01,
-        "side_effect": { },
-        "progression": { },
-        "risks": { },
-        "treatment_strength": {
-            "1": [ "juniper", "ragwort" ],
-            "2": [ ],
-            "3": [ ]
-        }
-    },
     "ear_infection": {
-        "tags": ["illness"],
+        "tags": [ "illness" ],
         "severity": "major",
         "duration": 1,
         "mortality": {
@@ -1280,5 +1358,25 @@
             "2": [ ],
             "3": [ ]
         }
-    }
+    },
+    "exhausted": {
+        "tags": [],
+        "severity": "major",
+        "duration": 1,
+        "is_complication": false,
+        "mortality": {},
+        "infectiousness": 0.0,
+        "immune_system_effect": 0.1,
+        "side_effect": {},
+        "progression": {},
+        "risks": {},
+        "treatment_strength": {
+            "1": [],
+            "2": [
+                "ragwort",
+                "juniper"
+            ],
+            "3": []
+        }
+    }   
 }

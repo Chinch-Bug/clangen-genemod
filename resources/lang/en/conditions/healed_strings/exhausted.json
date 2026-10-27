@@ -1,13 +1,14 @@
 [
     {
-        "event_id": "healed_exhaustion0",
+        "event_id": "healed_exhausted0",
         "strings": [
             "m_c finally feels full of energy again.",
-            "m_c's exhaustion has faded.",
+            "m_c is feeling less fatigued.",
+            "m_c has regained {PRONOUN/m_c/poss} energy.",
             "m_c is happy to finally feel fully rested."
         ],
         "involved_cats": {
-            "m_c": { }
+            "m_c": {}
         }
     }
 ]
