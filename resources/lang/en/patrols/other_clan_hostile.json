@@ -3765,9 +3765,6 @@
                 "warrior"
             ]
         },
-        "season": [
-            "leaf-bare"
-        ],
         "required_cat_types": {
             "patrol_cats": [
                 1,

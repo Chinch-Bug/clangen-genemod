@@ -1604,6 +1604,7 @@ def _get_cats_from_group(
         return cat_list
 
     is_exclusionary = _check_for_exclusionary_value(groups)
+    main_clan = main_clan.group_ID if main_clan else None
 
     groups = [x.replace("-", "") for x in groups]
     remaining_tags = groups.copy()
@@ -1643,18 +1644,18 @@ def _get_cats_from_group(
 
         elif tag == "player_clan":  # checks if the cat is in the main_cat's clan
             if is_exclusionary:
-                cat_list = [c for c in cat_list if c.status.group_ID != main_clan.group_ID]
+                cat_list = [c for c in cat_list if c.status.group_ID != main_clan]
             else:
-                cat_list = [c for c in cat_list if c.status.group_ID == main_clan.group_ID]
+                cat_list = [c for c in cat_list if c.status.group_ID == main_clan]
             remaining_tags.remove(tag)
 
         elif tag == "other_clan":  # checks if the cat isn't in the main_cat's clan
             if is_exclusionary:
                 cat_list = [
-                    c for c in cat_list if c.status.group_ID == main_clan.group_ID or c.status.group not in [CatGroup.PLAYER_CLAN, CatGroup.OTHER_CLAN]]
+                    c for c in cat_list if c.status.group_ID == main_clan or c.status.group not in [CatGroup.PLAYER_CLAN, CatGroup.OTHER_CLAN]]
             else:
                 cat_list = [
-                    c for c in cat_list if c.status.group_ID != main_clan.group_ID and c.status.group in [CatGroup.PLAYER_CLAN, CatGroup.OTHER_CLAN]]
+                    c for c in cat_list if c.status.group_ID != main_clan and c.status.group in [CatGroup.PLAYER_CLAN, CatGroup.OTHER_CLAN]]
             remaining_tags.remove(tag)
 
     # checks all the plain group tags that will match the CatGroup enums
