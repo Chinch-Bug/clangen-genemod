@@ -791,7 +791,7 @@ class Pelt:
                         white_pattern.append(choice(['break/pants']))
                         
                     if random() < 0.1:
-                        white_pattern.append(choice(choice(["UNDEREYE_MAX_L", "UNDEREYE_MAX_R"])))
+                        white_pattern.append(choice([choice(["UNDEREYE_MAX_L", "UNDEREYE_MAX_R"])]))
 
                     if random() < 0.9:
                         options = []

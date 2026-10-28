@@ -1058,6 +1058,9 @@ def create_new_cat(
             moons = randint(120, 130)
         else:
             moons = randint(6, 120)
+    
+    if moons:
+        moons = min(moons, get_config("cat_generation.max_age"))
 
     # setting rank
     if not rank and not outside:
@@ -1075,7 +1078,7 @@ def create_new_cat(
     # need to get actual age enum
     age = CatAge.SENIOR
     for key_age in Cat.age_moons.keys():
-        if moons in range(Cat.age_moons[key_age][0], min(Cat.age_moons[key_age][1], get_config("cat_generation.max_age")) + 1):
+        if moons in range(Cat.age_moons[key_age][0], Cat.age_moons[key_age][1] + 1):
             age: CatAge = key_age
             break
 

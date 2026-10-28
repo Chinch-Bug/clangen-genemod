@@ -146,6 +146,10 @@ def handle_temporary_conditions(cat: Cat):
             condition.omit_moonskip = False
             continue
 
+        if not cat.status.alive_in_player_clan and condition.name in ["starving", "malnourished"]:
+            conditions_to_remove.append(condition)
+            continue
+
         scar_applied = False
 
         condition_extra_info = TEMPORARY_CONDITIONS[condition.name]
