@@ -906,31 +906,12 @@ class Genotype:
         self.EyeColourFinder()
 
     def BreedGenerator(self, special=None):
-
-        common_breeds = [
-            "Abyssinian", "American Burmese/Bombay", "American Curl", "American Shorthair", "Asian/Burmese", 
-            "Bengal", "Birman", "British", "Chartreux", "Cornish Rex", "Devon Rex", "Egyptian Mau", 
-            "Havana", "Japanese Bobtail", "Korat", "LaPerm", "Lykoi", "Maine Coon", "Manx", "Norwegian Forest cat", 
-            "Ocicat", "Oriental/Siamese", "Persian/Exotic", "Ragdoll", "Russian", "Selkirk Rex", "Siberian", 
-            "Singapura", "Sphynx", "Tonkinese", "Turkish"
-        ]
-        medium_breeds = [
-            "American Bobtail", "Australian Mist", "Bambino", "Chausie", "Donskoy", "European Shorthair", "German Rex",
-            "Highlander", "Khao Manee", "Kurilian Bobtail", "Mandalay/Burmese", "Munchkin", "Peterbald", "Pixie-Bob",
-            "Ragamuffin", "Savannah", "Snowshoe", "Sokoke", "Thai", "Toybob", "Toyger"
-        ]
-        rare_breeds = [
-            "Aphrodite", "Arabian Mau", "Brazilian Shorthair", "Cheetoh", "Ceylon", "Foldex", "Gaelic Fold", 
-            "German Longhair", "Kanaani", "Karelian Bobtail", "Kinkalow", "Lambkin", "Lin-Qing Lion cat", "Mekong Bobtail", 
-            "Minuet", "New Zealand", "Serengeti", "Skookum", "Tennessee Rex", "Ural Rex"
-        ]
-
-        selected_breed = choice(choice([rare_breeds, medium_breeds, medium_breeds, medium_breeds, medium_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds]))
+        selected_breed = choice(choices([self.odds["rare_breeds"], self.odds["medium_breeds"], self.odds["common_breeds"]], weights=[1, 5, 14], k=1)[0])
 
         if self.ban_genes:
             while selected_breed in ["Lykoi", "Manx", "Sphynx", "Bambino", "Donskoy", "Munchkin", "Peterbald", "Foldex", "Gaelic Fold",
             "Kinkalow", "Lambkin", "Minuet", "Skookum"]:
-                selected_breed = choice(choice([rare_breeds, medium_breeds, medium_breeds, medium_breeds, medium_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds, common_breeds]))
+                selected_breed = choice(choices([self.odds["rare_breeds"], self.odds["medium_breeds"], self.odds["common_breeds"]], weights=[1, 5, 14], k=1)[0])
         
         gen = breed_functions["generator"][selected_breed]
 

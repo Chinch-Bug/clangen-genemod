@@ -1032,6 +1032,24 @@ dev_tools = false
   # 1/chance for newly generated kittypets and other cats to be purebred
   kittypet_breed = 150
   other_breed = 1000
+  
+  # not necessarily meant to be indicative of irl breed rarity
+  common_breeds = [
+    "Abyssinian", "American Burmese/Bombay", "American Curl", "Asian/Burmese", "Bengal", "Birman", "British", "Chartreux", 
+    "Cornish Rex", "Devon Rex", "Egyptian Mau", "Havana", "Japanese Bobtail", "Korat", "LaPerm", "Lykoi", "Maine Coon", 
+    "Manx", "Norwegian Forest cat", "Oriental/Siamese", "Persian/Exotic", "Ragdoll", "Russian", "Selkirk Rex", 
+    "Siberian", "Sphynx", "Tonkinese", "Turkish"
+  ]
+  medium_breeds = [
+    "American Bobtail", "American Shorthair", "Australian Mist", "Bambino", "Chausie", "Donskoy", "European Shorthair", 
+    "German Rex", "Highlander", "Khao Manee", "Kurilian Bobtail", "Mandalay/Burmese", "Munchkin", "Ocicat", "Peterbald", 
+    "Pixie-Bob", "Ragamuffin", "Savannah", "Singapura", "Snowshoe", "Sokoke", "Thai", "Toybob", "Toyger"
+  ]
+  rare_breeds = [
+    "Aphrodite", "Arabian Mau", "Brazilian Shorthair", "Cheetoh", "Ceylon", "Foldex", "Gaelic Fold", 
+    "German Longhair", "Kanaani", "Karelian Bobtail", "Kinkalow", "Lambkin", "Lin-Qing Lion cat", "Mekong Bobtail", 
+    "Minuet", "New Zealand", "Serengeti", "Skookum", "Tennessee Rex", "Ural Rex"
+  ]
 
   # when gene boost is applicable, chance will be divided by this value and rounded up. Eg. for chocolate it would be 20/1.5 = 14
   boost_value = 1.5

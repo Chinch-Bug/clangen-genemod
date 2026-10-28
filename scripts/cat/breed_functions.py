@@ -1091,10 +1091,9 @@ class Breed_generator:
 
         genoclass.furLength = ["l", "l"]
         
-        if random() < 0.95:
-            genoclass.karp = ["K", "K"]
-        elif random() < 0.80:
-            genoclass.karp = ["K", 'k']
+        for i in range(2):
+            if random() < 0.95:
+                genoclass.karp[i] = "K"
 
         genoclass.longtype = "long"
         
@@ -1377,10 +1376,9 @@ class Breed_generator:
 
         # karp + bleach + ghosting + satin + glitter
 
-        if random() < 0.1:
-            genoclass.karp = ["K", "K"]
-        elif random() < 0.1:
-            genoclass.karp[0] = "K"
+        for i in range(2):
+            if random() < 0.95:
+                genoclass.karp[i] = "K"
 
         if random() < 0.01:
             genoclass.bleach = ["lb", "lb"]
