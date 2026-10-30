@@ -120,9 +120,10 @@ class Pelt:
                   'RAVENPAW', 'DAPPLEPAW', 'LILTWO', 'REVERSEHEART', 'SPARKLE', 'REVERSEEYE', "CHEST_MID", "CHEST_SMALL",
                   "CHEST_STREAK", "BELLY_MIN", "MINTOESTAIL", "SPARKLECAT", "DAMIEN", "DIVA", "DOCTOR", "FCONE_REDUCED"],
             '3': ['TUXEDO', 'SAVANNAH', 'FANCY', 'DIVA', 'BEARD', "DAMIEN_REDUCED", 'DAMIEN', 'BELLY', 'SQUEAKS', 'STAR', 'MISS',
-                  'FCTWO', 'FCONE', 'MIA', 'PRINCESS', 'DOUGIE', 'STREAMSTRIKE', "NECKTIE", "BOWTIE", "DAMIEN", "FCTWO_REDUCED"],
+                  'FCTWO', 'FCONE', 'MIA', 'PRINCESS', 'DOUGIE', 'STREAMSTRIKE', "NECKTIE", "BOWTIE", "DAMIEN", "FCTWO_REDUCED",
+                  "HUNTSMANGLIDE"],
             '4': ['TUXEDO', 'SAVANNAH', 'OWL', 'RINGTAIL', 'FAROFA', 'VEST', 'FRONT', 'BLOSSOMSTEP', 'DIGIT',
-                  'HAWKBLAZE', "BERRYHEART", "CLIFF", 'DIGIT_REDUCED'],
+                  'HAWKBLAZE', "BERRYHEART", "CLIFF", 'DIGIT_REDUCED', "FUZZSPOT"],
             '5': ['ANY', 'SHIBAINU', 'FAROFA', 'MISTER', 'PANTS', 'TRIXIE']
         },
         'high': {
@@ -525,8 +526,8 @@ class Pelt:
                         if 'underbelly1' not in white_pattern:
                             white_pattern.append('belly')
                         
-                        if random() < 0.2:
-                            white_pattern.append(choice(['belt', 'BELLY_FULL', 'pants']))
+                        if random() < 0.1:
+                            white_pattern.append(choice(['belt', 'BELLY_FULL', 'pants', "FLANK_MID"]))
 
                         #paws
                         nropaws = choice([4, 4, 4, 4, 3, 3, 2, 2, 1])
@@ -573,8 +574,8 @@ class Pelt:
                     while len(white_pattern) < 6:
                         #chest
                         white_pattern.append('underbelly1')
-                        if random() < 0.25:
-                            white_pattern.append(choice(['belt', 'BELLY_FULL', 'pants']))
+                        if random() < 0.15:
+                            white_pattern.append(choice(['belt', 'BELLY_FULL', 'pants', "FLANK_FULL", "FLANK_MID"]))
 
                         #paws
                         nropaws = 4

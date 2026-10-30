@@ -6,7 +6,7 @@ from pygame_gui.elements import UIAutoResizingContainer, UIImage
 from scripts.game_structure import constants, game, image_cache
 from scripts.game_structure.screen_settings import MANAGER
 from scripts.ui.elements.cruel_card_icon import UICruelCardIcon
-from scripts.ui.elements.text_box_tweaked import UITextBoxTweaked
+from scripts.ui.elements.cruel_card_large import UICruelCardLarge
 from scripts.ui.scale import ui_scale, ui_scale_dimensions
 from scripts.ui.windows.window_base_class import GameWindow
 
@@ -101,7 +101,7 @@ class ViewCardsWindow(GameWindow):
             container=self.elements["card_info_container"],
             anchors={"top_target": self.big_card_elements[name]},
         )
-        self.big_card_elements["card_description"] = UITextBoxTweaked(
+        self.big_card_elements["card_description"] = pygame_gui.elements.UITextBox(
             f"cruel_season.card_descriptions.{name}",
             ui_scale(pygame.Rect((0, 0), (300, 70))),
             object_id="#text_box_22_horizcenter_spacing_95",

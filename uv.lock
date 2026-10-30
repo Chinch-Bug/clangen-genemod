@@ -293,7 +293,7 @@ requires-dist = [
     { name = "platformdirs", specifier = "~=3.3" },
     { name = "pydantic", specifier = ">=2.12.0" },
     { name = "pygame-ce", specifier = "~=2.2" },
-    { name = "pygame-gui", specifier = "~=0.6" },
+    { name = "pygame-gui", specifier = ">=0.6.14" },
     { name = "pypresence", marker = "extra == 'discord'", specifier = "~=4.2" },
     { name = "requests", specifier = "~=2.28" },
     { name = "strenum", specifier = "~=0.4" },
@@ -802,14 +802,14 @@ wheels = [
 
 [[package]]
 name = "pygame-gui"
-version = "0.6.13"
+version = "0.6.14"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pygame-ce" },
     { name = "python-i18n" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b4/25/dc290e969137649e372c6940ce23e793e15f976fd6629c77fb5bae8ec4c3/pygame_gui-0.6.13-py3-none-any.whl", hash = "sha256:278ddcccf9238e5c2001a706adc918e38836f0ecf5e0d07cea8474615c216028", size = 30853360 },
+    { url = "https://files.pythonhosted.org/packages/29/bf/d2589b06e39a6588480e6313ab530a6073a4ac6734d0f48a1883a5c46236/pygame_gui-0.6.14-py2.py3-none-any.whl", hash = "sha256:e351e88fab01756af6338d071c3cf6ce832a90c3b9f7db4fcb7b5216d5634482", size = 30896869 },
 ]
 
 [[package]]

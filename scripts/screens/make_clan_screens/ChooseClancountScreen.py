@@ -12,7 +12,6 @@ from scripts.game_structure.screen_settings import MANAGER
 from scripts.screens.enums import GameScreen
 from scripts.screens.make_clan_screens.MakeClanScreenBase import MakeClanScreenBase
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton
-from scripts.ui.elements.text_box_tweaked import UITextBoxTweaked
 from scripts.ui.generate_button import ButtonStyles, get_button_dict
 from scripts.ui.scale import ui_scale, ui_scale_dimensions
 from scripts.ui.theme import get_text_box_theme
@@ -74,7 +73,7 @@ class ChooseClancountScreen(MakeClanScreenBase):
             manager=MANAGER,
         )
 
-        self.elements["mode_details"] = UITextBoxTweaked(
+        self.elements["mode_details"] = pygame_gui.elements.UITextBox(
             "",
             ui_scale(pygame.Rect((345, 180), (365, 360))),
             object_id="#text_box_30_horizleft",

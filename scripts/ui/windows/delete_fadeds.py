@@ -2,7 +2,6 @@ import pygame
 import pygame_gui
 import os
 
-from scripts.ui.elements.text_box_tweaked import UITextBoxTweaked
 from scripts.ui.elements.surface_image_button import UISurfaceImageButton
 from scripts.screens.enums import GameScreen
 from scripts.ui.windows.window_base_class import GameWindow
@@ -26,10 +25,9 @@ class DeleteCatCheck(GameWindow):
         self.clan_name = clan_name
         self.reloadscreen = reloadscreen
 
-        self.delete_check_message = UITextBoxTweaked(
+        self.delete_check_message = pygame_gui.elements.UITextBox(
             f"Do you wish to delete your faded cats? This is permanent and cannot be undone. Making a copy of save data is recommended in case any issues arise.",
             ui_scale(pygame.Rect((20, 20), (250, -1))),
-            line_spacing=1,
             object_id="#text_box_30_horizcenter",
             container=self,
         )
@@ -108,10 +106,9 @@ class DeleteCatHistoryCheck(GameWindow):
         self.reloadscreen = reloadscreen
         self.clan_name = clan_name
 
-        self.delete_check_message = UITextBoxTweaked(
+        self.delete_check_message = pygame_gui.elements.UITextBox(
             f"Do you wish to delete your faded cats' history information? This is permanent and cannot be undone.",
             ui_scale(pygame.Rect((20, 20), (260, -1))),
-            line_spacing=1,
             object_id="#text_box_30_horizcenter",
             container=self,
         )
