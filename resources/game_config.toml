@@ -1203,6 +1203,14 @@ dev_tools = false
   clan_tnr = 0.99
   clan_tnr2 = 0.5
 
+[patrol_related]
+  [patrol_related.allow_player_selection]
+    all = true
+    training = true
+    hunting = true
+    border = true
+    med = true
+
 [graduation]
   # minimum age required for a cat to graduate
   min_graduating_age = 10

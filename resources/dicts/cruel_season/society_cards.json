@@ -53,5 +53,11 @@
       "clan_creation.ranks_needed.deputy": false,
       "roles.only_leader_kits_deputy": true
     }
+  },
+  "disorganized": {
+    "card_art": "society/resolute.png",
+    "modifiers": {
+      "patrol_related.allow_player_selection.all": false
+    }
   }
 }

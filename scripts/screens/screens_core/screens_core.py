@@ -312,6 +312,7 @@ def rebuild_moon_n_season_indicator(change_moon: bool = False, visible: bool = F
 
         moon_icon = getattr(Icon, f"MOON_PHASE{chosen_moon_phase}")
 
+        clancount = game.clan.clancount if hasattr(game.clan, "clancount") else "singleclan"
         menu_buttons["moon_indicator"] = UITextBox(
             moon_icon,
             ui_scale(pygame.Rect((-23, -26), (30, 30))),
@@ -319,7 +320,7 @@ def rebuild_moon_n_season_indicator(change_moon: bool = False, visible: bool = F
             manager=MANAGER,
             starting_height=5,
             anchors={
-                "right_target": menu_buttons["heading"],
+                "right_target": menu_buttons["heading"].parent_button if clancount == "multiclan" else menu_buttons["heading"],
                 "right": "right",
                 "bottom_target": menu_buttons["events"],
                 "bottom": "bottom",
@@ -338,7 +339,7 @@ def rebuild_moon_n_season_indicator(change_moon: bool = False, visible: bool = F
             manager=MANAGER,
             starting_height=4,
             anchors={
-                "right_target": menu_buttons["heading"],
+                "right_target": menu_buttons["heading"].parent_button if clancount == "multiclan" else menu_buttons["heading"],
                 "right": "right",
                 "bottom_target": menu_buttons["events"],
                 "bottom": "bottom",
