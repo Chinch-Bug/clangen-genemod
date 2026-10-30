@@ -361,6 +361,23 @@ dev_tools = false
       comfort = 10
       trust = 10
 
+  # relationship values between new kits and the clan's permanent queens
+  [new_cat.queen_buff]
+  
+    [new_cat.queen_buff.kit_to_queen]
+      like = 15
+      respect = 15
+      comfort = 20
+      trust = 20
+      wobble = 15 # range by which each can vary from kit to kit (eg. 10 means it can be up to 10 below or 10 above the default value)
+
+    [new_cat.queen_buff.queen_to_kit]
+      like = 10
+      respect = 5
+      comfort = 10
+      trust = 5
+      wobble = 10 # range by which each can vary from kit to kit (eg. 10 means it can be up to 10 below or 10 above the default value)
+
   [new_cat.rel_buff]
     # default relationships buff for new cats relationships to other cats in the clan
     [new_cat.rel_buff.new_to_clan_cat]

@@ -245,7 +245,7 @@ def check_and_promote_deputy(clan):
     
     if (
         get_config("roles.only_leader_kits_deputy")
-        and clan.leader is not None
+        and clan.leader and clan.leader.status.group_ID == clan.group_ID
     ):
         possible_deputies = [c for c in possible_deputies if c.ID in get_leaders_kits(clan)]
 
@@ -259,7 +259,7 @@ def check_and_promote_deputy(clan):
     
         if (
             get_config("roles.only_leader_kits_deputy")
-            and clan.leader is not None
+            and clan.leader and clan.leader.status.group_ID == clan.group_ID
         ):
             possible_deputies = [c for c in possible_deputies if c.ID in get_leaders_kits(clan)]
 

@@ -366,6 +366,10 @@ def accurate_porting(cat, info):
         cat.phenotype.bengal = "2222"
     if main_colour["pattern"] in ["bengal", "masked", "marbled"] or (not cat.chimerapheno and patch_colour["pattern"] in ["bengal", "masked", "marbled"]):
         cat.phenotype.agouti = ["Apb", "a"]
+        cat.phenotype.unders_ruf = "0000"
+        if main_colour["colour"] in ["DARKGREY", "DARKBROWN"]:
+            cat.phenotype.silver[0] = "I"
+            main_colour["colour"] = "BLACK"
     elif (main_colour["pattern"] in ["single", "singlecolour", "twocolour", "smoke"] and main_colour["colour"] not in tabby_bases) or (main_colour["colour"] == "GHOST"):
         cat.phenotype.agouti = ["a", "a"]
 
@@ -397,6 +401,10 @@ def accurate_porting(cat, info):
             cat.chimerapheno.bengal = "2222"
             if patch_colour["pattern"] != "rosette":
                 cat.chimerapheno.agouti = ["Apb", "a"]
+                cat.chimerapheno.unders_ruf = "0000"
+                if patch_colour["colour"] in ["DARKGREY", "DARKBROWN"]:
+                    cat.chimerapheno.silver[0] = "I"
+                    patch_colour["colour"] = "BLACK"
 
         if patch_colour["pattern"] in ["ticked", "agouti", "singlestripe", "freckled"]:
             cat.chimerapheno.ticked[0] = "Ta"

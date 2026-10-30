@@ -118,11 +118,11 @@ class Pelt:
             "LEG_BACK_RIGHT_SMALL", "LEG_BACK_RIGHT_MIN", "LEG_FRONT_RIGHT_SMALL", "LEG_FRONT_RIGHT_MIN"],
             '2': ['LITTLE', 'LIGHTTUXEDO', 'BUZZARDFANG', 'TIP', 'PAWS', 'BROKENBLAZE', 'BEARD', 'BIB', 'VEE', 'HONEY', 'TOESTAIL',
                   'RAVENPAW', 'DAPPLEPAW', 'LILTWO', 'REVERSEHEART', 'SPARKLE', 'REVERSEEYE', "CHEST_MID", "CHEST_SMALL",
-                  "CHEST_STREAK", "BELLY_MIN", "MINTOESTAIL", "SPARKLECAT"],
-            '3': ['TUXEDO', 'SAVANNAH', 'FANCY', 'DIVA', 'BEARD', "DAMIEN_REDUCED", 'DAMIEN', 'BELLY', 'SQUEAKS', 'STAR', 'MISS', 'BOWTIE',
-                  'FCTWO', 'FCONE', 'MIA', 'PRINCESS', 'DOUGIE', 'STREAMSTRIKE', "NECKTIE"],
+                  "CHEST_STREAK", "BELLY_MIN", "MINTOESTAIL", "SPARKLECAT", "DAMIEN", "DIVA", "DOCTOR", "FCONE_REDUCED"],
+            '3': ['TUXEDO', 'SAVANNAH', 'FANCY', 'DIVA', 'BEARD', "DAMIEN_REDUCED", 'DAMIEN', 'BELLY', 'SQUEAKS', 'STAR', 'MISS',
+                  'FCTWO', 'FCONE', 'MIA', 'PRINCESS', 'DOUGIE', 'STREAMSTRIKE', "NECKTIE", "BOWTIE", "DAMIEN", "FCTWO_REDUCED"],
             '4': ['TUXEDO', 'SAVANNAH', 'OWL', 'RINGTAIL', 'FAROFA', 'VEST', 'FRONT', 'BLOSSOMSTEP', 'DIGIT',
-                  'HAWKBLAZE', "BERRYHEART"],
+                  'HAWKBLAZE', "BERRYHEART", "CLIFF", 'DIGIT_REDUCED'],
             '5': ['ANY', 'SHIBAINU', 'FAROFA', 'MISTER', 'PANTS', 'TRIXIE']
         },
         'high': {
@@ -474,13 +474,13 @@ class Pelt:
                         white_pattern = clean_white(white_pattern)
                 elif KITgrade == 3:
                     if pax3[0] != "NoDBE" and random() < 0.2:
-                        white_pattern.append("TOM")
+                        white_pattern.append(choice(["TOM", "FANCY"]))
 
-                    while len(white_pattern) < 4 and "TOM" not in white_pattern:
+                    while len(white_pattern) < 4 and "TOM" not in white_pattern and "FANCY" not in white_pattern:
                         #chest
                         if random () < 0.8:
                             white_pattern.append(choice(['chest', 'chest', 'beard', 'chest', 'bib', 
-                            "BIB", "CHEST_BROKEN", "CHEST_MID", "DAMIEN_REDUCED", "NECKBEARD", "NECKTIE", "TEARDROP", "UNDER_HEART", "UNDER_MID", "VEE_MID"]))
+                            "BIB", "CHEST_BROKEN", "CHEST_MID", "DAMIEN_REDUCED", "NECKBEARD", "NECKTIE", "TEARDROP", "UNDER_HEART", "UNDER_MID", "VEE_MID", "BIB_HIGH", "CHEST_HIGH"]))
 
                         # belly
                         if random() < 0.8:
@@ -511,18 +511,21 @@ class Pelt:
                         white_pattern = clean_white(white_pattern)
 
                 elif KITgrade == 4:
-                    while len(white_pattern) < 6:
+                    if pax3[0] != "NoDBE" and random() < 0.2:
+                        white_pattern.append(choice(["FANCY"]))
+
+                    while len(white_pattern) < 6 and "FANCY" not in white_pattern:
                         #chest
                         white_pattern.append(choice(
                             ['underbelly1', 'underbelly1', 
-                            choice(['beard', 'chest', "CHEST_BROKEN", "BELLY", "CHEST_MID", "TEARDROP", "UNDER_HEART", "UNDER_MID", "VEE_FULL"])
+                            choice(['beard', 'chest', "CHEST_BROKEN", "BELLY", "CHEST_MID", "TEARDROP", "UNDER_HEART", "UNDER_MID", "VEE_FULL", "BIB_FULL", "BIB_HIGH", "CHEST_FULL", "CHEST_HIGH"])
                             ]))
 
                         #belly
                         if 'underbelly1' not in white_pattern:
                             white_pattern.append('belly')
                         
-                        if random() < 0.25:
+                        if random() < 0.2:
                             white_pattern.append(choice(['belt', 'BELLY_FULL', 'pants']))
 
                         #paws

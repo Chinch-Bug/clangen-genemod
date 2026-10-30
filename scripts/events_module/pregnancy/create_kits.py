@@ -516,6 +516,28 @@ def get_kits(
 
             change_relationship_values(**new_relationship)
 
+    clan_queens = [
+        queen for queen in Cat.all_cats_list if queen.status.rank.is_any_queen_rank()]
+    for kit in all_kitten:
+        for queen in clan_queens:
+            queen_to_kit = get_config("new_cat.queen_buff.queen_to_kit")
+            wobble = get_config("new_cat.queen_buff.queen_to_kit")["wobble"]
+            start_relation = Relationship(queen, kit)
+            start_relation.like = queen_to_kit[RelType.LIKE] + randrange(-wobble, wobble)
+            start_relation.comfort = queen_to_kit[RelType.COMFORT] + randrange(-wobble, wobble)
+            start_relation.respect = queen_to_kit[RelType.RESPECT] + randrange(-wobble, wobble)
+            start_relation.trust = queen_to_kit[RelType.TRUST] + randrange(-wobble, wobble)
+            queen.relationships[kit.ID] = start_relation
+
+            kit_to_queen = get_config("new_cat.queen_buff.kit_to_queen")
+            wobble = get_config("new_cat.queen_buff.kit_to_queen")["wobble"]
+            start_relation = Relationship(kit, queen)
+            start_relation.like += kit_to_queen[RelType.LIKE] + randrange(-wobble, wobble)
+            start_relation.comfort = kit_to_queen[RelType.COMFORT] + randrange(-wobble, wobble)
+            start_relation.respect = kit_to_queen[RelType.RESPECT] + randrange(-wobble, wobble)
+            start_relation.trust = kit_to_queen[RelType.TRUST] + randrange(-wobble, wobble)
+            kit.relationships[queen.ID] = start_relation
+
     return all_kitten
 
 
