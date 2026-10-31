@@ -322,7 +322,7 @@ class Phenotype(Genotype):
             self.tabtype += 'grizzled '
         if (self.agouti == ['Apb', 'Apb'] and 'o' in self.x_colours):
             self.tabtype += 'twilight '
-        elif (self.agouti[0] == 'Apb' and 'o' in self.x_colours):
+        if (self.agouti[0] == 'Apb' and 'o' in self.x_colours):
             self.tabtype += 'charcoal '
 
         if(self.tabtype == ' '):
