@@ -55,7 +55,7 @@ class TestCatFactory(NewCatFactory):
         return 0
 
     @classmethod
-    def _handle_genetic_confitions(cls, cat):
+    def _handle_genetic_condtions(cls, cat):
         pass
 
     @classmethod

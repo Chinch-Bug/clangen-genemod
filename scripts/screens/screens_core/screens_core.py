@@ -148,6 +148,7 @@ def rebuild_top_menu_buttons():
             open_on_hover=True,
         )
         prev_element = menu_buttons["supplies"]
+        menu_buttons["supplies"].change_layer(9)
     else:
         prev_element = menu_buttons["events"]
 
@@ -180,6 +181,7 @@ def rebuild_top_menu_buttons():
         disable_selection=False,
         open_on_hover=True,
     )
+    menu_buttons["dens"].change_layer(9)
     # menu_buttons["events"].change_layer(menu_buttons["dens"].get_starting_height() + 5)
 
     menu_buttons["patrols"] = UISurfaceImageButton(
@@ -277,7 +279,7 @@ def rebuild_top_menu_buttons():
             open_on_hover=True
         )
 
-        menu_buttons["heading"].change_layer(9)
+        menu_buttons["heading"].change_layer(8)
         
     rebuild_moon_n_season_indicator()
 
