@@ -212,9 +212,7 @@ def handle_two_moon_pregnant(cat: Cat, clan):
     kits_amount = len(kits)
     for kit in kits:
         if fever_coat:
-            kit.phenotype.fevercoat = True
-            if kit.chimerapheno:
-                kit.chimerapheno.fevercoat = True
+            kit.pelt.fevercoat = True
         for x in affair_partners:
             kit.affair_parents.append(x.ID)
         if surrogate:

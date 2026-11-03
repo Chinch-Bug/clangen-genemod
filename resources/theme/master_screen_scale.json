@@ -715,7 +715,7 @@
         "colours": {"normal_border": "#2F2918"},
         "misc": {
             "shape": "rounded_rectangle",
-            "shape_corner_radius": [2, 2],
+            "shape_corner_radius": [2],
             "border_width": "1",
             "text_horiz_alignment": "right"
         }
@@ -727,7 +727,7 @@
         },
         "misc": {
             "shape": "rounded_rectangle",
-            "shape_corner_radius": [2, 2],
+            "shape_corner_radius": [2],
             "border_width": "1",
             "text_horiz_alignment": "left"
         }

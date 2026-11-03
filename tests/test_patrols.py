@@ -354,7 +354,7 @@ class TestInvolvedCats(unittest.TestCase):
         self.assertEqual(
             self.patrol_class.involved_cats["p_l"],
             self.patrol_class.outcome_cats[PatrolOutcome.SUCCESS]["s_c"],
-            msg=f"p_l and outcome s_c should match.",
+            msg=f"p_l and outcome s_c should match."
         )
 
     def test_sc_not_cat(self):
@@ -740,7 +740,7 @@ class TestOutcomeExecution(unittest.TestCase):
         handle_consequences.disable_random = True
         handle_consequences.execute_outcome(
             patrol.success_outcomes[0],
-            self.patrol_class.involved_cats,
+            self.patrol_class.outcome_cats[PatrolOutcome.SUCCESS],
             other_clan=OtherClan(),
             clan=game.clan
         )

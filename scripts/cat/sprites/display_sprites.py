@@ -1684,7 +1684,7 @@ def create_cat(cat, phenotype, cat_sprite, sprite_age, season_override, merle=Fa
         if phenotype.satin[0] == "st" or phenotype.tenn[0] == 'tr':
             gensprite.blit(sprites.sprites['satin0'], (0, 0))
 
-        if (phenotype.fevercoat and sprite_age < 5):
+        if (cat.pelt.fevercoat and sprite_age < 5):
             fevercoat = pygame.Surface((sprites.size, sprites.size), pygame.HWSURFACE | pygame.SRCALPHA)
             fevercoat.blit(sprites.sprites['bleach' + cat_sprite], (0, 0))
             fevercoat.blit(sprites.sprites['bleach' + cat_sprite], (0, 0))

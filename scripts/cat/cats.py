@@ -2466,6 +2466,7 @@ class Cat:
                 "sprite_para_adult": self.pelt.cat_sprites['para_adult'],
                 "reverse": self.pelt.reverse,
                 "rusting": self.pelt.rusting,
+                "fevercoat": self.pelt.fevercoat,
                 "tint": self.pelt.tint,
                 "white_patches_tint": self.pelt.white_patches_tint,
                 "skill_dict": self.skills.get_skill_dict(),

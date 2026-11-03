@@ -297,6 +297,7 @@ class LoadCatFactory(BaseCatFactory):
             **{
                 "phenotype": phenotype,
                 "rusting": kwargs.get("rusting"),
+                "fevercoat": kwargs.get("fevercoat", kwargs.get("genotype", {}).get("fevercoat", False)),
                 "paralyzed": kwargs["paralyzed"],
                 "newborn_sprite": kwargs.get("sprite_newborn"),
                 "kitten_sprite": kwargs.get(

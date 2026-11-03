@@ -143,7 +143,8 @@ class Pelt:
     def __init__(
         self,
         phenotype:Phenotype,
-        rusting:str = None,
+        rusting:dict = None,
+        fevercoat:bool = False,
         accessory:list=None,
         paralyzed:bool=False,
         opacity:int=100,
@@ -182,6 +183,7 @@ class Pelt:
         self.tint = tint
         self.white_patches_tint = white_patches_tint
         self.rusting = rusting
+        self.fevercoat = fevercoat
         self.screen_scale = scripts.game_structure.screen_settings.screen_scale
 
         # converting old pose numbers into names

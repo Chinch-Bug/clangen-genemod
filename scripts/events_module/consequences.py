@@ -611,9 +611,7 @@ def create_new_cat_block(
 
         for n_c in new_cats:
             if fevercoat:
-                n_c.phenotype.fevercoat = True
-                if n_c.chimerapheno:
-                    n_c.chimerapheno.fevercoat = True
+                n_c.pelt.fevercoat = True
 
             # SET MATES
             for inter_cat in give_mates:
