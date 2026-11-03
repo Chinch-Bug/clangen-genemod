@@ -358,8 +358,7 @@ class Name:
 
         colours = colour_mappings[params[0]]
         if params[2]['type'] == 'silver' and params[0] not in ['ginger', 'cream']:
-            colours.append('PALEGREY')
-            colours.append('SILVER')
+            colours += ['PALEGREY', "SILVER", "CHINCHILLA"]
         if params[2]['type'] == 'dark' and params[0] == "black":
             colours.append('GHOST')
         if params[2]['type'] == 'golden' and params[0] not in ['ginger', 'cream']:
@@ -540,8 +539,7 @@ class Name:
 
             colours = colour_mappings[params[0]]
             if params[2]['type'] == 'silver' and params[0] not in ['ginger', 'cream']:
-                colours.append('PALEGREY')
-                colours.append('SILVER')
+                colours += ['PALEGREY', "SILVER", "CHINCHILLA"]
             if params[2]['type'] == 'dark' and params[0] == "black":
                 colours.append('GHOST')
             if params[2]['type'] == 'golden' and params[0] not in ['ginger', 'cream']:
