@@ -225,7 +225,6 @@ def get_valid_event_ignoring_constraints(
             outside_cats=outside_cats,
             event=test_event,
             other_clan=other_clan,
-            clan=clan,
         )
         if not (temp_involved_cats or will_create_how_many):
             tested_events.add(test_event.event_id)
