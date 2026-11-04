@@ -1964,7 +1964,6 @@
         "-leader",
         "elder",
         "-elder",
-        "any",
         "kittypet",
         "-kittypet",
         "loner",
@@ -1974,7 +1973,8 @@
         "clancat",
         "-clancat",
         "guide",
-        "-guide"
+        "-guide",
+        "any"
       ],
       "title": "Status",
       "type": "string"

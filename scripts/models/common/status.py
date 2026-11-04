@@ -35,7 +35,6 @@ class Status(Enum):
     not_leader = "-leader"
     elder = "elder"
     not_elder = "-elder"
-    any = "any"
     kittypet = "kittypet"
     not_kittypet = "-kittypet"
     loner = "loner"
@@ -46,3 +45,4 @@ class Status(Enum):
     not_clancat = "-clancat"
     guide = "guide"
     not_guide = "-guide"
+    any = "any"
