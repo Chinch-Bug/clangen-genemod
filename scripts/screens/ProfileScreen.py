@@ -1288,6 +1288,7 @@ class ProfileScreen(Screens):
             ui_scale(pygame.Rect((100, 473), (60, 149))),
             object_id="#text_box_26_horizleft_pad_10_14",
             manager=MANAGER,
+            text_kwargs={"translate": False},
             allow_split_dashes=False
         )
 
@@ -2639,6 +2640,8 @@ class ProfileScreen(Screens):
                         ui_scale(pygame.Rect((100, 473), (600, 149))),
                         object_id="#text_box_26_horizleft_pad_10_14",
                         manager=MANAGER,
+                        text_kwargs={"translate": False},
+                        allow_split_dashes=False
                     )
             elif self.open_sub_tab == 'genetics':
                 self.sub_tab_1.enable()

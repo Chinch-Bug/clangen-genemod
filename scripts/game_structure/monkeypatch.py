@@ -24,6 +24,8 @@ other = [
 def translate(text: str, **kwargs):
     if text == "":
         return ""
+    if kwargs.get("translate") is False:
+        return text
     output = i18n.t(text, **kwargs)
     if game.event_editing:
         return output
