@@ -307,6 +307,9 @@ def get_kits(
                         relationships_to_update.append(o_cat.ID)
 
         if relationships_to_update:
+            parent_to_kit = get_config("new_cat.parent_buff.parent_to_kit")
+            kit_to_parent = get_config("new_cat.parent_buff.kit_to_parent")
+            var_min, var_max = get_config("new_cat.parent_buff.variability")
             for cat_id in relationships_to_update:
                 if cat_id == kit.ID:
                     continue
@@ -314,26 +317,26 @@ def get_kits(
                 if not the_cat or the_cat.dead or the_cat.status.group_ID != cat.status.group_ID:
                     continue
                 if the_cat.ID in kit.get_parents():
-                    parent_to_kit = get_config("new_cat.parent_buff.parent_to_kit")
-                    y = randrange(0, 15)
-                    start_relation = Relationship(the_cat, kit, family=True)
-                    start_relation.like = parent_to_kit[RelType.LIKE] + y
-                    start_relation.comfort = parent_to_kit[RelType.COMFORT] + y
-                    start_relation.respect = parent_to_kit[RelType.RESPECT] + y
-                    start_relation.trust = parent_to_kit[RelType.TRUST] + y
-                    the_cat.relationships[kit.ID] = start_relation
+                    y = randrange(var_min, var_max)
+                    rel_dict = {
+                        reltype: change + y
+                        for (reltype, change) in parent_to_kit.items()
+                    }
+                    change_relationship_values(
+                        cats_from=[the_cat], cats_to=[kit], **rel_dict
+                    )
 
-                    kit_to_parent = get_config("new_cat.parent_buff.kit_to_parent")
-                    y = randrange(0, 15)
-                    start_relation = Relationship(kit, the_cat, family=True)
-                    start_relation.like += kit_to_parent[RelType.LIKE] + y
-                    start_relation.comfort = kit_to_parent[RelType.COMFORT] + y
-                    start_relation.respect = kit_to_parent[RelType.RESPECT] + y
-                    start_relation.trust = kit_to_parent[RelType.TRUST] + y
-                    kit.relationships[the_cat.ID] = start_relation
+                    y = randrange(var_min, var_max)
+                    rel_dict = {
+                        reltype: change + y
+                        for (reltype, change) in kit_to_parent.items()
+                    }
+                    change_relationship_values(
+                        cats_from=[kit], cats_to=[the_cat], **rel_dict
+                    )
                 else:
-                    the_cat.relationships[kit.ID] = Relationship(the_cat, kit)
-                    kit.relationships[the_cat.ID] = Relationship(kit, the_cat)
+                    create_one_relationship(kit, the_cat)
+                    create_one_relationship(the_cat, kit)
 
         #### REMOVE ACCESSORY ######
         kit.pelt.accessory = tuple()
@@ -352,20 +355,19 @@ def get_kits(
         for par in range(len(blood_parent2)):
             blood_parent2[par].thought = event_text_adjust(
                 Cat, thought, main_cat=blood_parent2[par], clan=clan)
+    sib_buff = get_config("new_cat.sib_buff.littermates_to_eachother")
+    var_min, var_max = get_config("new_cat.sib_buff.variability")
 
     # check other cats of Clan for siblings
     for kitten in all_kitten:
         # update/buff the relationship towards the siblings
         for second_kitten in all_kitten:
-            y = randrange(0, 15)
             if second_kitten.ID == kitten.ID:
                 continue
-            relationship_value = get_config("new_cat.sib_buff.littermates_to_eachother")
-            start_relation = Relationship(kitten, second_kitten, True)
-            start_relation.like += relationship_value["like"] + y
-            start_relation.comfort += relationship_value["comfort"] + y
-            start_relation.trust += relationship_value["trust"] + y
-            kitten.relationships[second_kitten.ID] = start_relation
+
+            y = randrange(var_min, var_max)
+            rel_dict = {reltype: change + y for (reltype, change) in sib_buff.items()}
+            change_relationship_values(cats_from=[kit], cats_to=[the_cat], **rel_dict)
 
     # check if the possible adoptive cat is not already in the family tree and
     # add them as adoptive parents if not
@@ -386,6 +388,8 @@ def get_kits(
                     continue
                 x.assign_thought(CatThought.ON_BIRTH)
 
+    kit_to_parent = get_config("new_cat.parent_buff.kit_to_parent")
+    parent_to_kit = get_config("new_cat.parent_buff.parent_to_kit")
     # Add the adoptive parents.
     for kit in all_kitten:
         kit.adoptive_parents = final_adoptive_parents.copy()
@@ -399,13 +403,11 @@ def get_kits(
                     kit.adoptive_parents.append(birth_p.ID)
         if not kit.adoptive_parents:
             continue
-
+            
         # update relationship for adoptive parents
-        for parent_id in final_adoptive_parents:
+        for parent_id in kit.adoptive_parents:
             parent = Cat.fetch_cat(parent_id)
             if parent:
-                kit_to_parent = get_config("new_cat.parent_buff.kit_to_parent")
-                parent_to_kit = get_config("new_cat.parent_buff.parent_to_kit")
                 change_relationship_values(
                     cats_from=[kit],
                     cats_to=[parent],
@@ -416,6 +418,23 @@ def get_kits(
                     cats_to=[kit],
                     **parent_to_kit,
                 )
+
+    # update relationship for adoptive parents
+    for parent_id in all_kitten[0].adoptive_parents:
+        parent = Cat.fetch_cat(parent_id)
+        if parent:
+            kit_to_parent = get_config("new_cat.parent_buff.kit_to_parent")
+            parent_to_kit = get_config("new_cat.parent_buff.parent_to_kit")
+            change_relationship_values(
+                cats_from=[kit],
+                cats_to=[parent],
+                **kit_to_parent,
+            )
+            change_relationship_values(
+                cats_from=[parent],
+                cats_to=[kit],
+                **parent_to_kit,
+            )
     inheritance_db.load_inheritances(Cat)
 
     # check for more extended family members to create relationships with
@@ -516,27 +535,28 @@ def get_kits(
 
             change_relationship_values(**new_relationship)
 
-    clan_queens = [
-        queen for queen in Cat.all_cats_list if queen.status.rank.is_any_queen_rank()]
+    clan_queens = [queen for queen in Cat.all_cats_list if queen.status.rank.is_any_queen_rank()]
+    queen_to_kit = get_config("new_cat.queen_buff.queen_to_kit")
+    qkwobble = get_config("new_cat.queen_buff.queen_to_kit")["variability"]
+    kit_to_queen = get_config("new_cat.queen_buff.kit_to_queen")
+    kqwobble = get_config("new_cat.queen_buff.kit_to_queen")["variability"]
     for kit in all_kitten:
         for queen in clan_queens:
-            queen_to_kit = get_config("new_cat.queen_buff.queen_to_kit")
-            wobble = get_config("new_cat.queen_buff.queen_to_kit")["wobble"]
-            start_relation = Relationship(queen, kit)
-            start_relation.like = queen_to_kit[RelType.LIKE] + randrange(-wobble, wobble)
-            start_relation.comfort = queen_to_kit[RelType.COMFORT] + randrange(-wobble, wobble)
-            start_relation.respect = queen_to_kit[RelType.RESPECT] + randrange(-wobble, wobble)
-            start_relation.trust = queen_to_kit[RelType.TRUST] + randrange(-wobble, wobble)
-            queen.relationships[kit.ID] = start_relation
+            rel_dict = {
+                reltype: change + randrange(*qkwobble)
+                for (reltype, change) in queen_to_kit.items() if reltype != "variability"
+            }
+            change_relationship_values(
+                cats_from=[the_cat], cats_to=[kit], **rel_dict
+            )
 
-            kit_to_queen = get_config("new_cat.queen_buff.kit_to_queen")
-            wobble = get_config("new_cat.queen_buff.kit_to_queen")["wobble"]
-            start_relation = Relationship(kit, queen)
-            start_relation.like += kit_to_queen[RelType.LIKE] + randrange(-wobble, wobble)
-            start_relation.comfort = kit_to_queen[RelType.COMFORT] + randrange(-wobble, wobble)
-            start_relation.respect = kit_to_queen[RelType.RESPECT] + randrange(-wobble, wobble)
-            start_relation.trust = kit_to_queen[RelType.TRUST] + randrange(-wobble, wobble)
-            kit.relationships[queen.ID] = start_relation
+            rel_dict = {
+                reltype: change + randrange(*kqwobble)
+                for (reltype, change) in kit_to_queen.items() if reltype != "variability"
+            }
+            change_relationship_values(
+                cats_from=[kit], cats_to=[the_cat], **rel_dict
+            )
 
     return all_kitten
 
