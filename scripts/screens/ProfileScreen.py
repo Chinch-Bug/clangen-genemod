@@ -1288,6 +1288,7 @@ class ProfileScreen(Screens):
             ui_scale(pygame.Rect((100, 473), (60, 149))),
             object_id="#text_box_26_horizleft_pad_10_14",
             manager=MANAGER,
+            allow_split_dashes=False
         )
 
         self.update_disabled_buttons_and_text()
