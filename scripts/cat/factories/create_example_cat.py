@@ -32,8 +32,8 @@ def create_example_cats(majority_rank: CatRank, rank_weights: dict, max_cats=12,
                                        use_special=use_special, backstory="clan_founder" if social == "clancat" else None, creating_clan=True, cards=cards)
         cat.status._modify_group(rank, standing_with_past_group=CatStanding.LEFT, new_group_ID=clan if clan else CatGroup.PLAYER_CLAN_ID)
 
-        if new_cat.moons >= 140:
-            new_cat.moons = randint(120, 140)
+        if cat.moons >= 140:
+            cat.moons = randint(120, 140)
         chosen_cats.append(cat)
                     
     return chosen_cats
