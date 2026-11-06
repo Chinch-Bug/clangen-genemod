@@ -549,7 +549,7 @@ class PatrolScreen(Screens):
                         for cat in self.current_patrol
                     )
                 )
-                if has_healer and get_clan_setting("patrol_lock_meds"):
+                if has_healer and get_clan_setting("patrol_lock_meds") and self.patrol_type == "general":
                     self.patrol_type = "med"
                 else:
                     if self.patrol_type == "med" and not has_healer:
