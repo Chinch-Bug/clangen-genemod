@@ -314,6 +314,8 @@ def get_kits(
                 if cat_id == kit.ID:
                     continue
                 the_cat = Cat.all_cats.get(cat_id)
+                if the_cat is None:
+                    continue
                 if not the_cat or the_cat.dead or the_cat.status.group_ID != cat.status.group_ID:
                     continue
                 if the_cat.ID in kit.get_parents():
@@ -367,7 +369,7 @@ def get_kits(
 
             y = randrange(var_min, var_max)
             rel_dict = {reltype: change + y for (reltype, change) in sib_buff.items()}
-            change_relationship_values(cats_from=[kit], cats_to=[the_cat], **rel_dict)
+            change_relationship_values(cats_from=[kitten], cats_to=[second_kitten], **rel_dict)
 
     # check if the possible adoptive cat is not already in the family tree and
     # add them as adoptive parents if not
@@ -419,22 +421,6 @@ def get_kits(
                     **parent_to_kit,
                 )
 
-    # update relationship for adoptive parents
-    for parent_id in all_kitten[0].adoptive_parents:
-        parent = Cat.fetch_cat(parent_id)
-        if parent:
-            kit_to_parent = get_config("new_cat.parent_buff.kit_to_parent")
-            parent_to_kit = get_config("new_cat.parent_buff.parent_to_kit")
-            change_relationship_values(
-                cats_from=[kit],
-                cats_to=[parent],
-                **kit_to_parent,
-            )
-            change_relationship_values(
-                cats_from=[parent],
-                cats_to=[kit],
-                **parent_to_kit,
-            )
     inheritance_db.load_inheritances(Cat)
 
     # check for more extended family members to create relationships with
@@ -547,7 +533,7 @@ def get_kits(
                 for (reltype, change) in queen_to_kit.items() if reltype != "variability"
             }
             change_relationship_values(
-                cats_from=[the_cat], cats_to=[kit], **rel_dict
+                cats_from=[queen], cats_to=[kit], **rel_dict
             )
 
             rel_dict = {
@@ -555,7 +541,7 @@ def get_kits(
                 for (reltype, change) in kit_to_queen.items() if reltype != "variability"
             }
             change_relationship_values(
-                cats_from=[kit], cats_to=[the_cat], **rel_dict
+                cats_from=[kit], cats_to=[queen], **rel_dict
             )
 
     return all_kitten
