@@ -206,7 +206,7 @@ def handle_two_moon_pregnant(cat: Cat, clan):
     backkit = None
 
     if not other_cat:
-        other_cat, backkit = handle_outside_parent(cat, clan, "1", kits_amount)
+        other_cat, backkit = handle_outside_parent(cat, clan, kits_amount, "1")
 
     kits = get_kits(kits_amount, pregnant_cat, other_cat if not surrogate or pregnant_cat in surrogate else surrogate, clan, backkit=backkit, affair_parents=(affair_partners+[pregnant_cat] if affair_partners else [])+other_cat_had_affair, surrogate=surrogate, adoptive_parents=adoptive_parents)
     kits_amount = len(kits)
