@@ -328,7 +328,6 @@ def rebuild_moon_n_season_indicator(change_moon: bool = False, visible: bool = F
                 "bottom": "bottom",
             },
             object_id="@clangen_16",
-            allow_split_dashes=False,
         )
         menu_buttons["moon_indicator_frame"] = pygame_gui.elements.UIImage(
             scale_rect,
