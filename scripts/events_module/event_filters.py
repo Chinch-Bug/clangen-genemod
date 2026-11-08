@@ -271,7 +271,7 @@ def event_for_tags(tags: list, cat, clan=CatGroup.PLAYER_CLAN_ID, other_cat=None
                     ):
                         rank_matched = False
 
-                elif not len(find_alive_cats_with_rank(cat, [rank])) >= mi:
+                elif not len(find_alive_cats_with_rank(cat, [rank], clan=clan)) >= mi:
                     rank_matched = False
 
                 if is_exclusionary and rank_matched:
