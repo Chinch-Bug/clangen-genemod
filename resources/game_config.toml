@@ -1586,6 +1586,9 @@ dev_tools = false
 
     # herb bonus applied when cats should gather a boosted number of herbs
     general_amount_bonus = 2
+  
+    # the percentage of herbs lost per moon
+    herb_loss = 0.0
 
     gathering_variance = [-1, 1]
     [clan_resources.herbs.increase_amounts]
@@ -1745,7 +1748,7 @@ dev_tools = false
   
   # the percentage of freshkill that is lost per moon, after the decay formula has run
   [prey.prey_loss]
-    loss = 0
+    loss = 0.0
 
   # multiplier for how much prey a cat needs based on adult size category, doesn't apply to kits
   [prey.size_modifiers]
