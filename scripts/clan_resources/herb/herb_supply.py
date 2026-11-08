@@ -353,18 +353,19 @@ class HerbSupply:
         returns med den message for current herb supply status
         """
         messages: list = MESSAGES["storage_status"][self.get_overall_rating()]
+        clan = med_cat.status.fetch_clan_object(game.clan)
         for message in messages.copy():
             if "lead_name" in message and (
-                not game.clan.leader or not game.clan.leader.status.alive_in_player_clan
+                not clan.leader or not clan.leader.status.group_ID == clan.group_ID
             ):
                 messages.remove(message)
             if "dep_name" in message and (
-                not game.clan.deputy or not game.clan.deputy.status.alive_in_player_clan
+                not clan.deputy or not clan.deputy.status.group_ID == clan.group_ID
             ):
                 messages.remove(message)
 
         return event_text_adjust(
-            Cat=med_cat, text=choice(messages), main_cat=med_cat, clan=game.clan
+            Cat=med_cat, text=choice(messages), main_cat=med_cat, clan=clan
         )
 
     def get_single_herb_total(self, herb: str) -> int:

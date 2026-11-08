@@ -5,7 +5,9 @@ import ujson
 spritesheet_list = ["sprites/patches_white_mostly.png",
                 "sprites/patches_white_high.png",
                 "sprites/patches_white_mid.png",
-                "sprites/patches_white_little.png"]
+                "sprites/patches_white_little0.png",
+                "sprites/patches_white_little1.png",
+                "sprites/patches_white_little2.png"]
 
 lineart = pygame.image.load("sprites/lineart.png").convert_alpha()
 rexlines = pygame.image.load("sprites/genemod/borders/rexlines.png").convert_alpha()
