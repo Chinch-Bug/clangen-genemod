@@ -512,87 +512,86 @@ def _handle_death(
                 else:
                     dead_cats.append(event_involved_cats[abbr])
 
-        # we default to a body being present
-        body = block.get("body", True)
+    # we default to a body being present
+    body = block.get("body", True)
 
-        for c in dead_cats:
-            # LEADER
-            if c.status.is_leader:
-                if "all_lives" in death_tags:
-                    lives_lost = clan.leader_lives
-                    clan.leader_lives = 0
-
-                    if not block.get("no_results"):
-                        results.append(
-                            event_text_adjust(
-                                Cat,
-                                i18n.t("cat.history.n_leader_death_all"),
-                                main_cat=c,
-                                chosen_poi=chosen_poi,
-                            )
-                        )
-                elif "some_lives" in death_tags:
-                    lives_lost = randint(2, max(1, clan.leader_lives - 1))
-                    clan.leader_lives -= lives_lost
-                    for i in range(lives_lost - 1):
-                        c.history.add_death("multi_lives")
-
-                    if not block.get("no_results"):
-                        results.append(
-                            event_text_adjust(
-                                Cat,
-                                i18n.t(
-                                    "cat.history.n_leader_lost_lives", count=lives_lost
-                                ),
-                                main_cat=c,
-                                chosen_poi=chosen_poi,
-                            )
-                        )
-                else:
-                    lives_lost = 1
-                    clan.leader_lives -= 1
-
-                    if not block.get("no_results"):
-                        results.append(
-                            event_text_adjust(
-                                Cat,
-                                i18n.t("cat.history.n_leader_lost_lives", count=1),
-                                main_cat=c,
-                                chosen_poi=chosen_poi,
-                            )
-                        )
-                if extra_result := check_stolen_vitality(c, lives_lost):
-                    results.append(extra_result)
-
-            # OUTSIDER
-            elif c.status.is_outsider:
-                other_cat_names.append(_profile_link(c))
+    for c in dead_cats:
+        # LEADER
+        if c.status.is_leader:
+            if "all_lives" in death_tags:
+                lives_lost = clan.leader_lives
+                clan.leader_lives = 0
 
                 if not block.get("no_results"):
                     results.append(
-                        i18n.t(
-                            "screens.patrol.dead_outsider",
-                            cats=adjust_list_text(other_cat_names),
-                            count=len(other_cat_names),
+                        event_text_adjust(
+                            Cat,
+                            i18n.t("cat.history.n_leader_death_all"),
+                            main_cat=c,
+                            chosen_poi=chosen_poi,
                         )
                     )
+            elif "some_lives" in death_tags:
+                lives_lost = randint(2, max(1, clan.leader_lives - 1))
+                clan.leader_lives -= lives_lost
+                for i in range(lives_lost - 1):
+                    c.history.add_death("multi_lives")
 
-            # NORMAL PLAYER CAT
+                if not block.get("no_results"):
+                    results.append(
+                        event_text_adjust(
+                            Cat,
+                            i18n.t(
+                                "cat.history.n_leader_lost_lives", count=lives_lost
+                            ),
+                            main_cat=c,
+                            chosen_poi=chosen_poi,
+                        )
+                    )
             else:
-                player_cat_names.append(_profile_link(c))
+                lives_lost = 1
+                clan.leader_lives -= 1
 
                 if not block.get("no_results"):
                     results.append(
-                        i18n.t(
-                            "cat.history.regular_death",
-                            cats=adjust_list_text(player_cat_names),
-                            count=len(player_cat_names),
+                        event_text_adjust(
+                            Cat,
+                            i18n.t("cat.history.n_leader_lost_lives", count=1),
+                            main_cat=c,
+                            chosen_poi=chosen_poi,
                         )
                     )
+            if extra_result := check_stolen_vitality(c, lives_lost):
+                results.append(extra_result)
 
-            # KILL
-            __handle_death_history(c, block["history"], other_clan)
-            c.die(body)
+        # OUTSIDER
+        elif c.status.is_outsider:
+            other_cat_names.append(_profile_link(c))
+
+        # NORMAL PLAYER CAT
+        else:
+            player_cat_names.append(_profile_link(c))
+
+        if not block.get("no_results") and other_cat_names:
+            results.append(
+                i18n.t(
+                    "screens.patrol.dead_outsider",
+                    cats=adjust_list_text(other_cat_names),
+                    count=len(other_cat_names),
+                )
+            )
+        if not block.get("no_results") and player_cat_names:
+            results.append(
+                i18n.t(
+                    "cat.history.regular_death",
+                    cats=adjust_list_text(player_cat_names),
+                    count=len(player_cat_names),
+                )
+            )
+
+        # KILL
+        __handle_death_history(c, block["history"], other_clan)
+        c.die(body)
 
     return " ".join(results)
 
