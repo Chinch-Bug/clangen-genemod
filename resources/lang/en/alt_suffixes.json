@@ -3260,6 +3260,24 @@
             "venom", "vine", 
             "wish", "wobble"
         ],
+        "arrogant": [
+            "antler", "avalanche",
+            "barb", "beak", "bellow", "billow", "blare", "blaze", "blister", "blizzard", "bluff", "boar", "bright", "burn", "burst",
+            "call", "caller", "chasm", "clamour", "clash", "claw", "cliff", "crash", "crest", "crow", "cry",
+            "dangle", "deluge", "dive", "drop",
+            "fall", "fervour", "fire", "flame", "flare", "frill", "fury",
+            "glare", "gleam", "glimmer", "glow", "growl",
+            "hill", "hiss", "horn", "hound", "howl", "hurricane",
+            "light", "lion",
+            "needle",
+            "peak", "plume", "plummet", "plunge", "prickle",
+            "quill",
+            "rampage", "ridge", "roar",
+            "saunter", "scorch", "screech", "sear", "shimmer", "shine", "singe", "snarl", "spark", "spire", "step", "sting", "stomp", "storm", "summit", "sway", "swoop",
+            "tackle", "thorn", "thunder", "tusk",
+            "waltz",
+            "yowl"
+        ],
         "bloodthirsty": [
             "adder", "ash", "avalanche", 
             "barb", "beak", "billow", "bite", "blaze", "blister", "blizzard", "boar", "bristle", "burn", "burr", 

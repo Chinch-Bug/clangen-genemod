@@ -54,7 +54,7 @@ def trigger_ceremony(
         main_cat.name.change_prefix(main_cat.moons, clan.biome, cer_type)
 
     random_honor = None
-    if new_rank in (CatRank.WARRIOR, CatRank.MEDIATOR, CatRank.MEDICINE_CAT, CatRank.QUEEN) and main_cat.status.rank.is_any_apprentice_rank():
+    if new_rank in (CatRank.WARRIOR, CatRank.MEDIATOR, CatRank.MEDICINE_CAT, CatRank.QUEEN) and (main_cat.status.rank.is_any_apprentice_rank() or main_cat.status.rank.is_baby()):
         traits = load_lang_resource("events/ceremonies/ceremony_traits.json")
         try:
             random_honor = random.choice(traits[main_cat.personality.trait])
