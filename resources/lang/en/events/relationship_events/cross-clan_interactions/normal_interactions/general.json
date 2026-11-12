@@ -68,28 +68,30 @@
         ],
         "frequency": 1,
         "strings": [
-            "m_c lost {PRONOUN/m_c/poss} temper at r_c0 during the Gathering and violated the truce.",
-            "During the Gathering, m_c acted without thinking and turned an argument with r_c0 into a brawl."
+            "r_c0 lost {PRONOUN/r_c0/poss} temper at m_c during the Gathering and violated the truce.",
+            "During the Gathering, r_c0 acted without thinking and turned an argument with m_c into a brawl."
         ],
         "involved_cats": {
             "m_c": {
+                
+            },
+            "r_c0": {
                 "stat": {
                     "trait": [ "bloodthirsty", "troublesome", "vengeful", "fierce" ]
                 }
-            },
-            "r_c0": {}
+            }
         },
         "relationship_constraint": [
             {
-                "cats_from": ["r_c0"],
-                "cats_to": ["m_c"],
+                "cats_from": ["m_c"],
+                "cats_to": ["r_c0"],
                 "mutual": false,
                 "constraints": ["dislikes"]
             }
         ],
         "condition": [
             {
-                "cats": ["r_c0"],
+                "cats": ["m_c"],
                 "condition": ["battle_injury"],
                 "scar_history": "m_c was scarred after being attacked by r_c at the Gathering.",
                 "death_history": "m_c died from {PRONOUN/m_c/poss} injuries after r_c attacked {PRONOUN/m_c/object} at the Gathering."
@@ -131,8 +133,8 @@
         ],
         "frequency": 1,
         "strings": [
-            "m_c lost {PRONOUN/m_c/poss} temper at r_c0 during the Gathering and violated the truce.",
-            "During the Gathering, m_c acted without thinking and turned an argument with r_c0 into a brawl."
+            "r_c0 lost {PRONOUN/r_c0/poss} temper at m_c during the Gathering and violated the truce.",
+            "During the Gathering, r_c0 acted without thinking and turned an argument with m_c into a brawl."
         ],
         "involved_cats": {
             "m_c": {},
@@ -148,7 +150,7 @@
         ],
         "condition": [
             {
-                "cats": [ "r_c0" ],
+                "cats": [ "m_c" ],
                 "condition": [ "battle_injury" ],
                 "scar_history": "m_c was scarred after being attacked by r_c at the Gathering.",
                 "death_history": "m_c died from {PRONOUN/m_c/poss} injuries after r_c attacked {PRONOUN/m_c/object} at the Gathering."

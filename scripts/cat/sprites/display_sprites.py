@@ -216,8 +216,8 @@ def generate_sprite(
         # draw line art
         if game_setting_get('shaders') and not dead:
             gensprite.blit(sprites.sprites['shader_mask' + cat_sprite], (0, 0), special_flags=pygame.BLEND_RGB_MULT)
-            gensprite.blit(
-                sprites.sprites['shader_lighting' + cat_sprite], (0, 0))
+            if game_setting_get('shaders_highlights'):
+                gensprite.blit(sprites.sprites['shader_lighting' + cat_sprite], (0, 0))
 
         # make sure colours are in the lines
         if('rexed' in phenotype.furtype or 'wiry' in phenotype.furtype):

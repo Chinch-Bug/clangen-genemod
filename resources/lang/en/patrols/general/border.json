@@ -3674,7 +3674,7 @@
                         }
                     },
                     "s_c1": {
-                        "prior_abbreviation": ["s_c0"]
+                        "prior_abbreviation": ["-s_c0"]
                     },
                     "n_c0": {
                         "can_create_new_cat": {},

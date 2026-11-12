@@ -15,6 +15,7 @@
         "no sprite antialiasing" = false
         "custom cursor" = false
         shaders = false
+        shaders_highlights = true
         tints = false
         black_pupils = false
         accurate_porting = false
