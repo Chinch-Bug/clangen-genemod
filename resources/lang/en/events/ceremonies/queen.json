@@ -9,8 +9,22 @@
         },
         "strings": [
             "(old_name) has proven {PRONOUN/m_c/self} skilled at handling the Clan's kits. {PRONOUN/m_c/subject/CAP} {VERB/m_c/are/is} given the name m_c, and the Clan honors {PRONOUN/m_c/poss} new queen.",
-            "m_c is welcomed as a fully trained queen of the Clan.",
-            "As (old_name) has finished {PRONOUN/m_c/poss} queen training, l_n gives {PRONOUN/m_c/object} the name m_c after {PRONOUN/m_c/poss} r_h, welcoming {PRONOUN/m_c/object} as the Clan's new queen."
+            "m_c is welcomed as a fully trained queen of the Clan."
+        ]
+    },
+    {
+        "event_id": "queen_prepared1",
+        "tags": [
+            "clan:leader"
+        ],
+        "involved_cats": {
+            "m_c": {
+                "past_status": [ "queen apprentice" ],
+                "current_exp": [ "prepared" ]
+            }
+        },
+        "strings": [
+            "As (old_name) has finished {PRONOUN/m_c/poss} queen training, lead_name gives {PRONOUN/m_c/object} the name m_c after {PRONOUN/m_c/poss} r_h, welcoming {PRONOUN/m_c/object} as the Clan's new queen."
         ]
     },
     {
@@ -35,8 +49,22 @@
             }
         },
         "strings": [
-            "Although (old_name) is still not ready to become a full queen, {PRONOUN/m_c/subject} {VERB/m_c/are/is} too old to remain in the apprentices' den. A meeting is called, and {PRONOUN/m_c/subject} {VERB/m_c/are/is} given the name m_c. The mood is tense and pitying.",
-            "Although some Clan members have doubts of (old_name)'s abilities, l_n gives {PRONOUN/m_c/object} the name m_c and welcomes {PRONOUN/m_c/object} as the Clan's new queen."
+            "Although (old_name) is still not ready to become a full queen, {PRONOUN/m_c/subject} {VERB/m_c/are/is} too old to remain in the apprentices' den. A meeting is called, and {PRONOUN/m_c/subject} {VERB/m_c/are/is} given the name m_c. The mood is tense and pitying."
+        ]
+    },
+    {
+        "event_id": "queen_unprepared1",
+        "tags": [
+            "clan:leader"
+        ],
+        "involved_cats": {
+            "m_c": {
+                "past_status": [ "queen apprentice" ],
+                "current_exp": [ "untrained", "learning" ]
+            }
+        },
+        "strings": [
+            "Although some Clan members have doubts of (old_name)'s abilities, lead_name gives {PRONOUN/m_c/object} the name m_c and welcomes {PRONOUN/m_c/object} as the Clan's new queen."
         ]
     },
     {
@@ -66,7 +94,7 @@
             }
         },
         "strings": [
-            "r_c0 tells l_n that (old_name) has completed {PRONOUN/m_c/poss} queen training. l_n gives {PRONOUN/m_c/object} the name m_c after {PRONOUN/m_c/poss} r_h, welcoming {PRONOUN/m_c/object} as the Clan's new queen."
+            "r_c0 tells lead_name that (old_name) has completed {PRONOUN/m_c/poss} queen training. lead_name gives {PRONOUN/m_c/object} the name m_c after {PRONOUN/m_c/poss} r_h, welcoming {PRONOUN/m_c/object} as the Clan's new queen."
         ],
         "tags": [
             "clan:leader"
