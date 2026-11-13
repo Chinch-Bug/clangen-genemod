@@ -715,7 +715,7 @@ dev_tools = false
 
 [retirement]
   # max 1/chance for old leaders to retire if enabled
-  max_leader_retire_chance = 50
+  max_leader_retire_chance = 100
 
   # max 1/chance for old healers to retire if enabled
   max_healer_retire_chance = 10

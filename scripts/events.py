@@ -359,6 +359,18 @@ def one_moon():
         ),
     )
 
+    if clancount:
+        for clan in game.clan.all_other_clans:
+            game.clan.herb_supply.handle_moon_otherclan(
+                clan_cats=[c for c in Cat.all_cats_list if c.status.group_ID == clan.group_ID],
+                med_cats=find_alive_cats_with_rank(
+                    Cat,
+                    ranks=[CatRank.MEDICINE_CAT, CatRank.MEDICINE_APPRENTICE],
+                    working=True,
+                    clan=clan.group_ID
+                )
+            )
+
     if game.clan.game_mode in ("expanded", "cruel_season"):
         med_fulfilled = medicine_cats_can_cover_clan(Cat.all_cats.values(), clan=CatGroup.PLAYER_CLAN_ID)
 

@@ -296,6 +296,48 @@ class HerbSupply:
             )
         game.herb_events_list.extend(self.log)
 
+    def handle_moon_otherclan(self, clan_cats: list, med_cats: list):
+        """
+        handle herbs on moon skip: add collected to supply, use herbs where needed, expire old herbs, look for new herbs
+        """
+
+        # check if herbs can be used
+        severity_ranking = {"severe": [], "major": [], "minor": []}
+        cats_to_treat = [
+            kitty
+            for kitty in clan_cats
+            if kitty.temporary_conditions or kitty.permanent_conditions
+        ]
+        for kitty in cats_to_treat:
+            # if there are no working med cats, then only allow med cats to be treated. the idea being that a med cat
+            # could conceivably attempt to care for themselves, but would not be well enough to care for the Clan as
+            # a whole. also helps prevent death spiral when med cats aren't able to work.
+            if not med_cats and not kitty.status.rank.is_any_medicine_rank():
+                break
+
+            severities = []
+
+            conditions = (
+                kitty.permanent_conditions.copy() + kitty.temporary_conditions.copy()
+            )
+            for con in conditions:
+                severities.append(con.severity)
+            if "severe" in severities:
+                severity_ranking["severe"].append(kitty)
+            elif "major" in severities:
+                severity_ranking["major"].append(kitty)
+            elif "minor" in severities:
+                severity_ranking["minor"].append(kitty)
+
+        treatment_cats = (
+            severity_ranking["severe"]
+            + severity_ranking["major"]
+            + severity_ranking["minor"]
+        )
+        if treatment_cats:
+            for kitty in treatment_cats:
+                self._use_herbs(kitty, otherclan=True)
+
     def total_of_herb(self, herb) -> int:
         """
         return total int of given herb in storage and collected
@@ -591,7 +633,7 @@ class HerbSupply:
         # clear collection dict
         self.collected = {}
 
-    def _use_herbs(self, treatment_cat):
+    def _use_herbs(self, treatment_cat, otherclan=False):
         """
         utilize current herb supply on given condition
         :param treatment_cat: the cat object to be treated
@@ -677,7 +719,7 @@ class HerbSupply:
                     self._apply_lack_of_herb(treatment_cat, name, chosen_effect)
                     return
 
-            if game.clan.game_mode == "classic":
+            if game.clan.game_mode == "classic" or otherclan:
                 # classic always applies basic treatment, regardless of herb supply
                 self._apply_herb_effect(
                     treatment_cat,
@@ -686,6 +728,7 @@ class HerbSupply:
                     chosen_effect,
                     amount_used=1,
                     strength=1,
+                    otherclan=otherclan
                 )
                 return
 
@@ -758,6 +801,7 @@ class HerbSupply:
         effect: HerbEffect,
         amount_used: int,
         strength: int,
+        otherclan = False
     ):
         """
         applies the given effect to the treated_cat
@@ -788,7 +832,7 @@ class HerbSupply:
         elif effect == HerbEffect.PROGRESSION:
             effect_message = i18n.t("screens.med_den.progression_down")
 
-        if game.clan.game_mode == "classic":
+        if game.clan.game_mode == "classic" or otherclan:
             # classic doesn't get logs
             return
 

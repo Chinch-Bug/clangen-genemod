@@ -164,6 +164,8 @@ class MedDenScreen(Screens):
                 manager=MANAGER,
                 anchors={"top_target": self.elements["med_message"]},
             )
+            if game.selected_clan != game.clan:
+                self.elements["open_log"].disable()
 
             self.add_to_map([self.help_button, self.elements["open_log"]])
 

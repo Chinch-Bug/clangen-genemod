@@ -317,7 +317,7 @@ def rebuild_moon_n_season_indicator(change_moon: bool = False, visible: bool = F
         clancount = game.clan.clancount if hasattr(game.clan, "clancount") else "singleclan"
         menu_buttons["moon_indicator"] = UITextBox(
             moon_icon,
-            ui_scale(pygame.Rect((-23, -26), (30, 30))),
+            ui_scale(pygame.Rect((-23, -26), (-1, -1))),
             visible=visible,
             manager=MANAGER,
             starting_height=5,
