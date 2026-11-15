@@ -1580,6 +1580,15 @@ class Cat:
         mentor_cat = Cat.fetch_cat(self.mentor)
         if not mentor_cat:
             return
+        if mentor_cat.faded:
+            # faded cats are loaded without apprentice lists, so only this cat's side can change
+            if (
+                self.moons > self.age_moons[CatAge.ADOLESCENT][0]
+                and mentor_cat.ID not in self.former_mentor
+            ):
+                self.former_mentor.append(mentor_cat.ID)
+            self.mentor = None
+            return
         if self.ID in mentor_cat.apprentice:
             mentor_cat.apprentice.remove(self.ID)
 
