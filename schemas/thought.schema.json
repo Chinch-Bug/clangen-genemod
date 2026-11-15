@@ -1208,7 +1208,9 @@
         "plantain",
         "catmint",
         "honey",
-        "yew_berries"
+        "yew_berries",
+        "dock",
+        "sweet-sedge"
       ],
       "title": "Herb",
       "type": "string"
