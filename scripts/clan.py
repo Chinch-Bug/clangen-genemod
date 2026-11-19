@@ -490,8 +490,7 @@ class Clan:
     def __repr__(self):
         if self.save_id is not None:
             _ = (
-                f"{self.save_id}: led by {self.leader.name}"
-                f"with {self.medicine_cat.name} as med. cat"
+                f"{self.save_id}: led by {self.leader.name if self.leader else ''}"
             )
             return _
 

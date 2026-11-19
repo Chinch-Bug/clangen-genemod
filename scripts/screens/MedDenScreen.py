@@ -40,6 +40,7 @@ from scripts.ui.scale import ui_scale, ui_scale_value
 from scripts.ui.theme import get_text_box_theme
 from scripts.ui.windows.herbs import HerbManagementWindow
 
+from scripts.cat.sprites.load_sprites import sprites
 
 class MedDenScreen(Screens):
     def __init__(self, name=None):
@@ -413,59 +414,93 @@ class MedDenScreen(Screens):
         """
         Updates the med cat display
         """
-        displayed_med_cat = self.meds[0]
+        displayed_med_cat = self.meds[0] if self.meds else None
 
         # create cat image
         if self.elements.get("med_image"):
             self.elements["med_image"].kill()
 
-        self.elements["med_image"] = UISpriteButton(
-            ui_scale(pygame.Rect((435, 150), (150, 150))),
-            displayed_med_cat.sprite,
-            cat_object=displayed_med_cat,
-            manager=MANAGER,
-        )
-        self.add_to_map([self.elements["med_image"]])
-
-        # display name
-        if not self.elements.get("med_name"):
-            self.elements["med_name"] = pygame_gui.elements.ui_label.UILabel(
-                ui_scale(pygame.Rect((-60, 140), (225, 30))),
-                shorten_text_to_fit(str(displayed_med_cat.name), 137, 15),
-                object_id=get_text_box_theme("#text_box_30_horizcenter"),
+        if displayed_med_cat:
+            self.elements["med_image"] = UISpriteButton(
+                ui_scale(pygame.Rect((435, 150), (150, 150))),
+                displayed_med_cat.sprite,
+                cat_object=displayed_med_cat,
                 manager=MANAGER,
-                anchors={"left_target": self.elements["med_image"]},
             )
-        else:
-            self.elements["med_name"].set_text(
-                shorten_text_to_fit(str(displayed_med_cat.name), 137, 15)
-            )
+            self.add_to_map([self.elements["med_image"]])
 
-        # display info
-        med_trait = i18n.t(f"cat.personality.{displayed_med_cat.personality.trait}")
-        med_skill = displayed_med_cat.skills.skill_string(short=True)
-        med_exp = i18n.t(
-            "general.exp_label", exp=displayed_med_cat.experience_level_string
-        )
-        work_status = (
-            i18n.t("general.can_work")
-            if displayed_med_cat.can_work()
-            else i18n.t("general.cant_work")
-        )
-        info_text = "<br>".join([med_trait, med_skill, med_exp, work_status])
-        if not self.elements.get("med_info"):
-            self.elements["med_info"] = pygame_gui.elements.UITextBox(
-                info_text,
-                ui_scale(pygame.Rect((0, 0), (120, 90))),
-                object_id=get_text_box_theme("#text_box_22_horizcenter"),
-                manager=MANAGER,
-                anchors={
-                    "top_target": self.elements["med_name"],
-                    "left_target": self.elements["med_image"],
-                },
+            # display name
+            if not self.elements.get("med_name"):
+                self.elements["med_name"] = pygame_gui.elements.ui_label.UILabel(
+                    ui_scale(pygame.Rect((-60, 140), (225, 30))),
+                    shorten_text_to_fit(str(displayed_med_cat.name), 137, 15),
+                    object_id=get_text_box_theme("#text_box_30_horizcenter"),
+                    manager=MANAGER,
+                    anchors={"left_target": self.elements["med_image"]},
+                )
+            else:
+                self.elements["med_name"].set_text(
+                    shorten_text_to_fit(str(displayed_med_cat.name), 137, 15)
+                )
+
+            # display info
+            med_trait = i18n.t(f"cat.personality.{displayed_med_cat.personality.trait}")
+            med_skill = displayed_med_cat.skills.skill_string(short=True)
+            med_exp = i18n.t(
+                "general.exp_label", exp=displayed_med_cat.experience_level_string
             )
+            work_status = (
+                i18n.t("general.can_work")
+                if displayed_med_cat.can_work()
+                else i18n.t("general.cant_work")
+            )
+            info_text = "<br>".join([med_trait, med_skill, med_exp, work_status])
+            if not self.elements.get("med_info"):
+                self.elements["med_info"] = pygame_gui.elements.UITextBox(
+                    info_text,
+                    ui_scale(pygame.Rect((0, 0), (120, 90))),
+                    object_id=get_text_box_theme("#text_box_22_horizcenter"),
+                    manager=MANAGER,
+                    anchors={
+                        "top_target": self.elements["med_name"],
+                        "left_target": self.elements["med_image"],
+                    },
+                )
+            else:
+                self.elements["med_info"].set_text(info_text)
         else:
-            self.elements["med_info"].set_text(info_text)
+            self.elements["med_image"] = UISpriteButton(
+                ui_scale(pygame.Rect((435, 150), (150, 150))),
+                sprites.blank_sprite,
+                cat_object=displayed_med_cat,
+                manager=MANAGER,
+            )
+            self.add_to_map([self.elements["med_image"]])
+            if not self.elements.get("med_name"):
+                self.elements["med_name"] = pygame_gui.elements.ui_label.UILabel(
+                    ui_scale(pygame.Rect((-60, 140), (225, 30))),
+                    "",
+                    object_id=get_text_box_theme("#text_box_30_horizcenter"),
+                    manager=MANAGER,
+                    anchors={"left_target": self.elements["med_image"]},
+                )
+            else:
+                self.elements["med_name"].set_text("")
+
+            if not self.elements.get("med_info"):
+                self.elements["med_info"] = pygame_gui.elements.UITextBox(
+                    "",
+                    ui_scale(pygame.Rect((0, 0), (120, 90))),
+                    object_id=get_text_box_theme("#text_box_22_horizcenter"),
+                    manager=MANAGER,
+                    anchors={
+                        "top_target": self.elements["med_name"],
+                        "left_target": self.elements["med_image"],
+                    },
+                )
+            else:
+                self.elements["med_info"].set_text("")
+
 
         # arrows for switching to other med cats
         if not self.elements.get("prior_med_arrow"):
@@ -513,6 +548,9 @@ class MedDenScreen(Screens):
                 # MESSAGE IF NO MEDS
                 if not self.meds:
                     self.coverage_message = choice(MESSAGES["no_meds_warning"])
+                    self.elements["med_message"].set_text(
+                        f"{self.coverage_message}"
+                    )
                 # MESSAGE IF SINGLE NON-WORKING MED
                 elif len(self.meds) == 1 and not self.meds[0].can_work():
                     self.coverage_message = event_text_adjust(
@@ -544,14 +582,15 @@ class MedDenScreen(Screens):
                         clan=game.selected_clan,
                     )
 
-        if not self.med_messages.get(displayed_med_cat.ID):
-            self.med_messages[
-                displayed_med_cat.ID
-            ] = game.clan.herb_supply.get_status_message(displayed_med_cat)
+        if displayed_med_cat:
+            if not self.med_messages.get(displayed_med_cat.ID):
+                self.med_messages[
+                    displayed_med_cat.ID
+                ] = game.clan.herb_supply.get_status_message(displayed_med_cat)
 
-        self.elements["med_message"].set_text(
-            f"{self.coverage_message}<br>{self.med_messages[displayed_med_cat.ID]}"
-        )
+            self.elements["med_message"].set_text(
+                f"{self.coverage_message}<br>{self.med_messages[displayed_med_cat.ID]}"
+            )
 
     def update_tab_and_page(self, changed_tab=False):
         """

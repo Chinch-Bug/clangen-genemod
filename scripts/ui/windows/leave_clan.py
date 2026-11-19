@@ -143,7 +143,7 @@ class LeaveClanWindow(GameWindow):
 
     def handle_clan_choice(self):
         if not self.chosen_clan:
-            self.chosen_clan = choice(game.clan.other_clan_IDs)
+            self.chosen_clan = choice([c for c in [game.clan.group_ID]+game.clan.other_clan_IDs if c != self.the_cat.group_ID])
 
         if self.the_cat.status.rank in (CatRank.DEPUTY, CatRank.LEADER):
             self.the_cat.rank_change(CatRank.WARRIOR, resort=True)

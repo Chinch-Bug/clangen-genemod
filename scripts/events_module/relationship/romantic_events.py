@@ -305,7 +305,7 @@ def _attempt_confession(cat_from: Cat) -> bool:
     cat_to: Cat = chosen_relationship.cat_to
 
     # need to be in the same "place"
-    if cat_to.status.group != cat_from.status.group:
+    if cat_to.status.group_ID != cat_from.status.group_ID:
         return False
 
     # need to be okay to try and approach this cat
