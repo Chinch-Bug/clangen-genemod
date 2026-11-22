@@ -893,7 +893,7 @@ def create_cat(cat, phenotype, cat_sprite, sprite_age, season_override, merle=Fa
                     "shaded": 4,
                     "high": 8,
                     "medium": 8,
-                    "low": 9
+                    "low": 8
                 }
                 unders = sprites.sprites["Tabby_unders" + cat_sprite].copy()
                 unders.fill((255, 255, 255, 180), special_flags=pygame.BLEND_RGBA_MULT)

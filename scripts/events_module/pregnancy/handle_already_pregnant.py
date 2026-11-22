@@ -532,7 +532,7 @@ def _handle_main_birth_event(
         if random_choice in surrogate:
             random_choice = Cat.fetch_cat(choice(cat.mate))
         for x in other_cat:
-            if x.dead:
+            if x.dead and x not in surrogate:
                 dead_mate = True
                 who_died = x
             if x.status.group_ID != cat.status.group_ID:

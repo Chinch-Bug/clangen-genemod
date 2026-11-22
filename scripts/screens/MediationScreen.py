@@ -746,12 +746,12 @@ class MediationScreen(Screens):
             if not check_age or cat.is_related(
                 other_cat, get_clan_setting("first cousin mates")
             ):
-                allow_romance = False
+                self.allow_romance = False
                 self.elements["romance_checkbox"].uncheck()
                 self.elements["romance_checkbox"].hide()
                 self.elements["romance_text"].hide()
             else:
-                allow_romance = True
+                self.allow_romance = True
                 self.elements["romance_checkbox"].check()
                 self.elements["romance_checkbox"].show()
                 self.elements["romance_text"].show()
@@ -761,7 +761,7 @@ class MediationScreen(Screens):
             ] = UIRelationDisplay(
                 (2, 10),
                 the_relationship,
-                romance=allow_romance,
+                romance=self.allow_romance,
                 container=self.selected_cat_elements[f"cat_container{cat_num}"],
                 anchors={"centerx": "centerx"},
             )
