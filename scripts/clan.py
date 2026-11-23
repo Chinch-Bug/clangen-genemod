@@ -871,6 +871,7 @@ class Clan:
                     medicine_cat=other_clan.get("medicine_cat"),
                     med_cat_predecessors=other_clan.get("med_cat_predecessors", 0),
                     ID=ID,
+                    leader_den_events=other_clan.get("leader_den_events")
                 )
                 if "relations" in other_clan:
                     game.clan.relations[CatGroup.PLAYER_CLAN_ID][ID] = int(other_clan["relations"])
@@ -1515,9 +1516,14 @@ class OtherClan:
         deputy_predecessors=0, 
         medicine_cat=None, 
         med_cat_predecessors=0, 
-        ID: str = 0
+        ID: str = 0,
+        leader_den_events = None
     ):
         self.received_aid = False
+        self.leader_den_events = leader_den_events if leader_den_events else {
+            "clan_event": {},
+            "outsider_event": {}
+        }
 
         self.group_ID = ID
         if not self.group_ID:
@@ -1730,6 +1736,7 @@ class OtherClan:
             "deputy_predecessors": self.deputy_predecessors,
             "medicine_cat": self.medicine_cat.ID if self.medicine_cat else None,
             "med_cat_predecessors": self.med_cat_predecessors,
+            "leader_den_events": self.leader_den_events,
         }
 
     def new_leader(self, leader):

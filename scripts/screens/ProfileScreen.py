@@ -221,6 +221,7 @@ class ProfileScreen(Screens):
             elif event.ui_element == self.profile_elements.get("warriors_den"):
                 self.change_screen(GameScreen.WARRIOR_DEN)
             elif event.ui_element == self.profile_elements.get("leader_den"):
+                game.selected_clan = self.the_cat.status.fetch_clan_object(game.clan)
                 self.change_screen(GameScreen.LEADER_DEN)
             elif event.ui_element == self.profile_elements["favourite_button"]:
                 self.the_cat.favourite += 1

@@ -62,10 +62,17 @@ def attempt_give_illness(cat, season=None, clan=game.clan):
 
     if not cat.dead and not cat.temporary_conditions and random_number <= 10:
         # CLAN FOCUS!
-        if (get_clan_setting("rest_and_recover") and clan == game.clan) or (clan and clan.received_aid):
+        stopping_chance = 0
+        if (get_clan_setting("rest_and_recover") and clan == game.clan):
             stopping_chance = get_config("focus.rest_and_recover.illness_prevent")
-            if not int(random.random() * stopping_chance):
-                return triggered
+        if clan and clan.received_aid:
+            if stopping_chance:
+                stopping_chance /= 2
+            else:
+                stopping_chance = get_config("focus.rest_and_recover.illness_prevent")
+        
+        if not int(random.random() * stopping_chance):
+            return triggered
 
         season_dict = get_config(f"condition_related.seasonal_chances.{season.casefold()}")
         possible_illnesses = []
@@ -177,11 +184,17 @@ def attempt_give_injuries(cat, clan=None):
             triggered = True
 
         if triggered:
+            stopping_chance = 0
             # CLAN FOCUS!
-            if (get_clan_setting("rest_and_recover") and clan == game.clan) or (clan and clan.received_aid):
+            if (get_clan_setting("rest_and_recover") and clan == game.clan):
                 stopping_chance = get_config("focus.rest_and_recover.injury_prevent")
-                if not int(random.random() * stopping_chance):
-                    return False
+            if clan and clan.received_aid:
+                if stopping_chance:
+                    stopping_chance /= 2
+                else:
+                    stopping_chance = get_config("focus.rest_and_recover.injury_prevent")
+            if not int(random.random() * stopping_chance):
+                return False
 
             create_short_event(
                 event_type="health",

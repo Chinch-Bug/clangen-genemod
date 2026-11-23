@@ -58,12 +58,12 @@ class Screens:
         It will handle keeping track of the last screen and cur screen.
         Last screen must be tracked to ensure a clear transition between screens."""
 
-        if new_screen not in [GameScreen.CAMP, GameScreen.MEDIATION, GameScreen.MED_DEN, GameScreen.PROFILE] and game.clan and game.clan.clancount == "multiclan":
+        if new_screen not in [GameScreen.CAMP, GameScreen.MEDIATION, GameScreen.MED_DEN, GameScreen.LEADER_DEN, GameScreen.PROFILE] and game.clan and game.clan.clancount == "multiclan":
             game.selected_clan = game.clan
             if Screens.menu_buttons.get("supplies"):
                 for b in Screens.menu_buttons["supplies"].child_buttons:
                     b.enable()
-            for b in ["screens.core.warriors_den", "screens.core.leader_den"]:
+            for b in ["screens.core.warriors_den"]:
                 Screens.menu_buttons["dens"].child_button_dicts[b].enable()
             Screens.menu_buttons["heading"].selected_list = [i18n.t("general.clan", name=game.clan.name)]
             if hasattr(Screens.menu_buttons["heading"], "child_buttons"):
@@ -459,13 +459,13 @@ class Screens:
                 if Screens.menu_buttons.get("supplies"):
                     for b in Screens.menu_buttons["supplies"].child_buttons:
                         b.disable()
-                for b in ["screens.core.warriors_den", "screens.core.leader_den"]:
+                for b in ["screens.core.warriors_den"]:
                     Screens.menu_buttons["dens"].child_button_dicts[b].disable()
             else:
                 if Screens.menu_buttons.get("supplies"):
                     for b in Screens.menu_buttons["supplies"].child_buttons:
                         b.enable()
-                for b in ["screens.core.warriors_den", "screens.core.leader_den"]:
+                for b in ["screens.core.warriors_den"]:
                     Screens.menu_buttons["dens"].child_button_dicts[b].enable()
             self.change_screen(GameScreen.CAMP)
         # VIEW CATS

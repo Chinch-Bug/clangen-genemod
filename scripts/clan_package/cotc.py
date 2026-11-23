@@ -21,6 +21,8 @@ def get_other_clan(group_ID):
     for clan in game.clan.all_other_clans:
         if clan.group_ID == group_ID:
             return clan
+    if group_ID == game.clan.group_ID:
+        return game.clan
 
 
 def change_clan_relations(clan, other_clan, difference):
