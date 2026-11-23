@@ -242,7 +242,7 @@ class Status:
                     "near": True,
                 }
             ]
-            if game.clan.clancount == "multiclan":
+            if game.clan and game.clan.clancount == "multiclan":
                 for other_clan in game.clan.all_other_clans:
                     self.standing_history.append({
                         "group": other_clan.group_ID,
