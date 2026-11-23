@@ -8,8 +8,10 @@ from scripts.cat.cats import Cat
 from scripts.cat.enums import CatRank
 from scripts.cat.skills import SkillPath
 from scripts.config import get_config
+from scripts.clan_package.cotc import get_other_clan
 from scripts.clan_package.settings import get_clan_setting
 from scripts.clan_package.get_clan_cats import get_alive_clan_queens
+from scripts.game_structure import game
 
 
 class Nutrition:
@@ -255,6 +257,14 @@ class FreshkillPile:
                 i18n.t("cruel_season.special_text.tribute_prey", count=prey_loss)
             )
         self.remove_freshkill(prey_loss)
+
+        if game.clan.leader_den_events["clan_event"].get("interaction_type") == "aid":
+            prey_loss = round(self.total_amount * get_config("leader_den.aid.prey"))
+            if prey_loss > 0:
+                event_list.append(
+                    i18n.t("screens.leader_den.aid_prey", count=prey_loss, o_c_n=get_other_clan(game.clan.leader_den_events["clan_event"]["other_clan"]).name)
+                )
+            self.remove_freshkill(prey_loss)
         value_diff = self.total_amount
         self.timeskip_feed = True
         self.already_fed = []

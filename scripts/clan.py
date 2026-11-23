@@ -108,6 +108,11 @@ class Clan:
         if starting_members is None:
             starting_members = []
 
+        self.received_aid = False
+        self.leader_den_events = {
+            "clan_event": {},
+            "outsider_event": {}
+        }
         self.group_ID = CatGroup.PLAYER_CLAN_ID
         self.save_id = save_id
         self.name = display_name if display_name else save_id
@@ -581,6 +586,7 @@ class Clan:
             "used_group_IDs": game.used_group_IDs,
             "last_focus_change": self.last_focus_change,
             "clans_in_focus": self.clans_in_focus,
+            "leader_den_events": self.leader_den_events,
             "instructor": self.instructor.ID,
             "reputation": self.reputation,
             "mediated": game.mediated,
@@ -793,6 +799,8 @@ class Clan:
         game.clan.reputation = clan_data["reputation"]
 
         game.clan.clancount = clan_data.get("clancount_mode", "singleclan")
+        if "leader_den_events" in clan_data:
+            game.clan.leader_den_events = clan_data["leader_den_events"]
         game.clan.age = clan_data["clanage"]
         game.clan.starting_season = (
             clan_data["starting_season"]
@@ -870,13 +878,13 @@ class Clan:
                     if not clan_data["relations"].get(CatGroup.PLAYER_CLAN_ID):
                         game.clan.relations[CatGroup.PLAYER_CLAN_ID][ID] = clan_data["relations"]["player_clan"]["other_clan"+str(len(game.clan.all_other_clans))]
         else:
-            ID = game.get_free_group_ID(CatGroup.OTHER_CLAN)
             if "other_clan_chosen_symbol" not in clan_data:
                 for name, relation, temper in zip(
                     clan_data["other_clans_names"].split(","),
                     clan_data["other_clans_relations"].split(","),
                     clan_data["other_clan_temperament"].split(","),
                 ):
+                    ID = game.get_free_group_ID(CatGroup.OTHER_CLAN)
                     OtherClan(name, temperament=temper, ID=ID)
                     game.clan.relations[CatGroup.PLAYER_CLAN_ID][ID] = int(relation)
             else:
@@ -886,6 +894,7 @@ class Clan:
                     clan_data["other_clan_temperament"].split(","),
                     clan_data["other_clan_chosen_symbol"].split(","),
                 ):
+                    ID = game.get_free_group_ID(CatGroup.OTHER_CLAN)
                     OtherClan(name, temperament=temper, chosen_symbol=symbol, ID=ID)
                     game.clan.relations[CatGroup.PLAYER_CLAN_ID][ID] = int(relation)
         if game.clan.clancount == "multiclan":
@@ -1472,7 +1481,7 @@ class OtherClan:
     """
 
     interaction_dict = {
-        "ally": ["offend", "praise"],
+        "ally": ["offend", "praise", "aid"],
         "neutral": ["provoke", "befriend"],
         "hostile": ["antagonize", "appease", "declare"],
     }
@@ -1508,6 +1517,8 @@ class OtherClan:
         med_cat_predecessors=0, 
         ID: str = 0
     ):
+        self.received_aid = False
+
         self.group_ID = ID
         if not self.group_ID:
             self.group_ID = game.get_free_group_ID(CatGroup.OTHER_CLAN)

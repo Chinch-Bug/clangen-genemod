@@ -23,7 +23,7 @@ if TYPE_CHECKING:
 
 
 def killing_outsiders(cat: "Cat", clan=game.clan):
-    if info_dict := get_clan_setting("lead_den_outsider_event"):
+    if info_dict := game.clan.leader_den_events["outsider_event"]:
         if cat.ID == info_dict["cat_ID"]:
             return
 
@@ -85,8 +85,7 @@ def killing_outsiders(cat: "Cat", clan=game.clan):
             )
 
 def outsider_wander(cat: "Cat", clan=game.clan):
-    if get_clan_setting("lead_den_outsider_event"):
-        info_dict = get_clan_setting("lead_den_outsider_event")
+    if info_dict := game.clan.leader_den_events["outsider_event"]:
         if cat.ID == info_dict["cat_ID"]:
             return
 

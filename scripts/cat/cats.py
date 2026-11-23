@@ -1493,19 +1493,26 @@ class Cat:
 
         # There are some special tasks we need to do for apprentice
         # Note that although you can un-retire cats, they will be a full warrior/med_cat/mediator
-        if self.moons > 6 and self.status.rank.is_any_apprentice_rank():
-            if get_clan_setting('modded names') and get_clan_setting('dynamic prefixes'):
-                self.name.change_prefix(self.moons, self.status.fetch_clan_object().biome, 'apprentice-warrior')
-            if get_clan_setting('modded names') and get_clan_setting('new suffixes') and not self.name.specsuffix_hidden:
-                self.name.give_suffix(self.skills, self.personality, self.status.fetch_clan_object().biome, None)
+        random_honor = None
+        if self.status.rank.is_any_apprentice_rank():
             _ment = Cat.fetch_cat(self.mentor) if self.mentor else None
             self.rank_change(
                 CatRank.WARRIOR
             )  # Temp switch them to warrior, so the following step will work
             self.rank_change_traits_skill(_ment)
+            
+            traits = load_lang_resource("events/ceremonies/ceremony_traits.json")
+            try:
+                random_honor = choice(traits[self.personality.trait])
+            except KeyError:
+                random_honor = i18n.t("defaults.ceremony_honor")
+            if get_clan_setting('modded names') and get_clan_setting('dynamic prefixes'):
+                self.name.change_prefix(self.moons, self.status.fetch_clan_object().biome, 'apprentice-warrior')
+            if get_clan_setting('modded names') and get_clan_setting('new suffixes') and not self.name.specsuffix_hidden:
+                self.name.give_suffix(self.skills, self.personality, self.status.fetch_clan_object().biome, random_honor)
 
         self.rank_change(CatRank.ELDER)
-        return
+        return random_honor
 
     def remove_condition(self, name: str):
         """

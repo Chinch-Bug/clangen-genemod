@@ -364,7 +364,7 @@ class Breed_generator:
         for i in range(0, 4):
             genoclass.sokoke += '0'
 
-        genoclass.body_value = randint(genoclass.body_indexes[0]+1, genoclass.body_indexes[1])
+        genoclass.body_value = randint(genoclass.body_indexes[1]+1, genoclass.body_indexes[2])
         
         genoclass.breeds["American Burmese/Bombay"] = 100
         return genoclass
@@ -944,8 +944,6 @@ class Breed_generator:
         for i in range(2):
             if randint(1, 50) == 1:
                 genoclass.dilutemd[i] = "Dm"
-
-        genoclass.body_value = randint(genoclass.body_indexes[1]+1, genoclass.body_indexes[2])
         
         genoclass.breeds["Devon Rex"] = 100
         return genoclass
@@ -975,8 +973,6 @@ class Breed_generator:
             genoclass.pinkdilute = ["dp", "dp"]
         elif a <= 51:
             genoclass.pinkdilute[1] = "dp"
-
-        genoclass.body_value = randint(genoclass.body_indexes[3]+1, genoclass.body_indexes[4])
         
         genoclass.breeds["Donskoy"] = 100
         return genoclass

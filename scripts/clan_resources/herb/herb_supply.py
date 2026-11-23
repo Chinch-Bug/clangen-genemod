@@ -10,6 +10,7 @@ from scripts.game_structure.constants import HERBS
 from scripts.clan_resources.herb.herb_effects import HerbEffect
 from scripts.clan_resources.supply import Supply
 from scripts.config import get_config
+from scripts.clan_package.cotc import get_other_clan
 from scripts.game_structure import game
 from scripts.game_structure.localization import load_lang_resource
 from scripts.cat.constants import TEMPORARY_CONDITIONS, PERMANENT_CONDITIONS
@@ -279,6 +280,25 @@ class HerbSupply:
                         f"{herb_loss} {self.herb[herb_name].singular_display}"
                     )
 
+        # aid clan
+        sent_herbs = []
+        if game.clan.leader_den_events["clan_event"].get("interaction_type") == "aid":
+            for herb_name in self.base_herb_list:
+                herb_loss = round(
+                    self.total_of_herb(herb_name)
+                    * get_config("leader_den.aid.herbs")
+                )
+                if herb_loss > 0:
+                    self.remove_herb(herb_name, herb_loss)
+                    if herb_loss > 1:
+                        sent_herbs.append(
+                            f"{herb_loss} {self.herb[herb_name].plural_display}"
+                        )
+                    else:
+                        sent_herbs.append(
+                            f"{herb_loss} {self.herb[herb_name].singular_display}"
+                        )
+
         # add log entry to inform player of removal
         if expired:
             self.log.append(
@@ -292,6 +312,14 @@ class HerbSupply:
                 i18n.t(
                     "cruel_season.special_text.herb_loss",
                     herbs=adjust_list_text(taken_herbs),
+                )
+            )
+        if sent_herbs:
+            self.log.append(
+                i18n.t(
+                    "screens.leader_den.aid_herbs",
+                    herbs=adjust_list_text(sent_herbs),
+                    o_c_n=get_other_clan(game.clan.leader_den_events["clan_event"]["other_clan"]).name
                 )
             )
         game.herb_events_list.extend(self.log)

@@ -1839,5 +1839,13 @@ dev_tools = false
   # caps for other clan reputation levels
     relation_cap = 30
     ally = 30
-    neutral = 17
-    hostile = 7
+    neutral = 20
+    hostile = 10
+
+[leader_den]
+  [leader_den.aid]
+    herbs = 0.2
+    prey = 0.2
+    rel_change = 10
+  [leader_den.declare]
+    rel_change = -10

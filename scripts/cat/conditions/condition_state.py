@@ -41,7 +41,7 @@ def update_permanent_condition_state(condition: PermanentCondition) -> Condition
     return ConditionState.CONTINUING
 
 
-def update_temporary_condition_state(condition: TemporaryCondition):
+def update_temporary_condition_state(condition: TemporaryCondition, clan=game.clan):
     """
     Checks the status of given temporary condition, updates it's state, and returns the new state
     """
@@ -52,7 +52,7 @@ def update_temporary_condition_state(condition: TemporaryCondition):
     if mortality == ConditionState.FATAL:
         return ConditionState.FATAL
 
-    if get_clan_setting("rest_and_recover") and condition.name not in get_config(
+    if (get_clan_setting("rest_and_recover") and clan == game.clan or (clan and clan.received_aid)) and condition.name not in get_config(
         "focus.rest_and_recover.excluded_from_moons_earlier_healed"
     ):
         recovery_buff = get_config("focus.rest_and_recover.moons_earlier_healed")

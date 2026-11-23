@@ -106,6 +106,11 @@ class LeaderDenScreen(Screens):
                     "screens.leader_den.", ""
                 )
                 self.update_clan_interaction_choice(text)
+            elif event.ui_element == self.focus_frame_elements["extra_interaction"]:
+                text = self.focus_frame_elements["extra_interaction"].text.replace(
+                    "screens.leader_den.", ""
+                )
+                self.update_clan_interaction_choice(text)
             elif event.ui_element == self.focus_frame_elements["clans_tab"]:
                 self.open_clans_tab()
             elif event.ui_element == self.focus_frame_elements["outsiders_tab"]:
@@ -124,13 +129,6 @@ class LeaderDenScreen(Screens):
         Handle creating new elements when switching to this screen
         """
         super().screen_switches()
-        # just making sure these are set up ahead of time
-        if get_clan_setting("lead_den_clan_interaction") is None:
-            set_clan_setting("lead_den_interaction", False)
-        if get_clan_setting("lead_den_clan_event") is None:
-            set_clan_setting("lead_den_clan_event", {})
-        if get_clan_setting("lead_den_clan_event") is None:
-            set_clan_setting("lead_den_outsider_event", {})
 
         # no menu header allowed
         self.hide_menu_buttons()
@@ -361,8 +359,7 @@ class LeaderDenScreen(Screens):
         self.screen_elements["outsider_rep"].hide()
 
         # INITIAL DISPLAY - display currently chosen interaction OR first clan in list
-        if get_clan_setting("lead_den_clan_event"):
-            current_setting = get_clan_setting("lead_den_clan_event")
+        if current_setting := game.clan.leader_den_events["clan_event"]:
             self.focus_clan = get_other_clan(current_setting["other_clan"])
             self.update_other_clan_focus()
             self.update_clan_interaction_choice(current_setting["interaction_type"])
@@ -451,7 +448,7 @@ class LeaderDenScreen(Screens):
             anchors={"top_target": self.focus_frame_elements["frame"]},
         )
         for i, other_clan in enumerate(game.clan.all_other_clans):
-            if other_clan.name == game.clan.name:
+            if game.clan.clancount == "multiclan" and not get_living_clan_cat_count(Cat, other_clan.group_ID, False):
                 continue
             x_pos = 128
             self.other_clan_selection_elements[f"container{i}"] = UIContainer(
@@ -604,8 +601,7 @@ class LeaderDenScreen(Screens):
         self.focus_frame_elements["outsiders_tab"].disable()
         self.focus_frame_elements["clans_tab"].enable()
 
-        if get_clan_setting("lead_den_outsider_event"):
-            current_setting = get_clan_setting("lead_den_outsider_event")
+        if current_setting := game.clan.leader_den_events["outsider_event"]:
             self.focus_cat = Cat.fetch_cat(current_setting["cat_ID"])
             self.update_outsider_focus()
             self.update_outsider_interaction_choice(current_setting["interaction_type"])
@@ -706,6 +702,18 @@ class LeaderDenScreen(Screens):
             visible=False,
             anchors={"centerx": "centerx"},
         )
+        self.focus_frame_elements["extra_interaction"] = UISurfaceImageButton(
+            ui_scale(pygame.Rect((0, 345), (121, 30))),
+            "screens.leader_den.aid",
+            get_button_dict(ButtonStyles.SQUOVAL, (121, 30)),
+            container=self.focus_clan_container,
+            object_id="@buttonstyles_squoval",
+            starting_height=3,
+            manager=MANAGER,
+            visible=False,
+            anchors={"centerx": "centerx"},
+        )
+        self.focus_frame_elements["extra_interaction"].hide()
 
         if self.no_leader:
             self.focus_clan_container.disable()
@@ -720,6 +728,18 @@ class LeaderDenScreen(Screens):
             f"screens.leader_den.{interaction[1]}"
         )
         self.focus_frame_elements["positive_interaction"].show()
+
+        if len(interaction) > 2:
+            self.focus_frame_elements["extra_interaction"].set_text(
+                f"screens.leader_den.{interaction[2]}"
+            )
+            if interaction[2] == "declare" and self.focus_clan.group_ID in game.clan.get_wars(game.clan.group_ID):
+                self.focus_frame_elements["extra_interaction"].hide()
+            else:
+                self.focus_frame_elements["extra_interaction"].show()
+            
+            if interaction[2] == "aid":
+                self.focus_frame_elements["extra_interaction"].set_tooltip("screens.leader_den.aid_tooltip")
 
     def update_clan_interaction_choice(self, object_id):
         """
@@ -740,8 +760,6 @@ class LeaderDenScreen(Screens):
         self.handle_other_clan_interaction(interaction)
 
     def handle_other_clan_interaction(self, interaction_type: str):
-        set_clan_setting("lead_den_interaction", True)
-
         gathering_cat = game.clan.leader if not self.helper_cat else self.helper_cat
 
         success = False
@@ -765,19 +783,19 @@ class LeaderDenScreen(Screens):
         if gathering_cat != game.clan.leader:
             fail_chance = fail_chance * 1.4
 
+        if interaction_type in ["aid", "declare"]:
+            fail_chance = 0
+
         if random.random() >= fail_chance:
             success = True
 
-        set_clan_setting(
-            "lead_den_clan_event",
-            {
-                "cat_ID": gathering_cat.ID,
-                "other_clan": self.focus_clan.name,
-                "player_clan_temper": self.clan_temper,
-                "interaction_type": interaction_type,
-                "success": success,
-            },
-        )
+        game.clan.leader_den_events["clan_event"] = {
+            "cat_ID": gathering_cat.ID,
+            "other_clan": self.focus_clan.group_ID,
+            "player_clan_temper": self.clan_temper,
+            "interaction_type": interaction_type,
+            "success": success,
+        }
 
     def _compare_temper(
         self, player_temper: str, other_temper: str, temper_dict: dict
@@ -1187,7 +1205,6 @@ class LeaderDenScreen(Screens):
         handles determining the outcome of an outsider interaction, returns result text
         :param action: the object id of the interaction button pressed
         """
-        set_clan_setting("lead_den_interaction", True)
 
         # percentage of success
         success_chance = (int(game.clan.reputation) / 100) / 1.5
@@ -1205,11 +1222,8 @@ class LeaderDenScreen(Screens):
         else:
             success = False
 
-        set_clan_setting(
-            "lead_den_outsider_event",
-            {
-                "cat_ID": self.focus_cat.ID,
-                "interaction_type": action,
-                "success": success,
-            },
-        )
+        game.clan.leader_den_events["outsider_event"] = {
+            "cat_ID": self.focus_cat.ID,
+            "interaction_type": action,
+            "success": success,
+        }

@@ -155,7 +155,7 @@ def handle_temporary_conditions(cat: Cat):
 
         condition_extra_info = TEMPORARY_CONDITIONS[condition.name]
 
-        state = update_temporary_condition_state(condition)
+        state = update_temporary_condition_state(condition, clan=cat.status.fetch_clan_object())
 
         # PROGRESSION - this can happen during various states, so we check it first
         for progression, info in condition.progression.items():
@@ -587,10 +587,10 @@ def _determine_retirement(cat: Cat):
             chance = int(retire_chances.get(cat.age))
             if not int(random() * chance):
                 old_name = str(cat.name)
-                cat.retire_cat()
+                random_honour = cat.retire_cat()
 
                 create_ceremony(
-                    main_cat=cat, old_name=old_name, involved_cats={"m_c": cat}
+                    main_cat=cat, old_name=old_name, involved_cats={"m_c": cat}, random_honor=random_honour
                 )
 
 

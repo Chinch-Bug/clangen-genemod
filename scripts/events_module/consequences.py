@@ -530,7 +530,7 @@ def create_new_cat_block(
                     )
                 else:  # completely new name
                     chosen_cat.name.give_prefix(
-                        Cat,
+                        chosen_cat,
                         biome=clan.biome
                     )
                     chosen_cat.name.give_suffix(

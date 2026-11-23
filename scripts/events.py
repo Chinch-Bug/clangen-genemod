@@ -144,8 +144,7 @@ def one_moon():
         get_moon_freshkill()
 
     # Adding in any potential lead den events that have been saved
-    if get_clan_setting("lead_den_interaction"):
-        handle_lead_den_event()
+    handle_lead_den_event()
 
     clancount = game.clan.clancount == "multiclan"
     
@@ -420,6 +419,9 @@ def one_moon():
 
     # Clear all the loaded event dicts.
     GenerateEvents.clear_loaded_events()
+    
+    # Clear aid/declare events
+    game.clan.leader_den_events["clan_event"] = {}
 
     # autosave
     if get_clan_setting("autosave") and game.clan.age % 5 == 0:
@@ -510,56 +512,60 @@ def handle_lead_den_event():
     """
     Handles the events that are chosen in the leaders den the previous moon and resets the relevant clan settings
     """
-    if get_clan_setting("lead_den_clan_event"):
-        info_dict = get_clan_setting("lead_den_clan_event")
+    if info_dict := game.clan.leader_den_events["clan_event"]:
         gathering_cat = Cat.fetch_cat(info_dict["cat_ID"])
 
         # drop the event if the gathering cat is no longer available
         if not gathering_cat.status.alive_in_player_clan:
             return
 
-        other_clan = get_other_clan(info_dict["other_clan"])
+        if info_dict["interaction_type"] in ["aid", "declare"]:
+            other_clan = get_other_clan(info_dict["other_clan"])
+            other_clan.received_aid = True
+            game.clan.set_relations(game.clan, other_clan, None, get_config(f"leader_den.{info_dict['interaction_type']}.rel_change"))
 
-        # get events
-        events = generate_events.possible_lead_den_events(
-            cat=gathering_cat,
-            other_clan_temper=other_clan.temperament,
-            player_clan_temper=info_dict["player_clan_temper"],
-            event_type="other_clan",
-            interaction_type=info_dict["interaction_type"],
-            success=info_dict["success"],
-        )
-        chosen_event = random.choice(events)
-
-        # get text
-        event_text = chosen_event["event_text"]
-
-        # change relations and append relation text
-        rel_change = chosen_event["rel_change"]
-        game.clan.set_relations(game.clan, other_clan, None, rel_change)
-        if rel_change > 0:
-            event_text += i18n.t("hardcoded.relations_improved")
-        elif rel_change == 0:
-            event_text += i18n.t("hardcoded.relations_neutral")
         else:
-            event_text += i18n.t("hardcoded.relations_worsened")
+            other_clan = get_other_clan(info_dict["other_clan"])
 
-        # adjust text and add to event list
-        event_text = event_text_adjust(
-            Cat,
-            event_text,
-            main_cat=gathering_cat,
-            other_clan=other_clan,
-            clan=game.clan,
-        )
-        game.cur_events_list.insert(
-            4, EventInformation(event_text, "other_clans", [gathering_cat.ID], clan=game.clan.group_ID)
-        )
+            # get events
+            events = generate_events.possible_lead_den_events(
+                cat=gathering_cat,
+                other_clan_temper=other_clan.temperament,
+                player_clan_temper=info_dict["player_clan_temper"],
+                event_type="other_clan",
+                interaction_type=info_dict["interaction_type"],
+                success=info_dict["success"],
+            )
+            chosen_event = random.choice(events)
 
-        set_clan_setting("lead_den_clan_event", {})
+            # get text
+            event_text = chosen_event["event_text"]
 
-    if get_clan_setting("lead_den_outsider_event"):
-        info_dict = get_clan_setting("lead_den_outsider_event")
+            # change relations and append relation text
+            rel_change = chosen_event["rel_change"]
+            game.clan.set_relations(game.clan, other_clan, None, rel_change)
+            if rel_change > 0:
+                event_text += i18n.t("hardcoded.relations_improved")
+            elif rel_change == 0:
+                event_text += i18n.t("hardcoded.relations_neutral")
+            else:
+                event_text += i18n.t("hardcoded.relations_worsened")
+
+            # adjust text and add to event list
+            event_text = event_text_adjust(
+                Cat,
+                event_text,
+                main_cat=gathering_cat,
+                other_clan=other_clan,
+                clan=game.clan,
+            )
+            game.cur_events_list.insert(
+                4, EventInformation(event_text, "other_clans", [gathering_cat.ID], clan=game.clan.group_ID)
+            )
+
+            game.clan.leader_den_events["clan_event"] = {}
+
+    if info_dict := game.clan.leader_den_events["outsider_event"]:
         outsider_cat = Cat.fetch_cat(info_dict["cat_ID"])
         involved_cats = [outsider_cat.ID]
         invited_cats = []
@@ -704,9 +710,7 @@ def handle_lead_den_event():
         game.cur_events_list.insert(
             4, EventInformation(event_text, ["misc"], involved_cats, clan=game.clan.group_ID)
         )
-        set_clan_setting("lead_den_outsider_event", {})
-
-    set_clan_setting("lead_den_interaction", False)
+        game.clan.leader_den_events["outsider_event"] = {}
 
 def get_moon_freshkill():
     """Adding auto freshkill for the current moon."""
@@ -1187,6 +1191,10 @@ def check_war():
         return
         
     switch_set_value(Switch.war_rel_change_type, {})
+
+    lead_event = {}
+    if game.clan.leader_den_events["clan_event"].get("interaction_type") == "declare":
+        lead_event = game.clan.leader_den_events["clan_event"]
     
     for clan in game.clan.war:
         # check if war in progress
@@ -1242,32 +1250,44 @@ def check_war():
                     game.clan.set_relations(main_clan, enemy_clan, rel_value)
 
             else:  # try to start a war if no war in progress
-                if started_war:
-                    continue
-                if not event_for_other_clan(Cat, ["any_warrior_mult"], clan) or not enemy_can_fight:
-                    continue
-                active_wars = max(len(game.clan.get_wars(clan)), len(game.clan.get_wars(enemy)))
-                if active_wars and random.random() > 0.125:
-                    continue
-                threshold = 5
-                if enemy_clan.temperament[0] == "bloodthirsty":
-                    threshold = 10
-                if enemy_clan.temperament[0] in ["mellow", "amiable", "gracious"]:
-                    threshold = 3
-
-                rel_value = game.clan.get_relations(main_clan, enemy_clan)
-
-                if int(rel_value) <= threshold and not int(
-                    random.random() * int(rel_value)
-                ):
+                player_declared = clan == game.clan.group_ID and enemy == lead_event.get("other_clan")
+                
+                if player_declared:
                     game.clan.war[clan][enemy]["at_war"] = True
-                    war_events = WAR_TXT["trigger_events"]
+                    war_events = WAR_TXT["declare_events"]
                     current_rels = switch_get_value(Switch.war_rel_change_type)
                     if not current_rels.get(clan):
                         current_rels[clan] = {}
                     current_rels[clan][enemy] = "rel_down"
                     switch_set_value(Switch.war_rel_change_type, current_rels)
-                    started_war = True
+
+                else:
+                    if started_war:
+                        continue
+                    if not event_for_other_clan(Cat, ["any_warrior_mult"], clan) or not enemy_can_fight:
+                        continue
+                    active_wars = max(len(game.clan.get_wars(clan)), len(game.clan.get_wars(enemy)))
+                    if active_wars and random.random() > 0.125:
+                        continue
+                    threshold = 7
+                    if enemy_clan.temperament[0] == "bloodthirsty":
+                        threshold = 10
+                    if enemy_clan.temperament[0] in ["mellow", "amiable", "gracious"]:
+                        threshold = 5
+                    rel_value = game.clan.get_relations(main_clan, enemy_clan)
+
+
+                    if int(rel_value) <= threshold and not int(
+                        random.random() * int(rel_value)
+                    ):
+                        game.clan.war[clan][enemy]["at_war"] = True
+                        war_events = WAR_TXT["trigger_events"]
+                        current_rels = switch_get_value(Switch.war_rel_change_type)
+                        if not current_rels.get(clan):
+                            current_rels[clan] = {}
+                        current_rels[clan][enemy] = "rel_down"
+                        switch_set_value(Switch.war_rel_change_type, current_rels)
+                        started_war = True
 
             # if nothing happened, return
             if not war_events or not enemy_clan or main_clan == enemy_clan:
@@ -1888,6 +1908,11 @@ def attempt_outbreak(clan):
 
             if "outbreak_prevention_modifier" in buffs[skill]:
                 stopping_chance += buffs[skill]["outbreak_prevention_modifier"]
+    if clan and clan.received_aid:
+        if stopping_chance:
+            stopping_chance /= 2
+        else:
+            stopping_chance = get_config("focus.rest_and_recover.outbreak_prevention")
 
     # gather possible infections
     possible_infections: dict[str, float] = {}
