@@ -1575,15 +1575,6 @@ class OtherClan:
                 choice([x for x in self.first_temper_list if x not in used_tempers]),
                 choice([x for x in self.second_temper_list if x not in used_tempers]),
             )
-        if reputation is None:
-            if self.temperament[0] in ["gracious", "amiable"]:
-                self.reputation = choice([randint(71, 100), randint(71, 100), randint(71, 100), randint(50, 70)])
-            elif self.temperament[0] in ["wary", "proud"]:
-                self.reputation = choice([randint(1, 30), randint(1, 30), randint(1, 30), randint(31, 50)])
-            else:
-                self.reputation = choice([randint(1, 30), randint(31, 70), randint(31, 70), randint(71, 100)])
-        else:
-            self.reputation = reputation
 
         self.chosen_symbol = (
             None  # have to establish None first so that clan_symbol_sprite works
@@ -1604,6 +1595,16 @@ class OtherClan:
         self.med_cat_predecessors = med_cat_predecessors
         self.med_cat_list = []
         self.med_cat_number = len(self.med_cat_list)
+        
+        if reputation is None:
+            if self.temperament[0] in ["gracious", "amiable"]:
+                self.reputation = choice([randint(71, 100), randint(71, 100), randint(71, 100), randint(50, 70)])
+            elif self.temperament[0] in ["wary", "proud"]:
+                self.reputation = choice([randint(1, 30), randint(1, 30), randint(1, 30), randint(31, 50)])
+            else:
+                self.reputation = choice([randint(1, 30), randint(31, 70), randint(31, 70), randint(71, 100)])
+        else:
+            self.reputation = reputation
 
         if self.leader and not self.instructor:
             instructor_rank = choice((
