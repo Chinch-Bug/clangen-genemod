@@ -1803,6 +1803,111 @@ class OtherClan:
         elif self._reputation < 0:
             self._reputation = 0
 
+    @property
+    def temperament(self) -> tuple[str, str]:
+        """Temperament is determined whenever it's accessed. This makes sure it's always accurate to the
+        current cats in the Clan. However, determining Clan temperament is slow!
+        Clan temperament should be used as sparsely as possible, since
+        it's pretty resource-intensive to determine it."""
+
+        if game.clan.clancount == "singleclan":
+            return self._temperament
+
+        leader = (
+            Cat.fetch_cat(self.leader)
+            if isinstance(Cat.fetch_cat(self.leader), Cat)
+            else None
+        )
+        deputy = (
+            Cat.fetch_cat(self.deputy)
+            if isinstance(Cat.fetch_cat(self.deputy), Cat)
+            else None
+        )
+        medicine_cats = find_alive_cats_with_rank(Cat, [CatRank.MEDICINE_CAT], clan=self.group_ID)
+
+        all_other_cats = [
+            i
+            for i in Cat.all_cats_list
+            if i.status.rank
+            not in (CatRank.LEADER, CatRank.DEPUTY, CatRank.MEDICINE_CAT)
+            and i.status.group_ID == self.group_ID
+        ]
+
+        sociability_list = []
+        aggression_list = []
+        lawfulness_list = []
+        stability_list = []
+
+        # 3x influence
+        if leader:
+            sociability_list += [leader.personality.sociability] * 3
+            aggression_list += [leader.personality.aggression] * 3
+            lawfulness_list += [leader.personality.lawfulness] * 3
+            stability_list += [leader.personality.stability] * 3
+
+        # 2x influence
+        if deputy:
+            sociability_list += [deputy.personality.sociability] * 2
+            aggression_list += [deputy.personality.aggression] * 2
+            lawfulness_list += [deputy.personality.lawfulness] * 2
+            stability_list += [deputy.personality.stability] * 2
+
+        # collective influence
+        if medicine_cats:
+            sociability_list.append(
+                statistics.median(
+                    [i.personality.sociability for i in medicine_cats])
+            )
+            aggression_list.append(
+                statistics.median(
+                    [i.personality.aggression for i in medicine_cats])
+            )
+            lawfulness_list.append(
+                statistics.median(
+                    [i.personality.lawfulness for i in medicine_cats])
+            )
+            stability_list.append(
+                statistics.median(
+                    [i.personality.stability for i in medicine_cats])
+            )
+
+        # collective influence
+        if all_other_cats:
+            sociability_list.append(
+                statistics.median(
+                    [i.personality.sociability for i in all_other_cats])
+            )
+            aggression_list.append(
+                statistics.median(
+                    [i.personality.aggression for i in all_other_cats])
+            )
+            lawfulness_list.append(
+                statistics.median(
+                    [i.personality.lawfulness for i in all_other_cats])
+            )
+            stability_list.append(
+                statistics.median(
+                    [i.personality.stability for i in all_other_cats])
+            )
+
+        if not leader and not deputy and not medicine_cats and not all_other_cats:
+            print("returned default temper: stoic, observant")
+            return "stoic", "observant"
+
+        # mean of [leader, leader, leader, deputy, deputy, medicine_cats, all_other_cats]
+        clan_sociability = round(statistics.mean(sociability_list))
+        clan_aggression = round(statistics.mean(aggression_list))
+        clan_lawfulness = round(statistics.mean(lawfulness_list))
+        clan_stability = round(statistics.mean(stability_list))
+
+        return get_temper_alignment(
+            clan_sociability, clan_aggression, clan_lawfulness, clan_stability
+        )
+
+    @temperament.setter
+    def temperament(self, val):
+        self._temperament = val
+
 class Afterlife:
     """
     Currently just used for tracking temperament & facets. All facets default to 8 if influencing_cats is empty.

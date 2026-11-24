@@ -50,6 +50,7 @@ class LeaderDenScreen(Screens):
         self.deputy_name = None
         self.leader_name = None
         self.clan_temper = None
+        self.focus_clan_temper = None
         self.clan_rep = None
         self.no_leader = False
 
@@ -96,6 +97,7 @@ class LeaderDenScreen(Screens):
                         == self.other_clan_selection_elements[f"button{i}"]
                     ):
                         self.focus_clan = self.valid_clans[i]
+                        self.focus_clan_temper = self.focus_clan.temperament
                         self.update_other_clan_focus()
             elif event.ui_element == self.focus_frame_elements["negative_interaction"]:
                 text = self.focus_frame_elements["negative_interaction"].text.replace(
@@ -362,10 +364,12 @@ class LeaderDenScreen(Screens):
         # INITIAL DISPLAY - display currently chosen interaction OR first clan in list
         if current_setting := game.selected_clan.leader_den_events["clan_event"]:
             self.focus_clan = get_other_clan(current_setting["other_clan"])
+            self.focus_clan_temper = self.focus_clan.temperament
             self.update_other_clan_focus()
             self.update_clan_interaction_choice(current_setting["interaction_type"])
         else:
             self.focus_clan = game.clan.all_other_clans[0] if game.selected_clan.group_ID == game.clan.group_ID else game.clan
+            self.focus_clan_temper = self.focus_clan.temperament
             self.update_other_clan_focus()
 
     def exit_screen(self):
@@ -492,6 +496,7 @@ class LeaderDenScreen(Screens):
                     "top_target": self.other_clan_selection_elements[f"clan_symbol{i}"],
                 },
             )
+            other_clan_temper = other_clan.temperament
             self.other_clan_selection_elements[
                 f"clan_temper{i}"
             ] = pygame_gui.elements.UILabel(
@@ -499,10 +504,10 @@ class LeaderDenScreen(Screens):
                 text=i18n.t(
                     "screens.leader_den.clan_temper",
                     first_temper=i18n.t(
-                        f"screens.leader_den.{other_clan.temperament[0]}"
+                        f"screens.leader_den.{other_clan_temper[0]}"
                     ),
                     second_temper=i18n.t(
-                        f"screens.leader_den.{other_clan.temperament[1]}"
+                        f"screens.leader_den.{other_clan_temper[1]}"
                     ),
                 ),
                 object_id=get_text_box_theme("#text_box_22_horizcenter_spacing_95"),
@@ -654,10 +659,10 @@ class LeaderDenScreen(Screens):
             text=i18n.t(
                 "screens.leader_den.clan_temper",
                 first_temper=i18n.t(
-                    f"screens.leader_den.{self.focus_clan.temperament[0]}"
+                    f"screens.leader_den.{self.focus_clan_temper[0]}"
                 ),
                 second_temper=i18n.t(
-                    f"screens.leader_den.{self.focus_clan.temperament[1]}"
+                    f"screens.leader_den.{self.focus_clan_temper[1]}"
                 ),
             ),
             object_id="#text_box_22_horizcenter_spacing_95",
@@ -773,7 +778,7 @@ class LeaderDenScreen(Screens):
         temper_dict = constants.TEMPERAMENT_DICTS[0]
         fail_chance = self._compare_temper(
             player_temper=self.clan_temper[0],
-            other_temper=self.focus_clan.temperament[0],
+            other_temper=self.focus_clan_temper[0],
             temper_dict=temper_dict,
         )
 
@@ -781,7 +786,7 @@ class LeaderDenScreen(Screens):
         temper_dict = constants.TEMPERAMENT_DICTS[1]
         fail_chance += self._compare_temper(
             player_temper=self.clan_temper[1],
-            other_temper=self.focus_clan.temperament[1],
+            other_temper=self.focus_clan_temper[1],
             temper_dict=temper_dict,
         )
 

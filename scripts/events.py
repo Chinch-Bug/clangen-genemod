@@ -1217,6 +1217,7 @@ def check_war():
         for enemy in game.clan.war[clan]:
             war_events: list = []
             enemy_clan = [c for c in game.clan.all_other_clans if c.group_ID == enemy][0]
+            enemy_clan_temper = enemy_clan.temperament
             enemy_can_fight = game.clan.clancount == "singleclan" or event_for_other_clan(Cat, ["any_warrior_mult"], enemy)
             if game.clan.war[clan][enemy]["at_war"]:
                 if not event_for_other_clan(Cat, ["any_warrior_mult"], clan) or not enemy_can_fight:
@@ -1226,9 +1227,9 @@ def check_war():
                     victor = clan if not enemy_can_fight else enemy
                 else:
                     threshold = 10
-                    if enemy_clan.temperament[0] == "bloodthirsty":
+                    if enemy_clan_temper[0] == "bloodthirsty":
                         threshold = 12
-                    if enemy_clan.temperament[0] in ["mellow", "amiable", "gracious"]:
+                    if enemy_clan_temper[0] in ["mellow", "amiable", "gracious"]:
                         threshold = 7
 
                     threshold -= int(game.clan.war[clan][enemy]["duration"])
@@ -1288,9 +1289,9 @@ def check_war():
                     if active_wars and random.random() > 0.125:
                         continue
                     threshold = 7
-                    if enemy_clan.temperament[0] == "bloodthirsty":
+                    if enemy_clan_temper[0] == "bloodthirsty":
                         threshold = 10
-                    if enemy_clan.temperament[0] in ["mellow", "amiable", "gracious"]:
+                    if enemy_clan_temper[0] in ["mellow", "amiable", "gracious"]:
                         threshold = 5
                     rel_value = game.clan.get_relations(main_clan, enemy_clan)
 

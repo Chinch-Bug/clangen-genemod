@@ -1197,7 +1197,7 @@ class ProfileScreen(Screens):
             self.open_tab = "history"
             self.history_tab_checkbox = UICheckbox(
                 position=(52, 514),
-                check=Switch.show_history_moons,
+                check=switch_get_value(Switch.show_history_moons),
                 tool_tip_text="screens.profile.show_moons_tooltip",
                 manager=MANAGER,
             )
