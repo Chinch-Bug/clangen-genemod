@@ -7,7 +7,7 @@
         ],
         "frequency": 2,
         "strings": [
-            "m_c was checking some tunnels after a recent heavy downpour, only to find r_c1 trapped. {PRONOUN/m_c/object/CAP} gathered r_c2 and r_c3 up to help dig {PRONOUN/r_c1/object} out."
+            "m_c was checking some tunnels after a recent heavy downpour, only to find r_c0 trapped. {PRONOUN/m_c/object/CAP} gathered r_c1 and r_c2 up to help dig {PRONOUN/r_c0/object} out."
         ],
         "involved_cats": {
             "m_c": {
