@@ -77,7 +77,7 @@ def get_config(
     :param creating_clan: Set to True if currently loaded game.clan.cruel_cards should be ignored.
     :param card_list_override: If you want to specify a list of cruel card IDs to search INSTEAD of using the saved clan cards, then list them here. Best used during clan creation.
     """
-    config_value = copy.copy(CONFIG)
+    config_value = CONFIG
     config_keys = tuple(config_path.split("."))
 
     # checking cards first
@@ -95,6 +95,7 @@ def get_config(
         for key in config_keys:
             config_value = config_value[key]
         if isinstance(config_value, dict):
+            config_value = copy.copy(config_value)
             for value in config_value:
                 for card in card_list:
                     card_info = constants.CRUEL_CARDS_ALL[card]
