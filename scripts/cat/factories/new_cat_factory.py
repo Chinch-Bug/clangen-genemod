@@ -337,9 +337,10 @@ class NewCatFactory(BaseCatFactory, ABC):
         gene_config = get_config("genetics_config", creating_clan=creating_clan, card_list_override=cards)
         gene_config.update(get_config("april_fools_genes", creating_clan=creating_clan, card_list_override=cards))
 
-        for key in boosted_genes:
-            if key in gene_config:
-                gene_config[key] = int(gene_config[key]/gene_config["boost_value"])
+        if boosted_genes:
+            for key in boosted_genes:
+                if key in gene_config:
+                    gene_config[key] = int(gene_config[key]/gene_config["boost_value"])
 
         phenotype = Phenotype(gene_config, game_setting_get("ban problem genes"))
         chimerapheno = None
