@@ -208,8 +208,8 @@ class QueenAdviceScreen(Screens):
             anchors={"left": "left", "left_target": self.elements["search_bar"].text_entry},
         )
         if not get_config("genetics_config.show_genotype"):
-            self.search_toggle_checkbox.checked = False
-            self.search_toggle_checkbox.disable()
+            self.elements["search_toggle_checkbox"].checked = False
+            self.elements["search_toggle_checkbox"].disable()
         interactable_elements.append(self.elements["search_toggle_checkbox"])
 
         # CAT LIST
