@@ -85,16 +85,21 @@ def get_config(
     if game.clan and hasattr(game.clan, "cruel_cards") and not card_list and not creating_clan:
         card_list = game.clan.cruel_cards
 
+    make_copy = False
     for card in card_list:
         card_info = constants.CRUEL_CARDS_ALL[card]
         if config_path in card_info["modifiers"]:
             config_value = card_info["modifiers"][config_path]
+        elif not make_copy:
+            for key in card_info["modifiers"]:
+                if key.startswith(config_path):
+                    make_copy = True
 
     # then checking game_config
     if config_value == CONFIG:
         for key in config_keys:
             config_value = config_value[key]
-        if isinstance(config_value, dict):
+        if isinstance(config_value, dict) and make_copy:
             config_value = copy.copy(config_value)
             for value in config_value:
                 for card in card_list:
