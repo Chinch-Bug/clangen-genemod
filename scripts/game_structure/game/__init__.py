@@ -25,6 +25,8 @@ event_editing = False
 max_name_length = 10
 
 mediated = []  # Keep track of which couples have been mediated this moon.
+queen_advice = [] # Keep track of queen actions
+queen_advice_outcomes = []
 just_died = []  # keeps track of which cats died this moon via die()
 dead_cats_to_grieve = [] # keeps track of the cats who died and need a clan grieving message
 cur_events_list = []

@@ -277,9 +277,11 @@ class PredictOffspringScreen(Screens):
         else:
             par2geno.Generator('masc')
         if self.selected_mate:
-            new_cat = NewCatFactory.create_cat(parent1=self.selected_cat.ID, parent2=self.selected_mate.ID, status_dict={"rank": CatRank.WARRIOR}, moons=40)
+            new_cat = NewCatFactory.create_cat(parent1=self.selected_cat.ID, parent2=self.selected_mate.ID, status_dict={"rank": CatRank.WARRIOR}, moons=40,
+                                               boosted_genes=game.clan.boosted_genes,)
         else:
-            new_cat = NewCatFactory.create_cat(parent1 = self.selected_cat.ID, extrapar=par2geno, status = {"rank": CatRank.WARRIOR}, moons = 40)
+            new_cat = NewCatFactory.create_cat(parent1=self.selected_cat.ID, extrapar=par2geno, status={"rank": CatRank.WARRIOR}, moons=40,
+                                               boosted_genes=game.clan.boosted_genes,)
         return new_cat
         
     def generate_offspring(self):

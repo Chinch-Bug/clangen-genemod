@@ -98,7 +98,7 @@
         "random med cat" = true
         patrol_lock_meds = false
         allow_mediator_patrols = false
-        allow_queen_patrols = true
+        allow_queen_patrols = false
     
     [clan.relation]
         affair = false

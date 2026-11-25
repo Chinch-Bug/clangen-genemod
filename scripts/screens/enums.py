@@ -31,6 +31,7 @@ class GameScreen(StrEnum):
     MED_DEN = "med_den_screen"
     WARRIOR_DEN = "warrior_den_screen"
     MEDIATION = "mediation_screen"
+    QUEEN = "queen_screen"
 
     PROFILE = "profile_screen"
     # screens accessed through profile

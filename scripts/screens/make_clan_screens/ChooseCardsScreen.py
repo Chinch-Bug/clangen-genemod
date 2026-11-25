@@ -424,14 +424,17 @@ class ChooseCardsScreen(MakeClanScreenBase):
         for setting in settings:
             set_clan_setting(setting, True)
 
+        possible_cats, boosted_genes = create_example_cats(
+            majority_rank=self.get_config_during_creation("clan_creation.majority_rank"),
+            rank_weights=self.get_config_during_creation("clan_creation.rank_weights"),
+            cards=self.clan_info.cruel_cards,
+        )
+        
         switch_set_value(
             Switch.possible_cats,
-            create_example_cats(
-                majority_rank=self.get_config_during_creation("clan_creation.majority_rank"),
-                rank_weights=self.get_config_during_creation("clan_creation.rank_weights"),
-                cards=self.clan_info.cruel_cards,
-            )
+            possible_cats
         )
+        self.clan_info.boosted_genes = boosted_genes
         self.clan_info.clear_cats()
 
         for ele in self.card_elements.values():

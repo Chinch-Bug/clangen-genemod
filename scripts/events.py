@@ -426,6 +426,9 @@ def one_moon():
     # Clear aid/declare events
     game.clan.leader_den_events["clan_event"] = {}
 
+    game.queen_advice = []
+    game.queen_advice_outcomes = []
+
     # autosave
     if get_clan_setting("autosave") and game.clan.age % 5 == 0:
         try:
@@ -675,6 +678,12 @@ def handle_lead_den_event(clan):
                         if (
                             invited_cat.status.rank == CatRank.MEDIATOR
                             and not get_clan_setting("become_mediator")
+                        ):
+                            invited_cat.status._change_rank(CatRank.WARRIOR)
+                        # if the cat chose to become a queen but the settings don't allow it, make them a warrior instead
+                        if (
+                            invited_cat.status.rank == CatRank.QUEEN
+                            and not get_clan_setting("become_queen")
                         ):
                             invited_cat.status._change_rank(CatRank.WARRIOR)
 

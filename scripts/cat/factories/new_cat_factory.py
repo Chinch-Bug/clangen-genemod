@@ -79,7 +79,8 @@ class NewCatFactory(BaseCatFactory, ABC):
                 no_disabling_scars=overrides.get("no_disabling_scars", False),
                 use_special=overrides.get("use_special", False),
                 creating_clan=overrides.get("creating_clan", False),
-                cards=overrides.get("cards")
+                cards=overrides.get("cards"),
+                boosted_genes=overrides.get("boosted_genes")
             )
         gender_dict = cls._get_random_gender_and_genderalign(phenotype, age)
         if overrides.get("genderalign"):
@@ -332,9 +333,14 @@ class NewCatFactory(BaseCatFactory, ABC):
         return gender
 
     @classmethod
-    def _get_random_pelt(cls, gender, parents, age, moons, no_disabling_scars: bool, use_special: bool = False, creating_clan: bool = False, cards: list = None):
+    def _get_random_pelt(cls, gender, parents, age, moons, no_disabling_scars: bool, use_special: bool = False, creating_clan: bool = False, cards: list = None, boosted_genes: list = None):
         gene_config = get_config("genetics_config", creating_clan=creating_clan, card_list_override=cards)
         gene_config.update(get_config("april_fools_genes", creating_clan=creating_clan, card_list_override=cards))
+
+        for key in boosted_genes:
+            if key in gene_config:
+                gene_config[key] = int(gene_config[key]/gene_config["boost_value"])
+
         phenotype = Phenotype(gene_config, game_setting_get("ban problem genes"))
         chimerapheno = None
         chimera = False

@@ -44,7 +44,8 @@ def save_cats(clanname, cat_class: Type["Cat"], game: "Game"):
 
         save_condition(inter_cat)
 
-        if inter_cat.history:
+        # if it hasn't been loaded we probably don't need to save it, right?
+        if inter_cat._history:
             inter_cat.save_history(history_dir)
             # after saving, dump the history info
             inter_cat.history = None

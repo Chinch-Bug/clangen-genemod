@@ -192,8 +192,15 @@ def get_kits(
                 "group_ID": blood_parent.status.get_last_living_group()
             }
 
-            kit = NewCatFactory.create_cat(parent1=blood_parent.ID, parent2=sire.ID, extrapar=chimera_sire if sire.ID !=
-                                            chimera_sire.ID else None, status_dict=kit_status, moons=litter_age, backstory=backstory)
+            kit = NewCatFactory.create_cat(
+                parent1=blood_parent.ID, 
+                parent2=sire.ID, 
+                extrapar=chimera_sire if sire.ID != chimera_sire.ID else None, 
+                status_dict=kit_status, 
+                moons=litter_age, 
+                backstory=backstory,
+                boosted_genes=game.clan.boosted_genes,
+            )
         else:
             # Two parents provided
             second_blood = None
@@ -213,10 +220,12 @@ def get_kits(
 
             if backkit:
                 kit = NewCatFactory.create_cat(parent1=cat.ID, parent2=second_blood.ID if second_blood else None,
-                                                moons=0, backstory=backstory, status_dict=kit_status, extrapar=chimera_sire)
+                                               moons=0, backstory=backstory, status_dict=kit_status, extrapar=chimera_sire,
+                                               boosted_genes=game.clan.boosted_genes,)
             else:
                 kit = NewCatFactory.create_cat(
-                    parent1=cat.ID, parent2=second_blood.ID, moons=0, status_dict=kit_status)
+                    parent1=cat.ID, parent2=second_blood.ID, moons=0, status_dict=kit_status,
+                    boosted_genes=game.clan.boosted_genes,)
 
         if identical:
             identical = False

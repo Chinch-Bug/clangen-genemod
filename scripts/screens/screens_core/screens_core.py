@@ -170,6 +170,7 @@ def rebuild_top_menu_buttons():
             "screens.core.medicine_cat_den",
             "screens.core.warriors_den",
             "screens.core.clearing",
+            "screens.core.nursery",
         ],
         child_dimensions=(150, 30),
         center_children=True,

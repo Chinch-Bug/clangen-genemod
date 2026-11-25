@@ -73,6 +73,10 @@ def handle_having_kits(cat: Cat, clan):
         return
 
     chance = get_balanced_kit_chance(cat, second_parent, is_affair, clan)
+
+    for parent in [cat]+(second_parent if second_parent else []):
+        if parent != "Surrogate" and parent.ID in game.queen_advice:
+            chance -= chance * float(game.queen_advice_outcomes[game.queen_advice.index(parent.ID)])
     
     all_infertile = True
     if 'sterile' not in cat.permanent_conditions:

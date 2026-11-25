@@ -414,7 +414,7 @@ dev_tools = false
   unmated_random_affair_chance = 10
 
   # proportion of situations where surrogacy will be selected when applicable (0 - never, 1 - always)
-  surrogate_rate = 1
+  surrogate_rate = 0.9
 
   # 1/chance for cats to select a clanmate as a surrogate when possible
   clanmate_surrogate_chance = 5
@@ -1071,6 +1071,9 @@ dev_tools = false
 
   # when gene boost is applicable, chance will be divided by this value and rounded up. Eg. for chocolate it would be 20/1.5 = 14
   boost_value = 1.5
+
+  # number of genes/traits that may get an extra boost for that save
+  boosted_genes_count = [2, 5]
 
   chimera = 1000
   identical_twins = 333

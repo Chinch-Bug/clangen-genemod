@@ -27,10 +27,13 @@ class ChooseClancountScreen(MakeClanScreenBase):
         # Reset variables
         reset_loaded_clan_settings()
         reset_config()
-        switch_set_value(Switch.possible_cats, create_example_cats(
+        
+        possible_cats, boosted_genes = create_example_cats(
             majority_rank=self.get_config_during_creation("clan_creation.majority_rank"),
             rank_weights=self.get_config_during_creation("clan_creation.rank_weights"),
-        ))
+        )
+        switch_set_value(Switch.possible_cats, possible_cats)
+        self.clan_info.boosted_genes = boosted_genes
 
         super().screen_switches()
         self.elements["previous_step"].disable()

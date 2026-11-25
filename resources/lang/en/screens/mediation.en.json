@@ -21,8 +21,6 @@
         "comfort": "Comfort",
         "trust": "Trust",
         "output_increase": "%{trait} increased. ",
-        "output_decrease": "%{trait} decreased. ",
-        "output_sabotage_failed": "Sabotage Failed!\n",
-        "output_mediate_failed": "Mediate Failed!\n"
+        "output_decrease": "%{trait} decreased. "
     }
 }

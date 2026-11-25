@@ -77,9 +77,9 @@ def get_config(
     :param creating_clan: Set to True if currently loaded game.clan.cruel_cards should be ignored.
     :param card_list_override: If you want to specify a list of cruel card IDs to search INSTEAD of using the saved clan cards, then list them here. Best used during clan creation.
     """
-    config_value = CONFIG
+    config_value = copy.deepcopy(CONFIG)
     config_keys = tuple(config_path.split("."))
-
+    
     # checking cards first
     card_list = card_list_override if card_list_override else []
     if game.clan and hasattr(game.clan, "cruel_cards") and not card_list and not creating_clan:

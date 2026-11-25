@@ -22,7 +22,6 @@ status_dict = {
     GameScreen.MEDIATION: "Mediating a dispute",
     GameScreen.PATROL: "On a patrol",
     GameScreen.PROFILE: "Viewing a cat's profile",
-    GameScreen.CEREMONY: "Holding a ceremony",
     GameScreen.MED_DEN: "In the medicine den",
 }
 

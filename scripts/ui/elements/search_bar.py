@@ -14,6 +14,7 @@ class UISearchBar(UIContainer):
         visible: bool = True,
         container=None,
         anchors: dict = None,
+        placeholder_text="general.name_search"
     ):
         super().__init__(
             ui_scale(pygame.Rect(unscaled_position, (228, 32))),
@@ -37,7 +38,7 @@ class UISearchBar(UIContainer):
         self.text_entry = pygame_gui.elements.UITextEntryLine(
             ui_scale(pygame.Rect((75, 8), (145, 23))),
             object_id="#search_entry_box",
-            placeholder_text="general.name_search",
+            placeholder_text=placeholder_text,
             container=self,
             manager=MANAGER,
         )

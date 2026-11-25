@@ -14,6 +14,7 @@ from .LeaderDenScreen import LeaderDenScreen
 from .ListScreen import ListScreen
 from .MedDenScreen import MedDenScreen
 from .MediationScreen import MediationScreen
+from .QueenAdviceScreen import QueenAdviceScreen
 from .PatrolScreen import PatrolScreen
 from .ProfileScreen import ProfileScreen
 from .RelationshipScreen import RelationshipScreen
@@ -94,6 +95,7 @@ def rebuild_all_screens():
         GameScreen.RELATIONSHIP: RelationshipScreen,
         GameScreen.FAMILY_TREE: FamilyTreeScreen,
         GameScreen.MEDIATION: MediationScreen,
+        GameScreen.QUEEN: QueenAdviceScreen,
         GameScreen.CHANGE_GENDER: ChangeGenderScreen,
         GameScreen.EVENT_EDIT: EventEditScreen,
     }

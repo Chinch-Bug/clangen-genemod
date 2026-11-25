@@ -411,7 +411,7 @@ class Status:
                 if disable_random
                 else choices(
                     [CatRank.WARRIOR, CatRank.MEDICINE_CAT, CatRank.QUEEN, CatRank.MEDIATOR],
-                    weights=[6, 2, 1, 1],
+                    weights=[8, 2, 1, 1],
                 )[0]
             )
         else:

@@ -60,6 +60,7 @@ class ClanInfo:
     starting_season: str = "Newleaf"
     game_mode: str = "classic"
     clan_count_mode: str = "singleclan"
+    boosted_genes: Optional[list] = None
     
     cruel_cards: list[str] = field(default_factory=list)
 
@@ -82,6 +83,7 @@ class ClanInfo:
         self.game_mode = "classic"
         self.clan_count_mode = "singleclan"
         self.cruel_cards = []
+        self.boosted_genes = []
 
     def clear_cats(self):
         self.leader = None
@@ -102,6 +104,7 @@ class ClanInfo:
         self.game_mode = saved_info["game_mode"]
         self.clan_count_mode = saved_info["clan_count_mode"]
         self.cruel_cards = saved_info["cruel_cards"]
+        self.boosted_genes = saved_info["boosted_genes"]
 
     def get_dict(self) -> dict:
         """
@@ -120,6 +123,7 @@ class ClanInfo:
             "game_mode": self.game_mode,
             "clan_count_mode": self.clan_count_mode,
             "cruel_cards": self.cruel_cards,
+            "boosted_genes": self.boosted_genes,
         }
 
     def no_cats_chosen(self) -> bool:
@@ -248,6 +252,8 @@ class MakeClanScreenBase(Screens):
 
     def save_clan(self):
         game.mediated.clear()
+        game.queen_advice.clear()
+        game.queen_advice_outcomes.clear()
         game.patrolled.clear()
         game.just_died.clear()
         game.dead_cats_to_grieve.clear()

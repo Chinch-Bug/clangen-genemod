@@ -97,6 +97,7 @@
     "#moon_indicator.tool_tip": {"misc": {"rect_width": "120"}},
     "#moon_indicator.tool_tip.text_box": {"misc": {"text_horiz_alignment": "center"}},
     "#clan_screen_cat_tooltip.text_box": {"misc": {"text_horiz_alignment": "center"}},
+    "#offspring_predict_cat": { "misc": { "tool_tip_delay": "0" } },
     "#offspring_predict_cat.tool_tip": { "misc": { "rect_width": "700" } },
 	"@checked_checkbox.tool_tip": {"misc": {"rect_width": "200"}},
     "@unchecked_checkbox.tool_tip": {"misc": {"rect_width": "200"}},

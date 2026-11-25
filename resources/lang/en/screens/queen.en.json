@@ -1,0 +1,15 @@
+{
+    "en": {
+        "advise": "Advise",
+        "discourage": "Discourage",
+        "select_cat0": "Choose a cat to influence.",
+        "queen_cant_work": "%{name} can't work this moon.",
+        "queen_already_worked": "%{name} has already worked this moon.",
+        "queen_ready_to_work": "%{name} can advise a cat.",
+        "cat_already_advised": "This cat has already received advice this moon. ",
+        "advise_failed": "Advising Failed!",
+        "discourage_failed": "Discouraging Failed!",
+        "output_increase": "%{name} is more likely to have kits this moon. ",
+        "output_decrease": "%{name} is less likely to have kits this moon. "
+    }
+}

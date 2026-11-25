@@ -42,7 +42,8 @@
   "prideful": {
     "card_art": "society/prideful.png",
     "modifiers": {
-       "pregnancy.can_have_kits": ["leader", "loner", "rogue", "kittypet"]
+       "pregnancy.can_have_kits": ["leader", "loner", "rogue", "kittypet"],
+       "pregnancy.rank_litter_chance_modifier.leader": -30
     }
   },
   "pride_and_joy": {
