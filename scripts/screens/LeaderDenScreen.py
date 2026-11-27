@@ -1106,7 +1106,7 @@ class LeaderDenScreen(Screens):
             and i.status.is_near()
             and (
                 CatStanding.KNOWN
-                in i.status.get_standing_with_group(CatGroup.PLAYER_CLAN_ID)
+                in i.status.get_standing_with_group(game.selected_clan.group_ID)
                 or CatStanding.MEMBER
                 in i.status.get_standing_with_group(game.selected_clan.group_ID)
             )

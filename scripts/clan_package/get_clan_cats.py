@@ -207,7 +207,7 @@ def search_cats(search_text, cat_list, search_genotype):
             polygenes = {
                 "wideband": ["wideband", "wb"],
                 "rufousing": ["rufousing", "ruf"],
-                "unders_rufsum": ["underbelly_rufousing", "underbelly_ruf"],
+                "unders_rufsum": ["underbelly_rufousing", "underbelly_ruf", "unders_ruf", "under_ruf"],
                 "bengsum": ["bengal", "bm"],
                 "soksum": ["sokoke", "sok"],
                 "spotsum": ["spotted", "spot"],
@@ -226,8 +226,7 @@ def search_cats(search_text, cat_list, search_genotype):
                 found_cats = cat_list.copy()
                 for a in alleles:
                     a = a.strip()
-                    find_poly = [
-                        key for key, value in polygenes.items() if a.split(" ")[0].split(">")[0].split("<")[0].split("=")[0] in value]
+                    find_poly = [key for key, value in polygenes.items() if a.split(" ")[0].split(">")[0].split("<")[0].split("=")[0] in value]
                     if (">" in a or "<" in a or "=" in a) and find_poly:
                         poly = find_poly[0]
                         operator = None
@@ -276,10 +275,11 @@ def search_cats(search_text, cat_list, search_genotype):
                                     for cat in found_cats
                                     if cat.phenotype[poly] == int(poly_value) or (cat.chimerapheno and cat.chimerapheno[poly] == int(poly_value))
                                 ]
+                            else:
+                                found_cats = []
 
                     allele = a.strip().strip("!")
-                    find_gene = [
-                        key for key, value in gene_map.items() if allele in value]
+                    find_gene = [key for key, value in gene_map.items() if allele in value]
                     gene = find_gene[0] if len(find_gene) else None
                     if gene:
                         found_cats = [
@@ -290,6 +290,8 @@ def search_cats(search_text, cat_list, search_genotype):
                             or ('!' in a and allele not in cat.phenotype[gene] and
                                 (not cat.chimerapheno or allele not in cat.chimerapheno[gene]))
                         ]
+                    else:
+                        found_cats = []
                 all_found += found_cats
             all_found = list(set(all_found))
         else:

@@ -1241,8 +1241,7 @@
                             "loner"
                         ],
                         "age": [
-                            "adult",
-                            "adolescent"
+                            "adult"
                         ]
                     },
                     "n_c1": {
@@ -1255,7 +1254,6 @@
                             "loner"
                         ],
                         "age": [
-                            "adult",
                             "adolescent"
                         ]
                     }

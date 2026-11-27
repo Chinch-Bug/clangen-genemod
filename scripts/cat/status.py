@@ -229,6 +229,9 @@ class Status:
         Generates basic standing info for a cat. If the cat is part of a group, it creates a MEMBER dict, else it
         creates a KNOWN standing dict for the player's clan.
         """
+
+        self.standing_history.clear()
+
         if self.group_ID:
             self.standing_history = [
                 {"group": self.group_ID, "standing": [CatStanding.MEMBER], "near": True}
@@ -242,13 +245,13 @@ class Status:
                     "near": True,
                 }
             ]
-            if game.clan and game.clan.clancount == "multiclan":
-                for other_clan in game.clan.all_other_clans:
-                    self.standing_history.append({
-                        "group": other_clan.group_ID,
-                        "standing": [CatStanding.KNOWN],
-                        "near": True,
-                    })
+        if game.clan and game.clan.clancount == "multiclan":
+            for other_clan in game.clan.all_other_clans:
+                self.standing_history.append({
+                    "group": other_clan.group_ID,
+                    "standing": [CatStanding.KNOWN],
+                    "near": True,
+                })
 
     # PROPERTIES
     @property
