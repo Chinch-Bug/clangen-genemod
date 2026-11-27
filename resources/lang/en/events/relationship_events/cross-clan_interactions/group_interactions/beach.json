@@ -39,7 +39,7 @@
         "relationship_changes": [
             {
                 "cats_from": [ "m_c" ],
-                "cats_to": [ "r_c0", "r_c0", "r_c0" ],
+                "cats_to": [ "r_c0", "r_c1", "r_c2" ],
                 "values": [ "trust", "respect" ],
                 "amount": 10,
                 "mutual": false,
